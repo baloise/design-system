@@ -13,11 +13,11 @@ export const TokensFontColors = ({ overview }) => {
             <Clipboard label={item.name} value={`var(--${item.name})`} />
           </td>
           <td style={{ verticalAlign: 'top' }} className="border-none">
-            <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
+            <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
           </td>
           <td style={{ verticalAlign: 'top' }} className="border-none">
             <div
-              className={`radius-normal text-weight-bold text-x-large flex justify-content-center align-items-center ${
+              className={`radius-normal font-weight-bold text-x-large flex justify-content-center align-items-center ${
                 key === 'white' || preKey === 'inverted-' ? 'bg-primary' : ''
               }`}
               style={{ width: '48px', height: '48px', color: `var(--${item.name})` }}

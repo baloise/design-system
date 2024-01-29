@@ -30,7 +30,7 @@ export const TokensColors = ({ overview }) => {
                   <Clipboard label={item.name} value={`var(--${item.name})`}/>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
-                  <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
+                  <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
@@ -47,43 +47,43 @@ export const TokensColors = ({ overview }) => {
               {!subItems.value ? (
                 <tr>
                   <td colSpan={3} className="border-bottom-grey">
-                    <p className="text-weight-bold mb-none">Shades</p>
-                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-2 radius-normal text-weight-bold">
+                    <p className="font-weight-bold mb-none">Shades</p>
+                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-2 radius-normal font-weight-bold">
                       {item.name}-x
                     </p>
                     <div className="flex gap-normal">
                       <div
-                        className="radius-normal p-small text-weight-bold"
+                        className="radius-normal p-small font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-1)` }}
                       >
                         1
                       </div>
                       <div
-                        className="radius-normal p-small text-weight-bold"
+                        className="radius-normal p-small font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-2)` }}
                       >
                         2
                       </div>
                       <div
-                        className="radius-normal p-small text-weight-bold"
+                        className="radius-normal p-small font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-3)` }}
                       >
                         3
                       </div>
                       <div
-                        className="radius-normal p-small text-weight-bold text-white"
+                        className="radius-normal p-small font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-4)` }}
                       >
                         4
                       </div>
                       <div
-                        className="radius-normal p-small text-weight-bold text-white"
+                        className="radius-normal p-small font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-5)` }}
                       >
                         5
                       </div>
                       <div
-                        className="radius-normal p-small text-weight-bold text-white"
+                        className="radius-normal p-small font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-6)` }}
                       >
                         6

@@ -30,7 +30,7 @@ export const TokensSpacing = ({ overview }) => {
                   <Clipboard label={item.name} value={`var(--${item.name})`} />
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
-                  <p className={`mt-none mb-none text-small text-weight-bold py-xx-small`}>
+                  <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
                     {item.value} / {itemTablet?.value || '0rem'} / {itemDesktop?.value || '0rem'}
                   </p>
                 </td>

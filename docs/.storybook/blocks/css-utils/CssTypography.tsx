@@ -8,7 +8,7 @@ export const CssTypographyColors = () => (
   <CssUtilitiesTable
     list={json}
     search="color"
-    example={item => <div className={`${item.class} p-small text-weight-bold text-medium`}>Aa</div>}
+    example={item => <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>}
   />
 )
 
@@ -16,7 +16,7 @@ export const CssTypographyFamily = () => (
   <CssUtilitiesTable
     list={json}
     search="font-family"
-    example={item => <div className={`${item.class} p-small text-weight-bold text-medium`}>Aa</div>}
+    example={item => <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>}
   />
 )
 
@@ -63,6 +63,6 @@ export const CssTypographySize = ({}) => {
       'xxxxx-large': tokens.size.text.size['xxxxx-large'].desktop,
     },
     css: 'text',
-    example: item => <div className={`text-${item.key} text-weight-bold text-align-center p-xx-small`}>Aa</div>,
+    example: item => <div className={`text-${item.key} font-weight-bold text-align-center p-xx-small`}>Aa</div>,
   })
 }

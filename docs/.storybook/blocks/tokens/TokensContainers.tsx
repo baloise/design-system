@@ -23,7 +23,7 @@ export const TokensContainersSize = ({ overview }) => {
               <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>
@@ -55,13 +55,13 @@ export const TokensContainersSpace = ({ overview }) => {
           <tbody key={key}>
             <tr>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className="text-weight-bold m-none">{key}</p>
-                <p className="inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small bg-grey-2 radius-normal text-weight-bold">
+                <p className="font-weight-bold m-none">{key}</p>
+                <p className="inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small bg-grey-2 radius-normal font-weight-bold">
                   var(--{item.name})
                 </p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>

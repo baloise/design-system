@@ -14,12 +14,12 @@ export const TokensFont = ({ overview }) => {
       <tbody>
         <tr>
           <td style={{ verticalAlign: 'top' }}>
-            <span className="font-family-title text-weight-bold text-primary text-medium">Bold Headline</span>
+            <span className="font-family-title font-weight-bold text-primary text-medium">Bold Headline</span>
             <br />
             <span className="font-family-title text-primary text-medium">Light Headline</span>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="text-weight-bold text-large mt-none mb-x-small">
+            <p className="font-weight-bold text-large mt-none mb-x-small">
               Title <span className="text-medium">(BaloiseCreateHeadline)</span>
             </p>
             <p className="m-none text-small">Should only be used for headings and buttons</p>
@@ -30,12 +30,12 @@ export const TokensFont = ({ overview }) => {
         </tr>
         <tr>
           <td style={{ verticalAlign: 'top' }}>
-            <span className="font-family-text text-weight-bold text-primary text-medium">Bold Text</span>
+            <span className="font-family-text font-weight-bold text-primary text-medium">Bold Text</span>
             <br />
             <span className="font-family-text text-primary text-medium">Regular Text</span>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="text-weight-bold text-large mt-none mb-x-small">
+            <p className="font-weight-bold text-large mt-none mb-x-small">
               Text <span className="text-medium">(BaloiseCreateText)</span>
             </p>
             <p className="m-none text-small">Should only be used for body texts and form controls</p>

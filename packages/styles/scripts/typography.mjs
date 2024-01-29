@@ -143,7 +143,7 @@ const generateTextTransform = () => {
 }
 
 const generateFontWeight = async () => {
-  return utils.staticClassByToken({ token: 'size.text.weight', property: 'font-weight', responsive: false })
+  return utils.staticClassByToken({ token: 'size.font.weight', property: 'font-weight', responsive: false })
 }
 
 const generateWhiteSpace = () => {

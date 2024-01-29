@@ -216,7 +216,7 @@ export class Footer implements BalConfigObserver, Loggable {
                     href={link.link}
                     target="_blank"
                     class={{
-                      'is-link': true,
+                      'link': true,
                       'is-inverted': true,
                     }}
                   >
@@ -235,7 +235,7 @@ export class Footer implements BalConfigObserver, Loggable {
                     href={link.link}
                     target="_blank"
                     class={{
-                      'is-link': true,
+                      'link': true,
                       'is-light': true,
                     }}
                   >

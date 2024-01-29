@@ -25,13 +25,13 @@ export const TokensFontSize = ({ overview }) => {
                 <Clipboard label={`bal-size-${key}`} value={`var(--bal-size-${key})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-none text-small text-weight-bold py-xx-small`}>
+                <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
                   {item?.mobile?.value || '0rem'} / {item?.tablet?.value || '0rem'} / {item?.desktop?.value || '0rem'}
                 </p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`font-family-title radius-normal text-primary text-weight-bold flex justify-content-center align-items-center text-${key}`}
+                  className={`font-family-title radius-normal text-primary font-weight-bold flex justify-content-center align-items-center text-${key}`}
                 >
                   Aa
                 </div>

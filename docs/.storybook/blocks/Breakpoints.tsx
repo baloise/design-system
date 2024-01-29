@@ -8,7 +8,7 @@ export const Pixel = ({ children }) => (
 
 export const Block = ({ label = '' }) => (
   <div className={`p-small radius-normal bg-${label ? 'green' : 'grey'}-2`}>
-    <span className="text-weight-bold">{label || '-'}</span>
+    <span className="font-weight-bold">{label || '-'}</span>
   </div>
 )
 

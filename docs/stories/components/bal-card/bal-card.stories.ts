@@ -248,7 +248,7 @@ export const AccordionCard = Story({
 export const SummaryCard = Story({
   ...withRender(
     () => `<bal-card>
-  <bal-card-content class="text-weight-bold text-primary">Insured vehicle</bal-card-content>
+  <bal-card-content class="font-weight-bold text-primary">Insured vehicle</bal-card-content>
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
   <bal-card-content>

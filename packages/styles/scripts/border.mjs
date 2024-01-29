@@ -25,7 +25,7 @@ export const generateBorder = async () => {
     token: 'size.radius',
     property: 'border-radius',
     values: {
-      ['radius-none']: 'none',
+      ['radius-none']: '0',
     },
   })
 
@@ -35,7 +35,7 @@ export const generateBorder = async () => {
     replace: 'radius',
     prefix: 'radius-top',
     values: {
-      ['radius-top-none']: 'none',
+      ['radius-top-none']: '0',
     },
   })
   const borderRadiusLeft = await utils.staticClassByToken({
@@ -44,7 +44,7 @@ export const generateBorder = async () => {
     replace: 'radius',
     prefix: 'radius-left',
     values: {
-      ['radius-left-none']: 'none',
+      ['radius-left-none']: '0',
     },
   })
   const borderRadiusRight = await utils.staticClassByToken({
@@ -53,7 +53,7 @@ export const generateBorder = async () => {
     replace: 'radius',
     prefix: 'radius-right',
     values: {
-      ['radius-right-none']: 'none',
+      ['radius-right-none']: '0',
     },
   })
   const borderRadiusBottom = await utils.staticClassByToken({
@@ -62,7 +62,7 @@ export const generateBorder = async () => {
     replace: 'radius',
     prefix: 'radius-bottom',
     values: {
-      ['radius-bottom-none']: 'none',
+      ['radius-bottom-none']: '0',
     },
   })
 
