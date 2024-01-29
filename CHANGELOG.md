@@ -136,3 +136,4 @@ For projects based on the builder `@angular-devkit/build-angular:browser` use th
 ## Previous Versions
 
 - [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_OLD.md)
+
