@@ -71,7 +71,6 @@ export class App implements Loggable {
   render() {
     return (
       <Host
-        role="application"
         class={{
           'bal-app': true,
           'bal-app--safari': balBrowser.isSafari,
