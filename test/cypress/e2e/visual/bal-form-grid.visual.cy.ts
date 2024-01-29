@@ -3,12 +3,12 @@ describe('bal-form-grid', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('form-grid-basic-desktop')
+    cy.getByTestId('basic').testVisual('form-grid-basic-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('form-grid-basic-tablet')
+    cy.getByTestId('basic').testVisual('form-grid-basic-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('form-grid-basic-mobile')
+    cy.getByTestId('basic').testVisual('form-grid-basic-mobile')
   })
 })

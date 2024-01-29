@@ -13,7 +13,6 @@ import "@baloise/design-system-css/css/border.css";
 import "@baloise/design-system-css/css/color.css";
 import "@baloise/design-system-css/css/display.css";
 import "@baloise/design-system-css/css/flex.css";
-import "@baloise/design-system-css/css/grid.css";
 import "@baloise/design-system-css/css/opacity.css";
 import "@baloise/design-system-css/css/radius.css";
 import "@baloise/design-system-css/css/shadow.css";

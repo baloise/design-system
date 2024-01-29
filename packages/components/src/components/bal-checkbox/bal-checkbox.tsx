@@ -439,7 +439,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     return (
       <Host
-        role="checkbox"
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}

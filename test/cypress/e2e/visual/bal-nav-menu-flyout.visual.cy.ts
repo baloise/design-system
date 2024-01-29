@@ -6,16 +6,16 @@ describe('bal-nav-menu-flyout', () => {
         .waitForDesignSystem()
         .wait(32)
 
-      cy.compareSnapshot('menu-flyout-fullhd')
+      cy.testVisual('menu-flyout-fullhd')
 
       cy.platform('highDefinition').wait(32)
-      cy.compareSnapshot('menu-flyout-highDefinition')
+      cy.testVisual('menu-flyout-highDefinition')
 
       cy.platform('widescreen').wait(32)
-      cy.compareSnapshot('menu-flyout-widescreen')
+      cy.testVisual('menu-flyout-widescreen')
 
       cy.platform('desktop').wait(32)
-      cy.compareSnapshot('menu-flyout-desktop')
+      cy.testVisual('menu-flyout-desktop')
     })
 
     it('basic component touch', () => {
@@ -24,10 +24,10 @@ describe('bal-nav-menu-flyout', () => {
         .waitForDesignSystem()
         .wait(400)
 
-      cy.compareSnapshot('menu-flyout-tablet')
+      cy.testVisual('menu-flyout-tablet')
 
       cy.platform('mobile').wait(400)
-      cy.compareSnapshot('menu-flyout-mobile')
+      cy.testVisual('menu-flyout-mobile')
     })
   })
 })

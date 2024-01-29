@@ -3,7 +3,10 @@ import type { FrameworkDelegate } from '@baloise/design-system-components/compon
 
 @Injectable()
 export class AngularDelegate {
-  constructor(private zone: NgZone, private appRef: ApplicationRef) {}
+  constructor(
+    private zone: NgZone,
+    private appRef: ApplicationRef,
+  ) {}
 
   create(resolver: ComponentFactoryResolver, injector: Injector, location?: ViewContainerRef) {
     return new AngularFrameworkDelegate(resolver, injector, location, this.appRef, this.zone)

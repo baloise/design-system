@@ -35,37 +35,72 @@
       text-overflow: ellipsis
       overflow: hidden
       white-space: nowrap
+    &--bold
+      font-weight: var(--bal-weight-bold)
+    &--shadow
+      text-shadow: var(--bal-text-shadow-normal)
+    &--heading
+      font-family: var(--bal-font-family-title)
+    //
+    // text sizes
+    &--size-small
+      font-size: var(--bal-size-small)
+      line-height: var(--bal-line-height-small)
+      +tablet
+        font-size: var(--bal-size-tablet-small)
+        line-height: var(--bal-line-height-tablet-small)
+      +desktop
+        font-size: var(--bal-size-desktop-small)
+        line-height: var(--bal-line-height-desktop-small)
+    &--size-block
+      font-size: var(--bal-size-medium)
+      line-height: var(--bal-line-height-medium)
+      +tablet
+        font-size: var(--bal-size-tablet-medium)
+        line-height: var(--bal-line-height-tablet-medium)
+      +desktop
+        font-size: var(--bal-size-desktop-medium)
+        line-height: var(--bal-line-height-desktop-medium)
+    &--size-lead
+      font-size: var(--bal-size-large)
+      line-height: var(--bal-line-height-large)
+      +tablet
+        font-size: var(--bal-size-tablet-large)
+        line-height: var(--bal-line-height-tablet-large)
+      +desktop
+        font-size: var(--bal-size-desktop-large)
+        line-height: var(--bal-line-height-desktop-large)
     //
     // text colors
-    &--has-text-light-blue
+    &--color-light-blue
       color: var(--bal-text-color-light-blue)
-    &--has-text-blue-dark
+    &--color-blue-dark
       color: var(--bal-text-color-primary-dark)
-    &--has-text-blue-light
+    &--color-blue-light
       color: var(--bal-text-color-blue-light)
-    &--has-text-primary-light
+    &--color-primary-light
       color: var(--bal-text-color-primary-light)
-    &--has-text-primary-dark
+    &--color-primary-dark
       color: var(--bal-text-color-primary-dark)
-    &--has-text-white
+    &--color-white
       color: var(--bal-text-color-white)
-    &--has-text-black
+    &--color-black
       color: var(--bal-text-color-black)
-    &--has-text-grey
+    &--color-grey
       color: var(--bal-text-color-grey)
-    &--has-text-primary
+    &--color-primary
       color: var(--bal-text-color-primary)
-    &--has-text-blue
+    &--color-blue
       color: var(--bal-text-color-primary)
-    &--has-text-info
+    &--color-info
       color: var(--bal-text-color-info)
-    &--has-text-success
+    &--color-success
       color: var(--bal-text-color-success)
-    &--has-text-warning
+    &--color-warning
       color: var(--bal-text-color-warning)
-    &--has-text-danger
+    &--color-danger
       color: var(--bal-text-color-danger)
-    &--has-text-danger-dark
+    &--color-danger-dark
       color: var(--bal-text-color-danger-dark)
-    &--has-text-danger-darker
+    &--color-danger-darker
       color: var(--bal-text-color-danger-darker)

@@ -75,6 +75,14 @@
 
 .bal-list__item__subtitle
   color: var(--bal-list-item-subtile-color)
+  font-size: var(--bal-size-small)
+  line-height: var(--bal-line-height-small)
+  +tablet
+    font-size: var(--bal-size-tablet-small)
+    line-height: var(--bal-line-height-tablet-small)
+  +desktop
+    font-size: var(--bal-size-desktop-small)
+    line-height: var(--bal-line-height-desktop-small)
 
 .bal-list__item:not(.bal-list__item__accordion-head),
 .bal-list__item:not(.bal-list__item__accordion-head) > a,
@@ -86,11 +94,11 @@
 .bal-list__item__content
   justify-content: center
   &--start
-    justify-content: start
+    justify-content: flex-start
   &--center
     justify-content: center
   &--end
-    justify-content: end
+    justify-content: flex-end
   &--space-between
     justify-content: space-between
 
@@ -146,7 +154,7 @@
       &:hover
         .bal-list__item__title .title,
         .bal-list__item__title .bal-heading__text,
-        .bal-list__item__subtitle p
+        .bal-list__item__subtitle
           color: var(--bal-list-accordion-head-color-hover) !important
 
         .bal-list__item__icon
@@ -159,16 +167,16 @@
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
-      .bal-list__item__subtitle p
+      .bal-list__item__subtitle
         +desktop()
           color: var(--bal-list-accordion-head-color-active) !important
 
       .bal-list__item__icon
-        svg,
-        svg g,
-        svg path,
-        svg circle
-          +desktop()
+        +desktop()
+          svg,
+          svg g,
+          svg path,
+          svg circle
             fill: var(--bal-list-accordion-head-background-active) !important
 
     &:focus-visible
@@ -180,7 +188,7 @@
   .bal-list__item
     .bal-list__item__title .title,
     .bal-list__item__title .bal-heading__text,
-    .bal-list__item__subtitle p
+    .bal-list__item__subtitle
       color: var(--bal-list-item-on-dark-color)
 
   .bal-list__item__icon
@@ -198,7 +206,7 @@
       &:hover
         .bal-list__item__title .title,
         .bal-list__item__title .bal-heading__text,
-        .bal-list__item__subtitle p
+        .bal-list__item__subtitle
           color: var(--bal-list-accordion-head-on-dark-color-hover) !important
 
         .bal-list__item__icon
@@ -211,16 +219,16 @@
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
-      .bal-list__item__subtitle p
+      .bal-list__item__subtitle
         +desktop()
           color: var(--bal-list-accordion-head-on-dark-color-active) !important
 
       .bal-list__item__icon
-        svg,
-        svg g,
-        svg path,
-        svg circle
-          +desktop()
+        +desktop()
+          svg,
+          svg g,
+          svg path,
+          svg circle
             fill: var(--bal-list-accordion-head-on-dark-background-active) !important
 
     &:focus-visible
@@ -316,7 +324,7 @@
   button:not(.button)
     .bal-list__item__title .title,
     .bal-list__item__title .bal-heading__text,
-    .bal-list__item__subtitle p
+    .bal-list__item__subtitle
       color: var(--bal-list-item-disabled-on-dark-color) !important
 
     .bal-list__item__icon
@@ -335,7 +343,7 @@
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
-      .bal-list__item__subtitle p
+      .bal-list__item__subtitle
         color: var(--bal-list-item-disabled-color) !important
 
       .bal-list__item__icon
@@ -355,7 +363,7 @@
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
-      .bal-list__item__subtitle p
+      .bal-list__item__subtitle
         color: var(--bal-list-item-disabled-on-color-color) !important
 
       .bal-list__item__icon
@@ -431,11 +439,11 @@
   flex-direction: column
   align-items: flex-start !important
   &--start
-    justify-content: start
+    justify-content: flex-start
   &--center
     justify-content: center
   &--end
-    justify-content: end
+    justify-content: flex-end
   &--space-between
     justify-content: space-between
 
