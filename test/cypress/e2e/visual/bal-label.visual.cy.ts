@@ -3,28 +3,28 @@ describe('bal-label', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('label-desktop')
+    cy.getByTestId('basic').testVisual('label-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('label-tablet')
+    cy.getByTestId('basic').testVisual('label-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('label-mobile')
+    cy.getByTestId('basic').testVisual('label-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('label-variants-desktop')
+    cy.testVisual('label-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('label-variants-tablet')
+    cy.testVisual('label-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('label-variants-mobile')
+    cy.testVisual('label-variants-mobile')
   })
 
   it('custom size', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('field')
+    cy.testVisual('field')
   })
 })
