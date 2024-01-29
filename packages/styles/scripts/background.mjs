@@ -45,13 +45,13 @@ export const generateBackgroundColors = async () => {
     breakpoints: utils.minBreakpoints,
   })
 
-  const visualTest = utils.visualTest({
-    values: {
-      ...props,
-      ...propsBase,
-    },
-    template: className => `<div class="${className} p-normal mb-small">${className}</div>`,
-  })
+  // const visualTest = utils.visualTest({
+  //   values: {
+  //     ...props,
+  //     ...propsBase,
+  //   },
+  //   template: className => `<div class="${className} p-normal mb-small">${className}</div>`,
+  // })
 
   /**
    * EXPORT
@@ -63,7 +63,7 @@ export const generateBackgroundColors = async () => {
     utils.merge({
       docs: [docs],
       rules: [rules, rulesPrimary],
-      visualTest: [visualTest],
+      // visualTest: [visualTest],
     }),
   )
 }

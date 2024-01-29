@@ -4,57 +4,64 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const CssSpacingMargin = ({}) => {
   const obj = tokens.size.space
-  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].value)
+  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].mobile.value)
+
+  const values = keys.map(key => ({
+    key,
+    valueMobile: obj[key].mobile.value,
+    valueTablet: obj[key].tablet.value,
+    valueDesktop: obj[key].desktop.value,
+  }))
 
   const list = [
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `-${key}`,
       property: 'margin',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `x-${key}`,
-      property: 'margin-left, margin-right',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `y-${key}`,
-      property: 'margin-top, margin-bottom',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `t-${key}`,
-      property: 'margin-top',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `r-${key}`,
-      property: 'margin-right',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `b-${key}`,
-      property: 'margin-bottom',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map(key => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `l-${key}`,
-      property: 'margin-left',
-      valueMobile: obj[key].value,
-      valueTablet: obj.tablet[key]?.value || obj[key].value,
-      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
   ]
 

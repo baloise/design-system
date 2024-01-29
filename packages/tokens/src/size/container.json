@@ -20,9 +20,18 @@
         }
       },
       "space": {
-        "mobile": { "value": "{size.space.normal.mobile}" },
-        "tablet": { "value": "{size.space.x-large.tablet}" },
-        "desktop": { "value": "{size.space.x-large.desktop}" }
+        "mobile": {
+          "value": "{size.space.normal.mobile}",
+          "comment": "Default space of a container to left and right side."
+        },
+        "tablet": {
+          "value": "{size.space.x-large.tablet}",
+          "comment": "Default space on tablets of a container to left and right side."
+        },
+        "desktop": {
+          "value": "{size.space.x-large.desktop}",
+          "comment": "Default space on desktops of a container to left and right side."
+        }
       }
     }
   }

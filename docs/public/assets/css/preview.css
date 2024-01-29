@@ -48,7 +48,7 @@
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1 {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-xxx-large);
+  font-size: var(--bal-text-size-xxx-large);
   line-height: 1.3;
   margin-top: 2.5rem !important;
 }
@@ -56,14 +56,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h1,
   .sbdocs-content > div:not(.sb-unstyled) > h1 {
-    font-size: var(--bal-size-desktop-xxx-large);
+    font-size: var(--bal-text-size-xxx-large-desktop);
     margin-top: 3rem !important;
   }
 }
 
 .sbdocs-content > h2,
 .sbdocs-content > div:not(.sb-unstyled) > h2 {
-  font-size: var(--bal-size-xx-large);
+  font-size: var(--bal-text-size-xx-large);
   line-height: 1.3;
   margin-top: 3rem !important;
 }
@@ -71,14 +71,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h2,
   .sbdocs-content > div:not(.sb-unstyled) > h2 {
-    font-size: var(--bal-size-desktop-xx-large);
+    font-size: var(--bal-text-size-xx-large-desktop);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h3,
 .sbdocs-content > div:not(.sb-unstyled) > h3 {
-  font-size: var(--bal-size-x-large);
+  font-size: var(--bal-text-size-x-large);
   line-height: 1.3;
   margin-top: 2rem !important;
 }
@@ -86,14 +86,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h3,
   .sbdocs-content > div:not(.sb-unstyled) > h3 {
-    font-size: var(--bal-size-desktop-x-large);
+    font-size: var(--bal-text-size-x-large-desktop);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h4,
 .sbdocs-content > div:not(.sb-unstyled) > h4 {
-  font-size: var(--bal-size-large);
+  font-size: var(--bal-text-size-large);
   line-height: 1.3;
   margin-top: 1.5rem !important;
 }
@@ -101,20 +101,20 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h4,
   .sbdocs-content > div:not(.sb-unstyled) > h4 {
-    font-size: var(--bal-size-desktop-large);
+    font-size: var(--bal-text-size-large:desktop);
     margin-top: 2rem !important;
   }
 }
 
 .sbdocs-content > h5,
 .sbdocs-content > div:not(.sb-unstyled) > h5 {
-  font-size: var(--bal-size-desktop-medium);
+  font-size: var(--bal-text-size-medium:desktop);
   line-height: 1.5;
 }
 
 .sbdocs-content > h6,
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
-  font-size: var(--bal-size-normal);
+  font-size: var(--bal-text-size-normal);
   line-height: 1.5;
 }
 
@@ -123,7 +123,7 @@
   font-family: 'BaloiseCreateText';
   font-weight: 400;
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-normal);
+  font-size: var(--bal-text-size-normal);
   line-height: 1.5;
 }
 
@@ -137,8 +137,8 @@ a.sbdocs-a:not(.button) {
 }
 
 .is-size-large a.sbdocs-a:not(.button) {
-  font-size: var(--bal-size-desktop-large);
-  line-height: var(--bal-line-height-desktop-large);
+  font-size: var(--bal-text-size-large-desktop);
+  line-height: var(--bal-line-height-large-desktop);
 }
 
 
@@ -179,7 +179,7 @@ a.sbdocs-a:not(.button) {
 
 blockquote {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-small) !important;
+  font-size: var(--bal-text-size-small) !important;
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
@@ -191,8 +191,8 @@ blockquote {
 
 blockquote > p {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-desktop-small) !important;
-  line-height: var(--bal-line-height-desktop-small) !important;
+  font-size: var(--bal-text-size-small-desktop) !important;
+  line-height: var(--bal-line-height-small-desktop) !important;
 }
 
 /***************************************
@@ -394,7 +394,7 @@ a.sbdocs-a.text-decoration-none {
 
 .doc-table-pre code {
   padding: 2px;
-  font-size: var(--bal-size-small);
+  font-size: var(--bal-text-size-small);
   border-radius: var(--bal-radius-normal);
 }
 

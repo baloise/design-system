@@ -2,13 +2,24 @@
   "size": {
     "font": {
       "weight": {
-        "bold": { "value": "700", "keepFormat": true, "noFigmaImport": true },
+        "bold": {
+          "value": "700",
+          "keepFormat": true,
+          "noFigmaImport": true,
+          "comment": "Bold is used for headings, links and buttons."
+        },
         "regular": {
           "value": "400",
           "keepFormat": true,
-          "noFigmaImport": true
+          "noFigmaImport": true,
+          "comment": "Default width of paragraphs. Only available with the font BaloiseCreateText."
         },
-        "light": { "value": "300", "keepFormat": true, "noFigmaImport": true }
+        "light": {
+          "value": "300",
+          "keepFormat": true,
+          "noFigmaImport": true,
+          "comment": "Can be used for secondary headings. Only available with the font BaloiseCreateHeadline."
+        }
       }
     },
     "text": {
@@ -165,8 +176,18 @@
         }
       },
       "line-height": {
-        "title": { "value": "1.3", "keepFormat": true, "noFigmaImport": true },
-        "text": { "value": "1.5", "keepFormat": true, "noFigmaImport": true }
+        "title": {
+          "value": "1.3",
+          "keepFormat": true,
+          "noFigmaImport": true,
+          "comment": "Standard line-height for the headings."
+        },
+        "text": {
+          "value": "1.5",
+          "keepFormat": true,
+          "noFigmaImport": true,
+          "comment": "Default line height for all text elements."
+        }
       }
     }
   }

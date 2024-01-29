@@ -8,7 +8,12 @@ export const CssTypographyColors = () => (
   <CssUtilitiesTable
     list={json}
     search="color"
-    example={item => <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>}
+    example={item => {
+      if (item.class.includes('inverted') || item.class.includes('white')) {
+        return <div className={`${item.class} bg-primary p-small font-weight-bold text-medium`}>Aa</div>
+      }
+      return <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>
+    }}
   />
 )
 
@@ -20,33 +25,13 @@ export const CssTypographyFamily = () => (
   />
 )
 
-export const CssTypographyTextAlign = () => (
-  <CssUtilitiesTable
-    list={json}
-    search="text-align"
-  />
-)
+export const CssTypographyTextAlign = () => <CssUtilitiesTable list={json} search="text-align" />
 
-export const CssTypographyTextTransform = () => (
-  <CssUtilitiesTable
-    list={json}
-    search="text-transform"
-  />
-)
+export const CssTypographyTextTransform = () => <CssUtilitiesTable list={json} search="text-transform" />
 
-export const CssTypographyWeight = () => (
-  <CssUtilitiesTable
-    list={json}
-    search="font-weight"
-  />
-)
+export const CssTypographyWeight = () => <CssUtilitiesTable list={json} search="font-weight" />
 
-export const CssTypographyWhiteSpace = () => (
-  <CssUtilitiesTable
-    list={json}
-    search="white-space"
-  />
-)
+export const CssTypographyWhiteSpace = () => <CssUtilitiesTable list={json} search="white-space" />
 
 export const CssTypographySize = ({}) => {
   return CssTable({

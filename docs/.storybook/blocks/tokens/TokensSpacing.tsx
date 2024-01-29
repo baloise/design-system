@@ -4,8 +4,6 @@ import { Clipboard } from '../Clipboard'
 
 export const TokensSpacing = ({ overview }) => {
   const list = tokens.size.space
-  const listTablet = tokens.size.space.tablet
-  const listDesktop = tokens.size.space.desktop
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -17,12 +15,11 @@ export const TokensSpacing = ({ overview }) => {
       </thead>
 
       {Object.keys(list)
-        .filter(key => list[key].value)
+        .filter(key => list[key].mobile.value)
         .map(key => {
-          const item = list[key]
-          const itemTablet = listTablet[key]
-          const itemDesktop = listDesktop[key]
-
+          const item = list[key].mobile
+          const itemTablet = list[key].tablet
+          const itemDesktop = list[key].desktop
           return (
             <tbody key={key}>
               <tr>

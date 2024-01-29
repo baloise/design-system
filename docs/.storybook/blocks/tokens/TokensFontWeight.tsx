@@ -3,7 +3,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 import { Clipboard } from '../Clipboard'
 
 export const TokensFontWeight = ({ overview }) => {
-  const list = tokens.size.text.weight
+  const list = tokens.size.font.weight
 
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

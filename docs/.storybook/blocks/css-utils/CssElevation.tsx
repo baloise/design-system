@@ -14,7 +14,12 @@ export const CssElevationShadow = () => (
   <CssUtilitiesTable
     list={json}
     search={['box-shadow', 'text-shadow']}
-    example={item => <div className={`bg-green ${item.class} p-small`}></div>}
+    example={item => {
+      if (item.property === 'box-shadow') {
+        return <div className={`bg-green ${item.class} p-small`}></div>
+      }
+      console.log(item)
+      return <div className={`font-weight-bold text-large ${item.class} px-small`}>Aa</div>
+    }}
   />
 )
-

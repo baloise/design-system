@@ -1,7 +1,7 @@
 {
   "color": {
     "border": {
-      "default": { "value": "{color.base.grey.3}" },
+      "default": { "value": "{color.base.grey.3}", "comment": "Default border color" },
       "primary": { "value": "{color.base.primary.5}", "comment": "Use for focused or selected state." },
       "primary-light": {
         "value": "{color.base.primary.3}",
@@ -9,7 +9,7 @@
       },
 
       "grey-light": { "value": "{color.base.grey.2}", "comment": "Default input color or can be use for a divider" },
-      "grey": { "value": "{color.base.grey.3}" },
+      "grey": { "value": "{color.base.grey.3}", "comment": "Default border color" },
       "grey-dark": { "value": "{color.base.grey.4}", "comment": "Use for disabled state." },
 
       "white": { "value": "{color.base.white}", "comment": "Default color on dark backgrounds." },

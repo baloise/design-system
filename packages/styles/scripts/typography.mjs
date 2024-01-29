@@ -125,7 +125,7 @@ const generateTextAlign = () => {
       'text-align-center': 'center',
       'text-align-left': 'left',
       'text-align-right': 'right',
-      'text-align-justified': 'justified',
+      'text-align-justify': 'justify',
     },
   })
 }

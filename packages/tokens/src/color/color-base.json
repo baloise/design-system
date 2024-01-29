@@ -1,8 +1,6 @@
 {
   "color": {
     "base": {
-      "white": { "value": "#FFFFFF" },
-      "black": { "value": "#000000", "noFigmaImport": true },
       "primary": {
         "1": { "value": "#e5e7f0" },
         "2": { "value": "#b3b6d4" },
@@ -11,6 +9,7 @@
         "5": { "value": "#000d6e" },
         "6": { "value": "#000739" }
       },
+      "white": { "value": "#FFFFFF" },
       "green": {
         "1": { "value": "#e9fbf7" },
         "2": { "value": "#cbf2ec" },
@@ -51,6 +50,7 @@
         "5": { "value": "#747474" },
         "6": { "value": "#313131" }
       },
+      "black": { "value": "#000000", "noFigmaImport": true },
       "light-blue": {
         "1": { "value": "#e5f1fe" },
         "2": { "value": "#a7d1fa" },

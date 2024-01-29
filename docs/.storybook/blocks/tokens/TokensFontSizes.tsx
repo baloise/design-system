@@ -22,7 +22,7 @@ export const TokensFontSize = ({ overview }) => {
           <tbody key={key}>
             <tr>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <Clipboard label={`bal-size-${key}`} value={`var(--bal-size-${key})`} />
+                <Clipboard label={`bal-size-${key}`} value={`var(--bal-text-size-${key})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
