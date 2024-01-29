@@ -5,9 +5,9 @@ describe('bal-pagination', () => {
     beforeEach(() => cy.platform('desktop'))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('pagination-basic-desktop')
-      cy.getByTestId('small').compareSnapshot('pagination-small-desktop')
-      cy.getByTestId('small-with-dots').compareSnapshot('pagination-small-with-dots-desktop')
+      cy.getByTestId('basic').testVisual('pagination-basic-desktop')
+      cy.getByTestId('small').testVisual('pagination-small-desktop')
+      cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-desktop')
     })
   })
 
@@ -15,9 +15,9 @@ describe('bal-pagination', () => {
     beforeEach(() => cy.platform('tablet'))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('pagination-basic-tablet')
-      cy.getByTestId('small').compareSnapshot('pagination-small-tablet')
-      cy.getByTestId('small-with-dots').compareSnapshot('pagination-small-with-dots-tablet')
+      cy.getByTestId('basic').testVisual('pagination-basic-tablet')
+      cy.getByTestId('small').testVisual('pagination-small-tablet')
+      cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-tablet')
     })
   })
 
@@ -25,9 +25,9 @@ describe('bal-pagination', () => {
     beforeEach(() => cy.platform('mobile').wait(100))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('pagination-basic-mobile')
-      cy.getByTestId('small').compareSnapshot('pagination-small-mobile')
-      cy.getByTestId('small-with-dots').compareSnapshot('pagination-small-with-dots-mobile')
+      cy.getByTestId('basic').testVisual('pagination-basic-mobile')
+      cy.getByTestId('small').testVisual('pagination-small-mobile')
+      cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-mobile')
     })
   })
 })

@@ -18,16 +18,16 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-top`, 0.2)
+        cy.testVisual(`navigation-desktop-${platform}-closed-top`, 0.2)
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-bottom`, 0.2)
+        cy.testVisual(`navigation-desktop-${platform}-closed-bottom`, 0.2)
       })
       it('open menu', () => {
         cy.contains('Versichern').click()
         cy.wait(400)
-        cy.compareSnapshot(`navigation-desktop-${platform}-open`, 0.2)
+        cy.testVisual(`navigation-desktop-${platform}-open`, 0.2)
       })
     })
   }
@@ -39,16 +39,16 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, 0.2)
+        cy.testVisual(`navigation-touch-${platform}-closed-top`, 0.2)
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, 0.2)
+        cy.testVisual(`navigation-touch-${platform}-closed-bottom`, 0.2)
       })
       it('open menu', () => {
         cy.scrollTo('top')
         cy.getByTestId('navigation-burger').click()
-        cy.compareSnapshot(`navigation-touch-${platform}-open`, 0.2)
+        cy.testVisual(`navigation-touch-${platform}-open`, 0.2)
       })
     })
   }
@@ -68,7 +68,7 @@ describe('bal-navigation-colors', () => {
       it('open menu', () => {
         cy.contains('Versichern').click()
         cy.wait(400)
-        cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, 0.2)
+        cy.testVisual(`navigation-colors-desktop-${platform}-open`, 0.2)
       })
     })
   }

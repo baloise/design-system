@@ -7,10 +7,10 @@ describe('bal-progress-bar', () => {
   )
 
   it('basic component', () => {
-    cy.getByTestId('basic').compareSnapshot('progress-bar-desktop')
+    cy.getByTestId('basic').testVisual('progress-bar-desktop')
   })
 
   it('component variants', () => {
-    cy.compareSnapshot('progress-bar-variants-desktop')
+    cy.testVisual('progress-bar-variants-desktop')
   })
 })

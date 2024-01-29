@@ -3,12 +3,12 @@ describe('bal-table', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('table-basic-desktop')
+    cy.getByTestId('basic').testVisual('table-basic-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('table-basic-tablet')
+    cy.getByTestId('basic').testVisual('table-basic-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('table-basic-mobile')
+    cy.getByTestId('basic').testVisual('table-basic-mobile')
   })
 })
