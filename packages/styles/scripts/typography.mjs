@@ -3,7 +3,7 @@ import * as utils from './utils.mjs'
 export const generateTypography = async () => {
   const textColors = await generateTextColors()
   const fontFamily = await generateFontFamily()
-  const fontFamilyLineHeight = await generateLineHeightFontFamily()
+  // const fontFamilyLineHeight = await generateLineHeightFontFamily()
   const fontSize = await generateFontSize()
   const textAlign = generateTextAlign()
   const textTransform = generateTextTransform()
@@ -18,7 +18,7 @@ export const generateTypography = async () => {
       docs: [
         textColors.docs,
         fontFamily.docs,
-        fontFamilyLineHeight.rules,
+        // fontFamilyLineHeight.rules,
         fontSize.rules,
         fontSize.rulesTablet,
         fontSize.rulesDesktop,
@@ -32,7 +32,7 @@ export const generateTypography = async () => {
       rules: [
         textColors.rules,
         fontFamily.rules,
-        fontFamilyLineHeight.rules,
+        // fontFamilyLineHeight.rules,
         fontSize.rules,
         fontSize.rulesTablet,
         fontSize.rulesDesktop,
@@ -56,17 +56,17 @@ const generateLineHeight = async () => {
   })
 }
 
-const generateLineHeightFontFamily = async () => {
-  return utils.staticClass({
-    property: 'line-height',
-    responsive: false,
-    important: false,
-    values: {
-      'font-family-title': 'var(--bal-text-line-height-title)',
-      'font-family-text': 'var(--bal-text-line-height-text)',
-    },
-  })
-}
+// const generateLineHeightFontFamily = async () => {
+//   return utils.staticClass({
+//     property: 'line-height',
+//     responsive: false,
+//     important: false,
+//     values: {
+//       'font-family-title': 'var(--bal-text-line-height-title)',
+//       'font-family-text': 'var(--bal-text-line-height-text)',
+//     },
+//   })
+// }
 
 const generateTextOverflow = async () => {
   return utils.staticClass({
