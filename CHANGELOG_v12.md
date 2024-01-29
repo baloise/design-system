@@ -53,7 +53,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://design.baloise.
 
 ## [11.0.17](https://github.com/baloise/design-system/compare/v11.0.16...v11.0.17) (2022-12-01)
 
-
 ### Bug Fixes
 
 * **select:** remote do not validate and return input value on blur ([5618faa](https://github.com/baloise/design-system/commit/5618faa7c8f6e7cfdc6fca7ae7796dbe82333bcb))
