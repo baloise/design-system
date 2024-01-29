@@ -219,17 +219,15 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const hasBasicNavigationButtons = this.interface === '' || (isSmall && this.totalPages <= 5)
 
     const SmallWithText: FunctionalComponent = () => (
-      <bal-text
-        space="none"
+      <span
         class={{
           ...elList.class(),
           ...elList.modifier(`context-${this.interface}`).class(),
         }}
-        color="blue"
       >
-        <span class="has-text-weight-bold">{this._value}</span>
+        <span>{this._value}</span>
         {' / ' + this.totalPages}
-      </bal-text>
+      </span>
     )
 
     const PaginationTablet: FunctionalComponent = () => (
