@@ -1,5 +1,19 @@
 # Changelog
 
+## 15.2.2
+
+### Patch Changes
+
+- **field-hint**: Ensure proper alignment of field hint by adjusting its position to the end of the label text. ( [#1229](https://github.com/baloise/design-system/pull/1229))
+
+- **styles**: Decouple components from css utility classes ( [#1304](https://github.com/baloise/design-system/pull/1304))
+
+- **deps**: Update stencil to 4.11.0 ( [#1307](https://github.com/baloise/design-system/pull/1307))
+
+- **vue**: change location of stencil components ( [#1310](https://github.com/baloise/design-system/pull/1310))
+
+- **date**: due to an android keyboard bug the input mode is switched to decimal. ( [#1312](https://github.com/baloise/design-system/pull/1312))
+
 ## 15.2.1
 
 ### Patch Changes
@@ -90,13 +104,13 @@
   **app.config.ts**
 
   ```ts
-  import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+  import { ApplicationConfig, importProvidersFrom } from "@angular/core";
 
-  import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
+  import { provideBaloiseDesignSystem } from "@baloise/design-system-components-angular/standalone";
 
   export const appConfig: ApplicationConfig = {
     providers: [provideBaloiseDesignSystem()],
-  }
+  };
   ```
 
   In each app component, import the necessary Baloise Design System components or a bundled set.
@@ -104,17 +118,20 @@
   **app.component.ts**
 
   ```ts
-  import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
-  import { CommonModule } from '@angular/common'
-  import { BalApp, BalButton } from '@baloise/design-system-components-angular/standalone'
+  import { CUSTOM_ELEMENTS_SCHEMA, Component } from "@angular/core";
+  import { CommonModule } from "@angular/common";
+  import {
+    BalApp,
+    BalButton,
+  } from "@baloise/design-system-components-angular/standalone";
 
   export interface UpdateControl {
-    name: string
-    value: any
+    name: string;
+    value: any;
   }
 
   @Component({
-    selector: 'app-root',
+    selector: "app-root",
     standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [CommonModule, BalApp, BalButton],
