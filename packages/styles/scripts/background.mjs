@@ -2,16 +2,32 @@ import * as utils from './utils.mjs'
 
 export const generateBackgroundColors = async () => {
   const tokens = await utils.getTokens({ token: 'color.background' })
-  const props = utils.toProps({ tokens, prefix: 'bg', replace: 'color-background' })
+  const props = utils.toProps({ tokens, prefix: 'bg', replace: 'color-background-' })
+
+  const tokensAlias = await utils.getTokens({ token: 'color.alias' })
+  const propsAlias = utils.toProps({ tokens: tokensAlias, prefix: 'bg', replace: 'color' })
 
   const tokensBase = await utils.getTokens({ token: 'color.base' })
   const propsBase = utils.toProps({ tokens: tokensBase, prefix: 'bg', replace: 'color' })
+
+  // merge colors
+  for (const key in propsAlias) {
+    if (!Object.keys(props).includes(key)) {
+      props[key] = propsAlias[key]
+    }
+  }
+
+  // merge colors
+  for (const key in propsBase) {
+    if (!Object.keys(props).includes(key)) {
+      props[key] = propsBase[key]
+    }
+  }
 
   const docs = utils.jsonClass({
     property: 'background',
     values: {
       ...props,
-      ...propsBase,
       ['bg-transparent']: 'transparent',
     },
   })
@@ -20,7 +36,6 @@ export const generateBackgroundColors = async () => {
     property: 'background',
     values: {
       ...props,
-      ...propsBase,
       ['bg-transparent']: 'transparent',
     },
     important: true,

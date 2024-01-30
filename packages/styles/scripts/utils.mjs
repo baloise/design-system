@@ -149,12 +149,12 @@ export const toCssVarName = (tokenName, token) => {
 }
 
 export const toCssVar = token => {
-  const originalValue = token.original.value
+  // const originalValue = token.original.value
 
-  if (originalValue.startsWith('{')) {
-    const formattedOriginalValue = originalValue.slice(1, -1)
-    return `var(--${toCssVarName(`bal-${formattedOriginalValue.split('.').join('-')}`, token)})`
-  }
+  // if (originalValue.startsWith('{')) {
+  //   const formattedOriginalValue = originalValue.slice(1, -1)
+  //   return `var(--${toCssVarName(`bal-${formattedOriginalValue.split('.').join('-')}`, token)})`
+  // }
 
   return `var(--${toCssVarName(token.name, token)})`
 }

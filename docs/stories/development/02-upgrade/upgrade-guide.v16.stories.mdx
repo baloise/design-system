@@ -33,7 +33,7 @@ The objective of this breaking change is to standardize the design tokens, facil
 Figma and others. With the introduction of these new design tokens, we can automatically generate CSS utility classes.
 This enhancement extends functionality, particularly in responsive design and pseudo-states.
 
-The renaming (or removing of prefixes like `is-*` or `has-*`) of the classes should improve the readability too.
+1. The **RENAMING** (or removing of prefixes like `is-*` or `has-*`) of the classes should **improve the readability** too.
 
 <DiffSource
   code={`- has-shadow-normal
@@ -44,9 +44,6 @@ The renaming (or removing of prefixes like `is-*` or `has-*`) of the classes sho
 // or
 - columns
 + grid
-// or
-- pt-large-desktop
-+ desktop:pt-large
 `}
 />
 
@@ -58,6 +55,42 @@ Therefore, the new class names are closer / identical with the css values.
   text-align: center;
 }
 ```
+
+2. Advanced and improved **functionality** with **resposiveness** and **pseudo-states**.
+
+<DiffSource
+  code={`// clear new syntax
+- pt-large-desktop
++ desktop:pt-large
+//
+// pseudo-states
++ hover:bg-green-2
++ active:bg-green-3`}
+/>
+
+3. Some css utility classes get **auto generated** from the **design tokens**.
+
+```json
+{
+  "color": {
+    "background": {
+      "primary": {
+        "value": "{color.base.primary.5}"
+      }
+    }
+  }
+}
+```
+
+This will be generated into:
+
+```css
+.bg-primary {
+  background: var(--bal-color-background-primary) !important;
+}
+```
+
+---
 
 For this specific migration a new CLI was created to help upgrading to the new `styles` package.
 
