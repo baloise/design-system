@@ -3,9 +3,9 @@ describe('bal-date-calendar', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('default-date').compareSnapshot('default-date-desktop')
-    cy.getByTestId('value').compareSnapshot('value-desktop')
-    cy.getByTestId('min-and-max').compareSnapshot('min-and-max-desktop')
-    cy.getByTestId('year').compareSnapshot('year-desktop')
+    cy.getByTestId('default-date').testVisual('default-date-desktop')
+    cy.getByTestId('value').testVisual('value-desktop')
+    cy.getByTestId('min-and-max').testVisual('min-and-max-desktop')
+    cy.getByTestId('year').testVisual('year-desktop')
   })
 })

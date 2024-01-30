@@ -5,23 +5,23 @@ describe('bal-notification', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('notification-desktop')
+    cy.getByTestId('basic').testVisual('notification-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('notification-tablet')
+    cy.getByTestId('basic').testVisual('notification-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('notification-mobile')
+    cy.getByTestId('basic').testVisual('notification-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('notification-variants-desktop')
+    cy.testVisual('notification-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('notification-variants-tablet')
+    cy.testVisual('notification-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('notification-variants-mobile')
+    cy.testVisual('notification-variants-mobile')
   })
 })

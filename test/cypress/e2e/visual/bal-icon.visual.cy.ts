@@ -3,11 +3,11 @@ describe('bal-icon', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('icon-desktop')
+    cy.getByTestId('basic').testVisual('icon-desktop')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('icon-variants-desktop')
+    cy.testVisual('icon-variants-desktop')
   })
 })

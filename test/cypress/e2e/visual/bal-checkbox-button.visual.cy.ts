@@ -12,9 +12,9 @@ describe('bal-checkbox-button', () => {
     )
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot(`checkbox-button-basic-${platform}`)
-      cy.getByTestId('grid').compareSnapshot(`checkbox-button-grid-${platform}`)
-      cy.getByTestId('colors').compareSnapshot(`checkbox-button-colors-${platform}`)
+      cy.getByTestId('basic').testVisual(`checkbox-button-basic-${platform}`)
+      cy.getByTestId('grid').testVisual(`checkbox-button-grid-${platform}`)
+      cy.getByTestId('colors').testVisual(`checkbox-button-colors-${platform}`)
     })
   }
 })

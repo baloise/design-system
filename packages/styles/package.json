@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-styles",
-  "version": "15.2.1",
+  "version": "15.2.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
     "src/"
   ],
   "dependencies": {
-    "@baloise/design-system-fonts": "15.2.1",
-    "@baloise/design-system-tokens": "15.2.1",
+    "@baloise/design-system-fonts": "15.2.2",
+    "@baloise/design-system-tokens": "15.2.2",
     "cheerio": "1.0.0-rc.12",
     "prompts": "2.4.2",
     "replace-in-file": "7.0.2"

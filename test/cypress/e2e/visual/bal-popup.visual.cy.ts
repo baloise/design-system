@@ -1,9 +1,9 @@
 describe('bal-popup', () => {
   const errorThreshold = 0.3
   function testPopup(name: string, platform: 'mobile' | 'desktop' = 'desktop') {
-    cy.wait(400).compareSnapshot(`popup-${name}-${platform}`, errorThreshold)
+    cy.wait(400).testVisual(`popup-${name}-${platform}`, errorThreshold)
     cy.getByTestId(`${name}-trigger`).click()
-    cy.wait(400).compareSnapshot(`popup-${name}-${platform}-open`, errorThreshold)
+    cy.wait(400).testVisual(`popup-${name}-${platform}-open`, errorThreshold)
     cy.getByTestId(`${name}-trigger`).click()
   }
 
@@ -30,14 +30,14 @@ describe('bal-popup', () => {
     })
 
     it('variant property mobile', () => {
-      cy.compareSnapshot(`popup-fullscreen-mobile`, errorThreshold)
+      cy.testVisual(`popup-fullscreen-mobile`, errorThreshold)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.compareSnapshot(`popup-fullscreen-mobile-open`, errorThreshold)
+      cy.testVisual(`popup-fullscreen-mobile-open`, errorThreshold)
       cy.get('body').type('{esc}')
 
-      cy.compareSnapshot(`popup-drawer-mobile`, errorThreshold)
+      cy.testVisual(`popup-drawer-mobile`, errorThreshold)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.compareSnapshot(`popup-drawer-mobile-open`, errorThreshold)
+      cy.testVisual(`popup-drawer-mobile-open`, errorThreshold)
       cy.get('body').type('{esc}')
     })
   })
@@ -65,14 +65,14 @@ describe('bal-popup', () => {
     })
 
     it('variant property desktop', () => {
-      cy.wait(400).compareSnapshot(`popup-fullscreen-desktop`, errorThreshold)
+      cy.wait(400).testVisual(`popup-fullscreen-desktop`, errorThreshold)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.wait(400).compareSnapshot(`popup-fullscreen-desktop-open`, errorThreshold)
+      cy.wait(400).testVisual(`popup-fullscreen-desktop-open`, errorThreshold)
       cy.get('body').type('{esc}')
 
-      cy.wait(400).compareSnapshot(`popup-drawer-desktop`, errorThreshold)
+      cy.wait(400).testVisual(`popup-drawer-desktop`, errorThreshold)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.wait(400).compareSnapshot(`popup-drawer-desktop-open`, errorThreshold)
+      cy.wait(400).testVisual(`popup-drawer-desktop-open`, errorThreshold)
       cy.get('body').type('{esc}')
     })
   })
