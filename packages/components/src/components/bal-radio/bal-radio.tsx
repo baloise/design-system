@@ -416,7 +416,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     return (
       <Host
-        role="radio"
+        // role="radio"
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
