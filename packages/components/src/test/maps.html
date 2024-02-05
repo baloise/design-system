@@ -1,0 +1,75 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      #map {
+        height: 100%;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      var exports = {}
+    </script>
+    <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
+    <script module src="/assets/maps.js"></script>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <script>
+      const position = { lat: -25.344, lng: 131.031 }
+
+      const mapOptions = {
+        mapId: 'DEMO_MAP_ID',
+        center: position,
+        zoom: 4,
+        styles: exports.balMapTypeStyles,
+      }
+
+      const loader = new google.maps.plugins.loader.Loader({
+        apiKey: '--your-api-key--',
+        version: 'weekly',
+        libraries: ['places'],
+      })
+
+      let map
+      loader
+        .importLibrary('maps')
+        .then(({ Map }) => {
+          map = new Map(document.getElementById('map'), mapOptions)
+
+          loader
+            .importLibrary('marker')
+            .then(({ AdvancedMarkerElement, Marker }) => {
+              // Legacy
+              new Marker({
+                map,
+                position: { lat: -33.8688, lng: 151.2093 },
+                title: 'Sydney',
+                icon: {
+                  url: exports.balMapMarkerDefault,
+                },
+              })
+
+              const parser = new DOMParser()
+              const pinSvgString = exports.balMapMarkerDefault.replace('data:image/svg+xml;utf-8, ', '')
+              const pinSvg = parser.parseFromString(pinSvgString, 'image/svg+xml').documentElement
+              new AdvancedMarkerElement({
+                map,
+                position,
+                title: 'Uluru',
+                content: pinSvg,
+              })
+            })
+        })
+    </script>
+  </body>
+</html>

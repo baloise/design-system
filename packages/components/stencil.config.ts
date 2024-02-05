@@ -93,6 +93,10 @@ export const config: Config = {
           src: '../../css/css/theme-compact.css',
           dest: 'assets/theme-compact.css',
         },
+        {
+          src: '../../maps/dist/index.js',
+          dest: 'assets/maps.js',
+        },
         { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
