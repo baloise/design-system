@@ -13,7 +13,7 @@ describe('bal-nav - touch', () => {
       }
 
       beforeEach(() => {
-        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
+        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('closed menu on top', () => {
@@ -22,14 +22,18 @@ describe('bal-nav - touch', () => {
 
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.wait(400)
+        cy.waitForBrowser()
         cy.testVisual(`nav-touch-${platform}-closed-bottom`, visualOptions)
       })
 
       it('open menu', () => {
         cy.scrollTo('top')
-        cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click()
-        cy.wait(400)
+        cy.getByTestId('basic')
+          .find('.bal-nav-meta-bar')
+          .find('bal-stack > bal-button')
+          .eq(1)
+          .click()
+          .waitForComponents()
         cy.testVisual(`nav-touch-${platform}-open`, visualOptions)
       })
     })

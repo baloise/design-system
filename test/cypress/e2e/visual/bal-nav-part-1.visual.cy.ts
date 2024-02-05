@@ -14,7 +14,7 @@ describe('bal-nav - desktop', () => {
       }
 
       beforeEach(() => {
-        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
+        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('closed menu on top', () => {
@@ -33,7 +33,7 @@ describe('bal-nav - desktop', () => {
           .eq(0)
           .find('button')
           .click()
-        cy.wait(400)
+          .waitForComponents()
         cy.testVisual(`nav-desktop-${platform}-open`, visualOptions)
       })
 
@@ -44,13 +44,12 @@ describe('bal-nav - desktop', () => {
           .eq(1)
           .find('button')
           .click()
-        cy.wait(400)
+          .waitForComponents()
         cy.testVisual(`nav-desktop-${platform}-open-menu-second-tab`, visualOptions)
       })
 
       it('open search popoup', () => {
-        cy.getByTestId('basic').find('#bal-nav__meta-buttons').eq(0).click()
-        cy.wait(400)
+        cy.getByTestId('basic').find('#bal-nav__meta-buttons').eq(0).click().waitForComponents()
         cy.testVisual(`nav-desktop-${platform}-open-search-popup`, visualOptions)
       })
     })
