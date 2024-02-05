@@ -8,9 +8,9 @@ describe('bal-popup', () => {
       clip: balViewport[platform],
     }
     cy.testVisual(`popup-${name}-${platform}`, opt)
-    cy.getByTestId(`${name}-trigger`).click().waitForComponents()
+    cy.getByTestId(`${name}-trigger`).click().waitForComponents().wait(400)
     cy.testVisual(`popup-${name}-${platform}-open`, opt)
-    cy.getByTestId(`${name}-trigger`).click().waitForComponents()
+    cy.getByTestId(`${name}-trigger`).click().waitForComponents().wait(400)
   }
 
   context('mobile', () => {
@@ -42,12 +42,12 @@ describe('bal-popup', () => {
         clip: balViewport['mobile'],
       }
       cy.testVisual(`popup-fullscreen-mobile`, opt)
-      cy.getByTestId(`fullscreen-trigger`).click()
+      cy.getByTestId(`fullscreen-trigger`).click().waitForComponents()
       cy.testVisual(`popup-fullscreen-mobile-open`, opt)
       cy.get('body').type('{esc}')
 
       cy.testVisual(`popup-drawer-mobile`, opt)
-      cy.getByTestId(`drawer-trigger`).click()
+      cy.getByTestId(`drawer-trigger`).click().waitForComponents()
       cy.testVisual(`popup-drawer-mobile-open`, opt)
       cy.get('body').type('{esc}')
     })
