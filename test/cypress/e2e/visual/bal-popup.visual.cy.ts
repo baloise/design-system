@@ -82,12 +82,12 @@ describe('bal-popup', () => {
         clip: balViewport['desktop'],
       }
       cy.testVisual(`popup-fullscreen-desktop`, opt)
-      cy.getByTestId(`fullscreen-trigger`).click().waitForComponents()
+      cy.getByTestId(`fullscreen-trigger`).click().waitForComponents().wait(400)
       cy.testVisual(`popup-fullscreen-desktop-open`, opt)
       cy.get('body').type('{esc}')
 
       cy.testVisual(`popup-drawer-desktop`, opt)
-      cy.getByTestId(`drawer-trigger`).click().waitForComponents()
+      cy.getByTestId(`drawer-trigger`).click().waitForComponents().wait(400)
       cy.testVisual(`popup-drawer-desktop-open`, opt)
       cy.get('body').type('{esc}')
     })
