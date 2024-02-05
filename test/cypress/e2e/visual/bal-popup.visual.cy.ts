@@ -1,23 +1,21 @@
 import { Platforms, balViewport } from 'support/utils'
 
 describe('bal-popup', () => {
-  const errorThreshold = 0.3
-
   function testPopup(name: string, platform: Platforms = 'desktop') {
     const opt: any = {
       errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport[platform],
     }
-    cy.wait(400).testVisual(`popup-${name}-${platform}`, opt)
-    cy.getByTestId(`${name}-trigger`).click()
-    cy.wait(400).testVisual(`popup-${name}-${platform}-open`, opt)
-    cy.getByTestId(`${name}-trigger`).click()
+    cy.testVisual(`popup-${name}-${platform}`, opt)
+    cy.getByTestId(`${name}-trigger`).click().waitForComponents()
+    cy.testVisual(`popup-${name}-${platform}-open`, opt)
+    cy.getByTestId(`${name}-trigger`).click().waitForComponents()
   }
 
   context('mobile', () => {
     beforeEach(() => {
-      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem().wait(400)
+      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem()
     })
 
     it('basic component mobile', () => {
@@ -57,7 +55,7 @@ describe('bal-popup', () => {
 
   context('desktop', () => {
     beforeEach(() => {
-      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('desktop').waitForDesignSystem().wait(400)
+      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('desktop').waitForDesignSystem()
     })
 
     it('basic component desktop', () => {
@@ -83,14 +81,14 @@ describe('bal-popup', () => {
         capture: 'viewport',
         clip: balViewport['desktop'],
       }
-      cy.wait(400).testVisual(`popup-fullscreen-desktop`, opt)
-      cy.getByTestId(`fullscreen-trigger`).click()
-      cy.wait(400).testVisual(`popup-fullscreen-desktop-open`, opt)
+      cy.testVisual(`popup-fullscreen-desktop`, opt)
+      cy.getByTestId(`fullscreen-trigger`).click().waitForComponents()
+      cy.testVisual(`popup-fullscreen-desktop-open`, opt)
       cy.get('body').type('{esc}')
 
-      cy.wait(400).testVisual(`popup-drawer-desktop`, opt)
-      cy.getByTestId(`drawer-trigger`).click()
-      cy.wait(400).testVisual(`popup-drawer-desktop-open`, opt)
+      cy.testVisual(`popup-drawer-desktop`, opt)
+      cy.getByTestId(`drawer-trigger`).click().waitForComponents()
+      cy.testVisual(`popup-drawer-desktop-open`, opt)
       cy.get('body').type('{esc}')
     })
   })

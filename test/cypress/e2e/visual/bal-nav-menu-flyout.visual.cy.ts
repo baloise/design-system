@@ -5,7 +5,6 @@ describe('bal-nav-menu-flyout', () => {
     cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
       .platform('fullhd')
       .waitForDesignSystem()
-      .wait(32)
 
     cy.testVisual('menu-flyout-fullhd', {
       errorThreshold: 0.2,
@@ -13,21 +12,21 @@ describe('bal-nav-menu-flyout', () => {
       clip: balViewport['fullhd'],
     })
 
-    cy.platform('highDefinition').wait(32)
+    cy.platform('highDefinition')
     cy.testVisual('menu-flyout-highDefinition', {
       errorThreshold: 0.2,
       capture: 'viewport',
       clip: balViewport['highDefinition'],
     })
 
-    cy.platform('widescreen').wait(32)
+    cy.platform('widescreen')
     cy.testVisual('menu-flyout-widescreen', {
       errorThreshold: 0.2,
       capture: 'viewport',
       clip: balViewport['widescreen'],
     })
 
-    cy.platform('desktop').wait(32)
+    cy.platform('desktop')
     cy.testVisual('menu-flyout-desktop', {
       errorThreshold: 0.2,
       capture: 'viewport',
@@ -39,7 +38,6 @@ describe('bal-nav-menu-flyout', () => {
     cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
       .platform('tablet')
       .waitForDesignSystem()
-      .wait(400)
 
     cy.testVisual('menu-flyout-tablet', {
       errorThreshold: 0.2,
@@ -47,7 +45,7 @@ describe('bal-nav-menu-flyout', () => {
       clip: balViewport['tablet'],
     })
 
-    cy.platform('mobile').wait(400)
+    cy.platform('mobile')
     cy.testVisual('menu-flyout-mobile', {
       errorThreshold: 0.2,
       capture: 'viewport',
