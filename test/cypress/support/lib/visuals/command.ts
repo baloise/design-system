@@ -165,11 +165,8 @@ function takeScreenshot(
   let screenshotPath: string
   return (
     objToOperateOn
-      .then(() => {
-        const viewportWidth = Cypress.config('viewportWidth')
-        const viewportHeight = Cypress.config('viewportHeight')
-        debugger
-      })
+      .waitAfterFramePaint()
+      .waitAfterIdleCallback()
       .screenshot(name, {
         ...screenshotOptions,
         onAfterScreenshot(_el, props) {

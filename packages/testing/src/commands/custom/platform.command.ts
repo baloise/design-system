@@ -11,5 +11,8 @@ Cypress.Commands.add<any>('platform', platform => {
   const key: Platforms = (platform as Platforms) || 'desktop'
   const viewport = balViewport[key]
 
-  return cy.viewport(viewport.width, viewport.height, { log: false }).then(() => waitAfterFramePaint())
+  return cy
+    .viewport(viewport.width, viewport.height, { log: false })
+    .scrollTo('top')
+    .then(() => waitAfterFramePaint())
 })

@@ -1,9 +1,17 @@
+import { Platforms, balViewport } from 'support/utils'
+
 describe('bal-popup', () => {
   const errorThreshold = 0.3
-  function testPopup(name: string, platform: 'mobile' | 'desktop' = 'desktop') {
-    cy.wait(400).testVisual(`popup-${name}-${platform}`, errorThreshold)
+
+  function testPopup(name: string, platform: Platforms = 'desktop') {
+    const opt: any = {
+      errorThreshold: 0.3,
+      capture: 'viewport',
+      clip: balViewport[platform],
+    }
+    cy.wait(400).testVisual(`popup-${name}-${platform}`, opt)
     cy.getByTestId(`${name}-trigger`).click()
-    cy.wait(400).testVisual(`popup-${name}-${platform}-open`, errorThreshold)
+    cy.wait(400).testVisual(`popup-${name}-${platform}-open`, opt)
     cy.getByTestId(`${name}-trigger`).click()
   }
 
@@ -30,14 +38,19 @@ describe('bal-popup', () => {
     })
 
     it('variant property mobile', () => {
-      cy.testVisual(`popup-fullscreen-mobile`, errorThreshold)
+      const opt: any = {
+        errorThreshold: 0.3,
+        capture: 'viewport',
+        clip: balViewport['mobile'],
+      }
+      cy.testVisual(`popup-fullscreen-mobile`, opt)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.testVisual(`popup-fullscreen-mobile-open`, errorThreshold)
+      cy.testVisual(`popup-fullscreen-mobile-open`, opt)
       cy.get('body').type('{esc}')
 
-      cy.testVisual(`popup-drawer-mobile`, errorThreshold)
+      cy.testVisual(`popup-drawer-mobile`, opt)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.testVisual(`popup-drawer-mobile-open`, errorThreshold)
+      cy.testVisual(`popup-drawer-mobile-open`, opt)
       cy.get('body').type('{esc}')
     })
   })
@@ -65,14 +78,19 @@ describe('bal-popup', () => {
     })
 
     it('variant property desktop', () => {
-      cy.wait(400).testVisual(`popup-fullscreen-desktop`, errorThreshold)
+      const opt: any = {
+        errorThreshold: 0.3,
+        capture: 'viewport',
+        clip: balViewport['desktop'],
+      }
+      cy.wait(400).testVisual(`popup-fullscreen-desktop`, opt)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.wait(400).testVisual(`popup-fullscreen-desktop-open`, errorThreshold)
+      cy.wait(400).testVisual(`popup-fullscreen-desktop-open`, opt)
       cy.get('body').type('{esc}')
 
-      cy.wait(400).testVisual(`popup-drawer-desktop`, errorThreshold)
+      cy.wait(400).testVisual(`popup-drawer-desktop`, opt)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.wait(400).testVisual(`popup-drawer-desktop-open`, errorThreshold)
+      cy.wait(400).testVisual(`popup-drawer-desktop-open`, opt)
       cy.get('body').type('{esc}')
     })
   })

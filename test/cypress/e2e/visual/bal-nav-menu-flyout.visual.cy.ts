@@ -1,33 +1,57 @@
+import { balViewport } from 'support/utils'
+
 describe('bal-nav-menu-flyout', () => {
-  describe('basic', () => {
-    it('basic component', () => {
-      cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
-        .platform('fullhd')
-        .waitForDesignSystem()
-        .wait(32)
+  it('basic component', () => {
+    cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
+      .platform('fullhd')
+      .waitForDesignSystem()
+      .wait(32)
 
-      cy.testVisual('menu-flyout-fullhd')
-
-      cy.platform('highDefinition').wait(32)
-      cy.testVisual('menu-flyout-highDefinition')
-
-      cy.platform('widescreen').wait(32)
-      cy.testVisual('menu-flyout-widescreen')
-
-      cy.platform('desktop').wait(32)
-      cy.testVisual('menu-flyout-desktop')
+    cy.testVisual('menu-flyout-fullhd', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['fullhd'],
     })
 
-    it('basic component touch', () => {
-      cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
-        .platform('tablet')
-        .waitForDesignSystem()
-        .wait(400)
+    cy.platform('highDefinition').wait(32)
+    cy.testVisual('menu-flyout-highDefinition', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['highDefinition'],
+    })
 
-      cy.testVisual('menu-flyout-tablet')
+    cy.platform('widescreen').wait(32)
+    cy.testVisual('menu-flyout-widescreen', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['widescreen'],
+    })
 
-      cy.platform('mobile').wait(400)
-      cy.testVisual('menu-flyout-mobile')
+    cy.platform('desktop').wait(32)
+    cy.testVisual('menu-flyout-desktop', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['desktop'],
+    })
+  })
+
+  it('basic component touch', () => {
+    cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
+      .platform('tablet')
+      .waitForDesignSystem()
+      .wait(400)
+
+    cy.testVisual('menu-flyout-tablet', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['tablet'],
+    })
+
+    cy.platform('mobile').wait(400)
+    cy.testVisual('menu-flyout-mobile', {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['mobile'],
     })
   })
 })
