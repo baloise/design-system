@@ -14,6 +14,6 @@ Cypress.Commands.add<any>('platform', platform => {
   return cy
     .viewport(viewport.width, viewport.height, { log: false })
     .window()
-    .scrollTo('top')
+    .scrollTo('top', { ensureScrollable: false, log: false })
     .then(() => waitAfterFramePaint())
 })
