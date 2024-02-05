@@ -23,3 +23,12 @@ addCompareSnapshotCommand({
   capture: 'fullPage',
   errorThreshold: 0.15,
 })
+
+Cypress.Screenshot.defaults({
+  onBeforeScreenshot($el) {
+    $el.css('overflow', 'hidden')
+  },
+  onAfterScreenshot($el) {
+    $el.css('overflow', 'auto')
+  },
+})
