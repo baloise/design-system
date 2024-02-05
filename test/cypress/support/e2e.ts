@@ -26,9 +26,13 @@ addCompareSnapshotCommand({
 
 Cypress.Screenshot.defaults({
   onBeforeScreenshot($el) {
-    $el.css('overflow', 'hidden')
+    if ($el.is('html')) {
+      $el.css('overflow', 'hidden')
+    }
   },
   onAfterScreenshot($el) {
-    $el.css('overflow', 'auto')
+    if ($el.is('html')) {
+      $el.css('overflow', 'hidden scroll')
+    }
   },
 })
