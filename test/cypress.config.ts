@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress'
-import { configureVisualRegression } from 'cypress-visual-regression'
+import { configureVisualRegression } from './cypress/support/lib/visuals'
 import cypressSplit from 'cypress-split'
 
 export default defineConfig({
