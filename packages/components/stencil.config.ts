@@ -95,6 +95,10 @@ export const config: Config = {
         },
         { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system-old.css', warn: true },
         { src: '../../styles/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
+        {
+          src: '../../maps/dist/index.js',
+          dest: 'assets/maps.js',
+        },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
