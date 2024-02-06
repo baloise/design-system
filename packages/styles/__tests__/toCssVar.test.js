@@ -40,6 +40,6 @@ describe('toCssVar', () => {
         },
         path: ['opacity', 'overlay'],
       }),
-    ).toEqual('var(--bal-opacity-60)')
+    ).toEqual('var(--bal-opacity-overlay)')
   })
 })

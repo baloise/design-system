@@ -76,7 +76,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'color-primary': 'var(--bal-color-primary-5)' })
+    ).toEqual({ 'color-primary': 'var(--bal-color-primary)' })
   })
 
   test('should return a prefixed/alias key and value', () => {
@@ -102,7 +102,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'has-color-primary': 'var(--bal-color-primary-5)' })
+    ).toEqual({ 'has-color-primary': 'var(--bal-color-primary)' })
   })
 
   test('should return a nested key and value', () => {
