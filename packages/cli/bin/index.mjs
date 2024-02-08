@@ -981,8 +981,8 @@ const replacementsGrid = {
 }
 
 const replacementsBorder = {
-  from: [/has-border-light-blue/g, /has-border-primary-dark/g, /has-border/g, /has-radius/g],
-  to: ['border-primary-hovered', 'border-primary-pressed', 'border', 'radius'],
+  from: [/has-border-light-blue/g, /has-border-primary-dark/g, /has-border/g],
+  to: ['border-primary-hovered', 'border-primary-pressed', 'border'],
 }
 
 const replacementsColors = {
@@ -991,8 +991,8 @@ const replacementsColors = {
 }
 
 const replacementsCore = {
-  from: [/is-vertical-align/g, /is-clickable/g],
-  to: ['vertical-align', 'cursor-pointer'],
+  from: [/is-vertical-align/g, /is-clickable/g, /is-list/g],
+  to: ['vertical-align', 'cursor-pointer', 'list'],
 }
 
 const replacementsDisplay = {
@@ -1112,7 +1112,7 @@ const replacementsTypography = {
     /is-size/g,
   ],
   to: [
-    'text-weight',
+    'font-weight',
     'white-space-normal',
     'white-space-nowrap',
     'white-space-nowrap',
