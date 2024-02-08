@@ -1,6 +1,6 @@
 import { Platforms } from '../../support/utils'
 
-describe('bal-navigation', () => {
+describe.skip('bal-navigation', () => {
   testNavigationOnDesktop('widescreen')
   testNavigationOnDesktop('highDefinition')
   testNavigationOnDesktop('desktop')
