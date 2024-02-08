@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@baloise/design-system-styles": "15.2.3",
+    "@baloise/design-system-css": "15.2.3",
     "@baloise/design-system-fonts": "15.2.3",
     "@baloise/design-system-icons": "15.2.3",
     "@baloise/design-system-tokens": "15.2.3",

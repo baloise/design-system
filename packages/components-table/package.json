@@ -35,6 +35,7 @@
   "dependencies": {
     "@baloise/design-system-components": "15.2.3",
     "@baloise/design-system-styles": "15.2.3",
+    "@baloise/design-system-css": "15.2.3",
     "lodash.isnil": "~4.0.0"
   }
 }

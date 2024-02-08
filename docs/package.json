@@ -13,6 +13,7 @@
     "@baloise/design-system-brand-icons": "15.2.3",
     "@baloise/design-system-components": "15.2.3",
     "@baloise/design-system-styles": "15.2.3",
+    "@baloise/design-system-css": "15.2.3",
     "@baloise/design-system-icons": "15.2.3",
     "@baloise/design-system-tokens": "15.2.3",
     "lodash.kebabcase": "~4.1.1"
