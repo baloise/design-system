@@ -84,6 +84,7 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
 
     return (
       <Host
+        aria-hidden="true"
         class={{
           ...block.class(),
           ...block.modifier(`background-${this.background}`).class(),
