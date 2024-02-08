@@ -1087,7 +1087,7 @@ const replacementsRadius = {
 
 const replacementsShadow = {
   from: [/has-shadow/g, /has-text-shadow/g, /has-button-shadow/g],
-  to: ['shadow', 'text-shadow-normal', 'text-shadow-normal'],
+  to: ['shadow', 'text-shadow', 'text-shadow-normal'],
 }
 
 const replacementsSpacing = {
