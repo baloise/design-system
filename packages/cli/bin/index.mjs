@@ -1140,8 +1140,8 @@ const replacementsSizing = {
 
 const replacementsCSSVariablesColors = {
   from: [
-    /var\(--bal-color-border-light-blue\)/g,
     /var\(--bal-color-border-primary-dark\)/g,
+    /var\(--bal-color-border-light-blue\)/g,
     /var\(--bal-color-border-danger-dark\)/g,
     /var\(--bal-color-border-danger-darker\)/g,
     /var\(--bal-color-blue-1\)/g,
@@ -1152,10 +1152,16 @@ const replacementsCSSVariablesColors = {
     /var\(--bal-color-blue-6\)/g,
     /var\(--bal-color-blue\)/g,
     /var\(--bal-color-transparent\)/g,
+    /var\(--bal-color-text-light-blue\)/g,
+    /var\(--bal-color-text-light-blue-light\)/g,
+    /var\(--bal-color-text-info-light\)/g,
+    /var\(--bal-color-text-primary-dark\)/g,
+    /var\(--bal-color-text-danger-light\)/g,
+    /var\(--bal-color-text-danger-dark\)/g,
   ],
   to: [
-    'var(--bal-color-border-primary-hovered)',
     'var(--bal-color-border-primary-pressed)',
+    'var(--bal-color-border-primary-hovered)',
     'var(--bal-color-border-danger-hovered)',
     'var(--bal-color-border-danger-pressed)',
     'var(--bal-color-primary-1)',
@@ -1166,6 +1172,12 @@ const replacementsCSSVariablesColors = {
     'var(--bal-color-primary-6)',
     'var(--bal-color-primary)',
     'transparent',
+    'var(--bal-color-text-primary-hovered)',
+    'var(--bal-color-text-inverted-hovered)',
+    'var(--bal-color-text-inverted-pressed)',
+    'var(--bal-color-text-primary-pressed)',
+    'var(--bal-color-text-danger-hovered)',
+    'var(--bal-color-text-danger-pressed)',
   ],
 }
 
@@ -1174,7 +1186,7 @@ const replacementsCSSVariablesVarious = {
     /var\(--bal-border-width-none\)/g,
     /var\(--bal-container-max-width\)/g,
     /var\(--bal-weight-bold\)/g,
-    /var\(--bal-weight-regular:\)/g,
+    /var\(--bal-weight-regular\)/g,
     /var\(--bal-weight-light\)/g,
     /var\(--bal-radius-none\)/g,
     /var\(--bal-shadow-none\)/g,
@@ -1195,7 +1207,11 @@ const replacementsCSSVariablesVarious = {
 const replacementsCSSVariablesSpace = {
   from: [
     /var\(--bal-space-auto\)/g,
+    /var\(--bal-space-tablet-auto\)/g,
+    /var\(--bal-space-desktop-auto\)/g,
     /var\(--bal-space-none\)/g,
+    /var\(--bal-space-tablet-none\)/g,
+    /var\(--bal-space-desktop-none\)/g,
     /var\(--bal-space-tablet-xx-small\)/g,
     /var\(--bal-space-tablet-x-small\)/g,
     /var\(--bal-space-tablet-small\)/g,
@@ -1219,7 +1235,11 @@ const replacementsCSSVariablesSpace = {
   ],
   to: [
     'auto',
-    'none',
+    'auto',
+    'auto',
+    '0',
+    '0',
+    '0',
     'var(--bal-space-xx-small-tablet)',
     'var(--bal-space-x-small-tablet)',
     'var(--bal-space-small-tablet)',
