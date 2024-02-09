@@ -1,4 +1,4 @@
-import { Platforms } from '../../../src/types'
+import { Platforms, balViewport } from 'support/utils'
 
 describe('bal-nav - desktop', () => {
   testNavigationOnDesktop('widescreen')
@@ -7,17 +7,23 @@ describe('bal-nav - desktop', () => {
 
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
+      const visualOptions: any = {
+        errorThreshold: 0.2,
+        capture: 'viewport',
+        clip: balViewport[platform],
+      }
+
       beforeEach(() => {
-        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
+        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('closed menu on top', () => {
-        cy.testVisual(`nav-desktop-${platform}-closed-top`, 0.2)
+        cy.testVisual(`nav-desktop-${platform}-closed-top`, visualOptions)
       })
 
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.testVisual(`nav-desktop-${platform}-closed-bottom`, 0.2)
+        cy.testVisual(`nav-desktop-${platform}-closed-bottom`, visualOptions)
       })
 
       it('open menu', () => {
@@ -27,8 +33,8 @@ describe('bal-nav - desktop', () => {
           .eq(0)
           .find('button')
           .click()
-        cy.wait(400)
-        cy.testVisual(`nav-desktop-${platform}-open`, 0.2)
+          .waitForComponents()
+        cy.testVisual(`nav-desktop-${platform}-open`, visualOptions)
       })
 
       it('open menu second tab', () => {
@@ -38,14 +44,13 @@ describe('bal-nav - desktop', () => {
           .eq(1)
           .find('button')
           .click()
-        cy.wait(400)
-        cy.testVisual(`nav-desktop-${platform}-open-menu-second-tab`, 0.2)
+          .waitForComponents()
+        cy.testVisual(`nav-desktop-${platform}-open-menu-second-tab`, visualOptions)
       })
 
       it('open search popoup', () => {
-        cy.getByTestId('basic').find('#bal-nav__meta-buttons').eq(0).click()
-        cy.wait(400)
-        cy.testVisual(`nav-desktop-${platform}-open-search-popup`, 0.2)
+        cy.getByTestId('basic').find('#bal-nav__meta-buttons').eq(0).click().waitForComponents()
+        cy.testVisual(`nav-desktop-${platform}-open-search-popup`, visualOptions)
       })
     })
   }

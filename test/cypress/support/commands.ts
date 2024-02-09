@@ -73,10 +73,6 @@ declare global {
        * Wait until the browser goes in idle mode
        */
       waitAfterIdleCallback(): Chainable<Element>
-      /**
-       * Runs a visual test
-       */
-      testVisual(name: string, errorThreshold?: number): Chainable<Element>
     }
   }
 }
@@ -179,10 +175,3 @@ Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, att
     .wait(1, { log: false }) as any
 })
 
-Cypress.Commands.add('testVisual', { prevSubject: 'optional' }, (subject, name, errorThreshold = 0.15) => {
-  if (subject) {
-    cy.wrap(subject, { log: false }).compareSnapshot(name, errorThreshold)
-  } else {
-    cy.compareSnapshot(name, errorThreshold)
-  }
-})
