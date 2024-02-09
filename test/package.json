@@ -1,6 +1,6 @@
 {
   "name": "e2e-tests",
-  "version": "13.6.26",
+  "version": "13.6.27",
   "private": true,
   "description": "Cypress E2E Tests",
   "scripts": {
@@ -13,7 +13,7 @@
     "cy:visual:report": "reg-cli cypress/snapshots/actual cypress/snapshots/base/visual cypress/snapshots/diff -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
-    "@baloise/design-system-components": "15.2.2"
+    "@baloise/design-system-components": "15.2.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "5.0.3",
