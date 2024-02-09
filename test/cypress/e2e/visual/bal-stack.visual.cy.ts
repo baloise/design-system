@@ -4,10 +4,10 @@ describe('bal-stack', () => {
   )
 
   it('basic component', () => {
-    cy.getByTestId('basic').compareSnapshot('stack-basic')
-    cy.getByTestId('alignment').compareSnapshot('stack-alignment')
-    cy.getByTestId('direction').compareSnapshot('stack-direction')
-    cy.getByTestId('space').compareSnapshot('stack-space')
-    cy.getByTestId('margins').compareSnapshot('stack-margins')
+    cy.getByTestId('basic').testVisual('stack-basic')
+    cy.getByTestId('alignment').testVisual('stack-alignment')
+    cy.getByTestId('direction').testVisual('stack-direction')
+    cy.getByTestId('space').testVisual('stack-space')
+    cy.getByTestId('margins').testVisual('stack-margins')
   })
 })

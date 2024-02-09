@@ -3,23 +3,23 @@ describe('bal-shape', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('shape-desktop')
+    cy.getByTestId('basic').testVisual('shape-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('shape-tablet')
+    cy.getByTestId('basic').testVisual('shape-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('shape-mobile')
+    cy.getByTestId('basic').testVisual('shape-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('shape-variants-desktop')
+    cy.testVisual('shape-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('shape-variants-tablet')
+    cy.testVisual('shape-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('shape-variants-mobile')
+    cy.testVisual('shape-variants-mobile')
   })
 })

@@ -4,9 +4,9 @@ describe('bal-content', () => {
   )
 
   it('basic component', () => {
-    cy.getByTestId('basic').compareSnapshot('content-basic')
-    cy.getByTestId('alignment').compareSnapshot('content-alignment')
-    cy.getByTestId('direction').compareSnapshot('content-direction')
-    cy.getByTestId('space').compareSnapshot('content-space')
+    cy.getByTestId('basic').testVisual('content-basic')
+    cy.getByTestId('alignment').testVisual('content-alignment')
+    cy.getByTestId('direction').testVisual('content-direction')
+    cy.getByTestId('space').testVisual('content-space')
   })
 })

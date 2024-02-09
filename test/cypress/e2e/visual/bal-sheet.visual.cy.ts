@@ -3,12 +3,12 @@ describe('bal-sheet', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('sheet-basic-desktop')
+    cy.testVisual('sheet-basic-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('sheet-basic-tablet')
+    cy.testVisual('sheet-basic-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('sheet-basic-mobile')
+    cy.testVisual('sheet-basic-mobile')
   })
 })
