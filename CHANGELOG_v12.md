@@ -333,7 +333,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://design.baloise.
 ## 11.0.10 (2022-10-31)
 
 
-
 ## [11.0.12](https://github.com/baloise/design-system/compare/v11.0.11...v11.0.12) (2022-11-03)
 
 ### Bug Fixes
