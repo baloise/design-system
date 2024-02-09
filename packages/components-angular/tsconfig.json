@@ -13,8 +13,8 @@
       "@baloise/design-system-components": ["../components"],
       "@baloise/design-system-components-angular/common": ["common/src/index.ts"],
       "@baloise/design-system-components-angular/legacy": ["legacy/src/index.ts"],
-      "@baloise/design-system-components-angular/standalone": ["standalone/src/index.ts"],
-    },
+      "@baloise/design-system-components-angular/standalone": ["standalone/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
@@ -22,8 +22,8 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "compilationMode": "partial",
+    "compilationMode": "partial"
   },
   "exclude": ["node_modules", "src/schematics"],
-  "files": ["src/index.ts"],
+  "files": ["src/index.ts"]
 }
