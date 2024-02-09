@@ -17,9 +17,22 @@
 import './commands'
 
 import 'cypress-file-upload'
-import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
+import { addCompareSnapshotCommand } from './lib/visuals'
 
 addCompareSnapshotCommand({
   capture: 'fullPage',
   errorThreshold: 0.15,
+})
+
+Cypress.Screenshot.defaults({
+  onBeforeScreenshot($el) {
+    if ($el.is('html')) {
+      $el.css('overflow', 'hidden')
+    }
+  },
+  onAfterScreenshot($el) {
+    if ($el.is('html')) {
+      $el.css('overflow', 'hidden scroll')
+    }
+  },
 })
