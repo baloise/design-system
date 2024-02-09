@@ -174,3 +174,4 @@ Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, att
     .waitForComponents()
     .wait(1, { log: false }) as any
 })
+

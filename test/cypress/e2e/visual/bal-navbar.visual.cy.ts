@@ -15,14 +15,14 @@ describe('bal-navbar', () => {
       })
 
       it('basic component', () => {
-        cy.getByTestId('basic').compareSnapshot(`navbar-basic-${platform}`)
+        cy.getByTestId('basic').testVisual(`navbar-basic-${platform}`)
         if (platform !== 'desktop') {
           cy.getByTestId('basic').find('.bal-navbar__brand__burger').click().wait(100)
-          cy.compareSnapshot(`navbar-basic-opened-${platform}`)
+          cy.testVisual(`navbar-basic-opened-${platform}`)
           cy.getByTestId('basic').find('.bal-navbar__brand__burger').click().wait(100)
         }
-        cy.getByTestId('simple-light').compareSnapshot(`navbar-simple-light-${platform}`)
-        cy.getByTestId('container').compareSnapshot(`navbar-container-${platform}`)
+        cy.getByTestId('simple-light').testVisual(`navbar-simple-light-${platform}`)
+        cy.getByTestId('container').testVisual(`navbar-container-${platform}`)
       })
     })
   }

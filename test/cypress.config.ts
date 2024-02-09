@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress'
-import { configureVisualRegression } from 'cypress-visual-regression'
+import { configureVisualRegression } from './cypress/support/lib/visuals'
 import cypressSplit from 'cypress-split'
 
 export default defineConfig({
@@ -21,7 +21,7 @@ export default defineConfig({
         baseDirectory: 'cypress/snapshots/base/visual',
         diffDirectory: 'cypress/snapshots/diff',
         generateDiff: 'always',
-        failSilently: true,
+        failSilently: false,
       },
     },
     // We've imported your old cypress plugins here.

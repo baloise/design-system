@@ -3,23 +3,23 @@ describe('bal-toast', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('toast-basic')
+    cy.getByTestId('basic').testVisual('toast-basic')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('toast-basic-tablet')
+    cy.getByTestId('basic').testVisual('toast-basic-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('toast-basic-mobile')
+    cy.getByTestId('basic').testVisual('toast-basic-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('toast-variants')
+    cy.testVisual('toast-variants')
 
     cy.platform('tablet')
-    cy.compareSnapshot('toast-variants-tablet')
+    cy.testVisual('toast-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('toast-variants-mobile')
+    cy.testVisual('toast-variants-mobile')
   })
 })

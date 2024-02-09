@@ -12,32 +12,32 @@ describe('bal-select', () => {
       })
 
       it('basic component', () => {
-        cy.getByTestId('basic').compareSnapshot(`select-basic-${platform}`)
+        cy.getByTestId('basic').testVisual(`select-basic-${platform}`)
 
         cy.getByTestId('basic-input').click()
-        cy.compareSnapshot(`select-basic-open-${platform}`)
+        cy.testVisual(`select-basic-open-${platform}`)
 
         cy.getByTestId('basic-input').balSelectFindOptions().eq(1).click()
-        cy.getByTestId('basic').compareSnapshot(`select-basic-value-${platform}`)
+        cy.getByTestId('basic').testVisual(`select-basic-value-${platform}`)
 
         cy.getByTestId('basic-input').click()
-        cy.compareSnapshot(`select-basic-open-selected-${platform}`)
+        cy.testVisual(`select-basic-open-selected-${platform}`)
       })
 
       it('disabled component', () => {
-        cy.getByTestId('disabled').compareSnapshot(`select-disabled-${platform}`)
+        cy.getByTestId('disabled').testVisual(`select-disabled-${platform}`)
       })
 
       it('invalid component', () => {
-        cy.getByTestId('invalid').compareSnapshot(`select-invalid-${platform}`)
+        cy.getByTestId('invalid').testVisual(`select-invalid-${platform}`)
       })
 
       it('field component', () => {
-        cy.getByTestId('field').compareSnapshot(`select-field-${platform}`)
+        cy.getByTestId('field').testVisual(`select-field-${platform}`)
       })
 
       it('free-solo component', () => {
-        cy.getByTestId('free-solo').compareSnapshot(`select-free-solo-${platform}`)
+        cy.getByTestId('free-solo').testVisual(`select-free-solo-${platform}`)
       })
     })
   }
@@ -51,29 +51,29 @@ describe('bal-select', () => {
       })
 
       it('basic multiple component', () => {
-        cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-${platform}`)
+        cy.getByTestId('basic').testVisual(`select-multiple-basic-${platform}`)
 
         cy.getByTestId('basic-input').click()
-        cy.compareSnapshot(`select-multiple-basic-open-${platform}`)
+        cy.testVisual(`select-multiple-basic-open-${platform}`)
 
         cy.getByTestId('basic-input').balSelectFindOptions().eq(1).click()
         cy.getByTestId('basic-input').balSelectFindOptions().eq(2).click()
-        cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-value-${platform}`)
+        cy.getByTestId('basic').testVisual(`select-multiple-basic-value-${platform}`)
 
         cy.getByTestId('basic-input').click()
-        cy.compareSnapshot(`select-multiple-basic-open-selected-${platform}`)
+        cy.testVisual(`select-multiple-basic-open-selected-${platform}`)
       })
 
       it('disabled multiple component', () => {
-        cy.getByTestId('disabled').compareSnapshot(`select-multiple-disabled-${platform}`)
+        cy.getByTestId('disabled').testVisual(`select-multiple-disabled-${platform}`)
       })
 
       it('invalid multiple component', () => {
-        cy.getByTestId('invalid').compareSnapshot(`select-multiple-invalid-${platform}`)
+        cy.getByTestId('invalid').testVisual(`select-multiple-invalid-${platform}`)
       })
 
       it('field component', () => {
-        cy.getByTestId('field').compareSnapshot(`select-multiple-field-${platform}`)
+        cy.getByTestId('field').testVisual(`select-multiple-field-${platform}`)
       })
     })
   }

@@ -112,12 +112,12 @@ describe('bal-close', () => {
 
   // just compare the screenshot of the element with the attribute data-testid="basic"
   it('basic component', () => {
-    cy.getByTestId('basic').compareSnapshot('close-basic', 0.0)
+    cy.getByTestId('basic').testVisual('close-basic', 0.0)
   })
 
   // create screen of the whole page
   it('component variants', () => {
-    cy.compareSnapshot('close-variants', 0.0)
+    cy.testVisual('close-variants', 0.0)
   })
 })
 ```
@@ -132,13 +132,13 @@ describe('bal-close', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('close-basic', 0.0)
+    cy.getByTestId('basic').testVisual('close-basic', 0.0)
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('close-basic-tablet', 0.0)
+    cy.getByTestId('basic').testVisual('close-basic-tablet', 0.0)
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('close-basic-mobile', 0.0)
+    cy.getByTestId('basic').testVisual('close-basic-mobile', 0.0)
   })
 })
 ```

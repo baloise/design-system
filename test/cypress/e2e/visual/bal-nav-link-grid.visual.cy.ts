@@ -5,12 +5,12 @@ describe('bal-nav-link-grid', () => {
 
   it('basic component', () => {
     cy.platform('widescreen').wait(32)
-    cy.getByTestId('basic').compareSnapshot('basic-widescreen')
+    cy.getByTestId('basic').testVisual('basic-widescreen')
 
     cy.platform('desktop').wait(32)
-    cy.getByTestId('basic').compareSnapshot('basic-desktop')
+    cy.getByTestId('basic').testVisual('basic-desktop')
 
     cy.platform('mobile').wait(32)
-    cy.getByTestId('basic').compareSnapshot('basic-mobile')
+    cy.getByTestId('basic').testVisual('basic-mobile')
   })
 })
