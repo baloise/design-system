@@ -1,11 +1,58 @@
 import { areComponentsReady, log, waitAfterFramePaint, waitAfterIdleCallback, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
-  'waitForComponents',
+  'waitForBrowser',
   {
     prevSubject: 'optional',
   },
   (subject, options?: Partial<Cypress.Loggable>) => {
+    log('waitForBrowser', '', subject, options)
+    const o = wrapOptions(options)
+    return cy
+      .wrap(subject, o)
+      .then(() => waitAfterFramePaint())
+      .then(() => waitAfterIdleCallback())
+      .wait(300, o) // animation timeout
+      .wrap(subject, o) as any
+  },
+)
+
+Cypress.Commands.add(
+  'waitAfterIdleCallback',
+  {
+    prevSubject: 'optional',
+  },
+  (subject, options?: Partial<Cypress.Loggable>) => {
+    log('waitAfterIdleCallback', '', subject, options)
+    const o = wrapOptions(options)
+    return cy
+      .wrap(subject, o)
+      .then(() => waitAfterIdleCallback())
+      .wrap(subject, o) as any
+  },
+)
+
+Cypress.Commands.add(
+  'waitAfterFramePaint',
+  {
+    prevSubject: 'optional',
+  },
+  (subject, options?: Partial<Cypress.Loggable>) => {
+    log('waitAfterFramePaint', '', subject, options)
+    const o = wrapOptions(options)
+    return cy
+      .wrap(subject, o)
+      .then(() => waitAfterFramePaint())
+      .wrap(subject, o) as any
+  },
+)
+
+Cypress.Commands.add(
+  'waitForComponents',
+  {
+    prevSubject: 'optional',
+  },
+  (subject, options?: Partial<Cypress.Timeoutable & Cypress.Loggable>) => {
     cy.document({ log: false }).then(document => document.fonts.ready)
 
     log('waitForComponents', '', subject, options)
@@ -14,7 +61,7 @@ Cypress.Commands.add(
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
       .then(() => waitAfterFramePaint())
-      .then(() => waitAfterIdleCallback())
+      .then(() => waitAfterIdleCallback(o.timeout))
       .wrap(subject, o) as any
   },
 )

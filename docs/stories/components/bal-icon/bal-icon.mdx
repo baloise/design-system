@@ -180,10 +180,10 @@ When importing an SVG into your component you decrease the initial page load. So
 Import the icons form the `@baloise/design-system-icons` package and pass them with the BalConfig during the initialization.
 
 ```ts
-import { initializeBaloiseDesignSystem } from '@baloise/design-system-components'
+import { initialize } from '@baloise/design-system-components'
 import { balIconStarFull } from '@baloise/design-system-icons'
 
-initializeBaloiseDesignSystem({
+initialize({
   icons: { balIconStarFull },
 })
 ```

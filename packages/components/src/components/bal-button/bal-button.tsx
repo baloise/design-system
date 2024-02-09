@@ -3,9 +3,7 @@ import { Attributes, inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'bal-button',
-  styleUrls: {
-    css: 'bal-button.sass',
-  },
+  styleUrl: 'bal-button.sass',
 })
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
@@ -103,11 +101,13 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
+   * @deprecated
    * If `true` the top corners get rounded
    */
   @Prop() topRounded: undefined | boolean = undefined
 
   /**
+   * @deprecated
    * If `true` the bottom corners get rounded
    */
   @Prop() bottomRounded: undefined | boolean = undefined
@@ -176,15 +176,17 @@ export class Button implements ComponentInterface {
   }
 
   componentWillLoad() {
-    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-controls'])
+    this.inheritAttributes = inheritAttributes(this.el, [
+      'title',
+      'aria-label',
+      'aria-controls',
+      'aria-hidden',
+      'tabindex',
+    ])
   }
 
   componentDidRender() {
     this.balDidRender.emit()
-  }
-
-  componentWillRender() {
-    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-hidden', 'tabindex'])
   }
 
   private get isIconInverted() {
@@ -204,8 +206,8 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'is-rounded': this.rounded === true,
       'has-blur-shadow': this.shadow === true,
-      'has-radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,
       'has-no-round-top-corners': this.topRounded === false,
@@ -295,7 +297,8 @@ export class Button implements ComponentInterface {
 
     const ariaAttributes = {
       'title': this.aria?.title || this.inheritAttributes['title'],
-      'aria-label': this.aria?.label || this.inheritAttributes['aria-label'],
+      'aria-label':
+        this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
       'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
     }
 
@@ -326,7 +329,7 @@ export class Button implements ComponentInterface {
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
             {...this.leftIconAttrs}
-            class="icon-left"
+            class={this.square ? '' : 'icon-left'}
             name={this.icon}
             size={this.square ? this.size : 'small'}
             turn={this.iconTurn}

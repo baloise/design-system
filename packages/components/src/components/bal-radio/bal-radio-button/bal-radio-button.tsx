@@ -21,9 +21,7 @@ import { BalElementStateListener } from '../../../utils/element-states/element-s
 
 @Component({
   tag: 'bal-radio-button',
-  styleUrls: {
-    css: './bal-radio-button.sass',
-  },
+  styleUrl: './bal-radio-button.sass',
 })
 export class BalRadioButton implements ComponentInterface, Loggable, BalElementStateObserver {
   @Element() el!: HTMLElement

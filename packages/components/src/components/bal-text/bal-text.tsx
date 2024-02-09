@@ -4,9 +4,7 @@ import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
-  styleUrls: {
-    css: 'bal-text.sass',
-  },
+  styleUrl: 'bal-text.sass',
 })
 export class Text implements ComponentInterface, BalElementStateInfo {
   /**
@@ -136,14 +134,15 @@ export class Text implements ComponentInterface, BalElementStateInfo {
         <Text
           class={{
             ...block.element('text').class(),
-            ...block.element('text').modifier(`has-text-${color}`).class(),
+            ...block.element('text').modifier(`color-${color}`).class(!!color),
+            ...block.element('text').modifier(`bold`).class(this.bold),
+            ...block.element('text').modifier(`heading`).class(this.heading),
+            ...block.element('text').modifier(`shadow`).class(this.shadow),
             ...block.element('text').modifier(`no-wrap`).class(this.noWrap),
-            'is-size-small': this.size === 'small',
-            'is-size-large': this.size === 'lead',
-            'is-size-medium': this.size === 'block',
-            'has-text-weight-bold': this.bold,
-            'is-family-title': this.heading,
-            'has-text-shadow': this.shadow,
+            ...block
+              .element('text')
+              .modifier(`size-${this.size}`)
+              .class(this.size !== ''),
           }}
           data-testid="bal-text"
         >

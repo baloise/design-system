@@ -96,6 +96,25 @@ export class CheckboxGroup
   @Prop() expanded = false
 
   /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() invalid?: boolean = undefined
+
+  @Watch('invalid')
+  invalidChanged(value: boolean | undefined) {
+    if (this.control) {
+      if (value !== undefined) {
+        this.getCheckboxes().forEach(child => {
+          child.invalid = value
+        })
+        this.getCheckboxButtons().forEach(child => {
+          child.invalid = value
+        })
+      }
+    }
+  }
+
+  /**
    * If `true`, the user cannot interact with the checkboxes.
    */
   @Prop() disabled?: boolean = undefined
@@ -105,6 +124,9 @@ export class CheckboxGroup
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
+          child.disabled = value
+        })
+        this.getCheckboxButtons().forEach(child => {
           child.disabled = value
         })
       }
@@ -121,6 +143,9 @@ export class CheckboxGroup
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
+          child.readonly = value
+        })
+        this.getCheckboxButtons().forEach(child => {
           child.readonly = value
         })
       }
@@ -172,6 +197,11 @@ export class CheckboxGroup
   columnsMobileChanged(value: BalProps.BalCheckboxGroupColumns) {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeMobile = value))
   }
+
+  /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
    * Emitted when the checked property has changed.
@@ -484,7 +514,7 @@ export class CheckboxGroup
               disabled={option.disabled}
               readonly={option.readonly}
               required={option.required}
-              hidden={option.hidden}
+              nonSubmit={!!option.nonSubmit || !!option.hidden}
               invalid={option.invalid}
               innerHTML={option.html as string}
             ></bal-checkbox>

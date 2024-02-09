@@ -10,7 +10,11 @@ export async function vueProxyOutput(
   outputTarget: OutputTargetVue,
   components: ComponentCompilerMeta[],
 ) {
-  const filteredComponents = getFilteredComponents(outputTarget.excludeComponents, components)
+  const filteredComponents = getFilteredComponents(
+    outputTarget.excludeComponents,
+    components,
+    outputTarget.includeInternalComponents,
+  )
   const rootDir = config.rootDir as string
   const pkgData = await readPackageJson(rootDir)
 
@@ -19,9 +23,14 @@ export async function vueProxyOutput(
   await copyResources(config, outputTarget)
 }
 
-function getFilteredComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
+function getFilteredComponents(
+  excludeComponents: string[] = [],
+  cmps: ComponentCompilerMeta[],
+  includeInternalComponents = false,
+) {
   return sortBy<ComponentCompilerMeta>(cmps, (cmp: ComponentCompilerMeta) => cmp.tagName).filter(
-    (c: ComponentCompilerMeta) => !excludeComponents.includes(c.tagName) && !c.internal,
+    (c: ComponentCompilerMeta) =>
+      !excludeComponents.includes(c.tagName) && includeInternalComponents ? true : !c.internal,
   )
 }
 
@@ -65,10 +74,7 @@ import { defineContainer } from './vue-component-lib/utils';\n`
     })
 
     sourceImports = cmpImports.join('\n')
-  } else if (outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
-    sourceImports = `import { ${APPLY_POLYFILLS}, ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
-    registerCustomElements = `${APPLY_POLYFILLS}().then(() => ${REGISTER_CUSTOM_ELEMENTS}());`
-  } else if (!outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
+  } else if (outputTarget.includeDefineCustomElements) {
     sourceImports = `import { ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
     registerCustomElements = `${REGISTER_CUSTOM_ELEMENTS}();`
   }
@@ -127,5 +133,4 @@ export function getPathToCorePackageLoader(config: Config, outputTarget: OutputT
 export const GENERATED_DTS = 'components.d.ts'
 const IMPORT_TYPES = 'JSX'
 const REGISTER_CUSTOM_ELEMENTS = 'defineCustomElements'
-const APPLY_POLYFILLS = 'applyPolyfills'
 const DEFAULT_LOADER_DIR = '/dist/loader'

@@ -17,9 +17,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-file-upload',
-  styleUrls: {
-    css: 'bal-file-upload.sass',
-  },
+  styleUrl: 'bal-file-upload.sass',
 })
 export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Element() el!: HTMLElement
@@ -129,6 +127,11 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Prop() subTitle?: (file: File) => string
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Triggers when a file is added or removed.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalFileUploadChangeDetail>
@@ -190,7 +193,7 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
    * ------------------------------------------------------
    */
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
@@ -291,9 +294,9 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
     }
 
     if (validatedFiles.validFiles.length > 0) {
-      this.balFilesAdded.emit(validatedFiles.validFiles)
       this.files = [...this.files, ...validatedFiles.validFiles]
       this.balChange.emit(this.files)
+      this.balFilesAdded.emit(validatedFiles.validFiles)
     }
 
     this.updateFileInput()

@@ -73,9 +73,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-datepicker',
-  styleUrls: {
-    css: 'bal-datepicker.sass',
-  },
+  styleUrl: 'bal-datepicker.sass',
 })
 export class Datepicker
   implements
@@ -226,6 +224,11 @@ export class Datepicker
   @Prop({ attribute: 'allowed-dates' }) allowedDates: BalProps.BalDatepickerCallback | undefined = undefined
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a option got selected.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalDatepickerChangeDetail>
@@ -260,7 +263,7 @@ export class Datepicker
     inputListenOnClick(this, ev)
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

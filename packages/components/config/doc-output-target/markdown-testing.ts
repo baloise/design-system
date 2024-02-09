@@ -14,9 +14,9 @@ export const createTestingMarkdown = (docsPath: string, component: JsonDocsCompo
   const pathToTestingMarkdown = path.join(docsPath, 'testing.md')
 
   let selectorsList: string[] = []
-  if (testingSelectors[0][formatComponentName(componentName)] != undefined) {
+  if (testingSelectors[formatComponentName(componentName)] != undefined) {
     selectorsList = selectorsToMarkdown(
-      testingSelectors[0][formatComponentName(componentName)],
+      testingSelectors[formatComponentName(componentName)],
       formatComponentName(componentName),
     )
   }

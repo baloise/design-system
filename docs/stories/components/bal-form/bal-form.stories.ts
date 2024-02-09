@@ -148,7 +148,7 @@ export const Autocomplete = Story({
                     <bal-field required="true">
                         <bal-field-label>Firstname</bal-field-label>
                         <bal-field-control>
-                            <bal-input name="firstname" placeholder="Enter your firstname" value="" autocomplete="on"></bal-input>
+                            <bal-input name="firstname" placeholder="Enter your firstname" autocomplete="on"></bal-input>
                         </bal-field-control>
                         <bal-field-message>Field Message</bal-field-message>
                     </bal-field>
@@ -157,7 +157,7 @@ export const Autocomplete = Story({
                     <bal-field required="true">
                         <bal-field-label>Lastname</bal-field-label>
                         <bal-field-control>
-                            <bal-input name="lastname" placeholder="Enter your lastname" value="" autocomplete="on"></bal-input>
+                            <bal-input name="lastname" placeholder="Enter your lastname" autocomplete="on"></bal-input>
                         </bal-field-control>
                         <bal-field-message>Field Message</bal-field-message>
                     </bal-field>

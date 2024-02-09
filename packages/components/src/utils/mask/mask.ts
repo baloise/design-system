@@ -129,6 +129,19 @@ export abstract class AbstractMask implements Mask {
   }
 
   /**
+   * UTILS
+   * ------------------------------------------------------
+   */
+
+  public toParsedValue(inputValue?: string) {
+    return this.onParseValue(inputValue)
+  }
+
+  public toFormattedValue(inputValue?: string) {
+    return this.onFormatValue(inputValue)
+  }
+
+  /**
    * FIRE EVENT METHODS
    * ------------------------------------------------------
    */
@@ -264,7 +277,9 @@ export abstract class AbstractMask implements Mask {
       //
       // hit a range of chars
     } else {
-      context.preventDefault()
+      if (!context.isTabKey) {
+        context.preventDefault()
+      }
 
       if (context.isBackspaceKey || context.isDeleteKey) {
         this.resetInputValueWithMask(context)

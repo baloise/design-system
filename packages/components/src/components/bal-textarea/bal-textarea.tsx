@@ -32,9 +32,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-textarea',
-  styleUrls: {
-    css: 'bal-textarea.sass',
-  },
+  styleUrl: 'bal-textarea.sass',
 })
 export class Textarea implements ComponentInterface, FormInput<string | undefined>, BalAriaFormLinking {
   private inputId = `bal-textarea-${TextareaIds++}`
@@ -142,6 +140,11 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop({ mutable: true }) value?: string = ''
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when the input value has changed..
    */
   @Event() balChange!: EventEmitter<BalEvents.BalTextareaChangeDetail>
@@ -171,7 +174,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     inputListenOnClick(this, ev)
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

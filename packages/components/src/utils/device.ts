@@ -29,7 +29,7 @@ export class Orientation {
   }
 }
 
-class Device {
+export class BalDevice {
   public orientation = new Orientation()
 
   /**
@@ -50,4 +50,4 @@ class Device {
   }
 }
 
-export const balDevice = new Device()
+export const balDevice = new BalDevice()

@@ -141,6 +141,7 @@
   .bal-carousel__controls--tabs
     position: sticky
     top: var(--bal-carousel-sticky-top)
+    z-index: var(--bal-z-index-sticky)
 
 .bal-carousel__controls--tabs
   .bal-card
@@ -151,6 +152,8 @@
     display: flex
     .bal-button
       flex: 1
+      .button
+        padding: .5rem !important
 
 .bal-carousel--image
   .bal-carousel__inner
@@ -242,7 +245,7 @@
       background: var(--bal-carousel-product-item-button-background-yellow)
     +desktop
       &:hover
-        background: var(---bal-carousel-product-item-button-background-yellow-hover)
+        background: var(--bal-carousel-product-item-button-background-yellow-hover)
       &:active
         background: var(--bal-carousel-product-item-button-background-yellow-active)
   .bal-carousel__item__button--color-purple

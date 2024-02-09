@@ -10,6 +10,7 @@ import {
   ComponentInterface,
   State,
   Listen,
+  Watch,
 } from '@stencil/core'
 import { isDescendant } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -24,9 +25,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-radio',
-  styleUrls: {
-    css: '../bal-checkbox/radio-checkbox.sass',
-  },
+  styleUrl: '../bal-checkbox/radio-checkbox.sass',
 })
 export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`
@@ -104,9 +103,19 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
   @Prop() required = false
 
   /**
-   * If `true`, the value will not be send with a form submit
+   * @deprecated
+   * Use non-submit or invisible instead
    */
   @Prop() hidden = false
+  @Watch('hidden')
+  hiddenWatcher(value: boolean) {
+    this.nonSubmit = value
+  }
+
+  /**
+   * If `true`, the value will not be send with a form submit
+   */
+  @Prop() nonSubmit = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -157,6 +166,10 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     if (radioGroup) {
       radioGroup.addEventListener('balInput', this.updateState)
+    }
+
+    if (this.hidden) {
+      this.nonSubmit = this.hidden
     }
 
     this.el.addEventListener('keydown', this.onKeydown)
@@ -295,9 +308,10 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
       disabled: this.disabled,
       readonly: this.readonly,
       required: this.required,
-      hidden: this.hidden,
+      nonSubmit: this.nonSubmit,
       invisible: this.invisible,
       invalid: this.invalid,
+      hidden: this.hidden, // deprecated
     }
   }
 
@@ -439,7 +453,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
           name={this.name}
           value={value}
           checked={this.checked}
-          disabled={this.disabled}
+          disabled={this.disabled || this.nonSubmit}
           readonly={this.readonly}
           required={this.required}
           onFocus={this.onFocus}

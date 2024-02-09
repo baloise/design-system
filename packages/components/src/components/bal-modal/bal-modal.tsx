@@ -9,9 +9,7 @@ import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-modal',
-  styleUrls: {
-    css: 'bal-modal.sass',
-  },
+  styleUrl: 'bal-modal.sass',
 })
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement

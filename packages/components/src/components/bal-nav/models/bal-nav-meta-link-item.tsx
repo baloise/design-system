@@ -18,6 +18,10 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
+  get type(): string {
+    return 'NavMetaLinkItem'
+  }
+
   override renderTouch(
     context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>,
   ) {
@@ -32,7 +36,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
           level="meta"
           label={this.label}
           open={isSelected}
-          link={this.isLink}
+          link={this.mainLinkItems.length > 0 ? false : this.isLink}
           href={this.href}
           target={this.target}
           onClick={ev => this.onAccordionClick(ev)}

@@ -103,8 +103,8 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() mobileTop = false
 
-  private scrollToTopTimer?: NodeJS.Timer
-  private setActiveTimer?: NodeJS.Timer
+  private scrollToTopTimer?: NodeJS.Timeout
+  private setActiveTimer?: NodeJS.Timeout
 
   private clearTimeouts() {
     if (this.scrollToTopTimer) {

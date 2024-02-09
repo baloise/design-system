@@ -10,6 +10,7 @@ import {
   Listen,
   State,
   ComponentInterface,
+  Watch,
 } from '@stencil/core'
 import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
 import { isDescendant } from '../../utils/helpers'
@@ -23,9 +24,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-checkbox',
-  styleUrls: {
-    css: 'radio-checkbox.sass',
-  },
+  styleUrl: 'radio-checkbox.sass',
 })
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, BalAriaFormLinking {
   private inputId = `bal-cb-${checkboxIds++}`
@@ -116,9 +115,24 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @Prop() required = false
 
   /**
-   * If `true`, the value will not be send with a form submit
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
+   * @deprecated
+   * Use non-submit instead
    */
   @Prop() hidden = false
+  @Watch('hidden')
+  hiddenWatcher(value: boolean) {
+    this.nonSubmit = value
+  }
+
+  /**
+   * If `true`, the value will not be send with a form submit
+   */
+  @Prop() nonSubmit = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -165,6 +179,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     if (groupEl) {
       groupEl.addEventListener('balChange', () => this.updateState())
+    }
+
+    if (this.hidden) {
+      this.nonSubmit = this.hidden
     }
 
     this.initialValue = this.checked
@@ -308,9 +326,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       disabled: this.disabled,
       readonly: this.readonly,
       required: this.required,
-      hidden: this.hidden,
+      nonSubmit: this.nonSubmit,
       invisible: this.invisible,
       invalid: this.invalid,
+      hidden: this.hidden, // deprecated
     }
   }
 
@@ -420,7 +439,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     return (
       <Host
-        role="checkbox"
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
@@ -460,7 +478,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           name={this.name}
           value={this.value}
           checked={this.checked}
-          disabled={this.disabled || this.hidden}
+          disabled={this.disabled || this.nonSubmit || this.hidden}
           readonly={this.readonly}
           required={this.required}
           onFocus={this.onFocus}

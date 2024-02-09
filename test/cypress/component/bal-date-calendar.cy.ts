@@ -76,4 +76,24 @@ describe('BalDateCalendar Component', () => {
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('2022-12-11')
   })
+
+  it('check if month out of range is disabled', () => {
+    onBalChangeSpy = cy.spy().as('balChange')
+    cy.mount(BalDateCalendar, {
+      props: {
+        defaultDate: '2024-01-01',
+        min: '2023-12-23',
+        max: '2024-01-23',
+        onBalChange: onBalChangeSpy,
+      },
+    })
+
+    cy.waitForDesignSystem()
+
+    cy.waitForDesignSystem()
+
+    cy.getByRole('button', { name: 'Januar 2024' }).click()
+    cy.getByRole('button', { name: '2023' }).click()
+    cy.getByRole('button', { name: 'Februar' }).should('be.disabled')
+  })
 })

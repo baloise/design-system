@@ -15,7 +15,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { BalScrollHandler } from '../../utils/scroll'
@@ -36,9 +36,7 @@ import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-nav',
-  styleUrls: {
-    css: 'bal-nav.sass',
-  },
+  styleUrl: 'bal-nav.sass',
 })
 export class NavMetaBar
   implements
@@ -58,8 +56,8 @@ export class NavMetaBar
 
   log!: LogInstance
 
-  @State() isTouch = false
-  @State() isDesktop = true
+  @State() isTouch = balBreakpoints.isTouch
+  @State() isDesktop = balBreakpoints.isDesktop
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
@@ -272,7 +270,9 @@ export class NavMetaBar
 
     const elementToScroll = this.el.querySelector(`#${item.id}`)
     if (elementToScroll) {
-      elementToScroll.scrollIntoView()
+      elementToScroll.scrollIntoView({
+        behavior: 'smooth',
+      })
 
       // location.href = '#'
       // location.href = `#${item.id}`
@@ -458,7 +458,8 @@ export class NavMetaBar
                     target={this.activeMenuLinkItem?.overviewLink?.target}
                     onClick={() => this.linkItemClickListener(this.activeMenuLinkItem?.overviewLink)}
                   >
-                    {this.activeMenuLinkItem?.overviewLink?.label}
+                    {this.activeMenuLinkItem?.overviewLink?.label}{' '}
+                    {this.activeMenuLinkItem?.overviewLink?.label ? '➞' : ''}
                   </bal-nav-link>
                   {this.renderGridLinks(this.activeMenuLinkItem)}
                 </bal-nav-menu-flyout>
@@ -603,7 +604,7 @@ export class NavMetaBar
           })
         }
       >
-        <bal-logo></bal-logo>
+        <bal-logo animated></bal-logo>
       </Link>
     )
   }

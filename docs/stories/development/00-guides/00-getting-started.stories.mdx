@@ -33,12 +33,47 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 <InfoQuote>
   **Recommendations**
 
-- Use **SCSS** as stylesheet format.
-- Use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
+- Use **SCSS** as stylesheet format to be able to breakpoint mixins and more.
+- For the translations use [\{TRANSLOCO\}](https://ngneat.github.io/transloco/).
+- For a reactive store use [Elf](https://ngneat.github.io/elf/).
+- Smart build system [Nx](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial).
 
 </InfoQuote>
 
-### Setting up Zone.js
+## Installation
+
+<InfoQuote>
+If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Baloise Design System.
+
+<Code language="bash" noPreview code={`npm add -E @ngneat/transloco`} />
+
+Configure project:
+
+```bash
+ng add @ngneat/transloco
+# On an nx workspace
+nx g @ngneat/transloco:ng-add
+```
+
+</InfoQuote>
+
+Lets install the schematics to configure and add the design system to an Angular project.
+
+<Code language="bash" noPreview code={`npm add -D -E @baloise/design-system-cli`} />
+
+Install the library using Angular CLI:
+
+```bash
+ng add @baloise/design-system-cli
+# On an nx workspace
+nx g @baloise/design-system-cli:ng-add
+```
+
+## Manual Installation
+
+Continue here for the manual instalation guide without schematics.
+
+### Zone.js
 
 Configuring zone.js is essential for enhancing the performance of the web components.
 
@@ -77,13 +112,28 @@ import 'zone.js' // Included with Angular CLI.
 3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
 4. List the `src/polyfills.ts` as a file in the `tsconfig.app.json`.
 
-## Installation
+### Angular Config
+
+With Angular Version 17, Stencil no longer handles the lazy loading of the Baloise Design System.
+Angular and Vite will now take care of this process. Consequently, there will be an initial increase in the bundle size.
+
+Open the `angular.json` file and make the following adjustment to `architect.build.configurations.production.budgets`:
+
+```json
+{
+  "type": "initial",
+  "maximumWarning": "3mb",
+  "maximumError": "5mb"
+}
+```
+
+### Installation
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
 
 <Code language="bash" noPreview code={`npm install @baloise/design-system-components-angular`} />
 
-## Import Styles
+### Import Styles
 
 Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
 fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
@@ -95,10 +145,7 @@ The following suggestion for importing files is recommended for greater flexibil
 However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/design-system-css/sass/baloise-design-system`
 , which has all style definitions.
 
-<Code
-  language="css"
-  noPreview
-  code={`
+```css
 // SASS mixins and variables
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -107,7 +154,7 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/sass/font';
+@import '@baloise/design-system-css/css/font';
 
 // Core CSS, always required
 @import '@baloise/design-system-css/css/core';
@@ -120,16 +167,69 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/color';
 @import '@baloise/design-system-css/css/display';
 @import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/grid';
 @import '@baloise/design-system-css/css/opacity';
 @import '@baloise/design-system-css/css/radius';
 @import '@baloise/design-system-css/css/shadow';
 @import '@baloise/design-system-css/css/spacing';
 @import '@baloise/design-system-css/css/typography';
-`}
-/>
+```
 
-## Module Based Application
+### Standalone
+
+Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
+
+**app.config.ts**
+
+```typescript
+import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+
+import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideBaloiseDesignSystem()],
+}
+```
+
+**app.component.ts**
+
+To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular component.
+In each app component, import the necessary Baloise Design System components or a bundled set.
+
+```typescript
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, ...BalLayoutBundle, BalHeading, BalButton],
+})
+export class AppComponent {}
+```
+
+**app.component.html**
+
+Add the `bal-app` to your `app.component.html` root element.
+
+```html
+<bal-app class="has-sticky-footer">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+```
+
+### Module Based
 
 Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
@@ -137,34 +237,26 @@ For each angular sub module you need to import the `BaloiseDesignSystemModule` t
 
 **app.module.ts**
 
-<Code
-  language="typescript"
-  noPreview
-  code={`
+```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
-${' '}declarations: [AppComponent],
-${' '}imports: [
-${' '}${' '}BrowserModule,
-${' '}${' '}// Provide all components and value accessors to the app module.
-${' '}${' '}BaloiseDesignSystemModule.forRoot({
-${' '}${' '}${' '}forms: {
-${' '}${' '}${' '}${' '}setInvalid: true, // Maps invalid state with reactive form controls
-${' '}${' '}${' '}},
-${' '}${' '}}),
-${' '}],
-${' '}providers: [],
-${' '}bootstrap: [AppComponent],
-${' '}// To enable the usage of Web Components inside the Angular templates.
-${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    // Provide all components and value accessors to the app module.
+    BaloiseDesignSystemModule.forRoot(),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  // To enable the usage of Web Components inside the Angular templates.
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
-`}
-/>
+```
 
 **app.component.html**
 
@@ -190,7 +282,7 @@ Add the `bal-app` to your `app.component.html` root element.
 `}
 />
 
-### Shared Modules
+#### Shared Modules
 
 It is recommended to import the `BaloiseDesignSystemModule` in your `SharedModule` to provide access to the components and value accessors.
 
@@ -206,90 +298,6 @@ imports: [...sharedModules],
 exports: [...sharedModules],
 })
 export class SharedModule {}
-`}
-/>
-
-## Standalone
-
-Import the `BaloiseDesignSystemModule.forRoot()` into your `app.config.ts`.
-
-**app.config.ts**
-
-<Code
-  language="typescript"
-  noPreview
-  code={`
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'
-import { provideRouter } from '@angular/router'
-
-import { routes } from './app.routes'
-
-import { BaloiseDesignSystemModule } from '../generated/src'
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    importProvidersFrom(
-      BaloiseDesignSystemModule.forRoot({
-        forms: {
-          setInvalid: true, // Maps invalid state with reactive form controls
-        },
-      }),
-    ),
-  ],
-}
-`}
-/>
-
-**app.component.ts**
-
-To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
-
-<Code
-  language="typescript"
-  noPreview
-  code={`
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterOutlet } from '@angular/router'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
-
-@Component({
-${' '}selector: 'app-root',
-${' '}standalone: true,
-${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
-${' '}imports: [
-${' '}${' '}CommonModule,
-${' '}${' '}RouterOutlet,
-${' '}${' '}BaloiseDesignSystemModule,
-${' '}],
-})
-export class AppComponent { }
-`}
-/>
-
-**app.component.html**
-
-Add the `bal-app` to your `app.component.html` root element.
-
-<Code
-  language="html"
-  noPreview
-  code={`
-<bal-app class="has-sticky-footer">
-  <header>
-    <!-- Header content -->
-  </header>
-  <main class="container">
-    <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
-  </main>
-  <bal-footer>
-    <!-- Footer content -->
-  </bal-footer>
-</bal-app>
 `}
 />
 
@@ -417,7 +425,7 @@ Here is how you can integrate it into your project.
           The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.
         </p>
-        <bal-button href="https://baloise-design-system.vercel.app" target="_blank">
+        <bal-button href="https://design.baloise.dev" target="_blank">
           Check out the Documentation</bal-button
         >
       </main>
@@ -488,7 +496,6 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/color';
 @import '@baloise/design-system-css/css/display';
 @import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/grid';
 @import '@baloise/design-system-css/css/opacity';
 @import '@baloise/design-system-css/css/radius';
 @import '@baloise/design-system-css/css/shadow';
@@ -591,7 +598,6 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/color';
 @import '@baloise/design-system-css/css/display';
 @import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/grid';
 @import '@baloise/design-system-css/css/opacity';
 @import '@baloise/design-system-css/css/radius';
 @import '@baloise/design-system-css/css/shadow';
@@ -665,7 +671,10 @@ Add the `BalApp` to your root element (App.vue).
 
 <Footer>
   <LinkCards>
-    <LinkCard pageTitle={'Development/Assets'} description={'Guides for installing the font locally, favions and Google maps styles.'} />
+    <LinkCard
+      pageTitle={'Development/Assets'}
+      description={'Guides for installing the font locally, favions and Google maps styles.'}
+    />
     <LinkCard
       pageTitle={'Development/Component'}
       description={

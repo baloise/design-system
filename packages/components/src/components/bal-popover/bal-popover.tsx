@@ -26,9 +26,7 @@ export interface PopoverPresentOptions {
 
 @Component({
   tag: 'bal-popover',
-  styleUrls: {
-    css: 'bal-popover.sass',
-  },
+  styleUrl: 'bal-popover.sass',
 })
 export class Popover implements ComponentInterface, Loggable, BalBreakpointObserver {
   private popoverId = `bal-po-${PopoverIds++}`
@@ -192,7 +190,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     }
   }
 
-  componentDidRenderTimer?: NodeJS.Timer
+  componentDidRenderTimer?: NodeJS.Timeout
   componentDidRender() {
     if (this.popperInstance) {
       this.popperInstance.setOptions((options: any) => ({

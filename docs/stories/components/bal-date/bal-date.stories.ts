@@ -1,20 +1,18 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalDate & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/Date',
   args: {
-    ...withDefaultContent(''),
     placeholder: 'Pick a date',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-date' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-date ${props(args)}>${content}</bal-date>`),
+  ...withRender(({ ...args }) => `<bal-date ${props(args)}></bal-date>`),
 }
 
 export default meta

@@ -2,9 +2,7 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-notification',
-  styleUrls: {
-    css: 'bal-notification.sass',
-  },
+  styleUrl: 'bal-notification.sass',
 })
 export class Notification {
   /**
@@ -17,7 +15,7 @@ export class Notification {
     return (
       <Host class="bal-notification">
         <div
-          class={`bal-notification__inner bal-notification__inner--is-${this.color}`}
+          class={`bal-notification__inner bal-notification__inner--color-${this.color}`}
           data-testid="bal-notification-content"
         >
           <slot></slot>

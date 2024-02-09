@@ -13,7 +13,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, isDescendant, rIC } from '../../utils/helpers'
+import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -53,9 +53,7 @@ const isNotHuman = false
 
 @Component({
   tag: 'bal-select',
-  styleUrls: {
-    css: 'bal-select.sass',
-  },
+  styleUrl: 'bal-select.sass',
 })
 export class Select implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputElement!: HTMLInputElement
@@ -191,6 +189,11 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   @Prop() remote = false
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
   @Prop({ mutable: true }) value?: string | string[] = []
@@ -319,7 +322,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     }
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
@@ -392,12 +395,10 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
   @Method()
   async setFocus() {
-    clearTimeout(this.setFocusTimer)
-    this.setFocusTimer = setTimeout(() => {
-      if (this.inputElement && !this.disabled) {
-        this.inputElement.focus()
-      }
-    })
+    if (this.inputElement && !this.disabled) {
+      await waitAfterIdleCallback()
+      this.inputElement.focus()
+    }
   }
 
   /**
@@ -476,7 +477,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
-  private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timer
+  private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timeout
   private async waitForOptionsAndThenUpdateRawValues() {
     clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
     await deepReady(this.el)
@@ -522,8 +523,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       this.validateAfterBlur()
     }
   }
-
-  private setFocusTimer?: NodeJS.Timer
 
   /**
    * GETTERS
@@ -573,7 +572,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   /********************************************************
    * FOCUS
    ********************************************************/
-  private updateFocusTimer?: NodeJS.Timer
+  private updateFocusTimer?: NodeJS.Timeout
   private updateFocus() {
     if (this.focusIndex < -1) {
       this.focusIndex = -1
@@ -799,7 +798,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     return Promise.resolve()
   }
 
-  private updateInputValueTimer?: NodeJS.Timer
+  private updateInputValueTimer?: NodeJS.Timeout
   private updateInputValue(value: string): Promise<void> {
     return new Promise(resolve => {
       if (this.updateInputValueTimer) {
@@ -1086,10 +1085,10 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                   this.disabled || this.readonly
                     ? 'grey-light'
                     : this.inverted
-                    ? 'white'
-                    : this.invalid
-                    ? 'danger'
-                    : 'primary'
+                      ? 'white'
+                      : this.invalid
+                        ? 'danger'
+                        : 'primary'
                 }
                 turn={this.isPopoverOpen}
                 onClick={ev => this.handleInputClick(ev, true)}
@@ -1130,7 +1129,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                     <bal-checkbox
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
-                      hidden
+                      nonSubmit
                       flat
                       onBalChange={preventDefault}
                     ></bal-checkbox>

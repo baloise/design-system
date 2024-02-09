@@ -6,22 +6,22 @@ describe('bal-nav-menu-bar', () => {
 
     it('basic component', () => {
       cy.platform('fullhd').wait(32)
-      cy.compareSnapshot('menu-bar-fullhd')
+      cy.testVisual('menu-bar-fullhd')
 
       cy.platform('highDefinition').wait(32)
-      cy.compareSnapshot('menu-bar-highDefinition')
+      cy.testVisual('menu-bar-highDefinition')
 
       cy.platform('widescreen').wait(32)
-      cy.compareSnapshot('menu-bar-widescreen')
+      cy.testVisual('menu-bar-widescreen')
 
       cy.platform('desktop').wait(32)
-      cy.compareSnapshot('menu-bar-desktop')
+      cy.testVisual('menu-bar-desktop')
 
       cy.platform('tablet').wait(32)
-      cy.compareSnapshot('menu-bar-tablet')
+      cy.testVisual('menu-bar-tablet')
 
       cy.platform('mobile').wait(32)
-      cy.compareSnapshot('menu-bar-mobile')
+      cy.testVisual('menu-bar-mobile')
     })
   })
 })

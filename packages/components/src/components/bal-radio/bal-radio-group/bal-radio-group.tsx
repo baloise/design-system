@@ -114,6 +114,9 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.invalid = value
       })
+      this.getRadioButtons().forEach(radio => {
+        radio.invalid = value
+      })
     }
   }
 
@@ -128,6 +131,9 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.disabled = value
       })
+      this.getRadioButtons().forEach(radio => {
+        radio.disabled = value
+      })
     }
   }
 
@@ -140,6 +146,9 @@ export class RadioGroup
   readonlyChanged(value: boolean | undefined) {
     if (value !== undefined) {
       this.getRadios().forEach(radio => {
+        radio.readonly = value
+      })
+      this.getRadioButtons().forEach(radio => {
         radio.readonly = value
       })
     }
@@ -174,6 +183,11 @@ export class RadioGroup
   columnsMobileChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
   }
+
+  /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
    * Emitted when the checked property has changed.
@@ -530,7 +544,7 @@ export class RadioGroup
               disabled={option.disabled}
               readonly={option.readonly}
               required={option.required}
-              hidden={option.hidden}
+              nonSubmit={!!option.nonSubmit || !!option.hidden}
               invalid={option.invalid}
               innerHTML={option.html as string}
             ></bal-radio>

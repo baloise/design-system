@@ -28,10 +28,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **popover:** reduce rendering by using componentWillLoad ([a99648f](https://github.com/baloise/design-system/commit/a99648fcc35f0683785266f87c6d2b66ba6950b9))
 
-
 ## [12.0.0](https://github.com/baloise/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
 
-Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-system.vercel.app/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
+Follow the migration guide [Migration from 11.x to 12.x](https://design.baloise.dev/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
 
 ### ⚠ BREAKING CHANGES
 
@@ -53,7 +52,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * **accordion:** not remove hidden content from the DOM ([1f52f95](https://github.com/baloise/design-system/commit/1f52f95fe38b845cce866025653c9183cbf61c5b))
 
 ## [11.0.17](https://github.com/baloise/design-system/compare/v11.0.16...v11.0.17) (2022-12-01)
-
 
 ### Bug Fixes
 
@@ -303,7 +301,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * update @baloise/web-app-utils to solve safari 13 issues ([04f0da0](https://github.com/baloise/design-system/commit/04f0da0b696a3eac6686f43458e1c2c41753d386))
 * update @baloise/web-app-utils to solve safari 13 issues ([43c5b13](https://github.com/baloise/design-system/commit/43c5b132b4089346a132dbbda34c15b86860735a))
 * update web-app-utils ([c1dc7e3](https://github.com/baloise/design-system/commit/c1dc7e35250293a9f55fabbcb2ff33507e13b7f7))
-
 
 ### Performance Improvements
 

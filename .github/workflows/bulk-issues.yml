@@ -19,7 +19,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
 
       - name: Update npm registry
@@ -29,4 +29,4 @@ jobs:
         run: npm ci
 
       - name: Install Cypress
-        run: node .build/bulk-issue.js issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/bulk-issue.mjs issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}

@@ -4,16 +4,15 @@ import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 
 type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => AnimationItem
 
 @Component({
   tag: 'bal-logo',
-  styleUrls: {
-    css: 'bal-logo.sass',
-  },
+  styleUrl: 'bal-logo.sass',
 })
-export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver {
+export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver, BalConfigObserver {
   private animationItem!: AnimationItem
   private animatedLogoElement!: HTMLDivElement
   private animationFunction?: LogoAnimationFunction
@@ -28,6 +27,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   @Element() el!: HTMLElement
 
   @State() isTouch = balBreakpoints.isTouch
+  @State() doesConfigAllowAnimation = true
 
   /**
    * PUBLIC PROPERTY API
@@ -50,7 +50,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   @Prop() animated = false
   @Watch('animated')
   animatedWatcher() {
-    if (!this.animated) {
+    if (!this.isAnimated) {
       this.destroyAnimation()
     }
   }
@@ -88,10 +88,19 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     this.isTouch = breakpoints.touch
   }
 
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.doesConfigAllowAnimation = state.animated
+  }
+
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private get isAnimated() {
+    return this.doesConfigAllowAnimation && this.animated
+  }
 
   private async resetAnimation() {
     this.destroyAnimation()
@@ -190,11 +199,11 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       )
     }
 
-    const LogoElement = this.animated
+    const LogoElement = this.isAnimated
       ? AnimatedLogo
       : (this.isTouch && this.size === '') || this.size === 'small'
-      ? SmallLogo
-      : LargeLogo
+        ? SmallLogo
+        : LargeLogo
 
     return (
       <Host

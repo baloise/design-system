@@ -40,6 +40,8 @@ import { CalendarNav } from './components/bal-date-calendar__nav'
 export class DateCalendar implements ComponentInterface, Loggable, BalConfigObserver, BalSwipeObserver {
   private yearListEl: HTMLUListElement | undefined
   private gridEl: HTMLDivElement | undefined
+  private oldMin? = ''
+  private oldMax? = ''
 
   @Element() el!: HTMLElement
 
@@ -84,6 +86,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
         this.generateGridByDate(date)
         this.selectedDate = date.toISODate()
       }
+      this.updateSelections()
     }
   }
 
@@ -120,8 +123,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Watch('min')
   @Watch('max')
   rangePropChanged() {
-    this.months = generateMonths(this.language, this.year, this.selectedDate, this.min, this.max)
-    this.years = generateYears(this.year, this.minYear, this.maxYear)
+    this.updateSelections()
+    this.generateGrid()
   }
 
   /**
@@ -137,7 +140,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Watch('minYearProp')
   @Watch('maxYearProp')
   yearRangePropChanged() {
-    this.years = generateYears(this.year, this.minYear, this.maxYear)
+    this.updateSelections()
   }
 
   /**
@@ -165,11 +168,11 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Method()
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
-    this.years = generateYears(this.year, this.minYear, this.maxYear)
-    this.months = generateMonths(state.language, this.year, this.selectedDate, this.min, this.max)
-    this.weekdays = generateWeekDays(state.language)
-    this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: this.language })
     this.language = state.language
+    this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: this.language })
+    this.weekdays = generateWeekDays(this.language)
+
+    this.updateSelections()
   }
 
   @ListenToSwipe({ mobileOnly: true })
@@ -223,6 +226,20 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
    * ------------------------------------------------------
    */
 
+  private updateSelections() {
+    this.years = generateYears(this.year, this.minYear, this.maxYear)
+    this.months = generateMonths(this.language, this.year, this.selectedDate, this.min, this.max)
+  }
+
+  private generateGrid() {
+    const date = BalDate.fromISO(this.value)
+    if (date.isValid) {
+      this.generateGridByDate(date)
+    } else {
+      this.generateGridByDefaultDate()
+    }
+  }
+
   private generateGridByDate(date: BalDate) {
     if (date.year !== undefined && date.month !== undefined) {
       this.generateGridByMonthAndYear(date.month, date.year)
@@ -245,12 +262,14 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
 
   private generateGridByMonthAndYear(month: number, year: number) {
     // Only generate when mont and year has changed
-    if (this.month !== month || this.year !== year) {
+    if (this.month !== month || this.year !== year || this.oldMin !== this.min || this.oldMax !== this.max) {
       this.calendarGrid = generateCalendarGrid(year, month, this.min, this.max, this.allowedDates)
       this.firstDayOfWeek = getFirstWeekdayOfMonth(year, month)
     }
     this.month = month
     this.year = year
+    this.oldMin = this.min
+    this.oldMax = this.max
   }
 
   /**
@@ -284,7 +303,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   }
 
   private onClickSelectMonthAndYear = async () => {
-    this.months = generateMonths(this.language, this.year, this.selectedDate, this.min, this.max)
+    this.updateSelections()
 
     if (this.isCalendarVisible === true) {
       this.isCalendarVisible = false

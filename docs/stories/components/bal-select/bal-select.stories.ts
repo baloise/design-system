@@ -1,17 +1,15 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory, newCodeSandboxFile } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory, newCodeSandboxFile } from '../../utils'
 
 type Args = JSX.BalSelect & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/Select',
   args: {
-    ...withDefaultContent(''),
     value: 'v2000',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-select' }),
   },
   ...withRender(
@@ -65,7 +63,6 @@ export const Typeahead = Story({
     placeholder: 'Try finding your hero',
     typeahead: true,
     value: undefined,
-    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `<bal-select ${props(args)}>
@@ -125,7 +122,6 @@ export const MultiSelect = Story({
     value: 'SpiderMan,IronMan',
     placeholder: 'Try finding your hero',
     multiple: true,
-    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `<bal-select ${props(args)}>

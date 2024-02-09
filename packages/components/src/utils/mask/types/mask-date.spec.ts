@@ -1,21 +1,22 @@
-import { initialize } from '../../config'
+import { setupConfig } from '../../config'
 import { MaskComponentMock } from '../__test__/mask-component.mock'
 import { MaskClipboardContext, MaskClipboardContextEvent, MaskFocusContext, MaskFocusContextEvent } from '../context'
 import { DateMask } from './mask-date'
 
 describe('MaskComponentAdapter', () => {
+  const todayYear = new Date().getFullYear()
   let mask = new DateMask()
   let component = new MaskComponentMock()
 
   beforeEach(() => {
-    initialize()
+    setupConfig()
     mask = new DateMask()
     component = new MaskComponentMock()
   })
   describe('onParseValue', () => {
     test('should parse value', () => {
       expect(mask.onParseValue()).toBe('')
-      expect(mask.onParseValue('1.1')).toBe('2023-01-01')
+      expect(mask.onParseValue('1.1')).toBe(todayYear + '-01-01')
     })
   })
   describe('onFormatValue', () => {
@@ -45,7 +46,8 @@ describe('MaskComponentAdapter', () => {
 
       mask.onBlur(context)
 
-      expect(context.value).toBe('01.01.2023')
+      const todayYear = new Date().getFullYear()
+      expect(context.value).toBe('01.01.' + todayYear)
       expect(context.position.value).toBe(10)
     })
   })

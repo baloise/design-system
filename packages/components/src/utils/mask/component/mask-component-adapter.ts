@@ -12,7 +12,7 @@ import { MaskAttributes, MaskComponent, MaskComponentAdapterType } from './mask-
 
 export class MaskComponentAdapter implements MaskComponentAdapterType {
   private component!: MaskComponent
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   constructor(private mask: Mask) {}
 
@@ -107,13 +107,13 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
 
   bindFormReset(event: UIEvent): void {
     const formElement = event.target as HTMLElement
-    if (formElement && formElement.contains(this.component.el)) {
+    if (formElement && (formElement === this.component.el || formElement.contains(this.component.el))) {
       this.component.value = this.component.initialValue
       this.component.inputValue = this.component.initialValue
       clearTimeout(this.resetHandlerTimer)
       this.resetHandlerTimer = setTimeout(() => {
         if (this.component.nativeInput) {
-          this.component.nativeInput.value = this.component.value || ''
+          this.component.nativeInput.value = this.mask.toFormattedValue(this.component.value || '')
         }
       })
     }

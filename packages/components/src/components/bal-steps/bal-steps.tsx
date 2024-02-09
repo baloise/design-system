@@ -12,9 +12,7 @@ import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoi
 
 @Component({
   tag: 'bal-steps',
-  styleUrls: {
-    css: 'bal-steps.sass',
-  },
+  styleUrl: 'bal-steps.sass',
 })
 export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement
@@ -234,7 +232,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
         if (step.active) {
           hasPassed = false
         }
-        if (!step.hidden) {
+        if (!step.invisible) {
           index = index + 1
         }
         return { ...step, passed: hasPassed, index }
@@ -270,7 +268,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
             steps={3}
           >
             {steps
-              .filter(step => !step.hidden)
+              .filter(step => !step.invisible)
               .map(step => (
                 <bal-carousel-item
                   class={{

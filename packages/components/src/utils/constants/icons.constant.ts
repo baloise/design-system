@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-// generated file by .build/optimize-icons.js
+// generated file
 
 export const balIconYoutube = /*#__PURE__*/ '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" focusable="false" aria-hidden="true"><path fill-rule="evenodd" d="M0 4C0 2.61929 1.11929 1.5 2.5 1.5H11.5C12.8807 1.5 14 2.61929 14 4V10C14 11.3807 12.8807 12.5 11.5 12.5H2.5C1.11929 12.5 0 11.3807 0 10V4ZM5.30998 5.11998V9.31998C5.30935 9.3905 5.32737 9.45993 5.36222 9.52124C5.39707 9.58255 5.4475 9.63356 5.50842 9.66909C5.56933 9.70462 5.63856 9.72342 5.70908 9.72358C5.7796 9.72374 5.84891 9.70524 5.90998 9.66998L9.50998 7.56998C9.57013 7.53469 9.62001 7.48428 9.65467 7.42377C9.68933 7.36325 9.70756 7.29472 9.70756 7.22498C9.70756 7.15524 9.68933 7.08671 9.65467 7.0262C9.62001 6.96568 9.57013 6.91527 9.50998 6.87998L5.90998 4.77998C5.85023 4.74175 5.78117 4.72055 5.71026 4.71865C5.63935 4.71675 5.56926 4.73422 5.50754 4.7692C5.44582 4.80417 5.39481 4.85532 5.36 4.91713C5.32519 4.97894 5.3079 5.04907 5.30998 5.11998Z" clip-rule="evenodd"/></svg>';
 
@@ -48,6 +48,8 @@ export const balIconClose = /*#__PURE__*/ '<svg xmlns="http://www.w3.org/2000/sv
 export const balIconCheck = /*#__PURE__*/ '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" focusable="false" aria-hidden="true"><path fill-rule="evenodd" d="M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z" clip-rule="evenodd"/></svg>';
 
 export const balIconCaretUp = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M9.794,6.607,5.884,2.49A1.255,1.255,0,0,0,4.1,2.5l-3.9,4.1A.75.75,0,1,0,1.294,7.641L4.819,3.928a.249.249,0,0,1,.362,0L8.706,7.641A.75.75,0,1,0,9.794,6.607Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
+
+export const balIconCaretRight = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M7.5,4.1l-4.1-3.9A.75.75,0,1,0,2.36,1.294L6.072,4.819a.249.249,0,0,1,0,.362L2.36,8.706A.75.75,0,0,0,3.393,9.794L7.51,5.884A1.256,1.256,0,0,0,7.5,4.1Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
 
 export const balIconCaretLeft = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M7.124,10a.749.749,0,0,1-.517-.206L2.5,5.9A1.257,1.257,0,0,1,2.49,4.116L6.607.206A.75.75,0,1,1,7.64,1.294L3.928,4.819a.249.249,0,0,0,0,.362L7.64,8.706A.75.75,0,0,1,7.124,10Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
 

@@ -1,5 +1,4 @@
 import { vueOutputTarget } from '@baloise/design-system-output-target-vue'
-import { docComponents } from './doc.components'
 
 export const vueComponentModels: any[] = [
   {
@@ -26,18 +25,24 @@ export const vueComponentModels: any[] = [
   },
 ]
 
-export const VueGenerator = (
-  componentCorePackage = '@baloise/design-system-components',
-  proxiesFile = '../components-vue/src/generated/proxies.ts',
-  excludeComponents = docComponents,
-): any =>
+export const VueGenerator = (): any =>
   vueOutputTarget({
     includeImportCustomElements: true,
-    includePolyfills: false,
     includeDefineCustomElements: false,
-    proxiesFile,
-    componentCorePackage,
+    includeInternalComponents: false,
+    proxiesFile: '../components-vue/src/generated/proxies.ts',
+    componentCorePackage: '@baloise/design-system-components',
     componentModels: vueComponentModels,
-    excludeComponents,
-    customElementsDir: 'dist/components',
+    customElementsDir: 'components',
+  })
+
+export const VueTestGenerator = (): any =>
+  vueOutputTarget({
+    includeImportCustomElements: true,
+    includeDefineCustomElements: false,
+    includeInternalComponents: true,
+    proxiesFile: '../../test/generated/vue-components/index.ts',
+    componentCorePackage: '../',
+    componentModels: vueComponentModels,
+    customElementsDir: 'components',
   })

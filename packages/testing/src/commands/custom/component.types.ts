@@ -13,7 +13,7 @@ declare namespace Cypress {
     /**
      * Waits until the component is fully loaded.
      */
-    waitForComponents(options?: Partial<Loggable>): Chainable<JQuery>
+    waitForComponents(options?: Partial<Loggable & Timeoutable>): Chainable<JQuery>
     /**
      * Gets component and waits until it is ready
      */
@@ -26,5 +26,17 @@ declare namespace Cypress {
      * Waits until the Design System is fully loaded and rendered
      */
     waitForDesignSystem(): Chainable<JQuery>
+    /**
+     * Waits until the browser goes into idle mode
+     */
+    waitAfterIdleCallback(): Chainable<JQuery>
+    /**
+     * Waits until the browser finished rendering
+     */
+    waitAfterFramePaint(): Chainable<JQuery>
+    /**
+     * Waits until the browser finished rendering
+     */
+    waitForBrowser(): Chainable<JQuery>
   }
 }

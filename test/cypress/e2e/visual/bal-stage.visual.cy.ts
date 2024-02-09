@@ -3,25 +3,25 @@ describe('bal-stage', () => {
     cy.visit('/components/bal-stage/test/bal-stage.visual.html').waitForDesignSystem()
 
     cy.platform('desktop')
-    cy.compareSnapshot('stage-basic')
+    cy.testVisual('stage-basic')
 
     cy.platform('tablet')
-    cy.compareSnapshot('stage-basic-tablet')
+    cy.testVisual('stage-basic-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('stage-basic-mobile')
+    cy.testVisual('stage-basic-mobile')
   })
 
   it('large stage', () => {
     cy.visit('/components/bal-stage/test/bal-stage.large.visual.html').waitForDesignSystem()
 
     cy.platform('desktop')
-    cy.compareSnapshot('stage-large')
+    cy.testVisual('stage-large')
 
     cy.platform('tablet')
-    cy.compareSnapshot('stage-large-tablet')
+    cy.testVisual('stage-large-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('stage-large-mobile')
+    cy.testVisual('stage-large-mobile')
   })
 })

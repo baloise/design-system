@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core'
+import { waitAfterIdleCallback } from './helpers'
 
 export interface FormInput<Value> {
   el: HTMLElement
@@ -47,14 +48,9 @@ export const inputListenOnClick = <Value>(component: FormInput<Value>, ev: UIEve
   }
 }
 
-let inputSetFocusTimer: NodeJS.Timer | undefined
-export const inputSetFocus = <Value>(component: FormInput<Value>): void => {
-  clearTimeout(inputSetFocusTimer)
-  inputSetFocusTimer = setTimeout(() => {
-    if (component.nativeInput) {
-      component.nativeInput.focus()
-    }
-  }, 0)
+export const inputSetFocus = async <Value>(component: FormInput<Value>): Promise<void> => {
+  await waitAfterIdleCallback()
+  component?.nativeInput?.focus()
 }
 
 export const inputHandleHostClick = <Value>(component: FormInput<Value>, ev: MouseEvent) => {
@@ -80,7 +76,7 @@ export const inputHandleFocus = <Value>(component: FormInput<Value>, ev: FocusEv
 export const inputHandleReset = <Value>(
   component: FormInput<Value>,
   defaultValue: Value | undefined = undefined,
-  timer: NodeJS.Timer | undefined,
+  timer: NodeJS.Timeout | undefined,
 ) => {
   component.value = defaultValue
   component.inputValue = component.value

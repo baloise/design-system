@@ -18,4 +18,6 @@ export interface Mask {
   firePaste(context: MaskClipboardContext): void
   fireClick(context: MaskMouseContext): void
   fireValueChanged(context: MaskValueChangedContext): void
+  toParsedValue(inputValue?: string): string
+  toFormattedValue(inputValue?: string): string
 }

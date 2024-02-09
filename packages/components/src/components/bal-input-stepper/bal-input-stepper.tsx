@@ -32,9 +32,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 @Component({
   tag: 'bal-input-stepper',
-  styleUrls: {
-    css: 'bal-input-stepper.sass',
-  },
+  styleUrl: 'bal-input-stepper.sass',
 })
 export class InputStepper
   implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
@@ -111,6 +109,11 @@ export class InputStepper
    */
   @Prop({ mutable: true }) value = 0
   private initialValue = 0
+
+  /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
    * Emitted when the input value has changed.

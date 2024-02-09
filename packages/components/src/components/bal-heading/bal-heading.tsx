@@ -13,9 +13,7 @@ import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-heading',
-  styleUrls: {
-    css: 'bal-heading.sass',
-  },
+  styleUrl: 'bal-heading.sass',
 })
 export class Heading implements ComponentInterface {
   private headingEl?: HTMLElement
@@ -176,7 +174,7 @@ export class Heading implements ComponentInterface {
             ...bemTextEl.modifier('subtitle').class(this.subtitle),
             ...bemTextEl.modifier('shadow').class(this.shadow),
             ...bemTextEl.modifier(`color-${fontColor}`).class(),
-            [`is-size-${this.autoFontSize}`]: true,
+            ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
           data-testid="bal-heading"

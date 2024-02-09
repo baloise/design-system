@@ -21,6 +21,10 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
+  get type(): string {
+    return 'NavMenuLinkItem'
+  }
+
   override renderTouch(
     context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>,
   ) {
@@ -38,7 +42,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           label={this.label}
           href={this.href}
           target={this.target}
-          link={this.isLink}
+          link={hasSectionLinkItems || hasServiceLinkItems ? false : this.isLink}
           open={isSelected}
           onClick={ev => this.onAccordionClick(ev)}
         ></AccordionButton>
@@ -74,7 +78,8 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
   }
 
   override render(context?: { onClick: () => void }) {
-    if (this.isLink) {
+    const hasChildren = this.sectionLinkItems.length > 0 || this.serviceLinkItems.length > 0
+    if (!hasChildren && this.isLink) {
       return <bal-tab-item label={this.label} value={this.value} href={this.href} target={this.target}></bal-tab-item>
     }
 

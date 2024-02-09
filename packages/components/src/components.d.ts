@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BalConfigState, BalMode } from "./utils/config";
+import { BalConfigState } from "./utils/config";
 import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
@@ -17,7 +17,7 @@ import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { BalConfigState, BalMode } from "./utils/config";
+export { BalConfigState } from "./utils/config";
 export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
@@ -125,10 +125,6 @@ export namespace Components {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated": boolean;
-        /**
-          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
-         */
-        "mode": BalMode;
         "ready": boolean;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
@@ -156,7 +152,7 @@ export namespace Components {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
+          * @deprecated If `true` the bottom corners get rounded
          */
         "bottomRounded": undefined | boolean;
         /**
@@ -248,7 +244,7 @@ export namespace Components {
          */
         "target": BalProps.BalButtonTarget;
         /**
-          * If `true` the top corners get rounded
+          * @deprecated If `true` the top corners get rounded
          */
         "topRounded": undefined | boolean;
         /**
@@ -467,6 +463,10 @@ export namespace Components {
     }
     interface BalCheckbox {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * If `true`, the checkbox is selected.
          */
         "checked": boolean;
@@ -487,7 +487,7 @@ export namespace Components {
          */
         "getOption": () => Promise<BalCheckboxOption>;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit instead
          */
         "hidden": boolean;
         "hovered": boolean;
@@ -519,6 +519,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit": boolean;
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -568,6 +572,10 @@ export namespace Components {
     }
     interface BalCheckboxGroup {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Defines the column size like the grid.
          */
         "columns": BalProps.BalCheckboxGroupColumns;
@@ -599,6 +607,10 @@ export namespace Components {
           * Defines the layout of the checkbox button
          */
         "interface"?: BalProps.BalCheckboxGroupInterface;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -698,6 +710,10 @@ export namespace Components {
           * Callback to determine which date in the datepicker should be selectable.
          */
         "allowedDates": BalProps.BalDateCallback | undefined;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         /**
           * Closes the accordion
          */
@@ -843,6 +859,10 @@ export namespace Components {
          */
         "allowedDates": BalProps.BalDatepickerCallback | undefined;
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Closes the popover
          */
         "close": () => Promise<void>;
@@ -967,6 +987,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
+         */
+        "horizontal"?: boolean;
+        /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
@@ -1081,6 +1105,10 @@ export namespace Components {
           * Accepted MIME-Types like `image/png,image/jpeg`.
          */
         "accept"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         /**
           * Sets the file list to an empty list
          */
@@ -1309,6 +1337,10 @@ export namespace Components {
          */
         "allowedKeyPress"?: string;
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize": string;
@@ -1425,6 +1457,10 @@ export namespace Components {
     }
     interface BalInputDate {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
         "autocomplete": BalProps.BalInputAutocomplete;
@@ -1446,6 +1482,14 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -1491,6 +1535,10 @@ export namespace Components {
         "readonly": boolean;
     }
     interface BalInputSlider {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         /**
           * The tabindex of the control.
          */
@@ -1550,6 +1598,10 @@ export namespace Components {
         "value"?: string | number;
     }
     interface BalInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -2166,6 +2218,10 @@ export namespace Components {
         "color": BalProps.BalNotificationColor;
     }
     interface BalNumberInput {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -2476,7 +2532,7 @@ export namespace Components {
          */
         "getOption": () => Promise<BalRadioOption>;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit or invisible instead
          */
         "hidden": boolean;
         "hovered": boolean;
@@ -2504,6 +2560,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit": boolean;
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -2549,6 +2609,10 @@ export namespace Components {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         /**
           * Defines the column size like the grid.
          */
@@ -2609,6 +2673,10 @@ export namespace Components {
         "verticalOnMobile": boolean;
     }
     interface BalSelect {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
@@ -2931,13 +2999,17 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalStepOption>;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden": boolean;
         /**
           * Link to path.
          */
         "href": string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible": boolean;
         /**
           * Label for the tab.
          */
@@ -3003,7 +3075,7 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden": boolean;
         /**
@@ -3014,6 +3086,10 @@ export namespace Components {
           * Tab icon not available for the steps.
          */
         "icon"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible": boolean;
         /**
           * Label for the tab.
          */
@@ -3206,6 +3282,10 @@ export namespace Components {
     }
     interface BalTextarea {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize": string;
@@ -3288,6 +3368,10 @@ export namespace Components {
         "wrap"?: BalProps.BalTextareaWrap;
     }
     interface BalTimeInput {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -3380,10 +3464,6 @@ export namespace Components {
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalAccordionElement;
-}
-export interface BalAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalAppElement;
 }
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3599,18 +3679,7 @@ declare global {
         prototype: HTMLBalAccordionTriggerElement;
         new (): HTMLBalAccordionTriggerElement;
     };
-    interface HTMLBalAppElementEventMap {
-        "balAppLoad": BalEvents.BalAppLoadDetail;
-    }
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalAppElement: {
         prototype: HTMLBalAppElement;
@@ -5161,11 +5230,6 @@ declare namespace LocalJSX {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated"?: boolean;
-        /**
-          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
-         */
-        "mode"?: BalMode;
-        "onBalAppLoad"?: (event: BalAppCustomEvent<BalEvents.BalAppLoadDetail>) => void;
         "ready"?: boolean;
     }
     interface BalBadge {
@@ -5192,7 +5256,7 @@ declare namespace LocalJSX {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
+          * @deprecated If `true` the bottom corners get rounded
          */
         "bottomRounded"?: undefined | boolean;
         /**
@@ -5300,7 +5364,7 @@ declare namespace LocalJSX {
          */
         "target"?: BalProps.BalButtonTarget;
         /**
-          * If `true` the top corners get rounded
+          * @deprecated If `true` the top corners get rounded
          */
         "topRounded"?: undefined | boolean;
         /**
@@ -5528,6 +5592,10 @@ declare namespace LocalJSX {
     }
     interface BalCheckbox {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * If `true`, the checkbox is selected.
          */
         "checked"?: boolean;
@@ -5540,7 +5608,7 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit instead
          */
         "hidden"?: boolean;
         "hovered"?: boolean;
@@ -5572,6 +5640,10 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit"?: boolean;
         /**
           * Emitted when the toggle loses focus.
          */
@@ -5630,6 +5702,10 @@ declare namespace LocalJSX {
     }
     interface BalCheckboxGroup {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Defines the column size like the grid.
          */
         "columns"?: BalProps.BalCheckboxGroupColumns;
@@ -5657,6 +5733,10 @@ declare namespace LocalJSX {
           * Defines the layout of the checkbox button
          */
         "interface"?: BalProps.BalCheckboxGroupInterface;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -5777,6 +5857,10 @@ declare namespace LocalJSX {
           * Callback to determine which date in the datepicker should be selectable.
          */
         "allowedDates"?: BalProps.BalDateCallback | undefined;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Closes the datepicker popover after selection
          */
@@ -5932,6 +6016,10 @@ declare namespace LocalJSX {
          */
         "allowedDates"?: BalProps.BalDatepickerCallback | undefined;
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
@@ -6054,6 +6142,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
+         */
+        "horizontal"?: boolean;
+        /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
@@ -6171,6 +6263,10 @@ declare namespace LocalJSX {
           * Accepted MIME-Types like `image/png,image/jpeg`.
          */
         "accept"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -6391,6 +6487,10 @@ declare namespace LocalJSX {
          */
         "allowedKeyPress"?: string;
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize"?: string;
@@ -6514,6 +6614,10 @@ declare namespace LocalJSX {
     }
     interface BalInputDate {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
         "autocomplete"?: BalProps.BalInputAutocomplete;
@@ -6530,6 +6634,14 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -6586,6 +6698,10 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
     }
     interface BalInputSlider {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -6656,6 +6772,10 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface BalInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -7307,6 +7427,10 @@ declare namespace LocalJSX {
     }
     interface BalNumberInput {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
@@ -7605,7 +7729,7 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit or invisible instead
          */
         "hidden"?: boolean;
         "hovered"?: boolean;
@@ -7633,6 +7757,10 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit"?: boolean;
         /**
           * Emitted when the toggle loses focus.
          */
@@ -7697,6 +7825,10 @@ declare namespace LocalJSX {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Defines the column size like the grid.
          */
@@ -7763,6 +7895,10 @@ declare namespace LocalJSX {
         "verticalOnMobile"?: boolean;
     }
     interface BalSelect {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
@@ -8080,13 +8216,17 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden"?: boolean;
         /**
           * Link to path.
          */
         "href"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible"?: boolean;
         /**
           * Label for the tab.
          */
@@ -8144,7 +8284,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden"?: boolean;
         /**
@@ -8155,6 +8295,10 @@ declare namespace LocalJSX {
           * Tab icon not available for the steps.
          */
         "icon"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible"?: boolean;
         /**
           * Label for the tab.
          */
@@ -8352,6 +8496,10 @@ declare namespace LocalJSX {
     }
     interface BalTextarea {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize"?: string;
@@ -8441,6 +8589,10 @@ declare namespace LocalJSX {
         "wrap"?: BalProps.BalTextareaWrap;
     }
     interface BalTimeInput {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */

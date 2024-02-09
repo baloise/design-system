@@ -1,9 +1,11 @@
 import { EventEmitter } from '@stencil/core'
 import { balBrowser } from './browser'
-import { BalConfig } from './config'
+import { BalConfig, useBalConfig } from './config'
 import {
+  balIconCaretUp,
   balIconCaretDown,
   balIconCaretLeft,
+  balIconCaretRight,
   balIconCheck,
   balIconClose,
   balIconDate,
@@ -24,9 +26,9 @@ import {
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
-export const rIC = (callback: () => void) => {
+export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback)
+    ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
   }
@@ -174,10 +176,34 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const ael = config._ael
+      if (ael) {
+        return ael(el, eventName, callback, opts)
+      } else if (config._ael) {
+        return config._ael(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.addEventListener(eventName, callback, opts)
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const rel = config._rel
+      if (rel) {
+        return rel(el, eventName, callback, opts)
+      } else if (config._rel) {
+        return config._rel(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.removeEventListener(eventName, callback, opts)
 }
 
@@ -227,8 +253,10 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       balIconNavGoRight,
       balIconNavGoDown,
       balIconNavGoUp,
-      balIconCaretLeft,
+      balIconCaretUp,
       balIconCaretDown,
+      balIconCaretLeft,
+      balIconCaretRight,
       balIconCheck,
       balIconDate,
       balIconDocument,

@@ -12,12 +12,10 @@ export {
   updateBalRegion,
   onBalConfigChange,
   useBalConfig,
-  initStyleMode,
-  initialize,
+  setupConfig,
   BalConfig,
   BalConfigState,
   BalConfigObserver,
-  BalMode,
   BalRegion,
   BalLanguage,
   BalSwissLanguage,
@@ -25,6 +23,7 @@ export {
   BalLuxembourgInternationalLanguage,
   BalGermanLanguage,
   BalIcons,
+  BalPlatformConfig,
 } from './utils/config'
 
 /**
@@ -57,7 +56,7 @@ export * from './components/bal-label/bal-label.i18n'
 /**
  * Utils
  */
-export { initializeBaloiseDesignSystem } from './initialize'
+export { initializeBaloiseDesignSystem as initialize, initializeBaloiseDesignSystem } from './initialize'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/bal-checkbox/utils/bal-checkbox.util'
@@ -78,9 +77,21 @@ export {
 export { scrollToFirstInvalidField } from './utils/form'
 export { BalScrollHandler } from './utils/scroll'
 export { balBrowser } from './utils/browser'
-export { balDevice } from './utils/device'
-export { balBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from './utils/breakpoints'
-export { BalOrientationObserver, BalOrientationInfo, balOrientationSubject } from './utils/orientation'
+export { balDevice, BalDevice } from './utils/device'
+export {
+  balBreakpoints,
+  balBreakpointSubject,
+  BalBreakpointObserver,
+  BalBreakpoints,
+  BalBreakpointSubject,
+  BalBreakpointsUtil,
+} from './utils/breakpoints'
+export {
+  BalOrientationObserver,
+  BalOrientationInfo,
+  balOrientationSubject,
+  BalOrientationSubject,
+} from './utils/orientation'
 export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
 export { BalDate } from './utils/date'
 

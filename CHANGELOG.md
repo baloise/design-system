@@ -1,28 +1,161 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in dedicated changelog files.
+## 15.2.3
 
-## Packages
+### Patch Changes
 
-Each package has its own changelog file.
+- **maps**: fix image inline svg urls for the legacy marker api. ( [#1324](https://github.com/baloise/design-system/pull/1324))
 
-| Package                                                                                                                     | Status                                                                                                                                                    | Description                                                             |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Components](https://github.com/baloise/design-system/blob/main/packages/components/CHANGELOG.md)                 | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components)](https://www.npmjs.com/package/@baloise/design-system-components)                 | Core package build with web components and global styling.              |
-| [Components Angular](https://github.com/baloise/design-system/blob/main/packages/components-angular/CHANGELOG.md) | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular)](https://www.npmjs.com/package/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
-| [Components React](https://github.com/baloise/design-system/blob/main/packages/components-react/CHANGELOG.md)     | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)](https://www.npmjs.com/package/@baloise/design-system-components-react)     | React component proxies based on the the core package.                  |
-| [Components Table](https://github.com/baloise/design-system/blob/main/packages/components-table/CHANGELOG.md)     | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)](https://www.npmjs.com/package/@baloise/design-system-components-table)     | Integration library for AG-Grid with styles and renderer functions      |
-| [Components Vue](https://github.com/baloise/design-system/blob/main/packages/components-vue/CHANGELOG.md)         | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)](https://www.npmjs.com/package/@baloise/design-system-components-vue)         | Vue component proxies based on the the core package.                    |
-| [CSS](https://github.com/baloise/design-system/blob/main/packages/css/CHANGELOG.md)                               | [![npm](https://img.shields.io/npm/v/@baloise/design-system-css)](https://www.npmjs.com/package/@baloise/design-system-css)                               | Basic CSS styles with utility classes.                                  |
-| [Fonts](https://github.com/baloise/design-system/blob/main/packages/fonts/CHANGELOG.md)                           | [![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)](https://www.npmjs.com/package/@baloise/design-system-fonts)                           | Web-Font of the design system.                                          |
-| [Icons](https://github.com/baloise/design-system/blob/main/packages/icons/CHANGELOG.md)                           | [![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)](https://www.npmjs.com/package/@baloise/design-system-icons)                           | SVG icons of the design system.                                         |
-| [Favicons](https://github.com/baloise/design-system/blob/main/packages/favicons/CHANGELOG.md)                     | [![npm](https://img.shields.io/npm/v/@baloise/design-system-favicons)](https://www.npmjs.com/package/@baloise/design-system-favicons)                     | Favicons of the design system.                                          |
-| [Maps](https://github.com/baloise/design-system/blob/main/packages/maps/CHANGELOG.md)                             | [![npm](https://img.shields.io/npm/v/@baloise/design-system-maps)](https://www.npmjs.com/package/@baloise/design-system-maps)                             | Google Maps styles and icons.                                           |
-| [Testing](https://github.com/baloise/design-system/blob/main/packages/testing/CHANGELOG.md)                       | [![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)](https://www.npmjs.com/package/@baloise/design-system-testing)                       | Testing package with custom and overridden commands for each component. |
-| [Tokens](https://github.com/baloise/design-system/blob/main/packages/tokens/CHANGELOG.md)                         | [![npm](https://img.shields.io/npm/v/@baloise/design-system-tokens)](https://www.npmjs.com/package/@baloise/design-system-tokens)                         | Design Tokens like color and spacing.                                   |
+## 15.2.2
+
+### Patch Changes
+
+- **field-hint**: Ensure proper alignment of field hint by adjusting its position to the end of the label text. ( [#1229](https://github.com/baloise/design-system/pull/1229))
+
+- **styles**: Decouple components from css utility classes ( [#1304](https://github.com/baloise/design-system/pull/1304))
+
+- **deps**: Update stencil to 4.11.0 ( [#1307](https://github.com/baloise/design-system/pull/1307))
+
+- **vue**: change location of stencil components ( [#1310](https://github.com/baloise/design-system/pull/1310))
+
+- **date**: due to an android keyboard bug the input mode is switched to decimal. ( [#1312](https://github.com/baloise/design-system/pull/1312))
+
+## 15.2.1
+
+### Patch Changes
+
+- **date**: disabled years or months in the selection list cannot be selected anymore. ([#1298](https://github.com/baloise/design-system/pull/1298))
+- **field**: links A11y information only for direct controls, labels and messages. ([#1299](https://github.com/baloise/design-system/pull/1299))
+- **carousel**: movement for large controls variant on mobile is optimized. ([#1298](https://github.com/baloise/design-system/pull/1298))
+
+## 15.2.0
+
+### Minor Changes
+
+- **angular**: schematic to seamlessly integrate the design system into your existing project. ([#1277](https://github.com/baloise/design-system/pull/1277))
+
+### Patch Changes
+
+- **date**: rerenders the calendar grid when min or max property was changed. ([#1282](https://github.com/baloise/design-system/pull/1282))
+
+## 15.1.1
+
+### Patch Changes
+
+- **nav**: only renders the arrow symbol if link is valid ([#1275](https://github.com/baloise/design-system/pull/1275))
+
+## 15.1.0
+
+### Minor Changes
+
+- **forms**: Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid. ([#1271](https://github.com/baloise/design-system/pull/1271))
+
+### Patch Changes
+
+- **a11y**: The term `hidden` is a reserved accessibility (a11y) value. Consequently, we found it necessary to rename our hidden properties for checkboxes, radio buttons, tabs, and steps. ([#1266](https://github.com/baloise/design-system/pull/1266))
+  The attribute remains in place for now, ensuring no breaking changes at this time.
+
+  The `hidden` property for the checkbox and radio has been updated and renamed to `non-submit.`
+  The `hidden` property for the tabs and steps has been updated and renamed to `invisible.`
+
+- **radio-group & checkbox-group**: component now updates its children when there are changes in the disabled or invalid status. ([#1264](https://github.com/baloise/design-system/pull/1264) )
+- **field**: in horizontal layout now lacks right padding, and the label is aligned to the right. ([#1260](https://github.com/baloise/design-system/pull/1260))
+- **carousel**: corrected the z-index value for sticky controls. ([#1265](https://github.com/baloise/design-system/pull/1265))
+- **nav**: now provides enhanced support for colored service cards on mobile resolutions. ([#1261](https://github.com/baloise/design-system/pull/1261) )
+- **carousel**: has vertical scrolling with tab controls on mobile devices. ([#1269](https://github.com/baloise/design-system/pull/1269))
+- **angular**: `bal-ng-error` is now more synchronized with Angular lifecycles, ensuring improved visibility and hiding of validation messages. ([#1263](https://github.com/baloise/design-system/pull/1263))
+- **brand-icons**: Merges styles from `<style>` elements to the style attribute of matching elements. ([#1262](https://github.com/baloise/design-system/pull/1262))
+
+## 15.0.2
+
+### Patch Changes
+
+- **tooltip & popup**: Adjust shadow value to normal. ([#1240](https://github.com/baloise/design-system/pull/1240))
+- **file-upload**: Trigger the `balFilesAdded` event after files have been added. ([#1236](https://github.com/baloise/design-system/pull/1236))
+- **nav**: Add missing `➞` sign to the overview links in the `bal-nav` component and adjust padding and height of the `bal-popup` component in fullscreen variant. ([#1242](https://github.com/baloise/design-system/pull/1242))
+- **carousel**: Reduce padding tab buttons to allow longer labels. ([#1239](https://github.com/baloise/design-system/pull/1239))
+
+## 15.0.1
+
+### Patch Changes
+
+- **logo, spinner & nav**: Fix animation issue. ([#1233](https://github.com/baloise/design-system/pull/1233))
+- **nav**: Fix the scrolling behavior of the `bal-nav` component on Safari browsers for touch devices. ([#1233](https://github.com/baloise/design-system/pull/1233))
+- **nav**: Enhance the functionality of the `bal-nav` accordion on touch devices to ensure that when a link is activated, it behaves as an accordion. ([#1235](https://github.com/baloise/design-system/pull/1235))
+
+## 15.0.0
+
+### Major Changes
+
+- **styles**: Removed the deprecated option of component styles with SASS. Instead, for customizing the component design, use CSS Variables. ([#1127](https://github.com/baloise/design-system/pull/1127))
+- **angular**: The option to `applyPolyfills` for outdated browsers such as IE11 and legacy Edge has been deprecated, as the current design system no longer provides support for these versions. ([#1127](https://github.com/baloise/design-system/pull/1127))
+- **angular**: Now by default the Baloise Design System will mark a form control as invalid when it's been touched and is indeed invalid. ([#1127](https://github.com/baloise/design-system/pull/1127))
+  To disable this feature, set setInvalid to false in the design system configuration.
+
+  ```ts
+  BaloiseDesignSystemModule.forRoot({
+    defaults: { ... },
+    forms: {
+      setInvalid: false, // to deactivate it
+    },
+  })
+  ```
+
+### Minor Changes
+
+- **components** are now available as standalone elements for Angular v17. [#1127](https://github.com/baloise/design-system/pull/1127)
+
+  Use the `provideBaloiseDesignSystem` provider within the app.config.ts file, where Angular providers are typically defined.
+
+  **app.config.ts**
+
+  ```ts
+  import { ApplicationConfig, importProvidersFrom } from "@angular/core";
+
+  import { provideBaloiseDesignSystem } from "@baloise/design-system-components-angular/standalone";
+
+  export const appConfig: ApplicationConfig = {
+    providers: [provideBaloiseDesignSystem()],
+  };
+  ```
+
+  In each app component, import the necessary Baloise Design System components or a bundled set.
+
+  **app.component.ts**
+
+  ```ts
+  import { CUSTOM_ELEMENTS_SCHEMA, Component } from "@angular/core";
+  import { CommonModule } from "@angular/common";
+  import {
+    BalApp,
+    BalButton,
+  } from "@baloise/design-system-components-angular/standalone";
+
+  export interface UpdateControl {
+    name: string;
+    value: any;
+  }
+
+  @Component({
+    selector: "app-root",
+    standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [CommonModule, BalApp, BalButton],
+    template: `
+      <bal-app>
+        <main class="container py-normal">
+          <bal-button>My Button</bal-button>
+        </main>
+      </bal-app>
+    `,
+  })
+  export class AppComponent {}
+  ```
+
+#### Webpack builder
+
+For projects based on the builder `@angular-devkit/build-angular:browser` use the `@baloise/design-system-components-angular/legacy`.
 
 ## Previous Versions
 
-Previous version below 12.2.0 are document in a separate changelog file.
-
-- [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_v12.md)
+- [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_OLD.md)

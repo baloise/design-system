@@ -112,7 +112,7 @@ export const FilterButtons = Story({
     () => `<bal-field>
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-        <bal-checkbox-group vertical="false" interface="select-button">
+        <bal-checkbox-group interface="select-button">
             <bal-checkbox checked="true">
                 Label
             </bal-checkbox>
@@ -138,7 +138,7 @@ export const CheckboxButton = Story({
             <bal-content>
                 <bal-label>Simple checkbox button</bal-label>
             </bal-content>
-            <bal-checkbox label-hidden name="checkbox-example" value="1"></bal-checkbox>
+            <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
         </bal-stack>
     </bal-checkbox-button>
     <bal-checkbox-button>
@@ -148,7 +148,7 @@ export const CheckboxButton = Story({
                 <bal-label>Checkbox button with a switch</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox interface="switch" label-hidden name="checkbox-example" value="2"></bal-checkbox>
+            <bal-checkbox interface="switch" label-hidden="true" name="checkbox-example" value="2"></bal-checkbox>
         </bal-stack>
     </bal-checkbox-button>
     <bal-checkbox-button invalid>
@@ -158,7 +158,7 @@ export const CheckboxButton = Story({
                 <bal-label>Invalid button</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox interface="switch" label-hidden name="checkbox-example" value="3"></bal-checkbox>
+            <bal-checkbox interface="switch" label-hidden="true" name="checkbox-example" value="3"></bal-checkbox>
         </bal-stack>
     </bal-checkbox-button>
     <bal-checkbox-button disabled="true">
