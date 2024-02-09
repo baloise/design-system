@@ -1,4 +1,5 @@
 export { selectors } from '../../../packages/testing/src/selectors'
+export { balViewport } from '../../../packages/testing/src/viewports'
 export { testOnPlatforms } from '../../../packages/testing/src/commands/helpers'
 export type { Platforms } from '../../../packages/testing/src/commands/helpers'
 

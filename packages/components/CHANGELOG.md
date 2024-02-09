@@ -1,5 +1,11 @@
 # @baloise/design-system-components
 
+## 15.2.3
+
+### Patch Changes
+
+- **maps**: fix image inline svg urls for the legacy marker api. ( [#1324](https://github.com/baloise/design-system/pull/1324))
+
 ## 15.2.2
 
 ### Patch Changes

@@ -62,12 +62,7 @@ async function optimizeSvg() {
 
 async function optimizeIcon(input) {
   const svg = await svgo.optimize(input, {
-    plugins: [
-      {
-        name: 'preset-default',
-        active: false,
-      },
-    ],
+    plugins: [],
   })
   return svg.data
 }
