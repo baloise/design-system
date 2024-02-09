@@ -270,7 +270,9 @@ export class NavMetaBar
 
     const elementToScroll = this.el.querySelector(`#${item.id}`)
     if (elementToScroll) {
-      elementToScroll.scrollIntoView()
+      elementToScroll.scrollIntoView({
+        behavior: 'smooth',
+      })
 
       // location.href = '#'
       // location.href = `#${item.id}`
@@ -456,7 +458,8 @@ export class NavMetaBar
                     target={this.activeMenuLinkItem?.overviewLink?.target}
                     onClick={() => this.linkItemClickListener(this.activeMenuLinkItem?.overviewLink)}
                   >
-                    {this.activeMenuLinkItem?.overviewLink?.label}
+                    {this.activeMenuLinkItem?.overviewLink?.label}{' '}
+                    {this.activeMenuLinkItem?.overviewLink?.label ? '➞' : ''}
                   </bal-nav-link>
                   {this.renderGridLinks(this.activeMenuLinkItem)}
                 </bal-nav-menu-flyout>
@@ -601,7 +604,7 @@ export class NavMetaBar
           })
         }
       >
-        <bal-logo></bal-logo>
+        <bal-logo animated></bal-logo>
       </Link>
     )
   }

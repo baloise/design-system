@@ -41,7 +41,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
 }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item')
 
-  if (item.hidden) {
+  if (item.invisible) {
     return
   }
 
@@ -88,7 +88,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
-        'bal-focusable': !item.disabled && !item.hidden,
+        'bal-focusable': !item.disabled && !item.invisible,
       }}
       draggable={false}
       data-tabs={tabsId}

@@ -24,6 +24,17 @@
     +element(title)
       display: block
       margin-bottom: 1rem
+      +element(heading)
+        font-family: var(--bal-title-font-family)
+        font-weight: var(--bal-title-font-weight)
+        font-size: var(--bal-size-x-large)
+        line-height: var(--bal-line-height-x-large)
+        +tablet
+          font-size: var(--bal-size-tablet-x-large)
+          line-height: var(--bal-line-height-tablet-x-large)
+        +desktop
+          font-size: var(--bal-size-desktop-x-large)
+          line-height: var(--bal-line-height-desktop-x-large)
     +element(buttons)
       +modifier(is-hidden-desktop)
         +tablet

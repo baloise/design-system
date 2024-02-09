@@ -6,13 +6,13 @@ describe('bal-nav-meta-bar', () => {
 
     it('basic component', () => {
       cy.platform('desktop').wait(32)
-      cy.compareSnapshot('meta-bar-desktop')
+      cy.testVisual('meta-bar-desktop')
 
       cy.platform('tablet').wait(32)
-      cy.compareSnapshot('meta-bar-tablet')
+      cy.testVisual('meta-bar-tablet')
 
       cy.platform('mobile').wait(32)
-      cy.compareSnapshot('meta-bar-mobile')
+      cy.testVisual('meta-bar-mobile')
     })
   })
 })

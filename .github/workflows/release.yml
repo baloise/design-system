@@ -63,6 +63,20 @@ jobs:
           tag: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
           message: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
 
+      - name: Update changelog file
+        if: steps.changesets.outputs.published == 'true'
+        run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/components/CHANGELOG.md > CHANGELOG.md
+        shell: bash
+
+      - name: Commit changelog
+        if: steps.changesets.outputs.published == 'true'
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'CHANGELOG.md'
+          message: 'chore(): update changelog'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Merge main -> production
         if: steps.changesets.outputs.published == 'true'
         uses: devmasx/merge-branch@master

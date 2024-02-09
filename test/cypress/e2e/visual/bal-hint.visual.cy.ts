@@ -7,10 +7,10 @@ describe('bal-hint', () => {
     beforeEach(() => cy.platform('desktop'))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('hint-basic-desktop')
-      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-desktop')
+      cy.getByTestId('basic').testVisual('hint-basic-desktop')
+      cy.getByTestId('basic').click().balHintFindOverlay().testVisual('hint-basic-open-desktop')
       cy.getByTestId('basic').balHintFindCloseButton().click()
-      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop')
+      cy.getByTestId('small').click().balHintFindOverlay().testVisual('hint-small-desktop')
     })
   })
 
@@ -18,10 +18,10 @@ describe('bal-hint', () => {
     beforeEach(() => cy.platform('tablet'))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('hint-basic-tablet')
-      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-tablet')
+      cy.getByTestId('basic').testVisual('hint-basic-tablet')
+      cy.getByTestId('basic').click().balHintFindOverlay().testVisual('hint-basic-open-tablet')
       cy.getByTestId('basic').balHintFindCloseButton().click()
-      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet')
+      cy.getByTestId('small').click().balHintFindOverlay().testVisual('hint-small-tablet')
     })
   })
 
@@ -29,10 +29,10 @@ describe('bal-hint', () => {
     beforeEach(() => cy.platform('mobile').wait(100))
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot('hint-basic-mobile')
-      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-mobile')
+      cy.getByTestId('basic').testVisual('hint-basic-mobile')
+      cy.getByTestId('basic').click().balHintFindOverlay().testVisual('hint-basic-open-mobile')
       cy.getByTestId('basic').balHintFindCloseButton().click()
-      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-mobile')
+      cy.getByTestId('small').click().balHintFindOverlay().testVisual('hint-small-mobile')
     })
   })
 })

@@ -4,7 +4,9 @@
     "lib": ["es5", "dom"],
     "types": ["cypress", "node", "cypress-file-upload", "cypress-visual-regression", "cypress-axe"],
     "typeRoots": ["node_modules/@types"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts"]

@@ -86,6 +86,11 @@ export class InputSlider implements BalAriaFormLinking {
   @Prop({ mutable: true }) value?: string | number = ''
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a keyboard input occurred.
    */
   @Event() balInput!: EventEmitter<BalEvents.BalInputSliderInputDetail>
@@ -117,7 +122,7 @@ export class InputSlider implements BalAriaFormLinking {
     }
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
@@ -155,7 +160,7 @@ export class InputSlider implements BalAriaFormLinking {
     }
   }
 
-  private setFocusTimer?: NodeJS.Timer
+  private setFocusTimer?: NodeJS.Timeout
 
   /**
    * Sets focus on the native `input` in `bal-input`. Use this method instead of the global

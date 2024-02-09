@@ -109,6 +109,11 @@ export class TimeInput
   @Prop({ mutable: true }) value?: string = undefined
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a keyboard input occurred.
    */
   @Event() balInput!: EventEmitter<BalEvents.BalTimeInputInputDetail>
@@ -143,7 +148,7 @@ export class TimeInput
     inputListenOnClick(this, ev)
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

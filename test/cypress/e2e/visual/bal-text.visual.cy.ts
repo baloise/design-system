@@ -3,23 +3,23 @@ describe('bal-text', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('text-desktop')
+    cy.getByTestId('basic').testVisual('text-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('text-tablet')
+    cy.getByTestId('basic').testVisual('text-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('text-mobile')
+    cy.getByTestId('basic').testVisual('text-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('text-variants-desktop')
+    cy.testVisual('text-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('text-variants-tablet')
+    cy.testVisual('text-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('text-variants-mobile')
+    cy.testVisual('text-variants-mobile')
   })
 })

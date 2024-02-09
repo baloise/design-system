@@ -111,6 +111,11 @@ export class InputStepper
   private initialValue = 0
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when the input value has changed.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalInputStepperChangeDetail>

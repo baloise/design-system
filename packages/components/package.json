@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "15.0.0",
+  "version": "15.2.3",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -9,23 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "bugs": {
-    "url": "https://github.com/baloise/design-system/issues"
-  },
   "homepage": "https://design.baloise.dev",
-  "contributors": [
-    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
-    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
-    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
-    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
-    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
-  ],
-  "keywords": [
-    "design-system",
-    "web-components",
-    "stenciljs"
-  ],
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -38,37 +22,31 @@
   "files": [
     "components/",
     "dist/",
-    "hydrate/",
     "loader/"
   ],
   "scripts": {
     "==================== START =========================": "================================",
-    "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
-    "dev": "stencil build --config stencil.config.docs.ts --watch",
+    "serve": "BAL_DEVELOPMENT=true stencil build --dev --serve --watch",
+    "dev": "BAL_DOCUMENTATION=true stencil build --watch",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --es5 && npm run build:post",
-    "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
-    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
+    "build": "node scripts/pre-build.mjs && stencil build && node scripts/post-build.mjs",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "cy:build": "stencil build --config stencil.config.e2e.ts",
-    "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && node ../../.build/interfaces.js",
-    "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js"
+    "cy:build": "stencil build"
   },
   "dependencies": {
-    "@baloise/design-system-css": "15.0.0",
-    "@baloise/design-system-fonts": "15.0.0",
-    "@baloise/design-system-icons": "15.0.0",
-    "@baloise/design-system-tokens": "15.0.0",
+    "@baloise/design-system-css": "15.2.3",
+    "@baloise/design-system-fonts": "15.2.3",
+    "@baloise/design-system-icons": "15.2.3",
+    "@baloise/design-system-tokens": "15.2.3",
     "@baloise/web-app-utils": "3.11.2",
     "@floating-ui/dom": "~1.5.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~4.8.0",
-    "@types/luxon": "~3.3.5",
+    "@stencil/core": "4.11.0",
+    "@types/luxon": "~3.4.2",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "date-fns": "~2.30.0",
@@ -84,14 +62,14 @@
     "lodash.round": "~4.0.4",
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
-    "lottie-web": "5.12.2",
+    "lottie-web": "5.8.1",
     "luxon": "~3.4.3",
-    "tslib": "~2.1.0"
+    "tslib": "2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "15.0.0",
-    "@baloise/design-system-output-target-react": "15.0.0",
-    "@baloise/design-system-output-target-vue": "15.0.0"
+    "@baloise/design-system-output-target-angular": "15.2.3",
+    "@baloise/design-system-output-target-react": "15.2.3",
+    "@baloise/design-system-output-target-vue": "15.2.3"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6",
   "sideEffects": false
