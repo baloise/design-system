@@ -4,6 +4,11 @@
 export * from './selectors'
 
 /**
+ * Viewports sizes
+ */
+export * from './viewports'
+
+/**
  * Helpers
  */
 export { testOnPlatforms } from './commands/helpers'

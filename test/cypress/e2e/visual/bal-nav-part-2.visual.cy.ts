@@ -1,4 +1,4 @@
-import { Platforms } from '../../../src/types'
+import { Platforms, balViewport } from 'support/utils'
 
 describe('bal-nav - touch', () => {
   testNavigationOnTouch('tablet')
@@ -6,25 +6,35 @@ describe('bal-nav - touch', () => {
 
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
+      const visualOptions: any = {
+        errorThreshold: 0.2,
+        capture: 'viewport',
+        clip: balViewport[platform],
+      }
+
       beforeEach(() => {
-        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
+        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('closed menu on top', () => {
-        cy.testVisual(`nav-touch-${platform}-closed-top`, 0.2)
+        cy.testVisual(`nav-touch-${platform}-closed-top`, visualOptions)
       })
 
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.wait(400)
-        cy.testVisual(`nav-touch-${platform}-closed-bottom`, 0.2)
+        cy.waitForBrowser()
+        cy.testVisual(`nav-touch-${platform}-closed-bottom`, visualOptions)
       })
 
       it('open menu', () => {
         cy.scrollTo('top')
-        cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click()
-        cy.wait(400)
-        cy.testVisual(`nav-touch-${platform}-open`, 0.2)
+        cy.getByTestId('basic')
+          .find('.bal-nav-meta-bar')
+          .find('bal-stack > bal-button')
+          .eq(1)
+          .click()
+          .waitForComponents()
+        cy.testVisual(`nav-touch-${platform}-open`, visualOptions)
       })
     })
   }
