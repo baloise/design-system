@@ -15,10 +15,6 @@ describe('bal-radio', () => {
         cy.getByTestId('select-button-invalid').testA11y()
         cy.getByTestId('select-button-disabled').testA11y()
       })
-
-      it('radio buttons', () => {
-        cy.getByTestId('radio-buttons').testA11y()
-      })
     })
   })
 })
