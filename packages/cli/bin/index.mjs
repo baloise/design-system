@@ -1081,8 +1081,34 @@ const replacementsOpacity = {
 }
 
 const replacementsRadius = {
-  from: [/has-radius/g],
-  to: ['radius'],
+  from: [
+    /has-radius-none/g,
+    /has-radius-normal/g,
+    /has-radius-large/g,
+    /has-radius-rounded/g,
+    /has-radius-top-none/g,
+    /has-radius-top-normal/g,
+    /has-radius-top-large/g,
+    /has-radius-top-rounded/g,
+    /has-radius-bottom-none/g,
+    /has-radius-bottom-normal/g,
+    /has-radius-bottom-large/g,
+    /has-radius-bottom-rounded/g,
+  ],
+  to: [
+    'radius-none',
+    'radius-normal',
+    'radius-large',
+    'radius-rounded',
+    'radius-top-none',
+    'radius-top-normal',
+    'radius-top-large',
+    'radius-top-rounded',
+    'radius-bottom-none',
+    'radius-bottom-normal',
+    'radius-bottom-large',
+    'radius-bottom-rounded',
+  ],
 }
 
 const replacementsShadow = {
