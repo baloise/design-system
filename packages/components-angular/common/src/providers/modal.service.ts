@@ -6,7 +6,9 @@ import { AngularDelegate } from './angular-delegate'
 import { OverlayBaseController } from './overlay'
 import { BalTokenModal } from '../utils/token'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {
   constructor(
     private angularDelegate: AngularDelegate,

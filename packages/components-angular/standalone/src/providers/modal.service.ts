@@ -5,7 +5,9 @@ import { defineCustomElement } from '@baloise/design-system-components/component
 
 import { AngularDelegate, OverlayBaseController, BalTokenModal } from '@baloise/design-system-components-angular/common'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {
   constructor(
     private angularDelegate: AngularDelegate,
