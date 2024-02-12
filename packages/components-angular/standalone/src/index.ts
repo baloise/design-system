@@ -4,7 +4,6 @@ export {
   AngularDelegate,
   BalBreakpointsService,
   BalConfigService,
-  BalModalService,
   BalOrientationService,
   BalSnackbarService,
   BalToastService,
@@ -22,6 +21,7 @@ export {
   BalTokenOrientationSubject,
 } from '@baloise/design-system-components-angular/common'
 
+export { BalModalService } from './providers/modal.service'
 export * from './generated/proxies'
 export * from './components'
 export * from './bundles'
