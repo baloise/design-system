@@ -170,6 +170,7 @@ packages/components-angular/common/index.d.ts
 
 packages/components-angular/standalone/components
 packages/components-angular/standalone/directives
+packages/components-angular/standalone/providers
 packages/components-angular/standalone/app-initialize.d.ts
 packages/components-angular/standalone/bundles.d.ts
 packages/components-angular/standalone/index.d.ts

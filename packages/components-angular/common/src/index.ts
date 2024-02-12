@@ -1,6 +1,7 @@
 export type { BaloiseDesignSystemAngularConfig } from './utils/config'
 export type { ProxyComponent } from './utils/utils'
 
+export { OverlayBaseController } from './providers/overlay'
 export { AngularDelegate } from './providers/angular-delegate'
 export { BalBreakpointsService } from './providers/breakpoints.service'
 export { BalConfigService } from './providers/config.service'
