@@ -286,7 +286,7 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
         onClick={this.onClick}
       >
         <button
-          // role="radio"
+          role="radio"
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier('disabled').class(disabled),
