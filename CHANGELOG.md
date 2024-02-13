@@ -1,5 +1,21 @@
 # Changelog
 
+## 15.2.4
+
+### Patch Changes
+
+- **progress-bar**: Added aria-hidden attribute to improve accessibility by preventing screen readers from unnecessarily announcing this element. ( [#1330](https://github.com/baloise/design-system/pull/1330))
+
+- **nav**: reset active link items on options changed and always render the active meta link tree, but hide it visually. ( [#1335](https://github.com/baloise/design-system/pull/1335))
+
+- **radio**: Removed `role="radio"` to improve semantic HTML and accessibility, ensuring ARIA roles are used correctly and only where they provide clear benefits. ( [#1314](https://github.com/baloise/design-system/pull/1314))
+
+- **angular**: overay service define custom elements for standalone ( [#1334](https://github.com/baloise/design-system/pull/1334))
+
+- **tabs**: Removed `role="region"` to improve semantic HTML and accessibility, ensuring ARIA roles are used correctly and only where they provide clear benefits. ( [#1318](https://github.com/baloise/design-system/pull/1318))
+
+- **angular**: standalone modals do not load in production build ( [#1332](https://github.com/baloise/design-system/pull/1332))
+
 ## 15.2.3
 
 ### Patch Changes
@@ -159,4 +175,3 @@ For projects based on the builder `@angular-devkit/build-angular:browser` use th
 ## Previous Versions
 
 - [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_OLD.md)
-
