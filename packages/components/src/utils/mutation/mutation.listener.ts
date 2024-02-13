@@ -46,6 +46,7 @@ export class BalMutationListener extends ListenerAbstract {
 
   private mutationCallback = (mutationRecord: MutationRecord[]) => {
     const hasChanges = mutationRecord.some(record => this.tags.includes(record.target.nodeName))
+
     if (hasChanges) {
       return this.notify(undefined)
     }
@@ -57,9 +58,11 @@ export class BalMutationListener extends ListenerAbstract {
       return this.notify(undefined)
     }
 
-    const hasCharacterDataChanges = mutationRecord.some(record => record.type === 'characterData')
-    if (hasCharacterDataChanges) {
-      return this.notify(undefined)
+    if (this.tags.length === 0 && mutationRecord.length > 0) {
+      const hasCharacterDataChanges = mutationRecord.some(record => record.type === 'characterData')
+      if (hasCharacterDataChanges) {
+        return this.notify(undefined)
+      }
     }
 
     if (this.tags.length === 0 && mutationRecord.length > 0) {
