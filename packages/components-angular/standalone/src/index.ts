@@ -4,23 +4,24 @@ export {
   AngularDelegate,
   BalBreakpointsService,
   BalConfigService,
-  BalModalService,
   BalOrientationService,
-  BalSnackbarService,
-  BalToastService,
   raf,
   parseCustomEvent,
   element,
   BalTokenUserConfig,
   BalTokenConfig,
-  BalTokenToast,
-  BalTokenSnackbar,
   BalTokenModal,
   BalTokenBreakpoints,
   BalTokenBreakpointSubject,
   BalTokenDevice,
+  BalTokenToast,
+  BalTokenSnackbar,
   BalTokenOrientationSubject,
 } from '@baloise/design-system-components-angular/common'
+
+export { BalModalService } from './providers/modal.service'
+export { BalToastService } from './providers/toast.service'
+export { BalSnackbarService } from './providers/snackbar.service'
 
 export * from './generated/proxies'
 export * from './components'

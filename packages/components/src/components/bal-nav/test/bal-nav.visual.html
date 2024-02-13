@@ -224,7 +224,6 @@
           }
 
           const mainLinkItem = label => ({
-            value: `v${label}`,
             label: label,
             sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
             serviceLinkItems: [serviceLinkItem],
@@ -272,159 +271,123 @@
 
           nav.options = [
             {
-              value: 'privatkunden',
               label: 'Privatkunden',
               href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
               active: true,
               overviewLink: {
-                value: 'Privatkunden',
                 label: 'Privatkunden',
                 href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
               },
               mainLinkItems: [
                 {
-                  value: 'Versichern',
                   label: 'Versichern',
-                  active: true,
                   href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                   sectionLinkItems: [
                     {
-                      value: 'Wohnen & Recht',
                       label: 'Wohnen & Recht',
                       href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
-                      active: true,
                       linkItems: [
                         {
-                          value: 'Hausratversicherung',
                           label: 'Hausratversicherung',
                           clickable: true,
-                          active: true,
                         },
                         {
-                          value: 'Haushaltversicherung für alle unter 30',
                           label: 'Haushaltversicherung für alle unter 30',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Haftpflichtversicherung',
                           label: 'Haftpflichtversicherung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Rechtsschutzversicherung',
                           label: 'Rechtsschutzversicherung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Cyber-Versicherung',
                           label: 'Cyber-Versicherung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Wertsachen- & Elektronikversicherungen',
                           label: 'Wertsachen- & Elektronikversicherungen',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                       ],
                     },
                     {
-                      value: 'Fahrzeuge',
                       label: 'Fahrzeuge',
                       linkItems: [
                         {
-                          value: 'Autoversicherung',
                           label: 'Autoversicherung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Elektroauto-Versicherung',
                           label: 'Elektroauto-Versicherung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
                         {
-                          value: 'Motorrad- & Rollerversicherung',
                           label: 'Motorrad- & Rollerversicherung',
                         },
                         {
-                          value: 'Motorrad- & Rollerversicherung für alle unter 30',
                           label: 'Motorrad- & Rollerversicherung für alle unter 30',
                         },
                         {
-                          value: 'Veloversicherung',
                           label: 'Veloversicherung',
                         },
                         {
-                          value: 'Bootsversicherung',
                           label: 'Bootsversicherung',
                         },
                       ],
                     },
                     {
-                      value: 'Personen',
                       label: 'Personen',
                       linkItems: [
                         {
-                          value: 'Lebensversicherungen',
                           label: 'Lebensversicherungen',
                         },
                         {
-                          value: 'Einzel-Unfallversicherung',
                           label: 'Einzel-Unfallversicherung',
                         },
                         {
-                          value: 'Todesfallrisikoversicherung',
                           label: 'Todesfallrisikoversicherung',
                         },
                         {
-                          value: 'Einzel-Krankentaggeldversicherung',
                           label: 'Einzel-Krankentaggeldversicherung',
                         },
                         {
-                          value: 'Erwerbsunfähigkeitsversicherung',
                           label: 'Erwerbsunfähigkeitsversicherung',
                         },
                         {
-                          value: 'Hausangestellten-Versicherung',
                           label: 'Hausangestellten-Versicherung',
                         },
                       ],
                     },
                     {
-                      value: 'Ferien & Reisen',
                       label: 'Ferien & Reisen',
                       linkItems: [
                         {
-                          value: 'Reiseversicherung (für das ganze Jahr)',
                           label: 'Reiseversicherung (für das ganze Jahr)',
                         },
                         {
-                          value: 'Ferienversicherung (2 bis 92 Tage)',
                           label: 'Ferienversicherung (2 bis 92 Tage)',
                         },
                         {
-                          value: 'Reisegepäckversicherung',
                           label: 'Reisegepäckversicherung',
                         },
                         {
-                          value: 'Annullierungskosten',
                           label: 'Annullierungskosten',
                         },
                         {
-                          value: 'Mietfahrzeug-Versicherung',
                           label: 'Mietfahrzeug-Versicherung',
                         },
                       ],
                     },
                     {
-                      value: 'Wohneneigentum',
                       label: 'Wohneneigentum',
                       linkItems: [
                         {
-                          value: 'Bauversicherung',
                           label: 'Bauversicherung',
                         },
                         {
-                          value: 'Gebäudeversicherung',
                           label: 'Gebäudeversicherung',
                         },
                       ],
@@ -432,31 +395,24 @@
                   ],
                   serviceLinkItems: [
                     {
-                      value: 'Services',
                       label: 'Services',
                       linkItems: [
                         {
-                          value: 'Schaden melden',
                           label: 'Schaden melden',
                         },
                         {
-                          value: 'Pannenhilfe',
                           label: 'Pannenhilfe',
                         },
                         {
-                          value: 'Partnerbetriebe',
                           label: 'Partnerbetriebe',
                         },
                         {
-                          value: 'Versicherungsnachweis',
                           label: 'Versicherungsnachweis',
                         },
                         {
-                          value: 'Internationale Versicherungskarte',
                           label: 'Internationale Versicherungskarte',
                         },
                         {
-                          value: 'Wiederinkraftsetzung',
                           label: 'Wiederinkraftsetzung',
                           href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                         },
@@ -464,153 +420,118 @@
                     },
                   ],
                   overviewLink: {
-                    value: 'Alle Versicherungslösungen',
                     label: 'Alle Versicherungslösungen',
                     href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                   },
                 },
                 {
-                  value: 'Anlegen & Vorsorg',
                   label: 'Anlegen & Vorsorg',
                   sectionLinkItems: [
                     {
-                      value: 'Anlegen',
                       label: 'Anlegen',
                       linkItems: [
                         {
-                          value: 'Zielbasiertes Anlegen',
                           label: 'Zielbasiertes Anlegen',
                         },
                         {
-                          value: 'Fondskonto',
                           label: 'Fondskonto',
                         },
                         {
-                          value: 'Anlagefonds',
                           label: 'Anlagefonds',
                         },
                         {
-                          value: 'Anlegen mit Berater',
                           label: 'Anlegen mit Berater',
                         },
                         {
-                          value: 'Anlegen ohne Berater',
                           label: 'Anlegen ohne Berater',
                         },
                         {
-                          value: 'Vermögensverwaltung',
                           label: 'Vermögensverwaltung',
                         },
                         {
-                          value: 'Kassenobligationen',
                           label: 'Kassenobligationen',
                         },
                         {
-                          value: 'Festgeld',
                           label: 'Festgeld',
                         },
                       ],
                     },
                     {
-                      value: 'Altersvorsorge',
                       label: 'Altersvorsorge',
                       linkItems: [
                         {
-                          value: 'Pensionsplanung',
                           label: 'Pensionsplanung',
                         },
                         {
-                          value: 'Vorsorgelösungen',
                           label: 'Vorsorgelösungen',
                         },
                         {
-                          value: 'Renten- und Auszahlungspläne',
                           label: 'Renten- und Auszahlungspläne',
                         },
                         {
-                          value: 'Invest Sparen 3 - Säule 3a',
                           label: 'Invest Sparen 3 - Säule 3a',
                         },
                         {
-                          value: 'Freizügigkeitskonto',
                           label: 'Freizügigkeitskonto',
                         },
                         {
-                          value: 'Lebensversicherungen',
                           label: 'Lebensversicherungen',
                         },
                         {
-                          value: 'Finanzplanung',
                           label: 'Finanzplanung',
                         },
                       ],
                     },
                     {
-                      value: 'Finanzwissen',
                       label: 'Finanzwissen',
                       linkItems: [
                         {
-                          value: 'Persönliche Anlagestrategie',
                           label: 'Persönliche Anlagestrategie',
                         },
                         {
-                          value: '5 Tipps für eine erfolgreiche Vorsorge',
                           label: '5 Tipps für eine erfolgreiche Vorsorge',
                         },
                         {
-                          value: 'Fondswissen',
                           label: 'Fondswissen',
                         },
                         {
-                          value: 'Warum Anlagefonds?',
                           label: 'Warum Anlagefonds?',
                         },
                         {
-                          value: 'Zeitpunkt der Vorsorge',
                           label: 'Zeitpunkt der Vorsorge',
                         },
                         {
-                          value: 'Das Schweizer Vorsorgesystem einfach erklärt',
                           label: 'Das Schweizer Vorsorgesystem einfach erklärt',
                         },
                       ],
                     },
                     {
-                      value: 'Ihre Ziele',
                       label: 'Ihre Ziele',
                       linkItems: [
                         {
-                          value: 'Pensionierung planen',
                           label: 'Pensionierung planen',
                         },
                         {
-                          value: 'Als Frau vorsorgen',
                           label: 'Als Frau vorsorgen',
                         },
                         {
-                          value: 'Vermögen aufbauen, Lebenstraum erfüllen',
                           label: 'Vermögen aufbauen, Lebenstraum erfüllen',
                         },
                         {
-                          value: 'Familie richtig absichern',
                           label: 'Familie richtig absichern',
                         },
                         {
-                          value: 'Risiken absichern, Familie schützen',
                           label: 'Risiken absichern, Familie schützen',
                         },
                         {
-                          value: 'Nachlass frühzeitig regeln',
                           label: 'Nachlass frühzeitig regeln',
                         },
                       ],
                     },
                     {
-                      value: 'Nachhaltig investieren',
                       label: 'Nachhaltig investieren',
                       linkItems: [
                         {
-                          value: 'Allgemeine Informationen',
                           label: 'Allgemeine Informationen',
                         },
                       ],
@@ -618,113 +539,88 @@
                   ],
                   serviceLinkItems: [
                     {
-                      value: 'Services',
                       label: 'Services',
                       linkItems: [
                         {
-                          value: 'Vorsorgeausweis',
                           label: 'Vorsorgeausweis',
                         },
                         {
-                          value: 'Aktuelle Kurse',
                           label: 'Aktuelle Kurse',
                         },
                         {
-                          value: 'Börse & Anlageempfehlungen',
                           label: 'Börse & Anlageempfehlungen',
                         },
                         {
-                          value: 'Bankkonditionen',
                           label: 'Bankkonditionen',
                         },
                         {
-                          value: 'Downloads',
                           label: 'Downloads',
                         },
                       ],
                     },
                     {
-                      value: 'Finance4Women',
                       label: 'Finance4Women',
                       color: 'purple',
                       linkItems: [
                         {
-                          value: 'Was macht eine gute Pensionskasse aus?',
                           label: 'Was macht eine gute Pensionskasse aus?',
                         },
                         {
-                          value: 'Impact-Investing: Geldanlage mit Sinn',
                           label: 'Impact-Investing: Geldanlage mit Sinn',
                         },
                         {
-                          value: 'Inflation - Was ist das?',
                           label: 'Inflation - Was ist das?',
                         },
                         {
-                          value: 'Lohnverhandlungen erfolgreich führen. Tipps und Checkliste',
                           label: 'Lohnverhandlungen erfolgreich führen. Tipps und Checkliste',
                         },
                       ],
                     },
                   ],
                   overviewLink: {
-                    value: 'Alle Anlage- und Vorsorgelösungen',
                     label: 'Alle Anlage- und Vorsorgelösungen',
                     href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                   },
                 },
                 {
-                  value: 'Konten, Karten & Finanzierung',
                   label: 'Konten, Karten & Finanzierung',
                   sectionLinkItems: [
                     {
-                      value: 'Zahlen und Sparen',
                       label: 'Zahlen und Sparen',
                       linkItems: [
                         {
-                          value: 'Konten',
                           label: 'Konten',
                         },
                         {
-                          value: 'Bankpakete der Baloise Bank',
                           label: 'Bankpakete der Baloise Bank',
                         },
                         {
-                          value: 'Karten',
                           label: 'Karten',
                         },
                         {
-                          value: 'Reisezahlungsmittel',
                           label: 'Reisezahlungsmittel',
                         },
                       ],
                     },
                     {
-                      value: 'Finanzieren',
                       label: 'Finanzieren',
                       linkItems: [
                         {
-                          value: 'Alle Hypotheken',
                           label: 'Alle Hypotheken',
                         },
                         {
-                          value: 'Zinsrabatte mit Hypobonus',
                           label: 'Zinsrabatte mit Hypobonus',
                         },
                         {
-                          value: 'Online-Hypothek',
                           label: 'Online-Hypothek',
                         },
                         {
-                          value: 'Festhypothek',
                           label: 'Festhypothek',
                         },
                         {
-                          value: 'Baukredit',
                           label: 'Baukredit',
                         },
                         {
-                          value: 'Privatkredit',
                           label: 'Privatkredit',
                         },
                       ],
@@ -732,46 +628,37 @@
                   ],
                   serviceLinkItems: [
                     {
-                      value: 'Services',
                       label: 'Services',
                       linkItems: [
                         {
-                          value: 'Karte sperren',
                           label: 'Karte sperren',
                         },
                         {
-                          value: 'E-Banking',
                           label: 'E-Banking',
                         },
                         {
-                          value: 'Bankkonditionen',
                           label: 'Bankkonditionen',
                         },
                         {
-                          value: 'Mobile Payment',
                           label: 'Mobile Payment',
                         },
                         {
-                          value: 'Nutzungsbestimmungen Online-Hypothek',
                           label: 'Nutzungsbestimmungen Online-Hypothek',
                         },
                       ],
                     },
                   ],
                   overviewLink: {
-                    value: 'Alle Bankprodukte',
                     label: 'Alle Bankprodukte',
                     href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
                   },
                 },
                 {
-                  value: 'Kontakt & Services',
                   label: 'Kontakt & Services',
                   href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
                   target: '_blank',
                 },
                 {
-                  value: 'Blog',
                   label: 'Blog',
                   href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
                   target: '_blank',
@@ -779,9 +666,8 @@
               ],
             },
             {
-              value: 'unternehmenskunden',
               label: 'Unternehmenskunden',
-              active: false,
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
               mainLinkItems: [
                 mainLinkItem('Versichern'),
                 mainLinkItem('Firma gründen'),
@@ -792,8 +678,8 @@
               ],
             },
             {
-              value: 'institutionelle-anleger',
               label: 'Institutionelle Anleger',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
               mainLinkItems: [
                 mainLinkItem('Anlegen'),
                 mainLinkItem('Diestleistungsangebog'),
@@ -802,8 +688,8 @@
               ],
             },
             {
-              value: 'ueber-uns',
               label: 'Über uns',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
               mainLinkItems: [
                 mainLinkItem('Engagement'),
                 mainLinkItem('Organisation'),

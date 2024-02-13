@@ -745,7 +745,6 @@ export class Tabs
           ></TabNav>
         )}
         <div
-          role="region"
           part={contentPart}
           ref={contentEl => (this.contentEl = contentEl)}
           class={{

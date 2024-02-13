@@ -10,7 +10,6 @@ $bal-legacy-spacing-values: ("auto": $bal-space-auto, "0": $bal-space-none, "1":
 $bal-legacy-spacing-values-tablet: ("auto": $bal-space-tablet-auto, "0": $bal-space-tablet-none, "1": $bal-space-tablet-xx-small, "2": $bal-space-tablet-x-small, "3": $bal-space-tablet-small, "4": $bal-space-tablet-normal, "5": $bal-space-tablet-medium, "6": $bal-space-tablet-large, "7": $bal-space-tablet-x-large, "8": $bal-space-tablet-xx-large, "9": $bal-space-tablet-xxx-large, "10": $bal-space-tablet-xxxx-large) !default
 $bal-legacy-spacing-values-desktop: ("auto": $bal-space-desktop-auto, "0": $bal-space-desktop-none, "1": $bal-space-desktop-xx-small, "2": $bal-space-desktop-x-small, "3": $bal-space-desktop-small, "4": $bal-space-desktop-normal, "5": $bal-space-desktop-medium, "6": $bal-space-desktop-large, "7": $bal-space-desktop-x-large, "8": $bal-space-desktop-xx-large, "9": $bal-space-desktop-xxx-large, "10": $bal-space-desktop-xxxx-large) !default
 
-
 @function bulmaRgba($color, $alpha)
   @if type-of($color) != 'color'
     @return $color
@@ -207,6 +206,17 @@ $bal-legacy-spacing-values-desktop: ("auto": $bal-space-desktop-auto, "0": $bal-
   height: 1px
   clip: rect(1px, 1px, 1px, 1px)
   overflow: hidden
+
+=invisible
+  position: absolute !important
+  height: 1px !important
+  width: 1px !important
+  padding: 0 !important
+  overflow: hidden !important
+  border: none !important
+  white-space: nowrap !important
+  clip: rect(1px 1px 1px 1px) !important
+  clip: rect(1px, 1px, 1px, 1px) !important
 
 =delete
   +unselectable

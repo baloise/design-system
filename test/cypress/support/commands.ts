@@ -24,8 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import 'cypress-axe'
-
 import '../../../packages/testing/src/add-custom-commands'
 import '../../../packages/testing/src/add-override-commands'
 
@@ -78,8 +76,9 @@ declare global {
 }
 
 Cypress.Commands.add('pageA11y', (url: string) => {
-  cy.visit(url).platform('desktop').waitForDesignSystem()
+  cy.visit(url)
   cy.injectAxe()
+  cy.platform('desktop').waitForDesignSystem()
 })
 
 Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options = null) => {
@@ -174,4 +173,3 @@ Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, att
     .waitForComponents()
     .wait(1, { log: false }) as any
 })
-
