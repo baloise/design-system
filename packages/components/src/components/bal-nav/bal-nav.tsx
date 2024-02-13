@@ -102,7 +102,7 @@ export class NavMetaBar
 
   @Watch('buttons')
   protected async buttonChanged() {
-    this.onOptionChange()
+    this.onMetaButtonChange()
   }
 
   /**
@@ -122,6 +122,7 @@ export class NavMetaBar
 
   componentWillLoad() {
     this.onOptionChange()
+    this.onMetaButtonChange()
     this.updateTabs()
   }
 
@@ -176,9 +177,9 @@ export class NavMetaBar
 
   mutationObserverActive = true
 
-  @ListenToMutation({ tags: ['bal-popup'] })
+  @ListenToMutation({ tags: ['bal-popup'], waitAfterFramePrint: true })
   mutationListener(): void {
-    this.onOptionChange()
+    this.onMetaButtonChange()
   }
 
   @ListenToBreakpoints()
@@ -305,7 +306,12 @@ export class NavMetaBar
    */
 
   private onOptionChange = async () => {
+    this.activeMetaLinkValue = undefined
+    this.activeMenuLinkValue = undefined
     this.linkItems = this.options.map(option => new NavMetaLinkItem(option, this))
+  }
+
+  private onMetaButtonChange = async () => {
     this.metaButtons = this.buttons.map(button => new NavMetaButton(button, this))
   }
 

@@ -46,15 +46,20 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           open={isSelected}
           onClick={ev => this.onAccordionClick(ev)}
         ></AccordionButton>
-        {isSelected ? (
-          <OverviewLink item={this.overviewLink} onClick={ev => this.onClick(ev)} isMenu></OverviewLink>
-        ) : (
-          ''
-        )}
-        {isSelected && hasSectionLinkItems ? (
+        <OverviewLink
+          item={this.overviewLink}
+          onClick={ev => this.onClick(ev)}
+          isMenu
+          isVisible={isSelected}
+        ></OverviewLink>
+        {hasSectionLinkItems ? (
           <ul
             class={{
               ...block.element('mobile-section-list').class(),
+              ...block
+                .element('mobile-section-list')
+                .modifier('invisible')
+                .class(isSelected === false),
             }}
           >
             {this.sectionLinkItems.map(item => item.renderTouch())}
@@ -62,10 +67,14 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
         ) : (
           ''
         )}
-        {isSelected && hasServiceLinkItems ? (
+        {hasServiceLinkItems ? (
           <ul
             class={{
               ...block.element('mobile-service-list').class(),
+              ...block
+                .element('mobile-service-list')
+                .modifier('invisible')
+                .class(isSelected === false),
             }}
           >
             {this.serviceLinkItems.map(item => item.renderTouch())}
