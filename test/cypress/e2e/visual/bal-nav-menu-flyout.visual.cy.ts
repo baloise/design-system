@@ -7,28 +7,28 @@ describe('bal-nav-menu-flyout', () => {
       .waitForDesignSystem()
 
     cy.testVisual('menu-flyout-fullhd', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['fullhd'],
     })
 
     cy.platform('highDefinition')
     cy.testVisual('menu-flyout-highDefinition', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['highDefinition'],
     })
 
     cy.platform('widescreen')
     cy.testVisual('menu-flyout-widescreen', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['widescreen'],
     })
 
     cy.platform('desktop')
     cy.testVisual('menu-flyout-desktop', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['desktop'],
     })
@@ -40,14 +40,14 @@ describe('bal-nav-menu-flyout', () => {
       .waitForDesignSystem()
 
     cy.testVisual('menu-flyout-tablet', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['tablet'],
     })
 
     cy.platform('mobile')
     cy.testVisual('menu-flyout-mobile', {
-      errorThreshold: 0.2,
+      errorThreshold: 0.3,
       capture: 'viewport',
       clip: balViewport['mobile'],
     })

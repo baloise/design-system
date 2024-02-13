@@ -1,6 +1,6 @@
 describe('bal-content', () => {
   context('a11y', () => {
-    beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-content/test/bal-content.a11y.html'))
+    beforeEach(() => cy.pageA11y('/components/bal-content/test/bal-content.a11y.html'))
 
     describe('have the AA standard', () => {
       it('basic', () => {
