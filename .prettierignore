@@ -23,6 +23,7 @@ generated
 
 docs/public
 docs/stories/assets
+docs/stories/components/**/api.md
 
 e2e/cypress/snapshots
 e2e/cypress/videos
