@@ -7,10 +7,9 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-testing'
+import { byTestId, selectors } from '@baloise/ds-testing'
 
 describe('Accordion', () => {
-
   it('should ...', () => {
     cy.getByTestId('my-accordion').find(selectors.accordion.trigger).contains('Show more')
     cy.getByTestId('my-accordion').balAccordionIsClosed()

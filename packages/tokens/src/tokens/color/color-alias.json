@@ -1,0 +1,17 @@
+{
+  "color": {
+    "alias": {
+      "primary": { "value": "{color.base.primary.5}", "noFigmaImport": true },
+      "grey": { "value": "{color.base.grey.3}", "noFigmaImport": true },
+      "light-blue": { "value": "{color.base.light-blue.1}", "noFigmaImport": true },
+      "purple": { "value": "{color.base.purple.3}", "noFigmaImport": true },
+      "green": { "value": "{color.base.green.3}", "noFigmaImport": true },
+      "yellow": { "value": "{color.base.yellow.3}", "noFigmaImport": true },
+      "red": { "value": "{color.base.red.3}", "noFigmaImport": true },
+      "info": { "value": "{color.base.info.3}", "noFigmaImport": true },
+      "success": { "value": "{color.base.success.3}", "noFigmaImport": true },
+      "warning": { "value": "{color.base.warning.3}", "noFigmaImport": true },
+      "danger": { "value": "{color.base.danger.3}", "noFigmaImport": true }
+    }
+  }
+}

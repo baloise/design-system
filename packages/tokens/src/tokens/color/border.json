@@ -1,0 +1,58 @@
+{
+  "color": {
+    "border": {
+      "default": { "value": "{color.base.grey.3}", "comment": "Default border color" },
+      "primary": { "value": "{color.base.primary.5}", "comment": "Use for focused or selected state." },
+      "primary-light": {
+        "value": "{color.base.primary.3}",
+        "comment": "Disabled or secondary color on dark backgrounds"
+      },
+
+      "grey-light": { "value": "{color.base.grey.2}", "comment": "Default input color or can be use for a divider" },
+      "grey": { "value": "{color.base.grey.3}", "comment": "Default border color" },
+      "grey-dark": { "value": "{color.base.grey.4}", "comment": "Use for disabled state." },
+
+      "white": { "value": "{color.base.white}", "comment": "Default color on dark backgrounds." },
+
+      "info": { "value": "{color.base.info.4}" },
+      "success": { "value": "{color.base.success.4}", "comment": "Use for valid state." },
+      "warning": { "value": "{color.base.warning.5}", "comment": "Use for warning/hint state." },
+      "danger": { "value": "{color.base.danger.4}", "comment": "Use for invalid state." },
+
+      "info-hovered": { "value": "{color.base.info.5}" },
+      "info-pressed": { "value": "{color.base.info.6}" },
+
+      "primary-hovered": { "value": "{color.base.light-blue.5}" },
+      "primary-pressed": { "value": "{color.base.primary.6}" },
+
+      "success-hovered": { "value": "{color.base.success.5}" },
+      "success-pressed": { "value": "{color.base.success.6}" },
+
+      "warning-hovered": { "value": "{color.base.warning.5}" },
+      "warning-pressed": { "value": "{color.base.warning.6}" },
+
+      "danger-hovered": { "value": "{color.base.danger.5}" },
+      "danger-pressed": { "value": "{color.base.danger.6}" },
+
+      "green-hovered": { "value": "{color.base.green.5}" },
+      "green-pressed": { "value": "{color.base.green.6}" },
+
+      "purple-hovered": { "value": "{color.base.purple.5}" },
+      "purple-pressed": { "value": "{color.base.purple.6}" },
+
+      "red-hovered": { "value": "{color.base.red.5}" },
+      "red-pressed": { "value": "{color.base.red.6}" },
+
+      "yellow-hovered": { "value": "{color.base.yellow.5}" },
+      "yellow-pressed": { "value": "{color.base.yellow.6}" },
+
+      "inverted": {
+        "default": { "value": "{color.base.white}", "comment": "Default color on dark backgrounds." },
+        "disabled": { "value": "{color.base.primary.3}", "comment": "Disabled." },
+        "primary": { "value": "{color.base.primary.4}" },
+        "primary-hovered": { "value": "{color.base.light-blue.2}" },
+        "primary-pressed": { "value": "{color.base.light-blue.4}" }
+      }
+    }
+  }
+}

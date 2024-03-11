@@ -43,18 +43,18 @@ Padding can be defined for a specific edge.
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-  <div class="pt-normal has-background-red-2">
-      <div class="has-background-green-3 p-large">pt-normal</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+  <div class="pt-normal bg-red-2">
+      <div class="bg-green p-large">pt-normal</div>
   </div>
-  <div class="pr-large has-background-red-2">
-      <div class="has-background-green-3 p-large">pr-large</div>
+  <div class="pr-large bg-red-2">
+      <div class="bg-green p-large">pr-large</div>
   </div>
-  <div class="pb-small has-background-red-2">
-      <div class="has-background-green-3 p-large">pb-small</div>
+  <div class="pb-small bg-red-2">
+      <div class="bg-green p-large">pb-small</div>
   </div>
-  <div class="pl-medium has-background-red-2">
-      <div class="has-background-green-3 p-large">pl-medium</div>
+  <div class="pl-medium bg-red-2">
+      <div class="bg-green p-large">pl-medium</div>
   </div>
 </div>
 `}
@@ -67,9 +67,9 @@ Shorthand classes allow you to define the same padding value for both the left a
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-    <div class="px-large has-background-red-2 has-radius-normal">
-        <div class="has-radius-normal has-background-green-3 font-bold p-normal">px-large</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="px-large bg-red-2 radius-normal">
+        <div class="radius-normal bg-green font-weight-bold p-normal">px-large</div>
     </div>
 </div>
 `}
@@ -82,13 +82,20 @@ The same padding value can also be defined at the top and bottom sides using sho
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-    <div class="py-large has-background-red-2 has-radius-normal">
-        <div class="has-radius-normal has-background-green-3 font-bold p-normal">py-large</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="py-large bg-red-2 radius-normal">
+        <div class="radius-normal bg-green font-weight-bold p-normal">py-large</div>
     </div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:p-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -97,7 +104,7 @@ The same padding value can also be defined at the top and bottom sides using sho
       description="Global spacings help us design experiences that scale with consistency, rhythm, and focus"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

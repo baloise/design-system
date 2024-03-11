@@ -1,0 +1,112 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-popup">
+      <main class="container py-medium">
+        <section>
+          <bal-stack>
+            <bal-button data-test="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
+            <bal-button
+              data-test="basic-backdrop-arrow-trigger"
+              bal-popup="popup-basic"
+              bal-popup-backdrop
+              bal-popup-arrow
+              >Backdrop & Arrow</bal-button
+            >
+            <bal-button
+              data-test="basic-backdrop-offset-trigger"
+              bal-popup="popup-basic"
+              bal-popup-backdrop
+              bal-popup-offset="32"
+              >Offset</bal-button
+            >
+          </bal-stack>
+
+          <bal-stack py="medium">
+            <bal-button data-test="placement-right-trigger" bal-popup="popup-small" bal-popup-placement="right"
+              >Small Right</bal-button
+            >
+            <bal-button data-test="placement-left-trigger" bal-popup="popup-small" bal-popup-placement="left"
+              >Small Left</bal-button
+            >
+            <bal-button data-test="placement-top-trigger" bal-popup="popup-small" bal-popup-placement="top"
+              >Small Top</bal-button
+            >
+            <bal-button data-test="placement-bottom-trigger" bal-popup="popup-small" bal-popup-placement="bottom"
+              >Small Bottom</bal-button
+            >
+          </bal-stack>
+
+          <bal-stack py="medium">
+            <bal-button
+              data-test="fullscreen-trigger"
+              bal-popup="popup-small"
+              bal-popup-variant="fullscreen"
+              bal-popup-closable
+              >Fullscreen</bal-button
+            >
+            <bal-button
+              data-test="drawer-trigger"
+              bal-popup="popup-small"
+              bal-popup-variant="drawer"
+              bal-popup-closable
+              bal-popup-backdrop
+              >Drawer</bal-button
+            >
+          </bal-stack>
+
+          <bal-stack py="medium">
+            <bal-button data-test="tabs-trigger" bal-popup="popup-tabs" bal-popup-closable>Tabs</bal-button>
+          </bal-stack>
+
+          <bal-popup id="popup-basic" data-test="basic" label="Basic Popup">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+          </bal-popup>
+
+          <bal-popup id="popup-small" data-test="small" label="Small Popup">Small Content</bal-popup>
+
+          <bal-popup id="popup-tabs" data-test="tabs" label="Tabs Popup">
+            <div class="py-small">
+              <h5 class="title text-x-large" style="margin-top: 0px">Title</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
+                error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis
+                harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed
+                minus doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis
+                mollitia facilis harum vero.
+              </p>
+              <bal-tabs spaceless border fullwidth value="tab-a">
+                <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+                <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+                <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+                <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+                <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+              </bal-tabs>
+            </div>
+          </bal-popup>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

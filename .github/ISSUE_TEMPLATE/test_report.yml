@@ -1,7 +1,7 @@
 name: 🧪 Test Task
 description: Create a test task to improve the Design System
-title: ":test_tube: test(component): title"
-labels: ["🧪 test"]
+title: ':test_tube: test(component): title'
+labels: ['🧪 test']
 body:
   - type: textarea
     id: summary

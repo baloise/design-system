@@ -1,6 +1,6 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalApp & { content: string }
 
@@ -47,7 +47,7 @@ export const Basic = Story()
 export const FormWizard = Story({
   ...withRender(
     () => `<bal-app class="has-sticky-footer">
-    <header class="has-background-white">
+    <header class="bg-white">
       <bal-stack py="small" space="large" class="container">
         <bal-logo></bal-logo>
         <bal-content>
@@ -57,7 +57,7 @@ export const FormWizard = Story({
       <bal-progress-bar value="75"></bal-progress-bar>
     </header>
     <main>
-      <div class="has-background-green-3" style="height: 16rem"></div>
+      <div class="bg-green" style="height: 16rem"></div>
       <div class="container is-compact" style="margin-top: -12rem">
         <bal-card>
           <bal-card-title>How did the damage occur?</bal-card-title>
@@ -87,7 +87,7 @@ export const FormWizard = Story({
 export const FormWizardMobile = Story({
   ...withRender(
     () => `<bal-app class="has-sticky-footer">
-    <header class="has-background-green-3">
+    <header class="bg-green">
       <bal-stack py="small" space="large" class="container">
         <bal-content>
           <bal-heading level="h1" visual-level="h3" auto-level="h5">What happened?</bal-heading>
@@ -99,7 +99,7 @@ export const FormWizardMobile = Story({
         <bal-heading level="h5">How did the damage occur?</bal-heading>
         Place your form content here
       </div>
-      <div class="has-background-white" style="position: fixed; bottom: 0; width:100%">
+      <div class="bg-white" style="position: fixed; bottom: 0; width:100%">
         <bal-progress-bar background="grey" value="75"></bal-progress-bar>
         <bal-stack py="normal" px="normal" space="auto">
           <bal-button color="info" square icon="back"></bal-button>

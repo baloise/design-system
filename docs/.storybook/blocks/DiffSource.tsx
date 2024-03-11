@@ -8,9 +8,7 @@ export const DiffSource = ({ code }) => {
   if (isReady) {
     return (
       <div className="sb-unstyled docblock-source">
-        <SyntaxHighlighter language="diff">
-          {code}
-        </SyntaxHighlighter>
+        <SyntaxHighlighter language="diff">{code}</SyntaxHighlighter>
       </div>
     )
   } else {

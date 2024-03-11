@@ -1,0 +1,100 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-pagination.vars'
+
++block(pagination)
+  +unselectable
+  display: block
+
+  +modifier(is-sticky)
+    position: sticky
+    z-index: var(--bal-z-index-sticky)
+
+  +element(nav)
+    align-items: center
+    display: flex
+    justify-content: center
+    text-align: center
+    +modifier(align-start)
+      justify-content: flex-start
+    +modifier(align-end)
+      justify-content: flex-end
+    +modifier(context-small)
+      padding-top: 1rem
+
+    +element(pagination-previous)
+      order: 1
+      +modifier(context-small)
+        &[disabled]
+          button:hover
+            background-color: transparent
+            border-color: transparent
+
+    +element(pagination-next)
+      order: 3
+      +modifier(context-small)
+        &[disabled]
+          button:hover
+            background-color: transparent
+            border-color: transparent
+
+    +element(pagination-list)
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: 4px
+      padding-left: 8px
+      padding-right: 8px
+      order: 2
+      width: unset
+      text-align: center
+
+      & > span
+        font-weight: var(--bal-font-weight-bold)
+
+      +tablet
+        gap: 8px
+
+      +desktop
+        gap: 8px
+
+      +modifier(context-small)
+        gap: 8px
+        max-width: 88px
+        min-width: 63px
+        min-height: 1.25rem
+        margin: 0 20px 0 !important
+        background: var(--bal-pagination-small-background)
+        border-radius: var(--bal-pagination-small-radius)
+
+      +modifier(context-tabs)
+        flex-grow: 1
+        padding: 8px
+        background: var(--bal-pagination-tabs-background)
+        box-shadow: var(--bal-pagination-tabs-shadow)
+        border-radius: var(--bal-pagination-tabs-radius)
+
+      +element(dot)
+        cursor: pointer
+        height: 8px
+        width: 8px
+        gap: 30px
+        border-radius: var(--bal-pagination-dot-radius)
+        display: block
+        +modifier(active)
+          background-color: var(--bal-pagination-dot-background-active)
+        +modifier(inactive)
+          background-color: var(--bal-pagination-dot-background-inactive)
+
+      +modifier(more)
+        width: 2rem
+        +tablet
+          width: 2rem
+        +desktop
+          width: 3rem
+
+      +element(tab)
+        flex: 1
+
+      &.is-disabled
+        li
+          pointer-events: none

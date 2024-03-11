@@ -1,7 +1,7 @@
 name: ♿️ Improve accessibility
 description: Create a issue to improve accessibility
-title: ":wheelchair: a11y(component): title"
-labels: ["✨ feature"]
+title: ':wheelchair: a11y(component): title'
+labels: ['✨ feature']
 body:
   - type: textarea
     id: summary

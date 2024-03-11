@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Datepicker', () => {
   const datepicker = byTestId('my-datepicker') // [data-testid="my-datepicker"]

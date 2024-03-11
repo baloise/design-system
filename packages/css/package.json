@@ -1,6 +1,6 @@
 {
-  "name": "@baloise/design-system-css",
-  "version": "15.2.4",
+  "name": "@baloise/ds-css",
+  "version": "0.0.7",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -9,21 +9,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://design.baloise.dev",
+  "homepage": "https://baloise-design-system.vercel.app",
   "license": "Apache-2.0",
-  "scripts": {
-    "docs": "npm run build",
-    "ng:build": "npm run build",
-    "build": "npm run build:clean && npm run build:utils && npm run build:sass && npm run build:prefix && npm run build:minify",
-    "build:clean": "rimraf scss/generated && rimraf css",
-    "build:utils": "node ../../.build/generate-css-utils.js",
-    "build:sass": "sass --load-path=../../node_modules --embed-sources ./sass:./css",
-    "build:prefix": "postcss ./css/*.css --use autoprefixer -d ./css/",
-    "build:minify": "cleancss -O1 'specialComments:off' --batch --batch-suffix '.min' css/*.css",
-    "serve": "npm run serve:fonts && npm run serve:http",
-    "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
-    "serve:http": "http-server --cors -c-1"
-  },
   "main": "scss/baloise-design-system.sass",
   "style": "css/baloise-design-system.css",
   "files": [
@@ -32,8 +19,8 @@
     "src/"
   ],
   "dependencies": {
-    "@baloise/design-system-fonts": "15.2.4",
-    "@baloise/design-system-tokens": "15.2.4"
+    "@baloise/ds-fonts": "0.0.7",
+    "@baloise/ds-tokens": "0.0.7"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

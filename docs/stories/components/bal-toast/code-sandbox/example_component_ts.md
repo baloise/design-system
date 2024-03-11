@@ -1,7 +1,7 @@
 ```ts
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
-import { BalToastService } from '@baloise/design-system-components-angular'
+import { BalToastService } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-example',

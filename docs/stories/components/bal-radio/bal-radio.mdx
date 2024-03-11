@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as RadioStories from './bal-radio.stories'
@@ -9,7 +8,9 @@ import * as RadioStories from './bal-radio.stories'
 
 <Banner of={RadioStories} />
 
-<Lead>**Radio** input is normally displayed in a radio group. The user can only select one option from a number of choices.</Lead>
+<Lead>
+  **Radio** input is normally displayed in a radio group. The user can only select one option from a number of choices.
+</Lead>
 
 <Canvas of={RadioStories.Basic} sourceState="shown" />
 
@@ -17,7 +18,7 @@ import * as RadioStories from './bal-radio.stories'
 
 <br />
 
-Ther is a new way of adding a options to the bal-radio-group
+There is a new way of adding a options to the bal-radio-group
 by introducing the `options` property in which options can be passed using a Javascript.
 
 ```html
@@ -25,7 +26,7 @@ by introducing the `options` property in which options can be passed using a Jav
 ```
 
 ```typescript
-import { newBalRadioOption } from '@baloise/design-system-components'
+import { newBalRadioOption } from '@baloise/ds-core'
 
 @Component({
   selector: 'app-example-component',
@@ -35,7 +36,7 @@ export class ExampleComponent {
   options = [
     newBalRadioOption({ label: 'Label 1', value: '1' }),
     newBalRadioOption({
-      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+      label: () => 'Label with <a class="link" href="http://baloise.com">Link</a>',
       value: '2',
     }),
   ]
@@ -75,9 +76,9 @@ The states invalid and disabled are also supported.
 
 <StoryHeading of={RadioStories.RadioButtonGrid}></StoryHeading>
 
-The radio buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+The radio buttons are have a built in grid system. Just add the props `grid`, `grid-mobile` or `grid-tablet` to the `bal-radio-group`.
 
-On mobile devices, the default setting allows for one item per line. To override this behavior, utilize the `columns-mobile` prop.
+On mobile devices, the default setting allows for one item per line. To override this behavior, utilize the `grid-mobile` prop.
 
 <Canvas of={RadioStories.RadioButtonGrid} />
 

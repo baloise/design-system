@@ -52,8 +52,8 @@ This also serves as the default testing toolkit within the Angular framework.
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { BrowserModule, By } from '@angular/platform-browser'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
-import { waitForDesignSystem } from '@baloise/design-system-components'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { waitForDesignSystem } from '@baloise/ds-core'
 import { AppComponent } from './app.component'
 
 describe('AppComponent', () => {
@@ -174,7 +174,7 @@ Begin by installing the testing library.
 <Code
   language="bash"
   code={`
-npm add -D @baloise/design-system-testing
+npm add -D @baloise/ds-testing
 `}
 />
 
@@ -184,8 +184,8 @@ This action will grant you access to a suite of custom Cypress commands tailored
 ```ts
 /// <reference types="cypress" />
 
-import '@baloise/design-system-testing/dist/add-custom-commands'
-import '@baloise/design-system-testing/dist/add-override-commands'
+import '@baloise/ds-testing/add-custom-commands'
+import '@baloise/ds-testing/add-override-commands'
 ```
 
 - The file "add-custom-commands" introduces fresh commands to augment the existing list of Cypress commands.
@@ -196,7 +196,7 @@ import '@baloise/design-system-testing/dist/add-override-commands'
 Open the "component-index.html" file and integrate the `bal-app` component.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -231,7 +231,7 @@ Lets create the first test `hello.component.cy.ts`.
 ```
 
 ```typescript
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
 import { HelloComponent } from 'src/app/hello/hello.component'
 
 describe('hello.component.cy.ts', () => {
@@ -257,7 +257,7 @@ describe('hello.component.cy.ts', () => {
 Comprehensive documentation for each component's commands is provided on the respective components page.
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-testing'
+import { byTestId, selectors } from '@baloise/ds-testing'
 
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
@@ -285,7 +285,7 @@ Construct the correct selector using the helper function byTestId, like [data-te
 This selector can then be used directly with the Cypress commands.
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Button', () => {
   it('should ...', () => {
@@ -306,7 +306,7 @@ describe('Button', () => {
 Each component internally defines specific `data-testid` selectors.
 
 ```typescript
-import { selectors } from '@baloise/design-system-testing'
+import { selectors } from '@baloise/ds-testing'
 
 describe('Accordion', () => {
   it('should ...', () => {

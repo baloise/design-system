@@ -1,6 +1,6 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { withRender, withContent, withDefaultContent, withComponentControls, StoryFactory, props } from '../../utils'
 
 type Args = JSX.BalNotification & { content: string }
 
@@ -16,7 +16,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag: 'bal-notification' }),
   },
   ...withRender(
-    ({ content }) => `<bal-notification>
+    ({ content, ...args }) => `<bal-notification ${props(args)}>
   <span>${content}</span>
 </bal-notification>`,
   ),

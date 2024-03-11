@@ -1,0 +1,58 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssLayoutZIndex,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Layout/Z-Index"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Z-Index" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies the display behavior of an element on a page.</Lead>
+
+## Classes
+
+<CssLayoutZIndex />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap justify-content-center" style="min-height: 200px">
+  <div class="z-index-tooltip relative flex align-items-center justify-content-center p-normal bg-green radius-normal shadow-normal" style="width: 100px; height: 100px; left:125px">tooltip</div>
+  <div class="z-index-toast relative flex align-items-center justify-content-center p-normal bg-green radius-normal shadow-normal" style="width: 100px; height: 100px; left:100px; top:10px">toast</div>
+   <div class="z-index-modal relative flex align-items-center justify-content-center p-normal bg-green radius-normal shadow-normal" style="width: 100px; height: 100px; left:75px; top:20px">modal</div>
+</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:z-index-modal`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+<Footer>
+  <LinkCards>
+    <LinkCard pageTitle="Foundation/Layout" description="The layout defines the skeleton of your page" />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

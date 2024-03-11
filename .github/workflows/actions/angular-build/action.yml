@@ -1,0 +1,27 @@
+name: 'Angular Build'
+description: 'Angular Build'
+inputs:
+  app:
+    description: 'The specific test application'
+runs:
+  using: 'composite'
+  steps:
+    - name: Create App
+      run: bash build.sh ${{ inputs.app }}
+      working-directory: ./test/angular
+      shell: bash
+
+    - name: Install Cypress
+      run: npm run cy:install
+      working-directory: ./test/angular/${{ inputs.app }}
+      shell: bash
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: angular-${{ inputs.app }}
+        path: test/angular/${{ inputs.app }}/src
+
+    - name: Build Angular App
+      run: npm run build
+      working-directory: ./test/angular/${{ inputs.app }}
+      shell: bash

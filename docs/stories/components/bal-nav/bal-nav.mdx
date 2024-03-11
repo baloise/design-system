@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as NavStories from './bal-nav.stories'
@@ -83,7 +82,7 @@ These buttons can be used to trigger various popups, such as login, search, lang
 Each BalNavMetaButton object should include the following properties:
 
 <Markdown>
-{`
+  {`
 | Property         | Type   | Description                                                                                      |
 | :--------------- | :----- | :----------------------------------------------------------------------------------------------- |
 | \`touchPlacement\` | String | The placement where buttons will be placed on touch devices. Options are 'top', 'bottom', 'none' |
@@ -151,7 +150,7 @@ The logo property allows you to configure the logo within the Main Tabs section 
 The BalNavLogoLink object should include the following properties:
 
 <Markdown>
-{`
+  {`
 | Property    | Type                     | Description                                                                                                                                                                               |
 | :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | \`ariaLabel\` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively. |
@@ -184,7 +183,7 @@ BalNavOptions object is a type BalNavMetaLinkItem.
 Each BalNavMetaLinkItem object should include the following properties:
 
 <Markdown>
-{`
+  {`
 | Property        | Type                 | Description                                                                                                       |
 | :-------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | \`overviewLink\`  | BalNavLinkItem       | The overviewLink property is used in the Main Navigation Flyout section as an overview link                       |
@@ -199,11 +198,11 @@ Each BalNavMetaLinkItem object should include the following properties:
 The overviewLink property is used in the Main Navigation Flyout section as an overview link. It allows you to specify a URL or path to provide users with a high-level overview of the application or section.
 
 <Markdown>
-{`
+  {`
 | Property    | Type                     | Description                                                                                                                                                                              |
 | :---------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | \`label\`     | String                   | The label or text for the link item.                                                                                                                                                     |
-| \`value\`     | String                   | (optional) The value for the link item.                                                                                                                                                             |
+| \`value\`     | String                   | The value for the link item.                                                                                                                                                             |
 | \`active\`    | boolean                  | The active property is used to indicate the active state of a link within the Navigation component.                                                                                      |
 | \`htmlTitle\` | String                   | The alternative text for the link item, used for accessibility purposes.                                                                                                                 |
 | \`ariaLabel\` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively |
@@ -221,7 +220,7 @@ The overviewLink property is used in the Main Navigation Flyout section as an ov
 The mainLinkItems property is used to define the main link items within the main part of the Navigation component. These link items represent the primary navigation options that are displayed prominently in the main section of the Navigation component.
 
 <Markdown>
-{`
+  {`
 | Property           | Type                    | Description                                                                                            |
 | :----------------- | :---------------------- | :----------------------------------------------------------------------------------------------------- |
 | \`overviewLink\`     | BalNavLinkItem          | The overviewLink property is used in the Main Navigation Flyout section as an overview link            |
@@ -237,7 +236,7 @@ The mainLinkItems property is used to define the main link items within the main
 The sectionLinkItems property is used to define the section link items within the main part of the Navigation component. These link items represent the navigation options for different sections or subsections within the main section of the Navigation component.
 
 <Markdown>
-{`
+  {`
 | Property    | Type             | Description                                                                            |
 | :---------- | :--------------- | :------------------------------------------------------------------------------------- |
 | \`linkItems\` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
@@ -251,7 +250,7 @@ The sectionLinkItems property is used to define the section link items within th
 The serviceLinkItems property is used to define the service section link items within the main part of the Navigation component. These link items represent navigation options specific to the service section of the application.
 
 <Markdown>
-{`
+  {`
 | Property    | Type             | Description                                                                            |
 | :---------- | :--------------- | :------------------------------------------------------------------------------------- |
 | \`color\`     | color            | The color property is used to define the color of the service section.                 |

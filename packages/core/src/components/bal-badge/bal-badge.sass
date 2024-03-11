@@ -1,0 +1,85 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-badge.vars'
+
+// Badge
+// --------------------------------------------------
+.bal-badge
+  +unselectable
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  min-width: 1.5rem
+  height: 1.5rem
+  border-radius: var(--bal-badge-radius)
+  background: var(--bal-badge-background)
+  padding: .25rem
+  //
+  // sizes
+  &--size-small
+    width: .75rem
+    max-width: .75rem
+    min-width: .75rem
+    height: .75rem
+  &--size-large
+    width: 2rem
+    height: 2rem
+  //
+  // background colors
+  &--background-red,
+  &--background-danger
+    background: var(--bal-badge-background-red)
+  &--background-yellow,
+  &--background-warning
+    background: var(--bal-badge-background-yellow)
+  &--background-green,
+  &--background-success
+    background: var(--bal-badge-background-green)
+  &--background-purple
+    background: var(--bal-badge-background-purple)
+  &--background-grey
+    background: var(--bal-badge-background-grey)
+  //
+  // position
+  &--position-card,
+  &--position-button
+    position: absolute
+    right: -0.5rem
+    top: -0.5rem
+  &--position-tabs
+    margin-top: -0.25rem
+    position: absolute
+    right: -1.625rem
+    &.bal-badge--size-small
+      right: -1rem
+
+// Badge Label
+// --------------------------------------------------
+span.bal-badge__label
+  font-weight: var(--bal-font-weight-bold) !important
+  font-family: var(--bal-font-family-text) !important
+  font-size: var(--bal-text-size-small) !important
+  color: var(--bal-badge-text-color)
+  line-height: 1.5rem !important
+  hyphens: auto
+  &--hidden
+    display: none !important
+  //
+  // text colors
+  &--color-red,
+  &--color-danger
+    color: var(--bal-badge-color-red)
+  &--color-yellow,
+  &--color-warning
+    color: var(--bal-badge-color-yellow)
+  &--color-green,
+  &--color-success
+    color: var(--bal-badge-color-green)
+  &--color-grey
+    color: var(--bal-badge-color-grey)
+  &--color-purple
+    color: var(--bal-badge-color-purple)
+
+// Badge Icon
+// --------------------------------------------------
+.bal-badge__icon--hidden
+  display: none !important

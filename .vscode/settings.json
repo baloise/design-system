@@ -1,0 +1,4 @@
+{
+  "eslint.validate": ["json"],
+  "cSpell.words": ["cleancss"]
+}

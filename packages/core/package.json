@@ -1,0 +1,62 @@
+{
+  "name": "@baloise/ds-core",
+  "version": "0.0.7",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://design.baloise.dev",
+  "license": "Apache-2.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "collection:main": "dist/collection/index.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "types": "dist/types/interfaces.d.ts",
+  "files": [
+    "components/",
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "bubu": "vitest --ui"
+  },
+  "dependencies": {
+    "@baloise/ds-styles": "0.0.7",
+    "@baloise/ds-icons": "0.0.7",
+    "@baloise/web-app-utils": "3.11.2",
+    "@floating-ui/dom": "~1.6.3",
+    "@popperjs/core": "~2.11.4",
+    "@stencil/core": "4.11.0",
+    "big.js": "~6.2.1",
+    "contactjs": "2.1.7",
+    "date-fns": "~2.30.0",
+    "filesize.js": "~2.0.0",
+    "lodash.camelcase": "~4.3.0",
+    "lodash.isempty": "~4.4.0",
+    "lodash.isnan": "~3.0.2",
+    "lodash.isnil": "~4.0.0",
+    "lodash.padstart": "~4.6.1",
+    "lodash.upperfirst": "~4.3.1",
+    "lottie-colorify": "0.8.0",
+    "lottie-web": "5.8.1",
+    "luxon": "~3.4.3",
+    "tslib": "2.1.0"
+  },
+  "devDependencies": {
+    "@baloise/output-target-angular": "0.0.0",
+    "@baloise/output-target-react": "0.0.0",
+    "@baloise/output-target-vue": "0.0.0",
+    "@baloise/ds-css": "0.0.7",
+    "@baloise/ds-maps": "0.0.7",
+    "@baloise/ds-brand-icons": "0.0.7",
+    "@baloise/ds-favicons": "0.0.7"
+  },
+  "sideEffects": false
+}

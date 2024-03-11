@@ -46,12 +46,12 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
 
   const isTryOnlineProject = !project.template
   let exampleFiles = project.exampleFiles
-  let secondComponent = {}
+  const secondComponent = {}
 
   if (!isTryOnlineProject) {
     const example_component_html = project.template
       ? parseMarkdown(project.template)
-      : '<h1 class="title is-size-xxx-large">Hello World</h1>'
+      : '<h1 class="title text-xxx-large">Hello World</h1>'
 
     const new_example_component_ts = src_app_example_component_ts
 
@@ -92,8 +92,8 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
         content: isTryOnlineProject
           ? src_app_app_component_project_html
           : project.fullscreen
-          ? src_app_app_component_fullscreen_html
-          : src_app_app_component_html,
+            ? src_app_app_component_fullscreen_html
+            : src_app_app_component_html,
       },
       'src/app/app.component.ts': {
         isBinary: false,

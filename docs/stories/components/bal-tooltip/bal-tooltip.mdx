@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as TooltipStories from './bal-tooltip.stories'
@@ -9,9 +8,11 @@ import * as TooltipStories from './bal-tooltip.stories'
 
 <Banner of={TooltipStories} />
 
-<Lead>**Tooltips** provide informative text that is displayed when users hover over, focus on, or tap an element,
-  offering additional context or details. When triggered, Tooltips present a textual label that identifies an element,
-  providing information about its purpose or function.</Lead>
+<Lead>
+  **Tooltips** provide informative text that is displayed when users hover over, focus on, or tap an element, offering
+  additional context or details. When triggered, Tooltips present a textual label that identifies an element, providing
+  information about its purpose or function.
+</Lead>
 
 <Canvas of={TooltipStories.Basic} sourceState="shown" className="has-visible-overflow" />
 
@@ -58,7 +59,6 @@ your component, it should be wrapped within an `<ng-template>`:
   </ng-template>
 </bal-tooltip>
 ```
-
 
 ## Component API
 

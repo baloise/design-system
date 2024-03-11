@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as CheckboxStories from './bal-checkbox.stories'
@@ -9,8 +8,10 @@ import * as CheckboxStories from './bal-checkbox.stories'
 
 <Banner of={CheckboxStories} />
 
-<Lead>**Checkboxes** allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or
-  off.</Lead>
+<Lead>
+  **Checkboxes** allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or
+  off.
+</Lead>
 
 <Canvas of={CheckboxStories.Basic} sourceState="shown" />
 
@@ -18,7 +19,7 @@ import * as CheckboxStories from './bal-checkbox.stories'
 
 <br />
 
-Ther is a new way of adding a options to the bal-checkbox-group
+There is a new way of adding a options to the bal-checkbox-group
 by introducing the `options` property in which options can be passed using a Javascript.
 
 To use the `bal-checkbox-group` with options the `control` attribute is set to true.
@@ -28,7 +29,7 @@ To use the `bal-checkbox-group` with options the `control` attribute is set to t
 ```
 
 ```typescript
-import { newBalCheckboxOption } from '@baloise/design-system-components'
+import { newBalCheckboxOption } from '@baloise/ds-core'
 
 @Component({
   selector: 'app-example-component',
@@ -39,12 +40,11 @@ export class ExampleComponent {
     newBalCheckboxOption({ value: '1', label: 'Label 1' }),
     newBalCheckboxOption({
       value: '2',
-      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+      label: () => 'Label with <a class="link" href="http://baloise.com">Link</a>',
     }),
   ]
 }
 ```
-
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
@@ -95,9 +95,9 @@ The states invalid and disabled are also supported.
 
 <StoryHeading of={CheckboxStories.CheckboxButtonGrid}></StoryHeading>
 
-The checkbox buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+The checkbox buttons are have a built in grid system. Just add the props `grid`, `grid-mobile` or `grid-tablet` to the `bal-radio-group`.
 
-By default, on mobile devices, only one item per line is supported. To override this, use the `columns-mobile` prop.
+By default, on mobile devices, only one item per line is supported. To override this, use the `grid-mobile` prop.
 
 <Canvas of={CheckboxStories.CheckboxButtonGrid} />
 

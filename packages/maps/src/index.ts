@@ -1,2 +1,2 @@
-export * from './markers'
-export * from './styles'
+export * from './lib/markers'
+export * from './lib/styles'

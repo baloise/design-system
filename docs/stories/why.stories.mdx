@@ -60,7 +60,7 @@ have to be changed.
 }
 ```
 
-The changes will be released to [npm](https://www.npmjs.com/package/@baloise/design-system-components) from where development teams can grab new changes.
+The changes will be released to [npm](https://www.npmjs.com/package/@baloise/ds-core) from where development teams can grab new changes.
 Only the library has to be upgraded by every project and style changes are immediately applied.
 Style changes will not change the component interface, meaning that the developers don't have to do any additional adjustment.
 
@@ -107,13 +107,13 @@ For these reasons, Web Components were chosen, as they enjoy widespread support 
 
 The project is divided into various packages. The graphic below draws a more detailed picture.
 
-<img src={ArchitectureImage} style={{ maxWidth: '480px' }} />
+<img src={ArchitectureImage} />
 
 <PackageTable />
 
 ### Libraries
 
-<ul className="sb-unstyled is-list">
+<ul className="sb-unstyled list">
   <li>
     [Web Components](https://www.webcomponents.org/introduction) are a set of web platform APIs that allow you to create
     new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build
@@ -323,18 +323,18 @@ Storybook is a user interface development environment and playground for UI comp
 </table>
 
 <Footer>
-   <LinkCards>
-        <LinkCard
-          pageTitle={'Foundation/Overview'}
-          label={'Foundation'}
-          description={'Design tokens, typography, colors and more'}
-        />
-        <LinkCard
-          pageTitle={'Development/Getting Started'}
-          label={'Development'}
-          description={'Getting Started with HTML, Angular, React or Vue.js'}
-        />
-        <LinkCard pageTitle={'Changelog'} description={"What's new?"} />
-        <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
-      </LinkCards>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Foundation/Overview'}
+      label={'Foundation'}
+      description={'Design tokens, typography, colors and more'}
+    />
+    <LinkCard
+      pageTitle={'Development/Getting Started'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular, React or Vue.js'}
+    />
+    <LinkCard pageTitle={'Changelog'} description={"What's new?"} />
+    <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
+  </LinkCards>
 </Footer>

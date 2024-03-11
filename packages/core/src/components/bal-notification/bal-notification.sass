@@ -1,0 +1,34 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-notification.vars'
+
++block(notification)
+  display: block
+  position: static
+  +element(inner)
+    min-height: 3.5rem
+    border-radius: var(--bal-notification-radius)
+    font-size: var(--bal-notification-font-size)
+    font-family: var(--bal-notification-font-family)
+    background: var(--bal-notification-background)
+    color: var(--bal-notification-color)
+    hyphens: auto
+    padding: var(--bal-space-medium)
+    +tablet
+      padding: var(--bal-space-medium-tablet)
+    +desktop
+      padding: var(--bal-space-medium-desktop)
+    +modifier(color-primary)
+      background: var(--bal-notification-background-primary)
+      color: var(--bal-notification-color-primary)
+    +modifier(color-info)
+      background: var(--bal-notification-background-info)
+      color: var(--bal-notification-color-info)
+    +modifier(color-danger)
+      background: var(--bal-notification-background-danger)
+      color: var(--bal-notification-color-danger)
+    +modifier(color-warning)
+      background: var(--bal-notification-background-warning)
+      color: var(--bal-notification-color-warning)
+    +modifier(color-success)
+      background: var(--bal-notification-background-success)
+      color: var(--bal-notification-color-success)

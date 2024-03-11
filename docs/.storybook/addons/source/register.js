@@ -11,7 +11,7 @@ const PARAM_KEY = 'mySource'
 const ADDON_ID = 'mysource'
 const PANEL_ID = `${ADDON_ID}/panel`
 
-export const Panel = (props) => {
+export const Panel = props => {
   const value = useParameter(PARAM_KEY, null)
 
   if (!value) {
@@ -32,8 +32,8 @@ export const Panel = (props) => {
         </SyntaxHighlighter>
       </div>
     </AddonPanel>
-  );
-};
+  )
+}
 
 addons.register(ADDON_ID, () => {
   addons.add(PANEL_ID, {

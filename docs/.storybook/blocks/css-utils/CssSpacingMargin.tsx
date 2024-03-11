@@ -1,61 +1,67 @@
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 
-export const CssSpacingMargin = ({ }) => {
-  const obj = tokens.spacing
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
+export const CssSpacingMargin = ({}) => {
+  const obj = tokens.size.space
+  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].mobile.value)
+
+  const values = keys.map(key => ({
+    key,
+    valueMobile: obj[key].mobile.value,
+    valueTablet: obj[key].tablet.value,
+    valueDesktop: obj[key].desktop.value,
+  }))
 
   const list = [
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `-${key}`,
       property: 'margin',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `x-${key}`,
-      property: 'margin-left, margin-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `y-${key}`,
-      property: 'margin-top, margin-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `t-${key}`,
-      property: 'margin-top',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `r-${key}`,
-      property: 'margin-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `b-${key}`,
-      property: 'margin-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `l-${key}`,
-      property: 'margin-left',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'margin',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
   ]
 

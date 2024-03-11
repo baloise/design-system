@@ -6,9 +6,8 @@
   src:
     local('BaloiseCreateHeadline'),
     local('BaloiseCreateHeadline-bold'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-bold.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-bold.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateHeadline-bold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateHeadline-bold.woff') format('woff');
 }
 
 @font-face {
@@ -19,9 +18,8 @@
   src:
     local('BaloiseCreateHeadline'),
     local('BaloiseCreateHeadline-light'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-light.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-light.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateHeadline-light.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateHeadline-light.woff') format('woff');
 }
 
 @font-face {
@@ -32,8 +30,8 @@
   src:
     local('BaloiseCreateText'),
     local('BaloiseCreateText-bold'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-bold.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-bold.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateText-bold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateText-bold.woff') format('woff');
 }
 
 @font-face {
@@ -44,6 +42,6 @@
   src:
     local('BaloiseCreateText'),
     local('BaloiseCreateText-regular'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-regular.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-regular.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateText-regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@baloise/ds-fonts/lib/BaloiseCreateText-regular.woff') format('woff');
 }

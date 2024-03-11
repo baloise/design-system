@@ -1,0 +1,32 @@
+{
+  "name": "output-target-vue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/output-target-vue/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "libs/output-target-vue/src/index.ts",
+        "tsConfig": "libs/output-target-vue/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/output-target-vue"
+      }
+    },
+    "test-ui": {
+      "executor": "@baloise/ds-nx:test-ui",
+      "options": {
+        "projectRoot": "{projectRoot}"
+      }
+    }
+  },
+  "tags": ["scope:release", "type:lib"]
+}

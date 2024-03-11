@@ -1,7 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-if [ $HUSKY_DISABLED != 1 ]; then
-	npm run precommit
-fi
-

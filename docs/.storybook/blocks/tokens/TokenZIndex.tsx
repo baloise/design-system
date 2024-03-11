@@ -1,44 +1,38 @@
 import React from 'react'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import { Clipboard } from '../Clipboard'
 
-export const TokenZIndex = ({ overview }) => {
-  const zIndex = tokens.zIndex as any
-  const list = [] as any
-  for (const k in zIndex) {
-    list.push({
-      name: k,
-      description: zIndex[k].description,
-      value: zIndex[k].value,
-    })
-  }
-
+export const TokensZIndex = ({ overview }) => {
+  const list = tokens.size['z-index']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th>Description</th>
-          <th style={{ minWidth: '280px' }}>Token</th>
+          <th style={{ width: '100%' }}>Token & Description</th>
           <th style={{ minWidth: '100px' }}>Value</th>
         </tr>
       </thead>
-      <tbody>
-        {list.map(c => (
-          <tr key={c.name}>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
-              <small>{c.description}</small>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-z-index-{c.name})
-              </p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className={`has-text-weight-bold is-size-small py-xx-small`}>{c.value}</p>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+
+      {Object.keys(list).map(key => {
+        const item = list[key]
+        return (
+          <tbody key={key}>
+            <tr>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <Clipboard label={item.name} value={`var(--${item.name})`} />
+              </td>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={2} className="border-bottom-grey">
+                <p className="m-none text-small mb-small">{item.comment}</p>
+              </td>
+            </tr>
+          </tbody>
+        )
+      })}
     </table>
   )
 }

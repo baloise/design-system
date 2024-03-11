@@ -1,5 +1,5 @@
-import { Meta, Unstyled } from '@storybook/addon-docs'
-import { ButtonCard, Banner, Lead, Footer, GridCards, GridCard } from '../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs'
+import { LinkCards, LinkCard, Banner, Lead, Footer, GridCards, GridCard } from '../../.storybook/blocks'
 
 <Meta
   title="Foundation/Overview"
@@ -17,25 +17,17 @@ import { ButtonCard, Banner, Lead, Footer, GridCards, GridCard } from '../../.st
 
 <Banner label="Foundation" color="purple" puzzle />
 
-<Lead>
-  The Baloise Design System is build up on the foundations below. Foundations include the packages Design Tokens, Icons,
-  Fonts and CSS-Framework.
-</Lead>
+<Lead>The Baloise Design System is build up on the foundations below.</Lead>
 
 import Border from '../assets/images/foundations/border-purple.svg'
 import BrandAssets from '../assets/images/foundations/brand-assets-purple.svg'
 import Colors from '../assets/images/foundations/colors-purple.svg'
 import Elevation from '../assets/images/foundations/elevation-purple.svg'
-// import Forms from '../assets/images/foundations/form-purple.svg'
 import Grid from '../assets/images/foundations/grid-purple.svg'
 import Iconography from '../assets/images/foundations/icons-purple.svg'
 import Layout from '../assets/images/foundations/layout-purple.svg'
 import Spacing from '../assets/images/foundations/spacings-purple.svg'
-import Tokens from '../assets/images/foundations/tokens-purple.svg'
 import Typography from '../assets/images/foundations/typography-purple.svg'
-// import Templates from '../assets/images/foundations/templates-purple.svg'
-// import Radius from '../assets/images/foundations/radius-purple.svg'
-// import Shadow from '../assets/images/foundations/shadow-purple.svg'
 
 <GridCards>
   <GridCard
@@ -58,13 +50,6 @@ import Typography from '../assets/images/foundations/typography-purple.svg'
     svg={Colors}
     color="purple"
     description="The colors create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Baloise we are."
-  />
-  <GridCard
-    label="Design Tokens"
-    pageTitle="Foundation/Design Tokens"
-    svg={Tokens}
-    color="purple"
-    description="Design tokens serve as the definitive source for naming and storing design choices."
   />
   <GridCard
     label="Elevation"
@@ -110,4 +95,15 @@ import Typography from '../assets/images/foundations/typography-purple.svg'
   />
 </GridCards>
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Overview"
+      description="CSS utility classes streamline component styling with pre-defined styles applied directly to HTML elements."
+    />
+  </LinkCards>
+</Footer>

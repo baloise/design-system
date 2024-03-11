@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas, Markdown } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssGridSystem, Breakpoints, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, Footer, LinkCards, LinkCard, CssResponsiveTable } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Grid/Grid System"
@@ -14,29 +14,25 @@ import { Banner, Lead, Code, CssGridSystem, Breakpoints, Footer, LinkCards, Link
 
 <Lead>Determines how flex lines are distributed between and around items.</Lead>
 
-## Classes
-
-<CssGridSystem />
-
 ## Basic
 
-The grid is based on 12 columns. On mobile the columns will use the full width.
+The grid is based on 12 grid. On mobile the grid will use the full width.
 
 <Code
   language="html"
   code={`
-<div class="columns">
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">First column</div>
+<div class="grid">
+    <div class="col">
+      <div class="bg-green p-small radius-normal">First column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Second column</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Second column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Third column</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Third column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Fourth column</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Fourth column</div>
     </div>
   </div>
 `}
@@ -44,88 +40,88 @@ The grid is based on 12 columns. On mobile the columns will use the full width.
 
 ## Column Sizes
 
-The grid supports 12 different sizes of columns. They can be used with the number `is-12` or with words like `is-full`.
+The grid supports 12 different sizes of grid. They can be used with the number `is-12` or with words like `is-full`.
 
 <Code
   language="html"
   code={`
-<div class="columns is-multiline">
-    <div class="column is-full">
-      <div class="has-background-green-3 p-small has-radius-normal">Full column</div>
+<div class="grid is-multiline">
+    <div class="col is-full">
+      <div class="bg-green p-small radius-normal">Full column</div>
     </div>
 
-    <div class="column is-half">
-      <div class="has-background-green-3 p-small has-radius-normal">Half column</div>
+    <div class="col is-half">
+      <div class="bg-green p-small radius-normal">Half column</div>
     </div>
-    <div class="column is-half">
-      <div class="has-background-green-3 p-small has-radius-normal">Half column</div>
-    </div>
-
-    <div class="column is-one-third">
-      <div class="has-background-green-3 p-small has-radius-normal">1 Third column</div>
-    </div>
-    <div class="column is-two-thirds">
-      <div class="has-background-green-3 p-small has-radius-normal">2 Third column</div>
+    <div class="col is-half">
+      <div class="bg-green p-small radius-normal">Half column</div>
     </div>
 
-    <div class="column is-one-quarter">
-      <div class="has-background-green-3 p-small has-radius-normal">1 quarter column</div>
+    <div class="col is-one-third">
+      <div class="bg-green p-small radius-normal">1 Third column</div>
     </div>
-    <div class="column is-three-quarters">
-      <div class="has-background-green-3 p-small has-radius-normal">3 quarter columns</div>
-    </div>
-
-    <div class="column is-one-fifth">
-      <div class="has-background-green-3 p-small has-radius-normal">1 fifth column</div>
-    </div>
-    <div class="column is-four-fifths">
-      <div class="has-background-green-3 p-small has-radius-normal">4 fifth columns</div>
+    <div class="col is-two-thirds">
+      <div class="bg-green p-small radius-normal">2 Third column</div>
     </div>
 
-    <div class="column is-12">
-      <div class="has-background-red-3 p-small has-radius-normal">12</div>
+    <div class="col is-one-quarter">
+      <div class="bg-green p-small radius-normal">1 quarter column</div>
+    </div>
+    <div class="col is-three-quarters">
+      <div class="bg-green p-small radius-normal">3 quarter grid</div>
     </div>
 
-    <div class="column is-11">
-      <div class="has-background-red-3 p-small has-radius-normal">11</div>
+    <div class="col is-one-fifth">
+      <div class="bg-green p-small radius-normal">1 fifth column</div>
     </div>
-    <div class="column is-1">
-      <div class="has-background-grey-3 p-small has-radius-normal">1</div>
-    </div>
-
-    <div class="column is-10">
-      <div class="has-background-red-3 p-small has-radius-normal">10</div>
-    </div>
-    <div class="column is-2">
-      <div class="has-background-grey-3 p-small has-radius-normal">2</div>
+    <div class="col is-four-fifths">
+      <div class="bg-green p-small radius-normal">4 fifth grid</div>
     </div>
 
-    <div class="column is-9">
-      <div class="has-background-red-3 p-small has-radius-normal">9</div>
-    </div>
-    <div class="column is-3">
-      <div class="has-background-grey-3 p-small has-radius-normal">3</div>
+    <div class="col is-12">
+      <div class="bg-red-3 p-small radius-normal">12</div>
     </div>
 
-    <div class="column is-8">
-      <div class="has-background-red-3 p-small has-radius-normal">8</div>
+    <div class="col is-11">
+      <div class="bg-red-3 p-small radius-normal">11</div>
     </div>
-    <div class="column is-4">
-      <div class="has-background-grey-3 p-small has-radius-normal">4</div>
-    </div>
-
-    <div class="column is-7">
-      <div class="has-background-red-3 p-small has-radius-normal">7</div>
-    </div>
-    <div class="column is-5">
-      <div class="has-background-grey-3 p-small has-radius-normal">5</div>
+    <div class="col is-1">
+      <div class="bg-grey-3 p-small radius-normal">1</div>
     </div>
 
-    <div class="column is-6">
-      <div class="has-background-red-3 p-small has-radius-normal">6</div>
+    <div class="col is-10">
+      <div class="bg-red-3 p-small radius-normal">10</div>
     </div>
-    <div class="column is-6">
-      <div class="has-background-grey-3 p-small has-radius-normal">6</div>
+    <div class="col is-2">
+      <div class="bg-grey-3 p-small radius-normal">2</div>
+    </div>
+
+    <div class="col is-9">
+      <div class="bg-red-3 p-small radius-normal">9</div>
+    </div>
+    <div class="col is-3">
+      <div class="bg-grey-3 p-small radius-normal">3</div>
+    </div>
+
+    <div class="col is-8">
+      <div class="bg-red-3 p-small radius-normal">8</div>
+    </div>
+    <div class="col is-4">
+      <div class="bg-grey-3 p-small radius-normal">4</div>
+    </div>
+
+    <div class="col is-7">
+      <div class="bg-red-3 p-small radius-normal">7</div>
+    </div>
+    <div class="col is-5">
+      <div class="bg-grey-3 p-small radius-normal">5</div>
+    </div>
+
+    <div class="col is-6">
+      <div class="bg-red-3 p-small radius-normal">6</div>
+    </div>
+    <div class="col is-6">
+      <div class="bg-grey-3 p-small radius-normal">6</div>
     </div>
 
   </div>
@@ -134,17 +130,17 @@ The grid supports 12 different sizes of columns. They can be used with the numbe
 
 ## Rows
 
-By adding the CSS class `is-multiline` the columns can be shown on more than one row.
+By adding the CSS class `is-multiline` the grid can be shown on more than one row.
 
 <Code
   language="html"
   code={`
-<div class="columns is-multiline">
-  <div class="column is-full">
-    <div class="has-background-green-3 p-small has-radius-normal">First row</div>
+<div class="grid is-multiline">
+  <div class="col is-full">
+    <div class="bg-green p-small radius-normal">First row</div>
   </div>
-  <div class="column is-full">
-    <div class="has-background-red-3 p-small has-radius-normal">Second row</div>
+  <div class="col is-full">
+    <div class="bg-red-3 p-small radius-normal">Second row</div>
   </div>
 </div>
 `}
@@ -154,22 +150,22 @@ By adding the CSS class `is-multiline` the columns can be shown on more than one
 
 Grids can be nested to have more flexibility in your structure.
 
-Just keep the structure columns > column > columns > column > ...
+Just keep the structure grid > column > grid > column > ...
 
 <Code
   language="html"
   code={`
-<div class="columns">
-  <div class="column is-half">
-    <div class="has-background-green-3 p-small has-radius-normal">Half</div>
+<div class="grid">
+  <div class="col is-half">
+    <div class="bg-green p-small radius-normal">Half</div>
   </div>
-  <div class="column is-half">
-    <div class="columns">
-      <div class="column is-half">
-        <div class="has-background-red-3 p-small has-radius-normal">Half</div>
+  <div class="col is-half">
+    <div class="grid">
+      <div class="col is-half">
+        <div class="bg-red-3 p-small radius-normal">Half</div>
       </div>
-      <div class="column is-half">
-        <div class="has-background-red-3 p-small has-radius-normal">Half</div>
+      <div class="col is-half">
+        <div class="bg-red-3 p-small radius-normal">Half</div>
       </div>
     </div>
   </div>
@@ -179,54 +175,24 @@ Just keep the structure columns > column > columns > column > ...
 
 ## Space
 
-By default add a gap `var(--bal-column-gap)` of 1rem between the columns.
+By default add a gap `var(--bal-column-gap)` of 1rem between the grid.
 This can be avoided with setting the CSS class `is-gapless`.
 
 <Code
   language="html"
   code={`
-<div class="columns is-gapless">
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">First column</div>
+<div class="grid is-gapless">
+    <div class="col">
+      <div class="bg-green p-small radius-normal">First column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Second column</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Second column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Third column</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Third column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">Fourth column</div>
-    </div>
-  </div>
-`}
-/>
-
-## Breakpoint
-
-The columns can be responsive and have different sizes on the breakpoints.
-
-<Code
-  language="html"
-  code={`
-<div class="columns is-mobile">
-    <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
-      <div class="has-background-green-3 p-small has-radius-normal">
-        is-three-quarters-mobile<br>
-        is-two-thirds-tablet<br>
-        is-half-desktop<br>
-        is-one-third-widescreen<br>
-        is-one-quarter-fullhd
-      </div>
-    </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">auto</div>
-    </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">auto</div>
-    </div>
-    <div class="column">
-      <div class="has-background-green-3 p-small has-radius-normal">auto</div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">Fourth column</div>
     </div>
   </div>
 `}
@@ -234,17 +200,17 @@ The columns can be responsive and have different sizes on the breakpoints.
 
 ## Vertical Alignment
 
-To center the columns of the grid vertically set `is-vcentered` CSS class.
+To center the grid of the grid vertically set `is-vcentered` CSS class.
 
 <Code
   language="html"
   code={`
-<div class="columns is-vcentered">
-    <div class="column is-two-thirds">
-      <div class="has-background-green-2 p-small has-radius-normal">First column</div>
+<div class="grid is-vcentered">
+    <div class="col is-two-thirds">
+      <div class="bg-green-2 p-small radius-normal">First column</div>
     </div>
-    <div class="column">
-      <div class="has-background-green-2 p-small has-radius-normal">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
+    <div class="col">
+      <div class="bg-green-2 p-small radius-normal">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
     </div>
   </div>
 `}
@@ -252,14 +218,14 @@ To center the columns of the grid vertically set `is-vcentered` CSS class.
 
 ## Horizontal Alignment
 
-To center the columns of the grid set `is-centered` CSS class.
+To center the grid of the grid set `is-centered` CSS class.
 
 <Code
   language="html"
   code={`
-<div class="columns is-centered">
-    <div class="column is-one-third">
-      <div class="has-background-green-2 p-small has-radius-normal">My centered column</div>
+<div class="grid is-centered">
+    <div class="col is-one-third">
+      <div class="bg-green-2 p-small radius-normal">My centered column</div>
     </div>
   </div>
 `}
@@ -267,23 +233,56 @@ To center the columns of the grid set `is-centered` CSS class.
 
 ## Stretch
 
-To stretch the inner element of a column use the CSS class `is-fullheight`.
+To stretch the inner element of a column use the CSS class `h-full`.
 
 <Code
   language="html"
   code={`
-<div class="columns is-multiline">
-    <div class="column is-two-thirds">
-      <div class="has-background-green-2 p-small has-radius-normal is-fullheight">Stretches to the full height of the row</div>
+<div class="grid is-multiline">
+    <div class="col is-two-thirds">
+      <div class="bg-green-2 p-small radius-normal h-full">Stretches to the full height of the row</div>
     </div>
-    <div class="column is-one-third">
-      <div class="has-background-green-2 p-small has-radius-normal is-fullheight">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
+    <div class="col is-one-third">
+      <div class="bg-green-2 p-small radius-normal h-full">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
     </div>
-    <div class="column is-half">
-      <div class="has-background-green-2 p-small has-radius-normal is-fullheight">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
+    <div class="col is-half">
+      <div class="bg-green-2 p-small radius-normal h-full">Second column with some random large text to make a good case here. Unfortunately, more content is needed to make it visible that the first column is now vertically centered.</div>
     </div>
-    <div class="column is-half">
-      <div class="has-background-green-2 p-small has-radius-normal is-fullheight">Stretches to the full height of the row</div>
+    <div class="col is-half">
+      <div class="bg-green-2 p-small radius-normal h-full">Stretches to the full height of the row</div>
+    </div>
+  </div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-content-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable all />
+
+<Code
+  language="html"
+  code={`
+<div class="grid is-mobile">
+    <div class="col mobile:is-three-quarters tablet:is-two-thirds desktop:is-half widescreen:is-one-third fullhd:is-one-quarter">
+      <div class="bg-green p-small radius-normal">
+        is-three-quarters-mobile<br>
+        is-two-thirds-tablet<br>
+        is-half-desktop<br>
+        is-one-third-widescreen<br>
+        is-one-quarter-fullhd
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
     </div>
   </div>
 `}
@@ -296,7 +295,7 @@ To stretch the inner element of a column use the CSS class `is-fullheight`.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
     <LinkCard

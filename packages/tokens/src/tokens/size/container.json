@@ -1,0 +1,38 @@
+{
+  "size": {
+    "container": {
+      "size": {
+        "detail-page": {
+          "value": "744px",
+          "comment": "Deprecated container size for the website"
+        },
+        "compact": {
+          "value": "896px",
+          "comment": "Tailored container size designed for form wizard applications or pages."
+        },
+        "normal": {
+          "value": "1496px",
+          "comment": "The default container size is versatile and suitable for various applications and website pages."
+        },
+        "fluid": {
+          "value": "100%",
+          "comment": "The container for fullscreen application with a large table for example."
+        }
+      },
+      "space": {
+        "mobile": {
+          "value": "{size.space.normal.mobile}",
+          "comment": "Default space of a container to left and right side."
+        },
+        "tablet": {
+          "value": "{size.space.x-large.tablet}",
+          "comment": "Default space on tablets of a container to left and right side."
+        },
+        "desktop": {
+          "value": "{size.space.x-large.desktop}",
+          "comment": "Default space on desktops of a container to left and right side."
+        }
+      }
+    }
+  }
+}

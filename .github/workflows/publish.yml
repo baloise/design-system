@@ -1,0 +1,62 @@
+name: 🚀 Publish
+
+on:
+  pull_request:
+    types: [closed]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  BAL_DS_RELEASE: true
+
+jobs:
+  Publish:
+    name: 🚀 Publish
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/release-setup
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Build
+        run: npx nx run-many -t build --projects=tag:scope:release
+
+      - name: Update changelog file
+        run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
+
+      - name: Pre-Publish
+        run: npx nx run pre-publish
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        with:
+          path: packages/core
+
+      - name: Commit release
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "['package-lock.json', 'CHANGELOG.md']"
+          message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
+          tag: 'v${{ steps.package-version.outputs.current-version }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge main -> latest
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: latest
+          message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        run: npx nx release publish

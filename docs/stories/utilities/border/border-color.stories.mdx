@@ -20,30 +20,43 @@ import { Banner, Lead, Code, CssBorderColors, Footer, LinkCard, LinkCards } from
 
 ## Border
 
-<Code language="html" code={`<div class="has-border-primary p-normal"></div>`} />
+<Code language="html" code={`<div class="border-primary p-normal"></div>`} />
 
 ## Colors
 
 <Code
   language="html"
-  code={`<div class="has-border-primary p-x-small mb-x-small">Primary</div>
-<div class="has-border-grey p-x-small mb-x-small">Grey</div>
-<div class="has-border-grey-dark p-x-small mb-x-small">Grey Dark</div>
-<div class="has-border-success p-x-small mb-x-small">Success</div>
-<div class="has-border-danger p-x-small mb-x-small">Danger</div>
-<div class="has-border-warning p-x-small mb-x-small">Warning</div>`}
+  code={`<div class="border-primary p-x-small mb-x-small">Primary</div>
+<div class="border-grey p-x-small mb-x-small">Grey</div>
+<div class="border-grey-dark p-x-small mb-x-small">Grey Dark</div>
+<div class="border-success p-x-small mb-x-small">Success</div>
+<div class="border-danger p-x-small mb-x-small">Danger</div>
+<div class="border-warning p-x-small mb-x-small">Warning</div>`}
 />
 
-## Postiton
+## Position
 
 <Code
   language="html"
   code={`
-<div class="is-flex fg-normal">
-  <div class="has-border-top-primary p-x-small has-background-green-2 is-flex-grow-1">Top</div>
-  <div class="has-border-right-primary p-x-small has-background-green-2 is-flex-grow-1">Right</div>
-  <div class="has-border-bottom-primary p-x-small has-background-green-2 is-flex-grow-1">Bottom</div>
-  <div class="has-border-left-primary p-x-small has-background-green-2 is-flex-grow-1">Left</div>
+<div class="flex gap-normal">
+  <div class="border-top-primary p-x-small bg-green-2 flex-1">Top</div>
+  <div class="border-right-primary p-x-small bg-green-2 flex-1">Right</div>
+  <div class="border-bottom-primary p-x-small bg-green-2 flex-1">Bottom</div>
+  <div class="border-left-primary p-x-small bg-green-2 flex-1">Left</div>
+</div>
+`}
+/>
+
+## Pseudo States
+
+States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
+
+<Code
+  language="html"
+  code={`
+<div class="border-primary hover:border-primary-hovered active:border-primary-pressed cursor-pointer">
+  <p class="p-normal">Hover and click me!</p>
 </div>
 `}
 />
@@ -59,7 +72,7 @@ import { Banner, Lead, Code, CssBorderColors, Footer, LinkCard, LinkCards } from
       description="The colors create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Baloise we are."
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

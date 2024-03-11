@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxDirection, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxDirection,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Flex Direction"
@@ -22,49 +31,68 @@ import { Banner, Lead, Code, CssFlexboxDirection, Footer, LinkCard, LinkCards } 
 
 Elements are arranged in a horizontal display.
 
-<Code language="html" code={`
-<div class="is-flex is-flex-direction-row fg-normal">
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+<Code
+  language="html"
+  code={`
+<div class="flex flex-direction-row gap-normal">
+    <div class="bg-green text-align-center radius-normal p-normal">1</div>
+    <div class="bg-green text-align-center radius-normal p-normal">2</div>
+    <div class="bg-green text-align-center radius-normal p-normal">3</div>
 </div>
-`} />
+`}
+/>
 
 ## Row Reverse
 
 Elements are arranged horizontally, but in the reverse order.
 
-<Code language="html" code={`
-<div class="is-flex is-flex-direction-row-reverse fg-normal">
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+<Code
+  language="html"
+  code={`
+<div class="flex flex-direction-row-reverse gap-normal">
+    <div class="bg-green text-align-center radius-normal p-normal">1</div>
+    <div class="bg-green text-align-center radius-normal p-normal">2</div>
+    <div class="bg-green text-align-center radius-normal p-normal">3</div>
 </div>
-`} />
+`}
+/>
 
 ## Column
 
 Elements are arranged in a vertical display.
 
-<Code language="html" code={`
-<div class="is-flex is-flex-direction-column fg-normal">
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+<Code
+  language="html"
+  code={`
+<div class="flex flex-direction-column gap-normal">
+    <div class="bg-green text-align-center radius-normal p-normal">1</div>
+    <div class="bg-green text-align-center radius-normal p-normal">2</div>
+    <div class="bg-green text-align-center radius-normal p-normal">3</div>
 </div>
-`} />
+`}
+/>
 
 ## Column Reverse
 
 Elements are arranged vertically, but in the reverse order.
 
-<Code language="html" code={`
-<div class="is-flex is-flex-direction-column-reverse fg-normal">
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+<Code
+  language="html"
+  code={`
+<div class="flex flex-direction-column-reverse gap-normal">
+    <div class="bg-green text-align-center radius-normal p-normal">1</div>
+    <div class="bg-green text-align-center radius-normal p-normal">2</div>
+    <div class="bg-green text-align-center radius-normal p-normal">3</div>
 </div>
-`} />
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:flex-direction-row`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -73,7 +101,7 @@ Elements are arranged vertically, but in the reverse order.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

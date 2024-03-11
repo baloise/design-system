@@ -1,0 +1,88 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-field.vars'
+
++blocks(field, field-label, field-control, field-message, field-hint)
+  display: block
+  position: relative
+  font-family: var(--bal-font-family-text)
+
++block(field-label)
+  display: inline
+
+.bal-field-label ~ .bal-field-control
+  margin-top: .25rem
+
++block(field-hint)
+  display: inline-block
+  margin-left: .25rem
+  height: 1rem
+  width: 1rem
+  +element(hint)
+    position: absolute
+    top: 2px
+    left: 0
+
++block(field-message)
+  line-height: var(--bal-line-height-normal)
+
++block(field-hidden)
+  +hide-element
+
++block(field-control)
+  display: flex
+  align-items: center
+  flex-direction: row
+  gap: 0.5rem
+  .bal-input
+    flex: 1
+
+  +modifier(expanded-on-mobile)
+    +mobile
+      flex-direction: column
+      .bal-button
+        &,
+        .button
+          width: 100%
+
+.bal-field-control
+  padding-bottom: 1.375rem
+
+.bal-field-control + .bal-field-message
+  margin-top: -1.5rem !important
+
+.bal-field--horizontal
+  display: flex
+  flex-wrap: wrap
+  column-gap: var(--bal-field-label-column-gap)
+  align-items: center
+
+  .bal-field-label
+    display: flex
+    align-items: center
+    min-width: var(--bal-field-label-horizontal-width)
+    max-width: var(--bal-field-label-horizontal-width)
+    justify-content: flex-end
+    text-align: right
+    margin-bottom: 0
+
+  .bal-field-control
+    flex: 1
+    padding-bottom: 0
+    align-self: flex-end
+
+  .bal-field-message
+    flex-basis: 100%
+    margin-top: 0 !important
+    margin-left: calc(var(--bal-field-label-horizontal-width) + var(--bal-field-label-column-gap))
+
+  .bal-field-hint
+    margin-left: 0
+
+    .bal-hint
+      top: 0
+
+  .bal-field-hint ~ .bal-field-message
+    margin-left: calc(var(--bal-field-label-horizontal-width) + (var(--bal-field-label-column-gap) * 2) + 1.125rem)
+
+  .bal-field-label ~ .bal-field-control
+    margin-top: 0

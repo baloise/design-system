@@ -1,7 +1,7 @@
 ```ts
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
-import { BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/ds-angular'
 import { ModalComponent } from './modal.component'
 
 @Component({

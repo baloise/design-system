@@ -1,0 +1,106 @@
+@use "sass:map"
+@use "sass:string"
+@use "sass:math"
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) != 'color'
+    @return $color
+  @return rgba($color, $alpha)
+
+=hover
+  @media(hover: hover) and (pointer: fine)
+    @content
+
+=overflow-touch
+  -webkit-overflow-scrolling: touch
+
+=focus-shadow
+  +hover
+    box-shadow: var(--bal-focus-shadow) !important
+
+=focus-inset-shadow
+  +hover
+    box-shadow: var(--bal-focus-shadow-inset) !important
+
+=focus-inverted-shadow
+  +hover
+    box-shadow: var(--bal-focus-shadow-inverted) !important
+
+=focus-inverted-inset-shadow
+  +hover
+    box-shadow: var(--bal-focus-shadow-inverted-inset) !important
+
+=font-smoothing
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+
+=bottomSpacing($spacing: $block-spacing)
+  &:not(:last-child)
+    margin-bottom: $spacing
+
+=ltr-position($spacing, $right: true)
+  $normal: if($right, "right", "left")
+  #{$normal}: $spacing
+
+=ltr-property($property, $spacing, $right: true)
+  $normal: if($right, "right", "left")
+  #{$property}-#{$normal}: $spacing
+
+=unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+=disabled
+  cursor: default !important
+  pointer-events: none !important
+
+=reset
+  -moz-appearance: none
+  -webkit-appearance: none
+  appearance: none
+  background: none
+  border: none
+  color: currentColor
+  font-family: inherit
+  font-size: 1em
+  margin: 0
+  padding: 0
+
+=overlay($offset: 0)
+  bottom: $offset
+  left: $offset
+  position: absolute
+  right: $offset
+  top: $offset
+
+=hide-element
+  display: none !important
+  visibility: hidden !important
+
+=hidden-input
+  position: absolute !important
+  left: 0
+  top: 0
+  margin: 0
+  padding: 0
+  opacity: 0
+  outline: 0
+  border: none
+  width: 1px
+  height: 1px
+  clip: rect(1px, 1px, 1px, 1px)
+  overflow: hidden
+
+=invisible
+  position: absolute !important
+  height: 1px !important
+  width: 1px !important
+  padding: 0 !important
+  overflow: hidden !important
+  border: none !important
+  white-space: nowrap !important
+  clip: rect(1px 1px 1px 1px) !important
+  clip: rect(1px, 1px, 1px, 1px) !important

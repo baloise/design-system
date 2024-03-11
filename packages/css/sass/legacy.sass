@@ -1,8 +1,8 @@
-@import '@baloise/design-system-tokens/dist/tokens.sass'
-@import '@baloise/design-system-tokens/dist/tokens.legacy.sass'
+@import '../src/tokens/tokens.sass'
+@import '../src/tokens/tokens.legacy.sass'
 
 @import "../src/mixins/_all"
-@import '../src/generated/typography.legacy.helpers'
+@import '../src/helpers/typography.legacy.helpers'
 
 $tablet: $bal-breakpoint-tablet !default
 $desktop: $bal-breakpoint-desktop !default
@@ -194,7 +194,7 @@ p.is-regular,
 a.is-regular,
 .is-text-regular,
 .is-text-regular span
-  font-weight: var(--bal-weight-regular)
+  font-weight: var(--bal-font-weight-regular)
 
 .is-bold,
 span.is-bold,

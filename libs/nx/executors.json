@@ -1,0 +1,54 @@
+{
+  "executors": {
+    "build-styles": {
+      "implementation": "./src/executors/build-styles/executor",
+      "schema": "./src/executors/build-styles/schema.json",
+      "description": "build-styles executor"
+    },
+    "build-core": {
+      "implementation": "./src/executors/build-core/executor",
+      "schema": "./src/executors/build-core/schema.json",
+      "description": "build-core executor"
+    },
+    "build-css": {
+      "implementation": "./src/executors/build-css/executor",
+      "schema": "./src/executors/build-css/schema.json",
+      "description": "build-css executor"
+    },
+    "build-svg": {
+      "implementation": "./src/executors/build-svg/executor",
+      "schema": "./src/executors/build-svg/schema.json",
+      "description": "build-svg executor"
+    },
+    "build-docs": {
+      "implementation": "./src/executors/build-docs/executor",
+      "schema": "./src/executors/build-docs/schema.json",
+      "description": "build-docs executor"
+    },
+    "build-e2e": {
+      "implementation": "./src/executors/build-e2e/executor",
+      "schema": "./src/executors/build-e2e/schema.json",
+      "description": "build-e2e executor"
+    },
+    "create-changeset": {
+      "implementation": "./src/executors/create-changeset/executor",
+      "schema": "./src/executors/create-changeset/schema.json",
+      "description": "create-changeset executor"
+    },
+    "pre-publish": {
+      "implementation": "./src/executors/pre-publish/executor",
+      "schema": "./src/executors/pre-publish/schema.json",
+      "description": "pre-publish executor"
+    },
+    "create-angular": {
+      "implementation": "./src/executors/create-angular/executor",
+      "schema": "./src/executors/create-angular/schema.json",
+      "description": "create-angular executor"
+    },
+    "test-ui": {
+      "implementation": "./src/executors/test-ui/executor",
+      "schema": "./src/executors/test-ui/schema.json",
+      "description": "test-ui executor"
+    }
+  }
+}

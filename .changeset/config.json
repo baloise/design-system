@@ -1,9 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
+  "changelog": ["./my-changelog-config.js", { "repo": "baloise-incubator/ds-playground" }],
   "commit": false,
-  "fixed": [["@baloise/design-system-*"]],
-  "ignore ": [["@baloise/design-system-output-target-*"]],
+  "fixed": [["@baloise/ds-*"]],
+  "ignore ": [["@baloise/ds-output-target-*", "@baloise/ds-nx", "e2e", "docs"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

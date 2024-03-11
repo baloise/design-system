@@ -1,0 +1,65 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>a11y</title>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+    <link rel="stylesheet" href="/assets/theme-compact.css" />
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium">
+        <h1>a11y</h1>
+        <section data-testid="basic">
+          <bal-field>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="disabled">
+          <bal-field disabled>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="invalid">
+          <bal-field invalid>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="basic">
+          <bal-field>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="horizontal">
+          <bal-field horizontal>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

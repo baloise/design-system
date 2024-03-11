@@ -1,0 +1,27 @@
+{
+  "name": "@baloise/ds-nx",
+  "version": "0.0.7",
+  "private": true,
+  "dependencies": {
+    "@nx/devkit": "18.0.4",
+    "tslib": "~2.3.0",
+    "lodash.get": "~4.4.2",
+    "lodash.camelcase": "~4.3.0",
+    "lodash.upperfirst": "~4.3.1",
+    "svgo": "~3.2.0",
+    "autoprefixer": "~10.4.17",
+    "glob": "~10.3.10",
+    "postcss": "~8.4.31",
+    "prompts": "~2.4.2",
+    "replace-in-file": "~7.1.0",
+    "fs-extra": "11.2.0",
+    "sass": "~1.70.0",
+    "clean-css": "~5.3.3",
+    "typescript": "~4.8.2",
+    "archiver": "~6.0.1"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "executors": "./executors.json"
+}

@@ -36,7 +36,7 @@ After installing the copyfiles dependency, it is necessary to define the copy co
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-fonts/assets/* src/assets/fonts",
 }
 ```
 
@@ -59,7 +59,7 @@ After declaring the `$font-path` variable, the SASS font file that utilizes this
 
 ```css
 // Custom font faces
-@import '@baloise/design-system-css/sass/font';
+@import '@baloise/ds-styles/sass/font';
 ```
 
 ## Favicon
@@ -67,7 +67,7 @@ After declaring the `$font-path` variable, the SASS font file that utilizes this
 First install the favicons library
 
 ```bash
-npm add -D @baloise/design-system-favicons copyfiles
+npm add -D @baloise/ds-favicons copyfiles
 ```
 
 To add favicons to your web application use the tool "copyfiles" to copy the favicon files into your assets folder.
@@ -79,7 +79,7 @@ Create a new script named `copy:favicons` and adjust the second path to match yo
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:favicons",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/ds-favicons/assets/icons/primary/* src/assets/favicons"
 }
 ```
 
@@ -96,24 +96,24 @@ npm install
 The final step is to add the favicon to the index.html file of your application.
 
 ```html
-<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png">
-<link rel="manifest" href="./assets/favicons/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
+<link rel="manifest" href="./assets/favicons/site.webmanifest" />
 <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
-<meta name="msapplication-config" content="./assets/favicon/browserconfig.xml">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-config" content="./assets/favicon/browserconfig.xml" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="theme-color" content="#ffffff" />
 ```
 
 ## Google Maps
 
-The map markers and styles are provided in a separate package `@baloise/design-system-maps`.
+The map markers and styles are provided in a separate package `@baloise/ds-maps`.
 
 First install the maps package
 
 ```bash
-npm install @baloise/design-system-maps
+npm install @baloise/ds-maps
 npm install @types/googlemaps --save-dev
 ```
 
@@ -124,7 +124,7 @@ Check out the [Google Maps JavaScript API Loader](https://github.com/googlemaps/
 After installing import the **balMapTypeStyles** into your Google Maps config object.
 
 ```ts
-import { balMapTypeStyles } from '@baloise/design-system-maps'
+import { balMapTypeStyles } from '@baloise/ds-maps'
 
 const myMap = new google.maps.map(myMapElement, {
   ...
@@ -137,7 +137,7 @@ const myMap = new google.maps.map(myMapElement, {
 To set a marker import the svg `balMapMarkerDefault` and pass it as the icon url.
 
 ```ts
-import { balMapMarkerDefault } from '@baloise/design-system-maps'
+import { balMapMarkerDefault } from '@baloise/ds-maps'
 
 new google.maps.Marker({
   position: { lat: 36.6163, lng: -100.61 },

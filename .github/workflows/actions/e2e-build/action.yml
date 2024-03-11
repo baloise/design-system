@@ -1,0 +1,17 @@
+name: 'E2E Build'
+description: 'E2E Build'
+runs:
+  using: 'composite'
+  steps:
+    - uses: ./.github/workflows/actions/setup
+
+    - name: Clean install
+      shell: bash
+      run: npm ci
+
+    - name: Define Nx cache
+      uses: nrwl/nx-set-shas@v4
+
+    - name: Build
+      shell: bash
+      run: npx nx run-many --target=build --projects=core,e2e,testing

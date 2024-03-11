@@ -1,0 +1,140 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium">
+        <section data-testid="basic">
+          <bal-field>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="disabled">
+          <bal-field disabled>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Disabled"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="invalid">
+          <bal-field invalid>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Invalid"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="readonly">
+          <bal-field readonly>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Readonly"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="required">
+          <bal-field required="false">
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Required"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="valid">
+          <bal-field valid>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Valid"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="label-long" style="width: 120px">
+          <bal-field>
+            <bal-field-label>This is a very long label to test if it breaks into new lines</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="horizontal">
+          <bal-field horizontal>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="horizontal-long-label">
+          <bal-field horizontal>
+            <bal-field-label
+              >Firstname (The name given to you at birth or the name you commonly use in official documents, such as
+              your legal first name. Please ensure accuracy for administrative purposes.)</bal-field-label
+            >
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="danger"
+              >Error: The provided input for the Field component failed validation. Please ensure that your entry
+              adheres to the specified format and requirements.</bal-field-message
+            >
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="horizontal-with-hint">
+          <bal-field expanded="true" class="mt-x-large" horizontal>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-hint subject="Spider-Man">
+              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+            </bal-field-hint>
+            <bal-field-control>
+              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="danger">Required Field</bal-field-message>
+          </bal-field>
+        </section>
+        <section data-testid="label-long-with-hint" style="width: 200px">
+          <bal-field>
+            <bal-field-label
+              >This is a very long label to test if the hint will be at the end of the text when it
+              breaks</bal-field-label
+            >
+            <bal-field-hint subject="Spider-Man">
+              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+            </bal-field-hint>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Button', () => {
   const button = byTestId('my-button') // [data-testid="my-button"]

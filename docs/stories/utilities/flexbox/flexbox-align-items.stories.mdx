@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxAlignItems, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxAlignItems,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Align Items"
@@ -25,10 +34,10 @@ Elements are positioned at the beginning of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-start is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex align-items-start flex-wrap gap-normal" style="min-height: 200px">
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
@@ -40,10 +49,10 @@ Elements are centered within the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-center is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex align-items-center flex-wrap gap-normal" style="min-height: 200px">
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
@@ -55,10 +64,10 @@ Elements are aligned to the end of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-end is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex align-items-end flex-wrap gap-normal" style="min-height: 200px">
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
@@ -70,10 +79,10 @@ The elements are expanded to fill the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">3</div>
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-height: 4rem; min-width: 200px">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-height: 4rem; min-width: 200px">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-height: 4rem; min-width: 200px">3</div>
 </div>
 `}
 />
@@ -85,13 +94,20 @@ Elements are aligned with the baseline of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-baseline is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
-  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex align-items-baseline flex-wrap gap-normal" style="min-height: 200px">
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="bg-green radius-normal flex justify-content-center align-items-center" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-items-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -100,7 +116,7 @@ Elements are aligned with the baseline of the container.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

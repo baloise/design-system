@@ -1,0 +1,23 @@
+name: 'Test Angular'
+description: 'Test Angular'
+inputs:
+  app:
+    description: 'The specific test application'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Cypress tests 🧪
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run cy:start
+        wait-on: 'http://localhost:4200'
+        working-directory: test/angular/${{ inputs.app }}
+        install: false
+        browser: chrome
+
+    - name: Upload snapshots
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: snapshots-angular-${{ inputs.app }}
+        path: test/angular/${{ inputs.app }}/cypress/snapshots

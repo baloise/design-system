@@ -1,4 +1,4 @@
-name: Nightly Release
+name: 🌙 Nightly
 
 on:
   workflow_dispatch:
@@ -8,31 +8,51 @@ on:
     - cron: '00 06 * * 1-5'
 
 jobs:
-  Release:
-    name: 🚀 Release Nightly
+  release:
+    name: 🚀 Release
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: ./.github/workflows/actions/setup
 
-      - uses: ./.github/workflows/actions/setup-release
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        with:
+          path: packages/core
+
+      - name: Generate Timestamp
+        id: timestamp
+        run: echo "timestamp=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+
+      - name: Create version
+        id: set-version
+        run: echo "version=${{ steps.package-version.outputs.current-version}}-nightly.${{ steps.timestamp.outputs.timestamp }}" >> $GITHUB_OUTPUT
+
+      - name: Print version
+        run: echo "${{steps.set-version.outputs.version}}"
+
+      - uses: ./.github/workflows/actions/release-setup
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          npm-token: ${{ secrets.NPM_TOKEN }}
+          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Release nightly
-        run: |
-          npx changeset version --snapshot nightly
-          npx changeset publish --no-git-tag --tag nightly
-        shell: bash
+      - name: Define version
+        run: npx nx release version --git-commit=false --git-tag=false --preid=nightly --specifier=${{steps.set-version.outputs.version}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build
+        run: npx nx run-many -t build --projects=tag:scope:release
+
+      - name: Pre-Publish
+        run: npx nx run pre-publish
+
+      - name: Publish
+        run: npx nx release publish --tag=nightly
 
       - name: Git Reset
         run: git reset --hard
-        shell: bash

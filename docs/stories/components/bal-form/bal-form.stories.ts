@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import {
   withRender,
@@ -162,7 +162,7 @@ export const Autocomplete = Story({
                         <bal-field-message>Field Message</bal-field-message>
                     </bal-field>
                 </bal-form-col>
-  
+
                 <bal-form-col size="half">
                     <bal-field required="true">
                         <bal-field-label>Street</bal-field-label>
@@ -171,7 +171,7 @@ export const Autocomplete = Story({
                         </bal-field-control>
                     </bal-field>
                 </bal-form-col>
-  
+
                 <bal-form-col size="half">
                     <bal-field required="true">
                         <bal-field-label>City</bal-field-label>
@@ -180,7 +180,7 @@ export const Autocomplete = Story({
                         </bal-field-control>
                     </bal-field>
                 </bal-form-col>
-  
+
             </bal-form-grid>
         </bal-card-content>
         <bal-card-actions position="left">

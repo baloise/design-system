@@ -1,9 +1,7 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarGreen } from '@baloise/design-system-brand-icons'
-import { balBrandIconCarRed } from '@baloise/design-system-brand-icons'
-import { balBrandIconCarPurple } from '@baloise/design-system-brand-icons'
+import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons'
 
 type Args = JSX.BalRadio & { content: string }
 
@@ -22,7 +20,7 @@ const meta: Meta<Args> = {
   <bal-radio ${props(args)} value="3" disabled="true">Disabled</bal-radio>
   <bal-radio ${props(
     args,
-  )} value="4">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+  )} value="4">Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
 </bal-radio-group>`,
   ),
 }
@@ -87,7 +85,7 @@ export const SelectButtons = Story({
             <bal-radio ${props(args)} value="no">No</bal-radio>
             <bal-radio ${props(
               args,
-            )} value="with-link">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+            )} value="with-link">Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
         </bal-radio-group>
     </bal-field-control>
     <bal-field-message color="hint">Field Message</bal-field-message>

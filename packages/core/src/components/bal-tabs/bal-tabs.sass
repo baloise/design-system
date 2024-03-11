@@ -1,0 +1,61 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './components/tab-nav'
+@import './components/tab-button'
+@import './components/tab-icon'
+@import './components/tab-label'
+@import './components/tab-select'
+@import './bal-tabs.vars'
+
+.bal-tabs
+  display: block
+  min-width: 0
+  //
+  //
+  &--fullwidth
+    width: 100%
+  //
+  // Vertical layout
+  &--vertical
+    display: block
+    +tablet
+      display: flex
+  //
+  // Navbar layout
+  &--navbar
+    +tablet
+      height: 100%
+.bal-tab-item
+  width: 100%
+  display: none
+  &--active
+    display: block
+
+.bal-tabs__tabs__content
+  width: 100%
+
+//
+// Accordion animation
+.bal-tabs--animated
+  transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+
+  & .bal-tabs__tabs__content
+    transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+
+.bal-tabs--accordion
+  .bal-tabs__tabs__content
+    overflow: hidden
+    will-change: max-height
+
+  &.bal-tabs--collapsing .bal-tabs__tabs__content
+    max-height: 0 !important
+
+  &.bal-tabs--collapsed .bal-tabs__tabs__content
+    display: none
+
+  &.bal-tabs--expanding .bal-tabs__tabs__content
+    max-height: 0
+
+  @media (prefers-reduced-motion: reduce)
+    .bal-tabs,
+    .bal-tabs__tabs__content
+      transition: none !important

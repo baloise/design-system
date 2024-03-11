@@ -1,0 +1,69 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system.css" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-app>
+      <div class="container">
+        <h2 class="title text-xx-large">Basic</h2>
+        <section>
+          <form method="post" action="http://localhost:3000/upload" enctype="multipart/form-data" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-label>File upload</bal-field-label>
+                  <bal-field-control>
+                    <bal-file-upload
+                      id="bal-file-upload-example"
+                      name="my-files"
+                      accept="image/png"
+                      max-files="3"
+                      max-file-size="10000000"
+                      max-bundle-size="100000000"
+                    ></bal-file-upload>
+                  </bal-field-control>
+                  <bal-field-message id="bal-file-upload-messages"></bal-field-message>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group class="mt-normal">
+              <bal-button element-type="submit">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="info">Reset</bal-button>
+              <bal-button id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
+        <script>
+          var messages = []
+          var fileUpload = document.getElementById('bal-file-upload-example')
+          var clearButton = document.getElementById('bal-file-upload-clear')
+
+          fileUpload.addEventListener('balRejectedFile', event => {
+            var div = document.createElement('div')
+            var text = document.createTextNode(
+              'The file "' +
+                event.detail.file.name +
+                '" could not be uploaded, because of "' +
+                event.detail.reasons.join(', ') +
+                '"',
+            )
+            div.appendChild(text)
+            div.setAttribute('class', 'notification is-warning mb-normal')
+            document.getElementById('bal-file-upload-messages').appendChild(div)
+          })
+
+          clearButton.addEventListener('click', () => {
+            fileUpload.clear()
+          })
+        </script>
+      </div>
+    </bal-app>
+  </body>
+</html>

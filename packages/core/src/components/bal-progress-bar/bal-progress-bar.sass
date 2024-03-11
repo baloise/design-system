@@ -1,0 +1,36 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-progress-bar.vars'
+
+// Progress
+// --------------------------------------------------
+
+.bal-progress-bar
+  +unselectable
+  display: block
+  width: 100%
+  min-width: 0
+  height: 0.25rem
+  //
+  // background colors
+  &--background-white
+    background: var(--bal-progress-bar-background-white)
+  &--background-grey
+    background: var(--bal-progress-bar-background-grey)
+
+// Progress Line
+// --------------------------------------------------
+
+.bal-progress-bar__line
+  +unselectable
+  display: block
+  height: 0.25rem
+  width: 0
+  background: var(--bal-progress-bar-line-background)
+  border-top-right-radius: var(--bal-progress-bar-line-radius)
+  border-bottom-right-radius: var(--bal-progress-bar-line-radius)
+  &--animated
+    will-change: width
+    transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+  &--full
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
