@@ -1,0 +1,17 @@
+### bal-field-label
+ 
+#### Properties
+
+| Property   | Attribute  | Description                                                                                                                                                                                                  | Type                                                                           | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ----------- |
+| `disabled` | `disabled` | If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.                                     | `boolean `, ` undefined`                                                       | `undefined` |
+| `htmlFor`  | `html-for` | The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control. | `string `, ` undefined`                                                        | `undefined` |
+| `invalid`  | `invalid`  | If `true` the component gets a invalid red style.                                                                                                                                                            | `boolean `, ` undefined`                                                       | `undefined` |
+| `readonly` | `readonly` | If `true` the element can not mutated, meaning the user can not edit the control.                                                                                                                            | `boolean `, ` undefined`                                                       | `undefined` |
+| `required` | `required` | If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..                                                                                             | `boolean`                                                                      | `true`      |
+| `size`     | `size`     | Defines the size of the font. Default is like a heading 5 and small is used with the form fields.                                                                                                            | `"" `, ` "large" `, ` "small" `, ` "x-large" `, ` "xx-large" `, ` "xxx-large"` | `'small'`   |
+| `valid`    | `valid`    | If `true` the component gets a valid green style.                                                                                                                                                            | `boolean `, ` undefined`                                                       | `undefined` |
+| `weight`   | `weight`   | Defines the font weight of the label.                                                                                                                                                                        | `"bold" `, ` "regular"`                                                        | `'bold'`    |
+
+
+ 
