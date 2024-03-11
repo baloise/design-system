@@ -1,14 +1,14 @@
 {
   "name": "e2e",
-  "version": "15.2.4",
+  "version": "15.2.5",
   "private": true,
   "scripts": {
     "postinstall": "cypress install",
     "visual-report": "npx reg-cli cypress/snapshots/actual cypress/snapshots/base/visual cypress/snapshots/diff -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
-    "@baloise/ds-core": "15.2.4",
-    "@baloise/ds-testing": "15.2.4",
+    "@baloise/ds-core": "16.0.0",
+    "@baloise/ds-testing": "16.0.0",
     "@baloise/web-app-utils": "~3.11.2",
     "@vitejs/plugin-vue": "~5.0.4",
     "axe-core": "~4.8.4",
