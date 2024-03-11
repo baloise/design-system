@@ -20,11 +20,11 @@ runs:
     - name: Create .npmrc
       run: |
         cat << EOF > "$HOME/.npmrc"
-          //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
         EOF
       shell: bash
       env:
-        NPM_TOKEN: ${{ inputs.npm-token }}
+        NPM_PUBLISH_TOKEN: ${{ inputs.npm-token }}
 
     - name: Clean install
       shell: bash

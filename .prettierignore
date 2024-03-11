@@ -12,6 +12,11 @@ packages/core/src/components.d.ts
 
 resources/data/tags.json
 
+.changeset/
+CHANGELOG.md
+CHANGELOG_OLD.md
+CHANGELOG_v12.md
+
 /.nx/cache
 .angular
 generated
@@ -24,5 +29,3 @@ e2e/cypress/videos
 
 package-lock.json
 *.svg
-
-CHANGELOG.md
