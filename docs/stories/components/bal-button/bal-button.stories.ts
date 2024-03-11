@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
@@ -119,7 +119,7 @@ export const NativeButton = Story({
     <button class="button is-danger">Danger</button>
     <button class="button is-disabled">Disabled</button>
   </div>
-  <div class="buttons has-background-primary p-small">
+  <div class="buttons bg-primary p-small">
     <button class="button is-inverted is-primary">Primary</button>
     <button class="button is-inverted is-secondary">Secondary</button>
     <button class="button is-inverted is-tertiary">Tertiary</button>
@@ -133,10 +133,10 @@ export const NativeLink = Story({
   ...withRender(
     () => `<div class="columns m-none">
   <div class="column">
-      <a class="is-link">Link</a>
+      <a class="link">Link</a>
   </div>
-  <div class="column has-background-primary">
-      <a class="is-link is-inverted">Link</a>
+  <div class="column bg-primary">
+      <a class="link is-inverted">Link</a>
   </div>
 </div>`,
   ),

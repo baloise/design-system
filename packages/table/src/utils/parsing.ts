@@ -1,3 +1,3 @@
-export const parseValue = (value: any) => {
+export const parseValue = (value: unknown) => {
   return value !== null && value !== undefined ? value : ''
 }

@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-stage.vars'
 
 +block(stage)
@@ -39,13 +39,15 @@
       padding-top: calc(var(--bal-space-xxxx-large) + 4rem)
       padding-bottom: var(--bal-space-xxx-large)
       +tablet
-        padding-top: calc(var(--bal-space-tablet-xxxx-large) + 4rem)
-        padding-bottom: var(--bal-space-tablet-xx-large)
+        padding-top: calc(var(--bal-space-xxxx-large-tablet) + 4rem)
+        padding-bottom: var(--bal-space-xx-large-tablet)
       +desktop
-        padding-top: calc(var(--bal-space-desktop-xxxx-large) + 3rem)
-        padding-bottom: var(--bal-space-desktop-xx-large)
+        padding-top: calc(var(--bal-space-xxxx-large-desktop) + 3rem)
+        padding-bottom: var(--bal-space-xx-large-desktop)
 
     +block(stage-back-link)
+      +modifier(shadow)
+        text-shadow: var(--bal-text-shadow-normal)
       +touch
         display: none
       +desktop

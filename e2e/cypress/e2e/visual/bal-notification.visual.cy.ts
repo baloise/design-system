@@ -1,7 +1,5 @@
 describe('bal-notification', () => {
-  beforeEach(() =>
-    cy.visit('/components/bal-notification/test/bal-notification.visual.html').waitForDesignSystem(),
-  )
+  beforeEach(() => cy.visit('/components/bal-notification/test/bal-notification.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

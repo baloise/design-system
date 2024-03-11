@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Checkbox', () => {
   const checkbox = byTestId('my-checkbox') // [data-testid="my-checkbox"]
@@ -19,7 +19,6 @@ describe('Checkbox', () => {
 
 <!-- END: human documentation -->
 
-
 ### Selectors
 
 | Selector         | Element               |
@@ -27,4 +26,3 @@ describe('Checkbox', () => {
 | `checkbox.input` | Native input element. |
 | `checkbox.label` | Label element.        |
 | `checkbox.text`  | Label span element.   |
-

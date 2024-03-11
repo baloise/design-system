@@ -1,4 +1,5 @@
-import { h, Teleport, VNode } from 'vue'
+import { h, Teleport } from 'vue'
+import type { VNode } from 'vue'
 import { addTeleportedUserComponent, removeTeleportedUserComponent } from './components/BalApp'
 
 export const VueDelegate = (addFn = addTeleportedUserComponent, removeFn = removeTeleportedUserComponent) => {

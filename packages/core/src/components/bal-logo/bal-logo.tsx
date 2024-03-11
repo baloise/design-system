@@ -120,7 +120,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
         return resolve()
       } else {
         rIC(async () => {
-          import('./bal-logo.animation')
+          import(/* @vite-ignore */ './bal-logo.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()

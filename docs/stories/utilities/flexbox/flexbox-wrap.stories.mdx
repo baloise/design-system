@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxWrap, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxWrap,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Flex Wrap"
@@ -25,10 +34,10 @@ Flexible items will wrap if needed.
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap" style="max-width: 500px">
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex flex-wrap" style="max-width: 500px">
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
@@ -40,10 +49,10 @@ Flexible items will wrap if needed, but in reverse order.
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap-reverse" style="max-width: 500px">
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex flex-wrap-reverse" style="max-width: 500px">
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
@@ -55,13 +64,20 @@ Flexible items maintain their position without wrapping.
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-nowrap" style="max-width: 500px">
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+<div class="flex flex-nowrap" style="max-width: 500px">
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="flex align-items-center justify-content-center bg-green m-normal radius-normal" style="min-width: 200px; min-height: 100px">3</div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:flex-nowrap`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -70,7 +86,7 @@ Flexible items maintain their position without wrapping.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

@@ -95,7 +95,7 @@ function prepareOptions(
     )
   }
   const options: VisualRegressionOptions = {
-    type: Cypress.env('visualRegression').type as TypeOption,
+    type: (Cypress.env('visualRegressionType') as TypeOption) || 'regression',
     screenshotName: name,
     specName: Cypress.spec.name,
     screenshotAbsolutePath: 'null', // will be set after takeScreenshot
@@ -112,46 +112,6 @@ function prepareOptions(
     options.failSilently = Cypress.env('visualRegression').failSilently
   }
 
-  // deprecation methods
-  if (Cypress.env('type') !== undefined) {
-    console.error("Environment variable 'type' is deprecated. Please check README.md file for latest configuration.")
-    options.type = Cypress.env('type')
-  }
-  if (Cypress.env('failSilently') !== undefined) {
-    console.error(
-      "Environment variable 'failSilently' is deprecated. Please check README.md file for latest configuration.",
-    )
-  }
-  if (Cypress.env('SNAPSHOT_BASE_DIRECTORY') !== undefined) {
-    console.error(
-      "Environment variable 'SNAPSHOT_BASE_DIRECTORY' is deprecated. Please check README.md file for latest configuration.",
-    )
-    options.baseDirectory = Cypress.env('SNAPSHOT_BASE_DIRECTORY')
-  }
-  if (Cypress.env('SNAPSHOT_DIFF_DIRECTORY') !== undefined) {
-    console.error(
-      "Environment variable 'SNAPSHOT_DIFF_DIRECTORY' is deprecated. Please check README.md file for latest configuration.",
-    )
-    options.diffDirectory = Cypress.env('SNAPSHOT_DIFF_DIRECTORY')
-  }
-  if (Cypress.env('INTEGRATION_FOLDER') !== undefined) {
-    console.error(
-      "Environment variable 'INTEGRATION_FOLDER' is deprecated. Please check README.md file for latest configuration.",
-    )
-  }
-  if (Cypress.env('ALWAYS_GENERATE_DIFF') !== undefined) {
-    console.error(
-      "Environment variable 'ALWAYS_GENERATE_DIFF' is deprecated. Please check README.md file for latest configuration.",
-    )
-    options.generateDiff = Cypress.env('ALWAYS_GENERATE_DIFF') !== '' ? 'always' : 'never'
-  }
-  if (Cypress.env('ALLOW_VISUAL_REGRESSION_TO_FAIL') !== undefined) {
-    console.error(
-      "Environment variable 'ALLOW_VISUAL_REGRESSION_TO_FAIL' is deprecated. Please check README.md file for latest configuration.",
-    )
-    options.failSilently = Cypress.env('ALLOW_VISUAL_REGRESSION_TO_FAIL')
-  }
-
   return options
 }
 
@@ -163,21 +123,18 @@ function takeScreenshot(
 ): Cypress.Chainable<string> {
   const objToOperateOn = subject !== undefined ? cy.get(subject) : cy
   let screenshotPath: string
-  return (
-    objToOperateOn
-      .waitAfterFramePaint()
-      .waitAfterIdleCallback()
-      .screenshot(name, {
-        ...screenshotOptions,
-        onAfterScreenshot(_el, props) {
-          screenshotPath = props.path
-        },
-      })
-      // @ts-ignore
-      .then(() => {
-        return screenshotPath
-      })
-  )
+  return objToOperateOn
+    .waitAfterFramePaint()
+    .waitAfterIdleCallback()
+    .screenshot(name, {
+      ...screenshotOptions,
+      onAfterScreenshot(_el, props) {
+        screenshotPath = props.path
+      },
+    })
+    .then(() => {
+      return screenshotPath
+    })
 }
 
 /** Call the plugin to compare snapshot images and generate a diff */

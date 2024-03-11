@@ -10,7 +10,6 @@ import {
   ComponentInterface,
   State,
   Listen,
-  Watch,
 } from '@stencil/core'
 import { isDescendant } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -103,16 +102,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
   @Prop() required = false
 
   /**
-   * @deprecated
-   * Use non-submit or invisible instead
-   */
-  @Prop() hidden = false
-  @Watch('hidden')
-  hiddenWatcher(value: boolean) {
-    this.nonSubmit = value
-  }
-
-  /**
    * If `true`, the value will not be send with a form submit
    */
   @Prop() nonSubmit = false
@@ -166,10 +155,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     if (radioGroup) {
       radioGroup.addEventListener('balInput', this.updateState)
-    }
-
-    if (this.hidden) {
-      this.nonSubmit = this.hidden
     }
 
     this.el.addEventListener('keydown', this.onKeydown)
@@ -311,7 +296,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
       nonSubmit: this.nonSubmit,
       invisible: this.invisible,
       invalid: this.invalid,
-      hidden: this.hidden, // deprecated
     }
   }
 

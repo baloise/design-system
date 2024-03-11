@@ -1,5 +1,5 @@
 describe('css-radius.visual', () => {
-  beforeEach(() => cy.visit('/test/css-radius.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-radius.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.getByTestId('radius-none').testVisual('css-radius-none-basic')

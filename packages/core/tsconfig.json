@@ -1,11 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "h",
-    "outDir": ".tmp",
-    "types": ["vitest/globals"],
-  },
+  "files": [],
   "include": ["src"],
-  "exclude": ["dist", "components", "loader", "www", "scripts", "node_modules", "generated"],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
 }

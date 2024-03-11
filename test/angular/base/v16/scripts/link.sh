@@ -10,7 +10,7 @@ pushd packages/fonts
 npm link
 popd
 
-pushd packages/css
+pushd packages/styles
 npm link
 popd
 
@@ -18,7 +18,7 @@ pushd packages/icons
 npm link
 popd
 
-pushd packages/components
+pushd packages/core
 npm link
 popd
 
@@ -27,6 +27,6 @@ npm link
 popd
 
 popd
-npm link @baloise/design-system-tokens @baloise/design-system-fonts @baloise/design-system-icons @baloise/design-system-css @baloise/design-system-components @baloise/design-system-testing
+npm link @baloise/ds-tokens @baloise/ds-fonts @baloise/ds-icons @baloise/ds-styles @baloise/ds-core @baloise/ds-testing
 
 echo "=> Angular project is linked with components"

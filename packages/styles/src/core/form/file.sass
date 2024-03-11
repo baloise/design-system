@@ -1,0 +1,139 @@
+.file
+  @extend %unselectable
+  align-items: stretch
+  display: flex
+  justify-content: flex-start
+  position: relative
+  width: 100%
+  font-size: var(--bal-form-field-control-font-size)
+  justify-content: center
+  .file-label
+    width: 100%
+    flex-direction: column
+  .file-cta
+    flex-direction: column
+    height: auto
+    padding: 1em 3em
+  .file-icon
+    height: 1.5em
+    width: 1.5em
+
+.file-label
+  align-items: stretch
+  display: flex
+  cursor: pointer
+  justify-content: flex-start
+  overflow: hidden
+  position: relative
+  gap: 0.5rem
+  font-weight: var(--bal-form-field-label-font-weight)
+  color: var(--bal-form-field-label-color)
+  text-align: center
+  hyphens: auto
+  &:hover
+    .file-cta,
+    .file-label
+      color: var(--bal-form-field-label-color-hover)
+    .file-cta
+      background-color: var(--bal-form-field-control-background-hover)
+      border-color: var(--bal-form-field-control-border-color-hover)
+  &:active,
+  &:focus-within
+    .file-cta,
+    .file-label
+      color: var(--bal-form-field-label-color-active)
+    .file-cta
+      background-color: var(--bal-form-field-control-background-active)
+      border-color: var(--bal-form-field-control-border-color-active)
+
+.file-input
+  height: 100%
+  left: 0
+  opacity: 0
+  outline: none
+  position: absolute
+  top: 0
+  width: 100%
+
+.file-cta
+  @extend %control
+  justify-content: flex-start
+  border-style: var(--bal-file-border-style)
+  border-color: var(--bal-form-field-control-border-color)
+  border-radius: var(--bal-form-field-control-radius)
+  background: var(--bal-form-field-control-background)
+  font-size: 1em
+  padding-left: 1em
+  padding-right: 1em
+  white-space: nowrap
+  gap: .5rem
+
+.file-cta
+  background-color: var(--bal-form-field-control-background)
+  color: var(--bal-form-field-control-color)
+
+.file-icon
+  align-items: center
+  display: flex
+  height: 1em
+  justify-content: center
+  +ltr-property("margin", 0.5em)
+  width: 1em
+
+.file.is-success
+  .file-label,
+  .file-cta
+    color: var(--bal-form-field-label-success-color)
+  .file-cta
+    border-color: var(--bal-form-field-control-success-border-color)
+    background: var(--bal-form-field-control-success-background)
+  .file-label
+    &:active,
+    &:focus-within
+      .file-cta
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
+        .file-label
+          color: var(--bal-link-color-active)
+
+.file.is-danger
+  .file-label,
+  .file-cta
+    color: var(--bal-form-field-label-danger-color)
+  .file-cta
+    border-color: var(--bal-form-field-control-danger-border-color)
+    background: var(--bal-form-field-control-danger-background)
+  .file-label
+    &:active,
+    &:focus-within
+      .file-cta
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
+        .file-label
+          color: var(--bal-link-color-active)
+
+// warning is deprecated
+.file.is-warning
+  .file-label,
+  .file-cta
+    color: var(--bal-color-text-warning)
+  .file-cta
+    border-color: var(--bal-color-border-warning)
+    background: var(--bal-color-warning-1)
+  .file-label
+    &:active,
+    &:focus-within
+      .file-cta
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
+        .file-label
+          color: var(--bal-link-color-active)
+
+.file.is-disabled
+  .file-label,
+  .file-cta
+    @extend %disabled
+    color: var(--bal-file-label-disabled-color)
+  .file-cta
+    border-color: var(--bal-form-field-control-disabled-border-color)
+    background: var(--bal-form-field-control-disabled-background)

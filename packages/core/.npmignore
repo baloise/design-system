@@ -1,0 +1,6 @@
+project.json
+tsconfig.json
+tsconfig.lib.json
+vite.config.ts
+scripts
+packages/core/icons

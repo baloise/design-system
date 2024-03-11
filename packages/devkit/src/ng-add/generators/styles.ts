@@ -8,33 +8,33 @@ export const addStyles = (host: Tree) => {
   }
   const content = configBuffer.toString()
 
-  if (!content.includes('@baloise/design-system-css/css/core')) {
+  if (!content.includes('@baloise/ds-styles/css/core')) {
     const newContent =
       content +
       `
-// SASS mixins and variables
-@import '@baloise/design-system-css/sass/mixins';
+// SASS mixins and SASS variables
+@import '@baloise/ds-styles/sass/mixins';
 
 // Resets CSS for all browser
-@import '@baloise/design-system-css/css/normalize';
-@import '@baloise/design-system-css/css/structure';
+@import '@baloise/ds-styles/css/normalize';
+@import '@baloise/ds-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/css/font';
+@import '@baloise/ds-styles/css/font';
 
-// Core CSS, always required
-@import '@baloise/design-system-css/css/core';
+// Core CSS with CSS variables, always required
+@import '@baloise/ds-styles/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/design-system-css/css/border';
-@import '@baloise/design-system-css/css/color';
-@import '@baloise/design-system-css/css/display';
-@import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/opacity';
-@import '@baloise/design-system-css/css/radius';
-@import '@baloise/design-system-css/css/shadow';
-@import '@baloise/design-system-css/css/spacing';
-@import '@baloise/design-system-css/css/typography';
+@import '@baloise/ds-styles/css/utilities/background';
+@import '@baloise/ds-styles/css/utilities/border';
+@import '@baloise/ds-styles/css/utilities/elevation';
+@import '@baloise/ds-styles/css/utilities/flex';
+@import '@baloise/ds-styles/css/utilities/interaction';
+@import '@baloise/ds-styles/css/utilities/layout';
+@import '@baloise/ds-styles/css/utilities/sizing';
+@import '@baloise/ds-styles/css/utilities/spacing';
+@import '@baloise/ds-styles/css/utilities/typography';
 `
     host.overwrite(filePath, newContent)
   }

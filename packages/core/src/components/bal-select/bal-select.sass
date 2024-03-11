@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-select.vars'
 
 +component(select-option)
@@ -31,11 +31,11 @@
     border-color: var(--bal-select-control-border-color)
     border-radius: var(--bal-select-control-border-radius)
     background: var(--bal-select-control-background)
-    font-size: var(--bal-weight-regular)
+    font-size: var(--bal-font-weight-regular)
     font-family: var(--bal-font-family-text)
     color: var(--bal-select-control-text-color)
     outline: none
-    box-shadow: var(--bal-shadow-none)
+    box-shadow: none
     padding-right: 1rem
     min-height: 3rem
     +modifier(focused)
@@ -62,7 +62,7 @@
     +modifier(inverted-footer)
       border: none
       background-color: var(--bal-select-control-input-inverted-footer-background) !important
-      padding-right: var(--bal-space-none)
+      padding-right: 0
       &:hover
         background-color: var(--bal-select-control-input-inverted-footer-background-hover) !important
 
@@ -107,7 +107,7 @@
       outline: none !important
       outline-width: 0 !important
       height: calc(3rem - 0.25rem) !important
-      box-shadow: var(--bal-shadow-none) !important
+      box-shadow: none !important
       background: var(--bal-select-control-input-multiple-background)
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
@@ -146,7 +146,7 @@
     +modifier(selected)
       background: var(--bal-select-control-input-option-background-selected)
       .bal-select__option__content__label
-        font-weight: var(--bal-weight-bold)
+        font-weight: var(--bal-font-weight-bold)
     +modifier(focused)
       background: var(--bal-select-control-input-option-background-focused)
     &:hover
@@ -165,7 +165,7 @@
         margin: 0
         padding: 0
         font-family: var(--bal-font-family-text)
-        font-weight: var(--bal-weight-regular)
+        font-weight: var(--bal-font-weight-regular)
         color: var(--bal-select-option-content-label-text-color)
         line-height: 1.125rem
         word-break: break-word

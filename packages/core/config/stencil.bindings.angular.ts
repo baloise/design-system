@@ -1,4 +1,4 @@
-import { ValueAccessorConfig, angularOutputTarget } from '@baloise/design-system-output-target-angular'
+import { ValueAccessorConfig, angularOutputTarget } from '@baloise/output-target-angular'
 import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
@@ -38,21 +38,10 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
 
 export const AngularGenerator = () =>
   angularOutputTarget({
-    componentCorePackage: '@baloise/design-system-components',
-    directivesMetaFile: '../components-angular/src/generated/meta.ts',
-    directivesProxyFile: '../components-angular/src/generated/proxies.ts',
-    directivesArrayFile: '../components-angular/src/generated/proxies-list.ts',
-    valueAccessorConfigs: angularValueAccessorBindings,
-    excludeComponents: [...docComponents],
-    outputType: 'module',
-  })
-
-export const AngularStandaloneGenerator = () =>
-  angularOutputTarget({
-    componentCorePackage: '@baloise/design-system-components',
-    directivesMetaFile: '../components-angular/standalone/src/generated/meta.ts',
-    directivesProxyFile: '../components-angular/standalone/src/generated/proxies.ts',
-    directivesArrayFile: '../components-angular/standalone/src/generated/proxies-list.ts',
+    componentCorePackage: '@baloise/ds-core',
+    directivesMetaFile: '../angular/src/generated/meta.ts',
+    directivesProxyFile: '../angular/src/generated/proxies.ts',
+    directivesArrayFile: '../angular/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [
       ...docComponents,
@@ -74,12 +63,23 @@ export const AngularStandaloneGenerator = () =>
     outputType: 'standalone',
   })
 
+export const AngularModuleGenerator = () =>
+  angularOutputTarget({
+    componentCorePackage: '@baloise/ds-core',
+    directivesMetaFile: '../angular-module/src/generated/meta.ts',
+    directivesProxyFile: '../angular-module/src/generated/proxies.ts',
+    directivesArrayFile: '../angular-module/src/generated/proxies-list.ts',
+    valueAccessorConfigs: angularValueAccessorBindings,
+    excludeComponents: [...docComponents],
+    outputType: 'module',
+  })
+
 export const AngularLegacyGenerator = () =>
   angularOutputTarget({
-    componentCorePackage: '@baloise/design-system-components',
-    directivesMetaFile: '../components-angular/legacy/src/generated/meta.ts',
-    directivesProxyFile: '../components-angular/legacy/src/generated/proxies.ts',
-    directivesArrayFile: '../components-angular/legacy/src/generated/proxies-list.ts',
+    componentCorePackage: '@baloise/ds-core',
+    directivesMetaFile: '../angular-legacy/src/generated/meta.ts',
+    directivesProxyFile: '../angular-legacy/src/generated/proxies.ts',
+    directivesArrayFile: '../angular-legacy/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [...docComponents],
     outputType: 'legacy',

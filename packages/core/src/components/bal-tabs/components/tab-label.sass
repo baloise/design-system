@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 
 // Tab Label
 // --------------------------------------------------
@@ -7,8 +7,8 @@
   display: block
   position: relative
   font-family: var(--bal-font-family-title)
-  font-weight: var(--bal-weight-bold)
-  font-size: var(--bal-size-normal)
+  font-weight: var(--bal-font-weight-bold)
+  font-size: var(--bal-text-size-normal)
   line-height: var(--bal-body-line-height)
   text-align: center
   hyphens: auto
@@ -25,10 +25,10 @@
   &--inverted#{&}--disabled
     color: var(--bal-tabs-tab-label-text-color-inverted-disabled)
   &--inverted
-    font-weight: var(--bal-weight-regular)
+    font-weight: var(--bal-font-weight-regular)
     letter-spacing: 0.1085px
   &--inverted#{&}--active
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-font-weight-bold)
     letter-spacing: 0
   //
   // alert bubble
@@ -45,4 +45,4 @@
   //
   // context styles
   &--context-meta
-    font-size: var(--bal-size-small)
+    font-size: var(--bal-text-size-small)

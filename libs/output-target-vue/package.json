@@ -1,23 +1,12 @@
 {
-  "name": "@baloise/design-system-output-target-vue",
-  "version": "15.2.4",
+  "name": "@baloise/output-target-vue",
+  "version": "0.0.0",
   "private": true,
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/",
-    "vue-component-lib/"
-  ],
-  "scripts": {
-    "build": "node scripts/build.mjs",
-    "test": "vitest run",
-    "test:watch": "vitest run",
-    "test:coverage": "vitest run --coverage"
+  "dependencies": {
+    "tslib": "~2.3.0",
+    "@stencil/core": "~4.11.0"
   },
-  "peerDependencies": {
-    "@stencil/core": "4.11.0",
-    "vue": "^3.2.37"
-  },
-  "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
+  "type": "commonjs",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts"
 }

@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```ts
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Toast', () => {
   it('should ...', () => {
@@ -26,7 +26,6 @@ A list of the custom commands for this specific component.
 | -------------- | --------------------------- | ----------------------------------------- |
 | `balToastFind` | Returns the visible toasts. | (options?: Partial\<Loggable>): Chainable |
 
-
 ### Selectors
 
 | Selector      | Element              |
@@ -34,4 +33,3 @@ A list of the custom commands for this specific component.
 | `toast.main`  | Toast element.       |
 | `toast.label` | Toast label element. |
 | `toast.close` | Toast close element. |
-

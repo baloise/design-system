@@ -30,10 +30,11 @@ export function updateProjectConfig(host: Tree) {
     /**
      * Angular Workspace
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const angularConfig = getAngularWorkspace(host) as any
     const projectName = Object.keys(angularConfig.projects)[0]
     angularConfig.projects[projectName].architect.build.options.polyfills = POLYFILLS
-    angularConfig.projects[projectName].architect.build.configurations.production.budgets.budgets = BUDGETS
+    angularConfig.projects[projectName].architect.build.configurations.production.budgets = BUDGETS
     const newNxConfig = JSON.stringify(angularConfig, undefined, 2)
     return host.overwrite('angular.json', newNxConfig)
   }

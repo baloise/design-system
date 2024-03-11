@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssSpacingMargin, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssSpacingMargin,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Spacing/Margin"
@@ -25,7 +34,6 @@ Spacing can be set with **margin** `m*` for all directions:
 - `*x` **horizontally** for both left and right
 - `*y` **vertically** for both top and bottom
 
-
 <CssSpacingMargin />
 
 ## Single Side Margin
@@ -35,18 +43,18 @@ Margin can be defined for a specific edge.
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-  <div class="has-background-red-2">
-      <div class="mt-normal has-background-green-3 p-large">mt-normal</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+  <div class="bg-red-2">
+      <div class="mt-normal bg-green p-large">mt-normal</div>
   </div>
-  <div class="has-background-red-2">
-      <div class="mr-large has-background-green-3 p-large">mr-large</div>
+  <div class="bg-red-2">
+      <div class="mr-large bg-green p-large">mr-large</div>
   </div>
-  <div class="has-background-red-2">
-      <div class="mb-small has-background-green-3 p-large">mb-small</div>
+  <div class="bg-red-2">
+      <div class="mb-small bg-green p-large">mb-small</div>
   </div>
-  <div class="has-background-red-2">
-      <div class="ml-medium has-background-green-3 p-large">ml-medium</div>
+  <div class="bg-red-2">
+      <div class="ml-medium bg-green p-large">ml-medium</div>
   </div>
 </div>
 `}
@@ -59,9 +67,9 @@ Shorthand classes allow you to define the same margin value for both the left an
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-    <div class="has-background-red-2 has-radius-normal">
-        <div class="mx-large has-radius-normal has-background-green-3 font-bold p-normal">mx-large</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="bg-red-2 radius-normal">
+        <div class="mx-large radius-normal bg-green font-weight-bold p-normal">mx-large</div>
     </div>
 </div>
 `}
@@ -74,13 +82,20 @@ The same margin value can also be defined at the top and bottom sides using shor
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
-    <div class="has-background-red-2 has-radius-normal">
-        <div class="my-large has-radius-normal has-background-green-3 font-bold p-normal">my-large</div>
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="bg-red-2 radius-normal">
+        <div class="my-large radius-normal bg-green font-weight-bold p-normal">my-large</div>
     </div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:m-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -89,7 +104,7 @@ The same margin value can also be defined at the top and bottom sides using shor
       description="Global spacings help us design experiences that scale with consistency, rhythm, and focus"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

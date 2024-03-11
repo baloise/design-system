@@ -12,18 +12,8 @@ export class HintTitle {
     const elHeading = elTitle.element('heading')
 
     return (
-      <Host
-        class={{
-          ...elTitle.class(),
-        }}
-      >
-        <h3
-          class={{
-            ...elHeading.class(),
-            'title': true,
-            'is-size-x-large': true,
-          }}
-        >
+      <Host class={{ ...elTitle.class() }}>
+        <h3 class={{ ...elHeading.class() }}>
           <span>
             <slot></slot>
           </span>

@@ -45,9 +45,7 @@ describe('bal-select', () => {
   function visualSelectMultipleTest(platform: 'mobile' | 'desktop') {
     describe(platform, () => {
       beforeEach(() => {
-        cy.visit('/components/bal-select/test/bal-select-multiple.visual.html')
-          .platform(platform)
-          .waitForDesignSystem()
+        cy.visit('/components/bal-select/test/bal-select-multiple.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('basic multiple component', () => {

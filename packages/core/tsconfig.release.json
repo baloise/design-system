@@ -1,11 +1,13 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "sourceMap": false,
+    "outDir": "dist/out-tsc",
+    "allowJs": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "outDir": ".tmp",
-    "types": ["vitest/globals"]
+    "types": ["node", "vitest/globals"]
   },
   "include": ["src"],
-  "exclude": ["dist", ".build", "node_modules", "generated", "test", "public", "cypress", "**/stories", "**/docs"]
+  "exclude": ["**/docs"]
 }

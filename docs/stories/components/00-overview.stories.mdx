@@ -38,7 +38,7 @@ uniform design or appearance.
   >
     <bal-accordion active>
       <bal-accordion-summary>
-        <bal-stack class="has-background-white px-x-small has-radius-top-normal">
+        <bal-stack class="bg-white px-x-small radius-top-normal">
           <bal-content>
             <bal-label>Apple Pie</bal-label>
           </bal-content>
@@ -46,14 +46,14 @@ uniform design or appearance.
         </bal-stack>
       </bal-accordion-summary>
       <bal-accordion-details>
-        <span class="is-block has-background-white p-x-small has-radius-bottom-normal">
+        <span class="block bg-white p-x-small radius-bottom-normal">
           Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
         </span>
       </bal-accordion-details>
     </bal-accordion>
     <bal-accordion class="mt-small">
       <bal-accordion-summary>
-        <bal-stack class="has-background-white px-x-small has-radius-normal">
+        <bal-stack class="bg-white px-x-small radius-normal">
           <bal-content>
             <bal-label>Mango Cake</bal-label>
           </bal-content>
@@ -115,24 +115,23 @@ uniform design or appearance.
     description="Sheet component is used to show content over the whole page at the bottom. The element is sticky."
   >
     <div class="container">
-      <div class="has-background-red-2" style={{ minHeight: '200px', width: '100%' }}></div>
+      <div class="bg-red-2" style={{ minHeight: '200px', width: '100%' }}></div>
     </div>
     <bal-sheet>
-      <bal-stack layout="vertical" space="small" class="is-hidden-tablet">
+      <bal-stack layout="vertical" space="small" class="tablet:hidden">
         <bal-button expanded>Continue with 1'234 CHF</bal-button>
         <bal-button expanded color="info">
           Back
         </bal-button>
       </bal-stack>
-      <bal-stack class="is-hidden-mobile">
+      <bal-stack class="mobile:hidden">
         <bal-heading level="p" visual-level="h4">
           1'234 CHF
         </bal-heading>
         <bal-content>
-          <p class="has-text-blue-light-text is-size-small m-none is-flex-grow-1">Lorem ipsum dolor</p>
+          <p class="text-small m-none flex-1">Lorem ipsum dolor</p>
         </bal-content>
         <bal-button-group>
-          {/* <bal-button color="info">Back</bal-button> */}
           <bal-button>Next</bal-button>
         </bal-button-group>
       </bal-stack>
@@ -243,11 +242,11 @@ These components serve to present data and information in a diverse range of for
     <div class="py-normal">
       <bal-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></bal-icon>
       <div
-        class="has-background-grey has-radius-normal has-shadow-normal p-normal"
+        class="bg-grey radius-normal shadow-normal p-normal"
         style={{ scale: '0.5', position: 'absolute', top: '-10%' }}
       >
         <bal-stack layout="vertical">
-          <h4 class="title is-size-large">Apple pie</h4>
+          <h4 class="title text-large">Apple pie</h4>
           <span>
             Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
             crust.
@@ -313,7 +312,7 @@ These components serve to present data and information in a diverse range of for
     pageTitle="Components/Data Display/Popup"
     description="Tag highlights a label for quick recognition."
   >
-    <div class="is-flex is-justify-content-center is-align-items-center">
+    <div class="flex justify-content-center align-items-center">
       <bal-button bal-popup="my-popup" color="secondary">
         Apple pie
       </bal-button>
@@ -331,7 +330,7 @@ These components serve to present data and information in a diverse range of for
   >
     <bal-card>
       <bal-card-content>
-        <table class="table is-fullwidth is-striped p-none">
+        <table class="table w-full is-striped p-none">
           <thead>
             <tr>
               <th>Selected</th>
@@ -435,7 +434,7 @@ These components serve to present data and information in a diverse range of for
     <bal-modal demo>
       <bal-modal-header>Apple pie</bal-modal-header>
       <bal-modal-body>
-        <span class="is-block">
+        <span class="block">
           Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
         </span>
         <bal-button-group position="right" reverse>
@@ -502,7 +501,7 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components/Form/Checkbox"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div class="has-text-centered">
+    <div class="text-align-center">
       <bal-checkbox-group vertical style={{ width: '120px' }}>
         <bal-checkbox label="Apple" />
         <bal-checkbox label="Mango" checked />
@@ -515,7 +514,7 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components/Form/Date"
     description="Date Component is a datepicker designed to simplify the process of date selection."
   >
-    <div class="has-text-centered">
+    <div class="text-align-center">
       <bal-date value="2023-10-21"></bal-date>
     </div>
   </GridComponent>
@@ -528,7 +527,7 @@ Form components serve as tools for gathering user input through a range of metho
     <bal-field>
       <bal-field-label required>Label</bal-field-label>
       <bal-field-control>
-        <div class="has-background-red-2 has-radius-normal" style={{ width: '200px', height: '48px' }}></div>
+        <div class="bg-red-2 radius-normal" style={{ width: '200px', height: '48px' }}></div>
       </bal-field-control>
       <bal-field-message color="hint">Field Message</bal-field-message>
     </bal-field>
@@ -549,17 +548,11 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components/Form/Form"
     description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
   >
-    <div
-      class="has-background-red-2 has-radius-large mb-small mt-xx-large"
-      style={{ width: '30%', height: '16px' }}
-    ></div>
-    <div class="has-background-red-2 has-radius-normal mb-medium" style={{ width: '100%', height: '48px' }}></div>
-    <div
-      class="has-background-red-2 has-radius-large mb-small mt-large"
-      style={{ width: '30%', height: '16px' }}
-    ></div>
-    <div class="has-background-red-2 has-radius-normal mb-large" style={{ width: '100%', height: '48px' }}></div>
-    <div class="has-background-red-2 has-radius-normal p-normal" style={{ width: '20%', height: '48px' }}></div>
+    <div class="bg-red-2 radius-large mb-small mt-xx-large" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-red-2 radius-normal mb-medium" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-red-2 radius-large mb-small mt-large" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-red-2 radius-normal mb-large" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-red-2 radius-normal p-normal" style={{ width: '20%', height: '48px' }}></div>
   </GridComponent>
   <GridComponent
     scale="0.5"
@@ -572,64 +565,34 @@ Form components serve as tools for gathering user input through a range of metho
   >
     <bal-form-grid>
       <bal-form-col>
-        <div
-          class="has-background-red-2 has-radius-normal mb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="half">
-        <div
-          class="has-background-red-2 has-radius-normal mb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="half">
-        <div
-          class="has-background-red-2 has-radius-normalmb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div
-          class="has-background-red-2 has-radius-normalmb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div
-          class="has-background-red-2 has-radius-normalmb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div
-          class="has-background-red-2 has-radius-normal mb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div
-          class="has-background-red-2 has-radius-normalmb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div
-          class="has-background-red-2 has-radius-normalmb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div
-          class="has-background-red-2 has-radius-normal mb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div
-          class="has-background-red-2 has-radius-normal mb-small"
-          style={{ width: '100%', height: '48px' }}
-        ></div>
+        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
     </bal-form-grid>
   </GridComponent>
@@ -705,7 +668,7 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components/Form/Radio"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div class="has-text-centered">
+    <div class="text-align-center">
       <bal-radio-group vertical style={{ width: '120px' }} value="2">
         <bal-radio label="Apple" value="1" />
         <bal-radio label="Mango" value="2" />
@@ -763,7 +726,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     description="App is a container element for an Baloise Design System application."
   >
     <bal-app
-      class="has-background-white is-fullheight has-radius-normal is-flex is-flex-direction-column"
+      class="bg-white h-full radius-normal flex flex-direction-column"
       style={{ minHeight: '336px', margin: '32px', overflow: 'hidden' }}
     >
       <header>
@@ -771,13 +734,13 @@ Layout components enable the creation of dynamic and responsive layouts.
           <bal-navbar-brand>Apple Bakery</bal-navbar-brand>
         </bal-navbar>
       </header>
-      <main class="is-flex-1">
+      <main class="flex-1">
         <div class="container my-large">
-          <h1 class="title is-size-xx-large">Welcome</h1>
-          <h2 class="subtitle is-size-xx-large">We have the best apple pie</h2>
+          <h1 class="title text-xx-large">Welcome</h1>
+          <h2 class="subtitle text-xx-large">We have the best apple pie</h2>
         </div>
       </main>
-      <div class="has-background-primary" style={{ height: '3rem', width: '100%' }}></div>
+      <div class="bg-primary" style={{ height: '3rem', width: '100%' }}></div>
     </bal-app>
   </GridComponent>
   <GridComponent
@@ -834,9 +797,9 @@ Layout components enable the creation of dynamic and responsive layouts.
     description="The Stack element is responsible for arranging its direct descendants in a vertical or horizontal direction, while also allowing for the inclusion of optional spacing between each child."
   >
     <bal-stack>
-      <div class="has-background-red-2" style={{ height: '4rem', width: '100%' }}></div>
-      <div class="has-background-red-2" style={{ height: '4rem', width: '100%' }}></div>
-      <div class="has-background-red-2" style={{ height: '4rem', width: '100%' }}></div>
+      <div class="bg-red-2" style={{ height: '4rem', width: '100%' }}></div>
+      <div class="bg-red-2" style={{ height: '4rem', width: '100%' }}></div>
+      <div class="bg-red-2" style={{ height: '4rem', width: '100%' }}></div>
     </bal-stack>
   </GridComponent>
 </GridComponents>
@@ -853,17 +816,14 @@ Navigation components facilitate the movement between various views or pages.
     pageTitle="Components/Navigation/Close"
     description="Close is used as a close button for modals, toast and other components."
   >
-    <div
-      class="has-background-red-2 has-radius-normal p-normal"
-      style={{ marginLeft: '10%', width: '80%', height: '120px' }}
-    >
+    <div class="bg-red-2 radius-normal p-normal" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
       <bal-stack style={{ height: '24px' }}>
-        <div class="has-background-red-1 has-radius-large" style={{ width: '100%', height: '16px' }}></div>
+        <div class="bg-red-1 radius-large" style={{ width: '100%', height: '16px' }}></div>
         <bal-close></bal-close>
       </bal-stack>
-      <div class="has-background-red-1 has-radius-large mt-normal" style={{ width: '80%', height: '10px' }}></div>
-      <div class="has-background-red-1 has-radius-large mt-x-small" style={{ width: '90%', height: '10px' }}></div>
-      <div class="has-background-red-1 has-radius-large mt-x-small" style={{ width: '60%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-large mt-normal" style={{ width: '80%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-large mt-x-small" style={{ width: '90%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-large mt-x-small" style={{ width: '60%', height: '10px' }}></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -874,17 +834,14 @@ Navigation components facilitate the movement between various views or pages.
     pageTitle="Components/Navigation/Nav"
     description="Navigation component serves as a central hub for seamless user navigation within the applications."
   >
-    <div class="has-background-primary mt-small" style={{ width: '100%', height: '24px' }}></div>
-    <div
-      class="has-background-white has-radius-large mt-small p-x-small"
-      style={{ marginLeft: '10%', width: '80%', height: '40px' }}
-    >
+    <div class="bg-primary mt-small" style={{ width: '100%', height: '24px' }}></div>
+    <div class="bg-white radius-large mt-small p-x-small" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
       <bal-stack>
         <bal-logo style={{ scale: '0.5', marginLeft: '-24px' }}></bal-logo>
-        <div class="has-background-grey-3 has-radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="has-background-grey-3 has-radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="has-background-grey-3 has-radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="has-background-grey-3 has-radius-large" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
       </bal-stack>
     </div>
   </GridComponent>
@@ -941,7 +898,7 @@ Navigation components facilitate the movement between various views or pages.
       </bal-navbar-menu>
     </bal-navbar>
     <div class="container mt-normal" style={{ height: '280px' }}>
-      <div class="is-fullheight has-background-red-2 has-radius-normal"></div>
+      <div class="h-full bg-red-2 radius-normal"></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -1006,7 +963,7 @@ Typography components serve as wrappers for text elements, providing additional 
     description="The label component represents a caption for a form control component."
   >
     <bal-label>Label</bal-label>
-    <div class="has-background-red-2 has-radius-normal" style={{ height: '48px', width: '200px' }}></div>
+    <div class="bg-red-2 radius-normal" style={{ height: '48px', width: '200px' }}></div>
   </GridComponent>
   <GridComponent
     scale="1"

@@ -1,0 +1,11 @@
+{
+  "name": "fonts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "lint": {
+      "command": "eslint --no-eslintrc",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "scope:visual", "type:package"]
+}

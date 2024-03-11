@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-datepicker.vars'
 
 +block(datepicker)
@@ -93,7 +93,7 @@
     background: var(--bal-datepicker-cell-selected-background) !important
   &--today:not(#{&}--outdated)
     & > span
-      font-weight: var(--bal-weight-bold)
+      font-weight: var(--bal-font-weight-bold)
   &--today:not(#{&}--outdated)::after
     content: ''
     position: absolute
@@ -111,7 +111,7 @@
     margin-right: 0
   & > span
     font-family: var(--bal-font-family-text)
-    font-weight: var(--bal-weight-regular)
+    font-weight: var(--bal-font-weight-regular)
   +tablet
     min-width: 3rem !important
   +modifier(disabled)
@@ -122,5 +122,5 @@
       border: none
       background: transparent
       color: var(--bal-color-text-primary)
-      font-weight: var(--bal-weight-bold)
+      font-weight: var(--bal-font-weight-bold)
       cursor: default

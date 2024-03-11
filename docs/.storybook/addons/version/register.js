@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { addons, types } from '@storybook/addons'
-import {version} from '../../../../packages/components/package.json'
+import { version } from '../../../../packages/core/package.json'
 
 addons.register('my/toolbar', () => {
   addons.add('my-toolbar-addon/toolbar', {
@@ -12,7 +12,7 @@ addons.register('my/toolbar', () => {
     // match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: ({ active }) => {
       return (
-        <a className="my-version" href='?path=/docs/changelog--documentation'>
+        <a className="my-version" href="?path=/docs/changelog--documentation">
           <span className="my-version__label">Latest:</span>
           {version}
         </a>

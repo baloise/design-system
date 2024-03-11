@@ -17,7 +17,6 @@ import { hasTagName, isDescendant } from '../../../utils/helpers'
 import { BEM } from '../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import isFunction from 'lodash.isfunction'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
@@ -153,9 +152,9 @@ export class RadioGroup
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: BalProps.BalRadioGroupColumns = 1
+  @Prop() grid: BalProps.BalRadioGroupColumns = 1
 
-  @Watch('columns')
+  @Watch('grid')
   columnsChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
   }
@@ -215,7 +214,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -248,7 +247,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -462,7 +461,7 @@ export class RadioGroup
 
     const rawOptions = this.options || []
     const options = rawOptions.map(option => {
-      if (isFunction(option.html)) {
+      if (typeof option.html === 'function') {
         return { ...option, html: option.html() }
       }
       return option
@@ -500,7 +499,7 @@ export class RadioGroup
               disabled={option.disabled}
               readonly={option.readonly}
               required={option.required}
-              nonSubmit={!!option.nonSubmit || !!option.hidden}
+              nonSubmit={!!option.nonSubmit}
               invalid={option.invalid}
               innerHTML={option.html as string}
             ></bal-radio>

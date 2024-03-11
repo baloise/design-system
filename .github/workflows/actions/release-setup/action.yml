@@ -1,0 +1,31 @@
+name: 'Setup Release'
+description: 'Setup Release'
+inputs:
+  token:
+    description: 'The GitHub token required.'
+  npm-token:
+    description: 'The NPM authentication token required to publish.'
+runs:
+  using: 'composite'
+  steps:
+    - name: Git Identity
+      run: |
+        git config --global user.name 'baopso'
+        git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+
+    - name: Create .npmrc
+      run: |
+        cat << EOF > "$HOME/.npmrc"
+          //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        EOF
+      shell: bash
+      env:
+        NPM_TOKEN: ${{ inputs.npm-token }}
+
+    - name: Clean install
+      shell: bash
+      run: npm i

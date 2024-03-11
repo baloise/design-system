@@ -21,7 +21,7 @@
   visibility: visible;
 }
 
-.sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)){
+.sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
   font-family: 'BaloiseCreateText' !important;
   color: var(--bal-color-primary) !important;
   font-size: 1rem;
@@ -48,7 +48,7 @@
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1 {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-xxx-large);
+  font-size: var(--bal-text-size-xxx-large);
   line-height: 1.3;
   margin-top: 2.5rem !important;
 }
@@ -56,14 +56,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h1,
   .sbdocs-content > div:not(.sb-unstyled) > h1 {
-    font-size: var(--bal-size-desktop-xxx-large);
+    font-size: var(--bal-text-size-xxx-large-desktop);
     margin-top: 3rem !important;
   }
 }
 
 .sbdocs-content > h2,
 .sbdocs-content > div:not(.sb-unstyled) > h2 {
-  font-size: var(--bal-size-xx-large);
+  font-size: var(--bal-text-size-xx-large);
   line-height: 1.3;
   margin-top: 3rem !important;
 }
@@ -71,14 +71,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h2,
   .sbdocs-content > div:not(.sb-unstyled) > h2 {
-    font-size: var(--bal-size-desktop-xx-large);
+    font-size: var(--bal-text-size-xx-large-desktop);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h3,
 .sbdocs-content > div:not(.sb-unstyled) > h3 {
-  font-size: var(--bal-size-x-large);
+  font-size: var(--bal-text-size-x-large);
   line-height: 1.3;
   margin-top: 2rem !important;
 }
@@ -86,14 +86,14 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h3,
   .sbdocs-content > div:not(.sb-unstyled) > h3 {
-    font-size: var(--bal-size-desktop-x-large);
+    font-size: var(--bal-text-size-x-large-desktop);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h4,
 .sbdocs-content > div:not(.sb-unstyled) > h4 {
-  font-size: var(--bal-size-large);
+  font-size: var(--bal-text-size-large);
   line-height: 1.3;
   margin-top: 1.5rem !important;
 }
@@ -101,20 +101,20 @@
 @media screen and (min-width: 769px) {
   .sbdocs-content > h4,
   .sbdocs-content > div:not(.sb-unstyled) > h4 {
-    font-size: var(--bal-size-desktop-large);
+    font-size: var(--bal-text-size-large: desktop);
     margin-top: 2rem !important;
   }
 }
 
 .sbdocs-content > h5,
 .sbdocs-content > div:not(.sb-unstyled) > h5 {
-  font-size: var(--bal-size-desktop-medium);
+  font-size: var(--bal-text-size-medium: desktop);
   line-height: 1.5;
 }
 
 .sbdocs-content > h6,
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
-  font-size: var(--bal-size-normal);
+  font-size: var(--bal-text-size-normal);
   line-height: 1.5;
 }
 
@@ -123,7 +123,7 @@
   font-family: 'BaloiseCreateText';
   font-weight: 400;
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-normal);
+  font-size: var(--bal-text-size-normal);
   line-height: 1.5;
 }
 
@@ -137,10 +137,9 @@ a.sbdocs-a:not(.button) {
 }
 
 .is-size-large a.sbdocs-a:not(.button) {
-  font-size: var(--bal-size-desktop-large);
-  line-height: var(--bal-line-height-desktop-large);
+  font-size: var(--bal-text-size-large-desktop);
+  line-height: var(--bal-line-height-large-desktop);
 }
-
 
 /***************************************
  * LIST
@@ -155,7 +154,7 @@ a.sbdocs-a:not(.button) {
 
 .sbdocs-content > ul > li:not(:first-child),
 .sbdocs-content > ol > li:not(:first-child) {
-  margin-top: var(--bal-space-small)
+  margin-top: var(--bal-space-small);
 }
 
 .sbdocs-content > ul li::marker {
@@ -170,7 +169,7 @@ a.sbdocs-a:not(.button) {
 
 .sbdocs-content > ol,
 .sbdocs-content > ul {
-  margin-bottom: var(--bal-space-x-large)
+  margin-bottom: var(--bal-space-x-large);
 }
 
 /***************************************
@@ -179,7 +178,7 @@ a.sbdocs-a:not(.button) {
 
 blockquote {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-small) !important;
+  font-size: var(--bal-text-size-small) !important;
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
@@ -191,8 +190,8 @@ blockquote {
 
 blockquote > p {
   color: var(--bal-color-primary);
-  font-size: var(--bal-size-desktop-small) !important;
-  line-height: var(--bal-line-height-desktop-small) !important;
+  font-size: var(--bal-text-size-small-desktop) !important;
+  line-height: var(--bal-line-height-small-desktop) !important;
 }
 
 /***************************************
@@ -200,14 +199,14 @@ blockquote > p {
  ***************************************/
 
 code:not(.language-diff, .language-scss) {
-  background-color: var(--bal-color-primary-1)  !important;
-  border: 1px solid var(--bal-color-primary-1)  !important;
+  background-color: var(--bal-color-primary-1) !important;
+  border: 1px solid var(--bal-color-primary-1) !important;
   color: var(--bal-color-primary) !important;
 }
 
 a > code {
-  background-color: var(--bal-color-primary-1)  !important;
-  border: 1px solid var(--bal-color-primary-1)  !important;
+  background-color: var(--bal-color-primary-1) !important;
+  border: 1px solid var(--bal-color-primary-1) !important;
   color: var(--bal-color-primary) !important;
 
   font-weight: var(--bal-link-font-weight) !important;
@@ -220,11 +219,10 @@ a > code {
  * TABLE
  ***************************************/
 
- .sbdocs-content table thead tr th,
- .sbdocs-content table tbody tr td {
+.sbdocs-content table thead tr th,
+.sbdocs-content table tbody tr td {
   color: var(--bal-color-primary);
- }
-
+}
 
 /***************************************
  * TABLE OF CONTENT
@@ -269,7 +267,6 @@ a > code {
     padding: 2rem 4rem 5rem 3rem;
   }
 }
-
 
 .my-welcome-state-shape {
   position: relative;
@@ -394,7 +391,7 @@ a.sbdocs-a.text-decoration-none {
 
 .doc-table-pre code {
   padding: 2px;
-  font-size: var(--bal-size-small);
+  font-size: var(--bal-text-size-small);
   border-radius: var(--bal-radius-normal);
 }
 
@@ -437,7 +434,7 @@ a.sbdocs-a.text-decoration-none {
   }
 }
 
-div.has-visible-overflow div[scale="1"] {
+div.has-visible-overflow div[scale='1'] {
   transform: none;
 }
 
@@ -445,7 +442,7 @@ div.has-visible-overflow div[scale="1"] {
  * SUPPORT
  ***************************************/
 
-div.has-visible-overflow div[scale="1"] {
+div.has-visible-overflow div[scale='1'] {
   transform: none;
 }
 
@@ -507,10 +504,10 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 /***************************************
  * HOME
  ***************************************/
- .home-stage {
+.home-stage {
   display: block;
   margin-top: 2rem;
- }
+}
 
 .home-stage .bal-logo > div {
   height: 48px !important;
@@ -523,4 +520,50 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 
 .ot-floating-button {
   display: none !important;
+}
+
+.doc-css-util-table button.is-light {
+  background: var(--bal-color-primary-1);
+}
+
+.clipboard-button {
+  position: relative;
+  border: none;
+  background-color: var(--bal-color-primary-1);
+  cursor: pointer;
+}
+
+.clipboard-button::after {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100px;
+  font-size: 0.625rem;
+  background-color: var(--bal-color-primary-6) !important;
+  color: var(--bal-color-white) !important;
+  border-radius: 4px;
+  padding: 0 4px;
+  z-index: 100;
+  font-family: var(--bal-font-family-text);
+}
+
+.clipboard-button:hover::after {
+  content: 'Copy to Clipboard';
+}
+
+.clipboard-button > pre > code {
+  border: none !important;
+  background-color: var(--bal-color-primary-1) !important;
+}
+
+.clipboard-button:hover,
+.clipboard-button:hover > pre > code {
+  background-color: #d7dae6 !important;
+}
+
+.clipboard-button:active,
+.clipboard-button:active > pre > code {
+  background-color: #ced0d8 !important;
+  color: var(--bal-color-primary-6) !important;
 }

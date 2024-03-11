@@ -180,5 +180,3 @@ addons.register('my/framework', () => {
     },
   })
 })
-
-

@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer } from '../../../.storybook/blocks'
 import * as StackStories from './bal-stack.stories'
@@ -9,14 +8,17 @@ import * as StackStories from './bal-stack.stories'
 
 <Banner of={StackStories} />
 
-<Lead>The **Stack** element is responsible for arranging its direct descendants in a vertical or horizontal direction,
-  while also allowing for the inclusion of optional spacing between each child.</Lead>
+<Lead>
+  The **Stack** element is responsible for arranging its direct descendants in a vertical or horizontal direction, while
+  also allowing for the inclusion of optional spacing between each child.
+</Lead>
 
 <InfoQuote>
 **TIP**
 
 The **Stack** component deals with layouts in one dimension, whereas the [Grid](?path=/docs/foundation-grid--documentation) manages layouts in two dimensions.
 By default, the **Stack** component stacks children vertically in a column.
+
 </InfoQuote>
 
 <Canvas of={StackStories.Basic} sourceState="shown" />
@@ -68,7 +70,6 @@ teaser layout.
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={StackStories.StackedTabs}></StoryHeading>
-
 
 The [bal-tabs](?path=/docs/components-navigation-tabs--documentation) can be used with the stack as well and for example be combined with a [bal-button](?path=/docs/components-containment-button--documentation).
 Just set the property `no-wrap` to the [bal-button](?path=/docs/components-containment-button--documentation) so it will no break on multiple lines.

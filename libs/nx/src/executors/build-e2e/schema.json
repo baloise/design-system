@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "BuildE2e executor",
+  "description": "",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

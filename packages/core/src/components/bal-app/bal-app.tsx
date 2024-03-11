@@ -4,6 +4,7 @@ import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
 import { debounce, rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { startFocusVisible } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-app',
@@ -44,7 +45,7 @@ export class App implements Loggable {
   componentDidLoad() {
     rIC(async () => {
       this.ready = true
-      import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
+      startFocusVisible()
     })
   }
 

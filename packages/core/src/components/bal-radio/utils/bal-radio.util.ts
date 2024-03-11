@@ -14,7 +14,6 @@ interface Option {
   nonSubmit?: boolean
   invalid?: boolean
   interface?: BalProps.BalRadioInterface
-  hidden?: boolean // deprecated
 }
 
 export const newBalRadioOption = (option: Option): BalRadioOption => {
@@ -28,7 +27,6 @@ export const newBalRadioOption = (option: Option): BalRadioOption => {
     nonSubmit: false,
     invisible: false,
     invalid: false,
-    hidden: false, // deprecated
     ...option,
     label: '',
     html: option.label,

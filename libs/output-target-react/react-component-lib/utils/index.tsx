@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-extra-semi */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
 import type { StyleReactProps } from '../interfaces'

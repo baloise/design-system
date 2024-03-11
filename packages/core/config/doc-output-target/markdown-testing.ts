@@ -1,9 +1,10 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import path from 'path'
 import { writeFileSync, existsSync, readFileSync } from 'fs'
 import { JsonDocsComponent } from '@stencil/core/internal'
 import { NEWLINE } from './constants'
-import testingCommands from '../../.tmp/commands.json'
-import testingSelectors from '../../.tmp/selectors.json'
+import testingCommands from '../../../../resources/data/commands.json'
+import testingSelectors from '../../../../resources/data/selectors.json'
 import { commandsToMarkdown } from './markdown-commands'
 import { selectorsToMarkdown } from './markdown-selectors'
 

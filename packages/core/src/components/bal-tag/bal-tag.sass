@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-tag.vars'
 
 +block(tag)
@@ -60,20 +60,20 @@
   +element(label)
     font-family: var(--bal-font-family-text)
     color: var(--bal-tag-text)
-    font-weight: var(--bal-weight-bold)
-    font-size: var(--bal-size-normal) !important
+    font-weight: var(--bal-font-weight-bold)
+    font-size: var(--bal-text-size-normal) !important
     hyphens: auto
     display: inline-flex
     align-items: center
     gap: .25rem
     // sizes
     +modifier(is-small)
-      font-size: var(--bal-size-small) !important
-      font-weight: var(--bal-weight-regular) !important
+      font-size: var(--bal-text-size-small) !important
+      font-weight: var(--bal-font-weight-regular) !important
     +modifier(is-medium)
-      font-size: var(--bal-size-medium) !important
+      font-size: var(--bal-text-size-medium) !important
     +modifier(is-large)
-      font-size: var(--bal-size-medium) !important
+      font-size: var(--bal-text-size-medium) !important
     // colors
     +modifier(is-primary)
       color: var(--bal-tag-text-primary)
@@ -116,7 +116,7 @@
     user-select: none
     background-color: var(--bal-tag-background-disabled)
     border-color: var(--bal-tag-border-disabled-color)
-    box-shadow: var(--bal-shadow-none)
+    box-shadow: none
     color: var(--bal-tag-text-disabled)
 
     & > span

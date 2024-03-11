@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-pagination.vars'
 
 +block(pagination)
@@ -47,6 +47,9 @@
       order: 2
       width: unset
       text-align: center
+
+      & > span
+        font-weight: var(--bal-font-weight-bold)
 
       +tablet
         gap: 8px

@@ -2,8 +2,8 @@ import {
   BalConfigState,
   BalLanguage,
   onBalConfigChange,
-} from '@baloise/design-system-components';
-import { BalConfigService } from '@baloise/design-system-components-angular/standalone';
+} from '@baloise/ds-core';
+import { BalConfigService } from '@baloise/ds-angular';
 import { TranslocoService } from '@ngneat/transloco';
 
 export function initializeI18n(

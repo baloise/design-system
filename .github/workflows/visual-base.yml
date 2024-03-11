@@ -1,67 +1,47 @@
-name: Visual All Regression Test
+name: 📸 Create All Base Images
 
 on:
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  build:
-    name: 👷 Build Design System
+  main:
+    name: 📸 Updating Screenshots
     runs-on: ubuntu-latest
     env:
       HUSKY: 0
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/build
-
-  screenshots:
-    name: 📸 Updating Screenshots
-    runs-on: ubuntu-22.04
-    needs: [build]
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-      TURBO_REMOTE_ONLY: true
-      HUSKY: 0
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+          fetch-depth: 0
+      - uses: ./.github/workflows/actions/e2e-build
         with:
-          fetch-depth: 2
-
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/test-setup
+          build: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
-          start: npm run cy:start
+          start: node ./web-server.js
           wait-on: 'http://localhost:3333'
-          working-directory: test
+          working-directory: e2e
           install: false
           browser: chrome
-          env: type=base
           spec: |
             cypress/e2e/visual/*.cy.ts
         env:
+          CYPRESS_visualRegressionType: base
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload snapshots
-        uses: actions/upload-artifact@v3
         if: failure()
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-snapshots
-          path: test/cypress/snapshots
+          path: e2e/cypress/snapshots
 
       - name: Commit base images
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'chore(): update base images'
+          message: 'update base images'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

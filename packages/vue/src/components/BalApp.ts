@@ -1,5 +1,6 @@
-import { h, defineComponent, shallowRef, VNode } from 'vue'
-import { defineCustomElement } from '@baloise/design-system-components/components/bal-app'
+import { h, defineComponent, shallowRef } from 'vue'
+import type { VNode } from 'vue'
+import { defineCustomElement } from '@baloise/ds-core/components/bal-app'
 
 const userComponents = shallowRef<any[]>([]) // eslint-disable-line
 
@@ -16,7 +17,7 @@ export const BalApp = /*@__PURE__*/ defineComponent((_, { attrs, slots }) => {
   }
 })
 
-// @ts-ignore:next-line
+// @ts-expect-error:next-line
 BalApp.name = 'BalApp'
 
 /**

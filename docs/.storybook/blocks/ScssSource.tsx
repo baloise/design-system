@@ -8,9 +8,7 @@ export const ScssSource = ({ code }) => {
   if (isReady) {
     return (
       <div className="sb-unstyled docblock-source">
-        <SyntaxHighlighter language="scss">
-          {code}
-        </SyntaxHighlighter>
+        <SyntaxHighlighter language="scss">{code}</SyntaxHighlighter>
       </div>
     )
   } else {

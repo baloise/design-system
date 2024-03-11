@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common'
 import { ChangeDetectorRef, Component, Inject, Injector } from '@angular/core'
 
-import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-system-components-angular/common'
+import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/ds-angular-common'
 
 @Component({
   selector: 'bal-ng-error',
   template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
+  standalone: true,
+  imports: [CommonModule],
   styles: [
     `
       :host {

@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 
 export const applyDirectives = (app: App) => {
   // Register a global custom directive called `v-focus`

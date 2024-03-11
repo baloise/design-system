@@ -1,0 +1,237 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system-old.css" />
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        margin-bottom: 4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section data-testid="basic">
+        <div class="columns has-border-grey">
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">First column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Second column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Third column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Fourth column</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="column-sizes">
+        <div class="columns is-multiline has-border-grey">
+          <div class="column is-full">
+            <div class="has-background-green-2 p-small has-radius-normal">Full column</div>
+          </div>
+          <div class="column is-half">
+            <div class="has-background-green-2 p-small has-radius-normal">Half column</div>
+          </div>
+          <div class="column is-half">
+            <div class="has-background-green-2 p-small has-radius-normal">Half column</div>
+          </div>
+          <div class="column is-one-third">
+            <div class="has-background-green-2 p-small has-radius-normal">1 Third column</div>
+          </div>
+          <div class="column is-two-thirds">
+            <div class="has-background-green-2 p-small has-radius-normal">2 Thirds column</div>
+          </div>
+          <div class="column is-one-quarter">
+            <div class="has-background-green-2 p-small has-radius-normal">1 quarter column</div>
+          </div>
+          <div class="column is-three-quarters">
+            <div class="has-background-green-2 p-small has-radius-normal">3 quarters column</div>
+          </div>
+          <div class="column is-one-fifth">
+            <div class="has-background-green-2 p-small has-radius-normal">1 fifth column</div>
+          </div>
+          <div class="column is-four-fifths">
+            <div class="has-background-green-2 p-small has-radius-normal">4 fifth column</div>
+          </div>
+
+          <div class="column is-12">
+            <div class="has-background-red-2 p-small has-radius-normal">12</div>
+          </div>
+          <div class="column is-11">
+            <div class="has-background-red-2 p-small has-radius-normal">11</div>
+          </div>
+          <div class="column is-1">
+            <div class="has-background-grey-2 p-small has-radius-normal">1</div>
+          </div>
+          <div class="column is-10">
+            <div class="has-background-red-2 p-small has-radius-normal">10</div>
+          </div>
+          <div class="column is-2">
+            <div class="has-background-grey-2 p-small has-radius-normal">2</div>
+          </div>
+          <div class="column is-9">
+            <div class="has-background-red-2 p-small has-radius-normal">9</div>
+          </div>
+          <div class="column is-3">
+            <div class="has-background-grey-2 p-small has-radius-normal">3</div>
+          </div>
+          <div class="column is-8">
+            <div class="has-background-red-2 p-small has-radius-normal">8</div>
+          </div>
+          <div class="column is-4">
+            <div class="has-background-grey-2 p-small has-radius-normal">4</div>
+          </div>
+          <div class="column is-7">
+            <div class="has-background-red-2 p-small has-radius-normal">7</div>
+          </div>
+          <div class="column is-5">
+            <div class="has-background-grey-2 p-small has-radius-normal">5</div>
+          </div>
+          <div class="column is-6">
+            <div class="has-background-red-2 p-small has-radius-normal">6</div>
+          </div>
+          <div class="column is-6">
+            <div class="has-background-grey-2 p-small has-radius-normal">6</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="column-offset">
+        <div class="columns is-multiline has-border-grey">
+          <div class="column is-one-third">
+            <div class="has-background-green-2 p-small has-radius-normal">1 Third column</div>
+          </div>
+          <div class="column is-offset-three-quarters">
+            <div class="has-background-green-2 p-small has-radius-normal">3 quarters offset</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="rows">
+        <div class="columns is-multiline has-border-grey">
+          <div class="column is-full">
+            <div class="has-background-yellow-2 p-small has-radius-normal">First row</div>
+          </div>
+          <div class="column is-full">
+            <div class="has-background-yellow-3 p-small has-radius-normal">Second row</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="nested">
+        <div class="columns has-border-grey">
+          <div class="column is-half">
+            <div class="has-background-purple-1 p-small has-radius-normal">Half</div>
+          </div>
+          <div class="column is-half">
+            <div class="columns">
+              <div class="column is-half">
+                <div class="has-background-purple-2 p-small has-radius-normal">Half</div>
+              </div>
+              <div class="column is-half">
+                <div class="has-background-purple-2 p-small has-radius-normal">Half</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="space">
+        <div class="columns is-gapless has-border-grey">
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">First column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Second column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Third column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">Fourth column</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="breakpoint">
+        <div class="columns is-mobile has-border-grey">
+          <div
+            class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+          >
+            <div class="has-background-green-2 p-small has-radius-normal">
+              is-three-quarters-mobile<br />
+              is-two-thirds-tablet<br />
+              is-half-desktop<br />
+              is-one-third-widescreen<br />
+              is-one-quarter-fullhd
+            </div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">auto</div>
+          </div>
+          <div class="column"><div class="has-background-green-2 p-small has-radius-normal">auto</div></div>
+          <div class="column"><div class="has-background-green-2 p-small has-radius-normal">auto</div></div>
+        </div>
+      </section>
+
+      <section data-testid="vertical-alignment">
+        <div class="columns is-vcentered has-border-grey">
+          <div class="column is-two-thirds">
+            <div class="has-background-green-2 p-small has-radius-normal">First column</div>
+          </div>
+          <div class="column">
+            <div class="has-background-green-2 p-small has-radius-normal">
+              Second column with some random large text to make a good case here. Unfortunately, we need more content to
+              make it visible that the first column is now vertically centered.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="horizontal-alignment">
+        <div class="columns is-centered has-border-grey">
+          <div class="column is-one-third">
+            <div class="has-background-green-2 p-small has-radius-normal">My centered column</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="stratch">
+        <div class="columns is-multiline has-border-grey">
+          <div class="column is-two-thirds">
+            <div class="has-background-green-2 p-small has-radius-normal is-fullheight">
+              Stretches to the full height of the row
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="has-background-green-2 p-small has-radius-normal is-fullheight">
+              Second column with some random large text to make a good case here. Unfortunately, we need more content to
+              make it visible that the first column is now vertically centered.
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="has-background-green-2 p-small has-radius-normal is-fullheight">
+              Second column with some random large text to make a good case here. Unfortunately, we need more content to
+              make it visible that the first column is now vertically centered.
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="has-background-green-2 p-small has-radius-normal is-fullheight">
+              Stretches to the full height of the row
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

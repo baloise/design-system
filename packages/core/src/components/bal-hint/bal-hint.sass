@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-hint.vars'
 
 +block(hint)
@@ -27,13 +27,13 @@
       +element(heading)
         font-family: var(--bal-title-font-family)
         font-weight: var(--bal-title-font-weight)
-        font-size: var(--bal-size-x-large)
+        font-size: var(--bal-text-size-x-large)
         line-height: var(--bal-line-height-x-large)
         +tablet
-          font-size: var(--bal-size-tablet-x-large)
+          font-size: var(--bal-text-size-x-large-tablet)
           line-height: var(--bal-line-height-tablet-x-large)
         +desktop
-          font-size: var(--bal-size-desktop-x-large)
+          font-size: var(--bal-text-size-x-large-desktop)
           line-height: var(--bal-line-height-desktop-x-large)
     +element(buttons)
       +modifier(is-hidden-desktop)

@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-toast.vars'
 
 +block(toast)
@@ -35,7 +35,11 @@
     flex-grow: 1
     margin: 0.5rem 0 0 0
     box-shadow: var(--bal-shadow-normal)
-    +padding('normal')
+    padding: var(--bal-space-normal)
+    +tablet
+      padding: var(--bal-space-normal-tablet)
+    +desktop
+      padding: var(--bal-space-normal-desktop)
     // responsive
     +tablet
       max-width: 28.75rem

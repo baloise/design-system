@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event, Watch } from '@stencil/core'
+import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
@@ -50,16 +50,6 @@ export class TabItem {
   @Prop({ reflect: true }) disabled = false
 
   /**
-   * @deprecated
-   * Use invisible instead
-   */
-  @Prop() hidden = false
-  @Watch('hidden')
-  hiddenWatcher(value: boolean) {
-    this.invisible = value
-  }
-
-  /**
    * If `true` the step is hidden.
    */
   @Prop({ reflect: true }) invisible = false
@@ -78,12 +68,6 @@ export class TabItem {
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
-
-  connectedCallback() {
-    if (this.hidden) {
-      this.invisible = this.hidden
-    }
-  }
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

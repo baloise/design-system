@@ -26,12 +26,11 @@ export class StageBackLink implements ComponentInterface {
     const block = BEM.block('stage-back-link')
 
     return (
-      <Host class={{ ...block.class() }}>
+      <Host class={{ ...block.class(), ...block.modifier('shadow').class(this.shadow) }}>
         <a
           class={{
-            'is-link': true,
+            'link': true,
             'is-inverted': this.inverted,
-            'has-text-shadow': this.shadow,
           }}
           href={this.href}
         >

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-extra-semi */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { createElement, Fragment } from 'react'
 

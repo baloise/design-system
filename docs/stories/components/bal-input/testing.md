@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Input', () => {
   const input = byTestId('my-input') // [data-testid="my-input"]
@@ -21,10 +21,8 @@ describe('Input', () => {
 
 <!-- END: human documentation -->
 
-
 ### Selectors
 
 | Selector       | Element               |
 | -------------- | --------------------- |
 | `input.native` | Native input element. |
-

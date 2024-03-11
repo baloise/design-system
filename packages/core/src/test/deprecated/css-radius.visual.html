@@ -1,0 +1,77 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system-old.css" />
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      section > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 98px;
+      }
+
+      .no-radius > div {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section data-testid="radius-none" class="no-radius">
+        <div class="has-background-purple">Default</div>
+        <div class="has-background-purple has-radius-none">None</div>
+        <div class="has-background-purple has-radius-top-none">Top none</div>
+        <div class="has-background-purple has-radius-top-left-none">Top left none</div>
+        <div class="has-background-purple has-radius-top-right-none">Top right none</div>
+        <div class="has-background-purple has-radius-bottom-none">Bottom none</div>
+        <div class="has-background-purple has-radius-bottom-left-none">Bottom left none</div>
+        <div class="has-background-purple has-radius-bottom-right-none">Bottom right none</div>
+      </section>
+
+      <section data-testid="radius-normal">
+        <div class="has-background-purple">Default</div>
+        <div class="has-background-purple has-radius-normal">Normal</div>
+        <div class="has-background-purple has-radius-top-normal">Top normal</div>
+        <div class="has-background-purple has-radius-top-left-normal">Top left normal</div>
+        <div class="has-background-purple has-radius-top-right-normal">Top right normal</div>
+        <div class="has-background-purple has-radius-bottom-normal">Bottom normal</div>
+        <div class="has-background-purple has-radius-bottom-left-normal">Bottom left normal</div>
+        <div class="has-background-purple has-radius-bottom-right-normal">Bottom right normal</div>
+      </section>
+
+      <section data-testid="radius-large">
+        <div class="has-background-purple">Default</div>
+        <div class="has-background-purple has-radius-large">Large</div>
+        <div class="has-background-purple has-radius-top-large">Top large</div>
+        <div class="has-background-purple has-radius-top-left-large">Top left large</div>
+        <div class="has-background-purple has-radius-top-right-large">Top right large</div>
+        <div class="has-background-purple has-radius-bottom-large">Bottom large</div>
+        <div class="has-background-purple has-radius-bottom-left-large">Bottom left large</div>
+        <div class="has-background-purple has-radius-bottom-right-large">Bottom right large</div>
+      </section>
+
+      <section data-testid="radius-rounded">
+        <div class="has-background-purple">Default</div>
+        <div class="has-background-purple has-radius-rounded">Rounded</div>
+        <div class="has-background-purple has-radius-top-rounded">Top rounded</div>
+        <div class="has-background-purple has-radius-top-left-rounded">Top left rounded</div>
+        <div class="has-background-purple has-radius-top-right-rounded">Top right rounded</div>
+        <div class="has-background-purple has-radius-bottom-rounded">Bottom rounded</div>
+        <div class="has-background-purple has-radius-bottom-left-rounded">Bottom left rounded</div>
+        <div class="has-background-purple has-radius-bottom-right-rounded">Bottom right rounded</div>
+      </section>
+    </main>
+  </body>
+</html>

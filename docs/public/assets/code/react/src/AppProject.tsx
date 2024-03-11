@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   useBaloiseDesignSystem,
   BalApp,
@@ -9,10 +9,10 @@ import {
   BalHeading,
   BalButton,
   BalFooter,
-} from '@baloise/design-system-components-react';
+} from '@baloise/ds-react'
 
 export default function App() {
-  useBaloiseDesignSystem();
+  useBaloiseDesignSystem()
 
   return (
     <BalApp className="has-sticky-footer">
@@ -31,18 +31,14 @@ export default function App() {
       </BalStage>
       <main className="container mt-xx-large">
         <p>
-          The Baloise Design System consists of UI components and a clearly
-          defined visual style, released as both code implementations and design
-          artifacts to build any number of web applications.
+          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          implementations and design artifacts to build any number of web applications.
         </p>
-        <BalButton
-          href="https://design.baloise.dev"
-          target="_blank"
-        >
+        <BalButton href="https://design.baloise.dev" target="_blank">
           Check out the Documentation
         </BalButton>
       </main>
       <BalFooter></BalFooter>
     </BalApp>
-  );
+  )
 }

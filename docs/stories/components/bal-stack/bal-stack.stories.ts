@@ -1,9 +1,11 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconPiggyBankPurple } from '@baloise/design-system-brand-icons'
-import { balBrandIconInvestSaveChfRed } from '@baloise/design-system-brand-icons'
-import { balBrandIconSafeSavingChildTangerine } from '@baloise/design-system-brand-icons'
+import {
+  balBrandIconPiggyBankPurple,
+  balBrandIconInvestSaveChfRed,
+  balBrandIconSafeSavingChildTangerine,
+} from '@baloise/ds-brand-icons'
 
 type Args = JSX.BalStack & { content: string }
 
@@ -72,47 +74,47 @@ export const Alignment = Story({
 export const Space = Story({
   ...withRender(
     () => `<div>
-  <bal-stack class="has-background-red-2">
-    <bal-content class="has-background-green-2">
+  <bal-stack class="bg-red-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space Default</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space Default</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space Default</bal-label>
     </bal-content>
   </bal-stack>
-  <bal-stack space="large" class="has-background-red-2 my-large">
-    <bal-content class="has-background-green-2">
+  <bal-stack space="large" class="bg-red-2 my-large">
+    <bal-content class="bg-green-2">
       <bal-label>Space Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space Large</bal-label>
     </bal-content>
   </bal-stack>
-  <bal-stack space="x-large" class="has-background-red-2 my-large">
-    <bal-content class="has-background-green-2">
+  <bal-stack space="x-large" class="bg-red-2 my-large">
+    <bal-content class="bg-green-2">
       <bal-label>Space X-Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space X-Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space X-Large</bal-label>
     </bal-content>
   </bal-stack>
-  <bal-stack space="xx-large" class="has-background-red-2">
-    <bal-content class="has-background-green-2">
+  <bal-stack space="xx-large" class="bg-red-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space XX-Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space XX-Large</bal-label>
     </bal-content>
-    <bal-content class="has-background-green-2">
+    <bal-content class="bg-green-2">
       <bal-label>Space XX-Large</bal-label>
     </bal-content>
   </bal-stack>
@@ -123,14 +125,14 @@ export const Space = Story({
 export const Padding = Story({
   ...withRender(
     () => `<div>
-  <bal-stack py="medium" class="has-background-red-2">
-    <bal-content class="has-background-green-2">
+  <bal-stack py="medium" class="bg-red-2">
+    <bal-content class="bg-green-2">
       <bal-label>Padding Horizontal Medium</bal-label>
     </bal-content>
   </bal-stack>
   <br/>
-  <bal-stack px="medium" class="has-background-red-2">
-    <bal-content class="has-background-green-2">
+  <bal-stack px="medium" class="bg-red-2">
+    <bal-content class="bg-green-2">
       <bal-label>Padding Vertical Medium</bal-label>
     </bal-content>
   </bal-stack>

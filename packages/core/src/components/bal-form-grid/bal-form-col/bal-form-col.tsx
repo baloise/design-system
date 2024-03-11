@@ -4,18 +4,20 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
   tag: 'bal-form-col',
 })
 export class FormCol implements ComponentInterface {
+  private colClass = 'col'
+
   @Element() el!: HTMLElement
 
-  @Prop() size: BalProps.BalFormColSize = 'fullwidth'
+  @Prop() size: BalProps.BalFormColSize = 'full'
 
   render() {
     return (
       <Host
         class={{
-          'column': true,
+          [`${this.colClass}`]: true,
           'py-none': true,
-          'is-12-touch': true,
-          'is-12': this.size === 'fullwidth' || this.size === undefined,
+          'touch:is-12': true,
+          'is-12': this.size === 'full' || this.size === 'fullwidth' || this.size === undefined,
           'is-6': this.size === 'half',
           'is-4': this.size === 'one-third',
           'is-8': this.size === 'two-thirds',

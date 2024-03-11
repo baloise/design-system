@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import 'cypress-axe'
+
 import 'cypress-file-upload'
 import { addCompareSnapshotCommand } from './lib/visuals'
 

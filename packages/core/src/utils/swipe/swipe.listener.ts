@@ -25,7 +25,7 @@ export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, Bal
   private async loadLib(): Promise<void> {
     return new Promise((resolve, reject) => {
       rIC(async () => {
-        import('contactjs')
+        import(/* @vite-ignore */ 'contactjs')
           .then(module => {
             this.PointerListenerLib = module.PointerListener
             resolve()

@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
@@ -47,19 +47,19 @@ export const Subtitle = Story({
 export const Levels = Story({
   ...withRender(
     () => `<div class="columns">
-  <div class="column is-half has-background-yellow-1">
+  <div class="column is-half bg-yellow-1">
     <bal-heading level="h1">Heading 1</bal-heading>
     <bal-heading level="h2">Heading 2</bal-heading>
     <bal-heading level="h3">Heading 3</bal-heading>
     <bal-heading level="h4">Heading 4</bal-heading>
     <bal-heading level="h5">Heading 5</bal-heading>
   </div>
-  <div class="column is-half has-background-yellow-2">
-    <h1 class="title is-size-xxx-large">Heading 1</h1>
-    <h2 class="title is-size-xx-large">Heading 2</h2>
-    <h3 class="title is-size-x-large">Heading 3</h3>
-    <h4 class="title is-size-large">Heading 4</h4>
-    <h5 class="title is-size-normal">Heading 5</h5>
+  <div class="column is-half bg-yellow-2">
+    <h1 class="title text-xxx-large">Heading 1</h1>
+    <h2 class="title text-xx-large">Heading 2</h2>
+    <h3 class="title text-x-large">Heading 3</h3>
+    <h4 class="title text-large">Heading 4</h4>
+    <h5 class="title text-normal">Heading 5</h5>
   </div>
 </div>`,
   ),
@@ -79,16 +79,16 @@ export const Colors = Story({
 export const Spacing = Story({
   ...withRender(
     () => `<div>
-    <div class="has-background-blue-1 is-flex mb-small">
+    <div class="bg-blue-1 flex mb-small">
       <bal-heading level="h4" space="all">All</bal-heading>
     </div>
-    <div class="has-background-blue-1 is-flex mb-small">
+    <div class="bg-blue-1 flex mb-small">
       <bal-heading level="h4" space="none">None</bal-heading>
     </div>
-    <div class="has-background-blue-1 is-flex mb-small">
+    <div class="bg-blue-1 flex mb-small">
       <bal-heading level="h4" space="top">Top</bal-heading>
     </div>
-    <div class="has-background-blue-1 is-flex mb-small">
+    <div class="bg-blue-1 flex mb-small">
       <bal-heading level="h4" space="bottom">Bottom</bal-heading>
     </div>
   </div>`,
@@ -110,11 +110,11 @@ export const AutoLevel = Story({
 export const CSSUtilities = Story({
   ...withRender(
     () => `<div>
-    <h1 class="title is-size-xxx-large">Heading 1</h1>
-    <h2 class="title is-size-xx-large">Heading 2</h2>
-    <h3 class="title is-size-x-large">Heading 3</h3>
-    <h4 class="title is-size-large">Heading 4</h4>
-    <h5 class="title is-size-normal">Heading 5</h5>
+    <h1 class="title text-xxx-large">Heading 1</h1>
+    <h2 class="title text-xx-large">Heading 2</h2>
+    <h3 class="title text-x-large">Heading 3</h3>
+    <h4 class="title text-large">Heading 4</h4>
+    <h5 class="title text-normal">Heading 5</h5>
   </div>`,
   ),
 })

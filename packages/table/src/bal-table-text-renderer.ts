@@ -1,5 +1,4 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import isNil from 'lodash.isnil'
 import { parseValue } from './utils/parsing'
 
 interface BalTableTextRendererOptions {
@@ -39,19 +38,19 @@ export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}):
   Renderer.prototype.update = function () {
     this.text.innerHTML = parseValue(this.params.value)
 
-    const color = isNil(options.color) ? '' : options.color(this.params)
+    const color = typeof options.color === 'function' ? options.color(this.params) : ''
     this.text.setAttribute('color', color)
 
-    const icon = isNil(options.icon) ? '' : options.icon(this.params)
+    const icon = typeof options.icon === 'function' ? options.icon(this.params) : ''
 
     if (icon.length === 0) {
       this.element.innerHTML = this.text.outerHTML
     } else {
       this.icon.setAttribute('name', icon)
-      const iconColor = isNil(options.iconColor) ? '' : options.iconColor(this.params)
+      const iconColor = typeof options.iconColor !== 'function' ? '' : options.iconColor(this.params)
       this.icon.setAttribute('color', iconColor)
 
-      const isRight = isNil(options.iconRight) ? '' : options.iconRight(this.params)
+      const isRight = typeof options.iconRight !== 'function' ? '' : options.iconRight(this.params)
       if (isRight) {
         this.element.innerHTML = this.text.outerHTML + this.icon.outerHTML
       } else {

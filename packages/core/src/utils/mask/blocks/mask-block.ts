@@ -1,4 +1,3 @@
-import isFunction from 'lodash.isfunction'
 import { MaskBlockOption, MaskValue } from './mask-block-interfaces'
 import { I18nKeys } from '../../../interfaces'
 
@@ -40,7 +39,7 @@ export class MaskBlock {
   }
 
   get mask(): string {
-    if (isFunction(this._mask)) {
+    if (typeof this._mask === 'function') {
       return this._mask(this._locale)
     }
     return this._mask

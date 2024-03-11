@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import '../bal-steps.vars'
 
 // Step Icons
@@ -10,9 +10,9 @@
   align-items: center
   justify-content: center
   overflow: hidden
-  font-weight: var(--bal-weight-bold)
+  font-weight: var(--bal-font-weight-bold)
   border-radius: var(--bal-steps-step-icon-radius)
-  font-size: var(--bal-size-small)
+  font-size: var(--bal-text-size-small)
   //
   // Responive Sizes
   height: 1.5rem
@@ -22,7 +22,7 @@
     height: 2rem
     width: 2rem
     left: calc(50% - 1rem)
-    font-size: var(--bal-size-normal)
+    font-size: var(--bal-text-size-normal)
   //
   // Color status
   border: var(--bal-steps-step-border-width) var(--bal-steps-step-border-style) var(--bal-steps-step-border-color)
@@ -40,11 +40,11 @@
     border-color: var(--bal-steps-step-border-color-failed)
     background: var(--bal-steps-step-icon-background-failed)
     color: var(--bal-steps-step-icon-text-color-failed)
-    font-size: var(--bal-size-normal)
+    font-size: var(--bal-text-size-normal)
     +tablet
-      font-size: var(--bal-size-tablet-large)
+      font-size: var(--bal-text-size-large-tablet)
     +desktop
-      font-size: var(--bal-size-desktop-large)
+      font-size: var(--bal-text-size-large-desktop)
   &--disabled
     border-color: var(--bal-steps-step-border-color-disabled)
     background: var(--bal-steps-step-icon-background-disabled)

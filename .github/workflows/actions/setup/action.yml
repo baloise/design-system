@@ -1,15 +1,27 @@
 name: 'Setup'
 description: 'Setup'
+inputs:
+  token:
+    description: 'GitHub token'
 runs:
   using: 'composite'
   steps:
-    - name: Setup NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-
-    - name: Update NPM registry
-      run: npm run registry
+    - name: Git Identity
+      if: inputs.token != ''
+      run: |
+        git config --global user.name 'baopso'
+        git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+
+    - name: Stetup Node.JS
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Update NPM registry path
+      shell: bash
+      run: npm run registry

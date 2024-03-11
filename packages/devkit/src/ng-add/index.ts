@@ -24,7 +24,7 @@ export default function (options: SchemaOptions): Rule {
     actions.push(
       addRootProvider(options.project, ({ code, external }) => {
         return code`
-    ${external('provideBaloiseDesignSystem', '@baloise/design-system-components-angular/standalone')}({
+    ${external('provideBaloiseDesignSystem', '@baloise/ds-angular')}({
       defaults: {
         region: '${options.region}',
       }
@@ -43,7 +43,7 @@ export default function (options: SchemaOptions): Rule {
       multi: true,
       deps: [${external('TranslocoService', '@ngneat/transloco')}, ${external(
         'BalConfigService',
-        '@baloise/design-system-components-angular/standalone',
+        '@baloise/ds-angular',
       )}],
     }`
         }),
@@ -55,9 +55,9 @@ export default function (options: SchemaOptions): Rule {
       host.delete(nxExample)
     }
 
-    updateAppComponent(host, options)
+    updateAppComponent(host)
 
-    actions.push(addDependency('@baloise/design-system-components-angular', 'latest'))
+    actions.push(addDependency('@baloise/ds-angular', 'latest'))
 
     return chain(actions)(host, context) as any
   }

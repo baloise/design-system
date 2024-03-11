@@ -1,20 +1,50 @@
-# @baloise/design-system-components
+# @baloise/ds-core
 
-## 15.2.4
+## 0.0.7
 
 ### Patch Changes
 
-- **progress-bar**: Added aria-hidden attribute to improve accessibility by preventing screen readers from unnecessarily announcing this element. ( [#1330](https://github.com/baloise/design-system/pull/1330))
+- **devkit**: update ( [`fa635d1`](https://github.com/baloise-incubator/ds-playground/commit/fa635d1ef97f67d577141dde4e916214f8fbb933))
 
-- **nav**: reset active link items on options changed and always render the active meta link tree, but hide it visually. ( [#1335](https://github.com/baloise/design-system/pull/1335))
+## 0.0.6
 
-- **radio**: Removed `role="radio"` to improve semantic HTML and accessibility, ensuring ARIA roles are used correctly and only where they provide clear benefits. ( [#1314](https://github.com/baloise/design-system/pull/1314))
+### Patch Changes
 
-- **angular**: overay service define custom elements for standalone ( [#1334](https://github.com/baloise/design-system/pull/1334))
+- **badge**: add new color prop `pink` ( [`b807211`](https://github.com/baloise-incubator/ds-playground/commit/b807211b86b1275b84aa22b77cf4f528f12ff280))
 
-- **tabs**: Removed `role="region"` to improve semantic HTML and accessibility, ensuring ARIA roles are used correctly and only where they provide clear benefits. ( [#1318](https://github.com/baloise/design-system/pull/1318))
+## 0.0.5
 
-- **angular**: standalone modals do not load in production build ( [#1332](https://github.com/baloise/design-system/pull/1332))
+### Patch Changes
+
+- **core**: bubu ( [`9b17049`](https://github.com/baloise-incubator/ds-playground/commit/9b170496c2bd80dd20d2115ea398287fd2154472))
+
+## 0.0.4
+
+### Patch Changes
+
+- **angular**: new fix ( [`df7d208`](https://github.com/baloise-incubator/ds-playground/commit/df7d208b6596225edeb413add51755a1b6247357))
+
+## 0.0.3
+
+### Patch Changes
+
+- **core**: bubu ( [`37c7bb8`](https://github.com/baloise-incubator/ds-playground/commit/37c7bb8baa52aaedbec9a53814ed0acfa710a2d9))
+
+## 0.0.2
+
+### Patch Changes
+
+- **core**: little change ( [`dd71551`](https://github.com/baloise-incubator/ds-playground/commit/dd71551bf06b632af147ae938146b36a4c6dd672))
+
+## 0.0.1
+
+### Patch Changes
+
+- **cli**: 3rd change ( [`f5c8d70`](https://github.com/baloise-incubator/ds-playground/commit/f5c8d70b26b6c263a2141e87533d842dc2072f70))
+
+- **cli**: second change ( [`66cd140`](https://github.com/baloise-incubator/ds-playground/commit/66cd140f09e4ef4354fb544e8713ebe87cd56775))
+
+- **cli**: first release test ( [`94f44d0`](https://github.com/baloise-incubator/ds-playground/commit/94f44d048af92dabc31f0c256a84dbc7ba5f0afe))
 
 ## 15.2.3
 

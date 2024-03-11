@@ -14,5 +14,4 @@ export interface BalRadioOption {
   nonSubmit: boolean
   invisible: boolean
   invalid: boolean
-  hidden: boolean // deprecated
 }

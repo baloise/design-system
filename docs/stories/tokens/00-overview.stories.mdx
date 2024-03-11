@@ -1,0 +1,80 @@
+import { Meta, Unstyled } from '@storybook/addon-docs'
+import { navigate } from '@storybook/addon-links'
+import { Banner, Lead, Footer, LinkCards, LinkCard, ButtonCard } from '../../.storybook/blocks'
+
+<Meta
+  title="Tokens/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      toc: {
+        disable: false,
+      },
+    },
+  }}
+/>
+
+<Banner label="Tokens" color="green" puzzle />
+
+<Lead>Design tokens serve as the definitive source for naming and storing design choices.</Lead>
+
+<Unstyled>
+  <a
+    className="button is-primary mt-large"
+    style={{ width: 'auto' }}
+    onClick={() => navigate({ title: 'Tokens/All Tokens' })}
+  >
+    All Design Tokens
+  </a>
+</Unstyled>
+
+## What are Design Tokens
+
+A design token is a standardized, reusable unit of design information that encapsulates visual
+and stylistic elements, ensuring consistency across various applications and platforms.
+It serves as a central reference point for maintaining and implementing design decisions.
+
+## Use in code
+
+The tokens are exported into CSS Variables, Sass, Less and JavaScript.
+
+Here are two examples how to use them in a web application.
+
+```html
+<div style="background: var(--bal-background-primary)"></div>
+```
+
+```css
+.my-block {
+  background: var(--bal-background-primary);
+}
+```
+
+## Figma
+
+To integrate design tokens into your Figma file, employ the [Style Dictionary to Variables](https://www.figma.com/community/plugin/1254182310197842774/style-dictionary-to-variables) plugin.
+
+Import then the two JSON files with it.
+
+<ButtonCard label="figma-tokens.zip" description="Figma Variables" link="/assets/download/figma-tokens.zip">
+  <bal-icon name="download" size="medium" />
+</ButtonCard>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Overview"
+      description="CSS utility classes streamline component styling with pre-defined styles applied directly to HTML elements."
+    />
+    <LinkCard
+      pageTitle="Development/Theming"
+      description="The Baloise Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity"
+    />
+  </LinkCards>
+</Footer>

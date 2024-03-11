@@ -18,7 +18,6 @@ import { hasTagName, isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
-import isFunction from 'lodash.isfunction'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
@@ -432,7 +431,7 @@ export class CheckboxGroup
 
     const rawOptions = this.options || []
     const options = rawOptions.map(option => {
-      if (isFunction(option.html)) {
+      if (typeof option.html === 'function') {
         return { ...option, html: option.html() }
       }
       return option
@@ -470,7 +469,7 @@ export class CheckboxGroup
               disabled={option.disabled}
               readonly={option.readonly}
               required={option.required}
-              nonSubmit={!!option.nonSubmit || !!option.hidden}
+              nonSubmit={!!option.nonSubmit}
               invalid={option.invalid}
               innerHTML={option.html as string}
             ></bal-checkbox>

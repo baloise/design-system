@@ -1,0 +1,25 @@
+{
+  "name": "tokens",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/tokens/src",
+  "targets": {
+    "lint": {
+      "command": "eslint --no-eslintrc",
+      "outputs": ["{options.outputFile}"]
+    },
+    "build": {
+      "executor": "@nxkit/style-dictionary:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "styleDictionaryConfig": "{projectRoot}/style-dictionary.config.ts",
+        "tsConfig": "{projectRoot}/tsconfig.json",
+        "customFormats": "{projectRoot}/src/extensions/formats/index.ts",
+        "customFilters": "{projectRoot}/src/extensions/filters/index.ts",
+        "customTransforms": "{projectRoot}/src/extensions/transforms/index.ts"
+      }
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "type:package"]
+}

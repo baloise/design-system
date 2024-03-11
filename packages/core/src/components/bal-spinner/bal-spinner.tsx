@@ -121,7 +121,7 @@ export class Spinner implements ComponentInterface, Loggable {
         return resolve()
       } else {
         rIC(async () => {
-          import('./bal-spinner.animation')
+          import(/* @vite-ignore */ './bal-spinner.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()

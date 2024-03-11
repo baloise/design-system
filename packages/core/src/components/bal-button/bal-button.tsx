@@ -101,18 +101,6 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
-   * @deprecated
-   * If `true` the top corners get rounded
-   */
-  @Prop() topRounded: undefined | boolean = undefined
-
-  /**
-   * @deprecated
-   * If `true` the bottom corners get rounded
-   */
-  @Prop() bottomRounded: undefined | boolean = undefined
-
-  /**
    * Name of the left button icon
    */
   @Prop() icon = ''
@@ -208,10 +196,6 @@ export class Button implements ComponentInterface {
       'is-loading': this.loading,
       'is-rounded': this.rounded === true,
       'has-blur-shadow': this.shadow === true,
-      'has-round-top-corners': this.topRounded === true,
-      'has-round-bottom-corners': this.bottomRounded === true,
-      'has-no-round-top-corners': this.topRounded === false,
-      'has-no-round-bottom-corners': this.bottomRounded === false,
     }
   }
 

@@ -1,4 +1,4 @@
-import { BaloiseDesignToken } from '@baloise/design-system-tokens'
+import * as BaloiseDesignToken from '@baloise/ds-tokens'
 
 const toNumber = (pixel: string): number => parseInt(pixel.slice(0, -2), 10)
 

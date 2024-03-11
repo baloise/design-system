@@ -1,2 +1,2 @@
-export { angularOutputTarget } from './plugin'
-export type { OutputTargetAngular, ValueAccessorConfig } from './types'
+export { angularOutputTarget } from './lib/plugin'
+export type { OutputTargetAngular, ValueAccessorConfig } from './lib/types'

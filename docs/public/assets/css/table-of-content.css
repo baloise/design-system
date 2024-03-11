@@ -116,7 +116,8 @@ button.sbdocs-top:active {
 }
 
 @media only screen and (max-width: 1264px) {
-  .sbdocs-toc, .sbdocs-top {
+  .sbdocs-toc,
+  .sbdocs-top {
     display: none !important;
   }
 }

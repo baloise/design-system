@@ -17,7 +17,6 @@ export default defineConfig({
     screenshotsFolder: 'cypress/snapshots/actual',
     env: {
       visualRegression: {
-        type: 'regression',
         baseDirectory: 'cypress/snapshots/base/visual',
         diffDirectory: 'cypress/snapshots/diff',
         generateDiff: 'always',

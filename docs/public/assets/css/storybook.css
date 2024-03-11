@@ -93,20 +93,20 @@ html {
   width: 16px !important;
 }
 
-.sidebar-item[data-nodetype="component"] svg {
+.sidebar-item[data-nodetype='component'] svg {
   color: #00b28f;
 }
 
-.sidebar-item[data-selected="false"][data-nodetype="document"] svg {
+.sidebar-item[data-selected='false'][data-nodetype='document'] svg {
   color: #9f52cc;
 }
 
-.sidebar-item[data-selected="false"][data-nodetype="story"] svg {
+.sidebar-item[data-selected='false'][data-nodetype='story'] svg {
   color: #fa9319;
 }
 
-.sidebar-item[data-selected="true"] svg {
-  color: #FFFFFF !important;
+.sidebar-item[data-selected='true'] svg {
+  color: #ffffff !important;
 }
 
 /***************************************
@@ -126,7 +126,7 @@ html {
 }
 
 .my-cookie strong {
-  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
   font-size: 1.25rem;
   display: block;
   margin-bottom: 0.25rem;
@@ -147,7 +147,7 @@ html {
 
 .my-cookie button {
   margin-top: 1.5rem;
-  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
   background: transparent;
   border: 2px solid #000d6e;
   color: #000d6e;

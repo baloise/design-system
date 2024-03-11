@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-date-calendar.vars'
 
 =calendar-button
@@ -8,12 +8,12 @@
   cursor: pointer
   border-radius: var(--bal-radius-normal)
   font-family: var(--bal-font-family-text)
-  font-weight: var(--bal-weight-regular)
+  font-weight: var(--bal-font-weight-regular)
   color: var(--bal-color-text-primary)
   border: none
   background: transparent
   text-align: center
-  font-size: var(--bal-size-normal)
+  font-size: var(--bal-text-size-normal)
   line-height: var(--bal-line-height-normal)
   hyphens: auto
   outline: none
@@ -25,7 +25,7 @@
       background: var(--bal-color-light-blue-2)
   &--today:not(&--selected):not(&--disabled)
     color: var(--bal-color-light-blue-3)
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-font-weight-bold)
     +hover
       &:hover
         color: var(--bal-color-text-primary)
@@ -34,7 +34,7 @@
   &--selected
     background: var(--bal-color-primary)
     color: var(--bal-color-text-white)
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-font-weight-bold)
   &--disabled
     cursor: default
     background: transparent

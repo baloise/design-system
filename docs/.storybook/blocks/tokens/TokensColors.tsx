@@ -1,113 +1,102 @@
 import React from 'react'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import { Clipboard } from '../Clipboard'
 
 export const TokensColors = ({ overview }) => {
-  const color = tokens.color as any
-  const colors = [] as any
-  const validColors = [
-    'primary',
-    'black',
-    'white',
-    'grey',
-    'light-blue',
-    'purple',
-    'green',
-    'red',
-    'yellow',
-    'success',
-    'warning',
-    'danger',
-  ]
-  for (const k of validColors) {
-    colors.push({
-      name: k,
-      value: color[k],
-    })
-  }
+  const listBase = tokens.color.base
+  const listAlias = tokens.color.alias
+
+  const list = { ...listBase, ...listAlias }
 
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th style={{ minWidth: '200px' }}>Example</th>
-          <th>Description</th>
-          <th style={{ minWidth: '220px' }}>Token</th>
+          <th style={{ width: '100%' }}>Token & Description</th>
+          <th style={{ minWidth: '100px' }}>Value</th>
+          <th style={{ minWidth: '100px' }}></th>
         </tr>
       </thead>
-      {colors.map(c => (
-        <tbody key={c.name}>
-          <tr>
-            <td style={{ verticalAlign: 'top' }}>
-              <div className={`has-background-${c.name} p-x-small mb-x-small has-radius-normal`}>
-                <p className={`title is-size-large has-text-${c.name}-inverted`}>Aa</p>
-                <p className={`mt-none mb-xx-small is-size-small has-text-${c.name}-inverted`}>{c.value.hex}</p>
-                <p className={`m-none is-size-small has-text-${c.name}-inverted`}>{hexToRgbA(c.value.hex)}</p>
-              </div>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="has-text-weight-bold is-size-large mt-none mb-xx-small">{c.name}</p>
-              <p className="m-none is-size-small">{c.value.description}</p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-color-{c.name})
-              </p>
-              <p className="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal">
-                ${c.name}
-              </p>
-            </td>
-          </tr>
-          {c.name !== 'black' && c.name !== 'white' ? (
-            <tr>
-              <td colSpan={3}>
-                <p className="has-text-weight-bold is-size-normal">Shades</p>
-                <span className="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                  var(--bal-color-{c.name}-x)
-                </span>
-                <div className="is-flex fg-x-small mt-x-small">
-                  <div className={`has-background-${c.name}-1 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-1-inverted has-text-weight-bold`}>1</span>
-                  </div>
-                  <div className={`has-background-${c.name}-2 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-2-inverted has-text-weight-bold`}>2</span>
-                  </div>
-                  <div className={`has-background-${c.name}-3 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-3-inverted has-text-weight-bold`}>3</span>
-                  </div>
-                  <div className={`has-background-${c.name}-4 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-4-inverted has-text-weight-bold`}>4</span>
-                  </div>
-                  <div className={`has-background-${c.name}-5 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-5-inverted has-text-weight-bold`}>5</span>
-                  </div>
-                  <div className={`has-background-${c.name}-6 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span className={`has-text-${c.name}-6-inverted has-text-weight-bold`}>6</span>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          ) : (
-            ''
-          )}
 
-          <tr>
-            <td colSpan={3} className="pb-large"></td>
-          </tr>
-        </tbody>
-      ))}
+      {Object.keys(list)
+        .filter(key => key !== 'inverted')
+        .map(key => {
+          const item = list[key]
+          const subItems = listBase[key]
+          return (
+            <tbody key={key}>
+              <tr>
+                <td style={{ verticalAlign: 'top' }} className="border-none">
+                  <Clipboard label={item.name} value={`var(--${item.name})`} />
+                </td>
+                <td style={{ verticalAlign: 'top' }} className="border-none">
+                  <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+                </td>
+                <td style={{ verticalAlign: 'top' }} className="border-none">
+                  <div
+                    className="radius-normal"
+                    style={{ width: '48px', height: '48px', background: `var(--${item.name})` }}
+                  ></div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={3} className={subItems.value ? 'border-bottom-grey' : 'border-none'}>
+                  <p className="m-none text-small mb-small">{item.comment}</p>
+                </td>
+              </tr>
+              {!subItems.value ? (
+                <tr>
+                  <td colSpan={3} className="border-bottom-grey">
+                    <p className="font-weight-bold mb-none">Shades</p>
+                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-2 radius-normal font-weight-bold">
+                      {item.name}-x
+                    </p>
+                    <div className="flex gap-normal">
+                      <div
+                        className="radius-normal p-small font-weight-bold"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-1)` }}
+                      >
+                        1
+                      </div>
+                      <div
+                        className="radius-normal p-small font-weight-bold"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-2)` }}
+                      >
+                        2
+                      </div>
+                      <div
+                        className="radius-normal p-small font-weight-bold"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-3)` }}
+                      >
+                        3
+                      </div>
+                      <div
+                        className="radius-normal p-small font-weight-bold text-white"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-4)` }}
+                      >
+                        4
+                      </div>
+                      <div
+                        className="radius-normal p-small font-weight-bold text-white"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-5)` }}
+                      >
+                        5
+                      </div>
+                      <div
+                        className="radius-normal p-small font-weight-bold text-white"
+                        style={{ flex: '1', height: '48px', background: `var(--${item.name}-6)` }}
+                      >
+                        6
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ) : (
+                ''
+              )}
+            </tbody>
+          )
+        })}
     </table>
   )
-}
-
-function hexToRgbA(hex: string) {
-  let c: any
-  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    c = hex.substring(1).split('')
-    if (c.length == 3) {
-      c = [c[0], c[0], c[1], c[1], c[2], c[2]]
-    }
-    c = '0x' + c.join('')
-    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',1)'
-  }
-  throw new Error('Bad Hex')
 }

@@ -1,0 +1,103 @@
+{
+  "name": "icons",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/icons/src",
+  "projectType": "library",
+  "targets": {
+    "nx-release-publish": {
+      "executor": "@nx/js:release-publish",
+      "options": {
+        "packageRoot": "{projectRoot}/dist"
+      }
+    },
+    "optimize": {
+      "executor": "@baloise/ds-nx:build-svg",
+      "outputs": ["{projectRoot}/src/assets", "{projectRoot}/src/index.ts", "{projectRoot}/src/icons.json"],
+      "options": {
+        "projectName": "{projectName}",
+        "projectRoot": "{projectRoot}",
+        "svgOptimize": true,
+        "svgPlugins": [
+          {
+            "name": "removeAttrs",
+            "params": {
+              "attrs": "(stroke|fill)"
+            }
+          },
+          {
+            "name": "removeStyleElement"
+          },
+          {
+            "name": "removeDimensions",
+            "params": {
+              "removeDimensions": true
+            }
+          },
+          {
+            "name": "addAttributesToSVGElement",
+            "params": {
+              "attributes": [
+                {
+                  "focusable": false
+                },
+                {
+                  "aria-hidden": "true"
+                }
+              ]
+            }
+          }
+        ],
+        "jsInlineData": false,
+        "jsOutput": true,
+        "jsOutputName": "balIcon",
+        "jsOutputPath": "src/index.ts",
+        "jsonPath": "src/icons.json",
+        "svgReplaceBlack": true,
+        "dsMinSetPath": "../core/src/utils/constants/icons.constant.ts",
+        "dsMinSet": [
+          "balIconClose",
+          "balIconInfoCircle",
+          "balIconPlus",
+          "balIconMinus",
+          "balIconNavGoLeft",
+          "balIconNavGoRight",
+          "balIconNavGoDown",
+          "balIconNavGoUp",
+          "balIconCaretUp",
+          "balIconCaretRight",
+          "balIconCaretDown",
+          "balIconCaretLeft",
+          "balIconCheck",
+          "balIconDate",
+          "balIconDocument",
+          "balIconEdit",
+          "balIconTrash",
+          "balIconUpload",
+          "balIconMenuBars",
+          "balIconFacebook",
+          "balIconInstagram",
+          "balIconXing",
+          "balIconLinkedin",
+          "balIconTwitter",
+          "balIconX",
+          "balIconYoutube",
+          "balIconWeb"
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "{projectRoot}/src/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": ["{projectRoot}/src/assets"],
+        "project": "{projectRoot}/package.json",
+        "compiler": "swc",
+        "format": ["esm"]
+      }
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "scope:visual", "type:package"]
+}

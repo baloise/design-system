@@ -1,4 +1,5 @@
-import path from 'path'
+/* eslint-disable @nx/enforce-module-boundaries */
+import path, { sep } from 'path'
 import { globSync } from 'glob'
 import { JsonDocs, JsonDocsStyle, OutputTargetDocsCustom } from '@stencil/core/internal'
 import { writeFileSync, mkdirSync, readFileSync } from 'fs'
@@ -7,7 +8,7 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import contributors from '../../.tmp/contributors.json'
+import contributors from '../../../../resources/data/contributors.json'
 import { createTestingMarkdown } from './markdown-testing'
 import { createThemingMarkdown } from './markdown-theming'
 import { parseStyleDocs } from './markdonw-styles'
@@ -29,7 +30,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         const componentName = component.tag
         const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
 
-        const componentFolderDepth = component.filePath?.split('/').length
+        const componentFolderDepth = component.filePath?.split(sep).length
         const isRoot = componentFolderDepth === 4
 
         try {
@@ -89,7 +90,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     const capitalized = s => s.charAt(0).toUpperCase() + s.slice(1)
 
     const getFileName = (filePath: string) =>
-      (filePath.split('/').pop() || 'global.vars.sass').replace('.vars.sass', '')
+      (filePath.split(path.sep).pop() || 'global.vars.sass').replace('.vars.sass', '')
 
     for (let index = 0; index < cssVarsFiles.length; index++) {
       const cssVarsFile = cssVarsFiles[index]
@@ -117,22 +118,23 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       ...themingLines,
       '',
     ]
+    mkdirSync(path.join(DOC_PATH, 'stories/development/00-guides/theming'), { recursive: true })
     writeFileSync(path.join(DOC_PATH, 'stories/development/00-guides/theming/theming.md'), contentTheming.join(NEWLINE))
 
     /**
      * Create contributors page
      */
     const avatar =
-      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-purple-1 p-normal radius-normal text-large text-primary"
   >
-    <span className='is-display-block is-size-xx-large has-text-centered'>
+    <span className='block text-xx-large text-align-center'>
       <img src="${contributor.avatar}" alt="${contributor.name}" />
     </span>
-    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
+    <span className='block title text-medium text-align-center mb-none text-decoration-none'>${contributor.name}</span>
   </a>`
 
     const contributorsContent = [
-      `<div className="sb-unstyled is-flex is-flex-wrap-wrap fg-normal">`,
+      `<div className="sb-unstyled flex flex-wrap gap-normal">`,
       ...contributors.map(c => avatar(c)),
       `</div>`,
       SPACE,

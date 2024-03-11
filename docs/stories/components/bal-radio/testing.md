@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Radio', () => {
   const radioGroup = byTestId('my-radio-group') // [data-testid="my-radio-group"]
@@ -19,7 +19,6 @@ describe('Radio', () => {
 
 <!-- END: human documentation -->
 
-
 ### Selectors
 
 | Selector      | Element               |
@@ -27,4 +26,3 @@ describe('Radio', () => {
 | `radio.input` | Native input element. |
 | `radio.label` | Native label element. |
 | `radio.text`  | Native span element.  |
-

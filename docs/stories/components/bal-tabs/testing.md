@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```ts
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Tabs', () => {
   const tabs = byTestId('my-tabs') // [data-testid="my-tabs"]
@@ -35,11 +35,9 @@ A list of the custom commands for this specific component.
 | `balTabItemShouldHaveState` | Assert that the tab item has the given state. | (state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial\<Loggable>): Chainable |
 | `balTabItemShouldBeActive`  | Assert that the tab item is active or not.    | (active?: boolean, options?: Partial\<Loggable>): Chainable                                    |
 
-
 ### Selectors
 
 | Selector         | Element         |
 | ---------------- | --------------- |
 | `tabs.item`      | Tab item.       |
 | `tabs.itemLabel` | Tab item label. |
-

@@ -35,7 +35,7 @@ that the Design System is initialized correctly, it is crucial that the applicat
 **app.module.ts**
 
 ```ts
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
 
 @NgModule({
   imports: [BaloiseDesignSystemModule.forRoot()],
@@ -109,7 +109,7 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { BalApp, BalHeading } from "@baloise/design-system-components-react";
+import { BalApp, BalHeading } from "@baloise/ds-react";
 
 function App() {
   return (
@@ -140,7 +140,7 @@ Import the components that are used inside the template and that is it.
 
 ```html
 <script setup lang="ts">
-  import { BalApp, BalHeading } from '@baloise/design-system-components-vue'
+  import { BalApp, BalHeading } from '@baloise/ds-vue'
 </script>
 
 <template>
@@ -242,7 +242,7 @@ export class AppComponent {
 
 ```tsx
 import React from "react";
-import { BalButton } from "@baloise/design-system-components-react";
+import { BalButton } from "@baloise/ds-react";
 
 function App() {
   const [color, setColor] = useState('info');
@@ -271,7 +271,7 @@ export default App;
 ```html
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { BalButton } from '@baloise/design-system-components-vue'
+  import { BalButton } from '@baloise/ds-vue'
 
   const buttonColor = ref('info')
 </script>
@@ -375,7 +375,7 @@ Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
 
 ```tsx
 import { useState } from 'react'
-import { BalInput, BalText } from '@baloise/design-system-components-react'
+import { BalInput, BalText } from '@baloise/ds-react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()
@@ -407,7 +407,7 @@ In Vue the the events are written with the `@` simple similar to Angular.
 ```html
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { BalInput, BalText } from '@baloise/design-system-components-vue'
+  import { BalInput, BalText } from '@baloise/ds-vue'
 
   const myName = ref<string | undefined>()
 
@@ -463,8 +463,8 @@ To access the method of the component use the reference directly.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core'
-import type { Components } from '@baloise/design-system-components'
-import { ProxyComponent } from '@baloise/design-system-components-angular'
+import type { Components } from '@baloise/ds-core'
+import { ProxyComponent } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-method',
@@ -508,7 +508,7 @@ export class MethodComponent {
 <ReactFramework>
 
 ```tsx
-import { BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-react'
+import { BalSelect, BalSelectOption, BalButton } from '@baloise/ds-react'
 import { useRef } from 'react'
 
 function MethodComponent() {
@@ -558,8 +558,8 @@ After that the methods of the components can be used directly.
 ```html
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-vue'
-  import { Components } from '@baloise/design-system-components'
+  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/ds-vue'
+  import { Components } from '@baloise/ds-core'
 
   const mySelect = ref<ProxyComponent<Components.BalSelect>>()
 

@@ -22,3 +22,15 @@ export function getWorkspace(host: Tree, path: string): WorkspaceSchema {
 
   return JSON.parse(config)
 }
+
+export function getPrefix(host: Tree) {
+  if (isNxWorkspace(host)) {
+    const config = getNXWorkspace(host)
+    return config.prefix
+  } else {
+    const config = getAngularWorkspace(host)
+    const projektKeys = Object.keys(config.projects)
+    const mainProject = config.projects[projektKeys[0]]
+    return mainProject.prefix
+  }
+}

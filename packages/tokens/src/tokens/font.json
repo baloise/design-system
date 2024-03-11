@@ -1,0 +1,16 @@
+{
+  "font": {
+    "family": {
+      "title": {
+        "value": "BaloiseCreateHeadline, Arial, sans-serif",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "text": {
+        "value": "BaloiseCreateText, Arial, sans-serif",
+        "keepFormat": true,
+        "noFigmaImport": true
+      }
+    }
+  }
+}

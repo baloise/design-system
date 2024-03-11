@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "bds-ng-upgrade-16",
+  "title": "Upgrade an angular application the v16 of Baloise Design System",
+  "type": "object",
+  "properties": {
+    "angularType": {
+      "x-prompt": "How do you use the Design System in your app?",
+      "type": "string",
+      "default": "Standalone (ESBuild)",
+      "enum": ["Standalone (ESBuild)", "Module-Based (ESBuild)", "Legacy Module-Based (Webpack)"]
+    }
+  },
+  "required": ["angularType"]
+}

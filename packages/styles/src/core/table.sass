@@ -1,0 +1,134 @@
+.table
+  @extend %bottomSpacing
+  background-color: var(--bal-table-background-color)
+  color: var(--bal-table-color)
+  td,
+  th
+    border: var(--bal-table-cell-border)
+    border-width: var(--bal-table-cell-border-width)
+    padding: var(--bal-table-cell-padding)
+    vertical-align: middle
+    // Modifiers
+    &.is-narrow
+      white-space: nowrap
+      width: 1%
+    &.is-selected
+      background-color: var(--bal-table-row-background-color-active)
+      color: var(--bal-table-row-color-active)
+      a,
+      strong
+        color: currentColor
+  th
+    color: var(--bal-table-cell-heading-color)
+    &:not([align])
+      text-align: inherit
+  tr
+    &.is-selected
+      background-color: var(--bal-table-row-background-color-active)
+      color: var(--bal-table-row-color-active)
+      a,
+      strong
+        color: currentColor
+      td,
+      th
+        border-color: var(--bal-table-row-color-active)
+        color: currentColor
+  thead
+    background-color: var(--bal-table-head-background-color)
+    td,
+    th
+      border-width: var(--bal-table-head-cell-border-width)
+      color: var(--bal-table-head-cell-color)
+  tfoot
+    background-color: var(--bal-table-foot-background-color)
+    td,
+    th
+      border-width: var(--bal-table-foot-cell-border-width)
+      color: var(--bal-table-foot-cell-color)
+  tbody
+    background-color: var(--bal-table-body-background-color)
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 0
+  // Modifiers
+  &.is-bordered
+    th
+      border-top-width: 1px
+      border-left-width: 1px
+      border-right-width: 1px
+      border-top-color: var(--bal-table-cell-border-color)
+      border-left-color: var(--bal-table-cell-border-color)
+      border-right-color: var(--bal-table-cell-border-color)
+    td
+      border-width: 1px
+    tr
+      &:last-child
+        td
+          border-bottom-width: 1px
+  &.is-fullwidth
+    width: 100%
+  &.is-hoverable
+    tbody
+      tr:not(.is-selected)
+        &:hover
+          background-color: var(--bal-table-row-background-color-hover)
+    &.is-striped
+      tbody
+        tr:not(.is-selected)
+          &:hover
+            background-color: var(--bal-table-row-background-color-hover)
+            &:nth-child(even)
+              background-color: var(--bal-table-striped-row-even-background-color-hover)
+  &.is-narrow
+    td,
+    th
+      padding: 0.25em 0.5em
+  &.is-striped
+    tbody
+      tr:not(.is-selected)
+        &:nth-child(even)
+          background-color: var(--bal-table-striped-row-even-background-color)
+
+.table-container
+  @extend %bottomSpacing
+  +overflow-touch
+  overflow: auto
+  overflow-y: hidden
+  max-width: 100%
+
+table.table
+  display: table !important
+  border-spacing: 0
+  margin: 0
+  thead
+    tr
+      border-top: 0
+    th
+      border-color: var(--bal-table-head-cell-border-color)
+      border-bottom-width: 2px
+  th:not([align])
+    text-align: left
+  td,
+  th
+    font-size: var(--bal-table-head-font-size)
+    font-family: var(--bal-table-head-font-family)
+    vertical-align: middle
+    color: var(--bal-table-color)
+    text-align: left
+    .bal-checkbox
+      padding: 0
+      margin-top: 1px
+  td
+    color: var(--bal-table-color)
+    hyphens: auto
+  td.has-buttons
+    padding: 2px
+    .bal-button
+      margin-right: 0.25rem
+      &:last-child
+        margin-right: 0px
+    .buttons
+      justify-content: flex-end
+      padding: 3px

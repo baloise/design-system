@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-footer.vars'
 
 +block(footer)
@@ -31,10 +31,10 @@
       gap: var(--bal-space-large)
 
       +tablet-only
-        gap: var(--bal-space-tablet-medium)
+        gap: var(--bal-space-medium-tablet)
 
       +mobile
-        gap: var(--bal-space-tablet-medium)
+        gap: var(--bal-space-medium-tablet)
 
       +element(header-container)
         display: flex
@@ -63,11 +63,11 @@
             width: 5rem
 
             bal-input-group
-              background: var(--bal-color-transparent)
+              background: transparent
               border: none
 
               &:hover
-                background: var(--bal-color-transparent) !important
+                background: transparent !important
 
               bal-icon
                 min-width: 0.75rem !important
@@ -91,10 +91,10 @@
           display: flex
           flex-wrap: wrap
           align-items: center
-          gap: var(--bal-space-desktop-large)
+          gap: var(--bal-space-large-desktop)
 
           a
-            font-size: var(--bal-size-small) !important
+            font-size: var(--bal-text-size-small) !important
 
           +mobile
             flex-direction: column
@@ -104,8 +104,8 @@
 
         +element(social-media-links)
           align-items: center
-          gap: var(--bal-space-desktop-large)
-          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
+          gap: var(--bal-space-large-desktop)
+          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) 0
 
           +tablet-only
             padding-bottom: var(--bal-space-large)
@@ -114,4 +114,4 @@
             padding-bottom: var(--bal-space-large)
             justify-content: center
             width: 100%
-            padding: var(--bal-space-normal) var(--bal-space-none) var(--bal-space-normal) var(--bal-space-none)
+            padding: var(--bal-space-normal) 0 var(--bal-space-normal) 0

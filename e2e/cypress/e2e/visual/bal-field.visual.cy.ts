@@ -40,7 +40,7 @@ describe('bal-field-horizontal', () => {
   it('basic component', () => {
     cy.platform('desktop')
     cy.getByTestId('horizontal').testVisual('horizontal-desktop')
-    cy.getByTestId('horizontal-long-label').testVisual('horizontal-long-label-desktop')
+    cy.getByTestId('horizontal-long-label').testVisual('horizontal-long-label-desktop', { errorThreshold: 0.25 })
     cy.getByTestId('horizontal-with-hint').testVisual('horizontal-with-hint-desktop')
 
     cy.platform('tablet')

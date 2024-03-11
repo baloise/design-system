@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxAlignContent, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxAlignContent,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Align Content"
@@ -25,10 +34,10 @@ Elements are aligned to the start of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-start is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">3</div>
+<div class="flex align-content-start flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
 </div>
 `}
 />
@@ -40,10 +49,10 @@ Elements are centered within the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-center is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">3</div>
+<div class="flex align-content-center flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
 </div>
 `}
 />
@@ -55,10 +64,10 @@ Elements are aligned to the end of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-end is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 4rem">3</div>
+<div class="flex align-content-end flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
 </div>
 `}
 />
@@ -70,12 +79,12 @@ Elements are spaced evenly between them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-space-between is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">5</div>
+<div class="flex align-content-space-between flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
 </div>
 `}
 />
@@ -87,12 +96,12 @@ Elements are spaced evenly between and around them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-space-around is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">5</div>
+<div class="flex align-content-space-around flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
 </div>
 `}
 />
@@ -104,15 +113,22 @@ Elements are spaced evenly around them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-content-space-evenly is-flex-wrap-wrap fg-normal" style="min-height: 200px">
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="height: 4rem; width: 200px">5</div>
+<div class="flex align-content-space-evenly flex-wrap gap-normal" style="min-height: 200px">
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
+    <div class="bg-green radius-normal flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-content-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -121,7 +137,7 @@ Elements are spaced evenly around them.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

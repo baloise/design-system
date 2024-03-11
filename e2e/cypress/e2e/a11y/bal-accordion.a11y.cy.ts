@@ -1,4 +1,4 @@
-import { selectors } from '../../../../packages/testing/src/selectors'
+import { selectors } from 'support/utils'
 
 describe('bal-accordion', () => {
   beforeEach(() => {

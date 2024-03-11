@@ -1,5 +1,6 @@
-import { Plugin } from 'vue'
-import { BalConfig, initialize } from '@baloise/design-system-components'
+import type { Plugin } from 'vue'
+import type { BalConfig } from '@baloise/ds-core'
+import { initialize } from '@baloise/ds-core'
 import { applyDirectives } from './directives'
 import { BalApp } from './components/BalApp'
 

@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for t
 <!-- START: human documentation -->
 
 ```ts
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/ds-testing'
 
 describe('Modal', () => {
   const modal = byTestId('my-modal') // [data-testid="my-modal"]
@@ -34,10 +34,8 @@ A list of the custom commands for this specific component.
 | `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | (options?: Partial\<Loggable>): Chainable |
 | `balModalClose`    | Closes the selected modal.                                                                          | (options?: Partial\<Loggable>): Chainable |
 
-
 ### Selectors
 
 | Selector     | Element        |
 | ------------ | -------------- |
 | `modal.main` | Modal element. |
-

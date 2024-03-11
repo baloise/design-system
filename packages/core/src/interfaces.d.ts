@@ -24,7 +24,6 @@ import './components/bal-nav/bal-nav-menu-bar/bal-nav-menu-bar.interfaces'
 import './components/bal-nav/bal-nav-menu-flyout/bal-nav-menu-flyout.interfaces'
 import './components/bal-nav/bal-nav.interfaces'
 import './components/bal-navbar/bal-navbar.interfaces'
-import './components/bal-navigation/bal-navigation.interfaces'
 import './components/bal-pagination/bal-pagination.interfaces'
 import './components/bal-popover/bal-popover.interfaces'
 import './components/bal-popup/bal-popup.interfaces'
@@ -35,7 +34,6 @@ import './components/bal-steps/bal-steps.interfaces'
 import './components/bal-tabs/bal-tabs.interfaces'
 import './components/bal-tag/bal-tag.interfaces'
 import './components/bal-tooltip/bal-tooltip.interfaces'
-import './components/bal-navigation/bal-navigation.interfaces'
 import './components/bal-heading/bal-heading.interfaces'
 import './components/bal-label/bal-label.interfaces'
 import './components/bal-text/bal-text.interfaces'
@@ -66,6 +64,7 @@ import './components/bal-toast/bal-toast.interfaces'
 
 export * from './components'
 export * from './index'
+export { Attributes } from './utils/attributes'
 
 export enum FileUploadRejectionReason {
   BAD_EXTENSION = 'BAD_EXTENSION',

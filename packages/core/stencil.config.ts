@@ -1,9 +1,9 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
-import { resolve } from 'path'
+import { join, parse, resolve } from 'path'
 
-import { AngularGenerator, AngularLegacyGenerator, AngularStandaloneGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator, AngularLegacyGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
 import { VueGenerator, VueTestGenerator } from './config/stencil.bindings.vue'
 import { ReactGenerator } from './config/stencil.bindings.react'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
@@ -30,19 +30,24 @@ if (IS_BAL_DEVELOPMENT) {
   console.log('')
 }
 
+const workspaceDir = join(parse(__dirname).dir, '..')
+const packagesDir = join(workspaceDir, 'packages')
+const nodeModulesProject = join(__dirname, 'node_modules')
+const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
+
 export const config: Config = {
   autoprefixCss: true,
   sourceMap: false,
-  namespace: 'design-system-components',
+  namespace: 'baloise-design-system',
   hashedFileNameLength: 10,
   enableCache: true,
   buildEs5: 'prod',
   globalScript: 'src/global.ts',
-  tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
+  tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
       outputStyle: 'compressed',
-      includePaths: [`${__dirname.split('/packages/')[0]}/node_modules/`, 'node_modules/'],
+      includePaths: [nodeModulesWorkspace, nodeModulesProject, 'node_modules'],
     }),
   ],
   extras: {
@@ -51,7 +56,7 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'docs-json',
-      file: './.tmp/components.json',
+      file: '../../resources/data/components.json',
     },
     {
       type: 'dist',
@@ -63,18 +68,8 @@ export const config: Config = {
           {
             type: 'dist-custom-elements',
             dir: 'components',
-            copy: [
-              {
-                src: '../config/custom-elements',
-                dest: 'components',
-                warn: true,
-              },
-            ],
             includeGlobalScripts: false,
           },
-          // {
-          //   type: 'dist-hydrate-script',
-          // },
         ]
       : []),
     {
@@ -90,15 +85,30 @@ export const config: Config = {
           src: 'components.d.ts',
         },
         {
-          src: '../../css/css/theme-compact.css',
+          src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
           dest: 'assets/theme-compact.css',
+          warn: true,
         },
         {
-          src: '../../maps/dist/index.js',
-          dest: 'assets/maps.js',
+          src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
+          dest: 'assets/baloise-design-system-old.css',
+          warn: true,
         },
-        { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
-        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+        {
+          src: join(packagesDir, 'styles', 'css', 'all.css'),
+          dest: 'assets/baloise-design-system.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
+          dest: 'assets/maps.js',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'fonts', 'assets'),
+          dest: 'assets/fonts',
+          warn: true,
+        },
       ],
     },
     /**
@@ -113,10 +123,10 @@ export const config: Config = {
           },
           VueGenerator(),
           VueTestGenerator(),
-          AngularGenerator(),
-          AngularStandaloneGenerator(),
-          AngularLegacyGenerator(),
           ReactGenerator(),
+          AngularGenerator(),
+          AngularModuleGenerator(),
+          AngularLegacyGenerator(),
         ]
       : []),
   ],
@@ -232,6 +242,5 @@ export const config: Config = {
   },
   testing: {
     rootDir: 'src',
-    modulePathIgnorePatterns: ['cypress'],
   },
 }

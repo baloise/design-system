@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { BaloiseDesignToken } from '@baloise/design-system-tokens'
+import * as BaloiseDesignToken from '@baloise/ds-tokens'
 
 @Component({
   tag: 'bal-shape',

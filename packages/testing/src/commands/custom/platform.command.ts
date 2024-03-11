@@ -1,4 +1,4 @@
-import { Platforms, waitAfterFramePaint } from '../helpers'
+import { Platforms, waitAfterFramePaint, waitAfterIdleCallback } from '../helpers'
 import { balViewport } from '../../viewports'
 
 Cypress.Commands.add<any>('platform', platform => {
@@ -14,5 +14,6 @@ Cypress.Commands.add<any>('platform', platform => {
   return cy
     .viewport(viewport.width, viewport.height, { log: false })
     .then(() => waitAfterFramePaint())
+    .then(() => waitAfterIdleCallback())
     .wait(32, { log: false })
 })

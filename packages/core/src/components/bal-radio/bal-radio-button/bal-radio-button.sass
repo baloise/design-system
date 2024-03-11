@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 
 .bal-radio-button
   display: block
@@ -44,8 +44,8 @@
     border-style: solid
     border-radius: var(--bal-radius-normal)
     border-width: var(--bal-border-width-normal)
-    border-color: var(--bal-color-border-grey)
-    padding: var(--bal-size-medium)
+    border-color: var(--bal-color-border)
+    padding: var(--bal-text-size-medium)
     cursor: pointer
     user-select: none
     //
@@ -74,15 +74,15 @@
     +hover()
       &:hover:not(:disabled):not(.bal-radio-button__native--colored)
         background: var(--bal-color-grey-1)
-        border-color: var(--bal-color-border-light-blue)
+        border-color: var(--bal-color-border-primary-hovered)
     &:active:not(:disabled)
-      border-color: var(--bal-color-border-primary-dark)
+      border-color: var(--bal-color-border-primary-pressed)
     &--invalid
       +hover()
         &:hover:not(:disabled)
-          border-color: var(--bal-color-border-danger-dark)
+          border-color: var(--bal-color-border-danger-hovered)
         &:active:not(:disabled)
-          border-color: var(--bal-color-border-danger-darker)
+          border-color: var(--bal-color-border-danger-pressed)
     //
     // flying focus
     &.bal-focused

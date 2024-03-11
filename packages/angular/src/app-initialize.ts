@@ -1,10 +1,10 @@
 import { NgZone } from '@angular/core'
 
-import type { BalPlatformConfig } from '@baloise/design-system-components/components'
-import { initializeBaloiseDesignSystem } from '@baloise/design-system-components/components'
+import type { BalPlatformConfig } from '@baloise/ds-core/components'
+import { initializeBaloiseDesignSystem } from '@baloise/ds-core/components'
 
-import { raf } from '@baloise/design-system-components-angular/common'
-import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'
+import { raf } from '@baloise/ds-angular-common'
+import type { BaloiseDesignSystemAngularConfig } from '@baloise/ds-angular-common'
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
   return async (): Promise<void> => {
@@ -19,6 +19,7 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         jmp: (h: any) => zone.runOutsideAngular(h),
         ael(elm, eventName, cb, opts) {
           if (elm && (elm as any)[aelFn]) {
+            // eslint-disable-next-line @typescript-eslint/no-extra-semi
             ;(elm as any)[aelFn](eventName, cb, opts)
           }
         },

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import '@baloise/design-system-testing/dist/add-custom-commands'
+import '@baloise/ds-testing/add-custom-commands'
 
 // declare global {
 //   namespace Cypress {

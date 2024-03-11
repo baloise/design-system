@@ -65,7 +65,7 @@ In the Angular framework define them with the module.
 <Code language="typescript" code={`
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
 
 import { AppComponent } from './app.component'
 
@@ -93,7 +93,7 @@ export class AppModule {}
 <HTMLFramework>
 
 <Code language="ts" code={`
-import { initialize } from '@baloise/design-system-components'
+import { initialize } from '@baloise/ds-core'
 
 initialize({
 ${' '}region: 'CH',
@@ -109,7 +109,7 @@ ${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
 Import the `useBaloiseDesignSystem` function and pass the default values of the config.
 
 <Code language="ts" code={`
-import { useBaloiseDesignSystem } from '@baloise/design-system-components-react'
+import { useBaloiseDesignSystem } from '@baloise/ds-react'
 
 useBaloiseDesignSystem({
 ${' '}defaults: {
@@ -126,7 +126,7 @@ ${' '}},
 
 <Code language="ts" code={`
 import './main.scss'
-import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+import { BaloiseDesignSystem } from '@baloise/ds-vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -164,7 +164,7 @@ To change the language or region during run time use the two functions `updateBa
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-app-tab-a',
@@ -189,7 +189,7 @@ import {
   updateBalAllowedLanguages,
   updateBalLanguage,
   updateBalRegion,
-} from '@baloise/design-system-components'
+} from '@baloise/ds-core'
 
 updateBalLanguage('de')
 updateBalRegion('CH')
@@ -199,7 +199,7 @@ updateBalAllowedLanguages(['fr', 'it'])
 The config can be accessed with `useConfig`. Both variants have the same effect.
 
 <Code language="typescript" code={`
-import { useConfig } from '@baloise/design-system-components'
+import { useConfig } from '@baloise/ds-core'
 
 const config = useConfig()
 config.language = 'de'
@@ -227,7 +227,7 @@ To subscribe to changes of the region or language during runtime you can registe
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+import { onBalConfigChange, BalConfigState } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-sample',
@@ -254,7 +254,7 @@ ${' '}}
 To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
 
 <Code language="typescript" code={`
-import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+import { onBalConfigChange, BalConfigState } from '@baloise/ds-core'
 
 onBalConfigChange((config: BalConfigState) => {
 // do something with the updated config here

@@ -1,8 +1,8 @@
 import { importProvidersFrom } from '@angular/core'
 
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
 
-export { BaloiseDesignSystemModule, BalModalService } from '@baloise/design-system-components-angular'
+export { BaloiseDesignSystemModule, BalModalService } from '@baloise/ds-angular'
 
 export const balImports = [BaloiseDesignSystemModule]
 

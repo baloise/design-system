@@ -3,7 +3,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
+  src:
+    local('BaloiseCreateHeadline'),
+    local('BaloiseCreateHeadline-bold'),
     url('/assets/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
     url('/assets/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
 }
@@ -13,7 +15,9 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-light'),
+  src:
+    local('BaloiseCreateHeadline'),
+    local('BaloiseCreateHeadline-light'),
     url('/assets/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
     url('/assets/fonts/BaloiseCreateHeadline-light.woff') format('woff');
 }
@@ -23,7 +27,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-bold'),
+  src:
+    local('BaloiseCreateText'),
+    local('BaloiseCreateText-bold'),
     url('/assets/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
     url('/assets/fonts/BaloiseCreateText-bold.woff') format('woff');
 }
@@ -33,7 +39,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
+  src:
+    local('BaloiseCreateText'),
+    local('BaloiseCreateText-regular'),
     url('/assets/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
     url('/assets/fonts/BaloiseCreateText-regular.woff') format('woff');
 }

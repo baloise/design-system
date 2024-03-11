@@ -1,15 +1,15 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics'
-import { SchemaOptions } from '../schema'
+import { getPrefix } from '../utils/workspace'
 
-export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const updateAppComponent = (host: Tree) => {
   const appTemplatePath = `src/app/app.component.html`
   const appComponentPath = `src/app/app.component.ts`
   const appStylesPath = `src/app/app.component.css`
   const appStylesSassPath = `src/app/app.component.scss`
 
   const isInlineTemplate = !host.exists(appTemplatePath)
-  const tempContent = host.readText(isInlineTemplate ? appComponentPath : appTemplatePath)
-  const prefix = tempContent.includes('app-root') ? 'app' : options.project
+  const prefix = getPrefix(host)
 
   const hasCssStyles = host.exists(appStylesPath)
   const hasSassStyles = host.exists(appStylesSassPath)
@@ -27,7 +27,7 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
         appComponentPath,
         `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
 
 @Component({
   selector: '${prefix}-root',
@@ -57,7 +57,7 @@ export class AppComponent {}
         appComponentPath,
         `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
 
 @Component({
   selector: '${prefix}-root',

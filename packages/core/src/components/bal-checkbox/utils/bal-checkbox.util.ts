@@ -15,7 +15,6 @@ interface Option {
   nonSubmit?: boolean
   invalid?: boolean
   interface?: BalProps.BalCheckboxInterface
-  hidden?: boolean // deprecated
 }
 
 export const newBalCheckboxOption = (option: Option): BalCheckboxOption => {
@@ -29,7 +28,6 @@ export const newBalCheckboxOption = (option: Option): BalCheckboxOption => {
     nonSubmit: false,
     invalid: false,
     checked: false,
-    hidden: false, // deprecated
     ...option,
     label: '',
     html: option.label,

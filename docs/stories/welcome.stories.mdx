@@ -1,6 +1,6 @@
-import { Meta, Description, DocsContainer, Anchor, Unstyled } from '@storybook/addon-docs'
+import { Meta, Unstyled } from '@storybook/addon-docs'
 import { navigate } from '@storybook/addon-links'
-import { WelcomeStage, WelcomeGuide, WelcomeNews, Footer, CodeSandbox } from '../.storybook/blocks'
+import { WelcomeGuide, Footer, CodeSandbox } from '../.storybook/blocks'
 
 <Meta
   title="Welcome"
@@ -13,21 +13,19 @@ import { WelcomeStage, WelcomeGuide, WelcomeNews, Footer, CodeSandbox } from '..
   }}
 />
 
-import Puzzles from './assets/images/home/puzzles.svg'
-
 <Unstyled>
   <bal-doc-app class="home-stage">
-    <div className="is-flex fg-large">
+    <div className="flex gap-large">
       <div>
         <bal-logo animated={true} class="mb-small"></bal-logo>
-        <h2 className="subtitle is-size-xxxxx-large">design system</h2>
+        <h2 className="subtitle text-xxxxx-large">design system</h2>
       </div>
     </div>
     <bal-text size="lead" class="my-large">
       The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
       implementations and design artifacts to build any number of web applications.
     </bal-text>
-    <div className="is-flex fg-normal is-flex-wrap-wrap">
+    <div className="flex gap-normal flex-wrap">
       <a
         className="button is-primary"
         style={{ width: 'auto' }}
@@ -50,34 +48,34 @@ import PuzzleYellow from './assets/images/home/puzzle-yellow.svg'
 import PuzzleRed from './assets/images/home/puzzle-red.svg'
 
 <Unstyled>
-  <div className="columns is-multiline mt-x-large" style={{ '--bal-column-gap': '.5rem' }}>
-    <div className="column is-6">
-      <div className="is-fullheight">
+  <div className="grid is-multiline mt-x-large" style={{ '--bal-column-gap': '.5rem' }}>
+    <div className="col is-6">
+      <div className="h-full">
         <a
-          onClick={() => navigate({ title: 'Foundation/Design Tokens' })}
-          className="is-flex fg-normal is-justify-content-center is-align-items-center has-background-green-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable"
+          onClick={() => navigate({ title: 'Tokens/Overview' })}
+          className="flex gap-normal justify-content-center align-items-center bg-green-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
         >
           <div style={{ minWidth: '80px' }}>
             <img src={PuzzleGreen} style={{ width: '80px' }} />
           </div>
           <div>
-            <h2 className="title is-size-large mb-xx-small">Tokens</h2>
+            <h2 className="title text-large mb-xx-small">Tokens</h2>
             <span>Design tokens serve as the definitive source for naming and storing design choices.</span>
           </div>
         </a>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
+    <div className="col is-6">
+      <div className="h-full">
         <a
           onClick={() => navigate({ title: 'Foundation' })}
-          className="is-flex fg-normal is-justify-content-center is-align-items-center has-background-purple-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable"
+          className="flex gap-normal justify-content-center align-items-center bg-purple-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
         >
           <div style={{ minWidth: '80px' }}>
             <img src={PuzzlePurple} style={{ width: '80px' }} />
           </div>
           <div>
-            <h2 className="title is-size-large mb-xx-small">Foundations</h2>
+            <h2 className="title text-large mb-xx-small">Foundations</h2>
             <span>
               Foundations encompass the visual elements essential for crafting layouts and seamless end-to-end user
               experiences.
@@ -86,36 +84,35 @@ import PuzzleRed from './assets/images/home/puzzle-red.svg'
         </a>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
+    <div className="col is-6">
+      <div className="h-full">
         <a
           onClick={() => navigate({ title: 'CSS Utilities' })}
-          className="is-flex fg-normal is-justify-content-center is-align-items-center has-background-yellow-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable"
+          className="flex gap-normal justify-content-center align-items-center bg-yellow-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
         >
           <div style={{ minWidth: '80px' }}>
             <img src={PuzzleYellow} style={{ width: '80px' }} />
           </div>
           <div>
-            <h2 className="title is-size-large mb-xx-small">CSS Utilities</h2>
+            <h2 className="title text-large mb-xx-small">CSS Utilities</h2>
             <span>
-              CSS utility class streamline component styling with pre-defined styles applied directly to HTML
-              elements.
+              CSS utility class streamline component styling with pre-defined styles applied directly to HTML elements.
             </span>
           </div>
         </a>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
+    <div className="col is-6">
+      <div className="h-full">
         <a
           onClick={() => navigate({ title: 'Components' })}
-          className="is-flex fg-normal is-justify-content-center is-align-items-center has-background-red-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable"
+          className="flex gap-normal justify-content-center align-items-center bg-red-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
         >
           <div style={{ minWidth: '80px' }}>
             <img src={PuzzleRed} style={{ width: '80px' }} />
           </div>
           <div>
-            <h2 className="title is-size-large mb-xx-small">Components</h2>
+            <h2 className="title text-large mb-xx-small">Components</h2>
             <span>Over 50 Components form the intuitive foundation of the Baloise Design System.</span>
           </div>
         </a>
@@ -131,15 +128,15 @@ import PuzzleRed from './assets/images/home/puzzle-red.svg'
 In this section key advantage of the library are listed which are part of the Baloise Design System.
 
 <Unstyled>
-  <div className="columns is-multiline mt-medium" style={{ '--bal-column-gap': '.5rem' }}>
-    <div className="column is-6">
-      <div className="is-fullheight">
-        <div className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center fg-normal has-border-grey has-radius-normal p-normal is-fullheight">
-          <span className="is-size-xxxx-large mb-small has-text-centered" style={{ height: '64px', minWidth: '80px' }}>
+  <div className="grid is-multiline mt-medium" style={{ '--bal-column-gap': '.5rem' }}>
+    <div className="col is-6">
+      <div className="h-full">
+        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
+          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
             📦
           </span>
           <div>
-            <span className="title is-size-large mb-x-small">Angular, React or Vue</span>
+            <span className="title text-large mb-x-small">Angular, React or Vue</span>
             <span>
               The Components are just Web Components, so they will work with any major framework—or no framework at all.
             </span>
@@ -147,14 +144,14 @@ In this section key advantage of the library are listed which are part of the Ba
         </div>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
-        <div className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center fg-normal has-border-grey has-radius-normal p-normal is-fullheight">
-          <span className="is-size-xxxx-large mb-small has-text-centered" style={{ height: '64px', minWidth: '80px' }}>
+    <div className="col is-6">
+      <div className="h-full">
+        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
+          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
             🎨
           </span>
           <div>
-            <span className="title is-size-large mb-x-small">Theming</span>
+            <span className="title text-large mb-x-small">Theming</span>
             <span>
               The Design System is built upon CSS Variables, allowing for crafting new components or easy adjustments to
               achieve a new theme.
@@ -163,14 +160,14 @@ In this section key advantage of the library are listed which are part of the Ba
         </div>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
-        <div className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center fg-normal has-border-grey has-radius-normal p-normal is-fullheight">
-          <span className="is-size-xxxx-large mb-small has-text-centered" style={{ height: '64px', minWidth: '80px' }}>
+    <div className="col is-6">
+      <div className="h-full">
+        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
+          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
             🔮
           </span>
           <div>
-            <span className="title is-size-large mb-x-small">Future Proof</span>
+            <span className="title text-large mb-x-small">Future Proof</span>
             <span>
               Design System Web Components function in widely-used desktop and mobile browsers. Custom Elements are
               natively supported in Chrome, Edge, Firefox, and Safari, including iOS!
@@ -179,16 +176,16 @@ In this section key advantage of the library are listed which are part of the Ba
         </div>
       </div>
     </div>
-    <div className="column is-6">
-      <div className="is-fullheight">
-        <div className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center fg-normal has-border-grey has-radius-normal p-normal is-fullheight">
-          <span className="is-size-xxxx-large mb-small has-text-centered" style={{ height: '64px', minWidth: '80px' }}>
+    <div className="col is-6">
+      <div className="h-full">
+        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
+          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
             🛠️
           </span>
           <div>
-            <span className="title is-size-large mb-x-small">Rich Features</span>
+            <span className="title text-large mb-x-small">Rich Features</span>
             <span>
-              CSS utility classNamees style elements, Cypress test utilities enhance web app testing, and Sass mixins
+              CSS utility classNames style elements, Cypress test utilities enhance web app testing, and Sass mixins
               simplify application stylesheets.
             </span>
           </div>

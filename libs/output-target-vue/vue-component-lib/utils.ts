@@ -131,7 +131,11 @@ export const defineContainer = <Props>(
         const navigationPayload: any = { event: ev }
         for (const key in props) {
           const value = props[key]
-          if (props.hasOwnProperty(key) && key.startsWith(ROUTER_PROP_PREFIX) && value !== EMPTY_PROP) {
+          if (
+            Object.prototype.hasOwnProperty.call(props, key) &&
+            key.startsWith(ROUTER_PROP_PREFIX) &&
+            value !== EMPTY_PROP
+          ) {
             navigationPayload[key] = value
           }
         }
@@ -174,7 +178,7 @@ export const defineContainer = <Props>(
        */
       for (const key in props) {
         const value = props[key]
-        if (props.hasOwnProperty(key) && value !== EMPTY_PROP) {
+        if (Object.prototype.hasOwnProperty.call(props, key) && value !== EMPTY_PROP) {
           propsToAdd[key] = value
         }
       }
@@ -211,27 +215,20 @@ export const defineContainer = <Props>(
     return text.replace(/-/, '').toUpperCase()
   }
 
-  // @ts-ignore:next-line
   Container.displayName = name
-  // @ts-ignore:next-line
   Container.name = toPascalCase(name)
 
-  // @ts-ignore:next-line
   Container.props = {
     [ROUTER_LINK_VALUE]: DEFAULT_EMPTY_PROP,
   }
 
   componentProps.forEach(componentProp => {
-    // @ts-ignore:next-line
     Container.props[componentProp] = DEFAULT_EMPTY_PROP
   })
 
-  // @ts-ignore:next-line
   Container.emits = [...componentEvents]
   if (modelProp) {
-    // @ts-ignore:next-line
     Container.props[MODEL_VALUE] = DEFAULT_EMPTY_PROP
-    // @ts-ignore:next-line
     Container.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent, ...componentEvents]
   }
 

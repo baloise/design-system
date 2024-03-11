@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
-import * as balIcons from '@baloise/design-system-icons'
+import * as balIcons from '@baloise/ds-icons'
 import { updateBalIcons } from '../../../utils/config'
 import { balBrowser } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'

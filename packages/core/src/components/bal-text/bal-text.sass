@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-text.vars'
 
 // Text
@@ -36,7 +36,7 @@
       overflow: hidden
       white-space: nowrap
     &--bold
-      font-weight: var(--bal-weight-bold)
+      font-weight: var(--bal-font-weight-bold)
     &--shadow
       text-shadow: var(--bal-text-shadow-normal)
     &--heading
@@ -44,31 +44,31 @@
     //
     // text sizes
     &--size-small
-      font-size: var(--bal-size-small)
+      font-size: var(--bal-text-size-small)
       line-height: var(--bal-line-height-small)
       +tablet
-        font-size: var(--bal-size-tablet-small)
+        font-size: var(--bal-text-size-small-tablet)
         line-height: var(--bal-line-height-tablet-small)
       +desktop
-        font-size: var(--bal-size-desktop-small)
+        font-size: var(--bal-text-size-small-desktop)
         line-height: var(--bal-line-height-desktop-small)
     &--size-block
-      font-size: var(--bal-size-medium)
+      font-size: var(--bal-text-size-medium)
       line-height: var(--bal-line-height-medium)
       +tablet
-        font-size: var(--bal-size-tablet-medium)
+        font-size: var(--bal-text-size-medium-tablet)
         line-height: var(--bal-line-height-tablet-medium)
       +desktop
-        font-size: var(--bal-size-desktop-medium)
+        font-size: var(--bal-text-size-medium-desktop)
         line-height: var(--bal-line-height-desktop-medium)
     &--size-lead
-      font-size: var(--bal-size-large)
+      font-size: var(--bal-text-size-large)
       line-height: var(--bal-line-height-large)
       +tablet
-        font-size: var(--bal-size-tablet-large)
+        font-size: var(--bal-text-size-large-tablet)
         line-height: var(--bal-line-height-tablet-large)
       +desktop
-        font-size: var(--bal-size-desktop-large)
+        font-size: var(--bal-text-size-large-desktop)
         line-height: var(--bal-line-height-desktop-large)
     //
     // text colors

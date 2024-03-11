@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/baloise-design-system.css" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <bal-app>
       <div class="container">
-        <h2 class="title is-size-xx-large">Basic</h2>
+        <h2 class="title text-xx-large">Basic</h2>
         <section>
           <bal-card padding="form">
-            <div class="columns is-multiline">
-              <bal-field class="column is-full py-none">
+            <div class="grid is-multiline">
+              <bal-field class="col is-full py-none">
                 <bal-field-label required>Firstname</bal-field-label>
                 <bal-field-hint subject="Spider-Man">
                   Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
@@ -25,21 +25,21 @@
                 </bal-field-control>
                 <bal-field-message color="danger">Required Field</bal-field-message>
               </bal-field>
-              <bal-field class="column is-full py-none" disabled loading>
+              <bal-field class="col is-full py-none" disabled loading>
                 <bal-field-label>Lastname</bal-field-label>
                 <bal-field-control>
                   <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
                 </bal-field-control>
                 <bal-field-message></bal-field-message>
               </bal-field>
-              <bal-field class="column is-full py-none">
+              <bal-field class="col is-full py-none">
                 <bal-field-label>Alias</bal-field-label>
                 <bal-field-control icon-left="account" icon-right="check">
                   <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
                 </bal-field-control>
                 <bal-field-message color="success">Correct</bal-field-message>
               </bal-field>
-              <bal-field class="column is-full py-none">
+              <bal-field class="col is-full py-none">
                 <bal-field-label>Comment</bal-field-label>
                 <bal-field-control>
                   <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
@@ -50,7 +50,7 @@
           </bal-card>
         </section>
 
-        <h2 class="title is-size-xx-large">Inverted</h2>
+        <h2 class="title text-xx-large">Inverted</h2>
         <section>
           <bal-card padding="form" color="info" inverted>
             <bal-field inverted loading>
@@ -71,11 +71,11 @@
           </bal-card>
         </section>
 
-        <h2 class="title is-size-xx-large">Addons</h2>
+        <h2 class="title text-xx-large">Addons</h2>
         <section>
           <bal-card padding="form">
-            <div class="columns is-multiline">
-              <bal-field class="column is-half py-none">
+            <div class="grid is-multiline">
+              <bal-field class="col is-half py-none">
                 <bal-field-label required>Search</bal-field-label>
                 <bal-field-control>
                   <bal-input name="search" placeholder="Search..."></bal-input>
@@ -86,7 +86,7 @@
           </bal-card>
         </section>
 
-        <h2 class="title is-size-xx-large">Form</h2>
+        <h2 class="title text-xx-large">Form</h2>
         <section>
           <bal-card padding="form">
             <bal-field>
@@ -149,7 +149,7 @@
           </bal-card>
         </section>
 
-        <h2 class="title is-size-xx-large">Validation for all fields</h2>
+        <h2 class="title text-xx-large">Validation for all fields</h2>
         <p>
           This is not a recommended validation style. Only use this style if you do not have the possibility to use live
           validation.

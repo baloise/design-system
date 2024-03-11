@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import '@baloise/ds-styles/sass/mixins'
 @import './bal-data.vars'
 
 +block(data)
@@ -42,16 +42,16 @@
   flex-basis: 100%
 
   font-family: var(--bal-font-family-text)
-  font-weight: var(--bal-weight-bold)
-  font-size: var(--bal-size-small)
-  line-height: var(--bal-size-normal)
+  font-weight: var(--bal-font-weight-bold)
+  font-size: var(--bal-text-size-small)
+  line-height: var(--bal-text-size-normal)
   hyphens: auto
 
   +block(hint)
     margin-left: 0.5rem
     position: absolute
     top: -3px
-    font-weight: var(--bal-weight-regular)
+    font-weight: var(--bal-font-weight-regular)
 
 +block(data-value)
   display: block
@@ -62,15 +62,15 @@
   overflow: visible !important
 
   font-family: var(--bal-font-family-text)
-  font-weight: var(--bal-weight-bold)
-  font-size: var(--bal-size-small)
-  line-height: var(--bal-size-normal)
+  font-weight: var(--bal-font-weight-bold)
+  font-size: var(--bal-text-size-small)
+  line-height: var(--bal-text-size-normal)
 
   &,
   & > div
     font-family: var(--bal-font-family-text)
-    font-weight: var(--bal-weight-regular)
-    font-size: var(--bal-size-normal)
+    font-weight: var(--bal-font-weight-regular)
+    font-size: var(--bal-text-size-normal)
     line-height: 1.25rem
     hyphens: auto
     white-space: nowrap
@@ -121,7 +121,7 @@
 
   .bal-data:not(.bal-data--is-horizontal)
     +block(data-label)
-      font-size: var(--bal-size-normal)
+      font-size: var(--bal-text-size-normal)
     +block(data-value)
       margin-top: 2px
 

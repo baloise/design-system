@@ -1,6 +1,6 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import isNil from 'lodash.isnil'
 import { parseValue } from './utils/parsing'
+import { isNil } from './utils/nil'
 
 interface BalTableButtonRendererOptions {
   color?: (params: ICellRendererParams) => BalProps.BalButtonColor
@@ -37,24 +37,26 @@ export function BalTableButtonRenderer(options: BalTableButtonRendererOptions): 
   Renderer.prototype.update = function () {
     this.element.innerHTML = parseValue(this.params.value)
 
-    const color = isNil(options.color) ? '' : options.color(this.params)
-    this.element.setAttribute('color', color)
+    if (options !== undefined && options !== null) {
+      const color = typeof options.color === 'function' ? options.color(this.params) : ''
+      this.element.setAttribute('color', color)
 
-    const loading = isNil(options.loading) ? false : options.loading(this.params)
-    this.element.setAttribute('loading', loading)
+      const loading = typeof options.loading === 'function' ? options.loading(this.params) : false
+      this.element.setAttribute('loading', loading)
 
-    const href = isNil(options.href) ? undefined : options.href(this.params)
-    if (href) {
-      this.element.setAttribute('href', href)
+      const href = typeof options.href === 'function' ? options.href(this.params) : undefined
+      if (href) {
+        this.element.setAttribute('href', href)
+      }
+
+      this.element.setAttribute('icon', isNil(options.icon) ? '' : options.icon)
+      this.element.setAttribute('iconRight', isNil(options.iconRight) ? false : options.iconRight)
+      this.element.setAttribute('square', isNil(options.square) ? false : options.square)
+      this.element.setAttribute('expanded', isNil(options.expanded) ? false : options.expanded)
+      this.element.setAttribute('outlined', isNil(options.outlined) ? false : options.outlined)
+      this.element.setAttribute('link', isNil(options.link) ? false : options.link)
+      this.element.setAttribute('target', isNil(options.target) ? false : options.target)
     }
-
-    this.element.setAttribute('icon', isNil(options.icon) ? '' : options.icon)
-    this.element.setAttribute('iconRight', isNil(options.iconRight) ? false : options.iconRight)
-    this.element.setAttribute('square', isNil(options.square) ? false : options.square)
-    this.element.setAttribute('expanded', isNil(options.expanded) ? false : options.expanded)
-    this.element.setAttribute('outlined', isNil(options.outlined) ? false : options.outlined)
-    this.element.setAttribute('link', isNil(options.link) ? false : options.link)
-    this.element.setAttribute('target', isNil(options.target) ? false : options.target)
   }
 
   Renderer.prototype.getGui = function () {
