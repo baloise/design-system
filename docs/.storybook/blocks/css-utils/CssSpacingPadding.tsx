@@ -1,61 +1,67 @@
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 
 export const CssSpacingPadding = ({}) => {
-  const obj = tokens.spacing
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
+  const obj = tokens.size.space
+  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].mobile.value)
+
+  const values = keys.map(key => ({
+    key,
+    valueMobile: obj[key].mobile.value,
+    valueTablet: obj[key].tablet.value,
+    valueDesktop: obj[key].desktop.value,
+  }))
 
   const list = [
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `-${key}`,
       property: 'padding',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `x-${key}`,
-      property: 'padding-left, padding-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `y-${key}`,
-      property: 'padding-top, padding-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `t-${key}`,
-      property: 'padding-top',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `r-${key}`,
-      property: 'padding-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `b-${key}`,
-      property: 'padding-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
-    ...keys.map((key, index) => ({
+    ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({
       key: `l-${key}`,
-      property: 'padding-left',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      property: 'padding',
+      valueMobile,
+      valueTablet,
+      valueDesktop,
     })),
   ]
 

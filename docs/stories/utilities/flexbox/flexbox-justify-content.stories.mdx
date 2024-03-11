@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxJustifyContent, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxJustifyContent,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Justify Content"
@@ -25,14 +34,13 @@ Elements are aligned to the start of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-start is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-start flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
-
 
 ## Center
 
@@ -41,10 +49,10 @@ Elements are centered within the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-center is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-center flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
@@ -56,10 +64,10 @@ Elements are aligned to the end of the container.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-end is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-end flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
@@ -71,10 +79,10 @@ Elements are spaced evenly between them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-space-between is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-space-between flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
@@ -86,10 +94,10 @@ Elements are spaced evenly between and around them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-space-around is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-space-around flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
@@ -101,13 +109,20 @@ Elements are spaced evenly around them.
 <Code
   language="html"
   code={`
-<div class="is-flex is-justify-content-space-evenly is-flex-flex-wrap fg-normal">
-    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
-    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+<div class="flex justify-content-space-evenly flex-flex-wrap gap-normal">
+    <div class="bg-green radius-normal p-normal">1</div>
+    <div class="bg-green radius-normal p-normal">2</div>
+    <div class="bg-green radius-normal p-normal">3</div>
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:justify-content-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -116,7 +131,7 @@ Elements are spaced evenly around them.
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

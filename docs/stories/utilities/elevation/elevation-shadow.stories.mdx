@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssElevationShadow, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssElevationShadow,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Elevation/Shadow"
@@ -25,9 +34,9 @@ The default shadow for cards is the normal one. Reserve the large shadow, for in
 <Code
   language="html"
   code={`
-<div class="is-flex is-align-items-center is-justify-content-center fg-xx-large">
-    <div class="has-shadow-normal is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">shadow-normal</div>
-    <div class="has-shadow-large is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">shadow-large</div>
+<div class="flex align-items-center justify-content-center gap-xx-large">
+    <div class="shadow-normal flex align-items-center justify-content-center bg-green radius-normal p-normal">shadow-normal</div>
+    <div class="shadow-large flex align-items-center justify-content-center bg-green radius-normal p-normal">shadow-large</div>
 </div>
 `}
 />
@@ -39,7 +48,27 @@ Text with a light shadow to increase readability on images.
 <Code
   language="html"
   code={`
-<p class="has-text-shadow">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+<p class="text-shadow">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:shadow-normal`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+## Pseudo States
+
+States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
+
+<Code
+  language="html"
+  code={`
+<div class="bg-green-3 hover:shadow-normal active:shadow-large cursor-pointer">
+  <p class="p-normal">Hover and click me!</p>
+</div>
 `}
 />
 
@@ -50,7 +79,7 @@ Text with a light shadow to increase readability on images.
       description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

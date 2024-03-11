@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as HintStories from './bal-hint.stories'
@@ -9,8 +8,11 @@ import * as HintStories from './bal-hint.stories'
 
 <Banner of={HintStories} />
 
-<Lead>**Hint** hides content with some additional description and shows it by clicking the icon. It can easily combined
-  with the [bal-data](?path=/docs/components-data-display-data--documentation) or [bal-field](?path=/docs/components-form-field--documentation) component.</Lead>
+<Lead>
+  **Hint** hides content with some additional description and shows it by clicking the icon. It can easily combined with
+  the [bal-data](?path=/docs/components-data-display-data--documentation) or
+  [bal-field](?path=/docs/components-form-field--documentation) component.
+</Lead>
 
 <Canvas of={HintStories.Basic} sourceState="shown" className="has-visible-overflow" />
 

@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as AppStories from './bal-app.stories'
@@ -9,9 +8,11 @@ import * as AppStories from './bal-app.stories'
 
 <Banner of={AppStories} />
 
-<Lead>**App** is a container element for an Baloise Design System application. There should only be one{' '}
-  <code>bal-app</code> element per project. An app can have many Design System components. The overlay components get
-  appended to the <code>bal-app</code> when they are presented.</Lead>
+<Lead>
+  **App** is a container element for an Baloise Design System application. There should only be one <code>bal-app</code>{' '}
+  element per project. An app can have many Design System components. The overlay components get appended to the{' '}
+  <code>bal-app</code> when they are presented.
+</Lead>
 
 <Canvas of={AppStories.Basic} sourceState="shown" />
 

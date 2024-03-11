@@ -1,0 +1,6 @@
+node_modules
+dist
+loader
+components
+www
+!src/components

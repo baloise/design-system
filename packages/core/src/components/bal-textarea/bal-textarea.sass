@@ -1,0 +1,27 @@
+@import '@baloise/ds-styles/sass/mixins'
+
++block(textarea)
+  +unselectable
+  display: block
+  position: relative
+  flex: 1
+  width: 100%
+  font-family: var(--bal-font-family-text)
+  white-space: pre-wrap
+  box-sizing: border-box
+
+  +element(native)
+    margin: 0
+    display: block
+    width: 100%
+    max-width: 100%
+    max-height: 100%
+    outline: none
+    background: transparent
+    box-sizing: border-box
+    resize: none
+    appearance: none
+    padding: calc(0.75em - 2px)
+    &::placeholder
+      padding: 0
+      font-family: inherit

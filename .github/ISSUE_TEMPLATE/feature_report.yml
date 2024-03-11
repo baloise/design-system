@@ -1,7 +1,7 @@
 name: ✨ Feature Report
 description: Suggest an idea for this project
-title: ":sparkles: feat(component): title"
-labels: ["✨ feature"]
+title: ':sparkles: feat(component): title'
+labels: ['✨ feature']
 body:
   - type: markdown
     attributes:

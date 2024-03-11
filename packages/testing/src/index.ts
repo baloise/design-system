@@ -11,6 +11,7 @@ export * from './viewports'
 /**
  * Helpers
  */
+export type { Platforms } from './commands/helpers'
 export { testOnPlatforms } from './commands/helpers'
 
 /**

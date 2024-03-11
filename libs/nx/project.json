@@ -1,0 +1,54 @@
+{
+  "name": "ds-nx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/nx/src",
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/nx"
+      }
+    },
+    "test-ui": {
+      "executor": "@baloise/ds-nx:test-ui",
+      "options": {
+        "projectRoot": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "libs/nx/src/index.ts",
+        "tsConfig": "libs/nx/tsconfig.lib.json",
+        "assets": [
+          "libs/nx/*.md",
+          {
+            "input": "./libs/nx/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/nx/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/nx",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/nx",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": ["scope:dev", "type:lib"]
+}

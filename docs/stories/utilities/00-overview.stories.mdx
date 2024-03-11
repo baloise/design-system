@@ -40,6 +40,12 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
     color="yellow"
     description="Defines the radius of an element's corners."
   />
+  <GridCard
+    label="Border Width"
+    pageTitle="CSS Utilities/Border/Border Width"
+    color="yellow"
+    description="Defines the width of the border."
+  />
 </GridCards>
 
 ## Elevation
@@ -96,7 +102,7 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
     label="Gap"
     pageTitle="CSS Utilities/Flexbox/Gap"
     color="yellow"
-    description="Specifies the gap size between rows and columns. It is a shorthand for column-gap and row-gap."
+    description="Specifies the gap size between rows and grid. It is a shorthand for column-gap and row-gap."
   />
   <GridCard
     label="Justify Content"
@@ -123,6 +129,23 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
   />
 </GridCards>
 
+## Interactions
+
+<GridCards>
+  <GridCard
+    label="Cursor"
+    pageTitle="CSS Utilities/Interactions/Cursor"
+    color="yellow"
+    description="Defines the appearance of the mouse cursor when positioned over an element."
+  />
+  <GridCard
+    label="User Select"
+    pageTitle="CSS Utilities/Interactions/User Select"
+    color="yellow"
+    description="Manages the ability of the user to highlight and select text."
+  />
+</GridCards>
+
 ## Layout
 
 <GridCards>
@@ -138,6 +161,36 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
     color="yellow"
     description="Specifies the display behavior of an element on a page."
   />
+  <GridCard
+    label="Position"
+    pageTitle="CSS Utilities/Layout/Position"
+    color="yellow"
+    description="Position a element on the screen."
+  />
+  <GridCard
+    label="Z-Index"
+    pageTitle="CSS Utilities/Layout/Z-Index"
+    color="yellow"
+    description="Specifies the display behavior of an element on a page."
+  />
+  <GridCard
+    label="Overflow"
+    pageTitle="CSS Utilities/Layout/Overflow"
+    color="yellow"
+    description="Specifies the behavior when content exceeds the area of its container."
+  />
+  <GridCard
+    label="Vertical Align"
+    pageTitle="CSS Utilities/Layout/Vertical Align"
+    color="yellow"
+    description="Establishes the vertical alignment of an inline, inline-block, or table-cell box."
+  />
+  <GridCard
+    label="Placement"
+    pageTitle="CSS Utilities/Layout/Placement"
+    color="yellow"
+    description="Specifies the vertical and horizontal position of a positioned element."
+  />
 </GridCards>
 
 ## Mixins
@@ -148,6 +201,47 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
     pageTitle="CSS Utilities/Mixins/Breakpoints"
     color="yellow"
     description="To create a responsive layout you can either structure your app with the Sass mixins."
+  />
+</GridCards>
+
+## Sizing
+
+<GridCards>
+  <GridCard
+    label="Max Height"
+    pageTitle="CSS Utilities/Sizing/Max Height"
+    color="yellow"
+    description="Defines the max height of an element."
+  />
+  <GridCard
+    label="Min Height"
+    pageTitle="CSS Utilities/Sizing/Min Height"
+    color="yellow"
+    description="Defines the min height of an element."
+  />
+  <GridCard
+    label="Height"
+    pageTitle="CSS Utilities/Sizing/Height"
+    color="yellow"
+    description="Defines the height of an element."
+  />
+  <GridCard
+    label="Max Width"
+    pageTitle="CSS Utilities/Sizing/Max Width"
+    color="yellow"
+    description="Defines the max width of an element."
+  />
+  <GridCard
+    label="Min Width"
+    pageTitle="CSS Utilities/Sizing/Min Width"
+    color="yellow"
+    description="Defines the min width of an element."
+  />
+  <GridCard
+    label="Width"
+    pageTitle="CSS Utilities/Sizing/Width"
+    color="yellow"
+    description="Defines the width of an element."
   />
 </GridCards>
 
@@ -218,49 +312,50 @@ import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, F
 ## Installation
 
 Introducing CSS utility classes meticulously crafted around the [design tokens](?path=/docs/foundation-design-tokens--documentation),
-seamlessly integrated into the `@baloise/design-system-css` package. These classes are accessible in
+seamlessly integrated into the `@baloise/ds-styles` package. These classes are accessible in
 both **CSS** and **SCSS** formats, ensuring versatile usage.
 
-The `@baloise/design-system-css` is included in the component package, so if that is already installed skip the next step.
+The `@baloise/ds-styles` is included in the component package, so if that is already installed skip the next step.
 
 ```bash
-npm add @baloise/design-system-css
+npm add @baloise/ds-styles
 ```
 
 The CSS utility package is designed in a modular fashion, allowing for selective imports based on the specific needs of the application.
 
 ```css
 // SASS mixins and variables
-@import '@baloise/design-system-css/sass/mixins';
+@import '@baloise/ds-styles/sass/mixins';
 
 // Resets CSS for all browser
-@import '@baloise/design-system-css/css/normalize';
-@import '@baloise/design-system-css/css/structure';
+@import '@baloise/ds-styles/css/normalize';
+@import '@baloise/ds-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/sass/font';
+@import '@baloise/ds-styles/sass/font';
 
 // Core CSS, always required
-@import '@baloise/design-system-css/css/core';
+@import '@baloise/ds-styles/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/design-system-css/css/border';
-@import '@baloise/design-system-css/css/color';
-@import '@baloise/design-system-css/css/display';
-@import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/opacity';
-@import '@baloise/design-system-css/css/radius';
-@import '@baloise/design-system-css/css/shadow';
-@import '@baloise/design-system-css/css/spacing';
-@import '@baloise/design-system-css/css/typography';
+@import '@baloise/ds-styles/css/utilities/background';
+@import '@baloise/ds-styles/css/utilities/border';
+@import '@baloise/ds-styles/css/utilities/elevation';
+@import '@baloise/ds-styles/css/utilities/flex';
+@import '@baloise/ds-styles/css/utilities/grid';
+@import '@baloise/ds-styles/css/utilities/interaction';
+@import '@baloise/ds-styles/css/utilities/layout';
+@import '@baloise/ds-styles/css/utilities/sizing';
+@import '@baloise/ds-styles/css/utilities/spacing';
+@import '@baloise/ds-styles/css/utilities/typography';
 ```
 
 ## Component styling
 
-Import `@baloise/design-system-css/sass/mixins` into your component's style imports to gain access to a comprehensive collection of design tokens and Sass mixins.
+Import `@baloise/ds-styles/sass/mixins` into your component's style imports to gain access to a comprehensive collection of design tokens and Sass mixins.
 
 <ScssSource code={`// SASS mixins and variables
-@import '@baloise/design-system-css/sass/mixins';
+@import '@baloise/ds-styles/sass/mixins';
 
 .my-component {
 ${' '}${' '}background: var(--bal-color-green);

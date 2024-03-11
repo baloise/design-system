@@ -1,0 +1,70 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system.css" />
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      section > div,
+      section > div > div {
+        width: 80px;
+        height: 48px;
+        border-radius: 10px;
+      }
+
+      .t-colors > div {
+        background-color: #5bab7a !important;
+      }
+
+      .t-border > div {
+        border: 2px solid #5bab7a !important;
+      }
+
+      .t-display > div {
+        display: block !important;
+      }
+
+      .t-opacity > div {
+        opacity: 100% !important;
+      }
+
+      .t-shadow > h4 {
+        text-shadow: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section data-testid="colors" class="t-colors">
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+      </section>
+      <section data-testid="border" class="t-border">
+        <div class="border-none">Primary</div>
+      </section>
+      <section data-testid="display" class="t-display">
+        <div class="flex">
+          <div class="border-success">Flex 1</div>
+          <div class="border-success">Flex 2</div>
+        </div>
+      </section>
+      <section data-testid="opacity" class="t-opacity">
+        <div class="bg-success opacity-50">50</div>
+      </section>
+      <section data-testid="shadow" class="t-shadow">
+        <h4 class="title text-large text-shadow">Shadow Title 4</h4>
+      </section>
+    </main>
+  </body>
+</html>

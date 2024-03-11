@@ -1,7 +1,7 @@
 name: 🚀 Release
 description: Create a report to release a component or library
-title: ":rocket: release: version"
-labels: ["🚀 release"]
+title: ':rocket: release: version'
+labels: ['🚀 release']
 body:
   - type: textarea
     id: summary

@@ -1,0 +1,48 @@
+@import '@baloise/ds-styles/sass/mixins'
+
+// Tab Label
+// --------------------------------------------------
+
+.bal-tabs__nav__item__label
+  display: block
+  position: relative
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-font-weight-bold)
+  font-size: var(--bal-text-size-normal)
+  line-height: var(--bal-body-line-height)
+  text-align: center
+  hyphens: auto
+  white-space: nowrap
+  user-select: none
+  //
+  // Color status
+  color: var(--bal-tabs-tab-label-text-color)
+  &--disabled
+    color: var(--bal-tabs-tab-label-text-color-disabled)
+  &--inverted
+    font-family: var(--bal-font-family-text)
+    color: var(--bal-tabs-tab-label-text-color-inverted)
+  &--inverted#{&}--disabled
+    color: var(--bal-tabs-tab-label-text-color-inverted-disabled)
+  &--inverted
+    font-weight: var(--bal-font-weight-regular)
+    letter-spacing: 0.1085px
+  &--inverted#{&}--active
+    font-weight: var(--bal-font-weight-bold)
+    letter-spacing: 0
+  //
+  // alert bubble
+  &__bubble
+    position: absolute
+    right: -0.5rem
+    top: -0.5rem
+  //
+  // Vertical layout
+  &--vertical
+    text-align: left
+    width: auto
+    white-space: normal
+  //
+  // context styles
+  &--context-meta
+    font-size: var(--bal-text-size-small)

@@ -1,0 +1,124 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-icon.vars'
+
+=iconSize($size: 1rem)
+  width: $size
+  max-height: $size
+
++block(icon)
+  display: flex
+  justify-content: center
+  align-items: center
+  position: static
+  pointer-events: visible
+  +iconSize(1.125rem)
+  //
+  // modifiers
+  +modifier(shadow)
+    svg
+      filter: drop-shadow(0px 0px 5rem rgba(0, 0, 0, 0.5))
+  //
+  // modifiers
+  +modifier(is-inline)
+    display: inline-flex
+  //
+  // inner element
+  +element(inner)
+    display: block
+    position: static
+    transition: transform .2s ease-in-out
+    padding: 0.063rem
+    +iconSize(1.125rem)
+    +modifier(turn-plus)
+      transform: rotate(225deg)
+    +modifiers(turn-caret-down, turn-caret-up)
+      transform: rotate(180deg)
+    +modifier(turn-nav-go-down)
+      transform: rotate(180deg)
+    & > svg
+      vertical-align: top
+  //
+  // sizes
+  +modifier(is-xsmall)
+    +iconSize(0.75rem)
+  +modifier(is-x-small)
+    +iconSize(0.75rem)
+  +modifier(is-small)
+    +iconSize(0.875rem)
+  +modifier(is-medium)
+    +iconSize(1.625rem)
+  +modifier(is-large)
+    +iconSize(2.5rem)
+    padding: 0
+  +modifier(is-x-large)
+    +iconSize(5rem)
+    padding: 0
+  +modifier(is-xx-large)
+    +iconSize(11rem)
+    padding: 0
+
+  //
+  // colors
+  +modifier(is-grey)
+    +fillSvg(var(--bal-icon-color-grey))
+  +modifier(is-grey-light)
+    +fillSvg(var(--bal-icon-color-grey-light))
+  +modifier(is-success)
+    +fillSvg(var(--bal-icon-color-success))
+  +modifier(is-success-dark)
+    +fillSvg(var(--bal-icon-color-success-dark))
+  +modifier(is-success-darker)
+    +fillSvg(var(--bal-icon-color-success-darker))
+  +modifier(is-warning)
+    +fillSvg(var(--bal-icon-color-warning))
+  +modifier(is-warning-dark)
+    +fillSvg(var(--bal-icon-color-warning-dark))
+  +modifier(is-warning-darker)
+    +fillSvg(var(--bal-icon-color-warning-darker))
+  +modifier(is-danger)
+    +fillSvg(var(--bal-icon-color-danger))
+  +modifier(is-danger-dark)
+    +fillSvg(var(--bal-icon-color-danger-dark))
+  +modifier(is-danger-darker)
+    +fillSvg(var(--bal-icon-color-danger-darker))
+  +modifier(is-primary)
+    +fillSvg(var(--bal-icon-color-primary))
+  +modifier(is-primary-dark)
+    +fillSvg(var(--bal-icon-color-primary-dark))
+  +modifier(is-blue)
+    +fillSvg(var(--bal-icon-color-blue))
+  +modifier(is-light-blue)
+    +fillSvg(var(--bal-icon-color-light-blue))
+  +modifiers(is-primary-light)
+    +fillSvg(var(--bal-icon-color-primary-light))
+  +modifiers(is-white, is-inverted)
+    +fillSvg(var(--bal-icon-color-white))
+
+.icon-text
+  align-items: center
+  color: inherit
+  display: inline-flex
+  vertical-align: top
+  flex-wrap: nowrap
+  word-break: break-word
+  line-height: 1.5rem
+  &.is-small
+    line-height: 1.75rem
+  &.is-medium
+    line-height: 1.5rem
+  &.is-large
+    line-height: 3rem
+  &.is-x-large
+    line-height: 4rem
+  &.is-xlarge
+    line-height: 4rem
+  .icon
+    flex-grow: 0
+    flex-shrink: 0
+    &:not(:last-child)
+      margin-right: 0.5rem
+    &:not(:first-child)
+      margin-right: 0.5rem
+
+div.icon-text
+  display: flex

@@ -1,6 +1,6 @@
 ```ts
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
-import { BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-modal',

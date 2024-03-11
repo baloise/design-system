@@ -18,7 +18,7 @@ import {
 
 <Meta title="Development/Contributing/Visual Testing" />
 
-<Banner label="Visual Testing" section="Contributing"  />
+<Banner label="Visual Testing" section="Contributing" />
 
 <Lead>
 Visual tests generate and compare browser snapshots to detect if any pixels have changed.
@@ -26,6 +26,7 @@ Visual tests generate and compare browser snapshots to detect if any pixels have
 As a **prerequisite** please do a [dev setup](?path=/docs/development-contributing-dev-setup--page) first.
 
 The visual tests are done with the library [cypress-visual-regression](https://www.npmjs.com/package/cypress-visual-regression).
+
 </Lead>
 
 ## Getting Started
@@ -51,14 +52,14 @@ Here is the example of bal-close component test.
 Variations needs to be splitted in to sections like to have one section for various color options and one for the sizes.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <bal-doc-app>
@@ -73,7 +74,7 @@ Variations needs to be splitted in to sections like to have one section for vari
           <bal-close size="medium"></bal-close>
         </section>
 
-        <section class="has-background-primary">
+        <section class="bg-primary">
           <bal-close size="small" inverted></bal-close>
           <bal-close size="" inverted></bal-close>
           <bal-close size="medium" inverted></bal-close>
@@ -87,7 +88,7 @@ Variations needs to be splitted in to sections like to have one section for vari
 - `bal-doc-app` components load the styles and initialize the Design System config object
 - `data-testid` attribute to select components in the test files
 - `<section>` each section should represent a component state to test visually
-- `class="has-background-primary"` use the css helper classes to create the correct environment
+- `class="bg-primary"` use the css helper classes to create the correct environment
 - `<main class="container py-medium">` each app should have a container
 
 #### Serve the test template file

@@ -1,0 +1,86 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium">
+        <section data-testid="basic">
+          <table class="table is-fullwidth is-striped is-hoverable p-none">
+            <thead>
+              <th>Selected</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox1"></bal-checkbox>
+                </td>
+                <td>Tony Stark</td>
+                <td>
+                  <bal-tag color="green">Ready</bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox2"></bal-checkbox>
+                </td>
+                <td>Steve Rogers</td>
+                <td>
+                  <bal-tag size="" color="red">Injured</bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox3"></bal-checkbox>
+                </td>
+                <td>Peter Parker</td>
+                <td>
+                  <bal-tag size="" color="yellow">In school</bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox4"></bal-checkbox>
+                </td>
+                <td>John Doe</td>
+                <td>
+                  <bal-tag size="" color="purple">Unknown </bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <br />
+        <br />
+        <section data-testid="ag-grid">
+          <bal-table class="p-none" id="myGrid" style="height: 250px; width: 100%"></bal-table>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

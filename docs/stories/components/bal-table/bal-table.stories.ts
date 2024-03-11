@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import {
   props,
@@ -45,7 +45,7 @@ import codeSandboxTsTemplate from './code-sandbox/example_component_ts.md?raw'
 import angularPkg from '../../../public/assets/code/angular/package.json'
 import angularStyles from '../../../public/assets/code/angular/src/styles.scss?raw'
 
-angularPkg.dependencies['@baloise/design-system-components-table'] = 'latest'
+angularPkg.dependencies['@baloise/ds-table'] = 'latest'
 angularPkg.dependencies['ag-grid-community'] = 'latest'
 angularPkg.dependencies['ag-grid-angular'] = 'latest'
 
@@ -61,7 +61,7 @@ export const AgGrid = Story({
           content: `${angularStyles}
 @import 'ag-grid-community/styles/ag-grid';
 @import 'ag-grid-community/styles/ag-theme-alpine';
-@import '@baloise/design-system-components-table/css/design-system-table';
+@import '@baloise/ds-table/css/design-system-table';
 `,
         },
         'package.json': {

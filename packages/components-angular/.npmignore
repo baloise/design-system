@@ -1,8 +1,0 @@
-common/src
-legacy/src
-src
-scripts
-
-ng-package.json
-tsconfig.json
-CHANGELOG.md

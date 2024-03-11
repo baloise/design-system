@@ -1,0 +1,24 @@
+{
+  "name": "styles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/styles/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@baloise/ds-nx:build-styles",
+      "outputs": ["{projectRoot}/css"],
+      "options": {
+        "projectRoot": "{projectRoot}",
+        "tokensRoot": "{workspaceRoot}/packages/tokens"
+      }
+    },
+    "link": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npm link"
+      }
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "scope:visual", "type:package"]
+}

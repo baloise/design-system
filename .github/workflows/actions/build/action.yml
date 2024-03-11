@@ -1,78 +1,121 @@
 name: 'Build'
 description: 'Build'
+inputs:
+  build:
+    description: 'Build packages'
+    default: true
+  token:
+    description: 'GitHub token'
 runs:
   using: 'composite'
   steps:
-    - name: Install Dependencies
-      run: npm ci
-      shell: bash
+    - uses: ./.github/workflows/actions/setup
+      with:
+        token: ${{ inputs.token }}
 
-    - name: Build
-      run: npm run ci:build
+    - name: Clean install
       shell: bash
+      run: npm ci
+
+    - name: Define Nx cache
+      uses: nrwl/nx-set-shas@v4
+
+    - name: Check format
+      shell: bash
+      run: npx nx format:check
+
+    - name: Check spelling
+      shell: bash
+      run: npm run spell
+
+    - name: Lint & Test
+      if: inputs.build == 'false'
+      shell: bash
+      run: npx nx run-many -t lint test
+
+    - name: Lint & Test & Build
+      if: inputs.build == 'true'
+      shell: bash
+      run: npx nx run-many -t lint test build
+
+    - name: Releae dry-run
+      if: inputs.build == 'true'
+      shell: bash
+      run: npx nx release publish -d
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
         name: tokens-dist
         output: packages/tokens/TokensDist.zip
         paths: packages/tokens/dist
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: css-dist
-        output: packages/css/CssDist.zip
-        paths: packages/css/css
+        name: styles-dist
+        output: packages/styles/StylesDist.zip
+        paths: packages/styles/css
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
         name: icons-dist
         output: packages/icons/IconsDist.zip
         paths: packages/icons/dist
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-dist
-        output: packages/components/ComponentsDist.zip
-        paths: packages/components/dist
+        name: core-dist
+        output: packages/core/CoreDist.zip
+        paths: packages/core/dist
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-loader
-        output: packages/components/ComponentsLoader.zip
-        paths: packages/components/loader
+        name: core-loader
+        output: packages/core/CoreLoader.zip
+        paths: packages/core/loader
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-components
-        output: packages/components/ComponentsComponents.zip
-        paths: packages/components/components
+        name: core-components
+        output: packages/core/CoreComponents.zip
+        paths: packages/core/components
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-angular
-        output: packages/components-angular/src/ComponentsAngular.zip
-        paths: packages/components-angular/src/generated
+        name: angular
+        output: packages/angular/src/Angular.zip
+        paths: packages/angular/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-angular-standalone
-        output: packages/components-angular/standalone/src/ComponentsAngularStandalone.zip
-        paths: packages/components-angular/standalone/src/generated
+        name: angular-module
+        output: packages/angular-module/src/AngularModule.zip
+        paths: packages/angular-module/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: components-angular-legacy
-        output: packages/components-angular/legacy/src/ComponentsAngularLegacy.zip
-        paths: packages/components-angular/legacy/src/generated
+        name: angular-legacy
+        output: packages/angular-legacy/src/AngularLegacy.zip
+        paths: packages/angular-legacy/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
         name: testing-dist
         output: packages/testing/TestingDist.zip
         paths: packages/testing/dist
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
       with:
-        name: test-e2e
-        output: test/TestE2eBuild.zip
-        paths: test/generated
+        name: e2e-artifacts
+        output: e2e/E2eBuildArtifacts.zip
+        paths: e2e/generated

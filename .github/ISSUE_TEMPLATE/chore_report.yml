@@ -1,7 +1,7 @@
 name: 🔧 Chore Task
 description: Create a chore task for maintenance or architectural changes.
-title: ":wrench: chore(component): title"
-labels: ["🔧 chore"]
+title: ':wrench: chore(component): title'
+labels: ['🔧 chore']
 body:
   - type: textarea
     id: summary

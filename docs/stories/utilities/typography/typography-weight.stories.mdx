@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssTypographyWeight, Footer, LinkCard, LinkCards} from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssTypographyWeight, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Typography/Font Weight"
@@ -22,26 +22,35 @@ import { Banner, Lead, Code, CssTypographyWeight, Footer, LinkCard, LinkCards} f
 
 Both font families offer a bold style option.
 
-<Code language="html" code={`
-<h1 class="has-text-weight-bold title">Bold - Title</h1>
-<p class="has-text-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-`} />
+<Code
+  language="html"
+  code={`
+<h1 class="font-weight-bold title">Bold - Title</h1>
+<p class="font-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+`}
+/>
 
 ## Regular
 
-Onyl the **text** font families, which is default, offer a regular style option.
+Only the **text** font families, which is default, offer a regular style option.
 
-<Code language="html" code={`
+<Code
+  language="html"
+  code={`
 <p>Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-`} />
+`}
+/>
 
 ## Light
 
-Onyl the **title** font families offer a light style option.
+Only the **title** font families offer a light style option.
 
-<Code language="html" code={`
-<h1 class="has-text-weight-light title">Light - Title</h1>
-`} />
+<Code
+  language="html"
+  code={`
+<h1 class="text-weight-light title">Light - Title</h1>
+`}
+/>
 
 <Footer>
   <LinkCards>
@@ -50,9 +59,8 @@ Onyl the **title** font families offer a light style option.
       description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>
 </Footer>
-

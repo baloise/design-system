@@ -1,0 +1,79 @@
+{
+  "name": "brand-icons",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/brand-icons/src",
+  "projectType": "library",
+  "targets": {
+    "nx-release-publish": {
+      "executor": "@nx/js:release-publish",
+      "options": {
+        "packageRoot": "{projectRoot}/dist"
+      }
+    },
+    "optimize": {
+      "executor": "@baloise/ds-nx:build-svg",
+      "outputs": ["{projectRoot}/src/assets", "{projectRoot}/src/index.ts", "{projectRoot}/src/icons.json"],
+      "options": {
+        "projectName": "{projectName}",
+        "projectRoot": "{projectRoot}",
+        "svgOptimize": true,
+        "svgPlugins": [
+          {
+            "name": "inlineStyles",
+            "params": {
+              "onlyMatchedOnce": false
+            }
+          },
+          "convertStyleToAttrs",
+          {
+            "name": "removeAttrs",
+            "params": {
+              "attrs": "class"
+            }
+          },
+          {
+            "name": "removeDimensions",
+            "params": {
+              "removeDimensions": true
+            }
+          },
+          "removeStyleElement",
+          "removeScriptElement",
+          "removeEmptyContainers",
+          {
+            "name": "addAttributesToSVGElement",
+            "params": {
+              "attributes": [
+                {
+                  "focusable": false
+                },
+                {
+                  "aria-hidden": "true"
+                }
+              ]
+            }
+          }
+        ],
+        "jsInlineData": false,
+        "jsOutput": true,
+        "jsOutputName": "balBrandIcon",
+        "jsOutputPath": "src/index.ts",
+        "jsonPath": "src/icons.json"
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "{projectRoot}/src/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": ["{projectRoot}/src/assets"],
+        "project": "{projectRoot}/package.json",
+        "compiler": "swc",
+        "format": ["esm"]
+      }
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "scope:visual", "type:package"]
+}

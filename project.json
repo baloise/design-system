@@ -1,0 +1,46 @@
+{
+  "name": "design-system",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "local-registry": {
+      "executor": "@nx/js:verdaccio",
+      "options": {
+        "port": 4873,
+        "config": ".verdaccio/config.yml",
+        "storage": "tmp/local-registry/storage"
+      }
+    },
+    "changeset": {
+      "executor": "@baloise/ds-nx:create-changeset",
+      "options": {
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}"
+      }
+    },
+    "pre-publish": {
+      "executor": "@baloise/ds-nx:pre-publish",
+      "options": {
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}"
+      }
+    },
+    "create-angular": {
+      "executor": "@baloise/ds-nx:create-angular",
+      "options": {
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": true,
+        "start": false
+      }
+    },
+    "start-angular": {
+      "executor": "@baloise/ds-nx:create-angular",
+      "options": {
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": false,
+        "start": true
+      }
+    }
+  }
+}

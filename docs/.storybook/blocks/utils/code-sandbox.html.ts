@@ -47,7 +47,7 @@ ${example_component}`
         isBinary: false,
         content: {
           dependencies: {
-            '@baloise/design-system-components': 'latest',
+            '@baloise/ds-core': 'latest',
           },
         } as any,
       },

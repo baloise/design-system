@@ -1,44 +1,46 @@
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 
-export const CssResponsiveTable = ({ }) => {
-  const obj = tokens.breakpoint
+export const CssResponsiveTable = ({ all = false }) => {
+  const obj = tokens.size.breakpoint
 
   const list = [
     {
-      key: '-mobile',
+      key: 'mobile:',
       value: 'from 0',
     },
     {
-      key: '-tablet',
-      value: `from ${obj.tablet}`,
+      key: 'tablet:',
+      value: `from ${obj.tablet.value}`,
     },
+    all
+      ? {
+          key: 'touch:',
+          value: `to ${obj.desktop.value}`,
+        }
+      : false,
     {
-      key: '-tablet-only',
-      value: `from ${obj.tablet} to ${obj.desktop}`,
+      key: 'desktop:',
+      value: `from ${obj.desktop.value}`,
     },
+    all
+      ? {
+          key: 'high-definition:',
+          value: `from ${obj['high-definition'].value}`,
+        }
+      : false,
     {
-      key: '-touch',
-      value: `to ${obj.desktop}`,
+      key: 'widescreen:',
+      value: `from ${obj.widescreen.value}`,
     },
-    {
-      key: '-desktop',
-      value: `from ${obj.desktop}`,
-    },
-    // {
-    //   key: '-high-definition',
-    //   value: `from ${obj['high-definition']}`,
-    // },
-    // {
-    //   key: '-widescreen',
-    //   value: `from ${obj.widescreen}`,
-    // },
-    // {
-    //   key: '-fullhd',
-    //   value: `from ${obj.fullhd}`,
-    // },
-  ]
+    all
+      ? {
+          key: 'fullhd:',
+          value: `from ${obj.fullhd.value}`,
+        }
+      : false,
+  ].filter(item => item)
 
-  return <CssPropertyTable keyValue={list} property={'width'} prefix={'...'} withoutProperty={true} />
+  return <CssPropertyTable keyValue={list} property={'width'} prefix={''} withoutProperty={true} />
 }

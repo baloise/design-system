@@ -1,0 +1,26 @@
+{
+  "size": {
+    "breakpoint": {
+      "tablet": {
+        "value": "769px",
+        "comment": "Tailored for tablet devices, this breakpoint ensures a seamless and optimized user experience on medium-sized screens."
+      },
+      "desktop": {
+        "value": "1024px",
+        "comment": "Optimized for desktop screens, this breakpoint provides a spacious canvas for your design, allowing for more intricate layouts and detailed content presentation."
+      },
+      "high-definition": {
+        "value": "1280px",
+        "comment": "Designed for high-definition displays, this breakpoint elevates your interface to a level of visual richness and clarity."
+      },
+      "widescreen": {
+        "value": "1440px",
+        "comment": "Tailored for widescreen monitors, this breakpoint offers a panoramic view that accommodates expansive content layouts."
+      },
+      "fullhd": {
+        "value": "1920px",
+        "comment": "Crafted for Full HD displays, this breakpoint strikes a balance between detail and performance."
+      }
+    }
+  }
+}

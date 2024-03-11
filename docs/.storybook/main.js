@@ -40,8 +40,8 @@ const config = {
   <link rel="stylesheet" type="text/css" href="assets/css/avatars.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/swot.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/prism.css" />
-  <script type="module" src="/build/design-system-components.esm.js"></script>
-  <script nomodule src="/build/design-system-components.js"></script>
+  <script type="module" src="/build/baloise-design-system.esm.js"></script>
+  <script nomodule src="/build/baloise-design-system.js"></script>
   `,
 }
 

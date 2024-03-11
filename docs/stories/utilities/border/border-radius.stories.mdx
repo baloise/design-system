@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssBorderRadius,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Border/Border Radius"
@@ -20,12 +29,22 @@ import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from
 
 ## Examples
 
-<Code language="html" code={`
-<div class="has-border-primary has-radius-none p-small mb-small">None</div>
-<div class="has-border-primary has-radius-normal p-small mb-small">Normal</div>
-<div class="has-border-primary has-radius-large p-small mb-small">Large</div>
-<div class="has-border-primary has-radius-rounded p-small mb-small">Rounded</div>
-`} />
+<Code
+  language="html"
+  code={`
+<div class="border-primary radius-none p-small mb-small">None</div>
+<div class="border-primary radius-normal p-small mb-small">Normal</div>
+<div class="border-primary radius-large p-small mb-small">Large</div>
+<div class="border-primary radius-rounded p-small mb-small">Rounded</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:radius-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -34,7 +53,7 @@ import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from
       description="Clarification of how borders and border-radius are utilized"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

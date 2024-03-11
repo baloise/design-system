@@ -1,0 +1,66 @@
+{
+  "size": {
+    "z-index": {
+      "deep": {
+        "value": "-999999",
+        "comment": "Deep z-index is used to stack something behind everything else.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "default": {
+        "value": "1",
+        "comment": "The default z-index for components and elements inside components.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "masked": {
+        "value": "100",
+        "comment": "Default z-index for masked interface elements.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "mask": {
+        "value": "200",
+        "comment": "Default z-index for masking interface elements.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "sticky": {
+        "value": "300",
+        "comment": "Default z-index for sticky interface elements.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "navigation": {
+        "value": "400",
+        "comment": "Default z-index for navigation.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "popup": {
+        "value": "1000",
+        "comment": "Default z-index for popups that stacks on top of all other elements.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "modal": {
+        "value": "1100",
+        "comment": "Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "toast": {
+        "value": "1200",
+        "comment": "Default z-index for toast and snackbar messages.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      },
+      "tooltip": {
+        "value": "1300",
+        "comment": "Default z-index for tooltips.",
+        "keepFormat": true,
+        "noFigmaImport": true
+      }
+    }
+  }
+}

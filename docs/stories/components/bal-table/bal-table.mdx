@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote, CodeSandbox } from '../../../.storybook/blocks'
 import * as TableStories from './bal-table.stories'
@@ -31,7 +30,7 @@ manipulating large sets of data in a user-friendly manner. AG Grid is widely use
 To use the AG-Grid install the following packages:
 
 ```
-npm install --save @baloise/design-system-components-table ag-grid-community ag-grid-angular
+npm install --save @baloise/ds-table ag-grid-community ag-grid-angular
 ```
 
 To get the Baloise style import the following stylesheets:
@@ -39,7 +38,7 @@ To get the Baloise style import the following stylesheets:
 ```scss
 @import 'ag-grid-community/styles/ag-grid';
 @import 'ag-grid-community/styles/ag-theme-alpine';
-@import '@baloise/design-system-components-table/css/design-system-table';
+@import '@baloise/ds-table/css/design-system-table';
 ```
 
 <InfoQuote>
@@ -47,6 +46,7 @@ To get the Baloise style import the following stylesheets:
 
 If you do now use `bal-table` as the AG-Grid container,
 please set the class `ag-theme-alpine` to the AG-Grid element to get the Baloise styles.
+
 </InfoQuote>
 
 - for [Javascript](https://www.ag-grid.com/javascript-data-grid/getting-started/)
@@ -63,7 +63,7 @@ The package provides three render functions to use components of the Design Syst
 Renders a button into the grid.
 
 ```typescript
-import { BalTableButtonRenderer } from '@baloise/design-system-components-table'
+import { BalTableButtonRenderer } from '@baloise/ds-table'
 
 ...
 {
@@ -100,7 +100,7 @@ interface BalTableButtonRendererOptions {
 Renders a tag element into the grid.
 
 ```typescript
-import { BalTableTagRenderer } from '@baloise/design-system-components-table'
+import { BalTableTagRenderer } from '@baloise/ds-table'
 
 ...
 {
@@ -127,7 +127,7 @@ interface BalTableTagRendererOptions {
 Renders a text into the grid.
 
 ```typescript
-import { BalTableTextRenderer } from '@baloise/design-system-components-table'
+import { BalTableTextRenderer } from '@baloise/ds-table'
 
 ...
 {

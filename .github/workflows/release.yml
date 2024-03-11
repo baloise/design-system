@@ -1,4 +1,4 @@
-name: Release
+name: 📦️ Release
 
 on:
   push:
@@ -7,32 +7,34 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  BAL_PUBLISH_DS: false
+
 jobs:
   Release:
-    name: 🚀 Release
+    name: 📦️ Release
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+      - uses: ./.github/workflows/actions/setup
 
-      - uses: ./.github/workflows/actions/setup-release
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          npm-token: ${{ secrets.NPM_TOKEN }}
+      - name: Clean install
+        run: npm ci
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Create Pre-Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run release
+          title: '📦️ Release'
+          commit: 'prepare release'
+          createGithubReleases: false
+          publish: echo "Publish"
         env:
-          HUSKY_DISABLED: 1
-          BAL_DS_RELEASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Echo Changeset output
         shell: bash
@@ -41,48 +43,3 @@ jobs:
           echo "Changeset publishedPackages - ${{ steps.changesets.outputs.publishedPackages }}"
           echo "Changeset hasChangesets - ${{ steps.changesets.outputs.hasChangesets }}"
           echo "Changeset pullRequestNumber - ${{ steps.changesets.outputs.pullRequestNumber }}"
-
-      - name: Update lock file
-        if: steps.changesets.outputs.published == 'true'
-        run: npm install
-        shell: bash
-
-      - name: Commit lock file
-        if: steps.changesets.outputs.published == 'true'
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'package-lock.json'
-          message: 'chore(): update lock file'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Tag release
-        if: steps.changesets.outputs.published == 'true'
-        uses: thejeff77/action-push-tag@v1.0.0
-        with:
-          tag: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
-          message: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
-
-      - name: Update changelog file
-        if: steps.changesets.outputs.published == 'true'
-        run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/components/CHANGELOG.md > CHANGELOG.md
-        shell: bash
-
-      - name: Commit changelog
-        if: steps.changesets.outputs.published == 'true'
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'CHANGELOG.md'
-          message: 'chore(): update changelog'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Merge main -> production
-        if: steps.changesets.outputs.published == 'true'
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: main
-          target_branch: production
-          message: ':bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
-          github_token: ${{ secrets.GITHUB_TOKEN }}

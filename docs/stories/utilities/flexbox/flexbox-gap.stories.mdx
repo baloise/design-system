@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxGap,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Gap"
@@ -12,7 +21,7 @@ import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '
 
 <Banner label="Gap" section="CSS Utilities" color="yellow" puzzle />
 
-<Lead>Specifies the gap size between rows and columns. It is a shorthand for column-gap and row-gap.</Lead>
+<Lead>Specifies the gap size between rows and grid. It is a shorthand for column-gap and row-gap.</Lead>
 
 ## Classes
 
@@ -23,18 +32,55 @@ import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '
 <Code
   language="html"
   code={`
-<div class="is-flex is-flex-wrap-wrap fg-normal mb-normal">
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+<div class="flex flex-wrap gap-normal mb-normal">
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">3</div>
 </div>
-<div class="is-flex is-flex-wrap-wrap fg-xx-large">
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
-  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+<div class="flex flex-wrap gap-xx-large">
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">3</div>
 </div>
 `}
 />
+
+## Column Gap
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap column-gap-x-small mb-normal bg-red-2">
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">3</div>
+</div>
+<div class="flex flex-wrap column-gap-large mb-normal bg-red-2 mt-normal">
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green radius-normal flex justify-content-center align-items-center">3</div>
+</div>
+`}
+/>
+
+## Row Gap
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap row-gap-large mb-normal bg-red-2">
+  <div class="min-w-full flex-1 bg-green radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="min-w-full flex-1 bg-green radius-normal flex justify-content-center align-items-center">2</div>
+</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:gap-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
@@ -43,7 +89,7 @@ import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '
       description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
     />
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
   </LinkCards>

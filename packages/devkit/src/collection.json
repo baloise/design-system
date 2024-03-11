@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "aliases": ["init"],
+      "schema": "./ng-add/schema.json",
+      "factory": "./ng-add/index",
+      "description": "Add Baloise Design System"
+    },
+    "ng-upgrade-16": {
+      "aliases": ["up16"],
+      "schema": "./ng-upgrade-16/schema.json",
+      "factory": "./ng-upgrade-16/index",
+      "description": "Upgrade an angular application the v16 of Baloise Design System"
+    }
+  }
+}

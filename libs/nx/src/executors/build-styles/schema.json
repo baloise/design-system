@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "BuildStyles executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "projectRoot": {
+      "type": "string"
+    }
+  },
+  "required": []
+}

@@ -1,13 +1,10 @@
-import React from 'react';
-import {
-  useBaloiseDesignSystem,
-  BalApp,
-} from '@baloise/design-system-components-react';
+import React from 'react'
+import { useBaloiseDesignSystem, BalApp } from '@baloise/ds-react'
 
-import Example from './Example';
+import Example from './Example'
 
 export default function App() {
-  useBaloiseDesignSystem();
+  useBaloiseDesignSystem()
 
   return (
     <BalApp>
@@ -15,5 +12,5 @@ export default function App() {
         <Example />
       </main>
     </BalApp>
-  );
+  )
 }

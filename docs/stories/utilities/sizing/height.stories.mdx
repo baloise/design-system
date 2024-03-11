@@ -1,0 +1,84 @@
+import { Meta } from '@storybook/addon-docs'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssSizingHeight,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Sizing/Height"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Height" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the box-shadow or text-shadow effect applied to an element.</Lead>
+
+## Classes
+
+<CssSizingHeight />
+
+## Basic
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center">
+  <div class="radius-normal bg-green-2 w-12rem h-6rem p-small m-small">
+    <div class="h-auto radius-normal bg-green-4 p-small flex align-items-center justify-content-center">h-auto</div>
+  </div>
+  <div class="radius-normal bg-green-2 w-12rem h-6rem p-small m-small">
+    <div class="h-full radius-normal bg-green-4 p-small flex align-items-center justify-content-center">h-full</div>
+  </div>
+</div>
+`}
+/>
+
+## Fixed Height
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-row flex-wrap align-items-center justify-content-center">
+  <div class="h-6rem radius-normal bg-green-4 p-small m-small flex align-items-center justify-content-center">h-6rem</div>
+  <div class="h-12rem radius-normal bg-green-4 p-small m-small flex align-items-center justify-content-center">h-12rem</div>
+  <div class="h-24rem radius-normal bg-green-4 p-small m-small flex align-items-center justify-content-center">h-24rem</div>
+</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:h-full`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center">
+  <div class="radius-normal bg-green-2 w-16rem h-8rem p-small m-small">
+    <div class="h-full tablet:h-auto radius-normal bg-green-4 p-small flex align-items-center justify-content-center">h-full on small screen</div>
+  </div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

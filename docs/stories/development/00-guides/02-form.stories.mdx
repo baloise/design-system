@@ -18,7 +18,7 @@ import {
 
 <Meta title="Development/Form" />
 
-<Banner label="Form" section="Development"  />
+<Banner label="Form" section="Development" />
 
 <Lead>
   The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid
@@ -107,15 +107,15 @@ specific validators.
 </InfoQuote>
 
 1. Angular package offers `balAutoFocus` directive which brings focus to the element.
-Usage can be seen in the following code in bal-field.
-In order for it to work please import `BalSharedModule` in each Angular module that uses it.
+   Usage can be seen in the following code in bal-field.
+   In order for it to work please import `BalSharedModule` in each Angular module that uses it.
 
 <Code
   language="html"
   noPreview
   code={`
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-none">
-  <bal-field class="column is-full py-none" required>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid is-multiline mt-none">
+  <bal-field class="col is-full py-none" required>
     <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
       <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
@@ -126,7 +126,7 @@ In order for it to work please import `BalSharedModule` in each Angular module t
       <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
     </bal-field-message>
   </bal-field>
-  <bal-field class="column is-half py-none">...</bal-field>
+  <bal-field class="col is-half py-none">...</bal-field>
 </form>
 `}
 />
@@ -317,7 +317,7 @@ Now we have to define the logic of our form with the help of VeeValidate.
 
 ```typescript
 import { ref } from 'vue'
-import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/design-system-components-vue'
+import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/ds-vue'
 import { rules } from '@baloise/web-app-validators-vue'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
 import { isRequired } from '../helpers/validators'

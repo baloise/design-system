@@ -20,18 +20,18 @@
     "@angular/platform-browser": "15.2.1",
     "@angular/platform-browser-dynamic": "15.2.1",
     "@angular/router": "15.2.1",
-    "@baloise/design-system-components-angular": "latest",
-    "@baloise/design-system-css": "latest",
+    "@baloise/ds-angular": "latest",
+    "@baloise/ds-styles": "latest",
     "core-js": "3.26.1",
     "rxjs": "7.6.0",
     "tslib": "2.4.1",
     "zone.js": "0.12.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1102.0",
-    "@angular/cli": "^12.2.0",
-    "@angular/compiler-cli": "^12.2.0",
-    "@angular/language-service": "^12.2.0",
+    "@angular-devkit/build-angular": "~0.1102.0",
+    "@angular/cli": "~12.2.0",
+    "@angular/compiler-cli": "~12.2.0",
+    "@angular/language-service": "~12.2.0",
     "@types/jasmine": "3.6.3",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "14.14.28",
@@ -46,7 +46,7 @@
     "protractor": "7.0.0",
     "ts-node": "9.1.1",
     "tslint": "~6.1.3",
-    "typescript": "4.1.5"
+    "typescript": "~4.8.2"
   },
   "keywords": [
     "angular",

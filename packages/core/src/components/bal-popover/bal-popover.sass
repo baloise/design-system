@@ -1,0 +1,132 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-popover.vars'
+
++block(popover)
+  display: block
+  +mobile
+    .bal-popover__content
+      min-width: 100vw !important
+    .bal-select__popover
+      min-width: 100% !important
+  +modifier(active)
+    .bal-popover__content
+      display: block
+  +modifier(backdrop)
+    [bal-popover-trigger]
+      z-index: calc(var(--bal-z-index-popup) - 1)
+      position: relative
+  +modifier(hint)
+    .bal-popover__content
+      +mobile
+        min-height: 100vh
+        .bal-popover__content__inner
+          min-height: 100vh
+      +tablet
+        max-width: 20rem
+      +desktop
+        max-width: 30rem
+
+  +element(backdrop)
+    @extend %overlay
+    z-index: calc(var(--bal-z-index-popup) - 2)
+    position: fixed
+    background: var(--bal-popover-backdrop-background)
+    opacity: var(--bal-popover-backdrop-opacity)
+    height: var(--bal-popover-backdrop-height)
+    width: 100vw
+
+  +element(content)
+    display: none
+    z-index: var(--bal-z-index-popup)
+    box-shadow: var(--bal-popover-content-shadow)
+    background: var(--bal-popover-content-background)
+    min-width: 16.25rem
+    &[data-show]
+      display: block
+    +modifier(expanded)
+      min-width: 100%
+    +modifier(no-shadow)
+      box-shadow: none
+    +modifier(radius-normal)
+      border-radius: var(--bal-radius-normal)
+    +modifier(radius-large)
+      border-radius: var(--bal-radius-large)
+    +modifier(radius-none)
+      border-radius: 0
+    +modifier(radius-normal-bottom-none)
+      border-radius: var(--bal-radius-normal)
+      border-bottom-right-radius: 0
+      border-bottom-left-radius: 0
+    +modifier(radius-normal-top-none)
+      border-radius: var(--bal-radius-normal)
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+    +modifier(radius-large-bottom-none)
+      border-radius: var(--bal-radius-large)
+      border-bottom-right-radius: 0
+      border-bottom-left-radius: 0
+    +modifier(radius-large-top-none)
+      border-radius: var(--bal-radius-large)
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+    +modifier(on-top)
+      border-top: 1px solid var(--bal-color-grey-2)
+      height: var(--bal-popover-content-height-top-nav)
+      overflow-y: auto
+    +modifier(color-grey)
+      background: var(--bal-popover-content-background-grey)
+    +element(inner)
+      max-height: calc(100vh - 4.5rem)
+      overflow: auto
+      padding: 1rem
+      +tablet
+        padding: 1.5rem
+      +desktop
+        max-height: calc(100vh - 8rem)
+    +modifier(spaceless)
+      .bal-popover__content__inner
+        padding: 0
+    [data-popper-arrow]
+      display: none
+    +element(arrow)
+      visibility: hidden
+      [data-popper-arrow]
+        display: block
+      &,
+      &:before
+        position: absolute
+        width: 0.5rem
+        height: 0.5rem
+        background: inherit
+      &:before
+        visibility: visible
+        content: ''
+        transform: rotate(45deg)
+
+    &[data-popper-placement^='top'] > .bal-popover__content__arrow
+      bottom: -0.25rem
+
+    &[data-popper-placement^='bottom'] > .bal-popover__content__arrow
+      top: -0.25rem
+
+    &[data-popper-placement^='left'] > .bal-popover__content__arrow
+      right: -0.25rem
+
+    &[data-popper-placement^='right'] > .bal-popover__content__arrow
+      left: -0.25rem
+
++block(popover)
+  +modifier(arrow)
+    .bal-popover__content__arrow
+      display: block
+  +modifier(tooltip)
+    .bal-popover__content
+      min-width: unset
+      background: var(--bal-popover-tooltip-background)
+      .bal-popover__content__inner
+        padding: var(--bal-space-x-small)
+        &,
+        p
+          color: var(--bal-popover-tooltip-color)
+          font-family: var(--bal-popover-tooltip-font-family)
+          font-size: var(--bal-popover-tooltip-font-size)

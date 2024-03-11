@@ -1,0 +1,36 @@
+{
+  "name": "@baloise/ds-styles",
+  "version": "16.0.0",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://baloise-design-system.vercel.app",
+  "license": "Apache-2.0",
+  "bin": {
+    "ds-styles-migrate": "./bin/index.mjs"
+  },
+  "main": "scss/baloise-design-system.sass",
+  "style": "css/baloise-design-system.css",
+  "files": [
+    "bin/",
+    "css/",
+    "sass/",
+    "src/"
+  ],
+  "dependencies": {
+    "@baloise/ds-fonts": "16.0.0",
+    "@baloise/ds-tokens": "16.0.0",
+    "@phenomnomnominal/tsquery": "6.1.3",
+    "cheerio": "1.0.0-rc.12",
+    "glob": "10.3.10",
+    "prompts": "2.4.2",
+    "replace-in-file": "7.1.0",
+    "typescript": "~4.8.2"
+  },
+  "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
+}

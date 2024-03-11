@@ -1,5 +1,5 @@
-import type { JSX } from '@baloise/design-system-components'
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/design-system-brand-icons'
+import type { JSX } from '@baloise/ds-core'
+import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
@@ -42,7 +42,7 @@ export const UiIcons = Story({
   },
   ...withRender(
     () =>
-      `<div class="is-flex fg-medium is-flex-wrap-wrap">
+      `<div class="flex gap-medium flex-wrap">
       ${[
         'caret-down',
         'caret-left',
@@ -72,7 +72,7 @@ export const UiIcons = Story({
         'youtube',
       ]
         .map(
-          item => `<div class="is-flex fg-small is-flex-wrap-wrap is-align-items-center" style="min-width: 180px">
+          item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 180px">
       <bal-icon name="${item}"></bal-icon>
       <span>${item}</span>
     </div>`,

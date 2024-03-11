@@ -1,0 +1,90 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import '../bal-radio-checkbox.vars'
+
+.bal-checkbox-button
+  display: block
+  position: relative
+  //
+  // grid
+  flex: 0 0 100%
+  +tablet
+    &--column-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +mobile
+    &--column-mobile-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-mobile-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-mobile-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +tablet
+    &--column-tablet-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-tablet-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-tablet-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +desktop
+    &--column-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  //
+  // native button element
+  &__native
+    display: block
+    width: 100%
+    height: 100%
+    background: var(--bal-radio-checkbox-button-background)
+    border-style: var(--bal-form-field-control-border-style)
+    border-radius: var(--bal-form-field-control-radius)
+    border-width: var(--bal-form-field-control-border-width)
+    border-color: var(--bal-radio-checkbox-button-border-color)
+    padding: var(--bal-text-size-medium)
+    cursor: pointer
+    user-select: none
+    //
+    // checked state
+    &--checked
+      border-color: var(--bal-radio-checkbox-button-border-color-checked)
+    &--checked#{&}--color-green
+      background: var(--bal-radio-checkbox-button-background-checked-green)
+    &--checked#{&}--color-purple
+      background: var(--bal-radio-checkbox-button-background-checked-purple)
+    &--checked#{&}--color-red
+      background: var(--bal-radio-checkbox-button-background-checked-red)
+    &--checked#{&}--color-yellow
+      background: var(--bal-radio-checkbox-button-background-checked-yellow)
+    //
+    // color states
+    &:disabled,
+    &--disabled
+      background: var(--bal-radio-checkbox-button-background-disabled)
+      border-color: var(--bal-radio-checkbox-button-border-color-disabled)
+      cursor: default
+    &--invalid
+      border-color: var(--bal-radio-checkbox-button-border-color-invalid)
+    //
+    // user interactions
+    +hover()
+      &:hover:not(:disabled):not(.bal-checkbox-button__native--colored)
+        background: var(--bal-radio-checkbox-button-background-hover)
+        border-color: var(--bal-radio-checkbox-button-border-color-hover)
+    &:active:not(:disabled)
+      border-color: var(--bal-radio-checkbox-button-border-color-active)
+    &--invalid
+      +hover()
+        &:hover:not(:disabled)
+          border-color: var(--bal-radio-checkbox-button-border-color-invalid-hover)
+        &:active:not(:disabled)
+          border-color: var(--bal-radio-checkbox-button-border-color-invalid-active)
+    //
+    // flying focus
+    &.bal-focused
+      @extend %focus-shadow

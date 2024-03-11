@@ -1,7 +1,7 @@
 name: ⬆️ Upgrade Assistance
 description: Need Help Upgrading?
-title: ":arrow_up: upgrade <app> to <version>"
-labels: ["⬆️ upgrade"]
+title: ':arrow_up: upgrade <app> to <version>'
+labels: ['⬆️ upgrade']
 body:
   - type: textarea
     id: summary

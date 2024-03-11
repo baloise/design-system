@@ -1,0 +1,42 @@
+{
+  "name": "e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": ["core"], "target": "build" }],
+      "options": {
+        "commands": ["npx nx run core:serve", "npx nx run e2e:serve"],
+        "parallel": true
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["prepare"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "cypress open --browser chrome --env visualRegressionType=regression --config screenshotsFolder=cypress/snapshots/actual"
+      }
+    },
+    "prepare": {
+      "executor": "@baloise/ds-nx:build-e2e",
+      "outputs": ["{projectRoot}/generated"],
+      "options": {
+        "projectRoot": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "@baloise/ds-nx:build-e2e",
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/generated"],
+      "options": {
+        "projectRoot": "{projectRoot}"
+      }
+    },
+    "test": {
+      "command": "echo done",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:e2e", "scope:visual", "type:test"]
+}

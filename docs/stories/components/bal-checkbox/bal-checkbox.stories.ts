@@ -1,9 +1,7 @@
-import type { JSX } from '@baloise/design-system-components'
+import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarGreen } from '@baloise/design-system-brand-icons'
-import { balBrandIconCarRed } from '@baloise/design-system-brand-icons'
-import { balBrandIconCarPurple } from '@baloise/design-system-brand-icons'
+import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons'
 
 type Args = JSX.BalCheckbox & { content: string }
 
@@ -120,7 +118,7 @@ export const FilterButtons = Story({
                 Label
             </bal-checkbox>
             <bal-checkbox>
-                Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it
+                Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in it
             </bal-checkbox>
         </bal-checkbox-group>
     </bal-field-control>

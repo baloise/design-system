@@ -1,0 +1,16 @@
+{
+  "name": "@baloise/output-target-react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "tslib": "~2.3.0",
+    "@stencil/core": "~4.11.0"
+  },
+  "peerDependencies": {
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0"
+  },
+  "type": "commonjs",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts"
+}

@@ -1,0 +1,21 @@
+name: 'Cypress Setup'
+description: 'Cypress Setup'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Dependencies
+      run: npm ci
+      working-directory: ./e2e
+      shell: bash
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: core-dist
+        path: ./packages/core
+        filename: CoreDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: e2e-artifacts
+        path: ./e2e
+        filename: E2eBuildArtifacts.zip

@@ -1,0 +1,271 @@
+name: 🤖 PR Commands
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  createIssueBranch:
+    name: 📝 Create Issue Branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: robvanderleek/create-issue-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  snapshot:
+    name: 🚚 Create Snapshot
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/snapshot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚚 Snapshot Version in Progress...**
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Get Branch Name
+        id: get-branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get-branch.outputs.branch }}
+          fetch-depth: 0
+      - uses: ./.github/workflows/actions/setup
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        with:
+          path: packages/core
+
+      - name: Get Last Commit SHA
+        id: last-commit
+        run: |
+          COMMITS_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.issue.number }}/commits"
+          LAST_COMMIT_SHA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.[-1].sha')
+          echo "sha=$LAST_COMMIT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Shorten Commit Sha
+        id: short-sha
+        run: echo "value=$(git rev-parse --short ${{ steps.last-commit.outputs.sha }})" >> $GITHUB_OUTPUT
+
+      - name: Create version
+        id: set-version
+        run: echo "version=${{ steps.package-version.outputs.current-version}}-snapshot.${{ github.event.issue.number }}-${{ steps.short-sha.outputs.value }}" >> $GITHUB_OUTPUT
+
+      - name: Print version
+        run: echo "${{steps.set-version.outputs.version}}"
+
+      - uses: ./.github/workflows/actions/release-setup
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Define version
+        run: npx nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: npx nx run-many -t build --projects=tag:scope:release
+
+      - name: Pre-Publish
+        run: npx nx run pre-publish
+
+      - name: Publish
+        run: npx nx release publish --tag=snapshot
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚀 Snapshot Version Released!**
+
+            Version: `${{ steps.set-version.outputs.version }}`
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Snapshot Version Failed!**
+
+            Version: `${{ steps.set-version.outputs.version }}`
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Git Reset
+        run: git reset --hard
+
+  visual:
+    name: 📸 Create Base Image
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/create-base-image')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Check for /create-base-image command
+        uses: actions/github-script@v7
+        id: command
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/create-base-image(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Filter specs
+        uses: actions/github-script@v7
+        id: specs
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/create-base-image(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName.split(',').map(v => `cypress/e2e/visual/${v}`);
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Get results
+        run: |
+          echo "${{ steps.command.outputs.result }}"
+          echo "${{ steps.specs.outputs.result }}"
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Create Base Image in Progress...**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Get Branch Name
+        id: get-branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get-branch.outputs.branch }}
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: ./.github/workflows/actions/e2e-build
+        with:
+          build: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run All Cypress
+        if: steps.specs.outputs.result == 'all'
+        uses: cypress-io/github-action@v6
+        with:
+          start: node ./web-server.js
+          wait-on: 'http://localhost:3333'
+          working-directory: e2e
+          install: false
+          browser: chrome
+        env:
+          CYPRESS_visualRegressionType: base
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Cypress by files
+        if: steps.specs.outputs.result != 'all' && steps.specs.outputs.result != 'none'
+        uses: cypress-io/github-action@v6
+        with:
+          start: node ./web-server.js
+          wait-on: 'http://localhost:3333'
+          working-directory: e2e
+          install: false
+          browser: chrome
+          spec: ${{ steps.specs.outputs.result }}
+        env:
+          CYPRESS_visualRegressionType: base
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload snapshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-snapshots
+          path: e2e/cypress/snapshots
+
+      - name: Commit base images
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update base images'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Create Base Image finished!**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Create Base Image Failed!**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
