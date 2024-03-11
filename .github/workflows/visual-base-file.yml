@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
       - uses: ./.github/workflows/actions/e2e-build
         with:
@@ -49,4 +50,4 @@ jobs:
         with:
           message: 'update base images'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
