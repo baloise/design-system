@@ -28,7 +28,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
       if (!isDocs) {
         const componentName = component.tag
-        const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
+        const storyPath = component.dirPath?.replace('packages/core/src', 'docs/stories') || ''
 
         const componentFolderDepth = component.filePath?.split(sep).length
         const isRoot = componentFolderDepth === 4

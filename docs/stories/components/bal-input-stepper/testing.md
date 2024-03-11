@@ -6,6 +6,8 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- START: human documentation -->
 
+
+
 <!-- END: human documentation -->
 
 ### Commands
@@ -17,6 +19,7 @@ A list of the custom commands for this specific component.
 | `balInputStepperIncrease` | Increases the value of the control | (options?: Partial\<Loggable>): Chainable |
 | `balInputStepperDecrease` | Decreases the value of the control | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector                | Element               |
@@ -25,3 +28,4 @@ A list of the custom commands for this specific component.
 | `inputStepper.increase` | Increase button.      |
 | `inputStepper.native`   | Native input element. |
 | `inputStepper.text`     | Text element.         |
+

@@ -33,6 +33,7 @@ A list of the custom commands for this specific component.
 | `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | (options?: Partial\<Loggable>): Chainable |
 | `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector                | Element                                      |
@@ -43,3 +44,4 @@ A list of the custom commands for this specific component.
 | `pagination.pageNumber` | The number of the page.                      |
 | `pagination.pages`      | bal-button of the number of the page..       |
 | `pagination.button`     | The native button of the number of the page. |
+

@@ -26,6 +26,7 @@ A list of the custom commands for this specific component.
 | ----------------- | ------------------------------ | ----------------------------------------- |
 | `balSnackbarFind` | Returns the visible snackbars. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector           | Element                   |
@@ -35,3 +36,4 @@ A list of the custom commands for this specific component.
 | `snackbar.label`   | Snackbar label element.   |
 | `snackbar.close`   | Snackbar close element.   |
 | `snackbar.action`  | Snackbar action element.  |
+

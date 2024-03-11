@@ -34,8 +34,10 @@ A list of the custom commands for this specific component.
 | `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | (options?: Partial\<Loggable>): Chainable |
 | `balModalClose`    | Closes the selected modal.                                                                          | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector     | Element        |
 | ------------ | -------------- |
 | `modal.main` | Modal element. |
+

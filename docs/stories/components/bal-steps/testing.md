@@ -32,9 +32,11 @@ A list of the custom commands for this specific component.
 | `balStepsItemShouldHaveState`    | Assert that the tab item has the given state.     | (state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial\<Loggable>): Chainable |
 | `balStepsItemShouldNotHaveState` | Assert that the tab item has not the given state. | (state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector            | Element           |
 | ------------------- | ----------------- |
 | `steps.option`      | Step option       |
 | `steps.optionLabel` | Step option label |
+

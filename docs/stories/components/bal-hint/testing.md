@@ -34,6 +34,7 @@ A list of the custom commands for this specific component.
 | `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | (options?: Partial\<Loggable>): Chainable |
 | `balHintFindCloseButton` | Returns the close button of the overlay content.                               | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector       | Element               |
@@ -41,3 +42,4 @@ A list of the custom commands for this specific component.
 | `hint.trigger` | Hint trigger element. |
 | `hint.content` | Hint content element. |
 | `hint.close`   | Hint close element.   |
+

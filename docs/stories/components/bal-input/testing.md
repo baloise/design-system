@@ -21,8 +21,10 @@ describe('Input', () => {
 
 <!-- END: human documentation -->
 
+
 ### Selectors
 
 | Selector       | Element               |
 | -------------- | --------------------- |
 | `input.native` | Native input element. |
+

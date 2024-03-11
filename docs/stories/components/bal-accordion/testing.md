@@ -31,6 +31,7 @@ A list of the custom commands for this specific component.
 | `balAccordionIsOpen`   | Asserts if the accordion is open.   | (options?: Partial\<Loggable>): Chainable |
 | `balAccordionIsClosed` | Asserts if the accordion is closed. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector            | Element                                                          |
@@ -38,3 +39,4 @@ A list of the custom commands for this specific component.
 | `accordion.trigger` | The trigger button, which shows and hides the content / details. |
 | `accordion.details` | The content or the hidden part of the accordion.                 |
 | `accordion.summary` | The header or visible part of the accordion                      |
+

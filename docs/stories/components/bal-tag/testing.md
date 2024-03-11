@@ -6,7 +6,10 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- START: human documentation -->
 
+
+
 <!-- END: human documentation -->
+
 
 ### Selectors
 
@@ -14,3 +17,4 @@ The Baloise Design System provides a collection of custom cypress commands for t
 | ----------- | ------------- |
 | `tag.label` | Tag label..   |
 | `tag.close` | Close button. |
+

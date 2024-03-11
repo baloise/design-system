@@ -35,9 +35,11 @@ A list of the custom commands for this specific component.
 | `balTabItemShouldHaveState` | Assert that the tab item has the given state. | (state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial\<Loggable>): Chainable |
 | `balTabItemShouldBeActive`  | Assert that the tab item is active or not.    | (active?: boolean, options?: Partial\<Loggable>): Chainable                                    |
 
+
 ### Selectors
 
 | Selector         | Element         |
 | ---------------- | --------------- |
 | `tabs.item`      | Tab item.       |
 | `tabs.itemLabel` | Tab item label. |
+

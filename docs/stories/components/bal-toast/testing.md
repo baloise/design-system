@@ -26,6 +26,7 @@ A list of the custom commands for this specific component.
 | -------------- | --------------------------- | ----------------------------------------- |
 | `balToastFind` | Returns the visible toasts. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector      | Element              |
@@ -33,3 +34,4 @@ A list of the custom commands for this specific component.
 | `toast.main`  | Toast element.       |
 | `toast.label` | Toast label element. |
 | `toast.close` | Toast close element. |
+

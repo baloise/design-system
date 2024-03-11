@@ -6,7 +6,10 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- START: human documentation -->
 
+
+
 <!-- END: human documentation -->
+
 
 ### Selectors
 
@@ -16,3 +19,4 @@ The Baloise Design System provides a collection of custom cypress commands for t
 | `carousel.paginationNext`          | Pagination right control. |
 | `carousel.carouselControlPrevious` | Carousel right control.   |
 | `carousel.carouselControlNext`     | Carousel left control.    |
+

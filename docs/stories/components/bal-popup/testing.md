@@ -34,6 +34,7 @@ A list of the custom commands for this specific component.
 | `balPopupIsOpen`   | Asserts if the popover is open.   | (options?: Partial\<Loggable>): Chainable |
 | `balPopupIsClosed` | Asserts if the popover is closed. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector        | Element                         |
@@ -42,3 +43,4 @@ A list of the custom commands for this specific component.
 | `popup.content` | Popup content element.          |
 | `popup.close`   | Popup close button in the head. |
 | `popup.label`   | Popup label / heading element.  |
+

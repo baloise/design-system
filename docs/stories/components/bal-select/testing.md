@@ -54,6 +54,7 @@ A list of the custom commands for this specific component.
 | `balSelectFindChips`         | Returns the closable select chips (only with multiselect). | (options?: Partial\<Loggable>): Chainable                                                  |
 | `balSelectShouldHaveOptions` | Asserts that the select has the given options.             | (labels: string[], dataType?: 'label' \| 'value', options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector         | Element               |
@@ -61,3 +62,4 @@ A list of the custom commands for this specific component.
 | `select.input`   | Native input element. |
 | `select.options` | Select option.        |
 | `select.chips`   | Multi select tag .    |
+

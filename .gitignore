@@ -87,6 +87,7 @@ docs/public/assets/images/map-markers
 docs/public/assets/images/brand-icons
 docs/public/assets/images/icons
 docs/stories/assets/data
+docs/stories/components/**/api.md
 docs/dist
 
 test/angular/*

@@ -36,9 +36,11 @@ A list of the custom commands for this specific component.
 | `balPopoverTriggerContains` | Asserts if the trigger button contains the given content. | (content: string \| number \| RegExp, options?: Partial\<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable |
 | `balPopoverContentContains` | Asserts if the popover menu contains the given content.   | (content: string \| number \| RegExp, options?: Partial\<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable |
 
+
 ### Selectors
 
 | Selector          | Element                  |
 | ----------------- | ------------------------ |
 | `popover.trigger` | Popover trigger.         |
 | `popover.content` | Popover content element. |
+

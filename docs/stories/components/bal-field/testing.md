@@ -6,6 +6,8 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- START: human documentation -->
 
+
+
 <!-- END: human documentation -->
 
 ### Commands
@@ -16,8 +18,10 @@ A list of the custom commands for this specific component.
 | ------------------ | ---------------------------------------- | ----------------------------------------- |
 | `balFieldFindHint` | Returns the hint component of the label. | (options?: Partial\<Loggable>): Chainable |
 
+
 ### Selectors
 
 | Selector     | Element       |
 | ------------ | ------------- |
 | `field.hint` | Hint element. |
+

@@ -24,6 +24,8 @@ generated
 docs/public
 docs/stories/assets
 docs/stories/components/**/api.md
+docs/stories/components/**/testing.md
+docs/stories/components/**/theming.md
 
 e2e/cypress/snapshots
 e2e/cypress/videos

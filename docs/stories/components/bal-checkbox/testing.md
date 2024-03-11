@@ -19,6 +19,7 @@ describe('Checkbox', () => {
 
 <!-- END: human documentation -->
 
+
 ### Selectors
 
 | Selector         | Element               |
@@ -26,3 +27,4 @@ describe('Checkbox', () => {
 | `checkbox.input` | Native input element. |
 | `checkbox.label` | Label element.        |
 | `checkbox.text`  | Label span element.   |
+
