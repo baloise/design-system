@@ -14,5 +14,35 @@
   "dependencies": {
     "@baloise/ds-core": "16.0.0",
     "cypress-file-upload": "~5.0.8"
+  },
+  "module": "./index.esm.js",
+  "type": "module",
+  "main": "./index.esm.js",
+  "types": "./index.esm.d.ts",
+  "exports": {
+    ".": "./index.esm.js",
+    "./add-custom-commands": "./add-custom-commands.esm.js",
+    "./add-override-commands": "./add-override-commands.esm.js",
+    "./selectors": "./selectors.esm.js",
+    "./viewports": "./viewports.esm.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./index.esm.d.ts"
+      ],
+      "add-custom-commands": [
+        "./add-custom-commands.esm.d.ts"
+      ],
+      "add-override-commands": [
+        "./add-override-commands.esm.d.ts"
+      ],
+      "selectors": [
+        "./selectors.esm.d.ts"
+      ],
+      "viewports": [
+        "./viewports.esm.d.ts"
+      ]
+    }
   }
 }
