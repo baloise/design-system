@@ -15,33 +15,33 @@
     "@baloise/ds-core": "16.0.0",
     "cypress-file-upload": "~5.0.8"
   },
+  "module": "./index.esm.js",
   "type": "module",
-  "module": "./dist/index.esm.js",
-  "main": "./dist/index.esm.js",
-  "types": "./dist/index.esm.d.ts",
+  "main": "./index.esm.js",
+  "types": "./index.esm.d.ts",
   "exports": {
-    ".": "./dist/index.esm.js",
-    "./add-custom-commands": "./dist/add-custom-commands.esm.js",
-    "./add-override-commands": "./dist/add-override-commands.esm.js",
-    "./selectors": "./dist/selectors.esm.js",
-    "./viewports": "./dist/viewports.esm.js"
+    ".": "./index.esm.js",
+    "./add-custom-commands": "./add-custom-commands.esm.js",
+    "./add-override-commands": "./add-override-commands.esm.js",
+    "./selectors": "./selectors.esm.js",
+    "./viewports": "./viewports.esm.js"
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./dist/index.esm.d.ts"
+        "./index.esm.d.ts"
       ],
       "add-custom-commands": [
-        "./dist/add-custom-commands.esm.d.ts"
+        "./add-custom-commands.esm.d.ts"
       ],
       "add-override-commands": [
-        "./dist/add-override-commands.esm.d.ts"
+        "./add-override-commands.esm.d.ts"
       ],
       "selectors": [
-        "./dist/selectors.esm.d.ts"
+        "./selectors.esm.d.ts"
       ],
       "viewports": [
-        "./dist/viewports.esm.d.ts"
+        "./viewports.esm.d.ts"
       ]
     }
   }

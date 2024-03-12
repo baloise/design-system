@@ -22,7 +22,7 @@ pushd packages/core
 npm link
 popd
 
-pushd packages/testing
+pushd packages/testing/dist
 npm link
 popd
 
