@@ -1,5 +1,13 @@
 # Changelog
 
+## 16.0.1
+
+### Patch Changes
+
+- **testing**: fix import paths ( [#1346](https://github.com/baloise/design-system/pull/1346))
+
+- **core**: adjust interface reference paths ( [#1348](https://github.com/baloise/design-system/pull/1348))
+
 ## 16.0.0
 
 ### Major Changes
