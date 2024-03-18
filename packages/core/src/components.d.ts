@@ -2080,6 +2080,48 @@ export namespace Components {
          */
         "value"?: number;
     }
+    interface BalOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "checkbox": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "focused": boolean;
+        /**
+          * If `true`, the option is hidden.
+         */
+        "hidden": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "invalid": boolean;
+        /**
+          * Label will be shown in the input element when it got selected
+         */
+        "label": string;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "multiline": boolean;
+        /**
+          * Selects or deselects the option and informs other components
+         */
+        "select": (selected?: boolean) => Promise<void>;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "selected": boolean;
+        /**
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+         */
+        "value": string;
+    }
     interface BalPagination {
         /**
           * Align the buttons to start, center or end
@@ -3332,6 +3374,10 @@ export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNumberInputElement;
 }
+export interface BalOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalOptionElement;
+}
 export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPaginationElement;
@@ -4208,6 +4254,24 @@ declare global {
         prototype: HTMLBalNumberInputElement;
         new (): HTMLBalNumberInputElement;
     };
+    interface HTMLBalOptionElementEventMap {
+        "balOptionChange": BalEvents.BalOptionChangeDetail;
+        "balOptionFocus": BalEvents.BalOptionFocusDetail;
+    }
+    interface HTMLBalOptionElement extends Components.BalOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalOptionElement: {
+        prototype: HTMLBalOptionElement;
+        new (): HTMLBalOptionElement;
+    };
     interface HTMLBalPaginationElementEventMap {
         "balChange": BalEvents.BalPaginationChangeDetail;
     }
@@ -4704,6 +4768,7 @@ declare global {
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
+        "bal-option": HTMLBalOptionElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
@@ -6902,6 +6967,49 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface BalOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "checkbox"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "focused"?: boolean;
+        /**
+          * If `true`, the option is hidden.
+         */
+        "hidden"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "invalid"?: boolean;
+        /**
+          * Label will be shown in the input element when it got selected
+         */
+        "label"?: string;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "multiline"?: boolean;
+        /**
+          * Emitted when the option gets selected or unselected
+         */
+        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
+        "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "selected"?: boolean;
+        /**
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+         */
+        "value"?: string;
+    }
     interface BalPagination {
         /**
           * Align the buttons to start, center or end
@@ -8156,6 +8264,7 @@ declare namespace LocalJSX {
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
+        "bal-option": BalOption;
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
@@ -8275,6 +8384,7 @@ declare module "@stencil/core" {
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
+            "bal-option": LocalJSX.BalOption & JSXBase.HTMLAttributes<HTMLBalOptionElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
