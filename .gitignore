@@ -68,8 +68,8 @@ libs/output-targets-vue/CHANGELOG.md
 e2e/generated
 e2e/downloads
 e2e/reg.json
-e2e/cypress/snapshots
-!e2e/cypress/snapshots/base
+e2e/cypress/snapshots/actual
+e2e/cypress/snapshots/diff
 
 resources/data
 !resources/data/tags.json
