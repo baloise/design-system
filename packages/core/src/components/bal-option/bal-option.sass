@@ -10,15 +10,15 @@
   display: block
   list-style: none
   cursor: pointer
-  border-bottom-width: var(--bal-border-width-normal)
+  border-bottom-width: var(--bal-option-border-width)
+  border-bottom-color: var(--bal-option-border-color)
   border-bottom-style: solid
-  border-bottom-color: var(--bal-color-grey-2)
-  background: var(--bal-color-white)
-  padding-left: var(--bal-space-x-small)
-  padding-right: var(--bal-space-x-small)
-  min-height: 1.5rem
+  background: var(--bal-option-background)
+  padding-left: var(--bal-option-padding-x)
+  padding-right: var(--bal-option-padding-x)
+  min-height: var(--bal-option-min-height)
   & > bal-stack
-    min-height: 1.5rem
+    min-height: var(--bal-option-min-height)
   &:last-child
     border-bottom: none
   &::-moz-focus-inner
@@ -31,9 +31,9 @@
 // --------------------------------------------------
 
 .bal-option__inner
-  font-family: var(--bal-font-family-text)
-  font-weight: var(--bal-font-weight-regular)
-  line-height: 1.125rem
+  font-family: var(--bal-option-font-family)
+  font-weight: var(--bal-option-font-weight)
+  line-height: var(--bal-option-line-height)
   word-break: break-word
   white-space: normal
   hyphens: auto
@@ -48,53 +48,64 @@
 // Focused Option
 // --------------------------------------------------
 .bal-option--focused
-  background: var(--bal-color-grey-2)
+  background: var(--bal-option-background-hovered)
 
 .bal-option
   +hover
     &:hover
-      background: var(--bal-color-grey-2)
-      color: var(--bal-color-text-primary-hovered)
+      background: var(--bal-option-background-hovered)
+      color: var(--bal-option-text-hovered)
   &:active
-    background: var(--bal-color-grey-2)
-    color: var(--bal-color-text-primary-pressed)
+    background: var(--bal-option-background-hovered)
+    color: var(--bal-option-text-pressed)
 
 // Selected Option
 // --------------------------------------------------
 .bal-option--selected
-  background: var(--bal-color-primary-1)
+  background: var(--bal-option-background-selected)
   +hover
     &:hover
-      background: #cccfe2
+      background: var(--bal-option-background-selected-hovered)
+  &:active
+    background: var(--bal-option-background-selected-hovered)
 
 .bal-option--selected .bal-option__inner
   font-weight: var(--bal-font-weight-bold)
 
 .bal-option--selected.bal-option--focused
-  background: #cccfe2
+  background: var(--bal-option-background-selected-hovered)
   .bal-option__inner
     font-weight: var(--bal-font-weight-bold)
 
 // Invalid Option
 // --------------------------------------------------
 .bal-option--invalid
-  background: var(--bal-color-danger-1)
+  background: var(--bal-option-background-invalid)
   +hover
     &:hover
-      background: #f5d0cc
+      background: var(--bal-option-background-invalid-hovered)
+  &:active
+    background: var(--bal-option-background-invalid-hovered)
+
+.bal-option--invalid.bal-option--focused
+  background: var(--bal-option-background-invalid-hovered)
 
 .bal-option--invalid .bal-option__inner
   color: var(--bal-color-text-danger-hovered)
 
-.bal-option--invalid.bal-option--focused
-  background: #f5d0cc
++hover
+  .bal-option--invalid:hover .bal-option__inner
+    color: var(--bal-color-text-danger-hovered)
+
+.bal-option--invalid:active .bal-option__inner
+  color: var(--bal-color-text-danger-pressed)
 
 // Disbaled Option
 // --------------------------------------------------
 .bal-option--disabled,
 .bal-option--disabled.bal-option--focused
-  background: var(--bal-color-white) !important
-  color: var(--bal-color-text-grey-light) !important
+  background: var(--bal-option-background) !important
+  color: var(--bal-option-text-disabled) !important
   cursor: default !important
   &:hover
-    background: var(--bal-color-white) !important
+    background: var(--bal-option-background) !important
