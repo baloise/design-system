@@ -9,6 +9,8 @@ packages/maps/src/markers.json
 packages/core/icons
 packages/core/src/utils/constants/icons.constant.ts
 packages/core/src/components.d.ts
+packages/devkit/src/**/*.js
+packages/devkit/src/**/*.d.ts
 
 resources/data/tags.json
 

@@ -7,31 +7,20 @@
     "nx-release-publish": {
       "executor": "@nx/js:release-publish",
       "options": {
-        "packageRoot": "{projectRoot}/dist"
-      }
-    },
-    "prepare": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "{projectRoot}/dist",
-        "main": "{projectRoot}/src/index.ts",
-        "tsConfig": "{projectRoot}/tsconfig.lib.json",
-        "assets": ["{projectRoot}/**/files/**", "{projectRoot}/src/**/*.json"]
+        "packageRoot": "{projectRoot}"
       }
     },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["^build", "prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "copyfiles src/*/schema.json src/*/files/** src/collection.json dist"
+        "command": "tsc -p tsconfig.json"
       }
     },
     "link": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}/dist",
+        "cwd": "{projectRoot}",
         "command": "npm link"
       }
     }

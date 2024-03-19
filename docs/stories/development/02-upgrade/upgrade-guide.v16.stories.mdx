@@ -111,7 +111,7 @@ npm add -D -E @baloise/ds-devkit
 2. **Angular Schematics Script:** Rename the packages by simply run the following command in your project's root directory:
 
 ```bash
-ng generate @baloise/ds-devkit:up16
+npx ng generate @baloise/ds-devkit:up16
 ```
 
 3. **Verify the Changes:** Once the script has run, review the changes to ensure everything has been updated correctly. It's a good practice to check the git diff if your project is version-controlled.
@@ -281,7 +281,7 @@ package CLI. Here's how to proceed:
 1. **Install Styles:** First we need to install the new styles package if yet not there.
 
 ```bash
-npm add -D -E @baloise/ds-styles@16
+npm add -E @baloise/ds-styles@16
 ```
 
 2. **Start CLI:**: Run the migration CLI to rename the changed CSS utility classes. The CLI updates the global stylesheet, component stylesheets, HTML files and Angular inline templates.

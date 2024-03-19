@@ -231,13 +231,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload snapshots
-        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-snapshots
           path: e2e/cypress/snapshots
 
       - name: Commit base images
+        if: success()
         uses: EndBug/add-and-commit@v9
         with:
           message: 'update base images'

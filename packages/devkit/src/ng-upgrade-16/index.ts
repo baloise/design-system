@@ -180,7 +180,6 @@ function updateSassImports(): Rule {
           recorder.remove(0, content.length)
           recorder.insertLeft(0, newContent)
           tree.commitUpdate(recorder)
-          _context.logger.info(`Updated import in ${path}`)
         }
       }
     })
