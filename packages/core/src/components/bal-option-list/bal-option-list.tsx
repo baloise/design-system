@@ -1,10 +1,11 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, Listen, State } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { raf, waitAfterFramePaint } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { includes, startsWith } from '../bal-select/utils/utils'
+import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-option-list',
@@ -19,6 +20,8 @@ export class OptionList implements ComponentInterface, Loggable {
   @Element() el!: HTMLElement
 
   log!: LogInstance
+
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   @Logger('bal-option-list')
   createLogger(log: LogInstance) {
@@ -39,6 +42,11 @@ export class OptionList implements ComponentInterface, Loggable {
    * Defines the focused option with his index value
    */
   @Prop({ mutable: true }) focusIndex = -1
+
+  /**
+   * Id of the label element to describe this option list
+   */
+  @Prop() labelledby?: string
 
   /**
    * Defines the filter logic of the list
@@ -241,6 +249,14 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * GETTERS
    * ------------------------------------------------------
    */
@@ -437,6 +453,8 @@ export class OptionList implements ComponentInterface, Loggable {
   render() {
     const block = BEM.block('option-list')
 
+    const labelledby = this.labelledby || this.ariaForm.labelId
+
     return (
       <Host
         class={{
@@ -447,6 +465,7 @@ export class OptionList implements ComponentInterface, Loggable {
       >
         <div
           role="listbox"
+          aria-labelledby={labelledby}
           class={{
             ...block.element('container').class(),
           }}

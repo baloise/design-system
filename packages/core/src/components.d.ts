@@ -2170,6 +2170,10 @@ export namespace Components {
          */
         "getSelectedOptions": () => Promise<string[]>;
         /**
+          * Id of the label element to describe this option list
+         */
+        "labelledby"?: string;
+        /**
           * If `true` the list supports multiple selections
          */
         "multiple": boolean;
@@ -2189,6 +2193,7 @@ export namespace Components {
           * Selects the option with the current focus
          */
         "selectByFocus": () => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -7098,6 +7103,10 @@ declare namespace LocalJSX {
           * Defines the focused option with his index value
          */
         "focusIndex"?: number;
+        /**
+          * Id of the label element to describe this option list
+         */
+        "labelledby"?: string;
         /**
           * If `true` the list supports multiple selections
          */
