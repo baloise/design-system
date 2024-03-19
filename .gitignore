@@ -61,6 +61,11 @@ packages/favicons/CHANGELOG.md
 packages/fonts/CHANGELOG.md
 packages/icons/CHANGELOG.md
 
+packages/devkit/src/**/*.js
+packages/devkit/src/**/*.js.map
+packages/devkit/src/**/*.d.ts
+
+
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 libs/output-targets-vue/CHANGELOG.md
@@ -68,8 +73,8 @@ libs/output-targets-vue/CHANGELOG.md
 e2e/generated
 e2e/downloads
 e2e/reg.json
-e2e/cypress/snapshots
-!e2e/cypress/snapshots/base
+e2e/cypress/snapshots/actual
+e2e/cypress/snapshots/diff
 
 resources/data
 !resources/data/tags.json
