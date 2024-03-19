@@ -1,5 +1,17 @@
 # Changelog
 
+## 16.0.2
+
+### Patch Changes
+
+- **css**: support new grid class names like `grid` and `col` ( [#1361](https://github.com/baloise/design-system/pull/1361))
+
+- **styles**: fix paths in the migration script for windows ( [#1361](https://github.com/baloise/design-system/pull/1361))
+
+- **devkit**: fix build issue of ng-add schematics ( [#1361](https://github.com/baloise/design-system/pull/1361))
+
+- **styles**: add migration for compact theme ( [#1359](https://github.com/baloise/design-system/pull/1359))
+
 ## 16.0.1
 
 ### Patch Changes
