@@ -271,6 +271,8 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
         new RegExp(`@baloise/(ds-css|design-system-css)/(sass|css)/radius`, 'g'),
         new RegExp(`@baloise/(ds-css|design-system-css)/(sass|css)/opacity`, 'g'),
         new RegExp(`@baloise/(ds-css|design-system-css)/(sass|css)/shadow`, 'g'),
+
+        new RegExp(`@baloise/(ds-css|design-system-css)/(sass|css)/theme-compact`, 'g'),
       ],
       to: [
         '@baloise/ds-styles/sass/all',
@@ -293,6 +295,7 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
         '@baloise/ds-styles/css/utilities/border',
         '@baloise/ds-styles/css/utilities/elevation',
         '@baloise/ds-styles/css/utilities/elevation',
+        '@baloise/ds-styles/css/themes/compact',
       ],
       allowEmptyPaths: true,
     })

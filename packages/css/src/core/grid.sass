@@ -1,71 +1,95 @@
 @use "sass:math"
 
+.grid,
 .columns
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 1
 
+.col,
 .column
   display: block
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 1
   padding: var(--bal-column-gap)
+  .grid.is-mobile > &.is-narrow,
   .columns.is-mobile > &.is-narrow
     flex: none
     width: unset
+  .grid.is-mobile > &.is-full,
   .columns.is-mobile > &.is-full
     flex: none
     width: 100%
+  .grid.is-mobile > &.is-three-quarters,
   .columns.is-mobile > &.is-three-quarters
     flex: none
     width: 75%
+  .grid.is-mobile > &.is-two-thirds,
   .columns.is-mobile > &.is-two-thirds
     flex: none
     width: 66.6666%
+  .grid.is-mobile > &.is-half,
   .columns.is-mobile > &.is-half
     flex: none
     width: 50%
+  .grid.is-mobile > &.is-one-third,
   .columns.is-mobile > &.is-one-third
     flex: none
     width: 33.3333%
+  .grid.is-mobile > &.is-one-quarter,
   .columns.is-mobile > &.is-one-quarter
     flex: none
     width: 25%
+  .grid.is-mobile > &.is-one-fifth,
   .columns.is-mobile > &.is-one-fifth
     flex: none
     width: 20%
+  .grid.is-mobile > &.is-two-fifths,
   .columns.is-mobile > &.is-two-fifths
     flex: none
     width: 40%
+  .grid.is-mobile > &.is-three-fifths,
   .columns.is-mobile > &.is-three-fifths
     flex: none
     width: 60%
+  .grid.is-mobile > &.is-four-fifths,
   .columns.is-mobile > &.is-four-fifths
     flex: none
     width: 80%
+  .grid.is-mobile > &.is-offset-three-quarters,
   .columns.is-mobile > &.is-offset-three-quarters
     +ltr-property("margin", 75%, false)
+  .grid.is-mobile > &.is-offset-two-thirds,
   .columns.is-mobile > &.is-offset-two-thirds
     +ltr-property("margin", 66.6666%, false)
+  .grid.is-mobile > &.is-offset-half,
   .columns.is-mobile > &.is-offset-half
     +ltr-property("margin", 50%, false)
+  .grid.is-mobile > &.is-offset-one-third,
   .columns.is-mobile > &.is-offset-one-third
     +ltr-property("margin", 33.3333%, false)
+  .grid.is-mobile > &.is-offset-one-quarter,
   .columns.is-mobile > &.is-offset-one-quarter
     +ltr-property("margin", 25%, false)
+  .grid.is-mobile > &.is-offset-one-fifth,
   .columns.is-mobile > &.is-offset-one-fifth
     +ltr-property("margin", 20%, false)
+  .grid.is-mobile > &.is-offset-two-fifths,
   .columns.is-mobile > &.is-offset-two-fifths
     +ltr-property("margin", 40%, false)
+  .grid.is-mobile > &.is-offset-three-fifths,
   .columns.is-mobile > &.is-offset-three-fifths
     +ltr-property("margin", 60%, false)
+  .grid.is-mobile > &.is-offset-four-fifths,
   .columns.is-mobile > &.is-offset-four-fifths
     +ltr-property("margin", 80%, false)
   @for $i from 0 through 12
+    .grid.is-mobile > &.is-#{$i},
     .columns.is-mobile > &.is-#{$i}
       flex: none
       width: percentage(math.div($i,12))
+    .grid.is-mobile > &.is-offset-#{$i},
     .columns.is-mobile > &.is-offset-#{$i}
       +ltr-property("margin", percentage(math.div($i,12)), false)
   +mobile
@@ -439,6 +463,7 @@
       &.is-offset-#{$i}-fullhd
         +ltr-property("margin", percentage(math.div($i,12)), false)
 
+.grid,
 .columns
   +ltr-property("margin", (calc(var(--bal-column-gap) * -1)), false)
   +ltr-property("margin", (calc(var(--bal-column-gap) * -1)))
