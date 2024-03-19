@@ -61,6 +61,11 @@ packages/favicons/CHANGELOG.md
 packages/fonts/CHANGELOG.md
 packages/icons/CHANGELOG.md
 
+packages/devkit/src/**/*.js
+packages/devkit/src/**/*.js.map
+packages/devkit/src/**/*.d.ts
+
+
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 libs/output-targets-vue/CHANGELOG.md

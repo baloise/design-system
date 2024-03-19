@@ -177,19 +177,22 @@ async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, fi
   const files = []
   if (isDirectory) {
     const relativePath = path.relative(process.cwd(), directoryPath)
-    files.push(path.join(relativePath, '**', '*.scss').replace(/\\/g, '/'))
-    files.push(path.join(relativePath, '**', '*.sass').replace(/\\/g, '/'))
+    files.push(path.join(relativePath, '**', '*.scss'))
+    files.push(path.join(relativePath, '**', '*.sass'))
   } else {
     const relativePath = path.relative(process.cwd(), filePath)
-    files.push(relativePath.replace(/\\/g, '/'))
+    files.push(relativePath)
   }
 
   try {
     const result = await replace({
-      files,
+      files: files.map(f => path.normalize(f)),
       from: [new RegExp(`@baloise/(ds-css|design-system-css)/sass/mixins`, 'g')],
       to: ['@baloise/ds-styles/sass/mixins'],
       allowEmptyPaths: true,
+      glob: {
+        windowsPathsNoEscape: true,
+      },
     })
     printResult({ result, log })
   } catch (error) {
@@ -205,16 +208,16 @@ async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }
   const files = []
   if (isDirectory) {
     const relativePath = path.relative(process.cwd(), directoryPath)
-    files.push(path.join(relativePath, '**', '*.sass').replace(/\\/g, '/'))
-    files.push(path.join(relativePath, '**', '*.scss').replace(/\\/g, '/'))
+    files.push(path.join(relativePath, '**', '*.sass'))
+    files.push(path.join(relativePath, '**', '*.scss'))
   } else {
     const relativePath = path.relative(process.cwd(), filePath)
-    files.push(relativePath.replace(/\\/g, '/'))
+    files.push(relativePath)
   }
 
   try {
     const result = await replace({
-      files,
+      files: files.map(f => path.normalize(f)),
       from: [
         ...replacementsCSSVariablesColors.from,
         ...replacementsCSSVariablesVarious.from,
@@ -232,6 +235,9 @@ async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }
         ...replacementsCSSVariablesInvertedPrimary.to,
       ],
       allowEmptyPaths: true,
+      glob: {
+        windowsPathsNoEscape: true,
+      },
     })
     printResult({ result, log })
   } catch (error) {
@@ -244,7 +250,7 @@ async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }
 }
 
 async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
-  const files = globalStyleSheetPath.replace(/\\/g, '/')
+  const files = path.normalize(globalStyleSheetPath)
   try {
     const result = await replace({
       files,
@@ -298,9 +304,13 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
         '@baloise/ds-styles/css/themes/compact',
       ],
       allowEmptyPaths: true,
+      glob: {
+        windowsPathsNoEscape: true,
+      },
     })
     printResult({ result, log })
-    let lines = (await fsp.readFile(files, 'utf-8')).split(/\r?\n/)
+    const content = await fsp.readFile(files, 'utf-8')
+    let lines = content.split(/\r?\n/)
     lines.push(`@import '@baloise/ds-styles/css/utilities/interaction';`)
     lines.push(`@import '@baloise/ds-styles/css/utilities/sizing';`)
     lines = lines.reduce((acc, line) => {
@@ -373,15 +383,15 @@ async function migrateInlineTemplates({ filePath, log, utilReplacers }) {
 async function migrateHtmlFiles({ filePath, log, utilReplacers }) {
   // check if path is directly one file
   const isFile = filePath.trim().endsWith('.html')
-  let files = filePath.replace(/\\/g, '/')
+  let files = filePath
   if (!isFile) {
-    files = path.join(`${files}`, '**', '*.html'.replace(/\\/g, '/'))
+    files = path.join(`${files}`, '**', '*.html')
   }
 
   try {
     const results = [
       await replace({
-        files,
+        files: path.normalize(files),
         processor: input => {
           const $ = load(input)
           let content = input
@@ -405,6 +415,9 @@ async function migrateHtmlFiles({ filePath, log, utilReplacers }) {
           return content
         },
         allowEmptyPaths: true,
+        glob: {
+          windowsPathsNoEscape: true,
+        },
       }),
     ]
 

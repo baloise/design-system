@@ -1,3 +1,5 @@
 node_modules
 dist
 files
+src/**/*.js
+src/**/*.d.ts

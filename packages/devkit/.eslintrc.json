@@ -21,7 +21,15 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredDependencies": ["@angular/common", "@angular/core", "tslib"]
+            "ignoredDependencies": [
+              "@angular/common",
+              "@angular/core",
+              "@angular-devkit/core",
+              "@angular-devkit/schematics",
+              "@schematics/angular",
+              "typescript",
+              "tslib"
+            ]
           }
         ]
       }
