@@ -2,4 +2,4 @@
 '@baloise/ds-core': patch
 ---
 
-**styles**: adjust paths for windows
+**styles**: fix paths in the migration script for windows

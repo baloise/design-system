@@ -2,4 +2,4 @@
 '@baloise/ds-core': patch
 ---
 
-**devkit**: fix ng-add schematics
+**devkit**: fix build issue of ng-add schematics
