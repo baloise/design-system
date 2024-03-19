@@ -1,7 +1,5 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist/out-tsc",
     "baseUrl": ".",
     "lib": ["es2018", "dom"],
     "declaration": true,
@@ -14,6 +12,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "rootDir": "src",
+    "outDir": "dist/out-tsc",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
