@@ -190,6 +190,9 @@ export class Dropdown implements ComponentInterface, Loggable {
   async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
     const newSelectedValues = (await this.listEl?.getSelectedValues()) || []
     this.updateRawValueBySelection(newSelectedValues)
+    if (!this.multiple) {
+      this.collapseList()
+    }
   }
 
   @Listen('click', { capture: true, target: 'document' })
@@ -268,7 +271,6 @@ export class Dropdown implements ComponentInterface, Loggable {
       this.balChange.emit(this.rawValue)
     } else {
       this.balChange.emit(this.rawValue[0])
-      this.collapseList()
     }
   }
 
@@ -345,6 +347,15 @@ export class Dropdown implements ComponentInterface, Loggable {
       const targetEl = ev.target as HTMLElement
       const closeEl = targetEl.closest('bal-close')
       if (closeEl) {
+        return
+      }
+    }
+
+    if (this.clearable) {
+      const targetEl = ev.target as HTMLElement
+      const clearEl = targetEl.closest('.bal-dropdown__clear')
+      if (clearEl) {
+        this.updateRawValueBySelection([])
         return
       }
     }
@@ -449,6 +460,27 @@ export class Dropdown implements ComponentInterface, Loggable {
     const block = BEM.block('dropdown')
     const inputContent = this.inputContent ? this.inputContent : this.placeholder
 
+    const isFilled = this.rawValue && this.rawValue.length > 0
+
+    const icon = this.loading ? (
+      <bal-spinner small variation="circle"></bal-spinner>
+    ) : this.clearable && isFilled && !this.isDisabled ? (
+      <button
+        class={{
+          ...block.element('clear').class(),
+          ...block.element('clear').modifier('invalid').class(this.invalid),
+        }}
+      >
+        <bal-icon name={'close-circle'} size="" color={'grey'}></bal-icon>
+      </button>
+    ) : (
+      <bal-icon
+        name={this.icon}
+        turn={this.isExpanded}
+        color={this.isDisabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+      ></bal-icon>
+    )
+
     return (
       <Host
         class={{
@@ -485,11 +517,7 @@ export class Dropdown implements ComponentInterface, Loggable {
           >
             {inputContent}
           </span>
-          <bal-icon
-            name={this.icon}
-            turn={this.isExpanded}
-            color={this.isDisabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
-          ></bal-icon>
+          {icon}
         </div>
         <input
           class={{

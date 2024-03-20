@@ -2834,7 +2834,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white';
+        "color": BalProps.BalSpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
          */
@@ -2847,6 +2847,10 @@ export namespace Components {
           * If `true` the component is smaller
          */
         "small": boolean;
+        /**
+          * Defines the look of the spinner
+         */
+        "variation": BalProps.BalSpinnerVariation;
     }
     interface BalStack {
         /**
@@ -7843,7 +7847,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white';
+        "color"?: BalProps.BalSpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
          */
@@ -7856,6 +7860,10 @@ declare namespace LocalJSX {
           * If `true` the component is smaller
          */
         "small"?: boolean;
+        /**
+          * Defines the look of the spinner
+         */
+        "variation"?: BalProps.BalSpinnerVariation;
     }
     interface BalStack {
         /**
