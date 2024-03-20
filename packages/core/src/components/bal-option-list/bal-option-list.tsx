@@ -6,6 +6,7 @@ import { raf, waitAfterFramePaint } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { includes, startsWith } from '../bal-select/utils/utils'
 import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
+import { BalOption } from '../../utils/dropdown'
 
 @Component({
   tag: 'bal-option-list',
@@ -56,7 +57,7 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * Defines the max height of the list element
    */
-  @Prop() contentHeight?: number = 282
+  @Prop() contentHeight?: number = 262
   @Watch('contentHeight') contentHeightChanged(value?: number) {
     if (value === undefined) {
       this.el.style.removeProperty('--bal-option-list-max-height')
@@ -213,6 +214,14 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   /**
+   * Updates options
+   */
+  @Method() async updateSelected(values?: string[]): Promise<void> {
+    this.options.forEach(option => (option.selected = values.includes(option.value)))
+    await waitAfterFramePaint()
+  }
+
+  /**
    * Resets the focus index to pristine and scrolls to the top of the list
    */
   @Method() async resetFocus(): Promise<number> {
@@ -228,9 +237,20 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * Returns a list of option values
    */
-  @Method() async getSelectedOptions(): Promise<string[]> {
+  @Method() async getSelectedValues(): Promise<string[]> {
     const options = this.options
     return options.filter(option => option.selected).map(option => option.value)
+  }
+
+  /**
+   * Returns a list of option labels
+   */
+  @Method() async getSelectedOptions(values?: string[]): Promise<BalOption[]> {
+    const options = this.options
+    if (values && values.length > 0) {
+      return options.filter(option => values.includes(option.value)).map(option => option)
+    }
+    return options.filter(option => option.selected).map(option => option)
   }
 
   /**

@@ -17,13 +17,14 @@ import { ariaBooleanToString } from '../../utils/aria'
 import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } from '../../utils/element-states'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
+import { BalOption } from '../../utils/dropdown'
 
 @Component({
   tag: 'bal-option',
   styleUrl: 'bal-option.sass',
   shadow: false,
 })
-export class Option implements ComponentInterface, Loggable, BalElementStateObserver {
+export class Option implements ComponentInterface, Loggable, BalElementStateObserver, BalOption {
   private id = `bal-option-${balOptionIds++}`
 
   @Element() el!: HTMLElement
