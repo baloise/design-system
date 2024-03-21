@@ -5,7 +5,7 @@ import {
   balBrandIconPiggyBankPurple,
   balBrandIconInvestSaveChfRed,
   balBrandIconSafeSavingChildTangerine,
-} from '@baloise/ds-brand-icons'
+} from '@baloise/ds-brand-icons/dist'
 
 type Args = JSX.BalStack & { content: string }
 

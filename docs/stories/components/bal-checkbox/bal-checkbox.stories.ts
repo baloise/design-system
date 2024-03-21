@@ -1,7 +1,7 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons'
+import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons/dist'
 
 type Args = JSX.BalCheckbox & { content: string }
 

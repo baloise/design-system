@@ -40,6 +40,9 @@
       "@baloise/ds-icons": [
         "packages/icons/src/index.ts"
       ],
+      "@baloise/ds-brand-icons": [
+        "packages/brand-icons/src/index.ts"
+      ],
       "@baloise/ds-maps": [
         "packages/maps/src/index.ts"
       ],
