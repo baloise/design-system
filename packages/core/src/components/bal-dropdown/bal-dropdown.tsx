@@ -12,23 +12,20 @@ import {
   EventEmitter,
   FunctionalComponent,
 } from '@stencil/core'
-import {
-  isArrowDownKey,
-  isArrowUpKey,
-  isEnterKey,
-  isEscapeKey,
-  isSpaceKey,
-} from '@baloise/web-app-utils'
+import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { ariaBooleanToString } from '../../utils/aria'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { DropdownFormReset, DropdownFormResetUtil } from '../../utils/dropdown/form-reset'
-import { DropdownIconUtil } from '../../utils/dropdown/icon'
-import { DropdownPopupUtil } from '../../utils/dropdown/popup'
-import { DropdownEventsUtil } from '../../utils/dropdown/events'
-import { DropdownValueUtil } from '../../utils/dropdown/value'
+import {
+  DropdownEventsUtil,
+  DropdownFormReset,
+  DropdownFormResetUtil,
+  DropdownIconUtil,
+  DropdownPopupUtil,
+  DropdownValueUtil,
+} from '../../utils/dropdown'
 
 @Component({
   tag: 'bal-dropdown',
