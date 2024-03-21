@@ -1,5 +1,15 @@
 # Changelog
 
+## 16.0.3
+
+### Patch Changes
+
+- **maps**: include type declarations ( [#1362](https://github.com/baloise/design-system/pull/1362))
+
+- **brand-icons**: include type declarations ( [#1362](https://github.com/baloise/design-system/pull/1362))
+
+- **icon**: include type declarations ( [#1362](https://github.com/baloise/design-system/pull/1362))
+
 ## 16.0.2
 
 ### Patch Changes
