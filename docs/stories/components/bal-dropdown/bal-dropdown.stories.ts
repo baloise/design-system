@@ -10,14 +10,16 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag: 'bal-dropdown' }),
   },
   args: {
-    placeholder: 'Pick a color'
+    placeholder: 'Pick a color',
   },
-  ...withRender(({ ...args }) => `<bal-dropdown ${props(args)}>
+  ...withRender(
+    ({ ...args }) => `<bal-dropdown ${props(args)}>
   <bal-option value="green" label="Green">Green</bal-option>
   <bal-option value="purple" label="Purple">Purple</bal-option>
   <bal-option value="yellow" label="Yellow">Yellow</bal-option>
   <bal-option value="red" label="Red">Red</bal-option>
-</bal-dropdown>`),
+</bal-dropdown>`,
+  ),
 }
 
 export default meta
@@ -54,41 +56,41 @@ export const FieldControl = Story({
 export const Multiple = Story({
   args: {
     value: ['green', 'red'],
-    multiple: true
-  }
+    multiple: true,
+  },
 })
 
 export const MultipleWithChips = Story({
   args: {
     value: ['green', 'red'],
     multiple: true,
-    chips: true
-  }
+    chips: true,
+  },
 })
 
 export const Clearable = Story({
   args: {
     value: ['yellow'],
-    clearable: true
-  }
+    clearable: true,
+  },
 })
 
 export const Loading = Story({
   args: {
     loading: true,
-  }
+  },
 })
 
 export const Invalid = Story({
   args: {
     invalid: true,
-  }
+  },
 })
 
 export const Disabled = Story({
   args: {
     disabled: true,
-  }
+  },
 })
 
 export const FormReset = Story({
