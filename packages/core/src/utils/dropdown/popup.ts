@@ -1,5 +1,5 @@
 import { autoUpdate, computePosition, flip, shift } from '@floating-ui/dom'
-import { DropdownComponent } from "./component"
+import { DropdownComponent } from './component'
 
 export class DropdownPopupUtil {
   private component!: DropdownComponent
@@ -32,7 +32,11 @@ export class DropdownPopupUtil {
 
   expandList() {
     if (this.component.panelEl) {
-      this.component.panelCleanup = autoUpdate(this.component.el, this.component.panelEl, this.updatePanelPosition(this.component.el, this.component.panelEl))
+      this.component.panelCleanup = autoUpdate(
+        this.component.el,
+        this.component.panelEl,
+        this.updatePanelPosition(this.component.el, this.component.panelEl),
+      )
     }
     this.component.isExpanded = true
     this.component.listEl?.focusFirst()
@@ -45,6 +49,4 @@ export class DropdownPopupUtil {
       this.component.panelCleanup()
     }
   }
-
-
 }

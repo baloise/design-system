@@ -17,7 +17,20 @@ export type BalOptionOptions = {
 
 export type BalOption<TValue = string> = BalBaseOption<TValue> & BalOptionOptions
 
-export const createOption = <TValue = string>(option: BalOption<TValue>, options?: Partial<BalOptionOptions>): BalOption<TValue> => {
+export const mapOption = (option: Partial<BalOption>): BalOption => {
+  return createOption(
+    {
+      value: option.value,
+      label: option.label,
+    },
+    option,
+  )
+}
+
+export const createOption = <TValue = string>(
+  option: BalBaseOption<TValue>,
+  options?: Partial<BalOptionOptions>,
+): BalOption<TValue> => {
   const data: BalOption<TValue> = {
     ...option,
     disabled: false,

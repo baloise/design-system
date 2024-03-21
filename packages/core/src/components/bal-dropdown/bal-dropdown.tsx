@@ -19,13 +19,16 @@ import { ariaBooleanToString } from '../../utils/aria'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import {
+  BalOption,
   DropdownEventsUtil,
   DropdownFormReset,
   DropdownFormResetUtil,
   DropdownIconUtil,
   DropdownPopupUtil,
   DropdownValueUtil,
+  mapOption,
 } from '../../utils/dropdown'
+import { waitAfterFramePaint } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-dropdown',
@@ -40,6 +43,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   listEl: HTMLBalOptionListElement | undefined
   nativeEl: HTMLSelectElement | undefined
 
+  @State() rawOptions: BalOption[] = []
   @State() rawValue: string[] = []
   @State() hasFocus = false
   @State() isExpanded = false
@@ -83,15 +87,6 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
    * If `true` there will be on trigger icon visible
    */
   @Prop() icon = 'caret-down'
-
-  /**
-   * The value of the selected options.
-   */
-  @Prop() value?: string | string[] = []
-  @Watch('value')
-  valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
-    this.valueUtil.valueChanged(newValue, oldValue)
-  }
 
   /**
    * If `true`, the user cannot interact with the option.
@@ -150,6 +145,27 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   @Prop() inverted = false
 
   /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options: BalOption[] = []
+
+  @Watch('options')
+  protected async optionChanged() {
+    this.rawOptions = this.options.map(mapOption)
+    await waitAfterFramePaint()
+    await this.valueUtil.updateInputContent()
+  }
+
+  /**
+   * The value of the selected options.
+   */
+  @Prop() value?: string | string[] = []
+  @Watch('value')
+  valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
+    this.valueUtil.valueChanged(newValue, oldValue)
+  }
+
+  /**
    * Emitted when a option got selected.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalDropdownChangeDetail>
@@ -165,6 +181,8 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
     this.popupUtil.connectedCallback(this)
     this.iconUtil.connectedCallback(this)
     this.formResetUtil.connectedCallback(this)
+
+    this.optionChanged()
   }
 
   componentWillRender() {
@@ -214,6 +232,10 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
 
   get isFilled(): boolean {
     return this.rawValue && this.rawValue.length > 0
+  }
+
+  get hasPropOptions(): boolean {
+    return this.options && this.options.length > 0
   }
 
   /**
@@ -364,6 +386,24 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
             ref={listEl => (this.listEl = listEl)}
           >
             <slot></slot>
+            {this.hasPropOptions
+              ? this.rawOptions.map(option => (
+                  <bal-option
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                    disabled={option.disabled}
+                    multiline={option.multiline}
+                    invalid={option.invalid}
+                    checkbox={option.checkbox}
+                    hidden={option.hidden}
+                    selected={option.selected}
+                    focused={option.focused}
+                  >
+                    {option.label}
+                  </bal-option>
+                ))
+              : ''}
           </bal-option-list>
         </div>
       </Host>

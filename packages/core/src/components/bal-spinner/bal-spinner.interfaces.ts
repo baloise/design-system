@@ -8,5 +8,4 @@ namespace BalProps {
   export type BalSpinnerVariation = 'logo' | 'circle'
 }
 
-namespace BalEvents {
-}
+namespace BalEvents {}

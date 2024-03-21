@@ -491,6 +491,7 @@ export class RadioGroup
           <slot></slot>
           {options.map(option => (
             <bal-radio
+              key={option.value}
               name={option.name || this.name}
               value={option.value}
               labelHidden={option.labelHidden}

@@ -46,47 +46,47 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
   /**
    * Label will be shown in the input element when it got selected
    */
-  @Prop({ reflect: true }) label = ''
+  @Prop() label = ''
 
   /**
    * The value of the select option. This value will be returned by the parent `<bal-select>` element.
    */
-  @Prop({ reflect: true }) value = ''
+  @Prop() value = ''
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop() disabled = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) multiline = false
+  @Prop() multiline = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) invalid = false
+  @Prop() invalid = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true, mutable: true }) selected = false
+  @Prop({ mutable: true }) selected = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true, mutable: true }) focused = false
+  @Prop({ mutable: true }) focused = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) checkbox = false
+  @Prop() checkbox = false
 
   /**
    * If `true`, the option is hidden.
    */
-  @Prop({ reflect: true }) hidden = false
+  @Prop() hidden = false
 
   /**
    * Emitted when the option gets selected or unselected

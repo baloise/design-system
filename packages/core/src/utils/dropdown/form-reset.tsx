@@ -54,7 +54,9 @@ export class DropdownFormResetUtil {
         ref={nativeEl => (this.component.nativeEl = nativeEl)}
       >
         {this.component.rawValue.map((value: string) => (
-          <option value={value}>{value}</option>
+          <option key={value} value={value}>
+            {value}
+          </option>
         ))}
       </select>
     )

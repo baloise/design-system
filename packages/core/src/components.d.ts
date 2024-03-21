@@ -10,8 +10,8 @@ import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfi
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
-import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { BalOption } from "./utils/dropdown";
+import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
@@ -21,8 +21,8 @@ export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfi
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
-export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { BalOption } from "./utils/dropdown";
+export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
@@ -1009,6 +1009,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalOption[];
         /**
           * Defines the placeholder of the component. Only shown when the value is empty
          */
@@ -6013,6 +6017,10 @@ declare namespace LocalJSX {
           * Emitted when a option got selected.
          */
         "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalOption[];
         /**
           * Defines the placeholder of the component. Only shown when the value is empty
          */

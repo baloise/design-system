@@ -1,5 +1,5 @@
-import { EventEmitter, FunctionalComponent } from "@stencil/core"
-import { DropdownValueUtil } from "./value"
+import { EventEmitter, FunctionalComponent } from '@stencil/core'
+import { DropdownValueUtil } from './value'
 
 export type DropdownComponent = {
   el: HTMLElement

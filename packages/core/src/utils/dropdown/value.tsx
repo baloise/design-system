@@ -95,7 +95,7 @@ export class DropdownValueUtil {
         this.component.inputContent = (
           <div class={{ ...block.class() }}>
             {options.map(option => (
-              <bal-tag size="small" closable onBalCloseClick={() => this.removeOption(option)}>
+              <bal-tag key={option.value} size="small" closable onBalCloseClick={() => this.removeOption(option)}>
                 {option.label}
               </bal-tag>
             ))}

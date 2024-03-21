@@ -862,7 +862,7 @@ export class Datepicker
     return (
       <header class={{ ...headerEl.class() }}>
         {this.weekDays.map(weekday => (
-          <div class={{ ...cellEl.class(), ...cellEl.modifier('header').class() }}>
+          <div key={weekday} class={{ ...cellEl.class(), ...cellEl.modifier('header').class() }}>
             <span>{weekday}</span>
           </div>
         ))}
@@ -892,7 +892,7 @@ export class Datepicker
               <div class="select">
                 <select onInput={this.onMonthSelect}>
                   {this.months.map(month => (
-                    <option value={month.index} selected={this.pointerDate.month === month.index}>
+                    <option key={month.index} value={month.index} selected={this.pointerDate.month === month.index}>
                       {month.name}
                     </option>
                   ))}
@@ -903,7 +903,7 @@ export class Datepicker
               <div class="select">
                 <select onInput={this.onYearSelect}>
                   {this.years.map(year => (
-                    <option value={year} selected={this.pointerDate.year === year}>
+                    <option key={year} value={year} selected={this.pointerDate.year === year}>
                       {year}
                     </option>
                   ))}
