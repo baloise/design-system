@@ -9,7 +9,7 @@ import {
   StoryFactory,
   lorem1,
 } from '../../utils'
-import { balBrandIconCarGreen } from '@baloise/ds-brand-icons'
+import { balBrandIconCarGreen } from '@baloise/ds-brand-icons/dist'
 
 type Args = JSX.BalAccordion & { content: string }
 

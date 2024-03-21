@@ -9,7 +9,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
   "homepage": "https://design.baloise.dev",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "type": "module",
+  "types": "./index.esm.d.ts"
 }

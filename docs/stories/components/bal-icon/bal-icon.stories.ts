@@ -1,5 +1,5 @@
 import type { JSX } from '@baloise/ds-core'
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
+import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons/dist'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
