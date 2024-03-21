@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <bal-doc-app log-components="bal-dropdowns">
+    <bal-doc-app log-components="bal-dropdown">
       <main class="container py-medium">
         <h2 class="title text-large">Basic</h2>
         <section data-testid="basic">
@@ -39,6 +39,14 @@
             <bal-option value="v2005" label="2005">2005</bal-option>
             <bal-option value="v2006" label="2006">2006</bal-option>
             <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-dropdown>
+        </section>
+        <h2 class="title text-large">Placeholder</h2>
+        <section data-testid="basic">
+          <bal-dropdown placeholder="Select one year">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Long Content</h2>
@@ -102,7 +110,7 @@
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Multiple with Chips</h2>
-        <section data-testid="multiple">
+        <section data-testid="multiple-chips">
           <bal-dropdown multiple chips value="v1988,v1989,v1990,v1991,v1992,v1993,v1994,v1995,v1996,v1997,v1998,v1999,v2000">
             <bal-option checkbox value="v1988" label="1988">1988</bal-option>
             <bal-option checkbox value="v1989" label="1989">1989</bal-option>
@@ -127,7 +135,7 @@
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Clearable</h2>
-        <section data-testid="multiple">
+        <section data-testid="clearable">
           <bal-dropdown value="v1988" clearable>
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
@@ -137,7 +145,7 @@
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Loading</h2>
-        <section data-testid="multiple">
+        <section data-testid="Loading">
           <bal-dropdown value="v1988" loading>
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
@@ -148,7 +156,7 @@
         </section>
         <h2 class="title text-large">Invalid</h2>
         <section data-testid="invalid">
-          <bal-dropdown placeholder="Select one year" invalid value="v1988">
+          <bal-dropdown class="mb-small" placeholder="Select one year" invalid value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
           <bal-dropdown placeholder="Select one year" invalid>
@@ -157,12 +165,36 @@
         </section>
         <h2 class="title text-large">Disabled</h2>
         <section data-testid="disabled">
-          <bal-dropdown placeholder="Select one year" disabled value="v1988">
+          <bal-dropdown class="mb-small" placeholder="Select one year" disabled value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
           <bal-dropdown placeholder="Select one year" disabled>
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
+        </section>
+        <h2 class="title text-large">Form Reset</h2>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-dropdown value="v1988,v1992" multiple>
+                      <bal-option value="v1988" label="1988">1988</bal-option>
+                      <bal-option value="v1989" label="1989">1989</bal-option>
+                      <bal-option value="v1990" label="1990">1990</bal-option>
+                      <bal-option value="v1991" label="1991">1991</bal-option>
+                      <bal-option value="v1992" label="1992">1992</bal-option>
+                    </bal-dropdown>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
         </section>
       </main>
     </bal-doc-app>

@@ -12,10 +12,7 @@ import {
   EventEmitter,
   FunctionalComponent,
 } from '@stencil/core'
-import isNil from 'lodash.isnil'
-import { autoUpdate, computePosition, flip, shift } from '@floating-ui/dom'
 import {
-  areArraysEqual,
   isArrowDownKey,
   isArrowUpKey,
   isEnterKey,
@@ -27,23 +24,24 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { ariaBooleanToString } from '../../utils/aria'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { waitAfterIdleCallback } from '../../utils/helpers'
-import { BalOption } from '../../interfaces'
+import { DropdownFormReset, DropdownFormResetUtil } from '../../utils/dropdown/form-reset'
+import { DropdownIconUtil } from '../../utils/dropdown/icon'
+import { DropdownPopupUtil } from '../../utils/dropdown/popup'
+import { DropdownEventsUtil } from '../../utils/dropdown/events'
+import { DropdownValueUtil } from '../../utils/dropdown/value'
 
 @Component({
   tag: 'bal-dropdown',
   styleUrl: 'bal-dropdown.sass',
 })
-export class Dropdown implements ComponentInterface, Loggable {
+export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset {
   private inheritedAttributes: Attributes = {}
   private id = `bal-dropdown-${balDropdownIds++}`
-  private panelEl: HTMLDivElement | undefined
-  private listEl: HTMLBalOptionListElement | undefined
-  private initialValue?: string | string[] = []
-  private resetHandlerTimer?: NodeJS.Timer
-  private panelCleanup?: () => void
 
   @Element() el!: HTMLElement
+  panelEl: HTMLDivElement | undefined
+  listEl: HTMLBalOptionListElement | undefined
+  nativeEl: HTMLSelectElement | undefined
 
   @State() rawValue: string[] = []
   @State() hasFocus = false
@@ -55,6 +53,14 @@ export class Dropdown implements ComponentInterface, Loggable {
   private labelToFocusTimeout!: NodeJS.Timeout
 
   log!: LogInstance
+  initialValue?: string | string[] = []
+  panelCleanup?: () => void
+
+  valueUtil = new DropdownValueUtil()
+  formResetUtil = new DropdownFormResetUtil()
+  iconUtil = new DropdownIconUtil()
+  popupUtil = new DropdownPopupUtil()
+  eventsUtil = new DropdownEventsUtil()
 
   @Logger('bal-dropdown')
   createLogger(log: LogInstance) {
@@ -87,20 +93,7 @@ export class Dropdown implements ComponentInterface, Loggable {
   @Prop() value?: string | string[] = []
   @Watch('value')
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
-    const newValueType = typeof newValue
-    const oldValueType = typeof oldValue
-
-    if (newValueType !== oldValueType) {
-      this.updateRawValueByValueProp(newValue)
-    }
-
-    if (newValueType === 'string' && newValue !== oldValue) {
-      this.updateRawValueByValueProp(newValue)
-    }
-
-    if (Array.isArray(newValue) && Array.isArray(oldValue) && !areArraysEqual(newValue, oldValue)) {
-      this.updateRawValueByValueProp(newValue)
-    }
+    this.valueUtil.valueChanged(newValue, oldValue)
   }
 
   /**
@@ -170,15 +163,23 @@ export class Dropdown implements ComponentInterface, Loggable {
    */
 
   connectedCallback(): void {
-    this.initialValue = this.value
+    this.valueUtil.connectedCallback(this)
+    this.eventsUtil.connectedCallback(this)
+    this.popupUtil.connectedCallback(this)
+    this.iconUtil.connectedCallback(this)
+    this.formResetUtil.connectedCallback(this)
   }
 
   componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
   }
 
+  componentDidRender() {
+    this.formResetUtil.componentDidRender()
+  }
+
   componentDidLoad(): void {
-    setTimeout(() => this.valueChanged(this.value, undefined), 0)
+    this.valueUtil.componentDidLoad()
   }
 
   /**
@@ -189,44 +190,20 @@ export class Dropdown implements ComponentInterface, Loggable {
   @Listen('balOptionChange')
   async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
     const newSelectedValues = (await this.listEl?.getSelectedValues()) || []
-    this.updateRawValueBySelection(newSelectedValues)
+    this.valueUtil.updateRawValueBySelection(newSelectedValues)
     if (!this.multiple) {
-      this.collapseList()
-    }
-  }
-
-  @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (ev.target) {
-      if (this.disabled && ev.target === this.el) {
-        stopEventBubbling(ev)
-      }
+      this.popupUtil.collapseList()
     }
   }
 
   @Listen('click', { target: 'document' })
-  async listenOnClickOutside(ev: UIEvent) {
-    if (this.isExpanded) {
-      if (!this.el.contains(ev.target as Node)) {
-        this.isExpanded = false
-        this.listEl?.resetFocus()
-      }
-    }
+  listenOnClickOutside(ev: UIEvent) {
+    this.eventsUtil.handleOutsideClick(ev)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
-    const formElement = ev.target as HTMLElement
-    if (formElement?.contains(this.el)) {
-      if (this.resetHandlerTimer) {
-        clearTimeout(this.resetHandlerTimer)
-      }
-
-      this.resetHandlerTimer = setTimeout(() => {
-        this.value = this.initialValue
-        this.valueChanged(this.initialValue, [])
-      }, 0)
-    }
+    this.formResetUtil.handle(ev)
   }
 
   /**
@@ -234,83 +211,31 @@ export class Dropdown implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private get isDisabled(): boolean {
+  get isDisabled(): boolean {
     return this.disabled || this.readonly
+  }
+
+  get isFilled(): boolean {
+    return this.rawValue && this.rawValue.length > 0
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  toggleList() {
+    this.popupUtil.toggleList()
+  }
+
+  updateRawValueBySelection(newRawValue: string[] = []) {
+    this.valueUtil.updateRawValueBySelection(newRawValue)
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
-
-  private updateRawValueByValueProp(newValue: string | string[] = []) {
-    let newRawValue: string[] = []
-
-    if (!isNil(newValue) && newValue !== '') {
-      if (Array.isArray(newValue)) {
-        newRawValue = [...newValue.filter(v => !isNil(v))]
-      } else {
-        if (newValue.split('').includes(',')) {
-          newRawValue = [
-            ...newValue
-              .split(',')
-              .filter(v => v)
-              .map(v => v.trim()),
-          ]
-        } else {
-          newRawValue = [newValue]
-        }
-      }
-    }
-    this.updateRawValue(newRawValue)
-  }
-
-  private updateRawValueBySelection(newRawValue: string[] = []) {
-    this.updateRawValue(newRawValue)
-    if (this.multiple) {
-      this.balChange.emit(this.rawValue)
-    } else {
-      this.balChange.emit(this.rawValue[0])
-    }
-  }
-
-  private async updateRawValue(newRawValue: string[] = []) {
-    this.rawValue = newRawValue
-
-    if (this.listEl) {
-      await this.listEl.updateSelected(this.rawValue)
-      await this.updateInputContent()
-    }
-  }
-
-  private async updateInputContent() {
-    const options = await this.listEl.getSelectedOptions(this.rawValue)
-    this.inputValue = options.map(option => option.label).join(', ')
-
-    if (this.rawValue.length === 0) {
-      this.inputContent = undefined
-    } else {
-      if (this.chips) {
-        const block = BEM.block('dropdown').element('root').element('content').element('chips')
-        this.inputContent = (
-          <div class={{ ...block.class() }}>
-            {options.map(option => (
-              <bal-tag size="small" closable onBalCloseClick={() => this.removeOption(option)}>
-                {option.label}
-              </bal-tag>
-            ))}
-          </div>
-        )
-      } else {
-        this.inputContent = options.map(option => option.label).join(', ')
-      }
-    }
-  }
-
-  private removeOption(option: BalOption) {
-    const newRawValue = this.rawValue.filter(value => value !== option.value)
-    this.updateRawValue(newRawValue)
-  }
 
   private focusOptionByLabel(key: string) {
     this.labelToFocus = (this.labelToFocus + key).trim()
@@ -327,75 +252,6 @@ export class Dropdown implements ComponentInterface, Loggable {
    * EVENT BINDING
    * ------------------------------------------------------
    */
-
-  private handleHostClick = (ev: MouseEvent) => {
-    if (this.disabled) {
-      stopEventBubbling(ev)
-    }
-  }
-
-  private handleFocus = (_ev: FocusEvent) => {
-    this.hasFocus = true
-  }
-
-  private handleBlur = (_ev: FocusEvent) => {
-    this.hasFocus = false
-  }
-
-  private handleClick = (ev: MouseEvent) => {
-    if (this.chips) {
-      const targetEl = ev.target as HTMLElement
-      const closeEl = targetEl.closest('bal-close')
-      if (closeEl) {
-        return
-      }
-    }
-
-    if (this.clearable) {
-      const targetEl = ev.target as HTMLElement
-      const clearEl = targetEl.closest('.bal-dropdown__clear')
-      if (clearEl) {
-        this.updateRawValueBySelection([])
-        return
-      }
-    }
-
-    if (!this.isDisabled) {
-      if (this.isExpanded) {
-        this.collapseList()
-      } else {
-        this.expandList()
-      }
-    }
-  }
-
-  private updatePanelPosition = (referenceEl: HTMLElement, floatingEl: HTMLElement) => () => {
-    computePosition(referenceEl, floatingEl, {
-      placement: 'bottom-start',
-      middleware: [flip(), shift()],
-    }).then(({ x, y }) => {
-      Object.assign(floatingEl.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      })
-    })
-  }
-
-  private expandList() {
-    if (this.panelEl) {
-      this.panelCleanup = autoUpdate(this.el, this.panelEl, this.updatePanelPosition(this.el, this.panelEl))
-    }
-    this.isExpanded = true
-    this.listEl?.focusFirst()
-  }
-
-  private collapseList() {
-    this.isExpanded = false
-    this.listEl?.resetFocus()
-    if (this.panelCleanup) {
-      this.panelCleanup()
-    }
-  }
 
   private handleKeyDown = (ev: KeyboardEvent) => {
     if (this.isExpanded) {
@@ -433,7 +289,7 @@ export class Dropdown implements ComponentInterface, Loggable {
          * Close list
          */
       } else if (ev.key === 'Tab' || isEscapeKey(ev)) {
-        this.collapseList()
+        this.popupUtil.collapseList()
         /**
          * Focus on label
          */
@@ -446,7 +302,7 @@ export class Dropdown implements ComponentInterface, Loggable {
        */
       if (isEnterKey(ev) || isSpaceKey(ev)) {
         stopEventBubbling(ev)
-        this.expandList()
+        this.popupUtil.expandList()
       }
     }
   }
@@ -458,28 +314,6 @@ export class Dropdown implements ComponentInterface, Loggable {
 
   render() {
     const block = BEM.block('dropdown')
-    const inputContent = this.inputContent ? this.inputContent : this.placeholder
-
-    const isFilled = this.rawValue && this.rawValue.length > 0
-
-    const icon = this.loading ? (
-      <bal-spinner small variation="circle"></bal-spinner>
-    ) : this.clearable && isFilled && !this.isDisabled ? (
-      <button
-        class={{
-          ...block.element('clear').class(),
-          ...block.element('clear').modifier('invalid').class(this.invalid),
-        }}
-      >
-        <bal-icon name={'close-circle'} size="" color={'grey'}></bal-icon>
-      </button>
-    ) : (
-      <bal-icon
-        name={this.icon}
-        turn={this.isExpanded}
-        color={this.isDisabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
-      ></bal-icon>
-    )
 
     return (
       <Host
@@ -488,7 +322,6 @@ export class Dropdown implements ComponentInterface, Loggable {
         }}
         id={this.id}
         tabIndex={-1}
-        onClick={this.handleHostClick}
       >
         <div
           class={{
@@ -502,9 +335,9 @@ export class Dropdown implements ComponentInterface, Loggable {
           aria-expanded={ariaBooleanToString(this.isExpanded)}
           aria-disabled={ariaBooleanToString(this.isDisabled)}
           aria-haspopup="listbox"
-          onClick={ev => this.handleClick(ev)}
-          onFocus={ev => this.handleFocus(ev)}
-          onBlur={ev => this.handleBlur(ev)}
+          onClick={ev => this.eventsUtil.handleClick(ev)}
+          onFocus={ev => this.eventsUtil.handleFocus(ev)}
+          onBlur={ev => this.eventsUtil.handleBlur(ev)}
           onKeyDown={ev => this.handleKeyDown(ev)}
           {...this.inheritedAttributes}
         >
@@ -512,26 +345,14 @@ export class Dropdown implements ComponentInterface, Loggable {
             class={{
               ...block.element('root').element('content').class(),
               ...block.element('root').element('content').modifier('disabled').class(this.isDisabled),
-              ...block.element('root').element('content').modifier('placeholder').class(!this.inputContent),
+              ...block.element('root').element('content').modifier('placeholder').class(!this.isFilled),
             }}
           >
-            {inputContent}
+            {this.inputContent}
           </span>
-          {icon}
+          {this.iconUtil.render()}
         </div>
-        <input
-          class={{
-            ...block.element('native').class(),
-          }}
-          name={this.name}
-          aria-invalid={ariaBooleanToString(this.invalid)}
-          aria-hidden="true"
-          disabled={this.disabled}
-          readonly={this.readonly}
-          required={this.required}
-          tabindex="-1"
-          value={this.inputValue}
-        />
+        {this.formResetUtil.render()}
         <div
           class={{
             ...block.element('list').class(),

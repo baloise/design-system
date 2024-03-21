@@ -94,7 +94,7 @@
 
         <bal-heading>Form-Reset</bal-heading>
         <section>
-          <form>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
             <bal-select data-testid="reset-basic" placeholder="Try finding a year" value="v1996">
               <bal-select-option value="v1995" label="1995">1995</bal-select-option>
               <bal-select-option value="v1996" label="1996">1996</bal-select-option>
@@ -132,7 +132,10 @@
               <bal-select-option value="v1996" label="1996">1996</bal-select-option>
               <bal-select-option value="v1997" label="1997">1997</bal-select-option>
             </bal-select>
-            <button type="reset" data-testid="reset-button">Reset</button>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
           </form>
         </section>
       </main>
