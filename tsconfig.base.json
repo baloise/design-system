@@ -31,6 +31,9 @@
       "@baloise/ds-angular-module": [
         "packages/angular-module/src/index.ts"
       ],
+      "@baloise/ds-brand-icons": [
+        "packages/brand-icons/src/index.ts"
+      ],
       "@baloise/ds-core": [
         "packages/core/src/index.ts"
       ],
@@ -39,9 +42,6 @@
       ],
       "@baloise/ds-icons": [
         "packages/icons/src/index.ts"
-      ],
-      "@baloise/ds-brand-icons": [
-        "packages/brand-icons/src/index.ts"
       ],
       "@baloise/ds-maps": [
         "packages/maps/src/index.ts"
