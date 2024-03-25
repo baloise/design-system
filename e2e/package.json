@@ -28,6 +28,7 @@
     "winston": "~3.11.0"
   },
   "devDependencies": {
+    "@cypress/mount-utils": "^4.1.0",
     "@vue/test-utils": "~2.4.1",
     "jsdom": "~24.0.0",
     "typescript": "~4.8.2",

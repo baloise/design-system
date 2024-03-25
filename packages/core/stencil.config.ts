@@ -122,7 +122,6 @@ export const config: Config = {
             sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
           },
           VueGenerator(),
-          VueTestGenerator(),
           ReactGenerator(),
           AngularGenerator(),
           AngularModuleGenerator(),
