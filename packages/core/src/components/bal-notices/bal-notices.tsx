@@ -4,7 +4,7 @@ import { Component, Host, h, Prop } from '@stencil/core'
   tag: 'bal-notices',
   styleUrl: 'bal-notices.sass',
 })
-export class BalNotices {
+export class Notices {
   /**
    * @internal The interface tells the notice where to show the notice.
    */

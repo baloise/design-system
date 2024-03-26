@@ -52,6 +52,7 @@
     "@changesets/cli": "~2.27.1",
     "@changesets/get-github-info": "~0.6.0",
     "@changesets/types": "~6.0.0",
+    "@cypress/mount-utils": "^4.1.0",
     "@nx/angular": "~18.0.4",
     "@nx/devkit": "~18.0.4",
     "@nx/eslint": "~18.0.4",

@@ -1,24 +1,24 @@
-import { BalTabs, newBalTabOption } from '../support/utils'
-import BalTabsTest from './bal-tabs.vue'
+import { Components, newBalTabOption } from '../support/utils'
 
-describe('bal-tabs.cy.ts', () => {
+describe('bal-tabs', () => {
   it('should fire change event with options', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 
-    cy.mount(BalTabs, {
+    cy.mount<Components.BalTabs, HTMLBalTabsElementEventMap>(`<bal-tabs></bal-tabs>`, {
       props: {
         value: 'tab-b',
         border: true,
         fullwidth: true,
-        onBalChange: onBalChangeSpy,
         options: [
           newBalTabOption({ label: 'Tab A', value: 'tab-a' }),
           newBalTabOption({ label: 'Tab B', value: 'tab-b' }),
           newBalTabOption({ label: 'Tab C', value: 'tab-c' }),
         ],
       },
+      events: {
+        balChange: onBalChangeSpy,
+      },
     })
-    cy.get('.bal-tabs').waitForDesignSystem()
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -28,15 +28,29 @@ describe('bal-tabs.cy.ts', () => {
   it('should fire change event', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 
-    cy.mount(BalTabsTest, {
-      props: {
-        value: 'tab-b',
-        border: true,
-        fullwidth: true,
-        onBalChange: onBalChangeSpy,
+    cy.mount<Components.BalTabs, HTMLBalTabsElementEventMap>(
+      `
+    <bal-tabs>
+      <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+      <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+      <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+      <bal-tab-item value="tab-d" label="Tab D" invisible>Hidden Content of Tab D</bal-tab-item>
+      <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+      <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise/design-system" target="_blank"
+        >Content of Tab link</bal-tab-item
+      >
+    </bal-tabs>`,
+      {
+        props: {
+          value: 'tab-b',
+          border: true,
+          fullwidth: true,
+        },
+        events: {
+          balChange: onBalChangeSpy,
+        },
       },
-    })
-    cy.get('.bal-tabs').waitForDesignSystem()
+    )
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -46,32 +60,58 @@ describe('bal-tabs.cy.ts', () => {
   it('hidden item should not be visible', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 
-    cy.mount(BalTabsTest, {
-      props: {
-        interface: 'tabs',
-        value: 'tab-b',
-        border: true,
-        fullwidth: true,
-        onBalChange: onBalChangeSpy,
+    cy.mount<Components.BalTabs, HTMLBalTabsElementEventMap>(
+      `
+    <bal-tabs>
+      <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+      <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+      <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+      <bal-tab-item value="tab-d" label="Tab D" invisible>Hidden Content of Tab D</bal-tab-item>
+      <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+      <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise/design-system" target="_blank"
+        >Content of Tab link</bal-tab-item
+      >
+    </bal-tabs>`,
+      {
+        props: {
+          value: 'tab-b',
+          border: true,
+          fullwidth: true,
+        },
+        events: {
+          balChange: onBalChangeSpy,
+        },
       },
-    })
-    cy.get('.bal-tabs').waitForDesignSystem()
+    )
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').should('have.length', 5)
   })
 
   it('disabled item should not send a change event', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 
-    cy.mount(BalTabsTest, {
-      props: {
-        interface: 'tabs',
-        value: 'tab-b',
-        border: true,
-        fullwidth: true,
-        onBalChange: onBalChangeSpy,
+    cy.mount<Components.BalTabs, HTMLBalTabsElementEventMap>(
+      `
+    <bal-tabs>
+      <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+      <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+      <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+      <bal-tab-item value="tab-d" label="Tab D" invisible>Hidden Content of Tab D</bal-tab-item>
+      <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+      <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise/design-system" target="_blank"
+        >Content of Tab link</bal-tab-item
+      >
+    </bal-tabs>`,
+      {
+        props: {
+          value: 'tab-b',
+          border: true,
+          fullwidth: true,
+        },
+        events: {
+          balChange: onBalChangeSpy,
+        },
       },
-    })
-    cy.get('.bal-tabs').waitForDesignSystem()
+    )
     cy.get('.bal-tabs').find('.bal-tab-item').eq(4).spyEvent('balNavigate')
 
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(3).click()

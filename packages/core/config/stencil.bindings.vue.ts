@@ -35,14 +35,3 @@ export const VueGenerator = (): any =>
     componentModels: vueComponentModels,
     customElementsDir: 'components',
   })
-
-export const VueTestGenerator = (): any =>
-  vueOutputTarget({
-    includeImportCustomElements: true,
-    includeDefineCustomElements: false,
-    includeInternalComponents: true,
-    proxiesFile: '../../e2e/generated/vue-components/index.ts',
-    componentCorePackage: '../',
-    componentModels: vueComponentModels,
-    customElementsDir: 'components',
-  })

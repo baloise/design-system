@@ -210,4 +210,13 @@ async function addPackageJsonAndTypesToCustomElements(options: BuildCoreExecutor
     join(options.projectRoot, 'config', 'custom-elements', 'package.json.tmp'),
     join(options.projectRoot, 'components', 'package.json'),
   )
+
+  await copy(
+    join(options.projectRoot, 'config', 'custom-elements', 'all.js'),
+    join(options.projectRoot, 'components', 'all.js'),
+  )
+  await copy(
+    join(options.projectRoot, 'config', 'custom-elements', 'all.d.ts'),
+    join(options.projectRoot, 'components', 'all.d.ts'),
+  )
 }

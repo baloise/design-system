@@ -1,19 +1,20 @@
-import { BalDate, i18nBalDate } from '../support/utils'
+import { Components, i18nBalDate } from '../support/utils'
 
-describe('BalDate Component', () => {
+describe('bal-date', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
 
   it('emits balChange event when typed', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDate, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
-        onBalChange: onBalChangeSpy,
+      },
+      events: {
+        balChange: onBalChangeSpy,
       },
     }).as('calendar')
 
-    cy.waitForDesignSystem()
     cy.getByPlaceholder('Enter date')
       .click()
       .type('2.2.23', { delay: 20 })
@@ -25,15 +26,16 @@ describe('BalDate Component', () => {
 
   it('emits balChange event when clicked', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDate, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
-        onBalChange: onBalChangeSpy,
+      },
+      events: {
+        balChange: onBalChangeSpy,
       },
     }).as('calendar')
 
-    cy.waitForDesignSystem()
     cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker, hidden: true }).click()
     cy.getByRole('button', { name: '11.01.2023' }).click()
 
@@ -43,15 +45,15 @@ describe('BalDate Component', () => {
 
   it('select a date with the dropdown navigation', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDate, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
-        onBalChange: onBalChangeSpy,
+      },
+      events: {
+        balChange: onBalChangeSpy,
       },
     }).as('calendar')
-
-    cy.waitForDesignSystem()
 
     cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker, hidden: true }).click()
     cy.getByRole('button', { name: 'Januar 2023' }).click()
@@ -65,15 +67,16 @@ describe('BalDate Component', () => {
 
   it('select a date with the next arrow navigation', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDate, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
-        onBalChange: onBalChangeSpy,
+      },
+      events: {
+        balChange: onBalChangeSpy,
       },
     }).as('calendar')
 
-    cy.waitForDesignSystem()
     cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker, hidden: true }).click()
     cy.getByRole('button', { name: i18nBalDate.de.nextMonth }).click()
     cy.getByRole('button', { name: '11.02.2023' }).click()
@@ -84,15 +87,16 @@ describe('BalDate Component', () => {
 
   it('select a date with the previous arrow navigation', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDate, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
-        onBalChange: onBalChangeSpy,
+      },
+      events: {
+        balChange: onBalChangeSpy,
       },
     }).as('calendar')
 
-    cy.waitForDesignSystem()
     cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker, hidden: true }).click()
     cy.getByRole('button', { name: i18nBalDate.de.previousMonth }).click()
     cy.getByRole('button', { name: '11.12.2022' }).click()

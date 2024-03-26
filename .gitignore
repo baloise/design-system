@@ -49,6 +49,8 @@ packages/core/icons
 packages/core/components
 packages/core/loader
 packages/core/wwww
+packages/core/config/custom-elements/all.js
+packages/core/config/custom-elements/all.d.ts
 packages/core/**/theming.md
 packages/core/**/testing.md
 packages/core/**/api.md

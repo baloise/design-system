@@ -1,48 +1,55 @@
-// Import the necessary Cypress commands
-import { BalDateCalendarCell } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('BalDateCalendarCell Component', () => {
+describe('bal-date-calendar-cell', () => {
   let onBalSelectDaySpy: Cypress.Agent<sinon.SinonSpy>
 
-  it('emits balSelectDay event when clicked', () => {
+  it('should emits balSelectDay event when clicked', () => {
     onBalSelectDaySpy = cy.spy().as('balSelectDay')
-    cy.mount(BalDateCalendarCell, {
-      props: {
-        day: 25,
-        month: 12,
-        year: 2023,
-        isoDate: '2023-12-25',
-        fullDate: 'December 25, 2023',
-        selected: false,
-        today: false,
-        disabled: false,
-        onBalSelectDay: onBalSelectDaySpy,
+    cy.mount<Components.BalDateCalendarCell, HTMLBalDateCalendarCellElementEventMap>(
+      `
+      <bal-date-calendar-cell></bal-date-calendar-cell>`,
+      {
+        props: {
+          day: 25,
+          month: 12,
+          year: 2023,
+          isoDate: '2023-12-25',
+          fullDate: 'December 25, 2023',
+          selected: false,
+          today: false,
+          disabled: false,
+        },
+        events: {
+          balSelectDay: onBalSelectDaySpy,
+        },
       },
-    }).as('dateCell')
-
-    cy.waitForDesignSystem()
+    ).as('dateCell')
 
     cy.get('.bal-date-calendar-cell').click()
     cy.get('@balSelectDay').should('have.been.calledOnce')
   })
 
-  it('emits balSelectDay event when clicked', () => {
+  it('should not emit balSelectDay event when clicked', () => {
     onBalSelectDaySpy = cy.spy().as('balSelectDay')
-    cy.mount(BalDateCalendarCell, {
-      props: {
-        day: 25,
-        month: 12,
-        year: 2023,
-        isoDate: '2023-12-25',
-        fullDate: 'December 25, 2023',
-        selected: false,
-        today: false,
-        disabled: true,
-        onBalSelectDay: onBalSelectDaySpy,
+    cy.mount<Components.BalDateCalendarCell, HTMLBalDateCalendarCellElementEventMap>(
+      `
+      <bal-date-calendar-cell></bal-date-calendar-cell>`,
+      {
+        props: {
+          day: 25,
+          month: 12,
+          year: 2023,
+          isoDate: '2023-12-25',
+          fullDate: 'December 25, 2023',
+          selected: false,
+          today: false,
+          disabled: true,
+        },
+        events: {
+          balSelectDay: onBalSelectDaySpy,
+        },
       },
-    }).as('dateCell')
-
-    cy.waitForDesignSystem()
+    ).as('dateCell')
 
     cy.get('.bal-date-calendar-cell').click({ force: true })
     cy.get('@balSelectDay').should('not.have.been.called')

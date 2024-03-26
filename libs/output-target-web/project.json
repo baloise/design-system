@@ -1,0 +1,23 @@
+{
+  "name": "output-target-web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/output-target-web/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "libs/output-target-web/src/index.ts",
+        "tsConfig": "libs/output-target-web/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "test": {
+      "command": "echo done",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:release", "type:lib"]
+}

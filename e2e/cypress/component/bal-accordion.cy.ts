@@ -1,5 +1,5 @@
-import { selectors, BalAccordion } from '../support/utils'
-import BalAccordionTest from './bal-accordion.vue'
+import { Components } from '../support/utils'
+import { selectors } from '../support/utils'
 
 describe('bal-accordion', () => {
   context('v1', () => {
@@ -7,17 +7,16 @@ describe('bal-accordion', () => {
       const onClickSpy = cy.spy().as('click')
       const onBalChangeSpy = cy.spy().as('balChange')
 
-      cy.mount(BalAccordion, {
+      cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(`<bal-accordion></bal-accordion>`, {
         props: {
           openLabel: 'OPEN LABEL',
           closeLabel: 'CLOSE LABEL',
-          onClick: onClickSpy,
-          onBalChange: onBalChangeSpy,
         },
-        slots: { default: () => 'TEST CONTENT' },
+        events: {
+          click: onClickSpy,
+          balChange: onBalChangeSpy,
+        },
       })
-
-      cy.waitForDesignSystem()
     })
 
     it('should have labels', () => {
@@ -45,14 +44,28 @@ describe('bal-accordion', () => {
         const onClickSpy = cy.spy().as('click')
         const onBalChangeSpy = cy.spy().as('balChange')
 
-        cy.mount(BalAccordionTest, {
-          props: {
-            onClick: onClickSpy,
-            onBalChange: onBalChangeSpy,
+        cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
+          `
+        <bal-accordion>
+          <bal-accordion-summary>
+            <bal-stack>
+              <bal-content>
+                <bal-label>SUMMARY LABEL</bal-label>
+              </bal-content>
+              <bal-accordion-trigger></bal-accordion-trigger>
+            </bal-stack>
+          </bal-accordion-summary>
+          <bal-accordion-details>TEST CONTENT</bal-accordion-details>
+        </bal-accordion>
+        `,
+          {
+            props: {},
+            events: {
+              click: onClickSpy,
+              balChange: onBalChangeSpy,
+            },
           },
-        })
-
-        cy.waitForDesignSystem()
+        )
       })
 
       it('should have labels', () => {
@@ -79,15 +92,27 @@ describe('bal-accordion', () => {
         const onClickSpy = cy.spy().as('click')
         const onBalChangeSpy = cy.spy().as('balChange')
 
-        cy.mount(BalAccordionTest, {
-          props: {
-            summaryTrigger: true,
-            onClick: onClickSpy,
-            onBalChange: onBalChangeSpy,
+        cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
+          `
+        <bal-accordion>
+          <bal-accordion-summary trigger>
+            <bal-stack>
+              <bal-content>
+                <bal-label>SUMMARY LABEL</bal-label>
+              </bal-content>
+              <bal-accordion-trigger></bal-accordion-trigger>
+            </bal-stack>
+          </bal-accordion-summary>
+          <bal-accordion-details>TEST CONTENT</bal-accordion-details>
+        </bal-accordion>`,
+          {
+            props: {},
+            events: {
+              click: onClickSpy,
+              balChange: onBalChangeSpy,
+            },
           },
-        })
-
-        cy.waitForDesignSystem()
+        )
       })
 
       it('should have labels', () => {

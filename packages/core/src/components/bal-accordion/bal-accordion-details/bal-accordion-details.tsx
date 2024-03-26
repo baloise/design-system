@@ -7,7 +7,7 @@ import { AccordionState } from '../../../interfaces'
   tag: 'bal-accordion-details',
   styleUrl: 'bal-accordion-details.sass',
 })
-export class AccordionDetail implements ComponentInterface, Loggable {
+export class AccordionDetails implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-details-${accordionDetailIds++}`
   @Element() el?: HTMLElement
 

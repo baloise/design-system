@@ -5,7 +5,7 @@ import isEmpty from 'lodash.isempty'
   tag: 'bal-card',
   styleUrl: 'bal-card.sass',
 })
-export class BalCard {
+export class Card {
   /**
    * If `true` a light blue border is added to the card.
    */
