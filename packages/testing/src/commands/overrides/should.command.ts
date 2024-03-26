@@ -180,7 +180,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if(isDropDown(element)){
+  if (isDropDown(element)) {
     switch (condition) {
       case 'have.value':
         if (typeof key === 'string') {
