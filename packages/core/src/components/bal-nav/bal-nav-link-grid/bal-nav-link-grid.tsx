@@ -6,7 +6,7 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-nav-link-grid',
   styleUrl: 'bal-nav-link-grid.sass',
 })
-export class NavigationLinkGrid implements ComponentInterface, Loggable {
+export class NavLinkGrid implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('bal-nav-link-grid')

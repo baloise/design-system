@@ -17,9 +17,7 @@ import { BalAriaFormLinking, BalAriaForm, defaultBalAriaForm } from '../../utils
   tag: 'bal-label',
   styleUrl: './bal-label.sass',
 })
-export class BalLabel
-  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking
-{
+export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
   @Element() el!: HTMLElement
 
   private inputId = `bal-lbl-${labelIds++}`

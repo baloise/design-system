@@ -1,6 +1,6 @@
-import { BalTextarea } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('bal-textarea.cy.ts', () => {
+describe('bal-textarea', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
@@ -16,17 +16,16 @@ describe('bal-textarea.cy.ts', () => {
     onBalFocusSpy = cy.spy().as('balFocus')
     onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
-    cy.mount(BalTextarea, {
-      props: {
-        onClick: onClickSpy,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalBlur: onBalBlurSpy,
-        onBalFocus: onBalFocusSpy,
-        onBalKeyPress: onBalKeyPressSpy,
+    cy.mount<Components.BalTextarea, HTMLBalTextareaElementEventMap>(`<bal-textarea></bal-textarea>`, {
+      events: {
+        click: onClickSpy,
+        balInput: onBalInputSpy,
+        balChange: onBalChangeSpy,
+        balBlur: onBalBlurSpy,
+        balFocus: onBalFocusSpy,
+        balKeyPress: onBalKeyPressSpy,
       },
     })
-    cy.get('bal-textarea').waitForComponents()
   })
 
   it('should only call balInput and no balChange, because the input has still the focus', () => {

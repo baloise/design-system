@@ -1,6 +1,6 @@
 import { getContainerEl, setupHooks } from '@cypress/mount-utils'
-import { defineCustomElement } from '../../generated/components/bal-app'
 import { BalConfig, initialize } from '../../generated/components'
+import { defineAllComponents } from '../../generated/components/all'
 import * as balIcons from '../../generated/icons'
 
 function cleanup() {
@@ -8,18 +8,21 @@ function cleanup() {
   elements.forEach(el => el.remove())
 }
 
-export type MountOptions<TComponent> = {
-  components?: { [key: string]: any }
-  defineCustomElement?: () => void
-  props?: Partial<TComponent>
-  events?: Partial<{ [key: string]: Cypress.Agent<any> }>,
+export type MountOptions<TComponent, TEventMap = any> = {
   config?: BalConfig
+  components?: { [key: string]: any }
+  props?: Partial<TComponent>
+  events?: Partial<Record<keyof TEventMap | 'click', Cypress.Agent<any>>>
 }
 
-export function mount<TComponent>(template, options: MountOptions<TComponent> = {}) {
-  if (options && options.defineCustomElement) {
-    defineCustomElement()
-    options.defineCustomElement()
+export function mount<TComponent, TEventMap = any>(
+  template: string,
+  options: MountOptions<TComponent, TEventMap> = {},
+) {
+  const root = getContainerEl()
+
+  if (root.hasChildNodes()) {
+    cleanup()
   }
 
   initialize({
@@ -29,69 +32,81 @@ export function mount<TComponent>(template, options: MountOptions<TComponent> = 
     icons: {
       ...balIcons,
     },
-    ...options.config && {}
+    ...(options.config && {}),
   })
-
-  // get the root element to mount the component
-  const root = getContainerEl()
-  // root.innerHTML = `<bal-app>${template}</bal-app>`
+  defineAllComponents()
 
   const appEl = document.createElement('bal-app')
   appEl.innerHTML = template
+
+  let templateEl = appEl.children.item(0)
+  const nestedComponentEl = appEl.querySelector(`#component`)
+
+  if (nestedComponentEl) {
+    templateEl = nestedComponentEl
+  }
+
+  if (templateEl && options && options.props) {
+    if (templateEl) {
+      for (const [prop, value] of Object.entries(options.props)) {
+        templateEl[prop] = value
+      }
+    }
+  }
+
   root.appendChild(appEl)
 
-  const templateEl = appEl.children.item(0)
-
   // adds output to the command log
-  return cy
-    .waitForDesignSystem()
-    .wrap(templateEl, { log: true })
-    .waitForComponents({ log: true })
-    // set all props to the new created web component
-    .then(componentEl => {
-      if (componentEl && options && options.props) {
-        const nativeEl = componentEl.get(0)
-        if (nativeEl) {
-          for (const [prop, value] of Object.entries(options.props)) {
-            nativeEl[prop] = value
-            Cypress.log({
-              name: 'prop',
-              type: 'parent',
-              message: prop + ': ' + value,
-              $el: componentEl,
-            })
+  return (
+    cy
+      .waitForDesignSystem()
+      .wrap(templateEl, { log: false })
+      .waitForComponents({ log: false })
+      // set all props to the new created web component
+      .then(componentEl => {
+        if (componentEl && options && options.props) {
+          const nativeEl = componentEl.get(0)
+          if (nativeEl) {
+            for (const [prop, value] of Object.entries(options.props)) {
+              Cypress.log({
+                name: 'prop',
+                type: 'parent',
+                message: prop + ': ' + value,
+                $el: componentEl,
+              })
+            }
           }
         }
-      }
-    })
-    // set event listeners
-    .then(componentEl => {
-      if (componentEl && options && options.events) {
-        for (const [event, value] of Object.entries(options.events)) {
-          Cypress.log({
-            name: 'event',
-            type: 'parent',
-            message: 'listen to @' + event,
-            $el: componentEl,
-          })
-          componentEl.on(event, value)
+      })
+      // set event listeners
+      .then(componentEl => {
+        if (componentEl && options && options.events) {
+          for (const [event, value] of Object.entries(options.events)) {
+            Cypress.log({
+              name: 'event',
+              type: 'parent',
+              message: 'listen to @' + event,
+              $el: componentEl,
+            })
+            componentEl.on(event, value)
+          }
         }
-      }
-    })
-    // set event listeners
-    .then(componentEl => {
-      Cypress.log({
-        name: 'mount',
-        type: 'parent',
-        message: 'Component is ready 🚀',
-        $el: componentEl,
       })
-      Cypress.log({
-        name: '-----',
-        type: 'parent',
-        message: '--------------------',
+      // set event listeners
+      .then(componentEl => {
+        Cypress.log({
+          name: 'mount',
+          type: 'parent',
+          message: 'Component is ready 🚀',
+          $el: componentEl,
+        })
+        Cypress.log({
+          name: '-----',
+          type: 'parent',
+          message: '--------------------',
+        })
       })
-    })
+  )
 }
 
 setupHooks(cleanup)

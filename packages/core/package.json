@@ -53,6 +53,7 @@
     "@baloise/output-target-angular": "0.0.0",
     "@baloise/output-target-react": "0.0.0",
     "@baloise/output-target-vue": "0.0.0",
+    "@baloise/output-target-web": "0.0.0",
     "@baloise/ds-css": "16.0.3",
     "@baloise/ds-maps": "16.0.3",
     "@baloise/ds-brand-icons": "16.0.3",

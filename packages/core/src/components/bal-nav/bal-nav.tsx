@@ -38,7 +38,7 @@ import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
   tag: 'bal-nav',
   styleUrl: 'bal-nav.sass',
 })
-export class NavMetaBar
+export class Nav
   implements
     ComponentInterface,
     Loggable,
