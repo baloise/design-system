@@ -1,6 +1,6 @@
-import { BalInputDate } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('bal-input-date.cy.ts', () => {
+describe('bal-input-date', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
@@ -16,17 +16,16 @@ describe('bal-input-date.cy.ts', () => {
     onBalFocusSpy = cy.spy().as('balFocus')
     onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
-    cy.mount(BalInputDate, {
-      props: {
-        onClick: onClickSpy,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalBlur: onBalBlurSpy,
-        onBalFocus: onBalFocusSpy,
-        onBalKeyPress: onBalKeyPressSpy,
+    cy.mount<Components.BalInputDate, HTMLBalInputDateElementEventMap>(`<bal-input-date></bal-input-date>`, {
+      events: {
+        click: onClickSpy,
+        balInput: onBalInputSpy,
+        balChange: onBalChangeSpy,
+        balBlur: onBalBlurSpy,
+        balFocus: onBalFocusSpy,
+        balKeyPress: onBalKeyPressSpy,
       },
     })
-    cy.get('bal-input-date').waitForComponents()
   })
 
   it('should render the component with the initial state', () => {

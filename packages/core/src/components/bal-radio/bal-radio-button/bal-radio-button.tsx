@@ -23,7 +23,7 @@ import { BalElementStateListener } from '../../../utils/element-states/element-s
   tag: 'bal-radio-button',
   styleUrl: './bal-radio-button.sass',
 })
-export class BalRadioButton implements ComponentInterface, Loggable, BalElementStateObserver {
+export class RadioButton implements ComponentInterface, Loggable, BalElementStateObserver {
   @Element() el!: HTMLElement
 
   private keyboardMode = true

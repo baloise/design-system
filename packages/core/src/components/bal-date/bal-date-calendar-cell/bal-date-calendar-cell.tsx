@@ -6,7 +6,7 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-date-calendar-cell',
   shadow: false,
 })
-export class DateCalendar implements ComponentInterface {
+export class DateCalendarCell implements ComponentInterface {
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------

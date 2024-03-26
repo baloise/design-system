@@ -23,7 +23,7 @@ import { BalElementStateListener } from '../../../utils/element-states/element-s
   tag: 'bal-checkbox-button',
   styleUrl: './bal-checkbox-button.sass',
 })
-export class BalCheckboxButton implements ComponentInterface, Loggable, BalElementStateObserver {
+export class CheckboxButton implements ComponentInterface, Loggable, BalElementStateObserver {
   @Element() el!: HTMLElement
 
   private keyboardMode = true

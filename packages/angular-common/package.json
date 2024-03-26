@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-angular-common",
-  "version": "16.0.2",
+  "version": "16.0.3",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "rxjs": ">=7.0.0"
   },
   "dependencies": {
-    "@baloise/ds-core": "16.0.2"
+    "@baloise/ds-core": "16.0.3"
   },
   "sideEffects": false
 }

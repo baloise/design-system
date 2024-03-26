@@ -1,10 +1,10 @@
-import BalSelectTest from './bal-select.vue'
+import { Components } from '../support/utils'
 
 Cypress.on('uncaught:exception', (_err, _runnable) => {
   return false
 })
 
-describe('bal-select.cy.ts', () => {
+describe('bal-select', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
@@ -18,17 +18,27 @@ describe('bal-select.cy.ts', () => {
     onBalBlurSpy = cy.spy().as('balBlur')
     onBalFocusSpy = cy.spy().as('balFocus')
 
-    cy.mount(BalSelectTest, {
-      props: {
-        onClick: onClickSpy,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalBlur: onBalBlurSpy,
-        onBalFocus: onBalFocusSpy,
+    cy.mount<Components.BalSelect, HTMLBalSelectElementEventMap>(
+      `
+    <bal-select>
+      <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+      <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+      <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+      <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+      <bal-select-option value="v1999" label="1999">1999</bal-select-option>
+      <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+    </bal-select>
+    `,
+      {
+        events: {
+          click: onClickSpy,
+          balInput: onBalInputSpy,
+          balChange: onBalChangeSpy,
+          balBlur: onBalBlurSpy,
+          balFocus: onBalFocusSpy,
+        },
       },
-    })
-
-    cy.get('bal-select').waitForComponents()
+    )
   })
   // Basic
   it('should fire a balChange, balFocus and balBlur events when selecting an option', () => {

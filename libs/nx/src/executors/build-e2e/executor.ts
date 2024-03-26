@@ -17,6 +17,9 @@ export default async function runExecutor(options: BuildE2eExecutorSchema) {
     await copy(join(corePath, 'dist'), join(generatedPath, 'dist'))
     await copy(join(corePath, 'components'), join(generatedPath, 'components'))
 
+    const iconsPath = join(options.projectRoot, '..', 'packages', 'icons')
+    await copy(join(iconsPath, 'dist'), join(generatedPath, 'icons'))
+
     const resourcePath = join(options.projectRoot, '..', 'resources', 'data')
     await copy(join(resourcePath, 'components.json'), join(generatedPath, 'components-data.json'))
 

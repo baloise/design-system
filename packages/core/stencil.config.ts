@@ -4,9 +4,10 @@ import fg from 'fast-glob'
 import { join, parse, resolve } from 'path'
 
 import { AngularGenerator, AngularLegacyGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
-import { VueGenerator, VueTestGenerator } from './config/stencil.bindings.vue'
+import { VueGenerator } from './config/stencil.bindings.vue'
 import { ReactGenerator } from './config/stencil.bindings.react'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
+import { webOutputTarget } from '@baloise/output-target-web'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
@@ -70,6 +71,9 @@ export const config: Config = {
           dir: 'components',
           includeGlobalScripts: false,
         },
+        webOutputTarget({
+          proxiesFile: 'config/custom-elements/all.js',
+        }),
       ]
       : []),
     {
@@ -109,6 +113,11 @@ export const config: Config = {
           dest: 'assets/fonts',
           warn: true,
         },
+        // {
+        //   src: join(packagesDir, 'core', '.tmp', 'all.js'),
+        //   dest: '../components/all.js',
+        //   warn: true,
+        // },
       ],
     },
     /**
@@ -122,7 +131,6 @@ export const config: Config = {
           sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
         },
         VueGenerator(),
-        VueTestGenerator(),
         ReactGenerator(),
         AngularGenerator(),
         AngularModuleGenerator(),

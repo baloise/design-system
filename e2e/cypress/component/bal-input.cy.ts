@@ -1,4 +1,4 @@
-import { BalInput } from '../support/utils'
+import { Components } from '../support/utils'
 
 describe('bal-input.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
@@ -16,17 +16,16 @@ describe('bal-input.cy.ts', () => {
     onBalFocusSpy = cy.spy().as('balFocus')
     onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
-    cy.mount(BalInput, {
-      props: {
-        onClick: onClickSpy,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalBlur: onBalBlurSpy,
-        onBalFocus: onBalFocusSpy,
-        onBalKeyPress: onBalKeyPressSpy,
+    cy.mount<Components.BalInput, HTMLBalInputElementEventMap>(`<bal-input></bal-input>`, {
+      events: {
+        click: onClickSpy,
+        balInput: onBalInputSpy,
+        balChange: onBalChangeSpy,
+        balBlur: onBalBlurSpy,
+        balFocus: onBalFocusSpy,
+        balKeyPress: onBalKeyPressSpy,
       },
     })
-    cy.get('bal-input').waitForComponents()
   })
 
   it('should only call balInput and no balChange, because the input has still the focus', () => {

@@ -64,14 +64,26 @@ describe('balDate', () => {
         expect(BalDate.fromAnyFormat('1.02.1988').toISODate()).toStrictEqual('1988-02-01')
         expect(BalDate.fromAnyFormat('01.2.1988').toISODate()).toStrictEqual('1988-02-01')
         expect(BalDate.fromAnyFormat('1.2.1988').toISODate()).toStrictEqual('1988-02-01')
-        expect(BalDate.fromAnyFormat('1.2.88').toISODate()).toStrictEqual('1988-02-01')
-        expect(BalDate.fromAnyFormat('1.2.01').toISODate()).toStrictEqual('2001-02-01')
-        expect(BalDate.fromAnyFormat('1.2.00').toISODate()).toStrictEqual('2000-02-01')
-        expect(BalDate.fromAnyFormat('1.2.0').toISODate()).toStrictEqual('2000-02-01')
-        expect(BalDate.fromAnyFormat('12.12.1').toISODate()).toStrictEqual('2001-12-12')
+      })
+
+      test('should parse to todays year', () => {
         const year = new Date().getFullYear()
         expect(BalDate.fromAnyFormat('1.2.').toISODate()).toStrictEqual(`${year}-02-01`)
         expect(BalDate.fromAnyFormat('1.2').toISODate()).toStrictEqual(`${year}-02-01`)
+      })
+
+      test('should fill up with the year correctly by the cutoff year', () => {
+        const year = new Date().getFullYear()
+        const cutoff = year + 10
+        const cutoffTwoDigits = cutoff % 100
+        console.log('cutoff', cutoff)
+        expect(BalDate.fromAnyFormat(`1.1.${cutoffTwoDigits}`).toISODate()).toStrictEqual(`20${cutoffTwoDigits}-01-01`)
+        expect(BalDate.fromAnyFormat(`1.1.${cutoffTwoDigits - 1}`).toISODate()).toStrictEqual(
+          `20${cutoffTwoDigits - 1}-01-01`,
+        )
+        expect(BalDate.fromAnyFormat(`1.1.${cutoffTwoDigits + 1}`).toISODate()).toStrictEqual(
+          `19${cutoffTwoDigits + 1}-01-01`,
+        )
       })
 
       test('should parse all supported number formats', () => {
