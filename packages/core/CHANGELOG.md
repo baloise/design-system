@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.4
+
+### Patch Changes
+
+- **date**: change cutoff year to 10 years in the future. 34 will become 2034 and 35 will become 1935. ( [#1364](https://github.com/baloise/design-system/pull/1364))
+
 ## 16.0.3
 
 ### Patch Changes
