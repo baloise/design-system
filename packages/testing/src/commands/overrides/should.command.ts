@@ -16,6 +16,7 @@ import {
   isSteps,
   hasTestId,
   isInputDate,
+  isDropDown,
 } from '../helpers'
 import { parseDataTestID, selectors } from '../../selectors/index'
 
@@ -175,6 +176,22 @@ const shouldAndAndCommand = (
         if (typeof key === 'string') {
           return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
         }
+        return originalFn(element, 'not.have.attr', 'data-value', key.join(','), value)
+    }
+  }
+
+  if(isDropDown(element)){
+    switch (condition) {
+      case 'have.value':
+        if (typeof key === 'string') {
+          return originalFn(element, 'have.attr', 'data-label', key, value)
+        }
+        return originalFn(element, 'have.attr', 'data-label', key.sort().join(','), value)
+
+      case 'not.have.value':
+        // if (typeof key === 'string') {
+        //   return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
+        // }
         return originalFn(element, 'not.have.attr', 'data-value', key.join(','), value)
     }
   }

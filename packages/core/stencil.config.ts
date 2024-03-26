@@ -64,13 +64,13 @@ export const config: Config = {
     },
     ...(!IS_BAL_DEVELOPMENT
       ? [
-          CustomDocumentationGenerator,
-          {
-            type: 'dist-custom-elements',
-            dir: 'components',
-            includeGlobalScripts: false,
-          },
-        ]
+        CustomDocumentationGenerator,
+        {
+          type: 'dist-custom-elements',
+          dir: 'components',
+          includeGlobalScripts: false,
+        },
+      ]
       : []),
     {
       type: 'www',
@@ -116,18 +116,18 @@ export const config: Config = {
      */
     ...(!IS_BAL_DOCUMENTATION
       ? [
-          {
-            type: 'docs-vscode',
-            file: 'dist/html.html-data.json',
-            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-          },
-          VueGenerator(),
-          VueTestGenerator(),
-          ReactGenerator(),
-          AngularGenerator(),
-          AngularModuleGenerator(),
-          AngularLegacyGenerator(),
-        ]
+        {
+          type: 'docs-vscode',
+          file: 'dist/html.html-data.json',
+          sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+        },
+        VueGenerator(),
+        VueTestGenerator(),
+        ReactGenerator(),
+        AngularGenerator(),
+        AngularModuleGenerator(),
+        AngularLegacyGenerator(),
+      ]
       : []),
   ],
   bundles: [
@@ -214,6 +214,13 @@ export const config: Config = {
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
+    {
+      components: [
+        'bal-dropdown',
+        'bal-option-list',
+        'bal-option',
+      ],
+    },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },

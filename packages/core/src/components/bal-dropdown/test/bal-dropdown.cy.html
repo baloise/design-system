@@ -14,11 +14,11 @@
   </head>
 
   <body>
-    <bal-doc-app log-components="bal-dropdown">
+    <bal-doc-app>
       <main class="container py-medium">
         <h2 class="title text-large">Basic</h2>
-        <section data-testid="basic">
-          <bal-dropdown placeholder="Select one year" value="v1988">
+        <section>
+          <bal-dropdown data-testid="basic" placeholder="Select one year" value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -177,18 +177,59 @@
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Form Reset</h2>
-        <section data-testid="form">
-          <bal-field required>
-            <bal-field-control>
-              <bal-dropdown value="v1988,v1992" multiple>
-                <bal-option value="v1988" label="1988">1988</bal-option>
-                <bal-option value="v1989" label="1989">1989</bal-option>
-                <bal-option value="v1990" label="1990">1990</bal-option>
-                <bal-option value="v1991" label="1991">1991</bal-option>
-                <bal-option value="v1992" label="1992">1992</bal-option>
-              </bal-dropdown>
-            </bal-field-control>
-          </bal-field>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-dropdown value="v1988,v1992" multiple>
+                      <bal-option value="v1988" label="1988">1988</bal-option>
+                      <bal-option value="v1989" label="1989">1989</bal-option>
+                      <bal-option value="v1990" label="1990">1990</bal-option>
+                      <bal-option value="v1991" label="1991">1991</bal-option>
+                      <bal-option value="v1992" label="1992">1992</bal-option>
+                    </bal-dropdown>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
+        <h2 class="title text-large">Option as props</h2>
+        <section data-testid="disabled">
+          <bal-dropdown id="dropdown" class="mb-small" placeholder="Select one year"></bal-dropdown>
+          <button id="translate">translate</button>
+          <button id="options">change options</button>
+          <script>
+            const dropdown = document.getElementById('dropdown')
+            const translate = document.getElementById('translate')
+            const options = document.getElementById('options')
+            dropdown.value = ['vRed']
+            dropdown.options = [
+              { value: 'vGreen', label: 'Green' },
+              { value: 'vRed', label: 'Red' },
+              { value: 'vBlue', label: 'Blue' },
+            ]
+            translate.addEventListener('click', () => {
+              dropdown.options = [
+                { value: 'vGreen', label: 'Grün' },
+                { value: 'vRed', label: 'Rot' },
+                { value: 'vBlue', label: 'Blau' },
+              ]
+            })
+            options.addEventListener('click', () => {
+              dropdown.options = [
+                { value: 'vCircle', label: 'Circle' },
+                { value: 'vRectangle', label: 'Rectangle' },
+                { value: 'vLine', label: 'Line' },
+              ]
+            })
+          </script>
         </section>
       </main>
     </bal-doc-app>

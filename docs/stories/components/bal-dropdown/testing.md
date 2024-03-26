@@ -10,3 +10,21 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- END: human documentation -->
 
+### Commands
+
+A list of the custom commands for this specific component.
+
+| Command                        | Description                                                | Signature                                                                                  |
+| ------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `balDropdownFindOptions`       | Returns the select options.                                | (options?: Partial\<Loggable>): Chainable                                                  |
+| `balDropdownFindChips`         | Returns the closable select chips (only with multiselect). | (options?: Partial\<Loggable>): Chainable                                                  |
+| `balDropdownShouldHaveOptions` | Asserts that the select has the given options.             | (labels: string[], dataType?: 'label' \| 'value', options?: Partial\<Loggable>): Chainable |
+
+
+### Selectors
+
+| Selector           | Element               |
+| ------------------ | --------------------- |
+| `dropdown.input`   | Native input element. |
+| `dropdown.options` | Select option.        |
+

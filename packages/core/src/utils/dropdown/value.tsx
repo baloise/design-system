@@ -84,25 +84,27 @@ export class DropdownValueUtil {
   }
 
   async updateInputContent() {
-    const options = await this.component.listEl.getSelectedOptions(this.component.rawValue)
-    this.component.inputValue = options.map(option => option.label).join(', ')
+    if (this.component.listEl) {
+      const options = await this.component.listEl.getSelectedOptions(this.component.rawValue)
+      this.component.inputValue = options.map(option => option.label).join(', ')
 
-    if (!this.component.isFilled) {
-      this.component.inputContent = this.component.placeholder
-    } else {
-      if (this.component.chips) {
-        const block = BEM.block('dropdown').element('root').element('content').element('chips')
-        this.component.inputContent = (
-          <div class={{ ...block.class() }}>
-            {options.map(option => (
-              <bal-tag key={option.value} size="small" closable onBalCloseClick={() => this.removeOption(option)}>
-                {option.label}
-              </bal-tag>
-            ))}
-          </div>
-        )
+      if (!this.component.isFilled) {
+        this.component.inputContent = this.component.placeholder
       } else {
-        this.component.inputContent = options.map(option => option.label).join(', ')
+        if (this.component.chips) {
+          const block = BEM.block('dropdown').element('root').element('content').element('chips')
+          this.component.inputContent = (
+            <div class={{ ...block.class() }}>
+              {options.map(option => (
+                <bal-tag key={option.value} size="small" closable onBalCloseClick={() => this.removeOption(option)}>
+                  {option.label}
+                </bal-tag>
+              ))}
+            </div>
+          )
+        } else {
+          this.component.inputContent = options.map(option => option.label).join(', ')
+        }
       }
     }
   }

@@ -238,6 +238,20 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
     return this.options && this.options.length > 0
   }
 
+  get values(): string[] {
+    if(this.hasPropOptions){
+      return this.options.filter(o => !o.disabled && !o.hidden).sort().map(o => o.value)
+    }
+    return this.listEl.
+    console.log('values', this.options.filter(o => !o.disabled && !o.hidden).sort().map(o => o.value))
+
+  }
+
+  get labels(): string[] {
+    console.log('labels', this.options.filter(o => !o.disabled && !o.hidden).sort().map(o => o.value))
+    return this.options.filter(o => !o.disabled && !o.hidden).sort().map(o => o.label)
+  }
+
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------
@@ -341,6 +355,8 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
         }}
         id={this.id}
         tabIndex={-1}
+        data-value={this.values.join(',')}
+        data-label={this.labels.join(',')}
       >
         <div
           class={{
