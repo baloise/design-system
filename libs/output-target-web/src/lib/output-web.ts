@@ -8,18 +8,18 @@ export async function webProxyOutput(
   outputTarget: OutputTargetWeb,
   components: ComponentCompilerMeta[],
 ) {
-  const content = generateDefineAllFile(components)
-  const types = generateDefineAllDefinitionFile(components)
+  const content = generateDefineAllFile(components, outputTarget.isTesting)
+  const types = generateDefineAllDefinitionFile(components, outputTarget.isTesting)
   compilerCtx.fs.writeFile(outputTarget.proxiesFile, content)
   compilerCtx.fs.writeFile(outputTarget.proxiesFile.replace('.js', '.d.ts'), types)
 }
 
-const generateDefineAllFile = (components: ComponentCompilerMeta[]) => {
+const generateDefineAllFile = (components: ComponentCompilerMeta[] = [], isTesting = false) => {
   const lines: string[] = []
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
+      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${isTesting ? 'components/' : ''}${component.tagName}'`,
     )
   }
 
@@ -44,12 +44,12 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[]) => {
   return lines.join('\n') + '\n'
 }
 
-const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[]) => {
+const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[] = [], isTesting = false) => {
   const lines: string[] = []
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
+      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${isTesting ? 'components/' : ''}${component.tagName}'`,
     )
   }
 

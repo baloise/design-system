@@ -1,6 +1,6 @@
 import { getContainerEl, setupHooks } from '@cypress/mount-utils'
 import { BalConfig, initialize } from '../../generated/components'
-import { defineAllComponents } from '../../generated/components/all'
+import { defineAllComponents } from '../../generated/all'
 import * as balIcons from '../../generated/icons'
 
 function cleanup() {

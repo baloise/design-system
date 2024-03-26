@@ -12,6 +12,7 @@ import { webOutputTarget } from '@baloise/output-target-web'
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
 const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
+const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
 
 if (IS_BAL_DS_RELEASE) {
   console.log('')
@@ -28,6 +29,12 @@ if (IS_BAL_DOCUMENTATION) {
 if (IS_BAL_DEVELOPMENT) {
   console.log('')
   console.log('👷 Build is set to development 👷')
+  console.log('')
+}
+
+if (IS_BAL_TESTING) {
+  console.log('')
+  console.log('🧪 Build is set to testing 🧪')
   console.log('')
 }
 
@@ -65,20 +72,25 @@ export const config: Config = {
     },
     ...(!IS_BAL_DEVELOPMENT
       ? [
-          CustomDocumentationGenerator,
-          {
-            type: 'dist-custom-elements',
-            dir: 'components',
-            includeGlobalScripts: false,
-          },
-          webOutputTarget({
-            proxiesFile: 'config/custom-elements/all.js',
-          }),
-        ]
+        CustomDocumentationGenerator,
+        {
+          type: 'dist-custom-elements',
+          dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+          includeGlobalScripts: false,
+        },
+        webOutputTarget({
+          proxiesFile: 'config/custom-elements/all.js',
+          isTesting: false,
+        }),
+        webOutputTarget({
+          proxiesFile: '../../e2e/generated/all.js',
+          isTesting: true,
+        }),
+      ]
       : []),
     {
       type: 'www',
-      dir: 'www',
+      dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
       serviceWorker: false,
       empty: true,
       copy: [
@@ -113,29 +125,24 @@ export const config: Config = {
           dest: 'assets/fonts',
           warn: true,
         },
-        // {
-        //   src: join(packagesDir, 'core', '.tmp', 'all.js'),
-        //   dest: '../components/all.js',
-        //   warn: true,
-        // },
       ],
     },
     /**
      * Skip those outputs for documentation releases on vercel
      */
-    ...(!IS_BAL_DOCUMENTATION
+    ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING
       ? [
-          {
-            type: 'docs-vscode',
-            file: 'dist/html.html-data.json',
-            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-          },
-          VueGenerator(),
-          ReactGenerator(),
-          AngularGenerator(),
-          AngularModuleGenerator(),
-          AngularLegacyGenerator(),
-        ]
+        {
+          type: 'docs-vscode',
+          file: 'dist/html.html-data.json',
+          sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+        },
+        VueGenerator(),
+        ReactGenerator(),
+        AngularGenerator(),
+        AngularModuleGenerator(),
+        AngularLegacyGenerator(),
+      ]
       : []),
   ],
   bundles: [

@@ -245,13 +245,14 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
         .sort()
         .map(o => o.value)
     }
-    return this.listEl.console.log(
-      'values',
-      this.options
-        .filter(o => !o.disabled && !o.hidden)
-        .sort()
-        .map(o => o.value),
-    )
+    return []
+    // return this.listEl.console.log(
+    //   'values',
+    //   this.options
+    //     .filter(o => !o.disabled && !o.hidden)
+    //     .sort()
+    //     .map(o => o.value),
+    // )
   }
 
   get labels(): string[] {
