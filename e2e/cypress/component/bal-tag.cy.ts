@@ -9,7 +9,6 @@ describe('bal-tag', () => {
         closable: true,
       },
       events: {
-        click: onBalCloseClickSpy,
         balCloseClick: onBalCloseClickSpy,
       },
     })
