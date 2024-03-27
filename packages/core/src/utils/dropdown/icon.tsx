@@ -1,6 +1,8 @@
 import { h } from '@stencil/core'
 import { BEM } from '../bem'
 import { DropdownComponent } from './component'
+import { BalLanguage } from '../config'
+import { i18nBalClearable } from './clearable.i18n'
 
 export class DropdownIconUtil {
   private component!: DropdownComponent
@@ -9,7 +11,7 @@ export class DropdownIconUtil {
     this.component = component
   }
 
-  render() {
+  render(language: BalLanguage) {
     const block = BEM.block('dropdown')
 
     if (this.component.loading) {
@@ -17,6 +19,7 @@ export class DropdownIconUtil {
     } else if (this.component.clearable && this.component.isFilled && !this.component.isDisabled) {
       return (
         <button
+          title={i18nBalClearable[language].clearable}
           class={{
             ...block.element('clear').class(),
             ...block.element('clear').modifier('invalid').class(this.component.invalid),

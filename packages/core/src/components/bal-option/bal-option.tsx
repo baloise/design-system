@@ -149,7 +149,8 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
    */
 
   private onClick = (ev: MouseEvent) => {
-    if (this.disabled) {
+    const listEl = this.el.closest('bal-option-list')
+    if (this.disabled || (listEl && listEl.disabled)) {
       stopEventBubbling(ev)
     } else {
       this.select(!this.selected)

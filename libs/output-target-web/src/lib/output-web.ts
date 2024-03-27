@@ -25,7 +25,11 @@ export async function webProxyOutput(
   })
 }
 
-async function improveComponentsOutput(config: Config, outputTarget: OutputTargetWeb, components: ComponentCompilerMeta[]) {
+async function improveComponentsOutput(
+  config: Config,
+  outputTarget: OutputTargetWeb,
+  components: ComponentCompilerMeta[],
+) {
   const content = generateDefineAllFile(components)
   const types = generateDefineAllDefinitionFile(components)
 
@@ -36,18 +40,12 @@ async function improveComponentsOutput(config: Config, outputTarget: OutputTarge
   saveFile(`${baseDir}/all.d.ts`, types)
 
   const contentIndex = await readFile(join(baseDir, 'index.d.ts'), 'utf-8')
-  const contentCustom = await readFile(
-    join(rootDir, 'config', 'custom-elements', 'custom-elements.d.ts'),
-    'utf-8',
-  )
+  const contentCustom = await readFile(join(rootDir, 'config', 'custom-elements', 'custom-elements.d.ts'), 'utf-8')
 
   await saveFile(join(baseDir, 'index.d.ts'), [contentIndex, contentCustom].join(NEWLINE))
 
   if (!outputTarget.isTest) {
-    await copy(
-      join(rootDir, 'config', 'custom-elements', 'package.json.tmp'),
-      join(baseDir, 'package.json'),
-    )
+    await copy(join(rootDir, 'config', 'custom-elements', 'package.json.tmp'), join(baseDir, 'package.json'))
   }
 }
 

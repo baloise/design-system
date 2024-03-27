@@ -41,7 +41,10 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
       .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
-        return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+        return cy.get(
+          `input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"], button[id="${forAttributeValue}"]`,
+          o,
+        )
       })
       .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options)) as any
   } else {
@@ -49,7 +52,10 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
       .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
-        return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+        return cy.get(
+          `input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"], button[id="${forAttributeValue}"]`,
+          o,
+        )
       })
       .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options)) as any
   }
@@ -63,12 +69,10 @@ Cypress.Commands.add(
   (subject, placeholder, options?: Partial<Cypress.Loggable>) => {
     const o = wrapOptions(options)
 
+    const selector = `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`
     const element = subject
-      ? cy
-          .wrap(subject, o)
-          .find(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o)
-          .waitForComponents(o)
-      : cy.get(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o).waitForComponents(o)
+      ? cy.wrap(subject, o).find(selector, o).waitForComponents(o)
+      : cy.get(selector, o).waitForComponents(o)
 
     element.then(o, $el => log(!!subject ? '-getByPlaceholder' : 'getByPlaceholder', placeholder, $el, options))
     return element

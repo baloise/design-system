@@ -11,6 +11,7 @@ import {
   Event,
   EventEmitter,
   FunctionalComponent,
+  Method,
 } from '@stencil/core'
 import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
@@ -29,12 +30,23 @@ import {
   mapOption,
 } from '../../utils/dropdown'
 import { waitAfterFramePaint } from '../../utils/helpers'
+import {
+  BalConfigObserver,
+  BalConfigState,
+  BalLanguage,
+  BalRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '../../utils/config'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-dropdown',
   styleUrl: 'bal-dropdown.sass',
 })
-export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset {
+export class Dropdown
+  implements ComponentInterface, Loggable, DropdownFormReset, BalConfigObserver, BalAriaFormLinking
+{
   private inheritedAttributes: Attributes = {}
   private inputId = `bal-dropdown-${balDropdownIds++}`
 
@@ -49,6 +61,10 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   @State() isExpanded = false
   @State() inputValue = ''
   @State() inputContent?: FunctionalComponent | string
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
 
   @State() labelToFocus = ''
   private labelToFocusTimeout!: NodeJS.Timeout
@@ -161,7 +177,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   @Prop() value?: string | string[] = []
   @Watch('value')
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
-      this.valueUtil.valueChanged(newValue, oldValue)
+    this.valueUtil.valueChanged(newValue, oldValue)
   }
 
   /**
@@ -200,6 +216,16 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
 
   @Listen('balOptionChange')
   async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
@@ -261,12 +287,20 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
    * ------------------------------------------------------
    */
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   toggleList() {
     this.popupUtil.toggleList()
   }
 
   updateRawValueBySelection(newRawValue: string[] = []) {
-      this.valueUtil.updateRawValueBySelection(newRawValue)
+    this.valueUtil.updateRawValueBySelection(newRawValue)
   }
 
   /**
@@ -360,7 +394,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
         id={this.inputId}
         tabIndex={-1}
       >
-        <div
+        <button
           class={{
             ...block.element('root').class(),
             ...block.element('root').modifier('focused').class(this.hasFocus),
@@ -368,9 +402,13 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
             ...block.element('root').modifier('disabled').class(this.isDisabled),
           }}
           tabindex="0"
-          role="button"
+          data-placeholder={this.placeholder}
           aria-expanded={ariaBooleanToString(this.isExpanded)}
           aria-disabled={ariaBooleanToString(this.isDisabled)}
+          aria-invalid={ariaBooleanToString(this.invalid)}
+          id={this.ariaForm.controlId || `${this.inputId}-btn`}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
           aria-haspopup="listbox"
           onClick={ev => this.eventsUtil.handleClick(ev)}
           onFocus={ev => this.eventsUtil.handleFocus(ev)}
@@ -387,8 +425,8 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
           >
             {this.inputContent}
           </span>
-          {this.iconUtil.render()}
-        </div>
+          {this.iconUtil.render(this.language)}
+        </button>
         {this.formResetUtil.render()}
         <div
           class={{
@@ -399,6 +437,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
         >
           <bal-option-list
             multiple={this.multiple}
+            disabled={this.isDisabled}
             filter={this.filter}
             contentHeight={this.contentHeight}
             ref={listEl => (this.listEl = listEl)}

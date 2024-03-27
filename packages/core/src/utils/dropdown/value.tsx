@@ -83,7 +83,7 @@ export class DropdownValueUtil {
 
   removeOption(option: BalOption) {
     const newRawValue = this.component.rawValue.filter(value => value !== option.value)
-    this.updateRawValue(newRawValue)
+    this.updateRawValueBySelection(newRawValue)
   }
 
   async updateInputContent() {

@@ -95,8 +95,9 @@ Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options =
       },
     },
     violations => {
-      const message = `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${violations.length === 1 ? 'was' : 'were'
-        } detected`
+      const message = `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${
+        violations.length === 1 ? 'was' : 'were'
+      } detected`
       cy.task('log', message)
       // pluck specific keys to keep the table readable
       const violationData = violations.map(({ id, impact, description, nodes }) => ({

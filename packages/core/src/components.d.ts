@@ -976,6 +976,7 @@ export namespace Components {
           * If `true`, a cross at the end is visible to clear the selection
          */
         "clearable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the max height of the list element
          */
@@ -1025,6 +1026,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * The value of the selected options.
          */
@@ -2192,6 +2194,10 @@ export namespace Components {
           * Defines the max height of the list element
          */
         "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
         /**
           * Defines the filter logic of the list
          */
@@ -7266,6 +7272,10 @@ declare namespace LocalJSX {
           * Defines the max height of the list element
          */
         "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
         /**
           * Defines the filter logic of the list
          */

@@ -1,8 +1,6 @@
 import type { Config, OutputTargetCustom } from '@stencil/core/internal'
-import { normalizePath } from './utils'
 import type { OutputTargetWeb } from './types'
 import { webProxyOutput } from './output-web'
-import { join, isAbsolute } from 'path'
 
 export const webOutputTarget = (outputTarget: OutputTargetWeb): OutputTargetCustom => ({
   type: 'custom',

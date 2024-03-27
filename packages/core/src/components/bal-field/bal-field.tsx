@@ -27,6 +27,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
     'bal-input-stepper',
     'bal-input-slider',
     'bal-file-upload',
+    'bal-dropdown',
   ]
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
@@ -169,6 +170,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-input-stepper',
       'bal-field-control bal-textarea',
       'bal-field-control bal-file-upload',
+      'bal-field-control bal-dropdown',
     ])
 
     const ariaForm = defaultBalAriaForm

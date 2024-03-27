@@ -29,24 +29,26 @@ export class DropdownEventsUtil {
   }
 
   handleClick(ev: MouseEvent) {
-    if (this.component.chips) {
-      const targetEl = ev.target as HTMLElement
-      const closeEl = targetEl.closest('bal-close')
-      if (closeEl) {
-        return
+    if (!this.component.isDisabled) {
+      if (this.component.chips) {
+        const targetEl = ev.target as HTMLElement
+        const closeEl = targetEl.closest('bal-close')
+        if (closeEl) {
+          return
+        }
       }
-    }
 
-    if (this.component.clearable) {
-      const targetEl = ev.target as HTMLElement
-      const clearEl = targetEl.closest('.bal-dropdown__clear')
-      if (clearEl) {
-        this.component.updateRawValueBySelection([])
-        return
+      if (this.component.clearable) {
+        const targetEl = ev.target as HTMLElement
+        const clearEl = targetEl.closest('.bal-dropdown__clear')
+        if (clearEl) {
+          this.component.updateRawValueBySelection([])
+          return
+        }
       }
-    }
 
-    this.component.toggleList()
+      this.component.toggleList()
+    }
   }
 
   // @Listen('click', { target: 'document' })

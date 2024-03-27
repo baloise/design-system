@@ -37,7 +37,12 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * If `true` the list supports multiple selections
    */
-  @Prop({ mutable: true }) multiple = false
+  @Prop() multiple = false
+
+  /**
+   * If `true`, the user cannot interact with the option.
+   */
+  @Prop() disabled = false
 
   /**
    * Defines the focused option with his index value
@@ -496,6 +501,7 @@ export class OptionList implements ComponentInterface, Loggable {
         <div
           role="listbox"
           aria-labelledby={labelledby}
+          aria-disabled={this.disabled}
           class={{
             ...block.element('container').class(),
           }}
