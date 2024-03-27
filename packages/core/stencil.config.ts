@@ -70,22 +70,23 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    /**
+     * Use this outputs for documentation and e2e testing
+     */
     ...(!IS_BAL_DEVELOPMENT
       ? [
         CustomDocumentationGenerator,
+        webOutputTarget({
+          dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+          isTest: IS_BAL_TESTING,
+        }),
         {
           type: 'dist-custom-elements',
           dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+          empty: true,
           includeGlobalScripts: false,
+          generateTypeDeclarations: true,
         },
-        webOutputTarget({
-          proxiesFile: 'config/custom-elements/all.js',
-          isTesting: false,
-        }),
-        webOutputTarget({
-          proxiesFile: '../../e2e/generated/all.js',
-          isTesting: true,
-        }),
       ]
       : []),
     {
@@ -128,7 +129,7 @@ export const config: Config = {
       ],
     },
     /**
-     * Skip those outputs for documentation releases on vercel
+     * Skip those outputs for documentation releases on vercel and for e2e testing
      */
     ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING
       ? [
@@ -229,9 +230,9 @@ export const config: Config = {
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
-    {
-      components: ['bal-dropdown', 'bal-option-list', 'bal-option'],
-    },
+    // {
+    //   components: ['bal-option-list', 'bal-option'],
+    // },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },

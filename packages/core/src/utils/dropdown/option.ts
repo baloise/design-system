@@ -18,7 +18,7 @@ export type BalOptionOptions = {
 export type BalOption<TValue = string> = BalBaseOption<TValue> & BalOptionOptions
 
 export const mapOption = (option: Partial<BalOption>): BalOption => {
-  return createOption(
+  return newBalOption(
     {
       value: option.value,
       label: option.label,
@@ -27,7 +27,7 @@ export const mapOption = (option: Partial<BalOption>): BalOption => {
   )
 }
 
-export const createOption = <TValue = string>(
+export const newBalOption = <TValue = string>(
   option: BalBaseOption<TValue>,
   options?: Partial<BalOptionOptions>,
 ): BalOption<TValue> => {

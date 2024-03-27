@@ -4,6 +4,7 @@ import isNil from 'lodash.isnil'
 import { DropdownComponent } from './component'
 import { BEM } from '../bem'
 import { BalOption } from './option'
+import { waitForComponent } from '../helpers'
 
 export class DropdownValueUtil {
   private component!: DropdownComponent
@@ -73,9 +74,11 @@ export class DropdownValueUtil {
     this.component.rawValue = newRawValue
 
     if (this.component.listEl) {
+      await waitForComponent(this.component.listEl)
       await this.component.listEl.updateSelected(this.component.rawValue)
-      await this.updateInputContent()
     }
+
+    await this.updateInputContent()
   }
 
   removeOption(option: BalOption) {
@@ -85,6 +88,7 @@ export class DropdownValueUtil {
 
   async updateInputContent() {
     if (this.component.listEl) {
+      await waitForComponent(this.component.listEl)
       const options = await this.component.listEl.getSelectedOptions(this.component.rawValue)
       this.component.inputValue = options.map(option => option.label).join(', ')
 

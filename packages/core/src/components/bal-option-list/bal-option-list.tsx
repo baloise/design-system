@@ -14,7 +14,7 @@ import { BalOption } from '../../utils/dropdown'
   shadow: false,
 })
 export class OptionList implements ComponentInterface, Loggable {
-  private id = `bal-option-list-${balOptionListIds++}`
+  private inputId = `bal-option-list-${balOptionListIds++}`
   private inheritAttributes: Attributes = {}
   private focusRaf: number | undefined
 
@@ -254,6 +254,17 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   /**
+   * Returns a list of options
+   */
+  @Method() async getValues(): Promise<string[]> {
+    return this.options.map(option => option.value)
+  }
+
+  @Method() async getLabels(): Promise<string[]> {
+    return this.options.map(option => option.label)
+  }
+
+  /**
    * Selects the option with the current focus
    */
   @Method() async selectByFocus(): Promise<void> {
@@ -472,7 +483,6 @@ export class OptionList implements ComponentInterface, Loggable {
 
   render() {
     const block = BEM.block('option-list')
-
     const labelledby = this.labelledby || this.ariaForm.labelId
 
     return (
@@ -480,7 +490,7 @@ export class OptionList implements ComponentInterface, Loggable {
         class={{
           ...block.class(),
         }}
-        id={this.id}
+        id={this.inputId}
         tabIndex={-1}
       >
         <div
@@ -491,7 +501,7 @@ export class OptionList implements ComponentInterface, Loggable {
           }}
           {...this.inheritAttributes}
         >
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

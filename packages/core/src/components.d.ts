@@ -2230,6 +2230,7 @@ export namespace Components {
           * @returns focusIndex
          */
         "focusPrevious": () => Promise<number>;
+        "getLabels": () => Promise<string[]>;
         /**
           * Returns a list of option labels
          */
@@ -2238,6 +2239,10 @@ export namespace Components {
           * Returns a list of option values
          */
         "getSelectedValues": () => Promise<string[]>;
+        /**
+          * Returns a list of options
+         */
+        "getValues": () => Promise<string[]>;
         /**
           * Id of the label element to describe this option list
          */

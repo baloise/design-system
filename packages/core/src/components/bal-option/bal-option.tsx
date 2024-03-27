@@ -25,7 +25,7 @@ import { BalOption } from '../../utils/dropdown'
   shadow: false,
 })
 export class Option implements ComponentInterface, Loggable, BalElementStateObserver, BalOption {
-  private id = `bal-option-${balOptionIds++}`
+  private inputId = `bal-option-${balOptionIds++}`
 
   @Element() el!: HTMLElement
 
@@ -176,7 +176,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
           ...block.modifier('hidden').class(this.hidden),
         }}
         role="option"
-        id={this.id}
+        id={this.inputId}
         data-value={this.value}
         data-label={this.label}
         aria-label={this.label}

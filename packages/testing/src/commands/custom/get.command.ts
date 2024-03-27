@@ -89,7 +89,7 @@ Cypress.Commands.add(
 
     function filterVisibleElements(elements: HTMLElement[]) {
       return elements.filter(element => {
-        const isElementAriaHidden = options.hidden === true ? false : !!Cypress.$(element).attr('aria-hidden')
+        const isElementAriaHidden = options.hidden === true ? false : Cypress.$(element).attr('aria-hidden') === 'true'
         return !isElementAriaHidden
       })
     }

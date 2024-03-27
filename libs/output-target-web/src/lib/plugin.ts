@@ -27,17 +27,13 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
   if (config.rootDir == null) {
     throw new Error('rootDir is not set and it should be set by stencil itself')
   }
-  if (outputTarget.proxiesFile == null) {
-    throw new Error('proxiesFile is required')
-  }
-  if (outputTarget.includeDefineCustomElements && outputTarget.includeImportCustomElements) {
-    throw new Error(
-      'includeDefineCustomElements cannot be used at the same time as includeImportCustomElements since includeDefineCustomElements is used for lazy loading components. Set `includeDefineCustomElements: false` in your Vue output target config to resolve this.',
-    )
+
+  if (outputTarget.dir == null) {
+    throw new Error('dir is required')
   }
 
-  if (outputTarget.directivesProxyFile && !isAbsolute(outputTarget.directivesProxyFile)) {
-    results.proxiesFile = normalizePath(join(config.rootDir, outputTarget.proxiesFile))
+  if (outputTarget.isTest !== true) {
+    results.isTest = false
   }
 
   return results

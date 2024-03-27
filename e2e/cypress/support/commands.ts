@@ -95,9 +95,8 @@ Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options =
       },
     },
     violations => {
-      const message = `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${
-        violations.length === 1 ? 'was' : 'were'
-      } detected`
+      const message = `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${violations.length === 1 ? 'was' : 'were'
+        } detected`
       cy.task('log', message)
       // pluck specific keys to keep the table readable
       const violationData = violations.map(({ id, impact, description, nodes }) => ({
@@ -127,15 +126,16 @@ Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: st
 })
 
 Cypress.Commands.add('shouldHaveEventDetail', { prevSubject: 'optional' }, (subject, value: any, time = 0) => {
-  Cypress.log({
-    $el: subject as any,
-    type: 'parent',
-    displayName: 'hasEventDetail',
-    message: value,
-  })
   return cy.wrap(subject, { log: false }).then(event => {
     const spy = event as any as sinon.SinonSpy
-    expect(spy.getCall(time).args[0].detail).deep.equal(value)
+    const detail = spy.getCall(time).args[0].detail
+    Cypress.log({
+      $el: subject as any,
+      type: 'parent',
+      displayName: 'hasEventDetail',
+      message: JSON.stringify(detail),
+    })
+    expect(detail).deep.equal(value)
   }) as any
 })
 

@@ -36,7 +36,7 @@ import { waitAfterFramePaint } from '../../utils/helpers'
 })
 export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset {
   private inheritedAttributes: Attributes = {}
-  private id = `bal-dropdown-${balDropdownIds++}`
+  private inputId = `bal-dropdown-${balDropdownIds++}`
 
   @Element() el!: HTMLElement
   panelEl: HTMLDivElement | undefined
@@ -76,7 +76,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.id
+  @Prop() name: string = this.inputId
 
   /**
    * Defines the placeholder of the component. Only shown when the value is empty
@@ -148,7 +148,6 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
    * Steps can be passed as a property or through HTML markup.
    */
   @Prop() options: BalOption[] = []
-
   @Watch('options')
   protected async optionChanged() {
     this.rawOptions = this.options.map(mapOption)
@@ -162,7 +161,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   @Prop() value?: string | string[] = []
   @Watch('value')
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
-    this.valueUtil.valueChanged(newValue, oldValue)
+      this.valueUtil.valueChanged(newValue, oldValue)
   }
 
   /**
@@ -235,39 +234,27 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   }
 
   get hasPropOptions(): boolean {
-    return this.options && this.options.length > 0
+    return this.rawOptions && this.rawOptions.length > 0
   }
 
-  get values(): string[] {
-    if (this.hasPropOptions) {
-      return this.options
-        .filter(o => !o.disabled && !o.hidden)
-        .sort()
-        .map(o => o.value)
-    }
-    return []
-    // return this.listEl.console.log(
-    //   'values',
-    //   this.options
-    //     .filter(o => !o.disabled && !o.hidden)
-    //     .sort()
-    //     .map(o => o.value),
-    // )
-  }
+  // get values(): string[] {
+  //   if (this.hasPropOptions) {
+  //     return this.options
+  //       .filter(o => !o.disabled && !o.hidden)
+  //       .sort()
+  //       .map(o => o.value)
+  //   }
 
-  get labels(): string[] {
-    console.log(
-      'labels',
-      this.options
-        .filter(o => !o.disabled && !o.hidden)
-        .sort()
-        .map(o => o.value),
-    )
-    return this.options
-      .filter(o => !o.disabled && !o.hidden)
-      .sort()
-      .map(o => o.label)
-  }
+  // }
+
+  // get labels(): string[] {
+  //   if (this.hasPropOptions) {
+  //     return this.options
+  //       .filter(o => !o.disabled && !o.hidden)
+  //       .sort()
+  //       .map(o => o.label)
+  //   }
+  // }
 
   /**
    * PUBLIC METHODS
@@ -279,7 +266,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
   }
 
   updateRawValueBySelection(newRawValue: string[] = []) {
-    this.valueUtil.updateRawValueBySelection(newRawValue)
+      this.valueUtil.updateRawValueBySelection(newRawValue)
   }
 
   /**
@@ -370,10 +357,8 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
         class={{
           ...block.class(),
         }}
-        id={this.id}
+        id={this.inputId}
         tabIndex={-1}
-        data-value={this.values.join(',')}
-        data-label={this.labels.join(',')}
       >
         <div
           class={{
@@ -418,7 +403,7 @@ export class Dropdown implements ComponentInterface, Loggable, DropdownFormReset
             contentHeight={this.contentHeight}
             ref={listEl => (this.listEl = listEl)}
           >
-            <slot></slot>
+            <slot />
             {this.hasPropOptions
               ? this.rawOptions.map(option => (
                   <bal-option
