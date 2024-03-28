@@ -362,4 +362,60 @@ describe('bal-dropdown', () => {
       cy.get('select').should($el => expect($el.val()).deep.eq(null))
     })
   })
+
+  context.only('autocomplete', () => {
+    it('should remove option by clicking the chip', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`
+      <form action="https://www.w3schools.com/action_page.php" target="_blank">
+        <bal-form-grid>
+          <bal-form-col>
+            <bal-field>
+              <bal-field-label>First Name</bal-field-label>
+              <bal-field-control>
+                <bal-input name="firstName" autocomplete="given-name"></bal-input>
+              </bal-field-control>
+            </bal-field>
+          </bal-form-col>
+          <bal-form-col>
+            <bal-field>
+              <bal-field-label>Last Name</bal-field-label>
+              <bal-field-control>
+                <bal-input name="lastName" autocomplete="family-name"></bal-input>
+              </bal-field-control>
+            </bal-field>
+          </bal-form-col>
+          <bal-form-col>
+            <bal-field>
+              <bal-field-label>Country</bal-field-label>
+              <bal-field-control>
+                <bal-dropdown name="country" autocomplete="country">
+                  <bal-option value="Switzerland" label="Switzerland">Switzerland</bal-option>
+                  <bal-option value="Germany" label="Germany">Germany</bal-option>
+                  <bal-option value="Italy" label="Italy">Italy</bal-option>
+                </bal-dropdown>
+              </bal-field-control>
+            </bal-field>
+          </bal-form-col>
+        </bal-form-grid>
+        <input type="submit" />
+      </form>`, {
+        props: {
+          placeholder: 'Pick your country',
+          options: [
+            newBalOption({ label: 'Switzerland', value: 'Switzerland' }) as any,
+            newBalOption({ label: 'Germany', value: 'Germany' }) as any,
+            newBalOption({ label: 'Italy', value: 'Italy' }) as any,
+          ],
+        },
+        events,
+      })
+
+      cy.getByLabelText('First Name').type('John')
+
+      // cy.getByRole('button', { name: 'Schliessen' }).first().click()
+      // cy.get('@balChange').should('have.been.calledOnce')
+      // cy.get('@balChange').shouldHaveEventDetail(['vPurple'])
+      // cy.get('select').should($el => expect($el.val()).deep.eq(['vPurple']))
+    })
+  })
 })

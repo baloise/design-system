@@ -969,6 +969,10 @@ export namespace Components {
     }
     interface BalDropdown {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
           * If `true`, the selected options are shown as chips
          */
         "chips": boolean;
@@ -5983,6 +5987,10 @@ declare namespace LocalJSX {
         "stickyFooter"?: boolean;
     }
     interface BalDropdown {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
         /**
           * If `true`, the selected options are shown as chips
          */

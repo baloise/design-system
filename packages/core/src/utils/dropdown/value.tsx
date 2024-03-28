@@ -35,6 +35,7 @@ export class DropdownValueUtil {
   }
 
   updateRawValueBySelection(newRawValue: string[] = []) {
+    this.component.isAutoFilled = false
     this.updateRawValue(newRawValue)
     if (this.component.multiple) {
       this.component.balChange.emit(this.component.rawValue)

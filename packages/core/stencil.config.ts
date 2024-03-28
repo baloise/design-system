@@ -45,7 +45,7 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: false,
+  sourceMap: IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
   namespace: 'baloise-design-system',
   hashedFileNameLength: 10,
   enableCache: true,

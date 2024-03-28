@@ -13,7 +13,14 @@ import {
   FunctionalComponent,
   Method,
 } from '@stencil/core'
-import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '@baloise/web-app-utils'
+import {
+  areArraysEqual,
+  isArrowDownKey,
+  isArrowUpKey,
+  isEnterKey,
+  isEscapeKey,
+  isSpaceKey,
+} from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { ariaBooleanToString } from '../../utils/aria'
@@ -55,10 +62,12 @@ export class Dropdown
   listEl: HTMLBalOptionListElement | undefined
   nativeEl: HTMLSelectElement | undefined
 
+  nativeOptions: string[] = []
   @State() rawOptions: BalOption[] = []
   @State() rawValue: string[] = []
   @State() hasFocus = false
   @State() isExpanded = false
+  @State() isAutoFilled = false
   @State() inputValue = ''
   @State() inputContent?: FunctionalComponent | string
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
@@ -88,6 +97,11 @@ export class Dropdown
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -200,8 +214,11 @@ export class Dropdown
     this.optionChanged()
   }
 
-  componentWillRender() {
+  async componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
+    if (this.listEl) {
+      this.nativeOptions = await this.listEl.getValues()
+    }
   }
 
   componentDidRender() {
@@ -260,7 +277,7 @@ export class Dropdown
   }
 
   get hasPropOptions(): boolean {
-    return this.rawOptions && this.rawOptions.length > 0
+    return this.options && this.options.length > 0
   }
 
   // get values(): string[] {
@@ -323,6 +340,15 @@ export class Dropdown
    * EVENT BINDING
    * ------------------------------------------------------
    */
+
+  nativeSelectChanged = (ev: Event) => {
+    stopEventBubbling(ev)
+    const newValue = [this.nativeEl.value]
+    if (!areArraysEqual(newValue, this.rawValue)) {
+      this.updateRawValueBySelection(newValue)
+      this.isAutoFilled = true
+    }
+  }
 
   private handleKeyDown = (ev: KeyboardEvent) => {
     if (this.isExpanded) {
@@ -400,8 +426,10 @@ export class Dropdown
             ...block.element('root').modifier('focused').class(this.hasFocus),
             ...block.element('root').modifier('invalid').class(this.invalid),
             ...block.element('root').modifier('disabled').class(this.isDisabled),
+            ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
           tabindex="0"
+          type="button"
           data-placeholder={this.placeholder}
           aria-expanded={ariaBooleanToString(this.isExpanded)}
           aria-disabled={ariaBooleanToString(this.isDisabled)}
