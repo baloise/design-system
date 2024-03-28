@@ -1,3 +1,4 @@
+import { BalDropdown } from 'packages/core/components/bal-dropdown'
 import {
   BalCheckbox,
   BalCheckboxGroup,
@@ -87,6 +88,8 @@ import {
   BalTag,
   BalTagGroup,
   BalText,
+  BalOption,
+  BalOptionList,
 } from './generated/proxies'
 
 export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger] as const
@@ -154,6 +157,8 @@ export const BalFieldBundle = [
   BalFieldControl,
   BalFieldHint,
 ] as const
+
+export const BalDropDownBundle = [BalDropdown, BalOptionList, BalOption] as const
 
 /* Component Sections */
 

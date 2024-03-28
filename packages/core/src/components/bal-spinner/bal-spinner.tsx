@@ -3,6 +3,7 @@ import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { raf } from '../../utils/helpers'
+import { BEM } from '../../utils/bem'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -52,7 +53,7 @@ export class Spinner implements ComponentInterface, Loggable {
   /**
    * Defines the color of the spinner.
    */
-  @Prop() color: 'blue' | 'white' = 'blue'
+  @Prop() color: BalProps.BalSpinnerColor = 'blue'
 
   /**
    * If `true` the component is smaller
@@ -60,12 +61,31 @@ export class Spinner implements ComponentInterface, Loggable {
   @Prop() small = false
 
   /**
+   * Defines the look of the spinner
+   */
+  @Prop() variation: BalProps.BalSpinnerVariation = 'logo'
+  @Watch('variation')
+  variationWatcher(newValue: BalProps.BalSpinnerVariation, oldValue: BalProps.BalSpinnerVariation) {
+    if (newValue !== oldValue) {
+      if (this.variation === 'circle') {
+        this.destroy()
+      } else {
+        this.animate()
+      }
+    }
+  }
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   componentDidLoad() {
-    this.animate()
+    if (this.variation === 'logo') {
+      this.animate()
+    } else {
+      this.destroy()
+    }
   }
 
   disconnectedCallback() {
@@ -104,6 +124,10 @@ export class Spinner implements ComponentInterface, Loggable {
   }
 
   private shouldAnimate = () => {
+    if (this.variation !== 'logo') {
+      return false
+    }
+
     if (typeof (window as any) === 'undefined') {
       return false
     }
@@ -147,6 +171,18 @@ export class Spinner implements ComponentInterface, Loggable {
    */
 
   render() {
-    return <Host role="progressbar" aria-hidden="true" style={{ width: this.small ? '32px' : '64px' }}></Host>
+    const block = BEM.block('spinner')
+
+    return (
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier('circle').class(this.variation === 'circle'),
+          ...block.modifier('small').class(this.small),
+        }}
+        role="progressbar"
+        aria-hidden="true"
+      ></Host>
+    )
   }
 }

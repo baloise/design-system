@@ -30,7 +30,7 @@ export const TabSelect: FunctionalComponent<TabSelectProps> = ({ items, value, o
       {items
         .filter(tab => !tab.disabled && !tab.invisible)
         .map(tab => (
-          <bal-select-option label={tab.label} value={tab.value}>
+          <bal-select-option key={tab.value} label={tab.label} value={tab.value}>
             {tab.label}
           </bal-select-option>
         ))}

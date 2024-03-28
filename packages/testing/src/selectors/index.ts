@@ -231,6 +231,16 @@ export const selectors = {
      */
     chips: byTestId('bal-select-chip'),
   },
+  dropdown: {
+    /**
+     * Native input element.
+     */
+    input: 'input.data-test-select-input',
+    /**
+     * Select option.
+     */
+    options: 'bal-option',
+  },
   popover: {
     /**
      * Popover trigger.

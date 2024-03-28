@@ -27,6 +27,7 @@ export const TabControl: FunctionalComponent<TabControlProps> = ({ value, items,
         <bal-card-content>
           {items.map(item => (
             <bal-button
+              key={item.value}
               expanded
               color={value === item.value ? 'primary' : 'light'}
               onClick={() => onControlChange(item)}

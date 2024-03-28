@@ -12,6 +12,7 @@ import { webOutputTarget } from '@baloise/output-target-web'
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
 const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
+const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
 
 if (IS_BAL_DS_RELEASE) {
   console.log('')
@@ -31,6 +32,12 @@ if (IS_BAL_DEVELOPMENT) {
   console.log('')
 }
 
+if (IS_BAL_TESTING) {
+  console.log('')
+  console.log('🧪 Build is set to testing 🧪')
+  console.log('')
+}
+
 const workspaceDir = join(parse(__dirname).dir, '..')
 const packagesDir = join(workspaceDir, 'packages')
 const nodeModulesProject = join(__dirname, 'node_modules')
@@ -38,7 +45,7 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: false,
+  sourceMap: IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
   namespace: 'baloise-design-system',
   hashedFileNameLength: 10,
   enableCache: true,
@@ -63,22 +70,28 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    /**
+     * Use this outputs for documentation and e2e testing
+     */
     ...(!IS_BAL_DEVELOPMENT
       ? [
           CustomDocumentationGenerator,
+          webOutputTarget({
+            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+            isTest: IS_BAL_TESTING,
+          }),
           {
             type: 'dist-custom-elements',
-            dir: 'components',
+            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+            empty: true,
             includeGlobalScripts: false,
+            generateTypeDeclarations: true,
           },
-          webOutputTarget({
-            proxiesFile: 'config/custom-elements/all.js',
-          }),
         ]
       : []),
     {
       type: 'www',
-      dir: 'www',
+      dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
       serviceWorker: false,
       empty: true,
       copy: [
@@ -113,17 +126,12 @@ export const config: Config = {
           dest: 'assets/fonts',
           warn: true,
         },
-        // {
-        //   src: join(packagesDir, 'core', '.tmp', 'all.js'),
-        //   dest: '../components/all.js',
-        //   warn: true,
-        // },
       ],
     },
     /**
-     * Skip those outputs for documentation releases on vercel
+     * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DOCUMENTATION
+    ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING
       ? [
           {
             type: 'docs-vscode',
@@ -222,6 +230,9 @@ export const config: Config = {
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
+    // {
+    //   components: ['bal-option-list', 'bal-option'],
+    // },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },

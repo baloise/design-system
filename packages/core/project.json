@@ -9,14 +9,20 @@
       "dependsOn": ["^build"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "set BAL_DEVELOPMENT=true & stencil build --dev --serve --watch --port=4000"
+        "command": "set BAL_DEVELOPMENT=true & stencil build --dev --serve --watch --port=4000",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "set BAL_DEVELOPMENT=true & stencil build --serve --watch --port=3333"
+        "command": "set BAL_TESTING=true & stencil build --serve --watch --port=3333",
+        "env": {
+          "BAL_TESTING": "true"
+        }
       }
     },
     "test-ui": {

@@ -21,7 +21,7 @@ export const FileListComponent: FunctionalComponent<FileListComponentProps> = ({
     <bal-card class={{ ...bemListEl.class() }} flat>
       <bal-list disabled={disabled} border size="large">
         {files.map((file, index) => (
-          <bal-list-item disabled={disabled}>
+          <bal-list-item key={file.name} disabled={disabled}>
             <bal-list-item-icon>
               <bal-icon name="document"></bal-icon>
             </bal-list-item-icon>

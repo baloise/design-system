@@ -1,0 +1,111 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-option.vars'
+
+// Option
+// --------------------------------------------------
+.bal-option
+  font-size: 16px
+  +unselectable
+  position: relative
+  display: block
+  list-style: none
+  cursor: pointer
+  border-bottom-width: var(--bal-option-border-width)
+  border-bottom-color: var(--bal-option-border-color)
+  border-bottom-style: solid
+  background: var(--bal-option-background)
+  padding-left: var(--bal-option-padding-x)
+  padding-right: var(--bal-option-padding-x)
+  min-height: var(--bal-option-min-height)
+  & > bal-stack
+    min-height: var(--bal-option-min-height)
+  &:last-child
+    border-bottom: none
+  &::-moz-focus-inner
+    border: none
+  &--hidden
+    display: none
+    visibility: hidden
+
+// Option Content
+// --------------------------------------------------
+
+.bal-option__inner
+  font-family: var(--bal-option-font-family)
+  font-weight: var(--bal-option-font-weight)
+  line-height: var(--bal-option-line-height)
+  word-break: break-word
+  white-space: normal
+  hyphens: auto
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  flex: 1
+
+.bal-option__inner--multiline
+  white-space: normal
+
+// Focused Option
+// --------------------------------------------------
+.bal-option--focused
+  background: var(--bal-option-background-hovered)
+
+.bal-option
+  +hover
+    &:hover
+      background: var(--bal-option-background-hovered)
+      color: var(--bal-option-text-hovered)
+  &:active
+    background: var(--bal-option-background-hovered)
+    color: var(--bal-option-text-pressed)
+
+// Selected Option
+// --------------------------------------------------
+.bal-option--selected
+  background: var(--bal-option-background-selected)
+  +hover
+    &:hover
+      background: var(--bal-option-background-selected-hovered)
+  &:active
+    background: var(--bal-option-background-selected-hovered)
+
+.bal-option--selected .bal-option__inner
+  font-weight: var(--bal-font-weight-bold)
+
+.bal-option--selected.bal-option--focused
+  background: var(--bal-option-background-selected-hovered)
+  .bal-option__inner
+    font-weight: var(--bal-font-weight-bold)
+
+// Invalid Option
+// --------------------------------------------------
+.bal-option--invalid
+  background: var(--bal-option-background-invalid)
+  +hover
+    &:hover
+      background: var(--bal-option-background-invalid-hovered)
+  &:active
+    background: var(--bal-option-background-invalid-hovered)
+
+.bal-option--invalid.bal-option--focused
+  background: var(--bal-option-background-invalid-hovered)
+
+.bal-option--invalid .bal-option__inner
+  color: var(--bal-color-text-danger-hovered)
+
++hover
+  .bal-option--invalid:hover .bal-option__inner
+    color: var(--bal-color-text-danger-hovered)
+
+.bal-option--invalid:active .bal-option__inner
+  color: var(--bal-color-text-danger-pressed)
+
+// Disbaled Option
+// --------------------------------------------------
+.bal-option--disabled,
+.bal-option--disabled.bal-option--focused
+  background: var(--bal-option-background) !important
+  color: var(--bal-option-text-disabled) !important
+  cursor: default !important
+  &:hover
+    background: var(--bal-option-background) !important

@@ -461,6 +461,7 @@ export class CheckboxGroup
           <slot></slot>
           {options.map(option => (
             <bal-checkbox
+              key={option.value}
               name={option.name}
               value={option.value}
               labelHidden={option.labelHidden}

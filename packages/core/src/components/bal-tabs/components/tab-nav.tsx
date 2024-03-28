@@ -104,6 +104,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         >
           {tabs.map((tab, index) => (
             <bal-carousel-item
+              key={tab.value}
               class={{
                 ...bemEl.element('carousel').element('item').class(),
                 ...bemEl.element('carousel').element('item').modifier('expanded').class(expanded),
