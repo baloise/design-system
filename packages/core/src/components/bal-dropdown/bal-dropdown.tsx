@@ -340,7 +340,7 @@ export class Dropdown
    * EVENT BINDING
    * ------------------------------------------------------
    */
-  nativeSelectChanged = (ev: Event) => {
+  handleAutoFill = (ev: Event) => {
     stopEventBubbling(ev)
     if (!this.multiple) {
       const newValue = [this.nativeEl.value]
@@ -475,7 +475,7 @@ export class Dropdown
             onFocus={ev => this.eventsUtil.handleFocus(ev)}
             onBlur={ev => this.eventsUtil.handleBlur(ev)}
             onKeyDown={ev => this.handleKeyDown(ev)}
-            onChange={ev => this.nativeSelectChanged(ev)}
+            onChange={ev => this.handleAutoFill(ev)}
             {...this.inheritedAttributes}
           />
           {this.iconUtil.render(this.language)}

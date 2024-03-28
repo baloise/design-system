@@ -40,7 +40,7 @@ export type DropdownComponent = {
   initialValue?: string | string[]
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined)
 
-  nativeSelectChanged(ev: Event)
+  handleAutoFill(ev: Event)
   panelCleanup?: () => void
 
   // interfaces to other utils

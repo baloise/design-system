@@ -64,7 +64,7 @@ export class DropdownFormResetUtil {
         disabled={this.component.disabled}
         required={this.component.required}
         ref={nativeEl => (this.component.nativeEl = nativeEl)}
-        onChange={ev => this.component.nativeSelectChanged(ev)}
+        onChange={ev => this.component.handleAutoFill(ev)}
       >
         {this.component.rawValue.map((value: string) => (
           <option key={value} value={value} selected={true}>
