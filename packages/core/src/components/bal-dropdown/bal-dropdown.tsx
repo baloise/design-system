@@ -418,13 +418,28 @@ export class Dropdown
    */
 
   render() {
+    const block = BEM.block('dropdown')
     const isSingle = !this.multiple && !this.chips
-    return isSingle ? this.renderSingle() : this.renderMultiple()
+
+    const mainAttributes: Attributes = {
+      'tabindex': '0',
+      'id': this.ariaForm.controlId || `${this.inputId}-btn`,
+      'aria-invalid': ariaBooleanToString(this.invalid),
+      'aria-expanded': ariaBooleanToString(this.isExpanded),
+      'aria-disabled': ariaBooleanToString(this.isDisabled),
+      'aria-labelledby': this.ariaForm.labelId,
+      'aria-describedby': this.ariaForm.messageId,
+      'aria-haspopup': 'listbox',
+      'onFocus': ev => this.eventsUtil.handleFocus(ev),
+      'onBlur': ev => this.eventsUtil.handleBlur(ev),
+      'onKeyDown': ev => this.handleKeyDown(ev),
+      ...this.inheritedAttributes,
+    }
+
+    return isSingle ? this.renderSingle(block, mainAttributes) : this.renderMultiple(block, mainAttributes)
   }
 
-  renderSingle() {
-    const block = BEM.block('dropdown')
-
+  renderSingle(block, mainAttributes) {
     return (
       <Host
         class={{
@@ -453,7 +468,6 @@ export class Dropdown
             {this.inputContent}
           </span>
           <input
-            id={this.ariaForm.controlId || `${this.inputId}-btn`}
             class={{
               ...block.element('root').element('input').class(),
             }}
@@ -465,63 +479,19 @@ export class Dropdown
             disabled={this.disabled}
             readonly={this.readonly}
             placeholder={this.placeholder}
-            aria-invalid={this.invalid}
-            aria-expanded={ariaBooleanToString(this.isExpanded)}
-            aria-labelledby={this.ariaForm.labelId}
-            aria-describedby={this.ariaForm.messageId}
-            aria-haspopup="listbox"
             data-native
             ref={nativeEl => (this.nativeEl = nativeEl)}
-            onFocus={ev => this.eventsUtil.handleFocus(ev)}
-            onBlur={ev => this.eventsUtil.handleBlur(ev)}
-            onKeyDown={ev => this.handleKeyDown(ev)}
             onChange={ev => this.handleAutoFill(ev)}
-            {...this.inheritedAttributes}
+            {...mainAttributes}
           />
           {this.iconUtil.render(this.language)}
         </div>
-        <div
-          class={{
-            ...block.element('list').class(),
-            ...block.element('list').modifier('expanded').class(this.isExpanded),
-          }}
-          ref={panelEl => (this.panelEl = panelEl)}
-        >
-          <bal-option-list
-            multiple={this.multiple}
-            disabled={this.isDisabled}
-            filter={this.filter}
-            contentHeight={this.contentHeight}
-            ref={listEl => (this.listEl = listEl)}
-          >
-            <slot />
-            {this.hasPropOptions
-              ? this.rawOptions.map(option => (
-                  <bal-option
-                    key={option.value}
-                    value={option.value}
-                    label={option.label}
-                    disabled={option.disabled}
-                    multiline={option.multiline}
-                    invalid={option.invalid}
-                    checkbox={option.checkbox}
-                    hidden={option.hidden}
-                    selected={option.selected}
-                    focused={option.focused}
-                  >
-                    {option.label}
-                  </bal-option>
-                ))
-              : ''}
-          </bal-option-list>
-        </div>
+        {this.renderOptionList(block)}
       </Host>
     )
   }
 
-  renderMultiple() {
-    const block = BEM.block('dropdown')
-
+  renderMultiple(block, mainAttributes) {
     return (
       <Host
         class={{
@@ -538,21 +508,10 @@ export class Dropdown
             ...block.element('root').modifier('disabled').class(this.isDisabled),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
-          tabindex="0"
           type="button"
           data-placeholder={this.placeholder}
-          aria-expanded={ariaBooleanToString(this.isExpanded)}
-          aria-disabled={ariaBooleanToString(this.isDisabled)}
-          aria-invalid={ariaBooleanToString(this.invalid)}
-          id={this.ariaForm.controlId || `${this.inputId}-btn`}
-          aria-labelledby={this.ariaForm.labelId}
-          aria-describedby={this.ariaForm.messageId}
-          aria-haspopup="listbox"
           onClick={ev => this.eventsUtil.handleClick(ev)}
-          onFocus={ev => this.eventsUtil.handleFocus(ev)}
-          onBlur={ev => this.eventsUtil.handleBlur(ev)}
-          onKeyDown={ev => this.handleKeyDown(ev)}
-          {...this.inheritedAttributes}
+          {...mainAttributes}
         >
           <span
             class={{
@@ -566,42 +525,48 @@ export class Dropdown
           {this.iconUtil.render(this.language)}
         </button>
         {this.formResetUtil.render()}
-        <div
-          class={{
-            ...block.element('list').class(),
-            ...block.element('list').modifier('expanded').class(this.isExpanded),
-          }}
-          ref={panelEl => (this.panelEl = panelEl)}
-        >
-          <bal-option-list
-            multiple={this.multiple}
-            disabled={this.isDisabled}
-            filter={this.filter}
-            contentHeight={this.contentHeight}
-            ref={listEl => (this.listEl = listEl)}
-          >
-            <slot />
-            {this.hasPropOptions
-              ? this.rawOptions.map(option => (
-                  <bal-option
-                    key={option.value}
-                    value={option.value}
-                    label={option.label}
-                    disabled={option.disabled}
-                    multiline={option.multiline}
-                    invalid={option.invalid}
-                    checkbox={option.checkbox}
-                    hidden={option.hidden}
-                    selected={option.selected}
-                    focused={option.focused}
-                  >
-                    {option.label}
-                  </bal-option>
-                ))
-              : ''}
-          </bal-option-list>
-        </div>
+        {this.renderOptionList(block)}
       </Host>
+    )
+  }
+
+  renderOptionList(block) {
+    return (
+      <div
+        class={{
+          ...block.element('list').class(),
+          ...block.element('list').modifier('expanded').class(this.isExpanded),
+        }}
+        ref={panelEl => (this.panelEl = panelEl)}
+      >
+        <bal-option-list
+          multiple={this.multiple}
+          disabled={this.isDisabled}
+          filter={this.filter}
+          contentHeight={this.contentHeight}
+          ref={listEl => (this.listEl = listEl)}
+        >
+          <slot />
+          {this.hasPropOptions
+            ? this.rawOptions.map(option => (
+                <bal-option
+                  key={option.value}
+                  value={option.value}
+                  label={option.label}
+                  disabled={option.disabled}
+                  multiline={option.multiline}
+                  invalid={option.invalid}
+                  checkbox={option.checkbox}
+                  hidden={option.hidden}
+                  selected={option.selected}
+                  focused={option.focused}
+                >
+                  {option.label}
+                </bal-option>
+              ))
+            : ''}
+        </bal-option-list>
+      </div>
     )
   }
 }
