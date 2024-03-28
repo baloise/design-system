@@ -46,7 +46,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Red' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should('have.value', 'vRed')
     })
 
     it('should select multiple options and emit 2 change events', () => {
@@ -64,7 +64,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vRed'])
       cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
-      cy.get('select').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
     })
 
     it('should not select because component is disabled', () => {
@@ -79,7 +79,7 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Red' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('select').should($el => expect($el.val()).deep.eq(null))
+      cy.get('[data-native]').should('have.value', '')
     })
 
     it('should clear values and emit a change event', () => {
@@ -95,7 +95,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('button', { name: 'Löschen' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(null)
-      cy.get('select').should($el => expect($el.val()).deep.eq(null))
+      cy.get('[data-native]').should('have.value', '')
     })
   })
 
@@ -113,7 +113,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Red' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should('have.value', 'vRed')
     })
 
     it('should select multiple options and emit 2 change events', () => {
@@ -132,7 +132,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vRed'])
       cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
-      cy.get('select').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
     })
 
     it('should not select because component is disabled', () => {
@@ -148,7 +148,7 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Red' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('select').should($el => expect($el.val()).deep.eq(null))
+      cy.get('[data-native]').should('have.value', '')
     })
 
     it('should clear values and emit a change event', () => {
@@ -165,11 +165,11 @@ describe('bal-dropdown', () => {
       cy.getByRole('button', { name: 'Löschen' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(null)
-      cy.get('select').should($el => expect($el.val()).deep.eq(null))
+      cy.get('[data-native]').should('have.value', '')
     })
   })
 
-  context('chips + multiple', () => {
+  context('multiple + chips', () => {
     it('should remove option by clicking the chip', () => {
       cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
         props: {
@@ -185,7 +185,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('button', { name: 'Schliessen' }).first().click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(['vPurple'])
-      cy.get('select').should($el => expect($el.val()).deep.eq(['vPurple']))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vPurple']))
     })
   })
 
@@ -203,7 +203,7 @@ describe('bal-dropdown', () => {
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
     })
 
     it('should use arrow key up and down to select multiple options and emit change event', () => {
@@ -228,7 +228,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vYellow'])
       cy.get('@balChange').shouldHaveEventDetail(['vPurple', 'vYellow'], 1)
-      cy.get('select').should($el => expect($el.val()).deep.eq(['vPurple', 'vYellow']))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vPurple', 'vYellow']))
     })
 
     it('should use focus by label to select option and emit change event', () => {
@@ -244,7 +244,7 @@ describe('bal-dropdown', () => {
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vYellow')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vYellow'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vYellow'))
     })
   })
 
@@ -259,7 +259,7 @@ describe('bal-dropdown', () => {
       })
 
       cy.get('.bal-dropdown__root__content').should('be.empty')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
     })
 
     it('should update dropdown after option update', () => {
@@ -278,7 +278,7 @@ describe('bal-dropdown', () => {
         })
 
       cy.get('.bal-dropdown__root__content').contains('Red')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
     })
 
     it('should work with dynamic chaning the options and values', () => {
@@ -302,13 +302,13 @@ describe('bal-dropdown', () => {
         })
 
       cy.get('.bal-dropdown__root__content').should('be.empty')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
 
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Banana' }).click({ force: true })
 
       cy.get('.bal-dropdown__root__content').contains('Banana')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vBanana'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vBanana'))
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vBanana')
     })
@@ -336,17 +336,17 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Green' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vGreen')
-      cy.get('select').should($el => expect($el.val()).deep.eq('vGreen'))
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vGreen'))
     })
 
     it('should not select option since it is disabled', () => {
       cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(
         `<bal-field disabled>
-        <bal-field-label>Color</bal-field-label>
-        <bal-field-control>
-          <bal-dropdown id="component"></bal-dropdown>
-        </bal-field-control>
-      </bal-field>`,
+          <bal-field-label>Color</bal-field-label>
+          <bal-field-control>
+            <bal-dropdown id="component"></bal-dropdown>
+          </bal-field-control>
+        </bal-field>`,
         {
           props: {
             placeholder: 'Pick a color',
@@ -359,36 +359,21 @@ describe('bal-dropdown', () => {
       cy.getByLabelText('Color').click({ force: true })
       cy.getByRole('option', { name: 'Green' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('select').should($el => expect($el.val()).deep.eq(null))
+      cy.get('[data-native]').should('have.value', '')
     })
   })
 
-  context.only('autocomplete', () => {
+  context('form reset', () => {
     it('should remove option by clicking the chip', () => {
-      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(
+        `
       <form action="https://www.w3schools.com/action_page.php" target="_blank">
         <bal-form-grid>
           <bal-form-col>
             <bal-field>
-              <bal-field-label>First Name</bal-field-label>
-              <bal-field-control>
-                <bal-input name="firstName" autocomplete="given-name"></bal-input>
-              </bal-field-control>
-            </bal-field>
-          </bal-form-col>
-          <bal-form-col>
-            <bal-field>
-              <bal-field-label>Last Name</bal-field-label>
-              <bal-field-control>
-                <bal-input name="lastName" autocomplete="family-name"></bal-input>
-              </bal-field-control>
-            </bal-field>
-          </bal-form-col>
-          <bal-form-col>
-            <bal-field>
               <bal-field-label>Country</bal-field-label>
               <bal-field-control>
-                <bal-dropdown name="country" autocomplete="country">
+                <bal-dropdown id="component" name="country" autocomplete="country">
                   <bal-option value="Switzerland" label="Switzerland">Switzerland</bal-option>
                   <bal-option value="Germany" label="Germany">Germany</bal-option>
                   <bal-option value="Italy" label="Italy">Italy</bal-option>
@@ -397,25 +382,23 @@ describe('bal-dropdown', () => {
             </bal-field>
           </bal-form-col>
         </bal-form-grid>
-        <input type="submit" />
-      </form>`, {
-        props: {
-          placeholder: 'Pick your country',
-          options: [
-            newBalOption({ label: 'Switzerland', value: 'Switzerland' }) as any,
-            newBalOption({ label: 'Germany', value: 'Germany' }) as any,
-            newBalOption({ label: 'Italy', value: 'Italy' }) as any,
-          ],
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+      </form>`,
+        {
+          props: {
+            placeholder: 'Pick your country',
+            value: 'Germany',
+          },
+          events,
         },
-        events,
-      })
+      )
 
-      cy.getByLabelText('First Name').type('John')
-
-      // cy.getByRole('button', { name: 'Schliessen' }).first().click()
-      // cy.get('@balChange').should('have.been.calledOnce')
-      // cy.get('@balChange').shouldHaveEventDetail(['vPurple'])
-      // cy.get('select').should($el => expect($el.val()).deep.eq(['vPurple']))
+      cy.getByLabelText('Country').click()
+      cy.getByRole('option', { name: 'Italy' }).click()
+      cy.getByRole('input', { name: 'Reset' }).click()
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('Germany'))
     })
   })
+
 })

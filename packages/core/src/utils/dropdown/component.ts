@@ -4,7 +4,7 @@ import { BalOption } from './option'
 
 export type DropdownComponent = {
   el: HTMLElement
-  nativeEl: HTMLSelectElement | undefined
+  nativeEl: HTMLSelectElement | HTMLInputElement | undefined
   panelEl: HTMLDivElement | undefined
   listEl: HTMLBalOptionListElement | undefined
 
@@ -39,8 +39,8 @@ export type DropdownComponent = {
   value?: string | string[]
   initialValue?: string | string[]
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined)
-  nativeSelectChanged(ev: Event)
 
+  nativeSelectChanged(ev: Event)
   panelCleanup?: () => void
 
   // interfaces to other utils

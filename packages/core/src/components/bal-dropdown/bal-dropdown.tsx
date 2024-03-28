@@ -60,7 +60,7 @@ export class Dropdown
   @Element() el!: HTMLElement
   panelEl: HTMLDivElement | undefined
   listEl: HTMLBalOptionListElement | undefined
-  nativeEl: HTMLSelectElement | undefined
+  nativeEl: HTMLSelectElement | HTMLInputElement | undefined
 
   nativeOptions: string[] = []
   @State() rawOptions: BalOption[] = []
@@ -340,66 +340,74 @@ export class Dropdown
    * EVENT BINDING
    * ------------------------------------------------------
    */
-
   nativeSelectChanged = (ev: Event) => {
     stopEventBubbling(ev)
-    const newValue = [this.nativeEl.value]
-    if (!areArraysEqual(newValue, this.rawValue)) {
-      this.updateRawValueBySelection(newValue)
-      this.isAutoFilled = true
+    if (!this.multiple) {
+      const newValue = [this.nativeEl.value]
+      if (!areArraysEqual(newValue, this.rawValue)) {
+        this.updateRawValueBySelection(newValue)
+        this.isAutoFilled = true
+      }
     }
   }
 
   private handleKeyDown = (ev: KeyboardEvent) => {
-    if (this.isExpanded) {
-      /**
-       * ⬇️ Arrow up key
-       */
-      if (isArrowDownKey(ev)) {
-        stopEventBubbling(ev)
-        this.listEl?.focusNext()
+    if (ev && ev.key) {
+      if (this.isExpanded) {
         /**
-         * ⬆️ Arrow up key
+         * ⬇️ Arrow up key
          */
-      } else if (isArrowUpKey(ev)) {
-        stopEventBubbling(ev)
-        this.listEl?.focusPrevious()
+        if (isArrowDownKey(ev)) {
+          stopEventBubbling(ev)
+          this.listEl?.focusNext()
+          /**
+           * ⬆️ Arrow up key
+           */
+        } else if (isArrowUpKey(ev)) {
+          stopEventBubbling(ev)
+          this.listEl?.focusPrevious()
+          /**
+           * Go to top of the list
+           */
+        } else if (ev.key === 'Home' || ev.key === 'PageUp') {
+          stopEventBubbling(ev)
+          this.listEl?.focusFirst()
+          /**
+           * Go to bottom of the list
+           */
+        } else if (ev.key === 'End' || ev.key === 'PageDown') {
+          stopEventBubbling(ev)
+          this.listEl?.focusLast()
+          /**
+           * Select focused option
+           */
+        } else if (isEnterKey(ev)) {
+          stopEventBubbling(ev)
+          this.listEl?.selectByFocus()
+          /**
+           * Close list
+           */
+        } else if (ev.key === 'Tab' || isEscapeKey(ev)) {
+          this.popupUtil.collapseList()
+          /**
+           * Focus on label
+           */
+        } else if (ev.key.length === 1) {
+          this.focusOptionByLabel(ev.key)
+        }
+      } else {
         /**
-         * Go to top of the list
+         * Open list
          */
-      } else if (ev.key === 'Home' || ev.key === 'PageUp') {
-        stopEventBubbling(ev)
-        this.listEl?.focusFirst()
-        /**
-         * Go to bottom of the list
-         */
-      } else if (ev.key === 'End' || ev.key === 'PageDown') {
-        stopEventBubbling(ev)
-        this.listEl?.focusLast()
-        /**
-         * Select focused option
-         */
-      } else if (isEnterKey(ev)) {
-        stopEventBubbling(ev)
-        this.listEl?.selectByFocus()
-        /**
-         * Close list
-         */
-      } else if (ev.key === 'Tab' || isEscapeKey(ev)) {
-        this.popupUtil.collapseList()
-        /**
-         * Focus on label
-         */
-      } else if (ev.key.length === 1) {
-        this.focusOptionByLabel(ev.key)
+        if (isEnterKey(ev) || isSpaceKey(ev)) {
+          stopEventBubbling(ev)
+          this.popupUtil.expandList()
+        }
       }
     } else {
-      /**
-       * Open list
-       */
-      if (isEnterKey(ev) || isSpaceKey(ev)) {
-        stopEventBubbling(ev)
-        this.popupUtil.expandList()
+      // Close the popup on autofill
+      if (this.isExpanded) {
+        this.popupUtil.collapseList()
       }
     }
   }
@@ -410,6 +418,108 @@ export class Dropdown
    */
 
   render() {
+    const isSingle = !this.multiple && !this.chips
+    return isSingle ? this.renderSingle() : this.renderMultiple()
+  }
+
+  renderSingle() {
+    const block = BEM.block('dropdown')
+
+    return (
+      <Host
+        class={{
+          ...block.class(),
+        }}
+        id={this.inputId}
+        tabIndex={-1}
+      >
+        <div
+          class={{
+            ...block.element('root').class(),
+            ...block.element('root').modifier('focused').class(this.hasFocus),
+            ...block.element('root').modifier('invalid').class(this.invalid),
+            ...block.element('root').modifier('disabled').class(this.isDisabled),
+            ...block.element('root').modifier('autofill').class(this.isAutoFilled),
+          }}
+          onClick={ev => this.eventsUtil.handleClick(ev)}
+        >
+          <span
+            class={{
+              ...block.element('root').element('content').class(),
+              ...block.element('root').element('content').modifier('disabled').class(this.isDisabled),
+              ...block.element('root').element('content').modifier('placeholder').class(!this.isFilled),
+            }}
+          >
+            {this.inputContent}
+          </span>
+          <input
+            id={this.ariaForm.controlId || `${this.inputId}-btn`}
+            class={{
+              ...block.element('root').element('input').class(),
+            }}
+            type="text"
+            tabindex="0"
+            name={this.name}
+            value={this.rawValue.join(',')}
+            autoComplete={this.autocomplete}
+            disabled={this.disabled}
+            readonly={this.readonly}
+            placeholder={this.placeholder}
+            aria-invalid={this.invalid}
+            aria-expanded={ariaBooleanToString(this.isExpanded)}
+            aria-labelledby={this.ariaForm.labelId}
+            aria-describedby={this.ariaForm.messageId}
+            aria-haspopup="listbox"
+            data-native
+            ref={nativeEl => (this.nativeEl = nativeEl)}
+            onFocus={ev => this.eventsUtil.handleFocus(ev)}
+            onBlur={ev => this.eventsUtil.handleBlur(ev)}
+            onKeyDown={ev => this.handleKeyDown(ev)}
+            onChange={ev => this.nativeSelectChanged(ev)}
+            {...this.inheritedAttributes}
+          />
+          {this.iconUtil.render(this.language)}
+        </div>
+        <div
+          class={{
+            ...block.element('list').class(),
+            ...block.element('list').modifier('expanded').class(this.isExpanded),
+          }}
+          ref={panelEl => (this.panelEl = panelEl)}
+        >
+          <bal-option-list
+            multiple={this.multiple}
+            disabled={this.isDisabled}
+            filter={this.filter}
+            contentHeight={this.contentHeight}
+            ref={listEl => (this.listEl = listEl)}
+          >
+            <slot />
+            {this.hasPropOptions
+              ? this.rawOptions.map(option => (
+                  <bal-option
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                    disabled={option.disabled}
+                    multiline={option.multiline}
+                    invalid={option.invalid}
+                    checkbox={option.checkbox}
+                    hidden={option.hidden}
+                    selected={option.selected}
+                    focused={option.focused}
+                  >
+                    {option.label}
+                  </bal-option>
+                ))
+              : ''}
+          </bal-option-list>
+        </div>
+      </Host>
+    )
+  }
+
+  renderMultiple() {
     const block = BEM.block('dropdown')
 
     return (

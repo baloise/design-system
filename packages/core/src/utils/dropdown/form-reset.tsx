@@ -18,7 +18,11 @@ export class DropdownFormResetUtil {
   componentDidRender() {
     if (this.component.nativeEl) {
       const options = this.component.nativeEl.querySelectorAll('option')
-      options.forEach(option => (option.selected = true))
+      options.forEach(option => {
+        if (this.component.rawValue.includes(option.value)) {
+          option.selected = true
+        }
+      })
       if (!this.component.multiple) {
         const firstValue = this.component.rawValue[0]
         if (firstValue) {
@@ -48,12 +52,11 @@ export class DropdownFormResetUtil {
 
     return (
       <select
-        class={
-          {
-            // ...block.element('native').class(),
-          }
-        }
+        class={{
+          ...block.element('native').class(),
+        }}
         aria-hidden="true"
+        data-native
         tabindex="-1"
         autoComplete={this.component.autocomplete}
         name={this.component.name}
@@ -61,11 +64,10 @@ export class DropdownFormResetUtil {
         disabled={this.component.disabled}
         required={this.component.required}
         ref={nativeEl => (this.component.nativeEl = nativeEl)}
-        onFocus={ev => console.warn('AUTOFILL')}
         onChange={ev => this.component.nativeSelectChanged(ev)}
       >
-        {this.component.nativeOptions.map((value: string) => (
-          <option key={value} value={value}>
+        {this.component.rawValue.map((value: string) => (
+          <option key={value} value={value} selected={true}>
             {value}
           </option>
         ))}

@@ -162,8 +162,9 @@ export function checkAriaLabel(element: HTMLElement, label: string | undefined |
   if (label === undefined || label === null || label === '') {
     return true
   }
+  const text = Cypress.$(element).text().trim()
   const ariaLabel = Cypress.$(element).attr('aria-label')
   const title = Cypress.$(element).attr('title')
-  const text = Cypress.$(element).text().trim()
-  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
+  const value = Cypress.$(element).attr('value')
+  return [text, ariaLabel, title, value].includes(label.trim())
 }

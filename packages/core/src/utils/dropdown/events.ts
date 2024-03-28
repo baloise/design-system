@@ -13,13 +13,6 @@ export class DropdownEventsUtil {
     this.component = component
   }
 
-  // @Listen('click', { capture: true, target: 'document' })
-  // handleHostClick(ev: MouseEvent | UIEvent) {
-  //   if (this.component.isDisabled) {
-  //     stopEventBubbling(ev)
-  //   }
-  // }
-
   handleFocus(_ev: FocusEvent) {
     this.component.hasFocus = true
   }
