@@ -400,5 +400,4 @@ describe('bal-dropdown', () => {
       cy.get('[data-native]').should($el => expect($el.val()).deep.eq('Germany'))
     })
   })
-
 })
