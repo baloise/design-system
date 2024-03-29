@@ -4,7 +4,7 @@ import isNil from 'lodash.isnil'
 import { DropdownComponent } from './component'
 import { BEM } from '../bem'
 import { BalOption } from './option'
-import { waitForComponent } from '../helpers'
+import { waitAfterFramePaint } from '../helpers'
 
 export class DropdownValueUtil {
   private component!: DropdownComponent
@@ -15,6 +15,14 @@ export class DropdownValueUtil {
 
   componentDidLoad(): void {
     setTimeout(() => this.valueChanged(this.component.value, undefined), 0)
+  }
+
+  isDisabled(): boolean {
+    return this.component.disabled || this.component.readonly
+  }
+
+  isFilled(): boolean {
+    return this.component.rawValue && this.component.rawValue.length > 0
   }
 
   valueChanged(newValue: string | string[] | undefined, oldValue: string | string[] | undefined) {
@@ -75,7 +83,6 @@ export class DropdownValueUtil {
     this.component.rawValue = newRawValue
 
     if (this.component.listEl) {
-      await waitForComponent(this.component.listEl)
       await this.component.listEl.updateSelected(this.component.rawValue)
     }
 
@@ -88,12 +95,12 @@ export class DropdownValueUtil {
   }
 
   async updateInputContent() {
+    await waitAfterFramePaint()
     if (this.component.listEl) {
-      await waitForComponent(this.component.listEl)
       const options = await this.component.listEl.getSelectedOptions(this.component.rawValue)
       this.component.inputValue = options.map(option => option.label).join(', ')
 
-      if (!this.component.isFilled) {
+      if (!this.component.valueUtil.isFilled()) {
         this.component.inputContent = this.component.placeholder
       } else {
         if (this.component.chips) {

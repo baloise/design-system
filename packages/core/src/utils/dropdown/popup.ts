@@ -21,7 +21,7 @@ export class DropdownPopupUtil {
   }
 
   toggleList() {
-    if (!this.component.isDisabled) {
+    if (!this.component.valueUtil.isDisabled()) {
       if (this.component.isExpanded) {
         this.collapseList()
       } else {

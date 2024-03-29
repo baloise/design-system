@@ -32,11 +32,11 @@ import {
   DropdownFormReset,
   DropdownFormResetUtil,
   DropdownIconUtil,
+  DropdownOptionUtil,
   DropdownPopupUtil,
   DropdownValueUtil,
-  mapOption,
+  i18nBalDropdown,
 } from '../../utils/dropdown'
-import { waitAfterFramePaint } from '../../utils/helpers'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -46,13 +46,14 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { DropdownFocus, DropdownFocusUtil } from '../../utils/dropdown/focus'
 
 @Component({
   tag: 'bal-dropdown',
   styleUrl: 'bal-dropdown.sass',
 })
 export class Dropdown
-  implements ComponentInterface, Loggable, DropdownFormReset, BalConfigObserver, BalAriaFormLinking
+  implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormReset, DropdownFocus
 {
   private inheritedAttributes: Attributes = {}
   private inputId = `bal-dropdown-${balDropdownIds++}`
@@ -62,7 +63,9 @@ export class Dropdown
   listEl: HTMLBalOptionListElement | undefined
   nativeEl: HTMLSelectElement | HTMLInputElement | undefined
 
+  initialValue?: string | string[] = []
   nativeOptions: string[] = []
+
   @State() rawOptions: BalOption[] = []
   @State() rawValue: string[] = []
   @State() hasFocus = false
@@ -71,22 +74,19 @@ export class Dropdown
   @State() inputValue = ''
   @State() inputContent?: FunctionalComponent | string
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
-
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
-
   @State() labelToFocus = ''
-  private labelToFocusTimeout!: NodeJS.Timeout
-
-  log!: LogInstance
-  initialValue?: string | string[] = []
-  panelCleanup?: () => void
 
   valueUtil = new DropdownValueUtil()
+  eventsUtil = new DropdownEventsUtil()
+  popupUtil = new DropdownPopupUtil()
+  optionUtil = new DropdownOptionUtil()
   formResetUtil = new DropdownFormResetUtil()
   iconUtil = new DropdownIconUtil()
-  popupUtil = new DropdownPopupUtil()
-  eventsUtil = new DropdownEventsUtil()
+  focusUtil = new DropdownFocusUtil()
+
+  log!: LogInstance
 
   @Logger('bal-dropdown')
   createLogger(log: LogInstance) {
@@ -180,9 +180,7 @@ export class Dropdown
   @Prop() options: BalOption[] = []
   @Watch('options')
   protected async optionChanged() {
-    this.rawOptions = this.options.map(mapOption)
-    await waitAfterFramePaint()
-    await this.valueUtil.updateInputContent()
+    this.optionUtil.optionChanged()
   }
 
   /**
@@ -208,17 +206,15 @@ export class Dropdown
     this.valueUtil.connectedCallback(this)
     this.eventsUtil.connectedCallback(this)
     this.popupUtil.connectedCallback(this)
+    this.optionUtil.connectedCallback(this)
     this.iconUtil.connectedCallback(this)
     this.formResetUtil.connectedCallback(this)
-
-    this.optionChanged()
+    this.focusUtil.connectedCallback(this)
   }
 
   async componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
-    if (this.listEl) {
-      this.nativeOptions = await this.listEl.getValues()
-    }
+    await this.optionUtil.componentWillRender()
   }
 
   componentDidRender() {
@@ -245,12 +241,8 @@ export class Dropdown
   }
 
   @Listen('balOptionChange')
-  async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
-    const newSelectedValues = (await this.listEl?.getSelectedValues()) || []
-    this.valueUtil.updateRawValueBySelection(newSelectedValues)
-    if (!this.multiple) {
-      this.popupUtil.collapseList()
-    }
+  async listenToOptionChange(ev: BalEvents.BalOptionChange) {
+    this.optionUtil.listenToOptionChange(ev)
   }
 
   @Listen('click', { target: 'document' })
@@ -262,42 +254,6 @@ export class Dropdown
   resetHandler(ev: UIEvent) {
     this.formResetUtil.handle(ev)
   }
-
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
-  get isDisabled(): boolean {
-    return this.disabled || this.readonly
-  }
-
-  get isFilled(): boolean {
-    return this.rawValue && this.rawValue.length > 0
-  }
-
-  get hasPropOptions(): boolean {
-    return this.options && this.options.length > 0
-  }
-
-  // get values(): string[] {
-  //   if (this.hasPropOptions) {
-  //     return this.options
-  //       .filter(o => !o.disabled && !o.hidden)
-  //       .sort()
-  //       .map(o => o.value)
-  //   }
-
-  // }
-
-  // get labels(): string[] {
-  //   if (this.hasPropOptions) {
-  //     return this.options
-  //       .filter(o => !o.disabled && !o.hidden)
-  //       .sort()
-  //       .map(o => o.label)
-  //   }
-  // }
 
   /**
    * PUBLIC METHODS
@@ -318,22 +274,6 @@ export class Dropdown
 
   updateRawValueBySelection(newRawValue: string[] = []) {
     this.valueUtil.updateRawValueBySelection(newRawValue)
-  }
-
-  /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private focusOptionByLabel(key: string) {
-    this.labelToFocus = (this.labelToFocus + key).trim()
-    if (this.labelToFocus.length > 0) {
-      clearTimeout(this.labelToFocusTimeout)
-      this.labelToFocusTimeout = setTimeout(async () => {
-        await this.listEl?.focusByLabel(this.labelToFocus)
-        this.labelToFocus = ''
-      }, 600)
-    }
   }
 
   /**
@@ -393,7 +333,7 @@ export class Dropdown
            * Focus on label
            */
         } else if (ev.key.length === 1) {
-          this.focusOptionByLabel(ev.key)
+          this.focusUtil.focusOptionByLabel(ev.key)
         }
       } else {
         /**
@@ -402,6 +342,11 @@ export class Dropdown
         if (isEnterKey(ev) || isSpaceKey(ev)) {
           stopEventBubbling(ev)
           this.popupUtil.expandList()
+          /**
+           * Focus on label
+           */
+        } else if (ev.key.length === 1) {
+          this.focusUtil.focusOptionByLabel(ev.key, { select: true })
         }
       }
     } else {
@@ -418,42 +363,53 @@ export class Dropdown
    */
 
   render() {
+    console.warn('render')
     const block = BEM.block('dropdown')
     const isSingle = !this.multiple && !this.chips
 
-    const mainAttributes: Attributes = {
-      'tabindex': '0',
-      'id': this.ariaForm.controlId || `${this.inputId}-btn`,
+    const hostAttributes: Attributes = {
+      'class': { ...block.class() },
+      'tabindex': '-1',
+      'id': `${this.inputId}`,
+      'aria-owns': `${this.inputId}-menu`,
       'aria-invalid': ariaBooleanToString(this.invalid),
       'aria-expanded': ariaBooleanToString(this.isExpanded),
-      'aria-disabled': ariaBooleanToString(this.isDisabled),
+      'aria-disabled': ariaBooleanToString(this.valueUtil.isDisabled()),
       'aria-labelledby': this.ariaForm.labelId,
       'aria-describedby': this.ariaForm.messageId,
       'aria-haspopup': 'listbox',
+    }
+
+    const mainAttributes: Attributes = {
+      'tabindex': '0',
+      'id': this.ariaForm.controlId || `${this.inputId}-ctrl`,
+      'title': this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open,
+      'aria-label': this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open,
+      // 'aria-invalid': ariaBooleanToString(this.invalid),
+      // 'aria-expanded': ariaBooleanToString(this.isExpanded),
+      // 'aria-disabled': ariaBooleanToString(this.valueUtil.isDisabled()),
+      // 'aria-labelledby': this.ariaForm.labelId,
+      // 'aria-describedby': this.ariaForm.messageId,
       'onFocus': ev => this.eventsUtil.handleFocus(ev),
       'onBlur': ev => this.eventsUtil.handleBlur(ev),
       'onKeyDown': ev => this.handleKeyDown(ev),
       ...this.inheritedAttributes,
     }
 
-    return isSingle ? this.renderSingle(block, mainAttributes) : this.renderMultiple(block, mainAttributes)
+    return isSingle
+      ? this.renderSingle(block, hostAttributes, mainAttributes)
+      : this.renderMultiple(block, hostAttributes, mainAttributes)
   }
 
-  renderSingle(block, mainAttributes) {
+  renderSingle(block, hostAttributes, mainAttributes) {
     return (
-      <Host
-        class={{
-          ...block.class(),
-        }}
-        id={this.inputId}
-        tabIndex={-1}
-      >
+      <Host {...hostAttributes}>
         <div
           class={{
             ...block.element('root').class(),
             ...block.element('root').modifier('focused').class(this.hasFocus),
             ...block.element('root').modifier('invalid').class(this.invalid),
-            ...block.element('root').modifier('disabled').class(this.isDisabled),
+            ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
           onClick={ev => this.eventsUtil.handleClick(ev)}
@@ -461,8 +417,8 @@ export class Dropdown
           <span
             class={{
               ...block.element('root').element('content').class(),
-              ...block.element('root').element('content').modifier('disabled').class(this.isDisabled),
-              ...block.element('root').element('content').modifier('placeholder').class(!this.isFilled),
+              ...block.element('root').element('content').modifier('disabled').class(this.valueUtil.isDisabled()),
+              ...block.element('root').element('content').modifier('placeholder').class(!this.valueUtil.isFilled()),
             }}
           >
             {this.inputContent}
@@ -471,6 +427,8 @@ export class Dropdown
             class={{
               ...block.element('root').element('input').class(),
             }}
+            size={1}
+            inputmode="none"
             type="text"
             tabindex="0"
             name={this.name}
@@ -491,21 +449,15 @@ export class Dropdown
     )
   }
 
-  renderMultiple(block, mainAttributes) {
+  renderMultiple(block, hostAttributes, mainAttributes) {
     return (
-      <Host
-        class={{
-          ...block.class(),
-        }}
-        id={this.inputId}
-        tabIndex={-1}
-      >
+      <Host {...hostAttributes}>
         <button
           class={{
             ...block.element('root').class(),
             ...block.element('root').modifier('focused').class(this.hasFocus),
             ...block.element('root').modifier('invalid').class(this.invalid),
-            ...block.element('root').modifier('disabled').class(this.isDisabled),
+            ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
           type="button"
@@ -516,8 +468,8 @@ export class Dropdown
           <span
             class={{
               ...block.element('root').element('content').class(),
-              ...block.element('root').element('content').modifier('disabled').class(this.isDisabled),
-              ...block.element('root').element('content').modifier('placeholder').class(!this.isFilled),
+              ...block.element('root').element('content').modifier('disabled').class(this.valueUtil.isDisabled()),
+              ...block.element('root').element('content').modifier('placeholder').class(!this.valueUtil.isFilled()),
             }}
           >
             {this.inputContent}
@@ -533,6 +485,7 @@ export class Dropdown
   renderOptionList(block) {
     return (
       <div
+        id={`${this.inputId}-menu`}
         class={{
           ...block.element('list').class(),
           ...block.element('list').modifier('expanded').class(this.isExpanded),
@@ -541,13 +494,13 @@ export class Dropdown
       >
         <bal-option-list
           multiple={this.multiple}
-          disabled={this.isDisabled}
+          disabled={this.valueUtil.isDisabled()}
           filter={this.filter}
           contentHeight={this.contentHeight}
           ref={listEl => (this.listEl = listEl)}
         >
           <slot />
-          {this.hasPropOptions
+          {this.optionUtil.hasPropOptions()
             ? this.rawOptions.map(option => (
                 <bal-option
                   key={option.value}

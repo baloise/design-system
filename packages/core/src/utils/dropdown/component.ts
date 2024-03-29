@@ -1,14 +1,17 @@
 import { EventEmitter, FunctionalComponent } from '@stencil/core'
 import { DropdownValueUtil } from './value'
 import { BalOption } from './option'
+import { DropdownFocus } from './focus'
+import { DropdownPopupUtil } from './popup'
 
-export type DropdownComponent = {
+export type DropdownComponent = DropdownFocus & {
   el: HTMLElement
   nativeEl: HTMLSelectElement | HTMLInputElement | undefined
   panelEl: HTMLDivElement | undefined
   listEl: HTMLBalOptionListElement | undefined
 
   valueUtil: DropdownValueUtil
+  popupUtil: DropdownPopupUtil
 
   name: string
   icon: string
@@ -26,14 +29,13 @@ export type DropdownComponent = {
 
   hasFocus: boolean
   isExpanded: boolean
-  isDisabled: boolean
-  isFilled: boolean
   isAutoFilled: boolean
 
   inputValue: string
   inputContent?: FunctionalComponent | string
 
   nativeOptions: string[]
+  options: BalOption[]
   rawOptions: BalOption[]
   rawValue: string[]
   value?: string | string[]

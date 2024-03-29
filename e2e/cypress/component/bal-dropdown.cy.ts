@@ -1,10 +1,6 @@
 import { newBalOption } from '../../generated/components'
 import { Components } from '../support/utils'
 
-/**
- * TODO: autocomplete
- */
-
 describe('bal-dropdown', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
 
@@ -240,7 +236,23 @@ describe('bal-dropdown', () => {
         events,
       })
 
-      cy.getByPlaceholder('Pick a color').click().type('{Y}').wait(600).type('{enter}')
+      cy.getByPlaceholder('Pick a color').click().type('{Y}').wait(200).type('{enter}')
+
+      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').shouldHaveEventDetail('vYellow')
+      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vYellow'))
+    })
+
+    it('should use focus by label to select option and emit change event without open it', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
+        props: {
+          placeholder: 'Pick a color',
+          options,
+        },
+        events,
+      })
+
+      cy.getByPlaceholder('Pick a color').focus().type('{Y}').wait(200).blur()
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vYellow')

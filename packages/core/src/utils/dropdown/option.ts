@@ -1,3 +1,6 @@
+import { waitAfterFramePaint } from "../helpers"
+import { DropdownComponent } from "./component"
+
 export type BalBaseOption<TValue = string> = {
   value: TValue
   label: string
@@ -53,4 +56,37 @@ export const newBalOption = <TValue = string>(
   }
 
   return data
+}
+
+export class DropdownOptionUtil {
+  private component!: DropdownComponent
+
+  connectedCallback(component: DropdownComponent) {
+    this.component = component
+    this.optionChanged()
+  }
+
+  async componentWillRender() {
+    if (this.component.listEl) {
+      this.component.nativeOptions = await this.component.listEl.getValues()
+    }
+  }
+
+  hasPropOptions(): boolean {
+    return this.component.options && this.component.options.length > 0
+  }
+
+  async optionChanged() {
+    this.component.rawOptions = this.component.options.map(mapOption)
+    await this.component.valueUtil.updateInputContent()
+  }
+
+  async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
+    const newSelectedValues = (await this.component.listEl?.getSelectedValues()) || []
+    this.component.valueUtil.updateRawValueBySelection(newSelectedValues)
+    if (!this.component.multiple) {
+      this.component.popupUtil.collapseList()
+    }
+  }
+
 }

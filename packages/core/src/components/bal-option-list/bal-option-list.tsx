@@ -178,7 +178,7 @@ export class OptionList implements ComponentInterface, Loggable {
    * Focus the option with the label that starts with the search property
    * @returns focusIndex
    */
-  @Method() async focusByLabel(search: string): Promise<number> {
+  @Method() async focusByLabel(search: string, config: Partial<{ select: boolean }>): Promise<number> {
     const options = this.options
     const indexToFocus = this.getOptionIndexByLabel(options, search)
     this.updateFocus(options, indexToFocus)
@@ -187,6 +187,11 @@ export class OptionList implements ComponentInterface, Loggable {
     this.updateScrollTopPosition(option)
 
     await waitAfterFramePaint()
+
+    if (config.select) {
+      await option.select()
+    }
+
     return indexToFocus
   }
 

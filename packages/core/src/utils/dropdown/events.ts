@@ -22,7 +22,7 @@ export class DropdownEventsUtil {
   }
 
   handleClick(ev: MouseEvent) {
-    if (!this.component.isDisabled) {
+    if (!this.component.valueUtil.isDisabled()) {
       if (this.component.chips) {
         const targetEl = ev.target as HTMLElement
         const closeEl = targetEl.closest('bal-close')

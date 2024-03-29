@@ -2215,7 +2215,7 @@ export namespace Components {
           * Focus the option with the label that starts with the search property
           * @returns focusIndex
          */
-        "focusByLabel": (search: string) => Promise<number>;
+        "focusByLabel": (search: string, config: Partial<{ select: boolean; }>) => Promise<number>;
         /**
           * Focus the first visible option in the list
           * @returns focusIndex
