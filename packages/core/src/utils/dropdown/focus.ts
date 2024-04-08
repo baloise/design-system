@@ -17,7 +17,6 @@ export class DropdownFocusUtil {
   public focusOptionByLabel(key: string, options: Partial<{ select: boolean }> = {}) {
     this.component.labelToFocus = (this.component.labelToFocus + key).trim()
     if (this.component.labelToFocus.length > 0) {
-
       clearTimeout(this.keyHitTimeout)
       this.keyHitTimeout = setTimeout(() => {
         this.component.listEl?.focusByLabel(this.component.labelToFocus, options)
@@ -29,5 +28,4 @@ export class DropdownFocusUtil {
       }, 1000)
     }
   }
-
 }

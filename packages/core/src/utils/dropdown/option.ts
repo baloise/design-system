@@ -1,5 +1,5 @@
-import { waitAfterFramePaint } from "../helpers"
-import { DropdownComponent } from "./component"
+import { waitAfterFramePaint } from '../helpers'
+import { DropdownComponent } from './component'
 
 export type BalBaseOption<TValue = string> = {
   value: TValue
@@ -88,5 +88,4 @@ export class DropdownOptionUtil {
       this.component.popupUtil.collapseList()
     }
   }
-
 }
