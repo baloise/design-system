@@ -12,16 +12,22 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <section role="listbox">
-          <bal-option data-testid="basic" value="BlackWidow" label="Black Widow">
-            <b style="display: block">Black Widow</b>
-            <span>S.H.I.E.L.D.</span>
-          </bal-option>
-          <bal-option data-testid="focused" focused value="Focused" label="Focused">Focused</bal-option>
-          <bal-option data-testid="selected" selected value="Selected" label="Selected">Selected</bal-option>
-          <bal-option data-testid="invalid" invalid value="Invalid" label="Invalid">Invalid</bal-option>
-          <bal-option data-testid="disabled" disabled value="Disabled" label="Disabled">Disabled</bal-option>
-        </section>
+        <bal-form-grid>
+          <bal-form-col>
+            <bal-field required>
+              <bal-field-label>Year</bal-field-label>
+              <bal-field-control>
+                <bal-dropdown value="v1988">
+                  <bal-option value="v1988" label="1988">1988</bal-option>
+                  <bal-option value="v1989" label="1989">1989</bal-option>
+                  <bal-option value="v1990" label="1990">1990</bal-option>
+                  <bal-option value="v1991" label="1991">1991</bal-option>
+                  <bal-option value="v1992" label="1992">1992</bal-option>
+                </bal-dropdown>
+              </bal-field-control>
+            </bal-field>
+          </bal-form-col>
+        </bal-form-grid>
       </main>
     </bal-doc-app>
   </body>
