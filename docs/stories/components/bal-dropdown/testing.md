@@ -6,25 +6,26 @@ The Baloise Design System provides a collection of custom cypress commands for t
 
 <!-- START: human documentation -->
 
+```ts
+describe('Dropdown', () => {
+  it('should ...', () => {
+    cy.getByPlaceholder('Pick a color').click()
+    cy.getByRole('option', { name: 'Red' }).click()
 
+    cy.getByPlaceholder('Pick a color').should('be.disabled')
+    cy.getByPlaceholder('Pick a color').should('have.value', 'vRed')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
-### Commands
-
-A list of the custom commands for this specific component.
-
-| Command                        | Description                                                | Signature                                                                                  |
-| ------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `balDropdownFindOptions`       | Returns the select options.                                | (options?: Partial\<Loggable>): Chainable                                                  |
-| `balDropdownFindChips`         | Returns the closable select chips (only with multiselect). | (options?: Partial\<Loggable>): Chainable                                                  |
-| `balDropdownShouldHaveOptions` | Asserts that the select has the given options.             | (labels: string[], dataType?: 'label' \| 'value', options?: Partial\<Loggable>): Chainable |
-
-
 ### Selectors
 
-| Selector           | Element               |
-| ------------------ | --------------------- |
-| `dropdown.input`   | Native input element. |
-| `dropdown.options` | Select option.        |
+| Selector           | Element                              |
+| ------------------ | ------------------------------------ |
+| `dropdown.input`   | Native input element.                |
+| `dropdown.options` | Select option.                       |
+| `dropdown.trigger` | Trigger to open and close the popup. |
+| `dropdown.chips`   | Multi select tag .                   |
 
