@@ -11,19 +11,7 @@
   },
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
-  "files": [
-    "dist/"
-  ],
   "dependencies": {
     "@baloise/ds-core": "16.0.3"
-  },
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
   }
 }

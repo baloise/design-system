@@ -3,6 +3,26 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/react/src",
   "projectType": "library",
-  "targets": {},
+  "targets": {
+    "nx-release-publish": {
+      "executor": "@nx/js:release-publish",
+      "options": {
+        "packageRoot": "{projectRoot}/dist"
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "{projectRoot}/src/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "project": "{projectRoot}/package.json",
+        "compiler": "swc",
+        "format": ["esm", "cjs"],
+        "external": ["react", "react-dom", "@baloise/ds-core", "@baloise/ds-core/loader"]
+      }
+    }
+  },
   "tags": ["scope:release", "type:package"]
 }
