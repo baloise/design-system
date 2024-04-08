@@ -68,16 +68,4 @@ export class BalDropdown extends ValueAccessor {
 export declare interface BalDropdown extends Components.BalDropdown {
   /** Emitted when a option got selected. */
   balChange: EventEmitter<BalEvents.BalDropdownCustomEvent<string | string[] | undefined>>
-  // /** Emitted when the input got clicked. */
-  // balInputClick: EventEmitter<BalEvents.BalDropdownCustomEvent<MouseEvent>>
-  // /** Emitted when a keyboard input occurred. */
-  // balInput: EventEmitter<BalEvents.BalDropdownCustomEvent<string>>
-  // /** Emitted when the input loses focus. */
-  // balBlur: EventEmitter<BalEvents.BalDropdownCustomEvent<FocusEvent>>
-  // /** Emitted when the input has focus. */
-  // balFocus: EventEmitter<BalEvents.BalDropdownCustomEvent<FocusEvent>>
-  // /** Emitted when the user cancels the input. */
-  // balCancel: EventEmitter<BalEvents.BalDropdownCustomEvent<KeyboardEvent>>
-  // /** Emitted when the input has focus and key from the keyboard go hit. */
-  // balKeyPress: EventEmitter<BalEvents.BalDropdownCustomEvent<KeyboardEvent>>
 }

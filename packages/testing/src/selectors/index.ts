@@ -235,11 +235,19 @@ export const selectors = {
     /**
      * Native input element.
      */
-    input: 'input.data-test-select-input',
+    input: '[data-native]',
     /**
      * Select option.
      */
     options: 'bal-option',
+    /**
+     * Trigger to open and close the popup.
+     */
+    trigger: byTestId('bal-dropdown-trigger'),
+    /**
+     * Multi select tag .
+     */
+    chips: byTestId('bal-dropdown-chip'),
   },
   popover: {
     /**

@@ -31,7 +31,7 @@ export type DropdownComponent = DropdownFocus & {
   isExpanded: boolean
   isAutoFilled: boolean
 
-  inputValue: string
+  inputLabel: string
   inputContent?: FunctionalComponent | string
 
   nativeOptions: string[]

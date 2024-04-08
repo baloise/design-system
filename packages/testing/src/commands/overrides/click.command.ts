@@ -9,6 +9,7 @@ import {
   isHint,
   wrapCommand,
   wrapOptions,
+  isDropDown,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
@@ -35,12 +36,16 @@ Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress
     return command(selectors.radio.label)
   }
 
-  if (isTag(element) && hasClass(element, 'sc-bal-select')) {
-    return command('.delete')
+  if (isTag(element)) {
+    return command(selectors.tag.close)
   }
 
   if (isHint(element)) {
     return command(selectors.hint.trigger)
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.trigger)
   }
 
   return originalFn(element, options)

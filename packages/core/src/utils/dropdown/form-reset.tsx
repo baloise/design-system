@@ -57,6 +57,7 @@ export class DropdownFormResetUtil {
         }}
         aria-hidden="true"
         data-native
+        data-label={this.component.inputLabel}
         tabindex="-1"
         autoComplete={this.component.autocomplete}
         name={this.component.name}

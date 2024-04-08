@@ -71,7 +71,7 @@ export class Dropdown
   @State() hasFocus = false
   @State() isExpanded = false
   @State() isAutoFilled = false
-  @State() inputValue = ''
+  @State() inputLabel = ''
   @State() inputContent?: FunctionalComponent | string
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
   @State() language: BalLanguage = defaultConfig.language
@@ -363,7 +363,6 @@ export class Dropdown
    */
 
   render() {
-    console.warn('render')
     const block = BEM.block('dropdown')
     const isSingle = !this.multiple && !this.chips
 
@@ -407,6 +406,7 @@ export class Dropdown
             ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
+          data-test="bal-dropdown-trigger"
           onClick={ev => this.eventsUtil.handleClick(ev)}
         >
           <span
@@ -427,12 +427,13 @@ export class Dropdown
             type="text"
             tabindex="0"
             name={this.name}
+            data-native
+            data-label={this.inputLabel}
             value={this.rawValue.join(',')}
             autoComplete={this.autocomplete}
             disabled={this.disabled}
             readonly={this.readonly}
             placeholder={this.placeholder}
-            data-native
             ref={nativeEl => (this.nativeEl = nativeEl)}
             onChange={ev => this.handleAutoFill(ev)}
             {...mainAttributes}
@@ -457,6 +458,7 @@ export class Dropdown
           }}
           type="button"
           data-placeholder={this.placeholder}
+          data-test="bal-dropdown-trigger"
           onClick={ev => this.eventsUtil.handleClick(ev)}
           {...mainAttributes}
         >

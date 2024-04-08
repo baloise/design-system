@@ -18,7 +18,16 @@
       <main class="container py-medium">
         <h2 class="title text-large">Basic</h2>
         <section>
-          <bal-dropdown data-testid="basic" placeholder="Select one year" value="v1988">
+          <bal-dropdown data-testid="basic" placeholder="Select one year" value="v1995">
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+          </bal-dropdown>
+
+          <bal-dropdown data-testid="disabled" disabled placeholder="Select one year" value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -39,197 +48,36 @@
             <bal-option value="v2005" label="2005">2005</bal-option>
             <bal-option value="v2006" label="2006">2006</bal-option>
             <bal-option value="v2007" label="2007">2007</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Placeholder</h2>
-        <section data-testid="basic">
-          <bal-dropdown placeholder="Select one year">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Long Content</h2>
-        <section data-testid="basic">
-          <bal-dropdown placeholder="Select one hero" value="BlackWidow">
-            <bal-option
-              value="BlackWidow"
-              label="Black Widow is a 2021 American superhero film based on Marvel Comics featuring the character of the same name."
-            >
-              <b style="display: block">Black Widow</b>
-              <span class="text-small"
-                >Black Widow is a 2021 American superhero film based on Marvel Comics featuring the character of the
-                same name.</span
-              >
-            </bal-option>
-            <bal-option value="BlackPanter" label="Black Panter">
-              <b style="display: block">Black Panter</b>
-              <span class="text-small">Wakanda</span>
-            </bal-option>
-            <bal-option value="IronMan" label="Iron Man">
-              <b style="display: block">Iron Man</b>
-              <span class="text-small">Malibu</span>
-            </bal-option>
-            <bal-option value="SpiderMan" label="Spider Man">
-              <b style="display: block">Spider Man</b>
-              <span class="text-small">Queens</span>
-            </bal-option>
-            <bal-option value="CaptainAmerica" label="Captain America">
-              <b style="display: block">Captain America</b>
-              <span class="text-small">Broklyn</span>
-            </bal-option>
-            <bal-option value="Thor" label="Thor God of Thunder">
-              <b style="display: block">Thor God of Thunder</b>
-              <span class="text-small">Asgard</span>
-            </bal-option>
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Multiple</h2>
-        <section data-testid="multiple">
-          <bal-dropdown multiple value="v1988,v1989">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-            <bal-option value="v1991" label="1991">1991</bal-option>
-            <bal-option value="v1992" label="1992">1992</bal-option>
-            <bal-option value="v1993" label="1993">1993</bal-option>
-            <bal-option value="v1994" label="1994">1994</bal-option>
-            <bal-option value="v1995" label="1995">1995</bal-option>
-            <bal-option value="v1996" label="1996">1996</bal-option>
-            <bal-option value="v1997" label="1997">1997</bal-option>
-            <bal-option value="v1998" label="1998">1998</bal-option>
-            <bal-option value="v1999" label="1999">1999</bal-option>
-            <bal-option value="v2000" label="2000">2000</bal-option>
-            <bal-option value="v2001" label="2001">2001</bal-option>
-            <bal-option value="v2002" label="2002">2002</bal-option>
-            <bal-option value="v2003" label="2003">2003</bal-option>
-            <bal-option value="v2004" label="2004">2004</bal-option>
-            <bal-option value="v2005" label="2005">2005</bal-option>
-            <bal-option value="v2006" label="2006">2006</bal-option>
-            <bal-option value="v2007" label="2007">2007</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Multiple with Chips</h2>
-        <section data-testid="multiple-chips">
-          <bal-dropdown
-            multiple
-            chips
-            value="v1988,v1989,v1990,v1991,v1992,v1993,v1994,v1995,v1996,v1997,v1998,v1999,v2000"
-          >
-            <bal-option checkbox value="v1988" label="1988">1988</bal-option>
-            <bal-option checkbox value="v1989" label="1989">1989</bal-option>
-            <bal-option checkbox value="v1990" label="1990">1990</bal-option>
-            <bal-option checkbox value="v1991" label="1991">1991</bal-option>
-            <bal-option checkbox value="v1992" label="1992">1992</bal-option>
-            <bal-option checkbox value="v1993" label="1993">1993</bal-option>
-            <bal-option checkbox value="v1994" label="1994">1994</bal-option>
-            <bal-option checkbox value="v1995" label="1995">1995</bal-option>
-            <bal-option checkbox value="v1996" label="1996">1996</bal-option>
-            <bal-option checkbox value="v1997" label="1997">1997</bal-option>
-            <bal-option checkbox value="v1998" label="1998">1998</bal-option>
-            <bal-option checkbox value="v1999" label="1999">1999</bal-option>
-            <bal-option checkbox value="v2000" label="2000">2000</bal-option>
-            <bal-option checkbox value="v2001" label="2001">2001</bal-option>
-            <bal-option checkbox value="v2002" label="2002">2002</bal-option>
-            <bal-option checkbox value="v2003" label="2003">2003</bal-option>
-            <bal-option checkbox value="v2004" label="2004">2004</bal-option>
-            <bal-option checkbox value="v2005" label="2005">2005</bal-option>
-            <bal-option checkbox value="v2006" label="2006">2006</bal-option>
-            <bal-option checkbox value="v2007" label="2007">2007</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Clearable</h2>
-        <section data-testid="clearable">
-          <bal-dropdown value="v1988" clearable>
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-            <bal-option value="v1991" label="1991">1991</bal-option>
-            <bal-option value="v1992" label="1992">1992</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Loading</h2>
-        <section data-testid="Loading">
-          <bal-dropdown value="v1988" loading>
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-            <bal-option value="v1991" label="1991">1991</bal-option>
-            <bal-option value="v1992" label="1992">1992</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Invalid</h2>
-        <section data-testid="invalid">
-          <bal-dropdown class="mb-small" placeholder="Select one year" invalid value="v1988">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-          </bal-dropdown>
-          <bal-dropdown placeholder="Select one year" invalid>
-            <bal-option value="v1988" label="1988">1988</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Disabled</h2>
-        <section data-testid="disabled">
-          <bal-dropdown class="mb-small" placeholder="Select one year" disabled value="v1988">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-          </bal-dropdown>
-          <bal-dropdown placeholder="Select one year" disabled>
-            <bal-option value="v1988" label="1988">1988</bal-option>
-          </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Form Reset</h2>
         <section>
-          <form action="https://www.w3schools.com/action_page.php" target="_blank">
-            <bal-form-grid>
-              <bal-form-col>
-                <bal-field required>
-                  <bal-field-control>
-                    <bal-dropdown value="v1988,v1992" multiple>
-                      <bal-option value="v1988" label="1988">1988</bal-option>
-                      <bal-option value="v1989" label="1989">1989</bal-option>
-                      <bal-option value="v1990" label="1990">1990</bal-option>
-                      <bal-option value="v1991" label="1991">1991</bal-option>
-                      <bal-option value="v1992" label="1992">1992</bal-option>
-                    </bal-dropdown>
-                  </bal-field-control>
-                </bal-field>
-              </bal-form-col>
-            </bal-form-grid>
-            <bal-button-group>
-              <bal-button element-type="submit" color="primary">Submit</bal-button>
-              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
-            </bal-button-group>
-          </form>
-        </section>
-        <h2 class="title text-large">Option as props</h2>
-        <section data-testid="disabled">
-          <bal-dropdown id="dropdown" class="mb-small" placeholder="Select one year"></bal-dropdown>
-          <button id="translate">translate</button>
-          <button id="options">change options</button>
-          <script>
-            const dropdown = document.getElementById('dropdown')
-            const translate = document.getElementById('translate')
-            const options = document.getElementById('options')
-            dropdown.value = ['vRed']
-            dropdown.options = [
-              { value: 'vGreen', label: 'Green' },
-              { value: 'vRed', label: 'Red' },
-              { value: 'vBlue', label: 'Blue' },
-            ]
-            translate.addEventListener('click', () => {
-              dropdown.options = [
-                { value: 'vGreen', label: 'Grün' },
-                { value: 'vRed', label: 'Rot' },
-                { value: 'vBlue', label: 'Blau' },
-              ]
-            })
-            options.addEventListener('click', () => {
-              dropdown.options = [
-                { value: 'vCircle', label: 'Circle' },
-                { value: 'vRectangle', label: 'Rectangle' },
-                { value: 'vLine', label: 'Line' },
-              ]
-            })
-          </script>
+          <bal-dropdown multiple chips placeholder="Try finding your hero" data-testid="multiple">
+            <bal-option checkbox value="BlackWidow" label="Black Widow">
+              <b style="display: block">Black Widow</b>
+              <span>S.H.I.E.L.D.</span>
+            </bal-option>
+            <bal-option checkbox value="BlackPanter" label="Black Panter">
+              <b style="display: block">Black Panter</b>
+              <span>Wakanda</span>
+            </bal-option>
+            <bal-option checkbox value="IronMan" label="Iron Man">
+              <b style="display: block">Iron Man</b>
+              <span>Malibu</span>
+            </bal-option>
+            <bal-option checkbox value="SpiderMan" label="Spider Man">
+              <b style="display: block">Spider Man</b>
+              <span>Queens</span>
+            </bal-option>
+            <bal-option checkbox value="CaptainAmerica" label="Captain America">
+              <b style="display: block">Captain America</b>
+              <span>Broklyn</span>
+            </bal-option>
+            <bal-option checkbox value="Thor" label="Thor God of Thunder">
+              <b style="display: block">Thor God of Thunder</b>
+              <span>Asgard</span>
+            </bal-option>
+          </bal-dropdown>
         </section>
         <h2 class="title text-large">Autocomplete</h2>
         <section>

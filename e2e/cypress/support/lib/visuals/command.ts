@@ -35,10 +35,6 @@ export type CypressConfigEnv = {
 
 /** Add custom cypress command to compare image snapshots of an element or the window. */
 function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void {
-  console.log('')
-  console.log('visualRegressionType => ', Cypress.env('visualRegressionType'))
-  console.log('')
-
   Cypress.Commands.add(
     'testVisual',
     { prevSubject: 'optional' },

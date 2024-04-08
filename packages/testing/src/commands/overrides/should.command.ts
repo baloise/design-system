@@ -181,18 +181,28 @@ const shouldAndAndCommand = (
   }
 
   if (isDropDown(element)) {
+    const nativeEl = element.find(selectors.dropdown.input, { log: false })
+    const parseKey = () => {
+      return typeof key === 'string'
+        ? key
+        : (key as string[])
+            .map(k => k.trim())
+            .sort()
+            .join(',')
+    }
+
     switch (condition) {
+      case 'have.focus':
+      case 'not.have.focus':
+      case 'be.disabled':
+      case 'not.be.disabled':
+        return originalFn(nativeEl, condition, key, value, options)
+
       case 'have.value':
-        if (typeof key === 'string') {
-          return originalFn(element, 'have.attr', 'data-label', key, value)
-        }
-        return originalFn(element, 'have.attr', 'data-label', key.sort().join(','), value)
+        return originalFn(nativeEl, 'have.attr', 'data-label', parseKey(), value)
 
       case 'not.have.value':
-        // if (typeof key === 'string') {
-        //   return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
-        // }
-        return originalFn(element, 'not.have.attr', 'data-value', key.join(','), value)
+        return originalFn(nativeEl, 'not.have.attr', 'data-label', parseKey(), value)
     }
   }
 
