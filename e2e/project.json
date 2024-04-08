@@ -14,7 +14,7 @@
       "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "cypress open --browser chrome --env visualRegressionType=regression --config screenshotsFolder=cypress/snapshots/actual"
+        "command": "cypress open --browser chrome --env visualRegressionType=dev --config screenshotsFolder=cypress/snapshots/actual"
       }
     },
     "prepare": {

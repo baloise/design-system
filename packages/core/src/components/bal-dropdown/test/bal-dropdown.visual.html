@@ -18,7 +18,7 @@
       <main class="container py-medium">
         <h2 class="title text-large">Basic</h2>
         <section data-testid="basic">
-          <bal-dropdown placeholder="Select one year" value="v1988">
+          <bal-dropdown placeholder="visual-basic">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -41,17 +41,9 @@
             <bal-option value="v2007" label="2007">2007</bal-option>
           </bal-dropdown>
         </section>
-        <h2 class="title text-large">Placeholder</h2>
-        <section data-testid="basic">
-          <bal-dropdown placeholder="Select one year">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-          </bal-dropdown>
-        </section>
         <h2 class="title text-large">Long Content</h2>
-        <section data-testid="basic">
-          <bal-dropdown placeholder="Select one hero" value="BlackWidow">
+        <section data-testid="long-content">
+          <bal-dropdown placeholder="visual-long-content" value="BlackWidow">
             <bal-option
               value="BlackWidow"
               label="Black Widow is a 2021 American superhero film based on Marvel Comics featuring the character of the same name."
@@ -86,7 +78,7 @@
         </section>
         <h2 class="title text-large">Multiple</h2>
         <section data-testid="multiple">
-          <bal-dropdown multiple value="v1988,v1989">
+          <bal-dropdown multiple placeholder="visual-multiple">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -114,7 +106,8 @@
           <bal-dropdown
             multiple
             chips
-            value="v1988,v1989,v1990,v1991,v1992,v1993,v1994,v1995,v1996,v1997,v1998,v1999,v2000"
+            value="v1990,v1991,v1992,v1993,v1994,v1995,v1996,v1997,v1998,v1999,v2000,v2001,v2002,v2003"
+            placeholder="visual-multiple-chips"
           >
             <bal-option checkbox value="v1988" label="1988">1988</bal-option>
             <bal-option checkbox value="v1989" label="1989">1989</bal-option>
@@ -140,7 +133,7 @@
         </section>
         <h2 class="title text-large">Clearable</h2>
         <section data-testid="clearable">
-          <bal-dropdown value="v1988" clearable>
+          <bal-dropdown clearable placeholder="visual-clearable">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -149,8 +142,8 @@
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Loading</h2>
-        <section data-testid="Loading">
-          <bal-dropdown value="v1988" loading>
+        <section data-testid="loading">
+          <bal-dropdown value="v1988" loading placeholder="visual-loading">
             <bal-option value="v1988" label="1988">1988</bal-option>
             <bal-option value="v1989" label="1989">1989</bal-option>
             <bal-option value="v1990" label="1990">1990</bal-option>
@@ -160,35 +153,21 @@
         </section>
         <h2 class="title text-large">Invalid</h2>
         <section data-testid="invalid">
-          <bal-dropdown class="mb-small" placeholder="Select one year" invalid value="v1988">
+          <bal-dropdown class="mb-small" placeholder="visual-invalid" invalid value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
-          <bal-dropdown placeholder="Select one year" invalid>
+          <bal-dropdown placeholder="visual-invalid-empty" invalid>
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
         </section>
         <h2 class="title text-large">Disabled</h2>
         <section data-testid="disabled">
-          <bal-dropdown class="mb-small" placeholder="Select one year" disabled value="v1988">
+          <bal-dropdown class="mb-small" placeholder="visual-disabled" disabled value="v1988">
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
-          <bal-dropdown placeholder="Select one year" disabled>
+          <bal-dropdown placeholder="visual-disabled-empty" disabled>
             <bal-option value="v1988" label="1988">1988</bal-option>
           </bal-dropdown>
-        </section>
-        <h2 class="title text-large">Form Reset</h2>
-        <section data-testid="form">
-          <bal-field required>
-            <bal-field-control>
-              <bal-dropdown value="v1988,v1992" multiple>
-                <bal-option value="v1988" label="1988">1988</bal-option>
-                <bal-option value="v1989" label="1989">1989</bal-option>
-                <bal-option value="v1990" label="1990">1990</bal-option>
-                <bal-option value="v1991" label="1991">1991</bal-option>
-                <bal-option value="v1992" label="1992">1992</bal-option>
-              </bal-dropdown>
-            </bal-field-control>
-          </bal-field>
         </section>
       </main>
     </bal-doc-app>

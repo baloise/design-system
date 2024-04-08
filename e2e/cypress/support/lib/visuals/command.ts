@@ -76,6 +76,8 @@ function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void 
             return compareScreenshots(visualRegressionOptions)
           case 'base':
             return cy.task('updateSnapshot', visualRegressionOptions)
+          case 'dev':
+            return true
           default:
             throw new Error(
               `The "type" environment variable is unknown.

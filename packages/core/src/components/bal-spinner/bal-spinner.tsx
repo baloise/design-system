@@ -1,9 +1,10 @@
-import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, Watch, ComponentInterface, State } from '@stencil/core'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
+import { BalConfigObserver, BalConfigState, ListenToConfig, defaultConfig } from '../../utils/config'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -11,12 +12,14 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
   tag: 'bal-spinner',
   styleUrl: 'bal-spinner.sass',
 })
-export class Spinner implements ComponentInterface, Loggable {
+export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
   private currentRaf: number | undefined
 
   log!: LogInstance
+
+  @State() animated = defaultConfig.animated
 
   @Logger('bal-spinner')
   createLogger(log: LogInstance) {
@@ -95,11 +98,29 @@ export class Spinner implements ComponentInterface, Loggable {
   }
 
   /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.animated = state.animated
+    if (state.animated === false) {
+      this.destroy()
+    }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
 
   private animate = async () => {
+    if (!this.animated) {
+      this.destroy()
+      return
+    }
+
     await this.load()
 
     if (this.currentRaf !== undefined) {
@@ -179,6 +200,7 @@ export class Spinner implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier('circle').class(this.variation === 'circle'),
           ...block.modifier('small').class(this.small),
+          ...block.modifier('animated').class(this.animated),
         }}
         role="progressbar"
         aria-hidden="true"

@@ -11,12 +11,10 @@ describe('bal-dropdown', () => {
     cy.get('main').testA11y()
   })
 
-
   it('open state', () => {
     cy.getByLabelText('Year').click()
     cy.get('main').testA11y()
     cy.getByRole('option', { name: 'v1990' }).click()
     cy.get('main').testA11y()
   })
-
 })
