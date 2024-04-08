@@ -153,7 +153,13 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
     if (this.disabled || (listEl && listEl.disabled)) {
       stopEventBubbling(ev)
     } else {
-      this.select(!this.selected)
+      if (listEl && listEl.required && !listEl.multiple) {
+        if (!this.selected) {
+          this.select(true)
+        }
+      } else {
+        this.select(!this.selected)
+      }
     }
   }
 

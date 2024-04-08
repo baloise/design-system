@@ -493,6 +493,7 @@ export class Dropdown
           multiple={this.multiple}
           disabled={this.valueUtil.isDisabled()}
           filter={this.filter}
+          required={this.required}
           contentHeight={this.contentHeight}
           ref={listEl => (this.listEl = listEl)}
         >

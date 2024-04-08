@@ -2262,6 +2262,10 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Resets the focus index to pristine and scrolls to the top of the list
          */
         "resetFocus": () => Promise<number>;
@@ -7300,6 +7304,10 @@ declare namespace LocalJSX {
           * If `true` the list supports multiple selections
          */
         "multiple"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
     }
     interface BalPagination {
         /**

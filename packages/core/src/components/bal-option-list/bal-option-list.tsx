@@ -45,6 +45,11 @@ export class OptionList implements ComponentInterface, Loggable {
   @Prop() disabled = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * Defines the focused option with his index value
    */
   @Prop({ mutable: true }) focusIndex = -1
