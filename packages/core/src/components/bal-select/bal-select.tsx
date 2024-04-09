@@ -1006,7 +1006,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
           ref={el => (this.nativeSelectEl = el as HTMLSelectElement)}
         >
           {valuesArray.map((value: string) => (
-            <option value={value} selected>
+            <option key={value} value={value} selected>
               {value}
             </option>
           ))}
@@ -1101,6 +1101,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
+                key={option.id}
                 type="button"
                 role="option"
                 id={option.id}

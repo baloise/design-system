@@ -186,7 +186,7 @@ export class Footer implements BalConfigObserver, Loggable {
                       data-testid="bal-footer-language"
                     >
                       {this.allowedLanguages.map(language => (
-                        <bal-select-option label={language.toLocaleUpperCase()} value={language}>
+                        <bal-select-option key={language} label={language.toLocaleUpperCase()} value={language}>
                           {language.toLocaleUpperCase()}
                         </bal-select-option>
                       ))}
@@ -213,6 +213,7 @@ export class Footer implements BalConfigObserver, Loggable {
               >
                 {this.socialMediaLinks.map(link => (
                   <a
+                    key={link.link}
                     href={link.link}
                     target="_blank"
                     class={{
@@ -232,6 +233,7 @@ export class Footer implements BalConfigObserver, Loggable {
               >
                 {this.links.map(link => (
                   <a
+                    key={link.link}
                     href={link.link}
                     target="_blank"
                     class={{

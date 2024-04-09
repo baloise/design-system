@@ -330,6 +330,7 @@ export class InputSlider implements BalAriaFormLinking {
         <div class={{ ...stepsEl.class() }} style={{ display: this.hasTicks ? 'flex' : 'none' }}>
           {this.getNumberOfSteps().map(step => (
             <div
+              key={step}
               class={{
                 ...stepsItemEl.class(),
                 ...stepsItemEl.modifier('disabled').class(this.disabled || this.readonly),
