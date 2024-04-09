@@ -120,3 +120,46 @@ export const FormReset = Story({
 </form>`,
   ),
 })
+
+export const Autocomplete = Story({
+  args: {
+    name: 'country',
+    autocomplete: 'country',
+  },
+  ...withRender(
+    ({ ...args }) => `<form action="https://www.w3schools.com/action_page.php" target="_blank">
+  <bal-form-grid>
+    <bal-form-col>
+      <bal-field>
+        <bal-field-label>First Name</bal-field-label>
+        <bal-field-control>
+          <bal-input name="firstName" autocomplete="given-name"></bal-input>
+        </bal-field-control>
+      </bal-field>
+    </bal-form-col>
+    <bal-form-col>
+      <bal-field>
+        <bal-field-label>Last Name</bal-field-label>
+        <bal-field-control>
+          <bal-input name="lastName" autocomplete="family-name"></bal-input>
+        </bal-field-control>
+      </bal-field>
+    </bal-form-col>
+    <bal-form-col>
+      <bal-field>
+        <bal-field-label>Country</bal-field-label>
+        <bal-field-control>
+          <bal-dropdown ${props(args)}>
+            <bal-option value="CH" label="Switzerland">Switzerland</bal-option>
+            <bal-option value="DE" label="Germany">Germany</bal-option>
+            <bal-option value="IT" label="Italy">Italy</bal-option>
+          </bal-dropdown>
+        </bal-field-control>
+      </bal-field>
+    </bal-form-col>
+  </bal-form-grid>
+  <input type="reset" value="Reset" />
+  <input type="submit" value="Submit" />
+</form>`,
+  ),
+})
