@@ -31,6 +31,7 @@ docs/stories/components/**/theming.md
 
 e2e/cypress/snapshots
 e2e/cypress/videos
+e2e/cypress/downloads
 
 package-lock.json
 *.svg

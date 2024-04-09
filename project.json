@@ -30,7 +30,8 @@
         "workspaceRoot": "{workspaceRoot}",
         "projectRoot": "{projectRoot}",
         "build": true,
-        "start": false
+        "start": false,
+        "test": false
       }
     },
     "start-angular": {
@@ -39,7 +40,18 @@
         "workspaceRoot": "{workspaceRoot}",
         "projectRoot": "{projectRoot}",
         "build": false,
-        "start": true
+        "start": true,
+        "test": false
+      }
+    },
+    "e2e-angular": {
+      "executor": "@baloise/ds-nx:create-angular",
+      "options": {
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": false,
+        "start": false,
+        "test": true
       }
     }
   }

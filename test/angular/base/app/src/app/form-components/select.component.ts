@@ -5,7 +5,7 @@ import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
-  selector: 'app-dropdown',
+  selector: 'app-select',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
@@ -45,17 +45,17 @@ import { UpdateControl } from '../app.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class DropdownComponent {
+export class SelectComponent {
   @Input() form!: FormGroup
   @Input() multiple = false
   @Input() typeahead = false
 
   get label() {
-    return this.multiple ? 'Dropdown Multiple' : this.typeahead ? 'Typeahead' : 'Dropdown'
+    return this.multiple ? 'Select Multiple' : this.typeahead ? 'Typeahead' : 'Select'
   }
 
   get control() {
-    return this.multiple ? 'dropdownMultiple' : this.typeahead ? 'typeahead' : 'dropdown'
+    return this.multiple ? 'selectMultiple' : this.typeahead ? 'typeahead' : 'select'
   }
 
   @Output() updateControl = new EventEmitter<UpdateControl>()

@@ -40,6 +40,10 @@ export default async function runExecutor(options: CreateAngularExecutorSchema) 
     if (options.start) {
       await runCommand(`npm start`, join(options.workspaceRoot, 'test', 'angular', version))
     }
+
+    if (options.test) {
+      await runCommand(`npm run e2e`, join(options.workspaceRoot, 'test', 'angular', version))
+    }
   } catch (error) {
     console.error(error)
     return { success: false }
