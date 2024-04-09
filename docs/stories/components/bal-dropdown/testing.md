@@ -13,7 +13,7 @@ describe('Dropdown', () => {
     cy.getByRole('option', { name: 'Red' }).click()
 
     cy.getByPlaceholder('Pick a color').should('be.disabled')
-    cy.getByPlaceholder('Pick a color').should('have.value', 'vRed')
+    cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
   })
 })
 ```
