@@ -271,6 +271,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
               .filter(step => !step.invisible)
               .map(step => (
                 <bal-carousel-item
+                  key={step.value}
                   class={{
                     ...bemStepsNav.element('carousel').element('item').class(),
                     ...bemStepsNav.element('carousel').element('item').modifier('passed').class(step.passed),

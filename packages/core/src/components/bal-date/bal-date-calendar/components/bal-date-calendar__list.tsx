@@ -37,7 +37,7 @@ export const CalendarList: FunctionalComponent<CalendarListProps> = ({
       ref={el => (ref ? ref(el) : undefined)}
     >
       {list.map(item => (
-        <li id={`${name}-${item.value}`}>
+        <li id={`${name}-${item.value}`} key={item.value}>
           <button
             class={{
               ...blockBodyList.element('item').class(),
