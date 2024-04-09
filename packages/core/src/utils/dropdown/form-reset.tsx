@@ -1,5 +1,3 @@
-import { h } from '@stencil/core'
-import { BEM } from '../bem'
 import { DropdownComponent } from './component'
 
 export type DropdownFormReset = {
@@ -45,34 +43,5 @@ export class DropdownFormResetUtil {
         this.component.valueUtil.updateRawValueBySelection(newRawValue)
       }, 0)
     }
-  }
-
-  render() {
-    const block = BEM.block('dropdown')
-
-    return (
-      <select
-        class={{
-          ...block.element('native').class(),
-        }}
-        aria-hidden="true"
-        data-native
-        data-label={this.component.inputLabel}
-        tabindex="-1"
-        autoComplete={this.component.autocomplete}
-        name={this.component.name}
-        multiple={this.component.multiple}
-        disabled={this.component.disabled}
-        required={this.component.required}
-        ref={nativeEl => (this.component.nativeEl = nativeEl)}
-        onChange={ev => this.component.handleAutoFill(ev)}
-      >
-        {this.component.rawValue.map((value: string) => (
-          <option key={value} value={value} selected={true}>
-            {value}
-          </option>
-        ))}
-      </select>
-    )
   }
 }

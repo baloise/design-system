@@ -35,7 +35,7 @@
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
     "compression": "^1.7.4",
-    "cypress": "~12.17.3",
+    "cypress": "~13.6.3",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

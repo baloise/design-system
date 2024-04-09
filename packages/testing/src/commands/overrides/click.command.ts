@@ -10,11 +10,20 @@ import {
   wrapCommand,
   wrapOptions,
   isDropDown,
+  log,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
-  const command = wrapCommand('click', element, '', $el => originalFn($el, wrapOptions(options)))
+  const command = (selector: string) => {
+    return cy
+      .wrapComponent(element as any, { log: false })
+      .waitForComponents({ log: false })
+      .find(selector, { log: false })
+      .click({ force: true, log: false })
+      .then($el => log('click', '', $el))
+      .wrapComponent(element as any, { log: false })
+  }
 
   if (isAccordion(element)) {
     return command(selectors.accordion.trigger)

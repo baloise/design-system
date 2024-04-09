@@ -3,9 +3,10 @@ import { log, wrapOptions, checkAriaLabel } from '../helpers'
 
 Cypress.Commands.add('getByTestId', (testID, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
-  const element = cy.get(byTestId(testID), o).waitForComponents(o)
-  element.then(o, $el => log('getByTestId', testID, $el, options))
-  return element
+  return cy
+    .get(byTestId(testID), o)
+    .waitForComponents(o)
+    .then(o, $el => log('getByTestId', testID, $el, options))
 })
 
 Cypress.Commands.add('getDescribingElement', { prevSubject: ['element'] }, (subject, options) => {
@@ -108,11 +109,13 @@ Cypress.Commands.add(
       const labeledElements = filterLabeling(visibleElements)
 
       if (labeledElements.length > 0) {
-        const firstElement = cy.wrap(labeledElements[0]).waitForComponents()
-        firstElement.then(o, $el =>
-          log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
-        )
-        return firstElement as any
+        return cy
+          .wrap(labeledElements[0], o)
+          .waitForComponents(o)
+          .then(o, $el => {
+            log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options)
+            return $el
+          })
       }
 
       return subject

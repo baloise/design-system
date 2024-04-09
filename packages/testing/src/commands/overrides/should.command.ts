@@ -180,6 +180,25 @@ const shouldAndAndCommand = (
     }
   }
 
+  if (hasClass(element, 'bal-dropdown__root__input')) {
+    const parseKey = () => {
+      return typeof key === 'string'
+        ? key
+        : (key as string[])
+            .map(k => k.trim())
+            .sort()
+            .join(',')
+    }
+
+    switch (condition) {
+      case 'have.value':
+        return originalFn(element, 'have.attr', 'data-label', parseKey(), value)
+
+      case 'not.have.value':
+        return originalFn(element, 'not.have.attr', 'data-label', parseKey(), value)
+    }
+  }
+
   if (isDropDown(element)) {
     const nativeEl = element.find(selectors.dropdown.input, { log: false })
     const parseKey = () => {

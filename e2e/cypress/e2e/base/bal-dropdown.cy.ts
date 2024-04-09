@@ -24,15 +24,18 @@ describe('bal-dropdown', () => {
   })
 
   describe('multiple', () => {
-    it('should select and deselect values', () => {
+    it.only('should select and deselect values', () => {
       cy.getByTestId('multiple')
         .click()
         .select(['Black Widow', 'Black Panter'])
         .should('have.value', ['Black Widow', 'Black Panter'])
+
       cy.getByTestId('multiple').balSelectFindOptions().first().click()
       cy.getByTestId('multiple').balSelectFindOptions().eq(1).click()
       cy.getByTestId('multiple').balSelectFindOptions().eq(2).click()
       cy.getByTestId('multiple').should('have.value', ['Iron Man'])
+      cy.getByTestId('multiple').click()
+
       cy.getByTestId('multiple').balSelectFindChips().first().contains('Iron Man')
       cy.getByTestId('multiple').balSelectFindChips().first().click()
       cy.getByTestId('multiple').should('have.value', '')

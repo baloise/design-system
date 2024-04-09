@@ -1,4 +1,4 @@
-import { isDropDown, isSelect, isSteps, isTabs } from '../helpers'
+import { isDropDown, isSelect, isSteps, isTabs, log, shouldLog } from '../helpers'
 import { selectors } from '../../selectors'
 import { byDataSelectors } from '../../selectors/selectors.util'
 
@@ -36,6 +36,8 @@ Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any
     } else {
       valueArray = [...values]
     }
+
+    log('select', valueArray, element, options)
 
     if (valueArray.length === 0) {
       return cy.wrap(element, { log: false }).clear({ log: false })

@@ -364,40 +364,9 @@ export class Dropdown
 
   render() {
     const block = BEM.block('dropdown')
-    const isSingle = !this.multiple && !this.chips
 
-    const hostAttributes: Attributes = {
-      'class': { ...block.class() },
-      'tabindex': '-1',
-      'id': `${this.inputId}`,
-      'aria-owns': `${this.inputId}-menu`,
-      'aria-invalid': ariaBooleanToString(this.invalid),
-      'aria-expanded': ariaBooleanToString(this.isExpanded),
-      'aria-disabled': ariaBooleanToString(this.valueUtil.isDisabled()),
-      'aria-labelledby': this.ariaForm.labelId,
-      'aria-describedby': this.ariaForm.messageId,
-      'aria-haspopup': 'listbox',
-    }
-
-    const mainAttributes: Attributes = {
-      'tabindex': '0',
-      'id': this.ariaForm.controlId || `${this.inputId}-ctrl`,
-      'title': this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open,
-      'aria-label': this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open,
-      'onFocus': ev => this.eventsUtil.handleFocus(ev),
-      'onBlur': ev => this.eventsUtil.handleBlur(ev),
-      'onKeyDown': ev => this.handleKeyDown(ev),
-      ...this.inheritedAttributes,
-    }
-
-    return isSingle
-      ? this.renderSingle(block, hostAttributes, mainAttributes)
-      : this.renderMultiple(block, hostAttributes, mainAttributes)
-  }
-
-  renderSingle(block, hostAttributes, mainAttributes) {
     return (
-      <Host {...hostAttributes}>
+      <Host class={{ ...block.class() }} tabindex="-1" id={`${this.inputId}`}>
         <div
           class={{
             ...block.element('root').class(),
@@ -418,26 +387,7 @@ export class Dropdown
           >
             {this.inputContent}
           </span>
-          <input
-            class={{
-              ...block.element('root').element('input').class(),
-            }}
-            size={1}
-            inputmode="none"
-            type="text"
-            tabindex="0"
-            name={this.name}
-            data-native
-            data-label={this.inputLabel}
-            value={this.rawValue.join(',')}
-            autoComplete={this.autocomplete}
-            disabled={this.disabled}
-            readonly={this.readonly}
-            placeholder={this.placeholder}
-            ref={nativeEl => (this.nativeEl = nativeEl)}
-            onChange={ev => this.handleAutoFill(ev)}
-            {...mainAttributes}
-          />
+          {this.renderNativeInput(block)}
           {this.iconUtil.render(this.language)}
         </div>
         {this.renderOptionList(block)}
@@ -445,37 +395,42 @@ export class Dropdown
     )
   }
 
-  renderMultiple(block, hostAttributes, mainAttributes) {
+  renderNativeInput(block) {
     return (
-      <Host {...hostAttributes}>
-        <button
-          class={{
-            ...block.element('root').class(),
-            ...block.element('root').modifier('focused').class(this.hasFocus),
-            ...block.element('root').modifier('invalid').class(this.invalid),
-            ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
-            ...block.element('root').modifier('autofill').class(this.isAutoFilled),
-          }}
-          type="button"
-          data-placeholder={this.placeholder}
-          data-test="bal-dropdown-trigger"
-          onClick={ev => this.eventsUtil.handleClick(ev)}
-          {...mainAttributes}
-        >
-          <span
-            class={{
-              ...block.element('root').element('content').class(),
-              ...block.element('root').element('content').modifier('disabled').class(this.valueUtil.isDisabled()),
-              ...block.element('root').element('content').modifier('placeholder').class(!this.valueUtil.isFilled()),
-            }}
-          >
-            {this.inputContent}
-          </span>
-          {this.iconUtil.render(this.language)}
-        </button>
-        {this.formResetUtil.render()}
-        {this.renderOptionList(block)}
-      </Host>
+      <input
+        id={this.ariaForm.controlId || `${this.inputId}-ctrl`}
+        class={{
+          ...block.element('root').element('input').class(),
+        }}
+        size={1}
+        inputmode="none"
+        type="text"
+        tabindex="0"
+        name={this.name}
+        value={this.rawValue.join(',')}
+        autoComplete={this.autocomplete}
+        required={this.required}
+        disabled={this.disabled}
+        readonly={this.readonly}
+        placeholder={this.placeholder}
+        title={this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open}
+        aria-label={this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open}
+        aria-owns={`${this.inputId}-menu`}
+        aria-invalid={ariaBooleanToString(this.invalid)}
+        aria-disabled={ariaBooleanToString(this.valueUtil.isDisabled())}
+        aria-labelledby={this.ariaForm.labelId}
+        aria-describedby={this.ariaForm.messageId}
+        aria-haspopup={'listbox'}
+        data-native
+        data-label={this.inputLabel}
+        data-value={this.rawValue.join(',')}
+        ref={nativeEl => (this.nativeEl = nativeEl)}
+        onChange={ev => this.handleAutoFill(ev)}
+        onFocus={ev => this.eventsUtil.handleFocus(ev)}
+        onBlur={ev => this.eventsUtil.handleBlur(ev)}
+        onKeyDown={ev => this.handleKeyDown(ev)}
+        {...this.inheritedAttributes}
+      />
     )
   }
 

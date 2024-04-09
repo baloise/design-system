@@ -13,19 +13,13 @@ Cypress.Commands.add(
       return cy
         .wrapComponent(subject, o)
         .find(selectors.dropdown.options, o)
-        .then($el => {
-          log('balSelectFindOptions', '', $el, options)
-          return $el
-        })
+        .then($el => log('balSelectFindOptions', '', $el, options))
         .waitForComponents(o)
     } else {
       return cy
         .wrapComponent(subject, o)
         .find(selectors.select.options, o)
-        .then($el => {
-          log('balSelectFindOptions', '', $el, options)
-          return $el
-        })
+        .then($el => log('balSelectFindOptions', '', $el, options))
         .waitForComponents(o)
     }
   },
@@ -57,25 +51,12 @@ Cypress.Commands.add(
   },
   (subject, options) => {
     const o = wrapOptions(options)
+    const selector = isDropDown(subject) ? selectors.dropdown.chips : selectors.select.chips
 
-    if (isDropDown(subject)) {
-      return cy
-        .wrapComponent(subject, o)
-        .find(selectors.dropdown.chips, o)
-        .then($el => {
-          log('balSelectFindChips', '', $el, options)
-          return $el
-        })
-        .waitForComponents(o)
-    } else {
-      return cy
-        .wrapComponent(subject, o)
-        .find(selectors.select.chips, o)
-        .then($el => {
-          log('balSelectFindChips', '', $el, options)
-          return $el
-        })
-        .waitForComponents(o)
-    }
+    return cy
+      .wrapComponent(subject, o)
+      .find(selector, o)
+      .then($el => log('balSelectFindChips', '', $el, options))
+      .waitForComponents(o)
   },
 )

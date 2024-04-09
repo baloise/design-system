@@ -42,7 +42,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Red' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('[data-native]').should('have.value', 'vRed')
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
 
     it('should select multiple options and emit 2 change events', () => {
@@ -60,7 +60,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vRed'])
       cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
+      cy.getByPlaceholder('Pick a color').should('have.value', ['Red', 'Purple'])
     })
 
     it('should not select because component is disabled', () => {
@@ -75,7 +75,7 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Red' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('[data-native]').should('have.value', '')
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
 
     it('should clear values and emit a change event', () => {
@@ -91,7 +91,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('button', { name: 'Löschen' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(null)
-      cy.get('[data-native]').should('have.value', '')
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
   })
 
@@ -109,7 +109,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Red' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('[data-native]').should('have.value', 'vRed')
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
 
     it('should select multiple options and emit 2 change events', () => {
@@ -128,7 +128,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vRed'])
       cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vRed', 'vPurple']))
+      cy.getByPlaceholder('Pick a color').should('have.value', ['Red', 'Purple'])
     })
 
     it('should not select because component is disabled', () => {
@@ -144,7 +144,7 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Red' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('[data-native]').should('have.value', '')
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
 
     it('should clear values and emit a change event', () => {
@@ -161,7 +161,76 @@ describe('bal-dropdown', () => {
       cy.getByRole('button', { name: 'Löschen' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(null)
-      cy.get('[data-native]').should('have.value', '')
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
+    })
+  })
+
+  context('required', () => {
+    it('should only once send a change event', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
+        props: {
+          placeholder: 'Pick a color',
+          required: true,
+          value: [],
+          options,
+        },
+        events,
+      })
+
+      cy.getByPlaceholder('Pick a color').should('have.value', '').click()
+      cy.getByRole('option', { name: 'Red' }).click()
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red').click()
+      cy.getByRole('option', { name: 'Red' }).click()
+
+      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').shouldHaveEventDetail('vRed')
+    })
+
+    it('should not be able to deselect', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
+        props: {
+          placeholder: 'Pick a color',
+          required: true,
+          value: ['vRed'],
+          options,
+        },
+        events,
+      })
+
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red').click()
+      cy.getByRole('option', { name: 'Red' }).click()
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
+      cy.get('@balChange').should('not.have.been.called')
+    })
+  })
+
+  context('invalid', () => {
+    it('should be valid', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
+        props: {
+          placeholder: 'Pick a color',
+          invalid: false,
+          value: [],
+          options,
+        },
+        events,
+      })
+
+      cy.getByPlaceholder('Pick a color').shouldBeValid()
+    })
+
+    it('should be invalid', () => {
+      cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
+        props: {
+          placeholder: 'Pick a color',
+          invalid: true,
+          value: [],
+          options,
+        },
+        events,
+      })
+
+      cy.getByPlaceholder('Pick a color').shouldBeInvalid()
     })
   })
 
@@ -178,10 +247,10 @@ describe('bal-dropdown', () => {
         events,
       })
 
-      cy.getByRole('button', { name: 'Schliessen' }).first().click()
+      cy.getByRole('button', { name: 'Schliessen' }).first().click({ force: true })
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail(['vPurple'])
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vPurple']))
+      cy.getByPlaceholder('Pick a color').should('have.value', ['Purple'])
     })
   })
 
@@ -199,7 +268,7 @@ describe('bal-dropdown', () => {
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vRed')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
 
     it('should use arrow key up and down to select multiple options and emit change event', () => {
@@ -224,7 +293,7 @@ describe('bal-dropdown', () => {
       cy.get('@balChange').should('have.been.calledTwice')
       cy.get('@balChange').shouldHaveEventDetail(['vYellow'])
       cy.get('@balChange').shouldHaveEventDetail(['vPurple', 'vYellow'], 1)
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq(['vPurple', 'vYellow']))
+      cy.getByPlaceholder('Pick a color').should('have.value', ['Purple', 'Yellow'])
     })
 
     it('should use focus by label to select option and emit change event', () => {
@@ -240,7 +309,7 @@ describe('bal-dropdown', () => {
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vYellow')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vYellow'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Yellow')
     })
 
     it('should use focus by label to select option and emit change event without open it', () => {
@@ -256,7 +325,7 @@ describe('bal-dropdown', () => {
 
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vYellow')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vYellow'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Yellow')
     })
   })
 
@@ -271,7 +340,7 @@ describe('bal-dropdown', () => {
       })
 
       cy.get('.bal-dropdown__root__content').should('be.empty')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
 
     it('should update dropdown after option update', () => {
@@ -290,7 +359,7 @@ describe('bal-dropdown', () => {
         })
 
       cy.get('.bal-dropdown__root__content').contains('Red')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
 
     it('should work with dynamic chaning the options and values', () => {
@@ -314,13 +383,13 @@ describe('bal-dropdown', () => {
         })
 
       cy.get('.bal-dropdown__root__content').should('be.empty')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vRed'))
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
 
       cy.getByPlaceholder('Pick a color').click({ force: true })
       cy.getByRole('option', { name: 'Banana' }).click({ force: true })
 
       cy.get('.bal-dropdown__root__content').contains('Banana')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vBanana'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Banana')
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vBanana')
     })
@@ -348,7 +417,7 @@ describe('bal-dropdown', () => {
       cy.getByRole('option', { name: 'Green' }).click()
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balChange').shouldHaveEventDetail('vGreen')
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('vGreen'))
+      cy.getByPlaceholder('Pick a color').should('have.value', 'Green')
     })
 
     it('should not select option since it is disabled', () => {
@@ -371,7 +440,7 @@ describe('bal-dropdown', () => {
       cy.getByLabelText('Color').click({ force: true })
       cy.getByRole('option', { name: 'Green' }).click({ force: true })
       cy.get('@balChange').should('not.have.been.called')
-      cy.get('[data-native]').should('have.value', '')
+      cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
   })
 
@@ -409,7 +478,7 @@ describe('bal-dropdown', () => {
       cy.getByLabelText('Country').click()
       cy.getByRole('option', { name: 'Italy' }).click()
       cy.getByRole('input', { name: 'Reset' }).click()
-      cy.get('[data-native]').should($el => expect($el.val()).deep.eq('Germany'))
+      cy.getByLabelText('Country').should('have.value', 'Germany')
     })
   })
 })
