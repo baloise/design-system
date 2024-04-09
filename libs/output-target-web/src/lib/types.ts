@@ -1,3 +1,4 @@
 export interface OutputTargetWeb {
-  proxiesFile: string
+  dir: string
+  isTest: boolean
 }
