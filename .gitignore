@@ -77,6 +77,7 @@ e2e/downloads
 e2e/reg.json
 e2e/cypress/snapshots/actual
 e2e/cypress/snapshots/diff
+e2e/cypress/snapshots/report.html
 e2e/cypress/downloads
 
 resources/data

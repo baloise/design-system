@@ -63,14 +63,11 @@ export interface UpdateControl {
           <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
-
           <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
           <app-dropdown [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
-
           <app-select [form]="myForm" (updateControl)="updateValue($event)"></app-select>
           <app-select [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-select>
           <app-select [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-select>
-
           <app-checkbox [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox>
           <app-checkbox-group [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-group>
           <app-checkbox-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-buttons>
@@ -104,14 +101,11 @@ export class AppComponent {
     time: new FormControl(null, [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(30, [Validators.min(10)]),
-
     dropdown: new FormControl('Kiwi', [Validators.required]),
     dropdownMultiple: new FormControl(['Kiwi'], [Validators.required]),
-
     select: new FormControl('Kiwi', [Validators.required]),
     selectMultiple: new FormControl(['Kiwi'], [Validators.required]),
     typeahead: new FormControl('Kiwi', [Validators.required]),
-
     checkbox: new FormControl(false, [Validators.requiredTrue]),
     checkboxGroup: new FormControl(['Kiwi'], [Validators.required]),
     checkboxButtons: new FormControl(['Kiwi'], [Validators.required]),

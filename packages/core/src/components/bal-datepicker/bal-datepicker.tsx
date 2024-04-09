@@ -823,10 +823,11 @@ export class Datepicker
       <div>
         {this.renderWeekDayHeader()}
         <div class={{ ...block.class() }}>
-          {this.calendarGrid.map(row => (
-            <div class={{ ...rowEl.class() }}>
+          {this.calendarGrid.map((row, index) => (
+            <div key={index} class={{ ...rowEl.class() }}>
               {row.map(cell => (
                 <button
+                  key={cell.dateString}
                   type="button"
                   data-date={cell.dateString}
                   onClick={() => this.onClickDateCell(cell)}

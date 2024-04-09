@@ -23,7 +23,7 @@ export const SectionList: FunctionalComponent<SectionListProps> = ({ items }) =>
     >
       {items?.map(itemGroup => {
         return (
-          <li key={itemGroup.href}>
+          <li key={itemGroup.id}>
             <a
               class={{
                 ...block.element('mobile-section-item').class(),
@@ -41,7 +41,7 @@ export const SectionList: FunctionalComponent<SectionListProps> = ({ items }) =>
               >
                 {itemGroup.linkItems?.map(item => {
                   return (
-                    <li key={item.href}>
+                    <li key={item.id}>
                       <a
                         class={{
                           ...block.element('mobile-links').class(),

@@ -23,7 +23,7 @@ export const ServiceList: FunctionalComponent<ServiceListProps> = ({ items }) =>
     >
       {items?.map(serviceGroup => {
         return (
-          <li key={serviceGroup.href}>
+          <li key={serviceGroup.id}>
             <a
               class={{
                 ...block.element('mobile-section-item').class(),
@@ -40,7 +40,7 @@ export const ServiceList: FunctionalComponent<ServiceListProps> = ({ items }) =>
             >
               {serviceGroup.linkItems?.map(item => {
                 return (
-                  <li key={item.href}>
+                  <li key={item.id}>
                     <a
                       class={{
                         ...block.element('mobile-links').class(),
