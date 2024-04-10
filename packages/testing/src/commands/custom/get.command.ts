@@ -85,7 +85,7 @@ Cypress.Commands.add(
   {
     prevSubject: ['optional'],
   },
-  (subject, role, options) => {
+  (subject, role, options): any => {
     const o = wrapOptions(options)
 
     function findElements() {
@@ -112,10 +112,9 @@ Cypress.Commands.add(
         return cy
           .wrap(labeledElements[0], o)
           .waitForComponents(o)
-          .then(o, $el => {
-            log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options)
-            return $el
-          })
+          .then(o, $el =>
+            log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
+          )
       }
 
       return subject

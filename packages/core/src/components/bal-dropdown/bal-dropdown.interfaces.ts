@@ -13,4 +13,10 @@ namespace BalEvents {
 
   export type BalDropdownChangeDetail = string | string[]
   export type BalDropdownChange = BalDropdownCustomEvent<BalDropdownChangeDetail>
+
+  export type BalDropdownBlurDetail = FocusEvent
+  export type BalDropdownBlur = BalDropdownCustomEvent<BalDropdownBlurDetail>
+
+  export type BalDropdownFocusDetail = FocusEvent
+  export type BalDropdownFocus = BalDropdownCustomEvent<BalDropdownFocusDetail>
 }

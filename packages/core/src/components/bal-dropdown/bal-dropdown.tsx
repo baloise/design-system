@@ -198,6 +198,16 @@ export class Dropdown
   @Event() balChange!: EventEmitter<BalEvents.BalDropdownChangeDetail>
 
   /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalDropdownFocusDetail>
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalDropdownBlurDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */

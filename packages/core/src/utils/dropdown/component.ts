@@ -50,4 +50,6 @@ export type DropdownComponent = DropdownFocus & {
   updateRawValueBySelection(newRawValue: string[])
 
   balChange: EventEmitter<BalEvents.BalDropdownChangeDetail>
+  balBlur: EventEmitter<BalEvents.BalDropdownBlurDetail>
+  balFocus: EventEmitter<BalEvents.BalDropdownFocusDetail>
 }

@@ -101,7 +101,7 @@ export class AppComponent {
     time: new FormControl(null, [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(30, [Validators.min(10)]),
-    dropdown: new FormControl('Kiwi', [Validators.required]),
+    dropdown: new FormControl(null, [Validators.required]),
     dropdownMultiple: new FormControl(['Kiwi'], [Validators.required]),
     select: new FormControl('Kiwi', [Validators.required]),
     selectMultiple: new FormControl(['Kiwi'], [Validators.required]),

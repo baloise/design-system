@@ -3968,6 +3968,8 @@ declare global {
     };
     interface HTMLBalDropdownElementEventMap {
         "balChange": BalEvents.BalDropdownChangeDetail;
+        "balFocus": BalEvents.BalDropdownFocusDetail;
+        "balBlur": BalEvents.BalDropdownBlurDetail;
     }
     interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6037,9 +6039,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownBlurDetail>) => void;
+        /**
           * Emitted when a option got selected.
          */
         "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownFocusDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */

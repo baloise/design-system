@@ -68,4 +68,8 @@ export class BalDropdown extends ValueAccessor {
 export declare interface BalDropdown extends Components.BalDropdown {
   /** Emitted when a option got selected. */
   balChange: EventEmitter<BalEvents.BalDropdownCustomEvent<string | string[] | undefined>>
+  /** Emitted when the input loses focus. */
+  balBlur: EventEmitter<BalEvents.BalDropdownCustomEvent<FocusEvent>>
+  /** Emitted when the input has focus. */
+  balFocus: EventEmitter<BalEvents.BalDropdownCustomEvent<FocusEvent>>
 }

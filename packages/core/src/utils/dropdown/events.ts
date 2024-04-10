@@ -13,12 +13,14 @@ export class DropdownEventsUtil {
     this.component = component
   }
 
-  handleFocus(_ev: FocusEvent) {
+  handleFocus(ev: FocusEvent) {
     this.component.hasFocus = true
+    this.component.balFocus.emit(ev)
   }
 
-  handleBlur(_ev: FocusEvent) {
+  handleBlur(ev: FocusEvent) {
     this.component.hasFocus = false
+    this.component.balBlur.emit(ev)
   }
 
   handleClick(ev: MouseEvent) {
