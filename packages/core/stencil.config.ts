@@ -70,6 +70,9 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    /**
+     * Use this outputs for documentation and e2e testing
+     */
     ...(!IS_BAL_DEVELOPMENT
       ? [
           CustomDocumentationGenerator,
@@ -88,7 +91,7 @@ export const config: Config = {
       : []),
     {
       type: 'www',
-      dir: 'www',
+      dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
       serviceWorker: false,
       empty: true,
       copy: [
@@ -126,7 +129,7 @@ export const config: Config = {
       ],
     },
     /**
-     * Skip those outputs for documentation releases on vercel
+     * Skip those outputs for documentation releases on vercel and for e2e testing
      */
     ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING
       ? [

@@ -3,9 +3,10 @@ import { log, wrapOptions, checkAriaLabel } from '../helpers'
 
 Cypress.Commands.add('getByTestId', (testID, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
-  const element = cy.get(byTestId(testID), o).waitForComponents(o)
-  element.then(o, $el => log('getByTestId', testID, $el, options))
-  return element
+  return cy
+    .get(byTestId(testID), o)
+    .waitForComponents(o)
+    .then(o, $el => log('getByTestId', testID, $el, options))
 })
 
 Cypress.Commands.add('getDescribingElement', { prevSubject: ['element'] }, (subject, options) => {
@@ -41,7 +42,10 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
       .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
-        return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+        return cy.get(
+          `input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"], button[id="${forAttributeValue}"]`,
+          o,
+        )
       })
       .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options)) as any
   } else {
@@ -49,7 +53,10 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
       .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
-        return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+        return cy.get(
+          `input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"], button[id="${forAttributeValue}"]`,
+          o,
+        )
       })
       .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options)) as any
   }
@@ -60,15 +67,23 @@ Cypress.Commands.add(
   {
     prevSubject: ['optional'],
   },
-  (subject, placeholder, options?: Partial<Cypress.Loggable>) => {
+  (subject, placeholder, options?: Partial<Cypress.Loggable>): any => {
     const o = wrapOptions(options)
 
     const element = subject
       ? cy
           .wrap(subject, o)
-          .find(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o)
+          .find(
+            `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`,
+            o,
+          )
           .waitForComponents(o)
-      : cy.get(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o).waitForComponents(o)
+      : cy
+          .get(
+            `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`,
+            o,
+          )
+          .waitForComponents(o)
 
     element.then(o, $el => log(!!subject ? '-getByPlaceholder' : 'getByPlaceholder', placeholder, $el, options))
     return element
@@ -104,11 +119,12 @@ Cypress.Commands.add(
       const labeledElements = filterLabeling(visibleElements)
 
       if (labeledElements.length > 0) {
-        const firstElement = cy.wrap(labeledElements[0]).waitForComponents()
-        firstElement.then(o, $el =>
-          log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
-        )
-        return firstElement as any
+        return cy
+          .wrap(labeledElements[0], o)
+          .waitForComponents(o)
+          .then(o, $el =>
+            log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
+          )
       }
 
       return subject

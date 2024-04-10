@@ -110,7 +110,7 @@ export const wrapCommand = (
   return (selector: string) => {
     return cy
       .wrapComponent(element as any, { log: false })
-      .waitForComponents()
+      .waitForComponents({ log: false })
       .find(selector, { log: false })
       .then($el => {
         Cypress.log({
@@ -135,6 +135,7 @@ export const log = (displayName: string, message: any = '', $el: any, options?: 
       message,
     })
   }
+  return $el
 }
 
 export const areComponentsReady = ($el: any) => {
@@ -161,8 +162,9 @@ export function checkAriaLabel(element: HTMLElement, label: string | undefined |
   if (label === undefined || label === null || label === '') {
     return true
   }
+  const text = Cypress.$(element).text().trim()
   const ariaLabel = Cypress.$(element).attr('aria-label')
   const title = Cypress.$(element).attr('title')
-  const text = Cypress.$(element).text().trim()
-  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
+  const value = Cypress.$(element).attr('value')
+  return [text, ariaLabel, title, value].includes(label.trim())
 }
