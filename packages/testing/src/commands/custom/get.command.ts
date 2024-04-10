@@ -67,7 +67,7 @@ Cypress.Commands.add(
   {
     prevSubject: ['optional'],
   },
-  (subject, placeholder, options?: Partial<Cypress.Loggable>) => {
+  (subject, placeholder, options?: Partial<Cypress.Loggable>): any => {
     const o = wrapOptions(options)
 
     const selector = `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`
