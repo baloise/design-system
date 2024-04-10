@@ -95,7 +95,7 @@ Cypress.Commands.add(
   {
     prevSubject: ['optional'],
   },
-  (subject, role, options) => {
+  (subject, role, options): any => {
     const o = wrapOptions(options)
 
     function findElements() {
