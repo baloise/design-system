@@ -125,6 +125,7 @@ export const Autocomplete = Story({
   args: {
     name: 'country',
     autocomplete: 'country',
+    placeholder: 'Pick your nationality',
   },
   ...withRender(
     ({ ...args }) => `<form action="https://www.w3schools.com/action_page.php" target="_blank">
@@ -133,7 +134,7 @@ export const Autocomplete = Story({
       <bal-field>
         <bal-field-label>First Name</bal-field-label>
         <bal-field-control>
-          <bal-input name="firstName" autocomplete="given-name"></bal-input>
+          <bal-input name="firstName" placeholder="Enter your firstname" autocomplete="given-name"></bal-input>
         </bal-field-control>
       </bal-field>
     </bal-form-col>
@@ -141,7 +142,7 @@ export const Autocomplete = Story({
       <bal-field>
         <bal-field-label>Last Name</bal-field-label>
         <bal-field-control>
-          <bal-input name="lastName" autocomplete="family-name"></bal-input>
+          <bal-input name="lastName" placeholder="Enter your lastname" autocomplete="family-name"></bal-input>
         </bal-field-control>
       </bal-field>
     </bal-form-col>
