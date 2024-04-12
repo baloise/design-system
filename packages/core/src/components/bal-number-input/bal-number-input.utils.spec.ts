@@ -22,6 +22,8 @@ describe('bal-number-input', () => {
       expect(isNumber('0.1')).toBeTruthy()
       expect(isNumber('42')).toBeTruthy()
       expect(isNumber('-42')).toBeTruthy()
+      expect(isNumber("40'000")).toBeTruthy()
+      expect(isNumber('40`000')).toBeTruthy()
     })
   })
 
@@ -38,6 +40,8 @@ describe('bal-number-input', () => {
       expect(isNotNumber('0.1')).toBeFalsy()
       expect(isNotNumber('42')).toBeFalsy()
       expect(isNotNumber('-42')).toBeFalsy()
+      expect(isNumber("40'000")).toBeTruthy()
+      expect(isNumber('40`000')).toBeTruthy()
     })
   })
 
@@ -92,6 +96,16 @@ describe('bal-number-input', () => {
     it('should return undefined for decimal separator', () => {
       const result = toNumber('.')
       expect(result).toBeUndefined()
+    })
+
+    it('should return number and ignore separator', () => {
+      const result = toNumber("42'000")
+      expect(result).toBe(42000)
+    })
+
+    it('should return number and ignore autofill separator', () => {
+      const result = toNumber('42`000')
+      expect(result).toBe(42000)
     })
   })
 
@@ -189,6 +203,8 @@ describe('bal-number-input', () => {
       expect(
         validateKeyDown({
           key: '4',
+          ctrlKey: false,
+          metaKey: false,
           newValue: '4',
           oldValue: '',
           selectionStart: 0,
@@ -200,6 +216,8 @@ describe('bal-number-input', () => {
       expect(
         validateKeyDown({
           key: '2',
+          ctrlKey: false,
+          metaKey: false,
           newValue: '42',
           oldValue: '4',
           selectionStart: 1,
@@ -214,6 +232,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '-',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '-',
         oldValue: '',
         selectionStart: 0,
@@ -225,6 +245,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '2',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '-2',
         oldValue: '-',
         selectionStart: 1,
@@ -236,6 +258,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '.',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '2.',
         oldValue: '2',
         selectionStart: 2,
@@ -249,6 +273,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '4',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '4',
         oldValue: '',
         selectionStart: 0,
@@ -260,6 +286,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '.',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '4.',
         oldValue: '4',
         selectionStart: 1,
@@ -271,6 +299,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '2',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '4.2',
         oldValue: '4.',
         selectionStart: 2,
@@ -284,6 +314,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '-',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '1-',
         oldValue: '1',
         selectionStart: 1,
@@ -295,6 +327,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '-',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '--',
         oldValue: '-',
         selectionStart: 1,
@@ -308,6 +342,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '.',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '.2.',
         oldValue: '.2',
         selectionStart: 3,
@@ -319,6 +355,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '.',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '..',
         oldValue: '.',
         selectionStart: 2,
@@ -332,6 +370,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: 'a',
+        ctrlKey: false,
+        metaKey: false,
         newValue: 'a',
         oldValue: '',
         selectionStart: 1,
@@ -343,6 +383,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '!',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '!',
         oldValue: '',
         selectionStart: 1,
@@ -356,6 +398,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: '9',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '1.429',
         oldValue: '1.42',
         selectionStart: 5,
@@ -367,6 +411,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: 'ArrowLeft',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '1.42',
         oldValue: '1.42',
         selectionStart: 5,
@@ -380,6 +426,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: 'ArrowLeft',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '1.42',
         oldValue: '1.42',
         selectionStart: 3,
@@ -391,6 +439,8 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: 'Escape',
+        ctrlKey: false,
+        metaKey: false,
         newValue: '1.4',
         oldValue: '1.42',
         selectionStart: 4,
@@ -402,6 +452,49 @@ describe('bal-number-input', () => {
     expect(
       validateKeyDown({
         key: 'Delete',
+        ctrlKey: false,
+        metaKey: false,
+        newValue: '1.2',
+        oldValue: '1.42',
+        selectionStart: 2,
+        selectionEnd: 2,
+        decimal: 2,
+      }),
+    ).toBeTruthy()
+  })
+
+  test('should allow select all, copy and paste', () => {
+    expect(
+      validateKeyDown({
+        key: 'a',
+        ctrlKey: false,
+        metaKey: true,
+        newValue: '1.42',
+        oldValue: '1.42',
+        selectionStart: 3,
+        selectionEnd: 3,
+        decimal: 2,
+      }),
+    ).toBeTruthy()
+
+    expect(
+      validateKeyDown({
+        key: 'c',
+        ctrlKey: true,
+        metaKey: false,
+        newValue: '1.4',
+        oldValue: '1.42',
+        selectionStart: 4,
+        selectionEnd: 4,
+        decimal: 2,
+      }),
+    ).toBeTruthy()
+
+    expect(
+      validateKeyDown({
+        key: 'v',
+        ctrlKey: false,
+        metaKey: true,
         newValue: '1.2',
         oldValue: '1.42',
         selectionStart: 2,

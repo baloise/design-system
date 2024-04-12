@@ -1,6 +1,6 @@
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../utils/constants/keys.constant'
-import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol } from '../../utils/number'
+import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '../../utils/number'
 import isNaN from 'lodash.isnan'
 
 export function isNumber(value: any): boolean {
@@ -13,31 +13,41 @@ export function isNotNumber(value: any): boolean {
 }
 
 export function toNumber(value: any, decimalPoints = 0): number | undefined {
+  let val = value
   if (
-    value === '' ||
-    value === undefined ||
-    value === null ||
-    isNaN(value) ||
-    value === getNegativeSymbol() ||
-    value === getDecimalSeparator() ||
-    !isNumber(value)
+    val === '' ||
+    val === undefined ||
+    val === null ||
+    isNaN(val) ||
+    val === getNegativeSymbol() ||
+    val === getDecimalSeparator() ||
+    !isNumber(val)
   ) {
     return undefined
   }
 
-  return decimalPoints === 0 ? parseInt(value, 10) : parseFloat(value)
+  if (typeof val === 'string') {
+    val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
+  }
+
+  return decimalPoints === 0 ? parseInt(val, 10) : parseFloat(val)
 }
 
 export function toFixedNumber(value: string, decimalPoints = 0): string {
-  if (isNil(value)) {
+  let val = value
+  if (isNil(val)) {
     return ''
   }
 
-  if (value.charAt(0) === getDecimalSeparator()) {
-    value = `0${value}`
+  if (typeof val === 'string') {
+    val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 
-  const num = decimalPoints === 0 ? parseInt(value, 10) : parseFloat(value.replace(getDecimalSeparator(), '.'))
+  if (val.charAt(0) === getDecimalSeparator()) {
+    val = `0${val}`
+  }
+
+  const num = decimalPoints === 0 ? parseInt(val, 10) : parseFloat(val.replace(getDecimalSeparator(), '.'))
   return isNaN(num) ? '' : num.toFixed(decimalPoints)
 }
 
@@ -62,6 +72,8 @@ export function toUserFormattedNumber(value: string, decimalPoints = 0, suffix =
 export type ValidateKeyDownOptions = {
   decimal: number
   key: string
+  ctrlKey: boolean
+  metaKey: boolean
   newValue: string
   oldValue: string
   selectionStart: number | null
@@ -72,11 +84,19 @@ export const countDecimalSeparators = (value: string) => (value.split(getDecimal
 
 export function validateKeyDown({
   key,
+  ctrlKey,
+  metaKey,
   selectionStart,
   selectionEnd,
   newValue,
   decimal,
 }: ValidateKeyDownOptions): boolean {
+  //
+  // allow select all, copy and paste
+  if (['a', 'c', 'v'].includes(key) && (ctrlKey || metaKey)) {
+    return true
+  }
+
   //
   // only allow negative symbols at the start of the input
   if (key === getNegativeSymbol() && selectionStart && selectionStart > 0 && selectionEnd && selectionEnd > 0) {
