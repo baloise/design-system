@@ -12,12 +12,13 @@
     <bal-doc-app>
       <main class="container">
         <bal-heading>Basic</bal-heading>
-        <section>
+        <section class="mb-medium">
           <bal-number-input placeholder="Enter your number" data-testid="basic"></bal-number-input>
           <bal-number-input placeholder="Disabled" data-testid="disabled" disabled></bal-number-input>
         </section>
+
         <bal-heading>Form Reset</bal-heading>
-        <section>
+        <section class="mb-medium">
           <form action="https://www.w3schools.com/action_page.php" target="_blank">
             <bal-form-grid>
               <bal-form-col>
@@ -32,6 +33,51 @@
               <bal-button element-type="submit" color="primary">Submit</bal-button>
               <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
             </bal-button-group>
+          </form>
+        </section>
+
+        <bal-heading>Form Reset</bal-heading>
+        <section class="mb-medium">
+          <bal-number-input data-testid="tab-1" value="42"></bal-number-input>
+          <bal-number-input data-testid="tab-1" value="42000"></bal-number-input>
+          <bal-number-input data-testid="tab-1" value="42000" decimal="2"></bal-number-input>
+        </section>
+
+        <bal-heading>Autocomplete</bal-heading>
+        <section class="mb-medium">
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>First Name</bal-field-label>
+                  <bal-field-control>
+                    <bal-input
+                      name="firstName"
+                      placeholder="Enter your firstname"
+                      autocomplete="given-name"
+                    ></bal-input>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Last Name</bal-field-label>
+                  <bal-field-control>
+                    <bal-input name="lastName" placeholder="Enter your lastname" autocomplete="family-name"></bal-input>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Salary</bal-field-label>
+                  <bal-field-control>
+                    <bal-number-input name="salary"></bal-number-input>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <input type="reset" value="Reset" />
+            <input type="submit" value="Submit" />
           </form>
         </section>
       </main>
