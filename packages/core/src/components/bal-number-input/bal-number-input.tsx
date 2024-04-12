@@ -389,6 +389,7 @@ export class NumberInput
     if (this.nativeInput) {
       this.lastValue = toFixedNumber(this.lastValueGetter, this.decimal)
       this.nativeInputValue = toUserFormattedNumber(this.lastValueGetter, this.decimal, this.suffix)
+      this.nativeInput.value = this.nativeInputValue
     }
 
     this.inputValue = toNumber(this.lastValueGetter, this.decimal)
