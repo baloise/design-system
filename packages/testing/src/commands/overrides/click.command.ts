@@ -9,11 +9,21 @@ import {
   isHint,
   wrapCommand,
   wrapOptions,
+  isDropDown,
+  log,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
-  const command = wrapCommand('click', element, '', $el => originalFn($el, wrapOptions(options)))
+  const command = (selector: string) => {
+    return cy
+      .wrapComponent(element as any, { log: false })
+      .waitForComponents({ log: false })
+      .find(selector, { log: false })
+      .click({ force: true, log: false })
+      .then($el => log('click', '', $el))
+      .wrapComponent(element as any, { log: false })
+  }
 
   if (isAccordion(element)) {
     return command(selectors.accordion.trigger)
@@ -35,12 +45,16 @@ Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress
     return command(selectors.radio.label)
   }
 
-  if (isTag(element) && hasClass(element, 'sc-bal-select')) {
-    return command('.delete')
+  if (isTag(element)) {
+    return command(selectors.tag.close)
   }
 
   if (isHint(element)) {
     return command(selectors.hint.trigger)
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.trigger)
   }
 
   return originalFn(element, options)

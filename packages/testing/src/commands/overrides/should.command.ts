@@ -16,6 +16,7 @@ import {
   isSteps,
   hasTestId,
   isInputDate,
+  isDropDown,
 } from '../helpers'
 import { parseDataTestID, selectors } from '../../selectors/index'
 
@@ -176,6 +177,51 @@ const shouldAndAndCommand = (
           return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
         }
         return originalFn(element, 'not.have.attr', 'data-value', key.join(','), value)
+    }
+  }
+
+  if (hasClass(element, 'bal-dropdown__root__input')) {
+    const parseKey = () => {
+      return typeof key === 'string'
+        ? key
+        : (key as string[])
+            .map(k => k.trim())
+            .sort()
+            .join(',')
+    }
+
+    switch (condition) {
+      case 'have.value':
+        return originalFn(element, 'have.attr', 'data-label', parseKey(), value)
+
+      case 'not.have.value':
+        return originalFn(element, 'not.have.attr', 'data-label', parseKey(), value)
+    }
+  }
+
+  if (isDropDown(element)) {
+    const nativeEl = element.find(selectors.dropdown.input, { log: false })
+    const parseKey = () => {
+      return typeof key === 'string'
+        ? key
+        : (key as string[])
+            .map(k => k.trim())
+            .sort()
+            .join(',')
+    }
+
+    switch (condition) {
+      case 'have.focus':
+      case 'not.have.focus':
+      case 'be.disabled':
+      case 'not.be.disabled':
+        return originalFn(nativeEl, condition, key, value, options)
+
+      case 'have.value':
+        return originalFn(nativeEl, 'have.attr', 'data-label', parseKey(), value)
+
+      case 'not.have.value':
+        return originalFn(nativeEl, 'not.have.attr', 'data-label', parseKey(), value)
     }
   }
 

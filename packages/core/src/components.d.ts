@@ -10,6 +10,7 @@ import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfi
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
+import { BalOption } from "./utils/dropdown";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -20,6 +21,7 @@ export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfi
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
+export { BalOption } from "./utils/dropdown";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -964,6 +966,75 @@ export namespace Components {
         "logRender": boolean;
         "region"?: string;
         "stickyFooter": boolean;
+    }
+    interface BalDropdown {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
+          * If `true`, the selected options are shown as chips
+         */
+        "chips": boolean;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon": string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid": boolean;
+        "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
     }
     interface BalField {
         /**
@@ -2080,6 +2151,142 @@ export namespace Components {
          */
         "value"?: number;
     }
+    interface BalOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "checkbox": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "focused": boolean;
+        /**
+          * If `true`, the option is hidden.
+         */
+        "hidden": boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "invalid": boolean;
+        /**
+          * Label will be shown in the input element when it got selected
+         */
+        "label": string;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "multiline": boolean;
+        /**
+          * Selects or deselects the option and informs other components
+         */
+        "select": (selected?: boolean) => Promise<void>;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "selected": boolean;
+        /**
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+         */
+        "value": string;
+    }
+    interface BalOptionList {
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * Filter the options by the given filter property and hides options
+          * @returns focusIndex
+         */
+        "filterByContent": (search: string) => Promise<number>;
+        /**
+          * Focus the option with the label that starts with the search property
+          * @returns focusIndex
+         */
+        "focusByLabel": (search: string, config: Partial<{ select: boolean; }>) => Promise<number>;
+        /**
+          * Focus the first visible option in the list
+          * @returns focusIndex
+         */
+        "focusFirst": () => Promise<number>;
+        /**
+          * Defines the focused option with his index value
+         */
+        "focusIndex": number;
+        /**
+          * Focus the last visible option in the list
+          * @returns focusIndex
+         */
+        "focusLast": () => Promise<number>;
+        /**
+          * Focus the next visible option in the list
+          * @returns focusIndex
+         */
+        "focusNext": () => Promise<number>;
+        /**
+          * Focus the previous visible option in the list
+          * @returns focusIndex
+         */
+        "focusPrevious": () => Promise<number>;
+        "getLabels": () => Promise<string[]>;
+        /**
+          * Returns a list of option labels
+         */
+        "getSelectedOptions": (values?: string[]) => Promise<BalOption[]>;
+        /**
+          * Returns a list of option values
+         */
+        "getSelectedValues": () => Promise<string[]>;
+        /**
+          * Returns a list of options
+         */
+        "getValues": () => Promise<string[]>;
+        /**
+          * Id of the label element to describe this option list
+         */
+        "labelledby"?: string;
+        /**
+          * If `true` the list supports multiple selections
+         */
+        "multiple": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Resets the focus index to pristine and scrolls to the top of the list
+         */
+        "resetFocus": () => Promise<number>;
+        /**
+          * Shows or hides all options
+         */
+        "resetHidden": (hidden?: boolean) => Promise<void>;
+        /**
+          * Selects or deselects all options
+         */
+        "resetSelected": (selected?: boolean) => Promise<void>;
+        /**
+          * Selects the option with the current focus
+         */
+        "selectByFocus": () => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Updates options
+         */
+        "updateSelected": (values?: string[]) => Promise<void>;
+    }
     interface BalPagination {
         /**
           * Align the buttons to start, center or end
@@ -2650,7 +2857,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white';
+        "color": BalProps.BalSpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
          */
@@ -2663,6 +2870,10 @@ export namespace Components {
           * If `true` the component is smaller
          */
         "small": boolean;
+        /**
+          * Defines the look of the spinner
+         */
+        "variation": BalProps.BalSpinnerVariation;
     }
     interface BalStack {
         /**
@@ -3284,6 +3495,10 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
+export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDropdownElement;
+}
 export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFieldElement;
@@ -3331,6 +3546,10 @@ export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNumberInputElement;
+}
+export interface BalOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalOptionElement;
 }
 export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3746,6 +3965,25 @@ declare global {
     var HTMLBalDocAppElement: {
         prototype: HTMLBalDocAppElement;
         new (): HTMLBalDocAppElement;
+    };
+    interface HTMLBalDropdownElementEventMap {
+        "balChange": BalEvents.BalDropdownChangeDetail;
+        "balFocus": BalEvents.BalDropdownFocusDetail;
+        "balBlur": BalEvents.BalDropdownBlurDetail;
+    }
+    interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalDropdownElement: {
+        prototype: HTMLBalDropdownElement;
+        new (): HTMLBalDropdownElement;
     };
     interface HTMLBalFieldElementEventMap {
         "balFormControlDidLoad": BalEvents.BalFieldAriaLabelledByDetail;
@@ -4208,6 +4446,30 @@ declare global {
         prototype: HTMLBalNumberInputElement;
         new (): HTMLBalNumberInputElement;
     };
+    interface HTMLBalOptionElementEventMap {
+        "balOptionChange": BalEvents.BalOptionChangeDetail;
+        "balOptionFocus": BalEvents.BalOptionFocusDetail;
+    }
+    interface HTMLBalOptionElement extends Components.BalOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalOptionElement: {
+        prototype: HTMLBalOptionElement;
+        new (): HTMLBalOptionElement;
+    };
+    interface HTMLBalOptionListElement extends Components.BalOptionList, HTMLStencilElement {
+    }
+    var HTMLBalOptionListElement: {
+        prototype: HTMLBalOptionListElement;
+        new (): HTMLBalOptionListElement;
+    };
     interface HTMLBalPaginationElementEventMap {
         "balChange": BalEvents.BalPaginationChangeDetail;
     }
@@ -4655,6 +4917,7 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
+        "bal-dropdown": HTMLBalDropdownElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4704,6 +4967,8 @@ declare global {
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
+        "bal-option": HTMLBalOptionElement;
+        "bal-option-list": HTMLBalOptionListElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
@@ -5726,6 +5991,85 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
         "region"?: string;
         "stickyFooter"?: boolean;
+    }
+    interface BalDropdown {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
+          * If `true`, the selected options are shown as chips
+         */
+        "chips"?: boolean;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable"?: boolean;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon"?: string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid"?: boolean;
+        "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownBlurDetail>) => void;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownFocusDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
     }
     interface BalField {
         /**
@@ -6902,6 +7246,79 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface BalOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "checkbox"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "focused"?: boolean;
+        /**
+          * If `true`, the option is hidden.
+         */
+        "hidden"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "invalid"?: boolean;
+        /**
+          * Label will be shown in the input element when it got selected
+         */
+        "label"?: string;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "multiline"?: boolean;
+        /**
+          * Emitted when the option gets selected or unselected
+         */
+        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
+        "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "selected"?: boolean;
+        /**
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+         */
+        "value"?: string;
+    }
+    interface BalOptionList {
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * Defines the focused option with his index value
+         */
+        "focusIndex"?: number;
+        /**
+          * Id of the label element to describe this option list
+         */
+        "labelledby"?: string;
+        /**
+          * If `true` the list supports multiple selections
+         */
+        "multiple"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+    }
     interface BalPagination {
         /**
           * Align the buttons to start, center or end
@@ -7479,7 +7896,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white';
+        "color"?: BalProps.BalSpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
          */
@@ -7492,6 +7909,10 @@ declare namespace LocalJSX {
           * If `true` the component is smaller
          */
         "small"?: boolean;
+        /**
+          * Defines the look of the spinner
+         */
+        "variation"?: BalProps.BalSpinnerVariation;
     }
     interface BalStack {
         /**
@@ -8107,6 +8528,7 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
+        "bal-dropdown": BalDropdown;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -8156,6 +8578,8 @@ declare namespace LocalJSX {
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
+        "bal-option": BalOption;
+        "bal-option-list": BalOptionList;
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
@@ -8226,6 +8650,7 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
+            "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
@@ -8275,6 +8700,8 @@ declare module "@stencil/core" {
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
+            "bal-option": LocalJSX.BalOption & JSXBase.HTMLAttributes<HTMLBalOptionElement>;
+            "bal-option-list": LocalJSX.BalOptionList & JSXBase.HTMLAttributes<HTMLBalOptionListElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;

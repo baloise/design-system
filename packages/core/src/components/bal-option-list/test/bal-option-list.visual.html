@@ -1,0 +1,66 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium">
+        <section data-testid="basic">
+          <bal-option-list id="list" multiple>
+            <bal-option value="v1988" label="1988" disabled selected>1988</bal-option>
+            <bal-option value="v1989" label="1989" invalid>1989</bal-option>
+            <bal-option value="v1990" label="1990" disabled>1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007" disabled>2007</bal-option>
+          </bal-option-list>
+          <bal-stack py="normal">
+            <bal-button color="info" id="first">Focus First</bal-button>
+            <bal-button color="info" id="last">Focus Last</bal-button>
+            <bal-button color="info" id="next">Focus Next</bal-button>
+            <bal-button color="info" id="prev">Focus Previous</bal-button>
+            <bal-button color="info" id="label">Focus Label</bal-button>
+            <bal-button color="info" id="filter">Filter Label</bal-button>
+          </bal-stack>
+          <script>
+            const list = document.getElementById('list')
+            const firstBtn = document.getElementById('first')
+            const lastBtn = document.getElementById('last')
+            const nextBtn = document.getElementById('next')
+            const prevBtn = document.getElementById('prev')
+            const labelBtn = document.getElementById('label')
+            const filterBtn = document.getElementById('filter')
+
+            firstBtn.addEventListener('click', () => list.focusFirst())
+            lastBtn.addEventListener('click', () => list.focusLast())
+            nextBtn.addEventListener('click', () => list.focusNext())
+            prevBtn.addEventListener('click', () => list.focusPrevious())
+            labelBtn.addEventListener('click', () => list.focusByLabel('20'))
+            filterBtn.addEventListener('click', () => list.filterByContent('20'))
+          </script>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

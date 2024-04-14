@@ -3,6 +3,7 @@ import {
   isButton,
   isCheckbox,
   isDatepicker,
+  isDropDown,
   isInput,
   isInputDate,
   isNumberInput,
@@ -60,6 +61,10 @@ Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress
 
   if (isSelect(element)) {
     return command(selectors.select.input)
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.input)
   }
 
   return originalFn(element, options)

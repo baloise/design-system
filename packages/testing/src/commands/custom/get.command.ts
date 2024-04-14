@@ -70,20 +70,10 @@ Cypress.Commands.add(
   (subject, placeholder, options?: Partial<Cypress.Loggable>): any => {
     const o = wrapOptions(options)
 
+    const selector = `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`
     const element = subject
-      ? cy
-          .wrap(subject, o)
-          .find(
-            `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`,
-            o,
-          )
-          .waitForComponents(o)
-      : cy
-          .get(
-            `input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"], [data-placeholder="${placeholder}"]`,
-            o,
-          )
-          .waitForComponents(o)
+      ? cy.wrap(subject, o).find(selector, o).waitForComponents(o)
+      : cy.get(selector, o).waitForComponents(o)
 
     element.then(o, $el => log(!!subject ? '-getByPlaceholder' : 'getByPlaceholder', placeholder, $el, options))
     return element
@@ -104,7 +94,7 @@ Cypress.Commands.add(
 
     function filterVisibleElements(elements: HTMLElement[]) {
       return elements.filter(element => {
-        const isElementAriaHidden = options.hidden === true ? false : !!Cypress.$(element).attr('aria-hidden')
+        const isElementAriaHidden = options.hidden === true ? false : Cypress.$(element).attr('aria-hidden') === 'true'
         return !isElementAriaHidden
       })
     }

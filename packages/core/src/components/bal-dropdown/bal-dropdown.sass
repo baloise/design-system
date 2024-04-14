@@ -1,0 +1,127 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-dropdown.vars'
+
+// Dropdown
+// --------------------------------------------------
+.bal-dropdown
+  display: block
+  position: relative
+  flex: 1
+
+// Root interactive element
+// --------------------------------------------------
+.bal-dropdown__root
+  border-width: 0.125rem
+  border-style: solid
+  border-color: var(--bal-dropdown-control-border-color)
+  border-radius: var(--bal-dropdown-control-border-radius)
+  background: var(--bal-dropdown-control-background)
+  font-size: var(--bal-weight-regular)
+  font-family: var(--bal-font-family-text)
+  color: var(--bal-dropdown-control-text-color)
+  outline: none
+  box-shadow: var(--bal-shadow-none)
+  padding-right: 1rem
+  height: auto
+  min-height: 3rem
+  text-overflow: ellipsis
+  white-space: nowrap
+  overflow: hidden
+  display: flex
+  width: 100%
+  text-align: left
+  gap: .5rem
+  padding-left: calc(0.75em - var(--bal-border-width-normal))
+  padding-right: calc(0.75em - var(--bal-border-width-normal))
+  justify-content: center
+  align-items: center
+  & > span
+    flex: 1
+    hyphens: auto
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    z-index: 1
+  &--focused
+    border-color: var(--bal-dropdown-control-border-color-focused)
+  &--invalid
+    border-color: var(--bal-dropdown-control-border-color-invalid)
+    background: var(--bal-dropdown-control-background-invalid)
+  &--disabled
+    border-color: var(--bal-dropdown-control-border-color-disabled)
+    background: var(--bal-dropdown-control-background-disabled)
+  &__content
+    &--placeholder
+      color: var(--bal-form-field-control-placeholder-color)
+    &--disabled
+      color: var(--bal-dropdown-input-text-color-disabled)
+
+.bal-dropdown__root__content__chips
+  --bal-tag-size-small-font-size: var(--bal-text-size-normal)
+  display: flex
+  flex-wrap: wrap
+  gap: var(--bal-space-xx-small)
+  padding-top: var(--bal-space-x-small)
+  padding-bottom: var(--bal-space-x-small)
+
+// Dropdown list panel
+// --------------------------------------------------
+
+.bal-dropdown__root__input
+  appearance: none
+  border: none
+  background: transparent
+  position: absolute
+  right: 3rem
+  left: 0
+  top: 0
+  bottom: 0
+  opacity: 0
+  cursor: pointer
+  &:disabled
+    cursor: default
+
+// Dropdown list panel
+// --------------------------------------------------
+
+.bal-dropdown__list
+  display: block
+  visibility: hidden
+  opacity: 0
+  min-width: 100%
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  will-change: left, top, opacity
+  background: var(--bal-color-white)
+  border-radius: var(--bal-radius-normal)
+  box-shadow: var(--bal-shadow-normal)
+  z-index: var(--bal-z-index-popup)
+  &--expanded
+    visibility: visible
+    opacity: 1
+
+// Dropdown native input element
+// --------------------------------------------------
+
+.bal-dropdown__native
+  bottom: 0
+  left: 0
+  position: absolute
+  opacity: 0
+  pointer-events: none
+  width: 100%
+
+// Dropdown list panel
+// --------------------------------------------------
+
+.bal-dropdown__clear
+  background: transparent
+  border: none
+  padding: 0
+  margin: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
