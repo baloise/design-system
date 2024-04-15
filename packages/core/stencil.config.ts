@@ -218,6 +218,7 @@ export const config: Config = {
     { components: ['bal-checkbox', 'bal-checkbox-group'] },
     { components: ['bal-datepicker'] },
     { components: ['bal-dropdown'] },
+    { components: ['bal-combobox'] },
     { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
     { components: ['bal-file-upload'] },
     { components: ['bal-form'] },
