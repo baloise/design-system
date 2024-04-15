@@ -115,7 +115,9 @@ export class DropdownValueUtil {
                   key={option.value}
                   data-test="bal-dropdown-chip"
                   size="small"
-                  closable
+                  invalid={this.component.invalid}
+                  disabled={this.component.disabled || this.component.readonly}
+                  closable={!(this.component.disabled || this.component.readonly)}
                   onBalCloseClick={() => this.removeOption(option)}
                 >
                   {option.label}

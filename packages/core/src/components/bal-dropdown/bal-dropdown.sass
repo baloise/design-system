@@ -41,7 +41,6 @@
     overflow: hidden
     text-overflow: ellipsis
     white-space: nowrap
-    z-index: 1
   &--focused
     border-color: var(--bal-dropdown-control-border-color-focused)
   &--invalid
@@ -63,6 +62,8 @@
   gap: var(--bal-space-xx-small)
   padding-top: var(--bal-space-x-small)
   padding-bottom: var(--bal-space-x-small)
+  & > bal-tag
+    z-index: 1
 
 // Dropdown list panel
 // --------------------------------------------------
