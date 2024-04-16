@@ -36,7 +36,7 @@ describe('bal-dropdown', () => {
 
     it('multiple-chips', () => {
       cy.getByTestId('multiple-chips').testVisual(`dropdown-${platform}-multiple-chips-empty-closed`)
-      cy.getByPlaceholder('visual-multiple-chips').click()
+      cy.getByPlaceholder('visual-multiple-chips').click({ force: true })
       cy.getByTestId('multiple-chips').testVisual(`dropdown-${platform}-multiple-chips-empty-open`)
     })
 
