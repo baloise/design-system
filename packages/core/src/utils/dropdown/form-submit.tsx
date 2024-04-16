@@ -68,6 +68,7 @@ export const DropdownNativeSelect: FunctionalComponent<DropdownNativeSelectProps
       class={{
         ...block.element('root').element('select').class(),
       }}
+      aria-hidden="true"
       name={name}
       multiple={multiple}
       required={required}
