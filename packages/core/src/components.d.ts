@@ -977,14 +977,22 @@ export namespace Components {
          */
         "chips": boolean;
         /**
+          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+         */
+        "clear": () => Promise<void>;
+        /**
           * If `true`, a cross at the end is visible to clear the selection
          */
         "clearable": boolean;
+        /**
+          * Closes the popup with option list
+         */
+        "close": () => Promise<void>;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the max height of the list element
          */
-        "contentHeight"?: number;
+        "contentHeight": number;
         /**
           * If `true`, the user cannot interact with the option.
          */
@@ -993,6 +1001,10 @@ export namespace Components {
           * Defines the filter logic of the list
          */
         "filter": BalProps.BalOptionListFilter;
+        /**
+          * Returns the value of the component
+         */
+        "getValue": () => Promise<string[]>;
         /**
           * If `true` there will be on trigger icon visible
          */
@@ -1015,6 +1027,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Opens the popup with option list
+         */
+        "open": () => Promise<void>;
+        /**
           * Steps can be passed as a property or through HTML markup.
          */
         "options": BalOption[];
@@ -1030,7 +1046,15 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        /**
+          * Select option by passed value
+         */
+        "select": (newValue: string | string[]) => Promise<void>;
         "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Sets the focus on the input element
+         */
+        "setFocus": () => Promise<void>;
         /**
           * The value of the selected options.
          */
@@ -2155,13 +2179,9 @@ export namespace Components {
         /**
           * If `true`, the user cannot interact with the option.
          */
-        "checkbox": boolean;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
         "disabled": boolean;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is focused.
          */
         "focused": boolean;
         /**
@@ -2169,7 +2189,7 @@ export namespace Components {
          */
         "hidden": boolean;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is shown in red.
          */
         "invalid": boolean;
         /**
@@ -2177,7 +2197,7 @@ export namespace Components {
          */
         "label": string;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option can present in more than one line.
          */
         "multiline": boolean;
         /**
@@ -2185,7 +2205,7 @@ export namespace Components {
          */
         "select": (selected?: boolean) => Promise<void>;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is selected.
          */
         "selected": boolean;
         /**
@@ -2700,7 +2720,7 @@ export namespace Components {
          */
         "freeSolo": boolean;
         /**
-          * Sets the focus on the input element
+          * Returns the value of the component
          */
         "getValue": () => Promise<string[]>;
         /**
@@ -7250,13 +7270,9 @@ declare namespace LocalJSX {
         /**
           * If `true`, the user cannot interact with the option.
          */
-        "checkbox"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
         "disabled"?: boolean;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is focused.
          */
         "focused"?: boolean;
         /**
@@ -7264,7 +7280,7 @@ declare namespace LocalJSX {
          */
         "hidden"?: boolean;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is shown in red.
          */
         "invalid"?: boolean;
         /**
@@ -7272,7 +7288,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option can present in more than one line.
          */
         "multiline"?: boolean;
         /**
@@ -7281,7 +7297,7 @@ declare namespace LocalJSX {
         "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
         "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
         /**
-          * If `true`, the user cannot interact with the option.
+          * If `true`, the option is selected.
          */
         "selected"?: boolean;
         /**

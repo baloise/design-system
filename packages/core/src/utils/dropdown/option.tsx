@@ -1,4 +1,4 @@
-import { waitAfterFramePaint } from '../helpers'
+import { h } from '@stencil/core'
 import { DropdownComponent } from './component'
 
 export type BalBaseOption<TValue = string> = {
@@ -15,26 +15,17 @@ export type BalOptionOptions = {
   hidden: boolean
   // visual values
   multiline: boolean
-  checkbox: boolean
 }
 
 export type BalOption<TValue = string> = BalBaseOption<TValue> & BalOptionOptions
 
-export const mapOption = (option: Partial<BalOption>): BalOption => {
-  return newBalOption(
-    {
-      value: option.value,
-      label: option.label,
-    },
-    option,
-  )
-}
-
-export const newBalOption = <TValue = string>(
+export type NewBalOption<TValue = string> = (
   option: BalBaseOption<TValue>,
   options?: Partial<BalOptionOptions>,
-): BalOption<TValue> => {
-  const data: BalOption<TValue> = {
+) => BalOption<TValue>
+
+export const newBalOption: NewBalOption = (option, options) => {
+  const data: BalOption<any> = {
     ...option,
     disabled: false,
     invalid: false,
@@ -42,7 +33,6 @@ export const newBalOption = <TValue = string>(
     focused: false,
     hidden: false,
     multiline: false,
-    checkbox: false,
   }
 
   if (options) {
@@ -52,10 +42,19 @@ export const newBalOption = <TValue = string>(
     data.focused = options.focused === undefined ? data.focused : options.focused
     data.hidden = options.hidden === undefined ? data.hidden : options.hidden
     data.multiline = options.multiline === undefined ? data.multiline : options.multiline
-    data.checkbox = options.checkbox === undefined ? data.checkbox : options.checkbox
   }
 
   return data
+}
+
+export const mapOption = (option: Partial<BalOption>): BalOption => {
+  return newBalOption(
+    {
+      value: option.value,
+      label: option.label,
+    },
+    option,
+  )
 }
 
 export class DropdownOptionUtil {

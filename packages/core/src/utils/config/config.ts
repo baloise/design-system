@@ -88,6 +88,15 @@ export class Config {
     this._notify()
   }
 
+  get httpFormSubmit(): boolean {
+    return this._config.httpFormSubmit
+  }
+
+  set httpFormSubmit(httpFormSubmit: boolean) {
+    this._config.httpFormSubmit = httpFormSubmit
+    this._notify()
+  }
+
   attach(observer: BalConfigObserver): void {
     const isExist = this._observers.includes(observer)
     if (isExist) {

@@ -1,45 +1,46 @@
-import { h } from '@stencil/core'
-import { BEM } from '../bem'
-import { DropdownComponent } from './component'
+import { FunctionalComponent, h } from '@stencil/core'
 import { BalLanguage } from '../config'
+import { BEM } from '../bem'
 import { i18nBalDropdown } from './dropdown.i18n'
 
-export class DropdownIconUtil {
-  private component!: DropdownComponent
+export interface DropdownIconProps {
+  language: BalLanguage
+  loading: boolean
+  clearable: boolean
+  filled: boolean
+  disabled: boolean
+  invalid: boolean
+  expanded: boolean
+  icon: string
+}
 
-  connectedCallback(component: DropdownComponent) {
-    this.component = component
-  }
+export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
+  icon,
+  language,
+  loading,
+  clearable,
+  invalid,
+  filled,
+  expanded,
+  disabled,
+}) => {
+  const block = BEM.block('dropdown')
 
-  render(language: BalLanguage) {
-    const block = BEM.block('dropdown')
-
-    if (this.component.loading) {
-      return <bal-spinner small variation="circle"></bal-spinner>
-    } else if (
-      this.component.clearable &&
-      this.component.valueUtil.isFilled() &&
-      !this.component.valueUtil.isDisabled()
-    ) {
-      return (
-        <button
-          title={i18nBalDropdown[language].clearable}
-          class={{
-            ...block.element('clear').class(),
-            ...block.element('clear').modifier('invalid').class(this.component.invalid),
-          }}
-        >
-          <bal-icon name={'close-circle'} size="" color={'grey'}></bal-icon>
-        </button>
-      )
-    } else {
-      return (
-        <bal-icon
-          name={this.component.icon}
-          turn={this.component.isExpanded}
-          color={this.component.valueUtil.isDisabled() ? 'grey' : this.component.invalid ? 'danger' : 'primary'}
-        ></bal-icon>
-      )
-    }
+  if (loading) {
+    return <bal-spinner small variation="circle"></bal-spinner>
+  } else if (clearable && filled && !disabled) {
+    return (
+      <button
+        title={i18nBalDropdown[language].clearable}
+        class={{
+          ...block.element('clear').class(),
+          ...block.element('clear').modifier('invalid').class(invalid),
+        }}
+      >
+        <bal-icon name={'close-circle'} size="" color={'grey'}></bal-icon>
+      </button>
+    )
+  } else {
+    return <bal-icon name={icon} turn={expanded} color={disabled ? 'grey' : invalid ? 'danger' : 'primary'}></bal-icon>
   }
 }

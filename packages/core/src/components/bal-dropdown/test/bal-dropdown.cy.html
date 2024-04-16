@@ -64,31 +64,91 @@
         <h2 class="title text-large">Multiple</h2>
         <section>
           <bal-dropdown multiple chips placeholder="Try finding your hero" data-testid="multiple">
-            <bal-option checkbox value="BlackWidow" label="Black Widow">
+            <bal-option value="BlackWidow" label="Black Widow">
               <b style="display: block">Black Widow</b>
               <span>S.H.I.E.L.D.</span>
             </bal-option>
-            <bal-option checkbox value="BlackPanter" label="Black Panter">
+            <bal-option value="BlackPanter" label="Black Panter">
               <b style="display: block">Black Panter</b>
               <span>Wakanda</span>
             </bal-option>
-            <bal-option checkbox value="IronMan" label="Iron Man">
+            <bal-option value="IronMan" label="Iron Man">
               <b style="display: block">Iron Man</b>
               <span>Malibu</span>
             </bal-option>
-            <bal-option checkbox value="SpiderMan" label="Spider Man">
+            <bal-option value="SpiderMan" label="Spider Man">
               <b style="display: block">Spider Man</b>
               <span>Queens</span>
             </bal-option>
-            <bal-option checkbox value="CaptainAmerica" label="Captain America">
+            <bal-option value="CaptainAmerica" label="Captain America">
               <b style="display: block">Captain America</b>
               <span>Broklyn</span>
             </bal-option>
-            <bal-option checkbox value="Thor" label="Thor God of Thunder">
+            <bal-option value="Thor" label="Thor God of Thunder">
               <b style="display: block">Thor God of Thunder</b>
               <span>Asgard</span>
             </bal-option>
           </bal-dropdown>
+        </section>
+        <h2 class="title text-large">Form Submit</h2>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Country</bal-field-label>
+                  <bal-field-control>
+                    <bal-dropdown
+                      multiple
+                      chips
+                      placeholder="Try finding your hero"
+                      name="hero"
+                      value="CaptainAmerica,SpiderMan"
+                    >
+                      <bal-option checkbox value="BlackWidow" label="Black Widow">
+                        <b style="display: block">Black Widow</b>
+                        <span>S.H.I.E.L.D.</span>
+                      </bal-option>
+                      <bal-option checkbox value="BlackPanter" label="Black Panter">
+                        <b style="display: block">Black Panter</b>
+                        <span>Wakanda</span>
+                      </bal-option>
+                      <bal-option checkbox value="IronMan" label="Iron Man">
+                        <b style="display: block">Iron Man</b>
+                        <span>Malibu</span>
+                      </bal-option>
+                      <bal-option checkbox value="SpiderMan" label="Spider Man">
+                        <b style="display: block">Spider Man</b>
+                        <span>Queens</span>
+                      </bal-option>
+                      <bal-option checkbox value="CaptainAmerica" label="Captain America">
+                        <b style="display: block">Captain America</b>
+                        <span>Broklyn</span>
+                      </bal-option>
+                      <bal-option checkbox value="Thor" label="Thor God of Thunder">
+                        <b style="display: block">Thor God of Thunder</b>
+                        <span>Asgard</span>
+                      </bal-option>
+                    </bal-dropdown>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Country</bal-field-label>
+                  <bal-field-control>
+                    <bal-dropdown name="country" autocomplete="country" value="CH">
+                      <bal-option value="CH" label="Switzerland">Switzerland</bal-option>
+                      <bal-option value="DE" label="Germany">Germany</bal-option>
+                      <bal-option value="IT" label="Italy">Italy</bal-option>
+                    </bal-dropdown>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <input type="reset" value="Reset" />
+            <input type="submit" value="Submit" />
+          </form>
         </section>
         <h2 class="title text-large">Autocomplete</h2>
         <section>

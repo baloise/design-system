@@ -10,7 +10,6 @@ import {
   Listen,
   Event,
   EventEmitter,
-  FunctionalComponent,
   Method,
 } from '@stencil/core'
 import {
@@ -23,19 +22,23 @@ import {
 } from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { ariaBooleanToString } from '../../utils/aria'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import {
   BalOption,
   DropdownEventsUtil,
-  DropdownFormReset,
-  DropdownFormResetUtil,
-  DropdownIconUtil,
+  DropdownFormSubmit,
+  DropdownFormSubmitUtil,
   DropdownOptionUtil,
   DropdownPopupUtil,
   DropdownValueUtil,
-  i18nBalDropdown,
+  DropdownOptionList,
+  DropdownFocus,
+  DropdownFocusUtil,
+  DropdownIcon,
+  DropdownNativeSelect,
+  DropdownInput,
+  DropdownValue,
 } from '../../utils/dropdown'
 import {
   BalConfigObserver,
@@ -46,44 +49,44 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { DropdownFocus, DropdownFocusUtil } from '../../utils/dropdown/focus'
+import { waitAfterIdleCallback } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-dropdown',
   styleUrl: 'bal-dropdown.sass',
 })
 export class Dropdown
-  implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormReset, DropdownFocus
+  implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormSubmit, DropdownFocus
 {
-  private inheritedAttributes: Attributes = {}
-  private inputId = `bal-dropdown-${balDropdownIds++}`
-
   @Element() el!: HTMLElement
   panelEl: HTMLDivElement | undefined
   listEl: HTMLBalOptionListElement | undefined
-  nativeEl: HTMLSelectElement | HTMLInputElement | undefined
+  nativeEl: HTMLInputElement | undefined
+  selectEl: HTMLSelectElement | undefined
 
+  inputId = `bal-dropdown-${balDropdownIds++}`
+  inheritedAttributes: Attributes = {}
   initialValue?: string | string[] = []
   nativeOptions: string[] = []
 
   @State() rawOptions: BalOption[] = []
+  @State() choices: BalOption[] = []
   @State() rawValue: string[] = []
   @State() hasFocus = false
   @State() isExpanded = false
   @State() isAutoFilled = false
   @State() inputLabel = ''
-  @State() inputContent?: FunctionalComponent | string
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() httpFormSubmit: boolean = defaultConfig.httpFormSubmit
   @State() labelToFocus = ''
 
   valueUtil = new DropdownValueUtil()
   eventsUtil = new DropdownEventsUtil()
   popupUtil = new DropdownPopupUtil()
   optionUtil = new DropdownOptionUtil()
-  formResetUtil = new DropdownFormResetUtil()
-  iconUtil = new DropdownIconUtil()
+  formSubmitUtil = new DropdownFormSubmitUtil()
   focusUtil = new DropdownFocusUtil()
 
   log!: LogInstance
@@ -166,7 +169,7 @@ export class Dropdown
   /**
    * Defines the max height of the list element
    */
-  @Prop() contentHeight?: number = 262
+  @Prop() contentHeight = 262
 
   /**
    * @internal
@@ -213,12 +216,11 @@ export class Dropdown
    */
 
   connectedCallback(): void {
-    this.valueUtil.connectedCallback(this)
     this.eventsUtil.connectedCallback(this)
+    this.valueUtil.connectedCallback(this)
     this.popupUtil.connectedCallback(this)
     this.optionUtil.connectedCallback(this)
-    this.iconUtil.connectedCallback(this)
-    this.formResetUtil.connectedCallback(this)
+    this.formSubmitUtil.connectedCallback(this)
     this.focusUtil.connectedCallback(this)
   }
 
@@ -228,7 +230,7 @@ export class Dropdown
   }
 
   componentDidRender() {
-    this.formResetUtil.componentDidRender()
+    this.formSubmitUtil.componentDidRender()
   }
 
   componentDidLoad(): void {
@@ -248,6 +250,7 @@ export class Dropdown
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
+    this.httpFormSubmit = state.httpFormSubmit
   }
 
   @Listen('balOptionChange')
@@ -262,7 +265,7 @@ export class Dropdown
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
-    this.formResetUtil.handle(ev)
+    this.formSubmitUtil.handle(ev)
   }
 
   /**
@@ -271,19 +274,67 @@ export class Dropdown
    */
 
   /**
+   * Sets the focus on the input element
+   */
+  @Method()
+  async setFocus() {
+    if (this.nativeEl && !this.valueUtil.isDisabled()) {
+      await waitAfterIdleCallback()
+      this.nativeEl.focus()
+    }
+  }
+
+  /**
+   * Returns the value of the component
+   */
+  @Method()
+  async getValue() {
+    return this.rawValue
+  }
+
+  /**
+   * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+   */
+  @Method()
+  async clear() {
+    this.valueUtil.updateRawValueBySelection([])
+  }
+
+  /**
+   * Opens the popup with option list
+   */
+  @Method()
+  async open(): Promise<void> {
+    if (!this.valueUtil.isDisabled() && this.panelEl) {
+      await this.popupUtil.expandList()
+    }
+  }
+
+  /**
+   * Closes the popup with option list
+   */
+  @Method()
+  async close(): Promise<void> {
+    if (!this.valueUtil.isDisabled() && this.panelEl) {
+      await this.popupUtil.collapseList()
+    }
+  }
+
+  /**
+   * Select option by passed value
+   */
+  @Method()
+  async select(newValue: string | string[]): Promise<void> {
+    const parsedNewValue = this.valueUtil.parseValueString(newValue)
+    this.valueUtil.updateRawValueBySelection(parsedNewValue)
+  }
+
+  /**
    * @internal
    */
   @Method()
   async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
     this.ariaForm = { ...ariaForm }
-  }
-
-  toggleList() {
-    this.popupUtil.toggleList()
-  }
-
-  updateRawValueBySelection(newRawValue: string[] = []) {
-    this.valueUtil.updateRawValueBySelection(newRawValue)
   }
 
   /**
@@ -295,13 +346,13 @@ export class Dropdown
     if (!this.multiple) {
       const newValue = [this.nativeEl.value]
       if (!areArraysEqual(newValue, this.rawValue)) {
-        this.updateRawValueBySelection(newValue)
+        this.valueUtil.updateRawValueBySelection(newValue)
         this.isAutoFilled = true
       }
     }
   }
 
-  private handleKeyDown = (ev: KeyboardEvent) => {
+  handleKeyDown = (ev: KeyboardEvent) => {
     if (ev && ev.key) {
       if (this.isExpanded) {
         /**
@@ -395,94 +446,76 @@ export class Dropdown
               ...block.element('root').element('content').modifier('placeholder').class(!this.valueUtil.isFilled()),
             }}
           >
-            {this.inputContent}
+            <DropdownValue
+              filled={this.valueUtil.isFilled()}
+              chips={this.chips}
+              placeholder={this.placeholder}
+              choices={this.choices}
+              invalid={this.invalid}
+              disabled={this.disabled}
+              readonly={this.readonly}
+              onRemoveChip={option => this.valueUtil.removeOption(option)}
+            ></DropdownValue>
           </span>
-          {this.renderNativeInput(block)}
-          {this.iconUtil.render(this.language)}
+          <DropdownInput
+            name={this.name}
+            inputId={this.inputId}
+            httpFormSubmit={this.httpFormSubmit}
+            ariaForm={this.ariaForm}
+            rawValue={this.rawValue}
+            autocomplete={this.autocomplete}
+            required={this.required}
+            disabled={this.disabled}
+            readonly={this.readonly}
+            placeholder={this.placeholder}
+            expanded={this.isExpanded}
+            invalid={this.invalid}
+            language={this.language}
+            inputLabel={this.inputLabel}
+            inheritedAttributes={this.inheritedAttributes}
+            refInputEl={el => (this.nativeEl = el)}
+            onChange={ev => this.handleAutoFill(ev)}
+            onFocus={ev => this.eventsUtil.handleFocus(ev)}
+            onBlur={ev => this.eventsUtil.handleBlur(ev)}
+            onKeyDown={ev => this.handleKeyDown(ev)}
+          ></DropdownInput>
+          <DropdownNativeSelect
+            name={this.name}
+            httpFormSubmit={this.httpFormSubmit}
+            multiple={this.multiple}
+            required={this.required}
+            disabled={this.valueUtil.isDisabled()}
+            rawValue={this.rawValue}
+            refSelectEl={el => (this.selectEl = el)}
+          ></DropdownNativeSelect>
+          <DropdownIcon
+            icon={this.icon}
+            language={this.language}
+            loading={this.loading}
+            clearable={this.clearable}
+            invalid={this.invalid}
+            expanded={this.isExpanded}
+            filled={this.valueUtil.isFilled()}
+            disabled={this.valueUtil.isDisabled()}
+          ></DropdownIcon>
         </div>
-        {this.renderOptionList(block)}
-      </Host>
-    )
-  }
-
-  renderNativeInput(block) {
-    return (
-      <input
-        id={this.ariaForm.controlId || `${this.inputId}-ctrl`}
-        class={{
-          ...block.element('root').element('input').class(),
-        }}
-        size={1}
-        inputmode="none"
-        type="text"
-        tabindex="0"
-        name={this.name}
-        value={this.rawValue.join(',')}
-        autoComplete={this.autocomplete}
-        required={this.required}
-        disabled={this.disabled}
-        readonly={this.readonly}
-        placeholder={this.placeholder}
-        title={this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open}
-        aria-label={this.isExpanded ? i18nBalDropdown[this.language].close : i18nBalDropdown[this.language].open}
-        aria-owns={`${this.inputId}-menu`}
-        aria-invalid={ariaBooleanToString(this.invalid)}
-        aria-disabled={ariaBooleanToString(this.valueUtil.isDisabled())}
-        aria-labelledby={this.ariaForm.labelId}
-        aria-describedby={this.ariaForm.messageId}
-        aria-haspopup={'listbox'}
-        data-native
-        data-label={this.inputLabel}
-        data-value={this.rawValue.join(',')}
-        ref={nativeEl => (this.nativeEl = nativeEl)}
-        onChange={ev => this.handleAutoFill(ev)}
-        onFocus={ev => this.eventsUtil.handleFocus(ev)}
-        onBlur={ev => this.eventsUtil.handleBlur(ev)}
-        onKeyDown={ev => this.handleKeyDown(ev)}
-        {...this.inheritedAttributes}
-      />
-    )
-  }
-
-  renderOptionList(block) {
-    return (
-      <div
-        id={`${this.inputId}-menu`}
-        class={{
-          ...block.element('list').class(),
-          ...block.element('list').modifier('expanded').class(this.isExpanded),
-        }}
-        ref={panelEl => (this.panelEl = panelEl)}
-      >
-        <bal-option-list
-          multiple={this.multiple}
-          disabled={this.valueUtil.isDisabled()}
+        <DropdownOptionList
+          inputId={this.inputId}
+          block={this.inputId}
           filter={this.filter}
           required={this.required}
+          isExpanded={this.isExpanded}
+          isDisabled={this.valueUtil.isDisabled()}
+          hasPropOptions={this.optionUtil.hasPropOptions()}
+          multiple={this.multiple}
           contentHeight={this.contentHeight}
-          ref={listEl => (this.listEl = listEl)}
+          rawOptions={this.rawOptions}
+          refPanelEl={el => (this.panelEl = el)}
+          refListEl={el => (this.listEl = el)}
         >
-          <slot />
-          {this.optionUtil.hasPropOptions()
-            ? this.rawOptions.map(option => (
-                <bal-option
-                  key={option.value}
-                  value={option.value}
-                  label={option.label}
-                  disabled={option.disabled}
-                  multiline={option.multiline}
-                  invalid={option.invalid}
-                  checkbox={option.checkbox}
-                  hidden={option.hidden}
-                  selected={option.selected}
-                  focused={option.focused}
-                >
-                  {option.label}
-                </bal-option>
-              ))
-            : ''}
-        </bal-option-list>
-      </div>
+          <slot></slot>
+        </DropdownOptionList>
+      </Host>
     )
   }
 }

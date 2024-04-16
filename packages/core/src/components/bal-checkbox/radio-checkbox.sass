@@ -102,7 +102,7 @@ bal-radio .bal-radio-checkbox__label
     align-items: center
     justify-content: center
     text-align: left
-    min-height: 1.5rem
+    min-height: var(--bal-radio-checkbox-label-min-height)
     font-family: var(--bal-font-family-text)
     //
     // inner text span element
@@ -134,12 +134,12 @@ bal-radio .bal-radio-checkbox__label
       position: absolute
       left: 0
       top: 0.25rem
-      height: 1.5rem
-      width: 1.5rem
+      height: var(--bal-radio-checkbox-symbol-size)
+      width: var(--bal-radio-checkbox-symbol-size)
       background-color: transparent
       background-position: center
       background-repeat: no-repeat
-      background-size: 1.5rem 1.5rem
+      background-size: var(--bal-radio-checkbox-symbol-size) var(--bal-radio-checkbox-symbol-size)
     &::before
       content: ''
       border-style: var(--bal-form-field-control-border-style)
@@ -171,10 +171,10 @@ bal-radio .bal-radio-checkbox__label
         border-bottom-width: 2px
         border-left: 0
         border-radius: 1px
-        width: calc(0.5rem - 1px)
-        height: calc(0.875rem - 1px)
-        left: calc(0.5rem + 1px)
-        margin-top: 0.25rem
+        width: var(--bal-radio-checkbox-symbol-width)
+        height: var(--bal-radio-checkbox-symbol-height)
+        left: var(--bal-radio-checkbox-symbol-left)
+        margin-top: var(--bal-radio-checkbox-symbol-margin-top)
         transform: rotate(45deg)
   //
   // Symbol colors main, inverted and background

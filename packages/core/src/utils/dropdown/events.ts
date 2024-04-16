@@ -1,5 +1,4 @@
 import { DropdownComponent } from './component'
-import { stopEventBubbling } from '../form-input'
 
 export type DropdownEvents = {
   listenOnClickOutside(ev: UIEvent)
@@ -37,12 +36,12 @@ export class DropdownEventsUtil {
         const targetEl = ev.target as HTMLElement
         const clearEl = targetEl.closest('.bal-dropdown__clear')
         if (clearEl) {
-          this.component.updateRawValueBySelection([])
+          this.component.valueUtil.updateRawValueBySelection([])
           return
         }
       }
 
-      this.component.toggleList()
+      this.component.popupUtil.toggleList()
     }
   }
 

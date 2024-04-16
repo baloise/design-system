@@ -1,4 +1,4 @@
-import { h } from '@stencil/core'
+import { FunctionalComponent, h } from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { DropdownComponent } from './component'
@@ -97,38 +97,61 @@ export class DropdownValueUtil {
   async updateInputContent() {
     await waitAfterFramePaint()
     if (this.component.listEl) {
-      const options = await this.component.listEl.getSelectedOptions(this.component.rawValue)
-      this.component.inputLabel = options
+      this.component.choices = await this.component.listEl.getSelectedOptions(this.component.rawValue)
+      this.component.inputLabel = this.component.choices
         .map(option => option.label.trim())
         .sort()
         .join(',')
-
-      if (!this.component.valueUtil.isFilled()) {
-        this.component.inputContent = this.component.placeholder
-      } else {
-        if (this.component.chips) {
-          const block = BEM.block('dropdown').element('root').element('content').element('chips')
-          this.component.inputContent = (
-            <div class={{ ...block.class() }}>
-              {options.map(option => (
-                <bal-tag
-                  key={option.value}
-                  data-test="bal-dropdown-chip"
-                  size="small"
-                  invalid={this.component.invalid}
-                  disabled={this.component.disabled || this.component.readonly}
-                  closable={!(this.component.disabled || this.component.readonly)}
-                  onBalCloseClick={() => this.removeOption(option)}
-                >
-                  {option.label}
-                </bal-tag>
-              ))}
-            </div>
-          )
-        } else {
-          this.component.inputContent = options.map(option => option.label).join(', ')
-        }
-      }
     }
+  }
+}
+
+export interface DropdownValueProps {
+  filled: boolean
+  chips: boolean
+  invalid: boolean
+  disabled: boolean
+  readonly: boolean
+  placeholder: string
+  choices: BalOption[]
+  onRemoveChip: (option: BalOption) => void
+}
+
+export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
+  filled,
+  chips,
+  placeholder,
+  choices,
+  invalid,
+  disabled,
+  readonly,
+  onRemoveChip,
+}) => {
+  const block = BEM.block('dropdown')
+
+  if (filled) {
+    if (chips) {
+      return (
+        <div class={{ ...block.element('root').element('content').element('chips').class() }}>
+          {choices.map(option => (
+            <bal-tag
+              key={option.value}
+              data-test="bal-dropdown-chip"
+              size="small"
+              invalid={invalid}
+              disabled={disabled || readonly}
+              closable={!(disabled || readonly)}
+              onBalCloseClick={() => onRemoveChip(option)}
+            >
+              {option.label}
+            </bal-tag>
+          ))}
+        </div>
+      )
+    } else {
+      return choices.map(option => option.label).join(', ')
+    }
+  } else {
+    return placeholder
   }
 }

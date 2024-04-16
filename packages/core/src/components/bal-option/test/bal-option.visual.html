@@ -43,11 +43,13 @@
         </section>
 
         <section data-testid="listbox-checkbox" role="listbox">
-          <bal-option checkbox value="Default" label="Default">Default</bal-option>
-          <bal-option checkbox focused value="Focused" label="Focused">Focused</bal-option>
-          <bal-option checkbox selected value="Selected" label="Selected">Selected</bal-option>
-          <bal-option checkbox disabled value="Disabled" label="Disabled">Disabled</bal-option>
-          <bal-option checkbox invalid value="Invalid" label="Invalid">Invalid</bal-option>
+          <bal-option-list multiple>
+            <bal-option value="Default" label="Default">Default</bal-option>
+            <bal-option focused value="Focused" label="Focused">Focused</bal-option>
+            <bal-option selected value="Selected" label="Selected">Selected</bal-option>
+            <bal-option disabled value="Disabled" label="Disabled">Disabled</bal-option>
+            <bal-option invalid value="Invalid" label="Invalid">Invalid</bal-option>
+          </bal-option-list>
         </section>
       </main>
     </bal-doc-app>

@@ -402,7 +402,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   /**
-   * Sets the focus on the input element
+   * Returns the value of the component
    */
   @Method()
   async getValue() {

@@ -11,7 +11,14 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
     const win: Window | undefined = doc.defaultView as any
 
     if (win && typeof (window as any) !== 'undefined') {
-      initializeBaloiseDesignSystem(config.defaults, undefined, win)
+      initializeBaloiseDesignSystem(
+        {
+          ...config.defaults,
+          httpFormSubmit: false,
+        },
+        undefined,
+        win,
+      )
 
       const aelFn =
         '__zone_symbol__addEventListener' in (doc.body as any) ? '__zone_symbol__addEventListener' : 'addEventListener'

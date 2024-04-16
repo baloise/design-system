@@ -36,6 +36,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
     this.log = log
   }
 
+  @State() checkbox = false
   @State() interactionState: BalElementStateInfo = BalElementStateListener.DefaultState
 
   /**
@@ -59,29 +60,24 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
   @Prop() disabled = false
 
   /**
-   * If `true`, the user cannot interact with the option.
+   * If `true`, the option can present in more than one line.
    */
   @Prop() multiline = false
 
   /**
-   * If `true`, the user cannot interact with the option.
+   * If `true`, the option is shown in red.
    */
   @Prop() invalid = false
 
   /**
-   * If `true`, the user cannot interact with the option.
+   * If `true`, the option is selected.
    */
   @Prop({ mutable: true }) selected = false
 
   /**
-   * If `true`, the user cannot interact with the option.
+   * If `true`, the option is focused.
    */
   @Prop({ mutable: true }) focused = false
-
-  /**
-   * If `true`, the user cannot interact with the option.
-   */
-  @Prop() checkbox = false
 
   /**
    * If `true`, the option is hidden.
@@ -98,6 +94,20 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
    * Emitted when a option gets focused.
    */
   @Event() balOptionFocus!: EventEmitter<BalEvents.BalOptionFocusDetail>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  componentWillRender(): void | Promise<void> {
+    if (this.el) {
+      const optionListEl = this.el.closest('bal-option-list')
+      if (optionListEl) {
+        this.checkbox = !!optionListEl.multiple
+      }
+    }
+  }
 
   /**
    * LISTENERS
@@ -195,7 +205,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
         tabIndex={-1}
         onClick={this.onClick}
       >
-        <bal-stack py="small">
+        <bal-stack py="small" space="x-small">
           {this.checkbox ? (
             <bal-checkbox
               hidden

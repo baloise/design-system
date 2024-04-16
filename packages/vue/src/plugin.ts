@@ -11,7 +11,10 @@ interface BaloiseDesignSystemVueConfig {
 
 export const BaloiseDesignSystem: Plugin = {
   async install(app, config: BaloiseDesignSystemVueConfig = {}) {
-    initialize(config.defaults)
+    initialize({
+      ...config.defaults,
+      httpFormSubmit: false,
+    })
 
     if (config && config.defineCustomElementTag === true) {
       app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-')
