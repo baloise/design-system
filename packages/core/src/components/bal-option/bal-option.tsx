@@ -208,10 +208,9 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
         <bal-stack py="small" space="x-small">
           {this.checkbox ? (
             <bal-checkbox
-              hidden
-              label-hidden
               flat
               nonSubmit
+              label-hidden
               checked={this.selected}
               disabled={this.disabled}
               invalid={this.invalid}

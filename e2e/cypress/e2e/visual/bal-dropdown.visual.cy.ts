@@ -39,6 +39,12 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('visual-multiple-chips').click()
       cy.getByTestId('multiple-chips').testVisual(`dropdown-${platform}-multiple-chips-empty-open`)
     })
+
+    it('form-field', () => {
+      cy.getByTestId('form-field').testVisual(`dropdown-${platform}-form-field-empty-closed`)
+      cy.getByPlaceholder('visual-form-field').click()
+      cy.getByTestId('form-field').testVisual(`dropdown-${platform}-form-field-empty-open`)
+    })
   })
 
   context('states', () => {

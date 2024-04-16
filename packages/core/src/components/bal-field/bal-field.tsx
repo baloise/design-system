@@ -132,11 +132,21 @@ export class Field implements ComponentInterface, BalMutationObserver {
     return this.isDirectChild(parent)
   }
 
+  private isVisible = (el: HTMLElement): boolean => {
+    if (!el) {
+      return false
+    }
+
+    return el.ariaHidden !== 'true'
+  }
+
   private findDirectChild = (selectors: string): BalAriaFormLinking | undefined => {
     const element = this.el.querySelector<any>(selectors)
     const isDirectChild = this.isDirectChild(element)
     if (isDirectChild) {
-      return element
+      if (this.isVisible(element)) {
+        return element
+      }
     }
     return undefined
   }
@@ -144,7 +154,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
   private findDirectChildren = (selectors: string[]): BalAriaFormLinking[] => {
     return selectors
       .map(selector => {
-        return Array.from(this.el.querySelectorAll<any>(selector)).filter(this.isDirectChild)
+        return Array.from(this.el.querySelectorAll<any>(selector)).filter(this.isDirectChild).filter(this.isVisible)
       })
       .flat()
   }
@@ -159,6 +169,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-input',
       'bal-field-control bal-select',
       'bal-field-control bal-input-date',
+      'bal-field-control bal-dropdown',
       'bal-field-control bal-checkbox',
       'bal-field-control bal-radio',
       'bal-field-control bal-checkbox-group',
@@ -170,7 +181,6 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-input-stepper',
       'bal-field-control bal-textarea',
       'bal-field-control bal-file-upload',
-      'bal-field-control bal-dropdown',
     ])
 
     const ariaForm = defaultBalAriaForm

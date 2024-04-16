@@ -24,7 +24,7 @@ describe('bal-dropdown', () => {
   })
 
   describe('multiple', () => {
-    it.only('should select and deselect values', () => {
+    it('should select and deselect values', () => {
       cy.getByTestId('multiple')
         .click()
         .select(['Black Widow', 'Black Panter'])
