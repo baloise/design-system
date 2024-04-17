@@ -9,6 +9,7 @@ import { DatePickerComponent } from './form-components/datepicker.component'
 import { TimeComponent } from './form-components/time.component'
 import { InputStepperComponent } from './form-components/input-stepper.component'
 import { SliderComponent } from './form-components/input-slider.component'
+import { DropdownComponent } from './form-components/dropdown.component'
 import { SelectComponent } from './form-components/select.component'
 import { CheckboxComponent } from './form-components/checkbox.component'
 import { CheckboxGroupComponent } from './form-components/checkbox-group.component'
@@ -39,6 +40,7 @@ export interface UpdateControl {
     TimeComponent,
     InputStepperComponent,
     SliderComponent,
+    DropdownComponent,
     SelectComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
@@ -61,6 +63,8 @@ export interface UpdateControl {
           <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
+          <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-dropdown [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
           <app-select [form]="myForm" (updateControl)="updateValue($event)"></app-select>
           <app-select [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-select>
           <app-select [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-select>
@@ -97,6 +101,8 @@ export class AppComponent {
     time: new FormControl(null, [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(30, [Validators.min(10)]),
+    dropdown: new FormControl(null, [Validators.required]),
+    dropdownMultiple: new FormControl(['Kiwi'], [Validators.required]),
     select: new FormControl('Kiwi', [Validators.required]),
     selectMultiple: new FormControl(['Kiwi'], [Validators.required]),
     typeahead: new FormControl('Kiwi', [Validators.required]),

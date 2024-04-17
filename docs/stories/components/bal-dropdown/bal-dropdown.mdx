@@ -1,0 +1,119 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as DropDownStories from './bal-dropdown.stories'
+
+<Meta of={DropDownStories} />
+
+<StoryHeading of={DropDownStories.Basic} hidden></StoryHeading>
+
+<Banner of={DropDownStories} />
+
+<Lead>**Drop-Down** components are used to gather user-provided information from a range of options.</Lead>
+
+The `bal-dropdown` component serves as a alternative to a traditional `<select>` element and is
+frequently paired with `bal-field`.
+
+<Canvas of={DropDownStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={DropDownStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.FieldControl}></StoryHeading>
+
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas of={DropDownStories.FieldControl} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Multiple}></StoryHeading>
+
+The **multiple** prop enables the capability for making multiple selections.
+
+<Canvas of={DropDownStories.Multiple} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.MultipleWithChips}></StoryHeading>
+
+Utilize the **chips** prop to showcase selected items as individual tags, which can be deselected.
+
+<Canvas of={DropDownStories.MultipleWithChips} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Clearable}></StoryHeading>
+
+Applying the **clearable** prop will show a cross in the dropdown to clear the current value of the component.
+
+<Canvas of={DropDownStories.Clearable} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Loading}></StoryHeading>
+
+Applying the **loading** prop will indicate that the component is busy.
+
+<Canvas of={DropDownStories.Loading} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Invalid}></StoryHeading>
+
+Applying the **invalid** prop will indicate a incorrect user input.
+
+<Canvas of={DropDownStories.Invalid} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Disabled}></StoryHeading>
+
+Applying the **disabled** prop will prevent a user from interacting with the component.
+
+<Canvas of={DropDownStories.Disabled} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.FormReset}></StoryHeading>
+
+The component can be used for server-side forms.
+
+<Canvas of={DropDownStories.FormReset} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DropDownStories.Autocomplete}></StoryHeading>
+
+The component supports **autocomplete** so that the browser can fill out the form control.
+
+<Canvas of={DropDownStories.Autocomplete} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balOptionApi from '../bal-option/api.md?raw'
+
+<Markdown>{balOptionApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,4 +1,4 @@
-import { isSelect, isSteps, isTabs } from '../helpers'
+import { isDropDown, isSelect, isSteps, isTabs, log, shouldLog } from '../helpers'
 import { selectors } from '../../selectors'
 import { byDataSelectors } from '../../selectors/selectors.util'
 
@@ -26,6 +26,31 @@ Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any
       .wrap(element, { log: false })
       .find(selectContext.join(', '))
       .click({ multiple: values.length > 1 })
+      .wrap(element, { log: false })
+  }
+
+  if (isDropDown(element)) {
+    let valueArray: any[] = []
+    if (typeof values === 'string') {
+      valueArray.push(values)
+    } else {
+      valueArray = [...values]
+    }
+
+    log('select', valueArray, element, options)
+
+    if (valueArray.length === 0) {
+      return cy.wrap(element, { log: false }).clear({ log: false })
+    }
+
+    return cy
+      .wrap(element, { log: false })
+      .within({ log: false }, () => {
+        for (let index = 0; index < valueArray.length; index++) {
+          const label = valueArray[index]
+          cy.getByRole('option', { name: label, log: false }).click({ log: false })
+        }
+      })
       .wrap(element, { log: false })
   }
 

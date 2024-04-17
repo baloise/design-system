@@ -1,4 +1,13 @@
-import { isInput, isInputDate, isNumberInput, isSlider, isTextarea, wrapCommand, wrapOptions } from '../helpers'
+import {
+  isDropDown,
+  isInput,
+  isInputDate,
+  isNumberInput,
+  isSlider,
+  isTextarea,
+  wrapCommand,
+  wrapOptions,
+} from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any, options) => {
@@ -6,6 +15,10 @@ Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any,
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.input)
   }
 
   if (isInputDate(element)) {

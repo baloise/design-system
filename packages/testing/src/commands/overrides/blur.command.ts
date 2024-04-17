@@ -13,6 +13,7 @@ import {
   wrapOptions,
   wrapCommand,
   isInputDate,
+  isDropDown,
 } from '../helpers'
 
 Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options: any) => {
@@ -60,6 +61,10 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
 
   if (isSelect(element)) {
     return command(selectors.select.input)
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.input)
   }
 
   return originalFn(element, options)

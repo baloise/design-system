@@ -3,6 +3,7 @@ import {
   BalCheckboxGroup,
   BalDate,
   BalDatepicker,
+  BalDropdown,
   BalInput,
   BalInputDate,
   BalInputSlider,
@@ -87,6 +88,8 @@ import {
   BalTag,
   BalTagGroup,
   BalText,
+  BalOption,
+  BalOptionList,
 } from './generated/proxies'
 
 export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger] as const
@@ -155,6 +158,8 @@ export const BalFieldBundle = [
   BalFieldHint,
 ] as const
 
+export const BalDropdownBundle = [BalDropdown, BalOptionList, BalOption] as const
+
 /* Component Sections */
 
 export const BalFormBundle = [
@@ -171,6 +176,7 @@ export const BalFormBundle = [
   ...BalCheckboxBundle,
   BalDate,
   BalDatepicker,
+  ...BalDropdownBundle,
   BalInputDate,
   BalInputStepper,
   BalInputSlider,
@@ -209,6 +215,9 @@ export const BalComponentBundle = [
   BalDataLabel,
   BalDataValue,
   BalDivider,
+  BalDropdown,
+  BalOption,
+  BalOptionList,
   BalField,
   BalFieldControl,
   BalFieldHint,

@@ -217,6 +217,7 @@ export const config: Config = {
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },
     { components: ['bal-datepicker'] },
+    { components: ['bal-dropdown'] },
     { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
     { components: ['bal-file-upload'] },
     { components: ['bal-form'] },
@@ -230,6 +231,9 @@ export const config: Config = {
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
+    {
+      components: ['bal-option-list', 'bal-option'],
+    },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },

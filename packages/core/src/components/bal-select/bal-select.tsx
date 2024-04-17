@@ -402,7 +402,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   /**
-   * Sets the focus on the input element
+   * Returns the value of the component
    */
   @Method()
   async getValue() {
@@ -1101,7 +1101,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
-                key={option.id}
+                key={option.value}
                 type="button"
                 role="option"
                 id={option.id}
