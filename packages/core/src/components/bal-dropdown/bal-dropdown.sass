@@ -36,6 +36,7 @@
   justify-content: center
   align-items: center
   &--autofill
+    background: rgb(250, 255, 189) !important
     background: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important
   & > span
     flex: 1
@@ -92,6 +93,9 @@
 
 .bal-dropdown__root__select
   +hidden-input
+
+.bal-dropdown__root--autofill .bal-dropdown__root__input
+  opacity: 0
 
 // Dropdown list panel
 // --------------------------------------------------
