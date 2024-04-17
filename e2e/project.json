@@ -6,8 +6,7 @@
       "executor": "nx:run-commands",
       "dependsOn": [{ "projects": ["core"], "target": "build" }],
       "options": {
-        "commands": ["npx nx run core:serve", "npx nx run e2e:serve"],
-        "parallel": true
+        "command": "concurrently --prefix=\">\" --hide=\"1\" \"npx nx run core:serve\" \"npx nx run e2e:serve\""
       }
     },
     "serve": {
@@ -15,7 +14,7 @@
       "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "cypress open --browser chrome --env visualRegressionType=regression --config screenshotsFolder=cypress/snapshots/actual"
+        "command": "cypress open --browser chrome --env visualRegressionType=dev --config screenshotsFolder=cypress/snapshots/actual"
       }
     },
     "prepare": {

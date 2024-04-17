@@ -13,6 +13,9 @@ FULL_APP_DIR="base/${APP_DIR}/."
 # The full path to the built application.
 BUILD_APP_DIR="${APP_DIR}/"
 
+# Clean the an existing app dir first
+rm -rf $BUILD_APP_DIR
+
 # First we need to copy the base application
 cp -R $FULL_BASE_DIR $BUILD_APP_DIR
 

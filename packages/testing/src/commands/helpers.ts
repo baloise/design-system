@@ -86,6 +86,7 @@ export const isSelect: isElementType = el => isElement(el, 'BAL-SELECT')
 export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
 export const isSteps: isElementType = el => isElement(el, 'BAL-STEPS')
+export const isDropDown: isElementType = el => isElement(el, 'BAL-DROPDOWN')
 export const isSlider: isElementType = el => isElement(el, 'BAL-INPUT-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
 export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
@@ -110,7 +111,7 @@ export const wrapCommand = (
   return (selector: string) => {
     return cy
       .wrapComponent(element as any, { log: false })
-      .waitForComponents()
+      .waitForComponents({ log: false })
       .find(selector, { log: false })
       .then($el => {
         Cypress.log({
@@ -135,6 +136,7 @@ export const log = (displayName: string, message: any = '', $el: any, options?: 
       message,
     })
   }
+  return $el
 }
 
 export const areComponentsReady = ($el: any) => {
@@ -161,8 +163,9 @@ export function checkAriaLabel(element: HTMLElement, label: string | undefined |
   if (label === undefined || label === null || label === '') {
     return true
   }
+  const text = Cypress.$(element).text().trim()
   const ariaLabel = Cypress.$(element).attr('aria-label')
   const title = Cypress.$(element).attr('title')
-  const text = Cypress.$(element).text().trim()
-  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
+  const value = Cypress.$(element).attr('value')
+  return [text, ariaLabel, title, value].includes(label.trim())
 }

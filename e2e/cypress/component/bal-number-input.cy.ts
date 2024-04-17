@@ -1,6 +1,6 @@
-import { BalNumberInput } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('bal-number-input.cy.ts', () => {
+describe('bal-number-input', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
@@ -16,18 +16,16 @@ describe('bal-number-input.cy.ts', () => {
     onBalFocusSpy = cy.spy().as('balFocus')
     onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
-    cy.mount(BalNumberInput, {
-      props: {
-        onClick: onClickSpy,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalBlur: onBalBlurSpy,
-        onBalFocus: onBalFocusSpy,
-        onBalKeyPress: onBalKeyPressSpy,
+    cy.mount<Components.BalNumberInput, HTMLBalNumberInputElementEventMap>(`<bal-number-input></bal-number-input>`, {
+      events: {
+        click: onClickSpy,
+        balInput: onBalInputSpy,
+        balChange: onBalChangeSpy,
+        balBlur: onBalBlurSpy,
+        balFocus: onBalFocusSpy,
+        balKeyPress: onBalKeyPressSpy,
       },
     })
-
-    cy.get('bal-number-input').waitForComponents()
   })
 
   it('should fire balChange because the input gets blurred', () => {

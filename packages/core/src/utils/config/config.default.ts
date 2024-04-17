@@ -68,6 +68,7 @@ export const defaultConfig: BalConfigState = {
   fallbackLanguage: 'de',
   logger: defaultLoggerConfig,
   animated: true,
+  httpFormSubmit: true,
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`

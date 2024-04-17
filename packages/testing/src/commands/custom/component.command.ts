@@ -55,8 +55,10 @@ Cypress.Commands.add(
   (subject, options?: Partial<Cypress.Timeoutable & Cypress.Loggable>) => {
     cy.document({ log: false }).then(document => document.fonts.ready)
 
-    log('waitForComponents', '', subject, options)
     const o = wrapOptions(options)
+    if (o.log) {
+      log('waitForComponents', '', subject, options)
+    }
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))

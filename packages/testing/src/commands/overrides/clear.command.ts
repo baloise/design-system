@@ -10,6 +10,7 @@ import {
   wrapCommand,
   wrapOptions,
   isInputDate,
+  isDropDown,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
@@ -50,6 +51,10 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
 
   if (isSelect(element)) {
     return command('.bal-select__control__input')
+  }
+
+  if (isDropDown(element)) {
+    return command(selectors.dropdown.input)
   }
 
   return originalFn(element, options)

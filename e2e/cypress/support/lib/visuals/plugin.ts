@@ -8,7 +8,7 @@ import { adjustCanvas, parseImage } from './utils/image'
 import { logger } from './utils/logger'
 
 export type DiffOption = 'always' | 'fail' | 'never'
-export type TypeOption = 'regression' | 'base'
+export type TypeOption = 'regression' | 'base' | 'dev'
 
 export type VisualRegressionOptions = {
   /** kind of comparison that we are going to execute */

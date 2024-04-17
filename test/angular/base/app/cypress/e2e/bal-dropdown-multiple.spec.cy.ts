@@ -4,9 +4,10 @@ describe('bal-dropdown-multiple', () => {
   })
   it('should change value', () => {
     cy.getByLabelText('Dropdown Multiple Label').click()
-    cy.getByTestId('dropdownMultiple').getByRole('button', { name: 'Kiwi' }).click()
-
-    cy.get('body').type('{esc}')
+    cy.getByTestId('dropdownMultiple').within(() => {
+      cy.getByRole('option', { name: 'Kiwi' }).click()
+    })
+    cy.getByLabelText('Dropdown Multiple Label').click().blur()
 
     cy.getByLabelText('Dropdown Multiple Label')
       .shouldBeInvalid()
@@ -14,10 +15,13 @@ describe('bal-dropdown-multiple', () => {
       .contains('This field is required')
 
     cy.getByLabelText('Dropdown Multiple Label').click()
-    cy.getByTestId('dropdownMultiple').getByRole('button', { name: 'Kiwi' }).click()
-    cy.getByTestId('dropdownMultiple').getByRole('button', { name: 'Mango' }).click()
-    cy.get('body').type('{esc}')
-    // cy.getByTestId('dropdownMultiple').should('have.value', ['Kiwi', 'Mango'])
+    cy.getByTestId('dropdownMultiple').within(() => {
+      cy.getByRole('option', { name: 'Kiwi' }).click()
+      cy.getByRole('option', { name: 'Mango' }).click()
+    })
+    cy.getByLabelText('Dropdown Multiple Label').click().blur()
+    cy.getByLabelText('Dropdown Multiple Label').should('have.value', 'Mango,Kiwi')
+
     cy.getByLabelText('Dropdown Multiple Label')
       .shouldBeValid()
       .getDescribingElement()

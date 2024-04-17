@@ -1,0 +1,57 @@
+<!doctype html>
+<html dir="ltr" lang="en" class="bg-green-2">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 4rem;
+      }
+    </style>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium">
+        <section data-testid="basic" role="listbox">
+          <bal-option value="BlackWidow" label="Black Widow">
+            <b style="display: block">Black Widow</b>
+            <span>S.H.I.E.L.D.</span>
+          </bal-option>
+          <bal-option value="BlackPanter" label="Black Panter">
+            <b style="display: block">Black Panter</b>
+            <span>Wakanda</span>
+          </bal-option>
+          <bal-option value="LongText" label="Lorem ipsum dolor"
+            >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab perferendis porro est non esse quibusdam,
+            facere vel minus quam unde nisi vitae provident maxime maiores inventore amet culpa illum nam.</bal-option
+          >
+          <bal-option value="LongText" label="Lorem ipsum dolor" multiline
+            >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab perferendis porro est non esse quibusdam,
+            facere vel minus quam unde nisi vitae provident maxime maiores inventore amet culpa illum nam.</bal-option
+          >
+        </section>
+        <section data-testid="listbox" role="listbox">
+          <bal-option value="Default" label="Default">Default</bal-option>
+          <bal-option focused value="Focused" label="Focused">Focused</bal-option>
+          <bal-option selected value="Selected" label="Selected">Selected</bal-option>
+          <bal-option disabled value="Disabled" label="Disabled">Disabled</bal-option>
+          <bal-option invalid value="Invalid" label="Invalid">Invalid</bal-option>
+        </section>
+
+        <section data-testid="listbox-checkbox" role="listbox">
+          <bal-option-list multiple>
+            <bal-option value="Default" label="Default">Default</bal-option>
+            <bal-option focused value="Focused" label="Focused">Focused</bal-option>
+            <bal-option selected value="Selected" label="Selected">Selected</bal-option>
+            <bal-option disabled value="Disabled" label="Disabled">Disabled</bal-option>
+            <bal-option invalid value="Invalid" label="Invalid">Invalid</bal-option>
+          </bal-option-list>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

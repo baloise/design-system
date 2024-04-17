@@ -49,6 +49,8 @@ packages/core/icons
 packages/core/components
 packages/core/loader
 packages/core/wwww
+packages/core/config/custom-elements/all.js
+packages/core/config/custom-elements/all.d.ts
 packages/core/**/theming.md
 packages/core/**/testing.md
 packages/core/**/api.md
@@ -73,8 +75,10 @@ libs/output-targets-vue/CHANGELOG.md
 e2e/generated
 e2e/downloads
 e2e/reg.json
-e2e/cypress/snapshots
-!e2e/cypress/snapshots/base
+e2e/cypress/snapshots/actual
+e2e/cypress/snapshots/diff
+e2e/cypress/snapshots/report.html
+e2e/cypress/downloads
 
 resources/data
 !resources/data/tags.json

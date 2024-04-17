@@ -1,11 +1,9 @@
-import { execSync } from 'child_process'
 import { BuildCoreExecutorSchema } from './schema'
 import { dirname, join, sep } from 'path'
 import replace from 'replace-in-file'
 import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { copy } from 'fs-extra'
 import {
-  NEWLINE,
   createSourceFile,
   filterInterfaceDeclaration,
   filterModuleDeclaration,
@@ -27,10 +25,7 @@ export default async function runExecutor(options: BuildCoreExecutorSchema) {
     await runCommand('npx stencil build', join(process.cwd(), options.projectRoot))
 
     // post build tasks
-    await addPackageJsonAndTypesToCustomElements(options)
-    await adjustInterfacesReference(options)
     await adjustGlobalVar(options)
-    await setVersion(options)
     await createTagList()
     await copyToDocs(options)
     await cleanUp(options)
@@ -136,15 +131,6 @@ function parseTestingType(fileContent, filePath) {
  * post build task
  ********************************************************************************/
 
-async function adjustInterfacesReference(options: BuildCoreExecutorSchema) {
-  const files = join(options.projectRoot, 'dist/types/**/*interfaces.d.ts')
-  replace.sync({
-    files: files,
-    from: `/// <reference types="packages/core/src/interfaces" />`,
-    to: `/// <reference types="@baloise/ds-core" />`,
-  })
-}
-
 async function adjustGlobalVar(options: BuildCoreExecutorSchema) {
   const files = join(options.projectRoot, 'dist/cjs/app-globals*.js')
   await replace({
@@ -156,17 +142,6 @@ async function adjustGlobalVar(options: BuildCoreExecutorSchema) {
     files: files.replace(/\\/g, '/'),
     from: `const globalScripts = global.globalScript;`,
     to: `const globalScripts = globalImport.globalScript;`,
-  })
-}
-
-// Reads version from package.json and saves it to the browsers window
-async function setVersion(options: BuildCoreExecutorSchema) {
-  const content = await readFile(join(options.projectRoot, 'package.json'), 'utf8')
-  const json = JSON.parse(content)
-  await replace({
-    files: join(options.projectRoot, 'dist', '**/*.js').replace(/\\/g, '/'),
-    from: /BAL_DEV_VERSION/g,
-    to: json.version,
   })
 }
 
@@ -196,18 +171,4 @@ async function copyToDocs(options: BuildCoreExecutorSchema) {
 
 async function cleanUp(options: BuildCoreExecutorSchema) {
   await rm(join(options.projectRoot, 'icons'), { recursive: true, force: true })
-}
-
-async function addPackageJsonAndTypesToCustomElements(options: BuildCoreExecutorSchema) {
-  const contentIndex = await readFile(join(options.projectRoot, 'components', 'index.d.ts'), 'utf-8')
-  const contentCustom = await readFile(
-    join(options.projectRoot, 'config', 'custom-elements', 'custom-elements.d.ts'),
-    'utf-8',
-  )
-
-  await writeFile(join(options.projectRoot, 'components', 'index.d.ts'), [contentIndex, contentCustom].join(NEWLINE))
-  await copy(
-    join(options.projectRoot, 'config', 'custom-elements', 'package.json.tmp'),
-    join(options.projectRoot, 'components', 'package.json'),
-  )
 }

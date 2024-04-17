@@ -231,6 +231,24 @@ export const selectors = {
      */
     chips: byTestId('bal-select-chip'),
   },
+  dropdown: {
+    /**
+     * Native input element.
+     */
+    input: '[data-native]',
+    /**
+     * Select option.
+     */
+    options: 'bal-option',
+    /**
+     * Trigger to open and close the popup.
+     */
+    trigger: byTestId('bal-dropdown-trigger'),
+    /**
+     * Multi select tag .
+     */
+    chips: byTestId('bal-dropdown-chip'),
+  },
   popover: {
     /**
      * Popover trigger.

@@ -1,4 +1,4 @@
-import { DateTime, Info } from 'luxon'
+import { DateTime, Info, Settings } from 'luxon'
 import { useBalConfig } from '../config'
 import { dateSeparator } from '@baloise/web-app-utils'
 
@@ -6,7 +6,12 @@ export interface BalDateInfoOptions {
   format?: 'narrow' | 'short' | 'long'
   locale?: string
 }
+
 export class BalDate {
+  public static setTwoDigitCutoffYear(cutoff = 10) {
+    Settings.twoDigitCutoffYear = (new Date().getFullYear() % 100) + cutoff
+  }
+
   public static fromAnyFormat(value: string) {
     const separator = value.replace(/[0-9]/g, '').charAt(0)
     const config = useBalConfig()
@@ -137,3 +142,5 @@ export class BalDate {
     return undefined
   }
 }
+
+BalDate.setTwoDigitCutoffYear()

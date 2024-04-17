@@ -6,7 +6,7 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-nav-link-group',
   styleUrl: 'bal-nav-link-group.sass',
 })
-export class NavigationLinkGroup implements ComponentInterface, Loggable {
+export class NavLinkGroup implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('bal-nav-link-group')

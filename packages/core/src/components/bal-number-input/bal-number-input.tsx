@@ -62,6 +62,7 @@ export class NumberInput
 {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+  private selectTimeout?: NodeJS.Timeout
 
   lastValue = ''
   nativeInput?: HTMLInputElement
@@ -371,11 +372,12 @@ export class NumberInput
 
   private onFocus = (ev: FocusEvent) => {
     inputHandleFocus(this, ev)
-
     //
     // restore the input with the last user value without the formatting
     if (this.nativeInput) {
       this.nativeInputValue = mapDecimalSeparator(this.lastValue || '')
+      clearTimeout(this.selectTimeout)
+      this.selectTimeout = setTimeout(() => this.nativeInput.select())
     }
   }
 
@@ -387,6 +389,7 @@ export class NumberInput
     if (this.nativeInput) {
       this.lastValue = toFixedNumber(this.lastValueGetter, this.decimal)
       this.nativeInputValue = toUserFormattedNumber(this.lastValueGetter, this.decimal, this.suffix)
+      this.nativeInput.value = this.nativeInputValue
     }
 
     this.inputValue = toNumber(this.lastValueGetter, this.decimal)
@@ -403,6 +406,8 @@ export class NumberInput
       input &&
       !validateKeyDown({
         key: ev.key,
+        ctrlKey: ev.ctrlKey,
+        metaKey: ev.metaKey,
         decimal: this.decimal,
         newValue,
         oldValue,

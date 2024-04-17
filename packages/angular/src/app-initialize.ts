@@ -30,7 +30,14 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         },
       }
 
-      initializeBaloiseDesignSystem(config.defaults, platformConfig, win)
+      initializeBaloiseDesignSystem(
+        {
+          ...config.defaults,
+          httpFormSubmit: false,
+        },
+        platformConfig,
+        win,
+      )
     }
   }
 }

@@ -6,7 +6,10 @@ interface BaloiseDesignSystemReactConfig {
 }
 
 export const useBaloiseDesignSystem = (config: BaloiseDesignSystemReactConfig = {}) => {
-  initialize(config.defaults)
+  initialize({
+    ...config.defaults,
+    httpFormSubmit: false,
+  })
 }
 
 export * from './generated/proxies'

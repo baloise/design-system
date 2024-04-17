@@ -35,6 +35,8 @@ export type CypressConfigEnv = {
 
 /** Add custom cypress command to compare image snapshots of an element or the window. */
 function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void {
+  console.log('=> visualRegressionType is set to ', Cypress.env('visualRegressionType'))
+
   Cypress.Commands.add(
     'testVisual',
     { prevSubject: 'optional' },
@@ -72,6 +74,8 @@ function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void 
             return compareScreenshots(visualRegressionOptions)
           case 'base':
             return cy.task('updateSnapshot', visualRegressionOptions)
+          case 'dev':
+            return true
           default:
             throw new Error(
               `The "type" environment variable is unknown.
@@ -92,6 +96,11 @@ function prepareOptions(
   if (Cypress.env('visualRegression') === undefined) {
     throw new Error(
       'Environment variables under "visualRegression" apper to be missing. Please consult the plugin documentation for the proper setup.',
+    )
+  }
+  if (Cypress.env('visualRegressionType') === undefined) {
+    throw new Error(
+      'Environment variables under "visualRegressionType" apper to be missing. Please consult the plugin documentation for the proper setup.',
     )
   }
   const options: VisualRegressionOptions = {

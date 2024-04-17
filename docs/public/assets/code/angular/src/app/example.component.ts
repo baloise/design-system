@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { BaloiseDesignSystemModule } from '@baloise/ds-angular-module'
 /** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */
 
 @Component({

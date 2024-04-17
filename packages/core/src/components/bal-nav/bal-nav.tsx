@@ -38,7 +38,7 @@ import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
   tag: 'bal-nav',
   styleUrl: 'bal-nav.sass',
 })
-export class NavMetaBar
+export class Nav
   implements
     ComponentInterface,
     Loggable,
@@ -555,7 +555,7 @@ export class NavMetaBar
       <bal-list accordion-one-level class="pt-xxx-small pb-normal">
         {metaItem.mainLinkItems.map(menuItem =>
           menuItem.isLink ? (
-            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
+            <bal-list-item key={menuItem.label} sub-accordion-item href={menuItem.href} target={menuItem.target}>
               <bal-list-item-content>
                 <bal-list-item-title visual-level="medium" level="span">
                   {menuItem.label}
@@ -563,7 +563,7 @@ export class NavMetaBar
               </bal-list-item-content>
             </bal-list-item>
           ) : (
-            <bal-list-item accordion sub-accordion-item>
+            <bal-list-item key={menuItem.label} accordion sub-accordion-item>
               <bal-list-item-accordion-head icon="nav-go-down" accordion-open={menuItem.active}>
                 <bal-list-item-content>
                   <bal-list-item-title visual-level="medium" level="span">

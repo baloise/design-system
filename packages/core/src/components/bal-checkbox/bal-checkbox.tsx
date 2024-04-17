@@ -20,6 +20,7 @@ import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-checkbox',
@@ -424,8 +425,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     return (
       <Host
         aria-checked={`${this.checked}`}
-        aria-disabled={this.disabled ? 'true' : null}
-        aria-hidden={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
+        aria-hidden={ariaBooleanToString(this.disabled || this.nonSubmit)}
         aria-focused={focused ? 'true' : null}
         class={{
           'bal-focused': focused,
@@ -457,8 +458,9 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           aria-labelledby={labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           aria-checked={`${this.checked}`}
+          aria-hidden={ariaBooleanToString(this.nonSubmit)}
           name={this.name}
           value={this.value}
           checked={this.checked}

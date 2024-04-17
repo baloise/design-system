@@ -1,29 +1,29 @@
-import { BalButton } from '../support/utils'
+import { Components } from '../../generated'
 
-describe('bal-button.cy.ts', () => {
+describe('bal-button', () => {
   it('should have a default slot', () => {
-    cy.mount(BalButton, { slots: { default: () => 'My Button' } }).waitForDesignSystem()
+    cy.mount<Components.BalButton, HTMLBalButtonElementEventMap>(`<bal-button>My Button</bal-button>`)
     cy.get('bal-button').contains('My Button')
   })
 
   it('should fire close event', () => {
     const onClickSpy = cy.spy().as('click')
-    cy.mount(BalButton, {
-      props: {
-        onClick: onClickSpy,
+    cy.mount<Components.BalButton, HTMLBalButtonElementEventMap>(`<bal-button>My Button</bal-button>`, {
+      props: {},
+      events: {
+        click: onClickSpy,
       },
-      slots: { default: () => 'My Button' },
-    }).waitForDesignSystem()
+    })
     cy.get('bal-button').find('button').click()
     cy.get('@click').should('have.been.calledOnce')
   })
 
   it('should fire close event', () => {
-    cy.mount(BalButton, {
+    cy.mount<Components.BalButton, HTMLBalButtonElementEventMap>(`<bal-button>My Button</bal-button>`, {
       props: {
         disabled: true,
       },
-    }).waitForDesignSystem()
+    })
 
     cy.get('bal-button').find('button').should('be.disabled')
   })

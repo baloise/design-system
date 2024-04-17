@@ -1,6 +1,6 @@
-import { BalInputStepper } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('bal-input-stepper.cy.ts', () => {
+describe('bal-input-stepper', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalIncreaseSpy: Cypress.Agent<sinon.SinonSpy>
@@ -12,19 +12,22 @@ describe('bal-input-stepper.cy.ts', () => {
     onBalIncreaseSpy = cy.spy().as('balIncrease')
     onBalDecreaseSpy = cy.spy().as('balDecrease')
 
-    cy.mount(BalInputStepper, {
-      props: {
-        min: 0,
-        max: 2,
-        value: 1,
-        onBalInput: onBalInputSpy,
-        onBalChange: onBalChangeSpy,
-        onBalIncrease: onBalIncreaseSpy,
-        onBalDecrease: onBalDecreaseSpy,
+    cy.mount<Components.BalInputStepper, HTMLBalInputStepperElementEventMap>(
+      `<bal-input-stepper></bal-input-stepper>`,
+      {
+        props: {
+          min: 0,
+          max: 2,
+          value: 1,
+        },
+        events: {
+          balInput: onBalInputSpy,
+          balChange: onBalChangeSpy,
+          balIncrease: onBalIncreaseSpy,
+          balDecrease: onBalDecreaseSpy,
+        },
       },
-    })
-
-    cy.get('bal-input-stepper').waitForComponents()
+    )
   })
 
   it('should increase a value and fire input, increase and change event', () => {

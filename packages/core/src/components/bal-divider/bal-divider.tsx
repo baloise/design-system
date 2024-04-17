@@ -6,7 +6,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
   tag: 'bal-divider',
   styleUrl: './bal-divider.sass',
 })
-export class BalDivider implements ComponentInterface, Loggable {
+export class Divider implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('bal-divider')

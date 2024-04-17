@@ -16,7 +16,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import { mount } from 'cypress/vue'
+import { mount } from './mount'
 
 declare global {
   namespace Cypress {

@@ -1,32 +1,45 @@
-import { BalDatepicker } from '../support/utils'
+import { Components } from '../support/utils'
 import { format, now } from '@baloise/web-app-utils'
 
-describe('bal-datepicker.cy.ts', () => {
+describe('bal-datepicker (DEPRECATED)', () => {
+  let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalBlurSpy: Cypress.Agent<sinon.SinonSpy>
+
+  let events = {
+    balChange: onBalChangeSpy,
+    balInput: onBalInputSpy,
+    balFocus: onBalFocusSpy,
+    balBlur: onBalBlurSpy,
+  }
+
   beforeEach(() => {
-    const onBalChangeSpy = cy.spy().as('balChange')
-    const onBalInputSpy = cy.spy().as('balInput')
-    const onBalFocusSpy = cy.spy().as('balFocus')
-    const onBalBlurSpy = cy.spy().as('balBlur')
-    cy.mount(BalDatepicker, {
-      props: {
-        onBalChange: onBalChangeSpy,
-        onBalInput: onBalInputSpy,
-        onBalFocus: onBalFocusSpy,
-        onBalBlur: onBalBlurSpy,
-      },
+    onBalChangeSpy = cy.spy().as('balChange')
+    onBalInputSpy = cy.spy().as('balInput')
+    onBalFocusSpy = cy.spy().as('balFocus')
+    onBalBlurSpy = cy.spy().as('balBlur')
+
+    events = {
+      balChange: onBalChangeSpy,
+      balInput: onBalInputSpy,
+      balFocus: onBalFocusSpy,
+      balBlur: onBalBlurSpy,
+    }
+
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
+      events,
     })
-    cy.waitForDesignSystem()
   })
   it('should open last available month if month from defaultDate is bigger that max month', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         defaultDate: '2023-04-12',
         min: '2023-01-12',
         max: '2024-02-28',
       },
+      events,
     })
-    cy.waitForDesignSystem()
-
     cy.get('bal-datepicker')
       .click()
       .waitForComponents()
@@ -40,18 +53,15 @@ describe('bal-datepicker.cy.ts', () => {
       .should('not.be.disabled')
   })
   it('should fire balChange when field is cleared', () => {
-    const onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
-        onBalChange: onBalChangeSpy,
         defaultDate: '2023-04-12',
         min: '2023-01-12',
         max: '2024-02-28',
         value: '2023-02-20',
       },
+      events,
     })
-    cy.waitForDesignSystem()
-
     cy.get('bal-datepicker')
       .click()
       .waitForComponents()
@@ -114,32 +124,21 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balInput').should('not.have.been.called')
   })
-  it.skip('should turn short date into a full date', () => {
-    // TODO: should turn short date into a full date
-    cy.get('bal-datepicker')
-      .find('input.input')
-      .type('{2}')
-      .type('{.}')
-      .type('{2}')
-      .type('{.}')
-      .type('{1}')
-      .type('{enter}')
-    cy.get('bal-datepicker').find('input.input').should('have.value', '02.02.2001')
-    cy.get('@balChange').should('have.been.calledOnce')
-  })
   it('should be disabled', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         disabled: true,
       },
+      events,
     })
     cy.get('bal-datepicker').find('input.input').should('be.disabled')
   })
   it('should had disabled dates before min date', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         min: '2023-01-10',
       },
+      events,
     })
     cy.get('bal-datepicker')
       .find('input.input')
@@ -187,10 +186,11 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('bal-datepicker').find('.bal-datepicker-grid__row').eq(2).find('button').eq(2).should('not.be.disabled')
   })
   it('should not fire change event when clicking on disabled date', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         min: '2023-01-10',
       },
+      events,
     })
     cy.get('bal-datepicker')
       .find('input.input')
@@ -209,10 +209,11 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('@balChange').should('not.have.been.called')
   })
   it('should had disabled dates after max date', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         max: '2023-01-10',
       },
+      events,
     })
     cy.get('bal-datepicker')
       .find('input.input')
@@ -259,10 +260,11 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('bal-datepicker').find('.bal-datepicker-grid__row').eq(2).find('button').eq(2).should('be.disabled')
   })
   it('should have set max year to the provided one', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         maxYearProp: 2023,
       },
+      events,
     })
     cy.get('bal-datepicker')
       .find('.bal-datepicker-pagination__month-and-year__select--year')
@@ -272,10 +274,11 @@ describe('bal-datepicker.cy.ts', () => {
       .should('not.have.value', '2024')
   })
   it('should have set min year to the provided one', () => {
-    cy.mount(BalDatepicker, {
+    cy.mount<Components.BalDatepicker, HTMLBalDatepickerElementEventMap>(`<bal-datepicker></bal-datepicker>`, {
       props: {
         minYearProp: 2000,
       },
+      events,
     })
     cy.get('bal-datepicker')
       .find('.bal-datepicker-pagination__month-and-year__select--year')

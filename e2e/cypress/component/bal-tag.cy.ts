@@ -1,20 +1,17 @@
-import { BalTag } from '../support/utils'
+import { Components } from '../support/utils'
 
-describe('bal-tag.cy.ts', () => {
+describe('bal-tag', () => {
   beforeEach(() => {
     const onBalCloseClickSpy = cy.spy().as('balCloseClick')
 
-    cy.mount(BalTag, {
+    cy.mount<Components.BalTag, HTMLBalTagElementEventMap>(`<bal-tag>My tag</bal-tag>`, {
       props: {
         closable: true,
-        onBalCloseClick: onBalCloseClickSpy,
       },
-      slots: {
-        default: () => 'My tag',
+      events: {
+        balCloseClick: onBalCloseClickSpy,
       },
     })
-
-    cy.get('bal-tag').waitForComponents()
   })
 
   it('should have a default slot', () => {

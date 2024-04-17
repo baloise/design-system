@@ -37,7 +37,7 @@ export const CalendarGrid: FunctionalComponent<CalendarGridProps> = ({
     >
       <div role="row" class={{ ...blockBodyGrid.element('head').class() }}>
         {weekdays.map(weekday => (
-          <span role="columnheader" aria-label={weekday.ariaLabel} title={weekday.ariaLabel}>
+          <span key={weekday.textContent} role="columnheader" aria-label={weekday.ariaLabel} title={weekday.ariaLabel}>
             {weekday.textContent}
           </span>
         ))}
@@ -49,6 +49,7 @@ export const CalendarGrid: FunctionalComponent<CalendarGridProps> = ({
       >
         {grid.map(cell => (
           <bal-date-calendar-cell
+            key={cell.isoDate}
             {...cell}
             selected={cell.isoDate === selectedDate}
             onBalSelectDay={({ detail }: BalEvents.BalDateCellSelect) => onSelectDay(detail)}

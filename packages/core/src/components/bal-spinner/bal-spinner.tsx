@@ -1,8 +1,10 @@
-import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, Watch, ComponentInterface, State } from '@stencil/core'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { raf } from '../../utils/helpers'
+import { BEM } from '../../utils/bem'
+import { BalConfigObserver, BalConfigState, ListenToConfig, defaultConfig } from '../../utils/config'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -10,12 +12,14 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
   tag: 'bal-spinner',
   styleUrl: 'bal-spinner.sass',
 })
-export class Spinner implements ComponentInterface, Loggable {
+export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
   private currentRaf: number | undefined
 
   log!: LogInstance
+
+  @State() animated = defaultConfig.animated
 
   @Logger('bal-spinner')
   createLogger(log: LogInstance) {
@@ -52,7 +56,7 @@ export class Spinner implements ComponentInterface, Loggable {
   /**
    * Defines the color of the spinner.
    */
-  @Prop() color: 'blue' | 'white' = 'blue'
+  @Prop() color: BalProps.BalSpinnerColor = 'blue'
 
   /**
    * If `true` the component is smaller
@@ -60,16 +64,48 @@ export class Spinner implements ComponentInterface, Loggable {
   @Prop() small = false
 
   /**
+   * Defines the look of the spinner
+   */
+  @Prop() variation: BalProps.BalSpinnerVariation = 'logo'
+  @Watch('variation')
+  variationWatcher(newValue: BalProps.BalSpinnerVariation, oldValue: BalProps.BalSpinnerVariation) {
+    if (newValue !== oldValue) {
+      if (this.variation === 'circle') {
+        this.destroy()
+      } else {
+        this.animate()
+      }
+    }
+  }
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   componentDidLoad() {
-    this.animate()
+    if (this.variation === 'logo') {
+      this.animate()
+    } else {
+      this.destroy()
+    }
   }
 
   disconnectedCallback() {
     if (this.el && !this.el.isConnected) {
+      this.destroy()
+    }
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.animated = state.animated
+    if (state.animated === false) {
       this.destroy()
     }
   }
@@ -80,6 +116,11 @@ export class Spinner implements ComponentInterface, Loggable {
    */
 
   private animate = async () => {
+    if (!this.animated) {
+      this.destroy()
+      return
+    }
+
     await this.load()
 
     if (this.currentRaf !== undefined) {
@@ -104,6 +145,10 @@ export class Spinner implements ComponentInterface, Loggable {
   }
 
   private shouldAnimate = () => {
+    if (this.variation !== 'logo') {
+      return false
+    }
+
     if (typeof (window as any) === 'undefined') {
       return false
     }
@@ -147,6 +192,19 @@ export class Spinner implements ComponentInterface, Loggable {
    */
 
   render() {
-    return <Host role="progressbar" aria-hidden="true" style={{ width: this.small ? '32px' : '64px' }}></Host>
+    const block = BEM.block('spinner')
+
+    return (
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier('circle').class(this.variation === 'circle'),
+          ...block.modifier('small').class(this.small),
+          ...block.modifier('animated').class(this.animated),
+        }}
+        role="progressbar"
+        aria-hidden="true"
+      ></Host>
+    )
   }
 }
