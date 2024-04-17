@@ -275,8 +275,18 @@ export class OptionList implements ComponentInterface, Loggable {
     return this.options.map(option => option.value)
   }
 
+  /**
+   * Returns a list of options
+   */
   @Method() async getLabels(): Promise<string[]> {
     return this.options.map(option => option.label)
+  }
+
+  /**
+   * Returns a list of accessible options
+   */
+  @Method() async getOptions(): Promise<BalOption[]> {
+    return this.options.filter(o => !o.disabled || !o.hidden)
   }
 
   /**

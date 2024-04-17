@@ -27,20 +27,28 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
   const block = BEM.block('dropdown')
 
   if (loading) {
-    return <bal-spinner small variation="circle"></bal-spinner>
+    return <bal-spinner class={{ ...block.element('rear').class() }} small variation="circle"></bal-spinner>
   } else if (clearable && filled && !disabled) {
     return (
       <button
         title={i18nBalDropdown[language].clearable}
         class={{
+          ...block.element('rear').class(),
           ...block.element('clear').class(),
           ...block.element('clear').modifier('invalid').class(invalid),
         }}
       >
-        <bal-icon name={'close-circle'} size="" color={'grey'}></bal-icon>
+        <bal-icon class={{ ...block.element('rear').class() }} name={'close-circle'} size="" color={'grey'}></bal-icon>
       </button>
     )
   } else {
-    return <bal-icon name={icon} turn={expanded} color={disabled ? 'grey' : invalid ? 'danger' : 'primary'}></bal-icon>
+    return (
+      <bal-icon
+        class={{ ...block.element('rear').class() }}
+        name={icon}
+        turn={expanded}
+        color={disabled ? 'grey' : invalid ? 'danger' : 'primary'}
+      ></bal-icon>
+    )
   }
 }

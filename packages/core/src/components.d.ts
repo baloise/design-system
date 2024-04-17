@@ -2260,7 +2260,14 @@ export namespace Components {
           * @returns focusIndex
          */
         "focusPrevious": () => Promise<number>;
+        /**
+          * Returns a list of options
+         */
         "getLabels": () => Promise<string[]>;
+        /**
+          * Returns a list of accessible options
+         */
+        "getOptions": () => Promise<BalOption[]>;
         /**
           * Returns a list of option labels
          */

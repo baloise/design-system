@@ -59,13 +59,13 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
       class={{
         ...block.element('root').element('input').class(),
       }}
+      type="text"
       size={1}
       inputmode="none"
-      type="text"
       tabindex="0"
       name={name}
-      value={rawValue.join(',')}
       autoComplete={autocomplete}
+      value={rawValue.join(',')}
       required={required}
       disabled={disabled}
       readonly={readonly}
@@ -81,22 +81,22 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
       data-native
       data-label={inputLabel}
       data-value={rawValue.join(',')}
-      ref={refInputEl}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onKeyDown={onKeyDown}
+      ref={el => refInputEl(el)}
+      onChange={ev => onChange(ev)}
+      onFocus={ev => onFocus(ev)}
+      onBlur={ev => onBlur(ev)}
+      onKeyDown={ev => onKeyDown(ev)}
       {...inheritedAttributes}
     />
   )
 
   if (httpFormSubmit) {
-    return (
-      <form novalidate>
-        <Input />
-      </form>
-    )
+    return <Input />
   }
 
-  return <Input />
+  return (
+    <form novalidate>
+      <Input />
+    </form>
+  )
 }

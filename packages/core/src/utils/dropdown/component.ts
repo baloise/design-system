@@ -8,6 +8,7 @@ export type DropdownComponent = DropdownFocus & {
   el: HTMLElement
   selectEl: HTMLSelectElement | undefined
   panelEl: HTMLDivElement | undefined
+  nativeEl: HTMLInputElement | undefined
   listEl: HTMLBalOptionListElement | undefined
 
   valueUtil: DropdownValueUtil

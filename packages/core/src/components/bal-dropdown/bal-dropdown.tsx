@@ -39,6 +39,7 @@ import {
   DropdownNativeSelect,
   DropdownInput,
   DropdownValue,
+  DropdownAutoFillUtil,
 } from '../../utils/dropdown'
 import {
   BalConfigObserver,
@@ -88,6 +89,7 @@ export class Dropdown
   optionUtil = new DropdownOptionUtil()
   formSubmitUtil = new DropdownFormSubmitUtil()
   focusUtil = new DropdownFocusUtil()
+  autoFillUtil = new DropdownAutoFillUtil()
 
   log!: LogInstance
 
@@ -222,6 +224,7 @@ export class Dropdown
     this.optionUtil.connectedCallback(this)
     this.formSubmitUtil.connectedCallback(this)
     this.focusUtil.connectedCallback(this)
+    this.autoFillUtil.connectedCallback(this)
   }
 
   async componentWillRender() {
@@ -341,15 +344,9 @@ export class Dropdown
    * EVENT BINDING
    * ------------------------------------------------------
    */
-  handleAutoFill = (ev: Event) => {
-    stopEventBubbling(ev)
-    if (!this.multiple) {
-      const newValue = [this.nativeEl.value]
-      if (!areArraysEqual(newValue, this.rawValue)) {
-        this.valueUtil.updateRawValueBySelection(newValue)
-        this.isAutoFilled = true
-      }
-    }
+  handleAutoFill = async (ev: Event) => {
+    this.log('(handleAutoFill)', ev, this.nativeEl.value)
+    this.autoFillUtil.handleAutoFill(ev)
   }
 
   handleKeyDown = (ev: KeyboardEvent) => {

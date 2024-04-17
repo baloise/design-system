@@ -1,3 +1,4 @@
+export * from './auto-fill'
 export * from './component'
 export * from './dropdown.i18n'
 export * from './events'
