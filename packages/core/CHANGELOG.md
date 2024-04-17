@@ -1,5 +1,29 @@
 # Changelog
 
+## 16.1.0
+
+### Minor Changes
+
+- **number-input**: supports select-all, copy and paste ( [#1379](https://github.com/baloise/design-system/pull/1379))
+
+- **dropdown**: add new component to replace bal-select ( [#1353](https://github.com/baloise/design-system/pull/1353))
+
+- **option-list**: new child component of drop-down components. Option list component will be used by drop-down, combobox and autocomplete. ( [#1353](https://github.com/baloise/design-system/pull/1353))
+
+- **option**: new child component of option-list. Option list component will be used by drop-down, combobox and autocomplete. ( [#1353](https://github.com/baloise/design-system/pull/1353))
+
+- **styles**: add new `.has-bullet-check-circle` style for `<ul></ul>` lists. ( [#1382](https://github.com/baloise/design-system/pull/1382))
+
+### Patch Changes
+
+- **number-input**: tab navigation to be consistent ( [#1379](https://github.com/baloise/design-system/pull/1379))
+
+- **react**: adjust released packages with rollup ( [#1371](https://github.com/baloise/design-system/pull/1371))
+
+- **number-input**: supports autofill format ( [#1379](https://github.com/baloise/design-system/pull/1379))
+
+- **date**: change cutoff year to 10 years in the future. 34 will become 2034 and 35 will become 1935. ( [#1364](https://github.com/baloise/design-system/pull/1364))
+
 ## 16.0.3
 
 ### Patch Changes
