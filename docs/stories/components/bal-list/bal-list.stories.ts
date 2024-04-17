@@ -102,6 +102,10 @@ export const NativeList = Story({
     <li>Checked List Item 1</li>
     <li>Checked List Item 2</li>
   </ul>
+  <ul class="list has-bullet-check-circle">
+    <li>Checked List Item 1</li>
+    <li>Checked List Item 2</li>
+  </ul>
   <ul class="list has-bullet-close">
     <li class="opacity-50">Close List Item 1</li>
     <li class="opacity-50">Close List Item 2</li>
