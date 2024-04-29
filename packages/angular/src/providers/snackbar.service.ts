@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core'
 
 import type { BalSnackbarController, BalSnackbarOptions, Components } from '@baloise/ds-core/components'
 
+import { defineCustomElement as defineNoticeElement } from '@baloise/ds-core/components/bal-notices'
 import { defineCustomElement } from '@baloise/ds-core/components/bal-snackbar'
 import { BalTokenSnackbar } from '@baloise/ds-angular-common'
 
@@ -10,6 +11,7 @@ import { BalTokenSnackbar } from '@baloise/ds-angular-common'
 })
 export class BalSnackbarService {
   constructor(@Inject(BalTokenSnackbar) private ctrl: BalSnackbarController) {
+    defineNoticeElement()
     defineCustomElement()
   }
 
