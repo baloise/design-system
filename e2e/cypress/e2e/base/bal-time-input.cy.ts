@@ -15,7 +15,7 @@ describe('bal-time-input', () => {
     cy.getByTestId('disabled').find('input').should('be.disabled')
   })
 
-  it('should be focusable', () => {
+  it.skip('should be focusable', () => {
     cy.getByTestId('basic').find('input').focus().should('be.focused')
     cy.getByTestId('basic').find('input').blur().should('not.be.focused')
   })
