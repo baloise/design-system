@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core'
 
 import type { BalToastController, BalToastOptions, Components } from '@baloise/ds-core/components'
 
+import { defineCustomElement as defineNoticeElement } from '@baloise/ds-core/components/bal-notices'
 import { defineCustomElement } from '@baloise/ds-core/components/bal-toast'
 import { BalTokenToast } from '@baloise/ds-angular-common'
 
@@ -10,6 +11,7 @@ import { BalTokenToast } from '@baloise/ds-angular-common'
 })
 export class BalToastService {
   constructor(@Inject(BalTokenToast) private ctrl: BalToastController) {
+    defineNoticeElement()
     defineCustomElement()
   }
 
