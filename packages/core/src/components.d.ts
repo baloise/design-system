@@ -722,7 +722,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
          */
         "freeSolo": boolean;
         /**
@@ -2723,7 +2723,7 @@ export namespace Components {
          */
         "filter": BalProps.BalSelectFilter;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
          */
         "freeSolo": boolean;
         /**
@@ -5761,7 +5761,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
          */
         "freeSolo"?: boolean;
         /**
@@ -7747,7 +7747,7 @@ declare namespace LocalJSX {
          */
         "filter"?: BalProps.BalSelectFilter;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
          */
         "freeSolo"?: boolean;
         /**
