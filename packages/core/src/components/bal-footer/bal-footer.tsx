@@ -19,7 +19,7 @@ import { stopEventBubbling } from '../../utils/form-input'
   styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
-  private selectEl: HTMLBalSelectElement | undefined;
+  private selectEl: HTMLBalSelectElement | undefined
 
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
@@ -182,13 +182,13 @@ export class Footer implements BalConfigObserver, Loggable {
                       }}
                       name="web"
                       color="white"
-                      onClick={(el)=> {
+                      onClick={el => {
                         stopEventBubbling(el)
                         this.selectEl?.open()
                       }}
                     ></bal-icon>
                     <bal-select
-                      ref={(el) => (this.selectEl = el as HTMLBalSelectElement)}
+                      ref={el => (this.selectEl = el as HTMLBalSelectElement)}
                       value={this.language}
                       onBalChange={event => this.changeLanguage(event.detail as any)}
                       data-testid="bal-footer-language"
