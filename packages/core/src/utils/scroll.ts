@@ -69,7 +69,7 @@ export class BalScrollHandler {
   }
 
   disable() {
-    if (this.target) {
+    if (!this.disabled && this.target) {
       if (balBrowser.hasWindow && balBrowser.hasDocument) {
         this.x = window.pageXOffset || document.documentElement.scrollLeft
         this.y = window.pageYOffset || document.documentElement.scrollTop
