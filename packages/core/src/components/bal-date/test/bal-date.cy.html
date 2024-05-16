@@ -9,23 +9,28 @@
   </head>
 
   <body>
-    <bal-doc-app>
+    <bal-doc-app log-components="bal-date">
       <main class="container">
-        <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <bal-form-grid>
-            <bal-form-col>
-              <bal-field required>
-                <bal-field-control>
-                  <bal-date data-testid="reset" value="2022-09-16"></bal-date>
-                </bal-field-control>
-              </bal-field>
-            </bal-form-col>
-          </bal-form-grid>
-          <bal-button-group>
-            <bal-button element-type="submit" color="primary">Submit</bal-button>
-            <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
-          </bal-button-group>
-        </form>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-date data-testid="reset" value="2022-09-16"></bal-date>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
+        <section class="mt-large">
+          <bal-date data-testid="allow-invalid-value" value="2022-12-16" allow-invalid-value></bal-date>
+        </section>
       </main>
     </bal-doc-app>
   </body>
