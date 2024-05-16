@@ -107,7 +107,7 @@ describe('bal-date', () => {
 
   it('check if invalid date is returned', () => {
     onBalChangeSpy = cy.spy().as('balChange')
-    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date allow-invalid-dates></bal-date>`, {
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date allow-invalid-value></bal-date>`, {
       props: {
         defaultDate: '2023-01-01',
         placeholder: 'Enter date',
@@ -123,6 +123,6 @@ describe('bal-date', () => {
       .blur({ force: true })
       .should('have.value', '02.42.2023')
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('INVALID_DATE')
+    cy.get('@balChange').shouldHaveEventDetail('INVALID_VALUE')
   })
 })

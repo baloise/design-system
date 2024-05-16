@@ -152,9 +152,9 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   @Prop() allowedDates: BalProps.BalDateCallback | undefined = undefined
 
   /**
-   * The component returns invalid dates too.
+   * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
    */
-  @Prop() allowInvalidDates = false
+  @Prop() allowInvalidValue = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -497,7 +497,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
             invalid={this.invalid}
             readonly={this.readonly}
             disabled={this.disabled}
-            allowInvalidDates={this.allowInvalidDates}
+            allowInvalidValue={this.allowInvalidValue}
             onClick={this.onInputClick}
             onBalInput={this.onInputInput}
             onBalChange={this.onInputChange}

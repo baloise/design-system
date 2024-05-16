@@ -693,9 +693,9 @@ export namespace Components {
     }
     interface BalDate {
         /**
-          * The component returns invalid dates too.
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
          */
-        "allowInvalidDates": boolean;
+        "allowInvalidValue": boolean;
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
@@ -1540,9 +1540,9 @@ export namespace Components {
     }
     interface BalInputDate {
         /**
-          * The component returns invalid dates too.
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
          */
-        "allowInvalidDates": boolean;
+        "allowInvalidValue": boolean;
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
@@ -5745,9 +5745,9 @@ declare namespace LocalJSX {
     }
     interface BalDate {
         /**
-          * The component returns invalid dates too.
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
          */
-        "allowInvalidDates"?: boolean;
+        "allowInvalidValue"?: boolean;
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
@@ -6588,9 +6588,9 @@ declare namespace LocalJSX {
     }
     interface BalInputDate {
         /**
-          * The component returns invalid dates too.
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
          */
-        "allowInvalidDates"?: boolean;
+        "allowInvalidValue"?: boolean;
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
          */

@@ -11,6 +11,8 @@ import {
 import { Mask } from './mask-interfaces'
 
 export abstract class AbstractMask implements Mask {
+  public static INVALID_VALUE = 'INVALID_VALUE'
+
   public abstract maxLength: number
   public abstract minLength: number
   public inputMode: BalProps.BalInputInputMode = 'text'
@@ -114,7 +116,7 @@ export abstract class AbstractMask implements Mask {
     context.position.toEnd()
   }
 
-  public onParseValue(inputValue?: string, options: { allowInvalid: boolean } = { allowInvalid: false }) {
+  public onParseValue(inputValue?: string, options: { allowInvalidValue: boolean } = { allowInvalidValue: false }) {
     if (inputValue) {
       return inputValue.trim()
     }
@@ -191,7 +193,7 @@ export abstract class AbstractMask implements Mask {
         this.onBlur(context)
         context.submit(
           'blur',
-          this.onParseValue(context.value, { allowInvalid: (context.component as any).allowInvalidDates }),
+          this.onParseValue(context.value, { allowInvalidValue: context.component.allowInvalidValue }),
         )
       }
     }

@@ -29,6 +29,7 @@ export interface MaskComponentAdapterType {
 
 export interface MaskComponent {
   value: string | undefined
+  allowInvalidValue: boolean
   inputValue: string | undefined
   initialValue: string
   focused: boolean
