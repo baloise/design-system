@@ -82,7 +82,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   @Prop() readonly = false
 
   /**
-   * If `true` there will be on trigger icon visible
+   * If `true` there will be no trigger icon visible, so no UX indicator for a picker
    */
   @Prop() freeSolo = false
 
