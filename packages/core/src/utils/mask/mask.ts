@@ -11,8 +11,6 @@ import {
 import { Mask } from './mask-interfaces'
 
 export abstract class AbstractMask implements Mask {
-  public static INVALID_VALUE = 'INVALID_VALUE'
-
   public abstract maxLength: number
   public abstract minLength: number
   public inputMode: BalProps.BalInputInputMode = 'text'
