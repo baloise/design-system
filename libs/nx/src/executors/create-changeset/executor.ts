@@ -1,6 +1,6 @@
 import prompts from 'prompts'
 import { readFile, rm, writeFile } from 'fs/promises'
-import { join } from 'path'
+import path, { join } from 'path'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { CreateChangesetExecutorSchema } from './schema'
@@ -94,7 +94,8 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
 
     // create new changeset file
     const { stdout } = await promisify(exec)(`npx changeset add --empty`)
-    const start = stdout.lastIndexOf('.changeset/') + '.changeset/'.length
+    const triggerWord = '.changeset' + path.sep
+    const start = stdout.lastIndexOf(triggerWord) + triggerWord.length
     const end = stdout.lastIndexOf('.md') + '.md'.length
     const filename = stdout.substring(start, end).trim()
     const filepath = join(options.workspaceRoot, '.changeset', filename)
