@@ -90,7 +90,10 @@ export class DateMask extends AbstractMask {
     ])
   }
 
-  override onParseValue(inputValue?: string, options: { allowInvalidValue: boolean } = { allowInvalidValue: false }): string {
+  override onParseValue(
+    inputValue?: string,
+    options: { allowInvalidValue: boolean } = { allowInvalidValue: false },
+  ): string {
     if (inputValue) {
       const date = BalDate.fromAnyFormat(this.blocks.getRawValueWithoutMask(inputValue))
       if (date.isValid) {
