@@ -693,6 +693,10 @@ export namespace Components {
     }
     interface BalDate {
         /**
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+         */
+        "allowInvalidValue": boolean;
+        /**
           * Callback to determine which date in the datepicker should be selectable.
          */
         "allowedDates": BalProps.BalDateCallback | undefined;
@@ -722,7 +726,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
          */
         "freeSolo": boolean;
         /**
@@ -1535,6 +1539,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalInputDate {
+        /**
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+         */
+        "allowInvalidValue": boolean;
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
@@ -2723,7 +2731,7 @@ export namespace Components {
          */
         "filter": BalProps.BalSelectFilter;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
          */
         "freeSolo": boolean;
         /**
@@ -5737,6 +5745,10 @@ declare namespace LocalJSX {
     }
     interface BalDate {
         /**
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+         */
+        "allowInvalidValue"?: boolean;
+        /**
           * Callback to determine which date in the datepicker should be selectable.
          */
         "allowedDates"?: BalProps.BalDateCallback | undefined;
@@ -5761,7 +5773,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
          */
         "freeSolo"?: boolean;
         /**
@@ -6575,6 +6587,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalInputDate {
+        /**
+          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+         */
+        "allowInvalidValue"?: boolean;
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
@@ -7747,7 +7763,7 @@ declare namespace LocalJSX {
          */
         "filter"?: BalProps.BalSelectFilter;
         /**
-          * If `true` there will be on trigger icon visible
+          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
          */
         "freeSolo"?: boolean;
         /**

@@ -5,6 +5,7 @@ import { AbstractMask } from '../mask'
 import { BalDate } from '../../date'
 import { MaskClipboardContext, MaskFocusContext } from '../context'
 import { I18n, I18nKeys } from '../../../interfaces'
+import { INVALID_VALUE } from '../mask-util'
 
 export class DateMask extends AbstractMask {
   public maxLength = 10
@@ -89,11 +90,16 @@ export class DateMask extends AbstractMask {
     ])
   }
 
-  override onParseValue(inputValue?: string): string {
+  override onParseValue(
+    inputValue?: string,
+    options: { allowInvalidValue: boolean } = { allowInvalidValue: false },
+  ): string {
     if (inputValue) {
       const date = BalDate.fromAnyFormat(this.blocks.getRawValueWithoutMask(inputValue))
       if (date.isValid) {
         return date.toISODate()
+      } else if (options && options.allowInvalidValue) {
+        return INVALID_VALUE
       }
     }
     return ''
@@ -122,10 +128,15 @@ export class DateMask extends AbstractMask {
   override onBlur(context: MaskFocusContext) {
     const rawValue = this.blocks.getRawValueWithoutMaskByContext(context)
     const date = BalDate.fromAnyFormat(rawValue)
+
     if (date.isValid) {
       const formattedDate = date.toFormat()
       if (formattedDate !== context.value) {
         context.value = formattedDate
+      }
+    } else if (context.component.allowInvalidValue) {
+      if (rawValue !== context.value) {
+        context.value = rawValue
       }
     }
   }

@@ -1,15 +1,18 @@
+import { MaskComponent } from '../component'
 import { MaskContextEvent, MaskContextOptions } from './mask-context-interfaces'
 import { MaskPosition } from './mask-position'
 
 export abstract class MaskContext<T = MaskContextEvent> {
   private _value = ''
   public position!: MaskPosition
+  public component!: MaskComponent
 
   constructor(protected _options: MaskContextOptions<T>) {
     if (this._options.component && this._options.component.nativeInput) {
       this._value = this._options.component.nativeInput.value
     }
     this.position = new MaskPosition(this._options)
+    this.component = this._options.component
   }
 
   get target(): HTMLInputElement | undefined {

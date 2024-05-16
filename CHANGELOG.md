@@ -1,5 +1,21 @@
 # Changelog
 
+## 16.2.0
+
+### Minor Changes
+
+- **date**: the new property `allow-invalid-value` includes a functionality where it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid. ( [#1384](https://github.com/baloise/design-system/pull/1384))
+
+### Patch Changes
+
+- **modal**: will keep scroll postition ( [#1398](https://github.com/baloise/design-system/pull/1398))
+
+- **footer**: make language selection in footer consistent (#1388) ( [#1397](https://github.com/baloise/design-system/pull/1397))
+
+- **snackbar**: adjust position for angular standalone build with optimizer ( [#1390](https://github.com/baloise/design-system/pull/1390))
+
+- **toast**: adjust position for angular standalone build with optimizer ( [#1390](https://github.com/baloise/design-system/pull/1390))
+
 ## 16.1.0
 
 ### Minor Changes

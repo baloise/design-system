@@ -95,6 +95,7 @@ export {
 } from './utils/orientation'
 export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
 export { BalDate } from './utils/date'
+export { INVALID_VALUE } from './utils/mask/mask-util'
 
 /**
  * Controllers
