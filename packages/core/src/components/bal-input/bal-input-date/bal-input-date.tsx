@@ -136,6 +136,11 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
+   * The component returns invalid dates too.
+   */
+  @Prop() allowInvalidDates = false
+
+  /**
    * Emitted when a keyboard key has pressed.
    */
   @Event() balKeyPress!: EventEmitter<BalEvents.BalInputDateKeyPressDetail>

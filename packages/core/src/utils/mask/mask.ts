@@ -114,7 +114,7 @@ export abstract class AbstractMask implements Mask {
     context.position.toEnd()
   }
 
-  public onParseValue(inputValue?: string) {
+  public onParseValue(inputValue?: string, options: { allowInvalid: boolean } = { allowInvalid: false }) {
     if (inputValue) {
       return inputValue.trim()
     }
@@ -189,7 +189,10 @@ export abstract class AbstractMask implements Mask {
         this.emptyInputValue(context)
       } else {
         this.onBlur(context)
-        context.submit('blur', this.onParseValue(context.value))
+        context.submit(
+          'blur',
+          this.onParseValue(context.value, { allowInvalid: (context.component as any).allowInvalidDates }),
+        )
       }
     }
   }

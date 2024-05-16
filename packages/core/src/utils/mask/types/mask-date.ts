@@ -89,11 +89,13 @@ export class DateMask extends AbstractMask {
     ])
   }
 
-  override onParseValue(inputValue?: string): string {
+  override onParseValue(inputValue?: string, options: { allowInvalid: boolean } = { allowInvalid: false }): string {
     if (inputValue) {
       const date = BalDate.fromAnyFormat(this.blocks.getRawValueWithoutMask(inputValue))
       if (date.isValid) {
         return date.toISODate()
+      } else if (options && options.allowInvalid) {
+        return 'INVALID_DATE'
       }
     }
     return ''
@@ -122,10 +124,15 @@ export class DateMask extends AbstractMask {
   override onBlur(context: MaskFocusContext) {
     const rawValue = this.blocks.getRawValueWithoutMaskByContext(context)
     const date = BalDate.fromAnyFormat(rawValue)
+
     if (date.isValid) {
       const formattedDate = date.toFormat()
       if (formattedDate !== context.value) {
         context.value = formattedDate
+      }
+    } else if ((context.component as any).allowInvalidDates) {
+      if (rawValue !== context.value) {
+        context.value = rawValue
       }
     }
   }
