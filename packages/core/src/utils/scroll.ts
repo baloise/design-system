@@ -56,6 +56,7 @@ export class BalScrollHandler {
   }
 
   enable() {
+    console.log('enable scroll', this.target)
     if (this.target) {
       if (balBrowser.hasWindow && balBrowser.hasDocument) {
         document.body.classList.remove('noscroll')
@@ -63,16 +64,19 @@ export class BalScrollHandler {
         document.body.style.top = ''
         document.body.style.width = ''
         window.scrollTo(this.x, this.y)
+        console.log('scrollTo', this.x, this.y)
         this.disabled = false
       }
     }
   }
 
   disable() {
+    console.log('disable scroll', this.target)
     if (!this.disabled && this.target) {
       if (balBrowser.hasWindow && balBrowser.hasDocument) {
         this.x = window.pageXOffset || document.documentElement.scrollLeft
         this.y = window.pageYOffset || document.documentElement.scrollTop
+        console.log('position', this.x, this.y)
         document.body.classList.add('noscroll')
         document.body.style.position = 'fixed'
         document.body.style.top = `-${this.y}px`
