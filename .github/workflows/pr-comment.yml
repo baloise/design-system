@@ -11,7 +11,7 @@ jobs:
     name: 📝 Create Issue Branch
     runs-on: ubuntu-latest
     steps:
-      - uses: robvanderleek/create-issue-branch@main
+      - uses: robvanderleek/create-issue-branch@1.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
