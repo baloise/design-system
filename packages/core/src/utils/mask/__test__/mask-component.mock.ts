@@ -2,6 +2,7 @@ import { MaskComponent } from '../component'
 
 export class MaskComponentMock implements MaskComponent {
   value: string | undefined = undefined
+  allowInvalidValue = false
   inputValue: string | undefined = undefined
   initialValue = ''
   focused = false

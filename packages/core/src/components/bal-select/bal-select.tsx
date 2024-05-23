@@ -111,7 +111,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   @Prop() balTabindex = 0
 
   /**
-   * If `true` there will be on trigger icon visible
+   * If `true` there will be no trigger icon visible, so no UX indicator for a popup
    */
   @Prop() freeSolo = false
 

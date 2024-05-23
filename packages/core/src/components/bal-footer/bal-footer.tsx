@@ -12,12 +12,15 @@ import {
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
+import { stopEventBubbling } from '../../utils/form-input'
 
 @Component({
   tag: 'bal-footer',
   styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
+  private selectEl: HTMLBalSelectElement | undefined
+
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
@@ -179,8 +182,13 @@ export class Footer implements BalConfigObserver, Loggable {
                       }}
                       name="web"
                       color="white"
+                      onClick={el => {
+                        stopEventBubbling(el)
+                        this.selectEl?.open()
+                      }}
                     ></bal-icon>
                     <bal-select
+                      ref={el => (this.selectEl = el as HTMLBalSelectElement)}
                       value={this.language}
                       onBalChange={event => this.changeLanguage(event.detail as any)}
                       data-testid="bal-footer-language"

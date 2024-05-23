@@ -104,4 +104,25 @@ describe('bal-date', () => {
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('2022-12-11')
   })
+
+  it('check if invalid date is returned', () => {
+    onBalChangeSpy = cy.spy().as('balChange')
+    cy.mount<Components.BalDate, HTMLBalDateElementEventMap>(`<bal-date allow-invalid-value></bal-date>`, {
+      props: {
+        defaultDate: '2023-01-01',
+        placeholder: 'Enter date',
+      },
+      events: {
+        balChange: onBalChangeSpy,
+      },
+    }).as('calendar')
+
+    cy.getByPlaceholder('Enter date')
+      .click()
+      .type('2.42.2023', { delay: 20 })
+      .blur({ force: true })
+      .should('have.value', '02.42.2023')
+    cy.get('@balChange').should('have.been.calledOnce')
+    cy.get('@balChange').shouldHaveEventDetail('INVALID_VALUE')
+  })
 })
