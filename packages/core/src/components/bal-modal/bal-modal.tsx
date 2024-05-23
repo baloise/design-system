@@ -103,6 +103,7 @@ export class Modal implements OverlayInterface {
   didDismiss!: EventEmitter<BalEvents.BalModalDidDismissDetail>
 
   connectedCallback() {
+    console.log('Modal connectedCallback')
     this.bodyScrollHandler.connect()
     prepareOverlay(this)
 
@@ -165,6 +166,7 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async present(): Promise<void> {
+    console.log('Modal present')
     this.setModalActiveOnBody()
 
     if (this.presented) {
@@ -277,12 +279,14 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
+    console.log('Modal setModalActiveOnBody', this.bodyScrollHandler)
     if (!this.demo) {
       this.bodyScrollHandler.disable()
     }
   }
 
   private unsetModalActiveOnBody() {
+    console.log('Modal unsetModalActiveOnBody', this.bodyScrollHandler)
     this.bodyScrollHandler.enable()
   }
 

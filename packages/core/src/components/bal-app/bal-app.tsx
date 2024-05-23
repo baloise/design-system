@@ -34,6 +34,7 @@ export class App implements Loggable {
   @Prop({ reflect: true, mutable: true }) ready = false
 
   connectedCallback() {
+    console.log('Hello I am a snapshot')
     updateBalAnimated(this.animated)
 
     if (balBrowser.hasWindow) {
