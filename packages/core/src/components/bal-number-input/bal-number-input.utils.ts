@@ -26,7 +26,7 @@ export function toNumber(value: any, decimalPoints = 0): number | undefined {
     return undefined
   }
 
-  if (typeof val === 'string') {
+  if (typeof val === 'string' && getThousandSeparator() !== '.') {
     val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 
@@ -39,7 +39,7 @@ export function toFixedNumber(value: string, decimalPoints = 0): string {
     return ''
   }
 
-  if (typeof val === 'string') {
+  if (typeof val === 'string' && getThousandSeparator() !== '.') {
     val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 
