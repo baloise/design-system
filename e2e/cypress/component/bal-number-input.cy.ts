@@ -93,4 +93,30 @@ describe('bal-number-input', () => {
     cy.get('@balFocus').should('have.been.calledTwice')
     cy.get('@balBlur').should('have.been.calledTwice')
   })
+
+  it('should update german numbers with decimal', () => {
+    cy.window().then((win: any) => (win.BaloiseDesignSystem.config.region = 'DE'))
+    cy.get('bal-number-input').waitForComponents().invoke('attr', 'decimal', 2)
+
+    cy.get('bal-number-input').find('input').type('1').blur()
+
+    cy.get('bal-number-input').find('input').should('have.value', '1,00')
+
+    cy.get('bal-number-input').find('input').click().blur()
+    cy.get('bal-number-input').find('input').should('have.value', '1,00')
+    cy.get('@balChange').should('have.been.calledOnce')
+  })
+
+  it('should update german numbers with thousand seperator', () => {
+    cy.window().then((win: any) => (win.BaloiseDesignSystem.config.region = 'DE'))
+    cy.get('bal-number-input').waitForComponents().invoke('attr', 'decimal', 2)
+
+    cy.get('bal-number-input').find('input').type('1000,42').blur()
+
+    cy.get('bal-number-input').find('input').should('have.value', '1.000,42')
+
+    cy.get('bal-number-input').find('input').click().blur()
+    cy.get('bal-number-input').find('input').should('have.value', '1.000,42')
+    cy.get('@balChange').should('have.been.calledOnce')
+  })
 })
