@@ -3,6 +3,10 @@ import { ACTION_KEYS, NUMBER_KEYS } from '../../utils/constants/keys.constant'
 import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '../../utils/number'
 import isNaN from 'lodash.isnan'
 
+function checkIfValueIsStringAndDoesNotHaveGermanFormat(val: any): boolean {
+  return typeof val === 'string' && getThousandSeparator() !== '.'
+}
+
 export function isNumber(value: any): boolean {
   const num = parseFloat(value)
   return typeof num === 'number' && !isNaN(num)
@@ -26,7 +30,7 @@ export function toNumber(value: any, decimalPoints = 0): number | undefined {
     return undefined
   }
 
-  if (typeof val === 'string') {
+  if (checkIfValueIsStringAndDoesNotHaveGermanFormat(val)) {
     val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 
@@ -39,7 +43,7 @@ export function toFixedNumber(value: string, decimalPoints = 0): string {
     return ''
   }
 
-  if (typeof val === 'string') {
+  if (checkIfValueIsStringAndDoesNotHaveGermanFormat(val)) {
     val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 

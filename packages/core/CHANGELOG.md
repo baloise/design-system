@@ -1,5 +1,13 @@
 # Changelog
 
+## 16.2.1
+
+### Patch Changes
+
+- **select**: Prevent autofill with previously entered data on Edge ( [#1407](https://github.com/baloise/design-system/pull/1407))
+
+- **number-input**: handle inputs for Germany ( [#1401](https://github.com/baloise/design-system/pull/1401))
+
 ## 16.2.0
 
 ### Minor Changes
