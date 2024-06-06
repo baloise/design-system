@@ -7,6 +7,7 @@ import { BalLanguage } from '../config'
 import { Attributes } from '../attributes'
 
 export interface DropdownInputProps {
+  blockName: string
   name: string
   inputId: string
   httpFormSubmit: boolean
@@ -30,6 +31,7 @@ export interface DropdownInputProps {
 }
 
 export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
+  blockName,
   name,
   inputId,
   httpFormSubmit,
@@ -51,7 +53,7 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
   onBlur,
   onKeyDown,
 }) => {
-  const block = BEM.block('dropdown')
+  const block = BEM.block(blockName)
 
   const Input = () => (
     <input
