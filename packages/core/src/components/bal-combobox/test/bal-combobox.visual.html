@@ -1,0 +1,211 @@
+<!doctype html>
+<html dir="ltr" lang="en" class="bg-green-2">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 4rem;
+      }
+    </style>
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-combobox">
+      <main class="container py-medium">
+        <h2 class="title text-large">Basic</h2>
+        <section data-testid="basic">
+          <bal-combobox placeholder="visual-basic">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Long Content</h2>
+        <section data-testid="long-content">
+          <bal-combobox placeholder="visual-long-content" value="BlackWidow">
+            <bal-option
+              value="BlackWidow"
+              label="Black Widow is a 2021 American superhero film based on Marvel Comics featuring the character of the same name."
+            >
+              <b style="display: block">Black Widow</b>
+              <span class="text-small"
+                >Black Widow is a 2021 American superhero film based on Marvel Comics featuring the character of the
+                same name.</span
+              >
+            </bal-option>
+            <bal-option value="BlackPanter" label="Black Panter">
+              <b style="display: block">Black Panter</b>
+              <span class="text-small">Wakanda</span>
+            </bal-option>
+            <bal-option value="IronMan" label="Iron Man">
+              <b style="display: block">Iron Man</b>
+              <span class="text-small">Malibu</span>
+            </bal-option>
+            <bal-option value="SpiderMan" label="Spider Man">
+              <b style="display: block">Spider Man</b>
+              <span class="text-small">Queens</span>
+            </bal-option>
+            <bal-option value="CaptainAmerica" label="Captain America">
+              <b style="display: block">Captain America</b>
+              <span class="text-small">Broklyn</span>
+            </bal-option>
+            <bal-option value="Thor" label="Thor God of Thunder">
+              <b style="display: block">Thor God of Thunder</b>
+              <span class="text-small">Asgard</span>
+            </bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Multiple</h2>
+        <section data-testid="multiple">
+          <bal-combobox multiple placeholder="visual-multiple">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Multiple with Chips</h2>
+        <section data-testid="multiple-chips">
+          <bal-combobox
+            multiple
+            chips
+            value="v1990,v1991,v1992,v1993,v1994,v1995,v1996,v1997,v1998,v1999,v2000,v2001,v2002,v2003"
+            placeholder="visual-multiple-chips"
+          >
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Clearable</h2>
+        <section data-testid="clearable">
+          <bal-combobox clearable placeholder="visual-clearable">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Loading</h2>
+        <section data-testid="loading">
+          <bal-combobox value="v1988" loading placeholder="visual-loading">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Invalid</h2>
+        <section data-testid="invalid">
+          <bal-combobox class="mb-small" placeholder="visual-invalid" invalid value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+          <bal-combobox class="mb-small" placeholder="visual-invalid-empty" invalid>
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+          <bal-combobox placeholder="visual-invalid-chips" invalid chips value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Disabled</h2>
+        <section data-testid="disabled">
+          <bal-combobox class="mb-small" placeholder="visual-disabled" disabled value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+          <bal-combobox class="mb-small" placeholder="visual-disabled-empty" disabled>
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+          <bal-combobox placeholder="visual-disabled-chips" disabled chips value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-combobox>
+        </section>
+        <h2 class="title text-large">Form Field</h2>
+        <section data-testid="form-field">
+          <bal-field>
+            <bal-field-label>Form Label</bal-field-label>
+            <bal-field-control>
+              <bal-combobox multiple placeholder="visual-form-field">
+                <bal-option value="v1988" label="1988">1988</bal-option>
+                <bal-option value="v1989" label="1989">1989</bal-option>
+                <bal-option value="v1990" label="1990">1990</bal-option>
+                <bal-option value="v1991" label="1991">1991</bal-option>
+                <bal-option value="v1992" label="1992">1992</bal-option>
+                <bal-option value="v1993" label="1993">1993</bal-option>
+                <bal-option value="v1994" label="1994">1994</bal-option>
+                <bal-option value="v1995" label="1995">1995</bal-option>
+                <bal-option value="v1996" label="1996">1996</bal-option>
+                <bal-option value="v1997" label="1997">1997</bal-option>
+                <bal-option value="v1998" label="1998">1998</bal-option>
+                <bal-option value="v1999" label="1999">1999</bal-option>
+                <bal-option value="v2000" label="2000">2000</bal-option>
+                <bal-option value="v2001" label="2001">2001</bal-option>
+                <bal-option value="v2002" label="2002">2002</bal-option>
+                <bal-option value="v2003" label="2003">2003</bal-option>
+                <bal-option value="v2004" label="2004">2004</bal-option>
+                <bal-option value="v2005" label="2005">2005</bal-option>
+                <bal-option value="v2006" label="2006">2006</bal-option>
+                <bal-option value="v2007" label="2007">2007</bal-option>
+              </bal-combobox>
+            </bal-field-control>
+          </bal-field>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
