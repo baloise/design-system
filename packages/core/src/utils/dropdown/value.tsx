@@ -107,6 +107,7 @@ export class DropdownValueUtil {
 }
 
 export interface DropdownValueProps {
+  blockName: string
   filled: boolean
   chips: boolean
   invalid: boolean
@@ -118,6 +119,7 @@ export interface DropdownValueProps {
 }
 
 export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
+  blockName,
   filled,
   chips,
   placeholder,
@@ -127,7 +129,7 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
   readonly,
   onRemoveChip,
 }) => {
-  const block = BEM.block('dropdown')
+  const block = BEM.block(blockName)
 
   if (filled) {
     if (chips) {

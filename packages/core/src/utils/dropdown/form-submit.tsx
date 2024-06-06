@@ -43,6 +43,7 @@ export class DropdownFormSubmitUtil {
 }
 
 export interface DropdownNativeSelectProps {
+  blockName: string
   name: string
   httpFormSubmit: boolean
   multiple: boolean
@@ -53,6 +54,7 @@ export interface DropdownNativeSelectProps {
 }
 
 export const DropdownNativeSelect: FunctionalComponent<DropdownNativeSelectProps> = ({
+  blockName,
   name,
   httpFormSubmit,
   multiple,
@@ -61,7 +63,7 @@ export const DropdownNativeSelect: FunctionalComponent<DropdownNativeSelectProps
   rawValue,
   refSelectEl,
 }) => {
-  const block = BEM.block('dropdown')
+  const block = BEM.block(blockName)
 
   return httpFormSubmit ? (
     <select
