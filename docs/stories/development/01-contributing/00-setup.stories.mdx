@@ -14,6 +14,7 @@ import {
   HTMLFramework,
   ReactFramework,
   VueFramework,
+  ImageCanvas,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Contributing/Setup" />
@@ -32,7 +33,7 @@ To work with this project a recent LTS version of NodeJS and npm is required. Ma
 > **Warning!**
 > Note that you will need to use npm 8 or higher.
 
-## Project and Packages
+## Clone project
 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
@@ -41,167 +42,105 @@ git clone https://github.com/baloise/design-system.git design-system
 cd design-system
 ```
 
+## Install dependencies
+
 First install all the dependencies of the packages. Then make an initial build to have all the needed artifacts in place and afterwards link the packages.
 
 ```bash
 npm install
 ```
 
-After the installation, start the documentation page locally. Use storybook also for the development.
+## Build project
+
+After the installation, lets build the whole Design System.
 
 ```bash
 npm run build
-npm start
+```
+
+## Run dev mode
+
+For **development** we recommend to start the Stencil Dev Serve with:
+
+```bash
+npm run start
+```
+
+The page is available under [http://localhost:4000](http://localhost:4000).
+
+## Run documentation
+
+To start the **documentation** page locally. Use storybook also for the development.
+
+```bash
+npm run docs
 ```
 
 The page is available under [http://localhost:6006](http://localhost:6006).
 
-> **TIP**
-> All Baloise Design System packages and their contained code can be found under `/packages/`. For example components live in `/packages/components/`.
+## Run e2e tests
 
-## Documentation
-
-To document the components use the tool [Storybook](https://storybook.js.org/).
-
-The documentation files are in a folder called `/stories` or have `.stories.` in the file name.
-
-## Project Structure
-
-The Baloise Design System is divided into multiple NPM packages. Development for all packages are happening inside one mono repository.
-
-### CI & CD
-
-For the CI & CD tasks use [Github Actions](https://github.com/baloise/design-system/tree/main/.github/workflows). The following actions are in the folder `.github/workflows`:
-
-- `continuous.yml`
-
-  - The continuous action gets executed with each commit and verifies that the build and tests are successful.
-
-- `release.yml`
-
-  - This action for [Changesets](https://github.com/changesets/action) creates a pull request with all of the package versions updated and changelogs updated and when there are new changesets on your configured baseBranch, the PR will be updated. When you're ready, you can merge the pull request and you can either publish the packages to npm manually or setup the action to do it for you.
-
-- `documentation.yml`
-
-  - The documentation action gets executed after the release action. It builds the documentation that is deployed under `design.baloise.dev`.
-
-### Folder Structure
+To start the **cypress E2E** tests locally.
 
 ```bash
-.
-├── .build                # additional build scripts
-├── .changeset            # release and publish information
-├── .github               # github related configurations and templates
-│  ├── ISSUE_TEMPLATE     # templates for the github issues like feature request
-│  └── .workflows         # github action
-│
-├── .husky                # git hook to lint commit messages
-├── packages              # published npm packages
-├── public                # content of the public file server
-├── resources             # static resources for the documentation
-├── .editorconfig         # ensures coding styles across the multiple IDEs
-├── .eslintignore         # files to ignore during linting
-├── .eslintrc.js          # config of the linter
-├── .lintstagedrc         # run linters against staged git files
-├── .prettierignore       # files to ignore during formatting
-├── .prettierrc           # config of the format tool
-├── commitlint.config.js  # config of the commit message linter
-├── cspell.json           # language check for english
-├── Dockerfile            # config for the documentation
-├── registry              # bash script to replace the baloise registry with npm
-├── turbo.json            # config of the mono-repo
-├── vercel.json           # deploy config for the static file server
-├── rollup.base.js        # base config of the module bundler
-└── tsconfig.base.json    # base config of typescript
+npm run e2e
 ```
 
-#### /packages
+## Project structure
 
-##### /components
+The Baloise Design System is divided into multiple NPM packages.
 
-```bash
-.
-├── .build      # additional build scripts
-├── .storybook  # storybook configurations
-├── config      # stencil configurations
-├── cypress     # e2e test files
-├── src
-│  ├── assets   # generated assets folder for the stencil components
-│  ├── components
-│  │  └── bal-<component>
-│  │        ├── bal-<component>-<addon>         # sub-component
-│  │        │  ├── bal-<component>-<addon>.tsx  # Component logic
-│  │        │  └── readme.md                    # generated Readme with the components api
-│  │        │
-│  │        ├── stories                         # documentation folder with the stories
-│  │        │  ├── bal-<component>.docs.mdx     # main documentation file
-│  │        │  ├── bal-<component>.stories.ts   # has the different variants/stories of the component
-│  │        │  ├── bal-<component>.templates.ts # HTML templates snippets <optional>
-│  │        │  └── testing.md                   # generated file with the testing api
-│  │        │
-│  │        ├── test                            # test pages for cypress
-│  │        │  ├── bal-<component>.cy.html      # E2E test file
-│  │        │  └── bal-<component>.visual.html  # Visual test file
-│  │        │
-│  │        ├── bal-<component>.sass      # Specific component style
-│  │        ├── bal-<component>.vars.sass # Sass variables
-│  │        ├── bal-<component>.tsx       # Component logic
-│  │        └── readme.md                 # generated Readme with the components api
-│  │
-│  ├── stories                    # documentation files.
-│  ├── utils                      # global utils.
-│  │
-│  ├── types      # global types for all the components like colors.
-│  └── config.ts  # global config definitions for the angular module and the vue plugin.
-│
-└──  stencil.*.config.ts # stencil output configurations
-```
+### Packages to release
 
-## Commands
+The below packages in the graph and table are the ones who get published to npm.
 
-The commands of the Baloise Design System are managed in the `package.json` file in the section `scripts`.
+docs/stories/assets/images/contribution/packages-to-release.png
+
+import PackagesToRelease from '../../assets/images/contribution/packages-to-release.png'
+
+<img src={PackagesToRelease} />
 
 <Markdown>
   {`
-| Command                              | Description                                                                        |
-| :----------------------------------- | :--------------------------------------------------------------------------------- |
-| npm **install**                      | Installs all the npm dependencies.                                                 |
-| npm run **build**                    | Builds all packages in the correct order.                                          |
-| npm run **start** or npm run **dev** | Starts storybook with custom elements and watches for changes. Like in production. |
-| npm run **serve**                    | Starts stencil web server.                                                         |
-| npm run **test**                     | Runs the components tests.                                                         |
-| npm run **e2e**                      | Runs cypress e2e tests.                                                            |
-| npm run **lint**                     | Lints the source files with eslint                                                 |
-| npm run **format**                   | Formats the source file with prettier                                              |
-`}
+| **Package**        | Description                                                                    |
+| :----------------- | :----------------------------------------------------------------------------- |
+| **core**           | Core package build with web components.                                        |
+| **angular**        | Angular standalone component proxies based on the the core package.            |
+| **angular-module** | Angular component provided as an Angular Module.                               |
+| **angular-legacy** | Webpack legacy Angular library.                                                |
+| **angular-common** | The above Angular projects use and extend the common providers and components. |
+| **react**          | React component proxies based on the the core package.                         |
+| **vue**            | Vue component proxies based on the the core package.                           |
+| **table**          | Integration library for AG-Grid with styles and renderer functions.            |
+| **testing**        | Testing package with custom and overridden commands for each component.        |
+| **styles**         | Basic CSS styles with utility classes.                                         |
+| **tokens**         | Design Tokens like color and spacing.                                          |
+| **maps**           | Google Maps styles and icons.                                                  |
+| **icons**          | SVG icons of the design system.                                                |
+| **brand-icons**    | Brand icons of Baloise.                                                        |
+| **favicons**       | Favicons of the design system.                                                 |
+| **css**            | (deprecated) Basic CSS styles with utility classes.                            |
+| **fonts**          | Web-font of the design system.                                                 |
+  `}
 </Markdown>
 
-### Debug Components
+### Local development packages
 
-Set a `debugger` keyword in the components code and run it with `npm run serve`
+These packages are only for local development, building and testing the project.
 
-### Testing
+import LocalDevelopmentPackages from '../../assets/images/contribution/local-development-packages.png'
 
-All the library project commands starts with the prefix `testing:`
-
-<Markdown>
-  {`
-| Command          | Description              |
-| :--------------- | :----------------------- |
-| npm run **test** | Runs all the unit tests. |
-| npm run **e2e**  | Opens cypress editor.    |
-`}
-</Markdown>
-
-### Documentation (Storybook)
-
-All the library project commands starts with the prefix `storybook:`
+<img src={LocalDevelopmentPackages} />
 
 <Markdown>
   {`
-| Command                | Description                                         |
-| :--------------------- | :-------------------------------------------------- |
-| npm run **docs**       | Installs all the dependencies of the documentation. |
-| npm run **docs:serve** | Runs the static generated storybook.                |
-`}
+| **Package**               | **Description**                                                                                                      |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------- |
+| **ds-nx**                 | Internal Nx executors for custom build jobs.                                                                         |
+| **e2e**                   | The cypress project with accessibility (A11Y) tests, visual regression tests and tests to check the testing package. |
+| **docs**                  | This is the main documentation project build with storybook                                                          |
+| **output-target-vue**     | This library creates proxy components or the vue framework                                                           |
+| **output-target-react**   | This library creates proxy components or the react framework                                                         |
+| **output-target-angular** | This library creates proxy components or the angular framework                                                       |
+  `}
 </Markdown>
