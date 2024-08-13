@@ -62,7 +62,7 @@ export class BalScrollHandler {
         document.body.style.position = ''
         document.body.style.top = ''
         document.body.style.width = ''
-        if(this.x !== undefined && this.y !== undefined) {
+        if (this.x !== undefined && this.y !== undefined) {
           window.scrollTo(this.x, this.y)
           this.x = undefined
           this.y = undefined
