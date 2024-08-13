@@ -15,7 +15,7 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
 
       this.showBackdropElement(component)
       this.showContainerElement(component)
-      this.showArrowElement(component)
+      this.hideArrowElement(component)
 
       return true
     }
