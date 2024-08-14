@@ -76,7 +76,6 @@ describe('balDate', () => {
         const year = new Date().getFullYear()
         const cutoff = year + 10
         const cutoffTwoDigits = cutoff % 100
-        console.log('cutoff', cutoff)
         expect(BalDate.fromAnyFormat(`1.1.${cutoffTwoDigits}`).toISODate()).toStrictEqual(`20${cutoffTwoDigits}-01-01`)
         expect(BalDate.fromAnyFormat(`1.1.${cutoffTwoDigits - 1}`).toISODate()).toStrictEqual(
           `20${cutoffTwoDigits - 1}-01-01`,

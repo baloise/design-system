@@ -3,6 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'
+import { toKebabCase } from 'packages/core/src/utils/string'
 
 export interface TabButtonProps {
   item: BalTabOption
@@ -60,19 +61,25 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     (hasBubble && !isMobile && iconPosition === 'horizontal' && !accordion) ||
     (hasBubble && isVertical && !accordion)
 
-  const TagType = item.href === undefined || item.href === '' ? 'button' : 'a'
-  const attrs =
-    TagType === 'button'
-      ? { type: 'button' }
-      : {
-          href: item.href,
-          target: item.target,
-        }
+  const isTabButton = item.href === undefined || item.href === ''
+  const TagType = isTabButton ? 'button' : 'a'
+
+  const attrs = isTabButton
+    ? {
+        'type': 'button',
+        'role': 'tab',
+        'aria-controls': item.tabPanelID,
+        'tabindex': item.active ? '0' : '-1',
+      }
+    : {
+        href: item.href,
+        target: item.target,
+        tabindex: item.disabled || item.hidden ? '-1' : undefined,
+      }
 
   return (
     <TagType
-      id={`${tabsId}-button-${TabButtonIds++}`}
-      role="tab"
+      id={`${tabsId}-button-${toKebabCase(item.value)}`}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -99,7 +106,6 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       aria-selected={item.active ? 'true' : 'false'}
       aria-disabled={`${item.disabled}`}
       aria-label={item.label}
-      aria-controls={item.tabPanelID}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
@@ -137,5 +143,3 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     </TagType>
   )
 }
-
-let TabButtonIds = 0

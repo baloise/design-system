@@ -21,6 +21,7 @@ export interface TabNavProps {
   animated: boolean
   spaceless: boolean
   expanded: boolean
+  isLinkList: boolean
   verticalColSize: BalProps.BalTabsColSize
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
@@ -36,6 +37,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   isMobile,
   isTouch,
   lineActive,
+  isLinkList,
   border,
   accordion,
   isAccordionOpen,
@@ -76,7 +78,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
 
   return (
     <div
-      role="tablist"
+      role={isLinkList ? undefined : 'tablist'}
       id={`${tabsId}-nav`}
       class={{
         ...bemEl.class(),

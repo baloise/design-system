@@ -18,7 +18,6 @@ export const CssElevationShadow = () => (
       if (item.property === 'box-shadow') {
         return <div className={`bg-green ${item.class} p-small`}></div>
       }
-      console.log(item)
       return <div className={`font-weight-bold text-large ${item.class} px-small`}>Aa</div>
     }}
   />

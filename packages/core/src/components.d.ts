@@ -3148,7 +3148,7 @@ export namespace Components {
          */
         "border": boolean;
         /**
-          * If `true` the tabs or steps can be clicked.
+          * If `true` the tabs or tabs can be clicked.
          */
         "clickable": boolean;
         "closeAccordion": () => Promise<void>;
@@ -3190,7 +3190,7 @@ export namespace Components {
          */
         "optionalTabSelection": boolean;
         /**
-          * Steps can be passed as a property or through HTML markup.
+          * Tabss can be passed as a property or through HTML markup.
          */
         "options": BalTabOption[];
         /**
@@ -8179,7 +8179,7 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
-          * If `true` the tabs or steps can be clicked.
+          * If `true` the tabs or tabs can be clicked.
          */
         "clickable"?: boolean;
         /**
@@ -8227,7 +8227,7 @@ declare namespace LocalJSX {
          */
         "optionalTabSelection"?: boolean;
         /**
-          * Steps can be passed as a property or through HTML markup.
+          * Tabss can be passed as a property or through HTML markup.
          */
         "options"?: BalTabOption[];
         /**
