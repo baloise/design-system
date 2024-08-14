@@ -728,7 +728,7 @@ export class Tabs
             clickable={this.clickable}
             accordion={this.accordion}
             isAccordionOpen={this.isAccordionOpen}
-            lineActive={this.value !== undefined}
+            lineActive={this.value !== undefined && !!this.store.find(o => o.value === this.value)}
             inverted={isInverted}
             animated={this.animated}
             context={this.context}
