@@ -38,6 +38,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @State() focused = false
   @State() buttonTabindex?: number
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() wasFocused = false
 
   log!: LogInstance
 
@@ -358,6 +359,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       return
     }
 
+    if(this.wasFocused){
+      this.focused = true
+    }
+
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.toggleChecked()
       this.nativeInput?.focus()
@@ -377,6 +382,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     if (this.keyboardMode) {
       this.focused = true
+      this.wasFocused = true
     }
   }
 
@@ -391,7 +397,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   private onPointerDown = () => (this.keyboardMode = false)
 
-  private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
+  private onKeydown = (ev: any) => {
+    if (!isSpaceKey(ev)) {
+      this.wasFocused = false;
+    }
+    this.keyboardMode = FOCUS_KEYS.includes(ev.key)
+  }
 
   /**
    * RENDER
