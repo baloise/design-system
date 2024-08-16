@@ -26,8 +26,8 @@ export class BalScrollHandler {
   }
 
   private target: HTMLElement | Document | undefined
-  private x = 0
-  private y = 0
+  private x: number | undefined = undefined
+  private y: number | undefined = undefined
   private disabled = false
 
   connect(el?: HTMLElement) {
@@ -62,7 +62,11 @@ export class BalScrollHandler {
         document.body.style.position = ''
         document.body.style.top = ''
         document.body.style.width = ''
-        window.scrollTo(this.x, this.y)
+        if (this.x !== undefined && this.y !== undefined) {
+          window.scrollTo(this.x, this.y)
+          this.x = undefined
+          this.y = undefined
+        }
         this.disabled = false
       }
     }
