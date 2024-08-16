@@ -68,13 +68,14 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     ? {
         'type': 'button',
         'role': 'tab',
-        'aria-controls': item.tabPanelID,
         'tabindex': item.active ? '0' : '-1',
+        'aria-controls': item.tabPanelID,
+        'aria-disabled': `${item.disabled}`,
+        'aria-label': item.label,
       }
     : {
         href: item.href,
         target: item.target,
-        tabindex: item.disabled || item.hidden ? '-1' : undefined,
       }
 
   return (
@@ -104,8 +105,6 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-index={item.index}
       data-testid="bal-tabs-item"
       aria-selected={!isTabButton ? undefined : item.active ? 'true' : 'false'}
-      aria-disabled={`${item.disabled}`}
-      aria-label={item.label}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >

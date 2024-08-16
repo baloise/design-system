@@ -27,7 +27,7 @@ export class CarouselItem implements ComponentInterface {
   /**
    * Defines the role of the carousel.
    */
-  @Prop() htmlRole: 'tab' | 'listitem' = 'listitem'
+  @Prop() htmlRole: 'tab' | 'listitem' | '' = 'listitem'
 
   /**
    * The type of button.

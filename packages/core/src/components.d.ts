@@ -381,7 +381,7 @@ export namespace Components {
         /**
           * Defines the role of the carousel.
          */
-        "htmlRole": 'tablist' | 'list';
+        "htmlRole": 'tablist' | 'list' | '';
         /**
           * Defines special looks.
          */
@@ -433,7 +433,7 @@ export namespace Components {
         /**
           * Defines the role of the carousel.
          */
-        "htmlRole": 'tab' | 'listitem';
+        "htmlRole": 'tab' | 'listitem' | '';
         /**
           * Label of the slide which will be used for pagination tabs
          */
@@ -5414,7 +5414,7 @@ declare namespace LocalJSX {
         /**
           * Defines the role of the carousel.
          */
-        "htmlRole"?: 'tablist' | 'list';
+        "htmlRole"?: 'tablist' | 'list' | '';
         /**
           * Defines special looks.
          */
@@ -5464,7 +5464,7 @@ declare namespace LocalJSX {
         /**
           * Defines the role of the carousel.
          */
-        "htmlRole"?: 'tab' | 'listitem';
+        "htmlRole"?: 'tab' | 'listitem' | '';
         /**
           * Label of the slide which will be used for pagination tabs
          */

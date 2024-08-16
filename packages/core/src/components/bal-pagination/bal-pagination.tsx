@@ -181,6 +181,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
               ...dot.modifier('active').class(isActive),
               ...dot.modifier('inactive').class(!isActive),
             }}
+            aria-label={pageNumber}
             onClick={() => this.selectPage(pageNumber)}
           />
         </li>

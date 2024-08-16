@@ -79,7 +79,7 @@ export class Carousel
   /**
    * Defines the role of the carousel.
    */
-  @Prop() htmlRole: 'tablist' | 'list' = 'list'
+  @Prop() htmlRole: 'tablist' | 'list' | '' = 'list'
 
   /**
    * If `true` items move under the controls, instead of having a gap
@@ -466,7 +466,7 @@ export class Carousel
         >
           <div
             role={this.htmlRole}
-            aria-live="polite"
+            aria-live={this.htmlRole !== '' ? 'polite' : undefined}
             id={this.carouselContainerId}
             class={{
               ...container.class(),
