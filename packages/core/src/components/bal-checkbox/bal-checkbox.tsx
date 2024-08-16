@@ -359,7 +359,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       return
     }
 
-    if(this.wasFocused){
+    if (this.wasFocused) {
       this.focused = true
     }
 
@@ -399,7 +399,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   private onKeydown = (ev: any) => {
     if (!isSpaceKey(ev)) {
-      this.wasFocused = false;
+      this.wasFocused = false
     }
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
   }
