@@ -3190,7 +3190,7 @@ export namespace Components {
          */
         "optionalTabSelection": boolean;
         /**
-          * Tabss can be passed as a property or through HTML markup.
+          * Tabs can be passed as a property or through HTML markup.
          */
         "options": BalTabOption[];
         /**
@@ -8227,7 +8227,7 @@ declare namespace LocalJSX {
          */
         "optionalTabSelection"?: boolean;
         /**
-          * Tabss can be passed as a property or through HTML markup.
+          * Tabs can be passed as a property or through HTML markup.
          */
         "options"?: BalTabOption[];
         /**

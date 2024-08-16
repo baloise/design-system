@@ -106,7 +106,7 @@ export class Tabs
   @Prop() overflow = true
 
   /**
-   * Tabss can be passed as a property or through HTML markup.
+   * Tabs can be passed as a property or through HTML markup.
    */
   @Prop() options: BalTabOption[] = []
 
