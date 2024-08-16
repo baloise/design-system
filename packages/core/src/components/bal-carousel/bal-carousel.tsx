@@ -42,6 +42,7 @@ export class Carousel
   private previousTransformValue = 0
   private currentRaf: number | undefined
   private carouselId = `bal-carousel-${CarouselIds++}`
+  private carouselContainerId = `bal-carousel-${CarouselIds++}-container`
 
   @State() isLastSlideVisible = true
   @State() isMobile = balBreakpoints.isMobile
@@ -407,6 +408,7 @@ export class Carousel
           <TabControl
             value={this.value}
             items={controlItems}
+            containerId={this.carouselContainerId}
             onControlChange={item => this.onControlChange(item.value)}
           ></TabControl>
         ) : (
@@ -425,6 +427,9 @@ export class Carousel
           ref={el => (this.innerEl = el)}
         >
           <div
+            role="list"
+            aria-live="polite"
+            id={this.carouselContainerId}
             class={{
               ...container.class(),
               ...container.modifier(`border`).class(this.border),
@@ -436,6 +441,7 @@ export class Carousel
             {this.border ? (
               <div
                 id={`${this.carouselId}-border`}
+                aria-hidden={true}
                 class={{
                   ...container.element('border').class(),
                   ...container.element('border').modifier('inverted').class(this.inverted),
@@ -452,6 +458,7 @@ export class Carousel
           <DotControl
             value={this.value}
             items={controlItems}
+            containerId={this.carouselContainerId}
             onControlChange={item => this.onControlChange(item.value)}
           ></DotControl>
         ) : (
@@ -466,6 +473,7 @@ export class Carousel
             areControlsHidden={!this.isMobile}
             leftControlTitle={leftControlTitle}
             rightControlTitle={rightControlTitle}
+            containerId={this.carouselContainerId}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></LargeControl>
@@ -480,6 +488,7 @@ export class Carousel
             inverted={this.inverted}
             leftControlTitle={leftControlTitle}
             rightControlTitle={rightControlTitle}
+            containerId={this.carouselContainerId}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></SmallControl>

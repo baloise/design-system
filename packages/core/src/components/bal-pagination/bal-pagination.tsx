@@ -152,7 +152,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const more = BEM.block('pagination').element('nav').element('pagination-list').modifier('more')
 
     return (
-      <li>
+      <li aria-hidden={'true'}>
         <div
           class={{
             ...more.class(),
@@ -174,6 +174,8 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
       return (
         <li>
           <span
+            role="button"
+            aria-current={isActive ? 'true' : undefined}
             class={{
               ...dot.class(),
               ...dot.modifier('active').class(isActive),
@@ -189,6 +191,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
         <bal-button
           square
           color={isActive ? 'primary' : 'text'}
+          aria-current={isActive ? 'true' : undefined}
           onClick={() => this.selectPage(pageNumber)}
           data-testid="bal-pagination-page-number"
           size={this.isMobile || this.size === 'small' ? 'small' : ''}
