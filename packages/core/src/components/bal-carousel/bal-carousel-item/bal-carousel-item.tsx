@@ -115,7 +115,7 @@ export class CarouselItem implements ComponentInterface {
 
     if (!isProduct) {
       return (
-        <Host class={{ ...itemEl.class() }}>
+        <Host role="listitem" class={{ ...itemEl.class() }}>
           {this.src !== undefined ? (
             <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
           ) : (
@@ -144,7 +144,7 @@ export class CarouselItem implements ComponentInterface {
           }
 
     return (
-      <Host class={{ ...itemEl.class() }}>
+      <Host role="listitem" class={{ ...itemEl.class() }}>
         <TagType
           {...attrs}
           class={{ ...button.class(), ...button.modifier(`color-${this.color}`).class() }}
@@ -159,6 +159,7 @@ export class CarouselItem implements ComponentInterface {
               loading="lazy"
               draggable={false}
               onDragStart={() => false}
+              aria-hidden="true"
               src={this.src}
               {...this.imageInheritAttributes}
             />

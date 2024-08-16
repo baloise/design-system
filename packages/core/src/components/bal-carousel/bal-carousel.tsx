@@ -425,6 +425,7 @@ export class Carousel
           ref={el => (this.innerEl = el)}
         >
           <div
+            role="list"
             class={{
               ...container.class(),
               ...container.modifier(`border`).class(this.border),
@@ -436,6 +437,7 @@ export class Carousel
             {this.border ? (
               <div
                 id={`${this.carouselId}-border`}
+                aria-hidden={true}
                 class={{
                   ...container.element('border').class(),
                   ...container.element('border').modifier('inverted').class(this.inverted),
