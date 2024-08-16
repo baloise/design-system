@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
 import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
@@ -18,7 +18,7 @@ import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
 export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
@@ -379,6 +379,10 @@ export namespace Components {
          */
         "fullHeight": boolean;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole": 'tablist' | 'list';
+        /**
           * Defines special looks.
          */
         "interface": 'card' | 'image' | 'product' | '';
@@ -390,11 +394,11 @@ export namespace Components {
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
         "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
-        "next": (steps?: number) => Promise<void>;
+        "next": (steps?: number) => Promise<BalSlide | undefined>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
          */
-        "previous": (steps?: number) => Promise<void>;
+        "previous": (steps?: number) => Promise<BalSlide | undefined>;
         /**
           * If `true` vertical scrolling on mobile is enabled.
          */
@@ -427,6 +431,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole": 'tab' | 'listitem';
+        /**
           * Label of the slide which will be used for pagination tabs
          */
         "label": string;
@@ -438,6 +446,7 @@ export namespace Components {
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel"?: string;
+        "setFocus": () => Promise<void>;
         /**
           * Src path to the image
          */
@@ -5403,6 +5412,10 @@ declare namespace LocalJSX {
          */
         "fullHeight"?: boolean;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole"?: 'tablist' | 'list';
+        /**
           * Defines special looks.
          */
         "interface"?: 'card' | 'image' | 'product' | '';
@@ -5448,6 +5461,10 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole"?: 'tab' | 'listitem';
         /**
           * Label of the slide which will be used for pagination tabs
          */

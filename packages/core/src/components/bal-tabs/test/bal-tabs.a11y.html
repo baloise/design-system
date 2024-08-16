@@ -12,81 +12,84 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <button>Focus</button>
         <bal-heading>Basic</bal-heading>
         <section data-testid="basic" class="mb-xx-large">
-          <bal-tabs value="tab-c" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item value="tab-c" label="Tab C" bubble>Content of Tab C</bal-tab-item>
-            <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
-            <bal-tab-item
-              value="tab-link"
-              label="Tab link"
-              href="https://github.com/baloise/design-system"
-              target="_blank"
-              >Content of Tab link</bal-tab-item
+          <bal-tabs value="tab-b" border>
+            <bal-tab-item value="tab-a" label="Tab A">
+              <bal-button>Focus me</bal-button>
+              Content of Tab A</bal-tab-item
             >
-            <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B">
+              <bal-button>Focus me</bal-button>
+              Content of Tab B</bal-tab-item
+            >
+            <bal-tab-item value="tab-d" label="Tab D" disabled>
+              <bal-button>Focus me</bal-button>
+              Content of Tab D</bal-tab-item
+            >
           </bal-tabs>
         </section>
 
         <bal-heading>Vertical</bal-heading>
         <section data-testid="vertical" class="mb-xx-large">
           <bal-tabs value="tab-a" vertical border>
-            <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
-            <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
-            <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-a" label="Tab A" icon="account">
+              <bal-button>Focus me</bal-button>
+              Content of Tab A</bal-tab-item
+            >
+            <bal-tab-item value="tab-b" label="Tab B" icon="account">
+              <bal-button>Focus me</bal-button>
+              Content of Tab B</bal-tab-item
+            >
+            <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>
+              <bal-button>Focus me</bal-button>
+              Content of Tab C</bal-tab-item
+            >
+            <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>
+              <bal-button>Focus me</bal-button>
+              Content of Tab D</bal-tab-item
+            >
           </bal-tabs>
         </section>
 
-        <bal-heading>Focus</bal-heading>
-        <bal-heading subtitle>Tabs</bal-heading>
-        <section data-testid="basic" class="mb-xx-large">
-          <bal-tabs value="tab-b" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
-
-        <bal-heading subtitle>Links</bal-heading>
-        <section data-testid="basic" class="mb-xx-large">
+        <bal-heading>Links</bal-heading>
+        <section data-testid="links" class="mb-xx-large">
           <bal-tabs value="tab-a" border>
             <bal-tab-item
               value="tab-a"
               label="Link A"
               href="http://localhost:4000/components/bal-tabs/test/bal-tabs.a11y.html"
-              >Content of Tab A</bal-tab-item
-            >
+            ></bal-tab-item>
             <bal-tab-item
               value="tab-b"
               label="Link B"
               href="http://localhost:4000/components/bal-tabs/test/bal-tabs.a11y.html"
-              >Content of Tab B</bal-tab-item
-            >
+            ></bal-tab-item>
             <bal-tab-item
               value="tab-d"
               label="Link D"
               href="http://localhost:4000/components/bal-tabs/test/bal-tabs.a11y.html"
               disabled
-              >Content of Tab D</bal-tab-item
-            >
+            ></bal-tab-item>
           </bal-tabs>
         </section>
 
-        <bal-heading subtitle>Mixed</bal-heading>
-        <section data-testid="basic" class="mb-xx-large">
+        <bal-heading>Mixed</bal-heading>
+        <section data-testid="mixed" class="mb-xx-large">
           <bal-tabs value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-a" label="Tab A">
+              <bal-button>Focus me</bal-button>
+              Content of Tab A</bal-tab-item
+            >
             <bal-tab-item
               value="tab-b"
               label="Link B"
               href="http://localhost:4000/components/bal-tabs/test/bal-tabs.a11y.html"
-              >Content of Tab B</bal-tab-item
+            ></bal-tab-item>
+            <bal-tab-item value="tab-d" label="Tab D" disabled>
+              <bal-button>Focus me</bal-button>
+              Content of Tab D</bal-tab-item
             >
-            <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
           </bal-tabs>
         </section>
       </main>

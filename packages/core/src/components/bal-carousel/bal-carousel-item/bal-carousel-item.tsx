@@ -2,6 +2,7 @@ import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, E
 import { BEM } from '../../../utils/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
 import { Attributes } from '../../../interfaces'
+import { waitAfterFramePaint } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 
 @Component({
@@ -9,6 +10,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 })
 export class CarouselItem implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
+  private buttonEl: HTMLButtonElement | HTMLLinkElement
 
   @Element() el!: HTMLElement
 
@@ -21,6 +23,11 @@ export class CarouselItem implements ComponentInterface {
    * Label of the slide which will be used for pagination tabs
    */
   @Prop({ reflect: true }) label = ''
+
+  /**
+   * Defines the role of the carousel.
+   */
+  @Prop() htmlRole: 'tab' | 'listitem' = 'listitem'
 
   /**
    * The type of button.
@@ -93,6 +100,14 @@ export class CarouselItem implements ComponentInterface {
     }
   }
 
+  @Method()
+  async setFocus(): Promise<void> {
+    await waitAfterFramePaint()
+    if (this.buttonEl) {
+      this.buttonEl.focus()
+    }
+  }
+
   private onClick = (ev: MouseEvent) => {
     if (this.href !== undefined) {
       this.balNavigate.emit(ev)
@@ -115,7 +130,7 @@ export class CarouselItem implements ComponentInterface {
 
     if (!isProduct) {
       return (
-        <Host role="listitem" class={{ ...itemEl.class() }}>
+        <Host role={this.htmlRole} class={{ ...itemEl.class() }}>
           {this.src !== undefined ? (
             <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
           ) : (
@@ -144,7 +159,7 @@ export class CarouselItem implements ComponentInterface {
           }
 
     return (
-      <Host role="listitem" class={{ ...itemEl.class() }}>
+      <Host role={this.htmlRole} class={{ ...itemEl.class() }}>
         <TagType
           {...attrs}
           class={{ ...button.class(), ...button.modifier(`color-${this.color}`).class() }}
@@ -152,6 +167,7 @@ export class CarouselItem implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
+          ref={el => (this.buttonEl = el)}
         >
           {this.src !== undefined ? (
             <img

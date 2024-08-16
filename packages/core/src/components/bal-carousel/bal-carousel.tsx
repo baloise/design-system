@@ -77,6 +77,11 @@ export class Carousel
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
 
   /**
+   * Defines the role of the carousel.
+   */
+  @Prop() htmlRole: 'tablist' | 'list' = 'list'
+
+  /**
    * If `true` items move under the controls, instead of having a gap
    */
   @Prop() controlsOverflow = false
@@ -166,6 +171,19 @@ export class Carousel
     this.itemsChanged()
   }
 
+  @Listen('keydown')
+  listenToKeyDown(ev: KeyboardEvent) {
+    if (this.htmlRole !== 'tablist') {
+      if (ev.code === 'Tab') {
+        if (ev.shiftKey) {
+          this.focusPreviousItem(ev)
+        } else {
+          this.focusNextItem(ev)
+        }
+      }
+    }
+  }
+
   /**
    * @internal define config for the component
    */
@@ -181,7 +199,7 @@ export class Carousel
    */
 
   @Method()
-  async previous(steps = this.steps): Promise<void> {
+  async previous(steps = this.steps): Promise<BalSlide | undefined> {
     let previousValue = this.value - steps
     if (previousValue < 0) {
       previousValue = 0
@@ -191,19 +209,17 @@ export class Carousel
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (this.value > 0) {
+      if (didAnimate || this.value !== previousValue) {
         this.value = previousValue
-        if (!didAnimate) {
-          this.previous()
-        } else {
-          this.balChange.emit(this.value)
-        }
+        this.balChange.emit(this.value)
       }
     }
+
+    return activeSlide
   }
 
   @Method()
-  async next(steps = this.steps): Promise<void> {
+  async next(steps = this.steps): Promise<BalSlide | undefined> {
     const items = this.getAllItemElements()
     const length = items.length
     let nextValue = this.value + steps
@@ -216,11 +232,13 @@ export class Carousel
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate) {
+      if (didAnimate || this.value !== nextValue) {
         this.value = nextValue
         this.balChange.emit(this.value)
       }
     }
+
+    return activeSlide
   }
 
   /**
@@ -319,6 +337,26 @@ export class Carousel
 
     if (activeSlide) {
       this.animate(activeSlide.transformActive, false)
+    }
+  }
+
+  private async focusNextItem(ev: KeyboardEvent) {
+    if (!this.isLast) {
+      const slide = await this.next(1)
+      if (slide && slide.el) {
+        stopEventBubbling(ev)
+        await slide.el.setFocus()
+      }
+    }
+  }
+
+  private async focusPreviousItem(ev: KeyboardEvent) {
+    if (!this.isFirst) {
+      const slide = await this.previous(1)
+      if (slide && slide.el) {
+        stopEventBubbling(ev)
+        await slide.el.setFocus()
+      }
     }
   }
 
@@ -427,7 +465,7 @@ export class Carousel
           ref={el => (this.innerEl = el)}
         >
           <div
-            role="list"
+            role={this.htmlRole}
             aria-live="polite"
             id={this.carouselContainerId}
             class={{
@@ -441,7 +479,7 @@ export class Carousel
             {this.border ? (
               <div
                 id={`${this.carouselId}-border`}
-                aria-hidden={true}
+                aria-hidden="true"
                 class={{
                   ...container.element('border').class(),
                   ...container.element('border').modifier('inverted').class(this.inverted),

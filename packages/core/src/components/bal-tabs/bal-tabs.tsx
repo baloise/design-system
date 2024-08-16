@@ -278,7 +278,7 @@ export class Tabs
   @Listen('keydown')
   listenToKeyDown(ev: KeyboardEvent) {
     if (this.isTabList) {
-      if (this.vertical) {
+      if (this.vertical !== false) {
         if (ev.code === 'ArrowDown') {
           this.tabListSelectNext(ev)
         } else if (ev.code === 'ArrowUp') {
@@ -736,7 +736,7 @@ export class Tabs
     if (hasKeyboardFocus) {
       const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
       if (tabEl) {
-        tabEl.focus()
+        tabEl.focus({ preventScroll: true })
       }
     }
   }
