@@ -38,6 +38,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @State() focused = false
   @State() buttonTabindex?: number
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  /**
+   * Track focus state
+   * If `true` checkbox needs to remain focused
+   */
   @State() wasFocused = false
 
   log!: LogInstance
