@@ -53,7 +53,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
           type="button"
           aria-label={label}
           title={label}
-          tabindex={-1}
+          tabindex={0}
           class={{
             ...buttonEl.class(),
             ...buttonEl.modifier('inverted').class(this.inverted),
