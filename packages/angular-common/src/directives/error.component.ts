@@ -97,9 +97,10 @@ export class BalNgErrorComponent implements AfterViewInit {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getControl(): AbstractControl<any, any> | null {
-    debugger
+    console.log('==> getControl', this.controlName, this.group)
     if (this.controlName) {
       if (this.group) {
+        console.log('==> this.group.get(this.controlName)', this.group.get(this.controlName))
         return this.group.get(this.controlName)
       } else {
         try {
