@@ -44,7 +44,7 @@ export class BalNgErrorComponent implements AfterViewInit {
   constructor(
     @Inject(Injector) protected injector: Injector,
     @Inject(ChangeDetectorRef) protected cd: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   private controlContainer?: ControlContainer
   private control?: AbstractControl | null
@@ -97,6 +97,7 @@ export class BalNgErrorComponent implements AfterViewInit {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getControl(): AbstractControl<any, any> | null {
+    debugger
     if (this.controlName) {
       if (this.group) {
         return this.group.get(this.controlName)
