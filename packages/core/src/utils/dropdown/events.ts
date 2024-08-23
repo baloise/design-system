@@ -54,6 +54,9 @@ export class DropdownEventsUtil {
       if (!this.component.el.contains(ev.target as Node)) {
         this.component.isExpanded = false
         this.component.listEl?.resetFocus()
+
+        this.component.hasFocus = false
+        rIC(() => this.component.balBlur.emit(ev as any))
       }
     }
   }

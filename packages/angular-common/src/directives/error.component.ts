@@ -44,7 +44,7 @@ export class BalNgErrorComponent implements AfterViewInit {
   constructor(
     @Inject(Injector) protected injector: Injector,
     @Inject(ChangeDetectorRef) protected cd: ChangeDetectorRef,
-  ) { }
+  ) {}
 
   private controlContainer?: ControlContainer
   private control?: AbstractControl | null
