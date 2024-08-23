@@ -12,14 +12,7 @@ import {
   EventEmitter,
   Method,
 } from '@stencil/core'
-import {
-  areArraysEqual,
-  isArrowDownKey,
-  isArrowUpKey,
-  isEnterKey,
-  isEscapeKey,
-  isSpaceKey,
-} from '@baloise/web-app-utils'
+import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { stopEventBubbling } from '../../utils/form-input'
