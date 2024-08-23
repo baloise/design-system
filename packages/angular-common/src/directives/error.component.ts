@@ -53,23 +53,26 @@ export class BalNgErrorComponent implements AfterViewInit {
   ready = new BehaviorSubject(false)
 
   ngAfterViewInit(): void {
-    raf(() => {
-      try {
-        this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenConfig)
-      } catch {
-        /* No config provided */
-      }
+    this.control = this.getControl()
 
-      this.invalidateOn = this.config?.forms?.invalidateOn || this.invalidateOn
-      this.control = this.getControl()
+    raf(() => this.setup())
+  }
 
-      if (!this.control) {
-        console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
-      } else {
-        this.ready.next(true)
-        this.cd.detectChanges()
-      }
-    })
+  setup = () => {
+    try {
+      this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenConfig)
+    } catch {
+      /* No config provided */
+    }
+
+    this.invalidateOn = this.config?.forms?.invalidateOn || this.invalidateOn
+
+    if (!this.control) {
+      console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
+    } else {
+      this.ready.next(true)
+      this.cd.detectChanges()
+    }
   }
 
   get hasError(): boolean {
@@ -97,10 +100,8 @@ export class BalNgErrorComponent implements AfterViewInit {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getControl(): AbstractControl<any, any> | null {
-    console.log('==> getControl', this.controlName, this.group)
     if (this.controlName) {
       if (this.group) {
-        console.log('==> this.group.get(this.controlName)', this.group.get(this.controlName))
         return this.group.get(this.controlName)
       } else {
         try {
