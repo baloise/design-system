@@ -107,7 +107,6 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
     }
     const rules = utils.styleClass({ property, values, breakpoint, important: true })
     return { rules }
-
   } else {
     const values = {
       [`${prefix}-none`]: '0',
@@ -123,6 +122,4 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
     const rules = utils.styleClass({ property, values, breakpoint, important: true })
     return { rules }
   }
-
-
 }
