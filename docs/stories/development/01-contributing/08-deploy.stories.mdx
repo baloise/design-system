@@ -1,0 +1,45 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Contributing/How to Deploy" />
+
+<Banner label="How to Deploy" section="Contributing" />
+
+The Design System documentation is deployed on Vercel automatically.
+Vercel is listening on Git changes and then triggers new deployments.
+
+## Domains
+
+<Markdown>
+  {`
+| Domains                                                                                  | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [design.baloise.dev](design.baloise.dev)                                                 | The production domain for the latest released version. It is based on the latest branch. |
+| [baloise-design-preview.vercel.app](baloise-design-preview.vercel.app)                   | This points to the unreleased main branch                                                |
+| [design-system-fhlyaiq8z-baloise.vercel.app](design-system-fhlyaiq8z-baloise.vercel.app) | Each pull request gets deployed with its own url                                         |
+  `}
+</Markdown>
+
+## Pull Request Deployments
+
+In the pull request Vercel adds a comment with details to the deployment.
+
+import VercelDeploy from '../../assets/images/contribution/deploy.png'
+
+<img src={VercelDeploy} />
