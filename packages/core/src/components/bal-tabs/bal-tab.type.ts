@@ -16,7 +16,7 @@ export interface BalTabOption {
   passed?: boolean
   index?: number
   context?: BalProps.BalTabsContext
-  navigate?: EventEmitter<MouseEvent>
+  navigate?: EventEmitter<Event>
   trackingData?: Attributes
   hidden?: boolean // deprecated use invisible instead
 }
@@ -44,7 +44,7 @@ export interface TabProps {
   iconPosition: BalProps.BalTabsIconPosition
   tabs: BalTabOption[]
   context: BalProps.BalTabsContext
-  onSelectTab: (ev: MouseEvent, tab: BalTabOption) => void
+  onSelectTab: (ev: Event, tab: BalTabOption) => void
   lineWidth?: number
   lineOffsetLeft?: number
   lineHeight?: number
@@ -67,5 +67,5 @@ export interface TabItemProps {
   context: BalProps.BalTabsContext
   iconPosition: BalProps.BalTabsIconPosition
   trackingData?: Attributes
-  onSelectTab: (ev: MouseEvent) => void
+  onSelectTab: (ev: Event) => void
 }

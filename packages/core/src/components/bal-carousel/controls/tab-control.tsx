@@ -9,10 +9,11 @@ export interface TabControlItem {
 export interface TabControlProps {
   value: number
   items: TabControlItem[]
+  containerId: string
   onControlChange: (item: TabControlItem) => void
 }
 
-export const TabControl: FunctionalComponent<TabControlProps> = ({ value, items, onControlChange }) => {
+export const TabControl: FunctionalComponent<TabControlProps> = ({ value, items, containerId, onControlChange }) => {
   const block = BEM.block('carousel')
   const controls = block.element('controls')
 
@@ -27,6 +28,7 @@ export const TabControl: FunctionalComponent<TabControlProps> = ({ value, items,
         <bal-card-content>
           {items.map(item => (
             <bal-button
+              aria-controls={containerId}
               key={item.value}
               expanded
               color={value === item.value ? 'primary' : 'light'}

@@ -21,6 +21,7 @@ import {
   isDescendant,
   raf,
   transitionEndAsync,
+  waitAfterFramePaint,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
@@ -29,12 +30,13 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
-import { TabNav } from './components/tab-nav'
 import { getComputedPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
+import { TabNav } from './components/tab-nav'
+import { toKebabCase } from '../../utils/string'
 
 @Component({
   tag: 'bal-tabs',
@@ -104,7 +106,7 @@ export class Tabs
   @Prop() overflow = true
 
   /**
-   * Steps can be passed as a property or through HTML markup.
+   * Tabs can be passed as a property or through HTML markup.
    */
   @Prop() options: BalTabOption[] = []
 
@@ -135,7 +137,7 @@ export class Tabs
   @Prop() spaceless = false
 
   /**
-   * If `true` the tabs or steps can be clicked.
+   * If `true` the tabs or tabs can be clicked.
    */
   @Prop() clickable = true
 
@@ -273,6 +275,25 @@ export class Tabs
     this.isUsedInNavbar(ev)
   }
 
+  @Listen('keydown')
+  listenToKeyDown(ev: KeyboardEvent) {
+    if (this.isTabList) {
+      if (this.vertical !== false) {
+        if (ev.code === 'ArrowDown') {
+          this.tabListSelectNext(ev)
+        } else if (ev.code === 'ArrowUp') {
+          this.tabListSelectPrevious(ev)
+        }
+      } else {
+        if (ev.code === 'ArrowRight') {
+          this.tabListSelectNext(ev)
+        } else if (ev.code === 'ArrowLeft') {
+          this.tabListSelectPrevious(ev)
+        }
+      }
+    }
+  }
+
   isUsedInNavbar(ev: UIEvent) {
     const target = ev.target as HTMLElement
     const parentNavbar = target.closest('bal-navbar')
@@ -338,6 +359,10 @@ export class Tabs
    * ------------------------------------------------------
    */
 
+  private get isTabList(): boolean {
+    return this.store.filter(tab => !!tab.href).length === 0
+  }
+
   private get items(): HTMLBalTabItemElement[] {
     return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
   }
@@ -354,8 +379,8 @@ export class Tabs
     if (!areArraysEqual(this.store, newStore)) {
       this.store = newStore
     } else if (!this.optionalTabSelection && !this.accordion && this.value === undefined && this.store.length > 0) {
-      const firstStep = this.store[0]
-      this.value = firstStep.value
+      const firstTab = this.store[0]
+      this.value = firstTab.value
     }
   }
 
@@ -369,12 +394,16 @@ export class Tabs
 
   private setActiveContent = () => {
     if (this.options.length === 0) {
-      this.items.forEach(item => item.setActive(this.isActive(item)))
+      this.items.forEach(item => item.setActive(this.isTabActive(item)))
     }
   }
 
-  private isActive(step: BalTabOption): boolean {
-    return step.value === this.value
+  private isTabActive(tab: BalTabOption): boolean {
+    return tab.value === this.value
+  }
+
+  private isTabVisible(tab: BalTabOption): boolean {
+    return !tab.hidden
   }
 
   private parseVertical(): boolean {
@@ -631,6 +660,88 @@ export class Tabs
   }
 
   /**
+   * PRIVATE Tab Navigation with Arrow Keys
+   * ------------------------------------------------------
+   */
+
+  private findNextTab(previous = false): BalTabOption | undefined {
+    const indexOfActive = this.store.findIndex(t => this.isTabActive(t))
+    let tabs = this.store.map((tab, index) => ({
+      index,
+      visible: !tab.hidden && !tab.disabled,
+    }))
+
+    if (previous) {
+      tabs = tabs.reverse()
+    }
+
+    const visibleTabs = tabs.filter(t => t.visible).map(t => t.index)
+
+    const findNextTabReducer = (acc: number, index: number) => {
+      // found a new higher index need to break out
+      if (acc > indexOfActive) {
+        return acc
+      }
+
+      if (index <= acc) {
+        return acc
+      } else {
+        return index
+      }
+    }
+
+    const findPreviousTabReducer = (acc: number, index: number) => {
+      // found a new lower index need to break out
+      if (acc < indexOfActive) {
+        return acc
+      }
+
+      if (index >= acc) {
+        return acc
+      } else {
+        return index
+      }
+    }
+
+    const reducer = previous ? findPreviousTabReducer : findNextTabReducer
+    const nextIndex = visibleTabs.reduce((acc, value) => reducer(acc, value), indexOfActive)
+
+    return this.store[nextIndex]
+  }
+
+  private findPreviousTab(): BalTabOption | undefined {
+    return this.findNextTab(true)
+  }
+
+  private tabListSelectNext(ev: KeyboardEvent) {
+    const nextTab = this.findNextTab()
+
+    if (nextTab) {
+      this.onSelectTab(ev, nextTab)
+    }
+  }
+
+  private tabListSelectPrevious(ev: KeyboardEvent) {
+    const previousTab = this.findPreviousTab()
+
+    if (previousTab) {
+      this.onSelectTab(ev, previousTab)
+    }
+  }
+
+  async focus(tab: BalTabOption) {
+    await waitAfterFramePaint()
+    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+
+    if (hasKeyboardFocus) {
+      const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
+      if (tabEl) {
+        tabEl.focus({ preventScroll: true })
+      }
+    }
+  }
+
+  /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
@@ -647,27 +758,28 @@ export class Tabs
     }
   }
 
-  private onSelectTab = async (ev: MouseEvent, step: BalTabOption) => {
-    if (step.prevent || step.disabled || !this.clickable) {
+  private onSelectTab = async (ev: Event, tab: BalTabOption) => {
+    if (tab.prevent || tab.disabled || !this.clickable) {
       stopEventBubbling(ev)
     }
 
-    if (!step.disabled && this.clickable) {
+    if (!tab.disabled && this.clickable) {
       if (this.accordion) {
-        if (step.value === this.value) {
+        if (tab.value === this.value) {
           this.toggleAccordionState()
         } else {
           this.expandAccordion()
         }
       }
 
-      if (step.navigate) {
-        step.navigate.emit(ev)
+      if (tab.navigate) {
+        tab.navigate.emit(ev)
       }
 
-      if (step.value !== this.value) {
-        this.balChange.emit(step.value)
-        await this.select(step)
+      if (tab.value !== this.value) {
+        this.balChange.emit(tab.value)
+        await this.select(tab)
+        await this.focus(tab)
       }
     }
   }
@@ -695,6 +807,10 @@ export class Tabs
     const expanded = this.accordionState === AccordionState.Expanded || this.accordionState === AccordionState.Expanding
     const contentPart = expanded ? 'content expanded' : 'content'
 
+    const valueExists = this.value !== undefined && !!this.store.find(o => o.value === this.value)
+
+    const isLinkList = !this.isTabList
+
     return (
       <Host
         class={{
@@ -710,11 +826,11 @@ export class Tabs
           ...block.modifier('collapsed').class(this.accordionState === AccordionState.Collapsed),
         }}
         data-value={this.store
-          .filter(t => this.isActive(t))
+          .filter(t => this.isTabActive(t))
           .map(t => t.value)
           .join(',')}
         data-label={this.store
-          .filter(t => this.isActive(t))
+          .filter(t => this.isTabActive(t))
           .map(t => t.label)
           .join(',')}
       >
@@ -723,12 +839,12 @@ export class Tabs
         ) : (
           <TabNav
             items={tabs}
+            isLinkList={isLinkList}
             tabsId={this.tabsId}
-            onSelectTab={this.onSelectTab}
             clickable={this.clickable}
             accordion={this.accordion}
             isAccordionOpen={this.isAccordionOpen}
-            lineActive={this.value !== undefined}
+            lineActive={valueExists}
             inverted={isInverted}
             animated={this.animated}
             context={this.context}
@@ -742,6 +858,7 @@ export class Tabs
             hasCarousel={hasCarousel}
             iconPosition={this.iconPosition}
             verticalColSize={this.verticalColSize}
+            onSelectTab={this.onSelectTab}
           ></TabNav>
         )}
         <div
