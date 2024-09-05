@@ -144,5 +144,6 @@
   "executors": "./executors.json",
   "dependencies": {
     "@nx/devkit": "18.0.5"
-  }
+  },
+  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330"
 }

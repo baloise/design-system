@@ -141,7 +141,10 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     ]
 
     try {
-      writeFileSync(path.join(DOC_PATH, 'stories', 'contributors.md'), contributorsContent.join(NEWLINE))
+      writeFileSync(
+        path.join(DOC_PATH, 'stories', 'contributing', 'contributors.md'),
+        contributorsContent.join(NEWLINE),
+      )
     } catch (err) {
       console.error(err)
     }
