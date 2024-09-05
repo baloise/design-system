@@ -30,7 +30,7 @@
     Documentation
   </a>
   <span> · </span>
-  <a href="https://design.baloise.dev/?path=/docs/contributing--documentation">Contribute</a>
+  <a href="https://design.baloise.dev/?path=/docs/contributing-overview--documentation">Contribute</a>
   <span> · </span>
   <a href="https://github.com/baloise/design-system/blob/main/CHANGELOG.md">Changelog</a>
 </h3>

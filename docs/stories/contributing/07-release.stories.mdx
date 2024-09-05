@@ -15,9 +15,9 @@ import {
   ReactFramework,
   VueFramework,
   ImageCanvas,
-} from '../../../.storybook/blocks'
+} from '../../.storybook/blocks'
 
-<Meta title="Development/Contributing/How to Release" />
+<Meta title="Contributing/How to Release" />
 
 <Banner label="How to Release" section="Contributing" />
 
@@ -44,7 +44,7 @@ The command creates a changeset file(.md) in the folder .changeset. Please commi
 
 Here's a general guide on how to add a changeset for your branch:
 
-import Changeset from '../../assets/images/contribution/changeset.gif'
+import Changeset from '../assets/images/contribution/changeset.gif'
 
 <img src={Changeset} />
 
@@ -75,7 +75,7 @@ Snapshot releases represent versions of our branches, offering users early acces
 <version>-snapshot.<pull request number>-<commit-sha>
 ```
 
-import Snapshot from '../../assets/images/contribution/snapshot.gif'
+import Snapshot from '../assets/images/contribution/snapshot.gif'
 
 <img src={Snapshot} />
 
@@ -88,7 +88,7 @@ The **Release PR** undergoes review by the core team members to ensure the accur
 
 Once approved, merging the URL **Release PR** triggers the release and publish process for the associated version.
 
-import Release from '../../assets/images/contribution/release.gif'
+import Release from '../assets/images/contribution/release.gif'
 
 <img src={Release} />
 
