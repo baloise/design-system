@@ -1,0 +1,158 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to work with the Components" />
+
+<Banner label="How to work with the Components" section="Contributing" />
+
+## How to Create Web Components with Stencil
+
+[Stencil Component Documentation
+](https://stenciljs.com/docs/introduction)
+
+## Development
+
+Start the local development environment.
+
+```bash
+npm run start
+```
+
+## Component File Structure
+
+import FileStructure from '../assets/images/contribution/file-structure.png'
+
+<img src={FileStructure} />
+
+## Component files
+
+<Markdown>
+  {`
+| File                    | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| bal-badge.tsx           | Stencil component which will be compiled into Web-Component. |
+| bal-badge.sass          | Custom component stylesheet, which is lazy loaded.           |
+| bal-badge.interfaces.ts | Types for properties and events of the component.            |
+| bal-badge.vars.sass     | CSS variables which can be used for theming.                 |
+  `}
+</Markdown>
+
+### Testing files
+
+<Markdown>
+  {`
+| File                   | Description                               | Location of the test file |
+| ---------------------- | ----------------------------------------- | ------------------------- |
+| bal-badge.a11y.html    | Example html file for accessibility test. | e2e/cypress/e2e/a11y      |
+| bal-badge.theming.html | Example theming file.                     | e2e/cypress/e2e/visual    |
+| bal-badge.visual.html  | Example html file for visual test.        | e2e/cypress/e2e/visual    |
+  `}
+</Markdown>
+
+## Component Documentation
+
+To document the components we use [Storybook](https://storybook.js.org).
+
+Storybook provides us with a robust platform to showcase and document our UI components in a systematic and interactive manner.
+
+The documentation is under `/docs`.
+
+Start the storybook local dev server with:
+
+```bash
+npm run docs
+```
+
+### Documentation folder structure
+
+import DocFileStructure from '../assets/images/contribution/doc-file-structure.png'
+
+<img src={DocFileStructure} />
+
+**Stories.ts** files contain the actual implementation of our UI components within Storybook.
+They serve as the backbone for demonstrating different states, variations, and functionalities of each
+component in isolation.
+
+```ts
+import type { JSX } from '@baloise/ds-core'
+import type { Meta } from '@storybook/html'
+import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '..
+/../utils'
+type Args = JSX.BalBadge & { content: string }
+const meta: Meta<Args> = {
+  title: 'Components/Data Display/Badge',
+  args: {
+    ...withDefaultContent('42'),
+  },
+  argTypes: {
+    ...withContent(),
+    ...withComponentControls({ tag: 'bal-badge' }),
+},
+  ...withRender(({ content, ...args }) => `<bal-badge ${props(args)}>${content}</bal-badge>`),
+}
+export default meta
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+const Story = StoryFactory<Args>(meta)
+export const Basic = Story()
+```
+
+**The meta object** contains metadata about the stories.
+
+**Title** specifies the title of the component group and component.
+
+**Args** defines default arguments for the component stories.
+
+**ArgTypes** specifies controls for adjusting component props.
+
+**withRender** provides a function to render the component with its props and content .Adding the "args" object in the "Story()", you can override existing props and introduce new ones to the default Story.
+
+**MDX files**, on the other hand, complement our stories.ts files by allowing us to provide rich textual and visual documentation alongside our components. With MDX, we can seamlessly integrate written explanations, usage guidelines, code examples, and even interactive demos directly into our Storybook documentation.
+
+```html
+## Component API import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<footer />
+```
+
+To ensure a new story appears on the component documentation page, it must be added at Headers.
+
+```html
+<StoryHeading of="{BadgeStories.WithIcon}"></StoryHeading> <canvas of="{BadgeStories.WithIcon}" />
+```
+
+import DocStructure from '../assets/images/contribution/doc-structure.png'
+
+<img src={DocStructure} />

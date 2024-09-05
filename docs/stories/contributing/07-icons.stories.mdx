@@ -1,0 +1,69 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to add Icons" />
+
+<Banner label="How to add Icons" section="Contributing" />
+
+## Create a Issue
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-feature--documentation#1-report-an-issue"
+>
+  Report a Feature
+</a>
+
+## Add new icons
+
+### UI Icons
+
+1. Download the svg icon 16x16 from https://www.streamlinehq.com/icons/core-solid.
+2. Place it at packages/icons/src/assets.
+
+### Brand Icons
+
+1. Download the svg icons in all colors from https://brand.baloise.com/.
+2. Place it at packages/brand-icons/src/assets.
+
+## Build the package
+
+To optimize the svg icons for web components run this command:
+
+```bash
+npm run optimize
+```
+
+## Add changeset
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-release--documentation#document-changes"
+>
+  Add changeset
+</a>
+
+## Finalize your PR
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-pull-request--documentation&globals=framework:angular#3-finalize-your-pull-request"
+>
+  Finalize your PR
+</a>
