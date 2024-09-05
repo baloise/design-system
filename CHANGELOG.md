@@ -1,5 +1,27 @@
 # Changelog
 
+## 16.3.0
+
+### Minor Changes
+
+- **angular**: error component accepts a form group input ( [#1436](https://github.com/baloise/design-system/pull/1436))
+
+### Patch Changes
+
+- **nav**: will not scroll to top when open nav flyout ( [#1433](https://github.com/baloise/design-system/pull/1433))
+
+- **styles**: implement the missing responsive classes for spacing ( [#1436](https://github.com/baloise/design-system/pull/1436))
+
+- **popup**: do not show arrow on fullscreen variant ( [#1429](https://github.com/baloise/design-system/pull/1429))
+
+## 16.2.1
+
+### Patch Changes
+
+- **select**: Prevent autofill with previously entered data on Edge ( [#1407](https://github.com/baloise/design-system/pull/1407))
+
+- **number-input**: handle inputs for Germany ( [#1401](https://github.com/baloise/design-system/pull/1401))
+
 ## 16.2.0
 
 ### Minor Changes

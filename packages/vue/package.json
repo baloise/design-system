@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-vue",
-  "version": "16.2.0",
+  "version": "16.3.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@baloise/ds-core": "16.2.0"
+    "@baloise/ds-core": "16.3.0"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"

@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/directive-class-suffix */
 import { AfterViewInit, ChangeDetectorRef, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
-import { AbstractControl, ControlContainer } from '@angular/forms'
+import { AbstractControl, ControlContainer, FormGroup } from '@angular/forms'
 import { BehaviorSubject } from 'rxjs'
 
 import type { BaloiseDesignSystemAngularConfig } from '../utils/config'
@@ -30,6 +30,11 @@ export class BalNgErrorComponent implements AfterViewInit {
   @Input() error?: string
 
   /**
+   * FormGroup where the control of the error message is located. (optional)
+   */
+  @Input() group?: FormGroup
+
+  /**
    * The name of the form control, which is registered in the form group.
    */
   @HostBinding('attr.controlname')
@@ -48,41 +53,30 @@ export class BalNgErrorComponent implements AfterViewInit {
   ready = new BehaviorSubject(false)
 
   ngAfterViewInit(): void {
-    raf(() => {
-      try {
-        this.controlContainer = this.injector.get<ControlContainer>(ControlContainer)
-      } catch {
-        /* No ControlContainer provided */
-      }
+    this.control = this.getControl()
 
-      if (!this.controlContainer) {
-        return
-      }
+    raf(() => this.setup())
+  }
 
-      try {
-        this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenConfig)
-      } catch {
-        /* No config provided */
-      }
+  setup = () => {
+    try {
+      this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenConfig)
+    } catch {
+      /* No config provided */
+    }
 
-      this.invalidateOn = this.config?.forms?.invalidateOn || this.invalidateOn
+    this.invalidateOn = this.config?.forms?.invalidateOn || this.invalidateOn
 
-      if (this.controlName) {
-        this.control = this.controlContainer.control?.get(this.controlName)
-        if (!this.control) {
-          console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
-        } else {
-          this.ready.next(true)
-          this.cd.detectChanges()
-        }
-      } else {
-        console.warn('[BalNgErrorComponent] Please provide a controlName')
-      }
-    })
+    if (!this.control) {
+      console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
+    } else {
+      this.ready.next(true)
+      this.cd.detectChanges()
+    }
   }
 
   get hasError(): boolean {
-    if (this.controlName && this.controlContainer && this.config && this.control) {
+    if (this.controlName && this.config && this.control) {
       if (!this.control[this.invalidateOn]) {
         return false
       }
@@ -102,5 +96,29 @@ export class BalNgErrorComponent implements AfterViewInit {
     }
 
     return false
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private getControl(): AbstractControl<any, any> | null {
+    if (this.controlName) {
+      if (this.group) {
+        return this.group.get(this.controlName)
+      } else {
+        try {
+          this.controlContainer = this.injector.get<ControlContainer>(ControlContainer)
+        } catch {
+          /* No ControlContainer provided */
+        }
+
+        if (!this.controlContainer) {
+          return null
+        }
+
+        return this.controlContainer.control?.get(this.controlName) as AbstractControl<any, any>
+      }
+    } else {
+      console.warn('[BalNgErrorComponent] Please provide a controlName')
+    }
+    return null
   }
 }

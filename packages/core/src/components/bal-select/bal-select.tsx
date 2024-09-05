@@ -1058,6 +1058,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                 aria-disabled={this.disabled ? 'true' : null}
                 data-testid="bal-select-input"
                 autocomplete={this.autocomplete}
+                aria-autocomplete={this.autocomplete === 'off' ? 'none' : null}
                 placeholder={this.inputPlaceholder}
                 readonly={!this.typeahead || this.disabled || this.readonly}
                 contentEditable={this.typeahead}
