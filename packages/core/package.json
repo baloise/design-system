@@ -25,7 +25,7 @@
     "loader/"
   ],
   "scripts": {
-    "bubu": "vitest --ui"
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@baloise/ds-styles": "16.2.1",
