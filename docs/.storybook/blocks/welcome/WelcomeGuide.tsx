@@ -22,7 +22,11 @@ export const WelcomeGuide = ({ children }) => {
         />
         <LinkCard pageTitle={'Changelog'} description={"What's new?"} />
         <LinkCard pageTitle={'Support'} description={'Ask a question, report a bug or request a feature'} />
-        <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
+        <LinkCard
+          label={'Contributing'}
+          pageTitle={'Contributing/Overview'}
+          description={'Be part of the Design System Community'}
+        />
       </LinkCards>
     </div>
   )

@@ -1,0 +1,112 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to create a Feature" />
+
+<Banner label="How to create a Feature" section="Contributing" />
+
+## 1. Report an issue
+
+> **HINT** only when you are reporting a bug
+
+To begin the process, the first step is to create an issue at the following URL: [https://github.com/baloise/design-system/issues](https://github.com/baloise/design-system/issues).
+
+This is where you will describe the bug you have found.
+
+import CreateAFeature from '../assets/images/contribution/create-feature.gif'
+
+<img src={CreateAFeature} />
+
+## 2. Generate branch
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-pull-request--documentation#2-create-issue-branch"
+>
+  Create a Issue Branch
+</a>
+
+## 3. Implement feature
+
+Following the creation of your branch and the associated pull request, the next step is to start working on your feature.
+
+## 4. Visual tests
+
+After you've made progress on developing your feature, the next crucial step involves creating or updating visual tests for design verification.
+This process ensures that your feature not only functions as intended but also aligns with the project's design standards and aesthetics.
+
+### Identify Visual Changes:
+
+Determine which parts of the interface your feature affects. This includes any new UI elements you've introduced or modifications to existing ones.
+
+### Update or Create Visual Tests:
+
+Depending on whether your feature introduces new UI components or alters existing ones, you may need to create new visual tests or update existing ones.
+
+Visual tests typically involve automated screenshots of the UI before and after your changes, to visually capture the impact of your work.
+
+Here is the tutorial how to do visual tests.
+
+## 4. Component tests
+
+After ensuring your feature stick to the project's design standards through visual testing, the next critical step is to focus on the logic and functionality by creating or updating component tests.
+
+This phase is essential for verifying that your feature behaves as expected under various conditions and interacts correctly with other parts of the application.
+
+### Identify Logical Components:
+
+Pinpoint the key logical components and functionalities introduced or affected by your feature.
+
+Consider all possible interactions, edge cases, and the expected behavior of these components.
+
+### Review Existing Tests:
+
+If your feature modifies existing components, start by reviewing any existing tests to understand what aspects are already covered.
+
+Determine if these tests need to be updated to accommodate the changes introduced by your feature.
+
+### Write New Tests:
+
+For new functionalities, write component tests that cover all critical paths of your feature.
+
+Ensure these tests validate the core logic, handle user interactions correctly, and manage data as intended.
+
+Focus on both positive scenarios (expected use) and negative scenarios (error handling and edge cases).
+
+### Run and Verify Tests:
+
+Execute your component tests to ensure they pass successfully. Pay attention to any failures or unexpected behavior, as these indicate areas where your feature’s logic may need refinement.
+
+## 5. Add changeset
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-release--documentation#document-changes"
+>
+  Add changeset
+</a>
+
+## 6. Finalize your PR
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-pull-request--documentation&globals=framework:angular#3-finalize-your-pull-request"
+>
+  Finalize your PR
+</a>

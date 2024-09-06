@@ -1,0 +1,141 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to test" />
+
+<Banner label="How to test" section="Contributing" />
+
+## Create new visual test
+
+When initiating the creation of a visual test, the initial step is to navigate to
+the `/design-system/test/cypress/e2e/visual` directory. Once there, proceed to create a
+new file with the appropriate name for the test.
+
+Here's a basic example of how the test might look like:
+
+```ts
+describe('bal-content', () => {
+  beforeEach(() =>
+    cy.visit('/components/bal-content/test/bal-content.visual.html').platform('desktop').waitForDesignSystem(),
+  )
+  it('basic component', () => {
+    cy.getByTestId('basic').testVisual('content-basic')
+    cy.getByTestId('alignment').testVisual('content-alignment')
+    cy.getByTestId('direction').testVisual('content-direction')
+    cy.getByTestId('space').testVisual('content-space')
+  })
+})
+```
+
+`testVisual` command captures a screenshot or visual representation of the specified UI element as it
+appears in the browser during test execution. This captured visual data is then compared against a baseline
+or reference image to detect any visual regressions or unexpected changes in the UI layout, styling, or appearance.
+
+## How to start E2E tests locally
+
+To start tests locally run this command:
+
+```bash
+npm run e2e
+```
+
+import RunE2E from '../assets/images/contribution/run-e2e.gif'
+
+<img src={RunE2E} />
+
+## Types of test we do
+
+<Markdown>
+  {`
+| File                    | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| bal-badge.tsx           | Stencil component which will be compiled into Web-Component. |
+| bal-badge.sass          | Custom component stylesheet, which is lazy loaded.           |
+| bal-badge.interfaces.ts | Types for properties and events of the component.            |
+| bal-badge.vars.sass     | CSS variables which can be used for theming.                 |
+  `}
+</Markdown>
+
+More about testing can be found [here](/?path=/docs/development-testing--documentation).
+
+## Investigate visual diff
+
+When a visual test fails, it typically indicates that there is a difference between the current
+visual representation of the UI component being tested and the expected or baseline visual state.
+
+To check why the test failed:
+
+import VisualReport from '../assets/images/contribution/visual-report.gif'
+
+<img src={VisualReport} />
+
+Open the folder you downloaded and locate the "report" HTML file. Then, double-click or open
+the report HTML file to view the detailed information about the failed test.
+
+import VisualReportImage from '../assets/images/contribution/visual-report.png'
+
+<img src={VisualReportImage} />
+
+## Update base images
+
+If you wish to update the base images, you’ll need to perform the appropriate action.
+
+Running the **/create-base-image** followed by the file name of the visual test will generate
+base images only for specific component.
+
+There is an option to generate base images for all the components, in that case run
+only **/create-base-image** command.
+
+import CreateBaseImage from '../assets/images/contribution/action-create-base-images.gif'
+
+<img src={CreateBaseImage} />
+
+## Unit tests
+
+We're using unit tests to make sure each specific part of our software works as it should.
+Run them with this command
+
+```bash
+npm run test
+```
+
+To test different packages use this command and change the package name (styles)
+
+```bash
+npx nx run core:test
+```
+
+Or open the Vitest Dashboard
+
+```bash
+npx nx run core:test-ui
+```
+
+import UnitTests from '../assets/images/contribution/unit-tests.png'
+
+<img src={UnitTests} />
+
+### Location example
+
+In this case we have file-validation util for file-upload component and unit test for it is located in the
+"test" folder with name "file-validation.util.spec.ts".
+
+<img src={UnitTestsStructure} />
+
+import UnitTestsStructure from '../assets/images/contribution/unit-test-structure.png'

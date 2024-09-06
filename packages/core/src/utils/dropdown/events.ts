@@ -1,3 +1,4 @@
+import { rIC } from '../helpers'
 import { DropdownComponent } from './component'
 
 export type DropdownEvents = {
@@ -18,8 +19,10 @@ export class DropdownEventsUtil {
   }
 
   handleBlur(ev: FocusEvent) {
-    this.component.hasFocus = false
-    this.component.balBlur.emit(ev)
+    if (!this.component.isExpanded) {
+      this.component.hasFocus = false
+      rIC(() => this.component.balBlur.emit(ev))
+    }
   }
 
   handleClick(ev: MouseEvent) {
@@ -51,6 +54,9 @@ export class DropdownEventsUtil {
       if (!this.component.el.contains(ev.target as Node)) {
         this.component.isExpanded = false
         this.component.listEl?.resetFocus()
+
+        this.component.hasFocus = false
+        rIC(() => this.component.balBlur.emit(ev as any))
       }
     }
   }

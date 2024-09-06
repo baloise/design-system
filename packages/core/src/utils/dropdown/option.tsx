@@ -80,11 +80,14 @@ export class DropdownOptionUtil {
     await this.component.valueUtil.updateInputContent()
   }
 
-  async listenToOptionChange(_ev: BalEvents.BalOptionChange) {
+  async listenToOptionChange(ev: BalEvents.BalOptionChange) {
     const newSelectedValues = (await this.component.listEl?.getSelectedValues()) || []
     this.component.valueUtil.updateRawValueBySelection(newSelectedValues)
     if (!this.component.multiple) {
       this.component.popupUtil.collapseList()
+      if (this.component.hasFocus) {
+        this.component.balBlur.emit(new FocusEvent('blur', { relatedTarget: this.component.el }))
+      }
     }
   }
 }
