@@ -27,9 +27,6 @@
     "docs",
     "e2e"
   ],
-  "nx": {
-    "includedScripts": []
-  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.0.0",
     "@angular-devkit/core": "~15.0.0",
