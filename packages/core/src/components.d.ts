@@ -2037,6 +2037,10 @@ export namespace Components {
         "position": BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
+        /**
+          * This is used to connect the flyout to the aria controls
+         */
+        "navId": string;
     }
     interface BalNavMetaBar {
         /**
@@ -3097,6 +3101,10 @@ export namespace Components {
          */
         "active": boolean;
         /**
+          * A11y attributes for the native tab element.
+         */
+        "aria"?: BalProps.BalTabItemAria;
+        /**
           * If `true` a small red bubble is added to the tab.
          */
         "bubble": boolean | string;
@@ -3124,6 +3132,10 @@ export namespace Components {
           * Label for the tab.
          */
         "label": string;
+        /**
+          * If `true` the tab does not have a panel
+         */
+        "noPanel": boolean;
         /**
           * Tell's if the linking is done by a router.
          */
@@ -7134,6 +7146,10 @@ declare namespace LocalJSX {
         "position"?: BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
+        /**
+          * This is used to connect the flyout to the aria controls
+         */
+        "navId"?: string;
     }
     interface BalNavMetaBar {
         /**
@@ -8140,6 +8156,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * A11y attributes for the native tab element.
+         */
+        "aria"?: BalProps.BalTabItemAria;
+        /**
           * If `true` a small red bubble is added to the tab.
          */
         "bubble"?: boolean | string;
@@ -8163,6 +8183,10 @@ declare namespace LocalJSX {
           * Label for the tab.
          */
         "label"?: string;
+        /**
+          * If `true` the tab does not have a panel
+         */
+        "noPanel"?: boolean;
         /**
           * Emitted when the link element has clicked
          */

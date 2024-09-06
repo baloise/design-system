@@ -83,7 +83,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     )
   }
 
-  render(_context?: { onClick: () => void }) {
+  render(_context?: { onClick: () => void; flyoutId: string }) {
     return (
       <bal-nav-link
         role="listitem"

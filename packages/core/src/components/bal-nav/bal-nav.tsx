@@ -428,7 +428,11 @@ export class Nav
                     value={this.activeMetaLinkValue}
                     onBalChange={ev => this.onMetaBarTabChange(ev)}
                   >
-                    {this.linkItems.map(item => item.render())}
+                    {this.linkItems.map(item =>
+                      item.render({
+                        flyoutId: `${this.navId}-menu-flyout`,
+                      }),
+                    )}
                   </bal-tabs>
                 ) : (
                   <span></span>
@@ -450,13 +454,14 @@ export class Nav
                     .find(item => item.value === this.activeMetaLinkValue)
                     ?.mainLinkItems.map(item =>
                       item.render({
+                        flyoutId: `${this.navId}-menu-flyout`,
                         onClick: () => this.onMenuBarTabChange(item.value),
                       }),
                     )}
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout>
+                <bal-nav-menu-flyout navId={this.navId}>
                   <bal-nav-link
                     role="listitem"
                     variant="overview"
