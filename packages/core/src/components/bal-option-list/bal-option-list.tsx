@@ -118,12 +118,16 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * Focus the selected visible option in the list, if no option is selected it selects the first one
    */
-  @Method() async focusSelected(): Promise<void> {
-    const selectedOption = this.options.find(it => it.selected == true)
-    if (selectedOption) {
-      selectedOption.focus()
+  @Method() async focusSelected(): Promise<number> {
+    const options = this.options
+    const indexToFocus = this.getSelectedOptionIndex(options)
+
+    if (indexToFocus) {
+      this.updateFocus(options, indexToFocus)
+      await waitAfterFramePaint()
+      return indexToFocus
     } else {
-      await this.focusFirst()
+      return await this.focusFirst()
     }
   }
 
@@ -442,10 +446,20 @@ export class OptionList implements ComponentInterface, Loggable {
     return undefined
   }
 
+  private getSelectedOptionIndex(options: HTMLBalOptionElement[]): number {
+    for (let index = 0; index < options.length; index++) {
+      const option = options[index]
+      if (option.selected && !option.hidden) {
+        return index
+      }
+    }
+    return this.focusIndex
+  }
+
   private getFirstOptionIndex(options: HTMLBalOptionElement[]): number {
     for (let index = 0; index < options.length; index++) {
       const option = options[index]
-      if (!option.disabled) {
+      if (!option.disabled && !option.hidden) {
         return index
       }
     }
@@ -528,7 +542,6 @@ export class OptionList implements ComponentInterface, Loggable {
           ...block.class(),
         }}
         id={this.inputId}
-        tabIndex={-1}
       >
         <div
           role="listbox"
