@@ -122,7 +122,7 @@ export class OptionList implements ComponentInterface, Loggable {
     const options = this.options
     const indexToFocus = this.getSelectedOptionIndex(options)
 
-    if (indexToFocus) {
+    if (indexToFocus > 0) {
       this.updateFocus(options, indexToFocus)
       await waitAfterFramePaint()
       return indexToFocus
