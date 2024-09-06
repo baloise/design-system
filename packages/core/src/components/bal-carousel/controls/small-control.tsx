@@ -7,6 +7,7 @@ export interface SmallControlProps {
   inverted: boolean
   leftControlTitle: string
   rightControlTitle: string
+  containerId: string
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -17,6 +18,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
   inverted,
   leftControlTitle,
   rightControlTitle,
+  containerId,
   onNextClick,
   onPreviousClick,
 }) => {
@@ -37,6 +39,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
           ...button.modifier('left').class(),
           ...button.modifier('hidden').class(isFirst),
         }}
+        aria-controls={containerId}
         square
         size="small"
         icon="nav-go-left"
@@ -55,6 +58,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
           ...button.modifier('right').class(),
           ...button.modifier('hidden').class(isLast),
         }}
+        aria-controls={containerId}
         square
         size="small"
         icon="nav-go-right"

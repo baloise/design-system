@@ -253,15 +253,17 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
           .join(',')}
       >
         <nav
-          role="tablist"
           class={{
             ...bemStepsNav.class(),
           }}
+          role="tablist"
+          aria-live="polite"
         >
           <bal-carousel
             class={{
               ...bemStepsNav.element('carousel').class(),
             }}
+            htmlRole={''}
             onBalChange={stopEventBubbling}
             controls="small"
             items-per-view="auto"
@@ -272,6 +274,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
               .map(step => (
                 <bal-carousel-item
                   key={step.value}
+                  htmlRole={''}
                   class={{
                     ...bemStepsNav.element('carousel').element('item').class(),
                     ...bemStepsNav.element('carousel').element('item').modifier('passed').class(step.passed),

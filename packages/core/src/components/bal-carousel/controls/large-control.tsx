@@ -8,6 +8,7 @@ export interface LargeControlProps {
   areControlsHidden: boolean
   leftControlTitle: string
   rightControlTitle: string
+  containerId: string
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -19,6 +20,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
   areControlsHidden,
   onNextClick,
   onPreviousClick,
+  containerId,
   leftControlTitle,
   rightControlTitle,
 }) => {
@@ -40,6 +42,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
           ...button.modifier('left').class(),
           ...button.modifier('hidden').class(isFirst && areControlsHidden),
         }}
+        aria-controls={containerId}
         square
         icon="nav-go-left"
         rounded
@@ -56,6 +59,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
           ...button.modifier('right').class(),
           ...button.modifier('hidden').class(isLast && areControlsHidden),
         }}
+        aria-controls={containerId}
         square
         icon="nav-go-right"
         rounded

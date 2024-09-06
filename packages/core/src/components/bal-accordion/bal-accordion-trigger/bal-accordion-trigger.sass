@@ -2,6 +2,7 @@
 
 .bal-accordion__trigger
   position: static
+  display: block
   &__button
     display: flex
     justify-content: center
@@ -12,3 +13,6 @@
     width: 3rem
     user-select: none
     cursor: pointer
+
+.bal-accordion__trigger__button.bal-focused:focus-visible
+  @extend %focus-shadow

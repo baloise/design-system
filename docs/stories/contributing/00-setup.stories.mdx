@@ -1,0 +1,146 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/Setup" />
+
+<Banner label="Setup" section="Contributing" />
+
+<Lead>
+  The Baloise Design System is divided into multiple NPM packages. Development for all packages are happening inside one
+  mono repository. Follow the steps listed below to get the dev environment up and running.
+</Lead>
+
+## Prerequisite - NodeJS
+
+To work with this project a recent LTS version of NodeJS and npm is required. Make sure you've installed and/or updated [Node](https://nodejs.org/en/) before continuing.
+
+> **Warning!**
+> Note that you will need to use npm 8 or higher.
+
+## Clone project
+
+To start building a new web component using Stencil, clone this repo to a new directory:
+
+```bash
+git clone https://github.com/baloise/design-system.git design-system
+cd design-system
+```
+
+## Install dependencies
+
+First install all the dependencies of the packages. Then make an initial build to have all the needed artifacts in place and afterwards link the packages.
+
+```bash
+npm install
+```
+
+## Build project
+
+After the installation, lets build the whole Design System.
+
+```bash
+npm run build
+```
+
+## Run dev mode
+
+For **development** we recommend to start the Stencil Dev Serve with:
+
+```bash
+npm run start
+```
+
+The page is available under [http://localhost:4000](http://localhost:4000).
+
+## Run documentation
+
+To start the **documentation** page locally. Use storybook also for the development.
+
+```bash
+npm run docs
+```
+
+The page is available under [http://localhost:6006](http://localhost:6006).
+
+## Run e2e tests
+
+To start the **cypress E2E** tests locally.
+
+```bash
+npm run e2e
+```
+
+## Project structure
+
+The Baloise Design System is divided into multiple NPM packages.
+
+### Packages to release
+
+The below packages in the graph and table are the ones who get published to npm.
+
+docs/stories/assets/images/contribution/packages-to-release.png
+
+import PackagesToRelease from '../assets/images/contribution/packages-to-release.png'
+
+<img src={PackagesToRelease} />
+
+<Markdown>
+  {`
+| **Package**        | Description                                                                    |
+| :----------------- | :----------------------------------------------------------------------------- |
+| **core**           | Core package build with web components.                                        |
+| **angular**        | Angular standalone component proxies based on the the core package.            |
+| **angular-module** | Angular component provided as an Angular Module.                               |
+| **angular-legacy** | Webpack legacy Angular library.                                                |
+| **angular-common** | The above Angular projects use and extend the common providers and components. |
+| **react**          | React component proxies based on the the core package.                         |
+| **vue**            | Vue component proxies based on the the core package.                           |
+| **table**          | Integration library for AG-Grid with styles and renderer functions.            |
+| **testing**        | Testing package with custom and overridden commands for each component.        |
+| **styles**         | Basic CSS styles with utility classes.                                         |
+| **tokens**         | Design Tokens like color and spacing.                                          |
+| **maps**           | Google Maps styles and icons.                                                  |
+| **icons**          | SVG icons of the design system.                                                |
+| **brand-icons**    | Brand icons of Baloise.                                                        |
+| **favicons**       | Favicons of the design system.                                                 |
+| **css**            | (deprecated) Basic CSS styles with utility classes.                            |
+| **fonts**          | Web-font of the design system.                                                 |
+  `}
+</Markdown>
+
+### Local development packages
+
+These packages are only for local development, building and testing the project.
+
+import LocalDevelopmentPackages from '../assets/images/contribution/local-development-packages.png'
+
+<img src={LocalDevelopmentPackages} />
+
+<Markdown>
+  {`
+| **Package**               | **Description**                                                                                                      |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------- |
+| **ds-nx**                 | Internal Nx executors for custom build jobs.                                                                         |
+| **e2e**                   | The cypress project with accessibility (A11Y) tests, visual regression tests and tests to check the testing package. |
+| **docs**                  | This is the main documentation project build with storybook                                                          |
+| **output-target-vue**     | This library creates proxy components or the vue framework                                                           |
+| **output-target-react**   | This library creates proxy components or the react framework                                                         |
+| **output-target-angular** | This library creates proxy components or the angular framework                                                       |
+  `}
+</Markdown>

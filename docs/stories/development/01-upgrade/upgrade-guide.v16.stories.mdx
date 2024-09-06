@@ -1,0 +1,628 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  DiffSource,
+  CssTypographyColors,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v16" />
+
+<Banner label="Updating to v16" section="Development/Upgrade Guides" />
+
+<Lead>
+
+Updating from v15 to v16
+
+</Lead>
+
+## Overview
+
+Here is an overview of the breaking changes of the newly introduced version 16:
+
+- [Simplifying Our Package Names](#simplifying-our-package-name)
+- [Components](#components)
+  - Distribution files
+  - Button
+  - Navigation
+- [Testing](#testing)
+
+This change is recommended but can be done in a later stage:
+
+- [Standardizing Design Tokens](#standardizing-design-tokens)
+
+## Simplifying Our Package Names
+
+### Why the Change?
+
+In our continuous effort to enhance your development experience, we've made some important changes to our package names.
+This update addresses four main issues that many of you have voiced:
+
+1. **Lengthy Names:** The previous package names were cumbersome, leading to a less than ideal experience in your IDEs. Long names not only clutter your workspace but also make auto-completion less efficient, slowing down your coding process.
+2. **Relevance:** Over time, as our libraries evolved, the original package names no longer accurately reflected the content and functionality they enclose. This mismatch could cause confusion and make it harder for new users to find what they need.
+3. **Sub-Packages Refinement:** The Angular sub-packages have been reorganized for direct, independent installation, addressing issues of incorrect imports and side-effects.
+
+### What's Changing?
+
+We've undertaken a comprehensive review of our package naming convention to address these concerns. The result is a set of shorter, more intuitive names that better describe the package contents.
+Here's a summary of the key changes:
+
+<Markdown>
+  {`
+| Old Package Name                                         |       | New Package Name               |
+| :------------------------------------------------------- | :---: | :----------------------------- |
+| \`@baloise/design-system-components\`                    | **→** | \`@baloise/ds-core\`           |
+| \`@baloise/design-system-components-angular\`            | **→** | \`@baloise/ds-angular-module\` |
+| \`@baloise/design-system-components-angular/standalone\` | **→** | \`@baloise/ds-angular\`        |
+| \`@baloise/design-system-components-angular/legacy\`     | **→** | \`@baloise/ds-angular-legacy\` |
+| \`@baloise/design-system-components-react\`              | **→** | \`@baloise/ds-react\`          |
+| \`@baloise/design-system-components-vue\`                | **→** | \`@baloise/ds-vue\`            |
+| \`@baloise/design-system-components-table\`              | **→** | \`@baloise/ds-table\`          |
+| \`@baloise/design-system-cli\`                           | **→** | \`@baloise/ds-devkit\`         |
+| \`@baloise/design-system-*\`                          | **→** | \`@baloise/ds-\\\*\`           |
+`}
+</Markdown>
+
+#### New Packages
+
+<Markdown>
+  {`
+| Package Name                   | Description                                                                             |
+| :----------------------------- | :-------------------------------------------------------------------------------------- |
+| \`@baloise/ds-core\`           | Core features of the Design System like Web-Components, Components-Styles and Utilities |
+| \`@baloise/ds-angular-module\` | Angular component and provider library based on Angular Module and ESBuild              |
+| \`@baloise/ds-angular\`        | Angular component and provider library based on Angular Standalone and ESBuild          |
+| \`@baloise/ds-angular-legacy\` | Angular component and provider library based on Angular Module and Webpack              |
+| \`@baloise/ds-react\`          | React component library                                                                 |
+| \`@baloise/ds-vue\`            | Vue component library                                                                   |
+| \`@baloise/ds-table\`          | AG-Grid components and styles                                                           |
+| \`@baloise/ds-devkit\`         | Angular and NX schematics                                                               |
+| \`@baloise/ds-*\`           |                                                                                         |
+`}
+</Markdown>
+
+### How to Upgrade
+
+Upgrading to the new package names is now more streamlined, thanks to our newly introduced Angular Schematics script
+for Angular projects. For projects not using Angular, the upgrade will need to be carried out manually.
+Here's how to proceed in both scenarios:
+
+#### For Angular Projects
+
+1. **Install Devkit:** First install the devkit package with the angular schematics script:
+
+```bash
+npm add -D -E @baloise/ds-devkit
+```
+
+2. **Angular Schematics Script:** Rename the packages by simply run the following command in your project's root directory:
+
+```bash
+npx ng generate @baloise/ds-devkit:up16
+```
+
+3. **Verify the Changes:** Once the script has run, review the changes to ensure everything has been updated correctly. It's a good practice to check the git diff if your project is version-controlled.
+
+4. **Test Your Application:** Run your application and execute your test suite to ensure that everything works as expected. The schematic should handle the renaming seamlessly, but it's important to verify that no issues have arisen from the change.
+
+#### For Non-Angular Projects:
+
+1. **Check the Full List:** Refer to the detailed mapping table above. This table lists all old and new package names, ensuring you're aware of all the changes.
+
+2. **Update Your Dependencies:** Manually modify the dependencies in your package.json.
+
+3. **Refactor Your Imports:** Manually update import statements in your codebase to reflect the new package names.
+
+4. **Test Thoroughly:** After making these updates, thoroughly test your application to ensure that all functionalities work as expected. The manual process might be more prone to human error, so a comprehensive testing phase is crucial.
+
+## Components
+
+Moreover, there are two breaking changes in the components section:
+
+### Distribution files
+
+For non Angular projects how use the HTML import approach, you need to update the imports a indicated below.
+
+<DiffSource
+  code={`
+-  <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
+-  <script
+-    type="module"
+-    src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+-  ></script>
+-  <script nomodule src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"></script>
++  <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/baloise-design-system.css" />
++  <script
++    type="module"
++    src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
++  ></script>
++  <script nomodule src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+`}
+/>
+
+### Button
+
+Properties `topRounded` and `bottomRounded` has been removed, due to not match the design criteria.
+
+### Navigation
+
+Component `bal-navigation` has been removed and replaced with `bal-nav` to improve performance and SEO.
+
+## Testing
+
+The export paths for the testing packages have been improved.
+
+<DiffSource
+  code={`-  import '@baloise/design-system-testing/dist/add-custom-commands'
+-  import '@baloise/design-system-testing/dist/add-override-commands'
++  import '@baloise/ds-testing/add-custom-commands'
++  import '@baloise/ds-testing/add-override-commands'`}
+/>
+
+## Standardizing Design Tokens
+
+This change is not mandatory for upgrading to the new version 16. Can be done in a later stage.
+However, the CSS package is marked as deprecated.
+
+### Why the Change?
+
+The objective of this breaking change is to standardize the design tokens, facilitating their export to platforms such as
+Figma and others. With the introduction of these new design tokens, we can automatically generate CSS utility classes.
+This enhancement extends functionality, particularly in responsive design and pseudo-states.
+
+> **Non-Breaking Nature of the Update**
+>
+> Importantly, this token changes has been designed to be non-breaking.
+>
+> Our goal is to ensure that you can benefit from these new features without disrupting your existing workflows.
+>
+> Therefore keep the `@baloise/ds-css` package instead of the new `@baloise/ds-styles` package. However, then you will not benefit from the new improved CSS-Utility Classes.
+>
+> The previous documentation of version `15.x.x` with the old CSS-Utility Classes can be found [here](https://baloise-design-system-v15.vercel.app).
+>
+> <br />
+> Here is how you do it.
+>
+> 1. **Install Package:** First lets install the deprecated `@baloise/ds-css`.
+>
+> ```bash
+> npm add @baloise/ds-css
+> ```
+>
+> 2. **Update Imports:** Adjust the import paths of your source files.
+
+### What's Changing?
+
+Here are some examples of the changes to see there benefit:
+
+1. The **RENAMING** (or removing of prefixes like `is-*` or `has-*`) of the classes should **improve the readability** too.
+
+<DiffSource
+  code={`- has-shadow-normal
++ shadow-normal
+// or
+- fg-large
++ gap-large
+// or
+- columns
++ grid
+`}
+/>
+
+For example the previous class `has-text-centered` was not near the css values and that made it hard to understand.
+Therefore, the new class names are closer / identical with the css values.
+
+```css
+.text-align-center {
+  text-align: center;
+}
+```
+
+2. Advanced and improved **functionality** with **responsiveness** and **pseudo-states**.
+
+<DiffSource
+  code={`// clear new syntax
+- pt-large-desktop
++ desktop:pt-large
+//
+// pseudo-states
++ hover:bg-green-2
++ active:bg-green-3`}
+/>
+
+3. Some css utility classes get **auto generated** from the **design tokens**.
+
+```json
+{
+  "color": {
+    "background": {
+      "primary": {
+        "value": "{color.base.primary.5}"
+      }
+    }
+  }
+}
+```
+
+This will be generated into:
+
+```css
+.bg-primary {
+  background: var(--bal-color-background-primary) !important;
+}
+```
+
+For this specific migration a new CLI was created to help upgrading to the new `styles` package.
+
+The previous documentation of version `15.x.x` can be found [here](https://baloise-design-system-v15.vercel.app).
+
+As part of this change, we are introducing a new package called `@baloise/ds-styles`.
+
+### How to Upgrade
+
+Upgrading to the new styles package is streamlined, thanks to our newly introduced `@baloise/ds-styles`
+package CLI. Here's how to proceed:
+
+#### Migrate with CLI
+
+1. **Install Styles:** First we need to install the new styles package if yet not there.
+
+```bash
+npm add -E @baloise/ds-styles@16
+```
+
+2. **Start CLI:**: Run the migration CLI to rename the changed CSS utility classes. The CLI updates the global stylesheet, component stylesheets, HTML files and Angular inline templates.
+
+```bash
+npx ds-styles-migrate
+```
+
+3. **Verify the Changes:** Once the CLI has run, review the changes to ensure everything has been updated correctly. It's a good practice to check the git diff if your project is version-controlled.
+
+4. **Test Your Application:** Run your application and execute your test suite to ensure that everything works as expected.
+   The CLI should handle the renaming seamlessly, but it's important to verify that no issues have arisen from the change.
+
+#### Migrate Manually
+
+1. Change the import from `@baloise/design-system-css` to `@baloise/ds-styles`.
+
+<AngularFramework>
+- Check the `styles.scss` file and change the paths.
+
+<DiffSource
+  code={`- @import '@baloise/design-system-css/sass/baloise-design-system';
++ @import '@baloise/ds-styles/sass/all';`}
+/>
+
+or ...
+
+```css
+// SASS mixins and SASS variables
+@import '@baloise/ds-styles/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/ds-styles/css/normalize';
+@import '@baloise/ds-styles/css/structure';
+
+// Custom font faces
+@import '@baloise/ds-styles/css/font';
+
+// Core CSS with CSS variables, always required
+@import '@baloise/ds-styles/css/core';
+
+// CSS utilities classes (optional)
+@import '@baloise/ds-styles/css/utilities/background';
+@import '@baloise/ds-styles/css/utilities/border';
+@import '@baloise/ds-styles/css/utilities/elevation';
+@import '@baloise/ds-styles/css/utilities/flex';
+@import '@baloise/ds-styles/css/utilities/interaction';
+@import '@baloise/ds-styles/css/utilities/layout';
+@import '@baloise/ds-styles/css/utilities/sizing';
+@import '@baloise/ds-styles/css/utilities/spacing';
+@import '@baloise/ds-styles/css/utilities/typography';
+```
+
+- Check the component style files if the `mixins` are used and change the path.
+
+```css
+@import '@baloise/ds-styles/sass/mixins';
+```
+
+2. Go through all the HTML files and replace the old CSS utility class with the new one.
+
+#### Inverted Colors
+
+Inverted Colors are deprecated due to a large payload size for a small usage.
+Therefor use mainly `primary` color for light backgrounds and `white` color for dark backgrounds.
+
+#### Responsive markers
+
+The name of the breakpoints are still the same only the syntax has changed.
+
+`<breakpoint>:<css-class>`
+
+<DiffSource
+  code={`- p-normal-desktop
++ desktop:p-normal`}
+/>
+
+#### Background
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-background-blue\` | \`bg-primary\`  |
+| \`has-background-\*\` | \`bg-\*\`  |
+`}
+</Markdown>
+
+#### Border Colors
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-border-light-blue\`  | \`border-primary-hovered\`   |
+| \`has-border-primary-dark\`  | \`border-primary-pressed\`   |
+| \`has-border-\*\`  | \`border-\*\`   |
+`}
+</Markdown>
+
+#### Border Radius
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-radius-\*\`  | \`radius-\*\`   |
+`}
+</Markdown>
+
+#### Elevation
+
+##### Opacity
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-opacity-1\`  | \`opacity-100\`   |
+| \`has-opacity-\*\`  | \`opacity-\*\`   |
+`}
+</Markdown>
+
+##### Shadow
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-shadow-\*\`  | \`shadow-\*\`   |
+| \`has-text-shadow\`  | \`text-shadow-normal\`   |
+| \`has-button-shadow\`  | \`text-shadow-normal\`   |
+`}
+</Markdown>
+
+#### Flex
+
+Every flex CSS utility class has lost his `is-` prefix.
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`fg-\*\`  | \`gap-\*\`   |
+| \`is-flex-wrap-nowrap\`  | \`flex-nowrap\`   |
+| \`is-flex-wrap-wrap\`  | \`flex-wrap\`   |
+| \`is-flex-wrap-reverse\`  | \`flex-wrap-reverse\`   |
+| \`is-justify-content-flex\` | \`justify-content\` |
+| \`is-justify-content-left\` | \`justify-content-start\` |
+| \`is-justify-content-right\` | \`justify-content-end\` |
+| \`is-justify-content\` | \`justify-content\` |
+| \`is-align-content-flex\` | \`align-content\` |
+| \`is-align-content\` | \`align-content\` |
+| \`is-align-items-flex\` | \`align-items\` |
+| \`is-align-items-self\` | \`align-items\` |
+| \`is-align-items\` | \`align-items\` |
+| \`is-align-self-flex\` | \`align-self\` |
+| \`is-align-self\` | \`align-self\` |
+| \`is-flex-grow-\*\` | \`flex-\*\` |
+| \`is-flex-shrink-\*\` | \`flex-\*\` |
+| \`is-flex-\*\` | \`flex-\*\` |
+`}
+</Markdown>
+
+#### Grid
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`columns\` | \`grid\` |
+| \`column\` | \`col\` |
+`}
+</Markdown>
+
+The responsive markers have changed to.
+
+<DiffSource
+  code={`- is-half-desktop
++ desktop:is-half`}
+/>
+
+#### Interaction
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-clickable\` | \`cursor-pointer\` |
+`}
+</Markdown>
+
+#### Layout
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-vertical-align\*\` | \`vertical-align\*\` |
+| \`is-inline-block\` | \`inline-block\` |
+| \`is-inline-flex\` | \`inline-flex\` |
+| \`is-inline\` | \`inline\` |
+| \`is-block\` | \`block\` |
+| \`is-flex\` | \`flex\` |
+| \`is-hidden\` | \`hidden\` |
+`}
+</Markdown>
+
+#### Spacing
+
+The spacing helpers have not been renamed only the responsive markers.
+
+<DiffSource
+  code={`- p-normal-desktop
++ desktop:p-normal`}
+/>
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-marginless\` | \`m-none\` |
+| \`is-paddingless\` | \`p-none\` |
+`}
+</Markdown>
+
+#### Sizing
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-fullheight\` | \`h-full\` |
+| \`is-fullwidth\` | \`w-full\` |
+`}
+</Markdown>
+
+#### Typography
+
+##### Font Sizes
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-size-display\`     | \`text-xxxxx-large\`  |
+| \`is-size-display-2\` | \`text-xxxx-large\` |
+| \`is-size-1\` | \`text-xxx-large\` |
+| \`is-size-2\` | \`text-xx-large\` |
+| \`is-size-3\` | \`text-x-large\` |
+| \`is-size-4\` | \`text-large\` |
+| \`is-size-5\` | \`text-medium\` |
+| \`is-size-6\` | \`text-normal\` |
+| \`is-size-7\` | \`text-small\` |
+| \`is-size-8\` | \`text-x-small\` |
+| \`is-size-\*\` | \`text-\*\` |
+`}
+</Markdown>
+
+##### Text Color
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-\*\` | \`text-\*\` |
+`}
+</Markdown>
+
+##### Text Alignments
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-centered\`     | \`text-align-center\`  |
+| \`has-text-justified\`     | \`text-align-justify\`  |
+| \`has-text-left\`     | \`text-align-left\`  |
+| \`has-text-right\`     | \`text-align-right\`  |
+`}
+</Markdown>
+
+##### Font Family
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-family-title\` | \`font-family-title\` |
+| \`is-family-text\` | \`font-family-text\` |
+`}
+</Markdown>
+
+##### Font Weight
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-weight\` | \`text-weight\` |
+`}
+</Markdown>
+
+##### White Space
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-white-space-normal\` | \`white-space-normal\` |
+| \`has-no-wrap\` | \`white-space-nowrap\` |
+| \`is-white-space-nowrap\` | \`white-space-nowrap\` |
+`}
+</Markdown>
+
+##### Text Transform
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`is-capitalized\` | \`capitalize\` |
+| \`is-lowercase\` | \`lowercase\` |
+| \`is-uppercase\` | \`uppercase\` |
+`}
+</Markdown>
+
+#### Z-Index
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Styles (NEW) |
+| ----------------------- | ------------ |
+| \`has-z-index\*\` | \`z-index\*\` |
+`}
+</Markdown>
+
+</AngularFramework>
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

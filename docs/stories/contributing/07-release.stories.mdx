@@ -1,0 +1,105 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to Release" />
+
+<Banner label="How to Release" section="Contributing" />
+
+## Document Changes
+
+In our release process, we utilize **changesets** to manage and track the modifications introduced through pull requests (PRs).
+A changeset represents a set of changes that are grouped together and associated with a particular release version.
+
+**Adding a changeset** for your branch typically involves summarizing the changes you’ve made since the last commit or changeset.
+This summary helps other collaborators understand what has been modified, added, or removed in the codebase.
+
+Run the command:
+
+```bash
+npm run changeset
+```
+
+When you execute the command, you'll be prompted with a series of questions.
+
+1. You'll be asked about the type of change you've made.
+2. You'll have the option to select the scope of this change; if you've only modified a specific component, you can specify it here. 3. You'll be prompted to provide a summary of the changes you've made.
+
+The command creates a changeset file(.md) in the folder .changeset. Please commit that in your open pull request.
+
+Here's a general guide on how to add a changeset for your branch:
+
+import Changeset from '../assets/images/contribution/changeset.gif'
+
+<img src={Changeset} />
+
+## Release Tags
+
+<Markdown>
+  {`
+| Tag      | Target Branch                | Description                                                   |
+| -------- | ---------------------------- | ------------------------------------------------------------- |
+| latest   | main tagged with new version | Main Release bundle                                           |
+| nightly  | main                         | Development status after each day                             |
+| snapshot | issue branch                 | Snapshot release to test a feature in a different environment |
+  `}
+</Markdown>
+
+## Create a Snapshot Version (snapshot)
+
+Snapshot releases represent versions of our branches, offering users early access for testing and evaluation.
+
+```bash
+/snapshot
+```
+
+**Version Syntax**
+
+```
+1.0.0-snapshot.31-c125396
+<version>-snapshot.<pull request number>-<commit-sha>
+```
+
+import Snapshot from '../assets/images/contribution/snapshot.gif'
+
+<img src={Snapshot} />
+
+## Create new Release (latest)
+
+When a pull request is merged into the main branch, our system automatically generates a corresponding
+**Release pull request**.
+
+The **Release PR** undergoes review by the core team members to ensure the accuracy and completeness of the changes.
+
+Once approved, merging the URL **Release PR** triggers the release and publish process for the associated version.
+
+import Release from '../assets/images/contribution/release.gif'
+
+<img src={Release} />
+
+## Nightly Releases (nightly)
+
+Every night the Design System runs a continuous run on the main branch to ensure the stability and quality of the project.
+In the continuous run the project gets linted, builded and tested. After that the Designs System gets releases to npm with the nightly tag.
+
+**Version Syntax**
+
+```
+1.0.0-nightly.20240312
+<version>-nightly.<timestamp YYYYMMDD>
+```

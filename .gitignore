@@ -84,7 +84,7 @@ e2e/cypress/downloads
 resources/data
 !resources/data/tags.json
 
-docs/stories/contributors.md
+docs/stories/contributing/contributors.md
 docs/stories/development/00-guides/theming/theming.md
 docs/public/assets/fonts/
 docs/public/assets/data/
