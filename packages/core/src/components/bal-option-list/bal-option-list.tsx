@@ -116,6 +116,18 @@ export class OptionList implements ComponentInterface, Loggable {
    */
 
   /**
+   * Focus the selected visible option in the list, if no option is selected it selects the first one
+   */
+  @Method() async focusSelected(): Promise<void> {
+    const selectedOption = this.options.find(it => it.selected == true)
+    if (selectedOption) {
+      selectedOption.focus()
+    } else {
+      await this.focusFirst()
+    }
+  }
+
+  /**
    * Focus the first visible option in the list
    * @returns focusIndex
    */

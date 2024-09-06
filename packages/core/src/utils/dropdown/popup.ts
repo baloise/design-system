@@ -39,12 +39,7 @@ export class DropdownPopupUtil {
       )
     }
     this.component.isExpanded = true
-    const selectedOptions = await this.component.listEl?.getSelectedOptions()
-    if (selectedOptions && selectedOptions.length > 0) {
-      await this.component.listEl?.focusByLabel(selectedOptions[0]?.label, { select: false })
-    } else {
-      await this.component.listEl?.focusFirst()
-    }
+    await this.component.listEl?.focusSelected()
   }
 
   collapseList() {
