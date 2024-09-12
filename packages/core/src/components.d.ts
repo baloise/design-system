@@ -2278,6 +2278,10 @@ export namespace Components {
          */
         "focusPrevious": () => Promise<number>;
         /**
+          * Focus the selected visible option in the list, if no option is selected it selects the first one
+         */
+        "focusSelected": () => Promise<number>;
+        /**
           * Returns a list of options
          */
         "getLabels": () => Promise<string[]>;
