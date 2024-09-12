@@ -1,0 +1,144 @@
+@import '@baloise/ds-styles/sass/mixins'
+@import './bal-segment.vars'
+
+// Segment
+// --------------------------------------------------
+.bal-segment
+  display: flex
+  background: var(--bal-color-grey-2)
+  border-radius: var(--bal-radius-normal)
+  gap: 0.125rem
+  gap: 0.125rem
+  padding: 0.25rem
+  width: fit-content
+
+.bal-segment--invalid
+  background: var(--bal-color-danger-1)
+
+.bal-segment--vertical
+  flex-direction: column
+  width: 100%
+  .bal-segment-item__button
+    width: 100%
+    flex: 1
+
+.bal-segment--vertical.bal-segment--scrollable
+  overflow: auto
+  max-height: 240px
+
+// Divider Line
+// --------------------------------------------------
+// =divider
+//   content: ''
+//   display: block
+//   position: absolute
+//   width: 0.125rem
+
+// =dividerBefore
+//   +divider
+//   background: var(--bal-color-grey-3)
+//   border-radius: var(--bal-radius-normal)
+//   z-index: 2
+
+//   left: -0.125rem
+//   top: 6px
+//   bottom: 6px
+
+// =dividerAfter
+//   +divider
+//   background: var(--bal-color-grey-2)
+//   z-index: 3
+
+//   right: -0.125rem
+//   top: 0px
+//   bottom: 0px
+
+// .bal-segment:not(.bal-segment--vertical)
+//   .bal-segment-item
+//     &.bal-segment-item--line::before
+//       +dividerBefore
+
+//     &.bal-segment-item--line.bal-segment-item--invalid::before
+//       background: darken(#fce8e6, 4)
+
+//     &.bal-segment-item--checked::after
+//       +dividerAfter
+
+//     &.bal-segment-item--checked.bal-segment-item--invalid::after
+//       background: var(--bal-color-danger-1)
+
+//     +hover
+//       &:hover
+//         &:not(.bal-segment-item--disabled)::before
+//           display: none
+//           &:not(.bal-segment-item--disabled)::after
+//             +dividerAfter
+//           &:not(.bal-segment-item--disabled).bal-segment-item--invalid::after
+//             background: var(--bal-color-danger-1)
+
+//     &:active
+//       &:not(.bal-segment-item--disabled)::before
+//         display: none
+//       &:not(.bal-segment-item--disabled)::after
+//         +dividerAfter
+//       &:not(.bal-segment-item--disabled).bal-segment-item--invalid::after
+//         background: var(--bal-color-danger-1)
+
+// // Divider Line Vertical
+// // --------------------------------------------------
+
+// =dividerVertical
+//   content: ''
+//   display: block
+//   position: absolute
+//   height: 0.125rem
+
+// =dividerBeforeVertical
+//   +dividerVertical
+//   background: var(--bal-color-grey-3)
+//   border-radius: var(--bal-radius-normal)
+//   z-index: 2
+
+//   top: -0.125rem
+//   left: 6px
+//   right: 6px
+
+// =dividerAfterVertical
+//   +dividerVertical
+//   background: var(--bal-color-grey-2)
+//   z-index: 3
+
+//   bottom: -0.125rem
+//   left: 0px
+//   right: 0px
+
+// .bal-segment.bal-segment--vertical
+//   .bal-segment-item
+//     &.bal-segment-item--line::before
+//       +dividerBeforeVertical
+
+//     &.bal-segment-item--line.bal-segment-item--invalid::before
+//       background: darken(#fce8e6, 4)
+
+//     &.bal-segment-item--checked::after
+//       +dividerAfterVertical
+
+//     &.bal-segment-item--checked.bal-segment-item--invalid::after
+//       background: var(--bal-color-danger-1)
+
+//     +hover
+//       &:hover
+//         &:not(.bal-segment-item--disabled)::before
+//           display: none
+//         &:not(.bal-segment-item--disabled)::after
+//           +dividerAfterVertical
+//         &:not(.bal-segment-item--disabled).bal-segment-item--invalid::after
+//           background: var(--bal-color-danger-1)
+
+//     &:active
+//       &:not(.bal-segment-item--disabled)::before
+//         display: none
+//       &:not(.bal-segment-item--disabled)::after
+//         +dividerAfterVertical
+//       &:not(.bal-segment-item--disabled).bal-segment-item--invalid::after
+//         background: var(--bal-color-danger-1)
