@@ -32,8 +32,6 @@ import { FOCUS_KEYS, startFocusVisible } from '../../utils/focus-visible'
   styleUrl: 'bal-segment.sass',
 })
 export class Segment implements ComponentInterface {
-  private keyboardMode = true
-
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -44,6 +42,7 @@ export class Segment implements ComponentInterface {
   }
 
   @State() focusedValue?: SegmentValue
+  @State() keyboardMode = true
 
   /**
    * PUBLIC PROPERTY API
@@ -207,7 +206,9 @@ export class Segment implements ComponentInterface {
    * ------------------------------------------------------
    */
 
-  private onPointerDown = () => (this.keyboardMode = false)
+  private onPointerDown = () => {
+    this.keyboardMode = false
+  }
 
   private onSlottedItemsChange = () => {
     /**
@@ -266,9 +267,6 @@ export class Segment implements ComponentInterface {
     const widthDelta = previousClientRect.width / currentClientRect.width
     const xPosition = previousClientRect.left - currentClientRect.left
 
-    console.log('widthDelta', widthDelta)
-    console.log('xPosition', xPosition)
-
     // Scale the indicator width to match the previous indicator width
     // and translate it on top of the previous indicator
     let transform = `translate3d(${xPosition}px, 0, 0) scaleX(${widthDelta})`
@@ -276,9 +274,6 @@ export class Segment implements ComponentInterface {
     if (this.vertical) {
       const heightDelta = previousClientRect.height / currentClientRect.height
       const yPosition = previousClientRect.top - currentClientRect.top
-
-      console.log('heightDelta', heightDelta)
-      console.log('yPosition', yPosition)
 
       // Scale the indicator width to match the previous indicator width
       // and translate it on top of the previous indicator
