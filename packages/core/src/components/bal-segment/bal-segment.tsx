@@ -209,7 +209,9 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
       this.emitValueChange()
     }
 
-    current.setFocus()
+    if (current) {
+      current.setFocus()
+    }
   }
 
   /**
@@ -309,10 +311,8 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
       return
     }
 
-    current.setFocus()
-
-    if (current !== previous) {
-      this.emitValueChange()
+    if (current && current.setFocus) {
+      current.setFocus()
     }
 
     if (previous) {
@@ -320,6 +320,10 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     } else {
       this.setCheckedClasses()
       this.checkButton(current, current)
+    }
+
+    if (current !== previous) {
+      this.emitValueChange()
     }
   }
 
@@ -403,6 +407,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
 
     return (
       <Host
+        role="radiogroup"
         class={{
           ...block.class(),
           ...block.modifier('invalid').class(invalid),

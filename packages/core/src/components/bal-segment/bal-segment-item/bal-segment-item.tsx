@@ -224,6 +224,8 @@ export class SegmentItem implements ComponentInterface {
         }}
       >
         <button
+          role="radio"
+          aria-checked={checked ? 'true' : 'false'}
           class={{
             ...buttonBem.class(),
             ...buttonBem.modifier('checked').class(checked),
@@ -232,9 +234,7 @@ export class SegmentItem implements ComponentInterface {
             ...buttonBem.modifier('focused').class(focused),
             ...buttonBem.modifier('vertical').class(vertical),
           }}
-          aria-selected={checked ? 'true' : 'false'}
           aria-labelledby={`bal-si-${this.id}-label`}
-          role="radio"
           type={'button'}
           tabIndex={isFocusable ? 0 : -1}
           part="native"
