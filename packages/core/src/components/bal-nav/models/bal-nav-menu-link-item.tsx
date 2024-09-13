@@ -86,16 +86,27 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     )
   }
 
-  override render(context?: { onClick: () => void }) {
+  override render(context?: { onClick: () => void; flyoutId: string }) {
     const hasChildren = this.sectionLinkItems.length > 0 || this.serviceLinkItems.length > 0
     if (!hasChildren && this.isLink) {
-      return <bal-tab-item label={this.label} value={this.value} href={this.href} target={this.target}></bal-tab-item>
+      return (
+        <bal-tab-item
+          aria={{ controls: context.flyoutId }}
+          label={this.label}
+          value={this.value}
+          href={this.href}
+          target={this.target}
+          no-panel
+        ></bal-tab-item>
+      )
     }
 
     return (
       <bal-tab-item
+        aria={{ controls: context.flyoutId }}
         label={this.label}
         value={this.value}
+        no-panel
         onBalNavigate={ev => {
           context?.onClick()
           if (this.onClick) {
