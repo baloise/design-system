@@ -2547,9 +2547,13 @@ export namespace Components {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background": BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color": BalProps.BalProgressBarColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
@@ -7583,9 +7587,13 @@ declare namespace LocalJSX {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background"?: BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color"?: BalProps.BalProgressBarColor;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
          */
