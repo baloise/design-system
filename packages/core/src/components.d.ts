@@ -3079,6 +3079,10 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color": BalProps.BalStepsColor;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
@@ -8129,6 +8133,10 @@ declare namespace LocalJSX {
           * If `true` the tabs or steps can be clicked.
          */
         "clickable"?: boolean;
+        /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color"?: BalProps.BalStepsColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
