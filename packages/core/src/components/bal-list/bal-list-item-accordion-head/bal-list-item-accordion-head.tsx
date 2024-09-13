@@ -1,5 +1,6 @@
 import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch, ComponentInterface } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { isEnterKey, isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-list-item-accordion-head',
@@ -54,6 +55,12 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
     }
   }
 
+  private onKeyDown = (ev: KeyboardEvent) => {
+    if (isSpaceKey(ev) || isEnterKey(ev)) {
+      this.onClick()
+    }
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -67,7 +74,10 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
           'bal-list__item__accordion-head': true,
           'bal-list__item__accordion-head--open': this.accordionOpen,
         }}
+        role="button"
+        tabindex="0"
         onClick={this.onClick}
+        onKeyDown={this.onKeyDown}
       >
         <slot></slot>
         <bal-list-item-icon right>

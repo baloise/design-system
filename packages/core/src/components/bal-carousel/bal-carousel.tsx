@@ -42,6 +42,7 @@ export class Carousel
   private previousTransformValue = 0
   private currentRaf: number | undefined
   private carouselId = `bal-carousel-${CarouselIds++}`
+  private carouselContainerId = `bal-carousel-${CarouselIds++}-container`
 
   @State() isLastSlideVisible = true
   @State() isMobile = balBreakpoints.isMobile
@@ -74,6 +75,11 @@ export class Carousel
    * Defines the layout of the navigation controls.
    */
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
+
+  /**
+   * Defines the role of the carousel.
+   */
+  @Prop() htmlRole: 'tablist' | 'list' | '' = 'list'
 
   /**
    * If `true` items move under the controls, instead of having a gap
@@ -165,6 +171,19 @@ export class Carousel
     this.itemsChanged()
   }
 
+  @Listen('keydown')
+  listenToKeyDown(ev: KeyboardEvent) {
+    if (this.htmlRole !== 'tablist') {
+      if (ev.code === 'Tab') {
+        if (ev.shiftKey) {
+          this.focusPreviousItem(ev)
+        } else {
+          this.focusNextItem(ev)
+        }
+      }
+    }
+  }
+
   /**
    * @internal define config for the component
    */
@@ -180,7 +199,7 @@ export class Carousel
    */
 
   @Method()
-  async previous(steps = this.steps): Promise<void> {
+  async previous(steps = this.steps): Promise<BalSlide | undefined> {
     let previousValue = this.value - steps
     if (previousValue < 0) {
       previousValue = 0
@@ -190,19 +209,17 @@ export class Carousel
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (this.value > 0) {
+      if (didAnimate || this.value !== previousValue) {
         this.value = previousValue
-        if (!didAnimate) {
-          this.previous()
-        } else {
-          this.balChange.emit(this.value)
-        }
+        this.balChange.emit(this.value)
       }
     }
+
+    return activeSlide
   }
 
   @Method()
-  async next(steps = this.steps): Promise<void> {
+  async next(steps = this.steps): Promise<BalSlide | undefined> {
     const items = this.getAllItemElements()
     const length = items.length
     let nextValue = this.value + steps
@@ -215,11 +232,13 @@ export class Carousel
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate) {
+      if (didAnimate || this.value !== nextValue) {
         this.value = nextValue
         this.balChange.emit(this.value)
       }
     }
+
+    return activeSlide
   }
 
   /**
@@ -321,6 +340,26 @@ export class Carousel
     }
   }
 
+  private async focusNextItem(ev: KeyboardEvent) {
+    if (!this.isLast) {
+      const slide = await this.next(1)
+      if (slide && slide.el) {
+        stopEventBubbling(ev)
+        await slide.el.setFocus()
+      }
+    }
+  }
+
+  private async focusPreviousItem(ev: KeyboardEvent) {
+    if (!this.isFirst) {
+      const slide = await this.previous(1)
+      if (slide && slide.el) {
+        stopEventBubbling(ev)
+        await slide.el.setFocus()
+      }
+    }
+  }
+
   /**
    * GETTERS
    * ------------------------------------------------------
@@ -407,6 +446,7 @@ export class Carousel
           <TabControl
             value={this.value}
             items={controlItems}
+            containerId={this.carouselContainerId}
             onControlChange={item => this.onControlChange(item.value)}
           ></TabControl>
         ) : (
@@ -425,6 +465,9 @@ export class Carousel
           ref={el => (this.innerEl = el)}
         >
           <div
+            role={this.htmlRole}
+            aria-live={this.htmlRole !== '' ? 'polite' : undefined}
+            id={this.carouselContainerId}
             class={{
               ...container.class(),
               ...container.modifier(`border`).class(this.border),
@@ -436,6 +479,7 @@ export class Carousel
             {this.border ? (
               <div
                 id={`${this.carouselId}-border`}
+                aria-hidden="true"
                 class={{
                   ...container.element('border').class(),
                   ...container.element('border').modifier('inverted').class(this.inverted),
@@ -452,6 +496,7 @@ export class Carousel
           <DotControl
             value={this.value}
             items={controlItems}
+            containerId={this.carouselContainerId}
             onControlChange={item => this.onControlChange(item.value)}
           ></DotControl>
         ) : (
@@ -466,6 +511,7 @@ export class Carousel
             areControlsHidden={!this.isMobile}
             leftControlTitle={leftControlTitle}
             rightControlTitle={rightControlTitle}
+            containerId={this.carouselContainerId}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></LargeControl>
@@ -480,6 +526,7 @@ export class Carousel
             inverted={this.inverted}
             leftControlTitle={leftControlTitle}
             rightControlTitle={rightControlTitle}
+            containerId={this.carouselContainerId}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></SmallControl>

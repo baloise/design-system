@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
 import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
@@ -18,7 +18,7 @@ import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
 export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
@@ -379,6 +379,10 @@ export namespace Components {
          */
         "fullHeight": boolean;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole": 'tablist' | 'list' | '';
+        /**
           * Defines special looks.
          */
         "interface": 'card' | 'image' | 'product' | '';
@@ -390,11 +394,11 @@ export namespace Components {
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
         "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
-        "next": (steps?: number) => Promise<void>;
+        "next": (steps?: number) => Promise<BalSlide | undefined>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
          */
-        "previous": (steps?: number) => Promise<void>;
+        "previous": (steps?: number) => Promise<BalSlide | undefined>;
         /**
           * If `true` vertical scrolling on mobile is enabled.
          */
@@ -427,6 +431,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole": 'tab' | 'listitem' | '';
+        /**
           * Label of the slide which will be used for pagination tabs
          */
         "label": string;
@@ -438,6 +446,7 @@ export namespace Components {
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel"?: string;
+        "setFocus": () => Promise<void>;
         /**
           * Src path to the image
          */
@@ -2028,6 +2037,10 @@ export namespace Components {
         "position": BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
+        /**
+          * This is used to connect the flyout to the aria controls
+         */
+        "navId": string;
     }
     interface BalNavMetaBar {
         /**
@@ -2268,6 +2281,10 @@ export namespace Components {
           * @returns focusIndex
          */
         "focusPrevious": () => Promise<number>;
+        /**
+          * Focus the selected visible option in the list, if no option is selected it selects the first one
+         */
+        "focusSelected": () => Promise<number>;
         /**
           * Returns a list of options
          */
@@ -2534,9 +2551,13 @@ export namespace Components {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background": BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color": BalProps.BalProgressBarColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
@@ -3062,6 +3083,10 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color": BalProps.BalStepsColor;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
@@ -3087,6 +3112,10 @@ export namespace Components {
           * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active": boolean;
+        /**
+          * A11y attributes for the native tab element.
+         */
+        "aria"?: BalProps.BalTabItemAria;
         /**
           * If `true` a small red bubble is added to the tab.
          */
@@ -3115,6 +3144,10 @@ export namespace Components {
           * Label for the tab.
          */
         "label": string;
+        /**
+          * If `true` the tab does not have a panel
+         */
+        "noPanel": boolean;
         /**
           * Tell's if the linking is done by a router.
          */
@@ -3148,7 +3181,7 @@ export namespace Components {
          */
         "border": boolean;
         /**
-          * If `true` the tabs or steps can be clicked.
+          * If `true` the tabs or tabs can be clicked.
          */
         "clickable": boolean;
         "closeAccordion": () => Promise<void>;
@@ -3190,7 +3223,7 @@ export namespace Components {
          */
         "optionalTabSelection": boolean;
         /**
-          * Steps can be passed as a property or through HTML markup.
+          * Tabs can be passed as a property or through HTML markup.
          */
         "options": BalTabOption[];
         /**
@@ -5403,6 +5436,10 @@ declare namespace LocalJSX {
          */
         "fullHeight"?: boolean;
         /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole"?: 'tablist' | 'list' | '';
+        /**
           * Defines special looks.
          */
         "interface"?: 'card' | 'image' | 'product' | '';
@@ -5448,6 +5485,10 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        /**
+          * Defines the role of the carousel.
+         */
+        "htmlRole"?: 'tab' | 'listitem' | '';
         /**
           * Label of the slide which will be used for pagination tabs
          */
@@ -7117,6 +7158,10 @@ declare namespace LocalJSX {
         "position"?: BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
+        /**
+          * This is used to connect the flyout to the aria controls
+         */
+        "navId"?: string;
     }
     interface BalNavMetaBar {
         /**
@@ -7562,9 +7607,13 @@ declare namespace LocalJSX {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background"?: BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color"?: BalProps.BalProgressBarColor;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
          */
@@ -8101,6 +8150,10 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color"?: BalProps.BalStepsColor;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
@@ -8122,6 +8175,10 @@ declare namespace LocalJSX {
           * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active"?: boolean;
+        /**
+          * A11y attributes for the native tab element.
+         */
+        "aria"?: BalProps.BalTabItemAria;
         /**
           * If `true` a small red bubble is added to the tab.
          */
@@ -8146,6 +8203,10 @@ declare namespace LocalJSX {
           * Label for the tab.
          */
         "label"?: string;
+        /**
+          * If `true` the tab does not have a panel
+         */
+        "noPanel"?: boolean;
         /**
           * Emitted when the link element has clicked
          */
@@ -8179,7 +8240,7 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
-          * If `true` the tabs or steps can be clicked.
+          * If `true` the tabs or tabs can be clicked.
          */
         "clickable"?: boolean;
         /**
@@ -8227,7 +8288,7 @@ declare namespace LocalJSX {
          */
         "optionalTabSelection"?: boolean;
         /**
-          * Steps can be passed as a property or through HTML markup.
+          * Tabs can be passed as a property or through HTML markup.
          */
         "options"?: BalTabOption[];
         /**

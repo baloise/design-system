@@ -8,10 +8,11 @@ export interface DotControlItem {
 export interface DotControlProps {
   value: number
   items: DotControlItem[]
+  containerId: string
   onControlChange: (item: DotControlItem) => void
 }
 
-export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items, onControlChange }) => {
+export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items, containerId, onControlChange }) => {
   const block = BEM.block('carousel')
   const controls = block.element('controls')
 
@@ -37,6 +38,7 @@ export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items,
       }}
     >
       <bal-pagination
+        aria-controls={containerId}
         interface="small"
         value={value + 1}
         totalPages={items.length}

@@ -1,0 +1,70 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to fix a Bug" />
+
+<Banner label="How to fix a Bug" section="Contributing" />
+
+## 1. Report an issue
+
+> **HINT** only when you are reporting a bug
+
+To begin the process, the first step is to create an issue at the following URL: [https://github.com/baloise/design-system/issues](https://github.com/baloise/design-system/issues).
+
+This is where you will describe the bug you have found.
+
+import CreateABug from '../assets/images/contribution/create-bug.gif'
+
+<img src={CreateABug} />
+
+## 2. Generate a branch
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-pull-request--documentation#2-create-issue-branch"
+>
+  Create a Issue Branch
+</a>
+
+## 3. Write a test
+
+Prior to initiating the bug-fixing process, write a test case that can reproduce the bug.
+This test case serves as a means to verify the existence of the bug and ensures that the fix adequately addresses the issue without introducing new problems.
+
+## 4. Fix the bug
+
+Once you have the test in place to reproduce the bug, you can proceed with the bug-fixing process.
+
+## 5. Add changeset
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-release--documentation#document-changes"
+>
+  Add changeset
+</a>
+
+## 6. Finalize your PR
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="/?path=/docs/contributing-how-to-create-a-pull-request--documentation&globals=framework:angular#3-finalize-your-pull-request"
+>
+  Finalize your PR
+</a>

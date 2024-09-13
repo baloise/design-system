@@ -21,6 +21,7 @@ export interface TabNavProps {
   animated: boolean
   spaceless: boolean
   expanded: boolean
+  isLinkList: boolean
   verticalColSize: BalProps.BalTabsColSize
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
@@ -36,6 +37,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   isMobile,
   isTouch,
   lineActive,
+  isLinkList,
   border,
   accordion,
   isAccordionOpen,
@@ -57,6 +59,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (
     <TabButton
       item={item}
+      isLinkList={isLinkList}
       tabsId={tabsId}
       isFirst={index === 0}
       isLast={index === tabs.length - 1}
@@ -76,7 +79,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
 
   return (
     <div
-      role="tablist"
       id={`${tabsId}-nav`}
       class={{
         ...bemEl.class(),
@@ -94,6 +96,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           class={{
             ...bemEl.element('carousel').class(),
           }}
+          htmlRole={'tablist'}
           fullHeight={isFullHeight}
           border={border}
           inverted={inverted}
@@ -105,6 +108,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           {tabs.map((tab, index) => (
             <bal-carousel-item
               key={tab.value}
+              htmlRole={''}
               class={{
                 ...bemEl.element('carousel').element('item').class(),
                 ...bemEl.element('carousel').element('item').modifier('expanded').class(expanded),

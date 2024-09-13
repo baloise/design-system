@@ -8,10 +8,11 @@ export interface StepButtonProps {
   item: BalStepOption
   isMobile: boolean
   clickable: boolean
+  color: BalProps.BalStepsColor
   onSelectTab: (ev: MouseEvent, item: BalStepOption) => void
 }
 
-export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobile, clickable, onSelectTab }) => {
+export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, color, isMobile, clickable, onSelectTab }) => {
   const bemEl = BEM.block('steps').element('nav').element('item')
 
   if (item.invisible) {
@@ -23,6 +24,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobil
       role="tab"
       class={{
         ...bemEl.class(),
+        ...bemEl.modifier(`color-${color}`).class(),
         ...bemEl.modifier('done').class(item.done),
         ...bemEl.modifier('active').class(item.active),
         ...bemEl.modifier('failed').class(item.failed),

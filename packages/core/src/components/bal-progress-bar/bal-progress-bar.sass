@@ -12,11 +12,22 @@
   height: 0.25rem
   //
   // background colors
-  &--background-white
+  &--background-white-of-primary,
+  &--background-white-of-purple,
+  &--background-white-of-red,
+  &--background-white-of-green,
+  &--background-white-of-yellow
     background: var(--bal-progress-bar-background-white)
-  &--background-grey
+  &--background-grey-of-primary
     background: var(--bal-progress-bar-background-grey)
-
+  &--background-grey-of-purple
+    background: var(--bal-progress-bar-background-purple)
+  &--background-grey-of-red
+    background: var(--bal-progress-bar-background-red)
+  &--background-grey-of-green
+    background: var(--bal-progress-bar-background-green)
+  &--background-grey-of-yellow
+    background: var(--bal-progress-bar-background-yellow)
 // Progress Line
 // --------------------------------------------------
 
@@ -25,7 +36,7 @@
   display: block
   height: 0.25rem
   width: 0
-  background: var(--bal-progress-bar-line-background)
+  background: var(--bal-progress-bar-line-color-primary)
   border-top-right-radius: var(--bal-progress-bar-line-radius)
   border-bottom-right-radius: var(--bal-progress-bar-line-radius)
   &--animated
@@ -34,3 +45,11 @@
   &--full
     border-top-right-radius: 0
     border-bottom-right-radius: 0
+  &--color-purple
+    background: var(--bal-progress-bar-line-color-purple)
+  &--color-yellow
+    background: var(--bal-progress-bar-line-color-yellow)
+  &--color-red
+    background: var(--bal-progress-bar-line-color-red)
+  &--color-green
+    background: var(--bal-progress-bar-line-color-green)

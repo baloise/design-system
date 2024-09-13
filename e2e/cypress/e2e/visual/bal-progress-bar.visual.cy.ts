@@ -11,6 +11,6 @@ describe('bal-progress-bar', () => {
   })
 
   it('component variants', () => {
-    cy.testVisual('progress-bar-variants-desktop')
+    cy.getByTestId('variants').testVisual('progress-bar-variants-desktop')
   })
 })
