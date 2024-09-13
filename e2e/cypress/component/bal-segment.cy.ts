@@ -32,7 +32,7 @@ describe('bal-segment', () => {
       </bal-segment>`,
       {
         props: {
-          value: 'yes'
+          value: 'yes',
         },
         events: {
           balChange: onBalChangeSpy,
