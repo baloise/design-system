@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-declare namespace BalProps { }
+declare namespace BalProps {}
 
-declare namespace BalEvents { }
+declare namespace BalEvents {}
 
 import './components/bal-accordion/bal-accordion.interfaces'
 import './components/bal-app/bal-app.interfaces'

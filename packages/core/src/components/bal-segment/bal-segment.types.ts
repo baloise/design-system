@@ -1,1 +1,1 @@
-export type SegmentValue = string | number;
+export type SegmentValue = string | number

@@ -25,13 +25,17 @@ import {
   isArrowRightKey,
 } from '@baloise/web-app-utils'
 import { stopEventBubbling } from '../../utils/form-input'
-import { FOCUS_KEYS, startFocusVisible } from '../../utils/focus-visible'
+import { FOCUS_KEYS } from '../../utils/focus-visible'
+import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'
+import { raf } from '../../utils/helpers'
+import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
+import { ListenToBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface {
+export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -43,6 +47,9 @@ export class Segment implements ComponentInterface {
 
   @State() focusedValue?: SegmentValue
   @State() keyboardMode = true
+  @State() isVertical = false
+  @State() isMobile = false
+  @State() maxWidth = 0
 
   /**
    * PUBLIC PROPERTY API
@@ -70,6 +77,11 @@ export class Segment implements ComponentInterface {
   @Prop() scrollable = false
 
   /**
+   * If `true`, the element uses the whole width
+   */
+  @Prop() expanded = false
+
+  /**
    * the value of the segment.
    */
   @Prop({ mutable: true }) value?: BalProps.BalSegmentValue
@@ -81,6 +93,11 @@ export class Segment implements ComponentInterface {
      */
     this.balSelect.emit(value)
   }
+
+  /**
+   * Emitted when the component was touched
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
 
   /**
    * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.
@@ -96,6 +113,13 @@ export class Segment implements ComponentInterface {
    * @internal
    */
   @Event() balSelect!: EventEmitter<BalEvents.BalSegmentChangeDetail>
+
+  /**
+   * Emitted when the vertical style changes
+   *
+   * @internal
+   */
+  @Event() balVertical!: EventEmitter<BalEvents.BalSegmentVerticalDetail>
 
   /**
    * LIFECYCLE
@@ -114,12 +138,43 @@ export class Segment implements ComponentInterface {
 
   async componentDidLoad() {
     this.setCheckedClasses()
+    this.defineWidth()
   }
 
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
+  }
+
+  @ListenToWindowResize()
+  windowResizeListener(): void {
+    if (this.vertical === false && this.maxWidth > 0) {
+      const parent = this.el.parentElement.getBoundingClientRect()
+
+      if (parent.width < this.maxWidth) {
+        //
+        // element in horizontal is to big
+        this.emitVerticalChange(true)
+      } else {
+        //
+        // element has enough space in parent element
+        this.emitVerticalChange(false)
+      }
+    } else {
+      this.emitVerticalChange(true)
+    }
+  }
+
+  @Listen('balBlur')
+  listenOnBalBlur(ev: BalEvents.BalSegmentBlur) {
+    stopEventBubbling(ev)
+    this.balBlur.emit(ev.detail)
+  }
 
   @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
@@ -181,6 +236,7 @@ export class Segment implements ComponentInterface {
         return items[currIndex]
       case 'first':
         return items[0]
+
       case 'last':
         return items[items.length - 1]
       case 'next':
@@ -201,6 +257,23 @@ export class Segment implements ComponentInterface {
     this.balChange.emit(this.value)
   }
 
+  private emitVerticalChange(isVertical: boolean) {
+    if (this.isVertical !== isVertical) {
+      this.isVertical = isVertical
+      this.balVertical.emit(this.isVertical)
+    }
+  }
+
+  private defineWidth() {
+    raf(() => {
+      if (this.isVertical === false) {
+        const childRect = this.el.getBoundingClientRect()
+        this.maxWidth = childRect.width
+      }
+      this.windowResizeListener()
+    })
+  }
+
   /**
    * PRIVATE EVENT HANDLERS
    * ------------------------------------------------------
@@ -217,6 +290,7 @@ export class Segment implements ComponentInterface {
      * the value matches the segment button value.
      */
     this.valueChanged(this.value)
+    this.defineWidth()
   }
 
   private onClick = (ev: Event) => {
@@ -245,6 +319,7 @@ export class Segment implements ComponentInterface {
       this.checkButton(previous, current)
     } else {
       this.setCheckedClasses()
+      this.checkButton(current, current)
     }
   }
 
@@ -271,7 +346,7 @@ export class Segment implements ComponentInterface {
     // and translate it on top of the previous indicator
     let transform = `translate3d(${xPosition}px, 0, 0) scaleX(${widthDelta})`
 
-    if (this.vertical) {
+    if (this.isVertical) {
       const heightDelta = previousClientRect.height / currentClientRect.height
       const yPosition = previousClientRect.top - currentClientRect.top
 
@@ -323,7 +398,7 @@ export class Segment implements ComponentInterface {
    */
 
   render() {
-    const { invalid, vertical, scrollable, keyboardMode } = this
+    const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile } = this
     const block = BEM.block('segment')
 
     return (
@@ -331,9 +406,10 @@ export class Segment implements ComponentInterface {
         class={{
           ...block.class(),
           ...block.modifier('invalid').class(invalid),
-          ...block.modifier('vertical').class(vertical),
+          ...block.modifier('vertical').class(isVertical),
           ...block.modifier('scrollable').class(scrollable),
           ...block.modifier('keyboard').class(keyboardMode),
+          ...block.modifier('expanded').class((expanded || isMobile) && !isVertical),
         }}
         onClick={this.onClick}
       >

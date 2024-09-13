@@ -1,4 +1,16 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Method } from '@stencil/core'
+import {
+  Component,
+  h,
+  ComponentInterface,
+  Host,
+  Element,
+  Prop,
+  State,
+  Watch,
+  Method,
+  EventEmitter,
+  Event,
+} from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { SegmentValue } from '../bal-segment.types'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
@@ -20,6 +32,7 @@ export class SegmentItem implements ComponentInterface {
 
   @State() hasSlotContent = false
   @State() isFocusable = false
+  @State() isVertical = false
 
   /**
    * If `true`, the user cannot interact with the segment button.
@@ -57,11 +70,17 @@ export class SegmentItem implements ComponentInterface {
     this.updateState()
   }
 
+  /**
+   * Emitted when the component was touched
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
+
   connectedCallback() {
     const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
     if (segmentEl) {
       this.updateState()
       addEventListener(segmentEl, 'balSelect', this.updateState)
+      addEventListener(segmentEl, 'balVertical', this.updateVertical)
     }
   }
 
@@ -69,6 +88,7 @@ export class SegmentItem implements ComponentInterface {
     const segmentEl = this.segmentEl
     if (segmentEl) {
       removeEventListener(segmentEl, 'balSelect', this.updateState)
+      removeEventListener(segmentEl, 'balVertical', this.updateVertical)
       this.segmentEl = null
     }
   }
@@ -95,6 +115,10 @@ export class SegmentItem implements ComponentInterface {
     if (nativeEl !== undefined) {
       nativeEl.focus()
     }
+  }
+
+  private updateVertical = (ev: BalEvents.BalSegmentVertical) => {
+    this.isVertical = ev.detail
   }
 
   private updateState = () => {
@@ -185,7 +209,7 @@ export class SegmentItem implements ComponentInterface {
 
     const invalid = this.invalid || (segmentEl && segmentEl.invalid)
     const disabled = this.disabled || (segmentEl && segmentEl.disabled)
-    const vertical = segmentEl && segmentEl.vertical
+    const vertical = this.isVertical
 
     return (
       <Host
@@ -214,6 +238,7 @@ export class SegmentItem implements ComponentInterface {
           type={'button'}
           tabIndex={isFocusable ? 0 : -1}
           part="native"
+          onBlur={ev => this.balBlur.emit(ev)}
           disabled={disabled}
           ref={el => (this.nativeEl = el)}
           {...this.inheritedAttributes}

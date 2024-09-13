@@ -2718,6 +2718,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true`, the element uses the whole width
+         */
+        "expanded": boolean;
+        /**
           * If `true`, the segment is shown red.
          */
         "invalid": boolean;
@@ -3671,6 +3675,10 @@ export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface BalSegmentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSegmentElement;
+}
+export interface BalSegmentItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSegmentItemElement;
 }
 export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4693,8 +4701,10 @@ declare global {
         new (): HTMLBalRadioGroupElement;
     };
     interface HTMLBalSegmentElementEventMap {
+        "balBlur": BalEvents.BalSegmentBlurDetail;
         "balChange": BalEvents.BalSegmentChangeDetail;
         "balSelect": BalEvents.BalSegmentChangeDetail;
+        "balVertical": BalEvents.BalSegmentVerticalDetail;
     }
     interface HTMLBalSegmentElement extends Components.BalSegment, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4710,7 +4720,18 @@ declare global {
         prototype: HTMLBalSegmentElement;
         new (): HTMLBalSegmentElement;
     };
+    interface HTMLBalSegmentItemElementEventMap {
+        "balBlur": BalEvents.BalSegmentBlurDetail;
+    }
     interface HTMLBalSegmentItemElement extends Components.BalSegmentItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSegmentItemElementEventMap>(type: K, listener: (this: HTMLBalSegmentItemElement, ev: BalSegmentItemCustomEvent<HTMLBalSegmentItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSegmentItemElementEventMap>(type: K, listener: (this: HTMLBalSegmentItemElement, ev: BalSegmentItemCustomEvent<HTMLBalSegmentItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalSegmentItemElement: {
         prototype: HTMLBalSegmentItemElement;
@@ -7847,9 +7868,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true`, the element uses the whole width
+         */
+        "expanded"?: boolean;
+        /**
           * If `true`, the segment is shown red.
          */
         "invalid"?: boolean;
+        /**
+          * Emitted when the component was touched
+         */
+        "onBalBlur"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
         /**
           * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.  This event will not emit when programmatically setting the `value` property.
          */
@@ -7858,6 +7887,10 @@ declare namespace LocalJSX {
           * Emitted when the value of the segment changes from user committed actions or from externally assigning a value.
          */
         "onBalSelect"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+        /**
+          * Emitted when the vertical style changes
+         */
+        "onBalVertical"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentVerticalDetail>) => void;
         /**
           * If `true`, and is vertical then the list height is limited and scrollable.
          */
@@ -7886,6 +7919,10 @@ declare namespace LocalJSX {
           * Label of the segment control
          */
         "label"?: string;
+        /**
+          * Emitted when the component was touched
+         */
+        "onBalBlur"?: (event: BalSegmentItemCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
         /**
           * The value of the segment button.
          */
