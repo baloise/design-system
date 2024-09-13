@@ -25,9 +25,14 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
   @Prop() value = 0
 
   /**
-   * The shape color
+   * The background color
    */
   @Prop() background: BalProps.BalProgressBarBackground = 'white'
+
+  /**
+   * The progress bar color
+   */
+  @Prop() color: BalProps.BalProgressBarColor = 'primary'
 
   /**
    * LIFECYCLE
@@ -87,12 +92,13 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
         aria-hidden="true"
         class={{
           ...block.class(),
-          ...block.modifier(`background-${this.background}`).class(),
+          ...block.modifier(`background-${this.background}-of-${this.color}`).class(),
         }}
       >
         <div
           class={{
             ...bemLineEl.class(),
+            ...bemLineEl.modifier(`color-${this.color}`).class(),
             ...bemLineEl.modifier(`animated`).class(this.animated),
           }}
           ref={lineEl => (this.lineEl = lineEl)}

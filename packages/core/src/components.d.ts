@@ -2551,9 +2551,13 @@ export namespace Components {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background": BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color": BalProps.BalProgressBarColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
@@ -3078,6 +3082,10 @@ export namespace Components {
           * If `true` the tabs or steps can be clicked.
          */
         "clickable": boolean;
+        /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color": BalProps.BalStepsColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -7599,9 +7607,13 @@ declare namespace LocalJSX {
     }
     interface BalProgressBar {
         /**
-          * The shape color
+          * The background color
          */
         "background"?: BalProps.BalProgressBarBackground;
+        /**
+          * The progress bar color
+         */
+        "color"?: BalProps.BalProgressBarColor;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
          */
@@ -8137,6 +8149,10 @@ declare namespace LocalJSX {
           * If `true` the tabs or steps can be clicked.
          */
         "clickable"?: boolean;
+        /**
+          * Defines the color of the steps so it can be placed on colored backgrounds
+         */
+        "color"?: BalProps.BalStepsColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */

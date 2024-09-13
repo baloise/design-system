@@ -3,7 +3,9 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {}
+namespace BalProps {
+  export type BalStepsColor = 'primary' | 'light-blue' | 'purple' | 'yellow' | 'red' | 'green'
+}
 
 namespace BalEvents {
   export interface BalStepsCustomEvent<T> extends CustomEvent<T> {
