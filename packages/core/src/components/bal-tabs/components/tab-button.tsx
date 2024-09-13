@@ -14,6 +14,7 @@ export interface TabButtonProps {
   isVertical: boolean
   accordion: boolean
   isAccordionOpen: boolean
+  isLinkList: boolean
   inverted: boolean
   expanded: boolean
   spaceless: boolean
@@ -32,6 +33,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isVertical,
   accordion,
   isAccordionOpen,
+  isLinkList,
   inverted,
   expanded,
   spaceless,
@@ -68,8 +70,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     ? {
         'type': 'button',
         'role': 'tab',
-        'tabindex': item.active ? '0' : '-1',
-        'aria-controls': item.tabPanelID,
+        'aria-controls': item.aria?.controls || item.tabPanelID || undefined,
+        'aria-expanded': item.active ? 'true' : 'false',
         'aria-disabled': `${item.disabled}`,
         'aria-label': item.label,
       }
@@ -77,6 +79,10 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         href: item.href,
         target: item.target,
       }
+
+  if (!isLinkList) {
+    attrs['tabindex'] = item.active ? '0' : '-1'
+  }
 
   return (
     <TagType

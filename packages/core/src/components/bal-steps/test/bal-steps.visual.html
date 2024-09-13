@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="bg-green-1">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -16,6 +16,7 @@
   <body>
     <bal-doc-app>
       <main>
+        <bal-heading>Long</bal-heading>
         <section data-testid="steps">
           <bal-steps value="step-b">
             <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
@@ -37,6 +38,8 @@
             <bal-step-item value="step-o" label="Step O" disabled>Step O Content</bal-step-item>
           </bal-steps>
         </section>
+
+        <bal-heading>4 Steps</bal-heading>
         <section data-testid="steps-with-four">
           <bal-steps value="step-b">
             <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
@@ -46,6 +49,71 @@
             <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
             <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
             <bal-step-item value="invisible" label="invisible" invisible>invisible</bal-step-item>
+          </bal-steps>
+        </section>
+
+        <bal-heading>Light-Blue</bal-heading>
+        <section data-testid="light-blue">
+          <bal-steps value="step-b" color="light-blue">
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
+              Step A Content
+            </bal-step-item>
+            <bal-step-item value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
+            <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
+            <bal-step-item value="disabled" label="disabled" disabled>disabled</bal-step-item>
+          </bal-steps>
+        </section>
+
+        <bal-heading>Purple</bal-heading>
+        <section data-testid="purple">
+          <bal-steps value="step-b" color="purple">
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
+              Step A Content
+            </bal-step-item>
+            <bal-step-item value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
+            <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
+            <bal-step-item value="disabled" label="disabled" disabled>disabled</bal-step-item>
+          </bal-steps>
+        </section>
+
+        <bal-heading>Red</bal-heading>
+        <section data-testid="red">
+          <bal-steps value="step-b" color="red">
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
+              Step A Content
+            </bal-step-item>
+            <bal-step-item value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
+            <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
+            <bal-step-item value="disabled" label="disabled" disabled>disabled</bal-step-item>
+          </bal-steps>
+        </section>
+
+        <bal-heading>Green</bal-heading>
+        <section data-testid="green">
+          <bal-steps value="step-b" color="green">
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
+              Step A Content
+            </bal-step-item>
+            <bal-step-item value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
+            <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
+            <bal-step-item value="disabled" label="disabled" disabled>disabled</bal-step-item>
+          </bal-steps>
+        </section>
+
+        <bal-heading>Yellow</bal-heading>
+        <section data-testid="yellow">
+          <bal-steps value="step-b" color="yellow">
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
+              Step A Content
+            </bal-step-item>
+            <bal-step-item value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item value="step-x" label="Step X">Step X Content</bal-step-item>
+            <bal-step-item value="step-c" label="Step C" failed>Step C Content</bal-step-item>
+            <bal-step-item value="disabled" label="disabled" disabled>disabled</bal-step-item>
           </bal-steps>
         </section>
       </main>

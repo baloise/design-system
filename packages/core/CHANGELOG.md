@@ -1,5 +1,41 @@
 # Changelog
 
+## 16.4.0
+
+### Minor Changes
+
+- **tabs**: tabs can be created without a integrated panel ( [#1451](https://github.com/baloise/design-system/pull/1451))
+
+- **dropdown**: focus selected option when navigating with opening dropdown popup ( [#1448](https://github.com/baloise/design-system/pull/1448))
+
+- **progress-bar**: add brand colors ( [#1458](https://github.com/baloise/design-system/pull/1458))
+
+- **steps**: add brand colors ( [#1458](https://github.com/baloise/design-system/pull/1458))
+
+### Patch Changes
+
+- **a11y**: fix: implement a11y for close button on modals ( [#1456](https://github.com/baloise/design-system/pull/1456))
+
+- **nav**: add aria control to nav tabs and connect them to the flyout ( [#1451](https://github.com/baloise/design-system/pull/1451))
+
+- **tabs**: only show line when value exists ( [#1432](https://github.com/baloise/design-system/pull/1432))
+
+- **carousel**: improve keyboard inputs and a11y criterias ( [#1432](https://github.com/baloise/design-system/pull/1432))
+
+- **accordion**: make it keyboard accessible ( [#1450](https://github.com/baloise/design-system/pull/1450))
+
+- **dropdown**: emits blur after change event ( [#1439](https://github.com/baloise/design-system/pull/1439))
+
+- **list**: make accordion accessible to the keyboard ( [#1450](https://github.com/baloise/design-system/pull/1450))
+
+- **tabs**: improve keyboard navigation according to a11y criterias ( [#1432](https://github.com/baloise/design-system/pull/1432))
+
+- **carousel**: implement role list and listitem to improve screenreaders ( [#1432](https://github.com/baloise/design-system/pull/1432))
+
+- **button**: Improving accessibility: keep focus on button after selection ( [#1431](https://github.com/baloise/design-system/pull/1431))
+
+- **close**: is accessible by the keyboard ( [#1438](https://github.com/baloise/design-system/pull/1438))
+
 ## 16.3.0
 
 ### Minor Changes

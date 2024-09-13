@@ -5,4 +5,5 @@
 
 namespace BalProps {
   export type BalProgressBarBackground = 'white' | 'grey'
+  export type BalProgressBarColor = 'primary' | 'purple' | 'yellow' | 'red' | 'green'
 }

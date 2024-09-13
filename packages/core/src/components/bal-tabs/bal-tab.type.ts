@@ -19,6 +19,8 @@ export interface BalTabOption {
   navigate?: EventEmitter<Event>
   trackingData?: Attributes
   hidden?: boolean // deprecated use invisible instead
+  noPanel?: boolean
+  aria?: BalProps.BalTabItemAria
 }
 
 export interface TabLineProps {

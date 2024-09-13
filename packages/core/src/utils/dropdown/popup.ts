@@ -30,7 +30,7 @@ export class DropdownPopupUtil {
     }
   }
 
-  expandList() {
+  async expandList() {
     if (this.component.panelEl) {
       this.component.panelCleanup = autoUpdate(
         this.component.el,
@@ -39,7 +39,7 @@ export class DropdownPopupUtil {
       )
     }
     this.component.isExpanded = true
-    this.component.listEl?.focusFirst()
+    await this.component.listEl?.focusSelected()
   }
 
   collapseList() {
