@@ -147,5 +147,14 @@ describe('balDate', () => {
         expect(BalDate.fromISO(date2).isBeforeOrEqual(date1)).toBeFalsy()
       })
     })
+    describe('isEmptyDate', () => {
+      test('should return if date is empty, null or undefined', () => {
+        const date = BalDate.fromISO('2001-02-01')
+        expect(BalDate.isEmptyDate(null)).toBeTruthy()
+        expect(BalDate.isEmptyDate('')).toBeTruthy()
+        expect(BalDate.isEmptyDate(undefined)).toBeTruthy()
+        expect(date).toBeFalsy()
+      })
+    })
   })
 })

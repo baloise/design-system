@@ -66,6 +66,10 @@ export class BalDate {
     return weekdays
   }
 
+  public static isEmptyDate(value: any): boolean {
+    return value === undefined || value === null || value === ''
+  }
+
   constructor(private dt: DateTime) {}
 
   public get isValid() {
