@@ -3,6 +3,7 @@ import { vueOutputTarget } from '@baloise/output-target-vue'
 export const vueComponentModels: any[] = [
   {
     elements: [
+      'bal-segment',
       'bal-radio-group',
       'bal-datepicker',
       'bal-select',

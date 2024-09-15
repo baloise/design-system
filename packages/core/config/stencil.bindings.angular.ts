@@ -5,6 +5,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: [
       'bal-radio-group',
+      'bal-segment',
       'bal-checkbox-group',
       'bal-select',
       'bal-dropdown',
@@ -46,6 +47,7 @@ export const AngularGenerator = () =>
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [
       ...docComponents,
+      'bal-segment',
       'bal-checkbox-group',
       'bal-checkbox',
       'bal-date',
