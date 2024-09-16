@@ -418,6 +418,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     const block = BEM.block('radio-checkbox')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
+    const iconEl = block.element('icon')
     const labelTextEl = labelEl.element('text')
 
     const focused = this.focused && this.buttonTabindex !== -1
@@ -501,6 +502,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
             {...labelAttributes}
             data-testid="bal-checkbox-label"
           >
+            {this.interface === 'switch' ? (
+              <bal-icon
+                class={{ ...iconEl.class() }}
+                name="check"
+                color="white"
+                size="x-small"
+                aria-hidden="true1d"
+              ></bal-icon>
+            ) : (
+              ''
+            )}
             <span
               class={{
                 ...labelTextEl.class(),
