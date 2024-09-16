@@ -508,7 +508,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
                 name="check"
                 color="white"
                 size="x-small"
-                aria-hidden="true1d"
+                aria-hidden="true"
               ></bal-icon>
             ) : (
               ''
