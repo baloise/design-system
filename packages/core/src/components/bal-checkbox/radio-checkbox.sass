@@ -362,6 +362,10 @@ bal-radio .bal-radio-checkbox__label
     &:active
       .bal-radio-checkbox__label::after
         background: var(--bal-radio-checkbox-switch-label-background-active-after)
+  &--switch#{&}--flat
+    .bal-radio-checkbox__label::before,
+    .bal-radio-checkbox__label::after
+      margin-top: 0
   &--switch#{&}--checked
     .bal-radio-checkbox__label::before
       background: var(--bal-radio-checkbox-switch-label-background-checked-before)
