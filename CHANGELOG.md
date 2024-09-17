@@ -1,5 +1,19 @@
 # Changelog
 
+## 16.5.0
+
+### Minor Changes
+
+- **brand-icons**: add new brand icons ( [#1466](https://github.com/baloise/design-system/pull/1466))
+
+- **checkbox**: add check icon for selected state ( [#1462](https://github.com/baloise/design-system/pull/1462))
+
+- **segment**: new component ( [#1460](https://github.com/baloise/design-system/pull/1460))
+
+### Patch Changes
+
+- **checkbox**: remove margin top when set to flat for switch ( [#1464](https://github.com/baloise/design-system/pull/1464))
+
 ## 16.4.0
 
 ### Minor Changes

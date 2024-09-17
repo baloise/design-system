@@ -20,8 +20,6 @@ import { BalAriaFormLinking, BalAriaForm, defaultBalAriaForm } from '../../utils
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
   @Element() el!: HTMLElement
 
-  private inputId = `bal-lbl-${labelIds++}`
-
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
@@ -44,6 +42,11 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    * So, any given label element can be associated with only one form control.
    */
   @Prop() htmlFor?: string = undefined
+
+  /**
+   * Define the id of the native label element
+   */
+  @Prop() htmlId?: string = `bal-lbl-${labelIds++}`
 
   /**
    * If `true` the form control needs to be filled. If it is set to
@@ -150,7 +153,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
     const xxLarge = this.size === 'xx-large'
     const xxxLarge = this.size === 'xxx-large'
 
-    const id = this.ariaForm.labelId || this.inputId
+    const id = this.ariaForm.labelId || this.htmlId
     const htmlFor = this.htmlFor || this.ariaForm.controlId
 
     return (

@@ -14,6 +14,7 @@ import { BalOption } from "./utils/dropdown";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
+import { SegmentValue } from "./components/bal-segment/bal-segment.types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
@@ -25,6 +26,7 @@ export { BalOption } from "./utils/dropdown";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
+export { SegmentValue } from "./components/bal-segment/bal-segment.types";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1753,6 +1755,10 @@ export namespace Components {
          */
         "htmlFor"?: string;
         /**
+          * Define the id of the native label element
+         */
+        "htmlId"?: string;
+        /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
@@ -2718,6 +2724,53 @@ export namespace Components {
          */
         "verticalOnMobile": boolean;
     }
+    interface BalSegment {
+        /**
+          * If `true`, the user cannot interact with the segment.
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the element uses the whole width
+         */
+        "expanded": boolean;
+        /**
+          * If `true`, the segment is shown red.
+         */
+        "invalid": boolean;
+        /**
+          * If `true`, and is vertical then the list height is limited and scrollable.
+         */
+        "scrollable": boolean;
+        /**
+          * the value of the segment.
+         */
+        "value"?: BalProps.BalSegmentValue;
+        /**
+          * If `true`, the segment items are presented vertical as a list.
+         */
+        "vertical": boolean;
+    }
+    interface BalSegmentItem {
+        "checked": boolean;
+        /**
+          * If `true`, the user cannot interact with the segment button.
+         */
+        "disabled": boolean;
+        "focused": boolean;
+        /**
+          * If `true`, the segment is shown in red.
+         */
+        "invalid": boolean;
+        /**
+          * Label of the segment control
+         */
+        "label": string;
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the segment button.
+         */
+        "value": SegmentValue;
+    }
     interface BalSelect {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -3642,6 +3695,14 @@ export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
 export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioGroupElement;
+}
+export interface BalSegmentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSegmentElement;
+}
+export interface BalSegmentItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSegmentItemElement;
 }
 export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4663,6 +4724,43 @@ declare global {
         prototype: HTMLBalRadioGroupElement;
         new (): HTMLBalRadioGroupElement;
     };
+    interface HTMLBalSegmentElementEventMap {
+        "balBlur": BalEvents.BalSegmentBlurDetail;
+        "balChange": BalEvents.BalSegmentChangeDetail;
+        "balSelect": BalEvents.BalSegmentChangeDetail;
+        "balVertical": BalEvents.BalSegmentVerticalDetail;
+    }
+    interface HTMLBalSegmentElement extends Components.BalSegment, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalSegmentElement: {
+        prototype: HTMLBalSegmentElement;
+        new (): HTMLBalSegmentElement;
+    };
+    interface HTMLBalSegmentItemElementEventMap {
+        "balBlur": BalEvents.BalSegmentBlurDetail;
+    }
+    interface HTMLBalSegmentItemElement extends Components.BalSegmentItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSegmentItemElementEventMap>(type: K, listener: (this: HTMLBalSegmentItemElement, ev: BalSegmentItemCustomEvent<HTMLBalSegmentItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSegmentItemElementEventMap>(type: K, listener: (this: HTMLBalSegmentItemElement, ev: BalSegmentItemCustomEvent<HTMLBalSegmentItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalSegmentItemElement: {
+        prototype: HTMLBalSegmentItemElement;
+        new (): HTMLBalSegmentItemElement;
+    };
     interface HTMLBalSelectElementEventMap {
         "balChange": BalEvents.BalSelectChangeDetail;
         "balInputClick": BalEvents.BalSelectInputClickDetail;
@@ -5045,6 +5143,8 @@ declare global {
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
+        "bal-segment": HTMLBalSegmentElement;
+        "bal-segment-item": HTMLBalSegmentItemElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-shape": HTMLBalShapeElement;
@@ -6867,6 +6967,10 @@ declare namespace LocalJSX {
          */
         "htmlFor"?: string;
         /**
+          * Define the id of the native label element
+         */
+        "htmlId"?: string;
+        /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
@@ -7790,6 +7894,72 @@ declare namespace LocalJSX {
          */
         "verticalOnMobile"?: boolean;
     }
+    interface BalSegment {
+        /**
+          * If `true`, the user cannot interact with the segment.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the element uses the whole width
+         */
+        "expanded"?: boolean;
+        /**
+          * If `true`, the segment is shown red.
+         */
+        "invalid"?: boolean;
+        /**
+          * Emitted when the component was touched
+         */
+        "onBalBlur"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
+        /**
+          * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.  This event will not emit when programmatically setting the `value` property.
+         */
+        "onBalChange"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+        /**
+          * Emitted when the value of the segment changes from user committed actions or from externally assigning a value.
+         */
+        "onBalSelect"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+        /**
+          * Emitted when the vertical style changes
+         */
+        "onBalVertical"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentVerticalDetail>) => void;
+        /**
+          * If `true`, and is vertical then the list height is limited and scrollable.
+         */
+        "scrollable"?: boolean;
+        /**
+          * the value of the segment.
+         */
+        "value"?: BalProps.BalSegmentValue;
+        /**
+          * If `true`, the segment items are presented vertical as a list.
+         */
+        "vertical"?: boolean;
+    }
+    interface BalSegmentItem {
+        "checked"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the segment button.
+         */
+        "disabled"?: boolean;
+        "focused"?: boolean;
+        /**
+          * If `true`, the segment is shown in red.
+         */
+        "invalid"?: boolean;
+        /**
+          * Label of the segment control
+         */
+        "label"?: string;
+        /**
+          * Emitted when the component was touched
+         */
+        "onBalBlur"?: (event: BalSegmentItemCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
+        /**
+          * The value of the segment button.
+         */
+        "value"?: SegmentValue;
+    }
     interface BalSelect {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -8688,6 +8858,8 @@ declare namespace LocalJSX {
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
         "bal-radio-group": BalRadioGroup;
+        "bal-segment": BalSegment;
+        "bal-segment-item": BalSegmentItem;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
         "bal-shape": BalShape;
@@ -8810,6 +8982,8 @@ declare module "@stencil/core" {
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
+            "bal-segment": LocalJSX.BalSegment & JSXBase.HTMLAttributes<HTMLBalSegmentElement>;
+            "bal-segment-item": LocalJSX.BalSegmentItem & JSXBase.HTMLAttributes<HTMLBalSegmentItemElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;

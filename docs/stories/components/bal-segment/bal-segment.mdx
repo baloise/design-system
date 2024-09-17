@@ -1,0 +1,62 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as SegmentStories from './bal-segment.stories'
+
+<Meta of={SegmentStories} />
+
+<StoryHeading of={SegmentStories.Basic} hidden></StoryHeading>
+
+<Banner of={SegmentStories} />
+
+<Lead>
+  **Segment** offers a list of options. The user can only select one option from a number of choices. It automatically
+  detects if it has enough space and changes to Vertical.
+</Lead>
+
+<Canvas of={SegmentStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={SegmentStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Vertical}></StoryHeading>
+
+The segment items can be displayed as a list just set `vertical`.
+
+<Canvas of={SegmentStories.Vertical} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Expanded}></StoryHeading>
+
+Set `expanded` to stretch the component over the full width.
+
+<Canvas of={SegmentStories.Expanded} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+import apiItem from './bal-segment-item/api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+<Markdown>{apiItem}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />
