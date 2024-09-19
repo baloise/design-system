@@ -441,7 +441,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private onInputChange = (ev: BalEvents.BalInputDateChange) => {
     stopEventBubbling(ev)
     if (ev.detail) {
-      this.value = ev.detail
+      this.value = ev.detail§
       this.balChange.emit(this.value)
     }
   }
