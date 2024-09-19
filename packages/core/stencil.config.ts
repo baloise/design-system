@@ -90,6 +90,7 @@ export const config: Config = {
             empty: true,
             includeGlobalScripts: false,
             generateTypeDeclarations: true,
+            externalRuntime: false,
           },
         ]
       : []),

@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "tslib": "~2.3.0",
-    "@stencil/core": "~4.11.0"
+    "@stencil/core": "~4.19.0",
+    "@lit/react": "^1.0.4",
+    "html-react-parser": "^5.1.10",
+    "ts-morph": "18.0.0"
   },
   "peerDependencies": {
     "react": "~18.2.0",

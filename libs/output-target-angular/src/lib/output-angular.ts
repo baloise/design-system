@@ -58,7 +58,6 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
         dest: destDirectory,
         keepDirStructure: false,
         warn: false,
-        ignore: [],
       },
     ],
     srcDirectory,
