@@ -1,6 +1,7 @@
 import { MaskComponent } from '../component'
 import { MaskContextEvent, MaskContextOptions } from './mask-context-interfaces'
 import { MaskPosition } from './mask-position'
+import { hasValueChanged } from '../../form-input'
 
 export abstract class MaskContext<T = MaskContextEvent> {
   private _value = ''
@@ -63,8 +64,7 @@ export abstract class MaskContext<T = MaskContextEvent> {
           this._options.component.balInput.emit(this.value)
         }
         if ((eventType === 'change' || eventType === 'blur') && parsedValue !== undefined) {
-          const valueChanged = this._options.component.value !== parsedValue
-          if (valueChanged) {
+          if (hasValueChanged(this._options.component.value, parsedValue)) {
             this._options.component.value = parsedValue
             this._options.component.balChange.emit(parsedValue)
           }
