@@ -153,7 +153,7 @@ describe('balDate', () => {
         expect(BalDate.isEmptyDate(null)).toBeTruthy()
         expect(BalDate.isEmptyDate('')).toBeTruthy()
         expect(BalDate.isEmptyDate(undefined)).toBeTruthy()
-        expect(date).toBeFalsy()
+        expect(BalDate.isEmptyDate(date)).toBeFalsy()
       })
     })
   })
