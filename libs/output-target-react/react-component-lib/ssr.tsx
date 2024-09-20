@@ -108,14 +108,16 @@ export const createComponentForServerSideRendering = <
              */
             if (!isShadowComponent) {
               const { children, ...customProps } = props || {}
-              const __html = serializedComponentByLine
+                const __html = serializedComponentByLine
                 // remove the components outer tags as we want to set the inner content only
                 .slice(1, -1)
                 // bring the array back to a string
                 .join('\n')
                 .trim()
                 // remove any whitespace between tags that may cause hydration errors
-                .replace(/(?<=>)\s+(?=<)/g, '')
+                .replace(/>\s+</g, '><')
+                // remove any leading or trailing whitespace inside the tags
+                .replace(/>\s*(.*?)\s*</g, '>$1<')
 
               return <CustomTag {...customProps} suppressHydrationWarning={true} dangerouslySetInnerHTML={{ __html }} />
             }
@@ -140,20 +142,17 @@ export const createComponentForServerSideRendering = <
   }) as unknown as ReactWebComponent<I, E>
 }
 
+
 /**
- * Recursively resolves the types of React components within the given children nodes.
+ * Recursively resolves the types of React components within the given children.
+ * This function handles various types of children, including strings, arrays, and React elements.
+ * It ensures that the `suppressHydrationWarning` prop is set to `true` for all resolved components.
  *
- * This function processes the children nodes to handle various types, including strings and
- * React elements. It ensures that the types of the components are resolved, especially when
- * dealing with asynchronous components or components that require special handling.
- *
- * @template I - The type of the HTMLElement.
- * @param {React.ReactNode} children - The children nodes to process.
- * @returns {Promise<React.ReactNode>} A promise that resolves to the processed children nodes
- * with resolved component types.
+ * @param {React.ReactNode} children - The children nodes to resolve.
+ * @returns {Promise<React.ReactNode>} A promise that resolves to the children with resolved component types.
  */
-async function resolveComponentTypes<I extends HTMLElement>(children: React.ReactNode): Promise<React.ReactNode> {
-  if (typeof children === 'undefined') {
+async function resolveComponentTypes(children: React.ReactNode): Promise<React.ReactNode> {
+  if (typeof children === 'undefined' || children === null) {
     return
   }
 
@@ -165,58 +164,50 @@ async function resolveComponentTypes<I extends HTMLElement>(children: React.Reac
     return children
   }
 
-  if (!children || !Array.isArray(children)) {
-    return []
+
+  const resolveComponentType = async (child) => {
+
+    if (typeof child === 'string') {
+      return child
+    }
+
+    const newProps = {
+      ...child.props,
+      suppressHydrationWarning: true,
+      children:
+        typeof child.props?.children === 'string'
+          ? child.props.children
+          : await resolveComponentTypes((child.props || {}).children),
+    }
+
+    /**
+     * Check if the conponent is a function
+     * If it is, we need to run the function to get the type
+     */
+    if (typeof child.type === 'function' ) {
+      const newChild = await child.type({
+        ...child.props,
+        suppressHydrationWarning: true,
+      });
+
+      return {
+        ...newChild,
+        props: newProps,
+      }
+    }
+
+    // Return the child with the resolved type and children
+    return {
+      ...child,
+      props: newProps,
+    }
+  }
+
+  if(!Array.isArray(children)) {
+    return resolveComponentType(children) as Promise<React.ReactNode>
   }
 
   return Promise.all(
-    children.map(async (child): Promise<string | StencilProps<I>> => {
-      if (typeof child === 'string') {
-        return child
-      }
-
-      const newProps = {
-        ...child.props,
-        children:
-          typeof child.props.children === 'string'
-            ? child.props.children
-            : await resolveComponentTypes((child.props || {}).children),
-      }
-
-      /**
-       * Check if the conponent is a function
-       * If it is, we need to run the function to get the type
-       * If the type has a `_payload` property, and it is a promise, we need to await it
-       */
-      let type = typeof child.type === 'function' ? await child.type({ __resolveTagName: true }) : child.type
-      if (type._payload && 'then' in type._payload) {
-        type = {
-          ...type,
-          _payload: await type._payload,
-        }
-      }
-
-      /**
-       * If the type has a `_payload` property, and it is a function, we need to run it
-       */
-      if (typeof type?._payload === 'function') {
-        type = {
-          ...type,
-          $$typeof: Symbol('react.element'),
-          _payload: await type._payload({ __resolveTagName: true }),
-        }
-
-        if (typeof type._payload.type === 'function') {
-          return type._payload.type()
-        }
-      }
-
-      // Return the child with the resolved type and children
-      return {
-        ...child,
-        type,
-        props: newProps,
-      }
-    }),
+    children.map(resolveComponentType),
   ) as Promise<React.ReactNode>
 }

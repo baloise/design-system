@@ -4,7 +4,7 @@ import { DIST_CUSTOM_ELEMENTS, DIST_CUSTOM_ELEMENTS_DEFAULT_DIR, HYDRATE_OUTPUT_
 import { isNill } from './utils'
 import { createComponentWrappers } from './create-component-wrappers'
 import { Project } from 'ts-morph'
-import { dirname, join } from 'path'
+import { join } from 'path'
 import { Config } from '@stencil/core'
 
 /**
