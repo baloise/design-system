@@ -27,8 +27,8 @@ const accessorProvider = {
 
 @ProxyCmp({
   defineCustomElementFn: () => {
-    defineSegment();
-    defineSegmentItem();
+    defineSegment()
+    defineSegmentItem()
   },
   inputs: BalSegmentInputs,
   methods: BalSegmentMethods,

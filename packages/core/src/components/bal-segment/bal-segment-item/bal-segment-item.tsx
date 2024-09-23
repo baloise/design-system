@@ -75,15 +75,6 @@ export class SegmentItem implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
 
-  connectedCallback() {
-    const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
-    if (segmentEl) {
-      this.updateState()
-      addEventListener(segmentEl, 'balSelect', this.updateState)
-      addEventListener(segmentEl, 'balVertical', this.updateVertical)
-    }
-  }
-
   disconnectedCallback() {
     const segmentEl = this.segmentEl
     if (segmentEl) {
@@ -100,6 +91,13 @@ export class SegmentItem implements ComponentInterface {
   }
 
   componentDidLoad() {
+    const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
+    if (segmentEl) {
+      this.updateState()
+      addEventListener(segmentEl, 'balSelect', this.updateState)
+      addEventListener(segmentEl, 'balVertical', this.updateVertical)
+    }
+
     raf(() => this.checkSlotContent())
   }
 
