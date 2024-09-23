@@ -4725,6 +4725,7 @@ declare global {
         new (): HTMLBalRadioGroupElement;
     };
     interface HTMLBalSegmentElementEventMap {
+        "balFocus": BalEvents.BalSegmentFocusDetail;
         "balBlur": BalEvents.BalSegmentBlurDetail;
         "balChange": BalEvents.BalSegmentChangeDetail;
         "balSelect": BalEvents.BalSegmentChangeDetail;
@@ -7915,6 +7916,10 @@ declare namespace LocalJSX {
           * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.  This event will not emit when programmatically setting the `value` property.
          */
         "onBalChange"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onBalFocus"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentFocusDetail>) => void;
         /**
           * Emitted when the value of the segment changes from user committed actions or from externally assigning a value.
          */

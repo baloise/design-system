@@ -30,12 +30,13 @@ import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resiz
 import { raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver {
+export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver, BalFocusObserver {
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -95,6 +96,11 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalSegmentFocusDetail>
+
+  /**
    * Emitted when the component was touched
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
@@ -146,6 +152,18 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    * ------------------------------------------------------
    */
 
+  hasFocus = false
+
+  @ListenToFocus()
+  focusInListener(ev: FocusEvent): void {
+    this.balFocus.emit(ev)
+  }
+
+  @ListenToFocus()
+  focusOutListener(ev: FocusEvent): void {
+    this.balBlur.emit(ev)
+  }
+
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
@@ -168,12 +186,6 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     } else {
       this.emitVerticalChange(true)
     }
-  }
-
-  @Listen('balBlur')
-  listenOnBalBlur(ev: BalEvents.BalSegmentBlur) {
-    stopEventBubbling(ev)
-    this.balBlur.emit(ev.detail)
   }
 
   @Listen('keydown')
