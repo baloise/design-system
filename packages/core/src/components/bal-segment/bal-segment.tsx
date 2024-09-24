@@ -11,6 +11,7 @@ import {
   State,
   Listen,
   writeTask,
+  Method,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { SegmentValue } from './bal-segment.types'
@@ -30,12 +31,14 @@ import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resiz
 import { raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
+import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver {
+export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver, BalFocusObserver {
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -50,6 +53,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @State() isVertical = false
   @State() isMobile = false
   @State() maxWidth = 0
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -65,6 +69,10 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    * If `true`, the user cannot interact with the segment.
    */
   @Prop() disabled = false
+  @Watch('disabled')
+  protected disabledChanged() {
+    this.allItems.map(item => (item.disabled = this.disabled))
+  }
 
   /**
    * If `true`, the segment items are presented vertical as a list.
@@ -93,6 +101,11 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
      */
     this.balSelect.emit(value)
   }
+
+  /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalSegmentFocusDetail>
 
   /**
    * Emitted when the component was touched
@@ -129,6 +142,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   connectedCallback() {
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
+    this.disabledChanged()
   }
 
   disconnectedCallback() {
@@ -145,6 +159,18 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  hasFocus = false
+
+  @ListenToFocus()
+  focusInListener(ev: FocusEvent): void {
+    this.balFocus.emit(ev)
+  }
+
+  @ListenToFocus()
+  focusOutListener(ev: FocusEvent): void {
+    this.balBlur.emit(ev)
+  }
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
@@ -170,10 +196,9 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
   }
 
-  @Listen('balBlur')
-  listenOnBalBlur(ev: BalEvents.BalSegmentBlur) {
-    stopEventBubbling(ev)
-    this.balBlur.emit(ev.detail)
+  @Listen('keydown', { target: 'document' })
+  listenOnKeyDownOutside() {
+    this.keyboardMode = true
   }
 
   @Listen('keydown')
@@ -185,6 +210,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     if (isSpaceKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('current')
+      this.value = current.value
     } else if (isArrowUpKey(ev) || isArrowLeftKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('previous')
@@ -215,22 +241,35 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * GETTERS
    * ------------------------------------------------------
    */
 
-  private get items() {
+  private get allItems() {
     return Array.from(this.el.querySelectorAll('bal-segment-item'))
   }
 
   private get checked() {
-    return this.items.find(item => item.value === this.value)
+    return this.allItems.find(item => item.value === this.value)
   }
 
   private getSegmentItem = (
     selector: 'first' | 'last' | 'next' | 'previous' | 'current',
   ): HTMLBalSegmentItemElement | null => {
-    const items = this.items.filter(item => !item.disabled)
+    const items = this.allItems.filter(item => !item.disabled)
     const currIndex = items.findIndex(item => item === document.activeElement.closest('bal-segment-item'))
 
     switch (selector) {
@@ -328,8 +367,11 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   private getIndicator(item: HTMLBalSegmentItemElement): HTMLDivElement | null {
-    const root = item.shadowRoot || item
-    return root.querySelector('.bal-segment-item__indicator')
+    if (item) {
+      const root = item.shadowRoot || item
+      return root.querySelector('.bal-segment-item__indicator')
+    }
+    return null
   }
 
   private checkButton(previous: HTMLBalSegmentItemElement, current: HTMLBalSegmentItemElement) {
@@ -379,7 +421,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   private setCheckedClasses() {
-    const items = this.items
+    const items = this.allItems
     const index = items.findIndex(item => item.value === this.value)
     const next = index + 1
     const previous = index - 1
@@ -402,18 +444,21 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    */
 
   render() {
-    const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile } = this
+    const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile, disabled } = this
     const block = BEM.block('segment')
 
     return (
       <Host
         role="radiogroup"
+        aria-labelledby={this.ariaForm.labelId}
+        aria-describedby={this.ariaForm.messageId}
         class={{
           ...block.class(),
           ...block.modifier('invalid').class(invalid),
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('scrollable').class(scrollable),
           ...block.modifier('keyboard').class(keyboardMode),
+          ...block.modifier('disabled').class(disabled),
           ...block.modifier('expanded').class((expanded || isMobile) && !isVertical),
         }}
         onClick={this.onClick}

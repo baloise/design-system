@@ -1,22 +1,11 @@
-import {
-  Component,
-  h,
-  ComponentInterface,
-  Host,
-  Element,
-  Prop,
-  State,
-  Watch,
-  Method,
-  EventEmitter,
-  Event,
-} from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Method } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { SegmentValue } from '../bal-segment.types'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { addEventListener, raf, removeEventListener } from '../../../utils/helpers'
+import { BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
 
-let ids = 0
+let SegmentItemIds = 0
 
 @Component({
   tag: 'bal-segment-item',
@@ -26,13 +15,18 @@ export class SegmentItem implements ComponentInterface {
   private segmentEl: HTMLBalSegmentElement | null = null
   private nativeEl: HTMLButtonElement | undefined
   private inheritedAttributes: Attributes = {}
-  private id = ids++
+  private internalId = SegmentItemIds++
+  private inputId = `bal-si-${this.internalId}`
 
   @Element() el!: HTMLElement
 
   @State() hasSlotContent = false
   @State() isFocusable = false
   @State() isVertical = false
+  @State() isLast = false
+  @State() isFirst = false
+  @State() hasEmptyValue = true
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * If `true`, the user cannot interact with the segment button.
@@ -64,24 +58,31 @@ export class SegmentItem implements ComponentInterface {
   /**
    * The value of the segment button.
    */
-  @Prop() value: SegmentValue = 'bal-si-' + this.id
+  @Prop({ mutable: true }) value: SegmentValue = 'bal-si-' + this.internalId
   @Watch('value')
-  valueChanged() {
-    this.updateState()
+  valueChanged(newValue: SegmentValue, oldValue: SegmentValue) {
+    if (newValue !== oldValue) {
+      this.updateState()
+    }
   }
 
-  /**
-   * Emitted when the component was touched
-   */
-  @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
+  componentWillLoad() {
+    this.inheritedAttributes = {
+      ...inheritAttributes(this.el, ['aria-label']),
+    }
+  }
 
-  connectedCallback() {
+  componentDidLoad() {
     const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
     if (segmentEl) {
-      this.updateState()
       addEventListener(segmentEl, 'balSelect', this.updateState)
       addEventListener(segmentEl, 'balVertical', this.updateVertical)
     }
+
+    raf(() => {
+      this.checkSlotContent()
+      this.updateState()
+    })
   }
 
   disconnectedCallback() {
@@ -93,14 +94,13 @@ export class SegmentItem implements ComponentInterface {
     }
   }
 
-  componentWillLoad() {
-    this.inheritedAttributes = {
-      ...inheritAttributes(this.el, ['aria-label']),
+  private calculateEmptyValue() {
+    if (this.segmentEl) {
+      const segments = Array.from(this.segmentEl.querySelectorAll('bal-segment-item'))
+      this.hasEmptyValue = !segments.some(item => item.value === this.segmentEl.value)
+    } else {
+      this.hasEmptyValue = false
     }
-  }
-
-  componentDidLoad() {
-    raf(() => this.checkSlotContent())
   }
 
   /**
@@ -117,6 +117,14 @@ export class SegmentItem implements ComponentInterface {
     }
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private updateVertical = (ev: BalEvents.BalSegmentVertical) => {
     this.isVertical = ev.detail
   }
@@ -126,7 +134,7 @@ export class SegmentItem implements ComponentInterface {
 
     if (segmentEl) {
       if (segmentEl.value === '' || segmentEl.value === undefined || segmentEl.value === null) {
-        const items = this.items
+        const items = this.allAvailableOptions
         if (items.length > 0) {
           const first = items[0]
           this.isFocusable = first === this.el
@@ -139,51 +147,24 @@ export class SegmentItem implements ComponentInterface {
       if (segmentEl.disabled) {
         this.disabled = true
       }
+
+      this.isLast = segmentEl.lastElementChild === this.el
+      this.isFirst = segmentEl.firstElementChild === this.el
+
+      this.calculateEmptyValue()
     }
   }
 
-  private get items() {
-    return this.allItems.filter(item => !item.disabled)
+  private get allAvailableOptions() {
+    return this.allOptions.filter(item => !item.disabled)
   }
 
-  private get allItems() {
+  private get allOptions() {
     const { segmentEl } = this
     if (segmentEl) {
       return Array.from(segmentEl.querySelectorAll('bal-segment-item'))
     }
     return []
-  }
-
-  private isFirst() {
-    const { segmentEl } = this
-    let items = this.items
-
-    if (segmentEl && segmentEl.disabled) {
-      items = this.allItems
-    }
-
-    if (items.length > 0) {
-      const first = items[0]
-      return first === this.el
-    }
-
-    return false
-  }
-
-  private isLast() {
-    const { segmentEl } = this
-    let items = this.items
-
-    if (segmentEl && segmentEl.disabled) {
-      items = this.allItems
-    }
-
-    if (items.length > 0) {
-      const last = items[items.length - 1]
-      return last === this.el
-    }
-
-    return false
   }
 
   private checkSlotContent() {
@@ -202,7 +183,7 @@ export class SegmentItem implements ComponentInterface {
   }
 
   render() {
-    const { checked, focused, segmentEl, label, isFocusable } = this
+    const { checked, focused, segmentEl, label, isFocusable, isFirst, hasEmptyValue } = this
     const block = BEM.block('segment-item')
     const buttonBem = block.element('button')
     const indicatorBem = block.element('indicator')
@@ -210,6 +191,21 @@ export class SegmentItem implements ComponentInterface {
     const invalid = this.invalid || (segmentEl && segmentEl.invalid)
     const disabled = this.disabled || (segmentEl && segmentEl.disabled)
     const vertical = this.isVertical
+
+    const hasTabindex = (hasEmptyValue && isFirst) || (isFocusable && !disabled)
+
+    const id = (hasTabindex && this.ariaForm.controlId) || this.inputId
+
+    let buttonAttributes: any = {}
+
+    if (hasTabindex) {
+      let labelId = this.ariaForm.labelId || null
+      labelId = `${labelId || ''} ${id}-lbl`.trim()
+      buttonAttributes = {
+        'aria-labelledby': labelId,
+        'aria-describedby': this.ariaForm.messageId,
+      }
+    }
 
     return (
       <Host
@@ -219,13 +215,14 @@ export class SegmentItem implements ComponentInterface {
           ...block.modifier('disabled').class(disabled),
           ...block.modifier('checked').class(checked),
           ...block.modifier('invalid').class(invalid),
-          ...block.modifier('line').class(!this.isFirst() && !checked),
-          ...block.modifier('last').class(this.isLast() && !checked),
+          ...block.modifier('last').class(this.isLast && !checked),
         }}
       >
         <button
+          id={id}
           role="radio"
           aria-checked={checked ? 'true' : 'false'}
+          {...buttonAttributes}
           class={{
             ...buttonBem.class(),
             ...buttonBem.modifier('checked').class(checked),
@@ -234,11 +231,9 @@ export class SegmentItem implements ComponentInterface {
             ...buttonBem.modifier('focused').class(focused),
             ...buttonBem.modifier('vertical').class(vertical),
           }}
-          aria-labelledby={`bal-si-${this.id}-label`}
           type={'button'}
-          tabIndex={isFocusable ? 0 : -1}
+          tabIndex={hasTabindex ? 0 : -1}
           part="native"
-          onBlur={ev => this.balBlur.emit(ev)}
           disabled={disabled}
           ref={el => (this.nativeEl = el)}
           {...this.inheritedAttributes}
@@ -255,7 +250,7 @@ export class SegmentItem implements ComponentInterface {
           ></bal-icon>
           <bal-stack space="x-small" layout={'horizontal'}>
             <bal-content space="none">
-              <bal-label htmlId={`bal-si-${this.id}-label`}>{label}</bal-label>
+              <bal-label htmlId={`bal-si-${this.internalId}-label`}>{label}</bal-label>
               <span part="slot" class={{ ...buttonBem.element('slot').modifier('hidden').class(!this.hasSlotContent) }}>
                 {' '}
                 <slot onSlotchange={this.onSlottedItemsChange}></slot>

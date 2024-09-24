@@ -12,7 +12,8 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
 
 import type { Components } from '@baloise/ds-core'
-import { defineCustomElement } from '@baloise/ds-core/components/bal-segment'
+import { defineCustomElement as defineSegment } from '@baloise/ds-core/components/bal-segment'
+import { defineCustomElement as defineSegmentItem } from '@baloise/ds-core/components/bal-segment-item'
 
 import { ProxyCmp, proxyOutputs } from '../generated/angular-component-lib/utils'
 import { ValueAccessor } from '../generated/value-accessor'
@@ -25,7 +26,10 @@ const accessorProvider = {
 }
 
 @ProxyCmp({
-  defineCustomElementFn: defineCustomElement,
+  defineCustomElementFn: () => {
+    defineSegment()
+    defineSegmentItem()
+  },
   inputs: BalSegmentInputs,
   methods: BalSegmentMethods,
 })

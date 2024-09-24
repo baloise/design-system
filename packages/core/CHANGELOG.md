@@ -1,5 +1,15 @@
 # Changelog
 
+## 16.5.1
+
+### Patch Changes
+
+- **date**: prevent trigger of value change when new and old value are both empty ( [#1459](https://github.com/baloise/design-system/pull/1459))
+
+- **segment**: resolve custom elemen creation in angular applications ( [#1471](https://github.com/baloise/design-system/pull/1471))
+
+- **button**: labels will break in groups when there is not enough space ( [#1467](https://github.com/baloise/design-system/pull/1467))
+
 ## 16.5.0
 
 ### Minor Changes
