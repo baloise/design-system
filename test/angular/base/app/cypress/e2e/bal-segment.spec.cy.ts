@@ -8,10 +8,7 @@ describe('bal-segment', () => {
     cy.getByTestId('segment').getByRole('label', { name: 'Kiwi' }).click()
     cy.get('body').click(0, 0)
 
-    cy.getByLabelText('Segment Label')
-      .shouldBeInvalid()
-      .getDescribingElement()
-      .contains('This field is required')
+    cy.getByLabelText('Segment Label').shouldBeInvalid().getDescribingElement().contains('This field is required')
 
     cy.getByTestId('segment').getByRole('label', { name: 'Kiwi' }).click()
 

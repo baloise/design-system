@@ -117,7 +117,7 @@ export class AppComponent {
     segment: new FormControl('Kiwi', [Validators.required]),
   })
 
-  constructor(private modalService: BalModalService) { }
+  constructor(private modalService: BalModalService) {}
 
   updateValue(option: UpdateControl) {
     const control = this.myForm.get(option.name)

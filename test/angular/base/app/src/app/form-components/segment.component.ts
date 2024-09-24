@@ -30,9 +30,7 @@ import { UpdateControl } from '../app.component'
             Update Segment
           </bal-button>
           <bal-button color="tertiary" (click)="form.get('segment')?.enable()">Enable Segment</bal-button>
-          <bal-button color="tertiary" (click)="form.get('segment')?.disable()"
-            >Disable Segment</bal-button
-          >
+          <bal-button color="tertiary" (click)="form.get('segment')?.disable()">Disable Segment</bal-button>
         </bal-button-group>
       </bal-card-content>
     </bal-card>
