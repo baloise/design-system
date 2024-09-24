@@ -26,4 +26,7 @@ namespace BalEvents {
 
   export type BalSegmentBlurDetail = FocusEvent
   export type BalSegmentBlur = BalSegmentCustomEvent<BalSegmentBlurDetail>
+
+  export type BalSegmentFocusDetail = FocusEvent
+  export type BalSegmentFocus = BalSegmentCustomEvent<BalSegmentFocusDetail>
 }
