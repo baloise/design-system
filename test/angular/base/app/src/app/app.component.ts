@@ -19,6 +19,7 @@ import { RadioButtonsComponent } from './form-components/radio-buttons.component
 import { DateComponent } from './form-components/date.component'
 import { InputDateComponent } from './form-components/input-date.component'
 import { ModalComponent } from './modal.component'
+import { SegmentComponent } from './form-components/segment.component'
 
 export interface UpdateControl {
   name: string
@@ -49,6 +50,7 @@ export interface UpdateControl {
     RadioButtonsComponent,
     DateComponent,
     InputDateComponent,
+    SegmentComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -73,6 +75,7 @@ export interface UpdateControl {
           <app-checkbox-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-buttons>
           <app-radio [form]="myForm" (updateControl)="updateValue($event)"></app-radio>
           <app-radio-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-radio-buttons>
+          <app-segment [form]="myForm" (updateControl)="updateValue($event)"></app-segment>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -111,9 +114,10 @@ export class AppComponent {
     checkboxButtons: new FormControl(['Kiwi'], [Validators.required]),
     radio: new FormControl('Kiwi', [Validators.required]),
     radioButtons: new FormControl('Kiwi', [Validators.required]),
+    segment: new FormControl('Kiwi', [Validators.required]),
   })
 
-  constructor(private modalService: BalModalService) {}
+  constructor(private modalService: BalModalService) { }
 
   updateValue(option: UpdateControl) {
     const control = this.myForm.get(option.name)

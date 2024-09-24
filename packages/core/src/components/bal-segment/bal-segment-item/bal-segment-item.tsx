@@ -1,16 +1,4 @@
-import {
-  Component,
-  h,
-  ComponentInterface,
-  Host,
-  Element,
-  Prop,
-  State,
-  Watch,
-  Method,
-  EventEmitter,
-  Event,
-} from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Method } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { SegmentValue } from '../bal-segment.types'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
@@ -34,6 +22,8 @@ export class SegmentItem implements ComponentInterface {
   @State() isFocusable = false
   @State() isVertical = false
   @State() isLast = false
+  @State() isFirst = false
+  @State() hasEmptyValue = true
 
   /**
    * If `true`, the user cannot interact with the segment button.
@@ -73,11 +63,6 @@ export class SegmentItem implements ComponentInterface {
     }
   }
 
-  /**
-   * Emitted when the component was touched
-   */
-  @Event() balBlur!: EventEmitter<BalEvents.BalSegmentBlurDetail>
-
   componentWillLoad() {
     this.inheritedAttributes = {
       ...inheritAttributes(this.el, ['aria-label']),
@@ -103,6 +88,15 @@ export class SegmentItem implements ComponentInterface {
       removeEventListener(segmentEl, 'balSelect', this.updateState)
       removeEventListener(segmentEl, 'balVertical', this.updateVertical)
       this.segmentEl = null
+    }
+  }
+
+  private calculateEmptyValue() {
+    if (this.segmentEl) {
+      const segments = Array.from(this.segmentEl.querySelectorAll('bal-segment-item'))
+      this.hasEmptyValue = !segments.some(item => item.value === this.segmentEl.value)
+    } else {
+      this.hasEmptyValue = false
     }
   }
 
@@ -144,6 +138,9 @@ export class SegmentItem implements ComponentInterface {
       }
 
       this.isLast = segmentEl.lastElementChild === this.el
+      this.isFirst = segmentEl.firstElementChild === this.el
+
+      this.calculateEmptyValue()
     }
   }
 
@@ -175,7 +172,7 @@ export class SegmentItem implements ComponentInterface {
   }
 
   render() {
-    const { checked, focused, segmentEl, label, isFocusable } = this
+    const { checked, focused, segmentEl, label, isFocusable, isFirst, hasEmptyValue } = this
     const block = BEM.block('segment-item')
     const buttonBem = block.element('button')
     const indicatorBem = block.element('indicator')
@@ -183,6 +180,8 @@ export class SegmentItem implements ComponentInterface {
     const invalid = this.invalid || (segmentEl && segmentEl.invalid)
     const disabled = this.disabled || (segmentEl && segmentEl.disabled)
     const vertical = this.isVertical
+
+    const hasTabindex = (hasEmptyValue && isFirst) || (isFocusable && !disabled)
 
     return (
       <Host
@@ -208,10 +207,9 @@ export class SegmentItem implements ComponentInterface {
             ...buttonBem.modifier('vertical').class(vertical),
           }}
           type={'button'}
-          tabIndex={isFocusable && !disabled ? 0 : -1}
+          tabIndex={hasTabindex ? 0 : -1}
           part="native"
           disabled={disabled}
-          onBlur={ev => this.balBlur.emit(ev)}
           ref={el => (this.nativeEl = el)}
           {...this.inheritedAttributes}
         >

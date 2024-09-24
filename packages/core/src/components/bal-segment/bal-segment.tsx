@@ -66,6 +66,10 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    * If `true`, the user cannot interact with the segment.
    */
   @Prop() disabled = false
+  @Watch('disabled')
+  protected disabledChanged() {
+    this.allItems.map(item => (item.disabled = this.disabled))
+  }
 
   /**
    * If `true`, the segment items are presented vertical as a list.
@@ -135,6 +139,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   connectedCallback() {
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
+    this.disabledChanged()
   }
 
   disconnectedCallback() {
@@ -188,6 +193,11 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
   }
 
+  @Listen('keydown', { target: 'document' })
+  listenOnKeyDownOutside() {
+    this.keyboardMode = true
+  }
+
   @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
@@ -197,6 +207,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     if (isSpaceKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('current')
+      this.value = current.value
     } else if (isArrowUpKey(ev) || isArrowLeftKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('previous')
@@ -231,18 +242,18 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    * ------------------------------------------------------
    */
 
-  private get items() {
+  private get allItems() {
     return Array.from(this.el.querySelectorAll('bal-segment-item'))
   }
 
   private get checked() {
-    return this.items.find(item => item.value === this.value)
+    return this.allItems.find(item => item.value === this.value)
   }
 
   private getSegmentItem = (
     selector: 'first' | 'last' | 'next' | 'previous' | 'current',
   ): HTMLBalSegmentItemElement | null => {
-    const items = this.items.filter(item => !item.disabled)
+    const items = this.allItems.filter(item => !item.disabled)
     const currIndex = items.findIndex(item => item === document.activeElement.closest('bal-segment-item'))
 
     switch (selector) {
@@ -340,8 +351,11 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   private getIndicator(item: HTMLBalSegmentItemElement): HTMLDivElement | null {
-    const root = item.shadowRoot || item
-    return root.querySelector('.bal-segment-item__indicator')
+    if (item) {
+      const root = item.shadowRoot || item
+      return root.querySelector('.bal-segment-item__indicator')
+    }
+    return null
   }
 
   private checkButton(previous: HTMLBalSegmentItemElement, current: HTMLBalSegmentItemElement) {
@@ -391,7 +405,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   }
 
   private setCheckedClasses() {
-    const items = this.items
+    const items = this.allItems
     const index = items.findIndex(item => item.value === this.value)
     const next = index + 1
     const previous = index - 1
@@ -414,7 +428,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
    */
 
   render() {
-    const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile } = this
+    const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile, disabled } = this
     const block = BEM.block('segment')
 
     return (
@@ -426,6 +440,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('scrollable').class(scrollable),
           ...block.modifier('keyboard').class(keyboardMode),
+          ...block.modifier('disabled').class(disabled),
           ...block.modifier('expanded').class((expanded || isMobile) && !isVertical),
         }}
         onClick={this.onClick}
