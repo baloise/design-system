@@ -2741,6 +2741,7 @@ export namespace Components {
           * If `true`, and is vertical then the list height is limited and scrollable.
          */
         "scrollable": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * the value of the segment.
          */
@@ -2765,6 +2766,7 @@ export namespace Components {
           * Label of the segment control
          */
         "label": string;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
           * The value of the segment button.

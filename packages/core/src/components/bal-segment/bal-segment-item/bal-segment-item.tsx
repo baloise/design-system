@@ -3,6 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { SegmentValue } from '../bal-segment.types'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { addEventListener, raf, removeEventListener } from '../../../utils/helpers'
+import { BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
 
 let SegmentItemIds = 0
 
@@ -15,6 +16,7 @@ export class SegmentItem implements ComponentInterface {
   private nativeEl: HTMLButtonElement | undefined
   private inheritedAttributes: Attributes = {}
   private internalId = SegmentItemIds++
+  private inputId = `bal-si-${this.internalId}`
 
   @Element() el!: HTMLElement
 
@@ -24,6 +26,7 @@ export class SegmentItem implements ComponentInterface {
   @State() isLast = false
   @State() isFirst = false
   @State() hasEmptyValue = true
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * If `true`, the user cannot interact with the segment button.
@@ -114,6 +117,14 @@ export class SegmentItem implements ComponentInterface {
     }
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private updateVertical = (ev: BalEvents.BalSegmentVertical) => {
     this.isVertical = ev.detail
   }
@@ -183,6 +194,19 @@ export class SegmentItem implements ComponentInterface {
 
     const hasTabindex = (hasEmptyValue && isFirst) || (isFocusable && !disabled)
 
+    const id = (hasTabindex && this.ariaForm.controlId) || this.inputId
+
+    let buttonAttributes: any = {}
+
+    if (hasTabindex) {
+      let labelId = this.ariaForm.labelId || null
+      labelId = `${labelId || ''} ${id}-lbl`.trim()
+      buttonAttributes = {
+        'aria-labelledby': labelId,
+        'aria-describedby': this.ariaForm.messageId,
+      }
+    }
+
     return (
       <Host
         class={{
@@ -195,9 +219,10 @@ export class SegmentItem implements ComponentInterface {
         }}
       >
         <button
+          id={id}
           role="radio"
           aria-checked={checked ? 'true' : 'false'}
-          aria-labelledby={`bal-si-${this.internalId}-label`}
+          {...buttonAttributes}
           class={{
             ...buttonBem.class(),
             ...buttonBem.modifier('checked').class(checked),

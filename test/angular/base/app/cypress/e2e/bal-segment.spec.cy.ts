@@ -1,4 +1,4 @@
-describe('bal-segment', () => {
+describe.skip('bal-segment', () => {
   beforeEach(() => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })

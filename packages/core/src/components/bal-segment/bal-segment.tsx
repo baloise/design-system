@@ -11,6 +11,7 @@ import {
   State,
   Listen,
   writeTask,
+  Method,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { SegmentValue } from './bal-segment.types'
@@ -31,6 +32,7 @@ import { raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
+import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-segment',
@@ -51,6 +53,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @State() isVertical = false
   @State() isMobile = false
   @State() maxWidth = 0
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -235,6 +238,19 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     if (current) {
       current.setFocus()
     }
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
   }
 
   /**
@@ -434,6 +450,8 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     return (
       <Host
         role="radiogroup"
+        aria-labelledby={this.ariaForm.labelId}
+        aria-describedby={this.ariaForm.messageId}
         class={{
           ...block.class(),
           ...block.modifier('invalid').class(invalid),
