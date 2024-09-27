@@ -1,5 +1,15 @@
 # Changelog
 
+## 16.5.2
+
+### Patch Changes
+
+- **segment**: adjust a11y for form controls so it is linked with label and message ( [#1472](https://github.com/baloise/design-system/pull/1472))
+
+- **segment**: adjust bal-change event type ( [#1472](https://github.com/baloise/design-system/pull/1472))
+
+- **footer**: use bal-dropdown to avoid angular insert-node issue ( [#1472](https://github.com/baloise/design-system/pull/1472))
+
 ## 16.5.1
 
 ### Patch Changes

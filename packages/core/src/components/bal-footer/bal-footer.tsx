@@ -19,7 +19,7 @@ import { stopEventBubbling } from '../../utils/form-input'
   styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
-  private selectEl: HTMLBalSelectElement | undefined
+  private selectEl: HTMLBalDropdownElement | undefined
 
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
@@ -120,6 +120,7 @@ export class Footer implements BalConfigObserver, Loggable {
 
   render() {
     const block = BEM.block('footer')
+    const elSlot = block.element('slot')
     const elInner = block.element('inner')
     const elInnerWrapper = elInner.element('wrapper')
     const elContainer = elInnerWrapper.element('container')
@@ -177,9 +178,7 @@ export class Footer implements BalConfigObserver, Loggable {
                 >
                   <bal-input-group>
                     <bal-icon
-                      class={{
-                        ...elIcon.class(),
-                      }}
+                      class={'bal-dropdown__rear'}
                       name="web"
                       color="white"
                       onClick={el => {
@@ -187,23 +186,29 @@ export class Footer implements BalConfigObserver, Loggable {
                         this.selectEl?.open()
                       }}
                     ></bal-icon>
-                    <bal-select
-                      ref={el => (this.selectEl = el as HTMLBalSelectElement)}
+                    <bal-dropdown
+                      ref={el => (this.selectEl = el as HTMLBalDropdownElement)}
                       value={this.language}
                       onBalChange={event => this.changeLanguage(event.detail as any)}
                       data-testid="bal-footer-language"
                     >
                       {this.allowedLanguages.map(language => (
-                        <bal-select-option key={language} label={language.toLocaleUpperCase()} value={language}>
+                        <bal-option key={language} label={language.toLocaleUpperCase()} value={language}>
                           {language.toLocaleUpperCase()}
-                        </bal-select-option>
+                        </bal-option>
                       ))}
-                    </bal-select>
+                    </bal-dropdown>
                   </bal-input-group>
                 </div>
               </div>
             </div>
-            <slot></slot>
+            <div
+              class={{
+                ...elSlot.class(),
+              }}
+            >
+              <slot></slot>
+            </div>
             <div
               class={{
                 container: true,
