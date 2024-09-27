@@ -199,10 +199,8 @@ export class SegmentItem implements ComponentInterface {
     let buttonAttributes: any = {}
 
     if (hasTabindex) {
-      let labelId = this.ariaForm.labelId || null
-      labelId = `${labelId || ''} ${id}-lbl`.trim()
       buttonAttributes = {
-        'aria-labelledby': labelId,
+        'aria-labelledby': this.ariaForm.labelId,
         'aria-describedby': this.ariaForm.messageId,
       }
     }

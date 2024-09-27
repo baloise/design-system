@@ -450,6 +450,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     return (
       <Host
         role="radiogroup"
+        id={this.ariaForm.controlId}
         aria-labelledby={this.ariaForm.labelId}
         aria-describedby={this.ariaForm.messageId}
         class={{
