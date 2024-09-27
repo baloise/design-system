@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalSegmentValue = string | number
+  export type BalSegmentValue = string | number | boolean
 }
 
 namespace BalEvents {

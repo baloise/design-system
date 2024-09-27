@@ -7,11 +7,13 @@
   position: static
   user-select: auto
 
+  +element(slot)
+    color: var(--bal-footer-color)
+
   +element(inner)
     position: relative
     font-family: var(--bal-footer-font-family)
     background-color: var(--bal-footer-background)
-    color: var(--bal-footer-color)
     padding-top: var(--bal-space-x-small)
     padding-bottom: var(--bal-space-large)
     +tablet
@@ -20,10 +22,6 @@
     +desktop
       padding-top: var(--bal-space-large)
       padding-bottom: var(--bal-space-large)
-
-    &,
-    p
-      color: var(--bal-footer-color)
 
     +element(wrapper)
       display: flex
@@ -47,33 +45,45 @@
           flex-wrap: nowrap
           align-items: center
 
-          bal-icon, .input
+          .bal-dropdown__list
+            min-width: 105%
+            right: 0 !important
+            left: auto !important
+
+          bal-icon,
+          .input
             cursor: pointer
+            min-width: auto !important
+
+          .bal-dropdown__rear
+            +fillSvg(var(--bal-color-white))
 
           &:hover
-            bal-icon
+            .bal-dropdown__rear
               +fillSvg(var(--bal-footer-language-background-hover))
-            .input
+            .input,
+            .bal-dropdown__root__content
               color: var(--bal-footer-language-color-hover)
 
           &:active
-            bal-icon
+            .bal-dropdown__rear
               +fillSvg(var(--bal-footer-language-background-active))
-            .input
+            .input,
+            .bal-dropdown__root__content
               color: var(--bal-footer-language-color-active)
 
           +element(wrapper)
-            width: 5rem
-
-            bal-input-group
+            .bal-input-group
               background: transparent
               border: none
+              justify-content: center
+              align-items: center
 
               &:hover
                 background: transparent !important
 
-              bal-icon
-                min-width: 0.75rem !important
+              bal-dropdown
+                min-width: 5rem
 
         +element(logo)
           display: flex
