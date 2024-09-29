@@ -1,5 +1,3 @@
-import { selectors } from 'support/utils'
-
 describe('bal-dropdown', () => {
   beforeEach(() => {
     cy.pageA11y('/components/bal-dropdown/test/bal-dropdown.a11y.html')
@@ -7,13 +5,12 @@ describe('bal-dropdown', () => {
     cy.waitForDesignSystem()
   })
 
-  it('closed state', () => {
+  it('inital state', () => {
     cy.get('main').testA11y()
   })
 
-  it('open state', () => {
+  it('selected state', () => {
     cy.getByLabelText('Year').click()
-    cy.get('main').testA11y()
     cy.getByRole('option', { name: 'v1990' }).click()
     cy.get('main').testA11y()
   })

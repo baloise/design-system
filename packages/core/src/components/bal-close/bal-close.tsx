@@ -10,8 +10,6 @@ import { i18nBalClose } from './bal-close.i18n'
   styleUrl: 'bal-close.sass',
 })
 export class Close implements ComponentInterface, BalConfigObserver {
-  private inheritedAttributes: { [k: string]: any } = {}
-
   @Element() el!: HTMLElement
 
   @State() language: BalLanguage = defaultConfig.language
@@ -26,10 +24,6 @@ export class Close implements ComponentInterface, BalConfigObserver {
    * If `true` it supports dark backgrounds.
    */
   @Prop() inverted = false
-
-  componentWillRender() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
-  }
 
   /**
    * @internal define config for the component
@@ -53,14 +47,13 @@ export class Close implements ComponentInterface, BalConfigObserver {
           type="button"
           aria-label={label}
           title={label}
-          tabindex={-1}
+          tabindex="0"
           class={{
             ...buttonEl.class(),
             ...buttonEl.modifier('inverted').class(this.inverted),
             ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
           }}
           data-testid="bal-close"
-          {...this.inheritedAttributes}
         >
           <bal-icon
             name="close"

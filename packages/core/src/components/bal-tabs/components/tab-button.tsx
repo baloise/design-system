@@ -3,6 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'
+import { toKebabCase } from 'packages/core/src/utils/string'
 
 export interface TabButtonProps {
   item: BalTabOption
@@ -13,6 +14,7 @@ export interface TabButtonProps {
   isVertical: boolean
   accordion: boolean
   isAccordionOpen: boolean
+  isLinkList: boolean
   inverted: boolean
   expanded: boolean
   spaceless: boolean
@@ -31,6 +33,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isVertical,
   accordion,
   isAccordionOpen,
+  isLinkList,
   inverted,
   expanded,
   spaceless,
@@ -60,19 +63,30 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     (hasBubble && !isMobile && iconPosition === 'horizontal' && !accordion) ||
     (hasBubble && isVertical && !accordion)
 
-  const TagType = item.href === undefined || item.href === '' ? 'button' : 'a'
-  const attrs =
-    TagType === 'button'
-      ? { type: 'button' }
-      : {
-          href: item.href,
-          target: item.target,
-        }
+  const isTabButton = item.href === undefined || item.href === ''
+  const TagType = isTabButton ? 'button' : 'a'
+
+  const attrs = isTabButton
+    ? {
+        'type': 'button',
+        'role': 'tab',
+        'aria-controls': item.aria?.controls || item.tabPanelID || undefined,
+        'aria-expanded': item.active ? 'true' : 'false',
+        'aria-disabled': `${item.disabled}`,
+        'aria-label': item.label,
+      }
+    : {
+        href: item.href,
+        target: item.target,
+      }
+
+  if (!isLinkList) {
+    attrs['tabindex'] = item.active ? '0' : '-1'
+  }
 
   return (
     <TagType
-      id={`${tabsId}-button-${TabButtonIds++}`}
-      role="tab"
+      id={`${tabsId}-button-${toKebabCase(item.value)}`}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -96,10 +110,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-value={item.value}
       data-index={item.index}
       data-testid="bal-tabs-item"
-      aria-selected={item.active ? 'true' : 'false'}
-      aria-disabled={`${item.disabled}`}
-      aria-label={item.label}
-      aria-controls={item.tabPanelID}
+      aria-selected={!isTabButton ? undefined : item.active ? 'true' : 'false'}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
@@ -137,5 +148,3 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     </TagType>
   )
 }
-
-let TabButtonIds = 0

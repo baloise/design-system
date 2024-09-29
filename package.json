@@ -20,6 +20,9 @@
     "angular": "npx nx run create-angular",
     "angular:start": "npx nx run start-angular"
   },
+  "nx": {
+    "includedScripts": []
+  },
   "private": true,
   "workspaces": [
     "packages/*",
@@ -27,9 +30,6 @@
     "docs",
     "e2e"
   ],
-  "nx": {
-    "includedScripts": []
-  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.0.0",
     "@angular-devkit/core": "~15.0.0",
@@ -141,8 +141,5 @@
     "vue-tsc": "~1.8.8",
     "zone.js": "~0.11.4"
   },
-  "executors": "./executors.json",
-  "dependencies": {
-    "@nx/devkit": "18.0.5"
-  }
+  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330"
 }

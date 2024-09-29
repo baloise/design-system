@@ -1,0 +1,52 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  ImageCanvas,
+} from '../../.storybook/blocks'
+
+<Meta title="Contributing/How to work with GitHub Actions" />
+
+<Banner label="How to work with GitHub Actions" section="Contributing" />
+
+The GitHub actions is our Jenkins .
+
+## Continuous
+
+This actions is triggered with every push to a pull request or to the main branch.
+
+## Create All Base Images
+
+This action can be triggered manually in the action tab. It creates new base images for all visual regression test cases.
+
+## Create Base Image by File
+
+This action can be triggered manually in the action tab. It creates new base images for the passed visual regression test case.
+
+## Nightly
+
+This action runs every night. It builds, tests and releases the project
+
+## PR Commands
+
+This workflow listens to /comments-commands in a pull request and then triggers the suited job.
+
+## Publish
+
+This action gets triggered when the pull request Release gets merged and closed. It publishes the whole project to npm.
+
+## Release
+
+This action gets triggered with every push to the main branch and prepares the next possible release out of the existing changesets. If there are changesets present it creates a pull request for the next release. By merging this pull request we trigger the next action Publish.

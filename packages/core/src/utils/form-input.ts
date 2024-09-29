@@ -101,3 +101,21 @@ export const inputHandleChange = <Value>(component: FormInput<Value>) => {
     component.balChange.emit(component.value)
   }
 }
+
+export const isEmptyValue = (value: any): boolean => {
+  return (
+    value === '' ||
+    value === undefined ||
+    value === null ||
+    (Array.isArray(value) && !value.length) ||
+    (typeof value === 'number' && isNaN(value))
+  )
+}
+
+export const parseValue = <Value>(value: Value): Value => {
+  return isEmptyValue(value) ? undefined : value
+}
+
+export const hasValueChanged = (oldValue: any, newValue: any): boolean => {
+  return parseValue(oldValue) !== parseValue(newValue)
+}

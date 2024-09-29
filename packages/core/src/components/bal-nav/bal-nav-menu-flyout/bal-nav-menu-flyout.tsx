@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
@@ -9,7 +9,6 @@ import { BalScrollHandler } from '../../../utils/scroll'
   styleUrl: 'bal-nav-menu-flyout.sass',
 })
 export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObserver {
-  private navMenuFlyoutId = `bal-nav-menu-flyout-${NavMenuFlyOutIds++}`
   private bodyScrollHandler = new BalScrollHandler()
 
   @Element() el!: HTMLElement
@@ -27,6 +26,11 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
+
+  /**
+   * This is used to connect the flyout to the aria controls
+   * */
+  @Prop() navId = `bal-nav-x${NavMenuFlyOutIds++}`
 
   /**
    * LIFECYCLE
@@ -75,7 +79,7 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
 
     return (
       <Host
-        id={this.navMenuFlyoutId}
+        id={`${this.navId}-menu-flyout`}
         class={{
           ...block.class(),
         }}

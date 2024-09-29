@@ -520,6 +520,24 @@ Form components serve as tools for gathering user input through a range of metho
   </GridComponent>
   <GridComponent
     scale="1"
+    label="DropDown"
+    pageTitle="Components/Form/DropDown"
+    description="Select allows the user to choose one or multiple option from a list."
+  >
+    <bal-dropdown value="Apple" style={{ width: '227px' }}>
+      <bal-option value="Apple" label="Apple">
+        Apple
+      </bal-option>
+      <bal-option value="Banana" label="Banana">
+        Banana
+      </bal-option>
+      <bal-option value="Mango" label="Mango">
+        Mango
+      </bal-option>
+    </bal-dropdown>
+  </GridComponent>
+  <GridComponent
+    scale="1"
     label="Field"
     pageTitle="Components/Form/Field"
     description="Field wraps a form field like input. It provides a clear style structure of each control."
@@ -677,21 +695,16 @@ Form components serve as tools for gathering user input through a range of metho
   </GridComponent>
   <GridComponent
     scale="1"
-    label="Select"
-    pageTitle="Components/Form/Select"
-    description="Select allows the user to choose one or multiple option from a list."
+    label="Segment"
+    pageTitle="Components/Form/Segment"
+    description="Segment offers a list of options. The user can only select one option from a number of choices."
   >
-    <bal-select value="Apple">
-      <bal-select-option value="Apple" label="Apple">
-        Apple
-      </bal-select-option>
-      <bal-select-option value="Banana" label="Banana">
-        Banana
-      </bal-select-option>
-      <bal-select-option value="Mango" label="Mango">
-        Mango
-      </bal-select-option>
-    </bal-select>
+    <div class="text-align-center">
+      <bal-segment value="yes">
+        <bal-segment-item value="yes" label="Yes"></bal-segment-item>
+        <bal-segment-item value="no" label="No"></bal-segment-item>
+      </bal-segment>
+    </div>
   </GridComponent>
   <GridComponent
     scale="1"

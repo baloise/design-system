@@ -65,6 +65,16 @@ export class TabItem {
   @Prop({ reflect: true }) icon?: string = undefined
 
   /**
+   * If `true` the tab does not have a panel
+   */
+  @Prop() noPanel = false
+
+  /**
+   * A11y attributes for the native tab element.
+   */
+  @Prop() aria?: BalProps.BalTabItemAria = undefined
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
@@ -105,21 +115,27 @@ export class TabItem {
       prevent: this.prevent,
       navigate: this.balNavigate,
       trackingData: this.inheritAttributes,
+      noPanel: this.noPanel,
+      aria: this.aria,
     }
   }
 
   render() {
+    const hasPanel = !this.noPanel
+    const noPanelOrInactive = !this.isActive || this.noPanel
+
     return (
       <Host
         id={this.tabPanelID}
-        role="tabpanel"
-        aria-label={this.label}
-        aria-hidden={!this.isActive ? 'true' : 'false'}
-        tabindex={this.isActive ? '0' : '-1'}
         class={{
           'bal-tab-item': true,
           'bal-tab-item--active': this.isActive,
         }}
+        role={hasPanel ? 'tabpanel' : undefined}
+        aria-label={hasPanel ? this.label : undefined}
+        aria-hidden={noPanelOrInactive ? 'true' : 'false'}
+        tabindex={noPanelOrInactive ? '-1' : undefined}
+        hidden={noPanelOrInactive ? true : undefined}
       >
         <slot />
       </Host>

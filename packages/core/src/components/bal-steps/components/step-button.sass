@@ -81,3 +81,91 @@
 
 .bal-steps__nav__carousel__item--passed:not(:last-child)::after
   background-color: var(--bal-steps-step-button-carousel-item-passed-background-after)
+
+// Color Variants
+// --------------------------------------------------
+
+.bal-steps__nav__carousel__item:not(:last-child)
+  &.bal-steps__nav__carousel__item--color-light-blue::after
+    background-color: var(--bal-steps-step-button-progress-line-background-light-blue)
+  &.bal-steps__nav__carousel__item--color-purple::after
+    background-color: var(--bal-steps-step-button-progress-line-background-purple)
+  &.bal-steps__nav__carousel__item--color-red::after
+    background-color: var(--bal-steps-step-button-progress-line-background-red)
+  &.bal-steps__nav__carousel__item--color-yellow::after
+    background-color: var(--bal-steps-step-button-progress-line-background-yellow)
+  &.bal-steps__nav__carousel__item--color-green::after
+    background-color: var(--bal-steps-step-button-progress-line-background-green)
+
+.bal-steps__nav__carousel__item--passed:not(:last-child)
+  &.bal-steps__nav__carousel__item--color-light-blue::after
+    background-color: var(--bal-steps-step-button-passed-background-light-blue)
+  &.bal-steps__nav__carousel__item--color-purple::after
+    background-color: var(--bal-steps-step-button-passed-background-purple)
+  &.bal-steps__nav__carousel__item--color-red::after
+    background-color: var(--bal-steps-step-button-passed-background-red)
+  &.bal-steps__nav__carousel__item--color-yellow::after
+    background-color: var(--bal-steps-step-button-passed-background-yellow)
+  &.bal-steps__nav__carousel__item--color-green::after
+    background-color: var(--bal-steps-step-button-passed-background-green)
+
+.bal-steps__nav__item--color-light-blue
+  &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)
+    .bal-steps__nav__item__icon
+      border-color: var(--bal-steps-step-button-progress-line-background-light-blue)
+  &.bal-steps__nav__item--disabled
+    .bal-steps__nav__item__icon
+      opacity: .6
+      background: var(--bal-steps-step-button-progress-line-background-light-blue)
+      border-color: var(--bal-steps-step-button-progress-line-background-light-blue)
+      color: var(--bal-color-primary-4)
+    .bal-steps__nav__item__label
+      opacity: .6
+
+.bal-steps__nav__item--color-purple
+  &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)
+    .bal-steps__nav__item__icon
+      border-color: var(--bal-steps-step-button-progress-line-background-purple)
+  &.bal-steps__nav__item--disabled
+    .bal-steps__nav__item__icon
+      opacity: .6
+      background: var(--bal-steps-step-button-progress-line-background-purple)
+      border-color: var(--bal-steps-step-button-progress-line-background-purple)
+    .bal-steps__nav__item__label
+      opacity: .6
+
+.bal-steps__nav__item--color-green
+  &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)
+    .bal-steps__nav__item__icon
+      border-color: var(--bal-steps-step-button-progress-line-background-green)
+  &.bal-steps__nav__item--disabled
+    .bal-steps__nav__item__icon
+      opacity: .6
+      background: var(--bal-steps-step-button-progress-line-background-green)
+      border-color: var(--bal-steps-step-button-progress-line-background-green)
+    .bal-steps__nav__item__label
+      opacity: .6
+
+.bal-steps__nav__item--color-yellow
+  &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)
+    .bal-steps__nav__item__icon
+      border-color: var(--bal-steps-step-button-progress-line-background-yellow)
+  &.bal-steps__nav__item--disabled
+    .bal-steps__nav__item__icon
+      opacity: .6
+      background: var(--bal-steps-step-button-progress-line-background-yellow)
+      border-color: var(--bal-steps-step-button-progress-line-background-yellow)
+    .bal-steps__nav__item__label
+      opacity: .6
+
+.bal-steps__nav__item--color-red
+  &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)
+    .bal-steps__nav__item__icon
+      border-color: var(--bal-steps-step-button-progress-line-background-red)
+  &.bal-steps__nav__item--disabled
+    .bal-steps__nav__item__icon
+      opacity: .6
+      background: var(--bal-steps-step-button-progress-line-background-red)
+      border-color: var(--bal-steps-step-button-progress-line-background-red)
+    .bal-steps__nav__item__label
+      opacity: .6

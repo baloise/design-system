@@ -13,6 +13,8 @@ import {
   BalSelect,
   BalTextarea,
   BalTimeInput,
+  BalSegment,
+  BalFileUpload,
 } from './components'
 import { BalNgErrorComponent } from './directives/error.component'
 import {
@@ -72,6 +74,7 @@ import {
   BalNavbarMenuStart,
   BalRadio,
   BalRadioButton,
+  BalSegmentItem,
   BalSelectOption,
   BalShape,
   BalStack,
@@ -160,6 +163,8 @@ export const BalFieldBundle = [
 
 export const BalDropdownBundle = [BalDropdown, BalOptionList, BalOption] as const
 
+export const BalSegmentBundle = [BalSegment, BalSegmentItem] as const
+
 /* Component Sections */
 
 export const BalFormBundle = [
@@ -184,6 +189,8 @@ export const BalFormBundle = [
   BalNumberInput,
   ...BalRadioBundle,
   ...BalSelectBundle,
+  ...BalSegmentBundle,
+  BalFileUpload,
   BalTextarea,
   BalTimeInput,
 ] as const
@@ -263,6 +270,9 @@ export const BalComponentBundle = [
   BalStageImage,
   BalStepItem,
   BalSteps,
+  BalSegment,
+  BalSegmentItem,
+  BalFileUpload,
   BalTabItem,
   BalTabs,
   BalTag,

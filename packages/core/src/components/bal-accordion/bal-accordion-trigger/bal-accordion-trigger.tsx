@@ -94,6 +94,10 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
     return this.el?.closest('bal-accordion') || null
   }
 
+  private get parentAccordionSummaryElement(): HTMLBalAccordionSummaryElement | null {
+    return this.el?.closest('bal-accordion-summary') || null
+  }
+
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
@@ -133,6 +137,16 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
     const expanded = this.state === AccordionState.Expanded || this.state === AccordionState.Expanding
     const buttonPart = expanded ? 'button expanded' : 'button'
 
+    const parentSummaryEl = this.parentAccordionSummaryElement
+    let triggerAttributes = {
+      tabindex: -1,
+    }
+    if (parentSummaryEl && !parentSummaryEl.trigger) {
+      triggerAttributes = {
+        tabindex: 0,
+      }
+    }
+
     return (
       <Host
         id={id}
@@ -159,6 +173,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
           <button
             class={{
               ...block.element('button').class(),
+              'bal-focused': parentSummaryEl && !parentSummaryEl.trigger,
             }}
             id={`${id}-button`}
             aria-controls={`${this.parentAccordionId}-details-content`}
@@ -166,6 +181,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             part={buttonPart}
             data-testid="bal-accordion-trigger"
             onClick={this.onClick}
+            {...triggerAttributes}
           >
             <bal-icon turn={turn} name={icon}></bal-icon>
           </button>

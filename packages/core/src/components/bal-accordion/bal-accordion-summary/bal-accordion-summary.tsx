@@ -3,6 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { AccordionState } from '../../../interfaces'
+import { isEnterKey, isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-accordion-summary',
@@ -91,6 +92,13 @@ export class AccordionSummary implements ComponentInterface, Loggable {
     this.parentAccordionElement?.humanToggle()
   }
 
+  private onKeyDown = (ev: KeyboardEvent) => {
+    if (isEnterKey(ev) || isSpaceKey(ev)) {
+      stopEventBubbling(ev)
+      this.parentAccordionElement?.humanToggle()
+    }
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -109,9 +117,11 @@ export class AccordionSummary implements ComponentInterface, Loggable {
       attributes = {
         'aria-controls': `${this.parentAccordionId}-details-content`,
         'role': 'button',
+        'tabindex': 0,
         'part': buttonPart,
         'data-testid': 'bal-accordion-button',
         'onClick': this.onClick,
+        'onKeyDown': this.onKeyDown,
       }
     }
 
@@ -121,6 +131,8 @@ export class AccordionSummary implements ComponentInterface, Loggable {
         class={{
           ...block.class(),
           ...block.modifier('trigger').class(this.trigger),
+          ...block.modifier('inner-trigger').class(!this.trigger),
+          'bal-focused': this.trigger,
         }}
         {...attributes}
         data-testid="bal-accordion-summary"

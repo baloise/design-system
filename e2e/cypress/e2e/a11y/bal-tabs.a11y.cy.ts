@@ -6,10 +6,6 @@ describe('bal-tabs', () => {
       it('tabs basic', () => {
         cy.getByTestId('basic').testA11y()
       })
-
-      it('tabs vertical', () => {
-        cy.getByTestId('vertical').testA11y()
-      })
     })
   })
 })

@@ -39,6 +39,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @State() buttonTabindex?: number
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
+  /**
+   * Track focus state
+   * If `true` checkbox needs to remain focused
+   */
+  @State() wasFocused = false
+
   log!: LogInstance
 
   @Logger('bal-checkbox')
@@ -358,6 +364,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       return
     }
 
+    if (this.wasFocused) {
+      this.focused = true
+    }
+
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.toggleChecked()
       this.nativeInput?.focus()
@@ -377,6 +387,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     if (this.keyboardMode) {
       this.focused = true
+      this.wasFocused = true
     }
   }
 
@@ -391,7 +402,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   private onPointerDown = () => (this.keyboardMode = false)
 
-  private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
+  private onKeydown = (ev: any) => {
+    if (!isSpaceKey(ev)) {
+      this.wasFocused = false
+    }
+    this.keyboardMode = FOCUS_KEYS.includes(ev.key)
+  }
 
   /**
    * RENDER
@@ -402,6 +418,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     const block = BEM.block('radio-checkbox')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
+    const iconEl = block.element('icon')
     const labelTextEl = labelEl.element('text')
 
     const focused = this.focused && this.buttonTabindex !== -1
@@ -485,6 +502,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
             {...labelAttributes}
             data-testid="bal-checkbox-label"
           >
+            {this.interface === 'switch' ? (
+              <bal-icon
+                class={{ ...iconEl.class() }}
+                name="check"
+                color="white"
+                size="x-small"
+                aria-hidden="true"
+              ></bal-icon>
+            ) : (
+              ''
+            )}
             <span
               class={{
                 ...labelTextEl.class(),

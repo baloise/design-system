@@ -9,6 +9,9 @@ namespace BalProps {
   export type BalTabsVertical = boolean | 'mobile' | 'tablet'
   export type BalTabsFloat = 'left' | 'right'
   export type BalTabsColSize = 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
+  export type BalTabItemAria = {
+    controls?: string
+  }
 }
 
 namespace BalEvents {
