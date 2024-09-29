@@ -4,7 +4,7 @@ import { BEM } from '../bem'
 
 export interface DropdownOptionListProps {
   inputId: string
-  block: string
+  blockName: string
   filter: BalProps.BalOptionListFilter
   required: boolean
   isExpanded: boolean
@@ -18,6 +18,7 @@ export interface DropdownOptionListProps {
 }
 
 export const DropdownOptionList: FunctionalComponent<DropdownOptionListProps> = ({
+  blockName,
   inputId,
   isExpanded,
   rawOptions,
@@ -30,7 +31,7 @@ export const DropdownOptionList: FunctionalComponent<DropdownOptionListProps> = 
   refPanelEl,
   refListEl,
 }) => {
-  const block = BEM.block('dropdown')
+  const block = BEM.block(blockName)
 
   return (
     <div

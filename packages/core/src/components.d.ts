@@ -646,6 +646,99 @@ export namespace Components {
          */
         "size": BalProps.BalCloseSize;
     }
+    interface BalCombobox {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
+          * If `true`, the selected options are shown as chips
+         */
+        "chips": boolean;
+        /**
+          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable": boolean;
+        /**
+          * Closes the popup with option list
+         */
+        "close": () => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight": number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * Returns the value of the component
+         */
+        "getValue": () => Promise<string[]>;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon": string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid": boolean;
+        "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Opens the popup with option list
+         */
+        "open": () => Promise<void>;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Select option by passed value
+         */
+        "select": (newValue: string | string[]) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Sets the focus on the input element
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
+    }
     interface BalContent {
         /**
           * Defines the text positioning like center, end or default to start.
@@ -3598,6 +3691,10 @@ export interface BalCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalCheckboxGroupElement;
 }
+export interface BalComboboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalComboboxElement;
+}
 export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDataValueElement;
@@ -3956,6 +4053,25 @@ declare global {
     var HTMLBalCloseElement: {
         prototype: HTMLBalCloseElement;
         new (): HTMLBalCloseElement;
+    };
+    interface HTMLBalComboboxElementEventMap {
+        "balChange": BalEvents.BalDropdownChangeDetail;
+        "balFocus": BalEvents.BalDropdownFocusDetail;
+        "balBlur": BalEvents.BalDropdownBlurDetail;
+    }
+    interface HTMLBalComboboxElement extends Components.BalCombobox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalComboboxElementEventMap>(type: K, listener: (this: HTMLBalComboboxElement, ev: BalComboboxCustomEvent<HTMLBalComboboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalComboboxElementEventMap>(type: K, listener: (this: HTMLBalComboboxElement, ev: BalComboboxCustomEvent<HTMLBalComboboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalComboboxElement: {
+        prototype: HTMLBalComboboxElement;
+        new (): HTMLBalComboboxElement;
     };
     interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
     }
@@ -5060,6 +5176,7 @@ declare global {
         "bal-checkbox-button": HTMLBalCheckboxButtonElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
+        "bal-combobox": HTMLBalComboboxElement;
         "bal-content": HTMLBalContentElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
@@ -5803,6 +5920,85 @@ declare namespace LocalJSX {
           * Define the size of badge. Small is recommended for tabs.
          */
         "size"?: BalProps.BalCloseSize;
+    }
+    interface BalCombobox {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
+          * If `true`, the selected options are shown as chips
+         */
+        "chips"?: boolean;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable"?: boolean;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon"?: string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid"?: boolean;
+        "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalComboboxCustomEvent<BalEvents.BalDropdownBlurDetail>) => void;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalComboboxCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalComboboxCustomEvent<BalEvents.BalDropdownFocusDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
     }
     interface BalContent {
         /**
@@ -8775,6 +8971,7 @@ declare namespace LocalJSX {
         "bal-checkbox-button": BalCheckboxButton;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
+        "bal-combobox": BalCombobox;
         "bal-content": BalContent;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
@@ -8899,6 +9096,7 @@ declare module "@stencil/core" {
             "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
+            "bal-combobox": LocalJSX.BalCombobox & JSXBase.HTMLAttributes<HTMLBalComboboxElement>;
             "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;

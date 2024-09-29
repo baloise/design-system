@@ -12,7 +12,14 @@ import {
   EventEmitter,
   Method,
 } from '@stencil/core'
-import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '@baloise/web-app-utils'
+import {
+  areArraysEqual,
+  isArrowDownKey,
+  isArrowUpKey,
+  isEnterKey,
+  isEscapeKey,
+  isSpaceKey,
+} from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -46,10 +53,10 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 import { waitAfterIdleCallback } from '../../utils/helpers'
 
 @Component({
-  tag: 'bal-dropdown',
-  styleUrl: 'bal-dropdown.sass',
+  tag: 'bal-combobox',
+  styleUrl: 'bal-combobox.sass',
 })
-export class Dropdown
+export class Combobox
   implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormSubmit, DropdownFocus
 {
   @Element() el!: HTMLElement
@@ -58,7 +65,7 @@ export class Dropdown
   nativeEl: HTMLInputElement | undefined
   selectEl: HTMLSelectElement | undefined
 
-  inputId = `bal-dropdown-${balDropdownIds++}`
+  inputId = `bal-combobox-${balComboboxIds++}`
   inheritedAttributes: Attributes = {}
   initialValue?: string | string[] = []
   nativeOptions: string[] = []
@@ -86,7 +93,7 @@ export class Dropdown
 
   log!: LogInstance
 
-  @Logger('bal-dropdown')
+  @Logger('bal-combobox')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -414,7 +421,7 @@ export class Dropdown
    */
 
   render() {
-    const block = BEM.block('dropdown')
+    const block = BEM.block('combobox')
 
     return (
       <Host class={{ ...block.class() }} tabindex="-1" id={`${this.inputId}`}>
@@ -426,7 +433,7 @@ export class Dropdown
             ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
           }}
-          data-test="bal-dropdown-trigger"
+          data-test="bal-combobox-trigger"
           onClick={ev => this.eventsUtil.handleClick(ev)}
         >
           <span
@@ -437,7 +444,7 @@ export class Dropdown
             }}
           >
             <DropdownValue
-              blockName="dropdown"
+              blockName="combobox"
               filled={this.valueUtil.isFilled()}
               chips={this.chips}
               placeholder={this.placeholder}
@@ -449,7 +456,7 @@ export class Dropdown
             ></DropdownValue>
           </span>
           <DropdownInput
-            blockName="dropdown"
+            blockName="combobox"
             name={this.name}
             inputId={this.inputId}
             httpFormSubmit={this.httpFormSubmit}
@@ -472,7 +479,7 @@ export class Dropdown
             onKeyDown={ev => this.handleKeyDown(ev)}
           ></DropdownInput>
           <DropdownNativeSelect
-            blockName="dropdown"
+            blockName="combobox"
             name={this.name}
             httpFormSubmit={this.httpFormSubmit}
             multiple={this.multiple}
@@ -482,7 +489,7 @@ export class Dropdown
             refSelectEl={el => (this.selectEl = el)}
           ></DropdownNativeSelect>
           <DropdownIcon
-            blockName="dropdown"
+            blockName="combobox"
             icon={this.icon}
             language={this.language}
             loading={this.loading}
@@ -494,7 +501,7 @@ export class Dropdown
           ></DropdownIcon>
         </div>
         <DropdownOptionList
-          blockName="dropdown"
+          blockName="combobox"
           inputId={this.inputId}
           filter={this.filter}
           required={this.required}
@@ -514,4 +521,4 @@ export class Dropdown
   }
 }
 
-let balDropdownIds = 0
+let balComboboxIds = 0

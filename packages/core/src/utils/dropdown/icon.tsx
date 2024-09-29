@@ -4,6 +4,7 @@ import { BEM } from '../bem'
 import { i18nBalDropdown } from './dropdown.i18n'
 
 export interface DropdownIconProps {
+  blockName: string
   language: BalLanguage
   loading: boolean
   clearable: boolean
@@ -15,6 +16,7 @@ export interface DropdownIconProps {
 }
 
 export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
+  blockName,
   icon,
   language,
   loading,
@@ -24,7 +26,7 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
   expanded,
   disabled,
 }) => {
-  const block = BEM.block('dropdown')
+  const block = BEM.block(blockName)
 
   if (loading) {
     return <bal-spinner class={{ ...block.element('rear').class() }} small variation="circle"></bal-spinner>
