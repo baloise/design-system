@@ -1879,6 +1879,10 @@ export namespace Components {
          */
         "dismiss": (data?: any, role?: string) => Promise<boolean>;
         /**
+          * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+         */
+        "focusTrap": boolean;
+        /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop": boolean;
@@ -7002,6 +7006,10 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "delegate"?: BalProps.FrameworkDelegate;
         "demo"?: boolean;
+        /**
+          * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+         */
+        "focusTrap"?: boolean;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */

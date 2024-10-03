@@ -1,5 +1,5 @@
-import { Component, Host, h, State, Method, Prop, Event, EventEmitter, Element, writeTask, Listen } from '@stencil/core'
-import { dismiss, eventMethod, prepareOverlay } from '../../utils/overlays/overlays'
+import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
+import { dismiss, eventMethod, FOCUS_TRAP_DISABLE_CLASS, prepareOverlay } from '../../utils/overlays/overlays'
 import { attachComponent, detachComponent } from '../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../utils/helpers'
@@ -74,6 +74,25 @@ export class Modal implements OverlayInterface {
    * If `true`, the modal can be closed with the click outside of the modal
    */
   @Prop() backdropDismiss = true
+
+  /**
+   * If `true`, focus will not be allowed to move outside of this overlay.
+   * If `false`, focus will be allowed to move outside of the overlay.
+   *
+   * In most scenarios this property should remain set to `true`. Setting
+   * this property to `false` can cause severe accessibility issues as users
+   * relying on assistive technologies may be able to move focus into
+   * a confusing state. We recommend only setting this to `false` when
+   * absolutely necessary.
+   *
+   * Developers may want to consider disabling focus trapping if this
+   * overlay presents a non-Ionic overlay from a 3rd party library.
+   * Developers would disable focus trapping on the Ionic overlay
+   * when presenting the 3rd party overlay and then re-enable
+   * focus trapping when dismissing the 3rd party overlay and moving
+   * focus back to the Ionic overlay.
+   */
+  @Prop() focusTrap = true;
 
   /**
    * @internal
@@ -306,6 +325,7 @@ export class Modal implements OverlayInterface {
           'bal-modal': true,
           'bal-modal--is-closable': this.isClosable,
           'bal-modal--is-active': this.presented,
+          [FOCUS_TRAP_DISABLE_CLASS]: this.focusTrap === false,
           ...getClassMap(this.cssClass),
         }}
         style={{
