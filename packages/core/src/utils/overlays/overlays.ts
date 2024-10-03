@@ -1,7 +1,7 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { addEventListener, removeEventListener } from '../helpers'
-import { focusableQueryString, focusFirstDescendant, focusLastDescendant, focusVisibleElement } from "./focus-trap";
+import { focusableQueryString, focusFirstDescendant, focusLastDescendant, focusVisibleElement } from './focus-trap'
 
 type OverlayInterface = any
 
@@ -54,10 +54,10 @@ export const connectListeners = (doc: Document) => {
     doc.addEventListener(
       'focus',
       (ev: FocusEvent) => {
-        trapKeyboardFocus(ev, doc);
+        trapKeyboardFocus(ev, doc)
       },
-      true
-    );
+      true,
+    )
 
     // handle ESC to close overlay
     doc.addEventListener('keyup', ev => {
@@ -74,25 +74,22 @@ export const connectListeners = (doc: Document) => {
 export const getPresentedOverlay = (
   doc: Document,
   overlayTag?: string,
-  id?: string
+  id?: string,
 ): HTMLBalOverlayElement | undefined => {
-  const overlays = getPresentedOverlays(doc, overlayTag);
-  return id === undefined ? overlays[overlays.length - 1] : overlays.find((o) => o.id === id);
-};
+  const overlays = getPresentedOverlays(doc, overlayTag)
+  return id === undefined ? overlays[overlays.length - 1] : overlays.find(o => o.id === id)
+}
 
 const getPresentedOverlays = (doc: Document, overlayTag?: string): HTMLBalOverlayElement[] => {
-  return getOverlays(doc, overlayTag).filter((o) => !isOverlayHidden(o));
+  return getOverlays(doc, overlayTag).filter(o => !isOverlayHidden(o))
   // return getOverlays(doc, overlayTag);
-};
+}
 
-const isOverlayHidden = (overlay: Element) => overlay.classList.contains('is-hidden'); // TODO: is this the right class?
+const isOverlayHidden = (overlay: Element) => overlay.classList.contains('is-hidden') // TODO: is this the right class?
 
 const trapKeyboardFocus = (ev: Event, doc: Document) => {
-  const lastOverlay = getPresentedOverlay(
-    doc,
-    'bal-modal'
-  );
-  const target = ev.target as HTMLElement | null;
+  const lastOverlay = getPresentedOverlay(doc, 'bal-modal')
+  const target = ev.target as HTMLElement | null
 
   /**
    * If no active overlay, ignore this event.
@@ -105,7 +102,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
    * itself to ensure the focus trap works.
    */
   if (!lastOverlay || !target) {
-    return;
+    return
   }
 
   const trapScopedFocus = () => {
@@ -116,7 +113,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
      * in the overlay wrapper.
      */
     if (lastOverlay === target) {
-      lastOverlay.lastFocus = undefined;
+      lastOverlay.lastFocus = undefined
       /**
        * Toasts can be presented from an overlay.
        * However, focus should still be returned to
@@ -134,7 +131,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * We do not want to focus the traps, so get the overlay
        * wrapper element as the traps live outside of the wrapper.
        */
-      const overlayRoot = lastOverlay;
+      const overlayRoot = lastOverlay
 
       /* // TODO we currently do not know why this code is needed, it just works without this code
       if (!overlayRoot.contains(target)) {
@@ -143,9 +140,9 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
       }
        */
 
-      const overlayWrapper = overlayRoot.querySelector<HTMLElement>('.bal-modal__container');
+      const overlayWrapper = overlayRoot.querySelector<HTMLElement>('.bal-modal__container')
       if (!overlayWrapper) {
-        return;
+        return
       }
 
       /**
@@ -156,7 +153,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * an interactive elements focus state to activate.
        */
       if (overlayWrapper.contains(target) || target === overlayRoot.querySelector('bal-modal__background')) {
-        lastOverlay.lastFocus = target;
+        lastOverlay.lastFocus = target
       } else {
         /**
          * Otherwise, we must have focused one of the focus traps.
@@ -171,10 +168,10 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
          * we can run the code after that. We will cache the value
          * here to avoid that.
          */
-        const lastFocus = lastOverlay.lastFocus;
+        const lastFocus = lastOverlay.lastFocus
 
         // Focus the first element in the overlay wrapper
-        focusFirstDescendant(overlayWrapper, lastOverlay);
+        focusFirstDescendant(overlayWrapper, lastOverlay)
 
         /**
          * If the cached last focused element is the
@@ -186,19 +183,19 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
          * last focus to equal the active element.
          */
         if (lastFocus === doc.activeElement) {
-          focusLastDescendant(overlayWrapper, lastOverlay);
+          focusLastDescendant(overlayWrapper, lastOverlay)
         }
-        lastOverlay.lastFocus = doc.activeElement as HTMLElement;
+        lastOverlay.lastFocus = doc.activeElement as HTMLElement
       }
     }
-  };
+  }
   const trapShadowFocus = () => {
     /**
      * If the target is inside the wrapper, let the browser
      * focus as normal and keep a log of the last focused element.
      */
     if (lastOverlay.contains(target)) {
-      lastOverlay.lastFocus = target;
+      lastOverlay.lastFocus = target
       /**
        * Toasts can be presented from an overlay.
        * However, focus should still be returned to
@@ -212,7 +209,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * moved to the toast.
        */
     } else if (target.tagName === 'BAL-TOAST') {
-      focusElementInOverlay(lastOverlay.lastFocus, lastOverlay);
+      focusElementInOverlay(lastOverlay.lastFocus, lastOverlay)
     } else {
       /**
        * Otherwise, we are about to have focus
@@ -228,10 +225,10 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * we can run the code after that. We will cache the value
        * here to avoid that.
        */
-      const lastFocus = lastOverlay.lastFocus;
+      const lastFocus = lastOverlay.lastFocus
 
       // Focus the first element in the overlay wrapper
-      focusFirstDescendant(lastOverlay);
+      focusFirstDescendant(lastOverlay)
 
       /**
        * If the cached last focused element is the
@@ -243,18 +240,18 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * last focus to equal the active element.
        */
       if (lastFocus === doc.activeElement) {
-        focusLastDescendant(lastOverlay);
+        focusLastDescendant(lastOverlay)
       }
-      lastOverlay.lastFocus = doc.activeElement as HTMLElement;
+      lastOverlay.lastFocus = doc.activeElement as HTMLElement
     }
-  };
+  }
 
   if (lastOverlay.shadowRoot) {
-    trapShadowFocus();
+    trapShadowFocus()
   } else {
-    trapScopedFocus();
+    trapScopedFocus()
   }
-};
+}
 
 export const dismiss = async (
   overlay: OverlayInterface,
@@ -313,20 +310,20 @@ export const onceEvent = (element: HTMLElement, eventName: string, callback: (ev
  * the host element itself.
  */
 const focusElementInOverlay = (hostToFocus: HTMLElement | null | undefined, overlay: HTMLBalOverlayElement) => {
-  let elementToFocus = hostToFocus;
+  let elementToFocus = hostToFocus
 
-  const shadowRoot = hostToFocus?.shadowRoot;
+  const shadowRoot = hostToFocus?.shadowRoot
   if (shadowRoot) {
     // If there are no inner focusable elements, just focus the host element.
-    elementToFocus = shadowRoot.querySelector<HTMLElement>(focusableQueryString) || hostToFocus;
+    elementToFocus = shadowRoot.querySelector<HTMLElement>(focusableQueryString) || hostToFocus
   }
 
   if (elementToFocus) {
-    focusVisibleElement(elementToFocus);
+    focusVisibleElement(elementToFocus)
   } else {
     // Focus overlay instead of letting focus escape
-    overlay.focus();
+    overlay.focus()
   }
-};
+}
 
-export const FOCUS_TRAP_DISABLE_CLASS = 'bal-disable-focus-trap';
+export const FOCUS_TRAP_DISABLE_CLASS = 'bal-disable-focus-trap'

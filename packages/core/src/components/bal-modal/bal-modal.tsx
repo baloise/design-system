@@ -92,7 +92,7 @@ export class Modal implements OverlayInterface {
    * focus trapping when dismissing the 3rd party overlay and moving
    * focus back to the Ionic overlay.
    */
-  @Prop() focusTrap = true;
+  @Prop() focusTrap = true
 
   /**
    * @internal

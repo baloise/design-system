@@ -11,7 +11,7 @@
  * valid usage for the disabled property on bal-button.
  */
 export const focusableQueryString =
-  '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])';
+  '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])'
 
 /**
  * Focuses the first descendant in a context
@@ -24,10 +24,10 @@ export const focusableQueryString =
  * If no fallback is specified then we focus the container itself.
  */
 export const focusFirstDescendant = <R extends HTMLElement, T extends HTMLElement>(ref: R, fallbackElement?: T) => {
-  const firstInput = ref.querySelector<HTMLElement>(focusableQueryString);
-debugger
-  focusElementInContext(firstInput, fallbackElement ?? ref);
-};
+  const firstInput = ref.querySelector<HTMLElement>(focusableQueryString)
+  debugger
+  focusElementInContext(firstInput, fallbackElement ?? ref)
+}
 
 /**
  * Focuses the last descendant in a context
@@ -40,11 +40,11 @@ debugger
  * If no fallback is specified then we focus the container itself.
  */
 export const focusLastDescendant = <R extends HTMLElement, T extends HTMLElement>(ref: R, fallbackElement?: T) => {
-  const inputs = Array.from(ref.querySelectorAll<HTMLElement>(focusableQueryString));
-  const lastInput = inputs.length > 0 ? inputs[inputs.length - 1] : null;
+  const inputs = Array.from(ref.querySelectorAll<HTMLElement>(focusableQueryString))
+  const lastInput = inputs.length > 0 ? inputs[inputs.length - 1] : null
 
-  focusElementInContext(lastInput, fallbackElement ?? ref);
-};
+  focusElementInContext(lastInput, fallbackElement ?? ref)
+}
 
 /**
  * Focuses a particular element in a context. If the element
@@ -65,26 +65,26 @@ export const focusLastDescendant = <R extends HTMLElement, T extends HTMLElement
  */
 const focusElementInContext = <T extends HTMLElement>(
   hostToFocus: HTMLElement | null | undefined,
-  fallbackElement: T
+  fallbackElement: T,
 ) => {
-  let elementToFocus = hostToFocus;
+  let elementToFocus = hostToFocus
 
-  const shadowRoot = hostToFocus?.shadowRoot;
+  const shadowRoot = hostToFocus?.shadowRoot
   if (shadowRoot) {
     // If there are no inner focusable elements, just focus the host element.
-    elementToFocus = shadowRoot.querySelector<HTMLElement>(focusableQueryString) || hostToFocus;
+    elementToFocus = shadowRoot.querySelector<HTMLElement>(focusableQueryString) || hostToFocus
   }
 
   if (elementToFocus) {
-    focusVisibleElement(elementToFocus);
+    focusVisibleElement(elementToFocus)
   } else {
     // Focus fallback element instead of letting focus escape
-    fallbackElement.focus();
+    fallbackElement.focus()
   }
-};
+}
 
 export const focusVisibleElement = (el: HTMLElement) => {
-  el.focus();
+  el.focus()
 
   /**
    * When programmatically focusing an element,
@@ -95,9 +95,9 @@ export const focusVisibleElement = (el: HTMLElement) => {
    * which will let us explicitly set the elements to focus.
    */
   if (el.classList.contains('bal-focusable')) {
-    const app = el.closest('bal-app');
+    const app = el.closest('bal-app')
     if (app) {
-      app.setFocus([el]);
+      app.setFocus([el])
     }
   }
-};
+}
