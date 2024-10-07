@@ -59,6 +59,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (
     <TabButton
       item={item}
+      isLinkList={isLinkList}
       tabsId={tabsId}
       isFirst={index === 0}
       isLast={index === tabs.length - 1}

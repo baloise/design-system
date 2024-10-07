@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="bg-green">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -12,6 +12,7 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
+        <bal-heading>Basic</bal-heading>
         <section class="mb-medium">
           <bal-progress-bar id="progress" data-testid="basic" value="50"></bal-progress-bar>
 
@@ -26,14 +27,31 @@
           </script>
         </section>
 
-        <section class="mb-medium">
-          <bal-progress-bar value="0"></bal-progress-bar>
-          <bal-progress-bar background="grey" value="99"></bal-progress-bar>
-          <bal-progress-bar background="grey" value="100"></bal-progress-bar>
-        </section>
+        <bal-heading>Variants</bal-heading>
+        <section data-testid="variants">
+          <section class="mb-medium">
+            <bal-progress-bar value="0"></bal-progress-bar>
+            <bal-progress-bar background="grey" value="99"></bal-progress-bar>
+            <bal-progress-bar background="grey" value="100"></bal-progress-bar>
+          </section>
 
-        <section class="mb-medium">
-          <bal-progress-bar value="50" background="grey"></bal-progress-bar>
+          <section class="mb-medium">
+            <bal-progress-bar value="50" background="grey"></bal-progress-bar>
+          </section>
+
+          <section class="mb-medium flex gap-small flex-direction-column">
+            <bal-progress-bar value="50" color="purple"></bal-progress-bar>
+            <bal-progress-bar value="50" color="yellow"></bal-progress-bar>
+            <bal-progress-bar value="50" color="red"></bal-progress-bar>
+            <bal-progress-bar value="50" color="green"></bal-progress-bar>
+          </section>
+
+          <section class="mb-medium flex gap-small flex-direction-column">
+            <bal-progress-bar value="50" background="grey" color="purple"></bal-progress-bar>
+            <bal-progress-bar value="50" background="grey" color="yellow"></bal-progress-bar>
+            <bal-progress-bar value="50" background="grey" color="red"></bal-progress-bar>
+            <bal-progress-bar value="50" background="grey" color="green"></bal-progress-bar>
+          </section>
         </section>
       </main>
     </bal-doc-app>

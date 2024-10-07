@@ -65,6 +65,7 @@ import './components/bal-notification/bal-notification.interfaces'
 import './components/bal-sheet/bal-sheet.interfaces'
 import './components/bal-snackbar/bal-snackbar.interfaces'
 import './components/bal-toast/bal-toast.interfaces'
+import './components/bal-segment/bal-segment.interfaces'
 
 export * from './components'
 export * from './index'

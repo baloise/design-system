@@ -167,10 +167,10 @@ export const config: Config = {
       ],
     },
     { components: ['bal-close'] },
+    { components: ['bal-segment', 'bal-segment-item'] },
     { components: ['bal-data', 'bal-data-item', 'bal-data-label', 'bal-data-value'] },
     { components: ['bal-footer'] },
     { components: ['bal-heading', 'bal-text'] },
-    { components: ['bal-hint', 'bal-hint-text', 'bal-hint-title'] },
     { components: ['bal-icon'] },
     { components: ['bal-carousel', 'bal-carousel-item'] },
     {
@@ -190,7 +190,7 @@ export const config: Config = {
       components: ['bal-navbar', 'bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
     },
     { components: ['bal-pagination'] },
-    { components: ['bal-popover', 'bal-popover-content'] },
+    { components: ['bal-popover', 'bal-popover-content', 'bal-hint', 'bal-hint-text', 'bal-hint-title'] },
     { components: ['bal-shape'] },
     { components: ['bal-spinner'] },
     {

@@ -55,6 +55,11 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
   @Prop() clickable = true
 
   /**
+   * Defines the color of the steps so it can be placed on colored backgrounds
+   */
+  @Prop() color: BalProps.BalStepsColor = 'primary'
+
+  /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
@@ -277,11 +282,13 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
                   htmlRole={''}
                   class={{
                     ...bemStepsNav.element('carousel').element('item').class(),
+                    ...bemStepsNav.element('carousel').element('item').modifier(`color-${this.color}`).class(),
                     ...bemStepsNav.element('carousel').element('item').modifier('passed').class(step.passed),
                   }}
                 >
                   <StepButton
                     item={step}
+                    color={this.color}
                     isMobile={this.isMobile}
                     clickable={this.clickable && !step.disabled}
                     onSelectTab={this.onSelectTab}

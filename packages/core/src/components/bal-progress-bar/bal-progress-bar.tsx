@@ -2,12 +2,22 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Method } from '@
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import type { BalConfigObserver, BalConfigState } from '../../utils/config'
+import {
+  BalResizeInfo,
+  BalResizeObserver,
+  BalWindowResizeObserver,
+  ListenToResize,
+  ListenToWindowResize,
+} from '../../utils/resize'
+import { raf } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-progress-bar',
   styleUrl: 'bal-progress-bar.sass',
 })
-export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
+export class ProgressBar
+  implements ComponentInterface, BalConfigObserver, BalBreakpointObserver, BalWindowResizeObserver
+{
   @Element() el!: HTMLElement
 
   private animated = true
@@ -25,9 +35,14 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
   @Prop() value = 0
 
   /**
-   * The shape color
+   * The background color
    */
   @Prop() background: BalProps.BalProgressBarBackground = 'white'
+
+  /**
+   * The progress bar color
+   */
+  @Prop() color: BalProps.BalProgressBarColor = 'primary'
 
   /**
    * LIFECYCLE
@@ -48,6 +63,11 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
     this.updateProgress()
   }
 
+  @ListenToWindowResize()
+  windowResizeListener() {
+    this.updateProgress()
+  }
+
   @Method()
   async configChanged(state: BalConfigState) {
     this.animated = state.animated
@@ -60,16 +80,18 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
 
   private updateProgress() {
     if (this.lineEl) {
-      const maxWidth = this.el.clientWidth
-      const value = Math.max(0, Math.min(100, this.value))
-      const lineWidth = (maxWidth / 100) * value
-      this.lineEl.style.width = `${lineWidth}px`
+      raf(() => {
+        const maxWidth = this.el.clientWidth
+        const value = Math.max(0, Math.min(100, this.value))
+        const lineWidth = (maxWidth / 100) * value
+        this.lineEl.style.width = `${lineWidth}px`
 
-      if (value === 100) {
-        this.lineEl.classList.add('bal-progress-bar__line--full')
-      } else {
-        this.lineEl.classList.remove('bal-progress-bar__line--full')
-      }
+        if (value === 100) {
+          this.lineEl.classList.add('bal-progress-bar__line--full')
+        } else {
+          this.lineEl.classList.remove('bal-progress-bar__line--full')
+        }
+      })
     }
   }
 
@@ -87,12 +109,13 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
         aria-hidden="true"
         class={{
           ...block.class(),
-          ...block.modifier(`background-${this.background}`).class(),
+          ...block.modifier(`background-${this.background}-of-${this.color}`).class(),
         }}
       >
         <div
           class={{
             ...bemLineEl.class(),
+            ...bemLineEl.modifier(`color-${this.color}`).class(),
             ...bemLineEl.modifier(`animated`).class(this.animated),
           }}
           ref={lineEl => (this.lineEl = lineEl)}

@@ -28,6 +28,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
     'bal-input-slider',
     'bal-file-upload',
     'bal-dropdown',
+    'bal-segment',
   ]
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
@@ -172,6 +173,8 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-dropdown',
       'bal-field-control bal-checkbox',
       'bal-field-control bal-radio',
+      'bal-field-control bal-segment',
+      'bal-field-control bal-segment-item',
       'bal-field-control bal-checkbox-group',
       'bal-field-control bal-radio-group',
       'bal-field-control bal-number-input',

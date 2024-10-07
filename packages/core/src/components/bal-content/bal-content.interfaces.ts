@@ -6,6 +6,6 @@
 namespace BalProps {
   export type BalContentLayout = 'horizontal' | 'vertical' | ''
   export type BalContentDirection = 'column' | 'row' | ''
-  export type BalContentSpace = 'xx-small' | 'x-small' | 'small' | 'normal' | ''
+  export type BalContentSpace = 'none' | 'xxx-small' | 'xx-small' | 'x-small' | 'small' | 'normal' | ''
   export type BalContentAlignment = 'start' | 'center' | 'end' | ''
 }

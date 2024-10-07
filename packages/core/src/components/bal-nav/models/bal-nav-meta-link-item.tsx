@@ -77,15 +77,26 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     )
   }
 
-  override render() {
+  override render(context?: { flyoutId: string }) {
     if (this.isLink) {
-      return <bal-tab-item label={this.label} value={this.value} href={this.href} target={this.target}></bal-tab-item>
+      return (
+        <bal-tab-item
+          aria={{ controls: context.flyoutId }}
+          label={this.label}
+          value={this.value}
+          href={this.href}
+          target={this.target}
+          no-panel
+        ></bal-tab-item>
+      )
     }
 
     return (
       <bal-tab-item
+        aria={{ controls: context.flyoutId }}
         label={this.label}
         value={this.value}
+        no-panel
         onBalNavigate={ev => {
           if (this.onClick) {
             this.onClick(ev.detail)
