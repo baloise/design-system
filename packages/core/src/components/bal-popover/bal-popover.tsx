@@ -398,6 +398,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
       <Host
         aria-presented={this.active ? 'true' : null}
         data-id={this.popoverId}
+        aria-haspopup="true"
         class={{
           ...block.class(),
           ...block.modifier('active').class(this.active),

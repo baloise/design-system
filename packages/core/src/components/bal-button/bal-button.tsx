@@ -170,6 +170,7 @@ export class Button implements ComponentInterface {
       'aria-controls',
       'aria-hidden',
       'tabindex',
+      'aria-haspopup',
     ])
   }
 
@@ -284,6 +285,7 @@ export class Button implements ComponentInterface {
       'aria-label':
         this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
       'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
+      'aria-haspopup': this.aria?.haspopup || this.inheritAttributes['aria-haspopup'],
     }
 
     return (
