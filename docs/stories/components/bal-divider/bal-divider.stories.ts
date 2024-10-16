@@ -25,8 +25,8 @@ export const Basic = Story()
 
 export const Dashed = Story({
   args: {
-    borderStyle: 'dashed'
-  }
+    borderStyle: 'dashed',
+  },
 })
 
 export const LayoutVertical = Story({
