@@ -36,6 +36,11 @@ export class Divider implements ComponentInterface, Loggable {
   @Prop() color: BalProps.BalDividerColor = 'grey'
 
   /**
+   * Defines the color of the separator line.
+   */
+  @Prop() borderStyle: BalProps.BalDividerBorderStyle = 'solid'
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -45,6 +50,7 @@ export class Divider implements ComponentInterface, Loggable {
     const layout = !!this.layout
     const space = !!this.space
     const color = !!this.color
+    const borderStyle = !!this.borderStyle
 
     return (
       <Host
@@ -54,6 +60,7 @@ export class Divider implements ComponentInterface, Loggable {
           ...block.modifier(`layout-${this.layout}`).class(layout),
           ...block.modifier(`space-${this.space}`).class(space),
           ...block.modifier(`color-${this.color}`).class(color),
+          ...block.modifier(`border-style-${this.borderStyle}`).class(borderStyle),
         }}
       >
         <slot></slot>

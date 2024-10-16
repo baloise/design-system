@@ -958,6 +958,10 @@ export namespace Components {
         /**
           * Defines the color of the separator line.
          */
+        "borderStyle": BalProps.BalDividerBorderStyle;
+        /**
+          * Defines the color of the separator line.
+         */
         "color": BalProps.BalDividerColor;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
@@ -6133,6 +6137,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "borderStyle"?: BalProps.BalDividerBorderStyle;
         /**
           * Defines the color of the separator line.
          */
