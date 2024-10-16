@@ -46,6 +46,34 @@
     align-self: stretch
     width: var(--bal-divider-border-width)
   //
+  // border styles
+  &--border-style-dashed#{&}--color-primary
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-primary-light
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary-light) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-primary-dark
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary-dark) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-grey-light
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey-light) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-grey
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-grey-dark
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey-dark) 0px, var (--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-warning
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-warning) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-success
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-success) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-danger
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-danger-dark
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger-dark) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-danger-darker
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger-darker) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-white
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-white) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  &--border-style-dashed#{&}--color-light-blue
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-light-blue) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px )
+  //
   // horizontal spaces
   &--space-none
     margin: 0

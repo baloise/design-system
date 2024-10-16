@@ -5,6 +5,7 @@
 
 namespace BalProps {
   export type BalDividerLayout = 'horizontal' | 'vertical' | ''
+  export type BalDividerBorderStyle = 'solid' | 'dashed' | ''
   export type BalDividerColor =
     | 'primary'
     | 'primary-light'
