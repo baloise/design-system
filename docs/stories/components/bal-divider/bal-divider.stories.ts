@@ -23,6 +23,12 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
+export const Dashed = Story({
+  args: {
+    borderStyle: 'dashed',
+  },
+})
+
 export const LayoutVertical = Story({
   args: {
     layout: 'vertical',

@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.6.0
+
+### Minor Changes
+
+- **divider**: add new border style dashed ( [#1484](https://github.com/baloise/design-system/pull/1484))
+
 ## 16.5.2
 
 ### Patch Changes
