@@ -143,6 +143,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
     this.disabledChanged()
+    this.isVertical = this.vertical
   }
 
   disconnectedCallback() {
@@ -446,6 +447,8 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   render() {
     const { invalid, isVertical, scrollable, keyboardMode, expanded, isMobile, disabled } = this
     const block = BEM.block('segment')
+
+    console.log('render', isVertical)
 
     return (
       <Host
