@@ -72,6 +72,13 @@ export class SegmentItem implements ComponentInterface {
     }
   }
 
+  connectedCallback(): void {
+    const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
+    if (segmentEl && segmentEl.vertical) {
+      this.isVertical = segmentEl.vertical
+    }
+  }
+
   componentDidLoad() {
     const segmentEl = (this.segmentEl = this.el.closest('bal-segment'))
     if (segmentEl) {
