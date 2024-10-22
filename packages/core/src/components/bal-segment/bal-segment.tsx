@@ -24,6 +24,7 @@ import {
   isEndKey,
   isArrowLeftKey,
   isArrowRightKey,
+  isEnterKey,
 } from '@baloise/web-app-utils'
 import { stopEventBubbling } from '../../utils/form-input'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
@@ -143,6 +144,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
     this.disabledChanged()
+    this.isVertical = this.vertical
   }
 
   disconnectedCallback() {
@@ -204,12 +206,14 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
+    let forceChange = false
 
     let current: undefined | HTMLBalSegmentItemElement
 
-    if (isSpaceKey(ev)) {
+    if (isSpaceKey(ev) || isEnterKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('current')
+      forceChange = this.value !== current.value
       this.value = current.value
     } else if (isArrowUpKey(ev) || isArrowLeftKey(ev)) {
       stopEventBubbling(ev)
@@ -230,7 +234,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
 
     const previous = this.checked
-    if (current !== previous) {
+    if (current !== previous || forceChange) {
       this.checkButton(previous, current)
       this.emitValueChange()
     }
