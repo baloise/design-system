@@ -1,5 +1,17 @@
 # Changelog
 
+## 16.7.0
+
+### Minor Changes
+
+- **icon**: add new arrow-down icon ( [#1483](https://github.com/baloise/design-system/pull/1483))
+
+### Patch Changes
+
+- **segment**: triggers change when selecting with space or enter key ( [#1486](https://github.com/baloise/design-system/pull/1486))
+
+- **segment**: improve vertical rendering for the initial render ( [#1486](https://github.com/baloise/design-system/pull/1486))
+
 ## 16.6.0
 
 ### Minor Changes
