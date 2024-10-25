@@ -1,5 +1,17 @@
 # Changelog
 
+## 16.8.0
+
+### Minor Changes
+
+- **form**: add form class prop to style inner form element ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
+### Patch Changes
+
+- **form**: add missing basic styles ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
+- **form**: scrollToFirstInvalidField waits for browser to be ready to fix angular render issue ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
 ## 16.7.0
 
 ### Minor Changes
