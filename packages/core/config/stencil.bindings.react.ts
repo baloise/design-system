@@ -3,8 +3,8 @@ import { docComponents } from './doc.components'
 
 export const ReactGenerator = () =>
   reactOutputTarget({
-    componentCorePackage: '@baloise/ds-core',
-    proxiesFile: '../react/src/generated/proxies.ts',
-    includeDefineCustomElements: true,
+    outDir: '../react/src/generated',
+    stencilPackageName: '@baloise/ds-core',
     excludeComponents: docComponents,
+    hydrateModule: '@baloise/ds-core/hydrate',
   })

@@ -1,2 +1,1 @@
-export { reactOutputTarget } from './lib/plugin'
-export type { OutputTargetReact } from './lib/types'
+export { reactOutputTarget } from './lib/react-output-target'

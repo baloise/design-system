@@ -70,6 +70,10 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
+    },
     /**
      * Use this outputs for documentation and e2e testing
      */
@@ -86,6 +90,7 @@ export const config: Config = {
             empty: true,
             includeGlobalScripts: false,
             generateTypeDeclarations: true,
+            externalRuntime: false,
           },
         ]
       : []),

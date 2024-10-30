@@ -1,6 +1,6 @@
 import { dirname, join } from 'path'
 import type { OutputTargetAngular, ValueAccessorTypes } from './types'
-import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
+import type { CompilerCtx, ComponentCompilerMeta, Config, CopyTask } from '@stencil/core/internal'
 
 interface ValueAccessor {
   elementSelectors: string[]
@@ -78,12 +78,13 @@ function copyResources(config: Config, resourcesFilesToCopy: string[], directory
   if (!config.sys || !config.sys.copy) {
     throw new Error('stencil is not properly intialized at this step. Notify the developer')
   }
-  const copyTasks = resourcesFilesToCopy.map(rf => {
+  const copyTasks: Required<CopyTask>[] = resourcesFilesToCopy.map(rf => {
     return {
       src: join(__dirname, '../../../resources/control-value-accessors/', rf),
       dest: join(directory, rf),
       keepDirStructure: false,
       warn: false,
+      ignore: [],
     }
   })
   return config.sys.copy(copyTasks, join(directory))
