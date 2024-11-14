@@ -75,19 +75,19 @@ export const config: Config = {
      */
     ...(!IS_BAL_DEVELOPMENT
       ? [
-        CustomDocumentationGenerator,
-        webOutputTarget({
-          dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-          isTest: IS_BAL_TESTING,
-        }),
-        {
-          type: 'dist-custom-elements',
-          dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-          empty: true,
-          includeGlobalScripts: false,
-          generateTypeDeclarations: true,
-        },
-      ]
+          CustomDocumentationGenerator,
+          webOutputTarget({
+            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+            isTest: IS_BAL_TESTING,
+          }),
+          {
+            type: 'dist-custom-elements',
+            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+            empty: true,
+            includeGlobalScripts: false,
+            generateTypeDeclarations: true,
+          },
+        ]
       : []),
     {
       type: 'www',
@@ -143,17 +143,17 @@ export const config: Config = {
      */
     ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING
       ? [
-        {
-          type: 'docs-vscode',
-          file: 'dist/html.html-data.json',
-          sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-        },
-        VueGenerator(),
-        ReactGenerator(),
-        AngularGenerator(),
-        AngularModuleGenerator(),
-        AngularLegacyGenerator(),
-      ]
+          {
+            type: 'docs-vscode',
+            file: 'dist/html.html-data.json',
+            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+          },
+          VueGenerator(),
+          ReactGenerator(),
+          AngularGenerator(),
+          AngularModuleGenerator(),
+          AngularLegacyGenerator(),
+        ]
       : []),
   ],
   bundles: [
