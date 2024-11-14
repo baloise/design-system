@@ -1,0 +1,651 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+
+    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
+  </head>
+
+  <body>
+    <bal-app>
+      <div>
+        <header>
+          <bal-nav id="nav" data-testid="basic">
+            <bal-popup id="popup-call" label="24h Kundenservice" content-width="440">
+              <bal-stack layout="vertical">
+                <bal-button expanded>00800 24 800 800</bal-button>
+              </bal-stack>
+            </bal-popup>
+
+            <bal-popup id="popup-locale" label="Sprache wählen" content-width="440">
+              <bal-stack layout="vertical">
+                <bal-button expanded color="light">DE</bal-button>
+                <bal-button expanded color="light">EN</bal-button>
+                <bal-button expanded color="light">FR</bal-button>
+                <bal-button expanded color="light">IT</bal-button>
+              </bal-stack>
+            </bal-popup>
+
+            <bal-popup id="popup-search" label="Suchen" content-width="440">
+              <bal-input placeholder="Start typing"></bal-input>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+            </bal-popup>
+
+            <bal-popup id="popup-login" label="Anmelden" content-width="440">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+                iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+                nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+                inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+                placeat modi suscipit laborum quisquam laudantium!
+              </p>
+            </bal-popup>
+          </bal-nav>
+        </header>
+        <main>
+          <bal-stage color="purple" shape size="small" containerSize="wide">
+            <bal-stage-body>
+              <bal-stage-back-link href="#" class="mb-medium">Back</bal-stage-back-link>
+              <bal-heading class="mb-x-small" space="none">Nav Page</bal-heading>
+            </bal-stage-body>
+          </bal-stage>
+          <div class="container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Test Case</th>
+                  <th>Performance</th>
+                  <th>First Contentful Paint</th>
+                  <th>Largest Contentful Paint</th>
+                  <th>Speed Index</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>001 - Nav Basic</td>
+                  <td>87</td>
+                  <td>2.4</td>
+                  <td>3.6</td>
+                  <td>2.4</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h1 class="subtitle">Findings</h1>
+            <ul class="list">
+              <li><b>002 - Consumer: </b> import styles form css or styles package that are required!</li>
+              <li><b>003 - Consumer: </b> import styles as non blocking!</li>
+            </ul>
+          </div>
+        </main>
+        <script>
+          const nav = document.getElementById('nav')
+
+          const logoLinkItem = {
+            href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+            ariaLabel: 'Homepage',
+            htmlTitle: 'Homepage',
+          }
+
+          const serviceLinkItem = {
+            value: 'Services',
+            label: 'Services',
+            linkItems: [
+              {
+                label: 'Service link 1',
+              },
+              {
+                label: 'Service link 2',
+              },
+              {
+                label: 'Service link 3',
+              },
+            ],
+          }
+
+          const sectionLinkItem = {
+            value: 'Section Title',
+            label: 'Section Title',
+            linkItems: [
+              {
+                label: 'Section link 1',
+              },
+              {
+                label: 'Section link 2',
+              },
+              {
+                label: 'Section link 3',
+              },
+              {
+                label: 'Section link 4',
+              },
+            ],
+          }
+
+          const mainLinkItem = label => ({
+            label: label,
+            sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
+            serviceLinkItems: [serviceLinkItem],
+          })
+
+          nav.logo = logoLinkItem
+
+          nav.buttons = [
+            {
+              icon: 'call',
+              popupId: 'popup-call',
+              touchPlacement: 'bottom',
+              ariaLabel: '24h Kundenservice',
+              htmlTitle: '24h Kundenservice',
+            },
+            {
+              label: 'DE',
+              popupId: 'popup-locale',
+              touchPlacement: 'bottom',
+              ariaLabel: 'Sprache wählen',
+              htmlTitle: 'Sprache wählen',
+            },
+            {
+              icon: 'location',
+              htmlTitle: 'Berater und Standorte',
+              ariaLabel: 'Berater und Standorte',
+              href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
+              target: '_blank',
+              touchPlacement: 'none',
+            },
+            {
+              icon: 'search',
+              popupId: 'popup-search',
+              ariaLabel: 'Suchen',
+              htmlTitle: 'Suchen',
+            },
+            {
+              label: 'Anmelden',
+              icon: 'account',
+              popupId: 'popup-login',
+              ariaLabel: 'Anmelden',
+              htmlTitle: 'Anmelden',
+            },
+          ]
+
+          nav.options = [
+            {
+              label: 'Privatkunden',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+              active: true,
+              overviewLink: {
+                label: 'Privatkunden',
+                href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+              },
+              mainLinkItems: [
+                {
+                  label: 'Versichern',
+                  href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                  active: true,
+                  sectionLinkItems: [
+                    {
+                      label: 'Wohnen & Recht',
+                      href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                      active: true,
+                      linkItems: [
+                        {
+                          label: 'Hausratversicherung',
+                          active: true,
+                          clickable: true,
+                        },
+                        {
+                          label: 'Haushaltversicherung für alle unter 30',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Haftpflichtversicherung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Rechtsschutzversicherung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Cyber-Versicherung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Wertsachen- & Elektronikversicherungen',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Fahrzeuge',
+                      linkItems: [
+                        {
+                          label: 'Autoversicherung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Elektroauto-Versicherung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          label: 'Motorrad- & Rollerversicherung',
+                        },
+                        {
+                          label: 'Motorrad- & Rollerversicherung für alle unter 30',
+                        },
+                        {
+                          label: 'Veloversicherung',
+                        },
+                        {
+                          label: 'Bootsversicherung',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Personen',
+                      linkItems: [
+                        {
+                          label: 'Lebensversicherungen',
+                        },
+                        {
+                          label: 'Einzel-Unfallversicherung',
+                        },
+                        {
+                          label: 'Todesfallrisikoversicherung',
+                        },
+                        {
+                          label: 'Einzel-Krankentaggeldversicherung',
+                        },
+                        {
+                          label: 'Erwerbsunfähigkeitsversicherung',
+                        },
+                        {
+                          label: 'Hausangestellten-Versicherung',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Ferien & Reisen',
+                      linkItems: [
+                        {
+                          label: 'Reiseversicherung (für das ganze Jahr)',
+                        },
+                        {
+                          label: 'Ferienversicherung (2 bis 92 Tage)',
+                        },
+                        {
+                          label: 'Reisegepäckversicherung',
+                        },
+                        {
+                          label: 'Annullierungskosten',
+                        },
+                        {
+                          label: 'Mietfahrzeug-Versicherung',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Wohneneigentum',
+                      linkItems: [
+                        {
+                          label: 'Bauversicherung',
+                        },
+                        {
+                          label: 'Gebäudeversicherung',
+                        },
+                      ],
+                    },
+                  ],
+                  serviceLinkItems: [
+                    {
+                      label: 'Services',
+                      linkItems: [
+                        {
+                          label: 'Schaden melden',
+                        },
+                        {
+                          label: 'Pannenhilfe',
+                        },
+                        {
+                          label: 'Partnerbetriebe',
+                        },
+                        {
+                          label: 'Versicherungsnachweis',
+                        },
+                        {
+                          label: 'Internationale Versicherungskarte',
+                        },
+                        {
+                          label: 'Wiederinkraftsetzung',
+                          href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                      ],
+                    },
+                  ],
+                  overviewLink: {
+                    label: 'Alle Versicherungslösungen',
+                    href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                  },
+                },
+                {
+                  label: 'Anlegen & Vorsorg',
+                  sectionLinkItems: [
+                    {
+                      label: 'Anlegen',
+                      linkItems: [
+                        {
+                          label: 'Zielbasiertes Anlegen',
+                        },
+                        {
+                          label: 'Fondskonto',
+                        },
+                        {
+                          label: 'Anlagefonds',
+                        },
+                        {
+                          label: 'Anlegen mit Berater',
+                        },
+                        {
+                          label: 'Anlegen ohne Berater',
+                        },
+                        {
+                          label: 'Vermögensverwaltung',
+                        },
+                        {
+                          label: 'Kassenobligationen',
+                        },
+                        {
+                          label: 'Festgeld',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Altersvorsorge',
+                      linkItems: [
+                        {
+                          label: 'Pensionsplanung',
+                        },
+                        {
+                          label: 'Vorsorgelösungen',
+                        },
+                        {
+                          label: 'Renten- und Auszahlungspläne',
+                        },
+                        {
+                          label: 'Invest Sparen 3 - Säule 3a',
+                        },
+                        {
+                          label: 'Freizügigkeitskonto',
+                        },
+                        {
+                          label: 'Lebensversicherungen',
+                        },
+                        {
+                          label: 'Finanzplanung',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Finanzwissen',
+                      linkItems: [
+                        {
+                          label: 'Persönliche Anlagestrategie',
+                        },
+                        {
+                          label: '5 Tipps für eine erfolgreiche Vorsorge',
+                        },
+                        {
+                          label: 'Fondswissen',
+                        },
+                        {
+                          label: 'Warum Anlagefonds?',
+                        },
+                        {
+                          label: 'Zeitpunkt der Vorsorge',
+                        },
+                        {
+                          label: 'Das Schweizer Vorsorgesystem einfach erklärt',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Ihre Ziele',
+                      linkItems: [
+                        {
+                          label: 'Pensionierung planen',
+                        },
+                        {
+                          label: 'Als Frau vorsorgen',
+                        },
+                        {
+                          label: 'Vermögen aufbauen, Lebenstraum erfüllen',
+                        },
+                        {
+                          label: 'Familie richtig absichern',
+                        },
+                        {
+                          label: 'Risiken absichern, Familie schützen',
+                        },
+                        {
+                          label: 'Nachlass frühzeitig regeln',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Nachhaltig investieren',
+                      linkItems: [
+                        {
+                          label: 'Allgemeine Informationen',
+                        },
+                      ],
+                    },
+                  ],
+                  serviceLinkItems: [
+                    {
+                      label: 'Services',
+                      linkItems: [
+                        {
+                          label: 'Vorsorgeausweis',
+                        },
+                        {
+                          label: 'Aktuelle Kurse',
+                        },
+                        {
+                          label: 'Börse & Anlageempfehlungen',
+                        },
+                        {
+                          label: 'Bankkonditionen',
+                        },
+                        {
+                          label: 'Downloads',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Finance4Women',
+                      color: 'purple',
+                      linkItems: [
+                        {
+                          label: 'Was macht eine gute Pensionskasse aus?',
+                        },
+                        {
+                          label: 'Impact-Investing: Geldanlage mit Sinn',
+                        },
+                        {
+                          label: 'Inflation - Was ist das?',
+                        },
+                        {
+                          label: 'Lohnverhandlungen erfolgreich führen. Tipps und Checkliste',
+                        },
+                      ],
+                    },
+                  ],
+                  overviewLink: {
+                    label: 'Alle Anlage- und Vorsorgelösungen',
+                    href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                  },
+                },
+                {
+                  label: 'Konten, Karten & Finanzierung',
+                  sectionLinkItems: [
+                    {
+                      label: 'Zahlen und Sparen',
+                      linkItems: [
+                        {
+                          label: 'Konten',
+                        },
+                        {
+                          label: 'Bankpakete der Baloise Bank',
+                        },
+                        {
+                          label: 'Karten',
+                        },
+                        {
+                          label: 'Reisezahlungsmittel',
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Finanzieren',
+                      linkItems: [
+                        {
+                          label: 'Alle Hypotheken',
+                        },
+                        {
+                          label: 'Zinsrabatte mit Hypobonus',
+                        },
+                        {
+                          label: 'Online-Hypothek',
+                        },
+                        {
+                          label: 'Festhypothek',
+                        },
+                        {
+                          label: 'Baukredit',
+                        },
+                        {
+                          label: 'Privatkredit',
+                        },
+                      ],
+                    },
+                  ],
+                  serviceLinkItems: [
+                    {
+                      label: 'Services',
+                      linkItems: [
+                        {
+                          label: 'Karte sperren',
+                        },
+                        {
+                          label: 'E-Banking',
+                        },
+                        {
+                          label: 'Bankkonditionen',
+                        },
+                        {
+                          label: 'Mobile Payment',
+                        },
+                        {
+                          label: 'Nutzungsbestimmungen Online-Hypothek',
+                        },
+                      ],
+                    },
+                  ],
+                  overviewLink: {
+                    label: 'Alle Bankprodukte',
+                    href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+                  },
+                },
+                {
+                  label: 'Kontakt & Services',
+                  href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
+                  target: '_blank',
+                },
+                {
+                  label: 'Blog',
+                  href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
+                  target: '_blank',
+                },
+              ],
+            },
+            {
+              label: 'Unternehmenskunden',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+              mainLinkItems: [
+                mainLinkItem('Versichern'),
+                mainLinkItem('Firma gründen'),
+                mainLinkItem('Konten, Karten & Finanzierung'),
+                mainLinkItem('Anlegen'),
+                mainLinkItem('Kontakt & Services'),
+                mainLinkItem('Blog'),
+              ],
+            },
+            {
+              label: 'Institutionelle Anleger',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+              mainLinkItems: [
+                mainLinkItem('Anlegen'),
+                mainLinkItem('Diestleistungsangebog'),
+                mainLinkItem('Kontakt & Services'),
+                mainLinkItem('Blog'),
+              ],
+            },
+            {
+              label: 'Über uns',
+              href: 'http://localhost:3333/components/bal-nav/test/bal-nav.visual.html',
+              mainLinkItems: [
+                mainLinkItem('Engagement'),
+                mainLinkItem('Organisation'),
+                mainLinkItem('Geschichte'),
+                mainLinkItem('Jobs'),
+                mainLinkItem('Immobilien'),
+                mainLinkItem('Medienmitteilungen'),
+                mainLinkItem('Kontakt & Services'),
+                mainLinkItem('Blog'),
+              ],
+            },
+          ]
+        </script>
+      </div>
+    </bal-app>
+  </body>
+</html>
