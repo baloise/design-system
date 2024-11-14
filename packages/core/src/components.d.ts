@@ -1298,6 +1298,10 @@ export namespace Components {
     }
     interface BalForm {
         /**
+          * The css class for the inner form element
+         */
+        "formClass": string;
+        /**
           * If `true` a native form element is added as a wrapper of the slot.
          */
         "native": boolean;
@@ -6478,6 +6482,10 @@ declare namespace LocalJSX {
         "showSocialMedia"?: boolean;
     }
     interface BalForm {
+        /**
+          * The css class for the inner form element
+         */
+        "formClass"?: string;
         /**
           * If `true` a native form element is added as a wrapper of the slot.
          */

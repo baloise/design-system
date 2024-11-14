@@ -58,6 +58,7 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
         dest: destDirectory,
         keepDirStructure: false,
         warn: false,
+        ignore: []
       },
     ],
     srcDirectory,
@@ -98,9 +99,8 @@ export function generateProxies(
 
   const typeImports = !outputTarget.componentCorePackage
     ? `import type { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
-    : `import type { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}${
-        outputTarget.outputType !== 'legacy' ? '/components' : ''
-      }';`
+    : `import type { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}${outputTarget.outputType !== 'legacy' ? '/components' : ''
+    }';`
 
   const final: string[] = [
     imports.join('\n'),
