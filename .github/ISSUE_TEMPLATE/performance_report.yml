@@ -1,7 +1,7 @@
-name: ♿️ Improve accessibility
-description: Create a issue to improve accessibility
-title: ':wheelchair: a11y(component): title'
-labels: ['✨ feature']
+name: ⚡️ Improve performance
+description: Create a issue to improve performance
+title: ':zip: perf(component): title'
+labels: ['✨ feature', '⚡️ performance']
 body:
   - type: textarea
     id: summary
@@ -9,18 +9,37 @@ body:
       label: Description of this issue
     validations:
       required: true
-  - type: textarea
-    id: action
-    attributes:
-      label: How to fix it
-      description: Describe action that can be taken to remediate the issue.
-    validations:
-      required: true
   - type: input
     id: reproduction-url
     attributes:
       label: Code Reproduction URL
       description: Provide a URL to reproduce the issue
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Create a Lighthouse test and provide the following metrics.
+
+        Use this tools to analyse:
+        - [Introduction to Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
+        - [PageSpeed Insights](https://pagespeed.web.dev)
+  - type: input
+    id: Performance
+    attributes:
+      label: Performance
+    validations:
+      required: true
+  - type: input
+    id: LargestContentfulPaint
+    attributes:
+      label: Largest Contentful Paint
+    validations:
+      required: true
+  - type: input
+    id: SpeedIndex
+    attributes:
+      label: Speed Index
     validations:
       required: true
   - type: textarea
