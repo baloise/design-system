@@ -162,7 +162,7 @@ async function copyResources(config: Config, outputTarget: OutputTargetReact): P
         dest: destDirectory,
         keepDirStructure: false,
         warn: false,
-        ignore: []
+        ignore: [],
       },
     ],
     srcDirectory,

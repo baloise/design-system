@@ -84,7 +84,7 @@ function copyResources(config: Config, resourcesFilesToCopy: string[], directory
       dest: join(directory, rf),
       keepDirStructure: false,
       warn: false,
-      ignore: []
+      ignore: [],
     }
   })
   return config.sys.copy(copyTasks, join(directory))
