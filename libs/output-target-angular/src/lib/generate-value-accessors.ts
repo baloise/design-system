@@ -82,7 +82,7 @@ function copyResources(config: Config, resourcesFilesToCopy: string[], directory
     return {
       src: join(__dirname, '../../../resources/control-value-accessors/', rf),
       dest: join(directory, rf),
-      keepDirStructure: false,
+      keepDirStructure: true,
       warn: false,
       ignore: [],
     }
