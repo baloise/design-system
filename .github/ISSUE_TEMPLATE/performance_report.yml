@@ -1,6 +1,6 @@
 name: ⚡️ Improve performance
 description: Create a issue to improve performance
-title: ':zip: perf(component): title'
+title: ':zap: perf(component): title'
 labels: ['✨ feature', '⚡️ performance']
 body:
   - type: textarea
