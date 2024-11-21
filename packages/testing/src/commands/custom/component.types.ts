@@ -29,6 +29,10 @@ declare namespace Cypress {
     /**
      * Waits until the browser goes into idle mode
      */
+    waitAfterLastCallback(): Chainable<JQuery>
+    /**
+     * Waits until the browser goes into idle mode
+     */
     waitAfterIdleCallback(): Chainable<JQuery>
     /**
      * Waits until the browser finished rendering

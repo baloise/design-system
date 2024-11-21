@@ -68,6 +68,7 @@ export {
   waitForDesignSystem,
   waitAfterFramePaint,
   waitAfterIdleCallback,
+  waitAfterLargestContentfulPaintCallback,
   shallowReady,
   deepReady,
   wait,
