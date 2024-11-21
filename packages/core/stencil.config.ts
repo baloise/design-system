@@ -117,6 +117,11 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
+          dest: 'assets/basic.min.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
           dest: 'assets/maps.js',
           warn: true,
@@ -124,6 +129,11 @@ export const config: Config = {
         {
           src: join(packagesDir, 'fonts', 'assets'),
           dest: 'assets/fonts',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'brand-icons', 'src', 'assets'),
+          dest: 'assets/images/brand-icons',
           warn: true,
         },
       ],
