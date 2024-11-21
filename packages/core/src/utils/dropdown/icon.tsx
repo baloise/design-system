@@ -32,6 +32,7 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
     return (
       <button
         title={i18nBalDropdown[language].clearable}
+        type={'button'}
         class={{
           ...block.element('rear').class(),
           ...block.element('clear').class(),
