@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from '@stencil/core'
+import { FunctionalComponent } from '@stencil/core'
 import { BalLanguage } from '../config'
 import { BEM } from '../bem'
 import { i18nBalDropdown } from './dropdown.i18n'
@@ -32,6 +32,7 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
     return (
       <button
         title={i18nBalDropdown[language].clearable}
+        type={'button'}
         class={{
           ...block.element('rear').class(),
           ...block.element('clear').class(),
