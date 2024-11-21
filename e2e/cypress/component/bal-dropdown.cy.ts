@@ -235,7 +235,7 @@ describe('bal-dropdown', () => {
   })
 
   context('multiple + chips', () => {
-    it.only('should remove option by clicking the chip', () => {
+    it('should remove option by clicking the chip', () => {
       cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(`<bal-dropdown></bal-dropdown>`, {
         props: {
           placeholder: 'Pick a color',
@@ -445,7 +445,7 @@ describe('bal-dropdown', () => {
   })
 
   context('form reset', () => {
-    it.only('should remove option by clicking the chip', () => {
+    it('should remove option by clicking the chip', () => {
       cy.mount<Components.BalDropdown, HTMLBalDropdownElementEventMap>(
         `
       <form action="https://www.w3schools.com/action_page.php" target="_blank">

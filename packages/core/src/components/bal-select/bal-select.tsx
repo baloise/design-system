@@ -347,6 +347,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
 
   @Listen('keydown', { target: 'window' })
   async handleKeyDown(ev: KeyboardEvent) {
+    ev.stopPropagation()
+    ev.stopImmediatePropagation()
     if (this.isPopoverOpen) {
       if (isArrowDownKey(ev) || isArrowUpKey(ev)) {
         preventDefault(ev)
