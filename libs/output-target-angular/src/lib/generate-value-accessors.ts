@@ -81,9 +81,10 @@ function copyResources(config: Config, resourcesFilesToCopy: string[], directory
   const copyTasks = resourcesFilesToCopy.map(rf => {
     return {
       src: join(__dirname, '../../../resources/control-value-accessors/', rf),
-      dest: join(directory, rf),
+      dest: join(directory),
       keepDirStructure: false,
       warn: false,
+      ignore: [],
     }
   })
   return config.sys.copy(copyTasks, join(directory))

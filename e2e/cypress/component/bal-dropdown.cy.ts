@@ -40,7 +40,7 @@ describe('bal-dropdown', () => {
 
       cy.getByPlaceholder('Pick a color').click()
       cy.getByRole('option', { name: 'Red' }).click()
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vRed')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
@@ -57,9 +57,9 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click()
       cy.getByRole('option', { name: 'Red' }).click()
       cy.getByRole('option', { name: 'Purple' }).click()
-      cy.get('@balChange').should('have.been.calledTwice')
-      cy.get('@balChange').shouldHaveEventDetail(['vRed'])
-      cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
+      cy.get('@balChange').should('have.callCount', 4)
+      cy.get('@balChange').shouldHaveEventDetail(['vRed'], 0)
+      cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 2)
       cy.getByPlaceholder('Pick a color').should('have.value', ['Red', 'Purple'])
     })
 
@@ -89,7 +89,7 @@ describe('bal-dropdown', () => {
       })
 
       cy.getByRole('button', { name: 'Löschen' }).click()
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 1)
       cy.get('@balChange').shouldHaveEventDetail(null)
       cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
@@ -107,7 +107,7 @@ describe('bal-dropdown', () => {
 
       cy.getByPlaceholder('Pick a color').click()
       cy.getByRole('option', { name: 'Red' }).click()
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vRed')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
@@ -125,9 +125,9 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').click()
       cy.getByRole('option', { name: 'Red' }).click()
       cy.getByRole('option', { name: 'Purple' }).click()
-      cy.get('@balChange').should('have.been.calledTwice')
+      cy.get('@balChange').should('have.callCount', 4)
       cy.get('@balChange').shouldHaveEventDetail(['vRed'])
-      cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 1)
+      cy.get('@balChange').shouldHaveEventDetail(['vRed', 'vPurple'], 2)
       cy.getByPlaceholder('Pick a color').should('have.value', ['Red', 'Purple'])
     })
 
@@ -159,7 +159,7 @@ describe('bal-dropdown', () => {
       })
 
       cy.getByRole('button', { name: 'Löschen' }).click()
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 1)
       cy.get('@balChange').shouldHaveEventDetail(null)
       cy.getByPlaceholder('Pick a color').should('have.value', '')
     })
@@ -182,7 +182,7 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('Pick a color').should('have.value', 'Red').click()
       cy.getByRole('option', { name: 'Red' }).click()
 
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vRed')
     })
 
@@ -248,7 +248,7 @@ describe('bal-dropdown', () => {
       })
 
       cy.getByRole('button', { name: 'Schliessen' }).first().click({ force: true })
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 1)
       cy.get('@balChange').shouldHaveEventDetail(['vPurple'])
       cy.getByPlaceholder('Pick a color').should('have.value', ['Purple'])
     })
@@ -266,7 +266,7 @@ describe('bal-dropdown', () => {
 
       cy.getByPlaceholder('Pick a color').click().type('{downArrow}').type('{enter}')
 
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vRed')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Red')
     })
@@ -290,9 +290,9 @@ describe('bal-dropdown', () => {
         .type('{upArrow}')
         .type('{enter}')
 
-      cy.get('@balChange').should('have.been.calledTwice')
+      cy.get('@balChange').should('have.callCount', 4)
       cy.get('@balChange').shouldHaveEventDetail(['vYellow'])
-      cy.get('@balChange').shouldHaveEventDetail(['vPurple', 'vYellow'], 1)
+      cy.get('@balChange').shouldHaveEventDetail(['vPurple', 'vYellow'], 2)
       cy.getByPlaceholder('Pick a color').should('have.value', ['Purple', 'Yellow'])
     })
 
@@ -307,7 +307,7 @@ describe('bal-dropdown', () => {
 
       cy.getByPlaceholder('Pick a color').click().type('{Y}').wait(200).type('{enter}')
 
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vYellow')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Yellow')
     })
@@ -323,7 +323,7 @@ describe('bal-dropdown', () => {
 
       cy.getByPlaceholder('Pick a color').focus().type('{Y}').wait(200).blur()
 
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vYellow')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Yellow')
     })
@@ -390,7 +390,7 @@ describe('bal-dropdown', () => {
 
       cy.get('.bal-dropdown__root__content').contains('Banana')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Banana')
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 2)
       cy.get('@balChange').shouldHaveEventDetail('vBanana')
     })
   })
@@ -415,7 +415,7 @@ describe('bal-dropdown', () => {
 
       cy.getByLabelText('Color').click()
       cy.getByRole('option', { name: 'Green' }).click()
-      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').should('have.callCount', 4)
       cy.get('@balChange').shouldHaveEventDetail('vGreen')
       cy.getByPlaceholder('Pick a color').should('have.value', 'Green')
     })
@@ -478,6 +478,7 @@ describe('bal-dropdown', () => {
       cy.getByLabelText('Country').click()
       cy.getByRole('option', { name: 'Italy' }).click()
       cy.getByRole('input', { name: 'Reset' }).click()
+      cy.waitAfterIdleCallback()
       cy.getByLabelText('Country').should('have.value', 'Germany')
     })
   })

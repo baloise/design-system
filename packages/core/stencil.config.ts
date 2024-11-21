@@ -39,7 +39,7 @@ if (IS_BAL_TESTING) {
 }
 
 const workspaceDir = join(parse(__dirname).dir, '..')
-const packagesDir = join(workspaceDir, 'packages')
+const packagesDir = join('../..')
 const nodeModulesProject = join(__dirname, 'node_modules')
 const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
@@ -103,17 +103,17 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-          dest: 'assets/theme-compact.css',
+          dest: 'assets',
           warn: true,
         },
         {
           src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
-          dest: 'assets/baloise-design-system-old.css',
+          dest: 'assets',
           warn: true,
         },
         {
           src: join(packagesDir, 'styles', 'css', 'all.css'),
-          dest: 'assets/baloise-design-system.css',
+          dest: 'assets',
           warn: true,
         },
         {
@@ -123,7 +123,7 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
-          dest: 'assets/maps.js',
+          dest: 'assets/maps',
           warn: true,
         },
         {

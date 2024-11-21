@@ -26,6 +26,32 @@ import {
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
+/**
+ * Request Largest Contentful Paint (LCP) callback
+ */
+export const rLCP = (callback: () => void, timeout = 5000) => {
+  if (balBrowser.hasWindow && 'PerformanceObserver' in window) {
+    const observer = new PerformanceObserver(entryList => {
+      const entries = entryList.getEntries()
+      const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
+
+      if (lcpEntry) {
+        // Disconnect the observer as we only need the LCP
+        observer.disconnect()
+
+        // Load the script after LCP
+        callback()
+        console.log('=> rLCP')
+      }
+    })
+
+    // Start observing for Largest Contentful Paint (LCP) entries
+    observer.observe({ type: 'largest-contentful-paint', buffered: true })
+  } else {
+    return setTimeout(callback, 32)
+  }
+}
+
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
@@ -281,8 +307,8 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       }),
     )
   }
-  await waitAfterFramePaint()
-  await waitAfterIdleCallback()
+
+  await Promise.all([waitAfterFramePaint(), waitAfterLargestContentfulPaintCallback(), waitAfterIdleCallback()])
 }
 
 export const waitAfterFramePaint = () => {
@@ -291,6 +317,10 @@ export const waitAfterFramePaint = () => {
 
 export const waitAfterIdleCallback = () => {
   return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitAfterLargestContentfulPaintCallback = () => {
+  return new Promise(resolve => rLCP(() => runHighPrioritizedTask(resolve)))
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {

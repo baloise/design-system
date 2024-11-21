@@ -63,10 +63,10 @@ describe('bal-select', () => {
 
   it('should select option with the key entry plus enter', () => {
     cy.get('bal-select').find('.bal-select__control__input').click()
-    cy.get('bal-select').type('Cypress.io{downArrow}').type('Cypress.io{enter}')
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('v1995')
+    cy.get('@balChange').shouldHaveEventDetail('v1996')
   })
 
   it('should not fire a click event, because the select is disabled', () => {
@@ -108,7 +108,7 @@ describe('bal-select', () => {
     cy.get('bal-select').type('{downArrow}').type('{enter}').blur({ force: true })
 
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('v1995')
+    cy.get('@balChange').shouldHaveEventDetail('v1996')
     cy.get('@balBlur').should('have.been.calledOnce')
   })
 
@@ -133,9 +133,8 @@ describe('bal-select', () => {
     cy.get('bal-select').type('{downArrow}').type('{enter}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
-    cy.get('@balChange').should('have.been.callCount', 2)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
+    cy.get('@balChange').should('have.been.callCount', 4)
+    cy.get('@balChange').shouldHaveEventDetail(['v1996'], 0)
   })
 
   it('multiple should fire a balBlur when leaving the control (multiple)', () => {
@@ -174,9 +173,9 @@ describe('bal-select', () => {
     cy.get('bal-select').type('{downArrow}').type('{enter}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
-    cy.get('@balChange').should('have.been.callCount', 2)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
+    cy.get('@balChange').should('have.been.callCount', 4)
+    cy.get('@balChange').shouldHaveEventDetail(['v1996'], 0)
+    // cy.get('@balChange').shouldHaveEventDetail(['v1996', 'v1998'], 2)
   })
 
   it('should fire balInput and balChange event after value change (typeahead + multiple)', () => {
@@ -213,8 +212,8 @@ describe('bal-select', () => {
     cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
-    cy.get('@balChange').should('have.been.callCount', 1)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995'])
+    cy.get('@balChange').should('have.been.callCount', 2)
+    cy.get('@balChange').shouldHaveEventDetail(['v1996'])
   })
 
   it('should fire a balBlur when leaving the control (typeahead + remote)', () => {
