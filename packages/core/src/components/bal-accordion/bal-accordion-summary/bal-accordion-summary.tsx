@@ -3,7 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { AccordionState } from '../../../interfaces'
-import { isEnterKey, isSpaceKey } from '@baloise/web-app-utils'
+import { isEnterKey, isSpaceKey } from '../../..//utils/keyboard'
 
 @Component({
   tag: 'bal-accordion-summary',

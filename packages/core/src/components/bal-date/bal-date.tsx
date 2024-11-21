@@ -12,7 +12,7 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core'
-import { isSpaceKey } from '@baloise/web-app-utils'
+import { isSpaceKey } from '../../utils/keyboard'
 import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom'
 import { i18nBalDate } from './bal-date.i18n'
 import { BEM } from '../../utils/bem'

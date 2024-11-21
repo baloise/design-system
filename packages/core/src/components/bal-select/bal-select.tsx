@@ -14,15 +14,8 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
-import {
-  areArraysEqual,
-  isArrowDownKey,
-  isArrowUpKey,
-  isEnterKey,
-  isEscapeKey,
-  isSpaceKey,
-  isBackspaceKey,
-} from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
+import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils/keyboard'
 import {
   addValue,
   findLabelByValue,

@@ -1,4 +1,4 @@
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../../utils/array'
 import {
   Component,
   h,

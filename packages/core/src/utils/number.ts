@@ -1,17 +1,14 @@
 import { defaultLocale, useBalConfig } from './config'
-import {
-  getDecimalSeparator as getDecimalSeparatorUtil,
-  getThousandSeparator as getThousandSeparatorUtil,
-  formatLocaleNumber as formatLocaleNumberUtil,
-} from '@baloise/web-app-utils'
 
 const getLocale = (): string => {
   const config = useBalConfig()
   return (config && config.locale) || defaultLocale
 }
 
-export const getDecimalSeparator = (): string => {
-  return getDecimalSeparatorUtil(getLocale())
+export function getDecimalSeparator(): string {
+  return Intl.NumberFormat(getLocale())
+    .format(1.1)
+    .replace(/\p{Number}/gu, '')
 }
 
 export const getDecimalSeparators = (): string[] => {
@@ -22,12 +19,24 @@ export const getDecimalSeparators = (): string[] => {
   return [getDecimalSeparator()]
 }
 
-export const getThousandSeparator = (): string => {
-  return getThousandSeparatorUtil(getLocale())
+export function getThousandSeparator(): string {
+  return Intl.NumberFormat(getLocale())
+    .format(11111)
+    .replace(/\p{Number}/gu, '')
 }
 
-export const formatLocaleNumber = (number: number, minimumFractionDigits?: number): string => {
-  return formatLocaleNumberUtil(getLocale(), number, minimumFractionDigits)
+export function formatLocaleNumber(number: number, minimumFractionDigits?: number): string {
+  const options =
+    minimumFractionDigits !== undefined ? { minimumFractionDigits, maximumFractionDigits: minimumFractionDigits } : {}
+  const formattedNumber = Intl.NumberFormat(getLocale(), {
+    ...options,
+  }).format(number)
+
+  if (formattedNumber === 'NaN') {
+    return ''
+  }
+
+  return formattedNumber
 }
 
 export const parseLocaleNumber = (stringNumber: string): number => {

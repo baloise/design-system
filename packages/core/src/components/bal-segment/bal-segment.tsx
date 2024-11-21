@@ -25,7 +25,7 @@ import {
   isArrowLeftKey,
   isArrowRightKey,
   isEnterKey,
-} from '@baloise/web-app-utils'
+} from '../../utils/keyboard'
 import { stopEventBubbling } from '../../utils/form-input'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'

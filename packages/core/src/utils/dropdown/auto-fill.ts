@@ -1,4 +1,4 @@
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../array'
 import { stopEventBubbling } from '../form-input'
 import { DropdownComponent } from './component'
 

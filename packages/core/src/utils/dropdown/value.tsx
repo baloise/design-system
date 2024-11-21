@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
 import isNil from 'lodash.isnil'
 import { DropdownComponent } from './component'
 import { BEM } from '../bem'

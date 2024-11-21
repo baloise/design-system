@@ -32,16 +32,8 @@ import {
 import { debounceEvent, rIC } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
-import {
-  isSpaceKey,
-  parse,
-  format,
-  isValidIsoString,
-  now,
-  formatDateString,
-  isEnterKey,
-  dateSeparator,
-} from '@baloise/web-app-utils'
+import { parse, format, isValidIsoString, now, formatDateString, dateSeparator } from '../../utils/date'
+import { isSpaceKey, isEnterKey } from '../../utils/keyboard'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
 import { i18nBalDatepicker } from './bal-datepicker.i18n'

@@ -12,7 +12,7 @@ import {
   EventEmitter,
   Event,
 } from '@stencil/core'
-import { isEscapeKey } from '@baloise/web-app-utils'
+import { isEscapeKey } from '../../utils/keyboard'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
