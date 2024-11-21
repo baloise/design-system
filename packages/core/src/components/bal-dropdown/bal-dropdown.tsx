@@ -210,14 +210,19 @@ export class Dropdown
    * ------------------------------------------------------
    */
 
+  areUtilsConnected = false
+
   connectedCallback(): void {
-    this.eventsUtil.connectedCallback(this)
-    this.valueUtil.connectedCallback(this)
-    this.popupUtil.connectedCallback(this)
-    this.optionUtil.connectedCallback(this)
-    this.formSubmitUtil.connectedCallback(this)
-    this.focusUtil.connectedCallback(this)
-    this.autoFillUtil.connectedCallback(this)
+    if (this.areUtilsConnected === false) {
+      this.eventsUtil.connectedCallback(this)
+      this.valueUtil.connectedCallback(this)
+      this.popupUtil.connectedCallback(this)
+      this.optionUtil.connectedCallback(this)
+      this.formSubmitUtil.connectedCallback(this)
+      this.focusUtil.connectedCallback(this)
+      this.autoFillUtil.connectedCallback(this)
+      this.areUtilsConnected = true
+    }
   }
 
   async componentWillRender() {
@@ -251,6 +256,8 @@ export class Dropdown
 
   @Listen('balOptionChange')
   async listenToOptionChange(ev: BalEvents.BalOptionChange) {
+    ev.stopPropagation()
+    ev.stopImmediatePropagation()
     this.optionUtil.listenToOptionChange(ev)
   }
 
