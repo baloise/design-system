@@ -15,7 +15,7 @@ import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../..
 import { isDescendant } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { isSpaceKey } from '@baloise/web-app-utils'
+import { isSpaceKey } from '../../utils/keyboard'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { FOCUS_KEYS } from '../../utils/focus-visible'

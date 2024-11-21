@@ -1,4 +1,4 @@
-import { dateSeparator } from '@baloise/web-app-utils'
+import { dateSeparator } from '../../date'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
 import { MaskBlock } from '../blocks'
 import { AbstractMask } from '../mask'

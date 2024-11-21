@@ -12,7 +12,7 @@ import {
   Listen,
   ComponentInterface,
 } from '@stencil/core'
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
 import {
   debounceEvent,
   deepReady,
