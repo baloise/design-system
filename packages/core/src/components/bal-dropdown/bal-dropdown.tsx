@@ -256,8 +256,6 @@ export class Dropdown
 
   @Listen('balOptionChange')
   async listenToOptionChange(ev: BalEvents.BalOptionChange) {
-    ev.stopPropagation()
-    ev.stopImmediatePropagation()
     this.optionUtil.listenToOptionChange(ev)
   }
 
