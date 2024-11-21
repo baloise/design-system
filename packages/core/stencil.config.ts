@@ -118,7 +118,7 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.min.css',
+          dest: 'assets',
           warn: true,
         },
         {
