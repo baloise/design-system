@@ -95,13 +95,13 @@ Cypress.Commands.add(
 
 Cypress.Commands.add('disableAnimation', () => {
   cy.window({ log: false }).then(win => {
-    ; (win as any).BaloiseDesignSystem.config.animated = false
+    ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
 
 Cypress.Commands.add('disableLogger', () => {
   cy.window({ log: false }).then(win => {
-    ; (win as any).BaloiseDesignSystem.config.logger = {
+    ;(win as any).BaloiseDesignSystem.config.logger = {
       components: [],
       event: false,
       lifecycle: false,
