@@ -1,3 +1,4 @@
+import { waitAfterLargestContentfulPaintCallback } from '@baloise/ds-core'
 import { areComponentsReady, log, waitAfterFramePaint, waitAfterIdleCallback, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
@@ -94,13 +95,13 @@ Cypress.Commands.add(
 
 Cypress.Commands.add('disableAnimation', () => {
   cy.window({ log: false }).then(win => {
-    ;(win as any).BaloiseDesignSystem.config.animated = false
+    ; (win as any).BaloiseDesignSystem.config.animated = false
   })
 })
 
 Cypress.Commands.add('disableLogger', () => {
   cy.window({ log: false }).then(win => {
-    ;(win as any).BaloiseDesignSystem.config.logger = {
+    ; (win as any).BaloiseDesignSystem.config.logger = {
       components: [],
       event: false,
       lifecycle: false,
@@ -141,6 +142,6 @@ Cypress.Commands.add('waitForDesignSystem', () => {
         message: 'DesignSystem is ready 🚀',
       })
     })
-    .then(() => waitAfterFramePaint())
+    .then(() => waitAfterLargestContentfulPaintCallback())
     .then(() => waitAfterIdleCallback())
 })

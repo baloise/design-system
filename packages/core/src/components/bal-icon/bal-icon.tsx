@@ -184,10 +184,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
     const block = BEM.block('icon')
     const svgContent = this.svgContent(this.name)
 
-    if (!this.isLargestContentfulPaintDone) {
-      return ''
-    }
-
     return (
       <Host
         aria-hidden="true"
@@ -200,14 +196,18 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
           ...block.modifier(`is-${color}`).class(),
         }}
       >
-        <div
-          class={{
-            ...block.element('inner').class(),
-            ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
-            ...block.modifier(`is-${this.size}`).class(!!this.size),
-          }}
-          innerHTML={svgContent}
-        ></div>
+        {this.isLargestContentfulPaintDone ? (
+          <div
+            class={{
+              ...block.element('inner').class(),
+              ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
+              ...block.modifier(`is-${this.size}`).class(!!this.size),
+            }}
+            innerHTML={svgContent}
+          ></div>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
