@@ -1,6 +1,5 @@
 import {
   isCheckbox,
-  isDatepicker,
   isAccordion,
   isButton,
   isInput,
@@ -93,18 +92,6 @@ const shouldAndAndCommand = (
 
     if ('not.have.value' === condition) {
       return originalFn(element.find('input'), condition, key, value, options)
-    }
-  }
-
-  if (isDatepicker(element)) {
-    switch (condition) {
-      case 'have.focus':
-      case 'not.have.focus':
-      case 'have.value':
-      case 'not.have.value':
-      case 'be.disabled':
-      case 'not.be.disabled':
-        return originalFn(element.find(selectors.datepicker.input, { log: false }), condition, key, value, options)
     }
   }
 
