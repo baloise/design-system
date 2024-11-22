@@ -26,7 +26,7 @@ describe('bal-hint', () => {
   })
 
   context('mobile', () => {
-    beforeEach(() => cy.platform('mobile').wait(100))
+    beforeEach(() => cy.platform('mobile').wait(200))
 
     it('basic component', () => {
       cy.getByTestId('basic').testVisual('hint-basic-mobile')
