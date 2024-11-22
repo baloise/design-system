@@ -25,7 +25,6 @@ export const focusableQueryString =
  */
 export const focusFirstDescendant = <R extends HTMLElement, T extends HTMLElement>(ref: R, fallbackElement?: T) => {
   const firstInput = ref.querySelector<HTMLElement>(focusableQueryString)
-  debugger
   focusElementInContext(firstInput, fallbackElement ?? ref)
 }
 
