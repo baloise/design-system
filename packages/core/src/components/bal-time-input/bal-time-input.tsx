@@ -221,7 +221,7 @@ export class TimeInput
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, ':']
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ':', 'A', 'M', 'P']
   }
 
   private getRawValue(): string {
