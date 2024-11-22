@@ -82,10 +82,9 @@ export const getPresentedOverlay = (
 
 const getPresentedOverlays = (doc: Document, overlayTag?: string): HTMLBalOverlayElement[] => {
   return getOverlays(doc, overlayTag).filter(o => !isOverlayHidden(o))
-  // return getOverlays(doc, overlayTag);
 }
 
-const isOverlayHidden = (overlay: Element) => overlay.classList.contains('is-hidden') // TODO: is this the right class?
+const isOverlayHidden = (overlay: Element) => overlay.classList.contains('is-hidden')
 
 const trapKeyboardFocus = (ev: Event, doc: Document) => {
   const lastOverlay = getPresentedOverlay(doc, 'bal-modal')
@@ -132,13 +131,6 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * wrapper element as the traps live outside of the wrapper.
        */
       const overlayRoot = lastOverlay
-
-      /* // TODO we currently do not know why this code is needed, it just works without this code
-      if (!overlayRoot.contains(target)) {
-        console.log("!overlayRoot.contains(target)", target, lastOverlay)
-        return;
-      }
-       */
 
       const overlayWrapper = overlayRoot.querySelector<HTMLElement>('.bal-modal__container')
       if (!overlayWrapper) {
