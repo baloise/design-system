@@ -29,9 +29,9 @@ declare const requestAnimationFrame: any
 /**
  * Request Largest Contentful Paint (LCP) callback
  */
-export const rLCP = (callback: () => void, timeout = 4000) => {
+export const rLCP = (callback: () => void, timeout = 3000) => {
   let isLargestContentPatinDone = false
-  if (balBrowser.hasWindow && 'PerformanceObserver' in window) {
+  if (!balBrowser.isSafari && balBrowser.hasWindow && 'PerformanceObserver' in window) {
     const observer = new PerformanceObserver(entryList => {
       const entries = entryList.getEntries()
       const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
@@ -61,7 +61,7 @@ export const rLCP = (callback: () => void, timeout = 4000) => {
 
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback, { timeout })
+    ; (window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
   }
