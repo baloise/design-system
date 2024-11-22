@@ -79,7 +79,7 @@ export function generateCalendarGrid(
       if (isNil(allowedDates)) {
         return false
       }
-      return !(allowedDates as BalProps.BalDatepickerCallback)(isoDate)
+      return !allowedDates(isoDate)
     }
 
     // Fill the grid with day numbers

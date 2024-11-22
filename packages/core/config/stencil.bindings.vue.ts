@@ -2,15 +2,7 @@ import { vueOutputTarget } from '@baloise/output-target-vue'
 
 export const vueComponentModels: any[] = [
   {
-    elements: [
-      'bal-segment',
-      'bal-radio-group',
-      'bal-datepicker',
-      'bal-select',
-      'bal-tabs',
-      'bal-input-stepper',
-      'bal-checkbox-group',
-    ],
+    elements: ['bal-segment', 'bal-radio-group', 'bal-select', 'bal-tabs', 'bal-input-stepper', 'bal-checkbox-group'],
     event: 'balChange',
     targetAttr: 'value',
   },

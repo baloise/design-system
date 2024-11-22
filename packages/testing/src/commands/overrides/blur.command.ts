@@ -3,7 +3,6 @@ import {
   isAccordion,
   isButton,
   isCheckbox,
-  isDatepicker,
   isInput,
   isRadio,
   isSelect,
@@ -29,10 +28,6 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
 
   if (isCheckbox(element)) {
     return command(selectors.checkbox.input)
-  }
-
-  if (isDatepicker(element)) {
-    return command(selectors.datepicker.input)
   }
 
   if (isInput(element)) {

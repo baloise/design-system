@@ -2,7 +2,6 @@ import {
   BalCheckbox,
   BalCheckboxGroup,
   BalDate,
-  BalDatepicker,
   BalDropdown,
   BalInput,
   BalInputDate,
@@ -180,7 +179,6 @@ export const BalFormBundle = [
   // Form Controls
   ...BalCheckboxBundle,
   BalDate,
-  BalDatepicker,
   ...BalDropdownBundle,
   BalInputDate,
   BalInputStepper,
@@ -282,7 +280,6 @@ export const BalComponentBundle = [
   BalCheckbox,
   BalCheckboxGroup,
   BalDate,
-  BalDatepicker,
   BalInput,
   BalInputDate,
   BalInputSlider,
