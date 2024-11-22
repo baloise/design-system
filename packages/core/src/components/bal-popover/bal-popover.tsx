@@ -150,11 +150,11 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
 
   componentWillLoad() {
     this.backdropHeight = this.getBackdropHeight()
+    this.triggerElement.setAttribute('aria-haspopup', 'true')
   }
 
   componentDidLoad() {
     this.isInMainNav = this.footMobileNav !== null
-
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
         placement: this.tooltip ? 'bottom' : this.position,
@@ -398,7 +398,6 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
       <Host
         aria-presented={this.active ? 'true' : null}
         data-id={this.popoverId}
-        aria-haspopup="true"
         class={{
           ...block.class(),
           ...block.modifier('active').class(this.active),
