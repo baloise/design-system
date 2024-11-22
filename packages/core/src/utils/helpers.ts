@@ -29,24 +29,31 @@ declare const requestAnimationFrame: any
 /**
  * Request Largest Contentful Paint (LCP) callback
  */
-export const rLCP = (callback: () => void, timeout = 5000) => {
+export const rLCP = (callback: () => void, timeout = 4000) => {
+  let isLargestContentPatinDone = false
   if (balBrowser.hasWindow && 'PerformanceObserver' in window) {
     const observer = new PerformanceObserver(entryList => {
       const entries = entryList.getEntries()
       const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
-
       if (lcpEntry) {
         // Disconnect the observer as we only need the LCP
         observer.disconnect()
 
         // Load the script after LCP
-        callback()
-        console.log('=> rLCP')
+        isLargestContentPatinDone = true
+        rIC(() => callback())
       }
     })
 
     // Start observing for Largest Contentful Paint (LCP) entries
     observer.observe({ type: 'largest-contentful-paint', buffered: true })
+
+    setTimeout(() => {
+      if (!isLargestContentPatinDone) {
+        observer.disconnect()
+        callback()
+      }
+    }, timeout)
   } else {
     return setTimeout(callback, 32)
   }
@@ -72,6 +79,14 @@ export const debounceEvent = (ev: EventEmitter, wait: number): EventEmitter => {
     _original: ev,
     emit: debounce(original.emit.bind(original), wait),
   } as EventEmitter
+}
+
+export const debounceLCP = (func: (...args: any[]) => void, wait = 0) => {
+  let timer: any
+  return (...args: any[]): any => {
+    clearTimeout(timer)
+    timer = setTimeout(func, wait, ...args)
+  }
 }
 
 export const debounce = (func: (...args: any[]) => void, wait = 0) => {

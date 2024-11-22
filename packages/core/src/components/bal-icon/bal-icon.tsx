@@ -4,6 +4,7 @@ import camelCase from 'lodash.camelcase'
 import { BEM } from '../../utils/bem'
 import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
+import { rLCP } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-icon',
@@ -11,6 +12,7 @@ import { BalElementStateInfo } from '../../utils/element-states'
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo {
   @State() icons: BalIcons = defaultConfig.icons
+  @State() isLargestContentfulPaintDone = false
 
   /**
    * PUBLIC API
@@ -76,6 +78,17 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * @internal
    */
   @Prop() pressed = false
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  componentDidLoad(): void {
+    rLCP(() => {
+      this.isLargestContentfulPaintDone = true
+    })
+  }
 
   /**
    * LISTENERS
@@ -170,6 +183,10 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
     const color = this.parseColor()
     const block = BEM.block('icon')
     const svgContent = this.svgContent(this.name)
+
+    if (!this.isLargestContentfulPaintDone) {
+      return ''
+    }
 
     return (
       <Host

@@ -120,7 +120,7 @@ export class NavbarBrand {
     const navbarBrandEl = BEM.block('navbar').element('brand')
 
     const logoTemplate = this.logo ? (
-      <img loading="lazy" class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
+      <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
       <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
     )
