@@ -78,7 +78,7 @@ export const NativeList = Story({
     <li>List Item 1</li>
     <li>List Item 2</li>
   </ul>
-  <ul class="list has-bullet-circle">
+  <ul class="list has-bullet-arrow-down">
     <li>Green Circle List Item 1</li>
     <li>Green Circle List Item 3</li>
   </ul>
