@@ -1,4 +1,4 @@
-import { computePosition, offset, arrow, flip, shift, autoUpdate } from '@floating-ui/dom'
+import { balFloatingUi } from 'packages/core/src/utils/floating-ui'
 import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
 import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
@@ -13,6 +13,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
   private triggerEl: Element | null = null
 
   async present(component: PopupComponentInterface): Promise<boolean> {
+    const lib = await balFloatingUi.load()
     //
     // identify trigger element or the the closest trigger available
     if (!component.trigger && balBrowser.hasDocument) {
@@ -47,7 +48,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
           component.setMinWidth(this.triggerEl.clientWidth)
         }
 
-        this.cleanup = autoUpdate(
+        this.cleanup = lib.autoUpdate(
           this.triggerEl,
           component.containerEl,
           () => {
@@ -70,6 +71,8 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
   async update(component: PopupComponentInterface): Promise<boolean> {
     if (this.triggerEl && component.trigger && component.containerEl && component.arrowEl) {
+      const lib = await balFloatingUi.load()
+
       const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
       const referenceRect = this.triggerEl?.getBoundingClientRect()
       const triggerRect = component.trigger?.getBoundingClientRect()
@@ -79,57 +82,59 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         isInFrame = !!window.frameElement
       }
 
-      computePosition(this.triggerEl, component.containerEl, {
-        placement: this.placement,
-        middleware: [
-          isInFrame ? undefined : shift(),
-          flip(),
-          offset(this.arrow ? 16 : this.offset),
-          arrow({
-            element: component.arrowEl,
-            padding: 4,
-          }),
-        ],
-      }).then(({ x, y, middlewareData, placement }) => {
-        if (component.containerEl) {
-          Object.assign(component.containerEl.style, {
-            left: `${x}px`,
-            top: `${y}px`,
-          })
+      lib
+        .computePosition(this.triggerEl, component.containerEl, {
+          placement: this.placement,
+          middleware: [
+            isInFrame ? undefined : lib.shift(),
+            lib.flip(),
+            lib.offset(this.arrow ? 16 : this.offset),
+            lib.arrow({
+              element: component.arrowEl,
+              padding: 4,
+            }),
+          ],
+        })
+        .then(({ x, y, middlewareData, placement }) => {
+          if (component.containerEl) {
+            Object.assign(component.containerEl.style, {
+              left: `${x}px`,
+              top: `${y}px`,
+            })
 
-          const side = placement.split('-')[0]
+            const side = placement.split('-')[0]
 
-          const staticSide = {
-            top: 'bottom',
-            right: 'left',
-            bottom: 'top',
-            left: 'right',
-          }[side] as string
+            const staticSide = {
+              top: 'bottom',
+              right: 'left',
+              bottom: 'top',
+              left: 'right',
+            }[side] as string
 
-          if (middlewareData.arrow && component.arrowEl) {
-            const arrowPosition = middlewareData.arrow
+            if (middlewareData.arrow && component.arrowEl) {
+              const arrowPosition = middlewareData.arrow
 
-            if (isNavMetaDesktopPopup) {
-              const diff = referenceRect.right - triggerRect.right - 4
-              Object.assign(component.arrowEl.style, {
-                right: `${diff + triggerRect.width / 2}px`,
-                left: '',
-                top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-                bottom: '',
-                [staticSide]: `${-4}px`,
-              })
-            } else {
-              Object.assign(component.arrowEl.style, {
-                left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
-                top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-                right: '',
-                bottom: '',
-                [staticSide]: `${-4}px`,
-              })
+              if (isNavMetaDesktopPopup) {
+                const diff = referenceRect.right - triggerRect.right - 4
+                Object.assign(component.arrowEl.style, {
+                  right: `${diff + triggerRect.width / 2}px`,
+                  left: '',
+                  top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+                  bottom: '',
+                  [staticSide]: `${-4}px`,
+                })
+              } else {
+                Object.assign(component.arrowEl.style, {
+                  left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
+                  top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+                  right: '',
+                  bottom: '',
+                  [staticSide]: `${-4}px`,
+                })
+              }
             }
           }
-        }
-      })
+        })
       return true
     }
     return false
