@@ -61,7 +61,7 @@ export const rLCP = (callback: () => void, timeout = 3000) => {
 
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
-    ; (window as any).requestIdleCallback(callback, { timeout })
+    ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
   }
