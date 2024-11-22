@@ -1,8 +1,19 @@
-import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, EventEmitter } from '@stencil/core'
+import {
+  Component,
+  ComponentInterface,
+  h,
+  Host,
+  Method,
+  Element,
+  Prop,
+  Event,
+  EventEmitter,
+  State,
+} from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
 import { Attributes } from '../../../interfaces'
-import { waitAfterFramePaint } from '../../../utils/helpers'
+import { rLCP, waitAfterFramePaint } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 
 @Component({
@@ -13,6 +24,8 @@ export class CarouselItem implements ComponentInterface {
   private buttonEl: HTMLButtonElement | HTMLLinkElement
 
   @Element() el!: HTMLElement
+
+  @State() isLargestContentfulPaintDone = false
 
   /**
    * Src path to the image
@@ -89,6 +102,17 @@ export class CarouselItem implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalCarouselItemBlurDetail>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  componentDidLoad(): void {
+    rLCP(() => {
+      this.isLargestContentfulPaintDone = true
+    })
+  }
+
   componentWillLoad() {
     this.imageInheritAttributes = inheritAttributes(this.el, ['alt'])
   }
@@ -131,7 +155,7 @@ export class CarouselItem implements ComponentInterface {
     if (!isProduct) {
       return (
         <Host role={this.htmlRole} class={{ ...itemEl.class() }}>
-          {this.src !== undefined ? (
+          {this.isLargestContentfulPaintDone && this.src !== undefined ? (
             <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
           ) : (
             ''
@@ -169,10 +193,9 @@ export class CarouselItem implements ComponentInterface {
           onClick={this.onClick}
           ref={el => (this.buttonEl = el)}
         >
-          {this.src !== undefined ? (
+          {this.isLargestContentfulPaintDone && this.src !== undefined ? (
             <img
               class={{ ...image.class() }}
-              loading="lazy"
               draggable={false}
               onDragStart={() => false}
               aria-hidden="true"

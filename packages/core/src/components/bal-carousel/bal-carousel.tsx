@@ -11,7 +11,7 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { raf } from '../../utils/helpers'
+import { debounce, raf, rLCP } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
@@ -44,6 +44,7 @@ export class Carousel
   private carouselId = `bal-carousel-${CarouselIds++}`
   private carouselContainerId = `bal-carousel-${CarouselIds++}-container`
 
+  @State() isLargestContentfulPaintDone = false
   @State() isLastSlideVisible = true
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
@@ -131,6 +132,12 @@ export class Carousel
    * LIFECYCLE
    * ------------------------------------------------------
    */
+
+  componentDidLoad(): void {
+    rLCP(() => {
+      this.isLargestContentfulPaintDone = true
+    })
+  }
 
   /**
    * LISTENERS
@@ -332,11 +339,13 @@ export class Carousel
     return undefined
   }
 
-  private async itemsChanged() {
-    const activeSlide = await this.buildSlide(this.value)
-
-    if (activeSlide) {
-      this.animate(activeSlide.transformActive, false)
+  private itemsChanged = debounce(() => this.itemsChangedInternal(), 100)
+  private async itemsChangedInternal() {
+    if (this.isLargestContentfulPaintDone) {
+      const activeSlide = await this.buildSlide(this.value)
+      if (activeSlide) {
+        this.animate(activeSlide.transformActive, false)
+      }
     }
   }
 
@@ -442,7 +451,7 @@ export class Carousel
           ...block.modifier(`controls-${this.controls}`).class(),
         }}
       >
-        {this.controls === 'tabs' ? (
+        {this.isLargestContentfulPaintDone && this.controls === 'tabs' ? (
           <TabControl
             value={this.value}
             items={controlItems}
@@ -492,7 +501,7 @@ export class Carousel
           </div>
         </div>
 
-        {this.controls === 'dots' ? (
+        {this.isLargestContentfulPaintDone && this.controls === 'dots' ? (
           <DotControl
             value={this.value}
             items={controlItems}
@@ -503,7 +512,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'large' ? (
+        {this.isLargestContentfulPaintDone && this.controls === 'large' ? (
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
@@ -519,7 +528,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'small' ? (
+        {this.isLargestContentfulPaintDone && this.controls === 'small' ? (
           <SmallControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}

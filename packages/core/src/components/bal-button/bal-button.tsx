@@ -1,5 +1,17 @@
-import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
+import {
+  Component,
+  h,
+  Prop,
+  Host,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+  Listen,
+  Element,
+  State,
+} from '@stencil/core'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
+import { rLCP } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-button',
@@ -9,6 +21,8 @@ export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
 
   @Element() el!: HTMLElement
+
+  @State() isLargestContentPaintDone = false
 
   /**
    * The color to use from your application's color palette.
@@ -163,6 +177,10 @@ export class Button implements ComponentInterface {
     }
   }
 
+  componentDidLoad(): void {
+    rLCP(() => (this.isLargestContentPaintDone = true))
+  }
+
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -310,15 +328,23 @@ export class Button implements ComponentInterface {
           data-testid="bal-button"
           {...ariaAttributes}
         >
-          <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
-          <bal-icon
-            {...this.leftIconAttrs}
-            class={this.square ? '' : 'icon-left'}
-            name={this.icon}
-            size={this.square ? this.size : 'small'}
-            turn={this.iconTurn}
-            inverted={this.isIconInverted}
-          />
+          {this.isLargestContentPaintDone && this.loading ? (
+            <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
+          ) : (
+            ''
+          )}
+          {this.isLargestContentPaintDone && this.icon ? (
+            <bal-icon
+              {...this.leftIconAttrs}
+              class={this.square ? '' : 'icon-left'}
+              name={this.icon}
+              size={this.square ? this.size : 'small'}
+              turn={this.iconTurn}
+              inverted={this.isIconInverted}
+            />
+          ) : (
+            ''
+          )}
           <span
             class={{
               'button-label': true,
@@ -330,14 +356,18 @@ export class Button implements ComponentInterface {
           >
             <slot />
           </span>
-          <bal-icon
-            {...this.leftRightAttrs}
-            class="icon-right"
-            name={this.iconRight}
-            size={'small'}
-            turn={this.iconTurn}
-            inverted={this.isIconInverted}
-          />
+          {this.isLargestContentPaintDone && this.iconRight ? (
+            <bal-icon
+              {...this.leftRightAttrs}
+              class="icon-right"
+              name={this.iconRight}
+              size={'small'}
+              turn={this.iconTurn}
+              inverted={this.isIconInverted}
+            />
+          ) : (
+            ''
+          )}
         </TagType>
       </Host>
     )
