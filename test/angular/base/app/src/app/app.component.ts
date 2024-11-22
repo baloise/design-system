@@ -5,7 +5,6 @@ import { BalModalService, balImports } from '../design-system'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
-import { DatePickerComponent } from './form-components/datepicker.component'
 import { TimeComponent } from './form-components/time.component'
 import { InputStepperComponent } from './form-components/input-stepper.component'
 import { SliderComponent } from './form-components/input-slider.component'
@@ -37,7 +36,6 @@ export interface UpdateControl {
     InputComponent,
     TextareaComponent,
     NumberInputComponent,
-    DatePickerComponent,
     TimeComponent,
     InputStepperComponent,
     SliderComponent,
