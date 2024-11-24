@@ -67,7 +67,7 @@
     "@nx/web": "~18.0.4",
     "@nxkit/style-dictionary": "~5.0.0",
     "@schematics/angular": "~15.0.0",
-    "@stencil/core": "~4.22.2",
+    "@stencil/core": "~4.20.0",
     "@stencil/sass": "~3.0.12",
     "@swc-node/register": "~1.8.0",
     "@swc/cli": "~0.1.62",
