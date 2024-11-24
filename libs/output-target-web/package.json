@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "tslib": "~2.3.0",
-    "@stencil/core": "~4.18.3",
+    "@stencil/core": "4.22.3",
     "fs-extra": "11.2.0",
     "replace-in-file": "~7.1.0"
   },
