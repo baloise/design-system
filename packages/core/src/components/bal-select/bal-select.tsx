@@ -13,11 +13,9 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
-  addEventListener,
   debounce,
   deepReady,
   isDescendant,
-  removeEventListener,
   rIC,
   waitAfterIdleCallback,
 } from '../../utils/helpers'
@@ -41,7 +39,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { balBrowser } from '../../utils/browser'
+import { ListenTo } from '../../utils/listen'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -281,16 +279,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
       debounceUpdateOptions()
     })
-
-    if (balBrowser.hasDocument && balBrowser.hasWindow) {
-      addEventListener(document, 'click', this.listenOnClick, {
-        capture: true,
-      })
-      addEventListener(document, 'reset', this.resetHandler, {
-        capture: true,
-      })
-      addEventListener(window, 'keydown', this.handleKeyDown)
-    }
   }
 
   componentWillLoad() {
@@ -319,16 +307,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
-
-    if (balBrowser.hasDocument && balBrowser.hasWindow) {
-      removeEventListener(document, 'click', this.listenOnClick, {
-        capture: true,
-      })
-      removeEventListener(document, 'reset', this.resetHandler, {
-        capture: true,
-      })
-      removeEventListener(window, 'keydown', this.handleKeyDown)
-    }
   }
 
   /**
@@ -337,8 +315,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
 
   // @Listen('click', { capture: true, target: 'document' })
-  listenOnClick = (ev: UIEvent) => {
-    console.log('click')
+  @ListenTo('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
       preventDefault(ev)
     }
@@ -346,9 +324,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  // @Listen('reset', { capture: true, target: 'document' })
-  resetHandler = (ev: UIEvent) => {
-    console.log('resetHandler')
+  @ListenTo('reset', { capture: true, target: 'document' })
+  resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       if (this.resetHandlerTimer) {
@@ -368,9 +345,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     }
   }
 
-  // @Listen('keydown', { target: 'window' })
-  handleKeyDown = async (ev: KeyboardEvent) => {
-    console.log('keydown')
+  @ListenTo('keydown', { target: 'window' })
+  async handleKeyDown (ev: KeyboardEvent) {
     if (this.isPopoverOpen) {
       if (isArrowDownKey(ev) || isArrowUpKey(ev)) {
         preventDefault(ev)
