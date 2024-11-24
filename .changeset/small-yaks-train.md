@@ -1,5 +1,5 @@
 ---
-'@baloise/ds-core': patch
+'@baloise/ds-core': minor
 ---
 
-**core**: update stencil to 4.22.2
+**core**: update `stencil` to 4.18.3 for performance reasons
