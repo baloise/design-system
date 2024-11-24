@@ -3,17 +3,17 @@ import { BalConfig, initialize } from '../../generated/components'
 import { defineAllComponents } from '../../generated/components/all'
 import * as balIcons from '../../generated/icons'
 
-Cypress.on("run:start", () => {
+Cypress.on('run:start', () => {
   // Consider doing a check to ensure your adapter only runs in Component Testing mode.
-  if (Cypress.testingType !== "component") {
-    return;
+  if (Cypress.testingType !== 'component') {
+    return
   }
 
-  Cypress.on("test:before:run", () => {
+  Cypress.on('test:before:run', () => {
     // Do some cleanup from previous test - for example, clear the DOM.
-    getContainerEl().innerHTML = "";
-  });
-});
+    getContainerEl().innerHTML = ''
+  })
+})
 
 export type MountOptions<TComponent, TEventMap = any> = {
   config?: BalConfig
@@ -27,7 +27,7 @@ export function mount<TComponent, TEventMap = any>(
   options: MountOptions<TComponent, TEventMap> = {},
 ) {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const root = document.querySelector(ROOT_SELECTOR)!;
+  const root = document.querySelector(ROOT_SELECTOR)!
 
   initialize({
     animated: false,
@@ -67,7 +67,7 @@ export function mount<TComponent, TEventMap = any>(
   return (
     cy
       .waitForDesignSystem()
-      .wrap(document.querySelector("#component"), { log: false })
+      .wrap(document.querySelector('#component'), { log: false })
       .waitForComponents({ log: false })
       // set all props to the new created web component
       .then(componentEl => {

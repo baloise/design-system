@@ -20,15 +20,12 @@ describe('bal-option-list', () => {
       onBalOptionChangeSpy: onBalOptionChangeSpy,
     }
 
-    cy.mount<Components.BalOptionList>(template,
-      {
-        events: {
-          balOptionChange: onBalOptionChangeSpy,
-        },
+    cy.mount<Components.BalOptionList>(template, {
+      events: {
+        balOptionChange: onBalOptionChangeSpy,
       },
-    )
+    })
   })
-
 
   it('should select an option and emit an event', () => {
     cy.getByRole('option', { name: 'Red' }).click()
