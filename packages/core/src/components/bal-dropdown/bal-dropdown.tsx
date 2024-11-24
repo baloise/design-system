@@ -43,7 +43,8 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { waitAfterIdleCallback } from '../../utils/helpers'
+import { addEventListener, removeEventListener, waitAfterIdleCallback } from '../../utils/helpers'
+import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-dropdown',
@@ -209,11 +210,9 @@ export class Dropdown
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  areUtilsConnected = false
-
+  hasConnected = false
   connectedCallback(): void {
-    if (this.areUtilsConnected === false) {
+    if (!this.hasConnected) {
       this.eventsUtil.connectedCallback(this)
       this.valueUtil.connectedCallback(this)
       this.popupUtil.connectedCallback(this)
@@ -221,7 +220,27 @@ export class Dropdown
       this.formSubmitUtil.connectedCallback(this)
       this.focusUtil.connectedCallback(this)
       this.autoFillUtil.connectedCallback(this)
-      this.areUtilsConnected = true
+    }
+
+    addEventListener(this.el, 'balOptionChange', this.listenToOptionChange)
+
+    if (balBrowser.hasDocument) {
+      addEventListener(document, 'click', this.listenOnClickOutside)
+      addEventListener(document, 'reset', this.resetHandler, {
+        capture: true,
+      })
+    }
+
+    this.hasConnected = true
+  }
+
+  disconnectedCallback(): void {
+    removeEventListener(this.el, 'balOptionChange', this.listenToOptionChange)
+    if (balBrowser.hasDocument) {
+      removeEventListener(document, 'click', this.listenOnClickOutside)
+      removeEventListener(document, 'reset', this.resetHandler, {
+        capture: true,
+      })
     }
   }
 
@@ -254,18 +273,15 @@ export class Dropdown
     this.httpFormSubmit = state.httpFormSubmit
   }
 
-  @Listen('balOptionChange')
-  async listenToOptionChange(ev: BalEvents.BalOptionChange) {
+  listenToOptionChange = (ev: BalEvents.BalOptionChange) => {
     this.optionUtil.listenToOptionChange(ev)
   }
 
-  @Listen('click', { target: 'document' })
-  listenOnClickOutside(ev: UIEvent) {
+  listenOnClickOutside = (ev: UIEvent) => {
     this.eventsUtil.handleOutsideClick(ev)
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(ev: UIEvent) {
+  resetHandler = (ev: UIEvent) => {
     this.formSubmitUtil.handle(ev)
   }
 

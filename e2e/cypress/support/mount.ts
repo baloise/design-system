@@ -1,12 +1,19 @@
-import { getContainerEl, setupHooks } from '@cypress/mount-utils'
+import { getContainerEl, ROOT_SELECTOR, setupHooks } from '@cypress/mount-utils'
 import { BalConfig, initialize } from '../../generated/components'
 import { defineAllComponents } from '../../generated/components/all'
 import * as balIcons from '../../generated/icons'
 
-function cleanup() {
-  const elements = Array.from(document.getElementsByTagName('bal-app'))
-  elements.forEach(el => el.remove())
-}
+Cypress.on("run:start", () => {
+  // Consider doing a check to ensure your adapter only runs in Component Testing mode.
+  if (Cypress.testingType !== "component") {
+    return;
+  }
+
+  Cypress.on("test:before:run", () => {
+    // Do some cleanup from previous test - for example, clear the DOM.
+    getContainerEl().innerHTML = "";
+  });
+});
 
 export type MountOptions<TComponent, TEventMap = any> = {
   config?: BalConfig
@@ -19,11 +26,8 @@ export function mount<TComponent, TEventMap = any>(
   template: string,
   options: MountOptions<TComponent, TEventMap> = {},
 ) {
-  const root = getContainerEl()
-
-  if (root.hasChildNodes()) {
-    cleanup()
-  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const root = document.querySelector(ROOT_SELECTOR)!;
 
   initialize({
     animated: false,
@@ -34,6 +38,7 @@ export function mount<TComponent, TEventMap = any>(
     },
     ...(options.config && {}),
   })
+
   defineAllComponents()
 
   const appEl = document.createElement('bal-app')
@@ -45,6 +50,8 @@ export function mount<TComponent, TEventMap = any>(
   if (nestedComponentEl) {
     templateEl = nestedComponentEl
   }
+
+  templateEl.id = 'component'
 
   if (templateEl && options && options.props) {
     if (templateEl) {
@@ -60,7 +67,7 @@ export function mount<TComponent, TEventMap = any>(
   return (
     cy
       .waitForDesignSystem()
-      .wrap(templateEl, { log: false })
+      .wrap(document.querySelector("#component"), { log: false })
       .waitForComponents({ log: false })
       // set all props to the new created web component
       .then(componentEl => {
@@ -92,7 +99,6 @@ export function mount<TComponent, TEventMap = any>(
           }
         }
       })
-      // set event listeners
       .then(componentEl => {
         Cypress.log({
           name: 'mount',
@@ -109,4 +115,4 @@ export function mount<TComponent, TEventMap = any>(
   )
 }
 
-setupHooks(cleanup)
+setupHooks()
