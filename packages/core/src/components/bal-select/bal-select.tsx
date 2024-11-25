@@ -12,13 +12,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import {
-  debounce,
-  deepReady,
-  isDescendant,
-  rIC,
-  waitAfterIdleCallback,
-} from '../../utils/helpers'
+import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
 import { areArraysEqual } from '../../utils/array'
 import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils/keyboard'
 import {
@@ -346,7 +340,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   @ListenTo('keydown', { target: 'window' })
-  async handleKeyDown (ev: KeyboardEvent) {
+  async handleKeyDown(ev: KeyboardEvent) {
     if (this.isPopoverOpen) {
       if (isArrowDownKey(ev) || isArrowUpKey(ev)) {
         preventDefault(ev)
