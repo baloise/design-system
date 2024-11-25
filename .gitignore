@@ -59,6 +59,7 @@ packages/css/css
 packages/styles/css
 packages/styles/docs
 packages/styles/src/generated
+packages/core/playwright-report
 
 packages/favicons/CHANGELOG.md
 packages/fonts/CHANGELOG.md

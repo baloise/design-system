@@ -31,6 +31,17 @@
         "projectRoot": "{projectRoot}"
       }
     },
+    "e2e-ui": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --ui",
+        "env": {
+          "BAL_E2E": "true",
+          "STENCIL_ENTRY_PATH": "/build/baloise-design-system"
+        }
+      }
+    },
     "build": {
       "executor": "@baloise/ds-nx:build-core",
       "outputs": [

@@ -48,6 +48,7 @@
     "@angular/platform-browser": "~15.0.0",
     "@angular/platform-browser-dynamic": "~15.0.0",
     "@angular/router": "~15.0.0",
+    "@axe-core/playwright": "^4.10.0",
     "@changesets/changelog-github": "~0.5.0",
     "@changesets/cli": "~2.27.1",
     "@changesets/get-github-info": "~0.6.0",
@@ -59,6 +60,7 @@
     "@nx/eslint-plugin": "~18.0.4",
     "@nx/jest": "~18.0.4",
     "@nx/js": "~18.0.4",
+    "@nx/playwright": "^18.0.4",
     "@nx/plugin": "~18.0.4",
     "@nx/react": "~18.0.4",
     "@nx/rollup": "~18.0.4",
@@ -66,8 +68,10 @@
     "@nx/vue": "~18.0.4",
     "@nx/web": "~18.0.4",
     "@nxkit/style-dictionary": "~5.0.0",
+    "@playwright/test": "^1.49.0",
     "@schematics/angular": "~15.0.0",
     "@stencil/core": "4.22.3",
+    "@stencil/playwright": "^0.2.1",
     "@stencil/sass": "~3.0.12",
     "@swc-node/register": "~1.8.0",
     "@swc/cli": "~0.1.62",
@@ -100,6 +104,7 @@
     "eslint-config-prettier": "~9.0.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-playwright": "^0.15.3",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-vue": "~9.16.1",
@@ -141,5 +146,6 @@
     "vue-tsc": "~1.8.8",
     "zone.js": "~0.11.4"
   },
-  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330"
+  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330",
+  "dependencies": {}
 }
