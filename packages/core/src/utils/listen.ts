@@ -14,25 +14,39 @@ export function ListenTo(eventName: string, opts: ListenOptions = {}) {
   return function (target: ComponentInterface, propertyKey: string, _descriptor: PropertyDescriptor) {
     const { connectedCallback, disconnectedCallback } = target
     const { capture, passive } = opts
-
+    const options = { capture, passive }
     const callback = target[propertyKey]
+
+    /**
+     * Define const keys for binding the target
+     * and callback to the web component
+     */
     const boundPropertyKey = `__${propertyKey}Bound`
     const boundEL = `__elBound`
-    const options = { capture, passive }
 
     target.connectedCallback = function () {
       connectedCallback && connectedCallback.call(this)
 
       if (this.el) {
-        this[boundEL] = this.el
-        if (balBrowser.hasDocument && opts.target === 'document') {
+        /**
+         * Bind target element to the web component so we can
+         * add and remove the event listener
+         */
+        if (opts.target === 'document' && balBrowser.hasDocument) {
           this[boundEL] = document
-        }
-        if (balBrowser.hasWindow && opts.target === 'window') {
+        }else if (opts.target === 'window' && balBrowser.hasWindow) {
           this[boundEL] = window
+        } else {
+          this[boundEL] = this.el
         }
-
+        /**
+         * Bind event listener callback function to the web component 
+         * so we can add and remove the event listener
+         */
         this[boundPropertyKey] = callback.bind(this)
+        /**
+         * Add event listener
+         */
         if (this[boundEL] && callback) {
           addEventListener(this[boundEL], eventName, this[boundPropertyKey], options)
         }

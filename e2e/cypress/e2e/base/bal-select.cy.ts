@@ -21,7 +21,7 @@ describe('bal-select', () => {
     cy.getByTestId('select-disabled').should('be.disabled')
   })
 
-  describe.only('typeahead', () => {
+  describe('typeahead', () => {
     it('should clear select and search for the Black Widow', () => {
       cy.getByTestId('typeahead').clear().blur()
       cy.getByTestId('typeahead').type('Black{downArrow}{enter}').blur().should('have.value', 'Black Widow')
