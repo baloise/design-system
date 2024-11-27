@@ -34,13 +34,13 @@ export function ListenTo(eventName: string, opts: ListenOptions = {}) {
          */
         if (opts.target === 'document' && balBrowser.hasDocument) {
           this[boundEL] = document
-        }else if (opts.target === 'window' && balBrowser.hasWindow) {
+        } else if (opts.target === 'window' && balBrowser.hasWindow) {
           this[boundEL] = window
         } else {
           this[boundEL] = this.el
         }
         /**
-         * Bind event listener callback function to the web component 
+         * Bind event listener callback function to the web component
          * so we can add and remove the event listener
          */
         this[boundPropertyKey] = callback.bind(this)
