@@ -10,6 +10,10 @@ export interface ListenOptions {
 
 export type ListenTargetOptions = 'document' | 'window'
 
+/**
+ * This decorator replaces the @Listen from stencil since
+ * they have issue with connecting and disconnecting web-components.
+ */
 export function ListenTo(eventName: string, opts: ListenOptions = {}) {
   return function (target: ComponentInterface, propertyKey: string, _descriptor: PropertyDescriptor) {
     const { connectedCallback, disconnectedCallback } = target
