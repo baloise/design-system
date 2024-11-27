@@ -7,7 +7,6 @@ import {
   Prop,
   State,
   Watch,
-  Listen,
   Method,
   EventEmitter,
   Event,
@@ -33,6 +32,7 @@ import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavLinkItem } from './models/bal-nav-link-item'
 import { balBrowser } from '../../utils/browser'
 import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-nav',
@@ -135,7 +135,7 @@ export class Nav
    * ------------------------------------------------------
    */
 
-  @Listen('balChange')
+  @ListenTo('balChange')
   listenToPopupChanges(event: BalEvents.BalPopupChange) {
     const target = event.target
     if (target && target.nodeName === 'BAL-POPUP') {
@@ -155,7 +155,7 @@ export class Nav
     }
   }
 
-  @Listen('click', { target: 'document', passive: true })
+  @ListenTo('click', { target: 'document', passive: true })
   async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
       if (this.hasRenderedWithFlyoutActive) {

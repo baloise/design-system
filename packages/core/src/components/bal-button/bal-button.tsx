@@ -1,17 +1,7 @@
-import {
-  Component,
-  h,
-  Prop,
-  Host,
-  Event,
-  EventEmitter,
-  ComponentInterface,
-  Listen,
-  Element,
-  State,
-} from '@stencil/core'
+import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Element, State } from '@stencil/core'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rLCP } from '../../utils/helpers'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-button',
@@ -169,7 +159,7 @@ export class Button implements ComponentInterface {
    */
   @Event() balDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
       ev.preventDefault()

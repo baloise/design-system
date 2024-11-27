@@ -9,7 +9,6 @@ import {
   Event,
   EventEmitter,
   State,
-  Listen,
 } from '@stencil/core'
 import { debounce, raf, rLCP } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -28,6 +27,7 @@ import { getComputedWidth } from '../../utils/style'
 import { BalConfigState } from '../../interfaces'
 import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { i18nControlLabel } from './bal-carousel.i18n'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-carousel',
@@ -144,7 +144,7 @@ export class Carousel
    * ------------------------------------------------------
    */
 
-  @Listen('touchmove', { target: 'window', passive: false })
+  @ListenTo('touchmove', { target: 'window', passive: false })
   async blockVerticalScrolling(ev: any) {
     if (!this.scrollY && this.el?.contains(ev.target)) {
       stopEventBubbling(ev)
@@ -178,7 +178,7 @@ export class Carousel
     this.itemsChanged()
   }
 
-  @Listen('keydown')
+  @ListenTo('keydown')
   listenToKeyDown(ev: KeyboardEvent) {
     if (this.htmlRole !== 'tablist') {
       if (ev.code === 'Tab') {

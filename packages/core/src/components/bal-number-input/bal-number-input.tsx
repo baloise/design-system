@@ -6,7 +6,6 @@ import {
   EventEmitter,
   h,
   Host,
-  Listen,
   Method,
   Prop,
   State,
@@ -52,6 +51,7 @@ import {
 import isNil from 'lodash.isnil'
 import isEmpty from 'lodash.isempty'
 import isNaN from 'lodash.isnan'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-number-input',
@@ -238,14 +238,14 @@ export class NumberInput
    * ------------------------------------------------------
    */
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

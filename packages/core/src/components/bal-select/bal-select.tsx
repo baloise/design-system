@@ -67,7 +67,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     this.log = log
   }
 
-  @Element() private el!: HTMLElement
+  @Element() el!: HTMLElement
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -308,7 +308,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
-  // @Listen('click', { capture: true, target: 'document' })
   @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {

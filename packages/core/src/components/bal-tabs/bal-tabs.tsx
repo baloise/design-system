@@ -9,7 +9,6 @@ import {
   Method,
   Prop,
   Watch,
-  Listen,
   ComponentInterface,
 } from '@stencil/core'
 import { areArraysEqual } from '../../utils/array'
@@ -39,6 +38,7 @@ import { AccordionState } from '../../interfaces'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-tabs',
@@ -270,18 +270,18 @@ export class Tabs
     this.animateLine()
   }
 
-  @Listen('balWillAnimate', { target: 'window' })
+  @ListenTo('balWillAnimate', { target: 'window' })
   listenToWillAnimate(ev: UIEvent) {
     isChildOfEventTarget(ev, this.el, () => this.animateLine())
   }
 
-  @Listen('balDidAnimate', { target: 'window' })
+  @ListenTo('balDidAnimate', { target: 'window' })
   listenToDidAnimate(ev: UIEvent) {
     isChildOfEventTarget(ev, this.el, () => this.animateLine())
     this.isUsedInNavbar(ev)
   }
 
-  @Listen('keydown')
+  @ListenTo('keydown')
   listenToKeyDown(ev: KeyboardEvent) {
     if (this.isTabList) {
       if (this.vertical !== false) {

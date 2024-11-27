@@ -6,7 +6,6 @@ import {
   Prop,
   Method,
   State,
-  Listen,
   Element,
   Event,
   EventEmitter,
@@ -24,6 +23,7 @@ import { BalConfigState, ListenToConfig, defaultConfig } from '../../utils/confi
 import { BalAriaForm, BalLanguage } from '../../interfaces'
 import { debounceEvent } from '../../utils/helpers'
 import { defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-date',
@@ -234,7 +234,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
    * ------------------------------------------------------
    */
 
-  @Listen('keydown', { target: 'window' })
+  @ListenTo('keydown', { target: 'window' })
   async listenToKeydown(ev: KeyboardEvent) {
     if (this.isExpanded && (ev.key === 'Escape' || ev.key === 'Esc')) {
       ev.preventDefault()
@@ -242,7 +242,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('keyup', { target: 'window' })
+  @ListenTo('keyup', { target: 'window' })
   async listenOnKeyup(ev: KeyboardEvent) {
     // dismiss popup when focus next form control
     if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.isExpanded) {
@@ -250,7 +250,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('click', { target: 'document' })
+  @ListenTo('click', { target: 'document' })
   async listenOnclick(ev: UIEvent) {
     // when clicked outside dismiss popup
     if (this.isExpanded && !this.el.contains(ev.target as Node)) {
@@ -258,7 +258,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('balPopoverPrepare', { target: 'body' })
+  @ListenTo('balPopoverPrepare', { target: 'document' })
   async listenOnPopoverPrepare(ev: CustomEvent<string>) {
     // dismiss this popover, because another will open
     if (this.inputId !== ev.detail) {
