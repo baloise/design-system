@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-core",
-  "version": "16.8.0",
+  "version": "17.0.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@baloise/ds-styles": "16.8.0",
-    "@baloise/ds-icons": "16.8.0",
+    "@baloise/ds-styles": "17.0.0",
+    "@baloise/ds-icons": "17.0.0",
     "@baloise/web-app-utils": "3.15.0",
     "@floating-ui/dom": "~1.6.3",
     "@popperjs/core": "~2.11.4",
@@ -54,10 +54,10 @@
     "@baloise/output-target-react": "0.0.0",
     "@baloise/output-target-vue": "0.0.0",
     "@baloise/output-target-web": "0.0.0",
-    "@baloise/ds-css": "16.8.0",
-    "@baloise/ds-maps": "16.8.0",
-    "@baloise/ds-brand-icons": "16.8.0",
-    "@baloise/ds-favicons": "16.8.0"
+    "@baloise/ds-css": "17.0.0",
+    "@baloise/ds-maps": "17.0.0",
+    "@baloise/ds-brand-icons": "17.0.0",
+    "@baloise/ds-favicons": "17.0.0"
   },
   "sideEffects": false
 }
