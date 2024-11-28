@@ -1,15 +1,14 @@
 {
   "name": "e2e",
-  "version": "15.2.19",
+  "version": "15.2.20",
   "private": true,
   "scripts": {
     "postinstall": "cypress install",
     "visual-report": "npx reg-cli cypress/snapshots/actual cypress/snapshots/base/visual cypress/snapshots/diff -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
-    "@baloise/ds-core": "16.8.0",
-    "@baloise/ds-testing": "16.8.0",
-    "@baloise/web-app-utils": "3.15.0",
+    "@baloise/ds-core": "17.0.0",
+    "@baloise/ds-testing": "17.0.0",
     "@cypress/mount-utils": "^4.1.0",
     "axe-core": "~4.8.4",
     "compression": "~1.7.4",
@@ -17,7 +16,6 @@
     "cypress-axe": "~1.5.0",
     "cypress-file-upload": "~5.0.8",
     "cypress-split": "~1.18.5",
-    "date-fns": "~2.30.0",
     "express": "~4.17.1",
     "pixelmatch": "~5.3.0",
     "pngjs": "~6.0.0",

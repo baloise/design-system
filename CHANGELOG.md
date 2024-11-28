@@ -1,5 +1,43 @@
 # Changelog
 
+## 17.0.0
+
+### Major Changes
+
+- Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
+
+### Minor Changes
+
+- **list**: new bullet icon arrow down ( [#1515](https://github.com/baloise/design-system/pull/1515))
+
+- **core**: update `stencil` to 4.22.3 for performance reasons ( [#1504](https://github.com/baloise/design-system/pull/1504))
+
+- **core**: add new css helper classes .lcp-wait to hide an element until largest content paint is reached ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **styles**: provide a basic.css file without the utilities css classes to keep the css bundle small to improve performance ( [#1503](https://github.com/baloise/design-system/pull/1503))
+
+### Patch Changes
+
+- **core**: lazy load floating ui lib to improve largest content paint ( [#1516](https://github.com/baloise/design-system/pull/1516))
+
+- **core**: performanct update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
+
+- **carousel**: load images and controls after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **button**: load icons and spinner after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **icon**: load icon after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **stage**: load image after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **core**: bal-time-input: do not hide am/pm for all regions to be able to enter a valid date ( [#1512](https://github.com/baloise/design-system/pull/1512))
+
+- **tabs**: improve performace for tabs rendering ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **core**: reduce initial bundle size by removing web-app-utils ( [#1507](https://github.com/baloise/design-system/pull/1507))
+
+- **core**: set button type to prevent submitting a form with the clear of the dropdown ( [#1509](https://github.com/baloise/design-system/pull/1509))
+
 ## 16.8.0
 
 ### Minor Changes

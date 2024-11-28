@@ -1,6 +1,6 @@
 import { DateTime, Info, Settings } from 'luxon'
 import { useBalConfig } from '../config'
-import { dateSeparator } from '@baloise/web-app-utils'
+import { dateSeparator } from './date.helpers'
 
 export interface BalDateInfoOptions {
   format?: 'narrow' | 'short' | 'long'

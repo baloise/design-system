@@ -7,7 +7,6 @@ import {
   EventEmitter,
   Event,
   Method,
-  Listen,
   State,
   ComponentInterface,
 } from '@stencil/core'
@@ -15,12 +14,13 @@ import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../..
 import { isDescendant } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { isSpaceKey } from '@baloise/web-app-utils'
+import { isSpaceKey } from '../../utils/keyboard'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { ariaBooleanToString } from '../../utils/aria'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-checkbox',
@@ -203,7 +203,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * ------------------------------------------------------
    */
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (
       (this.disabled || this.readonly) &&
@@ -214,7 +214,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     }
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

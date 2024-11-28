@@ -22,6 +22,9 @@ branches:
   - label: '🔧 chore'
     prefix: chore/
     skip: false
+  - label: '⚡️ perf'
+    prefix: perf/
+    skip: false
   - label: '🚀 release'
     prefix: pre-release/
     skip: false

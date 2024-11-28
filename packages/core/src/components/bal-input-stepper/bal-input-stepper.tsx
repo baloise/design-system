@@ -8,12 +8,11 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Listen,
   Method,
   State,
 } from '@stencil/core'
 import Big from 'big.js'
-import { formatLocaleNumber } from '@baloise/web-app-utils'
+import { formatLocaleNumber } from '../../utils/number'
 import { debounceEvent, rIC } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
@@ -29,6 +28,7 @@ import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -145,12 +145,12 @@ export class InputStepper
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalInputStepperBlurDetail>
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -300,7 +300,7 @@ export class InputStepper
             }}
             data-testid="bal-input-stepper-text"
           >
-            {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
+            {formatLocaleNumber(this.value)}
           </bal-text>
           <bal-button
             aria={{

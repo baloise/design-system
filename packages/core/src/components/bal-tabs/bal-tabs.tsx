@@ -9,17 +9,18 @@ import {
   Method,
   Prop,
   Watch,
-  Listen,
   ComponentInterface,
 } from '@stencil/core'
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
 import {
+  debounce,
   debounceEvent,
   deepReady,
   hasParent,
   isChildOfEventTarget,
   isDescendant,
   raf,
+  rLCP,
   transitionEndAsync,
   waitAfterFramePaint,
 } from '../../utils/helpers'
@@ -37,6 +38,7 @@ import { AccordionState } from '../../interfaces'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-tabs',
@@ -66,6 +68,7 @@ export class Tabs
   @State() inNavbar = false
   @State() inNavbarLight = false
 
+  @State() isLargestContentfulPaintDone = false
   @State() isMobile = balBreakpoints.isMobile
   @State() isTablet = balBreakpoints.isTablet
 
@@ -237,7 +240,10 @@ export class Tabs
   }
 
   componentDidLoad() {
-    this.onOptionChange()
+    rLCP(() => {
+      this.onOptionChange()
+      this.isLargestContentfulPaintDone = true
+    })
   }
 
   /**
@@ -264,18 +270,18 @@ export class Tabs
     this.animateLine()
   }
 
-  @Listen('balWillAnimate', { target: 'window' })
+  @ListenTo('balWillAnimate', { target: 'window' })
   listenToWillAnimate(ev: UIEvent) {
     isChildOfEventTarget(ev, this.el, () => this.animateLine())
   }
 
-  @Listen('balDidAnimate', { target: 'window' })
+  @ListenTo('balDidAnimate', { target: 'window' })
   listenToDidAnimate(ev: UIEvent) {
     isChildOfEventTarget(ev, this.el, () => this.animateLine())
     this.isUsedInNavbar(ev)
   }
 
-  @Listen('keydown')
+  @ListenTo('keydown')
   listenToKeyDown(ev: KeyboardEvent) {
     if (this.isTabList) {
       if (this.vertical !== false) {
@@ -746,15 +752,19 @@ export class Tabs
    * ------------------------------------------------------
    */
 
-  private onOptionChange = async () => {
-    try {
-      const options = await this.getOptions()
-      this.updateStore(options)
-      this.setActiveItem()
-      this.setActiveContent()
-      this.animateLine()
-    } catch (e) {
-      console.warn('[WARN] - Could not read tab options')
+  private onOptionChange = debounce(() => this.onOptionChangeInternal(), 100)
+
+  private onOptionChangeInternal = async () => {
+    if (this.isLargestContentfulPaintDone) {
+      try {
+        const options = await this.getOptions()
+        this.updateStore(options)
+        this.setActiveItem()
+        this.setActiveContent()
+        this.animateLine()
+      } catch (e) {
+        console.warn('[WARN] - Could not read tab options')
+      }
     }
   }
 
@@ -798,9 +808,9 @@ export class Tabs
 
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)
     const isVertical = this.isVertical()
-    const hasCarousel = !isVertical && this.overflow && !this.expanded
+    const hasCarousel = this.isLargestContentfulPaintDone && !isVertical && this.overflow && !this.expanded
 
-    const isSelect = isMobile && this.selectOnMobile
+    const isSelect = this.isLargestContentfulPaintDone && isMobile && this.selectOnMobile
 
     const tabs = this.store.map(tab => ({ ...tab, active: tab.value === this.value }))
 

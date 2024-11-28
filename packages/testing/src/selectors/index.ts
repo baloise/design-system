@@ -139,12 +139,6 @@ export const selectors = {
      */
     text: byTestId('bal-checkbox-text'),
   },
-  datepicker: {
-    /**
-     * Native input element.
-     */
-    input: byTestId('bal-datepicker-input'),
-  },
   field: {
     /**
      * Hint element.

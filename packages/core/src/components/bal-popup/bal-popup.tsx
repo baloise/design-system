@@ -6,13 +6,12 @@ import {
   Element,
   Prop,
   State,
-  Listen,
   Watch,
   Method,
   EventEmitter,
   Event,
 } from '@stencil/core'
-import { isEscapeKey } from '@baloise/web-app-utils'
+import { isEscapeKey } from '../../utils/keyboard'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -28,6 +27,7 @@ import { debounce } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { VariantRenderer } from './variants/variant.renderer'
 import { focusableQueryString } from '../../utils/focus-visible'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-popup',
@@ -212,7 +212,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   private debouncedGlobalClick = debounce((trigger: HTMLElement) => this.notifyGlobalClick(trigger), 10)
 
-  @Listen('click', { target: 'window' })
+  @ListenTo('click', { target: 'window' })
   async listenOnGlobalClick(ev: MouseEvent): Promise<void> {
     const target = ev.target as HTMLElement
     const trigger = target.closest('[bal-popup]')
@@ -225,7 +225,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
-  @Listen('keydown', { target: 'body' })
+  @ListenTo('keydown', { target: 'document' })
   async listenOnKeyDown(ev: KeyboardEvent) {
     if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
@@ -233,17 +233,17 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
-  @Listen('mousedown')
+  @ListenTo('mousedown')
   async listenOnMouseDown(ev: MouseEvent) {
     this.isClickedOutsideOnMouseDown = this.onBackdropClick(ev)
   }
 
-  @Listen('mouseup')
+  @ListenTo('mouseup')
   async listenOnMouseUp(ev: MouseEvent) {
     this.isClickedOutsideOnMouseUp = this.onBackdropClick(ev)
   }
 
-  @Listen('click')
+  @ListenTo('click')
   async listenOnComponentClick() {
     if (
       this.presented &&

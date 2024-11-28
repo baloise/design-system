@@ -1,7 +1,8 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { balBrowser } from '../../../utils/browser'
+import { ListenTo } from 'packages/core/src/utils/listen'
 
 @Component({
   tag: 'bal-nav-meta-bar',
@@ -52,7 +53,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('scroll', { target: 'window', passive: true })
+  @ListenTo('scroll', { target: 'window', passive: true })
   handleScroll() {
     if (balBrowser.hasWindow && balBrowser.hasDocument && this.position === 'sticky-top') {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight

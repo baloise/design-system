@@ -9,20 +9,12 @@ import {
   Event,
   Method,
   Element,
-  Listen,
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
-import {
-  areArraysEqual,
-  isArrowDownKey,
-  isArrowUpKey,
-  isEnterKey,
-  isEscapeKey,
-  isSpaceKey,
-  isBackspaceKey,
-} from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
+import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils/keyboard'
 import {
   addValue,
   findLabelByValue,
@@ -41,6 +33,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ListenTo } from '../../utils/listen'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -74,7 +67,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     this.log = log
   }
 
-  @Element() private el!: HTMLElement
+  @Element() el!: HTMLElement
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -315,7 +308,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
       preventDefault(ev)
@@ -324,7 +317,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -345,7 +338,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     }
   }
 
-  @Listen('keydown', { target: 'window' })
+  @ListenTo('keydown', { target: 'window' })
   async handleKeyDown(ev: KeyboardEvent) {
     if (this.isPopoverOpen) {
       if (isArrowDownKey(ev) || isArrowUpKey(ev)) {

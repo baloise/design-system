@@ -854,106 +854,6 @@ export namespace Components {
         "today": boolean;
         "year"?: number;
     }
-    interface BalDatepicker {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates": BalProps.BalDatepickerCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Closes the popover
-         */
-        "close": () => Promise<void>;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading": boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Opens the popover
-         */
-        "open": () => Promise<void>;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required": boolean;
-        /**
-          * Selects an option
-         */
-        "select": (dateString: string) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon": boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
     interface BalDivider {
         /**
           * Defines the color of the separator line.
@@ -1297,6 +1197,10 @@ export namespace Components {
         "showSocialMedia": boolean;
     }
     interface BalForm {
+        /**
+          * The css class for the inner form element
+         */
+        "formClass": string;
         /**
           * If `true` a native form element is added as a wrapper of the slot.
          */
@@ -3618,10 +3522,6 @@ export interface BalDateCalendarCellCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDateCalendarCellElement;
 }
-export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDatepickerElement;
-}
 export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDropdownElement;
@@ -4062,28 +3962,6 @@ declare global {
     var HTMLBalDateCalendarCellElement: {
         prototype: HTMLBalDateCalendarCellElement;
         new (): HTMLBalDateCalendarCellElement;
-    };
-    interface HTMLBalDatepickerElementEventMap {
-        "balChange": BalEvents.BalDatepickerChangeDetail;
-        "balInput": BalEvents.BalDatepickerInputDetail;
-        "balBlur": BalEvents.BalDatepickerBlurDetail;
-        "balFocus": BalEvents.BalDatepickerFocusDetail;
-        "balInputClick": BalEvents.BalDatepickerInputClickDetail;
-        "balIconClick": BalEvents.BalDatepickerIconClickDetail;
-    }
-    interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDatepickerElement: {
-        prototype: HTMLBalDatepickerElement;
-        new (): HTMLBalDatepickerElement;
     };
     interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
     }
@@ -5072,7 +4950,6 @@ declare global {
         "bal-date": HTMLBalDateElement;
         "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
-        "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -6038,104 +5915,6 @@ declare namespace LocalJSX {
         "today"?: boolean;
         "year"?: number;
     }
-    interface BalDatepicker {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates"?: BalProps.BalDatepickerCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading"?: boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerBlurDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerFocusDetail>) => void;
-        /**
-          * Emitted when the icon has clicked.
-         */
-        "onBalIconClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerIconClickDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalInputClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputClickDetail>) => void;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required"?: boolean;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon"?: boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
     interface BalDivider {
         /**
           * Defines the color of the separator line.
@@ -6478,6 +6257,10 @@ declare namespace LocalJSX {
         "showSocialMedia"?: boolean;
     }
     interface BalForm {
+        /**
+          * The css class for the inner form element
+         */
+        "formClass"?: string;
         /**
           * If `true` a native form element is added as a wrapper of the slot.
          */
@@ -8791,7 +8574,6 @@ declare namespace LocalJSX {
         "bal-date": BalDate;
         "bal-date-calendar": BalDateCalendar;
         "bal-date-calendar-cell": BalDateCalendarCell;
-        "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
         "bal-dropdown": BalDropdown;
@@ -8915,7 +8697,6 @@ declare module "@stencil/core" {
             "bal-date": LocalJSX.BalDate & JSXBase.HTMLAttributes<HTMLBalDateElement>;
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
-            "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

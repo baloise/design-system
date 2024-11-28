@@ -6,14 +6,12 @@ import {
   Prop,
   Method,
   State,
-  Listen,
   Element,
   Event,
   EventEmitter,
   Watch,
 } from '@stencil/core'
-import { isSpaceKey } from '@baloise/web-app-utils'
-import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom'
+import { isSpaceKey } from '../../utils/keyboard'
 import { i18nBalDate } from './bal-date.i18n'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
@@ -24,6 +22,8 @@ import { BalConfigState, ListenToConfig, defaultConfig } from '../../utils/confi
 import { BalAriaForm, BalLanguage } from '../../interfaces'
 import { debounceEvent } from '../../utils/helpers'
 import { defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
+import { balFloatingUi } from '../../utils/floating-ui'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-date',
@@ -234,7 +234,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
    * ------------------------------------------------------
    */
 
-  @Listen('keydown', { target: 'window' })
+  @ListenTo('keydown', { target: 'window' })
   async listenToKeydown(ev: KeyboardEvent) {
     if (this.isExpanded && (ev.key === 'Escape' || ev.key === 'Esc')) {
       ev.preventDefault()
@@ -242,7 +242,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('keyup', { target: 'window' })
+  @ListenTo('keyup', { target: 'window' })
   async listenOnKeyup(ev: KeyboardEvent) {
     // dismiss popup when focus next form control
     if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.isExpanded) {
@@ -250,7 +250,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('click', { target: 'document' })
+  @ListenTo('click', { target: 'document' })
   async listenOnclick(ev: UIEvent) {
     // when clicked outside dismiss popup
     if (this.isExpanded && !this.el.contains(ev.target as Node)) {
@@ -258,7 +258,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('balPopoverPrepare', { target: 'body' })
+  @ListenTo('balPopoverPrepare', { target: 'document' })
   async listenOnPopoverPrepare(ev: CustomEvent<string>) {
     // dismiss this popover, because another will open
     if (this.inputId !== ev.detail) {
@@ -363,10 +363,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
 
   private async expand(): Promise<boolean> {
     if (this.referenceEl && this.floatingEl) {
+      const lib = await balFloatingUi.load()
       this.balPopoverPrepare.emit(this.inputId)
       this.balWillAnimate.emit()
       this.isExpanded = true
-      this.popupCleanup = autoUpdate(this.referenceEl, this.floatingEl, () => {
+      this.popupCleanup = lib.autoUpdate(this.referenceEl, this.floatingEl, () => {
         this.updatePosition(this.referenceEl as HTMLElement, this.floatingEl as HTMLElement)
       })
     }
@@ -386,17 +387,20 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     return this.isExpanded
   }
 
-  private updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
-    computePosition(referenceEl, floatingEl, {
-      placement: 'bottom-start',
-      middleware: [offset(4), flip({ crossAxis: false })],
-    }).then(({ x, y }) => {
-      Object.assign(floatingEl.style, {
-        left: `${x}px`,
-        top: `${y}px`,
+  private async updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
+    const lib = await balFloatingUi.load()
+    lib
+      .computePosition(referenceEl, floatingEl, {
+        placement: 'bottom-start',
+        middleware: [lib.offset(4), lib.flip({ crossAxis: false })],
       })
-      this.balDidAnimate.emit()
-    })
+      .then(({ x, y }) => {
+        Object.assign(floatingEl.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        })
+        this.balDidAnimate.emit()
+      })
   }
 
   /**

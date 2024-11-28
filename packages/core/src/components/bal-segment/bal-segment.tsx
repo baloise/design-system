@@ -9,7 +9,6 @@ import {
   EventEmitter,
   Watch,
   State,
-  Listen,
   writeTask,
   Method,
 } from '@stencil/core'
@@ -25,7 +24,7 @@ import {
   isArrowLeftKey,
   isArrowRightKey,
   isEnterKey,
-} from '@baloise/web-app-utils'
+} from '../../utils/keyboard'
 import { stopEventBubbling } from '../../utils/form-input'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'
@@ -34,6 +33,7 @@ import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-segment',
@@ -198,12 +198,12 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
   }
 
-  @Listen('keydown', { target: 'document' })
+  @ListenTo('keydown', { target: 'document' })
   listenOnKeyDownOutside() {
     this.keyboardMode = true
   }
 
-  @Listen('keydown')
+  @ListenTo('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
     let forceChange = false

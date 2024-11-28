@@ -109,6 +109,7 @@ async function copyResources(config: Config, outputTarget: OutputTargetVue) {
         dest: destDirectory,
         keepDirStructure: false,
         warn: false,
+        ignore: [],
       },
     ],
     srcDirectory,

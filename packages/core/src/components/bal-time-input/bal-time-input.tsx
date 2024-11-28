@@ -5,7 +5,6 @@ import {
   Event,
   h,
   Host,
-  Listen,
   Method,
   State,
   Prop,
@@ -40,6 +39,7 @@ import { BEM } from '../../utils/bem'
 import { i18nBalTimeInput } from './bal-time-input.i18n'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-time-input',
@@ -143,14 +143,14 @@ export class TimeInput
    */
   @Event() balClick!: EventEmitter<BalEvents.BalTimeInputClickDetail>
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -221,7 +221,7 @@ export class TimeInput
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, ':']
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ':', 'A', 'M', 'P']
   }
 
   private getRawValue(): string {

@@ -5,7 +5,6 @@ import {
   Host,
   Element,
   Prop,
-  Listen,
   Event,
   EventEmitter,
   Method,
@@ -18,6 +17,7 @@ import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } f
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
 import { BalOption } from '../../utils/dropdown'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-option',
@@ -114,7 +114,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
    * ------------------------------------------------------
    */
 
-  @Listen('mouseenter')
+  @ListenTo('mouseenter')
   listenToMouseEnter() {
     const { label, value, selected, disabled, hidden } = this
     if (!hidden && !disabled) {

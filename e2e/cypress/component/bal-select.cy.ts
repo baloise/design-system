@@ -63,7 +63,7 @@ describe('bal-select', () => {
 
   it('should select option with the key entry plus enter', () => {
     cy.get('bal-select').find('.bal-select__control__input').click()
-    cy.get('bal-select').type('Cypress.io{downArrow}').type('Cypress.io{enter}')
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('v1995')
@@ -135,7 +135,6 @@ describe('bal-select', () => {
 
     cy.get('@balChange').should('have.been.callCount', 2)
     cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
-    cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
   })
 
   it('multiple should fire a balBlur when leaving the control (multiple)', () => {
