@@ -9,7 +9,6 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Listen,
   Method,
   State,
 } from '@stencil/core'
@@ -22,6 +21,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { ListenTo } from 'packages/core/src/utils/listen'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -268,7 +268,7 @@ export class CheckboxGroup
     this.onOptionChange()
   }
 
-  @Listen('balChange', { capture: true, target: 'document' })
+  @ListenTo('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.control) {
       if (isDescendant(this.el, ev.target as HTMLElement)) {
@@ -277,7 +277,7 @@ export class CheckboxGroup
     }
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -288,7 +288,7 @@ export class CheckboxGroup
     }
   }
 
-  @Listen('balFocus', { capture: true, target: 'document' })
+  @ListenTo('balFocus', { capture: true, target: 'document' })
   checkboxFocusListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
@@ -296,7 +296,7 @@ export class CheckboxGroup
     }
   }
 
-  @Listen('balBlur', { capture: true, target: 'document' })
+  @ListenTo('balBlur', { capture: true, target: 'document' })
   checkboxBlurListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {

@@ -10,7 +10,6 @@ import {
   Method,
   State,
   Watch,
-  Listen,
 } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -21,6 +20,7 @@ import { hasParent } from '../../../utils/helpers'
 import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
 import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { ListenTo } from 'packages/core/src/utils/listen'
 
 @Component({
   tag: 'bal-input-date',
@@ -197,12 +197,12 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
     this.maskAdapter.bindConfigChanged(config)
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     this.maskAdapter.bindFormReset(event)
   }
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(event: MouseEvent) {
     this.maskAdapter.bindGlobalClick(event)
   }

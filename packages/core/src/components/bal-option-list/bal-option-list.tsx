@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, Listen, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, State } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -7,6 +7,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { includes, startsWith } from '../bal-select/utils/utils'
 import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 import { BalOption } from '../../utils/dropdown'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-option-list',
@@ -94,7 +95,7 @@ export class OptionList implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('balOptionFocus', { passive: true })
+  @ListenTo('balOptionFocus', { passive: true })
   listenToMouseEnter(ev: BalEvents.BalOptionFocus) {
     const options = this.options
     const indexToFocus = this.getOptionIndex(options, ev.detail.value)
@@ -103,7 +104,7 @@ export class OptionList implements ComponentInterface, Loggable {
     }
   }
 
-  @Listen('balOptionChange', { passive: false })
+  @ListenTo('balOptionChange', { passive: false })
   listenToOptionChange({ detail }: BalEvents.BalOptionFocus) {
     if (!this.multiple) {
       this.options.filter(option => option.value !== detail.value).forEach(option => (option.selected = false))

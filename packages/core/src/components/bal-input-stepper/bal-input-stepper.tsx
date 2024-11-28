@@ -8,7 +8,6 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Listen,
   Method,
   State,
 } from '@stencil/core'
@@ -29,6 +28,7 @@ import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -145,12 +145,12 @@ export class InputStepper
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalInputStepperBlurDetail>
 
-  @Listen('click', { capture: true, target: 'document' })
+  @ListenTo('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

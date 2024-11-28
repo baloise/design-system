@@ -1,8 +1,6 @@
 ---
-"@baloise/ds-testing": major
-"@baloise/ds-core": major
-"docs": major
-"e2e": major
+'@baloise/ds-testing': major
+'@baloise/ds-core': major
 ---
 
-Removed deprecated component bal-datepicker for performance reasons
+Removed deprecated component `bal-datepicker` for performance reasons

@@ -103,27 +103,27 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-          dest: 'assets',
+          dest: 'assets/compact.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
-          dest: 'assets',
+          dest: 'assets/baloise-design-system.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'styles', 'css', 'all.css'),
-          dest: 'assets',
+          dest: 'assets/all.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets',
+          dest: 'assets/basic.min.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
-          dest: 'assets/maps',
+          dest: 'assets/maps.js',
           warn: true,
         },
         {
