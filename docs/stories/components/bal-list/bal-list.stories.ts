@@ -110,6 +110,10 @@ export const NativeList = Story({
     <li class="opacity-50">Close List Item 1</li>
     <li class="opacity-50">Close List Item 2</li>
   </ul>
+  <ul class="list has-bullet-arrow-down">
+    <li>Arrow Down List Item 1</li>
+    <li>Arrow Down List Item 2</li>
+  </ul>
   <ul class="list has-bullets">
     <li class="has-bullet-check">Checked List Item 1</li>
     <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>

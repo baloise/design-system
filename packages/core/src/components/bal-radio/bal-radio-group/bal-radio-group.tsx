@@ -8,7 +8,6 @@ import {
   Event,
   Watch,
   ComponentInterface,
-  Listen,
   Method,
   State,
 } from '@stencil/core'
@@ -21,6 +20,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { ListenTo } from 'packages/core/src/utils/listen'
 
 @Component({
   tag: 'bal-radio-group',
@@ -253,14 +253,14 @@ export class RadioGroup
     this.onOptionChange()
   }
 
-  @Listen('balChange', { capture: true, target: 'document' })
+  @ListenTo('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (isDescendant(this.el, ev.target as HTMLElement)) {
       stopEventBubbling(ev)
     }
   }
 
-  @Listen('balFocus', { capture: true, target: 'document' })
+  @ListenTo('balFocus', { capture: true, target: 'document' })
   radioFocusListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
@@ -268,7 +268,7 @@ export class RadioGroup
     }
   }
 
-  @Listen('balBlur', { capture: true, target: 'document' })
+  @ListenTo('balBlur', { capture: true, target: 'document' })
   radioBlurListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
@@ -276,7 +276,7 @@ export class RadioGroup
     }
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @ListenTo('reset', { capture: true, target: 'document' })
   resetListener(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -284,7 +284,7 @@ export class RadioGroup
     }
   }
 
-  @Listen('keydown', { target: 'document' })
+  @ListenTo('keydown', { target: 'document' })
   onKeydown(ev: any) {
     if (ev.target && !this.el.contains(ev.target)) {
       return

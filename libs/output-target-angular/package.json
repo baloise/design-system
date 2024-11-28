@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@stencil/core": "~4.22.2",
+    "@stencil/core": "4.22.3",
     "tslib": "~2.3.0"
   },
   "type": "commonjs",
