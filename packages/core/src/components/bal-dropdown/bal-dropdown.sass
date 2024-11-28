@@ -17,7 +17,8 @@
   border-color: var(--bal-dropdown-control-border-color)
   border-radius: var(--bal-dropdown-control-border-radius)
   background: var(--bal-dropdown-control-background)
-  font-size: var(--bal-weight-regular)
+  font-weight: var(--bal-font-weight-regular)
+  font-size: var(--bal-text-size-normal)
   font-family: var(--bal-font-family-text)
   color: var(--bal-dropdown-control-text-color)
   outline: none
@@ -59,6 +60,11 @@
     &--disabled
       color: var(--bal-dropdown-input-text-color-disabled)
 
+.bal-dropdown__root:not(.bal-dropdown__root--disabled):not(.bal-dropdown__root--invalid):not(.bal-dropdown__root--theme-purple):not(.bal-dropdown__root--theme-purple-expanded)
+  +hover
+    &:hover
+      background: var(--bal-dropdown-control-background-hover)
+
 .bal-dropdown__root__content__chips
   --bal-tag-size-small-font-size: var(--bal-text-size-normal)
   display: flex
@@ -68,6 +74,78 @@
   padding-bottom: var(--bal-space-x-small)
   & > bal-tag
     z-index: 1
+
+// Theme Purple & Small Size
+// --------------------------------------------------
+
+.bal-dropdown__root--size-small
+  min-height: 2rem
+
+.bal-dropdown__root--theme-purple:not(.bal-dropdown__root--theme-purple-expanded)
+  border: none
+  background: var(--bal-color-background-grey-light)
+  +hover
+    &:hover
+      background: var(--bal-color-purple-1)
+      .bal-dropdown__root__input,
+      .bal-dropdown__root__content
+        color: var(--bal-color-text-primary)
+      .bal-icon__inner
+        +fillSvg(var(--bal-color-text-primary))
+    &:active
+      background: var(--bal-color-purple-2)
+      .bal-dropdown__root__input,
+      .bal-dropdown__root__content
+        color: var(--bal-color-text-primary)
+      .bal-icon__inner
+        +fillSvg(var(--bal-color-text-primary))
+
+.bal-dropdown__root--theme-purple-filled:not(.bal-dropdown__root--theme-purple-expanded)
+  border: none
+  background: var(--bal-color-purple-2)
+  +hover
+    &:hover
+      background: var(--bal-color-purple-3)
+      .bal-dropdown__root__input,
+      .bal-dropdown__root__content
+        color: var(--bal-color-text-primary-pressed)
+      .bal-icon__inner
+        +fillSvg(var(--bal-color-text-primary-pressed))
+    &:active
+      background: var(--bal-color-purple-3)
+      .bal-dropdown__root__input,
+      .bal-dropdown__root__content
+        color: var(--bal-color-text-primary)
+      .bal-icon__inner
+        +fillSvg(var(--bal-color-text-primary))
+
+.bal-dropdown__root--theme-purple-expanded,
+.bal-dropdown__root--theme-purple-expanded:hover,
+.bal-dropdown__root--theme-purple-expanded:active
+  border: none
+  background: var(--bal-color-purple-2)
+  .bal-dropdown__root__input,
+  .bal-dropdown__root__content
+    color: var(--bal-color-text-primary)
+  .bal-icon__inner
+    +fillSvg(var(--bal-color-text-primary))
+
+.bal-dropdown__root--focused.bal-dropdown__root--theme-purple:before
+  content: ''
+  border-width: var(--bal-border-width-normal)
+  border-style: solid
+  border-color: var(--bal-focus-shadow)
+  position: absolute
+  background: transparent
+  border-radius: var(--bal-radius-normal)
+  top: -0.25rem
+  bottom: -0.25rem
+  left: -0.25rem
+  right: -0.25rem
+
+.bal-dropdown__root__content--size-small
+  font-size: var(--bal-text-size-small)
+  font-weight: var(--bal-font-weight-bold)
 
 // Native form controls
 // --------------------------------------------------
@@ -142,6 +220,19 @@
   justify-content: center
   align-items: center
   cursor: pointer
+  &--theme-purple
+    height: 2rem
+    width: 2rem
+    border-top-right-radius: 2px
+    border-bottom-right-radius: 2px
+    margin-right: -10px
+    &::before
+      content: ''
+      position: absolute
+      right: 32px
+      background: var(--bal-color-white)
+      width: 2px
+      height: 100%
 
 // Dropdown rear icon loading clear element
 // --------------------------------------------------

@@ -87,6 +87,7 @@ export class DropdownOptionUtil {
       this.component.popupUtil.collapseList()
       if (this.component.hasFocus) {
         this.component.balBlur.emit(new FocusEvent('blur', { relatedTarget: this.component.el }))
+        this.component.hasFocus = false
       }
     }
   }

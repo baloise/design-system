@@ -7,7 +7,6 @@ import {
   Prop,
   State,
   Watch,
-  Listen,
   Event,
   EventEmitter,
   Method,
@@ -70,6 +69,7 @@ export class Dropdown
   @State() hasFocus = false
   @State() isExpanded = false
   @State() isAutoFilled = false
+  @State() isKeyboardMode = false
   @State() inputLabel = ''
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
   @State() language: BalLanguage = defaultConfig.language
@@ -113,9 +113,24 @@ export class Dropdown
   @Prop() placeholder = ''
 
   /**
+   * Defines a inline label to be shown before the value
+   */
+  @Prop() inlineLabel = ''
+
+  /**
    * If `true` there will be on trigger icon visible
    */
   @Prop() icon = 'caret-down'
+
+  /**
+   * Defines the size of the control.
+   */
+  @Prop() size: BalProps.BalDropdownSize = ''
+
+  /**
+   * Defines the color style of the control
+   */
+  @Prop() theme: BalProps.BalDropdownTheme = ''
 
   /**
    * If `true`, the user cannot interact with the option.
@@ -225,6 +240,9 @@ export class Dropdown
     addEventListener(this.el, 'balOptionChange', this.listenToOptionChange)
 
     if (balBrowser.hasDocument) {
+      addEventListener(document, 'keydown', this.eventsUtil.handleKeydown)
+      addEventListener(document, 'touchstart', this.eventsUtil.handlePointerDown)
+      addEventListener(document, 'mousedown', this.eventsUtil.handlePointerDown)
       addEventListener(document, 'click', this.listenOnClickOutside)
       addEventListener(document, 'reset', this.resetHandler, {
         capture: true,
@@ -236,7 +254,11 @@ export class Dropdown
 
   disconnectedCallback(): void {
     removeEventListener(this.el, 'balOptionChange', this.listenToOptionChange)
+
     if (balBrowser.hasDocument) {
+      removeEventListener(document, 'keydown', this.eventsUtil.handleKeydown)
+      removeEventListener(document, 'touchstart', this.eventsUtil.handlePointerDown)
+      removeEventListener(document, 'mousedown', this.eventsUtil.handlePointerDown)
       removeEventListener(document, 'click', this.listenOnClickOutside)
       removeEventListener(document, 'reset', this.resetHandler, {
         capture: true,
@@ -437,15 +459,36 @@ export class Dropdown
   render() {
     const block = BEM.block('dropdown')
 
+    const isFilled = this.valueUtil.isFilled()
+
+    const hasSize = this.size !== ''
+    const size = `size-${this.size}`
+
+    const hasTheme = this.theme !== ''
+    const theme = `theme-${this.theme}`
+
     return (
       <Host class={{ ...block.class() }} tabindex="-1" id={`${this.inputId}`}>
         <div
           class={{
             ...block.element('root').class(),
-            ...block.element('root').modifier('focused').class(this.hasFocus),
+            ...block
+              .element('root')
+              .modifier('focused')
+              .class(this.hasFocus && this.isKeyboardMode),
             ...block.element('root').modifier('invalid').class(this.invalid),
             ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
+            ...block.element('root').modifier(size).class(hasSize),
+            ...block.element('root').modifier(theme).class(hasTheme),
+            ...block
+              .element('root')
+              .modifier(theme + '-filled')
+              .class(isFilled && hasTheme),
+            ...block
+              .element('root')
+              .modifier(theme + '-expanded')
+              .class(this.isExpanded && hasTheme),
           }}
           data-test="bal-dropdown-trigger"
           onClick={ev => this.eventsUtil.handleClick(ev)}
@@ -455,10 +498,12 @@ export class Dropdown
               ...block.element('root').element('content').class(),
               ...block.element('root').element('content').modifier('disabled').class(this.valueUtil.isDisabled()),
               ...block.element('root').element('content').modifier('placeholder').class(!this.valueUtil.isFilled()),
+              ...block.element('root').element('content').modifier(size).class(hasSize),
             }}
           >
             <DropdownValue
               filled={this.valueUtil.isFilled()}
+              inlineLabel={this.inlineLabel}
               chips={this.chips}
               placeholder={this.placeholder}
               choices={this.choices}
@@ -501,12 +546,14 @@ export class Dropdown
           ></DropdownNativeSelect>
           <DropdownIcon
             icon={this.icon}
+            size={this.size}
+            theme={this.theme}
             language={this.language}
             loading={this.loading}
             clearable={this.clearable}
             invalid={this.invalid}
             expanded={this.isExpanded}
-            filled={this.valueUtil.isFilled()}
+            filled={isFilled}
             disabled={this.valueUtil.isDisabled()}
           ></DropdownIcon>
         </div>

@@ -22,6 +22,7 @@ export type DropdownComponent = DropdownFocus & {
   hasFocus: boolean
   isExpanded: boolean
   isAutoFilled: boolean
+  isKeyboardMode: boolean
   inputLabel: string
 
   nativeOptions: string[]

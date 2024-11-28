@@ -1,3 +1,4 @@
+import { FOCUS_KEYS } from '../focus-visible'
 import { rIC } from '../helpers'
 import { DropdownComponent } from './component'
 
@@ -11,6 +12,14 @@ export class DropdownEventsUtil {
 
   connectedCallback(component: DropdownComponent) {
     this.component = component
+  }
+
+  handlePointerDown = () => {
+    this.component.isKeyboardMode = false
+  }
+
+  handleKeydown = (ev: any) => {
+    this.component.isKeyboardMode = FOCUS_KEYS.includes(ev.key)
   }
 
   handleFocus(ev: FocusEvent) {
@@ -48,7 +57,6 @@ export class DropdownEventsUtil {
     }
   }
 
-  // @Listen('click', { target: 'document' })
   handleOutsideClick(ev: UIEvent) {
     if (this.component.isExpanded) {
       if (!this.component.el.contains(ev.target as Node)) {
