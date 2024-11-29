@@ -77,12 +77,12 @@ export class TabItem {
   /**
    * Sublabel for the tab.
    */
-  @Prop({ reflect: true }) sublabel = ''
+  @Prop({ reflect: true }) subLabel = ''
 
   /**
    * source for the svg icon
    */
-  @Prop({ reflect: true }) svg = ''
+  @Prop() svg = ''
 
   /**
    * Emitted when the link element has clicked
@@ -127,7 +127,7 @@ export class TabItem {
       trackingData: this.inheritAttributes,
       noPanel: this.noPanel,
       aria: this.aria,
-      sublabel: this.sublabel,
+      subLabel: this.subLabel,
       svg: this.svg,
     }
   }

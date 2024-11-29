@@ -3122,7 +3122,7 @@ export namespace Components {
         /**
           * Sublabel for the tab.
          */
-        "sublabel": string;
+        "subLabel": string;
         /**
           * source for the svg icon
          */
@@ -3165,6 +3165,10 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements": boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -3214,14 +3218,6 @@ export namespace Components {
           * If `true` the tabs container does not have a padding left or right.
          */
         "spaceless": boolean;
-        /**
-          * If provided, displays a subtitle below the tab label
-         */
-        "sublabel"?: string;
-        /**
-          * Custom SVG icon to be displayed instead of the default icon
-         */
-        "svg"?: string;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -8183,7 +8179,7 @@ declare namespace LocalJSX {
         /**
           * Sublabel for the tab.
          */
-        "sublabel"?: string;
+        "subLabel"?: string;
         /**
           * source for the svg icon
          */
@@ -8224,6 +8220,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements"?: boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -8276,14 +8276,6 @@ declare namespace LocalJSX {
           * If `true` the tabs container does not have a padding left or right.
          */
         "spaceless"?: boolean;
-        /**
-          * If provided, displays a subtitle below the tab label
-         */
-        "sublabel"?: string;
-        /**
-          * Custom SVG icon to be displayed instead of the default icon
-         */
-        "svg"?: string;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.

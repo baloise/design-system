@@ -36,11 +36,7 @@ export const TabIcon: FunctionalComponent<TabIconProps> = ({
       }}
     >
       {item.svg ? (
-        <bal-icon
-          svg={item.svg}
-          size='large'
-          color="auto"
-        ></bal-icon>
+        <bal-icon svg={item.svg} size="large" color="auto"></bal-icon>
       ) : (
         <bal-icon
           size={isMobile || accordion ? 'small' : ''}

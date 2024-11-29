@@ -28,9 +28,7 @@ export const TabLabel: FunctionalComponent<TabLabelProps> = ({ item, inverted, h
       data-testid="bal-tabs-item-label"
     >
       {item.label}
-      {item.sublabel && (
-        <span class={bemEl.element('sublabel').class()}>{item.sublabel}</span>
-      )}
+      {item.subLabel && <span class={bemEl.element('sub-label').class()}>{item.subLabel}</span>}
       {hasBubble ? (
         <bal-badge class={{ ...bemEl.element('bubble').class() }} size="small">
           {item.bubble}

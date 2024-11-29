@@ -187,14 +187,9 @@ export class Tabs
   @Prop({ mutable: true }) value?: string = undefined
 
   /**
-   * If provided, displays a subtitle below the tab label
+   * if true, inactive elements will have their opacity reduced
    */
-  @Prop() sublabel?: string
-
-  /**
-   * Custom SVG icon to be displayed instead of the default icon
-   */
-  @Prop() svg?: string
+  @Prop() dimInactiveElements = false
 
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
@@ -879,6 +874,7 @@ export class Tabs
             iconPosition={this.iconPosition}
             verticalColSize={this.verticalColSize}
             onSelectTab={this.onSelectTab}
+            dimInactiveElements={this.dimInactiveElements}
           ></TabNav>
         )}
         <div

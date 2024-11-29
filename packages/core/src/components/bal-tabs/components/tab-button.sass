@@ -25,12 +25,15 @@
   background-color: transparent
   border: unset
 
-  &--group-has-sublabel
+  &--group-has-sub-label
     +mobile
       height: 5rem
 
   &--display-svg
     flex-direction: row
+
+  &--dim-inactive-elements:not(&--active)
+    opacity: 0.6
 
   +mobile
     &--display-svg
