@@ -4,7 +4,8 @@
 // --------------------------------------------------
 
 .bal-tabs__nav__item__label
-  display: block
+  display: flex
+  flex-direction: column
   position: relative
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-font-weight-bold)
@@ -14,6 +15,25 @@
   hyphens: auto
   white-space: nowrap
   user-select: none
+  +mobile
+    .bal-tabs__nav__item:not(.bal-tabs__nav__item--active) &
+      position: absolute
+      width: 1px
+      height: 1px
+      padding: 0
+      margin: -1px
+      overflow: hidden
+      white-space: nowrap
+      border: 0
+      background-color: #0b5227
+
+  // Subtitle styling
+  &__subtitle
+    font-size: var(--bal-text-size-small)
+    font-family: var(--bal-font-family-text)
+    line-height: var(--bal-text-size-small)
+    font-weight: var(--bal-font-weight-bold)
+    white-space: nowrap
   //
   // Color status
   color: var(--bal-tabs-tab-label-text-color)
@@ -46,3 +66,6 @@
   // context styles
   &--context-meta
     font-size: var(--bal-text-size-small)
+
+  &--left-aligned
+    text-align: left

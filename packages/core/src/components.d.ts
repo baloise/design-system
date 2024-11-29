@@ -3120,6 +3120,14 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
+          * Sublabel for the tab.
+         */
+        "sublabel": string;
+        /**
+          * source for the svg icon
+         */
+        "svg": string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
@@ -3206,6 +3214,14 @@ export namespace Components {
           * If `true` the tabs container does not have a padding left or right.
          */
         "spaceless": boolean;
+        /**
+          * If provided, displays a subtitle below the tab label
+         */
+        "sublabel"?: string;
+        /**
+          * Custom SVG icon to be displayed instead of the default icon
+         */
+        "svg"?: string;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -8165,6 +8181,14 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
+          * Sublabel for the tab.
+         */
+        "sublabel"?: string;
+        /**
+          * source for the svg icon
+         */
+        "svg"?: string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: BalProps.BalButtonTarget;
@@ -8252,6 +8276,14 @@ declare namespace LocalJSX {
           * If `true` the tabs container does not have a padding left or right.
          */
         "spaceless"?: boolean;
+        /**
+          * If provided, displays a subtitle below the tab label
+         */
+        "sublabel"?: string;
+        /**
+          * Custom SVG icon to be displayed instead of the default icon
+         */
+        "svg"?: string;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.

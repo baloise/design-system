@@ -186,6 +186,16 @@ export class Tabs
 
   @Prop({ mutable: true }) value?: string = undefined
 
+  /**
+   * If provided, displays a subtitle below the tab label
+   */
+  @Prop() sublabel?: string
+
+  /**
+   * Custom SVG icon to be displayed instead of the default icon
+   */
+  @Prop() svg?: string
+
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
     if (newValue !== oldValue) {

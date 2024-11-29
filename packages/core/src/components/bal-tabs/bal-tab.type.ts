@@ -21,6 +21,8 @@ export interface BalTabOption {
   hidden?: boolean // deprecated use invisible instead
   noPanel?: boolean
   aria?: BalProps.BalTabItemAria
+  sublabel?: string;
+  svg?: string;
 }
 
 export interface TabLineProps {
