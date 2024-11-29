@@ -467,15 +467,14 @@ export class Dropdown
     const hasTheme = this.theme !== ''
     const theme = `theme-${this.theme}`
 
+    const focused = this.theme === 'purple' ? this.hasFocus && this.isKeyboardMode : this.hasFocus
+
     return (
       <Host class={{ ...block.class() }} tabindex="-1" id={`${this.inputId}`}>
         <div
           class={{
             ...block.element('root').class(),
-            ...block
-              .element('root')
-              .modifier('focused')
-              .class(this.hasFocus && this.isKeyboardMode),
+            ...block.element('root').modifier('focused').class(focused),
             ...block.element('root').modifier('invalid').class(this.invalid),
             ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
             ...block.element('root').modifier('autofill').class(this.isAutoFilled),
