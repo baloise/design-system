@@ -63,7 +63,7 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
         name={icon}
         size={size}
         turn={expanded}
-        color={disabled ? 'grey' : invalid ? 'danger' : filled ? 'primary' : 'primary-light'}
+        color={disabled ? 'grey' : invalid ? 'danger' : !filled && theme === 'purple' ? 'primary-light' : 'primary'}
       ></bal-icon>
     )
   }
