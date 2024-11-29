@@ -2,6 +2,8 @@
 
 ## 17.0.0
 
+We’re thrilled to introduce Version 17, a milestone release focused on enhanced performance, faster load times, and smarter resource management. This update brings significant improvements under the hood to ensure a smoother and more efficient experience for our users.
+
 ### Major Changes
 
 - Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
@@ -20,7 +22,7 @@
 
 - **core**: lazy load floating ui lib to improve largest content paint ( [#1516](https://github.com/baloise/design-system/pull/1516))
 
-- **core**: performanct update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
+- **core**: performance update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
 
 - **carousel**: load images and controls after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
 
