@@ -3120,7 +3120,7 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
-          * Sub label for the tab.
+          * Sublabel for the tab.
          */
         "subLabel": string;
         /**
@@ -8177,7 +8177,7 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
-          * Sub label for the tab.
+          * Sublabel for the tab.
          */
         "subLabel"?: string;
         /**

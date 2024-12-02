@@ -75,7 +75,7 @@ export class TabItem {
   @Prop() aria?: BalProps.BalTabItemAria = undefined
 
   /**
-   * Sub label for the tab.
+   * Sublabel for the tab.
    */
   @Prop({ reflect: true }) subLabel = ''
 
