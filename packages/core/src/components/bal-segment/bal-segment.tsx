@@ -28,7 +28,7 @@ import {
 import { stopEventBubbling } from '../../utils/form-input'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'
-import { raf } from '../../utils/helpers'
+import { isDescendant, raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
@@ -172,6 +172,15 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @ListenToFocus()
   focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
+  }
+
+  @ListenTo('balWillAnimate', { target: 'window' })
+  listenToDidAnimate(ev: UIEvent) {
+    if (ev && ev.target && isDescendant(ev.target as HTMLElement, this.el)) {
+      const childRect = this.el.getBoundingClientRect()
+      this.maxWidth = childRect.width
+      this.windowResizeListener()
+    }
   }
 
   @ListenToBreakpoints()

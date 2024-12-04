@@ -85,6 +85,27 @@
             >
           </bal-segment>
         </section>
+
+        <bal-heading>Accordion</bal-heading>
+        <section data-testid="accordion">
+          <bal-accordion>
+            <bal-accordion-details>
+              <bal-segment value="Yes">
+                <bal-segment-item value="Yes" label="Yes"></bal-segment-item>
+                <bal-segment-item value="No" label="No"></bal-segment-item>
+              </bal-segment>
+            </bal-accordion-details>
+            <bal-accordion-summary>
+              <bal-accordion-trigger
+                button=""
+                open-icon="edit"
+                open-label="Bearbeiten"
+                close-label="Schliessen"
+                close-icon="close"
+              ></bal-accordion-trigger>
+            </bal-accordion-summary>
+          </bal-accordion>
+        </section>
       </main>
     </bal-doc-app>
   </body>
