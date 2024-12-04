@@ -33,6 +33,11 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   @Prop() button = false
 
   /**
+   * If `true` the button is aligned over the whole width
+   */
+  @Prop() expanded = true
+
+  /**
    * Label of the open trigger button
    */
   @Prop() openLabel = ''
@@ -160,7 +165,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             aria-controls={`${this.parentAccordionId}-details-content`}
             part={buttonPart}
             data-testid="bal-accordion-trigger"
-            expanded={true}
+            expanded={this.expanded}
             icon={icon}
             iconTurn={turn}
             color={this.color}
