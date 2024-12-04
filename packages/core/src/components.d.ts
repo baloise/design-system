@@ -929,6 +929,10 @@ export namespace Components {
          */
         "icon": string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel": string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid": boolean;
@@ -974,6 +978,14 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Defines the size of the control.
+         */
+        "size": BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme": BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
@@ -5977,6 +5989,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel"?: string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid"?: boolean;
@@ -6021,6 +6037,14 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Defines the size of the control.
+         */
+        "size"?: BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme"?: BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
