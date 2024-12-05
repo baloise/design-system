@@ -69,7 +69,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   const attrs = isTabButton
     ? {
         'type': 'button',
-        'role': 'tab',
+        'role': isLinkList ? undefined : 'tab',
         'aria-controls': item.aria?.controls || item.tabPanelID || undefined,
         'aria-expanded': item.active ? 'true' : 'false',
         'aria-disabled': `${item.disabled}`,

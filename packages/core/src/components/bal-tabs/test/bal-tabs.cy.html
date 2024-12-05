@@ -183,6 +183,18 @@
           <bal-tab-item value="tab-c" label="My Tab C" bubble>Content of Tab C</bal-tab-item>
           <bal-tab-item value="tab-d" label="Disabled Tab D" disabled>Content of Tab D</bal-tab-item>
         </bal-tabs>
+
+        <bal-heading>Tabs & Links</bal-heading>
+        <bal-tabs data-testid="tabs-and-links" value="tab-c" border aria-nav-label="Navigation">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item
+            value="tab-d"
+            label="Link"
+            href="http://localhost:4000/components/bal-tabs/test/bal-tabs.cy.html"
+          ></bal-tab-item>
+        </bal-tabs>
       </main>
     </bal-doc-app>
   </body>

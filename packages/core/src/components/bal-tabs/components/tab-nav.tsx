@@ -22,6 +22,7 @@ export interface TabNavProps {
   spaceless: boolean
   expanded: boolean
   isLinkList: boolean
+  ariaNavLabel: string
   verticalColSize: BalProps.BalTabsColSize
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
@@ -49,6 +50,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   verticalColSize,
   iconPosition,
   context,
+  ariaNavLabel,
   onSelectTab,
 }) => {
   const bemEl = BEM.block('tabs').element('nav')
@@ -77,9 +79,12 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
     ></TabButton>
   )
 
+  const HostEl = isLinkList ? 'nav' : 'div'
+
   return (
-    <div
+    <HostEl
       id={`${tabsId}-nav`}
+      aria-label={ariaNavLabel}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier(`full-height`).class(isFullHeight),
@@ -96,7 +101,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           class={{
             ...bemEl.element('carousel').class(),
           }}
-          htmlRole={'tablist'}
+          htmlRole={isLinkList ? undefined : 'tablist'}
           fullHeight={isFullHeight}
           border={border}
           inverted={inverted}
@@ -107,7 +112,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         >
           {tabs.map((tab, index) => (
             <bal-carousel-item
-              htmlRole={''}
+              htmlRole={isLinkList ? 'listitem' : undefined}
               class={{
                 ...bemEl.element('carousel').element('item').class(),
                 ...bemEl.element('carousel').element('item').modifier('expanded').class(expanded),
@@ -156,6 +161,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       ) : (
         ''
       )}
-    </div>
+    </HostEl>
   )
 }

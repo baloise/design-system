@@ -130,6 +130,11 @@ export class Tabs
   @Prop() iconPosition: BalProps.BalTabsIconPosition = 'horizontal'
 
   /**
+   * Defines the aria label of the nav element
+   */
+  @Prop() ariaNavLabel = ''
+
+  /**
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false
@@ -365,6 +370,10 @@ export class Tabs
    * ------------------------------------------------------
    */
 
+  /**
+   * Tells if the component acts as a tab or link list.
+   * If only one link is in the list it will be a link list.
+   */
   private get isTabList(): boolean {
     return this.store.filter(tab => !!tab.href).length === 0
   }
@@ -868,6 +877,7 @@ export class Tabs
             hasCarousel={hasCarousel}
             iconPosition={this.iconPosition}
             verticalColSize={this.verticalColSize}
+            ariaNavLabel={this.ariaNavLabel}
             onSelectTab={this.onSelectTab}
           ></TabNav>
         )}
