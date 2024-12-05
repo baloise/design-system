@@ -40,6 +40,7 @@ import { i18nBalTimeInput } from './bal-time-input.i18n'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { ListenTo } from '../../utils/listen'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-time-input',
@@ -273,7 +274,7 @@ export class TimeInput
 
     return (
       <Host
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           ...block.class(),
         }}
@@ -295,7 +296,7 @@ export class TimeInput
             aria-labelledby={this.ariaForm.labelId}
             aria-describedby={this.ariaForm.messageId}
             aria-invalid={this.invalid === true ? 'true' : 'false'}
-            aria-disabled={this.disabled ? 'true' : null}
+            aria-disabled={ariaBooleanToString(this.disabled)}
             name={this.name}
             disabled={this.disabled}
             readonly={this.readonly}

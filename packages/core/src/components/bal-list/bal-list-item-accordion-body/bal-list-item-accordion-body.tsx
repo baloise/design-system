@@ -1,9 +1,13 @@
-import { Component, Host, h, Prop, Element, ComponentInterface } from '@stencil/core'
+import { Component, Host, h, Prop, Element, ComponentInterface, State, Method } from '@stencil/core'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
 import { BalBreakpointObserver, BalBreakpoints } from '../../../interfaces'
 import { ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
+
+export interface BalAria {
+  labelledby?: string
+}
 
 @Component({
   tag: 'bal-list-item-accordion-body',
@@ -14,8 +18,11 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
   private contentElWrapper: HTMLDivElement | undefined
   private currentRaf: number | undefined
   private isMobile = balBreakpoints.isMobile
+  private internalId = `bal-list-item-accordion-body-${ListItemAccordionBodyIds++}`
 
   @Element() el!: HTMLElement
+
+  @State() ariaState: BalAria = {}
 
   log!: LogInstance
 
@@ -56,6 +63,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
 
   componentDidRender() {
     this.setMinHeightForAnimation()
+    this.setControlIdToHead()
   }
 
   /**
@@ -75,9 +83,29 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
   }
 
   /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setAria(aria: BalAria): Promise<void> {
+    this.ariaState = { ...aria }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private setControlIdToHead() {
+    const headEl = this.el.parentElement.querySelector('bal-list-item-accordion-head')
+    if (headEl) {
+      headEl.setAria({ controlId: this.internalId })
+    }
+  }
 
   private setMinHeightForAnimation = () => {
     if (this.currentRaf !== undefined) {
@@ -114,6 +142,9 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
   render() {
     return (
       <Host
+        id={this.internalId}
+        role={'region'}
+        aria-labelledby={this.ariaState.labelledby}
         class={{
           'bal-list__item': true,
           'bal-list__item__accordion-body': true,
@@ -134,3 +165,5 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
     )
   }
 }
+
+let ListItemAccordionBodyIds = 0

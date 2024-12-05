@@ -8,6 +8,7 @@ import { includes, startsWith } from '../bal-select/utils/utils'
 import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 import { BalOption } from '../../utils/dropdown'
 import { ListenTo } from '../../utils/listen'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-option-list',
@@ -547,7 +548,7 @@ export class OptionList implements ComponentInterface, Loggable {
         <div
           role="listbox"
           aria-labelledby={labelledby}
-          aria-disabled={this.disabled}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           class={{
             ...block.element('container').class(),
           }}

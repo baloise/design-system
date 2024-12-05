@@ -2,6 +2,7 @@ import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Elem
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rLCP } from '../../utils/helpers'
 import { ListenTo } from '../../utils/listen'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-button',
@@ -314,7 +315,7 @@ export class Button implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           data-testid="bal-button"
           {...ariaAttributes}
         >

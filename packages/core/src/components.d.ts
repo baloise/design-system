@@ -12,6 +12,8 @@ import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
 import { FooterLink } from "@baloise/web-app-utils";
+import { BalAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+import { BalAria as BalAria1 } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -25,6 +27,8 @@ export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
 export { FooterLink } from "@baloise/web-app-utils";
+export { BalAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+export { BalAria as BalAria1 } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -108,6 +112,7 @@ export namespace Components {
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the button is aligned over the whole width
          */
@@ -721,6 +726,10 @@ export namespace Components {
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
         "autoInvalidOff": boolean;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
         /**
           * Closes the accordion
          */
@@ -1805,16 +1814,19 @@ export namespace Components {
           * Sets space to content of the accordion body
          */
         "contentSpace": BalProps.BalListContentSpacing;
+        "setAria": (aria: BalAria) => Promise<void>;
     }
     interface BalListItemAccordionHead {
         /**
           * If `true` the list accordion is open
          */
         "accordionOpen": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Icon name string with value 'plus' on default
          */
         "icon": BalProps.BalListItemAccordionHeadIcon;
+        "setAria": (aria: BalAria1) => Promise<void>;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -3328,6 +3340,10 @@ export namespace Components {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -5792,6 +5808,10 @@ declare namespace LocalJSX {
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
         "autoInvalidOff"?: boolean;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
         /**
           * Closes the datepicker popover after selection
          */
@@ -8398,6 +8418,10 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */

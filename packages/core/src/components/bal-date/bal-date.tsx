@@ -24,6 +24,7 @@ import { debounceEvent } from '../../utils/helpers'
 import { defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
 import { balFloatingUi } from '../../utils/floating-ui'
 import { ListenTo } from '../../utils/listen'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-date',
@@ -531,7 +532,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
               onClick={this.onIconClick}
               aria-label={i18nBalDate[this.language].toggleDatepicker}
               aria-haspopup="true"
-              aria-expanded={this.isExpanded ? 'true' : 'false'}
+              aria-expanded={ariaBooleanToString(this.isExpanded)}
             />
           ) : (
             ''
