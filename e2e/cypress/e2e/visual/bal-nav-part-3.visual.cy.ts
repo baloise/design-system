@@ -46,3 +46,15 @@ describe('bal-nav - long', () => {
     })
   })
 })
+
+describe('bal-nav - tab change', () => {
+  it('should switch meta nav tab', () => {
+    cy.visit('/components/bal-nav/test/bal-nav-long.visual.html').platform('desktop').waitForDesignSystem()
+    cy.contains('Unternehmenskunden').click().waitForComponents().wait(100)
+    cy.testVisual(`nav-long-desktop-meta-change`, {
+      errorThreshold: 0.2,
+      capture: 'viewport',
+      clip: balViewport['desktop'],
+    })
+  })
+})
