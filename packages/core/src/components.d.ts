@@ -107,6 +107,10 @@ export namespace Components {
          */
         "color": BalProps.BalButtonColor;
         /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded": boolean;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon": string;
@@ -5128,6 +5132,10 @@ declare namespace LocalJSX {
           * The color to use from your application's color palette.
          */
         "color"?: BalProps.BalButtonColor;
+        /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded"?: boolean;
         /**
           * BalIcon of the open trigger button
          */
