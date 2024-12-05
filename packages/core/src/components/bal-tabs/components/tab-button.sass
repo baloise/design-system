@@ -29,26 +29,19 @@
     +mobile
       height: 5rem
 
-  &--display-svg
-    flex-direction: row
-
   &--dim-inactive-elements:not(&--active)
     opacity: 0.6
 
-  +mobile
-    &--display-svg
-      flex: 1
-      flex-direction: row
-      &:not(&--active)
-        flex: 0 0 auto
-        min-width: 3rem
-        width: 6rem
-        padding: 0.25rem
-
-    &--active:not(&--vertical)
-      flex: 1
+  &--display-svg
+    flex-direction: row
+    +mobile
+        &:not(&.bal-tabs__nav__item--active)
+          flex: 0 0 auto
+          min-width: 3rem
+          width: 6rem
+          padding: 0.25rem
   +tablet
-    &:not(&--display-svg)
+    &:not(&.bal-tabs__nav__item--display-svg)
       flex-direction: row
       min-height: 3.5rem
   &--accordion
