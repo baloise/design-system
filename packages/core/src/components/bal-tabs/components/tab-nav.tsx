@@ -57,7 +57,9 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
 
   const tabs = items.filter(tab => !tab.invisible)
   const isFullHeight = inNavbar && !isTouch
-  const hasSubLabelInGroup = items.some(item => item.subLabel !== undefined)
+  const hasSubLabelInGroup = items.some(item => {
+    return item.subLabel && item.subLabel.length > 0
+  })
 
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (
     <TabButton
