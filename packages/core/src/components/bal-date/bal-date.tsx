@@ -102,6 +102,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   @Prop() closeOnSelect = true
 
   /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
+
+  /**
    * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
    */
   @Prop({ mutable: true }) value: string | undefined = undefined
@@ -502,6 +507,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
             readonly={this.readonly}
             disabled={this.disabled}
             allowInvalidValue={this.allowInvalidValue}
+            autocomplete={this.autocomplete}
             onClick={this.onInputClick}
             onBalInput={this.onInputInput}
             onBalChange={this.onInputChange}
