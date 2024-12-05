@@ -11,6 +11,7 @@ import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-car
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
+import { FooterLink } from "@baloise/web-app-utils";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -23,6 +24,7 @@ export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-car
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
+export { FooterLink } from "@baloise/web-app-utils";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -1207,6 +1209,10 @@ export namespace Components {
           * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
+        /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks": FooterLink[] | undefined;
         /**
           * If `true` the social media links will be shown.
          */
@@ -6283,6 +6289,10 @@ declare namespace LocalJSX {
           * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks"?: boolean;
+        /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks"?: FooterLink[] | undefined;
         /**
           * If `true` the social media links will be shown.
          */
