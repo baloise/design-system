@@ -45,6 +45,11 @@ export class Footer implements BalConfigObserver, Loggable {
   @Prop() hideLinks = false
 
   /**
+   * If provided, the footer links will be overridden.
+   */
+  @Prop() overrideLinks: FooterLink[] | undefined = undefined
+
+  /**
    * If `true` the social media links will be shown.
    */
   @Prop() showSocialMedia = false
@@ -94,7 +99,9 @@ export class Footer implements BalConfigObserver, Loggable {
   }
 
   private updateFooterLinks() {
-    if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
+    if (this.overrideLinks) {
+      this.links = this.overrideLinks
+    } else if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
       const region = this.region
       rIC(() => {
