@@ -63,6 +63,11 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() autocapitalize = 'none'
 
   /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
+
+  /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
   @Prop() autofocus = false
@@ -297,6 +302,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           readonly={this.readonly}
           required={this.required}
           autoCapitalize={this.autocapitalize}
+          autocomplete={this.autocomplete}
           autoFocus={this.autofocus}
           minLength={this.minLength}
           maxLength={this.maxLength}
