@@ -1,8 +1,32 @@
 # Changelog
 
-## 17.0.0
+## 17.1.0
 
-We’re thrilled to introduce Version 17, a milestone release focused on enhanced performance, faster load times, and smarter resource management. This update brings significant improvements under the hood to ensure a smoother and more efficient experience for our users.
+### Minor Changes
+
+- **accordion**: add expanded prop to change button width ( [#1530](https://github.com/baloise/design-system/pull/1530))
+
+- **brand-icons**: add liability umbrella ( [#1527](https://github.com/baloise/design-system/pull/1527))
+
+- **Tabs**: Added properties `svg` and `sublabel` to `bal-tab-items` component and `dimInactiveElements` to `bal-tabs` and adjusted the appearance of the component. ( [#1524](https://github.com/baloise/design-system/pull/1524))
+
+- **footer**: Introduce overrideLinks property to enable consumers to change the legal links in the footer ( [#1540](https://github.com/baloise/design-system/pull/1540))
+
+- **dropdown**: add new props to support the filter style ( [#1525](https://github.com/baloise/design-system/pull/1525))
+
+### Patch Changes
+
+- **dropdown**: add missing hover background ( [#1525](https://github.com/baloise/design-system/pull/1525))
+
+- **text**: introduce autocomplete for bal-textarea ( [#1539](https://github.com/baloise/design-system/pull/1539))
+
+- **date**: introduce autocomplete for bal-date ( [#1539](https://github.com/baloise/design-system/pull/1539))
+
+- **nav**: solves insert node issue with main tabs ( [#1537](https://github.com/baloise/design-system/pull/1537))
+
+- **segment**: calculate widht after animation event ( [#1533](https://github.com/baloise/design-system/pull/1533))
+
+## 17.0.0
 
 ### Major Changes
 
@@ -22,7 +46,7 @@ We’re thrilled to introduce Version 17, a milestone release focused on enhance
 
 - **core**: lazy load floating ui lib to improve largest content paint ( [#1516](https://github.com/baloise/design-system/pull/1516))
 
-- **core**: performance update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
+- **core**: performanct update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
 
 - **carousel**: load images and controls after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
 
