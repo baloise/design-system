@@ -3,7 +3,6 @@
 .bal-accordion__details
   display: block
   box-sizing: border-box
-  overflow: hidden
   will-change: max-height
   min-block-size: auto
   min-height: auto
@@ -13,10 +12,13 @@
     transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
   &--collapsing
     max-height: 0 !important
+    overflow: hidden
   &--collapsed
     display: none
+    overflow: hidden
   &--expanding
     max-height: 0
+    overflow: hidden
 
 @media (prefers-reduced-motion: reduce)
   .bal-accordion__details
