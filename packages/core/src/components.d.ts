@@ -722,6 +722,10 @@ export namespace Components {
          */
         "autoInvalidOff": boolean;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
           * Closes the accordion
          */
         "close": () => Promise<boolean>;
@@ -3341,6 +3345,10 @@ export namespace Components {
          */
         "autocapitalize": string;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus": boolean;
@@ -5804,6 +5812,10 @@ declare namespace LocalJSX {
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
         "autoInvalidOff"?: boolean;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
         /**
           * Closes the datepicker popover after selection
          */
@@ -8422,6 +8434,10 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
