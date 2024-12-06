@@ -3142,6 +3142,14 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel": string;
+        /**
+          * source for the svg icon
+         */
+        "svg": string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
@@ -3179,6 +3187,10 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements": boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -8207,6 +8219,14 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel"?: string;
+        /**
+          * source for the svg icon
+         */
+        "svg"?: string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: BalProps.BalButtonTarget;
@@ -8242,6 +8262,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements"?: boolean;
         /**
           * If `true` the field expands over the whole width.
          */

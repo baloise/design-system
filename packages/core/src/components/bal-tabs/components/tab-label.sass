@@ -14,6 +14,21 @@
   hyphens: auto
   white-space: nowrap
   user-select: none
+  &--with-svg
+    text-align: left
+    display: flex
+    flex-direction: column
+    +mobile
+      &:not(.bal-tabs__nav__item__label--active)
+        position: absolute
+        width: 1px
+        height: 1px
+        padding: 0
+        margin: -1px
+        overflow: hidden
+        white-space: nowrap
+        border: 0
+
   //
   // Color status
   color: var(--bal-tabs-tab-label-text-color)
