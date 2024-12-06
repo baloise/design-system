@@ -25,12 +25,21 @@ export const generateInteractions = async (options: BuildStylesExecutorSchema) =
     },
   })
 
+  const pointerEvents = utils.staticClass({
+    property: 'pointer-events',
+    responsive: false,
+    values: {
+      'pointer-events-auto': 'auto',
+      'pointer-events-none': 'none',
+    },
+  })
+
   return utils.save(
     'interaction',
     options.projectRoot,
     utils.merge({
-      docs: [userSelect.docs, cursor.docs],
-      rules: [userSelect.rules, cursor.rules],
+      docs: [userSelect.docs, cursor.docs, pointerEvents.docs],
+      rules: [userSelect.rules, cursor.rules, pointerEvents.rules],
     }),
   )
 }
