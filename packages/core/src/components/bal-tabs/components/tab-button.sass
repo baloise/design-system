@@ -25,6 +25,10 @@
   background-color: transparent
   border: unset
 
+  +tablet
+    flex-direction: row
+    min-height: 3.5rem
+
   &--group-has-sub-label
     +mobile
       height: 5rem
@@ -40,10 +44,7 @@
           min-width: 3rem
           width: 6rem
           padding: 0.25rem
-  +tablet
-    &:not(&.bal-tabs__nav__item--display-svg)
-      flex-direction: row
-      min-height: 3.5rem
+
   &--accordion
     flex-direction: row
   &--hidden
