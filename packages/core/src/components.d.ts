@@ -11,6 +11,7 @@ import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-car
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
+import { FooterLink } from "@baloise/web-app-utils";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -23,6 +24,7 @@ export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-car
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
+export { FooterLink } from "@baloise/web-app-utils";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -106,6 +108,10 @@ export namespace Components {
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
+        /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded": boolean;
         /**
           * BalIcon of the open trigger button
          */
@@ -929,6 +935,10 @@ export namespace Components {
          */
         "icon": string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel": string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid": boolean;
@@ -974,6 +984,14 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Defines the size of the control.
+         */
+        "size": BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme": BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
@@ -1191,6 +1209,10 @@ export namespace Components {
           * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
+        /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks": FooterLink[] | undefined;
         /**
           * If `true` the social media links will be shown.
          */
@@ -3120,6 +3142,14 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel": string;
+        /**
+          * source for the svg icon
+         */
+        "svg": string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
@@ -3157,6 +3187,10 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements": boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -5117,6 +5151,10 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalButtonColor;
         /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded"?: boolean;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon"?: string;
@@ -5977,6 +6015,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel"?: string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid"?: boolean;
@@ -6021,6 +6063,14 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Defines the size of the control.
+         */
+        "size"?: BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme"?: BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
@@ -6251,6 +6301,10 @@ declare namespace LocalJSX {
           * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks"?: boolean;
+        /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks"?: FooterLink[] | undefined;
         /**
           * If `true` the social media links will be shown.
          */
@@ -8165,6 +8219,14 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel"?: string;
+        /**
+          * source for the svg icon
+         */
+        "svg"?: string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: BalProps.BalButtonTarget;
@@ -8200,6 +8262,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements"?: boolean;
         /**
           * If `true` the field expands over the whole width.
          */

@@ -23,6 +23,18 @@
           <div class="container">Footer</div>
         </bal-footer>
       </section>
+
+      <h2 class="title text-xx-large">Override links</h2>
+      <section>
+        <bal-footer id="override-links-footer"></bal-footer>
+      </section>
     </div>
   </body>
+  <script>
+    const overrideLinksFooter = document.getElementById('override-links-footer')
+    overrideLinksFooter.overrideLinks = [
+      { label: 'Test Link', link: 'https://baloise.com' },
+      { label: 'Second Test Link', link: 'https://baloise.ch' },
+    ]
+  </script>
 </html>

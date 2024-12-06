@@ -22,6 +22,7 @@ export interface TabNavProps {
   spaceless: boolean
   expanded: boolean
   isLinkList: boolean
+  dimInactiveElements: boolean
   verticalColSize: BalProps.BalTabsColSize
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
@@ -50,11 +51,15 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   iconPosition,
   context,
   onSelectTab,
+  dimInactiveElements,
 }) => {
   const bemEl = BEM.block('tabs').element('nav')
 
   const tabs = items.filter(tab => !tab.invisible)
   const isFullHeight = inNavbar && !isTouch
+  const hasSubLabelInGroup = items.some(item => {
+    return item.subLabel && item.subLabel.length > 0
+  })
 
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (
     <TabButton
@@ -74,6 +79,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       expanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}
+      hasSubLabelInGroup={hasSubLabelInGroup}
+      dimInactiveElements={dimInactiveElements}
     ></TabButton>
   )
 
@@ -107,7 +114,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         >
           {tabs.map((tab, index) => (
             <bal-carousel-item
-              key={tab.value}
               htmlRole={''}
               class={{
                 ...bemEl.element('carousel').element('item').class(),

@@ -75,6 +75,16 @@ export class TabItem {
   @Prop() aria?: BalProps.BalTabItemAria = undefined
 
   /**
+   * Sub label for the tab.
+   */
+  @Prop({ reflect: true }) subLabel = ''
+
+  /**
+   * source for the svg icon
+   */
+  @Prop() svg = ''
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
@@ -117,6 +127,8 @@ export class TabItem {
       trackingData: this.inheritAttributes,
       noPanel: this.noPanel,
       aria: this.aria,
+      subLabel: this.subLabel,
+      svg: this.svg,
     }
   }
 

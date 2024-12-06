@@ -164,3 +164,31 @@ export const Autocomplete = Story({
 </form>`,
   ),
 })
+
+export const Filter = Story({
+  ...withRender(
+    ({ ...args }) => `
+<section class="p-large gap-normal flex">
+  <bal-dropdown placeholder="Leistung" clearable inline-label="Leistung" size="small" theme="purple">
+    <bal-option value="All" label="All">All</bal-option>
+    <bal-option value="v100" label="100 PS">100 PS</bal-option>
+    <bal-option value="v140" label="140 PS">140 PS</bal-option>
+    <bal-option value="v165" label="165 PS">165 PS</bal-option>
+    <bal-option value="v210" label="210 PS">210 PS</bal-option>
+  </bal-dropdown>
+  <bal-dropdown
+    value="v140"
+    placeholder="Leistung"
+    inline-label="Leistung"
+    clearable
+    size="small"
+    theme="purple">
+    <bal-option value="All" label="All">All</bal-option>
+    <bal-option value="v100" label="100 PS">100 PS</bal-option>
+    <bal-option value="v140" label="140 PS">140 PS</bal-option>
+    <bal-option value="v165" label="165 PS">165 PS</bal-option>
+    <bal-option value="v210" label="210 PS">210 PS</bal-option>
+  </bal-dropdown>
+</section>`,
+  ),
+})

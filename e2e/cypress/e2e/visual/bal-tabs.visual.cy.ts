@@ -17,6 +17,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('overflow-flex').testVisual('tabs-overflow-flex', errorThreshold)
       cy.getByTestId('vertical-list').testVisual('tabs-vertical-list', errorThreshold)
       cy.getByTestId('without-active-tab').testVisual('tabs-without-active-tab', errorThreshold)
+      cy.getByTestId('brand-icons').testVisual('tabs-with-brand-icons', errorThreshold)
     })
   })
 
@@ -55,6 +56,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('overflow-flex').testVisual('tabs-overflow-flex-mobile', errorThreshold)
       cy.getByTestId('vertical-list').testVisual('tabs-vertical-list-mobile', errorThreshold)
       cy.getByTestId('without-active-tab').testVisual('tabs-without-active-tab-mobile', errorThreshold)
+      cy.getByTestId('brand-icons').testVisual('tabs-with-brand-icons-mobile', errorThreshold)
     })
   })
 })
