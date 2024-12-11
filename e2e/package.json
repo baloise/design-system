@@ -1,14 +1,14 @@
 {
   "name": "e2e",
-  "version": "15.2.21",
+  "version": "15.2.22",
   "private": true,
   "scripts": {
     "postinstall": "cypress install",
     "visual-report": "npx reg-cli cypress/snapshots/actual cypress/snapshots/base/visual cypress/snapshots/diff -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
-    "@baloise/ds-core": "17.1.0",
-    "@baloise/ds-testing": "17.1.0",
+    "@baloise/ds-core": "17.2.0",
+    "@baloise/ds-testing": "17.2.0",
     "@cypress/mount-utils": "^4.1.0",
     "axe-core": "~4.8.4",
     "compression": "~1.7.4",
