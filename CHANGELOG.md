@@ -1,5 +1,17 @@
 # Changelog
 
+## 17.2.0
+
+### Minor Changes
+
+- **core**: disable animation by set local storage key baloise-animated to false ( [#1551](https://github.com/baloise/design-system/pull/1551))
+
+- **styles**: add pointer-events css help classes ( [#1547](https://github.com/baloise/design-system/pull/1547))
+
+### Patch Changes
+
+- **accordion**: remove overflow hidden when expanded ( [#1548](https://github.com/baloise/design-system/pull/1548))
+
 ## 17.1.0
 
 ### Minor Changes

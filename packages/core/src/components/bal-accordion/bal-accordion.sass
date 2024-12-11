@@ -60,8 +60,10 @@
     transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
 
 .bal-accordion__content
-  overflow: hidden
   will-change: max-height
+
+.bal-accordion__content--overflow-hidden
+  overflow: hidden
 
 .bal-accordion--collapsing .bal-accordion__content
   max-height: 0 !important
