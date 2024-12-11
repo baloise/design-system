@@ -1,6 +1,6 @@
 import { balBrowser } from '../browser'
 import { BalLogger } from '../log'
-import { BALOISE_SESSION_KEY } from './config.const'
+import { BALOISE_ANIMATION_KEY, BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
 import { defaultConfig } from './config.default'
@@ -174,6 +174,22 @@ export const configFromSession = (win: Window): any => {
   try {
     const configStr = win.sessionStorage.getItem(BALOISE_SESSION_KEY)
     return configStr !== null ? JSON.parse(configStr) : {}
+  } catch (e) {
+    return {}
+  }
+}
+
+export const configFromLocalStorage = (win: Window): any => {
+  try {
+    const animated = JSON.parse(win.localStorage.getItem(BALOISE_ANIMATION_KEY))
+
+    if (animated !== null) {
+      return {
+        animated,
+      }
+    }
+
+    return {}
   } catch (e) {
     return {}
   }
