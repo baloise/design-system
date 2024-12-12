@@ -45,47 +45,82 @@ export class SwiperUtil {
     this.component = component
     addEventListener(window, 'keydown', this.listenToKeyDown)
     addEventListener(this.component.el, 'focusin', this.updateFocus)
+    addEventListener(window, 'touchstart', this.pointerDown)
+    addEventListener(window, 'mousedown', this.pointerDown)
   }
 
   public disconnectedCallback() {
     removeEventListener(window, 'keydown', this.listenToKeyDown)
     removeEventListener(this.component.el, 'focusin', this.updateFocus)
+    removeEventListener(window, 'touchstart', this.pointerDown)
+    removeEventListener(window, 'mousedown', this.pointerDown)
   }
 
-  private updateFocus = (ev: KeyboardEvent) => {
-    const focusedButton = ev.target
-    console.warn('=> updateFocus', focusedButton)
+  private keyboardMode = false
+  private shiftMode = false
+  private isInsideContainer = false
+  private focusByKey = false
+
+  private pointerDown = () => {
+    this.keyboardMode = false
+    this.shiftMode = false
+    this.focusByKey = false
+    this.isInsideContainer = false
   }
 
   private listenToKeyDown = (ev: KeyboardEvent) => {
-    console.warn('listenToKeyDown')
-    // debugger
-    // if (isTabKey(ev)) {
-    //   if (ev.shiftKey) {
-    //     this.focusPreviousItem(ev)
-    //   } else {
-    //     this.focusNextItem(ev)
-    //   }
-    // }
-  }
+    this.keyboardMode = isTabKey(ev)
+    this.shiftMode = ev.shiftKey
+    this.focusByKey = false
+    this.isInsideContainer = isDescendant(this.containerEl, ev.target)
 
-  public async focusNextItem(ev: KeyboardEvent) {
-    if (!this.isLast()) {
-      const slide = await this.next(1)
-      if (slide && slide.el) {
-        stopEventBubbling(ev)
-        await slide.el.setFocus()
+    if (this.isInsideContainer && this.keyboardMode) {
+      if (this.shiftMode && this.index > 0) {
+        this.focusByKey = true
+        this.focusPreviousItem(ev)
+      } else if (!this.shiftMode && this.index < this.total()) {
+        this.focusByKey = true
+        this.focusNextItem(ev)
       }
     }
   }
 
-  public async focusPreviousItem(ev: KeyboardEvent) {
-    if (!this.isFirst()) {
-      const slide = await this.previous(1)
-      if (slide && slide.el) {
-        stopEventBubbling(ev)
-        await slide.el.setFocus()
+  private updateFocus = (ev: FocusEvent) => {
+    const focusByKey = this.focusByKey
+    const backwards = this.shiftMode
+    const isInsideContainer = this.isInsideContainer
+
+    // when the focus enters the component we focus
+    // the last focused item
+    if (!focusByKey && !isInsideContainer) {
+      if (backwards) {
+        this.focusItem(this.total())
+      } else {
+        this.focusItem(0)
       }
+    }
+  }
+
+  public async focusItem(index: number) {
+    const slide = await this.goTo(index)
+    if (slide && slide.el) {
+      await slide.el.setFocus()
+    }
+  }
+
+  public async focusNextItem(ev: KeyboardEvent) {
+    const slide = await this.next(1)
+    if (slide && slide.el) {
+      stopEventBubbling(ev)
+      await slide.el.setFocus()
+    }
+  }
+
+  public async focusPreviousItem(ev: KeyboardEvent) {
+    const slide = await this.previous(1)
+    if (slide && slide.el) {
+      stopEventBubbling(ev)
+      await slide.el.setFocus()
     }
   }
 
@@ -140,17 +175,7 @@ export class SwiperUtil {
       previousValue = 0
     }
 
-    const activeSlide = await this.buildSlide(previousValue)
-
-    if (activeSlide) {
-      const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate || this.index !== previousValue) {
-        this.index = previousValue
-        this.component.swiperOnChange(this.index)
-      }
-    }
-
-    return activeSlide
+    return this.goTo(previousValue)
   }
 
   public async next(steps = this.steps): Promise<SwiperSlide | undefined> {
@@ -162,12 +187,16 @@ export class SwiperUtil {
       nextValue = length - 1
     }
 
-    const activeSlide = await this.buildSlide(nextValue)
+    return this.goTo(nextValue)
+  }
+
+  public async goTo(index = this.index): Promise<SwiperSlide | undefined> {
+    const activeSlide = await this.buildSlide(index)
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate || this.index !== nextValue) {
-        this.index = nextValue
+      if (didAnimate || this.index !== index) {
+        this.index = index
         this.component.swiperOnChange(this.index)
       }
     }
@@ -249,6 +278,11 @@ export class SwiperUtil {
    * ------------------------------------------------------
    */
 
+  private total() {
+    const items = this.component.swiperGetAllChildrenElements()
+    return items.length - 1
+  }
+
   private hasShadow(): boolean {
     return this.itemsPerView === 'auto' || this.itemsPerView > 1
   }
@@ -264,22 +298,26 @@ export class SwiperUtil {
 
   private async buildSlide(slideIndex?: number): Promise<SwiperSlide | undefined> {
     const items = this.component.swiperGetAllChildrenElements()
-    const index = slideIndex === undefined ? items.length - 1 : slideIndex
+    const index = slideIndex === undefined ? this.total() : slideIndex
 
     if (items.length > index && index >= 0) {
       const gapSize = this.gapSize
 
+      const transformNext = items
+        .filter((_, n) => n < index + 1)
+        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
+
+      const transformActive = items
+        .filter((_, n) => n < index)
+        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
+
       return {
         el: items[index],
-        transformNext: items
-          .filter((_, n) => n < index + 1)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
-        transformActive: items
-          .filter((_, n) => n < index)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+        transformNext,
+        transformActive,
         isFirst: index === 0,
-        isLast: index === items.length - 1,
-        total: items.length,
+        isLast: index === this.total(),
+        total: this.total(),
         index,
       }
     }
@@ -302,16 +340,16 @@ export class SwiperUtil {
             const noNeedForSlide = itemsWith <= containerWidth
             let maxAmount = itemsWith - containerWidth
             let isLastSlideVisible = maxAmount <= amount
+
             // -1 one is needed for example when we use items per view 3 with 33.333%
             if (this.itemsPerView === 3) {
               maxAmount = itemsWith - containerWidth - 1
               isLastSlideVisible = maxAmount <= amount
             }
-            const isFirst = amount === 0 || maxAmount <= 2
 
+            const isFirst = amount === 0 || maxAmount <= 2
             if (isFirst) {
               this.index = 0
-              this.component.swiperOnChange(this.index)
             }
 
             const hasSmallControls = this.controls === 'small'

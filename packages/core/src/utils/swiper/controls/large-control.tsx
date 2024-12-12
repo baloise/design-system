@@ -48,6 +48,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         rounded
         inverted={inverted}
         onClick={() => onPreviousClick()}
+        tabindex={-1}
         disabled={isFirst}
         aria-hidden={isFirst && areControlsHidden ? 'true' : null}
         data-testid="bal-carousel-control-left"
@@ -65,6 +66,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         rounded
         inverted={inverted}
         onClick={() => onNextClick()}
+        tabindex={-1}
         disabled={isLast}
         aria-hidden={isLast && areControlsHidden ? 'true' : null}
         data-testid="bal-carousel-control-right"
