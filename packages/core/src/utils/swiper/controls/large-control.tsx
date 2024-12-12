@@ -24,7 +24,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
   leftControlTitle,
   rightControlTitle,
 }) => {
-  const block = BEM.block('carousel')
+  const block = BEM.block('swiper')
   const controls = block.element('controls')
   const button = controls.element('button')
 

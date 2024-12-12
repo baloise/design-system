@@ -1,0 +1,108 @@
+// Main wrapper element
+// --------------------------------------------------
+.bal-swiper
+  position: relative
+
+// Main wrapper element
+// --------------------------------------------------
+.bal-swiper__inner
+  display: block
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  overflow: hidden
+  list-style: none
+  padding: 0
+  touch-action: pan-y
+  &--items-per-view-auto
+    .bal-carousel__item
+      width: auto
+  &--items-per-view-1
+    .bal-carousel__item
+      width: 100%
+  &--items-per-view-2
+    .bal-carousel__item
+      width: 50%
+  &--items-per-view-3
+    .bal-carousel__item
+      width: 33.3333%
+  &--items-per-view-4
+    .bal-carousel__item
+      width: 25%
+
+// Container element of the slide items
+// --------------------------------------------------
+.bal-swiper__container
+  position: relative
+  width: 100%
+  height: 100%
+  display: flex
+  box-sizing: content-box
+  transition-property: transform
+  transition-duration: 0ms
+  transform: translate3d(0px,0px,0px)
+
+// Controls
+// --------------------------------------------------
+
+.bal-swiper__controls--large
+  +mobile
+    display: flex
+    justify-content: center
+    width: 100%
+    gap: 2rem
+    margin-top: 1rem
+
+  +tablet
+    .bal-swiper__controls__button
+      position: absolute
+      top: calc(50% - 24px)
+      z-index: 7
+    .bal-swiper__controls__button--left
+      left: 0
+    .bal-swiper__controls__button--right
+      right: 0
+
+.bal-swiper__controls__button--hidden
+  display: none !important
+  visibility: none !important
+
+.bal-swiper__controls--small
+  .bal-swiper__controls__button
+    position: absolute
+    top: calc(50% - 1rem)
+    z-index: 7
+  .bal-swiper__controls__button--left
+    left: 0
+  .bal-swiper__controls__button--right
+    right: 0
+  .bal-swiper__controls__button--hidden
+    display: none !important
+    visibility: hidden !important
+
+// TODO: Shadow move
+// --------------------------------------------------
+
+.bal-swiper__inner--shadow-left::before,
+.bal-swiper__inner--shadow-right::after
+  position: absolute
+  width: 3rem
+  height: 100%
+  top: 0
+
+.bal-swiper__inner--shadow-left::before
+  content: ''
+  left: 0
+  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-before) 50%, rgba(255, 255, 255, 0) 100%)
+
+.bal-swiper__inner--shadow-right::after
+  content: ''
+  right: 0
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-after) 50%)
+
+.bal-swiper__inner--shadow-left.bal-swiper__inner--inverted::before
+  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-inverted-before) 50%, rgba(255, 255, 255, 0) 100%)
+
+.bal-swiper__inner--shadow-right.bal-swiper__inner--inverted::after
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%)

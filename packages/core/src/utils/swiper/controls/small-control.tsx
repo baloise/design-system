@@ -22,7 +22,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
   onNextClick,
   onPreviousClick,
 }) => {
-  const block = BEM.block('carousel')
+  const block = BEM.block('swiper')
   const controls = block.element('controls')
   const button = controls.element('button')
 
