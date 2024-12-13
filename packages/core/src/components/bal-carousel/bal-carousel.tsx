@@ -334,7 +334,7 @@ export class Carousel
           </div>
         </div>
 
-        {this.swiper.renderControls()}
+        {this.isLargestContentfulPaintDone ? this.swiper.renderControls() : ''}
       </Host>
     )
   }
