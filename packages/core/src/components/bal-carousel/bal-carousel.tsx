@@ -91,7 +91,7 @@ export class Carousel
 
   @Watch('controls')
   onControlsChange() {
-    this.swiper.controls = this.controls === 'tabs' ? 'none' : this.controls
+    this.swiper.controls = this.controls
   }
 
   /**

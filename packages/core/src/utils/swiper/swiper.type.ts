@@ -1,5 +1,5 @@
-import { BalLanguage } from "../config"
-import { SwiperUtil } from "./swiper.util"
+import { BalLanguage } from '../config'
+import { SwiperUtil } from './swiper.util'
 
 export interface SwiperControlItem {
   value: number
@@ -12,7 +12,7 @@ export type SwiperChildItem = HTMLElement & {
 }
 
 export interface SwiperSlide {
-  el: SwiperChildItem, // HTMLBalCarouselItemElement
+  el: SwiperChildItem // HTMLBalCarouselItemElement
   // data: BalCarouselItemData
   transformNext: number
   transformActive: number
@@ -22,7 +22,7 @@ export interface SwiperSlide {
   total: number
 }
 
-export type SwiperControl = 'small' | 'large' | 'dots' | 'none'
+export type SwiperControl = 'small' | 'large' | 'dots' | 'none' | 'tabs'
 export type SwiperItemsPerView = 'auto' | 1 | 2 | 3 | 4
 
 export type SwiperInterface = {

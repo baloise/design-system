@@ -74,13 +74,15 @@ export class SwiperUtil {
     this.focusByKey = false
     this.isInsideContainer = isDescendant(this.containerEl, ev.target)
 
-    if (this.isInsideContainer && this.keyboardMode) {
-      if (this.shiftMode && this.index > 0) {
-        this.focusByKey = true
-        this.focusPreviousItem(ev)
-      } else if (!this.shiftMode && this.index < this.total()) {
-        this.focusByKey = true
-        this.focusNextItem(ev)
+    if (this.controls !== 'dots' && this.controls !== 'tabs') {
+      if (this.isInsideContainer && this.keyboardMode) {
+        if (this.shiftMode && this.index > 0) {
+          this.focusByKey = true
+          this.focusPreviousItem(ev)
+        } else if (!this.shiftMode && this.index < this.total()) {
+          this.focusByKey = true
+          this.focusNextItem(ev)
+        }
       }
     }
   }
@@ -92,7 +94,7 @@ export class SwiperUtil {
 
     // when the focus enters the component we focus
     // the last focused item
-    if (!focusByKey && !isInsideContainer) {
+    if (this.controls !== 'dots' && this.controls !== 'tabs' && !focusByKey && !isInsideContainer) {
       if (backwards) {
         this.focusItem(this.total())
       } else {
