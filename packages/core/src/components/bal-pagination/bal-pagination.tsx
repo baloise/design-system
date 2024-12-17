@@ -15,8 +15,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { generatePaginationControl } from './bal-pagination.util'
-import { BalConfigState } from '../../interfaces'
-import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { i18nControlLabel } from './bal-pagination.i18n'
 
 @Component({

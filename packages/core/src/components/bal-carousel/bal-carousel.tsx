@@ -24,8 +24,7 @@ import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { getComputedWidth } from '../../utils/style'
-import { BalConfigState } from '../../interfaces'
-import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { i18nControlLabel } from './bal-carousel.i18n'
 import { ListenTo } from '../../utils/listen'
 

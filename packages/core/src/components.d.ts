@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
-import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
+import { AccordionState } from "./interfaces";
 import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
@@ -19,7 +19,7 @@ import { SegmentValue } from "./components/bal-segment/bal-segment.types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
-export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
+export { AccordionState } from "./interfaces";
 export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
@@ -369,7 +369,7 @@ export namespace Components {
           * If `true` a light border is shown at the bottom.
          */
         "border": boolean;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the layout of the navigation controls.
          */
@@ -642,7 +642,7 @@ export namespace Components {
         "verticalOnMobile": boolean;
     }
     interface BalClose {
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` it supports dark backgrounds.
          */
@@ -798,7 +798,7 @@ export namespace Components {
           * Selects an option
          */
         "select": (dateString: string) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm1) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */
@@ -1500,7 +1500,7 @@ export namespace Components {
           * If `true` the input gets a clickable cursor style
          */
         "clickable": boolean;
-        "configChanged": (config: BalConfigState1) => Promise<void>;
+        "configChanged": (config: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -2284,7 +2284,7 @@ export namespace Components {
           * Align the buttons to start, center or end
          */
         "align": BalProps.BalPaginationAlignment;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Disables component
          */
