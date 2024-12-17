@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.2.1
+
+### Patch Changes
+
+- **tabs**: load tabs before largest content paint ( [#1553](https://github.com/baloise/design-system/pull/1553))
+
 ## 17.2.0
 
 ### Minor Changes

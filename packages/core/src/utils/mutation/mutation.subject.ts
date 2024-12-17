@@ -1,4 +1,4 @@
-import { debounce, rLCP } from '../helpers'
+import { debounce } from '../helpers'
 import { SingleSubject } from '../types/signal'
 import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
 import { BalMutationListener } from './mutation.listener'
@@ -18,17 +18,15 @@ export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
 
   override attach(observer: BalMutationObserver): void {
     super.attach(observer)
-    rLCP(() => {
-      if (this.options.closest) {
-        const closestElement = observer.el.closest<HTMLElement>(this.options.closest)
-        if (closestElement) {
-          this.listener?.connect(closestElement)
-        }
-      } else {
-        this.listener?.connect(observer.el)
+    if (this.options.closest) {
+      const closestElement = observer.el.closest<HTMLElement>(this.options.closest)
+      if (closestElement) {
+        this.listener?.connect(closestElement)
       }
-      this.listener?.add(() => this.debouncedNotify())
-    })
+    } else {
+      this.listener?.connect(observer.el)
+    }
+    this.listener?.add(() => this.debouncedNotify())
   }
 
   override detach(): void {
