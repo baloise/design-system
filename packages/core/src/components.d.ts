@@ -12,8 +12,8 @@ import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
 import { FooterLink } from "@baloise/web-app-utils";
-import { BalAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
-import { BalAria as BalAria1 } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
+import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -27,8 +27,8 @@ export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
 export { FooterLink } from "@baloise/web-app-utils";
-export { BalAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
-export { BalAria as BalAria1 } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
+export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -1814,7 +1814,7 @@ export namespace Components {
           * Sets space to content of the accordion body
          */
         "contentSpace": BalProps.BalListContentSpacing;
-        "setAria": (aria: BalAria) => Promise<void>;
+        "setAria": (aria: BalListItemAccordionBodyAria) => Promise<void>;
     }
     interface BalListItemAccordionHead {
         /**
@@ -1826,7 +1826,7 @@ export namespace Components {
           * Icon name string with value 'plus' on default
          */
         "icon": BalProps.BalListItemAccordionHeadIcon;
-        "setAria": (aria: BalAria1) => Promise<void>;
+        "setAria": (aria: BalListItemAccordionHeadAria) => Promise<void>;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;

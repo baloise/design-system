@@ -5,7 +5,7 @@ import { BalBreakpointObserver, BalBreakpoints } from '../../../interfaces'
 import { ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 
-export interface BalAria {
+export interface BalListItemAccordionBodyAria {
   labelledby?: string
 }
 
@@ -22,7 +22,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
 
   @Element() el!: HTMLElement
 
-  @State() ariaState: BalAria = {}
+  @State() ariaState: BalListItemAccordionBodyAria = {}
 
   log!: LogInstance
 
@@ -91,7 +91,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
    * @internal
    */
   @Method()
-  async setAria(aria: BalAria): Promise<void> {
+  async setAria(aria: BalListItemAccordionBodyAria): Promise<void> {
     this.ariaState = { ...aria }
   }
 

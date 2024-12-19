@@ -18,7 +18,7 @@ import { ariaBooleanToString } from '../../../utils/aria'
 import { i18nBalListItemAccordionHead } from './bal-list-item-accordion-head.i18n'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
 
-export interface BalAria {
+export interface BalListItemAccordionHeadAria {
   controlId?: string
 }
 
@@ -32,7 +32,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLElement
 
-  @State() ariaState: BalAria = {}
+  @State() ariaState: BalListItemAccordionHeadAria = {}
   @State() language: BalLanguage = defaultConfig.language
 
   log!: LogInstance
@@ -101,7 +101,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
    * @internal
    */
   @Method()
-  async setAria(aria: BalAria): Promise<void> {
+  async setAria(aria: BalListItemAccordionHeadAria): Promise<void> {
     this.ariaState = { ...aria }
   }
 
