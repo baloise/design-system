@@ -9,6 +9,7 @@ import {
   Event,
   EventEmitter,
   State,
+  Listen,
   ComponentInterface,
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
@@ -18,7 +19,6 @@ import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { ListenTo } from '../../utils/listen'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -224,7 +224,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
    * ------------------------------------------------------
    */
 
-  @ListenTo('balPopoverPrepare', { target: 'document' })
+  @Listen('balPopoverPrepare', { target: 'document' })
   handlePopoverPrepare(ev: CustomEvent<string>) {
     const popoverId = ev.detail
     if (this.popoverId !== popoverId) {
@@ -232,7 +232,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     }
   }
 
-  @ListenTo('click', { target: 'document' })
+  @Listen('click', { target: 'document' })
   async clickOnOutside(ev: UIEvent) {
     if (this.active) {
       if (!this.el.contains(ev.target as Node)) {
@@ -245,7 +245,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     }
   }
 
-  @ListenTo('keydown', { target: 'window' })
+  @Listen('keydown', { target: 'window' })
   handleKeyUp(ev: KeyboardEvent) {
     if (this.active && (ev.key === 'Escape' || ev.key === 'Esc')) {
       ev.preventDefault()
@@ -253,7 +253,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     }
   }
 
-  @ListenTo('keyup', { target: 'document' })
+  @Listen('keyup', { target: 'document' })
   async tabOutside(ev: KeyboardEvent) {
     if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.active) {
       await this.toggle()

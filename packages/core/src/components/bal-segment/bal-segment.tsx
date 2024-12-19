@@ -10,6 +10,7 @@ import {
   Watch,
   State,
   writeTask,
+  Listen,
   Method,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
@@ -32,7 +33,6 @@ import { isDescendant, raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-segment',
@@ -173,7 +173,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.balBlur.emit(ev)
   }
 
-  @ListenTo('balWillAnimate', { target: 'window' })
+  @Listen('balWillAnimate', { target: 'window' })
   listenToDidAnimate(ev: UIEvent) {
     if (ev && ev.target && isDescendant(ev.target as HTMLElement, this.el)) {
       const childRect = this.el.getBoundingClientRect()
@@ -206,12 +206,12 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
   }
 
-  @ListenTo('keydown', { target: 'document' })
+  @Listen('keydown', { target: 'document' })
   listenOnKeyDownOutside() {
     this.keyboardMode = true
   }
 
-  @ListenTo('keydown')
+  @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
     let forceChange = false
