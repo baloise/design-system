@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
-import { debounceEvent } from '../../utils/helpers'
+import { debounceEvent, rLCP } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -9,6 +9,7 @@ import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BalLanguage, defaultConfig } from '../../utils/config'
 
 @Component({
   tag: 'bal-steps',
@@ -19,8 +20,8 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
 
   private stepsId = `bal-steps-${StepsIds++}`
 
-  @State() isMobile = balBreakpoints.isMobile
   @State() store: BalStepOption[] = []
+  @State() isMobile = balBreakpoints.isMobile
 
   log!: LogInstance
 
@@ -115,6 +116,11 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
+  }
+
+  swiperOnChange(index: number): void {
+    // this.value = index
+    // this.balChange.emit(index)
   }
 
   /**
@@ -264,38 +270,17 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
           role="tablist"
           aria-live="polite"
         >
-          <bal-carousel
-            class={{
-              ...bemStepsNav.element('carousel').class(),
-            }}
-            htmlRole={''}
-            onBalChange={stopEventBubbling}
-            controls="small"
-            items-per-view="auto"
-            steps={3}
-          >
-            {steps
-              .filter(step => !step.invisible)
-              .map(step => (
-                <bal-carousel-item
-                  key={step.value}
-                  htmlRole={''}
-                  class={{
-                    ...bemStepsNav.element('carousel').element('item').class(),
-                    ...bemStepsNav.element('carousel').element('item').modifier(`color-${this.color}`).class(),
-                    ...bemStepsNav.element('carousel').element('item').modifier('passed').class(step.passed),
-                  }}
-                >
-                  <StepButton
-                    item={step}
-                    color={this.color}
-                    isMobile={this.isMobile}
-                    clickable={this.clickable && !step.disabled}
-                    onSelectTab={this.onSelectTab}
-                  ></StepButton>
-                </bal-carousel-item>
-              ))}
-          </bal-carousel>
+          {steps
+            .filter(step => !step.invisible)
+            .map(step => (
+              <StepButton
+                item={step}
+                color={this.color}
+                isMobile={this.isMobile}
+                clickable={this.clickable && !step.disabled}
+                onSelectTab={this.onSelectTab}
+              ></StepButton>
+            ))}
         </nav>
         <div
           id={this.stepsId}

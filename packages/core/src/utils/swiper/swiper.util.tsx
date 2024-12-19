@@ -286,7 +286,7 @@ export class SwiperUtil {
   }
 
   private hasShadow(): boolean {
-    return this.itemsPerView === 'auto' || this.itemsPerView > 1
+    return !this.component.inverted && (this.itemsPerView === 'auto' || this.itemsPerView > 1)
   }
 
   private async notifyChangeInternal() {
