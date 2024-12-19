@@ -32,14 +32,19 @@ export const TabIcon: FunctionalComponent<TabIconProps> = ({
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
         ...bemEl.modifier('disabled').class(item.disabled),
+        ...bemEl.modifier('display-svg').class(item.svg !== undefined),
       }}
     >
-      <bal-icon
-        size={isMobile || accordion ? 'small' : ''}
-        name={accordion ? 'nav-go-down' : item.icon}
-        color={iconColor}
-        turn={accordion && isAccordionOpen === true && item.active}
-      ></bal-icon>
+      {item.svg ? (
+        <bal-icon svg={item.svg} size="large" color="auto"></bal-icon>
+      ) : (
+        <bal-icon
+          size={isMobile || accordion ? 'small' : ''}
+          name={accordion ? 'nav-go-down' : item.icon}
+          color={iconColor}
+          turn={accordion && isAccordionOpen === true && item.active}
+        ></bal-icon>
+      )}
       {hasBubble ? (
         <bal-badge class={{ ...bemEl.element('bubble').class() }} size="small">
           {item.bubble}

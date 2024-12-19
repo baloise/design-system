@@ -23,6 +23,8 @@ export interface TabButtonProps {
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
   onSelectTab: (ev: MouseEvent, item: BalTabOption) => void
+  hasSubLabelInGroup: boolean
+  dimInactiveElements: boolean
 }
 
 export const TabButton: FunctionalComponent<TabButtonProps> = ({
@@ -42,6 +44,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   iconPosition,
   context,
   onSelectTab,
+  hasSubLabelInGroup,
+  dimInactiveElements,
 }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item')
 
@@ -103,6 +107,9 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
+        ...bemEl.modifier(`display-svg`).class(item.svg && item.svg.length > 0),
+        ...bemEl.modifier('group-has-sub-label').class(hasSubLabelInGroup),
+        ...bemEl.modifier('dim-inactive-elements').class(dimInactiveElements),
         'bal-focusable': !item.disabled && !item.invisible,
       }}
       draggable={false}
@@ -115,7 +122,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
-      {item.icon ? (
+      {item.icon || item.svg ? (
         <TabIcon
           accordion={false}
           item={item}

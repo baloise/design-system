@@ -34,7 +34,9 @@ export class App implements Loggable {
   @Prop({ reflect: true, mutable: true }) ready = false
 
   connectedCallback() {
-    updateBalAnimated(this.animated)
+    if (this.animated === false) {
+      updateBalAnimated(this.animated)
+    }
 
     if (balBrowser.hasWindow) {
       window.addEventListener('resize', this.debouncedNotify)

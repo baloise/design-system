@@ -186,6 +186,11 @@ export class Tabs
 
   @Prop({ mutable: true }) value?: string = undefined
 
+  /**
+   * if true, inactive elements will have their opacity reduced
+   */
+  @Prop() dimInactiveElements = false
+
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
     if (newValue !== oldValue) {
@@ -240,8 +245,9 @@ export class Tabs
   }
 
   componentDidLoad() {
+    this.onOptionChange()
+
     rLCP(() => {
-      this.onOptionChange()
       this.isLargestContentfulPaintDone = true
     })
   }
@@ -755,16 +761,14 @@ export class Tabs
   private onOptionChange = debounce(() => this.onOptionChangeInternal(), 100)
 
   private onOptionChangeInternal = async () => {
-    if (this.isLargestContentfulPaintDone) {
-      try {
-        const options = await this.getOptions()
-        this.updateStore(options)
-        this.setActiveItem()
-        this.setActiveContent()
-        this.animateLine()
-      } catch (e) {
-        console.warn('[WARN] - Could not read tab options')
-      }
+    try {
+      const options = await this.getOptions()
+      this.updateStore(options)
+      this.setActiveItem()
+      this.setActiveContent()
+      this.animateLine()
+    } catch (e) {
+      console.warn('[WARN] - Could not read tab options')
     }
   }
 
@@ -869,6 +873,7 @@ export class Tabs
             iconPosition={this.iconPosition}
             verticalColSize={this.verticalColSize}
             onSelectTab={this.onSelectTab}
+            dimInactiveElements={this.dimInactiveElements}
           ></TabNav>
         )}
         <div

@@ -453,6 +453,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
             class={{
               ...block.element('content').class(),
               ...block.element('content').modifier('card').class(this.card),
+              ...block
+                .element('content')
+                .modifier('overflow-hidden')
+                .class(this.state !== AccordionState.Expanded),
             }}
             ref={contentEl => (this.contentEl = contentEl)}
           >

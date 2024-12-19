@@ -1,8 +1,13 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Method, State } from '@stencil/core'
-import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { BalConfigObserver, BalConfigState } from '../../interfaces'
-import { BalLanguage, BalRegion, ListenToConfig, defaultConfig } from '../../utils/config'
+import {
+  BalConfigObserver,
+  BalConfigState,
+  BalLanguage,
+  BalRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '../../utils/config'
 import { i18nBalClose } from './bal-close.i18n'
 
 @Component({

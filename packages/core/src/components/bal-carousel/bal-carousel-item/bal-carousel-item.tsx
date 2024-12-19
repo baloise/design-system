@@ -12,9 +12,8 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
-import { Attributes } from '../../../interfaces'
 import { rLCP, waitAfterFramePaint } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
+import { Attributes, inheritAttributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-carousel-item',

@@ -23,10 +23,12 @@ export const TabLabel: FunctionalComponent<TabLabelProps> = ({ item, inverted, h
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
+        ...bemEl.modifier('with-svg').class(item.svg && item.svg.length > 0),
       }}
       data-testid="bal-tabs-item-label"
     >
       {item.label}
+      {item.subLabel && <span class={bemEl.element('sub-label').class()}>{item.subLabel}</span>}
       {hasBubble ? (
         <bal-badge class={{ ...bemEl.element('bubble').class() }} size="small">
           {item.bubble}
