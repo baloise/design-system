@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
-import { debounceEvent, rLCP } from '../../utils/helpers'
+import { debounceEvent } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -9,7 +9,6 @@ import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { BalLanguage, defaultConfig } from '../../utils/config'
 
 @Component({
   tag: 'bal-steps',
