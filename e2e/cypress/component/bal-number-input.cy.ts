@@ -1,3 +1,4 @@
+import { byTestId } from '../../../packages/testing/src'
 import { Components } from '../support/utils'
 
 describe('bal-number-input', () => {
@@ -118,5 +119,10 @@ describe('bal-number-input', () => {
     cy.get('bal-number-input').find('input').click().blur()
     cy.get('bal-number-input').find('input').should('have.value', '1.000,42')
     cy.get('@balChange').should('have.been.calledOnce')
+  })
+
+  it('should accept numbers with thousand separator', () => {
+    cy.get('bal-number-input').find('input').type('42\'000').blur()
+    cy.get('bal-number-input').find('input').should('have.value', '42’000')
   })
 })
