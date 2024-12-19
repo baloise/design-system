@@ -122,7 +122,7 @@ describe('bal-number-input', () => {
   })
 
   it('should accept numbers with thousand separator', () => {
-    cy.get('bal-number-input').find('input').type('42\'000').blur()
+    cy.get('bal-number-input').find('input').type("42'000").blur()
     cy.get('bal-number-input').find('input').should('have.value', '42’000')
   })
 })

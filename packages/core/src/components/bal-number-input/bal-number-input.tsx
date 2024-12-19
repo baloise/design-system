@@ -58,7 +58,12 @@ import { ListenTo } from '../../utils/listen'
   styleUrl: 'bal-number-input.sass',
 })
 export class NumberInput
-  implements ComponentInterface, BalConfigObserver, FormInput<number | string | undefined>, BalAriaFormLinking, Loggable
+  implements
+    ComponentInterface,
+    BalConfigObserver,
+    FormInput<number | string | undefined>,
+    BalAriaFormLinking,
+    Loggable
 {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
