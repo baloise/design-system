@@ -30,6 +30,7 @@ export type SwiperInterface = {
   swiper: SwiperUtil
 
   language: BalLanguage
+  hasAnimated: boolean
   isMobile: boolean
   inverted: boolean
   isLargestContentfulPaintDone: boolean

@@ -3,11 +3,12 @@ import { BEM } from '../../../utils/bem'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BalTabOption } from '../bal-tab.type'
 import { TabButton } from './tab-button'
+import { SwiperUtil } from 'packages/core/src/utils/swiper'
 
 export interface TabNavProps {
+  swiper: SwiperUtil
   items: BalTabOption[]
   tabsId: string
-  hasCarousel: boolean
   isVertical: boolean
   inNavbar: boolean
   isMobile: boolean
@@ -29,9 +30,9 @@ export interface TabNavProps {
 }
 
 export const TabNav: FunctionalComponent<TabNavProps> = ({
+  swiper,
   items,
   tabsId,
-  hasCarousel,
   isVertical,
   inNavbar,
   isMobile,
@@ -81,6 +82,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
     <div
       id={`${tabsId}-nav`}
       class={{
+        ...swiper.cssInnerSwiper(),
         ...bemEl.class(),
         ...bemEl.modifier(`full-height`).class(isFullHeight),
         ...bemEl.modifier(`border`).class(border),
@@ -89,48 +91,43 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         ...bemEl.modifier(`expanded`).class(expanded && !isVertical),
         ...bemEl.modifier(`vertical-col-${verticalColSize}`).class(isVertical),
       }}
+      ref={el => (swiper.innerEl = el)}
     >
-      {hasCarousel ? (
-        <bal-carousel
-          id={`${tabsId}-carousel`}
+      {/* {hasCarousel ? ( */}
+      <nav
+        id={swiper.containerId}
+        class={{
+          ...swiper.cssSwiperContainer(),
+          ...bemEl.element('carousel').class(),
+        }}
+        role={'tablist'}
+        ref={el => (swiper.containerEl = el)}
+        // fullHeight={isFullHeight}
+        // border={border}
+        // inverted={inverted}
+        // controls="small"
+        // items-per-view="auto"
+        // steps={3}
+        // onBalChange={stopEventBubbling}
+      >
+        {tabs.map((tab, index) => (
+          <Button item={tab} index={index}></Button>
+        ))}
+        <div
+          id={`${tabsId}-line`}
           class={{
-            ...bemEl.element('carousel').class(),
+            ...bemEl.element('line').class(),
+            ...bemEl.element('line').modifier(`active`).class(lineActive),
+            ...bemEl.element('line').modifier(`inverted`).class(inverted),
+            ...bemEl.element('line').modifier(`animated`).class(animated),
+            ...bemEl.element('line').modifier(`vertical`).class(isVertical),
           }}
-          htmlRole={'tablist'}
-          fullHeight={isFullHeight}
-          border={border}
-          inverted={inverted}
-          controls="small"
-          items-per-view="auto"
-          steps={3}
-          onBalChange={stopEventBubbling}
-        >
-          {tabs.map((tab, index) => (
-            <bal-carousel-item
-              htmlRole={''}
-              class={{
-                ...bemEl.element('carousel').element('item').class(),
-                ...bemEl.element('carousel').element('item').modifier('expanded').class(expanded),
-              }}
-            >
-              <Button item={tab} index={index}></Button>
-            </bal-carousel-item>
-          ))}
-          <div
-            id={`${tabsId}-line`}
-            class={{
-              ...bemEl.element('line').class(),
-              ...bemEl.element('line').modifier(`active`).class(lineActive),
-              ...bemEl.element('line').modifier(`inverted`).class(inverted),
-              ...bemEl.element('line').modifier(`animated`).class(animated),
-              ...bemEl.element('line').modifier(`vertical`).class(isVertical),
-            }}
-          ></div>
-        </bal-carousel>
-      ) : (
-        tabs.map((tab, index) => <Button item={tab} index={index}></Button>)
-      )}
-      {!hasCarousel ? (
+        ></div>
+      </nav>
+      {/* // ) : (
+      //   tabs.map((tab, index) => <Button item={tab} index={index}></Button>)
+      // )} */}
+      {/* {!hasCarousel ? (
         <div
           id={`${tabsId}-border`}
           class={{
@@ -155,7 +152,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         ></div>
       ) : (
         ''
-      )}
+      )} */}
     </div>
   )
 }

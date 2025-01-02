@@ -21,6 +21,7 @@ export class SwiperUtil {
   private component!: SwiperInterface
   private currentRaf: number | undefined
   private previousTransformValue = 0
+  private active = true
 
   id = `bal-swiper-${SwiperIds++}`
   containerId = `${this.id}-container`
@@ -32,6 +33,7 @@ export class SwiperUtil {
   index = 0
   gapSize = 0
   steps = 1
+  noNeedForSlide = true
   isLastSlideVisible = false
   itemsPerView: SwiperItemsPerView = 1
   controls: SwiperControl = 'none'
@@ -56,6 +58,11 @@ export class SwiperUtil {
     removeEventListener(window, 'mousedown', this.pointerDown)
   }
 
+  /**
+   * EVENTS
+   * ------------------------------------------------------
+   */
+
   private keyboardMode = false
   private shiftMode = false
   private isInsideContainer = false
@@ -79,13 +86,64 @@ export class SwiperUtil {
         if (this.shiftMode && this.index > 0) {
           this.focusByKey = true
           this.focusPreviousItem(ev)
-        } else if (!this.shiftMode && this.index < this.total()) {
+        } else if (!this.shiftMode && this.index < this.lastIndex()) {
           this.focusByKey = true
           this.focusNextItem(ev)
         }
       }
     }
   }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  public async isActive() {
+    return this.active
+  }
+
+  public async activate() {
+    if (this.active === false) {
+      // TODO: do carousel
+      this.active = true
+    }
+  }
+
+  public async disable() {
+    if (this.active === true) {
+      // TODO: remove carousel
+      this.active = false
+    }
+  }
+
+  public async focusItem(index: number) {
+    const slide = await this.goTo(index)
+    if (slide && slide.el) {
+      await this.setFocusToEl(slide.el)
+    }
+  }
+
+  public async focusNextItem(ev: KeyboardEvent) {
+    const slide = await this.next(1)
+    if (slide && slide.el) {
+      stopEventBubbling(ev)
+      await this.setFocusToEl(slide.el)
+    }
+  }
+
+  public async focusPreviousItem(ev: KeyboardEvent) {
+    const slide = await this.previous(1)
+    if (slide && slide.el) {
+      stopEventBubbling(ev)
+      await this.setFocusToEl(slide.el)
+    }
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private updateFocus = (ev: FocusEvent) => {
     const focusByKey = this.focusByKey
@@ -94,35 +152,20 @@ export class SwiperUtil {
 
     // when the focus enters the component we focus
     // the last focused item
-    if (this.controls !== 'dots' && this.controls !== 'tabs' && !focusByKey && !isInsideContainer) {
+    if (this.controls !== 'dots' && this.controls !== 'tabs' && focusByKey && !isInsideContainer) {
       if (backwards) {
-        this.focusItem(this.total())
+        this.focusItem(this.lastIndex())
       } else {
         this.focusItem(0)
       }
     }
   }
 
-  public async focusItem(index: number) {
-    const slide = await this.goTo(index)
-    if (slide && slide.el) {
-      await slide.el.setFocus()
-    }
-  }
-
-  public async focusNextItem(ev: KeyboardEvent) {
-    const slide = await this.next(1)
-    if (slide && slide.el) {
-      stopEventBubbling(ev)
-      await slide.el.setFocus()
-    }
-  }
-
-  public async focusPreviousItem(ev: KeyboardEvent) {
-    const slide = await this.previous(1)
-    if (slide && slide.el) {
-      stopEventBubbling(ev)
-      await slide.el.setFocus()
+  private async setFocusToEl(el: SwiperChildItem) {
+    if (el.setFocus) {
+      await el.setFocus()
+    } else {
+      // el.focus()
     }
   }
 
@@ -134,18 +177,18 @@ export class SwiperUtil {
   private cssBlock = BEM.block('swiper')
 
   public cssSwiper = () => ({
-    ...this.cssBlock.class(),
+    ...this.cssBlock.class(this.active),
   })
 
   public cssInnerSwiper = () => ({
-    ...this.cssBlock.element('inner').class(),
-    ...this.cssBlock.element('inner').modifier(`items-per-view-${this.itemsPerView}`).class(),
+    ...this.cssBlock.element('inner').class(this.active),
+    ...this.cssBlock.element('inner').modifier(`items-per-view-${this.itemsPerView}`).class(this.active),
     ...this.cssBlock.element('inner').modifier(`shadow-left`).class(this.hasShadowLeft()),
     ...this.cssBlock.element('inner').modifier(`shadow-right`).class(this.hasShadowRight()),
   })
 
   public cssSwiperContainer = () => ({
-    ...this.cssBlock.element('container').class(),
+    ...this.cssBlock.element('container').class(this.active),
   })
 
   /**
@@ -160,11 +203,11 @@ export class SwiperUtil {
   }
 
   public hasShadowLeft(): boolean {
-    return this.hasShadow() && this.index !== 0
+    return this.hasShadow() && this.index !== 0 && this.active
   }
 
   public hasShadowRight(): boolean {
-    return this.hasShadow() && !this.isLastSlideVisible
+    return this.hasShadow() && !this.isLastSlideVisible && this.active
   }
 
   public isLast(): boolean {
@@ -192,6 +235,13 @@ export class SwiperUtil {
     return this.goTo(nextValue)
   }
 
+  public async updateIndex(index = this.index): Promise<undefined> {
+    if (this.index !== index) {
+      this.index = index
+      this.component.swiperOnChange(this.index)
+    }
+  }
+
   public async goTo(index = this.index): Promise<SwiperSlide | undefined> {
     const activeSlide = await this.buildSlide(index)
 
@@ -207,7 +257,12 @@ export class SwiperUtil {
   }
 
   public renderControls() {
-    if (!this.component.isLargestContentfulPaintDone) {
+    if (
+      !this.component.isLargestContentfulPaintDone ||
+      !this.active ||
+      this.noNeedForSlide ||
+      !this.component.hasAnimated
+    ) {
       return ''
     }
 
@@ -280,7 +335,7 @@ export class SwiperUtil {
    * ------------------------------------------------------
    */
 
-  private total() {
+  private lastIndex() {
     const items = this.component.swiperGetAllChildrenElements()
     return items.length - 1
   }
@@ -300,33 +355,40 @@ export class SwiperUtil {
 
   private async buildSlide(slideIndex?: number): Promise<SwiperSlide | undefined> {
     const items = this.component.swiperGetAllChildrenElements()
-    const index = slideIndex === undefined ? this.total() : slideIndex
+    const index = slideIndex === undefined ? this.lastIndex() : slideIndex
 
     if (items.length > index && index >= 0) {
       const gapSize = this.gapSize
 
       const transformNext = items
         .filter((_, n) => n < index + 1)
-        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
+        .reduce((acc, item) => {
+          console.log('NEXT item', item, getComputedWidth(item))
+          return acc + getComputedWidth(item) + gapSize
+        }, 0)
 
       const transformActive = items
         .filter((_, n) => n < index)
-        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
+        .reduce((acc, item) => {
+          // console.log('ACTIVE item', item, getComputedWidth(item))
+          return acc + getComputedWidth(item) + gapSize
+        }, 0)
 
       return {
         el: items[index],
         transformNext,
         transformActive,
         isFirst: index === 0,
-        isLast: index === this.total(),
-        total: this.total(),
+        isLast: index === this.lastIndex(),
+        total: this.lastIndex() + 1,
         index,
       }
     }
     return undefined
   }
 
-  private async animate(amount = 0, animated = true): Promise<boolean> {
+  private async animate(pixels = 0, animated = true): Promise<boolean> {
+    console.log('--> animate', pixels)
     return new Promise(resolve => {
       if (this.currentRaf !== undefined) {
         cancelAnimationFrame(this.currentRaf)
@@ -337,19 +399,21 @@ export class SwiperUtil {
           const lastSlide = await this.buildSlide()
 
           if (lastSlide) {
-            const containerWidth = this.innerEl.clientWidth || 0
-            const itemsWith = lastSlide.transformNext || 0
-            const noNeedForSlide = itemsWith <= containerWidth
-            let maxAmount = itemsWith - containerWidth
-            let isLastSlideVisible = maxAmount <= amount
+            const totalWidth = lastSlide.transformNext || 0
+            const overflowWindowWidth = this.innerEl.clientWidth || 0
+
+            // get max amount of pixel to move the items container to the left or right
+            let maxAmountOfPixel = totalWidth - overflowWindowWidth
 
             // -1 one is needed for example when we use items per view 3 with 33.333%
             if (this.itemsPerView === 3) {
-              maxAmount = itemsWith - containerWidth - 1
-              isLastSlideVisible = maxAmount <= amount
+              maxAmountOfPixel = totalWidth - overflowWindowWidth - 1
             }
 
-            const isFirst = amount === 0 || maxAmount <= 2
+            // last item is visible if the overflow window moved more than the diff
+            const isLastSlideVisible = maxAmountOfPixel <= pixels
+
+            const isFirst = pixels === 0 || maxAmountOfPixel <= 2
             if (isFirst) {
               this.index = 0
             }
@@ -357,9 +421,14 @@ export class SwiperUtil {
             const hasSmallControls = this.controls === 'small'
             const hasLargeControls = this.controls === 'large'
 
-            let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
+            this.noNeedForSlide = totalWidth <= overflowWindowWidth
+            let transformValue = this.noNeedForSlide ? 0 : isLastSlideVisible ? maxAmountOfPixel : pixels
 
-            if (!isFirst && !noNeedForSlide && (hasSmallControls || (hasLargeControls && !this.component.isMobile))) {
+            if (
+              !isFirst &&
+              !this.noNeedForSlide &&
+              (hasSmallControls || (hasLargeControls && !this.component.isMobile))
+            ) {
               transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
             }
 
@@ -374,6 +443,8 @@ export class SwiperUtil {
               this.borderEl.style.transitionDuration = animated ? '0.6s' : '0'
               this.borderEl.style.transform = `translate3d(${transformValue}px, 0px, 0px)`
             }
+
+            this.component.hasAnimated = true
 
             if (!didAnimate) {
               return resolve(false)

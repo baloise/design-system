@@ -24,6 +24,7 @@
   background: var(--bal-carousel-inner-border-background-inverted)
 
 .bal-carousel__item
+  box-sizing: border-box
   text-align: center
   font-size: var(--bal-text-size-large)
   min-height: 2rem
@@ -65,13 +66,13 @@
       padding-left: 2.5rem
       padding-right: 2.5rem
   .bal-carousel__item
-    width: calc(100% - 2rem)
+    width: 100%
     padding-top: 1rem
     padding-bottom: 1rem
     padding-left: 1rem
     padding-right: 1rem
     +tablet
-      width: calc(100% - 5rem)
+      width: 100%
       padding-top: 2.5rem
       padding-bottom: 2.5rem
       padding-left: 2.5rem

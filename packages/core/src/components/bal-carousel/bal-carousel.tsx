@@ -43,6 +43,7 @@ export class Carousel
   swiperIsLastSlideVisible = false
 
   @State() isLargestContentfulPaintDone = false
+  @State() hasAnimated = false
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
 

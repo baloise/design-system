@@ -25,7 +25,7 @@ import {
   waitAfterFramePaint,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
@@ -39,6 +39,12 @@ import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
 import { ListenTo } from '../../utils/listen'
+import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
+import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
+
+// TODO: disable swiper for vertical and expanded
+// TODO: fix animated line for the first button with padding
+// TODO: show carousel controls
 
 @Component({
   tag: 'bal-tabs',
@@ -51,13 +57,16 @@ export class Tabs
     BalConfigObserver,
     BalMutationObserver,
     BalBreakpointObserver,
-    BalResizeObserver
+    BalResizeObserver,
+    SwiperInterface
 {
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
 
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
+
+  swiper = new SwiperUtil()
 
   @Element() el!: HTMLElement
 
@@ -68,9 +77,13 @@ export class Tabs
   @State() inNavbar = false
   @State() inNavbarLight = false
 
+  @State() hasAnimated = false
+  @State() index = 0
+
   @State() isLargestContentfulPaintDone = false
   @State() isMobile = balBreakpoints.isMobile
   @State() isTablet = balBreakpoints.isTablet
+  @State() language: BalLanguage = defaultConfig.language
 
   @State() store: BalTabOption[] = []
   @State() animated = true
@@ -214,6 +227,10 @@ export class Tabs
    */
 
   connectedCallback() {
+    this.swiper.connectedCallback(this)
+    this.swiper.controls = 'small'
+    this.updateSwiper()
+
     this.inNavbar = hasParent('bal-navbar', this.el)
     if (this.inNavbar) {
       const parentNavbar = this.el.closest('bal-navbar')
@@ -239,11 +256,19 @@ export class Tabs
     }
   }
 
+  componentWillRender(): void {
+    this.updateSwiper()
+  }
+
   componentDidLoad() {
     rLCP(() => {
       this.onOptionChange()
       this.isLargestContentfulPaintDone = true
     })
+  }
+
+  disconnectedCallback(): void {
+    this.swiper.disconnectedCallback()
   }
 
   /**
@@ -256,18 +281,30 @@ export class Tabs
   @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
   mutationListener(): void {
     this.onOptionChange()
+    this.swiper.notifyChange()
   }
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
     this.isTablet = breakpoints.tablet
+    this.swiper.notifyChange()
     this.animateLine()
   }
 
   @ListenToResize()
   resizeListener() {
     this.animateLine()
+    this.swiper.notifyChange()
+  }
+
+  @ListenToSwipe()
+  swipeListener({ left, right }: BalSwipeInfo) {
+    if (left) {
+      this.swiper.next()
+    } else if (right) {
+      this.swiper.previous()
+    }
   }
 
   @ListenTo('balWillAnimate', { target: 'window' })
@@ -297,15 +334,6 @@ export class Tabs
           this.tabListSelectPrevious(ev)
         }
       }
-    }
-  }
-
-  isUsedInNavbar(ev: UIEvent) {
-    const target = ev.target as HTMLElement
-    const parentNavbar = target.closest('bal-navbar')
-    const isNavbarOpen = ev.target as any | false
-    if (parentNavbar && isDescendant(parentNavbar, this.el)) {
-      this.isNavbarOpen = isNavbarOpen
     }
   }
 
@@ -360,10 +388,18 @@ export class Tabs
     }
   }
 
+  swiperOnChange(index: number): void {
+    this.index = index
+  }
+
   /**
-   * PRIVATE METHODS
+   * GETTERS
    * ------------------------------------------------------
    */
+
+  swiperGetAllChildrenElements(): SwiperChildItem[] {
+    return Array.from(this.el.querySelectorAll('.bal-tabs__nav__item'))
+  }
 
   private get isTabList(): boolean {
     return this.store.filter(tab => !!tab.href).length === 0
@@ -378,6 +414,46 @@ export class Tabs
       return [...this.options.map(newBalTabOption)]
     } else {
       return Promise.all(this.items.map(value => value.getOptions()))
+    }
+  }
+
+  private getTargetElement(value?: string) {
+    const selector = `[data-tabs="${this.tabsId}"]`
+    const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
+    return elements.filter(element => element.getAttribute('data-value') == value)[0]
+  }
+
+  private getLineElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-line`)
+  }
+
+  private getBorderElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-border`)
+  }
+
+  private getCarouselElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-carousel`)
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private updateSwiper(): void {
+    if (this.expanded || this.vertical) {
+      this.swiper.disable()
+    } else {
+      this.swiper.activate()
+    }
+  }
+
+  private isUsedInNavbar(ev: UIEvent) {
+    const target = ev.target as HTMLElement
+    const parentNavbar = target.closest('bal-navbar')
+    const isNavbarOpen = ev.target as any | false
+    if (parentNavbar && isDescendant(parentNavbar, this.el)) {
+      this.isNavbarOpen = isNavbarOpen
     }
   }
 
@@ -437,24 +513,6 @@ export class Tabs
     const isTouch = isMobile || isTablet
 
     return isVertical || (isTouch && this.inNavbar)
-  }
-
-  private getTargetElement(value?: string) {
-    const selector = `[data-tabs="${this.tabsId}"]`
-    const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
-    return elements.filter(element => element.getAttribute('data-value') == value)[0]
-  }
-
-  private getLineElement(): HTMLElement | null {
-    return this.el.querySelector(`#${this.tabsId}-line`)
-  }
-
-  private getBorderElement(): HTMLElement | null {
-    return this.el.querySelector(`#${this.tabsId}-border`)
-  }
-
-  private getCarouselElement(): HTMLElement | null {
-    return this.el.querySelector(`#${this.tabsId}-carousel`)
   }
 
   private getLineSize = (element: HTMLElement, padding: Padding) => {
@@ -736,13 +794,19 @@ export class Tabs
   }
 
   async focus(tab: BalTabOption) {
-    await waitAfterFramePaint()
-    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+    if (this.swiper.isActive()) {
+      const options = await this.getOptions()
+      const index = options.findIndex(option => option.value === tab.value)
+      this.swiper.updateIndex(index)
+    } else {
+      await waitAfterFramePaint()
+      const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
 
-    if (hasKeyboardFocus) {
-      const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
-      if (tabEl) {
-        tabEl.focus({ preventScroll: true })
+      if (hasKeyboardFocus) {
+        const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
+        if (tabEl) {
+          tabEl.focus({ preventScroll: true })
+        }
       }
     }
   }
@@ -808,7 +872,6 @@ export class Tabs
 
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)
     const isVertical = this.isVertical()
-    const hasCarousel = this.isLargestContentfulPaintDone && !isVertical && this.overflow && !this.expanded
 
     const isSelect = this.isLargestContentfulPaintDone && isMobile && this.selectOnMobile
 
@@ -847,29 +910,32 @@ export class Tabs
         {isSelect ? (
           <TabSelect value={this.value} items={tabs} onSelectTab={this.onSelectTab}></TabSelect>
         ) : (
-          <TabNav
-            items={tabs}
-            isLinkList={isLinkList}
-            tabsId={this.tabsId}
-            clickable={this.clickable}
-            accordion={this.accordion}
-            isAccordionOpen={this.isAccordionOpen}
-            lineActive={valueExists}
-            inverted={isInverted}
-            animated={this.animated}
-            context={this.context}
-            border={this.border}
-            spaceless={this.spaceless}
-            expanded={this.expanded}
-            isMobile={isMobile}
-            isTouch={isTouch}
-            isVertical={isVertical}
-            inNavbar={this.inNavbar}
-            hasCarousel={hasCarousel}
-            iconPosition={this.iconPosition}
-            verticalColSize={this.verticalColSize}
-            onSelectTab={this.onSelectTab}
-          ></TabNav>
+          <div class={{ ...this.swiper.cssSwiper() }}>
+            <TabNav
+              swiper={this.swiper}
+              items={tabs}
+              isLinkList={isLinkList}
+              tabsId={this.tabsId}
+              clickable={this.clickable}
+              accordion={this.accordion}
+              isAccordionOpen={this.isAccordionOpen}
+              lineActive={valueExists}
+              inverted={isInverted}
+              animated={this.animated}
+              context={this.context}
+              border={this.border}
+              spaceless={this.spaceless}
+              expanded={this.expanded}
+              isMobile={isMobile}
+              isTouch={isTouch}
+              isVertical={isVertical}
+              inNavbar={this.inNavbar}
+              iconPosition={this.iconPosition}
+              verticalColSize={this.verticalColSize}
+              onSelectTab={this.onSelectTab}
+            ></TabNav>
+            {this.isLargestContentfulPaintDone && !isSelect ? this.swiper.renderControls() : ''}
+          </div>
         )}
         <div
           part={contentPart}
