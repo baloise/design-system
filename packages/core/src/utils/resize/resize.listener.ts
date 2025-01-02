@@ -43,5 +43,3 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
     this.resizeObserver = undefined
   }
 }
-
-

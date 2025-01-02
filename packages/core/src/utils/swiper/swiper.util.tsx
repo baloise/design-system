@@ -362,17 +362,11 @@ export class SwiperUtil {
 
       const transformNext = items
         .filter((_, n) => n < index + 1)
-        .reduce((acc, item) => {
-          console.log('NEXT item', item, getComputedWidth(item))
-          return acc + getComputedWidth(item) + gapSize
-        }, 0)
+        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
 
       const transformActive = items
         .filter((_, n) => n < index)
-        .reduce((acc, item) => {
-          // console.log('ACTIVE item', item, getComputedWidth(item))
-          return acc + getComputedWidth(item) + gapSize
-        }, 0)
+        .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0)
 
       return {
         el: items[index],
@@ -388,7 +382,6 @@ export class SwiperUtil {
   }
 
   private async animate(pixels = 0, animated = true): Promise<boolean> {
-    console.log('--> animate', pixels)
     return new Promise(resolve => {
       if (this.currentRaf !== undefined) {
         cancelAnimationFrame(this.currentRaf)

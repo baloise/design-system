@@ -64,17 +64,20 @@ export class BalMutationListener extends ListenerAbstract {
 
     // check for attribute changes
     const attributeNameCheck = (attributeName: string): boolean => {
-      return attributeName !== 'styles' && attributeName !== 'class' && !attributeName.startsWith('data-') && !attributeName.startsWith('aria-')
+      return (
+        attributeName !== 'styles' &&
+        attributeName !== 'class' &&
+        !attributeName.startsWith('data-') &&
+        !attributeName.startsWith('aria-')
+      )
     }
-    const hasAttributeChanges = tagRecords.some(record =>
-      record.type === 'attributes'
-      && attributeNameCheck(record.attributeName))
-
+    const hasAttributeChanges = tagRecords.some(
+      record => record.type === 'attributes' && attributeNameCheck(record.attributeName),
+    )
 
     if (hasAddedNodeChanges || hasAttributeChanges || hasRemovedNodeChanges) {
       return this.notify(undefined)
     }
-
   }
 
   private destroyMutationObserver() {
