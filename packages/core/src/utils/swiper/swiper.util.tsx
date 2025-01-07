@@ -81,14 +81,16 @@ export class SwiperUtil {
     this.focusByKey = false
     this.isInsideContainer = isDescendant(this.containerEl, ev.target)
 
-    if (this.controls !== 'dots' && this.controls !== 'tabs') {
-      if (this.isInsideContainer && this.keyboardMode) {
-        if (this.shiftMode && this.index > 0) {
-          this.focusByKey = true
-          this.focusPreviousItem(ev)
-        } else if (!this.shiftMode && this.index < this.lastIndex()) {
-          this.focusByKey = true
-          this.focusNextItem(ev)
+    if (this.active) {
+      if (this.controls !== 'dots' && this.controls !== 'tabs') {
+        if (this.isInsideContainer && this.keyboardMode) {
+          if (this.shiftMode && this.index > 0) {
+            this.focusByKey = true
+            this.focusPreviousItem(ev)
+          } else if (!this.shiftMode && this.index < this.lastIndex()) {
+            this.focusByKey = true
+            this.focusNextItem(ev)
+          }
         }
       }
     }
@@ -140,17 +142,19 @@ export class SwiperUtil {
    */
 
   private updateFocus = (ev: FocusEvent) => {
-    const focusByKey = this.focusByKey
-    const backwards = this.shiftMode
-    const isInsideContainer = this.isInsideContainer
+    if (this.active) {
+      const focusByKey = this.focusByKey
+      const backwards = this.shiftMode
+      const isInsideContainer = this.isInsideContainer
 
-    // when the focus enters the component we focus
-    // the last focused item
-    if (this.controls !== 'dots' && this.controls !== 'tabs' && focusByKey && !isInsideContainer) {
-      if (backwards) {
-        this.focusItem(this.lastIndex())
-      } else {
-        this.focusItem(0)
+      // when the focus enters the component we focus
+      // the last focused item
+      if (this.controls !== 'dots' && this.controls !== 'tabs' && focusByKey && !isInsideContainer) {
+        if (backwards) {
+          this.focusItem(this.lastIndex())
+        } else {
+          this.focusItem(0)
+        }
       }
     }
   }
@@ -158,8 +162,6 @@ export class SwiperUtil {
   private async setFocusToEl(el: SwiperChildItem) {
     if (el.setFocus) {
       await el.setFocus()
-    } else {
-      // el.focus()
     }
   }
 
@@ -238,17 +240,19 @@ export class SwiperUtil {
   }
 
   public async goTo(index = this.index): Promise<SwiperSlide | undefined> {
-    const activeSlide = await this.buildSlide(index)
+    if (this.active) {
+      const activeSlide = await this.buildSlide(index)
 
-    if (activeSlide) {
-      const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate || this.index !== index) {
-        this.index = index
-        this.component.swiperOnChange(this.index)
+      if (activeSlide) {
+        const didAnimate = await this.animate(activeSlide.transformActive, true)
+        if (didAnimate || this.index !== index) {
+          this.index = index
+          this.component.swiperOnChange(this.index)
+        }
       }
-    }
 
-    return activeSlide
+      return activeSlide
+    }
   }
 
   public renderControls() {

@@ -13,6 +13,7 @@ export interface TabNavProps {
   isMobile: boolean
   isTouch: boolean
   lineActive: boolean
+  lineHidden: boolean
   border: boolean
   accordion: boolean
   isAccordionOpen: boolean
@@ -39,6 +40,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   isMobile,
   isTouch,
   lineActive,
+  lineHidden,
   isLinkList,
   border,
   accordion,
@@ -131,6 +133,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
               ...navLineEl.modifier(`inverted`).class(inverted),
               ...navLineEl.modifier(`animated`).class(animated),
               ...navLineEl.modifier(`vertical`).class(isVertical),
+              ...navLineEl.modifier(`hidden`).class(lineHidden),
             }}
           ></div>
           {border ? (

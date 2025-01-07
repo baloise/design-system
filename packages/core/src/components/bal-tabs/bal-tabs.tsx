@@ -20,9 +20,9 @@ import {
   isChildOfEventTarget,
   isDescendant,
   raf,
+  rLCP,
   transitionEndAsync,
   waitAfterFramePaint,
-  waitAfterIdleCallback,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
@@ -35,7 +35,7 @@ import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../.
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
-import { BalResizeObserver, ListenToResize } from '../../utils/resize'
+import { BalResizeInfo, BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
 import { ListenTo } from '../../utils/listen'
@@ -70,6 +70,7 @@ export class Tabs
   @State() inNavbar = false
   @State() inNavbarLight = false
 
+  @State() enableLineRender = false
   @State() hasAnimated = false
   @State() index = 0
 
@@ -263,12 +264,20 @@ export class Tabs
     }
   }
 
+  componentDidRender(): void {
+    this.animateLine()
+  }
+
   componentWillRender(): void {
     this.updateSwiper()
   }
 
   componentDidLoad() {
     this.onOptionChange()
+    rLCP(() => {
+      this.enableLineRender = true
+      this.animateLine(true)
+    })
   }
 
   disconnectedCallback(): void {
@@ -293,13 +302,14 @@ export class Tabs
     this.isMobile = breakpoints.mobile
     this.isTablet = breakpoints.tablet
     this.swiper.notifyChange()
-    this.animateLine()
   }
 
   @ListenToResize()
-  resizeListener() {
-    this.animateLine()
+  resizeListener(info: BalResizeInfo) {
     this.swiper.notifyChange()
+    if ((!this.isVertical && info.width) || (this.isVertical && info.height)) {
+      this.animateLine()
+    }
   }
 
   @ListenToSwipe()
@@ -319,8 +329,8 @@ export class Tabs
   @ListenTo('balDidAnimate', { target: 'window' })
   listenToDidAnimate(ev: UIEvent) {
     isChildOfEventTarget(ev, this.el, () => {
-      this.animateLine()
       this.isUsedInNavbar(ev)
+      this.animateLine()
     })
   }
 
@@ -574,8 +584,11 @@ export class Tabs
     return 0
   }
 
-  private animateLine = async () => {
-    console.log('animateLine')
+  private animateLine = async (initial = false) => {
+    if (!this.enableLineRender) {
+      return
+    }
+
     if (!this.shouldAnimate()) {
       return
     }
@@ -879,6 +892,7 @@ export class Tabs
             accordion={this.accordion}
             isAccordionOpen={this.isAccordionOpen}
             lineActive={valueExists}
+            lineHidden={!this.enableLineRender}
             inverted={isInverted}
             animated={this.animated}
             context={this.context}
