@@ -10,6 +10,7 @@ import {
   Method,
   EventEmitter,
   Event,
+  Listen,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
@@ -32,7 +33,6 @@ import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavLinkItem } from './models/bal-nav-link-item'
 import { balBrowser } from '../../utils/browser'
 import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-nav',
@@ -135,7 +135,7 @@ export class Nav
    * ------------------------------------------------------
    */
 
-  @ListenTo('balChange')
+  @Listen('balChange')
   listenToPopupChanges(event: BalEvents.BalPopupChange) {
     const target = event.target
     if (target && target.nodeName === 'BAL-POPUP') {
@@ -155,7 +155,7 @@ export class Nav
     }
   }
 
-  @ListenTo('click', { target: 'document', passive: true })
+  @Listen('click', { target: 'document', passive: true })
   async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
       if (this.hasRenderedWithFlyoutActive) {

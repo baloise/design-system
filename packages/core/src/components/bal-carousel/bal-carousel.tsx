@@ -10,6 +10,7 @@ import {
   EventEmitter,
   State,
   Watch,
+  Listen,
 } from '@stencil/core'
 import { rLCP } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -21,7 +22,6 @@ import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
-import { ListenTo } from '../../utils/listen'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 
 @Component({
@@ -180,7 +180,7 @@ export class Carousel
    * ------------------------------------------------------
    */
 
-  @ListenTo('touchmove', { target: 'window', passive: false })
+  @Listen('touchmove', { target: 'window', passive: false })
   async blockVerticalScrolling(ev: any) {
     if (!this.scrollY && this.el?.contains(ev.target)) {
       stopEventBubbling(ev)
