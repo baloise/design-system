@@ -41,3 +41,15 @@ export const getComputedWidth = (element: HTMLElement): number => {
 
   return left + width + right
 }
+
+export const getWidthOfOverflowingChildren = (element: HTMLElement) => {
+  const children = Array.from(element.children) as HTMLElement[]
+  let maxWidth = 0
+
+  for (const child of children) {
+    const childWidth = child.offsetLeft + child.offsetWidth
+    maxWidth = Math.max(maxWidth, childWidth)
+  }
+
+  return maxWidth
+}
