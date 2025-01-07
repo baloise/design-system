@@ -42,10 +42,6 @@ import { ListenTo } from '../../utils/listen'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
 
-// TODO: disable swiper for vertical and expanded
-// TODO: fix animated line for the first button with padding
-// TODO: show carousel controls
-
 @Component({
   tag: 'bal-tabs',
   styleUrl: 'bal-tabs.sass',
@@ -543,7 +539,7 @@ export class Tabs
         return element.offsetTop
       }
     } else {
-      if (element.offsetLeft) {
+      if (element.offsetLeft !== undefined && element.offsetLeft !== null) {
         if (this.expanded) {
           return element.offsetLeft
         }
@@ -551,12 +547,12 @@ export class Tabs
         return element.offsetLeft + padding.left
       }
 
-      const carouselItem = element.closest('bal-carousel-item')
-      if (carouselItem) {
+      const item = element.closest<HTMLElement>('.bal-tabs__nav__item')
+      if (item) {
         if (this.expanded) {
-          return carouselItem.offsetLeft
+          return item.offsetLeft
         }
-        return carouselItem.offsetLeft + padding.left
+        return item.offsetLeft + padding.left
       }
     }
 
@@ -794,19 +790,20 @@ export class Tabs
   }
 
   async focus(tab: BalTabOption) {
+    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+
     if (this.swiper.isActive()) {
       const options = await this.getOptions()
       const index = options.findIndex(option => option.value === tab.value)
       this.swiper.updateIndex(index)
-    } else {
-      await waitAfterFramePaint()
-      const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+    }
 
-      if (hasKeyboardFocus) {
-        const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
-        if (tabEl) {
-          tabEl.focus({ preventScroll: true })
-        }
+    await waitAfterFramePaint()
+
+    if (hasKeyboardFocus) {
+      const tabEl = this.el.querySelector<HTMLButtonElement>(`#${this.tabsId}-button-${toKebabCase(tab.value)}`)
+      if (tabEl) {
+        tabEl.focus({ preventScroll: true })
       }
     }
   }

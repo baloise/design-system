@@ -237,6 +237,7 @@ export class SwiperUtil {
 
   public async updateIndex(index = this.index): Promise<undefined> {
     if (this.index !== index) {
+      this.goTo(index)
       this.index = index
       this.component.swiperOnChange(this.index)
     }
