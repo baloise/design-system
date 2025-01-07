@@ -6,6 +6,8 @@ import { BalResizeInfo } from './resize.interfaces'
 export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
   private debouncedNotify = debounce(() => this.notify(), 10)
+  private lastWidth = 0
+  private lastHeight = 0
 
   connect(el: HTMLElement): void {
     super.connect(el)
@@ -23,7 +25,14 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
           if (!Array.isArray(entries) || !entries.length) {
             return
           }
-          this.debouncedNotify()
+          const entry = entries[0]
+
+          // only notify if the width or the height of the component has changed
+          if (this.lastWidth !== entry.contentRect.width || this.lastHeight !== entry.contentRect.height) {
+            this.debouncedNotify()
+            this.lastWidth = entry.contentRect.width
+            this.lastHeight = entry.contentRect.height
+          }
         })
       }
     })
