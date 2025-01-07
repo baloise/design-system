@@ -99,22 +99,16 @@ export class SwiperUtil {
    * ------------------------------------------------------
    */
 
-  public async isActive() {
+  public isActive() {
     return this.active
   }
 
   public async activate() {
-    if (this.active === false) {
-      // TODO: do carousel
-      this.active = true
-    }
+    this.active = true
   }
 
   public async disable() {
-    if (this.active === true) {
-      // TODO: remove carousel
-      this.active = false
-    }
+    this.active = false
   }
 
   public async focusItem(index: number) {
@@ -258,12 +252,7 @@ export class SwiperUtil {
   }
 
   public renderControls() {
-    if (
-      !this.component.isLargestContentfulPaintDone ||
-      !this.active ||
-      this.noNeedForSlide ||
-      !this.component.hasAnimated
-    ) {
+    if (!this.active || this.noNeedForSlide || !this.component.hasAnimated) {
       return ''
     }
 
@@ -346,11 +335,9 @@ export class SwiperUtil {
   }
 
   private async notifyChangeInternal() {
-    if (this.component.isLargestContentfulPaintDone) {
-      const activeSlide = await this.buildSlide(this.index)
-      if (activeSlide) {
-        this.animate(activeSlide.transformActive, false)
-      }
+    const activeSlide = await this.buildSlide(this.index)
+    if (activeSlide) {
+      this.animate(activeSlide.transformActive, false)
     }
   }
 

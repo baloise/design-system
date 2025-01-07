@@ -33,7 +33,6 @@ export type SwiperInterface = {
   hasAnimated: boolean
   isMobile: boolean
   inverted: boolean
-  isLargestContentfulPaintDone: boolean
 
   swiperGetAllChildrenElements(): SwiperChildItem[]
   swiperOnChange(index: number): void

@@ -1,6 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { stopEventBubbling } from '../../../utils/form-input'
 import { BalTabOption } from '../bal-tab.type'
 import { TabButton } from './tab-button'
 import { SwiperUtil } from 'packages/core/src/utils/swiper'
@@ -17,6 +16,7 @@ export interface TabNavProps {
   border: boolean
   accordion: boolean
   isAccordionOpen: boolean
+  showSwiperControls: boolean
   inverted: boolean
   clickable: boolean
   animated: boolean
@@ -48,11 +48,16 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   spaceless,
   expanded,
   verticalColSize,
+  showSwiperControls,
   iconPosition,
   context,
   onSelectTab,
 }) => {
   const bemEl = BEM.block('tabs').element('nav')
+  const navInnerEl = bemEl.element('inner')
+  const navContainerEl = bemEl.element('container')
+  const navLineEl = bemEl.element('line')
+  const navBorderEl = bemEl.element('border')
 
   const tabs = items.filter(tab => !tab.invisible)
   const isFullHeight = inNavbar && !isTouch
@@ -72,7 +77,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       accordion={accordion}
       isAccordionOpen={isAccordionOpen}
       context={context}
-      expanded={expanded}
+      isExpanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}
     ></TabButton>
@@ -80,79 +85,62 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
 
   return (
     <div
-      id={`${tabsId}-nav`}
       class={{
-        ...swiper.cssInnerSwiper(),
         ...bemEl.class(),
-        ...bemEl.modifier(`full-height`).class(isFullHeight),
-        ...bemEl.modifier(`border`).class(border),
-        ...bemEl.modifier(`animated`).class(animated),
-        ...bemEl.modifier(`vertical`).class(isVertical),
-        ...bemEl.modifier(`expanded`).class(expanded && !isVertical),
+        ...bemEl.modifier('vertical').class(isVertical),
+        ...bemEl.modifier('full-height').class(isFullHeight),
         ...bemEl.modifier(`vertical-col-${verticalColSize}`).class(isVertical),
+        ...swiper.cssSwiper(),
       }}
-      ref={el => (swiper.innerEl = el)}
     >
-      {/* {hasCarousel ? ( */}
-      <nav
-        id={swiper.containerId}
+      <div
+        id={`${tabsId}-nav`}
         class={{
-          ...swiper.cssSwiperContainer(),
-          ...bemEl.element('carousel').class(),
+          ...swiper.cssInnerSwiper(),
+          ...navInnerEl.class(),
+          ...navInnerEl.modifier(`full-height`).class(isFullHeight),
         }}
-        role={'tablist'}
-        ref={el => (swiper.containerEl = el)}
-        // fullHeight={isFullHeight}
-        // border={border}
-        // inverted={inverted}
-        // controls="small"
-        // items-per-view="auto"
-        // steps={3}
-        // onBalChange={stopEventBubbling}
+        ref={el => (swiper.innerEl = el)}
       >
-        {tabs.map((tab, index) => (
-          <Button item={tab} index={index}></Button>
-        ))}
-        <div
-          id={`${tabsId}-line`}
+        <nav
+          id={swiper.containerId}
           class={{
-            ...bemEl.element('line').class(),
-            ...bemEl.element('line').modifier(`active`).class(lineActive),
-            ...bemEl.element('line').modifier(`inverted`).class(inverted),
-            ...bemEl.element('line').modifier(`animated`).class(animated),
-            ...bemEl.element('line').modifier(`vertical`).class(isVertical),
+            ...swiper.cssSwiperContainer(),
+            ...navContainerEl.class(),
+            ...navContainerEl.modifier(`vertical`).class(isVertical),
+            ...navContainerEl.modifier(`expanded`).class(expanded && !isVertical),
           }}
-        ></div>
-      </nav>
-      {/* // ) : (
-      //   tabs.map((tab, index) => <Button item={tab} index={index}></Button>)
-      // )} */}
-      {/* {!hasCarousel ? (
-        <div
-          id={`${tabsId}-border`}
-          class={{
-            ...bemEl.element('border').class(),
-            ...bemEl.element('border').modifier(`inverted`).class(inverted),
-            ...bemEl.element('border').modifier(`vertical`).class(isVertical),
-          }}
-        ></div>
-      ) : (
-        ''
-      )}
-      {!hasCarousel ? (
-        <div
-          id={`${tabsId}-line`}
-          class={{
-            ...bemEl.element('line').class(),
-            ...bemEl.element('line').modifier(`active`).class(lineActive),
-            ...bemEl.element('line').modifier(`inverted`).class(inverted),
-            ...bemEl.element('line').modifier(`animated`).class(animated),
-            ...bemEl.element('line').modifier(`vertical`).class(isVertical),
-          }}
-        ></div>
-      ) : (
-        ''
-      )} */}
+          role={'tablist'}
+          ref={el => (swiper.containerEl = el)}
+        >
+          {tabs.map((tab, index) => (
+            <Button item={tab} index={index}></Button>
+          ))}
+          <div
+            id={`${tabsId}-line`}
+            class={{
+              ...navLineEl.class(),
+              ...navLineEl.modifier(`active`).class(lineActive),
+              ...navLineEl.modifier(`inverted`).class(inverted),
+              ...navLineEl.modifier(`animated`).class(animated),
+              ...navLineEl.modifier(`vertical`).class(isVertical),
+            }}
+          ></div>
+          {border ? (
+            <div
+              id={`${tabsId}-border`}
+              class={{
+                ...navBorderEl.class(),
+                ...navBorderEl.modifier(`inverted`).class(inverted),
+                ...navBorderEl.modifier(`vertical`).class(isVertical),
+              }}
+            ></div>
+          ) : (
+            ''
+          )}
+        </nav>
+      </div>
+      {showSwiperControls ? swiper.renderControls() : ''}
     </div>
   )
 }

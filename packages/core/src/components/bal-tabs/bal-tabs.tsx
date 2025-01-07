@@ -20,9 +20,9 @@ import {
   isChildOfEventTarget,
   isDescendant,
   raf,
-  rLCP,
   transitionEndAsync,
   waitAfterFramePaint,
+  waitAfterIdleCallback,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
@@ -31,7 +31,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
-import { getComputedPadding, Padding } from '../../utils/style'
+import { getComputedPadding, getComputedWidth, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
@@ -56,9 +56,6 @@ export class Tabs
     BalResizeObserver,
     SwiperInterface
 {
-  private contentEl: HTMLDivElement | undefined
-  private contentElWrapper: HTMLDivElement | undefined
-
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
 
@@ -76,7 +73,6 @@ export class Tabs
   @State() hasAnimated = false
   @State() index = 0
 
-  @State() isLargestContentfulPaintDone = false
   @State() isMobile = balBreakpoints.isMobile
   @State() isTablet = balBreakpoints.isTablet
   @State() language: BalLanguage = defaultConfig.language
@@ -143,6 +139,11 @@ export class Tabs
    */
   @Prop() expanded = false
 
+  @Watch('expanded')
+  protected expandedChanged() {
+    this.updateSwiper()
+  }
+
   /**
    * If `true` the tabs container does not have a padding left or right.
    */
@@ -182,6 +183,11 @@ export class Tabs
    * If `true` tabs are align vertically.
    */
   @Prop() vertical: BalProps.BalTabsVertical = false
+
+  @Watch('vertical')
+  protected verticalChanged() {
+    this.updateSwiper()
+  }
 
   /**
    * The col size of the tabs on vertical mode.
@@ -257,10 +263,7 @@ export class Tabs
   }
 
   componentDidLoad() {
-    rLCP(() => {
-      this.onOptionChange()
-      this.isLargestContentfulPaintDone = true
-    })
+    this.onOptionChange()
   }
 
   disconnectedCallback(): void {
@@ -310,8 +313,10 @@ export class Tabs
 
   @ListenTo('balDidAnimate', { target: 'window' })
   listenToDidAnimate(ev: UIEvent) {
-    isChildOfEventTarget(ev, this.el, () => this.animateLine())
-    this.isUsedInNavbar(ev)
+    isChildOfEventTarget(ev, this.el, () => {
+      this.animateLine()
+      this.isUsedInNavbar(ev)
+    })
   }
 
   @ListenTo('keydown')
@@ -428,7 +433,8 @@ export class Tabs
   }
 
   private getCarouselElement(): HTMLElement | null {
-    return this.el.querySelector(`#${this.tabsId}-carousel`)
+    // return this.el.querySelector(`#${this.tabsId}-carousel`)
+    return this.el.querySelector(`#${this.swiper.containerId}`)
   }
 
   /**
@@ -437,10 +443,14 @@ export class Tabs
    */
 
   private updateSwiper(): void {
-    if (this.expanded || this.vertical) {
-      this.swiper.disable()
+    if (this.overflow) {
+      if (this.expanded || this.isVertical()) {
+        this.swiper.disable()
+      } else {
+        this.swiper.activate()
+      }
     } else {
-      this.swiper.activate()
+      this.swiper.disable()
     }
   }
 
@@ -560,6 +570,7 @@ export class Tabs
   }
 
   private animateLine = async () => {
+    console.log('animateLine')
     if (!this.shouldAnimate()) {
       return
     }
@@ -607,7 +618,7 @@ export class Tabs
             const borderElement = this.getBorderElement()
             const carouselElement = this.getCarouselElement()
             if (borderElement && carouselElement) {
-              const containerMaxWidth = carouselElement.clientWidth
+              const containerMaxWidth = getWidthOfOverflowingChildren(carouselElement)
               borderElement.style.setProperty('width', `${containerMaxWidth}px`)
             }
 
@@ -632,83 +643,25 @@ export class Tabs
   private expandAccordion = (initialUpdate = false) => {
     this.isAccordionOpen = true
 
-    const { contentEl, contentElWrapper } = this
-    if (initialUpdate || contentEl === undefined || contentElWrapper === undefined) {
-      this.accordionState = AccordionState.Expanded
-      return
-    }
-
     if (this.accordionState === AccordionState.Expanded) {
       return
     }
 
-    if (this.currentRaf !== undefined) {
-      cancelAnimationFrame(this.currentRaf)
-    }
-
-    if (this.shouldAnimate()) {
-      raf(() => {
-        this.accordionState = AccordionState.Expanding
-
-        this.currentRaf = raf(async () => {
-          const contentHeight = contentElWrapper.offsetHeight
-          const waitForTransition = transitionEndAsync(contentEl, 300)
-          contentEl.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit(this.value)
-
-          await waitForTransition
-
-          this.accordionState = AccordionState.Expanded
-          contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit(this.value)
-        })
-      })
-    } else {
-      this.accordionState = AccordionState.Expanded
-      this.balWillAnimate.emit(this.value)
-      this.balDidAnimate.emit(this.value)
-    }
+    this.accordionState = AccordionState.Expanded
+    this.balWillAnimate.emit(this.value)
+    this.balDidAnimate.emit(this.value)
   }
 
   private collapseAccordion = (initialUpdate = false) => {
     this.isAccordionOpen = false
 
-    const { contentEl } = this
-    if (initialUpdate || contentEl === undefined) {
-      this.accordionState = AccordionState.Collapsed
-      return
-    }
-
     if (this.accordionState === AccordionState.Collapsed) {
       return
     }
 
-    if (this.currentRaf !== undefined) {
-      cancelAnimationFrame(this.currentRaf)
-    }
-
-    if (this.shouldAnimate()) {
-      this.currentRaf = raf(async () => {
-        const contentHeight = contentEl.offsetHeight
-        contentEl.style.setProperty('max-height', `${contentHeight}px`)
-
-        raf(async () => {
-          const waitForTransition = transitionEndAsync(contentEl, 300)
-          this.accordionState = AccordionState.Collapsing
-          this.balWillAnimate.emit(this.value)
-
-          await waitForTransition
-
-          this.accordionState = AccordionState.Collapsed
-          contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit(this.value)
-        })
-      })
-    } else {
-      this.accordionState = AccordionState.Collapsed
-      this.balWillAnimate.emit(this.value)
-      this.balDidAnimate.emit(this.value)
-    }
+    this.accordionState = AccordionState.Collapsed
+    this.balWillAnimate.emit(this.value)
+    this.balDidAnimate.emit(this.value)
   }
 
   private shouldAnimate = () => {
@@ -816,16 +769,14 @@ export class Tabs
   private onOptionChange = debounce(() => this.onOptionChangeInternal(), 100)
 
   private onOptionChangeInternal = async () => {
-    if (this.isLargestContentfulPaintDone) {
-      try {
-        const options = await this.getOptions()
-        this.updateStore(options)
-        this.setActiveItem()
-        this.setActiveContent()
-        this.animateLine()
-      } catch (e) {
-        console.warn('[WARN] - Could not read tab options')
-      }
+    try {
+      const options = await this.getOptions()
+      this.updateStore(options)
+      this.setActiveItem()
+      this.setActiveContent()
+      this.animateLine()
+    } catch (e) {
+      console.warn('[WARN] - Could not read tab options')
     }
   }
 
@@ -862,6 +813,7 @@ export class Tabs
 
   render() {
     const block = BEM.block('tabs')
+    const contentEl = block.element('content')
 
     const isMobile = this.isMobile
     const isTablet = this.isTablet
@@ -870,7 +822,9 @@ export class Tabs
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)
     const isVertical = this.isVertical()
 
-    const isSelect = this.isLargestContentfulPaintDone && isMobile && this.selectOnMobile
+    const hasBorder = this.border || (this.inNavbar && isTouch)
+
+    const isSelect = isMobile && this.selectOnMobile
 
     const tabs = this.store.map(tab => ({ ...tab, active: tab.value === this.value }))
 
@@ -880,6 +834,16 @@ export class Tabs
     const valueExists = this.value !== undefined && !!this.store.find(o => o.value === this.value)
 
     const isLinkList = !this.isTabList
+
+    const dataValue = this.store
+      .filter(t => this.isTabActive(t))
+      .map(t => t.value)
+      .join(',')
+
+    const dataLabel = this.store
+      .filter(t => this.isTabActive(t))
+      .map(t => t.label)
+      .join(',')
 
     return (
       <Host
@@ -895,58 +859,52 @@ export class Tabs
           ...block.modifier('collapsing').class(this.accordionState === AccordionState.Collapsing),
           ...block.modifier('collapsed').class(this.accordionState === AccordionState.Collapsed),
         }}
-        data-value={this.store
-          .filter(t => this.isTabActive(t))
-          .map(t => t.value)
-          .join(',')}
-        data-label={this.store
-          .filter(t => this.isTabActive(t))
-          .map(t => t.label)
-          .join(',')}
+        data-value={dataValue}
+        data-label={dataLabel}
       >
         {isSelect ? (
           <TabSelect value={this.value} items={tabs} onSelectTab={this.onSelectTab}></TabSelect>
         ) : (
-          <div class={{ ...this.swiper.cssSwiper() }}>
-            <TabNav
-              swiper={this.swiper}
-              items={tabs}
-              isLinkList={isLinkList}
-              tabsId={this.tabsId}
-              clickable={this.clickable}
-              accordion={this.accordion}
-              isAccordionOpen={this.isAccordionOpen}
-              lineActive={valueExists}
-              inverted={isInverted}
-              animated={this.animated}
-              context={this.context}
-              border={this.border}
-              spaceless={this.spaceless}
-              expanded={this.expanded}
-              isMobile={isMobile}
-              isTouch={isTouch}
-              isVertical={isVertical}
-              inNavbar={this.inNavbar}
-              iconPosition={this.iconPosition}
-              verticalColSize={this.verticalColSize}
-              onSelectTab={this.onSelectTab}
-            ></TabNav>
-            {this.isLargestContentfulPaintDone && !isSelect ? this.swiper.renderControls() : ''}
-          </div>
+          <TabNav
+            swiper={this.swiper}
+            items={tabs}
+            isLinkList={isLinkList}
+            tabsId={this.tabsId}
+            clickable={this.clickable}
+            accordion={this.accordion}
+            isAccordionOpen={this.isAccordionOpen}
+            lineActive={valueExists}
+            inverted={isInverted}
+            animated={this.animated}
+            context={this.context}
+            border={hasBorder}
+            spaceless={this.spaceless}
+            expanded={this.expanded}
+            isMobile={isMobile}
+            isTouch={isTouch}
+            isVertical={isVertical}
+            inNavbar={this.inNavbar}
+            iconPosition={this.iconPosition}
+            showSwiperControls={!this.isVertical()}
+            verticalColSize={this.verticalColSize}
+            onSelectTab={this.onSelectTab}
+          ></TabNav>
         )}
         <div
           part={contentPart}
-          ref={contentEl => (this.contentEl = contentEl)}
           class={{
-            ...block.element('tabs').element('content').class(),
+            ...contentEl.class(),
+            ...contentEl.modifier('vertical').class(this.isVertical()),
+            ...contentEl
+              .modifier('hidden')
+              .class(this.context === 'meta' || this.context === 'navbar' || this.context === 'navigation'),
           }}
         >
           <div
             id={this.tabsId}
             class={{
-              ...block.element('tabs').element('content').element('wrapper').class(),
+              ...contentEl.element('wrapper').class(),
             }}
-            ref={contentElWrapper => (this.contentElWrapper = contentElWrapper)}
           >
             <slot></slot>
           </div>

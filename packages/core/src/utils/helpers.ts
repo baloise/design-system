@@ -275,8 +275,18 @@ export const waitForComponent = async (el: HTMLElement | null) => {
 }
 
 export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: () => void) => {
-  if (ev && ev.target && el && el !== ev.target && isDescendant(ev.target as HTMLElement, el)) {
-    callback()
+  if (ev && ev.target && el && el !== ev.target) {
+    let target = ev.target as HTMLElement
+
+    // special case for the navbar case
+    const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
+    if (isNavbarBrand) {
+      target = target.closest('bal-navbar')
+    }
+
+    if (target && isDescendant(target, el)) {
+      callback()
+    }
   }
 }
 
