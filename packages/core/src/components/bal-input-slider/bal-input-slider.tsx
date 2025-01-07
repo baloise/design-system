@@ -1,10 +1,9 @@
-import { Component, h, Host, Element, Prop, EventEmitter, Event, Method, Watch, State } from '@stencil/core'
+import { Component, h, Host, Element, Prop, EventEmitter, Event, Method, Watch, State, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { debounceEvent } from '../../utils/helpers'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-input-slider',
@@ -116,7 +115,7 @@ export class InputSlider implements BalAriaFormLinking {
    */
   @Event() balChange!: EventEmitter<BalEvents.BalInputSliderChangeDetail>
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if ((this.disabled || this.readonly) && ev.target && ev.target === this.el) {
       stopEventBubbling(ev)
@@ -125,7 +124,7 @@ export class InputSlider implements BalAriaFormLinking {
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

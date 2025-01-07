@@ -33,7 +33,7 @@
     "@baloise/web-app-utils": "3.15.0",
     "@floating-ui/dom": "~1.6.3",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "4.22.3",
+    "@stencil/core": "4.23.0",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "filesize.js": "~2.0.0",

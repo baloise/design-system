@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "tslib": "~2.3.0",
-    "@stencil/core": "4.22.3"
+    "@stencil/core": "4.23.0"
   },
   "peerDependencies": {
     "react": "~18.2.0",

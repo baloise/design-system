@@ -9,6 +9,7 @@ import {
   Watch,
   Method,
   EventEmitter,
+  Listen,
   Event,
 } from '@stencil/core'
 import { isEscapeKey } from '../../utils/keyboard'
@@ -27,7 +28,6 @@ import { debounce } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { VariantRenderer } from './variants/variant.renderer'
 import { focusableQueryString } from '../../utils/focus-visible'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-popup',
@@ -212,7 +212,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   private debouncedGlobalClick = debounce((trigger: HTMLElement) => this.notifyGlobalClick(trigger), 10)
 
-  @ListenTo('click', { target: 'window' })
+  @Listen('click', { target: 'window' })
   async listenOnGlobalClick(ev: MouseEvent): Promise<void> {
     const target = ev.target as HTMLElement
     const trigger = target.closest('[bal-popup]')
@@ -225,7 +225,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
-  @ListenTo('keydown', { target: 'document' })
+  @Listen('keydown', { target: 'document' })
   async listenOnKeyDown(ev: KeyboardEvent) {
     if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
@@ -233,17 +233,17 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
-  @ListenTo('mousedown')
+  @Listen('mousedown')
   async listenOnMouseDown(ev: MouseEvent) {
     this.isClickedOutsideOnMouseDown = this.onBackdropClick(ev)
   }
 
-  @ListenTo('mouseup')
+  @Listen('mouseup')
   async listenOnMouseUp(ev: MouseEvent) {
     this.isClickedOutsideOnMouseUp = this.onBackdropClick(ev)
   }
 
-  @ListenTo('click')
+  @Listen('click')
   async listenOnComponentClick() {
     if (
       this.presented &&
