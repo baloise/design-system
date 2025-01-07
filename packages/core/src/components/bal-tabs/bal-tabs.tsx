@@ -201,6 +201,11 @@ export class Tabs
 
   @Prop({ mutable: true }) value?: string = undefined
 
+  /**
+   * if true, inactive elements will have their opacity reduced
+   */
+  @Prop() dimInactiveElements = false
+
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
     if (newValue !== oldValue) {
@@ -888,6 +893,7 @@ export class Tabs
             showSwiperControls={!this.isVertical()}
             verticalColSize={this.verticalColSize}
             onSelectTab={this.onSelectTab}
+            dimInactiveElements={this.dimInactiveElements}
           ></TabNav>
         )}
         <div

@@ -6,7 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
-import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
+import { AccordionState } from "./interfaces";
+import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
@@ -18,7 +19,8 @@ import { SegmentValue } from "./components/bal-segment/bal-segment.types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
-export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
+export { AccordionState } from "./interfaces";
+export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
@@ -30,8818 +32,8842 @@ export { SegmentValue } from "./components/bal-segment/bal-segment.types";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
-    interface BalAccordion {
-        /**
-          * If `true` the accordion is open.
-         */
-        "active": boolean;
-        /**
-          * If `true` the accordion is used on the bottom of a card
-         */
-        "card": boolean;
-        /**
-          * BalIcon of the close trigger button
-         */
-        "closeIcon": string;
-        /**
-          * Label of the close trigger button
-         */
-        "closeLabel": string;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * Closes the accordion
-         */
-        "dismiss": () => Promise<boolean>;
-        "humanToggle": () => Promise<boolean>;
-        /**
-          * BalIcon of the open trigger button
-         */
-        "openIcon": string;
-        /**
-          * Label of the open trigger button
-         */
-        "openLabel": string;
-        /**
-          * Opens the accordion
-         */
-        "present": () => Promise<boolean>;
-        /**
-          * Triggers the accordion
-         */
-        "toggle": () => Promise<boolean>;
-        "version": number;
-    }
-    interface BalAccordionDetails {
-        "active": boolean;
-        "animated": boolean;
-        "state": AccordionState;
-    }
-    interface BalAccordionSummary {
-        "active": boolean;
-        "state": AccordionState;
-        /**
-          * If `true` the whole summary component acts as a trigger and can be clicked
-         */
-        "trigger": boolean;
-    }
-    interface BalAccordionTrigger {
-        "active": boolean;
-        /**
-          * Trigger will be a bal-button
-         */
-        "button": boolean;
-        /**
-          * BalIcon of the close trigger button
-         */
-        "closeIcon": string;
-        /**
-          * Label of the close trigger button
-         */
-        "closeLabel": string;
-        /**
-          * The color to use from your application's color palette.
-         */
-        "color": BalProps.BalButtonColor;
-        /**
-          * If `true` the button is aligned over the whole width
-         */
-        "expanded": boolean;
-        /**
-          * BalIcon of the open trigger button
-         */
-        "openIcon": string;
-        /**
-          * Label of the open trigger button
-         */
-        "openLabel": string;
-        /**
-          * Size of the button
-         */
-        "size": BalProps.BalButtonSize;
-        "state": AccordionState;
-    }
-    interface BalApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated": boolean;
-        "ready": boolean;
-        "setFocus": (elements: HTMLElement[]) => Promise<void>;
-    }
-    interface BalBadge {
-        /**
-          * Define the color for the badge.
-         */
-        "color": BalProps.BalBadgeColor;
-        /**
-          * Name of the icon to show. If a icon is present text should be hidden.
-         */
-        "icon"?: string;
-        /**
-          * If `true` the badge is added to the top right corner of the card.
-         */
-        "position": BalProps.BalBadgePosition;
-        /**
-          * Define the size of badge. Small is recommended for tabs.
-         */
-        "size": BalProps.BalBadgeSize;
-    }
-    interface BalButton {
-        /**
-          * A11y attributes for the native button element.
-         */
-        "aria"?: BalProps.BalButtonAria;
-        /**
-          * The color to use from your application's color palette.
-         */
-        "color": BalProps.BalButtonColor;
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled": boolean;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType": BalProps.BalButtonElementType;
-        /**
-          * If `true` the button has a full width
-         */
-        "expanded": boolean;
-        /**
-          * If `true` the button has no padding and a reduced height
-         */
-        "flat": boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the left button icon
-         */
-        "icon": string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight": string;
-        /**
-          * If `true` the icon turns
-         */
-        "iconTurn": boolean;
-        /**
-          * If `true` the button is inverted
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the button has a active theme
-         */
-        "isActive": boolean;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading": boolean;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * The label of the button will not break
-         */
-        "noWrap": boolean;
-        /**
-          * If `true` the button is outlined
-         */
-        "outlined": boolean;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        /**
-          * If `true` the button is rounded.
-         */
-        "rounded": boolean;
-        /**
-          * If `true` adds a box shadow to improve readability on image background
-         */
-        "shadow": boolean;
-        /**
-          * Size of the button
-         */
-        "size": BalProps.BalButtonSize;
-        /**
-          * If `true` the width of the buttons is limited
-         */
-        "square": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
-    }
-    interface BalButtonGroup {
-        /**
-          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
-         */
-        "direction": BalProps.BalButtonGroupDirection;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position": BalProps.BalButtonGroupPosition;
-        /**
-          * If `true` the flex direction is used in reverse on mobile.
-         */
-        "reverse": boolean;
-    }
-    interface BalCard {
-        /**
-          * If `true` a light blue border is added to the card.
-         */
-        "border": boolean;
-        /**
-          * If `true` the card has a hover effect.
-         */
-        "clickable": boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "color": BalProps.BalCardColor;
-        /**
-          * If `true` the card loses its shadow.
-         */
-        "flat": boolean;
-        /**
-          * If `true` the card uses 100% of the available height.
-         */
-        "fullheight": boolean;
-        /**
-          * If `true` the card background color becomes blue.
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the card gets a light background to indicate a selection.
-         */
-        "selected": boolean;
-        /**
-          * Defines the space of the card content.
-         */
-        "space": BalProps.BalCardSpace;
-        /**
-          * If `true` the card loses its border radius.
-         */
-        "square": boolean;
-    }
-    interface BalCardActions {
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position": BalProps.BalCardActionsPosition;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled": boolean;
-        /**
-          * The type of button.
-         */
-        "elementType": BalProps.BalCardButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon": string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight": string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalCardButtonTarget;
-    }
-    interface BalCardContent {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color is bold.
-         */
-        "bold": boolean;
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "color": BalProps.BalHeadingColor;
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCarousel {
-        /**
-          * Defines the image aspect ratio. Should be combined with the interface `product`
-         */
-        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
-        /**
-          * If `true` a light border is shown at the bottom.
-         */
-        "border": boolean;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
-        /**
-          * Defines the layout of the navigation controls.
-         */
-        "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
-        /**
-          * If `true` items move under the controls, instead of having a gap
-         */
-        "controlsOverflow": boolean;
-        /**
-          * If `true` the controls will be sticky to the top.
-         */
-        "controlsSticky": boolean;
-        /**
-          * If `true` the carousel uses the full height
-         */
-        "fullHeight": boolean;
-        "getContainerId": () => Promise<string>;
-        /**
-          * @deprecated Defines the role of the carousel.
-         */
-        "htmlRole": 'tablist' | 'list' | '';
-        /**
-          * Defines special looks.
-         */
-        "interface": 'card' | 'image' | 'product' | '';
-        /**
-          * If `true` the carousel can be used on dark background
-         */
-        "inverted": boolean;
-        /**
-          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
-         */
-        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
-        "next": (steps?: number) => Promise<void>;
-        /**
-          * PUBLIC METHODS ------------------------------------------------------
-         */
-        "previous": (steps?: number) => Promise<void>;
-        /**
-          * If `true` vertical scrolling on mobile is enabled.
-         */
-        "scrollY": boolean;
-        /**
-          * When how many slides are moved when going forward or backward.
-         */
-        "steps": number;
-        /**
-          * Defines the active slide index.
-         */
-        "value": number;
-    }
-    interface BalCarouselItem {
-        /**
-          * Color of the background
-         */
-        "color"?: BalProps.BalCarouselItemColor;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType": BalProps.BalButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * @deprecated Defines the role of the carousel.
-         */
-        "htmlRole": 'tab' | 'listitem' | '';
-        /**
-          * Label of the slide which will be used for pagination tabs
-         */
-        "label": string;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        "setFocus": () => Promise<void>;
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
-    }
-    interface BalCheckbox {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked": boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the control is no padding
-         */
-        "flat": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * Options of the tab like label, value etc.
-         */
-        "getOption": () => Promise<BalCheckboxOption>;
-        "hovered": boolean;
-        /**
-          * If `true` the control is displayed as inline
-         */
-        "inline": boolean;
-        /**
-          * Defines the layout of the checkbox button
-         */
-        "interface": BalProps.BalCheckboxInterface;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible": boolean;
-        /**
-          * Label of the radio item.
-         */
-        "label": string;
-        /**
-          * If `true` the checkbox has no label
-         */
-        "labelHidden": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true`, the value will not be send with a form submit
-         */
-        "nonSubmit": boolean;
-        "pressed": boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        "setButtonTabindex": (value: number) => Promise<void>;
-        /**
-          * Sets the focus on the checkbox input element.
-         */
-        "setFocus": () => Promise<void>;
-        "updateState": () => Promise<void>;
-        /**
-          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
-         */
-        "value": string | number;
-    }
-    interface BalCheckboxButton {
-        "colSize": BalProps.BalCheckboxGroupColumns;
-        "colSizeMobile": BalProps.BalCheckboxGroupColumns;
-        "colSizeTablet": BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalCheckboxButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        "setChecked": (checked?: boolean) => Promise<void>;
-    }
-    interface BalCheckboxGroup {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Defines the column size like the grid.
-         */
-        "columns": BalProps.BalCheckboxGroupColumns;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-         */
-        "columnsMobile": BalProps.BalCheckboxGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-         */
-        "columnsTablet": BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` it acts as the main form control
-         */
-        "control": boolean;
-        /**
-          * If `true`, the user cannot interact with the checkboxes.
-         */
-        "disabled"?: boolean;
-        /**
-          * Uses the whole width
-         */
-        "expanded": boolean;
-        /**
-          * Find the options properties by its value
-         */
-        "getOptionByValue": (value: string) => Promise<BalCheckboxOption>;
-        /**
-          * Defines the layout of the checkbox button
-         */
-        "interface"?: BalProps.BalCheckboxGroupInterface;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "invalid"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalCheckboxOption[];
-        /**
-          * If `true`, the user cannot interact with the checkboxes.
-         */
-        "readonly"?: boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        "setValue": (value: any[]) => Promise<void>;
-        /**
-          * The value of the control.
-         */
-        "value": any[];
-        /**
-          * Displays the checkboxes vertically
-         */
-        "vertical": boolean;
-        /**
-          * If `true`, the controls will be vertically on mobile devices.
-         */
-        "verticalOnMobile": boolean;
-    }
-    interface BalClose {
-        "configChanged": (state: BalConfigState1) => Promise<void>;
-        /**
-          * If `true` it supports dark backgrounds.
-         */
-        "inverted": boolean;
-        /**
-          * Define the size of badge. Small is recommended for tabs.
-         */
-        "size": BalProps.BalCloseSize;
-    }
-    interface BalContent {
-        /**
-          * Defines the text positioning like center, end or default to start.
-         */
-        "align": BalProps.BalContentAlignment;
-        "alignment": BalProps.BalStackAlignment;
-        "direction": BalProps.BalStackDirection;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-         */
-        "layout": BalProps.BalContentLayout;
-        /**
-          * Defines the space between the child elements. Default is xx-small.
-         */
-        "space": BalProps.BalContentSpace;
-    }
-    interface BalData {
-        /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border": boolean;
-        /**
-          * If `true` the data list is horizontal instead of vertical.
-         */
-        "horizontal": boolean;
-    }
-    interface BalDataItem {
-        /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border": boolean;
-        /**
-          * If `true` the item gets a lighter font color.
-         */
-        "disabled": boolean;
-    }
-    interface BalDataLabel {
-        /**
-          * If `true` an asterix is added after the label.
-         */
-        "required": boolean;
-    }
-    interface BalDataValue {
-        /**
-          * If `true` the button will get disabled.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` a small button with a edit icon will be shown on the right.
-         */
-        "editable": boolean;
-        /**
-          * If `true` the text will break and the height of the item increases.
-         */
-        "multiline": boolean;
-    }
-    interface BalDate {
-        /**
-          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
-         */
-        "allowInvalidValue": boolean;
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates": BalProps.BalDateCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * Closes the accordion
-         */
-        "close": () => Promise<boolean>;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
-         */
-        "freeSolo": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Opens the accordion
-         */
-        "open": () => Promise<boolean>;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required": boolean;
-        /**
-          * Selects an option
-         */
-        "select": (dateString: string) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm1) => Promise<void>;
-        /**
-          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Triggers the accordion
-         */
-        "toggle": () => Promise<boolean>;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon": boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value": string | undefined;
-    }
-    interface BalDateCalendar {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates": BalProps.BalDateCalendarAllowedDatesCallback | undefined;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
-         */
-        "defaultDate"?: string;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
-    interface BalDateCalendarCell {
-        /**
-          * PUBLIC PROPERTY API ------------------------------------------------------
-         */
-        "day"?: number;
-        "disabled": boolean;
-        "fullDate": string;
-        "isoDate": string;
-        "month"?: number;
-        "selected": boolean;
-        "today": boolean;
-        "year"?: number;
-    }
-    interface BalDivider {
-        /**
-          * Defines the color of the separator line.
-         */
-        "borderStyle": BalProps.BalDividerBorderStyle;
-        /**
-          * Defines the color of the separator line.
-         */
-        "color": BalProps.BalDividerColor;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-         */
-        "layout": BalProps.BalDividerLayout;
-        /**
-          * Defines the space between the child elements. Default is xx-small.
-         */
-        "space": BalProps.BalDividerSpace;
-    }
-    interface BalDocApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated": boolean;
-        "language"?: string;
-        "logComponents": string;
-        "logCustom": boolean;
-        "logEvents": boolean;
-        "logLifecycle": boolean;
-        "logRender": boolean;
-        "region"?: string;
-        "stickyFooter": boolean;
-    }
-    interface BalDropdown {
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * If `true`, the selected options are shown as chips
-         */
-        "chips": boolean;
-        /**
-          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
-         */
-        "clear": () => Promise<void>;
-        /**
-          * If `true`, a cross at the end is visible to clear the selection
-         */
-        "clearable": boolean;
-        /**
-          * Closes the popup with option list
-         */
-        "close": () => Promise<void>;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Defines the max height of the list element
-         */
-        "contentHeight": number;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled": boolean;
-        /**
-          * Defines the filter logic of the list
-         */
-        "filter": BalProps.BalOptionListFilter;
-        /**
-          * Returns the value of the component
-         */
-        "getValue": () => Promise<string[]>;
-        /**
-          * If `true` there will be on trigger icon visible
-         */
-        "icon": string;
-        /**
-          * Defines a inline label to be shown before the value
-         */
-        "inlineLabel": string;
-        /**
-          * If `true`, the component will be shown as invalid
-         */
-        "invalid": boolean;
-        "inverted": boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading": boolean;
-        /**
-          * If `true`, the user can select multiple options.
-         */
-        "multiple": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Opens the popup with option list
-         */
-        "open": () => Promise<void>;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options": BalOption[];
-        /**
-          * Defines the placeholder of the component. Only shown when the value is empty
-         */
-        "placeholder": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        /**
-          * Select option by passed value
-         */
-        "select": (newValue: string | string[]) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets the focus on the input element
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Defines the size of the control.
-         */
-        "size": BalProps.BalDropdownSize;
-        /**
-          * Defines the color style of the control
-         */
-        "theme": BalProps.BalDropdownTheme;
-        /**
-          * The value of the selected options.
-         */
-        "value"?: string | string[];
-    }
-    interface BalField {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
-         */
-        "horizontal"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required"?: boolean;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid": boolean;
-    }
-    interface BalFieldControl {
-        /**
-          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
-         */
-        "expandedOnMobile"?: boolean;
-        /**
-          * @deprecated Baloise icon for the left side of the input
-         */
-        "iconLeft": string;
-        /**
-          * @deprecated Baloise icon for the right side of the input
-         */
-        "iconRight": string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading": boolean;
-    }
-    interface BalFieldHint {
-        /**
-          * Text for the close button.
-         */
-        "closeLabel": string;
-        /**
-          * Disables the close button for tablet and desktop
-         */
-        "small": boolean;
-        /**
-          * Text of the inputs label
-         */
-        "subject"?: string;
-    }
-    interface BalFieldLabel {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-         */
-        "htmlFor"?: string;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required": boolean;
-        /**
-          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-         */
-        "size": BalProps.BalFieldLabelSize;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-         */
-        "weight": BalProps.BalFieldLabelWeight;
-    }
-    interface BalFieldMessage {
-        /**
-          * Defines the color of the message.
-         */
-        "color": BalProps.BalFieldMessageColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid": boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid": boolean;
-    }
-    interface BalFileUpload {
-        /**
-          * Accepted MIME-Types like `image/png,image/jpeg`.
-         */
-        "accept"?: string;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Sets the file list to an empty list
-         */
-        "clear": () => Promise<void>;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * If `true` below the drop-down area it generates a file list.
-         */
-        "hasFileList": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * Label of the drop area.
-         */
-        "label": string;
-        /**
-          * If `true` the file upload is disabled and shows a spinner
-         */
-        "loading": boolean;
-        /**
-          * Allowed max bundle size in bytes.
-         */
-        "maxBundleSize"?: number;
-        /**
-          * Allowed max file size in bytes.
-         */
-        "maxFileSize"?: number;
-        /**
-          * Allowed number of files in the bundle.
-         */
-        "maxFiles"?: number;
-        /**
-          * If `true` multiple file upload is possible.
-         */
-        "multiple": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Overrides the default subtitle file size
-         */
-        "subTitle"?: (file: File) => string;
-        /**
-          * Input value.
-         */
-        "value": File[];
-    }
-    interface BalFooter {
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * If `true` the language selection will be hidden.
-         */
-        "hideLanguageSelection": boolean;
-        /**
-          * If `true` the legal Baloise links will be hidden.
-         */
-        "hideLinks": boolean;
-        /**
-          * If provided, the footer links will be overridden.
-         */
-        "overrideLinks": FooterLink[] | undefined;
-        /**
-          * If `true` the social media links will be shown.
-         */
-        "showSocialMedia": boolean;
-    }
-    interface BalForm {
-        /**
-          * The css class for the inner form element
-         */
-        "formClass": string;
-        /**
-          * If `true` a native form element is added as a wrapper of the slot.
-         */
-        "native": boolean;
-        /**
-          * If `true` it adds the novalidate attribute to the native form element.
-         */
-        "novalidate": boolean;
-        /**
-          * Scrolls to the first invalid field inside this form component.
-         */
-        "scrollToFirstInvalidField": () => Promise<void>;
-    }
-    interface BalFormCol {
-        "size": BalProps.BalFormColSize;
-    }
-    interface BalFormGrid {
-    }
-    interface BalHeading {
-        /**
-          * The actual heading level used in the HTML markup.
-         */
-        "autoLevel"?: BalProps.BalHeadingVisualLevel;
-        /**
-          * The theme type of the toast.
-         */
-        "color": BalProps.BalHeadingColor;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted": boolean;
-        /**
-          * The actual heading level used in the HTML markup.
-         */
-        "level": BalProps.BalHeadingLevel;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap": boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow": boolean;
-        /**
-          * Defines at which position the heading has spacing.
-         */
-        "space"?: 'none' | 'bottom' | 'top' | 'all';
-        /**
-          * If `true` the heading gets displayed slimmer.
-         */
-        "subtitle": boolean;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
-    interface BalHint {
-        /**
-          * Text for the close button.
-         */
-        "closeLabel"?: string;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Closes the hint box.
-         */
-        "dismiss": () => Promise<void>;
-        /**
-          * Opens the hint box.
-         */
-        "present": () => Promise<void>;
-        /**
-          * Disables the close button for tablet and desktop
-         */
-        "small": boolean;
-        /**
-          * Toggles the hint box.
-         */
-        "toggle": () => Promise<void>;
-    }
-    interface BalHintText {
-    }
-    interface BalHintTitle {
-    }
-    interface BalIcon {
-        /**
-          * The theme type of the button.
-         */
-        "color": BalProps.BalIconColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hovered": boolean;
-        /**
-          * If `true` the icon has display inline style
-         */
-        "inline": boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the icon is inverted
-         */
-        "inverted": boolean;
-        /**
-          * Name of the baloise icon.
-         */
-        "name": string;
-        "pressed": boolean;
-        /**
-          * If `true` adds a box shadow to improve readability on image background
-         */
-        "shadow": boolean;
-        /**
-          * Defines the size of the icon.
-         */
-        "size": BalProps.BalIconSize;
-        /**
-          * Svg content.
-         */
-        "svg": string;
-        /**
-          * If `true` the icon is rotated 180deg
-         */
-        "turn": boolean;
-    }
-    interface BalInput {
-        /**
-          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
-         */
-        "accept"?: string;
-        /**
-          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
-         */
-        "allowedKeyPress"?: string;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
-         */
-        "autocapitalize": string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * Whether auto correction should be enabled when the user is entering/editing the text value.
-         */
-        "autocorrect": BalProps.BalInputAutocorrect;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-         */
-        "autofocus": boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable": boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        "hasIconRight": boolean;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalInputInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
-         */
-        "mask"?: BalProps.BalInputMask;
-        /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
-         */
-        "max"?: string;
-        /**
-          * Defines the max length of the value.
-         */
-        "maxLength"?: number;
-        /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
-         */
-        "min"?: string;
-        /**
-          * Defines the min length of the value.
-         */
-        "minLength"?: number;
-        /**
-          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
-         */
-        "multiple"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
-         */
-        "pattern"?: string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * If `true`, the element will have its spelling and grammar checked.
-         */
-        "spellcheck": boolean;
-        /**
-          * Adds a suffix the the input-value after blur.
-         */
-        "suffix"?: string;
-        /**
-          * Defines the text align of the input value.
-         */
-        "textAlign": 'center' | 'left' | 'right';
-        /**
-          * Defines the type of the input (text, number, email ...).
-         */
-        "type": BalProps.BalInputInputType;
-        /**
-          * The value of the input.
-         */
-        "value"?: string;
-    }
-    interface BalInputDate {
-        /**
-          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
-         */
-        "allowInvalidValue": boolean;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable": boolean;
-        "configChanged": (config: BalConfigState1) => Promise<void>;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        "hasIconRight": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value": string | undefined;
-    }
-    interface BalInputGroup {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-    }
-    interface BalInputSlider {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * If `true`, small ticks for the steps are shown.
-         */
-        "hasTicks": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * Max value of the model.
-         */
-        "max": number;
-        /**
-          * Min value of the model.
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The step size. 0 means no steps.
-         */
-        "step": number;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number;
-    }
-    interface BalInputStepper {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * If `true` the input is shown as invalid
-         */
-        "invalid": boolean;
-        /**
-          * The max value the input can have
-         */
-        "max": number;
-        /**
-          * The min value the input can have
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * The steps in which the input increases or decreases
-         */
-        "steps": number;
-        /**
-          * The value of the input. Only allows values in the range of the min max attribute.
-         */
-        "value": number;
-    }
-    interface BalLabel {
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hovered": boolean;
-        /**
-          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-         */
-        "htmlFor"?: string;
-        /**
-          * Define the id of the native label element
-         */
-        "htmlId"?: string;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * When true, the text will is able to break on multiple lines.
-         */
-        "multiline": boolean;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap": boolean;
-        "pressed": boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-         */
-        "size": BalProps.BalLabelSize;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-         */
-        "weight": BalProps.BalLabelWeight;
-    }
-    interface BalList {
-        /**
-          * If `true` only one of the layers can be open and the others close automatically
-         */
-        "accordionOneLevel": boolean;
-        /**
-          * If `true` the list can be used on a light, dark or colored backgrounds
-         */
-        "background": BalProps.BalListBackground;
-        /**
-          * If `true` each list item has a bottom border
-         */
-        "border": boolean;
-        /**
-          * If `true` the list item can not be hovered
-         */
-        "disabled": boolean;
-        /**
-          * Defines the min height of the list item
-         */
-        "size": BalProps.BalListSize;
-    }
-    interface BalListItem {
-        /**
-          * If `true` the list item can be used as a accordion
-         */
-        "accordion": boolean;
-        /**
-          * If `true` the list item shows that it is clickable
-         */
-        "clickable": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * If `true` the list item can be hovered
-         */
-        "disabled": boolean;
-        /**
-          * Closes the accordion
-         */
-        "dismiss": (ignoreNested?: boolean) => Promise<void>;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href": string;
-        /**
-          * Opens the accordion
-         */
-        "present": () => Promise<void>;
-        /**
-          * If `true` the list item has a selected theme
-         */
-        "selected": boolean;
-        /**
-          * If `true` the list item can be used as an accordion inside another accordion
-         */
-        "subAccordionItem": boolean;
-        /**
-          * Specifies where to open the linked document
-         */
-        "target": BalProps.BalListItemTarget;
-        /**
-          * Triggers the accordion
-         */
-        "toggle": () => Promise<void>;
-    }
-    interface BalListItemAccordionBody {
-        /**
-          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
-         */
-        "accordionGroup"?: string;
-        /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start
-         */
-        "contentAlignment": BalProps.BalListContentAlignment;
-        /**
-          * Sets space to content of the accordion body
-         */
-        "contentSpace": BalProps.BalListContentSpacing;
-    }
-    interface BalListItemAccordionHead {
-        /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen": boolean;
-        /**
-          * Icon name string with value 'plus' on default
-         */
-        "icon": BalProps.BalListItemAccordionHeadIcon;
-    }
-    interface BalListItemContent {
-        "contentAlignment"?: string;
-    }
-    interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-         */
-        "right": boolean;
-    }
-    interface BalListItemSubtitle {
-    }
-    interface BalListItemTitle {
-        /**
-          * Heading level with value 'h4' on default
-         */
-        "level": BalProps.BalHeadingLevel;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
-    interface BalLogo {
-        /**
-          * Defines if the animation should be active
-         */
-        "animated": boolean;
-        /**
-          * Defines the color of the logo.
-         */
-        "color": BalProps.BalLogoColor;
-        /**
-          * Size of the logo svg
-         */
-        "size": BalProps.BalLogoSize;
-    }
-    interface BalModal {
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "backdropDismiss": boolean;
-        "close": () => Promise<void>;
-        /**
-          * The component to display inside of the modal.
-         */
-        "component": BalProps.ComponentRef;
-        /**
-          * The data to pass to the modal component.
-         */
-        "componentProps"?: BalProps.ComponentProps;
-        /**
-          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
-         */
-        "cssClass"?: string | string[];
-        "dataTestId"?: string;
-        "delegate"?: BalProps.FrameworkDelegate;
-        "demo": boolean;
-        /**
-          * Closes the presented modal with the modal controller
-         */
-        "dismiss": (data?: any, role?: string) => Promise<boolean>;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "hasBackdrop": boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "isClosable": boolean;
-        /**
-          * Defines the width of the modal body
-         */
-        "modalWidth": number;
-        /**
-          * Returns a promise that resolves when the modal did dismiss.
-         */
-        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        /**
-          * Returns a promise that resolves when the modal will dismiss.
-         */
-        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        "open": () => Promise<void>;
-        "overlayIndex": number;
-        /**
-          * Presents the modal through the modal controller
-         */
-        "present": () => Promise<void>;
-        /**
-          * Defines the space/padding of the modal
-         */
-        "space": BalProps.BalModalSpace;
-    }
-    interface BalModalBody {
-    }
-    interface BalModalHeader {
-    }
-    interface BalNav {
-        /**
-          * Link level structure.
-         */
-        "buttons": BalProps.BalNavMetaButtons;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Link level structure.
-         */
-        "logo"?: BalProps.BalNavLogoLink;
-        /**
-          * Link level structure.
-         */
-        "options": BalProps.BalNavOptions;
-    }
-    interface BalNavLink {
-        /**
-          * If `true` the link can be clickable
-         */
-        "clickable": boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * If `true` the link gets selected with a underline
-         */
-        "selected": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * Defines the variant of the link
-         */
-        "variant": BalProps.BalNavLinkVariant;
-    }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
-        /**
-          * Defines the static column which is always aligned to the right
-         */
-        "staticCol": BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
-        /**
-          * Defines the color of the group
-         */
-        "color": BalProps.BalNavLinkGroupColor;
-    }
-    interface BalNavMenuBar {
-        /**
-          * Tells when to hide the bar
-         */
-        "invisible": BalProps.BalNavMenuBarInvisible;
-        /**
-          * Defines the position of the bar
-         */
-        "position": BalProps.BalNavMenuBarPosition;
-    }
-    interface BalNavMenuFlyout {
-        /**
-          * This is used to connect the flyout to the aria controls
-         */
-        "navId": string;
-    }
-    interface BalNavMetaBar {
-        /**
-          * Tells when to hide the bar
-         */
-        "invisible": BalProps.BalNavMetaBarInvisible;
-        /**
-          * Defines the position of the bar
-         */
-        "position": BalProps.BalNavMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size": BalProps.BalNavMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant": BalProps.BalNavMetaBarVariant;
-    }
-    interface BalNavbar {
-        /**
-          * Sets the content content width with the regular container classes
-         */
-        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        /**
-          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
-         */
-        "interface": BalProps.BalNavbarInterface;
-        /**
-          * It `true` the navbar has a white background. Always use the blue header.
-         */
-        "light": boolean;
-    }
-    interface BalNavbarBrand {
-        /**
-          * Defines if the logo animation should be active
-         */
-        "animated": boolean;
-        /**
-          * Link of the logo / title.
-         */
-        "href"?: string;
-        "interface": BalProps.BalNavbarInterface;
-        /**
-          * Src to display a logo -> replaces the default Baloise Logo
-         */
-        "logo"?: string;
-        /**
-          * Size of the logo SVG
-         */
-        "logoSize": BalProps.BalLogoSize;
-        /**
-          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
-         */
-        "simple": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-    }
-    interface BalNavbarMenu {
-        "interface": BalProps.BalNavbarInterface;
-        "toggle": (isMenuActive: boolean) => Promise<void>;
-    }
-    interface BalNavbarMenuEnd {
-        "interface": BalProps.BalNavbarInterface;
-    }
-    interface BalNavbarMenuStart {
-        "interface": BalProps.BalNavbarInterface;
-    }
-    interface BalNotices {
-        "interface": 'toast' | 'snackbar';
-    }
-    interface BalNotification {
-        /**
-          * Defines the color of the element Color type primary is deprecated, please use info instead.
-         */
-        "color": BalProps.BalNotificationColor;
-    }
-    interface BalNumberInput {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * Defines the allowed decimal points for the `number-input`.
-         */
-        "decimal": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the input value has 0 as default value
-         */
-        "exactNumber": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
-         */
-        "max"?: string;
-        /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
-         */
-        "min"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
-         */
-        "pattern"?: string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Adds a suffix the the input-value after blur.
-         */
-        "suffix"?: string;
-        /**
-          * The value of the input.
-         */
-        "value"?: number;
-    }
-    interface BalOption {
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled": boolean;
-        /**
-          * If `true`, the option is focused.
-         */
-        "focused": boolean;
-        /**
-          * If `true`, the option is hidden.
-         */
-        "hidden": boolean;
-        /**
-          * If `true`, the option is shown in red.
-         */
-        "invalid": boolean;
-        /**
-          * Label will be shown in the input element when it got selected
-         */
-        "label": string;
-        /**
-          * If `true`, the option can present in more than one line.
-         */
-        "multiline": boolean;
-        /**
-          * Selects or deselects the option and informs other components
-         */
-        "select": (selected?: boolean) => Promise<void>;
-        /**
-          * If `true`, the option is selected.
-         */
-        "selected": boolean;
-        /**
-          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
-         */
-        "value": string;
-    }
-    interface BalOptionList {
-        /**
-          * Defines the max height of the list element
-         */
-        "contentHeight"?: number;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled": boolean;
-        /**
-          * Defines the filter logic of the list
-         */
-        "filter": BalProps.BalOptionListFilter;
-        /**
-          * Filter the options by the given filter property and hides options
-          * @returns focusIndex
-         */
-        "filterByContent": (search: string) => Promise<number>;
-        /**
-          * Focus the option with the label that starts with the search property
-          * @returns focusIndex
-         */
-        "focusByLabel": (search: string, config: Partial<{ select: boolean; }>) => Promise<number>;
-        /**
-          * Focus the first visible option in the list
-          * @returns focusIndex
-         */
-        "focusFirst": () => Promise<number>;
-        /**
-          * Defines the focused option with his index value
-         */
-        "focusIndex": number;
-        /**
-          * Focus the last visible option in the list
-          * @returns focusIndex
-         */
-        "focusLast": () => Promise<number>;
-        /**
-          * Focus the next visible option in the list
-          * @returns focusIndex
-         */
-        "focusNext": () => Promise<number>;
-        /**
-          * Focus the previous visible option in the list
-          * @returns focusIndex
-         */
-        "focusPrevious": () => Promise<number>;
-        /**
-          * Focus the selected visible option in the list, if no option is selected it selects the first one
-         */
-        "focusSelected": () => Promise<number>;
-        /**
-          * Returns a list of options
-         */
-        "getLabels": () => Promise<string[]>;
-        /**
-          * Returns a list of accessible options
-         */
-        "getOptions": () => Promise<BalOption[]>;
-        /**
-          * Returns a list of option labels
-         */
-        "getSelectedOptions": (values?: string[]) => Promise<BalOption[]>;
-        /**
-          * Returns a list of option values
-         */
-        "getSelectedValues": () => Promise<string[]>;
-        /**
-          * Returns a list of options
-         */
-        "getValues": () => Promise<string[]>;
-        /**
-          * Id of the label element to describe this option list
-         */
-        "labelledby"?: string;
-        /**
-          * If `true` the list supports multiple selections
-         */
-        "multiple": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        /**
-          * Resets the focus index to pristine and scrolls to the top of the list
-         */
-        "resetFocus": () => Promise<number>;
-        /**
-          * Shows or hides all options
-         */
-        "resetHidden": (hidden?: boolean) => Promise<void>;
-        /**
-          * Selects or deselects all options
-         */
-        "resetSelected": (selected?: boolean) => Promise<void>;
-        /**
-          * Selects the option with the current focus
-         */
-        "selectByFocus": () => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Updates options
-         */
-        "updateSelected": (values?: string[]) => Promise<void>;
-    }
-    interface BalPagination {
-        /**
-          * Align the buttons to start, center or end
-         */
-        "align": BalProps.BalPaginationAlignment;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
-        /**
-          * Disables component
-         */
-        "disabled": boolean;
-        /**
-          * Defines the layout of the pagination
-         */
-        "interface": BalProps.BalPaginationInterface;
-        /**
-          * Go to the next page
-         */
-        "next": () => Promise<void>;
-        /**
-          * Specify the max visible pages before and after the selected page
-         */
-        "pageRange": number;
-        /**
-          * Go to the previous page
-         */
-        "previous": () => Promise<void>;
-        /**
-          * Size of the buttons
-         */
-        "size": BalProps.BalPaginationSize;
-        /**
-          * If 'true, the pagination will be sticky to the top
-         */
-        "sticky": boolean;
-        /**
-          * If sticky, the top position will be determined by this value
-         */
-        "top": number;
-        /**
-          * The total amount of pages
-         */
-        "totalPages": number;
-        /**
-          * Current selected page
-         */
-        "value": number;
-    }
-    interface BalPopover {
-        /**
-          * If `true` the popover content is open.
-         */
-        "active": boolean;
-        /**
-          * If `true` a little arrow is added, which points to the trigger element
-         */
-        "arrow": boolean;
-        /**
-          * If `true` the popover automatically opens on a click
-         */
-        "autoTrigger": boolean;
-        /**
-          * If `true` a backdrop is added
-         */
-        "backdrop": boolean;
-        /**
-          * Closes the popover
-         */
-        "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
-        /**
-          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
-         */
-        "hint": boolean;
-        /**
-          * If `true` the popover shows on hover
-         */
-        "hover": boolean;
-        /**
-          * If `true` there will be no backdrop
-         */
-        "mobileTop": boolean;
-        /**
-          * Define the offset of the popover content.
-         */
-        "offsetX": number;
-        /**
-          * Define the offset of the popover content.
-         */
-        "offsetY": number;
-        /**
-          * Define padding of the overflow
-         */
-        "padding": number;
-        /**
-          * Define the position of the popover content.
-         */
-        "position": BalProps.BalPopoverPlacement;
-        /**
-          * Open the popover
-         */
-        "present": (options?: PopoverPresentOptions) => Promise<void>;
-        /**
-          * Open or closes the popover
-         */
-        "toggle": (options?: PopoverPresentOptions) => Promise<void>;
-        /**
-          * If `true` the popover is shown as a tooltip
-         */
-        "tooltip": boolean;
-    }
-    interface BalPopoverContent {
-        /**
-          * Defines background color of the content.
-         */
-        "color": BalProps.BalPopoverContentColor;
-        /**
-          * Define the min width of the popover content.
-         */
-        "contentMinWidth": number;
-        /**
-          * Define the max width of the popover content.
-         */
-        "contentWidth": number;
-        /**
-          * If `true` the content has a min width of 100%.
-         */
-        "expanded": boolean;
-        /**
-          * If `true` the content will have a divider line on top
-         */
-        "mobileTop": boolean;
-        /**
-          * If `true` the popover does not have the shadow
-         */
-        "noShadow": boolean;
-        /**
-          * Defines border-radius of popover content.
-         */
-        "radius": BalProps.BalPopoverContentRadius;
-        /**
-          * Limit the height of the popover content. Pass the amount of pixel.
-         */
-        "scrollable": number;
-        /**
-          * If `true` the popover has no padding space.
-         */
-        "spaceless": boolean;
-    }
-    interface BalPopup {
-        "_dismiss": () => Promise<boolean>;
-        "_emitChange": () => Promise<void>;
-        "_present": () => Promise<boolean>;
-        /**
-          * If `true` the popup is open.
-         */
-        "active": boolean;
-        /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow": boolean;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "backdrop": boolean;
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "backdropDismiss": boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "closable": boolean;
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        "demo": boolean;
-        /**
-          * Closes the popup
-         */
-        "dismiss": () => Promise<void>;
-        /**
-          * Label or title of the popup element
-         */
-        "label": string;
-        /**
-          * Offset form trigger to popup.
-         */
-        "offset": number;
-        /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
-         */
-        "placement": BalProps.BalPopupPlacement;
-        /**
-          * Opens the popup
-         */
-        "present": () => Promise<void>;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference"?: string;
-        "setMinWidth": (value: number) => Promise<void>;
-        /**
-          * Triggers the popup
-         */
-        "toggle": () => Promise<void>;
-        /**
-          * Defines the variant / type of popup
-         */
-        "variant": BalProps.BalPopupVariant;
-    }
-    interface BalProgressBar {
-        /**
-          * The background color
-         */
-        "background": BalProps.BalProgressBarBackground;
-        /**
-          * The progress bar color
-         */
-        "color": BalProps.BalProgressBarColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
-         */
-        "value": number;
-    }
-    interface BalRadio {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the control is no padding
-         */
-        "flat": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * Options of the tab like label, value etc.
-         */
-        "getOption": () => Promise<BalRadioOption>;
-        "hovered": boolean;
-        /**
-          * Defines the layout of the radio button
-         */
-        "interface": BalProps.BalRadioInterface;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible": boolean;
-        /**
-          * Label of the radio item.
-         */
-        "label": string;
-        /**
-          * If `true` the radio has no label
-         */
-        "labelHidden": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true`, the value will not be send with a form submit
-         */
-        "nonSubmit": boolean;
-        "pressed": boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        "setButtonTabindex": (value: number) => Promise<void>;
-        "setFocus": (ev: any) => Promise<void>;
-        "updateState": () => Promise<void>;
-        /**
-          * the value of the radio.
-         */
-        "value"?: any | null;
-    }
-    interface BalRadioButton {
-        "colSize": BalProps.BalRadioGroupColumns;
-        "colSizeMobile": BalProps.BalRadioGroupColumns;
-        "colSizeTablet": BalProps.BalRadioGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalRadioButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        "setChecked": (checked?: boolean) => Promise<void>;
-    }
-    interface BalRadioGroup {
-        /**
-          * If `true`, the radios can be deselected.
-         */
-        "allowEmptySelection": boolean;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-         */
-        "columnsMobile": BalProps.BalRadioGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-         */
-        "columnsTablet": BalProps.BalRadioGroupColumns;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * Uses the whole width
-         */
-        "expanded": boolean;
-        /**
-          * Find the options properties by its value
-         */
-        "getOptionByValue": (value: string) => Promise<BalRadioOption>;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid": BalProps.BalRadioGroupColumns;
-        /**
-          * Defines the layout of the radio button
-         */
-        "interface"?: BalProps.BalRadioGroupInterface;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "invalid"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalRadioOption[];
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        "setValue": (value: number | string | boolean) => Promise<void>;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
-        /**
-          * Displays the checkboxes vertically
-         */
-        "vertical": boolean;
-        /**
-          * If `true`, the controls will be vertically on mobile devices.
-         */
-        "verticalOnMobile": boolean;
-    }
-    interface BalSegment {
-        /**
-          * If `true`, the user cannot interact with the segment.
-         */
-        "disabled": boolean;
-        /**
-          * If `true`, the element uses the whole width
-         */
-        "expanded": boolean;
-        /**
-          * If `true`, the segment is shown red.
-         */
-        "invalid": boolean;
-        /**
-          * If `true`, and is vertical then the list height is limited and scrollable.
-         */
-        "scrollable": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * the value of the segment.
-         */
-        "value"?: BalProps.BalSegmentValue;
-        /**
-          * If `true`, the segment items are presented vertical as a list.
-         */
-        "vertical": boolean;
-    }
-    interface BalSegmentItem {
-        "checked": boolean;
-        /**
-          * If `true`, the user cannot interact with the segment button.
-         */
-        "disabled": boolean;
-        "focused": boolean;
-        /**
-          * If `true`, the segment is shown in red.
-         */
-        "invalid": boolean;
-        /**
-          * Label of the segment control
-         */
-        "label": string;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the segment button.
-         */
-        "value": SegmentValue;
-    }
-    interface BalSelect {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
-          * Cancel the popover
-         */
-        "cancel": () => Promise<void>;
-        /**
-          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
-         */
-        "clear": () => Promise<void>;
-        /**
-          * Closes the popover
-         */
-        "close": () => Promise<void>;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "filter": BalProps.BalSelectFilter;
-        /**
-          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
-         */
-        "freeSolo": boolean;
-        /**
-          * Returns the value of the component
-         */
-        "getValue": () => Promise<string[]>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        "inverted": boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading": boolean;
-        /**
-          * Defines the max length of the value.
-         */
-        "maxLength"?: number;
-        /**
-          * If `true` multiple option can be selected
-         */
-        "multiple": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * This label is shown if typeahead is active and all the options are filtered out.
-         */
-        "noDataLabel"?: string;
-        /**
-          * Opens the popover
-         */
-        "open": () => Promise<void>;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true` the filtering is done outside the component.
-         */
-        "remote": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        /**
-          * Defines the height of the popover list.
-         */
-        "scrollable": number;
-        /**
-          * Select option by passed value
-         */
-        "select": (value: string) => Promise<void>;
-        /**
-          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
-         */
-        "selectionOptional": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets the focus on the input element
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * If `true` the user can search by typing into the input field.
-         */
-        "typeahead": boolean;
-        /**
-          * Selected option values. Could also be passed as a string, which gets transformed.
-         */
-        "value"?: string | string[];
-    }
-    interface BalSelectOption {
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled": boolean;
-        "for": string;
-        /**
-          * Label will be shown in the input element when it got selected
-         */
-        "label"?: string;
-        /**
-          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
-         */
-        "value"?: string;
-    }
-    interface BalShape {
-        /**
-          * The shape color
-         */
-        "color": BalProps.BalShapeColor;
-        /**
-          * The shape rotation
-         */
-        "rotation"?: BalProps.BalShapeRotation;
-        /**
-          * The shape variation
-         */
-        "variation": BalProps.BalShapeVariation;
-    }
-    interface BalSheet {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalSheetContainer;
-    }
-    interface BalSnackbar {
-        /**
-          * Label text for the action button
-         */
-        "action": string;
-        "actionHandler": () => void;
-        /**
-          * Closes this snackbar
-         */
-        "close": () => Promise<void>;
-        "closeHandler": () => void;
-        /**
-          * Closes the snackbar after the given duration in ms
-         */
-        "closeIn": (duration: number) => Promise<void>;
-        /**
-          * The theme type of the snackbar.
-         */
-        "color": BalProps.BalSnackbarColor;
-        /**
-          * The duration of the snackbar
-         */
-        "duration": number;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * The icon of the snackbar header
-         */
-        "icon": string;
-        /**
-          * The message of the snackbar as html content
-         */
-        "message": string;
-        /**
-          * The subject of the snackbar header
-         */
-        "subject": string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-    }
-    interface BalSpinner {
-        /**
-          * Defines the color of the spinner.
-         */
-        "color": BalProps.BalSpinnerColor;
-        /**
-          * If `true` the component will not add the spinner animation svg
-         */
-        "deactivated": boolean;
-        /**
-          * If `true` the component can be used on dark background
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the component is smaller
-         */
-        "small": boolean;
-        /**
-          * Defines the look of the spinner
-         */
-        "variation": BalProps.BalSpinnerVariation;
-    }
-    interface BalStack {
-        /**
-          * Defines the text positioning like center, right or default to start.
-         */
-        "align": BalProps.BalStackAlignment;
-        "alignment": BalProps.BalStackAlignment;
-        "direction": BalProps.BalStackDirection;
-        /**
-          * Defines the width of the stack to be exactly the with of the content.
-         */
-        "fitContent": boolean;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-         */
-        "layout": BalProps.BalStackLayout;
-        /**
-          * Defines the horizontal padding left and right of the stack element.
-         */
-        "px": BalProps.BalStackPadding;
-        /**
-          * Defines the vertical padding top and bottom of the stack element.
-         */
-        "py": BalProps.BalStackPadding;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "space": BalProps.BalStackSpace;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "spaceColumn"?: BalProps.BalStackSpace;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "spaceRow"?: BalProps.BalStackSpace;
-        /**
-          * Defines if the child elements will wrap to the next line if there is not enough space left
-         */
-        "useWrap": boolean;
-    }
-    interface BalStage {
-        /**
-          * Defines the background color of the stage section
-         */
-        "color": BalProps.BalStageColor;
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalStageContainer;
-        /**
-          * If true the Baloise Shape is set
-         */
-        "shape": boolean;
-        /**
-          * Shape Rotation
-         */
-        "shapeRotation"?: BalProps.BalShapeRotation;
-        /**
-          * Shape Variation
-         */
-        "shapeVariation"?: BalProps.BalShapeVariation;
-        /**
-          * Defines size of the stage
-         */
-        "size": BalProps.BalStageSize;
-    }
-    interface BalStageBackLink {
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href": string;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted": boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow": boolean;
-    }
-    interface BalStageBody {
-    }
-    interface BalStageFoot {
-    }
-    interface BalStageHead {
-    }
-    interface BalStageImage {
-        /**
-          * optional fallback image in case the srcSet fails
-         */
-        "fallback"?: string;
-        /**
-          * set of images to be used as background image
-         */
-        "srcSet": string;
-    }
-    interface BalStepItem {
-        /**
-          * Tells if this route is active and overrides the bal-tabs value property.
-         */
-        "active": boolean;
-        /**
-          * If `true` the tab is disabled.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the step is marked as done.
-         */
-        "done": boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed": boolean;
-        /**
-          * Options of the tab like label, value etc.
-         */
-        "getOptions": () => Promise<BalStepOption>;
-        /**
-          * Link to path.
-         */
-        "href": string;
-        /**
-          * If `true` the step is hidden.
-         */
-        "invisible": boolean;
-        /**
-          * Label for the tab.
-         */
-        "label": string;
-        /**
-          * Tell's if the linking is done by a router.
-         */
-        "prevent": boolean;
-        /**
-          * Sets the tab active.
-         */
-        "setActive": (active: boolean) => Promise<void>;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * This is the key of the tab.
-         */
-        "value": string;
-    }
-    interface BalSteps {
-        /**
-          * If `true` the tabs or steps can be clicked.
-         */
-        "clickable": boolean;
-        /**
-          * Defines the color of the steps so it can be placed on colored backgrounds
-         */
-        "color": BalProps.BalStepsColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * Find the options properties by its value
-         */
-        "getOptionByValue": (value: string) => Promise<BalStepOption>;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options": BalStepOption[];
-        /**
-          * Go to tab with the given value
-         */
-        "select": (step: BalStepOption) => Promise<void>;
-        /**
-          * Value of the current active step
-         */
-        "value"?: string;
-    }
-    interface BalTabItem {
-        /**
-          * Tells if this route is active and overrides the bal-tabs value property.
-         */
-        "active": boolean;
-        /**
-          * A11y attributes for the native tab element.
-         */
-        "aria"?: BalProps.BalTabItemAria;
-        /**
-          * If `true` a small red bubble is added to the tab.
-         */
-        "bubble": boolean | string;
-        /**
-          * If `true` the tab is disabled.
-         */
-        "disabled": boolean;
-        /**
-          * Options of the tab like label, value etc.
-         */
-        "getOptions": () => Promise<BalTabOption>;
-        /**
-          * Link to path.
-         */
-        "href": string;
-        /**
-          * Tab icon not available for the steps.
-         */
-        "icon"?: string;
-        /**
-          * If `true` the step is hidden.
-         */
-        "invisible": boolean;
-        /**
-          * Label for the tab.
-         */
-        "label": string;
-        /**
-          * If `true` the tab does not have a panel
-         */
-        "noPanel": boolean;
-        /**
-          * Tell's if the linking is done by a router.
-         */
-        "prevent": boolean;
-        /**
-          * Sets the tab active.
-         */
-        "setActive": (active: boolean) => Promise<void>;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * This is the key of the tab.
-         */
-        "value": string;
-    }
-    interface BalTable {
-        /**
-          * If `true` the table has a full width
-         */
-        "expanded": boolean;
-    }
-    interface BalTabs {
-        /**
-          * If `true` the tab items can be open and closed
-         */
-        "accordion": boolean;
-        /**
-          * If `true` a light border is shown for the tabs.
-         */
-        "border": boolean;
-        /**
-          * If `true` the tabs or tabs can be clicked.
-         */
-        "clickable": boolean;
-        "closeAccordion": () => Promise<void>;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Defines the layout of the tabs.
-         */
-        "context"?: BalProps.BalTabsContext;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true` the field expands over the whole width.
-         */
-        "expanded": boolean;
-        /**
-          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
-         */
-        "float": BalProps.BalTabsFloat;
-        /**
-          * If `true` the tabs is a block element and uses 100% of the width
-         */
-        "fullwidth": boolean;
-        /**
-          * Find the options properties by its value
-         */
-        "getOptionByValue": (value: string) => Promise<BalTabOption>;
-        /**
-          * Defines the layout of the tabs.
-         */
-        "iconPosition": BalProps.BalTabsIconPosition;
-        /**
-          * If `true` the tabs can be uses on dark background
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the tabs selected line is optional
-         */
-        "optionalTabSelection": boolean;
-        /**
-          * Tabs can be passed as a property or through HTML markup.
-         */
-        "options": BalTabOption[];
-        /**
-          * If `true` the tabs have a carousel if they need more space than provided.
-         */
-        "overflow": boolean;
-        "renderLine": () => Promise<void>;
-        /**
-          * Go to tab with the given value
-         */
-        "select": (tab: BalTabOption) => Promise<void>;
-        /**
-          * If `true` the tabs are shown as a select component on mobile
-         */
-        "selectOnMobile": boolean;
-        /**
-          * If `true` the tabs container does not have a padding left or right.
-         */
-        "spaceless": boolean;
-        "value"?: string;
-        /**
-          * If `true` tabs are align vertically.
-         */
-        "vertical": BalProps.BalTabsVertical;
-        /**
-          * The col size of the tabs on vertical mode.
-         */
-        "verticalColSize": BalProps.BalTabsColSize;
-    }
-    interface BalTag {
-        /**
-          * The theme type of the tag.
-         */
-        "closable": boolean;
-        /**
-          * The theme type of the tag.
-         */
-        "color": BalProps.BalTagColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Overwrites the default color to invalid style
-         */
-        "invalid": boolean;
-        /**
-          * If `true` a light version of the color is displayed
-         */
-        "light": boolean;
-        /**
-          * Choosing left or center the tag is aligned to that side in the bal-card.
-         */
-        "position": BalProps.BalTagPlacement;
-        /**
-          * The size of the tag element
-         */
-        "size": BalProps.BalTagSize;
-        "transparent": boolean;
-    }
-    interface BalTagGroup {
-    }
-    interface BalText {
-        /**
-          * If `true` the text is bold
-         */
-        "bold": boolean;
-        /**
-          * Defines the color of the text.
-         */
-        "color": BalProps.BalTextColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the text has heading font family
-         */
-        "heading": boolean;
-        "hovered": boolean;
-        /**
-          * If `true` the text is shown as a display inline
-         */
-        "inline": boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted": boolean;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap": boolean;
-        "pressed": boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow": boolean;
-        /**
-          * Defines the size of the paragraph
-         */
-        "size": BalProps.BalTextSize;
-        /**
-          * Defines at which position the heading has spacing.
-         */
-        "space": BalProps.BalTextSpace;
-    }
-    interface BalTextarea {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
-         */
-        "autocapitalize": string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-         */
-        "autofocus": boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable": boolean;
-        /**
-          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
-         */
-        "cols"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<textarea>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLTextAreaElement | undefined>;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalTextareaInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-         */
-        "maxLength"?: number;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-         */
-        "minLength"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        /**
-          * The number of visible text lines for the control.
-         */
-        "rows"?: number;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string;
-        /**
-          * Indicates how the control wraps text.
-         */
-        "wrap"?: BalProps.BalTextareaWrap;
-    }
-    interface BalTimeInput {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the input.
-         */
-        "value"?: string;
-    }
-    interface BalToast {
-        /**
-          * Closes this toast
-         */
-        "close": () => Promise<void>;
-        "closeHandler": () => void;
-        /**
-          * Closes the toast after the given duration in ms
-         */
-        "closeIn": (duration: number) => Promise<void>;
-        /**
-          * The theme type of the toast. Color type primary is deprecated, please use info instead.
-         */
-        "color": BalProps.BalToastColor;
-        /**
-          * The duration of the toast in milliseconds.
-         */
-        "duration": number;
-        /**
-          * Content message
-         */
-        "message": string;
-    }
-    interface BalTooltip {
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        "demo": boolean;
-        "dismiss": () => Promise<boolean>;
-        /**
-          * Offset form trigger to tooltip.
-         */
-        "offset": number;
-        /**
-          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
-         */
-        "placement": BalProps.BalTooltipPlacement;
-        "present": () => Promise<boolean>;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference": string;
-        "update": () => Promise<boolean>;
-    }
+  interface BalAccordion {
+    /**
+      * If `true` the accordion is open.
+     */
+    "active": boolean;
+    /**
+      * If `true` the accordion is used on the bottom of a card
+     */
+    "card": boolean;
+    /**
+      * BalIcon of the close trigger button
+     */
+    "closeIcon": string;
+    /**
+      * Label of the close trigger button
+     */
+    "closeLabel": string;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * Closes the accordion
+     */
+    "dismiss": () => Promise<boolean>;
+    "humanToggle": () => Promise<boolean>;
+    /**
+      * BalIcon of the open trigger button
+     */
+    "openIcon": string;
+    /**
+      * Label of the open trigger button
+     */
+    "openLabel": string;
+    /**
+      * Opens the accordion
+     */
+    "present": () => Promise<boolean>;
+    /**
+      * Triggers the accordion
+     */
+    "toggle": () => Promise<boolean>;
+    "version": number;
+  }
+  interface BalAccordionDetails {
+    "active": boolean;
+    "animated": boolean;
+    "state": AccordionState;
+  }
+  interface BalAccordionSummary {
+    "active": boolean;
+    "state": AccordionState;
+    /**
+      * If `true` the whole summary component acts as a trigger and can be clicked
+     */
+    "trigger": boolean;
+  }
+  interface BalAccordionTrigger {
+    "active": boolean;
+    /**
+      * Trigger will be a bal-button
+     */
+    "button": boolean;
+    /**
+      * BalIcon of the close trigger button
+     */
+    "closeIcon": string;
+    /**
+      * Label of the close trigger button
+     */
+    "closeLabel": string;
+    /**
+      * The color to use from your application's color palette.
+     */
+    "color": BalProps.BalButtonColor;
+    /**
+      * If `true` the button is aligned over the whole width
+     */
+    "expanded": boolean;
+    /**
+      * BalIcon of the open trigger button
+     */
+    "openIcon": string;
+    /**
+      * Label of the open trigger button
+     */
+    "openLabel": string;
+    /**
+      * Size of the button
+     */
+    "size": BalProps.BalButtonSize;
+    "state": AccordionState;
+  }
+  interface BalApp {
+    /**
+      * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+     */
+    "animated": boolean;
+    "ready": boolean;
+    "setFocus": (elements: HTMLElement[]) => Promise<void>;
+  }
+  interface BalBadge {
+    /**
+      * Define the color for the badge.
+     */
+    "color": BalProps.BalBadgeColor;
+    /**
+      * Name of the icon to show. If a icon is present text should be hidden.
+     */
+    "icon"?: string;
+    /**
+      * If `true` the badge is added to the top right corner of the card.
+     */
+    "position": BalProps.BalBadgePosition;
+    /**
+      * Define the size of badge. Small is recommended for tabs.
+     */
+    "size": BalProps.BalBadgeSize;
+  }
+  interface BalButton {
+    /**
+      * A11y attributes for the native button element.
+     */
+    "aria"?: BalProps.BalButtonAria;
+    /**
+      * The color to use from your application's color palette.
+     */
+    "color": BalProps.BalButtonColor;
+    /**
+      * If `true`, the user cannot interact with the button.
+     */
+    "disabled": boolean;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * The type of button.
+     */
+    "elementType": BalProps.BalButtonElementType;
+    /**
+      * If `true` the button has a full width
+     */
+    "expanded": boolean;
+    /**
+      * If `true` the button has no padding and a reduced height
+     */
+    "flat": boolean;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * Name of the left button icon
+     */
+    "icon": string;
+    /**
+      * Name of the right button icon
+     */
+    "iconRight": string;
+    /**
+      * If `true` the icon turns
+     */
+    "iconTurn": boolean;
+    /**
+      * If `true` the button is inverted
+     */
+    "inverted": boolean;
+    /**
+      * If `true` the button has a active theme
+     */
+    "isActive": boolean;
+    /**
+      * If `true` the label is hidden and a loading spinner is shown instead.
+     */
+    "loading": boolean;
+    /**
+      * The name of the button, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * The label of the button will not break
+     */
+    "noWrap": boolean;
+    /**
+      * If `true` the button is outlined
+     */
+    "outlined": boolean;
+    /**
+      * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+     */
+    "rel"?: string;
+    /**
+      * If `true` the button is rounded.
+     */
+    "rounded": boolean;
+    /**
+      * If `true` adds a box shadow to improve readability on image background
+     */
+    "shadow": boolean;
+    /**
+      * Size of the button
+     */
+    "size": BalProps.BalButtonSize;
+    /**
+      * If `true` the width of the buttons is limited
+     */
+    "square": boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "value"?: string | number;
+  }
+  interface BalButtonGroup {
+    /**
+      * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+     */
+    "direction": BalProps.BalButtonGroupDirection;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "position": BalProps.BalButtonGroupPosition;
+    /**
+      * If `true` the flex direction is used in reverse on mobile.
+     */
+    "reverse": boolean;
+  }
+  interface BalCard {
+    /**
+      * If `true` a light blue border is added to the card.
+     */
+    "border": boolean;
+    /**
+      * If `true` the card has a hover effect.
+     */
+    "clickable": boolean;
+    /**
+      * Defines the color of the card.
+     */
+    "color": BalProps.BalCardColor;
+    /**
+      * If `true` the card loses its shadow.
+     */
+    "flat": boolean;
+    /**
+      * If `true` the card uses 100% of the available height.
+     */
+    "fullheight": boolean;
+    /**
+      * If `true` the card background color becomes blue.
+     */
+    "inverted": boolean;
+    /**
+      * If `true` the card gets a light background to indicate a selection.
+     */
+    "selected": boolean;
+    /**
+      * Defines the space of the card content.
+     */
+    "space": BalProps.BalCardSpace;
+    /**
+      * If `true` the card loses its border radius.
+     */
+    "square": boolean;
+  }
+  interface BalCardActions {
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "position": BalProps.BalCardActionsPosition;
+  }
+  interface BalCardButton {
+    /**
+      * If `true`, the user cannot interact with the button.
+     */
+    "disabled": boolean;
+    /**
+      * The type of button.
+     */
+    "elementType": BalProps.BalCardButtonElementType;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * Name of the icon like `edit`.
+     */
+    "icon": string;
+    /**
+      * Name of the right button icon
+     */
+    "iconRight": string;
+    /**
+      * If `true` the label is hidden and a loading spinner is shown instead.
+     */
+    "loading": boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalCardButtonTarget;
+  }
+  interface BalCardContent {
+  }
+  interface BalCardSubtitle {
+    /**
+      * If `true` the card text color is bold.
+     */
+    "bold": boolean;
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "color": BalProps.BalHeadingColor;
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "inverted": boolean;
+  }
+  interface BalCardTitle {
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "inverted": boolean;
+  }
+  interface BalCarousel {
+    /**
+      * Defines the image aspect ratio. Should be combined with the interface `product`
+     */
+    "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+    /**
+      * If `true` a light border is shown at the bottom.
+     */
+    "border": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Defines the layout of the navigation controls.
+     */
+    "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
+    /**
+      * If `true` items move under the controls, instead of having a gap
+     */
+    "controlsOverflow": boolean;
+    /**
+      * If `true` the controls will be sticky to the top.
+     */
+    "controlsSticky": boolean;
+    /**
+      * If `true` the carousel uses the full height
+     */
+    "fullHeight": boolean;
+    "getContainerId": () => Promise<string>;
+    /**
+      * @deprecated Defines the role of the carousel.
+     */
+    "htmlRole": 'tablist' | 'list' | '';
+    /**
+      * Defines special looks.
+     */
+    "interface": 'card' | 'image' | 'product' | '';
+    /**
+      * If `true` the carousel can be used on dark background
+     */
+    "inverted": boolean;
+    /**
+      * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+     */
+    "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
+    "next": (steps?: number) => Promise<void>;
+    /**
+      * PUBLIC METHODS ------------------------------------------------------
+     */
+    "previous": (steps?: number) => Promise<void>;
+    /**
+      * If `true` vertical scrolling on mobile is enabled.
+     */
+    "scrollY": boolean;
+    /**
+      * When how many slides are moved when going forward or backward.
+     */
+    "steps": number;
+    /**
+      * Defines the active slide index.
+     */
+    "value": number;
+  }
+  interface BalCarouselItem {
+    /**
+      * Color of the background
+     */
+    "color"?: BalProps.BalCarouselItemColor;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * The type of button.
+     */
+    "elementType": BalProps.BalButtonElementType;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * @deprecated Defines the role of the carousel.
+     */
+    "htmlRole": 'tab' | 'listitem' | '';
+    /**
+      * Label of the slide which will be used for pagination tabs
+     */
+    "label": string;
+    /**
+      * The name of the button, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+     */
+    "rel"?: string;
+    "setFocus": () => Promise<void>;
+    /**
+      * Src path to the image
+     */
+    "src"?: string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "value"?: string | number;
+  }
+  interface BalCheckbox {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * If `true`, the checkbox is selected.
+     */
+    "checked": boolean;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the control is no padding
+     */
+    "flat": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * Options of the tab like label, value etc.
+     */
+    "getOption": () => Promise<BalCheckboxOption>;
+    "hovered": boolean;
+    /**
+      * If `true` the control is displayed as inline
+     */
+    "inline": boolean;
+    /**
+      * Defines the layout of the checkbox button
+     */
+    "interface": BalProps.BalCheckboxInterface;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * If `true` the radio is invisible, but sill active
+     */
+    "invisible": boolean;
+    /**
+      * Label of the radio item.
+     */
+    "label": string;
+    /**
+      * If `true` the checkbox has no label
+     */
+    "labelHidden": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true`, the value will not be send with a form submit
+     */
+    "nonSubmit": boolean;
+    "pressed": boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    "setButtonTabindex": (value: number) => Promise<void>;
+    /**
+      * Sets the focus on the checkbox input element.
+     */
+    "setFocus": () => Promise<void>;
+    "updateState": () => Promise<void>;
+    /**
+      * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+     */
+    "value": string | number;
+  }
+  interface BalCheckboxButton {
+    "colSize": BalProps.BalCheckboxGroupColumns;
+    "colSizeMobile": BalProps.BalCheckboxGroupColumns;
+    "colSizeTablet": BalProps.BalCheckboxGroupColumns;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "color"?: BalProps.BalCheckboxButtonColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    "setChecked": (checked?: boolean) => Promise<void>;
+  }
+  interface BalCheckboxGroup {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Defines the column size like the grid.
+     */
+    "columns": BalProps.BalCheckboxGroupColumns;
+    /**
+      * Defines the column size for mobile and bigger like the grid.
+     */
+    "columnsMobile": BalProps.BalCheckboxGroupColumns;
+    /**
+      * Defines the column size for tablet and bigger like the grid.
+     */
+    "columnsTablet": BalProps.BalCheckboxGroupColumns;
+    /**
+      * If `true` it acts as the main form control
+     */
+    "control": boolean;
+    /**
+      * If `true`, the user cannot interact with the checkboxes.
+     */
+    "disabled"?: boolean;
+    /**
+      * Uses the whole width
+     */
+    "expanded": boolean;
+    /**
+      * Find the options properties by its value
+     */
+    "getOptionByValue": (value: string) => Promise<BalCheckboxOption>;
+    /**
+      * Defines the layout of the checkbox button
+     */
+    "interface"?: BalProps.BalCheckboxGroupInterface;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "invalid"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalCheckboxOption[];
+    /**
+      * If `true`, the user cannot interact with the checkboxes.
+     */
+    "readonly"?: boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    "setValue": (value: any[]) => Promise<void>;
+    /**
+      * The value of the control.
+     */
+    "value": any[];
+    /**
+      * Displays the checkboxes vertically
+     */
+    "vertical": boolean;
+    /**
+      * If `true`, the controls will be vertically on mobile devices.
+     */
+    "verticalOnMobile": boolean;
+  }
+  interface BalClose {
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * If `true` it supports dark backgrounds.
+     */
+    "inverted": boolean;
+    /**
+      * Define the size of badge. Small is recommended for tabs.
+     */
+    "size": BalProps.BalCloseSize;
+  }
+  interface BalContent {
+    /**
+      * Defines the text positioning like center, end or default to start.
+     */
+    "align": BalProps.BalContentAlignment;
+    "alignment": BalProps.BalStackAlignment;
+    "direction": BalProps.BalStackDirection;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+     */
+    "layout": BalProps.BalContentLayout;
+    /**
+      * Defines the space between the child elements. Default is xx-small.
+     */
+    "space": BalProps.BalContentSpace;
+  }
+  interface BalData {
+    /**
+      * If `true` a bottom border is added to the data-item.
+     */
+    "border": boolean;
+    /**
+      * If `true` the data list is horizontal instead of vertical.
+     */
+    "horizontal": boolean;
+  }
+  interface BalDataItem {
+    /**
+      * If `true` a bottom border is added to the data-item.
+     */
+    "border": boolean;
+    /**
+      * If `true` the item gets a lighter font color.
+     */
+    "disabled": boolean;
+  }
+  interface BalDataLabel {
+    /**
+      * If `true` an asterix is added after the label.
+     */
+    "required": boolean;
+  }
+  interface BalDataValue {
+    /**
+      * If `true` the button will get disabled.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` a small button with a edit icon will be shown on the right.
+     */
+    "editable": boolean;
+    /**
+      * If `true` the text will break and the height of the item increases.
+     */
+    "multiline": boolean;
+  }
+  interface BalDate {
+    /**
+      * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+     */
+    "allowInvalidValue": boolean;
+    /**
+      * Callback to determine which date in the datepicker should be selectable.
+     */
+    "allowedDates": BalProps.BalDateCallback | undefined;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * Closes the accordion
+     */
+    "close": () => Promise<boolean>;
+    /**
+      * Closes the datepicker popover after selection
+     */
+    "closeOnSelect": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "defaultDate"?: string;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` there will be no trigger icon visible, so no UX indicator for a picker
+     */
+    "freeSolo": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * Latest year available for selection
+     */
+    "maxYearProp"?: number;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * Earliest year available for selection
+     */
+    "minYearProp"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * Opens the accordion
+     */
+    "open": () => Promise<boolean>;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true` the attribute required is added to the native input.
+     */
+    "required": boolean;
+    /**
+      * Selects an option
+     */
+    "select": (dateString: string) => Promise<void>;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * Triggers the accordion
+     */
+    "toggle": () => Promise<boolean>;
+    /**
+      * If `true` the datepicker only open on click of the icon
+     */
+    "triggerIcon": boolean;
+    /**
+      * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value": string | undefined;
+  }
+  interface BalDateCalendar {
+    /**
+      * Callback to determine which date in the datepicker should be selectable.
+     */
+    "allowedDates": BalProps.BalDateCalendarAllowedDatesCallback | undefined;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
+     */
+    "defaultDate"?: string;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * Latest year available for selection
+     */
+    "maxYearProp"?: number;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * Earliest year available for selection
+     */
+    "minYearProp"?: number;
+    /**
+      * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value"?: string;
+  }
+  interface BalDateCalendarCell {
+    /**
+      * PUBLIC PROPERTY API ------------------------------------------------------
+     */
+    "day"?: number;
+    "disabled": boolean;
+    "fullDate": string;
+    "isoDate": string;
+    "month"?: number;
+    "selected": boolean;
+    "today": boolean;
+    "year"?: number;
+  }
+  interface BalDivider {
+    /**
+      * Defines the color of the separator line.
+     */
+    "borderStyle": BalProps.BalDividerBorderStyle;
+    /**
+      * Defines the color of the separator line.
+     */
+    "color": BalProps.BalDividerColor;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+     */
+    "layout": BalProps.BalDividerLayout;
+    /**
+      * Defines the space between the child elements. Default is xx-small.
+     */
+    "space": BalProps.BalDividerSpace;
+  }
+  interface BalDocApp {
+    /**
+      * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+     */
+    "animated": boolean;
+    "language"?: string;
+    "logComponents": string;
+    "logCustom": boolean;
+    "logEvents": boolean;
+    "logLifecycle": boolean;
+    "logRender": boolean;
+    "region"?: string;
+    "stickyFooter": boolean;
+  }
+  interface BalDropdown {
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * If `true`, the selected options are shown as chips
+     */
+    "chips": boolean;
+    /**
+      * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+     */
+    "clear": () => Promise<void>;
+    /**
+      * If `true`, a cross at the end is visible to clear the selection
+     */
+    "clearable": boolean;
+    /**
+      * Closes the popup with option list
+     */
+    "close": () => Promise<void>;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Defines the max height of the list element
+     */
+    "contentHeight": number;
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled": boolean;
+    /**
+      * Defines the filter logic of the list
+     */
+    "filter": BalProps.BalOptionListFilter;
+    /**
+      * Returns the value of the component
+     */
+    "getValue": () => Promise<string[]>;
+    /**
+      * If `true` there will be on trigger icon visible
+     */
+    "icon": string;
+    /**
+      * Defines a inline label to be shown before the value
+     */
+    "inlineLabel": string;
+    /**
+      * If `true`, the component will be shown as invalid
+     */
+    "invalid": boolean;
+    "inverted": boolean;
+    /**
+      * Defines if the select is in a loading state.
+     */
+    "loading": boolean;
+    /**
+      * If `true`, the user can select multiple options.
+     */
+    "multiple": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * Opens the popup with option list
+     */
+    "open": () => Promise<void>;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options": BalOption[];
+    /**
+      * Defines the placeholder of the component. Only shown when the value is empty
+     */
+    "placeholder": string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    /**
+      * Select option by passed value
+     */
+    "select": (newValue: string | string[]) => Promise<void>;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets the focus on the input element
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * Defines the size of the control.
+     */
+    "size": BalProps.BalDropdownSize;
+    /**
+      * Defines the color style of the control
+     */
+    "theme": BalProps.BalDropdownTheme;
+    /**
+      * The value of the selected options.
+     */
+    "value"?: string | string[];
+  }
+  interface BalField {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
+     */
+    "horizontal"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` a loading spinner is visible at the end of the input
+     */
+    "loading"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required"?: boolean;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid": boolean;
+  }
+  interface BalFieldControl {
+    /**
+      * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+     */
+    "expandedOnMobile"?: boolean;
+    /**
+      * @deprecated Baloise icon for the left side of the input
+     */
+    "iconLeft": string;
+    /**
+      * @deprecated Baloise icon for the right side of the input
+     */
+    "iconRight": string;
+    /**
+      * If `true` a loading spinner is visible at the end of the input
+     */
+    "loading": boolean;
+  }
+  interface BalFieldHint {
+    /**
+      * Text for the close button.
+     */
+    "closeLabel": string;
+    /**
+      * Disables the close button for tablet and desktop
+     */
+    "small": boolean;
+    /**
+      * Text of the inputs label
+     */
+    "subject"?: string;
+  }
+  interface BalFieldLabel {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+     */
+    "htmlFor"?: string;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required": boolean;
+    /**
+      * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+     */
+    "size": BalProps.BalFieldLabelSize;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+    /**
+      * Defines the font weight of the label.
+     */
+    "weight": BalProps.BalFieldLabelWeight;
+  }
+  interface BalFieldMessage {
+    /**
+      * Defines the color of the message.
+     */
+    "color": BalProps.BalFieldMessageColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid": boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid": boolean;
+  }
+  interface BalFileUpload {
+    /**
+      * Accepted MIME-Types like `image/png,image/jpeg`.
+     */
+    "accept"?: string;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Sets the file list to an empty list
+     */
+    "clear": () => Promise<void>;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * If `true` below the drop-down area it generates a file list.
+     */
+    "hasFileList": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * Label of the drop area.
+     */
+    "label": string;
+    /**
+      * If `true` the file upload is disabled and shows a spinner
+     */
+    "loading": boolean;
+    /**
+      * Allowed max bundle size in bytes.
+     */
+    "maxBundleSize"?: number;
+    /**
+      * Allowed max file size in bytes.
+     */
+    "maxFileSize"?: number;
+    /**
+      * Allowed number of files in the bundle.
+     */
+    "maxFiles"?: number;
+    /**
+      * If `true` multiple file upload is possible.
+     */
+    "multiple": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * Overrides the default subtitle file size
+     */
+    "subTitle"?: (file: File) => string;
+    /**
+      * Input value.
+     */
+    "value": File[];
+  }
+  interface BalFooter {
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * If `true` the language selection will be hidden.
+     */
+    "hideLanguageSelection": boolean;
+    /**
+      * If `true` the legal Baloise links will be hidden.
+     */
+    "hideLinks": boolean;
+    /**
+      * If provided, the footer links will be overridden.
+     */
+    "overrideLinks": FooterLink[] | undefined;
+    /**
+      * If `true` the social media links will be shown.
+     */
+    "showSocialMedia": boolean;
+  }
+  interface BalForm {
+    /**
+      * The css class for the inner form element
+     */
+    "formClass": string;
+    /**
+      * If `true` a native form element is added as a wrapper of the slot.
+     */
+    "native": boolean;
+    /**
+      * If `true` it adds the novalidate attribute to the native form element.
+     */
+    "novalidate": boolean;
+    /**
+      * Scrolls to the first invalid field inside this form component.
+     */
+    "scrollToFirstInvalidField": () => Promise<void>;
+  }
+  interface BalFormCol {
+    "size": BalProps.BalFormColSize;
+  }
+  interface BalFormGrid {
+  }
+  interface BalHeading {
+    /**
+      * The actual heading level used in the HTML markup.
+     */
+    "autoLevel"?: BalProps.BalHeadingVisualLevel;
+    /**
+      * The theme type of the toast.
+     */
+    "color": BalProps.BalHeadingColor;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted": boolean;
+    /**
+      * The actual heading level used in the HTML markup.
+     */
+    "level": BalProps.BalHeadingLevel;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap": boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow": boolean;
+    /**
+      * Defines at which position the heading has spacing.
+     */
+    "space"?: 'none' | 'bottom' | 'top' | 'all';
+    /**
+      * If `true` the heading gets displayed slimmer.
+     */
+    "subtitle": boolean;
+    /**
+      * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+     */
+    "visualLevel"?: BalProps.BalHeadingVisualLevel;
+  }
+  interface BalHint {
+    /**
+      * Text for the close button.
+     */
+    "closeLabel"?: string;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Closes the hint box.
+     */
+    "dismiss": () => Promise<void>;
+    /**
+      * Opens the hint box.
+     */
+    "present": () => Promise<void>;
+    /**
+      * Disables the close button for tablet and desktop
+     */
+    "small": boolean;
+    /**
+      * Toggles the hint box.
+     */
+    "toggle": () => Promise<void>;
+  }
+  interface BalHintText {
+  }
+  interface BalHintTitle {
+  }
+  interface BalIcon {
+    /**
+      * The theme type of the button.
+     */
+    "color": BalProps.BalIconColor;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hovered": boolean;
+    /**
+      * If `true` the icon has display inline style
+     */
+    "inline": boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the icon is inverted
+     */
+    "inverted": boolean;
+    /**
+      * Name of the baloise icon.
+     */
+    "name": string;
+    "pressed": boolean;
+    /**
+      * If `true` adds a box shadow to improve readability on image background
+     */
+    "shadow": boolean;
+    /**
+      * Defines the size of the icon.
+     */
+    "size": BalProps.BalIconSize;
+    /**
+      * Svg content.
+     */
+    "svg": string;
+    /**
+      * If `true` the icon is rotated 180deg
+     */
+    "turn": boolean;
+  }
+  interface BalInput {
+    /**
+      * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+     */
+    "accept"?: string;
+    /**
+      * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+     */
+    "allowedKeyPress"?: string;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+     */
+    "autocapitalize": string;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * Whether auto correction should be enabled when the user is entering/editing the text value.
+     */
+    "autocorrect": BalProps.BalInputAutocorrect;
+    /**
+      * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+     */
+    "autofocus": boolean;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable": boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement>;
+    "hasIconRight": boolean;
+    /**
+      * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+     */
+    "inputmode"?: BalProps.BalInputInputMode;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
+     */
+    "mask"?: BalProps.BalInputMask;
+    /**
+      * The maximum value, which must not be less than its minimum (min attribute) value.
+     */
+    "max"?: string;
+    /**
+      * Defines the max length of the value.
+     */
+    "maxLength"?: number;
+    /**
+      * The minimum value, which must not be greater than its maximum (max attribute) value.
+     */
+    "min"?: string;
+    /**
+      * Defines the min length of the value.
+     */
+    "minLength"?: number;
+    /**
+      * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+     */
+    "multiple"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+     */
+    "pattern"?: string;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * If `true`, the element will have its spelling and grammar checked.
+     */
+    "spellcheck": boolean;
+    /**
+      * Adds a suffix the the input-value after blur.
+     */
+    "suffix"?: string;
+    /**
+      * Defines the text align of the input value.
+     */
+    "textAlign": 'center' | 'left' | 'right';
+    /**
+      * Defines the type of the input (text, number, email ...).
+     */
+    "type": BalProps.BalInputInputType;
+    /**
+      * The value of the input.
+     */
+    "value"?: string;
+  }
+  interface BalInputDate {
+    /**
+      * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+     */
+    "allowInvalidValue": boolean;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable": boolean;
+    "configChanged": (config: BalConfigState) => Promise<void>;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement>;
+    "hasIconRight": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true` the attribute required is added to the native input.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value": string | undefined;
+  }
+  interface BalInputGroup {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+  }
+  interface BalInputSlider {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * The tabindex of the control.
+     */
+    "balTabindex": number;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * If `true`, small ticks for the steps are shown.
+     */
+    "hasTicks": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * Max value of the model.
+     */
+    "max": number;
+    /**
+      * Min value of the model.
+     */
+    "min": number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * The step size. 0 means no steps.
+     */
+    "step": number;
+    /**
+      * The value of the input.
+     */
+    "value"?: string | number;
+  }
+  interface BalInputStepper {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * If `true` the input is shown as invalid
+     */
+    "invalid": boolean;
+    /**
+      * The max value the input can have
+     */
+    "max": number;
+    /**
+      * The min value the input can have
+     */
+    "min": number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * The steps in which the input increases or decreases
+     */
+    "steps": number;
+    /**
+      * The value of the input. Only allows values in the range of the min max attribute.
+     */
+    "value": number;
+  }
+  interface BalLabel {
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hovered": boolean;
+    /**
+      * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+     */
+    "htmlFor"?: string;
+    /**
+      * Define the id of the native label element
+     */
+    "htmlId"?: string;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * When true, the text will is able to break on multiple lines.
+     */
+    "multiline": boolean;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap": boolean;
+    "pressed": boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+     */
+    "size": BalProps.BalLabelSize;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+    /**
+      * Defines the font weight of the label.
+     */
+    "weight": BalProps.BalLabelWeight;
+  }
+  interface BalList {
+    /**
+      * If `true` only one of the layers can be open and the others close automatically
+     */
+    "accordionOneLevel": boolean;
+    /**
+      * If `true` the list can be used on a light, dark or colored backgrounds
+     */
+    "background": BalProps.BalListBackground;
+    /**
+      * If `true` each list item has a bottom border
+     */
+    "border": boolean;
+    /**
+      * If `true` the list item can not be hovered
+     */
+    "disabled": boolean;
+    /**
+      * Defines the min height of the list item
+     */
+    "size": BalProps.BalListSize;
+  }
+  interface BalListItem {
+    /**
+      * If `true` the list item can be used as a accordion
+     */
+    "accordion": boolean;
+    /**
+      * If `true` the list item shows that it is clickable
+     */
+    "clickable": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * If `true` the list item can be hovered
+     */
+    "disabled": boolean;
+    /**
+      * Closes the accordion
+     */
+    "dismiss": (ignoreNested?: boolean) => Promise<void>;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href": string;
+    /**
+      * Opens the accordion
+     */
+    "present": () => Promise<void>;
+    /**
+      * If `true` the list item has a selected theme
+     */
+    "selected": boolean;
+    /**
+      * If `true` the list item can be used as an accordion inside another accordion
+     */
+    "subAccordionItem": boolean;
+    /**
+      * Specifies where to open the linked document
+     */
+    "target": BalProps.BalListItemTarget;
+    /**
+      * Triggers the accordion
+     */
+    "toggle": () => Promise<void>;
+  }
+  interface BalListItemAccordionBody {
+    /**
+      * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+     */
+    "accordionGroup"?: string;
+    /**
+      * Sets justify-content of the items to start, center, end, or space-between. Default is start
+     */
+    "contentAlignment": BalProps.BalListContentAlignment;
+    /**
+      * Sets space to content of the accordion body
+     */
+    "contentSpace": BalProps.BalListContentSpacing;
+  }
+  interface BalListItemAccordionHead {
+    /**
+      * If `true` the list accordion is open
+     */
+    "accordionOpen": boolean;
+    /**
+      * Icon name string with value 'plus' on default
+     */
+    "icon": BalProps.BalListItemAccordionHeadIcon;
+  }
+  interface BalListItemContent {
+    "contentAlignment"?: string;
+  }
+  interface BalListItemIcon {
+    /**
+      * If `true` the icon is on the right side of the list item. Default is the left side.
+     */
+    "right": boolean;
+  }
+  interface BalListItemSubtitle {
+  }
+  interface BalListItemTitle {
+    /**
+      * Heading level with value 'h4' on default
+     */
+    "level": BalProps.BalHeadingLevel;
+    /**
+      * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+     */
+    "visualLevel"?: BalProps.BalHeadingVisualLevel;
+  }
+  interface BalLogo {
+    /**
+      * Defines if the animation should be active
+     */
+    "animated": boolean;
+    /**
+      * Defines the color of the logo.
+     */
+    "color": BalProps.BalLogoColor;
+    /**
+      * Size of the logo svg
+     */
+    "size": BalProps.BalLogoSize;
+  }
+  interface BalModal {
+    /**
+      * If `true`, the modal can be closed with the click outside of the modal
+     */
+    "backdropDismiss": boolean;
+    "close": () => Promise<void>;
+    /**
+      * The component to display inside of the modal.
+     */
+    "component": BalProps.ComponentRef;
+    /**
+      * The data to pass to the modal component.
+     */
+    "componentProps"?: BalProps.ComponentProps;
+    /**
+      * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+     */
+    "cssClass"?: string | string[];
+    "dataTestId"?: string;
+    "delegate"?: BalProps.FrameworkDelegate;
+    "demo": boolean;
+    /**
+      * Closes the presented modal with the modal controller
+     */
+    "dismiss": (data?: any, role?: string) => Promise<boolean>;
+    /**
+      * If `true`, a backdrop will be displayed behind the modal.
+     */
+    "hasBackdrop": boolean;
+    /**
+      * If `true`, the modal can be closed with the escape key or the little close button.
+     */
+    "isClosable": boolean;
+    /**
+      * Defines the width of the modal body
+     */
+    "modalWidth": number;
+    /**
+      * Returns a promise that resolves when the modal did dismiss.
+     */
+    "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+    /**
+      * Returns a promise that resolves when the modal will dismiss.
+     */
+    "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+    "open": () => Promise<void>;
+    "overlayIndex": number;
+    /**
+      * Presents the modal through the modal controller
+     */
+    "present": () => Promise<void>;
+    /**
+      * Defines the space/padding of the modal
+     */
+    "space": BalProps.BalModalSpace;
+  }
+  interface BalModalBody {
+  }
+  interface BalModalHeader {
+  }
+  interface BalNav {
+    /**
+      * Link level structure.
+     */
+    "buttons": BalProps.BalNavMetaButtons;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Link level structure.
+     */
+    "logo"?: BalProps.BalNavLogoLink;
+    /**
+      * Link level structure.
+     */
+    "options": BalProps.BalNavOptions;
+  }
+  interface BalNavLink {
+    /**
+      * If `true` the link can be clickable
+     */
+    "clickable": boolean;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * If `true` the link gets selected with a underline
+     */
+    "selected": boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+    /**
+      * Defines the variant of the link
+     */
+    "variant": BalProps.BalNavLinkVariant;
+  }
+  interface BalNavLinkGrid {
+  }
+  interface BalNavLinkGridCol {
+    /**
+      * Defines the static column which is always aligned to the right
+     */
+    "staticCol": BalProps.BalNavLinkGridCol;
+  }
+  interface BalNavLinkGroup {
+    /**
+      * Defines the color of the group
+     */
+    "color": BalProps.BalNavLinkGroupColor;
+  }
+  interface BalNavMenuBar {
+    /**
+      * Tells when to hide the bar
+     */
+    "invisible": BalProps.BalNavMenuBarInvisible;
+    /**
+      * Defines the position of the bar
+     */
+    "position": BalProps.BalNavMenuBarPosition;
+  }
+  interface BalNavMenuFlyout {
+    /**
+      * This is used to connect the flyout to the aria controls
+     */
+    "navId": string;
+  }
+  interface BalNavMetaBar {
+    /**
+      * Tells when to hide the bar
+     */
+    "invisible": BalProps.BalNavMetaBarInvisible;
+    /**
+      * Defines the position of the bar
+     */
+    "position": BalProps.BalNavMetaBarPosition;
+    /**
+      * Defines the height of the bar
+     */
+    "size": BalProps.BalNavMetaBarSize;
+    /**
+      * Defines the color variant
+     */
+    "variant": BalProps.BalNavMetaBarVariant;
+  }
+  interface BalNavbar {
+    /**
+      * Sets the content content width with the regular container classes
+     */
+    "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+    /**
+      * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+     */
+    "interface": BalProps.BalNavbarInterface;
+    /**
+      * It `true` the navbar has a white background. Always use the blue header.
+     */
+    "light": boolean;
+  }
+  interface BalNavbarBrand {
+    /**
+      * Defines if the logo animation should be active
+     */
+    "animated": boolean;
+    /**
+      * Link of the logo / title.
+     */
+    "href"?: string;
+    "interface": BalProps.BalNavbarInterface;
+    /**
+      * Src to display a logo -> replaces the default Baloise Logo
+     */
+    "logo"?: string;
+    /**
+      * Size of the logo SVG
+     */
+    "logoSize": BalProps.BalLogoSize;
+    /**
+      * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+     */
+    "simple": boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+  }
+  interface BalNavbarMenu {
+    "interface": BalProps.BalNavbarInterface;
+    "toggle": (isMenuActive: boolean) => Promise<void>;
+  }
+  interface BalNavbarMenuEnd {
+    "interface": BalProps.BalNavbarInterface;
+  }
+  interface BalNavbarMenuStart {
+    "interface": BalProps.BalNavbarInterface;
+  }
+  interface BalNotices {
+    "interface": 'toast' | 'snackbar';
+  }
+  interface BalNotification {
+    /**
+      * Defines the color of the element Color type primary is deprecated, please use info instead.
+     */
+    "color": BalProps.BalNotificationColor;
+  }
+  interface BalNumberInput {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * Defines the allowed decimal points for the `number-input`.
+     */
+    "decimal": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the input value has 0 as default value
+     */
+    "exactNumber": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement>;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * The maximum value, which must not be less than its minimum (min attribute) value.
+     */
+    "max"?: string;
+    /**
+      * The minimum value, which must not be greater than its maximum (max attribute) value.
+     */
+    "min"?: string;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+     */
+    "pattern"?: string;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * Adds a suffix the the input-value after blur.
+     */
+    "suffix"?: string;
+    /**
+      * The value of the input.
+     */
+    "value"?: number;
+  }
+  interface BalOption {
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled": boolean;
+    /**
+      * If `true`, the option is focused.
+     */
+    "focused": boolean;
+    /**
+      * If `true`, the option is hidden.
+     */
+    "hidden": boolean;
+    /**
+      * If `true`, the option is shown in red.
+     */
+    "invalid": boolean;
+    /**
+      * Label will be shown in the input element when it got selected
+     */
+    "label": string;
+    /**
+      * If `true`, the option can present in more than one line.
+     */
+    "multiline": boolean;
+    /**
+      * Selects or deselects the option and informs other components
+     */
+    "select": (selected?: boolean) => Promise<void>;
+    /**
+      * If `true`, the option is selected.
+     */
+    "selected": boolean;
+    /**
+      * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+     */
+    "value": string;
+  }
+  interface BalOptionList {
+    /**
+      * Defines the max height of the list element
+     */
+    "contentHeight"?: number;
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled": boolean;
+    /**
+      * Defines the filter logic of the list
+     */
+    "filter": BalProps.BalOptionListFilter;
+    /**
+      * Filter the options by the given filter property and hides options
+      * @returns focusIndex
+     */
+    "filterByContent": (search: string) => Promise<number>;
+    /**
+      * Focus the option with the label that starts with the search property
+      * @returns focusIndex
+     */
+    "focusByLabel": (search: string, config: Partial<{ select: boolean; }>) => Promise<number>;
+    /**
+      * Focus the first visible option in the list
+      * @returns focusIndex
+     */
+    "focusFirst": () => Promise<number>;
+    /**
+      * Defines the focused option with his index value
+     */
+    "focusIndex": number;
+    /**
+      * Focus the last visible option in the list
+      * @returns focusIndex
+     */
+    "focusLast": () => Promise<number>;
+    /**
+      * Focus the next visible option in the list
+      * @returns focusIndex
+     */
+    "focusNext": () => Promise<number>;
+    /**
+      * Focus the previous visible option in the list
+      * @returns focusIndex
+     */
+    "focusPrevious": () => Promise<number>;
+    /**
+      * Focus the selected visible option in the list, if no option is selected it selects the first one
+     */
+    "focusSelected": () => Promise<number>;
+    /**
+      * Returns a list of options
+     */
+    "getLabels": () => Promise<string[]>;
+    /**
+      * Returns a list of accessible options
+     */
+    "getOptions": () => Promise<BalOption[]>;
+    /**
+      * Returns a list of option labels
+     */
+    "getSelectedOptions": (values?: string[]) => Promise<BalOption[]>;
+    /**
+      * Returns a list of option values
+     */
+    "getSelectedValues": () => Promise<string[]>;
+    /**
+      * Returns a list of options
+     */
+    "getValues": () => Promise<string[]>;
+    /**
+      * Id of the label element to describe this option list
+     */
+    "labelledby"?: string;
+    /**
+      * If `true` the list supports multiple selections
+     */
+    "multiple": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    /**
+      * Resets the focus index to pristine and scrolls to the top of the list
+     */
+    "resetFocus": () => Promise<number>;
+    /**
+      * Shows or hides all options
+     */
+    "resetHidden": (hidden?: boolean) => Promise<void>;
+    /**
+      * Selects or deselects all options
+     */
+    "resetSelected": (selected?: boolean) => Promise<void>;
+    /**
+      * Selects the option with the current focus
+     */
+    "selectByFocus": () => Promise<void>;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Updates options
+     */
+    "updateSelected": (values?: string[]) => Promise<void>;
+  }
+  interface BalPagination {
+    /**
+      * Align the buttons to start, center or end
+     */
+    "align": BalProps.BalPaginationAlignment;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Disables component
+     */
+    "disabled": boolean;
+    /**
+      * Defines the layout of the pagination
+     */
+    "interface": BalProps.BalPaginationInterface;
+    /**
+      * Go to the next page
+     */
+    "next": () => Promise<void>;
+    /**
+      * Specify the max visible pages before and after the selected page
+     */
+    "pageRange": number;
+    /**
+      * Go to the previous page
+     */
+    "previous": () => Promise<void>;
+    /**
+      * Size of the buttons
+     */
+    "size": BalProps.BalPaginationSize;
+    /**
+      * If 'true, the pagination will be sticky to the top
+     */
+    "sticky": boolean;
+    /**
+      * If sticky, the top position will be determined by this value
+     */
+    "top": number;
+    /**
+      * The total amount of pages
+     */
+    "totalPages": number;
+    /**
+      * Current selected page
+     */
+    "value": number;
+  }
+  interface BalPopover {
+    /**
+      * If `true` the popover content is open.
+     */
+    "active": boolean;
+    /**
+      * If `true` a little arrow is added, which points to the trigger element
+     */
+    "arrow": boolean;
+    /**
+      * If `true` the popover automatically opens on a click
+     */
+    "autoTrigger": boolean;
+    /**
+      * If `true` a backdrop is added
+     */
+    "backdrop": boolean;
+    /**
+      * Closes the popover
+     */
+    "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
+    /**
+      * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+     */
+    "hint": boolean;
+    /**
+      * If `true` the popover shows on hover
+     */
+    "hover": boolean;
+    /**
+      * If `true` there will be no backdrop
+     */
+    "mobileTop": boolean;
+    /**
+      * Define the offset of the popover content.
+     */
+    "offsetX": number;
+    /**
+      * Define the offset of the popover content.
+     */
+    "offsetY": number;
+    /**
+      * Define padding of the overflow
+     */
+    "padding": number;
+    /**
+      * Define the position of the popover content.
+     */
+    "position": BalProps.BalPopoverPlacement;
+    /**
+      * Open the popover
+     */
+    "present": (options?: PopoverPresentOptions) => Promise<void>;
+    /**
+      * Open or closes the popover
+     */
+    "toggle": (options?: PopoverPresentOptions) => Promise<void>;
+    /**
+      * If `true` the popover is shown as a tooltip
+     */
+    "tooltip": boolean;
+  }
+  interface BalPopoverContent {
+    /**
+      * Defines background color of the content.
+     */
+    "color": BalProps.BalPopoverContentColor;
+    /**
+      * Define the min width of the popover content.
+     */
+    "contentMinWidth": number;
+    /**
+      * Define the max width of the popover content.
+     */
+    "contentWidth": number;
+    /**
+      * If `true` the content has a min width of 100%.
+     */
+    "expanded": boolean;
+    /**
+      * If `true` the content will have a divider line on top
+     */
+    "mobileTop": boolean;
+    /**
+      * If `true` the popover does not have the shadow
+     */
+    "noShadow": boolean;
+    /**
+      * Defines border-radius of popover content.
+     */
+    "radius": BalProps.BalPopoverContentRadius;
+    /**
+      * Limit the height of the popover content. Pass the amount of pixel.
+     */
+    "scrollable": number;
+    /**
+      * If `true` the popover has no padding space.
+     */
+    "spaceless": boolean;
+  }
+  interface BalPopup {
+    "_dismiss": () => Promise<boolean>;
+    "_emitChange": () => Promise<void>;
+    "_present": () => Promise<boolean>;
+    /**
+      * If `true` the popup is open.
+     */
+    "active": boolean;
+    /**
+      * If `true`, it shows a little indicator to the trigger element.
+     */
+    "arrow": boolean;
+    /**
+      * If `true`, a backdrop will be displayed behind the modal.
+     */
+    "backdrop": boolean;
+    /**
+      * If `true`, the modal can be closed with the click outside of the modal
+     */
+    "backdropDismiss": boolean;
+    /**
+      * If `true`, the modal can be closed with the escape key or the little close button.
+     */
+    "closable": boolean;
+    /**
+      * Defines the width of the content
+     */
+    "contentWidth"?: number;
+    "demo": boolean;
+    /**
+      * Closes the popup
+     */
+    "dismiss": () => Promise<void>;
+    /**
+      * Label or title of the popup element
+     */
+    "label": string;
+    /**
+      * Offset form trigger to popup.
+     */
+    "offset": number;
+    /**
+      * If set it turns a popover into a fullscreen or a drawer on touch devices
+     */
+    "placement": BalProps.BalPopupPlacement;
+    /**
+      * Opens the popup
+     */
+    "present": () => Promise<void>;
+    /**
+      * Id of the reference element default is the trigger element.
+     */
+    "reference"?: string;
+    "setMinWidth": (value: number) => Promise<void>;
+    /**
+      * Triggers the popup
+     */
+    "toggle": () => Promise<void>;
+    /**
+      * Defines the variant / type of popup
+     */
+    "variant": BalProps.BalPopupVariant;
+  }
+  interface BalProgressBar {
+    /**
+      * The background color
+     */
+    "background": BalProps.BalProgressBarBackground;
+    /**
+      * The progress bar color
+     */
+    "color": BalProps.BalProgressBarColor;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+     */
+    "value": number;
+  }
+  interface BalRadio {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the control is no padding
+     */
+    "flat": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement | undefined>;
+    /**
+      * Options of the tab like label, value etc.
+     */
+    "getOption": () => Promise<BalRadioOption>;
+    "hovered": boolean;
+    /**
+      * Defines the layout of the radio button
+     */
+    "interface": BalProps.BalRadioInterface;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * If `true` the radio is invisible, but sill active
+     */
+    "invisible": boolean;
+    /**
+      * Label of the radio item.
+     */
+    "label": string;
+    /**
+      * If `true` the radio has no label
+     */
+    "labelHidden": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true`, the value will not be send with a form submit
+     */
+    "nonSubmit": boolean;
+    "pressed": boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    "setButtonTabindex": (value: number) => Promise<void>;
+    "setFocus": (ev: any) => Promise<void>;
+    "updateState": () => Promise<void>;
+    /**
+      * the value of the radio.
+     */
+    "value"?: any | null;
+  }
+  interface BalRadioButton {
+    "colSize": BalProps.BalRadioGroupColumns;
+    "colSizeMobile": BalProps.BalRadioGroupColumns;
+    "colSizeTablet": BalProps.BalRadioGroupColumns;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "color"?: BalProps.BalRadioButtonColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    "setChecked": (checked?: boolean) => Promise<void>;
+  }
+  interface BalRadioGroup {
+    /**
+      * If `true`, the radios can be deselected.
+     */
+    "allowEmptySelection": boolean;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Defines the column size for mobile and bigger like the grid.
+     */
+    "columnsMobile": BalProps.BalRadioGroupColumns;
+    /**
+      * Defines the column size for tablet and bigger like the grid.
+     */
+    "columnsTablet": BalProps.BalRadioGroupColumns;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * Uses the whole width
+     */
+    "expanded": boolean;
+    /**
+      * Find the options properties by its value
+     */
+    "getOptionByValue": (value: string) => Promise<BalRadioOption>;
+    /**
+      * Defines the column size like the grid.
+     */
+    "grid": BalProps.BalRadioGroupColumns;
+    /**
+      * Defines the layout of the radio button
+     */
+    "interface"?: BalProps.BalRadioGroupInterface;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "invalid"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalRadioOption[];
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    "setValue": (value: number | string | boolean) => Promise<void>;
+    /**
+      * the value of the radio group.
+     */
+    "value"?: any | null;
+    /**
+      * Displays the checkboxes vertically
+     */
+    "vertical": boolean;
+    /**
+      * If `true`, the controls will be vertically on mobile devices.
+     */
+    "verticalOnMobile": boolean;
+  }
+  interface BalSegment {
+    /**
+      * If `true`, the user cannot interact with the segment.
+     */
+    "disabled": boolean;
+    /**
+      * If `true`, the element uses the whole width
+     */
+    "expanded": boolean;
+    /**
+      * If `true`, the segment is shown red.
+     */
+    "invalid": boolean;
+    /**
+      * If `true`, and is vertical then the list height is limited and scrollable.
+     */
+    "scrollable": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * the value of the segment.
+     */
+    "value"?: BalProps.BalSegmentValue;
+    /**
+      * If `true`, the segment items are presented vertical as a list.
+     */
+    "vertical": boolean;
+  }
+  interface BalSegmentItem {
+    "checked": boolean;
+    /**
+      * If `true`, the user cannot interact with the segment button.
+     */
+    "disabled": boolean;
+    "focused": boolean;
+    /**
+      * If `true`, the segment is shown in red.
+     */
+    "invalid": boolean;
+    /**
+      * Label of the segment control
+     */
+    "label": string;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    "setFocus": () => Promise<void>;
+    /**
+      * The value of the segment button.
+     */
+    "value": SegmentValue;
+  }
+  interface BalSelect {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * The tabindex of the control.
+     */
+    "balTabindex": number;
+    /**
+      * Cancel the popover
+     */
+    "cancel": () => Promise<void>;
+    /**
+      * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+     */
+    "clear": () => Promise<void>;
+    /**
+      * Closes the popover
+     */
+    "close": () => Promise<void>;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "filter": BalProps.BalSelectFilter;
+    /**
+      * If `true` there will be no trigger icon visible, so no UX indicator for a popup
+     */
+    "freeSolo": boolean;
+    /**
+      * Returns the value of the component
+     */
+    "getValue": () => Promise<string[]>;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    "inverted": boolean;
+    /**
+      * Defines if the select is in a loading state.
+     */
+    "loading": boolean;
+    /**
+      * Defines the max length of the value.
+     */
+    "maxLength"?: number;
+    /**
+      * If `true` multiple option can be selected
+     */
+    "multiple": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * This label is shown if typeahead is active and all the options are filtered out.
+     */
+    "noDataLabel"?: string;
+    /**
+      * Opens the popover
+     */
+    "open": () => Promise<void>;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true` the filtering is done outside the component.
+     */
+    "remote": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    /**
+      * Defines the height of the popover list.
+     */
+    "scrollable": number;
+    /**
+      * Select option by passed value
+     */
+    "select": (value: string) => Promise<void>;
+    /**
+      * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+     */
+    "selectionOptional": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets the focus on the input element
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * If `true` the user can search by typing into the input field.
+     */
+    "typeahead": boolean;
+    /**
+      * Selected option values. Could also be passed as a string, which gets transformed.
+     */
+    "value"?: string | string[];
+  }
+  interface BalSelectOption {
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled": boolean;
+    "for": string;
+    /**
+      * Label will be shown in the input element when it got selected
+     */
+    "label"?: string;
+    /**
+      * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+     */
+    "value"?: string;
+  }
+  interface BalShape {
+    /**
+      * The shape color
+     */
+    "color": BalProps.BalShapeColor;
+    /**
+      * The shape rotation
+     */
+    "rotation"?: BalProps.BalShapeRotation;
+    /**
+      * The shape variation
+     */
+    "variation": BalProps.BalShapeVariation;
+  }
+  interface BalSheet {
+    /**
+      * Defines content width of the stage
+     */
+    "containerSize": BalProps.BalSheetContainer;
+  }
+  interface BalSnackbar {
+    /**
+      * Label text for the action button
+     */
+    "action": string;
+    "actionHandler": () => void;
+    /**
+      * Closes this snackbar
+     */
+    "close": () => Promise<void>;
+    "closeHandler": () => void;
+    /**
+      * Closes the snackbar after the given duration in ms
+     */
+    "closeIn": (duration: number) => Promise<void>;
+    /**
+      * The theme type of the snackbar.
+     */
+    "color": BalProps.BalSnackbarColor;
+    /**
+      * The duration of the snackbar
+     */
+    "duration": number;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * The icon of the snackbar header
+     */
+    "icon": string;
+    /**
+      * The message of the snackbar as html content
+     */
+    "message": string;
+    /**
+      * The subject of the snackbar header
+     */
+    "subject": string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+  }
+  interface BalSpinner {
+    /**
+      * Defines the color of the spinner.
+     */
+    "color": BalProps.BalSpinnerColor;
+    /**
+      * If `true` the component will not add the spinner animation svg
+     */
+    "deactivated": boolean;
+    /**
+      * If `true` the component can be used on dark background
+     */
+    "inverted": boolean;
+    /**
+      * If `true` the component is smaller
+     */
+    "small": boolean;
+    /**
+      * Defines the look of the spinner
+     */
+    "variation": BalProps.BalSpinnerVariation;
+  }
+  interface BalStack {
+    /**
+      * Defines the text positioning like center, right or default to start.
+     */
+    "align": BalProps.BalStackAlignment;
+    "alignment": BalProps.BalStackAlignment;
+    "direction": BalProps.BalStackDirection;
+    /**
+      * Defines the width of the stack to be exactly the with of the content.
+     */
+    "fitContent": boolean;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+     */
+    "layout": BalProps.BalStackLayout;
+    /**
+      * Defines the horizontal padding left and right of the stack element.
+     */
+    "px": BalProps.BalStackPadding;
+    /**
+      * Defines the vertical padding top and bottom of the stack element.
+     */
+    "py": BalProps.BalStackPadding;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "space": BalProps.BalStackSpace;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "spaceColumn"?: BalProps.BalStackSpace;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "spaceRow"?: BalProps.BalStackSpace;
+    /**
+      * Defines if the child elements will wrap to the next line if there is not enough space left
+     */
+    "useWrap": boolean;
+  }
+  interface BalStage {
+    /**
+      * Defines the background color of the stage section
+     */
+    "color": BalProps.BalStageColor;
+    /**
+      * Defines content width of the stage
+     */
+    "containerSize": BalProps.BalStageContainer;
+    /**
+      * If true the Baloise Shape is set
+     */
+    "shape": boolean;
+    /**
+      * Shape Rotation
+     */
+    "shapeRotation"?: BalProps.BalShapeRotation;
+    /**
+      * Shape Variation
+     */
+    "shapeVariation"?: BalProps.BalShapeVariation;
+    /**
+      * Defines size of the stage
+     */
+    "size": BalProps.BalStageSize;
+  }
+  interface BalStageBackLink {
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href": string;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted": boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow": boolean;
+  }
+  interface BalStageBody {
+  }
+  interface BalStageFoot {
+  }
+  interface BalStageHead {
+  }
+  interface BalStageImage {
+    /**
+      * optional fallback image in case the srcSet fails
+     */
+    "fallback"?: string;
+    /**
+      * set of images to be used as background image
+     */
+    "srcSet": string;
+  }
+  interface BalStepItem {
+    /**
+      * Tells if this route is active and overrides the bal-tabs value property.
+     */
+    "active": boolean;
+    /**
+      * If `true` the tab is disabled.
+     */
+    "disabled": boolean;
+    /**
+      * If `true` the step is marked as done.
+     */
+    "done": boolean;
+    /**
+      * If `true` the step is marked as failed.
+     */
+    "failed": boolean;
+    /**
+      * Options of the tab like label, value etc.
+     */
+    "getOptions": () => Promise<BalStepOption>;
+    /**
+      * Link to path.
+     */
+    "href": string;
+    /**
+      * If `true` the step is hidden.
+     */
+    "invisible": boolean;
+    /**
+      * Label for the tab.
+     */
+    "label": string;
+    /**
+      * Tell's if the linking is done by a router.
+     */
+    "prevent": boolean;
+    /**
+      * Sets the tab active.
+     */
+    "setActive": (active: boolean) => Promise<void>;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+    /**
+      * This is the key of the tab.
+     */
+    "value": string;
+  }
+  interface BalSteps {
+    /**
+      * If `true` the tabs or steps can be clicked.
+     */
+    "clickable": boolean;
+    /**
+      * Defines the color of the steps so it can be placed on colored backgrounds
+     */
+    "color": BalProps.BalStepsColor;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * Find the options properties by its value
+     */
+    "getOptionByValue": (value: string) => Promise<BalStepOption>;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options": BalStepOption[];
+    /**
+      * Go to tab with the given value
+     */
+    "select": (step: BalStepOption) => Promise<void>;
+    /**
+      * Value of the current active step
+     */
+    "value"?: string;
+  }
+  interface BalTabItem {
+    /**
+      * Tells if this route is active and overrides the bal-tabs value property.
+     */
+    "active": boolean;
+    /**
+      * A11y attributes for the native tab element.
+     */
+    "aria"?: BalProps.BalTabItemAria;
+    /**
+      * If `true` a small red bubble is added to the tab.
+     */
+    "bubble": boolean | string;
+    /**
+      * If `true` the tab is disabled.
+     */
+    "disabled": boolean;
+    /**
+      * Options of the tab like label, value etc.
+     */
+    "getOptions": () => Promise<BalTabOption>;
+    /**
+      * Link to path.
+     */
+    "href": string;
+    /**
+      * Tab icon not available for the steps.
+     */
+    "icon"?: string;
+    /**
+      * If `true` the step is hidden.
+     */
+    "invisible": boolean;
+    /**
+      * Label for the tab.
+     */
+    "label": string;
+    /**
+      * If `true` the tab does not have a panel
+     */
+    "noPanel": boolean;
+    /**
+      * Tell's if the linking is done by a router.
+     */
+    "prevent": boolean;
+    /**
+      * Sets the tab active.
+     */
+    "setActive": (active: boolean) => Promise<void>;
+    /**
+      * Sub label for the tab.
+     */
+    "subLabel": string;
+    /**
+      * source for the svg icon
+     */
+    "svg": string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target": BalProps.BalButtonTarget;
+    /**
+      * This is the key of the tab.
+     */
+    "value": string;
+  }
+  interface BalTable {
+    /**
+      * If `true` the table has a full width
+     */
+    "expanded": boolean;
+  }
+  interface BalTabs {
+    /**
+      * If `true` the tab items can be open and closed
+     */
+    "accordion": boolean;
+    /**
+      * If `true` a light border is shown for the tabs.
+     */
+    "border": boolean;
+    /**
+      * If `true` the tabs or tabs can be clicked.
+     */
+    "clickable": boolean;
+    "closeAccordion": () => Promise<void>;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Defines the layout of the tabs.
+     */
+    "context"?: BalProps.BalTabsContext;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * if true, inactive elements will have their opacity reduced
+     */
+    "dimInactiveElements": boolean;
+    /**
+      * If `true` the field expands over the whole width.
+     */
+    "expanded": boolean;
+    /**
+      * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+     */
+    "float": BalProps.BalTabsFloat;
+    /**
+      * If `true` the tabs is a block element and uses 100% of the width
+     */
+    "fullwidth": boolean;
+    /**
+      * Find the options properties by its value
+     */
+    "getOptionByValue": (value: string) => Promise<BalTabOption>;
+    /**
+      * Defines the layout of the tabs.
+     */
+    "iconPosition": BalProps.BalTabsIconPosition;
+    /**
+      * If `true` the tabs can be uses on dark background
+     */
+    "inverted": boolean;
+    /**
+      * If `true` the tabs selected line is optional
+     */
+    "optionalTabSelection": boolean;
+    /**
+      * Tabs can be passed as a property or through HTML markup.
+     */
+    "options": BalTabOption[];
+    /**
+      * If `true` the tabs have a carousel if they need more space than provided.
+     */
+    "overflow": boolean;
+    "renderLine": () => Promise<void>;
+    /**
+      * Go to tab with the given value
+     */
+    "select": (tab: BalTabOption) => Promise<void>;
+    /**
+      * If `true` the tabs are shown as a select component on mobile
+     */
+    "selectOnMobile": boolean;
+    /**
+      * If `true` the tabs container does not have a padding left or right.
+     */
+    "spaceless": boolean;
+    "value"?: string;
+    /**
+      * If `true` tabs are align vertically.
+     */
+    "vertical": BalProps.BalTabsVertical;
+    /**
+      * The col size of the tabs on vertical mode.
+     */
+    "verticalColSize": BalProps.BalTabsColSize;
+  }
+  interface BalTag {
+    /**
+      * The theme type of the tag.
+     */
+    "closable": boolean;
+    /**
+      * The theme type of the tag.
+     */
+    "color": BalProps.BalTagColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Overwrites the default color to invalid style
+     */
+    "invalid": boolean;
+    /**
+      * If `true` a light version of the color is displayed
+     */
+    "light": boolean;
+    /**
+      * Choosing left or center the tag is aligned to that side in the bal-card.
+     */
+    "position": BalProps.BalTagPlacement;
+    /**
+      * The size of the tag element
+     */
+    "size": BalProps.BalTagSize;
+    "transparent": boolean;
+  }
+  interface BalTagGroup {
+  }
+  interface BalText {
+    /**
+      * If `true` the text is bold
+     */
+    "bold": boolean;
+    /**
+      * Defines the color of the text.
+     */
+    "color": BalProps.BalTextColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the text has heading font family
+     */
+    "heading": boolean;
+    "hovered": boolean;
+    /**
+      * If `true` the text is shown as a display inline
+     */
+    "inline": boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted": boolean;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap": boolean;
+    "pressed": boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow": boolean;
+    /**
+      * Defines the size of the paragraph
+     */
+    "size": BalProps.BalTextSize;
+    /**
+      * Defines at which position the heading has spacing.
+     */
+    "space": BalProps.BalTextSpace;
+  }
+  interface BalTextarea {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    /**
+      * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+     */
+    "autocapitalize": string;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete": BalProps.BalInputAutocomplete;
+    /**
+      * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+     */
+    "autofocus": boolean;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable": boolean;
+    /**
+      * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+     */
+    "cols"?: number;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<textarea>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLTextAreaElement | undefined>;
+    /**
+      * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+     */
+    "inputmode"?: BalProps.BalTextareaInputMode;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+     */
+    "maxLength"?: number;
+    /**
+      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+     */
+    "minLength"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    /**
+      * The number of visible text lines for the control.
+     */
+    "rows"?: number;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * The value of the textarea.
+     */
+    "value"?: string;
+    /**
+      * Indicates how the control wraps text.
+     */
+    "wrap"?: BalProps.BalTextareaWrap;
+  }
+  interface BalTimeInput {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff": boolean;
+    "configChanged": (state: BalConfigState) => Promise<void>;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce": number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled": boolean;
+    /**
+      * Returns the native `<input>` element used under the hood.
+     */
+    "getInputElement": () => Promise<HTMLInputElement>;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid": boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name": string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly": boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required": boolean;
+    "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+    /**
+      * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+     */
+    "setBlur": () => Promise<void>;
+    /**
+      * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+     */
+    "setFocus": () => Promise<void>;
+    /**
+      * The value of the input.
+     */
+    "value"?: string;
+  }
+  interface BalToast {
+    /**
+      * Closes this toast
+     */
+    "close": () => Promise<void>;
+    "closeHandler": () => void;
+    /**
+      * Closes the toast after the given duration in ms
+     */
+    "closeIn": (duration: number) => Promise<void>;
+    /**
+      * The theme type of the toast. Color type primary is deprecated, please use info instead.
+     */
+    "color": BalProps.BalToastColor;
+    /**
+      * The duration of the toast in milliseconds.
+     */
+    "duration": number;
+    /**
+      * Content message
+     */
+    "message": string;
+  }
+  interface BalTooltip {
+    /**
+      * Defines the width of the content
+     */
+    "contentWidth"?: number;
+    "demo": boolean;
+    "dismiss": () => Promise<boolean>;
+    /**
+      * Offset form trigger to tooltip.
+     */
+    "offset": number;
+    /**
+      * If set it turns a tooltip into a fullscreen or a drawer on touch devices
+     */
+    "placement": BalProps.BalTooltipPlacement;
+    "present": () => Promise<boolean>;
+    /**
+      * Id of the reference element default is the trigger element.
+     */
+    "reference": string;
+    "update": () => Promise<boolean>;
+  }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalAccordionElement;
+  detail: T;
+  target: HTMLBalAccordionElement;
 }
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalButtonElement;
+  detail: T;
+  target: HTMLBalButtonElement;
 }
 export interface BalCarouselCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCarouselElement;
+  detail: T;
+  target: HTMLBalCarouselElement;
 }
 export interface BalCarouselItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCarouselItemElement;
+  detail: T;
+  target: HTMLBalCarouselItemElement;
 }
 export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCheckboxElement;
+  detail: T;
+  target: HTMLBalCheckboxElement;
 }
 export interface BalCheckboxButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCheckboxButtonElement;
+  detail: T;
+  target: HTMLBalCheckboxButtonElement;
 }
 export interface BalCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCheckboxGroupElement;
+  detail: T;
+  target: HTMLBalCheckboxGroupElement;
 }
 export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDataValueElement;
+  detail: T;
+  target: HTMLBalDataValueElement;
 }
 export interface BalDateCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDateElement;
+  detail: T;
+  target: HTMLBalDateElement;
 }
 export interface BalDateCalendarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDateCalendarElement;
+  detail: T;
+  target: HTMLBalDateCalendarElement;
 }
 export interface BalDateCalendarCellCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDateCalendarCellElement;
+  detail: T;
+  target: HTMLBalDateCalendarCellElement;
 }
 export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDropdownElement;
+  detail: T;
+  target: HTMLBalDropdownElement;
 }
 export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalFieldElement;
+  detail: T;
+  target: HTMLBalFieldElement;
 }
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalFileUploadElement;
+  detail: T;
+  target: HTMLBalFileUploadElement;
 }
 export interface BalInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalInputElement;
+  detail: T;
+  target: HTMLBalInputElement;
 }
 export interface BalInputDateCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalInputDateElement;
+  detail: T;
+  target: HTMLBalInputDateElement;
 }
 export interface BalInputSliderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalInputSliderElement;
+  detail: T;
+  target: HTMLBalInputSliderElement;
 }
 export interface BalInputStepperCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalInputStepperElement;
+  detail: T;
+  target: HTMLBalInputStepperElement;
 }
 export interface BalListItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalListItemElement;
+  detail: T;
+  target: HTMLBalListItemElement;
 }
 export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalListItemAccordionHeadElement;
+  detail: T;
+  target: HTMLBalListItemAccordionHeadElement;
 }
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalModalElement;
+  detail: T;
+  target: HTMLBalModalElement;
 }
 export interface BalNavCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalNavElement;
+  detail: T;
+  target: HTMLBalNavElement;
 }
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalNavbarBrandElement;
+  detail: T;
+  target: HTMLBalNavbarBrandElement;
 }
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalNumberInputElement;
+  detail: T;
+  target: HTMLBalNumberInputElement;
 }
 export interface BalOptionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalOptionElement;
+  detail: T;
+  target: HTMLBalOptionElement;
 }
 export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalPaginationElement;
+  detail: T;
+  target: HTMLBalPaginationElement;
 }
 export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalPopoverElement;
+  detail: T;
+  target: HTMLBalPopoverElement;
 }
 export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalPopupElement;
+  detail: T;
+  target: HTMLBalPopupElement;
 }
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalRadioElement;
+  detail: T;
+  target: HTMLBalRadioElement;
 }
 export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalRadioButtonElement;
+  detail: T;
+  target: HTMLBalRadioButtonElement;
 }
 export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalRadioGroupElement;
+  detail: T;
+  target: HTMLBalRadioGroupElement;
 }
 export interface BalSegmentCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalSegmentElement;
+  detail: T;
+  target: HTMLBalSegmentElement;
 }
 export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalSelectElement;
+  detail: T;
+  target: HTMLBalSelectElement;
 }
 export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalSnackbarElement;
+  detail: T;
+  target: HTMLBalSnackbarElement;
 }
 export interface BalStepItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalStepItemElement;
+  detail: T;
+  target: HTMLBalStepItemElement;
 }
 export interface BalStepsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalStepsElement;
+  detail: T;
+  target: HTMLBalStepsElement;
 }
 export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTabItemElement;
+  detail: T;
+  target: HTMLBalTabItemElement;
 }
 export interface BalTabsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTabsElement;
+  detail: T;
+  target: HTMLBalTabsElement;
 }
 export interface BalTagCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTagElement;
+  detail: T;
+  target: HTMLBalTagElement;
 }
 export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTextareaElement;
+  detail: T;
+  target: HTMLBalTextareaElement;
 }
 export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTimeInputElement;
+  detail: T;
+  target: HTMLBalTimeInputElement;
 }
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalToastElement;
+  detail: T;
+  target: HTMLBalToastElement;
 }
 export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTooltipElement;
+  detail: T;
+  target: HTMLBalTooltipElement;
 }
 declare global {
-    interface HTMLBalAccordionElementEventMap {
-        "balChange": BalEvents.BalAccordionChangeDetail;
-        "balWillAnimate": BalEvents.BalAccordionWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalAccordionDidAnimateDetail;
-    }
-    interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalAccordionElement: {
-        prototype: HTMLBalAccordionElement;
-        new (): HTMLBalAccordionElement;
-    };
-    interface HTMLBalAccordionDetailsElement extends Components.BalAccordionDetails, HTMLStencilElement {
-    }
-    var HTMLBalAccordionDetailsElement: {
-        prototype: HTMLBalAccordionDetailsElement;
-        new (): HTMLBalAccordionDetailsElement;
-    };
-    interface HTMLBalAccordionSummaryElement extends Components.BalAccordionSummary, HTMLStencilElement {
-    }
-    var HTMLBalAccordionSummaryElement: {
-        prototype: HTMLBalAccordionSummaryElement;
-        new (): HTMLBalAccordionSummaryElement;
-    };
-    interface HTMLBalAccordionTriggerElement extends Components.BalAccordionTrigger, HTMLStencilElement {
-    }
-    var HTMLBalAccordionTriggerElement: {
-        prototype: HTMLBalAccordionTriggerElement;
-        new (): HTMLBalAccordionTriggerElement;
-    };
-    interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
-    }
-    var HTMLBalAppElement: {
-        prototype: HTMLBalAppElement;
-        new (): HTMLBalAppElement;
-    };
-    interface HTMLBalBadgeElement extends Components.BalBadge, HTMLStencilElement {
-    }
-    var HTMLBalBadgeElement: {
-        prototype: HTMLBalBadgeElement;
-        new (): HTMLBalBadgeElement;
-    };
-    interface HTMLBalButtonElementEventMap {
-        "balNavigate": BalEvents.BalButtonNavigateDetail;
-        "balFocus": BalEvents.BalButtonFocusDetail;
-        "balBlur": BalEvents.BalButtonBlurDetail;
-        "balDidRender": BalEvents.BalButtonDidRenderDetail;
-    }
-    interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalButtonElement: {
-        prototype: HTMLBalButtonElement;
-        new (): HTMLBalButtonElement;
-    };
-    interface HTMLBalButtonGroupElement extends Components.BalButtonGroup, HTMLStencilElement {
-    }
-    var HTMLBalButtonGroupElement: {
-        prototype: HTMLBalButtonGroupElement;
-        new (): HTMLBalButtonGroupElement;
-    };
-    interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
-    }
-    var HTMLBalCardElement: {
-        prototype: HTMLBalCardElement;
-        new (): HTMLBalCardElement;
-    };
-    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
-    }
-    var HTMLBalCardActionsElement: {
-        prototype: HTMLBalCardActionsElement;
-        new (): HTMLBalCardActionsElement;
-    };
-    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
-    }
-    var HTMLBalCardButtonElement: {
-        prototype: HTMLBalCardButtonElement;
-        new (): HTMLBalCardButtonElement;
-    };
-    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
-    }
-    var HTMLBalCardContentElement: {
-        prototype: HTMLBalCardContentElement;
-        new (): HTMLBalCardContentElement;
-    };
-    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
-    }
-    var HTMLBalCardSubtitleElement: {
-        prototype: HTMLBalCardSubtitleElement;
-        new (): HTMLBalCardSubtitleElement;
-    };
-    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
-    }
-    var HTMLBalCardTitleElement: {
-        prototype: HTMLBalCardTitleElement;
-        new (): HTMLBalCardTitleElement;
-    };
-    interface HTMLBalCarouselElementEventMap {
-        "balChange": BalEvents.BalCarouselChangeDetail;
-    }
-    interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCarouselElement: {
-        prototype: HTMLBalCarouselElement;
-        new (): HTMLBalCarouselElement;
-    };
-    interface HTMLBalCarouselItemElementEventMap {
-        "balNavigate": BalEvents.BalCarouselItemNavigateDetail;
-        "balFocus": BalEvents.BalCarouselItemFocusDetail;
-        "balBlur": BalEvents.BalCarouselItemBlurDetail;
-    }
-    interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCarouselItemElement: {
-        prototype: HTMLBalCarouselItemElement;
-        new (): HTMLBalCarouselItemElement;
-    };
-    interface HTMLBalCheckboxElementEventMap {
-        "balFocus": BalEvents.BalCheckboxFocusDetail;
-        "balBlur": BalEvents.BalCheckboxBlurDetail;
-        "balChange": BalEvents.BalCheckboxChangeDetail;
-    }
-    interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCheckboxElement: {
-        prototype: HTMLBalCheckboxElement;
-        new (): HTMLBalCheckboxElement;
-    };
-    interface HTMLBalCheckboxButtonElementEventMap {
-        "balFocus": BalEvents.BalCheckboxButtonFocusDetail;
-        "balBlur": BalEvents.BalCheckboxButtonBlurDetail;
-        "balFormControlDidLoad": BalEvents.BalCheckboxButtonAriaLabelledByDetail;
-    }
-    interface HTMLBalCheckboxButtonElement extends Components.BalCheckboxButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCheckboxButtonElement: {
-        prototype: HTMLBalCheckboxButtonElement;
-        new (): HTMLBalCheckboxButtonElement;
-    };
-    interface HTMLBalCheckboxGroupElementEventMap {
-        "balChange": BalEvents.BalCheckboxGroupChangeDetail;
-        "balFocus": BalEvents.BalCheckboxGroupFocusDetail;
-        "balBlur": BalEvents.BalCheckboxGroupBlurDetail;
-    }
-    interface HTMLBalCheckboxGroupElement extends Components.BalCheckboxGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCheckboxGroupElement: {
-        prototype: HTMLBalCheckboxGroupElement;
-        new (): HTMLBalCheckboxGroupElement;
-    };
-    interface HTMLBalCloseElement extends Components.BalClose, HTMLStencilElement {
-    }
-    var HTMLBalCloseElement: {
-        prototype: HTMLBalCloseElement;
-        new (): HTMLBalCloseElement;
-    };
-    interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
-    }
-    var HTMLBalContentElement: {
-        prototype: HTMLBalContentElement;
-        new (): HTMLBalContentElement;
-    };
-    interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
-    }
-    var HTMLBalDataElement: {
-        prototype: HTMLBalDataElement;
-        new (): HTMLBalDataElement;
-    };
-    interface HTMLBalDataItemElement extends Components.BalDataItem, HTMLStencilElement {
-    }
-    var HTMLBalDataItemElement: {
-        prototype: HTMLBalDataItemElement;
-        new (): HTMLBalDataItemElement;
-    };
-    interface HTMLBalDataLabelElement extends Components.BalDataLabel, HTMLStencilElement {
-    }
-    var HTMLBalDataLabelElement: {
-        prototype: HTMLBalDataLabelElement;
-        new (): HTMLBalDataLabelElement;
-    };
-    interface HTMLBalDataValueElementEventMap {
-        "balClick": BalEvents.BalDataValueClickDetail;
-        "balFocus": BalEvents.BalDataValueFocusDetail;
-        "balBlur": BalEvents.BalDataValueBlurDetail;
-    }
-    interface HTMLBalDataValueElement extends Components.BalDataValue, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDataValueElement: {
-        prototype: HTMLBalDataValueElement;
-        new (): HTMLBalDataValueElement;
-    };
-    interface HTMLBalDateElementEventMap {
-        "balInput": BalEvents.BalDateInputDetail;
-        "balChange": BalEvents.BalDateChangeDetail;
-        "balWillAnimate": BalEvents.BalDateWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalDateDidAnimateDetail;
-        "balBlur": BalEvents.BalDateBlurDetail;
-        "balFocus": BalEvents.BalDateFocusDetail;
-        "balInputClick": BalEvents.BalDateInputClickDetail;
-        "balIconClick": BalEvents.BalDateIconClickDetail;
-        "balPopoverPrepare": string;
-    }
-    interface HTMLBalDateElement extends Components.BalDate, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDateElement: {
-        prototype: HTMLBalDateElement;
-        new (): HTMLBalDateElement;
-    };
-    interface HTMLBalDateCalendarElementEventMap {
-        "balChange": BalEvents.BalDateCalendarChangeDetail;
-    }
-    interface HTMLBalDateCalendarElement extends Components.BalDateCalendar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDateCalendarElement: {
-        prototype: HTMLBalDateCalendarElement;
-        new (): HTMLBalDateCalendarElement;
-    };
-    interface HTMLBalDateCalendarCellElementEventMap {
-        "balSelectDay": BalEvents.BalDateCellSelectDetail;
-    }
-    interface HTMLBalDateCalendarCellElement extends Components.BalDateCalendarCell, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDateCalendarCellElement: {
-        prototype: HTMLBalDateCalendarCellElement;
-        new (): HTMLBalDateCalendarCellElement;
-    };
-    interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
-    }
-    var HTMLBalDividerElement: {
-        prototype: HTMLBalDividerElement;
-        new (): HTMLBalDividerElement;
-    };
-    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
-    }
-    var HTMLBalDocAppElement: {
-        prototype: HTMLBalDocAppElement;
-        new (): HTMLBalDocAppElement;
-    };
-    interface HTMLBalDropdownElementEventMap {
-        "balChange": BalEvents.BalDropdownChangeDetail;
-        "balFocus": BalEvents.BalDropdownFocusDetail;
-        "balBlur": BalEvents.BalDropdownBlurDetail;
-    }
-    interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDropdownElement: {
-        prototype: HTMLBalDropdownElement;
-        new (): HTMLBalDropdownElement;
-    };
-    interface HTMLBalFieldElementEventMap {
-        "balFormControlDidLoad": BalEvents.BalFieldAriaLabelledByDetail;
-    }
-    interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalFieldElement: {
-        prototype: HTMLBalFieldElement;
-        new (): HTMLBalFieldElement;
-    };
-    interface HTMLBalFieldControlElement extends Components.BalFieldControl, HTMLStencilElement {
-    }
-    var HTMLBalFieldControlElement: {
-        prototype: HTMLBalFieldControlElement;
-        new (): HTMLBalFieldControlElement;
-    };
-    interface HTMLBalFieldHintElement extends Components.BalFieldHint, HTMLStencilElement {
-    }
-    var HTMLBalFieldHintElement: {
-        prototype: HTMLBalFieldHintElement;
-        new (): HTMLBalFieldHintElement;
-    };
-    interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
-    }
-    var HTMLBalFieldLabelElement: {
-        prototype: HTMLBalFieldLabelElement;
-        new (): HTMLBalFieldLabelElement;
-    };
-    interface HTMLBalFieldMessageElement extends Components.BalFieldMessage, HTMLStencilElement {
-    }
-    var HTMLBalFieldMessageElement: {
-        prototype: HTMLBalFieldMessageElement;
-        new (): HTMLBalFieldMessageElement;
-    };
-    interface HTMLBalFileUploadElementEventMap {
-        "balChange": BalEvents.BalFileUploadChangeDetail;
-        "balFilesAdded": BalEvents.BalFileUploadFilesAddedDetail;
-        "balFilesRemoved": BalEvents.BalFileUploadFilesRemovedDetail;
-        "balRejectedFile": BalEvents.BalFileUploadRejectedFileDetail;
-        "balInputClick": BalEvents.BalFileUploadInputClickDetail;
-        "balBlur": BalEvents.BalFileUploadBlurDetail;
-        "balFocus": BalEvents.BalFileUploadFocusDetail;
-    }
-    interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalFileUploadElement: {
-        prototype: HTMLBalFileUploadElement;
-        new (): HTMLBalFileUploadElement;
-    };
-    interface HTMLBalFooterElement extends Components.BalFooter, HTMLStencilElement {
-    }
-    var HTMLBalFooterElement: {
-        prototype: HTMLBalFooterElement;
-        new (): HTMLBalFooterElement;
-    };
-    interface HTMLBalFormElement extends Components.BalForm, HTMLStencilElement {
-    }
-    var HTMLBalFormElement: {
-        prototype: HTMLBalFormElement;
-        new (): HTMLBalFormElement;
-    };
-    interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
-    }
-    var HTMLBalFormColElement: {
-        prototype: HTMLBalFormColElement;
-        new (): HTMLBalFormColElement;
-    };
-    interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
-    }
-    var HTMLBalFormGridElement: {
-        prototype: HTMLBalFormGridElement;
-        new (): HTMLBalFormGridElement;
-    };
-    interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
-    }
-    var HTMLBalHeadingElement: {
-        prototype: HTMLBalHeadingElement;
-        new (): HTMLBalHeadingElement;
-    };
-    interface HTMLBalHintElement extends Components.BalHint, HTMLStencilElement {
-    }
-    var HTMLBalHintElement: {
-        prototype: HTMLBalHintElement;
-        new (): HTMLBalHintElement;
-    };
-    interface HTMLBalHintTextElement extends Components.BalHintText, HTMLStencilElement {
-    }
-    var HTMLBalHintTextElement: {
-        prototype: HTMLBalHintTextElement;
-        new (): HTMLBalHintTextElement;
-    };
-    interface HTMLBalHintTitleElement extends Components.BalHintTitle, HTMLStencilElement {
-    }
-    var HTMLBalHintTitleElement: {
-        prototype: HTMLBalHintTitleElement;
-        new (): HTMLBalHintTitleElement;
-    };
-    interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {
-    }
-    var HTMLBalIconElement: {
-        prototype: HTMLBalIconElement;
-        new (): HTMLBalIconElement;
-    };
-    interface HTMLBalInputElementEventMap {
-        "balInput": BalEvents.BalInputInputDetail;
-        "balBlur": BalEvents.BalInputBlurDetail;
-        "balKeyPress": BalEvents.BalInputKeyPressDetail;
-        "balFocus": BalEvents.BalInputFocusDetail;
-        "balChange": BalEvents.BalInputChangeDetail;
-    }
-    interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalInputElement: {
-        prototype: HTMLBalInputElement;
-        new (): HTMLBalInputElement;
-    };
-    interface HTMLBalInputDateElementEventMap {
-        "balKeyPress": BalEvents.BalInputDateKeyPressDetail;
-        "balChange": BalEvents.BalInputDateChangeDetail;
-        "balInput": BalEvents.BalInputDateInputDetail;
-        "balBlur": BalEvents.BalInputDateBlurDetail;
-        "balFocus": BalEvents.BalInputDateFocusDetail;
-    }
-    interface HTMLBalInputDateElement extends Components.BalInputDate, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalInputDateElement: {
-        prototype: HTMLBalInputDateElement;
-        new (): HTMLBalInputDateElement;
-    };
-    interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
-    }
-    var HTMLBalInputGroupElement: {
-        prototype: HTMLBalInputGroupElement;
-        new (): HTMLBalInputGroupElement;
-    };
-    interface HTMLBalInputSliderElementEventMap {
-        "balInput": BalEvents.BalInputSliderInputDetail;
-        "balBlur": BalEvents.BalInputSliderBlurDetail;
-        "balKeyPress": BalEvents.BalInputSliderKeyPressDetail;
-        "balFocus": BalEvents.BalInputSliderFocusDetail;
-        "balChange": BalEvents.BalInputSliderChangeDetail;
-    }
-    interface HTMLBalInputSliderElement extends Components.BalInputSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalInputSliderElement: {
-        prototype: HTMLBalInputSliderElement;
-        new (): HTMLBalInputSliderElement;
-    };
-    interface HTMLBalInputStepperElementEventMap {
-        "balChange": BalEvents.BalInputStepperChangeDetail;
-        "balInput": BalEvents.BalInputStepperInputDetail;
-        "balIncrease": BalEvents.BalInputStepperIncreaseDetail;
-        "balDecrease": BalEvents.BalInputStepperDecreaseDetail;
-        "balFocus": BalEvents.BalInputStepperFocusDetail;
-        "balBlur": BalEvents.BalInputStepperBlurDetail;
-    }
-    interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalInputStepperElement: {
-        prototype: HTMLBalInputStepperElement;
-        new (): HTMLBalInputStepperElement;
-    };
-    interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
-    }
-    var HTMLBalLabelElement: {
-        prototype: HTMLBalLabelElement;
-        new (): HTMLBalLabelElement;
-    };
-    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
-    }
-    var HTMLBalListElement: {
-        prototype: HTMLBalListElement;
-        new (): HTMLBalListElement;
-    };
-    interface HTMLBalListItemElementEventMap {
-        "balNavigate": BalEvents.BalListItemNavigateDetail;
-        "balGroupStateChanged": BalEvents.BalListItemGroupStateChangedDetail;
-        "balWillAnimate": BalEvents.BalListItemWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalListItemDidAnimateDetail;
-    }
-    interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalListItemElement: {
-        prototype: HTMLBalListItemElement;
-        new (): HTMLBalListItemElement;
-    };
-    interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
-    }
-    var HTMLBalListItemAccordionBodyElement: {
-        prototype: HTMLBalListItemAccordionBodyElement;
-        new (): HTMLBalListItemAccordionBodyElement;
-    };
-    interface HTMLBalListItemAccordionHeadElementEventMap {
-        "balAccordionChange": BalEvents.BalListAccordionChangeDetail;
-    }
-    interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalListItemAccordionHeadElement: {
-        prototype: HTMLBalListItemAccordionHeadElement;
-        new (): HTMLBalListItemAccordionHeadElement;
-    };
-    interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
-    }
-    var HTMLBalListItemContentElement: {
-        prototype: HTMLBalListItemContentElement;
-        new (): HTMLBalListItemContentElement;
-    };
-    interface HTMLBalListItemIconElement extends Components.BalListItemIcon, HTMLStencilElement {
-    }
-    var HTMLBalListItemIconElement: {
-        prototype: HTMLBalListItemIconElement;
-        new (): HTMLBalListItemIconElement;
-    };
-    interface HTMLBalListItemSubtitleElement extends Components.BalListItemSubtitle, HTMLStencilElement {
-    }
-    var HTMLBalListItemSubtitleElement: {
-        prototype: HTMLBalListItemSubtitleElement;
-        new (): HTMLBalListItemSubtitleElement;
-    };
-    interface HTMLBalListItemTitleElement extends Components.BalListItemTitle, HTMLStencilElement {
-    }
-    var HTMLBalListItemTitleElement: {
-        prototype: HTMLBalListItemTitleElement;
-        new (): HTMLBalListItemTitleElement;
-    };
-    interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
-    }
-    var HTMLBalLogoElement: {
-        prototype: HTMLBalLogoElement;
-        new (): HTMLBalLogoElement;
-    };
-    interface HTMLBalModalElementEventMap {
-        "balModalDidPresent": BalEvents.BalModalDidPresentDetail;
-        "balModalWillPresent": BalEvents.BalModalWillPresentDetail;
-        "balModalWillDismiss": BalEvents.BalModalWillDismissDetail;
-        "balModalDidDismiss": BalEvents.BalModalDidDismissDetail;
-    }
-    interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalModalElement: {
-        prototype: HTMLBalModalElement;
-        new (): HTMLBalModalElement;
-    };
-    interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
-    }
-    var HTMLBalModalBodyElement: {
-        prototype: HTMLBalModalBodyElement;
-        new (): HTMLBalModalBodyElement;
-    };
-    interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
-    }
-    var HTMLBalModalHeaderElement: {
-        prototype: HTMLBalModalHeaderElement;
-        new (): HTMLBalModalHeaderElement;
-    };
-    interface HTMLBalNavElementEventMap {
-        "balNavItemClick": BalEvents.BalNavItemClickDetail;
-    }
-    interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalNavElement: {
-        prototype: HTMLBalNavElement;
-        new (): HTMLBalNavElement;
-    };
-    interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkElement: {
-        prototype: HTMLBalNavLinkElement;
-        new (): HTMLBalNavLinkElement;
-    };
-    interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGridElement: {
-        prototype: HTMLBalNavLinkGridElement;
-        new (): HTMLBalNavLinkGridElement;
-    };
-    interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGridColElement: {
-        prototype: HTMLBalNavLinkGridColElement;
-        new (): HTMLBalNavLinkGridColElement;
-    };
-    interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGroupElement: {
-        prototype: HTMLBalNavLinkGroupElement;
-        new (): HTMLBalNavLinkGroupElement;
-    };
-    interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
-    }
-    var HTMLBalNavMenuBarElement: {
-        prototype: HTMLBalNavMenuBarElement;
-        new (): HTMLBalNavMenuBarElement;
-    };
-    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
-    }
-    var HTMLBalNavMenuFlyoutElement: {
-        prototype: HTMLBalNavMenuFlyoutElement;
-        new (): HTMLBalNavMenuFlyoutElement;
-    };
-    interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
-    }
-    var HTMLBalNavMetaBarElement: {
-        prototype: HTMLBalNavMetaBarElement;
-        new (): HTMLBalNavMetaBarElement;
-    };
-    interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
-    }
-    var HTMLBalNavbarElement: {
-        prototype: HTMLBalNavbarElement;
-        new (): HTMLBalNavbarElement;
-    };
-    interface HTMLBalNavbarBrandElementEventMap {
-        "balNavigate": BalEvents.BalNavbarBrandNavigationChangeDetail;
-        "balWillAnimate": BalEvents.BalNavbarMenuWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalNavbarMenuDidAnimateDetail;
-    }
-    interface HTMLBalNavbarBrandElement extends Components.BalNavbarBrand, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalNavbarBrandElement: {
-        prototype: HTMLBalNavbarBrandElement;
-        new (): HTMLBalNavbarBrandElement;
-    };
-    interface HTMLBalNavbarMenuElement extends Components.BalNavbarMenu, HTMLStencilElement {
-    }
-    var HTMLBalNavbarMenuElement: {
-        prototype: HTMLBalNavbarMenuElement;
-        new (): HTMLBalNavbarMenuElement;
-    };
-    interface HTMLBalNavbarMenuEndElement extends Components.BalNavbarMenuEnd, HTMLStencilElement {
-    }
-    var HTMLBalNavbarMenuEndElement: {
-        prototype: HTMLBalNavbarMenuEndElement;
-        new (): HTMLBalNavbarMenuEndElement;
-    };
-    interface HTMLBalNavbarMenuStartElement extends Components.BalNavbarMenuStart, HTMLStencilElement {
-    }
-    var HTMLBalNavbarMenuStartElement: {
-        prototype: HTMLBalNavbarMenuStartElement;
-        new (): HTMLBalNavbarMenuStartElement;
-    };
-    interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
-    }
-    var HTMLBalNoticesElement: {
-        prototype: HTMLBalNoticesElement;
-        new (): HTMLBalNoticesElement;
-    };
-    interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
-    }
-    var HTMLBalNotificationElement: {
-        prototype: HTMLBalNotificationElement;
-        new (): HTMLBalNotificationElement;
-    };
-    interface HTMLBalNumberInputElementEventMap {
-        "balInput": BalEvents.BalNumberInputInputDetail;
-        "balChange": BalEvents.BalNumberInputChangeDetail;
-        "balBlur": BalEvents.BalNumberInputBlurDetail;
-        "balFocus": BalEvents.BalNumberInputFocusDetail;
-        "balKeyPress": BalEvents.BalNumberInputKeyPressDetail;
-    }
-    interface HTMLBalNumberInputElement extends Components.BalNumberInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalNumberInputElement: {
-        prototype: HTMLBalNumberInputElement;
-        new (): HTMLBalNumberInputElement;
-    };
-    interface HTMLBalOptionElementEventMap {
-        "balOptionChange": BalEvents.BalOptionChangeDetail;
-        "balOptionFocus": BalEvents.BalOptionFocusDetail;
-    }
-    interface HTMLBalOptionElement extends Components.BalOption, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalOptionElement: {
-        prototype: HTMLBalOptionElement;
-        new (): HTMLBalOptionElement;
-    };
-    interface HTMLBalOptionListElement extends Components.BalOptionList, HTMLStencilElement {
-    }
-    var HTMLBalOptionListElement: {
-        prototype: HTMLBalOptionListElement;
-        new (): HTMLBalOptionListElement;
-    };
-    interface HTMLBalPaginationElementEventMap {
-        "balChange": BalEvents.BalPaginationChangeDetail;
-    }
-    interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalPaginationElement: {
-        prototype: HTMLBalPaginationElement;
-        new (): HTMLBalPaginationElement;
-    };
-    interface HTMLBalPopoverElementEventMap {
-        "balChange": BalEvents.BalPopoverChangeDetail;
-        "balWillAnimate": BalEvents.BalPopoverWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalPopoverDidAnimateDetail;
-        "balPopoverPrepare": string;
-    }
-    interface HTMLBalPopoverElement extends Components.BalPopover, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalPopoverElement: {
-        prototype: HTMLBalPopoverElement;
-        new (): HTMLBalPopoverElement;
-    };
-    interface HTMLBalPopoverContentElement extends Components.BalPopoverContent, HTMLStencilElement {
-    }
-    var HTMLBalPopoverContentElement: {
-        prototype: HTMLBalPopoverContentElement;
-        new (): HTMLBalPopoverContentElement;
-    };
-    interface HTMLBalPopupElementEventMap {
-        "balChange": BalEvents.BalPopupChangeDetail;
-        "balWillAnimate": BalEvents.BalPopupWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalPopupDidAnimateDetail;
-    }
-    interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalPopupElement: {
-        prototype: HTMLBalPopupElement;
-        new (): HTMLBalPopupElement;
-    };
-    interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
-    }
-    var HTMLBalProgressBarElement: {
-        prototype: HTMLBalProgressBarElement;
-        new (): HTMLBalProgressBarElement;
-    };
-    interface HTMLBalRadioElementEventMap {
-        "balFocus": BalEvents.BalRadioFocusDetail;
-        "balBlur": BalEvents.BalRadioBlurDetail;
-        "balChange": BalEvents.BalRadioChangeDetail;
-    }
-    interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalRadioElement: {
-        prototype: HTMLBalRadioElement;
-        new (): HTMLBalRadioElement;
-    };
-    interface HTMLBalRadioButtonElementEventMap {
-        "balFocus": BalEvents.BalRadioButtonFocusDetail;
-        "balBlur": BalEvents.BalRadioButtonBlurDetail;
-        "balFormControlDidLoad": BalEvents.BalRadioButtonAriaLabelledByDetail;
-    }
-    interface HTMLBalRadioButtonElement extends Components.BalRadioButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalRadioButtonElement: {
-        prototype: HTMLBalRadioButtonElement;
-        new (): HTMLBalRadioButtonElement;
-    };
-    interface HTMLBalRadioGroupElementEventMap {
-        "balChange": BalEvents.BalRadioGroupChangeDetail;
-        "balFocus": BalEvents.BalRadioGroupFocusDetail;
-        "balBlur": BalEvents.BalRadioGroupBlurDetail;
-    }
-    interface HTMLBalRadioGroupElement extends Components.BalRadioGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalRadioGroupElement: {
-        prototype: HTMLBalRadioGroupElement;
-        new (): HTMLBalRadioGroupElement;
-    };
-    interface HTMLBalSegmentElementEventMap {
-        "balFocus": BalEvents.BalSegmentFocusDetail;
-        "balBlur": BalEvents.BalSegmentBlurDetail;
-        "balChange": BalEvents.BalSegmentChangeDetail;
-        "balSelect": BalEvents.BalSegmentChangeDetail;
-        "balVertical": BalEvents.BalSegmentVerticalDetail;
-    }
-    interface HTMLBalSegmentElement extends Components.BalSegment, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalSegmentElement: {
-        prototype: HTMLBalSegmentElement;
-        new (): HTMLBalSegmentElement;
-    };
-    interface HTMLBalSegmentItemElement extends Components.BalSegmentItem, HTMLStencilElement {
-    }
-    var HTMLBalSegmentItemElement: {
-        prototype: HTMLBalSegmentItemElement;
-        new (): HTMLBalSegmentItemElement;
-    };
-    interface HTMLBalSelectElementEventMap {
-        "balChange": BalEvents.BalSelectChangeDetail;
-        "balInputClick": BalEvents.BalSelectInputClickDetail;
-        "balInput": BalEvents.BalSelectInputDetail;
-        "balBlur": BalEvents.BalSelectBlurDetail;
-        "balFocus": BalEvents.BalSelectFocusDetail;
-        "balCancel": BalEvents.BalSelectCancelDetail;
-        "balKeyPress": BalEvents.BalSelectKeyPressDetail;
-    }
-    interface HTMLBalSelectElement extends Components.BalSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalSelectElement: {
-        prototype: HTMLBalSelectElement;
-        new (): HTMLBalSelectElement;
-    };
-    interface HTMLBalSelectOptionElement extends Components.BalSelectOption, HTMLStencilElement {
-    }
-    var HTMLBalSelectOptionElement: {
-        prototype: HTMLBalSelectOptionElement;
-        new (): HTMLBalSelectOptionElement;
-    };
-    interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
-    }
-    var HTMLBalShapeElement: {
-        prototype: HTMLBalShapeElement;
-        new (): HTMLBalShapeElement;
-    };
-    interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
-    }
-    var HTMLBalSheetElement: {
-        prototype: HTMLBalSheetElement;
-        new (): HTMLBalSheetElement;
-    };
-    interface HTMLBalSnackbarElementEventMap {
-        "balClose": BalEvents.BalSnackbarCloseDetail;
-        "balAction": BalEvents.BalSnackbarActionDetail;
-    }
-    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalSnackbarElement: {
-        prototype: HTMLBalSnackbarElement;
-        new (): HTMLBalSnackbarElement;
-    };
-    interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
-    }
-    var HTMLBalSpinnerElement: {
-        prototype: HTMLBalSpinnerElement;
-        new (): HTMLBalSpinnerElement;
-    };
-    interface HTMLBalStackElement extends Components.BalStack, HTMLStencilElement {
-    }
-    var HTMLBalStackElement: {
-        prototype: HTMLBalStackElement;
-        new (): HTMLBalStackElement;
-    };
-    interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
-    }
-    var HTMLBalStageElement: {
-        prototype: HTMLBalStageElement;
-        new (): HTMLBalStageElement;
-    };
-    interface HTMLBalStageBackLinkElement extends Components.BalStageBackLink, HTMLStencilElement {
-    }
-    var HTMLBalStageBackLinkElement: {
-        prototype: HTMLBalStageBackLinkElement;
-        new (): HTMLBalStageBackLinkElement;
-    };
-    interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
-    }
-    var HTMLBalStageBodyElement: {
-        prototype: HTMLBalStageBodyElement;
-        new (): HTMLBalStageBodyElement;
-    };
-    interface HTMLBalStageFootElement extends Components.BalStageFoot, HTMLStencilElement {
-    }
-    var HTMLBalStageFootElement: {
-        prototype: HTMLBalStageFootElement;
-        new (): HTMLBalStageFootElement;
-    };
-    interface HTMLBalStageHeadElement extends Components.BalStageHead, HTMLStencilElement {
-    }
-    var HTMLBalStageHeadElement: {
-        prototype: HTMLBalStageHeadElement;
-        new (): HTMLBalStageHeadElement;
-    };
-    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
-    }
-    var HTMLBalStageImageElement: {
-        prototype: HTMLBalStageImageElement;
-        new (): HTMLBalStageImageElement;
-    };
-    interface HTMLBalStepItemElementEventMap {
-        "balNavigate": BalEvents.BalStepItemNavigateDetail;
-    }
-    interface HTMLBalStepItemElement extends Components.BalStepItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalStepItemElement: {
-        prototype: HTMLBalStepItemElement;
-        new (): HTMLBalStepItemElement;
-    };
-    interface HTMLBalStepsElementEventMap {
-        "balChange": BalEvents.BalTabsChangeDetail;
-    }
-    interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalStepsElement: {
-        prototype: HTMLBalStepsElement;
-        new (): HTMLBalStepsElement;
-    };
-    interface HTMLBalTabItemElementEventMap {
-        "balNavigate": BalEvents.BalTabItemNavigateDetail;
-    }
-    interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTabItemElement: {
-        prototype: HTMLBalTabItemElement;
-        new (): HTMLBalTabItemElement;
-    };
-    interface HTMLBalTableElement extends Components.BalTable, HTMLStencilElement {
-    }
-    var HTMLBalTableElement: {
-        prototype: HTMLBalTableElement;
-        new (): HTMLBalTableElement;
-    };
-    interface HTMLBalTabsElementEventMap {
-        "balChange": BalEvents.BalTabsChangeDetail;
-        "balWillAnimate": BalEvents.BalTabsWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalTabsDidAnimateDetail;
-    }
-    interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTabsElement: {
-        prototype: HTMLBalTabsElement;
-        new (): HTMLBalTabsElement;
-    };
-    interface HTMLBalTagElementEventMap {
-        "balCloseClick": BalEvents.BalTagCloseClickDetail;
-    }
-    interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTagElement: {
-        prototype: HTMLBalTagElement;
-        new (): HTMLBalTagElement;
-    };
-    interface HTMLBalTagGroupElement extends Components.BalTagGroup, HTMLStencilElement {
-    }
-    var HTMLBalTagGroupElement: {
-        prototype: HTMLBalTagGroupElement;
-        new (): HTMLBalTagGroupElement;
-    };
-    interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
-    }
-    var HTMLBalTextElement: {
-        prototype: HTMLBalTextElement;
-        new (): HTMLBalTextElement;
-    };
-    interface HTMLBalTextareaElementEventMap {
-        "balChange": BalEvents.BalTextareaChangeDetail;
-        "balInput": BalEvents.BalTextareaInputDetail;
-        "balBlur": BalEvents.BalTextareaBlurDetail;
-        "balKeyPress": BalEvents.BalTextareaKeyPressDetail;
-        "balFocus": BalEvents.BalTextareaFocusDetail;
-    }
-    interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTextareaElement: {
-        prototype: HTMLBalTextareaElement;
-        new (): HTMLBalTextareaElement;
-    };
-    interface HTMLBalTimeInputElementEventMap {
-        "balInput": BalEvents.BalTimeInputInputDetail;
-        "balChange": BalEvents.BalTimeInputChangeDetail;
-        "balBlur": BalEvents.BalTimeInputBlurDetail;
-        "balFocus": BalEvents.BalTimeInputFocusDetail;
-        "balKeyPress": BalEvents.BalTimeInputKeyPressDetail;
-        "balClick": BalEvents.BalTimeInputClickDetail;
-    }
-    interface HTMLBalTimeInputElement extends Components.BalTimeInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTimeInputElement: {
-        prototype: HTMLBalTimeInputElement;
-        new (): HTMLBalTimeInputElement;
-    };
-    interface HTMLBalToastElementEventMap {
-        "balClose": BalEvents.BalToastCloseDetail;
-    }
-    interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalToastElement: {
-        prototype: HTMLBalToastElement;
-        new (): HTMLBalToastElement;
-    };
-    interface HTMLBalTooltipElementEventMap {
-        "balWillAnimate": BalEvents.BalTooltipWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalTooltipDidAnimateDetail;
-    }
-    interface HTMLBalTooltipElement extends Components.BalTooltip, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTooltipElement: {
-        prototype: HTMLBalTooltipElement;
-        new (): HTMLBalTooltipElement;
-    };
-    interface HTMLElementTagNameMap {
-        "bal-accordion": HTMLBalAccordionElement;
-        "bal-accordion-details": HTMLBalAccordionDetailsElement;
-        "bal-accordion-summary": HTMLBalAccordionSummaryElement;
-        "bal-accordion-trigger": HTMLBalAccordionTriggerElement;
-        "bal-app": HTMLBalAppElement;
-        "bal-badge": HTMLBalBadgeElement;
-        "bal-button": HTMLBalButtonElement;
-        "bal-button-group": HTMLBalButtonGroupElement;
-        "bal-card": HTMLBalCardElement;
-        "bal-card-actions": HTMLBalCardActionsElement;
-        "bal-card-button": HTMLBalCardButtonElement;
-        "bal-card-content": HTMLBalCardContentElement;
-        "bal-card-subtitle": HTMLBalCardSubtitleElement;
-        "bal-card-title": HTMLBalCardTitleElement;
-        "bal-carousel": HTMLBalCarouselElement;
-        "bal-carousel-item": HTMLBalCarouselItemElement;
-        "bal-checkbox": HTMLBalCheckboxElement;
-        "bal-checkbox-button": HTMLBalCheckboxButtonElement;
-        "bal-checkbox-group": HTMLBalCheckboxGroupElement;
-        "bal-close": HTMLBalCloseElement;
-        "bal-content": HTMLBalContentElement;
-        "bal-data": HTMLBalDataElement;
-        "bal-data-item": HTMLBalDataItemElement;
-        "bal-data-label": HTMLBalDataLabelElement;
-        "bal-data-value": HTMLBalDataValueElement;
-        "bal-date": HTMLBalDateElement;
-        "bal-date-calendar": HTMLBalDateCalendarElement;
-        "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
-        "bal-divider": HTMLBalDividerElement;
-        "bal-doc-app": HTMLBalDocAppElement;
-        "bal-dropdown": HTMLBalDropdownElement;
-        "bal-field": HTMLBalFieldElement;
-        "bal-field-control": HTMLBalFieldControlElement;
-        "bal-field-hint": HTMLBalFieldHintElement;
-        "bal-field-label": HTMLBalFieldLabelElement;
-        "bal-field-message": HTMLBalFieldMessageElement;
-        "bal-file-upload": HTMLBalFileUploadElement;
-        "bal-footer": HTMLBalFooterElement;
-        "bal-form": HTMLBalFormElement;
-        "bal-form-col": HTMLBalFormColElement;
-        "bal-form-grid": HTMLBalFormGridElement;
-        "bal-heading": HTMLBalHeadingElement;
-        "bal-hint": HTMLBalHintElement;
-        "bal-hint-text": HTMLBalHintTextElement;
-        "bal-hint-title": HTMLBalHintTitleElement;
-        "bal-icon": HTMLBalIconElement;
-        "bal-input": HTMLBalInputElement;
-        "bal-input-date": HTMLBalInputDateElement;
-        "bal-input-group": HTMLBalInputGroupElement;
-        "bal-input-slider": HTMLBalInputSliderElement;
-        "bal-input-stepper": HTMLBalInputStepperElement;
-        "bal-label": HTMLBalLabelElement;
-        "bal-list": HTMLBalListElement;
-        "bal-list-item": HTMLBalListItemElement;
-        "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
-        "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
-        "bal-list-item-content": HTMLBalListItemContentElement;
-        "bal-list-item-icon": HTMLBalListItemIconElement;
-        "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
-        "bal-list-item-title": HTMLBalListItemTitleElement;
-        "bal-logo": HTMLBalLogoElement;
-        "bal-modal": HTMLBalModalElement;
-        "bal-modal-body": HTMLBalModalBodyElement;
-        "bal-modal-header": HTMLBalModalHeaderElement;
-        "bal-nav": HTMLBalNavElement;
-        "bal-nav-link": HTMLBalNavLinkElement;
-        "bal-nav-link-grid": HTMLBalNavLinkGridElement;
-        "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
-        "bal-nav-link-group": HTMLBalNavLinkGroupElement;
-        "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
-        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
-        "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
-        "bal-navbar": HTMLBalNavbarElement;
-        "bal-navbar-brand": HTMLBalNavbarBrandElement;
-        "bal-navbar-menu": HTMLBalNavbarMenuElement;
-        "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
-        "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
-        "bal-notices": HTMLBalNoticesElement;
-        "bal-notification": HTMLBalNotificationElement;
-        "bal-number-input": HTMLBalNumberInputElement;
-        "bal-option": HTMLBalOptionElement;
-        "bal-option-list": HTMLBalOptionListElement;
-        "bal-pagination": HTMLBalPaginationElement;
-        "bal-popover": HTMLBalPopoverElement;
-        "bal-popover-content": HTMLBalPopoverContentElement;
-        "bal-popup": HTMLBalPopupElement;
-        "bal-progress-bar": HTMLBalProgressBarElement;
-        "bal-radio": HTMLBalRadioElement;
-        "bal-radio-button": HTMLBalRadioButtonElement;
-        "bal-radio-group": HTMLBalRadioGroupElement;
-        "bal-segment": HTMLBalSegmentElement;
-        "bal-segment-item": HTMLBalSegmentItemElement;
-        "bal-select": HTMLBalSelectElement;
-        "bal-select-option": HTMLBalSelectOptionElement;
-        "bal-shape": HTMLBalShapeElement;
-        "bal-sheet": HTMLBalSheetElement;
-        "bal-snackbar": HTMLBalSnackbarElement;
-        "bal-spinner": HTMLBalSpinnerElement;
-        "bal-stack": HTMLBalStackElement;
-        "bal-stage": HTMLBalStageElement;
-        "bal-stage-back-link": HTMLBalStageBackLinkElement;
-        "bal-stage-body": HTMLBalStageBodyElement;
-        "bal-stage-foot": HTMLBalStageFootElement;
-        "bal-stage-head": HTMLBalStageHeadElement;
-        "bal-stage-image": HTMLBalStageImageElement;
-        "bal-step-item": HTMLBalStepItemElement;
-        "bal-steps": HTMLBalStepsElement;
-        "bal-tab-item": HTMLBalTabItemElement;
-        "bal-table": HTMLBalTableElement;
-        "bal-tabs": HTMLBalTabsElement;
-        "bal-tag": HTMLBalTagElement;
-        "bal-tag-group": HTMLBalTagGroupElement;
-        "bal-text": HTMLBalTextElement;
-        "bal-textarea": HTMLBalTextareaElement;
-        "bal-time-input": HTMLBalTimeInputElement;
-        "bal-toast": HTMLBalToastElement;
-        "bal-tooltip": HTMLBalTooltipElement;
-    }
+  interface HTMLBalAccordionElementEventMap {
+    "balChange": BalEvents.BalAccordionChangeDetail;
+    "balWillAnimate": BalEvents.BalAccordionWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalAccordionDidAnimateDetail;
+  }
+  interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalAccordionElement: {
+    prototype: HTMLBalAccordionElement;
+    new(): HTMLBalAccordionElement;
+  };
+  interface HTMLBalAccordionDetailsElement extends Components.BalAccordionDetails, HTMLStencilElement {
+  }
+  var HTMLBalAccordionDetailsElement: {
+    prototype: HTMLBalAccordionDetailsElement;
+    new(): HTMLBalAccordionDetailsElement;
+  };
+  interface HTMLBalAccordionSummaryElement extends Components.BalAccordionSummary, HTMLStencilElement {
+  }
+  var HTMLBalAccordionSummaryElement: {
+    prototype: HTMLBalAccordionSummaryElement;
+    new(): HTMLBalAccordionSummaryElement;
+  };
+  interface HTMLBalAccordionTriggerElement extends Components.BalAccordionTrigger, HTMLStencilElement {
+  }
+  var HTMLBalAccordionTriggerElement: {
+    prototype: HTMLBalAccordionTriggerElement;
+    new(): HTMLBalAccordionTriggerElement;
+  };
+  interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
+  }
+  var HTMLBalAppElement: {
+    prototype: HTMLBalAppElement;
+    new(): HTMLBalAppElement;
+  };
+  interface HTMLBalBadgeElement extends Components.BalBadge, HTMLStencilElement {
+  }
+  var HTMLBalBadgeElement: {
+    prototype: HTMLBalBadgeElement;
+    new(): HTMLBalBadgeElement;
+  };
+  interface HTMLBalButtonElementEventMap {
+    "balNavigate": BalEvents.BalButtonNavigateDetail;
+    "balFocus": BalEvents.BalButtonFocusDetail;
+    "balBlur": BalEvents.BalButtonBlurDetail;
+    "balDidRender": BalEvents.BalButtonDidRenderDetail;
+  }
+  interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalButtonElement: {
+    prototype: HTMLBalButtonElement;
+    new(): HTMLBalButtonElement;
+  };
+  interface HTMLBalButtonGroupElement extends Components.BalButtonGroup, HTMLStencilElement {
+  }
+  var HTMLBalButtonGroupElement: {
+    prototype: HTMLBalButtonGroupElement;
+    new(): HTMLBalButtonGroupElement;
+  };
+  interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
+  }
+  var HTMLBalCardElement: {
+    prototype: HTMLBalCardElement;
+    new(): HTMLBalCardElement;
+  };
+  interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
+  }
+  var HTMLBalCardActionsElement: {
+    prototype: HTMLBalCardActionsElement;
+    new(): HTMLBalCardActionsElement;
+  };
+  interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
+  }
+  var HTMLBalCardButtonElement: {
+    prototype: HTMLBalCardButtonElement;
+    new(): HTMLBalCardButtonElement;
+  };
+  interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
+  }
+  var HTMLBalCardContentElement: {
+    prototype: HTMLBalCardContentElement;
+    new(): HTMLBalCardContentElement;
+  };
+  interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
+  }
+  var HTMLBalCardSubtitleElement: {
+    prototype: HTMLBalCardSubtitleElement;
+    new(): HTMLBalCardSubtitleElement;
+  };
+  interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
+  }
+  var HTMLBalCardTitleElement: {
+    prototype: HTMLBalCardTitleElement;
+    new(): HTMLBalCardTitleElement;
+  };
+  interface HTMLBalCarouselElementEventMap {
+    "balChange": BalEvents.BalCarouselChangeDetail;
+  }
+  interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalCarouselElement: {
+    prototype: HTMLBalCarouselElement;
+    new(): HTMLBalCarouselElement;
+  };
+  interface HTMLBalCarouselItemElementEventMap {
+    "balNavigate": BalEvents.BalCarouselItemNavigateDetail;
+    "balFocus": BalEvents.BalCarouselItemFocusDetail;
+    "balBlur": BalEvents.BalCarouselItemBlurDetail;
+  }
+  interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalCarouselItemElement: {
+    prototype: HTMLBalCarouselItemElement;
+    new(): HTMLBalCarouselItemElement;
+  };
+  interface HTMLBalCheckboxElementEventMap {
+    "balFocus": BalEvents.BalCheckboxFocusDetail;
+    "balBlur": BalEvents.BalCheckboxBlurDetail;
+    "balChange": BalEvents.BalCheckboxChangeDetail;
+  }
+  interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalCheckboxElement: {
+    prototype: HTMLBalCheckboxElement;
+    new(): HTMLBalCheckboxElement;
+  };
+  interface HTMLBalCheckboxButtonElementEventMap {
+    "balFocus": BalEvents.BalCheckboxButtonFocusDetail;
+    "balBlur": BalEvents.BalCheckboxButtonBlurDetail;
+    "balFormControlDidLoad": BalEvents.BalCheckboxButtonAriaLabelledByDetail;
+  }
+  interface HTMLBalCheckboxButtonElement extends Components.BalCheckboxButton, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalCheckboxButtonElement: {
+    prototype: HTMLBalCheckboxButtonElement;
+    new(): HTMLBalCheckboxButtonElement;
+  };
+  interface HTMLBalCheckboxGroupElementEventMap {
+    "balChange": BalEvents.BalCheckboxGroupChangeDetail;
+    "balFocus": BalEvents.BalCheckboxGroupFocusDetail;
+    "balBlur": BalEvents.BalCheckboxGroupBlurDetail;
+  }
+  interface HTMLBalCheckboxGroupElement extends Components.BalCheckboxGroup, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalCheckboxGroupElement: {
+    prototype: HTMLBalCheckboxGroupElement;
+    new(): HTMLBalCheckboxGroupElement;
+  };
+  interface HTMLBalCloseElement extends Components.BalClose, HTMLStencilElement {
+  }
+  var HTMLBalCloseElement: {
+    prototype: HTMLBalCloseElement;
+    new(): HTMLBalCloseElement;
+  };
+  interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
+  }
+  var HTMLBalContentElement: {
+    prototype: HTMLBalContentElement;
+    new(): HTMLBalContentElement;
+  };
+  interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
+  }
+  var HTMLBalDataElement: {
+    prototype: HTMLBalDataElement;
+    new(): HTMLBalDataElement;
+  };
+  interface HTMLBalDataItemElement extends Components.BalDataItem, HTMLStencilElement {
+  }
+  var HTMLBalDataItemElement: {
+    prototype: HTMLBalDataItemElement;
+    new(): HTMLBalDataItemElement;
+  };
+  interface HTMLBalDataLabelElement extends Components.BalDataLabel, HTMLStencilElement {
+  }
+  var HTMLBalDataLabelElement: {
+    prototype: HTMLBalDataLabelElement;
+    new(): HTMLBalDataLabelElement;
+  };
+  interface HTMLBalDataValueElementEventMap {
+    "balClick": BalEvents.BalDataValueClickDetail;
+    "balFocus": BalEvents.BalDataValueFocusDetail;
+    "balBlur": BalEvents.BalDataValueBlurDetail;
+  }
+  interface HTMLBalDataValueElement extends Components.BalDataValue, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalDataValueElement: {
+    prototype: HTMLBalDataValueElement;
+    new(): HTMLBalDataValueElement;
+  };
+  interface HTMLBalDateElementEventMap {
+    "balInput": BalEvents.BalDateInputDetail;
+    "balChange": BalEvents.BalDateChangeDetail;
+    "balWillAnimate": BalEvents.BalDateWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalDateDidAnimateDetail;
+    "balBlur": BalEvents.BalDateBlurDetail;
+    "balFocus": BalEvents.BalDateFocusDetail;
+    "balInputClick": BalEvents.BalDateInputClickDetail;
+    "balIconClick": BalEvents.BalDateIconClickDetail;
+    "balPopoverPrepare": string;
+  }
+  interface HTMLBalDateElement extends Components.BalDate, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalDateElement: {
+    prototype: HTMLBalDateElement;
+    new(): HTMLBalDateElement;
+  };
+  interface HTMLBalDateCalendarElementEventMap {
+    "balChange": BalEvents.BalDateCalendarChangeDetail;
+  }
+  interface HTMLBalDateCalendarElement extends Components.BalDateCalendar, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalDateCalendarElement: {
+    prototype: HTMLBalDateCalendarElement;
+    new(): HTMLBalDateCalendarElement;
+  };
+  interface HTMLBalDateCalendarCellElementEventMap {
+    "balSelectDay": BalEvents.BalDateCellSelectDetail;
+  }
+  interface HTMLBalDateCalendarCellElement extends Components.BalDateCalendarCell, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalDateCalendarCellElement: {
+    prototype: HTMLBalDateCalendarCellElement;
+    new(): HTMLBalDateCalendarCellElement;
+  };
+  interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
+  }
+  var HTMLBalDividerElement: {
+    prototype: HTMLBalDividerElement;
+    new(): HTMLBalDividerElement;
+  };
+  interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
+  }
+  var HTMLBalDocAppElement: {
+    prototype: HTMLBalDocAppElement;
+    new(): HTMLBalDocAppElement;
+  };
+  interface HTMLBalDropdownElementEventMap {
+    "balChange": BalEvents.BalDropdownChangeDetail;
+    "balFocus": BalEvents.BalDropdownFocusDetail;
+    "balBlur": BalEvents.BalDropdownBlurDetail;
+  }
+  interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalDropdownElementEventMap>(type: K, listener: (this: HTMLBalDropdownElement, ev: BalDropdownCustomEvent<HTMLBalDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalDropdownElement: {
+    prototype: HTMLBalDropdownElement;
+    new(): HTMLBalDropdownElement;
+  };
+  interface HTMLBalFieldElementEventMap {
+    "balFormControlDidLoad": BalEvents.BalFieldAriaLabelledByDetail;
+  }
+  interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalFieldElement: {
+    prototype: HTMLBalFieldElement;
+    new(): HTMLBalFieldElement;
+  };
+  interface HTMLBalFieldControlElement extends Components.BalFieldControl, HTMLStencilElement {
+  }
+  var HTMLBalFieldControlElement: {
+    prototype: HTMLBalFieldControlElement;
+    new(): HTMLBalFieldControlElement;
+  };
+  interface HTMLBalFieldHintElement extends Components.BalFieldHint, HTMLStencilElement {
+  }
+  var HTMLBalFieldHintElement: {
+    prototype: HTMLBalFieldHintElement;
+    new(): HTMLBalFieldHintElement;
+  };
+  interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
+  }
+  var HTMLBalFieldLabelElement: {
+    prototype: HTMLBalFieldLabelElement;
+    new(): HTMLBalFieldLabelElement;
+  };
+  interface HTMLBalFieldMessageElement extends Components.BalFieldMessage, HTMLStencilElement {
+  }
+  var HTMLBalFieldMessageElement: {
+    prototype: HTMLBalFieldMessageElement;
+    new(): HTMLBalFieldMessageElement;
+  };
+  interface HTMLBalFileUploadElementEventMap {
+    "balChange": BalEvents.BalFileUploadChangeDetail;
+    "balFilesAdded": BalEvents.BalFileUploadFilesAddedDetail;
+    "balFilesRemoved": BalEvents.BalFileUploadFilesRemovedDetail;
+    "balRejectedFile": BalEvents.BalFileUploadRejectedFileDetail;
+    "balInputClick": BalEvents.BalFileUploadInputClickDetail;
+    "balBlur": BalEvents.BalFileUploadBlurDetail;
+    "balFocus": BalEvents.BalFileUploadFocusDetail;
+  }
+  interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalFileUploadElement: {
+    prototype: HTMLBalFileUploadElement;
+    new(): HTMLBalFileUploadElement;
+  };
+  interface HTMLBalFooterElement extends Components.BalFooter, HTMLStencilElement {
+  }
+  var HTMLBalFooterElement: {
+    prototype: HTMLBalFooterElement;
+    new(): HTMLBalFooterElement;
+  };
+  interface HTMLBalFormElement extends Components.BalForm, HTMLStencilElement {
+  }
+  var HTMLBalFormElement: {
+    prototype: HTMLBalFormElement;
+    new(): HTMLBalFormElement;
+  };
+  interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
+  }
+  var HTMLBalFormColElement: {
+    prototype: HTMLBalFormColElement;
+    new(): HTMLBalFormColElement;
+  };
+  interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
+  }
+  var HTMLBalFormGridElement: {
+    prototype: HTMLBalFormGridElement;
+    new(): HTMLBalFormGridElement;
+  };
+  interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
+  }
+  var HTMLBalHeadingElement: {
+    prototype: HTMLBalHeadingElement;
+    new(): HTMLBalHeadingElement;
+  };
+  interface HTMLBalHintElement extends Components.BalHint, HTMLStencilElement {
+  }
+  var HTMLBalHintElement: {
+    prototype: HTMLBalHintElement;
+    new(): HTMLBalHintElement;
+  };
+  interface HTMLBalHintTextElement extends Components.BalHintText, HTMLStencilElement {
+  }
+  var HTMLBalHintTextElement: {
+    prototype: HTMLBalHintTextElement;
+    new(): HTMLBalHintTextElement;
+  };
+  interface HTMLBalHintTitleElement extends Components.BalHintTitle, HTMLStencilElement {
+  }
+  var HTMLBalHintTitleElement: {
+    prototype: HTMLBalHintTitleElement;
+    new(): HTMLBalHintTitleElement;
+  };
+  interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {
+  }
+  var HTMLBalIconElement: {
+    prototype: HTMLBalIconElement;
+    new(): HTMLBalIconElement;
+  };
+  interface HTMLBalInputElementEventMap {
+    "balInput": BalEvents.BalInputInputDetail;
+    "balBlur": BalEvents.BalInputBlurDetail;
+    "balKeyPress": BalEvents.BalInputKeyPressDetail;
+    "balFocus": BalEvents.BalInputFocusDetail;
+    "balChange": BalEvents.BalInputChangeDetail;
+  }
+  interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalInputElement: {
+    prototype: HTMLBalInputElement;
+    new(): HTMLBalInputElement;
+  };
+  interface HTMLBalInputDateElementEventMap {
+    "balKeyPress": BalEvents.BalInputDateKeyPressDetail;
+    "balChange": BalEvents.BalInputDateChangeDetail;
+    "balInput": BalEvents.BalInputDateInputDetail;
+    "balBlur": BalEvents.BalInputDateBlurDetail;
+    "balFocus": BalEvents.BalInputDateFocusDetail;
+  }
+  interface HTMLBalInputDateElement extends Components.BalInputDate, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalInputDateElement: {
+    prototype: HTMLBalInputDateElement;
+    new(): HTMLBalInputDateElement;
+  };
+  interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
+  }
+  var HTMLBalInputGroupElement: {
+    prototype: HTMLBalInputGroupElement;
+    new(): HTMLBalInputGroupElement;
+  };
+  interface HTMLBalInputSliderElementEventMap {
+    "balInput": BalEvents.BalInputSliderInputDetail;
+    "balBlur": BalEvents.BalInputSliderBlurDetail;
+    "balKeyPress": BalEvents.BalInputSliderKeyPressDetail;
+    "balFocus": BalEvents.BalInputSliderFocusDetail;
+    "balChange": BalEvents.BalInputSliderChangeDetail;
+  }
+  interface HTMLBalInputSliderElement extends Components.BalInputSlider, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalInputSliderElement: {
+    prototype: HTMLBalInputSliderElement;
+    new(): HTMLBalInputSliderElement;
+  };
+  interface HTMLBalInputStepperElementEventMap {
+    "balChange": BalEvents.BalInputStepperChangeDetail;
+    "balInput": BalEvents.BalInputStepperInputDetail;
+    "balIncrease": BalEvents.BalInputStepperIncreaseDetail;
+    "balDecrease": BalEvents.BalInputStepperDecreaseDetail;
+    "balFocus": BalEvents.BalInputStepperFocusDetail;
+    "balBlur": BalEvents.BalInputStepperBlurDetail;
+  }
+  interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalInputStepperElement: {
+    prototype: HTMLBalInputStepperElement;
+    new(): HTMLBalInputStepperElement;
+  };
+  interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
+  }
+  var HTMLBalLabelElement: {
+    prototype: HTMLBalLabelElement;
+    new(): HTMLBalLabelElement;
+  };
+  interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
+  }
+  var HTMLBalListElement: {
+    prototype: HTMLBalListElement;
+    new(): HTMLBalListElement;
+  };
+  interface HTMLBalListItemElementEventMap {
+    "balNavigate": BalEvents.BalListItemNavigateDetail;
+    "balGroupStateChanged": BalEvents.BalListItemGroupStateChangedDetail;
+    "balWillAnimate": BalEvents.BalListItemWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalListItemDidAnimateDetail;
+  }
+  interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalListItemElement: {
+    prototype: HTMLBalListItemElement;
+    new(): HTMLBalListItemElement;
+  };
+  interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
+  }
+  var HTMLBalListItemAccordionBodyElement: {
+    prototype: HTMLBalListItemAccordionBodyElement;
+    new(): HTMLBalListItemAccordionBodyElement;
+  };
+  interface HTMLBalListItemAccordionHeadElementEventMap {
+    "balAccordionChange": BalEvents.BalListAccordionChangeDetail;
+  }
+  interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalListItemAccordionHeadElement: {
+    prototype: HTMLBalListItemAccordionHeadElement;
+    new(): HTMLBalListItemAccordionHeadElement;
+  };
+  interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
+  }
+  var HTMLBalListItemContentElement: {
+    prototype: HTMLBalListItemContentElement;
+    new(): HTMLBalListItemContentElement;
+  };
+  interface HTMLBalListItemIconElement extends Components.BalListItemIcon, HTMLStencilElement {
+  }
+  var HTMLBalListItemIconElement: {
+    prototype: HTMLBalListItemIconElement;
+    new(): HTMLBalListItemIconElement;
+  };
+  interface HTMLBalListItemSubtitleElement extends Components.BalListItemSubtitle, HTMLStencilElement {
+  }
+  var HTMLBalListItemSubtitleElement: {
+    prototype: HTMLBalListItemSubtitleElement;
+    new(): HTMLBalListItemSubtitleElement;
+  };
+  interface HTMLBalListItemTitleElement extends Components.BalListItemTitle, HTMLStencilElement {
+  }
+  var HTMLBalListItemTitleElement: {
+    prototype: HTMLBalListItemTitleElement;
+    new(): HTMLBalListItemTitleElement;
+  };
+  interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
+  }
+  var HTMLBalLogoElement: {
+    prototype: HTMLBalLogoElement;
+    new(): HTMLBalLogoElement;
+  };
+  interface HTMLBalModalElementEventMap {
+    "balModalDidPresent": BalEvents.BalModalDidPresentDetail;
+    "balModalWillPresent": BalEvents.BalModalWillPresentDetail;
+    "balModalWillDismiss": BalEvents.BalModalWillDismissDetail;
+    "balModalDidDismiss": BalEvents.BalModalDidDismissDetail;
+  }
+  interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalModalElement: {
+    prototype: HTMLBalModalElement;
+    new(): HTMLBalModalElement;
+  };
+  interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
+  }
+  var HTMLBalModalBodyElement: {
+    prototype: HTMLBalModalBodyElement;
+    new(): HTMLBalModalBodyElement;
+  };
+  interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
+  }
+  var HTMLBalModalHeaderElement: {
+    prototype: HTMLBalModalHeaderElement;
+    new(): HTMLBalModalHeaderElement;
+  };
+  interface HTMLBalNavElementEventMap {
+    "balNavItemClick": BalEvents.BalNavItemClickDetail;
+  }
+  interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalNavElement: {
+    prototype: HTMLBalNavElement;
+    new(): HTMLBalNavElement;
+  };
+  interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
+  }
+  var HTMLBalNavLinkElement: {
+    prototype: HTMLBalNavLinkElement;
+    new(): HTMLBalNavLinkElement;
+  };
+  interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
+  }
+  var HTMLBalNavLinkGridElement: {
+    prototype: HTMLBalNavLinkGridElement;
+    new(): HTMLBalNavLinkGridElement;
+  };
+  interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
+  }
+  var HTMLBalNavLinkGridColElement: {
+    prototype: HTMLBalNavLinkGridColElement;
+    new(): HTMLBalNavLinkGridColElement;
+  };
+  interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
+  }
+  var HTMLBalNavLinkGroupElement: {
+    prototype: HTMLBalNavLinkGroupElement;
+    new(): HTMLBalNavLinkGroupElement;
+  };
+  interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
+  }
+  var HTMLBalNavMenuBarElement: {
+    prototype: HTMLBalNavMenuBarElement;
+    new(): HTMLBalNavMenuBarElement;
+  };
+  interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+  }
+  var HTMLBalNavMenuFlyoutElement: {
+    prototype: HTMLBalNavMenuFlyoutElement;
+    new(): HTMLBalNavMenuFlyoutElement;
+  };
+  interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
+  }
+  var HTMLBalNavMetaBarElement: {
+    prototype: HTMLBalNavMetaBarElement;
+    new(): HTMLBalNavMetaBarElement;
+  };
+  interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
+  }
+  var HTMLBalNavbarElement: {
+    prototype: HTMLBalNavbarElement;
+    new(): HTMLBalNavbarElement;
+  };
+  interface HTMLBalNavbarBrandElementEventMap {
+    "balNavigate": BalEvents.BalNavbarBrandNavigationChangeDetail;
+    "balWillAnimate": BalEvents.BalNavbarMenuWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalNavbarMenuDidAnimateDetail;
+  }
+  interface HTMLBalNavbarBrandElement extends Components.BalNavbarBrand, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalNavbarBrandElement: {
+    prototype: HTMLBalNavbarBrandElement;
+    new(): HTMLBalNavbarBrandElement;
+  };
+  interface HTMLBalNavbarMenuElement extends Components.BalNavbarMenu, HTMLStencilElement {
+  }
+  var HTMLBalNavbarMenuElement: {
+    prototype: HTMLBalNavbarMenuElement;
+    new(): HTMLBalNavbarMenuElement;
+  };
+  interface HTMLBalNavbarMenuEndElement extends Components.BalNavbarMenuEnd, HTMLStencilElement {
+  }
+  var HTMLBalNavbarMenuEndElement: {
+    prototype: HTMLBalNavbarMenuEndElement;
+    new(): HTMLBalNavbarMenuEndElement;
+  };
+  interface HTMLBalNavbarMenuStartElement extends Components.BalNavbarMenuStart, HTMLStencilElement {
+  }
+  var HTMLBalNavbarMenuStartElement: {
+    prototype: HTMLBalNavbarMenuStartElement;
+    new(): HTMLBalNavbarMenuStartElement;
+  };
+  interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
+  }
+  var HTMLBalNoticesElement: {
+    prototype: HTMLBalNoticesElement;
+    new(): HTMLBalNoticesElement;
+  };
+  interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
+  }
+  var HTMLBalNotificationElement: {
+    prototype: HTMLBalNotificationElement;
+    new(): HTMLBalNotificationElement;
+  };
+  interface HTMLBalNumberInputElementEventMap {
+    "balInput": BalEvents.BalNumberInputInputDetail;
+    "balChange": BalEvents.BalNumberInputChangeDetail;
+    "balBlur": BalEvents.BalNumberInputBlurDetail;
+    "balFocus": BalEvents.BalNumberInputFocusDetail;
+    "balKeyPress": BalEvents.BalNumberInputKeyPressDetail;
+  }
+  interface HTMLBalNumberInputElement extends Components.BalNumberInput, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalNumberInputElement: {
+    prototype: HTMLBalNumberInputElement;
+    new(): HTMLBalNumberInputElement;
+  };
+  interface HTMLBalOptionElementEventMap {
+    "balOptionChange": BalEvents.BalOptionChangeDetail;
+    "balOptionFocus": BalEvents.BalOptionFocusDetail;
+  }
+  interface HTMLBalOptionElement extends Components.BalOption, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalOptionElementEventMap>(type: K, listener: (this: HTMLBalOptionElement, ev: BalOptionCustomEvent<HTMLBalOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalOptionElement: {
+    prototype: HTMLBalOptionElement;
+    new(): HTMLBalOptionElement;
+  };
+  interface HTMLBalOptionListElement extends Components.BalOptionList, HTMLStencilElement {
+  }
+  var HTMLBalOptionListElement: {
+    prototype: HTMLBalOptionListElement;
+    new(): HTMLBalOptionListElement;
+  };
+  interface HTMLBalPaginationElementEventMap {
+    "balChange": BalEvents.BalPaginationChangeDetail;
+  }
+  interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalPaginationElement: {
+    prototype: HTMLBalPaginationElement;
+    new(): HTMLBalPaginationElement;
+  };
+  interface HTMLBalPopoverElementEventMap {
+    "balChange": BalEvents.BalPopoverChangeDetail;
+    "balWillAnimate": BalEvents.BalPopoverWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalPopoverDidAnimateDetail;
+    "balPopoverPrepare": string;
+  }
+  interface HTMLBalPopoverElement extends Components.BalPopover, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalPopoverElement: {
+    prototype: HTMLBalPopoverElement;
+    new(): HTMLBalPopoverElement;
+  };
+  interface HTMLBalPopoverContentElement extends Components.BalPopoverContent, HTMLStencilElement {
+  }
+  var HTMLBalPopoverContentElement: {
+    prototype: HTMLBalPopoverContentElement;
+    new(): HTMLBalPopoverContentElement;
+  };
+  interface HTMLBalPopupElementEventMap {
+    "balChange": BalEvents.BalPopupChangeDetail;
+    "balWillAnimate": BalEvents.BalPopupWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalPopupDidAnimateDetail;
+  }
+  interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalPopupElement: {
+    prototype: HTMLBalPopupElement;
+    new(): HTMLBalPopupElement;
+  };
+  interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
+  }
+  var HTMLBalProgressBarElement: {
+    prototype: HTMLBalProgressBarElement;
+    new(): HTMLBalProgressBarElement;
+  };
+  interface HTMLBalRadioElementEventMap {
+    "balFocus": BalEvents.BalRadioFocusDetail;
+    "balBlur": BalEvents.BalRadioBlurDetail;
+    "balChange": BalEvents.BalRadioChangeDetail;
+  }
+  interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalRadioElement: {
+    prototype: HTMLBalRadioElement;
+    new(): HTMLBalRadioElement;
+  };
+  interface HTMLBalRadioButtonElementEventMap {
+    "balFocus": BalEvents.BalRadioButtonFocusDetail;
+    "balBlur": BalEvents.BalRadioButtonBlurDetail;
+    "balFormControlDidLoad": BalEvents.BalRadioButtonAriaLabelledByDetail;
+  }
+  interface HTMLBalRadioButtonElement extends Components.BalRadioButton, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalRadioButtonElement: {
+    prototype: HTMLBalRadioButtonElement;
+    new(): HTMLBalRadioButtonElement;
+  };
+  interface HTMLBalRadioGroupElementEventMap {
+    "balChange": BalEvents.BalRadioGroupChangeDetail;
+    "balFocus": BalEvents.BalRadioGroupFocusDetail;
+    "balBlur": BalEvents.BalRadioGroupBlurDetail;
+  }
+  interface HTMLBalRadioGroupElement extends Components.BalRadioGroup, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalRadioGroupElement: {
+    prototype: HTMLBalRadioGroupElement;
+    new(): HTMLBalRadioGroupElement;
+  };
+  interface HTMLBalSegmentElementEventMap {
+    "balFocus": BalEvents.BalSegmentFocusDetail;
+    "balBlur": BalEvents.BalSegmentBlurDetail;
+    "balChange": BalEvents.BalSegmentChangeDetail;
+    "balSelect": BalEvents.BalSegmentChangeDetail;
+    "balVertical": BalEvents.BalSegmentVerticalDetail;
+  }
+  interface HTMLBalSegmentElement extends Components.BalSegment, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalSegmentElementEventMap>(type: K, listener: (this: HTMLBalSegmentElement, ev: BalSegmentCustomEvent<HTMLBalSegmentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalSegmentElement: {
+    prototype: HTMLBalSegmentElement;
+    new(): HTMLBalSegmentElement;
+  };
+  interface HTMLBalSegmentItemElement extends Components.BalSegmentItem, HTMLStencilElement {
+  }
+  var HTMLBalSegmentItemElement: {
+    prototype: HTMLBalSegmentItemElement;
+    new(): HTMLBalSegmentItemElement;
+  };
+  interface HTMLBalSelectElementEventMap {
+    "balChange": BalEvents.BalSelectChangeDetail;
+    "balInputClick": BalEvents.BalSelectInputClickDetail;
+    "balInput": BalEvents.BalSelectInputDetail;
+    "balBlur": BalEvents.BalSelectBlurDetail;
+    "balFocus": BalEvents.BalSelectFocusDetail;
+    "balCancel": BalEvents.BalSelectCancelDetail;
+    "balKeyPress": BalEvents.BalSelectKeyPressDetail;
+  }
+  interface HTMLBalSelectElement extends Components.BalSelect, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalSelectElement: {
+    prototype: HTMLBalSelectElement;
+    new(): HTMLBalSelectElement;
+  };
+  interface HTMLBalSelectOptionElement extends Components.BalSelectOption, HTMLStencilElement {
+  }
+  var HTMLBalSelectOptionElement: {
+    prototype: HTMLBalSelectOptionElement;
+    new(): HTMLBalSelectOptionElement;
+  };
+  interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
+  }
+  var HTMLBalShapeElement: {
+    prototype: HTMLBalShapeElement;
+    new(): HTMLBalShapeElement;
+  };
+  interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
+  }
+  var HTMLBalSheetElement: {
+    prototype: HTMLBalSheetElement;
+    new(): HTMLBalSheetElement;
+  };
+  interface HTMLBalSnackbarElementEventMap {
+    "balClose": BalEvents.BalSnackbarCloseDetail;
+    "balAction": BalEvents.BalSnackbarActionDetail;
+  }
+  interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalSnackbarElement: {
+    prototype: HTMLBalSnackbarElement;
+    new(): HTMLBalSnackbarElement;
+  };
+  interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
+  }
+  var HTMLBalSpinnerElement: {
+    prototype: HTMLBalSpinnerElement;
+    new(): HTMLBalSpinnerElement;
+  };
+  interface HTMLBalStackElement extends Components.BalStack, HTMLStencilElement {
+  }
+  var HTMLBalStackElement: {
+    prototype: HTMLBalStackElement;
+    new(): HTMLBalStackElement;
+  };
+  interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
+  }
+  var HTMLBalStageElement: {
+    prototype: HTMLBalStageElement;
+    new(): HTMLBalStageElement;
+  };
+  interface HTMLBalStageBackLinkElement extends Components.BalStageBackLink, HTMLStencilElement {
+  }
+  var HTMLBalStageBackLinkElement: {
+    prototype: HTMLBalStageBackLinkElement;
+    new(): HTMLBalStageBackLinkElement;
+  };
+  interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
+  }
+  var HTMLBalStageBodyElement: {
+    prototype: HTMLBalStageBodyElement;
+    new(): HTMLBalStageBodyElement;
+  };
+  interface HTMLBalStageFootElement extends Components.BalStageFoot, HTMLStencilElement {
+  }
+  var HTMLBalStageFootElement: {
+    prototype: HTMLBalStageFootElement;
+    new(): HTMLBalStageFootElement;
+  };
+  interface HTMLBalStageHeadElement extends Components.BalStageHead, HTMLStencilElement {
+  }
+  var HTMLBalStageHeadElement: {
+    prototype: HTMLBalStageHeadElement;
+    new(): HTMLBalStageHeadElement;
+  };
+  interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
+  }
+  var HTMLBalStageImageElement: {
+    prototype: HTMLBalStageImageElement;
+    new(): HTMLBalStageImageElement;
+  };
+  interface HTMLBalStepItemElementEventMap {
+    "balNavigate": BalEvents.BalStepItemNavigateDetail;
+  }
+  interface HTMLBalStepItemElement extends Components.BalStepItem, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalStepItemElement: {
+    prototype: HTMLBalStepItemElement;
+    new(): HTMLBalStepItemElement;
+  };
+  interface HTMLBalStepsElementEventMap {
+    "balChange": BalEvents.BalTabsChangeDetail;
+  }
+  interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalStepsElement: {
+    prototype: HTMLBalStepsElement;
+    new(): HTMLBalStepsElement;
+  };
+  interface HTMLBalTabItemElementEventMap {
+    "balNavigate": BalEvents.BalTabItemNavigateDetail;
+  }
+  interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTabItemElement: {
+    prototype: HTMLBalTabItemElement;
+    new(): HTMLBalTabItemElement;
+  };
+  interface HTMLBalTableElement extends Components.BalTable, HTMLStencilElement {
+  }
+  var HTMLBalTableElement: {
+    prototype: HTMLBalTableElement;
+    new(): HTMLBalTableElement;
+  };
+  interface HTMLBalTabsElementEventMap {
+    "balChange": BalEvents.BalTabsChangeDetail;
+    "balWillAnimate": BalEvents.BalTabsWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalTabsDidAnimateDetail;
+  }
+  interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTabsElement: {
+    prototype: HTMLBalTabsElement;
+    new(): HTMLBalTabsElement;
+  };
+  interface HTMLBalTagElementEventMap {
+    "balCloseClick": BalEvents.BalTagCloseClickDetail;
+  }
+  interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTagElement: {
+    prototype: HTMLBalTagElement;
+    new(): HTMLBalTagElement;
+  };
+  interface HTMLBalTagGroupElement extends Components.BalTagGroup, HTMLStencilElement {
+  }
+  var HTMLBalTagGroupElement: {
+    prototype: HTMLBalTagGroupElement;
+    new(): HTMLBalTagGroupElement;
+  };
+  interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
+  }
+  var HTMLBalTextElement: {
+    prototype: HTMLBalTextElement;
+    new(): HTMLBalTextElement;
+  };
+  interface HTMLBalTextareaElementEventMap {
+    "balChange": BalEvents.BalTextareaChangeDetail;
+    "balInput": BalEvents.BalTextareaInputDetail;
+    "balBlur": BalEvents.BalTextareaBlurDetail;
+    "balKeyPress": BalEvents.BalTextareaKeyPressDetail;
+    "balFocus": BalEvents.BalTextareaFocusDetail;
+  }
+  interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTextareaElement: {
+    prototype: HTMLBalTextareaElement;
+    new(): HTMLBalTextareaElement;
+  };
+  interface HTMLBalTimeInputElementEventMap {
+    "balInput": BalEvents.BalTimeInputInputDetail;
+    "balChange": BalEvents.BalTimeInputChangeDetail;
+    "balBlur": BalEvents.BalTimeInputBlurDetail;
+    "balFocus": BalEvents.BalTimeInputFocusDetail;
+    "balKeyPress": BalEvents.BalTimeInputKeyPressDetail;
+    "balClick": BalEvents.BalTimeInputClickDetail;
+  }
+  interface HTMLBalTimeInputElement extends Components.BalTimeInput, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTimeInputElement: {
+    prototype: HTMLBalTimeInputElement;
+    new(): HTMLBalTimeInputElement;
+  };
+  interface HTMLBalToastElementEventMap {
+    "balClose": BalEvents.BalToastCloseDetail;
+  }
+  interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalToastElement: {
+    prototype: HTMLBalToastElement;
+    new(): HTMLBalToastElement;
+  };
+  interface HTMLBalTooltipElementEventMap {
+    "balWillAnimate": BalEvents.BalTooltipWillAnimateDetail;
+    "balDidAnimate": BalEvents.BalTooltipDidAnimateDetail;
+  }
+  interface HTMLBalTooltipElement extends Components.BalTooltip, HTMLStencilElement {
+    addEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  var HTMLBalTooltipElement: {
+    prototype: HTMLBalTooltipElement;
+    new(): HTMLBalTooltipElement;
+  };
+  interface HTMLElementTagNameMap {
+    "bal-accordion": HTMLBalAccordionElement;
+    "bal-accordion-details": HTMLBalAccordionDetailsElement;
+    "bal-accordion-summary": HTMLBalAccordionSummaryElement;
+    "bal-accordion-trigger": HTMLBalAccordionTriggerElement;
+    "bal-app": HTMLBalAppElement;
+    "bal-badge": HTMLBalBadgeElement;
+    "bal-button": HTMLBalButtonElement;
+    "bal-button-group": HTMLBalButtonGroupElement;
+    "bal-card": HTMLBalCardElement;
+    "bal-card-actions": HTMLBalCardActionsElement;
+    "bal-card-button": HTMLBalCardButtonElement;
+    "bal-card-content": HTMLBalCardContentElement;
+    "bal-card-subtitle": HTMLBalCardSubtitleElement;
+    "bal-card-title": HTMLBalCardTitleElement;
+    "bal-carousel": HTMLBalCarouselElement;
+    "bal-carousel-item": HTMLBalCarouselItemElement;
+    "bal-checkbox": HTMLBalCheckboxElement;
+    "bal-checkbox-button": HTMLBalCheckboxButtonElement;
+    "bal-checkbox-group": HTMLBalCheckboxGroupElement;
+    "bal-close": HTMLBalCloseElement;
+    "bal-content": HTMLBalContentElement;
+    "bal-data": HTMLBalDataElement;
+    "bal-data-item": HTMLBalDataItemElement;
+    "bal-data-label": HTMLBalDataLabelElement;
+    "bal-data-value": HTMLBalDataValueElement;
+    "bal-date": HTMLBalDateElement;
+    "bal-date-calendar": HTMLBalDateCalendarElement;
+    "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
+    "bal-divider": HTMLBalDividerElement;
+    "bal-doc-app": HTMLBalDocAppElement;
+    "bal-dropdown": HTMLBalDropdownElement;
+    "bal-field": HTMLBalFieldElement;
+    "bal-field-control": HTMLBalFieldControlElement;
+    "bal-field-hint": HTMLBalFieldHintElement;
+    "bal-field-label": HTMLBalFieldLabelElement;
+    "bal-field-message": HTMLBalFieldMessageElement;
+    "bal-file-upload": HTMLBalFileUploadElement;
+    "bal-footer": HTMLBalFooterElement;
+    "bal-form": HTMLBalFormElement;
+    "bal-form-col": HTMLBalFormColElement;
+    "bal-form-grid": HTMLBalFormGridElement;
+    "bal-heading": HTMLBalHeadingElement;
+    "bal-hint": HTMLBalHintElement;
+    "bal-hint-text": HTMLBalHintTextElement;
+    "bal-hint-title": HTMLBalHintTitleElement;
+    "bal-icon": HTMLBalIconElement;
+    "bal-input": HTMLBalInputElement;
+    "bal-input-date": HTMLBalInputDateElement;
+    "bal-input-group": HTMLBalInputGroupElement;
+    "bal-input-slider": HTMLBalInputSliderElement;
+    "bal-input-stepper": HTMLBalInputStepperElement;
+    "bal-label": HTMLBalLabelElement;
+    "bal-list": HTMLBalListElement;
+    "bal-list-item": HTMLBalListItemElement;
+    "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
+    "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
+    "bal-list-item-content": HTMLBalListItemContentElement;
+    "bal-list-item-icon": HTMLBalListItemIconElement;
+    "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
+    "bal-list-item-title": HTMLBalListItemTitleElement;
+    "bal-logo": HTMLBalLogoElement;
+    "bal-modal": HTMLBalModalElement;
+    "bal-modal-body": HTMLBalModalBodyElement;
+    "bal-modal-header": HTMLBalModalHeaderElement;
+    "bal-nav": HTMLBalNavElement;
+    "bal-nav-link": HTMLBalNavLinkElement;
+    "bal-nav-link-grid": HTMLBalNavLinkGridElement;
+    "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
+    "bal-nav-link-group": HTMLBalNavLinkGroupElement;
+    "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
+    "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
+    "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
+    "bal-navbar": HTMLBalNavbarElement;
+    "bal-navbar-brand": HTMLBalNavbarBrandElement;
+    "bal-navbar-menu": HTMLBalNavbarMenuElement;
+    "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
+    "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
+    "bal-notices": HTMLBalNoticesElement;
+    "bal-notification": HTMLBalNotificationElement;
+    "bal-number-input": HTMLBalNumberInputElement;
+    "bal-option": HTMLBalOptionElement;
+    "bal-option-list": HTMLBalOptionListElement;
+    "bal-pagination": HTMLBalPaginationElement;
+    "bal-popover": HTMLBalPopoverElement;
+    "bal-popover-content": HTMLBalPopoverContentElement;
+    "bal-popup": HTMLBalPopupElement;
+    "bal-progress-bar": HTMLBalProgressBarElement;
+    "bal-radio": HTMLBalRadioElement;
+    "bal-radio-button": HTMLBalRadioButtonElement;
+    "bal-radio-group": HTMLBalRadioGroupElement;
+    "bal-segment": HTMLBalSegmentElement;
+    "bal-segment-item": HTMLBalSegmentItemElement;
+    "bal-select": HTMLBalSelectElement;
+    "bal-select-option": HTMLBalSelectOptionElement;
+    "bal-shape": HTMLBalShapeElement;
+    "bal-sheet": HTMLBalSheetElement;
+    "bal-snackbar": HTMLBalSnackbarElement;
+    "bal-spinner": HTMLBalSpinnerElement;
+    "bal-stack": HTMLBalStackElement;
+    "bal-stage": HTMLBalStageElement;
+    "bal-stage-back-link": HTMLBalStageBackLinkElement;
+    "bal-stage-body": HTMLBalStageBodyElement;
+    "bal-stage-foot": HTMLBalStageFootElement;
+    "bal-stage-head": HTMLBalStageHeadElement;
+    "bal-stage-image": HTMLBalStageImageElement;
+    "bal-step-item": HTMLBalStepItemElement;
+    "bal-steps": HTMLBalStepsElement;
+    "bal-tab-item": HTMLBalTabItemElement;
+    "bal-table": HTMLBalTableElement;
+    "bal-tabs": HTMLBalTabsElement;
+    "bal-tag": HTMLBalTagElement;
+    "bal-tag-group": HTMLBalTagGroupElement;
+    "bal-text": HTMLBalTextElement;
+    "bal-textarea": HTMLBalTextareaElement;
+    "bal-time-input": HTMLBalTimeInputElement;
+    "bal-toast": HTMLBalToastElement;
+    "bal-tooltip": HTMLBalTooltipElement;
+  }
 }
 declare namespace LocalJSX {
-    interface BalAccordion {
-        /**
-          * If `true` the accordion is open.
-         */
-        "active"?: boolean;
-        /**
-          * If `true` the accordion is used on the bottom of a card
-         */
-        "card"?: boolean;
-        /**
-          * BalIcon of the close trigger button
-         */
-        "closeIcon"?: string;
-        /**
-          * Label of the close trigger button
-         */
-        "closeLabel"?: string;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * Emitted when the accordion has opened or closed
-         */
-        "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
-        /**
-          * BalIcon of the open trigger button
-         */
-        "openIcon"?: string;
-        /**
-          * Label of the open trigger button
-         */
-        "openLabel"?: string;
-        "version"?: number;
-    }
-    interface BalAccordionDetails {
-        "active"?: boolean;
-        "animated"?: boolean;
-        "state"?: AccordionState;
-    }
-    interface BalAccordionSummary {
-        "active"?: boolean;
-        "state"?: AccordionState;
-        /**
-          * If `true` the whole summary component acts as a trigger and can be clicked
-         */
-        "trigger"?: boolean;
-    }
-    interface BalAccordionTrigger {
-        "active"?: boolean;
-        /**
-          * Trigger will be a bal-button
-         */
-        "button"?: boolean;
-        /**
-          * BalIcon of the close trigger button
-         */
-        "closeIcon"?: string;
-        /**
-          * Label of the close trigger button
-         */
-        "closeLabel"?: string;
-        /**
-          * The color to use from your application's color palette.
-         */
-        "color"?: BalProps.BalButtonColor;
-        /**
-          * If `true` the button is aligned over the whole width
-         */
-        "expanded"?: boolean;
-        /**
-          * BalIcon of the open trigger button
-         */
-        "openIcon"?: string;
-        /**
-          * Label of the open trigger button
-         */
-        "openLabel"?: string;
-        /**
-          * Size of the button
-         */
-        "size"?: BalProps.BalButtonSize;
-        "state"?: AccordionState;
-    }
-    interface BalApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated"?: boolean;
-        "ready"?: boolean;
-    }
-    interface BalBadge {
-        /**
-          * Define the color for the badge.
-         */
-        "color"?: BalProps.BalBadgeColor;
-        /**
-          * Name of the icon to show. If a icon is present text should be hidden.
-         */
-        "icon"?: string;
-        /**
-          * If `true` the badge is added to the top right corner of the card.
-         */
-        "position"?: BalProps.BalBadgePosition;
-        /**
-          * Define the size of badge. Small is recommended for tabs.
-         */
-        "size"?: BalProps.BalBadgeSize;
-    }
-    interface BalButton {
-        /**
-          * A11y attributes for the native button element.
-         */
-        "aria"?: BalProps.BalButtonAria;
-        /**
-          * The color to use from your application's color palette.
-         */
-        "color"?: BalProps.BalButtonColor;
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled"?: boolean;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType"?: BalProps.BalButtonElementType;
-        /**
-          * If `true` the button has a full width
-         */
-        "expanded"?: boolean;
-        /**
-          * If `true` the button has no padding and a reduced height
-         */
-        "flat"?: boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the left button icon
-         */
-        "icon"?: string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the icon turns
-         */
-        "iconTurn"?: boolean;
-        /**
-          * If `true` the button is inverted
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` the button has a active theme
-         */
-        "isActive"?: boolean;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading"?: boolean;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * The label of the button will not break
-         */
-        "noWrap"?: boolean;
-        /**
-          * Emitted when the button loses focus.
-         */
-        "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
-        /**
-          * Emitted when the button has been  rendered.
-         */
-        "onBalDidRender"?: (event: BalButtonCustomEvent<BalEvents.BalButtonDidRenderDetail>) => void;
-        /**
-          * Emitted when the button has focus.
-         */
-        "onBalFocus"?: (event: BalButtonCustomEvent<BalEvents.BalButtonFocusDetail>) => void;
-        /**
-          * Emitted when the link element has clicked.
-         */
-        "onBalNavigate"?: (event: BalButtonCustomEvent<BalEvents.BalButtonNavigateDetail>) => void;
-        /**
-          * If `true` the button is outlined
-         */
-        "outlined"?: boolean;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        /**
-          * If `true` the button is rounded.
-         */
-        "rounded"?: boolean;
-        /**
-          * If `true` adds a box shadow to improve readability on image background
-         */
-        "shadow"?: boolean;
-        /**
-          * Size of the button
-         */
-        "size"?: BalProps.BalButtonSize;
-        /**
-          * If `true` the width of the buttons is limited
-         */
-        "square"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
-    }
-    interface BalButtonGroup {
-        /**
-          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
-         */
-        "direction"?: BalProps.BalButtonGroupDirection;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position"?: BalProps.BalButtonGroupPosition;
-        /**
-          * If `true` the flex direction is used in reverse on mobile.
-         */
-        "reverse"?: boolean;
-    }
-    interface BalCard {
-        /**
-          * If `true` a light blue border is added to the card.
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the card has a hover effect.
-         */
-        "clickable"?: boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "color"?: BalProps.BalCardColor;
-        /**
-          * If `true` the card loses its shadow.
-         */
-        "flat"?: boolean;
-        /**
-          * If `true` the card uses 100% of the available height.
-         */
-        "fullheight"?: boolean;
-        /**
-          * If `true` the card background color becomes blue.
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` the card gets a light background to indicate a selection.
-         */
-        "selected"?: boolean;
-        /**
-          * Defines the space of the card content.
-         */
-        "space"?: BalProps.BalCardSpace;
-        /**
-          * If `true` the card loses its border radius.
-         */
-        "square"?: boolean;
-    }
-    interface BalCardActions {
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position"?: BalProps.BalCardActionsPosition;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled"?: boolean;
-        /**
-          * The type of button.
-         */
-        "elementType"?: BalProps.BalCardButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon"?: string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalCardButtonTarget;
-    }
-    interface BalCardContent {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color is bold.
-         */
-        "bold"?: boolean;
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "color"?: BalProps.BalHeadingColor;
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCarousel {
-        /**
-          * Defines the image aspect ratio. Should be combined with the interface `product`
-         */
-        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
-        /**
-          * If `true` a light border is shown at the bottom.
-         */
-        "border"?: boolean;
-        /**
-          * Defines the layout of the navigation controls.
-         */
-        "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
-        /**
-          * If `true` items move under the controls, instead of having a gap
-         */
-        "controlsOverflow"?: boolean;
-        /**
-          * If `true` the controls will be sticky to the top.
-         */
-        "controlsSticky"?: boolean;
-        /**
-          * If `true` the carousel uses the full height
-         */
-        "fullHeight"?: boolean;
-        /**
-          * @deprecated Defines the role of the carousel.
-         */
-        "htmlRole"?: 'tablist' | 'list' | '';
-        /**
-          * Defines special looks.
-         */
-        "interface"?: 'card' | 'image' | 'product' | '';
-        /**
-          * If `true` the carousel can be used on dark background
-         */
-        "inverted"?: boolean;
-        /**
-          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
-         */
-        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalCarouselCustomEvent<BalEvents.BalCarouselChangeDetail>) => void;
-        /**
-          * If `true` vertical scrolling on mobile is enabled.
-         */
-        "scrollY"?: boolean;
-        /**
-          * When how many slides are moved when going forward or backward.
-         */
-        "steps"?: number;
-        /**
-          * Defines the active slide index.
-         */
-        "value"?: number;
-    }
-    interface BalCarouselItem {
-        /**
-          * Color of the background
-         */
-        "color"?: BalProps.BalCarouselItemColor;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType"?: BalProps.BalButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * @deprecated Defines the role of the carousel.
-         */
-        "htmlRole"?: 'tab' | 'listitem' | '';
-        /**
-          * Label of the slide which will be used for pagination tabs
-         */
-        "label"?: string;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the button loses focus.
-         */
-        "onBalBlur"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemBlurDetail>) => void;
-        /**
-          * Emitted when the button has focus.
-         */
-        "onBalFocus"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemFocusDetail>) => void;
-        /**
-          * Emitted when the link element has clicked.
-         */
-        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemNavigateDetail>) => void;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
-    }
-    interface BalCheckbox {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked"?: boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the control is no padding
-         */
-        "flat"?: boolean;
-        "hovered"?: boolean;
-        /**
-          * If `true` the control is displayed as inline
-         */
-        "inline"?: boolean;
-        /**
-          * Defines the layout of the checkbox button
-         */
-        "interface"?: BalProps.BalCheckboxInterface;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible"?: boolean;
-        /**
-          * Label of the radio item.
-         */
-        "label"?: string;
-        /**
-          * If `true` the checkbox has no label
-         */
-        "labelHidden"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * If `true`, the value will not be send with a form submit
-         */
-        "nonSubmit"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxBlurDetail>) => void;
-        /**
-          * Emitted when the value property has changed.
-         */
-        "onBalChange"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxChangeDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxFocusDetail>) => void;
-        "pressed"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
-         */
-        "value"?: string | number;
-    }
-    interface BalCheckboxButton {
-        "colSize"?: BalProps.BalCheckboxGroupColumns;
-        "colSizeMobile"?: BalProps.BalCheckboxGroupColumns;
-        "colSizeTablet"?: BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalCheckboxButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonBlurDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
-        "onBalFormControlDidLoad"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-    }
-    interface BalCheckboxGroup {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Defines the column size like the grid.
-         */
-        "columns"?: BalProps.BalCheckboxGroupColumns;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-         */
-        "columnsMobile"?: BalProps.BalCheckboxGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-         */
-        "columnsTablet"?: BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` it acts as the main form control
-         */
-        "control"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the checkboxes.
-         */
-        "disabled"?: boolean;
-        /**
-          * Uses the whole width
-         */
-        "expanded"?: boolean;
-        /**
-          * Defines the layout of the checkbox button
-         */
-        "interface"?: BalProps.BalCheckboxGroupInterface;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "invalid"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupBlurDetail>) => void;
-        /**
-          * Emitted when the checked property has changed.
-         */
-        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupChangeDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupFocusDetail>) => void;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalCheckboxOption[];
-        /**
-          * If `true`, the user cannot interact with the checkboxes.
-         */
-        "readonly"?: boolean;
-        /**
-          * The value of the control.
-         */
-        "value"?: any[];
-        /**
-          * Displays the checkboxes vertically
-         */
-        "vertical"?: boolean;
-        /**
-          * If `true`, the controls will be vertically on mobile devices.
-         */
-        "verticalOnMobile"?: boolean;
-    }
-    interface BalClose {
-        /**
-          * If `true` it supports dark backgrounds.
-         */
-        "inverted"?: boolean;
-        /**
-          * Define the size of badge. Small is recommended for tabs.
-         */
-        "size"?: BalProps.BalCloseSize;
-    }
-    interface BalContent {
-        /**
-          * Defines the text positioning like center, end or default to start.
-         */
-        "align"?: BalProps.BalContentAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
-        "direction"?: BalProps.BalStackDirection;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-         */
-        "layout"?: BalProps.BalContentLayout;
-        /**
-          * Defines the space between the child elements. Default is xx-small.
-         */
-        "space"?: BalProps.BalContentSpace;
-    }
-    interface BalData {
-        /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the data list is horizontal instead of vertical.
-         */
-        "horizontal"?: boolean;
-    }
-    interface BalDataItem {
-        /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the item gets a lighter font color.
-         */
-        "disabled"?: boolean;
-    }
-    interface BalDataLabel {
-        /**
-          * If `true` an asterix is added after the label.
-         */
-        "required"?: boolean;
-    }
-    interface BalDataValue {
-        /**
-          * If `true` the button will get disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` a small button with a edit icon will be shown on the right.
-         */
-        "editable"?: boolean;
-        /**
-          * If `true` the text will break and the height of the item increases.
-         */
-        "multiline"?: boolean;
-        /**
-          * Emitted when the edit button loses focus.
-         */
-        "onBalBlur"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueBlurDetail>) => void;
-        /**
-          * Emitted when the edit button has focus.
-         */
-        "onBalClick"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueClickDetail>) => void;
-        /**
-          * Emitted when the edit button has focus.
-         */
-        "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
-    }
-    interface BalDate {
-        /**
-          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
-         */
-        "allowInvalidValue"?: boolean;
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates"?: BalProps.BalDateCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` there will be no trigger icon visible, so no UX indicator for a picker
-         */
-        "freeSolo"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalDateCustomEvent<BalEvents.BalDateBlurDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalDateCustomEvent<BalEvents.BalDateChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateDidAnimateDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalDateCustomEvent<BalEvents.BalDateFocusDetail>) => void;
-        /**
-          * Emitted when the icon has clicked.
-         */
-        "onBalIconClick"?: (event: BalDateCustomEvent<BalEvents.BalDateIconClickDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalDateCustomEvent<BalEvents.BalDateInputDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalInputClick"?: (event: BalDateCustomEvent<BalEvents.BalDateInputClickDetail>) => void;
-        "onBalPopoverPrepare"?: (event: BalDateCustomEvent<string>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateWillAnimateDetail>) => void;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required"?: boolean;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon"?: boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string | undefined;
-    }
-    interface BalDateCalendar {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates"?: BalProps.BalDateCalendarAllowedDatesCallback | undefined;
-        /**
-          * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
-         */
-        "defaultDate"?: string;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalDateCalendarCustomEvent<BalEvents.BalDateCalendarChangeDetail>) => void;
-        /**
-          * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
-    interface BalDateCalendarCell {
-        /**
-          * PUBLIC PROPERTY API ------------------------------------------------------
-         */
-        "day"?: number;
-        "disabled"?: boolean;
-        "fullDate": string;
-        "isoDate": string;
-        "month"?: number;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalSelectDay"?: (event: BalDateCalendarCellCustomEvent<BalEvents.BalDateCellSelectDetail>) => void;
-        "selected"?: boolean;
-        "today"?: boolean;
-        "year"?: number;
-    }
-    interface BalDivider {
-        /**
-          * Defines the color of the separator line.
-         */
-        "borderStyle"?: BalProps.BalDividerBorderStyle;
-        /**
-          * Defines the color of the separator line.
-         */
-        "color"?: BalProps.BalDividerColor;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-         */
-        "layout"?: BalProps.BalDividerLayout;
-        /**
-          * Defines the space between the child elements. Default is xx-small.
-         */
-        "space"?: BalProps.BalDividerSpace;
-    }
-    interface BalDocApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated"?: boolean;
-        "language"?: string;
-        "logComponents"?: string;
-        "logCustom"?: boolean;
-        "logEvents"?: boolean;
-        "logLifecycle"?: boolean;
-        "logRender"?: boolean;
-        "region"?: string;
-        "stickyFooter"?: boolean;
-    }
-    interface BalDropdown {
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * If `true`, the selected options are shown as chips
-         */
-        "chips"?: boolean;
-        /**
-          * If `true`, a cross at the end is visible to clear the selection
-         */
-        "clearable"?: boolean;
-        /**
-          * Defines the max height of the list element
-         */
-        "contentHeight"?: number;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled"?: boolean;
-        /**
-          * Defines the filter logic of the list
-         */
-        "filter"?: BalProps.BalOptionListFilter;
-        /**
-          * If `true` there will be on trigger icon visible
-         */
-        "icon"?: string;
-        /**
-          * Defines a inline label to be shown before the value
-         */
-        "inlineLabel"?: string;
-        /**
-          * If `true`, the component will be shown as invalid
-         */
-        "invalid"?: boolean;
-        "inverted"?: boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading"?: boolean;
-        /**
-          * If `true`, the user can select multiple options.
-         */
-        "multiple"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownBlurDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownFocusDetail>) => void;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalOption[];
-        /**
-          * Defines the placeholder of the component. Only shown when the value is empty
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * Defines the size of the control.
-         */
-        "size"?: BalProps.BalDropdownSize;
-        /**
-          * Defines the color style of the control
-         */
-        "theme"?: BalProps.BalDropdownTheme;
-        /**
-          * The value of the selected options.
-         */
-        "value"?: string | string[];
-    }
-    interface BalField {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
-         */
-        "horizontal"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading"?: boolean;
-        /**
-          * Emitted after render when element is labelled
-         */
-        "onBalFormControlDidLoad"?: (event: BalFieldCustomEvent<BalEvents.BalFieldAriaLabelledByDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required"?: boolean;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-    }
-    interface BalFieldControl {
-        /**
-          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
-         */
-        "expandedOnMobile"?: boolean;
-        /**
-          * @deprecated Baloise icon for the left side of the input
-         */
-        "iconLeft"?: string;
-        /**
-          * @deprecated Baloise icon for the right side of the input
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading"?: boolean;
-    }
-    interface BalFieldHint {
-        /**
-          * Text for the close button.
-         */
-        "closeLabel"?: string;
-        /**
-          * Disables the close button for tablet and desktop
-         */
-        "small"?: boolean;
-        /**
-          * Text of the inputs label
-         */
-        "subject"?: string;
-    }
-    interface BalFieldLabel {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-         */
-        "htmlFor"?: string;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required"?: boolean;
-        /**
-          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-         */
-        "size"?: BalProps.BalFieldLabelSize;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-         */
-        "weight"?: BalProps.BalFieldLabelWeight;
-    }
-    interface BalFieldMessage {
-        /**
-          * Defines the color of the message.
-         */
-        "color"?: BalProps.BalFieldMessageColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-    }
-    interface BalFileUpload {
-        /**
-          * Accepted MIME-Types like `image/png,image/jpeg`.
-         */
-        "accept"?: string;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` below the drop-down area it generates a file list.
-         */
-        "hasFileList"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Label of the drop area.
-         */
-        "label"?: string;
-        /**
-          * If `true` the file upload is disabled and shows a spinner
-         */
-        "loading"?: boolean;
-        /**
-          * Allowed max bundle size in bytes.
-         */
-        "maxBundleSize"?: number;
-        /**
-          * Allowed max file size in bytes.
-         */
-        "maxFileSize"?: number;
-        /**
-          * Allowed number of files in the bundle.
-         */
-        "maxFiles"?: number;
-        /**
-          * If `true` multiple file upload is possible.
-         */
-        "multiple"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadBlurDetail>) => void;
-        /**
-          * Triggers when a file is added or removed.
-         */
-        "onBalChange"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadChangeDetail>) => void;
-        /**
-          * Triggers when a file is added.
-         */
-        "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesAddedDetail>) => void;
-        /**
-          * Triggers when a file is removed.
-         */
-        "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesRemovedDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFocusDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalInputClick"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadInputClickDetail>) => void;
-        /**
-          * Triggers when a file is rejected due to not allowed MIME-Type and so on.
-         */
-        "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadRejectedFileDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * Overrides the default subtitle file size
-         */
-        "subTitle"?: (file: File) => string;
-        /**
-          * Input value.
-         */
-        "value"?: File[];
-    }
-    interface BalFooter {
-        /**
-          * If `true` the language selection will be hidden.
-         */
-        "hideLanguageSelection"?: boolean;
-        /**
-          * If `true` the legal Baloise links will be hidden.
-         */
-        "hideLinks"?: boolean;
-        /**
-          * If provided, the footer links will be overridden.
-         */
-        "overrideLinks"?: FooterLink[] | undefined;
-        /**
-          * If `true` the social media links will be shown.
-         */
-        "showSocialMedia"?: boolean;
-    }
-    interface BalForm {
-        /**
-          * The css class for the inner form element
-         */
-        "formClass"?: string;
-        /**
-          * If `true` a native form element is added as a wrapper of the slot.
-         */
-        "native"?: boolean;
-        /**
-          * If `true` it adds the novalidate attribute to the native form element.
-         */
-        "novalidate"?: boolean;
-    }
-    interface BalFormCol {
-        "size"?: BalProps.BalFormColSize;
-    }
-    interface BalFormGrid {
-    }
-    interface BalHeading {
-        /**
-          * The actual heading level used in the HTML markup.
-         */
-        "autoLevel"?: BalProps.BalHeadingVisualLevel;
-        /**
-          * The theme type of the toast.
-         */
-        "color"?: BalProps.BalHeadingColor;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted"?: boolean;
-        /**
-          * The actual heading level used in the HTML markup.
-         */
-        "level"?: BalProps.BalHeadingLevel;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap"?: boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow"?: boolean;
-        /**
-          * Defines at which position the heading has spacing.
-         */
-        "space"?: 'none' | 'bottom' | 'top' | 'all';
-        /**
-          * If `true` the heading gets displayed slimmer.
-         */
-        "subtitle"?: boolean;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
-    interface BalHint {
-        /**
-          * Text for the close button.
-         */
-        "closeLabel"?: string;
-        /**
-          * Disables the close button for tablet and desktop
-         */
-        "small"?: boolean;
-    }
-    interface BalHintText {
-    }
-    interface BalHintTitle {
-    }
-    interface BalIcon {
-        /**
-          * The theme type of the button.
-         */
-        "color"?: BalProps.BalIconColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hovered"?: boolean;
-        /**
-          * If `true` the icon has display inline style
-         */
-        "inline"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the icon is inverted
-         */
-        "inverted"?: boolean;
-        /**
-          * Name of the baloise icon.
-         */
-        "name"?: string;
-        "pressed"?: boolean;
-        /**
-          * If `true` adds a box shadow to improve readability on image background
-         */
-        "shadow"?: boolean;
-        /**
-          * Defines the size of the icon.
-         */
-        "size"?: BalProps.BalIconSize;
-        /**
-          * Svg content.
-         */
-        "svg"?: string;
-        /**
-          * If `true` the icon is rotated 180deg
-         */
-        "turn"?: boolean;
-    }
-    interface BalInput {
-        /**
-          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
-         */
-        "accept"?: string;
-        /**
-          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
-         */
-        "allowedKeyPress"?: string;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
-         */
-        "autocapitalize"?: string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * Whether auto correction should be enabled when the user is entering/editing the text value.
-         */
-        "autocorrect"?: BalProps.BalInputAutocorrect;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-         */
-        "autofocus"?: boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hasIconRight"?: boolean;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalInputInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
-         */
-        "mask"?: BalProps.BalInputMask;
-        /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
-         */
-        "max"?: string;
-        /**
-          * Defines the max length of the value.
-         */
-        "maxLength"?: number;
-        /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
-         */
-        "min"?: string;
-        /**
-          * Defines the min length of the value.
-         */
-        "minLength"?: number;
-        /**
-          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
-         */
-        "multiple"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalInputCustomEvent<BalEvents.BalInputBlurDetail>) => void;
-        /**
-          * Emitted when the input value has changed.
-         */
-        "onBalChange"?: (event: BalInputCustomEvent<BalEvents.BalInputChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalInputCustomEvent<BalEvents.BalInputFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalInputCustomEvent<BalEvents.BalInputInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalInputCustomEvent<BalEvents.BalInputKeyPressDetail>) => void;
-        /**
-          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
-         */
-        "pattern"?: string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * If `true`, the element will have its spelling and grammar checked.
-         */
-        "spellcheck"?: boolean;
-        /**
-          * Adds a suffix the the input-value after blur.
-         */
-        "suffix"?: string;
-        /**
-          * Defines the text align of the input value.
-         */
-        "textAlign"?: 'center' | 'left' | 'right';
-        /**
-          * Defines the type of the input (text, number, email ...).
-         */
-        "type"?: BalProps.BalInputInputType;
-        /**
-          * The value of the input.
-         */
-        "value"?: string;
-    }
-    interface BalInputDate {
-        /**
-          * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
-         */
-        "allowInvalidValue"?: boolean;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable"?: boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hasIconRight"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateBlurDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateKeyPressDetail>) => void;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required"?: boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string | undefined;
-    }
-    interface BalInputGroup {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-    }
-    interface BalInputSlider {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true`, small ticks for the steps are shown.
-         */
-        "hasTicks"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Max value of the model.
-         */
-        "max"?: number;
-        /**
-          * Min value of the model.
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderBlurDetail>) => void;
-        /**
-          * Emitted when the input value has changed.
-         */
-        "onBalChange"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderKeyPressDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * The step size. 0 means no steps.
-         */
-        "step"?: number;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number;
-    }
-    interface BalInputStepper {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the input is shown as invalid
-         */
-        "invalid"?: boolean;
-        /**
-          * The max value the input can have
-         */
-        "max"?: number;
-        /**
-          * The min value the input can have
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperBlurDetail>) => void;
-        /**
-          * Emitted when the input value has changed.
-         */
-        "onBalChange"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperChangeDetail>) => void;
-        /**
-          * Emitted when the input value has decreased.
-         */
-        "onBalDecrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperDecreaseDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperFocusDetail>) => void;
-        /**
-          * Emitted when the input value has increased.
-         */
-        "onBalIncrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperIncreaseDetail>) => void;
-        /**
-          * Emitted when the input value has changed.
-         */
-        "onBalInput"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperInputDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * The steps in which the input increases or decreases
-         */
-        "steps"?: number;
-        /**
-          * The value of the input. Only allows values in the range of the min max attribute.
-         */
-        "value"?: number;
-    }
-    interface BalLabel {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        "hovered"?: boolean;
-        /**
-          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-         */
-        "htmlFor"?: string;
-        /**
-          * Define the id of the native label element
-         */
-        "htmlId"?: string;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * When true, the text will is able to break on multiple lines.
-         */
-        "multiline"?: boolean;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap"?: boolean;
-        "pressed"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
-         */
-        "required"?: boolean;
-        /**
-          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-         */
-        "size"?: BalProps.BalLabelSize;
-        /**
-          * If `true` the component gets a valid green style.
-         */
-        "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-         */
-        "weight"?: BalProps.BalLabelWeight;
-    }
-    interface BalList {
-        /**
-          * If `true` only one of the layers can be open and the others close automatically
-         */
-        "accordionOneLevel"?: boolean;
-        /**
-          * If `true` the list can be used on a light, dark or colored backgrounds
-         */
-        "background"?: BalProps.BalListBackground;
-        /**
-          * If `true` each list item has a bottom border
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the list item can not be hovered
-         */
-        "disabled"?: boolean;
-        /**
-          * Defines the min height of the list item
-         */
-        "size"?: BalProps.BalListSize;
-    }
-    interface BalListItem {
-        /**
-          * If `true` the list item can be used as a accordion
-         */
-        "accordion"?: boolean;
-        /**
-          * If `true` the list item shows that it is clickable
-         */
-        "clickable"?: boolean;
-        /**
-          * If `true` the list item can be hovered
-         */
-        "disabled"?: boolean;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
-        /**
-          * Emitted when the state of the group is changing
-         */
-        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<BalEvents.BalListItemGroupStateChangedDetail>) => void;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
-        /**
-          * If `true` the list item has a selected theme
-         */
-        "selected"?: boolean;
-        /**
-          * If `true` the list item can be used as an accordion inside another accordion
-         */
-        "subAccordionItem"?: boolean;
-        /**
-          * Specifies where to open the linked document
-         */
-        "target"?: BalProps.BalListItemTarget;
-    }
-    interface BalListItemAccordionBody {
-        /**
-          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
-         */
-        "accordionGroup"?: string;
-        /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start
-         */
-        "contentAlignment"?: BalProps.BalListContentAlignment;
-        /**
-          * Sets space to content of the accordion body
-         */
-        "contentSpace"?: BalProps.BalListContentSpacing;
-    }
-    interface BalListItemAccordionHead {
-        /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen"?: boolean;
-        /**
-          * Icon name string with value 'plus' on default
-         */
-        "icon"?: BalProps.BalListItemAccordionHeadIcon;
-        /**
-          * Emitted when the accordion state is changed
-         */
-        "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<BalEvents.BalListAccordionChangeDetail>) => void;
-    }
-    interface BalListItemContent {
-        "contentAlignment"?: string;
-    }
-    interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-         */
-        "right"?: boolean;
-    }
-    interface BalListItemSubtitle {
-    }
-    interface BalListItemTitle {
-        /**
-          * Heading level with value 'h4' on default
-         */
-        "level"?: BalProps.BalHeadingLevel;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
-    interface BalLogo {
-        /**
-          * Defines if the animation should be active
-         */
-        "animated"?: boolean;
-        /**
-          * Defines the color of the logo.
-         */
-        "color"?: BalProps.BalLogoColor;
-        /**
-          * Size of the logo svg
-         */
-        "size"?: BalProps.BalLogoSize;
-    }
-    interface BalModal {
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "backdropDismiss"?: boolean;
-        /**
-          * The component to display inside of the modal.
-         */
-        "component": BalProps.ComponentRef;
-        /**
-          * The data to pass to the modal component.
-         */
-        "componentProps"?: BalProps.ComponentProps;
-        /**
-          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
-         */
-        "cssClass"?: string | string[];
-        "dataTestId"?: string;
-        "delegate"?: BalProps.FrameworkDelegate;
-        "demo"?: boolean;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "hasBackdrop"?: boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "isClosable"?: boolean;
-        /**
-          * Defines the width of the modal body
-         */
-        "modalWidth"?: number;
-        /**
-          * Emitted after the modal has dismissed.
-         */
-        "onBalModalDidDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalDidDismissDetail>) => void;
-        /**
-          * Emitted after the modal has presented.
-         */
-        "onBalModalDidPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalDidPresentDetail>) => void;
-        /**
-          * Emitted before the modal has dismissed.
-         */
-        "onBalModalWillDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalWillDismissDetail>) => void;
-        /**
-          * Emitted before the modal has presented.
-         */
-        "onBalModalWillPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalWillPresentDetail>) => void;
-        "overlayIndex": number;
-        /**
-          * Defines the space/padding of the modal
-         */
-        "space"?: BalProps.BalModalSpace;
-    }
-    interface BalModalBody {
-    }
-    interface BalModalHeader {
-    }
-    interface BalNav {
-        /**
-          * Link level structure.
-         */
-        "buttons"?: BalProps.BalNavMetaButtons;
-        /**
-          * Link level structure.
-         */
-        "logo"?: BalProps.BalNavLogoLink;
-        /**
-          * Emitted when a nav link item is clicked. This event can be used to add data tracking
-         */
-        "onBalNavItemClick"?: (event: BalNavCustomEvent<BalEvents.BalNavItemClickDetail>) => void;
-        /**
-          * Link level structure.
-         */
-        "options"?: BalProps.BalNavOptions;
-    }
-    interface BalNavLink {
-        /**
-          * If `true` the link can be clickable
-         */
-        "clickable"?: boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * If `true` the link gets selected with a underline
-         */
-        "selected"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * Defines the variant of the link
-         */
-        "variant"?: BalProps.BalNavLinkVariant;
-    }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
-        /**
-          * Defines the static column which is always aligned to the right
-         */
-        "staticCol"?: BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
-        /**
-          * Defines the color of the group
-         */
-        "color"?: BalProps.BalNavLinkGroupColor;
-    }
-    interface BalNavMenuBar {
-        /**
-          * Tells when to hide the bar
-         */
-        "invisible"?: BalProps.BalNavMenuBarInvisible;
-        /**
-          * Defines the position of the bar
-         */
-        "position"?: BalProps.BalNavMenuBarPosition;
-    }
-    interface BalNavMenuFlyout {
-        /**
-          * This is used to connect the flyout to the aria controls
-         */
-        "navId"?: string;
-    }
-    interface BalNavMetaBar {
-        /**
-          * Tells when to hide the bar
-         */
-        "invisible"?: BalProps.BalNavMetaBarInvisible;
-        /**
-          * Defines the position of the bar
-         */
-        "position"?: BalProps.BalNavMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size"?: BalProps.BalNavMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant"?: BalProps.BalNavMetaBarVariant;
-    }
-    interface BalNavbar {
-        /**
-          * Sets the content content width with the regular container classes
-         */
-        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        /**
-          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
-         */
-        "interface"?: BalProps.BalNavbarInterface;
-        /**
-          * It `true` the navbar has a white background. Always use the blue header.
-         */
-        "light"?: boolean;
-    }
-    interface BalNavbarBrand {
-        /**
-          * Defines if the logo animation should be active
-         */
-        "animated"?: boolean;
-        /**
-          * Link of the logo / title.
-         */
-        "href"?: string;
-        "interface"?: BalProps.BalNavbarInterface;
-        /**
-          * Src to display a logo -> replaces the default Baloise Logo
-         */
-        "logo"?: string;
-        /**
-          * Size of the logo SVG
-         */
-        "logoSize"?: BalProps.BalLogoSize;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuDidAnimateDetail>) => void;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
-        /**
-          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
-         */
-        "simple"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-    }
-    interface BalNavbarMenu {
-        "interface"?: BalProps.BalNavbarInterface;
-    }
-    interface BalNavbarMenuEnd {
-        "interface"?: BalProps.BalNavbarInterface;
-    }
-    interface BalNavbarMenuStart {
-        "interface"?: BalProps.BalNavbarInterface;
-    }
-    interface BalNotices {
-        "interface"?: 'toast' | 'snackbar';
-    }
-    interface BalNotification {
-        /**
-          * Defines the color of the element Color type primary is deprecated, please use info instead.
-         */
-        "color"?: BalProps.BalNotificationColor;
-    }
-    interface BalNumberInput {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * Defines the allowed decimal points for the `number-input`.
-         */
-        "decimal"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the input value has 0 as default value
-         */
-        "exactNumber"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
-         */
-        "max"?: string;
-        /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
-         */
-        "min"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputBlurDetail>) => void;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onBalChange"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
-        /**
-          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
-         */
-        "pattern"?: string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * Adds a suffix the the input-value after blur.
-         */
-        "suffix"?: string;
-        /**
-          * The value of the input.
-         */
-        "value"?: number;
-    }
-    interface BalOption {
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true`, the option is focused.
-         */
-        "focused"?: boolean;
-        /**
-          * If `true`, the option is hidden.
-         */
-        "hidden"?: boolean;
-        /**
-          * If `true`, the option is shown in red.
-         */
-        "invalid"?: boolean;
-        /**
-          * Label will be shown in the input element when it got selected
-         */
-        "label"?: string;
-        /**
-          * If `true`, the option can present in more than one line.
-         */
-        "multiline"?: boolean;
-        /**
-          * Emitted when the option gets selected or unselected
-         */
-        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
-        "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
-        /**
-          * If `true`, the option is selected.
-         */
-        "selected"?: boolean;
-        /**
-          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
-         */
-        "value"?: string;
-    }
-    interface BalOptionList {
-        /**
-          * Defines the max height of the list element
-         */
-        "contentHeight"?: number;
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled"?: boolean;
-        /**
-          * Defines the filter logic of the list
-         */
-        "filter"?: BalProps.BalOptionListFilter;
-        /**
-          * Defines the focused option with his index value
-         */
-        "focusIndex"?: number;
-        /**
-          * Id of the label element to describe this option list
-         */
-        "labelledby"?: string;
-        /**
-          * If `true` the list supports multiple selections
-         */
-        "multiple"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-    }
-    interface BalPagination {
-        /**
-          * Align the buttons to start, center or end
-         */
-        "align"?: BalProps.BalPaginationAlignment;
-        /**
-          * Disables component
-         */
-        "disabled"?: boolean;
-        /**
-          * Defines the layout of the pagination
-         */
-        "interface"?: BalProps.BalPaginationInterface;
-        /**
-          * Triggers when a page change happens
-         */
-        "onBalChange"?: (event: BalPaginationCustomEvent<BalEvents.BalPaginationChangeDetail>) => void;
-        /**
-          * Specify the max visible pages before and after the selected page
-         */
-        "pageRange"?: number;
-        /**
-          * Size of the buttons
-         */
-        "size"?: BalProps.BalPaginationSize;
-        /**
-          * If 'true, the pagination will be sticky to the top
-         */
-        "sticky"?: boolean;
-        /**
-          * If sticky, the top position will be determined by this value
-         */
-        "top"?: number;
-        /**
-          * The total amount of pages
-         */
-        "totalPages"?: number;
-        /**
-          * Current selected page
-         */
-        "value"?: number;
-    }
-    interface BalPopover {
-        /**
-          * If `true` the popover content is open.
-         */
-        "active"?: boolean;
-        /**
-          * If `true` a little arrow is added, which points to the trigger element
-         */
-        "arrow"?: boolean;
-        /**
-          * If `true` the popover automatically opens on a click
-         */
-        "autoTrigger"?: boolean;
-        /**
-          * If `true` a backdrop is added
-         */
-        "backdrop"?: boolean;
-        /**
-          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
-         */
-        "hint"?: boolean;
-        /**
-          * If `true` the popover shows on hover
-         */
-        "hover"?: boolean;
-        /**
-          * If `true` there will be no backdrop
-         */
-        "mobileTop"?: boolean;
-        /**
-          * Define the offset of the popover content.
-         */
-        "offsetX"?: number;
-        /**
-          * Define the offset of the popover content.
-         */
-        "offsetY"?: number;
-        /**
-          * Listen when the popover opens or closes. Returns the current value.
-         */
-        "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
-        "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
-        /**
-          * Define padding of the overflow
-         */
-        "padding"?: number;
-        /**
-          * Define the position of the popover content.
-         */
-        "position"?: BalProps.BalPopoverPlacement;
-        /**
-          * If `true` the popover is shown as a tooltip
-         */
-        "tooltip"?: boolean;
-    }
-    interface BalPopoverContent {
-        /**
-          * Defines background color of the content.
-         */
-        "color"?: BalProps.BalPopoverContentColor;
-        /**
-          * Define the min width of the popover content.
-         */
-        "contentMinWidth"?: number;
-        /**
-          * Define the max width of the popover content.
-         */
-        "contentWidth"?: number;
-        /**
-          * If `true` the content has a min width of 100%.
-         */
-        "expanded"?: boolean;
-        /**
-          * If `true` the content will have a divider line on top
-         */
-        "mobileTop"?: boolean;
-        /**
-          * If `true` the popover does not have the shadow
-         */
-        "noShadow"?: boolean;
-        /**
-          * Defines border-radius of popover content.
-         */
-        "radius"?: BalProps.BalPopoverContentRadius;
-        /**
-          * Limit the height of the popover content. Pass the amount of pixel.
-         */
-        "scrollable"?: number;
-        /**
-          * If `true` the popover has no padding space.
-         */
-        "spaceless"?: boolean;
-    }
-    interface BalPopup {
-        /**
-          * If `true` the popup is open.
-         */
-        "active"?: boolean;
-        /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow"?: boolean;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "backdrop"?: boolean;
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "backdropDismiss"?: boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "closable"?: boolean;
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        "demo"?: boolean;
-        /**
-          * Label or title of the popup element
-         */
-        "label"?: string;
-        /**
-          * Offset form trigger to popup.
-         */
-        "offset"?: number;
-        /**
-          * Emitted when the accordion has opened or closed
-         */
-        "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
-        /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
-         */
-        "placement"?: BalProps.BalPopupPlacement;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference"?: string;
-        /**
-          * Defines the variant / type of popup
-         */
-        "variant"?: BalProps.BalPopupVariant;
-    }
-    interface BalProgressBar {
-        /**
-          * The background color
-         */
-        "background"?: BalProps.BalProgressBarBackground;
-        /**
-          * The progress bar color
-         */
-        "color"?: BalProps.BalProgressBarColor;
-        /**
-          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
-         */
-        "value"?: number;
-    }
-    interface BalRadio {
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the control is no padding
-         */
-        "flat"?: boolean;
-        "hovered"?: boolean;
-        /**
-          * Defines the layout of the radio button
-         */
-        "interface"?: BalProps.BalRadioInterface;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible"?: boolean;
-        /**
-          * Label of the radio item.
-         */
-        "label"?: string;
-        /**
-          * If `true` the radio has no label
-         */
-        "labelHidden"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * If `true`, the value will not be send with a form submit
-         */
-        "nonSubmit"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalRadioCustomEvent<BalEvents.BalRadioBlurDetail>) => void;
-        /**
-          * Emitted when the checked property has changed.
-         */
-        "onBalChange"?: (event: BalRadioCustomEvent<BalEvents.BalRadioChangeDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalRadioCustomEvent<BalEvents.BalRadioFocusDetail>) => void;
-        "pressed"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * the value of the radio.
-         */
-        "value"?: any | null;
-    }
-    interface BalRadioButton {
-        "colSize"?: BalProps.BalRadioGroupColumns;
-        "colSizeMobile"?: BalProps.BalRadioGroupColumns;
-        "colSizeTablet"?: BalProps.BalRadioGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalRadioButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonBlurDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
-        /**
-          * Emitted after render when element is labelled
-         */
-        "onBalFormControlDidLoad"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-    }
-    interface BalRadioGroup {
-        /**
-          * If `true`, the radios can be deselected.
-         */
-        "allowEmptySelection"?: boolean;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-         */
-        "columnsMobile"?: BalProps.BalRadioGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-         */
-        "columnsTablet"?: BalProps.BalRadioGroupColumns;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * Uses the whole width
-         */
-        "expanded"?: boolean;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid"?: BalProps.BalRadioGroupColumns;
-        /**
-          * Defines the layout of the radio button
-         */
-        "interface"?: BalProps.BalRadioGroupInterface;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "invalid"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupBlurDetail>) => void;
-        /**
-          * Emitted when the checked property has changed.
-         */
-        "onBalChange"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupChangeDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupFocusDetail>) => void;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalRadioOption[];
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
-        /**
-          * Displays the checkboxes vertically
-         */
-        "vertical"?: boolean;
-        /**
-          * If `true`, the controls will be vertically on mobile devices.
-         */
-        "verticalOnMobile"?: boolean;
-    }
-    interface BalSegment {
-        /**
-          * If `true`, the user cannot interact with the segment.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true`, the element uses the whole width
-         */
-        "expanded"?: boolean;
-        /**
-          * If `true`, the segment is shown red.
-         */
-        "invalid"?: boolean;
-        /**
-          * Emitted when the component was touched
-         */
-        "onBalBlur"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
-        /**
-          * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.  This event will not emit when programmatically setting the `value` property.
-         */
-        "onBalChange"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentFocusDetail>) => void;
-        /**
-          * Emitted when the value of the segment changes from user committed actions or from externally assigning a value.
-         */
-        "onBalSelect"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
-        /**
-          * Emitted when the vertical style changes
-         */
-        "onBalVertical"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentVerticalDetail>) => void;
-        /**
-          * If `true`, and is vertical then the list height is limited and scrollable.
-         */
-        "scrollable"?: boolean;
-        /**
-          * the value of the segment.
-         */
-        "value"?: BalProps.BalSegmentValue;
-        /**
-          * If `true`, the segment items are presented vertical as a list.
-         */
-        "vertical"?: boolean;
-    }
-    interface BalSegmentItem {
-        "checked"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the segment button.
-         */
-        "disabled"?: boolean;
-        "focused"?: boolean;
-        /**
-          * If `true`, the segment is shown in red.
-         */
-        "invalid"?: boolean;
-        /**
-          * Label of the segment control
-         */
-        "label"?: string;
-        /**
-          * The value of the segment button.
-         */
-        "value"?: SegmentValue;
-    }
-    interface BalSelect {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "filter"?: BalProps.BalSelectFilter;
-        /**
-          * If `true` there will be no trigger icon visible, so no UX indicator for a popup
-         */
-        "freeSolo"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        "inverted"?: boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading"?: boolean;
-        /**
-          * Defines the max length of the value.
-         */
-        "maxLength"?: number;
-        /**
-          * If `true` multiple option can be selected
-         */
-        "multiple"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * This label is shown if typeahead is active and all the options are filtered out.
-         */
-        "noDataLabel"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalSelectCustomEvent<BalEvents.BalSelectBlurDetail>) => void;
-        /**
-          * Emitted when the user cancels the input.
-         */
-        "onBalCancel"?: (event: BalSelectCustomEvent<BalEvents.BalSelectCancelDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalSelectCustomEvent<BalEvents.BalSelectChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalSelectCustomEvent<BalEvents.BalSelectFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputDetail>) => void;
-        /**
-          * Emitted when the input got clicked.
-         */
-        "onBalInputClick"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputClickDetail>) => void;
-        /**
-          * Emitted when the input has focus and key from the keyboard go hit.
-         */
-        "onBalKeyPress"?: (event: BalSelectCustomEvent<BalEvents.BalSelectKeyPressDetail>) => void;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the filtering is done outside the component.
-         */
-        "remote"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * Defines the height of the popover list.
-         */
-        "scrollable"?: number;
-        /**
-          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
-         */
-        "selectionOptional"?: boolean;
-        /**
-          * If `true` the user can search by typing into the input field.
-         */
-        "typeahead"?: boolean;
-        /**
-          * Selected option values. Could also be passed as a string, which gets transformed.
-         */
-        "value"?: string | string[];
-    }
-    interface BalSelectOption {
-        /**
-          * If `true`, the user cannot interact with the option.
-         */
-        "disabled"?: boolean;
-        "for"?: string;
-        /**
-          * Label will be shown in the input element when it got selected
-         */
-        "label"?: string;
-        /**
-          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
-         */
-        "value"?: string;
-    }
-    interface BalShape {
-        /**
-          * The shape color
-         */
-        "color"?: BalProps.BalShapeColor;
-        /**
-          * The shape rotation
-         */
-        "rotation"?: BalProps.BalShapeRotation;
-        /**
-          * The shape variation
-         */
-        "variation"?: BalProps.BalShapeVariation;
-    }
-    interface BalSheet {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalSheetContainer;
-    }
-    interface BalSnackbar {
-        /**
-          * Label text for the action button
-         */
-        "action"?: string;
-        "actionHandler"?: () => void;
-        "closeHandler"?: () => void;
-        /**
-          * The theme type of the snackbar.
-         */
-        "color"?: BalProps.BalSnackbarColor;
-        /**
-          * The duration of the snackbar
-         */
-        "duration"?: number;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * The icon of the snackbar header
-         */
-        "icon"?: string;
-        /**
-          * The message of the snackbar as html content
-         */
-        "message"?: string;
-        /**
-          * Emitted when the action button is clicked
-         */
-        "onBalAction"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionDetail>) => void;
-        /**
-          * Emitted when snackbar is closed
-         */
-        "onBalClose"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseDetail>) => void;
-        /**
-          * The subject of the snackbar header
-         */
-        "subject"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-    }
-    interface BalSpinner {
-        /**
-          * Defines the color of the spinner.
-         */
-        "color"?: BalProps.BalSpinnerColor;
-        /**
-          * If `true` the component will not add the spinner animation svg
-         */
-        "deactivated"?: boolean;
-        /**
-          * If `true` the component can be used on dark background
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` the component is smaller
-         */
-        "small"?: boolean;
-        /**
-          * Defines the look of the spinner
-         */
-        "variation"?: BalProps.BalSpinnerVariation;
-    }
-    interface BalStack {
-        /**
-          * Defines the text positioning like center, right or default to start.
-         */
-        "align"?: BalProps.BalStackAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
-        "direction"?: BalProps.BalStackDirection;
-        /**
-          * Defines the width of the stack to be exactly the with of the content.
-         */
-        "fitContent"?: boolean;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-         */
-        "layout"?: BalProps.BalStackLayout;
-        /**
-          * Defines the horizontal padding left and right of the stack element.
-         */
-        "px"?: BalProps.BalStackPadding;
-        /**
-          * Defines the vertical padding top and bottom of the stack element.
-         */
-        "py"?: BalProps.BalStackPadding;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "space"?: BalProps.BalStackSpace;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "spaceColumn"?: BalProps.BalStackSpace;
-        /**
-          * Defines the space between the child elements. Default is normal.
-         */
-        "spaceRow"?: BalProps.BalStackSpace;
-        /**
-          * Defines if the child elements will wrap to the next line if there is not enough space left
-         */
-        "useWrap"?: boolean;
-    }
-    interface BalStage {
-        /**
-          * Defines the background color of the stage section
-         */
-        "color"?: BalProps.BalStageColor;
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalStageContainer;
-        /**
-          * If true the Baloise Shape is set
-         */
-        "shape"?: boolean;
-        /**
-          * Shape Rotation
-         */
-        "shapeRotation"?: BalProps.BalShapeRotation;
-        /**
-          * Shape Variation
-         */
-        "shapeVariation"?: BalProps.BalShapeVariation;
-        /**
-          * Defines size of the stage
-         */
-        "size"?: BalProps.BalStageSize;
-    }
-    interface BalStageBackLink {
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href": string;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow"?: boolean;
-    }
-    interface BalStageBody {
-    }
-    interface BalStageFoot {
-    }
-    interface BalStageHead {
-    }
-    interface BalStageImage {
-        /**
-          * optional fallback image in case the srcSet fails
-         */
-        "fallback"?: string;
-        /**
-          * set of images to be used as background image
-         */
-        "srcSet": string;
-    }
-    interface BalStepItem {
-        /**
-          * Tells if this route is active and overrides the bal-tabs value property.
-         */
-        "active"?: boolean;
-        /**
-          * If `true` the tab is disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the step is marked as done.
-         */
-        "done"?: boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed"?: boolean;
-        /**
-          * Link to path.
-         */
-        "href"?: string;
-        /**
-          * If `true` the step is hidden.
-         */
-        "invisible"?: boolean;
-        /**
-          * Label for the tab.
-         */
-        "label"?: string;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalStepItemCustomEvent<BalEvents.BalStepItemNavigateDetail>) => void;
-        /**
-          * Tell's if the linking is done by a router.
-         */
-        "prevent"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * This is the key of the tab.
-         */
-        "value"?: string;
-    }
-    interface BalSteps {
-        /**
-          * If `true` the tabs or steps can be clicked.
-         */
-        "clickable"?: boolean;
-        /**
-          * Defines the color of the steps so it can be placed on colored backgrounds
-         */
-        "color"?: BalProps.BalStepsColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * Emitted when the changes has finished.
-         */
-        "onBalChange"?: (event: BalStepsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
-        /**
-          * Steps can be passed as a property or through HTML markup.
-         */
-        "options"?: BalStepOption[];
-        /**
-          * Value of the current active step
-         */
-        "value"?: string;
-    }
-    interface BalTabItem {
-        /**
-          * Tells if this route is active and overrides the bal-tabs value property.
-         */
-        "active"?: boolean;
-        /**
-          * A11y attributes for the native tab element.
-         */
-        "aria"?: BalProps.BalTabItemAria;
-        /**
-          * If `true` a small red bubble is added to the tab.
-         */
-        "bubble"?: boolean | string;
-        /**
-          * If `true` the tab is disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * Link to path.
-         */
-        "href"?: string;
-        /**
-          * Tab icon not available for the steps.
-         */
-        "icon"?: string;
-        /**
-          * If `true` the step is hidden.
-         */
-        "invisible"?: boolean;
-        /**
-          * Label for the tab.
-         */
-        "label"?: string;
-        /**
-          * If `true` the tab does not have a panel
-         */
-        "noPanel"?: boolean;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemNavigateDetail>) => void;
-        /**
-          * Tell's if the linking is done by a router.
-         */
-        "prevent"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * This is the key of the tab.
-         */
-        "value"?: string;
-    }
-    interface BalTable {
-        /**
-          * If `true` the table has a full width
-         */
-        "expanded"?: boolean;
-    }
-    interface BalTabs {
-        /**
-          * If `true` the tab items can be open and closed
-         */
-        "accordion"?: boolean;
-        /**
-          * If `true` a light border is shown for the tabs.
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the tabs or tabs can be clicked.
-         */
-        "clickable"?: boolean;
-        /**
-          * Defines the layout of the tabs.
-         */
-        "context"?: BalProps.BalTabsContext;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true` the field expands over the whole width.
-         */
-        "expanded"?: boolean;
-        /**
-          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
-         */
-        "float"?: BalProps.BalTabsFloat;
-        /**
-          * If `true` the tabs is a block element and uses 100% of the width
-         */
-        "fullwidth"?: boolean;
-        /**
-          * Defines the layout of the tabs.
-         */
-        "iconPosition"?: BalProps.BalTabsIconPosition;
-        /**
-          * If `true` the tabs can be uses on dark background
-         */
-        "inverted"?: boolean;
-        /**
-          * Emitted when the changes has finished.
-         */
-        "onBalChange"?: (event: BalTabsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
-        /**
-          * If `true` the tabs selected line is optional
-         */
-        "optionalTabSelection"?: boolean;
-        /**
-          * Tabs can be passed as a property or through HTML markup.
-         */
-        "options"?: BalTabOption[];
-        /**
-          * If `true` the tabs have a carousel if they need more space than provided.
-         */
-        "overflow"?: boolean;
-        /**
-          * If `true` the tabs are shown as a select component on mobile
-         */
-        "selectOnMobile"?: boolean;
-        /**
-          * If `true` the tabs container does not have a padding left or right.
-         */
-        "spaceless"?: boolean;
-        "value"?: string;
-        /**
-          * If `true` tabs are align vertically.
-         */
-        "vertical"?: BalProps.BalTabsVertical;
-        /**
-          * The col size of the tabs on vertical mode.
-         */
-        "verticalColSize"?: BalProps.BalTabsColSize;
-    }
-    interface BalTag {
-        /**
-          * The theme type of the tag.
-         */
-        "closable"?: boolean;
-        /**
-          * The theme type of the tag.
-         */
-        "color"?: BalProps.BalTagColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * Overwrites the default color to invalid style
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` a light version of the color is displayed
-         */
-        "light"?: boolean;
-        /**
-          * Emitted when the input got clicked.
-         */
-        "onBalCloseClick"?: (event: BalTagCustomEvent<BalEvents.BalTagCloseClickDetail>) => void;
-        /**
-          * Choosing left or center the tag is aligned to that side in the bal-card.
-         */
-        "position"?: BalProps.BalTagPlacement;
-        /**
-          * The size of the tag element
-         */
-        "size"?: BalProps.BalTagSize;
-        "transparent"?: boolean;
-    }
-    interface BalTagGroup {
-    }
-    interface BalText {
-        /**
-          * If `true` the text is bold
-         */
-        "bold"?: boolean;
-        /**
-          * Defines the color of the text.
-         */
-        "color"?: BalProps.BalTextColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the text has heading font family
-         */
-        "heading"?: boolean;
-        "hovered"?: boolean;
-        /**
-          * If `true` the text is shown as a display inline
-         */
-        "inline"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the color gets inverted for dark backgrounds
-         */
-        "inverted"?: boolean;
-        /**
-          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
-         */
-        "noWrap"?: boolean;
-        "pressed"?: boolean;
-        /**
-          * If `true` adds a text shadow to improve readability on image background
-         */
-        "shadow"?: boolean;
-        /**
-          * Defines the size of the paragraph
-         */
-        "size"?: BalProps.BalTextSize;
-        /**
-          * Defines at which position the heading has spacing.
-         */
-        "space"?: BalProps.BalTextSpace;
-    }
-    interface BalTextarea {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
-         */
-        "autocapitalize"?: string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-         */
-        "autofocus"?: boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-         */
-        "clickable"?: boolean;
-        /**
-          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
-         */
-        "cols"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalTextareaInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-         */
-        "maxLength"?: number;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-         */
-        "minLength"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaBlurDetail>) => void;
-        /**
-          * Emitted when the input value has changed..
-         */
-        "onBalChange"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaKeyPressDetail>) => void;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * The number of visible text lines for the control.
-         */
-        "rows"?: number;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string;
-        /**
-          * Indicates how the control wraps text.
-         */
-        "wrap"?: BalProps.BalTextareaWrap;
-    }
-    interface BalTimeInput {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputBlurDetail>) => void;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onBalChange"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputClickDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputKeyPressDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * The value of the input.
-         */
-        "value"?: string;
-    }
-    interface BalToast {
-        "closeHandler"?: () => void;
-        /**
-          * The theme type of the toast. Color type primary is deprecated, please use info instead.
-         */
-        "color"?: BalProps.BalToastColor;
-        /**
-          * The duration of the toast in milliseconds.
-         */
-        "duration"?: number;
-        /**
-          * Content message
-         */
-        "message"?: string;
-        /**
-          * Emitted when toast is closed
-         */
-        "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
-    }
-    interface BalTooltip {
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        "demo"?: boolean;
-        /**
-          * Offset form trigger to tooltip.
-         */
-        "offset"?: number;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipWillAnimateDetail>) => void;
-        /**
-          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
-         */
-        "placement"?: BalProps.BalTooltipPlacement;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference"?: string;
-    }
-    interface IntrinsicElements {
-        "bal-accordion": BalAccordion;
-        "bal-accordion-details": BalAccordionDetails;
-        "bal-accordion-summary": BalAccordionSummary;
-        "bal-accordion-trigger": BalAccordionTrigger;
-        "bal-app": BalApp;
-        "bal-badge": BalBadge;
-        "bal-button": BalButton;
-        "bal-button-group": BalButtonGroup;
-        "bal-card": BalCard;
-        "bal-card-actions": BalCardActions;
-        "bal-card-button": BalCardButton;
-        "bal-card-content": BalCardContent;
-        "bal-card-subtitle": BalCardSubtitle;
-        "bal-card-title": BalCardTitle;
-        "bal-carousel": BalCarousel;
-        "bal-carousel-item": BalCarouselItem;
-        "bal-checkbox": BalCheckbox;
-        "bal-checkbox-button": BalCheckboxButton;
-        "bal-checkbox-group": BalCheckboxGroup;
-        "bal-close": BalClose;
-        "bal-content": BalContent;
-        "bal-data": BalData;
-        "bal-data-item": BalDataItem;
-        "bal-data-label": BalDataLabel;
-        "bal-data-value": BalDataValue;
-        "bal-date": BalDate;
-        "bal-date-calendar": BalDateCalendar;
-        "bal-date-calendar-cell": BalDateCalendarCell;
-        "bal-divider": BalDivider;
-        "bal-doc-app": BalDocApp;
-        "bal-dropdown": BalDropdown;
-        "bal-field": BalField;
-        "bal-field-control": BalFieldControl;
-        "bal-field-hint": BalFieldHint;
-        "bal-field-label": BalFieldLabel;
-        "bal-field-message": BalFieldMessage;
-        "bal-file-upload": BalFileUpload;
-        "bal-footer": BalFooter;
-        "bal-form": BalForm;
-        "bal-form-col": BalFormCol;
-        "bal-form-grid": BalFormGrid;
-        "bal-heading": BalHeading;
-        "bal-hint": BalHint;
-        "bal-hint-text": BalHintText;
-        "bal-hint-title": BalHintTitle;
-        "bal-icon": BalIcon;
-        "bal-input": BalInput;
-        "bal-input-date": BalInputDate;
-        "bal-input-group": BalInputGroup;
-        "bal-input-slider": BalInputSlider;
-        "bal-input-stepper": BalInputStepper;
-        "bal-label": BalLabel;
-        "bal-list": BalList;
-        "bal-list-item": BalListItem;
-        "bal-list-item-accordion-body": BalListItemAccordionBody;
-        "bal-list-item-accordion-head": BalListItemAccordionHead;
-        "bal-list-item-content": BalListItemContent;
-        "bal-list-item-icon": BalListItemIcon;
-        "bal-list-item-subtitle": BalListItemSubtitle;
-        "bal-list-item-title": BalListItemTitle;
-        "bal-logo": BalLogo;
-        "bal-modal": BalModal;
-        "bal-modal-body": BalModalBody;
-        "bal-modal-header": BalModalHeader;
-        "bal-nav": BalNav;
-        "bal-nav-link": BalNavLink;
-        "bal-nav-link-grid": BalNavLinkGrid;
-        "bal-nav-link-grid-col": BalNavLinkGridCol;
-        "bal-nav-link-group": BalNavLinkGroup;
-        "bal-nav-menu-bar": BalNavMenuBar;
-        "bal-nav-menu-flyout": BalNavMenuFlyout;
-        "bal-nav-meta-bar": BalNavMetaBar;
-        "bal-navbar": BalNavbar;
-        "bal-navbar-brand": BalNavbarBrand;
-        "bal-navbar-menu": BalNavbarMenu;
-        "bal-navbar-menu-end": BalNavbarMenuEnd;
-        "bal-navbar-menu-start": BalNavbarMenuStart;
-        "bal-notices": BalNotices;
-        "bal-notification": BalNotification;
-        "bal-number-input": BalNumberInput;
-        "bal-option": BalOption;
-        "bal-option-list": BalOptionList;
-        "bal-pagination": BalPagination;
-        "bal-popover": BalPopover;
-        "bal-popover-content": BalPopoverContent;
-        "bal-popup": BalPopup;
-        "bal-progress-bar": BalProgressBar;
-        "bal-radio": BalRadio;
-        "bal-radio-button": BalRadioButton;
-        "bal-radio-group": BalRadioGroup;
-        "bal-segment": BalSegment;
-        "bal-segment-item": BalSegmentItem;
-        "bal-select": BalSelect;
-        "bal-select-option": BalSelectOption;
-        "bal-shape": BalShape;
-        "bal-sheet": BalSheet;
-        "bal-snackbar": BalSnackbar;
-        "bal-spinner": BalSpinner;
-        "bal-stack": BalStack;
-        "bal-stage": BalStage;
-        "bal-stage-back-link": BalStageBackLink;
-        "bal-stage-body": BalStageBody;
-        "bal-stage-foot": BalStageFoot;
-        "bal-stage-head": BalStageHead;
-        "bal-stage-image": BalStageImage;
-        "bal-step-item": BalStepItem;
-        "bal-steps": BalSteps;
-        "bal-tab-item": BalTabItem;
-        "bal-table": BalTable;
-        "bal-tabs": BalTabs;
-        "bal-tag": BalTag;
-        "bal-tag-group": BalTagGroup;
-        "bal-text": BalText;
-        "bal-textarea": BalTextarea;
-        "bal-time-input": BalTimeInput;
-        "bal-toast": BalToast;
-        "bal-tooltip": BalTooltip;
-    }
+  interface BalAccordion {
+    /**
+      * If `true` the accordion is open.
+     */
+    "active"?: boolean;
+    /**
+      * If `true` the accordion is used on the bottom of a card
+     */
+    "card"?: boolean;
+    /**
+      * BalIcon of the close trigger button
+     */
+    "closeIcon"?: string;
+    /**
+      * Label of the close trigger button
+     */
+    "closeLabel"?: string;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * Emitted when the accordion has opened or closed
+     */
+    "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
+    /**
+      * BalIcon of the open trigger button
+     */
+    "openIcon"?: string;
+    /**
+      * Label of the open trigger button
+     */
+    "openLabel"?: string;
+    "version"?: number;
+  }
+  interface BalAccordionDetails {
+    "active"?: boolean;
+    "animated"?: boolean;
+    "state"?: AccordionState;
+  }
+  interface BalAccordionSummary {
+    "active"?: boolean;
+    "state"?: AccordionState;
+    /**
+      * If `true` the whole summary component acts as a trigger and can be clicked
+     */
+    "trigger"?: boolean;
+  }
+  interface BalAccordionTrigger {
+    "active"?: boolean;
+    /**
+      * Trigger will be a bal-button
+     */
+    "button"?: boolean;
+    /**
+      * BalIcon of the close trigger button
+     */
+    "closeIcon"?: string;
+    /**
+      * Label of the close trigger button
+     */
+    "closeLabel"?: string;
+    /**
+      * The color to use from your application's color palette.
+     */
+    "color"?: BalProps.BalButtonColor;
+    /**
+      * If `true` the button is aligned over the whole width
+     */
+    "expanded"?: boolean;
+    /**
+      * BalIcon of the open trigger button
+     */
+    "openIcon"?: string;
+    /**
+      * Label of the open trigger button
+     */
+    "openLabel"?: string;
+    /**
+      * Size of the button
+     */
+    "size"?: BalProps.BalButtonSize;
+    "state"?: AccordionState;
+  }
+  interface BalApp {
+    /**
+      * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+     */
+    "animated"?: boolean;
+    "ready"?: boolean;
+  }
+  interface BalBadge {
+    /**
+      * Define the color for the badge.
+     */
+    "color"?: BalProps.BalBadgeColor;
+    /**
+      * Name of the icon to show. If a icon is present text should be hidden.
+     */
+    "icon"?: string;
+    /**
+      * If `true` the badge is added to the top right corner of the card.
+     */
+    "position"?: BalProps.BalBadgePosition;
+    /**
+      * Define the size of badge. Small is recommended for tabs.
+     */
+    "size"?: BalProps.BalBadgeSize;
+  }
+  interface BalButton {
+    /**
+      * A11y attributes for the native button element.
+     */
+    "aria"?: BalProps.BalButtonAria;
+    /**
+      * The color to use from your application's color palette.
+     */
+    "color"?: BalProps.BalButtonColor;
+    /**
+      * If `true`, the user cannot interact with the button.
+     */
+    "disabled"?: boolean;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * The type of button.
+     */
+    "elementType"?: BalProps.BalButtonElementType;
+    /**
+      * If `true` the button has a full width
+     */
+    "expanded"?: boolean;
+    /**
+      * If `true` the button has no padding and a reduced height
+     */
+    "flat"?: boolean;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * Name of the left button icon
+     */
+    "icon"?: string;
+    /**
+      * Name of the right button icon
+     */
+    "iconRight"?: string;
+    /**
+      * If `true` the icon turns
+     */
+    "iconTurn"?: boolean;
+    /**
+      * If `true` the button is inverted
+     */
+    "inverted"?: boolean;
+    /**
+      * If `true` the button has a active theme
+     */
+    "isActive"?: boolean;
+    /**
+      * If `true` the label is hidden and a loading spinner is shown instead.
+     */
+    "loading"?: boolean;
+    /**
+      * The name of the button, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * The label of the button will not break
+     */
+    "noWrap"?: boolean;
+    /**
+      * Emitted when the button loses focus.
+     */
+    "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
+    /**
+      * Emitted when the button has been  rendered.
+     */
+    "onBalDidRender"?: (event: BalButtonCustomEvent<BalEvents.BalButtonDidRenderDetail>) => void;
+    /**
+      * Emitted when the button has focus.
+     */
+    "onBalFocus"?: (event: BalButtonCustomEvent<BalEvents.BalButtonFocusDetail>) => void;
+    /**
+      * Emitted when the link element has clicked.
+     */
+    "onBalNavigate"?: (event: BalButtonCustomEvent<BalEvents.BalButtonNavigateDetail>) => void;
+    /**
+      * If `true` the button is outlined
+     */
+    "outlined"?: boolean;
+    /**
+      * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+     */
+    "rel"?: string;
+    /**
+      * If `true` the button is rounded.
+     */
+    "rounded"?: boolean;
+    /**
+      * If `true` adds a box shadow to improve readability on image background
+     */
+    "shadow"?: boolean;
+    /**
+      * Size of the button
+     */
+    "size"?: BalProps.BalButtonSize;
+    /**
+      * If `true` the width of the buttons is limited
+     */
+    "square"?: boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "value"?: string | number;
+  }
+  interface BalButtonGroup {
+    /**
+      * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+     */
+    "direction"?: BalProps.BalButtonGroupDirection;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "position"?: BalProps.BalButtonGroupPosition;
+    /**
+      * If `true` the flex direction is used in reverse on mobile.
+     */
+    "reverse"?: boolean;
+  }
+  interface BalCard {
+    /**
+      * If `true` a light blue border is added to the card.
+     */
+    "border"?: boolean;
+    /**
+      * If `true` the card has a hover effect.
+     */
+    "clickable"?: boolean;
+    /**
+      * Defines the color of the card.
+     */
+    "color"?: BalProps.BalCardColor;
+    /**
+      * If `true` the card loses its shadow.
+     */
+    "flat"?: boolean;
+    /**
+      * If `true` the card uses 100% of the available height.
+     */
+    "fullheight"?: boolean;
+    /**
+      * If `true` the card background color becomes blue.
+     */
+    "inverted"?: boolean;
+    /**
+      * If `true` the card gets a light background to indicate a selection.
+     */
+    "selected"?: boolean;
+    /**
+      * Defines the space of the card content.
+     */
+    "space"?: BalProps.BalCardSpace;
+    /**
+      * If `true` the card loses its border radius.
+     */
+    "square"?: boolean;
+  }
+  interface BalCardActions {
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "position"?: BalProps.BalCardActionsPosition;
+  }
+  interface BalCardButton {
+    /**
+      * If `true`, the user cannot interact with the button.
+     */
+    "disabled"?: boolean;
+    /**
+      * The type of button.
+     */
+    "elementType"?: BalProps.BalCardButtonElementType;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * Name of the icon like `edit`.
+     */
+    "icon"?: string;
+    /**
+      * Name of the right button icon
+     */
+    "iconRight"?: string;
+    /**
+      * If `true` the label is hidden and a loading spinner is shown instead.
+     */
+    "loading"?: boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalCardButtonTarget;
+  }
+  interface BalCardContent {
+  }
+  interface BalCardSubtitle {
+    /**
+      * If `true` the card text color is bold.
+     */
+    "bold"?: boolean;
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "color"?: BalProps.BalHeadingColor;
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "inverted"?: boolean;
+  }
+  interface BalCardTitle {
+    /**
+      * If `true` the card text color becomes white.
+     */
+    "inverted"?: boolean;
+  }
+  interface BalCarousel {
+    /**
+      * Defines the image aspect ratio. Should be combined with the interface `product`
+     */
+    "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+    /**
+      * If `true` a light border is shown at the bottom.
+     */
+    "border"?: boolean;
+    /**
+      * Defines the layout of the navigation controls.
+     */
+    "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
+    /**
+      * If `true` items move under the controls, instead of having a gap
+     */
+    "controlsOverflow"?: boolean;
+    /**
+      * If `true` the controls will be sticky to the top.
+     */
+    "controlsSticky"?: boolean;
+    /**
+      * If `true` the carousel uses the full height
+     */
+    "fullHeight"?: boolean;
+    /**
+      * @deprecated Defines the role of the carousel.
+     */
+    "htmlRole"?: 'tablist' | 'list' | '';
+    /**
+      * Defines special looks.
+     */
+    "interface"?: 'card' | 'image' | 'product' | '';
+    /**
+      * If `true` the carousel can be used on dark background
+     */
+    "inverted"?: boolean;
+    /**
+      * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+     */
+    "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalCarouselCustomEvent<BalEvents.BalCarouselChangeDetail>) => void;
+    /**
+      * If `true` vertical scrolling on mobile is enabled.
+     */
+    "scrollY"?: boolean;
+    /**
+      * When how many slides are moved when going forward or backward.
+     */
+    "steps"?: number;
+    /**
+      * Defines the active slide index.
+     */
+    "value"?: number;
+  }
+  interface BalCarouselItem {
+    /**
+      * Color of the background
+     */
+    "color"?: BalProps.BalCarouselItemColor;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * The type of button.
+     */
+    "elementType"?: BalProps.BalButtonElementType;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * @deprecated Defines the role of the carousel.
+     */
+    "htmlRole"?: 'tab' | 'listitem' | '';
+    /**
+      * Label of the slide which will be used for pagination tabs
+     */
+    "label"?: string;
+    /**
+      * The name of the button, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the button loses focus.
+     */
+    "onBalBlur"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemBlurDetail>) => void;
+    /**
+      * Emitted when the button has focus.
+     */
+    "onBalFocus"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemFocusDetail>) => void;
+    /**
+      * Emitted when the link element has clicked.
+     */
+    "onBalNavigate"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemNavigateDetail>) => void;
+    /**
+      * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+     */
+    "rel"?: string;
+    /**
+      * Src path to the image
+     */
+    "src"?: string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+    /**
+      * The value of the button, which is submitted with the form data.
+     */
+    "value"?: string | number;
+  }
+  interface BalCheckbox {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * If `true`, the checkbox is selected.
+     */
+    "checked"?: boolean;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the control is no padding
+     */
+    "flat"?: boolean;
+    "hovered"?: boolean;
+    /**
+      * If `true` the control is displayed as inline
+     */
+    "inline"?: boolean;
+    /**
+      * Defines the layout of the checkbox button
+     */
+    "interface"?: BalProps.BalCheckboxInterface;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the radio is invisible, but sill active
+     */
+    "invisible"?: boolean;
+    /**
+      * Label of the radio item.
+     */
+    "label"?: string;
+    /**
+      * If `true` the checkbox has no label
+     */
+    "labelHidden"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * If `true`, the value will not be send with a form submit
+     */
+    "nonSubmit"?: boolean;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxBlurDetail>) => void;
+    /**
+      * Emitted when the value property has changed.
+     */
+    "onBalChange"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxChangeDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxFocusDetail>) => void;
+    "pressed"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+     */
+    "value"?: string | number;
+  }
+  interface BalCheckboxButton {
+    "colSize"?: BalProps.BalCheckboxGroupColumns;
+    "colSizeMobile"?: BalProps.BalCheckboxGroupColumns;
+    "colSizeTablet"?: BalProps.BalCheckboxGroupColumns;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "color"?: BalProps.BalCheckboxButtonColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonBlurDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
+    "onBalFormControlDidLoad"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+  }
+  interface BalCheckboxGroup {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Defines the column size like the grid.
+     */
+    "columns"?: BalProps.BalCheckboxGroupColumns;
+    /**
+      * Defines the column size for mobile and bigger like the grid.
+     */
+    "columnsMobile"?: BalProps.BalCheckboxGroupColumns;
+    /**
+      * Defines the column size for tablet and bigger like the grid.
+     */
+    "columnsTablet"?: BalProps.BalCheckboxGroupColumns;
+    /**
+      * If `true` it acts as the main form control
+     */
+    "control"?: boolean;
+    /**
+      * If `true`, the user cannot interact with the checkboxes.
+     */
+    "disabled"?: boolean;
+    /**
+      * Uses the whole width
+     */
+    "expanded"?: boolean;
+    /**
+      * Defines the layout of the checkbox button
+     */
+    "interface"?: BalProps.BalCheckboxGroupInterface;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "invalid"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupBlurDetail>) => void;
+    /**
+      * Emitted when the checked property has changed.
+     */
+    "onBalChange"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupChangeDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupFocusDetail>) => void;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalCheckboxOption[];
+    /**
+      * If `true`, the user cannot interact with the checkboxes.
+     */
+    "readonly"?: boolean;
+    /**
+      * The value of the control.
+     */
+    "value"?: any[];
+    /**
+      * Displays the checkboxes vertically
+     */
+    "vertical"?: boolean;
+    /**
+      * If `true`, the controls will be vertically on mobile devices.
+     */
+    "verticalOnMobile"?: boolean;
+  }
+  interface BalClose {
+    /**
+      * If `true` it supports dark backgrounds.
+     */
+    "inverted"?: boolean;
+    /**
+      * Define the size of badge. Small is recommended for tabs.
+     */
+    "size"?: BalProps.BalCloseSize;
+  }
+  interface BalContent {
+    /**
+      * Defines the text positioning like center, end or default to start.
+     */
+    "align"?: BalProps.BalContentAlignment;
+    "alignment"?: BalProps.BalStackAlignment;
+    "direction"?: BalProps.BalStackDirection;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+     */
+    "layout"?: BalProps.BalContentLayout;
+    /**
+      * Defines the space between the child elements. Default is xx-small.
+     */
+    "space"?: BalProps.BalContentSpace;
+  }
+  interface BalData {
+    /**
+      * If `true` a bottom border is added to the data-item.
+     */
+    "border"?: boolean;
+    /**
+      * If `true` the data list is horizontal instead of vertical.
+     */
+    "horizontal"?: boolean;
+  }
+  interface BalDataItem {
+    /**
+      * If `true` a bottom border is added to the data-item.
+     */
+    "border"?: boolean;
+    /**
+      * If `true` the item gets a lighter font color.
+     */
+    "disabled"?: boolean;
+  }
+  interface BalDataLabel {
+    /**
+      * If `true` an asterix is added after the label.
+     */
+    "required"?: boolean;
+  }
+  interface BalDataValue {
+    /**
+      * If `true` the button will get disabled.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` a small button with a edit icon will be shown on the right.
+     */
+    "editable"?: boolean;
+    /**
+      * If `true` the text will break and the height of the item increases.
+     */
+    "multiline"?: boolean;
+    /**
+      * Emitted when the edit button loses focus.
+     */
+    "onBalBlur"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueBlurDetail>) => void;
+    /**
+      * Emitted when the edit button has focus.
+     */
+    "onBalClick"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueClickDetail>) => void;
+    /**
+      * Emitted when the edit button has focus.
+     */
+    "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
+  }
+  interface BalDate {
+    /**
+      * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+     */
+    "allowInvalidValue"?: boolean;
+    /**
+      * Callback to determine which date in the datepicker should be selectable.
+     */
+    "allowedDates"?: BalProps.BalDateCallback | undefined;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * Closes the datepicker popover after selection
+     */
+    "closeOnSelect"?: boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "defaultDate"?: string;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` there will be no trigger icon visible, so no UX indicator for a picker
+     */
+    "freeSolo"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * Latest year available for selection
+     */
+    "maxYearProp"?: number;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * Earliest year available for selection
+     */
+    "minYearProp"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalDateCustomEvent<BalEvents.BalDateBlurDetail>) => void;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalDateCustomEvent<BalEvents.BalDateChangeDetail>) => void;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateDidAnimateDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalDateCustomEvent<BalEvents.BalDateFocusDetail>) => void;
+    /**
+      * Emitted when the icon has clicked.
+     */
+    "onBalIconClick"?: (event: BalDateCustomEvent<BalEvents.BalDateIconClickDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalDateCustomEvent<BalEvents.BalDateInputDetail>) => void;
+    /**
+      * Emitted when the input has clicked.
+     */
+    "onBalInputClick"?: (event: BalDateCustomEvent<BalEvents.BalDateInputClickDetail>) => void;
+    "onBalPopoverPrepare"?: (event: BalDateCustomEvent<string>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateWillAnimateDetail>) => void;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the attribute required is added to the native input.
+     */
+    "required"?: boolean;
+    /**
+      * If `true` the datepicker only open on click of the icon
+     */
+    "triggerIcon"?: boolean;
+    /**
+      * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value"?: string | undefined;
+  }
+  interface BalDateCalendar {
+    /**
+      * Callback to determine which date in the datepicker should be selectable.
+     */
+    "allowedDates"?: BalProps.BalDateCalendarAllowedDatesCallback | undefined;
+    /**
+      * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
+     */
+    "defaultDate"?: string;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * Latest year available for selection
+     */
+    "maxYearProp"?: number;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * Earliest year available for selection
+     */
+    "minYearProp"?: number;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalDateCalendarCustomEvent<BalEvents.BalDateCalendarChangeDetail>) => void;
+    /**
+      * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value"?: string;
+  }
+  interface BalDateCalendarCell {
+    /**
+      * PUBLIC PROPERTY API ------------------------------------------------------
+     */
+    "day"?: number;
+    "disabled"?: boolean;
+    "fullDate": string;
+    "isoDate": string;
+    "month"?: number;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalSelectDay"?: (event: BalDateCalendarCellCustomEvent<BalEvents.BalDateCellSelectDetail>) => void;
+    "selected"?: boolean;
+    "today"?: boolean;
+    "year"?: number;
+  }
+  interface BalDivider {
+    /**
+      * Defines the color of the separator line.
+     */
+    "borderStyle"?: BalProps.BalDividerBorderStyle;
+    /**
+      * Defines the color of the separator line.
+     */
+    "color"?: BalProps.BalDividerColor;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+     */
+    "layout"?: BalProps.BalDividerLayout;
+    /**
+      * Defines the space between the child elements. Default is xx-small.
+     */
+    "space"?: BalProps.BalDividerSpace;
+  }
+  interface BalDocApp {
+    /**
+      * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+     */
+    "animated"?: boolean;
+    "language"?: string;
+    "logComponents"?: string;
+    "logCustom"?: boolean;
+    "logEvents"?: boolean;
+    "logLifecycle"?: boolean;
+    "logRender"?: boolean;
+    "region"?: string;
+    "stickyFooter"?: boolean;
+  }
+  interface BalDropdown {
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * If `true`, the selected options are shown as chips
+     */
+    "chips"?: boolean;
+    /**
+      * If `true`, a cross at the end is visible to clear the selection
+     */
+    "clearable"?: boolean;
+    /**
+      * Defines the max height of the list element
+     */
+    "contentHeight"?: number;
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled"?: boolean;
+    /**
+      * Defines the filter logic of the list
+     */
+    "filter"?: BalProps.BalOptionListFilter;
+    /**
+      * If `true` there will be on trigger icon visible
+     */
+    "icon"?: string;
+    /**
+      * Defines a inline label to be shown before the value
+     */
+    "inlineLabel"?: string;
+    /**
+      * If `true`, the component will be shown as invalid
+     */
+    "invalid"?: boolean;
+    "inverted"?: boolean;
+    /**
+      * Defines if the select is in a loading state.
+     */
+    "loading"?: boolean;
+    /**
+      * If `true`, the user can select multiple options.
+     */
+    "multiple"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownBlurDetail>) => void;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownFocusDetail>) => void;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalOption[];
+    /**
+      * Defines the placeholder of the component. Only shown when the value is empty
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * Defines the size of the control.
+     */
+    "size"?: BalProps.BalDropdownSize;
+    /**
+      * Defines the color style of the control
+     */
+    "theme"?: BalProps.BalDropdownTheme;
+    /**
+      * The value of the selected options.
+     */
+    "value"?: string | string[];
+  }
+  interface BalField {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
+     */
+    "horizontal"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` a loading spinner is visible at the end of the input
+     */
+    "loading"?: boolean;
+    /**
+      * Emitted after render when element is labelled
+     */
+    "onBalFormControlDidLoad"?: (event: BalFieldCustomEvent<BalEvents.BalFieldAriaLabelledByDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required"?: boolean;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+  }
+  interface BalFieldControl {
+    /**
+      * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+     */
+    "expandedOnMobile"?: boolean;
+    /**
+      * @deprecated Baloise icon for the left side of the input
+     */
+    "iconLeft"?: string;
+    /**
+      * @deprecated Baloise icon for the right side of the input
+     */
+    "iconRight"?: string;
+    /**
+      * If `true` a loading spinner is visible at the end of the input
+     */
+    "loading"?: boolean;
+  }
+  interface BalFieldHint {
+    /**
+      * Text for the close button.
+     */
+    "closeLabel"?: string;
+    /**
+      * Disables the close button for tablet and desktop
+     */
+    "small"?: boolean;
+    /**
+      * Text of the inputs label
+     */
+    "subject"?: string;
+  }
+  interface BalFieldLabel {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+     */
+    "htmlFor"?: string;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required"?: boolean;
+    /**
+      * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+     */
+    "size"?: BalProps.BalFieldLabelSize;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+    /**
+      * Defines the font weight of the label.
+     */
+    "weight"?: BalProps.BalFieldLabelWeight;
+  }
+  interface BalFieldMessage {
+    /**
+      * Defines the color of the message.
+     */
+    "color"?: BalProps.BalFieldMessageColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+  }
+  interface BalFileUpload {
+    /**
+      * Accepted MIME-Types like `image/png,image/jpeg`.
+     */
+    "accept"?: string;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` below the drop-down area it generates a file list.
+     */
+    "hasFileList"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * Label of the drop area.
+     */
+    "label"?: string;
+    /**
+      * If `true` the file upload is disabled and shows a spinner
+     */
+    "loading"?: boolean;
+    /**
+      * Allowed max bundle size in bytes.
+     */
+    "maxBundleSize"?: number;
+    /**
+      * Allowed max file size in bytes.
+     */
+    "maxFileSize"?: number;
+    /**
+      * Allowed number of files in the bundle.
+     */
+    "maxFiles"?: number;
+    /**
+      * If `true` multiple file upload is possible.
+     */
+    "multiple"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadBlurDetail>) => void;
+    /**
+      * Triggers when a file is added or removed.
+     */
+    "onBalChange"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadChangeDetail>) => void;
+    /**
+      * Triggers when a file is added.
+     */
+    "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesAddedDetail>) => void;
+    /**
+      * Triggers when a file is removed.
+     */
+    "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesRemovedDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFocusDetail>) => void;
+    /**
+      * Emitted when the input has clicked.
+     */
+    "onBalInputClick"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadInputClickDetail>) => void;
+    /**
+      * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+     */
+    "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadRejectedFileDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * Overrides the default subtitle file size
+     */
+    "subTitle"?: (file: File) => string;
+    /**
+      * Input value.
+     */
+    "value"?: File[];
+  }
+  interface BalFooter {
+    /**
+      * If `true` the language selection will be hidden.
+     */
+    "hideLanguageSelection"?: boolean;
+    /**
+      * If `true` the legal Baloise links will be hidden.
+     */
+    "hideLinks"?: boolean;
+    /**
+      * If provided, the footer links will be overridden.
+     */
+    "overrideLinks"?: FooterLink[] | undefined;
+    /**
+      * If `true` the social media links will be shown.
+     */
+    "showSocialMedia"?: boolean;
+  }
+  interface BalForm {
+    /**
+      * The css class for the inner form element
+     */
+    "formClass"?: string;
+    /**
+      * If `true` a native form element is added as a wrapper of the slot.
+     */
+    "native"?: boolean;
+    /**
+      * If `true` it adds the novalidate attribute to the native form element.
+     */
+    "novalidate"?: boolean;
+  }
+  interface BalFormCol {
+    "size"?: BalProps.BalFormColSize;
+  }
+  interface BalFormGrid {
+  }
+  interface BalHeading {
+    /**
+      * The actual heading level used in the HTML markup.
+     */
+    "autoLevel"?: BalProps.BalHeadingVisualLevel;
+    /**
+      * The theme type of the toast.
+     */
+    "color"?: BalProps.BalHeadingColor;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted"?: boolean;
+    /**
+      * The actual heading level used in the HTML markup.
+     */
+    "level"?: BalProps.BalHeadingLevel;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap"?: boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow"?: boolean;
+    /**
+      * Defines at which position the heading has spacing.
+     */
+    "space"?: 'none' | 'bottom' | 'top' | 'all';
+    /**
+      * If `true` the heading gets displayed slimmer.
+     */
+    "subtitle"?: boolean;
+    /**
+      * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+     */
+    "visualLevel"?: BalProps.BalHeadingVisualLevel;
+  }
+  interface BalHint {
+    /**
+      * Text for the close button.
+     */
+    "closeLabel"?: string;
+    /**
+      * Disables the close button for tablet and desktop
+     */
+    "small"?: boolean;
+  }
+  interface BalHintText {
+  }
+  interface BalHintTitle {
+  }
+  interface BalIcon {
+    /**
+      * The theme type of the button.
+     */
+    "color"?: BalProps.BalIconColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hovered"?: boolean;
+    /**
+      * If `true` the icon has display inline style
+     */
+    "inline"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the icon is inverted
+     */
+    "inverted"?: boolean;
+    /**
+      * Name of the baloise icon.
+     */
+    "name"?: string;
+    "pressed"?: boolean;
+    /**
+      * If `true` adds a box shadow to improve readability on image background
+     */
+    "shadow"?: boolean;
+    /**
+      * Defines the size of the icon.
+     */
+    "size"?: BalProps.BalIconSize;
+    /**
+      * Svg content.
+     */
+    "svg"?: string;
+    /**
+      * If `true` the icon is rotated 180deg
+     */
+    "turn"?: boolean;
+  }
+  interface BalInput {
+    /**
+      * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+     */
+    "accept"?: string;
+    /**
+      * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+     */
+    "allowedKeyPress"?: string;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+     */
+    "autocapitalize"?: string;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * Whether auto correction should be enabled when the user is entering/editing the text value.
+     */
+    "autocorrect"?: BalProps.BalInputAutocorrect;
+    /**
+      * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+     */
+    "autofocus"?: boolean;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable"?: boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hasIconRight"?: boolean;
+    /**
+      * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+     */
+    "inputmode"?: BalProps.BalInputInputMode;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
+     */
+    "mask"?: BalProps.BalInputMask;
+    /**
+      * The maximum value, which must not be less than its minimum (min attribute) value.
+     */
+    "max"?: string;
+    /**
+      * Defines the max length of the value.
+     */
+    "maxLength"?: number;
+    /**
+      * The minimum value, which must not be greater than its maximum (max attribute) value.
+     */
+    "min"?: string;
+    /**
+      * Defines the min length of the value.
+     */
+    "minLength"?: number;
+    /**
+      * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+     */
+    "multiple"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalBlur"?: (event: BalInputCustomEvent<BalEvents.BalInputBlurDetail>) => void;
+    /**
+      * Emitted when the input value has changed.
+     */
+    "onBalChange"?: (event: BalInputCustomEvent<BalEvents.BalInputChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalInputCustomEvent<BalEvents.BalInputFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalInputCustomEvent<BalEvents.BalInputInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalInputCustomEvent<BalEvents.BalInputKeyPressDetail>) => void;
+    /**
+      * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+     */
+    "pattern"?: string;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * If `true`, the element will have its spelling and grammar checked.
+     */
+    "spellcheck"?: boolean;
+    /**
+      * Adds a suffix the the input-value after blur.
+     */
+    "suffix"?: string;
+    /**
+      * Defines the text align of the input value.
+     */
+    "textAlign"?: 'center' | 'left' | 'right';
+    /**
+      * Defines the type of the input (text, number, email ...).
+     */
+    "type"?: BalProps.BalInputInputType;
+    /**
+      * The value of the input.
+     */
+    "value"?: string;
+  }
+  interface BalInputDate {
+    /**
+      * If `true`, it returns the string `INVALID_VALUE` within the balChange event if the input provided is not valid.
+     */
+    "allowInvalidValue"?: boolean;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable"?: boolean;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hasIconRight"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+     */
+    "max"?: string;
+    /**
+      * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+     */
+    "min"?: string;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateBlurDetail>) => void;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateKeyPressDetail>) => void;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the attribute required is added to the native input.
+     */
+    "required"?: boolean;
+    /**
+      * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+     */
+    "value"?: string | undefined;
+  }
+  interface BalInputGroup {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+  }
+  interface BalInputSlider {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * The tabindex of the control.
+     */
+    "balTabindex"?: number;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true`, small ticks for the steps are shown.
+     */
+    "hasTicks"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * Max value of the model.
+     */
+    "max"?: number;
+    /**
+      * Min value of the model.
+     */
+    "min"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalBlur"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderBlurDetail>) => void;
+    /**
+      * Emitted when the input value has changed.
+     */
+    "onBalChange"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderKeyPressDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * The step size. 0 means no steps.
+     */
+    "step"?: number;
+    /**
+      * The value of the input.
+     */
+    "value"?: string | number;
+  }
+  interface BalInputStepper {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the input is shown as invalid
+     */
+    "invalid"?: boolean;
+    /**
+      * The max value the input can have
+     */
+    "max"?: number;
+    /**
+      * The min value the input can have
+     */
+    "min"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalBlur"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperBlurDetail>) => void;
+    /**
+      * Emitted when the input value has changed.
+     */
+    "onBalChange"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperChangeDetail>) => void;
+    /**
+      * Emitted when the input value has decreased.
+     */
+    "onBalDecrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperDecreaseDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperFocusDetail>) => void;
+    /**
+      * Emitted when the input value has increased.
+     */
+    "onBalIncrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperIncreaseDetail>) => void;
+    /**
+      * Emitted when the input value has changed.
+     */
+    "onBalInput"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperInputDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * The steps in which the input increases or decreases
+     */
+    "steps"?: number;
+    /**
+      * The value of the input. Only allows values in the range of the min max attribute.
+     */
+    "value"?: number;
+  }
+  interface BalLabel {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    "hovered"?: boolean;
+    /**
+      * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+     */
+    "htmlFor"?: string;
+    /**
+      * Define the id of the native label element
+     */
+    "htmlId"?: string;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * When true, the text will is able to break on multiple lines.
+     */
+    "multiline"?: boolean;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap"?: boolean;
+    "pressed"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+     */
+    "required"?: boolean;
+    /**
+      * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+     */
+    "size"?: BalProps.BalLabelSize;
+    /**
+      * If `true` the component gets a valid green style.
+     */
+    "valid"?: boolean;
+    /**
+      * Defines the font weight of the label.
+     */
+    "weight"?: BalProps.BalLabelWeight;
+  }
+  interface BalList {
+    /**
+      * If `true` only one of the layers can be open and the others close automatically
+     */
+    "accordionOneLevel"?: boolean;
+    /**
+      * If `true` the list can be used on a light, dark or colored backgrounds
+     */
+    "background"?: BalProps.BalListBackground;
+    /**
+      * If `true` each list item has a bottom border
+     */
+    "border"?: boolean;
+    /**
+      * If `true` the list item can not be hovered
+     */
+    "disabled"?: boolean;
+    /**
+      * Defines the min height of the list item
+     */
+    "size"?: BalProps.BalListSize;
+  }
+  interface BalListItem {
+    /**
+      * If `true` the list item can be used as a accordion
+     */
+    "accordion"?: boolean;
+    /**
+      * If `true` the list item shows that it is clickable
+     */
+    "clickable"?: boolean;
+    /**
+      * If `true` the list item can be hovered
+     */
+    "disabled"?: boolean;
+    /**
+      * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+     */
+    "download"?: string;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
+    /**
+      * Emitted when the state of the group is changing
+     */
+    "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<BalEvents.BalListItemGroupStateChangedDetail>) => void;
+    /**
+      * Emitted when the link element has clicked
+     */
+    "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
+    /**
+      * If `true` the list item has a selected theme
+     */
+    "selected"?: boolean;
+    /**
+      * If `true` the list item can be used as an accordion inside another accordion
+     */
+    "subAccordionItem"?: boolean;
+    /**
+      * Specifies where to open the linked document
+     */
+    "target"?: BalProps.BalListItemTarget;
+  }
+  interface BalListItemAccordionBody {
+    /**
+      * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+     */
+    "accordionGroup"?: string;
+    /**
+      * Sets justify-content of the items to start, center, end, or space-between. Default is start
+     */
+    "contentAlignment"?: BalProps.BalListContentAlignment;
+    /**
+      * Sets space to content of the accordion body
+     */
+    "contentSpace"?: BalProps.BalListContentSpacing;
+  }
+  interface BalListItemAccordionHead {
+    /**
+      * If `true` the list accordion is open
+     */
+    "accordionOpen"?: boolean;
+    /**
+      * Icon name string with value 'plus' on default
+     */
+    "icon"?: BalProps.BalListItemAccordionHeadIcon;
+    /**
+      * Emitted when the accordion state is changed
+     */
+    "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<BalEvents.BalListAccordionChangeDetail>) => void;
+  }
+  interface BalListItemContent {
+    "contentAlignment"?: string;
+  }
+  interface BalListItemIcon {
+    /**
+      * If `true` the icon is on the right side of the list item. Default is the left side.
+     */
+    "right"?: boolean;
+  }
+  interface BalListItemSubtitle {
+  }
+  interface BalListItemTitle {
+    /**
+      * Heading level with value 'h4' on default
+     */
+    "level"?: BalProps.BalHeadingLevel;
+    /**
+      * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+     */
+    "visualLevel"?: BalProps.BalHeadingVisualLevel;
+  }
+  interface BalLogo {
+    /**
+      * Defines if the animation should be active
+     */
+    "animated"?: boolean;
+    /**
+      * Defines the color of the logo.
+     */
+    "color"?: BalProps.BalLogoColor;
+    /**
+      * Size of the logo svg
+     */
+    "size"?: BalProps.BalLogoSize;
+  }
+  interface BalModal {
+    /**
+      * If `true`, the modal can be closed with the click outside of the modal
+     */
+    "backdropDismiss"?: boolean;
+    /**
+      * The component to display inside of the modal.
+     */
+    "component": BalProps.ComponentRef;
+    /**
+      * The data to pass to the modal component.
+     */
+    "componentProps"?: BalProps.ComponentProps;
+    /**
+      * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+     */
+    "cssClass"?: string | string[];
+    "dataTestId"?: string;
+    "delegate"?: BalProps.FrameworkDelegate;
+    "demo"?: boolean;
+    /**
+      * If `true`, a backdrop will be displayed behind the modal.
+     */
+    "hasBackdrop"?: boolean;
+    /**
+      * If `true`, the modal can be closed with the escape key or the little close button.
+     */
+    "isClosable"?: boolean;
+    /**
+      * Defines the width of the modal body
+     */
+    "modalWidth"?: number;
+    /**
+      * Emitted after the modal has dismissed.
+     */
+    "onBalModalDidDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalDidDismissDetail>) => void;
+    /**
+      * Emitted after the modal has presented.
+     */
+    "onBalModalDidPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalDidPresentDetail>) => void;
+    /**
+      * Emitted before the modal has dismissed.
+     */
+    "onBalModalWillDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalWillDismissDetail>) => void;
+    /**
+      * Emitted before the modal has presented.
+     */
+    "onBalModalWillPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalWillPresentDetail>) => void;
+    "overlayIndex": number;
+    /**
+      * Defines the space/padding of the modal
+     */
+    "space"?: BalProps.BalModalSpace;
+  }
+  interface BalModalBody {
+  }
+  interface BalModalHeader {
+  }
+  interface BalNav {
+    /**
+      * Link level structure.
+     */
+    "buttons"?: BalProps.BalNavMetaButtons;
+    /**
+      * Link level structure.
+     */
+    "logo"?: BalProps.BalNavLogoLink;
+    /**
+      * Emitted when a nav link item is clicked. This event can be used to add data tracking
+     */
+    "onBalNavItemClick"?: (event: BalNavCustomEvent<BalEvents.BalNavItemClickDetail>) => void;
+    /**
+      * Link level structure.
+     */
+    "options"?: BalProps.BalNavOptions;
+  }
+  interface BalNavLink {
+    /**
+      * If `true` the link can be clickable
+     */
+    "clickable"?: boolean;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * If `true` the link gets selected with a underline
+     */
+    "selected"?: boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+    /**
+      * Defines the variant of the link
+     */
+    "variant"?: BalProps.BalNavLinkVariant;
+  }
+  interface BalNavLinkGrid {
+  }
+  interface BalNavLinkGridCol {
+    /**
+      * Defines the static column which is always aligned to the right
+     */
+    "staticCol"?: BalProps.BalNavLinkGridCol;
+  }
+  interface BalNavLinkGroup {
+    /**
+      * Defines the color of the group
+     */
+    "color"?: BalProps.BalNavLinkGroupColor;
+  }
+  interface BalNavMenuBar {
+    /**
+      * Tells when to hide the bar
+     */
+    "invisible"?: BalProps.BalNavMenuBarInvisible;
+    /**
+      * Defines the position of the bar
+     */
+    "position"?: BalProps.BalNavMenuBarPosition;
+  }
+  interface BalNavMenuFlyout {
+    /**
+      * This is used to connect the flyout to the aria controls
+     */
+    "navId"?: string;
+  }
+  interface BalNavMetaBar {
+    /**
+      * Tells when to hide the bar
+     */
+    "invisible"?: BalProps.BalNavMetaBarInvisible;
+    /**
+      * Defines the position of the bar
+     */
+    "position"?: BalProps.BalNavMetaBarPosition;
+    /**
+      * Defines the height of the bar
+     */
+    "size"?: BalProps.BalNavMetaBarSize;
+    /**
+      * Defines the color variant
+     */
+    "variant"?: BalProps.BalNavMetaBarVariant;
+  }
+  interface BalNavbar {
+    /**
+      * Sets the content content width with the regular container classes
+     */
+    "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+    /**
+      * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+     */
+    "interface"?: BalProps.BalNavbarInterface;
+    /**
+      * It `true` the navbar has a white background. Always use the blue header.
+     */
+    "light"?: boolean;
+  }
+  interface BalNavbarBrand {
+    /**
+      * Defines if the logo animation should be active
+     */
+    "animated"?: boolean;
+    /**
+      * Link of the logo / title.
+     */
+    "href"?: string;
+    "interface"?: BalProps.BalNavbarInterface;
+    /**
+      * Src to display a logo -> replaces the default Baloise Logo
+     */
+    "logo"?: string;
+    /**
+      * Size of the logo SVG
+     */
+    "logoSize"?: BalProps.BalLogoSize;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuDidAnimateDetail>) => void;
+    /**
+      * Emitted when the link element has clicked
+     */
+    "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
+    /**
+      * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+     */
+    "simple"?: boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+  }
+  interface BalNavbarMenu {
+    "interface"?: BalProps.BalNavbarInterface;
+  }
+  interface BalNavbarMenuEnd {
+    "interface"?: BalProps.BalNavbarInterface;
+  }
+  interface BalNavbarMenuStart {
+    "interface"?: BalProps.BalNavbarInterface;
+  }
+  interface BalNotices {
+    "interface"?: 'toast' | 'snackbar';
+  }
+  interface BalNotification {
+    /**
+      * Defines the color of the element Color type primary is deprecated, please use info instead.
+     */
+    "color"?: BalProps.BalNotificationColor;
+  }
+  interface BalNumberInput {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * Defines the allowed decimal points for the `number-input`.
+     */
+    "decimal"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the input value has 0 as default value
+     */
+    "exactNumber"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * The maximum value, which must not be less than its minimum (min attribute) value.
+     */
+    "max"?: string;
+    /**
+      * The minimum value, which must not be greater than its maximum (max attribute) value.
+     */
+    "min"?: string;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputBlurDetail>) => void;
+    /**
+      * Emitted when the value has changed.
+     */
+    "onBalChange"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
+    /**
+      * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+     */
+    "pattern"?: string;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * Adds a suffix the the input-value after blur.
+     */
+    "suffix"?: string;
+    /**
+      * The value of the input.
+     */
+    "value"?: number;
+  }
+  interface BalOption {
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true`, the option is focused.
+     */
+    "focused"?: boolean;
+    /**
+      * If `true`, the option is hidden.
+     */
+    "hidden"?: boolean;
+    /**
+      * If `true`, the option is shown in red.
+     */
+    "invalid"?: boolean;
+    /**
+      * Label will be shown in the input element when it got selected
+     */
+    "label"?: string;
+    /**
+      * If `true`, the option can present in more than one line.
+     */
+    "multiline"?: boolean;
+    /**
+      * Emitted when the option gets selected or unselected
+     */
+    "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
+    "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
+    /**
+      * If `true`, the option is selected.
+     */
+    "selected"?: boolean;
+    /**
+      * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+     */
+    "value"?: string;
+  }
+  interface BalOptionList {
+    /**
+      * Defines the max height of the list element
+     */
+    "contentHeight"?: number;
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled"?: boolean;
+    /**
+      * Defines the filter logic of the list
+     */
+    "filter"?: BalProps.BalOptionListFilter;
+    /**
+      * Defines the focused option with his index value
+     */
+    "focusIndex"?: number;
+    /**
+      * Id of the label element to describe this option list
+     */
+    "labelledby"?: string;
+    /**
+      * If `true` the list supports multiple selections
+     */
+    "multiple"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+  }
+  interface BalPagination {
+    /**
+      * Align the buttons to start, center or end
+     */
+    "align"?: BalProps.BalPaginationAlignment;
+    /**
+      * Disables component
+     */
+    "disabled"?: boolean;
+    /**
+      * Defines the layout of the pagination
+     */
+    "interface"?: BalProps.BalPaginationInterface;
+    /**
+      * Triggers when a page change happens
+     */
+    "onBalChange"?: (event: BalPaginationCustomEvent<BalEvents.BalPaginationChangeDetail>) => void;
+    /**
+      * Specify the max visible pages before and after the selected page
+     */
+    "pageRange"?: number;
+    /**
+      * Size of the buttons
+     */
+    "size"?: BalProps.BalPaginationSize;
+    /**
+      * If 'true, the pagination will be sticky to the top
+     */
+    "sticky"?: boolean;
+    /**
+      * If sticky, the top position will be determined by this value
+     */
+    "top"?: number;
+    /**
+      * The total amount of pages
+     */
+    "totalPages"?: number;
+    /**
+      * Current selected page
+     */
+    "value"?: number;
+  }
+  interface BalPopover {
+    /**
+      * If `true` the popover content is open.
+     */
+    "active"?: boolean;
+    /**
+      * If `true` a little arrow is added, which points to the trigger element
+     */
+    "arrow"?: boolean;
+    /**
+      * If `true` the popover automatically opens on a click
+     */
+    "autoTrigger"?: boolean;
+    /**
+      * If `true` a backdrop is added
+     */
+    "backdrop"?: boolean;
+    /**
+      * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+     */
+    "hint"?: boolean;
+    /**
+      * If `true` the popover shows on hover
+     */
+    "hover"?: boolean;
+    /**
+      * If `true` there will be no backdrop
+     */
+    "mobileTop"?: boolean;
+    /**
+      * Define the offset of the popover content.
+     */
+    "offsetX"?: number;
+    /**
+      * Define the offset of the popover content.
+     */
+    "offsetY"?: number;
+    /**
+      * Listen when the popover opens or closes. Returns the current value.
+     */
+    "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
+    "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
+    /**
+      * Define padding of the overflow
+     */
+    "padding"?: number;
+    /**
+      * Define the position of the popover content.
+     */
+    "position"?: BalProps.BalPopoverPlacement;
+    /**
+      * If `true` the popover is shown as a tooltip
+     */
+    "tooltip"?: boolean;
+  }
+  interface BalPopoverContent {
+    /**
+      * Defines background color of the content.
+     */
+    "color"?: BalProps.BalPopoverContentColor;
+    /**
+      * Define the min width of the popover content.
+     */
+    "contentMinWidth"?: number;
+    /**
+      * Define the max width of the popover content.
+     */
+    "contentWidth"?: number;
+    /**
+      * If `true` the content has a min width of 100%.
+     */
+    "expanded"?: boolean;
+    /**
+      * If `true` the content will have a divider line on top
+     */
+    "mobileTop"?: boolean;
+    /**
+      * If `true` the popover does not have the shadow
+     */
+    "noShadow"?: boolean;
+    /**
+      * Defines border-radius of popover content.
+     */
+    "radius"?: BalProps.BalPopoverContentRadius;
+    /**
+      * Limit the height of the popover content. Pass the amount of pixel.
+     */
+    "scrollable"?: number;
+    /**
+      * If `true` the popover has no padding space.
+     */
+    "spaceless"?: boolean;
+  }
+  interface BalPopup {
+    /**
+      * If `true` the popup is open.
+     */
+    "active"?: boolean;
+    /**
+      * If `true`, it shows a little indicator to the trigger element.
+     */
+    "arrow"?: boolean;
+    /**
+      * If `true`, a backdrop will be displayed behind the modal.
+     */
+    "backdrop"?: boolean;
+    /**
+      * If `true`, the modal can be closed with the click outside of the modal
+     */
+    "backdropDismiss"?: boolean;
+    /**
+      * If `true`, the modal can be closed with the escape key or the little close button.
+     */
+    "closable"?: boolean;
+    /**
+      * Defines the width of the content
+     */
+    "contentWidth"?: number;
+    "demo"?: boolean;
+    /**
+      * Label or title of the popup element
+     */
+    "label"?: string;
+    /**
+      * Offset form trigger to popup.
+     */
+    "offset"?: number;
+    /**
+      * Emitted when the accordion has opened or closed
+     */
+    "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
+    /**
+      * If set it turns a popover into a fullscreen or a drawer on touch devices
+     */
+    "placement"?: BalProps.BalPopupPlacement;
+    /**
+      * Id of the reference element default is the trigger element.
+     */
+    "reference"?: string;
+    /**
+      * Defines the variant / type of popup
+     */
+    "variant"?: BalProps.BalPopupVariant;
+  }
+  interface BalProgressBar {
+    /**
+      * The background color
+     */
+    "background"?: BalProps.BalProgressBarBackground;
+    /**
+      * The progress bar color
+     */
+    "color"?: BalProps.BalProgressBarColor;
+    /**
+      * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+     */
+    "value"?: number;
+  }
+  interface BalRadio {
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the control is no padding
+     */
+    "flat"?: boolean;
+    "hovered"?: boolean;
+    /**
+      * Defines the layout of the radio button
+     */
+    "interface"?: BalProps.BalRadioInterface;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the radio is invisible, but sill active
+     */
+    "invisible"?: boolean;
+    /**
+      * Label of the radio item.
+     */
+    "label"?: string;
+    /**
+      * If `true` the radio has no label
+     */
+    "labelHidden"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * If `true`, the value will not be send with a form submit
+     */
+    "nonSubmit"?: boolean;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalRadioCustomEvent<BalEvents.BalRadioBlurDetail>) => void;
+    /**
+      * Emitted when the checked property has changed.
+     */
+    "onBalChange"?: (event: BalRadioCustomEvent<BalEvents.BalRadioChangeDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalRadioCustomEvent<BalEvents.BalRadioFocusDetail>) => void;
+    "pressed"?: boolean;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * the value of the radio.
+     */
+    "value"?: any | null;
+  }
+  interface BalRadioButton {
+    "colSize"?: BalProps.BalRadioGroupColumns;
+    "colSizeMobile"?: BalProps.BalRadioGroupColumns;
+    "colSizeTablet"?: BalProps.BalRadioGroupColumns;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "color"?: BalProps.BalRadioButtonColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid red style.
+     */
+    "invalid"?: boolean;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonBlurDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
+    /**
+      * Emitted after render when element is labelled
+     */
+    "onBalFormControlDidLoad"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+  }
+  interface BalRadioGroup {
+    /**
+      * If `true`, the radios can be deselected.
+     */
+    "allowEmptySelection"?: boolean;
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Defines the column size for mobile and bigger like the grid.
+     */
+    "columnsMobile"?: BalProps.BalRadioGroupColumns;
+    /**
+      * Defines the column size for tablet and bigger like the grid.
+     */
+    "columnsTablet"?: BalProps.BalRadioGroupColumns;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * Uses the whole width
+     */
+    "expanded"?: boolean;
+    /**
+      * Defines the column size like the grid.
+     */
+    "grid"?: BalProps.BalRadioGroupColumns;
+    /**
+      * Defines the layout of the radio button
+     */
+    "interface"?: BalProps.BalRadioGroupInterface;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "invalid"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the toggle loses focus.
+     */
+    "onBalBlur"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupBlurDetail>) => void;
+    /**
+      * Emitted when the checked property has changed.
+     */
+    "onBalChange"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupChangeDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupFocusDetail>) => void;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalRadioOption[];
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * the value of the radio group.
+     */
+    "value"?: any | null;
+    /**
+      * Displays the checkboxes vertically
+     */
+    "vertical"?: boolean;
+    /**
+      * If `true`, the controls will be vertically on mobile devices.
+     */
+    "verticalOnMobile"?: boolean;
+  }
+  interface BalSegment {
+    /**
+      * If `true`, the user cannot interact with the segment.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true`, the element uses the whole width
+     */
+    "expanded"?: boolean;
+    /**
+      * If `true`, the segment is shown red.
+     */
+    "invalid"?: boolean;
+    /**
+      * Emitted when the component was touched
+     */
+    "onBalBlur"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentBlurDetail>) => void;
+    /**
+      * Emitted when the value property has changed and any dragging pointer has been released from `bal-segment`.  This event will not emit when programmatically setting the `value` property.
+     */
+    "onBalChange"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+    /**
+      * Emitted when the toggle has focus.
+     */
+    "onBalFocus"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentFocusDetail>) => void;
+    /**
+      * Emitted when the value of the segment changes from user committed actions or from externally assigning a value.
+     */
+    "onBalSelect"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentChangeDetail>) => void;
+    /**
+      * Emitted when the vertical style changes
+     */
+    "onBalVertical"?: (event: BalSegmentCustomEvent<BalEvents.BalSegmentVerticalDetail>) => void;
+    /**
+      * If `true`, and is vertical then the list height is limited and scrollable.
+     */
+    "scrollable"?: boolean;
+    /**
+      * the value of the segment.
+     */
+    "value"?: BalProps.BalSegmentValue;
+    /**
+      * If `true`, the segment items are presented vertical as a list.
+     */
+    "vertical"?: boolean;
+  }
+  interface BalSegmentItem {
+    "checked"?: boolean;
+    /**
+      * If `true`, the user cannot interact with the segment button.
+     */
+    "disabled"?: boolean;
+    "focused"?: boolean;
+    /**
+      * If `true`, the segment is shown in red.
+     */
+    "invalid"?: boolean;
+    /**
+      * Label of the segment control
+     */
+    "label"?: string;
+    /**
+      * The value of the segment button.
+     */
+    "value"?: SegmentValue;
+  }
+  interface BalSelect {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * The tabindex of the control.
+     */
+    "balTabindex"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "filter"?: BalProps.BalSelectFilter;
+    /**
+      * If `true` there will be no trigger icon visible, so no UX indicator for a popup
+     */
+    "freeSolo"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    "inverted"?: boolean;
+    /**
+      * Defines if the select is in a loading state.
+     */
+    "loading"?: boolean;
+    /**
+      * Defines the max length of the value.
+     */
+    "maxLength"?: number;
+    /**
+      * If `true` multiple option can be selected
+     */
+    "multiple"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * This label is shown if typeahead is active and all the options are filtered out.
+     */
+    "noDataLabel"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalSelectCustomEvent<BalEvents.BalSelectBlurDetail>) => void;
+    /**
+      * Emitted when the user cancels the input.
+     */
+    "onBalCancel"?: (event: BalSelectCustomEvent<BalEvents.BalSelectCancelDetail>) => void;
+    /**
+      * Emitted when a option got selected.
+     */
+    "onBalChange"?: (event: BalSelectCustomEvent<BalEvents.BalSelectChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalSelectCustomEvent<BalEvents.BalSelectFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputDetail>) => void;
+    /**
+      * Emitted when the input got clicked.
+     */
+    "onBalInputClick"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputClickDetail>) => void;
+    /**
+      * Emitted when the input has focus and key from the keyboard go hit.
+     */
+    "onBalKeyPress"?: (event: BalSelectCustomEvent<BalEvents.BalSelectKeyPressDetail>) => void;
+    /**
+      * The text to display when the select is empty.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true` the filtering is done outside the component.
+     */
+    "remote"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * Defines the height of the popover list.
+     */
+    "scrollable"?: number;
+    /**
+      * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+     */
+    "selectionOptional"?: boolean;
+    /**
+      * If `true` the user can search by typing into the input field.
+     */
+    "typeahead"?: boolean;
+    /**
+      * Selected option values. Could also be passed as a string, which gets transformed.
+     */
+    "value"?: string | string[];
+  }
+  interface BalSelectOption {
+    /**
+      * If `true`, the user cannot interact with the option.
+     */
+    "disabled"?: boolean;
+    "for"?: string;
+    /**
+      * Label will be shown in the input element when it got selected
+     */
+    "label"?: string;
+    /**
+      * The value of the select option. This value will be returned by the parent `<bal-select>` element.
+     */
+    "value"?: string;
+  }
+  interface BalShape {
+    /**
+      * The shape color
+     */
+    "color"?: BalProps.BalShapeColor;
+    /**
+      * The shape rotation
+     */
+    "rotation"?: BalProps.BalShapeRotation;
+    /**
+      * The shape variation
+     */
+    "variation"?: BalProps.BalShapeVariation;
+  }
+  interface BalSheet {
+    /**
+      * Defines content width of the stage
+     */
+    "containerSize"?: BalProps.BalSheetContainer;
+  }
+  interface BalSnackbar {
+    /**
+      * Label text for the action button
+     */
+    "action"?: string;
+    "actionHandler"?: () => void;
+    "closeHandler"?: () => void;
+    /**
+      * The theme type of the snackbar.
+     */
+    "color"?: BalProps.BalSnackbarColor;
+    /**
+      * The duration of the snackbar
+     */
+    "duration"?: number;
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href"?: string;
+    /**
+      * The icon of the snackbar header
+     */
+    "icon"?: string;
+    /**
+      * The message of the snackbar as html content
+     */
+    "message"?: string;
+    /**
+      * Emitted when the action button is clicked
+     */
+    "onBalAction"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionDetail>) => void;
+    /**
+      * Emitted when snackbar is closed
+     */
+    "onBalClose"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseDetail>) => void;
+    /**
+      * The subject of the snackbar header
+     */
+    "subject"?: string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+  }
+  interface BalSpinner {
+    /**
+      * Defines the color of the spinner.
+     */
+    "color"?: BalProps.BalSpinnerColor;
+    /**
+      * If `true` the component will not add the spinner animation svg
+     */
+    "deactivated"?: boolean;
+    /**
+      * If `true` the component can be used on dark background
+     */
+    "inverted"?: boolean;
+    /**
+      * If `true` the component is smaller
+     */
+    "small"?: boolean;
+    /**
+      * Defines the look of the spinner
+     */
+    "variation"?: BalProps.BalSpinnerVariation;
+  }
+  interface BalStack {
+    /**
+      * Defines the text positioning like center, right or default to start.
+     */
+    "align"?: BalProps.BalStackAlignment;
+    "alignment"?: BalProps.BalStackAlignment;
+    "direction"?: BalProps.BalStackDirection;
+    /**
+      * Defines the width of the stack to be exactly the with of the content.
+     */
+    "fitContent"?: boolean;
+    /**
+      * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+     */
+    "layout"?: BalProps.BalStackLayout;
+    /**
+      * Defines the horizontal padding left and right of the stack element.
+     */
+    "px"?: BalProps.BalStackPadding;
+    /**
+      * Defines the vertical padding top and bottom of the stack element.
+     */
+    "py"?: BalProps.BalStackPadding;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "space"?: BalProps.BalStackSpace;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "spaceColumn"?: BalProps.BalStackSpace;
+    /**
+      * Defines the space between the child elements. Default is normal.
+     */
+    "spaceRow"?: BalProps.BalStackSpace;
+    /**
+      * Defines if the child elements will wrap to the next line if there is not enough space left
+     */
+    "useWrap"?: boolean;
+  }
+  interface BalStage {
+    /**
+      * Defines the background color of the stage section
+     */
+    "color"?: BalProps.BalStageColor;
+    /**
+      * Defines content width of the stage
+     */
+    "containerSize"?: BalProps.BalStageContainer;
+    /**
+      * If true the Baloise Shape is set
+     */
+    "shape"?: boolean;
+    /**
+      * Shape Rotation
+     */
+    "shapeRotation"?: BalProps.BalShapeRotation;
+    /**
+      * Shape Variation
+     */
+    "shapeVariation"?: BalProps.BalShapeVariation;
+    /**
+      * Defines size of the stage
+     */
+    "size"?: BalProps.BalStageSize;
+  }
+  interface BalStageBackLink {
+    /**
+      * Specifies the URL of the page the link goes to
+     */
+    "href": string;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted"?: boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow"?: boolean;
+  }
+  interface BalStageBody {
+  }
+  interface BalStageFoot {
+  }
+  interface BalStageHead {
+  }
+  interface BalStageImage {
+    /**
+      * optional fallback image in case the srcSet fails
+     */
+    "fallback"?: string;
+    /**
+      * set of images to be used as background image
+     */
+    "srcSet": string;
+  }
+  interface BalStepItem {
+    /**
+      * Tells if this route is active and overrides the bal-tabs value property.
+     */
+    "active"?: boolean;
+    /**
+      * If `true` the tab is disabled.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the step is marked as done.
+     */
+    "done"?: boolean;
+    /**
+      * If `true` the step is marked as failed.
+     */
+    "failed"?: boolean;
+    /**
+      * Link to path.
+     */
+    "href"?: string;
+    /**
+      * If `true` the step is hidden.
+     */
+    "invisible"?: boolean;
+    /**
+      * Label for the tab.
+     */
+    "label"?: string;
+    /**
+      * Emitted when the link element has clicked
+     */
+    "onBalNavigate"?: (event: BalStepItemCustomEvent<BalEvents.BalStepItemNavigateDetail>) => void;
+    /**
+      * Tell's if the linking is done by a router.
+     */
+    "prevent"?: boolean;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+    /**
+      * This is the key of the tab.
+     */
+    "value"?: string;
+  }
+  interface BalSteps {
+    /**
+      * If `true` the tabs or steps can be clicked.
+     */
+    "clickable"?: boolean;
+    /**
+      * Defines the color of the steps so it can be placed on colored backgrounds
+     */
+    "color"?: BalProps.BalStepsColor;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * Emitted when the changes has finished.
+     */
+    "onBalChange"?: (event: BalStepsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
+    /**
+      * Steps can be passed as a property or through HTML markup.
+     */
+    "options"?: BalStepOption[];
+    /**
+      * Value of the current active step
+     */
+    "value"?: string;
+  }
+  interface BalTabItem {
+    /**
+      * Tells if this route is active and overrides the bal-tabs value property.
+     */
+    "active"?: boolean;
+    /**
+      * A11y attributes for the native tab element.
+     */
+    "aria"?: BalProps.BalTabItemAria;
+    /**
+      * If `true` a small red bubble is added to the tab.
+     */
+    "bubble"?: boolean | string;
+    /**
+      * If `true` the tab is disabled.
+     */
+    "disabled"?: boolean;
+    /**
+      * Link to path.
+     */
+    "href"?: string;
+    /**
+      * Tab icon not available for the steps.
+     */
+    "icon"?: string;
+    /**
+      * If `true` the step is hidden.
+     */
+    "invisible"?: boolean;
+    /**
+      * Label for the tab.
+     */
+    "label"?: string;
+    /**
+      * If `true` the tab does not have a panel
+     */
+    "noPanel"?: boolean;
+    /**
+      * Emitted when the link element has clicked
+     */
+    "onBalNavigate"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemNavigateDetail>) => void;
+    /**
+      * Tell's if the linking is done by a router.
+     */
+    "prevent"?: boolean;
+    /**
+      * Sub label for the tab.
+     */
+    "subLabel"?: string;
+    /**
+      * source for the svg icon
+     */
+    "svg"?: string;
+    /**
+      * Specifies where to display the linked URL. Only applies when an `href` is provided.
+     */
+    "target"?: BalProps.BalButtonTarget;
+    /**
+      * This is the key of the tab.
+     */
+    "value"?: string;
+  }
+  interface BalTable {
+    /**
+      * If `true` the table has a full width
+     */
+    "expanded"?: boolean;
+  }
+  interface BalTabs {
+    /**
+      * If `true` the tab items can be open and closed
+     */
+    "accordion"?: boolean;
+    /**
+      * If `true` a light border is shown for the tabs.
+     */
+    "border"?: boolean;
+    /**
+      * If `true` the tabs or tabs can be clicked.
+     */
+    "clickable"?: boolean;
+    /**
+      * Defines the layout of the tabs.
+     */
+    "context"?: BalProps.BalTabsContext;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * if true, inactive elements will have their opacity reduced
+     */
+    "dimInactiveElements"?: boolean;
+    /**
+      * If `true` the field expands over the whole width.
+     */
+    "expanded"?: boolean;
+    /**
+      * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+     */
+    "float"?: BalProps.BalTabsFloat;
+    /**
+      * If `true` the tabs is a block element and uses 100% of the width
+     */
+    "fullwidth"?: boolean;
+    /**
+      * Defines the layout of the tabs.
+     */
+    "iconPosition"?: BalProps.BalTabsIconPosition;
+    /**
+      * If `true` the tabs can be uses on dark background
+     */
+    "inverted"?: boolean;
+    /**
+      * Emitted when the changes has finished.
+     */
+    "onBalChange"?: (event: BalTabsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsDidAnimateDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
+    /**
+      * If `true` the tabs selected line is optional
+     */
+    "optionalTabSelection"?: boolean;
+    /**
+      * Tabs can be passed as a property or through HTML markup.
+     */
+    "options"?: BalTabOption[];
+    /**
+      * If `true` the tabs have a carousel if they need more space than provided.
+     */
+    "overflow"?: boolean;
+    /**
+      * If `true` the tabs are shown as a select component on mobile
+     */
+    "selectOnMobile"?: boolean;
+    /**
+      * If `true` the tabs container does not have a padding left or right.
+     */
+    "spaceless"?: boolean;
+    "value"?: string;
+    /**
+      * If `true` tabs are align vertically.
+     */
+    "vertical"?: BalProps.BalTabsVertical;
+    /**
+      * The col size of the tabs on vertical mode.
+     */
+    "verticalColSize"?: BalProps.BalTabsColSize;
+  }
+  interface BalTag {
+    /**
+      * The theme type of the tag.
+     */
+    "closable"?: boolean;
+    /**
+      * The theme type of the tag.
+     */
+    "color"?: BalProps.BalTagColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * Overwrites the default color to invalid style
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` a light version of the color is displayed
+     */
+    "light"?: boolean;
+    /**
+      * Emitted when the input got clicked.
+     */
+    "onBalCloseClick"?: (event: BalTagCustomEvent<BalEvents.BalTagCloseClickDetail>) => void;
+    /**
+      * Choosing left or center the tag is aligned to that side in the bal-card.
+     */
+    "position"?: BalProps.BalTagPlacement;
+    /**
+      * The size of the tag element
+     */
+    "size"?: BalProps.BalTagSize;
+    "transparent"?: boolean;
+  }
+  interface BalTagGroup {
+  }
+  interface BalText {
+    /**
+      * If `true` the text is bold
+     */
+    "bold"?: boolean;
+    /**
+      * Defines the color of the text.
+     */
+    "color"?: BalProps.BalTextColor;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the text has heading font family
+     */
+    "heading"?: boolean;
+    "hovered"?: boolean;
+    /**
+      * If `true` the text is shown as a display inline
+     */
+    "inline"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If `true` the color gets inverted for dark backgrounds
+     */
+    "inverted"?: boolean;
+    /**
+      * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+     */
+    "noWrap"?: boolean;
+    "pressed"?: boolean;
+    /**
+      * If `true` adds a text shadow to improve readability on image background
+     */
+    "shadow"?: boolean;
+    /**
+      * Defines the size of the paragraph
+     */
+    "size"?: BalProps.BalTextSize;
+    /**
+      * Defines at which position the heading has spacing.
+     */
+    "space"?: BalProps.BalTextSpace;
+  }
+  interface BalTextarea {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+     */
+    "autocapitalize"?: string;
+    /**
+      * Indicates whether the value of the control can be automatically completed by the browser.
+     */
+    "autocomplete"?: BalProps.BalInputAutocomplete;
+    /**
+      * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+     */
+    "autofocus"?: boolean;
+    /**
+      * If `true` the input gets a clickable cursor style
+     */
+    "clickable"?: boolean;
+    /**
+      * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+     */
+    "cols"?: number;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+     */
+    "inputmode"?: BalProps.BalTextareaInputMode;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+     */
+    "maxLength"?: number;
+    /**
+      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+     */
+    "minLength"?: number;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalBlur"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaBlurDetail>) => void;
+    /**
+      * Emitted when the input value has changed..
+     */
+    "onBalChange"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaChangeDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaKeyPressDetail>) => void;
+    /**
+      * Instructional text that shows before the input has a value.
+     */
+    "placeholder"?: string;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * The number of visible text lines for the control.
+     */
+    "rows"?: number;
+    /**
+      * The value of the textarea.
+     */
+    "value"?: string;
+    /**
+      * Indicates how the control wraps text.
+     */
+    "wrap"?: BalProps.BalTextareaWrap;
+  }
+  interface BalTimeInput {
+    /**
+      * If `true`, in Angular reactive forms the control will not be set invalid
+     */
+    "autoInvalidOff"?: boolean;
+    /**
+      * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    "debounce"?: number;
+    /**
+      * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+     */
+    "disabled"?: boolean;
+    /**
+      * If `true` the component gets a invalid style.
+     */
+    "invalid"?: boolean;
+    /**
+      * The name of the control, which is submitted with the form data.
+     */
+    "name"?: string;
+    /**
+      * Emitted when the input loses focus.
+     */
+    "onBalBlur"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputBlurDetail>) => void;
+    /**
+      * Emitted when the value has changed.
+     */
+    "onBalChange"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputChangeDetail>) => void;
+    /**
+      * Emitted when the input has clicked.
+     */
+    "onBalClick"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputClickDetail>) => void;
+    /**
+      * Emitted when the input has focus.
+     */
+    "onBalFocus"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputFocusDetail>) => void;
+    /**
+      * Emitted when a keyboard input occurred.
+     */
+    "onBalInput"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputInputDetail>) => void;
+    /**
+      * Emitted when a keyboard key has pressed.
+     */
+    "onBalKeyPress"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputKeyPressDetail>) => void;
+    /**
+      * If `true` the element can not mutated, meaning the user can not edit the control.
+     */
+    "readonly"?: boolean;
+    /**
+      * If `true`, the user must fill in a value before submitting a form.
+     */
+    "required"?: boolean;
+    /**
+      * The value of the input.
+     */
+    "value"?: string;
+  }
+  interface BalToast {
+    "closeHandler"?: () => void;
+    /**
+      * The theme type of the toast. Color type primary is deprecated, please use info instead.
+     */
+    "color"?: BalProps.BalToastColor;
+    /**
+      * The duration of the toast in milliseconds.
+     */
+    "duration"?: number;
+    /**
+      * Content message
+     */
+    "message"?: string;
+    /**
+      * Emitted when toast is closed
+     */
+    "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
+  }
+  interface BalTooltip {
+    /**
+      * Defines the width of the content
+     */
+    "contentWidth"?: number;
+    "demo"?: boolean;
+    /**
+      * Offset form trigger to tooltip.
+     */
+    "offset"?: number;
+    /**
+      * Emitted after the animation has finished
+     */
+    "onBalDidAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipDidAnimateDetail>) => void;
+    /**
+      * Emitted before the animation starts
+     */
+    "onBalWillAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipWillAnimateDetail>) => void;
+    /**
+      * If set it turns a tooltip into a fullscreen or a drawer on touch devices
+     */
+    "placement"?: BalProps.BalTooltipPlacement;
+    /**
+      * Id of the reference element default is the trigger element.
+     */
+    "reference"?: string;
+  }
+  interface IntrinsicElements {
+    "bal-accordion": BalAccordion;
+    "bal-accordion-details": BalAccordionDetails;
+    "bal-accordion-summary": BalAccordionSummary;
+    "bal-accordion-trigger": BalAccordionTrigger;
+    "bal-app": BalApp;
+    "bal-badge": BalBadge;
+    "bal-button": BalButton;
+    "bal-button-group": BalButtonGroup;
+    "bal-card": BalCard;
+    "bal-card-actions": BalCardActions;
+    "bal-card-button": BalCardButton;
+    "bal-card-content": BalCardContent;
+    "bal-card-subtitle": BalCardSubtitle;
+    "bal-card-title": BalCardTitle;
+    "bal-carousel": BalCarousel;
+    "bal-carousel-item": BalCarouselItem;
+    "bal-checkbox": BalCheckbox;
+    "bal-checkbox-button": BalCheckboxButton;
+    "bal-checkbox-group": BalCheckboxGroup;
+    "bal-close": BalClose;
+    "bal-content": BalContent;
+    "bal-data": BalData;
+    "bal-data-item": BalDataItem;
+    "bal-data-label": BalDataLabel;
+    "bal-data-value": BalDataValue;
+    "bal-date": BalDate;
+    "bal-date-calendar": BalDateCalendar;
+    "bal-date-calendar-cell": BalDateCalendarCell;
+    "bal-divider": BalDivider;
+    "bal-doc-app": BalDocApp;
+    "bal-dropdown": BalDropdown;
+    "bal-field": BalField;
+    "bal-field-control": BalFieldControl;
+    "bal-field-hint": BalFieldHint;
+    "bal-field-label": BalFieldLabel;
+    "bal-field-message": BalFieldMessage;
+    "bal-file-upload": BalFileUpload;
+    "bal-footer": BalFooter;
+    "bal-form": BalForm;
+    "bal-form-col": BalFormCol;
+    "bal-form-grid": BalFormGrid;
+    "bal-heading": BalHeading;
+    "bal-hint": BalHint;
+    "bal-hint-text": BalHintText;
+    "bal-hint-title": BalHintTitle;
+    "bal-icon": BalIcon;
+    "bal-input": BalInput;
+    "bal-input-date": BalInputDate;
+    "bal-input-group": BalInputGroup;
+    "bal-input-slider": BalInputSlider;
+    "bal-input-stepper": BalInputStepper;
+    "bal-label": BalLabel;
+    "bal-list": BalList;
+    "bal-list-item": BalListItem;
+    "bal-list-item-accordion-body": BalListItemAccordionBody;
+    "bal-list-item-accordion-head": BalListItemAccordionHead;
+    "bal-list-item-content": BalListItemContent;
+    "bal-list-item-icon": BalListItemIcon;
+    "bal-list-item-subtitle": BalListItemSubtitle;
+    "bal-list-item-title": BalListItemTitle;
+    "bal-logo": BalLogo;
+    "bal-modal": BalModal;
+    "bal-modal-body": BalModalBody;
+    "bal-modal-header": BalModalHeader;
+    "bal-nav": BalNav;
+    "bal-nav-link": BalNavLink;
+    "bal-nav-link-grid": BalNavLinkGrid;
+    "bal-nav-link-grid-col": BalNavLinkGridCol;
+    "bal-nav-link-group": BalNavLinkGroup;
+    "bal-nav-menu-bar": BalNavMenuBar;
+    "bal-nav-menu-flyout": BalNavMenuFlyout;
+    "bal-nav-meta-bar": BalNavMetaBar;
+    "bal-navbar": BalNavbar;
+    "bal-navbar-brand": BalNavbarBrand;
+    "bal-navbar-menu": BalNavbarMenu;
+    "bal-navbar-menu-end": BalNavbarMenuEnd;
+    "bal-navbar-menu-start": BalNavbarMenuStart;
+    "bal-notices": BalNotices;
+    "bal-notification": BalNotification;
+    "bal-number-input": BalNumberInput;
+    "bal-option": BalOption;
+    "bal-option-list": BalOptionList;
+    "bal-pagination": BalPagination;
+    "bal-popover": BalPopover;
+    "bal-popover-content": BalPopoverContent;
+    "bal-popup": BalPopup;
+    "bal-progress-bar": BalProgressBar;
+    "bal-radio": BalRadio;
+    "bal-radio-button": BalRadioButton;
+    "bal-radio-group": BalRadioGroup;
+    "bal-segment": BalSegment;
+    "bal-segment-item": BalSegmentItem;
+    "bal-select": BalSelect;
+    "bal-select-option": BalSelectOption;
+    "bal-shape": BalShape;
+    "bal-sheet": BalSheet;
+    "bal-snackbar": BalSnackbar;
+    "bal-spinner": BalSpinner;
+    "bal-stack": BalStack;
+    "bal-stage": BalStage;
+    "bal-stage-back-link": BalStageBackLink;
+    "bal-stage-body": BalStageBody;
+    "bal-stage-foot": BalStageFoot;
+    "bal-stage-head": BalStageHead;
+    "bal-stage-image": BalStageImage;
+    "bal-step-item": BalStepItem;
+    "bal-steps": BalSteps;
+    "bal-tab-item": BalTabItem;
+    "bal-table": BalTable;
+    "bal-tabs": BalTabs;
+    "bal-tag": BalTag;
+    "bal-tag-group": BalTagGroup;
+    "bal-text": BalText;
+    "bal-textarea": BalTextarea;
+    "bal-time-input": BalTimeInput;
+    "bal-toast": BalToast;
+    "bal-tooltip": BalTooltip;
+  }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
-    export namespace JSX {
-        interface IntrinsicElements {
-            "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
-            "bal-accordion-details": LocalJSX.BalAccordionDetails & JSXBase.HTMLAttributes<HTMLBalAccordionDetailsElement>;
-            "bal-accordion-summary": LocalJSX.BalAccordionSummary & JSXBase.HTMLAttributes<HTMLBalAccordionSummaryElement>;
-            "bal-accordion-trigger": LocalJSX.BalAccordionTrigger & JSXBase.HTMLAttributes<HTMLBalAccordionTriggerElement>;
-            "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
-            "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
-            "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
-            "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
-            "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
-            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
-            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
-            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
-            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
-            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
-            "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
-            "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
-            "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
-            "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
-            "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
-            "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
-            "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
-            "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
-            "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
-            "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
-            "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
-            "bal-date": LocalJSX.BalDate & JSXBase.HTMLAttributes<HTMLBalDateElement>;
-            "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
-            "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
-            "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
-            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
-            "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
-            "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
-            "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
-            "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
-            "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
-            "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
-            "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
-            "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
-            "bal-form": LocalJSX.BalForm & JSXBase.HTMLAttributes<HTMLBalFormElement>;
-            "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
-            "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
-            "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
-            "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
-            "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
-            "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
-            "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
-            "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
-            "bal-input-date": LocalJSX.BalInputDate & JSXBase.HTMLAttributes<HTMLBalInputDateElement>;
-            "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
-            "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
-            "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
-            "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
-            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
-            "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
-            "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
-            "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
-            "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
-            "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
-            "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
-            "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
-            "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
-            "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
-            "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
-            "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
-            "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
-            "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
-            "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
-            "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
-            "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
-            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
-            "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
-            "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
-            "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
-            "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
-            "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
-            "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
-            "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
-            "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
-            "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
-            "bal-option": LocalJSX.BalOption & JSXBase.HTMLAttributes<HTMLBalOptionElement>;
-            "bal-option-list": LocalJSX.BalOptionList & JSXBase.HTMLAttributes<HTMLBalOptionListElement>;
-            "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
-            "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
-            "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
-            "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
-            "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
-            "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
-            "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
-            "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
-            "bal-segment": LocalJSX.BalSegment & JSXBase.HTMLAttributes<HTMLBalSegmentElement>;
-            "bal-segment-item": LocalJSX.BalSegmentItem & JSXBase.HTMLAttributes<HTMLBalSegmentItemElement>;
-            "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
-            "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
-            "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
-            "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
-            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
-            "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
-            "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
-            "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
-            "bal-stage-back-link": LocalJSX.BalStageBackLink & JSXBase.HTMLAttributes<HTMLBalStageBackLinkElement>;
-            "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
-            "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
-            "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
-            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
-            "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
-            "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
-            "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
-            "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
-            "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
-            "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
-            "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
-            "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
-            "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
-            "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
-            "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
-            "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
-        }
+  export namespace JSX {
+    interface IntrinsicElements {
+      "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+      "bal-accordion-details": LocalJSX.BalAccordionDetails & JSXBase.HTMLAttributes<HTMLBalAccordionDetailsElement>;
+      "bal-accordion-summary": LocalJSX.BalAccordionSummary & JSXBase.HTMLAttributes<HTMLBalAccordionSummaryElement>;
+      "bal-accordion-trigger": LocalJSX.BalAccordionTrigger & JSXBase.HTMLAttributes<HTMLBalAccordionTriggerElement>;
+      "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
+      "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
+      "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+      "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
+      "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
+      "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
+      "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
+      "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+      "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
+      "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+      "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
+      "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
+      "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
+      "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
+      "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
+      "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
+      "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
+      "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
+      "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
+      "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
+      "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
+      "bal-date": LocalJSX.BalDate & JSXBase.HTMLAttributes<HTMLBalDateElement>;
+      "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
+      "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
+      "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
+      "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
+      "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
+      "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+      "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
+      "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
+      "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
+      "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
+      "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
+      "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+      "bal-form": LocalJSX.BalForm & JSXBase.HTMLAttributes<HTMLBalFormElement>;
+      "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
+      "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
+      "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
+      "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
+      "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
+      "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
+      "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+      "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
+      "bal-input-date": LocalJSX.BalInputDate & JSXBase.HTMLAttributes<HTMLBalInputDateElement>;
+      "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+      "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
+      "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
+      "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
+      "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
+      "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+      "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
+      "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
+      "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
+      "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
+      "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
+      "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
+      "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
+      "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
+      "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
+      "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+      "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
+      "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
+      "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
+      "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
+      "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
+      "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
+      "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
+      "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
+      "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
+      "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
+      "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
+      "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
+      "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
+      "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
+      "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
+      "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
+      "bal-option": LocalJSX.BalOption & JSXBase.HTMLAttributes<HTMLBalOptionElement>;
+      "bal-option-list": LocalJSX.BalOptionList & JSXBase.HTMLAttributes<HTMLBalOptionListElement>;
+      "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
+      "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
+      "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+      "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
+      "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
+      "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
+      "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
+      "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
+      "bal-segment": LocalJSX.BalSegment & JSXBase.HTMLAttributes<HTMLBalSegmentElement>;
+      "bal-segment-item": LocalJSX.BalSegmentItem & JSXBase.HTMLAttributes<HTMLBalSegmentItemElement>;
+      "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
+      "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+      "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
+      "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
+      "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
+      "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+      "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
+      "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
+      "bal-stage-back-link": LocalJSX.BalStageBackLink & JSXBase.HTMLAttributes<HTMLBalStageBackLinkElement>;
+      "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
+      "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
+      "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
+      "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
+      "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
+      "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
+      "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
+      "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
+      "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
+      "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
+      "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
+      "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
+      "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
+      "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
+      "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
+      "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
     }
+  }
 }

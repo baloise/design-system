@@ -20,8 +20,7 @@ import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorat
 import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
-import { BalConfigState } from '../../interfaces'
-import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { ListenTo } from '../../utils/listen'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 

@@ -1,8 +1,7 @@
 import { Component, Host, h, Prop, Element, ComponentInterface } from '@stencil/core'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
-import { BalBreakpointObserver, BalBreakpoints } from '../../../interfaces'
-import { ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 
 @Component({

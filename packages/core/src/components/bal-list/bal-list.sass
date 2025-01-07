@@ -402,7 +402,6 @@
 //
 // accordion body
 .bal-list__item__accordion-body
-  overflow: hidden
   will-change: max-height
   min-height: 0
   margin: 0 !important
@@ -414,15 +413,20 @@
 
 .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-body
   max-height: 0 !important
+  overflow: hidden
 
 .bal-list__item--collapsed > .bal-list__item__trigger > .bal-list__item__accordion-body:not(.bal-list__item__accordion-body--grouped)
   display: none
+
+.bal-list__item--collapsed > .bal-list__item__trigger > .bal-list__item__accordion-body
+  overflow: hidden
 
 .bal-list__item--collapsed > .bal-list__item__trigger > .bal-list__item__accordion-body--grouped
   max-height: 0 !important
 
 .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-body
   max-height: 0
+  overflow: hidden
 
 @media (prefers-reduced-motion: reduce)
   .bal-list__item,

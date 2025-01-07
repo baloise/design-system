@@ -28,19 +28,16 @@ export const getComputedWidth = (element: HTMLElement): number => {
   }
 
   const computedStyle = window.getComputedStyle(element)
+
+  const boxSizing = computedStyle.getPropertyValue('box-sizing')
   const width = convert(computedStyle.getPropertyValue('width'))
-  // use css box-sizing border-box otherwise calc the padding on top
-  return width
-}
 
-export const getWidthOfOverflowingChildren = (element: HTMLElement) => {
-  const children = Array.from(element.children) as HTMLElement[]
-  let maxWidth = 0
-
-  for (const child of children) {
-    const childWidth = child.offsetLeft + child.offsetWidth
-    maxWidth = Math.max(maxWidth, childWidth)
+  if (boxSizing === 'border-box') {
+    return width
   }
 
-  return maxWidth
+  const right = convert(computedStyle.getPropertyValue('padding-right'))
+  const left = convert(computedStyle.getPropertyValue('padding-left'))
+
+  return left + width + right
 }

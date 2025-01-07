@@ -26,6 +26,7 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
             return
           }
           const entry = entries[0]
+
           if (this.lastWidth !== entry.contentRect.width || this.lastHeight !== entry.contentRect.height) {
             this.debouncedNotify()
             this.lastWidth = entry.contentRect.width

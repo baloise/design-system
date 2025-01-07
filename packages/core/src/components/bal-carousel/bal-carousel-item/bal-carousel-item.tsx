@@ -11,10 +11,9 @@ import {
   State,
 } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Attributes } from '../../../interfaces'
 import { rLCP, waitAfterFramePaint } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
-import { toKebabCase } from 'packages/core/src/utils/string'
+import { Attributes, inheritAttributes } from '../../../utils/attributes'
+import { toKebabCase } from '../../../utils/string'
 
 @Component({
   tag: 'bal-carousel-item',
