@@ -45,27 +45,37 @@ export class BalMutationListener extends ListenerAbstract {
   }
 
   private mutationCallback = (mutationRecord: MutationRecord[]) => {
-    const hasChanges = mutationRecord.some(record => this.tags.includes(record.target.nodeName))
-
-    if (hasChanges) {
+    // default when no tag is provided
+    if (this.tags.length === 0 && mutationRecord.length > 0) {
       return this.notify(undefined)
     }
 
-    const hasRemovedNodeChanges = mutationRecord.some(record =>
+    const tagRecords = mutationRecord.filter(record => this.tags.includes(record.target.nodeName.toLowerCase()))
+
+    // check for added nodes
+    const hasAddedNodeChanges = tagRecords.some(record =>
+      Array.from(record.addedNodes).some((node: any) => this.tags.includes(node.nodeName)),
+    )
+
+    // check for removed nodes
+    const hasRemovedNodeChanges = tagRecords.some(record =>
       Array.from(record.removedNodes).some((node: any) => this.tags.includes(node.nodeName)),
     )
-    if (hasRemovedNodeChanges) {
-      return this.notify(undefined)
-    }
 
-    if (this.tags.length === 0 && mutationRecord.length > 0) {
-      const hasCharacterDataChanges = mutationRecord.some(record => record.type === 'characterData')
-      if (hasCharacterDataChanges) {
-        return this.notify(undefined)
-      }
+    // check for attribute changes
+    const attributeNameCheck = (attributeName: string): boolean => {
+      return (
+        attributeName !== 'styles' &&
+        attributeName !== 'class' &&
+        !attributeName.startsWith('data-') &&
+        !attributeName.startsWith('aria-')
+      )
     }
+    const hasAttributeChanges = tagRecords.some(
+      record => record.type === 'attributes' && attributeNameCheck(record.attributeName),
+    )
 
-    if (this.tags.length === 0 && mutationRecord.length > 0) {
+    if (hasAddedNodeChanges || hasAttributeChanges || hasRemovedNodeChanges) {
       return this.notify(undefined)
     }
   }
