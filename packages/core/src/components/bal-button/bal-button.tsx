@@ -11,7 +11,7 @@ import {
   Listen,
 } from '@stencil/core'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { rLCP } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-button',
@@ -178,7 +178,7 @@ export class Button implements ComponentInterface {
   }
 
   componentDidLoad(): void {
-    rLCP(() => (this.isLargestContentPaintDone = true))
+    rOnLoad(() => (this.isLargestContentPaintDone = true))
   }
 
   componentWillLoad() {

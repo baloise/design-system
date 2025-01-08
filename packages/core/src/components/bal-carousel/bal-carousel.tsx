@@ -12,7 +12,7 @@ import {
   Watch,
   Listen,
 } from '@stencil/core'
-import { rLCP } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { TabControl } from './controls/tab-control'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -170,7 +170,7 @@ export class Carousel
   }
 
   componentDidLoad(): void {
-    rLCP(() => {
+    rOnLoad(() => {
       this.isLargestContentfulPaintDone = true
     })
   }

@@ -59,6 +59,27 @@ export const rLCP = (callback: () => void, timeout = 3000) => {
   }
 }
 
+export const rOnLoad = (callback: () => void, timeout = 1000) => {
+  let called = false
+
+  const callOnce = () => {
+    if (!called) {
+      called = true
+      callback()
+    }
+  }
+
+  if (balBrowser.hasWindow) {
+    const timer = setTimeout(callOnce, timeout)
+    window.addEventListener('load', () => {
+      clearTimeout(timer)
+      callOnce()
+    })
+  } else {
+    setTimeout(callOnce, 32)
+  }
+}
+
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
@@ -346,6 +367,10 @@ export const waitAfterIdleCallback = () => {
 
 export const waitAfterLargestContentfulPaintCallback = () => {
   return new Promise(resolve => rLCP(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitOnLoadEventCallback = () => {
+  return new Promise(resolve => rOnLoad(() => runHighPrioritizedTask(resolve)))
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {

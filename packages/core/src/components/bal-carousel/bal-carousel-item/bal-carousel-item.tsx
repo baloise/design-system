@@ -11,7 +11,7 @@ import {
   State,
 } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { rLCP, waitAfterFramePaint } from '../../../utils/helpers'
+import { rOnLoad, waitAfterFramePaint } from '../../../utils/helpers'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { toKebabCase } from '../../../utils/string'
 
@@ -109,7 +109,7 @@ export class CarouselItem implements ComponentInterface {
    */
 
   componentDidLoad(): void {
-    rLCP(() => {
+    rOnLoad(() => {
       this.isLargestContentfulPaintDone = true
     })
   }

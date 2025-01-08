@@ -4,7 +4,7 @@ import camelCase from 'lodash.camelcase'
 import { BEM } from '../../utils/bem'
 import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
-import { rLCP } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-icon',
@@ -85,7 +85,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    */
 
   componentDidLoad(): void {
-    rLCP(() => {
+    rOnLoad(() => {
       this.isLargestContentfulPaintDone = true
     })
   }

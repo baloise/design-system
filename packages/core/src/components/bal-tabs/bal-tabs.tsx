@@ -21,7 +21,7 @@ import {
   isChildOfEventTarget,
   isDescendant,
   raf,
-  rLCP,
+  rOnLoad,
   transitionEndAsync,
   waitAfterFramePaint,
 } from '../../utils/helpers'
@@ -274,7 +274,7 @@ export class Tabs
 
   componentDidLoad() {
     this.onOptionChange()
-    rLCP(() => {
+    rOnLoad(() => {
       this.enableLineRender = true
       this.animateLine(true)
     })

@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, Watch, ComponentInterface, State } from '@stencil/core'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { rLCP } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -165,7 +165,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
       if (this.animationFunction) {
         return resolve()
       } else {
-        rLCP(async () => {
+        rOnLoad(async () => {
           import(/* @vite-ignore */ './bal-spinner.animation')
             .then(module => {
               this.animationFunction = module.animate
