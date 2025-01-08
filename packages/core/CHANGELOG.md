@@ -1,5 +1,25 @@
 # Changelog
 
+## 17.2.2
+
+### Patch Changes
+
+- **core**: improve performance by listening to the load event instead of LCP ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize the resize observer to only notify when width or height changes of the component ( [#1559](https://github.com/baloise/design-system/pull/1559))
+
+- **carousel**: refactor carousel into a util ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **steps**: improve a11y and remove unused carousel component ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize mutation observer to ignore certain records ( [#1560](https://github.com/baloise/design-system/pull/1560))
+
+- **tabs**: refactor to solve a11y issues ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: update stencil to fix event issue ( [#1557](https://github.com/baloise/design-system/pull/1557))
+
+- **core**: optimize style util to calc width of components ( [#1561](https://github.com/baloise/design-system/pull/1561))
+
 ## 17.2.1
 
 ### Patch Changes

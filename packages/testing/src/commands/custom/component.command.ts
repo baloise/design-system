@@ -1,4 +1,4 @@
-import { waitAfterLargestContentfulPaintCallback } from '@baloise/ds-core'
+import { waitAfterLargestContentfulPaintCallback, waitOnLoadEventCallback } from '@baloise/ds-core'
 import { areComponentsReady, log, waitAfterFramePaint, waitAfterIdleCallback, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
@@ -143,5 +143,6 @@ Cypress.Commands.add('waitForDesignSystem', () => {
       })
     })
     .then(() => waitAfterLargestContentfulPaintCallback())
+    .then(() => waitOnLoadEventCallback())
     .then(() => waitAfterIdleCallback())
 })

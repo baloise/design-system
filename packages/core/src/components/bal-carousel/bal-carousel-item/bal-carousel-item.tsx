@@ -11,9 +11,9 @@ import {
   State,
 } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalCarouselItemData } from '../bal-carousel.type'
-import { rLCP, waitAfterFramePaint } from '../../../utils/helpers'
+import { rOnLoad, waitAfterFramePaint } from '../../../utils/helpers'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
+import { toKebabCase } from '../../../utils/string'
 
 @Component({
   tag: 'bal-carousel-item',
@@ -25,6 +25,7 @@ export class CarouselItem implements ComponentInterface {
   @Element() el!: HTMLElement
 
   @State() isLargestContentfulPaintDone = false
+  @State() containerId = ''
 
   /**
    * Src path to the image
@@ -37,6 +38,7 @@ export class CarouselItem implements ComponentInterface {
   @Prop({ reflect: true }) label = ''
 
   /**
+   * @deprecated
    * Defines the role of the carousel.
    */
   @Prop() htmlRole: 'tab' | 'listitem' | '' = 'listitem'
@@ -49,12 +51,12 @@ export class CarouselItem implements ComponentInterface {
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop({ reflect: true }) name?: string = ''
+  @Prop({ reflect: true }) name?: string = undefined
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop({ reflect: true }) value?: string | number = ''
+  @Prop({ reflect: true }) value?: string | number = undefined
 
   /**
    * Specifies the URL of the page the link goes to
@@ -107,20 +109,14 @@ export class CarouselItem implements ComponentInterface {
    */
 
   componentDidLoad(): void {
-    rLCP(() => {
+    rOnLoad(() => {
       this.isLargestContentfulPaintDone = true
     })
   }
 
   componentWillLoad() {
     this.imageInheritAttributes = inheritAttributes(this.el, ['alt'])
-  }
-
-  @Method() async getData(): Promise<BalCarouselItemData> {
-    return {
-      clientWidth: this.el.clientWidth,
-      label: this.label,
-    }
+    this.getContainerId()
   }
 
   @Method()
@@ -129,6 +125,11 @@ export class CarouselItem implements ComponentInterface {
     if (this.buttonEl) {
       this.buttonEl.focus()
     }
+  }
+
+  async getContainerId(): Promise<void> {
+    const parentEl = this.el.closest('bal-carousel') as HTMLBalCarouselElement
+    this.containerId = await parentEl.getContainerId()
   }
 
   private onClick = (ev: MouseEvent) => {
@@ -151,9 +152,13 @@ export class CarouselItem implements ComponentInterface {
 
     const isProduct = !!this.color && !!this.label
 
+    const parentEl = this.el.closest('bal-carousel') as HTMLBalCarouselElement
+    const role = parentEl && parentEl.controls === 'tabs' ? 'tabpanel' : 'listitem'
+    const id = `${this.containerId}-${toKebabCase(this.label)}`
+
     if (!isProduct) {
       return (
-        <Host role={this.htmlRole} class={{ ...itemEl.class() }}>
+        <Host id={id} role={role} class={{ ...itemEl.class() }} aria-label={this.label}>
           {this.isLargestContentfulPaintDone && this.src !== undefined ? (
             <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
           ) : (
@@ -182,7 +187,7 @@ export class CarouselItem implements ComponentInterface {
           }
 
     return (
-      <Host role={this.htmlRole} class={{ ...itemEl.class() }}>
+      <Host id={id} role={role} aria-label={this.label} class={{ ...itemEl.class() }}>
         <TagType
           {...attrs}
           class={{ ...button.class(), ...button.modifier(`color-${this.color}`).class() }}

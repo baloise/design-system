@@ -1,19 +1,37 @@
 @import '@baloise/ds-styles/sass/mixins'
 
-// Tab Nav List
+// Line
+// --------------------------------------------------
+
+.bal-tabs__nav__line
+  position: absolute
+  background: var(--bal-tabs-tab-nav-line-background)
+  border-radius: var(--bal-tabs-tab-nav-line-radius)
+  left: 1px
+  z-index: 1
+  &:not(&--vertical)
+    bottom: 0
+    min-width: 5rem
+  &--hidden
+    display: none
+  &--vertical
+    top: 0
+    min-height: 2.5rem
+  &:not(&--vertical)#{&}--active
+    height: var(--bal-border-width-normal)
+  &--vertical#{&}--active
+    width: var(--bal-border-width-normal)
+  &--animated
+    will-change: min-width, width, min-height, height, transform
+    transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+  &--inverted
+    background: var(--bal-tabs-tab-nav-line-background-inverted)
+
+// Vertical
 // --------------------------------------------------
 
 .bal-tabs__nav
-  display: block
-  position: relative
-  +overflow-touch
-  +unselectable
-  //
-  // Nav col size
   +tablet
-    &--vertical-col-one-quarter
-      flex: none
-      width: 25%
     &--vertical-col-one-third
       flex: none
       width: 33.3333%
@@ -29,59 +47,12 @@
     &--vertical-col-full
       flex: none
       width: 100%
-  //
-  // Uses the full height for the tabs
-  // or fit content for vertical
-  &--vertical
-    height: fit-content
-  &--full-height
-    height: 100%
-  //
-  // Expanded
-  &--expanded
-    display: flex
-  &__carousel__item
-    &--expanded
-      flex: 1
-      width: 5rem
-      min-width: 5rem
-  //
-  // Border style
-  &__border
-    position: absolute
-    background: var(--bal-tabs-tab-nav-border-background)
-    border-radius: var(--bal-tabs-tab-nav-border-radius)
-    height: var(--bal-border-width-normal)
-    left: 1px
-    right: 1px
-    bottom: 0
-    &--vertical
-      width: var(--bal-border-width-normal)
-      height: 100%
-      top: 0
-      right: auto
-    &--inverted
-      background: var(--bal-tabs-tab-nav-border-background-inverted)
-  //
-  // Line style
-  &__line
-    position: absolute
-    background: var(--bal-tabs-tab-nav-line-background)
-    border-radius: var(--bal-tabs-tab-nav-line-radius)
-    left: 1px
-    z-index: 1
-    &:not(&--vertical)
-      bottom: 0
-      min-width: 5rem
-    &--vertical
-      top: 0
-      min-height: 2.5rem
-    &:not(&--vertical)#{&}--active
-      height: var(--bal-border-width-normal)
-    &--vertical#{&}--active
-      width: var(--bal-border-width-normal)
-    &--animated
-      will-change: min-width, width, min-height, height, transform
-      transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
-    &--inverted
-      background: var(--bal-tabs-tab-nav-line-background-inverted)
+
+// Expanded
+// --------------------------------------------------
+
+.bal-tabs__nav__container--expanded
+  display: flex
+  width: 100%
+  min-width: 100%
+  flex: 1

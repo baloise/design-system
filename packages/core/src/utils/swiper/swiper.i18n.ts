@@ -1,11 +1,11 @@
 import { I18n } from '../../interfaces'
 
-interface I18nCarouselLabel {
+interface I18nSwiperControlLabel {
   left: string
   right: string
 }
 
-export const i18nControlLabel: I18n<I18nCarouselLabel> = {
+export const i18nSwiperControlLabel: I18n<I18nSwiperControlLabel> = {
   de: {
     left: 'vorherige',
     right: 'nächste',

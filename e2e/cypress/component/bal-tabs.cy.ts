@@ -19,7 +19,7 @@ describe('bal-tabs', () => {
         balChange: onBalChangeSpy,
       },
     })
-    cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
+    cy.get('.bal-tabs').find('.bal-tabs__nav__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('tab-a')
@@ -51,7 +51,7 @@ describe('bal-tabs', () => {
         },
       },
     )
-    cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
+    cy.get('.bal-tabs').find('.bal-tabs__nav__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('tab-a')
@@ -83,7 +83,7 @@ describe('bal-tabs', () => {
         },
       },
     )
-    cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').should('have.length', 5)
+    cy.get('.bal-tabs').find('.bal-tabs__nav__item').should('have.length', 5)
   })
 
   it('disabled item should not send a change event', () => {
@@ -114,7 +114,7 @@ describe('bal-tabs', () => {
     )
     cy.get('.bal-tabs').find('.bal-tab-item').eq(4).spyEvent('balNavigate')
 
-    cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(3).click()
+    cy.get('.bal-tabs').find('.bal-tabs__nav__item').eq(3).click()
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balNavigate').should('not.have.been.called')
   })

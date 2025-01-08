@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Method, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
+import { Component, Host, h, State, Method, Prop, Event, EventEmitter, Element, writeTask, Listen } from '@stencil/core'
 import { dismiss, eventMethod, prepareOverlay } from '../../utils/overlays/overlays'
 import { attachComponent, detachComponent } from '../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
@@ -6,7 +6,6 @@ import { deepReady, wait } from '../../utils/helpers'
 import { getClassMap } from '../../utils/css-classes'
 import { BalScrollHandler } from '../../utils/scroll'
 import { balBrowser } from '../../utils/browser'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-modal',
@@ -229,7 +228,7 @@ export class Modal implements OverlayInterface {
     return eventMethod(this.el, 'balModalWillDismiss')
   }
 
-  @ListenTo('click')
+  @Listen('click')
   async onClickCloseButton(ev: MouseEvent) {
     if (this.isClosable && this.presented && ev && ev.target) {
       const element = ev.target as HTMLElement
@@ -243,17 +242,17 @@ export class Modal implements OverlayInterface {
     }
   }
 
-  @ListenTo('mousedown')
+  @Listen('mousedown')
   async onMouseDown(ev: MouseEvent) {
     this.isClickedOutsideOnMouseDown = this.isClickedOutside(ev)
   }
 
-  @ListenTo('mouseup')
+  @Listen('mouseup')
   async onMouseUp(ev: MouseEvent) {
     this.isClickedOutsideOnMouseUp = this.isClickedOutside(ev)
   }
 
-  @ListenTo('keyup', { target: 'document' })
+  @Listen('keyup', { target: 'document' })
   async handleKeyUp(ev: KeyboardEvent) {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
     const numbers = modals
