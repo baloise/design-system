@@ -4,7 +4,6 @@ import camelCase from 'lodash.camelcase'
 import { BEM } from '../../utils/bem'
 import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
-import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-icon',
@@ -12,7 +11,6 @@ import { rOnLoad } from '../../utils/helpers'
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo {
   @State() icons: BalIcons = defaultConfig.icons
-  @State() isLargestContentfulPaintDone = false
 
   /**
    * PUBLIC API
@@ -78,17 +76,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * @internal
    */
   @Prop() pressed = false
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  componentDidLoad(): void {
-    rOnLoad(() => {
-      this.isLargestContentfulPaintDone = true
-    })
-  }
 
   /**
    * LISTENERS
@@ -196,18 +183,14 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
           ...block.modifier(`is-${color}`).class(),
         }}
       >
-        {this.isLargestContentfulPaintDone ? (
-          <div
-            class={{
-              ...block.element('inner').class(),
-              ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
-              ...block.modifier(`is-${this.size}`).class(!!this.size),
-            }}
-            innerHTML={svgContent}
-          ></div>
-        ) : (
-          ''
-        )}
+        <div
+          class={{
+            ...block.element('inner').class(),
+            ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
+            ...block.modifier(`is-${this.size}`).class(!!this.size),
+          }}
+          innerHTML={svgContent}
+        ></div>
       </Host>
     )
   }
