@@ -59,7 +59,7 @@ export const rLCP = (callback: () => void, timeout = 3000) => {
   }
 }
 
-export const rOnLoad = (callback: () => void, timeout = 1000) => {
+export const rOnLoad = (callback: () => void, timeout = 32) => {
   let called = false
 
   const callOnce = () => {

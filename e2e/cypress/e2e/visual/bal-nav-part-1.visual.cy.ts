@@ -29,9 +29,8 @@ describe('bal-nav - desktop', () => {
       it('open menu', () => {
         cy.getByTestId('basic')
           .find('.bal-nav-menu-bar__inner')
-          .find('.bal-tabs__nav__item')
+          .find('button.bal-tabs__nav__item')
           .eq(0)
-          .find('button')
           .click()
           .waitForComponents()
         cy.testVisual(`nav-desktop-${platform}-open`, visualOptions)
@@ -40,9 +39,8 @@ describe('bal-nav - desktop', () => {
       it('open menu second tab', () => {
         cy.getByTestId('basic')
           .find('.bal-nav-menu-bar__inner')
-          .find('.bal-tabs__nav__item')
+          .find('button.bal-tabs__nav__item')
           .eq(1)
-          .find('button')
           .click()
           .waitForComponents()
         cy.testVisual(`nav-desktop-${platform}-open-menu-second-tab`, visualOptions)
