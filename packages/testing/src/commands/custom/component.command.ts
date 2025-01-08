@@ -1,6 +1,5 @@
-import { waitAfterLargestContentfulPaintCallback } from '@baloise/ds-core'
+import { waitOnLoadEventCallback } from '@baloise/ds-core'
 import { areComponentsReady, log, waitAfterFramePaint, waitAfterIdleCallback, wrapOptions } from '../helpers'
-import { waitOnLoadEventCallback } from 'packages/core/src/utils/helpers'
 
 Cypress.Commands.add(
   'waitForBrowser',
