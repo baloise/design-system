@@ -54,60 +54,8 @@
   &--passed:not(:last-child)::after
     background-color: var(--bal-steps-step-button-passed-background)
 
-.bal-steps__nav__carousel__item
-  flex: 1
-  min-width: 3rem
-
-.bal-steps__nav__carousel__item:not(:last-child)::after
-  content: " "
-  display: block
-  position: absolute
-  height: var(--bal-border-width-normal)
-  left: 50%
-  right: -50%
-  top: 50%
-  background-color: var(--bal-steps-step-button-carousel-item-background-after)
-  border-radius: var(--bal-steps-step-button-carousel-item-radius)
-  margin-top: 3px
-  margin-left: 1.25rem
-  margin-right: 1.25rem
-
-.bal-steps__nav__carousel__item:not(:last-child)::after
-  +tablet
-    top: 1rem
-    margin-top: 6px
-    margin-left: 1.5rem
-    margin-right: 1.5rem
-
-.bal-steps__nav__carousel__item--passed:not(:last-child)::after
-  background-color: var(--bal-steps-step-button-carousel-item-passed-background-after)
-
 // Color Variants
 // --------------------------------------------------
-
-.bal-steps__nav__carousel__item:not(:last-child)
-  &.bal-steps__nav__carousel__item--color-light-blue::after
-    background-color: var(--bal-steps-step-button-progress-line-background-light-blue)
-  &.bal-steps__nav__carousel__item--color-purple::after
-    background-color: var(--bal-steps-step-button-progress-line-background-purple)
-  &.bal-steps__nav__carousel__item--color-red::after
-    background-color: var(--bal-steps-step-button-progress-line-background-red)
-  &.bal-steps__nav__carousel__item--color-yellow::after
-    background-color: var(--bal-steps-step-button-progress-line-background-yellow)
-  &.bal-steps__nav__carousel__item--color-green::after
-    background-color: var(--bal-steps-step-button-progress-line-background-green)
-
-.bal-steps__nav__carousel__item--passed:not(:last-child)
-  &.bal-steps__nav__carousel__item--color-light-blue::after
-    background-color: var(--bal-steps-step-button-passed-background-light-blue)
-  &.bal-steps__nav__carousel__item--color-purple::after
-    background-color: var(--bal-steps-step-button-passed-background-purple)
-  &.bal-steps__nav__carousel__item--color-red::after
-    background-color: var(--bal-steps-step-button-passed-background-red)
-  &.bal-steps__nav__carousel__item--color-yellow::after
-    background-color: var(--bal-steps-step-button-passed-background-yellow)
-  &.bal-steps__nav__carousel__item--color-green::after
-    background-color: var(--bal-steps-step-button-passed-background-green)
 
 .bal-steps__nav__item--color-light-blue
   &:not(.bal-steps__nav__item--active, .bal-steps__nav__item--done, .bal-steps__nav__item--failed, .bal-steps__nav__item--disabled)

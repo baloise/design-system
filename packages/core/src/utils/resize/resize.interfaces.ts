@@ -1,5 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-types
-export type BalResizeInfo = {}
+export type BalResizeInfo = {
+  width: boolean
+  height: boolean
+}
 
 export type BalResizeListenerFn = (info: BalResizeInfo) => void
 

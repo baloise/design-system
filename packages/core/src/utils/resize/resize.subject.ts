@@ -6,8 +6,8 @@ export class BalResizeSubject extends SingleSubject<BalResizeObserver, BalResize
   private listener = new BalResizeListener<BalResizeListenerFn>()
 
   constructor() {
-    super((observer, _data) => {
-      observer.resizeListener({})
+    super((observer, data) => {
+      observer.resizeListener(data)
     })
   }
 

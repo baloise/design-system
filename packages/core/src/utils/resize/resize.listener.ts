@@ -1,19 +1,20 @@
 import { balBrowser } from '../browser'
-import { debounce } from '../helpers'
+import { debounce, rIC } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalResizeInfo } from './resize.interfaces'
 
 export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
-  private debouncedNotify = debounce(() => this.notify(), 10)
-  private lastWidth = 0
-  private lastHeight = 0
+  private debouncedNotify = debounce((info: BalResizeInfo) => this.notify(info), 10)
+  private lastWidth: number | undefined
+  private lastHeight: number | undefined
 
   connect(el: HTMLElement): void {
     super.connect(el)
     if (typeof ResizeObserver === 'undefined') {
       return
     }
+
     if (this.resizeObserver !== undefined) {
       this.resizeObserver?.disconnect()
       this.resizeObserver = undefined
@@ -27,15 +28,28 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
           }
           const entry = entries[0]
 
-          // only notify if the width or the height of the component has changed
-          if (this.lastWidth !== entry.contentRect.width || this.lastHeight !== entry.contentRect.height) {
-            this.debouncedNotify()
+          if (this.lastWidth === undefined && this.lastHeight === undefined) {
             this.lastWidth = entry.contentRect.width
             this.lastHeight = entry.contentRect.height
+          } else {
+            const widthChanged = this.lastWidth !== entry.contentRect.width
+            const heightChanged = this.lastHeight !== entry.contentRect.height
+
+            if (widthChanged || heightChanged) {
+              rIC(() =>
+                this.debouncedNotify({
+                  width: widthChanged,
+                  height: heightChanged,
+                }),
+              )
+              this.lastWidth = entry.contentRect.width
+              this.lastHeight = entry.contentRect.height
+            }
           }
         })
       }
     })
+
     this.resizeObserver.observe(el)
   }
 
