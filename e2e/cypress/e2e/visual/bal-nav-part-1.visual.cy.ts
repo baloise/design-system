@@ -29,7 +29,7 @@ describe('bal-nav - desktop', () => {
       it('open menu', () => {
         cy.getByTestId('basic')
           .find('.bal-nav-menu-bar__inner')
-          .find('.bal-carousel__inner__container > bal-carousel-item')
+          .find('.bal-tabs__nav__item')
           .eq(0)
           .find('button')
           .click()
@@ -40,7 +40,7 @@ describe('bal-nav - desktop', () => {
       it('open menu second tab', () => {
         cy.getByTestId('basic')
           .find('.bal-nav-menu-bar__inner')
-          .find('.bal-carousel__inner__container > bal-carousel-item')
+          .find('.bal-tabs__nav__item')
           .eq(1)
           .find('button')
           .click()
