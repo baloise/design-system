@@ -273,6 +273,7 @@ export class Tabs
   }
 
   componentDidLoad() {
+    this.swiper.componentDidLoad()
     this.onOptionChange()
     rOnLoad(() => {
       this.enableLineRender = true

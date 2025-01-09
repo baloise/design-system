@@ -22,6 +22,7 @@ import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
+import { isChildOfEventTarget, rIC, waitAfterIdleCallback, waitForRequestIdleCallback } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-carousel',
@@ -161,6 +162,10 @@ export class Carousel
     this.onItemsPerViewChange()
     this.onStepsChange()
     this.onValueChange()
+  }
+
+  componentDidLoad(): void {
+    this.swiper.componentDidLoad()
   }
 
   disconnectedCallback(): void {

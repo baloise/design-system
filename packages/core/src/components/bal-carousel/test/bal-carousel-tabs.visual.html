@@ -1,0 +1,94 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="stylesheet" href="/assets/all.css" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-app>
+      <main class="container is-compact py-medium">
+        <section class="my-normal">
+          <bal-tabs data-testid="tabs" value="tab-a" border optional-tab-selection>
+            <bal-tab-item value="tab-a" label="Tab A">Content</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B">
+              <bal-carousel
+                data-testid="product"
+                interface="product"
+                steps="2"
+                items-per-view="auto"
+                controls="large"
+                border
+              >
+                <bal-carousel-item
+                  color="green"
+                  label="0 Auto"
+                  src="/assets/images/brand-icons/car-green.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="yellow"
+                  label="1 Haushalt"
+                  src="/assets/images/brand-icons/lamp-tangerine.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="purple"
+                  label="2 Hypothek"
+                  src="/assets/images/brand-icons/accounts-purple.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="red"
+                  label="3 Pensionsplanung"
+                  src="/assets/images/brand-icons/bar-chart-red.svg"
+                >
+                </bal-carousel-item>
+                <bal-carousel-item
+                  color="green"
+                  label="4 Anlegen"
+                  src="/assets/images/brand-icons/ecosystem-finances-green.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="yellow"
+                  label="5 Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung"
+                  src="/assets/images/brand-icons/pie-chart-tangerine.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="purple"
+                  label="6 E-Banking"
+                  src="/assets/images/brand-icons/trolley-bus-purple.svg"
+                >
+                </bal-carousel-item>
+                <bal-carousel-item
+                  color="red"
+                  label="7 Sparen"
+                  src="/assets/images/brand-icons/piggy-bank-red.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="green"
+                  label="8 YouGo"
+                  src="/assets/images/brand-icons/diamond-green.svg"
+                ></bal-carousel-item>
+                <bal-carousel-item
+                  color="yellow"
+                  label="9 Alle Gegenstände"
+                  src="/assets/images/brand-icons/household-tangerine.svg"
+                >
+                </bal-carousel-item>
+                <bal-carousel-item
+                  color="purple"
+                  label="10 Motorrad & Roller"
+                  src="/assets/images/brand-icons/bicycle-insurance-purple.svg"
+                >
+                </bal-carousel-item>
+              </bal-carousel>
+            </bal-tab-item>
+          </bal-tabs>
+        </section>
+      </main>
+    </bal-app>
+  </body>
+</html>
