@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.2.3
+
+### Patch Changes
+
+- **carousel**: fix space and size issue with the product slider ( [#1564](https://github.com/baloise/design-system/pull/1564))
+
 ## 17.2.2
 
 ### Patch Changes
