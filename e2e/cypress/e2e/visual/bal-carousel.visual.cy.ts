@@ -33,6 +33,7 @@ describe('bal-carousel', () => {
     it('combi with tabs', () => {
       cy.visit('/components/bal-carousel/test/bal-carousel-tabs.visual.html').platform('desktop').waitForDesignSystem()
       cy.getByTestId('tabs').select('Tab B')
+      cy.wait(300)
       cy.testVisual('carousel-combi-tabs-desktop')
     })
   })
