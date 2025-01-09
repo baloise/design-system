@@ -12,7 +12,6 @@ import {
   Watch,
   Listen,
 } from '@stencil/core'
-import { rOnLoad } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { TabControl } from './controls/tab-control'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -41,7 +40,6 @@ export class Carousel
 
   swiperIsLastSlideVisible = false
 
-  @State() isLargestContentfulPaintDone = false
   @State() hasAnimated = false
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
@@ -169,12 +167,6 @@ export class Carousel
     this.swiper.disconnectedCallback()
   }
 
-  componentDidLoad(): void {
-    rOnLoad(() => {
-      this.isLargestContentfulPaintDone = true
-    })
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
@@ -286,7 +278,7 @@ export class Carousel
           ...block.modifier(`controls-tabs`).class(this.controls === 'tabs'),
         }}
       >
-        {this.isLargestContentfulPaintDone && this.controls === 'tabs' ? (
+        {this.controls === 'tabs' ? (
           <TabControl
             value={this.value}
             items={this.swiper.getAllControlItems()}
@@ -334,7 +326,7 @@ export class Carousel
           </div>
         </div>
 
-        {this.isLargestContentfulPaintDone ? this.swiper.renderControls() : ''}
+        {this.swiper.renderControls()}
       </Host>
     )
   }
