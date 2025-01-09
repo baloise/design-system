@@ -24,7 +24,7 @@ export class CarouselItem implements ComponentInterface {
 
   @Element() el!: HTMLElement
 
-  @State() isLargestContentfulPaintDone = false
+  @State() isOnLoadEventDone = false
   @State() containerId = ''
 
   /**
@@ -110,7 +110,7 @@ export class CarouselItem implements ComponentInterface {
 
   componentDidLoad(): void {
     rOnLoad(() => {
-      this.isLargestContentfulPaintDone = true
+      this.isOnLoadEventDone = true
     })
   }
 
@@ -159,7 +159,7 @@ export class CarouselItem implements ComponentInterface {
     if (!isProduct) {
       return (
         <Host id={id} role={role} class={{ ...itemEl.class() }} aria-label={this.label}>
-          {this.isLargestContentfulPaintDone && this.src !== undefined ? (
+          {this.isOnLoadEventDone && this.src !== undefined ? (
             <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
           ) : (
             ''
@@ -197,7 +197,7 @@ export class CarouselItem implements ComponentInterface {
           onClick={this.onClick}
           ref={el => (this.buttonEl = el)}
         >
-          {this.isLargestContentfulPaintDone && this.src !== undefined ? (
+          {this.isOnLoadEventDone && this.src !== undefined ? (
             <img
               class={{ ...image.class() }}
               draggable={false}
