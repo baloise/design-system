@@ -1,5 +1,15 @@
 # Changelog
 
+## 17.2.4
+
+### Patch Changes
+
+- **footer**: adjust position when footer is sticky. Use native select for language selection for better performance and improve a11y by adding labels ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **carousel**: fix combination with tabs ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **core**: reset block style of bal-app to fix sticky footer ( [#1566](https://github.com/baloise/design-system/pull/1566))
+
 ## 17.2.3
 
 ### Patch Changes

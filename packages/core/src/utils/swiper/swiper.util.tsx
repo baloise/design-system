@@ -33,7 +33,7 @@ export class SwiperUtil {
   index = 0
   gapSize = 0
   steps = 1
-  noNeedForSlide = true
+  noNeedForControls = true
   isLastSlideVisible = false
   itemsPerView: SwiperItemsPerView = 1
   controls: SwiperControl = 'none'
@@ -49,6 +49,28 @@ export class SwiperUtil {
     addEventListener(this.component.el, 'focusin', this.updateFocus)
     addEventListener(window, 'touchstart', this.pointerDown)
     addEventListener(window, 'mousedown', this.pointerDown)
+  }
+
+  public componentDidLoad() {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.notifyChange()
+          }
+        })
+      },
+      {
+        root: null, // Use the viewport as the container
+        threshold: 0.5, // Trigger when 50% of the element is visible
+      },
+    )
+
+    // Target the element you want to observe
+    const targetElement = this.component.el
+    if (targetElement) {
+      observer.observe(targetElement)
+    }
   }
 
   public disconnectedCallback() {
@@ -256,7 +278,7 @@ export class SwiperUtil {
   }
 
   public renderControls() {
-    if (!this.active || this.noNeedForSlide || !this.component.hasAnimated) {
+    if (!this.active || this.noNeedForControls || !this.component.hasAnimated) {
       return ''
     }
 
@@ -387,6 +409,10 @@ export class SwiperUtil {
             const totalWidth = lastSlide.transformNext || 0
             const overflowWindowWidth = this.innerEl.clientWidth || 0
 
+            if (totalWidth === 0 || overflowWindowWidth === 0) {
+              return resolve(false)
+            }
+
             // get max amount of pixel to move the items container to the left or right
             let maxAmountOfPixel = totalWidth - overflowWindowWidth
 
@@ -406,12 +432,12 @@ export class SwiperUtil {
             const hasSmallControls = this.controls === 'small'
             const hasLargeControls = this.controls === 'large'
 
-            this.noNeedForSlide = totalWidth <= overflowWindowWidth
-            let transformValue = this.noNeedForSlide ? 0 : isLastSlideVisible ? maxAmountOfPixel : pixels
+            this.noNeedForControls = totalWidth <= overflowWindowWidth
+            let transformValue = this.noNeedForControls ? 0 : isLastSlideVisible ? maxAmountOfPixel : pixels
 
             if (
               !isFirst &&
-              !this.noNeedForSlide &&
+              !this.noNeedForControls &&
               (hasSmallControls || (hasLargeControls && !this.component.isMobile))
             ) {
               transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
