@@ -10,7 +10,7 @@ export class StageImage implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
 
   @Element() el!: HTMLElement
-  @State() isLargestContentfulPaintDone = false
+  @State() isOnLoadEventDone = false
 
   /**
    * set of images to be used as background image
@@ -24,7 +24,7 @@ export class StageImage implements ComponentInterface {
 
   componentDidLoad(): void {
     rOnLoad(() => {
-      this.isLargestContentfulPaintDone = true
+      this.isOnLoadEventDone = true
     })
   }
 
@@ -38,7 +38,7 @@ export class StageImage implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        {this.isLargestContentfulPaintDone ? (
+        {this.isOnLoadEventDone ? (
           <img src={imageSrc} srcset={this.srcSet} sizes="100vw" {...this.imageInheritAttributes} />
         ) : (
           ''
