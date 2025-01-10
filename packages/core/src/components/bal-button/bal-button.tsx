@@ -101,6 +101,11 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
+   * If `true` the button is a popup.
+   */
+  @Prop() balPopup = undefined
+
+  /**
    * Name of the left button icon
    */
   @Prop() icon = ''
@@ -172,6 +177,14 @@ export class Button implements ComponentInterface {
       'tabindex',
       'aria-haspopup',
     ])
+  }
+
+  componentDidLoad() {
+    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
+      this.aria = {
+        haspopup:"true"
+      }
+    }
   }
 
   componentDidRender() {
