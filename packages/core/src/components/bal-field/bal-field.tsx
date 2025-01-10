@@ -115,8 +115,13 @@ export class Field implements ComponentInterface, BalMutationObserver {
   }
 
   private isDirectChild = (el: HTMLElement): boolean => {
-    return el && el.parentElement && el.parentElement.nodeName.toLowerCase() === 'bal-field-control'
-    && el.parentElement.parentElement && el.parentElement.parentElement === this.el
+    return (
+      el &&
+      el.parentElement &&
+      el.parentElement.nodeName.toLowerCase() === 'bal-field-control' &&
+      el.parentElement.parentElement &&
+      el.parentElement.parentElement === this.el
+    )
   }
 
   private isVisible = (el: HTMLElement): boolean => {
