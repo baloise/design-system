@@ -182,7 +182,7 @@ export class Button implements ComponentInterface {
   componentDidLoad() {
     if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
       this.aria = {
-        haspopup:"true"
+        haspopup: 'true',
       }
     }
   }
