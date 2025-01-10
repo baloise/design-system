@@ -168,6 +168,13 @@ export class Button implements ComponentInterface {
     }
   }
 
+  componentDidLoad() {
+    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
+      this.aria = {
+        haspopup: 'true',
+      }
+    }
+  }
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -178,15 +185,6 @@ export class Button implements ComponentInterface {
       'aria-haspopup',
     ])
   }
-
-  componentDidLoad() {
-    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
-      this.aria = {
-        haspopup: 'true',
-      }
-    }
-  }
-
   componentDidRender() {
     this.balDidRender.emit()
   }
