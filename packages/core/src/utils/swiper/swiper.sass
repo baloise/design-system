@@ -50,23 +50,21 @@
 // --------------------------------------------------
 
 .bal-swiper__controls
-  position: absolute
-  top: calc(50% - 1.5rem)
   width: 100%
 
 .bal-swiper__controls--dots
   position: relative
-  top: auto
 
 .bal-swiper__controls--large
   +mobile
     display: flex
     justify-content: center
-    width: 100%
     gap: 2rem
     margin-top: 1rem
 
   +tablet
+    position: absolute
+    top: calc(50% - 1.5rem)
     .bal-swiper__controls__button
       position: absolute
       z-index: 7
@@ -80,6 +78,7 @@
   visibility: none !important
 
 .bal-swiper__controls--small
+  position: absolute
   top: calc(50% - 1rem)
   .bal-swiper__controls__button
     position: absolute
