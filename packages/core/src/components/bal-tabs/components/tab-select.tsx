@@ -26,14 +26,14 @@ export const TabSelect: FunctionalComponent<TabSelectProps> = ({ items, value, o
   }
 
   return (
-    <bal-dropdown class={{ ...bemEl.class() }} value={value} onBalChange={event => onChange(event)}>
+    <bal-select class={{ ...bemEl.class() }} value={value} onBalChange={event => onChange(event)}>
       {items
         .filter(tab => !tab.disabled && !tab.invisible)
         .map(tab => (
-          <bal-option key={tab.value} label={tab.label} value={tab.value}>
+          <bal-select-option key={tab.value} label={tab.label} value={tab.value}>
             {tab.label}
-          </bal-option>
+          </bal-select-option>
         ))}
-    </bal-dropdown>
+    </bal-select>
   )
 }
