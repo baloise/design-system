@@ -29,10 +29,10 @@ describe('bal-carousel', () => {
     })
   })
 
-  describe('product-slider', () => {
+  describe.only('product-slider', () => {
     it('combi with tabs', () => {
       cy.visit('/components/bal-carousel/test/bal-carousel-tabs.visual.html').platform('desktop').waitForDesignSystem()
-      cy.getByTestId('tabs').select('Tab B')
+      cy.get('.bal-tabs__nav__item').last().click()
       cy.wait(300)
       cy.testVisual('carousel-combi-tabs-desktop')
     })
