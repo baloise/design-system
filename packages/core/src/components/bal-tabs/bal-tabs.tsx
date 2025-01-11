@@ -637,8 +637,12 @@ export class Tabs
             const borderElement = this.getBorderElement()
             const carouselElement = this.getCarouselElement()
             if (borderElement && carouselElement) {
-              const containerMaxWidth = getWidthOfOverflowingChildren(carouselElement)
-              borderElement.style.setProperty('width', `${containerMaxWidth}px`)
+              if (this.expanded) {
+                borderElement.style.setProperty('width', `100%`)
+              } else {
+                const containerMaxWidth = getWidthOfOverflowingChildren(carouselElement)
+                borderElement.style.setProperty('width', `${containerMaxWidth}px`)
+              }
             }
 
             await waitForTransition
