@@ -308,7 +308,7 @@ export class Tabs
   @ListenToResize()
   resizeListener(info: BalResizeInfo) {
     this.swiper.notifyChange()
-    if ((!this.isVertical && info.width) || (this.isVertical && info.height)) {
+    if ((!this.isVertical() && info.width) || (this.isVertical() && info.height)) {
       this.animateLine()
     }
   }
@@ -449,7 +449,6 @@ export class Tabs
   }
 
   private getCarouselElement(): HTMLElement | null {
-    // return this.el.querySelector(`#${this.tabsId}-carousel`)
     return this.el.querySelector(`#${this.swiper.containerId}`)
   }
 

@@ -29,7 +29,7 @@ describe('bal-carousel', () => {
     })
   })
 
-  describe.only('product-slider', () => {
+  describe('product-slider', () => {
     it('combi with tabs', () => {
       cy.visit('/components/bal-carousel/test/bal-carousel-tabs.visual.html').platform('desktop').waitForDesignSystem()
       cy.get('.bal-tabs__nav__item').last().click()

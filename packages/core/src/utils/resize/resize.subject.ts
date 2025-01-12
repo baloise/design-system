@@ -1,3 +1,4 @@
+import { rIC } from '../helpers'
 import { SingleSubject } from '../types/signal'
 import { BalResizeInfo, BalResizeListenerFn, BalResizeObserver } from './resize.interfaces'
 import { BalResizeListener } from './resize.listener'
@@ -7,7 +8,7 @@ export class BalResizeSubject extends SingleSubject<BalResizeObserver, BalResize
 
   constructor() {
     super((observer, data) => {
-      observer.resizeListener(data)
+      rIC(() => observer.resizeListener(data))
     })
   }
 
