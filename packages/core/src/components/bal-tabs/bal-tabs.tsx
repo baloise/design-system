@@ -41,6 +41,7 @@ import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
 
 @Component({
   tag: 'bal-tabs',
@@ -54,6 +55,7 @@ export class Tabs
     BalMutationObserver,
     BalBreakpointObserver,
     BalResizeObserver,
+    BalVisibilityObserver,
     SwiperInterface
 {
   private tabsId = `bal-tabs-${TabsIds++}`
@@ -273,7 +275,6 @@ export class Tabs
   }
 
   componentDidLoad() {
-    this.swiper.componentDidLoad()
     this.onOptionChange()
     rOnLoad(() => {
       this.enableLineRender = true
@@ -295,6 +296,11 @@ export class Tabs
   @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
   mutationListener(): void {
     this.onOptionChange()
+    this.swiper.notifyChange()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
     this.swiper.notifyChange()
   }
 

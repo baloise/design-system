@@ -51,28 +51,6 @@ export class SwiperUtil {
     addEventListener(window, 'mousedown', this.pointerDown)
   }
 
-  public componentDidLoad() {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.notifyChange()
-          }
-        })
-      },
-      {
-        root: null, // Use the viewport as the container
-        threshold: 0.5, // Trigger when 50% of the element is visible
-      },
-    )
-
-    // Target the element you want to observe
-    const targetElement = this.component.el
-    if (targetElement) {
-      observer.observe(targetElement)
-    }
-  }
-
   public disconnectedCallback() {
     removeEventListener(window, 'keydown', this.listenToKeyDown)
     removeEventListener(this.component.el, 'focusin', this.updateFocus)
