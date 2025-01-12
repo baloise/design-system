@@ -42,6 +42,7 @@ import { toKebabCase } from '../../utils/string'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
 
 @Component({
   tag: 'bal-tabs',
@@ -328,17 +329,10 @@ export class Tabs
     }
   }
 
-  @Listen('balWillAnimate', { target: 'window' })
-  listenToWillAnimate(ev: UIEvent) {
-    isChildOfEventTarget(ev, this.el, () => this.animateLine())
-  }
-
-  @Listen('balDidAnimate', { target: 'window' })
-  listenToDidAnimate(ev: UIEvent) {
-    isChildOfEventTarget(ev, this.el, () => {
-      this.isUsedInNavbar(ev)
-      this.animateLine()
-    })
+  @ListenToAnimation()
+  animationListener(info: BalAnimationObserverInfo): void {
+    this.isUsedInNavbar(info.target)
+    this.animateLine()
   }
 
   @Listen('keydown')
@@ -475,10 +469,9 @@ export class Tabs
     }
   }
 
-  private isUsedInNavbar(ev: UIEvent) {
-    const target = ev.target as HTMLElement
+  private isUsedInNavbar(target: HTMLElement) {
     const parentNavbar = target.closest('bal-navbar')
-    const isNavbarOpen = ev.target as any | false
+    const isNavbarOpen = target as any | false
     if (parentNavbar && isDescendant(parentNavbar, this.el)) {
       this.isNavbarOpen = isNavbarOpen
     }
