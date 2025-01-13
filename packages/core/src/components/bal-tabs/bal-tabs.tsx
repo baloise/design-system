@@ -18,7 +18,6 @@ import {
   debounceEvent,
   deepReady,
   hasParent,
-  isChildOfEventTarget,
   isDescendant,
   raf,
   rOnLoad,

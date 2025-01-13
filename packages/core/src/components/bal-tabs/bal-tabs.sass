@@ -8,7 +8,8 @@
 @import '../../utils/swiper/swiper'
 
 .bal-tabs
-  display: block
+  display: flex
+  flex-direction: column
   min-width: 0
   //
   // Fullwidth
@@ -17,9 +18,10 @@
   //
   // Vertical layout
   &--vertical
-    display: block
+    gap: var(--bal-space-normal)
+    flex-direction: column
     +tablet
-      display: flex
+      flex-direction: row
   //
   // Navbar layout
   &--navbar
@@ -51,7 +53,7 @@
 .bal-tabs__content
   width: 100%
 
-.bal-tabs__content--vertial
+.bal-tabs__content--vertical
   width: auto
   flex: 1
 
