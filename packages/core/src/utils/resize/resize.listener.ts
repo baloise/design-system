@@ -1,11 +1,11 @@
 import { balBrowser } from '../browser'
-import { debounce, rIC } from '../helpers'
+import { debounce } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalResizeInfo } from './resize.interfaces'
 
 export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
-  private debouncedNotify = debounce((info: BalResizeInfo) => this.notify(info), 10)
+  private debouncedNotify = debounce((info: BalResizeInfo) => this.notify(info), 42)
   private lastWidth: number | undefined
   private lastHeight: number | undefined
 
@@ -36,12 +36,10 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
             const heightChanged = this.lastHeight !== entry.contentRect.height
 
             if (widthChanged || heightChanged) {
-              rIC(() =>
-                this.debouncedNotify({
-                  width: widthChanged,
-                  height: heightChanged,
-                }),
-              )
+              this.debouncedNotify({
+                width: widthChanged,
+                height: heightChanged,
+              })
               this.lastWidth = entry.contentRect.width
               this.lastHeight = entry.contentRect.height
             }

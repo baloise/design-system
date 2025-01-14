@@ -33,12 +33,22 @@ import { isDescendant, raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver, BalFocusObserver {
+export class Segment
+  implements
+    ComponentInterface,
+    BalWindowResizeObserver,
+    BalBreakpointObserver,
+    BalFocusObserver,
+    BalVisibilityObserver,
+    BalAnimationObserver
+{
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -173,13 +183,18 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.balBlur.emit(ev)
   }
 
-  @Listen('balWillAnimate', { target: 'window' })
-  listenToDidAnimate(ev: UIEvent) {
-    if (ev && ev.target && isDescendant(ev.target as HTMLElement, this.el)) {
-      const childRect = this.el.getBoundingClientRect()
-      this.maxWidth = childRect.width
-      this.windowResizeListener()
-    }
+  @ListenToAnimation()
+  animationListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
   }
 
   @ListenToBreakpoints()

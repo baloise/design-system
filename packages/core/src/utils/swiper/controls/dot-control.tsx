@@ -34,7 +34,7 @@ export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items,
     <div
       class={{
         ...controls.class(),
-        ...controls.modifier('tabs').class(),
+        ...controls.modifier('dots').class(),
       }}
     >
       <bal-pagination
