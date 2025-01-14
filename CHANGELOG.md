@@ -1,5 +1,17 @@
 # Changelog
 
+## 17.2.5
+
+### Patch Changes
+
+- **carousel**: show controls on firefox ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **hint**: set styles for content ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: load value initialy to tabs when select on mobile ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: adjust border widht on expanded mode ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
 ## 17.2.4
 
 ### Patch Changes
