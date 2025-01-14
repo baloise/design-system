@@ -2,6 +2,7 @@
 // --------------------------------------------------
 .bal-swiper
   position: relative
+  display: block
 
 // Main wrapper element
 // --------------------------------------------------
@@ -10,7 +11,6 @@
   position: relative
   margin-left: auto
   margin-right: auto
-  position: relative
   overflow: clip
   list-style: none
   padding: 0
@@ -49,18 +49,24 @@
 // Controls
 // --------------------------------------------------
 
+.bal-swiper__controls
+  width: 100%
+
+.bal-swiper__controls--dots
+  position: relative
+
 .bal-swiper__controls--large
   +mobile
     display: flex
     justify-content: center
-    width: 100%
     gap: 2rem
     margin-top: 1rem
 
   +tablet
+    position: absolute
+    top: calc(50% - 1.5rem)
     .bal-swiper__controls__button
       position: absolute
-      top: calc(50% - 24px)
       z-index: 7
     .bal-swiper__controls__button--left
       left: 0
@@ -72,9 +78,10 @@
   visibility: none !important
 
 .bal-swiper__controls--small
+  position: absolute
+  top: calc(50% - 1rem)
   .bal-swiper__controls__button
     position: absolute
-    top: calc(50% - 1rem)
     z-index: 7
   .bal-swiper__controls__button--left
     left: 0
@@ -84,7 +91,7 @@
     display: none !important
     visibility: hidden !important
 
-// TODO: Shadow move
+// Shadow move
 // --------------------------------------------------
 
 .bal-swiper__inner--shadow-left::before,

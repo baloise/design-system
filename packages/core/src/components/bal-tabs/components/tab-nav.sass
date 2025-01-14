@@ -9,18 +9,18 @@
   border-radius: var(--bal-tabs-tab-nav-line-radius)
   left: 1px
   z-index: 1
-  &:not(&--vertical)
-    bottom: 0
-    min-width: 5rem
   &--hidden
     display: none
   &--vertical
     top: 0
     min-height: 2.5rem
-  &:not(&--vertical)#{&}--active
-    height: var(--bal-border-width-normal)
   &--vertical#{&}--active
     width: var(--bal-border-width-normal)
+  &:not(&--vertical)
+    bottom: 0
+    min-width: 5rem
+  &:not(&--vertical)#{&}--active
+    height: var(--bal-border-width-normal)
   &--animated
     will-change: min-width, width, min-height, height, transform
     transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
@@ -52,7 +52,14 @@
 // --------------------------------------------------
 
 .bal-tabs__nav__container--expanded
+  position: relative
   display: flex
   width: 100%
   min-width: 100%
   flex: 1
+
+// Vertical
+// --------------------------------------------------
+
+.bal-tabs__nav__container--vertical
+  overflow: hidden

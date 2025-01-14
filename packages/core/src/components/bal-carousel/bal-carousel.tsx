@@ -22,7 +22,7 @@ import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
-import { isChildOfEventTarget, rIC, waitAfterIdleCallback, waitForRequestIdleCallback } from '../../utils/helpers'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
 
 @Component({
   tag: 'bal-carousel',
@@ -35,6 +35,7 @@ export class Carousel
     BalSwipeObserver,
     BalMutationObserver,
     BalResizeObserver,
+    BalVisibilityObserver,
     SwiperInterface
 {
   swiper = new SwiperUtil()
@@ -164,10 +165,6 @@ export class Carousel
     this.onValueChange()
   }
 
-  componentDidLoad(): void {
-    this.swiper.componentDidLoad()
-  }
-
   disconnectedCallback(): void {
     this.swiper.disconnectedCallback()
   }
@@ -188,6 +185,11 @@ export class Carousel
 
   @ListenToMutation({ tags: ['bal-carousel-item'], characterData: false })
   mutationListener() {
+    this.swiper.notifyChange()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
     this.swiper.notifyChange()
   }
 

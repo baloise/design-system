@@ -18,7 +18,6 @@ import {
   debounceEvent,
   deepReady,
   hasParent,
-  isChildOfEventTarget,
   isDescendant,
   raf,
   rOnLoad,
@@ -41,6 +40,8 @@ import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
 
 @Component({
   tag: 'bal-tabs',
@@ -54,6 +55,7 @@ export class Tabs
     BalMutationObserver,
     BalBreakpointObserver,
     BalResizeObserver,
+    BalVisibilityObserver,
     SwiperInterface
 {
   private tabsId = `bal-tabs-${TabsIds++}`
@@ -273,7 +275,6 @@ export class Tabs
   }
 
   componentDidLoad() {
-    this.swiper.componentDidLoad()
     this.onOptionChange()
     rOnLoad(() => {
       this.enableLineRender = true
@@ -298,6 +299,11 @@ export class Tabs
     this.swiper.notifyChange()
   }
 
+  @ListenToVisibility()
+  visibilityListener(): void {
+    this.swiper.notifyChange()
+  }
+
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
@@ -308,7 +314,7 @@ export class Tabs
   @ListenToResize()
   resizeListener(info: BalResizeInfo) {
     this.swiper.notifyChange()
-    if ((!this.isVertical && info.width) || (this.isVertical && info.height)) {
+    if ((!this.isVertical() && info.width) || (this.isVertical() && info.height)) {
       this.animateLine()
     }
   }
@@ -322,17 +328,10 @@ export class Tabs
     }
   }
 
-  @Listen('balWillAnimate', { target: 'window' })
-  listenToWillAnimate(ev: UIEvent) {
-    isChildOfEventTarget(ev, this.el, () => this.animateLine())
-  }
-
-  @Listen('balDidAnimate', { target: 'window' })
-  listenToDidAnimate(ev: UIEvent) {
-    isChildOfEventTarget(ev, this.el, () => {
-      this.isUsedInNavbar(ev)
-      this.animateLine()
-    })
+  @ListenToAnimation()
+  animationListener(info: BalAnimationObserverInfo): void {
+    this.isUsedInNavbar(info.target)
+    this.animateLine()
   }
 
   @Listen('keydown')
@@ -449,7 +448,6 @@ export class Tabs
   }
 
   private getCarouselElement(): HTMLElement | null {
-    // return this.el.querySelector(`#${this.tabsId}-carousel`)
     return this.el.querySelector(`#${this.swiper.containerId}`)
   }
 
@@ -470,10 +468,9 @@ export class Tabs
     }
   }
 
-  private isUsedInNavbar(ev: UIEvent) {
-    const target = ev.target as HTMLElement
+  private isUsedInNavbar(target: HTMLElement) {
     const parentNavbar = target.closest('bal-navbar')
-    const isNavbarOpen = ev.target as any | false
+    const isNavbarOpen = target as any | false
     if (parentNavbar && isDescendant(parentNavbar, this.el)) {
       this.isNavbarOpen = isNavbarOpen
     }
@@ -637,8 +634,12 @@ export class Tabs
             const borderElement = this.getBorderElement()
             const carouselElement = this.getCarouselElement()
             if (borderElement && carouselElement) {
-              const containerMaxWidth = getWidthOfOverflowingChildren(carouselElement)
-              borderElement.style.setProperty('width', `${containerMaxWidth}px`)
+              if (this.expanded) {
+                borderElement.style.setProperty('width', `100%`)
+              } else {
+                const containerMaxWidth = getWidthOfOverflowingChildren(carouselElement)
+                borderElement.style.setProperty('width', `${containerMaxWidth}px`)
+              }
             }
 
             await waitForTransition

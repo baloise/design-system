@@ -295,7 +295,11 @@ export const waitForComponent = async (el: HTMLElement | null) => {
   await waitAfterIdleCallback()
 }
 
-export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: () => void) => {
+export const isChildOfEventTarget = async (
+  ev: any,
+  el: HTMLElement | Window | Document,
+  callback: (target: HTMLElement) => void,
+) => {
   if (ev && ev.target && el && el !== ev.target) {
     let target = ev.target as HTMLElement
 
@@ -306,7 +310,7 @@ export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: (
     }
 
     if (target && isDescendant(target, el)) {
-      callback()
+      callback(target)
     }
   }
 }
