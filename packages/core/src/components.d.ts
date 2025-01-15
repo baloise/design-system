@@ -2050,6 +2050,8 @@ export namespace Components {
         "interface": BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -3473,6 +3475,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalToast {
+        /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable": boolean;
         /**
           * Closes this toast
          */
@@ -7191,6 +7197,8 @@ declare namespace LocalJSX {
         "interface"?: BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -8580,6 +8588,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalToast {
+        /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable"?: boolean;
         "closeHandler"?: () => void;
         /**
           * The theme type of the toast. Color type primary is deprecated, please use info instead.

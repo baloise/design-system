@@ -12,7 +12,10 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section>
-          <bal-toast data-testid="basic">Toast Message</bal-toast>
+          <bal-toast data-testid="basic">
+            <b>Toast Title</b>
+            <span>Toast Message <a class="link">Link</a></span>
+          </bal-toast>
         </section>
 
         <!-- Long content -->
@@ -38,6 +41,11 @@
           <bal-toast color="primary">Toast Message</bal-toast>
           <bal-toast color="success">Toast Message</bal-toast>
           <bal-toast color="warning">Toast Message</bal-toast>
+        </section>
+
+        <!-- Not Closable -->
+        <section>
+          <bal-toast closable="false">Toast Message</bal-toast>
         </section>
       </main>
     </bal-doc-app>
