@@ -12,30 +12,63 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section>
-          <bal-notification data-testid="basic">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <bal-notification data-testid="basic" no-icon>
+            <strong>Strong Title </strong>
+            <span>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. <a class="link">Link</a></span>
           </bal-notification>
         </section>
         <br />
         <br />
         <!-- Colors -->
-        <section>
-          <bal-notification>
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <section class="flex gap-small flex-direction-column">
+          <bal-notification no-icon>
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
           <bal-notification color="danger">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
           <bal-notification color="info">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
           <bal-notification color="primary">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
           <bal-notification color="success">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
           <bal-notification color="warning">
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+        </section>
+        <br />
+        <br />
+        <!-- Ligth Colors -->
+        <section class="flex gap-small flex-direction-column">
+          <bal-notification light no-icon>
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+          <bal-notification light color="danger">
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+          <bal-notification light color="info">
+            <strong>Strong Title </strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+          <bal-notification light color="primary">
+            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+          <bal-notification light color="success">
+            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </bal-notification>
+          <bal-notification light color="warning">
             <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </bal-notification>
         </section>
