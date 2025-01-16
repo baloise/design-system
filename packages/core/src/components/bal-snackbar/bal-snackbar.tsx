@@ -147,6 +147,7 @@ export class Snackbar {
       >
         <div class={{ ...detailsEl.class() }}>
           <div
+            aria-hidden="true"
             class={{
               ...detailsEl.element('icon').class(),
             }}
