@@ -1,5 +1,21 @@
 # Changelog
 
+## 17.3.0
+
+### Minor Changes
+
+- **toast**: improve a11y with animation, icon and size options ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **spinner**: add white options for the circle spinner ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **snackbar**: add a11y features ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **notification**: add new light variant and adjust with icons for a better a11y experience ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+### Patch Changes
+
+- **dropdown**: hide collapsed menu list with the options when not open ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
 ## 17.2.5
 
 ### Patch Changes
