@@ -19,11 +19,13 @@
 
 .bal-notices__inner
   display: flex
+  gap: 0.5rem
 
 .bal-notices__inner--snackbar
+  height: 100vh
   justify-content: flex-end
   align-items: flex-end
-  flex-direction: column-reverse
+  flex-direction: column
   margin: 0.5em
 
   .bal-snackbar
@@ -51,10 +53,21 @@
     animation-duration: 0.3s
     animation-fill-mode: both
     animation-name: slideInDown
+  .bal-snackbar
+    animation-duration: 0.3s
+    animation-fill-mode: both
+    animation-name: slideInUp
 
 @keyframes slideInDown
   from
     transform: translate3d(0, -100%, 0)
+    visibility: visible
+  to
+    transform: translate3d(0, 0, 0)
+
+@keyframes slideInUp
+  from
+    transform: translate3d(0, 100%, 0)
     visibility: visible
   to
     transform: translate3d(0, 0, 0)
