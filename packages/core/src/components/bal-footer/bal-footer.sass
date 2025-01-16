@@ -45,57 +45,28 @@
           flex-wrap: nowrap
           align-items: center
 
-          .bal-dropdown__list
-            min-width: 105%
-            right: 0 !important
-            left: auto !important
-
-          bal-icon,
-          .input
-            cursor: pointer
-            min-width: auto !important
-
-          .bal-dropdown__rear
-            +fillSvg(var(--bal-color-white))
-            position: absolute
-            left: 0
-
-          .bal-dropdown__native
-            background: transparent
-            color: var(--bal-color-white)
-            border: none
-            font-weight: var(--bal-font-weight-bold)
-            cursor: pointer
-            padding-left: 1.5rem
-
-          &:hover
-            .bal-dropdown__rear
-              +fillSvg(var(--bal-footer-language-background-hover))
-            .input,
-            .bal-dropdown__native,
-            .bal-dropdown__root__content
-              color: var(--bal-footer-language-color-hover)
-
-          &:active
-            .bal-dropdown__rear
-              +fillSvg(var(--bal-footer-language-background-active))
-            .input,
-            .bal-dropdown__native,
-            .bal-dropdown__root__content
-              color: var(--bal-footer-language-color-active)
-
           +element(wrapper)
-            .bal-input-group
+            display: flex
+            gap: 1rem
+            cursor: pointer
+
+            select
               background: transparent
+              -webkit-appearance: none
               border: none
-              justify-content: center
-              align-items: center
+              color: var(--bal-color-white)
+              font-weight: var(--bal-font-weight-bold)
+              cursor: pointer
 
-              &:hover
-                background: transparent !important
+            &:hover
+              +fillSvg(var(--bal-footer-language-background-hover))
+              select
+                color: var(--bal-footer-language-color-hover)
 
-              bal-dropdown
-                min-width: 5rem
+            &:active
+              +fillSvg(var(--bal-footer-language-background-active))
+              select
+                color: var(--bal-footer-language-color-active)
 
         +element(logo)
           display: flex
