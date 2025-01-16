@@ -1,10 +1,13 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
+import { waitForComponent } from '../helpers'
 
 export interface BalNoticeOptions {
   message: string
   duration?: number
   color?: BalProps.BalNotificationColor | ''
+  animated?: boolean
+  container?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | true
   closeHandler?: () => void
 }
 
@@ -28,7 +31,7 @@ export abstract class BalNoticeController {
 
   create(options: BalNoticeOptions): any {
     if (balBrowser.hasDocument) {
-      this.setupContainer()
+      this.setupContainer(options)
       const clone = this.findClone(options)
       if (clone === undefined) {
         const el: HTMLNoticeElement = document.createElement(this.options.tag) as unknown as HTMLNoticeElement
@@ -80,7 +83,7 @@ export abstract class BalNoticeController {
     return undefined
   }
 
-  private setupContainer() {
+  private setupContainer(options: BalNoticeOptions) {
     if (balBrowser.hasDocument) {
       const containerId = `${this.options.tag}-container`
       this.container = document.getElementById(containerId)
@@ -90,6 +93,10 @@ export abstract class BalNoticeController {
       if (!this.container) {
         this.container = document.createElement('bal-notices')
         this.container.setAttribute('interface', this.options.tag.replace('bal-', ''))
+        this.container.setAttribute('animated', options.animated ? 'true' : 'false')
+        if (options.container !== undefined) {
+          this.container.setAttribute('container', options.container === true ? '' : options.container)
+        }
         this.container.id = containerId
       }
 
@@ -97,12 +104,16 @@ export abstract class BalNoticeController {
     }
   }
 
-  private updateQueue() {
+  private async updateQueue() {
     if (this.queue.length < this.queueLimit) {
       const el = this.preQueue.shift()
       if (el && this.container) {
-        this.queue.push(el)
-        this.container.insertAdjacentElement('beforeend', el)
+        await waitForComponent(this.container)
+        const innerEl = this.container.querySelector('.bal-notices__inner')
+        if (innerEl) {
+          this.queue.push(el)
+          innerEl.insertAdjacentElement('beforeend', el)
+        }
       }
     }
     if (this.queue.length === 0) {

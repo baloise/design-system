@@ -201,6 +201,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
           ...block.modifier('circle').class(this.variation === 'circle'),
           ...block.modifier('small').class(this.small),
           ...block.modifier('animated').class(this.animated),
+          ...block.modifier(`color-${this.color}`).class(this.variation === 'circle'),
         }}
         role="progressbar"
         aria-hidden="true"
