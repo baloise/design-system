@@ -17,7 +17,6 @@
     position: relative
     display: inline-flex
     flex-grow: 1
-    margin: 0.5rem 0 0 0
     box-shadow: var(--bal-shadow-normal)
     padding: var(--bal-space-normal)
 
@@ -55,7 +54,7 @@
   +element(label)
     display: inline-flex
     flex-direction: column
-    gap: 0.125rem
+    gap: .125rem
     margin-left: 2rem
     margin-right: 2.5rem
     hyphens: auto
@@ -63,12 +62,15 @@
     font-family: var(--bal-toast-font-family)
     & > strong,
     & > b
+    & > h2
       font-family: var(--bal-toast-title-font-family)
       font-size: var(--bal-toast-title-font-size)
+      line-height: var(--bal-text-line-height-title)
     & > span,
     & > p
       font-family: var(--bal-toast-font-family)
       font-size: var(--bal-toast-font-size)
+      line-height: var(--bal-text-line-height-text)
 
 .bal-toast__close.bal-close
   position: absolute

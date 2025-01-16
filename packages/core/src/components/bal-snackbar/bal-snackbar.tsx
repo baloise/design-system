@@ -145,14 +145,20 @@ export class Snackbar {
         class={{ ...block.class(), ...block.modifier(`color-${this.color}`).class(!!this.color) }}
         aria-labelledby={subjectId}
       >
-        <div class={{ ...detailsEl.class() }}>
+        <div
+          class={{
+            ...detailsEl.class(),
+          }}
+        >
           <div
             aria-hidden="true"
             class={{
               ...detailsEl.element('icon').class(),
+              ...detailsEl.element('icon').modifier('masked').class(!isIconDefined),
+              ...detailsEl.element('icon').modifier(`color-${this.color}`).class(!isIconDefined),
             }}
           >
-            <bal-icon name={icon} color={'primary'} size="medium"></bal-icon>
+            {isIconDefined ? <bal-icon name={icon} color={'primary'} size="medium"></bal-icon> : ''}
           </div>
           <div class={{ ...detailsEl.element('content').class() }}>
             <h2 id={subjectId}>{this.subject}</h2>

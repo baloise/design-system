@@ -2059,6 +2059,14 @@ export namespace Components {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light": boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon": boolean;
     }
     interface BalNumberInput {
         /**
@@ -7206,6 +7214,14 @@ declare namespace LocalJSX {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light"?: boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon"?: boolean;
     }
     interface BalNumberInput {
         /**

@@ -10,9 +10,12 @@
   </head>
   <body>
     <bal-doc-app>
-      <main class="container py-medium">
+      <main class="container py-medium flex gap-small flex-direction-column">
         <section>
-          <bal-snackbar subject="Default" action="More" data-testid="basic">Toast Message</bal-snackbar>
+          <bal-snackbar subject="Default" action="More" data-testid="basic">
+            Toast Message with a <b>bold</b>
+            <a class="link">Link</a>
+          </bal-snackbar>
         </section>
 
         <!-- Long content -->
@@ -38,7 +41,7 @@
         </section>
 
         <!-- Colors -->
-        <section>
+        <section class="flex gap-small flex-direction-column">
           <bal-snackbar subject="Default" action="More" color="danger">Toast Message</bal-snackbar>
           <bal-snackbar subject="Default" action="More" color="info">Toast Message</bal-snackbar>
           <bal-snackbar subject="Default" action="More" color="primary">Toast Message</bal-snackbar>
