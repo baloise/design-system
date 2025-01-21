@@ -48,6 +48,9 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
     property: 'top',
     values: {
       'top-auto': 'auto',
+      'top-1rem': '1rem',
+      'top-0-5rem': '0.5rem',
+      'top-0-25rem': '0.25rem',
       'top-0': '0',
       'top-50': '50%',
       'top-100': '100%',
@@ -58,6 +61,7 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
     property: 'right',
     values: {
       'right-auto': 'auto',
+      'right-1rem': '1rem',
       'right-0': '0',
       'right-50': '50%',
       'right-100': '100%',
@@ -68,6 +72,7 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
     property: 'bottom',
     values: {
       'bottom-auto': 'auto',
+      'bottom-1rem': '1rem',
       'bottom-0': '0',
       'bottom-50': '50%',
       'bottom-100': '100%',
@@ -78,6 +83,7 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
     property: 'left',
     values: {
       'left-auto': 'auto',
+      'left-1rem': '1rem',
       'left-0': '0',
       'left-50': '50%',
       'left-100': '100%',
@@ -113,7 +119,6 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
         left.docs,
         zIndex.docs,
         verticalAlign.docs,
-        // visibility.docs,
       ],
       rules: [
         display.rules,
@@ -125,7 +130,6 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
         left.rules,
         zIndex.rules,
         verticalAlign.rules,
-        // visibility.rules,
       ],
     }),
   )
