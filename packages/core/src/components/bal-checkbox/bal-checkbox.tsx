@@ -37,7 +37,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @State() hasLabel = true
   @State() focused = false
   @State() buttonTabindex?: number
-  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() ariaForm: BalAriaForm = {
+    controlId: undefined,
+    labelId: undefined,
+    messageId: undefined,
+  }
+
 
   /**
    * Track focus state
@@ -429,6 +434,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     }
 
     const id = this.ariaForm.controlId || this.inputId
+    console.log('id', id)
     let labelId = this.ariaForm.labelId || null
     const LabelTag = this.labelHidden ? 'span' : 'label'
 
