@@ -6,6 +6,7 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Method,
   Prop,
   State,
@@ -44,7 +45,6 @@ import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/consta
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -254,14 +254,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
    */
   @Event() balChange!: EventEmitter<BalEvents.BalInputChangeDetail>
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

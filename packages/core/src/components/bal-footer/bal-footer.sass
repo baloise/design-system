@@ -57,11 +57,22 @@
 
           .bal-dropdown__rear
             +fillSvg(var(--bal-color-white))
+            position: absolute
+            left: 0
+
+          .bal-dropdown__native
+            background: transparent
+            color: var(--bal-color-white)
+            border: none
+            font-weight: var(--bal-font-weight-bold)
+            cursor: pointer
+            padding-left: 1.5rem
 
           &:hover
             .bal-dropdown__rear
               +fillSvg(var(--bal-footer-language-background-hover))
             .input,
+            .bal-dropdown__native,
             .bal-dropdown__root__content
               color: var(--bal-footer-language-color-hover)
 
@@ -69,6 +80,7 @@
             .bal-dropdown__rear
               +fillSvg(var(--bal-footer-language-background-active))
             .input,
+            .bal-dropdown__native,
             .bal-dropdown__root__content
               color: var(--bal-footer-language-color-active)
 

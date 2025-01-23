@@ -9,6 +9,7 @@ import {
   Watch,
   ComponentInterface,
   Method,
+  Listen,
   State,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
@@ -20,7 +21,6 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
-import { ListenTo } from 'packages/core/src/utils/listen'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
@@ -254,14 +254,14 @@ export class RadioGroup
     this.onOptionChange()
   }
 
-  @ListenTo('balChange', { capture: true, target: 'document' })
+  @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (isDescendant(this.el, ev.target as HTMLElement)) {
       stopEventBubbling(ev)
     }
   }
 
-  @ListenTo('balFocus', { capture: true, target: 'document' })
+  @Listen('balFocus', { capture: true, target: 'document' })
   radioFocusListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
@@ -269,7 +269,7 @@ export class RadioGroup
     }
   }
 
-  @ListenTo('balBlur', { capture: true, target: 'document' })
+  @Listen('balBlur', { capture: true, target: 'document' })
   radioBlurListener(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
@@ -277,7 +277,7 @@ export class RadioGroup
     }
   }
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetListener(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
@@ -285,7 +285,7 @@ export class RadioGroup
     }
   }
 
-  @ListenTo('keydown', { target: 'document' })
+  @Listen('keydown', { target: 'document' })
   onKeydown(ev: any) {
     if (ev.target && !this.el.contains(ev.target)) {
       return

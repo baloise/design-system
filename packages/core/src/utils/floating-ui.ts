@@ -1,5 +1,5 @@
 import type { computePosition, offset, arrow, flip, shift, autoUpdate } from '@floating-ui/dom'
-import { rLCP } from './helpers'
+import { rOnLoad } from './helpers'
 
 export interface BalFloatingUi {
   computePosition: typeof computePosition
@@ -18,7 +18,7 @@ class BalFloatingUiInternal {
       if (this.lib) {
         return resolve(this.lib)
       } else {
-        rLCP(async () => {
+        rOnLoad(async () => {
           import(/* @vite-ignore */ '@floating-ui/dom')
             .then(module => {
               this.lib = module

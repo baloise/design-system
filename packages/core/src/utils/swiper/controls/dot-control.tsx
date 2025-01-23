@@ -13,7 +13,7 @@ export interface DotControlProps {
 }
 
 export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items, containerId, onControlChange }) => {
-  const block = BEM.block('carousel')
+  const block = BEM.block('swiper')
   const controls = block.element('controls')
 
   const onChange = (ev: BalEvents.BalPaginationChange) => {
@@ -34,7 +34,7 @@ export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items,
     <div
       class={{
         ...controls.class(),
-        ...controls.modifier('tabs').class(),
+        ...controls.modifier('dots').class(),
       }}
     >
       <bal-pagination

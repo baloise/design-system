@@ -1,6 +1,13 @@
 /**
  * Returns `true` if the keyboard event was triggered by the `Enter` key
  */
+export function isTabKey(event: KeyboardEvent): boolean {
+  return event.key === 'Tab'
+}
+
+/**
+ * Returns `true` if the keyboard event was triggered by the `Enter` key
+ */
 export function isEnterKey(event: KeyboardEvent): boolean {
   return event.key === 'Enter'
 }

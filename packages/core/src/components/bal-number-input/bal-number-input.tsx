@@ -10,6 +10,7 @@ import {
   Prop,
   State,
   Watch,
+  Listen,
 } from '@stencil/core'
 import {
   ListenToConfig,
@@ -51,7 +52,6 @@ import {
 import isNil from 'lodash.isnil'
 import isEmpty from 'lodash.isempty'
 import isNaN from 'lodash.isnan'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -239,14 +239,14 @@ export class NumberInput
    * ------------------------------------------------------
    */
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

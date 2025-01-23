@@ -17,7 +17,7 @@ export interface TabButtonProps {
   isAccordionOpen: boolean
   isLinkList: boolean
   inverted: boolean
-  expanded: boolean
+  isExpanded: boolean
   spaceless: boolean
   clickable: boolean
   iconPosition: BalProps.BalTabsIconPosition
@@ -38,7 +38,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isAccordionOpen,
   isLinkList,
   inverted,
-  expanded,
+  isExpanded,
   spaceless,
   clickable,
   iconPosition,
@@ -99,7 +99,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('clickable').class(clickable),
         ...bemEl.modifier('accordion').class(accordion),
         ...bemEl.modifier('inverted').class(inverted),
-        ...bemEl.modifier('expanded').class(expanded),
+        ...bemEl.modifier('expanded').class(isExpanded),
         ...bemEl.modifier('spaceless').class(spaceless),
         ...bemEl.modifier('first').class(isFirst),
         ...bemEl.modifier('last').class(isLast),
@@ -137,6 +137,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         item={item}
         isMobile={isMobile}
         isVertical={isVertical}
+        isExpanded={isExpanded}
         hasBubble={hasLabelBubble}
         inverted={inverted}
         context={context}

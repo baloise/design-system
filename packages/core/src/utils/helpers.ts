@@ -59,6 +59,27 @@ export const rLCP = (callback: () => void, timeout = 3000) => {
   }
 }
 
+export const rOnLoad = (callback: () => void, timeout = 32) => {
+  let called = false
+
+  const callOnce = () => {
+    if (!called) {
+      called = true
+      callback()
+    }
+  }
+
+  if (balBrowser.hasWindow) {
+    const timer = setTimeout(callOnce, timeout)
+    window.addEventListener('load', () => {
+      clearTimeout(timer)
+      callOnce()
+    })
+  } else {
+    setTimeout(callOnce, 32)
+  }
+}
+
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
@@ -274,9 +295,23 @@ export const waitForComponent = async (el: HTMLElement | null) => {
   await waitAfterIdleCallback()
 }
 
-export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: () => void) => {
-  if (ev && ev.target && el && el !== ev.target && isDescendant(ev.target as HTMLElement, el)) {
-    callback()
+export const isChildOfEventTarget = async (
+  ev: any,
+  el: HTMLElement | Window | Document,
+  callback: (target: HTMLElement) => void,
+) => {
+  if (ev && ev.target && el && el !== ev.target) {
+    let target = ev.target as HTMLElement
+
+    // special case for the navbar case
+    const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
+    if (isNavbarBrand) {
+      target = target.closest('bal-navbar')
+    }
+
+    if (target && isDescendant(target, el)) {
+      callback(target)
+    }
   }
 }
 
@@ -336,6 +371,10 @@ export const waitAfterIdleCallback = () => {
 
 export const waitAfterLargestContentfulPaintCallback = () => {
   return new Promise(resolve => rLCP(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitOnLoadEventCallback = () => {
+  return new Promise(resolve => rOnLoad(() => runHighPrioritizedTask(resolve)))
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {

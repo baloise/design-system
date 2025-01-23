@@ -10,6 +10,7 @@ import {
   Watch,
   ComponentInterface,
   State,
+  Listen,
 } from '@stencil/core'
 import {
   FormInput,
@@ -28,7 +29,6 @@ import { debounceEvent } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -175,14 +175,14 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    */
   @Event() balFocus!: EventEmitter<BalEvents.BalTextareaFocusDetail>
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

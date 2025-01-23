@@ -10,6 +10,7 @@ import {
   Prop,
   EventEmitter,
   Watch,
+  Listen,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
@@ -39,7 +40,6 @@ import { BEM } from '../../utils/bem'
 import { i18nBalTimeInput } from './bal-time-input.i18n'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -144,14 +144,14 @@ export class TimeInput
    */
   @Event() balClick!: EventEmitter<BalEvents.BalTimeInputClickDetail>
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {

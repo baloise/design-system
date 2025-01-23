@@ -8,6 +8,7 @@ import {
   Event,
   Method,
   ComponentInterface,
+  Listen,
   State,
 } from '@stencil/core'
 import { isDescendant } from '../../utils/helpers'
@@ -20,7 +21,6 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { isSpaceKey } from '../../utils/keyboard'
 import { BalElementStateInfo } from '../../utils/element-states'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -183,7 +183,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    * ------------------------------------------------------
    */
 
-  @ListenTo('click', { capture: true, target: 'document' })
+  @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (
       (this.disabled || this.readonly) &&

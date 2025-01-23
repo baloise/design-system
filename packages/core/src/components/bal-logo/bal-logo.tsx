@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop, State, Functiona
 import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { rLCP } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 
@@ -119,7 +119,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       if (this.animationFunction) {
         return resolve()
       } else {
-        rLCP(async () => {
+        rOnLoad(async () => {
           import(/* @vite-ignore */ './bal-logo.animation')
             .then(module => {
               this.animationFunction = module.animate

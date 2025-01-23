@@ -10,6 +10,7 @@ import {
   Event,
   EventEmitter,
   Watch,
+  Listen,
 } from '@stencil/core'
 import { isSpaceKey } from '../../utils/keyboard'
 import { i18nBalDate } from './bal-date.i18n'
@@ -22,7 +23,6 @@ import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../.
 import { debounceEvent } from '../../utils/helpers'
 import { BalAriaForm, defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
 import { balFloatingUi } from '../../utils/floating-ui'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -239,7 +239,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
    * ------------------------------------------------------
    */
 
-  @ListenTo('keydown', { target: 'window' })
+  @Listen('keydown', { target: 'window' })
   async listenToKeydown(ev: KeyboardEvent) {
     if (this.isExpanded && (ev.key === 'Escape' || ev.key === 'Esc')) {
       ev.preventDefault()
@@ -247,7 +247,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @ListenTo('keyup', { target: 'window' })
+  @Listen('keyup', { target: 'window' })
   async listenOnKeyup(ev: KeyboardEvent) {
     // dismiss popup when focus next form control
     if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.isExpanded) {
@@ -255,7 +255,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @ListenTo('click', { target: 'document' })
+  @Listen('click', { target: 'document' })
   async listenOnclick(ev: UIEvent) {
     // when clicked outside dismiss popup
     if (this.isExpanded && !this.el.contains(ev.target as Node)) {
@@ -263,7 +263,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @ListenTo('balPopoverPrepare', { target: 'document' })
+  @Listen('balPopoverPrepare', { target: 'document' })
   async listenOnPopoverPrepare(ev: CustomEvent<string>) {
     // dismiss this popover, because another will open
     if (this.inputId !== ev.detail) {

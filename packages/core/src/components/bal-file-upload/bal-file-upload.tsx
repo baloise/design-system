@@ -1,5 +1,5 @@
 import { areArraysEqual } from '../../utils/array'
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Watch, Method } from '@stencil/core'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Watch, Method, Listen } from '@stencil/core'
 import {
   FormInput,
   inputHandleBlur,
@@ -14,7 +14,6 @@ import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
 import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
@@ -197,7 +196,7 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
 
   private resetHandlerTimer?: NodeJS.Timeout
 
-  @ListenTo('reset', { capture: true, target: 'document' })
+  @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
