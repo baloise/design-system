@@ -10,6 +10,7 @@ import {
   Watch,
   State,
   writeTask,
+  Listen,
   Method,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
@@ -32,13 +33,22 @@ import { isDescendant, raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
-import { ListenTo } from '../../utils/listen'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver, BalFocusObserver {
+export class Segment
+  implements
+    ComponentInterface,
+    BalWindowResizeObserver,
+    BalBreakpointObserver,
+    BalFocusObserver,
+    BalVisibilityObserver,
+    BalAnimationObserver
+{
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -173,13 +183,18 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.balBlur.emit(ev)
   }
 
-  @ListenTo('balWillAnimate', { target: 'window' })
-  listenToDidAnimate(ev: UIEvent) {
-    if (ev && ev.target && isDescendant(ev.target as HTMLElement, this.el)) {
-      const childRect = this.el.getBoundingClientRect()
-      this.maxWidth = childRect.width
-      this.windowResizeListener()
-    }
+  @ListenToAnimation()
+  animationListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
   }
 
   @ListenToBreakpoints()
@@ -206,12 +221,12 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
   }
 
-  @ListenTo('keydown', { target: 'document' })
+  @Listen('keydown', { target: 'document' })
   listenOnKeyDownOutside() {
     this.keyboardMode = true
   }
 
-  @ListenTo('keydown')
+  @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
     let forceChange = false

@@ -9,42 +9,40 @@ import {
   Event,
   EventEmitter,
   State,
+  Watch,
+  Listen,
 } from '@stencil/core'
-import { debounce, raf, rLCP } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
-import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
-import { DotControl } from './controls/dot-control'
-import { LargeControl } from './controls/large-control'
-import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
 import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
-import { getComputedWidth } from '../../utils/style'
 import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
-import { i18nControlLabel } from './bal-carousel.i18n'
-import { ListenTo } from '../../utils/listen'
+import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
 export class Carousel
-  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalResizeObserver
+  implements
+    ComponentInterface,
+    BalBreakpointObserver,
+    BalSwipeObserver,
+    BalMutationObserver,
+    BalResizeObserver,
+    BalVisibilityObserver,
+    SwiperInterface
 {
-  private containerEl?: HTMLDivElement
-  private innerEl?: HTMLDivElement
-  private borderEl?: HTMLDivElement
-  private previousTransformValue = 0
-  private currentRaf: number | undefined
-  private carouselId = `bal-carousel-${CarouselIds++}`
-  private carouselContainerId = `bal-carousel-${CarouselIds++}-container`
+  swiper = new SwiperUtil()
 
-  @State() isLargestContentfulPaintDone = false
-  @State() isLastSlideVisible = true
+  swiperIsLastSlideVisible = false
+
+  @State() hasAnimated = false
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
 
@@ -60,10 +58,20 @@ export class Carousel
    */
   @Prop({ mutable: true }) value = 0
 
+  @Watch('value')
+  onValueChange() {
+    this.swiper.index = this.value
+  }
+
   /**
    * When how many slides are moved when going forward or backward.
    */
   @Prop() steps = 1
+
+  @Watch('steps')
+  onStepsChange() {
+    this.swiper.steps = this.steps
+  }
 
   /**
    * Defines how many slides are visible in the container for the user.
@@ -71,12 +79,23 @@ export class Carousel
    */
   @Prop() itemsPerView: 'auto' | 1 | 2 | 3 | 4 = 1
 
+  @Watch('itemsPerView')
+  onItemsPerViewChange() {
+    this.swiper.itemsPerView = this.itemsPerView
+  }
+
   /**
    * Defines the layout of the navigation controls.
    */
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
 
+  @Watch('controls')
+  onControlsChange() {
+    this.swiper.controls = this.controls
+  }
+
   /**
+   * @deprecated
    * Defines the role of the carousel.
    */
   @Prop() htmlRole: 'tablist' | 'list' | '' = 'list'
@@ -107,6 +126,11 @@ export class Carousel
    */
   @Prop() interface: 'card' | 'image' | 'product' | '' = ''
 
+  @Watch('interface')
+  onInterFaceChange() {
+    this.swiper.gapSize = this.interface === 'product' ? 16 : 0
+  }
+
   /**
    * If `true` the controls will be sticky to the top.
    */
@@ -132,10 +156,17 @@ export class Carousel
    * ------------------------------------------------------
    */
 
-  componentDidLoad(): void {
-    rLCP(() => {
-      this.isLargestContentfulPaintDone = true
-    })
+  connectedCallback(): void {
+    this.swiper.connectedCallback(this)
+    this.onControlsChange()
+    this.onInterFaceChange()
+    this.onItemsPerViewChange()
+    this.onStepsChange()
+    this.onValueChange()
+  }
+
+  disconnectedCallback(): void {
+    this.swiper.disconnectedCallback()
   }
 
   /**
@@ -143,7 +174,7 @@ export class Carousel
    * ------------------------------------------------------
    */
 
-  @ListenTo('touchmove', { target: 'window', passive: false })
+  @Listen('touchmove', { target: 'window', passive: false })
   async blockVerticalScrolling(ev: any) {
     if (!this.scrollY && this.el?.contains(ev.target)) {
       stopEventBubbling(ev)
@@ -154,7 +185,12 @@ export class Carousel
 
   @ListenToMutation({ tags: ['bal-carousel-item'], characterData: false })
   mutationListener() {
-    this.itemsChanged()
+    this.swiper.notifyChange()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
+    this.swiper.notifyChange()
   }
 
   @ListenToSwipe()
@@ -169,25 +205,12 @@ export class Carousel
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
-    this.itemsChanged()
+    this.swiper.notifyChange()
   }
 
   @ListenToResize()
   resizeListener(): void {
-    this.itemsChanged()
-  }
-
-  @ListenTo('keydown')
-  listenToKeyDown(ev: KeyboardEvent) {
-    if (this.htmlRole !== 'tablist') {
-      if (ev.code === 'Tab') {
-        if (ev.shiftKey) {
-          this.focusPreviousItem(ev)
-        } else {
-          this.focusNextItem(ev)
-        }
-      }
-    }
+    this.swiper.notifyChange()
   }
 
   /**
@@ -205,167 +228,21 @@ export class Carousel
    */
 
   @Method()
-  async previous(steps = this.steps): Promise<BalSlide | undefined> {
-    let previousValue = this.value - steps
-    if (previousValue < 0) {
-      previousValue = 0
-    }
-
-    const activeSlide = await this.buildSlide(previousValue)
-
-    if (activeSlide) {
-      const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate || this.value !== previousValue) {
-        this.value = previousValue
-        this.balChange.emit(this.value)
-      }
-    }
-
-    return activeSlide
+  async previous(steps = this.steps): Promise<void> {
+    this.swiper.previous(steps)
   }
 
   @Method()
-  async next(steps = this.steps): Promise<BalSlide | undefined> {
-    const items = this.getAllItemElements()
-    const length = items.length
-    let nextValue = this.value + steps
-
-    if (nextValue >= length) {
-      nextValue = length - 1
-    }
-
-    const activeSlide = await this.buildSlide(nextValue)
-
-    if (activeSlide) {
-      const didAnimate = await this.animate(activeSlide.transformActive, true)
-      if (didAnimate || this.value !== nextValue) {
-        this.value = nextValue
-        this.balChange.emit(this.value)
-      }
-    }
-
-    return activeSlide
+  async next(steps = this.steps): Promise<void> {
+    this.swiper.next(steps)
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
+   * @internal
    */
-
-  private async animate(amount = 0, animated = true): Promise<boolean> {
-    return new Promise(resolve => {
-      if (this.currentRaf !== undefined) {
-        cancelAnimationFrame(this.currentRaf)
-      }
-
-      this.currentRaf = raf(async () => {
-        if (this.containerEl && this.innerEl) {
-          const lastSlide = await this.buildSlide()
-
-          if (lastSlide) {
-            const containerWidth = this.innerEl.clientWidth || 0
-            const itemsWith = lastSlide.transformNext || 0
-            const noNeedForSlide = itemsWith <= containerWidth
-            let maxAmount = itemsWith - containerWidth
-            let isLastSlideVisible = maxAmount <= amount
-            // -1 one is needed for example when we use items per view 3 with 33.333%
-            if (this.itemsPerView === 3) {
-              maxAmount = itemsWith - containerWidth - 1
-              isLastSlideVisible = maxAmount <= amount
-            }
-            const isFirst = amount === 0 || maxAmount <= 2
-
-            if (isFirst) {
-              this.value = 0
-              this.balChange.emit(this.value)
-            }
-
-            const hasSmallControls = this.controls === 'small'
-            const hasLargeControls = this.controls === 'large'
-
-            let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
-
-            if (!isFirst && !noNeedForSlide && (hasSmallControls || (hasLargeControls && !this.isMobile))) {
-              transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
-            }
-
-            this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
-            this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
-
-            const didAnimate = transformValue !== this.previousTransformValue
-            this.previousTransformValue = transformValue
-            this.isLastSlideVisible = isLastSlideVisible
-
-            if (this.borderEl) {
-              this.borderEl.style.transitionDuration = animated ? '0.6s' : '0'
-              this.borderEl.style.transform = `translate3d(${transformValue}px, 0px, 0px)`
-            }
-
-            if (!didAnimate) {
-              return resolve(false)
-            }
-
-            return resolve(true)
-          }
-        }
-      })
-    })
-  }
-
-  private async buildSlide(slideIndex?: number): Promise<BalSlide | undefined> {
-    const items = this.getAllItemElements()
-    const index = slideIndex === undefined ? items.length - 1 : slideIndex
-
-    if (items.length > index && index >= 0) {
-      const data = await this.getAllItemData()
-      const gapSize = this.interface === 'product' ? 16 : 0
-
-      return {
-        el: items[index],
-        data: data[index],
-        transformNext: items
-          .filter((_, n) => n < index + 1)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
-        transformActive: items
-          .filter((_, n) => n < index)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
-        isFirst: index === 0,
-        isLast: index === items.length - 1,
-        total: items.length,
-        index,
-      }
-    }
-    return undefined
-  }
-
-  private itemsChanged = debounce(() => this.itemsChangedInternal(), 100)
-  private async itemsChangedInternal() {
-    if (this.isLargestContentfulPaintDone) {
-      const activeSlide = await this.buildSlide(this.value)
-      if (activeSlide) {
-        this.animate(activeSlide.transformActive, false)
-      }
-    }
-  }
-
-  private async focusNextItem(ev: KeyboardEvent) {
-    if (!this.isLast) {
-      const slide = await this.next(1)
-      if (slide && slide.el) {
-        stopEventBubbling(ev)
-        await slide.el.setFocus()
-      }
-    }
-  }
-
-  private async focusPreviousItem(ev: KeyboardEvent) {
-    if (!this.isFirst) {
-      const slide = await this.previous(1)
-      if (slide && slide.el) {
-        stopEventBubbling(ev)
-        await slide.el.setFocus()
-      }
-    }
+  @Method()
+  async getContainerId(): Promise<string> {
+    return this.swiper.containerId
   }
 
   /**
@@ -373,58 +250,18 @@ export class Carousel
    * ------------------------------------------------------
    */
 
-  private async getAllItemData() {
-    const queue = this.getAllItemElements().map(el => el.getData())
-    return await Promise.all(queue)
-  }
-
-  private getAllItemElements() {
+  swiperGetAllChildrenElements(): SwiperChildItem[] {
     return Array.from(this.el.querySelectorAll('bal-carousel-item'))
   }
 
-  private getAllControlItems(): ControlItem[] {
-    const items: HTMLBalCarouselItemElement[] = this.getAllItemElements()
-    return items.map((item, index) => ({ value: index, label: item.label }))
-  }
-
-  private hasShadow(): boolean {
-    return this.itemsPerView === 'auto' || this.itemsPerView > 1 || this.interface === 'card'
-  }
-
-  private hasShadowLeft(): boolean {
-    return this.hasShadow() && (this.value !== 0 || this.interface === 'card')
-  }
-
-  private hasShadowRight(): boolean {
-    return this.hasShadow() && (!this.isLastSlideVisible || this.interface === 'card')
-  }
-
-  private isFirst(): boolean {
-    return this.value === 0
-  }
-
-  private isLast(): boolean {
-    return this.isLastSlideVisible
-  }
-
   /**
-   * EVENT BINDING
+   * EVENT HANDLERS
    * ------------------------------------------------------
    */
 
-  private onPreviousButtonClick = () => this.previous()
-
-  private onNextButtonClick = () => this.next()
-
-  private onControlChange = (selectedValue: number) => {
-    if (selectedValue !== this.value) {
-      const isForward = selectedValue > this.value
-      if (isForward) {
-        this.next(selectedValue - this.value)
-      } else {
-        this.previous(this.value - selectedValue)
-      }
-    }
+  swiperOnChange(index: number): void {
+    this.value = index
+    this.balChange.emit(index)
   }
 
   /**
@@ -436,63 +273,59 @@ export class Carousel
     const block = BEM.block('carousel')
     const inner = block.element('inner')
     const container = inner.element('container')
-    const leftControlTitle = i18nControlLabel[this.language].left
-    const rightControlTitle = i18nControlLabel[this.language].right
 
-    const controlItems = this.getAllControlItems()
     return (
       <Host
         class={{
+          ...this.swiper.cssSwiper(),
           ...block.class(),
           ...block.modifier(this.interface).class(this.interface !== ''),
           ...block.modifier(`full-height`).class(this.fullHeight),
           ...block.modifier('controls-sticky').class(this.controlsSticky),
-          ...block.modifier(`controls-${this.controls}`).class(),
+          ...block.modifier(`controls-tabs`).class(this.controls === 'tabs'),
         }}
       >
-        {this.isLargestContentfulPaintDone && this.controls === 'tabs' ? (
+        {this.controls === 'tabs' ? (
           <TabControl
             value={this.value}
-            items={controlItems}
-            containerId={this.carouselContainerId}
-            onControlChange={item => this.onControlChange(item.value)}
+            items={this.swiper.getAllControlItems()}
+            containerId={this.swiper.containerId}
+            onControlChange={item => this.swiper.onControlChange(item.value)}
           ></TabControl>
         ) : (
           ''
         )}
         <div
           class={{
+            ...this.swiper.cssInnerSwiper(),
             ...inner.class(),
-            ...inner.modifier(`items-per-view-${this.itemsPerView}`).class(),
             ...inner.modifier(`is-${this.aspectRatio}`).class(),
             ...inner.modifier(`inverted`).class(this.inverted),
             ...inner.modifier(`full-height`).class(this.fullHeight),
-            ...inner.modifier(`shadow-left`).class(this.hasShadowLeft()),
-            ...inner.modifier(`shadow-right`).class(this.hasShadowRight()),
           }}
-          ref={el => (this.innerEl = el)}
+          ref={el => (this.swiper.innerEl = el)}
         >
           <div
-            role={this.htmlRole}
-            aria-live={this.htmlRole !== '' ? 'polite' : undefined}
-            id={this.carouselContainerId}
+            id={this.swiper.containerId}
+            role={this.controls === 'tabs' ? '' : 'list'}
             class={{
+              ...this.swiper.cssSwiperContainer(),
               ...container.class(),
               ...container.modifier(`border`).class(this.border),
               ...container.modifier(`is-${this.aspectRatio}`).class(),
             }}
-            ref={el => (this.containerEl = el)}
+            ref={el => (this.swiper.containerEl = el)}
           >
             <slot></slot>
             {this.border ? (
               <div
-                id={`${this.carouselId}-border`}
+                id={`${this.swiper.id}-border`}
                 aria-hidden="true"
                 class={{
                   ...container.element('border').class(),
                   ...container.element('border').modifier('inverted').class(this.inverted),
                 }}
-                ref={el => (this.borderEl = el)}
+                ref={el => (this.swiper.borderEl = el)}
               ></div>
             ) : (
               ''
@@ -500,50 +333,8 @@ export class Carousel
           </div>
         </div>
 
-        {this.isLargestContentfulPaintDone && this.controls === 'dots' ? (
-          <DotControl
-            value={this.value}
-            items={controlItems}
-            containerId={this.carouselContainerId}
-            onControlChange={item => this.onControlChange(item.value)}
-          ></DotControl>
-        ) : (
-          ''
-        )}
-
-        {this.isLargestContentfulPaintDone && this.controls === 'large' ? (
-          <LargeControl
-            isFirst={this.isFirst()}
-            isLast={this.isLast()}
-            inverted={this.inverted}
-            areControlsHidden={!this.isMobile}
-            leftControlTitle={leftControlTitle}
-            rightControlTitle={rightControlTitle}
-            containerId={this.carouselContainerId}
-            onNextClick={() => this.onNextButtonClick()}
-            onPreviousClick={() => this.onPreviousButtonClick()}
-          ></LargeControl>
-        ) : (
-          ''
-        )}
-
-        {this.isLargestContentfulPaintDone && this.controls === 'small' ? (
-          <SmallControl
-            isFirst={this.isFirst()}
-            isLast={this.isLast()}
-            inverted={this.inverted}
-            leftControlTitle={leftControlTitle}
-            rightControlTitle={rightControlTitle}
-            containerId={this.carouselContainerId}
-            onNextClick={() => this.onNextButtonClick()}
-            onPreviousClick={() => this.onPreviousButtonClick()}
-          ></SmallControl>
-        ) : (
-          ''
-        )}
+        {this.swiper.renderControls()}
       </Host>
     )
   }
 }
-
-let CarouselIds = 0

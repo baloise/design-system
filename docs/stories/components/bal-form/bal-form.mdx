@@ -1,4 +1,5 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Canvas, Meta, Markdown, Unstyled } from '@storybook/blocks'
+import { navigate } from '@storybook/addon-links'
 import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as FormStories from './bal-form.stories'
 
@@ -7,6 +8,21 @@ import * as FormStories from './bal-form.stories'
 <StoryHeading of={FormStories.Basic} hidden></StoryHeading>
 
 <Banner of={FormStories} />
+
+<Lead>
+  Before using the component, please refer to the documentation to learn how to structure and build forms with the
+  design system for the best accessibility (a11y) experience.
+</Lead>
+
+<Unstyled>
+  <a
+    className="button is-primary mb-x-large mt-normal"
+    style={{ width: 'auto' }}
+    onClick={() => navigate({ title: 'Development/Form' })}
+  >
+    How to structure form controls
+  </a>
+</Unstyled>
 
 <Lead>
   {' '}

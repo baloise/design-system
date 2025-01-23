@@ -307,7 +307,7 @@ export const selectors = {
     /**
      * Toast element.
      */
-    main: '.bal-notices > .bal-toast',
+    main: '.bal-notices > .bal-notices__inner > .bal-toast',
     /**
      * Toast label element.
      */
@@ -321,7 +321,7 @@ export const selectors = {
     /**
      * Snackbar element.
      */
-    main: '.bal-notices > .bal-snackbar',
+    main: '.bal-notices > .bal-notices__inner > .bal-snackbar',
     /**
      * Snackbar heading element.
      */

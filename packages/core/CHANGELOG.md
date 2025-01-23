@@ -1,5 +1,69 @@
 # Changelog
 
+## 17.3.0
+
+### Minor Changes
+
+- **toast**: improve a11y with animation, icon and size options ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **spinner**: add white options for the circle spinner ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **snackbar**: add a11y features ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **notification**: add new light variant and adjust with icons for a better a11y experience ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+### Patch Changes
+
+- **dropdown**: hide collapsed menu list with the options when not open ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+## 17.2.5
+
+### Patch Changes
+
+- **carousel**: show controls on firefox ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **hint**: set styles for content ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: load value initialy to tabs when select on mobile ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: adjust border widht on expanded mode ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+## 17.2.4
+
+### Patch Changes
+
+- **footer**: adjust position when footer is sticky. Use native select for language selection for better performance and improve a11y by adding labels ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **carousel**: fix combination with tabs ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **core**: reset block style of bal-app to fix sticky footer ( [#1566](https://github.com/baloise/design-system/pull/1566))
+
+## 17.2.3
+
+### Patch Changes
+
+- **carousel**: fix space and size issue with the product slider ( [#1564](https://github.com/baloise/design-system/pull/1564))
+
+## 17.2.2
+
+### Patch Changes
+
+- **core**: improve performance by listening to the load event instead of LCP ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize the resize observer to only notify when width or height changes of the component ( [#1559](https://github.com/baloise/design-system/pull/1559))
+
+- **carousel**: refactor carousel into a util ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **steps**: improve a11y and remove unused carousel component ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize mutation observer to ignore certain records ( [#1560](https://github.com/baloise/design-system/pull/1560))
+
+- **tabs**: refactor to solve a11y issues ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: update stencil to fix event issue ( [#1557](https://github.com/baloise/design-system/pull/1557))
+
+- **core**: optimize style util to calc width of components ( [#1561](https://github.com/baloise/design-system/pull/1561))
+
 ## 17.2.1
 
 ### Patch Changes

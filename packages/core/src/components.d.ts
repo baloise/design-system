@@ -7,7 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
 import { AccordionState } from "./interfaces";
-import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
@@ -20,7 +19,6 @@ import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
 export { AccordionState } from "./interfaces";
-export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
@@ -386,8 +384,9 @@ export namespace Components {
           * If `true` the carousel uses the full height
          */
         "fullHeight": boolean;
+        "getContainerId": () => Promise<string>;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole": 'tablist' | 'list' | '';
         /**
@@ -402,11 +401,11 @@ export namespace Components {
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
         "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
-        "next": (steps?: number) => Promise<BalSlide | undefined>;
+        "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
          */
-        "previous": (steps?: number) => Promise<BalSlide | undefined>;
+        "previous": (steps?: number) => Promise<void>;
         /**
           * If `true` vertical scrolling on mobile is enabled.
          */
@@ -433,13 +432,12 @@ export namespace Components {
           * The type of button.
          */
         "elementType": BalProps.BalButtonElementType;
-        "getData": () => Promise<BalCarouselItemData>;
         /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole": 'tab' | 'listitem' | '';
         /**
@@ -2052,6 +2050,8 @@ export namespace Components {
         "interface": BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -2059,6 +2059,14 @@ export namespace Components {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light": boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon": boolean;
     }
     interface BalNumberInput {
         /**
@@ -3475,6 +3483,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalToast {
+        /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable": boolean;
         /**
           * Closes this toast
          */
@@ -5451,7 +5463,7 @@ declare namespace LocalJSX {
          */
         "fullHeight"?: boolean;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole"?: 'tablist' | 'list' | '';
         /**
@@ -5501,7 +5513,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole"?: 'tab' | 'listitem' | '';
         /**
@@ -7193,6 +7205,8 @@ declare namespace LocalJSX {
         "interface"?: BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -7200,6 +7214,14 @@ declare namespace LocalJSX {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light"?: boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon"?: boolean;
     }
     interface BalNumberInput {
         /**
@@ -8582,6 +8604,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalToast {
+        /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable"?: boolean;
         "closeHandler"?: () => void;
         /**
           * The theme type of the toast. Color type primary is deprecated, please use info instead.

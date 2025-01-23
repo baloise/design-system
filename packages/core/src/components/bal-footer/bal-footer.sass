@@ -45,45 +45,37 @@
           flex-wrap: nowrap
           align-items: center
 
-          .bal-dropdown__list
-            min-width: 105%
-            right: 0 !important
-            left: auto !important
-
-          bal-icon,
-          .input
-            cursor: pointer
-            min-width: auto !important
-
-          .bal-dropdown__rear
-            +fillSvg(var(--bal-color-white))
-
-          &:hover
-            .bal-dropdown__rear
-              +fillSvg(var(--bal-footer-language-background-hover))
-            .input,
-            .bal-dropdown__root__content
-              color: var(--bal-footer-language-color-hover)
-
-          &:active
-            .bal-dropdown__rear
-              +fillSvg(var(--bal-footer-language-background-active))
-            .input,
-            .bal-dropdown__root__content
-              color: var(--bal-footer-language-color-active)
-
           +element(wrapper)
-            .bal-input-group
+            display: flex
+            gap: 1rem
+            cursor: pointer
+
+            select
+              padding-left: 2px
+              padding-right: 2px
               background: transparent
+              -webkit-appearance: none
               border: none
-              justify-content: center
-              align-items: center
+              color: var(--bal-color-white)
+              font-weight: var(--bal-font-weight-bold)
+              font-family: var(--bal-font-family-title)
+              cursor: pointer
 
-              &:hover
-                background: transparent !important
+              option
+                background: var(--bal-color-white) !important
+                color: var(--bal-color-primary) !important
+                font-weight: var(--bal-font-weight-bold) !important
+                font-family: var(--bal-font-family-text) !important
 
-              bal-dropdown
-                min-width: 5rem
+            &:hover
+              +fillSvg(var(--bal-footer-language-background-hover))
+              select
+                color: var(--bal-footer-language-color-hover)
+
+            &:active
+              +fillSvg(var(--bal-footer-language-background-active))
+              select
+                color: var(--bal-footer-language-color-active)
 
         +element(logo)
           display: flex

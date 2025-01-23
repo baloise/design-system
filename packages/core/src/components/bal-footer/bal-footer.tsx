@@ -12,15 +12,13 @@ import {
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
-import { stopEventBubbling } from '../../utils/form-input'
+import { i18nBalFooter } from './bal-footer.i18n'
 
 @Component({
   tag: 'bal-footer',
   styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
-  private selectEl: HTMLBalDropdownElement | undefined
-
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
@@ -94,8 +92,8 @@ export class Footer implements BalConfigObserver, Loggable {
    * ------------------------------------------------------
    */
 
-  private changeLanguage(language: BalLanguage) {
-    updateBalLanguage(language)
+  private changeLanguage(language: string) {
+    updateBalLanguage(language as BalLanguage)
   }
 
   private updateFooterLinks() {
@@ -136,7 +134,6 @@ export class Footer implements BalConfigObserver, Loggable {
     const elLogo = elHeaderContainer.element('logo')
     const elLanguage = elHeaderContainer.element('language')
     const elWrapper = elLanguage.element('wrapper')
-    const elIcon = elLanguage.element('icon')
     const elLegalLinks = elLinksContainer.element('legal-links')
     const elSocialMediaLinks = elLinksContainer.element('social-media-links')
 
@@ -183,29 +180,26 @@ export class Footer implements BalConfigObserver, Loggable {
                     ...elWrapper.class(),
                   }}
                 >
-                  <bal-input-group>
-                    <bal-icon
-                      class={'bal-dropdown__rear'}
-                      name="web"
-                      color="white"
-                      onClick={el => {
-                        stopEventBubbling(el)
-                        this.selectEl?.open()
-                      }}
-                    ></bal-icon>
-                    <bal-dropdown
-                      ref={el => (this.selectEl = el as HTMLBalDropdownElement)}
-                      value={this.language}
-                      onBalChange={event => this.changeLanguage(event.detail as any)}
-                      data-testid="bal-footer-language"
-                    >
-                      {this.allowedLanguages.map(language => (
-                        <bal-option key={language} label={language.toLocaleUpperCase()} value={language}>
-                          {language.toLocaleUpperCase()}
-                        </bal-option>
-                      ))}
-                    </bal-dropdown>
-                  </bal-input-group>
+                  <bal-icon
+                    class={{
+                      ...elWrapper.element('icon').class(),
+                    }}
+                    name="web"
+                    color="white"
+                  ></bal-icon>
+                  <select
+                    class={{
+                      ...elWrapper.element('select').class(),
+                    }}
+                    onChange={event => this.changeLanguage((event.target as HTMLSelectElement).value)}
+                    data-testid="bal-footer-language"
+                  >
+                    {this.allowedLanguages.map(language => (
+                      <option key={language} value={language} selected={language === this.language}>
+                        {language.toLocaleUpperCase() + ' - ' + i18nBalFooter[language].name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

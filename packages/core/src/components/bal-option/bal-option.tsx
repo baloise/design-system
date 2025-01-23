@@ -9,6 +9,7 @@ import {
   EventEmitter,
   Method,
   State,
+  Listen,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -17,7 +18,6 @@ import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } f
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
 import { BalOption } from '../../utils/dropdown'
-import { ListenTo } from '../../utils/listen'
 
 @Component({
   tag: 'bal-option',
@@ -114,7 +114,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
    * ------------------------------------------------------
    */
 
-  @ListenTo('mouseenter')
+  @Listen('mouseenter')
   listenToMouseEnter() {
     const { label, value, selected, disabled, hidden } = this
     if (!hidden && !disabled) {

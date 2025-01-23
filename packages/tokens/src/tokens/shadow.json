@@ -17,6 +17,12 @@
       "keepFormat": true,
       "noFigmaImport": true,
       "comment": "Large shadow are used for hover effects."
+    },
+    "header": {
+      "value": "0 4px 4px 0 rgba(0, 7, 57, 0.15)",
+      "keepFormat": true,
+      "noFigmaImport": true,
+      "comment": "Shadow effect for a header bar"
     }
   },
   "text": {

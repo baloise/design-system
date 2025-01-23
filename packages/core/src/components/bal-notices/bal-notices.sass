@@ -5,32 +5,69 @@
   bottom: 0 !important
   left: 0 !important
   right: 0 !important
-  padding: 1rem !important
+  padding-top: 1rem !important
+  padding-bottom: 1rem !important
   margin: 0 !important
   overflow: hidden !important
   z-index: var(--bal-z-index-toast) !important
   pointer-events: none !important
   flex-direction: column !important
 
-  .container
-    width: 100% !important
+.bal-notices:not(.bal-notices--container)
+  padding-left: 1rem !important
+  padding-right: 1rem !important
 
-  &.has-snackbar
+.bal-notices__inner
+  display: flex
+  gap: 0.5rem
+
+.bal-notices__inner--snackbar
+  height: 100vh
+  justify-content: flex-end
+  align-items: flex-end
+  flex-direction: column
+  margin: 0.5em
+
+  .bal-snackbar
     justify-content: flex-end
-    align-items: flex-end
-    flex-direction: column-reverse
-    margin: 0.5em
+    align-self: flex-end
+    pointer-events: auto !important
 
-    .bal-snackbar
-      justify-content: flex-end
-      align-self: flex-end
-      pointer-events: auto !important
+.bal-notices__inner--toast
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  margin: 0.5em
 
-  &.has-toast
-    justify-content: flex-start
-    align-items: center
-    margin: 0.5em
+  .bal-toast
+    justify-content: center
+    align-self: center
 
-    .bal-toast
-      justify-content: center
-      align-self: center
+.bal-notices__inner.container
+  --bal-toast-width: 100%
+  --bal-toast-width-tablet: 100%
+  --bal-toast-width-desktop: 100%
+
+.bal-notices--animated
+  .bal-toast
+    animation-duration: 0.3s
+    animation-fill-mode: both
+    animation-name: slideInDown
+  .bal-snackbar
+    animation-duration: 0.3s
+    animation-fill-mode: both
+    animation-name: slideInUp
+
+@keyframes slideInDown
+  from
+    transform: translate3d(0, -100%, 0)
+    visibility: visible
+  to
+    transform: translate3d(0, 0, 0)
+
+@keyframes slideInUp
+  from
+    transform: translate3d(0, 100%, 0)
+    visibility: visible
+  to
+    transform: translate3d(0, 0, 0)

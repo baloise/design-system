@@ -1,7 +1,7 @@
 import { Component, h, ComponentInterface, Host, Prop, Element, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
-import { rLCP } from 'packages/core/src/utils/helpers'
+import { rOnLoad } from 'packages/core/src/utils/helpers'
 
 @Component({
   tag: 'bal-stage-image',
@@ -10,7 +10,7 @@ export class StageImage implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
 
   @Element() el!: HTMLElement
-  @State() isLargestContentfulPaintDone = false
+  @State() isOnLoadEventDone = false
 
   /**
    * set of images to be used as background image
@@ -23,8 +23,8 @@ export class StageImage implements ComponentInterface {
   @Prop() fallback?: string
 
   componentDidLoad(): void {
-    rLCP(() => {
-      this.isLargestContentfulPaintDone = true
+    rOnLoad(() => {
+      this.isOnLoadEventDone = true
     })
   }
 
@@ -38,7 +38,7 @@ export class StageImage implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        {this.isLargestContentfulPaintDone ? (
+        {this.isOnLoadEventDone ? (
           <img src={imageSrc} srcset={this.srcSet} sizes="100vw" {...this.imageInheritAttributes} />
         ) : (
           ''

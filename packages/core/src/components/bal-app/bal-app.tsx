@@ -2,7 +2,7 @@ import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
-import { debounce, rIC, rLCP } from '../../utils/helpers'
+import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { startFocusVisible } from '../../utils/focus-visible'
 
@@ -50,7 +50,7 @@ export class App implements Loggable {
       startFocusVisible()
     })
 
-    rLCP(() => {
+    rOnLoad(() => {
       if (balBrowser.hasDocument && balBrowser.hasWindow) {
         const doc = document.documentElement
         doc.classList.add('lcp-ready')

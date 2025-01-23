@@ -5,57 +5,89 @@
 @import './components/tab-label'
 @import './components/tab-select'
 @import './bal-tabs.vars'
+@import '../../utils/swiper/swiper'
 
 .bal-tabs
-  display: block
+  display: flex
+  flex-direction: column
   min-width: 0
   //
-  //
+  // Fullwidth
   &--fullwidth
     width: 100%
   //
   // Vertical layout
   &--vertical
-    display: block
+    flex-direction: column
+    gap: var(--bal-space-x-large)
     +tablet
-      display: flex
+      flex-direction: row
+      gap: var(--bal-space-normal)
   //
   // Navbar layout
   &--navbar
     +tablet
       height: 100%
+
+// Tab Item
+// are hidden initialy and only shown when active
+// --------------------------------------------------
 .bal-tab-item
   width: 100%
   display: none
   &--active
     display: block
 
-.bal-tabs__tabs__content
-  width: 100%
-
-//
-// Accordion animation
-.bal-tabs--animated
-  transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
-
-  & .bal-tabs__tabs__content
-    transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+// Accordion
+// --------------------------------------------------
 
 .bal-tabs--accordion
-  .bal-tabs__tabs__content
+  .bal-tabs__content
     overflow: hidden
-    will-change: max-height
 
-  &.bal-tabs--collapsing .bal-tabs__tabs__content
-    max-height: 0 !important
-
-  &.bal-tabs--collapsed .bal-tabs__tabs__content
+  &.bal-tabs--collapsed .bal-tabs__content
     display: none
 
-  &.bal-tabs--expanding .bal-tabs__tabs__content
-    max-height: 0
+// Content
+// --------------------------------------------------
 
-  @media (prefers-reduced-motion: reduce)
-    .bal-tabs,
-    .bal-tabs__tabs__content
-      transition: none !important
+.bal-tabs__content
+  width: 100%
+
+.bal-tabs__content--vertical
+  width: auto
+  flex: 1
+
+.bal-tabs__content--hidden
+  display: none
+
+// Navbar Context
+// --------------------------------------------------
+
+.bal-tabs__nav--full-height,
+.bal-tabs__nav__inner--full-height
+  height: 100%
+
+// Border
+// --------------------------------------------------
+
+.bal-tabs__nav__border
+  position: absolute
+  background: var(--bal-tabs-tab-nav-border-background)
+  border-radius: var(--bal-tabs-tab-nav-border-radius)
+  height: var(--bal-border-width-normal)
+  left: 1px
+  right: 1px
+  bottom: 0
+  min-width: 100%
+  &--hidden
+    display: none
+  &--vertical
+    min-width: var(--bal-border-width-normal)
+    max-width: var(--bal-border-width-normal)
+    width: var(--bal-border-width-normal)
+    height: 100%
+    top: 0
+    right: auto
+  &--inverted
+    background: var(--bal-tabs-tab-nav-border-background-inverted)
