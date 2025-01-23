@@ -8,6 +8,7 @@ const trackingAttributes = ['data-tracking-style', 'data-tracking-topic', 'data-
  * the `title` attribute that developers set directly on `bal-input`. This
  * helper function should be called in componentWillLoad and assigned to a variable
  * that is later used in the render function.
+ * This function also removes the attribute from the parent when its set on child.
  *
  * This does not need to be reactive as changing attributes on the host element
  * does not trigger a re-render.

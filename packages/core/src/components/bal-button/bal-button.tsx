@@ -115,6 +115,11 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
+   * If `true` the button is a popup.
+   */
+  @Prop() balPopup = undefined
+
+  /**
    * Name of the left button icon
    */
   @Prop() icon = ''
@@ -179,6 +184,11 @@ export class Button implements ComponentInterface {
 
   componentDidLoad(): void {
     rOnLoad(() => (this.isLargestContentPaintDone = true))
+    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
+      this.aria = {
+        haspopup: 'true',
+      }
+    }
   }
 
   componentWillLoad() {
@@ -188,9 +198,9 @@ export class Button implements ComponentInterface {
       'aria-controls',
       'aria-hidden',
       'tabindex',
+      'aria-haspopup',
     ])
   }
-
   componentDidRender() {
     this.balDidRender.emit()
   }
@@ -302,6 +312,7 @@ export class Button implements ComponentInterface {
       'aria-label':
         this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
       'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
+      'aria-haspopup': this.aria?.haspopup || this.inheritAttributes['aria-haspopup'],
     }
 
     return (
