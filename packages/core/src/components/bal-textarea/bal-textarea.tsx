@@ -9,8 +9,8 @@ import {
   Method,
   Watch,
   ComponentInterface,
-  Listen,
   State,
+  Listen,
 } from '@stencil/core'
 import {
   FormInput,
@@ -61,6 +61,11 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
    */
   @Prop() autocapitalize = 'none'
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -297,6 +302,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           readonly={this.readonly}
           required={this.required}
           autoCapitalize={this.autocapitalize}
+          autocomplete={this.autocomplete}
           autoFocus={this.autofocus}
           minLength={this.minLength}
           maxLength={this.maxLength}

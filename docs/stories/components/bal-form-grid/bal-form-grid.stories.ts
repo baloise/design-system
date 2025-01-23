@@ -142,7 +142,7 @@ export const FormStructure = Story({
                     <bal-field>
                         <bal-field-label>Datepicker</bal-field-label>
                         <bal-field-control>
-                            <bal-datepicker placeholder="Placeholder"></bal-datepicker>
+                            <bal-date placeholder="Placeholder"></bal-date>
                         </bal-field-control>
                     </bal-field>
                 </bal-form-col>
@@ -151,7 +151,7 @@ export const FormStructure = Story({
                     <bal-field>
                         <bal-field-label>Datepicker</bal-field-label>
                         <bal-field-control>
-                            <bal-datepicker placeholder="Placeholder" value="12.04.2023"></bal-datepicker>
+                            <bal-date placeholder="Placeholder" value="2023-04-12"></bal-date>
                         </bal-field-control>
                     </bal-field>
                 </bal-form-col>

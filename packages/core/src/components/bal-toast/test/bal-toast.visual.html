@@ -10,9 +10,12 @@
   </head>
   <body>
     <bal-doc-app>
-      <main class="container py-medium">
+      <main class="container py-medium flex gap-small flex-direction-column">
         <section>
-          <bal-toast data-testid="basic">Toast Message</bal-toast>
+          <bal-toast data-testid="basic">
+            <b>Toast Title</b>
+            <span>Toast Message with <b>bold</b> <a class="link">Link</a></span>
+          </bal-toast>
         </section>
 
         <!-- Long content -->
@@ -32,12 +35,17 @@
         </section>
 
         <!-- Colors -->
-        <section>
+        <section class="flex gap-small flex-direction-column">
           <bal-toast color="danger">Toast Message</bal-toast>
           <bal-toast color="info">Toast Message</bal-toast>
           <bal-toast color="primary">Toast Message</bal-toast>
           <bal-toast color="success">Toast Message</bal-toast>
           <bal-toast color="warning">Toast Message</bal-toast>
+        </section>
+
+        <!-- Not Closable -->
+        <section>
+          <bal-toast closable="false">Toast Message</bal-toast>
         </section>
       </main>
     </bal-doc-app>

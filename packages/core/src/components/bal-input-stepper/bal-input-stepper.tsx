@@ -8,12 +8,12 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Listen,
   Method,
   State,
+  Listen,
 } from '@stencil/core'
 import Big from 'big.js'
-import { formatLocaleNumber } from '@baloise/web-app-utils'
+import { formatLocaleNumber } from '../../utils/number'
 import { debounceEvent, rIC } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
@@ -300,7 +300,7 @@ export class InputStepper
             }}
             data-testid="bal-input-stepper-text"
           >
-            {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
+            {formatLocaleNumber(this.value)}
           </bal-text>
           <bal-button
             aria={{

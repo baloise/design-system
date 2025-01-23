@@ -2,7 +2,7 @@ import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
-import { debounce, rIC } from '../../utils/helpers'
+import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { startFocusVisible } from '../../utils/focus-visible'
 
@@ -34,7 +34,9 @@ export class App implements Loggable {
   @Prop({ reflect: true, mutable: true }) ready = false
 
   connectedCallback() {
-    updateBalAnimated(this.animated)
+    if (this.animated === false) {
+      updateBalAnimated(this.animated)
+    }
 
     if (balBrowser.hasWindow) {
       window.addEventListener('resize', this.debouncedNotify)
@@ -43,9 +45,16 @@ export class App implements Loggable {
   }
 
   componentDidLoad() {
-    rIC(async () => {
+    rIC(() => {
       this.ready = true
       startFocusVisible()
+    })
+
+    rOnLoad(() => {
+      if (balBrowser.hasDocument && balBrowser.hasWindow) {
+        const doc = document.documentElement
+        doc.classList.add('lcp-ready')
+      }
     })
   }
 

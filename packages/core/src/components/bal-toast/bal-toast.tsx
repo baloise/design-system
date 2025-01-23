@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-toast',
@@ -20,6 +21,11 @@ export class Toast {
    * The duration of the toast in milliseconds.
    */
   @Prop() duration = 0
+
+  /**
+   * If `true` the toast has a cross icon to close the toast.
+   */
+  @Prop() closable = true
 
   /**
    * Content message
@@ -61,21 +67,31 @@ export class Toast {
     this.closeHandler()
   }
 
-  get colorType() {
-    if (this.color === '') {
-      return ''
-    }
-    return `bal-toast__inner--is-${this.color}`
-  }
-
   render() {
+    const block = BEM.block('toast')
+    const innerEl = block.element('inner')
+    const labelEl = block.element('label')
+    const closeEl = block.element('close')
+
     return (
-      <Host id={this.toastId} class="bal-toast">
-        <div role="alert" onClick={() => this.close()} class={`bal-toast__inner ${this.colorType}`}>
-          <span class="bal-toast__label" innerHTML={this.message} data-testid="bal-toast-label">
+      <Host id={this.toastId} class={{ ...block.class() }}>
+        <div
+          role="status"
+          class={{ ...innerEl.class(), ...innerEl.modifier(`color-${this.color}`).class(!!this.color) }}
+        >
+          <span class={{ ...labelEl.class() }} data-testid="bal-toast-label" innerHTML={this.message}>
             <slot />
           </span>
-          <bal-close class="bal-toast__close" inverted={false} data-testid="bal-toast-close"></bal-close>
+          {this.closable !== false ? (
+            <bal-close
+              class={{ ...closeEl.class() }}
+              onClick={() => this.close()}
+              inverted={false}
+              data-testid="bal-toast-close"
+            ></bal-close>
+          ) : (
+            ''
+          )}
         </div>
       </Host>
     )

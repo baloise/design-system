@@ -6,24 +6,23 @@ import {
   Prop,
   Method,
   State,
-  Listen,
   Element,
   Event,
   EventEmitter,
   Watch,
+  Listen,
 } from '@stencil/core'
-import { isSpaceKey } from '@baloise/web-app-utils'
-import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom'
+import { isSpaceKey } from '../../utils/keyboard'
 import { i18nBalDate } from './bal-date.i18n'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalDate } from '../../utils/date'
 import { inheritAttributes } from '../../utils/attributes'
 import { stopEventBubbling } from '../../utils/form-input'
-import { BalConfigState, ListenToConfig, defaultConfig } from '../../utils/config'
-import { BalAriaForm, BalLanguage } from '../../interfaces'
+import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { debounceEvent } from '../../utils/helpers'
-import { defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
+import { BalAriaForm, defaultBalAriaForm, BalAriaFormLinking } from '../../utils/form'
+import { balFloatingUi } from '../../utils/floating-ui'
 
 @Component({
   tag: 'bal-date',
@@ -100,6 +99,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
    * Closes the datepicker popover after selection
    */
   @Prop() closeOnSelect = true
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
@@ -258,7 +262,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     }
   }
 
-  @Listen('balPopoverPrepare', { target: 'body' })
+  @Listen('balPopoverPrepare', { target: 'document' })
   async listenOnPopoverPrepare(ev: CustomEvent<string>) {
     // dismiss this popover, because another will open
     if (this.inputId !== ev.detail) {
@@ -363,10 +367,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
 
   private async expand(): Promise<boolean> {
     if (this.referenceEl && this.floatingEl) {
+      const lib = await balFloatingUi.load()
       this.balPopoverPrepare.emit(this.inputId)
       this.balWillAnimate.emit()
       this.isExpanded = true
-      this.popupCleanup = autoUpdate(this.referenceEl, this.floatingEl, () => {
+      this.popupCleanup = lib.autoUpdate(this.referenceEl, this.floatingEl, () => {
         this.updatePosition(this.referenceEl as HTMLElement, this.floatingEl as HTMLElement)
       })
     }
@@ -386,17 +391,20 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     return this.isExpanded
   }
 
-  private updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
-    computePosition(referenceEl, floatingEl, {
-      placement: 'bottom-start',
-      middleware: [offset(4), flip({ crossAxis: false })],
-    }).then(({ x, y }) => {
-      Object.assign(floatingEl.style, {
-        left: `${x}px`,
-        top: `${y}px`,
+  private async updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
+    const lib = await balFloatingUi.load()
+    lib
+      .computePosition(referenceEl, floatingEl, {
+        placement: 'bottom-start',
+        middleware: [lib.offset(4), lib.flip({ crossAxis: false })],
       })
-      this.balDidAnimate.emit()
-    })
+      .then(({ x, y }) => {
+        Object.assign(floatingEl.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        })
+        this.balDidAnimate.emit()
+      })
   }
 
   /**
@@ -498,6 +506,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
             readonly={this.readonly}
             disabled={this.disabled}
             allowInvalidValue={this.allowInvalidValue}
+            autocomplete={this.autocomplete}
             onClick={this.onInputClick}
             onBalInput={this.onInputInput}
             onBalChange={this.onInputChange}

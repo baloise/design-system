@@ -8,8 +8,8 @@ import {
   Event,
   Method,
   ComponentInterface,
-  State,
   Listen,
+  State,
 } from '@stencil/core'
 import { isDescendant } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -18,7 +18,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
 import { inheritAttributes } from '../../utils/attributes'
 import { stopEventBubbling } from '../../utils/form-input'
-import { isSpaceKey } from '@baloise/web-app-utils'
+import { isSpaceKey } from '../../utils/keyboard'
 import { BalElementStateInfo } from '../../utils/element-states'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 

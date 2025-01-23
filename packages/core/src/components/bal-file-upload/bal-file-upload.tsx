@@ -1,4 +1,4 @@
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Watch, Method, Listen } from '@stencil/core'
 import {
   FormInput,

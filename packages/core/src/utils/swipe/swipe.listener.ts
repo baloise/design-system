@@ -1,7 +1,7 @@
 import type { PointerListener } from 'contactjs'
 import { ListenerAbstract } from '../types/listener'
 import { BalSwipeInfo } from './swipe.interfaces'
-import { rIC } from '../helpers'
+import { rOnLoad } from '../helpers'
 
 export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, BalSwipeInfo> {
   private PointerListenerLib: typeof PointerListener | undefined
@@ -24,7 +24,7 @@ export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, Bal
 
   private async loadLib(): Promise<void> {
     return new Promise((resolve, reject) => {
-      rIC(async () => {
+      rOnLoad(async () => {
         import(/* @vite-ignore */ 'contactjs')
           .then(module => {
             this.PointerListenerLib = module.PointerListener

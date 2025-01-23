@@ -21,7 +21,7 @@ describe('bal-steps', () => {
       },
     })
 
-    cy.get('.bal-steps').find('.bal-steps__nav__carousel__item').eq(0).click()
+    cy.get('.bal-steps').find('.bal-steps__nav__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('1')

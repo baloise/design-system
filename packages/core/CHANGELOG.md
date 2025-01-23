@@ -1,5 +1,181 @@
 # Changelog
 
+## 17.3.0
+
+### Minor Changes
+
+- **toast**: improve a11y with animation, icon and size options ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **spinner**: add white options for the circle spinner ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **snackbar**: add a11y features ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+- **notification**: add new light variant and adjust with icons for a better a11y experience ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+### Patch Changes
+
+- **dropdown**: hide collapsed menu list with the options when not open ( [#1574](https://github.com/baloise/design-system/pull/1574))
+
+## 17.2.5
+
+### Patch Changes
+
+- **carousel**: show controls on firefox ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **hint**: set styles for content ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: load value initialy to tabs when select on mobile ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+- **tabs**: adjust border widht on expanded mode ( [#1572](https://github.com/baloise/design-system/pull/1572))
+
+## 17.2.4
+
+### Patch Changes
+
+- **footer**: adjust position when footer is sticky. Use native select for language selection for better performance and improve a11y by adding labels ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **carousel**: fix combination with tabs ( [#1567](https://github.com/baloise/design-system/pull/1567))
+
+- **core**: reset block style of bal-app to fix sticky footer ( [#1566](https://github.com/baloise/design-system/pull/1566))
+
+## 17.2.3
+
+### Patch Changes
+
+- **carousel**: fix space and size issue with the product slider ( [#1564](https://github.com/baloise/design-system/pull/1564))
+
+## 17.2.2
+
+### Patch Changes
+
+- **core**: improve performance by listening to the load event instead of LCP ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize the resize observer to only notify when width or height changes of the component ( [#1559](https://github.com/baloise/design-system/pull/1559))
+
+- **carousel**: refactor carousel into a util ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **steps**: improve a11y and remove unused carousel component ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: optimize mutation observer to ignore certain records ( [#1560](https://github.com/baloise/design-system/pull/1560))
+
+- **tabs**: refactor to solve a11y issues ( [#1544](https://github.com/baloise/design-system/pull/1544))
+
+- **core**: update stencil to fix event issue ( [#1557](https://github.com/baloise/design-system/pull/1557))
+
+- **core**: optimize style util to calc width of components ( [#1561](https://github.com/baloise/design-system/pull/1561))
+
+## 17.2.1
+
+### Patch Changes
+
+- **tabs**: load tabs before largest content paint ( [#1553](https://github.com/baloise/design-system/pull/1553))
+
+## 17.2.0
+
+### Minor Changes
+
+- **core**: disable animation by set local storage key baloise-animated to false ( [#1551](https://github.com/baloise/design-system/pull/1551))
+
+- **styles**: add pointer-events css help classes ( [#1547](https://github.com/baloise/design-system/pull/1547))
+
+### Patch Changes
+
+- **accordion**: remove overflow hidden when expanded ( [#1548](https://github.com/baloise/design-system/pull/1548))
+
+## 17.1.0
+
+### Minor Changes
+
+- **accordion**: add expanded prop to change button width ( [#1530](https://github.com/baloise/design-system/pull/1530))
+
+- **brand-icons**: add liability umbrella ( [#1527](https://github.com/baloise/design-system/pull/1527))
+
+- **Tabs**: Added properties `svg` and `sublabel` to `bal-tab-items` component and `dimInactiveElements` to `bal-tabs` and adjusted the appearance of the component. ( [#1524](https://github.com/baloise/design-system/pull/1524))
+
+- **footer**: Introduce overrideLinks property to enable consumers to change the legal links in the footer ( [#1540](https://github.com/baloise/design-system/pull/1540))
+
+- **dropdown**: add new props to support the filter style ( [#1525](https://github.com/baloise/design-system/pull/1525))
+
+### Patch Changes
+
+- **dropdown**: add missing hover background ( [#1525](https://github.com/baloise/design-system/pull/1525))
+
+- **text**: introduce autocomplete for bal-textarea ( [#1539](https://github.com/baloise/design-system/pull/1539))
+
+- **date**: introduce autocomplete for bal-date ( [#1539](https://github.com/baloise/design-system/pull/1539))
+
+- **nav**: solves insert node issue with main tabs ( [#1537](https://github.com/baloise/design-system/pull/1537))
+
+- **segment**: calculate widht after animation event ( [#1533](https://github.com/baloise/design-system/pull/1533))
+
+## 17.0.0
+
+### Major Changes
+
+- Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
+
+### Minor Changes
+
+- **list**: new bullet icon arrow down ( [#1515](https://github.com/baloise/design-system/pull/1515))
+
+- **core**: update `stencil` to 4.22.3 for performance reasons ( [#1504](https://github.com/baloise/design-system/pull/1504))
+
+- **core**: add new css helper classes .lcp-wait to hide an element until largest content paint is reached ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **styles**: provide a basic.css file without the utilities css classes to keep the css bundle small to improve performance ( [#1503](https://github.com/baloise/design-system/pull/1503))
+
+### Patch Changes
+
+- **core**: lazy load floating ui lib to improve largest content paint ( [#1516](https://github.com/baloise/design-system/pull/1516))
+
+- **core**: performanct update to load animations of logo and spinner after LCP ( [#1511](https://github.com/baloise/design-system/pull/1511))
+
+- **carousel**: load images and controls after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **button**: load icons and spinner after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **icon**: load icon after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **stage**: load image after largest content paint ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **core**: bal-time-input: do not hide am/pm for all regions to be able to enter a valid date ( [#1512](https://github.com/baloise/design-system/pull/1512))
+
+- **tabs**: improve performace for tabs rendering ( [#1513](https://github.com/baloise/design-system/pull/1513))
+
+- **core**: reduce initial bundle size by removing web-app-utils ( [#1507](https://github.com/baloise/design-system/pull/1507))
+
+- **core**: set button type to prevent submitting a form with the clear of the dropdown ( [#1509](https://github.com/baloise/design-system/pull/1509))
+
+## 16.8.0
+
+### Minor Changes
+
+- **form**: add form class prop to style inner form element ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
+### Patch Changes
+
+- **form**: add missing basic styles ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
+- **form**: scrollToFirstInvalidField waits for browser to be ready to fix angular render issue ( [#1491](https://github.com/baloise/design-system/pull/1491))
+
+## 16.7.0
+
+### Minor Changes
+
+- **icon**: add new arrow-down icon ( [#1483](https://github.com/baloise/design-system/pull/1483))
+
+### Patch Changes
+
+- **segment**: triggers change when selecting with space or enter key ( [#1486](https://github.com/baloise/design-system/pull/1486))
+
+- **segment**: improve vertical rendering for the initial render ( [#1486](https://github.com/baloise/design-system/pull/1486))
+
+## 16.6.0
+
+### Minor Changes
+
+- **divider**: add new border style dashed ( [#1484](https://github.com/baloise/design-system/pull/1484))
+
 ## 16.5.2
 
 ### Patch Changes

@@ -39,7 +39,7 @@ if (IS_BAL_TESTING) {
 }
 
 const workspaceDir = join(parse(__dirname).dir, '..')
-const packagesDir = join(workspaceDir, 'packages')
+const packagesDir = join('../..')
 const nodeModulesProject = join(__dirname, 'node_modules')
 const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
@@ -103,17 +103,22 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-          dest: 'assets/theme-compact.css',
+          dest: 'assets/compact.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
-          dest: 'assets/baloise-design-system-old.css',
+          dest: 'assets/baloise-design-system.css',
           warn: true,
         },
         {
           src: join(packagesDir, 'styles', 'css', 'all.css'),
-          dest: 'assets/baloise-design-system.css',
+          dest: 'assets/all.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
+          dest: 'assets/basic.min.css',
           warn: true,
         },
         {
@@ -124,6 +129,11 @@ export const config: Config = {
         {
           src: join(packagesDir, 'fonts', 'assets'),
           dest: 'assets/fonts',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'brand-icons', 'src', 'assets'),
+          dest: 'assets/images/brand-icons',
           warn: true,
         },
       ],
@@ -216,7 +226,6 @@ export const config: Config = {
     //
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },
-    { components: ['bal-datepicker'] },
     { components: ['bal-dropdown'] },
     { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
     { components: ['bal-file-upload'] },

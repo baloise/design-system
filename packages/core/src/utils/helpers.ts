@@ -26,6 +26,60 @@ import {
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
+/**
+ * Request Largest Contentful Paint (LCP) callback
+ */
+export const rLCP = (callback: () => void, timeout = 3000) => {
+  let isLargestContentPatinDone = false
+  if (!balBrowser.isSafari && balBrowser.hasWindow && 'PerformanceObserver' in window) {
+    const observer = new PerformanceObserver(entryList => {
+      const entries = entryList.getEntries()
+      const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
+      if (lcpEntry) {
+        // Disconnect the observer as we only need the LCP
+        observer.disconnect()
+
+        // Load the script after LCP
+        isLargestContentPatinDone = true
+        rIC(() => callback())
+      }
+    })
+
+    // Start observing for Largest Contentful Paint (LCP) entries
+    observer.observe({ type: 'largest-contentful-paint', buffered: true })
+
+    setTimeout(() => {
+      if (!isLargestContentPatinDone) {
+        observer.disconnect()
+        callback()
+      }
+    }, timeout)
+  } else {
+    return setTimeout(callback, 32)
+  }
+}
+
+export const rOnLoad = (callback: () => void, timeout = 32) => {
+  let called = false
+
+  const callOnce = () => {
+    if (!called) {
+      called = true
+      callback()
+    }
+  }
+
+  if (balBrowser.hasWindow) {
+    const timer = setTimeout(callOnce, timeout)
+    window.addEventListener('load', () => {
+      clearTimeout(timer)
+      callOnce()
+    })
+  } else {
+    setTimeout(callOnce, 32)
+  }
+}
+
 export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
@@ -46,6 +100,14 @@ export const debounceEvent = (ev: EventEmitter, wait: number): EventEmitter => {
     _original: ev,
     emit: debounce(original.emit.bind(original), wait),
   } as EventEmitter
+}
+
+export const debounceLCP = (func: (...args: any[]) => void, wait = 0) => {
+  let timer: any
+  return (...args: any[]): any => {
+    clearTimeout(timer)
+    timer = setTimeout(func, wait, ...args)
+  }
 }
 
 export const debounce = (func: (...args: any[]) => void, wait = 0) => {
@@ -233,9 +295,23 @@ export const waitForComponent = async (el: HTMLElement | null) => {
   await waitAfterIdleCallback()
 }
 
-export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: () => void) => {
-  if (ev && ev.target && el && el !== ev.target && isDescendant(ev.target as HTMLElement, el)) {
-    callback()
+export const isChildOfEventTarget = async (
+  ev: any,
+  el: HTMLElement | Window | Document,
+  callback: (target: HTMLElement) => void,
+) => {
+  if (ev && ev.target && el && el !== ev.target) {
+    let target = ev.target as HTMLElement
+
+    // special case for the navbar case
+    const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
+    if (isNavbarBrand) {
+      target = target.closest('bal-navbar')
+    }
+
+    if (target && isDescendant(target, el)) {
+      callback(target)
+    }
   }
 }
 
@@ -281,8 +357,8 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       }),
     )
   }
-  await waitAfterFramePaint()
-  await waitAfterIdleCallback()
+
+  await Promise.all([waitAfterFramePaint(), waitAfterLargestContentfulPaintCallback(), waitAfterIdleCallback()])
 }
 
 export const waitAfterFramePaint = () => {
@@ -291,6 +367,14 @@ export const waitAfterFramePaint = () => {
 
 export const waitAfterIdleCallback = () => {
   return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitAfterLargestContentfulPaintCallback = () => {
+  return new Promise(resolve => rLCP(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitOnLoadEventCallback = () => {
+  return new Promise(resolve => rOnLoad(() => runHighPrioritizedTask(resolve)))
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {

@@ -45,6 +45,10 @@ describe('bal-dropdown', () => {
       cy.getByPlaceholder('visual-form-field').click()
       cy.getByTestId('form-field').testVisual(`dropdown-${platform}-form-field-empty-open`)
     })
+
+    it('small-purple', () => {
+      cy.getByTestId('small-purple').testVisual(`dropdown-${platform}-small-purple`)
+    })
   })
 
   context('states', () => {

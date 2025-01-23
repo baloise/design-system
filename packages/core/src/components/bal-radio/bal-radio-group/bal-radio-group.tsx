@@ -8,8 +8,8 @@ import {
   Event,
   Watch,
   ComponentInterface,
-  Listen,
   Method,
+  Listen,
   State,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'

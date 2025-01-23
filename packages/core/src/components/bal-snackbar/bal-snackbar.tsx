@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-snackbar',
@@ -9,8 +10,6 @@ export class Snackbar {
 
   private timer!: NodeJS.Timeout
   private snackbarId = `bal-snackbar-${snackbarIds++}`
-
-  @State() animationClass = 'fadeInDown'
 
   /**
    * The theme type of the snackbar.
@@ -103,64 +102,95 @@ export class Snackbar {
     this.actionHandler()
   }
 
-  get colorType() {
-    if (this.color === '') {
-      return ''
-    }
-    return `bal-snackbar__inner--is-${this.color}`
-  }
+  // get colorType() {
+  //   if (this.color === '') {
+  //     return ''
+  //   }
+  //   return `bal-snackbar__inner--is-${this.color}`
+  // }
 
-  get buttonType(): BalProps.BalButtonColor {
-    if (this.color === '') {
-      return 'info'
-    }
-    return this.color
-  }
+  // get buttonType(): BalProps.BalButtonColor {
+  //   if (this.color === '') {
+  //     return 'info'
+  //   }
+  //   return this.color
+  // }
 
   render() {
-    const labelAttributes = {} as any
+    const block = BEM.block('snackbar')
+    const detailsEl = block.element('details')
+    const buttonWrapperEl = block.element('button-wrapper')
+
+    const subjectId = this.snackbarId + '-subject'
+
+    const messageAttributes = {} as any
     if (this.message !== undefined && this.message !== '') {
-      labelAttributes.innerHTML = this.message
+      messageAttributes.innerHTML = this.message
     }
 
+    const isIconDefined = this.icon !== undefined && this.icon !== null && this.icon !== ''
+    const colorIcons = {
+      info: 'info-circle',
+      primary: 'info-circle',
+      warning: 'alert-triangle',
+      danger: 'alert-triangle',
+      success: 'check-circle',
+    }
+    const icon = isIconDefined ? this.icon : colorIcons[this.color || 'info']
+
     return (
-      <Host id={this.snackbarId} class="bal-snackbar">
-        <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType}`}>
-          <div class="bal-snackbar__header">
-            <span class="icon-text">
-              <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
-                <bal-icon name={this.icon} color={'primary'}></bal-icon>
-              </span>
-              <bal-heading level="h5" space="none" data-testid="bal-snackbar-heading">
-                {this.subject}
-              </bal-heading>
+      <Host
+        id={this.snackbarId}
+        role="alertdialog"
+        class={{ ...block.class(), ...block.modifier(`color-${this.color}`).class(!!this.color) }}
+        aria-labelledby={subjectId}
+      >
+        <div
+          class={{
+            ...detailsEl.class(),
+          }}
+        >
+          <div
+            aria-hidden="true"
+            class={{
+              ...detailsEl.element('icon').class(),
+              ...detailsEl.element('icon').modifier('masked').class(!isIconDefined),
+              ...detailsEl.element('icon').modifier(`color-${this.color}`).class(!isIconDefined),
+            }}
+          >
+            {isIconDefined ? <bal-icon name={icon} color={'primary'} size="medium"></bal-icon> : ''}
+          </div>
+          <div class={{ ...detailsEl.element('content').class() }}>
+            <h2 id={subjectId}>{this.subject}</h2>
+            <span {...messageAttributes}>
+              <slot />
+              <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
             </span>
           </div>
-          <span class="bal-snackbar__label" data-testid="bal-snackbar-label" {...labelAttributes}>
-            <slot />
-            <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
-          </span>
-          <bal-close
-            class="bal-snackbar__close"
-            data-testid="bal-snackbar-close"
-            onClick={() => this.close()}
-          ></bal-close>
-          {this.action ? (
-            <div class="bal-snackbar__footer">
-              <bal-button
-                color="info"
-                href={this.href}
-                target={this.target}
-                onClick={() => this.onActionHandler()}
-                data-testid="bal-snackbar-action"
-              >
-                {this.action}
-              </bal-button>
-            </div>
-          ) : (
-            ''
-          )}
+          <div class={{ ...detailsEl.element('close').class() }}>
+            <bal-close
+              class="bal-snackbar__close"
+              data-testid="bal-snackbar-close"
+              onClick={() => this.close()}
+            ></bal-close>
+          </div>
         </div>
+        {this.action ? (
+          <div class={{ ...buttonWrapperEl.class() }}>
+            <bal-button
+              color="info"
+              size="small"
+              href={this.href}
+              target={this.target}
+              onClick={() => this.onActionHandler()}
+              data-testid="bal-snackbar-action"
+            >
+              {this.action}
+            </bal-button>
+          </div>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }

@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, Watch, ComponentInterface, State } from '@stencil/core'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { rIC } from '../../utils/helpers'
+import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
@@ -165,7 +165,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
       if (this.animationFunction) {
         return resolve()
       } else {
-        rIC(async () => {
+        rOnLoad(async () => {
           import(/* @vite-ignore */ './bal-spinner.animation')
             .then(module => {
               this.animationFunction = module.animate
@@ -201,6 +201,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
           ...block.modifier('circle').class(this.variation === 'circle'),
           ...block.modifier('small').class(this.small),
           ...block.modifier('animated').class(this.animated),
+          ...block.modifier(`color-${this.color}`).class(this.variation === 'circle'),
         }}
         role="progressbar"
         aria-hidden="true"

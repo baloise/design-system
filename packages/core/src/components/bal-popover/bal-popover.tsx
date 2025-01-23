@@ -2,7 +2,6 @@ import {
   Component,
   h,
   Host,
-  Listen,
   Method,
   Prop,
   Watch,
@@ -10,6 +9,7 @@ import {
   Event,
   EventEmitter,
   State,
+  Listen,
   ComponentInterface,
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
@@ -33,7 +33,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
 
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
 
   @State() isTouch = balBreakpoints.isTouch
   @State() isInMainNav = false
@@ -209,11 +209,11 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     if (balBrowser.isSafari && !this.isTouch) {
       clearTimeout(this.componentDidRenderTimer)
       this.componentDidRenderTimer = setTimeout(() => {
-        const triggerWidth = this.element?.clientWidth
+        const triggerWidth = this.el?.clientWidth
         if (triggerWidth) {
-          this.element.style.maxWidth = `${triggerWidth}px`
+          this.el.style.maxWidth = `${triggerWidth}px`
         } else {
-          this.element.style.maxWidth = `initial`
+          this.el.style.maxWidth = `initial`
         }
       })
     }
@@ -224,7 +224,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
    * ------------------------------------------------------
    */
 
-  @Listen('balPopoverPrepare', { target: 'body' })
+  @Listen('balPopoverPrepare', { target: 'document' })
   handlePopoverPrepare(ev: CustomEvent<string>) {
     const popoverId = ev.detail
     if (this.popoverId !== popoverId) {
@@ -235,7 +235,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
   @Listen('click', { target: 'document' })
   async clickOnOutside(ev: UIEvent) {
     if (this.active) {
-      if (!this.element.contains(ev.target as Node)) {
+      if (!this.el.contains(ev.target as Node)) {
         this.active = false
       }
 
@@ -255,7 +255,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
 
   @Listen('keyup', { target: 'document' })
   async tabOutside(ev: KeyboardEvent) {
-    if (ev.key === 'Tab' && !this.element.contains(document.activeElement) && this.active) {
+    if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.active) {
       await this.toggle()
     }
   }
@@ -336,7 +336,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
    */
 
   private get footMobileNav(): HTMLElement | null {
-    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
+    return this.el.closest('[slot="meta-mobile-foot"]') as HTMLElement
   }
 
   private get modifierOffset(): Partial<OffsetModifier> {
@@ -359,15 +359,15 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
   }
 
   private get triggerElement(): HTMLElement | null {
-    return this.element.querySelector('[bal-popover-trigger]')
+    return this.el.querySelector('[bal-popover-trigger]')
   }
 
   private get menuElement(): HTMLElement | null {
-    return this.element.querySelector('bal-popover-content')
+    return this.el.querySelector('bal-popover-content')
   }
 
   private get menuInnerElement(): HTMLElement | null {
-    return this.element.querySelector('.bal-popover__content__inner')
+    return this.el.querySelector('.bal-popover__content__inner')
   }
 
   private getBackdropHeight() {

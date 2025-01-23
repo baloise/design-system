@@ -6,13 +6,13 @@ import {
   Element,
   Prop,
   State,
-  Listen,
   Watch,
   Method,
   EventEmitter,
+  Listen,
   Event,
 } from '@stencil/core'
-import { isEscapeKey } from '@baloise/web-app-utils'
+import { isEscapeKey } from '../../utils/keyboard'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -225,7 +225,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
-  @Listen('keydown', { target: 'body' })
+  @Listen('keydown', { target: 'document' })
   async listenOnKeyDown(ev: KeyboardEvent) {
     if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)

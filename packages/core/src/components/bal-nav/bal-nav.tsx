@@ -7,10 +7,10 @@ import {
   Prop,
   State,
   Watch,
-  Listen,
   Method,
   EventEmitter,
   Event,
+  Listen,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'

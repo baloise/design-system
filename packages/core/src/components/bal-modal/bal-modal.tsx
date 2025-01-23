@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
+import { Component, Host, h, State, Method, Prop, Event, EventEmitter, Element, writeTask, Listen } from '@stencil/core'
 import { dismiss, eventMethod, prepareOverlay } from '../../utils/overlays/overlays'
 import { attachComponent, detachComponent } from '../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
@@ -252,7 +252,7 @@ export class Modal implements OverlayInterface {
     this.isClickedOutsideOnMouseUp = this.isClickedOutside(ev)
   }
 
-  @Listen('keyup', { target: 'body' })
+  @Listen('keyup', { target: 'document' })
   async handleKeyUp(ev: KeyboardEvent) {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
     const numbers = modals

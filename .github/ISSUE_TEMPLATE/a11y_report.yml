@@ -16,6 +16,13 @@ body:
       description: Describe action that can be taken to remediate the issue.
     validations:
       required: true
+  - type: input
+    id: reproduction-url
+    attributes:
+      label: Code Reproduction URL
+      description: Provide a URL to reproduce the issue
+    validations:
+      required: true
   - type: textarea
     id: additional-information
     attributes:

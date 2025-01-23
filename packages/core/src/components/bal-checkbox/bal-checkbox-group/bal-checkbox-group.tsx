@@ -1,4 +1,4 @@
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../../utils/array'
 import {
   Component,
   h,
@@ -9,9 +9,9 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Listen,
   Method,
   State,
+  Listen,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { hasTagName, isDescendant } from '../../../utils/helpers'

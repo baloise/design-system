@@ -4,6 +4,8 @@ import { BEM } from '../bem'
 import { i18nBalDropdown } from './dropdown.i18n'
 
 export interface DropdownIconProps {
+  size: BalProps.BalDropdownSize
+  theme: BalProps.BalDropdownTheme
   language: BalLanguage
   loading: boolean
   clearable: boolean
@@ -15,6 +17,8 @@ export interface DropdownIconProps {
 }
 
 export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
+  size,
+  theme,
   icon,
   language,
   loading,
@@ -32,13 +36,24 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
     return (
       <button
         title={i18nBalDropdown[language].clearable}
+        type={'button'}
+        tabIndex={-1}
         class={{
           ...block.element('rear').class(),
           ...block.element('clear').class(),
           ...block.element('clear').modifier('invalid').class(invalid),
+          ...block
+            .element('clear')
+            .modifier('theme-purple')
+            .class(theme === 'purple'),
         }}
       >
-        <bal-icon class={{ ...block.element('rear').class() }} name={'close-circle'} size="" color={'grey'}></bal-icon>
+        <bal-icon
+          class={{ ...block.element('rear').class() }}
+          name={theme === 'purple' ? 'close' : 'close-circle'}
+          size={size}
+          color={theme === 'purple' ? 'primary' : 'grey'}
+        ></bal-icon>
       </button>
     )
   } else {
@@ -46,8 +61,9 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
       <bal-icon
         class={{ ...block.element('rear').class() }}
         name={icon}
+        size={size}
         turn={expanded}
-        color={disabled ? 'grey' : invalid ? 'danger' : 'primary'}
+        color={disabled ? 'grey' : invalid ? 'danger' : !filled && theme === 'purple' ? 'primary-light' : 'primary'}
       ></bal-icon>
     )
   }

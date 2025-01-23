@@ -1,34 +1,133 @@
 @import '@baloise/ds-styles/sass/mixins'
 @import './bal-notification.vars'
 
-+block(notification)
-  display: block
-  position: static
-  +element(inner)
-    min-height: 3.5rem
-    border-radius: var(--bal-notification-radius)
-    font-size: var(--bal-notification-font-size)
-    font-family: var(--bal-notification-font-family)
-    background: var(--bal-notification-background)
-    color: var(--bal-notification-color)
-    hyphens: auto
-    padding: var(--bal-space-medium)
+.bal-notification
+  display: flex
+  flex: 1
+  flex-direction: column
+  gap: 0.125rem
+  position: relative
+  min-height: 3.5rem
+  border-radius: var(--bal-notification-radius)
+  font-family: var(--bal-notification-font-family)
+  font-size: var(--bal-notification-font-size)
+  font-weight: var(--bal-font-weight-regular)
+  background: var(--bal-notification-background)
+  color: var(--bal-notification-color)
+  hyphens: auto
+  //
+  // spacing
+  padding: var(--bal-space-medium)
+  +tablet
+    padding: var(--bal-space-medium-tablet)
+  +desktop
+    padding: var(--bal-space-medium-desktop)
+  //
+  // content
+  & > strong,
+  & > b,
+  & > h2
+    font-family: var(--bal-notification-title-font-family)
+    font-weight: var(--bal-font-weight-bold)
+    font-size: var(--bal-notification-title-font-size)
+    line-height: var(--bal-text-line-height-title)
     +tablet
-      padding: var(--bal-space-medium-tablet)
+      font-size: var(--bal-notification-title-font-size-tablet)
     +desktop
-      padding: var(--bal-space-medium-desktop)
-    +modifier(color-primary)
-      background: var(--bal-notification-background-primary)
-      color: var(--bal-notification-color-primary)
-    +modifier(color-info)
-      background: var(--bal-notification-background-info)
-      color: var(--bal-notification-color-info)
-    +modifier(color-danger)
-      background: var(--bal-notification-background-danger)
-      color: var(--bal-notification-color-danger)
-    +modifier(color-warning)
-      background: var(--bal-notification-background-warning)
-      color: var(--bal-notification-color-warning)
-    +modifier(color-success)
-      background: var(--bal-notification-background-success)
-      color: var(--bal-notification-color-success)
+      font-size: var(--bal-notification-title-font-size-desktop)
+  & > span,
+  & > p
+    font-family: var(--bal-notification-font-family)
+    font-size: var(--bal-notification-font-size)
+    font-weight: var(--bal-font-weight-regular)
+    line-height: var(--bal-text-line-height-text)
+  //
+  // colors
+  &--color-light
+    border: 2px solid var(--bal-notification-border-primary)
+    background: var(--bal-notification-background-light-primary)
+    color: var(--bal-notification-color-primary)
+    border-radius: var(--bal-notification-light-radius)
+  &--color-primary
+    background: var(--bal-notification-background-primary)
+    color: var(--bal-notification-color-primary)
+  &--color-primary-light
+    border: 2px solid var(--bal-notification-border-primary)
+    background: var(--bal-notification-background-light-primary)
+    color: var(--bal-notification-color-primary)
+    border-radius: var(--bal-notification-light-radius)
+  &--color-info
+    background: var(--bal-notification-background-info)
+    color: var(--bal-notification-color-info)
+  &--color-info-light
+    border: 2px solid var(--bal-notification-border-info)
+    background: var(--bal-notification-background-light-info)
+    color: var(--bal-notification-color-info)
+    border-radius: var(--bal-notification-light-radius)
+  &--color-danger
+    background: var(--bal-notification-background-danger)
+    color: var(--bal-notification-color-danger)
+  &--color-danger-light
+    border: 2px solid var(--bal-notification-border-danger)
+    background: var(--bal-notification-background-light-danger)
+    color: var(--bal-notification-color-danger)
+    border-radius: var(--bal-notification-light-radius)
+  &--color-warning
+    background: var(--bal-notification-background-warning)
+    color: var(--bal-notification-color-warning)
+  &--color-warning-light
+    border: 2px solid var(--bal-notification-border-warning)
+    background: var(--bal-notification-background-light-warning)
+    color: var(--bal-notification-color-warning)
+    border-radius: var(--bal-notification-light-radius)
+  &--color-success
+    background: var(--bal-notification-background-success)
+    color: var(--bal-notification-color-success)
+  &--color-success-light
+    border: 2px solid var(--bal-notification-border-success)
+    background: var(--bal-notification-background-light-success)
+    color: var(--bal-notification-color-success)
+    border-radius: var(--bal-notification-light-radius)
+
+.bal-notification:not(.bal-notification--no-icon)
+  padding-left: 3rem
+
+.bal-notification:not(.bal-notification--no-icon):before
+  background-color: currentColor
+  color: currentColor
+  forced-color-adjust: preserve-parent-color
+  position: absolute
+  height: 1.5rem
+  width: 1.5rem
+  left: 0.825rem
+  top: 1.5rem
+  content: ""
+  display: block
+  background-color: var(--bal-color-primary)
+  -webkit-mask-repeat: no-repeat
+  mask-repeat: no-repeat
+  -webkit-mask-size: contain
+  mask-size: contain
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z" fill="black"/></svg>')
+
+.bal-notification--color-primary:not(.bal-notification--no-icon):before,
+.bal-notification--color-primary-light:not(.bal-notification--no-icon):before
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z" fill="black"/></svg>')
+.bal-notification--color-info:not(.bal-notification--no-icon):before,
+.bal-notification--color-info-light:not(.bal-notification--no-icon):before
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z" fill="black"/></svg>')
+.bal-notification--color-success:not(.bal-notification--no-icon):before,
+.bal-notification--color-success-light:not(.bal-notification--no-icon):before
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z" fill="black"/></svg>')
+.bal-notification--color-warning:not(.bal-notification--no-icon):before,
+.bal-notification--color-warning-light:not(.bal-notification--no-icon):before
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z" fill="black"/></svg>')
+.bal-notification--color-danger:not(.bal-notification--no-icon):before,
+.bal-notification--color-danger-light:not(.bal-notification--no-icon):before
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z" fill="black"/></svg>')
+  -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z" fill="black"/></svg>')

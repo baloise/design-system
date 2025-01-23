@@ -65,7 +65,7 @@ export const IconOverview = ({ children }) => {
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
           className={`${
-            color === 'green' ? 'bg-green-5 text-white' : 'background-green-1'
+            color === 'green' ? 'bg-green-5 text-white' : 'bg-green-1'
           } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Green

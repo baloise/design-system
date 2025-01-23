@@ -1,7 +1,6 @@
 export * from './bal-checkbox'
 export * from './bal-checkbox-group'
 export * from './bal-date'
-export * from './bal-datepicker'
 export * from './bal-file-upload'
 export * from './bal-input-date'
 export * from './bal-input-slider'

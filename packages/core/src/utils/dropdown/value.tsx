@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { areArraysEqual } from '../../utils/array'
 import isNil from 'lodash.isnil'
 import { DropdownComponent } from './component'
 import { BEM } from '../bem'
@@ -107,6 +107,7 @@ export class DropdownValueUtil {
 }
 
 export interface DropdownValueProps {
+  inlineLabel: string
   filled: boolean
   chips: boolean
   invalid: boolean
@@ -118,6 +119,7 @@ export interface DropdownValueProps {
 }
 
 export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
+  inlineLabel,
   filled,
   chips,
   placeholder,
@@ -149,7 +151,7 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
         </div>
       )
     } else {
-      return choices.map(option => option.label).join(', ')
+      return (inlineLabel && `${inlineLabel}: `) + choices.map(option => option.label).join(', ')
     }
   } else {
     return placeholder

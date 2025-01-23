@@ -6,11 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
-import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-import { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
+import { AccordionState } from "./interfaces";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
+import { FooterLink } from "@baloise/web-app-utils";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -18,11 +18,11 @@ import { SegmentValue } from "./components/bal-segment/bal-segment.types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
-export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
-export { BalCarouselItemData, BalSlide } from "./components/bal-carousel/bal-carousel.type";
+export { AccordionState } from "./interfaces";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
+export { FooterLink } from "@baloise/web-app-utils";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -106,6 +106,10 @@ export namespace Components {
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
+        /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded": boolean;
         /**
           * BalIcon of the open trigger button
          */
@@ -363,7 +367,7 @@ export namespace Components {
           * If `true` a light border is shown at the bottom.
          */
         "border": boolean;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the layout of the navigation controls.
          */
@@ -380,8 +384,9 @@ export namespace Components {
           * If `true` the carousel uses the full height
          */
         "fullHeight": boolean;
+        "getContainerId": () => Promise<string>;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole": 'tablist' | 'list' | '';
         /**
@@ -396,11 +401,11 @@ export namespace Components {
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
         "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
-        "next": (steps?: number) => Promise<BalSlide | undefined>;
+        "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
          */
-        "previous": (steps?: number) => Promise<BalSlide | undefined>;
+        "previous": (steps?: number) => Promise<void>;
         /**
           * If `true` vertical scrolling on mobile is enabled.
          */
@@ -427,13 +432,12 @@ export namespace Components {
           * The type of button.
          */
         "elementType": BalProps.BalButtonElementType;
-        "getData": () => Promise<BalCarouselItemData>;
         /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole": 'tab' | 'listitem' | '';
         /**
@@ -636,7 +640,7 @@ export namespace Components {
         "verticalOnMobile": boolean;
     }
     interface BalClose {
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` it supports dark backgrounds.
          */
@@ -716,6 +720,10 @@ export namespace Components {
          */
         "autoInvalidOff": boolean;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
           * Closes the accordion
          */
         "close": () => Promise<boolean>;
@@ -788,7 +796,7 @@ export namespace Components {
           * Selects an option
          */
         "select": (dateString: string) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm1) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */
@@ -854,107 +862,11 @@ export namespace Components {
         "today": boolean;
         "year"?: number;
     }
-    interface BalDatepicker {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates": BalProps.BalDatepickerCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Closes the popover
-         */
-        "close": () => Promise<void>;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement>;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading": boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Opens the popover
-         */
-        "open": () => Promise<void>;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required": boolean;
-        /**
-          * Selects an option
-         */
-        "select": (dateString: string) => Promise<void>;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon": boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
     interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "borderStyle": BalProps.BalDividerBorderStyle;
         /**
           * Defines the color of the separator line.
          */
@@ -1025,6 +937,10 @@ export namespace Components {
          */
         "icon": string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel": string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid": boolean;
@@ -1070,6 +986,14 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Defines the size of the control.
+         */
+        "size": BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme": BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
@@ -1288,11 +1212,19 @@ export namespace Components {
          */
         "hideLinks": boolean;
         /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks": FooterLink[] | undefined;
+        /**
           * If `true` the social media links will be shown.
          */
         "showSocialMedia": boolean;
     }
     interface BalForm {
+        /**
+          * The css class for the inner form element
+         */
+        "formClass": string;
         /**
           * If `true` a native form element is added as a wrapper of the slot.
          */
@@ -1566,7 +1498,7 @@ export namespace Components {
           * If `true` the input gets a clickable cursor style
          */
         "clickable": boolean;
-        "configChanged": (config: BalConfigState1) => Promise<void>;
+        "configChanged": (config: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -2118,6 +2050,8 @@ export namespace Components {
         "interface": BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -2125,6 +2059,14 @@ export namespace Components {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light": boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon": boolean;
     }
     interface BalNumberInput {
         /**
@@ -2350,7 +2292,7 @@ export namespace Components {
           * Align the buttons to start, center or end
          */
         "align": BalProps.BalPaginationAlignment;
-        "configChanged": (state: BalConfigState1) => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Disables component
          */
@@ -3212,6 +3154,14 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel": string;
+        /**
+          * source for the svg icon
+         */
+        "svg": string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
@@ -3249,6 +3199,10 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements": boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -3399,6 +3353,10 @@ export namespace Components {
          */
         "autocapitalize": string;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus": boolean;
@@ -3526,6 +3484,10 @@ export namespace Components {
     }
     interface BalToast {
         /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable": boolean;
+        /**
           * Closes this toast
          */
         "close": () => Promise<void>;
@@ -3613,10 +3575,6 @@ export interface BalDateCalendarCustomEvent<T> extends CustomEvent<T> {
 export interface BalDateCalendarCellCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDateCalendarCellElement;
-}
-export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDatepickerElement;
 }
 export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4058,28 +4016,6 @@ declare global {
     var HTMLBalDateCalendarCellElement: {
         prototype: HTMLBalDateCalendarCellElement;
         new (): HTMLBalDateCalendarCellElement;
-    };
-    interface HTMLBalDatepickerElementEventMap {
-        "balChange": BalEvents.BalDatepickerChangeDetail;
-        "balInput": BalEvents.BalDatepickerInputDetail;
-        "balBlur": BalEvents.BalDatepickerBlurDetail;
-        "balFocus": BalEvents.BalDatepickerFocusDetail;
-        "balInputClick": BalEvents.BalDatepickerInputClickDetail;
-        "balIconClick": BalEvents.BalDatepickerIconClickDetail;
-    }
-    interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalDatepickerElement: {
-        prototype: HTMLBalDatepickerElement;
-        new (): HTMLBalDatepickerElement;
     };
     interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
     }
@@ -5068,7 +5004,6 @@ declare global {
         "bal-date": HTMLBalDateElement;
         "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
-        "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -5235,6 +5170,10 @@ declare namespace LocalJSX {
           * The color to use from your application's color palette.
          */
         "color"?: BalProps.BalButtonColor;
+        /**
+          * If `true` the button is aligned over the whole width
+         */
+        "expanded"?: boolean;
         /**
           * BalIcon of the open trigger button
          */
@@ -5524,7 +5463,7 @@ declare namespace LocalJSX {
          */
         "fullHeight"?: boolean;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole"?: 'tablist' | 'list' | '';
         /**
@@ -5574,7 +5513,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Defines the role of the carousel.
+          * @deprecated Defines the role of the carousel.
          */
         "htmlRole"?: 'tab' | 'listitem' | '';
         /**
@@ -5886,6 +5825,10 @@ declare namespace LocalJSX {
          */
         "autoInvalidOff"?: boolean;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
           * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
@@ -6034,105 +5977,11 @@ declare namespace LocalJSX {
         "today"?: boolean;
         "year"?: number;
     }
-    interface BalDatepicker {
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "allowedDates"?: BalProps.BalDatepickerCallback | undefined;
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Closes the datepicker popover after selection
-         */
-        "closeOnSelect"?: boolean;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
-        "loading"?: boolean;
-        /**
-          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
-         */
-        "max"?: string;
-        /**
-          * Latest year available for selection
-         */
-        "maxYearProp"?: number;
-        /**
-          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
-         */
-        "min"?: string;
-        /**
-          * Earliest year available for selection
-         */
-        "minYearProp"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onBalBlur"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerBlurDetail>) => void;
-        /**
-          * Emitted when a option got selected.
-         */
-        "onBalChange"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerFocusDetail>) => void;
-        /**
-          * Emitted when the icon has clicked.
-         */
-        "onBalIconClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerIconClickDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalInputClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputClickDetail>) => void;
-        /**
-          * The text to display when the select is empty.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required"?: boolean;
-        /**
-          * If `true` the datepicker only open on click of the icon
-         */
-        "triggerIcon"?: boolean;
-        /**
-          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "value"?: string;
-    }
     interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "borderStyle"?: BalProps.BalDividerBorderStyle;
         /**
           * Defines the color of the separator line.
          */
@@ -6190,6 +6039,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel"?: string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid"?: boolean;
@@ -6234,6 +6087,14 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Defines the size of the control.
+         */
+        "size"?: BalProps.BalDropdownSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme"?: BalProps.BalDropdownTheme;
         /**
           * The value of the selected options.
          */
@@ -6465,11 +6326,19 @@ declare namespace LocalJSX {
          */
         "hideLinks"?: boolean;
         /**
+          * If provided, the footer links will be overridden.
+         */
+        "overrideLinks"?: FooterLink[] | undefined;
+        /**
           * If `true` the social media links will be shown.
          */
         "showSocialMedia"?: boolean;
     }
     interface BalForm {
+        /**
+          * The css class for the inner form element
+         */
+        "formClass"?: string;
         /**
           * If `true` a native form element is added as a wrapper of the slot.
          */
@@ -7336,6 +7205,8 @@ declare namespace LocalJSX {
         "interface"?: BalProps.BalNavbarInterface;
     }
     interface BalNotices {
+        "animated"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' | undefined;
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -7343,6 +7214,14 @@ declare namespace LocalJSX {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: BalProps.BalNotificationColor;
+        /**
+          * If `true` the notifications are presented in a light variant
+         */
+        "light"?: boolean;
+        /**
+          * If `true` there will be no icon provided
+         */
+        "noIcon"?: boolean;
     }
     interface BalNumberInput {
         /**
@@ -8374,6 +8253,14 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
+          * Sub label for the tab.
+         */
+        "subLabel"?: string;
+        /**
+          * source for the svg icon
+         */
+        "svg"?: string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: BalProps.BalButtonTarget;
@@ -8409,6 +8296,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * if true, inactive elements will have their opacity reduced
+         */
+        "dimInactiveElements"?: boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -8566,6 +8457,10 @@ declare namespace LocalJSX {
          */
         "autocapitalize"?: string;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus"?: boolean;
@@ -8709,6 +8604,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalToast {
+        /**
+          * If `true` the toast has a cross icon to close the toast.
+         */
+        "closable"?: boolean;
         "closeHandler"?: () => void;
         /**
           * The theme type of the toast. Color type primary is deprecated, please use info instead.
@@ -8783,7 +8682,6 @@ declare namespace LocalJSX {
         "bal-date": BalDate;
         "bal-date-calendar": BalDateCalendar;
         "bal-date-calendar-cell": BalDateCalendarCell;
-        "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
         "bal-dropdown": BalDropdown;
@@ -8907,7 +8805,6 @@ declare module "@stencil/core" {
             "bal-date": LocalJSX.BalDate & JSXBase.HTMLAttributes<HTMLBalDateElement>;
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
-            "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

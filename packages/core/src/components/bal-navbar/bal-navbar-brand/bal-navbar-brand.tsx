@@ -2,6 +2,7 @@ import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@
 import { BEM } from '../../../utils/bem'
 import { BalScrollHandler } from '../../../utils/scroll'
 import { balBrowser } from '../../../utils/browser'
+import { wait, waitAfterFramePaint, waitForRequestIdleCallback } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -109,6 +110,11 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
+
+    // wait for the default animation time to ensure
+    // the line of the tabs is at the correct position
+    await wait(300)
+
     this.balDidAnimate.emit(this.isMenuActive)
   }
 
@@ -120,7 +126,7 @@ export class NavbarBrand {
     const navbarBrandEl = BEM.block('navbar').element('brand')
 
     const logoTemplate = this.logo ? (
-      <img loading="lazy" class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
+      <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
       <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
     )

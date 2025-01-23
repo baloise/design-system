@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, Listen, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, State, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'

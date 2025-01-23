@@ -48,8 +48,8 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
   if (!config.sys || !config.sys.copy || !config.sys.glob) {
     throw new Error('stencil is not properly initialized at this step. Notify the developer')
   }
-  const srcDirectory = join(__dirname, '../../../', 'angular-component-lib')
-  const destDirectory = join(dirname(outputTarget.directivesProxyFile), 'angular-component-lib')
+  const srcDirectory = join(__dirname, '../../../angular-component-lib/utils.ts')
+  const destDirectory = join(dirname(outputTarget.directivesProxyFile), 'angular-component-lib/utils.ts')
 
   return config.sys.copy(
     [
@@ -58,6 +58,7 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
         dest: destDirectory,
         keepDirStructure: false,
         warn: false,
+        ignore: [],
       },
     ],
     srcDirectory,

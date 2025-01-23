@@ -28,8 +28,7 @@ import { waitAfterFramePaint } from '../../../utils/helpers'
 import { BEM } from '../../../utils/bem'
 import { CalendarList } from './components/bal-date-calendar__list'
 import { CalendarGrid } from './components/bal-date-calendar__gird'
-import { BalSwipeInfo, BalSwipeObserver } from '../../../interfaces'
-import { ListenToSwipe } from '../../../utils/swipe'
+import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../../utils/swipe'
 import { CalendarNav } from './components/bal-date-calendar__nav'
 
 @Component({

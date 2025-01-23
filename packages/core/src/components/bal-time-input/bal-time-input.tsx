@@ -5,12 +5,12 @@ import {
   Event,
   h,
   Host,
-  Listen,
   Method,
   State,
   Prop,
   EventEmitter,
   Watch,
+  Listen,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
@@ -221,7 +221,7 @@ export class TimeInput
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, ':']
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ':', 'A', 'M', 'P']
   }
 
   private getRawValue(): string {

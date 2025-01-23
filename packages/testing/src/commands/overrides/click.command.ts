@@ -2,7 +2,6 @@ import {
   isAccordion,
   isButton,
   isCheckbox,
-  isDatepicker,
   isRadio,
   isTag,
   hasClass,
@@ -35,10 +34,6 @@ Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress
 
   if (isCheckbox(element)) {
     return command(selectors.checkbox.label)
-  }
-
-  if (isDatepicker(element)) {
-    return command(selectors.datepicker.input)
   }
 
   if (isRadio(element)) {

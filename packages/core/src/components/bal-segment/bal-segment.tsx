@@ -9,8 +9,8 @@ import {
   EventEmitter,
   Watch,
   State,
-  Listen,
   writeTask,
+  Listen,
   Method,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
@@ -24,21 +24,31 @@ import {
   isEndKey,
   isArrowLeftKey,
   isArrowRightKey,
-} from '@baloise/web-app-utils'
+  isEnterKey,
+} from '../../utils/keyboard'
 import { stopEventBubbling } from '../../utils/form-input'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'
-import { raf } from '../../utils/helpers'
-import { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
-import { ListenToBreakpoints } from '../../utils/breakpoints'
+import { isDescendant, raf } from '../../utils/helpers'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
 import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
+import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
 
 @Component({
   tag: 'bal-segment',
   styleUrl: 'bal-segment.sass',
 })
-export class Segment implements ComponentInterface, BalWindowResizeObserver, BalBreakpointObserver, BalFocusObserver {
+export class Segment
+  implements
+    ComponentInterface,
+    BalWindowResizeObserver,
+    BalBreakpointObserver,
+    BalFocusObserver,
+    BalVisibilityObserver,
+    BalAnimationObserver
+{
   @Element() el!: HTMLElement
 
   log!: LogInstance
@@ -143,6 +153,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
     this.disabledChanged()
+    this.isVertical = this.vertical
   }
 
   disconnectedCallback() {
@@ -170,6 +181,20 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @ListenToFocus()
   focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
+  }
+
+  @ListenToAnimation()
+  animationListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
+  }
+
+  @ListenToVisibility()
+  visibilityListener(): void {
+    const childRect = this.el.getBoundingClientRect()
+    this.maxWidth = childRect.width
+    this.windowResizeListener()
   }
 
   @ListenToBreakpoints()
@@ -204,12 +229,14 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
   @Listen('keydown')
   listenOnKeyDown(ev: KeyboardEvent) {
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
+    let forceChange = false
 
     let current: undefined | HTMLBalSegmentItemElement
 
-    if (isSpaceKey(ev)) {
+    if (isSpaceKey(ev) || isEnterKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('current')
+      forceChange = this.value !== current.value
       this.value = current.value
     } else if (isArrowUpKey(ev) || isArrowLeftKey(ev)) {
       stopEventBubbling(ev)
@@ -230,7 +257,7 @@ export class Segment implements ComponentInterface, BalWindowResizeObserver, Bal
     }
 
     const previous = this.checked
-    if (current !== previous) {
+    if (current !== previous || forceChange) {
       this.checkButton(previous, current)
       this.emitValueChange()
     }

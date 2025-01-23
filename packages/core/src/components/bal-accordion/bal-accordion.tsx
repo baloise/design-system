@@ -288,12 +288,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     if (this.shouldAnimate()) {
       raf(() => {
         this.setState(AccordionState.Expanding)
+        this.balWillAnimate.emit(this.active)
 
         this.currentRaf = raf(async () => {
           const contentHeight = detailsWrapperElement.offsetHeight
           const waitForTransition = transitionEndAsync(detailsElement, 300)
           detailsElement.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit(this.active)
 
           await waitForTransition
 
@@ -453,6 +453,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
             class={{
               ...block.element('content').class(),
               ...block.element('content').modifier('card').class(this.card),
+              ...block
+                .element('content')
+                .modifier('overflow-hidden')
+                .class(this.state !== AccordionState.Expanded),
             }}
             ref={contentEl => (this.contentEl = contentEl)}
           >

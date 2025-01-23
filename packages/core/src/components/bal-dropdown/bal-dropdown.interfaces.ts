@@ -3,7 +3,10 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {}
+namespace BalProps {
+  export type BalDropdownSize = '' | 'small'
+  export type BalDropdownTheme = '' | 'purple'
+}
 
 namespace BalEvents {
   export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {

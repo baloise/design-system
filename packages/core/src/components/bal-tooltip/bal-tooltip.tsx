@@ -16,7 +16,7 @@ import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
-import { computePosition, offset, arrow, flip, autoUpdate, shift } from '@floating-ui/dom'
+import { balFloatingUi } from '../../utils/floating-ui'
 
 @Component({
   tag: 'bal-tooltip',
@@ -169,7 +169,8 @@ export class Tooltip implements ComponentInterface, Loggable {
       this.trigger.classList.add('bal-tooltip-trigger')
       this.presented = true
 
-      this.cleanup = autoUpdate(
+      const lib = await balFloatingUi.load()
+      this.cleanup = lib.autoUpdate(
         this.trigger,
         this.containerEl,
         () => {
@@ -228,45 +229,48 @@ export class Tooltip implements ComponentInterface, Loggable {
         isInFrame = !!window.frameElement
       }
 
-      computePosition(this.trigger, this.containerEl, {
-        placement: this.placement,
-        middleware: [
-          isInFrame ? undefined : shift(),
-          flip(),
-          offset(8),
-          arrow({
-            element: this.arrowEl,
-            padding: 4,
-          }),
-        ],
-      }).then(({ x, y, middlewareData, placement }) => {
-        const side = placement.split('-')[0]
+      const lib = await balFloatingUi.load()
+      lib
+        .computePosition(this.trigger, this.containerEl, {
+          placement: this.placement,
+          middleware: [
+            isInFrame ? undefined : lib.shift(),
+            lib.flip(),
+            lib.offset(8),
+            lib.arrow({
+              element: this.arrowEl,
+              padding: 4,
+            }),
+          ],
+        })
+        .then(({ x, y, middlewareData, placement }) => {
+          const side = placement.split('-')[0]
 
-        const staticSide = {
-          top: 'bottom',
-          right: 'left',
-          bottom: 'top',
-          left: 'right',
-        }[side] as string
+          const staticSide = {
+            top: 'bottom',
+            right: 'left',
+            bottom: 'top',
+            left: 'right',
+          }[side] as string
 
-        if (this.containerEl) {
-          Object.assign(this.containerEl.style, {
-            left: `${x}px`,
-            top: `${y}px`,
-          })
-        }
+          if (this.containerEl) {
+            Object.assign(this.containerEl.style, {
+              left: `${x}px`,
+              top: `${y}px`,
+            })
+          }
 
-        if (middlewareData.arrow && this.arrowEl) {
-          const arrowPosition = middlewareData.arrow
-          Object.assign(this.arrowEl.style, {
-            left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
-            top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-            right: '',
-            bottom: '',
-            [staticSide]: `${-4}px`,
-          })
-        }
-      })
+          if (middlewareData.arrow && this.arrowEl) {
+            const arrowPosition = middlewareData.arrow
+            Object.assign(this.arrowEl.style, {
+              left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
+              top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+              right: '',
+              bottom: '',
+              [staticSide]: `${-4}px`,
+            })
+          }
+        })
       this.balDidAnimate.emit()
 
       return true

@@ -5,11 +5,11 @@ import {
   Host,
   Element,
   Prop,
-  Listen,
   Event,
   EventEmitter,
   Method,
   State,
+  Listen,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
