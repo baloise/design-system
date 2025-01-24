@@ -2150,7 +2150,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: number;
+        "value"?: number | string;
     }
     interface BalOption {
         /**
@@ -7311,7 +7311,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: number;
+        "value"?: number | string;
     }
     interface BalOption {
         /**

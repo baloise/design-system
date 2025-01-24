@@ -31,4 +31,8 @@ describe('bal-number-input', () => {
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset').should('have.value', '42')
   })
+
+  it('should make sure values with thousand separators are accepted', () => {
+    cy.getByTestId('number-with-char').should('have.value', '42’000')
+  })
 })

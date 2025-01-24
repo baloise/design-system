@@ -59,7 +59,12 @@ import { ariaBooleanToString } from '../../utils/aria'
   styleUrl: 'bal-number-input.sass',
 })
 export class NumberInput
-  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
+  implements
+    ComponentInterface,
+    BalConfigObserver,
+    FormInput<number | string | undefined>,
+    BalAriaFormLinking,
+    Loggable
 {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
@@ -67,8 +72,8 @@ export class NumberInput
 
   lastValue = ''
   nativeInput?: HTMLInputElement
-  inputValue?: number = this.value
-  initialValue?: number = undefined
+  inputValue?: number | string = this.value
+  initialValue?: number | string = undefined
 
   @Element() el!: HTMLElement
 
@@ -164,14 +169,15 @@ export class NumberInput
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: number = undefined
+  @Prop({ mutable: true }) value?: number | string = undefined
 
   @Watch('value')
-  protected valueChanged(newValue: number | undefined, oldValue?: number) {
-    if (newValue !== oldValue) {
-      const isValueNotDefined = (newValue as any) === '' || isNil(newValue) || isNaN(newValue)
+  protected valueChanged(newValue: number | string | undefined, oldValue?: number) {
+    const newValueAsNumber: number | undefined = toNumber(newValue, this.decimal)
+    if (newValueAsNumber !== oldValue) {
+      const isValueNotDefined = (newValueAsNumber as any) === '' || isNil(newValueAsNumber) || isNaN(newValueAsNumber)
       const emptyValue = this.exactNumber ? '0' : ''
-      const value = isValueNotDefined ? emptyValue : newValue.toString()
+      const value = isValueNotDefined ? emptyValue : newValueAsNumber.toString()
 
       this.inputValue = toNumber(toFixedNumber(value, this.decimal), this.decimal)
       this.lastValue = toFixedNumber(value, this.decimal)
