@@ -123,9 +123,6 @@ export class Field implements ComponentInterface, BalMutationObserver {
     if (!parent) {
       return false
     }
-    if (parent.nodeName.toLowerCase() === 'bal-popover') {
-      return false
-    }
     if (parent.nodeName.toLowerCase() === 'bal-field' && parent !== this.el) {
       return false
     }
@@ -187,7 +184,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-file-upload',
     ])
 
-    const ariaForm = defaultBalAriaForm
+    const ariaForm = {...defaultBalAriaForm}
 
     if (label) {
       ariaForm.labelId = `${this.fieldId}-lbl`
