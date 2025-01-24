@@ -30,6 +30,7 @@ namespace BalProps {
     controls?: string
     title?: string
     label?: string
+    haspopup?: string
   }
 }
 

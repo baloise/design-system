@@ -46,7 +46,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           target={this.target}
           aria={{
             title: this.htmlTitle,
-            label: this.label,
+            label: this.ariaLabel || this.label,
           }}
         >
           {this.label}
@@ -64,7 +64,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         square={!this.label || this.label.length < 3}
         aria={{
           title: this.htmlTitle,
-          label: this.label,
+          label: this.ariaLabel || this.label,
         }}
         inverted={true}
         bal-popup={this.popoverId}
@@ -94,7 +94,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             target={this.target}
             aria={{
               title: this.htmlTitle,
-              label: this.label,
+              label: this.ariaLabel || this.label,
             }}
           >
             {this.icon ? '' : this.label}
@@ -112,7 +112,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           inverted={false}
           aria={{
             title: this.htmlTitle,
-            label: this.label,
+            label: this.ariaLabel || this.label,
           }}
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
@@ -137,7 +137,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             square={!this.label || this.label.length < 3}
             aria={{
               title: this.htmlTitle,
-              label: this.label,
+              label: this.ariaLabel || this.label,
             }}
             href={this.href}
             target={this.target}
@@ -157,7 +157,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           inverted={false}
           aria={{
             title: this.htmlTitle,
-            label: this.label,
+            label: this.ariaLabel || this.label,
           }}
           bal-popup={this.popoverId}
           bal-popup-variant="drawer"
