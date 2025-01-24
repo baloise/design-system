@@ -1,9 +1,5 @@
 ---
-"@baloise/ds-angular": patch
-"@baloise/ds-testing": patch
-"@baloise/ds-core": patch
-"docs": patch
-"e2e": patch
+'@baloise/ds-core': patch
 ---
 
-bal-number-input: Accepts values with thousand separators
+**number-input**: Accepts values with thousand separators
