@@ -21,6 +21,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { isSpaceKey } from '../../utils/keyboard'
 import { BalElementStateInfo } from '../../utils/element-states'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-radio',
@@ -401,7 +402,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     return (
       <Host
         aria-checked={`${this.checked}`}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={focused ? 'true' : null}
         class={{
@@ -431,7 +432,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
           aria-labelledby={labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           aria-checked={`${this.checked}`}
           name={this.name}
           value={value}

@@ -29,6 +29,7 @@ import { debounceEvent } from '../../utils/helpers'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-textarea',
@@ -277,7 +278,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     return (
       <Host
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           ...block.class(),
         }}
@@ -297,7 +298,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           aria-labelledby={this.ariaForm.labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           disabled={this.disabled}
           readonly={this.readonly}
           required={this.required}

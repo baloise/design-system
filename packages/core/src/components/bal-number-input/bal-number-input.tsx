@@ -52,6 +52,7 @@ import {
 import isNil from 'lodash.isnil'
 import isEmpty from 'lodash.isempty'
 import isNaN from 'lodash.isnan'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-number-input',
@@ -430,7 +431,7 @@ export class NumberInput
     return (
       <Host
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           ...block.class(),
         }}
@@ -447,7 +448,7 @@ export class NumberInput
           aria-labelledby={this.ariaForm.labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           name={this.name}
           disabled={this.disabled}
           placeholder={this.placeholder || ''}

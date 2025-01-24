@@ -14,6 +14,7 @@ import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-file-upload',
@@ -376,7 +377,7 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
     return (
       <Host
         onClick={this.onHostClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           'bal-file-upload': true,
         }}
@@ -403,7 +404,7 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
               aria-labelledby={this.ariaForm.labelId}
               aria-describedby={this.ariaForm.messageId}
               aria-invalid={this.invalid === true ? 'true' : 'false'}
-              aria-disabled={this.disabled ? 'true' : null}
+              aria-disabled={ariaBooleanToString(this.disabled)}
               name={this.name}
               multiple={this.multiple}
               disabled={this.disabled || this.loading || this.readonly}
