@@ -161,6 +161,10 @@ export namespace Components {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
+          * If `true` the button is a popup.
+         */
+        "balPopup": any;
+        /**
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
@@ -2025,6 +2029,7 @@ export namespace Components {
           * Defines if the logo animation should be active
          */
         "animated": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Link of the logo / title.
          */
@@ -2034,6 +2039,14 @@ export namespace Components {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * If `true` the logo is rendered as a button
+         */
+        "logoClickable": boolean;
+        /**
+          * Defines the label of the logo
+         */
+        "logoLabel"?: string;
         /**
           * Size of the logo SVG
          */
@@ -5227,6 +5240,10 @@ declare namespace LocalJSX {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
+          * If `true` the button is a popup.
+         */
+        "balPopup"?: any;
+        /**
           * The color to use from your application's color palette.
          */
         "color"?: BalProps.BalButtonColor;
@@ -7178,6 +7195,14 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * If `true` the logo is rendered as a button
+         */
+        "logoClickable"?: boolean;
+        /**
+          * Defines the label of the logo
+         */
+        "logoLabel"?: string;
         /**
           * Size of the logo SVG
          */

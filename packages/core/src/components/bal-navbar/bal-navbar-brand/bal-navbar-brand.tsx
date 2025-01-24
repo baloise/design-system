@@ -1,8 +1,10 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Method } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalScrollHandler } from '../../../utils/scroll'
 import { balBrowser } from '../../../utils/browser'
-import { wait, waitAfterFramePaint, waitForRequestIdleCallback } from '../../../utils/helpers'
+import { wait } from '../../../utils/helpers'
+import { i18nBalNavbarBrand } from './bal-navbar-brand.i18n'
+import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -12,12 +14,23 @@ export class NavbarBrand {
 
   @Element() el!: HTMLElement
 
+  @State() language: BalLanguage = defaultConfig.language
   @State() isMenuActive = false
 
   /**
    * Link of the logo / title.
    */
   @Prop() href?: string = ''
+
+  /**
+   * If `true` the logo is rendered as a button
+   */
+  @Prop() logoClickable = false
+
+  /**
+   * Defines the label of the logo
+   */
+  @Prop() logoLabel?: string
 
   /**
    * Specifies where to display the linked URL.
@@ -83,6 +96,15 @@ export class NavbarBrand {
     this.bodyScrollHandler.disconnect()
   }
 
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+  }
+
   async resetIsMenuActive(ev: MediaQueryListEvent) {
     if (ev.matches && !this.simple) {
       this.toggle(false)
@@ -131,6 +153,8 @@ export class NavbarBrand {
       <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
     )
 
+    const logoLabel = this.logoLabel ? this.logoLabel : i18nBalNavbarBrand[this.language].logoButtonLabel
+
     return (
       <Host
         class={{
@@ -139,9 +163,19 @@ export class NavbarBrand {
         }}
       >
         {this.href ? (
-          <a href={this.href} target={this.target} onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}>
+          <a
+            aria-label={logoLabel}
+            title={logoLabel}
+            href={this.href}
+            target={this.target}
+            onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}
+          >
             {logoTemplate}
           </a>
+        ) : this.logoClickable ? (
+          <button aria-label={logoLabel} title={logoLabel} onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}>
+            {logoTemplate}
+          </button>
         ) : (
           logoTemplate
         )}
