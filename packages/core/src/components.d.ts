@@ -156,6 +156,10 @@ export namespace Components {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
+          * If `true` the button is a popup.
+         */
+        "balPopup": any;
+        /**
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
@@ -5218,6 +5222,10 @@ declare namespace LocalJSX {
           * A11y attributes for the native button element.
          */
         "aria"?: BalProps.BalButtonAria;
+        /**
+          * If `true` the button is a popup.
+         */
+        "balPopup"?: any;
         /**
           * The color to use from your application's color palette.
          */

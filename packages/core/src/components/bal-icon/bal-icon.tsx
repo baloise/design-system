@@ -144,6 +144,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
       'blue',
       'grey',
       'grey-light',
+      'grey-dark',
       'danger',
       'danger-dark',
       'danger-darker',
