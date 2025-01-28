@@ -184,7 +184,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
       'bal-field-control bal-file-upload',
     ])
 
-    const ariaForm = {...defaultBalAriaForm}
+    const ariaForm = { ...defaultBalAriaForm }
 
     if (label) {
       ariaForm.labelId = `${this.fieldId}-lbl`
