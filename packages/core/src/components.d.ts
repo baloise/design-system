@@ -420,6 +420,10 @@ export namespace Components {
          */
         "scrollY": boolean;
         /**
+          * Defines the layout of the navigation controls.
+         */
+        "space": 'normal' | 'medium' | 'none';
+        /**
           * When how many slides are moved when going forward or backward.
          */
         "steps": number;
@@ -5511,6 +5515,10 @@ declare namespace LocalJSX {
           * If `true` vertical scrolling on mobile is enabled.
          */
         "scrollY"?: boolean;
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "space"?: 'normal' | 'medium' | 'none';
         /**
           * When how many slides are moved when going forward or backward.
          */

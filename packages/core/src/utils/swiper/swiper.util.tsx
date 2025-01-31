@@ -9,6 +9,7 @@ import type {
   SwiperChildItem,
   SwiperControl,
   SwiperControlItem,
+  SwiperGapSpace,
   SwiperInterface,
   SwiperItemsPerView,
   SwiperSlide,
@@ -31,12 +32,12 @@ export class SwiperUtil {
   borderEl?: HTMLElement
 
   index = 0
-  gapSize = 0
   steps = 1
   noNeedForControls = true
   isLastSlideVisible = false
   itemsPerView: SwiperItemsPerView = 1
   controls: SwiperControl = 'none'
+  gapSpace: SwiperGapSpace = 'none'
 
   /**
    * LIFECYCLE
@@ -185,6 +186,7 @@ export class SwiperUtil {
 
   public cssSwiperContainer = () => ({
     ...this.cssBlock.element('container').class(this.active),
+    ...this.cssBlock.element('container').modifier(`gap-${this.gapSpace}`).class(this.active),
   })
 
   /**
@@ -350,7 +352,12 @@ export class SwiperUtil {
     const index = slideIndex === undefined ? this.lastIndex() : slideIndex
 
     if (items.length > index && index >= 0) {
-      const gapSize = this.gapSize
+      const gaps = {
+        none: 0,
+        normal: 16,
+        medium: 24,
+      }
+      const gapSize = gaps[this.gapSpace]
 
       const transformNext = items
         .filter((_, n) => n < index + 1)
