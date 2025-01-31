@@ -23,6 +23,7 @@ export interface SwiperSlide {
 }
 
 export type SwiperControl = 'small' | 'large' | 'dots' | 'none' | 'tabs'
+export type SwiperGapSpace = 'normal' | 'medium' | 'none'
 export type SwiperItemsPerView = 'auto' | 1 | 2 | 3 | 4
 
 export type SwiperInterface = {
