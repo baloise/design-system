@@ -513,7 +513,6 @@ export class Dropdown
             ></DropdownValue>
           </span>
           <DropdownInput
-            name={this.name}
             inputId={this.inputId}
             httpFormSubmit={this.httpFormSubmit}
             ariaForm={this.ariaForm}
