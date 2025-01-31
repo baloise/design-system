@@ -26,6 +26,35 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
+  ...withRender(
+    () => `
+<h1 class="title text-xxx-large mb-none">Heading</h1>
+<h2 class="subtitle text-xx-large">Subtitle</h2>`,
+  ),
+})
+
+export const Levels = Story({
+  ...withRender(
+    () => `
+<h1 class="title text-xxx-large">Heading 1</h1>
+<h2 class="title text-xx-large">Heading 2</h2>
+<h3 class="title text-x-large">Heading 3</h3>
+<h4 class="title text-large">Heading 4</h4>
+<h5 class="title text-normal">Heading 5</h5>`,
+  ),
+})
+
+export const Colors = Story({
+  ...withRender(
+    () => `
+<h4 class="title text-large">Default / Primary</h4>
+<h4 class="title text-large text-success">Success</h4>
+<h4 class="title text-large text-warning">Warning</h4>
+<h4 class="title text-large text-danger">Danger</h4>`,
+  ),
+})
+
+export const Title = Story({
   args: {
     level: 'h1',
     subtitle: false,
@@ -42,38 +71,6 @@ export const Subtitle = Story({
     space: 'bottom',
     inverted: false,
   },
-})
-
-export const Levels = Story({
-  ...withRender(
-    () => `<div class="columns">
-  <div class="column is-half bg-yellow-1">
-    <bal-heading level="h1">Heading 1</bal-heading>
-    <bal-heading level="h2">Heading 2</bal-heading>
-    <bal-heading level="h3">Heading 3</bal-heading>
-    <bal-heading level="h4">Heading 4</bal-heading>
-    <bal-heading level="h5">Heading 5</bal-heading>
-  </div>
-  <div class="column is-half bg-yellow-2">
-    <h1 class="title text-xxx-large">Heading 1</h1>
-    <h2 class="title text-xx-large">Heading 2</h2>
-    <h3 class="title text-x-large">Heading 3</h3>
-    <h4 class="title text-large">Heading 4</h4>
-    <h5 class="title text-normal">Heading 5</h5>
-  </div>
-</div>`,
-  ),
-})
-
-export const Colors = Story({
-  ...withRender(
-    () => `<div>
-    <bal-heading level="h4" space="none">Default / Primary</bal-heading>
-    <bal-heading color="success" level="h4" space="none">Success</bal-heading>
-    <bal-heading color="warning" level="h4" space="none">Warning</bal-heading>
-    <bal-heading color="danger" level="h4" space="none">Danger</bal-heading>
-  </div>`,
-  ),
 })
 
 export const Spacing = Story({
@@ -105,16 +102,4 @@ export const AutoLevel = Story({
     space: 'bottom',
     inverted: false,
   },
-})
-
-export const CSSUtilities = Story({
-  ...withRender(
-    () => `<div>
-    <h1 class="title text-xxx-large">Heading 1</h1>
-    <h2 class="title text-xx-large">Heading 2</h2>
-    <h3 class="title text-x-large">Heading 3</h3>
-    <h4 class="title text-large">Heading 4</h4>
-    <h5 class="title text-normal">Heading 5</h5>
-  </div>`,
-  ),
 })

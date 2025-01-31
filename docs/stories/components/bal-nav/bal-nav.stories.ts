@@ -6,7 +6,7 @@ import { buttonLinkItems, logoLinkItem, optionLinkItems } from './bal-nav.data'
 type Args = JSX.BalNav & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Nav',
+  title: 'Components/Deprecated/Nav',
   parameters: {
     layout: 'fullscreen',
   },
@@ -28,7 +28,7 @@ const meta: Meta<Args> = {
       }
     })
 
-    section.innerHTML = ` <bal-nav content-width="440">
+    section.innerHTML = `<bal-nav content-width="440">
     <bal-popup id="popup-call" label="24h Kundenservice">
       <bal-stack layout="vertical">
         <bal-button expanded>00800 24 800 800</bal-button>

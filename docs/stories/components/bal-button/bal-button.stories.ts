@@ -26,6 +26,10 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
+  ...withRender(() => `<button class="button is-primary">Button</button>`),
+})
+
+export const Component = Story({
   args: {
     content: 'Primary',
     icon: 'plus',
