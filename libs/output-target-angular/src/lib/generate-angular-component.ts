@@ -2,12 +2,7 @@ import { dashToPascalCase } from './utils'
 import type { ComponentCompilerMeta } from '@stencil/core/internal'
 
 export const createComponentDefinition =
-  (
-    componentCorePackage: string,
-    _distTypesDir: string,
-    _rootDir: string,
-    outputTargetType: 'standalone' | 'module',
-  ) =>
+  (componentCorePackage: string, _distTypesDir: string, _rootDir: string, outputTargetType: 'standalone' | 'module') =>
   (cmpMeta: ComponentCompilerMeta) => {
     // Collect component meta
     const inputs = [
