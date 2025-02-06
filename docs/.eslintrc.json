@@ -22,7 +22,6 @@
             "ignoredDependencies": [
               "@baloise/ds-brand-icons",
               "@baloise/ds-icons",
-              "@baloise/ds-css",
               "@baloise/ds-tokens",
               "react-dom",
               "js-beautify",

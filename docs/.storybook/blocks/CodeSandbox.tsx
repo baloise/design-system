@@ -41,7 +41,7 @@ export const CodeSandbox = ({ of }) => {
 
   const label = template === '' ? 'Try Online' : `Code Sandbox`
 
-  if (framework === 'vue' || (of && framework !== 'angular')) {
+  if (of && framework !== 'angular') {
     return ''
   }
 

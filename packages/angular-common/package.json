@@ -12,8 +12,8 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@angular/core": ">=15.0.0",
-    "@angular/forms": ">=15.0.0",
+    "@angular/core": ">=17.0.0",
+    "@angular/forms": ">=17.0.0",
     "rxjs": ">=7.0.0"
   },
   "dependencies": {

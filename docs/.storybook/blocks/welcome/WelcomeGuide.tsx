@@ -18,7 +18,7 @@ export const WelcomeGuide = ({ children }) => {
         <LinkCard
           pageTitle={'Development/Getting Started'}
           label={'Development'}
-          description={'Getting Started with HTML, Angular, React or Vue.js'}
+          description={'Getting Started with HTML, Angular or React'}
         />
         <LinkCard pageTitle={'Changelog'} description={"What's new?"} />
         <LinkCard pageTitle={'Support'} description={'Ask a question, report a bug or request a feature'} />

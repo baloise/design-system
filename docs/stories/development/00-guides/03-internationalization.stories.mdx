@@ -14,7 +14,6 @@ import {
   NotAngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Internationalization" />
@@ -121,30 +120,6 @@ ${' '}},
 `} />
 
 </ReactFramework>
-
-<VueFramework>
-
-<Code language="ts" code={`
-import './main.scss'
-import { BaloiseDesignSystem } from '@baloise/ds-vue'
-
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-
-createApp(App)
-${' '}.use(router)
-${' '}.use(BaloiseDesignSystem, {
-${' '}defaults: {
-${' '}region: 'LU',
-${' '}language: 'fr',
-${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
-${' '}},
-${' '}})
-${' '}.mount('#app')
-`} />
-
-</VueFramework>
 
 {/* ############################################################################################ */}
 {/* Change */}
