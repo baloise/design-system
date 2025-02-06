@@ -102,13 +102,6 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'
       with:
-        name: angular-legacy
-        output: packages/angular-legacy/src/AngularLegacy.zip
-        paths: packages/angular-legacy/src/generated
-
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
         name: testing-dist
         output: packages/testing/TestingDist.zip
         paths: packages/testing/dist

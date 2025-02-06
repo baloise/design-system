@@ -54,12 +54,6 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
-        name: angular-legacy
-        path: ./packages/angular-legacy/src
-        filename: AngularLegacy.zip
-
-    - uses: ./.github/workflows/actions/download-archive
-      with:
         name: angular-module
         path: ./packages/angular-module/src
         filename: AngularModule.zip
