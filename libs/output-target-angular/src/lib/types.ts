@@ -4,7 +4,7 @@ export interface OutputTargetAngular {
   directivesMetaFile: string
   directivesArrayFile?: string
   directivesUtilsFile?: string
-  outputType: 'legacy' | 'standalone' | 'module'
+  outputType: 'standalone' | 'module'
   valueAccessorConfigs?: ValueAccessorConfig[]
   excludeComponents?: string[]
   componentGroups?: { [key: string]: ComponentGroup }

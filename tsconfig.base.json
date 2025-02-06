@@ -25,9 +25,6 @@
       "@baloise/ds-angular-common": [
         "packages/angular-common/src/index.ts"
       ],
-      "@baloise/ds-angular-legacy": [
-        "packages/angular-legacy/src/index.ts"
-      ],
       "@baloise/ds-angular-module": [
         "packages/angular-module/src/index.ts"
       ],

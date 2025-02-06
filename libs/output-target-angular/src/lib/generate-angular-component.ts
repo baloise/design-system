@@ -6,7 +6,7 @@ export const createComponentDefinition =
     componentCorePackage: string,
     _distTypesDir: string,
     _rootDir: string,
-    outputTargetType: 'legacy' | 'standalone' | 'module',
+    outputTargetType: 'standalone' | 'module',
   ) =>
   (cmpMeta: ComponentCompilerMeta) => {
     // Collect component meta
@@ -50,9 +50,7 @@ export const createComponentDefinition =
       .filter((item, pos, self) => self.indexOf(item) === pos)
       .join(', ')
     if (outputsTypes.length > 0) {
-      outputsTypes = `import type { ${outputsTypes} } from '${componentCorePackage}${
-        outputTargetType !== 'legacy' ? '/components' : ''
-      }';`
+      outputsTypes = `import type { ${outputsTypes} } from '${componentCorePackage}/components';`
     }
 
     const lines = [
@@ -91,7 +89,7 @@ export class ${tagNameAsPascal} {`,
 
 function getProxyCmp(
   tagNameAsPascal: string,
-  outputTargetType: 'legacy' | 'standalone' | 'module',
+  outputTargetType: 'standalone' | 'module',
   inputs: string[],
   methods: string[],
 ): string {

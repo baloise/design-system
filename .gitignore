@@ -110,7 +110,6 @@ test/angular/*
 packages/brand-icons/CHANGELOG.md
 packages/devkit/CHANGELOG.md
 packages/angular-common/CHANGELOG.md
-packages/angular-legacy/CHANGELOG.md
 packages/angular-module/CHANGELOG.md
 packages/angular/CHANGELOG.md
 packages/react/CHANGELOG.md
@@ -135,7 +134,6 @@ packages/core/README.md
 packages/brand-icons/README.md
 packages/devkit/README.md
 packages/angular-common/README.md
-packages/angular-legacy/README.md
 packages/angular-module/README.md
 packages/angular/README.md
 packages/react/README.md
@@ -160,7 +158,6 @@ packages/core/LICENSE
 packages/brand-icons/LICENSE
 packages/devkit/LICENSE
 packages/angular-common/LICENSE
-packages/angular-legacy/LICENSE
 packages/angular-module/LICENSE
 packages/angular/LICENSE
 packages/react/LICENSE

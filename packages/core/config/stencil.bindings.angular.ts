@@ -75,14 +75,3 @@ export const AngularModuleGenerator = () =>
     excludeComponents: [...docComponents],
     outputType: 'module',
   })
-
-export const AngularLegacyGenerator = () =>
-  angularOutputTarget({
-    componentCorePackage: '@baloise/ds-core',
-    directivesMetaFile: '../angular-legacy/src/generated/meta.ts',
-    directivesProxyFile: '../angular-legacy/src/generated/proxies.ts',
-    directivesArrayFile: '../angular-legacy/src/generated/proxies-list.ts',
-    valueAccessorConfigs: angularValueAccessorBindings,
-    excludeComponents: [...docComponents],
-    outputType: 'legacy',
-  })
