@@ -69,7 +69,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        apps: [v17, v18]
+        apps: [v17, v18, v19]
     needs: [build]
     steps:
       - uses: actions/checkout@v4

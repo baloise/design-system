@@ -18,35 +18,6 @@
     {
       "files": ["*.js", "*.jsx"],
       "rules": {}
-    },
-    {
-      "files": ["*.json"],
-      "parser": "jsonc-eslint-parser",
-      "rules": {
-        "@nx/dependency-checks": [
-          "error",
-          {
-            "ignoredFiles": [
-              "{projectRoot}/vite.config.{js,ts,mjs,mts}",
-              "{projectRoot}/stencil.config.{js,ts,mjs,mts}",
-              "{projectRoot}/scripts/pre-build.mjs",
-              "{projectRoot}/scripts/post-build.mjs"
-            ],
-            "ignoredDependencies": [
-              "@baloise/ds-styles",
-              "@baloise/ds-fonts",
-              "@baloise/ds-icons",
-              "@baloise/ds-tokens",
-              "@baloise/output-target-angular",
-              "@baloise/output-target-react",
-              "big.js",
-              "lottie-web",
-              "tslib",
-              "glob"
-            ]
-          }
-        ]
-      }
     }
   ]
 }
