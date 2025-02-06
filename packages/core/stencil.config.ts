@@ -107,11 +107,6 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
-          dest: 'assets/baloise-design-system.css',
-          warn: true,
-        },
-        {
           src: join(packagesDir, 'styles', 'css', 'all.css'),
           dest: 'assets/all.css',
           warn: true,

@@ -34,7 +34,6 @@
             ],
             "ignoredDependencies": [
               "@baloise/ds-styles",
-              "@baloise/ds-css",
               "@baloise/ds-fonts",
               "@baloise/ds-icons",
               "@baloise/ds-tokens",
