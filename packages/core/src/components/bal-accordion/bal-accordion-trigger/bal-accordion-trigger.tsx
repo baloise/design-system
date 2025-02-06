@@ -1,8 +1,11 @@
-import { Component, Host, h, Element, ComponentInterface, State, Prop } from '@stencil/core'
+import { Component, Host, h, Element, ComponentInterface, State, Prop, Method } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { AccordionState } from '../../../interfaces'
+import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
+import { i18nBalAccordion } from '../bal-accordion.i18n'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
   tag: 'bal-accordion-trigger',
@@ -14,6 +17,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   @Element() el?: HTMLElement
 
   @State() parentAccordionId?: string
+  @State() language: BalLanguage = defaultConfig.language
 
   log!: LogInstance
 
@@ -88,6 +92,20 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
 
   componentWillRender() {
     this.updateAccordionId()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
   }
 
   /**
@@ -170,6 +188,9 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             iconTurn={turn}
             color={this.color}
             size={this.size}
+            title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+            aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+            aria-expanded={ariaBooleanToString(this.active)}
             onClick={this.onClick}
           >
             {label}
@@ -182,9 +203,11 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             }}
             id={`${id}-button`}
             aria-controls={`${this.parentAccordionId}-details-content`}
-            aria-label="accordion trigger"
+            aria-expanded={ariaBooleanToString(this.active)}
             part={buttonPart}
             data-testid="bal-accordion-trigger"
+            title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+            aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
             onClick={this.onClick}
             {...triggerAttributes}
           >

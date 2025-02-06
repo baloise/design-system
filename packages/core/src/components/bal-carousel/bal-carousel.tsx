@@ -95,6 +95,16 @@ export class Carousel
   }
 
   /**
+   * Defines the layout of the navigation controls.
+   */
+  @Prop() space: 'normal' | 'medium' | 'none' = 'none'
+
+  @Watch('space')
+  onSpaceChange() {
+    this.swiper.gapSpace = this.space
+  }
+
+  /**
    * @deprecated
    * Defines the role of the carousel.
    */
@@ -128,7 +138,7 @@ export class Carousel
 
   @Watch('interface')
   onInterFaceChange() {
-    this.swiper.gapSize = this.interface === 'product' ? 16 : 0
+    this.swiper.gapSpace = this.interface === 'product' ? 'normal' : this.space
   }
 
   /**
@@ -159,9 +169,10 @@ export class Carousel
   connectedCallback(): void {
     this.swiper.connectedCallback(this)
     this.onControlsChange()
-    this.onInterFaceChange()
     this.onItemsPerViewChange()
     this.onStepsChange()
+    this.onSpaceChange()
+    this.onInterFaceChange()
     this.onValueChange()
   }
 

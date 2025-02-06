@@ -44,11 +44,15 @@
         .button
           width: 100%
 
-.bal-field-control
-  padding-bottom: 1.375rem
+.bal-field-message
+  margin-top: 0 !important
 
 .bal-field-control + .bal-field-message
-  margin-top: -1.5rem !important
+  min-height: 1.375rem
+  line-height: 1.375rem
+
+.bal-field-control:not(:has(+ .bal-field-message))
+  padding-bottom: 1.375rem
 
 .bal-field--horizontal
   display: flex

@@ -31,8 +31,8 @@ export interface BalAriaFormLinking {
   setAriaForm(ariaForm: BalAriaForm): Promise<void>
 }
 
-export const defaultBalAriaForm: BalAriaForm = {
+export const defaultBalAriaForm: BalAriaForm = Object.freeze({
   controlId: undefined,
   labelId: undefined,
   messageId: undefined,
-}
+})

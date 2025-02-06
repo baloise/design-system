@@ -180,21 +180,26 @@ export class Footer implements BalConfigObserver, Loggable {
                     ...elWrapper.class(),
                   }}
                 >
-                  <bal-input-group>
-                    <bal-icon class={'bal-dropdown__rear'} name="web" color="white"></bal-icon>
-                    <select
-                      id="bubu"
-                      class={'bal-dropdown__native'}
-                      onChange={event => this.changeLanguage((event.target as HTMLSelectElement).value)}
-                      data-testid="bal-footer-language"
-                    >
-                      {this.allowedLanguages.map(language => (
-                        <option key={language} value={language} selected={language === this.language}>
-                          {language.toLocaleUpperCase() + ' - ' + i18nBalFooter[language].name}
-                        </option>
-                      ))}
-                    </select>
-                  </bal-input-group>
+                  <bal-icon
+                    class={{
+                      ...elWrapper.element('icon').class(),
+                    }}
+                    name="web"
+                    color="white"
+                  ></bal-icon>
+                  <select
+                    class={{
+                      ...elWrapper.element('select').class(),
+                    }}
+                    onChange={event => this.changeLanguage((event.target as HTMLSelectElement).value)}
+                    data-testid="bal-footer-language"
+                  >
+                    {this.allowedLanguages.map(language => (
+                      <option key={language} value={language} selected={language === this.language}>
+                        {language.toLocaleUpperCase() + ' - ' + i18nBalFooter[language].name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

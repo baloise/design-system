@@ -136,7 +136,7 @@ export const WithGrid = Story({
                     <bal-field>
                         <bal-field-label>Birthdate</bal-field-label>
                         <bal-field-control>
-                            <bal-datepicker placeholder="Select your birthdate"></bal-datepicker>
+                            <bal-date placeholder="Select your birthdate"></bal-date>
                         </bal-field-control>
                     </bal-field>
                 </bal-form-col>

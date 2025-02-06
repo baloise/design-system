@@ -34,6 +34,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -981,7 +982,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       <Host
         role="listbox"
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         data-value={this.rawValue?.map(v => findLabelByValue(this.options, v)).join(',')}
         class={{
           ...block.class(),
@@ -1048,7 +1049,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                 aria-labelledby={this.ariaForm.labelId}
                 aria-describedby={this.ariaForm.messageId}
                 aria-invalid={this.invalid === true ? 'true' : 'false'}
-                aria-disabled={this.disabled ? 'true' : null}
+                aria-disabled={ariaBooleanToString(this.disabled)}
                 data-testid="bal-select-input"
                 autocomplete={this.autocomplete}
                 aria-autocomplete={this.autocomplete === 'off' ? 'none' : null}

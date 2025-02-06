@@ -7,7 +7,6 @@ import { BalLanguage } from '../config'
 import { Attributes } from '../attributes'
 
 export interface DropdownInputProps {
-  name: string
   inputId: string
   httpFormSubmit: boolean
   ariaForm: BalAriaForm
@@ -30,7 +29,6 @@ export interface DropdownInputProps {
 }
 
 export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
-  name,
   inputId,
   httpFormSubmit,
   ariaForm,
@@ -63,7 +61,6 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
       size={1}
       inputmode="none"
       tabindex="0"
-      name={name}
       autoComplete={autocomplete}
       value={rawValue.join(',')}
       required={required}

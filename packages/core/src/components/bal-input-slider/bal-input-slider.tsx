@@ -4,6 +4,7 @@ import { debounceEvent } from '../../utils/helpers'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-input-slider',
@@ -271,7 +272,7 @@ export class InputSlider implements BalAriaFormLinking {
           ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
         onClick={this.handleClick}
-        aria-disabled={this.disabled || this.readonly ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled || this.readonly)}
       >
         <div
           class={{
@@ -308,7 +309,7 @@ export class InputSlider implements BalAriaFormLinking {
             id={this.ariaForm.controlId || this.inputId}
             aria-labelledby={this.ariaForm.labelId}
             aria-describedby={this.ariaForm.messageId}
-            aria-disabled={this.disabled ? 'true' : null}
+            aria-disabled={ariaBooleanToString(this.disabled)}
             aria-invalid={this.invalid === true ? 'true' : 'false'}
             disabled={this.disabled}
             readonly={this.readonly}

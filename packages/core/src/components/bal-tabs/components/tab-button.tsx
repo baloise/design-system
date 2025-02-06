@@ -4,6 +4,7 @@ import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'
 import { toKebabCase } from 'packages/core/src/utils/string'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 export interface TabButtonProps {
   item: BalTabOption
@@ -75,8 +76,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'type': 'button',
         'role': 'tab',
         'aria-controls': item.aria?.controls || item.tabPanelID || undefined,
-        'aria-expanded': item.active ? 'true' : 'false',
-        'aria-disabled': `${item.disabled}`,
+        'aria-expanded': ariaBooleanToString(item.active),
+        'aria-disabled': ariaBooleanToString(item.disabled),
         'aria-label': item.label,
       }
     : {

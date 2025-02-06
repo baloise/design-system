@@ -80,6 +80,7 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
 
   const tokens = await utils.getTokens({ token: 'size.space', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop', 'none'] })
+
   const valuesGap = {
     'gap-none': '0',
     'gap-auto': 'auto',
@@ -92,6 +93,28 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     'column-gap-none': '0',
     'column-gap-auto': 'auto',
   }
+
+  const gapNone = utils.staticClass({
+    property: 'gap',
+    values: {
+      ...valuesGap,
+    },
+  })
+
+  const gapRowNone = utils.staticClass({
+    property: 'row-gap',
+    values: {
+      ...valuesRowGap,
+    },
+  })
+
+  const gapColumnNone = utils.staticClass({
+    property: 'column-gap',
+    values: {
+      ...valuesColumnGap,
+    },
+  })
+
   for (const index in keys) {
     const key = keys[index]
     valuesGap[`gap-${key}`] = `var(--bal-space-${key})`
@@ -190,6 +213,9 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
         rulesFlexGapDesktop,
         rulesFlexGapRowDesktop,
         rulesFlexGapColumnDesktop,
+        gapNone.rules,
+        gapRowNone.rules,
+        gapColumnNone.rules,
       ],
     }),
   )

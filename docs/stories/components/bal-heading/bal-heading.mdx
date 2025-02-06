@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote } from '../../../.storybook/blocks'
 import * as HeadingStories from './bal-heading.stories'
 
 <Meta of={HeadingStories} />
@@ -12,6 +12,14 @@ import * as HeadingStories from './bal-heading.stories'
   **Heading** is a key component for displaying important titles and headers to organize and emphasize content.
 </Lead>
 
+<InfoQuote>
+  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+Additionally, explore CSS utilities for more styling options.
+
+</InfoQuote>
+
 <Canvas of={HeadingStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
@@ -19,21 +27,27 @@ import * as HeadingStories from './bal-heading.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
-
-<Canvas of={HeadingStories.Subtitle} />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={HeadingStories.Levels}></StoryHeading>
 
-<Canvas of={HeadingStories.Levels} />
+<Canvas of={HeadingStories.Levels} sourceState={'shown'} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={HeadingStories.Colors}></StoryHeading>
 
-<Canvas of={HeadingStories.Colors} />
+<Canvas of={HeadingStories.Colors} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Title}></StoryHeading>
+
+<Canvas of={HeadingStories.Title} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
+
+<Canvas of={HeadingStories.Subtitle} />
 
 {/* ------------------------------------------------------ */}
 
@@ -49,12 +63,6 @@ In some place in your app the heading requires a line break.
 Using `auto-level`, one can specify the minimum visual level at which the heading can dynamically shrink.
 
 <Canvas of={HeadingStories.AutoLevel} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HeadingStories.CSSUtilities}></StoryHeading>
-
-<Canvas of={HeadingStories.CSSUtilities} />
 
 {/* ------------------------------------------------------ */}
 
