@@ -10,7 +10,7 @@
     "build": "npx nx run-many -t build",
     "build:force": "npx nx reset && npx nx run-many -t build",
     "lint": "npx nx run-many -t lint",
-    "test": "npx nx run-many -t test",
+    "test": "npx nx run-many -t test -- --watch=false",
     "format": "npx nx format:write --all --end-of-line lf",
     "format:check": "npx nx format:check --all --end-of-line lf",
     "spell": "cspell --no-progress",

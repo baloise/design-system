@@ -93,5 +93,5 @@
       "style": "none"
     }
   },
-  "useLegacyCache": true
+  "useLegacyCache": false
 }
