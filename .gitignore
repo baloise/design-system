@@ -44,6 +44,7 @@ testem.log
 Thumbs.db
 
 .nx/cache
+.nx/workspace-data
 .stencil
 
 packages/core/icons
@@ -170,3 +171,6 @@ libs/output-targets-angular/LICENSE
 libs/output-targets-react/LICENSE
 docs/LICENSE
 e2e/LICENSE
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
