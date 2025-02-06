@@ -1,4 +1,4 @@
-@import '@baloise/ds-styles/sass/mixins'
+@use '@baloise/ds-styles/sass/mixins' as *
 
 // Tab Button
 // --------------------------------------------------
@@ -38,11 +38,11 @@
   &--display-svg
     flex-direction: row
     +mobile
-        &:not(&.bal-tabs__nav__item--active)
-          flex: 0 0 auto
-          min-width: 3rem
-          width: 6rem
-          padding: 0.25rem
+      &:not(&.bal-tabs__nav__item--active)
+        flex: 0 0 auto
+        min-width: 3rem
+        width: 6rem
+        padding: 0.25rem
 
   &--accordion
     flex-direction: row
