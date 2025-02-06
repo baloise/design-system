@@ -22,7 +22,7 @@
           "error",
           {
             "ignoredFiles": ["{projectRoot}/rollup.config.{js,ts,mjs,mts}"],
-            "ignoredDependencies": ["@baloise/ds-styles", "@baloise/ds-css"]
+            "ignoredDependencies": ["@baloise/ds-styles"]
           }
         ]
       }

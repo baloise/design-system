@@ -6,7 +6,6 @@
     "@baloise/ds-brand-icons": "17.3.0",
     "@baloise/ds-core": "17.3.0",
     "@baloise/ds-styles": "17.3.0",
-    "@baloise/ds-css": "17.3.0",
     "@baloise/ds-icons": "17.3.0",
     "@baloise/ds-tokens": "17.3.0",
     "@storybook/addon-essentials": "~7.6.10",

@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@baloise/ds-core": "17.3.0",
-    "@baloise/ds-css": "17.3.0",
     "@baloise/ds-styles": "17.3.0"
   }
 }
