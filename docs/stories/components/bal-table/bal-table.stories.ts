@@ -59,9 +59,9 @@ export const AgGrid = Story({
         'src/styles.scss': {
           isBinary: false,
           content: `${angularStyles}
-@import 'ag-grid-community/styles/ag-grid';
-@import 'ag-grid-community/styles/ag-theme-alpine';
-@import '@baloise/ds-table/css/design-system-table';
+@use 'ag-grid-community/styles/ag-grid' as *;
+@use 'ag-grid-community/styles/ag-theme-alpine' as *;
+@use '@baloise/ds-table/css/design-system-table' as *;
 `,
         },
         'package.json': {

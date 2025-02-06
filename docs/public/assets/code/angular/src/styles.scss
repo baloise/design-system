@@ -1,12 +1,12 @@
 // Resets CSS for all browser
-@import '@baloise/ds-styles/css/normalize';
-@import '@baloise/ds-styles/css/structure';
+@forward '@baloise/ds-styles/css/normalize';
+@forward '@baloise/ds-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/ds-styles/css/font';
+@forward '@baloise/ds-styles/css/font';
 
 // Core CSS, always required
-@import '@baloise/ds-styles/css/core';
+@forward '@baloise/ds-styles/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/ds-styles/css/utilities/all';
+@forward '@baloise/ds-styles/css/utilities/all';
