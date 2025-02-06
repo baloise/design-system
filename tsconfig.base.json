@@ -58,17 +58,11 @@
       "@baloise/ds-testing": [
         "packages/testing/src/index.ts"
       ],
-      "@baloise/ds-vue": [
-        "packages/vue/src/index.ts"
-      ],
       "@baloise/output-target-angular": [
         "libs/output-target-angular/src/index.ts"
       ],
       "@baloise/output-target-react": [
         "libs/output-target-react/src/index.ts"
-      ],
-      "@baloise/output-target-vue": [
-        "libs/output-target-vue/src/index.ts"
       ]
     }
   },

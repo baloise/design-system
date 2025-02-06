@@ -353,7 +353,6 @@
   | `@baloise/design-system-components-angular/standalone` | **→** | `@baloise/ds-angular`        |
   | `@baloise/design-system-components-angular/legacy`     | **→** | `@baloise/ds-angular-legacy` |
   | `@baloise/design-system-components-react`              | **→** | `@baloise/ds-react`          |
-  | `@baloise/design-system-components-vue`                | **→** | `@baloise/ds-vue`            |
   | `@baloise/design-system-components-table`              | **→** | `@baloise/ds-table`          |
   | `@baloise/design-system-cli`                           | **→** | `@baloise/ds-devkit`         |
   | `@baloise/design-system-\*`                            | **→** | `@baloise/ds-\*`             |

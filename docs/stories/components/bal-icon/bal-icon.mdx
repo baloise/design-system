@@ -9,7 +9,6 @@ import {
   ButtonCard,
   AngularFramework,
   ReactFramework,
-  VueFramework,
   HTMLFramework,
 } from '../../../.storybook/blocks'
 import * as IconStories from './bal-icon.stories'
@@ -136,43 +135,6 @@ export default function Example() {
 
 </ReactFramework>
 
-<VueFramework>
-
-### Import during initialization
-
-Import the icons form the `@baloise/ds-icons` package and pass them with the BalConfig during the initialization.
-
-```ts
-import { balIconStarFull } from '@baloise/ds-icons'
-
-createApp(App)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-        icons: { balIconStarFull },
-      },
-    }),
-  )
-  .mount('#app')
-```
-
-### Import into the component
-
-When importing an SVG into your component you decrease the initial page load. So you use the SVG only where you needed and at the time you wanted.
-
-```html
-<script lang="ts" setup>
-  import { BalIcon } from '@baloise/ds-vue'
-  import { balIconStarFull } from '@baloise/ds-icons'
-</script>
-
-<template>
-  <BalIcon :svg="balIconStarFull"></BalIcon>
-</template>
-```
-
-</VueFramework>
-
 <HTMLFramework>
 
 ### Import during initialization
@@ -245,21 +207,6 @@ export default function Example() {
 ```
 
 </ReactFramework>
-
-<VueFramework>
-
-```html
-<script lang="ts" setup>
-  import { BalIcon } from '@baloise/ds-vue'
-  import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
-</script>
-
-<template>
-  <BalIcon :svg="balBrandIconCarCrashWithAnimalGreen"></BalIcon>
-</template>
-```
-
-</VueFramework>
 
 <HTMLFramework>
 

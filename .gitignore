@@ -71,7 +71,6 @@ packages/devkit/src/**/*.d.ts
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
-libs/output-targets-vue/CHANGELOG.md
 
 e2e/generated
 e2e/downloads
@@ -115,7 +114,6 @@ packages/angular-module/CHANGELOG.md
 packages/angular/CHANGELOG.md
 packages/react/CHANGELOG.md
 packages/table/CHANGELOG.md
-packages/vue/CHANGELOG.md
 packages/css/CHANGELOG.md
 packages/styles/CHANGELOG.md
 packages/favicons/CHANGELOG.md
@@ -127,7 +125,6 @@ packages/tokens/CHANGELOG.md
 libs/nx/CHANGELOG.md
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
-libs/output-targets-vue/CHANGELOG.md
 docs/CHANGELOG.md
 e2e/CHANGELOG.md
 
@@ -140,7 +137,6 @@ packages/angular-module/README.md
 packages/angular/README.md
 packages/react/README.md
 packages/table/README.md
-packages/vue/README.md
 packages/css/README.md
 packages/styles/README.md
 packages/favicons/README.md
@@ -152,7 +148,6 @@ packages/tokens/README.md
 libs/nx/README.md
 libs/output-targets-angular/README.md
 libs/output-targets-react/README.md
-libs/output-targets-vue/README.md
 docs/README.md
 e2e/README.md
 
@@ -165,7 +160,6 @@ packages/angular-module/LICENSE
 packages/angular/LICENSE
 packages/react/LICENSE
 packages/table/LICENSE
-packages/vue/LICENSE
 packages/css/LICENSE
 packages/styles/LICENSE
 packages/favicons/LICENSE
@@ -177,6 +171,5 @@ packages/tokens/LICENSE
 libs/nx/LICENSE
 libs/output-targets-angular/LICENSE
 libs/output-targets-react/LICENSE
-libs/output-targets-vue/LICENSE
 docs/LICENSE
 e2e/LICENSE
