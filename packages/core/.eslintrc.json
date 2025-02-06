@@ -40,7 +40,6 @@
               "@baloise/ds-tokens",
               "@baloise/output-target-angular",
               "@baloise/output-target-react",
-              "@baloise/output-target-vue",
               "big.js",
               "lottie-web",
               "tslib",

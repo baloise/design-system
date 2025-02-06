@@ -12,7 +12,6 @@ import {
   AngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Component" />
@@ -126,34 +125,6 @@ export default App;
 
 </ReactFramework>
 
-{/* ################################################## */}
-{/* -------------------------------------------------- */}
-{/* Vue  --------------------------------------------- */}
-{/* -------------------------------------------------- */}
-{/* ################################################## */}
-
-<VueFramework>
-
-Import the components that are used inside the template and that is it.
-
-**App.vue**
-
-```html
-<script setup lang="ts">
-  import { BalApp, BalHeading } from '@baloise/ds-vue'
-</script>
-
-<template>
-  <BalApp>
-    <main class="container">
-      <BalHeading>Hello World</BalHeading>
-    <main>
-  </BalApp>
-</template>
-```
-
-</VueFramework>
-
 {/* ############################################################################################ */}
 {/* Properties */}
 {/* ############################################################################################ */}
@@ -257,35 +228,6 @@ export default App;
 ```
 
 </ReactFramework>
-
-{/* ################################################## */}
-{/* -------------------------------------------------- */}
-{/* Vue  --------------------------------------------- */}
-{/* -------------------------------------------------- */}
-{/* ################################################## */}
-
-<VueFramework>
-
-### Bind properties
-
-```html
-<script setup lang="ts">
-  import { ref } from 'vue'
-  import { BalButton } from '@baloise/ds-vue'
-
-  const buttonColor = ref('info')
-</script>
-
-<template>
-  <BalButton color="info">My info button</BalButton>
-
-  <!-- To bind a value use the : before the prop -->
-
-  <BalButton :color="buttonColor">My info button</BalButton>
-</template>
-```
-
-</VueFramework>
 
 {/* ############################################################################################ */}
 {/* Events */}
@@ -392,37 +334,6 @@ export default EventComponent
 ```
 
 </ReactFramework>
-
-{/* ################################################## */}
-{/* -------------------------------------------------- */}
-{/* Vue  --------------------------------------------- */}
-{/* -------------------------------------------------- */}
-{/* ################################################## */}
-
-<VueFramework>
-
-In Vue the the events are written with the `@` simple similar to Angular.
-`$event` returns the main value of the event.
-
-```html
-<script setup lang="ts">
-  import { ref } from 'vue'
-  import { BalInput, BalText } from '@baloise/ds-vue'
-
-  const myName = ref<string | undefined>()
-
-  function updateName(value?: string) {
-    myName.value = value
-  }
-</script>
-
-<template>
-  <BalInput placeholder="Tell us your name" :value="myName" @balInput="updateName($event)"></BalInput>
-  <BalText>My name is {{ myName }}</BalText>
-</template>
-```
-
-</VueFramework>
 
 {/* ############################################################################################ */}
 {/* Methods */}
@@ -542,42 +453,5 @@ export default MethodComponent
 ```
 
 </ReactFramework>
-
-{/* ################################################## */}
-{/* -------------------------------------------------- */}
-{/* Vue  --------------------------------------------- */}
-{/* -------------------------------------------------- */}
-{/* ################################################## */}
-
-<VueFramework>
-
-To access the components use the [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) of Vue.js.
-First define the reference and than mark it with the property/attribute `ref`.
-After that the methods of the components can be used directly.
-
-```html
-<script setup lang="ts">
-  import { ref } from 'vue'
-  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/ds-vue'
-  import { Components } from '@baloise/ds-core'
-
-  const mySelect = ref<ProxyComponent<Components.BalSelect>>()
-
-  function chooseTennis() {
-    mySelect.value?.$el.select('tennis')
-  }
-</script>
-
-<template>
-  <BalSelect ref="mySelect" placeholder="Choose your hobby">
-    <BalSelectOption label="Tennis" value="tennis">Tennis</BalSelectOption>
-    <BalSelectOption label="Soccer" value="soccer">Soccer</BalSelectOption>
-    <BalSelectOption label="Other" value="other">Other</BalSelectOption>
-  </BalSelect>
-  <BalButton class="mt-normal" @click="chooseTennis()">Choose Tennis</BalButton>
-</template>
-```
-
-</VueFramework>
 
 <Footer />
