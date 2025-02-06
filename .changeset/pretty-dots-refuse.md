@@ -2,4 +2,7 @@
 '@baloise/ds-core': major
 ---
 
-**styles**: The deprecated `@baloise/ds-css` package has been removed. Please migrate to `@baloise/ds-styles`. 
+**css**: removed the deprecated `@baloise/ds-css` package. Please migrate to `@baloise/ds-styles`.
+
+Please check out the more detailed [Upgrade Guide to v18](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v18--documentation).
+
