@@ -24,7 +24,7 @@ export class NumericValueAccessor extends ValueAccessor {
 
   override registerOnChange(fn: (_: number | null) => void) {
     super.registerOnChange(value => {
-      fn(value === null || value ==='' ? null : parseFloat(value))
+      fn(value === null || value === '' ? null : parseFloat(value))
     })
   }
 }
