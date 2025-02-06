@@ -25,11 +25,9 @@ export const createComponentDefinition =
       `selector: '${cmpMeta.tagName}'`,
       `changeDetection: ChangeDetectionStrategy.OnPush`,
       `template: '<ng-content></ng-content>'`,
+      `standalone: ${outputTargetType === 'standalone'}`,
     ]
 
-    if (outputTargetType === 'standalone') {
-      directiveOpts.push(`standalone: true`)
-    }
     if (inputs.length > 0) {
       directiveOpts.push(`inputs: ['${inputs.join(`', '`)}']`)
     }
