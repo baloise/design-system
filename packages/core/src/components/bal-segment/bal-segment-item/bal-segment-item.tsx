@@ -144,6 +144,7 @@ export class SegmentItem implements ComponentInterface {
         const items = this.allAvailableOptions
         if (items.length > 0) {
           const first = items[0]
+          this.checked = false
           this.isFocusable = first === this.el
         }
       } else {
