@@ -1,4 +1,4 @@
-export type Frameworks = 'angular' | 'react' | 'html' | 'vue'
+export type Frameworks = 'angular' | 'react' | 'html'
 
 export const parseMarkdown = (content: string) => {
   if (content.startsWith('```')) {
@@ -18,7 +18,7 @@ export const getFramework = (): Frameworks => {
   const urlSearchParams = new URLSearchParams(window.location.search)
   const params = Object.fromEntries(urlSearchParams.entries())
   let paramFramework: string | undefined = params.globals?.replace('framework:', '')
-  const frameworks = ['angular', 'html', 'react', 'vue']
+  const frameworks = ['angular', 'html', 'react']
   paramFramework = frameworks.includes(paramFramework) ? paramFramework : undefined
   if (paramFramework !== undefined) {
     localStorage.setItem('bal-docs-framework', JSON.stringify(paramFramework))

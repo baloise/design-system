@@ -14,7 +14,6 @@ import {
   NotAngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
   DiffSource,
 } from '../../../.storybook/blocks'
 
@@ -57,33 +56,6 @@ npm install @baloise/design-system-components-react@11
 > **TIP** Do the same with the other Design System packages.
 
 </ReactFramework>
-
-<VueFramework>
-
-1. The Design System v11 supports vue 3+.
-2. Update to the latest version of Design System v11:
-
-```
-npm install @baloise/design-system-components-vue@11
-```
-
-3. In order to get the `~` alias working, update the vite.config.ts file and add the resolve config to the defineConfig function.
-
-```typescript
-  resolve: {
-    alias: [
-      {
-        // this is required for the SCSS modules
-        find: /^~(.*)$/,
-        replacement: "$1",
-      },
-    ],
-  },
-```
-
-> **TIP** Do the same with the other Design System packages.
-
-</VueFramework>
 
 <HTMLFramework>
 
@@ -185,11 +157,7 @@ import { balIconAccount } from '@baloise/design-system-icons'
 ```
 
 ```HTML
-<!-- Angular --->
 <bal-icon [svg]="balIconAccount"></bal-icon>
-
-<!-- Vue --->
-<bal-icon :svg="balIconAccount"></bal-cion
 ```
 
 #### 2. import all svg
@@ -220,27 +188,6 @@ import * as balIcons from '@baloise/design-system-icons'
   ...
 })
 export class AppModule {}
-```
-
-##### Vue
-
-```typescript
-...
-import * as balIcons from '@baloise/design-system-icons'
-
-createApp(App)
-  ...
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-        region: 'CH',
-        language: 'en',
-        allowedLanguages: ['de', 'fr', 'it', 'en'],
-        icons: balIcons,
-      },
-    }),
-  )
-  .mount('#app')
 ```
 
 ### New breakpoint high-definition

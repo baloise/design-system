@@ -14,7 +14,6 @@ import {
   NotAngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
   DiffSource,
 } from '../../../.storybook/blocks'
 
@@ -97,11 +96,6 @@ The components `tabs`, `accordion` and `popover` now can be used with two-way bi
 <!-- angular -->
 value = 'tab-a'
 <bal-tabs [(ngModel)]="value">...</bal-tabs>
-
-<!-- vue -->
-value = ref('tab-a')
-<bal-tabs v-model="value">...</bal-tabs>
-...
 ```
 
 ### Dropdown / Popover

@@ -78,12 +78,6 @@ export const PackageTable = ({ children }) => {
         </tr>
         <tr>
           <td>
-            <strong>Vue</strong>
-          </td>
-          <td>Vue component proxies based on the the core package.</td>
-        </tr>
-        <tr>
-          <td>
             <strong>Table</strong>
           </td>
           <td>Integration library for AG-Grid with styles and renderer functions</td>

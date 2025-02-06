@@ -14,7 +14,6 @@ import {
   NotAngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
   DiffSource,
 } from '../../../.storybook/blocks'
 
@@ -75,34 +74,6 @@ npm install @baloise/design-system-components-react@12
 > **TIP** Do the same with the other Design System packages.
 
 </ReactFramework>
-
-<VueFramework>
-
-1. The Design System v12 supports vue 3+.
-2. Update to the latest version of Design System v12:
-
-```
-npm install @baloise/design-system-components-vue@12
-```
-
-3. Load custom icons
-
-<DiffSource
-  code={`createApp(App)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-+       icons: { balIconAccount }, // just the icons you need
-+       icons: { ...balIcons }, // or all the icons at once
-      },
-    }),
-  )
-  .mount('#app')`}
-/>
-
-> **TIP** Do the same with the other Design System packages.
-
-</VueFramework>
 
 <HTMLFramework>
 

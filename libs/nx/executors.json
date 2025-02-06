@@ -10,11 +10,6 @@
       "schema": "./src/executors/build-core/schema.json",
       "description": "build-core executor"
     },
-    "build-css": {
-      "implementation": "./src/executors/build-css/executor",
-      "schema": "./src/executors/build-css/schema.json",
-      "description": "build-css executor"
-    },
     "build-svg": {
       "implementation": "./src/executors/build-svg/executor",
       "schema": "./src/executors/build-svg/schema.json",

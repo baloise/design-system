@@ -52,9 +52,7 @@
   "devDependencies": {
     "@baloise/output-target-angular": "0.0.0",
     "@baloise/output-target-react": "0.0.0",
-    "@baloise/output-target-vue": "0.0.0",
     "@baloise/output-target-web": "0.0.0",
-    "@baloise/ds-css": "17.3.0",
     "@baloise/ds-maps": "17.3.0",
     "@baloise/ds-brand-icons": "17.3.0",
     "@baloise/ds-favicons": "17.3.0"
