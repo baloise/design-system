@@ -1,5 +1,6 @@
 import { BuildStylesExecutorSchema } from '../schema'
 import * as utils from './utils'
+import { COLON_SEPARATOR } from './utils'
 
 export const generateSpacing = async (options: BuildStylesExecutorSchema) => {
   const tokens = await utils.getTokens({ token: 'size.space', ...options })
@@ -103,7 +104,8 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
     const values = {}
     for (const index in keys) {
       const key = keys[index]
-      values[`${breakpoint}:${prefix}-${key}`] = `var(--bal-space-${key}${breakpoint ? `-${breakpoint}` : ''})`
+      values[`${breakpoint}${COLON_SEPARATOR}${prefix}-${key}`] =
+        `var(--bal-space-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
     }
     const rules = utils.styleClass({ property, values, breakpoint, important: true })
     return { rules }
@@ -114,9 +116,11 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
     }
     for (const index in keys) {
       const key = keys[index]
-      values[`${prefix}-${key}`] = `var(--bal-space-${key}${breakpoint ? `-${breakpoint}` : ''})`
+      values[`${prefix}-${key}`] =
+        `var(--bal-space-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
       if (breakpoint) {
-        values[`${breakpoint}:${prefix}-${key}`] = `var(--bal-space-${key}${breakpoint ? `-${breakpoint}` : ''})`
+        values[`${breakpoint}${COLON_SEPARATOR}${prefix}-${key}`] =
+          `var(--bal-space-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
       }
     }
     const rules = utils.styleClass({ property, values, breakpoint, important: true })
