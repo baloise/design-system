@@ -6,7 +6,7 @@
   "ignore ": [["@baloise/ds-output-target-*", "@baloise/ds-nx", "e2e", "docs"]],
   "linked": [],
   "access": "public",
-  "baseBranch": "main",
+  "baseBranch": "v17",
   "updateInternalDependencies": "patch",
   "ignore": [],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
