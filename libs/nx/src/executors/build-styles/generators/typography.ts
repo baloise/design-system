@@ -92,7 +92,8 @@ const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }
   const values = {}
   for (const index in keys) {
     const key = keys[index]
-    values[`${prefix}-${key}`] = `var(--bal-text-size-${key}${breakpoint ? `-${breakpoint}` : ''})`
+    values[`${prefix}-${key}`] =
+      `var(--bal-text-size-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }
