@@ -28,18 +28,44 @@ Here is an overview of the breaking changes of the newly introduced version 18:
 
 - **Vue Support Removed:**<br/>Dropped direct support for Vue due to low usage within the company.
 - **Angular Upgrade:**<br/>Added support for Angular v19.
-- **Standalone Components:**<br/>Explicitly set standalone: true for all components to enhance modularity and maintainability.
-- **[Tree-Shaking Optimization](#tree-shaking-optimization):**<br/>Removed angular-legacy to improve tree-shaking support in Angular.
+- **Angular Standalone Components:**<br/>Explicitly set standalone: true for all components to enhance modularity and maintainability.
+- **[Angular Signals instead of Observables](#angular-signals-instead-of-observables):**<br/>Replaced Observables for `BalBreakpointsService`, `BalOrientationService`, and `BalConfigService` with a reactive Signals-based solution. This improves simplicity, reduces maintenance effort, and enhances usability for developers.
+- **[Angular Tree-Shaking Optimization](#angular-tree-shaking-optimization):**<br/>Removed angular-legacy to improve tree-shaking support in Angular.
 - **[Testing Update](#testing-update):**<br/>Removed deprecated legacy mixins to streamline testing utilities.
 - **[CSS Package Migration](#css-package-migration):**<br/>Removed the deprecated `@baloise/ds-css` package. Please migrate to `@baloise/ds-styles`.
 
-## Tree-Shaking Optimization
+## Angular Signals instead of Observables
 
-Removed angular-legacy to improve tree-shaking support in Angular.
+Refactored observables for `BalBreakpointsService`, `BalOrientationService`, and `BalConfigService` to use reactive `signals()`.
 
 ### Why the Change?
 
-Removing angular-legacy helps streamline the codebase by reducing maintenance complexity.
+This change simplifies the implementation, reduces maintenance effort, and enhances developer experience with a
+more intuitive and efficient approach.
+
+### How to Upgrade
+
+<DiffSource
+  code={`- @if (breakpoints.mobile$ | async) {
++ @if (breakpoints.mobile()) {
+  // some code block
+}`}
+/>
+
+<DiffSource
+  code={`- @if (orientation.landscape$ | async) {
++ @if (orientation.landscape()) {
+  // some code block
+}`}
+/>
+
+## Tree-Shaking Optimization
+
+Removed **angular-legacy** to improve tree-shaking support in Angular.
+
+### Why the Change?
+
+Removing **angular-legacy** helps streamline the codebase by reducing maintenance complexity.
 It ensures better alignment with modern Angular features, making it easier to integrate future Angular versions.
 This change also enhances tree-shaking capabilities, leading to smaller bundle sizes and improved application performance.
 
