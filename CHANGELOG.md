@@ -1,5 +1,13 @@
 # Changelog
 
+## 17.4.1
+
+### Patch Changes
+
+- **styles**: adjust responsive helpers for the spacing and typography css util classes ( [#1611](https://github.com/baloise/design-system/pull/1611))
+
+- **segment**: deselect segment-item if value of parent segment is falsy ( [#1593](https://github.com/baloise/design-system/pull/1593))
+
 ## 17.4.0
 
 ### Minor Changes
