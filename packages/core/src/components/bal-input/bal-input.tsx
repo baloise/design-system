@@ -45,6 +45,7 @@ import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/consta
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-input',
@@ -548,7 +549,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     return (
       <Host
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           ...block.class(),
         }}
@@ -570,7 +571,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           aria-labelledby={this.ariaForm.labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           disabled={this.disabled}
           accept={this.accept}
           inputMode={this.inputmode}

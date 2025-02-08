@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Prop, Event, EventEmitter } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
   tag: 'bal-date-calendar-cell',
@@ -59,8 +60,8 @@ export class DateCalendarCell implements ComponentInterface {
         type="button"
         role="button"
         aria-label={this.fullDate}
-        aria-selected={this.selected ? 'true' : 'false'}
-        aria-disabled={this.disabled ? 'true' : 'false'}
+        aria-selected={ariaBooleanToString(this.selected)}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         title={this.fullDate}
         onClick={(ev: MouseEvent) => this.onClick(ev, this.isoDate)}
       >

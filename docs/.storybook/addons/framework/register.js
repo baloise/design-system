@@ -19,10 +19,6 @@ const AngularSVG = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/200
 </g>
 </svg>
 `
-
-const VueSVG = `<svg version="1.1" viewBox="0 0 261.76 226.69" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.3333 0 0 -1.3333 -76.311 313.34)"><g transform="translate(178.06 235.01)"><path d="m0 0-22.669-39.264-22.669 39.264h-75.491l98.16-170.02 98.16 170.02z" fill="#41b883"/></g><g transform="translate(178.06 235.01)"><path d="m0 0-22.669-39.264-22.669 39.264h-36.227l58.896-102.01 58.896 102.01z" fill="#34495e"/></g></g></svg>
-`
-
 const ReactSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348">
   <title>React Logo</title>
   <circle cx="0" cy="0" r="2.05" fill="#61dafb"/>
@@ -41,7 +37,6 @@ const JavaScriptSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 
 const SvgIcons = {
   angular: AngularSVG,
   react: ReactSVG,
-  vue: VueSVG,
   html: JavaScriptSVG,
 }
 
@@ -49,10 +44,9 @@ const labels = {
   angular: 'Angular',
   html: 'HTML & JS',
   react: 'React',
-  vue: 'Vue.js',
 }
 
-const frameworks = ['angular', 'html', 'react', 'vue']
+const frameworks = ['angular', 'html', 'react']
 
 const LOCAL_STORE_ID = 'bal-docs-framework'
 
@@ -153,14 +147,6 @@ addons.register('my/framework', () => {
                   >
                     <div className="my-framework__button__icon" dangerouslySetInnerHTML={{ __html: ReactSVG }}></div>
                     React
-                  </a>
-                  <a
-                    id="vue"
-                    className={`my-framework__tooltip__item${isActive('vue')}`}
-                    onClick={() => handleItemClick('vue')}
-                  >
-                    <div className="my-framework__button__icon" dangerouslySetInnerHTML={{ __html: VueSVG }}></div>
-                    Vue
                   </a>
                 </div>
               )

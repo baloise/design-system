@@ -17,27 +17,45 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-select multiple data-testid="basic-input" placeholder="Placeholder">
-            <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
-            <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
-            <bal-select-option label="Option 3" value="opt-3">Option 3</bal-select-option>
-            <bal-select-option label="Option 4" value="opt-4">Option 4</bal-select-option>
-            <bal-select-option label="Option 5" value="opt-5">Option 5</bal-select-option>
-            <bal-select-option label="Option 6" value="opt-6">Option 6</bal-select-option>
-            <bal-select-option label="Option 7" value="opt-7">Option 7</bal-select-option>
-          </bal-select>
+          <bal-field>
+            <bal-field-label>Label</bal-field-label>
+            <bal-field-control>
+              <bal-select multiple data-testid="basic-input" placeholder="Placeholder">
+                <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
+                <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
+                <bal-select-option label="Option 3" value="opt-3">Option 3</bal-select-option>
+                <bal-select-option label="Option 4" value="opt-4">Option 4</bal-select-option>
+                <bal-select-option label="Option 5" value="opt-5">Option 5</bal-select-option>
+                <bal-select-option label="Option 6" value="opt-6">Option 6</bal-select-option>
+                <bal-select-option label="Option 7" value="opt-7">Option 7</bal-select-option>
+              </bal-select>
+            </bal-field-control>
+            <bal-field-message>Message</bal-field-message>
+          </bal-field>
         </section>
         <section data-testid="disabled">
-          <bal-select multiple disabled value="opt-1,opt-2">
-            <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
-            <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
-          </bal-select>
+          <bal-field>
+            <bal-field-label>Label</bal-field-label>
+            <bal-field-control>
+              <bal-select multiple disabled value="opt-1,opt-2">
+                <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
+                <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
+              </bal-select>
+            </bal-field-control>
+            <bal-field-message>Message</bal-field-message>
+          </bal-field>
         </section>
         <section data-testid="invalid">
-          <bal-select multiple invalid value="opt-1,opt-2">
-            <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
-            <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
-          </bal-select>
+          <bal-field>
+            <bal-field-label>Label</bal-field-label>
+            <bal-field-control>
+              <bal-select multiple invalid value="opt-1,opt-2">
+                <bal-select-option label="Option 1" value="opt-1">Option 1</bal-select-option>
+                <bal-select-option label="Option 2" value="opt-2">Option 2</bal-select-option>
+              </bal-select>
+            </bal-field-control>
+            <bal-field-message>Message</bal-field-message>
+          </bal-field>
         </section>
         <section data-testid="field">
           <bal-field>

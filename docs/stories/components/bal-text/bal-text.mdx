@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote } from '../../../.storybook/blocks'
 import * as TextStories from './bal-text.stories'
 
 <Meta of={TextStories} />
@@ -10,11 +10,25 @@ import * as TextStories from './bal-text.stories'
 
 <Lead>**Text** is a fundamental component used to display and present textual content.</Lead>
 
+<InfoQuote>
+  We recommend using standard <b>HTML elements</b> such as `<p>`, `<span>`, `<b>`, and `<strong>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+Additionally, explore CSS utilities for more styling options.
+
+</InfoQuote>
+
 <Canvas of={TextStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={TextStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Text}></StoryHeading>
+
+<Canvas of={TextStories.Text} sourceState="shown" />
+
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextStories.NoWrap}></StoryHeading>

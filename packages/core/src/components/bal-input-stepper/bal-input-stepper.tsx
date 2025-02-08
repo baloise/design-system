@@ -29,6 +29,7 @@ import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -263,7 +264,7 @@ export class InputStepper
 
     return (
       <Host
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         aria-focused={this.focused ? 'true' : null}
         class={{
           ...block.class(),
@@ -328,7 +329,7 @@ export class InputStepper
           aria-labelledby={this.ariaForm.labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           data-testid="bal-input-stepper"
           type="text"
           value={this.value}

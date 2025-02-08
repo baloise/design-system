@@ -1,5 +1,45 @@
 # Changelog
 
+## 17.4.0
+
+### Minor Changes
+
+- **nav**: mark as deprecated ( [#1591](https://github.com/baloise/design-system/pull/1591))
+
+- **navbar**: add a11y label for logo and make it clickable ( [#1582](https://github.com/baloise/design-system/pull/1582))
+
+- **styles**: add `is-inside` class to lists (ul & ol) to center alignt the element ( [#1589](https://github.com/baloise/design-system/pull/1589))
+
+- **carousel**: add space prop to define the gap between items ( [#1587](https://github.com/baloise/design-system/pull/1587))
+
+### Patch Changes
+
+- **number-input**: Accepts values with thousand separators ( [#1558](https://github.com/baloise/design-system/pull/1558))
+
+- **segment**: adjust icon color in disable mode to dark grey ( [#1582](https://github.com/baloise/design-system/pull/1582))
+
+- **carousel**: full-height option makes all item the same height ( [#1587](https://github.com/baloise/design-system/pull/1587))
+
+- **nav**: sets aria label to meta buttons first and otherwise label ( [#1577](https://github.com/baloise/design-system/pull/1577))
+
+- **form**: add missing row gap between controls ( [#1576](https://github.com/baloise/design-system/pull/1576))
+
+- **list**: connect accordion head and body for a11y ( [#1542](https://github.com/baloise/design-system/pull/1542))
+
+- **core**: modal: keep focus within modal when navigating with keyboard ( [#1475](https://github.com/baloise/design-system/pull/1475))
+
+- **dropdown**: only submit value ones ( [#1588](https://github.com/baloise/design-system/pull/1588))
+
+- **field**: fix id generation to prevent duplicate ids in a form ( [#1569](https://github.com/baloise/design-system/pull/1569))
+
+- **core**: Fix id assignment of bal-field children ( [#1569](https://github.com/baloise/design-system/pull/1569))
+
+- **footer**: safari style for the language select ( [#1576](https://github.com/baloise/design-system/pull/1576))
+
+- **accordion**: add a11y labels to the accordion trigger ( [#1542](https://github.com/baloise/design-system/pull/1542))
+
+- **button**: set aria-haspopup for popup buttons ( [#1479](https://github.com/baloise/design-system/pull/1479))
+
 ## 17.3.0
 
 ### Minor Changes
@@ -113,6 +153,8 @@
 ### Major Changes
 
 - Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
+
+Please check out the more detailed [Upgrade Guide to v17](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v17--documentation).
 
 ### Minor Changes
 

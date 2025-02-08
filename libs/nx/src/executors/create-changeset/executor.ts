@@ -46,7 +46,6 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
           { title: 'devkit', value: 'devkit' },
           { title: 'testing', value: 'testing' },
           { title: 'tokens', value: 'tokens' },
-          { title: 'vue', value: 'vue' },
           { title: 'react', value: 'react' },
           { title: 'table', value: 'table' },
           { title: 'font', value: 'font' },

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
+import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-tag',
@@ -76,7 +77,7 @@ export class Tag {
 
     return (
       <Host
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
           ...block.class(),
           ...block.modifier(sizeClass).class(hasSize),

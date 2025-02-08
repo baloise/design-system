@@ -11,6 +11,8 @@ import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
 import { FooterLink } from "@baloise/web-app-utils";
+import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -23,6 +25,8 @@ export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
 export { FooterLink } from "@baloise/web-app-utils";
+export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
+export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -106,6 +110,7 @@ export namespace Components {
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the button is aligned over the whole width
          */
@@ -414,6 +419,10 @@ export namespace Components {
           * If `true` vertical scrolling on mobile is enabled.
          */
         "scrollY": boolean;
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "space": 'normal' | 'medium' | 'none';
         /**
           * When how many slides are moved when going forward or backward.
          */
@@ -1811,16 +1820,19 @@ export namespace Components {
           * Sets space to content of the accordion body
          */
         "contentSpace": BalProps.BalListContentSpacing;
+        "setAria": (aria: BalListItemAccordionBodyAria) => Promise<void>;
     }
     interface BalListItemAccordionHead {
         /**
           * If `true` the list accordion is open
          */
         "accordionOpen": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Icon name string with value 'plus' on default
          */
         "icon": BalProps.BalListItemAccordionHeadIcon;
+        "setAria": (aria: BalListItemAccordionHeadAria) => Promise<void>;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -1882,6 +1894,10 @@ export namespace Components {
           * Closes the presented modal with the modal controller
          */
         "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        /**
+          * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+         */
+        "focusTrap": boolean;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -2021,6 +2037,7 @@ export namespace Components {
           * Defines if the logo animation should be active
          */
         "animated": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Link of the logo / title.
          */
@@ -2030,6 +2047,14 @@ export namespace Components {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * If `true` the logo is rendered as a button
+         */
+        "logoClickable": boolean;
+        /**
+          * Defines the label of the logo
+         */
+        "logoLabel"?: string;
         /**
           * Size of the logo SVG
          */
@@ -2146,7 +2171,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: number;
+        "value"?: number | string;
     }
     interface BalOption {
         /**
@@ -5495,6 +5520,10 @@ declare namespace LocalJSX {
          */
         "scrollY"?: boolean;
         /**
+          * Defines the layout of the navigation controls.
+         */
+        "space"?: 'normal' | 'medium' | 'none';
+        /**
           * When how many slides are moved when going forward or backward.
          */
         "steps"?: number;
@@ -7025,6 +7054,10 @@ declare namespace LocalJSX {
         "delegate"?: BalProps.FrameworkDelegate;
         "demo"?: boolean;
         /**
+          * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+         */
+        "focusTrap"?: boolean;
+        /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop"?: boolean;
@@ -7179,6 +7212,14 @@ declare namespace LocalJSX {
          */
         "logo"?: string;
         /**
+          * If `true` the logo is rendered as a button
+         */
+        "logoClickable"?: boolean;
+        /**
+          * Defines the label of the logo
+         */
+        "logoLabel"?: string;
+        /**
           * Size of the logo SVG
          */
         "logoSize"?: BalProps.BalLogoSize;
@@ -7311,7 +7352,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: number;
+        "value"?: number | string;
     }
     interface BalOption {
         /**

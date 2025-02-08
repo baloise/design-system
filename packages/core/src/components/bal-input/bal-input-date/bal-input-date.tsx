@@ -20,6 +20,7 @@ import { hasParent } from '../../../utils/helpers'
 import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
 import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
   tag: 'bal-input-date',
@@ -277,7 +278,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           aria-labelledby={this.ariaForm.labelId}
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}

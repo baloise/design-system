@@ -21,6 +21,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
   tag: 'bal-radio-group',
@@ -475,7 +476,7 @@ export class RadioGroup
         role="radiogroup"
         aria-labelledby={this.ariaForm.labelId}
         aria-describedby={this.ariaForm.messageId}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         onClick={this.onClick}
         {...this.inheritedAttributes}
       >

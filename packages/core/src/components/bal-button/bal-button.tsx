@@ -11,6 +11,7 @@ import {
   Listen,
 } from '@stencil/core'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
+import { ariaBooleanToString } from '../../utils/aria'
 import { rOnLoad } from '../../utils/helpers'
 
 @Component({
@@ -335,7 +336,7 @@ export class Button implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={ariaBooleanToString(this.disabled)}
           data-testid="bal-button"
           {...ariaAttributes}
         >

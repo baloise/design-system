@@ -13,7 +13,6 @@ import {
   AngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Getting Started" />
@@ -147,28 +146,28 @@ However, if the application requires all styles regardless of payload size, simp
 
 ```css
 // SASS mixins and variables
-@import '@baloise/ds-styles/sass/mixins';
+@forward '@baloise/ds-styles/sass/mixins';
 
 // Resets CSS for all browser
-@import '@baloise/ds-styles/css/normalize';
-@import '@baloise/ds-styles/css/structure';
+@forward '@baloise/ds-styles/css/normalize';
+@forward '@baloise/ds-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/ds-styles/css/font';
+@forward '@baloise/ds-styles/css/font';
 
 // Core CSS, always required
-@import '@baloise/ds-styles/css/core';
+@forward '@baloise/ds-styles/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/ds-styles/css/utilities/background';
-@import '@baloise/ds-styles/css/utilities/border';
-@import '@baloise/ds-styles/css/utilities/elevation';
-@import '@baloise/ds-styles/css/utilities/flex';
-@import '@baloise/ds-styles/css/utilities/interaction';
-@import '@baloise/ds-styles/css/utilities/layout';
-@import '@baloise/ds-styles/css/utilities/sizing';
-@import '@baloise/ds-styles/css/utilities/spacing';
-@import '@baloise/ds-styles/css/utilities/typography';
+@forward '@baloise/ds-styles/css/utilities/background';
+@forward '@baloise/ds-styles/css/utilities/border';
+@forward '@baloise/ds-styles/css/utilities/elevation';
+@forward '@baloise/ds-styles/css/utilities/flex';
+@forward '@baloise/ds-styles/css/utilities/interaction';
+@forward '@baloise/ds-styles/css/utilities/layout';
+@forward '@baloise/ds-styles/css/utilities/sizing';
+@forward '@baloise/ds-styles/css/utilities/spacing';
+@forward '@baloise/ds-styles/css/utilities/typography';
 ```
 
 ### Standalone
@@ -465,28 +464,28 @@ However, if the application requires all styles regardless of payload size, simp
   noPreview
   code={`
 // SASS mixins and variables
-@import '@baloise/ds-styles/sass/mixins';
+@forward '@baloise/ds-styles/sass/mixins';
 
 // Resets CSS for all browser
-@import '@baloise/ds-styles/css/normalize';
-@import '@baloise/ds-styles/css/structure';
+@forward '@baloise/ds-styles/css/normalize';
+@forward '@baloise/ds-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/ds-styles/sass/font';
+@forward '@baloise/ds-styles/sass/font';
 
 // Core CSS, always required
-@import '@baloise/ds-styles/css/core';
+@forward '@baloise/ds-styles/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/ds-styles/css/utilities/background';
-@import '@baloise/ds-styles/css/utilities/border';
-@import '@baloise/ds-styles/css/utilities/elevation';
-@import '@baloise/ds-styles/css/utilities/flex';
-@import '@baloise/ds-styles/css/utilities/interaction';
-@import '@baloise/ds-styles/css/utilities/layout';
-@import '@baloise/ds-styles/css/utilities/sizing';
-@import '@baloise/ds-styles/css/utilities/spacing';
-@import '@baloise/ds-styles/css/utilities/typography';
+@forward '@baloise/ds-styles/css/utilities/background';
+@forward '@baloise/ds-styles/css/utilities/border';
+@forward '@baloise/ds-styles/css/utilities/elevation';
+@forward '@baloise/ds-styles/css/utilities/flex';
+@forward '@baloise/ds-styles/css/utilities/interaction';
+@forward '@baloise/ds-styles/css/utilities/layout';
+@forward '@baloise/ds-styles/css/utilities/sizing';
+@forward '@baloise/ds-styles/css/utilities/spacing';
+@forward '@baloise/ds-styles/css/utilities/typography';
 `}
 />
 
@@ -523,128 +522,6 @@ export default App
 ```
 
 </ReactFramework>
-
-{/* ################################################## */}
-{/* -------------------------------------------------- */}
-{/* VUE  --------------------------------------------- */}
-{/* -------------------------------------------------- */}
-{/* ################################################## */}
-
-<VueFramework>
-
-## Prerequisite
-
-Follow the instructions of the official Vite page [Scaffolding Your First Vite Project](https://vitejs.dev/guide/)
-
-## Installation
-
-The `@baloise/ds-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfills and defines the components.
-Moreover, it adds the controllers to your vue instance.
-
-To install the Baloise Design System run the following command.
-
-```
-npm add -E @baloise/ds-vue
-```
-
-## Import Styles
-
-Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
-fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
-imported as either **SASS** or **CSS** files.
-
-Use `@baloise/ds-styles/sass/mixins` to gain access to SASS mixins, such as breakpoints.
-
-The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
-However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/ds-styles/sass/all`
-, which has all style definitions.
-
-<Code
-  language="css"
-  noPreview
-  code={`
-// SASS mixins and variables
-@import '@baloise/ds-styles/sass/mixins';
-
-// Resets CSS for all browser
-@import '@baloise/ds-styles/css/normalize';
-@import '@baloise/ds-styles/css/structure';
-
-// Custom font faces
-@import '@baloise/ds-styles/sass/font';
-
-// Core CSS, always required
-@import '@baloise/ds-styles/css/core';
-
-// CSS utilities classes (optional)
-@import '@baloise/ds-styles/css/utilities/background';
-@import '@baloise/ds-styles/css/utilities/border';
-@import '@baloise/ds-styles/css/utilities/elevation';
-@import '@baloise/ds-styles/css/utilities/flex';
-@import '@baloise/ds-styles/css/utilities/interaction';
-@import '@baloise/ds-styles/css/utilities/layout';
-@import '@baloise/ds-styles/css/utilities/sizing';
-@import '@baloise/ds-styles/css/utilities/spacing';
-@import '@baloise/ds-styles/css/utilities/typography';
-`}
-/>
-
-### Use Plugin
-
-Inside the `main.ts` file add the created `main.scss` and import the `BaloiseDesignSystem` plugin.
-
-```typescript
-import './main.scss'
-import { createBaloiseDesignSystem } from '@baloise/ds-vue'
-
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-
-createApp(App)
-  .use(router)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-        region: 'CH',
-        language: 'en',
-        allowedLanguages: ['de', 'fr', 'it', 'en'],
-      },
-    }),
-  )
-  .mount('#app')
-```
-
-### HTML Structure
-
-Add the `BalApp` to your root element (App.vue).
-
-```html
-<script setup lang="ts">
-  import { BalApp, BalFooter, BalHeading, BalButton } from '@baloise/ds-vue'
-</script>
-
-<template>
-  <BalApp class="has-sticky-footer">
-    <header>
-      <!-- Header content -->
-    </header>
-    <main class="container">
-      <BalHeading>Hello World!</BalHeading>
-      <BalButton>Button</BalButton>
-      <!-- Page content -->
-    </main>
-    <BalFooter>
-      <div class="container">
-        <!-- Footer content -->
-        Footer
-      </div>
-    </BalFooter>
-  </BalApp>
-</template>
-```
-
-</VueFramework>
 
 {/* ################################################## */}
 {/* -------------------------------------------------- */}

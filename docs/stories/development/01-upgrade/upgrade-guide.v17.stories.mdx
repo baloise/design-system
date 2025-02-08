@@ -1,0 +1,58 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  DiffSource,
+  CssTypographyColors,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v17" />
+
+<Banner label="Updating to v17" section="Development/Upgrade Guides" />
+
+## Overview
+
+Here is an overview of the breaking changes of the newly introduced version 17:
+
+- [Deprecated Component Removal](#deprecated-component-removal)**:** <br/>Removed `bal-datepicker` for performance reasons
+
+## Deprecated Component Removal
+
+### Why the Change?
+
+The datepicker is being refactored to improve performance, enhance user experience, leverage a better third-party library,
+and reduce the overall payload size.
+
+### What's Changing?
+
+Replaced `bal-datepicker` with the new `bal-date` component.
+
+### How to Upgrade
+
+Replace the current import statement for the old datepicker component with the new one.
+The interface for the new datepicker is almost identical to the old one, so minimal changes should be needed.
+
+<DiffSource
+  code={`
+-  <bal-datepicker></bal-datepicker>
++  <bal-date></bal-date>
+`}
+/>
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

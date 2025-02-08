@@ -22,6 +22,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -443,7 +444,7 @@ export class CheckboxGroup
           ...block.class(),
         }}
         role="group"
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         aria-labelledby={this.ariaForm.labelId}
         aria-describedby={this.ariaForm.messageId}
         onClick={this.onClick}

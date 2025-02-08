@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, WarningQuote } from '../../../.storybook/blocks'
 import * as NavStories from './bal-nav.stories'
 
 <Meta of={NavStories} />
@@ -8,7 +8,13 @@ import * as NavStories from './bal-nav.stories'
 
 <Banner of={NavStories} />
 
-<Lead>Navigation component serves as a central hub for seamless user navigation within the applications.</Lead>
+<Lead>Navigation component serves as a central hub for seamless user navigation within the websites.</Lead>
+
+<WarningQuote>
+  **Deprecation Warning!** <br />
+  Please use the components [Navbar](?path=/docs/components-navigation-navbar--documentation), because this component is
+  marked as deprecated and will be removed with the next major releases.
+</WarningQuote>
 
 ## Anatomy
 

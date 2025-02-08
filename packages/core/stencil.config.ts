@@ -3,8 +3,7 @@ import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { join, parse, resolve } from 'path'
 
-import { AngularGenerator, AngularLegacyGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
-import { VueGenerator } from './config/stencil.bindings.vue'
+import { AngularGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
 import { webOutputTarget } from '@baloise/output-target-web'
@@ -107,11 +106,6 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'css', 'css', 'baloise-design-system.css'),
-          dest: 'assets/baloise-design-system.css',
-          warn: true,
-        },
-        {
           src: join(packagesDir, 'styles', 'css', 'all.css'),
           dest: 'assets/all.css',
           warn: true,
@@ -148,11 +142,9 @@ export const config: Config = {
             file: 'dist/html.html-data.json',
             sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
           },
-          VueGenerator(),
           ReactGenerator(),
           AngularGenerator(),
           AngularModuleGenerator(),
-          AngularLegacyGenerator(),
         ]
       : []),
   ],
