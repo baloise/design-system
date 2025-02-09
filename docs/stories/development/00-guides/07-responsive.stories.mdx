@@ -1,0 +1,131 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  ScssSource,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Responsive" />
+
+<Banner label="Responsive" section="Development" />
+
+<Lead>The Baloise Design System provides multiple solutions for achieving a responsive design.</Lead>
+
+- **[Using CSS](#)**:<br/>Utilize utility classes like `class="p-normal desktop:p-large"` for styling.
+- **[Using Sass](#)**:<br/>Apply breakpoint mixins such as `@include desktop { ... }` for structured styling.
+- **[Using Code](#)**:<br/>Leverage the breakpoint service to dynamically listen for viewport changes.
+
+## Using CSS
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:m-large`, to apply the
+corresponding responsive class.
+
+<Markdown>
+  {`
+| Class             | Description                  |
+| ----------------- | ---------------------------- |
+| \`mobile:\`       | small screens e.g. phones    |
+| \`tablet:\`       | medium screens e.g. tablets  |
+| \`desktop:\`      | large screens e.g. notebooks |
+| \`widescreen:\`   | larger screens e.g monitors  |
+`}
+</Markdown>
+
+<Code
+  language="html"
+  code={`
+<p class="p-normal desktop:p-large bg-green-2">This text is normal on mobile and large on desktop.</p>
+`}
+/>
+
+Check out the available CSS utility classes, as some are specifically designed to support responsiveness.
+
+<LinkCards>
+  <LinkCard pageTitle="CSS Utilities/Padding" description="Determines the space between the content and its border." />
+  <LinkCard pageTitle="CSS Utilities/Margin" description="Determines the space around an element." />
+</LinkCards>
+
+## Using Sass
+
+To create a responsive layout you can either structure your app with the Sass mixins.
+
+Use the scss mixins in your application the following:
+
+<ScssSource code={`// SASS mixins and variables
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+.my-component {
+${' '}${' '}background: var(--bal-color-green);
+}
+
+@include desktop() {
+${' '}${' '}// add your custom styles here
+${' '}${' '}.my-component {
+${' '}${' '}${' '}${' '}background: var(--bal-color-red);
+${' '}${' '}}
+}
+`} />
+
+The file `design-system-styles/sass/mixins` provides all design tokens as CSS-Variable and SASS mixins.
+
+<LinkCards>
+  <LinkCard
+    pageTitle="CSS Utilities/Breakpoints"
+    description="To create a responsive layout you can either structure your app with the Sass mixins."
+  />
+  <LinkCard
+    pageTitle="Tokens/Overview"
+    description="Design tokens serve as the definitive source for naming and storing design choices."
+  />
+</LinkCards>
+
+## Using Code
+
+### Breakpoints
+
+The Baloise Design System provides a service to dynamically listen for viewport changes.
+
+```typescript
+import { BalBreakpointService } from '@baloise/ds-angular'
+
+export class MyComponent {
+  readonly breakpoint = inject(BalBreakpointService)
+}
+```
+
+```html
+<p *ngIf="breakpoint.mobile()">This text is only visible on mobile.</p>
+<p *ngIf="breakpoint.desktop()">This text is only visible on desktop.</p>
+```
+
+### Orientation
+
+The Baloise Design System also provides a service to dynamically listen for orientation changes.
+
+```typescript
+import { BalOrientationService } from '@baloise/ds-angular'
+
+export class MyComponent {
+  readonly orientation = inject(BalOrientationService)
+}
+```
+
+```html
+<p *ngIf="orientation.landscape()">This text is only visible on landscape.</p>
+<p *ngIf="orientation.portrait()">This text is only visible on portrait.</p>
+```
+
+<Footer />

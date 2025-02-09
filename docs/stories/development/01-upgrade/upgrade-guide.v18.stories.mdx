@@ -34,6 +34,20 @@ Here is an overview of the breaking changes of the newly introduced version 18:
 - **[Testing Update](#testing-update):**<br/>Removed deprecated legacy mixins to streamline testing utilities.
 - **[CSS Package Migration](#css-package-migration):**<br/>Removed the deprecated `@baloise/ds-css` package. Please migrate to `@baloise/ds-styles`.
 
+<InfoQuote>
+
+**Migrate Angular to Standalone Components**
+
+We recommend to migrating away from NgModules for new Angular projects and to refactoring existing ones.
+The Angular team introduced standalone components, directives, and pipes in Angular 14 to
+simplify application structure and reduce boilerplate.
+
+The Angular team provides a migration guide to help you transition to standalone components.
+
+[Migrate an existing Angular project to standalone](https://angular.dev/reference/migrations/standalone?utm_source=chatgpt.com)
+
+</InfoQuote>
+
 ## Angular Signals instead of Observables
 
 Refactored observables for `BalBreakpointsService`, `BalOrientationService`, and `BalConfigService` to use reactive `signals()`.
