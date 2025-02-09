@@ -15,6 +15,17 @@
         }
       }
     },
+    "e2e-ui": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --ui",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
