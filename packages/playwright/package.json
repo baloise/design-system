@@ -1,0 +1,13 @@
+{
+  "name": "@baloise/ds-playwright",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "dependencies": {
+    "@swc/helpers": "~0.5.11",
+    "@playwright/test": "^1.36.0",
+    "@axe-core/playwright": "^4.10.1"
+  }
+}

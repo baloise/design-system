@@ -1,8 +1,23 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@baloise/ds-playwright'
 
-test('has title', async ({ page }) => {
-  await page.goto('/')
+test.describe('component', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.mount(`
+      <bal-tag closable>My tag</bal-tag>
+    `)
+  })
 
-  // Expect h1 to contain a substring.
-  expect(await page.locator('h1').innerText()).toContain('Welcome')
+  test('should have a default slot', async ({ page }) => {
+    const balTag = await page.locator('bal-tag')
+    await expect(balTag).toContainText('My tag')
+  })
+
+  test('should fire balCloseClick event', async ({ page }) => {
+    const balTag = await page.locator('bal-tag')
+    const spy = await balTag.spyOnEvent('balCloseClick')
+
+    await balTag.getByTestId('bal-tag-close').click()
+
+    expect(spy).toHaveReceivedEventTimes(1)
+  })
 })

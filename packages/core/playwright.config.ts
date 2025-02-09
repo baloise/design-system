@@ -1,5 +1,6 @@
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig, devices, expect } from '@playwright/test'
 import { nxE2EPreset } from '@nx/playwright/preset'
+import { matchers } from '@baloise/ds-playwright'
 import { workspaceRoot } from '@nx/devkit'
 
 // For CI, you may want to set BASE_URL to the deployed application.
@@ -10,6 +11,9 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4000'
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+
+// Add custom Stencil matchers to Playwright assertions
+expect.extend(matchers)
 
 /**
  * See https://playwright.dev/docs/test-configuration.

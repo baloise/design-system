@@ -1,0 +1,6 @@
+export * from './lib/extend'
+export type { EventSpy } from './lib/page/event-spy'
+export * from './lib/matchers'
+export * from './lib/page/utils'
+export * from './lib/types'
+export * from './lib/test-expect'

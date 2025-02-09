@@ -1,0 +1,19 @@
+{
+  "name": "playwright",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/playwright/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/playwright",
+        "main": "packages/playwright/src/index.ts",
+        "tsConfig": "packages/playwright/tsconfig.lib.json",
+        "assets": ["packages/playwright/*.md"]
+      }
+    }
+  }
+}
