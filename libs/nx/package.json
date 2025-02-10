@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-nx",
-  "version": "17.4.1",
+  "version": "18.0.0",
   "private": true,
   "dependencies": {
     "@nx/devkit": "18.0.4",

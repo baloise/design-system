@@ -16,7 +16,6 @@ interface RenameConfig {
 
 const RENAME_CONFIG: RenameConfig = {
   '@baloise/design-system-components-angular/standalone': '@baloise/ds-angular',
-  '@baloise/design-system-components-angular/legacy': '@baloise/ds-angular-legacy',
   '@baloise/design-system-components-angular': '@baloise/ds-angular-module',
   '@baloise/design-system-components': '@baloise/ds-core',
   '@baloise/design-system-tokens': '@baloise/ds-tokens',
@@ -78,8 +77,6 @@ function changePackageName(options: SchemaOptions): Rule {
       changePackage('design-system-components-angular', 'ds-angular')
     } else if (options.angularType === AngularType.Module) {
       changePackage('design-system-components-angular', 'ds-angular-module')
-    } else if (options.angularType === AngularType.Legacy) {
-      changePackage('design-system-components-angular', 'ds-angular-legacy')
     }
 
     changePackage('design-system-components', 'ds-core')

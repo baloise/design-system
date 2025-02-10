@@ -1,4 +1,4 @@
-@import '@baloise/ds-styles/sass/mixins'
+@use '@baloise/ds-styles/sass/mixins' as *
 
 // Tab Label
 // --------------------------------------------------
@@ -31,7 +31,7 @@
 
   //
   // Color status
-  color: var(--bal-tabs-tab-label-text-color)
+        color: var(--bal-tabs-tab-label-text-color)
   &--disabled
     color: var(--bal-tabs-tab-label-text-color-disabled)
   &--inverted

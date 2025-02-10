@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Inject, Injectable, OnDestroy } from '@angular/core'
+import { computed, Inject, Injectable, OnDestroy, signal } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
 import type { BalConfigObserver, BalConfigState, BalIcons, BalLanguage, BalRegion } from '@baloise/ds-core'
@@ -21,8 +21,8 @@ interface ConfigUtils {
   providedIn: 'root',
 })
 export class BalConfigService implements BalConfigObserver, OnDestroy {
-  private subject = new BehaviorSubject({})
-  public state$ = this.subject.asObservable()
+  private readonly _state = signal({} as BalConfigState)
+  public readonly state = computed(() => this._state())
 
   constructor(@Inject(BalTokenConfig) private config: ConfigUtils) {
     this.config.attachToConfig(this)
@@ -49,7 +49,7 @@ export class BalConfigService implements BalConfigObserver, OnDestroy {
   }
 
   configChanged(state: BalConfigState): void {
-    this.subject.next(state)
+    this._state.set(state)
   }
 
   ngOnDestroy(): void {

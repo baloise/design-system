@@ -14,7 +14,6 @@ import {
   NotAngularFramework,
   HTMLFramework,
   ReactFramework,
-  VueFramework,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Theming" />
@@ -45,7 +44,7 @@ It is recommended to import the theme-compact file at the end of your stylesheet
 <Code
   language="js"
   code={`
-@import '@baloise/ds-styles/css/themes/compact';
+@forward '@baloise/ds-styles/css/themes/compact';
 `}
 />
 
