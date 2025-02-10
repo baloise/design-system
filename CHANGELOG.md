@@ -162,6 +162,8 @@
 
 - Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
 
+Please check out the more detailed [Upgrade Guide to v17](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v17--documentation).
+
 ### Minor Changes
 
 - **list**: new bullet icon arrow down ( [#1515](https://github.com/baloise/design-system/pull/1515))

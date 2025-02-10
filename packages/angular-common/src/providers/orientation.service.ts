@@ -1,4 +1,4 @@
-import { ApplicationRef, Inject, Injectable, OnDestroy } from '@angular/core'
+import { ApplicationRef, computed, Inject, Injectable, OnDestroy, signal } from '@angular/core'
 import { BehaviorSubject, Observable, map } from 'rxjs'
 
 import type { BalDevice, BalOrientationInfo, BalOrientationObserver, BalOrientationSubject } from '@baloise/ds-core'
@@ -9,39 +9,27 @@ import { BalTokenDevice, BalTokenOrientationSubject } from '../utils/token'
   providedIn: 'root',
 })
 export class BalOrientationService implements BalOrientationObserver, OnDestroy {
-  private _orientation$!: BehaviorSubject<BalOrientationInfo>
+  private readonly _state = signal({ portrait: false, landscape: false } as BalOrientationInfo)
 
-  state$: Observable<BalOrientationInfo>
-  portrait$: Observable<boolean>
-  landscape$: Observable<boolean>
+  readonly state = computed(() => this._state())
+  readonly portrait = computed(() => this._state().portrait)
+  readonly landscape = computed(() => this._state().landscape)
 
   constructor(
     private app: ApplicationRef,
     @Inject(BalTokenDevice) private device: BalDevice,
     @Inject(BalTokenOrientationSubject) private orientationSubject: BalOrientationSubject,
   ) {
-    this._orientation$ = new BehaviorSubject<BalOrientationInfo>(device.orientation.toObject())
-
-    this.state$ = this._orientation$.asObservable()
-    this.portrait$ = this._orientation$.asObservable().pipe(map(orientation => orientation.portrait))
-    this.landscape$ = this._orientation$.asObservable().pipe(map(orientation => orientation.landscape))
-
+    this._state.set(device.orientation.toObject())
     this.orientationSubject.attach(this)
   }
 
   orientationListener(info: BalOrientationInfo): void {
-    this._orientation$.next(info)
+    this._state.set(info)
     this.app.tick()
   }
 
   ngOnDestroy() {
     this.orientationSubject.detach(this)
-  }
-
-  get value(): BalOrientationInfo {
-    if (this._orientation$) {
-      return this._orientation$.getValue()
-    }
-    return this.device.orientation.toObject()
   }
 }

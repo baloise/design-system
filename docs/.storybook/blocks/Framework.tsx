@@ -31,16 +31,6 @@ export const ReactFramework = ({ children }) => {
   return null
 }
 
-export const VueFramework = ({ children }) => {
-  const globalFramework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
-
-  if (globalFramework === 'vue') {
-    return <div className="sbdocs-content">{children}</div>
-  }
-
-  return null
-}
-
 export const HTMLFramework = ({ children }) => {
   const globalFramework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
 

@@ -1,4 +1,6 @@
-@import '@baloise/ds-tokens/dist/tokens.css.scss'
+@forward '@baloise/ds-tokens/dist/tokens.css.scss'
+@forward './mixins'
+@forward '../src/core/_all'
 
 // Deprecated line heights will be change to factors soon
 :root
@@ -32,6 +34,3 @@
   --bal-line-height-desktop-xxx-large: 3rem
   --bal-line-height-desktop-xxxx-large: 3.5rem
   --bal-line-height-desktop-xxxxx-large: 6rem
-
-@import './mixins'
-@import '../src/core/_all'

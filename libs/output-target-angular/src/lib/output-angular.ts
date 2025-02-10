@@ -99,9 +99,7 @@ export function generateProxies(
 
   const typeImports = !outputTarget.componentCorePackage
     ? `import type { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
-    : `import type { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}${
-        outputTarget.outputType !== 'legacy' ? '/components' : ''
-      }';`
+    : `import type { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}/components';`
 
   const final: string[] = [
     imports.join('\n'),

@@ -15,11 +15,6 @@ export type { Platforms } from './commands/helpers'
 export { testOnPlatforms } from './commands/helpers'
 
 /**
- * Legacy Commands
- */
-export * from './legacy'
-
-/**
  * Custom Commands
  */
 import './add-custom-commands'

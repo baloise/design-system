@@ -339,7 +339,7 @@ export const styleClassDeprecated = ({
 export const merge = ({ docs = [], rules = [], deprecated = [], visualTest = [] }) => {
   return {
     json: JSON.stringify(docs, undefined, 2),
-    rules: [...rules.map(r => r.toString())].join(NEWLINE),
+    rules: [`@use '../mixins/_all' as *`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
     deprecated: [...deprecated.map(r => r.toString())].join(NEWLINE),
     visualTest: `<!DOCTYPE html>
 <html dir="ltr" lang="en">

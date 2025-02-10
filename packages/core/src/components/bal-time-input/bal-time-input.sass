@@ -1,65 +1,65 @@
-@import '@baloise/ds-styles/sass/mixins'
-@import './bal-time-input.vars'
+@use '@baloise/ds-styles/sass/mixins' as *
+@use './bal-time-input.vars' as *
 
 +block(time-input)
-    +unselectable
-    display: block
-    position: relative
-    flex: 1
-    align-items: center
-    width: 100%
-    padding: 0
-    font-family: var(--bal-font-family-text)
-    +element(native)
-        &::-webkit-datetime-edit-fields-wrapper
-            display: flex
+  +unselectable
+  display: block
+  position: relative
+  flex: 1
+  align-items: center
+  width: 100%
+  padding: 0
+  font-family: var(--bal-font-family-text)
+  +element(native)
+    &::-webkit-datetime-edit-fields-wrapper
+      display: flex
+      &::-webkit-datetime-edit-text
+        color: var(--bal-time-input-native-text-color)
+      &::-webkit-datetime-edit-hour-field
+        color: var(--bal-time-input-native-text-color)
+      &::-webkit-datetime-edit-minute-field
+        color: var(--bal-time-input-native-text-color)
+      &::-webkit-clear-button
+        display: none
+      &::-webkit-inner-spin-button
+        display: none
+      &::-webkit-calendar-picker-indicator
+        display: none
+        background: none
+      &.has-focus, &.has-value
         &::-webkit-datetime-edit-text
-            color: var(--bal-time-input-native-text-color)
-        &::-webkit-datetime-edit-hour-field
-            color: var(--bal-time-input-native-text-color)
-        &::-webkit-datetime-edit-minute-field
-            color: var(--bal-time-input-native-text-color)
-        &::-webkit-clear-button
-            display: none
-        &::-webkit-inner-spin-button
-            display: none
-        &::-webkit-calendar-picker-indicator
-            display: none
-            background: none
-        &.has-focus, &.has-value
+          color: var(--bal-time-input-native-text-color-focus-value)
+          &::-webkit-datetime-edit-hour-field
+            color: var(--bal-time-input-native-text-color-focus-value)
+          &::-webkit-datetime-edit-minute-field
+            color: var(--bal-time-input-native-text-color-focus-value)
+      &.is-disabled
+        &::-webkit-datetime-edit-text
+          color: var(--bal-time-input-native-text-color-disabled)
+          &::-webkit-datetime-edit-hour-field
+            color: var(--bal-time-input-native-text-color-disabled)
+          &::-webkit-datetime-edit-minute-field
+            color: var(--bal-time-input-native-text-color-disabled)
+          &.has-value
             &::-webkit-datetime-edit-text
-                color: var(--bal-time-input-native-text-color-focus-value)
-            &::-webkit-datetime-edit-hour-field
-                color: var(--bal-time-input-native-text-color-focus-value)
-            &::-webkit-datetime-edit-minute-field
-                color: var(--bal-time-input-native-text-color-focus-value)
-        &.is-disabled
-            &::-webkit-datetime-edit-text
-                color: var(--bal-time-input-native-text-color-disabled)
-            &::-webkit-datetime-edit-hour-field
-                color: var(--bal-time-input-native-text-color-disabled)
-            &::-webkit-datetime-edit-minute-field
-                color: var(--bal-time-input-native-text-color-disabled)
-            &.has-value
-                &::-webkit-datetime-edit-text
-                    color: var(--bal-time-input-native-text-color-disabled-value)
-                &::-webkit-datetime-edit-hour-field
-                    color: var(--bal-time-input-native-text-color-disabled-value)
-                &::-webkit-datetime-edit-minute-field
-                    color: var(--bal-time-input-native-text-color-disabled-value)
-        &.show-placeholder
-            &.is-disabled::before
-                color: var(--bal-time-input-native-placeholder-text-color-disabled-before)
-                background: var(--bal-time-input-native-placeholder-background-disabled-before)
-            &.is-danger::before
-                background: var(--bal-time-input-native-placeholder-background-danger-before)
-            &.is-disabled.is-danger::before
-                background: var(--bal-time-input-native-placeholder-background-disabled-danger-before)
-            &:hover::before
-                background: var(--bal-time-input-native-placeholder-background-hover-before)
-            &::before
-                color: var(--bal-time-input-native-placeholder-text-color-before)
-                content: attr(placeholder)
-                pointer-events: none
-                position: absolute
-                background: var(--bal-time-input-native-placeholder-background-before)
+              color: var(--bal-time-input-native-text-color-disabled-value)
+              &::-webkit-datetime-edit-hour-field
+                color: var(--bal-time-input-native-text-color-disabled-value)
+              &::-webkit-datetime-edit-minute-field
+                color: var(--bal-time-input-native-text-color-disabled-value)
+      &.show-placeholder
+        &.is-disabled::before
+          color: var(--bal-time-input-native-placeholder-text-color-disabled-before)
+          background: var(--bal-time-input-native-placeholder-background-disabled-before)
+          &.is-danger::before
+            background: var(--bal-time-input-native-placeholder-background-danger-before)
+          &.is-disabled.is-danger::before
+            background: var(--bal-time-input-native-placeholder-background-disabled-danger-before)
+          &:hover::before
+            background: var(--bal-time-input-native-placeholder-background-hover-before)
+          &::before
+            color: var(--bal-time-input-native-placeholder-text-color-before)
+            content: attr(placeholder)
+            pointer-events: none
+            position: absolute
+            background: var(--bal-time-input-native-placeholder-background-before)

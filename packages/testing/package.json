@@ -12,8 +12,7 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/ds-core": "17.4.1",
-    "cypress-file-upload": "~5.0.8"
+    "@baloise/ds-core": "17.4.1"
   },
   "module": "./index.esm.js",
   "type": "module",

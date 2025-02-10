@@ -74,7 +74,7 @@ async function writeJsOutput(files: Map<string, string>, options: BuildSvgExecut
 
   files.forEach((value, key) => {
     lines.push(
-      `export const ${options.jsOutputName}${upperFirst(camelCase(key))} = /*#__PURE__*/ '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
+      `export const ${options.jsOutputName}${upperFirst(camelCase(key))} = '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
     )
     lines.push(``)
   })
@@ -98,7 +98,7 @@ async function writeDSMinSet(files: Map<string, string>, options: BuildSvgExecut
     const iconName = `${options.jsOutputName}${upperFirst(camelCase(key))}`
     if ((options.dsMinSet || []).includes(iconName)) {
       lines.push(
-        `export const ${iconName} = /*#__PURE__*/ '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
+        `export const ${iconName} = '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
       )
       lines.push(``)
     }

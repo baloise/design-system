@@ -1,4 +1,4 @@
-import { ApplicationRef, Inject, Injectable, OnDestroy } from '@angular/core'
+import { ApplicationRef, computed, Inject, Injectable, OnDestroy, signal } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -10,49 +10,40 @@ import { BalTokenBreakpointSubject, BalTokenBreakpoints } from '../utils/token'
   providedIn: 'root',
 })
 export class BalBreakpointsService implements BalBreakpointObserver, OnDestroy {
-  private _breakpoints$!: BehaviorSubject<BalBreakpoints>
+  private readonly _state = signal({
+    mobile: false,
+    tablet: false,
+    touch: false,
+    desktop: false,
+    highDefinition: false,
+    widescreen: false,
+    fullhd: false,
+  } as BalBreakpoints)
 
-  state$: Observable<BalBreakpoints>
-  mobile$: Observable<boolean>
-  tablet$: Observable<boolean>
-  touch$: Observable<boolean>
-  desktop$: Observable<boolean>
-  highDefinition$: Observable<boolean>
-  widescreen$: Observable<boolean>
-  fullhd$: Observable<boolean>
+  readonly state = computed(() => this._state())
+  readonly mobile = computed(() => this._state().mobile)
+  readonly tablet = computed(() => this._state().tablet)
+  readonly touch = computed(() => this._state().touch)
+  readonly desktop = computed(() => this._state().desktop)
+  readonly highDefinition = computed(() => this._state().highDefinition)
+  readonly widescreen = computed(() => this._state().widescreen)
+  readonly fullhd = computed(() => this._state().fullhd)
 
   constructor(
     private app: ApplicationRef,
     @Inject(BalTokenBreakpoints) private breakpoints: BalBreakpointsUtil,
     @Inject(BalTokenBreakpointSubject) private breakpointSubject: BalBreakpointSubject,
   ) {
-    this._breakpoints$ = new BehaviorSubject<BalBreakpoints>(this.breakpoints.toObject())
-
-    this.state$ = this._breakpoints$.asObservable()
-    this.mobile$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.mobile))
-    this.tablet$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.tablet))
-    this.touch$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.touch))
-    this.desktop$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.desktop))
-    this.highDefinition$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.highDefinition))
-    this.widescreen$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.widescreen))
-    this.fullhd$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.fullhd))
-
+    this._state.set(this.breakpoints.toObject())
     this.breakpointSubject.attach(this)
   }
 
   breakpointListener(breakpoints: BalBreakpoints): void {
-    this._breakpoints$.next(breakpoints)
+    this._state.set(breakpoints)
     this.app.tick()
   }
 
   ngOnDestroy() {
     this.breakpointSubject.detach(this)
-  }
-
-  get value(): BalBreakpoints {
-    if (this._breakpoints$) {
-      return this._breakpoints$.getValue()
-    }
-    return this.breakpoints.toObject()
   }
 }

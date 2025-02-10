@@ -6,7 +6,6 @@
     "@baloise/ds-brand-icons": "17.4.1",
     "@baloise/ds-core": "17.4.1",
     "@baloise/ds-styles": "17.4.1",
-    "@baloise/ds-css": "17.4.1",
     "@baloise/ds-icons": "17.4.1",
     "@baloise/ds-tokens": "17.4.1",
     "@storybook/addon-essentials": "~7.6.10",
@@ -18,8 +17,8 @@
     "codesandbox": "~2.2.3",
     "lodash.kebabcase": "~4.1.1",
     "js-beautify": "~1.14.11",
-    "react": "~18.2.0",
-    "react-dom": "~18.2.0",
+    "react": "~18.3.1",
+    "react-dom": "~18.3.1",
     "react-syntax-highlighter": "~15.5.0",
     "storybook": "~7.6.10"
   },

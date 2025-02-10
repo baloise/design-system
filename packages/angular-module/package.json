@@ -12,8 +12,8 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@angular/common": ">=15.0.0",
-    "@angular/core": ">=15.0.0"
+    "@angular/common": ">=17.0.0",
+    "@angular/core": ">=17.0.0"
   },
   "dependencies": {
     "@baloise/ds-core": "17.4.1",

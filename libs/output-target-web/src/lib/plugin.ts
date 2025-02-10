@@ -9,11 +9,11 @@ export const webOutputTarget = (outputTarget: OutputTargetWeb): OutputTargetCust
     return normalizeOutputTarget(config, outputTarget)
   },
   async generator(config, compilerCtx, buildCtx) {
-    const timespan = buildCtx.createTimeSpan(`generate vue started`, true)
+    const timespan = buildCtx.createTimeSpan(`generate web started`, true)
 
     await webProxyOutput(config, compilerCtx, outputTarget, buildCtx.components)
 
-    timespan.finish(`generate vue finished`)
+    timespan.finish(`generate web finished`)
   },
 })
 
