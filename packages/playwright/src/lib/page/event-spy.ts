@@ -42,7 +42,8 @@ export class EventSpy {
        */
       let resolve: () => void
       const promise = new Promise<void>(r => (resolve = r))
-      // @ts-ignore
+      // @ts-expect-error
+      // to handle the case where the event is emitted before the next() call
       this.queuedHandler.push(resolve)
 
       return promise.then(() => this.events[cursor])

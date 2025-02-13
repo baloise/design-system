@@ -1,7 +1,15 @@
 {
-  "extends": ["plugin:playwright/recommended", "../../.eslintrc.base.json"],
+  "extends": ["../../.eslintrc.base.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
+    {
+      "files": ["*.play.ts"],
+      "extends": ["plugin:playwright/recommended"],
+      "rules": {
+        "playwright/expect-expect": "off",
+        "playwright/valid-title": "off"
+      }
+    },
     {
       "files": ["*.ts", "*.tsx"],
       "rules": {

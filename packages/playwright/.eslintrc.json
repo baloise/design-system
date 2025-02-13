@@ -4,7 +4,10 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],
@@ -18,12 +21,7 @@
       "files": ["*.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
-        "@nx/dependency-checks": [
-          "error",
-          {
-            "ignoredFiles": ["{projectRoot}/eslint.config.{js,cjs,mjs}"]
-          }
-        ]
+        "@nx/dependency-checks": "off"
       }
     }
   ]

@@ -8,6 +8,7 @@
   "dependencies": {
     "@swc/helpers": "~0.5.11",
     "@playwright/test": "^1.36.0",
-    "@axe-core/playwright": "^4.10.1"
+    "@axe-core/playwright": "^4.10.1",
+    "fast-deep-equal": "^3.1.3"
   }
 }
