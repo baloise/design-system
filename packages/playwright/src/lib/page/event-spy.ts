@@ -40,10 +40,8 @@ export class EventSpy {
        * If the event has not already been emitted, then add it to the queuedHandler.
        * When the event is emitted, the push method is called which results in the Promise below being resolved.
        */
-      let resolve: () => void
+      let resolve: () => void = () => void 0
       const promise = new Promise<void>(r => (resolve = r))
-      // @ts-expect-error
-      // to handle the case where the event is emitted before the next() call
       this.queuedHandler.push(resolve)
 
       return promise.then(() => this.events[cursor])

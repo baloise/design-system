@@ -1,12 +1,17 @@
 {
   "name": "@baloise/ds-playwright",
-  "version": "0.0.1",
-  "private": true,
-  "type": "commonjs",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
+  "version": "18.0.0",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://design.baloise.dev",
+  "license": "Apache-2.0",
   "dependencies": {
-    "@swc/helpers": "~0.5.11",
     "@playwright/test": "^1.36.0",
     "@axe-core/playwright": "^4.10.1",
     "fast-deep-equal": "^3.1.3"

@@ -171,4 +171,5 @@ async function copyToDocs(options: BuildCoreExecutorSchema) {
 
 async function cleanUp(options: BuildCoreExecutorSchema) {
   await rm(join(options.projectRoot, 'icons'), { recursive: true, force: true })
+  await rm(join(options.projectRoot, 'playwright'), { recursive: true, force: true })
 }

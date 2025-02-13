@@ -1,6 +1,6 @@
 {
   "jsc": {
-    "target": "es2017",
+    "target": "es5",
     "parser": {
       "syntax": "typescript",
       "decorators": true,
@@ -15,7 +15,7 @@
     "loose": true
   },
   "module": {
-    "type": "commonjs"
+    "type": "es6"
   },
   "sourceMaps": true,
   "exclude": [
