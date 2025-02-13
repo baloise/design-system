@@ -1,4 +1,16 @@
 {
   "eslint.validate": ["json"],
-  "cSpell.words": ["cleancss"]
+  "cSpell.words": ["cleancss"],
+  "vsicons.associations.files": [
+    {
+      "icon": "playwright",
+      "extensions": ["play.ts"],
+      "format": "svg"
+    },
+    {
+      "icon": "registry",
+      "extensions": ["po.ts"],
+      "format": "svg"
+    }
+  ]
 }

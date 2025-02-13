@@ -59,12 +59,12 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   return page
 }
 
-type Bubu = TestType<
+type BalTestType = TestType<
   Omit<PlaywrightTestArgs, 'page'> & PlaywrightTestOptions & CustomFixtures,
   PlaywrightWorkerArgs & PlaywrightWorkerOptions
 >
 
-export const test: Bubu = baseTest.extend<CustomFixtures>({
+export const test: BalTestType = baseTest.extend<CustomFixtures>({
   page: async ({ page }: CustomTestArgs, use: (r: BalPage) => Promise<void>) => {
     page = await extendPageFixture(page as BalPage)
     await use(page)

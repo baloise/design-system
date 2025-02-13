@@ -26,6 +26,28 @@
         }
       }
     },
+    "e2e-update-screenshots": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --update-snapshots",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
+    "e2e-report": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright show-report",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
     "serve": {
       "executor": "nx:run-commands",
       "options": {

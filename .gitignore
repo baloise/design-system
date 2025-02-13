@@ -104,6 +104,7 @@ test/angular/*
 !test/angular/base
 !test/angular/build.sh
 !test/angular/start.sh
+playwright-report
 
 .angular
 
