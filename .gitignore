@@ -48,6 +48,7 @@ Thumbs.db
 .stencil
 
 packages/core/icons
+packages/core/playwright
 packages/core/components
 packages/core/loader
 packages/core/wwww
@@ -104,6 +105,7 @@ test/angular/*
 !test/angular/base
 !test/angular/build.sh
 !test/angular/start.sh
+playwright-report
 
 .angular
 
