@@ -1,5 +1,31 @@
 # Changelog
 
+## 18.0.0
+
+### Major Changes
+
+- **testing**: removed deprecated `legacy` mixins. ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+- **angular**: removed `ds-angular-legacy` to enable better tree-shaking support. ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+- **angular**: Replaced Observables for `BalBreakpointsService`, `BalOrientationService`, and `BalConfigService` with a reactive Signals-based solution. This improves simplicity, reduces maintenance effort, and enhances usability for developers. ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+- **vue**: dropped direct support for Vue due to low usage within the company ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+- **css**: removed the deprecated `@baloise/ds-css` package. Please migrate to `@baloise/ds-styles`. ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+  Please check out the more detailed [Upgrade Guide to v18](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v18--documentation).
+
+### Minor Changes
+
+- **angular**: added support for Angular v19 ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+- **styles**: add compact style for native lists ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
+### Patch Changes
+
+- **angular**: explicitly set `standalone: true` for all components to improve modularity and compatibility ( [#1609](https://github.com/baloise/design-system/pull/1609))
+
 ## 17.4.1
 
 ### Patch Changes
@@ -545,13 +571,13 @@
   **app.config.ts**
 
   ```ts
-  import { ApplicationConfig, importProvidersFrom } from "@angular/core";
+  import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 
-  import { provideBaloiseDesignSystem } from "@baloise/design-system-components-angular/standalone";
+  import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
 
   export const appConfig: ApplicationConfig = {
     providers: [provideBaloiseDesignSystem()],
-  };
+  }
   ```
 
   In each app component, import the necessary Baloise Design System components or a bundled set.
@@ -559,20 +585,17 @@
   **app.component.ts**
 
   ```ts
-  import { CUSTOM_ELEMENTS_SCHEMA, Component } from "@angular/core";
-  import { CommonModule } from "@angular/common";
-  import {
-    BalApp,
-    BalButton,
-  } from "@baloise/design-system-components-angular/standalone";
+  import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+  import { CommonModule } from '@angular/common'
+  import { BalApp, BalButton } from '@baloise/design-system-components-angular/standalone'
 
   export interface UpdateControl {
-    name: string;
-    value: any;
+    name: string
+    value: any
   }
 
   @Component({
-    selector: "app-root",
+    selector: 'app-root',
     standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [CommonModule, BalApp, BalButton],
