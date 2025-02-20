@@ -81,6 +81,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'aria-label': item.label,
       }
     : {
+        role: 'listitem',
         href: item.href,
         target: item.target,
       }
@@ -89,7 +90,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     attrs['tabindex'] = item.active ? '0' : '-1'
   }
 
-  return (
+  const renderButton = () => (
     <TagType
       id={`${tabsId}-button-${toKebabCase(item.value)}`}
       class={{
@@ -156,4 +157,10 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       )}
     </TagType>
   )
+
+  if (isLinkList) {
+    return <li>{renderButton()}</li>
+  } else {
+    return renderButton()
+  }
 }

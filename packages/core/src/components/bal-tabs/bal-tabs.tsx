@@ -873,7 +873,7 @@ export class Tabs
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
           ...block.modifier('accordion').class(this.accordion),
-          ...block.modifier('animated').class(this.animated),
+          ...block.modifier('animated').class(this.animated && this.isTabList),
           ...block.modifier('expanding').class(this.accordionState === AccordionState.Expanding),
           ...block.modifier('expanded').class(this.accordionState === AccordionState.Expanded),
           ...block.modifier('collapsing').class(this.accordionState === AccordionState.Collapsing),
@@ -896,7 +896,7 @@ export class Tabs
             lineActive={valueExists}
             lineHidden={!this.enableLineRender}
             inverted={isInverted}
-            animated={this.animated}
+            animated={this.animated && this.isTabList}
             context={this.context}
             border={hasBorder}
             spaceless={this.spaceless}

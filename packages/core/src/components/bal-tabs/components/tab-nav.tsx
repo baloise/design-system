@@ -92,6 +92,9 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
     ></TabButton>
   )
 
+  const NavOrDiv = isLinkList ? 'nav' : 'div'
+  const DivOrList = isLinkList ? 'ul' : 'div'
+
   return (
     <div
       class={{
@@ -102,7 +105,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         ...swiper.cssSwiper(),
       }}
     >
-      <div
+      <NavOrDiv
         id={`${tabsId}-nav`}
         class={{
           ...swiper.cssInnerSwiper(),
@@ -111,7 +114,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         }}
         ref={el => (swiper.innerEl = el)}
       >
-        <nav
+        <DivOrList
           id={swiper.containerId}
           class={{
             ...swiper.cssSwiperContainer(),
@@ -119,7 +122,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
             ...navContainerEl.modifier(`vertical`).class(isVertical),
             ...navContainerEl.modifier(`expanded`).class(expanded && !isVertical),
           }}
-          role={'tablist'}
+          role={isLinkList ? undefined : 'tablist'}
           ref={el => (swiper.containerEl = el)}
         >
           {tabs.map((tab, index) => (
@@ -148,8 +151,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           ) : (
             ''
           )}
-        </nav>
-      </div>
+        </DivOrList>
+      </NavOrDiv>
       {showSwiperControls ? swiper.renderControls() : ''}
     </div>
   )
