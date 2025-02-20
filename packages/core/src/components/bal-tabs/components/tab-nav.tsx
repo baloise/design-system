@@ -8,6 +8,7 @@ export interface TabNavProps {
   swiper: SwiperUtil
   items: BalTabOption[]
   tabsId: string
+  ariaLabel: string | undefined
   isVertical: boolean
   inNavbar: boolean
   isMobile: boolean
@@ -39,6 +40,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   inNavbar,
   isMobile,
   isTouch,
+  ariaLabel,
   lineActive,
   lineHidden,
   isLinkList,
@@ -92,6 +94,9 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
     ></TabButton>
   )
 
+  const NavOrDiv = isLinkList ? 'nav' : 'div'
+  const DivOrList = isLinkList ? 'ul' : 'div'
+
   return (
     <div
       class={{
@@ -102,7 +107,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         ...swiper.cssSwiper(),
       }}
     >
-      <div
+      <NavOrDiv
         id={`${tabsId}-nav`}
         class={{
           ...swiper.cssInnerSwiper(),
@@ -110,8 +115,9 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           ...navInnerEl.modifier(`full-height`).class(isFullHeight),
         }}
         ref={el => (swiper.innerEl = el)}
+        aria-label={isLinkList ? ariaLabel : undefined}
       >
-        <nav
+        <DivOrList
           id={swiper.containerId}
           class={{
             ...swiper.cssSwiperContainer(),
@@ -119,7 +125,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
             ...navContainerEl.modifier(`vertical`).class(isVertical),
             ...navContainerEl.modifier(`expanded`).class(expanded && !isVertical),
           }}
-          role={'tablist'}
+          role={isLinkList ? undefined : 'tablist'}
+          aria-label={isLinkList ? undefined : ariaLabel}
           ref={el => (swiper.containerEl = el)}
         >
           {tabs.map((tab, index) => (
@@ -148,8 +155,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           ) : (
             ''
           )}
-        </nav>
-      </div>
+        </DivOrList>
+      </NavOrDiv>
       {showSwiperControls ? swiper.renderControls() : ''}
     </div>
   )

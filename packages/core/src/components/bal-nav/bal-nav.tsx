@@ -426,6 +426,7 @@ export class Nav
                     inverted
                     context="meta"
                     value={this.activeMetaLinkValue}
+                    aria-label={i18nNavBars[this.language].meta}
                     onBalChange={ev => this.onMetaBarTabChange(ev)}
                   >
                     {this.linkItems.map(item =>
@@ -449,7 +450,13 @@ export class Nav
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
                 {this.renderLogo()}
-                <bal-tabs context="navigation" accordion spaceless value={this.activeMenuLinkValue}>
+                <bal-tabs
+                  context="navigation"
+                  accordion
+                  spaceless
+                  value={this.activeMenuLinkValue}
+                  aria-label={i18nNavBars[this.language].main}
+                >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
                     ?.mainLinkItems.map(item =>
