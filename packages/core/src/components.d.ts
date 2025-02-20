@@ -3157,7 +3157,7 @@ export namespace Components {
         /**
           * Link to path.
          */
-        "href": string;
+        "href"?: string;
         /**
           * Tab icon not available for the steps.
          */
@@ -3182,6 +3182,7 @@ export namespace Components {
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
+        "setTabId": (tabsId: string) => Promise<void>;
         /**
           * Sub label for the tab.
          */
