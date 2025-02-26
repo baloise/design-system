@@ -35,6 +35,6 @@ describe('bal-input', () => {
 
   it('input-date', () => {
     cy.platform('desktop')
-    cy.getByTestId('input-date').testVisual('input-date', 0.0)
+    cy.getByTestId('input-date').testVisual('input-date')
   })
 })

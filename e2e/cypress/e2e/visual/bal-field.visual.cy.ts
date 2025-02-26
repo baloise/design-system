@@ -9,8 +9,8 @@ describe('bal-field', () => {
     cy.getByTestId('readonly').testVisual('field-readonly-desktop')
     cy.getByTestId('required').testVisual('field-required-desktop')
     cy.getByTestId('valid').testVisual('field-valid-desktop')
-    cy.getByTestId('label-long').testVisual('label-long-desktop', { errorThreshold: 0.2 })
-    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-desktop', { errorThreshold: 0.2 })
+    cy.getByTestId('label-long').testVisual('label-long-desktop')
+    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-desktop')
 
     cy.platform('tablet')
     cy.getByTestId('basic').testVisual('field-basic-tablet')
@@ -19,8 +19,8 @@ describe('bal-field', () => {
     cy.getByTestId('readonly').testVisual('field-readonly-tablet')
     cy.getByTestId('required').testVisual('field-required-tablet')
     cy.getByTestId('valid').testVisual('field-valid-tablet')
-    cy.getByTestId('label-long').testVisual('label-long-tablet', { errorThreshold: 0.2 })
-    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-tablet', { errorThreshold: 0.2 })
+    cy.getByTestId('label-long').testVisual('label-long-tablet')
+    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-tablet')
 
     cy.platform('mobile')
     cy.getByTestId('basic').testVisual('field-basic-mobile')
@@ -29,8 +29,8 @@ describe('bal-field', () => {
     cy.getByTestId('readonly').testVisual('field-readonly-mobile')
     cy.getByTestId('required').testVisual('field-required-mobile')
     cy.getByTestId('valid').testVisual('field-valid-mobile')
-    cy.getByTestId('label-long').testVisual('label-long-mobile', { errorThreshold: 0.2 })
-    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-mobile', { errorThreshold: 0.2 })
+    cy.getByTestId('label-long').testVisual('label-long-mobile')
+    cy.getByTestId('label-long-with-hint').testVisual('label-long-with-hint-mobile')
   })
 })
 

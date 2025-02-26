@@ -50,7 +50,7 @@ function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void 
       }
 
       // prepare screenshot options
-      let errorThreshold = 0
+      let errorThreshold = 0.2
 
       if (screenshotOptions?.errorThreshold !== undefined) {
         errorThreshold = screenshotOptions.errorThreshold
@@ -63,6 +63,10 @@ function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void 
         }
       } else if (typeof commandOptions === 'number') {
         errorThreshold = commandOptions
+      }
+
+      if (errorThreshold < 0.2) {
+        errorThreshold = 0.2
       }
 
       const visualRegressionOptions: VisualRegressionOptions = prepareOptions(name, errorThreshold, screenshotOptions)

@@ -17,7 +17,6 @@ describe('bal-popover', () => {
       it('basic component ' + platform, () => {
         cy.getByTestId('popover-trigger').click()
         cy.testVisual(`popover-basic-${platform}`, {
-          errorThreshold: 0.2,
           capture: 'viewport',
           clip: balViewport[platform],
         })
@@ -27,7 +26,6 @@ describe('bal-popover', () => {
       it('arrow backdrop component + platform ', () => {
         cy.getByTestId('popover-arrow-trigger').click()
         cy.testVisual(`popover-arrow-${platform}`, {
-          errorThreshold: 0.2,
           capture: 'viewport',
           clip: balViewport[platform],
         })
@@ -37,7 +35,6 @@ describe('bal-popover', () => {
       it('tooltip component ' + platform, () => {
         cy.getByTestId('popover-tooltip-trigger').invoke('show').click({ force: true })
         cy.testVisual(`popover-tooltip-${platform}`, {
-          errorThreshold: 0.2,
           capture: 'viewport',
           clip: balViewport[platform],
         })
