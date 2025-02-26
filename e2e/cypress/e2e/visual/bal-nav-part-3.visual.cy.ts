@@ -6,7 +6,6 @@ describe('bal-nav - colors', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       const visualOptions: any = {
-        errorThreshold: 0.2,
         capture: 'viewport',
         clip: balViewport[platform],
       }
@@ -29,7 +28,6 @@ describe('bal-nav - long', () => {
       cy.visit('/components/bal-nav/test/bal-nav-long.visual.html').platform('mobile').waitForDesignSystem()
       cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click().waitForComponents()
       cy.testVisual(`nav-long-mobile-open`, {
-        errorThreshold: 0.2,
         capture: 'viewport',
         clip: balViewport['mobile'],
       })
@@ -39,7 +37,6 @@ describe('bal-nav - long', () => {
       cy.visit('/components/bal-nav/test/bal-nav-long.visual.html').platform('desktop').waitForDesignSystem()
       cy.contains('Versichern').click().waitForComponents()
       cy.testVisual(`nav-long-desktop-open`, {
-        errorThreshold: 0.2,
         capture: 'viewport',
         clip: balViewport['desktop'],
       })
@@ -52,7 +49,6 @@ describe('bal-nav - tab change', () => {
     cy.visit('/components/bal-nav/test/bal-nav-long.visual.html').platform('desktop').waitForDesignSystem()
     cy.contains('Unternehmenskunden').click({ force: true }).waitForComponents().wait(100)
     cy.testVisual(`nav-long-desktop-meta-change`, {
-      errorThreshold: 0.2,
       capture: 'viewport',
       clip: balViewport['desktop'],
     })
