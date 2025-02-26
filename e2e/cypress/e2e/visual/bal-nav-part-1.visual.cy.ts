@@ -8,7 +8,6 @@ describe('bal-nav - desktop', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       const visualOptions: any = {
-        errorThreshold: 0.2,
         capture: 'viewport',
         clip: balViewport[platform],
       }

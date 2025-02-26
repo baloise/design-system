@@ -65,6 +65,10 @@ function addCompareSnapshotCommand(screenshotOptions?: ScreenshotOptions): void 
         errorThreshold = commandOptions
       }
 
+      if (errorThreshold < 0.2) {
+        errorThreshold = 0.2
+      }
+
       const visualRegressionOptions: VisualRegressionOptions = prepareOptions(name, errorThreshold, screenshotOptions)
 
       return takeScreenshot(subject, name, screenshotOptions).then((screenshotAbsolutePath: string) => {
