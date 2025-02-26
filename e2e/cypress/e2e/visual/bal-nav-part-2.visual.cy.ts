@@ -7,7 +7,6 @@ describe('bal-nav - touch', () => {
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
       const visualOptions: any = {
-        errorThreshold: 0.2,
         capture: 'viewport',
         clip: balViewport[platform],
       }

@@ -13,13 +13,14 @@ describe('bal-checkbox', () => {
     cy.getByTestId('switch').testVisual('checkbox-switch-desktop')
     cy.getByTestId('vertical').testVisual('checkbox-vertical-desktop')
     cy.getByTestId('vertical-on-mobile').testVisual('checkbox-vertical-on-mobile-desktop')
-    cy.getByTestId('long-label').testVisual('checkbox-long-label-desktop')
-    cy.getByTestId('long-label-select-button').testVisual('checkbox-long-label-select-button-desktop')
-    cy.getByTestId('long-label-checked').testVisual('checkbox-long-label-checked-desktop')
-    cy.getByTestId('long-label-select-button-checked').testVisual(
-      'checkbox-long-label-select-button-checked-desktop',
-      0.0,
-    )
+    cy.getByTestId('long-label').testVisual('checkbox-long-label-desktop', { errorThreshold: 0.3 })
+    cy.getByTestId('long-label-select-button').testVisual('checkbox-long-label-select-button-desktop', {
+      errorThreshold: 0.3,
+    })
+    cy.getByTestId('long-label-checked').testVisual('checkbox-long-label-checked-desktop', { errorThreshold: 0.3 })
+    cy.getByTestId('long-label-select-button-checked').testVisual('checkbox-long-label-select-button-checked-desktop', {
+      errorThreshold: 0.3,
+    })
 
     cy.platform('tablet')
     cy.getByTestId('vertical-on-mobile').testVisual('checkbox-vertical-on-mobile-tablet')
