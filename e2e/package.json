@@ -10,7 +10,7 @@
     "@baloise/ds-core": "18.0.0",
     "@baloise/ds-testing": "18.0.0",
     "@cypress/mount-utils": "^4.1.0",
-    "axe-core": "~4.8.4",
+    "axe-core": "~4.10.2",
     "compression": "~1.7.4",
     "cypress": "~13.6.3",
     "cypress-axe": "~1.5.0",
