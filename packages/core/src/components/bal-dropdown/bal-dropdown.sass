@@ -176,8 +176,11 @@
   min-height: 2rem
 
 .bal-dropdown__root--theme-purple:not(.bal-dropdown__root--theme-purple-expanded)
+
   border: none
   background: var(--bal-color-background-grey-light)
+
+.bal-dropdown__root--theme-purple:not(.bal-dropdown__root--theme-purple-expanded):not(.bal-dropdown__root--disabled)
   +hover
     &:hover
       background: var(--bal-color-purple-1)
@@ -197,6 +200,8 @@
 .bal-dropdown__root--theme-purple-filled:not(.bal-dropdown__root--theme-purple-expanded)
   border: none
   background: var(--bal-color-purple-2)
+
+.bal-dropdown__root--theme-purple-filled:not(.bal-dropdown__root--theme-purple-expanded):not(.bal-dropdown__root--disabled)
   +hover
     &:hover
       background: var(--bal-color-purple-3)
@@ -213,9 +218,9 @@
       .bal-icon__inner
         +fillSvg(var(--bal-color-text-primary))
 
-.bal-dropdown__root--theme-purple-expanded,
-.bal-dropdown__root--theme-purple-expanded:hover,
-.bal-dropdown__root--theme-purple-expanded:active
+.bal-dropdown__root--theme-purple-expanded:not(.bal-dropdown__root--disabled),
+.bal-dropdown__root--theme-purple-expanded:not(.bal-dropdown__root--disabled):hover,
+.bal-dropdown__root--theme-purple-expanded:not(.bal-dropdown__root--disabled):active
   border: none
   background: var(--bal-color-purple-2)
   .bal-dropdown__root__input,
