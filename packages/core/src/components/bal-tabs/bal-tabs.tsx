@@ -34,7 +34,7 @@ import { TabSelect } from './components/tab-select'
 import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { AccordionState } from '../../interfaces'
+import { AccordionState, Attributes } from '../../interfaces'
 import { BalResizeInfo, BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
@@ -42,6 +42,7 @@ import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
 import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
+import { inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'bal-tabs',
@@ -60,6 +61,7 @@ export class Tabs
 {
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
+  private inheritAttributes: Attributes = {}
 
   swiper = new SwiperUtil()
 
@@ -276,10 +278,17 @@ export class Tabs
 
   componentDidLoad() {
     this.onOptionChange()
+    this.items.forEach(item => {
+      item.setTabId(this.tabsId)
+    })
     rOnLoad(() => {
       this.enableLineRender = true
       this.animateLine(true)
     })
+  }
+
+  componentWillLoad() {
+    this.inheritAttributes = inheritAttributes(this.el, ['aria-label'])
   }
 
   disconnectedCallback(): void {
@@ -873,7 +882,7 @@ export class Tabs
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
           ...block.modifier('accordion').class(this.accordion),
-          ...block.modifier('animated').class(this.animated),
+          ...block.modifier('animated').class(this.animated && this.isTabList),
           ...block.modifier('expanding').class(this.accordionState === AccordionState.Expanding),
           ...block.modifier('expanded').class(this.accordionState === AccordionState.Expanded),
           ...block.modifier('collapsing').class(this.accordionState === AccordionState.Collapsing),
@@ -891,12 +900,13 @@ export class Tabs
             isLinkList={isLinkList}
             tabsId={this.tabsId}
             clickable={this.clickable}
+            ariaLabel={this.inheritAttributes['aria-label']}
             accordion={this.accordion}
             isAccordionOpen={this.isAccordionOpen}
             lineActive={valueExists}
             lineHidden={!this.enableLineRender}
             inverted={isInverted}
-            animated={this.animated}
+            animated={this.animated && this.isTabList}
             context={this.context}
             border={hasBorder}
             spaceless={this.spaceless}
