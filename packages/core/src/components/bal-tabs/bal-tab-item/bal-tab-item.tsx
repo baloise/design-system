@@ -12,6 +12,7 @@ export class TabItem {
   @Element() el!: HTMLElement
 
   @State() isActive = false
+  @State() tabsId?: string = undefined
 
   /**
    * Tells if this route is active and overrides the bal-tabs value property.
@@ -31,7 +32,7 @@ export class TabItem {
   /**
    * Link to path.
    */
-  @Prop({ reflect: true }) href = ''
+  @Prop({ reflect: true }) href?: string = undefined
 
   /**
    * Specifies where to display the linked URL.
@@ -94,6 +95,14 @@ export class TabItem {
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setTabId(tabsId: string): Promise<void> {
+    this.tabsId = tabsId
+  }
+
+  /**
    * Options of the tab like label, value etc.
    */
   @Method()
@@ -144,8 +153,8 @@ export class TabItem {
           'bal-tab-item--active': this.isActive,
         }}
         role={hasPanel ? 'tabpanel' : undefined}
-        aria-label={hasPanel ? this.label : undefined}
         aria-hidden={noPanelOrInactive ? 'true' : 'false'}
+        aria-labelledby={this.tabsId ? `${this.tabsId}-button-${this.value}` : undefined}
         tabindex={noPanelOrInactive ? '-1' : undefined}
         hidden={noPanelOrInactive ? true : undefined}
       >

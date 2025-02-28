@@ -153,16 +153,6 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
         tabindex="0"
         aria-expanded={ariaBooleanToString(this.accordionOpen)}
         aria-controls={this.ariaState.controlId}
-        title={
-          this.accordionOpen
-            ? i18nBalListItemAccordionHead[this.language].close
-            : i18nBalListItemAccordionHead[this.language].open
-        }
-        aria-label={
-          this.accordionOpen
-            ? i18nBalListItemAccordionHead[this.language].close
-            : i18nBalListItemAccordionHead[this.language].open
-        }
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
       >
@@ -173,6 +163,11 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
             name={this.icon}
             size="small"
             turn={this.accordionOpen}
+            title={
+              this.accordionOpen
+                ? i18nBalListItemAccordionHead[this.language].close
+                : i18nBalListItemAccordionHead[this.language].open
+            }
           ></bal-icon>
         </bal-list-item-icon>
       </Host>

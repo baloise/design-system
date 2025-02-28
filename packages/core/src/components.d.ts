@@ -2697,6 +2697,10 @@ export namespace Components {
     }
     interface BalSegment {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * If `true`, the user cannot interact with the segment.
          */
         "disabled": boolean;
@@ -3157,7 +3161,7 @@ export namespace Components {
         /**
           * Link to path.
          */
-        "href": string;
+        "href"?: string;
         /**
           * Tab icon not available for the steps.
          */
@@ -3182,6 +3186,7 @@ export namespace Components {
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
+        "setTabId": (tabsId: string) => Promise<void>;
         /**
           * Sub label for the tab.
          */
@@ -7811,6 +7816,10 @@ declare namespace LocalJSX {
         "verticalOnMobile"?: boolean;
     }
     interface BalSegment {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * If `true`, the user cannot interact with the segment.
          */

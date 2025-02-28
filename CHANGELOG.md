@@ -1,5 +1,25 @@
 # Changelog
 
+## 18.0.1
+
+### Patch Changes
+
+- **dropdown**: change spinner circle background to white ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **list**: make title and aria-label editable on accordion head and move open and close labels to the icon on the right side ( [#1623](https://github.com/baloise/design-system/pull/1623))
+
+- **nav**: add aria labels ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **segment**: add auto invalid option for angular ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **dropdown**: remove hover & active styles for disabled state ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **tabs**: add aria labels ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **tabs**: wrap link list in nav, ul and li elements and tabs with role tablist and tap ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **tabs**: improve a11y with labelledby ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
 ## 18.0.0
 
 ### Major Changes
