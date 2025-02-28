@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BalLanguage } from '../config'
 import { BEM } from '../bem'
+import { BalLanguage } from '../config'
 import { i18nBalDropdown } from './dropdown.i18n'
 
 export interface DropdownIconProps {
@@ -31,7 +31,9 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
   const block = BEM.block('dropdown')
 
   if (loading) {
-    return <bal-spinner class={{ ...block.element('rear').class() }} small variation="circle"></bal-spinner>
+    return (
+      <bal-spinner class={{ ...block.element('rear').class() }} small variation="circle" color="white"></bal-spinner>
+    )
   } else if (clearable && filled && !disabled) {
     return (
       <button

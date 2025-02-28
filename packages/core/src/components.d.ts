@@ -2697,6 +2697,10 @@ export namespace Components {
     }
     interface BalSegment {
         /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff": boolean;
+        /**
           * If `true`, the user cannot interact with the segment.
          */
         "disabled": boolean;
@@ -7812,6 +7816,10 @@ declare namespace LocalJSX {
         "verticalOnMobile"?: boolean;
     }
     interface BalSegment {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * If `true`, the user cannot interact with the segment.
          */

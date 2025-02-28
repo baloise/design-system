@@ -1,40 +1,40 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
   Event,
   EventEmitter,
-  Watch,
-  State,
-  writeTask,
+  h,
+  Host,
   Listen,
   Method,
+  Prop,
+  State,
+  Watch,
+  writeTask,
 } from '@stencil/core'
+import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
 import { BEM } from '../../utils/bem'
-import { SegmentValue } from './bal-segment.types'
-import { Logger, LogInstance } from '../../utils/log'
-import {
-  isArrowDownKey,
-  isArrowUpKey,
-  isSpaceKey,
-  isHomeKey,
-  isEndKey,
-  isArrowLeftKey,
-  isArrowRightKey,
-  isEnterKey,
-} from '../../utils/keyboard'
-import { stopEventBubbling } from '../../utils/form-input'
-import { FOCUS_KEYS } from '../../utils/focus-visible'
-import { ListenToWindowResize, BalWindowResizeObserver } from '../../utils/resize'
-import { isDescendant, raf } from '../../utils/helpers'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../utils/focus'
-import { defaultBalAriaForm, BalAriaForm } from '../../utils/form'
+import { FOCUS_KEYS } from '../../utils/focus-visible'
+import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
+import { stopEventBubbling } from '../../utils/form-input'
+import { raf } from '../../utils/helpers'
+import {
+  isArrowDownKey,
+  isArrowLeftKey,
+  isArrowRightKey,
+  isArrowUpKey,
+  isEndKey,
+  isEnterKey,
+  isHomeKey,
+  isSpaceKey,
+} from '../../utils/keyboard'
+import { Logger, LogInstance } from '../../utils/log'
+import { BalWindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
-import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
+import { SegmentValue } from './bal-segment.types'
 
 @Component({
   tag: 'bal-segment',
@@ -74,6 +74,11 @@ export class Segment
    * If `true`, the segment is shown red.
    */
   @Prop() invalid = false
+
+  /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
    * If `true`, the user cannot interact with the segment.
