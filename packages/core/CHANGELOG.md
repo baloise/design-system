@@ -1,5 +1,15 @@
 # Changelog
 
+## 18.1.0
+
+### Minor Changes
+
+- **hint**: support keyboard actions: tab to focus, enter/space to open popover ( [#1637](https://github.com/baloise/design-system/pull/1637))
+
+### Patch Changes
+
+- **core**: a11y: highlight slider thumb when navigating with keyboard ( [#1635](https://github.com/baloise/design-system/pull/1635))
+
 ## 18.0.1
 
 ### Patch Changes
