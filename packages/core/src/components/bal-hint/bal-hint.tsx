@@ -160,7 +160,9 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           aria-haspopup="true"
           role="button"
           name="info-circle"
+          tabindex={0}
           onClick={() => this.toggle()}
+          onKeyDown={(event) => (event.key === ' ' || event.key === 'Enter') && this.toggle()}
         ></bal-icon>
       )
     }
