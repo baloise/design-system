@@ -47,7 +47,7 @@ describe('bal-checkbox-button', () => {
   })
 
   it('should select first one and send change event', () => {
-    cy.get('bal-checkbox-button').eq(0).click().find('input').blur()
+    cy.get('bal-checkbox-button').eq(0).find('input').check({ force: true }).blur()
 
     cy.get('bal-checkbox-button').eq(0).find('input').should('be.checked')
     cy.get('bal-checkbox-button').eq(1).find('input').should('not.be.checked')
