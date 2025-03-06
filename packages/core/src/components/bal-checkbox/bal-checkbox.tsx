@@ -1,26 +1,26 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  State,
   Listen,
-  ComponentInterface,
+  Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
-import { isDescendant } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { isSpaceKey } from '../../utils/keyboard'
-import { BalCheckboxOption } from './bal-checkbox.type'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
+import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
+import { isDescendant } from '../../utils/helpers'
+import { isSpaceKey } from '../../utils/keyboard'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { BalCheckboxOption } from './bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox',
@@ -342,38 +342,9 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     this.balChange.emit(this.checked)
   }
 
-  private onKeypress = (ev: KeyboardEvent) => {
-    if (isSpaceKey(ev)) {
-      const element = ev.target as HTMLAnchorElement
-      if (element.href) {
-        return
-      }
-
-      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.toggleChecked()
-        ev.preventDefault()
-      } else {
-        stopEventBubbling(ev)
-      }
-    }
-  }
-
   private onClick = (ev: MouseEvent) => {
-    const element = ev.target as HTMLAnchorElement
-    if (element.href) {
-      return
-    }
-
     if (this.wasFocused) {
       this.focused = true
-    }
-
-    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.toggleChecked()
-      this.nativeInput?.focus()
-      ev.preventDefault()
-    } else {
-      stopEventBubbling(ev)
     }
   }
 
@@ -461,7 +432,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           ...block.modifier('pressed').class(this.pressed),
           ...block.modifier('inline').class(this.inline),
         }}
-        onKeypress={this.onKeypress}
         onClick={this.onClick}
       >
         <input
@@ -484,6 +454,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           disabled={this.disabled || this.nonSubmit}
           readonly={this.readonly}
           required={this.required}
+          onChange={_ => this.toggleChecked()}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
