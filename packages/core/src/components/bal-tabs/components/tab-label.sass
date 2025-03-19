@@ -18,6 +18,8 @@
     text-align: left
     display: flex
     flex-direction: column
+    font-size: var(--bal-text-size-large)
+    line-height: var(--bal-line-height-small)
     +mobile
       &:not(.bal-tabs__nav__item__label--active)
         position: absolute
@@ -31,7 +33,7 @@
 
   //
   // Color status
-        color: var(--bal-tabs-tab-label-text-color)
+  color: var(--bal-tabs-tab-label-text-color)
   &--disabled
     color: var(--bal-tabs-tab-label-text-color-disabled)
   &--inverted
@@ -64,4 +66,8 @@
   //
   // context styles
   &--context-meta
+    font-size: var(--bal-text-size-small)
+  //
+  // sub label
+  &__sub-label
     font-size: var(--bal-text-size-small)
