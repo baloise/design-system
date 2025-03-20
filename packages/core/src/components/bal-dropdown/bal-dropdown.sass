@@ -32,7 +32,7 @@
   display: flex
   width: 100%
   text-align: left
-  gap: .5rem
+  gap: 1rem
   padding-left: calc(0.75em - var(--bal-border-width-normal))
   padding-right: calc(0.75em - var(--bal-border-width-normal))
   justify-content: center
@@ -111,8 +111,7 @@
   display: none
   visibility: hidden
   opacity: 0
-  min-width: 100%
-  width: 100%
+  width: 100vw
   position: absolute
   top: 0
   left: 0
@@ -121,6 +120,10 @@
   border-radius: var(--bal-radius-normal)
   box-shadow: var(--bal-shadow-normal)
   z-index: var(--bal-z-index-popup)
+  +tablet
+    max-width: 100vw
+    width: fit-content
+    min-width: 100%
   &--expanded
     display: block
     visibility: visible
@@ -174,6 +177,9 @@
 
 .bal-dropdown__root--size-small
   min-height: 2rem
+
+.bal-dropdown__root--theme-purple:not(.bal-dropdown__root--disabled) .bal-dropdown__root__content--placeholder
+  color: var(--bal-color-text-primary)
 
 .bal-dropdown__root--theme-purple:not(.bal-dropdown__root--theme-purple-expanded)
   border: none
