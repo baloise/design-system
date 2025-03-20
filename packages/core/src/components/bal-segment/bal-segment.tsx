@@ -74,6 +74,10 @@ export class Segment
    * If `true`, the segment is shown red.
    */
   @Prop() invalid = false
+  @Watch('invalid')
+  protected invalidChanged() {
+    this.allItems.map(item => (item.invalid = this.invalid))
+  }
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
