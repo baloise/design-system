@@ -1,9 +1,9 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Method } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { SegmentValue } from '../bal-segment.types'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
-import { addEventListener, raf, removeEventListener } from '../../../utils/helpers'
+import { BEM } from '../../../utils/bem'
 import { BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
+import { addEventListener, raf, removeEventListener } from '../../../utils/helpers'
+import { SegmentValue } from '../bal-segment.types'
 
 let SegmentItemIds = 0
 
@@ -154,6 +154,10 @@ export class SegmentItem implements ComponentInterface {
 
       if (segmentEl.disabled) {
         this.disabled = true
+      }
+
+      if (segmentEl.invalid) {
+        this.invalid = true
       }
 
       this.isLast = segmentEl.lastElementChild === this.el
