@@ -1,5 +1,27 @@
 # Changelog
 
+## 18.1.0
+
+### Minor Changes
+
+- **hint**: support keyboard actions: tab to focus, enter/space to open popover ( [#1637](https://github.com/baloise/design-system/pull/1637))
+
+### Patch Changes
+
+- **tabs**: adjust label and sub-label font size for svg version ( [#1649](https://github.com/baloise/design-system/pull/1649))
+
+- **dropdown**: improve placeholde color for the purple variant to improve a11y ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
+- **toast**: adjust toast alignment in container mode ( [#1648](https://github.com/baloise/design-system/pull/1648))
+
+- **segment**: update invalid on child elements ( [#1652](https://github.com/baloise/design-system/pull/1652))
+
+- **select**: select first option as default and value can be reset ( [#1651](https://github.com/baloise/design-system/pull/1651))
+
+- **core**: a11y: highlight slider thumb when navigating with keyboard ( [#1635](https://github.com/baloise/design-system/pull/1635))
+
+- **dropdown**: adjust width for long option labels ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
 ## 18.0.1
 
 ### Patch Changes
