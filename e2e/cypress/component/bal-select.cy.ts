@@ -63,7 +63,7 @@ describe('bal-select', () => {
 
   it('should select option with the key entry plus enter', () => {
     cy.get('bal-select').find('.bal-select__control__input').click()
-    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('v1995')
@@ -105,7 +105,7 @@ describe('bal-select', () => {
 
     cy.get('bal-select').find('.bal-select__control__input').click()
     cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
-    cy.get('bal-select').type('{downArrow}').type('{enter}').blur({ force: true })
+    cy.get('bal-select').type('{enter}').blur({ force: true })
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('v1995')
@@ -130,7 +130,7 @@ describe('bal-select', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
-    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{enter}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.callCount', 2)
@@ -170,7 +170,7 @@ describe('bal-select', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
-    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{enter}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.callCount', 2)
@@ -210,7 +210,7 @@ describe('bal-select', () => {
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
     cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
-    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{enter}')
 
     cy.get('@balChange').should('have.been.callCount', 1)
     cy.get('@balChange').shouldHaveEventDetail(['v1995'])

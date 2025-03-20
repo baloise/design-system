@@ -24,7 +24,7 @@ describe('bal-select', () => {
   describe('typeahead', () => {
     it('should clear select and search for the Black Widow', () => {
       cy.getByTestId('typeahead').clear().blur()
-      cy.getByTestId('typeahead').type('Black{downArrow}{enter}').blur().should('have.value', 'Black Widow')
+      cy.getByTestId('typeahead').type('Black{enter}').blur().should('have.value', 'Black Widow')
     })
   })
 
@@ -48,7 +48,7 @@ describe('bal-select', () => {
     it('should restore initial value when it has been reset', () => {
       // First we change the initial values to 1995
       cy.getByTestId('reset-basic').click().select('1995')
-      cy.getByTestId('reset-typeahead').clear().type('1995{downArrow}{enter}')
+      cy.getByTestId('reset-typeahead').clear().type('1995{enter}')
       cy.getByTestId('reset-multiple').click().balSelectFindOptions().first().click()
       cy.getByTestId('reset-multiple').balSelectFindOptions().eq(1).click()
       cy.getByTestId('reset-multiple').balSelectFindOptions().eq(2).click()
