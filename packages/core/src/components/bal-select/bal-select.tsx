@@ -1,21 +1,27 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  State,
-  Prop,
-  Watch,
-  EventEmitter,
-  Event,
-  Method,
-  Element,
   Listen,
-  ComponentInterface,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
-import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils/keyboard'
+import { BEM } from '../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { stopEventBubbling } from '../../utils/form-input'
+import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
+import { isArrowDownKey, isArrowUpKey, isBackspaceKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { BalOptionValue } from './utils/bal-option.type'
 import {
   addValue,
   findLabelByValue,
@@ -29,12 +35,6 @@ import {
   validateAfterBlur,
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
-import { BalOptionValue } from './utils/bal-option.type'
-import { stopEventBubbling } from '../../utils/form-input'
-import { BEM } from '../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -408,7 +408,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
   @Method()
   async clear() {
-    this.focusIndex = -1
+    this.focusIndex = 0
     if (this.inputElement) {
       this.updateInputValue('')
       this.updateRawValue([], isHuman)
@@ -568,8 +568,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    ********************************************************/
   private updateFocusTimer?: NodeJS.Timeout
   private updateFocus() {
-    if (this.focusIndex < -1) {
-      this.focusIndex = -1
+    if (this.focusIndex < 0) {
+      this.focusIndex = 0
     }
 
     const visibleOptions = this.optionArray
@@ -589,7 +589,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
         }
       }
     } else {
-      this.focusIndex = -1
+      this.focusIndex = 0
     }
   }
 
@@ -787,6 +787,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
           label = valuesArray.join(', ')
         }
         return this.updateInputValue(label)
+      } else {
+        return this.updateInputValue('')
       }
     }
     return Promise.resolve()
@@ -832,7 +834,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       if (this.isPopoverOpen) {
         this.updateFocus()
       } else {
-        this.focusIndex = -1
+        this.focusIndex = 0
         if (this.multiple && this.typeahead) {
           this.updateInputValue('')
         }
@@ -886,7 +888,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     if (this.disabled || this.readonly) {
       preventDefault(ev)
     } else {
-      this.focusIndex = -1
+      this.focusIndex = 0
       this.balInputClick.emit(ev)
 
       if (this.typeahead) {
@@ -927,7 +929,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
         this.popoverElement.present()
       }
 
-      this.focusIndex = -1
+      this.focusIndex = 0
       this.updateFocus()
       preventDefault(ev)
 

@@ -90,9 +90,15 @@
       &:focus-visible
         outline: none
 
-        &::-webkit-slider-thumb
-          background: var(--bal-color-primary)
-          border: 2px solid var(--bal-color-primary)
+        &::-webkit-slider-thumb,&::-moz-range-thumb
+          height: 1.5rem
+          width: 1.5rem
+          background: var(--bal-color-white)
+          border: 4px solid var(--bal-color-primary)
+          box-shadow: 0 0 0 0.75rem rgba(255, 255, 255, 0.3)
+          outline: none
+          position: relative
+
 
       &::-moz-range-track
         cursor: pointer
