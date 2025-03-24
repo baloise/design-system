@@ -16,7 +16,7 @@ export class BalMutationListener extends ListenerAbstract {
   constructor(options: Partial<MutationObserverOptions>) {
     super()
     this.waitAfterFramePrint = options.waitAfterFramePrint || this.waitAfterFramePrint
-    this.tags = (options.tags || []).map(t => t.toUpperCase())
+    this.tags = (options.tags || []).map(t => t.toLowerCase())
     this.mutationObserverInit = {
       childList: options.childList === false ? false : true,
       subtree: options.subtree === false ? false : true,
@@ -45,6 +45,7 @@ export class BalMutationListener extends ListenerAbstract {
   }
 
   private mutationCallback = (mutationRecord: MutationRecord[]) => {
+    console.log('mutationCallback', mutationRecord)
     // default when no tag is provided
     if (this.tags.length === 0 && mutationRecord.length > 0) {
       return this.notify(undefined)
