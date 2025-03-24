@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalStepOption } from '../bal-step.type'
 
@@ -31,6 +31,12 @@ export class StepItem {
    * Link to path.
    */
   @Prop({ reflect: true }) href = ''
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop() rel: string | undefined
 
   /**
    * Specifies where to display the linked URL.
@@ -93,6 +99,7 @@ export class StepItem {
       value: this.value,
       label: this.label,
       href: this.href,
+      rel: this.rel,
       target: this.target,
       active: this.active,
       disabled: this.disabled,

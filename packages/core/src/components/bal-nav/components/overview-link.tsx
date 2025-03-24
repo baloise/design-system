@@ -27,6 +27,7 @@ export const OverviewLink: FunctionalComponent<OverviewLinkProps> = ({ item, isM
           .class(isVisible === false),
       }}
       href={item.href}
+      rel={item.rel}
       target={item.target}
       onClick={ev => onClick(ev)}
     >

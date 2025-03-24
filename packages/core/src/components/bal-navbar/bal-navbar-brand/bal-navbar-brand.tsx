@@ -1,10 +1,10 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Method } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalScrollHandler } from '../../../utils/scroll'
 import { balBrowser } from '../../../utils/browser'
-import { wait } from '../../../utils/helpers'
-import { i18nBalNavbarBrand } from './bal-navbar-brand.i18n'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
+import { wait } from '../../../utils/helpers'
+import { BalScrollHandler } from '../../../utils/scroll'
+import { i18nBalNavbarBrand } from './bal-navbar-brand.i18n'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -21,6 +21,12 @@ export class NavbarBrand {
    * Link of the logo / title.
    */
   @Prop() href?: string = ''
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop() rel: string | undefined
 
   /**
    * If `true` the logo is rendered as a button
@@ -167,6 +173,7 @@ export class NavbarBrand {
             aria-label={logoLabel}
             title={logoLabel}
             href={this.href}
+            rel={this.rel}
             target={this.target}
             onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}
           >

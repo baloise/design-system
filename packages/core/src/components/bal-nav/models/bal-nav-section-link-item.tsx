@@ -1,7 +1,7 @@
 import { h } from '@stencil/core'
-import { NavLinkItem } from './bal-nav-link-item'
-import { NavLinkItemObserver } from '../bal-nav.types'
 import { BEM } from '../../../utils/bem'
+import { NavLinkItemObserver } from '../bal-nav.types'
+import { NavLinkItem } from './bal-nav-link-item'
 
 export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSectionLinkItem {
   linkItems: NavLinkItem[] = []
@@ -39,6 +39,7 @@ export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSe
             ...block.element('mobile-section-item').modifier('clickable').class(this.clickable),
           }}
           href={this.href}
+          rel={this.rel}
           target={this.target}
           onClick={ev => this.onClick(ev)}
         >

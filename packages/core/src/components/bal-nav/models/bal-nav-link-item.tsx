@@ -1,6 +1,6 @@
 import { h } from '@stencil/core'
-import { NavLinkItemObserver } from '../bal-nav.types'
 import { BEM } from '../../../utils/bem'
+import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavLinkItem implements BalProps.BalNavLinkItem {
   id: string
@@ -11,6 +11,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
   data = undefined
 
   href?: string
+  rel?: string
   target?: BalProps.BalButtonTarget
   onClick: (ev: MouseEvent) => void
   onAccordionClick: (ev: MouseEvent) => void
@@ -23,6 +24,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     this.id = `nav-link-item-${NavLinkItemIDs++}`
     this.value = item.value || this.id
     this.href = item.href
+    this.rel = item.rel
     this.target = item.target
     this.active = !!item.active
     this.clickable = !!item.clickable
@@ -56,6 +58,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
       label: this.label,
       value: this.value,
       href: this.href,
+      rel: this.rel,
       target: this.target,
       data: this.data,
     }
@@ -74,6 +77,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
             ...block.element('mobile-links').modifier('clickable').class(this.clickable),
           }}
           href={this.href}
+          rel={this.rel}
           target={this.target}
           onClick={ev => this.onClick(ev)}
         >

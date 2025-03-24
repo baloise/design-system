@@ -39,6 +39,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, color, 
       data-testid="bal-steps-option"
       aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
+      rel={item.rel}
       target={item.target}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >

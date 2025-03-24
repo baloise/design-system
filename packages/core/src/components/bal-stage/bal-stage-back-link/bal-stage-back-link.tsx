@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -11,6 +11,12 @@ export class StageBackLink implements ComponentInterface {
    * Specifies the URL of the page the link goes to
    */
   @Prop() href!: string
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop() rel: string | undefined
 
   /**
    * If `true` adds a text shadow to improve readability on image background
@@ -33,6 +39,7 @@ export class StageBackLink implements ComponentInterface {
             'is-inverted': this.inverted,
           }}
           href={this.href}
+          rel={this.rel}
         >
           <bal-icon
             class="mr-x-small"
