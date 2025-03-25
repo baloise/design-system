@@ -29,6 +29,7 @@ export const ServiceList: FunctionalComponent<ServiceListProps> = ({ items }) =>
                 ...block.element('mobile-section-item').class(),
               }}
               href={serviceGroup.href}
+              rel={serviceGroup.rel}
               target={serviceGroup.target}
             >
               {serviceGroup.label}
@@ -46,6 +47,7 @@ export const ServiceList: FunctionalComponent<ServiceListProps> = ({ items }) =>
                         ...block.element('mobile-links').class(),
                       }}
                       href={item.href}
+                      rel={item.rel}
                       target={item.target}
                     >
                       {item.label}

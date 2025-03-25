@@ -8,6 +8,7 @@ export interface AccordionButtonProps {
   open: boolean
   link: boolean
   href?: string
+  rel?: string
   target?: string
   onClick: (ev: MouseEvent) => void
 }
@@ -19,6 +20,7 @@ export const AccordionButton: FunctionalComponent<AccordionButtonProps> = ({
   open,
   link,
   href,
+  rel,
   target,
   onClick,
 }) => {
@@ -31,6 +33,7 @@ export const AccordionButton: FunctionalComponent<AccordionButtonProps> = ({
         ...block.element(`mobile-${level}-item`).class(),
       }}
       href={href}
+      rel={rel}
       target={target}
       onClick={ev => onClick(ev)}
     >
