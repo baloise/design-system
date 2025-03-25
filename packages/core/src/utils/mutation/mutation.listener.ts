@@ -45,7 +45,6 @@ export class BalMutationListener extends ListenerAbstract {
   }
 
   private mutationCallback = (mutationRecord: MutationRecord[]) => {
-    console.log('mutationCallback', mutationRecord)
     // default when no tag is provided
     if (this.tags.length === 0 && mutationRecord.length > 0) {
       return this.notify(undefined)
