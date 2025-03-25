@@ -52,6 +52,7 @@ namespace BalProps {
     htmlTitle?: string
     ariaLabel?: string
     href?: string
+    rel?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean
     data?: any
@@ -70,6 +71,7 @@ namespace BalEvents {
     label: string
     value?: string
     href?: string
+    rel?: string
     data?: any
     target?: BalProps.BalButtonTarget
   }

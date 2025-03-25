@@ -1791,6 +1791,10 @@ export namespace Components {
          */
         "present": () => Promise<void>;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
@@ -2059,6 +2063,10 @@ export namespace Components {
           * Size of the logo SVG
          */
         "logoSize": BalProps.BalLogoSize;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -3037,6 +3045,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow": boolean;
@@ -3094,6 +3106,10 @@ export namespace Components {
           * Tell's if the linking is done by a router.
          */
         "prevent": boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * Sets the tab active.
          */
@@ -6963,6 +6979,10 @@ declare namespace LocalJSX {
          */
         "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
@@ -7240,6 +7260,10 @@ declare namespace LocalJSX {
           * Emitted before the animation starts
          */
         "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -8173,6 +8197,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow"?: boolean;
@@ -8230,6 +8258,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */

@@ -201,7 +201,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   updateRawValue(newValue: string[], isHuman = true) {
     if (!areArraysEqual(newValue, this.rawValue || [])) {
       this.rawValue = [...newValue]
-      this.syncNativeInput()
+      this.syncNativeInput(isHuman)
       if (this.didInit && isHuman === true) {
         if (this.multiple) {
           if (isNil(this.rawValue)) {
@@ -778,7 +778,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     }
   }
 
-  private syncNativeInput(): Promise<void> {
+  private syncNativeInput(isHuman = true): Promise<void> {
     if (!this.multiple) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
@@ -787,10 +787,13 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
           label = valuesArray.join(', ')
         }
         return this.updateInputValue(label)
-      } else {
-        return this.updateInputValue('')
       }
     }
+
+    if (!isHuman && length(this.rawValue) === 0) {
+      return this.updateInputValue('')
+    }
+
     return Promise.resolve()
   }
 
