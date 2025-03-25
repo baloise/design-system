@@ -1,5 +1,17 @@
 # Changelog
 
+## 18.2.0
+
+### Minor Changes
+
+- **list**: add rel prop to the list item ( [#1654](https://github.com/baloise/design-system/pull/1654))
+
+### Patch Changes
+
+- **select**: reset value when done over props value change ( [#1657](https://github.com/baloise/design-system/pull/1657))
+
+- **tabs**: when tab item changes it will trigger a render of the tabs component ( [#1658](https://github.com/baloise/design-system/pull/1658))
+
 ## 18.1.0
 
 ### Minor Changes
