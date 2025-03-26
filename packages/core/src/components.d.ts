@@ -95,7 +95,7 @@ export namespace Components {
     interface BalAccordionTrigger {
         "active": boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button": boolean;
         /**
@@ -128,6 +128,10 @@ export namespace Components {
          */
         "size": BalProps.BalButtonSize;
         "state": AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant": BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -5213,7 +5217,7 @@ declare namespace LocalJSX {
     interface BalAccordionTrigger {
         "active"?: boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button"?: boolean;
         /**
@@ -5245,6 +5249,10 @@ declare namespace LocalJSX {
          */
         "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant"?: BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
