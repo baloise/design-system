@@ -1362,6 +1362,14 @@ export namespace Components {
          */
         "svg": string;
         /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile": boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor": BalProps.BalIconTileColor;
+        /**
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
@@ -6502,6 +6510,14 @@ declare namespace LocalJSX {
           * Svg content.
          */
         "svg"?: string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile"?: boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor"?: BalProps.BalIconTileColor;
         /**
           * If `true` the icon is rotated 180deg
          */
