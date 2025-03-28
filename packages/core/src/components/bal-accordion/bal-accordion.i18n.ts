@@ -7,43 +7,43 @@ interface I18nBalAccordion {
 
 export const i18nBalAccordion: I18n<I18nBalAccordion> = {
   de: {
-    open: 'Öffnen',
-    close: 'Schließen',
+    open: 'Mehr anzeigen',
+    close: 'Weniger anzeigen',
   },
   en: {
-    open: 'Open',
-    close: 'Close',
+    open: 'Show more',
+    close: 'Show less',
   },
   fr: {
-    open: 'Ouvrir',
-    close: 'Fermer',
+    open: 'Afficher plus',
+    close: 'Afficher moins',
   },
   it: {
-    open: 'Apri',
-    close: 'Chiudi',
+    open: 'Mostra di più',
+    close: 'Mostra di meno',
   },
   nl: {
-    open: 'Open',
-    close: 'Sluiten',
+    open: 'Meer weergeven',
+    close: 'Minder weergeven',
   },
   es: {
-    open: 'Abrir',
-    close: 'Cerrar',
+    open: 'Mostrar más',
+    close: 'Mostrar menos',
   },
   pl: {
-    open: 'Otwórz',
-    close: 'Zamknij',
+    open: 'Pokaż więcej',
+    close: 'Pokaż mniej',
   },
   pt: {
-    open: 'Abrir',
-    close: 'Fechar',
+    open: 'Mostrar mais',
+    close: 'Mostrar menos',
   },
   sv: {
-    open: 'Öppna',
-    close: 'Stäng',
+    open: 'Visa mer',
+    close: 'Visa mindre',
   },
   fi: {
-    open: 'Avaa',
-    close: 'Sulje',
+    open: 'Näytä lisää',
+    close: 'Näytä vähemmän',
   },
 }

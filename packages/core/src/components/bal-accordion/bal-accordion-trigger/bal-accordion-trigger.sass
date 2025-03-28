@@ -9,10 +9,30 @@
     align-items: center
     background: transparent
     border: none
+    border-radius: var(--bal-border-radius-normal)
     height: 3rem
     width: 3rem
     user-select: none
     cursor: pointer
+  &__text
+    display: inline
+    background: transparent
+    border: none
+    user-select: none
+    cursor: pointer
+    padding: 0
+    margin: 0
+    border-radius: var(--bal-radius-normal)
+    font-size: var(--bal-text-size-small)
+    color: var(--bal-text-color-primary-light)
+    font-family: var(--bal-font-family-title)
+    font-weight: var(--bal-font-weight-bold)
+    +hover
+      &:hover
+        color: var(--bal-text-color-primary-hovered)
+    &:active
+      color: var(--bal-text-color-primary-pressed)
 
-.bal-accordion__trigger__button.bal-focused:focus-visible
+.bal-accordion__trigger__button.bal-focused:focus-visible,
+.bal-accordion__trigger__text.bal-focused:focus-visible
   @extend %focus-shadow
