@@ -56,7 +56,27 @@
   +modifier(is-xx-large)
     +iconSize(11rem)
     padding: 0
-
+  //
+  // tile
+  +modifier(tile)
+    background: var(--bal-color-purple-1)
+    border-radius: var(--bal-radius-normal)
+    height: 2rem
+    +iconSize(2rem)
+    +tablet
+      height: 3.5rem
+      +iconSize(3.5rem)
+  +modifier(tile-color-green)
+    background: var(--bal-color-green-1)
+  +modifier(tile-color-red)
+    background: var(--bal-color-red-1)
+  +modifier(tile-color-yellow)
+    background: var(--bal-color-yellow-1)
+  +element(inner)
+    +modifier(tile)
+      +iconSize(2rem)
+      +tablet
+        +iconSize(3rem)
   //
   // colors
   +modifier(is-grey)

@@ -95,7 +95,7 @@ export namespace Components {
     interface BalAccordionTrigger {
         "active": boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button": boolean;
         /**
@@ -128,6 +128,10 @@ export namespace Components {
          */
         "size": BalProps.BalButtonSize;
         "state": AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant": BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -1361,6 +1365,14 @@ export namespace Components {
           * Svg content.
          */
         "svg": string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile": boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor": BalProps.BalIconTileColor;
         /**
           * If `true` the icon is rotated 180deg
          */
@@ -5205,7 +5217,7 @@ declare namespace LocalJSX {
     interface BalAccordionTrigger {
         "active"?: boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button"?: boolean;
         /**
@@ -5237,6 +5249,10 @@ declare namespace LocalJSX {
          */
         "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant"?: BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -6502,6 +6518,14 @@ declare namespace LocalJSX {
           * Svg content.
          */
         "svg"?: string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile"?: boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor"?: BalProps.BalIconTileColor;
         /**
           * If `true` the icon is rotated 180deg
          */

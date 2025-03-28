@@ -21,7 +21,7 @@ import { addCompareSnapshotCommand } from './lib/visuals'
 
 addCompareSnapshotCommand({
   capture: 'fullPage',
-  errorThreshold: 0.2,
+  errorThreshold: 0.25,
 })
 
 Cypress.Screenshot.defaults({

@@ -4,6 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
+  export type BalAccordionTriggerVariant = 'button' | 'icon' | 'text'
   export type BalAccordionColor = 'primary' | 'info'
 }
 

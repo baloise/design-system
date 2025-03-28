@@ -1,5 +1,17 @@
 # Changelog
 
+## 18.3.0
+
+### Minor Changes
+
+- **icon**: add tile option ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
+- **accordion**: add varaint text button for the trigger element ( [#1664](https://github.com/baloise/design-system/pull/1664))
+
+### Patch Changes
+
+- **icon**: sanitize svg contents ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
 ## 18.2.0
 
 ### Minor Changes
