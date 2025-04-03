@@ -7,10 +7,9 @@
   +element(icon)
     user-select: none
     cursor: pointer
-    +hover
-      &:hover,
-      &:focus
-        +fillSvg(var(--bal-color-light-blue-5))
+    &:hover,
+    &:focus
+      @extend %focus-shadow
   +element(content)
     background: var(--bal-hint-content-background)
     display: flex
@@ -57,3 +56,5 @@
       z-index: var(--bal-z-index-popup)
       +modifier('active')
         display: block
+
+
