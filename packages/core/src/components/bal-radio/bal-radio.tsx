@@ -1,31 +1,31 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  ComponentInterface,
   Listen,
+  Method,
+  Prop,
   State,
 } from '@stencil/core'
-import { isDescendant } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
+import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
+import { BalElementStateInfo } from '../../utils/element-states'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { stopEventBubbling } from '../../utils/form-input'
+import { isDescendant } from '../../utils/helpers'
+import { isSpaceKey } from '../../utils/keyboard'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
-import { inheritAttributes } from '../../utils/attributes'
-import { stopEventBubbling } from '../../utils/form-input'
-import { isSpaceKey } from '../../utils/keyboard'
-import { BalElementStateInfo } from '../../utils/element-states'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-radio',
-  styleUrl: '../bal-checkbox/radio-checkbox.sass',
+  styleUrl: 'bal-radio.sass',
 })
 export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`
@@ -374,7 +374,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    */
 
   render() {
-    const block = BEM.block('radio-checkbox')
+    const block = BEM.block('radio')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
     const labelTextEl = labelEl.element('text')
@@ -408,7 +408,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
         class={{
           'bal-focused': focused,
           ...block.class(),
-          ...block.modifier('radio').class(),
           ...block.modifier('select-button').class(this.interface === 'select-button'),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
@@ -449,7 +448,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
           <LabelTag
             class={{
               ...labelEl.class(),
-              ...labelEl.modifier('radio').class(),
               ...labelEl.modifier('checked').class(this.checked),
               ...labelEl.modifier('hidden').class(this.labelHidden),
               ...labelEl.modifier('flat').class(this.flat),
