@@ -1,5 +1,19 @@
 # Changelog
 
+## 19.0.0
+
+### Major Changes
+
+- feat(bal-nav): add rel attribute to nav elements ( [#1669](https://github.com/baloise/design-system/pull/1669))
+
+### Minor Changes
+
+- feat(bal-nav): Introduce new navigation aria label and adapt translations ( [#1670](https://github.com/baloise/design-system/pull/1670))
+
+### Patch Changes
+
+- **core**: a11y: fix input-slider to display focus state ( [#1665](https://github.com/baloise/design-system/pull/1665))
+
 ## 18.3.0
 
 ### Minor Changes
