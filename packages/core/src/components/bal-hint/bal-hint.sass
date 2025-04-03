@@ -7,8 +7,9 @@
   +element(icon)
     user-select: none
     cursor: pointer
-    &:hover,
-    &:focus
+    &:hover
+      +fillSvg(var(--bal-color-light-blue-5))
+    &:focus-visible:not(:active)
       @extend %focus-shadow
   +element(content)
     background: var(--bal-hint-content-background)
