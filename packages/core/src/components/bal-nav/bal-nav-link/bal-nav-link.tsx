@@ -35,6 +35,12 @@ export class NavLink implements ComponentInterface, Loggable {
   @Prop() clickable = false
 
   /**
+    * Specifies the relationship of the target object to the link object.
+    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+    */
+  @Prop() rel: string | undefined
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href?: string
@@ -52,14 +58,14 @@ export class NavLink implements ComponentInterface, Loggable {
 
   render() {
     const block = BEM.block('nav-link')
-    const { href, target } = this
+    const { href, target, rel } = this
     const hasLink = href !== undefined && href !== ''
     const hasVariant = this.variant !== ''
 
     const Link = hasLink ? 'a' : this.clickable ? 'button' : 'span'
     let linkAttributes = {}
     if (hasLink) {
-      linkAttributes = { href, target }
+      linkAttributes = { href, target, rel }
     }
 
     return (
