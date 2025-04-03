@@ -83,6 +83,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     : {
         role: 'listitem',
         href: item.href,
+        rel: item.rel,
         target: item.target,
       }
 

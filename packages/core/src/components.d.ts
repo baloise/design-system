@@ -1974,6 +1974,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected": boolean;
@@ -3210,6 +3214,10 @@ export namespace Components {
           * Tell's if the linking is done by a router.
          */
         "prevent": boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * Sets the tab active.
          */
@@ -7172,6 +7180,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected"?: boolean;
@@ -8366,6 +8378,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Sub label for the tab.
          */
