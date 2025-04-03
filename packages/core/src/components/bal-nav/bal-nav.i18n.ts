@@ -1,70 +1,81 @@
 import { I18n } from '../../interfaces'
 
 interface i18nNavBars {
-  meta: string
-  main: string
+  mainNavigation: string
+  navigation: string
+  subNavigation: string
   open: string
   close: string
 }
 
 export const i18nNavBars: I18n<i18nNavBars> = {
   de: {
-    meta: 'Hauptnavigation',
-    main: 'Subnavigation',
+    mainNavigation: 'Hauptnavigation',
+    navigation: 'Navigation',
+    subNavigation: 'Subnavigation',
     open: 'Menü öffnen',
     close: 'Menü schliessen',
   },
   en: {
-    meta: 'Main Navigation',
-    main: 'Sub Navigation',
+    mainNavigation: 'Main navigation',
+    navigation: 'Navigation',
+    subNavigation: 'Sub navigation',
     open: 'Open Menu',
     close: 'Close Menu',
   },
   fr: {
-    meta: 'Navigation principale',
-    main: 'Sous-navigation',
+    mainNavigation: 'Navigation principale',
+    navigation: 'Navigation',
+    subNavigation: 'Sous-navigation',
     open: 'Ouvrir le menu',
     close: 'Fermer le menu',
   },
   it: {
-    meta: 'Navigazione principale',
-    main: 'Sottomenu',
+    mainNavigation: 'Navigazione principale',
+    navigation: 'Navigazione',
+    subNavigation: 'Sottonavigazione',
     open: 'Apri Menù',
     close: 'Chiudi menù',
   },
   nl: {
-    meta: 'Hoofdnavigatie',
-    main: 'Subnavigatie',
+    mainNavigation: 'Hoofdnavigatie',
+    navigation: 'Navigatie',
+    subNavigation: 'Subnavigatie',
     open: 'Menu openen',
     close: 'Menu sluiten',
   },
   es: {
-    meta: 'Navegación principal',
-    main: 'Subnavegación',
+    mainNavigation: 'Navegación principal',
+    navigation: 'Navegación',
+    subNavigation: 'Subnavegación',
     open: 'Menú abierto',
     close: 'Cerrar menú',
   },
   pl: {
-    meta: 'Nawigacja główna',
-    main: 'Nawigacja podrzędna',
+    mainNavigation: 'Nawigacja główna',
+    navigation: 'Nawigacja',
+    subNavigation: 'Nawigacja podrzędna',
     open: 'Otwórz menu',
     close: 'Zamknij menu',
   },
   pt: {
-    meta: 'Navegação principal',
-    main: 'Subnavegação',
+    mainNavigation: 'Navegação principal',
+    navigation: 'Navegação',
+    subNavigation: 'Subnavegação',
     open: 'Menu aberto',
     close: 'Fechar menu',
   },
   sv: {
-    meta: 'Huvudnavigering',
-    main: 'Undernavigering',
+    mainNavigation: 'Huvudnavigering',
+    navigation: 'Navigering',
+    subNavigation: 'Undernavigering',
     open: 'Öppna menyn',
     close: 'Stäng menyn',
   },
   fi: {
-    meta: 'Päänavigointi',
-    main: 'Alinavigointi',
+    mainNavigation: 'Päänavigaatio',
+    navigation: 'Navigaatio',
+    subNavigation: 'Alinavigaatio',
     open: 'Avaa valikko',
     close: 'Sulje valikko',
   },

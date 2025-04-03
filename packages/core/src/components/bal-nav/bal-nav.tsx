@@ -426,7 +426,7 @@ export class Nav
                     inverted
                     context="meta"
                     value={this.activeMetaLinkValue}
-                    aria-label={i18nNavBars[this.language].meta}
+                    aria-label={i18nNavBars[this.language].mainNavigation}
                     onBalChange={ev => this.onMetaBarTabChange(ev)}
                   >
                     {this.linkItems.map(item =>
@@ -455,7 +455,7 @@ export class Nav
                   accordion
                   spaceless
                   value={this.activeMenuLinkValue}
-                  aria-label={i18nNavBars[this.language].main}
+                  aria-label={i18nNavBars[this.language].navigation}
                 >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
@@ -468,7 +468,7 @@ export class Nav
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout navId={this.navId}>
+                <bal-nav-menu-flyout navId={this.navId} aria-label={i18nNavBars[this.language].subNavigation}>
                   <bal-nav-link
                     role="listitem"
                     variant="overview"
