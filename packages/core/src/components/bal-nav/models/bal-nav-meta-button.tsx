@@ -42,6 +42,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           icon={this.icon}
           square={!this.label || this.label.length < 3}
           inverted={true}
+          rel={this.rel}
           href={this.href}
           target={this.target}
           aria={{
@@ -91,6 +92,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             icon={this.icon}
             square={!!this.icon || !this.label || this.label.length < 3}
             href={this.href}
+            rel={this.rel}
             target={this.target}
             aria={{
               title: this.htmlTitle,
