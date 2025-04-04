@@ -1,28 +1,28 @@
-import { areArraysEqual } from '../../../utils/array'
 import {
   Component,
-  h,
-  Host,
   ComponentInterface,
-  Prop,
   Element,
-  Watch,
   Event,
   EventEmitter,
-  Method,
-  State,
+  h,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../utils/form-input'
-import { hasTagName, isDescendant } from '../../../utils/helpers'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { areArraysEqual } from '../../../utils/array'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { BalCheckboxOption } from '../bal-checkbox.type'
+import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { hasTagName, isDescendant } from '../../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
-import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
-import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { BalCheckboxOption } from '../bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -270,10 +270,11 @@ export class CheckboxGroup
   }
 
   @Listen('balChange', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
+  listenOnCheckboxChange(ev: UIEvent) {
     if (this.control) {
       if (isDescendant(this.el, ev.target as HTMLElement)) {
         stopEventBubbling(ev)
+        this.updateValues()
       }
     }
   }
@@ -394,7 +395,6 @@ export class CheckboxGroup
     if (element.href) {
       return
     }
-    ev.preventDefault()
 
     const selectedCheckbox = ev.target && (ev.target as HTMLElement).closest('bal-checkbox')
     if (selectedCheckbox) {
@@ -403,6 +403,10 @@ export class CheckboxGroup
       }
     }
 
+    this.updateValues()
+  }
+
+  private updateValues() {
     // generate new value array out of the checked checkboxes
     const newValue: any[] = []
     this.getCheckboxes().forEach(cb => {

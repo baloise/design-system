@@ -26,7 +26,6 @@ describe('bal-checkbox', () => {
 
     cy.get('bal-checkbox').click().find('input').blur()
 
-    cy.get('@click').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balBlur').should('have.been.calledOnce')

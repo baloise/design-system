@@ -1,27 +1,27 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Watch,
-  ComponentInterface,
-  Method,
   Listen,
+  Method,
+  Prop,
   State,
+  Watch,
 } from '@stencil/core'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { inheritAttributes } from '../../../utils/attributes'
+import { BEM } from '../../../utils/bem'
+import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { hasTagName, isDescendant } from '../../../utils/helpers'
-import { BEM } from '../../../utils/bem'
-import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
-import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
-import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { BalRadioOption } from '../bal-radio.type'
 
 @Component({
   tag: 'bal-radio-group',
@@ -457,7 +457,7 @@ export class RadioGroup
    */
 
   render() {
-    const block = BEM.block('radio-checkbox-group')
+    const block = BEM.block('radio-group')
     const innerEl = block.element('inner')
 
     const rawOptions = this.options || []
