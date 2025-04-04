@@ -1,12 +1,47 @@
-@use '@baloise/ds-styles/sass/mixins' as *
-@use '../bal-radio-checkbox.vars' as *
+.bal-switch__toggle
+  background: var(--bal-radio-checkbox-switch-label-background-after)
+  border-radius: 50%
+  position: absolute
+  top: 0.25rem
+  width: 1rem
+  height: 1rem
+  transition: transform 0.3s ease-in-out
 
 .bal-switch
-  display: inline-flex
-  justify-content: center
+  display: flex
   align-items: center
-  cursor: pointer
-  user-select: none
-  width: 1.5rem
+  width: 2.5rem
   height: 1.5rem
-  border-radius: var(--bal-radius-normal)
+  padding: 0.25rem
+  background: var(--bal-radio-checkbox-switch-label-background-before)
+  border-radius: 1.5rem
+  position: relative
+
+.bal-switch--disabled
+  background: var(--bal-radio-checkbox-switch-label-background-disabled-before)
+
+.bal-switch--checked
+  background: var(--bal-radio-checkbox-switch-label-background-checked-before)
+
+.bal-switch--invalid
+  background: var(--bal-radio-checkbox-switch-label-background-invalid-before)
+
+.bal-switch__toggle--disabled
+  background: var(--bal-radio-checkbox-switch-label-background-disabled-after)
+
+.bal-switch__toggle--invalid
+  background: var(--bal-radio-checkbox-switch-label-background-invalid-after)
+
+.bal-switch__toggle--checked
+  transform: translateX(100%)
+  background: var(--bal-radio-checkbox-switch-label-background-checked-after)
+
+
+.bal-icon
+  position: absolute
+
+  .bal-switch__icon--checked
+    opacity: 1
+  .bal-switch__icon
+    opacity: 0
+    transition: opacity 0.3s ease-in-out

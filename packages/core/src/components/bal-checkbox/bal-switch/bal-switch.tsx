@@ -31,8 +31,9 @@ export class Switch implements ComponentInterface {
    * ------------------------------------------------------
    */
 
+  // TODO-MZ add color states (invalid, selected, disabled)
   render() {
-    const block = BEM.block('switch ')
+    const block = BEM.block('switch')
     const checked = !!this.checked
     const disabled = !!this.disabled
     const invalid = !!this.invalid
@@ -45,8 +46,23 @@ export class Switch implements ComponentInterface {
           ...block.modifier('disabled').class(disabled),
           ...block.modifier('invalid').class(invalid),
         }}
+        onClick={() => (this.checked = !this.checked)}
       >
-        {checked ? <bal-icon name="check" color="white" size="small" aria-hidden="true"></bal-icon> : ''}
+          <bal-icon
+            name="check"
+            color="white"
+            size="small"
+            aria-hidden="true"
+            class={{
+              ...block.element('icon').modifier('checked').class(checked),
+            }}
+          ></bal-icon>
+            <div class={{
+              ...block.element('toggle').class(),
+              ...block.element('toggle').modifier('checked').class(checked),
+              ...block.element('toggle').modifier('disabled').class(disabled),
+              ...block.element('toggle').modifier('invalid').class(invalid)
+            }}></div>
       </Host>
     )
   }
