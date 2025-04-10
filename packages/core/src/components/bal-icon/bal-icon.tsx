@@ -1,8 +1,8 @@
 import { Component, h, Host, Method, Prop, State } from '@stencil/core'
-import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
+import upperFirst from 'lodash.upperfirst'
 import { BEM } from '../../utils/bem'
-import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
@@ -36,6 +36,8 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * The theme type of the button.
    */
   @Prop() color: BalProps.BalIconColor = ''
+  @Prop() colorHovered: BalProps.BalIconColor = ''
+  @Prop() colorPressed: BalProps.BalIconColor = ''
 
   /**
    * If `true` the icon has display inline style
@@ -116,6 +118,13 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
   }
 
   private parseColor() {
+    if (this.colorHovered && this.hovered) {
+      return this.colorHovered
+    }
+    if (this.colorPressed && this.pressed) {
+      return this.colorPressed
+    }
+
     if (!!this.disabled) {
       return 'grey'
     }
@@ -130,7 +139,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
       }
     }
 
-    if (this.color !== 'auto') {
+    if (this.color !== 'auto' && (this.color === 'primary' || this.color === '')) {
       if (this.pressed) {
         return 'primary-dark'
       } else if (this.hovered) {

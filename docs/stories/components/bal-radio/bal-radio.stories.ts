@@ -72,15 +72,15 @@ export const Vertical = Story({
   ),
 })
 
-export const SelectButtons = Story({
+export const RadioButton = Story({
   args: {
-    name: 'select-button-example',
+    name: 'button-example',
   },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-        <bal-radio-group interface="select-button" value="yes">
+        <bal-radio-group interface="button" value="yes">
             <bal-radio ${props(args)} value="yes">Yes</bal-radio>
             <bal-radio ${props(args)} value="no">No</bal-radio>
             <bal-radio ${props(
@@ -93,7 +93,7 @@ export const SelectButtons = Story({
   ),
 })
 
-export const RadioButton = Story({
+export const RadioTile = Story({
   args: {
     name: 'radio-example',
     labelHidden: true,
@@ -143,7 +143,7 @@ export const RadioButton = Story({
   ),
 })
 
-export const RadioButtonGrid = Story({
+export const RadioTileGrid = Story({
   args: {
     name: 'radio-example',
     labelHidden: true,

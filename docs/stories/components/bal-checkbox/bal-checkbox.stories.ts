@@ -1,7 +1,7 @@
+import { balBrandIconCarGreen } from '@baloise/ds-brand-icons/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons/dist'
+import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
 
 type Args = JSX.BalCheckbox & { content: string }
 
@@ -105,12 +105,12 @@ export const VerticalGroup = Story({
   ),
 })
 
-export const FilterButtons = Story({
+export const CheckboxButton = Story({
   ...withRender(
     () => `<bal-field>
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-        <bal-checkbox-group interface="select-button">
+        <bal-checkbox-group interface="button">
             <bal-checkbox checked="true">
                 Label
             </bal-checkbox>
@@ -127,103 +127,103 @@ export const FilterButtons = Story({
   ),
 })
 
-export const CheckboxButton = Story({
+export const CheckboxTile = Story({
   ...withRender(
-    () => `<bal-checkbox-group value="1">
-    <bal-checkbox-button>
+    () => `<bal-checkbox-group interface="tile" value="1">
+    <bal-checkbox name="checkbox-example" value="1">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Simple checkbox button</bal-label>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="2">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Checkbox button with a switch</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox interface="switch" label-hidden="true" name="checkbox-example" value="2"></bal-checkbox>
+            <bal-switch></bal-switch>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button invalid>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="3" invalid>
         <bal-stack>
-            <bal-icon svg='${balBrandIconCarRed}' size="large" color="auto"></bal-icon>
+            <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Invalid button</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox interface="switch" label-hidden="true" name="checkbox-example" value="3"></bal-checkbox>
+            <bal-switch></bal-switch>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button disabled="true">
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="4" disabled="true">
         <bal-stack>
-            <bal-icon svg='${balBrandIconCarPurple}' size="large" color="auto"></bal-icon>
+            <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Disabled button</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox interface="switch" label-hidden="true" name="checkbox-example" value="4"></bal-checkbox>
+            <bal-switch></bal-switch>
         </bal-stack>
-    </bal-checkbox-button>
+    </bal-checkbox>
 </bal-checkbox-group>`,
   ),
 })
-export const CheckboxButtonGrid = Story({
+export const CheckboxTileGrid = Story({
   ...withRender(
-    () => `<bal-checkbox-group value="1" columns="3" columns-tablet="2">
-    <bal-checkbox-button>
+    () => `<bal-checkbox-group interface="tile" value="1" columns="3" columns-tablet="2">
+    <bal-checkbox name="checkbox-example" value="1">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Checkbox Button 1</bal-label>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="2">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Checkbox Button 2</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="2"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="3">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Checkbox Button 3</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="3"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="4">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Checkbox Button 4</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="4"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
-    <bal-checkbox-button>
+    </bal-checkbox>
+    <bal-checkbox name="checkbox-example" value="5">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Checkbox Button 5</bal-label>
                 <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
             </bal-content>
-            <bal-checkbox label-hidden="true" name="checkbox-example" value="5"></bal-checkbox>
+            <bal-check></bal-check>
         </bal-stack>
-    </bal-checkbox-button>
+    </bal-checkbox>
 </bal-checkbox-group>`,
   ),
 })

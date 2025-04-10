@@ -1,9 +1,9 @@
-describe('bal-checkbox-button', () => {
-  testCheckboxButton('mobile')
-  testCheckboxButton('tablet')
-  testCheckboxButton('desktop')
+describe('bal-checkbox tile', () => {
+  testCheckboxTile('mobile')
+  testCheckboxTile('tablet')
+  testCheckboxTile('desktop')
 
-  function testCheckboxButton(platform: 'mobile' | 'tablet' | 'desktop') {
+  function testCheckboxTile(platform: 'mobile' | 'tablet' | 'desktop') {
     beforeEach(() =>
       cy
         .visit('/components/bal-checkbox/test/bal-checkbox-button.visual.html')

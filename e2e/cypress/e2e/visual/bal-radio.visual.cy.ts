@@ -2,9 +2,9 @@ describe('bal-radio', () => {
   beforeEach(() => cy.visit('/components/bal-radio/test/bal-radio.visual.html').waitForDesignSystem())
 
   testRadio('basic')
-  testRadio('select-button')
+  testRadio('button')
 
-  function testRadio(interface: 'basic' | 'select-button') {
+  function testRadio(interface: 'basic' | 'button') {
     it(`${interface} component`, () => {
       cy.platform('desktop')
       cy.getByTestId(`${interface}`).testVisual(`${interface}`)

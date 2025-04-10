@@ -408,7 +408,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
         class={{
           'bal-focused': focused,
           ...block.class(),
-          ...block.modifier('select-button').class(this.interface === 'select-button'),
+          ...block.modifier('button').class(this.interface === 'button'),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
           ...block.modifier('flat').class(this.flat),
@@ -423,7 +423,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
         <input
           class={{
             ...inputEl.class(),
-            ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...inputEl.modifier('button').class(this.interface === 'button'),
           }}
           data-testid="bal-radio-input"
           type="radio"

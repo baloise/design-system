@@ -26,6 +26,7 @@ import { BalCheckboxOption } from '../bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox-group',
+  styleUrl: 'bal-checkbox-group.sass',
 })
 export class CheckboxGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
@@ -103,9 +104,6 @@ export class CheckboxGroup
         this.getCheckboxes().forEach(child => {
           child.invalid = value
         })
-        this.getCheckboxButtons().forEach(child => {
-          child.invalid = value
-        })
       }
     }
   }
@@ -122,9 +120,6 @@ export class CheckboxGroup
         this.getCheckboxes().forEach(child => {
           child.disabled = value
         })
-        this.getCheckboxButtons().forEach(child => {
-          child.disabled = value
-        })
       }
     }
   }
@@ -139,9 +134,6 @@ export class CheckboxGroup
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
-          child.readonly = value
-        })
-        this.getCheckboxButtons().forEach(child => {
           child.readonly = value
         })
       }
@@ -171,7 +163,7 @@ export class CheckboxGroup
 
   @Watch('columns')
   columnsChanged(value: BalProps.BalCheckboxGroupColumns) {
-    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
+    this.getCheckboxes().forEach(checkbox => (checkbox.colSize = value))
   }
 
   /**
@@ -181,7 +173,7 @@ export class CheckboxGroup
 
   @Watch('columnsTablet')
   columnsTabletChanged(value: BalProps.BalCheckboxGroupColumns) {
-    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeTablet = value))
+    this.getCheckboxes().forEach(checkbox => (checkbox.colSizeTablet = value))
   }
 
   /**
@@ -191,7 +183,7 @@ export class CheckboxGroup
 
   @Watch('columnsMobile')
   columnsMobileChanged(value: BalProps.BalCheckboxGroupColumns) {
-    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeMobile = value))
+    this.getCheckboxes().forEach(checkbox => (checkbox.colSizeMobile = value))
   }
 
   /**
@@ -377,10 +369,6 @@ export class CheckboxGroup
     return Array.from(this.el.querySelectorAll('bal-checkbox'))
   }
 
-  private getCheckboxButtons(): HTMLBalCheckboxButtonElement[] {
-    return Array.from(this.el.querySelectorAll('bal-checkbox-button'))
-  }
-
   /**
    * EVENT BINDING
    * ------------------------------------------------------
@@ -431,7 +419,7 @@ export class CheckboxGroup
    */
 
   render() {
-    const block = BEM.block('radio-checkbox-group')
+    const block = BEM.block('checkbox-group')
     const innerEl = block.element('inner')
 
     const rawOptions = this.options || []
@@ -460,7 +448,7 @@ export class CheckboxGroup
             ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
             ...innerEl.modifier('vertical').class(this.vertical),
             ...innerEl.modifier('expanded').class(this.expanded),
-            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...innerEl.modifier('button').class(this.interface === 'button'),
           }}
         >
           <slot></slot>

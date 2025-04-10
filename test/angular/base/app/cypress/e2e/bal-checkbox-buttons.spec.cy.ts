@@ -1,11 +1,11 @@
-describe('bal-checkbox-buttons', () => {
+describe('bal-checkbox tile', () => {
   beforeEach(() => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Checkbox Buttons Label')
+    cy.getByLabelText('Checkbox Tiles Label')
 
-    cy.getByTestId('checkboxButtons').getByRole('label', { name: 'Kiwi' }).click()
+    cy.getByTestId('checkboxTiles').getByRole('label', { name: 'Kiwi' }).click()
     cy.get('body').click(0, 0)
 
     cy.getByLabelText('Checkbox Buttons Label')
@@ -13,9 +13,9 @@ describe('bal-checkbox-buttons', () => {
       .getDescribingElement()
       .contains('This field is required')
 
-    cy.getByTestId('checkboxButtons').getByRole('label', { name: 'Kiwi' }).click()
+    cy.getByTestId('checkboxTiles').getByRole('label', { name: 'Kiwi' }).click()
 
-    cy.getByLabelText('Checkbox Buttons Label')
+    cy.getByLabelText('Checkbox Tiles Label')
       .shouldBeValid()
       .getDescribingElement()
       .should('not.contain', 'This field is required')
@@ -23,10 +23,10 @@ describe('bal-checkbox-buttons', () => {
     cy.getByRole('button', { name: 'Update Checkbox Buttons' }).click()
 
     cy.getByRole('button', { name: 'Disable Checkbox Buttons' }).click()
-    cy.getByLabelText('Checkbox Buttons Label').should('be.disabled')
+    cy.getByLabelText('Checkbox Tiles Label').should('be.disabled')
 
     cy.getByRole('button', { name: 'Enable Checkbox Buttons' }).click()
-    cy.getByLabelText('Checkbox Buttons Label').should('not.be.disabled')
+    cy.getByLabelText('Checkbox Tiles Label').should('not.be.disabled')
 
     cy.getByTestId('result').contains('"Apple"')
   })

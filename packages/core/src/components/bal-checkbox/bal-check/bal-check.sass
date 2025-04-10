@@ -1,5 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *
-@use '../bal-radio-checkbox.vars' as *
+@use './bal-check.vars' as *
 
 .bal-check
   display: inline-flex
@@ -7,59 +7,81 @@
   align-items: center
   cursor: pointer
   user-select: none
-  width: 1.5rem
-  height: 1.5rem
+  width: var(--bal-check-size)
+  max-width: var(--bal-check-size)
+  height: var(--bal-check-size)
+  max-height: var(--bal-check-size)
   border-radius: var(--bal-radius-normal)
+  overflow: hidden
   //
   // default color
-  border: 2px solid var(--bal-color-primary)
-  background-color: transparent
-  +hover
-    &:hover
-      background: var(--bal-color-grey-2)
-      border-color: var(--bal-color-border-primary-hovered)
+  border: var( --bal-check-border-width) solid var(--bal-check-border-color)
+  background-color: var(--bal-check-background)
+  &--hovered,
+  &:hover
+    +hover
+      background: var(--bal-check-background-hovered)
+      border-color: var(--bal-check-border-color-hovered)
+  &--pressed,
   &:active
-    background: var(--bal-color-grey-1)
-    border-color: var(--bal-color-border-primary-pressed)
+    background: var(--bal-check-background-pressed)
+    border-color: var(--bal-check-border-color-pressed)
   //
   // checked
+  bal-icon
+    opacity: 0
   &--checked
-    background-color: var(--bal-color-primary)
+    background-color: var(--bal-check-background-checked)
+    border-color: var(--bal-check-border-color-checked)
+    bal-icon
+      opacity: 1
+  &--checked#{&}--hovered,
+  &--checked:hover
     +hover
-      &:hover
-        background: var(--bal-color-border-primary-hovered)
-        border-color: var(--bal-color-border-primary-hovered)
-    &:active
-      background: var(--bal-color-border-primary-pressed)
-      border-color: var(--bal-color-border-primary-pressed)
+      background: var(--bal-check-background-checked-hovered)
+      border-color: var(--bal-check-border-color-checked-hovered)
+  &--checked#{&}--pressed,
+  &--checked:active
+    background: var(--bal-check-background-checked-pressed)
+    border-color: var(--bal-check-border-color-checked-pressed)
+  &--checked#{&}--inverted
+    border-color: var(--bal-check-color-inverted)
   //
   // invalid
   &--invalid
-    border-color: var(--bal-color-border-danger)
-    background-color: var(--bal-color-danger-1)
+    border-color: var(--bal-check-border-color-invalid)
+    background-color: var(--bal-check-background-invalid)
+  &--invalid#{&}--hovered,
+  &--invalid:hover
     +hover
-      &:hover
-        background-color: var(--bal-color-danger-1)
-        border-color: var(--bal-color-border-danger-hovered)
-    &:active
-      background-color: var(--bal-color-danger-1)
-      border-color: var(--bal-color-border-danger-pressed)
+      background-color: var(--bal-check-background-invalid-hovered)
+      border-color: var(--bal-check-border-color-invalid-hovered)
+  &--invalid#{&}--pressed,
+  &--invalid:active
+    background-color: var(--bal-check-background-invalid-pressed)
+    border-color: var(--bal-check-border-color-invalid-pressed)
   &--invalid#{&}--checked
-    border-color: var(--bal-color-border-danger)
-    background: var(--bal-color-border-danger)
+    border-color: var(--bal-check-border-color-invalid)
+    background: var(--bal-check-background-invalid-checked)
+  &--invalid#{&}--checked#{&}--hovered,
+  &--invalid#{&}--checked:hover
     +hover
-      &:hover
-        background-color: var(--bal-color-border-danger-hovered)
-        border-color: var(--bal-color-border-danger-hovered)
-    &:active
-      background-color: var(--bal-color-border-danger-pressed)
-      border-color: var(--bal-color-border-danger-pressed)
+      background-color: var(--bal-check-background-invalid-checked-hovered)
+      border-color: var(--bal-check-border-color-invalid-hovered)
+  &--invalid#{&}--checked#{&}--pressed,
+  &--invalid#{&}--checked:active
+    background-color: var(--bal-check-background-invalid-checked-pressed)
+    border-color: var(--bal-check-border-color-invalid-pressed)
+  &--invalid#{&}--checked#{&}--inverted
+    border-color: var(--bal-check-color-inverted)
   //
   // disabled
   &--disabled
     cursor: default !important
-    background: var(--bal-color-grey-2) !important
-    border-color: var(--bal-color-border-grey-dark) !important
+    background: var(--bal-check-background-disabled) !important
+    border-color: var(--bal-check-border-color-disabled) !important
   &--disabled#{&}--checked
-    background-color: var(--bal-color-border-grey-dark) !important
-    border-color: var(--bal-color-border-grey-dark) !important
+    background-color: var(--bal-check-background-checked-disabled) !important
+    border-color: var(--bal-check-border-color-checked-disabled) !important
+  &--disabled#{&}--checked#{&}--inverted
+    border-color: var(--bal-check-color-inverted) !important

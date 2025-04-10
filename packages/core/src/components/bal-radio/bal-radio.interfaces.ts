@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalRadioGroupInterface = 'radio' | 'select-button'
+  export type BalRadioGroupInterface = 'radio' | 'button'
   export type BalRadioGroupColumns = 1 | 2 | 3 | 4
   export type BalRadioButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
   export type BalRadioInterface = BalRadioGroupInterface

@@ -27,6 +27,21 @@ export class Check implements ComponentInterface {
   @Prop() disabled?: boolean = undefined
 
   /**
+   * If `true`, the checkbox is inverted and works on dark backgrounds.
+   */
+  @Prop() inverted?: boolean = undefined
+
+  /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -36,6 +51,7 @@ export class Check implements ComponentInterface {
     const checked = !!this.checked
     const disabled = !!this.disabled
     const invalid = !!this.invalid
+    const inverted = !!this.inverted
 
     return (
       <Host
@@ -44,9 +60,21 @@ export class Check implements ComponentInterface {
           ...block.modifier('checked').class(checked),
           ...block.modifier('disabled').class(disabled),
           ...block.modifier('invalid').class(invalid),
+          ...block.modifier('inverted').class(inverted),
+          ...block.modifier('hovered').class(this.hovered),
+          ...block.modifier('pressed').class(this.pressed),
         }}
       >
-        {checked ? <bal-icon name="check" color="white" size="small" aria-hidden="true"></bal-icon> : ''}
+        <bal-icon
+          name="check"
+          color="white"
+          colorHovered="white"
+          colorPressed="white"
+          size="small"
+          aria-hidden="true"
+          hovered={this.hovered}
+          pressed={this.pressed}
+        ></bal-icon>
       </Host>
     )
   }

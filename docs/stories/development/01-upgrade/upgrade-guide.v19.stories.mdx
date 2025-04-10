@@ -1,0 +1,94 @@
+import { Markdown, Meta } from '@storybook/addon-docs'
+import {
+  AngularFramework,
+  Banner,
+  Code,
+  CodeSandbox,
+  CssTypographyColors,
+  DiffSource,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
+  LinkCard,
+  LinkCards,
+  NotAngularFramework,
+  PackageTable,
+  ReactFramework,
+  WarningQuote,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v19" />
+
+<Banner label="Updating to v19" section="Development/Upgrade Guides" />
+
+## Overview
+
+Here is an overview of the breaking changes of the newly introduced version 18:
+
+- **Checkbox & Radio Adjustments due to A11y:**
+  - Remove component bal-checkbox-button, bal-radio-button
+  - Change naming of interface variables
+
+## Checkbox & Radio Adjustments
+
+Refactored the checkbox and radio components to improve accessibility (A11y) and align with the upcoming EU Accessibility Act.
+
+### Why the Change?
+
+The breaking changes to the checkbox and radio components were introduced to improve accessibility (A11y), ensuring better HTML structure
+and enhanced screen reader support. These updates align with the upcoming EU Accessibility Act, which mandates higher accessibility
+standards for digital products. By making these adjustments, we aim to provide a more inclusive experience for all users
+while adhering to legal requirements and modern accessibility best practices.
+
+### How to Upgrade
+
+The `<bal-checkbox-button>` and `<bal-radio-button>` component has been removed and
+replaced with the `<bal-checkbox>` or `<bal-radio>` component. Radio can be migrated like the checkbox.
+
+<DiffSource
+  code={`- <bal-checkbox-group>
++ <bal-checkbox-group interface="tile">
+-   <bal-checkbox-button>
++   <bal-checkbox name="checkbox-example" value="1">
+      <bal-stack>
+        <bal-content>
+          <bal-label>Only with label</bal-label>
+        </bal-content>
+-        <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
++        <bal-check></bal-check> <!-- OR <bal-switch></bal-switch> -->
+        <bal-label>Only with label</bal-label>
+      </bal-stack>
+-   </bal-checkbox-button>
++   </bal-checkbox>
+  </bal-checkbox-group>`}
+/>
+
+The interface has been changed from `select-button` to `button`.
+
+<DiffSource
+  code={`- <bal-checkbox-group interface="select-button">
++ <bal-checkbox-group interface="button">
+    <bal-checkbox checked="true">
+        Label
+    </bal-checkbox>
+    <bal-checkbox>
+        Label
+    </bal-checkbox>
+  </bal-checkbox-group>`}
+/>
+
+Or directly use the `<bal-checkbox>` component.
+
+<DiffSource
+  code={`- <bal-checkbox interface="select-button">
++ <bal-checkbox interface="button">
+    Label
+  </bal-checkbox>`}
+/>
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

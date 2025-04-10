@@ -1,6 +1,6 @@
 import { Components } from '../support/utils'
 
-describe('bal-checkbox-button', () => {
+describe('bal-checkbox tile', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
@@ -14,22 +14,22 @@ describe('bal-checkbox-button', () => {
 
     cy.mount<Components.BalCheckboxGroup, HTMLBalCheckboxGroupElementEventMap>(
       `
-    <bal-checkbox-group>
-      <bal-checkbox-button>
+    <bal-checkbox-group interface="tile">
+      <bal-checkbox name="checkbox-test" value="1" label="Checkbox 1">
         <bal-stack>
-          <bal-checkbox name="checkbox-test" value="1" label="Checkbox 1"></bal-checkbox>
+          <bal-check></bal-check>
         </bal-stack>
-      </bal-checkbox-button>
-      <bal-checkbox-button>
+      </bal-checkbox>
+      <bal-checkbox name="checkbox-test" value="2" label="Checkbox 2">
         <bal-stack>
-          <bal-checkbox name="checkbox-test" value="2" label="Checkbox 2"></bal-checkbox>
+          <bal-check></bal-check>
         </bal-stack>
-      </bal-checkbox-button>
-      <bal-checkbox-button>
+      </bal-checkbox>
+      <bal-checkbox name="checkbox-test" value="3" label="Checkbox 3">
         <bal-stack>
-          <bal-checkbox name="checkbox-test" value="3" label="Checkbox 3"></bal-checkbox>
+          <bal-check></bal-check>
         </bal-stack>
-      </bal-checkbox-button>
+      </bal-checkbox>
     </bal-checkbox-group>`,
       {
         props: {
@@ -47,11 +47,11 @@ describe('bal-checkbox-button', () => {
   })
 
   it('should select first one and send change event', () => {
-    cy.get('bal-checkbox-button').eq(0).find('input').check({ force: true }).blur()
+    cy.get('bal-checkbox').eq(0).find('input').check({ force: true }).blur()
 
-    cy.get('bal-checkbox-button').eq(0).find('input').should('be.checked')
-    cy.get('bal-checkbox-button').eq(1).find('input').should('not.be.checked')
-    cy.get('bal-checkbox-button').eq(2).find('input').should('be.checked')
+    cy.get('bal-checkbox').eq(0).find('input').should('be.checked')
+    cy.get('bal-checkbox').eq(1).find('input').should('not.be.checked')
+    cy.get('bal-checkbox').eq(2).find('input').should('be.checked')
 
     cy.get('@click').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
@@ -60,9 +60,9 @@ describe('bal-checkbox-button', () => {
   })
 
   it('should change prop value of the group and not sent change event', () => {
-    cy.get('bal-checkbox-button').eq(2).find('input').should('be.checked')
-    cy.get('bal-checkbox-button').eq(0).find('input').should('not.be.checked')
-    cy.get('bal-checkbox-button').eq(1).find('input').should('not.be.checked')
+    cy.get('bal-checkbox').eq(2).find('input').should('be.checked')
+    cy.get('bal-checkbox').eq(0).find('input').should('not.be.checked')
+    cy.get('bal-checkbox').eq(1).find('input').should('not.be.checked')
 
     cy.get('@click').should('not.have.been.called')
     cy.get('@balFocus').should('not.have.been.called')
@@ -71,9 +71,9 @@ describe('bal-checkbox-button', () => {
   })
 
   it('should not be able to select the disabled option', () => {
-    cy.get('bal-checkbox-button').eq(2).invoke('attr', 'disabled', true)
+    cy.get('bal-checkbox').eq(2).invoke('attr', 'disabled', true)
 
-    cy.get('bal-checkbox-button').eq(2).click({ force: true }).find('input').blur({ force: true })
+    cy.get('bal-checkbox').eq(2).click({ force: true }).find('input').blur({ force: true })
 
     cy.get('@click').should('not.have.been.called')
     cy.get('@balFocus').should('not.have.been.called')

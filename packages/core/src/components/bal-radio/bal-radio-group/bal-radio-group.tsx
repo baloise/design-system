@@ -486,7 +486,7 @@ export class RadioGroup
             ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
             ...innerEl.modifier('vertical').class(this.vertical),
             ...innerEl.modifier('expanded').class(this.expanded),
-            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...innerEl.modifier('button').class(this.interface === 'button'),
           }}
         >
           <slot></slot>

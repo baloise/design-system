@@ -23,15 +23,15 @@ describe('bal-radio', () => {
   it('should be able to reset the form', () => {
     // First we change the initial value
     cy.getByTestId('reset-radio').find('bal-radio').first().check()
-    cy.getByTestId('reset-radio-select-buttons').find('bal-radio').first().check()
+    cy.getByTestId('reset-radio-buttons').find('bal-radio').first().check()
 
     // Values are changed form the initial one
     cy.getByTestId('reset-radio').find('bal-radio').first().should('be.checked')
-    cy.getByTestId('reset-radio-select-buttons').find('bal-radio').first().should('be.checked')
+    cy.getByTestId('reset-radio-buttons').find('bal-radio').first().should('be.checked')
 
     // Reset form and check if initial value is restored
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset-radio').should('have.value', 'female')
-    cy.getByTestId('reset-radio-select-buttons').should('have.value', 'no')
+    cy.getByTestId('reset-radio-buttons').should('have.value', 'no')
   })
 })

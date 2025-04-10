@@ -11,9 +11,9 @@ describe('bal-radio', () => {
       })
 
       it('select button', () => {
-        cy.getByTestId('select-button-basic').testA11y()
-        cy.getByTestId('select-button-invalid').testA11y()
-        cy.getByTestId('select-button-disabled').testA11y()
+        cy.getByTestId('button-basic').testA11y()
+        cy.getByTestId('button-invalid').testA11y()
+        cy.getByTestId('button-disabled').testA11y()
       })
     })
   })

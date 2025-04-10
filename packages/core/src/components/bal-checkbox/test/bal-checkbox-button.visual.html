@@ -17,21 +17,21 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-checkbox-group>
-            <bal-checkbox-button>
+          <bal-checkbox-group interface="tile">
+            <bal-checkbox name="checkbox-example" value="1" checked>
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
                   <bal-label>Only with label</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="1" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button>
+            <bal-checkbox name="checkbox-example" value="2">
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
-                <bal-checkbox interface="switch" label-hidden name="checkbox-example" value="2"></bal-checkbox>
+                <bal-switch></bal-switch>
                 <bal-content>
                   <bal-label>With label and text</bal-label>
                   <bal-text size="small"
@@ -41,12 +41,11 @@
                   >
                 </bal-content>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button>
+            <bal-checkbox name="checkbox-example" value="3">
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
-                <bal-checkbox invisible name="checkbox-example" value="3"></bal-checkbox>
                 <bal-content>
                   <bal-label>With a invisible checkbox</bal-label>
                   <bal-text size="small"
@@ -56,9 +55,9 @@
                   >
                 </bal-content>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button invalid>
+            <bal-checkbox invalid name="checkbox-example" value="4">
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
@@ -69,11 +68,11 @@
                     officiis enim, exercitationem ex.</bal-text
                   >
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="4"></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button disabled>
+            <bal-checkbox disabled name="checkbox-example" value="5">
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
@@ -84,39 +83,25 @@
                     officiis enim, exercitationem ex.</bal-text
                   >
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="5"></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
           </bal-checkbox-group>
         </section>
         <hr />
         <section data-testid="grid">
-          <bal-checkbox-group columns-mobile="2" columns-tablet="3" columns="4">
-            <bal-checkbox-button>
+          <bal-checkbox-group interface="tile" columns-mobile="2" columns-tablet="3" columns="4">
+            <bal-checkbox name="checkbox-example" value="1" checked>
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
                 <bal-content align="center">
                   <bal-label size="large">Headline 4 Bold</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="1" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button>
-              <bal-stack layout="vertical" align="center">
-                <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
-                  <bal-label size="large">Headline 4 Bold</bal-label>
-                  <bal-text size="small"
-                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
-                    officiis qui tempore.</bal-text
-                  >
-                </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="2"></bal-checkbox>
-              </bal-stack>
-            </bal-checkbox-button>
-
-            <bal-checkbox-button>
+            <bal-checkbox name="checkbox-example" value="2">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
                 <bal-content align="center">
@@ -126,11 +111,25 @@
                     officiis qui tempore.</bal-text
                   >
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="5"></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button invalid>
+            <bal-checkbox name="checkbox-example" value="5">
+              <bal-stack layout="vertical" align="center">
+                <bal-icon size="x-large" color="auto"></bal-icon>
+                <bal-content align="center">
+                  <bal-label size="large">Headline 4 Bold</bal-label>
+                  <bal-text size="small"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
+                    officiis qui tempore.</bal-text
+                  >
+                </bal-content>
+                <bal-check></bal-check>
+              </bal-stack>
+            </bal-checkbox>
+
+            <bal-checkbox invalid name="checkbox-example" value="3">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
                 <bal-content align="center">
@@ -141,11 +140,11 @@
                     officiis enim, exercitationem ex.</bal-text
                   >
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="3"></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button disabled>
+            <bal-checkbox disabled name="checkbox-example" value="4">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
                 <bal-content align="center">
@@ -156,53 +155,53 @@
                     officiis enim, exercitationem ex.</bal-text
                   >
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="4"></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
           </bal-checkbox-group>
         </section>
         <hr />
         <section data-testid="colors">
-          <bal-checkbox-group>
-            <bal-checkbox-button color="green">
+          <bal-checkbox-group interface="tile">
+            <bal-checkbox color="green" name="checkbox-example" value="1" checked>
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
                   <bal-label>green</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="1" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button color="purple">
+            <bal-checkbox color="purple" name="checkbox-example" value="2" checked>
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
                   <bal-label>purple</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="2" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button color="red">
+            <bal-checkbox color="red" name="checkbox-example" value="3" checked>
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
                   <bal-label>red</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="3" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
 
-            <bal-checkbox-button color="yellow">
+            <bal-checkbox color="yellow" name="checkbox-example" value="4" checked>
               <bal-stack>
                 <bal-icon size="large" color="auto"></bal-icon>
                 <bal-content>
                   <bal-label>yellow</bal-label>
                 </bal-content>
-                <bal-checkbox label-hidden name="checkbox-example" value="4" checked></bal-checkbox>
+                <bal-check></bal-check>
               </bal-stack>
-            </bal-checkbox-button>
+            </bal-checkbox>
           </bal-checkbox-group>
         </section>
 

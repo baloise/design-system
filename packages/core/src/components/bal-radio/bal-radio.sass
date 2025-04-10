@@ -24,7 +24,7 @@ bal-radio .bal-radio__label
     gap: var(--bal-space-normal)
     //
     // transform the radios into buttons
-    +modifier(select-button)
+    +modifier(button)
       flex-direction: column
       flex-wrap: wrap
       flex: 1
@@ -37,7 +37,7 @@ bal-radio .bal-radio__label
         flex: 1
         +mobile
           width: 100%
-    &--select-button#{&}--vertical
+    &--button#{&}--vertical
       gap: var(--bal-space-x-small)
     //
     // shows the radios verically
@@ -65,7 +65,7 @@ bal-radio .bal-radio__label
   //
   // flat heigt without padding
   +modifier(flat)
-    &:not(.bal-radio--select-button)
+    &:not(.bal-radio--button)
       min-height: 1.5rem
   //
   // hide native input
@@ -87,9 +87,9 @@ bal-radio .bal-radio__label
       cursor: pointer
 
   &.bal-focused
-    &.bal-radio--select-button
+    &.bal-radio--button
       @extend %focus-shadow
-    .bal-radio__input:not(.bal-radio__input--select-button) + .bal-radio__label::before
+    .bal-radio__input:not(.bal-radio__input--button) + .bal-radio__label::before
       @extend %focus-shadow
 
   //
@@ -120,7 +120,7 @@ bal-radio .bal-radio__label
         padding-top: 0
         padding-bottom: 0
     +modifier(flat)
-      &:not(.bal-radio--select-button)
+      &:not(.bal-radio--button)
         &::before,
         &::after
           top: 0px !important
@@ -208,7 +208,7 @@ bal-radio .bal-radio__label
   //
   //
   // select button styles
-  &--select-button
+  &--button
     padding-left: 0.75rem
     padding-right: 0.75rem
     min-width: 3rem
@@ -216,13 +216,13 @@ bal-radio .bal-radio__label
     border-style: var(--bal-form-field-control-border-style)
     border-radius: var(--bal-form-field-control-radius)
     // color styles
-    border-color: var(--bal-radio-select-button-border-color)
+    border-color: var(--bal-radio-button-border-color)
     &:hover
-      border-color: var(--bal-radio-select-button-border-color-hover)
-      background: var(--bal-radio-select-button-background-hover)
+      border-color: var(--bal-radio-button-border-color-hover)
+      background: var(--bal-radio-button-background-hover)
     &:active
-      border-color: var(--bal-radio-select-button-border-color-active)
-      background: var(--bal-radio-select-button-background-active)
+      border-color: var(--bal-radio-button-border-color-active)
+      background: var(--bal-radio-button-background-active)
     label
       &::before
         top: unset
@@ -238,16 +238,16 @@ bal-radio .bal-radio__label
       .bal-radio__label__text--flat
         padding-top: 0.25rem
         padding-bottom: 0.25rem
-  &--select-button#{&}--checked
-    background: var(--bal-radio-select-button-background-checked)
+  &--button#{&}--checked
+    background: var(--bal-radio-button-background-checked)
     .bal-radio__label
       .bal-radio__label__text
         .is-link
-          color: var(--bal-radio-select-button-link-text-color-checked)
+          color: var(--bal-radio-button-link-text-color-checked)
     &:hover
-      background: var(--bal-radio-select-button-background-checked-hover)
+      background: var(--bal-radio-button-background-checked-hover)
     &:active
-      background: var(--bal-radio-select-button-background-checked-active)
+      background: var(--bal-radio-button-background-checked-active)
     +radioSymbol(--bal-color-primary, --bal-color-white, --bal-color-white, --bal-color-transparent)
     +radioLabel(--bal-color-white)
     &:hover
@@ -256,45 +256,45 @@ bal-radio .bal-radio__label
     &:active
       +radioSymbol(--bal-color-blue-6, --bal-color-white, --bal-color-white, --bal-color-transparent)
       +radioLabel(--bal-color-white)
-  &--select-button#{&}--invalid
-    border-color: var(--bal-radio-select-button-border-color-invalid)
-    background: var(--bal-radio-select-button-background-invalid)
+  &--button#{&}--invalid
+    border-color: var(--bal-radio-button-border-color-invalid)
+    background: var(--bal-radio-button-background-invalid)
     .bal-radio__label
       .bal-radio__label__text
         .is-link
           color: var(--bal-form-field-label-danger-color)
     &:hover
-      border-color: var(--bal-radio-select-button-border-color-invalid-hover)
-      background: var(--bal-radio-select-button-background-invalid-hover)
+      border-color: var(--bal-radio-button-border-color-invalid-hover)
+      background: var(--bal-radio-button-background-invalid-hover)
     &:active
-      border-color: var(--bal-radio-select-button-border-color-invalid-active)
-      background: var(--bal-radio-select-button-background-invalid-active)
-  &--select-button#{&}--invalid#{&}--checked
-    border-color: var(--bal-radio-select-button-border-color-invalid-checked)
-    background: var(--bal-radio-select-button-background-invalid-checked)
+      border-color: var(--bal-radio-button-border-color-invalid-active)
+      background: var(--bal-radio-button-background-invalid-active)
+  &--button#{&}--invalid#{&}--checked
+    border-color: var(--bal-radio-button-border-color-invalid-checked)
+    background: var(--bal-radio-button-background-invalid-checked)
     &:hover
-      border-color: var(--bal-radio-select-button-border-color-invalid-checked-hover)
-      background: var(--bal-radio-select-button-background-invalid-checked-hover)
+      border-color: var(--bal-radio-button-border-color-invalid-checked-hover)
+      background: var(--bal-radio-button-background-invalid-checked-hover)
     &:active
-      border-color: var(--bal-radio-select-button-border-color-invalid-checked-active)
-      background: var(--bal-radio-select-button-background-invalid-checked-active)
+      border-color: var(--bal-radio-button-border-color-invalid-checked-active)
+      background: var(--bal-radio-button-background-invalid-checked-active)
     +radioSymbol(--bal-color-border-danger, --bal-color-white, --bal-color-white, --bal-color-transparent)
     &:hover
       +radioSymbol(--bal-color-danger-5, --bal-color-white, --bal-color-white, --bal-color-transparent)
     &:active
       +radioSymbol(--bal-color-danger-6, --bal-color-white, --bal-color-white, --bal-color-transparent)
-  &--select-button#{&}--disabled,
-  &--select-button#{&}--disabled:hover,
-  &--select-button#{&}--disabled:active
-    border-color: var(--bal-radio-select-button-border-color-disabled-hover-active)
-    background: var(--bal-radio-select-button-background-disabled-hover-active)
+  &--button#{&}--disabled,
+  &--button#{&}--disabled:hover,
+  &--button#{&}--disabled:active
+    border-color: var(--bal-radio-button-border-color-disabled-hover-active)
+    background: var(--bal-radio-button-background-disabled-hover-active)
     .bal-radio__label
       .bal-radio__label__text
         .is-link
           color: var(--bal-form-field-label-disabled-color)
-  &--select-button#{&}--disabled#{&}--checked,
-  &--select-button#{&}--disabled#{&}--checked:hover,
-  &--select-button#{&}--disabled#{&}--checked:active
-    border-color: var(--bal-radio-select-button-border-color-disabled-checked-hover-active)
-    background: var(--bal-radio-select-button-background-disabled-checked-hover-active)
+  &--button#{&}--disabled#{&}--checked,
+  &--button#{&}--disabled#{&}--checked:hover,
+  &--button#{&}--disabled#{&}--checked:active
+    border-color: var(--bal-radio-button-border-color-disabled-checked-hover-active)
+    background: var(--bal-radio-button-background-disabled-checked-hover-active)
     +radioSymbol(--bal-color-border-grey-dark, --bal-color-white, --bal-color-white, --bal-color-transparent)
