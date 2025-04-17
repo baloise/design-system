@@ -163,7 +163,12 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           name="info-circle"
           tabindex={0}
           onClick={() => this.toggle()}
-          onKeyDown={event => (isEnterKey(event) || isSpaceKey(event)) && this.toggle()}
+          onKeyDown={event => {
+            if (isEnterKey(event) || isSpaceKey(event)) {
+              event.preventDefault()
+              this.toggle()
+            }
+          }}
         ></bal-icon>
       )
     }
