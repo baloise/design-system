@@ -250,30 +250,30 @@
 .bal-checkbox--tile
   display: block
   flex: 0 0 100%
-  background: var(--bal-checkbox-button-background)
-  border-style: var(--bal-form-field-control-border-style)
-  border-radius: var(--bal-form-field-control-radius)
-  border-width: var(--bal-form-field-control-border-width)
-  border-color: var(--bal-checkbox-button-border-color)
-  padding: var(--bal-text-size-medium)
+  background: var(--bal-checkbox-tile-background)
+  border-style: var(--bal-checkbox-tile-border-style)
+  border-radius: var(--bal-checkbox-tile-border-radius)
+  border-width: var(--bal-checkbox-tile-border-width)
+  border-color: var(--bal-checkbox-tile-border-color)
+  padding: var(--bal-checkbox-tile-padding)
 
   .bal-checkbox__label
     height: 100%
     align-items: stretch
 
 .bal-checkbox--tile.bal-checkbox--checked
-  border-color: var(--bal-checkbox-button-border-color-checked)
+  border-color: var(--bal-checkbox-tile-border-color-checked)
 
 //
 // invalid state
 .bal-checkbox--tile.bal-checkbox--invalid
-  border-color: var(--bal-checkbox-button-border-color-invalid)
+  border-color: var(--bal-checkbox-tile-border-color-invalid)
 
 //
 // disabled state
 .bal-checkbox--tile.bal-checkbox--disabled
-  background: var(--bal-checkbox-button-background-disabled)
-  border-color: var(--bal-checkbox-button-border-color-disabled)
+  background: var(--bal-checkbox-tile-background-disabled)
+  border-color: var(--bal-checkbox-tile-border-color-disabled)
   cursor: default
 
 //
@@ -281,46 +281,47 @@
 .bal-checkbox--tile:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--hovered,
 .bal-checkbox--tile:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover
   +hover
-    background: var(--bal-checkbox-button-background-hover)
-    border-color: var(--bal-checkbox-button-border-color-hover)
+    background: var(--bal-checkbox-tile-background-hover)
+    border-color: var(--bal-checkbox-tile-border-color-hover)
 
 .bal-checkbox--tile:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
 .bal-checkbox--tile:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):active
-  background: var(--bal-checkbox-button-background-active)
-  border-color: var(--bal-checkbox-button-border-color-active)
+  background: var(--bal-checkbox-tile-background-hover)
+  border-color: var(--bal-checkbox-tile-border-color-active)
 
 .bal-checkbox--tile.bal-checkbox--invalid:not(.bal-checkbox--disabled).bal-checkbox--hovered,
 .bal-checkbox--tile.bal-checkbox--invalid:not(.bal-checkbox--disabled):hover
   +hover
-    background: var(--bal-checkbox-button-background-invalid-hover)
-    border-color: var(--bal-checkbox-button-border-color-invalid-hover)
+    background: var(--bal-checkbox-tile-background-invalid-hover)
+    border-color: var(--bal-checkbox-tile-border-color-invalid-hover)
 
 .bal-checkbox--tile.bal-checkbox--invalid:not(.bal-checkbox--disabled).bal-checkbox--pressed,
 .bal-checkbox--tile.bal-checkbox--invalid:not(.bal-checkbox--disabled):active
-  background: var(--bal-checkbox-button-background-invalid-active)
-  border-color: var(--bal-checkbox-button-border-color-invalid-active)
+  background: var(--bal-checkbox-tile-background-invalid-active)
+  border-color: var(--bal-checkbox-tile-border-color-invalid-active)
 
 //
 // Checked colors
 .bal-checkbox--tile-color-green:not(.bal-checkbox--disabled).bal-checkbox--checked,
 .bal-checkbox--tile-color-green:not(.bal-checkbox--disabled).bal-checkbox--checked.bal-checkbox--hovered,
 .bal-checkbox--tile-color-green:not(.bal-checkbox--disabled).bal-checkbox--checked:hover
-  background: var(--bal-checkbox-button-background-checked-green)
+  background: var(--bal-checkbox-tile-background-checked-green)
 .bal-checkbox--tile-color-red:not(.bal-checkbox--disabled).bal-checkbox--checked,
 .bal-checkbox--tile-color-red:not(.bal-checkbox--disabled).bal-checkbox--checked.bal-checkbox--hovered,
 .bal-checkbox--tile-color-red:not(.bal-checkbox--disabled).bal-checkbox--checked:hover
-  background: var(--bal-checkbox-button-background-checked-red)
+  background: var(--bal-checkbox-tile-background-checked-red)
 .bal-checkbox--tile-color-purple:not(.bal-checkbox--disabled).bal-checkbox--checked,
 .bal-checkbox--tile-color-purple:not(.bal-checkbox--disabled).bal-checkbox--checked.bal-checkbox--hovered,
 .bal-checkbox--tile-color-purple:not(.bal-checkbox--disabled).bal-checkbox--checked:hover
-  background: var(--bal-checkbox-button-background-checked-purple)
+  background: var(--bal-checkbox-tile-background-checked-purple)
 .bal-checkbox--tile-color-yellow:not(.bal-checkbox--disabled).bal-checkbox--checked,
 .bal-checkbox--tile-color-yellow:not(.bal-checkbox--disabled).bal-checkbox--checked.bal-checkbox--hovered,
 .bal-checkbox--tile-color-yellow:not(.bal-checkbox--disabled).bal-checkbox--checked:hover
-  background: var(--bal-checkbox-button-background-checked-yellow)
+  background: var(--bal-checkbox-tile-background-checked-yellow)
 
 //
 // Grid styles
+// -------------------------------------------------
 .bal-checkbox
   +tablet
     &--column-2
