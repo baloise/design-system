@@ -16,14 +16,100 @@
   // default color
   background: var(--bal-checkbox-switch-label-background-before)
 
-.bal-switch--disabled
-  background: var(--bal-checkbox-switch-label-background-disabled-before)
+  &--pressed,
+  &--pressed:active
+    background: var(--bal-checkbox-switch-label-background-before)
 
-.bal-switch--checked
-  background: var(--bal-checkbox-switch-label-background-checked-before)
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-pressed-after)
 
-.bal-switch--invalid
-  background: var(--bal-checkbox-switch-label-background-invalid-before)
+  &--hovered,
+  &:hover
+    +hover
+      background: var(--bal-checkbox-switch-label-background-before)
+      .bal-switch__toggle
+        background: var(--bal-checkbox-switch-label-background-hover-after)
+  //
+  // checked
+  &--checked
+    background: var(--bal-checkbox-switch-label-background-checked-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-checked-after),
+
+  &--checked#{&}--hovered,
+  &--checked:hover
+    +hover
+      background: var(--bal-checkbox-switch-label-background-checked-hover-before)
+      .bal-switch__toggle
+        background: var(--bal-checkbox-switch-label-background-checked-after)
+
+  &--checked#{&}--pressed,
+  &--checked:active
+    background: var(--bal-checkbox-switch-label-background-checked-active-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-checked-after)
+  //
+  // invalid
+  &--invalid
+    background: var(--bal-checkbox-switch-label-background-invalid-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-after)
+
+  &--invalid#{&}--hovered,
+  &--invalid:hover
+    +hover
+      background: var(--bal-checkbox-switch-label-background-invalid-before)
+      .bal-switch__toggle
+        background: var(--bal-checkbox-switch-label-background-invalid-hover-after)
+
+  &--invalid#{&}--pressed,
+  &--invalid:active
+    background: var(--bal-checkbox-switch-label-background-invalid-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-pressed-after)
+
+  &--invalid#{&}--checked,
+  &--invalid:active
+    background: var(--bal-checkbox-switch-label-background-invalid-checked-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
+
+  &--invalid#{&}--checked#{&}--pressed,
+  &--invalid#{&}--checked#{&}--pressed:hover,
+  &--invalid#{&}--checked:active
+    background: var(--bal-checkbox-switch-label-background-invalid-checked-pressed-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
+
+  &--invalid#{&}--checked#{&}--hovered,
+  &--invalid#{&}--checked:hover
+    background: var(--bal-checkbox-switch-label-background-invalid-checked-hovered-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
+  //
+  // disabled
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:active
+    background: var(--bal-checkbox-switch-label-background-disabled-hover-active-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-disabled-hover-active-after)
+
+  &--disabled#{&}--checked,
+  &--disabled#{&}--checked:hover,
+  &--disabled#{&}--checked:active
+    background: var(--bal-checkbox-switch-label-background-disabled-checked-hover-active-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-disabled-checked-hover-active-after)
 
 .bal-switch__toggle
   background: var(--bal-checkbox-switch-label-background-after)
@@ -34,12 +120,6 @@
   height: 1rem
   transition: transform 0.3s ease-in-out
 
-.bal-switch__toggle--disabled
-  background: var(--bal-checkbox-switch-label-background-disabled-after)
-
-.bal-switch__toggle--invalid
-  background: var(--bal-checkbox-switch-label-background-invalid-after)
-
 .bal-switch__toggle--checked
   transform: translateX(100%)
   background: var(--bal-checkbox-switch-label-background-checked-after)
@@ -49,6 +129,7 @@
 
   .bal-switch__icon--checked
     opacity: 1
+
   .bal-switch__icon
     opacity: 0
     transition: opacity 0.3s ease-in-out

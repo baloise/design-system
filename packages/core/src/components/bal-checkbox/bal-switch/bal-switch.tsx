@@ -27,11 +27,20 @@ export class Switch implements ComponentInterface {
   @Prop() disabled?: boolean = undefined
 
   /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
 
-  // TODO-MZ add color states (invalid, selected, disabled)
   render() {
     const block = BEM.block('switch')
     const checked = !!this.checked
@@ -45,26 +54,32 @@ export class Switch implements ComponentInterface {
           ...block.modifier('checked').class(checked),
           ...block.modifier('disabled').class(disabled),
           ...block.modifier('invalid').class(invalid),
+          ...block.modifier('hovered').class(this.hovered),
+          ...block.modifier('pressed').class(this.pressed),
         }}
         onClick={() => (this.checked = !this.checked)}
       >
-        <bal-icon
-          name="check"
-          color="white"
-          size="small"
-          aria-hidden="true"
-          class={{
-            ...block.element('icon').modifier('checked').class(checked),
-          }}
-        ></bal-icon>
-        <div
-          class={{
-            ...block.element('toggle').class(),
-            ...block.element('toggle').modifier('checked').class(checked),
-            ...block.element('toggle').modifier('disabled').class(disabled),
-            ...block.element('toggle').modifier('invalid').class(invalid),
-          }}
-        ></div>
+          <bal-icon
+            name="check"
+            color="white"
+            size="small"
+            aria-hidden="true"
+            colorHovered="white"
+            colorPressed="white"
+            hovered={this.hovered}
+            pressed={this.pressed}
+            class={{
+              ...block.element('icon').modifier('checked').class(checked),
+            }}
+          ></bal-icon>
+            <div class={{
+              ...block.element('toggle').class(),
+              ...block.element('toggle').modifier('checked').class(checked),
+              ...block.element('toggle').modifier('disabled').class(disabled),
+              ...block.element('toggle').modifier('invalid').class(invalid),
+              ...block.modifier('hovered').class(this.hovered),
+              ...block.modifier('pressed').class(this.pressed),
+            }}></div>
       </Host>
     )
   }
