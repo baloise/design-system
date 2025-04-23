@@ -1,7 +1,7 @@
+import { balBrandIconCarGreen, balBrandIconCarPurple, balBrandIconCarRed } from '@baloise/ds-brand-icons/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarGreen, balBrandIconCarRed, balBrandIconCarPurple } from '@baloise/ds-brand-icons/dist'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.BalRadio & { content: string }
 
@@ -99,46 +99,46 @@ export const RadioTile = Story({
     labelHidden: true,
   },
   ...withRender(
-    ({ ...args }) => `<bal-radio-group value="1">
-    <bal-radio-button>
+    ({ ...args }) => `<bal-radio-group value="1" interface="tile">
+    <bal-radio ${props(args)} value="1">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Simple radio button</bal-label>
             </bal-content>
-            <bal-radio ${props(args)} value="1"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button>
+    </bal-radio>
+    <bal-radio ${props(args)} value="2">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Radio button with a description</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="2"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button invalid="true">
+    </bal-radio>
+    <bal-radio ${props(args)} value="3" invalid="true">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarRed}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Invalid button</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="3"></bal-radio>
+           <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button disabled="true">
+    </bal-radio>
+    <bal-radio ${props(args)} value="4" disabled="true">
         <bal-stack>
             <bal-icon svg='${balBrandIconCarPurple}' size="large" color="auto"></bal-icon>
             <bal-content>
                 <bal-label>Disabled button</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="4"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
+    </bal-radio>
 </bal-radio-group>`,
   ),
 })
@@ -149,56 +149,56 @@ export const RadioTileGrid = Story({
     labelHidden: true,
   },
   ...withRender(
-    ({ ...args }) => `<bal-radio-group value="1" columns="3" columns-tablet="2">
-    <bal-radio-button>
+    ({ ...args }) => `<bal-radio-group value="1" columns="3" columns-tablet="2" interface="tile">
+    <bal-radio ${props(args)} value="1">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Radio Button 1</bal-label>
             </bal-content>
-            <bal-radio ${props(args)} value="1"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button>
+    </bal-radio>
+    <bal-radio ${props(args)} value="2">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Radio Button 2</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="2"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button>
+    </bal-radio>
+    <bal-radio ${props(args)} value="3">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Radio Button 3</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="3"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button>
+    </bal-radio>
+    <bal-radio ${props(args)} value="4">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Radio Button 4</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="4"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
-    <bal-radio-button>
+    </bal-radio>
+    <bal-radio ${props(args)} value="5">
         <bal-stack layout="vertical" align="center">
             <bal-icon svg='${balBrandIconCarGreen}' size="large" color="auto"></bal-icon>
             <bal-content align="center">
                 <bal-label size="large">Radio Button 5</bal-label>
                 <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
             </bal-content>
-            <bal-radio ${props(args)} value="5"></bal-radio>
+            <bal-radio-icon></bal-radio-icon>
         </bal-stack>
-    </bal-radio-button>
+    </bal-radio>
 </bal-radio-group>`,
   ),
 })

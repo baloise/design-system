@@ -4,9 +4,9 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalRadioGroupInterface = 'radio' | 'button'
+  export type BalRadioGroupInterface = 'radio' | 'button' | 'tile'
   export type BalRadioGroupColumns = 1 | 2 | 3 | 4
-  export type BalRadioButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
+  export type BalRadioTileColor = '' | 'purple' | 'green' | 'yellow' | 'red'
   export type BalRadioInterface = BalRadioGroupInterface
 }
 
@@ -38,18 +38,4 @@ namespace BalEvents {
 
   export type BalRadioGroupFocusDetail = FocusEvent
   export type BalRadioGroupFocus = BalRadioGroupCustomEvent<BalRadioGroupFocusDetail>
-
-  export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T
-    target: HTMLBalRadioButtonElement
-  }
-
-  export type BalRadioButtonBlurDetail = FocusEvent
-  export type BalRadioButtonBlur = BalRadioButtonCustomEvent<BalRadioButtonBlurDetail>
-
-  export type BalRadioButtonFocusDetail = FocusEvent
-  export type BalRadioButtonFocus = BalRadioButtonCustomEvent<BalRadioButtonFocusDetail>
-
-  export type BalRadioButtonAriaLabelledByDetail = HTMLElement
-  export type BalRadioButtonAriaLabelledBy = BalRadioButtonCustomEvent<BalRadioButtonAriaLabelledByDetail>
 }

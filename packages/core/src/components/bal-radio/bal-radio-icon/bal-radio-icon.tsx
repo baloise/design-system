@@ -2,10 +2,10 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-switch',
-  styleUrl: './bal-switch.sass',
+  tag: 'bal-radio-icon',
+  styleUrl: './bal-radio-icon.sass',
 })
-export class Switch implements ComponentInterface {
+export class RadioIcon implements ComponentInterface {
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
@@ -27,16 +27,31 @@ export class Switch implements ComponentInterface {
   @Prop() disabled?: boolean = undefined
 
   /**
+   * If `true`, the checkbox is inverted and works on dark backgrounds.
+   */
+  @Prop() inverted?: boolean = undefined
+
+  /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
 
-  // TODO-MZ add color states (invalid, selected, disabled)
   render() {
-    const block = BEM.block('switch')
+    const block = BEM.block('radio-icon')
     const checked = !!this.checked
     const disabled = !!this.disabled
     const invalid = !!this.invalid
+    const inverted = !!this.inverted
 
     return (
       <Host
@@ -45,27 +60,11 @@ export class Switch implements ComponentInterface {
           ...block.modifier('checked').class(checked),
           ...block.modifier('disabled').class(disabled),
           ...block.modifier('invalid').class(invalid),
+          ...block.modifier('inverted').class(inverted),
+          ...block.modifier('hovered').class(this.hovered),
+          ...block.modifier('pressed').class(this.pressed),
         }}
-        onClick={() => (this.checked = !this.checked)}
-      >
-        <bal-icon
-          name="check"
-          color="white"
-          size="small"
-          aria-hidden="true"
-          class={{
-            ...block.element('icon').modifier('checked').class(checked),
-          }}
-        ></bal-icon>
-        <div
-          class={{
-            ...block.element('toggle').class(),
-            ...block.element('toggle').modifier('checked').class(checked),
-            ...block.element('toggle').modifier('disabled').class(disabled),
-            ...block.element('toggle').modifier('invalid').class(invalid),
-          }}
-        ></div>
-      </Host>
+      ></Host>
     )
   }
 }

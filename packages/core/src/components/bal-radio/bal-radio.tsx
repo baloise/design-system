@@ -1,3 +1,4 @@
+import { isSpaceKey } from '@baloise/web-app-utils'
 import {
   Component,
   ComponentInterface,
@@ -10,16 +11,16 @@ import {
   Method,
   Prop,
   State,
+  Watch,
 } from '@stencil/core'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { BalElementStateInfo } from '../../utils/element-states'
+import { BalElementStateInfo, ListenToElementStates } from '../../utils/element-states'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { stopEventBubbling } from '../../utils/form-input'
+import { inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
 import { isDescendant } from '../../utils/helpers'
-import { isSpaceKey } from '../../utils/keyboard'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
 
@@ -42,10 +43,29 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     this.log = log
   }
 
+  /**
+   * Track focus state
+   * If `true` checkbox needs to remain focused
+   */
+  @State() wasFocused = false
+
   @State() checked = false
   @State() focused = false
   @State() buttonTabindex?: number
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  outerElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
+  }
+  innerElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
+  }
+  @State() mergedElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
+  }
 
   /**
    * PUBLIC PROPERTY API
@@ -66,11 +86,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    * Label of the radio item.
    */
   @Prop() label = ''
-
-  /**
-   * If `true` the radio is invisible, but sill active
-   */
-  @Prop() invisible = false
 
   /**
    * If `true` the radio has no label
@@ -116,11 +131,47 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    * @internal
    */
   @Prop() hovered = false
+  @Watch('hovered')
+  hoveredChanged() {
+    this.innerElementState = {
+      hovered: this.hovered,
+      pressed: this.pressed,
+    }
+    this.mergeElementState()
+  }
 
   /**
    * @internal
    */
   @Prop() pressed = false
+  @Watch('pressed')
+  pressedChanged() {
+    this.innerElementState = {
+      hovered: this.hovered,
+      pressed: this.pressed,
+    }
+    this.mergeElementState()
+  }
+
+  /**
+   * Defines the color of the tile radio.
+   */
+  @Prop() color?: BalProps.BalRadioTileColor
+
+  /**
+   * @internal
+   */
+  @Prop() colSize: BalProps.BalRadioGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop() colSizeTablet: BalProps.BalRadioGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop() colSizeMobile: BalProps.BalRadioGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
@@ -143,19 +194,15 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    */
 
   connectedCallback() {
+    this.hoveredChanged()
+
     if (this.value === undefined) {
       this.value = this.inputId
     }
 
-    const radioButton = this.radioButton
-    const radioGroup = this.radioGroup
-
-    if (radioButton || radioGroup) {
+    if (this.group) {
       this.updateState()
-    }
-
-    if (radioGroup) {
-      radioGroup.addEventListener('balInput', this.updateState)
+      this.group.addEventListener('balChange', this.updateState)
     }
 
     this.el.addEventListener('keydown', this.onKeydown)
@@ -167,10 +214,17 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
+  componentWillRender(): Promise<void> | void {
+    this.interactionChildElements.forEach(el => {
+      el.disabled = this.disabled || this.readonly
+      el.invalid = this.invalid
+      el.checked = this.checked
+    })
+  }
+
   disconnectedCallback() {
-    const radioGroup = this.radioGroup
-    if (radioGroup) {
-      radioGroup.removeEventListener('balInput', this.updateState)
+    if (this.group) {
+      this.group.removeEventListener('balChange', this.updateState)
     }
 
     this.el.removeEventListener('keydown', this.onKeydown)
@@ -194,29 +248,39 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     }
   }
 
+  @ListenToElementStates()
+  elementStateListener(info: BalElementStateInfo) {
+    this.outerElementState = info
+    this.mergeElementState()
+  }
+
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
 
-  /** @internal */
+  /**
+   * Sets the focus on the checkbox input element.
+   */
   @Method()
-  async setFocus(ev: any) {
-    ev.stopPropagation()
-    ev.preventDefault()
+  async setFocus() {
+    inputSetFocus<any>(this)
+  }
 
-    this.nativeInput.focus()
-    this.focused = true
+  /**
+   * Sets blur on the native `input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur<any>(this)
   }
 
   /** @internal */
   @Method()
   async setButtonTabindex(value: number) {
-    if (this.radioButton) {
-      this.buttonTabindex = -1
-    } else {
-      this.buttonTabindex = value
-    }
+    this.buttonTabindex = value
   }
 
   /**
@@ -241,20 +305,20 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    */
   @Method()
   async updateState() {
-    if (this.radioGroup) {
-      const newChecked = this.radioGroup.value === this.value
+    if (this.group) {
+      const newChecked = this.group.value === this.value
       if (newChecked !== this.checked) {
         this.checked = newChecked
       }
     }
 
-    if (this.radioButton) {
-      this.buttonTabindex = -1
+    // if (this.radioButton) {
+    //   this.buttonTabindex = -1
 
-      if (this.radioButton.setChecked) {
-        this.radioButton.setChecked(this.checked)
-      }
-    }
+    //   if (this.radioButton.setChecked) {
+    //     this.radioButton.setChecked(this.checked)
+    //   }
+    // }
   }
 
   /**
@@ -270,18 +334,13 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    * ------------------------------------------------------
    */
 
-  private get radioButton(): HTMLBalRadioButtonElement | null {
-    return this.el.closest('bal-radio-button')
-  }
-
-  private get radioGroup(): HTMLBalRadioGroupElement | null {
+  private get group(): HTMLBalRadioGroupElement | null {
     return this.el.closest('bal-radio-group')
   }
 
-  /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
+  private get interactionChildElements(): Array<HTMLBalRadioIconElement> {
+    return Array.from(this.el.querySelectorAll('bal-radio-icon, bal-icon')) as Array<HTMLBalRadioIconElement>
+  }
 
   private get option() {
     return {
@@ -295,7 +354,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
       readonly: this.readonly,
       required: this.required,
       nonSubmit: this.nonSubmit,
-      invisible: this.invisible,
       invalid: this.invalid,
     }
   }
@@ -305,41 +363,45 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
    * ------------------------------------------------------
    */
 
-  private toggleChecked() {
-    this.checked = !this.checked
-    this.balChange.emit(this.checked)
-    this.updateState()
+  private mergeElementState() {
+    this.mergedElementState = {
+      hovered: this.outerElementState.hovered || this.innerElementState.hovered,
+      pressed: this.outerElementState.pressed || this.innerElementState.pressed,
+    }
+
+    this.interactionChildElements.forEach(el => {
+      ;(el as BalElementStateInfo).hovered = this.mergedElementState.hovered
+      ;(el as BalElementStateInfo).pressed = this.mergedElementState.pressed
+    })
   }
 
-  private onKeypress = (ev: KeyboardEvent) => {
-    if (isSpaceKey(ev)) {
-      const element = ev.target as HTMLAnchorElement
-      if (element.href) {
-        return
-      }
+  private setChecked = (state: boolean) => {
+    this.checked = state
+    this.balChange.emit(this.checked)
+  }
 
-      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.toggleChecked()
-        ev.preventDefault()
-      } else {
-        stopEventBubbling(ev)
-      }
-    }
+  private toggleChecked = (ev: Event) => {
+    ev.preventDefault()
+
+    this.setFocus()
+    this.setChecked(!this.checked)
   }
 
   private onClick = (ev: MouseEvent) => {
+    if (this.disabled) {
+      return
+    }
+
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
       return
     }
 
-    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.toggleChecked()
-      this.nativeInput?.focus()
-      ev.preventDefault()
-    } else {
-      stopEventBubbling(ev)
+    if (this.wasFocused) {
+      this.focused = true
     }
+
+    this.toggleChecked(ev)
   }
 
   private onFocus = (ev: FocusEvent) => {
@@ -352,6 +414,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     if (this.keyboardMode) {
       this.focused = true
+      this.wasFocused = true
     }
   }
 
@@ -366,7 +429,12 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
   private onPointerDown = () => (this.keyboardMode = false)
 
-  private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
+  private onKeydown = (ev: any) => {
+    if (!isSpaceKey(ev)) {
+      this.wasFocused = false
+    }
+    this.keyboardMode = FOCUS_KEYS.includes(ev.key)
+  }
 
   /**
    * RENDER
@@ -378,6 +446,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     const inputEl = block.element('input')
     const labelEl = block.element('label')
     const labelTextEl = labelEl.element('text')
+    const labelIconEl = labelEl.element('icon')
 
     const focused = this.focused && this.buttonTabindex !== -1
 
@@ -388,39 +457,101 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
       inputAttributes.tabIndex = this.buttonTabindex
     }
 
-    const id = this.ariaForm.controlId || this.inputId
-    let labelId = this.ariaForm.labelId || null
-    const LabelTag = this.labelHidden ? 'span' : 'label'
+    // const id = this.ariaForm.controlId || this.inputId
+    // let labelId = this.ariaForm.labelId || null
+    // const LabelTag = this.labelHidden ? 'span' : 'label'
 
-    const labelAttributes: any = {}
-    if (!this.labelHidden) {
-      labelId = `${labelId || ''} ${id}-lbl`.trim()
-      labelAttributes.id = `${id}-lbl`
-      labelAttributes.htmlFor = id
-    }
+    // const labelAttributes: any = {}
+    // if (!this.labelHidden) {
+    //   labelId = `${labelId || ''} ${id}-lbl`.trim()
+    //   labelAttributes.id = `${id}-lbl`
+    //   labelAttributes.htmlFor = id
+    // }
+
+    const hasFormControl = !this.nonSubmit
+    const id = this.ariaForm.controlId || this.inputId
+    const labelId = this.ariaForm.labelId || null
+    const LabelTag = hasFormControl ? 'label' : 'span'
 
     return (
       <Host
         aria-checked={`${this.checked}`}
         aria-disabled={ariaBooleanToString(this.disabled)}
+        aria-invalid={this.invalid === true ? 'true' : 'false'}
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={focused ? 'true' : null}
+        aria-labelledby={labelId}
+        aria-describedby={this.ariaForm.messageId}
         class={{
           'bal-focused': focused,
           ...block.class(),
           ...block.modifier('button').class(this.interface === 'button'),
+          ...block.modifier('tile').class(this.interface === 'tile'),
+          ...block.modifier(`tile-color-${this.color}`).class(this.interface === 'tile' && !!this.color),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('hovered').class(this.hovered),
           ...block.modifier('pressed').class(this.pressed),
-          ...block.modifier('invisible').class(this.invisible),
+          ...block.modifier(`column-${this.colSize}`).class(this.interface === 'tile' && this.colSize > 1),
+          ...block
+            .modifier(`column-tablet-${this.colSizeTablet}`)
+            .class(this.interface === 'tile' && this.colSizeTablet > 1),
+          ...block
+            .modifier(`column-mobile-${this.colSizeMobile}`)
+            .class(this.interface === 'tile' && this.colSizeMobile > 1),
         }}
-        onKeypress={this.onKeypress}
         onClick={this.onClick}
       >
-        <input
+        <LabelTag
+          class={{
+            ...labelEl.class(),
+          }}
+        >
+          {hasFormControl ? (
+            <input
+              id={id}
+              type="radio"
+              data-testid="bal-radio-input"
+              name={this.name}
+              value={this.value}
+              checked={this.checked}
+              required={this.required}
+              disabled={this.disabled || this.nonSubmit}
+              readonly={this.readonly}
+              class={{
+                ...inputEl.class(),
+              }}
+              aria-hidden={ariaBooleanToString(this.nonSubmit)}
+              onChange={ev => this.toggleChecked(ev)}
+              onFocus={ev => this.onFocus(ev)}
+              onBlur={ev => this.onBlur(ev)}
+              ref={inputEl => (this.nativeInput = inputEl)}
+              {...inputAttributes}
+            />
+          ) : (
+            ''
+          )}
+          {this.interface !== 'tile' ? (
+            <div class={{ ...labelIconEl.class() }}>
+              <bal-radio-icon
+                checked={this.checked}
+                disabled={this.disabled || this.readonly}
+                invalid={this.invalid}
+                inverted={this.interface === 'button' && this.checked}
+                hovered={this.mergedElementState.hovered}
+                pressed={this.mergedElementState.pressed}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          <div class={{ ...labelTextEl.class(), ...labelTextEl.modifier('hidden').class(this.labelHidden) }}>
+            <slot></slot>
+          </div>
+        </LabelTag>
+        {/* <input
           class={{
             ...inputEl.class(),
             ...inputEl.modifier('button').class(this.interface === 'button'),
@@ -444,32 +575,28 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
           ref={inputEl => (this.nativeInput = inputEl as HTMLInputElement)}
           {...inputAttributes}
         />
-        {!this.invisible ? (
-          <LabelTag
+        <LabelTag
+          class={{
+            ...labelEl.class(),
+            ...labelEl.modifier('checked').class(this.checked),
+            ...labelEl.modifier('hidden').class(this.labelHidden),
+            ...labelEl.modifier('flat').class(this.flat),
+          }}
+          {...labelAttributes}
+          data-testid="bal-radio-label"
+        >
+          <span
             class={{
-              ...labelEl.class(),
-              ...labelEl.modifier('checked').class(this.checked),
-              ...labelEl.modifier('hidden').class(this.labelHidden),
-              ...labelEl.modifier('flat').class(this.flat),
+              ...labelTextEl.class(),
+              ...labelTextEl.modifier('hidden').class(this.labelHidden),
+              ...labelTextEl.modifier('flat').class(this.flat),setButtonTabindex
             }}
-            {...labelAttributes}
-            data-testid="bal-radio-label"
+            data-testid="bal-radio-text"
           >
-            <span
-              class={{
-                ...labelTextEl.class(),
-                ...labelTextEl.modifier('hidden').class(this.labelHidden),
-                ...labelTextEl.modifier('flat').class(this.flat),
-              }}
-              data-testid="bal-radio-text"
-            >
-              {this.label}
-              <slot></slot>
-            </span>
-          </LabelTag>
-        ) : (
-          ''
-        )}
+            {this.label}
+            <slot></slot>
+          </span>
+        </LabelTag> */}
       </Host>
     )
   }

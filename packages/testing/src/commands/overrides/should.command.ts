@@ -1,23 +1,23 @@
+import { parseDataTestID, selectors } from '../../selectors/index'
 import {
-  isCheckbox,
+  hasClass,
+  hasTestId,
   isAccordion,
   isButton,
+  isCheckbox,
+  isDropDown,
   isInput,
+  isInputDate,
+  isInputStepper,
+  isLabel,
+  isNumberInput,
   isRadio,
   isSelect,
-  isTabs,
-  hasClass,
   isSlider,
-  isLabel,
-  isTextarea,
-  isNumberInput,
-  isInputStepper,
   isSteps,
-  hasTestId,
-  isInputDate,
-  isDropDown,
+  isTabs,
+  isTextarea,
 } from '../helpers'
-import { parseDataTestID, selectors } from '../../selectors/index'
 
 const shouldAndAndCommand = (
   originalFn: any,
@@ -39,7 +39,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (isCheckbox(element) || isRadio(element) || hasClass(element, 'bal-radio-checkbox__label')) {
+  if (isCheckbox(element) || isRadio(element) || hasClass(element, 'bal-checkbox__label')) {
     if (isLabel(element)) {
       element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>', { log: false })
     }

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
@@ -15,31 +15,31 @@ import { UpdateControl } from '../app.component'
         <bal-field required>
           <bal-field-label>Radio Buttons Label</bal-field-label>
           <bal-field-control>
-            <bal-radio-group formControlName="radioButtons" data-test="radioButtons">
-              <bal-radio-button>
+            <bal-radio-group formControlName="radioButtons" data-test="radioButtons" interface="tile">
+              <bal-radio value="Apple">
                 <bal-stack>
                   <bal-content>
                     <bal-label>Apple</bal-label>
                   </bal-content>
-                  <bal-radio label-hidden value="Apple"></bal-radio>
+                  <bal-radio-icon></bal-radio-icon>
                 </bal-stack>
-              </bal-radio-button>
-              <bal-radio-button>
+              </bal-radio>
+              <bal-radio value="Kiwi">
                 <bal-stack>
                   <bal-content>
                     <bal-label>Kiwi</bal-label>
                   </bal-content>
-                  <bal-radio label-hidden value="Kiwi"></bal-radio>
+                  <bal-radio-icon></bal-radio-icon>
                 </bal-stack>
-              </bal-radio-button>
-              <bal-radio-button>
+              </bal-radio>
+              <bal-radio value="Mango">
                 <bal-stack>
                   <bal-content>
                     <bal-label>Mango</bal-label>
                   </bal-content>
-                  <bal-radio label-hidden value="Mango"></bal-radio>
+                  <bal-radio-icon></bal-radio-icon>
                 </bal-stack>
-              </bal-radio-button>
+              </bal-radio>
             </bal-radio-group>
           </bal-field-control>
           <bal-field-message>

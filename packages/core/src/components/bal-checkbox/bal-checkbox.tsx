@@ -36,6 +36,13 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   @Element() el!: HTMLBalCheckboxElement
 
+  log!: LogInstance
+
+  @Logger('bal-checkbox')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @State() hasLabel = true
   @State() focused = false
   @State() buttonTabindex?: number
@@ -46,8 +53,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * If `true` checkbox needs to remain focused
    */
   @State() wasFocused = false
-
-  log!: LogInstance
 
   outerElementState: BalElementStateInfo = {
     hovered: false,
@@ -60,11 +65,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @State() mergedElementState: BalElementStateInfo = {
     hovered: false,
     pressed: false,
-  }
-
-  @Logger('bal-checkbox')
-  createLogger(log: LogInstance) {
-    this.log = log
   }
 
   /**
@@ -185,6 +185,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * @internal
    */
   @Prop() colSizeMobile: BalProps.BalCheckboxGroupColumns = 1
+
   /**
    * Emitted when the toggle has focus.
    */
@@ -207,10 +208,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   connectedCallback() {
     this.hoveredChanged()
-    const groupEl = this.group
 
-    if (groupEl) {
-      groupEl.addEventListener('balChange', () => this.updateState())
+    if (this.group) {
+      this.updateState()
+      this.group.addEventListener('balChange', () => this.updateState())
     }
 
     this.initialValue = this.checked
@@ -337,13 +338,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * ------------------------------------------------------
    */
 
-  get interactionChildElements(): Array<HTMLBalCheckElement | HTMLBalSwitchElement> {
+  private get group(): HTMLBalCheckboxGroupElement | null {
+    return this.el.closest('bal-checkbox-group')
+  }
+
+  private get interactionChildElements(): Array<HTMLBalCheckElement | HTMLBalSwitchElement> {
     return Array.from(this.el.querySelectorAll('bal-check, bal-switch, bal-icon')) as Array<
       HTMLBalCheckElement | HTMLBalSwitchElement
     >
   }
 
-  get option() {
+  private get option() {
     return {
       name: this.name,
       value: this.value,
@@ -358,10 +363,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       nonSubmit: this.nonSubmit,
       invalid: this.invalid,
     }
-  }
-
-  get group(): HTMLBalCheckboxGroupElement | null {
-    return this.el.closest('bal-checkbox-group')
   }
 
   /**

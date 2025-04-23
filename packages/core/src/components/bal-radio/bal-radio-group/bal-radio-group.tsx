@@ -25,6 +25,7 @@ import { BalRadioOption } from '../bal-radio.type'
 
 @Component({
   tag: 'bal-radio-group',
+  styleUrl: 'bal-radio-group.sass',
 })
 export class RadioGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
@@ -60,6 +61,11 @@ export class RadioGroup
   }
 
   /**
+   * Defines the layout of the radio button
+   */
+  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
+
+  /**
    * If `true`, the radios can be deselected.
    */
   @Prop() allowEmptySelection = false
@@ -68,21 +74,6 @@ export class RadioGroup
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
-
-  /**
-   * the value of the radio group.
-   */
-  @Prop({ mutable: true }) value?: any | null
-
-  @Watch('value')
-  valueChanged() {
-    this.onOptionChange()
-  }
-
-  /**
-   * Defines the layout of the radio button
-   */
-  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
 
   /**
    * Displays the checkboxes vertically
@@ -110,9 +101,6 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.invalid = value
       })
-      this.getRadioButtons().forEach(radio => {
-        radio.invalid = value
-      })
     }
   }
 
@@ -125,9 +113,6 @@ export class RadioGroup
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
       this.getRadios().forEach(radio => {
-        radio.disabled = value
-      })
-      this.getRadioButtons().forEach(radio => {
         radio.disabled = value
       })
     }
@@ -144,20 +129,27 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.readonly = value
       })
-      this.getRadioButtons().forEach(radio => {
-        radio.readonly = value
-      })
     }
+  }
+
+  /**
+   * the value of the radio group.
+   */
+  @Prop({ mutable: true }) value?: any | null
+
+  @Watch('value')
+  valueChanged() {
+    this.onOptionChange()
   }
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() grid: BalProps.BalRadioGroupColumns = 1
+  @Prop() columns: BalProps.BalRadioGroupColumns = 1
 
-  @Watch('grid')
+  @Watch('columns')
   columnsChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
+    this.getRadios().forEach(radio => (radio.colSize = value))
   }
 
   /**
@@ -167,7 +159,7 @@ export class RadioGroup
 
   @Watch('columnsTablet')
   columnsTabletChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
+    this.getRadios().forEach(radio => (radio.colSizeTablet = value))
   }
 
   /**
@@ -177,7 +169,7 @@ export class RadioGroup
 
   @Watch('columnsMobile')
   columnsMobileChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
+    this.getRadios().forEach(radio => (radio.colSizeMobile = value))
   }
 
   /**
@@ -215,7 +207,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.grid)
+    this.columnsChanged(this.columns)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -248,7 +240,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.grid)
+    this.columnsChanged(this.columns)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -419,10 +411,6 @@ export class RadioGroup
 
   private getRadios(): HTMLBalRadioElement[] {
     return Array.from(this.el.querySelectorAll('bal-radio'))
-  }
-
-  private getRadioButtons(): HTMLBalRadioButtonElement[] {
-    return Array.from(this.el.querySelectorAll('bal-radio-button'))
   }
 
   /**

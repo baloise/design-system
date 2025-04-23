@@ -436,9 +436,9 @@ export class CheckboxGroup
           ...block.class(),
         }}
         role="group"
-        aria-disabled={ariaBooleanToString(this.disabled)}
         aria-labelledby={this.ariaForm.labelId}
         aria-describedby={this.ariaForm.messageId}
+        aria-disabled={ariaBooleanToString(this.disabled)}
         onClick={this.onClick}
         {...this.inheritedAttributes}
       >
