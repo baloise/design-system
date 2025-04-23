@@ -781,7 +781,8 @@ export class Tabs
   }
 
   async focus(tab: BalTabOption) {
-    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement | HTMLAnchorElement>(`button.bal-focused, a.bal-focused`) !== null
+    const hasKeyboardFocus =
+      this.el.querySelector<HTMLButtonElement | HTMLAnchorElement>(`button.bal-focused, a.bal-focused`) !== null
 
     if (this.swiper.isActive()) {
       const options = await this.getOptions()
