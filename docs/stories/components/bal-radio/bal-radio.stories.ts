@@ -94,10 +94,7 @@ export const RadioButton = Story({
 })
 
 export const RadioTile = Story({
-  args: {
-    name: 'radio-example',
-    labelHidden: true,
-  },
+  args: {},
   ...withRender(
     ({ ...args }) => `<bal-radio-group value="1" interface="tile">
     <bal-radio ${props(args)} value="1">
@@ -144,10 +141,7 @@ export const RadioTile = Story({
 })
 
 export const RadioTileGrid = Story({
-  args: {
-    name: 'radio-example',
-    labelHidden: true,
-  },
+  args: {},
   ...withRender(
     ({ ...args }) => `<bal-radio-group value="1" columns="3" columns-tablet="2" interface="tile">
     <bal-radio ${props(args)} value="1">
