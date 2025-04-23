@@ -507,6 +507,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           class={{
             ...labelEl.class(),
           }}
+          data-testid="bal-checkbox-label"
         >
           {hasFormControl ? (
             <input

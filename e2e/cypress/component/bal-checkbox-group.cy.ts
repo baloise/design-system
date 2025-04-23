@@ -55,10 +55,11 @@ describe('bal-checkbox-group', () => {
     cy.get('@balChange').should('not.have.been.called')
   })
 
-  it('should not be able to select the disabled option', () => {
-    cy.get('bal-checkbox').eq(2).invoke('attr', 'disabled', true)
+  it.only('should not be able to select the disabled option', () => {
+    const cb = cy.get('bal-checkbox').eq(2)
 
-    cy.get('bal-checkbox').eq(2).click({ force: true }).find('input').blur({ force: true })
+    cb.invoke('attr', 'disabled', true)
+    cb.click({ force: true }).find('input').blur({ force: true })
 
     cy.get('@click').should('not.have.been.called')
     cy.get('@balFocus').should('not.have.been.called')

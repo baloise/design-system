@@ -452,26 +452,19 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
 
+    const hasFormControl = !this.nonSubmit
+    const id = this.ariaForm.controlId || this.inputId
+    const labelId = this.ariaForm.labelId || null
+    const LabelTag = hasFormControl ? 'label' : 'span'
+
     const inputAttributes = this.inheritedAttributes
     if (this.buttonTabindex !== undefined) {
       inputAttributes.tabIndex = this.buttonTabindex
     }
 
-    // const id = this.ariaForm.controlId || this.inputId
-    // let labelId = this.ariaForm.labelId || null
-    // const LabelTag = this.labelHidden ? 'span' : 'label'
-
-    // const labelAttributes: any = {}
-    // if (!this.labelHidden) {
-    //   labelId = `${labelId || ''} ${id}-lbl`.trim()
-    //   labelAttributes.id = `${id}-lbl`
-    //   labelAttributes.htmlFor = id
-    // }
-
-    const hasFormControl = !this.nonSubmit
-    const id = this.ariaForm.controlId || this.inputId
-    const labelId = this.ariaForm.labelId || null
-    const LabelTag = hasFormControl ? 'label' : 'span'
+    if (this.labelHidden) {
+      inputAttributes['aria-labelledby'] = labelId
+    }
 
     return (
       <Host
@@ -508,6 +501,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
           class={{
             ...labelEl.class(),
           }}
+          data-testid="bal-radio-label"
         >
           {hasFormControl ? (
             <input
@@ -515,7 +509,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
               type="radio"
               data-testid="bal-radio-input"
               name={this.name}
-              value={this.value}
+              value={value}
               checked={this.checked}
               required={this.required}
               disabled={this.disabled || this.nonSubmit}

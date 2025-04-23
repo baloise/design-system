@@ -184,8 +184,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
     const block = BEM.block('icon')
     const svgContent = this.svgContent(this.name)
 
-    console.log('bal-icon', color)
-
     return (
       <Host
         aria-hidden="true"
