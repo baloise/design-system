@@ -74,7 +74,7 @@ import {
   BalOption,
   BalOptionList,
   BalRadio,
-  BalRadioButton,
+  BalRadioIcon,
   BalSegmentItem,
   BalSelectOption,
   BalShape,
@@ -148,7 +148,7 @@ export const BalSelectBundle = [BalSelectOption, BalSelect] as const
 
 export const BalCheckboxBundle = [BalCheckbox, BalCheckboxGroup, BalCheck, BalSwitch] as const
 
-export const BalRadioBundle = [BalRadio, BalRadioButton, BalRadioGroup] as const
+export const BalRadioBundle = [BalRadio, BalRadioIcon, BalRadioGroup] as const
 
 export const BalFormGridBundle = [BalFormGrid, BalFormCol] as const
 
@@ -258,7 +258,7 @@ export const BalComponentBundle = [
   BalNavbarMenuEnd,
   BalNavbarMenuStart,
   BalRadio,
-  BalRadioButton,
+  BalRadioIcon,
   BalSelectOption,
   BalShape,
   BalStack,
