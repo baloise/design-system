@@ -7,9 +7,6 @@ type Args = JSX.BalRadio & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/Radio',
-  args: {
-    name: 'radio-example',
-  },
   argTypes: {
     ...withComponentControls({ tag: 'bal-radio' }),
   },
