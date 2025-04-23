@@ -124,6 +124,9 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
     if (this.colorPressed && this.pressed) {
       return this.colorPressed
     }
+    if (this.colorHovered && this.colorPressed) {
+      return this.color
+    }
 
     if (!!this.disabled) {
       return 'grey'
@@ -180,6 +183,8 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
     const color = this.parseColor()
     const block = BEM.block('icon')
     const svgContent = this.svgContent(this.name)
+
+    console.log('bal-icon', color)
 
     return (
       <Host
