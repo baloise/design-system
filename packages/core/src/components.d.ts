@@ -3204,6 +3204,10 @@ export namespace Components {
          */
         "getOptionByValue": (value: string) => Promise<BalTabOption>;
         /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList": boolean;
+        /**
           * Defines the layout of the tabs.
          */
         "iconPosition": BalProps.BalTabsIconPosition;
@@ -8274,6 +8278,10 @@ declare namespace LocalJSX {
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
+        /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList"?: boolean;
         /**
           * Defines the layout of the tabs.
          */
