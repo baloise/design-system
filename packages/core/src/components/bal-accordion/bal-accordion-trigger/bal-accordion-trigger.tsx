@@ -1,11 +1,39 @@
-import { Component, Host, h, Element, ComponentInterface, State, Prop, Method } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { stopEventBubbling } from '../../../utils/form-input'
-import { AccordionState } from '../../../interfaces'
-import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
-import { i18nBalAccordion } from '../bal-accordion.i18n'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { AccordionState } from '../../../interfaces'
+import { BEM } from '../../../utils/bem'
+import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { i18nBalAccordion } from '../bal-accordion.i18n'
+
+type BaseProps = {
+  variant: BalProps.BalAccordionTriggerVariant
+  id: string
+  label: string
+  icon: string
+  turn: boolean
+  expanded: boolean
+  buttonPart: string
+  triggerAttributes: {
+    tabindex: number
+  }
+}
+
+type ButtonProps = BaseProps & {
+  color: BalProps.BalButtonColor
+  size: BalProps.BalButtonSize
+  expanded: boolean
+}
+
+type IconProps = BaseProps & {
+  icon: string
+  turn: boolean
+}
+
+type TextProps = BaseProps & {
+  label: string
+}
 
 @Component({
   tag: 'bal-accordion-trigger',
@@ -32,9 +60,19 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    */
 
   /**
+   * @deprecated
    * Trigger will be a bal-button
    */
   @Prop() button = false
+  @Watch('button')
+  buttonChanged() {
+    this.variant = this.button ? 'button' : this.variant
+  }
+
+  /**
+   * Defines the nature of the accordion trigger.
+   */
+  @Prop() variant: BalProps.BalAccordionTriggerVariant
 
   /**
    * If `true` the button is aligned over the whole width
@@ -88,6 +126,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.updateAccordionId()
+    this.buttonChanged()
   }
 
   componentWillRender() {
@@ -142,10 +181,8 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * RENDER
    * ------------------------------------------------------
    */
-
+  block = BEM.block('accordion').element('trigger')
   render() {
-    const block = BEM.block('accordion').element('trigger')
-
     const id = this.parentAccordionId ? `${this.parentAccordionId}-trigger` : this.componentId
 
     const label = this.active ? this.closeLabel : this.openLabel
@@ -170,51 +207,104 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
       }
     }
 
+    const Trigger = (props: ButtonProps | IconProps | TextProps) => {
+      switch (props.variant) {
+        case 'button':
+          return this.renderButton(props as ButtonProps)
+        case 'text':
+          return this.renderText(props as TextProps)
+        default:
+          return this.renderIcon(props as IconProps)
+      }
+    }
+
     return (
       <Host
         id={id}
         class={{
-          ...block.class(),
+          ...this.block.class(),
         }}
       >
-        {this.button ? (
-          <bal-button
-            id={`${id}-button`}
-            aria-controls={`${this.parentAccordionId}-details-content`}
-            part={buttonPart}
-            data-testid="bal-accordion-trigger"
-            expanded={this.expanded}
-            icon={icon}
-            iconTurn={turn}
-            color={this.color}
-            size={this.size}
-            title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
-            aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
-            aria-expanded={ariaBooleanToString(this.active)}
-            onClick={this.onClick}
-          >
-            {label}
-          </bal-button>
-        ) : (
-          <button
-            class={{
-              ...block.element('button').class(),
-              'bal-focused': parentSummaryEl && !parentSummaryEl.trigger,
-            }}
-            id={`${id}-button`}
-            aria-controls={`${this.parentAccordionId}-details-content`}
-            aria-expanded={ariaBooleanToString(this.active)}
-            part={buttonPart}
-            data-testid="bal-accordion-trigger"
-            title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
-            aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
-            onClick={this.onClick}
-            {...triggerAttributes}
-          >
-            <bal-icon turn={turn} name={icon}></bal-icon>
-          </button>
-        )}
+        <Trigger
+          variant={this.variant}
+          {...{
+            id,
+            label,
+            icon,
+            turn,
+            expanded,
+            buttonPart,
+            triggerAttributes,
+          }}
+        ></Trigger>
       </Host>
+    )
+  }
+
+  renderButton({ id, buttonPart, icon, turn, label }: ButtonProps) {
+    return (
+      <bal-button
+        id={`${id}-button`}
+        aria-controls={`${this.parentAccordionId}-details-content`}
+        part={buttonPart}
+        data-testid="bal-accordion-trigger"
+        expanded={this.expanded}
+        icon={icon}
+        iconTurn={turn}
+        color={this.color}
+        size={this.size}
+        title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+        aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+        aria-expanded={ariaBooleanToString(this.active)}
+        onClick={this.onClick}
+      >
+        {label}
+      </bal-button>
+    )
+  }
+
+  renderIcon({ buttonPart, triggerAttributes, turn, icon, id }: IconProps) {
+    return (
+      <button
+        class={{
+          ...this.block.element('button').class(),
+          'bal-focused': triggerAttributes.tabindex === 0,
+        }}
+        id={`${id}-button`}
+        aria-controls={`${this.parentAccordionId}-details-content`}
+        aria-expanded={ariaBooleanToString(this.active)}
+        part={buttonPart}
+        data-testid="bal-accordion-trigger"
+        title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+        aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
+        onClick={this.onClick}
+        {...triggerAttributes}
+      >
+        <bal-icon turn={turn} name={icon}></bal-icon>
+      </button>
+    )
+  }
+
+  renderText({ buttonPart, triggerAttributes, turn, icon, id }: TextProps) {
+    const openLabel = this.openLabel || i18nBalAccordion[this.language].open
+    const closeLabel = this.closeLabel || i18nBalAccordion[this.language].close
+
+    return (
+      <button
+        class={{
+          ...this.block.element('text').class(),
+          'bal-focused': triggerAttributes.tabindex === 0,
+        }}
+        id={`${id}-button`}
+        aria-controls={`${this.parentAccordionId}-details-content`}
+        aria-expanded={ariaBooleanToString(this.active)}
+        part={buttonPart}
+        data-testid="bal-accordion-trigger"
+        onClick={this.onClick}
+        {...triggerAttributes}
+      >
+        {this.active ? closeLabel : openLabel}
+      </button>
     )
   }
 }

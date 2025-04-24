@@ -29,6 +29,7 @@ export const SectionList: FunctionalComponent<SectionListProps> = ({ items }) =>
                 ...block.element('mobile-section-item').class(),
               }}
               href={itemGroup.href}
+              rel={itemGroup.rel}
               target={itemGroup.target}
             >
               {itemGroup.label}
@@ -47,6 +48,7 @@ export const SectionList: FunctionalComponent<SectionListProps> = ({ items }) =>
                           ...block.element('mobile-links').class(),
                         }}
                         href={item.href}
+                        rel={item.rel}
                         target={item.target}
                       >
                         {item.label}

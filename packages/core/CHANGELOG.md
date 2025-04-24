@@ -1,5 +1,51 @@
 # Changelog
 
+## 18.3.0
+
+### Minor Changes
+
+- **icon**: add tile option ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
+- **accordion**: add varaint text button for the trigger element ( [#1664](https://github.com/baloise/design-system/pull/1664))
+
+### Patch Changes
+
+- **icon**: sanitize svg contents ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
+## 18.2.0
+
+### Minor Changes
+
+- **list**: add rel prop to the list item ( [#1654](https://github.com/baloise/design-system/pull/1654))
+
+### Patch Changes
+
+- **select**: reset value when done over props value change ( [#1657](https://github.com/baloise/design-system/pull/1657))
+
+- **tabs**: when tab item changes it will trigger a render of the tabs component ( [#1658](https://github.com/baloise/design-system/pull/1658))
+
+## 18.1.0
+
+### Minor Changes
+
+- **hint**: support keyboard actions: tab to focus, enter/space to open popover ( [#1637](https://github.com/baloise/design-system/pull/1637))
+
+### Patch Changes
+
+- **tabs**: adjust label and sub-label font size for svg version ( [#1649](https://github.com/baloise/design-system/pull/1649))
+
+- **dropdown**: improve placeholde color for the purple variant to improve a11y ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
+- **toast**: adjust toast alignment in container mode ( [#1648](https://github.com/baloise/design-system/pull/1648))
+
+- **segment**: update invalid on child elements ( [#1652](https://github.com/baloise/design-system/pull/1652))
+
+- **select**: select first option as default and value can be reset ( [#1651](https://github.com/baloise/design-system/pull/1651))
+
+- **core**: a11y: highlight slider thumb when navigating with keyboard ( [#1635](https://github.com/baloise/design-system/pull/1635))
+
+- **dropdown**: adjust width for long option labels ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
 ## 18.0.1
 
 ### Patch Changes

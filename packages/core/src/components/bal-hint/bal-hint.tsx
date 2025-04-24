@@ -14,6 +14,7 @@ import { BEM } from '../../utils/bem'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BalScrollHandler } from '../../utils/scroll'
 import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
 
 @Component({
   tag: 'bal-hint',
@@ -160,7 +161,14 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           aria-haspopup="true"
           role="button"
           name="info-circle"
+          tabindex={0}
           onClick={() => this.toggle()}
+          onKeyDown={event => {
+            if (isEnterKey(event) || isSpaceKey(event)) {
+              event.preventDefault()
+              this.toggle()
+            }
+          }}
         ></bal-icon>
       )
     }

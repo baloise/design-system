@@ -16,7 +16,7 @@ export class BalMutationListener extends ListenerAbstract {
   constructor(options: Partial<MutationObserverOptions>) {
     super()
     this.waitAfterFramePrint = options.waitAfterFramePrint || this.waitAfterFramePrint
-    this.tags = (options.tags || []).map(t => t.toUpperCase())
+    this.tags = (options.tags || []).map(t => t.toLowerCase())
     this.mutationObserverInit = {
       childList: options.childList === false ? false : true,
       subtree: options.subtree === false ? false : true,

@@ -211,6 +211,11 @@ export class Tabs
    */
   @Prop() dimInactiveElements = false
 
+  /**
+   * If `true` then  isTabList becomes true even if there is a link in the list.
+   */
+  @Prop() handleAsTabList = false
+
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
     if (newValue !== oldValue) {
@@ -426,8 +431,12 @@ export class Tabs
     return Array.from(this.el.querySelectorAll('.bal-tabs__nav__item'))
   }
 
+  /**
+   * Tells if the component acts as a tab or link list.
+   * If only one link is in the list and handleAsTabList has been set to false it will be a link list
+   */
   private get isTabList(): boolean {
-    return this.store.filter(tab => !!tab.href).length === 0
+    return this.store.filter(tab => !!tab.href).length === 0 || this.handleAsTabList
   }
 
   private get items(): HTMLBalTabItemElement[] {
@@ -772,7 +781,8 @@ export class Tabs
   }
 
   async focus(tab: BalTabOption) {
-    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+    const hasKeyboardFocus =
+      this.el.querySelector<HTMLButtonElement | HTMLAnchorElement>(`button.bal-focused, a.bal-focused`) !== null
 
     if (this.swiper.isActive()) {
       const options = await this.getOptions()
