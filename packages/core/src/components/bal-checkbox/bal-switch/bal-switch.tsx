@@ -58,27 +58,29 @@ export class Switch implements ComponentInterface {
           ...block.modifier('pressed').class(this.pressed),
         }}
       >
-          <bal-icon
-            name="check"
-            color="white"
-            size="small"
-            aria-hidden="true"
-            colorHovered="white"
-            colorPressed="white"
-            hovered={this.hovered}
-            pressed={this.pressed}
-            class={{
-              ...block.element('icon').modifier('checked').class(checked),
-            }}
-          ></bal-icon>
-            <div class={{
-              ...block.element('toggle').class(),
-              ...block.element('toggle').modifier('checked').class(checked),
-              ...block.element('toggle').modifier('disabled').class(disabled),
-              ...block.element('toggle').modifier('invalid').class(invalid),
-              ...block.modifier('hovered').class(this.hovered),
-              ...block.modifier('pressed').class(this.pressed),
-            }}></div>
+        <bal-icon
+          name="check"
+          color="white"
+          size="small"
+          aria-hidden="true"
+          colorHovered="white"
+          colorPressed="white"
+          hovered={this.hovered}
+          pressed={this.pressed}
+          class={{
+            ...block.element('icon').modifier('checked').class(checked),
+          }}
+        ></bal-icon>
+        <div
+          class={{
+            ...block.element('toggle').class(),
+            ...block.element('toggle').modifier('checked').class(checked),
+            ...block.element('toggle').modifier('disabled').class(disabled),
+            ...block.element('toggle').modifier('invalid').class(invalid),
+            ...block.modifier('hovered').class(this.hovered),
+            ...block.modifier('pressed').class(this.pressed),
+          }}
+        ></div>
       </Host>
     )
   }
