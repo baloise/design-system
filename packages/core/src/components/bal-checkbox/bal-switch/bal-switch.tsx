@@ -57,7 +57,6 @@ export class Switch implements ComponentInterface {
           ...block.modifier('hovered').class(this.hovered),
           ...block.modifier('pressed').class(this.pressed),
         }}
-        onClick={() => (this.checked = !this.checked)}
       >
           <bal-icon
             name="check"

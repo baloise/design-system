@@ -16,12 +16,6 @@
   // default color
   background: var(--bal-checkbox-switch-label-background-before)
 
-  &--pressed,
-  &--pressed:active
-    background: var(--bal-checkbox-switch-label-background-before)
-
-    .bal-switch__toggle
-      background: var(--bal-checkbox-switch-label-background-pressed-after)
 
   &--hovered,
   &:hover
@@ -29,6 +23,13 @@
       background: var(--bal-checkbox-switch-label-background-before)
       .bal-switch__toggle
         background: var(--bal-checkbox-switch-label-background-hover-after)
+
+  &--pressed,
+  &:active
+    background: var(--bal-checkbox-switch-label-background-before)
+
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-pressed-after)
   //
   // checked
   &--checked
@@ -72,27 +73,27 @@
     .bal-switch__toggle
       background: var(--bal-checkbox-switch-label-background-invalid-pressed-after)
 
-  &--invalid#{&}--checked,
-  &--invalid:active
+  &--invalid#{&}--checked#{&},
+  &--invalid#{&}--checked
     background: var(--bal-checkbox-switch-label-background-invalid-checked-before)
 
     .bal-switch__toggle
       background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
 
+  &--invalid#{&}--checked#{&}--hovered,
+    &--invalid#{&}--checked:hover
+      background: var(--bal-checkbox-switch-label-background-invalid-checked-hovered-before)
+
+      .bal-switch__toggle
+        background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
+
   &--invalid#{&}--checked#{&}--pressed,
-  &--invalid#{&}--checked#{&}--pressed:hover,
   &--invalid#{&}--checked:active
     background: var(--bal-checkbox-switch-label-background-invalid-checked-pressed-before)
 
     .bal-switch__toggle
       background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
 
-  &--invalid#{&}--checked#{&}--hovered,
-  &--invalid#{&}--checked:hover
-    background: var(--bal-checkbox-switch-label-background-invalid-checked-hovered-before)
-
-    .bal-switch__toggle
-      background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
   //
   // disabled
   &--disabled,
