@@ -1,20 +1,20 @@
 import {
   Component,
-  Host,
-  h,
-  Prop,
+  ComponentInterface,
+  Element,
   Event,
   EventEmitter,
-  Element,
-  State,
-  ComponentInterface,
+  h,
+  Host,
   Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../../utils/config'
-import { BEM } from '../../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { raf, transitionEndAsync } from '../../../utils/helpers'
 import { AccordionState } from '../../../interfaces'
+import { BEM } from '../../../utils/bem'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
+import { raf, transitionEndAsync } from '../../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-list-item',
@@ -76,6 +76,12 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop() rel: string | undefined
 
   /**
    * Specifies where to open the linked document
@@ -387,6 +393,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         >
           <a
             class={{ ...trigger.class() }}
+            rel={this.rel}
             href={this.href}
             target={this.target}
             download={this.download}

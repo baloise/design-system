@@ -35,7 +35,7 @@ export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavSe
           ...block.element('mobile-service-item').modifier('clickable').class(this.clickable),
         }}
       >
-        <a id={this.id} href={this.href} target={this.target} onClick={ev => this.onClick(ev)}>
+        <a id={this.id} href={this.href} rel={this.rel} target={this.target} onClick={ev => this.onClick(ev)}>
           {this.label}
         </a>
         {hasItems ? (

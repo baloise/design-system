@@ -95,7 +95,7 @@ export namespace Components {
     interface BalAccordionTrigger {
         "active": boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button": boolean;
         /**
@@ -128,6 +128,10 @@ export namespace Components {
          */
         "size": BalProps.BalButtonSize;
         "state": AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant": BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -1360,6 +1364,14 @@ export namespace Components {
          */
         "svg": string;
         /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile": boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor": BalProps.BalIconTileColor;
+        /**
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
@@ -1789,6 +1801,10 @@ export namespace Components {
          */
         "present": () => Promise<void>;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
@@ -1956,6 +1972,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected": boolean;
@@ -2057,6 +2077,10 @@ export namespace Components {
           * Size of the logo SVG
          */
         "logoSize": BalProps.BalLogoSize;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -3043,6 +3067,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow": boolean;
@@ -3100,6 +3128,10 @@ export namespace Components {
           * Tell's if the linking is done by a router.
          */
         "prevent": boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * Sets the tab active.
          */
@@ -3203,6 +3235,10 @@ export namespace Components {
          */
         "prevent": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
@@ -3273,6 +3309,10 @@ export namespace Components {
           * Find the options properties by its value
          */
         "getOptionByValue": (value: string) => Promise<BalTabOption>;
+        /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList": boolean;
         /**
           * Defines the layout of the tabs.
          */
@@ -5182,7 +5222,7 @@ declare namespace LocalJSX {
     interface BalAccordionTrigger {
         "active"?: boolean;
         /**
-          * Trigger will be a bal-button
+          * @deprecated Trigger will be a bal-button
          */
         "button"?: boolean;
         /**
@@ -5214,6 +5254,10 @@ declare namespace LocalJSX {
          */
         "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
+        /**
+          * Defines the nature of the accordion trigger.
+         */
+        "variant"?: BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -6471,6 +6515,14 @@ declare namespace LocalJSX {
          */
         "svg"?: string;
         /**
+          * If `true` the icon acts as a tile with a background color.
+         */
+        "tile"?: boolean;
+        /**
+          * If `true` the icon acts as a tile with a background color. Default is purple
+         */
+        "tileColor"?: BalProps.BalIconTileColor;
+        /**
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
@@ -6947,6 +6999,10 @@ declare namespace LocalJSX {
          */
         "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
@@ -7112,6 +7168,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected"?: boolean;
@@ -7224,6 +7284,10 @@ declare namespace LocalJSX {
           * Emitted before the animation starts
          */
         "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -8147,6 +8211,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow"?: boolean;
@@ -8204,6 +8272,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
@@ -8299,6 +8371,10 @@ declare namespace LocalJSX {
          */
         "prevent"?: boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * Sub label for the tab.
          */
         "subLabel"?: string;
@@ -8358,6 +8434,10 @@ declare namespace LocalJSX {
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
+        /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList"?: boolean;
         /**
           * Defines the layout of the tabs.
          */

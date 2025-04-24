@@ -41,6 +41,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           level="menu"
           label={this.label}
           href={this.href}
+          rel={this.rel}
           target={this.target}
           link={hasSectionLinkItems || hasServiceLinkItems ? false : this.isLink}
           open={isSelected}
@@ -95,6 +96,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           label={this.label}
           value={this.value}
           href={this.href}
+          rel={this.rel}
           target={this.target}
           no-panel
         ></bal-tab-item>

@@ -1,7 +1,7 @@
 import { Components } from '../../components'
 import { BalNoticeController, BalNoticeOptions } from '../../utils/overlays/notice.controller'
 
-export type BalToastOptions = BalNoticeOptions
+export type BalToastOptions = BalNoticeOptions & { closable?: boolean }
 
 export class BalToastController extends BalNoticeController {
   constructor() {
