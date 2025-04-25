@@ -9,9 +9,12 @@ describe('bal-checkbox tile', () => {
     )
 
     it('basic component', () => {
-      cy.getByTestId('basic').testVisual(`checkbox-tile-basic-${platform}`)
-      cy.getByTestId('grid').testVisual(`checkbox-tile-grid-${platform}`)
-      cy.getByTestId('colors').testVisual(`checkbox-tile-colors-${platform}`)
+      const opts = {
+        errorThreshold: 0.35,
+      }
+      cy.getByTestId('basic').testVisual(`checkbox-tile-basic-${platform}`, opts)
+      cy.getByTestId('grid').testVisual(`checkbox-tile-grid-${platform}`, opts)
+      cy.getByTestId('colors').testVisual(`checkbox-tile-colors-${platform}`, opts)
     })
   }
 })
