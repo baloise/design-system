@@ -3184,10 +3184,12 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        "hovered": boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        "pressed": boolean;
     }
     interface BalTabItem {
         /**
@@ -8320,10 +8322,12 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        "hovered"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        "pressed"?: boolean;
     }
     interface BalTabItem {
         /**
