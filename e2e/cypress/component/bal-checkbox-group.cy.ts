@@ -66,4 +66,11 @@ describe('bal-checkbox-group', () => {
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balBlur').should('not.have.been.called')
   })
+
+  it.only('should disable whole group', () => {
+    const cb = cy.get('bal-checkbox-group')
+
+    cb.invoke('attr', 'disabled', true)
+    cb.should('be.disabled')
+  })
 })
