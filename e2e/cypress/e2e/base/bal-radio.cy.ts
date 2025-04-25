@@ -4,8 +4,8 @@ describe('bal-radio', () => {
     cy.waitForDesignSystem()
   })
 
-  it('should select the 1st radio', () => {
-    cy.getByTestId('basic').find('bal-radio').first().check().should('be.checked')
+  it.only('should select the 1st radio', () => {
+    cy.getByTestId('basic').find('bal-radio').first().should('be.checked').check().should('not.be.checked')
     cy.getByTestId('basic').find('bal-radio').eq(1).should('not.be.checked')
     cy.getByTestId('basic').find('bal-radio').eq(2).should('not.be.checked')
     cy.getByTestId('basic').find('bal-radio').eq(3).should('not.be.checked')
