@@ -518,6 +518,8 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
                 ...inputEl.class(),
               }}
               aria-hidden={ariaBooleanToString(this.nonSubmit)}
+              aria-invalid={this.invalid === true ? 'true' : 'false'}
+              aria-describedby={this.ariaForm.messageId}
               onChange={ev => this.toggleChecked(ev)}
               onFocus={ev => this.onFocus(ev)}
               onBlur={ev => this.onBlur(ev)}

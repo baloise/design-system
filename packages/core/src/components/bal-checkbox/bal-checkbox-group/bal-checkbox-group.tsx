@@ -99,6 +99,7 @@ export class CheckboxGroup
 
   @Watch('invalid')
   invalidChanged(value: boolean | undefined) {
+    console.log('invalidChanged', value)
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
@@ -115,6 +116,7 @@ export class CheckboxGroup
 
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
+    console.log('disabledChanged', value)
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
@@ -147,6 +149,8 @@ export class CheckboxGroup
 
   @Watch('value')
   valueChanged(_value: any[], oldValue: any[]) {
+    console.log('valueChanged', _value)
+    debugger
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()
@@ -214,6 +218,7 @@ export class CheckboxGroup
   connectedCallback(): void {
     if (this.control) {
       this.mutationObserverActive = this.options === undefined
+      this.valueChanged(this.value, [])
     }
   }
 
@@ -221,6 +226,7 @@ export class CheckboxGroup
     if (this.control) {
       this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
       this.disabledChanged(this.disabled)
+      this.invalidChanged(this.invalid)
       this.readonlyChanged(this.readonly)
     }
 
@@ -439,6 +445,7 @@ export class CheckboxGroup
         aria-labelledby={this.ariaForm.labelId}
         aria-describedby={this.ariaForm.messageId}
         aria-disabled={ariaBooleanToString(this.disabled)}
+        aria-invalid={ariaBooleanToString(this.invalid)}
         onClick={this.onClick}
         {...this.inheritedAttributes}
       >

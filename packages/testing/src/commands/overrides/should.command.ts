@@ -1,6 +1,7 @@
 import { parseDataTestID, selectors } from '../../selectors/index'
 import {
   hasClass,
+  hasRole,
   hasTestId,
   isAccordion,
   isButton,
@@ -39,7 +40,14 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (isCheckbox(element) || isRadio(element) || hasClass(element, 'bal-checkbox__label')) {
+  console.log('shouldAndAndCommand', condition, element, hasRole(element, 'group'))
+  if (
+    isCheckbox(element) ||
+    isRadio(element) ||
+    hasClass(element, 'bal-checkbox__label') ||
+    hasRole(element, 'radiogroup') ||
+    hasRole(element, 'group')
+  ) {
     if (isLabel(element)) {
       element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>', { log: false })
     }
