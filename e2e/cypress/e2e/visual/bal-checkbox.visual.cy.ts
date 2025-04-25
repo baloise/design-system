@@ -15,6 +15,10 @@ describe('bal-checkbox', () => {
     cy.getByTestId('switch-long-label').testVisual('switch-long-label-desktop')
     cy.getByTestId('group-vertical').testVisual('group-vertical-desktop')
     cy.getByTestId('group-vertical-on-mobile').testVisual('group-vertical-on-mobile-desktop')
+    cy.getByTestId('button-basic').testVisual('button-basic-desktop')
+    cy.getByTestId('button-invalid').testVisual('button-invalid-desktop')
+    cy.getByTestId('button-disabled').testVisual('button-disabled-desktop')
+    cy.getByTestId('button-long-label').testVisual('button-long-label-desktop')
 
     cy.platform('mobile')
     cy.getByTestId('group-vertical').testVisual('group-vertical-mobile')
