@@ -199,9 +199,12 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           <TriggerIcon></TriggerIcon>
           <bal-popup
             id={this.componentId}
+            placement="right"
             ref={el => (this.popupElement = el as HTMLBalPopupElement)}
             onBalChange={this.onPopupChange}
             variant={this.isMobile ? 'fullscreen' : 'popover'}
+            offset={this.isMobile? 0 : 16}
+
           >
             <bal-popup-content>
               <HintContent></HintContent>
