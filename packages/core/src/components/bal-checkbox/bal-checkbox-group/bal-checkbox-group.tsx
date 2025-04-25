@@ -99,7 +99,6 @@ export class CheckboxGroup
 
   @Watch('invalid')
   invalidChanged(value: boolean | undefined) {
-    console.log('invalidChanged', value)
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
@@ -116,7 +115,6 @@ export class CheckboxGroup
 
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
-    console.log('disabledChanged', value)
     if (this.control) {
       if (value !== undefined) {
         this.getCheckboxes().forEach(child => {
@@ -149,8 +147,6 @@ export class CheckboxGroup
 
   @Watch('value')
   valueChanged(_value: any[], oldValue: any[]) {
-    console.log('valueChanged', _value)
-    debugger
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()

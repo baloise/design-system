@@ -40,7 +40,6 @@ const shouldAndAndCommand = (
     }
   }
 
-  console.log('shouldAndAndCommand', condition, element, hasRole(element, 'group'))
   if (
     isCheckbox(element) ||
     isRadio(element) ||
