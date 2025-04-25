@@ -101,6 +101,11 @@ export const config: Config = {
           src: 'components.d.ts',
         },
         {
+          src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
+          dest: 'assets/tcs.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
           dest: 'assets/compact.css',
           warn: true,
