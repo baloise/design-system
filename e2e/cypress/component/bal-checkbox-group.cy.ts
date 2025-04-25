@@ -55,7 +55,7 @@ describe('bal-checkbox-group', () => {
     cy.get('@balChange').should('not.have.been.called')
   })
 
-  it.only('should not be able to select the disabled option', () => {
+  it('should not be able to select the disabled option', () => {
     const cb = cy.get('bal-checkbox').eq(2)
 
     cb.invoke('attr', 'disabled', true)

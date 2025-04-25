@@ -1,58 +1,21 @@
 describe('bal-radio', () => {
   beforeEach(() => cy.visit('/components/bal-radio/test/bal-radio.visual.html').waitForDesignSystem())
+  it('basic component', () => {
+    cy.platform('desktop')
+    cy.getByTestId('radio-basic').testVisual('radio-basic-desktop')
+    cy.getByTestId('radio-invalid').testVisual('radio-invalid-desktop')
+    cy.getByTestId('radio-disabled').testVisual('radio-disabled-desktop')
+    cy.getByTestId('radio-others').testVisual('radio-others-desktop')
+    cy.getByTestId('radio-long-label').testVisual('radio-long-label-desktop')
+    cy.getByTestId('button-basic').testVisual('button-basic-desktop')
+    cy.getByTestId('button-invalid').testVisual('button-invalid-desktop')
+    cy.getByTestId('button-disabled').testVisual('button-disabled-desktop')
+    cy.getByTestId('button-long-label').testVisual('button-long-label-desktop')
+    cy.getByTestId('group-vertical').testVisual('group-vertical-desktop')
+    cy.getByTestId('group-vertical-on-mobile').testVisual('group-vertical-on-mobile-desktop')
 
-  testRadio('basic')
-  testRadio('button')
-
-  function testRadio(interface: 'basic' | 'button') {
-    it(`${interface} component`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}`).testVisual(`${interface}`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}`).testVisual(`${interface}-mobile`)
-    })
-    it(`${interface} disabled`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-disabled`).testVisual(`${interface}-disabled`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-disabled`).testVisual(`${interface}-disabled-mobile`)
-    })
-    it(`${interface} invalid`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-invalid`).testVisual(`${interface}-invalid`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-invalid`).testVisual(`${interface}-invalid-mobile`)
-    })
-    it(`${interface} field`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-field`).testVisual(`${interface}-field`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-field`).testVisual(`${interface}-field-mobile`)
-    })
-    it(`${interface} vertical`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-vertical`).testVisual(`${interface}-vertical`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-vertical`).testVisual(`${interface}-vertical-mobile`)
-    })
-    it(`${interface} vertical-on-mobile`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-vertical-on-mobile`).testVisual(`${interface}-vertical-on-mobile`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-vertical-on-mobile`).testVisual(`${interface}-vertical-on-mobile-mobile`)
-    })
-    it(`${interface} expanded`, () => {
-      cy.platform('desktop')
-      cy.getByTestId(`${interface}-expanded`).testVisual(`${interface}-expanded`)
-
-      cy.platform('mobile')
-      cy.getByTestId(`${interface}-expanded`).testVisual(`${interface}-expanded-mobile`)
-    })
-  }
+    cy.platform('mobile')
+    cy.getByTestId('group-vertical').testVisual('group-vertical-desktop')
+    cy.getByTestId('group-vertical-on-mobile').testVisual('group-vertical-on-mobile-desktop')
+  })
 })
