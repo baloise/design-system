@@ -1,0 +1,19 @@
+=radioGroupVertical
+  flex-direction: column
+  border-radius: var(--bal-radius-normal)
+  gap: 0
+
+=radioSymbol($color, $border, $inverted, $background)
+  .bal-radio__label
+    &::before
+      border-color: var(#{$border})
+      background: var(#{$background})
+    &.bal-radio__label.bal-radio__label--checked
+      &::after
+        background: var(#{$inverted})
+      &::before
+        background: var(#{$color})
+
+=radioLabel($color)
+  .bal-radio__label .bal-radio__label__text
+    color: var(#{$color})

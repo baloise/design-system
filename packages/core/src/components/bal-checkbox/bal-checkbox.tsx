@@ -1,30 +1,30 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  State,
   Listen,
-  ComponentInterface,
+  Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
-import { isDescendant } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { isSpaceKey } from '../../utils/keyboard'
-import { BalCheckboxOption } from './bal-checkbox.type'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
+import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
+import { isDescendant } from '../../utils/helpers'
+import { isSpaceKey } from '../../utils/keyboard'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { BalCheckboxOption } from './bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox',
-  styleUrl: 'radio-checkbox.sass',
+  styleUrl: 'bal-checkbox.sass',
 })
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, BalAriaFormLinking {
   private inputId = `bal-cb-${checkboxIds++}`
@@ -337,44 +337,25 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * ------------------------------------------------------
    */
 
-  private toggleChecked() {
-    this.checked = !this.checked
-    this.balChange.emit(this.checked)
+  private setChecked = (state: boolean) => {
+    const isChecked = (this.checked = state)
+
+    this.checked = isChecked
+    this.balChange.emit(isChecked)
   }
 
-  private onKeypress = (ev: KeyboardEvent) => {
-    if (isSpaceKey(ev)) {
-      const element = ev.target as HTMLAnchorElement
-      if (element.href) {
-        return
-      }
-
-      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.toggleChecked()
-        ev.preventDefault()
-      } else {
-        stopEventBubbling(ev)
-      }
-    }
+  private onChange = (ev: Event) => {
+    ev.preventDefault()
+    this.setChecked(!this.checked)
+    this.setFocus()
   }
 
   private onClick = (ev: MouseEvent) => {
-    const element = ev.target as HTMLAnchorElement
-    if (element.href) {
-      return
-    }
-
     if (this.wasFocused) {
       this.focused = true
     }
 
-    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.toggleChecked()
-      this.nativeInput?.focus()
-      ev.preventDefault()
-    } else {
-      stopEventBubbling(ev)
-    }
+    this.setChecked(!this.checked)
   }
 
   private onFocus = (ev: FocusEvent) => {
@@ -429,22 +410,18 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     }
 
     const id = this.ariaForm.controlId || this.inputId
-    let labelId = this.ariaForm.labelId || null
-    const LabelTag = this.labelHidden ? 'span' : 'label'
-
-    const labelAttributes: any = {}
-    if (!this.labelHidden) {
-      labelId = `${labelId || ''} ${id}-lbl`.trim()
-      labelAttributes.id = `${id}-lbl`
-      labelAttributes.htmlFor = id
-    }
+    const labelId = this.ariaForm.labelId || null
+    const LabelTag = this.nonSubmit ? 'span' : 'label'
 
     return (
       <Host
         aria-checked={`${this.checked}`}
         aria-disabled={ariaBooleanToString(this.disabled)}
+        aria-invalid={this.invalid === true ? 'true' : 'false'}
         aria-hidden={ariaBooleanToString(this.disabled || this.nonSubmit)}
         aria-focused={focused ? 'true' : null}
+        aria-labelledby={labelId}
+        aria-describedby={this.ariaForm.messageId}
         class={{
           'bal-focused': focused,
           ...block.class(),
@@ -461,29 +438,49 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           ...block.modifier('pressed').class(this.pressed),
           ...block.modifier('inline').class(this.inline),
         }}
-        onKeypress={this.onKeypress}
         onClick={this.onClick}
       >
-        <input
+        <LabelTag class={{ ...labelEl.class() }}>
+          {this.nonSubmit ? (
+            ''
+          ) : (
+            <input
+              id={id}
+              type="checkbox"
+              data-testid="bal-checkbox-input"
+              name={this.name}
+              value={this.value}
+              checked={this.checked}
+              required={this.required}
+              disabled={this.disabled || this.nonSubmit}
+              readonly={this.readonly}
+              class={{
+                ...inputEl.class(),
+                ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
+              }}
+              aria-hidden={ariaBooleanToString(this.nonSubmit)}
+              onChange={ev => this.onChange(ev)}
+              onFocus={ev => this.onFocus(ev)}
+              onBlur={ev => this.onBlur(ev)}
+              ref={inputEl => (this.nativeInput = inputEl)}
+              {...inputAttributes}
+            />
+          )}
+          <div class={{ ...iconEl.class() }}></div>
+          <div class={{ ...labelEl.class() }}>
+            <slot></slot>
+          </div>
+        </LabelTag>
+        {/* <input
           class={{
             ...inputEl.class(),
             ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
           }}
-          data-testid="bal-checkbox-input"
-          type="checkbox"
-          id={id}
-          aria-labelledby={labelId}
-          aria-describedby={this.ariaForm.messageId}
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={ariaBooleanToString(this.disabled)}
-          aria-checked={`${this.checked}`}
-          aria-hidden={ariaBooleanToString(this.nonSubmit)}
-          name={this.name}
-          value={this.value}
           checked={this.checked}
           disabled={this.disabled || this.nonSubmit}
           readonly={this.readonly}
           required={this.required}
+          onChange={_ => this.toggleChecked()}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
@@ -527,7 +524,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           </LabelTag>
         ) : (
           ''
-        )}
+        )} */}
       </Host>
     )
   }

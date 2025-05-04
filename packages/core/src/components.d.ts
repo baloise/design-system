@@ -483,6 +483,20 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+    }
     interface BalCheckbox {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -3169,6 +3183,20 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -3925,6 +3953,12 @@ declare global {
     var HTMLBalCarouselItemElement: {
         prototype: HTMLBalCarouselItemElement;
         new (): HTMLBalCarouselItemElement;
+    };
+    interface HTMLBalCheckElement extends Components.BalCheck, HTMLStencilElement {
+    }
+    var HTMLBalCheckElement: {
+        prototype: HTMLBalCheckElement;
+        new (): HTMLBalCheckElement;
     };
     interface HTMLBalCheckboxElementEventMap {
         "balFocus": BalEvents.BalCheckboxFocusDetail;
@@ -4900,6 +4934,12 @@ declare global {
         prototype: HTMLBalStepsElement;
         new (): HTMLBalStepsElement;
     };
+    interface HTMLBalSwitchElement extends Components.BalSwitch, HTMLStencilElement {
+    }
+    var HTMLBalSwitchElement: {
+        prototype: HTMLBalSwitchElement;
+        new (): HTMLBalSwitchElement;
+    };
     interface HTMLBalTabItemElementEventMap {
         "balNavigate": BalEvents.BalTabItemNavigateDetail;
     }
@@ -5066,6 +5106,7 @@ declare global {
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-carousel": HTMLBalCarouselElement;
         "bal-carousel-item": HTMLBalCarouselItemElement;
+        "bal-check": HTMLBalCheckElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-button": HTMLBalCheckboxButtonElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
@@ -5157,6 +5198,7 @@ declare global {
         "bal-stage-image": HTMLBalStageImageElement;
         "bal-step-item": HTMLBalStepItemElement;
         "bal-steps": HTMLBalStepsElement;
+        "bal-switch": HTMLBalSwitchElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -5638,6 +5680,20 @@ declare namespace LocalJSX {
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
+    }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
     }
     interface BalCheckbox {
         /**
@@ -8337,6 +8393,20 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -8808,6 +8878,7 @@ declare namespace LocalJSX {
         "bal-card-title": BalCardTitle;
         "bal-carousel": BalCarousel;
         "bal-carousel-item": BalCarouselItem;
+        "bal-check": BalCheck;
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-button": BalCheckboxButton;
         "bal-checkbox-group": BalCheckboxGroup;
@@ -8899,6 +8970,7 @@ declare namespace LocalJSX {
         "bal-stage-image": BalStageImage;
         "bal-step-item": BalStepItem;
         "bal-steps": BalSteps;
+        "bal-switch": BalSwitch;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -8931,6 +9003,7 @@ declare module "@stencil/core" {
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
             "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
+            "bal-check": LocalJSX.BalCheck & JSXBase.HTMLAttributes<HTMLBalCheckElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
@@ -9022,6 +9095,7 @@ declare module "@stencil/core" {
             "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
             "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
+            "bal-switch": LocalJSX.BalSwitch & JSXBase.HTMLAttributes<HTMLBalSwitchElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

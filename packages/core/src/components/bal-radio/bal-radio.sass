@@ -1,0 +1,300 @@
+@use '@baloise/ds-styles/sass/mixins' as *
+@use './bal-radio.mixins' as *
+@use './bal-radio.vars' as *
+
+bal-radio .bal-radio__label
+  &::before,
+  &::after
+    margin-top: 0px !important
+//
+//
+// radio group
++block(radio-group)
+  display: inline-block
+  position: relative
+  width: 100%
+  //
+  // inner group element
+  +element(inner)
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: stretch
+    flex-wrap: wrap
+    gap: var(--bal-space-normal)
+    //
+    // transform the radios into buttons
+    +modifier(select-button)
+      flex-direction: column
+      flex-wrap: wrap
+      flex: 1
+      gap: var(--bal-space-x-small)
+      +tablet
+        flex-direction: row
+    +modifier(expanded)
+      align-items: stretch
+      .bal-radio
+        flex: 1
+        +mobile
+          width: 100%
+    &--select-button#{&}--vertical
+      gap: var(--bal-space-x-small)
+    //
+    // shows the radios verically
+    +modifier(vertical)
+      +radioGroupVertical
+      +tablet
+        align-items: flex-start
+    //
+    // only shows the radios verically on mobile
+    +modifier(vertical-mobile)
+      +mobile
+        +radioGroupVertical
+
+//
+//
+// radio
++block(radio)
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 1.5rem
+  min-height: 3rem
+  //
+  // flat heigt without padding
+  +modifier(flat)
+    &:not(.bal-radio--select-button)
+      min-height: 1.5rem
+  //
+  // hide native input
+  +element(input)
+    +hidden-input
+    width: 100%
+    height: 100%
+  //
+  // hide native input
+  +modifier(invisible)
+    +hidden-input
+  //
+  // set cursor
+  &:not(#{&}--disabled)
+    &,
+    input,
+    input + label,
+    input + label > span
+      cursor: pointer
+
+  &.bal-focused
+    &.bal-radio--select-button
+      @extend %focus-shadow
+    .bal-radio__input:not(.bal-radio__input--select-button) + .bal-radio__label::before
+      @extend %focus-shadow
+
+  //
+  // label of the radio with the icon and the text
+  +element(label)
+    +font-smoothing()
+    +unselectable
+    margin: 0
+    line-height: 1.5rem
+    contain: layout style
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: left
+    min-height: var(--bal-radio-label-min-height)
+    font-family: var(--bal-font-family-text)
+    //
+    // inner text span element
+    +element(text)
+      padding-left: 2rem
+      hyphens: auto
+      padding-top: 0.25rem
+      padding-bottom: 0.25rem
+      +modifier(hidden)
+        padding-left: 0
+        display: none
+      +modifier(flat)
+        padding-top: 0
+        padding-bottom: 0
+    +modifier(flat)
+      &:not(.bal-radio--select-button)
+        &::before,
+        &::after
+          top: 0px !important
+    +modifier(hidden)
+      &::before,
+      &::after
+        top: 0px !important
+    //
+    // symbol
+    &::before,
+    &::after
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 0.25rem
+      height: var(--bal-radio-symbol-size)
+      width: var(--bal-radio-symbol-size)
+      background-color: transparent
+      background-position: center
+      background-repeat: no-repeat
+      background-size: var(--bal-radio-symbol-size) var(--bal-radio-symbol-size)
+    &::before
+      content: ''
+      border-style: var(--bal-form-field-control-border-style)
+      border-width: 2px
+      border-radius: 50%
+    &::after
+      content: none
+      border-radius: 50%
+      left: 0
+      transform: scale(0.25)
+    &--checked
+      &::after
+        content: ''
+
+  //
+  // Symbol colors main, inverted and background
+  +radioSymbol(--bal-color-primary, --bal-color-primary, --bal-color-white, --bal-color-transparent)
+  &:hover,
+  &--hovered
+    +radioSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5, --bal-color-white, --bal-color-grey-2)
+  &:active,
+  &--pressed
+    +radioSymbol(--bal-color-blue-6, --bal-color-blue-6, --bal-color-white, --bal-color-grey-2)
+  &--invalid
+    +radioSymbol(--bal-color-border-danger, --bal-color-border-danger, --bal-color-white, --bal-color-danger-1)
+    &:hover,
+    &.bal-radio--hovered
+      +radioSymbol(--bal-color-danger-5, --bal-color-danger-5, --bal-color-white, --bal-color-danger-1)
+    &:active,
+    &.bal-radio--pressed
+      +radioSymbol(--bal-color-danger-6, --bal-color-danger-6, --bal-color-white, --bal-color-danger-1)
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:active
+    +radioSymbol(--bal-color-border-grey-dark, --bal-color-border-grey-dark, --bal-color-white, --bal-color-grey-2)
+  //
+  // label colors
+  +radioLabel(--bal-color-primary)
+  &:hover,
+  &--hovered
+    +radioLabel(--bal-color-light-blue-5)
+  &:active,
+  &--pressed
+    +radioLabel(--bal-color-blue-6)
+  &--invalid
+    +radioLabel(--bal-color-border-danger)
+    &:hover,
+    &.bal-radio--hovered
+      +radioLabel(--bal-color-danger-5)
+    &:active,
+    &.bal-radio--pressed
+      +radioLabel(--bal-color-danger-6)
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:active,
+  &--disabled#{&}--hovered,
+  &--disabled#{&}--pressed
+    +radioLabel(--bal-color-text-grey)
+  //
+  //
+  // inline display for tables
+  &--inline
+    display: inline
+  //
+  //
+  // select button styles
+  &--select-button
+    padding-left: 0.75rem
+    padding-right: 0.75rem
+    min-width: 3rem
+    border-width: 2px
+    border-style: var(--bal-form-field-control-border-style)
+    border-radius: var(--bal-form-field-control-radius)
+    // color styles
+    border-color: var(--bal-radio-select-button-border-color)
+    &:hover
+      border-color: var(--bal-radio-select-button-border-color-hover)
+      background: var(--bal-radio-select-button-background-hover)
+    &:active
+      border-color: var(--bal-radio-select-button-border-color-active)
+      background: var(--bal-radio-select-button-background-active)
+    label
+      &::before
+        top: unset
+      &::after
+        top: unset
+        margin-top: -3px
+    .bal-radio__label--flat
+      &::before
+        top: unset !important
+      &::after
+        margin-top: -3px
+        top: unset !important
+      .bal-radio__label__text--flat
+        padding-top: 0.25rem
+        padding-bottom: 0.25rem
+  &--select-button#{&}--checked
+    background: var(--bal-radio-select-button-background-checked)
+    .bal-radio__label
+      .bal-radio__label__text
+        .is-link
+          color: var(--bal-radio-select-button-link-text-color-checked)
+    &:hover
+      background: var(--bal-radio-select-button-background-checked-hover)
+    &:active
+      background: var(--bal-radio-select-button-background-checked-active)
+    +radioSymbol(--bal-color-primary, --bal-color-white, --bal-color-white, --bal-color-transparent)
+    +radioLabel(--bal-color-white)
+    &:hover
+      +radioSymbol(--bal-color-light-blue-5, --bal-color-white, --bal-color-white, --bal-color-transparent)
+      +radioLabel(--bal-color-white)
+    &:active
+      +radioSymbol(--bal-color-blue-6, --bal-color-white, --bal-color-white, --bal-color-transparent)
+      +radioLabel(--bal-color-white)
+  &--select-button#{&}--invalid
+    border-color: var(--bal-radio-select-button-border-color-invalid)
+    background: var(--bal-radio-select-button-background-invalid)
+    .bal-radio__label
+      .bal-radio__label__text
+        .is-link
+          color: var(--bal-form-field-label-danger-color)
+    &:hover
+      border-color: var(--bal-radio-select-button-border-color-invalid-hover)
+      background: var(--bal-radio-select-button-background-invalid-hover)
+    &:active
+      border-color: var(--bal-radio-select-button-border-color-invalid-active)
+      background: var(--bal-radio-select-button-background-invalid-active)
+  &--select-button#{&}--invalid#{&}--checked
+    border-color: var(--bal-radio-select-button-border-color-invalid-checked)
+    background: var(--bal-radio-select-button-background-invalid-checked)
+    &:hover
+      border-color: var(--bal-radio-select-button-border-color-invalid-checked-hover)
+      background: var(--bal-radio-select-button-background-invalid-checked-hover)
+    &:active
+      border-color: var(--bal-radio-select-button-border-color-invalid-checked-active)
+      background: var(--bal-radio-select-button-background-invalid-checked-active)
+    +radioSymbol(--bal-color-border-danger, --bal-color-white, --bal-color-white, --bal-color-transparent)
+    &:hover
+      +radioSymbol(--bal-color-danger-5, --bal-color-white, --bal-color-white, --bal-color-transparent)
+    &:active
+      +radioSymbol(--bal-color-danger-6, --bal-color-white, --bal-color-white, --bal-color-transparent)
+  &--select-button#{&}--disabled,
+  &--select-button#{&}--disabled:hover,
+  &--select-button#{&}--disabled:active
+    border-color: var(--bal-radio-select-button-border-color-disabled-hover-active)
+    background: var(--bal-radio-select-button-background-disabled-hover-active)
+    .bal-radio__label
+      .bal-radio__label__text
+        .is-link
+          color: var(--bal-form-field-label-disabled-color)
+  &--select-button#{&}--disabled#{&}--checked,
+  &--select-button#{&}--disabled#{&}--checked:hover,
+  &--select-button#{&}--disabled#{&}--checked:active
+    border-color: var(--bal-radio-select-button-border-color-disabled-checked-hover-active)
+    background: var(--bal-radio-select-button-background-disabled-checked-hover-active)
+    +radioSymbol(--bal-color-border-grey-dark, --bal-color-white, --bal-color-white, --bal-color-transparent)

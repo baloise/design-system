@@ -1,0 +1,65 @@
+@use '@baloise/ds-styles/sass/mixins' as *
+@use '../bal-radio-checkbox.vars' as *
+
+.bal-check
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  user-select: none
+  width: 1.5rem
+  height: 1.5rem
+  border-radius: var(--bal-radius-normal)
+  //
+  // default color
+  border: 2px solid var(--bal-color-primary)
+  background-color: transparent
+  +hover
+    &:hover
+      background: var(--bal-color-grey-2)
+      border-color: var(--bal-color-border-primary-hovered)
+  &:active
+    background: var(--bal-color-grey-1)
+    border-color: var(--bal-color-border-primary-pressed)
+  //
+  // checked
+  &--checked
+    background-color: var(--bal-color-primary)
+    +hover
+      &:hover
+        background: var(--bal-color-border-primary-hovered)
+        border-color: var(--bal-color-border-primary-hovered)
+    &:active
+      background: var(--bal-color-border-primary-pressed)
+      border-color: var(--bal-color-border-primary-pressed)
+  //
+  // invalid
+  &--invalid
+    border-color: var(--bal-color-border-danger)
+    background-color: var(--bal-color-danger-1)
+    +hover
+      &:hover
+        background-color: var(--bal-color-danger-1)
+        border-color: var(--bal-color-border-danger-hovered)
+    &:active
+      background-color: var(--bal-color-danger-1)
+      border-color: var(--bal-color-border-danger-pressed)
+  &--invalid#{&}--checked
+    border-color: var(--bal-color-border-danger)
+    background: var(--bal-color-border-danger)
+    +hover
+      &:hover
+        background-color: var(--bal-color-border-danger-hovered)
+        border-color: var(--bal-color-border-danger-hovered)
+    &:active
+      background-color: var(--bal-color-border-danger-pressed)
+      border-color: var(--bal-color-border-danger-pressed)
+  //
+  // disabled
+  &--disabled
+    cursor: default !important
+    background: var(--bal-color-grey-2) !important
+    border-color: var(--bal-color-border-grey-dark) !important
+  &--disabled#{&}--checked
+    background-color: var(--bal-color-border-grey-dark) !important
+    border-color: var(--bal-color-border-grey-dark) !important
