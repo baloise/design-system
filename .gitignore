@@ -57,6 +57,7 @@ packages/core/**/theming.md
 packages/core/**/testing.md
 packages/core/**/api.md
 packages/css/css
+packages/tailwindcss/css
 packages/styles/css
 packages/styles/docs
 packages/styles/src/generated

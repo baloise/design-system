@@ -23,6 +23,7 @@
   "style": "src/index.css",
   "files": [
     "bin/",
+    "css/",
     "src/"
   ],
   "dependencies": {

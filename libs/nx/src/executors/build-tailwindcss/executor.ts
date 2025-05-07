@@ -1,25 +1,24 @@
-import { rm } from 'fs/promises'
+import { mkdir, rm, writeFile } from 'fs/promises'
 import { join } from 'path'
-import { generateSpacing } from './generators/spacing'
+import { generateBorder } from './generators/border'
+import { NEWLINE } from './generators/utils'
+import { generateZIndex } from './generators/z-index'
 import { BuildTailwindcssExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildTailwindcssExecutorSchema) {
   try {
-    console.log('tailwindcss', options)
-    // clean generated files
-    await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
+    let content = `@layer utilities {${NEWLINE}${NEWLINE}`
+    // content += await generateSpacing(options)
+    content += await generateZIndex(options)
+    content += await generateBorder(options)
+    content += `}${NEWLINE}${NEWLINE}`
 
-    let utilContent = ``
-    utilContent += await generateSpacing(options)
+    console.log('content', content)
 
-    console.log('utilContent', utilContent)
     // create css output
-    // await mkdir(join(options.projectRoot, 'css'))
-    // const files = await scan(join(options.projectRoot, 'sass', '**', '*.sass'))
-    // for (let index = 0; index < files.length; index++) {
-    //   const file = files[index]
-    //   await compileSass(file, options)
-    // }
+    await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
+    await mkdir(join(options.projectRoot, 'css'))
+    await writeFile(join(options.projectRoot, 'css', `utilities.css`), content)
   } catch (error) {
     console.error(error)
     return { success: false }

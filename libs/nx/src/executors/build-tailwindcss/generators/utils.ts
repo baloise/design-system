@@ -6,11 +6,6 @@ export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'
 export const COLON_SEPARATOR = `\\:`
 
-export const save = async (fileName, projectRoot, { json, rules }) => {
-  await writeFileRecursive(join(projectRoot, 'docs', `${fileName}.json`), json)
-  await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.sass`), rules)
-}
-
 type Token = { name: string; value: string }
 type Tokens = { [key: string]: Token }
 
