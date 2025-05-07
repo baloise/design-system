@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import '@baloise/ds-tokens/dist/tokens.css';
+
+@theme {
+  --color-mint-500: var(--bal-color-purple);
+}

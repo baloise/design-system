@@ -1,0 +1,13 @@
+- tokens
+- only baloise color theme remove rest
+- fonts
+- utilities
+- build package
+- add to an angular app
+- tests
+- ci
+
+- docs
+- spacing respinsive later
+- check gap what we have and they dont
+- migration script
