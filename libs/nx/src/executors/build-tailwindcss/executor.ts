@@ -6,11 +6,12 @@ import { NEWLINE } from './generators/utils'
 import { generateZIndex } from './generators/z-index'
 import { BuildTailwindcssExecutorSchema } from './schema'
 import { generateLineHeight } from './generators/line-height'
+import { generateSpacing } from './generators/spacing'
 
 export default async function runExecutor(options: BuildTailwindcssExecutorSchema) {
   try {
     let content = `@layer utilities {${NEWLINE}${NEWLINE}`
-    // content += await generateSpacing(options)
+    content += await generateSpacing(options)
     content += await generateZIndex(options)
     content += await generateBorder(options)
     content += await generateTypography(options)
