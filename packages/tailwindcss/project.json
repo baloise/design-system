@@ -5,11 +5,19 @@
   "projectType": "library",
   "targets": {
     "build": {
+      "dependsOn": ["prepare"],
       "executor": "@baloise/ds-nx:build-tailwindcss",
       "outputs": ["{projectRoot}/css"],
       "options": {
         "projectRoot": "{projectRoot}",
         "tokensRoot": "{workspaceRoot}/packages/tokens"
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npm run build"
       }
     },
     "link": {

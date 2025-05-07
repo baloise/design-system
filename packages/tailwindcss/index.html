@@ -4,24 +4,281 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/index.css" rel="stylesheet" />
-    <link href="/src/styles.css" rel="stylesheet" />
+    <style>
+      section.test-borders > section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      section.test-borders .border-none > div {
+        border: 2px solid #000d6e;
+      }
+
+      section.test-colors > section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      section.test-colors section > div {
+        width: 80px;
+        height: 48px;
+        border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
-    <main class="container is-compact">
-      <h1 class="text-large desktop:text-small text-shadow-normal animate-pulse z-index-tooltip">Hello world!</h1>
-      <a href="my-kink" class="link">my-link</a>
-      <br />
-      <button class="button">button</button>
-      <br />
-      <div class="tablet:bg-red bg-purple p-large mt-xx-large">card</div>
-      <br />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores velit ut consequatur qui, officia provident
-        temporibus sequi deleniti totam voluptatem iusto, inventore, ipsam blanditiis commodi doloremque a maxime vitae
-        reprehenderit. Velit, cupiditate deleniti delectus voluptatem in nisi rerum magnam. Cumque esse sed tempore,
-        voluptatum iste consequatur neque ipsa animi eaque mollitia consequuntur doloremque eum autem, corporis sit
-        dicta aspernatur cum!
-      </p>
+    <main class="container">
+      <ul class="list">
+        <li>
+          <a href="test/css-border.visual.html">border</a>
+        </li>
+        <li>
+          <a href="test/css-color.visual.html">color</a>
+        </li>
+        <li>
+          <a href="test/css-core.visual.html">core</a>
+        </li>
+        <li>
+          <a href="test/css-display.visual.html">display</a>
+        </li>
+        <li>
+          <a href="test/css-flex.visual.html">flex</a>
+        </li>
+        <li>
+          <a href="test/css-grid.visual.html">grid</a>
+        </li>
+        <li>
+          <a href="test/css-inheritance.visual.html">inheritance</a>
+        </li>
+        <li>
+          <a href="test/css-opacity.visual.html">opacity</a>
+        </li>
+        <li>
+          <a href="test/css-radius.visual.html">radius</a>
+        </li>
+        <li>
+          <a href="test/css-shadow.visual.html">shadow</a>
+        </li>
+        <li>
+          <a href="test/css-spacing.visual.html">spacing</a>
+        </li>
+        <li>
+          <a href="test/css-structure.visual.html">structure</a>
+        </li>
+        <li>
+          <a href="test/css-typography.visual.html">typography</a>
+        </li>
+      </ul>
+      <section>
+        <h1 class="text-large desktop:text-small text-shadow-normal animate-pulse z-index-tooltip">Hello world!</h1>
+        <a href="my-kink" class="link">my-link</a>
+        <br />
+        <button class="button">button</button>
+        <br />
+        <div class="tablet:bg-red bg-purple p-large mt-xx-large">card</div>
+        <br />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores velit ut consequatur qui, officia provident
+          temporibus sequi deleniti totam voluptatem iusto, inventore, ipsam blanditiis commodi doloremque a maxime
+          vitae reprehenderit. Velit, cupiditate deleniti delectus voluptatem in nisi rerum magnam. Cumque esse sed
+          tempore, voluptatum iste consequatur neque ipsa animi eaque mollitia consequuntur doloremque eum autem,
+          corporis sit dicta aspernatur cum!
+        </p>
+      </section>
+      <!-- ------------------------------------------------------------------- -->
+      <!-- BORDER                                                              -->
+      <!-- ------------------------------------------------------------------- -->
+      <section class="test-borders">
+        <h1 class="title">Border</h1>
+        <section data-testid="border-none" class="border-none">
+          <div class="border-none">None</div>
+          <div class="border-top-none">Top</div>
+
+          <div class="border-left-none">Left</div>
+          <div class="border-right-none">Right</div>
+          <div class="border-bottom-none">Bottom</div>
+        </section>
+        <section data-testid="border-primary">
+          <div class="border-primary">Primary</div>
+          <div class="border-top-primary">Top</div>
+          <div class="border-left-primary">Left</div>
+          <div class="border-right-primary">Right</div>
+          <div class="border-bottom-primary">Bottom</div>
+        </section>
+        <section data-testid="border-grey">
+          <div class="border-grey">Grey</div>
+          <div class="border-top-grey">Top</div>
+          <div class="border-left-grey">Left</div>
+          <div class="border-right-grey">Right</div>
+          <div class="border-bottom-grey">Bottom</div>
+        </section>
+        <section data-testid="border-grey-dark">
+          <div class="border-grey-dark">Grey dark</div>
+          <div class="border-top-grey-dark">Top</div>
+          <div class="border-left-grey-dark">Left</div>
+          <div class="border-right-grey-dark">Right</div>
+          <div class="border-bottom-grey-dark">Bottom</div>
+        </section>
+        <section data-testid="border-warning">
+          <div class="border-warning">Warning</div>
+          <div class="border-top-warning">Top</div>
+          <div class="border-left-warning">Left</div>
+          <div class="border-right-warning">Right</div>
+          <div class="border-bottom-warning">Bottom</div>
+        </section>
+        <section data-testid="border-success">
+          <div class="border-success">Success</div>
+          <div class="border-top-success">Top</div>
+          <div class="border-left-success">Left</div>
+          <div class="border-right-success">Right</div>
+          <div class="border-bottom-success">Bottom</div>
+        </section>
+        <section data-testid="border-danger">
+          <div class="border-danger">Danger</div>
+          <div class="border-top-danger">Top</div>
+          <div class="border-left-danger">Left</div>
+          <div class="border-right-danger">Right</div>
+          <div class="border-bottom-danger">Bottom</div>
+        </section>
+        <section data-testid="border-primary-light">
+          <div class="border-primary-light">Primary light</div>
+          <div class="border-top-primary-light">Top</div>
+          <div class="border-left-primary-light">Left</div>
+          <div class="border-right-primary-light">Right</div>
+          <div class="border-bottom-primary-light">Bottom</div>
+        </section>
+        <section data-testid="border-white" class="bg-primary">
+          <div class="border-white text-white">White</div>
+          <div class="border-top-white text-white">Top</div>
+          <div class="border-left-white text-white">Left</div>
+          <div class="border-right-white text-white">Right</div>
+          <div class="border-bottom-white text-white">Bottom</div>
+        </section>
+      </section>
+      <!-- ------------------------------------------------------------------- -->
+      <!-- Colors                                                              -->
+      <!-- ------------------------------------------------------------------- -->
+      <section class="test-colors">
+        <h1 class="title">Colors</h1>
+        <section data-testid="basic">
+          <div class="bg-transparent"></div>
+          <div class="bg-white"></div>
+          <div class="bg-black"></div>
+          <div class="bg-grey"></div>
+          <div class="bg-primary"></div>
+          <div class="bg-purple"></div>
+          <div class="bg-green"></div>
+          <div class="bg-yellow"></div>
+          <div class="bg-red"></div>
+          <div class="bg-info"></div>
+          <div class="bg-success"></div>
+          <div class="bg-warning"></div>
+          <div class="bg-danger"></div>
+        </section>
+        <section data-testid="grey">
+          <div class="bg-grey-1"></div>
+          <div class="bg-grey-2"></div>
+          <div class="bg-grey-3"></div>
+          <div class="bg-grey-4"></div>
+          <div class="bg-grey-5"></div>
+          <div class="bg-grey-6"></div>
+        </section>
+        <section data-testid="blue">
+          <div class="bg-primary-1"></div>
+          <div class="bg-primary-2"></div>
+          <div class="bg-primary-3"></div>
+          <div class="bg-primary-4"></div>
+          <div class="bg-primary-5"></div>
+          <div class="bg-primary-6"></div>
+        </section>
+        <section data-testid="light-blue">
+          <div class="bg-light-blue-1"></div>
+          <div class="bg-light-blue-2"></div>
+          <div class="bg-light-blue-3"></div>
+          <div class="bg-light-blue-4"></div>
+          <div class="bg-light-blue-5"></div>
+          <div class="bg-light-blue-6"></div>
+        </section>
+        <section data-testid="purple">
+          <div class="bg-purple-1"></div>
+          <div class="bg-purple-2"></div>
+          <div class="bg-purple-3"></div>
+          <div class="bg-purple-4"></div>
+          <div class="bg-purple-5"></div>
+          <div class="bg-purple-6"></div>
+        </section>
+        <section data-testid="green">
+          <div class="bg-green-1"></div>
+          <div class="bg-green-2"></div>
+          <div class="bg-green-3"></div>
+          <div class="bg-green-4"></div>
+          <div class="bg-green-5"></div>
+          <div class="bg-green-6"></div>
+        </section>
+        <section data-testid="yellow">
+          <div class="bg-yellow-1"></div>
+          <div class="bg-yellow-2"></div>
+          <div class="bg-yellow-3"></div>
+          <div class="bg-yellow-4"></div>
+          <div class="bg-yellow-5"></div>
+          <div class="bg-yellow-6"></div>
+        </section>
+        <section data-testid="red">
+          <div class="bg-red-1"></div>
+          <div class="bg-red-2"></div>
+          <div class="bg-red-3"></div>
+          <div class="bg-red-4"></div>
+          <div class="bg-red-5"></div>
+          <div class="bg-red-6"></div>
+        </section>
+        <section data-testid="info">
+          <div class="bg-info-1"></div>
+          <div class="bg-info-2"></div>
+          <div class="bg-info-3"></div>
+          <div class="bg-info-4"></div>
+          <div class="bg-info-5"></div>
+          <div class="bg-info-6"></div>
+        </section>
+        <section data-testid="success">
+          <div class="bg-success-1"></div>
+          <div class="bg-success-2"></div>
+          <div class="bg-success-3"></div>
+          <div class="bg-success-4"></div>
+          <div class="bg-success-5"></div>
+          <div class="bg-success-6"></div>
+        </section>
+        <section data-testid="warning">
+          <div class="bg-warning-1"></div>
+          <div class="bg-warning-2"></div>
+          <div class="bg-warning-3"></div>
+          <div class="bg-warning-4"></div>
+          <div class="bg-warning-5"></div>
+          <div class="bg-warning-6"></div>
+        </section>
+        <section data-testid="danger">
+          <div class="bg-danger-1"></div>
+          <div class="bg-danger-2"></div>
+          <div class="bg-danger-3"></div>
+          <div class="bg-danger-4"></div>
+          <div class="bg-danger-5"></div>
+          <div class="bg-danger-6"></div>
+        </section>
+        <section data-testid="primary">
+          <div class="bg-primary-1"></div>
+          <div class="bg-primary-2"></div>
+          <div class="bg-primary-3"></div>
+          <div class="bg-primary-4"></div>
+          <div class="bg-primary-5"></div>
+          <div class="bg-primary-6"></div>
+        </section>
+      </section>
     </main>
   </body>
 </html>

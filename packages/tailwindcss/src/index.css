@@ -5,4 +5,4 @@
 @import 'tailwindcss';
 @import './theme';
 @import './layer';
-@import '../css/utilities';
+@import './utilities';

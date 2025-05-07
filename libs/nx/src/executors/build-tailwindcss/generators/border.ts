@@ -2,10 +2,10 @@ import { BuildTailwindcssExecutorSchema } from '../schema'
 import { getTokens, NEWLINE } from './utils'
 
 export const generateBorder = async (options: BuildTailwindcssExecutorSchema) => {
-  const tokens = await getTokens({ token: 'size.border.width', ...options })
+  const borderWidthTokens = await getTokens({ token: 'size.border.width', ...options })
 
-  return (
-    Object.entries(tokens)
+  const borderWidth =
+    Object.entries(borderWidthTokens)
       .map(([key, token]) => {
         const className = `.border-${key}`
         const variableName = `--${token.name}`
@@ -14,5 +14,32 @@ export const generateBorder = async (options: BuildTailwindcssExecutorSchema) =>
       .join(NEWLINE) +
     NEWLINE +
     NEWLINE
-  )
+
+  const borderColorTokens = await getTokens({ token: 'color.border', ...options })
+
+  const positions = ['', '-top', '-right', '-bottom', '-left']
+  const content = []
+  positions.forEach(position => {
+    content.push(
+      Object.entries(borderColorTokens)
+        .map(([key, token]) => {
+          if (key === 'inverted') {
+            return ''
+          }
+          const name = key === 'default' ? '' : `-${key}`
+          const className = `.border${position}${name}`
+          const variableName = `--${token.name}`
+          return `
+  ${className} {
+    border${position}-color: var(${variableName});
+    border${position}-width: var(--bal-border-width-normal);
+  }`
+        })
+        .join(NEWLINE) +
+        NEWLINE +
+        NEWLINE,
+    )
+  })
+
+  return [borderWidth, content.join(NEWLINE + NEWLINE)].join(NEWLINE + NEWLINE) + NEWLINE + NEWLINE
 }
