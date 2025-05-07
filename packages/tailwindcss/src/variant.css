@@ -1,0 +1,11 @@
+@custom-variant mobile {
+  @media (max-width: 768px) {
+    @slot;
+  }
+}
+
+@custom-variant touch {
+  @media (max-width: 1023px) {
+    @slot;
+  }
+}
