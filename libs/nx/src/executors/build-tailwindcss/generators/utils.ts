@@ -11,10 +11,13 @@ export const save = async (fileName, projectRoot, { json, rules }) => {
   await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.sass`), rules)
 }
 
-export const getTokens = async ({ token, tokensRoot }) => {
+type Token = { name: string; value: string }
+type Tokens = { [key: string]: Token }
+
+export const getTokens = async ({ token, tokensRoot }): Promise<Tokens> => {
   const content = await readFile(join(tokensRoot, `dist/tokens.docs.json`), 'utf8')
   const json = JSON.parse(content)
-  return get(json, token)
+  return get(json, token) as Tokens
 }
 
 export const writeFileRecursive = async (filePath, data) => {
