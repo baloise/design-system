@@ -1,5 +1,5 @@
-import { BuildTailwindcssExecutorSchema } from '../schema'
-import { getTokens, NEWLINE } from './utils'
+import { BuildTailwindcssExecutorSchema } from '../schema';
+import { getTokens, NEWLINE } from './utils';
 
 type Token = { name: string; value: string }
 type SpacingTokens = { [key: string]: {[breakpoint: string]: Token} }
@@ -21,7 +21,7 @@ const generateSpacingWithPrefix = (prefix, tokens) => {
     .map(([sizeKey, group]) => {
       const classParts = Object.entries(group)
         .map(([breakpoint, token]) =>
-          `${getBreakPointPrefix(breakpoint)}${prefix}-(${token.name})`
+          `${getBreakPointPrefix(breakpoint)}${prefix}-(--${token.name})`
         )
 
       return `  .${prefix}-${sizeKey} {${NEWLINE}    @apply ${classParts.join(' ')};${NEWLINE}  }`
