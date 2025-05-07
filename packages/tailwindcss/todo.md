@@ -1,13 +1,8 @@
-- tokens
-- only baloise color theme remove rest
-- fonts
-- utilities
-- build package
-- add to an angular app
+- generate utilities
 - tests
 - ci
-
 - docs
-- spacing respinsive later
+- spacing respinsive
 - check gap what we have and they dont
 - migration script
+- align fraction from half to 1/2
