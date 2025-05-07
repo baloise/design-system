@@ -1,9 +1,11 @@
 import { mkdir, rm, writeFile } from 'fs/promises'
 import { join } from 'path'
 import { generateBorder } from './generators/border'
+import { generateTypography } from './generators/typography'
 import { NEWLINE } from './generators/utils'
 import { generateZIndex } from './generators/z-index'
 import { BuildTailwindcssExecutorSchema } from './schema'
+import { generateLineHeight } from './generators/line-height'
 
 export default async function runExecutor(options: BuildTailwindcssExecutorSchema) {
   try {
@@ -11,6 +13,8 @@ export default async function runExecutor(options: BuildTailwindcssExecutorSchem
     // content += await generateSpacing(options)
     content += await generateZIndex(options)
     content += await generateBorder(options)
+    content += await generateTypography(options)
+    content += await generateLineHeight(options)
     content += `}${NEWLINE}${NEWLINE}`
 
     console.log('content', content)
