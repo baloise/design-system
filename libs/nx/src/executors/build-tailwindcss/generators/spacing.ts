@@ -12,8 +12,9 @@ export const generateSpacing = async (options: BuildTailwindcssExecutorSchema) =
 
   const paddings = PADDINGS.map(prefix => generateSpacingWithPrefix(prefix, tokens))
   const margins = MARGINS.map(prefix => generateSpacingWithPrefix(prefix, tokens))
+  const gaps = generateSpacingWithPrefix('gap', tokens)
 
-  return [paddings, margins].join(NEWLINE + NEWLINE) + NEWLINE + NEWLINE
+  return [paddings, margins, gaps].join(NEWLINE + NEWLINE) + NEWLINE + NEWLINE
 }
 
 const generateSpacingWithPrefix = (prefix, tokens) => {

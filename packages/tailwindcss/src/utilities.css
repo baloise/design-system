@@ -20,4 +20,8 @@
   .border-right-none {
     border-right: none !important;
   }
+
+  .gap-none {
+    gap: 0 !important;
+  }
 }
