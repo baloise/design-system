@@ -1,5 +1,39 @@
 # Changelog
 
+## 19.0.0
+
+### Major Changes
+
+- feat(bal-nav): add rel attribute to nav elements ( [#1669](https://github.com/baloise/design-system/pull/1669))
+
+- **checkbox & radio**: Refactored the checkbox and radio components to improve accessibility (A11y) and align with the upcoming EU Accessibility Act. ( [#1685](https://github.com/baloise/design-system/pull/1685))
+
+  - Remove component bal-checkbox-button, bal-radio-button
+  - Change naming of interface variables select-button to button
+  - Rename prop `grid` to `columns` for the bal-radio-group
+
+  For more details have a look at our Migration Guide to v19.
+
+### Minor Changes
+
+- **tabs**: new property handleAsTabList to control navigation via keyboard to use arrow or either tabulator ( [#1680](https://github.com/baloise/design-system/pull/1680))
+
+- feat(bal-nav): Introduce new navigation aria label and adapt translations ( [#1670](https://github.com/baloise/design-system/pull/1670))
+
+- **hint**: make focused hint more visible, prevent scrolling when opening hint via keyboard space ( [#1667](https://github.com/baloise/design-system/pull/1667))
+
+### Patch Changes
+
+- Update step-button to use a button instead of a link in case there is no href attribute to solve CSP issues ( [#1687](https://github.com/baloise/design-system/pull/1687))
+
+- **react**: support vite based applications ( [#1693](https://github.com/baloise/design-system/pull/1693))
+
+- **brand-icons**: replace damage-parked-car svg with newer one ( [#1676](https://github.com/baloise/design-system/pull/1676))
+
+- **core**: a11y: fix input-slider to display focus state ( [#1665](https://github.com/baloise/design-system/pull/1665))
+
+- **accordion**: Ensure bulletlist collapses at the same time as the other elements within the accordion ( [#1681](https://github.com/baloise/design-system/pull/1681))
+
 ## 18.3.0
 
 ### Minor Changes
