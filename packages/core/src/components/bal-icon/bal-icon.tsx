@@ -48,6 +48,8 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    * The theme type of the button.
    */
   @Prop() color: BalProps.BalIconColor = ''
+  @Prop() colorHovered: BalProps.BalIconColor = ''
+  @Prop() colorPressed: BalProps.BalIconColor = ''
 
   /**
    * If `true` the icon acts as a tile with a background color.
@@ -149,6 +151,16 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   }
 
   private parseColor() {
+    if (this.colorHovered && this.hovered) {
+      return this.colorHovered
+    }
+    if (this.colorPressed && this.pressed) {
+      return this.colorPressed
+    }
+    if (this.colorHovered && this.colorPressed) {
+      return this.color
+    }
+
     if (!!this.disabled) {
       return 'grey'
     }
@@ -163,7 +175,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
       }
     }
 
-    if (this.color !== 'auto') {
+    if (this.color !== 'auto' && (this.color === 'primary' || this.color === '')) {
       if (this.pressed) {
         return 'primary-dark'
       } else if (this.hovered) {

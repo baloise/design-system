@@ -65,6 +65,10 @@ export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
   return typeof el === 'object' && (el as any).length > 0 && (el as unknown as JQuery).hasClass(name)
 }
 
+export const hasRole = (el: Cypress.Chainable<JQuery>, role: string) => {
+  return typeof el === 'object' && (el as any).length > 0 && (el as unknown as JQuery).attr('role') === role
+}
+
 export const hasTestId = (el: Cypress.Chainable<JQuery>, testId: string) => {
   if (typeof el === 'object' && (el as any).length > 0) {
     const dataTestId = (el as unknown as JQuery).data('testid')

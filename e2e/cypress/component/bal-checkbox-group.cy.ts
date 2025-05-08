@@ -35,7 +35,7 @@ describe('bal-checkbox-group', () => {
   })
 
   it('should select first one and send change event', () => {
-    cy.get('bal-checkbox').eq(0).click().find('input').blur()
+    cy.get('bal-checkbox').eq(0).find('input').check({ force: true }).blur()
 
     cy.get('bal-checkbox').eq(0).find('input').should('be.checked')
     cy.get('bal-checkbox').eq(1).find('input').should('not.be.checked')
@@ -56,13 +56,21 @@ describe('bal-checkbox-group', () => {
   })
 
   it('should not be able to select the disabled option', () => {
-    cy.get('bal-checkbox').eq(2).invoke('attr', 'disabled', true)
+    const cb = cy.get('bal-checkbox').eq(2)
 
-    cy.get('bal-checkbox').eq(2).click({ force: true }).find('input').blur({ force: true })
+    cb.invoke('attr', 'disabled', true)
+    cb.click({ force: true }).find('input').blur({ force: true })
 
     cy.get('@click').should('not.have.been.called')
     cy.get('@balFocus').should('not.have.been.called')
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balBlur').should('not.have.been.called')
+  })
+
+  it.only('should disable whole group', () => {
+    const cb = cy.get('bal-checkbox-group')
+
+    cb.invoke('attr', 'disabled', true)
+    cb.should('be.disabled')
   })
 })

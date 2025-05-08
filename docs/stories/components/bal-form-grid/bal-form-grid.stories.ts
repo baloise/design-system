@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
 
 type Args = JSX.BalFormGrid & { content: string }
 
@@ -248,7 +248,7 @@ export const FormStructure = Story({
                     <bal-field>
                         <bal-field-label>Checkbox</bal-field-label>
                         <bal-field-control>
-                            <bal-checkbox-group interface="select-button">
+                            <bal-checkbox-group interface="button">
                                 <bal-checkbox>Label</bal-checkbox>
                                 <bal-checkbox checked="true">Label</bal-checkbox>
                             </bal-checkbox-group>
@@ -272,7 +272,7 @@ export const FormStructure = Story({
                     <bal-field>
                         <bal-field-label>Radio</bal-field-label>
                         <bal-field-control>
-                            <bal-radio-group value="2" interface="select-button">
+                            <bal-radio-group value="2" interface="button">
                                 <bal-radio value="1">Label</bal-radio>
                                 <bal-radio value="2" checked="true">Label</bal-radio>
                             </bal-radio-group>
