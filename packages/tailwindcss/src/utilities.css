@@ -24,4 +24,24 @@
   .gap-none {
     gap: 0 !important;
   }
+
+  .gap-auto {
+    gap: auto;
+  }
+
+  .max-h-auto {
+    max-height: auto;
+  }
+
+  .min-h-auto {
+    min-height: auto;
+  }
+
+  .max-w-auto {
+    max-width: auto;
+  }
+
+  .min-w-auto {
+    min-width: auto;
+  }
 }
