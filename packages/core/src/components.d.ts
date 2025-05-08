@@ -483,6 +483,26 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+         */
+        "inverted"?: boolean;
+        "pressed": boolean;
+    }
     interface BalCheckbox {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -492,6 +512,13 @@ export namespace Components {
           * If `true`, the checkbox is selected.
          */
         "checked": boolean;
+        "colSize": BalProps.BalCheckboxGroupColumns;
+        "colSizeMobile": BalProps.BalCheckboxGroupColumns;
+        "colSizeTablet": BalProps.BalCheckboxGroupColumns;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "color"?: BalProps.BalCheckboxTileColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -510,10 +537,6 @@ export namespace Components {
         "getOption": () => Promise<BalCheckboxOption>;
         "hovered": boolean;
         /**
-          * If `true` the control is displayed as inline
-         */
-        "inline": boolean;
-        /**
           * Defines the layout of the checkbox button
          */
         "interface": BalProps.BalCheckboxInterface;
@@ -521,10 +544,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible": boolean;
         /**
           * Label of the radio item.
          */
@@ -555,7 +574,6 @@ export namespace Components {
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
-        "setButtonTabindex": (value: number) => Promise<void>;
         /**
           * Sets the focus on the checkbox input element.
          */
@@ -565,28 +583,6 @@ export namespace Components {
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
         "value": string | number;
-    }
-    interface BalCheckboxButton {
-        "colSize": BalProps.BalCheckboxGroupColumns;
-        "colSizeMobile": BalProps.BalCheckboxGroupColumns;
-        "colSizeTablet": BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalCheckboxButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        "setChecked": (checked?: boolean) => Promise<void>;
     }
     interface BalCheckboxGroup {
         /**
@@ -1330,6 +1326,8 @@ export namespace Components {
           * The theme type of the button.
          */
         "color": BalProps.BalIconColor;
+        "colorHovered": BalProps.BalIconColor;
+        "colorPressed": BalProps.BalIconColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -1974,6 +1972,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected": boolean;
@@ -2562,6 +2564,13 @@ export namespace Components {
         "value": number;
     }
     interface BalRadio {
+        "colSize": BalProps.BalRadioGroupColumns;
+        "colSizeMobile": BalProps.BalRadioGroupColumns;
+        "colSizeTablet": BalProps.BalRadioGroupColumns;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "color"?: BalProps.BalRadioTileColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -2588,10 +2597,6 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible": boolean;
-        /**
           * Label of the radio item.
          */
         "label": string;
@@ -2617,35 +2622,20 @@ export namespace Components {
          */
         "required": boolean;
         "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
         "setButtonTabindex": (value: number) => Promise<void>;
-        "setFocus": (ev: any) => Promise<void>;
+        /**
+          * Sets the focus on the checkbox input element.
+         */
+        "setFocus": () => Promise<void>;
         "updateState": () => Promise<void>;
         /**
           * the value of the radio.
          */
         "value"?: any | null;
-    }
-    interface BalRadioButton {
-        "colSize": BalProps.BalRadioGroupColumns;
-        "colSizeMobile": BalProps.BalRadioGroupColumns;
-        "colSizeTablet": BalProps.BalRadioGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalRadioButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        "setChecked": (checked?: boolean) => Promise<void>;
     }
     interface BalRadioGroup {
         /**
@@ -2656,6 +2646,10 @@ export namespace Components {
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
         "autoInvalidOff": boolean;
+        /**
+          * Defines the column size like the grid.
+         */
+        "columns": BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
@@ -2676,10 +2670,6 @@ export namespace Components {
           * Find the options properties by its value
          */
         "getOptionByValue": (value: string) => Promise<BalRadioOption>;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid": BalProps.BalRadioGroupColumns;
         /**
           * Defines the layout of the radio button
          */
@@ -2714,6 +2704,26 @@ export namespace Components {
           * If `true`, the controls will be vertically on mobile devices.
          */
         "verticalOnMobile": boolean;
+    }
+    interface BalRadioIcon {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+         */
+        "inverted"?: boolean;
+        "pressed": boolean;
     }
     interface BalSegment {
         /**
@@ -3165,6 +3175,22 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        "pressed": boolean;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -3210,6 +3236,10 @@ export namespace Components {
           * Tell's if the linking is done by a router.
          */
         "prevent": boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
         /**
           * Sets the tab active.
          */
@@ -3281,6 +3311,10 @@ export namespace Components {
           * Find the options properties by its value
          */
         "getOptionByValue": (value: string) => Promise<BalTabOption>;
+        /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList": boolean;
         /**
           * Defines the layout of the tabs.
          */
@@ -3614,10 +3648,6 @@ export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalCheckboxElement;
 }
-export interface BalCheckboxButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalCheckboxButtonElement;
-}
 export interface BalCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalCheckboxGroupElement;
@@ -3709,10 +3739,6 @@ export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
-}
-export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalRadioButtonElement;
 }
 export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3914,6 +3940,12 @@ declare global {
         prototype: HTMLBalCarouselItemElement;
         new (): HTMLBalCarouselItemElement;
     };
+    interface HTMLBalCheckElement extends Components.BalCheck, HTMLStencilElement {
+    }
+    var HTMLBalCheckElement: {
+        prototype: HTMLBalCheckElement;
+        new (): HTMLBalCheckElement;
+    };
     interface HTMLBalCheckboxElementEventMap {
         "balFocus": BalEvents.BalCheckboxFocusDetail;
         "balBlur": BalEvents.BalCheckboxBlurDetail;
@@ -3932,25 +3964,6 @@ declare global {
     var HTMLBalCheckboxElement: {
         prototype: HTMLBalCheckboxElement;
         new (): HTMLBalCheckboxElement;
-    };
-    interface HTMLBalCheckboxButtonElementEventMap {
-        "balFocus": BalEvents.BalCheckboxButtonFocusDetail;
-        "balBlur": BalEvents.BalCheckboxButtonBlurDetail;
-        "balFormControlDidLoad": BalEvents.BalCheckboxButtonAriaLabelledByDetail;
-    }
-    interface HTMLBalCheckboxButtonElement extends Components.BalCheckboxButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalCheckboxButtonElement: {
-        prototype: HTMLBalCheckboxButtonElement;
-        new (): HTMLBalCheckboxButtonElement;
     };
     interface HTMLBalCheckboxGroupElementEventMap {
         "balChange": BalEvents.BalCheckboxGroupChangeDetail;
@@ -4682,25 +4695,6 @@ declare global {
         prototype: HTMLBalRadioElement;
         new (): HTMLBalRadioElement;
     };
-    interface HTMLBalRadioButtonElementEventMap {
-        "balFocus": BalEvents.BalRadioButtonFocusDetail;
-        "balBlur": BalEvents.BalRadioButtonBlurDetail;
-        "balFormControlDidLoad": BalEvents.BalRadioButtonAriaLabelledByDetail;
-    }
-    interface HTMLBalRadioButtonElement extends Components.BalRadioButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalRadioButtonElement: {
-        prototype: HTMLBalRadioButtonElement;
-        new (): HTMLBalRadioButtonElement;
-    };
     interface HTMLBalRadioGroupElementEventMap {
         "balChange": BalEvents.BalRadioGroupChangeDetail;
         "balFocus": BalEvents.BalRadioGroupFocusDetail;
@@ -4719,6 +4713,12 @@ declare global {
     var HTMLBalRadioGroupElement: {
         prototype: HTMLBalRadioGroupElement;
         new (): HTMLBalRadioGroupElement;
+    };
+    interface HTMLBalRadioIconElement extends Components.BalRadioIcon, HTMLStencilElement {
+    }
+    var HTMLBalRadioIconElement: {
+        prototype: HTMLBalRadioIconElement;
+        new (): HTMLBalRadioIconElement;
     };
     interface HTMLBalSegmentElementEventMap {
         "balFocus": BalEvents.BalSegmentFocusDetail;
@@ -4888,6 +4888,12 @@ declare global {
         prototype: HTMLBalStepsElement;
         new (): HTMLBalStepsElement;
     };
+    interface HTMLBalSwitchElement extends Components.BalSwitch, HTMLStencilElement {
+    }
+    var HTMLBalSwitchElement: {
+        prototype: HTMLBalSwitchElement;
+        new (): HTMLBalSwitchElement;
+    };
     interface HTMLBalTabItemElementEventMap {
         "balNavigate": BalEvents.BalTabItemNavigateDetail;
     }
@@ -5054,8 +5060,8 @@ declare global {
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-carousel": HTMLBalCarouselElement;
         "bal-carousel-item": HTMLBalCarouselItemElement;
+        "bal-check": HTMLBalCheckElement;
         "bal-checkbox": HTMLBalCheckboxElement;
-        "bal-checkbox-button": HTMLBalCheckboxButtonElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
         "bal-content": HTMLBalContentElement;
@@ -5126,8 +5132,8 @@ declare global {
         "bal-popup": HTMLBalPopupElement;
         "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
-        "bal-radio-button": HTMLBalRadioButtonElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
+        "bal-radio-icon": HTMLBalRadioIconElement;
         "bal-segment": HTMLBalSegmentElement;
         "bal-segment-item": HTMLBalSegmentItemElement;
         "bal-select": HTMLBalSelectElement;
@@ -5145,6 +5151,7 @@ declare global {
         "bal-stage-image": HTMLBalStageImageElement;
         "bal-step-item": HTMLBalStepItemElement;
         "bal-steps": HTMLBalStepsElement;
+        "bal-switch": HTMLBalSwitchElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -5627,6 +5634,26 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+         */
+        "inverted"?: boolean;
+        "pressed"?: boolean;
+    }
     interface BalCheckbox {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -5636,6 +5663,13 @@ declare namespace LocalJSX {
           * If `true`, the checkbox is selected.
          */
         "checked"?: boolean;
+        "colSize"?: BalProps.BalCheckboxGroupColumns;
+        "colSizeMobile"?: BalProps.BalCheckboxGroupColumns;
+        "colSizeTablet"?: BalProps.BalCheckboxGroupColumns;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "color"?: BalProps.BalCheckboxTileColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -5646,10 +5680,6 @@ declare namespace LocalJSX {
         "flat"?: boolean;
         "hovered"?: boolean;
         /**
-          * If `true` the control is displayed as inline
-         */
-        "inline"?: boolean;
-        /**
           * Defines the layout of the checkbox button
          */
         "interface"?: BalProps.BalCheckboxInterface;
@@ -5657,10 +5687,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible"?: boolean;
         /**
           * Label of the radio item.
          */
@@ -5702,36 +5728,6 @@ declare namespace LocalJSX {
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
         "value"?: string | number;
-    }
-    interface BalCheckboxButton {
-        "colSize"?: BalProps.BalCheckboxGroupColumns;
-        "colSizeMobile"?: BalProps.BalCheckboxGroupColumns;
-        "colSizeTablet"?: BalProps.BalCheckboxGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalCheckboxButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonBlurDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
-        "onBalFormControlDidLoad"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
     }
     interface BalCheckboxGroup {
         /**
@@ -6484,6 +6480,8 @@ declare namespace LocalJSX {
           * The theme type of the button.
          */
         "color"?: BalProps.BalIconColor;
+        "colorHovered"?: BalProps.BalIconColor;
+        "colorPressed"?: BalProps.BalIconColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -7172,6 +7170,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * If `true` the link gets selected with a underline
          */
         "selected"?: boolean;
@@ -7693,6 +7695,13 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface BalRadio {
+        "colSize"?: BalProps.BalRadioGroupColumns;
+        "colSizeMobile"?: BalProps.BalRadioGroupColumns;
+        "colSizeTablet"?: BalProps.BalRadioGroupColumns;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "color"?: BalProps.BalRadioTileColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -7710,10 +7719,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` the radio is invisible, but sill active
-         */
-        "invisible"?: boolean;
         /**
           * Label of the radio item.
          */
@@ -7756,39 +7761,6 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
-    interface BalRadioButton {
-        "colSize"?: BalProps.BalRadioGroupColumns;
-        "colSizeMobile"?: BalProps.BalRadioGroupColumns;
-        "colSizeTablet"?: BalProps.BalRadioGroupColumns;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "color"?: BalProps.BalRadioButtonColor;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-         */
-        "invalid"?: boolean;
-        /**
-          * Emitted when the toggle loses focus.
-         */
-        "onBalBlur"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonBlurDetail>) => void;
-        /**
-          * Emitted when the toggle has focus.
-         */
-        "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
-        /**
-          * Emitted after render when element is labelled
-         */
-        "onBalFormControlDidLoad"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-    }
     interface BalRadioGroup {
         /**
           * If `true`, the radios can be deselected.
@@ -7798,6 +7770,10 @@ declare namespace LocalJSX {
           * If `true`, in Angular reactive forms the control will not be set invalid
          */
         "autoInvalidOff"?: boolean;
+        /**
+          * Defines the column size like the grid.
+         */
+        "columns"?: BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
@@ -7814,10 +7790,6 @@ declare namespace LocalJSX {
           * Uses the whole width
          */
         "expanded"?: boolean;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid"?: BalProps.BalRadioGroupColumns;
         /**
           * Defines the layout of the radio button
          */
@@ -7862,6 +7834,26 @@ declare namespace LocalJSX {
           * If `true`, the controls will be vertically on mobile devices.
          */
         "verticalOnMobile"?: boolean;
+    }
+    interface BalRadioIcon {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+         */
+        "inverted"?: boolean;
+        "pressed"?: boolean;
     }
     interface BalSegment {
         /**
@@ -8321,6 +8313,22 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        "pressed"?: boolean;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -8366,6 +8374,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Sub label for the tab.
          */
@@ -8426,6 +8438,10 @@ declare namespace LocalJSX {
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
+        /**
+          * If `true` then  isTabList becomes true even if there is a link in the list.
+         */
+        "handleAsTabList"?: boolean;
         /**
           * Defines the layout of the tabs.
          */
@@ -8784,8 +8800,8 @@ declare namespace LocalJSX {
         "bal-card-title": BalCardTitle;
         "bal-carousel": BalCarousel;
         "bal-carousel-item": BalCarouselItem;
+        "bal-check": BalCheck;
         "bal-checkbox": BalCheckbox;
-        "bal-checkbox-button": BalCheckboxButton;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
         "bal-content": BalContent;
@@ -8856,8 +8872,8 @@ declare namespace LocalJSX {
         "bal-popup": BalPopup;
         "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
-        "bal-radio-button": BalRadioButton;
         "bal-radio-group": BalRadioGroup;
+        "bal-radio-icon": BalRadioIcon;
         "bal-segment": BalSegment;
         "bal-segment-item": BalSegmentItem;
         "bal-select": BalSelect;
@@ -8875,6 +8891,7 @@ declare namespace LocalJSX {
         "bal-stage-image": BalStageImage;
         "bal-step-item": BalStepItem;
         "bal-steps": BalSteps;
+        "bal-switch": BalSwitch;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -8907,8 +8924,8 @@ declare module "@stencil/core" {
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
             "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
+            "bal-check": LocalJSX.BalCheck & JSXBase.HTMLAttributes<HTMLBalCheckElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
-            "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
             "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
@@ -8979,8 +8996,8 @@ declare module "@stencil/core" {
             "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
             "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
-            "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
+            "bal-radio-icon": LocalJSX.BalRadioIcon & JSXBase.HTMLAttributes<HTMLBalRadioIconElement>;
             "bal-segment": LocalJSX.BalSegment & JSXBase.HTMLAttributes<HTMLBalSegmentElement>;
             "bal-segment-item": LocalJSX.BalSegmentItem & JSXBase.HTMLAttributes<HTMLBalSegmentItemElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
@@ -8998,6 +9015,7 @@ declare module "@stencil/core" {
             "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
             "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
+            "bal-switch": LocalJSX.BalSwitch & JSXBase.HTMLAttributes<HTMLBalSwitchElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

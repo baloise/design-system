@@ -4,9 +4,9 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
+  export type BalCheckboxGroupInterface = 'checkbox' | 'switch' | 'button' | 'tile'
   export type BalCheckboxGroupColumns = 1 | 2 | 3 | 4
-  export type BalCheckboxButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
+  export type BalCheckboxTileColor = '' | 'purple' | 'green' | 'yellow' | 'red'
   export type BalCheckboxInterface = BalCheckboxGroupInterface
 }
 
@@ -38,18 +38,4 @@ namespace BalEvents {
 
   export type BalCheckboxGroupFocusDetail = FocusEvent
   export type BalCheckboxGroupFocus = BalCheckboxGroupCustomEvent<BalCheckboxGroupFocusDetail>
-
-  export interface BalCheckboxButtonCustomEvent<T> extends CustomEvent<T> {
-    detail: T
-    target: HTMLBalCheckboxButtonElement
-  }
-
-  export type BalCheckboxButtonBlurDetail = FocusEvent
-  export type BalCheckboxButtonBlur = BalCheckboxButtonCustomEvent<BalCheckboxButtonBlurDetail>
-
-  export type BalCheckboxButtonFocusDetail = FocusEvent
-  export type BalCheckboxButtonFocus = BalCheckboxButtonCustomEvent<BalCheckboxButtonFocusDetail>
-
-  export type BalCheckboxButtonAriaLabelledByDetail = HTMLElement
-  export type BalCheckboxButtonAriaLabelledBy = BalCheckboxButtonCustomEvent<BalCheckboxButtonAriaLabelledByDetail>
 }

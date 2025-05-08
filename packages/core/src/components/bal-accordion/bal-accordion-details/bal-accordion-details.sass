@@ -13,12 +13,15 @@
   &--collapsing
     max-height: 0 !important
     overflow: hidden
+    clip-path: border-box
   &--collapsed
     display: none
     overflow: hidden
+    clip-path: border-box
   &--expanding
     max-height: 0
     overflow: hidden
+    clip-path: border-box
 
 @media (prefers-reduced-motion: reduce)
   .bal-accordion__details

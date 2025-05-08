@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { global } from '@storybook/global'
 import { useOf } from '@storybook/blocks'
+import { global } from '@storybook/global'
+import React, { useEffect, useState } from 'react'
 
 import { buildAngularParameters } from './utils/code-sandbox.angular'
-import { buildReactParameters } from './utils/code-sandbox.react'
 import { buildHtmlParameters } from './utils/code-sandbox.html'
+import { buildReactParameters } from './utils/code-sandbox.react'
 
 export const CodeSandbox = ({ of }) => {
   const framework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
@@ -67,7 +67,7 @@ export const CodeSandbox = ({ of }) => {
     <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" className="sb-unstyled">
       <input type="hidden" name="parameters" value={parameters} />
       <button className="button is-info">
-        <div className="flex gap-xx-small">
+        <div className="flex gap-x-small">
           <svg width="24px" height="24px" viewBox="0 0 256 296" version="1.1" preserveAspectRatio="xMidYMid">
             <g>
               <path

@@ -92,6 +92,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
       <bal-nav-link
         role="listitem"
         href={this.href}
+        rel={this.rel}
         target={this.target}
         clickable={this.clickable}
         selected={this.active}

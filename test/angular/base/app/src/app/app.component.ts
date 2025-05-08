@@ -1,24 +1,24 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { BalModalService, balImports } from '../design-system'
-import { InputComponent } from './form-components/input.component'
-import { TextareaComponent } from './form-components/textarea.component'
-import { NumberInputComponent } from './form-components/number-input.component'
-import { TimeComponent } from './form-components/time.component'
-import { InputStepperComponent } from './form-components/input-stepper.component'
-import { SliderComponent } from './form-components/input-slider.component'
-import { DropdownComponent } from './form-components/dropdown.component'
-import { SelectComponent } from './form-components/select.component'
-import { CheckboxComponent } from './form-components/checkbox.component'
 import { CheckboxGroupComponent } from './form-components/checkbox-group.component'
-import { CheckboxButtonsComponent } from './form-components/checkbox-buttons.component'
-import { RadioComponent } from './form-components/radio.component'
-import { RadioButtonsComponent } from './form-components/radio-buttons.component'
+import { CheckboxTilesComponent } from './form-components/checkbox-tiles.component'
+import { CheckboxComponent } from './form-components/checkbox.component'
 import { DateComponent } from './form-components/date.component'
+import { DropdownComponent } from './form-components/dropdown.component'
 import { InputDateComponent } from './form-components/input-date.component'
-import { ModalComponent } from './modal.component'
+import { SliderComponent } from './form-components/input-slider.component'
+import { InputStepperComponent } from './form-components/input-stepper.component'
+import { InputComponent } from './form-components/input.component'
+import { NumberInputComponent } from './form-components/number-input.component'
+import { RadioButtonsComponent } from './form-components/radio-buttons.component'
+import { RadioComponent } from './form-components/radio.component'
 import { SegmentComponent } from './form-components/segment.component'
+import { SelectComponent } from './form-components/select.component'
+import { TextareaComponent } from './form-components/textarea.component'
+import { TimeComponent } from './form-components/time.component'
+import { ModalComponent } from './modal.component'
 
 export interface UpdateControl {
   name: string
@@ -43,7 +43,7 @@ export interface UpdateControl {
     SelectComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
-    CheckboxButtonsComponent,
+    CheckboxTilesComponent,
     RadioComponent,
     RadioButtonsComponent,
     DateComponent,
@@ -69,7 +69,7 @@ export interface UpdateControl {
           <app-select [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-select>
           <app-checkbox [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox>
           <app-checkbox-group [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-group>
-          <app-checkbox-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-buttons>
+          <app-checkbox-tiles [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-tiles>
           <app-radio [form]="myForm" (updateControl)="updateValue($event)"></app-radio>
           <app-radio-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-radio-buttons>
           <app-segment [form]="myForm" (updateControl)="updateValue($event)"></app-segment>
@@ -107,7 +107,7 @@ export class AppComponent {
     typeahead: new FormControl('Kiwi', [Validators.required]),
     checkbox: new FormControl(false, [Validators.requiredTrue]),
     checkboxGroup: new FormControl(['Kiwi'], [Validators.required]),
-    checkboxButtons: new FormControl(['Kiwi'], [Validators.required]),
+    checkboxTiles: new FormControl(['Kiwi'], [Validators.required]),
     radio: new FormControl('Kiwi', [Validators.required]),
     radioButtons: new FormControl('Kiwi', [Validators.required]),
     segment: new FormControl('Kiwi', [Validators.required]),
