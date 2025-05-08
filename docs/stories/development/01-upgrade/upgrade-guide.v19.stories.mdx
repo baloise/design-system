@@ -1,23 +1,3 @@
-import { Markdown, Meta } from '@storybook/addon-docs'
-import {
-  AngularFramework,
-  Banner,
-  Code,
-  CodeSandbox,
-  CssTypographyColors,
-  DiffSource,
-  Footer,
-  HTMLFramework,
-  InfoQuote,
-  Lead,
-  LinkCard,
-  LinkCards,
-  NotAngularFramework,
-  PackageTable,
-  ReactFramework,
-  WarningQuote,
-} from '../../../.storybook/blocks'
-
 <Meta title="Development/Upgrade Guides/Updating to v19" />
 
 <Banner label="Updating to v19" section="Development/Upgrade Guides" />
@@ -29,6 +9,7 @@ Here is an overview of the breaking changes of the newly introduced version 18:
 - **Checkbox & Radio Adjustments due to A11y:**
   - Remove component bal-checkbox-button, bal-radio-button
   - Change naming of interface variables
+  - Rename prop `grid` to `columns` for the bal-radio-group
 
 ## Checkbox & Radio Adjustments
 
@@ -85,6 +66,20 @@ Or directly use the `<bal-checkbox>` component.
 + <bal-checkbox interface="button">
     Label
   </bal-checkbox>`}
+/>
+
+The prop `grid` has been renamed to `columns` for the `<bal-radio-group>` component.
+
+<DiffSource
+  code={`- <bal-radio-group interface="tile" grid="3">
++ <bal-radio-group interface="tile" columns="3">
+    <bal-radio checked="true">
+        Label
+    </bal-radio>
+    <bal-radio>
+        Label
+    </bal-radio>
+  </bal-radio-group>`}
 />
 
 ## Need Help Upgrading?​
