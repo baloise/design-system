@@ -1,30 +1,31 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Watch,
-  ComponentInterface,
-  Method,
   Listen,
+  Method,
+  Prop,
   State,
+  Watch,
 } from '@stencil/core'
+import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { inheritAttributes } from '../../../utils/attributes'
+import { BEM } from '../../../utils/bem'
+import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { hasTagName, isDescendant } from '../../../utils/helpers'
-import { BEM } from '../../../utils/bem'
-import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
-import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
-import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { BalRadioOption } from '../bal-radio.type'
 
 @Component({
   tag: 'bal-radio-group',
+  styleUrl: 'bal-radio-group.sass',
 })
 export class RadioGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
@@ -60,6 +61,11 @@ export class RadioGroup
   }
 
   /**
+   * Defines the layout of the radio button
+   */
+  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
+
+  /**
    * If `true`, the radios can be deselected.
    */
   @Prop() allowEmptySelection = false
@@ -68,21 +74,6 @@ export class RadioGroup
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
-
-  /**
-   * the value of the radio group.
-   */
-  @Prop({ mutable: true }) value?: any | null
-
-  @Watch('value')
-  valueChanged() {
-    this.onOptionChange()
-  }
-
-  /**
-   * Defines the layout of the radio button
-   */
-  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
 
   /**
    * Displays the checkboxes vertically
@@ -110,9 +101,6 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.invalid = value
       })
-      this.getRadioButtons().forEach(radio => {
-        radio.invalid = value
-      })
     }
   }
 
@@ -125,9 +113,6 @@ export class RadioGroup
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
       this.getRadios().forEach(radio => {
-        radio.disabled = value
-      })
-      this.getRadioButtons().forEach(radio => {
         radio.disabled = value
       })
     }
@@ -144,20 +129,27 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.readonly = value
       })
-      this.getRadioButtons().forEach(radio => {
-        radio.readonly = value
-      })
     }
+  }
+
+  /**
+   * the value of the radio group.
+   */
+  @Prop({ mutable: true }) value?: any | null
+
+  @Watch('value')
+  valueChanged() {
+    this.onOptionChange()
   }
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() grid: BalProps.BalRadioGroupColumns = 1
+  @Prop() columns: BalProps.BalRadioGroupColumns = 1
 
-  @Watch('grid')
+  @Watch('columns')
   columnsChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
+    this.getRadios().forEach(radio => (radio.colSize = value))
   }
 
   /**
@@ -167,7 +159,7 @@ export class RadioGroup
 
   @Watch('columnsTablet')
   columnsTabletChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
+    this.getRadios().forEach(radio => (radio.colSizeTablet = value))
   }
 
   /**
@@ -177,7 +169,7 @@ export class RadioGroup
 
   @Watch('columnsMobile')
   columnsMobileChanged(value: BalProps.BalRadioGroupColumns) {
-    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
+    this.getRadios().forEach(radio => (radio.colSizeMobile = value))
   }
 
   /**
@@ -215,7 +207,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.grid)
+    this.columnsChanged(this.columns)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -248,7 +240,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.grid)
+    this.columnsChanged(this.columns)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -421,10 +413,6 @@ export class RadioGroup
     return Array.from(this.el.querySelectorAll('bal-radio'))
   }
 
-  private getRadioButtons(): HTMLBalRadioButtonElement[] {
-    return Array.from(this.el.querySelectorAll('bal-radio-button'))
-  }
-
   /**
    * EVENT BINDING
    * ------------------------------------------------------
@@ -457,7 +445,7 @@ export class RadioGroup
    */
 
   render() {
-    const block = BEM.block('radio-checkbox-group')
+    const block = BEM.block('radio-group')
     const innerEl = block.element('inner')
 
     const rawOptions = this.options || []
@@ -486,7 +474,7 @@ export class RadioGroup
             ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
             ...innerEl.modifier('vertical').class(this.vertical),
             ...innerEl.modifier('expanded').class(this.expanded),
-            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...innerEl.modifier('button').class(this.interface === 'button'),
           }}
         >
           <slot></slot>

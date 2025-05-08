@@ -1,30 +1,32 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  State,
   Listen,
-  ComponentInterface,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
-import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
-import { isDescendant } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { isSpaceKey } from '../../utils/keyboard'
-import { BalCheckboxOption } from './bal-checkbox.type'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { BalElementStateInfo, ListenToElementStates } from '../../utils/element-states'
 import { FOCUS_KEYS } from '../../utils/focus-visible'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
+import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
+import { isDescendant } from '../../utils/helpers'
+import { isSpaceKey } from '../../utils/keyboard'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { BalCheckboxOption } from './bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox',
-  styleUrl: 'radio-checkbox.sass',
+  styleUrl: 'bal-checkbox.sass',
 })
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, BalAriaFormLinking {
   private inputId = `bal-cb-${checkboxIds++}`
@@ -33,6 +35,13 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLBalCheckboxElement
+
+  log!: LogInstance
+
+  @Logger('bal-checkbox')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   @State() hasLabel = true
   @State() focused = false
@@ -45,11 +54,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    */
   @State() wasFocused = false
 
-  log!: LogInstance
-
-  @Logger('bal-checkbox')
-  createLogger(log: LogInstance) {
-    this.log = log
+  outerElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
+  }
+  innerElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
+  }
+  @State() mergedElementState: BalElementStateInfo = {
+    hovered: false,
+    pressed: false,
   }
 
   /**
@@ -68,11 +83,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @Prop() label = ''
 
   /**
-   * If `true` the radio is invisible, but sill active
-   */
-  @Prop() invisible = false
-
-  /**
    * If `true` the checkbox has no label
    */
   @Prop() labelHidden = false
@@ -81,11 +91,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * If `true` the control is no padding
    */
   @Prop() flat = false
-
-  /**
-   * If `true` the control is displayed as inline
-   */
-  @Prop() inline = false
 
   /**
    * Defines the layout of the checkbox button
@@ -139,11 +144,47 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * @internal
    */
   @Prop() hovered = false
+  @Watch('hovered')
+  hoveredChanged() {
+    this.innerElementState = {
+      hovered: this.hovered,
+      pressed: this.pressed,
+    }
+    this.mergeElementState()
+  }
 
   /**
    * @internal
    */
   @Prop() pressed = false
+  @Watch('pressed')
+  pressedChanged() {
+    this.innerElementState = {
+      hovered: this.hovered,
+      pressed: this.pressed,
+    }
+    this.mergeElementState()
+  }
+
+  /**
+   * Defines the color of the tile checkbox.
+   */
+  @Prop() color?: BalProps.BalCheckboxTileColor
+
+  /**
+   * @internal
+   */
+  @Prop() colSize: BalProps.BalCheckboxGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop() colSizeTablet: BalProps.BalCheckboxGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop() colSizeMobile: BalProps.BalCheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
@@ -166,15 +207,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    */
 
   connectedCallback() {
-    const groupEl = this.group
-    const checkboxButton = this.checkboxButton
+    this.hoveredChanged()
 
-    if (checkboxButton || groupEl) {
+    if (this.group) {
       this.updateState()
-    }
-
-    if (groupEl) {
-      groupEl.addEventListener('balChange', () => this.updateState())
+      this.group.addEventListener('balChange', () => this.updateState())
     }
 
     this.initialValue = this.checked
@@ -186,6 +223,14 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentWillRender(): Promise<void> | void {
+    this.interactionChildElements.forEach(el => {
+      el.disabled = this.disabled || this.readonly
+      el.invalid = this.invalid
+      el.checked = this.checked
+    })
   }
 
   disconnectedCallback() {
@@ -220,6 +265,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     if (formElement?.contains(this.el)) {
       this.checked = this.initialValue
     }
+  }
+
+  @ListenToElementStates()
+  elementStateListener(info: BalElementStateInfo) {
+    this.outerElementState = info
+    this.mergeElementState()
   }
 
   /**
@@ -261,19 +312,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     return this.option
   }
 
-  /** @internal */
-  @Method()
-  async setButtonTabindex(value: number) {
-    if (this.checkboxButton) {
-      this.buttonTabindex = -1
-    } else {
-      this.buttonTabindex = value
-    }
-  }
-
   /**
    * @internal
-   * Options of the tab like label, value etc.
    */
   @Method()
   async updateState() {
@@ -281,14 +321,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       const newChecked = this.group.value.includes(this.value)
       if (newChecked !== this.checked) {
         this.checked = newChecked
-      }
-    }
-
-    if (this.checkboxButton) {
-      this.buttonTabindex = -1
-
-      if (this.checkboxButton.setChecked) {
-        this.checkboxButton.setChecked(this.checked)
       }
     }
   }
@@ -306,7 +338,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * ------------------------------------------------------
    */
 
-  get option() {
+  private get group(): HTMLBalCheckboxGroupElement | null {
+    return this.el.closest('bal-checkbox-group')
+  }
+
+  private get interactionChildElements(): Array<HTMLBalCheckElement | HTMLBalSwitchElement> {
+    return Array.from(this.el.querySelectorAll('bal-check, bal-switch, bal-icon')) as Array<
+      HTMLBalCheckElement | HTMLBalSwitchElement
+    >
+  }
+
+  private get option() {
     return {
       name: this.name,
       value: this.value,
@@ -319,17 +361,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       readonly: this.readonly,
       required: this.required,
       nonSubmit: this.nonSubmit,
-      invisible: this.invisible,
       invalid: this.invalid,
     }
-  }
-
-  get group(): HTMLBalCheckboxGroupElement | null {
-    return this.el.closest('bal-checkbox-group')
-  }
-
-  get checkboxButton(): HTMLBalCheckboxButtonElement | null {
-    return this.el.closest('bal-checkbox-button')
   }
 
   /**
@@ -337,30 +370,37 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    * ------------------------------------------------------
    */
 
-  private toggleChecked() {
-    this.checked = !this.checked
+  private mergeElementState() {
+    this.mergedElementState = {
+      hovered: this.outerElementState.hovered || this.innerElementState.hovered,
+      pressed: this.outerElementState.pressed || this.innerElementState.pressed,
+    }
+
+    this.interactionChildElements.forEach(el => {
+      ;(el as BalElementStateInfo).hovered = this.mergedElementState.hovered
+      ;(el as BalElementStateInfo).pressed = this.mergedElementState.pressed
+    })
+  }
+
+  private setChecked = (state: boolean) => {
+    this.checked = state
     this.balChange.emit(this.checked)
   }
 
-  private onKeypress = (ev: KeyboardEvent) => {
-    if (isSpaceKey(ev)) {
-      const element = ev.target as HTMLAnchorElement
-      if (element.href) {
-        return
-      }
+  private toggleChecked = (ev: Event) => {
+    ev.preventDefault()
 
-      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.toggleChecked()
-        ev.preventDefault()
-      } else {
-        stopEventBubbling(ev)
-      }
-    }
+    this.setFocus()
+    this.setChecked(!this.checked)
   }
 
   private onClick = (ev: MouseEvent) => {
+    if (this.disabled) {
+      return
+    }
+
     const element = ev.target as HTMLAnchorElement
-    if (element.href) {
+    if (element && element.href) {
       return
     }
 
@@ -368,13 +408,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       this.focused = true
     }
 
-    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.toggleChecked()
-      this.nativeInput?.focus()
-      ev.preventDefault()
-    } else {
-      stopEventBubbling(ev)
-    }
+    this.toggleChecked(ev)
   }
 
   private onFocus = (ev: FocusEvent) => {
@@ -415,11 +449,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
    */
 
   render() {
-    const block = BEM.block('radio-checkbox')
+    const block = BEM.block('checkbox')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
-    const iconEl = block.element('icon')
     const labelTextEl = labelEl.element('text')
+    const labelIconEl = labelEl.element('icon')
 
     const focused = this.focused && this.buttonTabindex !== -1
 
@@ -428,106 +462,97 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       inputAttributes.tabIndex = this.buttonTabindex
     }
 
-    const id = this.ariaForm.controlId || this.inputId
-    let labelId = this.ariaForm.labelId || null
-    const LabelTag = this.labelHidden ? 'span' : 'label'
+    const hasFormControl = !this.nonSubmit
 
-    const labelAttributes: any = {}
-    if (!this.labelHidden) {
-      labelId = `${labelId || ''} ${id}-lbl`.trim()
-      labelAttributes.id = `${id}-lbl`
-      labelAttributes.htmlFor = id
-    }
+    const id = this.ariaForm.controlId || this.inputId
+    const labelId = this.ariaForm.labelId || null
+    const LabelTag = hasFormControl ? 'label' : 'span'
+    const Icon = this.interface === 'switch' ? 'bal-switch' : 'bal-check'
 
     return (
       <Host
         aria-checked={`${this.checked}`}
         aria-disabled={ariaBooleanToString(this.disabled)}
+        aria-invalid={this.invalid === true ? 'true' : 'false'}
         aria-hidden={ariaBooleanToString(this.disabled || this.nonSubmit)}
         aria-focused={focused ? 'true' : null}
+        aria-labelledby={labelId}
+        aria-describedby={this.ariaForm.messageId}
         class={{
           'bal-focused': focused,
           ...block.class(),
           ...block.modifier('checkbox').class(),
-          ...block.modifier('select-button').class(this.interface === 'select-button'),
+          ...block.modifier('button').class(this.interface === 'button'),
           ...block.modifier('switch').class(this.interface === 'switch'),
+          ...block.modifier('tile').class(this.interface === 'tile'),
+          ...block.modifier(`tile-color-${this.color}`).class(this.interface === 'tile' && !!this.color),
           ...block.modifier('focused').class(this.focused),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
-          ...block.modifier('invisible').class(this.invisible),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
-          ...block.modifier('hovered').class(this.hovered),
-          ...block.modifier('pressed').class(this.pressed),
-          ...block.modifier('inline').class(this.inline),
+          ...block.modifier('hovered').class(this.mergedElementState.hovered),
+          ...block.modifier('pressed').class(this.mergedElementState.pressed),
+          ...block.modifier(`column-${this.colSize}`).class(this.interface === 'tile' && this.colSize > 1),
+          ...block
+            .modifier(`column-tablet-${this.colSizeTablet}`)
+            .class(this.interface === 'tile' && this.colSizeTablet > 1),
+          ...block
+            .modifier(`column-mobile-${this.colSizeMobile}`)
+            .class(this.interface === 'tile' && this.colSizeMobile > 1),
         }}
-        onKeypress={this.onKeypress}
         onClick={this.onClick}
       >
-        <input
+        <LabelTag
           class={{
-            ...inputEl.class(),
-            ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...labelEl.class(),
           }}
-          data-testid="bal-checkbox-input"
-          type="checkbox"
-          id={id}
-          aria-labelledby={labelId}
-          aria-describedby={this.ariaForm.messageId}
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={ariaBooleanToString(this.disabled)}
-          aria-checked={`${this.checked}`}
-          aria-hidden={ariaBooleanToString(this.nonSubmit)}
-          name={this.name}
-          value={this.value}
-          checked={this.checked}
-          disabled={this.disabled || this.nonSubmit}
-          readonly={this.readonly}
-          required={this.required}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          ref={inputEl => (this.nativeInput = inputEl)}
-          {...inputAttributes}
-        />
-        {!this.invisible ? (
-          <LabelTag
-            class={{
-              ...labelEl.class(),
-              ...labelEl.modifier('checkbox').class(),
-              ...labelEl.modifier('checked').class(this.checked),
-              ...labelEl.modifier('hidden').class(this.labelHidden),
-              ...labelEl.modifier('flat').class(this.flat),
-              ...labelEl.modifier('switch').class(this.interface === 'switch'),
-            }}
-            {...labelAttributes}
-            data-testid="bal-checkbox-label"
-          >
-            {this.interface === 'switch' ? (
-              <bal-icon
-                class={{ ...iconEl.class() }}
-                name="check"
-                color="white"
-                size="x-small"
-                aria-hidden="true"
-              ></bal-icon>
-            ) : (
-              ''
-            )}
-            <span
+          data-testid="bal-checkbox-label"
+        >
+          {hasFormControl ? (
+            <input
+              id={id}
+              type="checkbox"
+              data-testid="bal-checkbox-input"
+              name={this.name}
+              value={this.value}
+              checked={this.checked}
+              required={this.required}
+              disabled={this.disabled || this.nonSubmit}
+              readonly={this.readonly}
               class={{
-                ...labelTextEl.class(),
-                ...labelTextEl.modifier('hidden').class(this.labelHidden),
-                ...labelTextEl.modifier('flat').class(this.flat),
+                ...inputEl.class(),
               }}
-              data-testid="bal-checkbox-text"
-            >
-              {this.label}
-              <slot></slot>
-            </span>
-          </LabelTag>
-        ) : (
-          ''
-        )}
+              aria-hidden={ariaBooleanToString(this.nonSubmit)}
+              aria-invalid={this.invalid === true ? 'true' : 'false'}
+              aria-describedby={this.ariaForm.messageId}
+              onChange={ev => this.toggleChecked(ev)}
+              onFocus={ev => this.onFocus(ev)}
+              onBlur={ev => this.onBlur(ev)}
+              ref={inputEl => (this.nativeInput = inputEl)}
+              {...inputAttributes}
+            />
+          ) : (
+            ''
+          )}
+          {this.interface !== 'tile' ? (
+            <div class={{ ...labelIconEl.class() }}>
+              <Icon
+                checked={this.checked}
+                disabled={this.disabled || this.readonly}
+                invalid={this.invalid}
+                inverted={this.interface === 'button' && this.checked}
+                hovered={this.mergedElementState.hovered}
+                pressed={this.mergedElementState.pressed}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          <div class={{ ...labelTextEl.class(), ...labelTextEl.modifier('hidden').class(this.labelHidden) }}>
+            <slot></slot>
+          </div>
+        </LabelTag>
       </Host>
     )
   }

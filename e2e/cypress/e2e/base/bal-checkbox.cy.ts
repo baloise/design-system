@@ -31,17 +31,17 @@ describe('bal-checkbox', () => {
     // First we change the initial value
     cy.getByTestId('reset-basic').uncheck()
     cy.getByTestId('reset-switch').uncheck()
-    cy.getByTestId('reset-select-button').uncheck()
+    cy.getByTestId('reset-button').uncheck()
 
     // Values are changed form the initial one
     cy.getByTestId('reset-basic').should('not.be.checked')
     cy.getByTestId('reset-switch').should('not.be.checked')
-    cy.getByTestId('reset-select-button').should('not.be.checked')
+    cy.getByTestId('reset-button').should('not.be.checked')
 
     // Reset form and check if initial value is restored
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset-basic').should('be.checked')
     cy.getByTestId('reset-switch').should('be.checked')
-    cy.getByTestId('reset-select-button').should('be.checked')
+    cy.getByTestId('reset-button').should('be.checked')
   })
 })

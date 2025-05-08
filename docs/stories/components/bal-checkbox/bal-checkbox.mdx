@@ -1,5 +1,5 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import { Canvas, Markdown, Meta } from '@storybook/blocks'
+import { Banner, Footer, Lead, LinkCard, LinkCards, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as CheckboxStories from './bal-checkbox.stories'
 
 <Meta of={CheckboxStories} />
@@ -77,29 +77,29 @@ Switches are used to toggle between exactly two states (like on and off).
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CheckboxStories.FilterButtons}></StoryHeading>
-
-<Canvas of={CheckboxStories.FilterButtons} />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={CheckboxStories.CheckboxButton}></StoryHeading>
-
-The content can be created flexibly by utilizing the [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
-
-The states invalid and disabled are also supported.
 
 <Canvas of={CheckboxStories.CheckboxButton} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CheckboxStories.CheckboxButtonGrid}></StoryHeading>
+<StoryHeading of={CheckboxStories.CheckboxTile}></StoryHeading>
+
+The content can be created flexibly by utilizing the [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
+
+The states invalid and disabled are also supported.
+
+<Canvas of={CheckboxStories.CheckboxTile} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.CheckboxTileGrid}></StoryHeading>
 
 The checkbox buttons are have a built in grid system. Just add the props `grid`, `grid-mobile` or `grid-tablet` to the `bal-radio-group`.
 
 By default, on mobile devices, only one item per line is supported. To override this, use the `grid-mobile` prop.
 
-<Canvas of={CheckboxStories.CheckboxButtonGrid} />
+<Canvas of={CheckboxStories.CheckboxTileGrid} />
 
 {/* ------------------------------------------------------ */}
 
@@ -112,10 +112,6 @@ import api from './api.md?raw'
 import balCheckboxGroupApi from './bal-checkbox-group/api.md?raw'
 
 <Markdown>{balCheckboxGroupApi}</Markdown>
-
-import balCheckboxButtonApi from './bal-checkbox-button/api.md?raw'
-
-<Markdown>{balCheckboxButtonApi}</Markdown>
 
 ## Integration
 

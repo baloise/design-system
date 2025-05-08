@@ -3,17 +3,17 @@ import {
   BalCheckboxGroup,
   BalDate,
   BalDropdown,
+  BalFileUpload,
   BalInput,
   BalInputDate,
   BalInputSlider,
   BalInputStepper,
   BalNumberInput,
   BalRadioGroup,
+  BalSegment,
   BalSelect,
   BalTextarea,
   BalTimeInput,
-  BalSegment,
-  BalFileUpload,
 } from './components'
 import { BalNgErrorComponent } from './directives/error.component'
 import {
@@ -32,7 +32,7 @@ import {
   BalCardTitle,
   BalCarousel,
   BalCarouselItem,
-  BalCheckboxButton,
+  BalCheck,
   BalContent,
   BalData,
   BalDataItem,
@@ -71,8 +71,10 @@ import {
   BalNavbarMenu,
   BalNavbarMenuEnd,
   BalNavbarMenuStart,
+  BalOption,
+  BalOptionList,
   BalRadio,
-  BalRadioButton,
+  BalRadioIcon,
   BalSegmentItem,
   BalSelectOption,
   BalShape,
@@ -85,13 +87,12 @@ import {
   BalStageImage,
   BalStepItem,
   BalSteps,
+  BalSwitch,
   BalTabItem,
   BalTabs,
   BalTag,
   BalTagGroup,
   BalText,
-  BalOption,
-  BalOptionList,
 } from './generated/proxies'
 
 export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger] as const
@@ -145,9 +146,9 @@ export const BalModalBundle = [BalModal, BalModalBody, BalModalHeader] as const
 
 export const BalSelectBundle = [BalSelectOption, BalSelect] as const
 
-export const BalCheckboxBundle = [BalCheckbox, BalCheckboxGroup, BalCheckboxButton] as const
+export const BalCheckboxBundle = [BalCheckbox, BalCheckboxGroup, BalCheck, BalSwitch] as const
 
-export const BalRadioBundle = [BalRadio, BalRadioButton, BalRadioGroup] as const
+export const BalRadioBundle = [BalRadio, BalRadioIcon, BalRadioGroup] as const
 
 export const BalFormGridBundle = [BalFormGrid, BalFormCol] as const
 
@@ -213,7 +214,8 @@ export const BalComponentBundle = [
   BalCardTitle,
   BalCarousel,
   BalCarouselItem,
-  BalCheckboxButton,
+  BalCheck,
+  BalSwitch,
   BalContent,
   BalData,
   BalDataItem,
@@ -256,7 +258,7 @@ export const BalComponentBundle = [
   BalNavbarMenuEnd,
   BalNavbarMenuStart,
   BalRadio,
-  BalRadioButton,
+  BalRadioIcon,
   BalSelectOption,
   BalShape,
   BalStack,
