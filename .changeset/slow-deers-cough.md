@@ -6,6 +6,6 @@
 
 - Remove component bal-checkbox-button, bal-radio-button
 - Change naming of interface variables select-button to button
+- Rename prop `grid` to `columns` for the bal-radio-group 
 
 For more details have a look at our Migration Guide to v19.
-
