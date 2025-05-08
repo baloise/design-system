@@ -1,0 +1,32 @@
+{
+  "name": "tailwindcss",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tailwindcss/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "dependsOn": ["prepare"],
+      "executor": "@baloise/ds-nx:build-tailwindcss",
+      "outputs": ["{projectRoot}/css"],
+      "options": {
+        "projectRoot": "{projectRoot}",
+        "tokensRoot": "{workspaceRoot}/packages/tokens"
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npm run build"
+      }
+    },
+    "link": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npm link"
+      }
+    }
+  },
+  "tags": ["scope:release", "scope:docs", "scope:visual", "type:package"]
+}
