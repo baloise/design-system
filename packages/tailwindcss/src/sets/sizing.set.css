@@ -1,0 +1,38 @@
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-0");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-full");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-screen");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-min");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-max");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-h-fit");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-0");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-full");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-screen");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-min");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-max");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-h-fit");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-0");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-full");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-screen");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-min");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-max");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}max-w-fit");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-0");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-full");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-screen");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-min");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-max");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}min-w-fit");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-full");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-screen");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-min");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-max");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}h-fit");

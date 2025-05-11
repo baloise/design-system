@@ -11,8 +11,8 @@ export const generateTypography = async (options: BuildTailwindcssExecutorSchema
   return (
     Object.entries(tokens)
       .map(([key, token]) => {
-        const className = `.text-${key}`
-        return `  ${className} {${NEWLINE}    @apply text-(--${token.mobile.name}) tablet:text-(--${token.tablet.name}) desktop:text-(--${token.desktop.name});${NEWLINE}  }`
+        const className = `text-${key}`
+        return `@utility ${className} {${NEWLINE}  @apply text-(--${token.mobile.name}) tablet:text-(--${token.tablet.name}) desktop:text-(--${token.desktop.name});${NEWLINE}}`
       })
       .join(NEWLINE) +
     NEWLINE +

@@ -1,47 +1,57 @@
 @import '../css/utilities';
 
-@layer utilities {
-  .border-none {
-    border: none !important;
-  }
+@utility border-none {
+  border: none !important;
+}
 
-  .border-top-none {
-    border-top: none !important;
-  }
+@utility border-small {
+  border-width: var(--bal-border-width-small);
+}
 
-  .border-bottom-none {
-    border-bottom: none !important;
-  }
+@utility border-normal {
+  border-width: var(--bal-border-width-normal);
+}
 
-  .border-left-none {
-    border-left: none !important;
-  }
+@utility border-large {
+  border-width: var(--bal-border-width-large);
+}
 
-  .border-right-none {
-    border-right: none !important;
-  }
+@utility border-top-none {
+  border-top: none !important;
+}
 
-  .gap-none {
-    gap: 0 !important;
-  }
+@utility border-bottom-none {
+  border-bottom: none !important;
+}
 
-  .gap-auto {
-    gap: auto;
-  }
+@utility border-left-none {
+  border-left: none !important;
+}
 
-  .max-h-auto {
-    max-height: auto;
-  }
+@utility border-right-none {
+  border-right: none !important;
+}
 
-  .min-h-auto {
-    min-height: auto;
-  }
+@utility gap-none {
+  gap: 0 !important;
+}
 
-  .max-w-auto {
-    max-width: auto;
-  }
+@utility gap-auto {
+  gap: auto;
+}
 
-  .min-w-auto {
-    min-width: auto;
-  }
+@utility max-h-auto {
+  max-height: auto;
+}
+
+@utility min-h-auto {
+  min-height: auto;
+}
+
+@utility max-w-auto {
+  max-width: auto;
+}
+
+@utility min-w-auto {
+  min-width: auto;
 }

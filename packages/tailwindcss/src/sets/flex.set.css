@@ -1,0 +1,53 @@
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-start");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-end");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-center");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-baseline");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-between");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-around");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}content-evenly");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}items-start");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}items-end");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}items-center");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}items-stretch");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}items-baseline");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}self-start");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}self-end");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}self-center");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}self-stretch");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}self-baseline");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-row");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-row-reverse");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-col");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-col-reverse");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-1");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-initial");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-none");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-none");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-auto");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-xx-small");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-x-small");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-small");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-normal");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-medium");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-x-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-xx-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-xxx-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}gap-xxxx-large");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-start");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-end");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-center");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-between");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-around");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}justify-evenly");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-nowrap");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-wrap");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}flex-wrap-reverse");

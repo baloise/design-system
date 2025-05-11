@@ -339,6 +339,12 @@ function filterReplacers({ utils }) {
   from.push(replacementsWhiteSpace.from)
   to.push(replacementsWhiteSpace.to)
 
+  from.push(replacementsRadius.from)
+  to.push(replacementsRadius.to)
+
+  from.push(replacementsBorderWidth.from)
+  to.push(replacementsBorderWidth.to)
+
   return { from: from.flat(), to: to.flat() }
 }
 
@@ -623,6 +629,16 @@ const replacementsFontWeight = {
 const replacementsWhiteSpace = {
   from: [/^white-space-normal$/g, /^white-space-nowrap$/g],
   to: ['whitespace-normal', 'whitespace-nowrap'],
+}
+
+const replacementsRadius = {
+  from: [/^radius-none$/g, /^radius-normal$/g, /^radius-large$/g, /^radius-rounded$/g],
+  to: ['rounded-none', 'rounded-normal', 'rounded-large', 'rounded-full'],
+}
+
+const replacementsBorderWidth = {
+  from: [/^border-none$/g, /^border-width-small$/g, /^border-width-normal$/g, /^border-width-large$/g],
+  to: ['border-none', 'border-small', 'border-normal', 'border-large'],
 }
 
 main()

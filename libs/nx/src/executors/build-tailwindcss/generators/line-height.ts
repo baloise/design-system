@@ -11,9 +11,9 @@ export const generateLineHeight = async (options: BuildTailwindcssExecutorSchema
   return (
     Object.entries(tokens)
       .map(([key, token]) => {
-        const className = `.text-${key}`
+        const className = `text-${key}`
         const value = ['x-small', 'small', 'normal', 'medium'].includes(token.mobile.name) ? 1.5 : 1.3
-        return `  ${className} {${NEWLINE}    line-height: ${value};${NEWLINE}  }`
+        return `@utility ${className} {${NEWLINE}  line-height: ${value};${NEWLINE}}`
       })
       .join(NEWLINE) +
     NEWLINE +

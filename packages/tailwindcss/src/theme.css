@@ -175,7 +175,6 @@
   --radius-small: 0.125rem;
   --radius-normal: var(--bal-radius-normal);
   --radius-large: var(--bal-radius-large);
-  --radius-rounded: var(--bal-radius-rounded);
 
   --shadow-small: var(--bal-shadow-small);
   --shadow-normal: var(--bal-shadow-normal);

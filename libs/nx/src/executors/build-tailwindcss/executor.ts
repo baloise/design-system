@@ -10,13 +10,13 @@ import { BuildTailwindcssExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildTailwindcssExecutorSchema) {
   try {
-    let content = `@layer utilities {${NEWLINE}${NEWLINE}`
-    content += await generateSpacing(options)
-    content += await generateZIndex(options)
+    let content = ``
     content += await generateBorder(options)
-    content += await generateTypography(options)
     content += await generateLineHeight(options)
-    content += `}${NEWLINE}${NEWLINE}`
+    content += await generateSpacing(options)
+    content += await generateTypography(options)
+    content += await generateZIndex(options)
+    content += `${NEWLINE}${NEWLINE}`
 
     // create css output
     await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })

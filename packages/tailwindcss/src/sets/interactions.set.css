@@ -1,0 +1,13 @@
+@source inline("cursor-auto");
+@source inline("cursor-pointer");
+@source inline("cursor-wait");
+@source inline("cursor-move");
+@source inline("cursor-not-allowed");
+
+@source inline("pointer-events-auto");
+@source inline("pointer-events-none");
+
+@source inline("select-none");
+@source inline("select-text");
+@source inline("select-all");
+@source inline("select-auto");

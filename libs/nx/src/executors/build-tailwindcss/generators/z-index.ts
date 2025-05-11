@@ -7,9 +7,9 @@ export const generateZIndex = async (options: BuildTailwindcssExecutorSchema) =>
   return (
     Object.entries(tokens)
       .map(([key, token]) => {
-        const className = `.z-index-${key}`
+        const className = `z-index-${key}`
         const variableName = `--${token.name}`
-        return `  ${className} {${NEWLINE}    z-index: var(${variableName});${NEWLINE}  }`
+        return `@utility ${className} {${NEWLINE}  z-index: var(${variableName});${NEWLINE}}`
       })
       .join(NEWLINE) +
     NEWLINE +

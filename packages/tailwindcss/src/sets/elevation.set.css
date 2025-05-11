@@ -1,0 +1,12 @@
+@source inline("opacity-0");
+@source inline("opacity-30");
+@source inline("opacity-40");
+@source inline("opacity-50");
+@source inline("opacity-60");
+@source inline("opacity-80");
+@source inline("opacity-100");
+
+@source inline("{hover:,focus:,active:,mobile:,tablet:,desktop:,widescreen:,}shadow-small");
+@source inline("{hover:,focus:,active:,mobile:,tablet:,desktop:,widescreen:,}shadow-normal");
+@source inline("{hover:,focus:,active:,mobile:,tablet:,desktop:,widescreen:,}shadow-large");
+@source inline("{hover:,focus:,active:,mobile:,tablet:,desktop:,widescreen:,}text-shadow-normal");

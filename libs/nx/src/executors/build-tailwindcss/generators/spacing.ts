@@ -10,8 +10,8 @@ const MARGINS = ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml']
 export const generateSpacing = async (options: BuildTailwindcssExecutorSchema) => {
   const tokens = (await getTokens({ token: 'size.space', ...options })) as any as SpacingTokens
 
-  const paddings = PADDINGS.map(prefix => generateSpacingWithPrefix(prefix, tokens))
-  const margins = MARGINS.map(prefix => generateSpacingWithPrefix(prefix, tokens))
+  const paddings = PADDINGS.map(prefix => generateSpacingWithPrefix(prefix, tokens)).join(NEWLINE)
+  const margins = MARGINS.map(prefix => generateSpacingWithPrefix(prefix, tokens)).join(NEWLINE)
   const gaps = generateSpacingWithPrefix('gap', tokens)
 
   return [paddings, margins, gaps].join(NEWLINE + NEWLINE) + NEWLINE + NEWLINE
@@ -24,9 +24,11 @@ const generateSpacingWithPrefix = (prefix, tokens) => {
         ([breakpoint, token]) => `${getBreakPointPrefix(breakpoint)}${prefix}-(--${token.name})`,
       )
 
-      return `  .${prefix}-${sizeKey} {${NEWLINE}    @apply ${classParts.join(' ')};${NEWLINE}  }`
+      return `@utility ${prefix}-${sizeKey} {
+  @apply ${classParts.join(' ')};
+}`
     })
-    .join(NEWLINE + NEWLINE)
+    .join(NEWLINE)
 }
 
 const getBreakPointPrefix = (breakpoint: string): string => (breakpoint !== 'mobile' ? breakpoint + ':' : '')

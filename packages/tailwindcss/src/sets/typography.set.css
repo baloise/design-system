@@ -1,0 +1,49 @@
+@source inline("{hover:,focus:,active:,}text-primary");
+@source inline("{hover:,focus:,active:,}text-primary-light");
+@source inline("{hover:,focus:,active:,}text-white");
+@source inline("{hover:,focus:,active:,}text-grey-light");
+@source inline("{hover:,focus:,active:,}text-grey");
+@source inline("{hover:,focus:,active:,}text-grey-dark");
+@source inline("{hover:,focus:,active:,}text-info");
+@source inline("{hover:,focus:,active:,}text-warning");
+@source inline("{hover:,focus:,active:,}text-success");
+@source inline("{hover:,focus:,active:,}text-danger");
+@source inline("{hover:,focus:,active:,}text-black");
+@source inline("{hover:,focus:,active:,}text-primary-hovered");
+@source inline("{hover:,focus:,active:,}text-primary-pressed");
+@source inline("{hover:,focus:,active:,}text-danger-hovered");
+@source inline("{hover:,focus:,active:,}text-danger-pressed");
+@source inline("{hover:,focus:,active:,}text-inverted");
+@source inline("{hover:,focus:,active:,}text-inverted-disabled");
+@source inline("{hover:,focus:,active:,}text-inverted-hovered");
+@source inline("{hover:,focus:,active:,}text-inverted-pressed");
+
+@source inline("font-text");
+@source inline("font-tittle");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-x-small");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-small");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-normal");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-medium");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-x-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-xx-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-xxx-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-xxxx-large");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-xxxxx-large");
+
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-center");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-left");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-right");
+@source inline("{mobile:,tablet:,desktop:,widescreen:,}text-justify");
+
+@source inline("lowercase");
+@source inline("uppercase");
+@source inline("capitalize");
+
+@source inline("font-bold");
+@source inline("font-normal");
+@source inline("font-light");
+
+@source inline("whitespace-normal");
+@source inline("whitespace-nowrap");
