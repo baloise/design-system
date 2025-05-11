@@ -1,7 +1,3 @@
-@import '@baloise/ds-fonts/css/fonts.css';
-@import '@baloise/ds-styles/css/structure';
-@import '@baloise/ds-styles/css/core';
-
 @import 'tailwindcss';
 @import './theme';
 @import './variant';
