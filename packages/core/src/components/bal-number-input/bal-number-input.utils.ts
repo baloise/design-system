@@ -34,6 +34,10 @@ export function toNumber(value: any, decimalPoints = 0): number | undefined {
     val = val.split(getThousandSeparator()).join('').split('`').join('').split("'").join('')
   }
 
+  if (typeof val === 'string') {
+    val = val.replace(getDecimalSeparator(), '.')
+  }
+
   return decimalPoints === 0 ? parseInt(val, 10) : parseFloat(val)
 }
 
