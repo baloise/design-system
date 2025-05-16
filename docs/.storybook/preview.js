@@ -1,5 +1,5 @@
 /** @type { import('@storybook/html').Decorator } */
-export const decorators = [Story => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
+export const decorators = [Story => `< >${Story().outerHTML || Story()}</bal-doc-app>`]
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {

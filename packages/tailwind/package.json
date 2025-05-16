@@ -1,5 +1,5 @@
 {
-  "name": "@baloise/ds-tailwindcss",
+  "name": "@baloise/ds-tailwind",
   "version": "18.3.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
@@ -13,13 +13,13 @@
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
-    "ds-tailwindcss-migrate": "./bin/index.mjs"
+    "ds-tailwind-migrate": "./bin/index.mjs"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "static": "npx @tailwindcss/cli -i ./src/static.css -o ./css/static.css"
+    "build:all": "npx @tailwindcss/cli -i ./src/all.css -o ./css/all.css",
+    "preview": "vite preview"
   },
   "main": "src/index.css",
   "style": "src/index.css",

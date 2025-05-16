@@ -9,7 +9,7 @@ import replace from 'replace-in-file'
 // MAIN
 // ================================================================================
 const main = async () => {
-  const log = logger('Tailwindcss Migration')
+  const log = logger('Tailwind CSS Migration')
   const response = await prompts([
     {
       type: 'multiselect',

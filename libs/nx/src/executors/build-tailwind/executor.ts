@@ -6,9 +6,9 @@ import { generateSpacing } from './generators/spacing'
 import { generateTypography } from './generators/typography'
 import { NEWLINE } from './generators/utils'
 import { generateZIndex } from './generators/z-index'
-import { BuildTailwindcssExecutorSchema } from './schema'
+import { BuildTailwindExecutorSchema } from './schema'
 
-export default async function runExecutor(options: BuildTailwindcssExecutorSchema) {
+export default async function runExecutor(options: BuildTailwindExecutorSchema) {
   try {
     let content = ``
     content += await generateBorder(options)

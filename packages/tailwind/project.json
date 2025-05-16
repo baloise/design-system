@@ -1,12 +1,12 @@
 {
-  "name": "tailwindcss",
+  "name": "tailwind",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/tailwindcss/src",
+  "sourceRoot": "packages/tailwind/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "dependsOn": ["^prepare"],
-      "executor": "@baloise/ds-nx:build-tailwindcss",
+      "dependsOn": ["prepare"],
+      "executor": "@baloise/ds-nx:build-tailwind",
       "outputs": ["{projectRoot}/css"],
       "options": {
         "projectRoot": "{projectRoot}",
@@ -17,7 +17,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "npm run build"
+        "command": "npm run build && npm run build:all"
       }
     },
     "link": {

@@ -1,7 +1,7 @@
-import { BuildTailwindcssExecutorSchema } from '../schema'
+import { BuildTailwindExecutorSchema } from '../schema'
 import { getTokens, NEWLINE } from './utils'
 
-export const generateZIndex = async (options: BuildTailwindcssExecutorSchema) => {
+export const generateZIndex = async (options: BuildTailwindExecutorSchema) => {
   const tokens = await getTokens({ token: 'size.z-index', ...options })
 
   return (

@@ -1,11 +1,11 @@
-import { BuildTailwindcssExecutorSchema } from '../schema'
+import { BuildTailwindExecutorSchema } from '../schema'
 import { getTokens, NEWLINE } from './utils'
 
 type Token = { name: string; value: string }
 type ResponsiveToken = { mobile: Token; tablet: Token; desktop: Token }
 type ResponsiveTokens = { [size: string]: ResponsiveToken }
 
-export const generateTypography = async (options: BuildTailwindcssExecutorSchema) => {
+export const generateTypography = async (options: BuildTailwindExecutorSchema) => {
   const tokens = (await getTokens({ token: 'size.text.size', ...options })) as any as ResponsiveTokens
 
   return (

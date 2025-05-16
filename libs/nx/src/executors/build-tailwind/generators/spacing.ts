@@ -1,4 +1,4 @@
-import { BuildTailwindcssExecutorSchema } from '../schema'
+import { BuildTailwindExecutorSchema } from '../schema'
 import { getTokens, NEWLINE } from './utils'
 
 type Token = { name: string; value: string }
@@ -7,7 +7,7 @@ type SpacingTokens = { [key: string]: { [breakpoint: string]: Token } }
 const PADDINGS = ['p', 'px', 'py', 'pt', 'pr', 'pb', 'pl']
 const MARGINS = ['m', 'mx', 'my', 'mt', 'mr', 'mb', 'ml']
 
-export const generateSpacing = async (options: BuildTailwindcssExecutorSchema) => {
+export const generateSpacing = async (options: BuildTailwindExecutorSchema) => {
   const tokens = (await getTokens({ token: 'size.space', ...options })) as any as SpacingTokens
 
   const paddings = PADDINGS.map(prefix => generateSpacingWithPrefix(prefix, tokens)).join(NEWLINE)

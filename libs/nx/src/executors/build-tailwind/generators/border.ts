@@ -1,7 +1,7 @@
-import { BuildTailwindcssExecutorSchema } from '../schema'
+import { BuildTailwindExecutorSchema } from '../schema'
 import { getTokens, NEWLINE } from './utils'
 
-export const generateBorder = async (options: BuildTailwindcssExecutorSchema) => {
+export const generateBorder = async (options: BuildTailwindExecutorSchema) => {
   const borderWidthTokens = await getTokens({ token: 'size.border.width', ...options })
 
   const borderWidth =

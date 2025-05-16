@@ -5,10 +5,10 @@
       "schema": "./src/executors/build-styles/schema.json",
       "description": "build-styles executor"
     },
-    "build-tailwindcss": {
-      "implementation": "./src/executors/build-tailwindcss/executor",
-      "schema": "./src/executors/build-tailwindcss/schema.json",
-      "description": "build-tailwindcss executor"
+    "build-tailwind": {
+      "implementation": "./src/executors/build-tailwind/executor",
+      "schema": "./src/executors/build-tailwind/schema.json",
+      "description": "build-tailwind executor"
     },
     "build-core": {
       "implementation": "./src/executors/build-core/executor",
