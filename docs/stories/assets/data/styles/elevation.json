@@ -1,0 +1,80 @@
+[
+  {
+    "opacity": [
+      {
+        "class": "opacity-0",
+        "css": "opacity: var(--bal-opacity-0);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-0)"
+      },
+      {
+        "class": "opacity-30",
+        "css": "opacity: var(--bal-opacity-30);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-30)"
+      },
+      {
+        "class": "opacity-40",
+        "css": "opacity: var(--bal-opacity-40);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-40)"
+      },
+      {
+        "class": "opacity-50",
+        "css": "opacity: var(--bal-opacity-50);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-50)"
+      },
+      {
+        "class": "opacity-60",
+        "css": "opacity: var(--bal-opacity-60);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-60)"
+      },
+      {
+        "class": "opacity-80",
+        "css": "opacity: var(--bal-opacity-80);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-80)"
+      },
+      {
+        "class": "opacity-100",
+        "css": "opacity: var(--bal-opacity-100);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-100)"
+      }
+    ]
+  },
+  {
+    "box-shadow": [
+      {
+        "class": "shadow-small",
+        "css": "box-shadow: var(--bal-shadow-small);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-small)"
+      },
+      {
+        "class": "shadow-normal",
+        "css": "box-shadow: var(--bal-shadow-normal);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-normal)"
+      },
+      {
+        "class": "shadow-large",
+        "css": "box-shadow: var(--bal-shadow-large);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-large)"
+      }
+    ]
+  },
+  {
+    "text-shadow": [
+      {
+        "class": "text-shadow-normal",
+        "css": "text-shadow: var(--bal-text-shadow-normal);",
+        "property": "text-shadow",
+        "value": "var(--bal-text-shadow-normal)"
+      }
+    ]
+  }
+]

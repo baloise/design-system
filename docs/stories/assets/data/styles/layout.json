@@ -1,0 +1,350 @@
+[
+  {
+    "display": [
+      {
+        "class": "hidden",
+        "css": "display: none;",
+        "property": "display",
+        "value": "none"
+      },
+      {
+        "class": "block",
+        "css": "display: block;",
+        "property": "display",
+        "value": "block"
+      },
+      {
+        "class": "inline",
+        "css": "display: inline;",
+        "property": "display",
+        "value": "inline"
+      },
+      {
+        "class": "inline-block",
+        "css": "display: inline-block;",
+        "property": "display",
+        "value": "inline-block"
+      },
+      {
+        "class": "flex",
+        "css": "display: flex;",
+        "property": "display",
+        "value": "flex"
+      },
+      {
+        "class": "inline-flex",
+        "css": "display: inline-flex;",
+        "property": "display",
+        "value": "inline-flex"
+      }
+    ]
+  },
+  {
+    "overflow": [
+      {
+        "class": "overflow-auto",
+        "css": "overflow: auto;",
+        "property": "overflow",
+        "value": "auto"
+      },
+      {
+        "class": "overflow-hidden",
+        "css": "overflow: hidden;",
+        "property": "overflow",
+        "value": "hidden"
+      },
+      {
+        "class": "overflow-visible",
+        "css": "overflow: visible;",
+        "property": "overflow",
+        "value": "visible"
+      },
+      {
+        "class": "overflow-scroll",
+        "css": "overflow: scroll;",
+        "property": "overflow",
+        "value": "scroll"
+      },
+      {
+        "class": "overflow-x-auto",
+        "css": "overflow: auto;",
+        "property": "overflow",
+        "value": "auto"
+      },
+      {
+        "class": "overflow-x-hidden",
+        "css": "overflow: hidden;",
+        "property": "overflow",
+        "value": "hidden"
+      },
+      {
+        "class": "overflow-x-visible",
+        "css": "overflow: visible;",
+        "property": "overflow",
+        "value": "visible"
+      },
+      {
+        "class": "overflow-x-scroll",
+        "css": "overflow: scroll;",
+        "property": "overflow",
+        "value": "scroll"
+      },
+      {
+        "class": "overflow-y-auto",
+        "css": "overflow: auto;",
+        "property": "overflow",
+        "value": "auto"
+      },
+      {
+        "class": "overflow-y-hidden",
+        "css": "overflow: hidden;",
+        "property": "overflow",
+        "value": "hidden"
+      },
+      {
+        "class": "overflow-y-visible",
+        "css": "overflow: visible;",
+        "property": "overflow",
+        "value": "visible"
+      },
+      {
+        "class": "overflow-y-scroll",
+        "css": "overflow: scroll;",
+        "property": "overflow",
+        "value": "scroll"
+      }
+    ]
+  },
+  {
+    "position": [
+      {
+        "class": "static",
+        "css": "position: static;",
+        "property": "position",
+        "value": "static"
+      },
+      {
+        "class": "fixed",
+        "css": "position: fixed;",
+        "property": "position",
+        "value": "fixed"
+      },
+      {
+        "class": "relative",
+        "css": "position: relative;",
+        "property": "position",
+        "value": "relative"
+      },
+      {
+        "class": "absolute",
+        "css": "position: absolute;",
+        "property": "position",
+        "value": "absolute"
+      },
+      {
+        "class": "sticky",
+        "css": "position: sticky;",
+        "property": "position",
+        "value": "sticky"
+      }
+    ]
+  },
+  {
+    "top": [
+      {
+        "class": "top-auto",
+        "css": "top: auto;",
+        "property": "top",
+        "value": "auto"
+      },
+      {
+        "class": "top-0",
+        "css": "top: 0;",
+        "property": "top",
+        "value": "0"
+      },
+      {
+        "class": "top-50",
+        "css": "top: 50%;",
+        "property": "top",
+        "value": "50%"
+      },
+      {
+        "class": "top-100",
+        "css": "top: 100%;",
+        "property": "top",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "right": [
+      {
+        "class": "right-auto",
+        "css": "right: auto;",
+        "property": "right",
+        "value": "auto"
+      },
+      {
+        "class": "right-0",
+        "css": "right: 0;",
+        "property": "right",
+        "value": "0"
+      },
+      {
+        "class": "right-50",
+        "css": "right: 50%;",
+        "property": "right",
+        "value": "50%"
+      },
+      {
+        "class": "right-100",
+        "css": "right: 100%;",
+        "property": "right",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "bottom": [
+      {
+        "class": "bottom-auto",
+        "css": "bottom: auto;",
+        "property": "bottom",
+        "value": "auto"
+      },
+      {
+        "class": "bottom-0",
+        "css": "bottom: 0;",
+        "property": "bottom",
+        "value": "0"
+      },
+      {
+        "class": "bottom-50",
+        "css": "bottom: 50%;",
+        "property": "bottom",
+        "value": "50%"
+      },
+      {
+        "class": "bottom-100",
+        "css": "bottom: 100%;",
+        "property": "bottom",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "left": [
+      {
+        "class": "left-auto",
+        "css": "left: auto;",
+        "property": "left",
+        "value": "auto"
+      },
+      {
+        "class": "left-0",
+        "css": "left: 0;",
+        "property": "left",
+        "value": "0"
+      },
+      {
+        "class": "left-50",
+        "css": "left: 50%;",
+        "property": "left",
+        "value": "50%"
+      },
+      {
+        "class": "left-100",
+        "css": "left: 100%;",
+        "property": "left",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "z-index": [
+      {
+        "class": "z-index-deep",
+        "css": "z-index: var(--bal-z-index-deep);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-deep)"
+      },
+      {
+        "class": "z-index",
+        "css": "z-index: var(--bal-z-index);",
+        "property": "z-index",
+        "value": "var(--bal-z-index)"
+      },
+      {
+        "class": "z-index-masked",
+        "css": "z-index: var(--bal-z-index-masked);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-masked)"
+      },
+      {
+        "class": "z-index-mask",
+        "css": "z-index: var(--bal-z-index-mask);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-mask)"
+      },
+      {
+        "class": "z-index-sticky",
+        "css": "z-index: var(--bal-z-index-sticky);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-sticky)"
+      },
+      {
+        "class": "z-index-navigation",
+        "css": "z-index: var(--bal-z-index-navigation);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-navigation)"
+      },
+      {
+        "class": "z-index-popup",
+        "css": "z-index: var(--bal-z-index-popup);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-popup)"
+      },
+      {
+        "class": "z-index-modal",
+        "css": "z-index: var(--bal-z-index-modal);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-modal)"
+      },
+      {
+        "class": "z-index-toast",
+        "css": "z-index: var(--bal-z-index-toast);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-toast)"
+      },
+      {
+        "class": "z-index-tooltip",
+        "css": "z-index: var(--bal-z-index-tooltip);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-tooltip)"
+      }
+    ]
+  },
+  {
+    "vertical-align": [
+      {
+        "class": "vertical-align-top",
+        "css": "vertical-align: top;",
+        "property": "vertical-align",
+        "value": "top"
+      },
+      {
+        "class": "vertical-align-middle",
+        "css": "vertical-align: middle;",
+        "property": "vertical-align",
+        "value": "middle"
+      },
+      {
+        "class": "vertical-align-bottom",
+        "css": "vertical-align: bottom;",
+        "property": "vertical-align",
+        "value": "bottom"
+      }
+    ]
+  }
+]

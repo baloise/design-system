@@ -1,0 +1,64 @@
+[
+  {
+    "user-select": [
+      {
+        "class": "select-none",
+        "css": "user-select: none;",
+        "property": "user-select",
+        "value": "none"
+      },
+      {
+        "class": "select-text",
+        "css": "user-select: text;",
+        "property": "user-select",
+        "value": "text"
+      },
+      {
+        "class": "select-all",
+        "css": "user-select: all;",
+        "property": "user-select",
+        "value": "all"
+      },
+      {
+        "class": "select-auto",
+        "css": "user-select: auto;",
+        "property": "user-select",
+        "value": "auto"
+      }
+    ]
+  },
+  {
+    "cursor": [
+      {
+        "class": "cursor-auto",
+        "css": "cursor: auto;",
+        "property": "cursor",
+        "value": "auto"
+      },
+      {
+        "class": "cursor-pointer",
+        "css": "cursor: pointer;",
+        "property": "cursor",
+        "value": "pointer"
+      },
+      {
+        "class": "cursor-wait",
+        "css": "cursor: wait;",
+        "property": "cursor",
+        "value": "wait"
+      },
+      {
+        "class": "cursor-move",
+        "css": "cursor: move;",
+        "property": "cursor",
+        "value": "move"
+      },
+      {
+        "class": "cursor-not-allowed",
+        "css": "cursor: not-allowed;",
+        "property": "cursor",
+        "value": "not-allowed"
+      }
+    ]
+  }
+]
