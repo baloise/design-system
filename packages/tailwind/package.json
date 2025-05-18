@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:all": "npx @tailwindcss/cli -i ./src/all.css -o ./css/all.css",
+    "build:all": "npx @tailwindcss/cli --optimize -i ./src/all.css -o ./css/all.css && npx @tailwindcss/cli --minify -i ./src/all.css -o ./css/all.min.css",
     "preview": "vite preview"
   },
   "main": "src/index.css",

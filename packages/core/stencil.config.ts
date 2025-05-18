@@ -3,10 +3,10 @@ import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { join, parse, resolve } from 'path'
 
+import { webOutputTarget } from '@baloise/output-target-web'
+import { CustomDocumentationGenerator } from './config/doc-output-target'
 import { AngularGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
-import { CustomDocumentationGenerator } from './config/doc-output-target'
-import { webOutputTarget } from '@baloise/output-target-web'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
@@ -111,13 +111,8 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'styles', 'css', 'all.css'),
+          src: join(packagesDir, 'tailwind', 'css', 'all.min.css'),
           dest: 'assets/all.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.min.css',
           warn: true,
         },
         {

@@ -69,10 +69,7 @@ async function copyResources(options: BuildDocsExecutorSchema) {
   await copyToAsset(join(resourceRoot, 'tags.json'), 'data/tags.json')
 
   await copyToPublic(join(packageRoot, 'core/www/build'), 'build')
-  await copyToPublic(
-    join(packageRoot, 'styles/css/baloise-design-system.min.css'),
-    'assets/css/baloise-design-system.min.css',
-  )
+  await copyToPublic(join(packageRoot, 'tailwind/css/all.min.css'), 'assets/css/baloise-design-system.min.css')
   await copyToPublic(join(packageRoot, 'icons/src/assets'), 'assets/images/icons')
   await copyToPublic(join(packageRoot, 'brand-icons/src/assets'), 'assets/images/brand-icons')
   await copyToPublic(join(packageRoot, 'fonts/assets'), 'assets/fonts')

@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from 'fs/promises'
+import { mkdir, writeFile } from 'fs/promises'
 import { join } from 'path'
 import { generateBorder } from './generators/border'
 import { generateLineHeight } from './generators/line-height'
@@ -19,8 +19,11 @@ export default async function runExecutor(options: BuildTailwindExecutorSchema) 
     content += `${NEWLINE}${NEWLINE}`
 
     // create css output
-    await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
-    await mkdir(join(options.projectRoot, 'css'))
+    try {
+      await mkdir(join(options.projectRoot, 'css'), { recursive: true })
+    } catch (_e) {
+      // ignore error if directory already exists
+    }
     await writeFile(join(options.projectRoot, 'css', `utilities.css`), content)
   } catch (error) {
     console.error(error)
