@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.0.1
+
+### Patch Changes
+
+- **radio**: radio can not be unselected ( [#1699](https://github.com/baloise/design-system/pull/1699))
+
 ## 19.0.0
 
 ### Major Changes
