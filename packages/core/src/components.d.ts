@@ -3843,6 +3843,7 @@ declare global {
         new (): HTMLBalBadgeElement;
     };
     interface HTMLBalButtonElementEventMap {
+        "balClick": BalEvents.BalButtonClickDetail;
         "balNavigate": BalEvents.BalButtonNavigateDetail;
         "balFocus": BalEvents.BalButtonFocusDetail;
         "balBlur": BalEvents.BalButtonBlurDetail;
@@ -5359,6 +5360,10 @@ declare namespace LocalJSX {
           * Emitted when the button loses focus.
          */
         "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalClick"?: (event: BalButtonCustomEvent<BalEvents.BalButtonClickDetail>) => void;
         /**
           * Emitted when the button has been  rendered.
          */

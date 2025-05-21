@@ -156,6 +156,11 @@ export class Button implements ComponentInterface {
   @Prop() aria?: BalProps.BalButtonAria = undefined
 
   /**
+   * Emitted when the component is clicked.
+   */
+  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+
+  /**
    * Emitted when the link element has clicked.
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
@@ -273,6 +278,7 @@ export class Button implements ComponentInterface {
   }
 
   private onClick = (ev: MouseEvent) => {
+    this.balClick.emit(ev)
     if (this.href !== undefined) {
       this.balNavigate.emit(ev)
     }

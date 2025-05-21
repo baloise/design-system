@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
@@ -120,6 +120,11 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   @Prop() state: AccordionState = AccordionState.Collapsed
 
   /**
+   * Emitted when the component is clicked.
+   */
+  @Event() balClick!: EventEmitter<BalEvents.BalAccordionClickDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -172,9 +177,11 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private onClick = (ev: MouseEvent) => {
+  private onClick = (ev: BalEvents.BalButtonClick) => {
     stopEventBubbling(ev)
+    stopEventBubbling(ev.detail) // stop native event bubbling
     this.parentAccordionElement?.humanToggle()
+    this.balClick.emit(ev.detail)
   }
 
   /**
@@ -256,7 +263,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
         title={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
         aria-label={this.active ? i18nBalAccordion[this.language].close : i18nBalAccordion[this.language].open}
         aria-expanded={ariaBooleanToString(this.active)}
-        onClick={this.onClick}
+        onBalClick={this.onClick}
       >
         {label}
       </bal-button>

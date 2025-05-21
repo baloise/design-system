@@ -14,6 +14,9 @@ namespace BalEvents {
     target: HTMLBalAccordionElement
   }
 
+  export type BalAccordionClickDetail = MouseEvent
+  export type BalAccordionClick = BalAccordionCustomEvent<BalButtonClickDetail>
+
   export type BalAccordionChangeDetail = boolean
   export type BalAccordionChange = BalAccordionCustomEvent<BalAccordionChangeDetail>
 
