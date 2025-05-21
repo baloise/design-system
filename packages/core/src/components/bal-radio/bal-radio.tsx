@@ -311,14 +311,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
         this.checked = newChecked
       }
     }
-
-    // if (this.radioButton) {
-    //   this.buttonTabindex = -1
-
-    //   if (this.radioButton.setChecked) {
-    //     this.radioButton.setChecked(this.checked)
-    //   }
-    // }
   }
 
   /**
@@ -384,7 +376,8 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     ev.preventDefault()
 
     this.setFocus()
-    this.setChecked(!this.checked)
+    this.checked = true
+    this.setChecked(this.checked)
   }
 
   private onClick = (ev: MouseEvent) => {
