@@ -1,17 +1,17 @@
 import {
   Component,
-  h,
-  Prop,
-  Host,
-  Event,
-  EventEmitter,
   ComponentInterface,
   Element,
-  State,
+  Event,
+  EventEmitter,
+  h,
+  Host,
   Listen,
+  Prop,
+  State,
 } from '@stencil/core'
-import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { ariaBooleanToString } from '../../utils/aria'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rOnLoad } from '../../utils/helpers'
 
 @Component({
@@ -158,6 +158,11 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
+  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+
+  /**
+   * Emitted when the link element has clicked.
+   */
   @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
 
   /**
@@ -273,8 +278,12 @@ export class Button implements ComponentInterface {
   }
 
   private onClick = (ev: MouseEvent) => {
-    if (this.href !== undefined) {
-      this.balNavigate.emit(ev)
+    if (!this.disabled) {
+      this.balClick.emit(ev)
+
+      if (this.href !== undefined) {
+        this.balNavigate.emit(ev)
+      }
     }
   }
 

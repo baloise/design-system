@@ -46,6 +46,9 @@ namespace BalEvents {
   export type BalButtonFocusDetail = void
   export type BalButtonFocus = BalButtonCustomEvent<BalButtonFocusDetail>
 
+  export type BalButtonClickDetail = MouseEvent
+  export type BalButtonClick = BalButtonCustomEvent<BalButtonClickDetail>
+
   export type BalButtonNavigateDetail = MouseEvent
   export type BalButtonNavigate = BalButtonCustomEvent<BalButtonNavigateDetail>
 
