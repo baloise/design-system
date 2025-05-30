@@ -3,18 +3,15 @@ describe('bal-date', () => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Date Label')
-      .should('have.value', '09.09.2023')
-      .clear()
-      .click()
-      .blur()
-      .shouldBeInvalid()
-      .getDescribingElement()
-      .contains('This field is required')
+    cy.getByLabelText('Date Label').should('have.value', '09.09.2023').clear().click()
+    cy.get('body').click(0, 0)
+
+    cy.getByLabelText('Date Label').shouldBeInvalid().getDescribingElement().contains('This field is required')
+
+    cy.getByPlaceholder('Enter a date').type('20.02.2024')
+    cy.get('body').click(0, 0)
 
     cy.getByPlaceholder('Enter a date')
-      .type('20.02.2024')
-      .blur()
       .should('have.value', '20.02.2024')
       .shouldBeValid()
       .getDescribingElement()

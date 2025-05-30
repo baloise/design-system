@@ -3843,6 +3843,7 @@ declare global {
         new (): HTMLBalBadgeElement;
     };
     interface HTMLBalButtonElementEventMap {
+        "balClick": BalEvents.BalButtonClickDetail;
         "balNavigate": BalEvents.BalButtonNavigateDetail;
         "balFocus": BalEvents.BalButtonFocusDetail;
         "balBlur": BalEvents.BalButtonBlurDetail;
@@ -4042,7 +4043,6 @@ declare global {
         "balFocus": BalEvents.BalDateFocusDetail;
         "balInputClick": BalEvents.BalDateInputClickDetail;
         "balIconClick": BalEvents.BalDateIconClickDetail;
-        "balPopoverPrepare": string;
     }
     interface HTMLBalDateElement extends Components.BalDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5360,6 +5360,10 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
         /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalClick"?: (event: BalButtonCustomEvent<BalEvents.BalButtonClickDetail>) => void;
+        /**
           * Emitted when the button has been  rendered.
          */
         "onBalDidRender"?: (event: BalButtonCustomEvent<BalEvents.BalButtonDidRenderDetail>) => void;
@@ -5970,7 +5974,6 @@ declare namespace LocalJSX {
           * Emitted when the input has clicked.
          */
         "onBalInputClick"?: (event: BalDateCustomEvent<BalEvents.BalDateInputClickDetail>) => void;
-        "onBalPopoverPrepare"?: (event: BalDateCustomEvent<string>) => void;
         /**
           * Emitted before the animation starts
          */
