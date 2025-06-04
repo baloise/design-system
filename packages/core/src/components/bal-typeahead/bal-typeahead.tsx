@@ -46,11 +46,19 @@ import { addEventListener, removeEventListener, waitAfterIdleCallback } from '..
 import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 
+/**
+ * TODOS:
+ *
+ * Features:
+ * - [ ] option list pagination
+ * - [ ] option list highlight search term
+ */
+
 @Component({
-  tag: 'bal-dropdown',
-  styleUrl: 'bal-dropdown.sass',
+  tag: 'bal-typeahead',
+  styleUrl: 'bal-typeahead.sass',
 })
-export class Dropdown
+export class Typeahead
   implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormSubmit, DropdownFocus
 {
   @Element() el!: HTMLElement
@@ -59,15 +67,17 @@ export class Dropdown
   nativeEl: HTMLInputElement | undefined
   selectEl: HTMLSelectElement | undefined
 
-  mode = DropdownMode.Basic
-  inputId = `bal-dropdown-${balDropdownIds++}`
+  mode = DropdownMode.Typeahead
+  inputId = `bal-typeahead-${balTypeaheadIds++}`
   inheritedAttributes: Attributes = {}
   initialValue?: string | string[] = []
   nativeOptions: string[] = []
+  chips = true
 
   @State() rawOptions: BalOption[] = []
   @State() choices: BalOption[] = []
   @State() rawValue: string[] = []
+  @State() typeaheadValue = ''
   @State() hasFocus = false
   @State() isExpanded = false
   @State() isAutoFilled = false
@@ -89,7 +99,7 @@ export class Dropdown
 
   log!: LogInstance
 
-  @Logger('bal-dropdown')
+  @Logger('bal-typeahead')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -127,12 +137,12 @@ export class Dropdown
   /**
    * Defines the size of the control.
    */
-  @Prop() size: BalProps.BalDropdownSize = ''
+  @Prop() size: BalProps.BalTypeaheadSize = ''
 
   /**
    * Defines the color style of the control
    */
-  @Prop() theme: BalProps.BalDropdownTheme = ''
+  @Prop() theme: BalProps.BalTypeaheadTheme = ''
 
   /**
    * If `true`, the user cannot interact with the option.
@@ -148,11 +158,6 @@ export class Dropdown
    * If `true`, the user can select multiple options.
    */
   @Prop() multiple = false
-
-  /**
-   * If `true`, the selected options are shown as chips
-   */
-  @Prop() chips = false
 
   /**
    * If `true`, a cross at the end is visible to clear the selection
@@ -211,17 +216,17 @@ export class Dropdown
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<BalEvents.BalDropdownChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalTypeaheadChangeDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<BalEvents.BalDropdownFocusDetail>
+  @Event() balFocus!: EventEmitter<BalEvents.BalTypeaheadFocusDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<BalEvents.BalDropdownBlurDetail>
+  @Event() balBlur!: EventEmitter<BalEvents.BalTypeaheadBlurDetail>
 
   /**
    * LIFECYCLE
@@ -338,6 +343,7 @@ export class Dropdown
    */
   @Method()
   async clear() {
+    this.nativeEl.value = ''
     this.valueUtil.updateRawValueBySelection([])
   }
 
@@ -383,8 +389,18 @@ export class Dropdown
    * ------------------------------------------------------
    */
   handleAutoFill = async (ev: Event) => {
-    this.log('(handleAutoFill)', ev, this.nativeEl.value)
+    this.log('(handleAutoFill)', ev, this.nativeEl?.value)
     this.autoFillUtil.handleAutoFill(ev)
+  }
+
+  handleInput = async (ev: InputEvent) => {
+    stopEventBubbling(ev)
+    const value = this.nativeEl.value.trim()
+    if (value) {
+      this.listEl?.filterByContent(value)
+      this.typeaheadValue = value
+    }
+    this.popupUtil.expandList()
   }
 
   handleKeyDown = (ev: KeyboardEvent) => {
@@ -425,11 +441,6 @@ export class Dropdown
            */
         } else if (ev.key === 'Tab' || isEscapeKey(ev)) {
           this.popupUtil.collapseList()
-          /**
-           * Focus on label
-           */
-        } else if (ev.key.length === 1) {
-          this.focusUtil.focusOptionByLabel(ev.key)
         }
       } else {
         /**
@@ -438,11 +449,6 @@ export class Dropdown
         if (isEnterKey(ev) || isSpaceKey(ev)) {
           stopEventBubbling(ev)
           this.popupUtil.expandList()
-          /**
-           * Focus on label
-           */
-        } else if (ev.key.length === 1) {
-          this.focusUtil.focusOptionByLabel(ev.key, { select: true })
         }
       }
     } else {
@@ -476,6 +482,10 @@ export class Dropdown
         <div
           class={{
             ...block.element('root').class(),
+            ...block
+              .element('root')
+              .modifier('typeahead')
+              .class(this.mode === DropdownMode.Typeahead),
             ...block.element('root').modifier('focused').class(focused),
             ...block.element('root').modifier('invalid').class(this.invalid),
             ...block.element('root').modifier('disabled').class(this.valueUtil.isDisabled()),
@@ -506,37 +516,39 @@ export class Dropdown
               filled={this.valueUtil.isFilled()}
               mode={this.mode}
               inlineLabel={this.inlineLabel}
-              chips={this.chips}
+              chips={this.multiple}
               placeholder={this.placeholder}
               choices={this.choices}
               invalid={this.invalid}
               disabled={this.disabled}
               readonly={this.readonly}
               onRemoveChip={option => this.valueUtil.removeOption(option)}
-            ></DropdownValue>
+            >
+              <DropdownInput
+                mode={this.mode}
+                inputId={this.inputId}
+                httpFormSubmit={this.httpFormSubmit}
+                ariaForm={this.ariaForm}
+                value={this.typeaheadValue}
+                autocomplete={this.autocomplete}
+                required={this.required}
+                disabled={this.disabled}
+                readonly={this.readonly}
+                placeholder={(this.disabled || this.readonly) && this.choices.length > 0 ? '' : this.placeholder}
+                expanded={this.isExpanded}
+                invalid={this.invalid}
+                language={this.language}
+                inputLabel={this.inputLabel}
+                inheritedAttributes={this.inheritedAttributes}
+                refInputEl={el => (this.nativeEl = el)}
+                onInput={ev => this.handleInput(ev)}
+                onChange={ev => this.handleAutoFill(ev)}
+                onFocus={ev => this.eventsUtil.handleFocus(ev)}
+                onBlur={ev => this.eventsUtil.handleBlur(ev)}
+                onKeyDown={ev => this.handleKeyDown(ev)}
+              ></DropdownInput>
+            </DropdownValue>
           </span>
-          <DropdownInput
-            mode={this.mode}
-            inputId={this.inputId}
-            httpFormSubmit={this.httpFormSubmit}
-            ariaForm={this.ariaForm}
-            value={this.rawValue.join(', ')}
-            autocomplete={this.autocomplete}
-            required={this.required}
-            disabled={this.disabled}
-            readonly={this.readonly}
-            placeholder={this.placeholder}
-            expanded={this.isExpanded}
-            invalid={this.invalid}
-            language={this.language}
-            inputLabel={this.inputLabel}
-            inheritedAttributes={this.inheritedAttributes}
-            refInputEl={el => (this.nativeEl = el)}
-            onChange={ev => this.handleAutoFill(ev)}
-            onFocus={ev => this.eventsUtil.handleFocus(ev)}
-            onBlur={ev => this.eventsUtil.handleBlur(ev)}
-            onKeyDown={ev => this.handleKeyDown(ev)}
-          ></DropdownInput>
           <DropdownNativeSelect
             name={this.name}
             httpFormSubmit={this.httpFormSubmit}
@@ -544,7 +556,7 @@ export class Dropdown
             required={this.required}
             disabled={this.valueUtil.isDisabled()}
             rawValue={this.rawValue}
-            refSelectEl={el => (this.selectEl = el)}
+            refSelectEl={el => (el ? (this.selectEl = el) : void 0)}
           ></DropdownNativeSelect>
           <DropdownIcon
             icon={this.icon}
@@ -571,8 +583,8 @@ export class Dropdown
           multiple={this.multiple}
           contentHeight={this.contentHeight}
           rawOptions={this.rawOptions}
-          refPanelEl={el => (this.panelEl = el)}
-          refListEl={el => (this.listEl = el)}
+          refPanelEl={el => (el ? (this.panelEl = el) : void 0)}
+          refListEl={el => (el ? (this.listEl = el) : void 0)}
         >
           <slot></slot>
         </DropdownOptionList>
@@ -581,4 +593,4 @@ export class Dropdown
   }
 }
 
-let balDropdownIds = 0
+let balTypeaheadIds = 0
