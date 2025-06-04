@@ -1,25 +1,20 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Listen,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  EventEmitter,
-  Event,
-  Listen,
+  h,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
-import { NavMetaButton } from './models/bal-nav-meta-button'
-import { BalScrollHandler } from '../../utils/scroll'
-import { NavLinkItemObserver } from './bal-nav.types'
+import { balBrowser } from '../../utils/browser'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -28,11 +23,16 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
-import { i18nNavBars } from './bal-nav.i18n'
-import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
-import { NavLinkItem } from './models/bal-nav-link-item'
-import { balBrowser } from '../../utils/browser'
 import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalScrollHandler } from '../../utils/scroll'
+import { i18nNavBars } from './bal-nav.i18n'
+import { NavLinkItemObserver } from './bal-nav.types'
+import { NavLinkItem } from './models/bal-nav-link-item'
+import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
+import { NavMetaButton } from './models/bal-nav-meta-button'
+import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 
 @Component({
   tag: 'bal-nav',
