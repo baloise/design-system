@@ -1,8 +1,8 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { SwiperUtil } from 'packages/core/src/utils/swiper'
 import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 import { TabButton } from './tab-button'
-import { SwiperUtil } from 'packages/core/src/utils/swiper'
 
 export interface TabNavProps {
   swiper: SwiperUtil
@@ -114,7 +114,11 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           ...navInnerEl.class(),
           ...navInnerEl.modifier(`full-height`).class(isFullHeight),
         }}
-        ref={el => (swiper.innerEl = el)}
+        ref={el => {
+          if (el) {
+            swiper.innerEl = el
+          }
+        }}
         aria-label={isLinkList ? ariaLabel : undefined}
       >
         <DivOrList
@@ -127,7 +131,11 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           }}
           role={isLinkList ? undefined : 'tablist'}
           aria-label={isLinkList ? undefined : ariaLabel}
-          ref={el => (swiper.containerEl = el)}
+          ref={el => {
+            if (el) {
+              swiper.containerEl = el
+            }
+          }}
         >
           {tabs.map((tab, index) => (
             <Button item={tab} index={index}></Button>

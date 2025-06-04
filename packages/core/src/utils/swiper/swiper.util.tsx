@@ -1,10 +1,13 @@
 import { h } from '@stencil/core'
+import { BEM } from '../bem'
+import { stopEventBubbling } from '../form-input'
 import { addEventListener, debounce, isDescendant, raf, removeEventListener } from '../helpers'
+import { isTabKey } from '../keyboard'
 import { getComputedWidth } from '../style'
-import { i18nSwiperControlLabel } from './swiper.i18n'
-import { SmallControl } from './controls/small-control'
-import { LargeControl } from './controls/large-control'
 import { DotControl } from './controls/dot-control'
+import { LargeControl } from './controls/large-control'
+import { SmallControl } from './controls/small-control'
+import { i18nSwiperControlLabel } from './swiper.i18n'
 import type {
   SwiperChildItem,
   SwiperControl,
@@ -14,9 +17,6 @@ import type {
   SwiperItemsPerView,
   SwiperSlide,
 } from './swiper.type'
-import { BEM } from '../bem'
-import { isTabKey } from '../keyboard'
-import { stopEventBubbling } from '../form-input'
 
 export class SwiperUtil {
   private component!: SwiperInterface
