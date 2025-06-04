@@ -4,6 +4,7 @@ describe('bal-steps', () => {
   it('basic component', () => {
     cy.platform('desktop')
     cy.getByTestId('steps').testVisual('tabs-steps')
+    cy.getByTestId('steps-links').testVisual('tabs-steps-with-links')
     cy.getByTestId('steps-with-four').testVisual('tabs-steps-with-four')
 
     cy.platform('tablet')
