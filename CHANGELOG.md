@@ -1,5 +1,29 @@
 # Changelog
 
+## 19.1.0
+
+### Minor Changes
+
+- **button**: add balClick event to listen to click events when the button is not disabled ( [#1707](https://github.com/baloise/design-system/pull/1707))
+
+- **hint**: replace deprecated popover element and use popup instead ( [#1684](https://github.com/baloise/design-system/pull/1684))
+
+### Patch Changes
+
+- **core**: Make sure disabling of scrolling also works when using a touchpad in safari ( [#1701](https://github.com/baloise/design-system/pull/1701))
+
+- **popup**: show backdrop over full screen ( [#1701](https://github.com/baloise/design-system/pull/1701))
+
+- **date**: improve focus handling to trigger angular validation after selection ( [#1712](https://github.com/baloise/design-system/pull/1712))
+
+- **input**: bal input event returned a rounded number when the french formatting,comma for a decimal, was used ( [#1696](https://github.com/baloise/design-system/pull/1696))
+
+- **button**: reduce render time by making aria prop mutable for dynamic updates ( [#1716](https://github.com/baloise/design-system/pull/1716))
+
+- **nav**: enhance ref assignment for swiper elements to show navigation controls ( [#1716](https://github.com/baloise/design-system/pull/1716))
+
+- **steps**: remove link styles for steps ( [#1717](https://github.com/baloise/design-system/pull/1717))
+
 ## 19.0.1
 
 ### Patch Changes
