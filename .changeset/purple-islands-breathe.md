@@ -1,5 +1,5 @@
 ---
-'@baloise/ds-core': patch
+'@baloise/ds-core': minor
 ---
 
-**core**: New mask for bal-input: Basic contract mask. Removal of leading zero for contract and basic contract mask.
+**input**: added basic contract mask and removal of leading zero for contract and basic contract mask.
