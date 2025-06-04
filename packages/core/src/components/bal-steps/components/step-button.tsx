@@ -24,7 +24,6 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, color, 
       <a
         role="tab"
         class={{
-          'is-link': true,
           ...bemEl.class(),
           ...bemEl.modifier(`color-${color}`).class(),
           ...bemEl.modifier('done').class(item.done),
