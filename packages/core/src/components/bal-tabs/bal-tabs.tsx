@@ -1,18 +1,25 @@
 import {
   Component,
-  Host,
-  h,
+  ComponentInterface,
   Element,
-  State,
   Event,
   EventEmitter,
+  h,
+  Host,
+  Listen,
   Method,
   Prop,
+  State,
   Watch,
-  Listen,
-  ComponentInterface,
 } from '@stencil/core'
+import { AccordionState, Attributes } from '../../interfaces'
+import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
 import { areArraysEqual } from '../../utils/array'
+import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
+import { stopEventBubbling } from '../../utils/form-input'
 import {
   debounce,
   debounceEvent,
@@ -24,25 +31,18 @@ import {
   transitionEndAsync,
   waitAfterFramePaint,
 } from '../../utils/helpers'
-import { BalTabOption } from './bal-tab.type'
-import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
-import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { newBalTabOption } from './bal-tab.util'
-import { stopEventBubbling } from '../../utils/form-input'
-import { TabSelect } from './components/tab-select'
-import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { AccordionState, Attributes } from '../../interfaces'
 import { BalResizeInfo, BalResizeObserver, ListenToResize } from '../../utils/resize'
-import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
-import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
+import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
+import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
-import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
-import { inheritAttributes } from '../../utils/attributes'
+import { BalTabOption } from './bal-tab.type'
+import { newBalTabOption } from './bal-tab.util'
+import { TabNav } from './components/tab-nav'
+import { TabSelect } from './components/tab-select'
 
 @Component({
   tag: 'bal-tabs',

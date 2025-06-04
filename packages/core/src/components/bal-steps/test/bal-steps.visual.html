@@ -39,6 +39,27 @@
           </bal-steps>
         </section>
 
+        <bal-heading>With Links</bal-heading>
+        <section data-testid="steps-links">
+          <bal-steps value="step-a">
+            <bal-step-item
+              href="bal-steps.a11y.html"
+              value="step-a"
+              label="Lorem ipsum dolor sit amet consectetur"
+              done
+            >
+              Step A Content
+            </bal-step-item>
+            <bal-step-item href="bal-steps.a11y.html" value="step-b" label="Step B">Step B Content</bal-step-item>
+            <bal-step-item href="bal-steps.a11y.html" value="step-c" label="Step C" failed
+              >Step C Content</bal-step-item
+            >
+            <bal-step-item href="bal-steps.a11y.html" value="step-c" label="Step C" disabled
+              >Step C Content</bal-step-item
+            >
+          </bal-steps>
+        </section>
+
         <bal-heading>4 Steps</bal-heading>
         <section data-testid="steps-with-four">
           <bal-steps value="step-b">

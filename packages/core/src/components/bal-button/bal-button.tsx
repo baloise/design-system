@@ -1,17 +1,17 @@
 import {
   Component,
-  h,
-  Prop,
-  Host,
-  Event,
-  EventEmitter,
   ComponentInterface,
   Element,
-  State,
+  Event,
+  EventEmitter,
+  h,
+  Host,
   Listen,
+  Prop,
+  State,
 } from '@stencil/core'
-import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { ariaBooleanToString } from '../../utils/aria'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rOnLoad } from '../../utils/helpers'
 
 @Component({
@@ -153,7 +153,12 @@ export class Button implements ComponentInterface {
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() aria?: BalProps.BalButtonAria = undefined
+  @Prop({ mutable: true }) aria?: BalProps.BalButtonAria = undefined
+
+  /**
+   * Emitted when the link element has clicked.
+   */
+  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
 
   /**
    * Emitted when the link element has clicked.
@@ -185,11 +190,6 @@ export class Button implements ComponentInterface {
 
   componentDidLoad(): void {
     rOnLoad(() => (this.isLargestContentPaintDone = true))
-    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
-      this.aria = {
-        haspopup: 'true',
-      }
-    }
   }
 
   componentWillLoad() {
@@ -201,6 +201,12 @@ export class Button implements ComponentInterface {
       'tabindex',
       'aria-haspopup',
     ])
+
+    if (this.el.hasAttribute('bal-popup') && !this.aria?.haspopup) {
+      this.aria = {
+        haspopup: 'true',
+      }
+    }
   }
   componentDidRender() {
     this.balDidRender.emit()
@@ -273,8 +279,12 @@ export class Button implements ComponentInterface {
   }
 
   private onClick = (ev: MouseEvent) => {
-    if (this.href !== undefined) {
-      this.balNavigate.emit(ev)
+    if (!this.disabled) {
+      this.balClick.emit(ev)
+
+      if (this.href !== undefined) {
+        this.balNavigate.emit(ev)
+      }
     }
   }
 

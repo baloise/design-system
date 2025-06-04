@@ -58,6 +58,7 @@ export class BalScrollHandler {
   enable() {
     if (this.target) {
       if (balBrowser.hasWindow && balBrowser.hasDocument) {
+        document.documentElement.style.overflow = ''
         document.body.classList.remove('noscroll')
         document.body.style.position = ''
         document.body.style.top = ''
@@ -77,10 +78,13 @@ export class BalScrollHandler {
       if (balBrowser.hasWindow && balBrowser.hasDocument) {
         this.x = window.pageXOffset || document.documentElement.scrollLeft
         this.y = window.pageYOffset || document.documentElement.scrollTop
+
+        document.documentElement.style.overflow = 'hidden'
         document.body.classList.add('noscroll')
         document.body.style.position = 'fixed'
         document.body.style.top = `-${this.y}px`
         document.body.style.width = `100%`
+
         this.disabled = true
       }
     }
