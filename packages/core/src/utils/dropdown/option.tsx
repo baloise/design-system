@@ -1,4 +1,4 @@
-import { h } from '@stencil/core'
+import { rIC } from '../helpers'
 import { DropdownComponent } from './component'
 
 export type BalBaseOption<TValue = string> = {
@@ -83,11 +83,21 @@ export class DropdownOptionUtil {
   async listenToOptionChange(ev: BalEvents.BalOptionChange) {
     const newSelectedValues = (await this.component.listEl?.getSelectedValues()) || []
     this.component.valueUtil.updateRawValueBySelection(newSelectedValues)
+
     if (!this.component.multiple) {
       this.component.popupUtil.collapseList()
       if (this.component.hasFocus) {
         this.component.balBlur.emit(new FocusEvent('blur', { relatedTarget: this.component.el }))
         this.component.hasFocus = false
+      }
+    } else {
+      if (this.component.mode === 'typeahead' && this.component.nativeEl) {
+        this.component.typeaheadValue = ''
+        this.component.nativeEl.value = ''
+        rIC(() => {
+          this.component.listEl?.filterByContent(this.component.typeaheadValue)
+          this.component.nativeEl.focus()
+        })
       }
     }
   }

@@ -32,7 +32,12 @@ export const DropdownIcon: FunctionalComponent<DropdownIconProps> = ({
 
   if (loading) {
     return (
-      <bal-spinner class={{ ...block.element('rear').class() }} small variation="circle" color="white"></bal-spinner>
+      <bal-spinner
+        class={{ ...block.element('rear').class() }}
+        small
+        variation="circle"
+        color={theme === 'purple' ? 'white' : 'blue'}
+      ></bal-spinner>
     )
   } else if (clearable && filled && !disabled) {
     return (

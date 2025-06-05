@@ -1,13 +1,15 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, State, Listen } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
+import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
+import { BalConfigState, BalLanguage, BalRegion, defaultConfig, ListenToConfig } from '../../utils/config'
+import { BalOption } from '../../utils/dropdown'
+import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 import { raf, waitAfterFramePaint } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { includes, startsWith } from '../bal-select/utils/utils'
-import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
-import { BalOption } from '../../utils/dropdown'
-import { ariaBooleanToString } from '../../utils/aria'
+import { I18nBalOptionList } from './bal-option-list.i18n'
 
 @Component({
   tag: 'bal-option-list',
@@ -23,7 +25,10 @@ export class OptionList implements ComponentInterface, Loggable {
 
   log!: LogInstance
 
+  @State() noOptions = false
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
 
   @Logger('bal-option-list')
   createLogger(log: LogInstance) {
@@ -94,6 +99,16 @@ export class OptionList implements ComponentInterface, Loggable {
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
 
   @Listen('balOptionFocus', { passive: true })
   listenToMouseEnter(ev: BalEvents.BalOptionFocus) {
@@ -270,7 +285,7 @@ export class OptionList implements ComponentInterface, Loggable {
    * Returns a list of option values
    */
   @Method() async getSelectedValues(): Promise<string[]> {
-    const options = this.options
+    const options = this.allOptions
     return options.filter(option => option.selected).map(option => option.value)
   }
 
@@ -278,7 +293,7 @@ export class OptionList implements ComponentInterface, Loggable {
    * Returns a list of option labels
    */
   @Method() async getSelectedOptions(values?: string[]): Promise<BalOption[]> {
-    const options = this.options
+    const options = this.allOptions
     if (values && values.length > 0) {
       return options.filter(option => values.includes(option.value)).map(option => option)
     }
@@ -289,21 +304,21 @@ export class OptionList implements ComponentInterface, Loggable {
    * Returns a list of options
    */
   @Method() async getValues(): Promise<string[]> {
-    return this.options.map(option => option.value)
+    return this.allOptions.map(option => option.value)
   }
 
   /**
    * Returns a list of options
    */
   @Method() async getLabels(): Promise<string[]> {
-    return this.options.map(option => option.label)
+    return this.allOptions.map(option => option.label)
   }
 
   /**
    * Returns a list of accessible options
    */
   @Method() async getOptions(): Promise<BalOption[]> {
-    return this.options.filter(o => !o.disabled || !o.hidden)
+    return this.allOptions.filter(o => !o.disabled)
   }
 
   /**
@@ -364,6 +379,7 @@ export class OptionList implements ComponentInterface, Loggable {
       }
     }
 
+    this.noOptions = filteredOptions.length === 0
     return filteredOptions
   }
 
@@ -554,6 +570,18 @@ export class OptionList implements ComponentInterface, Loggable {
           {...this.inheritAttributes}
         >
           <slot />
+
+          {this.noOptions ? (
+            <div
+              class={{
+                ...block.element('no-options').class(),
+              }}
+            >
+              {I18nBalOptionList[this.language].noOptions}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </Host>
     )

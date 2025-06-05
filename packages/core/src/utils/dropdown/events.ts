@@ -48,8 +48,24 @@ export class DropdownEventsUtil {
         const targetEl = ev.target as HTMLElement
         const clearEl = targetEl.closest('.bal-dropdown__clear')
         if (clearEl) {
+          if (this.component.mode === 'typeahead' && this.component.nativeEl) {
+            this.component.nativeEl.value = ''
+            this.component.typeaheadValue = ''
+          }
           this.component.valueUtil.updateRawValueBySelection([])
           return
+        }
+      }
+
+      if (this.component.mode === 'typeahead' && this.component.nativeEl) {
+        const targetEl = ev.target as HTMLElement
+
+        if (targetEl === this.component.nativeEl && this.component.isExpanded) {
+          return
+        }
+
+        if (!this.component.isExpanded) {
+          this.component.nativeEl.select()
         }
       }
 
