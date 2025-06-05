@@ -318,6 +318,7 @@ export class RadioGroup
       // space bar on top of a selected radio
       if (['Space'].includes(ev.code)) {
         this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value
+        this.balChange.emit(this.value)
 
         // Prevent browsers from jumping
         // to the bottom of the screen
