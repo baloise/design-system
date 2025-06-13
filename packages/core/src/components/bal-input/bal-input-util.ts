@@ -127,6 +127,7 @@ export function formatBeIBAN(value: string): string {
 }
 
 export const MAX_LENGTH_CONTRACT_NUMBER = 10
+export const MAX_LENGTH_BASIC_CONTRACT_NUMBER = 9
 export const MAX_LENGTH_OFFER_NUMBER = 9
 export const MAX_LENGTH_CLAIM_NUMBER = 11
 export const MAX_LENGTH_BE_ENTERPRISE_NUMBER = 10
