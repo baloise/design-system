@@ -1,5 +1,15 @@
 # Changelog
 
+## 19.2.0
+
+### Minor Changes
+
+- **input**: added basic contract mask and removal of leading zero for contract and basic contract mask. ( [#1725](https://github.com/baloise/design-system/pull/1725))
+
+### Patch Changes
+
+- **radio**: trigger change event on selection with the space key ( [#1721](https://github.com/baloise/design-system/pull/1721))
+
 ## 19.1.0
 
 ### Minor Changes
