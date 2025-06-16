@@ -21,11 +21,11 @@
           <form action="https://www.w3schools.com/action_page.php" target="_blank">
             <bal-form-grid>
               <bal-form-col>
-                <bal-fieldver required>
+                <bal-field required>
                   <bal-field-control>
                     <bal-input data-testid="reset" value="Tony Stark"></bal-input>
                   </bal-field-control>
-                </bal-fieldver>
+                </bal-field>
               </bal-form-col>
             </bal-form-grid>
             <bal-button-group>
@@ -37,10 +37,12 @@
         <section>
           <bal-input mask="claim-number" value="7300772816x"></bal-input>
           <bal-input mask="claim-number"></bal-input>
-        <p>Test contract number masks</p>
+          <p>Test contract number masks</p>
+        </section>
         <section>
           <label> Contract number mask: </label> <bal-input mask="contract-number" value="9069998881"></bal-input>
-          <label> Basic contract number mask: </label> <bal-input mask="basic-contract-number" value="906999888"></bal-input>
+          <label> Basic contract number mask: </label>
+          <bal-input mask="basic-contract-number" value="906999888"></bal-input>
         </section>
       </main>
     </bal-doc-app>
