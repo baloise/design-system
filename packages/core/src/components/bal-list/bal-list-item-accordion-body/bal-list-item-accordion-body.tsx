@@ -1,7 +1,7 @@
-import { Component, Host, h, Prop, Element, ComponentInterface, State, Method } from '@stencil/core'
-import { debounce, raf } from '../../../utils/helpers'
-import { Loggable, LogInstance, Logger } from '../../../utils/log'
+import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { debounce, raf } from '../../../utils/helpers'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 
 export interface BalListItemAccordionBodyAria {
@@ -91,7 +91,9 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
    */
   @Method()
   async setAria(aria: BalListItemAccordionBodyAria): Promise<void> {
-    this.ariaState = { ...aria }
+    if (aria.labelledby && aria.labelledby !== this.ariaState.labelledby) {
+      this.ariaState.labelledby = aria.labelledby
+    }
   }
 
   /**
