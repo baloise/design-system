@@ -1,33 +1,32 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Listen,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  EventEmitter,
-  Listen,
-  Event,
+  h,
 } from '@stencil/core'
-import { isEscapeKey } from '../../utils/keyboard'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
-import {
-  PopupComponentInterface,
-  PopupVariantRenderer,
-  PopupVariant,
-  PopoverVariantRenderer,
-  FullscreenVariantRenderer,
-  DrawerVariantRenderer,
-} from './variants'
 import { debounce } from '../../utils/helpers'
+import { isEscapeKey } from '../../utils/keyboard'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import {
+  DrawerVariantRenderer,
+  FullscreenVariantRenderer,
+  PopoverVariantRenderer,
+  PopupComponentInterface,
+  PopupVariant,
+  PopupVariantRenderer,
+} from './variants'
 import { VariantRenderer } from './variants/variant.renderer'
-import { focusableQueryString } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-popup',
@@ -345,7 +344,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     this.lastVariantRenderer = undefined
 
     if (this.lastFocus && this.lastFocus.focus) {
-      this.lastFocus?.focus()
+      this.lastFocus?.focus({ preventScroll: true })
     }
     return result
   }
@@ -434,13 +433,9 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   }
 
   private focusFirstDescendant() {
-    const { el } = this
-    const firstInput = el.querySelector(focusableQueryString) as HTMLElement | null
-
-    if (firstInput) {
-      firstInput.focus()
-    } else {
-      el.focus()
+    const contentEl = this.contentEl
+    if (contentEl) {
+      contentEl.focus({ preventScroll: true })
     }
   }
 
@@ -547,6 +542,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
               }}
               ref={contentEl => (this.contentEl = contentEl)}
               data-test="bal-popup-content"
+              tabindex="-1"
             >
               <slot></slot>
             </div>
