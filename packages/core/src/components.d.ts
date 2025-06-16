@@ -475,6 +475,10 @@ export namespace Components {
          */
         "src"?: string;
         /**
+          * Svg content.
+         */
+        "svg": string;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
@@ -5629,6 +5633,10 @@ declare namespace LocalJSX {
           * Src path to the image
          */
         "src"?: string;
+        /**
+          * Svg content.
+         */
+        "svg"?: string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
