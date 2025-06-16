@@ -16,7 +16,7 @@ import { BalScrollHandler } from '../../utils/scroll'
 import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
 
-@Component({
+@Component({    
   tag: 'bal-hint',
   styleUrl: 'bal-hint.sass',
 })
