@@ -78,12 +78,12 @@ const focusElementInContext = <T extends HTMLElement>(
     focusVisibleElement(elementToFocus)
   } else {
     // Focus fallback element instead of letting focus escape
-    fallbackElement.focus()
+    fallbackElement.focus({ preventScroll: true })
   }
 }
 
 export const focusVisibleElement = (el: HTMLElement) => {
-  el.focus()
+  el.focus({ preventScroll: true })
 
   /**
    * When programmatically focusing an element,
