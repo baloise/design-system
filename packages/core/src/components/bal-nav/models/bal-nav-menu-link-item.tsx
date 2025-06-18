@@ -1,11 +1,12 @@
 import { h } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
+import { isTabKey } from '../../../utils/keyboard'
 import { NavLinkItemObserver } from '../bal-nav.types'
+import { AccordionButton } from '../components/accordion-button'
+import { OverviewLink } from '../components/overview-link'
 import { NavLinkItem } from './bal-nav-link-item'
 import { NavSectionLinkItem } from './bal-nav-section-link-item'
 import { NavServiceLinkItem } from './bal-nav-service-link-item'
-import { AccordionButton } from '../components/accordion-button'
-import { OverviewLink } from '../components/overview-link'
-import { BEM } from '../../../utils/bem'
 
 export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuLinkItem {
   sectionLinkItems: NavSectionLinkItem[] = []
@@ -87,7 +88,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     )
   }
 
-  override render(context?: { onClick: () => void; flyoutId: string }) {
+  override render(context?: { onClick: () => void; onTabPress: (ev: KeyboardEvent) => void; flyoutId: string }) {
     const hasChildren = this.sectionLinkItems.length > 0 || this.serviceLinkItems.length > 0
     if (!hasChildren && this.isLink) {
       return (
@@ -109,6 +110,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
         label={this.label}
         value={this.value}
         no-panel
+        onBalKeyDown={ev => isTabKey(ev.detail) && context?.onTabPress(ev.detail)}
         onBalNavigate={ev => {
           context?.onClick()
           if (this.onClick) {

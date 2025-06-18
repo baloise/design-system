@@ -1951,6 +1951,12 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
+    /**
+     * 1. click on tab when flyout is open on tab focuses the flyout
+     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
+     * 3. when shift tab in tab focus goes to last link in flyout
+     * 4. when shift tab the first link in flyout focus goes to active tab
+     */
     interface BalNav {
         /**
           * Link level structure.
@@ -3716,6 +3722,10 @@ export interface BalNavCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavElement;
 }
+export interface BalNavMenuFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavMenuFlyoutElement;
+}
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
@@ -4456,6 +4466,12 @@ declare global {
     interface HTMLBalNavElementEventMap {
         "balNavItemClick": BalEvents.BalNavItemClickDetail;
     }
+    /**
+     * 1. click on tab when flyout is open on tab focuses the flyout
+     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
+     * 3. when shift tab in tab focus goes to last link in flyout
+     * 4. when shift tab the first link in flyout focus goes to active tab
+     */
     interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4500,7 +4516,18 @@ declare global {
         prototype: HTMLBalNavMenuBarElement;
         new (): HTMLBalNavMenuBarElement;
     };
+    interface HTMLBalNavMenuFlyoutElementEventMap {
+        "balFocusOut": BalEvents.BalNavFlyoutFocusOutDetail;
+    }
     interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavMenuFlyoutElement: {
         prototype: HTMLBalNavMenuFlyoutElement;
@@ -4900,6 +4927,7 @@ declare global {
     };
     interface HTMLBalTabItemElementEventMap {
         "balNavigate": BalEvents.BalTabItemNavigateDetail;
+        "balKeyDown": BalEvents.BalTabItemKeyDownDetail;
     }
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7153,6 +7181,12 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
+    /**
+     * 1. click on tab when flyout is open on tab focuses the flyout
+     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
+     * 3. when shift tab in tab focus goes to last link in flyout
+     * 4. when shift tab the first link in flyout focus goes to active tab
+     */
     interface BalNav {
         /**
           * Link level structure.
@@ -7226,6 +7260,10 @@ declare namespace LocalJSX {
           * This is used to connect the flyout to the aria controls
          */
         "navId"?: string;
+        /**
+          * Emitted when the flyout loses focus
+         */
+        "onBalFocusOut"?: (event: BalNavMenuFlyoutCustomEvent<BalEvents.BalNavFlyoutFocusOutDetail>) => void;
     }
     interface BalNavMetaBar {
         /**
@@ -8380,6 +8418,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
+        "onBalKeyDown"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemKeyDownDetail>) => void;
+        /**
+          * Emitted when the link element has clicked
+         */
         "onBalNavigate"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemNavigateDetail>) => void;
         /**
           * Tell's if the linking is done by a router.
@@ -8983,6 +9025,12 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+            /**
+             * 1. click on tab when flyout is open on tab focuses the flyout
+             * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
+             * 3. when shift tab in tab focus goes to last link in flyout
+             * 4. when shift tab the first link in flyout focus goes to active tab
+             */
             "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
             "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;

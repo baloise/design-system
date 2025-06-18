@@ -77,5 +77,13 @@ namespace BalEvents {
   }
 
   export type BalNavItemClickDetail = BalNavClickedItem
-  export type BalNavItemClick = BalInputCustomEvent<BalNavItemClickDetail>
+  export type BalNavItemClick = BalNavCustomEvent<BalNavItemClickDetail>
+
+  export interface BalNavFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavMenuFlyoutElement
+  }
+
+  export type BalNavFlyoutFocusOutDetail = FocusEvent
+  export type BalNavFlyoutFocusOut = BalNavFlyoutCustomEvent<BalNavFlyoutFocusOutDetail>
 }

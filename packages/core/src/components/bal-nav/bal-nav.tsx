@@ -33,6 +33,14 @@ import { NavLinkItem } from './models/bal-nav-link-item'
 import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
+import { stopEventBubbling } from '../../utils/form-input'
+
+/**
+ * 1. click on tab when flyout is open on tab focuses the flyout
+ * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
+ * 3. when shift tab in tab focus goes to last link in flyout
+ * 4. when shift tab the first link in flyout focus goes to active tab
+ */
 
 @Component({
   tag: 'bal-nav',
@@ -422,7 +430,6 @@ export class Nav
               <bal-stack space="auto">
                 {this.linkItems.length > 1 ? (
                   <bal-tabs
-                    spaceless
                     inverted
                     context="meta"
                     value={this.activeMetaLinkValue}
@@ -446,6 +453,7 @@ export class Nav
           ) : (
             ''
           )}
+
           {this.isDesktop ? (
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
@@ -453,22 +461,75 @@ export class Nav
                 <bal-tabs
                   context="navigation"
                   accordion
-                  spaceless
                   value={this.activeMenuLinkValue}
                   aria-label={i18nNavBars[this.language].navigation}
                 >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
-                    ?.mainLinkItems.map(item =>
+                    ?.mainLinkItems.map((item, index) =>
                       item.render({
                         flyoutId: `${this.navId}-menu-flyout`,
                         onClick: () => this.onMenuBarTabChange(item.value),
+                        onTabPress: (ev: KeyboardEvent) => {
+                          console.log('onTabPress', item, this.activeMenuLinkItem)
+                          if (this.isFlyoutActive) {
+                            const links = this.linkItems.find(
+                              item => item.value === this.activeMetaLinkValue,
+                            )?.mainLinkItems
+
+                            const sourceItem = item
+                            const indexOfSourceItem = links?.findIndex(link => link.value === sourceItem.value)
+                            let indexOfTargetItem = ev.shiftKey ? indexOfSourceItem - 1 : indexOfSourceItem + 1
+                            if (indexOfTargetItem < 0) {
+                              indexOfTargetItem = 0
+                            }
+                            const targetItem = links?.[indexOfTargetItem]
+
+                            if (indexOfSourceItem === indexOfTargetItem + 1) {
+                              console.log('forward focus on flyout')
+                              const flyout = this.el.querySelector(`#${this.navId}-menu-flyout`)
+                              if (flyout) {
+                                ;(flyout as HTMLBalNavMenuFlyoutElement).focus()
+                              }
+                            }
+
+                            if (indexOfSourceItem === indexOfTargetItem - 1) {
+                              console.log('backward focus on flyout')
+                              const flyout = this.el.querySelector(`#${this.navId}-menu-flyout`)
+                              if (flyout) {
+                                ;(flyout as HTMLBalNavMenuFlyoutElement).focus()
+                              }
+                            }
+                          }
+                        },
                       }),
                     )}
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout navId={this.navId} aria-label={i18nNavBars[this.language].subNavigation}>
+                <bal-nav-menu-flyout
+                  navId={this.navId}
+                  aria-label={i18nNavBars[this.language].subNavigation}
+                  onBalFocusOut={(ev: BalEvents.BalNavFlyoutFocusOut) => {
+                    stopEventBubbling(ev.detail)
+                    const links = this.linkItems.find(item => item.value === this.activeMetaLinkValue)?.mainLinkItems
+
+                    const sourceItem = this.activeMenuLinkItem
+                    const indexOfSourceItem = links?.findIndex(link => link.value === sourceItem.value)
+
+                    const indexOfTargetItem = indexOfSourceItem + 1
+                    if (indexOfTargetItem >= links?.length) {
+                      return
+                    }
+
+                    console.log('forward focus out of flyout')
+                    const targetItem = links?.[indexOfTargetItem]
+                    debugger
+                    if (targetItem) {
+                      // targetItem.setFocus()
+                    }
+                  }}
+                >
                   <bal-nav-link
                     role="listitem"
                     variant="overview"

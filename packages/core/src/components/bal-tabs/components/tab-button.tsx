@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { ariaBooleanToString } from '../../../utils/aria'
 import { BEM } from '../../../utils/bem'
+import { toKebabCase } from '../../../utils/string'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'
-import { toKebabCase } from 'packages/core/src/utils/string'
-import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 export interface TabButtonProps {
   item: BalTabOption
@@ -123,6 +123,9 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       aria-selected={!isTabButton ? undefined : item.active ? 'true' : 'false'}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
+      onKeyDown={(ev: KeyboardEvent) => {
+        item.keyDown?.emit(ev)
+      }}
     >
       {item.icon || item.svg ? (
         <TabIcon
