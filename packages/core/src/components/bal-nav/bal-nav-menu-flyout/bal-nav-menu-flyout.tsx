@@ -69,7 +69,7 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
 
   @Listen('focusout')
   onFocusLeave(event: FocusEvent) {
-    if (!isDescendant(this.el, event.relatedTarget)) {
+    if (this.el && event.relatedTarget && !isDescendant(this.el, event.relatedTarget)) {
       this.balFocusOut.emit(event)
     }
   }

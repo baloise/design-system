@@ -99,6 +99,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           href={this.href}
           rel={this.rel}
           target={this.target}
+          onBalKeyDown={ev => isTabKey(ev.detail) && context?.onTabPress(ev.detail)}
           no-panel
         ></bal-tab-item>
       )
