@@ -2036,6 +2036,10 @@ export namespace Components {
          */
         "size": BalProps.BalNavMetaBarSize;
         /**
+          * Defines if the bar should stay on top of the backdrop
+         */
+        "stayOnTopOfBackdrop": boolean;
+        /**
           * Defines the color variant
          */
         "variant": BalProps.BalNavMetaBarVariant;
@@ -7240,6 +7244,10 @@ declare namespace LocalJSX {
           * Defines the height of the bar
          */
         "size"?: BalProps.BalNavMetaBarSize;
+        /**
+          * Defines if the bar should stay on top of the backdrop
+         */
+        "stayOnTopOfBackdrop"?: boolean;
         /**
           * Defines the color variant
          */
