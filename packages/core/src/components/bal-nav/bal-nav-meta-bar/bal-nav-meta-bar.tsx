@@ -28,6 +28,11 @@ export class NavMetaBar implements ComponentInterface, Loggable {
    */
 
   /**
+   * Defines if the bar should stay on top of the backdrop
+   */
+  @Prop() stayOnTopOfBackdrop = false
+
+  /**
    * Defines the color variant
    */
   @Prop() variant: BalProps.BalNavMetaBarVariant = 'primary'
@@ -103,6 +108,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
           ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
           ...block.modifier(`hidden-mobile`).class(this.invisible === 'mobile'),
           ...block.modifier(`hidden-tablet`).class(this.invisible === 'tablet'),
+          ...block.modifier(`stay-on-top`).class(this.stayOnTopOfBackdrop),
         }}
       >
         <div

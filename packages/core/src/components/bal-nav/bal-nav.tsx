@@ -536,7 +536,7 @@ export class Nav
           ''
         )}
         {this.isTouch && this.isFlyoutActive ? (
-          <bal-nav-meta-bar variant="grey" size="normal">
+          <bal-nav-meta-bar stayOnTopOfBackdrop variant="grey" size="normal">
             <bal-stack space="x-small" align="center">
               {this.metaButtons.map(button => button.renderAtTouchBottomMetaBar())}
             </bal-stack>
