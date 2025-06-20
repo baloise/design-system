@@ -123,14 +123,14 @@ const focusNextElement = (current: HTMLElement, balNavEl: HTMLElement) => {
     '[tabindex]:not([tabindex="-1"])',
   ]
 
-  const focusables = Array.from(document.querySelectorAll<HTMLElement>(focusableSelectors.join(',')))
+  const focusableElements = Array.from(document.querySelectorAll<HTMLElement>(focusableSelectors.join(',')))
     // visible elements only
     .filter(el => el.offsetParent !== null)
     // exclude elements inside the bal-nav
     .filter(el => !isDescendant(balNavEl, el))
 
-  const index = focusables.indexOf(current)
-  const next = focusables[index + 1]
+  const index = focusableElements.indexOf(current)
+  const next = focusableElements[index + 1]
 
   if (next) next.focus()
 }
