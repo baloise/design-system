@@ -1,22 +1,22 @@
 import {
   Component,
-  Host,
-  h,
-  Element,
-  EventEmitter,
-  Event,
-  Prop,
-  Watch,
   ComponentInterface,
-  State,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
   Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { isEnterKey, isSpaceKey } from '../../../utils/keyboard'
-import { stopEventBubbling } from '../../../utils/form-input'
 import { ariaBooleanToString } from '../../../utils/aria'
-import { i18nBalListItemAccordionHead } from './bal-list-item-accordion-head.i18n'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { isEnterKey, isSpaceKey } from '../../../utils/keyboard'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { i18nBalListItemAccordionHead } from './bal-list-item-accordion-head.i18n'
 
 export interface BalListItemAccordionHeadAria {
   controlId?: string
@@ -74,6 +74,10 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
+  connectedCallback(): void {
+    this.accordionOpenHandler(this.accordionOpen, false)
+  }
+
   componentDidRender() {
     this.setLabelledby()
   }
@@ -102,7 +106,9 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
    */
   @Method()
   async setAria(aria: BalListItemAccordionHeadAria): Promise<void> {
-    this.ariaState = { ...aria }
+    if (aria.controlId && aria.controlId !== this.ariaState.controlId) {
+      this.ariaState.controlId = aria.controlId
+    }
   }
 
   /**

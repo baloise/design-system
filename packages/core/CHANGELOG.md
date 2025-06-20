@@ -1,5 +1,27 @@
 # Changelog
 
+## 19.2.0
+
+### Minor Changes
+
+- **carousel**: svg content can now be passed into it instead of file path ( [#1731](https://github.com/baloise/design-system/pull/1731))
+
+- **input**: added basic contract mask and removal of leading zero for contract and basic contract mask. ( [#1725](https://github.com/baloise/design-system/pull/1725))
+
+### Patch Changes
+
+- **modal**: prevent scrolling when opening or closing ( [#1729](https://github.com/baloise/design-system/pull/1729))
+
+- **steps**: remove y-scrollbar on firefox and edge ( [#1728](https://github.com/baloise/design-system/pull/1728))
+
+- **popup**: stop scrolling on focus on hint are leaving it ( [#1729](https://github.com/baloise/design-system/pull/1729))
+
+- **react**: update stencil output target lib ( [#1722](https://github.com/baloise/design-system/pull/1722))
+
+- **list**: only set aria information when changed to avoid endless render cycles ( [#1730](https://github.com/baloise/design-system/pull/1730))
+
+- **radio**: trigger change event on selection with the space key ( [#1721](https://github.com/baloise/design-system/pull/1721))
+
 ## 19.1.0
 
 ### Minor Changes

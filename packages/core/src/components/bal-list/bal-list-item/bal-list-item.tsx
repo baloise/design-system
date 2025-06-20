@@ -13,7 +13,7 @@ import {
 import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
-import { raf, transitionEndAsync } from '../../../utils/helpers'
+import { raf, rIC, transitionEndAsync } from '../../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
@@ -129,7 +129,9 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
   componentDidLoad() {
     if (this.accordion) {
-      this.addEventListenerAccordionChange()
+      rIC(() => {
+        this.addEventListenerAccordionChange()
+      })
     }
   }
 

@@ -39,6 +39,7 @@ import {
   MAX_LENGTH_CLAIM_NUMBER,
   MAX_LENGTH_CONTRACT_NUMBER,
   MAX_LENGTH_OFFER_NUMBER,
+  MAX_LENGTH_BASIC_CONTRACT_NUMBER,
 } from './bal-input-util'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
@@ -217,6 +218,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
    * Formatting for 'contract-number': '99/1.234.567-1'
+   * Formatting for 'basic-contract-number': '99/1.234.567'
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
    * Formatting for 'be-enterprise-number': ('1234.567.890')
@@ -348,8 +350,23 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           switch (this.mask) {
             case 'contract-number': {
               inputValue = input.value.replace(/\D/g, '')
+              // Removing the leading zero if presented
+              if (inputValue.charAt(0) === '0') {
+                inputValue = inputValue.substring(1)
+              }
               if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
                 inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+              }
+              return inputValue
+            }
+            case 'basic-contract-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              // Removing the leading zero if presented
+              if (inputValue.charAt(0) === '0') {
+                inputValue = inputValue.substring(1)
+              }
+              if (inputValue.length > MAX_LENGTH_BASIC_CONTRACT_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_BASIC_CONTRACT_NUMBER)
               }
               return inputValue
             }
@@ -418,7 +435,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     if (input) {
       if (input.value) {
         switch (this.mask) {
-          case 'contract-number': {
+          case 'contract-number':
+          case 'basic-contract-number': {
             input.value = formatPolicy(this.inputValue)
             if (cursorPositionStart < this.inputValue.length) {
               input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
@@ -520,6 +538,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     if (this.mask !== undefined) {
       switch (this.mask) {
         case 'contract-number':
+        case 'basic-contract-number':
           value = formatPolicy(value)
           break
         case 'claim-number':
