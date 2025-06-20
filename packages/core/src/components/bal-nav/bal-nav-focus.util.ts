@@ -64,7 +64,6 @@ export const handleTabKeyDown = (
 
   // only change focus to the first link in the flyout when navigating from active tab to next tab
   if (!detail.isBackwards && indexOfFocusedTab === indexOfActiveTab) {
-    // console.log('Focus to first link in flyout')
     const flyout = detail.el.querySelector<HTMLBalNavMenuFlyoutElement>(`#${detail.navId}-menu-flyout`)
     if (flyout) {
       const firstLink = flyout.querySelector<HTMLElement>('a, button, [tabindex="0"]')
@@ -78,7 +77,6 @@ export const handleTabKeyDown = (
   // only change focus to the last link in the flyout when navigating back from
   // next tab (from the active tab) to active tab (has flyout open)
   if (detail.isBackwards && indexOfFocusedTab === indexOfNextTab) {
-    // console.log('Focus to last link in flyout')
     const flyout = detail.el.querySelector(`#${detail.navId}-menu-flyout`)
     if (flyout) {
       const flyoutLinks = flyout.querySelectorAll<HTMLElement>('a, button, [tabindex="0"]')

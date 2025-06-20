@@ -36,13 +36,6 @@ import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 
-/**
- * 1. click on tab when flyout is open on tab focuses the flyout
- * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
- * 3. when shift tab in tab focus goes to last link in flyout
- * 4. when shift tab the first link in flyout focus goes to active tab
- */
-
 @Component({
   tag: 'bal-nav',
   styleUrl: 'bal-nav.sass',

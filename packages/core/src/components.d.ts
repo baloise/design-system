@@ -1951,12 +1951,6 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
-    /**
-     * 1. click on tab when flyout is open on tab focuses the flyout
-     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
-     * 3. when shift tab in tab focus goes to last link in flyout
-     * 4. when shift tab the first link in flyout focus goes to active tab
-     */
     interface BalNav {
         /**
           * Link level structure.
@@ -4466,12 +4460,6 @@ declare global {
     interface HTMLBalNavElementEventMap {
         "balNavItemClick": BalEvents.BalNavItemClickDetail;
     }
-    /**
-     * 1. click on tab when flyout is open on tab focuses the flyout
-     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
-     * 3. when shift tab in tab focus goes to last link in flyout
-     * 4. when shift tab the first link in flyout focus goes to active tab
-     */
     interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7181,12 +7169,6 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
-    /**
-     * 1. click on tab when flyout is open on tab focuses the flyout
-     * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
-     * 3. when shift tab in tab focus goes to last link in flyout
-     * 4. when shift tab the first link in flyout focus goes to active tab
-     */
     interface BalNav {
         /**
           * Link level structure.
@@ -9025,12 +9007,6 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
-            /**
-             * 1. click on tab when flyout is open on tab focuses the flyout
-             * 2. when reaching last link in flyout and pressing tab, focus goes to the next element(next tab) outside the flyout
-             * 3. when shift tab in tab focus goes to last link in flyout
-             * 4. when shift tab the first link in flyout focus goes to active tab
-             */
             "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
             "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
