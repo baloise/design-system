@@ -3720,6 +3720,10 @@ export interface BalNavCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavElement;
 }
+export interface BalNavMenuFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavMenuFlyoutElement;
+}
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
@@ -4504,7 +4508,18 @@ declare global {
         prototype: HTMLBalNavMenuBarElement;
         new (): HTMLBalNavMenuBarElement;
     };
+    interface HTMLBalNavMenuFlyoutElementEventMap {
+        "balFocusOut": BalEvents.BalNavFlyoutFocusOutDetail;
+    }
     interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavMenuFlyoutElement: {
         prototype: HTMLBalNavMenuFlyoutElement;
@@ -4904,6 +4919,7 @@ declare global {
     };
     interface HTMLBalTabItemElementEventMap {
         "balNavigate": BalEvents.BalTabItemNavigateDetail;
+        "balKeyDown": BalEvents.BalTabItemKeyDownDetail;
     }
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7230,6 +7246,10 @@ declare namespace LocalJSX {
           * This is used to connect the flyout to the aria controls
          */
         "navId"?: string;
+        /**
+          * Emitted when the flyout loses focus
+         */
+        "onBalFocusOut"?: (event: BalNavMenuFlyoutCustomEvent<BalEvents.BalNavFlyoutFocusOutDetail>) => void;
     }
     interface BalNavMetaBar {
         /**
@@ -8385,6 +8405,10 @@ declare namespace LocalJSX {
           * If `true` the tab does not have a panel
          */
         "noPanel"?: boolean;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalKeyDown"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemKeyDownDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */

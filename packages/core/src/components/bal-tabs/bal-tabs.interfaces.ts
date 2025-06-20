@@ -36,4 +36,7 @@ namespace BalEvents {
 
   export type BalTabItemNavigateDetail = MouseEvent
   export type BalTabItemNavigate = BalTabItemCustomEvent<BalTabItemNavigateDetail>
+
+  export type BalTabItemKeyDownDetail = KeyboardEvent
+  export type BalTabItemKeyDown = BalTabItemCustomEvent<BalTabItemKeyDownDetail>
 }
