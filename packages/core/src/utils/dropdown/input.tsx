@@ -1,16 +1,18 @@
-import { h, FunctionalComponent } from '@stencil/core'
-import { BEM } from '../bem'
-import { i18nBalDropdown } from './dropdown.i18n'
+import { FunctionalComponent, h } from '@stencil/core'
 import { ariaBooleanToString } from '../aria'
-import { BalAriaForm } from '../form'
-import { BalLanguage } from '../config'
 import { Attributes } from '../attributes'
+import { BEM } from '../bem'
+import { BalLanguage } from '../config'
+import { BalAriaForm } from '../form'
+import { i18nBalDropdown } from './dropdown.i18n'
+import { DropdownMode } from './mode'
 
 export interface DropdownInputProps {
+  mode: DropdownMode
   inputId: string
   httpFormSubmit: boolean
   ariaForm: BalAriaForm
-  rawValue: string[]
+  value: string
   autocomplete: string
   placeholder: string
   inputLabel: string
@@ -22,6 +24,7 @@ export interface DropdownInputProps {
   language: BalLanguage
   inheritedAttributes: Attributes
   refInputEl: (el: HTMLInputElement) => void
+  onInput?: (ev: InputEvent) => void
   onChange: (ev: Event) => void
   onFocus: (ev: FocusEvent) => void
   onBlur: (ev: FocusEvent) => void
@@ -29,10 +32,11 @@ export interface DropdownInputProps {
 }
 
 export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
+  mode,
   inputId,
   httpFormSubmit,
   ariaForm,
-  rawValue,
+  value,
   autocomplete,
   required,
   disabled,
@@ -44,6 +48,7 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
   inputLabel,
   inheritedAttributes,
   refInputEl,
+  onInput,
   onChange,
   onFocus,
   onBlur,
@@ -56,13 +61,25 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
       id={ariaForm.controlId || `${inputId}-ctrl`}
       class={{
         ...block.element('root').element('input').class(),
+        ...block
+          .element('root')
+          .element('input')
+          .modifier('typeahead')
+          .class(mode === DropdownMode.Typeahead),
       }}
+      {...(mode === DropdownMode.Typeahead
+        ? {
+            style: {
+              'min-width': placeholder ? `${placeholder.length}ch` : '4rem',
+            },
+          }
+        : {})}
       type="text"
       size={1}
       inputmode="none"
       tabindex="0"
       autoComplete={autocomplete}
-      value={rawValue.join(',')}
+      value={value}
       required={required}
       disabled={disabled}
       readonly={readonly}
@@ -77,8 +94,9 @@ export const DropdownInput: FunctionalComponent<DropdownInputProps> = ({
       aria-haspopup={'listbox'}
       data-native
       data-label={inputLabel}
-      data-value={rawValue.join(',')}
-      ref={el => refInputEl(el)}
+      data-value={value}
+      ref={el => (el ? refInputEl(el) : void 0)}
+      {...(onInput ? { onInput: ev => onInput(ev) } : {})}
       onChange={ev => onChange(ev)}
       onFocus={ev => onFocus(ev)}
       onBlur={ev => onBlur(ev)}
