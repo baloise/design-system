@@ -1,35 +1,35 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
-  Watch,
   Event,
   EventEmitter,
-  Method,
-  State,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h,
 } from '@stencil/core'
 import Big from 'big.js'
-import { formatLocaleNumber } from '../../utils/number'
-import { debounceEvent, rIC } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
-import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
+import { BEM } from '../../utils/bem'
 import {
-  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
+  ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
-import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { i18nBalInputStepper } from './bal-input-stepper.i18n'
+import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
+import { debounceEvent, rIC } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { ariaBooleanToString } from '../../utils/aria'
+import { formatLocaleNumber } from '../../utils/number'
+import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -276,11 +276,9 @@ export class InputStepper
           }}
         >
           <bal-button
-            aria={{
-              title: decreaseLabel,
-              label: decreaseLabel,
-              controls: this.ariaForm.controlId || this.inputId,
-            }}
+            a11y-title={decreaseLabel}
+            a11y-label={decreaseLabel}
+            a11y-controls={this.ariaForm.controlId || this.inputId}
             size="small"
             square
             data-testid="bal-input-stepper-decrease"
@@ -304,11 +302,9 @@ export class InputStepper
             {formatLocaleNumber(this.value)}
           </bal-text>
           <bal-button
-            aria={{
-              title: increaseLabel,
-              label: increaseLabel,
-              controls: this.ariaForm.controlId || this.inputId,
-            }}
+            a11y-title={increaseLabel}
+            a11y-label={increaseLabel}
+            a11y-controls={this.ariaForm.controlId || this.inputId}
             size="small"
             data-testid="bal-input-stepper-increase"
             square

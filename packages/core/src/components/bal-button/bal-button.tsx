@@ -153,7 +153,22 @@ export class Button implements ComponentInterface {
   /**
    * A11y attributes for the native button element.
    */
-  @Prop({ mutable: true }) aria?: BalProps.BalButtonAria = undefined
+  @Prop() a11yControls?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yTitle?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yLabel?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yHaspopup?: string = undefined
 
   /**
    * Emitted when the link element has clicked.
@@ -202,10 +217,8 @@ export class Button implements ComponentInterface {
       'aria-haspopup',
     ])
 
-    if (this.el.hasAttribute('bal-popup') && !this.aria?.haspopup) {
-      this.aria = {
-        haspopup: 'true',
-      }
+    if (this.el.hasAttribute('bal-popup') && !this.a11yHaspopup) {
+      this.a11yHaspopup = 'true'
     }
   }
   componentDidRender() {
@@ -319,11 +332,11 @@ export class Button implements ComponentInterface {
     }
 
     const ariaAttributes = {
-      'title': this.aria?.title || this.inheritAttributes['title'],
+      'title': this.a11yTitle || this.inheritAttributes['title'],
       'aria-label':
-        this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
-      'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
-      'aria-haspopup': this.aria?.haspopup || this.inheritAttributes['aria-haspopup'],
+        this.a11yLabel || this.inheritAttributes['aria-label'] || this.a11yTitle || this.inheritAttributes['title'],
+      'aria-controls': this.a11yControls || this.inheritAttributes['aria-controls'],
+      'aria-haspopup': this.a11yHaspopup || this.inheritAttributes['aria-haspopup'],
     }
 
     return (

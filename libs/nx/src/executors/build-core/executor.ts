@@ -1,8 +1,6 @@
-import { BuildCoreExecutorSchema } from './schema'
-import { dirname, join, sep } from 'path'
-import replace from 'replace-in-file'
-import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { copy } from 'fs-extra'
+import { mkdir, readFile, rm, writeFile } from 'fs/promises'
+import { dirname, join, sep } from 'path'
 import {
   createSourceFile,
   filterInterfaceDeclaration,
@@ -13,6 +11,7 @@ import {
   runCommand,
   scan,
 } from '../utils'
+import { BuildCoreExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildCoreExecutorSchema) {
   try {
@@ -132,17 +131,17 @@ function parseTestingType(fileContent, filePath) {
  ********************************************************************************/
 
 async function adjustGlobalVar(options: BuildCoreExecutorSchema) {
-  const files = join(options.projectRoot, 'dist/cjs/app-globals*.js')
-  await replace({
-    files: files.replace(/\\/g, '/'),
-    from: `const global =`,
-    to: `const globalImport =`,
-  })
-  await replace({
-    files: files.replace(/\\/g, '/'),
-    from: `const globalScripts = global.globalScript;`,
-    to: `const globalScripts = globalImport.globalScript;`,
-  })
+  // const files = join(options.projectRoot, 'dist/cjs/app-globals*.js')
+  // await replace({
+  //   files: files.replace(/\\/g, '/'),
+  //   from: `const global =`,
+  //   to: `const globalImport =`,
+  // })
+  // await replace({
+  //   files: files.replace(/\\/g, '/'),
+  //   from: `const globalScripts = global.globalScript;`,
+  //   to: `const globalScripts = globalImport.globalScript;`,
+  // })
 }
 
 // This script creates a list with all the main component tags.
