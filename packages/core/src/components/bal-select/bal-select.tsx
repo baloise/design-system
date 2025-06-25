@@ -478,9 +478,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     const hasOptions = this.options.size > 0
 
     if (hasOptions) {
-      if (!this.remote) {
-        this.syncRawValue(isNotHuman)
-      }
+      this.syncRawValue(isNotHuman)
     } else {
       this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
     }
