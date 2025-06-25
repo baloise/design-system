@@ -290,17 +290,16 @@ export class InputStepper
             onBalFocus={ev => this.onFocusDecrease(ev)}
             onBalBlur={ev => this.onBlurDecrease(ev)}
           ></bal-button>
-          <bal-text
-            space="none"
-            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : ''}
-            bold
+          <span
+            data-testid="bal-input-stepper-text"
             class={{
               ...elText.class(),
+              ...elText.modifier('invalid').class(this.invalid),
+              ...elText.modifier('disabled').class(this.disabled || this.readonly),
             }}
-            data-testid="bal-input-stepper-text"
           >
             {formatLocaleNumber(this.value)}
-          </bal-text>
+          </span>
           <bal-button
             a11y-title={increaseLabel}
             a11y-label={increaseLabel}
