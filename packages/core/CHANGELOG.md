@@ -1,5 +1,23 @@
 # Changelog
 
+## 19.3.0
+
+### Minor Changes
+
+- **nav**: improve focus and keyboard navigation combined with flyout focus redirects ( [#1732](https://github.com/baloise/design-system/pull/1732))
+
+### Patch Changes
+
+- **core**: export all custom event types for react lib ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **select**: sync value after options have changed ( [#1742](https://github.com/baloise/design-system/pull/1742))
+
+- **react**: only deliver esm modules ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **core**: remove type event to work with server rendering frameworks, because they do not have access to the window ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **nav**: fix backdrop issue of bottom bal-nav-meta-bar ( [#1734](https://github.com/baloise/design-system/pull/1734))
+
 ## 19.2.0
 
 ### Minor Changes

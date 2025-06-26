@@ -18,6 +18,7 @@ export interface BalTabOption {
   index?: number
   context?: BalProps.BalTabsContext
   navigate?: EventEmitter<Event>
+  keyDown?: EventEmitter<Event>
   trackingData?: Attributes
   hidden?: boolean // deprecated use invisible instead
   noPanel?: boolean

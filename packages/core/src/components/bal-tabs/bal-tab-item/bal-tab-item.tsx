@@ -96,6 +96,11 @@ export class TabItem {
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
 
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event() balKeyDown!: EventEmitter<BalEvents.BalTabItemKeyDownDetail>
+
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)
   }
@@ -140,6 +145,7 @@ export class TabItem {
       passed: false,
       prevent: this.prevent,
       navigate: this.balNavigate,
+      keyDown: this.balKeyDown,
       trackingData: this.inheritAttributes,
       noPanel: this.noPanel,
       aria: this.aria,

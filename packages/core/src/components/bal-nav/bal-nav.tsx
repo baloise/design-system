@@ -23,10 +23,12 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
-import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
+import { stopEventBubbling } from '../../utils/form-input'
+import { isDescendant, waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalScrollHandler } from '../../utils/scroll'
+import { gatherTabInformation, handleFlyoutFocusOut, handleTabKeyDown } from './bal-nav-focus.util'
 import { i18nNavBars } from './bal-nav.i18n'
 import { NavLinkItemObserver } from './bal-nav.types'
 import { NavLinkItem } from './models/bal-nav-link-item'
@@ -422,7 +424,6 @@ export class Nav
               <bal-stack space="auto">
                 {this.linkItems.length > 1 ? (
                   <bal-tabs
-                    spaceless
                     inverted
                     context="meta"
                     value={this.activeMetaLinkValue}
@@ -446,6 +447,7 @@ export class Nav
           ) : (
             ''
           )}
+
           {this.isDesktop ? (
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
@@ -453,22 +455,61 @@ export class Nav
                 <bal-tabs
                   context="navigation"
                   accordion
-                  spaceless
                   value={this.activeMenuLinkValue}
                   aria-label={i18nNavBars[this.language].navigation}
                 >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
-                    ?.mainLinkItems.map(item =>
+                    ?.mainLinkItems.map((item, index) =>
                       item.render({
                         flyoutId: `${this.navId}-menu-flyout`,
                         onClick: () => this.onMenuBarTabChange(item.value),
+                        onTabPress: (ev: KeyboardEvent) => {
+                          if (this.isFlyoutActive) {
+                            const isBackwards = ev.shiftKey
+                            const info = gatherTabInformation({
+                              activeMetaLinkValue: this.activeMetaLinkValue,
+                              activeMenuLinkValue: this.activeMenuLinkValue,
+                              linkItems: this.linkItems,
+                            })
+
+                            handleTabKeyDown(info, {
+                              el: this.el,
+                              navId: this.navId,
+                              isFlyoutActive: this.isFlyoutActive,
+                              isBackwards,
+                              item,
+                              stopEventBubbling: () => stopEventBubbling(ev),
+                              closeFlyout: () => this.closeFlyout(),
+                            })
+                          }
+                        },
                       }),
                     )}
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout navId={this.navId} aria-label={i18nNavBars[this.language].subNavigation}>
+                <bal-nav-menu-flyout
+                  navId={this.navId}
+                  aria-label={i18nNavBars[this.language].subNavigation}
+                  onBalFocusOut={(ev: BalEvents.BalNavFlyoutFocusOut) => {
+                    if (this.isFlyoutActive) {
+                      stopEventBubbling(ev)
+                      const info = gatherTabInformation({
+                        activeMetaLinkValue: this.activeMetaLinkValue,
+                        activeMenuLinkValue: this.activeMenuLinkValue,
+                        linkItems: this.linkItems,
+                      })
+
+                      const isBackwards = isDescendant(this.el, ev.detail.relatedTarget)
+
+                      handleFlyoutFocusOut(info, {
+                        el: this.el,
+                        isBackwards,
+                      })
+                    }
+                  }}
+                >
                   <bal-nav-link
                     role="listitem"
                     variant="overview"
@@ -536,7 +577,7 @@ export class Nav
           ''
         )}
         {this.isTouch && this.isFlyoutActive ? (
-          <bal-nav-meta-bar variant="grey" size="normal">
+          <bal-nav-meta-bar stayOnTopOfBackdrop variant="grey" size="normal">
             <bal-stack space="x-small" align="center">
               {this.metaButtons.map(button => button.renderAtTouchBottomMetaBar())}
             </bal-stack>

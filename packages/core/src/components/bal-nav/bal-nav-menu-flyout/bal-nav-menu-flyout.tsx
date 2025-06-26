@@ -1,5 +1,17 @@
-import { Component, h, ComponentInterface, Host, Element, State, Prop } from '@stencil/core'
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Listen,
+  Prop,
+  State,
+  h,
+} from '@stencil/core'
 import { BEM } from '../../../utils/bem'
+import { isDescendant } from '../../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 import { BalScrollHandler } from '../../../utils/scroll'
@@ -33,6 +45,11 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
   @Prop() navId = `bal-nav-x${NavMenuFlyOutIds++}`
 
   /**
+   * Emitted when the flyout loses focus
+   */
+  @Event() balFocusOut!: EventEmitter<BalEvents.BalNavFlyoutFocusOutDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -49,6 +66,13 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  @Listen('focusout')
+  onFocusLeave(event: FocusEvent) {
+    if (this.el && event.relatedTarget && !isDescendant(this.el, event.relatedTarget)) {
+      this.balFocusOut.emit(event)
+    }
+  }
 
   @ListenToResize()
   resizeListener() {
