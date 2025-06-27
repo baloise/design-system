@@ -93,7 +93,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     if (!hasChildren && this.isLink) {
       return (
         <bal-tab-item
-          a11y-controls={context.flyoutId}
+          a11yControls={context.flyoutId}
           label={this.label}
           value={this.value}
           href={this.href}
@@ -107,7 +107,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
 
     return (
       <bal-tab-item
-        a11y-controls={context.flyoutId}
+        a11yControls={context.flyoutId}
         label={this.label}
         value={this.value}
         no-panel

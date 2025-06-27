@@ -45,8 +45,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           rel={this.rel}
           href={this.href}
           target={this.target}
-          a11y-title={this.htmlTitle}
-          a11y-label={this.ariaLabel || this.label}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
         >
           {this.label}
         </bal-button>
@@ -61,8 +61,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         size="small"
         icon={this.icon}
         square={!this.label || this.label.length < 3}
-        a11y-title={this.htmlTitle}
-        a11y-label={this.ariaLabel || this.label}
+        a11yTitle={this.htmlTitle}
+        a11yLabel={this.ariaLabel || this.label}
         inverted={true}
         bal-popup={this.popoverId}
         bal-popup-variant="popover"
@@ -90,8 +90,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             href={this.href}
             rel={this.rel}
             target={this.target}
-            a11y-title={this.htmlTitle}
-            a11y-label={this.ariaLabel || this.label}
+            a11yTitle={this.htmlTitle}
+            a11yLabel={this.ariaLabel || this.label}
           >
             {this.icon ? '' : this.label}
           </bal-button>
@@ -106,8 +106,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           icon={this.icon}
           square={!!this.icon || !this.label || this.label.length < 3}
           inverted={false}
-          a11y-title={this.htmlTitle}
-          a11y-label={this.ariaLabel || this.label}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
           bal-popup-closable="true"
@@ -129,8 +129,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             inverted={false}
             icon={this.icon}
             square={!this.label || this.label.length < 3}
-            a11y-title={this.htmlTitle}
-            a11y-label={this.ariaLabel || this.label}
+            a11yTitle={this.htmlTitle}
+            a11yLabel={this.ariaLabel || this.label}
             href={this.href}
             target={this.target}
           >
@@ -147,8 +147,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           square={!this.label || this.label.length < 3}
           color="info"
           inverted={false}
-          a11y-title={this.htmlTitle}
-          a11y-label={this.ariaLabel || this.label}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
           bal-popup={this.popoverId}
           bal-popup-variant="drawer"
           bal-popup-closable="true"

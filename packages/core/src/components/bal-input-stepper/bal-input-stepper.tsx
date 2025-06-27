@@ -276,9 +276,9 @@ export class InputStepper
           }}
         >
           <bal-button
-            a11y-title={decreaseLabel}
-            a11y-label={decreaseLabel}
-            a11y-controls={this.ariaForm.controlId || this.inputId}
+            a11yTitle={decreaseLabel}
+            a11yLabel={decreaseLabel}
+            a11yControls={this.ariaForm.controlId || this.inputId}
             size="small"
             square
             data-testid="bal-input-stepper-decrease"
@@ -301,9 +301,9 @@ export class InputStepper
             {formatLocaleNumber(this.value)}
           </span>
           <bal-button
-            a11y-title={increaseLabel}
-            a11y-label={increaseLabel}
-            a11y-controls={this.ariaForm.controlId || this.inputId}
+            a11yTitle={increaseLabel}
+            a11yLabel={increaseLabel}
+            a11yControls={this.ariaForm.controlId || this.inputId}
             size="small"
             data-testid="bal-input-stepper-increase"
             square
