@@ -1,35 +1,35 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
-  Watch,
   Event,
   EventEmitter,
-  Method,
-  State,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h,
 } from '@stencil/core'
 import Big from 'big.js'
-import { formatLocaleNumber } from '../../utils/number'
-import { debounceEvent, rIC } from '../../utils/helpers'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
-import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
+import { BEM } from '../../utils/bem'
 import {
-  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
+  ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
-import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { i18nBalInputStepper } from './bal-input-stepper.i18n'
+import { FormInput, inputListenOnClick, stopEventBubbling } from '../../utils/form-input'
+import { debounceEvent, rIC } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { ariaBooleanToString } from '../../utils/aria'
+import { formatLocaleNumber } from '../../utils/number'
+import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -276,11 +276,9 @@ export class InputStepper
           }}
         >
           <bal-button
-            aria={{
-              title: decreaseLabel,
-              label: decreaseLabel,
-              controls: this.ariaForm.controlId || this.inputId,
-            }}
+            a11yTitle={decreaseLabel}
+            a11yLabel={decreaseLabel}
+            a11yControls={this.ariaForm.controlId || this.inputId}
             size="small"
             square
             data-testid="bal-input-stepper-decrease"
@@ -292,23 +290,20 @@ export class InputStepper
             onBalFocus={ev => this.onFocusDecrease(ev)}
             onBalBlur={ev => this.onBlurDecrease(ev)}
           ></bal-button>
-          <bal-text
-            space="none"
-            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : ''}
-            bold
+          <span
+            data-testid="bal-input-stepper-text"
             class={{
               ...elText.class(),
+              ...elText.modifier('invalid').class(this.invalid),
+              ...elText.modifier('disabled').class(this.disabled || this.readonly),
             }}
-            data-testid="bal-input-stepper-text"
           >
             {formatLocaleNumber(this.value)}
-          </bal-text>
+          </span>
           <bal-button
-            aria={{
-              title: increaseLabel,
-              label: increaseLabel,
-              controls: this.ariaForm.controlId || this.inputId,
-            }}
+            a11yTitle={increaseLabel}
+            a11yLabel={increaseLabel}
+            a11yControls={this.ariaForm.controlId || this.inputId}
             size="small"
             data-testid="bal-input-stepper-increase"
             square

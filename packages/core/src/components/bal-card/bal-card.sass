@@ -180,6 +180,26 @@
 +block(card-subtitle)
   display: block
   position: static
+  +modifier(bold)
+    font-weight: var(--bal-font-weight-bold)
+  +modifier(inverted)
+    color: var(--bal-color-white)
+  +modifier(color-primary)
+    color: var(--bal-color-text-primary)
+  +modifier(color-info)
+    color: var(--bal-color-text-info)
+  +modifier(color-success)
+    color: var(--bal-color-text-success)
+  +modifier(color-warning)
+    color: var(--bal-color-text-warning)
+  +modifier(color-danger)
+    color: var(--bal-color-text-danger)
+  +modifier(color-default)
+    color: var(--bal-color-text-default)
+  +modifier(color-blue)
+    color: var(--bal-color-text-blue)
+  +modifier(color-white)
+    color: var(--bal-color-text-white)
 
 +block(card-content)
   display: block

@@ -1,7 +1,7 @@
 import { h } from '@stencil/core'
-import { NavLinkItem } from './bal-nav-link-item'
 import { balBrowser } from '../../../utils/browser'
 import { NavLinkItemObserver } from '../bal-nav.types'
+import { NavLinkItem } from './bal-nav-link-item'
 
 export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaButton {
   touchPlacement: 'top' | 'bottom' | 'none' = 'top'
@@ -45,10 +45,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           rel={this.rel}
           href={this.href}
           target={this.target}
-          aria={{
-            title: this.htmlTitle,
-            label: this.ariaLabel || this.label,
-          }}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
         >
           {this.label}
         </bal-button>
@@ -63,10 +61,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         size="small"
         icon={this.icon}
         square={!this.label || this.label.length < 3}
-        aria={{
-          title: this.htmlTitle,
-          label: this.ariaLabel || this.label,
-        }}
+        a11yTitle={this.htmlTitle}
+        a11yLabel={this.ariaLabel || this.label}
         inverted={true}
         bal-popup={this.popoverId}
         bal-popup-variant="popover"
@@ -94,10 +90,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             href={this.href}
             rel={this.rel}
             target={this.target}
-            aria={{
-              title: this.htmlTitle,
-              label: this.ariaLabel || this.label,
-            }}
+            a11yTitle={this.htmlTitle}
+            a11yLabel={this.ariaLabel || this.label}
           >
             {this.icon ? '' : this.label}
           </bal-button>
@@ -112,10 +106,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           icon={this.icon}
           square={!!this.icon || !this.label || this.label.length < 3}
           inverted={false}
-          aria={{
-            title: this.htmlTitle,
-            label: this.ariaLabel || this.label,
-          }}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
           bal-popup-closable="true"
@@ -137,10 +129,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             inverted={false}
             icon={this.icon}
             square={!this.label || this.label.length < 3}
-            aria={{
-              title: this.htmlTitle,
-              label: this.ariaLabel || this.label,
-            }}
+            a11yTitle={this.htmlTitle}
+            a11yLabel={this.ariaLabel || this.label}
             href={this.href}
             target={this.target}
           >
@@ -157,10 +147,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           square={!this.label || this.label.length < 3}
           color="info"
           inverted={false}
-          aria={{
-            title: this.htmlTitle,
-            label: this.ariaLabel || this.label,
-          }}
+          a11yTitle={this.htmlTitle}
+          a11yLabel={this.ariaLabel || this.label}
           bal-popup={this.popoverId}
           bal-popup-variant="drawer"
           bal-popup-closable="true"
