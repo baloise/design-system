@@ -19,7 +19,10 @@
         "tsConfig": "{projectRoot}/tsconfig.lib.json",
         "project": "{projectRoot}/package.json",
         "compiler": "swc",
-        "format": ["esm"],
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "external": ["react", "react-dom", "@baloise/ds-core", "@baloise/ds-core/loader"]
       }
     }
