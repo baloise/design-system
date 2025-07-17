@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "sourceMap": false,
+    "resolveJsonModule": true,
     "outDir": "dist/out-tsc",
     "allowJs": true,
     "jsx": "react",

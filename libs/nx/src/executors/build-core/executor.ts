@@ -133,20 +133,23 @@ function parseTestingType(fileContent, filePath) {
 export async function createTagList() {
   const content = await readFile(join('resources/data/components.json'), 'utf-8')
   const json = JSON.parse(content)
-  const componentTags = json.components
-    .map(component => component.tag)
-    .filter(tag => !tag.startsWith('bal-doc'))
-    .reduce((acc, newTag) => {
-      const hasComponent = acc.some(tag => newTag.startsWith(tag))
-      if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
-        acc.push(newTag)
-      }
-      return acc
-    }, [])
+  const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('bal-doc'))
+
+  const filePathAllTags = join('resources/data/tags-all.json')
+  await mkdir(dirname(filePathAllTags), { recursive: true })
+  await writeFile(filePathAllTags, JSON.stringify(componentTags, undefined, 2))
+
+  const reducedTags = componentTags.reduce((acc, newTag) => {
+    const hasComponent = acc.some(tag => newTag.startsWith(tag))
+    if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
+      acc.push(newTag)
+    }
+    return acc
+  }, [])
 
   const filePath = join('resources/data/tags.json')
   await mkdir(dirname(filePath), { recursive: true })
-  await writeFile(filePath, JSON.stringify(componentTags, undefined, 2))
+  await writeFile(filePath, JSON.stringify(reducedTags, undefined, 2))
 }
 
 async function copyToDocs(options: BuildCoreExecutorSchema) {
