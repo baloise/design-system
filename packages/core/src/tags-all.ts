@@ -1,4 +1,4 @@
-[
+export const tags = [
   "bal-accordion",
   "bal-accordion-details",
   "bal-accordion-summary",

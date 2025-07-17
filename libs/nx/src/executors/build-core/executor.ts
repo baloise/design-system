@@ -135,9 +135,9 @@ export async function createTagList() {
   const json = JSON.parse(content)
   const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('bal-doc'))
 
-  const filePathAllTags = join('resources/data/tags-all.json')
+  const filePathAllTags = join('packages/core/src/tags-all.ts')
   await mkdir(dirname(filePathAllTags), { recursive: true })
-  await writeFile(filePathAllTags, JSON.stringify(componentTags, undefined, 2))
+  await writeFile(filePathAllTags, `export const tags = ${JSON.stringify(componentTags, undefined, 2)}`)
 
   const reducedTags = componentTags.reduce((acc, newTag) => {
     const hasComponent = acc.some(tag => newTag.startsWith(tag))

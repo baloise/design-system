@@ -1,6 +1,6 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
-import tags from '../../../resources/data/tags-all.json'
+import { tags } from './tags-all'
 import { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
 import { balToastController } from './components/bal-toast/bal-toast.controller'
 import { balBrowser } from './utils/browser'
