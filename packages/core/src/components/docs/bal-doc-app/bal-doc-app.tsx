@@ -1,9 +1,9 @@
-import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
-import * as balIcons from '../../../utils/constants/icons.constant'
-import { updateBalIcons } from '../../../utils/config'
-import { balBrowser } from '../../../utils/browser'
-import { BalLogger } from '../../../utils/log'
+import * as balIcons from '@baloise/ds-icons'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import globalScript from '../../../global'
+import { balBrowser } from '../../../utils/browser'
+import { updateBalIcons } from '../../../utils/config'
+import { BalLogger } from '../../../utils/log'
 
 /**
  * @internal
