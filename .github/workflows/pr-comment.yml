@@ -84,6 +84,8 @@ jobs:
 
       - name: Build
         run: npx nx run-many -t build --projects=tag:scope:release
+        env:
+          BAL_DS_RELEASE: true
 
       - name: Pre-Publish
         run: npx nx run pre-publish
