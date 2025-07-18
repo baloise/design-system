@@ -1,6 +1,37 @@
 /**
  *
  * @param value - input number
+ * @output 123.456.789
+ * @private
+ */
+export function formatVehicleRegistrationNumber(value: string): string {
+  if (!value) {
+    return ''
+  }
+  const newValue = value.replace(/\D/g, '').trim()
+
+  const parts = [
+    newValue.substring(0, 3),
+    newValue.substring(3, 6),
+    newValue.substring(6, 9),
+    newValue.substring(9, 12),
+  ].filter(val => val.length > 0)
+
+  switch (parts.length) {
+    case 1:
+      return `${value}`
+    case 2:
+      return `${parts[0]}.${parts[1]}`
+    case 3:
+      return `${parts[0]}.${parts[1]}.${parts[2]}`
+    default:
+      return `${parts[0]}.${parts[1]}.${parts[2]}.${parts[3]}`
+  }
+}
+
+/**
+ *
+ * @param value - input number
  * @output 73/001217/16.9
  * @private
  */
@@ -127,6 +158,7 @@ export function formatBeIBAN(value: string): string {
 }
 
 export const MAX_LENGTH_CONTRACT_NUMBER = 10
+export const MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER = 12
 export const MAX_LENGTH_BASIC_CONTRACT_NUMBER = 9
 export const MAX_LENGTH_OFFER_NUMBER = 9
 export const MAX_LENGTH_CLAIM_NUMBER = 11

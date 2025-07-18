@@ -7,6 +7,7 @@ namespace BalProps {
   export type BalInputAutocorrect = 'on' | 'off'
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
   export type BalInputMask =
+    | 'vehicle-registration-number'
     | 'contract-number'
     | 'basic-contract-number'
     | 'claim-number'
