@@ -1124,6 +1124,39 @@ export namespace Components {
          */
         "space": BalProps.BalDividerSpace;
     }
+    interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * @default true
+         */
+        "animated": boolean;
+        "language"?: string;
+        /**
+          * @default ''
+         */
+        "logComponents": string;
+        /**
+          * @default true
+         */
+        "logCustom": boolean;
+        /**
+          * @default true
+         */
+        "logEvents": boolean;
+        /**
+          * @default true
+         */
+        "logLifecycle": boolean;
+        /**
+          * @default true
+         */
+        "logRender": boolean;
+        "region"?: string;
+        /**
+          * @default false
+         */
+        "stickyFooter": boolean;
+    }
     interface BalDropdown {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
@@ -4897,6 +4930,12 @@ declare global {
         prototype: HTMLBalDividerElement;
         new (): HTMLBalDividerElement;
     };
+    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
+    }
+    var HTMLBalDocAppElement: {
+        prototype: HTMLBalDocAppElement;
+        new (): HTMLBalDocAppElement;
+    };
     interface HTMLBalDropdownElementEventMap {
         "balChange": BalEvents.BalDropdownChangeDetail;
         "balFocus": BalEvents.BalDropdownFocusDetail;
@@ -5878,6 +5917,7 @@ declare global {
         "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
         "bal-divider": HTMLBalDividerElement;
+        "bal-doc-app": HTMLBalDocAppElement;
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
@@ -7102,6 +7142,39 @@ declare namespace LocalJSX {
           * @default 'none'
          */
         "space"?: BalProps.BalDividerSpace;
+    }
+    interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * @default true
+         */
+        "animated"?: boolean;
+        "language"?: string;
+        /**
+          * @default ''
+         */
+        "logComponents"?: string;
+        /**
+          * @default true
+         */
+        "logCustom"?: boolean;
+        /**
+          * @default true
+         */
+        "logEvents"?: boolean;
+        /**
+          * @default true
+         */
+        "logLifecycle"?: boolean;
+        /**
+          * @default true
+         */
+        "logRender"?: boolean;
+        "region"?: string;
+        /**
+          * @default false
+         */
+        "stickyFooter"?: boolean;
     }
     interface BalDropdown {
         /**
@@ -10423,6 +10496,7 @@ declare namespace LocalJSX {
         "bal-date-calendar": BalDateCalendar;
         "bal-date-calendar-cell": BalDateCalendarCell;
         "bal-divider": BalDivider;
+        "bal-doc-app": BalDocApp;
         "bal-dropdown": BalDropdown;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
@@ -10546,6 +10620,7 @@ declare module "@stencil/core" {
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
+            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
