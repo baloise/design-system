@@ -69,6 +69,7 @@ export const defaultConfig: BalConfigState = {
   logger: defaultLoggerConfig,
   animated: true,
   httpFormSubmit: true,
+  _generateHydrateForCustomElementsOutput: false,
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`

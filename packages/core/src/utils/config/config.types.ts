@@ -26,6 +26,7 @@ export interface BalConfig {
   logger?: BalLogger
   animated?: boolean
   httpFormSubmit?: boolean
+  _generateHydrateForCustomElementsOutput?: boolean
   _jmp?: (c: any) => any
   _raf?: (c: any) => number
   _ael?: (el: any, eventName: string, listener: any, options: any) => void
@@ -42,6 +43,7 @@ export interface BalConfigState {
   logger: BalLogger
   animated: boolean
   httpFormSubmit: boolean
+  _generateHydrateForCustomElementsOutput: boolean
 }
 
 export interface BalPlatformConfig {

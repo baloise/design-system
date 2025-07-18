@@ -1,22 +1,22 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
+  FunctionalComponent,
   Host,
-  h,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  Event,
-  EventEmitter,
-  Element,
-  FunctionalComponent,
-  ComponentInterface,
+  h,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { generatePaginationControl } from './bal-pagination.util'
 import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { i18nControlLabel } from './bal-pagination.i18n'
+import { generatePaginationControl } from './bal-pagination.util'
 
 @Component({
   tag: 'bal-pagination',
@@ -157,9 +157,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
             ...more.class(),
           }}
         >
-          <bal-text bold heading inline space="none">
-            &hellip;
-          </bal-text>
+          <span>&hellip;</span>
         </div>
       </li>
     )

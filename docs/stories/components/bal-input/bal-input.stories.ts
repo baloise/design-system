@@ -77,6 +77,22 @@ export const ContractNumberInput = Story({
   ),
 })
 
+export const VehicleRegistrationNumberInput = Story({
+  args: {
+    placeholder: 'Enter only numbers which will be formatted',
+    type: 'text',
+  },
+  ...withRender(
+    ({ ...args }) => `<bal-field>
+    <bal-field-label>Stammnummer</bal-field-label>
+    <bal-field-control>
+        <bal-input mask="vehicle-registration-number" ${props(args)}></bal-input>
+    </bal-field-control>
+    <bal-field-message>Field Message</bal-field-message>
+</bal-field>`,
+  ),
+})
+
 export const ClaimNumberInput = Story({
   args: {
     placeholder: 'Enter only numbers which will be formatted',

@@ -1,8 +1,6 @@
-import { BuildCoreExecutorSchema } from './schema'
-import { dirname, join, sep } from 'path'
-import replace from 'replace-in-file'
-import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { copy } from 'fs-extra'
+import { mkdir, readFile, rm, writeFile } from 'fs/promises'
+import { dirname, join, sep } from 'path'
 import {
   createSourceFile,
   filterInterfaceDeclaration,
@@ -13,6 +11,7 @@ import {
   runCommand,
   scan,
 } from '../utils'
+import { BuildCoreExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildCoreExecutorSchema) {
   try {
@@ -25,7 +24,6 @@ export default async function runExecutor(options: BuildCoreExecutorSchema) {
     await runCommand('npx stencil build', join(process.cwd(), options.projectRoot))
 
     // post build tasks
-    await adjustGlobalVar(options)
     await createTagList()
     await copyToDocs(options)
     await cleanUp(options)
@@ -131,38 +129,27 @@ function parseTestingType(fileContent, filePath) {
  * post build task
  ********************************************************************************/
 
-async function adjustGlobalVar(options: BuildCoreExecutorSchema) {
-  const files = join(options.projectRoot, 'dist/cjs/app-globals*.js')
-  await replace({
-    files: files.replace(/\\/g, '/'),
-    from: `const global =`,
-    to: `const globalImport =`,
-  })
-  await replace({
-    files: files.replace(/\\/g, '/'),
-    from: `const globalScripts = global.globalScript;`,
-    to: `const globalScripts = globalImport.globalScript;`,
-  })
-}
-
 // This script creates a list with all the main component tags.
 export async function createTagList() {
   const content = await readFile(join('resources/data/components.json'), 'utf-8')
   const json = JSON.parse(content)
-  const componentTags = json.components
-    .map(component => component.tag)
-    .filter(tag => !tag.startsWith('bal-doc'))
-    .reduce((acc, newTag) => {
-      const hasComponent = acc.some(tag => newTag.startsWith(tag))
-      if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
-        acc.push(newTag)
-      }
-      return acc
-    }, [])
+  const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('bal-doc'))
+
+  const filePathAllTags = join('packages/core/src/tags-all.ts')
+  await mkdir(dirname(filePathAllTags), { recursive: true })
+  await writeFile(filePathAllTags, `export const tags = ${JSON.stringify(componentTags, undefined, 2)}`)
+
+  const reducedTags = componentTags.reduce((acc, newTag) => {
+    const hasComponent = acc.some(tag => newTag.startsWith(tag))
+    if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
+      acc.push(newTag)
+    }
+    return acc
+  }, [])
 
   const filePath = join('resources/data/tags.json')
   await mkdir(dirname(filePath), { recursive: true })
-  await writeFile(filePath, JSON.stringify(componentTags, undefined, 2))
+  await writeFile(filePath, JSON.stringify(reducedTags, undefined, 2))
 }
 
 async function copyToDocs(options: BuildCoreExecutorSchema) {

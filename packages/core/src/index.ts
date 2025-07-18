@@ -29,7 +29,7 @@ export {
 /**
  * Components
  */
-export * from './components'
+export { Components, JSX } from './components'
 
 /**
  * Types
