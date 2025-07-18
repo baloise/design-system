@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.4.0
+
+### Minor Changes
+
+- **input**: add vehicle registration number(Stammnummer) mask ( [#1758](https://github.com/baloise/design-system/pull/1758))
+
+### Patch Changes
+
+- **core**: enable custom element hydration for angular and react to reduce render glitches on first component render ( [#1753](https://github.com/baloise/design-system/pull/1753))
+
+- **hint**: fix issue that hint was only sticking to width value of min-width instead of a value between min-width and max-width ( [#1746](https://github.com/baloise/design-system/pull/1746))
+
 ## 19.3.0
 
 ### Minor Changes
