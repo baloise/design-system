@@ -570,6 +570,9 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
         case 'be-iban':
           value = formatBeIBAN(value)
           break
+        case 'vehicle-registration-number':
+          value = formatVehicleRegistrationNumber(value)
+          break
       }
     }
 
