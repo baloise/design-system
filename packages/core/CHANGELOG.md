@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.4.1
+
+### Patch Changes
+
+- **input**: keep format of vehicle registration number when clicking out of the control ( [#1759](https://github.com/baloise/design-system/pull/1759))
+
 ## 19.4.0
 
 ### Minor Changes
