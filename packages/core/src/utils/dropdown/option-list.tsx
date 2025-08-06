@@ -1,8 +1,10 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BalOption } from './option'
 import { BEM } from '../bem'
+import { DropdownMode } from './mode'
+import { BalOption } from './option'
 
 export interface DropdownOptionListProps {
+  mode: DropdownMode
   inputId: string
   block: string
   filter: BalProps.BalOptionListFilter
@@ -18,6 +20,7 @@ export interface DropdownOptionListProps {
 }
 
 export const DropdownOptionList: FunctionalComponent<DropdownOptionListProps> = ({
+  mode,
   inputId,
   isExpanded,
   rawOptions,
@@ -38,6 +41,10 @@ export const DropdownOptionList: FunctionalComponent<DropdownOptionListProps> = 
       class={{
         ...block.element('list').class(),
         ...block.element('list').modifier('expanded').class(isExpanded),
+        ...block
+          .element('list')
+          .modifier('typeahead')
+          .class(mode === DropdownMode.Typeahead),
       }}
       ref={refPanelEl}
     >
