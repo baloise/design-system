@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import DOMPurify from 'dompurify'
+import { sanitizeSvg } from 'packages/core/src/utils/svg'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { rOnLoad, waitAfterFramePaint } from '../../../utils/helpers'
@@ -150,7 +150,7 @@ export class CarouselItem implements ComponentInterface {
 
   private generateSvgContent = () => {
     if (this.svg !== undefined && this.svg.length > 0) {
-      this.svgContent = DOMPurify.sanitize(this.svg) || ''
+      this.svgContent = sanitizeSvg(this.svg)
     }
   }
 

@@ -28,6 +28,7 @@ import { isDescendant, waitAfterIdleCallback, waitForComponent } from '../../uti
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalScrollHandler } from '../../utils/scroll'
+import { sanitizeSvg } from '../../utils/svg'
 import { gatherTabInformation, handleFlyoutFocusOut, handleTabKeyDown } from './bal-nav-focus.util'
 import { i18nNavBars } from './bal-nav.i18n'
 import { NavLinkItemObserver } from './bal-nav.types'
@@ -647,6 +648,26 @@ export class Nav
 
   renderLogo() {
     const Link = this.logo?.href ? 'a' : this.logo?.clickable ? 'button' : 'div'
+
+    let Logo = <bal-logo animated></bal-logo>
+    const logoImageUrl = this.logo?.url
+    const logoSvg = sanitizeSvg(this.logo?.svg)
+
+    if (logoImageUrl) {
+      Logo = <img height={32} style={{ maxHeight: '32px' }} src={logoImageUrl} alt="Logo" />
+    }
+
+    if (logoSvg) {
+      Logo = (
+        <div
+          innerHTML={logoSvg}
+          role="img"
+          aria-label="Logo"
+          style={{ display: 'flex', height: '32px', maxHeight: '32px', minWidth: '32px' }}
+        ></div>
+      )
+    }
+
     return (
       <Link
         class="bal-nav__logo"
@@ -663,7 +684,7 @@ export class Nav
           })
         }
       >
-        <bal-logo animated></bal-logo>
+        {Logo}
       </Link>
     )
   }
