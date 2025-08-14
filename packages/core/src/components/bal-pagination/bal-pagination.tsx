@@ -148,13 +148,14 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   }
 
   renderEllipsisElement() {
-    const more = BEM.block('pagination').element('nav').element('pagination-list').modifier('more')
+    const more = BEM.block('pagination').element('nav').element('pagination-list').element('more')
 
     return (
       <li aria-hidden={'true'}>
         <div
           class={{
             ...more.class(),
+            ...more.modifier('disabled').class(this.disabled),
           }}
         >
           <span>&hellip;</span>
@@ -186,16 +187,21 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     }
     return (
       <li>
-        <bal-button
-          square
-          color={isActive ? 'primary' : 'text'}
+        <button
+          class={{
+            'button': true,
+            'is-square': true,
+            'is-primary': isActive,
+            'is-text': !isActive,
+            'is-disabled': this.disabled,
+            'is-small': this.isMobile || this.size === 'small',
+          }}
           aria-current={isActive ? 'true' : undefined}
           onClick={() => this.selectPage(pageNumber)}
           data-testid="bal-pagination-page-number"
-          size={this.isMobile || this.size === 'small' ? 'small' : ''}
         >
           {pageNumber}
-        </bal-button>
+        </button>
       </li>
     )
   }
@@ -210,8 +216,8 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const elNext = elNav.element('pagination-next')
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
-    const buttonColor = isSmall ? 'link' : 'text'
-    const buttonSize = isSmall || this.size === 'small' || this.isMobile ? 'small' : ''
+    const buttonColor = isSmall ? 'is-link' : 'is-text'
+    const buttonSize = isSmall || this.size === 'small' || this.isMobile ? 'is-small' : ''
     const flat = isSmall
 
     const leftControlTitle = i18nControlLabel[this.language].left
@@ -273,38 +279,48 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
           role="navigation"
           aria-label="pagination"
         >
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elPrevious.class(),
-              ...elPrevious.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value < 2 || this.disabled}
-            onClick={() => this.previous()}
-            data-testid="bal-pagination-controls-left"
-            title={leftControlTitle}
-          >
-            <bal-icon name="nav-go-left" size="small" />
-          </bal-button>
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elNext.class(),
-              ...elNext.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value === this.totalPages || this.disabled}
-            onClick={() => this.next()}
-            data-testid="bal-pagination-controls-right"
-            title={rightControlTitle}
-          >
-            <bal-icon name="nav-go-right" size="small" />
-          </bal-button>
+          {!this.disabled ? (
+            <button
+              class={{
+                'button': true,
+                'is-square': true,
+                'is-flat': flat,
+                [buttonColor]: true,
+                [buttonSize]: true,
+                ...elPrevious.class(),
+                ...elPrevious.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value < 2}
+              onClick={() => this.previous()}
+              data-testid="bal-pagination-controls-left"
+              title={leftControlTitle}
+            >
+              <bal-icon name="nav-go-left" size="small" />
+            </button>
+          ) : (
+            ''
+          )}
+          {!this.disabled ? (
+            <button
+              class={{
+                'button': true,
+                'is-square': true,
+                'is-flat': flat,
+                [buttonColor]: true,
+                [buttonSize]: true,
+                ...elNext.class(),
+                ...elNext.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value === this.totalPages}
+              onClick={() => this.next()}
+              data-testid="bal-pagination-controls-right"
+              title={rightControlTitle}
+            >
+              <bal-icon name="nav-go-right" size="small" />
+            </button>
+          ) : (
+            ''
+          )}
           {hasBasicNavigationButtons && this.isMobile ? <PaginationMobile></PaginationMobile> : ''}
           {hasBasicNavigationButtons && !this.isMobile ? <PaginationTablet></PaginationTablet> : ''}
           {!hasBasicNavigationButtons ? <SmallWithText></SmallWithText> : ''}

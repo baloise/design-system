@@ -14,16 +14,19 @@
       <main class="container py-medium">
         <section data-testid="basic">
           <bal-pagination page-range="2" total-pages="20" value="2"></bal-pagination>
+          <bal-pagination page-range="2" total-pages="20" value="2" disabled></bal-pagination>
         </section>
         <br />
         <br />
         <section data-testid="small">
           <bal-pagination interface="small" total-pages="10"></bal-pagination>
+          <bal-pagination interface="small" total-pages="10" disabled></bal-pagination>
         </section>
         <br />
         <br />
         <section data-testid="small-with-dots">
           <bal-pagination interface="small" total-pages="3"></bal-pagination>
+          <bal-pagination interface="small" total-pages="3" disabled></bal-pagination>
         </section>
       </main>
     </bal-doc-app>
