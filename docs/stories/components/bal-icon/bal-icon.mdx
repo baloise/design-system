@@ -1,15 +1,15 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Canvas, Markdown, Meta } from '@storybook/blocks'
 import {
+  AngularFramework,
   Banner,
+  ButtonCard,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
   Lead,
   PlaygroundBar,
-  StoryHeading,
-  Footer,
-  InfoQuote,
-  ButtonCard,
-  AngularFramework,
   ReactFramework,
-  HTMLFramework,
+  StoryHeading,
 } from '../../../.storybook/blocks'
 import * as IconStories from './bal-icon.stories'
 
@@ -63,18 +63,18 @@ To incorporate icons beyond this basic set, you can either **import them during 
 Import the icons form the `@baloise/ds-icons` package and pass them with the BalConfig during the initialization.
 
 ```ts
+import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
 import { balIconStarFull } from '@baloise/ds-icons'
 
-@NgModule({
-  imports: [
-    BaloiseDesignSystemModule.forRoot({
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBaloiseDesignSystem({
       defaults: {
         icons: { balIconStarFull },
       },
     }),
   ],
-})
-export class AppModule {}
+}
 ```
 
 ### Import into the component

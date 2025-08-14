@@ -132,6 +132,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
 
   private generateSvgContent = (iconName: string) => {
     const hasIcons = Object.keys(this.icons).length > 0
+
     if (hasIcons && iconName && iconName.length > 0) {
       // We are doing this to avoid breaking change.
       if (iconName.startsWith('alert')) {
@@ -144,6 +145,12 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
       if (icon) {
         this.svgContent = icon
         return
+      } else {
+        console.error(
+          `Icon "${iconName}" not found in design system configuration.`,
+          '\n\nCheck out the documentation on how to import icons during initialization.',
+          '\nhttps://design.baloise.dev/?path=/docs/components-data-display-icon--documentation&globals=framework:angular#import-during-initialization',
+        )
       }
     }
 

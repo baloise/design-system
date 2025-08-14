@@ -1,9 +1,8 @@
-import { balBrowser } from '../browser'
 import { BalLogger } from '../log'
-import { BALOISE_ANIMATION_KEY, BALOISE_SESSION_KEY } from './config.const'
+import { BALOISE_ANIMATION_KEY } from './config.const'
+import { defaultConfig } from './config.default'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
-import { defaultConfig } from './config.default'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
@@ -161,23 +160,10 @@ export class Config {
         observer.configChanged(this._config)
       }
     }
-
-    if (balBrowser.hasWindow) {
-      saveConfig(window, this._config)
-    }
   }
 }
 
 export const config = /*@__PURE__*/ new Config()
-
-export const configFromSession = (win: Window): any => {
-  try {
-    const configStr = win.sessionStorage.getItem(BALOISE_SESSION_KEY)
-    return configStr !== null ? JSON.parse(configStr) : {}
-  } catch (e) {
-    return {}
-  }
-}
 
 export const configFromLocalStorage = (win: Window): any => {
   try {
@@ -192,13 +178,5 @@ export const configFromLocalStorage = (win: Window): any => {
     return {}
   } catch (e) {
     return {}
-  }
-}
-
-export const saveConfig = (win: Window, c: any) => {
-  try {
-    win.sessionStorage.setItem(BALOISE_SESSION_KEY, JSON.stringify(c))
-  } catch (e) {
-    return
   }
 }
