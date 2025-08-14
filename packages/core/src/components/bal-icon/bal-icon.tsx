@@ -1,10 +1,10 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
-import DOMPurify from 'dompurify'
 import camelCase from 'lodash.camelcase'
 import upperFirst from 'lodash.upperfirst'
 import { BEM } from '../../utils/bem'
 import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
+import { sanitizeSvg } from '../../utils/svg'
 
 @Component({
   tag: 'bal-icon',
@@ -147,7 +147,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
       }
     }
 
-    this.svgContent = DOMPurify.sanitize(this.svg) || ''
+    this.svgContent = sanitizeSvg(this.svg)
   }
 
   private parseColor() {
