@@ -34,6 +34,7 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         {
           ...config.defaults,
           httpFormSubmit: false,
+          _generateHydrateForCustomElementsOutput: true,
         },
         platformConfig,
         win,

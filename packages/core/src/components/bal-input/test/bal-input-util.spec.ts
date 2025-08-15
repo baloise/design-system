@@ -1,6 +1,47 @@
-import { formatClaim, formatOffer, formatPolicy, formatBeEnterpriseNumber, formatBeIBAN } from '../bal-input-util'
+import {
+  formatBeEnterpriseNumber,
+  formatBeIBAN,
+  formatClaim,
+  formatOffer,
+  formatPolicy,
+  formatVehicleRegistrationNumber,
+} from '../bal-input-util'
 
 describe('bal-input-util testing:', () => {
+  describe('formatVehicleRegistrationNumber', () => {
+    test('full entry:', () => {
+      const result = formatVehicleRegistrationNumber('123456789')
+      expect(result).toStrictEqual('123.456.789')
+    })
+    test('empty:', () => {
+      const result = formatVehicleRegistrationNumber('')
+      expect(result).toStrictEqual('')
+    })
+    test('partial 2 characters:', () => {
+      const result = formatVehicleRegistrationNumber('73')
+      expect(result).toStrictEqual('73')
+    })
+    test('partial 3 characters:', () => {
+      const result = formatVehicleRegistrationNumber('730')
+      expect(result).toStrictEqual('730')
+    })
+    test('partial 4 characters:', () => {
+      const result = formatVehicleRegistrationNumber('7303')
+      expect(result).toStrictEqual('730.3')
+    })
+    test('partial 9 characters:', () => {
+      const result = formatVehicleRegistrationNumber('123456789')
+      expect(result).toStrictEqual('123.456.789')
+    })
+    test('partial 12 characters:', () => {
+      const result = formatVehicleRegistrationNumber('123456789012')
+      expect(result).toStrictEqual('123.456.789.012')
+    })
+    test('partial 13 characters:', () => {
+      const result = formatVehicleRegistrationNumber('1234567890123')
+      expect(result).toStrictEqual('123.456.789.012')
+    })
+  })
   describe('formatClaim', () => {
     test('full entry:', () => {
       const result = formatClaim('73001217169')

@@ -77,9 +77,9 @@ export class TabItem {
   @Prop() noPanel = false
 
   /**
-   * A11y attributes for the native tab element.
+   * A11y attributes for the native button element.
    */
-  @Prop() aria?: BalProps.BalTabItemAria = undefined
+  @Prop() a11yControls?: string = undefined
 
   /**
    * Sub label for the tab.
@@ -148,7 +148,7 @@ export class TabItem {
       keyDown: this.balKeyDown,
       trackingData: this.inheritAttributes,
       noPanel: this.noPanel,
-      aria: this.aria,
+      a11yControls: this.a11yControls,
       subLabel: this.subLabel,
       svg: this.svg,
     }

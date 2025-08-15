@@ -211,7 +211,22 @@ export namespace Components {
           * A11y attributes for the native button element.
           * @default undefined
          */
-        "aria"?: BalProps.BalButtonAria;
+        "a11yControls"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yHaspopup"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yLabel"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yTitle"?: string;
         /**
           * If `true` the button is a popup.
           * @default undefined
@@ -3915,15 +3930,15 @@ export namespace Components {
     }
     interface BalTabItem {
         /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yControls"?: string;
+        /**
           * Tells if this route is active and overrides the bal-tabs value property.
           * @default false
          */
         "active": boolean;
-        /**
-          * A11y attributes for the native tab element.
-          * @default undefined
-         */
-        "aria"?: BalProps.BalTabItemAria;
         /**
           * If `true` a small red bubble is added to the tab.
           * @default false
@@ -6172,7 +6187,22 @@ declare namespace LocalJSX {
           * A11y attributes for the native button element.
           * @default undefined
          */
-        "aria"?: BalProps.BalButtonAria;
+        "a11yControls"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yHaspopup"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yLabel"?: string;
+        /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yTitle"?: string;
         /**
           * If `true` the button is a popup.
           * @default undefined
@@ -9894,15 +9924,15 @@ declare namespace LocalJSX {
     }
     interface BalTabItem {
         /**
+          * A11y attributes for the native button element.
+          * @default undefined
+         */
+        "a11yControls"?: string;
+        /**
           * Tells if this route is active and overrides the bal-tabs value property.
           * @default false
          */
         "active"?: boolean;
-        /**
-          * A11y attributes for the native tab element.
-          * @default undefined
-         */
-        "aria"?: BalProps.BalTabItemAria;
         /**
           * If `true` a small red bubble is added to the tab.
           * @default false

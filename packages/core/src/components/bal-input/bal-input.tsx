@@ -12,8 +12,12 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent } from '../../utils/helpers'
+import isNil from 'lodash.isnil'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import {
   FormInput,
   getInputTarget,
@@ -28,25 +32,23 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../utils/form-input'
+import { debounceEvent } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 import {
   formatBeEnterpriseNumber,
   formatBeIBAN,
   formatClaim,
   formatOffer,
   formatPolicy,
+  formatVehicleRegistrationNumber,
+  MAX_LENGTH_BASIC_CONTRACT_NUMBER,
   MAX_LENGTH_BE_ENTERPRISE_NUMBER,
   MAX_LENGTH_BE_IBAN,
   MAX_LENGTH_CLAIM_NUMBER,
   MAX_LENGTH_CONTRACT_NUMBER,
   MAX_LENGTH_OFFER_NUMBER,
-  MAX_LENGTH_BASIC_CONTRACT_NUMBER,
+  MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER,
 } from './bal-input-util'
-import isNil from 'lodash.isnil'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
-import { BEM } from '../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-input',
@@ -348,6 +350,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
       if (input.value) {
         if (this.mask) {
           switch (this.mask) {
+            case 'vehicle-registration-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER)
+              }
+
+              return inputValue
+            }
             case 'contract-number': {
               inputValue = input.value.replace(/\D/g, '')
               // Removing the leading zero if presented
@@ -435,6 +445,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     if (input) {
       if (input.value) {
         switch (this.mask) {
+          case 'vehicle-registration-number': {
+            input.value = formatVehicleRegistrationNumber(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
+          }
           case 'contract-number':
           case 'basic-contract-number': {
             input.value = formatPolicy(this.inputValue)
@@ -552,6 +569,9 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
         case 'be-iban':
           value = formatBeIBAN(value)
+          break
+        case 'vehicle-registration-number':
+          value = formatVehicleRegistrationNumber(value)
           break
       }
     }
