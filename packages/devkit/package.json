@@ -16,10 +16,10 @@
     "save": "devDependencies"
   },
   "dependencies": {
-    "@angular-devkit/core": "^17.0.10",
-    "@angular-devkit/schematics": "^17.0.10",
-    "@schematics/angular": "^17.0.10",
-    "typescript": "~5.2.2",
+    "@angular-devkit/core": "^18.0.0",
+    "@angular-devkit/schematics": "^18.0.0",
+    "@schematics/angular": "^18.0.0",
+    "typescript": "~5.4.2",
     "glob": "~10.3.10"
   }
 }

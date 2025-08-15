@@ -29,6 +29,7 @@ import {
   balIconCaretRight,
   balIconCaretUp,
 } from '../constants/icons.constant'
+import { balIconClock } from '@baloise/ds-icons'
 
 export const defaultIcons = {
   balIconClose,
@@ -58,6 +59,7 @@ export const defaultIcons = {
   balIconCaretLeft,
   balIconCaretRight,
   balIconCaretUp,
+  balIconClock,
 }
 
 export const defaultConfig: BalConfigState = {
