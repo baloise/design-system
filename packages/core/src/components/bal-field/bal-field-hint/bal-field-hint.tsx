@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { balBreakpoints } from '@baloise/ds-core'
+import { BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-field-hint',
@@ -29,6 +30,11 @@ export class FieldHint {
 
   @State() isDesktop = balBreakpoints.isDesktop
 
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isDesktop = breakpoints.desktop
+  }
+
   render() {
     const block = BEM.block('field-hint')
     return (
@@ -45,7 +51,11 @@ export class FieldHint {
           closeLabel={this.closeLabel}
           small={this.small}
         >
-          {this.subject && !(this.hideTitleOnDesktop && this.isDesktop) ? <bal-hint-title>{this.subject}</bal-hint-title> : ''}
+          {this.subject && !(this.hideTitleOnDesktop && this.isDesktop) ? (
+            <bal-hint-title>{this.subject}</bal-hint-title>
+          ) : (
+            ''
+          )}
           <bal-hint-text>
             <slot></slot>
           </bal-hint-text>
