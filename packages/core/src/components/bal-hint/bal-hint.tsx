@@ -1,20 +1,20 @@
 import {
   Component,
-  Host,
-  h,
-  Method,
-  State,
-  Prop,
+  ComponentInterface,
   Element,
   FunctionalComponent,
-  ComponentInterface,
+  h,
+  Host,
+  Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { preventDefault } from '../bal-select/utils/utils'
-import { BalScrollHandler } from '../../utils/scroll'
-import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
+import { BalScrollHandler } from '../../utils/scroll'
+import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-hint',
@@ -111,9 +111,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     if (this.popupElement) {
       this.popupElement.present()
     }
-    if (this.isMobile) {
-      this.bodyScrollHandler.disable()
-    }
     this.isActive = true
   }
 
@@ -125,14 +122,19 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     if (this.popupElement) {
       this.popupElement.dismiss()
     }
-    if (this.isMobile) {
-      this.bodyScrollHandler.enable()
-    }
     this.isActive = false
   }
 
   private onPopupChange = (ev: CustomEvent<boolean>) => {
     this.isActive = ev.detail
+
+    if (this.isMobile) {
+      if (this.isActive) {
+        this.bodyScrollHandler.disable()
+      } else {
+        this.bodyScrollHandler.enable()
+      }
+    }
     preventDefault(ev)
   }
 
