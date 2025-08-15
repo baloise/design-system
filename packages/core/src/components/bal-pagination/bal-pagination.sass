@@ -85,7 +85,7 @@
         +modifier(inactive)
           background-color: var(--bal-pagination-dot-background-inactive)
 
-      +modifier(more)
+      +element(more)
         width: 2rem
         +tablet
           width: 2rem
@@ -95,6 +95,8 @@
           display: inline
           font-family: var(--bal-text-line-height-title)
           font-weight: 700
+        +modifier(disabled)
+          color: var(--bal-color-text-grey)
 
       +element(tab)
         flex: 1
@@ -102,3 +104,7 @@
       &.is-disabled
         li
           pointer-events: none
+
+      button.is-disabled.is-text
+        background: transparent
+        border-color: transparent

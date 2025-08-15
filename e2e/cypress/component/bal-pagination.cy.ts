@@ -15,7 +15,7 @@ describe('bal-pagination', () => {
       },
     })
 
-    cy.get('.bal-pagination').find('.bal-pagination__nav__pagination-list > li').eq(2).find('.bal-button').click()
+    cy.get('.bal-pagination').find('.bal-pagination__nav__pagination-list > li').eq(2).find('.button').click()
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail(3)
   })
