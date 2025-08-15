@@ -119,6 +119,7 @@ export class Segment
      * Used by `bal-segment-item` to determine if the button should be checked.
      */
     this.balSelect.emit(value)
+    this.setCheckedClasses()
   }
 
   /**
