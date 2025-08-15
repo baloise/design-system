@@ -39,6 +39,8 @@ namespace BalProps {
     htmlTitle?: string
     ariaLabel?: string
     href?: string
+    svg?: string
+    url?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean
     onClick?: (ev: MouseEvent) => void

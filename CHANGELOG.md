@@ -1,5 +1,21 @@
 # Changelog
 
+## 19.5.0
+
+### Minor Changes
+
+- **nav**: add props url and svg to change the default logo of the nav ( [#1766](https://github.com/baloise/design-system/pull/1766))
+
+### Patch Changes
+
+- **popup**: fullscreen mode blocks scrolling on background and bottom padding is removed ( [#1771](https://github.com/baloise/design-system/pull/1771))
+
+- **input**: keep format of vehicle registration number when clicking out of the control ( [#1759](https://github.com/baloise/design-system/pull/1759))
+
+- **pagination**: hide nav buttons and show pagination as disabled to be consistent with the other components ( [#1768](https://github.com/baloise/design-system/pull/1768))
+
+- **icon**: prevent from caching icons and log an error if an icon does not exist in the configuration. Check your app during runtime on the pages where you use icons, if you see an error in the console like:`Icon "${iconName}" not found in design system configuration.` ( [#1770](https://github.com/baloise/design-system/pull/1770))
+
 ## 19.4.0
 
 ### Minor Changes
