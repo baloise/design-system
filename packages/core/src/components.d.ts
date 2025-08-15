@@ -1350,6 +1350,11 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop": boolean;
+        /**
           * Disables the close button for tablet and desktop
           * @default false
          */
@@ -7358,6 +7363,11 @@ declare namespace LocalJSX {
           * @default 'Close'
          */
         "closeLabel"?: string;
+        /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop"?: boolean;
         /**
           * Disables the close button for tablet and desktop
           * @default false
