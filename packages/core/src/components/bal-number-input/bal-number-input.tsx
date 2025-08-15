@@ -6,20 +6,27 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Method,
   Prop,
   State,
   Watch,
-  Listen,
 } from '@stencil/core'
+import isEmpty from 'lodash.isempty'
+import isNaN from 'lodash.isnan'
+import isNil from 'lodash.isnil'
+import { ariaBooleanToString } from '../../utils/aria'
+import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
 import {
-  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
+  ListenToConfig,
 } from '../../utils/config'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import {
   FormInput,
   getNativeInputValue,
@@ -36,23 +43,16 @@ import {
   stopEventBubbling,
 } from '../../utils/form-input'
 import { debounceEvent } from '../../utils/helpers'
-import { inheritAttributes } from '../../utils/attributes'
-import { getDecimalSeparator, getThousandSeparator } from '../../utils/number'
-import { BEM } from '../../utils/bem'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { getDecimalSeparator, getThousandSeparator } from '../../utils/number'
 import {
-  toUserFormattedNumber,
   isNotNumber,
-  toNumber,
-  toFixedNumber,
-  validateKeyDown,
   mapDecimalSeparator,
+  toFixedNumber,
+  toNumber,
+  toUserFormattedNumber,
+  validateKeyDown,
 } from './bal-number-input.utils'
-import isNil from 'lodash.isnil'
-import isEmpty from 'lodash.isempty'
-import isNaN from 'lodash.isnan'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-number-input',
@@ -110,6 +110,11 @@ export class NumberInput
    * Defines the allowed decimal points for the `number-input`.
    */
   @Prop() decimal = 0
+
+  /**
+   * Allows only positive number values.
+   */
+  @Prop() onlyPositive = false
 
   /**
    * Adds a suffix the the input-value after blur.
@@ -342,7 +347,12 @@ export class NumberInput
       decimalSeparator = '\\,'
     }
 
-    return `-?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
+    let negativeSymbol = '-'
+    if (this.onlyPositive) {
+      negativeSymbol = ''
+    }
+
+    return `${negativeSymbol}?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
   }
 
   private get lastValueGetter(): string {
@@ -420,6 +430,7 @@ export class NumberInput
         oldValue,
         selectionStart: input.selectionStart,
         selectionEnd: input.selectionEnd,
+        onlyPositive: this.onlyPositive,
       })
     ) {
       return stopEventBubbling(ev)

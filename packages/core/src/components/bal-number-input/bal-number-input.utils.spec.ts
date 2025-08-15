@@ -210,6 +210,7 @@ describe('bal-number-input', () => {
           selectionStart: 0,
           selectionEnd: 0,
           decimal: 0,
+          onlyPositive: false,
         }),
       ).toBeTruthy()
 
@@ -223,6 +224,7 @@ describe('bal-number-input', () => {
           selectionStart: 1,
           selectionEnd: 1,
           decimal: 0,
+          onlyPositive: false,
         }),
       ).toBeTruthy()
     })
@@ -239,6 +241,7 @@ describe('bal-number-input', () => {
         selectionStart: 0,
         selectionEnd: 0,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -252,6 +255,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -265,6 +269,7 @@ describe('bal-number-input', () => {
         selectionStart: 2,
         selectionEnd: 2,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
   })
@@ -280,6 +285,7 @@ describe('bal-number-input', () => {
         selectionStart: 0,
         selectionEnd: 0,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -293,6 +299,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -306,6 +313,7 @@ describe('bal-number-input', () => {
         selectionStart: 2,
         selectionEnd: 2,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
   })
@@ -321,6 +329,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
 
@@ -334,6 +343,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
   })
@@ -349,6 +359,7 @@ describe('bal-number-input', () => {
         selectionStart: 3,
         selectionEnd: 3,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
 
@@ -362,6 +373,7 @@ describe('bal-number-input', () => {
         selectionStart: 2,
         selectionEnd: 2,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
   })
@@ -377,6 +389,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
 
@@ -390,6 +403,7 @@ describe('bal-number-input', () => {
         selectionStart: 1,
         selectionEnd: 1,
         decimal: 0,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
   })
@@ -405,6 +419,7 @@ describe('bal-number-input', () => {
         selectionStart: 5,
         selectionEnd: 5,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeFalsy()
 
@@ -418,6 +433,7 @@ describe('bal-number-input', () => {
         selectionStart: 5,
         selectionEnd: 5,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
   })
@@ -433,6 +449,7 @@ describe('bal-number-input', () => {
         selectionStart: 3,
         selectionEnd: 3,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -446,6 +463,7 @@ describe('bal-number-input', () => {
         selectionStart: 4,
         selectionEnd: 4,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -459,6 +477,7 @@ describe('bal-number-input', () => {
         selectionStart: 2,
         selectionEnd: 2,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
   })
@@ -474,6 +493,7 @@ describe('bal-number-input', () => {
         selectionStart: 3,
         selectionEnd: 3,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -487,6 +507,7 @@ describe('bal-number-input', () => {
         selectionStart: 4,
         selectionEnd: 4,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
 
@@ -500,6 +521,7 @@ describe('bal-number-input', () => {
         selectionStart: 2,
         selectionEnd: 2,
         decimal: 2,
+        onlyPositive: false,
       }),
     ).toBeTruthy()
   })

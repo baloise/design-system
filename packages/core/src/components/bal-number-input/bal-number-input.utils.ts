@@ -1,7 +1,7 @@
+import isNaN from 'lodash.isnan'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../utils/constants/keys.constant'
 import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '../../utils/number'
-import isNaN from 'lodash.isnan'
 
 function checkIfValueIsStringAndDoesNotHaveGermanFormat(val: any): boolean {
   return typeof val === 'string' && getThousandSeparator() !== '.'
@@ -86,6 +86,7 @@ export type ValidateKeyDownOptions = {
   oldValue: string
   selectionStart: number | null
   selectionEnd: number | null
+  onlyPositive: boolean
 }
 
 export const countDecimalSeparators = (value: string) => (value.split(getDecimalSeparator()) || []).length - 1 || 0
@@ -98,6 +99,7 @@ export function validateKeyDown({
   selectionEnd,
   newValue,
   decimal,
+  onlyPositive,
 }: ValidateKeyDownOptions): boolean {
   //
   // allow select all, copy and paste
@@ -107,8 +109,14 @@ export function validateKeyDown({
 
   //
   // only allow negative symbols at the start of the input
-  if (key === getNegativeSymbol() && selectionStart && selectionStart > 0 && selectionEnd && selectionEnd > 0) {
-    return false
+  if (key === getNegativeSymbol()) {
+    if (onlyPositive) {
+      return false
+    } else {
+      if (selectionStart && selectionStart > 0 && selectionEnd && selectionEnd > 0) {
+        return false
+      }
+    }
   }
 
   //
