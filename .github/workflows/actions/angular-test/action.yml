@@ -20,4 +20,4 @@ runs:
       if: failure()
       with:
         name: snapshots-angular-${{ inputs.app }}
-        path: test/angular/${{ inputs.app }}/cypress/snapshots
+        path: test/angular/${{ inputs.app }}/cypress
