@@ -103,11 +103,11 @@ export const selectors = {
     /**
      * bal-button of the number of the page..
      */
-    pages: '.bal-pagination__nav__pagination-list > li > bal-button',
+    pages: '.bal-pagination__nav__pagination-list > li > button',
     /**
      * The native button of the number of the page.
      */
-    button: '.bal-pagination__nav__pagination-list > li > bal-button > button',
+    button: '.bal-pagination__nav__pagination-list > li > button',
   },
   tag: {
     /**
