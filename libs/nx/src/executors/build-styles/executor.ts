@@ -1,6 +1,7 @@
-import { join } from 'path'
+import { copy } from 'fs-extra'
 import { mkdir, rm } from 'fs/promises'
-import { BuildStylesExecutorSchema } from './schema'
+import { join } from 'path'
+import { compileSass, scan } from '../utils'
 import { generateBackgroundColors } from './generators/background'
 import { generateBorder } from './generators/border'
 import { generateElevation } from './generators/elevation'
@@ -10,7 +11,7 @@ import { generateLayout } from './generators/layout'
 import { generateSizing } from './generators/sizing'
 import { generateSpacing } from './generators/spacing'
 import { generateTypography } from './generators/typography'
-import { compileSass, scan } from '../utils'
+import { BuildStylesExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildStylesExecutorSchema) {
   try {
@@ -37,6 +38,12 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
       const file = files[index]
       await compileSass(file, options)
     }
+
+    // copy generated files to css folder
+    await copy(
+      join(options.projectRoot, 'css', 'themes', 'tcs.css'),
+      join(options.projectRoot, '..', 'core', 'www', 'assets', 'tcs.css'),
+    )
   } catch (error) {
     console.error(error)
     return { success: false }

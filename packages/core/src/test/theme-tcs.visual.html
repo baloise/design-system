@@ -7,7 +7,7 @@
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
-
+    <title>TCS Theme</title>
     <link rel="stylesheet" href="/assets/tcs.css" />
   </head>
 
@@ -28,9 +28,33 @@
       <main class="container py-medium">
         <bal-heading>Theme</bal-heading>
 
+        <h2 class="title text-xx-large">Typography</h2>
+        <p>
+          Text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quam rerum, mollitia placeat eveniet, nemo
+          ullam voluptate harum vel impedit vitae dolorem magnam expedita perferendis veritatis blanditiis, adipisci
+          odit provident?
+        </p>
+
+        <h2 class="title text-xx-large">Buttons</h2>
+        <bal-button-group direction="row">
+          <bal-button>Weiter</bal-button>
+          <bal-button color="secondary">Zurück</bal-button>
+          <bal-button color="tertiary">Tertiary</bal-button>
+          <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
+          <bal-button color="link">Link</bal-button>
+        </bal-button-group>
+
         <bal-card class="my-normal" data-test="card">
-          <bal-card-title>Card Title</bal-card-title>
-          <bal-card-subtitle>Subtitle</bal-card-subtitle>
+          <bal-card-title>
+            <div class="flex gap-normal justify-center align-items-center">
+              <bal-icon
+                tile
+                color="black"
+                svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' focusable='false' aria-hidden='true'><g id='Solid'><rect width='40' height='40' fill='none'/></g><g id='Icon'><path d='M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z' fill='#000d6e'/><path d='M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z' fill='#000d6e'/><rect x='31' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><rect x='6' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><path d='M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z' fill='#6c2273'/><path d='M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z' fill='#b8b2ff'/></g></svg>"
+              ></bal-icon>
+              <span>Angaben zum Versicherungsnehmer/Halter</span>
+            </div>
+          </bal-card-title>
           <bal-card-content>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias magnam dolorum consectetur ea,
@@ -38,16 +62,131 @@
               labore deserunt sunt explicabo.
             </p>
             <bal-field>
-              <bal-field-label>Label</bal-field-label>
+              <bal-field-label>Firma</bal-field-label>
+              <bal-field-hint>Firma</bal-field-hint>
               <bal-field-control>
                 <bal-input placeholder="Placeholder"></bal-input>
+                <bal-button color="secondary">Suchen</bal-button>
               </bal-field-control>
-              <bal-field-message>Message</bal-field-message>
+              <bal-field-message
+                >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer) ein. </bal-field-message
+              >
             </bal-field>
-            <bal-button-group>
-              <bal-button>Button</bal-button>
-              <bal-button>Button</bal-button>
-            </bal-button-group>
+            <bal-field invalid>
+              <bal-field-label>Invalid</bal-field-label>
+              <bal-field-control>
+                <bal-input placeholder="Invalid"></bal-input>
+              </bal-field-control>
+              <bal-field-message
+                >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer) ein. </bal-field-message
+              >
+            </bal-field>
+            <bal-field disabled>
+              <bal-field-label>Disabled</bal-field-label>
+              <bal-field-control>
+                <bal-input placeholder="Disabled"></bal-input>
+              </bal-field-control>
+              <bal-field-message
+                >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer) ein. </bal-field-message
+              >
+            </bal-field>
+            <bal-notification light no-icon class="mt-normal p-small">
+              <div class="flex align-items-center gap-normal justify-content-center">
+                <bal-icon
+                  tile
+                  color="black"
+                  svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' focusable='false' aria-hidden='true'><g id='Solid'><rect width='40' height='40' fill='none'/></g><g id='Icon'><path d='M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z' fill='#000d6e'/><path d='M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z' fill='#000d6e'/><rect x='31' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><rect x='6' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><path d='M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z' fill='#6c2273'/><path d='M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z' fill='#b8b2ff'/></g></svg>"
+                ></bal-icon>
+                <span class="flex-1">Sie konnten Ihre Firma nicht finden?</span>
+                <bal-button color="tertiary-purple">manuell Eingeben</bal-button>
+              </div>
+            </bal-notification>
+          </bal-card-content>
+        </bal-card>
+        <bal-card class="my-normal">
+          <bal-card-title>Wählen Sie das Fahrzeug</bal-card-title>
+          <bal-card-content>
+            <p>Bitte wählen Sie, mit welchen Angaben Sie das Fahrzeug suchen möchten.</p>
+            <bal-segment value="1" expanded>
+              <bal-segment-item value="1" label="Marke / Modell"></bal-segment-item>
+              <bal-segment-item value="2" label="Kontrollschild"></bal-segment-item>
+              <bal-segment-item value="3" label="Typenschein / Stammnummer"></bal-segment-item>
+            </bal-segment>
+            <bal-field class="mt-normal">
+              <bal-field-label>1. Inverkehrsetzung</bal-field-label>
+              <bal-field-control>
+                <bal-date></bal-date>
+              </bal-field-control>
+            </bal-field>
+            <bal-field class="mt-normal">
+              <bal-field-label>Marke</bal-field-label>
+              <bal-field-control>
+                <bal-select>
+                  <bal-select-option value="audi" label="Audi">Audi</bal-select-option>
+                  <bal-select-option value="bmw" label="BMW">BMW</bal-select-option>
+                  <bal-select-option value="mercedes" label="Mercedes">Mercedes</bal-select-option>
+                  <bal-select-option value="volkswagen" label="Volkswagen">Volkswagen</bal-select-option>
+                  <bal-select-option value="volvo" label="Volvo">Volvo</bal-select-option>
+                  <bal-select-option value="porsche" label="Porsche">Porsche</bal-select-option>
+                  <bal-select-option value="ferrari" label="Ferrari">Ferrari</bal-select-option>
+                  <bal-select-option value="lamborghini" label="Lamborghini">Lamborghini</bal-select-option>
+                </bal-select>
+              </bal-field-control>
+            </bal-field>
+            <section class="p-large gap-normal flex">
+              <bal-dropdown placeholder="Leistung" clearable="" inline-label="Leistung" size="small" theme="purple">
+                <bal-option value="All" label="All">All</bal-option>
+                <bal-option value="v100" label="100 PS">100 PS</bal-option>
+                <bal-option value="v140" label="140 PS">140 PS</bal-option>
+                <bal-option value="v165" label="165 PS">165 PS</bal-option>
+                <bal-option value="v210" label="210 PS">210 PS</bal-option>
+              </bal-dropdown>
+              <bal-dropdown
+                value="v140"
+                placeholder="Leistung"
+                inline-label="Leistung"
+                clearable=""
+                size="small"
+                theme="purple"
+              >
+                <bal-option value="All" label="All">All</bal-option>
+                <bal-option value="v100" label="100 PS">100 PS</bal-option>
+                <bal-option value="v140" label="140 PS">140 PS</bal-option>
+                <bal-option value="v165" label="165 PS">165 PS</bal-option>
+                <bal-option value="v210" label="210 PS">210 PS</bal-option>
+              </bal-dropdown>
+            </section>
+
+            <bal-field>
+              <bal-field-label>Label</bal-field-label>
+              <bal-field-control>
+                <bal-checkbox-group>
+                  <bal-checkbox> Apple </bal-checkbox>
+                  <bal-checkbox checked="true"> Pineapple </bal-checkbox>
+                  <bal-checkbox> Orange </bal-checkbox>
+                </bal-checkbox-group>
+              </bal-field-control>
+              <bal-field-message>Field Message</bal-field-message>
+            </bal-field>
+
+            <bal-field>
+              <bal-field-label>Label</bal-field-label>
+              <bal-field-control>
+                <bal-checkbox-group>
+                  <bal-checkbox interface="switch"> Label </bal-checkbox>
+                </bal-checkbox-group>
+              </bal-field-control>
+              <bal-field-message>Field Message</bal-field-message>
+            </bal-field>
+
+            <bal-radio-group value="1">
+              <bal-radio value="1">Label 1</bal-radio>
+              <bal-radio value="2">Label 2</bal-radio>
+              <bal-radio value="3" disabled="true">Disabled</bal-radio>
+              <bal-radio value="4"
+                >Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio
+              >
+            </bal-radio-group>
           </bal-card-content>
         </bal-card>
       </main>
