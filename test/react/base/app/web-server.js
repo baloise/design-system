@@ -1,7 +1,11 @@
-const express = require('express')
-const compression = require('compression')
-const path = require('path')
-const serveIndex = require('serve-index')
+import compression from 'compression'
+import express from 'express'
+import path from 'path'
+import serveIndex from 'serve-index'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 
