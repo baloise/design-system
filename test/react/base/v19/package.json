@@ -1,0 +1,41 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "link": "bash scripts/link.sh",
+    "copy": "bash scripts/copy.sh",
+    "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",
+    "e2e:test": "npm run cy:open",
+    "e2e:server": "npm run start",
+    "cy:install": "cypress install",
+    "cy:open": "cypress open --browser chrome",
+    "cy:start": "node ./web-server.js"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2",
+    "compression": "^1.7.4",
+    "cypress": "~13.6.3",
+    "serve-index": "~1.9.1"
+  }
+}

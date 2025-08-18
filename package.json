@@ -17,8 +17,10 @@
     "registry": "bash registry",
     "changeset": "npx nx run changeset",
     "optimize": "npx nx run-many -t optimize",
-    "angular": "npx nx run create-angular",
-    "angular:start": "npx nx run start-angular"
+    "angular": "npx nx run angular-create",
+    "angular:start": "npx nx run angular-start",
+    "react": "npx nx run react-create",
+    "react:start": "npx nx run react-start"
   },
   "nx": {
     "includedScripts": []
