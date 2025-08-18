@@ -1,0 +1,29 @@
+name: 'Framework Build'
+description: 'Framework Build'
+inputs:
+  framework:
+    description: 'Defines the framework to build (e.g., angular, react)'
+  app:
+    description: 'The specific test application'
+runs:
+  using: 'composite'
+  steps:
+    - name: Create App
+      run: bash build.sh ${{ inputs.app }}
+      working-directory: ./test/${{ inputs.framework }}
+      shell: bash
+
+    - name: Install Cypress
+      run: npm run cy:install
+      working-directory: ./test/${{ inputs.framework }}/${{ inputs.app }}
+      shell: bash
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: ${ inputs.framework }-${{ inputs.app }}
+        path: test/${{ inputs.framework }}/${{ inputs.app }}/src
+
+    - name: Build App
+      run: npm run build
+      working-directory: ./test/${{ inputs.framework }}/${{ inputs.app }}
+      shell: bash
