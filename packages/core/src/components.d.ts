@@ -6167,6 +6167,10 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
+          * Emitted when app is ready and painted.
+         */
+        "onBalAppReady"?: (event: BalAppCustomEvent<void>) => void;
+        /**
           * @default false
          */
         "ready"?: boolean;

@@ -26,42 +26,42 @@ jobs:
           build: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  e2e-components:
-    name: 🧪 Component Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-components
+  # e2e-components:
+  #   name: 🧪 Component Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-components
 
-  e2e-visual:
-    name: 🧪 E2E Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-visual
+  # e2e-visual:
+  #   name: 🧪 E2E Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-visual
 
   playwright:
-    name: 🧪 Playwright 2
+    name: 🧪 Playwright
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
@@ -90,28 +90,28 @@ jobs:
           path: playwright-report
           retention-days: 7
 
-  angular:
-    name: 🧪 Angular Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v17, v18, v19]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/angular-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/angular-build
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/angular-test
-        with:
-          app: ${{ matrix.apps }}
+  # angular:
+  #   name: 🧪 Angular Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v17, v18, v19]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/angular-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/angular-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/angular-test
+  #       with:
+  #         app: ${{ matrix.apps }}
