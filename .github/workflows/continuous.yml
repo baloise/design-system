@@ -61,7 +61,7 @@ jobs:
       - uses: ./.github/workflows/actions/e2e-visual
 
   playwright:
-    name: 🧪 Playwright
+    name: 🧪 Playwright 2
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
