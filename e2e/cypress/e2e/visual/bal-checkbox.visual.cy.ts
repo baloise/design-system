@@ -3,29 +3,25 @@ describe('bal-checkbox', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').testVisual('checkbox-basic-desktop')
-    cy.getByTestId('checked').testVisual('checkbox-checked-desktop')
-    cy.getByTestId('invalid').testVisual('checkbox-invalid-desktop')
-    cy.getByTestId('disabled').testVisual('checkbox-disabled-desktop')
-    cy.getByTestId('flat').testVisual('checkbox-flat-desktop')
-    cy.getByTestId('label-hidden').testVisual('checkbox-label-hidden-desktop')
-    cy.getByTestId('select-button').testVisual('checkbox-select-button-desktop')
-    cy.getByTestId('switch').testVisual('checkbox-switch-desktop')
-    cy.getByTestId('vertical').testVisual('checkbox-vertical-desktop')
-    cy.getByTestId('vertical-on-mobile').testVisual('checkbox-vertical-on-mobile-desktop')
-    cy.getByTestId('long-label').testVisual('checkbox-long-label-desktop', { errorThreshold: 0.3 })
-    cy.getByTestId('long-label-select-button').testVisual('checkbox-long-label-select-button-desktop', {
-      errorThreshold: 0.3,
-    })
-    cy.getByTestId('long-label-checked').testVisual('checkbox-long-label-checked-desktop', { errorThreshold: 0.3 })
-    cy.getByTestId('long-label-select-button-checked').testVisual('checkbox-long-label-select-button-checked-desktop', {
-      errorThreshold: 0.3,
-    })
-
-    cy.platform('tablet')
-    cy.getByTestId('vertical-on-mobile').testVisual('checkbox-vertical-on-mobile-tablet')
+    cy.getByTestId('checkbox-basic').testVisual('checkbox-basic-desktop')
+    cy.getByTestId('checkbox-invalid').testVisual('checkbox-invalid-desktop')
+    cy.getByTestId('checkbox-disabled').testVisual('checkbox-disabled-desktop')
+    cy.getByTestId('checkbox-others').testVisual('checkbox-others-desktop')
+    cy.getByTestId('checkbox-long-label').testVisual('checkbox-long-label-desktop')
+    cy.getByTestId('switch-basic').testVisual('switch-basic-desktop')
+    cy.getByTestId('switch-invalid').testVisual('switch-invalid-desktop')
+    cy.getByTestId('switch-disabled').testVisual('switch-disabled-desktop')
+    cy.getByTestId('switch-others').testVisual('switch-others-desktop')
+    cy.getByTestId('switch-long-label').testVisual('switch-long-label-desktop')
+    cy.getByTestId('group-vertical').testVisual('group-vertical-desktop')
+    cy.getByTestId('group-vertical-on-mobile').testVisual('group-vertical-on-mobile-desktop')
+    cy.getByTestId('button-basic').testVisual('button-basic-desktop')
+    cy.getByTestId('button-invalid').testVisual('button-invalid-desktop')
+    cy.getByTestId('button-disabled').testVisual('button-disabled-desktop')
+    cy.getByTestId('button-long-label').testVisual('button-long-label-desktop')
 
     cy.platform('mobile')
-    cy.getByTestId('vertical-on-mobile').testVisual('checkbox-vertical-on-mobile-mobile')
+    cy.getByTestId('group-vertical').testVisual('group-vertical-mobile')
+    cy.getByTestId('group-vertical-on-mobile').testVisual('group-vertical-on-mobile-mobile')
   })
 })

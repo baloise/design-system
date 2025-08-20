@@ -1,5 +1,5 @@
 import { balBrowser } from '../browser'
-import { config, configFromLocalStorage, configFromSession } from './config'
+import { config, configFromLocalStorage } from './config'
 
 import { BalConfig } from './config.types'
 
@@ -11,11 +11,9 @@ export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   config.reset({
-    ...configFromSession(win),
     ...configFromLocalStorage(win),
     ...userConfig,
     icons: {
-      ...configFromSession(win).icons,
       ...userConfig.icons,
     },
   })

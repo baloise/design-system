@@ -82,6 +82,13 @@
       display: hidden !important
       visibility: hidden !important
 
+// Stay on top
+// --------------------------------------------------
+.bal-nav > .bal-nav-meta-bar
+  &--stay-on-top
+    +mobile
+      z-index: calc(var(--bal-z-index-popup) + 1) !important
+
 // Troubleshooting
 // --------------------------------------------------
 

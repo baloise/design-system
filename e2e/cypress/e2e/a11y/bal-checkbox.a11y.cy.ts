@@ -13,12 +13,12 @@ describe('bal-checkbox', () => {
       })
 
       it('select button', () => {
-        cy.getByTestId('select-button-basic').testA11y()
-        cy.getByTestId('select-button-group').testA11y()
-        cy.getByTestId('select-button-checked').testA11y()
-        cy.getByTestId('select-button-label-hidden').testA11y()
-        // cy.getByTestId('select-button-invalid').testA11y()
-        cy.getByTestId('select-button-disabled').testA11y()
+        cy.getByTestId('button-basic').testA11y()
+        cy.getByTestId('button-group').testA11y()
+        cy.getByTestId('button-checked').testA11y()
+        cy.getByTestId('button-label-hidden').testA11y()
+        cy.getByTestId('button-invalid').testA11y()
+        cy.getByTestId('button-disabled').testA11y()
       })
 
       it('switch basic', () => {
@@ -26,7 +26,7 @@ describe('bal-checkbox', () => {
         cy.getByTestId('switch-group').testA11y()
         cy.getByTestId('switch-checked').testA11y()
         cy.getByTestId('switch-label-hidden').testA11y()
-        // cy.getByTestId('switch-invalid').testA11y()
+        cy.getByTestId('switch-invalid').testA11y()
         cy.getByTestId('switch-disabled').testA11y()
       })
     })

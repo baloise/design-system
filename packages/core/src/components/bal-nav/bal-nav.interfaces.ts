@@ -39,6 +39,8 @@ namespace BalProps {
     htmlTitle?: string
     ariaLabel?: string
     href?: string
+    svg?: string
+    url?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean
     onClick?: (ev: MouseEvent) => void
@@ -52,6 +54,7 @@ namespace BalProps {
     htmlTitle?: string
     ariaLabel?: string
     href?: string
+    rel?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean
     data?: any
@@ -70,10 +73,19 @@ namespace BalEvents {
     label: string
     value?: string
     href?: string
+    rel?: string
     data?: any
     target?: BalProps.BalButtonTarget
   }
 
   export type BalNavItemClickDetail = BalNavClickedItem
-  export type BalNavItemClick = BalInputCustomEvent<BalNavItemClickDetail>
+  export type BalNavItemClick = BalNavCustomEvent<BalNavItemClickDetail>
+
+  export interface BalNavMenuFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavMenuFlyoutElement
+  }
+
+  export type BalNavFlyoutFocusOutDetail = FocusEvent
+  export type BalNavFlyoutFocusOut = BalNavMenuFlyoutCustomEvent<BalNavFlyoutFocusOutDetail>
 }

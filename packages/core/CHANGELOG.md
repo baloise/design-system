@@ -1,5 +1,203 @@
 # Changelog
 
+## 19.5.0
+
+### Minor Changes
+
+- **nav**: add props url and svg to change the default logo of the nav ( [#1766](https://github.com/baloise/design-system/pull/1766))
+
+### Patch Changes
+
+- **popup**: fullscreen mode blocks scrolling on background and bottom padding is removed ( [#1771](https://github.com/baloise/design-system/pull/1771))
+
+- **input**: keep format of vehicle registration number when clicking out of the control ( [#1759](https://github.com/baloise/design-system/pull/1759))
+
+- **pagination**: hide nav buttons and show pagination as disabled to be consistent with the other components ( [#1768](https://github.com/baloise/design-system/pull/1768))
+
+- **icon**: prevent from caching icons and log an error if an icon does not exist in the configuration. Check your app during runtime on the pages where you use icons, if you see an error in the console like:`Icon "${iconName}" not found in design system configuration.` ( [#1770](https://github.com/baloise/design-system/pull/1770))
+
+## 19.4.0
+
+### Minor Changes
+
+- **input**: add vehicle registration number(Stammnummer) mask ( [#1758](https://github.com/baloise/design-system/pull/1758))
+
+### Patch Changes
+
+- **core**: enable custom element hydration for angular and react to reduce render glitches on first component render ( [#1753](https://github.com/baloise/design-system/pull/1753))
+
+- **hint**: fix issue that hint was only sticking to width value of min-width instead of a value between min-width and max-width ( [#1746](https://github.com/baloise/design-system/pull/1746))
+
+## 19.3.0
+
+### Minor Changes
+
+- **nav**: improve focus and keyboard navigation combined with flyout focus redirects ( [#1732](https://github.com/baloise/design-system/pull/1732))
+
+### Patch Changes
+
+- **core**: export all custom event types for react lib ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **select**: sync value after options have changed ( [#1742](https://github.com/baloise/design-system/pull/1742))
+
+- **react**: only deliver esm modules ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **core**: remove type event to work with server rendering frameworks, because they do not have access to the window ( [#1741](https://github.com/baloise/design-system/pull/1741))
+
+- **nav**: fix backdrop issue of bottom bal-nav-meta-bar ( [#1734](https://github.com/baloise/design-system/pull/1734))
+
+## 19.2.0
+
+### Minor Changes
+
+- **carousel**: svg content can now be passed into it instead of file path ( [#1731](https://github.com/baloise/design-system/pull/1731))
+
+- **input**: added basic contract mask and removal of leading zero for contract and basic contract mask. ( [#1725](https://github.com/baloise/design-system/pull/1725))
+
+### Patch Changes
+
+- **modal**: prevent scrolling when opening or closing ( [#1729](https://github.com/baloise/design-system/pull/1729))
+
+- **steps**: remove y-scrollbar on firefox and edge ( [#1728](https://github.com/baloise/design-system/pull/1728))
+
+- **popup**: stop scrolling on focus on hint are leaving it ( [#1729](https://github.com/baloise/design-system/pull/1729))
+
+- **react**: update stencil output target lib ( [#1722](https://github.com/baloise/design-system/pull/1722))
+
+- **list**: only set aria information when changed to avoid endless render cycles ( [#1730](https://github.com/baloise/design-system/pull/1730))
+
+- **radio**: trigger change event on selection with the space key ( [#1721](https://github.com/baloise/design-system/pull/1721))
+
+## 19.1.0
+
+### Minor Changes
+
+- **button**: add balClick event to listen to click events when the button is not disabled ( [#1707](https://github.com/baloise/design-system/pull/1707))
+
+- **hint**: replace deprecated popover element and use popup instead ( [#1684](https://github.com/baloise/design-system/pull/1684))
+
+### Patch Changes
+
+- **core**: Make sure disabling of scrolling also works when using a touchpad in safari ( [#1701](https://github.com/baloise/design-system/pull/1701))
+
+- **popup**: show backdrop over full screen ( [#1701](https://github.com/baloise/design-system/pull/1701))
+
+- **date**: improve focus handling to trigger angular validation after selection ( [#1712](https://github.com/baloise/design-system/pull/1712))
+
+- **input**: bal input event returned a rounded number when the french formatting,comma for a decimal, was used ( [#1696](https://github.com/baloise/design-system/pull/1696))
+
+- **button**: reduce render time by making aria prop mutable for dynamic updates ( [#1716](https://github.com/baloise/design-system/pull/1716))
+
+- **nav**: enhance ref assignment for swiper elements to show navigation controls ( [#1716](https://github.com/baloise/design-system/pull/1716))
+
+- **steps**: remove link styles for steps ( [#1717](https://github.com/baloise/design-system/pull/1717))
+
+## 19.0.1
+
+### Patch Changes
+
+- **radio**: radio can not be unselected ( [#1699](https://github.com/baloise/design-system/pull/1699))
+
+## 19.0.0
+
+### Major Changes
+
+- feat(bal-nav): add rel attribute to nav elements ( [#1669](https://github.com/baloise/design-system/pull/1669))
+
+- **checkbox & radio**: Refactored the checkbox and radio components to improve accessibility (A11y) and align with the upcoming EU Accessibility Act. ( [#1685](https://github.com/baloise/design-system/pull/1685))
+
+  - Remove component bal-checkbox-button, bal-radio-button
+  - Change naming of interface variables select-button to button
+  - Rename prop `grid` to `columns` for the bal-radio-group
+
+  For more details have a look at our Migration Guide to v19.
+
+### Minor Changes
+
+- **tabs**: new property handleAsTabList to control navigation via keyboard to use arrow or either tabulator ( [#1680](https://github.com/baloise/design-system/pull/1680))
+
+- feat(bal-nav): Introduce new navigation aria label and adapt translations ( [#1670](https://github.com/baloise/design-system/pull/1670))
+
+- **hint**: make focused hint more visible, prevent scrolling when opening hint via keyboard space ( [#1667](https://github.com/baloise/design-system/pull/1667))
+
+### Patch Changes
+
+- Update step-button to use a button instead of a link in case there is no href attribute to solve CSP issues ( [#1687](https://github.com/baloise/design-system/pull/1687))
+
+- **react**: support vite based applications ( [#1693](https://github.com/baloise/design-system/pull/1693))
+
+- **brand-icons**: replace damage-parked-car svg with newer one ( [#1676](https://github.com/baloise/design-system/pull/1676))
+
+- **core**: a11y: fix input-slider to display focus state ( [#1665](https://github.com/baloise/design-system/pull/1665))
+
+- **accordion**: Ensure bulletlist collapses at the same time as the other elements within the accordion ( [#1681](https://github.com/baloise/design-system/pull/1681))
+
+## 18.3.0
+
+### Minor Changes
+
+- **icon**: add tile option ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
+- **accordion**: add varaint text button for the trigger element ( [#1664](https://github.com/baloise/design-system/pull/1664))
+
+### Patch Changes
+
+- **icon**: sanitize svg contents ( [#1661](https://github.com/baloise/design-system/pull/1661))
+
+## 18.2.0
+
+### Minor Changes
+
+- **list**: add rel prop to the list item ( [#1654](https://github.com/baloise/design-system/pull/1654))
+
+### Patch Changes
+
+- **select**: reset value when done over props value change ( [#1657](https://github.com/baloise/design-system/pull/1657))
+
+- **tabs**: when tab item changes it will trigger a render of the tabs component ( [#1658](https://github.com/baloise/design-system/pull/1658))
+
+## 18.1.0
+
+### Minor Changes
+
+- **hint**: support keyboard actions: tab to focus, enter/space to open popover ( [#1637](https://github.com/baloise/design-system/pull/1637))
+
+### Patch Changes
+
+- **tabs**: adjust label and sub-label font size for svg version ( [#1649](https://github.com/baloise/design-system/pull/1649))
+
+- **dropdown**: improve placeholde color for the purple variant to improve a11y ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
+- **toast**: adjust toast alignment in container mode ( [#1648](https://github.com/baloise/design-system/pull/1648))
+
+- **segment**: update invalid on child elements ( [#1652](https://github.com/baloise/design-system/pull/1652))
+
+- **select**: select first option as default and value can be reset ( [#1651](https://github.com/baloise/design-system/pull/1651))
+
+- **core**: a11y: highlight slider thumb when navigating with keyboard ( [#1635](https://github.com/baloise/design-system/pull/1635))
+
+- **dropdown**: adjust width for long option labels ( [#1650](https://github.com/baloise/design-system/pull/1650))
+
+## 18.0.1
+
+### Patch Changes
+
+- **dropdown**: change spinner circle background to white ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **list**: make title and aria-label editable on accordion head and move open and close labels to the icon on the right side ( [#1623](https://github.com/baloise/design-system/pull/1623))
+
+- **nav**: add aria labels ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **segment**: add auto invalid option for angular ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **dropdown**: remove hover & active styles for disabled state ( [#1633](https://github.com/baloise/design-system/pull/1633))
+
+- **tabs**: add aria labels ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **tabs**: wrap link list in nav, ul and li elements and tabs with role tablist and tap ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
+- **tabs**: improve a11y with labelledby ( [#1625](https://github.com/baloise/design-system/pull/1625))
+
 ## 18.0.0
 
 ### Major Changes

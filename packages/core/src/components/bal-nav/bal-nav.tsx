@@ -1,25 +1,20 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Listen,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  EventEmitter,
-  Event,
-  Listen,
+  h,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
-import { NavMetaButton } from './models/bal-nav-meta-button'
-import { BalScrollHandler } from '../../utils/scroll'
-import { NavLinkItemObserver } from './bal-nav.types'
+import { balBrowser } from '../../utils/browser'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -28,11 +23,19 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
+import { stopEventBubbling } from '../../utils/form-input'
+import { isDescendant, waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalScrollHandler } from '../../utils/scroll'
+import { sanitizeSvg } from '../../utils/svg'
+import { gatherTabInformation, handleFlyoutFocusOut, handleTabKeyDown } from './bal-nav-focus.util'
 import { i18nNavBars } from './bal-nav.i18n'
-import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
+import { NavLinkItemObserver } from './bal-nav.types'
 import { NavLinkItem } from './models/bal-nav-link-item'
-import { balBrowser } from '../../utils/browser'
-import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
+import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
+import { NavMetaButton } from './models/bal-nav-meta-button'
+import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 
 @Component({
   tag: 'bal-nav',
@@ -422,10 +425,10 @@ export class Nav
               <bal-stack space="auto">
                 {this.linkItems.length > 1 ? (
                   <bal-tabs
-                    spaceless
                     inverted
                     context="meta"
                     value={this.activeMetaLinkValue}
+                    aria-label={i18nNavBars[this.language].mainNavigation}
                     onBalChange={ev => this.onMetaBarTabChange(ev)}
                   >
                     {this.linkItems.map(item =>
@@ -445,23 +448,69 @@ export class Nav
           ) : (
             ''
           )}
+
           {this.isDesktop ? (
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
                 {this.renderLogo()}
-                <bal-tabs context="navigation" accordion spaceless value={this.activeMenuLinkValue}>
+                <bal-tabs
+                  context="navigation"
+                  accordion
+                  value={this.activeMenuLinkValue}
+                  aria-label={i18nNavBars[this.language].navigation}
+                >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
-                    ?.mainLinkItems.map(item =>
+                    ?.mainLinkItems.map((item, index) =>
                       item.render({
                         flyoutId: `${this.navId}-menu-flyout`,
                         onClick: () => this.onMenuBarTabChange(item.value),
+                        onTabPress: (ev: KeyboardEvent) => {
+                          if (this.isFlyoutActive) {
+                            const isBackwards = ev.shiftKey
+                            const info = gatherTabInformation({
+                              activeMetaLinkValue: this.activeMetaLinkValue,
+                              activeMenuLinkValue: this.activeMenuLinkValue,
+                              linkItems: this.linkItems,
+                            })
+
+                            handleTabKeyDown(info, {
+                              el: this.el,
+                              navId: this.navId,
+                              isFlyoutActive: this.isFlyoutActive,
+                              isBackwards,
+                              item,
+                              stopEventBubbling: () => stopEventBubbling(ev),
+                              closeFlyout: () => this.closeFlyout(),
+                            })
+                          }
+                        },
                       }),
                     )}
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout navId={this.navId}>
+                <bal-nav-menu-flyout
+                  navId={this.navId}
+                  aria-label={i18nNavBars[this.language].subNavigation}
+                  onBalFocusOut={(ev: BalEvents.BalNavFlyoutFocusOut) => {
+                    if (this.isFlyoutActive) {
+                      stopEventBubbling(ev)
+                      const info = gatherTabInformation({
+                        activeMetaLinkValue: this.activeMetaLinkValue,
+                        activeMenuLinkValue: this.activeMenuLinkValue,
+                        linkItems: this.linkItems,
+                      })
+
+                      const isBackwards = isDescendant(this.el, ev.detail.relatedTarget)
+
+                      handleFlyoutFocusOut(info, {
+                        el: this.el,
+                        isBackwards,
+                      })
+                    }
+                  }}
+                >
                   <bal-nav-link
                     role="listitem"
                     variant="overview"
@@ -529,7 +578,7 @@ export class Nav
           ''
         )}
         {this.isTouch && this.isFlyoutActive ? (
-          <bal-nav-meta-bar variant="grey" size="normal">
+          <bal-nav-meta-bar stayOnTopOfBackdrop variant="grey" size="normal">
             <bal-stack space="x-small" align="center">
               {this.metaButtons.map(button => button.renderAtTouchBottomMetaBar())}
             </bal-stack>
@@ -599,6 +648,26 @@ export class Nav
 
   renderLogo() {
     const Link = this.logo?.href ? 'a' : this.logo?.clickable ? 'button' : 'div'
+
+    let Logo = <bal-logo animated></bal-logo>
+    const logoImageUrl = this.logo?.url
+    const logoSvg = sanitizeSvg(this.logo?.svg)
+
+    if (logoImageUrl) {
+      Logo = <img height={32} style={{ maxHeight: '32px' }} src={logoImageUrl} alt="Logo" />
+    }
+
+    if (logoSvg) {
+      Logo = (
+        <div
+          innerHTML={logoSvg}
+          role="img"
+          aria-label="Logo"
+          style={{ display: 'flex', height: '32px', maxHeight: '32px', minWidth: '32px' }}
+        ></div>
+      )
+    }
+
     return (
       <Link
         class="bal-nav__logo"
@@ -615,7 +684,7 @@ export class Nav
           })
         }
       >
-        <bal-logo animated></bal-logo>
+        {Logo}
       </Link>
     )
   }

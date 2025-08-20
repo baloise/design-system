@@ -12,6 +12,7 @@ export class TabItem {
   @Element() el!: HTMLElement
 
   @State() isActive = false
+  @State() tabsId?: string = undefined
 
   /**
    * Tells if this route is active and overrides the bal-tabs value property.
@@ -29,9 +30,15 @@ export class TabItem {
   @Prop({ reflect: true }) label = ''
 
   /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop({ reflect: true }) rel: string | undefined
+
+  /**
    * Link to path.
    */
-  @Prop({ reflect: true }) href = ''
+  @Prop({ reflect: true }) href?: string = undefined
 
   /**
    * Specifies where to display the linked URL.
@@ -70,9 +77,9 @@ export class TabItem {
   @Prop() noPanel = false
 
   /**
-   * A11y attributes for the native tab element.
+   * A11y attributes for the native button element.
    */
-  @Prop() aria?: BalProps.BalTabItemAria = undefined
+  @Prop() a11yControls?: string = undefined
 
   /**
    * Sub label for the tab.
@@ -89,8 +96,21 @@ export class TabItem {
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
 
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event() balKeyDown!: EventEmitter<BalEvents.BalTabItemKeyDownDetail>
+
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setTabId(tabsId: string): Promise<void> {
+    this.tabsId = tabsId
   }
 
   /**
@@ -116,6 +136,7 @@ export class TabItem {
       icon: this.icon,
       label: this.label,
       href: this.href,
+      rel: this.rel,
       target: this.target,
       active: this.active,
       disabled: this.disabled,
@@ -124,9 +145,10 @@ export class TabItem {
       passed: false,
       prevent: this.prevent,
       navigate: this.balNavigate,
+      keyDown: this.balKeyDown,
       trackingData: this.inheritAttributes,
       noPanel: this.noPanel,
-      aria: this.aria,
+      a11yControls: this.a11yControls,
       subLabel: this.subLabel,
       svg: this.svg,
     }
@@ -144,8 +166,8 @@ export class TabItem {
           'bal-tab-item--active': this.isActive,
         }}
         role={hasPanel ? 'tabpanel' : undefined}
-        aria-label={hasPanel ? this.label : undefined}
         aria-hidden={noPanelOrInactive ? 'true' : 'false'}
+        aria-labelledby={this.tabsId ? `${this.tabsId}-button-${this.value}` : undefined}
         tabindex={noPanelOrInactive ? '-1' : undefined}
         hidden={noPanelOrInactive ? true : undefined}
       >

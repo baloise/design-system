@@ -6,7 +6,14 @@
 namespace BalProps {
   export type BalInputAutocorrect = 'on' | 'off'
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
-  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number' | 'be-enterprise-number' | 'be-iban'
+  export type BalInputMask =
+    | 'vehicle-registration-number'
+    | 'contract-number'
+    | 'basic-contract-number'
+    | 'claim-number'
+    | 'offer-number'
+    | 'be-enterprise-number'
+    | 'be-iban'
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
   export type BalInputInputType =
     | 'button'

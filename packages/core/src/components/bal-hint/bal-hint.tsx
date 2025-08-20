@@ -1,19 +1,20 @@
 import {
   Component,
-  Host,
-  h,
-  Method,
-  State,
-  Prop,
+  ComponentInterface,
   Element,
   FunctionalComponent,
-  ComponentInterface,
+  h,
+  Host,
+  Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { preventDefault } from '../bal-select/utils/utils'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
 import { BalScrollHandler } from '../../utils/scroll'
-import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-hint',
@@ -22,11 +23,12 @@ import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoi
 export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement
 
-  private popoverElement!: HTMLBalPopoverElement
+  private popupElement!: HTMLBalPopupElement
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
 
   private bodyScrollHandler = new BalScrollHandler()
+  private componentId = `bal-hint-${hintIds++}`
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
@@ -106,11 +108,8 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
    */
   @Method()
   async present(): Promise<void> {
-    if (this.popoverElement) {
-      this.popoverElement.present()
-    }
-    if (this.isMobile) {
-      this.bodyScrollHandler.disable()
+    if (this.popupElement) {
+      this.popupElement.present()
     }
     this.isActive = true
   }
@@ -120,17 +119,22 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
    */
   @Method()
   async dismiss(): Promise<void> {
-    if (this.popoverElement) {
-      this.popoverElement.dismiss()
-    }
-    if (this.isMobile) {
-      this.bodyScrollHandler.enable()
+    if (this.popupElement) {
+      this.popupElement.dismiss()
     }
     this.isActive = false
   }
 
-  private onPopoverChange = (ev: CustomEvent<boolean>) => {
+  private onPopupChange = (ev: CustomEvent<boolean>) => {
     this.isActive = ev.detail
+
+    if (this.isMobile) {
+      if (this.isActive) {
+        this.bodyScrollHandler.disable()
+      } else {
+        this.bodyScrollHandler.enable()
+      }
+    }
     preventDefault(ev)
   }
 
@@ -146,21 +150,24 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     const elContent = block.element('content')
     const elButtons = elContent.element('buttons')
 
-    const padding = this.isMobile ? 0 : 8
-    const offsetY = this.isMobile ? 0 : 16
-
     const TriggerIcon: FunctionalComponent = () => {
       return (
         <bal-icon
           class={{
             ...elIcon.class(),
           }}
+          bal-popup={this.componentId}
           data-testid="bal-hint-trigger"
-          bal-popover-trigger
           aria-haspopup="true"
           role="button"
           name="info-circle"
-          onClick={() => this.toggle()}
+          tabindex={0}
+          onKeyDown={event => {
+            if (isEnterKey(event) || isSpaceKey(event)) {
+              event.preventDefault()
+              this.toggle()
+            }
+          }}
         ></bal-icon>
       )
     }
@@ -188,49 +195,25 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
       )
     }
 
-    const MobileOverlay: FunctionalComponent = () => {
-      const elOverlay = block.element('overlay')
+    const Popup: FunctionalComponent = () => {
       return (
-        <div
-          class={{
-            ...elOverlay.class(),
-          }}
-        >
+        <div class={{ ...block.element('popup').class() }}>
           <TriggerIcon></TriggerIcon>
-          <div
-            class={{
-              ...elOverlay.element('content').class(),
-              ...elOverlay.element('content').modifier('active').class(this.isActive),
-            }}
+          <bal-popup
+            id={this.componentId}
+            placement="right"
+            ref={el => (this.popupElement = el as HTMLBalPopupElement)}
+            onBalChange={this.onPopupChange}
+            variant={this.isMobile ? 'fullscreen' : 'popover'}
+            offset={this.isMobile ? 0 : 16}
           >
-            <HintContent></HintContent>
-          </div>
-        </div>
-      )
-    }
-
-    const Popover: FunctionalComponent = () => {
-      return (
-        <div class={{ ...block.element('popover').class() }}>
-          <bal-popover
-            hint
-            position="right"
-            offsetX={0}
-            offsetY={offsetY}
-            padding={padding}
-            ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
-            onBalChange={this.onPopoverChange}
-          >
-            <TriggerIcon></TriggerIcon>
-            <bal-popover-content color="grey">
+            <bal-popup-content>
               <HintContent></HintContent>
-            </bal-popover-content>
-          </bal-popover>
+            </bal-popup-content>
+          </bal-popup>
         </div>
       )
     }
-
-    const HintElement = this.isMobile ? MobileOverlay : Popover
 
     return (
       <Host
@@ -238,8 +221,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           ...block.class(),
         }}
       >
-        <HintElement></HintElement>
-
+        <Popup></Popup>
         <div ref={el => (this.slotWrapperEl = el)} style={{ display: 'none' }}>
           <slot></slot>
         </div>
@@ -247,3 +229,5 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     )
   }
 }
+
+let hintIds = 0

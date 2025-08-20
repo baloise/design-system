@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-core",
-  "version": "18.0.0",
+  "version": "19.5.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,15 +28,16 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@baloise/ds-styles": "18.0.0",
-    "@baloise/ds-icons": "18.0.0",
+    "@baloise/ds-styles": "19.5.0",
+    "@baloise/ds-icons": "19.5.0",
     "@baloise/web-app-utils": "3.15.0",
     "@floating-ui/dom": "~1.6.3",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "4.23.0",
+    "@stencil/core": "4.35.1",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "filesize.js": "~2.0.0",
+    "dompurify": "~3.2.4",
     "lodash.camelcase": "~4.3.0",
     "lodash.isempty": "~4.4.0",
     "lodash.isnan": "~3.0.2",
@@ -53,9 +54,9 @@
     "@baloise/output-target-angular": "0.0.0",
     "@baloise/output-target-react": "0.0.0",
     "@baloise/output-target-web": "0.0.0",
-    "@baloise/ds-maps": "18.0.0",
-    "@baloise/ds-brand-icons": "18.0.0",
-    "@baloise/ds-favicons": "18.0.0",
+    "@baloise/ds-maps": "19.5.0",
+    "@baloise/ds-brand-icons": "19.5.0",
+    "@baloise/ds-favicons": "19.5.0",
     "compression": "~1.7.4",
     "express": "~4.18.2",
     "serve-index": "~1.9.1"

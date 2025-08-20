@@ -1,13 +1,13 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Canvas, Markdown, Meta } from '@storybook/blocks'
 import {
   Banner,
+  Footer,
+  InfoQuote,
   Lead,
+  LinkCard,
+  LinkCards,
   PlaygroundBar,
   StoryHeading,
-  InfoQuote,
-  Footer,
-  LinkCards,
-  LinkCard,
 } from '../../../.storybook/blocks'
 import * as InputStories from './bal-input.stories'
 
@@ -55,6 +55,14 @@ Combine the component with the `bal-field` components to add a label, validation
 <StoryHeading of={InputStories.ContractNumberInput}></StoryHeading>
 
 <Canvas of={InputStories.ContractNumberInput} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.VehicleRegistrationNumberInput}></StoryHeading>
+
+This is a dedicated mask for vehicle registration numbers (Stammnummer).
+
+<Canvas of={InputStories.VehicleRegistrationNumberInput} />
 
 {/* ------------------------------------------------------ */}
 

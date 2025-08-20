@@ -12,71 +12,226 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <section data-testid="basic">
+        <h1 class="title">checkbox basic</h1>
+        <section data-testid="checkbox-basic">
           <bal-checkbox>Label</bal-checkbox>
-        </section>
-        <br />
-        <br />
-        <section data-testid="checked">
+          <bal-checkbox hovered>Hovered</bal-checkbox>
+          <bal-checkbox pressed>Pressed</bal-checkbox>
+          <br />
           <bal-checkbox checked>Checked</bal-checkbox>
+          <bal-checkbox checked hovered>Hovered</bal-checkbox>
+          <bal-checkbox checked pressed>Pressed</bal-checkbox>
         </section>
         <br />
         <br />
-        <section data-testid="invalid">
-          <bal-checkbox invalid>Invalid</bal-checkbox>
+        <h1 class="title">checkbox invalid</h1>
+        <section data-testid="checkbox-invalid">
+          <bal-checkbox-group>
+            <bal-checkbox invalid>Label</bal-checkbox>
+            <bal-checkbox invalid hovered>Hovered</bal-checkbox>
+            <bal-checkbox invalid pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
           <br />
-          <bal-checkbox invalid checked>Invalid checked</bal-checkbox>
+          <bal-checkbox-group>
+            <bal-checkbox invalid checked>Checked</bal-checkbox>
+            <bal-checkbox invalid checked hovered>Hovered</bal-checkbox>
+            <bal-checkbox invalid checked pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
         </section>
         <br />
         <br />
-        <section data-testid="disabled">
-          <bal-checkbox disabled>Disabled</bal-checkbox>
+        <h1 class="title">checkbox disabled</h1>
+        <section data-testid="checkbox-disabled">
+          <bal-checkbox-group>
+            <bal-checkbox disabled>Label</bal-checkbox>
+            <bal-checkbox disabled hovered>Hovered</bal-checkbox>
+            <bal-checkbox disabled pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
           <br />
-          <bal-checkbox disabled checked>Disabled checked</bal-checkbox>
+          <bal-checkbox-group>
+            <bal-checkbox disabled checked>Checked</bal-checkbox>
+            <bal-checkbox disabled checked hovered>Hovered</bal-checkbox>
+            <bal-checkbox disabled checked pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
         </section>
         <br />
         <br />
-        <section data-testid="flat">
-          <bal-checkbox flat>Flat</bal-checkbox>
+        <h1 class="title">checkbox other states</h1>
+        <section data-testid="checkbox-others">
+          <bal-checkbox flat checked>Flat</bal-checkbox>
+          <br />
+          <bal-checkbox checked label-hidden>Label Hidden</bal-checkbox>
+          <br />
+          <bal-checkbox checked non-submit>Non Submit</bal-checkbox>
         </section>
         <br />
         <br />
-        <section data-testid="label-hidden">
-          <bal-checkbox label-hidden>Label Hidden</bal-checkbox>
+        <h1 class="title">checkbox long labels</h1>
+        <section data-testid="checkbox-long-label">
+          <bal-checkbox
+            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of
+            <a class="link" target="_blank" href="/components/bal-checkbox/test/bal-checkbox.visual.html">
+              Lorem Ipsum
+            </a>
+          </bal-checkbox>
         </section>
         <br />
         <br />
-        <section data-testid="readonly">
-          <bal-checkbox readonly>Readonly</bal-checkbox>
+        <hr />
+        <h1 class="title">switch basic</h1>
+        <section data-testid="switch-basic">
+          <bal-checkbox interface="switch">Label</bal-checkbox>
+          <bal-checkbox interface="switch" hovered>Hovered</bal-checkbox>
+          <bal-checkbox interface="switch" pressed>Pressed</bal-checkbox>
+          <br />
+          <bal-checkbox interface="switch" checked>Checked</bal-checkbox>
+          <bal-checkbox interface="switch" checked hovered>Hovered</bal-checkbox>
+          <bal-checkbox interface="switch" checked pressed>Pressed</bal-checkbox>
         </section>
         <br />
         <br />
-        <section data-testid="select-button">
-          <bal-checkbox interface="select-button">Select Button</bal-checkbox>
+        <h1 class="title">switch invalid</h1>
+        <section data-testid="switch-invalid">
+          <bal-checkbox-group interface="switch">
+            <bal-checkbox invalid>Label</bal-checkbox>
+            <bal-checkbox invalid hovered>Hovered</bal-checkbox>
+            <bal-checkbox invalid pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
           <br />
-          <br />
-          <bal-checkbox interface="select-button" checked>Select Button checked</bal-checkbox>
-          <br />
-          <br />
-          <bal-checkbox interface="select-button" disabled>Select Button disabled</bal-checkbox>
-          <br />
-          <br />
-          <bal-checkbox interface="select-button" checked disabled>Select Button checked disabled</bal-checkbox>
+          <bal-checkbox-group interface="switch">
+            <bal-checkbox invalid checked>Checked</bal-checkbox>
+            <bal-checkbox invalid checked hovered>Hovered</bal-checkbox>
+            <bal-checkbox invalid checked pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
         </section>
         <br />
         <br />
-        <section data-testid="switch">
-          <bal-checkbox interface="switch">Switch</bal-checkbox>
+        <h1 class="title">switch disabled</h1>
+        <section data-testid="switch-disabled">
+          <bal-checkbox-group interface="switch">
+            <bal-checkbox disabled>Label</bal-checkbox>
+            <bal-checkbox disabled hovered>Hovered</bal-checkbox>
+            <bal-checkbox disabled pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
           <br />
-          <bal-checkbox interface="switch" checked>Switch checked</bal-checkbox>
-          <br />
-          <bal-checkbox interface="switch" disabled>Switch disabled</bal-checkbox>
-          <br />
-          <bal-checkbox interface="switch" checked disabled>Switch checked disabled</bal-checkbox>
+          <bal-checkbox-group interface="switch">
+            <bal-checkbox disabled checked>Checked</bal-checkbox>
+            <bal-checkbox disabled checked hovered>Hovered</bal-checkbox>
+            <bal-checkbox disabled checked pressed>Pressed</bal-checkbox>
+          </bal-checkbox-group>
         </section>
         <br />
         <br />
-        <section data-testid="vertical">
+        <h1 class="title">switch other states</h1>
+        <section data-testid="switch-others">
+          <bal-checkbox interface="switch" flat checked>Flat</bal-checkbox>
+          <br />
+          <bal-checkbox interface="switch" checked label-hidden>Label Hidden</bal-checkbox>
+          <br />
+          <bal-checkbox interface="switch" checked non-submit>Non Submit</bal-checkbox>
+        </section>
+        <br />
+        <br />
+        <h1 class="title">switch long labels</h1>
+        <section data-testid="switch-long-label">
+          <bal-checkbox interface="switch">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of
+            <a class="link" target="_blank" href="/components/bal-checkbox/test/bal-checkbox.visual.html">
+              Lorem Ipsum
+            </a>
+          </bal-checkbox>
+        </section>
+        <br />
+        <br />
+
+        <hr />
+        <h1 class="title">buttons basic</h1>
+        <section data-testid="button-basic">
+          <bal-checkbox interface="button">Button</bal-checkbox>
+          <bal-checkbox interface="button" hovered>Button</bal-checkbox>
+          <bal-checkbox interface="button" pressed>Button</bal-checkbox>
+          <br />
+          <br />
+          <bal-checkbox interface="button" checked>Button</bal-checkbox>
+          <bal-checkbox interface="button" checked hovered>Button</bal-checkbox>
+          <bal-checkbox interface="button" checked pressed>Button</bal-checkbox>
+        </section>
+        <br />
+        <br />
+        <h1 class="title">buttons invalid</h1>
+        <section data-testid="button-invalid">
+          <bal-checkbox-group interface="button">
+            <bal-checkbox invalid>Button</bal-checkbox>
+            <bal-checkbox invalid hovered>Button</bal-checkbox>
+            <bal-checkbox invalid pressed>Button</bal-checkbox>
+          </bal-checkbox-group>
+          <br />
+          <br />
+          <bal-checkbox-group interface="button">
+            <bal-checkbox invalid checked>Button</bal-checkbox>
+            <bal-checkbox invalid checked hovered>Button</bal-checkbox>
+            <bal-checkbox invalid checked pressed>Button</bal-checkbox>
+          </bal-checkbox-group>
+        </section>
+        <br />
+        <br />
+        <h1 class="title">buttons disabled</h1>
+        <section data-testid="button-disabled">
+          <bal-checkbox-group interface="button">
+            <bal-checkbox disabled>Button</bal-checkbox>
+            <bal-checkbox disabled hovered>Button</bal-checkbox>
+            <bal-checkbox disabled pressed>Button</bal-checkbox>
+          </bal-checkbox-group>
+          <br />
+          <br />
+          <bal-checkbox-group interface="button">
+            <bal-checkbox disabled checked>Button</bal-checkbox>
+            <bal-checkbox disabled checked hovered>Button</bal-checkbox>
+            <bal-checkbox disabled checked pressed>Button</bal-checkbox>
+          </bal-checkbox-group>
+        </section>
+        <br />
+        <br />
+        <h1 class="title">buttons long labels</h1>
+        <section data-testid="button-long-label">
+          <bal-checkbox interface="button">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of
+            <a class="link" target="_blank" href="/components/bal-checkbox/test/bal-checkbox.visual.html">
+              Lorem Ipsum
+            </a>
+          </bal-checkbox>
+          <bal-checkbox interface="button" checked>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of
+            <a class="link" target="_blank" href="/components/bal-checkbox/test/bal-checkbox.visual.html">
+              Lorem Ipsum
+            </a>
+          </bal-checkbox>
+        </section>
+        <br />
+        <br />
+        <hr />
+        <h1 class="title">group vertical</h1>
+        <section data-testid="group-vertical">
           <bal-field>
             <bal-field-label>Vertical</bal-field-label>
             <bal-field-control>
@@ -91,7 +246,8 @@
         </section>
         <br />
         <br />
-        <section data-testid="vertical-on-mobile">
+        <h1 class="title">group vertical on mobile</h1>
+        <section data-testid="group-vertical-on-mobile">
           <bal-field>
             <bal-field-label>Vertical On Mobile</bal-field-label>
             <bal-field-control>
@@ -103,46 +259,6 @@
             </bal-field-control>
             <bal-field-message color="hint">Field Message</bal-field-message>
           </bal-field>
-        </section>
-        <section data-testid="long-label">
-          <bal-checkbox
-            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</bal-checkbox
-          >
-        </section>
-        <section data-testid="long-label-select-button">
-          <bal-checkbox interface="select-button"
-            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</bal-checkbox
-          >
-        </section>
-        <section data-testid="long-label-checked">
-          <bal-checkbox checked
-            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</bal-checkbox
-          >
-        </section>
-        <section data-testid="long-label-select-button-checked">
-          <bal-checkbox checked interface="select-button"
-            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</bal-checkbox
-          >
         </section>
       </main>
     </bal-doc-app>

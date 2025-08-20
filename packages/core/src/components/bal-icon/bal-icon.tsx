@@ -1,16 +1,20 @@
-import { Component, h, Host, Method, Prop, State } from '@stencil/core'
-import upperFirst from 'lodash.upperfirst'
+import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash.camelcase'
+import upperFirst from 'lodash.upperfirst'
 import { BEM } from '../../utils/bem'
-import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
+import { sanitizeSvg } from '../../utils/svg'
 
 @Component({
   tag: 'bal-icon',
   styleUrl: 'bal-icon.sass',
 })
-export class Icon implements BalConfigObserver, BalElementStateInfo {
+export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentInterface {
   @State() icons: BalIcons = defaultConfig.icons
+  @State() svgContent = ''
+  @State() innerColor = ''
+  @State() innerSize = ''
 
   /**
    * PUBLIC API
@@ -21,11 +25,19 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * Name of the baloise icon.
    */
   @Prop({ reflect: true, mutable: true }) name = ''
+  @Watch('name')
+  nameChanged() {
+    this.generateSvgContent(this.name)
+  }
 
   /**
    * Svg content.
    */
   @Prop() svg = ''
+  @Watch('svg')
+  svgChanged() {
+    this.generateSvgContent(this.name)
+  }
 
   /**
    * Defines the size of the icon.
@@ -36,6 +48,18 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * The theme type of the button.
    */
   @Prop() color: BalProps.BalIconColor = ''
+  @Prop() colorHovered: BalProps.BalIconColor = ''
+  @Prop() colorPressed: BalProps.BalIconColor = ''
+
+  /**
+   * If `true` the icon acts as a tile with a background color.
+   */
+  @Prop() tile = false
+
+  /**
+   * If `true` the icon acts as a tile with a background color. Default is purple
+   */
+  @Prop() tileColor: BalProps.BalIconTileColor = ''
 
   /**
    * If `true` the icon has display inline style
@@ -78,6 +102,15 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
   @Prop() pressed = false
 
   /**
+   * LIFE CYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    this.generateSvgContent(this.name)
+  }
+
+  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -89,6 +122,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.icons = state.icons
+    this.generateSvgContent(this.name)
   }
 
   /**
@@ -96,8 +130,9 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * ------------------------------------------------------
    */
 
-  private svgContent = (iconName: string) => {
+  private generateSvgContent = (iconName: string) => {
     const hasIcons = Object.keys(this.icons).length > 0
+
     if (hasIcons && iconName && iconName.length > 0) {
       // We are doing this to avoid breaking change.
       if (iconName.startsWith('alert')) {
@@ -108,14 +143,31 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
       }
       const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(iconName))}`]
       if (icon) {
-        return icon
+        this.svgContent = icon
+        return
+      } else {
+        console.error(
+          `Icon "${iconName}" not found in design system configuration.`,
+          '\n\nCheck out the documentation on how to import icons during initialization.',
+          '\nhttps://design.baloise.dev/?path=/docs/components-data-display-icon--documentation&globals=framework:angular#import-during-initialization',
+        )
       }
     }
 
-    return this.svg || ''
+    this.svgContent = sanitizeSvg(this.svg)
   }
 
   private parseColor() {
+    if (this.colorHovered && this.hovered) {
+      return this.colorHovered
+    }
+    if (this.colorPressed && this.pressed) {
+      return this.colorPressed
+    }
+    if (this.colorHovered && this.colorPressed) {
+      return this.color
+    }
+
     if (!!this.disabled) {
       return 'grey'
     }
@@ -130,7 +182,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
       }
     }
 
-    if (this.color !== 'auto') {
+    if (this.color !== 'auto' && (this.color === 'primary' || this.color === '')) {
       if (this.pressed) {
         return 'primary-dark'
       } else if (this.hovered) {
@@ -170,13 +222,14 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
   render() {
     const color = this.parseColor()
     const block = BEM.block('icon')
-    const svgContent = this.svgContent(this.name)
 
     return (
       <Host
         aria-hidden="true"
         class={{
           ...block.class(),
+          ...block.modifier('tile').class(this.tile),
+          ...block.modifier(`tile-color-${this.tileColor}`).class(this.tile && !!this.tileColor),
           ...block.modifier('is-inverted').class(this.inverted),
           ...block.modifier('is-inline').class(this.inline),
           ...block.modifier('shadow').class(this.shadow),
@@ -188,9 +241,10 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
           class={{
             ...block.element('inner').class(),
             ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
+            ...block.element('inner').modifier('tile').class(this.tile),
             ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
-          innerHTML={svgContent}
+          innerHTML={this.svgContent}
         ></div>
       </Host>
     )

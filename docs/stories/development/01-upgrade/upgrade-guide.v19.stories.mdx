@@ -1,0 +1,175 @@
+import { Markdown, Meta } from '@storybook/addon-docs'
+import {
+  AngularFramework,
+  Banner,
+  Code,
+  CodeSandbox,
+  CssTypographyColors,
+  DiffSource,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
+  LinkCard,
+  LinkCards,
+  NotAngularFramework,
+  PackageTable,
+  ReactFramework,
+  WarningQuote,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v19" />
+
+<Banner label="Updating to v19" section="Development/Upgrade Guides" />
+
+## Overview
+
+Here is an overview of the breaking changes of the newly introduced version 18:
+
+- **Checkbox & Radio Adjustments due to A11y:**
+  - Remove component bal-checkbox-button, bal-radio-button
+  - Change naming of interface variables
+  - Rename prop `grid` to `columns` for the bal-radio-group
+
+## Checkbox & Radio Adjustments
+
+Refactored the checkbox and radio components to improve accessibility (A11y) and align with the upcoming EU Accessibility Act.
+
+### Why the Change?
+
+The breaking changes to the checkbox and radio components were introduced to improve accessibility (A11y), ensuring better HTML structure
+and enhanced screen reader support. These updates align with the upcoming EU Accessibility Act, which mandates higher accessibility
+standards for digital products. By making these adjustments, we aim to provide a more inclusive experience for all users
+while adhering to legal requirements and modern accessibility best practices.
+
+### How to Upgrade
+
+The `<bal-checkbox-button>` and `<bal-radio-button>` component has been removed.
+
+To migrate replace the -button component with the `<bal-checkbox>` or `<bal-radio>` component as described below.
+
+The `bal-check`, `bal-switch`, and `bal-radio-icon` components are used to display the checkbox or radio icon.
+They are simply icons and do not replace the standard components checkbox or radio.
+Therefore they are only in combination with the **tile interface**.
+
+#### Checkbox Button to Tile
+
+<DiffSource
+  code={`-   <bal-checkbox-button>
++   <bal-checkbox value="1" name="checkbox-example" interface="tile">
+      <bal-stack>
+        <bal-content>
+          <bal-label>Only with label</bal-label>
+        </bal-content>
+-        <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
++        <bal-check></bal-check> <!-- OR <bal-switch></bal-switch> -->
+        <bal-label>Only with label</bal-label>
+      </bal-stack>
+-   </bal-checkbox-button>
++   </bal-checkbox>`}
+/>
+
+When the checkbox-button is used in a group, it can be used like this:
+
+<DiffSource
+  code={`- <bal-checkbox-group>
++ <bal-checkbox-group interface="tile">
+-   <bal-checkbox-button>
++   <bal-checkbox name="checkbox-example" value="1">
+      <bal-stack>
+        <bal-content>
+          <bal-label>Only with label</bal-label>
+        </bal-content>
+-        <bal-checkbox label-hidden="true" name="checkbox-example" value="1"></bal-checkbox>
++        <bal-check></bal-check> <!-- OR <bal-switch></bal-switch> -->
+        <bal-label>Only with label</bal-label>
+      </bal-stack>
+-   </bal-checkbox-button>
++   </bal-checkbox>
+  </bal-checkbox-group>`}
+/>
+
+#### Radio Button to Tile
+
+The radio-button should always be used in a group.
+
+<DiffSource
+  code={`- <bal-radio-group>
++ <bal-radio-group interface="tile">
+-   <bal-radio-button>
++   <bal-radio name="radio-example" value="1">
+      <bal-stack>
+        <bal-content>
+          <bal-label>Only with label</bal-label>
+        </bal-content>
+-        <bal-radio label-hidden="true" name="radio-example" value="1"></bal-radio>
++        <bal-radio-icon></bal-radio-icon>
+        <bal-label>Only with label</bal-label>
+      </bal-stack>
+-   </bal-radio-button>
++   </bal-radio>
+  </bal-radio-group>`}
+/>
+
+#### Select-Button Interfaces
+
+The `interface` has been renamed from `select-button` to `button`.
+
+For the checkbox component:
+
+<DiffSource
+  code={`- <bal-checkbox interface="select-button">
++ <bal-checkbox interface="button">
+    Label
+  </bal-checkbox>`}
+/>
+
+Or for the checkbox group component:
+
+<DiffSource
+  code={`- <bal-checkbox-group interface="select-button">
++ <bal-checkbox-group interface="button">
+    <bal-checkbox checked="true">
+        Label
+    </bal-checkbox>
+    <bal-checkbox>
+        Label
+    </bal-checkbox>
+  </bal-checkbox-group>`}
+/>
+
+Or for the radio component:
+
+<DiffSource
+  code={`- <bal-radio-group interface="select-button">
++ <bal-radio-group interface="button">
+    <bal-radio checked="true">
+        Label
+    </bal-radio>
+    <bal-radio>
+        Label
+    </bal-radio>
+  </bal-radio-group>`}
+/>
+
+#### Prop `grid` Renamed to `columns`
+
+The prop `grid` has been renamed to `columns` for the `<bal-radio-group>` component.
+
+<DiffSource
+  code={`- <bal-radio-group interface="tile" grid="3">
++ <bal-radio-group interface="tile" columns="3">
+    <bal-radio checked="true">
+        Label
+    </bal-radio>
+    <bal-radio>
+        Label
+    </bal-radio>
+  </bal-radio-group>`}
+/>
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

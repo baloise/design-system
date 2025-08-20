@@ -1,17 +1,17 @@
 import {
   Component,
-  h,
-  Prop,
-  Host,
-  Event,
-  EventEmitter,
   ComponentInterface,
   Element,
-  State,
+  Event,
+  EventEmitter,
+  h,
+  Host,
   Listen,
+  Prop,
+  State,
 } from '@stencil/core'
-import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { ariaBooleanToString } from '../../utils/aria'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rOnLoad } from '../../utils/helpers'
 
 @Component({
@@ -153,7 +153,27 @@ export class Button implements ComponentInterface {
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() aria?: BalProps.BalButtonAria = undefined
+  @Prop() a11yControls?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yTitle?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yLabel?: string = undefined
+
+  /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() a11yHaspopup?: string = undefined
+
+  /**
+   * Emitted when the link element has clicked.
+   */
+  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
 
   /**
    * Emitted when the link element has clicked.
@@ -185,11 +205,6 @@ export class Button implements ComponentInterface {
 
   componentDidLoad(): void {
     rOnLoad(() => (this.isLargestContentPaintDone = true))
-    if (this.el.getAttribute('bal-popup') && !this.aria?.haspopup) {
-      this.aria = {
-        haspopup: 'true',
-      }
-    }
   }
 
   componentWillLoad() {
@@ -201,6 +216,10 @@ export class Button implements ComponentInterface {
       'tabindex',
       'aria-haspopup',
     ])
+
+    if (this.el.hasAttribute('bal-popup') && !this.a11yHaspopup) {
+      this.a11yHaspopup = 'true'
+    }
   }
   componentDidRender() {
     this.balDidRender.emit()
@@ -273,8 +292,12 @@ export class Button implements ComponentInterface {
   }
 
   private onClick = (ev: MouseEvent) => {
-    if (this.href !== undefined) {
-      this.balNavigate.emit(ev)
+    if (!this.disabled) {
+      this.balClick.emit(ev)
+
+      if (this.href !== undefined) {
+        this.balNavigate.emit(ev)
+      }
     }
   }
 
@@ -309,11 +332,11 @@ export class Button implements ComponentInterface {
     }
 
     const ariaAttributes = {
-      'title': this.aria?.title || this.inheritAttributes['title'],
+      'title': this.a11yTitle || this.inheritAttributes['title'],
       'aria-label':
-        this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
-      'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
-      'aria-haspopup': this.aria?.haspopup || this.inheritAttributes['aria-haspopup'],
+        this.a11yLabel || this.inheritAttributes['aria-label'] || this.a11yTitle || this.inheritAttributes['title'],
+      'aria-controls': this.a11yControls || this.inheritAttributes['aria-controls'],
+      'aria-haspopup': this.a11yHaspopup || this.inheritAttributes['aria-haspopup'],
     }
 
     return (

@@ -1,18 +1,20 @@
 import {
   Component,
   ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Method,
-  Element,
   Prop,
-  Event,
-  EventEmitter,
   State,
+  Watch,
 } from '@stencil/core'
+import { sanitizeSvg } from 'packages/core/src/utils/svg'
+import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { rOnLoad, waitAfterFramePaint } from '../../../utils/helpers'
-import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { toKebabCase } from '../../../utils/string'
 
 @Component({
@@ -26,6 +28,7 @@ export class CarouselItem implements ComponentInterface {
 
   @State() isOnLoadEventDone = false
   @State() containerId = ''
+  @State() svgContent = ''
 
   /**
    * Src path to the image
@@ -36,6 +39,15 @@ export class CarouselItem implements ComponentInterface {
    * Label of the slide which will be used for pagination tabs
    */
   @Prop({ reflect: true }) label = ''
+
+  /**
+   * Svg content.
+   */
+  @Prop() svg = ''
+  @Watch('svg')
+  svgChanged() {
+    this.generateSvgContent()
+  }
 
   /**
    * @deprecated
@@ -108,6 +120,10 @@ export class CarouselItem implements ComponentInterface {
    * ------------------------------------------------------
    */
 
+  connectedCallback(): void {
+    this.generateSvgContent()
+  }
+
   componentDidLoad(): void {
     rOnLoad(() => {
       this.isOnLoadEventDone = true
@@ -130,6 +146,12 @@ export class CarouselItem implements ComponentInterface {
   async getContainerId(): Promise<void> {
     const parentEl = this.el.closest('bal-carousel') as HTMLBalCarouselElement
     this.containerId = await parentEl.getContainerId()
+  }
+
+  private generateSvgContent = () => {
+    if (this.svg !== undefined && this.svg.length > 0) {
+      this.svgContent = sanitizeSvg(this.svg)
+    }
   }
 
   private onClick = (ev: MouseEvent) => {
@@ -206,6 +228,8 @@ export class CarouselItem implements ComponentInterface {
               src={this.src}
               {...this.imageInheritAttributes}
             />
+          ) : this.isOnLoadEventDone && this.svgContent !== undefined ? (
+            <div class={{ ...image.class() }} innerHTML={this.svgContent}></div>
           ) : (
             ''
           )}

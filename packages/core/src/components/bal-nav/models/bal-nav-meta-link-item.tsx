@@ -38,6 +38,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
           open={isSelected}
           link={this.mainLinkItems.length > 0 ? false : this.isLink}
           href={this.href}
+          rel={this.rel}
           target={this.target}
           onClick={ev => this.onAccordionClick(ev)}
         ></AccordionButton>
@@ -81,9 +82,10 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     if (this.isLink) {
       return (
         <bal-tab-item
-          aria={{ controls: context.flyoutId }}
+          a11yControls={context.flyoutId}
           label={this.label}
           value={this.value}
+          rel={this.rel}
           href={this.href}
           target={this.target}
           no-panel
@@ -93,7 +95,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
 
     return (
       <bal-tab-item
-        aria={{ controls: context.flyoutId }}
+        a11yControls={context.flyoutId}
         label={this.label}
         value={this.value}
         no-panel

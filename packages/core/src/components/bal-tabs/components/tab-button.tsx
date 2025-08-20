@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { ariaBooleanToString } from '../../../utils/aria'
 import { BEM } from '../../../utils/bem'
+import { toKebabCase } from '../../../utils/string'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'
-import { toKebabCase } from 'packages/core/src/utils/string'
-import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 
 export interface TabButtonProps {
   item: BalTabOption
@@ -81,7 +81,9 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'aria-label': item.label,
       }
     : {
+        role: 'listitem',
         href: item.href,
+        rel: item.rel,
         target: item.target,
       }
 
@@ -89,7 +91,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     attrs['tabindex'] = item.active ? '0' : '-1'
   }
 
-  return (
+  const renderButton = () => (
     <TagType
       id={`${tabsId}-button-${toKebabCase(item.value)}`}
       class={{
@@ -121,6 +123,9 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       aria-selected={!isTabButton ? undefined : item.active ? 'true' : 'false'}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
+      onKeyDown={(ev: KeyboardEvent) => {
+        item.keyDown?.emit(ev)
+      }}
     >
       {item.icon || item.svg ? (
         <TabIcon
@@ -156,4 +161,10 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       )}
     </TagType>
   )
+
+  if (isLinkList) {
+    return <li>{renderButton()}</li>
+  } else {
+    return renderButton()
+  }
 }

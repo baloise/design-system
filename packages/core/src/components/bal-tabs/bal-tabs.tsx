@@ -1,18 +1,25 @@
 import {
   Component,
-  Host,
-  h,
+  ComponentInterface,
   Element,
-  State,
   Event,
   EventEmitter,
+  h,
+  Host,
+  Listen,
   Method,
   Prop,
+  State,
   Watch,
-  Listen,
-  ComponentInterface,
 } from '@stencil/core'
+import { AccordionState, Attributes } from '../../interfaces'
+import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
 import { areArraysEqual } from '../../utils/array'
+import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
+import { stopEventBubbling } from '../../utils/form-input'
 import {
   debounce,
   debounceEvent,
@@ -24,24 +31,18 @@ import {
   transitionEndAsync,
   waitAfterFramePaint,
 } from '../../utils/helpers'
-import { BalTabOption } from './bal-tab.type'
-import { BalConfigObserver, BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../utils/config'
-import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { newBalTabOption } from './bal-tab.util'
-import { stopEventBubbling } from '../../utils/form-input'
-import { TabSelect } from './components/tab-select'
-import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { AccordionState } from '../../interfaces'
 import { BalResizeInfo, BalResizeObserver, ListenToResize } from '../../utils/resize'
-import { TabNav } from './components/tab-nav'
 import { toKebabCase } from '../../utils/string'
-import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
+import { getComputedPadding, getWidthOfOverflowingChildren, Padding } from '../../utils/style'
 import { BalSwipeInfo, ListenToSwipe } from '../../utils/swipe'
+import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
-import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
+import { BalTabOption } from './bal-tab.type'
+import { newBalTabOption } from './bal-tab.util'
+import { TabNav } from './components/tab-nav'
+import { TabSelect } from './components/tab-select'
 
 @Component({
   tag: 'bal-tabs',
@@ -60,6 +61,7 @@ export class Tabs
 {
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
+  private inheritAttributes: Attributes = {}
 
   swiper = new SwiperUtil()
 
@@ -209,6 +211,11 @@ export class Tabs
    */
   @Prop() dimInactiveElements = false
 
+  /**
+   * If `true` then  isTabList becomes true even if there is a link in the list.
+   */
+  @Prop() handleAsTabList = false
+
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
     if (newValue !== oldValue) {
@@ -276,10 +283,17 @@ export class Tabs
 
   componentDidLoad() {
     this.onOptionChange()
+    this.items.forEach(item => {
+      item.setTabId(this.tabsId)
+    })
     rOnLoad(() => {
       this.enableLineRender = true
       this.animateLine(true)
     })
+  }
+
+  componentWillLoad() {
+    this.inheritAttributes = inheritAttributes(this.el, ['aria-label'])
   }
 
   disconnectedCallback(): void {
@@ -417,8 +431,12 @@ export class Tabs
     return Array.from(this.el.querySelectorAll('.bal-tabs__nav__item'))
   }
 
+  /**
+   * Tells if the component acts as a tab or link list.
+   * If only one link is in the list and handleAsTabList has been set to false it will be a link list
+   */
   private get isTabList(): boolean {
-    return this.store.filter(tab => !!tab.href).length === 0
+    return this.store.filter(tab => !!tab.href).length === 0 || this.handleAsTabList
   }
 
   private get items(): HTMLBalTabItemElement[] {
@@ -763,7 +781,8 @@ export class Tabs
   }
 
   async focus(tab: BalTabOption) {
-    const hasKeyboardFocus = this.el.querySelector<HTMLButtonElement>(`button.bal-focused`) !== null
+    const hasKeyboardFocus =
+      this.el.querySelector<HTMLButtonElement | HTMLAnchorElement>(`button.bal-focused, a.bal-focused`) !== null
 
     if (this.swiper.isActive()) {
       const options = await this.getOptions()
@@ -873,7 +892,7 @@ export class Tabs
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
           ...block.modifier('accordion').class(this.accordion),
-          ...block.modifier('animated').class(this.animated),
+          ...block.modifier('animated').class(this.animated && this.isTabList),
           ...block.modifier('expanding').class(this.accordionState === AccordionState.Expanding),
           ...block.modifier('expanded').class(this.accordionState === AccordionState.Expanded),
           ...block.modifier('collapsing').class(this.accordionState === AccordionState.Collapsing),
@@ -891,12 +910,13 @@ export class Tabs
             isLinkList={isLinkList}
             tabsId={this.tabsId}
             clickable={this.clickable}
+            ariaLabel={this.inheritAttributes['aria-label']}
             accordion={this.accordion}
             isAccordionOpen={this.isAccordionOpen}
             lineActive={valueExists}
             lineHidden={!this.enableLineRender}
             inverted={isInverted}
-            animated={this.animated}
+            animated={this.animated && this.isTabList}
             context={this.context}
             border={hasBorder}
             spaceless={this.spaceless}

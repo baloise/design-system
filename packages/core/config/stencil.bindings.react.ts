@@ -1,10 +1,9 @@
-import { reactOutputTarget } from '@baloise/output-target-react'
+import { reactOutputTarget } from '@stencil/react-output-target'
 import { docComponents } from './doc.components'
 
 export const ReactGenerator = (): any =>
   reactOutputTarget({
-    componentCorePackage: '@baloise/ds-core',
-    proxiesFile: '../react/src/generated/proxies.ts',
-    includeDefineCustomElements: true,
+    outDir: '../react/src/generated',
     excludeComponents: docComponents,
+    customElementsDir: 'components',
   })

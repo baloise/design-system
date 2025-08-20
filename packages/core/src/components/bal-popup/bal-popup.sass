@@ -29,6 +29,8 @@
     position: absolute
     top: 0
     left: 0
+    .bal-popup__inner
+      max-height: calc(var(--bal-app-height, 100%) - 4rem)
   &--variant-fullscreen
     position: fixed
     margin: 0
@@ -39,6 +41,7 @@
     .bal-popup__inner
       padding-left: var(--bal-container-space)
       padding-right: var(--bal-container-space)
+      max-height: var(--bal-app-height, 100%)
   &--variant-drawer
     position: fixed
     border-top-left-radius: var(--bal-popup-variant-drawer-radius)
@@ -46,13 +49,14 @@
     padding-left: var(--bal-container-space)
     padding-right: var(--bal-container-space)
     width: 100%
+    .bal-popup__inner
+      max-height: calc(var(--bal-app-height, 100%) - 4rem)
 
 // Popup Container Inner
 // --------------------------------------------------
 
 .bal-popup__inner
   overflow-y: auto
-  max-height: calc(var(--bal-app-height, 100%) - 4rem)
 
 // Popup Head
 // --------------------------------------------------
@@ -91,6 +95,7 @@
   top: 0
   background-color: var(--bal-popup-backdrop-background)
   width: 100vw
+  height: 100vh
   display: none
   visibility: hidden
 

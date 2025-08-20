@@ -5,6 +5,7 @@ export interface BalStepOption {
   value: string
   label: string
   href: string
+  rel?: string
   target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean

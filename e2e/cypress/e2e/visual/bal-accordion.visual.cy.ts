@@ -70,6 +70,15 @@ describe('bal-accordion', () => {
       cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-closed')
     })
 
+    it('text-variant component', () => {
+      cy.platform('desktop')
+      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop')
+      cy.getByTestId('text-variant').click()
+      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-open')
+      cy.getByTestId('text-variant').click()
+      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-closed')
+    })
+
     it('button component', () => {
       cy.platform('desktop')
       cy.getByTestId('button').testVisual('accordion-v2-button-desktop')

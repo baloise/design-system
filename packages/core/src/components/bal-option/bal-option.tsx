@@ -1,23 +1,23 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
   Event,
   EventEmitter,
-  Method,
-  State,
+  h,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
 } from '@stencil/core'
-import { BEM } from '../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { ariaBooleanToString } from '../../utils/aria'
-import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } from '../../utils/element-states'
-import { stopEventBubbling } from '../../utils/form-input'
-import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
+import { BEM } from '../../utils/bem'
 import { BalOption } from '../../utils/dropdown'
+import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } from '../../utils/element-states'
+import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
+import { stopEventBubbling } from '../../utils/form-input'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-option',
@@ -149,8 +149,8 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
    * ------------------------------------------------------
    */
 
-  private get interactionChildElements(): Array<HTMLBalCheckboxElement> {
-    return Array.from(this.el.querySelectorAll('bal-checkbox'))
+  private get interactionChildElements(): Array<HTMLBalCheckElement> {
+    return Array.from(this.el.querySelectorAll('bal-check'))
   }
 
   /**
@@ -207,15 +207,14 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
       >
         <bal-stack py="small" space="x-small">
           {this.checkbox ? (
-            <bal-checkbox
-              flat
-              nonSubmit
-              label-hidden
+            <bal-check
               checked={this.selected}
               disabled={this.disabled}
               invalid={this.invalid}
+              hovered={this.interactionState.hovered}
+              pressed={this.interactionState.pressed}
               tabindex={-1}
-            ></bal-checkbox>
+            ></bal-check>
           ) : (
             ''
           )}

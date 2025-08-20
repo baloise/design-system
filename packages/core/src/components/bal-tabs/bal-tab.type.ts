@@ -4,7 +4,8 @@ import { Attributes } from '../../utils/attributes'
 export interface BalTabOption {
   value: string
   label: string
-  href: string
+  href?: string
+  rel?: string
   tabPanelID?: string
   target: BalProps.BalButtonTarget
   active: boolean
@@ -17,6 +18,7 @@ export interface BalTabOption {
   index?: number
   context?: BalProps.BalTabsContext
   navigate?: EventEmitter<Event>
+  keyDown?: EventEmitter<Event>
   trackingData?: Attributes
   hidden?: boolean // deprecated use invisible instead
   noPanel?: boolean

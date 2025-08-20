@@ -1,10 +1,10 @@
-import { mkdir } from 'fs/promises'
-import { BuildDocsExecutorSchema } from './schema'
-import { join } from 'path'
-import { createWriteStream } from 'fs'
 import archiver from 'archiver'
-import { copy } from 'fs-extra'
 import { execSync } from 'child_process'
+import { createWriteStream } from 'fs'
+import { copy } from 'fs-extra'
+import { mkdir } from 'fs/promises'
+import { join } from 'path'
+import { BuildDocsExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildDocsExecutorSchema) {
   try {
@@ -31,7 +31,7 @@ export default async function runExecutor(options: BuildDocsExecutorSchema) {
   return { success: true }
 }
 
-async function archive(fromPath: string, targetPath: string, fileName: string, fileScan = '*'): Promise<void> {
+async function archive(fromPath: string, targetPath: string, fileName: string, fileScan = '**'): Promise<void> {
   return new Promise((resolve, reject) => {
     const output = createWriteStream(join(targetPath, fileName))
     output.on('close', () => resolve())
@@ -40,7 +40,7 @@ async function archive(fromPath: string, targetPath: string, fileName: string, f
     const archive = archiver('zip', { zlib: { level: 9 } })
     archive.on('error', err => reject(err.message))
     archive.pipe(output)
-    archive.glob(fileScan, { cwd: fromPath.replace(/\\/g, '/') })
+    archive.glob(fileScan, { cwd: fromPath.replace(/\\/g, '/'), stat: true }) // Include subfolders and files
     archive.finalize()
   })
 }
