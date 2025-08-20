@@ -1,7 +1,7 @@
-import { defineConfig, devices, expect } from '@playwright/test'
-import { nxE2EPreset } from '@nx/playwright/preset'
 import { matchers } from '@baloise/ds-playwright'
 import { workspaceRoot } from '@nx/devkit'
+import { nxE2EPreset } from '@nx/playwright/preset'
+import { defineConfig, devices, expect } from '@playwright/test'
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4000'
@@ -49,7 +49,8 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? 'node ./packages/core/web-server.js' : 'npm run start',
+    // command: process.env.CI ? 'node ./packages/core/web-server.js' : 'npm run start',
+    command: 'node ./packages/core/web-server.js',
     url: 'http://localhost:4000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
