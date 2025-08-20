@@ -49,7 +49,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? 'node ./web-server.js' : 'npm run start',
+    command: process.env.CI ? 'node ./packages/core/web-server.js' : 'npm run start',
     url: 'http://localhost:4000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
