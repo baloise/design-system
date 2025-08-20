@@ -19,14 +19,15 @@ jobs:
         with:
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean install
         run: npm ci
 
-      - name: Build
-        run: npx nx run-many -t build
+      # - name: Build
+      #   run: npx nx run-many -t build
 
       - name: Run Playwright tests
         run: npx nx run core:e2e-update-screenshots
