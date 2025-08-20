@@ -72,6 +72,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/workflows/actions/setup
+      - name: Clean install
+        shell: bash
+        run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Start the server
