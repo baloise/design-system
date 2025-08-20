@@ -66,6 +66,10 @@ jobs:
     timeout-minutes: 30
     env:
       HUSKY: 0
+      CI: true
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v4
         with:
@@ -79,8 +83,8 @@ jobs:
       - name: Clean install
         run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # - name: Install Playwright Browsers
+      #   run: npx playwright install --with-deps
 
       - name: Build
         run: npx nx run-many -t build
