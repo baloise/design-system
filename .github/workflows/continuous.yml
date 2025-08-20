@@ -60,8 +60,8 @@ jobs:
   #     - uses: ./.github/workflows/actions/e2e-setup
   #     - uses: ./.github/workflows/actions/e2e-visual
 
-  playwright:
-    name: 🧪 Playwright
+  snapshot:
+    name: 📸 Update Snapshots
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
@@ -73,32 +73,63 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
 
       - uses: ./.github/workflows/actions/setup
 
-      - name: GITHUB_CONTEXT
-        run: echo "$GITHUB_CONTEXT"
-
       - name: Clean install
         run: npm ci
-
-      # - name: Install Playwright Browsers
-      #   run: npx playwright install --with-deps
 
       - name: Build
         run: npx nx run-many -t build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e
+        run: npx nx run core:e2e-update-screenshots
 
-      - name: Upload Playwright HTML report
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Commit snapshots
+        uses: EndBug/add-and-commit@v9
         with:
-          name: playwright-report
-          path: playwright-report
-          retention-days: 7
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+  # playwright:
+  # name: 🧪 Playwright
+  # runs-on: ubuntu-22.04
+  # timeout-minutes: 30
+  # env:
+  #   HUSKY: 0
+  #   CI: true
+  # container:
+  #   image: mcr.microsoft.com/playwright:v1.50.1-noble
+  #   options: --user 1001
+  # steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+
+  #   - uses: ./.github/workflows/actions/setup
+
+  #   - name: GITHUB_CONTEXT
+  #     run: echo "$GITHUB_CONTEXT"
+
+  #   - name: Clean install
+  #     run: npm ci
+
+  #   - name: Build
+  #     run: npx nx run-many -t build
+
+  #   - name: Run Playwright tests
+  #     run: npx nx run core:e2e-update-screenshots
+
+  #   - name: Upload Playwright HTML report
+  #     if: always()
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: playwright-report
+  #       path: playwright-report
+  #       retention-days: 7
 
   # angular:
   #   name: 🧪 Angular Tests
