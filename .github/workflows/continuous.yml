@@ -68,7 +68,7 @@ jobs:
       HUSKY: 0
       CI: true
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
@@ -90,7 +90,7 @@ jobs:
         run: npx nx run-many -t build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e --verbose
+        run: npx nx run core:e2e
 
       - name: Upload Playwright HTML report
         if: always()
