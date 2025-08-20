@@ -71,20 +71,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: ./.github/workflows/actions/setup
+
       - name: Clean install
         shell: bash
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      # - name: Start the server
-      #   run: node ./packages/core/web-server.js &
-      #   env:
-      #     BASE_URL: 'http://localhost:3333'
-      # - name: Wait for server to be ready
-      #   run: npx wait-on http://localhost:3333
+
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx nx run core:e2e
+
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
