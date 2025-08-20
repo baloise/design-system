@@ -77,12 +77,12 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Start the server
-        run: node ./packages/core/web-server.js &
-        env:
-          BASE_URL: 'http://localhost:3333'
-      - name: Wait for server to be ready
-        run: npx wait-on http://localhost:3333
+      # - name: Start the server
+      #   run: node ./packages/core/web-server.js &
+      #   env:
+      #     BASE_URL: 'http://localhost:3333'
+      # - name: Wait for server to be ready
+      #   run: npx wait-on http://localhost:3333
       - name: Run Playwright tests
         run: npx playwright test
       - name: Upload Playwright HTML report
