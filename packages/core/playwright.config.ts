@@ -65,12 +65,12 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
     {
-      name: 'Mobile Chrome',
+      name: 'nobile chrome',
       testMatch: '**/*.visual.play.ts',
       use: { ...devices['Pixel 5'] },
     },
     {
-      name: 'Mobile Safari',
+      name: 'mobile safari',
       testMatch: '**/*.visual.play.ts',
       use: { ...devices['iPhone 12'] },
     },
