@@ -271,3 +271,75 @@ jobs:
             Specs: `${{ steps.command.outputs.result }}`
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+  updateSnapshot:
+    name: 📸 Update Snapshot
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-snapshot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Update Snapshot in Progress...**
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Get Branch Name
+        id: get-branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get-branch.outputs.branch }}
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Clean install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
+
+      - name: Run Playwright tests
+        run: npx nx run core:e2e-update-screenshots
+
+      - name: Commit snapshots
+        if: success()
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Update Snapshot finished!**
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Update Snapshot Failed!**
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})

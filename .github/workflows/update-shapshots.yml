@@ -26,8 +26,8 @@ jobs:
       - name: Clean install
         run: npm ci
 
-      # - name: Build
-      #   run: npx nx run-many -t build
+      - name: Build Core
+        run: npx nx run core:build
 
       - name: Run Playwright tests
         run: npx nx run core:e2e-update-screenshots
