@@ -232,6 +232,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
           ...block.modifier(`tile-color-${this.tileColor}`).class(this.tile && !!this.tileColor),
           ...block.modifier('is-inverted').class(this.inverted),
           ...block.modifier('is-inline').class(this.inline),
+          ...block.modifier('is-disabled').class(this.disabled),
           ...block.modifier('shadow').class(this.shadow),
           ...block.modifier(`is-${this.size}`).class(!!this.size),
           ...block.modifier(`is-${color}`).class(),
