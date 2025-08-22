@@ -7,17 +7,26 @@ import type { BalPageOptions } from '../../types'
  * to be hydrated before proceeding with the test.
  */
 export const gotoPage = async (page: Page, url: string, originalFn: typeof page.goto, options?: BalPageOptions) => {
-  const result = await Promise.all([
-    page.waitForFunction(() => (window as any).balAppReady === true, {
-      // This timeout was taken from the existing Playwright adapter in the Ionic Framework repository.
-      // They tested this number and found it to be a reliable timeout for the Stencil components to be hydrated.
-      timeout: 4750,
-    }),
-    page.waitForFunction(() => document.fonts.ready, {
-      timeout: 4750,
-    }),
-    originalFn(url, options),
-  ])
+  // Navigate first
+  const response = await originalFn.call(page, url, options)
 
-  return result[2]
+  // Wait for Stencil hydration (all components)
+  await page.evaluate(async () => {
+    const elements = Array.from(document.querySelectorAll('*'))
+    const readyPromises: Promise<any>[] = []
+    for (const el of elements) {
+      if (typeof (el as any).componentOnReady === 'function') {
+        readyPromises.push((el as any).componentOnReady())
+      }
+    }
+    await Promise.all(readyPromises)
+  })
+
+  // Wait for global app ready flag (if used in your app)
+  await page.waitForFunction(() => (window as any).balAppReady === true, { timeout: 4750 })
+
+  // Wait for fonts
+  await page.evaluate(() => document.fonts.ready)
+
+  return response
 }
