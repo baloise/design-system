@@ -60,45 +60,6 @@ jobs:
   #     - uses: ./.github/workflows/actions/e2e-setup
   #     - uses: ./.github/workflows/actions/e2e-visual
 
-  # snapshot:
-  #   name: 📸 Update Snapshots
-  #   runs-on: ubuntu-22.04
-  #   timeout-minutes: 30
-  #   permissions:
-  #     contents: write   # needed for pushing commits
-  #     pull-requests: write
-  #   env:
-  #     HUSKY: 0
-  #     CI: true
-  #   container:
-  #     image: mcr.microsoft.com/playwright:v1.50.1-noble
-  #     options: --user 1001
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-  #         fetch-depth: 0
-  #         ref: ${{ github.head_ref }} # <-- checkout the PR branch
-
-  #     - uses: ./.github/workflows/actions/setup
-
-  #     - name: Clean install
-  #       run: npm ci
-
-  #     - name: Build
-  #       run: npx nx run-many -t build
-
-  #     - name: Run Playwright tests
-  #       run: npx nx run core:e2e-update-screenshots
-
-  #     - name: Commit snapshots
-  #       uses: EndBug/add-and-commit@v9
-  #       with:
-  #         add: "."
-  #         message: 'update snapshots'
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-
   playwright:
     name: 🧪 Playwright
     runs-on: ubuntu-22.04
@@ -112,7 +73,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
@@ -125,14 +85,7 @@ jobs:
         run: npx nx run core:build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e-update-screenshots
-
-      - name: Commit snapshots
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'update snapshots'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+        run: npx nx run core:e2e
 
       - name: Upload Playwright HTML report
         if: always()

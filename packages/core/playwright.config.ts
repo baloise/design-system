@@ -21,7 +21,6 @@ expect.extend(matchers)
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
   testMatch: '**/*.play.ts',
-  // snapshotPathTemplate: '{testDir}/{testFileDir}/snapshots/{arg}__{projectName}{ext}',
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
