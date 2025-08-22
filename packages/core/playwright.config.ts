@@ -56,16 +56,16 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'chromium',
+      name: 'desktop chrome',
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'webkit',
+      name: 'desktop safari',
       testMatch: '**/*.visual.play.ts',
       use: { ...devices['Desktop Safari'] },
     },
     {
-      name: 'nobile chrome',
+      name: 'mobile chrome',
       testMatch: '**/*.visual.play.ts',
       use: { ...devices['Pixel 5'] },
     },
