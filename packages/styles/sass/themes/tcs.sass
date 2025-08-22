@@ -85,7 +85,7 @@
   --bal-color-border: var(--tcs-color-brown-3)
   //
   // Typography
-  --bal-body-font-size: 15px
+  // --bal-body-font-size: 15px
   --bal-font-family-text: 'MuseoSans-300', sans-serif
   --bal-font-family-title: 'MuseoSlab-700', sans-serif
   // --bal-font-weight-bold: 400
@@ -94,6 +94,18 @@
   --bal-link-color: var(--tcs-color-font)
   --bal-link-color-hover: var(--tcs-color-font)
   --bal-link-color-active: var(--tcs-color-font)
+  //
+  // Footer
+  --bal-footer-background: var(--tcs-color-brown-2)
+  --bal-footer-color: var(--tcs-color-font)
+  --bal-footer-language-color: var(--tcs-color-font)
+  --bal-footer-language-color-hover: var(--tcs-color-font)
+  --bal-footer-language-color-active: var(--tcs-color-font)
+  --bal-footer-language-background: var(--tcs-color-font)
+  --bal-footer-language-background-hover: var(--tcs-color-font)
+  --bal-footer-language-background-active: var(--tcs-color-font)
+  --bal-footer-logo-image-max-height: 64px
+
   //
   // Form
   --bal-form-field-control-color: var(--tcs-color-font)
@@ -196,6 +208,11 @@
   --bal-radio-icon-inner-background-checked: var(--tcs-color-font)
   --bal-radio-icon-background-checked: var(--tcs-color-brown-2)
   --bal-radio-icon-border-color-checked: var(--tcs-color-brown-2)
+
+body
+  text-rendering: optimizeLegibility !important
+  -webkit-font-smoothing: antialiased !important
+  -webkit-text-size-adjust: 100%
 
 .bal-check
   --bal-icon-color-white: var(--tcs-color-font)
