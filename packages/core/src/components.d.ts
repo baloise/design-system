@@ -1419,6 +1419,11 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace": boolean;
+        /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
          */
@@ -7432,6 +7437,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
