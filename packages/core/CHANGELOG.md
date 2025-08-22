@@ -1,5 +1,21 @@
 # Changelog
 
+## 19.6.0
+
+### Minor Changes
+
+- **number-input**: add option to only allow positive values ( [#1773](https://github.com/baloise/design-system/pull/1773))
+
+- **styles**: add description list element styles ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+- **field**: add no-reserved-space prop to the field message to not reserve any space for an upcoming message ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+### Patch Changes
+
+- **segment**: renders divider lines after value change ( [#1772](https://github.com/baloise/design-system/pull/1772))
+
+- **pagination**: removes disabled button glitches when hovering ( [#1783](https://github.com/baloise/design-system/pull/1783))
+
 ## 19.5.0
 
 ### Minor Changes
