@@ -56,7 +56,10 @@
     "@baloise/output-target-web": "0.0.0",
     "@baloise/ds-maps": "19.5.0",
     "@baloise/ds-brand-icons": "19.5.0",
-    "@baloise/ds-favicons": "19.5.0"
+    "@baloise/ds-favicons": "19.5.0",
+    "compression": "~1.7.4",
+    "express": "~4.18.2",
+    "serve-index": "~1.9.1"
   },
   "sideEffects": false
 }
