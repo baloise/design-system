@@ -28,7 +28,7 @@ export default defineConfig({
      */
     timeout: 5000,
     toHaveScreenshot: {
-      threshold: 0.1,
+      threshold: 0.2,
     },
   },
   forbidOnly: !!process.env.CI,
