@@ -105,7 +105,7 @@ jobs:
     timeout-minutes: 30
     env:
       HUSKY: 0
-      CI: true
+      CI: 1
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
@@ -116,14 +116,12 @@ jobs:
 
       - uses: ./.github/workflows/actions/setup
 
-      - name: GITHUB_CONTEXT
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Clean install
+      - name: Clean Install
         run: npm ci
 
-      # - name: Build
-      #   run: npx nx run-many -t build
+      - name: Build Core
+        run: npx nx run core:build
+        # run: npx nx run-many -t build
 
       - name: Run Playwright tests
         run: npx nx run core:e2e-update-screenshots
