@@ -107,6 +107,18 @@
           </bal-field>
         </section>
         <br />
+        <section>
+          <bal-field expanded="true" class="mt-x-large" horizontal>
+            <bal-field-label>Firstname (Hidden Hint Title)</bal-field-label>
+            <bal-field-hint data-testid="horizontal-with-hint-hidden" hide-title-on-desktop subject="Spider-Man">
+              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+            </bal-field-hint>
+            <bal-field-control>
+              <bal-input id="bal-input-0" name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="danger">Required Field</bal-field-message>
+          </bal-field>
+        </section>
         <section data-testid="horizontal-with-hint">
           <bal-field expanded="true" class="mt-x-large" horizontal>
             <bal-field-label>Firstname</bal-field-label>
