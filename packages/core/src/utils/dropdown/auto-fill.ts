@@ -23,6 +23,7 @@ export class DropdownAutoFillUtil {
 
       if (!areArraysEqual(newValue, this.component.rawValue)) {
         this.component.valueUtil.updateRawValueBySelection(newValue, true)
+        this.component.popupUtil.collapseList()
       }
     }
   }

@@ -1,10 +1,11 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { areArraysEqual } from '../../utils/array'
 import isNil from 'lodash.isnil'
-import { DropdownComponent } from './component'
+import { areArraysEqual } from '../../utils/array'
 import { BEM } from '../bem'
-import { BalOption } from './option'
 import { waitAfterFramePaint } from '../helpers'
+import { DropdownComponent } from './component'
+import { DropdownMode } from './mode'
+import { BalOption } from './option'
 
 export class DropdownValueUtil {
   private component!: DropdownComponent
@@ -98,15 +99,18 @@ export class DropdownValueUtil {
     await waitAfterFramePaint()
     if (this.component.listEl) {
       this.component.choices = await this.component.listEl.getSelectedOptions(this.component.rawValue)
-      this.component.inputLabel = this.component.choices
-        .map(option => option.label.trim())
-        .sort()
-        .join(',')
+      if (this.component.mode === DropdownMode.Basic) {
+        this.component.inputLabel = this.component.choices
+          .map(option => option.label.trim())
+          .sort()
+          .join(',')
+      }
     }
   }
 }
 
 export interface DropdownValueProps {
+  mode: DropdownMode
   inlineLabel: string
   filled: boolean
   chips: boolean
@@ -118,19 +122,11 @@ export interface DropdownValueProps {
   onRemoveChip: (option: BalOption) => void
 }
 
-export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
-  inlineLabel,
-  filled,
-  chips,
-  placeholder,
-  choices,
-  invalid,
-  disabled,
-  readonly,
-  onRemoveChip,
-}) => {
+export const DropdownValue: FunctionalComponent<DropdownValueProps> = (
+  { mode, inlineLabel, filled, chips, placeholder, choices, invalid, disabled, readonly, onRemoveChip },
+  children,
+) => {
   const block = BEM.block('dropdown')
-
   if (filled) {
     if (chips) {
       return (
@@ -148,12 +144,13 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
               {option.label}
             </bal-tag>
           ))}
+          {children}
         </div>
       )
     } else {
       return (inlineLabel && `${inlineLabel}: `) + choices.map(option => option.label).join(', ')
     }
   } else {
-    return placeholder
+    return mode === DropdownMode.Basic ? placeholder : children
   }
 }

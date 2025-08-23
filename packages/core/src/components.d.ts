@@ -2772,6 +2772,7 @@ export namespace Components {
         "value": string;
     }
     interface BalOptionList {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the max height of the list element
           * @default 262
@@ -4465,6 +4466,113 @@ export namespace Components {
         "reference": string;
         "update": () => Promise<boolean>;
     }
+    /**
+     * TODOS:
+     * Features:
+     * - [ ] option list pagination
+     * - [ ] option list highlight search term
+     */
+    interface BalTypeahead {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
+          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable": boolean;
+        /**
+          * Closes the popup with option list
+         */
+        "close": () => Promise<void>;
+        "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight": number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * Returns the value of the component
+         */
+        "getValue": () => Promise<string[]>;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon": string;
+        /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel": string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid": boolean;
+        "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Opens the popup with option list
+         */
+        "open": () => Promise<void>;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Select option by passed value
+         */
+        "select": (newValue: string | string[]) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Sets the focus on the input element
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Defines the size of the control.
+         */
+        "size": BalProps.BalTypeaheadSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme": BalProps.BalTypeaheadTheme;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
+    }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4633,6 +4741,10 @@ export interface BalToastCustomEvent<T> extends CustomEvent<T> {
 export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTooltipElement;
+}
+export interface BalTypeaheadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTypeaheadElement;
 }
 declare global {
     interface HTMLBalAccordionElementEventMap {
@@ -5897,6 +6009,31 @@ declare global {
         prototype: HTMLBalTooltipElement;
         new (): HTMLBalTooltipElement;
     };
+    interface HTMLBalTypeaheadElementEventMap {
+        "balChange": BalEvents.BalTypeaheadChangeDetail;
+        "balFocus": BalEvents.BalTypeaheadFocusDetail;
+        "balBlur": BalEvents.BalTypeaheadBlurDetail;
+    }
+    /**
+     * TODOS:
+     * Features:
+     * - [ ] option list pagination
+     * - [ ] option list highlight search term
+     */
+    interface HTMLBalTypeaheadElement extends Components.BalTypeahead, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTypeaheadElementEventMap>(type: K, listener: (this: HTMLBalTypeaheadElement, ev: BalTypeaheadCustomEvent<HTMLBalTypeaheadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTypeaheadElementEventMap>(type: K, listener: (this: HTMLBalTypeaheadElement, ev: BalTypeaheadCustomEvent<HTMLBalTypeaheadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalTypeaheadElement: {
+        prototype: HTMLBalTypeaheadElement;
+        new (): HTMLBalTypeaheadElement;
+    };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-accordion-details": HTMLBalAccordionDetailsElement;
@@ -6016,6 +6153,7 @@ declare global {
         "bal-time-input": HTMLBalTimeInputElement;
         "bal-toast": HTMLBalToastElement;
         "bal-tooltip": HTMLBalTooltipElement;
+        "bal-typeahead": HTMLBalTypeaheadElement;
     }
 }
 declare namespace LocalJSX {
@@ -10486,6 +10624,99 @@ declare namespace LocalJSX {
          */
         "reference"?: string;
     }
+    /**
+     * TODOS:
+     * Features:
+     * - [ ] option list pagination
+     * - [ ] option list highlight search term
+     */
+    interface BalTypeahead {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
+          * If `true`, a cross at the end is visible to clear the selection
+         */
+        "clearable"?: boolean;
+        /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon"?: string;
+        /**
+          * Defines a inline label to be shown before the value
+         */
+        "inlineLabel"?: string;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid"?: boolean;
+        "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalTypeaheadCustomEvent<BalEvents.BalTypeaheadBlurDetail>) => void;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalTypeaheadCustomEvent<BalEvents.BalTypeaheadChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalTypeaheadCustomEvent<BalEvents.BalTypeaheadFocusDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalOption[];
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Defines the size of the control.
+         */
+        "size"?: BalProps.BalTypeaheadSize;
+        /**
+          * Defines the color style of the control
+         */
+        "theme"?: BalProps.BalTypeaheadTheme;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
+    }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-accordion-details": BalAccordionDetails;
@@ -10605,6 +10836,7 @@ declare namespace LocalJSX {
         "bal-time-input": BalTimeInput;
         "bal-toast": BalToast;
         "bal-tooltip": BalTooltip;
+        "bal-typeahead": BalTypeahead;
     }
 }
 export { LocalJSX as JSX };
@@ -10729,6 +10961,13 @@ declare module "@stencil/core" {
             "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
             "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
+            /**
+             * TODOS:
+             * Features:
+             * - [ ] option list pagination
+             * - [ ] option list highlight search term
+             */
+            "bal-typeahead": LocalJSX.BalTypeahead & JSXBase.HTMLAttributes<HTMLBalTypeaheadElement>;
         }
     }
 }

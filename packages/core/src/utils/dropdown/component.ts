@@ -1,11 +1,13 @@
 import { EventEmitter } from '@stencil/core'
-import { DropdownValueUtil } from './value'
-import { BalOption } from './option'
 import { DropdownFocus } from './focus'
+import { DropdownMode } from './mode'
+import { BalOption } from './option'
 import { DropdownPopupUtil } from './popup'
+import { DropdownValueUtil } from './value'
 
 export type DropdownComponent = DropdownFocus & {
   el: HTMLElement
+  mode: DropdownMode
   selectEl: HTMLSelectElement | undefined
   panelEl: HTMLDivElement | undefined
   nativeEl: HTMLInputElement | undefined
@@ -32,6 +34,7 @@ export type DropdownComponent = DropdownFocus & {
   rawValue: string[]
   value?: string | string[]
   initialValue?: string | string[]
+  typeaheadValue?: string
 
   panelCleanup?: () => void
   balChange: EventEmitter<BalEvents.BalDropdownChangeDetail>

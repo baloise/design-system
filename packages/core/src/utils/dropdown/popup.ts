@@ -16,7 +16,6 @@ export class DropdownPopupUtil {
       })
       .then(({ x, y }) => {
         Object.assign(floatingEl.style, {
-          left: `${x}px`,
           top: `${y}px`,
         })
       })
@@ -43,6 +42,14 @@ export class DropdownPopupUtil {
     }
     this.component.isExpanded = true
     await this.component.listEl?.focusSelected()
+
+    /**
+     * If the dropdown is in typeahead mode, we want to focus the input element
+     * and select its content to allow the user to start typing immediately.
+     */
+    if (this.component.mode === 'typeahead' && this.component.nativeEl) {
+      await this.component.nativeEl?.focus()
+    }
   }
 
   collapseList() {
