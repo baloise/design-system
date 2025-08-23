@@ -23,6 +23,7 @@ node_modules
 
 # IDE - VSCode
 .vscode/*
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -104,6 +105,11 @@ test/angular/*
 !test/angular/base
 !test/angular/build.sh
 !test/angular/start.sh
+
+test/react/*
+!test/react/base
+!test/react/build.sh
+!test/react/start.sh
 
 .angular
 

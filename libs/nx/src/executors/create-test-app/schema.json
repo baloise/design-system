@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/schema",
   "version": 2,
-  "title": "CreateAngular executor",
+  "title": "Create Test App Executor",
   "description": "",
   "type": "object",
   "properties": {},

@@ -1,4 +1,5 @@
-export interface CreateAngularExecutorSchema {
+export interface CreateTestAppExecutorSchema {
+  framework: 'angular' | 'react'
   workspaceRoot: string
   build: boolean
   start: boolean
