@@ -1542,6 +1542,16 @@ export namespace Components {
          */
         "hideLinks": boolean;
         /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref": string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg": string;
+        /**
           * If provided, the footer links will be overridden.
           * @default undefined
          */
@@ -7569,6 +7579,16 @@ declare namespace LocalJSX {
           * @default false
          */
         "hideLinks"?: boolean;
+        /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref"?: string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg"?: string;
         /**
           * If provided, the footer links will be overridden.
           * @default undefined
