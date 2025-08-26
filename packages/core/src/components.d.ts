@@ -2586,6 +2586,10 @@ export namespace Components {
     }
     interface BalNavbarMenu {
         /**
+          * @default false
+         */
+        "active": boolean;
+        /**
           * @default 'app'
          */
         "interface": BalProps.BalNavbarInterface;
@@ -8655,6 +8659,10 @@ declare namespace LocalJSX {
         "target"?: BalProps.BalButtonTarget;
     }
     interface BalNavbarMenu {
+        /**
+          * @default false
+         */
+        "active"?: boolean;
         /**
           * @default 'app'
          */
