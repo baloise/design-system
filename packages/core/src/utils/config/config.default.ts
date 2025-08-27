@@ -1,37 +1,38 @@
-import type { BalConfigState } from './config.types'
-import { defaultLoggerConfig } from '../log'
 import {
-  balIconClose,
-  balIconInfoCircle,
-  balIconPlus,
-  balIconMinus,
-  balIconEdit,
-  balIconTrash,
-  balIconNavGoLeft,
-  balIconNavGoRight,
-  balIconNavGoDown,
-  balIconNavGoUp,
-  balIconCheck,
-  balIconDate,
-  balIconDocument,
-  balIconUpload,
-  balIconMenuBars,
-  balIconFacebook,
-  balIconInstagram,
-  balIconLinkedin,
-  balIconTwitter,
-  balIconX,
-  balIconXing,
-  balIconYoutube,
-  balIconWeb,
   balIconCaretDown,
   balIconCaretLeft,
   balIconCaretRight,
   balIconCaretUp,
+  balIconCheck,
+  balIconClose,
+  balIconDate,
+  balIconDocument,
+  balIconEdit,
+  balIconFacebook,
+  balIconInfoCircle,
+  balIconInstagram,
+  balIconLinkedin,
+  balIconMenuBars,
+  balIconMinus,
+  balIconNavGoDown,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconNavGoUp,
+  balIconPlus,
+  balIconTrash,
+  balIconTwitter,
+  balIconUpload,
+  balIconWeb,
+  balIconX,
+  balIconXing,
+  balIconYoutube,
+  balIconClock,
 } from '../constants/icons.constant'
-import { balIconClock } from '@baloise/ds-icons'
+import { defaultLoggerConfig } from '../log'
+import type { BalConfigState } from './config.types'
 
 export const defaultIcons = {
+  balIconClock,
   balIconClose,
   balIconInfoCircle,
   balIconPlus,
@@ -59,7 +60,6 @@ export const defaultIcons = {
   balIconCaretLeft,
   balIconCaretRight,
   balIconCaretUp,
-  balIconClock,
 }
 
 export const defaultConfig: BalConfigState = {
