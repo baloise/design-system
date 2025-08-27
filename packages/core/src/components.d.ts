@@ -1350,6 +1350,11 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop": boolean;
+        /**
           * Disables the close button for tablet and desktop
           * @default false
          */
@@ -1418,6 +1423,11 @@ export namespace Components {
           * @default false
          */
         "invalid": boolean;
+        /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -2678,6 +2688,11 @@ export namespace Components {
           * @default this.inputId
          */
         "name": string;
+        /**
+          * Allows only positive number values.
+          * @default false
+         */
+        "onlyPositive": boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -7359,6 +7374,11 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop"?: boolean;
+        /**
           * Disables the close button for tablet and desktop
           * @default false
          */
@@ -7427,6 +7447,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -8752,6 +8777,11 @@ declare namespace LocalJSX {
           * Emitted when a keyboard key has pressed.
          */
         "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
+        /**
+          * Allows only positive number values.
+          * @default false
+         */
+        "onlyPositive"?: boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */

@@ -33,6 +33,11 @@ export class FieldMessage implements BalAriaFormLinking {
   @Prop() readonly = false
 
   /**
+   * If `true` the element will not reserve any space for an upcoming message.
+   */
+  @Prop() noReservedSpace = false
+
+  /**
    * @internal
    */
   @Method()
@@ -52,6 +57,7 @@ export class FieldMessage implements BalAriaFormLinking {
           'is-disabled': this.disabled || this.readonly,
           [`is-${this.color}`]: !!this.color,
         }}
+        style={{ minHeight: this.noReservedSpace ? '0' : undefined }}
       >
         <slot></slot>
       </Host>

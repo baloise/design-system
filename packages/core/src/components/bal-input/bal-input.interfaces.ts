@@ -16,8 +16,6 @@ namespace BalProps {
     | 'be-iban'
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
   export type BalInputInputType =
-    | 'button'
-    | 'checkbox'
     | 'color'
     | 'date'
     | 'datetime-local'
@@ -27,7 +25,6 @@ namespace BalProps {
     | 'month'
     | 'number'
     | 'password'
-    | 'radio'
     | 'range'
     | 'search'
     | 'tel'

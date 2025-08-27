@@ -33,11 +33,15 @@ export const FileListComponent: FunctionalComponent<FileListComponentProps> = ({
               right
               class={{
                 'file-remove': true,
-                'is-clickable': !disabled,
               }}
-              onClick={event => onRemoveFile(event, index)}
             >
-              <bal-icon name="trash" color={disabled ? 'grey' : 'danger'}></bal-icon>
+              <button
+                class="button is-square is-danger"
+                disabled={disabled}
+                onClick={event => onRemoveFile(event, index)}
+              >
+                <bal-icon name="trash" color={disabled ? 'grey' : 'danger'}></bal-icon>
+              </button>
             </bal-list-item-icon>
           </bal-list-item>
         ))}
