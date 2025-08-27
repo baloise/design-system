@@ -1,5 +1,5 @@
-name: 'Angular Setup'
-description: 'Angular Setup'
+name: 'Framework Setup'
+description: 'Framework Setup'
 inputs:
   app:
     description: 'The specific test application'
@@ -45,6 +45,12 @@ runs:
         name: core-components
         path: ./packages/core
         filename: CoreComponents.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: react
+        path: ./packages/react/src
+        filename: React.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:

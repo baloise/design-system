@@ -24,9 +24,10 @@
         "projectRoot": "{projectRoot}"
       }
     },
-    "create-angular": {
-      "executor": "@baloise/ds-nx:create-angular",
+    "angular-create": {
+      "executor": "@baloise/ds-nx:create-test-app",
       "options": {
+        "framework": "angular",
         "workspaceRoot": "{workspaceRoot}",
         "projectRoot": "{projectRoot}",
         "build": true,
@@ -34,9 +35,10 @@
         "test": false
       }
     },
-    "start-angular": {
-      "executor": "@baloise/ds-nx:create-angular",
+    "angular-start": {
+      "executor": "@baloise/ds-nx:create-test-app",
       "options": {
+        "framework": "angular",
         "workspaceRoot": "{workspaceRoot}",
         "projectRoot": "{projectRoot}",
         "build": false,
@@ -44,9 +46,43 @@
         "test": false
       }
     },
-    "e2e-angular": {
-      "executor": "@baloise/ds-nx:create-angular",
+    "angular-e2e": {
+      "executor": "@baloise/ds-nx:create-test-app",
       "options": {
+        "framework": "angular",
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": false,
+        "start": false,
+        "test": true
+      }
+    },
+    "react-create": {
+      "executor": "@baloise/ds-nx:create-test-app",
+      "options": {
+        "framework": "react",
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": true,
+        "start": false,
+        "test": false
+      }
+    },
+    "react-start": {
+      "executor": "@baloise/ds-nx:create-test-app",
+      "options": {
+        "framework": "react",
+        "workspaceRoot": "{workspaceRoot}",
+        "projectRoot": "{projectRoot}",
+        "build": false,
+        "start": true,
+        "test": false
+      }
+    },
+    "react-e2e": {
+      "executor": "@baloise/ds-nx:create-test-app",
+      "options": {
+        "framework": "react",
         "workspaceRoot": "{workspaceRoot}",
         "projectRoot": "{projectRoot}",
         "build": false,
