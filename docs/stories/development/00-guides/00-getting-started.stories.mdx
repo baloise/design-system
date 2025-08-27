@@ -179,7 +179,7 @@ Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, w
 ```typescript
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 
-import { provideBaloiseDesignSystem } from '@baloise/ds-angular/standalone'
+import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideBaloiseDesignSystem()],
@@ -194,7 +194,7 @@ In each app component, import the necessary Baloise Design System components or 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular/standalone'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',

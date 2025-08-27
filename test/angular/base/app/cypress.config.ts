@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
-  video: false,
+  video: true,
   screenshotOnRunFailure: true,
   trashAssetsBeforeRuns: true,
 
@@ -10,6 +10,8 @@ export default defineConfig({
 
   env: {
     failSilently: false,
+    screenshotOnRunFailure: true,
+    screenshotsFolder: 'cypress/snapshots',
   },
 
   includeShadowDom: true,

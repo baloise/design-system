@@ -55,6 +55,7 @@
         "svgReplaceBlack": true,
         "dsMinSetPath": "../core/src/utils/constants/icons.constant.ts",
         "dsMinSet": [
+          "balIconClock",
           "balIconClose",
           "balIconInfoCircle",
           "balIconPlus",
