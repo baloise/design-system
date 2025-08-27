@@ -1,5 +1,33 @@
 # Changelog
 
+## 19.6.0
+
+### Minor Changes
+
+- **number-input**: add option to only allow positive values ( [#1773](https://github.com/baloise/design-system/pull/1773))
+
+- **styles**: add description list element styles ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+- **field**: add possibility to hide field hint title on Desktop ( [#1736](https://github.com/baloise/design-system/pull/1736))
+
+- **field**: add no-reserved-space prop to the field message to not reserve any space for an upcoming message ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+### Patch Changes
+
+- **tabs**: overflow border line on vertical usage ( [#1789](https://github.com/baloise/design-system/pull/1789))
+
+- **segment**: renders divider lines after value change ( [#1772](https://github.com/baloise/design-system/pull/1772))
+
+- **nav**: z-index issues on mobile and tablet breakpoints ( [#1786](https://github.com/baloise/design-system/pull/1786))
+
+- **nav**: popup overflow issue. calulating height with offset. ( [#1786](https://github.com/baloise/design-system/pull/1786))
+
+- **file-upload**: make remove file button accessible ( [#1788](https://github.com/baloise/design-system/pull/1788))
+
+- **data**: emit bal-click event when clicking the pencil icon to change the value ( [#1788](https://github.com/baloise/design-system/pull/1788))
+
+- **pagination**: removes disabled button glitches when hovering ( [#1783](https://github.com/baloise/design-system/pull/1783))
+
 ## 19.5.0
 
 ### Minor Changes
