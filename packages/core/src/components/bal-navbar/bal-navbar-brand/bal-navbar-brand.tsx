@@ -117,6 +117,7 @@ export class NavbarBrand {
     }
   }
 
+  @Method()
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)

@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -26,6 +26,11 @@ export class Navbar {
       ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
       'interface',
     )
+  }
+
+  @Method()
+  toggleMenu(isMenuActive: boolean) {
+    this.notifyComponents<any>(['bal-navbar-menu', 'bal-navbar-brand'], menu => menu.toggle(isMenuActive))
   }
 
   /**
