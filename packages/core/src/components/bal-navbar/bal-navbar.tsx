@@ -33,8 +33,11 @@ export class Navbar {
    * @param isMenuActive
    */
   @Method()
-  toggleMenu(isMenuActive: boolean) {
-    this.notifyComponents<any>(['bal-navbar-menu', 'bal-navbar-brand'], menu => menu.toggle(isMenuActive))
+  async toggleMenu() {
+    const brand = this.element.querySelector<HTMLBalNavbarBrandElement>('bal-navbar-brand')
+    if (brand) {
+      await brand.toggle()
+    }
   }
 
   /**

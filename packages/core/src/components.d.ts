@@ -2534,7 +2534,11 @@ export namespace Components {
           * @default false
          */
         "light": boolean;
-        "toggleMenu": (isMenuActive: boolean) => Promise<void>;
+        /**
+          * toggles the menu on request method can be used from outside to open or close the menu
+          * @param isMenuActive
+         */
+        "toggleMenu": () => Promise<void>;
     }
     interface BalNavbarBrand {
         /**
@@ -2584,13 +2588,9 @@ export namespace Components {
           * @default '_self'
          */
         "target": BalProps.BalButtonTarget;
-        "toggle": (isMenuActive: boolean) => Promise<void>;
+        "toggle": (isMenuActive?: boolean) => Promise<void>;
     }
     interface BalNavbarMenu {
-        /**
-          * @default false
-         */
-        "active": boolean;
         /**
           * @default 'app'
          */
@@ -8661,10 +8661,6 @@ declare namespace LocalJSX {
         "target"?: BalProps.BalButtonTarget;
     }
     interface BalNavbarMenu {
-        /**
-          * @default false
-         */
-        "active"?: boolean;
         /**
           * @default 'app'
          */

@@ -118,8 +118,8 @@ export class NavbarBrand {
   }
 
   @Method()
-  async toggle(isMenuActive: boolean): Promise<void> {
-    this.isMenuActive = isMenuActive
+  async toggle(isMenuActive = this.isMenuActive): Promise<void> {
+    this.isMenuActive = !isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)
 
     if (balBrowser.hasWindow && window.scrollY > 0) {
@@ -148,7 +148,7 @@ export class NavbarBrand {
   }
 
   async onClick() {
-    this.toggle(!this.isMenuActive)
+    this.toggle()
   }
 
   render() {
