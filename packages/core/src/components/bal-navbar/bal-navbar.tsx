@@ -29,8 +29,7 @@ export class Navbar {
   }
 
   /**
-   * toggles the menu on request method can be used from outside to open or close the menu
-   * @param isMenuActive
+   * Toggles the menu on request method can be used from outside to open or close the menu
    */
   @Method()
   async toggleMenu() {

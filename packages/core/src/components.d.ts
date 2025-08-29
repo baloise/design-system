@@ -2535,8 +2535,7 @@ export namespace Components {
          */
         "light": boolean;
         /**
-          * toggles the menu on request method can be used from outside to open or close the menu
-          * @param isMenuActive
+          * Toggles the menu on request method can be used from outside to open or close the menu
          */
         "toggleMenu": () => Promise<void>;
     }

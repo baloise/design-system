@@ -117,6 +117,9 @@ export class NavbarBrand {
     }
   }
 
+  /**
+   * @internal
+   */
   @Method()
   async toggle(isMenuActive = this.isMenuActive): Promise<void> {
     this.isMenuActive = !isMenuActive
