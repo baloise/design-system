@@ -1,4 +1,4 @@
-import { Component, h, Host, Method, State, Element, Prop, ComponentInterface, Watch } from '@stencil/core'
+import { Component, h, Host, Method, State, Element, Prop, ComponentInterface } from '@stencil/core'
 import { deepReady } from '../../../utils/helpers'
 import { BEM } from '../../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
@@ -38,11 +38,6 @@ export class NavbarMenu implements ComponentInterface, BalBreakpointObserver {
       await deepReady(tabsElement)
       tabsElement.renderLine()
     }
-  }
-
-  @Prop({ reflect: true, mutable: true }) active = false
-  @Watch('active') onActiveChanged(newValue: boolean) {
-    this.toggle(newValue)
   }
 
   render() {

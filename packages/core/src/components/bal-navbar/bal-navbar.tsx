@@ -28,6 +28,10 @@ export class Navbar {
     )
   }
 
+  /**
+   * toggles the menu on request method can be used from outside to open or close the menu
+   * @param isMenuActive
+   */
   @Method()
   toggleMenu(isMenuActive: boolean) {
     this.notifyComponents<any>(['bal-navbar-menu', 'bal-navbar-brand'], menu => menu.toggle(isMenuActive))

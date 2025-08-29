@@ -2534,6 +2534,7 @@ export namespace Components {
           * @default false
          */
         "light": boolean;
+        "toggleMenu": (isMenuActive: boolean) => Promise<void>;
     }
     interface BalNavbarBrand {
         /**
@@ -2583,6 +2584,7 @@ export namespace Components {
           * @default '_self'
          */
         "target": BalProps.BalButtonTarget;
+        "toggle": (isMenuActive: boolean) => Promise<void>;
     }
     interface BalNavbarMenu {
         /**
