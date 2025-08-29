@@ -113,7 +113,7 @@ export class NavbarBrand {
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
     if (ev.matches && !this.simple) {
-      this.toggle(false)
+      this.setIsMenuActiveAndAnimate(false)
     }
   }
 
@@ -121,8 +121,12 @@ export class NavbarBrand {
    * @internal
    */
   @Method()
-  async toggle(isMenuActive = this.isMenuActive): Promise<void> {
-    this.isMenuActive = !isMenuActive
+  async toggle(): Promise<void> {
+    await this.setIsMenuActiveAndAnimate(!this.isMenuActive)
+  }
+
+  async setIsMenuActiveAndAnimate(isMenuActive = this.isMenuActive): Promise<void> {
+    this.isMenuActive = isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)
 
     if (balBrowser.hasWindow && window.scrollY > 0) {

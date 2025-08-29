@@ -2587,7 +2587,7 @@ export namespace Components {
           * @default '_self'
          */
         "target": BalProps.BalButtonTarget;
-        "toggle": (isMenuActive?: boolean) => Promise<void>;
+        "toggle": () => Promise<void>;
     }
     interface BalNavbarMenu {
         /**
