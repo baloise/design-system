@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -26,6 +26,17 @@ export class Navbar {
       ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
       'interface',
     )
+  }
+
+  /**
+   * Toggles the menu on request method can be used from outside to open or close the menu
+   */
+  @Method()
+  async toggleMenu() {
+    const brand = this.element.querySelector<HTMLBalNavbarBrandElement>('bal-navbar-brand')
+    if (brand) {
+      await brand.toggle()
+    }
   }
 
   /**

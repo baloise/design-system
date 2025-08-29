@@ -113,11 +113,19 @@ export class NavbarBrand {
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
     if (ev.matches && !this.simple) {
-      this.toggle(false)
+      this.setIsMenuActiveAndAnimate(false)
     }
   }
 
-  async toggle(isMenuActive: boolean): Promise<void> {
+  /**
+   * @internal
+   */
+  @Method()
+  async toggle(): Promise<void> {
+    await this.setIsMenuActiveAndAnimate(!this.isMenuActive)
+  }
+
+  async setIsMenuActiveAndAnimate(isMenuActive = this.isMenuActive): Promise<void> {
     this.isMenuActive = isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)
 
@@ -147,7 +155,7 @@ export class NavbarBrand {
   }
 
   async onClick() {
-    this.toggle(!this.isMenuActive)
+    this.toggle()
   }
 
   render() {
