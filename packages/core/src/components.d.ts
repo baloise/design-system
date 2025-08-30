@@ -2732,6 +2732,10 @@ export namespace Components {
     }
     interface BalOption {
         /**
+          * @default ''
+         */
+        "bubu": string;
+        /**
           * If `true`, the user cannot interact with the option.
           * @default false
          */
@@ -8811,6 +8815,10 @@ declare namespace LocalJSX {
         "value"?: number | string;
     }
     interface BalOption {
+        /**
+          * @default ''
+         */
+        "bubu"?: string;
         /**
           * If `true`, the user cannot interact with the option.
           * @default false

@@ -1,4 +1,3 @@
-import { h } from '@stencil/core'
 import { DropdownComponent } from './component'
 
 export type BalBaseOption<TValue = string> = {
@@ -17,9 +16,9 @@ export type BalOptionOptions = {
   multiline: boolean
 }
 
-export type BalOption<TValue = string> = BalBaseOption<TValue> & BalOptionOptions
+export type BalOption<TValue = any> = BalBaseOption<TValue> & BalOptionOptions
 
-export type NewBalOption<TValue = string> = (
+export type NewBalOption<TValue = any> = (
   option: BalBaseOption<TValue>,
   options?: Partial<BalOptionOptions>,
 ) => BalOption<TValue>
