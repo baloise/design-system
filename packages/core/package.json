@@ -52,7 +52,6 @@
   },
   "devDependencies": {
     "@baloise/output-target-angular": "0.0.0",
-    "@baloise/output-target-react": "0.0.0",
     "@baloise/output-target-web": "0.0.0",
     "@baloise/ds-maps": "19.6.0",
     "@baloise/ds-brand-icons": "19.6.0",
