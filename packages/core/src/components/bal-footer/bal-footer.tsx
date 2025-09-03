@@ -245,19 +245,20 @@ export class Footer implements BalConfigObserver, Loggable {
                 }}
                 style={{ display: this.hideLinks ? 'none' : 'flex' }}
               >
-                {this.links.map(link => (
-                  <a
-                    key={link.link}
-                    href={link.link}
-                    target="_blank"
-                    class={{
-                      'link': true,
-                      'is-light': true,
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {this.links &&
+                  this.links.map(link => (
+                    <a
+                      key={link.link}
+                      href={link.link}
+                      target="_blank"
+                      class={{
+                        'link': true,
+                        'is-light': true,
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>
