@@ -5,6 +5,14 @@ describe('bal-navbar', () => {
   testNavbar('tablet')
   testNavbar('mobile')
 
+  it('toggle method', () => {
+    cy.visit('/components/bal-navbar/test/bal-navbar.visual.html').platform('mobile').waitForDesignSystem().wait(100)
+
+    cy.getByTestId('toggle').testVisual(`navbar-toggle-closed`)
+    cy.getByTestId('toggle-button').click().wait(100)
+    cy.getByTestId('toggle').testVisual(`navbar-toggle-open`)
+  })
+
   function testNavbar(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
