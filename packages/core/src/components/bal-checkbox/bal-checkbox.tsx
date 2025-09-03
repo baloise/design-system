@@ -217,7 +217,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     this.initialValue = this.checked
 
     this.el.addEventListener('keydown', this.onKeydown)
-    this.el.addEventListener('touchstart', this.onPointerDown)
+    this.el.addEventListener('touchstart', this.onPointerDown, { passive: true })
     this.el.addEventListener('mousedown', this.onPointerDown)
   }
 
