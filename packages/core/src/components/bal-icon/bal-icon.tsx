@@ -27,7 +27,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   @Prop({ reflect: true, mutable: true }) name = ''
   @Watch('name')
   nameChanged() {
-    console.log('Icon nameChanged', this.name)
     this.generateSvgContent(this.name)
   }
 
@@ -37,7 +36,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   @Prop() svg = ''
   @Watch('svg')
   svgChanged() {
-    console.log('Icon svgChanged', this.name)
     this.generateSvgContent(this.name)
   }
 
@@ -109,7 +107,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    */
 
   connectedCallback() {
-    console.log('Icon connectedCallback', this.name)
     this.generateSvgContent(this.name)
   }
 
@@ -124,7 +121,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   @Method()
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
-    console.log('Icon config changed', this.name)
     this.icons = state.icons
     this.generateSvgContent(this.name)
   }
@@ -135,7 +131,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    */
 
   private generateSvgContent = (iconName: string) => {
-    console.log('Icon generateSvgContent', iconName)
     const hasIcons = Object.keys(this.icons).length > 0
 
     if (hasIcons && iconName && iconName.length > 0) {

@@ -10,7 +10,17 @@ export const proxyInputs = (Cmp: any, inputs: string[]) => {
         return this.el[item]
       },
       set(val: any) {
+        /**
+         * This is a workaround to ensure that the value is set
+         * outside of Angular's zone, preventing unnecessary change
+         * detection cycles.
+         */
         this.z.runOutsideAngular(() => {
+          this.el[item] = val
+          /**
+           * To ensure the value is properly set to the web component in
+           * a ng-if context we need to set it directly and after an event loop tick.
+           */
           setTimeout(() => {
             this.el[item] = val
           }, 0)
