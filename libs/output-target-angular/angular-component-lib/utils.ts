@@ -10,7 +10,11 @@ export const proxyInputs = (Cmp: any, inputs: string[]) => {
         return this.el[item]
       },
       set(val: any) {
-        this.z.runOutsideAngular(() => (this.el[item] = val))
+        this.z.runOutsideAngular(() => {
+          setTimeout(() => {
+            this.el[item] = val
+          }, 0)
+        })
       },
       /**
        * In the event that proxyInputs is called
