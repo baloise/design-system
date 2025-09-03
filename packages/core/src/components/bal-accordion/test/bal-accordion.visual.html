@@ -12,8 +12,8 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <section>
-          <bal-accordion data-testid="basic" close-label="Show less" open-label="Show more">
+        <section data-testid="basic">
+          <bal-accordion close-label="Show less" open-label="Show more">
             <p class="p-medium">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -23,18 +23,11 @@
             </p>
           </bal-accordion>
         </section>
-        <section>
+        <section data-testid="with-card">
           <bal-card>
             <bal-card-title>BaloiseCombi</bal-card-title>
             <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-            <bal-accordion
-              data-testid="with-card"
-              card
-              open-icon="edit"
-              close-label="Show less"
-              open-label="Show more"
-              close-icon="close"
-            >
+            <bal-accordion card open-icon="edit" close-label="Show less" open-label="Show more" close-icon="close">
               <p class="py-medium">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua.
