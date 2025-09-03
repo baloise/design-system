@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.7.0
+
+### Minor Changes
+
+- **angular**: support v20 and dropped v17 support ( [#1774](https://github.com/baloise/design-system/pull/1774))
+
+- **navbar**: add method to toggle the menu on touch devices ( [#1784](https://github.com/baloise/design-system/pull/1784))
+
+### Patch Changes
+
+- **dropdown**: reflect label of options to fix react issue ( [#1790](https://github.com/baloise/design-system/pull/1790))
+
 ## 19.6.0
 
 ### Minor Changes

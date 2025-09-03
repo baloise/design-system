@@ -2539,6 +2539,10 @@ export namespace Components {
           * @default false
          */
         "light": boolean;
+        /**
+          * Toggles the menu on request method can be used from outside to open or close the menu
+         */
+        "toggleMenu": () => Promise<void>;
     }
     interface BalNavbarBrand {
         /**
@@ -2588,6 +2592,7 @@ export namespace Components {
           * @default '_self'
          */
         "target": BalProps.BalButtonTarget;
+        "toggle": () => Promise<void>;
     }
     interface BalNavbarMenu {
         /**

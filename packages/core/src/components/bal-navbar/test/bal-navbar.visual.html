@@ -65,6 +65,31 @@
             <bal-navbar-brand href="/" target="_blank" animated="false">Wide</bal-navbar-brand>
           </bal-navbar>
         </section>
+        <br />
+        <br />
+        <section data-testid="toggle">
+          <bal-navbar>
+            <bal-navbar-brand href="/" target="_blank" animated="false">App </bal-navbar-brand>
+            <bal-navbar-menu>
+              <bal-navbar-menu-start>
+                <bal-tabs context="navbar" inverted v-model="myActiveTab" value="tab-a">
+                  <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+                  <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+                  <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+                </bal-tabs>
+              </bal-navbar-menu-start>
+            </bal-navbar-menu>
+          </bal-navbar>
+          <button class="button" data-testid="toggle-button" id="btn-toggle">Toggle Navbar</button>
+          <script>
+            const btnToggle = document.getElementById('btn-toggle')
+            const navbar = document.querySelector('bal-navbar')
+
+            btnToggle.addEventListener('click', () => {
+              navbar.toggleMenu()
+            })
+          </script>
+        </section>
       </main>
     </bal-doc-app>
   </body>

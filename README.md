@@ -3,6 +3,7 @@
 </a>
 
 <br />
+<br />
 
 <p align="center">
   The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
