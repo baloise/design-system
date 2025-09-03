@@ -284,6 +284,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
               class={{
                 'button': true,
                 'is-square': true,
+                'is-disabled': this._value < 2,
                 'is-flat': flat,
                 [buttonColor]: true,
                 [buttonSize]: true,
@@ -295,7 +296,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
               data-testid="bal-pagination-controls-left"
               title={leftControlTitle}
             >
-              <bal-icon name="nav-go-left" size="small" />
+              <bal-icon name="nav-go-left" size="small" disabled={this._value < 2} />
             </button>
           ) : (
             ''
@@ -305,6 +306,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
               class={{
                 'button': true,
                 'is-square': true,
+                'is-disabled': this._value === this.totalPages,
                 'is-flat': flat,
                 [buttonColor]: true,
                 [buttonSize]: true,
@@ -316,7 +318,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
               data-testid="bal-pagination-controls-right"
               title={rightControlTitle}
             >
-              <bal-icon name="nav-go-right" size="small" />
+              <bal-icon name="nav-go-right" size="small" disabled={this._value === this.totalPages} />
             </button>
           ) : (
             ''

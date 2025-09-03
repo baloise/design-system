@@ -6,7 +6,6 @@
 .bal-popup
   position: static
   display: inline
-  z-index: var(--bal-z-index-popup)
 
 // Popup Container
 // --------------------------------------------------
@@ -20,6 +19,7 @@
   margin: 0 auto
   position: relative
   width: auto
+  z-index: var(--bal-z-index-popup)
   //
   // variants
   &--variant-popover
@@ -98,6 +98,7 @@
   height: 100vh
   display: none
   visibility: hidden
+  z-index: calc(var(--bal-z-index-popup) - 1)
 
 .bal-popup-variant-popover-trigger,
 .bal-popup-permanent-trigger
