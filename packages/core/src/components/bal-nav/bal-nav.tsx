@@ -531,7 +531,7 @@ export class Nav
             ''
           )}
           <div>
-            <slot></slot>
+            <slot />
           </div>
         </div>
         {/*

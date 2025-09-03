@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -38,7 +38,7 @@ export class InputGroup implements ComponentInterface {
           ...block.modifier(disabledClass).class(hasDisabled),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

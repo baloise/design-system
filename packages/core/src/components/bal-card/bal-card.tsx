@@ -70,7 +70,7 @@ export class Card {
           'bal-card--has-fullheight': this.fullheight,
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

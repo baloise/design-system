@@ -1,6 +1,6 @@
-import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 import { balBrowser } from '../../../utils/browser'
 
 @Component({
@@ -127,7 +127,7 @@ export class PopoverContent implements ComponentInterface, BalBreakpointObserver
         style={this.contentStyle}
       >
         <div class={{ ...block.element('inner').class() }} style={this.innerStyle}>
-          <slot></slot>
+          <slot />
         </div>
         <div class={{ ...block.element('arrow').class() }} data-popper-arrow></div>
       </Host>

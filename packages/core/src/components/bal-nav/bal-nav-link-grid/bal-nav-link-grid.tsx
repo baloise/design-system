@@ -1,6 +1,6 @@
-import { Component, h, ComponentInterface, Host } from '@stencil/core'
-import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { Component, ComponentInterface, Host, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-link-grid',
@@ -28,7 +28,7 @@ export class NavLinkGrid implements ComponentInterface, Loggable {
           ...block.class(),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

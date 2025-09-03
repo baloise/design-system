@@ -1,7 +1,7 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { BEM } from '../../../utils/bem'
 import { stopEventBubbling } from 'packages/core/src/utils/form-input'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-value',
@@ -61,7 +61,7 @@ export class DataValue {
         }}
       >
         <div>
-          <slot></slot>
+          <slot />
         </div>
         <bal-button
           class={{

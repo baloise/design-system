@@ -1,7 +1,7 @@
-import { Component, h, Host, Method, State, Element, Prop, ComponentInterface } from '@stencil/core'
-import { deepReady } from '../../../utils/helpers'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
+import { deepReady } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-navbar-menu',
@@ -61,7 +61,7 @@ export class NavbarMenu implements ComponentInterface, BalBreakpointObserver {
           [`is-${container}`]: container !== '',
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

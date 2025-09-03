@@ -186,7 +186,7 @@ export class CarouselItem implements ComponentInterface {
           ) : (
             ''
           )}
-          <slot></slot>
+          <slot />
         </Host>
       )
     }
@@ -234,7 +234,7 @@ export class CarouselItem implements ComponentInterface {
             ''
           )}
           {this.label !== undefined ? <span class={{ ...label.class() }}>{this.label}</span> : ''}
-          <slot></slot>
+          <slot />
         </TagType>
       </Host>
     )

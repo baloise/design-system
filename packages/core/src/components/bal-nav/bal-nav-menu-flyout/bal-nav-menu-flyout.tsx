@@ -118,7 +118,7 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
             ...block.element('container').class(),
           }}
         >
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

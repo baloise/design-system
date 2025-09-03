@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 @Component({
   tag: 'bal-stage-body',
@@ -11,7 +11,7 @@ export class StageBody implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

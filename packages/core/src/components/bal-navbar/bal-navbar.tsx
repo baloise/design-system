@@ -79,7 +79,7 @@ export class Navbar {
             [`is-${this.container}`]: this.container !== '',
           }}
         >
-          <slot></slot>
+          <slot />
         </nav>
       </Host>
     )

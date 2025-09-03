@@ -1,17 +1,17 @@
 import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State, Method } from '@stencil/core'
+import { Component, h, Host, Method, Prop, State } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
-  defaultConfig,
   BalConfigState,
   BalLanguage,
+  BalRegion,
+  defaultConfig,
   ListenToConfig,
   updateBalLanguage,
-  BalRegion,
 } from '../../utils/config'
-import { BEM } from '../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { i18nBalFooter } from './bal-footer.i18n'
 
 @Component({
@@ -208,7 +208,7 @@ export class Footer implements BalConfigObserver, Loggable {
                 ...elSlot.class(),
               }}
             >
-              <slot></slot>
+              <slot />
             </div>
             <div
               class={{

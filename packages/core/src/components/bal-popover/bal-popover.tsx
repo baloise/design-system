@@ -1,24 +1,24 @@
+import { createPopper, Instance } from '@popperjs/core'
+import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
+import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import {
   Component,
-  h,
-  Host,
-  Method,
-  Prop,
-  Watch,
+  ComponentInterface,
   Element,
   Event,
   EventEmitter,
-  State,
+  h,
+  Host,
   Listen,
-  ComponentInterface,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
-import { createPopper, Instance } from '@popperjs/core'
 import { BEM } from '../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { balBrowser } from '../../utils/browser'
-import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
-import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -420,7 +420,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
             }}
           ></div>
         )}
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

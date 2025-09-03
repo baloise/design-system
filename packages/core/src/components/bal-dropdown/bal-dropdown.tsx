@@ -1,38 +1,19 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
   Prop,
   State,
   Watch,
-  Event,
-  EventEmitter,
-  Method,
+  h,
 } from '@stencil/core'
-import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
-import { BEM } from '../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { stopEventBubbling } from '../../utils/form-input'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import {
-  BalOption,
-  DropdownEventsUtil,
-  DropdownFormSubmit,
-  DropdownFormSubmitUtil,
-  DropdownOptionUtil,
-  DropdownPopupUtil,
-  DropdownValueUtil,
-  DropdownOptionList,
-  DropdownFocus,
-  DropdownFocusUtil,
-  DropdownIcon,
-  DropdownNativeSelect,
-  DropdownInput,
-  DropdownValue,
-  DropdownAutoFillUtil,
-} from '../../utils/dropdown'
+import { BEM } from '../../utils/bem'
+import { balBrowser } from '../../utils/browser'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -41,9 +22,28 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
+import {
+  BalOption,
+  DropdownAutoFillUtil,
+  DropdownEventsUtil,
+  DropdownFocus,
+  DropdownFocusUtil,
+  DropdownFormSubmit,
+  DropdownFormSubmitUtil,
+  DropdownIcon,
+  DropdownInput,
+  DropdownNativeSelect,
+  DropdownOptionList,
+  DropdownOptionUtil,
+  DropdownPopupUtil,
+  DropdownValue,
+  DropdownValueUtil,
+} from '../../utils/dropdown'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { stopEventBubbling } from '../../utils/form-input'
 import { addEventListener, removeEventListener, waitAfterIdleCallback } from '../../utils/helpers'
-import { balBrowser } from '../../utils/browser'
+import { isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 @Component({
   tag: 'bal-dropdown',
@@ -569,7 +569,7 @@ export class Dropdown
           refPanelEl={el => (this.panelEl = el)}
           refListEl={el => (this.listEl = el)}
         >
-          <slot></slot>
+          <slot />
         </DropdownOptionList>
       </Host>
     )

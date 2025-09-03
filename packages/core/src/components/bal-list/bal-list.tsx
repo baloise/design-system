@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -62,7 +62,7 @@ export class List {
           ...block.modifier(`background-${this.background}`).class(),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

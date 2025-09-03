@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-content',
@@ -14,7 +14,7 @@ export class ListItemContent {
           [`bal-list__item__content--${this.contentAlignment}`]: this.contentAlignment !== undefined,
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

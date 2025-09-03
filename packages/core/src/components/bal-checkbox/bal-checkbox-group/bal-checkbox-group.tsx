@@ -454,7 +454,7 @@ export class CheckboxGroup
             ...innerEl.modifier('button').class(this.interface === 'button'),
           }}
         >
-          <slot></slot>
+          <slot />
           {options.map(option => (
             <bal-checkbox
               key={option.value}

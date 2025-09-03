@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Prop, State, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
@@ -73,7 +73,7 @@ export class NavMenuBar implements ComponentInterface, Loggable {
               ...block.element('container').class(),
             }}
           >
-            <slot></slot>
+            <slot />
           </div>
         </div>
       </Host>

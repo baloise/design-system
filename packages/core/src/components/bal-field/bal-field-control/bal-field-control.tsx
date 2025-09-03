@@ -54,7 +54,7 @@ export class FieldControl {
           'bal-field-control--expanded-on-mobile': !!this.expandedOnMobile,
         }}
       >
-        <slot></slot>
+        <slot />
         {this.buildIconLeftTemplate}
         {this.buildIconRightTemplate}
       </Host>

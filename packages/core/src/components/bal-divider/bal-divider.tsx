@@ -63,7 +63,7 @@ export class Divider implements ComponentInterface, Loggable {
           ...block.modifier(`border-style-${this.borderStyle}`).class(borderStyle),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

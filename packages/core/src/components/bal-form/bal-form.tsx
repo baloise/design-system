@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Prop, Method, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop } from '@stencil/core'
 import { scrollToFirstInvalidField } from '../../utils/form'
 import { waitAfterFramePaint, waitAfterIdleCallback } from '../../utils/helpers'
 
@@ -47,7 +47,7 @@ export class Form implements ComponentInterface {
     return (
       <Host>
         <NativeEl {...attrs} class={this.formClass}>
-          <slot></slot>
+          <slot />
         </NativeEl>
       </Host>
     )

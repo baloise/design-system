@@ -15,7 +15,7 @@ export class HintTitle {
       <Host class={{ ...elTitle.class() }}>
         <h3 class={{ ...elHeading.class() }}>
           <span>
-            <slot></slot>
+            <slot />
           </span>
         </h3>
       </Host>

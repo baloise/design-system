@@ -195,7 +195,7 @@ export class NavbarBrand {
           logoTemplate
         )}
         <span class={{ ...navbarBrandEl.element('title').class() }}>
-          <slot></slot>
+          <slot />
         </span>
         <bal-button
           class={{

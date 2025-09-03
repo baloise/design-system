@@ -146,7 +146,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
           }}
           data-testid="bal-text"
         >
-          <slot></slot>
+          <slot />
         </Text>
       </Host>
     )

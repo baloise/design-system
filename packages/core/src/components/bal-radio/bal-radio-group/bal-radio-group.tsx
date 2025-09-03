@@ -478,7 +478,7 @@ export class RadioGroup
             ...innerEl.modifier('button').class(this.interface === 'button'),
           }}
         >
-          <slot></slot>
+          <slot />
           {options.map(option => (
             <bal-radio
               key={option.value}

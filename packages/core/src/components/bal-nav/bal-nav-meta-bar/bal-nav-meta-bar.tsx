@@ -1,7 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Listen, Prop, State, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { balBrowser } from '../../../utils/browser'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-meta-bar',
@@ -116,7 +116,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
             ...block.element('container').class(),
           }}
         >
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

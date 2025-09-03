@@ -537,7 +537,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
             ''
           )}
           <div class={{ ...labelTextEl.class(), ...labelTextEl.modifier('hidden').class(this.labelHidden) }}>
-            <slot></slot>
+            <slot />
           </div>
         </LabelTag>
         {/* <input
@@ -583,7 +583,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
             data-testid="bal-radio-text"
           >
             {this.label}
-            <slot></slot>
+            <slot />
           </span>
         </LabelTag> */}
       </Host>

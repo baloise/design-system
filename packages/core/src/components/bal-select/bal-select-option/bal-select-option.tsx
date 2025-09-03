@@ -36,7 +36,7 @@ export class SelectOption implements ComponentInterface, Loggable {
   render() {
     return (
       <Host style={{ display: 'none' }}>
-        <slot></slot>
+        <slot />
       </Host>
     )
   }
