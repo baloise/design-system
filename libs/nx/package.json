@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-nx",
-  "version": "19.5.0",
+  "version": "19.7.0",
   "private": true,
   "dependencies": {
     "@nx/devkit": "18.0.4",
@@ -16,7 +16,7 @@
     "fs-extra": "11.2.0",
     "sass": "~1.70.0",
     "clean-css": "~5.3.3",
-    "typescript": "~4.8.2",
+    "typescript": "~5.4.2",
     "archiver": "~6.0.1"
   },
   "type": "commonjs",

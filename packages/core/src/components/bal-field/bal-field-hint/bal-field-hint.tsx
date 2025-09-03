@@ -1,5 +1,7 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
+import { balBreakpoints } from '@baloise/ds-core'
+import { BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-field-hint',
@@ -7,6 +9,10 @@ import { BEM } from '../../../utils/bem'
   scoped: true,
 })
 export class FieldHint {
+  /**
+   * Hide the title on desktop.
+   */
+  @Prop() hideTitleOnDesktop = false
   /**
    * Text of the inputs label
    */
@@ -21,6 +27,13 @@ export class FieldHint {
    * Disables the close button for tablet and desktop
    */
   @Prop() small = false
+
+  @State() isDesktop = balBreakpoints.isDesktop
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isDesktop = breakpoints.desktop
+  }
 
   render() {
     const block = BEM.block('field-hint')
@@ -38,7 +51,11 @@ export class FieldHint {
           closeLabel={this.closeLabel}
           small={this.small}
         >
-          {this.subject ? <bal-hint-title>{this.subject}</bal-hint-title> : ''}
+          {this.subject && !(this.hideTitleOnDesktop && this.isDesktop) ? (
+            <bal-hint-title>{this.subject}</bal-hint-title>
+          ) : (
+            ''
+          )}
           <bal-hint-text>
             <slot></slot>
           </bal-hint-text>

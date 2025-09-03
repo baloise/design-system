@@ -29,6 +29,7 @@ export interface PopupComponentInterface {
   backdropEl?: HTMLDivElement
   containerEl?: HTMLDivElement
   arrowEl?: HTMLDivElement
+  innerEl?: HTMLBalStackElement
   trigger?: Element
   lastTrigger?: Element
   setMinWidth(value: number): any

@@ -112,3 +112,15 @@ ul.is-list
 ul.list:not(.has-bullet-circle):not(.has-bullet-check) li,
 ul.is-list:not(.has-bullet-circle):not(.has-bullet-check) li
   list-style: disc
+
+dl.list
+  display: grid
+  grid-template-columns: var(--bal-description-list-grid-term) var(--bal-description-list-grid-detail)
+  row-gap: var(--bal-description-list-row-gap)
+  column-gap: var(--bal-description-list-column-gap)
+
+  dt
+    color: var(--bal-description-list-term-color)
+
+  dd
+    color: var(--bal-description-list-detail-color)

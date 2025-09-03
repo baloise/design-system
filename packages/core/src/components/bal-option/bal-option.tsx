@@ -47,12 +47,12 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
   /**
    * Label will be shown in the input element when it got selected
    */
-  @Prop() label = ''
+  @Prop({ reflect: true }) label = ''
 
   /**
    * The value of the select option. This value will be returned by the parent `<bal-select>` element.
    */
-  @Prop() value = ''
+  @Prop({ reflect: true }) value = ''
 
   /**
    * If `true`, the user cannot interact with the option.

@@ -50,6 +50,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   contentEl: HTMLDivElement | undefined
   backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
+  innerEl: HTMLBalStackElement | undefined
 
   @State() activeClosable = false
   @State() activeBackdropDismiss = false
@@ -511,6 +512,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
             class={{
               ...innerBlock.class(),
             }}
+            ref={innerBlock => (this.innerEl = innerBlock)}
           >
             {this.label ? (
               <bal-stack
