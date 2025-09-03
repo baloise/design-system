@@ -48,7 +48,7 @@ export class StageBackLink implements ComponentInterface {
             inverted={this.inverted}
             shadow={this.shadow}
           ></bal-icon>
-          <slot></slot>
+          <slot />
         </a>
       </Host>
     )

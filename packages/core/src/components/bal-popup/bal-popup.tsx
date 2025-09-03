@@ -546,7 +546,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
               data-test="bal-popup-content"
               tabindex="-1"
             >
-              <slot></slot>
+              <slot />
             </div>
           </bal-stack>
         </div>

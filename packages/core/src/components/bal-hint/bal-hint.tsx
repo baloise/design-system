@@ -223,7 +223,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
       >
         <Popup></Popup>
         <div ref={el => (this.slotWrapperEl = el)} style={{ display: 'none' }}>
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

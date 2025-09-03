@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -43,7 +43,7 @@ export class Notification {
           }}
           data-testid="bal-notification-content"
         > */}
-        <slot></slot>
+        <slot />
         {/* </div> */}
       </Host>
     )

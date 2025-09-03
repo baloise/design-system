@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-icon',
@@ -17,7 +17,7 @@ export class ListItemIcon {
           'bal-list__item__icon--right': this.right,
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -89,7 +89,7 @@ export class Stage implements ComponentInterface {
             [`${this.containerClass}`]: this.containerSize !== '',
           }}
         >
-          <slot></slot>
+          <slot />
           {this.shape && (
             <div class={{ container: true, [`${this.containerClass}`]: this.containerSize !== '' }}>
               <bal-shape

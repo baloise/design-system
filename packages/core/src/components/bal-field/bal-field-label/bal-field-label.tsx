@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-label',
@@ -98,7 +98,7 @@ export class FieldLabel {
           readonly={this.readonly}
           weight={this.weight}
         >
-          <slot></slot>
+          <slot />
         </bal-label>
       </Host>
     )

@@ -59,7 +59,7 @@ export class FieldMessage implements BalAriaFormLinking {
         }}
         style={{ minHeight: this.noReservedSpace ? '0' : undefined }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

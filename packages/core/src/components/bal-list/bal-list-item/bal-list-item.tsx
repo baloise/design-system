@@ -401,7 +401,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
             download={this.download}
             onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
           >
-            <slot></slot>
+            <slot />
           </a>
         </Host>
       )
@@ -420,7 +420,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
             disabled={this.disabled}
             onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
           >
-            <slot></slot>
+            <slot />
           </button>
         </Host>
       )
@@ -436,7 +436,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
           onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
         >
           <div class={{ ...trigger.class() }}>
-            <slot></slot>
+            <slot />
           </div>
         </Host>
       )
@@ -450,7 +450,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         }}
       >
         <div class={{ ...trigger.class() }}>
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

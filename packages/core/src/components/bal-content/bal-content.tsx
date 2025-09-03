@@ -80,7 +80,7 @@ export class Content implements ComponentInterface, Loggable {
           ...block.modifier(`space-${this.space}`).class(space),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

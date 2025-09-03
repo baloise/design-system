@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-form-col',
@@ -25,7 +25,7 @@ export class FormCol implements ComponentInterface {
           'is-9': this.size === 'three-quarters',
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

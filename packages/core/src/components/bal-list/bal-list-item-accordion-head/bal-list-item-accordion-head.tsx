@@ -162,7 +162,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
       >
-        <slot></slot>
+        <slot />
         <bal-list-item-icon right>
           <bal-icon
             class="bal-list__item__accordion-head__icon"

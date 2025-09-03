@@ -32,7 +32,7 @@ export class CardSubtitle {
         }}
       >
         <span>
-          <slot></slot>
+          <slot />
         </span>
       </Host>
     )

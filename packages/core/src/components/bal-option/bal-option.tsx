@@ -224,7 +224,7 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
               ...block.element('inner').modifier('multiline').class(this.multiline),
             }}
           >
-            <slot></slot>
+            <slot />
           </div>
           {this.selected && !this.checkbox ? (
             <bal-icon

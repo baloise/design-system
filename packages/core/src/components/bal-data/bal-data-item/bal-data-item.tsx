@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -26,7 +26,7 @@ export class DataItem {
           ...element.modifier('has-border').class(this.border),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

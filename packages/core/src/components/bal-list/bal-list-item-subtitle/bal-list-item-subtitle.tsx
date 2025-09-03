@@ -9,7 +9,7 @@ export class ListItemSubtitle {
   render() {
     return (
       <Host class="bal-list__item__subtitle">
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

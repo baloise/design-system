@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-card-button',
@@ -55,7 +55,7 @@ export class CardButton {
           target={this.target}
           loading={this.loading}
         >
-          <slot></slot>
+          <slot />
         </bal-button>
       </Host>
     )

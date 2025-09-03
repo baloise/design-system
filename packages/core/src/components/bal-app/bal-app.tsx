@@ -1,10 +1,10 @@
-import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
-import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
+import { balDevice } from '../../utils/device'
+import { startFocusVisible } from '../../utils/focus-visible'
 import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { startFocusVisible } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-app',
@@ -87,7 +87,7 @@ export class App implements Loggable {
           'bal-app--touch': balDevice.hasTouchScreen,
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

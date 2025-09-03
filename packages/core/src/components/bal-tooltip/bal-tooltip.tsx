@@ -1,22 +1,22 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  EventEmitter,
-  Event,
+  h,
 } from '@stencil/core'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
-import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
 import { balFloatingUi } from '../../utils/floating-ui'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { hideArrowElement, hideContainerElement, showArrowElement, showContainerElement } from './bal-tooltip.util'
 
 @Component({
   tag: 'bal-tooltip',
@@ -334,7 +334,7 @@ export class Tooltip implements ComponentInterface, Loggable {
               ref={contentEl => (this.contentEl = contentEl)}
               data-test="bal-tooltip-content"
             >
-              <slot></slot>
+              <slot />
             </div>
           </bal-stack>
         </div>

@@ -1,6 +1,6 @@
+import { balBreakpoints } from '@baloise/ds-core'
 import { Component, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { balBreakpoints } from '@baloise/ds-core'
 import { BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
@@ -57,7 +57,7 @@ export class FieldHint {
             ''
           )}
           <bal-hint-text>
-            <slot></slot>
+            <slot />
           </bal-hint-text>
         </bal-hint>
       </Host>

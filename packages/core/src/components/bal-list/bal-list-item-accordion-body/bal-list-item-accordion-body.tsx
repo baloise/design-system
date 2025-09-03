@@ -160,7 +160,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
           }}
           ref={contentElWrapper => (this.contentElWrapper = contentElWrapper)}
         >
-          <slot></slot>
+          <slot />
         </div>
       </Host>
     )

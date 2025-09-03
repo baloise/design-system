@@ -550,7 +550,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
             ''
           )}
           <div class={{ ...labelTextEl.class(), ...labelTextEl.modifier('hidden').class(this.labelHidden) }}>
-            <slot></slot>
+            <slot />
           </div>
         </LabelTag>
       </Host>

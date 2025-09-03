@@ -20,7 +20,7 @@ export class NavbarMenuEnd {
 
     return (
       <Host class={{ ...menuEndEl.class(), ...menuEndEl.modifier(`context-${this.interface}`).class() }}>
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

@@ -22,7 +22,7 @@ export class HintText {
             ...elTextField.class(),
           }}
         >
-          <slot></slot>
+          <slot />
         </p>
       </Host>
     )

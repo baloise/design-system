@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -54,7 +54,7 @@ export class Badge implements ComponentInterface {
           }}
           data-testid="bal-badge-label"
         >
-          <slot></slot>
+          <slot />
         </span>
         {this.size !== 'small' ? (
           <bal-icon

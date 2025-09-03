@@ -61,7 +61,7 @@ export class DocApp implements ComponentInterface {
       <Host>
         <bal-app animated={this.animated}>
           <div class={{ 'has-sticky-footer': this.stickyFooter }}>
-            <slot></slot>
+            <slot />
           </div>
         </bal-app>
       </Host>

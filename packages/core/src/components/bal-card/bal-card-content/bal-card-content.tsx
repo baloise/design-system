@@ -7,7 +7,7 @@ export class CardContent {
   render() {
     return (
       <Host class="bal-card-content">
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

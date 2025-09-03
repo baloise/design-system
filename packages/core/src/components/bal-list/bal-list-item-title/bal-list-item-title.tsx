@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-title',
@@ -22,7 +22,7 @@ export class ListItemTitle {
     return (
       <Host class="bal-list__item__title">
         <bal-heading level={this.level} visualLevel={this.visualLevel} space="none">
-          <slot></slot>
+          <slot />
         </bal-heading>
       </Host>
     )

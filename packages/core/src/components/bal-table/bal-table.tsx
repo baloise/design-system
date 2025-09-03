@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host, ComponentInterface, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -26,7 +26,7 @@ export class Table implements ComponentInterface {
           ...block.modifier(fullwidthClass).class(hasFullwidth),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

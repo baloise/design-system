@@ -25,7 +25,7 @@ export class NavbarMenuStart {
           ...menuStartEl.modifier(`context-${this.interface}`).class(),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

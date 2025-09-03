@@ -122,7 +122,7 @@ export class Stack implements ComponentInterface, Loggable {
           ...block.modifier(`fit-content`).class(fitContent),
         }}
       >
-        <slot></slot>
+        <slot />
       </Host>
     )
   }

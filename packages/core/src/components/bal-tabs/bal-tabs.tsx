@@ -948,7 +948,7 @@ export class Tabs
               ...contentEl.element('wrapper').class(),
             }}
           >
-            <slot></slot>
+            <slot />
           </div>
         </div>
       </Host>
