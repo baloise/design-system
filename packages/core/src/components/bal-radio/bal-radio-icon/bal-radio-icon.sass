@@ -33,14 +33,14 @@
     content: ''
     background-color: transparent
     border-radius: var(--bal-radio-icon-border-radius)
-    width: 0.375rem
-    height: 0.375rem
+    width: var(--bal-radio-icon-inner-width, 0.375rem)
+    height: var(--bal-radio-icon-inner-height, 0.375rem)
   //
   // checked
   bal-icon
     opacity: 0
   &--checked:after
-    background-color: white
+    background-color: var(--bal-radio-icon-inner-background-checked)
   &--checked
     background-color: var(--bal-radio-icon-background-checked)
     border-color: var(--bal-radio-icon-border-color-checked)
