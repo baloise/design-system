@@ -17,7 +17,7 @@ export function generatePaginationControl(value: number, totalPages: number, pag
     totalPages = 10
   }
 
-  if (pageRange <= 0) {
+  if (pageRange < 0) {
     pageRange = 2
   }
 
