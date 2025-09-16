@@ -64,6 +64,10 @@ export const connectListeners = (doc: Document) => {
       if (ev.key === 'Escape') {
         const lastOverlay = getOverlay(doc)
         if (lastOverlay) {
+          // check for modal with isClosable = false they should not be closed with ESC or backdrop click
+          if ((lastOverlay as any).isClosable === false) {
+            return
+          }
           lastOverlay.dismiss(undefined, BACKDROP)
         }
       }
