@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.7.1
+
+### Patch Changes
+
+- **number-input**: uses same format for CH-fr and CH-de ( [`993a07f`](https://github.com/baloise/design-system/commit/993a07f91f0392ee18ab86ccf97b387dd97cc702))
+
+- **pagination**: enable missing 0 page-range value ( [#1800](https://github.com/baloise/design-system/pull/1800))
+
+- **modal**: when using the modal service isClosable=false will now prevent closing modals with escape key ( [#1804](https://github.com/baloise/design-system/pull/1804))
+
+- **devkit**: enable new angular setup with app.ts instead of app.component.ts ( [#1801](https://github.com/baloise/design-system/pull/1801))
+
 ## 19.7.0
 
 ### Minor Changes
