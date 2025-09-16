@@ -6,6 +6,7 @@ describe('bal-pagination', () => {
 
     it('basic component', () => {
       cy.getByTestId('basic').testVisual('pagination-basic-desktop')
+      cy.getByTestId('ranges').testVisual('pagination-ranges-desktop')
       cy.getByTestId('small').testVisual('pagination-small-desktop')
       cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-desktop')
     })
@@ -16,6 +17,7 @@ describe('bal-pagination', () => {
 
     it('basic component', () => {
       cy.getByTestId('basic').testVisual('pagination-basic-tablet')
+      cy.getByTestId('ranges').testVisual('pagination-ranges-tablet')
       cy.getByTestId('small').testVisual('pagination-small-tablet')
       cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-tablet')
     })
@@ -26,6 +28,7 @@ describe('bal-pagination', () => {
 
     it('basic component', () => {
       cy.getByTestId('basic').testVisual('pagination-basic-mobile')
+      cy.getByTestId('ranges').testVisual('pagination-ranges-mobile')
       cy.getByTestId('small').testVisual('pagination-small-mobile')
       cy.getByTestId('small-with-dots').testVisual('pagination-small-with-dots-mobile')
     })
