@@ -2,10 +2,15 @@ import { defaultLocale, useBalConfig } from './config'
 
 const getLocale = (): string => {
   const config = useBalConfig()
+  // workaround for swiss french locale which uses non standard number formatting
+  if (config && config.locale && config.locale === 'fr-CH') {
+    return 'de-CH'
+  }
   return (config && config.locale) || defaultLocale
 }
 
 export function getDecimalSeparator(): string {
+  console.log('getDecimalSeparator called', getLocale())
   return Intl.NumberFormat(getLocale())
     .format(1.1)
     .replace(/\p{Number}/gu, '')
