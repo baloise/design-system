@@ -4,7 +4,7 @@ import {
   Element,
   FunctionalComponent,
   h,
-  Host,
+  Host, Listen,
   Method,
   Prop,
   State,
@@ -12,7 +12,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
-import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
+import { isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
 import { BalScrollHandler } from '../../utils/scroll'
 import { preventDefault } from '../bal-select/utils/utils'
 
@@ -39,9 +39,15 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
   @Prop() closeLabel?: string
 
   /**
+   * If `true` the hint box will close on an escape key and when clicking outside of the hint box.
+   */
+  @Prop() closeOnEscapeAndOutOfFocus = true
+
+  /**
    * Disables the close button for tablet and desktop
    */
   @Prop() small = false
+
 
   connectedCallback() {
     this.bodyScrollHandler.connect()
@@ -138,6 +144,38 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     preventDefault(ev)
   }
 
+  // @Listen('keyup', { target: 'document' })
+  // async handleKeyUp(ev: KeyboardEvent) {
+  //   ev.preventDefault()
+  //   ev.stopPropagation()
+  //   if (this.isActive && this.closeOnEscapeAndOutOfFocus) {
+  //     if (ev.key === 'Escape' || ev.key === 'Esc') {
+  //       await this.dismiss();
+  //     }
+  //   }
+  // }
+
+  // @Listen('mousedown')
+  // async onMouseDown(ev: MouseEvent) {
+  //   this.isClickedOutsideOnMouseDown = this.isClickedOutside(ev)
+  // }
+  // private isClickedOutside(ev: MouseEvent) {
+  //   if (this.closeOnEscapeAndOutOfFocus && this.isActive && ev && ev.target) {
+  //     const element = ev.target as HTMLElement
+  //     return element.classList.contains('bal-popup__container')
+  //   }
+  //
+  //   return false
+  // }
+  //
+  // @Listen('click')
+  // async onClickCloseButton(ev: MouseEvent) {
+  //   if (this.isClickedOutsideOnMouseDown) {
+  //     await this.dismiss()
+  //   }
+  //   this.isClickedOutsideOnMouseDown = false
+  // }
+  //
   private updateContent() {
     if (this.hintContentEl && this.slotWrapperEl) {
       this.hintContentEl.innerHTML = this.slotWrapperEl.innerHTML
@@ -202,6 +240,8 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           <bal-popup
             id={this.componentId}
             placement="right"
+            backdropDismiss={this.closeOnEscapeAndOutOfFocus}
+            closable={this.closeOnEscapeAndOutOfFocus}
             ref={el => (this.popupElement = el as HTMLBalPopupElement)}
             onBalChange={this.onPopupChange}
             variant={this.isMobile ? 'fullscreen' : 'popover'}
