@@ -3,10 +3,12 @@ import { getPrefix } from '../utils/workspace'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const updateAppComponent = (host: Tree) => {
-  const appTemplatePath = `src/app/app.component.html`
-  const appComponentPath = `src/app/app.component.ts`
-  const appStylesPath = `src/app/app.component.css`
-  const appStylesSassPath = `src/app/app.component.scss`
+  const newAngularApp = host.exists(`src/app/app.html`)
+
+  const appTemplatePath = newAngularApp ? `src/app/app.html` : `src/app/app.component.html`
+  const appComponentPath = newAngularApp ? `src/app/app.ts` : `src/app/app.component.ts`
+  const appStylesPath = newAngularApp ? `src/app/app.css` : `src/app/app.component.css`
+  const appStylesSassPath = newAngularApp ? `src/app/app.scss` : `src/app/app.component.scss`
 
   const isInlineTemplate = !host.exists(appTemplatePath)
   const prefix = getPrefix(host)
@@ -14,7 +16,9 @@ export const updateAppComponent = (host: Tree) => {
   const hasCssStyles = host.exists(appStylesPath)
   const hasSassStyles = host.exists(appStylesSassPath)
   const hasStyles = hasCssStyles || hasSassStyles
-  const styleTemplate = hasStyles ? `styleUrl: './app.component.${hasCssStyles ? 'css' : 'scss'}',` : ''
+  const styleTemplate = hasStyles
+    ? `styleUrl: './app.${newAngularApp ? '' : 'component.'}${hasCssStyles ? 'css' : 'scss'}',`
+    : ''
 
   const appComponentBuffer = host.read(appComponentPath)
   if (appComponentBuffer) {
@@ -64,7 +68,7 @@ import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
   standalone: true,${onPushTemplate}
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
-  templateUrl: './app.component.html',
+  templateUrl: './app${newAngularApp ? '' : 'component.'}html',
   ${styleTemplate}
 })
 export class AppComponent {}
