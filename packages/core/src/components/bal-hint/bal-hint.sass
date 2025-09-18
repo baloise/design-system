@@ -4,6 +4,8 @@
 +block(hint)
   +unselectable
   display: inline-block
+  .bal-popup__backdrop
+    background-color: unset
   +element(icon)
     user-select: none
     cursor: pointer
@@ -15,6 +17,7 @@
   .bal-popup__container
     z-index: var(--bal-z-index-popup)
     background: var(--bal-hint-content-background)
+
   +element(content)
     background: var(--bal-hint-content-background)
     width: auto
