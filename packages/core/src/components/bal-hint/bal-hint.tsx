@@ -4,7 +4,8 @@ import {
   Element,
   FunctionalComponent,
   h,
-  Host, Listen,
+  Host,
+  Listen,
   Method,
   Prop,
   State,
@@ -47,7 +48,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
    * Disables the close button for tablet and desktop
    */
   @Prop() small = false
-
 
   connectedCallback() {
     this.bodyScrollHandler.connect()
