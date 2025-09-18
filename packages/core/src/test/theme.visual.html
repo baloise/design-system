@@ -7,42 +7,43 @@
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
-    <title>TCS Theme</title>
-    <link rel="stylesheet" href="/assets/tcs.css" />
+    <title>Theme</title>
   </head>
 
   <body>
     <bal-doc-app>
       <header class="bg-grey-2" data-test="navbar">
         <bal-navbar interface="simple">
-          <bal-navbar-brand
-            href="/"
-            target="_blank"
-            animated="false"
-            logo-size="small"
-            logo="https://www.tcs.ch/global/wGlobal/layout/images/logo.png?v2"
-            >TCS Theme
+          <bal-navbar-brand id="bal-navbar-brand" href="/" target="_blank" animated="false">
+            <span id="bal-navbar-brand-title">Theme</span>
           </bal-navbar-brand>
         </bal-navbar>
+        <div class="bg-grey-2 container border-bottom-primary">
+          <nav class="flex gap-normal p-normal container">
+            <a class="link text-medium" href="?theme">Baloise</a>
+            <a class="link text-medium" href="?theme=compact">Baloise Compact</a>
+            <a class="link text-medium" href="?theme=tcs">TCS</a>
+            <a class="link text-medium" href="?theme=santander">Santander</a>
+          </nav>
+          <nav class="flex gap-small p-normal">
+            <a class="link" href="#colors">colors</a>
+            <a class="link" href="#typography">typography</a>
+            <a class="link" href="#native-lists">native lists</a>
+            <a class="link" href="#buttons">buttons</a>
+            <a class="link" href="#forms">forms</a>
+            <a class="link" href="#pagination">pagination</a>
+            <a class="link" href="#stepper">stepper</a>
+            <a class="link" href="#tabs">tabs</a>
+            <a class="link" href="#notifications">notifications</a>
+            <a class="link" href="#toasts">toasts</a>
+            <a class="link" href="#tags">tags</a>
+            <a class="link" href="#modal">modal</a>
+            <a class="link" href="#spinner">spinner</a>
+            <a class="link" href="#footer">footer</a>
+          </nav>
+        </div>
       </header>
       <main class="container py-medium">
-        <nav class="flex gap-small">
-          <a class="link" href="#colors">colors</a>
-          <a class="link" href="#typography">typography</a>
-          <a class="link" href="#native-lists">native lists</a>
-          <a class="link" href="#buttons">buttons</a>
-          <a class="link" href="#forms">forms</a>
-          <a class="link" href="#pagination">pagination</a>
-          <a class="link" href="#stepper">stepper</a>
-          <a class="link" href="#tabs">tabs</a>
-          <a class="link" href="#notifications">notifications</a>
-          <a class="link" href="#toasts">toasts</a>
-          <a class="link" href="#tags">tags</a>
-          <a class="link" href="#modal">modal</a>
-          <a class="link" href="#spinner">spinner</a>
-          <a class="link" href="#footer">footer</a>
-        </nav>
-
         <!-- ----------------------------------------- -->
         <!-- Colors                                -->
         <!-- ----------------------------------------- -->
@@ -160,6 +161,8 @@
           <p class="text-small">
             <b>Small Helper Text</b> Text Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
+
+          <a href="" class="link">This is a link</a>
         </section>
 
         <!-- ----------------------------------------- -->
@@ -195,6 +198,7 @@
           <bal-button color="tertiary">Tertiary</bal-button>
           <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
           <bal-button color="link">Link</bal-button>
+          <bal-button disabled>Disabled</bal-button>
         </bal-button-group>
 
         <!-- ----------------------------------------- -->
@@ -364,7 +368,7 @@
 
         <h1 id="stepper" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Stepper</h1>
         <section>
-          <bal-steps value="tab-c">
+          <bal-steps value="step-c">
             <bal-step-item value="step-a" label="Done" done="true">Content of Step A</bal-step-item>
             <bal-step-item value="step-b" label="Failed" failed="true">Content of Step B</bal-step-item>
             <bal-step-item value="step-c" label="Active">Content of Step C</bal-step-item>
@@ -380,10 +384,10 @@
 
         <h1 id="tabs" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Tabs</h1>
         <section>
-          <bal-tabs fullwidth="true" border="true" value="tab-b">
+          <bal-tabs fullwidth="true" border="true" value="tab-c">
             <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
             <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble="true" value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
             <bal-tab-item value="tab-d" label="Tab D" hidden="true">Hidden Content of Tab D</bal-tab-item>
             <bal-tab-item value="tab-e" label="Tab E" disabled="true">Content of Tab E</bal-tab-item>
             <bal-tab-item
@@ -562,10 +566,22 @@
               <bal-spinner variation="circle"></bal-spinner>
             </div>
           </div>
-          <div
-            class="bg-primary-3 p-normal flex gap-small flex-direction-column justify-content-start align-items-start"
-          >
+          <div class="bg-primary p-normal flex gap-small flex-direction-column justify-content-start align-items-start">
             <bal-spinner color="white"></bal-spinner>
+            <div>
+              <bal-spinner color="white" variation="circle"></bal-spinner>
+            </div>
+          </div>
+          <div
+            class="bg-primary-1 p-normal flex gap-small flex-direction-column justify-content-start align-items-start"
+          >
+            <bal-spinner></bal-spinner>
+            <div>
+              <bal-spinner color="white" variation="circle"></bal-spinner>
+            </div>
+          </div>
+          <div class="bg-info-1 p-normal flex gap-small flex-direction-column justify-content-start align-items-start">
+            <bal-spinner></bal-spinner>
             <div>
               <bal-spinner color="white" variation="circle"></bal-spinner>
             </div>
@@ -580,11 +596,7 @@
       <h1 id="footer" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Footer</h1>
 
       <section>
-        <bal-footer
-          data-testid="partner-variant"
-          hide-links
-          logo-href="https://www.tcs.ch/global/wGlobal/layout/images/logo.png?v2"
-        >
+        <bal-footer id="bal-footer" hide-links>
           <div class="container">
             <p>
               Haben Sie noch Fragen zu TCS-Fahrzeug-Versicherung?
@@ -599,5 +611,49 @@
         </bal-footer>
       </section>
     </bal-doc-app>
+
+    <script>
+      /**
+       * read the query param theme fromt the url and load the corresponding css file
+       */
+      const urlParams = new URLSearchParams(window.location.search)
+      const theme = urlParams.get('theme')
+      if (theme) {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = `/assets/${theme}.css`
+        document.head.appendChild(link)
+
+        /**
+         * Set the logo in the navbar according to the theme
+         */
+        let logo = ''
+        switch (theme) {
+          case 'santander':
+            logo = 'https://hagcli.bancosantander.es/assets/images/santander-logo.svg'
+            break
+          case 'tcs':
+            logo = 'https://www.tcs.ch/global/wGlobal/layout/images/logo.png?v2'
+            break
+          default:
+            logo = ''
+        }
+
+        setTimeout(() => {
+          const navbarBrand = document.getElementById('bal-navbar-brand')
+          if (navbarBrand) {
+            navbarBrand.setAttribute('logo', logo)
+            if (theme === 'santander') {
+              navbarBrand.setAttribute('logo-size', 'small')
+            }
+          }
+
+          const footer = document.getElementById('bal-footer')
+          if (footer) {
+            footer.setAttribute('logo-href', logo)
+          }
+        }, 200)
+      }
+    </script>
   </body>
 </html>

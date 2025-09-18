@@ -1,0 +1,301 @@
+$font-path: '/assets/fonts/partners' !default
+
+@font-face
+  font-family: "Santander Headline Bold"
+  src: url("/assets/fonts/partners/SantanderHeadlineW05-Bold.eot")
+  src: url("/assets/fonts/partners/SantanderHeadlineW05-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-Bold.otf") format("opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-Bold.svg") format("svg"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.ttf") format("truetype"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.woff") format("woff"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.woff2") format("woff2")
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: "Santander Headline"
+  src: url("/assets/fonts/partners/SantanderHeadlineW05-RG.eot")
+  src: url("/assets/fonts/partners/SantanderHeadlineW05-RG.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-RG.otf") format("opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-RG.svg") format("svg"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.ttf") format("truetype"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.woff") format("woff"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.woff2") format("woff2")
+  font-weight: normal
+  font-style: normal
+
+:root
+  //
+  // Base
+  // Colors
+  --san-color-font: #333
+  --san-background-color: #eff6f9
+  --bal-font-family-text: 'Santander Headline', sans-serif
+  --bal-font-family-title: 'Santander Headline Bold', sans-serif
+  --bal-body-color: var(--san-color-font)
+
+  --bal-color-primary: #ec0001
+  --bal-color-primary-1: #fdf0e7
+  --bal-color-primary-2: #fce0d1
+  --bal-color-primary-3: #f39575
+  --bal-color-primary-4: #ec0001
+  --bal-color-primary-5: #cb0404
+  --bal-color-primary-6: #af000f
+  --bal-color-primary-6: #990001
+
+  --bal-color-red: var(--bal-color-primary)
+  --bal-color-red-1: #fbcccc
+  --bal-color-red-2: #f79999
+  --bal-color-red-3: #f24d4d
+  --bal-color-red-4: var(--bal-color-primary)
+  --bal-color-red-5: #a50001
+  --bal-color-red-6: #5e0000
+
+  --bal-color-yellow-1: #fbf1ea
+
+  --bal-color-danger: var(--bal-color-primary)
+  --bal-color-danger-1: #fbcccc
+  --bal-color-danger-2: #f79999
+  --bal-color-danger-3: #f24d4d
+  --bal-color-danger-4: var(--bal-color-primary)
+  --bal-color-danger-5: #a50001
+  --bal-color-danger-6: #5e0000
+
+  --bal-color-info-1: #e7f8ff
+
+  --bal-color-purple-1: #edf6f8
+  --bal-color-purple-2: #c3dee7
+  --bal-color-purple-3: #9bc3d3
+  --bal-color-purple-4: #015a7f
+  --bal-color-purple-5: #01364c
+  --bal-color-purple-6: #002433
+
+  --bal-color-green: #127277
+  --bal-color-green-1: #e7f1f1
+  --bal-color-green-2: #a0c7c9
+  --bal-color-green-3: #599ca0
+  --bal-color-green-4: #127277
+  --bal-color-green-5: #0e5b5f
+  --bal-color-green-6: #0b4447
+
+  --bal-color-text-primary: var(--bal-color-green-4)
+  --bal-color-text-primary-hovered: var(--bal-color-green-5)
+  --bal-color-text-primary-pressed: var(--bal-color-green-6)
+
+  --bal-color-info-1: #cedee7
+
+  --bal-color-grey-3: #949494
+  --bal-color-grey-4: #767676
+  --bal-color-grey-5: #5b5a5b
+  --bal-color-grey-6: #333
+
+  --bal-link-color: var(--bal-color-green-4)
+  --bal-link-color-hover: var(--bal-color-green-5)
+  --bal-link-color-active: var(--bal-color-green-6)
+  // Native Lists
+  --bal-description-list-term-color: var(--bal-color-text-primary)
+  --bal-description-list-detail-color: var(--bal-body-color)
+  //
+  // Buttons
+  --bal-button-radius: var(--bal-radius-rounded)
+  --bal-button-background: white
+  --bal-button-color: var(--bal-color-green-4)
+  --bal-button-color-hover: var(--bal-color-green-5)
+  --bal-button-color-active: var(--bal-color-green-6)
+  --bal-button-border-color: var(--bal-color-primary)
+  --bal-button-background-hover: var(--bal-color-grey-1)
+  --bal-button-background-active: var(--bal-color-grey-2)
+  --bal-button-border-color-hover: var(--bal-color-primary-4)
+  --bal-button-border-color-active: var(--bal-color-primary-5)
+  // Primary buttons
+  --bal-button-primary-background: var(--bal-color-primary)
+  --bal-button-primary-background-hover: var(--bal-color-primary-5)
+  --bal-button-primary-background-active: var(--bal-color-primary-6)
+  --bal-button-primary-border-color: var(--bal-color-primary)
+  --bal-button-primary-border-color-hover: var(--bal-color-primary-5)
+  --bal-button-primary-border-color-active: var(--bal-color-primary-6)
+  //
+  // text
+  --bal-button-text-border-color-hover: var(--bal-color-green-1)
+  --bal-button-text-border-color-active: var(--bal-color-green-1)
+  --bal-button-text-background-hover: var(--bal-color-green-1)
+  --bal-button-text-background-active: var(--bal-color-green-1)
+  // Tertiary buttons
+  --bal-button-tertiary-purple-background: var(--bal-color-green-4)
+  --bal-button-tertiary-purple-background-hover: var(--bal-color-green-5)
+  --bal-button-tertiary-purple-background-active: var(--bal-color-green-6)
+  --bal-button-tertiary-purple-border-color: var(--bal-color-green-4)
+  --bal-button-tertiary-purple-border-color-hover: var(--bal-color-green-5)
+  --bal-button-tertiary-purple-border-color-active: var(--bal-color-green-6)
+  --bal-button-tertiary-purple-color: white
+  --bal-button-tertiary-purple-color-hover: white
+  --bal-button-tertiary-purple-color-hover: white
+  --bal-button-tertiary-purple-color-active: white
+  //
+  // disabled
+  --bal-button-disabled-color: var(--bal-color-grey-3)
+  --bal-button-disabled-border-color: var(--bal-color-grey-2)
+  --bal-button-disabled-background: var(--bal-color-grey-2)
+  //
+  // Form
+  --bal-form-field-control-color: black
+  --bal-form-field-message-color: var(--bal-color-grey-6)
+  --bal-form-field-control-border-color-active: var(--bal-color-green)
+  --bal-form-field-control-placeholder-color: var(--bal-color-grey-4)
+  // Icon
+  --bal-icon-color-primary: var(--bal-color-green)
+  --bal-icon-color-primary-dark: var(--bal-color-green-5)
+  --bal-hint-icon-color-hover: var(--bal-color-green-5)
+  //
+  // Segment
+  --bal-segment-item-indicator-background: var(--bal-color-green)
+  --bal-segment-item-divider-background: var(--bal-color-grey-3)
+  --bal-segment-item-text-color: var(--bal-color-grey-6)
+  --bal-segment-item-text-color-hovered: black
+  --bal-segment-item-text-color-pressed: black
+  --bal-segment-item-text-color-checked: white
+  --bal-segment-item-text-color-checked-hovered: white
+  --bal-segment-item-text-color-checked-pressed: white
+  //
+  // select
+  --bal-select-control-border-color-focused: var(--bal-color-green)
+  --bal-select-control-border-color-focus-within: var(--bal-color-green)
+  --bal-select-control-input-option-background-selected: var(--bal-color-green-2)
+  --bal-select-control-input-option-background-focused: var(--bal-color-grey-2)
+  --bal-select-control-input-option-background-hover: var(--bal-color-grey-2)
+  --bal-select-control-input-option-background-active: var(--bal-color-grey-3)
+  --bal-option-background-selected: var(--bal-color-green-2)
+  --bal-option-background-hovered: var(--bal-color-grey-2)
+  --bal-option-background-pressed: var(--bal-color-grey-2)
+  --bal-option-background-selected-hovered: var(--bal-color-grey-2)
+  --bal-option-background-selected-pressed: var(--bal-color-grey-2)
+  --bal-option-text-hovered: black
+
+  --bal-check-border-color: var(--bal-color-green)
+  --bal-check-border-color-hovered: var(--bal-color-green-4)
+  --bal-check-border-color-pressed: var(--bal-color-green-5)
+
+  --bal-check-background-checked: var(--bal-color-green)
+  --bal-check-background-checked-hovered: var(--bal-color-green-4)
+  --bal-check-background-checked-pressed: var(--bal-color-green-5)
+  --bal-check-border-color-checked: var(--bal-color-green)
+  --bal-check-border-color-checked-hovered: var(--bal-color-green-4)
+  --bal-check-border-color-checked-pressed: var(--bal-color-green-5)
+  --bal-checkbox-switch-label-background-before: var(--bal-color-green-1)
+  --bal-checkbox-switch-label-background-after: var(--bal-color-green)
+  --bal-checkbox-switch-label-background-hover-after: var(--bal-color-green-5)
+  --bal-checkbox-switch-label-background-pressed-after: var(--bal-color-green-6)
+  --bal-checkbox-switch-label-background-checked-before: var(--bal-color-green)
+  --bal-checkbox-switch-label-background-checked-hover-before: var(--bal-color-green)
+  --bal-checkbox-switch-label-background-checked-pressed-before: var(--bal-color-green-6)
+
+  --bal-radio-icon-background-checked: var(--bal-color-green)
+  --bal-radio-icon-background-checked-hovered: var(--bal-color-green-5)
+  --bal-radio-icon-background-checked-pressed: var(--bal-color-green-6)
+  --bal-radio-icon-border-color: var(--bal-color-green)
+  --bal-radio-icon-border-color-hovered: var(--bal-color-green-5)
+  --bal-radio-icon-border-color-pressed: var(--bal-color-green-6)
+  --bal-radio-icon-border-color-checked: var(--bal-color-green)
+  --bal-radio-icon-border-color-checked-hovered: var(--bal-color-green-5)
+  --bal-radio-icon-border-color-checked-pressed: var(--bal-color-green-6)
+  //
+  // Steps
+  --bal-steps-step-border-color-done: var(--bal-color-primary)
+  --bal-steps-step-border-color-done: var(--bal-color-primary)
+  --bal-steps-step-icon-background-done: var(--bal-color-primary)
+  --bal-steps-step-label-text-color-done: var(--bal-color-grey-6)
+  --bal-steps-step-label-text-color: var(--bal-color-grey-6)
+  --bal-steps-step-label-text-color-active: black
+  --bal-steps-step-icon-text-color: black
+  --bal-steps-step-border-color: var(--bal-color-info-1)
+  --bal-steps-step-button-progress-line-background: var(--bal-color-info-1)
+  --bal-steps-step-border-color-active: var(--bal-color-primary)
+  --bal-steps-step-icon-background-active: var(--bal-color-primary)
+  --bal-steps-step-button-passed-background: var(--bal-color-primary)
+  //
+  // Pagination
+  --bal-pagination-small-background: var(--bal-color-info-1)
+  --bal-pagination-small-radius: 20px
+  //
+  // Tabs
+  --bal-tabs-tab-nav-border-background: var(--bal-color-info-1)
+  --bal-tabs-tab-label-text-color: var(--bal-grey-6)
+  --bal-tabs-tab-label-text-color-active: var(--bal-color-primary)
+  --bal-tabs-tab-button-label-text-color-hover: var(--bal-color-primary-5)
+  --bal-tabs-tab-button-label-text-color-active: var(--bal-color-primary-6)
+  --bal-tabs-tab-label-text-color-disabled: var(--bal-color-grey-3)
+  //
+  // Toast
+  --bal-toast-color: var(--bal-color-grey-6)
+  --bal-toast-color-info: var(--bal-color-grey-6)
+  --bal-toast-color-success: var(--bal-color-grey-6)
+  --bal-toast-color-warning: var(--bal-color-grey-6)
+  --bal-toast-color-danger: var(--bal-color-grey-6)
+  //
+  // Notification
+  --bal-notification-color: var(--bal-color-grey-6)
+  --bal-notification-color-info: var(--bal-color-grey-6)
+  --bal-notification-color-success: var(--bal-color-grey-6)
+  --bal-notification-color-warning: var(--bal-color-grey-6)
+  --bal-notification-color-danger: var(--bal-color-grey-6)
+  //
+  // Tags
+  --bal-tag-background: var(--bal-color-info-1)
+  --bal-tag-text: var(--bal-color-black)
+  --bal-tag-text-warning: var(--bal-color-black)
+  --bal-tag-text-yellow: var(--bal-color-white)
+  --bal-tag-text-green: var(--bal-color-white)
+  --bal-tag-text-purple-light: var(--bal-color-black)
+  --bal-tag-text-red-light: var(--bal-color-black)
+  --bal-tag-text-green-light: var(--bal-color-black)
+  --bal-tag-text-yellow-light: var(--bal-color-black)
+  --bal-tag-background-disabled: var(--bal-color-grey-2)
+  --bal-tag-border-disabled-color: var(--bal-color-grey-2)
+  --bal-tag-text-disabled: var(--bal-color-grey-4)
+  //
+  // Spinner
+  --bal-spinner-circle-background: var(--bal-color-info-1)
+  --bal-spinner-circle-progress: var(--bal-color-green)
+  --bal-spinner-circle-progress-inverted: var(--bal-color-primary)
+  //
+  // Footer
+  --bal-footer-language-color: var(--bal-color-text-white)
+  --bal-footer-language-color-hover: var(--bal-color-grey-1)
+  --bal-footer-language-color-active: var(--bal-color-grey-1)
+  --bal-footer-language-background: var(--bal-color-text-white)
+  --bal-footer-language-background-hover: var(--bal-color-grey-1)
+  --bal-footer-language-background-active: var(--bal-color-grey-1)
+  --bal-footer-logo-image-max-height: 64px
+  //
+  // Modal
+  --bal-modal-backdrop-background: var(--bal-color-grey-6)
+
+body
+  -webkit-text-size-adjust: 100%
+
+footer .link,
+footer a.link
+  color: white !important
+  &:hover
+    color: white !important
+  &:active
+    color: white !important
+
+.button
+  padding: 6px 30px 7px
+  min-height: 32px
+
+button.is-info,
+button.is-secondary
+  color: var( --bal-color-primary)
+  &:hover
+    color: var(--bal-color-primary-4)
+  &:active
+    color: var(--bal-color-primary-5)
+
+.bal-segment-item__indicator,
+.bal-segment-item button
+  border-radius: 20px
+
+.bal-segment:not(.bal-segment--vertical)
+  border-radius: 20px
+
+.bal-input-group:not(.bal-input-group--is-disabled):focus-within
+  border-color: var(--bal-color-green)
+
+.bal-dropdown__root--theme-purple .bal-dropdown__root__content
+  color: black !important
+
+.bal-toast__inner:before,
+.bal-notification:not(.bal-notification--no-icon):before
+  background-color: var(--bal-color-grey-6)
