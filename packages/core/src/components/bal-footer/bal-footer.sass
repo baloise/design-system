@@ -49,7 +49,7 @@
             display: flex
             gap: 1rem
             cursor: pointer
-            +fillSvg(var(--bal-footer-language-background))
+            +fillSvgImportant(var(--bal-footer-language-background))
 
             select
               padding-left: 2px
@@ -69,12 +69,12 @@
                 font-family: var(--bal-font-family-text) !important
 
             &:hover
-              +fillSvg(var(--bal-footer-language-background-hover))
+              +fillSvgImportant(var(--bal-footer-language-background-hover))
               select
                 color: var(--bal-footer-language-color-hover)
 
             &:active
-              +fillSvg(var(--bal-footer-language-background-active))
+              +fillSvgImportant(var(--bal-footer-language-background-active))
               select
                 color: var(--bal-footer-language-color-active)
 
