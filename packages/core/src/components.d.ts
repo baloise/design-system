@@ -1345,6 +1345,11 @@ export namespace Components {
     }
     interface BalFieldHint {
         /**
+          * If `true` the hint box will close on an escape key and when clicking outside the hint box.
+          * @default false
+         */
+        "backdropDismiss": boolean;
+        /**
           * Text for the close button.
           * @default 'Close'
          */
@@ -7378,6 +7383,11 @@ declare namespace LocalJSX {
         "loading"?: boolean;
     }
     interface BalFieldHint {
+        /**
+          * If `true` the hint box will close on an escape key and when clicking outside the hint box.
+          * @default false
+         */
+        "backdropDismiss"?: boolean;
         /**
           * Text for the close button.
           * @default 'Close'

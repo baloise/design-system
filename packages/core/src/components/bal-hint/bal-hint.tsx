@@ -144,38 +144,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     preventDefault(ev)
   }
 
-  // @Listen('keyup', { target: 'document' })
-  // async handleKeyUp(ev: KeyboardEvent) {
-  //   ev.preventDefault()
-  //   ev.stopPropagation()
-  //   if (this.isActive && this.closeOnEscapeAndOutOfFocus) {
-  //     if (ev.key === 'Escape' || ev.key === 'Esc') {
-  //       await this.dismiss();
-  //     }
-  //   }
-  // }
-
-  // @Listen('mousedown')
-  // async onMouseDown(ev: MouseEvent) {
-  //   this.isClickedOutsideOnMouseDown = this.isClickedOutside(ev)
-  // }
-  // private isClickedOutside(ev: MouseEvent) {
-  //   if (this.closeOnEscapeAndOutOfFocus && this.isActive && ev && ev.target) {
-  //     const element = ev.target as HTMLElement
-  //     return element.classList.contains('bal-popup__container')
-  //   }
-  //
-  //   return false
-  // }
-  //
-  // @Listen('click')
-  // async onClickCloseButton(ev: MouseEvent) {
-  //   if (this.isClickedOutsideOnMouseDown) {
-  //     await this.dismiss()
-  //   }
-  //   this.isClickedOutsideOnMouseDown = false
-  // }
-  //
   private updateContent() {
     if (this.hintContentEl && this.slotWrapperEl) {
       this.hintContentEl.innerHTML = this.slotWrapperEl.innerHTML
