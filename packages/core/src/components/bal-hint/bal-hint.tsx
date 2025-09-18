@@ -39,9 +39,9 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
   @Prop() closeLabel?: string
 
   /**
-   * If `true` the hint box will close on an escape key and when clicking outside of the hint box.
+   * If `true` the hint box will close on an escape key and when clicking outside the hint box.
    */
-  @Prop() closeOnEscapeAndOutOfFocus = true
+  @Prop() backdropDismiss = false
 
   /**
    * Disables the close button for tablet and desktop
@@ -240,8 +240,9 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           <bal-popup
             id={this.componentId}
             placement="right"
-            backdropDismiss={this.closeOnEscapeAndOutOfFocus}
-            closable={this.closeOnEscapeAndOutOfFocus}
+            backdrop={this.backdropDismiss}
+            backdropDismiss={this.backdropDismiss}
+            closable={this.backdropDismiss}
             ref={el => (this.popupElement = el as HTMLBalPopupElement)}
             onBalChange={this.onPopupChange}
             variant={this.isMobile ? 'fullscreen' : 'popover'}

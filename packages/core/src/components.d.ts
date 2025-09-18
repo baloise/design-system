@@ -1632,6 +1632,11 @@ export namespace Components {
     }
     interface BalHint {
         /**
+          * If `true` the hint box will close on an escape key and when clicking outside the hint box.
+          * @default false
+         */
+        "backdropDismiss": boolean;
+        /**
           * Text for the close button.
          */
         "closeLabel"?: string;
@@ -7665,6 +7670,11 @@ declare namespace LocalJSX {
         "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalHint {
+        /**
+          * If `true` the hint box will close on an escape key and when clicking outside the hint box.
+          * @default false
+         */
+        "backdropDismiss"?: boolean;
         /**
           * Text for the close button.
          */
