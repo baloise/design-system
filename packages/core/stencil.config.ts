@@ -101,6 +101,11 @@ export const config: Config = {
           src: 'components.d.ts',
         },
         {
+          src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
+          dest: 'assets/future-logo.svg',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
           dest: 'assets/tcs.css',
           warn: true,
@@ -108,6 +113,11 @@ export const config: Config = {
         {
           src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
           dest: 'assets/santander.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'styles', 'css', 'themes', 'future.css'),
+          dest: 'assets/future.css',
           warn: true,
         },
         {

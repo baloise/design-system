@@ -12,18 +12,26 @@
 
   <body>
     <bal-doc-app>
-      <header class="bg-grey-2" data-test="navbar">
+      <header class="bg-primary-1" data-test="navbar">
         <bal-navbar interface="simple">
-          <bal-navbar-brand id="bal-navbar-brand" href="/" target="_blank" animated="false">
-            <span id="bal-navbar-brand-title">Theme</span>
-          </bal-navbar-brand>
+          <bal-navbar-brand id="bal-navbar-brand" href="/" target="_blank" animated="false"></bal-navbar-brand>
         </bal-navbar>
-        <div class="bg-grey-2 container border-bottom-primary">
+        <nav class="container">
+          <bal-tabs spaceless value="baloise" id="theme-tabs">
+            <bal-tab-item href="?theme" label="Baloise" value="baloise"></bal-tab-item>
+            <bal-tab-item href="?theme=compact" label="Baloise Compact" value="compact"></bal-tab-item>
+            <bal-tab-item href="?theme=tcs" label="TCS" value="tcs"></bal-tab-item>
+            <bal-tab-item href="?theme=santander" label="Santander" value="santander"></bal-tab-item>
+            <bal-tab-item href="?theme=future" label="Future" value="future"></bal-tab-item>
+          </bal-tabs>
+        </nav>
+        <!-- <div class="bg-grey-2 container border-bottom-primary">
           <nav class="flex gap-normal p-normal container">
             <a class="link text-medium" href="?theme">Baloise</a>
             <a class="link text-medium" href="?theme=compact">Baloise Compact</a>
             <a class="link text-medium" href="?theme=tcs">TCS</a>
             <a class="link text-medium" href="?theme=santander">Santander</a>
+            <a class="link text-medium" href="?theme=future">Future</a>
           </nav>
           <nav class="flex gap-small p-normal">
             <a class="link" href="#colors">colors</a>
@@ -41,13 +49,13 @@
             <a class="link" href="#spinner">spinner</a>
             <a class="link" href="#footer">footer</a>
           </nav>
-        </div>
+        </div> -->
       </header>
       <main class="container py-medium">
         <!-- ----------------------------------------- -->
         <!-- Colors                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="colors" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Colors</h1>
+        <h1 id="colors" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Colors</h1>
         <div class="flex gap-x-large">
           <section>
             <h2 class="title text-x-large">Primary</h2>
@@ -68,7 +76,7 @@
               <div class="p-medium bg-grey-5 text-white"></div>
               <div class="p-medium bg-grey-6 text-white"></div>
             </div>
-            <h2 class="title text-x-large">Purple (secondary)</h2>
+            <h2 class="title text-x-large">Secondary</h2>
             <div class="flex gap-small">
               <div class="p-medium bg-purple-1 text-white"></div>
               <div class="p-medium bg-purple-2 text-white"></div>
@@ -148,7 +156,7 @@
         <!-- ----------------------------------------- -->
         <!-- Typography                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="typography" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Typography</h1>
+        <h1 id="typography" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Typography</h1>
         <section>
           <bal-heading level="h1">Heading 1</bal-heading>
           <bal-heading level="h2">Heading 2</bal-heading>
@@ -168,7 +176,7 @@
         <!-- ----------------------------------------- -->
         <!-- Native Lists                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="native-lists" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">
+        <h1 id="native-lists" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
           Native Lists
         </h1>
         <section>
@@ -191,7 +199,7 @@
         <!-- ----------------------------------------- -->
         <!-- Buttons                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="buttons" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Buttons</h1>
+        <h1 id="buttons" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Buttons</h1>
         <bal-button-group direction="row">
           <bal-button>Primary</bal-button>
           <bal-button color="secondary">Secondary</bal-button>
@@ -205,7 +213,7 @@
         <!-- Form                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="forms" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Forms</h1>
+        <h1 id="forms" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Forms</h1>
         <bal-card class="my-normal" data-test="card">
           <bal-card-title>
             <div class="flex gap-normal justify-center align-items-center">
@@ -258,7 +266,7 @@
           <bal-card-title>Wählen Sie das Fahrzeug</bal-card-title>
           <bal-card-content>
             <p>Bitte wählen Sie, mit welchen Angaben Sie das Fahrzeug suchen möchten.</p>
-            <bal-segment value="1" expanded>
+            <bal-segment value="1">
               <bal-segment-item value="1" label="Marke / Modell"></bal-segment-item>
               <bal-segment-item value="2" label="Kontrollschild"></bal-segment-item>
               <bal-segment-item value="3" label="Typenschein / Stammnummer"></bal-segment-item>
@@ -355,7 +363,7 @@
         <!-- Pagination                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="pagination" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Pagination</h1>
+        <h1 id="pagination" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Pagination</h1>
         <section>
           <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
           <bal-pagination page-range="3" total-pages="20" value="2" interface="small"></bal-pagination>
@@ -366,7 +374,7 @@
         <!-- Stepper                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="stepper" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Stepper</h1>
+        <h1 id="stepper" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Stepper</h1>
         <section>
           <bal-steps value="step-c">
             <bal-step-item value="step-a" label="Done" done="true">Content of Step A</bal-step-item>
@@ -382,7 +390,7 @@
         <!-- Tabs                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="tabs" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Tabs</h1>
+        <h1 id="tabs" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Tabs</h1>
         <section>
           <bal-tabs fullwidth="true" border="true" value="tab-c">
             <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
@@ -404,7 +412,7 @@
         <!-- Notifications                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="notifications" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">
+        <h1 id="notifications" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
           Notifications
         </h1>
         <section>
@@ -486,7 +494,7 @@
         <!-- Toasts                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="toasts" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Toasts</h1>
+        <h1 id="toasts" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Toasts</h1>
         <section class="flex gap-normal flex-direction-column">
           <bal-toast>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-toast>
           <bal-toast color="info">Info - Hello World</bal-toast>
@@ -499,7 +507,7 @@
         <!-- Tags                                -->
         <!-- ----------------------------------------- -->
 
-        <h1 id="tags" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Tags</h1>
+        <h1 id="tags" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Tags</h1>
         <section>
           <bal-tag-group>
             <bal-tag color="">Default</bal-tag>
@@ -532,7 +540,7 @@
         <!-- ----------------------------------------- -->
         <!-- Modal                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="modal" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Modal</h1>
+        <h1 id="modal" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Modal</h1>
         <section>
           <button class="button is-primary" id="modal-open-button">Open Modal</button>
           <bal-modal id="modal-dialog">
@@ -558,7 +566,7 @@
         <!-- ----------------------------------------- -->
         <!-- Spinner                                -->
         <!-- ----------------------------------------- -->
-        <h1 id="spinner" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Spinner</h1>
+        <h1 id="spinner" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Spinner</h1>
         <section class="flex gap-large">
           <div class="p-normal flex gap-small flex-direction-column justify-content-start align-items-start">
             <bal-spinner></bal-spinner>
@@ -593,7 +601,7 @@
       <!-- Footer                                -->
       <!-- ----------------------------------------- -->
 
-      <h1 id="footer" class="title text-xxx-large border-top-primary mt-large bg-grey-2 p-medium">Footer</h1>
+      <h1 id="footer" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Footer</h1>
 
       <section>
         <bal-footer id="bal-footer" hide-links>
@@ -635,6 +643,9 @@
           case 'tcs':
             logo = 'https://www.tcs.ch/global/wGlobal/layout/images/logo.png?v2'
             break
+          case 'future':
+            logo = '/assets/future-logo.svg'
+            break
           default:
             logo = ''
         }
@@ -651,6 +662,11 @@
           const footer = document.getElementById('bal-footer')
           if (footer) {
             footer.setAttribute('logo-href', logo)
+          }
+
+          const tabs = document.getElementById('theme-tabs')
+          if (tabs) {
+            tabs.setAttribute('value', theme || 'baloise')
           }
         }, 200)
       }

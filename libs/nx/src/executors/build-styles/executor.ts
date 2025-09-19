@@ -48,6 +48,10 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
       join(options.projectRoot, 'css', 'themes', 'santander.css'),
       join(options.projectRoot, '..', 'core', 'www', 'assets', 'santander.css'),
     )
+    await copy(
+      join(options.projectRoot, 'css', 'themes', 'future.css'),
+      join(options.projectRoot, '..', 'core', 'www', 'assets', 'future.css'),
+    )
   } catch (error) {
     console.error(error)
     return { success: false }
