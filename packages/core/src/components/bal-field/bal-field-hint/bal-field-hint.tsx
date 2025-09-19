@@ -28,11 +28,6 @@ export class FieldHint {
    */
   @Prop() small = false
 
-  /**
-   * If `true` the hint box will close on an escape key and when clicking outside the hint box.
-   */
-  @Prop() backdropDismiss = false
-
   @State() isDesktop = balBreakpoints.isDesktop
 
   @ListenToBreakpoints()
