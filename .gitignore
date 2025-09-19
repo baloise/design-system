@@ -48,6 +48,7 @@ Thumbs.db
 .nx/workspace-data
 .stencil
 
+packages/fonts/assets/partners
 packages/core/icons
 packages/core/components
 packages/core/loader

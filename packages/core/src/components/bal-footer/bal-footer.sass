@@ -49,6 +49,7 @@
             display: flex
             gap: 1rem
             cursor: pointer
+            +fillSvgImportant(var(--bal-footer-language-background))
 
             select
               padding-left: 2px
@@ -56,7 +57,7 @@
               background: transparent
               -webkit-appearance: none
               border: none
-              color: var(--bal-color-white)
+              color: var(--bal-footer-language-color)
               font-weight: var(--bal-font-weight-bold)
               font-family: var(--bal-font-family-title)
               cursor: pointer
@@ -68,18 +69,23 @@
                 font-family: var(--bal-font-family-text) !important
 
             &:hover
-              +fillSvg(var(--bal-footer-language-background-hover))
+              +fillSvgImportant(var(--bal-footer-language-background-hover))
               select
                 color: var(--bal-footer-language-color-hover)
 
             &:active
-              +fillSvg(var(--bal-footer-language-background-active))
+              +fillSvgImportant(var(--bal-footer-language-background-active))
               select
                 color: var(--bal-footer-language-color-active)
 
         +element(logo)
           display: flex
           align-items: center
+          img
+            max-height: var(--bal-footer-logo-image-max-height)
+          div
+            height: var(--bal-footer-logo-image-max-height)
+            min-width: var(--bal-footer-logo-image-max-height)
 
       +element(links-container)
         display: flex

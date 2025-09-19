@@ -106,6 +106,11 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
+          dest: 'assets/santander.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
           dest: 'assets/compact.css',
           warn: true,
