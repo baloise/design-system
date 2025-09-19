@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.8.0
+
+### Minor Changes
+
+- **form**: pass down attribute data-hj-allow to enable hotjar to track the value of the input ( [#1812](https://github.com/baloise/design-system/pull/1812))
+
+### Patch Changes
+
+- **icon**: angular issue with not adding the svg content to the element ( [#1809](https://github.com/baloise/design-system/pull/1809))
+
+- **card**: add rel prop to card button component ( [#1807](https://github.com/baloise/design-system/pull/1807))
+
 ## 19.7.1
 
 ### Patch Changes
