@@ -55,7 +55,6 @@ export class FieldHint {
           data-testid="bal-field-hint"
           closeLabel={this.closeLabel}
           small={this.small}
-          backdropDismiss={this.backdropDismiss}
         >
           {this.subject && !(this.hideTitleOnDesktop && this.isDesktop) ? (
             <bal-hint-title>{this.subject}</bal-hint-title>

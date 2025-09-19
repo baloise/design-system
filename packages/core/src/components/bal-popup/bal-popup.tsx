@@ -222,6 +222,8 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
       if (this.el.id === popupId) {
         this.debouncedGlobalClick(trigger as HTMLElement)
       }
+    } else if (!this.backdrop && this.closable && this.presented) {
+      await this.dismiss()
     }
   }
 
@@ -229,7 +231,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   async listenOnKeyDown(ev: KeyboardEvent) {
     if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
-      this.dismiss()
+      await this.dismiss()
     }
   }
 
