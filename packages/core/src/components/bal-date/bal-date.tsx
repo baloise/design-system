@@ -248,7 +248,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   /**
