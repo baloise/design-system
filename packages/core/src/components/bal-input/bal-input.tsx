@@ -279,7 +279,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   componentDidLoad() {

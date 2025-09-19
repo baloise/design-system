@@ -15,6 +15,7 @@ import {
 import isNil from 'lodash.isnil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
+import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -60,6 +61,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
   private initialValue?: string | string[] = []
+  private inheritedAttributes: { [k: string]: any } = {}
 
   log!: LogInstance
 
@@ -277,6 +279,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
+
     this.waitForOptionsAndThenUpdateRawValues()
     this.isInsideOfFooter()
 
@@ -1069,6 +1073,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                 onBlur={this.handleInputBlur}
                 onKeyPress={this.handleKeyPress}
                 ref={el => (this.inputElement = el as HTMLInputElement)}
+                {...this.inheritedAttributes}
               />
             </div>
             {!this.freeSolo && !this.loading ? (
