@@ -15,7 +15,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
-import { debounce } from '../../utils/helpers'
+import { debounce, isDescendant } from '../../utils/helpers'
 import { isEscapeKey } from '../../utils/keyboard'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import {
@@ -222,7 +222,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
       if (this.el.id === popupId) {
         this.debouncedGlobalClick(trigger as HTMLElement)
       }
-    } else if (!this.backdrop && this.closable && this.presented) {
+    } else if (!this.backdrop && this.closable && this.presented && !isDescendant(this.el, target)) {
       await this.dismiss()
     }
   }
