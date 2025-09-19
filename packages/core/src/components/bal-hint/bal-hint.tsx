@@ -13,7 +13,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
-import { isEnterKey, isEscapeKey, isSpaceKey } from '../../utils/keyboard'
+import { isEnterKey, isSpaceKey } from '../../utils/keyboard'
 import { BalScrollHandler } from '../../utils/scroll'
 import { preventDefault } from '../bal-select/utils/utils'
 
