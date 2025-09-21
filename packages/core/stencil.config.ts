@@ -106,6 +106,16 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'core', 'public', 'future-logo-red.svg'),
+          dest: 'assets/future-logo-red.svg',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'core', 'public', 'future-logo-black.svg'),
+          dest: 'assets/future-logo-black.svg',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
           dest: 'assets/tcs.css',
           warn: true,

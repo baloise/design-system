@@ -85,11 +85,26 @@
   --bal-button-tertiary-purple-color-hover: white
   --bal-button-tertiary-purple-color-hover: white
   --bal-button-tertiary-purple-color-active: white
+  // Light
+  --bal-button-light-color: var(--bal-color-purple-4)
+  --bal-button-light-color-hover: var(--bal-color-purple-5)
+  --bal-button-light-color-active: var(--bal-color-purple-6)
+  --bal-button-light-background-hover: var(--bal-color-purple-1)
+  --bal-button-light-background-active: var(--bal-color-purple-2)
+  --bal-button-light-border-color-hover: var(--bal-color-purple-1)
+  --bal-button-light-border-color-active: var(--bal-color-purple-2)
   //
   // disabled
   --bal-button-disabled-color: var(--bal-color-grey-3)
   --bal-button-disabled-border-color: var(--bal-color-grey-1)
   --bal-button-disabled-background: var(--bal-color-grey-1)
+  //
+  // Accordions
+  --bal-list-accordion-head-background-hover: var(--bal-color-purple-5)
+  --bal-list-accordion-head-background-active: var(--bal-color-purple-6)
+  --bal-list-item-background-hover: var(--bal-color-purple-5)
+  --bal-list-item-background-active: var(--bal-color-purple-6)
+  --bal-list-item-subtile-color: var(--bal-color-grey-5)
   //
   // Form
   --bal-form-field-control-color: black
@@ -226,6 +241,27 @@
   //
   // Modal
   --bal-modal-backdrop-background: var(--bal-color-grey-6)
+  --bal-popup-backdrop-background: rgba(70, 73, 75, .8)
+  //
+  // Stage & Nav
+  --bal-nav-link-text-color: var(--bal-color-black)
+  --bal-nav-link-group-background-purple: var(--bal-color-primary-1)
+  --bal-stage-background-purple: var(--bal-color-primary-1)
+  --bal-button-inverted-light-border-color: var(--bal-color-primary-3)
+  --bal-button-inverted-light-border-color-hover: var(--bal-color-white)
+  --bal-button-inverted-light-border-color-active: var(--bal-color-white)
+  --bal-button-inverted-light-background: var(--bal-color-primary-3)
+  --bal-button-inverted-light-background-hover: var(--bal-color-white)
+  --bal-button-inverted-light-background-active: var(--bal-color-white)
+  --bal-tabs-tab-button-label-text-color-inverted-hover: var(--bal-color-primary-1)
+  --bal-tabs-tab-button-label-text-color-inverted-active: var(--bal-color-primary-1)
+
+  --bal-focus-shadow-start-color: white
+  --bal-focus-shadow-end-color: var(--bal-color-purple-4)
+  --bal-focus-shadow-inset: inset var(--bal-focus-shadow-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-start-color) 0 0 0 5px
+  --bal-focus-shadow-inverted-start-color: white
+  --bal-focus-shadow-inverted-end-color: var(--bal-color-purple-4)
+  --bal-focus-shadow-inverted-inset: inset var(--bal-focus-shadow-inverted-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-inverted-start-color) 0 0 0 5px
 
 body
   -webkit-text-size-adjust: 100%
@@ -270,3 +306,61 @@ button.is-secondary
 .bal-segment-item__button--checked svg,
 .bal-segment-item__button--checked path
   fill: white !important
+
+ol.list,
+ul.list,
+ol.is-list,
+ul.is-list
+  &.has-bullet-check li::before,
+  li.has-bullet-check::before
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M13.6371 1.19792C14.0628 1.54974 14.1228 2.18006 13.7709 2.60579L5.7309 12.335C5.54856 12.5575 5.31608 12.7336 5.05661 12.8534C4.79713 12.9731 4.51423 13.0336 4.22848 13.0302H4.22758C3.93715 13.0266 3.65131 12.9573 3.39152 12.8274C3.1326 12.6979 2.90626 12.5117 2.72937 12.2826L0.210694 9.04426C-0.128376 8.60831 -0.049842 7.98003 0.386105 7.64096C0.822053 7.30189 1.45033 7.38043 1.7894 7.81638L4.25297 10.9838L12.2292 1.33176C12.581 0.906035 13.2114 0.846113 13.6371 1.19792Z' fill='%23007480'/%3E%3C/svg%3E") no-repeat left top
+  &.has-bullet-arrow-down li::before,
+  li.has-bullet-arrow-down::before
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M7.64646 14.8536C7.84172 15.0488 8.1583 15.0488 8.35356 14.8536L11.8536 11.3536C11.9966 11.2106 12.0393 10.9955 11.9619 10.8087C11.8845 10.6218 11.7022 10.5 11.5 10.5H9V2C9 1.4477 8.5523 1 8 1C7.4477 1 7 1.4477 7 2V10.5H4.5C4.29778 10.5 4.11547 10.6218 4.03807 10.8087C3.96067 10.9955 4.00335 11.2106 4.14636 11.3536L7.64646 14.8536Z' fill='%23007480'/%3E%3C/svg%3E") no-repeat left top
+  &.has-bullet-check-circle li::before,
+  li.has-bullet-check-circle::before
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 16C12.4183 16 16 12.4183 16 8C16 3.5817 12.4183 0 8 0C3.5817 0 0 3.5817 0 8C0 12.4183 3.5817 16 8 16ZM6.7617 11.7945C6.9826 11.6965 7.1792 11.5513 7.33773 11.369L12.3731 6.33321C12.4677 6.23396 12.5417 6.11706 12.591 5.98915C12.6403 5.86125 12.6639 5.72489 12.6604 5.58784C12.6569 5.4508 12.6263 5.31655 12.5707 5.19266C12.515 5.06876 12.4355 4.95764 12.3361 4.86409C12.2368 4.77054 12.119 4.69683 11.9909 4.64809C11.8629 4.59935 11.7276 4.57652 11.5926 4.58178C11.4576 4.58704 11.3259 4.6203 11.2068 4.67967C11.0877 4.73903 10.984 4.82323 10.9026 4.9258L6.1506 9.54226C6.10385 9.58838 6.02795 9.58894 5.98455 9.53643L4.90621 8.31175C4.71358 8.11164 4.45955 7.99738 4.19098 7.98614C3.92241 7.9749 3.66241 8.06749 3.45768 8.2449C3.25562 8.42023 3.12982 8.67109 3.10968 8.94086C3.08954 9.21063 3.17682 9.47631 3.33968 9.68257L4.74977 11.2888C4.90307 11.4854 5.09831 11.6322 5.32131 11.7346C5.54796 11.8371 5.79545 11.8936 6.04509 11.897C6.29473 11.9004 6.54228 11.8505 6.7617 11.7945Z' fill='%23007480'/%3E%3C/svg%3E") no-repeat left top
+  &.has-bullet-close li::before,
+  li.has-bullet-close::before
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M1.70711 0.29289C1.31658 -0.09763 0.68342 -0.09763 0.29289 0.29289C-0.09763 0.68342 -0.09763 1.31658 0.29289 1.70711L5.58579 7L0.29289 12.2929C-0.09763 12.6834 -0.09763 13.3166 0.29289 13.7071C0.68342 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.68342 13.7071 0.29289C13.3166 -0.09763 12.6834 -0.09763 12.2929 0.29289L7 5.58579L1.70711 0.29289Z' fill='%23007480'/%3E%3C/svg%3E") no-repeat left top
+  &.has-bullet-check.has-bullet-green li::before,
+  li.has-bullet-check.has-bullet-green::before
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M13.6371 1.19792C14.0628 1.54974 14.1228 2.18006 13.7709 2.60579L5.7309 12.335C5.54856 12.5575 5.31608 12.7336 5.05661 12.8534C4.79713 12.9731 4.51423 13.0336 4.22848 13.0302H4.22758C3.93805 13.0266 3.65131 12.9573 3.39152 12.8274C3.1326 12.6979 2.90626 12.5117 2.72937 12.2826L0.210694 9.04426C-0.128376 8.60831 -0.049842 7.98003 0.386105 7.64096C0.822053 7.30189 1.45033 7.38043 1.7894 7.81638L4.25297 10.9838L12.2292 1.33176C12.581 0.906035 13.2114 0.846113 13.6371 1.19792Z' fill='%23007480'/%3E%3C/svg%3E") no-repeat left top
+
+.bal-shape
+  fill: var(--bal-color-primary-4) !important
+
+.bal-stage-back-link > a.link
+  color: var(--bal-color-primary-4)
+  &:hover
+    color: var(--bal-color-primary-5)
+  &:active
+    color: var(--bal-color-primary-6)
+  svg,
+  path
+    fill: var(--bal-color-primary-4) !important
+    &:hover
+      fill: var(--bal-color-primary-5) !important
+    &:active
+      fill: var(--bal-color-primary-6) !important
+
+// button.is-light.inverted
+//   background: var(--bal-color-primary-5)
+//   &:hover
+//     background: var(--bal-color-primary-6)
+//   &:active
+//     background: var(--bal-color-primary-6)
+
+bal-nav
+  --bal-tabs-tab-nav-line-background: var(--bal-color-purple-4)
+  --bal-tabs-tab-label-text-color-active: var(--bal-color-purple-4)
+  --bal-tabs-tab-button-label-text-color-hover: var(--bal-color-purple-5)
+  --bal-tabs-tab-button-label-text-color-active: var(--bal-color-purple-6)
+  .bal-nav-link__native
+    color: var(--bal-color-black)
+    &:hover
+      color: var(--bal-color-purple-5)
+      text-decoration: underline
+    &:active
+      color: var(--bal-color-purple-6)
+      text-decoration: underline

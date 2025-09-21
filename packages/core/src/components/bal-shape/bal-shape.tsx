@@ -40,7 +40,7 @@ export class Shape implements ComponentInterface {
         color = BaloiseDesignToken.balColorRed3
         break
       case 'purple':
-        color = BaloiseDesignToken.balColorPurple6
+        color = '#a8281c'
         break
       case 'purple-light':
         color = BaloiseDesignToken.balColorPurple3
