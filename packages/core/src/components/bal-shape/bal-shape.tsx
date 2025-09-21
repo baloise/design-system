@@ -1,6 +1,6 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import * as BaloiseDesignToken from '@baloise/ds-tokens'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-shape',
@@ -40,7 +40,7 @@ export class Shape implements ComponentInterface {
         color = BaloiseDesignToken.balColorRed3
         break
       case 'purple':
-        color = '#a8281c'
+        color = BaloiseDesignToken.balColorPurple6
         break
       case 'purple-light':
         color = BaloiseDesignToken.balColorPurple3
