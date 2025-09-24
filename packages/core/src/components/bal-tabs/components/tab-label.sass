@@ -14,6 +14,7 @@
   hyphens: auto
   white-space: nowrap
   user-select: none
+  color: var(--bal-tabs-tab-label-text-color)
   &--with-svg
     text-align: left
     display: flex
@@ -33,7 +34,8 @@
 
   //
   // Color status
-  color: var(--bal-tabs-tab-label-text-color)
+  &--active
+    color: var(--bal-tabs-tab-label-text-color-active)
   &--disabled
     color: var(--bal-tabs-tab-label-text-color-disabled)
   &--inverted

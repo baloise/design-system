@@ -1,26 +1,26 @@
 import {
   Component,
-  Host,
-  h,
   ComponentInterface,
-  Prop,
-  EventEmitter,
-  Event,
   Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Listen,
   Method,
+  Prop,
   State,
   Watch,
-  Listen,
 } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { inheritAttributes } from '../../../utils/attributes'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
-import { hasParent } from '../../../utils/helpers'
-import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
-import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
+import { inheritAttributes } from '../../../utils/attributes'
+import { BEM } from '../../../utils/bem'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
+import { hasParent } from '../../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
 
 @Component({
   tag: 'bal-input-date',
@@ -180,7 +180,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   }
 
   componentWillRender() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   /**
