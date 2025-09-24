@@ -72,7 +72,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   /**
    * Defines the nature of the accordion trigger.
    */
-  @Prop() variant: BalProps.BalAccordionTriggerVariant
+  @Prop({ mutable: true }) variant: BalProps.BalAccordionTriggerVariant
 
   /**
    * If `true` the button is aligned over the whole width
