@@ -24,7 +24,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true, mutable: true }) name = ''
+  @Prop({ reflect: true, mutable: true }) name: string | undefined = undefined
 
   /**
    * Svg content.
