@@ -37,6 +37,10 @@
       object-fit: contain
       +desktop
         height: calc(100% - 2rem)
+      +modifier(small)
+        height: calc(100% - 2.5rem)
+        +desktop
+          height: calc(100% - 3.5rem)
 
     +element(title)
       display: none
