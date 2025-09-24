@@ -40,6 +40,7 @@ describe('bal-accordion', () => {
 
     it('basic component', () => {
       cy.platform('desktop')
+      cy.getByTestId('basic').waitForComponents()
       cy.getByTestId('basic').testVisual('accordion-v2-desktop')
       cy.getByTestId('basic').click()
       cy.getByTestId('basic').testVisual('accordion-v2-desktop-open')
@@ -47,6 +48,7 @@ describe('bal-accordion', () => {
       cy.getByTestId('basic').testVisual('accordion-v2-desktop-closed')
 
       cy.platform('tablet')
+      cy.getByTestId('basic').waitForComponents()
       cy.getByTestId('basic').testVisual('accordion-v2-tablet')
       cy.getByTestId('basic').click()
       cy.getByTestId('basic').testVisual('accordion-v2-tablet-open')
@@ -54,6 +56,7 @@ describe('bal-accordion', () => {
       cy.getByTestId('basic').testVisual('accordion-v2-tablet-closed')
 
       cy.platform('mobile')
+      cy.getByTestId('basic').waitForComponents()
       cy.getByTestId('basic').testVisual('accordion-v2-mobile')
       cy.getByTestId('basic').click()
       cy.getByTestId('basic').testVisual('accordion-v2-mobile-open')
@@ -63,6 +66,7 @@ describe('bal-accordion', () => {
 
     it('stack component', () => {
       cy.platform('desktop')
+      cy.getByTestId('stack').waitForComponents()
       cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop')
       cy.getByTestId('stack').click()
       cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-open')
@@ -72,6 +76,7 @@ describe('bal-accordion', () => {
 
     it('text-variant component', () => {
       cy.platform('desktop')
+      cy.getByTestId('text-variant').waitForComponents()
       cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop')
       cy.getByTestId('text-variant').click()
       cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-open')
@@ -81,6 +86,7 @@ describe('bal-accordion', () => {
 
     it('button component', () => {
       cy.platform('desktop')
+      cy.getByTestId('button').waitForComponents()
       cy.getByTestId('button').testVisual('accordion-v2-button-desktop')
     })
   })
