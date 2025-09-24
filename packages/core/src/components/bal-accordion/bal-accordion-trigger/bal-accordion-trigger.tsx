@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
@@ -64,10 +64,6 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * Trigger will be a bal-button
    */
   @Prop() button = false
-  @Watch('button')
-  buttonChanged() {
-    this.variant = this.button ? 'button' : this.variant
-  }
 
   /**
    * Defines the nature of the accordion trigger.
@@ -126,7 +122,6 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.updateAccordionId()
-    this.buttonChanged()
   }
 
   componentWillRender() {
@@ -151,6 +146,13 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * GETTERS
    * ------------------------------------------------------
    */
+
+  private get realVariant(): BalProps.BalAccordionTriggerVariant {
+    if (this.button) {
+      return 'button'
+    }
+    return this.variant
+  }
 
   private get parentAccordionElement(): HTMLBalAccordionElement | null {
     return this.el?.closest('bal-accordion') || null
@@ -226,7 +228,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
         }}
       >
         <Trigger
-          variant={this.variant}
+          variant={this.realVariant}
           {...{
             id,
             label,
