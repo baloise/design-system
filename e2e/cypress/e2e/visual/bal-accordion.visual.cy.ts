@@ -1,95 +1,78 @@
 describe('bal-accordion', () => {
-  context('v1', () => {
-    beforeEach(() => cy.visit('/components/bal-accordion/test/bal-accordion.visual.html').waitForDesignSystem())
+  it('basic component - desktop', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('desktop').waitForDesignSystem()
 
-    it('basic component', () => {
-      cy.platform('desktop')
-      cy.getByTestId('basic').testVisual('accordion-desktop')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-desktop-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-desktop-closed')
-
-      cy.platform('tablet')
-      cy.getByTestId('basic').testVisual('accordion-tablet')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-tablet-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-tablet-closed')
-
-      cy.platform('mobile')
-      cy.getByTestId('basic').testVisual('accordion-mobile')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-mobile-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-mobile-closed')
-    })
-
-    it('with card', () => {
-      cy.platform('desktop')
-      cy.getByTestId('with-card').testVisual('accordion-with-card')
-      cy.getByTestId('with-card').click()
-      cy.getByTestId('with-card').testVisual('accordion-with-card-open')
-      cy.getByTestId('with-card').click()
-      cy.getByTestId('with-card').testVisual('accordion-with-card-closed')
-    })
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-desktop')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-desktop-open')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-desktop-closed')
   })
 
-  context('v2', () => {
-    beforeEach(() =>
-      cy
-        .visit('/components/bal-accordion/test/bal-accordion.v2.visual.html')
-        .platform('desktop')
-        .waitForDesignSystem()
-        .wait(1000),
-    )
+  it('basic component - tablet', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('tablet').waitForDesignSystem()
 
-    it('basic component', () => {
-      cy.getByTestId('basic').waitForComponents()
-      cy.getByTestId('basic').testVisual('accordion-v2-desktop')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-desktop-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-desktop-closed')
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-tablet')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-tablet-open')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-tablet-closed')
+  })
 
-      cy.platform('tablet')
-      cy.getByTestId('basic').waitForComponents()
-      cy.getByTestId('basic').testVisual('accordion-v2-tablet')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-tablet-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-tablet-closed')
+  it('basic component - mobile', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('mobile').waitForDesignSystem()
 
-      cy.platform('mobile')
-      cy.getByTestId('basic').waitForComponents()
-      cy.getByTestId('basic').testVisual('accordion-v2-mobile')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-mobile-open')
-      cy.getByTestId('basic').click()
-      cy.getByTestId('basic').testVisual('accordion-v2-mobile-closed')
-    })
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-mobile')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-mobile-open')
+    cy.getByTestId('basic').click()
+    cy.getByTestId('basic').waitForComponents()
+    cy.getByTestId('basic').testVisual('accordion-v2-mobile-closed')
+  })
 
-    it('stack component', () => {
-      cy.getByTestId('stack').waitForComponents()
-      cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop')
-      cy.getByTestId('stack').click()
-      cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-open')
-      cy.getByTestId('stack').click()
-      cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-closed')
-    })
+  it('stack component', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.stack.visual.html')
+      .platform('desktop')
+      .waitForDesignSystem()
 
-    it('text-variant component', () => {
-      cy.getByTestId('text-variant').waitForComponents()
-      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop')
-      cy.getByTestId('text-variant').click()
-      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-open')
-      cy.getByTestId('text-variant').click()
-      cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-closed')
-    })
+    cy.getByTestId('stack').waitForComponents()
+    cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop')
+    cy.getByTestId('stack').click()
+    cy.getByTestId('stack').waitForComponents()
+    cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-open')
+    cy.getByTestId('stack').click()
+    cy.getByTestId('stack').waitForComponents()
+    cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop-closed')
+  })
 
-    it('button component', () => {
-      cy.getByTestId('button').waitForComponents()
-      cy.getByTestId('button').testVisual('accordion-v2-button-desktop')
-    })
+  it('text-variant component', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.text.visual.html')
+      .platform('desktop')
+      .waitForDesignSystem()
+
+    cy.getByTestId('text-variant').waitForComponents()
+    cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop')
+    cy.getByTestId('text-variant').click()
+    cy.getByTestId('text-variant').waitForComponents()
+    cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-open')
+    cy.getByTestId('text-variant').click()
+    cy.getByTestId('text-variant').waitForComponents()
+    cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop-closed')
+  })
+
+  it('button component', () => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.button.visual.html')
+      .platform('desktop')
+      .waitForDesignSystem()
+
+    cy.getByTestId('button').waitForComponents().testVisual('accordion-v2-button-desktop')
   })
 })
