@@ -9,9 +9,9 @@
   border-radius: var(--bal-radius-normal)
   font-family: var(--bal-font-family-text)
   font-weight: var(--bal-font-weight-regular)
-  color: var(--bal-color-text-primary)
+  color: var(--bal-date-calendar-button-color)
   border: none
-  background: transparent
+  background: var(--bal-date-calendar-button-background)
   text-align: center
   font-size: var(--bal-text-size-normal)
   line-height: var(--bal-line-height-normal)
@@ -20,20 +20,20 @@
   &:not(&--selected):not(&--disabled)
     +hover
       &:hover
-        background: var(--bal-color-light-blue-1)
+        background: var(--bal-date-calendar-button-background-hover)
     &:active
-      background: var(--bal-color-light-blue-2)
+      background: var(--bal-date-calendar-button-background-active)
   &--today:not(&--selected):not(&--disabled)
-    color: var(--bal-color-light-blue-3)
+    color: var(--bal-date-calendar-button-today-color)
     font-weight: var(--bal-font-weight-bold)
     +hover
       &:hover
-        color: var(--bal-color-text-primary)
+        color: var(--bal-date-calendar-button-today-color-hover)
     &:active
-      color: var(--bal-color-text-primary)
+      color: var(--bal-date-calendar-button-today-color-active)
   &--selected
-    background: var(--bal-color-primary)
-    color: var(--bal-color-text-white)
+    background: var(--bal-date-calendar-button-selected-background)
+    color: var(--bal-date-calendar-button-selected-color)
     font-weight: var(--bal-font-weight-bold)
   &--disabled
     cursor: default

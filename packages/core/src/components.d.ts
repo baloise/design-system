@@ -447,6 +447,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
@@ -1546,6 +1550,16 @@ export namespace Components {
           * @default false
          */
         "hideLinks": boolean;
+        /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref": string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg": string;
         /**
           * If provided, the footer links will be overridden.
           * @default undefined
@@ -6458,6 +6472,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
@@ -7584,6 +7602,16 @@ declare namespace LocalJSX {
           * @default false
          */
         "hideLinks"?: boolean;
+        /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref"?: string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg"?: string;
         /**
           * If provided, the footer links will be overridden.
           * @default undefined

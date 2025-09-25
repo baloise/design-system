@@ -161,7 +161,7 @@
       &.is-hovered
         background: var(--bal-button-tertiary-purple-background-hover)
         border-color: var(--bal-button-tertiary-purple-border-color-hover)
-        color: var(--bal-button--tertiary-purple-color-hover)
+        color: var(--bal-button-tertiary-purple-color-hover)
         +fillSvg(var(--bal-button-tertiary-purple-color-hover))
     &:active,
     &.is-active
@@ -469,10 +469,10 @@
   &.is-inverted:disabled,
   &:disabled
     @extend %disabled
-    background: var(--bal-button-disablde-background)
-    border-color: var(--bal-button-disablde-border-color)
-    color: var(--bal-button-disablde-color)
-    +fillSvg(var(--bal-button-disablde-color))
+    background: var(--bal-button-disabled-background)
+    border-color: var(--bal-button-disabled-border-color)
+    color: var(--bal-button-disabled-color)
+    +fillSvg(var(--bal-button-disabled-color))
     opacity: 1
     & > span::after
       display: none

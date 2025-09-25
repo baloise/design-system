@@ -1,5 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *
-
+@use './bal-label.vars' as *
 // Label
 // --------------------------------------------------
 
@@ -15,8 +15,8 @@
     hyphens: auto
     white-space: pre
     min-width: 0
-    font-family: var(--bal-form-field-label-font-family)
-    font-weight: var(--bal-form-field-label-font-weight)
+    font-family: var(--bal-label-font-family)
+    font-weight: var(--bal-label-font-weight)
     font-size: var(--bal-text-size-normal)
     line-height: var(--bal-line-height-normal)
     &--multiline
@@ -29,15 +29,15 @@
     //
     // font sizes
     &--small
-      font-family: var(--bal-font-family-text)
-      font-size: var(--bal-text-size-small)
-      line-height: var(--bal-line-height-small)
+      font-family: var(--bal-label-small-font-family)
+      font-size: var(--bal-label-small-font-size)
+      line-height: var(--bal-label-small-line-height)
       +tablet
-        font-size: var(--bal-text-size-small-tablet)
-        line-height: var(--bal-line-height-tablet-small)
+        font-size: var(--bal-label-small-font-size-tablet)
+        line-height: var(--bal-label-small-line-height-tablet)
       +desktop
-        font-size: var(--bal-text-size-small-desktop)
-        line-height: var(--bal-line-height-desktop-small)
+        font-size: var(--bal-label-small-font-size-desktop)
+        line-height: var(--bal-label-small-line-height-desktop)
     &--large
       font-family: var(--bal-font-family-title)
       font-size: var(--bal-text-size-large)

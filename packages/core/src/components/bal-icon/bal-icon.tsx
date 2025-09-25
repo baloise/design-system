@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Prop, State } from '@stencil/core'
 import camelCase from 'lodash.camelcase'
 import upperFirst from 'lodash.upperfirst'
 import { BEM } from '../../utils/bem'
@@ -24,20 +24,12 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true, mutable: true }) name = ''
-  @Watch('name')
-  nameChanged() {
-    this.generateSvgContent(this.name)
-  }
+  @Prop({ reflect: true, mutable: true }) name: string | undefined = undefined
 
   /**
    * Svg content.
    */
   @Prop() svg = ''
-  @Watch('svg')
-  svgChanged() {
-    this.generateSvgContent(this.name)
-  }
 
   /**
    * Defines the size of the icon.
@@ -107,6 +99,10 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    */
 
   connectedCallback() {
+    this.generateSvgContent(this.name)
+  }
+
+  componentWillRender(): Promise<void> | void {
     this.generateSvgContent(this.name)
   }
 

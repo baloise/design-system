@@ -1,0 +1,1360 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+    <title>Theme</title>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <header id="nav-web">
+        <bal-nav id="nav" data-testid="basic">
+          <bal-popup id="popup-call" label="24h Kundenservice" content-width="440">
+            <bal-stack layout="vertical">
+              <bal-button expanded>00800 24 800 800</bal-button>
+            </bal-stack>
+          </bal-popup>
+
+          <bal-popup id="popup-locale" label="Sprache wählen" content-width="440">
+            <bal-stack layout="vertical">
+              <bal-button expanded color="light">DE</bal-button>
+              <bal-button expanded color="light">EN</bal-button>
+              <bal-button expanded color="light">FR</bal-button>
+              <bal-button expanded color="light">IT</bal-button>
+            </bal-stack>
+          </bal-popup>
+
+          <bal-popup id="popup-search" label="Suchen" content-width="440">
+            <bal-input placeholder="Start typing"></bal-input>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+          </bal-popup>
+
+          <bal-popup id="popup-login" label="Anmelden" content-width="440">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
+              iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
+              nostrum? Laborum odio accusantium repudiandae ipsa? Expedita corrupti similique sint aspernatur officiis
+              inventore vel nesciunt. Exercitationem totam doloribus reiciendis quae magni eius ipsa. Inventore sit
+              placeat modi suscipit laborum quisquam laudantium!
+            </p>
+          </bal-popup>
+        </bal-nav>
+      </header>
+      <main class="pb-medium">
+        <bal-stage color="purple" shape="false" size="small" containerSize="wide">
+          <bal-stage-body>
+            <bal-stage-back-link href="#" class="mb-medium">Back</bal-stage-back-link>
+            <bal-heading class="mb-x-small" space="none">Theme Lab</bal-heading>
+          </bal-stage-body>
+        </bal-stage>
+
+        <!-- ----------------------------------------- -->
+        <!-- Navbar                                -->
+        <!-- ----------------------------------------- -->
+        <!-- <h1 id="colors" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">App Header</h1> -->
+        <div class="bg-primary-1">
+          <bal-navbar interface="simple">
+            <bal-navbar-brand id="bal-navbar-brand" href="/" target="_blank" animated="false">Navbar</bal-navbar-brand>
+          </bal-navbar>
+          <nav class="container">
+            <bal-tabs spaceless value="baloise" id="theme-tabs">
+              <bal-tab-item href="?theme" label="Baloise" value="baloise"></bal-tab-item>
+              <bal-tab-item href="?theme=compact" label="Baloise Compact" value="compact"></bal-tab-item>
+              <bal-tab-item href="?theme=tcs" label="TCS" value="tcs"></bal-tab-item>
+              <bal-tab-item href="?theme=santander" label="Santander" value="santander"></bal-tab-item>
+              <bal-tab-item href="?theme=future" label="Future" value="future"></bal-tab-item>
+            </bal-tabs>
+          </nav>
+        </div>
+
+        <div class="container">
+          <!-- ----------------------------------------- -->
+          <!-- Colors                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="colors" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Colors</h1>
+          <div class="flex gap-x-large">
+            <section>
+              <h2 class="title text-x-large">Primary</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-primary-1 text-white"></div>
+                <div class="p-medium bg-primary-2 text-white"></div>
+                <div class="p-medium bg-primary-3 text-white"></div>
+                <div class="p-medium bg-primary-4 text-white"></div>
+                <div class="p-medium bg-primary-5 text-white"></div>
+                <div class="p-medium bg-primary-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Grey</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-grey-1 text-white"></div>
+                <div class="p-medium bg-grey-2 text-white"></div>
+                <div class="p-medium bg-grey-3 text-white"></div>
+                <div class="p-medium bg-grey-4 text-white"></div>
+                <div class="p-medium bg-grey-5 text-white"></div>
+                <div class="p-medium bg-grey-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Secondary</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-purple-1 text-white"></div>
+                <div class="p-medium bg-purple-2 text-white"></div>
+                <div class="p-medium bg-purple-3 text-white"></div>
+                <div class="p-medium bg-purple-4 text-white"></div>
+                <div class="p-medium bg-purple-5 text-white"></div>
+                <div class="p-medium bg-purple-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Green</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-green-1 text-white"></div>
+                <div class="p-medium bg-green-2 text-white"></div>
+                <div class="p-medium bg-green-3 text-white"></div>
+                <div class="p-medium bg-green-4 text-white"></div>
+                <div class="p-medium bg-green-5 text-white"></div>
+                <div class="p-medium bg-green-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Red</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-red-1 text-white"></div>
+                <div class="p-medium bg-red-2 text-white"></div>
+                <div class="p-medium bg-red-3 text-white"></div>
+                <div class="p-medium bg-red-4 text-white"></div>
+                <div class="p-medium bg-red-5 text-white"></div>
+                <div class="p-medium bg-red-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Yellow</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-yellow-1 text-white"></div>
+                <div class="p-medium bg-yellow-2 text-white"></div>
+                <div class="p-medium bg-yellow-3 text-white"></div>
+                <div class="p-medium bg-yellow-4 text-white"></div>
+                <div class="p-medium bg-yellow-5 text-white"></div>
+                <div class="p-medium bg-yellow-6 text-white"></div>
+              </div>
+            </section>
+            <section>
+              <h2 class="title text-x-large">Alert Danger</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-danger-1 text-white"></div>
+                <div class="p-medium bg-danger-2 text-white"></div>
+                <div class="p-medium bg-danger-3 text-white"></div>
+                <div class="p-medium bg-danger-4 text-white"></div>
+                <div class="p-medium bg-danger-5 text-white"></div>
+                <div class="p-medium bg-danger-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Alert Warning</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-warning-1 text-white"></div>
+                <div class="p-medium bg-warning-2 text-white"></div>
+                <div class="p-medium bg-warning-3 text-white"></div>
+                <div class="p-medium bg-warning-4 text-white"></div>
+                <div class="p-medium bg-warning-5 text-white"></div>
+                <div class="p-medium bg-warning-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Alert Success</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-success-1 text-white"></div>
+                <div class="p-medium bg-success-2 text-white"></div>
+                <div class="p-medium bg-success-3 text-white"></div>
+                <div class="p-medium bg-success-4 text-white"></div>
+                <div class="p-medium bg-success-5 text-white"></div>
+                <div class="p-medium bg-success-6 text-white"></div>
+              </div>
+              <h2 class="title text-x-large">Alert Info</h2>
+              <div class="flex gap-small">
+                <div class="p-medium bg-info-1 text-white"></div>
+                <div class="p-medium bg-info-2 text-white"></div>
+                <div class="p-medium bg-info-3 text-white"></div>
+                <div class="p-medium bg-info-4 text-white"></div>
+                <div class="p-medium bg-info-5 text-white"></div>
+                <div class="p-medium bg-info-6 text-white"></div>
+              </div>
+            </section>
+          </div>
+
+          <!-- ----------------------------------------- -->
+          <!-- Typography                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="typography" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
+            Typography
+          </h1>
+          <section>
+            <bal-heading level="h1">Heading 1</bal-heading>
+            <bal-heading level="h2">Heading 2</bal-heading>
+            <bal-heading level="h3">Heading 3</bal-heading>
+            <bal-heading level="h4">Heading 4</bal-heading>
+            <bal-heading level="h5">Heading 5</bal-heading>
+
+            <p class="text-medium"><b>Lead</b> Text Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p><b>Paragraph</b> Text Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p class="text-small">
+              <b>Small Helper Text</b> Text Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+
+            <a href="" class="link">This is a link</a>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Buttons                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="buttons" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Buttons</h1>
+          <bal-button-group direction="row">
+            <bal-button>Primary</bal-button>
+            <bal-button color="secondary">Secondary</bal-button>
+            <bal-button color="tertiary">Tertiary</bal-button>
+            <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
+            <bal-button color="link">Link</bal-button>
+            <bal-button disabled>Disabled</bal-button>
+          </bal-button-group>
+
+          <!-- ----------------------------------------- -->
+          <!-- Accordions                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="accordions" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
+            Accordions
+          </h1>
+          <bal-list border="true" size="small">
+            <bal-list-item accordion="">
+              <bal-list-item-accordion-head accordion-open="">
+                <bal-list-item-content>
+                  <bal-list-item-title> Wie ermittle ich die Versicherungssumme meines Hausrats? </bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body content-space="normal">
+                Die Versicherungssumme hängt von der Anzahl Zimmer sowie der Anzahl Personen im Haushalt ab. Ein
+                weiterer wichtiger Punkt ist der Einrichtungsstandard. Geben Sie diese Informationen in unseren
+                Prämienrechner ein. Anhand von Durchschnittswerten erhalten Sie dann einen Vorschlag für die passende
+                Versicherungssumme. Oder nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den Hausrat»,
+                um den genauen Betrag zu berechnen.
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+            <bal-list-item accordion="true">
+              <bal-list-item-accordion-head>
+                <bal-list-item-content>
+                  <bal-list-item-title> Was deckt die Haushaltversicherung? </bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body content-space="normal">
+                Die Haushaltversicherung deckt Schäden an Ihren persönlichen beweglichen Sachen (Hausrat) sowie Schäden,
+                die Sie Drittpersonen zufügen (Haftpflicht). Mit verschiedenen Zusatzdeckungen können Sie den
+                Versicherungsschutz abrunden.
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          </bal-list>
+
+          <bal-list border="true" size="large">
+            <bal-list-item clickable="true">
+              <bal-list-item-icon>
+                <bal-icon name="file"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Document</bal-list-item-title>
+                <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right="true">
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+
+            <bal-list-item clickable="true">
+              <bal-list-item-icon>
+                <bal-icon name="picture"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Picture</bal-list-item-title>
+                <bal-list-item-subtitle>PNG - 140KB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right="true">
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+
+            <bal-list-item clickable="true">
+              <bal-list-item-icon>
+                <bal-icon name="video"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Video File</bal-list-item-title>
+                <bal-list-item-subtitle>MP4 - 61MB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right="true">
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+
+            <bal-list-item clickable="true">
+              <bal-list-item-icon>
+                <bal-icon name="audio"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Audio File</bal-list-item-title>
+                <bal-list-item-subtitle>MP3 - 3MB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right="true">
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+
+            <bal-list-item disabled="true">
+              <bal-list-item-icon>
+                <bal-icon name="file"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Disabled Document</bal-list-item-title>
+                <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right="true">
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+          </bal-list>
+
+          <!-- ----------------------------------------- -->
+          <!-- Native Lists                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="native-lists" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
+            Native Lists
+          </h1>
+          <section>
+            <dl class="list mb-large">
+              <dt>Definition List Title 1</dt>
+              <dd>Definition List Description 1</dd>
+              <dt>Definition List Title 2</dt>
+              <dd>Definition List Description 2</dd>
+              <dt>Definition List Title 3</dt>
+              <dd>Definition List Description 3</dd>
+            </dl>
+
+            <ul class="list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+            </ul>
+            <ul class="list has-bullet-circle">
+              <li>Green Circle List Item 1</li>
+              <li>Green Circle List Item 3</li>
+            </ul>
+            <ul class="list has-bullet-circle has-bullet-purple">
+              <li>Purple Circle List Item 1</li>
+              <li>Purple Circle List Item 3</li>
+            </ul>
+            <ul class="list has-bullet-circle has-bullet-red">
+              <li>Red Circle List Item 1</li>
+              <li>Red Circle List Item 3</li>
+            </ul>
+            <ul class="list has-bullet-circle has-bullet-yellow">
+              <li>Yellow Circle List Item 1</li>
+              <li>Yellow Circle List Item 3</li>
+            </ul>
+            <ol class="list">
+              <li>Numbered List Item 1</li>
+              <li>Numbered List Item 2</li>
+            </ol>
+            <ul class="list has-bullet-check">
+              <li>Checked List Item 1</li>
+              <li>Checked List Item 2</li>
+            </ul>
+            <ul class="list has-bullet-check-circle">
+              <li>Checked List Item 1</li>
+              <li>Checked List Item 2</li>
+            </ul>
+            <ul class="list has-bullet-close">
+              <li class="opacity-50">Close List Item 1</li>
+              <li class="opacity-50">Close List Item 2</li>
+            </ul>
+            <ul class="list has-bullet-arrow-down">
+              <li>Arrow Down List Item 1</li>
+              <li>Arrow Down List Item 2</li>
+            </ul>
+            <ul class="list has-bullets">
+              <li class="has-bullet-check">Checked List Item 1</li>
+              <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>
+              <li class="has-bullet-close opacity-50">Close List Item 2</li>
+              <li class="has-bullet-close opacity-50 has-bullet-red">Red Close List Item 2</li>
+            </ul>
+            <div class="bg-blue p-x-small">
+              <ul class="list has-bullets is-inverted">
+                <li class="has-bullet-check">Inverted checked List Item 1</li>
+                <li class="has-bullet-close opacity-50">Inverted close List Item 2</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Form                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="forms" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Forms</h1>
+          <bal-card class="my-normal" data-test="card">
+            <bal-card-title>
+              <div class="flex gap-normal justify-center align-items-center">
+                <bal-icon
+                  tile
+                  color="black"
+                  svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' focusable='false' aria-hidden='true'><g id='Solid'><rect width='40' height='40' fill='none'/></g><g id='Icon'><path d='M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z' fill='#000d6e'/><path d='M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z' fill='#000d6e'/><rect x='31' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><rect x='6' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><path d='M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z' fill='#6c2273'/><path d='M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z' fill='#b8b2ff'/></g></svg>"
+                ></bal-icon>
+                <span>Angaben zum Versicherungsnehmer/Halter</span>
+              </div>
+            </bal-card-title>
+            <bal-card-content>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias magnam dolorum consectetur ea,
+                cupiditate nesciunt ratione ut sequi commodi, inventore, quis nobis accusantium atque corporis?
+                Voluptate labore deserunt sunt explicabo.
+              </p>
+              <bal-field>
+                <bal-field-label>Firma</bal-field-label>
+                <bal-field-hint>Firma</bal-field-hint>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-button color="secondary">Suchen</bal-button>
+                </bal-field-control>
+                <bal-field-message
+                  >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer)
+                  ein. </bal-field-message
+                >
+              </bal-field>
+              <bal-field invalid>
+                <bal-field-label>Invalid</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Invalid"></bal-input>
+                </bal-field-control>
+                <bal-field-message
+                  >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer)
+                  ein. </bal-field-message
+                >
+              </bal-field>
+              <bal-field disabled>
+                <bal-field-label>Disabled</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Disabled"></bal-input>
+                </bal-field-control>
+                <bal-field-message
+                  >Geben Sie Ihren Firmennamen oder Ihre UID (Unternehmens-Identifikationsnummer)
+                  ein. </bal-field-message
+                >
+              </bal-field>
+            </bal-card-content>
+          </bal-card>
+          <bal-card class="my-normal">
+            <bal-card-title>Wählen Sie das Fahrzeug</bal-card-title>
+            <bal-card-content>
+              <p>Bitte wählen Sie, mit welchen Angaben Sie das Fahrzeug suchen möchten.</p>
+              <bal-segment value="1">
+                <bal-segment-item value="1" label="Marke / Modell"></bal-segment-item>
+                <bal-segment-item value="2" label="Kontrollschild"></bal-segment-item>
+                <bal-segment-item value="3" label="Typenschein / Stammnummer"></bal-segment-item>
+              </bal-segment>
+              <bal-field class="mt-normal">
+                <bal-field-label>1. Inverkehrsetzung</bal-field-label>
+                <bal-field-hint subject="Spider-Man">
+                  Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+                </bal-field-hint>
+                <bal-field-control>
+                  <bal-date></bal-date>
+                </bal-field-control>
+              </bal-field>
+              <bal-field class="mt-normal">
+                <bal-field-label>Marke</bal-field-label>
+                <bal-field-control>
+                  <bal-select>
+                    <bal-select-option value="audi" label="Audi">Audi</bal-select-option>
+                    <bal-select-option value="bmw" label="BMW">BMW</bal-select-option>
+                    <bal-select-option value="mercedes" label="Mercedes">Mercedes</bal-select-option>
+                    <bal-select-option value="volkswagen" label="Volkswagen">Volkswagen</bal-select-option>
+                    <bal-select-option value="volvo" label="Volvo">Volvo</bal-select-option>
+                    <bal-select-option value="porsche" label="Porsche">Porsche</bal-select-option>
+                    <bal-select-option value="ferrari" label="Ferrari">Ferrari</bal-select-option>
+                    <bal-select-option value="lamborghini" label="Lamborghini">Lamborghini</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+              </bal-field>
+              <section class="gap-normal flex py-normal">
+                <bal-dropdown placeholder="Leistung" clearable="" inline-label="Leistung" size="small" theme="purple">
+                  <bal-option value="All" label="All">All</bal-option>
+                  <bal-option value="v100" label="100 PS">100 PS</bal-option>
+                  <bal-option value="v140" label="140 PS">140 PS</bal-option>
+                  <bal-option value="v165" label="165 PS">165 PS</bal-option>
+                  <bal-option value="v210" label="210 PS">210 PS</bal-option>
+                </bal-dropdown>
+                <bal-dropdown
+                  value="v140"
+                  placeholder="Leistung"
+                  inline-label="Leistung"
+                  clearable=""
+                  size="small"
+                  theme="purple"
+                >
+                  <bal-option value="All" label="All">All</bal-option>
+                  <bal-option value="v100" label="100 PS">100 PS</bal-option>
+                  <bal-option value="v140" label="140 PS">140 PS</bal-option>
+                  <bal-option value="v165" label="165 PS">165 PS</bal-option>
+                  <bal-option value="v210" label="210 PS">210 PS</bal-option>
+                </bal-dropdown>
+              </section>
+
+              <bal-field>
+                <bal-field-label>Checkboxes</bal-field-label>
+                <bal-field-control>
+                  <bal-checkbox-group>
+                    <bal-checkbox> Apple </bal-checkbox>
+                    <bal-checkbox checked="true"> Pineapple </bal-checkbox>
+                    <bal-checkbox> Orange </bal-checkbox>
+                  </bal-checkbox-group>
+                </bal-field-control>
+                <bal-field-message>Field Message</bal-field-message>
+              </bal-field>
+
+              <bal-field>
+                <bal-field-label>Swicht Checkbox</bal-field-label>
+                <bal-field-control>
+                  <bal-checkbox-group>
+                    <bal-checkbox interface="switch"> Label </bal-checkbox>
+                  </bal-checkbox-group>
+                </bal-field-control>
+                <bal-field-message>Field Message</bal-field-message>
+              </bal-field>
+
+              <bal-field>
+                <bal-field-label>Radio</bal-field-label>
+                <bal-field-control>
+                  <bal-radio-group value="1">
+                    <bal-radio value="1">Label 1</bal-radio>
+                    <bal-radio value="2">Label 2</bal-radio>
+                    <bal-radio value="3" disabled="true">Disabled</bal-radio>
+                    <bal-radio value="4"
+                      >Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in
+                      it</bal-radio
+                    >
+                  </bal-radio-group>
+                </bal-field-control>
+                <bal-field-message>Field Message</bal-field-message>
+              </bal-field>
+            </bal-card-content>
+          </bal-card>
+
+          <!-- ----------------------------------------- -->
+          <!-- Pagination                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="pagination" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
+            Pagination
+          </h1>
+          <section>
+            <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
+            <bal-pagination page-range="3" total-pages="20" value="2" interface="small"></bal-pagination>
+            <bal-pagination page-range="3" total-pages="3" value="2" interface="small"></bal-pagination>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Stepper                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="stepper" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Stepper</h1>
+          <section>
+            <bal-steps value="step-c">
+              <bal-step-item value="step-a" label="Done" done="true">Content of Step A</bal-step-item>
+              <bal-step-item value="step-b" label="Failed" failed="true">Content of Step B</bal-step-item>
+              <bal-step-item value="step-c" label="Active">Content of Step C</bal-step-item>
+              <bal-step-item value="step-d" label="Default">Content of Step D</bal-step-item>
+              <bal-step-item value="step-e" label="Disabled" disabled="true">Content of Step E</bal-step-item>
+              <bal-step-item value="step-f" label="Hidden" hidden="true">Content of Step F</bal-step-item>
+            </bal-steps>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Tabs                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="tabs" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Tabs</h1>
+          <section>
+            <bal-tabs fullwidth="true" border="true" value="tab-c">
+              <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+              <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+              <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+              <bal-tab-item value="tab-d" label="Tab D" hidden="true">Hidden Content of Tab D</bal-tab-item>
+              <bal-tab-item value="tab-e" label="Tab E" disabled="true">Content of Tab E</bal-tab-item>
+              <bal-tab-item
+                value="tab-link"
+                label="Tab link"
+                href="https://github.com/baloise/design-system"
+                target="_blank"
+                >Content of Tab link</bal-tab-item
+              >
+            </bal-tabs>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Notifications                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="notifications" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">
+            Notifications
+          </h1>
+          <section>
+            <bal-notification light no-icon class="mt-normal p-small">
+              <div class="flex align-items-center gap-normal justify-content-center">
+                <bal-icon
+                  tile
+                  color="black"
+                  svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' focusable='false' aria-hidden='true'><g id='Solid'><rect width='40' height='40' fill='none'/></g><g id='Icon'><path d='M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z' fill='#000d6e'/><path d='M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z' fill='#000d6e'/><rect x='31' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><rect x='6' y='14' width='3' height='2' rx='0.5' fill='#6c2273'/><path d='M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z' fill='#6c2273'/><path d='M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z' fill='#b8b2ff'/></g></svg>"
+                ></bal-icon>
+                <span class="flex-1">Sie konnten Ihre Firma nicht finden?</span>
+                <bal-button color="tertiary-purple">manuell Eingeben</bal-button>
+              </div>
+            </bal-notification>
+
+            <bal-notification class="mt-normal">
+              <span>
+                <strong>Default </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification color="info" class="mt-normal">
+              <span>
+                <strong>Info </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification color="success" class="mt-normal">
+              <span>
+                <strong>Success </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification color="warning" class="mt-normal">
+              <span>
+                <strong>Warning </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification color="danger" class="mt-normal">
+              <span>
+                <strong>Danger </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification light class="mt-normal">
+              <span>
+                <strong>Light Default </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification light color="info" class="mt-normal">
+              <span>
+                <strong>Light Info </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification light color="success" class="mt-normal">
+              <span>
+                <strong>Light Success </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification light color="warning" class="mt-normal">
+              <span>
+                <strong>Light Warning </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+            <bal-notification light color="danger" class="mt-normal">
+              <span>
+                <strong>Light Danger </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</span
+              >
+            </bal-notification>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Toasts                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="toasts" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Toasts</h1>
+          <section class="flex gap-normal flex-direction-column">
+            <bal-toast>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-toast>
+            <bal-toast color="info">Info - Hello World</bal-toast>
+            <bal-toast color="success">Success - Hello World</bal-toast>
+            <bal-toast color="warning">Warning - Hello World</bal-toast>
+            <bal-toast color="danger">Danger - Hello World</bal-toast>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Tags                                -->
+          <!-- ----------------------------------------- -->
+
+          <h1 id="tags" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Tags</h1>
+          <section>
+            <bal-tag-group>
+              <bal-tag color="">Default</bal-tag>
+              <bal-tag color="primary">Primary</bal-tag>
+              <bal-tag color="info">Info</bal-tag>
+              <bal-tag color="success">Success</bal-tag>
+              <bal-tag color="warning">Warning</bal-tag>
+              <bal-tag color="danger">Danger</bal-tag>
+            </bal-tag-group>
+            <br />
+            <bal-tag-group>
+              <bal-tag color="purple">Purple</bal-tag>
+              <bal-tag color="red">Red</bal-tag>
+              <bal-tag color="yellow">Yellow</bal-tag>
+              <bal-tag color="green">Green</bal-tag>
+            </bal-tag-group>
+            <br />
+            <bal-tag-group>
+              <bal-tag color="purple" light="true">Purple</bal-tag>
+              <bal-tag color="red" light="true">Red</bal-tag>
+              <bal-tag color="yellow" light="true">Yellow</bal-tag>
+              <bal-tag color="green" light="true">Green</bal-tag>
+            </bal-tag-group>
+            <br />
+            <bal-tag-group>
+              <bal-tag disabled="true">Disabled</bal-tag>
+            </bal-tag-group>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Modal                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="modal" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Modal</h1>
+          <section>
+            <button class="button is-primary" id="modal-open-button">Open Modal</button>
+            <bal-modal id="modal-dialog">
+              <bal-modal-header>Modal Title</bal-modal-header>
+              <bal-modal-body>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing?</p>
+                <bal-button-group position="right" reverse="true">
+                  <bal-button color="text">Cancel</bal-button>
+                  <bal-button color="primary">Okay</bal-button>
+                </bal-button-group>
+              </bal-modal-body>
+            </bal-modal>
+            <script>
+              const modalOpenButton = document.getElementById('modal-open-button')
+              const modal = document.getElementById('modal-dialog')
+              modalOpenButton.addEventListener('click', () => {
+                console.log('open modal', modal)
+                modal.open()
+              })
+            </script>
+          </section>
+
+          <!-- ----------------------------------------- -->
+          <!-- Spinner                                -->
+          <!-- ----------------------------------------- -->
+          <h1 id="spinner" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Spinner</h1>
+          <section class="flex gap-large">
+            <div class="p-normal flex gap-small flex-direction-column justify-content-start align-items-start">
+              <bal-spinner></bal-spinner>
+              <div>
+                <bal-spinner variation="circle"></bal-spinner>
+              </div>
+            </div>
+            <div
+              class="bg-primary p-normal flex gap-small flex-direction-column justify-content-start align-items-start"
+            >
+              <bal-spinner color="white"></bal-spinner>
+              <div>
+                <bal-spinner color="white" variation="circle"></bal-spinner>
+              </div>
+            </div>
+            <div
+              class="bg-primary-1 p-normal flex gap-small flex-direction-column justify-content-start align-items-start"
+            >
+              <bal-spinner></bal-spinner>
+              <div>
+                <bal-spinner color="white" variation="circle"></bal-spinner>
+              </div>
+            </div>
+            <div
+              class="bg-info-1 p-normal flex gap-small flex-direction-column justify-content-start align-items-start"
+            >
+              <bal-spinner></bal-spinner>
+              <div>
+                <bal-spinner color="white" variation="circle"></bal-spinner>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- ----------------------------------------- -->
+      <!-- Footer                                -->
+      <!-- ----------------------------------------- -->
+
+      <h1 id="footer" class="title text-xxx-large border-top-primary mt-large bg-grey-1 p-medium">Footer</h1>
+
+      <section>
+        <bal-footer id="bal-footer" hide-links>
+          <div class="container">
+            <p>
+              Haben Sie noch Fragen zu TCS-Fahrzeug-Versicherung?
+              <a class="link" href="tel:0800801000">0800 801 000</a>.<br />
+              Wir sind von Montag bis Freitag, 8.00 - 18.00 Uhr, für Sie da.
+            </p>
+            <br />
+            <p><a class="link" href="">tcs.ch/fahrzeug</a></p>
+            <br />
+            <p>© Touring Club Schweiz in Kooperation mit Baloise Versicherung AG</p>
+          </div>
+        </bal-footer>
+      </section>
+    </bal-doc-app>
+
+    <script>
+      /**
+       * read the query param theme fromt the url and load the corresponding css file
+       */
+      const urlParams = new URLSearchParams(window.location.search)
+      const theme = urlParams.get('theme')
+
+      /**
+       * Set the logo in the navbar according to the theme
+       */
+      let logo = ''
+      switch (theme) {
+        case 'santander':
+          logo = 'https://hagcli.bancosantander.es/assets/images/santander-logo.svg'
+          break
+        case 'tcs':
+          logo = 'https://www.tcs.ch/global/wGlobal/layout/images/logo.png?v2'
+          break
+        case 'future':
+          logo = '/assets/future-logo.svg'
+          break
+        default:
+          logo = ''
+      }
+
+      /**
+       * Setup Navigation
+       */
+      const nav = document.getElementById('nav')
+      const logoLinkItem = {
+        href: '/test/theme.visual.html?theme=future',
+        ariaLabel: 'Homepage',
+        htmlTitle: 'Homepage',
+        url:
+          theme === 'future'
+            ? '/assets/future-logo-black.svg'
+            : theme === 'santander'
+              ? 'https://www.santander.co.uk/themes/custom/santander_web18_2_0/logo.svg'
+              : logo,
+      }
+
+      const serviceLinkItem = {
+        value: 'Services',
+        label: 'Services',
+        linkItems: [
+          {
+            label: 'Service link 1',
+          },
+          {
+            label: 'Service link 2',
+          },
+          {
+            label: 'Service link 3',
+          },
+        ],
+      }
+
+      const sectionLinkItem = {
+        value: 'Section Title',
+        label: 'Section Title',
+        linkItems: [
+          {
+            label: 'Section link 1',
+          },
+          {
+            label: 'Section link 2',
+          },
+          {
+            label: 'Section link 3',
+          },
+          {
+            label: 'Section link 4',
+          },
+        ],
+      }
+
+      const mainLinkItem = label => ({
+        label: label,
+        sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
+        serviceLinkItems: [serviceLinkItem],
+      })
+
+      nav.logo = logoLinkItem
+
+      nav.buttons = [
+        {
+          icon: 'call',
+          popupId: 'popup-call',
+          touchPlacement: 'bottom',
+          ariaLabel: '24h Kundenservice Aria',
+          htmlTitle: '24h Kundenservice',
+        },
+        {
+          label: 'DE',
+          popupId: 'popup-locale',
+          touchPlacement: 'bottom',
+          ariaLabel: 'Sprache wählen',
+          htmlTitle: 'Sprache wählen',
+        },
+        {
+          icon: 'location',
+          htmlTitle: 'Berater und Standorte',
+          ariaLabel: 'Berater und Standorte',
+          rel: 'rel-meta-button',
+          href: 'https://www.baloise.ch/de/privatkunden/kontakt-services/berater-standorte.html',
+          target: '_blank',
+          touchPlacement: 'none',
+        },
+        {
+          icon: 'search',
+          popupId: 'popup-search',
+          ariaLabel: 'Suchen',
+          htmlTitle: 'Suchen',
+        },
+        {
+          label: 'Anmelden',
+          icon: 'account',
+          popupId: 'popup-login',
+          ariaLabel: 'Anmelden',
+          htmlTitle: 'Anmelden',
+        },
+      ]
+
+      nav.options = [
+        {
+          label: 'Privatkunden',
+          href: '/test/theme.visual.html?theme=future',
+          rel: 'rel-meta-option',
+          active: true,
+          overviewLink: {
+            label: 'Privatkunden',
+            href: '/test/theme.visual.html?theme=future',
+          },
+          mainLinkItems: [
+            {
+              label: 'Versichern',
+              href: '/test/theme.visual.html?theme=future',
+              active: true,
+              sectionLinkItems: [
+                {
+                  label: 'Wohnen & Recht',
+                  href: '/test/theme.visual.html?theme=future',
+                  linkItems: [
+                    {
+                      label: 'Hausratversicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Haushaltversicherung für alle unter 30',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Haftpflichtversicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Rechtsschutzversicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Cyber-Versicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Wertsachen- & Elektronikversicherungen',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                  ],
+                },
+                {
+                  label: 'Fahrzeuge',
+                  linkItems: [
+                    {
+                      label: 'Autoversicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Elektroauto-Versicherung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                    {
+                      label: 'Motorrad- & Rollerversicherung',
+                    },
+                    {
+                      label: 'Motorrad- & Rollerversicherung für alle unter 30',
+                    },
+                    {
+                      label: 'Veloversicherung',
+                    },
+                    {
+                      label: 'Bootsversicherung',
+                    },
+                  ],
+                },
+                {
+                  label: 'Personen',
+                  linkItems: [
+                    {
+                      label: 'Lebensversicherungen',
+                    },
+                    {
+                      label: 'Einzel-Unfallversicherung',
+                    },
+                    {
+                      label: 'Todesfallrisikoversicherung',
+                    },
+                    {
+                      label: 'Einzel-Krankentaggeldversicherung',
+                    },
+                    {
+                      label: 'Erwerbsunfähigkeitsversicherung',
+                    },
+                    {
+                      label: 'Hausangestellten-Versicherung',
+                    },
+                  ],
+                },
+                {
+                  label: 'Ferien & Reisen',
+                  linkItems: [
+                    {
+                      label: 'Reiseversicherung (für das ganze Jahr)',
+                    },
+                    {
+                      label: 'Ferienversicherung (2 bis 92 Tage)',
+                    },
+                    {
+                      label: 'Reisegepäckversicherung',
+                    },
+                    {
+                      label: 'Annullierungskosten',
+                    },
+                    {
+                      label: 'Mietfahrzeug-Versicherung',
+                    },
+                  ],
+                },
+                {
+                  label: 'Wohneneigentum',
+                  linkItems: [
+                    {
+                      label: 'Bauversicherung',
+                    },
+                    {
+                      label: 'Gebäudeversicherung',
+                    },
+                  ],
+                },
+              ],
+              serviceLinkItems: [
+                {
+                  label: 'Services',
+                  linkItems: [
+                    {
+                      label: 'Schaden melden',
+                    },
+                    {
+                      label: 'Pannenhilfe',
+                    },
+                    {
+                      label: 'Partnerbetriebe',
+                    },
+                    {
+                      label: 'Versicherungsnachweis',
+                    },
+                    {
+                      label: 'Internationale Versicherungskarte',
+                    },
+                    {
+                      label: 'Wiederinkraftsetzung',
+                      href: '/test/theme.visual.html?theme=future',
+                    },
+                  ],
+                },
+              ],
+              overviewLink: {
+                label: 'Alle Versicherungslösungen',
+                href: '/test/theme.visual.html?theme=future',
+              },
+            },
+            {
+              label: 'Anlegen & Vorsorg',
+              sectionLinkItems: [
+                {
+                  label: 'Anlegen',
+                  linkItems: [
+                    {
+                      label: 'Zielbasiertes Anlegen',
+                    },
+                    {
+                      label: 'Fondskonto',
+                    },
+                    {
+                      label: 'Anlagefonds',
+                    },
+                    {
+                      label: 'Anlegen mit Berater',
+                    },
+                    {
+                      label: 'Anlegen ohne Berater',
+                    },
+                    {
+                      label: 'Vermögensverwaltung',
+                    },
+                    {
+                      label: 'Kassenobligationen',
+                    },
+                    {
+                      label: 'Festgeld',
+                    },
+                  ],
+                },
+                {
+                  label: 'Altersvorsorge',
+                  linkItems: [
+                    {
+                      label: 'Pensionsplanung',
+                    },
+                    {
+                      label: 'Vorsorgelösungen',
+                    },
+                    {
+                      label: 'Renten- und Auszahlungspläne',
+                    },
+                    {
+                      label: 'Invest Sparen 3 - Säule 3a',
+                    },
+                    {
+                      label: 'Freizügigkeitskonto',
+                    },
+                    {
+                      label: 'Lebensversicherungen',
+                    },
+                    {
+                      label: 'Finanzplanung',
+                    },
+                  ],
+                },
+                {
+                  label: 'Finanzwissen',
+                  linkItems: [
+                    {
+                      label: 'Persönliche Anlagestrategie',
+                    },
+                    {
+                      label: '5 Tipps für eine erfolgreiche Vorsorge',
+                    },
+                    {
+                      label: 'Fondswissen',
+                    },
+                    {
+                      label: 'Warum Anlagefonds?',
+                    },
+                    {
+                      label: 'Zeitpunkt der Vorsorge',
+                    },
+                    {
+                      label: 'Das Schweizer Vorsorgesystem einfach erklärt',
+                    },
+                  ],
+                },
+                {
+                  label: 'Ihre Ziele',
+                  linkItems: [
+                    {
+                      label: 'Pensionierung planen',
+                    },
+                    {
+                      label: 'Als Frau vorsorgen',
+                    },
+                    {
+                      label: 'Vermögen aufbauen, Lebenstraum erfüllen',
+                    },
+                    {
+                      label: 'Familie richtig absichern',
+                    },
+                    {
+                      label: 'Risiken absichern, Familie schützen',
+                    },
+                    {
+                      label: 'Nachlass frühzeitig regeln',
+                    },
+                  ],
+                },
+                {
+                  label: 'Nachhaltig investieren',
+                  linkItems: [
+                    {
+                      label: 'Allgemeine Informationen',
+                    },
+                  ],
+                },
+              ],
+              serviceLinkItems: [
+                {
+                  label: 'Services',
+                  linkItems: [
+                    {
+                      label: 'Vorsorgeausweis',
+                    },
+                    {
+                      label: 'Aktuelle Kurse',
+                    },
+                    {
+                      label: 'Börse & Anlageempfehlungen',
+                    },
+                    {
+                      label: 'Bankkonditionen',
+                    },
+                    {
+                      label: 'Downloads',
+                    },
+                  ],
+                },
+                {
+                  label: 'Finance4Women',
+                  color: 'purple',
+                  linkItems: [
+                    {
+                      label: 'Was macht eine gute Pensionskasse aus?',
+                    },
+                    {
+                      label: 'Impact-Investing: Geldanlage mit Sinn',
+                    },
+                    {
+                      label: 'Inflation - Was ist das?',
+                    },
+                    {
+                      label: 'Lohnverhandlungen erfolgreich führen. Tipps und Checkliste',
+                    },
+                  ],
+                },
+              ],
+              overviewLink: {
+                label: 'Alle Anlage- und Vorsorgelösungen',
+                href: '/test/theme.visual.html?theme=future',
+              },
+            },
+            {
+              label: 'Baloise',
+              href: '/test/theme.visual.html?theme=baloise',
+            },
+            {
+              label: 'TCS',
+              href: '/test/theme.visual.html?theme=tcs',
+            },
+            {
+              label: 'Santander',
+              href: '/test/theme.visual.html?theme=santander',
+            },
+          ],
+        },
+        {
+          label: 'Unternehmenskunden',
+          href: '/test/theme.visual.html?theme=future',
+          mainLinkItems: [
+            mainLinkItem('Versichern'),
+            mainLinkItem('Firma gründen'),
+            mainLinkItem('Konten, Karten & Finanzierung'),
+            mainLinkItem('Anlegen'),
+            mainLinkItem('Kontakt & Services'),
+            mainLinkItem('Blog'),
+          ],
+        },
+        {
+          label: 'Institutionelle Anleger',
+          href: '/test/theme.visual.html?theme=future',
+          mainLinkItems: [
+            mainLinkItem('Anlegen'),
+            mainLinkItem('Diestleistungsangebog'),
+            mainLinkItem('Kontakt & Services'),
+            mainLinkItem('Blog'),
+          ],
+        },
+        {
+          label: 'Über uns',
+          href: '/test/theme.visual.html?theme=future',
+          mainLinkItems: [
+            mainLinkItem('Engagement'),
+            mainLinkItem('Organisation'),
+            mainLinkItem('Geschichte'),
+            mainLinkItem('Jobs'),
+            mainLinkItem('Immobilien'),
+            mainLinkItem('Medienmitteilungen'),
+            mainLinkItem('Kontakt & Services'),
+            mainLinkItem('Blog'),
+          ],
+        },
+      ]
+
+      if (theme) {
+        const link = document.createElement('link')
+        const navApp = document.createElement('nav-app')
+        const navWeb = document.createElement('nav-web')
+        const stage = document.createElement('bal-stage')
+        link.rel = 'stylesheet'
+        link.href = `/assets/${theme}.css`
+        document.head.appendChild(link)
+
+        setTimeout(() => {
+          const navbarBrand = document.getElementById('bal-navbar-brand')
+          if (navbarBrand) {
+            navbarBrand.setAttribute('logo', logo)
+            if (theme === 'santander') {
+              navbarBrand.setAttribute('logo-size', 'small')
+            }
+          }
+
+          const footer = document.getElementById('bal-footer')
+          if (footer) {
+            footer.setAttribute('logo-href', logo)
+          }
+
+          const tabs = document.getElementById('theme-tabs')
+          if (tabs) {
+            tabs.setAttribute('value', theme || 'baloise')
+          }
+        }, 200)
+      }
+    </script>
+  </body>
+</html>
