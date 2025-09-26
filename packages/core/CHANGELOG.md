@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.8.1
+
+### Patch Changes
+
+- **icon**: remove console log ( [#1820](https://github.com/baloise/design-system/pull/1820))
+
 ## 19.8.0
 
 ### Minor Changes
