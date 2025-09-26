@@ -1713,9 +1713,9 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Name of the baloise icon.
-          * @default ''
+          * @default undefined
          */
-        "name": string;
+        "name": string | undefined;
         /**
           * @default false
          */
@@ -7747,9 +7747,9 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Name of the baloise icon.
-          * @default ''
+          * @default undefined
          */
-        "name"?: string;
+        "name"?: string | undefined;
         /**
           * @default false
          */

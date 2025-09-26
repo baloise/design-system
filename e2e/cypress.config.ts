@@ -1,6 +1,7 @@
 import { defineConfig } from 'cypress'
-import { configureVisualRegression } from './cypress/support/lib/visuals'
 import cypressSplit from 'cypress-split'
+import cypressTerminalReport from 'cypress-terminal-report/src/installLogsPrinter'
+import { configureVisualRegression } from './cypress/support/lib/visuals'
 
 export default defineConfig({
   video: false,
@@ -28,6 +29,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       cypressSplit(on, config)
       configureVisualRegression(on, config)
+      cypressTerminalReport(on)
       return config
     },
   },
