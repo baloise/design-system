@@ -30,6 +30,7 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         },
       }
 
+      console.log('-> Baloise Design System: Initialize Angular Adapter')
       initializeBaloiseDesignSystem(
         {
           ...config.defaults,

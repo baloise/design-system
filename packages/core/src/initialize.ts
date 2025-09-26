@@ -1,8 +1,8 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
-import { tags } from './tags-all'
 import { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
 import { balToastController } from './components/bal-toast/bal-toast.controller'
+import { tags } from './tags-all'
 import { balBrowser } from './utils/browser'
 import { BalConfig, BalPlatformConfig, setupConfig } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
@@ -12,6 +12,7 @@ export const initializeBaloiseDesignSystem = (
   platformConfig: BalPlatformConfig | undefined = undefined,
   win = {} as any,
 ) => {
+  console.log('-> initializeBaloiseDesignSystem', userConfig, platformConfig)
   if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
     win = window as any
   }
