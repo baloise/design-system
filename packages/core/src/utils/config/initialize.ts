@@ -10,7 +10,6 @@ export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
 
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
-  console.log('-> setupConfig', userConfig)
   config.reset({
     ...configFromLocalStorage(win),
     ...userConfig,

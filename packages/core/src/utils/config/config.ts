@@ -62,7 +62,6 @@ export class Config {
   }
 
   set icons(icons: BalIcons) {
-    console.log('-> Config: set icons', icons)
     this._config.icons = {
       ...this._config.icons,
       ...icons,
@@ -140,7 +139,6 @@ export class Config {
   }
 
   reset(config: BalConfig) {
-    console.log('-> Config: reset', config)
     this._config = {
       ...this._config,
       ...config,

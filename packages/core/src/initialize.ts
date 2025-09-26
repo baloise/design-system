@@ -12,7 +12,6 @@ export const initializeBaloiseDesignSystem = (
   platformConfig: BalPlatformConfig | undefined = undefined,
   win = {} as any,
 ) => {
-  console.log('-> initializeBaloiseDesignSystem', userConfig, platformConfig)
   if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
     win = window as any
   }
