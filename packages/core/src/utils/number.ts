@@ -10,7 +10,6 @@ const getLocale = (): string => {
 }
 
 export function getDecimalSeparator(): string {
-  console.log('getDecimalSeparator called', getLocale())
   return Intl.NumberFormat(getLocale())
     .format(1.1)
     .replace(/\p{Number}/gu, '')

@@ -51,7 +51,6 @@ export class Footer implements BalConfigObserver, Loggable {
   @Watch('logoSvg')
   logoSvgChanged() {
     this.logoSvgContent = sanitizeSvg(this.logoSvg)
-    console.log('SVG content updated:', this.logoSvgContent)
   }
 
   /**
