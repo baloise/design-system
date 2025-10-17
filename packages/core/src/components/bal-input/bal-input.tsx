@@ -338,7 +338,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     let inputValue = ''
     if (input) {
       if (this.allowedKeyPress && input && !this.mask) {
-        const regex = new RegExp('^' + this.allowedKeyPress + '$')
+        const regex = new RegExp('^' + this.allowedKeyPress + '$/u')
         const value = input.value
           .split('')
           .filter(val => regex.test(val))
