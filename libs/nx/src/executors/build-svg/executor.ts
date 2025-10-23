@@ -1,10 +1,10 @@
-import { BuildSvgExecutorSchema } from './schema'
-import { NEWLINE, scan } from '../utils'
-import { dirname, join, parse } from 'path'
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import camelCase from 'lodash.camelcase'
 import upperFirst from 'lodash.upperfirst'
+import { dirname, join, parse } from 'path'
 import svgo from 'svgo'
+import { NEWLINE, scan } from '../utils'
+import { BuildSvgExecutorSchema } from './schema'
 
 export default async function runSvgExecutor(options: BuildSvgExecutorSchema) {
   try {
