@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.8.2
+
+### Patch Changes
+
+- **nav**: adjust popup offset with banner is active ( [#1829](https://github.com/baloise/design-system/pull/1829))
+
+- **brand-icons**: improve svg optimizer to work with angular built in sanitizer ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
+- **tag**: wrap text to a newline if to long ( [#1834](https://github.com/baloise/design-system/pull/1834))
+
+- **brand-icons**: adapt to be able to import via angular. cleaned up svg ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
 ## 19.8.1
 
 ### Patch Changes
