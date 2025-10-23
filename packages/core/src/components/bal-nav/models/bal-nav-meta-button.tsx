@@ -111,7 +111,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
           bal-popup-closable="true"
-          bal-popup-offset="64"
+          bal-popup-offset={this.getOffset()}
         >
           {this.icon ? '' : this.label}
         </bal-button>
@@ -154,7 +154,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           bal-popup-closable="true"
           bal-popup-backdrop="true"
           bal-popup-backdrop-dismiss="true"
-          bal-popup-offset="64"
+          bal-popup-offset={this.getOffset()}
         >
           {this.label}
         </bal-button>
@@ -178,6 +178,25 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         button.color = 'info'
       }
     }
+  }
+
+  getOffset() {
+    const baseOffset = 64
+    const value = getComputedStyle(document.documentElement).getPropertyValue('--bal-nav-top').trim()
+
+    // If the value is already in px, return it directly
+    if (value.endsWith('px')) {
+      return parseFloat(value) + baseOffset
+    }
+
+    // If the value is in rem, convert it to px
+    if (value.endsWith('rem')) {
+      const remInPx = parseFloat(getComputedStyle(document.documentElement).fontSize)
+      return parseFloat(value) * remInPx + baseOffset
+    }
+
+    // Default fallback
+    return baseOffset
   }
 }
 
