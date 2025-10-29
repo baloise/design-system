@@ -201,7 +201,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   updateRawValue(newValue: string[], isHuman = true) {
-    if (!areArraysEqual(newValue, this.rawValue || [])) {
+    if (!areArraysEqual(newValue, this.rawValue || []) && this.options.size > 0) {
       this.rawValue = [...newValue]
       this.syncNativeInput(isHuman)
       if (this.didInit && isHuman === true) {
