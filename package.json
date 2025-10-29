@@ -68,7 +68,7 @@
     "@nx/web": "20.4.0",
     "@nxkit/style-dictionary": "~6.0.0",
     "@schematics/angular": "~18.0.0",
-    "@stencil/core": "4.37.1",
+    "@stencil/core": "4.38.2",
     "@stencil/react-output-target": "1.2.0",
     "@stencil/sass": "3.0.12",
     "@swc-node/register": "1.9.2",
