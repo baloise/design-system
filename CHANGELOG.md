@@ -1,5 +1,47 @@
 # Changelog
 
+## 19.8.2
+
+### Patch Changes
+
+- **nav**: adjust popup offset with banner is active ( [#1829](https://github.com/baloise/design-system/pull/1829))
+
+- **brand-icons**: improve svg optimizer to work with angular built in sanitizer ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
+- **tag**: wrap text to a newline if to long ( [#1834](https://github.com/baloise/design-system/pull/1834))
+
+- **brand-icons**: adapt to be able to import via angular. cleaned up svg ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
+## 19.8.1
+
+### Patch Changes
+
+- **icon**: remove console log ( [#1820](https://github.com/baloise/design-system/pull/1820))
+
+## 19.8.0
+
+### Minor Changes
+
+- **styles**: update tcs theme ( [#1817](https://github.com/baloise/design-system/pull/1817))
+
+- **form**: pass down attribute data-hj-allow to enable hotjar to track the value of the input ( [#1812](https://github.com/baloise/design-system/pull/1812))
+
+### Patch Changes
+
+- **hint**: enable it to close on click outside popup and on esc key ( [#1806](https://github.com/baloise/design-system/pull/1806))
+
+- **icon**: only set name attribute if set ( [#1818](https://github.com/baloise/design-system/pull/1818))
+
+- **icon**: angular issue with not adding the svg content to the element ( [#1809](https://github.com/baloise/design-system/pull/1809))
+
+- **nav**: adjust z-index for viewports mobile and tablet ( [#1815](https://github.com/baloise/design-system/pull/1815))
+
+- **nav**: add css-var to define the top position of the nav ( [#1816](https://github.com/baloise/design-system/pull/1816))
+
+- **accordion**: improve variant selection for rendering ( [#1818](https://github.com/baloise/design-system/pull/1818))
+
+- **card**: add rel prop to card button component ( [#1807](https://github.com/baloise/design-system/pull/1807))
+
 ## 19.7.1
 
 ### Patch Changes
