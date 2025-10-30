@@ -12,36 +12,127 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <section>
-          <bal-accordion data-testid="basic" close-label="Show less" open-label="Show more">
-            <p class="p-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
+        <h1 class="title my-medium">Basic</h1>
+        <section data-testid="basic">
+          <bal-accordion>
+            <bal-accordion-details>
+              <p class="p-medium">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+              </p>
+            </bal-accordion-details>
+            <bal-accordion-summary>
+              <bal-accordion-trigger button close-label="Show less" open-label="Show more"></bal-accordion-trigger>
+            </bal-accordion-summary>
           </bal-accordion>
         </section>
-        <section>
-          <bal-card>
-            <bal-card-title>BaloiseCombi</bal-card-title>
-            <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-            <bal-accordion
-              data-testid="with-card"
-              card
-              open-icon="edit"
-              close-label="Show less"
-              open-label="Show more"
-              close-icon="close"
-            >
-              <p class="py-medium">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-              </p>
-            </bal-accordion>
-          </bal-card>
+
+        <h1 class="title my-medium">Button</h1>
+        <section data-testid="button">
+          <bal-accordion active>
+            <bal-accordion-details>
+              <p class="p-medium">Accordion Content</p>
+            </bal-accordion-details>
+            <bal-accordion-summary>
+              <bal-accordion-trigger
+                button
+                color="primary"
+                size="small"
+                close-label="Show less"
+                open-label="Show more"
+              ></bal-accordion-trigger>
+            </bal-accordion-summary>
+          </bal-accordion>
         </section>
+
+        <h1 class="title my-medium">Text</h1>
+        <section data-testid="text-variant">
+          <bal-accordion>
+            <bal-accordion-summary>
+              <bal-stack>
+                <bal-icon class="svg-icon"></bal-icon>
+                <bal-content>
+                  <bal-label>With label and text</bal-label>
+                  <bal-text size="small"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
+                    officiis qui tempore. Veniam ab sed nostrum excepturi dignissimos maxime itaque optio tempore,
+                    officiis enim, exercitationem ex.
+                  </bal-text>
+                  <bal-accordion-trigger variant="text"></bal-accordion-trigger>
+                </bal-content>
+                <bal-checkbox interface="switch" label-hidden></bal-checkbox>
+              </bal-stack>
+            </bal-accordion-summary>
+            <bal-accordion-details>
+              <p class="py-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas minima iure quisquam
+                consequatur, magni fuga nostrum veniam reprehenderit omnis ad odio sint accusamus velit esse alias
+                eligendi saepe consequuntur? Ullam in accusantium dolore, numquam, quaerat id velit molestiae
+                reprehenderit aut eos, repellendus ducimus officiis. Distinctio possimus deserunt delectus est dolorem
+                accusamus, neque assumenda iure blanditiis mollitia, quae voluptatum. Placeat? Laboriosam maiores eum
+                tenetur possimus voluptas. Id quaerat dignissimos eius facilis molestias. Quaerat ipsa dolor a, rerum
+                eius quos error atque inventore vitae. Iste exercitationem illo voluptate laudantium voluptatem ipsa?
+              </p>
+            </bal-accordion-details>
+          </bal-accordion>
+        </section>
+        <!-- <script>
+          setTimeout(() => {
+            const iconElements = document.getElementsByClassName('svg-icon')
+            const icons = Array.from(iconElements)
+            icons.forEach(icon => {
+              icon.color = 'auto'
+              icon.size = 'large'
+              icon.svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"><g id="Solid"><rect width="40" height="40" fill="none"/></g><g id="Icon"><path d="M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z" fill="#000d6e"/><path d="M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z" fill="#000d6e"/><rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><path d="M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z" fill="#1b5951"/><path d="M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z" fill="#94e3d4"/></g></svg>`
+            })
+          })
+        </script> -->
+
+        <h1 class="title my-medium">Stack</h1>
+        <section data-testid="stack">
+          <bal-accordion>
+            <bal-accordion-summary trigger>
+              <bal-stack>
+                <bal-icon class="svg-icon"></bal-icon>
+                <bal-content>
+                  <bal-label>With label and text</bal-label>
+                  <bal-text size="small"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
+                    officiis qui tempore. Veniam ab sed nostrum excepturi dignissimos maxime itaque optio tempore,
+                    officiis enim, exercitationem ex.
+                  </bal-text>
+                </bal-content>
+                <bal-checkbox interface="switch"></bal-checkbox>
+                <bal-accordion-trigger></bal-accordion-trigger>
+              </bal-stack>
+            </bal-accordion-summary>
+            <bal-accordion-details>
+              <p class="py-medium">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas minima iure quisquam
+                consequatur, magni fuga nostrum veniam reprehenderit omnis ad odio sint accusamus velit esse alias
+                eligendi saepe consequuntur? Ullam in accusantium dolore, numquam, quaerat id velit molestiae
+                reprehenderit aut eos, repellendus ducimus officiis. Distinctio possimus deserunt delectus est dolorem
+                accusamus, neque assumenda iure blanditiis mollitia, quae voluptatum. Placeat? Laboriosam maiores eum
+                tenetur possimus voluptas. Id quaerat dignissimos eius facilis molestias. Quaerat ipsa dolor a, rerum
+                eius quos error atque inventore vitae. Iste exercitationem illo voluptate laudantium voluptatem ipsa?
+              </p>
+            </bal-accordion-details>
+          </bal-accordion>
+        </section>
+        <script>
+          setTimeout(() => {
+            const iconElements = document.getElementsByClassName('svg-icon')
+            const icons = Array.from(iconElements)
+            icons.forEach(icon => {
+              icon.color = 'auto'
+              icon.size = 'large'
+              icon.svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"><g id="Solid"><rect width="40" height="40" fill="none"/></g><g id="Icon"><path d="M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z" fill="#000d6e"/><path d="M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z" fill="#000d6e"/><rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><path d="M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z" fill="#1b5951"/><path d="M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z" fill="#94e3d4"/></g></svg>`
+            })
+          })
+        </script>
       </main>
     </bal-doc-app>
   </body>
