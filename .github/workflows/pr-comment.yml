@@ -272,3 +272,131 @@ jobs:
             Specs: `${{ steps.command.outputs.result }}`
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+  updateScreenshots:
+    name: 📸 Create Base Image
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+      CI: true
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
+      options: --user 1001
+    steps:
+      - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Check for /update-screenshots command
+        uses: actions/github-script@v7
+        id: command
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Filter specs
+        uses: actions/github-script@v7
+        id: specs
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName.split(',').map(v => `${v}`);
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Get results
+        run: |
+          echo "${{ steps.command.outputs.result }}"
+          echo "${{ steps.specs.outputs.result }}"
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Create Base Image in Progress...**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Get Branch Name
+        id: get-branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get-branch.outputs.branch }}
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: ./.github/workflows/actions/setup
+
+      - name: Clean install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
+
+      - name: Run Playwright tests
+        run: npx nx run core:e2e-update-screenshots -- src/components/${{ steps.specs.outputs.result }}/test
+
+      - name: Commit snapshots
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Create Base Image finished!**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Create Base Image Failed!**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})

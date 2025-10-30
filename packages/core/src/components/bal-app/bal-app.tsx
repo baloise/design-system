@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../../utils/browser'
 import { updateBalAnimated } from '../../utils/config'
@@ -34,6 +34,11 @@ export class App implements Loggable {
    */
   @Prop({ reflect: true, mutable: true }) ready = false
 
+  /**
+   * Emitted when app is ready and painted.
+   */
+  @Event() balAppReady!: EventEmitter<void>
+
   connectedCallback() {
     if (this.animated === false) {
       updateBalAnimated(this.animated)
@@ -55,6 +60,7 @@ export class App implements Loggable {
       if (balBrowser.hasDocument && balBrowser.hasWindow) {
         const doc = document.documentElement
         doc.classList.add('lcp-ready')
+        this.balAppReady.emit()
       }
     })
   }
