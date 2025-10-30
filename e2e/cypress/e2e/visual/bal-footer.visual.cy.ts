@@ -13,24 +13,16 @@ describe('bal-footer', () => {
     cy.platform('desktop').wait(100)
     cy.getByTestId('basic').testVisual('basic-footer-desktop')
     cy.getByTestId('all-variations').testVisual('all-variations-footer-desktop')
+    cy.getByTestId('partner-variant').testVisual('partner-variant-footer-desktop')
 
     cy.platform('tablet').wait(100)
     cy.getByTestId('basic').testVisual('basic-footer-tablet')
     cy.getByTestId('all-variations').testVisual('all-variations-footer-tablet')
+    cy.getByTestId('partner-variant').testVisual('partner-variant-footer-tablet')
 
     cy.platform('mobile').wait(100)
     cy.getByTestId('basic').testVisual('basic-footer-mobile')
     cy.getByTestId('all-variations').testVisual('all-variations-footer-mobile')
-  })
-
-  it.skip('component variants', () => {
-    cy.platform('desktop').wait(100)
-    cy.testVisual('footer-variants-desktop')
-
-    cy.platform('tablet').wait(100)
-    cy.testVisual('footer-variants-tablet')
-
-    cy.platform('mobile').wait(100)
-    cy.testVisual('footer-variants-mobile')
+    cy.getByTestId('partner-variant').testVisual('partner-variant-footer-mobile')
   })
 })

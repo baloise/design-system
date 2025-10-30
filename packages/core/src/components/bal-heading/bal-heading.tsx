@@ -1,5 +1,7 @@
-import { Component, ComponentInterface, h, Host, Prop, Element, State, Watch } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
+import { balBrowser } from '../../utils/browser'
 import {
   HEADING_COLORS,
   HEADING_ORDER,
@@ -9,7 +11,6 @@ import {
   HeadingSize,
   HeadingTag,
 } from './bal-heading.const'
-import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-heading',
@@ -18,7 +19,7 @@ import { balBrowser } from '../../utils/browser'
 export class Heading implements ComponentInterface {
   private headingEl?: HTMLElement
 
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() autoFontSize?: HeadingSize
 

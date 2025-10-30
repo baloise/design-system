@@ -1,12 +1,12 @@
-import { Component, h, Host, Prop, Element, Watch, ComponentInterface, State } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { rOnLoad } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
-import { BalConfigObserver, BalConfigState, ListenToConfig, defaultConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
+import { raf, rOnLoad } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
-type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
+type SpinnerAnimationFunction = (el: HTMLElement | HTMLStencilElement, color: string) => AnimationItem
 
 @Component({
   tag: 'bal-spinner',
@@ -26,7 +26,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * PUBLIC PROPERTY API

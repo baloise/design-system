@@ -12,9 +12,11 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
+import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -60,6 +62,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
   private initialValue?: string | string[] = []
+  private inheritedAttributes: { [k: string]: any } = {}
 
   log!: LogInstance
 
@@ -68,7 +71,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -271,12 +274,14 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
 
     debounceUpdateOptions()
 
-    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
+    this.mutationO = watchForOptions<HTMLStencilElement>(this.el, 'bal-select-option', () => {
       debounceUpdateOptions()
     })
   }
 
   componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
+
     this.waitForOptionsAndThenUpdateRawValues()
     this.isInsideOfFooter()
 
@@ -867,8 +872,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   private isChipClicked(ev: MouseEvent) {
     let isChipClicked = false
     if (this.multiple) {
-      const chips = this.selectionEl.querySelectorAll('bal-tag')
-      const target = ev.target as HTMLElement
+      const chips = this.selectionEl.querySelectorAll<HTMLStencilElement>('bal-tag')
+      const target = ev.target as HTMLStencilElement
       chips.forEach(chip => {
         const isChip = isDescendant(chip, target) || chip === target
         if (isChip) {
@@ -1069,6 +1074,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                 onBlur={this.handleInputBlur}
                 onKeyPress={this.handleKeyPress}
                 ref={el => (this.inputElement = el as HTMLInputElement)}
+                {...this.inheritedAttributes}
               />
             </div>
             {!this.freeSolo && !this.loading ? (

@@ -1,4 +1,5 @@
-import { Component, h, ComponentInterface, Host, Prop, Method, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { scrollToFirstInvalidField } from '../../utils/form'
 import { waitAfterFramePaint, waitAfterIdleCallback } from '../../utils/helpers'
 
@@ -7,7 +8,7 @@ import { waitAfterFramePaint, waitAfterIdleCallback } from '../../utils/helpers'
   styleUrl: 'bal-form.sass',
 })
 export class Form implements ComponentInterface {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` a native form element is added as a wrapper of the slot.

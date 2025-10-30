@@ -43,6 +43,7 @@ import { BalTabOption } from './bal-tab.type'
 import { newBalTabOption } from './bal-tab.util'
 import { TabNav } from './components/tab-nav'
 import { TabSelect } from './components/tab-select'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-tabs',
@@ -65,7 +66,7 @@ export class Tabs
 
   swiper = new SwiperUtil()
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isAccordionOpen = false
   @State() accordionState: AccordionState = AccordionState.Collapsed
@@ -486,7 +487,7 @@ export class Tabs
     }
   }
 
-  private isUsedInNavbar(target: HTMLElement) {
+  private isUsedInNavbar(target: HTMLElement | HTMLStencilElement) {
     const parentNavbar = target.closest('bal-navbar')
     const isNavbarOpen = target as any | false
     if (parentNavbar && isDescendant(parentNavbar, this.el)) {

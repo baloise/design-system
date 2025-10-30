@@ -113,19 +113,49 @@ jobs:
   #   strategy:
   #     fail-fast: false
   #     matrix:
-  #       apps: [v17, v18, v19]
+  #       apps: [v18, v19, v20]
   #   needs: [build]
   #   steps:
   #     - uses: actions/checkout@v4
   #       with:
   #         fetch-depth: 0
   #     - uses: ./.github/workflows/actions/setup
-  #     - uses: ./.github/workflows/actions/angular-setup
+  #     - uses: ./.github/workflows/actions/framework-setup
   #       with:
   #         app: ${{ matrix.apps }}
-  #     - uses: ./.github/workflows/actions/angular-build
+  #     - uses: ./.github/workflows/actions/framework-build
   #       with:
   #         app: ${{ matrix.apps }}
-  #     - uses: ./.github/workflows/actions/angular-test
+  #         framework: angular
+  #     - uses: ./.github/workflows/actions/framework-test
   #       with:
   #         app: ${{ matrix.apps }}
+  #         framework: angular
+
+  # react:
+  #   name: 🧪 React Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v19]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/framework-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/framework-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react
+  #     - uses: ./.github/workflows/actions/framework-test
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react

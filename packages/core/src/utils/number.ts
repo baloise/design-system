@@ -2,6 +2,10 @@ import { defaultLocale, useBalConfig } from './config'
 
 const getLocale = (): string => {
   const config = useBalConfig()
+  // workaround for swiss french locale which uses non standard number formatting
+  if (config && config.locale && config.locale === 'fr-CH') {
+    return 'de-CH'
+  }
   return (config && config.locale) || defaultLocale
 }
 

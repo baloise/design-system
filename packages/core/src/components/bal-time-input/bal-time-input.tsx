@@ -3,44 +3,45 @@ import {
   ComponentInterface,
   Element,
   Event,
-  h,
-  Host,
-  Method,
-  State,
-  Prop,
   EventEmitter,
-  Watch,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
+import { ariaBooleanToString } from '../../utils/aria'
+import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
 import {
-  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
+  ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
+import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../utils/constants/keys.constant'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import {
   FormInput,
-  inputListenOnClick,
-  inputHandleReset,
-  inputSetFocus,
-  inputSetBlur,
   getInputTarget,
-  inputHandleFocus,
   inputHandleBlur,
   inputHandleChange,
+  inputHandleFocus,
+  inputHandleReset,
+  inputListenOnClick,
+  inputSetBlur,
+  inputSetFocus,
   stopEventBubbling,
 } from '../../utils/form-input'
 import { debounceEvent } from '../../utils/helpers'
-import { inheritAttributes } from '../../utils/attributes'
-import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../utils/constants/keys.constant'
-import { BEM } from '../../utils/bem'
-import { i18nBalTimeInput } from './bal-time-input.i18n'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { ariaBooleanToString } from '../../utils/aria'
+import { i18nBalTimeInput } from './bal-time-input.i18n'
 
 @Component({
   tag: 'bal-time-input',
@@ -56,7 +57,7 @@ export class TimeInput
   inputValue = this.value
   initialValue = ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('bal-time-input')
@@ -169,7 +170,7 @@ export class TimeInput
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   /**

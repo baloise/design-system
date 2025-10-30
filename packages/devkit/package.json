@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-devkit",
-  "version": "19.5.0",
+  "version": "19.8.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -16,10 +16,10 @@
     "save": "devDependencies"
   },
   "dependencies": {
-    "@angular-devkit/core": "^17.0.10",
-    "@angular-devkit/schematics": "^17.0.10",
-    "@schematics/angular": "^17.0.10",
-    "typescript": "~5.2.2",
+    "@angular-devkit/core": "^18.0.0",
+    "@angular-devkit/schematics": "^18.0.0",
+    "@schematics/angular": "^18.0.0",
+    "typescript": "~5.4.2",
     "glob": "~10.3.10"
   }
 }

@@ -5,6 +5,7 @@ import {
   FunctionalComponent,
   h,
   Host,
+  Listen,
   Method,
   Prop,
   State,
@@ -202,6 +203,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
           <bal-popup
             id={this.componentId}
             placement="right"
+            closable={true}
             ref={el => (this.popupElement = el as HTMLBalPopupElement)}
             onBalChange={this.onPopupChange}
             variant={this.isMobile ? 'fullscreen' : 'popover'}

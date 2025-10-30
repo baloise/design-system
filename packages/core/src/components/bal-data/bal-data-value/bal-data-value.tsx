@@ -1,12 +1,14 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
+import { stopEventBubbling } from 'packages/core/src/utils/form-input'
 import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-value',
 })
 export class DataValue {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` a small button with a edit icon will be shown on the right.
@@ -38,13 +40,14 @@ export class DataValue {
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalDataValueBlurDetail>
 
-  private onClickHandler = (ev: MouseEvent) => {
+  private onClickHandler = (ev: BalEvents.BalButtonClick) => {
     const input = this.el.querySelector('bal-input')
     if (!isNil(input)) {
       input.setFocus()
     }
 
-    this.balClick.emit(ev)
+    stopEventBubbling(ev)
+    this.balClick.emit(ev.detail)
   }
 
   render() {
@@ -74,7 +77,7 @@ export class DataValue {
           disabled={this.disabled}
           onBalBlur={_ => this.balBlur.emit()}
           onBalFocus={_ => this.balFocus.emit()}
-          onClick={ev => this.onClickHandler(ev)}
+          onBalClick={ev => this.onClickHandler(ev)}
         ></bal-button>
       </Host>
     )

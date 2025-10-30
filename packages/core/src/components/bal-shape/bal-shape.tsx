@@ -1,13 +1,14 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import * as BaloiseDesignToken from '@baloise/ds-tokens'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-shape',
   styleUrl: 'bal-shape.sass',
 })
 export class Shape implements ComponentInterface {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * The shape variation

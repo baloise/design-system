@@ -93,6 +93,13 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'
       with:
+        name: react
+        output: packages/react/src/React.zip
+        paths: packages/react/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      if: inputs.build == 'true'
+      with:
         name: angular
         output: packages/angular/src/Angular.zip
         paths: packages/angular/src/generated

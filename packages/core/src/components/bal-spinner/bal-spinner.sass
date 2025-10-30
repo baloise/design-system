@@ -1,4 +1,6 @@
+
 @use '@baloise/ds-styles/sass/mixins' as *
+@use './bal-spinner.vars' as *
 
 // Spinner
 // --------------------------------------------------
@@ -23,9 +25,9 @@ bal-spinner,
   margin: auto
   border-width: 0.25rem
   border-style: solid
-  border-color: var(--bal-color-grey)
+  border-color: var(--bal-spinner-circle-background)
   border-radius: 50%
-  border-top-color: var(--bal-color-primary)
+  border-top-color: var(--bal-spinner-circle-progress)
   width: 1.5rem
   height: 1.5rem
 
@@ -38,8 +40,8 @@ bal-spinner,
   animation: spinner 1.6s linear infinite
 
 .bal-spinner--circle.bal-spinner--color-white
-  border-color: var(--bal-color-white)
-  border-top-color: var(--bal-color-primary)
+  border-color: var(--bal-spinner-circle-background-inverted)
+  border-top-color: var(--bal-spinner-circle-progress-inverted)
 
 @keyframes spinner
   0%

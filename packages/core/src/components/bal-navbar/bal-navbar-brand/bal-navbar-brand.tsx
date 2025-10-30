@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
 import { balBrowser } from '../../../utils/browser'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
@@ -12,7 +13,7 @@ import { i18nBalNavbarBrand } from './bal-navbar-brand.i18n'
 export class NavbarBrand {
   private bodyScrollHandler = new BalScrollHandler()
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() language: BalLanguage = defaultConfig.language
   @State() isMenuActive = false
@@ -113,11 +114,19 @@ export class NavbarBrand {
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
     if (ev.matches && !this.simple) {
-      this.toggle(false)
+      this.setIsMenuActiveAndAnimate(false)
     }
   }
 
-  async toggle(isMenuActive: boolean): Promise<void> {
+  /**
+   * @internal
+   */
+  @Method()
+  async toggle(): Promise<void> {
+    await this.setIsMenuActiveAndAnimate(!this.isMenuActive)
+  }
+
+  async setIsMenuActiveAndAnimate(isMenuActive = this.isMenuActive): Promise<void> {
     this.isMenuActive = isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)
 
@@ -147,14 +156,24 @@ export class NavbarBrand {
   }
 
   async onClick() {
-    this.toggle(!this.isMenuActive)
+    this.toggle()
   }
 
   render() {
     const navbarBrandEl = BEM.block('navbar').element('brand')
 
     const logoTemplate = this.logo ? (
-      <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
+      <img
+        class={{
+          ...navbarBrandEl.element('logo').class(),
+          ...navbarBrandEl
+            .element('logo')
+            .modifier('small')
+            .class(this.logoSize === 'small'),
+        }}
+        src={this.logo}
+        alt="Logo"
+      />
     ) : (
       <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
     )

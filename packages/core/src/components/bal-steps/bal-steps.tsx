@@ -1,21 +1,22 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
-import { debounceEvent } from '../../utils/helpers'
-import { BEM } from '../../utils/bem'
-import { BalStepOption } from './bal-step.type'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { areArraysEqual } from '../../utils/array'
-import { stopEventBubbling } from '../../utils/form-input'
-import { StepButton } from './components/step-button'
-import { newBalStepOption } from './bal-step.util'
-import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { stopEventBubbling } from '../../utils/form-input'
+import { debounceEvent } from '../../utils/helpers'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalStepOption } from './bal-step.type'
+import { newBalStepOption } from './bal-step.util'
+import { StepButton } from './components/step-button'
 
 @Component({
   tag: 'bal-steps',
   styleUrl: 'bal-steps.sass',
 })
 export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserver {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private stepsId = `bal-steps-${StepsIds++}`
 

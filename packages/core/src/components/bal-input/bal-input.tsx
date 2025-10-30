@@ -49,6 +49,7 @@ import {
   MAX_LENGTH_OFFER_NUMBER,
   MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER,
 } from './bal-input-util'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input',
@@ -68,7 +69,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   inputValue = this.value
   initialValue = this.value || ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
@@ -279,7 +280,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   componentDidLoad() {

@@ -1,16 +1,23 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  Event,
-  EventEmitter,
+  h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { BEM } from '../../../utils/bem'
+import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../utils/config'
+import { BalDate } from '../../../utils/date'
+import { waitAfterFramePaint } from '../../../utils/helpers'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../../utils/swipe'
 import {
   DayCell,
   ListItem,
@@ -21,14 +28,8 @@ import {
   generateYears,
   getFirstWeekdayOfMonth,
 } from '../utils/calendar'
-import { BalDate } from '../../../utils/date'
-import { LogInstance, Loggable, Logger } from '../../../utils/log'
-import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../utils/config'
-import { waitAfterFramePaint } from '../../../utils/helpers'
-import { BEM } from '../../../utils/bem'
-import { CalendarList } from './components/bal-date-calendar__list'
 import { CalendarGrid } from './components/bal-date-calendar__gird'
-import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../../utils/swipe'
+import { CalendarList } from './components/bal-date-calendar__list'
 import { CalendarNav } from './components/bal-date-calendar__nav'
 
 @Component({
@@ -42,7 +43,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   private oldMin? = ''
   private oldMax? = ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() selectedDate = ''
   @State() monthFullNames: string[] = []

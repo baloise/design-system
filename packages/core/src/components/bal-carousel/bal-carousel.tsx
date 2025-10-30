@@ -1,28 +1,29 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
-  Method,
   Event,
   EventEmitter,
+  Host,
+  Listen,
+  Method,
+  Prop,
   State,
   Watch,
-  Listen,
+  h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
-import { TabControl } from './controls/tab-control'
-import { stopEventBubbling } from '../../utils/form-input'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
-import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
+import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { stopEventBubbling } from '../../utils/form-input'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
-import { BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
 import { SwiperChildItem, SwiperInterface, SwiperUtil } from '../../utils/swiper'
 import { BalVisibilityObserver, ListenToVisibility } from '../../utils/visibility'
+import { TabControl } from './controls/tab-control'
 
 @Component({
   tag: 'bal-carousel',
@@ -46,7 +47,7 @@ export class Carousel
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * PUBLIC PROPERTY API

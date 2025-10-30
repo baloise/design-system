@@ -1,4 +1,5 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Method, State } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
@@ -15,7 +16,7 @@ import { i18nBalClose } from './bal-close.i18n'
   styleUrl: 'bal-close.sass',
 })
 export class Close implements ComponentInterface, BalConfigObserver {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region

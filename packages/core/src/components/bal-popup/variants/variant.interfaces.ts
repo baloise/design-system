@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 export type PopupVariant = 'popover' | 'fullscreen' | 'drawer'
 
@@ -24,11 +25,12 @@ export interface PopupComponentInterface {
   reference?: string
   balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
   balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   componentWidth?: number
   backdropEl?: HTMLDivElement
   containerEl?: HTMLDivElement
   arrowEl?: HTMLDivElement
+  innerEl?: HTMLBalStackElement
   trigger?: Element
   lastTrigger?: Element
   setMinWidth(value: number): any

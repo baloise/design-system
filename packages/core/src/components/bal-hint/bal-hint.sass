@@ -7,16 +7,17 @@
   +element(icon)
     user-select: none
     cursor: pointer
+    z-index: var(--bal-z-index-popup) !important
     &:hover
-      +fillSvg(var(--bal-color-light-blue-5))
+      +fillSvg(var(--bal-hint-icon-color-hover))
     &:focus-visible:not(:active)
       @extend %focus-shadow
   +element(popup)
   .bal-popup__container
     z-index: var(--bal-z-index-popup)
     background: var(--bal-hint-content-background)
+    border: 8px solid var(--bal-hint-content-border-color)
   +element(content)
-    background: var(--bal-hint-content-background)
     width: auto
     max-width: 30rem
     min-width: 16.25rem
@@ -64,5 +65,3 @@
       z-index: var(--bal-z-index-popup)
       +modifier('active')
         display: block
-
-

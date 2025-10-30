@@ -1,5 +1,5 @@
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
-import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
+import { PopupComponentInterface, PopupVariantRenderer } from './variant.interfaces'
 
 export class FullscreenVariantRenderer extends AbstractVariantRenderer implements PopupVariantRenderer {
   offset = 0
@@ -11,6 +11,10 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
       component.containerEl.style.setProperty('inset', `${this.offset}px auto auto 0px`)
       if (this.offset > 0) {
         component.containerEl.style.setProperty('box-shadow', `inset var(--bal-nav-meta-bar-variant-white-shadow)`)
+      }
+
+      if (component.innerEl) {
+        component.innerEl.style.setProperty('max-height', `calc(var(--bal-app-height, 100%) - ${this.offset}px)`)
       }
 
       this.showBackdropElement(component)
@@ -31,8 +35,14 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
       this.hideBackdropElement(component)
       this.hideContainerElement(component)
       this.hideArrowElement(component)
+
       component.containerEl.style.removeProperty('box-shadow')
       component.containerEl.style.removeProperty('inset')
+
+      if (component.innerEl) {
+        component.innerEl.style.removeProperty('max-height')
+      }
+
       return true
     }
     return false

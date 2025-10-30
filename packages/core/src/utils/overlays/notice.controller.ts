@@ -22,7 +22,7 @@ export interface HTMLNoticeElement extends HTMLStencilElement {
 }
 
 export abstract class BalNoticeController {
-  private container: HTMLElement | null = null
+  private container: HTMLStencilElement | null = null
   private queue: HTMLNoticeElement[] = []
   private preQueue: HTMLNoticeElement[] = []
   private queueLimit = 5
@@ -86,12 +86,12 @@ export abstract class BalNoticeController {
   private setupContainer(options: BalNoticeOptions) {
     if (balBrowser.hasDocument) {
       const containerId = `${this.options.tag}-container`
-      this.container = document.getElementById(containerId)
+      this.container = document.getElementById(containerId) as any as HTMLStencilElement
 
       if (this.container) return
 
       if (!this.container) {
-        this.container = document.createElement('bal-notices')
+        this.container = document.createElement('bal-notices') as HTMLStencilElement
         this.container.setAttribute('interface', this.options.tag.replace('bal-', ''))
         this.container.setAttribute('animated', options.animated ? 'true' : 'false')
         if (options.container !== undefined) {

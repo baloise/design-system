@@ -19,12 +19,14 @@
 // --------------------------------------------------
 
 .bal-nav__flyout
+  position: relative
   background: var(--bal-color-white)
   scroll-padding-top: 1rem
   padding-top: 1rem
   padding-bottom: 1rem
-  height: calc(var(--bal-app-height, 100%) - 4rem - 4rem)
+  height: calc(var(--bal-app-height, 100%) - 4rem - 4rem - var(--bal-nav-top, 0rem))
   overflow-y: auto
+  z-index: calc( var(--bal-z-index-navigation) - 1)
   +desktop
     display: none
     visibility: hidden
@@ -56,10 +58,6 @@
 
 .bal-nav__flyout:not(.bal-nav__flyout--visible)
   +invisible
-
-.bal-nav .bal-nav-meta-bar:not(.bal-nav-meta-bar--stay-on-top),
-.bal-nav .bal-nav-menu-bar
-  z-index: auto !important
 
 // Touch Meta Border
 // --------------------------------------------------

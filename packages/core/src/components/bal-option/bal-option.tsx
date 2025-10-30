@@ -18,6 +18,7 @@ import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } f
 import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-option',
@@ -27,7 +28,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 export class Option implements ComponentInterface, Loggable, BalElementStateObserver, BalOption {
   private inputId = `bal-option-${balOptionIds++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 
@@ -47,12 +48,12 @@ export class Option implements ComponentInterface, Loggable, BalElementStateObse
   /**
    * Label will be shown in the input element when it got selected
    */
-  @Prop() label = ''
+  @Prop({ reflect: true }) label = ''
 
   /**
    * The value of the select option. This value will be returned by the parent `<bal-select>` element.
    */
-  @Prop() value = ''
+  @Prop({ reflect: true }) value = ''
 
   /**
    * If `true`, the user cannot interact with the option.

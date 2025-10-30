@@ -1,17 +1,22 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  Watch,
-  ComponentInterface,
-  State,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { ariaBooleanToString } from '../../utils/aria'
+import { inheritAttributes } from '../../utils/attributes'
+import { BEM } from '../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import {
   FormInput,
   getInputTarget,
@@ -26,10 +31,6 @@ import {
   inputSetFocus,
 } from '../../utils/form-input'
 import { debounceEvent } from '../../utils/helpers'
-import { inheritAttributes } from '../../utils/attributes'
-import { BEM } from '../../utils/bem'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-textarea',
@@ -43,7 +44,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   inputValue = this.value
   initialValue = this.value || ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
@@ -200,7 +201,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
   /**

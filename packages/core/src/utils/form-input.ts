@@ -1,8 +1,9 @@
 import { EventEmitter } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { waitAfterIdleCallback } from './helpers'
 
 export interface FormInput<Value> {
-  el: HTMLElement
+  el: HTMLStencilElement
   disabled: boolean
   readonly: boolean
   focused: boolean

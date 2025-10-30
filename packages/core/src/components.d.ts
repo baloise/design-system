@@ -447,6 +447,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
@@ -1350,6 +1354,11 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop": boolean;
+        /**
           * Disables the close button for tablet and desktop
           * @default false
          */
@@ -1418,6 +1427,11 @@ export namespace Components {
           * @default false
          */
         "invalid": boolean;
+        /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -1536,6 +1550,16 @@ export namespace Components {
           * @default false
          */
         "hideLinks": boolean;
+        /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref": string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg": string;
         /**
           * If provided, the footer links will be overridden.
           * @default undefined
@@ -1689,9 +1713,9 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Name of the baloise icon.
-          * @default ''
+          * @default undefined
          */
-        "name": string;
+        "name": string | undefined;
         /**
           * @default false
          */
@@ -2529,6 +2553,10 @@ export namespace Components {
           * @default false
          */
         "light": boolean;
+        /**
+          * Toggles the menu on request method can be used from outside to open or close the menu
+         */
+        "toggleMenu": () => Promise<void>;
     }
     interface BalNavbarBrand {
         /**
@@ -2578,6 +2606,7 @@ export namespace Components {
           * @default '_self'
          */
         "target": BalProps.BalButtonTarget;
+        "toggle": () => Promise<void>;
     }
     interface BalNavbarMenu {
         /**
@@ -2678,6 +2707,11 @@ export namespace Components {
           * @default this.inputId
          */
         "name": string;
+        /**
+          * Allows only positive number values.
+          * @default false
+         */
+        "onlyPositive": boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -6457,6 +6491,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
@@ -7378,6 +7416,11 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * Hide the title on desktop.
+          * @default false
+         */
+        "hideTitleOnDesktop"?: boolean;
+        /**
           * Disables the close button for tablet and desktop
           * @default false
          */
@@ -7446,6 +7489,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element will not reserve any space for an upcoming message.
+          * @default false
+         */
+        "noReservedSpace"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -7573,6 +7621,16 @@ declare namespace LocalJSX {
           * @default false
          */
         "hideLinks"?: boolean;
+        /**
+          * Image address for the logo.
+          * @default ''
+         */
+        "logoHref"?: string;
+        /**
+          * Svg content for the logo.
+          * @default ''
+         */
+        "logoSvg"?: string;
         /**
           * If provided, the footer links will be overridden.
           * @default undefined
@@ -7708,9 +7766,9 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Name of the baloise icon.
-          * @default ''
+          * @default undefined
          */
-        "name"?: string;
+        "name"?: string | undefined;
         /**
           * @default false
          */
@@ -8771,6 +8829,11 @@ declare namespace LocalJSX {
           * Emitted when a keyboard key has pressed.
          */
         "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
+        /**
+          * Allows only positive number values.
+          * @default false
+         */
+        "onlyPositive"?: boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */

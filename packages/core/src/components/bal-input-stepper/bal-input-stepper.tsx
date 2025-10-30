@@ -30,6 +30,7 @@ import { debounceEvent, rIC } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { formatLocaleNumber } from '../../utils/number'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -46,7 +47,7 @@ export class InputStepper
 
   nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language

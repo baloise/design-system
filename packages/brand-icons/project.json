@@ -19,27 +19,53 @@
         "svgOptimize": true,
         "svgPlugins": [
           {
-            "name": "inlineStyles",
+            "name": "removeAttrs",
             "params": {
-              "onlyMatchedOnce": false
+              "attrs": ["clip-path", "clipPath"]
             }
           },
-          "convertStyleToAttrs",
+
           {
             "name": "removeAttrs",
             "params": {
               "attrs": "class"
             }
           },
+
+          "removeDoctype",
+          "removeXMLProcInst",
+          "removeComments",
+          "removeMetadata",
+          "removeTitle",
+          "removeDesc",
+          "removeHiddenElems",
+          "removeStyleElement",
+          "removeScriptElement",
+          "removeEmptyContainers",
           {
             "name": "removeDimensions",
             "params": {
               "removeDimensions": true
             }
           },
-          "removeStyleElement",
-          "removeScriptElement",
-          "removeEmptyContainers",
+
+          "removeUselessDefs",
+          "removeUnusedNS",
+
+          "convertShapeToPath",
+          "convertPathData",
+          "convertStyleToAttrs",
+          "collapseGroups",
+          "mergePaths",
+
+          { "name": "cleanupIds", "params": { "preservePrefixes": [], "minify": true } },
+
+          {
+            "name": "inlineStyles",
+            "params": {
+              "onlyMatchedOnce": false
+            }
+          },
           {
             "name": "addAttributesToSVGElement",
             "params": {

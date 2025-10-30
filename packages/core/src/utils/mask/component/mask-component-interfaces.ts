@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalConfigState } from '../../config'
 
 export interface MaskAttributes {
@@ -35,7 +36,7 @@ export interface MaskComponent {
   focused: boolean
   disabled: boolean
   readonly: boolean
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   nativeInput: HTMLInputElement
   valueChanged(newValue: string | undefined, oldValue: string | undefined): void
   balKeyPress: EventEmitter<KeyboardEvent>

@@ -1,5 +1,99 @@
 # Changelog
 
+## 19.8.2
+
+### Patch Changes
+
+- **nav**: adjust popup offset with banner is active ( [#1829](https://github.com/baloise/design-system/pull/1829))
+
+- **brand-icons**: improve svg optimizer to work with angular built in sanitizer ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
+- **tag**: wrap text to a newline if to long ( [#1834](https://github.com/baloise/design-system/pull/1834))
+
+- **brand-icons**: adapt to be able to import via angular. cleaned up svg ( [#1827](https://github.com/baloise/design-system/pull/1827))
+
+## 19.8.1
+
+### Patch Changes
+
+- **icon**: remove console log ( [#1820](https://github.com/baloise/design-system/pull/1820))
+
+## 19.8.0
+
+### Minor Changes
+
+- **styles**: update tcs theme ( [#1817](https://github.com/baloise/design-system/pull/1817))
+
+- **form**: pass down attribute data-hj-allow to enable hotjar to track the value of the input ( [#1812](https://github.com/baloise/design-system/pull/1812))
+
+### Patch Changes
+
+- **hint**: enable it to close on click outside popup and on esc key ( [#1806](https://github.com/baloise/design-system/pull/1806))
+
+- **icon**: only set name attribute if set ( [#1818](https://github.com/baloise/design-system/pull/1818))
+
+- **icon**: angular issue with not adding the svg content to the element ( [#1809](https://github.com/baloise/design-system/pull/1809))
+
+- **nav**: adjust z-index for viewports mobile and tablet ( [#1815](https://github.com/baloise/design-system/pull/1815))
+
+- **nav**: add css-var to define the top position of the nav ( [#1816](https://github.com/baloise/design-system/pull/1816))
+
+- **accordion**: improve variant selection for rendering ( [#1818](https://github.com/baloise/design-system/pull/1818))
+
+- **card**: add rel prop to card button component ( [#1807](https://github.com/baloise/design-system/pull/1807))
+
+## 19.7.1
+
+### Patch Changes
+
+- **number-input**: uses same format for CH-fr and CH-de ( [`993a07f`](https://github.com/baloise/design-system/commit/993a07f91f0392ee18ab86ccf97b387dd97cc702))
+
+- **pagination**: enable missing 0 page-range value ( [#1800](https://github.com/baloise/design-system/pull/1800))
+
+- **modal**: when using the modal service isClosable=false will now prevent closing modals with escape key ( [#1804](https://github.com/baloise/design-system/pull/1804))
+
+- **devkit**: enable new angular setup with app.ts instead of app.component.ts ( [#1801](https://github.com/baloise/design-system/pull/1801))
+
+## 19.7.0
+
+### Minor Changes
+
+- **angular**: support v20 and dropped v17 support ( [#1774](https://github.com/baloise/design-system/pull/1774))
+
+- **navbar**: add method to toggle the menu on touch devices ( [#1784](https://github.com/baloise/design-system/pull/1784))
+
+### Patch Changes
+
+- **dropdown**: reflect label of options to fix react issue ( [#1790](https://github.com/baloise/design-system/pull/1790))
+
+## 19.6.0
+
+### Minor Changes
+
+- **number-input**: add option to only allow positive values ( [#1773](https://github.com/baloise/design-system/pull/1773))
+
+- **styles**: add description list element styles ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+- **field**: add possibility to hide field hint title on Desktop ( [#1736](https://github.com/baloise/design-system/pull/1736))
+
+- **field**: add no-reserved-space prop to the field message to not reserve any space for an upcoming message ( [#1780](https://github.com/baloise/design-system/pull/1780))
+
+### Patch Changes
+
+- **tabs**: overflow border line on vertical usage ( [#1789](https://github.com/baloise/design-system/pull/1789))
+
+- **segment**: renders divider lines after value change ( [#1772](https://github.com/baloise/design-system/pull/1772))
+
+- **nav**: z-index issues on mobile and tablet breakpoints ( [#1786](https://github.com/baloise/design-system/pull/1786))
+
+- **nav**: popup overflow issue. calulating height with offset. ( [#1786](https://github.com/baloise/design-system/pull/1786))
+
+- **file-upload**: make remove file button accessible ( [#1788](https://github.com/baloise/design-system/pull/1788))
+
+- **data**: emit bal-click event when clicking the pencil icon to change the value ( [#1788](https://github.com/baloise/design-system/pull/1788))
+
+- **pagination**: removes disabled button glitches when hovering ( [#1783](https://github.com/baloise/design-system/pull/1783))
+
 ## 19.5.0
 
 ### Minor Changes

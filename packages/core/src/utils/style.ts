@@ -1,3 +1,5 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 export interface Padding {
   top: number
   right: number
@@ -22,7 +24,7 @@ export const getComputedPadding = (element: HTMLElement, defaultPadding = 16): P
   return { top, right, bottom, left }
 }
 
-export const getComputedWidth = (element: HTMLElement): number => {
+export const getComputedWidth = (element: HTMLElement | HTMLStencilElement): number => {
   if (typeof (window as any) === 'undefined') {
     return element.clientWidth
   }

@@ -64,6 +64,10 @@ export const connectListeners = (doc: Document) => {
       if (ev.key === 'Escape') {
         const lastOverlay = getOverlay(doc)
         if (lastOverlay) {
+          // check for modal with isClosable = false they should not be closed with ESC or backdrop click
+          if ((lastOverlay as any).isClosable === false) {
+            return
+          }
           lastOverlay.dismiss(undefined, BACKDROP)
         }
       }
@@ -111,7 +115,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
      * tab activates the first focusable element
      * in the overlay wrapper.
      */
-    if (lastOverlay === target) {
+    if ((lastOverlay as any as HTMLElement) === target) {
       lastOverlay.lastFocus = undefined
       /**
        * Toasts can be presented from an overlay.
@@ -163,7 +167,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
         const lastFocus = lastOverlay.lastFocus
 
         // Focus the first element in the overlay wrapper
-        focusFirstDescendant(overlayWrapper, lastOverlay)
+        focusFirstDescendant(overlayWrapper, lastOverlay as any as HTMLElement)
 
         /**
          * If the cached last focused element is the
@@ -175,7 +179,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
          * last focus to equal the active element.
          */
         if (lastFocus === doc.activeElement) {
-          focusLastDescendant(overlayWrapper, lastOverlay)
+          focusLastDescendant(overlayWrapper, lastOverlay as any as HTMLElement)
         }
         lastOverlay.lastFocus = doc.activeElement as HTMLElement
       }
@@ -220,7 +224,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
       const lastFocus = lastOverlay.lastFocus
 
       // Focus the first element in the overlay wrapper
-      focusFirstDescendant(lastOverlay)
+      focusFirstDescendant(lastOverlay as any as HTMLElement)
 
       /**
        * If the cached last focused element is the
@@ -232,7 +236,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * last focus to equal the active element.
        */
       if (lastFocus === doc.activeElement) {
-        focusLastDescendant(lastOverlay)
+        focusLastDescendant(lastOverlay as any as HTMLElement)
       }
       lastOverlay.lastFocus = doc.activeElement as HTMLElement
     }
@@ -271,7 +275,7 @@ export const dismiss = async (
   return true
 }
 
-export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise<T> => {
+export const eventMethod = <T>(element: HTMLElement | HTMLStencilElement, eventName: string): Promise<T> => {
   let resolve: (detail: T) => void
   const promise = new Promise<T>(r => (resolve = r))
   onceEvent(element, eventName, (ev: any) => {
@@ -280,7 +284,11 @@ export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise
   return promise
 }
 
-export const onceEvent = (element: HTMLElement, eventName: string, callback: (ev: Event) => void) => {
+export const onceEvent = (
+  element: HTMLElement | HTMLStencilElement,
+  eventName: string,
+  callback: (ev: Event) => void,
+) => {
   const handler = (ev: Event) => {
     removeEventListener(element, eventName, handler)
     callback(ev)

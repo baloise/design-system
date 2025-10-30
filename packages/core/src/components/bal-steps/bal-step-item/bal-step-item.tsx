@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalStepOption } from '../bal-step.type'
 
@@ -8,7 +9,7 @@ import { BalStepOption } from '../bal-step.type'
 export class StepItem {
   private inheritAttributes: Attributes = {}
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isActive = false
 

@@ -35,10 +35,10 @@
       "schema": "./src/executors/pre-publish/schema.json",
       "description": "pre-publish executor"
     },
-    "create-angular": {
-      "implementation": "./src/executors/create-angular/executor",
-      "schema": "./src/executors/create-angular/schema.json",
-      "description": "create-angular executor"
+    "create-test-app": {
+      "implementation": "./src/executors/create-test-app/executor",
+      "schema": "./src/executors/create-test-app/schema.json",
+      "description": "create-test-app executor"
     },
     "test-ui": {
       "implementation": "./src/executors/test-ui/executor",

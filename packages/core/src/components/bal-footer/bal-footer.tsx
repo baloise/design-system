@@ -1,17 +1,18 @@
 import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State, Method } from '@stencil/core'
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
-  defaultConfig,
   BalConfigState,
   BalLanguage,
+  BalRegion,
+  defaultConfig,
   ListenToConfig,
   updateBalLanguage,
-  BalRegion,
 } from '../../utils/config'
-import { BEM } from '../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { sanitizeSvg } from '../../utils/svg'
 import { i18nBalFooter } from './bal-footer.i18n'
 
 @Component({
@@ -19,6 +20,7 @@ import { i18nBalFooter } from './bal-footer.i18n'
   styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
+  @State() logoSvgContent = ''
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
@@ -36,6 +38,20 @@ export class Footer implements BalConfigObserver, Loggable {
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
+
+  /**
+   * Image address for the logo.
+   */
+  @Prop() logoHref = ''
+
+  /**
+   * Svg content for the logo.
+   */
+  @Prop() logoSvg = ''
+  @Watch('logoSvg')
+  logoSvgChanged() {
+    this.logoSvgContent = sanitizeSvg(this.logoSvg)
+  }
 
   /**
    * If `true` the legal Baloise links will be hidden.
@@ -65,6 +81,7 @@ export class Footer implements BalConfigObserver, Loggable {
   connectedCallback() {
     this.updateFooterLinks()
     this.updateSocialMediaLinks()
+    this.logoSvgChanged()
   }
 
   /**
@@ -165,7 +182,13 @@ export class Footer implements BalConfigObserver, Loggable {
                   ...elLogo.class(),
                 }}
               >
-                <bal-logo color="white"></bal-logo>
+                {this.logoHref ? (
+                  <img src={this.logoHref} alt="Logo" />
+                ) : this.logoSvgContent ? (
+                  <div innerHTML={this.logoSvgContent}></div>
+                ) : (
+                  <bal-logo color="white"></bal-logo>
+                )}
               </div>
               <div
                 class={{
@@ -245,19 +268,20 @@ export class Footer implements BalConfigObserver, Loggable {
                 }}
                 style={{ display: this.hideLinks ? 'none' : 'flex' }}
               >
-                {this.links.map(link => (
-                  <a
-                    key={link.link}
-                    href={link.link}
-                    target="_blank"
-                    class={{
-                      'link': true,
-                      'is-light': true,
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {this.links &&
+                  this.links.map(link => (
+                    <a
+                      key={link.link}
+                      href={link.link}
+                      target="_blank"
+                      class={{
+                        'link': true,
+                        'is-light': true,
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

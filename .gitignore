@@ -23,6 +23,7 @@ node_modules
 
 # IDE - VSCode
 .vscode/*
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -47,6 +48,7 @@ Thumbs.db
 .nx/workspace-data
 .stencil
 
+packages/fonts/assets/partners
 packages/core/icons
 packages/core/playwright
 packages/core/components
@@ -106,6 +108,11 @@ test/angular/*
 !test/angular/build.sh
 !test/angular/start.sh
 playwright-report
+
+test/react/*
+!test/react/base
+!test/react/build.sh
+!test/react/start.sh
 
 .angular
 

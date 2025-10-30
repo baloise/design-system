@@ -15,7 +15,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
-import { debounce } from '../../utils/helpers'
+import { debounce, isDescendant } from '../../utils/helpers'
 import { isEscapeKey } from '../../utils/keyboard'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import {
@@ -27,6 +27,7 @@ import {
   PopupVariantRenderer,
 } from './variants'
 import { VariantRenderer } from './variants/variant.renderer'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-popup',
@@ -45,11 +46,12 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private lastFocus?: HTMLElement
   private lastVariantRenderer?: PopupVariantRenderer
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
   containerEl: HTMLDivElement | undefined
   contentEl: HTMLDivElement | undefined
   backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
+  innerEl: HTMLBalStackElement | undefined
 
   @State() activeClosable = false
   @State() activeBackdropDismiss = false
@@ -221,6 +223,8 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
       if (this.el.id === popupId) {
         this.debouncedGlobalClick(trigger as HTMLElement)
       }
+    } else if (!this.backdrop && this.closable && this.presented && !isDescendant(this.el, target)) {
+      await this.dismiss()
     }
   }
 
@@ -228,7 +232,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   async listenOnKeyDown(ev: KeyboardEvent) {
     if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
-      this.dismiss()
+      await this.dismiss()
     }
   }
 
@@ -511,6 +515,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
             class={{
               ...innerBlock.class(),
             }}
+            ref={innerBlock => (this.innerEl = innerBlock)}
           >
             {this.label ? (
               <bal-stack
