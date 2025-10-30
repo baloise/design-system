@@ -1,4 +1,4 @@
-import { HTMLStencilElement } from "@stencil/core/internal"
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 export const watchForOptions = <T extends HTMLStencilElement>(
   containerEl: HTMLElement | HTMLStencilElement,
