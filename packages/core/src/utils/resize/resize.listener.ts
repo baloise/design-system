@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { debounce } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
@@ -9,7 +10,7 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
   private lastWidth: number | undefined
   private lastHeight: number | undefined
 
-  connect(el: HTMLElement): void {
+  connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (typeof ResizeObserver === 'undefined') {
       return

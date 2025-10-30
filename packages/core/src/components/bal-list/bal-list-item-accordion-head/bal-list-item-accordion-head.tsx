@@ -11,6 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../../utils/aria'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
 import { stopEventBubbling } from '../../../utils/form-input'
@@ -30,7 +31,7 @@ export interface BalListItemAccordionHeadAria {
 export class ListItemAccordionHead implements ComponentInterface, Loggable {
   private internalId = `bal-list-item-accordion-head-${ListItemAccordionHeadIds++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() ariaState: BalListItemAccordionHeadAria = {}
   @State() language: BalLanguage = defaultConfig.language

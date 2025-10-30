@@ -1,5 +1,7 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 export interface BalFocusObserver {
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   hasFocus: boolean
   focusInListener(ev: FocusEvent): void
   focusOutListener(ev: FocusEvent): void

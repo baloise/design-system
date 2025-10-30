@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -43,7 +44,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   inputValue = this.value
   initialValue = this.value || ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() ariaForm: BalAriaForm = defaultBalAriaForm

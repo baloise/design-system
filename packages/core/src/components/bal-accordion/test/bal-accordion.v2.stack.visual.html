@@ -1,0 +1,57 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container py-medium" data-testid="stack">
+        <bal-accordion>
+          <bal-accordion-summary trigger>
+            <bal-stack>
+              <bal-icon class="svg-icon"></bal-icon>
+              <bal-content>
+                <bal-label>With label and text</bal-label>
+                <bal-text size="small"
+                  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
+                  officiis qui tempore. Veniam ab sed nostrum excepturi dignissimos maxime itaque optio tempore,
+                  officiis enim, exercitationem ex.
+                </bal-text>
+              </bal-content>
+              <bal-checkbox interface="switch"></bal-checkbox>
+              <bal-accordion-trigger></bal-accordion-trigger>
+            </bal-stack>
+          </bal-accordion-summary>
+          <bal-accordion-details>
+            <p class="py-medium">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas minima iure quisquam consequatur,
+              magni fuga nostrum veniam reprehenderit omnis ad odio sint accusamus velit esse alias eligendi saepe
+              consequuntur? Ullam in accusantium dolore, numquam, quaerat id velit molestiae reprehenderit aut eos,
+              repellendus ducimus officiis. Distinctio possimus deserunt delectus est dolorem accusamus, neque assumenda
+              iure blanditiis mollitia, quae voluptatum. Placeat? Laboriosam maiores eum tenetur possimus voluptas. Id
+              quaerat dignissimos eius facilis molestias. Quaerat ipsa dolor a, rerum eius quos error atque inventore
+              vitae. Iste exercitationem illo voluptate laudantium voluptatem ipsa?
+            </p>
+          </bal-accordion-details>
+        </bal-accordion>
+      </main>
+      <script>
+        setTimeout(() => {
+          const iconElements = document.getElementsByClassName('svg-icon')
+          const icons = Array.from(iconElements)
+          icons.forEach(icon => {
+            icon.color = 'auto'
+            icon.size = 'large'
+            icon.svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"><g id="Solid"><rect width="40" height="40" fill="none"/></g><g id="Icon"><path d="M27,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H28a1,1,0,0,1-1-1V28A0,0,0,0,1,27,28Z" fill="#000d6e"/><path d="M8,28h5a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V28A0,0,0,0,1,8,28Z" fill="#000d6e"/><rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/><path d="M31.69,20l-1-3H9.33l-1,3A3.89,3.89,0,0,0,8,21.54V27H32V21.54A3.89,3.89,0,0,0,31.69,20ZM11.5,24A1.5,1.5,0,1,1,13,22.5,1.5,1.5,0,0,1,11.5,24Zm17,0A1.5,1.5,0,1,1,30,22.5,1.5,1.5,0,0,1,28.5,24Z" fill="#1b5951"/><path d="M27.77,9.85A3,3,0,0,0,25,8H15a3,3,0,0,0-2.77,1.85L9.67,16H30.33Z" fill="#94e3d4"/></g></svg>`
+          })
+        })
+      </script>
+    </bal-doc-app>
+  </body>
+</html>

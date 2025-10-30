@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { areArraysEqual } from '../../../utils/array'
 import { inheritAttributes } from '../../../utils/attributes'
@@ -41,7 +42,7 @@ export class CheckboxGroup
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**

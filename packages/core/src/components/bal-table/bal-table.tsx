@@ -1,4 +1,5 @@
-import { Component, h, Prop, Host, ComponentInterface, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -6,7 +7,7 @@ import { BEM } from '../../utils/bem'
   styleUrl: 'bal-table.sass',
 })
 export class Table implements ComponentInterface {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` the table has a full width

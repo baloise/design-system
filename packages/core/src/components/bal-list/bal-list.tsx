@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -6,7 +7,7 @@ import { BEM } from '../../utils/bem'
   styleUrl: 'bal-list.sass',
 })
 export class List {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` the list item can not be hovered

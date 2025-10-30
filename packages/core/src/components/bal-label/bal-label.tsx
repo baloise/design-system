@@ -1,4 +1,5 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
@@ -8,17 +9,17 @@ import {
   defaultConfig,
   ListenToConfig,
 } from '../../utils/config'
+import { BalElementStateInfo } from '../../utils/element-states'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { i18nBalLabel } from './bal-label.i18n'
-import { BalElementStateInfo } from '../../utils/element-states'
-import { BalAriaFormLinking, BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-label',
   styleUrl: './bal-label.sass',
 })
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region

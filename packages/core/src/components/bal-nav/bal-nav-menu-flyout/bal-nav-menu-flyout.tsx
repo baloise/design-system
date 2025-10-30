@@ -15,6 +15,7 @@ import { isDescendant } from '../../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 import { BalScrollHandler } from '../../../utils/scroll'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-nav-menu-flyout',
@@ -23,7 +24,7 @@ import { BalScrollHandler } from '../../../utils/scroll'
 export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObserver {
   private bodyScrollHandler = new BalScrollHandler()
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isHidden = false
 

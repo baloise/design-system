@@ -1,7 +1,8 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Listen, Prop, State, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { balBrowser } from '../../../utils/browser'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-meta-bar',
@@ -11,7 +12,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
   private navMetaBarId = `bal-nav-meta-bar-${NavMetaBarIds++}`
   private previousY = 0
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isHidden = false
 

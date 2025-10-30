@@ -12,6 +12,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
@@ -56,7 +57,7 @@ export class TimeInput
   inputValue = this.value
   initialValue = ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('bal-time-input')

@@ -11,6 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { sanitizeSvg } from 'packages/core/src/utils/svg'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
@@ -24,7 +25,7 @@ export class CarouselItem implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
   private buttonEl: HTMLButtonElement | HTMLLinkElement
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isOnLoadEventDone = false
   @State() containerId = ''

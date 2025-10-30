@@ -1,7 +1,8 @@
-import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 import { balBrowser } from '../../../utils/browser'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-popover-content',
@@ -9,7 +10,7 @@ import { balBrowser } from '../../../utils/browser'
 export class PopoverContent implements ComponentInterface, BalBreakpointObserver {
   private isTouch = balBreakpoints.isTouch // need this part to improve a none side effect import
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` the popover has no padding space.

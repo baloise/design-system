@@ -1,4 +1,5 @@
 import { Component, Element, h, Host } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-modal-header',
@@ -6,7 +7,7 @@ import { Component, Element, h, Host } from '@stencil/core'
   shadow: false,
 })
 export class ModalHeader {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   get parentModal(): HTMLBalModalElement | null {
     return this.el.closest('bal-modal')

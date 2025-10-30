@@ -10,6 +10,7 @@ import {
   Prop,
   State,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { rOnLoad } from '../../utils/helpers'
@@ -21,7 +22,7 @@ import { rOnLoad } from '../../utils/helpers'
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isLargestContentPaintDone = false
 

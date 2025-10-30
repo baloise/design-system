@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 export type ComponentProps = { [key: string]: any }
 // eslint-disable-next-line
@@ -30,7 +31,7 @@ export interface OverlayEventDetail<T = any> {
 }
 
 export interface OverlayInterface {
-  el: HTMLElement
+  el: HTMLStencilElement
   overlayIndex: number
   presented: boolean
 

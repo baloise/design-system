@@ -21,6 +21,7 @@ import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
 import { hasParent } from '../../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input-date',
@@ -35,7 +36,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   nativeInput!: HTMLInputElement
   log!: LogInstance
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() isGrouped = false
