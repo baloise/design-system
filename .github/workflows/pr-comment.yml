@@ -37,10 +37,9 @@ jobs:
 
       - name: Get Branch Name
         id: get-branch
+        # Use the event payload directly instead of calling the API with jq
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
@@ -189,10 +188,9 @@ jobs:
 
       - name: Get Branch Name
         id: get-branch
+        # Use the event payload directly instead of calling the API with jq
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
@@ -274,7 +272,7 @@ jobs:
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
   updateScreenshots:
-    name: 📸 Create Base Image
+    name: 📸 Update Screenshots
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
     runs-on: ubuntu-22.04
     timeout-minutes: 30
@@ -338,7 +336,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
           body: |
-            **📸 Create Base Image in Progress...**
+            **📸 Update Screenshots in Progress...**
 
             Specs: `${{ steps.command.outputs.result }}`
 
@@ -347,9 +345,7 @@ jobs:
       - name: Get Branch Name
         id: get-branch
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
