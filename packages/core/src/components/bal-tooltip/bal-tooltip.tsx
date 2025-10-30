@@ -1,22 +1,23 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
   Prop,
   State,
   Watch,
-  Method,
-  EventEmitter,
-  Event,
+  h,
 } from '@stencil/core'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
-import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
 import { balFloatingUi } from '../../utils/floating-ui'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { hideArrowElement, hideContainerElement, showArrowElement, showContainerElement } from './bal-tooltip.util'
 
 @Component({
   tag: 'bal-tooltip',
@@ -26,7 +27,7 @@ import { balFloatingUi } from '../../utils/floating-ui'
 export class Tooltip implements ComponentInterface, Loggable {
   private tooltipId = `bal-to-${tooltipIds++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private containerEl: HTMLDivElement | undefined
   private contentEl: HTMLDivElement | undefined

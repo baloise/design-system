@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
 import { balBrowser } from '../../../utils/browser'
 import { BalConfigState, BalLanguage, defaultConfig, ListenToConfig } from '../../../utils/config'
@@ -12,7 +13,7 @@ import { i18nBalNavbarBrand } from './bal-navbar-brand.i18n'
 export class NavbarBrand {
   private bodyScrollHandler = new BalScrollHandler()
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() language: BalLanguage = defaultConfig.language
   @State() isMenuActive = false

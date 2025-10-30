@@ -1,15 +1,15 @@
-import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
-import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { Event, EventEmitter } from '@stencil/core'
-import { deepReady, waitAfterFramePaint } from '../../utils/helpers'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { deepReady, waitAfterFramePaint } from '../../utils/helpers'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 
 @Component({
   tag: 'bal-field',
   styleUrl: 'bal-field.sass',
 })
 export class Field implements ComponentInterface, BalMutationObserver {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private fieldId = `bal-field-${FieldIds++}`
   private formControlElement = ['bal-field-control']
@@ -114,12 +114,12 @@ export class Field implements ComponentInterface, BalMutationObserver {
     await this.syncAriaAttributes()
   }
 
-  private isDirectChild = (el: HTMLElement): boolean => {
+  private isDirectChild = (el: HTMLElement | HTMLStencilElement): boolean => {
     if (!el) {
       return false
     }
 
-    const parent = el.parentElement
+    const parent = el.parentElement as any as HTMLStencilElement
     if (!parent) {
       return false
     }

@@ -1,4 +1,5 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-form-col',
@@ -6,7 +7,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 export class FormCol implements ComponentInterface {
   private colClass = 'col'
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @Prop() size: BalProps.BalFormColSize = 'full'
 

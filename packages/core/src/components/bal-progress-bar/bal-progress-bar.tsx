@@ -1,15 +1,10 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Method } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import type { BalConfigObserver, BalConfigState } from '../../utils/config'
-import {
-  BalResizeInfo,
-  BalResizeObserver,
-  BalWindowResizeObserver,
-  ListenToResize,
-  ListenToWindowResize,
-} from '../../utils/resize'
 import { raf } from '../../utils/helpers'
+import { BalWindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -18,7 +13,7 @@ import { raf } from '../../utils/helpers'
 export class ProgressBar
   implements ComponentInterface, BalConfigObserver, BalBreakpointObserver, BalWindowResizeObserver
 {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private animated = true
   private lineEl?: HTMLDivElement

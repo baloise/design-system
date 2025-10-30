@@ -27,6 +27,7 @@ import {
   PopupVariantRenderer,
 } from './variants'
 import { VariantRenderer } from './variants/variant.renderer'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-popup',
@@ -45,7 +46,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private lastFocus?: HTMLElement
   private lastVariantRenderer?: PopupVariantRenderer
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
   containerEl: HTMLDivElement | undefined
   contentEl: HTMLDivElement | undefined
   backdropEl: HTMLDivElement | undefined

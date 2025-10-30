@@ -12,6 +12,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { balBrowser } from '../../utils/browser'
@@ -55,7 +56,7 @@ export class Nav
   private menuBarEl: HTMLBalNavMenuBarElement | undefined
   private metaBarEl: HTMLBalNavMetaBarElement | undefined
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 

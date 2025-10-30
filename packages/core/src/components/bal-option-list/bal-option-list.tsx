@@ -1,13 +1,14 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, State, Listen } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
+import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
+import { BalOption } from '../../utils/dropdown'
+import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
 import { raf, waitAfterFramePaint } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { includes, startsWith } from '../bal-select/utils/utils'
-import { BalAriaForm, defaultBalAriaForm } from '../../utils/form'
-import { BalOption } from '../../utils/dropdown'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-option-list',
@@ -19,7 +20,7 @@ export class OptionList implements ComponentInterface, Loggable {
   private inheritAttributes: Attributes = {}
   private focusRaf: number | undefined
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 
@@ -335,11 +336,11 @@ export class OptionList implements ComponentInterface, Loggable {
    */
 
   private get options(): HTMLBalOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bal-option')).filter(o => !o.hidden)
+    return Array.from<HTMLBalOptionElement>(this.el.querySelectorAll('bal-option')).filter(o => !o.hidden)
   }
 
   private get allOptions(): HTMLBalOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bal-option'))
+    return Array.from<HTMLBalOptionElement>(this.el.querySelectorAll('bal-option'))
   }
 
   /**

@@ -1,5 +1,7 @@
-export const watchForOptions = <T extends HTMLElement>(
-  containerEl: HTMLElement,
+import { HTMLStencilElement } from "@stencil/core/internal"
+
+export const watchForOptions = <T extends HTMLStencilElement>(
+  containerEl: HTMLElement | HTMLStencilElement,
   tagName: string,
   onChange: (el: T | undefined) => void,
 ) => {

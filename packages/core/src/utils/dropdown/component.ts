@@ -3,9 +3,10 @@ import { DropdownValueUtil } from './value'
 import { BalOption } from './option'
 import { DropdownFocus } from './focus'
 import { DropdownPopupUtil } from './popup'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 export type DropdownComponent = DropdownFocus & {
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   selectEl: HTMLSelectElement | undefined
   panelEl: HTMLDivElement | undefined
   nativeEl: HTMLInputElement | undefined

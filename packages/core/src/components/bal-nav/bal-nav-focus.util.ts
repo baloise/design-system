@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { isDescendant, rIC } from '../../utils/helpers'
 import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
@@ -36,7 +37,7 @@ export const gatherTabInformation = (detail: TabInformationDetail): TabInformati
 }
 
 export type TabKeyDownDetail = {
-  el: HTMLElement
+  el: HTMLStencilElement | HTMLElement
   navId: string
   isFlyoutActive: boolean
   isBackwards: boolean
@@ -90,7 +91,7 @@ export const handleTabKeyDown = (
 }
 
 export type FlyoutFocusOutDetail = {
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   isBackwards: boolean
 }
 
@@ -111,7 +112,7 @@ export const handleFlyoutFocusOut = (info: TabInformation, detail: FlyoutFocusOu
 /**
  * Focuses the next focusable element after the current element outside of the bal-nav element.
  */
-const focusNextElement = (current: HTMLElement, balNavEl: HTMLElement) => {
+const focusNextElement = (current: HTMLElement | HTMLStencilElement, balNavEl: HTMLElement | HTMLStencilElement) => {
   const focusableSelectors = [
     'a[href]',
     'button:not([disabled])',
@@ -127,7 +128,7 @@ const focusNextElement = (current: HTMLElement, balNavEl: HTMLElement) => {
     // exclude elements inside the bal-nav
     .filter(el => !isDescendant(balNavEl, el))
 
-  const index = focusableElements.indexOf(current)
+  const index = focusableElements.indexOf(current as HTMLElement)
   const next = focusableElements[index + 1]
 
   if (next) next.focus()

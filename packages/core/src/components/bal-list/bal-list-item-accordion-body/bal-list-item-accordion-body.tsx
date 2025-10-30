@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 import { debounce, raf } from '../../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
@@ -19,7 +20,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
   private isMobile = balBreakpoints.isMobile
   private internalId = `bal-list-item-accordion-body-${ListItemAccordionBodyIds++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() ariaState: BalListItemAccordionBodyAria = {}
 
