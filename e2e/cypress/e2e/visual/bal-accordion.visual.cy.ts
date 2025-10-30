@@ -1,6 +1,9 @@
 describe('bal-accordion', () => {
   it('basic component - desktop', () => {
-    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('desktop').waitForDesignSystem()
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html')
+      .platform('desktop')
+      .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('basic').waitForComponents()
     cy.getByTestId('basic').testVisual('accordion-v2-desktop')
@@ -13,7 +16,10 @@ describe('bal-accordion', () => {
   })
 
   it('basic component - tablet', () => {
-    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('tablet').waitForDesignSystem()
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html')
+      .platform('tablet')
+      .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('basic').waitForComponents()
     cy.getByTestId('basic').testVisual('accordion-v2-tablet')
@@ -26,7 +32,10 @@ describe('bal-accordion', () => {
   })
 
   it('basic component - mobile', () => {
-    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html').platform('mobile').waitForDesignSystem()
+    cy.visit('/components/bal-accordion/test/bal-accordion.v2.visual.html')
+      .platform('mobile')
+      .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('basic').waitForComponents()
     cy.getByTestId('basic').testVisual('accordion-v2-mobile')
@@ -42,6 +51,7 @@ describe('bal-accordion', () => {
     cy.visit('/components/bal-accordion/test/bal-accordion.v2.stack.visual.html')
       .platform('desktop')
       .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('stack').waitForComponents()
     cy.getByTestId('stack').testVisual('accordion-v2-stack-desktop')
@@ -57,6 +67,7 @@ describe('bal-accordion', () => {
     cy.visit('/components/bal-accordion/test/bal-accordion.v2.text.visual.html')
       .platform('desktop')
       .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('text-variant').waitForComponents()
     cy.getByTestId('text-variant').testVisual('accordion-v2-text-variant-desktop')
@@ -72,6 +83,7 @@ describe('bal-accordion', () => {
     cy.visit('/components/bal-accordion/test/bal-accordion.v2.button.visual.html')
       .platform('desktop')
       .waitForDesignSystem()
+      .wait(1000)
 
     cy.getByTestId('button').waitForComponents().testVisual('accordion-v2-button-desktop')
   })
