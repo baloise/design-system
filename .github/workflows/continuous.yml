@@ -60,59 +60,6 @@ jobs:
   #     - uses: ./.github/workflows/actions/e2e-setup
   #     - uses: ./.github/workflows/actions/e2e-visual
 
-  playwright:
-    name: 🎭 Playwright
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-      CI: 1
-    container:
-      image: mcr.microsoft.com/playwright:v1.50.1-noble
-      options: --user 1001
-    strategy:
-      matrix:
-        shardIndex: [1, 2, 3] # three parallel jobs
-        shardTotal: [3] # total 3 shards
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-          fetch-depth: 0
-          ref: ${{ github.head_ref }}
-
-      - uses: ./.github/workflows/actions/setup
-
-      - name: Clean Install
-        run: npm ci
-
-      # - name: Build Core
-      #   run: npx nx run core:build
-      #   env:
-      #     BAL_PLAYWRIGHT_TESTING: 'true'
-      - name: Run Playwright tests
-        # working-directory: packages/core
-        # index ist matrix.shardIndex, total ist matrix.shardTotal
-        # run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=list --update-snapshots
-        # run: npx nx run core:e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --update-snapshots
-        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        # run: npx nx run core:e2e-update-screenshots
-
-      - name: Commit snapshots
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'update snapshots'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-
-      - name: Upload Playwright HTML report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report-shard-${{ matrix.shardIndex }}
-          path: packages/core/playwright-report
-          retention-days: 7
-
   # angular:
   #   name: 🧪 Angular Tests
   #   runs-on: ubuntu-22.04
@@ -168,3 +115,54 @@ jobs:
   #       with:
   #         app: ${{ matrix.apps }}
   #         framework: react
+
+  playwright:
+    name: 🎭 Playwright
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+      CI: 1
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
+      options: --user 1001
+    strategy:
+      matrix:
+        shardIndex: [1, 2, 3] # three parallel jobs
+        shardTotal: [3] # total 3 shards
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - uses: ./.github/workflows/actions/setup
+
+      - name: Clean Install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Run Playwright tests
+        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Commit snapshots
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-shard-${{ matrix.shardIndex }}
+          path: packages/core/playwright-report
+          retention-days: 7
