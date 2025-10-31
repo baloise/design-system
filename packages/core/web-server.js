@@ -10,11 +10,6 @@ app.set('port', 4000)
 app.use(compression())
 app.use(express.static(path.join(__dirname, 'www')))
 app.use(serveIndex(path.join(__dirname, 'www')))
-app.use((req, res, next) => {
-  // Entfernt CSP Header
-  res.removeHeader('Content-Security-Policy')
-  next()
-})
 
 const server = app.listen(app.get('port'), () => {
   console.log('The server is running on http://localhost:' + app.get('port'))
