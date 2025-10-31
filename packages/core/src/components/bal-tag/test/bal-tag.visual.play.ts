@@ -1,11 +1,13 @@
-import { test, expect, screenshot } from '@baloise/ds-playwright'
+import { expect, screenshot, test } from '@baloise/ds-playwright'
+
+const TAG = 'bal-tag'
 
 test.describe('visual', () => {
-  const image = screenshot('bal-tag')
+  const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/components/bal-tag/test/bal-tag.visual.html')
-    await page.waitForSelector('bal-tag')
+    await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
+    await page.waitForSelector(TAG)
   })
 
   test('basic', async ({ page }) => {
