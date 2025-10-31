@@ -92,7 +92,7 @@ jobs:
       - name: Run Playwright tests
         working-directory: packages/core
         # index ist matrix.shardIndex, total ist matrix.shardTotal
-        run: npx playwright test --config=playwright.visual.config.ts --shard=${{ matrix.shardIndex }}/{{ matrix.shardTotal }} --update-snapshots
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/{{ matrix.shardTotal }} --update-snapshots
         # run: npx nx run core:e2e
         # run: npx nx run core:e2e-update-screenshots
 
