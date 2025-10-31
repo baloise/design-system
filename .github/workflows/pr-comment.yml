@@ -346,9 +346,7 @@ jobs:
       - name: Get Branch Name
         id: get-branch
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
@@ -419,7 +417,7 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e-update-component-screenshots
+        run: npx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
