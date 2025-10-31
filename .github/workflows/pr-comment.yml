@@ -360,9 +360,63 @@ jobs:
 
       - name: Build Core
         run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Write visual config template
+        run: |
+          cat > packages/core/playwright.visual.config.ts <<'TS'
+          /**
+           * This configuration is used to run visual tests for a specific
+           * component across multiple devices and browsers.
+           */
+          import { defineConfig, devices } from '@playwright/test'
+          import baseConfig from './playwright.config'
+
+          const TAG = 'BAL-TAG'
+          const testMatch = [`src/components/${TAG}/test/**/*visual.play.ts`]
+
+          export default defineConfig({
+            ...baseConfig,
+            projects: [
+              {
+                name: 'desktop chrome',
+                testMatch,
+                use: { ...devices['Desktop Chrome'] },
+              },
+              {
+                name: 'desktop safari',
+                testMatch,
+                use: { ...devices['Desktop Safari'] },
+              },
+              {
+                name: 'mobile chrome',
+                testMatch,
+                use: { ...devices['Pixel 5'] },
+              },
+              {
+                name: 'mobile safari',
+                testMatch,
+                use: { ...devices['iPhone 12'] },
+              },
+            ],
+          })
+          TS
+
+      - name: Replace BAL-TAG with provided tag
+        env:
+          TAG: ${{ steps.specs.outputs.result }}
+        run: |
+          # Use perl to safely replace (handles special chars in TAG)
+          perl -0777 -pe "s/BAL-TAG/\Q$ENV{TAG}\E/g" -i packages/core/playwright.visual.config.ts
+          echo "Wrote packages/core/playwright.visual.config.ts (replaced BAL-TAG -> $TAG)"
+          echo
+          echo "---- file preview ----"
+          sed -n '1,160p' packages/core/playwright.visual.config.ts
+          echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e-update-screenshots -- src/components/${{ steps.specs.outputs.result }}/test
+        run: npx nx run core:ci-e2e-update-component-screenshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
@@ -378,7 +432,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
           body: |
-            **📸 Create Base Image finished!**
+            **📸 Update Screenshots finished!**
 
             Specs: `${{ steps.command.outputs.result }}`
 
@@ -391,7 +445,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
           body: |
-            **🚨 Create Base Image Failed!**
+            **🚨 Update Screenshots Failed!**
 
             Specs: `${{ steps.command.outputs.result }}`
 
