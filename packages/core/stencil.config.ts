@@ -68,12 +68,12 @@ export const config: Config = {
     initializeNextTick: true,
   },
   outputTargets: [
+    {
+      type: 'docs-json',
+      file: '../../resources/data/components.json',
+    },
     ...(!IS_BAL_PLAYWRIGHT_TESTING
       ? [
-          {
-            type: 'docs-json',
-            file: '../../resources/data/components.json',
-          },
           {
             type: 'dist',
             esmLoaderPath: '../loader',
