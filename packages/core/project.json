@@ -42,7 +42,7 @@
       "dependsOn": ["^build"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "npx playwright test --update-snapshots",
+        "command": "npx playwright test",
         "env": {
           "BAL_PLAYWRIGHT_TESTING": "true"
         }

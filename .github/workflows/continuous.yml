@@ -151,19 +151,6 @@ jobs:
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
-      - name: Determine branch name
-        id: branch
-        run: |
-          echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
-
-      - name: Commit snapshots
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'update snapshots'
-          push: 'origin HEAD:${{ env.BRANCH_NAME }}'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
