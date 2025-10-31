@@ -37,6 +37,17 @@
         }
       }
     },
+    "ci-e2e": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --update-snapshots",
+        "env": {
+          "BAL_PLAYWRIGHT_TESTING": "true"
+        }
+      }
+    },
     "e2e-update-component-screenshots": {
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],

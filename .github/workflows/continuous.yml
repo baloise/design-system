@@ -86,16 +86,16 @@ jobs:
       - name: Clean Install
         run: npm ci
 
-      - name: Build Core
-        run: npx nx run core:build
-        env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
-
+      # - name: Build Core
+      #   run: npx nx run core:build
+      #   env:
+      #     BAL_PLAYWRIGHT_TESTING: 'true'
       - name: Run Playwright tests
         # working-directory: packages/core
         # index ist matrix.shardIndex, total ist matrix.shardTotal
         # run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=list --update-snapshots
-        run: npx nx run core:e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --update-snapshots
+        # run: npx nx run core:e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --update-snapshots
+        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         # run: npx nx run core:e2e-update-screenshots
 
       - name: Commit snapshots
