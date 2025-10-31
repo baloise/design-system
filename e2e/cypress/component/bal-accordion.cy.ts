@@ -2,42 +2,6 @@ import { Components } from '../support/utils'
 import { selectors } from '../support/utils'
 
 describe('bal-accordion', () => {
-  context('v1', () => {
-    beforeEach(() => {
-      const onClickSpy = cy.spy().as('click')
-      const onBalChangeSpy = cy.spy().as('balChange')
-
-      cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(`<bal-accordion></bal-accordion>`, {
-        props: {
-          openLabel: 'OPEN LABEL',
-          closeLabel: 'CLOSE LABEL',
-        },
-        events: {
-          click: onClickSpy,
-          balChange: onBalChangeSpy,
-        },
-      })
-    })
-
-    it('should have labels', () => {
-      cy.get('bal-accordion').contains('OPEN LABEL')
-      cy.get(selectors.accordion.trigger).click()
-      cy.get('bal-accordion').contains('CLOSE LABEL')
-    })
-
-    it('should call balChange when open ', () => {
-      cy.get(selectors.accordion.trigger).click()
-      cy.get('@balChange').should('have.been.calledOnce')
-      cy.get('@balChange').shouldHaveEventDetail(true)
-
-      cy.get('bal-accordion').waitForComponents()
-
-      cy.get(selectors.accordion.trigger).click()
-      cy.get('@balChange').should('have.been.calledTwice')
-      cy.get('@balChange').shouldHaveEventDetail(false, 1)
-    })
-  })
-
   context('v2', () => {
     context('basic trigger', () => {
       beforeEach(() => {

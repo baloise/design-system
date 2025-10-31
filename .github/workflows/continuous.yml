@@ -70,6 +70,10 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
+    strategy:
+      matrix:
+        shardIndex: [0, 1, 2] # three parallel jobs
+        shardTotal: [3] # total 3 shards
     steps:
       - uses: actions/checkout@v4
         with:
@@ -86,8 +90,11 @@ jobs:
         run: npx nx run core:build
 
       - name: Run Playwright tests
+        working-directory: packages/core
+        # index ist matrix.shardIndex, total ist matrix.shardTotal
+        run: npx playwright test --config=playwright.visual.config.ts --shard=${{ matrix.shardIndex }}/{{ matrix.shardTotal }} --update-snapshots
         # run: npx nx run core:e2e
-        run: npx nx run core:e2e-update-screenshots
+        # run: npx nx run core:e2e-update-screenshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
@@ -100,7 +107,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-shard-${{ matrix.shardIndex }}
           path: packages/core/playwright-report
           retention-days: 7
 
