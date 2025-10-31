@@ -23,7 +23,7 @@ export const gotoPage = async (page: Page, url: string, originalFn: typeof page.
   })
 
   // Wait for global app ready flag (if used in your app)
-  // await page.waitForFunction(() => (window as any).balAppReady === true, { timeout: 4750 })
+  await page.waitForFunction(() => (window as any).balAppReady === true, { timeout: 4750 })
 
   // Wait for fonts
   await page.evaluate(() => document.fonts.ready)
