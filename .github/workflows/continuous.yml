@@ -72,7 +72,7 @@ jobs:
       options: --user 1001
     strategy:
       matrix:
-        shardIndex: [0, 1, 2] # three parallel jobs
+        shardIndex: [1, 2, 3] # three parallel jobs
         shardTotal: [3] # total 3 shards
     steps:
       - uses: actions/checkout@v4
@@ -92,7 +92,7 @@ jobs:
       - name: Run Playwright tests
         working-directory: packages/core
         # index ist matrix.shardIndex, total ist matrix.shardTotal
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/{{ matrix.shardTotal }} --update-snapshots
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/{{ matrix.shardTotal }} --reporter=list --update-snapshots
         # run: npx nx run core:e2e
         # run: npx nx run core:e2e-update-screenshots
 
