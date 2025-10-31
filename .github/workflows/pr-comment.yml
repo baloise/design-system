@@ -37,10 +37,9 @@ jobs:
 
       - name: Get Branch Name
         id: get-branch
+        # Use the event payload directly instead of calling the API with jq
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
@@ -362,6 +361,11 @@ jobs:
       - name: Clean install
         run: npm ci
 
+      - name: Build Core
+        run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
       - name: Write visual config template
         run: |
           cat > packages/core/playwright.visual.config.ts <<'TS'
@@ -414,15 +418,8 @@ jobs:
           sed -n '1,160p' packages/core/playwright.visual.config.ts
           echo "---- end preview ----"
 
-      - name: Create Playwright Config file
-        run: npx nx run core:build
-        env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
-
       - name: Run Playwright tests
         run: npx nx run core:ci-e2e-update-component-screenshots
-        env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
