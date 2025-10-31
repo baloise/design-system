@@ -3,6 +3,14 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
+      "files": ["*.play.ts"],
+      "extends": ["plugin:playwright/recommended"],
+      "rules": {
+        "playwright/expect-expect": "off",
+        "playwright/valid-title": "off"
+      }
+    },
+    {
       "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/no-explicit-any": "off",

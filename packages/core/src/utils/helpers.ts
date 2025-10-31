@@ -1,11 +1,12 @@
 import { EventEmitter } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from './browser'
 import { BalConfig, useBalConfig } from './config'
 import {
-  balIconCaretUp,
   balIconCaretDown,
   balIconCaretLeft,
   balIconCaretRight,
+  balIconCaretUp,
   balIconCheck,
   balIconClose,
   balIconDate,
@@ -122,7 +123,10 @@ export const hasTagName = (element: any, tag: string) => {
   return element && element.tagName && element.tagName === tag.toUpperCase()
 }
 
-export const isDescendant = (parent: HTMLElement, child: HTMLElement | EventTarget) => {
+export const isDescendant = (
+  parent: HTMLElement | HTMLStencilElement,
+  child: HTMLElement | HTMLStencilElement | EventTarget,
+) => {
   let node = (child as any).parentNode
   while (node != null) {
     if (node == parent) {
@@ -187,7 +191,7 @@ export const raf = (h: any) => {
   return setTimeout(h)
 }
 
-export const transitionEndAsync = (el: HTMLElement | null, expectedDuration = 0) => {
+export const transitionEndAsync = (el: HTMLElement | HTMLStencilElement | null, expectedDuration = 0) => {
   return new Promise(resolve => {
     transitionEnd(el, expectedDuration, resolve)
   })
@@ -200,7 +204,11 @@ export const transitionEndAsync = (el: HTMLElement | null, expectedDuration = 0)
  * never finishes. Also see transitionEndAsync
  * which is an await-able version of this.
  */
-const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (ev?: TransitionEvent) => void) => {
+const transitionEnd = (
+  el: HTMLElement | HTMLStencilElement | null,
+  expectedDuration = 0,
+  callback: (ev?: TransitionEvent) => void,
+) => {
   let unRegTrans: (() => void) | undefined
   let animationTimeout: any
   const opts: any = { passive: true }
@@ -289,7 +297,7 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
-export const waitForComponent = async (el: HTMLElement | null) => {
+export const waitForComponent = async (el: HTMLElement | HTMLStencilElement | null) => {
   await deepReady(el, true)
   await waitAfterFramePaint()
   await waitAfterIdleCallback()
@@ -297,16 +305,16 @@ export const waitForComponent = async (el: HTMLElement | null) => {
 
 export const isChildOfEventTarget = async (
   ev: any,
-  el: HTMLElement | Window | Document,
-  callback: (target: HTMLElement) => void,
+  el: HTMLElement | HTMLStencilElement | Window | Document,
+  callback: (target: HTMLElement | HTMLStencilElement) => void,
 ) => {
   if (ev && ev.target && el && el !== ev.target) {
-    let target = ev.target as HTMLElement
+    let target = ev.target as HTMLElement | HTMLStencilElement
 
     // special case for the navbar case
     const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
     if (isNavbarBrand) {
-      target = target.closest('bal-navbar')
+      target = target.closest('bal-navbar') as HTMLStencilElement
     }
 
     if (target && isDescendant(target, el)) {

@@ -1,10 +1,11 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
-import { addEventListener, removeEventListener, isDescendant, waitAfterIdleCallback } from '../helpers'
+import { addEventListener, isDescendant, removeEventListener, waitAfterIdleCallback } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalFocusInfo } from './focus.interfaces'
 
 export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, BalFocusInfo> {
-  connect(el: HTMLElement): void {
+  connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (this.el) {
       addEventListener(this.el, 'focusin', this.onFocusin as any)

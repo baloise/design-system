@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
@@ -18,7 +19,7 @@ export class SegmentItem implements ComponentInterface {
   private internalId = SegmentItemIds++
   private inputId = `bal-si-${this.internalId}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() hasSlotContent = false
   @State() isFocusable = false

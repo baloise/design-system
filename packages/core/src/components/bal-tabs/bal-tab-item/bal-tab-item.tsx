@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
@@ -9,7 +10,7 @@ export class TabItem {
   private inheritAttributes: Attributes = {}
   private tabPanelID = `bal-tab-panel-id-${panelID++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isActive = false
   @State() tabsId?: string = undefined

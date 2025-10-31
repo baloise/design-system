@@ -10,6 +10,7 @@ import {
   Prop,
   State,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
@@ -31,7 +32,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   private accordionOpen = false
   private animated = true
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() state: AccordionState = AccordionState.Collapsed
 

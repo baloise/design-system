@@ -11,7 +11,7 @@ export class BalModalController {
     /* tslint:disable-next-line */
     if (typeof customElements !== 'undefined' && balBrowser.hasDocument) {
       return customElements.whenDefined(this.tag).then(() => {
-        const element = document.createElement(this.tag) as HTMLBalModalElement
+        const element = document.createElement(this.tag) as any as HTMLBalModalElement
 
         // convert the passed in overlay options into props
         // that get passed down into the new overlay

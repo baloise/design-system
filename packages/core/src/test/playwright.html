@@ -7,13 +7,14 @@
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
+
+    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
   </head>
 
   <body>
-    <bal-doc-app mode="css">
-      <main class="container py-medium">
-        <bal-tag data-testid="tag">My tag</bal-tag>
-      </main>
-    </bal-doc-app>
+    <bal-app>
+      <main id="root">Loading...</main>
+    </bal-app>
   </body>
 </html>

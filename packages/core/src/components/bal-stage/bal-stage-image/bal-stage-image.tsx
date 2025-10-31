@@ -1,7 +1,8 @@
-import { Component, h, ComponentInterface, Host, Prop, Element, State } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Attributes, inheritAttributes } from '../../../utils/attributes'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { rOnLoad } from 'packages/core/src/utils/helpers'
+import { Attributes, inheritAttributes } from '../../../utils/attributes'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-stage-image',
@@ -9,7 +10,7 @@ import { rOnLoad } from 'packages/core/src/utils/helpers'
 export class StageImage implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
   @State() isOnLoadEventDone = false
 
   /**

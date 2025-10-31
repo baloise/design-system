@@ -1,12 +1,13 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { Subject } from './signal'
 
 export type ListenerFn = () => void
 
 export abstract class ListenerAbstract<TListener = ListenerFn, TData = undefined> extends Subject<TListener, TData> {
-  public el?: HTMLElement | Window | Document = undefined
+  public el?: HTMLElement | HTMLStencilElement | Window | Document = undefined
 
-  connect(el?: HTMLElement | Window | Document): void {
+  connect(el?: HTMLElement | HTMLStencilElement | Window | Document): void {
     if (el) {
       this.el = el
     } else {

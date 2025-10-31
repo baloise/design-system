@@ -46,6 +46,9 @@
       "@baloise/ds-nx": [
         "libs/nx/src/index.ts"
       ],
+      "@baloise/ds-playwright": [
+        "packages/playwright/src/index.ts"
+      ],
       "@baloise/ds-react": [
         "packages/react/src/index.ts"
       ],

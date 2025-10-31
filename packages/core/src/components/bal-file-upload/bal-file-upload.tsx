@@ -1,5 +1,8 @@
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Watch, Method, Listen } from '@stencil/core'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import {
   FormInput,
   inputHandleBlur,
@@ -13,15 +16,13 @@ import { Logger, LogInstance } from '../../utils/log'
 import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-file-upload',
   styleUrl: 'bal-file-upload.sass',
 })
 export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private fileUploadId = `bal-file-upload-${FileUploadIds++}`
 

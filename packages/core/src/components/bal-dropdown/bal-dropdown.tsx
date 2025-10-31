@@ -11,6 +11,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
@@ -52,7 +53,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 export class Dropdown
   implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormSubmit, DropdownFocus
 {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
   panelEl: HTMLDivElement | undefined
   listEl: HTMLBalOptionListElement | undefined
   nativeEl: HTMLInputElement | undefined

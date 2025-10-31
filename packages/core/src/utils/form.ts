@@ -1,5 +1,7 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 interface ScrollToFirstInvalidFieldOptions {
-  formEl: HTMLElement
+  formEl: HTMLElement | HTMLStencilElement
   selector?: string
 }
 

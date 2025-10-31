@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
@@ -15,7 +16,7 @@ export class BalElementStateListener<TObserver> extends ListenerAbstract<TObserv
 
   private state: BalElementStateInfo = BalElementStateListener.DefaultState
 
-  connect(el: HTMLElement): void {
+  connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
 
     addEventListener(this.el, 'mouseenter', this.onMouseEnter, BalElementStateListener.EventListenerOptions)

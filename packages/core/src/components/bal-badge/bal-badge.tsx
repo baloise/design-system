@@ -1,4 +1,5 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -6,7 +7,7 @@ import { BEM } from '../../utils/bem'
   styleUrl: 'bal-badge.sass',
 })
 export class Badge implements ComponentInterface {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * Name of the icon to show. If a icon is present text should be hidden.

@@ -1,3 +1,5 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 export type Attributes = { [key: string]: any }
 
 const trackingAttributes = ['data-tracking-style', 'data-tracking-topic', 'data-tracking-context', 'data-tracking-id']
@@ -13,7 +15,7 @@ const trackingAttributes = ['data-tracking-style', 'data-tracking-topic', 'data-
  * This does not need to be reactive as changing attributes on the host element
  * does not trigger a re-render.
  */
-export const inheritAttributes = (el: HTMLElement, attributes: string[] = []) => {
+export const inheritAttributes = (el: HTMLElement | HTMLStencilElement, attributes: string[] = []) => {
   const attributeObject: Attributes = {}
 
   attributes.forEach(attr => {
@@ -36,7 +38,7 @@ export const inheritAttributes = (el: HTMLElement, attributes: string[] = []) =>
  * @param ignoreList The list of aria-attributes to ignore reflecting and removing from the host.
  * Use this in instances where we manually specify aria attributes on the `<Host>` element.
  */
-export const inheritTrackingAttributes = (el: HTMLElement, ignoreList?: string[]) => {
+export const inheritTrackingAttributes = (el: HTMLElement | HTMLStencilElement, ignoreList?: string[]) => {
   let attributesToInherit = trackingAttributes
   if (ignoreList && ignoreList.length > 0) {
     attributesToInherit = attributesToInherit.filter(attr => !ignoreList.includes(attr))

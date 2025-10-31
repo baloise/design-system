@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
@@ -70,7 +71,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -201,7 +202,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   updateRawValue(newValue: string[], isHuman = true) {
-    if (!areArraysEqual(newValue, this.rawValue || [])) {
+    if (!areArraysEqual(newValue, this.rawValue || []) && this.options.size > 0) {
       this.rawValue = [...newValue]
       this.syncNativeInput(isHuman)
       if (this.didInit && isHuman === true) {
@@ -273,7 +274,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
 
     debounceUpdateOptions()
 
-    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
+    this.mutationO = watchForOptions<HTMLStencilElement>(this.el, 'bal-select-option', () => {
       debounceUpdateOptions()
     })
   }
@@ -871,8 +872,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   private isChipClicked(ev: MouseEvent) {
     let isChipClicked = false
     if (this.multiple) {
-      const chips = this.selectionEl.querySelectorAll('bal-tag')
-      const target = ev.target as HTMLElement
+      const chips = this.selectionEl.querySelectorAll<HTMLStencilElement>('bal-tag')
+      const target = ev.target as HTMLStencilElement
       chips.forEach(chip => {
         const isChip = isDescendant(chip, target) || chip === target
         if (isChip) {

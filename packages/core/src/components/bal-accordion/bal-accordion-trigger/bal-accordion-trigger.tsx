@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
@@ -42,7 +43,7 @@ type TextProps = BaseProps & {
 export class AccordionTrigger implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-trigger-${accordionTriggerIds++}`
 
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() parentAccordionId?: string
   @State() language: BalLanguage = defaultConfig.language

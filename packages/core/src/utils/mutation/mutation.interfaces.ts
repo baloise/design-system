@@ -1,3 +1,5 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 export interface MutationObserverOptions extends MutationObserverInit {
   tags: string[]
   closest?: string
@@ -5,7 +7,7 @@ export interface MutationObserverOptions extends MutationObserverInit {
 }
 
 export interface BalMutationObserver {
-  el: HTMLElement
+  el: HTMLStencilElement
   mutationObserverActive: boolean
   mutationListener(): void
 }

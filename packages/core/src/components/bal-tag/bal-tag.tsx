@@ -1,14 +1,15 @@
-import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { ariaBooleanToString } from '../../utils/aria'
 
 @Component({
   tag: 'bal-tag',
   styleUrl: 'bal-tag.sass',
 })
 export class Tag {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private inheritedAttributes: { [k: string]: any } = {}
   private inheritedAttributesClose: { [k: string]: any } = {}

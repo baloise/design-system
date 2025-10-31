@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
@@ -41,7 +42,7 @@ export class RadioGroup
     this.log = log
   }
 
-  @Element() el!: HTMLBalRadioGroupElement
+  @Element() el!: HTMLStencilElement
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**

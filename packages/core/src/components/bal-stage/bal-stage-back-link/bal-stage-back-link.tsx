@@ -1,11 +1,12 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-stage-back-link',
 })
 export class StageBackLink implements ComponentInterface {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * Specifies the URL of the page the link goes to

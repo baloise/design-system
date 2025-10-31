@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalFloatingUi, balFloatingUi } from '../floating-ui'
 import { DropdownComponent } from './component'
 
@@ -8,19 +9,21 @@ export class DropdownPopupUtil {
     this.component = component
   }
 
-  updatePanelPosition = (lib: BalFloatingUi, referenceEl: HTMLElement, floatingEl: HTMLElement) => () => {
-    lib
-      .computePosition(referenceEl, floatingEl, {
-        placement: 'bottom-start',
-        middleware: [lib.flip(), lib.shift()],
-      })
-      .then(({ x, y }) => {
-        Object.assign(floatingEl.style, {
-          left: `${x}px`,
-          top: `${y}px`,
+  updatePanelPosition =
+    (lib: BalFloatingUi, referenceEl: HTMLElement | HTMLStencilElement, floatingEl: HTMLElement | HTMLStencilElement) =>
+    () => {
+      lib
+        .computePosition(referenceEl, floatingEl as HTMLElement, {
+          placement: 'bottom-start',
+          middleware: [lib.flip(), lib.shift()],
         })
-      })
-  }
+        .then(({ x, y }) => {
+          Object.assign(floatingEl.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          })
+        })
+    }
 
   toggleList() {
     if (!this.component.valueUtil.isDisabled()) {

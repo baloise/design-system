@@ -33,7 +33,7 @@
     "@baloise/web-app-utils": "3.15.0",
     "@floating-ui/dom": "~1.6.3",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "4.35.1",
+    "@stencil/core": "4.38.2",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "filesize.js": "~2.0.0",
@@ -55,7 +55,10 @@
     "@baloise/output-target-web": "0.0.0",
     "@baloise/ds-maps": "19.8.2",
     "@baloise/ds-brand-icons": "19.8.2",
-    "@baloise/ds-favicons": "19.8.2"
+    "@baloise/ds-favicons": "19.8.2",
+    "compression": "~1.7.4",
+    "express": "~4.18.2",
+    "serve-index": "~1.9.1"
   },
   "sideEffects": false
 }

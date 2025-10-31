@@ -14,6 +14,6 @@ describe('bal-accordion', () => {
   })
 
   it('should check if the accordion is not disabled', () => {
-    cy.getByTestId('accordion-v2').find(selectors.accordion.trigger).should('not.be.disabled')
+    cy.getByTestId('accordion-v2').waitForComponents().find(selectors.accordion.trigger).should('not.be.disabled')
   })
 })

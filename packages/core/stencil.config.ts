@@ -248,7 +248,6 @@ export const config: Config = {
     //
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },
-    { components: ['bal-dropdown'] },
     { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
     { components: ['bal-file-upload'] },
     { components: ['bal-form'] },
@@ -263,7 +262,7 @@ export const config: Config = {
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
     {
-      components: ['bal-option-list', 'bal-option'],
+      components: ['bal-dropdown', 'bal-option-list', 'bal-option'],
     },
     //
     // overlay components
