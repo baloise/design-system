@@ -131,16 +131,8 @@ jobs:
         shardIndex: [1, 2, 3] # three parallel jobs
         shardTotal: [3] # total 3 shards
     steps:
-      - name: Get Branch Name
-        id: get-branch
-        run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
-
       - uses: actions/checkout@v4
         with:
-          ref: ${{ steps.get-branch.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
 
