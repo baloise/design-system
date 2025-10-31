@@ -48,9 +48,8 @@
         }
       }
     },
-    "e2e-update-component-screenshots": {
+    "ci-e2e-update-component-screenshots": {
       "executor": "nx:run-commands",
-      "dependsOn": ["^build"],
       "options": {
         "cwd": "{projectRoot}",
         "command": "npx playwright test --config=playwright.visual.config.ts --update-snapshots",

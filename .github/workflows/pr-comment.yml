@@ -414,14 +414,15 @@ jobs:
           sed -n '1,160p' packages/core/playwright.visual.config.ts
           echo "---- end preview ----"
 
-      - name: Build Core
-        run: npx nx run core:build
-
       - name: Create Playwright Config file
         run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e-update-component-screenshots
+        run: npx nx run core:ci-e2e-update-component-screenshots
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
