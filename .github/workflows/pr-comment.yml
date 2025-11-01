@@ -272,21 +272,23 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
-  updateScreenshotsPree:
-    name: bubu
+  assembleInformation:
+    name: 📝 Assemble Information
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
       HUSKY: 0
       CI: true
     outputs:
-      branch: ${{ steps.get-branch.outputs.branch }}
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
       command: ${{ steps.command.outputs.result }}
       specs: ${{ steps.specs.outputs.result }}
     steps:
       - name: Get Action URL
-        id: action-url
-        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
 
       - name: Check for /update-screenshots command
         uses: actions/github-script@v7
@@ -332,7 +334,7 @@ jobs:
           echo "${{ steps.specs.outputs.result }}"
 
       - name: Get Branch Name
-        id: get-branch
+        id: branch
         run: |
           COMMITS_URL="${{ github.event.issue.pull_request.url }}"
           BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
@@ -343,7 +345,7 @@ jobs:
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
     runs-on: ubuntu-22.04
     timeout-minutes: 30
-    needs: [updateScreenshotsPree]
+    needs: [assembleInformation]
     env:
       HUSKY: 0
       CI: true
@@ -353,9 +355,10 @@ jobs:
     steps:
       - name: Show inputs from pree job
         run: |
-          echo "Branch from pree job: ${{ needs.updateScreenshotsPree.outputs.branch }}"
-          echo "Command: ${{ needs.updateScreenshotsPree.outputs.command }}"
-          echo "Specs: ${{ needs.updateScreenshotsPree.outputs.specs }}"
+          echo "Branch from pree job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Command: ${{ needs.assembleInformation.outputs.command }}"
+          echo "Specs: ${{ needs.assembleInformation.outputs.specs }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
@@ -365,13 +368,13 @@ jobs:
           body: |
             **📸 Update Screenshots in Progress...**
 
-            Specs: `${{ steps.command.outputs.result }}`
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
 
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
 
       - uses: actions/checkout@v4
         with:
-          ref: ${{ steps.get-branch.outputs.result }}
+          ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
 
@@ -407,7 +410,7 @@ jobs:
           import { defineConfig, devices } from '@playwright/test'
           import baseConfig from './playwright.config'
 
-          const TAG = '${{ steps.specs.outputs.result }}'
+          const TAG = '${{ needs.assembleInformation.outputs.command }}'
           const testMatch = ['src/components/' + TAG + '/test/*visual.play.ts']
 
           console.log('testMatch', testMatch)
@@ -464,9 +467,9 @@ jobs:
           body: |
             **📸 Update Screenshots finished!**
 
-            Specs: `${{ steps.command.outputs.result }}`
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
 
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
 
       - name: Create comment
         if: failure()
@@ -477,6 +480,6 @@ jobs:
           body: |
             **🚨 Update Screenshots Failed!**
 
-            Specs: `${{ steps.command.outputs.result }}`
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
 
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
