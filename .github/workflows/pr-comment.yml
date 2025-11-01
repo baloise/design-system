@@ -276,7 +276,6 @@ jobs:
     name: bubu
     runs-on: ubuntu-22.04
     timeout-minutes: 30
-    needs: [updateScreenshotsPree]
     env:
       HUSKY: 0
       CI: true
