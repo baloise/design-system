@@ -77,6 +77,8 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
+      - uses: oven-sh/setup-bun@v2
+
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean Install
