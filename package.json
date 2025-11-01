@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
+  "packageManager": "bun@1.3.1",
   "scripts": {
     "start": "bunx nx run core:start",
     "docs": "bunx nx run docs:start",
