@@ -80,13 +80,14 @@ jobs:
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean Install
-        run: npm ci
+        # run: npm ci
+        run: bun install
 
       - name: Build Core
-        run: npx nx run core:build
+        run: bun x nx run core:build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e
+        run: bun x nx run core:e2e
         # run: npx nx run core:e2e-update-screenshots
 
       # - name: Commit snapshots
