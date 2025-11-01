@@ -87,10 +87,10 @@ jobs:
         run: bun install
 
       - name: Build Core
-        run: bun x nx run core:build
+        run: bunx nx run core:build
 
       - name: Run Playwright tests
-        run: bun x nx run core:e2e
+        run: bunx nx run core:e2e
 
       - name: Upload Playwright HTML report
         if: always()

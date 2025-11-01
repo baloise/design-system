@@ -22,7 +22,7 @@ runs:
 
     # - name: Check format
     #   shell: bash
-    #   run: bun x nx format:check
+    #   run: bunx nx format:check
 
     # - name: Check spelling
     #   shell: bash
@@ -31,22 +31,22 @@ runs:
     # - name: Lint & Test
     #   if: inputs.build == 'false'
     #   shell: bash
-    #   run: bun x nx run-many -t lint test
+    #   run: bunx nx run-many -t lint test
 
     # - name: Lint & Test & Build
     #   if: inputs.build == 'true'
     #   shell: bash
-    #   run: bun x nx run-many -t lint test build
+    #   run: bunx nx run-many -t lint test build
 
     - name: Build
       if: inputs.build == 'true'
       shell: bash
-      run: bun x nx run-many -t build
+      run: bunx nx run-many -t build
 
     # - name: Releae dry-run
     #   if: inputs.build == 'true'
     #   shell: bash
-    #   run: bun x nx release publish -d
+    #   run: bunx nx release publish -d
 
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'

@@ -14,4 +14,4 @@ runs:
 
     - name: Build
       shell: bash
-      run: bun x nx run-many --target=build --projects=core,e2e,testing
+      run: bunx nx run-many --target=build --projects=core,e2e,testing

@@ -77,20 +77,20 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
-        run: bun x nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
+        run: bunx nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: bun x nx run-many -t build --projects=tag:scope:release
+        run: bunx nx run-many -t build --projects=tag:scope:release
         env:
           BAL_DS_RELEASE: true
 
       - name: Pre-Publish
-        run: bun x nx run pre-publish
+        run: bunx nx run pre-publish
 
       - name: Publish
-        run: bun x nx release publish --tag=snapshot
+        run: bunx nx release publish --tag=snapshot
 
       - name: Create comment
         if: success()
@@ -396,7 +396,7 @@ jobs:
         run: bun install
 
       - name: Build Core
-        run: bun x nx run core:build
+        run: bunx nx run core:build
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
@@ -449,7 +449,7 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: bun x nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
+        run: bunx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
