@@ -7,11 +7,11 @@ runs:
 
     - name: Clean install
       shell: bash
-      run: npm ci
+      run: bun install
 
     - name: Define Nx cache
       uses: nrwl/nx-set-shas@v4
 
     - name: Build
       shell: bash
-      run: npx nx run-many --target=build --projects=core,e2e,testing
+      run: bun x nx run-many --target=build --projects=core,e2e,testing

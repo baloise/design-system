@@ -41,18 +41,18 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
-        run: npx nx release version --git-commit=false --git-tag=false --preid=nightly --specifier=${{steps.set-version.outputs.version}}
+        run: bun x nx release version --git-commit=false --git-tag=false --preid=nightly --specifier=${{steps.set-version.outputs.version}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: bun x nx run-many -t build --projects=tag:scope:release
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: bun x nx run pre-publish
 
       - name: Publish
-        run: npx nx release publish --tag=nightly
+        run: bun x nx release publish --tag=nightly
 
       - name: Git Reset
         run: git reset --hard

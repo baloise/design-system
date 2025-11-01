@@ -69,7 +69,6 @@ jobs:
       CI: 1
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
-      # options: --user 1001
     steps:
       - uses: actions/checkout@v4
         with:
@@ -85,7 +84,6 @@ jobs:
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean Install
-        # run: npm ci
         run: bun install
 
       - name: Build Core
@@ -93,14 +91,6 @@ jobs:
 
       - name: Run Playwright tests
         run: bun x nx run core:e2e
-        # run: npx nx run core:e2e-update-screenshots
-
-      # - name: Commit snapshots
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     message: 'update snapshots'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Upload Playwright HTML report
         if: always()

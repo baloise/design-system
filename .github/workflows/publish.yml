@@ -26,13 +26,13 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: bun x nx run-many -t build --projects=tag:scope:release
 
       - name: Update changelog file
         run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: bun x nx run pre-publish
 
       - name: get-npm-version
         id: package-version
@@ -59,4 +59,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
-        run: npx nx release publish
+        run: bun x nx release publish

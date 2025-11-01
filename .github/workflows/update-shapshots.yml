@@ -24,13 +24,13 @@ jobs:
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean install
-        run: npm ci
+        run: bun install
 
       - name: Build Core
-        run: npx nx run core:build
+        run: bun x nx run core:build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e-update-screenshots
+        run: bun x nx run core:e2e-update-screenshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9

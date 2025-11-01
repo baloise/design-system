@@ -77,20 +77,20 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
-        run: npx nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
+        run: bun x nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: bun x nx run-many -t build --projects=tag:scope:release
         env:
           BAL_DS_RELEASE: true
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: bun x nx run pre-publish
 
       - name: Publish
-        run: npx nx release publish --tag=snapshot
+        run: bun x nx release publish --tag=snapshot
 
       - name: Create comment
         if: success()
@@ -393,10 +393,10 @@ jobs:
           ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
 
       - name: Clean install
-        run: npm ci
+        run: bun install
 
       - name: Build Core
-        run: npx nx run core:build
+        run: bun x nx run core:build
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
@@ -449,7 +449,7 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
+        run: bun x nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
