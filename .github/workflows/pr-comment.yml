@@ -343,6 +343,9 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Get Branch Name
         id: get-branch
         run: |
