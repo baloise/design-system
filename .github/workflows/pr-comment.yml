@@ -343,16 +343,23 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Get Branch Name
+      - name: Get Branch Name (shell parsing)
         id: get-branch
         run: |
           COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          # fetch JSON and extract "head.ref": "branch-name"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "$COMMITS_URL" \
+            | tr -d '\n' \
+            | sed -E 's/.*"head"[[:space:]]*:[[:space:]]*{[^}]*"ref"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/')
+
+          # fallback if sed failed
+          if [ -z "$BRANCH" ]; then
+            echo "Branch not found"
+            exit 1
+          fi
+
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
-          echo $BRANCH
+          echo "$BRANCH"
 
       - uses: actions/checkout@v4
         with:
