@@ -188,3 +188,4 @@ vitest.config.*.timestamp*
 # Local generated screenshots on a MAC
 *-darwin.png
 test-results
+playwright.visual.config.ts
