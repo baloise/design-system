@@ -7,19 +7,6 @@ describe('bal-accordion', () => {
     cy.waitForDesignSystem()
   })
 
-  context('v1', () => {
-    it('collapsed', () => {
-      cy.getByTestId('accordion').waitForComponents()
-      cy.getByTestId('accordion').testA11y()
-    })
-
-    it('expanded', () => {
-      cy.getByTestId('accordion').click()
-      cy.getByTestId('accordion').waitForComponents()
-      cy.getByTestId('accordion').testA11y()
-    })
-  })
-
   context('v2', () => {
     it('collapsed', () => {
       cy.getByTestId('accordion-v2').waitForComponents()
