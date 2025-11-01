@@ -272,17 +272,18 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
-  updateScreenshots:
-    name: 📸 Update Screenshots
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+  updateScreenshotsPree:
+    name: bubu
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    needs: [updateScreenshotsPree]
     env:
       HUSKY: 0
       CI: true
-    container:
-      image: mcr.microsoft.com/playwright:v1.50.1-noble
-      options: --user 1001
+    outputs:
+      branch: ${{ steps.get-branch.outputs.branch }}
+      command: ${{ steps.command.outputs.result }}
+      specs: ${{ steps.specs.outputs.result }}
     steps:
       - name: Get Action URL
         id: action-url
@@ -331,19 +332,79 @@ jobs:
           echo "${{ steps.command.outputs.result }}"
           echo "${{ steps.specs.outputs.result }}"
 
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+      - name: Get Branch Name
+        id: get-branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+  updateScreenshots:
+    name: 📸 Update Screenshots
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    needs: [updateScreenshotsPree]
+    env:
+      HUSKY: 0
+      CI: true
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
+      options: --user 1001
+    steps:
+      - name: Show inputs from pree job
+        run: |
+          echo "Branch from pree job: ${{ needs.updateScreenshotsPree.outputs.branch }}"
+          echo "Command: ${{ needs.updateScreenshotsPree.outputs.command }}"
+          echo "Specs: ${{ needs.updateScreenshotsPree.outputs.specs }}"
+      # - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      # - name: Check for /update-screenshots command
+        uses: actions/github-script@v7
+        id: command
         with:
-          comment-id: ${{ github.event.comment.id }}
-          edit-mode: replace
-          body: |
-            **📸 Update Screenshots in Progress...**
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName
+              }
+              return 'all'
+            }
+            return 'none'
 
-            Specs: `${{ steps.command.outputs.result }}`
+      # - name: Filter specs
+        uses: actions/github-script@v7
+        id: specs
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName.split(',').map(v => `${v}`);
+              }
+              return 'all'
+            }
+            return 'none'
 
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+      # - name: Get results
+        run: |
+          echo "${{ steps.command.outputs.result }}"
+          echo "${{ steps.specs.outputs.result }}"
 
-      - name: Get Branch Name (shell parsing)
+      # - name: Get Branch Name (shell parsing)
         id: get-branch
         run: |
           COMMITS_URL="${{ github.event.issue.pull_request.url }}"
@@ -360,6 +421,18 @@ jobs:
 
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
           echo "$BRANCH"
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Update Screenshots in Progress...**
+
+            Specs: `${{ steps.command.outputs.result }}`
+
+            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
       - uses: actions/checkout@v4
         with:
