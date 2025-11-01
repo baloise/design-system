@@ -357,6 +357,18 @@ jobs:
 
       - uses: ./.github/workflows/actions/setup
 
+      - name: Show current branch
+        run: |
+          echo "🔍 Current branch info:"
+          git rev-parse --abbrev-ref HEAD
+          echo "Full commit info:"
+          git log -1 --oneline
+
+      - name: Show content of packages/core/src/components/bal-accordion/test
+        run: |
+          echo "Listing files in packages/core/src/components/bal-accordion/test"
+          ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
+
       - name: Clean install
         run: npm ci
 
