@@ -343,25 +343,13 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
 
-      - name: Get PR branch from comment
+      - name: Get Branch Name
         id: get-branch
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-encoding: string
-          script: |
-            const { owner, repo } = context.repo;
-            const issue_number = context.issue.number;
-
-            // Get PR linked to this issue (since comment is on a PR)
-            const { data: pr } = await github.pulls.get({
-              owner,
-              repo,
-              pull_number: issue_number,
-            });
-
-            console.log(`PR branch is: ${pr.head.ref}`);
-            return pr.head.ref;
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo $BRANCH
 
       - uses: actions/checkout@v4
         with:
