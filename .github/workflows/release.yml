@@ -23,7 +23,7 @@ jobs:
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean install
-        run: npm ci
+        run: bun install
 
       - name: Create Pre-Release Pull Request
         id: changesets

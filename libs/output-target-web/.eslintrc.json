@@ -1,10 +1,12 @@
 {
   "extends": ["../../.eslintrc.json", "../../.eslintrc.base.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "**/vite.config.*.timestamp*", "**/vitest.config.*.timestamp*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": { "@typescript-eslint/no-explicit-any": "off" }
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

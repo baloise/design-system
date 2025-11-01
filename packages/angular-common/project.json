@@ -4,6 +4,7 @@
   "sourceRoot": "packages/angular-common/src",
   "prefix": "bal",
   "projectType": "library",
+  "tags": ["scope:release", "type:package"],
   "targets": {
     "nx-release-publish": {
       "executor": "@nx/js:release-publish",
@@ -15,18 +16,16 @@
       "executor": "@nx/angular:package",
       "outputs": ["{projectRoot}/dist"],
       "options": {
-        "project": "packages/angular-common/ng-package.json"
+        "project": "packages/angular-common/ng-package.json",
+        "tsConfig": "packages/angular-common/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "packages/angular-common/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "packages/angular-common/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     }
-  },
-  "tags": ["scope:release", "type:package"]
+  }
 }

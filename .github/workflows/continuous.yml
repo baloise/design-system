@@ -69,7 +69,6 @@ jobs:
       CI: 1
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
-      options: --user 1001
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,24 +76,21 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
+      - name: Install dependencies for Bun
+        run: apt-get update && apt-get install -y unzip curl
+
+      - uses: oven-sh/setup-bun@v2
+
       - uses: ./.github/workflows/actions/setup
 
       - name: Clean Install
-        run: npm ci
+        run: bun install
 
       - name: Build Core
-        run: npx nx run core:build
+        run: bunx nx run core:build
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e
-        # run: npx nx run core:e2e-update-screenshots
-
-      # - name: Commit snapshots
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     message: 'update snapshots'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+        run: bunx nx run core:e2e
 
       - name: Upload Playwright HTML report
         if: always()
