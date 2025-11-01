@@ -376,7 +376,9 @@ jobs:
           import baseConfig from './playwright.config'
 
           const TAG = '${{ steps.specs.outputs.result }}'
-          const testMatch = [`src/components/${TAG}/test/**/*visual.play.ts`]
+          const testMatch = [`src/components/${TAG}/test/*visual.play.ts`]
+
+          console.log('testMatch', testMatch)
 
           export default defineConfig({
             ...baseConfig,
