@@ -1,4 +1,4 @@
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isnil'
 import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {
@@ -31,7 +31,7 @@ export function addValue(values: string[] | undefined, valueToAdd: string, hasMu
 
 export function validateAfterBlur(
   values: string[] | undefined,
-  options: Map<string, BalOptionController>,
+  options: Map<string, any>,
   typedLabel: string,
 ): string[] {
   const valuesArray = getValues(values)
@@ -51,10 +51,7 @@ export function validateAfterBlur(
   return valuesArray
 }
 
-function findOptionByLabelIterator(
-  iterator: IterableIterator<BalOptionController>,
-  label: string,
-): BalOptionController | undefined {
+function findOptionByLabelIterator(iterator: IterableIterator<any>, label: string): BalOptionController | undefined {
   const { value, done } = iterator.next()
   if (!isNil(value) && value.label === label) {
     return value
@@ -66,14 +63,11 @@ function findOptionByLabelIterator(
   return findOptionByLabelIterator(iterator, label)
 }
 
-export function findOptionByLabel(
-  options: Map<string, BalOptionController>,
-  label: string,
-): BalOptionController | undefined {
+export function findOptionByLabel(options: Map<string, any>, label: string): BalOptionController | undefined {
   return findOptionByLabelIterator(options.values(), label)
 }
 
-export function findLabelByValue(options: Map<string, BalOptionController>, value: string): string {
+export function findLabelByValue(options: Map<string, any>, value: string): string {
   const option = options.get(value)
   if (!isNil(option)) {
     return option.label

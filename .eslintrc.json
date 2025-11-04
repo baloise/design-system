@@ -10,7 +10,6 @@
       "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-extra-semi": "off",
         "@nx/enforce-module-boundaries": "off"
       }
     },

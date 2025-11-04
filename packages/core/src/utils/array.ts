@@ -1,5 +1,5 @@
-import isNil from 'lodash.isnil'
-import isEqual from 'lodash.isequal'
+import isEqual from 'lodash/isequal'
+import isNil from 'lodash/isnil'
 
 /**
  * Returns `true` if the arrays are equal

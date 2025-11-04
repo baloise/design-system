@@ -1,13 +1,14 @@
 import { isEmptyValue, parseValue, hasValueChanged } from './form-input'
+import { expect, describe, test } from 'vitest'
 
 describe('form input', () => {
   describe('isEmptyValue', () => {
     test('should check if value is empty', () => {
-      expect(isEmptyValue('')).toBeTruthy
-      expect(isEmptyValue(undefined)).toBeTruthy
-      expect(isEmptyValue(null)).toBeTruthy
-      expect(isEmptyValue([])).toBeTruthy
-      expect(isEmptyValue('01')).toBeFalsy
+      expect(isEmptyValue('')).toBeTruthy()
+      expect(isEmptyValue(undefined)).toBeTruthy()
+      expect(isEmptyValue(null)).toBeTruthy()
+      expect(isEmptyValue([])).toBeTruthy()
+      expect(isEmptyValue('01')).toBeFalsy()
     })
   })
   describe('parseValue', () => {

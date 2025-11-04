@@ -1,5 +1,5 @@
-import padStart from 'lodash.padstart'
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isnil'
+import padStart from 'lodash/padstart'
 import { I18n } from '../../../interfaces'
 import { BalDate } from '../../../utils/date'
 
@@ -195,7 +195,7 @@ export function generateMonths(
 }
 
 // Function to generate the weekday header row with the label and the content
-export function generateWeekDays(language: keyof I18n<any>): WeekdayCell[] {
+export function generateWeekDays(language: keyof I18n): WeekdayCell[] {
   const locale = validateLanguage(language)
   const weekdaysMin = BalDate.infoWeekdays({ format: 'short', locale })
   const weekdays = BalDate.infoWeekdays({ format: 'long', locale })

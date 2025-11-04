@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import {
   test as baseTest,
   PlaywrightTestArgs,
@@ -8,9 +7,9 @@ import {
   TestType,
 } from '@playwright/test'
 import { a11y } from './functions/a11y'
-import { BalPage, BalPageOptions } from './types'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
+import { BalPage, BalPageOptions } from './types'
 
 export { expect } from '@playwright/test'
 
@@ -59,10 +58,7 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   return page
 }
 
-type BalTestType = TestType<
-  Omit<PlaywrightTestArgs, 'page'> & PlaywrightTestOptions & CustomFixtures,
-  PlaywrightWorkerArgs & PlaywrightWorkerOptions
->
+type BalTestType = TestType<any, any>
 
 export const test: BalTestType = baseTest.extend<CustomFixtures>({
   page: async ({ page }: CustomTestArgs, use: (r: BalPage) => Promise<void>) => {

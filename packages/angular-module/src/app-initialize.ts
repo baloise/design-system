@@ -8,7 +8,7 @@ import type { BaloiseDesignSystemAngularConfig } from '@baloise/ds-angular-commo
 import { raf } from '@baloise/ds-angular-common'
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
-  return async (): Promise<void> => {
+  return async (): Promise => {
     const win: Window | undefined = doc.defaultView as any
 
     if (win && typeof (window as any) !== 'undefined') {
@@ -20,7 +20,6 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         jmp: (h: any) => zone.runOutsideAngular(h),
         ael(elm, eventName, cb, opts) {
           if (elm && (elm as any)[aelFn]) {
-            // eslint-disable-next-line @typescript-eslint/no-extra-semi
             ;(elm as any)[aelFn](eventName, cb, opts)
           }
         },

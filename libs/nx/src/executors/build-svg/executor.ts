@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import camelCase from 'lodash.camelcase'
-import upperFirst from 'lodash.upperfirst'
+import camelCase from 'lodash/camelcase'
+import upperFirst from 'lodash/upperfirst'
 import { dirname, join, parse } from 'path'
 import svgo from 'svgo'
 import { NEWLINE, scan } from '../utils'

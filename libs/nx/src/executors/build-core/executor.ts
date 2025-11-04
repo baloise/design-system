@@ -88,6 +88,7 @@ async function createContributorList(options: BuildCoreExecutorSchema) {
         name: u.login,
         avatar: u.avatar_url,
       }))
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_) {
     //
   }
