@@ -47,7 +47,7 @@
     "lodash.isequal": "~4.5.0",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
-    "luxon": "~3.4.3",
+    "luxon": "~3.7.2",
     "tslib": "2.1.0"
   },
   "devDependencies": {
