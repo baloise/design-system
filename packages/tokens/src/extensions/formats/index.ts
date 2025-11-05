@@ -1,7 +1,7 @@
 import { CustomFormatsBuilder, ExtensionContext } from '@nxkit/style-dictionary/extensions'
-import camelCase from 'lodash/camelcase'
-import setWith from 'lodash/setwith'
-import upperFirst from 'lodash/upperfirst'
+import camelCase from 'lodash/camelCase'
+import setWith from 'lodash/setWith'
+import upperFirst from 'lodash/upperFirst'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FigmaFormatter = ({ dictionary, platform, options, file }) => {

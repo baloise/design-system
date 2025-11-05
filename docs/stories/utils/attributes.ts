@@ -1,4 +1,4 @@
-import kebabCase from 'lodash/kebabcase'
+import kebabCase from 'lodash/kebabCase'
 
 export const props = (args: any): string => {
   return Object.keys(args)

@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import isEmpty from 'lodash/isempty'
+import isEmpty from 'lodash/isEmpty'
 
 @Component({
   tag: 'bal-card',

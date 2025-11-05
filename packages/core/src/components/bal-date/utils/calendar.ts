@@ -1,5 +1,5 @@
-import isNil from 'lodash/isnil'
-import padStart from 'lodash/padstart'
+import isNil from 'lodash/isNil'
+import padStart from 'lodash/padStart'
 import { I18n } from '../../../interfaces'
 import { BalDate } from '../../../utils/date'
 
