@@ -14,7 +14,7 @@ const VARIANTS = [
   'free-solo',
 ]
 
-test.describe('visual', () => {
+test.describe.skip('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

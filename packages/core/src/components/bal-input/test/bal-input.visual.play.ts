@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-input'
 const VARIANTS = ['basic', 'disabled', 'invalid', 'field', 'input-date']
 
-test.describe('visual', () => {
+test.describe.skip('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

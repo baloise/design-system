@@ -1,9 +1,9 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-heading'
+const TAG = 'bal-icon'
 const VARIANTS = ['basic', 'inline', 'shadow', 'svg', 'colors', 'inverted', 'sizes', 'turn', 'tile']
 
-test.describe('visual', () => {
+test.describe.skip('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

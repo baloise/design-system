@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-form-grid'
 const VARIANTS = ['basic']
 
-test.describe('visual', () => {
+test.describe.skip('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

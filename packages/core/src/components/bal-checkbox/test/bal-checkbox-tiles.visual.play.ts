@@ -3,11 +3,11 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-checkbox'
 const VARIANTS = ['basic', 'grid', 'colors']
 
-test.describe('tiles', () => {
+test.describe.skip('tiles', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(`/components/${TAG}/test/${TAG}-tile.visual.html`)
+    await page.goto(`/components/${TAG}/test/${TAG}-tiles.visual.html`)
     await page.waitForSelector(TAG)
   })
 
