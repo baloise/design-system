@@ -116,10 +116,34 @@ jobs:
   #         app: ${{ matrix.apps }}
   #         framework: react
 
+  assembleInformation:
+    name: 📝 Assemble Information
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+      CI: true
+    outputs:
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
+    steps:
+      - name: Get Action URL
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Get Branch Name
+        id: branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
   playwright:
     name: 🎭 Playwright
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    needs: [assembleInformation]
     env:
       HUSKY: 0
       CI: 1
@@ -131,12 +155,25 @@ jobs:
     #     shardIndex: [1, 2, 3] # three parallel jobs
     #     shardTotal: [3] # total 3 shards
     steps:
+      - name: Show inputs from previous job
+        run: |
+          echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
+
       - uses: actions/checkout@v4
         with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
 
       - uses: ./.github/workflows/actions/setup
+
+      - name: Show current branch
+        run: |
+          echo "🔍 Current branch info:"
+          git rev-parse --abbrev-ref HEAD
+          echo "Full commit info:"
+          git log -1 --oneline
 
       - name: Clean Install
         run: npm ci
