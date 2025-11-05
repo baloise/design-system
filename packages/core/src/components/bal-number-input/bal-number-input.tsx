@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash/isEmpty'
-import isNaN from 'lodash/isNan'
+import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
