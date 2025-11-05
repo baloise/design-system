@@ -134,10 +134,17 @@ jobs:
 
       - name: Get Branch Name
         id: branch
+        # Determine branch reliably from the event payload.
+        # - For pull_request events use github.head_ref (the source branch name)
+        # - For push events parse GITHUB_REF (refs/heads/<branch>)
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          else
+            # strip refs/heads/ prefix
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
 
   playwright:
     name: 🎭 Playwright
