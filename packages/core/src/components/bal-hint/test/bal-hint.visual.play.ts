@@ -1,7 +1,7 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-badge'
-const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
+const TAG = 'bal-hint'
+const VARIANTS = ['basic', 'close-label', 'small']
 
 test.describe('visual', () => {
   const image = screenshot(TAG)
@@ -14,7 +14,10 @@ test.describe('visual', () => {
   VARIANTS.forEach(variant => {
     test(variant, async ({ page }) => {
       const el = page.getByTestId(variant)
-      await expect(el).toHaveScreenshot(image(`${variant}`))
+      await expect(el).toHaveScreenshot(image(`${variant}-before`))
+
+      el.click()
+      await expect(el).toHaveScreenshot(image(`${variant}-after`))
     })
   })
 })

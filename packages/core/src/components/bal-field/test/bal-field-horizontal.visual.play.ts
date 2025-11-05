@@ -1,13 +1,13 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-badge'
-const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
+const TAG = 'bal-field'
+const VARIANTS = ['horizontal', 'horizontal-long-label', 'horizontal-with-hint', 'horizontal-with-hint-hidden']
 
-test.describe('visual', () => {
+test.describe('horizontal', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
+    await page.goto(`/components/${TAG}/test/${TAG}-horizontal.visual.html`)
     await page.waitForSelector(TAG)
   })
 

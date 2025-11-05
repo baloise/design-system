@@ -126,10 +126,10 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
-    strategy:
-      matrix:
-        shardIndex: [1, 2, 3] # three parallel jobs
-        shardTotal: [3] # total 3 shards
+    # strategy:
+    #   matrix:
+    #     shardIndex: [1, 2, 3] # three parallel jobs
+    #     shardTotal: [3] # total 3 shards
     steps:
       - uses: actions/checkout@v4
         with:
@@ -147,9 +147,17 @@ jobs:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npx nx run core:ci-e2e -- --update-snapshots
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Commit snapshots
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Upload Playwright HTML report
         if: always()

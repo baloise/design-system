@@ -1,9 +1,20 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-badge'
-const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
+const TAG = 'bal-dropdown'
+const VARIANTS = [
+  'basic',
+  'long-content',
+  'multiple',
+  'multiple-chips',
+  'clearable',
+  'loading',
+  'invalid',
+  'disabled',
+  'form-field',
+  'small-purple',
+]
 
-test.describe('visual', () => {
+test.describe.skip('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

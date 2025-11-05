@@ -1,7 +1,24 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-badge'
-const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
+const TAG = 'bal-checkbox'
+const VARIANTS = [
+  'checkbox-basic',
+  'checkbox-invalid',
+  'checkbox-disabled',
+  'checkbox-others',
+  'checkbox-long-label',
+  'switch-basic',
+  'switch-invalid',
+  'switch-disabled',
+  'switch-others',
+  'switch-long-label',
+  'button-basic',
+  'button-invalid',
+  'button-disabled',
+  'button-long-label',
+  'group-vertical',
+  'group-vertical-on-mobile',
+]
 
 test.describe('visual', () => {
   const image = screenshot(TAG)

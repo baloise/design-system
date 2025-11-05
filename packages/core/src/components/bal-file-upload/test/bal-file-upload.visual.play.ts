@@ -1,7 +1,7 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-badge'
-const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
+const TAG = 'bal-file-upload'
+const VARIANTS = ['basic', 'disabled', 'invalid', 'readonly']
 
 test.describe('visual', () => {
   const image = screenshot(TAG)
