@@ -22,7 +22,7 @@ const VARIANTS = [
   'inverted-links',
 ]
 
-test.describe.skip('visual', () => {
+test.describe('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

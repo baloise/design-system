@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-close'
 const VARIANTS = ['basic', 'sizes', 'inverted']
 
-test.describe.skip('visual', () => {
+test.describe('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

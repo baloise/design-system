@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-card'
 const VARIANTS = ['basic', 'colors', 'flat', 'square', 'border', 'space']
 
-test.describe.skip('visual', () => {
+test.describe('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-checkbox'
 const VARIANTS = ['basic', 'grid', 'colors']
 
-test.describe.skip('tiles', () => {
+test.describe('tiles', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

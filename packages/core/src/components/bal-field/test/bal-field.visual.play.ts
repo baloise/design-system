@@ -15,7 +15,7 @@ const VARIANTS = [
   'horizontal-with-hint',
   'label-long-with-hint',
 ]
-test.describe.skip('visual', () => {
+test.describe('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

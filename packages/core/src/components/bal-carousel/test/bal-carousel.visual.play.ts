@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-carousel'
 const VARIANTS = ['basic', 'image', 'product', 'card', 'card-with-value', 'responsive']
 
-test.describe.skip('visual', () => {
+test.describe('visual', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {

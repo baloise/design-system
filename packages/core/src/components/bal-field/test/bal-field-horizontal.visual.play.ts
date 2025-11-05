@@ -3,7 +3,7 @@ import { expect, screenshot, test } from '@baloise/ds-playwright'
 const TAG = 'bal-field'
 const VARIANTS = ['horizontal', 'horizontal-long-label', 'horizontal-with-hint', 'horizontal-with-hint-hidden']
 
-test.describe.skip('horizontal', () => {
+test.describe('horizontal', () => {
   const image = screenshot(TAG)
 
   test.beforeEach(async ({ page }) => {
