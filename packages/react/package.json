@@ -13,6 +13,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/ds-core": "19.8.2",
-    "@stencil/react-output-target": "1.0.4"
+    "@stencil/react-output-target": "1.2.0"
   }
 }
