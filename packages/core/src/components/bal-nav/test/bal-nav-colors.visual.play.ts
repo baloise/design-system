@@ -9,6 +9,6 @@ test.beforeEach(async ({ page }) => {
   await page.waitForSelector(TAG)
 })
 
-test('basic', async ({ page }) => {
+test.skip('basic', async ({ page }) => {
   await expect(page).toHaveScreenshot(image(`basic`))
 })

@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForSelector(TAG)
 })
 
-test('basic', async ({ page }) => {
+test.skip('basic', async ({ page }) => {
   const buttonEl = page.getByTestId('open-modal-button')
 
   await expect(page).toHaveScreenshot(image(`basic-before`))

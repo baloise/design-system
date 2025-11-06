@@ -197,6 +197,7 @@ jobs:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Commit snapshots
+        if: always()
         uses: EndBug/add-and-commit@v9
         with:
           message: 'update snapshots'

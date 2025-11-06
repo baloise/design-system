@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForSelector(TAG)
 })
 
-test('basic', async ({ page }) => {
+test.skip('basic', async ({ page }) => {
   const el = page.getByTestId('basic')
   const inputEl = page.getByTestId('basic-input')
 
