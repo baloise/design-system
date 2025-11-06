@@ -95,7 +95,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * @internal
    * defines the version of the component
    */
-  @Prop() version = 1
+  @Prop() version = 2
 
   /**
    * Emitted when the accordion has opened or closed
