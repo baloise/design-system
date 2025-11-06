@@ -1,7 +1,8 @@
-import { Component, Host, h, Element, ComponentInterface, State, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { AccordionState } from '../../../interfaces'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-accordion-details',
@@ -9,7 +10,7 @@ import { AccordionState } from '../../../interfaces'
 })
 export class AccordionDetails implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-details-${accordionDetailIds++}`
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 

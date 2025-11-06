@@ -37,10 +37,9 @@ jobs:
 
       - name: Get Branch Name
         id: get-branch
+        # Use the event payload directly instead of calling the API with jq
         run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v4
         with:
@@ -272,3 +271,215 @@ jobs:
             Specs: `${{ steps.command.outputs.result }}`
 
             [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+  assembleInformation:
+    name: 📝 Assemble Information
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+      CI: true
+    outputs:
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
+      command: ${{ steps.command.outputs.result }}
+      specs: ${{ steps.specs.outputs.result }}
+    steps:
+      - name: Get Action URL
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Check for /update-screenshots command
+        uses: actions/github-script@v7
+        id: command
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Filter specs
+        uses: actions/github-script@v7
+        id: specs
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const regex = /\/update-screenshots(?:\s+(.*))?/;
+            if (regex.test(comment)) {
+              const match = comment.match(regex);
+              const imageName = match[1] ? match[1].trim() : '';
+              if(imageName !== ''){
+                return imageName.split(',').map(v => `${v}`);
+              }
+              return 'all'
+            }
+            return 'none'
+
+      - name: Get results
+        run: |
+          echo "${{ steps.command.outputs.result }}"
+          echo "${{ steps.specs.outputs.result }}"
+
+      - name: Get Branch Name
+        id: branch
+        run: |
+          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
+          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+  updateScreenshots:
+    name: 📸 Update Screenshots
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    needs: [assembleInformation]
+    env:
+      HUSKY: 0
+      CI: true
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
+      options: --user 1001
+    steps:
+      - name: Show inputs from pree job
+        run: |
+          echo "Branch from pree job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Command: ${{ needs.assembleInformation.outputs.command }}"
+          echo "Specs: ${{ needs.assembleInformation.outputs.specs }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Update Screenshots in Progress...**
+
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
+
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: ./.github/workflows/actions/setup
+
+      - name: Show current branch
+        run: |
+          echo "🔍 Current branch info:"
+          git rev-parse --abbrev-ref HEAD
+          echo "Full commit info:"
+          git log -1 --oneline
+
+      - name: Show content of packages/core/src/components/bal-accordion/test
+        run: |
+          echo "Listing files in packages/core/src/components/bal-accordion/test"
+          ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
+
+      - name: Clean install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Write visual config template
+        run: |
+          cat > packages/core/playwright.visual.config.ts <<TS
+          /**
+          * This configuration is used to run visual tests for a specific
+          * component across multiple devices and browsers.
+          */
+          import { defineConfig, devices } from '@playwright/test'
+          import baseConfig from './playwright.config'
+
+          const TAG = '${{ needs.assembleInformation.outputs.command }}'
+          const testMatch = ['src/components/' + TAG + '/test/*visual.play.ts']
+
+          console.log('testMatch', testMatch)
+
+          export default defineConfig({
+            ...baseConfig,
+            projects: [
+              {
+                name: 'desktop chrome',
+                testMatch,
+                use: { ...devices['Desktop Chrome'] },
+              },
+              {
+                name: 'desktop safari',
+                testMatch,
+                use: { ...devices['Desktop Safari'] },
+              },
+              {
+                name: 'mobile chrome',
+                testMatch,
+                use: { ...devices['Pixel 5'] },
+              },
+              {
+                name: 'mobile safari',
+                testMatch,
+                use: { ...devices['iPhone 12'] },
+              },
+            ],
+          })
+          TS
+
+      - name: Replace BAL-TAG with provided tag
+        run: |
+          echo "---- file preview ----"
+          sed -n '1,160p' packages/core/playwright.visual.config.ts
+          echo "---- end preview ----"
+
+      - name: Run Playwright tests
+        run: npx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
+
+      - name: Commit snapshots
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **📸 Update Screenshots finished!**
+
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
+
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Update Screenshots Failed!**
+
+            Specs: `${{ needs.assembleInformation.outputs.command }}`
+
+            [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})

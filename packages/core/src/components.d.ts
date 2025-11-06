@@ -4494,6 +4494,10 @@ export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalAccordionElement;
 }
+export interface BalAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalAppElement;
+}
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
@@ -4696,7 +4700,18 @@ declare global {
         prototype: HTMLBalAccordionTriggerElement;
         new (): HTMLBalAccordionTriggerElement;
     };
+    interface HTMLBalAppElementEventMap {
+        "balAppReady": void;
+    }
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalAppElement: {
         prototype: HTMLBalAppElement;
@@ -6185,6 +6200,10 @@ declare namespace LocalJSX {
           * @default true
          */
         "animated"?: boolean;
+        /**
+          * Emitted when app is ready and painted.
+         */
+        "onBalAppReady"?: (event: BalAppCustomEvent<void>) => void;
         /**
           * @default false
          */

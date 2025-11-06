@@ -1,13 +1,14 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
-import { BEM } from '../../../utils/bem'
 import { stopEventBubbling } from 'packages/core/src/utils/form-input'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-value',
 })
 export class DataValue {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` a small button with a edit icon will be shown on the right.

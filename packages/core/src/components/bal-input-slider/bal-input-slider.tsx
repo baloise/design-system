@@ -1,17 +1,18 @@
-import { Component, h, Host, Element, Prop, EventEmitter, Event, Method, Watch, State, Listen } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isNil from 'lodash.isnil'
-import { debounceEvent } from '../../utils/helpers'
-import { stopEventBubbling } from '../../utils/form-input'
+import { ariaBooleanToString } from '../../utils/aria'
 import { BEM } from '../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import { ariaBooleanToString } from '../../utils/aria'
+import { stopEventBubbling } from '../../utils/form-input'
+import { debounceEvent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-input-slider',
   styleUrl: 'bal-input-slider.sass',
 })
 export class InputSlider implements BalAriaFormLinking {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   private inputId = `bal-input-slider-${inputSliderIds++}`
   private nativeInput?: HTMLInputElement

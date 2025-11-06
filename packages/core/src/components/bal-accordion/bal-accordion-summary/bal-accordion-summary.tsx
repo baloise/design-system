@@ -1,9 +1,10 @@
-import { Component, Host, h, Element, ComponentInterface, Prop, State } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { stopEventBubbling } from '../../../utils/form-input'
-import { AccordionState } from '../../../interfaces'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { isEnterKey, isSpaceKey } from '../../..//utils/keyboard'
+import { AccordionState } from '../../../interfaces'
+import { BEM } from '../../../utils/bem'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-accordion-summary',
@@ -12,7 +13,7 @@ import { isEnterKey, isSpaceKey } from '../../..//utils/keyboard'
 export class AccordionSummary implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-summary-${accordionSummaryIds++}`
 
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() parentAccordionId?: string
 

@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalLanguage } from '../config'
 import { SwiperUtil } from './swiper.util'
 
@@ -6,14 +7,13 @@ export interface SwiperControlItem {
   label: string
 }
 
-export type SwiperChildItem = HTMLElement & {
-  label: string // TODO: check how to pass label if not on element
+export type SwiperChildItem = HTMLStencilElement & {
+  label: string
   setFocus(): Promise<void>
 }
 
 export interface SwiperSlide {
-  el: SwiperChildItem // HTMLBalCarouselItemElement
-  // data: BalCarouselItemData
+  el: SwiperChildItem
   transformNext: number
   transformActive: number
   isLast: boolean
@@ -27,7 +27,7 @@ export type SwiperGapSpace = 'normal' | 'medium' | 'none'
 export type SwiperItemsPerView = 'auto' | 1 | 2 | 3 | 4
 
 export type SwiperInterface = {
-  el: HTMLElement
+  el: HTMLElement | HTMLStencilElement
   swiper: SwiperUtil
 
   language: BalLanguage

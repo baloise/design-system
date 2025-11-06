@@ -7,23 +7,16 @@ describe('bal-accordion', () => {
     cy.waitForDesignSystem()
   })
 
-  context('v1', () => {
-    it('collapsed', () => {
-      cy.getByTestId('accordion').testA11y()
-    })
-
-    it('expanded', () => {
-      cy.getByTestId('accordion').click().testA11y()
-    })
-  })
-
   context('v2', () => {
     it('collapsed', () => {
+      cy.getByTestId('accordion-v2').waitForComponents()
       cy.getByTestId('accordion-v2').testA11y()
     })
 
     it('expanded', () => {
+      cy.getByTestId('accordion-v2').waitForComponents()
       cy.getByTestId('accordion-v2').find(selectors.accordion.trigger).click()
+      cy.getByTestId('accordion-v2').waitForComponents()
       cy.getByTestId('accordion-v2').testA11y()
     })
   })

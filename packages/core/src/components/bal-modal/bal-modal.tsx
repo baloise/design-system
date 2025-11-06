@@ -1,11 +1,12 @@
-import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
-import { dismiss, eventMethod, FOCUS_TRAP_DISABLE_CLASS, prepareOverlay } from '../../utils/overlays/overlays'
-import { attachComponent, detachComponent } from '../../utils/framework-delegate'
-import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
-import { deepReady, wait } from '../../utils/helpers'
-import { getClassMap } from '../../utils/css-classes'
-import { BalScrollHandler } from '../../utils/scroll'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, writeTask } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../../utils/browser'
+import { getClassMap } from '../../utils/css-classes'
+import { attachComponent, detachComponent } from '../../utils/framework-delegate'
+import { deepReady, wait } from '../../utils/helpers'
+import { dismiss, eventMethod, FOCUS_TRAP_DISABLE_CLASS, prepareOverlay } from '../../utils/overlays/overlays'
+import { BalScrollHandler } from '../../utils/scroll'
+import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 
 @Component({
   tag: 'bal-modal',
@@ -23,7 +24,7 @@ export class Modal implements OverlayInterface {
 
   @State() presented = false
 
-  @Element() el!: HTMLBalModalElement
+  @Element() el!: HTMLStencilElement
 
   /** @internal */
   @Prop({ mutable: true }) overlayIndex!: number

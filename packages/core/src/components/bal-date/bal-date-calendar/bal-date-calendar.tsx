@@ -11,6 +11,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
 import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../utils/config'
 import { BalDate } from '../../../utils/date'
@@ -42,7 +43,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   private oldMin? = ''
   private oldMax? = ''
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() selectedDate = ''
   @State() monthFullNames: string[] = []

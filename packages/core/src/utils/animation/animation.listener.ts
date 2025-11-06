@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { addEventListener, removeEventListener, debounce, isChildOfEventTarget } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalAnimationObserverInfo } from './animation.interfaces'
@@ -13,7 +14,7 @@ export class BalAnimationListener extends ListenerAbstract<unknown, BalAnimation
     isChildOfEventTarget(ev, this.el, target => this.debouncedNotify(target))
   }
 
-  connect(el?: HTMLElement | Window | Document): void {
+  connect(el?: HTMLElement | HTMLStencilElement | Window | Document): void {
     super.connect(el)
     const win = window
     if (win) {

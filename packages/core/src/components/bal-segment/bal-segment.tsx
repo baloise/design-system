@@ -13,6 +13,7 @@ import {
   Watch,
   writeTask,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BalAnimationObserver, ListenToAnimation } from '../../utils/animation'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
@@ -49,7 +50,7 @@ export class Segment
     BalVisibilityObserver,
     BalAnimationObserver
 {
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 

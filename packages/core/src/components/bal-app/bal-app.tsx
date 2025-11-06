@@ -1,10 +1,11 @@
-import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../../utils/browser'
-import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
+import { balDevice } from '../../utils/device'
+import { startFocusVisible } from '../../utils/focus-visible'
 import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { startFocusVisible } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-app',
@@ -14,7 +15,7 @@ export class App implements Loggable {
   private focusVisible?: any
   private debouncedNotify = debounce(() => this.notifyResize(), 100)
 
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
 
@@ -32,6 +33,11 @@ export class App implements Loggable {
    * @internal Is `true` when DS components are ready to be shown.
    */
   @Prop({ reflect: true, mutable: true }) ready = false
+
+  /**
+   * Emitted when app is ready and painted.
+   */
+  @Event() balAppReady!: EventEmitter<void>
 
   connectedCallback() {
     if (this.animated === false) {
@@ -54,6 +60,7 @@ export class App implements Loggable {
       if (balBrowser.hasDocument && balBrowser.hasWindow) {
         const doc = document.documentElement
         doc.classList.add('lcp-ready')
+        this.balAppReady.emit()
       }
     })
   }

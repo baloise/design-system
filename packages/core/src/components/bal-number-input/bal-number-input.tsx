@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash.isempty'
 import isNaN from 'lodash.isnan'
 import isNil from 'lodash.isnil'
@@ -75,7 +76,7 @@ export class NumberInput
   inputValue?: number | string = this.value
   initialValue?: number | string = undefined
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language

@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { deepReady, waitAfterFramePaint } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 
@@ -5,7 +6,7 @@ export class BalVisibilityListener extends ListenerAbstract {
   private waitAfterFramePrint = false
   private intersectionObserver: IntersectionObserver | undefined = undefined
 
-  async connect(el: HTMLElement) {
+  async connect(el: HTMLElement | HTMLStencilElement) {
     super.connect(el)
     if (typeof IntersectionObserver === 'undefined') {
       return

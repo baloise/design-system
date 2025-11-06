@@ -1,22 +1,22 @@
 import {
   Component,
-  Host,
-  h,
+  ComponentInterface,
   Element,
-  Prop,
-  Method,
   Event,
   EventEmitter,
-  Watch,
+  h,
+  Host,
+  Method,
+  Prop,
   State,
-  ComponentInterface,
+  Watch,
 } from '@stencil/core'
-import { debounceEvent, transitionEndAsync, waitForComponent } from '../../utils/helpers'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
-import { BEM } from '../../utils/bem'
-import { raf } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { AccordionState } from '../../interfaces'
+import { BEM } from '../../utils/bem'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { debounceEvent, raf, transitionEndAsync, waitForComponent } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-accordion',
@@ -28,7 +28,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   private contentElWrapper: HTMLDivElement | undefined
   private currentRaf: number | undefined
 
-  @Element() el?: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() state: AccordionState = AccordionState.Collapsed
   @State() animated = true
@@ -95,7 +95,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * @internal
    * defines the version of the component
    */
-  @Prop() version = 1
+  @Prop() version = 2
 
   /**
    * Emitted when the accordion has opened or closed

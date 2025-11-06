@@ -1,3 +1,4 @@
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { deepReady, waitAfterFramePaint } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { MutationObserverOptions } from './mutation.interfaces'
@@ -25,7 +26,7 @@ export class BalMutationListener extends ListenerAbstract {
     }
   }
 
-  async connect(el: HTMLElement) {
+  async connect(el: HTMLElement | HTMLStencilElement) {
     super.connect(el)
     if (typeof MutationObserver === 'undefined') {
       return

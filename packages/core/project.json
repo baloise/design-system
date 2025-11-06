@@ -15,6 +15,60 @@
         }
       }
     },
+    "e2e-ui": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --ui",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
+    "e2e-update-screenshots": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --update-snapshots",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
+    "ci-e2e": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test",
+        "env": {
+          "BAL_PLAYWRIGHT_TESTING": "true"
+        }
+      }
+    },
+    "ci-e2e-update-component-screenshots": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright test --config=playwright.visual.config.ts --update-snapshots",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
+    "e2e-report": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx playwright show-report",
+        "env": {
+          "BAL_DEVELOPMENT": "true"
+        }
+      }
+    },
     "serve": {
       "executor": "nx:run-commands",
       "options": {

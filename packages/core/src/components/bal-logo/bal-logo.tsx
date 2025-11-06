@@ -1,10 +1,11 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, FunctionalComponent, Watch } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { rOnLoad } from '../../utils/helpers'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BEM } from '../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { rOnLoad } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => AnimationItem
 
@@ -24,7 +25,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isTouch = balBreakpoints.isTouch
   @State() doesConfigAllowAnimation = true

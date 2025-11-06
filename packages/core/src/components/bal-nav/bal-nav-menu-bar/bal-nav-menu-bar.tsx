@@ -1,6 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
+import { Component, ComponentInterface, Element, Host, Prop, State, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-nav-menu-bar',
@@ -9,7 +10,7 @@ import { LogInstance, Loggable, Logger } from '../../../utils/log'
 export class NavMenuBar implements ComponentInterface, Loggable {
   private navMenuBarId = `bal-nav-menu-bar-${NavMenuBarIds++}`
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() isHidden = false
 

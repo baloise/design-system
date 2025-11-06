@@ -12,6 +12,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -35,11 +36,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputId = `bal-da-${dateIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popupCleanup?: () => void
-  private referenceEl: HTMLElement | undefined
+  private referenceEl: HTMLStencilElement | undefined
   private floatingEl: HTMLDivElement | undefined
   private inputEl: HTMLBalInputDateElement | undefined
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   @State() private isKeyboardMode = false
   @State() private hasFocus = false
@@ -390,7 +391,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
       this.balWillAnimate.emit()
       this.isExpanded = true
       this.popupCleanup = lib.autoUpdate(this.referenceEl, this.floatingEl, () => {
-        this.updatePosition(this.referenceEl as HTMLElement, this.floatingEl as HTMLElement)
+        this.updatePosition(this.referenceEl, this.floatingEl as HTMLElement)
       })
     }
 
@@ -409,10 +410,13 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
     return this.isExpanded
   }
 
-  private async updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
+  private async updatePosition(
+    referenceEl: HTMLElement | HTMLStencilElement,
+    floatingEl: HTMLElement | HTMLStencilElement,
+  ) {
     const lib = await balFloatingUi.load()
     lib
-      .computePosition(referenceEl, floatingEl, {
+      .computePosition(referenceEl, floatingEl as HTMLElement, {
         placement: 'bottom-start',
         middleware: [lib.offset(4), lib.flip({ crossAxis: false })],
       })
