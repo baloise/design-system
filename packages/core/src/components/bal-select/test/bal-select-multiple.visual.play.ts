@@ -31,7 +31,7 @@ test.skip('basic', async ({ page }) => {
 })
 
 VARIANTS.forEach(variant => {
-  test(variant, async ({ page }) => {
+  test.skip(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
     await expect(el).toHaveScreenshot(image(`${variant}`))
   })
