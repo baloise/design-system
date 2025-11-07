@@ -138,7 +138,7 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
           {choices.map(option => (
             <bal-tag
               key={option.value}
-              data-test="bal-dropdown-chip"
+              data-testid="bal-dropdown-chip"
               size="small"
               invalid={invalid}
               disabled={disabled || readonly}

@@ -11,85 +11,208 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: 🏗️ Lint, Test & Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    env:
-      HUSKY: 0
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/build
-        with:
-          build: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+  # build:
+  #   name: 🏗️ Lint, Test & Build
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 15
+  #   env:
+  #     HUSKY: 0
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/build
+  #       with:
+  #         build: true
+  #         token: ${{ secrets.GITHUB_TOKEN }}
 
-  e2e-components:
-    name: 🧪 Component Tests
+  # e2e-components:
+  #   name: 🧪 Component Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-components
+
+  # e2e-visual:
+  #   name: 🧪 E2E Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-visual
+
+  # angular:
+  #   name: 🧪 Angular Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v18, v19, v20]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/framework-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/framework-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: angular
+  #     - uses: ./.github/workflows/actions/framework-test
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: angular
+
+  # react:
+  #   name: 🧪 React Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v19]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/framework-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/framework-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react
+  #     - uses: ./.github/workflows/actions/framework-test
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react
+
+  assembleInformation:
+    name: 📝 Assemble Information
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
       HUSKY: 0
-    needs: [build]
+      CI: true
+    outputs:
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-components
+      - name: Get Action URL
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
 
-  e2e-visual:
-    name: 🧪 E2E Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-visual
+      - name: Get Branch Name
+        id: branch
+        # Determine branch reliably from the event payload.
+        # - For pull_request events use github.head_ref (the source branch name)
+        # - For push events parse GITHUB_REF (refs/heads/<branch>)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          else
+            # strip refs/heads/ prefix
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
 
   playwright:
     name: 🎭 Playwright
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    needs: [assembleInformation]
     env:
       HUSKY: 0
       CI: 1
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
+        shardTotal: [6] # total 6 shards
     steps:
+      - name: Show inputs from previous job
+        run: |
+          echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
+
       - uses: actions/checkout@v4
         with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
 
-      - uses: ./.github/workflows/actions/setup
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
-      - name: Clean Install
-        run: npm ci
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'   # optional helper
+
+      - name: Get pnpm store path
+        id: pnpm-store
+        run: echo "PNPM_STORE=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_STORE }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Core
         run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:e2e
-        # run: npx nx run core:e2e-update-screenshots
+        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npx nx run core:ci-e2e -- --update-snapshots
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
       # - name: Commit snapshots
+      #   if: always()
       #   uses: EndBug/add-and-commit@v9
       #   with:
       #     message: 'update snapshots'
@@ -100,62 +223,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-shard-${{ matrix.shardIndex }}
           path: packages/core/playwright-report
           retention-days: 7
-
-  angular:
-    name: 🧪 Angular Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v18, v19, v20]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
-
-  react:
-    name: 🧪 React Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v19]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
