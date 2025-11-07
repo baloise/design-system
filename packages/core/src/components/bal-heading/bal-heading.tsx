@@ -101,6 +101,10 @@ export class Heading implements ComponentInterface {
     this.updateAutoFontSize()
   }
 
+  componentWillRender(): Promise<void> | void {
+    this.updateAutoFontSize()
+  }
+
   componentDidRender(): void {
     if (this.autoLevel && this.autoFontSize) {
       const rows = this.rows
