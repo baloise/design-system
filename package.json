@@ -134,8 +134,8 @@
     "vite": "5.2.11",
     "vite-plugin-dts": "4.5.4",
     "vitest": "^3.0.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.14.3",
+    "caniuse-lite": "^1.0.30001754"
   },
-  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330",
-  "dependencies": {}
+  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330"
 }
