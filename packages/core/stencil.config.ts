@@ -59,6 +59,8 @@ export const config: Config = {
   ],
   extras: {
     initializeNextTick: true,
+    experimentalScopedSlotChanges: true,
+    experimentalSlotFixes: true,
   },
   outputTargets: [
     {
