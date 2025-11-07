@@ -95,7 +95,7 @@ export const enum AccordionState {
   Expanding = 1 << 3,
 }
 
-export interface I18n<T> {
+export interface I18n<T = any> {
   en: T
   de: T
   fr: T

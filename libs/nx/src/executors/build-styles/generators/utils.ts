@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { join, dirname } from 'path'
-import get from 'lodash.get'
+import get from 'lodash/get'
+import { dirname, join } from 'path'
 
 export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'

@@ -20,7 +20,6 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
         jmp: (h: any) => zone.runOutsideAngular(h),
         ael(elm, eventName, cb, opts) {
           if (elm && (elm as any)[aelFn]) {
-            // eslint-disable-next-line @typescript-eslint/no-extra-semi
             ;(elm as any)[aelFn](eventName, cb, opts)
           }
         },

@@ -1,5 +1,5 @@
-import isNaN from 'lodash.isnan'
-import isNil from 'lodash.isnil'
+import isNaN from 'lodash/isNaN'
+import isNil from 'lodash/isNil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../utils/constants/keys.constant'
 import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '../../utils/number'
 

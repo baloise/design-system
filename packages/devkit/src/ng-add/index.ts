@@ -1,14 +1,14 @@
 import { Rule, SchematicContext, Tree, chain, mergeWith } from '@angular-devkit/schematics'
 import { addDependency, addRootProvider } from '@schematics/angular/utility'
 
-import { SchemaOptions } from './schema'
-import { createPolyfillsFile } from './generators/polyfills.gen'
-import { createZoneFlagsFile } from './generators/zone-flags.gen'
-import { updateProjectConfig } from './generators/project.gen'
-import { updateTsConfig } from './generators/ts-config.gen'
-import { addStyles } from './generators/styles'
-import { createI18nFile } from './generators/i18n.gen'
 import { updateAppComponent } from './generators/app.get'
+import { createI18nFile } from './generators/i18n.gen'
+import { createPolyfillsFile } from './generators/polyfills.gen'
+import { updateProjectConfig } from './generators/project.gen'
+import { addStyles } from './generators/styles'
+import { updateTsConfig } from './generators/ts-config.gen'
+import { createZoneFlagsFile } from './generators/zone-flags.gen'
+import { SchemaOptions } from './schema'
 
 export default function (options: SchemaOptions): Rule {
   return async (host: Tree, context: SchematicContext): Promise<Rule | void> => {
@@ -29,7 +29,7 @@ export default function (options: SchemaOptions): Rule {
         region: '${options.region}',
       }
     })`
-      }),
+      }) as any,
     )
 
     if (options.i18n) {
@@ -46,7 +46,7 @@ export default function (options: SchemaOptions): Rule {
         '@baloise/ds-angular',
       )}],
     }`
-        }),
+        }) as any,
       )
     }
 
@@ -57,7 +57,7 @@ export default function (options: SchemaOptions): Rule {
 
     updateAppComponent(host)
 
-    actions.push(addDependency('@baloise/ds-angular', 'latest'))
+    actions.push(addDependency('@baloise/ds-angular', 'latest') as any)
 
     return chain(actions)(host, context) as any
   }

@@ -73,7 +73,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
 
   @ListenToResize()
   resizeListener() {
-    this.debounceSetMinHeightForAnimation
+    this.debounceSetMinHeightForAnimation()
   }
 
   @ListenToBreakpoints()

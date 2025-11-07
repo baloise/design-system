@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-/* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable */
+
 interface CustomMatchers<R = unknown> {
   /**
    * Will check if the event spy received the expected event.
@@ -20,7 +20,7 @@ interface CustomMatchers<R = unknown> {
 
 declare global {
   namespace PlaywrightTest {
-    interface Matchers<R> extends CustomMatchers<R> {}
+    interface Matchers<R> extends CustomMatchers {}
   }
 }
 

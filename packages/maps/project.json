@@ -10,10 +10,6 @@
         "packageRoot": "{projectRoot}/dist"
       }
     },
-    "lint": {
-      "command": "eslint --no-eslintrc",
-      "outputs": ["{options.outputFile}"]
-    },
     "optimize": {
       "executor": "@baloise/ds-nx:build-svg",
       "outputs": ["{projectRoot}/src/assets", "{projectRoot}/src/lib/markers.ts", "{projectRoot}/src/markers.json"],
@@ -38,7 +34,9 @@
         "assets": ["{projectRoot}/src/assets"],
         "project": "{projectRoot}/package.json",
         "compiler": "swc",
-        "format": ["esm"]
+        "format": ["esm"],
+        "generateExportsField": true,
+        "rollupConfig": []
       }
     }
   },

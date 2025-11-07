@@ -4,10 +4,6 @@
   "projectType": "library",
   "sourceRoot": "packages/tokens/src",
   "targets": {
-    "lint": {
-      "command": "eslint --no-eslintrc",
-      "outputs": ["{options.outputFile}"]
-    },
     "build": {
       "executor": "@nxkit/style-dictionary:build",
       "outputs": ["{options.outputPath}"],
