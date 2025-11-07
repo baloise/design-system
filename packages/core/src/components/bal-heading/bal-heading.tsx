@@ -35,6 +35,7 @@ export class Heading implements ComponentInterface {
 
   @Watch('level')
   levelWatcher() {
+    console.log('level')
     this.updateAutoFontSize()
   }
 
@@ -47,6 +48,7 @@ export class Heading implements ComponentInterface {
 
   @Watch('visualLevel')
   visualLevelWatcher() {
+    console.log('visualLevelWatcher')
     this.updateAutoFontSize()
   }
 
@@ -98,10 +100,12 @@ export class Heading implements ComponentInterface {
    */
 
   connectedCallback(): void {
+    console.log('connectedCallback')
     this.updateAutoFontSize()
   }
 
   componentWillRender(): Promise<void> | void {
+    console.log('componentWillRender')
     this.updateAutoFontSize()
   }
 
@@ -163,6 +167,8 @@ export class Heading implements ComponentInterface {
 
     const Heading = this.tag
     const fontColor = this.fontColor
+
+    console.log('render')
 
     return (
       <Host
