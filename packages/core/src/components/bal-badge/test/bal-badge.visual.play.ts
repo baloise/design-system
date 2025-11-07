@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-badge'
 const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']

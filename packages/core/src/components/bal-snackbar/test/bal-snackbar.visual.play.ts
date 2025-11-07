@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-snackbar'
 const VARIANTS = ['basic', 'long-content', 'message']

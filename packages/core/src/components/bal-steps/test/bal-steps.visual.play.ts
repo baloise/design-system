@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-steps'
 const VARIANTS = ['steps', 'steps-links', 'steps-with-four', 'light-blue', 'purple', 'red', 'green', 'yellow']

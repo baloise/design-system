@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-carousel'
 const VARIANTS = ['basic', 'image', 'product', 'card', 'card-with-value', 'responsive']

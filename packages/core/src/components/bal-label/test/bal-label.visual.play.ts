@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-label'
 const VARIANTS = ['basic', 'no-wrap', 'sizes', 'states', 'field']
