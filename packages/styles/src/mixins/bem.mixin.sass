@@ -1,4 +1,5 @@
 @use 'sass:string'
+@use 'sass:list'
 
 $componentPrefix: 'bal-'
 
@@ -13,7 +14,7 @@ $componentPrefix: 'bal-'
 =blocks($names...)
   $selector: ()
   @each $name in $names
-    $selector: append($selector, string.unquote('.#{$componentPrefix}#{$name}'), comma)
+    $selector: list.append($selector, string.unquote('.#{$componentPrefix}#{$name}'), comma)
   #{$selector}
     @content
 
@@ -24,7 +25,7 @@ $componentPrefix: 'bal-'
 =elements($names...)
   $selector: ()
   @each $name in $names
-    $selector: append($selector, string.unquote('&__#{$name}'), comma)
+    $selector: list.append($selector, string.unquote('&__#{$name}'), comma)
   #{$selector}
     @content
 
@@ -35,6 +36,6 @@ $componentPrefix: 'bal-'
 =modifiers($names...)
   $selector: ()
   @each $name in $names
-    $selector: append($selector, string.unquote('&--#{$name}'), comma)
+    $selector: list.append($selector, string.unquote('&--#{$name}'), comma)
   #{$selector}
     @content
