@@ -65,30 +65,22 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
       const url = route.request().url()
       const fontName = url.split('/').pop()
 
-      console.log('2 Font requested:', fontName)
-
       if (fontName) {
         try {
           // Resolve font path from workspace root (go up from packages/core to root)
           const workspaceRoot = join(process.cwd(), '..', '..')
           const fontPath = join(workspaceRoot, 'packages', 'fonts', 'assets', fontName)
-          console.log('Try to READ FONT FROM:', fontPath)
           const fontBuffer = readFileSync(fontPath)
-          console.log('READ FONT FROM:', fontPath)
 
           await route.fulfill({
             status: 200,
             contentType: 'font/woff2',
             body: fontBuffer,
           })
-          console.log('fulfilled font request with local file')
-        } catch (e) {
-          // If local font not found, continue with original request
-          console.log('catch - continue original font request for', e)
+        } catch {
           await route.continue()
         }
       } else {
-        console.log('catch - else')
         await route.continue()
       }
     })
