@@ -1,5 +1,21 @@
 # Changelog
 
+## 19.8.3
+
+### Patch Changes
+
+- **react**: update output-target ( [#1849](https://github.com/baloise/design-system/pull/1849))
+
+- **hint**: change z-index of hint icon to be below the popup content ( [#1837](https://github.com/baloise/design-system/pull/1837))
+
+- **dropdown**: combine dropdown, option-list and option to a bundle ( [#1836](https://github.com/baloise/design-system/pull/1836))
+
+- **toast**: revert pointer-events ( [#1848](https://github.com/baloise/design-system/pull/1848))
+
+- **core**: update stencil core for better angular support ( [#1814](https://github.com/baloise/design-system/pull/1814))
+
+- **select**: sync value when options are defined ( [#1836](https://github.com/baloise/design-system/pull/1836))
+
 ## 19.8.2
 
 ### Patch Changes
@@ -479,8 +495,6 @@
 ### Major Changes
 
 - Removed deprecated component `bal-datepicker` for performance reasons ( [#1514](https://github.com/baloise/design-system/pull/1514))
-
-Please check out the more detailed [Upgrade Guide to v17](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v17--documentation).
 
 ### Minor Changes
 
