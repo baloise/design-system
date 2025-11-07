@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-radio'
 const VARIANTS = [
@@ -20,6 +20,7 @@ const image = screenshot(TAG)
 test.beforeEach(async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
+  await waitForChanges(page)
 })
 
 VARIANTS.forEach(variant => {

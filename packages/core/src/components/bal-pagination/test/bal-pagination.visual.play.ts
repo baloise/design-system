@@ -8,6 +8,7 @@ const image = screenshot(TAG)
 test.beforeEach(async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
+  await waitForChanges(page)
 })
 
 VARIANTS.forEach(variant => {
