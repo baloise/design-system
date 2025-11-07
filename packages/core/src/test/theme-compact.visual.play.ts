@@ -6,7 +6,7 @@ useDesktop()
 
 const image = screenshot('theme-compact')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/theme-compact.visual.html`)
   await waitForChanges(page)
 })

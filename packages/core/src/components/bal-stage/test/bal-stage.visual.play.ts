@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-stage'
 
@@ -7,6 +7,7 @@ const image = screenshot(TAG)
 test('basic', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
+  await waitForChanges(page)
 
   await expect(page).toHaveScreenshot(image('basic'), { maxDiffPixelRatio: 0.02, fullPage: true })
 })
@@ -14,6 +15,7 @@ test('basic', async ({ page }) => {
 test('large', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}-large.visual.html`)
   await page.waitForSelector(TAG)
+  await waitForChanges(page)
 
   await expect(page).toHaveScreenshot(image('large'), { maxDiffPixelRatio: 0.02, fullPage: true })
 })

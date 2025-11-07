@@ -11,7 +11,7 @@ const VARIANTS = [
 
 const image = screenshot('css-display')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-display.visual.html`)
 })
 

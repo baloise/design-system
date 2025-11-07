@@ -4,7 +4,7 @@ const TAG = 'bal-nav'
 
 const image = screenshot(TAG)
 
-test.beforeEach(async ({ page }) => {
+test.beforeAll('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}-colors.visual.html`)
   await waitForChanges(page)
 })

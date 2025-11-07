@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-footer'
 const VARIANTS = ['basic', 'all-variations', 'partner-variant']
@@ -25,7 +25,7 @@ const socialMediaChannelsMock = [
   { link: 'https://www.youtube.com/user/BaloiseGroup', label: 'YouTube' },
 ]
 
-test.beforeEach(async ({ page }) => {
+test.beforeAll('Setup', async ({ page }) => {
   // Mock external API responses using Playwright routing
   await page.route('https://www.baloise.ch/app-integration/v2/ch/footer/de.json', route =>
     route.fulfill({
@@ -45,6 +45,7 @@ test.beforeEach(async ({ page }) => {
 
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
+  await waitForChanges(page)
 })
 
 VARIANTS.forEach(variant => {

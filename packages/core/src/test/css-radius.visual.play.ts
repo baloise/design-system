@@ -6,7 +6,7 @@ useDesktop()
 
 const image = screenshot('css-radius')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-radius.visual.html`)
 })
 

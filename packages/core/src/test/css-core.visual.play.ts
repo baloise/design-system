@@ -6,7 +6,7 @@ useDesktop()
 
 const image = screenshot('css-core')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-core.visual.html`)
 })
 

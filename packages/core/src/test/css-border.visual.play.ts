@@ -16,7 +16,7 @@ useDesktop()
 
 const image = screenshot('css-border')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-border.visual.html`)
 })
 

@@ -13,7 +13,7 @@ const VARIANTS = [
 
 const image = screenshot('css-flex')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-flex.visual.html`)
 })
 

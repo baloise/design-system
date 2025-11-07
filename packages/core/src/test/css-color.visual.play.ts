@@ -20,7 +20,7 @@ useDesktop()
 
 const image = screenshot('css-color')
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/test/css-color.visual.html`)
 })
 

@@ -5,7 +5,7 @@ const VARIANTS = ['basic', 'alignment', 'direction', 'space', 'margins']
 
 const image = screenshot(TAG)
 
-test.beforeEach(async ({ page }) => {
+test.beforeAll('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
   await waitForChanges(page)

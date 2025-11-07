@@ -4,9 +4,10 @@ const TAG = 'bal-modal'
 
 const image = screenshot(TAG)
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector('bal-button')
+  await waitForChanges(page)
 })
 
 test('basic', async ({ page }) => {

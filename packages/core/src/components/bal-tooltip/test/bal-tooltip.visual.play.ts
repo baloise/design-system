@@ -5,7 +5,7 @@ const VARIANTS = ['basic', 'placement-right']
 
 const image = screenshot(TAG)
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await waitForChanges(page)
 })
