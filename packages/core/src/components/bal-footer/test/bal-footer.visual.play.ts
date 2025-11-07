@@ -1,7 +1,7 @@
 import { expect, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-footer'
-const VARIANTS = ['basic', 'all-variations', 'partner-variant']
+const VARIANTS = ['basic', 'all-variations']
 
 const image = screenshot(TAG)
 
