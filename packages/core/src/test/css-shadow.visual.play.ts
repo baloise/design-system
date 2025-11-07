@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-shadow')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/css-shadow.visual.html`)
+  await page.setupVisualTest(`/test/css-shadow.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

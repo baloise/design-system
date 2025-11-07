@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-inheritance')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/css-inheritance.visual.html`)
+  await page.setupVisualTest(`/test/css-inheritance.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

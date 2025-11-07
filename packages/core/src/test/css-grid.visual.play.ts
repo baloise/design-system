@@ -16,7 +16,7 @@ const VARIANTS = [
 const image = screenshot('css-grid')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/css-grid.visual.html`)
+  await page.setupVisualTest(`/test/css-grid.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

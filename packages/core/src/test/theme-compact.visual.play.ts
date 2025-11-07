@@ -1,4 +1,4 @@
-import { expect, screenshot, test, useDesktop, waitForChanges } from '@baloise/ds-playwright'
+import { expect, screenshot, test, useDesktop } from '@baloise/ds-playwright'
 
 const VARIANTS = ['navbar', 'typography', 'buttons', 'tags', 'card', 'table', 'form']
 
@@ -7,8 +7,7 @@ useDesktop()
 const image = screenshot('theme-compact')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/theme-compact.visual.html`)
-  await waitForChanges(page)
+  await page.setupVisualTest(`/test/theme-compact.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

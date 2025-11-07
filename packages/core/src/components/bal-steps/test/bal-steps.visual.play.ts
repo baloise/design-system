@@ -1,4 +1,4 @@
-import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expect, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-steps'
 const VARIANTS = ['steps', 'steps-links', 'steps-with-four', 'light-blue', 'purple', 'red', 'green', 'yellow']
@@ -6,9 +6,7 @@ const VARIANTS = ['steps', 'steps-links', 'steps-with-four', 'light-blue', 'purp
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
-  await page.waitForSelector(TAG)
-  await waitForChanges(page)
+  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

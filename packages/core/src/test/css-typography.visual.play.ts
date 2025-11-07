@@ -5,7 +5,7 @@ const VARIANTS = ['display', 'title', 'text', 'colors', 'styles', 'alignment']
 const image = screenshot('css-typography')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/css-typography.visual.html`)
+  await page.setupVisualTest(`/test/css-typography.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

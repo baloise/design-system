@@ -1,4 +1,4 @@
-import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expect, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-input-group'
 const VARIANTS = [
@@ -19,9 +19,7 @@ const VARIANTS = [
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
-  await page.waitForSelector(TAG)
-  await waitForChanges(page)
+  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

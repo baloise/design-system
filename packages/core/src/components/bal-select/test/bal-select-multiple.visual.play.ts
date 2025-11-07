@@ -6,9 +6,7 @@ const VARIANTS = ['disabled', 'invalid', 'field']
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/components/${TAG}/test/${TAG}-multiple.visual.html`)
-  await page.waitForSelector(TAG)
-  await waitForChanges(page)
+  await page.setupVisualTest(`/components/${TAG}/test/${TAG}-multiple.visual.html`)
 })
 
 test('basic', async ({ page }) => {

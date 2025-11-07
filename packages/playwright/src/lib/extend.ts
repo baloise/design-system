@@ -8,9 +8,9 @@ import {
   TestType,
 } from '@playwright/test'
 import { a11y } from './functions/a11y'
-import { BalPage, BalPageOptions } from './types'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
+import { BalPage, BalPageOptions } from './types'
 
 export { expect } from '@playwright/test'
 
@@ -49,9 +49,22 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   page.locator = (selector: string, options?: LocatorOptions) => locator(page, originalLocator, selector, options)
 
   // Custom adapter methods
-  page.mount = (html: string) => mount(page, html, test.info())
-  page.waitForChanges = (timeoutMs?: number) => waitForChanges(page, timeoutMs)
-  page.spyOnEvent = (eventName: string) => spyOnEvent(page, eventName)
+  page.mount = (html: string) => baseTest.step('mount', async () => mount(page, html, test.info()))
+  page.waitForChanges = (timeoutMs?: number) =>
+    baseTest.step('waitForChanges', async () => waitForChanges(page, timeoutMs))
+  page.spyOnEvent = (eventName: string) =>
+    baseTest.step(`spyOnEvent ${eventName}`, async () => spyOnEvent(page, eventName))
+  page.setupVisualTest = async (url: string) => {
+    await page.goto(url, { waitUntil: 'commit' })
+    await baseTest.step('wait for last content paint', async () =>
+      page.waitForFunction(
+        () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+        {},
+        { timeout: 5000 },
+      ),
+    )
+    await baseTest.step('wait for changes', async () => waitForChanges(page))
+  }
 
   // Custom event behavior
   await initPageEvents(page)

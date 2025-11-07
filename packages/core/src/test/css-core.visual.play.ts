@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-core')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.goto(`/test/css-core.visual.html`)
+  await page.setupVisualTest(`/test/css-core.visual.html`)
 })
 
 VARIANTS.forEach(variant => {
