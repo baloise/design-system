@@ -17,16 +17,16 @@
     <bal-doc-app>
       <main class="container py-medium">
         <bal-stack>
-          <bal-button data-test="basic-trigger" id="basic-tooltip">Basic</bal-button>
-          <bal-button data-test="placement-right-trigger" id="placement-right-tooltip">Right</bal-button>
+          <bal-button data-testid="basic-trigger" id="basic-tooltip">Basic</bal-button>
+          <bal-button data-testid="placement-right-trigger" id="placement-right-tooltip">Right</bal-button>
         </bal-stack>
 
-        <bal-tooltip data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
+        <bal-tooltip data-testid="basic" label="Basic Tooltip" reference="basic-tooltip">
           <p>Basic Tooltip</p>
         </bal-tooltip>
 
         <bal-tooltip
-          data-test="placement-right"
+          data-testid="placement-right"
           label="Placement Right"
           reference="placement-right-tooltip"
           placement="right"

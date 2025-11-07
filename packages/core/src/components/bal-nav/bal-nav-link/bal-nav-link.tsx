@@ -76,7 +76,7 @@ export class NavLink implements ComponentInterface, Loggable {
         }}
       >
         <Link
-          data-test="bal-nav-link"
+          data-testid="bal-nav-link"
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier(`variant-${this.variant}`).class(hasVariant),

@@ -43,7 +43,7 @@ export const CalendarNav: FunctionalComponent<CalendarNavProps> = ({
           title={selectMonthLabel}
           aria-label={selectMonthLabel}
           tabIndex={-1}
-          data-test="change-year-month"
+          data-testid="change-year-month"
           onClick={onClickSelectMonthAndYear}
         >
           <span>
@@ -63,7 +63,7 @@ export const CalendarNav: FunctionalComponent<CalendarNavProps> = ({
           aria-label={previousMonthLabel}
           onClick={onClickPreviousMonth}
           tabIndex={-1}
-          data-test="previous-month"
+          data-testid="previous-month"
         >
           <bal-icon name="caret-left" color="primary" size="small"></bal-icon>
         </button>
@@ -72,7 +72,7 @@ export const CalendarNav: FunctionalComponent<CalendarNavProps> = ({
           aria-label={nextMonthLabel}
           onClick={onClickNextMonth}
           tabIndex={-1}
-          data-test="next-month"
+          data-testid="next-month"
         >
           <bal-icon name="caret-right" color="primary" size="small"></bal-icon>
         </button>

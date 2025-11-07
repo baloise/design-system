@@ -52,7 +52,7 @@ export default defineConfig({
   webServer: {
     command: process.env.CI ? 'node ./packages/core/web-server.js' : 'npm run start',
     url: 'http://localhost:4000',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     cwd: workspaceRoot,
   },
   projects: [

@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 VARIANTS.forEach(variant => {
-  test.skip(variant, async ({ page }) => {
+  test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
     await expect(el).toHaveScreenshot(image(`${variant}`))
   })

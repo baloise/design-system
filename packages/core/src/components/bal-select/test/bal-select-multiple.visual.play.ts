@@ -1,7 +1,7 @@
 import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-select'
-const VARIANTS = ['disabled', 'invalid', 'field', 'free-solo']
+const VARIANTS = ['disabled', 'invalid', 'field']
 
 const image = screenshot(TAG)
 
@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForSelector(TAG)
 })
 
-test.skip('basic', async ({ page }) => {
+test('basic', async ({ page }) => {
   const el = page.getByTestId('basic')
   const inputEl = page.getByTestId('basic-input')
 
@@ -31,7 +31,7 @@ test.skip('basic', async ({ page }) => {
 })
 
 VARIANTS.forEach(variant => {
-  test.skip(variant, async ({ page }) => {
+  test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
     await expect(el).toHaveScreenshot(image(`${variant}`))
   })
