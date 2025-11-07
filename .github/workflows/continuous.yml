@@ -174,17 +174,31 @@ jobs:
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - uses: ./.github/workflows/actions/setup
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
-      - name: Show current branch
-        run: |
-          echo "🔍 Current branch info:"
-          git rev-parse --abbrev-ref HEAD
-          echo "Full commit info:"
-          git log -1 --oneline
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'   # optional helper
 
-      - name: Clean Install
-        run: npm ci
+      - name: Get pnpm store path
+        id: pnpm-store
+        run: echo "PNPM_STORE=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_STORE }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Core
         run: npx nx run core:build

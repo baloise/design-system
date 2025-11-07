@@ -1,0 +1,6 @@
+# Generated to make pnpm recognize the monorepo workspaces (replaces package.json "workspaces" for pnpm)
+packages:
+  - "packages/*"
+  - "libs/*"
+  - "docs"
+  - "e2e"
