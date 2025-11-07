@@ -12,9 +12,9 @@ test.beforeEach(async ({ page }) => {
 test('basic', async ({ page }) => {
   const triggerEl = page.getByTestId('basic-trigger').locator('button')
 
-  await expect(page).toHaveScreenshot(image('basic-before'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('basic-before'))
 
   await triggerEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('basic-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('basic-open'))
 })

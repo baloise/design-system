@@ -16,7 +16,7 @@ test('basic', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-basic"]')
   await inputEl.click()
   await waitForChanges(page)
-  await expect(el).toHaveScreenshot(image('basic-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(el).toHaveScreenshot(image('basic-open'))
 
   const optionEl = el.getByRole('option', { name: '1992' })
   await optionEl.click()
@@ -31,7 +31,7 @@ test('long-content', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-long-content"]')
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('long-content-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('long-content-open'))
 })
 
 test('multiple', async ({ page }) => {
@@ -41,7 +41,7 @@ test('multiple', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-multiple"]')
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('multiple-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('multiple-open'))
 
   const optionFirstEl = el.getByRole('option', { name: '1991' })
   await optionFirstEl.click()
@@ -59,7 +59,7 @@ test('multiple-chips', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-multiple-chips"]')
   await inputEl.click({ force: true })
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('multiple-chips-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('multiple-chips-open'))
 })
 
 test('form-field', async ({ page }) => {
@@ -69,7 +69,7 @@ test('form-field', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-form-field"]')
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('form-field-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('form-field-open'))
 })
 
 test('small-purple', async ({ page }) => {
@@ -84,7 +84,7 @@ test('clearable', async ({ page }) => {
   const inputEl = page.locator('input[placeholder="visual-clearable"]')
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('clearable-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('clearable-open'))
 
   const optionEl = el.getByRole('option', { name: '1988' })
   await optionEl.click()

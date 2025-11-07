@@ -17,6 +17,6 @@ VARIANTS.forEach(variant => {
     await triggerEl.hover()
     await waitForChanges(page)
 
-    await expect(page).toHaveScreenshot(image(`${variant}`), { maxDiffPixelRatio: 0.02 })
+    await expect(page).toHaveScreenshot(image(`${variant}`))
   })
 })

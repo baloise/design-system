@@ -18,7 +18,7 @@ test('basic', async ({ page }) => {
 
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('basic-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('basic-open'))
 
   const firstOption = el.getByTestId('bal-select-option').nth(1)
   await firstOption.click()
@@ -27,7 +27,7 @@ test('basic', async ({ page }) => {
 
   await inputEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('selected-open'), { maxDiffPixelRatio: 0.02 })
+  await expect(page).toHaveScreenshot(image('selected-open'))
 })
 
 VARIANTS.forEach(variant => {

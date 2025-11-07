@@ -12,6 +12,6 @@ test.beforeEach(async ({ page }) => {
 
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
-    await expect(page).toHaveScreenshot(image(`${variant}`), { maxDiffPixelRatio: 0.02 })
+    await expect(page).toHaveScreenshot(image(`${variant}`))
   })
 })
