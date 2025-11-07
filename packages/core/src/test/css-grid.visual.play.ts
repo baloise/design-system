@@ -1,0 +1,27 @@
+import { expect, screenshot, test } from '@baloise/ds-playwright'
+
+const VARIANTS = [
+  'basic',
+  'column-sizes',
+  'column-offset',
+  'rows',
+  'nested',
+  'space',
+  'breakpoint',
+  'vertical-alignment',
+  'horizontal-alignment',
+  'stratch',
+]
+
+const image = screenshot('css-grid')
+
+test.beforeEach('Setup', async ({ page }) => {
+  await page.setupVisualTest(`/test/css-grid.visual.html`, 'CSS')
+})
+
+VARIANTS.forEach(variant => {
+  test(variant, async ({ page }) => {
+    const el = page.getByTestId(variant)
+    await expect(el).toHaveScreenshot(image(`${variant}`))
+  })
+})

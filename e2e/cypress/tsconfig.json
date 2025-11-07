@@ -9,5 +9,5 @@
     "esModuleInterop": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../../packages/core/src/test/theme-compact.visual.cy.ts"]
 }

@@ -7,10 +7,12 @@ import {
   PlaywrightWorkerOptions,
   TestType,
 } from '@playwright/test'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import { a11y } from './functions/a11y'
-import { BalPage, BalPageOptions } from './types'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
+import { BalPage, BalPageOptions } from './types'
 
 export { expect } from '@playwright/test'
 
@@ -49,9 +51,57 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   page.locator = (selector: string, options?: LocatorOptions) => locator(page, originalLocator, selector, options)
 
   // Custom adapter methods
-  page.mount = (html: string) => mount(page, html, test.info())
-  page.waitForChanges = (timeoutMs?: number) => waitForChanges(page, timeoutMs)
-  page.spyOnEvent = (eventName: string) => spyOnEvent(page, eventName)
+  page.mount = (html: string) => baseTest.step('mount', async () => mount(page, html, test.info()))
+
+  page.waitForChanges = (timeoutMs?: number) =>
+    baseTest.step('waitForChanges', async () => waitForChanges(page, timeoutMs))
+
+  page.spyOnEvent = (eventName: string) =>
+    baseTest.step(`spyOnEvent ${eventName}`, async () => spyOnEvent(page, eventName))
+
+  page.setupVisualTest = async (url: string, hasLCP = 'Component') => {
+    // Intercept font requests and serve local fonts for consistent, fast testing
+    await page.route('**/fonts/**/*.woff2', async route => {
+      const url = route.request().url()
+      const fontName = url.split('/').pop()
+
+      if (fontName) {
+        try {
+          // Resolve font path from workspace root (go up from packages/core to root)
+          const workspaceRoot = join(process.cwd(), '..', '..')
+          const fontPath = join(workspaceRoot, 'packages', 'fonts', 'assets', fontName)
+          const fontBuffer = readFileSync(fontPath)
+
+          await route.fulfill({
+            status: 200,
+            contentType: 'font/woff2',
+            body: fontBuffer,
+          })
+        } catch {
+          await route.continue()
+        }
+      } else {
+        await route.continue()
+      }
+    })
+
+    await page.goto(url, { waitUntil: 'commit' })
+    await baseTest.step('wait for changes', async () => waitForChanges(page))
+
+    if (hasLCP === 'Component') {
+      await baseTest.step('wait for last content paint', async () => {
+        await page.waitForFunction(
+          () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+          {},
+          { timeout: 5000 },
+        )
+      })
+    }
+
+    await baseTest.step('wait for fonts', async () => {
+      await page.evaluate(() => document.fonts.ready)
+    })
+  }
 
   // Custom event behavior
   await initPageEvents(page)

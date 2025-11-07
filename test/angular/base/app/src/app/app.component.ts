@@ -79,8 +79,8 @@ export interface UpdateControl {
             <bal-button elementType="submit" [disabled]="!myForm.valid">Submit</bal-button>
           </div>
 
-          <pre data-test="result">{{ myForm.value | json }}</pre>
-          <pre data-test="result-modal">{{ modalData | json }}</pre>
+          <pre data-testid="result">{{ myForm.value | json }}</pre>
+          <pre data-testid="result-modal">{{ modalData | json }}</pre>
         </form>
         <bal-button (click)="openModal()">Open Modal</bal-button>
       </main>

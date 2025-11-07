@@ -490,7 +490,7 @@ export class Dropdown
               .modifier(theme + '-expanded')
               .class(this.isExpanded && hasTheme),
           }}
-          data-test="bal-dropdown-trigger"
+          data-testid="bal-dropdown-trigger"
           onClick={ev => this.eventsUtil.handleClick(ev)}
         >
           <span
