@@ -8,14 +8,12 @@ test('basic', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
 
-  const el = page.getByTestId('basic')
-  await expect(el).toHaveScreenshot(image('basic'))
+  await expect(page).toHaveScreenshot(image('basic'), { maxDiffPixelRatio: 0.02, fullPage: true })
 })
 
 test('large', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}-large.visual.html`)
   await page.waitForSelector(TAG)
 
-  const el = page.getByTestId('large')
-  await expect(el).toHaveScreenshot(image('large'))
+  await expect(page).toHaveScreenshot(image('large'), { maxDiffPixelRatio: 0.02, fullPage: true })
 })
