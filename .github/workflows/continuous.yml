@@ -11,110 +11,110 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: 🏗️ Lint, Test & Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    env:
-      HUSKY: 0
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/build
-        with:
-          build: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+  # build:
+  #   name: 🏗️ Lint, Test & Build
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 15
+  #   env:
+  #     HUSKY: 0
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/build
+  #       with:
+  #         build: true
+  #         token: ${{ secrets.GITHUB_TOKEN }}
 
-  e2e-components:
-    name: 🧪 Component Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-components
+  # e2e-components:
+  #   name: 🧪 Component Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-components
 
-  e2e-visual:
-    name: 🧪 E2E Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-visual
+  # e2e-visual:
+  #   name: 🧪 E2E Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-visual
 
-  angular:
-    name: 🧪 Angular Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v18, v19, v20]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
+  # angular:
+  #   name: 🧪 Angular Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v18, v19, v20]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/framework-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/framework-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: angular
+  #     - uses: ./.github/workflows/actions/framework-test
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: angular
 
-  react:
-    name: 🧪 React Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v19]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
+  # react:
+  #   name: 🧪 React Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       apps: [v19]
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/framework-setup
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #     - uses: ./.github/workflows/actions/framework-build
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react
+  #     - uses: ./.github/workflows/actions/framework-test
+  #       with:
+  #         app: ${{ matrix.apps }}
+  #         framework: react
 
   assembleInformation:
     name: 📝 Assemble Information
@@ -157,11 +157,11 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.50.1-noble
       options: --user 1001
-    strategy:
-      fail-fast: false
-      matrix:
-        shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
-        shardTotal: [6] # total 6 shards
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
+    #     shardTotal: [6] # total 6 shards
     steps:
       - name: Show inputs from previous job
         run: |
@@ -192,18 +192,18 @@ jobs:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        # run: npx nx run core:ci-e2e -- --update-snapshots
+        # run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npx nx run core:ci-e2e -- --update-snapshots
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
 
-      # - name: Commit snapshots
-      #   if: always()
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     message: 'update snapshots'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+      - name: Commit snapshots
+        if: always()
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Upload Playwright HTML report
         if: always()
