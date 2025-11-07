@@ -7,6 +7,8 @@ import {
   PlaywrightWorkerOptions,
   TestType,
 } from '@playwright/test'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import { a11y } from './functions/a11y'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
@@ -58,7 +60,41 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
     baseTest.step(`spyOnEvent ${eventName}`, async () => spyOnEvent(page, eventName))
 
   page.setupVisualTest = async (url: string, hasLCP = 'Component') => {
+    // Intercept font requests and serve local fonts for consistent, fast testing
+    await page.route('**/fonts/**/*.woff2', async route => {
+      const url = route.request().url()
+      const fontName = url.split('/').pop()
+
+      console.log('2 Font requested:', fontName)
+
+      if (fontName) {
+        try {
+          // Resolve font path from workspace root (go up from packages/core to root)
+          const workspaceRoot = join(process.cwd(), '..', '..')
+          const fontPath = join(workspaceRoot, 'packages', 'fonts', 'assets', fontName)
+          console.log('Try to READ FONT FROM:', fontPath)
+          const fontBuffer = readFileSync(fontPath)
+          console.log('READ FONT FROM:', fontPath)
+
+          await route.fulfill({
+            status: 200,
+            contentType: 'font/woff2',
+            body: fontBuffer,
+          })
+          console.log('fulfilled font request with local file')
+        } catch (e) {
+          // If local font not found, continue with original request
+          console.log('catch - continue original font request for', e)
+          await route.continue()
+        }
+      } else {
+        console.log('catch - else')
+        await route.continue()
+      }
+    })
+
     await page.goto(url, { waitUntil: 'commit' })
+    await baseTest.step('wait for changes', async () => waitForChanges(page))
 
     if (hasLCP === 'Component') {
       await baseTest.step('wait for last content paint', async () => {
@@ -70,7 +106,9 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
       })
     }
 
-    await baseTest.step('wait for changes', async () => waitForChanges(page))
+    await baseTest.step('wait for fonts', async () => {
+      await page.evaluate(() => document.fonts.ready)
+    })
   }
 
   // Custom event behavior
