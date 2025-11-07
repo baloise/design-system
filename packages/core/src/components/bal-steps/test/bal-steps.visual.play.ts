@@ -5,7 +5,7 @@ const VARIANTS = ['steps', 'steps-links', 'steps-with-four', 'light-blue', 'purp
 
 const image = screenshot(TAG)
 
-test.beforeAll('Setup', async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector(TAG)
   await waitForChanges(page)

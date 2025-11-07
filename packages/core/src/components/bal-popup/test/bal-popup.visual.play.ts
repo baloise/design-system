@@ -4,7 +4,7 @@ const TAG = 'bal-popup'
 
 const image = screenshot(TAG)
 
-test.beforeAll('Setup', async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}.visual.html`)
   await page.waitForSelector('bal-button')
   await waitForChanges(page)

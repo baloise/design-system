@@ -5,7 +5,7 @@ const VARIANTS = ['horizontal', 'horizontal-long-label', 'horizontal-with-hint',
 
 const image = screenshot(TAG)
 
-test.beforeAll('Setup', async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}-horizontal.visual.html`)
   await page.waitForSelector(TAG)
   await waitForChanges(page)

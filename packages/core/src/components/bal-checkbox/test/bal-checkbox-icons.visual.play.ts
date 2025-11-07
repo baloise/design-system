@@ -5,7 +5,7 @@ const VARIANTS = ['check', 'switch']
 
 const image = screenshot(TAG)
 
-test.beforeAll('Setup', async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   await page.goto(`/components/${TAG}/test/${TAG}-icons.visual.html`)
   await page.waitForSelector('bal-check')
   await waitForChanges(page)

@@ -25,7 +25,7 @@ const socialMediaChannelsMock = [
   { link: 'https://www.youtube.com/user/BaloiseGroup', label: 'YouTube' },
 ]
 
-test.beforeAll('Setup', async ({ page }) => {
+test.beforeEach('Setup', async ({ page }) => {
   // Mock external API responses using Playwright routing
   await page.route('https://www.baloise.ch/app-integration/v2/ch/footer/de.json', route =>
     route.fulfill({
