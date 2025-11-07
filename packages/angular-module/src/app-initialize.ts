@@ -8,7 +8,7 @@ import type { BaloiseDesignSystemAngularConfig } from '@baloise/ds-angular-commo
 import { raf } from '@baloise/ds-angular-common'
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
-  return async (): Promise => {
+  return async (): Promise<void> => {
     const win: Window | undefined = doc.defaultView as any
 
     if (win && typeof (window as any) !== 'undefined') {

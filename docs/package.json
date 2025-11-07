@@ -14,6 +14,7 @@
     "@storybook/html": "~7.6.10",
     "@storybook/html-vite": "~7.6.10",
     "@storybook/manager-api": "~7.6.10",
+    "codesandbox": "~2.2.3",
     "js-beautify": "~1.14.11",
     "lodash": "~4.17.19",
     "react": "~18.3.1",
