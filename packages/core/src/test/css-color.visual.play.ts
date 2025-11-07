@@ -21,7 +21,7 @@ useDesktop()
 const image = screenshot('css-color')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-color.visual.html`)
+  await page.setupVisualTest(`/test/css-color.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

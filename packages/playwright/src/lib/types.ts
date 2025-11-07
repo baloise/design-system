@@ -35,7 +35,7 @@ export interface BalPage extends Page {
   locator(selector: string, options?: LocatorOptions): E2ELocator
   goto(url: string, options?: BalPageOptions): Promise<null | Response>
   mount(html: string): Promise<void>
-  setupVisualTest(url: string): Promise<void>
+  setupVisualTest(url: string, type?: 'Component' | 'CSS'): Promise<void>
   waitForChanges(timeoutMs?: number): Promise<void>
   spyOnEvent(eventName: string): Promise<EventSpy>
   _e2eEventsIds: number

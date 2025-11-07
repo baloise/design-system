@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-radius')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-radius.visual.html`)
+  await page.setupVisualTest(`/test/css-radius.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

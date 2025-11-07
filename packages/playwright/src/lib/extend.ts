@@ -50,19 +50,26 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
 
   // Custom adapter methods
   page.mount = (html: string) => baseTest.step('mount', async () => mount(page, html, test.info()))
+
   page.waitForChanges = (timeoutMs?: number) =>
     baseTest.step('waitForChanges', async () => waitForChanges(page, timeoutMs))
+
   page.spyOnEvent = (eventName: string) =>
     baseTest.step(`spyOnEvent ${eventName}`, async () => spyOnEvent(page, eventName))
-  page.setupVisualTest = async (url: string) => {
+
+  page.setupVisualTest = async (url: string, hasLCP = 'Component') => {
     await page.goto(url, { waitUntil: 'commit' })
-    await baseTest.step('wait for last content paint', async () =>
-      page.waitForFunction(
-        () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
-        {},
-        { timeout: 5000 },
-      ),
-    )
+
+    if (hasLCP === 'Component') {
+      await baseTest.step('wait for last content paint', async () => {
+        await page.waitForFunction(
+          () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+          {},
+          { timeout: 5000 },
+        )
+      })
+    }
+
     await baseTest.step('wait for changes', async () => waitForChanges(page))
   }
 

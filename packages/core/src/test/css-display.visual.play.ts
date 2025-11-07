@@ -12,7 +12,7 @@ const VARIANTS = [
 const image = screenshot('css-display')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-display.visual.html`)
+  await page.setupVisualTest(`/test/css-display.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-structure')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-structure.visual.html`)
+  await page.setupVisualTest(`/test/css-structure.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

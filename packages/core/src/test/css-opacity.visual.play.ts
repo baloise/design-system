@@ -7,7 +7,7 @@ useDesktop()
 const image = screenshot('css-opacity')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-opacity.visual.html`)
+  await page.setupVisualTest(`/test/css-opacity.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

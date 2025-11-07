@@ -20,7 +20,7 @@ const VARIANTS = [
 const image = screenshot('css-spacing')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-spacing.visual.html`)
+  await page.setupVisualTest(`/test/css-spacing.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

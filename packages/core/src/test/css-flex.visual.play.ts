@@ -14,7 +14,7 @@ const VARIANTS = [
 const image = screenshot('css-flex')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-flex.visual.html`)
+  await page.setupVisualTest(`/test/css-flex.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {

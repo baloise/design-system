@@ -17,7 +17,7 @@ useDesktop()
 const image = screenshot('css-border')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/test/css-border.visual.html`)
+  await page.setupVisualTest(`/test/css-border.visual.html`, 'CSS')
 })
 
 VARIANTS.forEach(variant => {
