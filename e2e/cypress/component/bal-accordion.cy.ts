@@ -1,15 +1,13 @@
-import { Components } from '../support/utils'
-import { selectors } from '../support/utils'
+import { Components, selectors } from '../support/utils'
 
 describe('bal-accordion', () => {
-  context('v2', () => {
-    context('basic trigger', () => {
-      beforeEach(() => {
-        const onClickSpy = cy.spy().as('click')
-        const onBalChangeSpy = cy.spy().as('balChange')
+  context('basic trigger', () => {
+    beforeEach(() => {
+      const onClickSpy = cy.spy().as('click')
+      const onBalChangeSpy = cy.spy().as('balChange')
 
-        cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
-          `
+      cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
+        `
         <bal-accordion>
           <bal-accordion-summary>
             <bal-stack>
@@ -22,42 +20,42 @@ describe('bal-accordion', () => {
           <bal-accordion-details>TEST CONTENT</bal-accordion-details>
         </bal-accordion>
         `,
-          {
-            props: {},
-            events: {
-              click: onClickSpy,
-              balChange: onBalChangeSpy,
-            },
+        {
+          props: {},
+          events: {
+            click: onClickSpy,
+            balChange: onBalChangeSpy,
           },
-        )
-      })
-
-      it('should have labels', () => {
-        cy.get(selectors.accordion.summary).contains('SUMMARY LABEL')
-        cy.get(selectors.accordion.trigger).click()
-        cy.get(selectors.accordion.details).contains('TEST CONTENT')
-      })
-
-      it('should call balChange when open ', () => {
-        cy.get(selectors.accordion.trigger).click()
-        cy.get('@balChange').should('have.been.calledOnce')
-        cy.get('@balChange').shouldHaveEventDetail(true)
-
-        cy.get('bal-accordion').waitForComponents()
-
-        cy.get(selectors.accordion.trigger).click()
-        cy.get('@balChange').should('have.been.calledTwice')
-        cy.get('@balChange').shouldHaveEventDetail(false, 1)
-      })
+        },
+      )
     })
 
-    context('summary trigger', () => {
-      beforeEach(() => {
-        const onClickSpy = cy.spy().as('click')
-        const onBalChangeSpy = cy.spy().as('balChange')
+    it('should have labels', () => {
+      cy.get(selectors.accordion.summary).contains('SUMMARY LABEL')
+      cy.get(selectors.accordion.trigger).click()
+      cy.get(selectors.accordion.details).contains('TEST CONTENT')
+    })
 
-        cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
-          `
+    it('should call balChange when open ', () => {
+      cy.get(selectors.accordion.trigger).click()
+      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').shouldHaveEventDetail(true)
+
+      cy.get('bal-accordion').waitForComponents()
+
+      cy.get(selectors.accordion.trigger).click()
+      cy.get('@balChange').should('have.been.calledTwice')
+      cy.get('@balChange').shouldHaveEventDetail(false, 1)
+    })
+  })
+
+  context('summary trigger', () => {
+    beforeEach(() => {
+      const onClickSpy = cy.spy().as('click')
+      const onBalChangeSpy = cy.spy().as('balChange')
+
+      cy.mount<Components.BalAccordion, HTMLBalAccordionElementEventMap>(
+        `
         <bal-accordion>
           <bal-accordion-summary trigger>
             <bal-stack>
@@ -69,43 +67,42 @@ describe('bal-accordion', () => {
           </bal-accordion-summary>
           <bal-accordion-details>TEST CONTENT</bal-accordion-details>
         </bal-accordion>`,
-          {
-            props: {},
-            events: {
-              click: onClickSpy,
-              balChange: onBalChangeSpy,
-            },
+        {
+          props: {},
+          events: {
+            click: onClickSpy,
+            balChange: onBalChangeSpy,
           },
-        )
-      })
+        },
+      )
+    })
 
-      it('should have labels', () => {
-        cy.get(selectors.accordion.summary).contains('SUMMARY LABEL')
-        cy.get(selectors.accordion.summary).click()
-        cy.get(selectors.accordion.details).contains('TEST CONTENT')
-      })
+    it('should have labels', () => {
+      cy.get(selectors.accordion.summary).contains('SUMMARY LABEL')
+      cy.get(selectors.accordion.summary).click()
+      cy.get(selectors.accordion.details).contains('TEST CONTENT')
+    })
 
-      it('should call balChange when open ', () => {
-        cy.get(selectors.accordion.summary).click()
-        cy.get('@balChange').should('have.been.calledOnce')
-        cy.get('@balChange').shouldHaveEventDetail(true)
+    it('should call balChange when open ', () => {
+      cy.get(selectors.accordion.summary).click()
+      cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balChange').shouldHaveEventDetail(true)
 
-        cy.get('bal-accordion').waitForComponents()
+      cy.get('bal-accordion').waitForComponents()
 
-        cy.get(selectors.accordion.summary).click()
-        cy.get('@balChange').should('have.been.calledTwice')
-        cy.get('@balChange').shouldHaveEventDetail(false, 1)
+      cy.get(selectors.accordion.summary).click()
+      cy.get('@balChange').should('have.been.calledTwice')
+      cy.get('@balChange').shouldHaveEventDetail(false, 1)
 
-        cy.get(selectors.accordion.trigger).click()
-        cy.get('@balChange').should('have.callCount', 3)
-        cy.get('@balChange').shouldHaveEventDetail(true, 2)
+      cy.get(selectors.accordion.trigger).click()
+      cy.get('@balChange').should('have.callCount', 3)
+      cy.get('@balChange').shouldHaveEventDetail(true, 2)
 
-        cy.get('bal-accordion').waitForComponents()
+      cy.get('bal-accordion').waitForComponents()
 
-        cy.get(selectors.accordion.trigger).click()
-        cy.get('@balChange').should('have.callCount', 4)
-        cy.get('@balChange').shouldHaveEventDetail(false, 3)
-      })
+      cy.get(selectors.accordion.trigger).click()
+      cy.get('@balChange').should('have.callCount', 4)
+      cy.get('@balChange').shouldHaveEventDetail(false, 3)
     })
   })
 })
