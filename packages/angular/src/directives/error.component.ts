@@ -1,27 +1,25 @@
 /* eslint-disable @angular-eslint/directive-class-suffix */
-import { AfterViewInit, ChangeDetectorRef, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
+import { AfterViewInit, ChangeDetectorRef, Component, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer, FormGroup } from '@angular/forms'
 import { BehaviorSubject } from 'rxjs'
 
 import type { BaloiseDesignSystemAngularConfig } from '../utils/config'
 import { BalTokenConfig } from '../utils/token'
 import { raf } from '../utils/utils'
+import { CommonModule } from '@angular/common'
 
-// @Component({
-//   selector: 'bal-ng-error',
-//   template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
-//   styles: [
-//     `
-//       :host {
-//         display: inline-block;
-//       }
-//     `,
-//   ],
-// })
-
-@Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
+@Component({
   selector: 'bal-ng-error',
+  template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
+  standalone: true,
+  imports: [CommonModule],
+  styles: [
+    `
+      :host {
+        display: inline-block;
+      }
+    `,
+  ],
 })
 export class BalNgErrorComponent implements AfterViewInit {
   /**
