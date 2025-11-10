@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "src/index.ts"
   },
-  "allowedNonPeerDependencies": ["@baloise/ds-core", "@baloise/ds-angular-common"]
+  "allowedNonPeerDependencies": ["@baloise/ds-core"]
 }

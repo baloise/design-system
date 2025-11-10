@@ -3,8 +3,8 @@ import { NgZone } from '@angular/core'
 import type { BalPlatformConfig } from '@baloise/ds-core/components'
 import { initializeBaloiseDesignSystem } from '@baloise/ds-core/components'
 
-import { raf } from '@baloise/ds-angular-common'
-import type { BaloiseDesignSystemAngularConfig } from '@baloise/ds-angular-common'
+import { BaloiseDesignSystemAngularConfig } from './utils/config'
+import { raf } from './utils/utils'
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
   return async (): Promise<void> => {

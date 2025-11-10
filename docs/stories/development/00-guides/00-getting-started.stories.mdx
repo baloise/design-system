@@ -1,18 +1,18 @@
-import { Meta, Markdown } from '@storybook/addon-docs'
+import { Markdown, Meta } from '@storybook/addon-docs'
 import {
-  PackageTable,
+  AngularFramework,
   Banner,
-  Lead,
+  Code,
+  CodeSandbox,
   Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
   LinkCard,
   LinkCards,
-  CodeSandbox,
-  InfoQuote,
-  WarningQuote,
-  Code,
-  AngularFramework,
-  HTMLFramework,
+  PackageTable,
   ReactFramework,
+  WarningQuote,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Getting Started" />
@@ -71,62 +71,6 @@ nx g @baloise/ds-devkit:ng-add
 ## Manual Installation
 
 Continue here for the manual installation guide without schematics.
-
-### Zone.js
-
-Configuring zone.js is essential for enhancing the performance of the web components.
-
-<InfoQuote>
-  Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
-</InfoQuote>
-
-1. To make these changes, you need to create a **zone-flags.ts** file, such as the following.
-
-<Code
-  language="javascript"
-  noPreview
-  code={`
-// disable patching requestAnimationFrame
-(window as any).__Zone_disable_requestAnimationFrame = true;
-
-// disable patching custom elements (web components)
-(window as any).\_\_Zone_disable_customElements = true;
-`}
-/>
-
-2. Next, import zone-flags before you import zone.js in the **polyfills.ts**:
-
-<Code
-  language="typescript"
-  noPreview
-  code={`
-/***************************************************************************************************
- * Zone JS is required by default for Angular itself.
- */
-import './zone-flags'
-import 'zone.js' // Included with Angular CLI.
-`}
-/>
-
-3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
-4. List the `src/polyfills.ts` as a file in the `tsconfig.app.json`.
-
-### Angular Config
-
-With Angular Version 17, Stencil no longer handles the lazy loading of the Baloise Design System.
-Angular and Vite will now take care of this process. Consequently, there will be an initial increase in the bundle size.
-
-Open the `angular.json` file and make the following adjustment to `architect.build.configurations.production.budgets`:
-
-```json
-{
-  "type": "initial",
-  "maximumWarning": "3mb",
-  "maximumError": "5mb"
-}
-```
-
-### Installation
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
 
@@ -236,7 +180,7 @@ For each angular sub module you need to import the `BaloiseDesignSystemModule` t
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { BalButton, BalHeading, BalLayoutBundle, provideBaloiseDesignSystem } from '@baloise/ds-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -244,7 +188,10 @@ import { AppComponent } from './app.component'
   imports: [
     BrowserModule,
     // Provide all components and value accessors to the app module.
-    BaloiseDesignSystemModule.forRoot(),
+    provideBaloiseDesignSystem(),
+    ...BalLayoutBundle,
+    BalHeading,
+    BalButton,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -275,25 +222,6 @@ Add the `bal-app` to your `app.component.html` root element.
     <!-- Footer content -->
   </bal-footer>
 </bal-app>
-`}
-/>
-
-#### Shared Modules
-
-It is recommended to import the `BaloiseDesignSystemModule` in your `SharedModule` to provide access to the components and value accessors.
-
-<Code
-  language="typescript"
-  noPreview
-  code={`
-const sharedModules = [CommonModule, FormsModule, ReactiveFormsModule, BaloiseDesignSystemModule]
-
-@NgModule({
-declarations: [],
-imports: [...sharedModules],
-exports: [...sharedModules],
-})
-export class SharedModule {}
 `}
 />
 

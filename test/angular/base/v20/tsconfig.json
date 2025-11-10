@@ -22,7 +22,6 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@baloise/ds-angular-common": ["src/generated/common"],
       "@baloise/ds-angular": ["src/generated/angular"]
     }
   },

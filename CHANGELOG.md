@@ -731,9 +731,7 @@
   | Old Package Name                                       |       | New Package Name             |
   | :----------------------------------------------------- | :---: | :--------------------------- |
   | `@baloise/design-system-components`                    | **→** | `@baloise/ds-core`           |
-  | `@baloise/design-system-components-angular`            | **→** | `@baloise/ds-angular-module` |
   | `@baloise/design-system-components-angular/standalone` | **→** | `@baloise/ds-angular`        |
-  | `@baloise/design-system-components-angular/legacy`     | **→** | `@baloise/ds-angular-legacy` |
   | `@baloise/design-system-components-react`              | **→** | `@baloise/ds-react`          |
   | `@baloise/design-system-components-table`              | **→** | `@baloise/ds-table`          |
   | `@baloise/design-system-cli`                           | **→** | `@baloise/ds-devkit`         |

@@ -1,10 +1,9 @@
 import { Inject, Injectable } from '@angular/core'
 
-import type { BalToastController, BalToastOptions, Components } from '@baloise/ds-core/components'
-
+import type { BalToastController, BalToastOptions, Components } from '@baloise/ds-core'
 import { defineCustomElement as defineNoticeElement } from '@baloise/ds-core/components/bal-notices'
 import { defineCustomElement } from '@baloise/ds-core/components/bal-toast'
-import { BalTokenToast } from '@baloise/ds-angular-common'
+import { BalTokenToast } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',

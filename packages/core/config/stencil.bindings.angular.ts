@@ -65,13 +65,3 @@ export const AngularGenerator = () =>
     outputType: 'standalone',
   })
 
-export const AngularModuleGenerator = () =>
-  angularOutputTarget({
-    componentCorePackage: '@baloise/ds-core',
-    directivesMetaFile: '../angular-module/src/generated/meta.ts',
-    directivesProxyFile: '../angular-module/src/generated/proxies.ts',
-    directivesArrayFile: '../angular-module/src/generated/proxies-list.ts',
-    valueAccessorConfigs: angularValueAccessorBindings,
-    excludeComponents: [...docComponents],
-    outputType: 'module',
-  })

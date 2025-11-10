@@ -5,7 +5,7 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
-import { AngularGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
@@ -185,7 +185,6 @@ export const config: Config = {
           },
           ReactGenerator(),
           AngularGenerator(),
-          AngularModuleGenerator(),
         ]
       : []),
   ],

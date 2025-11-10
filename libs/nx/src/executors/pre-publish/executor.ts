@@ -17,8 +17,6 @@ export default async function runExecutor(options: PrePublishExecutorSchema) {
       'maps',
       'testing',
       'angular',
-      'angular-common',
-      'angular-module',
     ]
 
     for (let index = 0; index < packages.length; index++) {
