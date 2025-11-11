@@ -77,7 +77,7 @@ export const config: Config = {
      * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes the Stencil docs for the flag} are the
      * default behavior (slated for a future Stencil major version).
      */
-    experimentalSlotFixes: true,
+    experimentalSlotFixes: false,
     /**
      * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
      * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
