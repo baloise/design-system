@@ -1,4 +1,4 @@
-import { getParameters } from 'codesandbox/lib/api/define'
+// import { getParameters } from 'codesandbox/lib/api/define'
 import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface AngularProject {
@@ -67,54 +67,55 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
     }
   }
 
-  return getParameters({
-    files: {
-      'package.json': {
-        isBinary: false,
-        content: package_json,
-      },
-      'tsconfig.json': {
-        isBinary: false,
-        content: tsconfig_json,
-      },
-      'tsconfig.app.json': {
-        isBinary: false,
-        content: tsconfig_app_json,
-      },
-      'angular.json': {
-        isBinary: false,
-        content: angular_json,
-      },
-      'src/app/app.ts': {
-        isBinary: false,
-        content: isTryOnlineProject
-          ? src_app_app_hello_world_ts
-          : project.fullscreen
-            ? src_app_app_fullscreen_ts
-            : src_app_app_basic_ts,
-      },
-      // 'src/app/app.component.ts': {
-      //   isBinary: false,
-      //   content: src_app_app_component_ts,
-      // },
-      'src/app/app.config.ts': {
-        isBinary: false,
-        content: src_app_app_config_ts,
-      },
-      'src/index.html': {
-        isBinary: false,
-        content: src_index_html,
-      },
-      'src/main.ts': {
-        isBinary: false,
-        content: src_main_ts,
-      },
-      'src/styles.scss': {
-        isBinary: false,
-        content: src_styles_scss,
-      },
-      ...(exampleFiles || {}),
-      ...secondComponent,
-    },
-  })
+  return ''
+  // getParameters({
+  //   files: {
+  //     'package.json': {
+  //       isBinary: false,
+  //       content: package_json,
+  //     },
+  //     'tsconfig.json': {
+  //       isBinary: false,
+  //       content: tsconfig_json,
+  //     },
+  //     'tsconfig.app.json': {
+  //       isBinary: false,
+  //       content: tsconfig_app_json,
+  //     },
+  //     'angular.json': {
+  //       isBinary: false,
+  //       content: angular_json,
+  //     },
+  //     'src/app/app.ts': {
+  //       isBinary: false,
+  //       content: isTryOnlineProject
+  //         ? src_app_app_hello_world_ts
+  //         : project.fullscreen
+  //           ? src_app_app_fullscreen_ts
+  //           : src_app_app_basic_ts,
+  //     },
+  //     // 'src/app/app.component.ts': {
+  //     //   isBinary: false,
+  //     //   content: src_app_app_component_ts,
+  //     // },
+  //     'src/app/app.config.ts': {
+  //       isBinary: false,
+  //       content: src_app_app_config_ts,
+  //     },
+  //     'src/index.html': {
+  //       isBinary: false,
+  //       content: src_index_html,
+  //     },
+  //     'src/main.ts': {
+  //       isBinary: false,
+  //       content: src_main_ts,
+  //     },
+  //     'src/styles.scss': {
+  //       isBinary: false,
+  //       content: src_styles_scss,
+  //     },
+  //     ...(exampleFiles || {}),
+  //     ...secondComponent,
+  //   },
+  // })
 }

@@ -1,4 +1,4 @@
-import { getParameters } from 'codesandbox/lib/api/define'
+// import { getParameters } from 'codesandbox/lib/api/define'
 import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface ReactProject {
@@ -53,33 +53,34 @@ export default function Example() {
     }
   }
 
-  return getParameters({
-    files: {
-      'package.json': {
-        isBinary: false,
-        content: package_json,
-      },
-      'tsconfig.json': {
-        isBinary: false,
-        content: tsconfig_json,
-      },
-      'public/index.html': {
-        isBinary: false,
-        content: public_index,
-      },
-      'src/index.tsx': {
-        isBinary: false,
-        content: src_index_tsx,
-      },
-      'src/react-app-env.d.ts': {
-        isBinary: false,
-        content: src_react_app_env_d_ts,
-      },
-      'src/App.tsx': {
-        isBinary: false,
-        content: reactApp,
-      },
-      ...(exampleFiles || {}),
-    },
-  })
+  return ''
+  // return getParameters({
+  //   files: {
+  //     'package.json': {
+  //       isBinary: false,
+  //       content: package_json,
+  //     },
+  //     'tsconfig.json': {
+  //       isBinary: false,
+  //       content: tsconfig_json,
+  //     },
+  //     'public/index.html': {
+  //       isBinary: false,
+  //       content: public_index,
+  //     },
+  //     'src/index.tsx': {
+  //       isBinary: false,
+  //       content: src_index_tsx,
+  //     },
+  //     'src/react-app-env.d.ts': {
+  //       isBinary: false,
+  //       content: src_react_app_env_d_ts,
+  //     },
+  //     'src/App.tsx': {
+  //       isBinary: false,
+  //       content: reactApp,
+  //     },
+  //     ...(exampleFiles || {}),
+  //   },
+  // })
 }
