@@ -14,6 +14,6 @@
   "type": "module",
   "types": "./index.esm.d.ts",
   "devDependencies": {
-    "@types/google.maps": "~3.54.10"
+    "@types/google.maps": "~3.58.1"
   }
 }
