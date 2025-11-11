@@ -38,13 +38,7 @@
     "contactjs": "2.1.7",
     "filesize.js": "~2.0.0",
     "dompurify": "~3.2.4",
-    "lodash.camelcase": "~4.3.0",
-    "lodash.isempty": "~4.4.0",
-    "lodash.isnan": "~3.0.2",
-    "lodash.isnil": "~4.0.0",
-    "lodash.padstart": "~4.6.1",
-    "lodash.upperfirst": "~4.3.1",
-    "lodash.isequal": "~4.5.0",
+    "lodash": "~4.17.21",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
     "luxon": "~3.4.3",
@@ -58,7 +52,8 @@
     "@baloise/ds-favicons": "19.8.3",
     "compression": "~1.7.4",
     "express": "~4.18.2",
-    "serve-index": "~1.9.1"
+    "serve-index": "~1.9.1",
+    "@types/luxon": "~3.4.2"
   },
   "sideEffects": false
 }

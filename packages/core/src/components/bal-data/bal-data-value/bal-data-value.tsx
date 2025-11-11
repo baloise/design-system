@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isNil'
 import { stopEventBubbling } from 'packages/core/src/utils/form-input'
 import { BEM } from '../../../utils/bem'
 

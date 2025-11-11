@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import isNil from 'lodash/isNil'
 import { areArraysEqual } from '../../utils/array'
-import isNil from 'lodash.isnil'
-import { DropdownComponent } from './component'
 import { BEM } from '../bem'
-import { BalOption } from './option'
 import { waitAfterFramePaint } from '../helpers'
+import { DropdownComponent } from './component'
+import { BalOption } from './option'
 
 export class DropdownValueUtil {
   private component!: DropdownComponent

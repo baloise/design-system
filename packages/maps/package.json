@@ -12,5 +12,8 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "type": "module",
-  "types": "./index.esm.d.ts"
+  "types": "./index.esm.d.ts",
+  "devDependencies": {
+    "@types/google.maps": "~3.54.10"
+  }
 }
