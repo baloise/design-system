@@ -10,14 +10,7 @@ export default async function runExecutor(options: PrePublishExecutorSchema) {
       .filter(dirent => dirent.isDirectory())
       .map(dirent => dirent.name)
 
-    const distDeploymentPackages = [
-      'brand-icons',
-      'icons',
-      'devkit',
-      'maps',
-      'testing',
-      'angular',
-    ]
+    const distDeploymentPackages = ['brand-icons', 'icons', 'devkit', 'maps', 'testing', 'angular']
 
     for (let index = 0; index < packages.length; index++) {
       const packageName = packages[index]
