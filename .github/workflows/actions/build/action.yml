@@ -107,13 +107,6 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'
       with:
-        name: angular-module
-        output: packages/angular-module/src/AngularModule.zip
-        paths: packages/angular-module/src/generated
-
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
         name: testing-dist
         output: packages/testing/TestingDist.zip
         paths: packages/testing/dist

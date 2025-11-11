@@ -60,12 +60,6 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
-        name: angular-module
-        path: ./packages/angular-module/src
-        filename: AngularModule.zip
-
-    - uses: ./.github/workflows/actions/download-archive
-      with:
         name: testing-dist
         path: ./packages/testing
         filename: TestingDist.zip
