@@ -1,4 +1,4 @@
-import { getParameters } from 'codesandbox/lib/api/define'
+// import { getParameters } from 'codesandbox/lib/api/define'
 import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface HtmlProject {
@@ -41,24 +41,25 @@ ${content}
 
 ${example_component}`
 
-  return getParameters({
-    files: {
-      'package.json': {
-        isBinary: false,
-        content: {
-          dependencies: {
-            '@baloise/ds-core': 'latest',
-          },
-        } as any,
-      },
-      'index.js': {
-        isBinary: false,
-        content: example_component.trim(),
-      },
-      'index.html': {
-        isBinary: false,
-        content: example_template.trim(),
-      },
-    },
-  })
+  return ''
+  // return getParameters({
+  //   files: {
+  //     'package.json': {
+  //       isBinary: false,
+  //       content: {
+  //         dependencies: {
+  //           '@baloise/ds-core': 'latest',
+  //         },
+  //       } as any,
+  //     },
+  //     'index.js': {
+  //       isBinary: false,
+  //       content: example_component.trim(),
+  //     },
+  //     'index.html': {
+  //       isBinary: false,
+  //       content: example_template.trim(),
+  //     },
+  //   },
+  // })
 }

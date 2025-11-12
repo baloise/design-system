@@ -155,7 +155,7 @@ jobs:
       HUSKY: 0
       CI: 1
     container:
-      image: mcr.microsoft.com/playwright:v1.50.1-noble
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
       options: --user 1001
     strategy:
       fail-fast: false

@@ -31,7 +31,7 @@ export class DropdownFormSubmitUtil {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.component.el)) {
       if (this.resetHandlerTimer) {
-        clearTimeout(this.resetHandlerTimer)
+        clearTimeout(this.resetHandlerTimer as any)
       }
 
       this.resetHandlerTimer = setTimeout(() => {

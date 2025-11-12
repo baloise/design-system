@@ -61,31 +61,33 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
 
   page.setupVisualTest = async (url: string, hasLCP = 'Component') => {
     // Intercept font requests and serve local fonts for consistent, fast testing
-    await page.route('**/fonts/**/*.woff2', async route => {
-      const url = route.request().url()
-      const fontName = url.split('/').pop()
+    await baseTest.step('route fonts', async () => {
+      await page.route('**/*.woff2', async route => {
+        const url = route.request().url()
+        const fontName = url.split('/').pop()
 
-      if (fontName) {
-        try {
-          // Resolve font path from workspace root (go up from packages/core to root)
-          const workspaceRoot = join(process.cwd(), '..', '..')
-          const fontPath = join(workspaceRoot, 'packages', 'fonts', 'assets', fontName)
-          const fontBuffer = readFileSync(fontPath)
+        if (fontName) {
+          try {
+            // Resolve font path from workspace root (go up from packages/core to root)
+            const workspaceRoot = join(process.cwd(), '..', '..')
+            const fontPath = join(workspaceRoot, 'packages', 'fonts', 'assets', fontName)
+            const fontBuffer = readFileSync(fontPath)
 
-          await route.fulfill({
-            status: 200,
-            contentType: 'font/woff2',
-            body: fontBuffer,
-          })
-        } catch {
+            await route.fulfill({
+              status: 200,
+              contentType: 'font/woff2',
+              body: fontBuffer,
+            })
+          } catch {
+            await route.continue()
+          }
+        } else {
           await route.continue()
         }
-      } else {
-        await route.continue()
-      }
+      })
     })
 
-    await page.goto(url, { waitUntil: 'commit' })
+    await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'commit' }))
     await baseTest.step('wait for changes', async () => waitForChanges(page))
 
     if (hasLCP === 'Component') {
