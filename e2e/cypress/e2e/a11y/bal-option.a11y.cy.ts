@@ -7,7 +7,7 @@ describe('bal-option', () => {
       it('selected', () => cy.getByTestId('selected').testA11y())
       it('focused', () => cy.getByTestId('focused').testA11y())
       it('invalid', () => cy.getByTestId('invalid').testA11y())
-      it('disabled', () => cy.getByTestId('disabled').testA11y())
+      it('disabled', () => cy.getByTestId('disabled').testA11y()
     })
   })
 })
