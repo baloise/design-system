@@ -51,7 +51,7 @@
     "@nx/vite": "22.0.3",
     "@nx/web": "22.0.3",
     "@nxkit/style-dictionary": "~6.0.0",
-    "@playwright/test": "^1.36.0",
+    "@playwright/test": "^1.55.1",
     "@stencil/core": "4.38.3",
     "@stencil/react-output-target": "1.2.0",
     "@stencil/sass": "3.0.12",
