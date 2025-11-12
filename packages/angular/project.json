@@ -4,6 +4,7 @@
   "sourceRoot": "packages/angular/src",
   "prefix": "lib",
   "projectType": "library",
+  "tags": ["scope:release", "type:package"],
   "targets": {
     "nx-release-publish": {
       "executor": "@nx/js:release-publish",
@@ -14,20 +15,23 @@
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{projectRoot}/dist"],
-      "dependsOn": [{ "projects": ["core"], "target": "build" }],
+      "dependsOn": [
+        {
+          "projects": ["core"],
+          "target": "build"
+        }
+      ],
       "options": {
-        "project": "packages/angular/ng-package.json"
+        "project": "packages/angular/ng-package.json",
+        "tsConfig": "packages/angular/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "packages/angular/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "packages/angular/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     }
-  },
-  "tags": ["scope:release", "type:package"]
+  }
 }

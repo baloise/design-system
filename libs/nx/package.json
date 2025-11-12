@@ -3,7 +3,7 @@
   "version": "19.8.3",
   "private": true,
   "dependencies": {
-    "@nx/devkit": "18.0.4",
+    "@nx/devkit": "22.0.3",
     "tslib": "~2.3.0",
     "lodash": "~4.17.21",
     "svgo": "~3.2.0",
