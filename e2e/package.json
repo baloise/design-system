@@ -26,6 +26,7 @@
   "devDependencies": {
     "jsdom": "~24.0.0",
     "typescript": "~5.4.2",
+    "vitest": "4.0.8",
     "vite": "7.2.2"
   }
 }
