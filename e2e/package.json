@@ -9,10 +9,8 @@
     "@baloise/ds-core": "19.8.3",
     "@baloise/ds-testing": "19.8.3",
     "@cypress/mount-utils": "^4.1.0",
-    "axe-core": "~4.10.2",
     "compression": "~1.8.1",
     "cypress": "~13.6.3",
-    "cypress-axe": "~1.5.0",
     "cypress-file-upload": "~5.0.8",
     "cypress-split": "~1.18.5",
     "cypress-terminal-report": "^7.2.1",
@@ -24,9 +22,10 @@
     "winston": "~3.11.0"
   },
   "devDependencies": {
+    "@types/node": "^24.10.1",
     "jsdom": "~24.0.0",
     "typescript": "~5.4.2",
-    "vitest": "4.0.8",
-    "vite": "7.2.2"
+    "vite": "7.2.2",
+    "vitest": "4.0.8"
   }
 }

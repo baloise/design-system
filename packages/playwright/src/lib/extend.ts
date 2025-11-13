@@ -87,7 +87,7 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
       })
     })
 
-    await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'commit' }))
+    await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'networkidle' }))
     await baseTest.step('wait for changes', async () => waitForChanges(page))
 
     if (hasLCP === 'Component') {
@@ -102,6 +102,21 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
 
     await baseTest.step('wait for fonts', async () => {
       await page.evaluate(() => document.fonts.ready)
+    })
+
+    await baseTest.step('wait for images', async () => {
+      await page.evaluate(async () => {
+        const imgs = Array.from(document.images)
+        await Promise.all(
+          imgs.map(img => {
+            if (img.complete) return
+            return new Promise(resolve => {
+              img.addEventListener('load', resolve)
+              img.addEventListener('error', resolve)
+            })
+          }),
+        )
+      })
     })
   }
 

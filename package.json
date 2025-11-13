@@ -65,7 +65,6 @@
     "@typescript-eslint/utils": "7.16.0",
     "@vitest/ui": "4.0.8",
     "autoprefixer": "~10.4.17",
-    "axe-core": "^4.10.2",
     "compression": "~1.8.1",
     "concurrently": "~8.2.2",
     "cspell": "~8.3.2",
