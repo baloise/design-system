@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+import { CUSTOM_ELEMENTS_SCHEMA, Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import type { Components } from '@baloise/ds-core'
 import { BalModalService, balImports } from '../design-system'
@@ -80,7 +80,7 @@ export interface UpdateControl {
           </div>
 
           <pre data-testid="result">{{ myForm.value | json }}</pre>
-          <pre data-testid="result-modal">{{ modalData | json }}</pre>
+          <pre data-testid="result-modal">{{ modalData() | json }}</pre>
         </form>
         <bal-button (click)="openModal()">Open Modal</bal-button>
       </main>
@@ -88,7 +88,7 @@ export interface UpdateControl {
   `,
 })
 export class AppComponent {
-  modalData!: any
+  modalData = signal<any>(null)
   modal!: HTMLElement & Components.BalModal
 
   myForm = new FormGroup({
@@ -138,7 +138,7 @@ export class AppComponent {
 
     // Collect the data from the modal through the dismiss event
     const { data } = await this.modal.onWillDismiss()
-    this.modalData = data
+    this.modalData.set(data)
 
     // React onDidDismiss
     await this.modal.onDidDismiss()
