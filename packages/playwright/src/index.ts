@@ -1,3 +1,4 @@
+export * from './lib/a11y'
 export * from './lib/components'
 export * from './lib/devices'
 export * from './lib/extend'
