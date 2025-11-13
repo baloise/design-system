@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node", "cypress-file-upload", "cypress-visual-regression"],
-    "typeRoots": ["node_modules/@types"],
+    "types": ["node", "cypress"],
     "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true

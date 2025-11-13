@@ -7,4 +7,3 @@ export * from './lib/page/utils'
 export * from './lib/screenshot'
 export * from './lib/test-expect'
 export * from './lib/types'
-packages/playwright/src/lib/a11y.ts
