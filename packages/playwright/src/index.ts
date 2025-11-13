@@ -1,4 +1,3 @@
-export * from './lib/a11y'
 export * from './lib/components'
 export * from './lib/devices'
 export * from './lib/extend'
@@ -8,3 +7,4 @@ export * from './lib/page/utils'
 export * from './lib/screenshot'
 export * from './lib/test-expect'
 export * from './lib/types'
+packages/playwright/src/lib/a11y.ts
