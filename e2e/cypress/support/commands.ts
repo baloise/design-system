@@ -25,25 +25,12 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import 'cypress-axe'
-
 import '../../../packages/testing/src/add-custom-commands'
 import '../../../packages/testing/src/add-override-commands'
-
-import type { RunOptions } from 'axe-core'
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      /**
-       * Opens the page on the given url, waits until the component has loaded and
-       * injects accessibility checking
-       */
-      pageA11y(url: string): Chainable<Element>
-      /**
-       * Runs the accessibility checking on the given state/page.
-       */
-      testA11y(options?: RunOptions | undefined): void
       /**
        * Custom command to spy on custom events.
        * @example cy.get('bal-button').spyEvent('balChange')
@@ -77,41 +64,6 @@ declare global {
     }
   }
 }
-
-Cypress.Commands.add('pageA11y', (url: string) => {
-  cy.visit(url)
-  cy.injectAxe()
-  cy.platform('desktop').waitForDesignSystem()
-})
-
-Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options = null) => {
-  cy.checkA11y(
-    subject as any,
-    {
-      ...options,
-      runOnly: {
-        type: 'tag',
-        values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'],
-      },
-    },
-    violations => {
-      const message = `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${
-        violations.length === 1 ? 'was' : 'were'
-      } detected`
-      cy.task('log', message)
-      // pluck specific keys to keep the table readable
-      const violationData = violations.map(({ id, impact, description, nodes }) => ({
-        id,
-        impact,
-        description,
-        nodes: nodes.length,
-      }))
-
-      cy.task('table', violationData)
-    },
-    false, // skip a11y failures
-  )
-})
 
 Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: string, asEventName?: string) => {
   if (asEventName === undefined) {
