@@ -8,8 +8,8 @@ const app = express()
 app.set('port', 4200)
 
 app.use(compression())
-app.use(express.static(path.join(__dirname, 'dist', 'my-app')))
-app.use(serveIndex(path.join(__dirname, 'dist', 'my-app')))
+app.use(express.static(path.join(__dirname, 'dist', 'my-app', 'browser')))
+app.use(serveIndex(path.join(__dirname, 'dist', 'my-app', 'browser')))
 
 const server = app.listen(app.get('port'), () => {
   console.log('The server is running on http://localhost:' + app.get('port'))
