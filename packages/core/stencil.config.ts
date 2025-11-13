@@ -5,6 +5,7 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
+import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
@@ -86,10 +87,10 @@ export const config: Config = {
     experimentalScopedSlotChanges: true,
   },
   outputTargets: [
-    {
+    docsJsonWithoutTimestamp({
       type: 'docs-json',
       file: '../../resources/data/components.json',
-    },
+    }),
     ...(!IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {

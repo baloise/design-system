@@ -26,15 +26,11 @@
     "@angular-eslint/eslint-plugin": "~19.0.0",
     "@angular-eslint/eslint-plugin-template": "~19.0.0",
     "@angular-eslint/template-parser": "~19.0.0",
-    "@angular/common": "~19.0.0",
-    "@angular/compiler": "~19.0.0",
-    "@angular/compiler-cli": "~19.0.0",
-    "@angular/core": "~19.0.0",
-    "@angular/forms": "~19.0.0",
     "ng-packagr": "~19.0.0",
-    "tslib": "^2.3.0",
-    "rxjs": "~7.8.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "overrides": {
+    "rxjs": "7.8.1"
+  }
 }

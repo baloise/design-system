@@ -34,6 +34,11 @@
     "e2e"
   ],
   "devDependencies": {
+    "@angular/common": "~19.0.0",
+    "@angular/compiler": "~19.0.0",
+    "@angular/compiler-cli": "~19.0.0",
+    "@angular/core": "~19.0.0",
+    "@angular/forms": "~19.0.0",
     "@axe-core/playwright": "^4.10.1",
     "@changesets/changelog-github": "~0.5.0",
     "@changesets/cli": "~2.27.1",
@@ -82,8 +87,10 @@
     "jsonc-eslint-parser": "~2.1.0",
     "lodash": "~4.17.21",
     "nx": "22.0.3",
+    "postcss": "~8.5.6",
     "prettier": "~3.2.4",
     "prompts": "~2.4.2",
+    "rxjs": "7.8.1",
     "sass": "~1.70.0",
     "serve-index": "~1.9.1",
     "style-dictionary": "~3.9.0",
@@ -92,13 +99,14 @@
     "verdaccio": "6.2.1",
     "vite": "7.2.2",
     "vite-plugin-dts": "4.5.4",
-    "vitest": "4.0.8"
+    "vitest": "4.0.8",
+    "zone.js": "~0.15.0"
   },
-  "packageManager": "pnpm@8.5.0+sha1.83c41fe4ebdb61e08446f8bb68a75fb48756b330",
   "dependencies": {},
   "overrides": {
     "chokidar": "4.0.3",
     "vite": "7.2.2",
+    "rxjs": "7.8.1",
     "@babel/runtime": "7.27.3"
   }
 }
