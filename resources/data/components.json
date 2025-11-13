@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-13T08:37:29",
+  "timestamp": "2025-11-13T15:08:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.38.3",
@@ -350,10 +350,17 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button"],
+      "dependencies": [
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-accordion": ["bal-button"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-accordion": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -787,10 +794,19 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button", "bal-icon"],
+      "dependencies": [
+        "bal-button",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-accordion-trigger": ["bal-button", "bal-icon"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-accordion-trigger": [
+          "bal-button",
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -891,10 +907,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-doc-app"],
+      "dependents": [
+        "bal-doc-app"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-app": ["bal-app"]
+        "bal-doc-app": [
+          "bal-app"
+        ]
       }
     },
     {
@@ -1089,11 +1109,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-tabs"],
-      "dependencies": ["bal-icon"],
+      "dependents": [
+        "bal-tabs"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-badge": ["bal-icon"],
-        "bal-tabs": ["bal-badge"]
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-badge"
+        ]
       }
     },
     {
@@ -2129,18 +2157,42 @@
         "bal-navbar-brand",
         "bal-snackbar"
       ],
-      "dependencies": ["bal-spinner", "bal-icon"],
+      "dependencies": [
+        "bal-spinner",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-button": ["bal-spinner", "bal-icon"],
-        "bal-accordion": ["bal-button"],
-        "bal-accordion-trigger": ["bal-button"],
-        "bal-card-button": ["bal-button"],
-        "bal-data-value": ["bal-button"],
-        "bal-hint": ["bal-button"],
-        "bal-input-stepper": ["bal-button"],
-        "bal-nav": ["bal-button"],
-        "bal-navbar-brand": ["bal-button"],
-        "bal-snackbar": ["bal-button"]
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-accordion": [
+          "bal-button"
+        ],
+        "bal-accordion-trigger": [
+          "bal-button"
+        ],
+        "bal-card-button": [
+          "bal-button"
+        ],
+        "bal-data-value": [
+          "bal-button"
+        ],
+        "bal-hint": [
+          "bal-button"
+        ],
+        "bal-input-stepper": [
+          "bal-button"
+        ],
+        "bal-nav": [
+          "bal-button"
+        ],
+        "bal-navbar-brand": [
+          "bal-button"
+        ],
+        "bal-snackbar": [
+          "bal-button"
+        ]
       }
     },
     {
@@ -2272,11 +2324,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-card-actions", "bal-hint"],
+      "dependents": [
+        "bal-card-actions",
+        "bal-hint"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-actions": ["bal-button-group"],
-        "bal-hint": ["bal-button-group"]
+        "bal-card-actions": [
+          "bal-button-group"
+        ],
+        "bal-hint": [
+          "bal-button-group"
+        ]
       }
     },
     {
@@ -2693,11 +2752,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-carousel", "bal-file-upload"],
+      "dependents": [
+        "bal-carousel",
+        "bal-file-upload"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-carousel": ["bal-card"],
-        "bal-file-upload": ["bal-card"]
+        "bal-carousel": [
+          "bal-card"
+        ],
+        "bal-file-upload": [
+          "bal-card"
+        ]
       }
     },
     {
@@ -2758,9 +2824,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button-group"],
+      "dependencies": [
+        "bal-button-group"
+      ],
       "dependencyGraph": {
-        "bal-card-actions": ["bal-button-group"]
+        "bal-card-actions": [
+          "bal-button-group"
+        ]
       }
     },
     {
@@ -3031,10 +3101,17 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button"],
+      "dependencies": [
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-card-button": ["bal-button"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-card-button": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -3051,10 +3128,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-carousel"],
+      "dependents": [
+        "bal-carousel"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-carousel": ["bal-card-content"]
+        "bal-carousel": [
+          "bal-card-content"
+        ]
       }
     },
     {
@@ -3241,9 +3322,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-heading"],
+      "dependencies": [
+        "bal-heading"
+      ],
       "dependencyGraph": {
-        "bal-card-title": ["bal-heading"]
+        "bal-card-title": [
+          "bal-heading"
+        ]
       }
     },
     {
@@ -3845,9 +3930,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-card", "bal-card-content"],
+      "dependencies": [
+        "bal-card",
+        "bal-card-content"
+      ],
       "dependencyGraph": {
-        "bal-carousel": ["bal-card", "bal-card-content"]
+        "bal-carousel": [
+          "bal-card",
+          "bal-card-content"
+        ]
       }
     },
     {
@@ -4469,11 +4560,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-option"],
-      "dependencies": ["bal-icon"],
+      "dependents": [
+        "bal-option"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-check": ["bal-icon"],
-        "bal-option": ["bal-check"]
+        "bal-check": [
+          "bal-icon"
+        ],
+        "bal-option": [
+          "bal-check"
+        ]
       }
     },
     {
@@ -5080,11 +5179,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-checkbox-group", "bal-select"],
+      "dependents": [
+        "bal-checkbox-group",
+        "bal-select"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-checkbox-group": ["bal-checkbox"],
-        "bal-select": ["bal-checkbox"]
+        "bal-checkbox-group": [
+          "bal-checkbox"
+        ],
+        "bal-select": [
+          "bal-checkbox"
+        ]
       }
     },
     {
@@ -5731,9 +5837,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-checkbox"],
+      "dependencies": [
+        "bal-checkbox"
+      ],
       "dependencyGraph": {
-        "bal-checkbox-group": ["bal-checkbox"]
+        "bal-checkbox-group": [
+          "bal-checkbox"
+        ]
       }
     },
     {
@@ -5822,15 +5932,35 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-modal-header", "bal-popup", "bal-snackbar", "bal-tag", "bal-toast"],
-      "dependencies": ["bal-icon"],
+      "dependents": [
+        "bal-modal-header",
+        "bal-popup",
+        "bal-snackbar",
+        "bal-tag",
+        "bal-toast"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-close": ["bal-icon"],
-        "bal-modal-header": ["bal-close"],
-        "bal-popup": ["bal-close"],
-        "bal-snackbar": ["bal-close"],
-        "bal-tag": ["bal-close"],
-        "bal-toast": ["bal-close"]
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-modal-header": [
+          "bal-close"
+        ],
+        "bal-popup": [
+          "bal-close"
+        ],
+        "bal-snackbar": [
+          "bal-close"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-toast": [
+          "bal-close"
+        ]
       }
     },
     {
@@ -5994,10 +6124,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-segment-item"],
+      "dependents": [
+        "bal-segment-item"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-segment-item": ["bal-content"]
+        "bal-segment-item": [
+          "bal-content"
+        ]
       }
     },
     {
@@ -6363,10 +6497,17 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button"],
+      "dependencies": [
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-data-value": ["bal-button"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-data-value": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -7453,10 +7594,23 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-input-group", "bal-input-date", "bal-icon", "bal-date-calendar"],
+      "dependencies": [
+        "bal-input-group",
+        "bal-input-date",
+        "bal-icon",
+        "bal-date-calendar"
+      ],
       "dependencyGraph": {
-        "bal-date": ["bal-input-group", "bal-input-date", "bal-icon", "bal-date-calendar"],
-        "bal-date-calendar": ["bal-date-calendar-cell", "bal-icon"]
+        "bal-date": [
+          "bal-input-group",
+          "bal-input-date",
+          "bal-icon",
+          "bal-date-calendar"
+        ],
+        "bal-date-calendar": [
+          "bal-date-calendar-cell",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -7665,11 +7819,21 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-date"],
-      "dependencies": ["bal-date-calendar-cell", "bal-icon"],
+      "dependents": [
+        "bal-date"
+      ],
+      "dependencies": [
+        "bal-date-calendar-cell",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-date-calendar": ["bal-date-calendar-cell", "bal-icon"],
-        "bal-date": ["bal-date-calendar"]
+        "bal-date-calendar": [
+          "bal-date-calendar-cell",
+          "bal-icon"
+        ],
+        "bal-date": [
+          "bal-date-calendar"
+        ]
       }
     },
     {
@@ -7909,10 +8073,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-date-calendar"],
+      "dependents": [
+        "bal-date-calendar"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-date-calendar": ["bal-date-calendar-cell"]
+        "bal-date-calendar": [
+          "bal-date-calendar-cell"
+        ]
       }
     },
     {
@@ -9586,9 +9754,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon"],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-field-control": ["bal-icon"]
+        "bal-field-control": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -9723,13 +9895,35 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-hint", "bal-hint-title", "bal-hint-text"],
+      "dependencies": [
+        "bal-hint",
+        "bal-hint-title",
+        "bal-hint-text"
+      ],
       "dependencyGraph": {
-        "bal-field-hint": ["bal-hint", "bal-hint-title", "bal-hint-text"],
-        "bal-hint": ["bal-icon", "bal-button-group", "bal-button", "bal-popup"],
-        "bal-button": ["bal-spinner", "bal-icon"],
-        "bal-popup": ["bal-stack", "bal-heading", "bal-close"],
-        "bal-close": ["bal-icon"]
+        "bal-field-hint": [
+          "bal-hint",
+          "bal-hint-title",
+          "bal-hint-text"
+        ],
+        "bal-hint": [
+          "bal-icon",
+          "bal-button-group",
+          "bal-button",
+          "bal-popup"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -10015,9 +10209,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-label"],
+      "dependencies": [
+        "bal-label"
+      ],
       "dependencyGraph": {
-        "bal-field-label": ["bal-label"]
+        "bal-field-label": [
+          "bal-label"
+        ]
       }
     },
     {
@@ -10923,7 +11121,9 @@
           "bal-list-item-title",
           "bal-list-item-subtitle"
         ],
-        "bal-list-item-title": ["bal-heading"]
+        "bal-list-item-title": [
+          "bal-heading"
+        ]
       }
     },
     {
@@ -11121,9 +11321,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-logo", "bal-icon"],
+      "dependencies": [
+        "bal-logo",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-footer": ["bal-logo", "bal-icon"]
+        "bal-footer": [
+          "bal-logo",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -11849,13 +12055,26 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-card-title", "bal-list-item-title", "bal-modal-header", "bal-popup"],
+      "dependents": [
+        "bal-card-title",
+        "bal-list-item-title",
+        "bal-modal-header",
+        "bal-popup"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-title": ["bal-heading"],
-        "bal-list-item-title": ["bal-heading"],
-        "bal-modal-header": ["bal-heading"],
-        "bal-popup": ["bal-heading"]
+        "bal-card-title": [
+          "bal-heading"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-modal-header": [
+          "bal-heading"
+        ],
+        "bal-popup": [
+          "bal-heading"
+        ]
       }
     },
     {
@@ -11992,14 +12211,37 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-field-hint"],
-      "dependencies": ["bal-icon", "bal-button-group", "bal-button", "bal-popup"],
+      "dependents": [
+        "bal-field-hint"
+      ],
+      "dependencies": [
+        "bal-icon",
+        "bal-button-group",
+        "bal-button",
+        "bal-popup"
+      ],
       "dependencyGraph": {
-        "bal-hint": ["bal-icon", "bal-button-group", "bal-button", "bal-popup"],
-        "bal-button": ["bal-spinner", "bal-icon"],
-        "bal-popup": ["bal-stack", "bal-heading", "bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-field-hint": ["bal-hint"]
+        "bal-hint": [
+          "bal-icon",
+          "bal-button-group",
+          "bal-button",
+          "bal-popup"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-field-hint": [
+          "bal-hint"
+        ]
       }
     },
     {
@@ -12016,10 +12258,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-field-hint"],
+      "dependents": [
+        "bal-field-hint"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-field-hint": ["bal-hint-text"]
+        "bal-field-hint": [
+          "bal-hint-text"
+        ]
       }
     },
     {
@@ -12036,10 +12282,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-field-hint"],
+      "dependents": [
+        "bal-field-hint"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-field-hint": ["bal-hint-title"]
+        "bal-field-hint": [
+          "bal-hint-title"
+        ]
       }
     },
     {
@@ -12543,29 +12793,75 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-accordion-trigger": ["bal-icon"],
-        "bal-badge": ["bal-icon"],
-        "bal-button": ["bal-icon"],
-        "bal-check": ["bal-icon"],
-        "bal-close": ["bal-icon"],
-        "bal-date": ["bal-icon"],
-        "bal-date-calendar": ["bal-icon"],
-        "bal-field-control": ["bal-icon"],
-        "bal-file-upload": ["bal-icon"],
-        "bal-footer": ["bal-icon"],
-        "bal-hint": ["bal-icon"],
-        "bal-list-item-accordion-head": ["bal-icon"],
-        "bal-nav": ["bal-icon"],
-        "bal-option": ["bal-icon"],
-        "bal-pagination": ["bal-icon"],
-        "bal-segment-item": ["bal-icon"],
-        "bal-select": ["bal-icon"],
-        "bal-snackbar": ["bal-icon"],
-        "bal-stage-back-link": ["bal-icon"],
-        "bal-steps": ["bal-icon"],
-        "bal-switch": ["bal-icon"],
-        "bal-tabs": ["bal-icon"],
-        "bal-time-input": ["bal-icon"]
+        "bal-accordion-trigger": [
+          "bal-icon"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-icon"
+        ],
+        "bal-check": [
+          "bal-icon"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-date": [
+          "bal-icon"
+        ],
+        "bal-date-calendar": [
+          "bal-icon"
+        ],
+        "bal-field-control": [
+          "bal-icon"
+        ],
+        "bal-file-upload": [
+          "bal-icon"
+        ],
+        "bal-footer": [
+          "bal-icon"
+        ],
+        "bal-hint": [
+          "bal-icon"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-icon"
+        ],
+        "bal-option": [
+          "bal-icon"
+        ],
+        "bal-pagination": [
+          "bal-icon"
+        ],
+        "bal-segment-item": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-icon"
+        ],
+        "bal-snackbar": [
+          "bal-icon"
+        ],
+        "bal-stage-back-link": [
+          "bal-icon"
+        ],
+        "bal-steps": [
+          "bal-icon"
+        ],
+        "bal-switch": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-icon"
+        ],
+        "bal-time-input": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -14608,10 +14904,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-date"],
+      "dependents": [
+        "bal-date"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-date": ["bal-input-date"]
+        "bal-date": [
+          "bal-input-date"
+        ]
       }
     },
     {
@@ -14716,11 +15016,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-date", "bal-time-input"],
+      "dependents": [
+        "bal-date",
+        "bal-time-input"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-date": ["bal-input-group"],
-        "bal-time-input": ["bal-input-group"]
+        "bal-date": [
+          "bal-input-group"
+        ],
+        "bal-time-input": [
+          "bal-input-group"
+        ]
       }
     },
     {
@@ -15741,10 +16048,17 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-button"],
+      "dependencies": [
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-input-stepper": ["bal-button"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-input-stepper": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -16116,11 +16430,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-field-label", "bal-segment-item"],
+      "dependents": [
+        "bal-field-label",
+        "bal-segment-item"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-field-label": ["bal-label"],
-        "bal-segment-item": ["bal-label"]
+        "bal-field-label": [
+          "bal-label"
+        ],
+        "bal-segment-item": [
+          "bal-label"
+        ]
       }
     },
     {
@@ -16310,11 +16631,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload", "bal-nav"],
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": ["bal-list"],
-        "bal-nav": ["bal-list"]
+        "bal-file-upload": [
+          "bal-list"
+        ],
+        "bal-nav": [
+          "bal-list"
+        ]
       }
     },
     {
@@ -16755,11 +17083,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload", "bal-nav"],
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": ["bal-list-item"],
-        "bal-nav": ["bal-list-item"]
+        "bal-file-upload": [
+          "bal-list-item"
+        ],
+        "bal-nav": [
+          "bal-list-item"
+        ]
       }
     },
     {
@@ -16886,10 +17221,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-list-item-accordion-body"]
+        "bal-nav": [
+          "bal-list-item-accordion-body"
+        ]
       }
     },
     {
@@ -16995,11 +17334,21 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
-      "dependencies": ["bal-list-item-icon", "bal-icon"],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [
+        "bal-list-item-icon",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-list-item-accordion-head": ["bal-list-item-icon", "bal-icon"],
-        "bal-nav": ["bal-list-item-accordion-head"]
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon",
+          "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-list-item-accordion-head"
+        ]
       }
     },
     {
@@ -17040,11 +17389,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload", "bal-nav"],
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": ["bal-list-item-content"],
-        "bal-nav": ["bal-list-item-content"]
+        "bal-file-upload": [
+          "bal-list-item-content"
+        ],
+        "bal-nav": [
+          "bal-list-item-content"
+        ]
       }
     },
     {
@@ -17091,11 +17447,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload", "bal-list-item-accordion-head"],
+      "dependents": [
+        "bal-file-upload",
+        "bal-list-item-accordion-head"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": ["bal-list-item-icon"],
-        "bal-list-item-accordion-head": ["bal-list-item-icon"]
+        "bal-file-upload": [
+          "bal-list-item-icon"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon"
+        ]
       }
     },
     {
@@ -17112,10 +17475,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload"],
+      "dependents": [
+        "bal-file-upload"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": ["bal-list-item-subtitle"]
+        "bal-file-upload": [
+          "bal-list-item-subtitle"
+        ]
       }
     },
     {
@@ -17317,12 +17684,23 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-file-upload", "bal-nav"],
-      "dependencies": ["bal-heading"],
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
+      "dependencies": [
+        "bal-heading"
+      ],
       "dependencyGraph": {
-        "bal-list-item-title": ["bal-heading"],
-        "bal-file-upload": ["bal-list-item-title"],
-        "bal-nav": ["bal-list-item-title"]
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-file-upload": [
+          "bal-list-item-title"
+        ],
+        "bal-nav": [
+          "bal-list-item-title"
+        ]
       }
     },
     {
@@ -17446,12 +17824,22 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-footer", "bal-nav", "bal-navbar-brand"],
+      "dependents": [
+        "bal-footer",
+        "bal-nav",
+        "bal-navbar-brand"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-footer": ["bal-logo"],
-        "bal-nav": ["bal-logo"],
-        "bal-navbar-brand": ["bal-logo"]
+        "bal-footer": [
+          "bal-logo"
+        ],
+        "bal-nav": [
+          "bal-logo"
+        ],
+        "bal-navbar-brand": [
+          "bal-logo"
+        ]
       }
     },
     {
@@ -18008,10 +18396,18 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-heading", "bal-close"],
+      "dependencies": [
+        "bal-heading",
+        "bal-close"
+      ],
       "dependencyGraph": {
-        "bal-modal-header": ["bal-heading", "bal-close"],
-        "bal-close": ["bal-icon"]
+        "bal-modal-header": [
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -18194,14 +18590,39 @@
           "bal-logo",
           "bal-icon"
         ],
-        "bal-tabs": ["bal-icon", "bal-badge", "bal-select", "bal-select-option"],
-        "bal-badge": ["bal-icon"],
-        "bal-select": ["bal-tag", "bal-popover", "bal-icon", "bal-popover-content", "bal-checkbox"],
-        "bal-tag": ["bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-button": ["bal-spinner", "bal-icon"],
-        "bal-list-item-title": ["bal-heading"],
-        "bal-list-item-accordion-head": ["bal-list-item-icon", "bal-icon"]
+        "bal-tabs": [
+          "bal-icon",
+          "bal-badge",
+          "bal-select",
+          "bal-select-option"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -18412,10 +18833,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-link"]
+        "bal-nav": [
+          "bal-nav-link"
+        ]
       }
     },
     {
@@ -18432,10 +18857,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-link-grid"]
+        "bal-nav": [
+          "bal-nav-link-grid"
+        ]
       }
     },
     {
@@ -18487,10 +18916,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-link-grid-col"]
+        "bal-nav": [
+          "bal-nav-link-grid-col"
+        ]
       }
     },
     {
@@ -18663,10 +19096,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-menu-bar"]
+        "bal-nav": [
+          "bal-nav-menu-bar"
+        ]
       }
     },
     {
@@ -18739,10 +19176,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-menu-flyout"]
+        "bal-nav": [
+          "bal-nav-menu-flyout"
+        ]
       }
     },
     {
@@ -18968,10 +19409,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
+      "dependents": [
+        "bal-nav"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-nav-meta-bar"]
+        "bal-nav": [
+          "bal-nav-meta-bar"
+        ]
       }
     },
     {
@@ -19486,10 +19931,19 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-logo", "bal-button"],
+      "dependencies": [
+        "bal-logo",
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-navbar-brand": ["bal-logo", "bal-button"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-navbar-brand": [
+          "bal-logo",
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -20618,10 +21072,20 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-stack", "bal-check", "bal-icon"],
+      "dependencies": [
+        "bal-stack",
+        "bal-check",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-option": ["bal-stack", "bal-check", "bal-icon"],
-        "bal-check": ["bal-icon"]
+        "bal-option": [
+          "bal-stack",
+          "bal-check",
+          "bal-icon"
+        ],
+        "bal-check": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -21735,9 +22199,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon"],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-pagination": ["bal-icon"]
+        "bal-pagination": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -22182,7 +22650,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22221,7 +22689,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22260,7 +22728,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22366,10 +22834,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-select"],
+      "dependents": [
+        "bal-select"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-select": ["bal-popover"]
+        "bal-select": [
+          "bal-popover"
+        ]
       }
     },
     {
@@ -22688,10 +23160,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-select"],
+      "dependents": [
+        "bal-select"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-select": ["bal-popover-content"]
+        "bal-select": [
+          "bal-popover-content"
+        ]
       }
     },
     {
@@ -23233,12 +23709,26 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-hint"],
-      "dependencies": ["bal-stack", "bal-heading", "bal-close"],
+      "dependents": [
+        "bal-hint"
+      ],
+      "dependencies": [
+        "bal-stack",
+        "bal-heading",
+        "bal-close"
+      ],
       "dependencyGraph": {
-        "bal-popup": ["bal-stack", "bal-heading", "bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-hint": ["bal-popup"]
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-hint": [
+          "bal-popup"
+        ]
       }
     },
     {
@@ -23946,11 +24436,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-radio-group"],
-      "dependencies": ["bal-radio-icon"],
+      "dependents": [
+        "bal-radio-group"
+      ],
+      "dependencies": [
+        "bal-radio-icon"
+      ],
       "dependencyGraph": {
-        "bal-radio": ["bal-radio-icon"],
-        "bal-radio-group": ["bal-radio"]
+        "bal-radio": [
+          "bal-radio-icon"
+        ],
+        "bal-radio-group": [
+          "bal-radio"
+        ]
       }
     },
     {
@@ -24594,10 +25092,16 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-radio"],
+      "dependencies": [
+        "bal-radio"
+      ],
       "dependencyGraph": {
-        "bal-radio-group": ["bal-radio"],
-        "bal-radio": ["bal-radio-icon"]
+        "bal-radio-group": [
+          "bal-radio"
+        ],
+        "bal-radio": [
+          "bal-radio-icon"
+        ]
       }
     },
     {
@@ -24731,10 +25235,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-radio"],
+      "dependents": [
+        "bal-radio"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-radio": ["bal-radio-icon"]
+        "bal-radio": [
+          "bal-radio-icon"
+        ]
       }
     },
     {
@@ -25180,9 +25688,19 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["bal-icon", "bal-stack", "bal-content", "bal-label"],
+      "dependencies": [
+        "bal-icon",
+        "bal-stack",
+        "bal-content",
+        "bal-label"
+      ],
       "dependencyGraph": {
-        "bal-segment-item": ["bal-icon", "bal-stack", "bal-content", "bal-label"]
+        "bal-segment-item": [
+          "bal-icon",
+          "bal-stack",
+          "bal-content",
+          "bal-label"
+        ]
       }
     },
     {
@@ -26313,13 +26831,33 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-tabs"],
-      "dependencies": ["bal-tag", "bal-popover", "bal-icon", "bal-popover-content", "bal-checkbox"],
+      "dependents": [
+        "bal-tabs"
+      ],
+      "dependencies": [
+        "bal-tag",
+        "bal-popover",
+        "bal-icon",
+        "bal-popover-content",
+        "bal-checkbox"
+      ],
       "dependencyGraph": {
-        "bal-select": ["bal-tag", "bal-popover", "bal-icon", "bal-popover-content", "bal-checkbox"],
-        "bal-tag": ["bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-tabs": ["bal-select"]
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-select"
+        ]
       }
     },
     {
@@ -26412,10 +26950,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-tabs"],
+      "dependents": [
+        "bal-tabs"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-tabs": ["bal-select-option"]
+        "bal-tabs": [
+          "bal-select-option"
+        ]
       }
     },
     {
@@ -26586,10 +27128,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-stage"],
+      "dependents": [
+        "bal-stage"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-stage": ["bal-shape"]
+        "bal-stage": [
+          "bal-shape"
+        ]
       }
     },
     {
@@ -27042,11 +27588,24 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon", "bal-close", "bal-button"],
+      "dependencies": [
+        "bal-icon",
+        "bal-close",
+        "bal-button"
+      ],
       "dependencyGraph": {
-        "bal-snackbar": ["bal-icon", "bal-close", "bal-button"],
-        "bal-close": ["bal-icon"],
-        "bal-button": ["bal-spinner", "bal-icon"]
+        "bal-snackbar": [
+          "bal-icon",
+          "bal-close",
+          "bal-button"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -27229,11 +27788,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-button", "bal-file-upload"],
+      "dependents": [
+        "bal-button",
+        "bal-file-upload"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-button": ["bal-spinner"],
-        "bal-file-upload": ["bal-spinner"]
+        "bal-button": [
+          "bal-spinner"
+        ],
+        "bal-file-upload": [
+          "bal-spinner"
+        ]
       }
     },
     {
@@ -27779,14 +28345,30 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav", "bal-option", "bal-popup", "bal-segment-item", "bal-tooltip"],
+      "dependents": [
+        "bal-nav",
+        "bal-option",
+        "bal-popup",
+        "bal-segment-item",
+        "bal-tooltip"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": ["bal-stack"],
-        "bal-option": ["bal-stack"],
-        "bal-popup": ["bal-stack"],
-        "bal-segment-item": ["bal-stack"],
-        "bal-tooltip": ["bal-stack"]
+        "bal-nav": [
+          "bal-stack"
+        ],
+        "bal-option": [
+          "bal-stack"
+        ],
+        "bal-popup": [
+          "bal-stack"
+        ],
+        "bal-segment-item": [
+          "bal-stack"
+        ],
+        "bal-tooltip": [
+          "bal-stack"
+        ]
       }
     },
     {
@@ -28039,9 +28621,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-shape"],
+      "dependencies": [
+        "bal-shape"
+      ],
       "dependencyGraph": {
-        "bal-stage": ["bal-shape"]
+        "bal-stage": [
+          "bal-shape"
+        ]
       }
     },
     {
@@ -28164,9 +28750,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon"],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-stage-back-link": ["bal-icon"]
+        "bal-stage-back-link": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -29011,9 +29601,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon"],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-steps": ["bal-icon"]
+        "bal-steps": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -29119,9 +29713,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-icon"],
+      "dependencies": [
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-switch": ["bal-icon"]
+        "bal-switch": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -30557,15 +31155,41 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-nav"],
-      "dependencies": ["bal-icon", "bal-badge", "bal-select", "bal-select-option"],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [
+        "bal-icon",
+        "bal-badge",
+        "bal-select",
+        "bal-select-option"
+      ],
       "dependencyGraph": {
-        "bal-tabs": ["bal-icon", "bal-badge", "bal-select", "bal-select-option"],
-        "bal-badge": ["bal-icon"],
-        "bal-select": ["bal-tag", "bal-popover", "bal-icon", "bal-popover-content", "bal-checkbox"],
-        "bal-tag": ["bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-nav": ["bal-tabs"]
+        "bal-tabs": [
+          "bal-icon",
+          "bal-badge",
+          "bal-select",
+          "bal-select-option"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-tabs"
+        ]
       }
     },
     {
@@ -30882,12 +31506,22 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["bal-select"],
-      "dependencies": ["bal-close"],
+      "dependents": [
+        "bal-select"
+      ],
+      "dependencies": [
+        "bal-close"
+      ],
       "dependencyGraph": {
-        "bal-tag": ["bal-close"],
-        "bal-close": ["bal-icon"],
-        "bal-select": ["bal-tag"]
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-tag"
+        ]
       }
     },
     {
@@ -32718,9 +33352,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-input-group", "bal-icon"],
+      "dependencies": [
+        "bal-input-group",
+        "bal-icon"
+      ],
       "dependencyGraph": {
-        "bal-time-input": ["bal-input-group", "bal-icon"]
+        "bal-time-input": [
+          "bal-input-group",
+          "bal-icon"
+        ]
       }
     },
     {
@@ -32957,10 +33597,16 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-close"],
+      "dependencies": [
+        "bal-close"
+      ],
       "dependencyGraph": {
-        "bal-toast": ["bal-close"],
-        "bal-close": ["bal-icon"]
+        "bal-toast": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
       }
     },
     {
@@ -33146,9 +33792,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["bal-stack"],
+      "dependencies": [
+        "bal-stack"
+      ],
       "dependencyGraph": {
-        "bal-tooltip": ["bal-stack"]
+        "bal-tooltip": [
+          "bal-stack"
+        ]
       }
     }
   ],

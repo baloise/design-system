@@ -11,6 +11,7 @@
   },
   "homepage": "https://baloise-design-system.vercel.app",
   "license": "Apache-2.0",
+  "type": "module",
   "bin": {
     "ds-styles-migrate": "./bin/index.mjs"
   },
