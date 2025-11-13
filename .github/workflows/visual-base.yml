@@ -4,45 +4,86 @@ on:
   workflow_dispatch:
 
 jobs:
-  main:
-    name: 📸 Updating Screenshots
-    runs-on: ubuntu-latest
+  assembleInformation:
+    name: 📝 Assemble Information
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
     env:
       HUSKY: 0
+      CI: true
+    outputs:
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
     steps:
+      - name: Get Action URL
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Get Branch Name
+        id: branch
+        # Determine branch reliably from the event payload.
+        # - For pull_request events use github.head_ref (the source branch name)
+        # - For push events parse GITHUB_REF (refs/heads/<branch>)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          else
+            # strip refs/heads/ prefix
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+
+  playwright:
+    name: 🎭 Playwright
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    needs: [assembleInformation]
+    env:
+      HUSKY: 0
+      CI: 1
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --user 1001
+    steps:
+      - name: Show inputs from previous job
+        run: |
+          echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
+
       - uses: actions/checkout@v4
         with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
-      - uses: ./.github/workflows/actions/e2e-build
-        with:
-          build: true
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run Cypress
-        uses: cypress-io/github-action@v6
-        with:
-          start: node ./web-server.js
-          wait-on: 'http://localhost:3333'
-          working-directory: e2e
-          install: false
-          browser: chrome
-          spec: |
-            cypress/e2e/visual/*.cy.ts
+      - uses: ./.github/workflows/actions/setup
+
+      - name: Clean Install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
         env:
-          CYPRESS_visualRegressionType: base
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
-      - name: Upload snapshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-snapshots
-          path: e2e/cypress/snapshots
+      - name: Run Playwright tests
+        run: npx nx run core:ci-e2e -- --update-snapshots
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
 
-      - name: Commit base images
+      - name: Commit snapshots
+        if: always()
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'update base images'
+          message: 'update snapshots'
         env:
           GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-shard-${{ matrix.shardIndex }}
+          path: packages/core/playwright-report
+          retention-days: 7
