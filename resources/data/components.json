@@ -6,11 +6,11 @@
   },
   "components": [
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion",
       "filePath": "src/components/bal-accordion/bal-accordion.tsx",
       "fileName": "bal-accordion.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/usage",
       "tag": "bal-accordion",
       "overview": "",
       "usage": {},
@@ -368,11 +368,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-details",
       "filePath": "src/components/bal-accordion/bal-accordion-details/bal-accordion-details.tsx",
       "fileName": "bal-accordion-details.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-details/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-details/usage",
       "tag": "bal-accordion-details",
       "overview": "",
       "usage": {},
@@ -391,11 +391,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-summary",
       "filePath": "src/components/bal-accordion/bal-accordion-summary/bal-accordion-summary.tsx",
       "fileName": "bal-accordion-summary.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-summary/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-summary/usage",
       "tag": "bal-accordion-summary",
       "overview": "",
       "usage": {},
@@ -444,11 +444,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-trigger",
       "filePath": "src/components/bal-accordion/bal-accordion-trigger/bal-accordion-trigger.tsx",
       "fileName": "bal-accordion-trigger.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-trigger/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-accordion/bal-accordion-trigger/usage",
       "tag": "bal-accordion-trigger",
       "overview": "",
       "usage": {},
@@ -829,11 +829,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-app",
       "filePath": "src/components/bal-app/bal-app.tsx",
       "fileName": "bal-app.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-app/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-app/usage",
       "tag": "bal-app",
       "overview": "",
       "usage": {},
@@ -942,11 +942,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-badge",
       "filePath": "src/components/bal-badge/bal-badge.tsx",
       "fileName": "bal-badge.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-badge/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-badge/usage",
       "tag": "bal-badge",
       "overview": "",
       "usage": {},
@@ -1154,11 +1154,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-button",
       "filePath": "src/components/bal-button/bal-button.tsx",
       "fileName": "bal-button.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-button/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-button/usage",
       "tag": "bal-button",
       "overview": "",
       "usage": {},
@@ -2230,11 +2230,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-button/bal-button-group",
       "filePath": "src/components/bal-button/bal-button-group/bal-button-group.tsx",
       "fileName": "bal-button-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-button/bal-button-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-button/bal-button-group/usage",
       "tag": "bal-button-group",
       "overview": "",
       "usage": {},
@@ -2378,11 +2378,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card",
       "filePath": "src/components/bal-card/bal-card.tsx",
       "fileName": "bal-card.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/usage",
       "tag": "bal-card",
       "overview": "",
       "usage": {},
@@ -2811,11 +2811,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-actions",
       "filePath": "src/components/bal-card/bal-card-actions/bal-card-actions.tsx",
       "fileName": "bal-card-actions.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-actions/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-actions/usage",
       "tag": "bal-card-actions",
       "overview": "",
       "usage": {},
@@ -2883,11 +2883,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-button",
       "filePath": "src/components/bal-card/bal-card-button/bal-card-button.tsx",
       "fileName": "bal-card-button.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-button/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-button/usage",
       "tag": "bal-card-button",
       "overview": "",
       "usage": {},
@@ -3169,11 +3169,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-content",
       "filePath": "src/components/bal-card/bal-card-content/bal-card-content.tsx",
       "fileName": "bal-card-content.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-content/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-content/usage",
       "tag": "bal-card-content",
       "overview": "",
       "usage": {},
@@ -3198,11 +3198,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-subtitle",
       "filePath": "src/components/bal-card/bal-card-subtitle/bal-card-subtitle.tsx",
       "fileName": "bal-card-subtitle.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-subtitle/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-subtitle/usage",
       "tag": "bal-card-subtitle",
       "overview": "",
       "usage": {},
@@ -3342,11 +3342,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-title",
       "filePath": "src/components/bal-card/bal-card-title/bal-card-title.tsx",
       "fileName": "bal-card-title.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-title/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-card/bal-card-title/usage",
       "tag": "bal-card-title",
       "overview": "",
       "usage": {},
@@ -3401,11 +3401,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-carousel",
       "filePath": "src/components/bal-carousel/bal-carousel.tsx",
       "fileName": "bal-carousel.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-carousel/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-carousel/usage",
       "tag": "bal-carousel",
       "overview": "",
       "usage": {},
@@ -4016,11 +4016,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-carousel/bal-carousel-item",
       "filePath": "src/components/bal-carousel/bal-carousel-item/bal-carousel-item.tsx",
       "fileName": "bal-carousel-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-carousel/bal-carousel-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-carousel/bal-carousel-item/usage",
       "tag": "bal-carousel-item",
       "overview": "",
       "usage": {},
@@ -4509,11 +4509,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-check",
       "filePath": "src/components/bal-checkbox/bal-check/bal-check.tsx",
       "fileName": "bal-check.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-check/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-check/usage",
       "tag": "bal-check",
       "overview": "",
       "usage": {},
@@ -4660,11 +4660,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox",
       "filePath": "src/components/bal-checkbox/bal-checkbox.tsx",
       "fileName": "bal-checkbox.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/usage",
       "tag": "bal-checkbox",
       "overview": "",
       "usage": {},
@@ -5283,11 +5283,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-checkbox-group",
       "filePath": "src/components/bal-checkbox/bal-checkbox-group/bal-checkbox-group.tsx",
       "fileName": "bal-checkbox-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-checkbox-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-checkbox-group/usage",
       "tag": "bal-checkbox-group",
       "overview": "",
       "usage": {},
@@ -5941,11 +5941,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-close",
       "filePath": "src/components/bal-close/bal-close.tsx",
       "fileName": "bal-close.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-close/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-close/usage",
       "tag": "bal-close",
       "overview": "",
       "usage": {},
@@ -6063,11 +6063,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-content",
       "filePath": "src/components/bal-content/bal-content.tsx",
       "fileName": "bal-content.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-content/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-content/usage",
       "tag": "bal-content",
       "overview": "",
       "usage": {},
@@ -6239,11 +6239,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-data",
       "filePath": "src/components/bal-data/bal-data.tsx",
       "fileName": "bal-data.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-data/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-data/usage",
       "tag": "bal-data",
       "overview": "",
       "usage": {},
@@ -6321,11 +6321,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-item",
       "filePath": "src/components/bal-data/bal-data-item/bal-data-item.tsx",
       "fileName": "bal-data-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-item/usage",
       "tag": "bal-data-item",
       "overview": "",
       "usage": {},
@@ -6403,11 +6403,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-label",
       "filePath": "src/components/bal-data/bal-data-label/bal-data-label.tsx",
       "fileName": "bal-data-label.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-label/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-label/usage",
       "tag": "bal-data-label",
       "overview": "",
       "usage": {},
@@ -6456,11 +6456,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-value",
       "filePath": "src/components/bal-data/bal-data-value/bal-data-value.tsx",
       "fileName": "bal-data-value.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-value/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-data/bal-data-value/usage",
       "tag": "bal-data-value",
       "overview": "",
       "usage": {},
@@ -6635,11 +6635,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-date",
       "filePath": "src/components/bal-date/bal-date.tsx",
       "fileName": "bal-date.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-date/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-date/usage",
       "tag": "bal-date",
       "overview": "",
       "usage": {},
@@ -7743,11 +7743,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar",
       "filePath": "src/components/bal-date/bal-date-calendar/bal-date-calendar.tsx",
       "fileName": "bal-date-calendar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar/usage",
       "tag": "bal-date-calendar",
       "overview": "",
       "usage": {},
@@ -7971,11 +7971,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar-cell",
       "filePath": "src/components/bal-date/bal-date-calendar-cell/bal-date-calendar-cell.tsx",
       "fileName": "bal-date-calendar-cell.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar-cell/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-date/bal-date-calendar-cell/usage",
       "tag": "bal-date-calendar-cell",
       "overview": "",
       "usage": {},
@@ -8223,11 +8223,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-divider",
       "filePath": "src/components/bal-divider/bal-divider.tsx",
       "fileName": "bal-divider.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-divider/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-divider/usage",
       "tag": "bal-divider",
       "overview": "",
       "usage": {},
@@ -8488,11 +8488,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-dropdown",
       "filePath": "src/components/bal-dropdown/bal-dropdown.tsx",
       "fileName": "bal-dropdown.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-dropdown/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-dropdown/usage",
       "tag": "bal-dropdown",
       "overview": "",
       "usage": {},
@@ -9520,11 +9520,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-field",
       "filePath": "src/components/bal-field/bal-field.tsx",
       "fileName": "bal-field.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-field/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-field/usage",
       "tag": "bal-field",
       "overview": "",
       "usage": {},
@@ -9767,11 +9767,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-control",
       "filePath": "src/components/bal-field/bal-field-control/bal-field-control.tsx",
       "fileName": "bal-field-control.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-control/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-control/usage",
       "tag": "bal-field-control",
       "overview": "",
       "usage": {},
@@ -9923,11 +9923,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-hint",
       "filePath": "src/components/bal-field/bal-field-hint/bal-field-hint.tsx",
       "fileName": "bal-field-hint.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-hint/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-hint/usage",
       "tag": "bal-field-hint",
       "overview": "",
       "usage": {},
@@ -10091,11 +10091,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-label",
       "filePath": "src/components/bal-field/bal-field-label/bal-field-label.tsx",
       "fileName": "bal-field-label.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-label/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-label/usage",
       "tag": "bal-field-label",
       "overview": "",
       "usage": {},
@@ -10388,11 +10388,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-message",
       "filePath": "src/components/bal-field/bal-field-message/bal-field-message.tsx",
       "fileName": "bal-field-message.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-message/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-field/bal-field-message/usage",
       "tag": "bal-field-message",
       "overview": "",
       "usage": {},
@@ -10603,11 +10603,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-file-upload",
       "filePath": "src/components/bal-file-upload/bal-file-upload.tsx",
       "fileName": "bal-file-upload.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-file-upload/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-file-upload/usage",
       "tag": "bal-file-upload",
       "overview": "",
       "usage": {},
@@ -11306,11 +11306,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-footer",
       "filePath": "src/components/bal-footer/bal-footer.tsx",
       "fileName": "bal-footer.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-footer/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-footer/usage",
       "tag": "bal-footer",
       "overview": "",
       "usage": {},
@@ -11517,11 +11517,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-form",
       "filePath": "src/components/bal-form/bal-form.tsx",
       "fileName": "bal-form.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-form/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-form/usage",
       "tag": "bal-form",
       "overview": "",
       "usage": {},
@@ -11651,11 +11651,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid/bal-form-col",
       "filePath": "src/components/bal-form-grid/bal-form-col/bal-form-col.tsx",
       "fileName": "bal-form-col.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid/bal-form-col/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid/bal-form-col/usage",
       "tag": "bal-form-col",
       "overview": "",
       "usage": {},
@@ -11734,11 +11734,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid",
       "filePath": "src/components/bal-form-grid/bal-form-grid.tsx",
       "fileName": "bal-form-grid.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-form-grid/usage",
       "tag": "bal-form-grid",
       "overview": "",
       "usage": {},
@@ -11757,11 +11757,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-heading",
       "filePath": "src/components/bal-heading/bal-heading.tsx",
       "fileName": "bal-heading.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-heading/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-heading/usage",
       "tag": "bal-heading",
       "overview": "",
       "usage": {},
@@ -12282,11 +12282,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-hint",
       "filePath": "src/components/bal-hint/bal-hint.tsx",
       "fileName": "bal-hint.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-hint/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-hint/usage",
       "tag": "bal-hint",
       "overview": "",
       "usage": {},
@@ -12454,11 +12454,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-text",
       "filePath": "src/components/bal-hint/bal-hint-text/bal-hint-text.tsx",
       "fileName": "bal-hint-text.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-text/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-text/usage",
       "tag": "bal-hint-text",
       "overview": "",
       "usage": {},
@@ -12483,11 +12483,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-title",
       "filePath": "src/components/bal-hint/bal-hint-title/bal-hint-title.tsx",
       "fileName": "bal-hint-title.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-title/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-hint/bal-hint-title/usage",
       "tag": "bal-hint-title",
       "overview": "",
       "usage": {},
@@ -12512,11 +12512,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-icon",
       "filePath": "src/components/bal-icon/bal-icon.tsx",
       "fileName": "bal-icon.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-icon/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-icon/usage",
       "tag": "bal-icon",
       "overview": "",
       "usage": {},
@@ -13089,11 +13089,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-input",
       "filePath": "src/components/bal-input/bal-input.tsx",
       "fileName": "bal-input.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-input/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-input/usage",
       "tag": "bal-input",
       "overview": "",
       "usage": {},
@@ -14384,11 +14384,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-input/bal-input-date",
       "filePath": "src/components/bal-input/bal-input-date/bal-input-date.tsx",
       "fileName": "bal-input-date.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-input/bal-input-date/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-input/bal-input-date/usage",
       "tag": "bal-input-date",
       "overview": "",
       "usage": {},
@@ -15149,11 +15149,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-input-group",
       "filePath": "src/components/bal-input-group/bal-input-group.tsx",
       "fileName": "bal-input-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-input-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-input-group/usage",
       "tag": "bal-input-group",
       "overview": "",
       "usage": {},
@@ -15270,11 +15270,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-input-slider",
       "filePath": "src/components/bal-input-slider/bal-input-slider.tsx",
       "fileName": "bal-input-slider.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-input-slider/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-input-slider/usage",
       "tag": "bal-input-slider",
       "overview": "",
       "usage": {},
@@ -15832,11 +15832,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-input-stepper",
       "filePath": "src/components/bal-input-stepper/bal-input-stepper.tsx",
       "fileName": "bal-input-stepper.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-input-stepper/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-input-stepper/usage",
       "tag": "bal-input-stepper",
       "overview": "",
       "usage": {},
@@ -16311,11 +16311,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-label",
       "filePath": "src/components/bal-label/bal-label.tsx",
       "fileName": "bal-label.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-label/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-label/usage",
       "tag": "bal-label",
       "overview": "",
       "usage": {},
@@ -16699,11 +16699,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list",
       "filePath": "src/components/bal-list/bal-list.tsx",
       "fileName": "bal-list.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/usage",
       "tag": "bal-list",
       "overview": "",
       "usage": {},
@@ -16905,11 +16905,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item",
       "filePath": "src/components/bal-list/bal-list-item/bal-list-item.tsx",
       "fileName": "bal-list-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item/usage",
       "tag": "bal-list-item",
       "overview": "",
       "usage": {},
@@ -17362,11 +17362,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-body",
       "filePath": "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx",
       "fileName": "bal-list-item-accordion-body.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-body/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-body/usage",
       "tag": "bal-list-item-accordion-body",
       "overview": "",
       "usage": {},
@@ -17501,11 +17501,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-head",
       "filePath": "src/components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head.tsx",
       "fileName": "bal-list-item-accordion-head.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-head/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-accordion-head/usage",
       "tag": "bal-list-item-accordion-head",
       "overview": "",
       "usage": {},
@@ -17626,11 +17626,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-content",
       "filePath": "src/components/bal-list/bal-list-item-content/bal-list-item-content.tsx",
       "fileName": "bal-list-item-content.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-content/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-content/usage",
       "tag": "bal-list-item-content",
       "overview": "",
       "usage": {},
@@ -17683,11 +17683,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-icon",
       "filePath": "src/components/bal-list/bal-list-item-icon/bal-list-item-icon.tsx",
       "fileName": "bal-list-item-icon.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-icon/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-icon/usage",
       "tag": "bal-list-item-icon",
       "overview": "",
       "usage": {},
@@ -17746,11 +17746,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-subtitle",
       "filePath": "src/components/bal-list/bal-list-item-subtitle/bal-list-item-subtitle.tsx",
       "fileName": "bal-list-item-subtitle.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-subtitle/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-subtitle/usage",
       "tag": "bal-list-item-subtitle",
       "overview": "",
       "usage": {},
@@ -17775,11 +17775,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-title",
       "filePath": "src/components/bal-list/bal-list-item-title/bal-list-item-title.tsx",
       "fileName": "bal-list-item-title.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-title/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-list/bal-list-item-title/usage",
       "tag": "bal-list-item-title",
       "overview": "",
       "usage": {},
@@ -17998,11 +17998,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-logo",
       "filePath": "src/components/bal-logo/bal-logo.tsx",
       "fileName": "bal-logo.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-logo/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-logo/usage",
       "tag": "bal-logo",
       "overview": "",
       "usage": {},
@@ -18142,11 +18142,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-modal",
       "filePath": "src/components/bal-modal/bal-modal.tsx",
       "fileName": "bal-modal.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-modal/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-modal/usage",
       "tag": "bal-modal",
       "overview": "",
       "usage": {},
@@ -18668,11 +18668,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-body",
       "filePath": "src/components/bal-modal/bal-modal-body/bal-modal-body.tsx",
       "fileName": "bal-modal-body.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-body/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-body/usage",
       "tag": "bal-modal-body",
       "overview": "",
       "usage": {},
@@ -18691,11 +18691,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-header",
       "filePath": "src/components/bal-modal/bal-modal-header/bal-modal-header.tsx",
       "fileName": "bal-modal-header.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-header/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-modal/bal-modal-header/usage",
       "tag": "bal-modal-header",
       "overview": "",
       "usage": {},
@@ -18725,11 +18725,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav",
       "filePath": "src/components/bal-nav/bal-nav.tsx",
       "fileName": "bal-nav.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/usage",
       "tag": "bal-nav",
       "overview": "",
       "usage": {},
@@ -18945,11 +18945,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link",
       "filePath": "src/components/bal-nav/bal-nav-link/bal-nav-link.tsx",
       "fileName": "bal-nav-link.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link/usage",
       "tag": "bal-nav-link",
       "overview": "",
       "usage": {},
@@ -19168,11 +19168,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid",
       "filePath": "src/components/bal-nav/bal-nav-link-grid/bal-nav-link-grid.tsx",
       "fileName": "bal-nav-link-grid.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid/usage",
       "tag": "bal-nav-link-grid",
       "overview": "",
       "usage": {},
@@ -19197,11 +19197,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid-col",
       "filePath": "src/components/bal-nav/bal-nav-link-grid-col/bal-nav-link-grid-col.tsx",
       "fileName": "bal-nav-link-grid-col.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid-col/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-grid-col/usage",
       "tag": "bal-nav-link-grid-col",
       "overview": "",
       "usage": {},
@@ -19261,11 +19261,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-group",
       "filePath": "src/components/bal-nav/bal-nav-link-group/bal-nav-link-group.tsx",
       "fileName": "bal-nav-link-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-link-group/usage",
       "tag": "bal-nav-link-group",
       "overview": "",
       "usage": {},
@@ -19339,11 +19339,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-bar",
       "filePath": "src/components/bal-nav/bal-nav-menu-bar/bal-nav-menu-bar.tsx",
       "fileName": "bal-nav-menu-bar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-bar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-bar/usage",
       "tag": "bal-nav-menu-bar",
       "overview": "",
       "usage": {},
@@ -19451,11 +19451,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-flyout",
       "filePath": "src/components/bal-nav/bal-nav-menu-flyout/bal-nav-menu-flyout.tsx",
       "fileName": "bal-nav-menu-flyout.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-flyout/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-menu-flyout/usage",
       "tag": "bal-nav-menu-flyout",
       "overview": "",
       "usage": {},
@@ -19536,11 +19536,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-meta-bar",
       "filePath": "src/components/bal-nav/bal-nav-meta-bar/bal-nav-meta-bar.tsx",
       "fileName": "bal-nav-meta-bar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-meta-bar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-nav/bal-nav-meta-bar/usage",
       "tag": "bal-nav-meta-bar",
       "overview": "",
       "usage": {},
@@ -19774,11 +19774,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar",
       "filePath": "src/components/bal-navbar/bal-navbar.tsx",
       "fileName": "bal-navbar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/usage",
       "tag": "bal-navbar",
       "overview": "",
       "usage": {},
@@ -19942,11 +19942,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-brand",
       "filePath": "src/components/bal-navbar/bal-navbar-brand/bal-navbar-brand.tsx",
       "fileName": "bal-navbar-brand.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-brand/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-brand/usage",
       "tag": "bal-navbar-brand",
       "overview": "",
       "usage": {},
@@ -20311,11 +20311,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu",
       "filePath": "src/components/bal-navbar/bal-navbar-menu/bal-navbar-menu.tsx",
       "fileName": "bal-navbar-menu.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu/usage",
       "tag": "bal-navbar-menu",
       "overview": "",
       "usage": {},
@@ -20334,11 +20334,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-end",
       "filePath": "src/components/bal-navbar/bal-navbar-menu-end/bal-navbar-menu-end.tsx",
       "fileName": "bal-navbar-menu-end.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-end/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-end/usage",
       "tag": "bal-navbar-menu-end",
       "overview": "",
       "usage": {},
@@ -20357,11 +20357,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-start",
       "filePath": "src/components/bal-navbar/bal-navbar-menu-start/bal-navbar-menu-start.tsx",
       "fileName": "bal-navbar-menu-start.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-start/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-navbar/bal-navbar-menu-start/usage",
       "tag": "bal-navbar-menu-start",
       "overview": "",
       "usage": {},
@@ -20380,11 +20380,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-notices",
       "filePath": "src/components/bal-notices/bal-notices.tsx",
       "fileName": "bal-notices.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-notices/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-notices/usage",
       "tag": "bal-notices",
       "overview": "",
       "usage": {},
@@ -20403,11 +20403,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-notification",
       "filePath": "src/components/bal-notification/bal-notification.tsx",
       "fileName": "bal-notification.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-notification/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-notification/usage",
       "tag": "bal-notification",
       "overview": "",
       "usage": {},
@@ -20539,11 +20539,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-number-input",
       "filePath": "src/components/bal-number-input/bal-number-input.tsx",
       "fileName": "bal-number-input.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-number-input/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-number-input/usage",
       "tag": "bal-number-input",
       "overview": "",
       "usage": {},
@@ -21158,11 +21158,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-option",
       "filePath": "src/components/bal-option/bal-option.tsx",
       "fileName": "bal-option.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-option/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-option/usage",
       "tag": "bal-option",
       "overview": "",
       "usage": {},
@@ -21488,11 +21488,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-option-list",
       "filePath": "src/components/bal-option-list/bal-option-list.tsx",
       "fileName": "bal-option-list.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-option-list/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-option-list/usage",
       "tag": "bal-option-list",
       "overview": "",
       "usage": {},
@@ -22231,11 +22231,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-pagination",
       "filePath": "src/components/bal-pagination/bal-pagination.tsx",
       "fileName": "bal-pagination.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-pagination/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-pagination/usage",
       "tag": "bal-pagination",
       "overview": "",
       "usage": {},
@@ -22618,11 +22618,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-popover",
       "filePath": "src/components/bal-popover/bal-popover.tsx",
       "fileName": "bal-popover.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-popover/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-popover/usage",
       "tag": "bal-popover",
       "overview": "",
       "usage": {},
@@ -23073,7 +23073,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -23112,7 +23112,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -23151,7 +23151,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -23259,11 +23259,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover-content",
       "filePath": "src/components/bal-popover/bal-popover-content/bal-popover-content.tsx",
       "fileName": "bal-popover-content.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover-content/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover-content/usage",
       "tag": "bal-popover-content",
       "overview": "",
       "usage": {},
@@ -23590,11 +23590,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-popup",
       "filePath": "src/components/bal-popup/bal-popup.tsx",
       "fileName": "bal-popup.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-popup/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-popup/usage",
       "tag": "bal-popup",
       "overview": "",
       "usage": {},
@@ -24156,11 +24156,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-progress-bar",
       "filePath": "src/components/bal-progress-bar/bal-progress-bar.tsx",
       "fileName": "bal-progress-bar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-progress-bar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-progress-bar/usage",
       "tag": "bal-progress-bar",
       "overview": "",
       "usage": {},
@@ -24339,11 +24339,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-radio",
       "filePath": "src/components/bal-radio/bal-radio.tsx",
       "fileName": "bal-radio.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-radio/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-radio/usage",
       "tag": "bal-radio",
       "overview": "",
       "usage": {},
@@ -24886,11 +24886,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-group",
       "filePath": "src/components/bal-radio/bal-radio-group/bal-radio-group.tsx",
       "fileName": "bal-radio-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-group/usage",
       "tag": "bal-radio-group",
       "overview": "",
       "usage": {},
@@ -25544,11 +25544,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-icon",
       "filePath": "src/components/bal-radio/bal-radio-icon/bal-radio-icon.tsx",
       "fileName": "bal-radio-icon.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-icon/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-radio/bal-radio-icon/usage",
       "tag": "bal-radio-icon",
       "overview": "",
       "usage": {},
@@ -25690,11 +25690,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-segment",
       "filePath": "src/components/bal-segment/bal-segment.tsx",
       "fileName": "bal-segment.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-segment/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-segment/usage",
       "tag": "bal-segment",
       "overview": "",
       "usage": {},
@@ -25992,11 +25992,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-segment/bal-segment-item",
       "filePath": "src/components/bal-segment/bal-segment-item/bal-segment-item.tsx",
       "fileName": "bal-segment-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-segment/bal-segment-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-segment/bal-segment-item/usage",
       "tag": "bal-segment-item",
       "overview": "",
       "usage": {},
@@ -26158,11 +26158,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-select",
       "filePath": "src/components/bal-select/bal-select.tsx",
       "fileName": "bal-select.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-select/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-select/usage",
       "tag": "bal-select",
       "overview": "",
       "usage": {},
@@ -27320,11 +27320,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-select/bal-select-option",
       "filePath": "src/components/bal-select/bal-select-option/bal-select-option.tsx",
       "fileName": "bal-select-option.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-select/bal-select-option/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-select/bal-select-option/usage",
       "tag": "bal-select-option",
       "overview": "",
       "usage": {},
@@ -27425,11 +27425,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-shape",
       "filePath": "src/components/bal-shape/bal-shape.tsx",
       "fileName": "bal-shape.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-shape/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-shape/usage",
       "tag": "bal-shape",
       "overview": "",
       "usage": {},
@@ -27608,11 +27608,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-sheet",
       "filePath": "src/components/bal-sheet/bal-sheet.tsx",
       "fileName": "bal-sheet.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-sheet/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-sheet/usage",
       "tag": "bal-sheet",
       "overview": "",
       "usage": {},
@@ -27682,11 +27682,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-snackbar",
       "filePath": "src/components/bal-snackbar/bal-snackbar.tsx",
       "fileName": "bal-snackbar.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-snackbar/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-snackbar/usage",
       "tag": "bal-snackbar",
       "overview": "",
       "usage": {},
@@ -28088,11 +28088,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-spinner",
       "filePath": "src/components/bal-spinner/bal-spinner.tsx",
       "fileName": "bal-spinner.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-spinner/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-spinner/usage",
       "tag": "bal-spinner",
       "overview": "",
       "usage": {},
@@ -28287,11 +28287,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stack",
       "filePath": "src/components/bal-stack/bal-stack.tsx",
       "fileName": "bal-stack.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stack/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stack/usage",
       "tag": "bal-stack",
       "overview": "",
       "usage": {},
@@ -28861,11 +28861,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage",
       "filePath": "src/components/bal-stage/bal-stage.tsx",
       "fileName": "bal-stage.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/usage",
       "tag": "bal-stage",
       "overview": "",
       "usage": {},
@@ -29125,11 +29125,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-back-link",
       "filePath": "src/components/bal-stage/bal-stage-back-link/bal-stage-back-link.tsx",
       "fileName": "bal-stage-back-link.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-back-link/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-back-link/usage",
       "tag": "bal-stage-back-link",
       "overview": "",
       "usage": {},
@@ -29259,11 +29259,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-body",
       "filePath": "src/components/bal-stage/bal-stage-body/bal-stage-body.tsx",
       "fileName": "bal-stage-body.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-body/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-body/usage",
       "tag": "bal-stage-body",
       "overview": "",
       "usage": {},
@@ -29282,11 +29282,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-foot",
       "filePath": "src/components/bal-stage/bal-stage-foot/bal-stage-foot.tsx",
       "fileName": "bal-stage-foot.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-foot/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-foot/usage",
       "tag": "bal-stage-foot",
       "overview": "",
       "usage": {},
@@ -29305,11 +29305,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-head",
       "filePath": "src/components/bal-stage/bal-stage-head/bal-stage-head.tsx",
       "fileName": "bal-stage-head.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-head/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-head/usage",
       "tag": "bal-stage-head",
       "overview": "",
       "usage": {},
@@ -29328,11 +29328,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-image",
       "filePath": "src/components/bal-stage/bal-stage-image/bal-stage-image.tsx",
       "fileName": "bal-stage-image.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-image/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-stage/bal-stage-image/usage",
       "tag": "bal-stage-image",
       "overview": "",
       "usage": {},
@@ -29398,11 +29398,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-steps/bal-step-item",
       "filePath": "src/components/bal-steps/bal-step-item/bal-step-item.tsx",
       "fileName": "bal-step-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-steps/bal-step-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-steps/bal-step-item/usage",
       "tag": "bal-step-item",
       "overview": "",
       "usage": {},
@@ -29835,11 +29835,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-steps",
       "filePath": "src/components/bal-steps/bal-steps.tsx",
       "fileName": "bal-steps.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-steps/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-steps/usage",
       "tag": "bal-steps",
       "overview": "",
       "usage": {},
@@ -30140,11 +30140,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-switch",
       "filePath": "src/components/bal-checkbox/bal-switch/bal-switch.tsx",
       "fileName": "bal-switch.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-switch/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-checkbox/bal-switch/usage",
       "tag": "bal-switch",
       "overview": "",
       "usage": {},
@@ -30257,11 +30257,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-tabs/bal-tab-item",
       "filePath": "src/components/bal-tabs/bal-tab-item/bal-tab-item.tsx",
       "fileName": "bal-tab-item.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-tabs/bal-tab-item/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-tabs/bal-tab-item/usage",
       "tag": "bal-tab-item",
       "overview": "",
       "usage": {},
@@ -30832,11 +30832,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-table",
       "filePath": "src/components/bal-table/bal-table.tsx",
       "fileName": "bal-table.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-table/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-table/usage",
       "tag": "bal-table",
       "overview": "",
       "usage": {},
@@ -30885,11 +30885,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-tabs",
       "filePath": "src/components/bal-tabs/bal-tabs.tsx",
       "fileName": "bal-tabs.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-tabs/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-tabs/usage",
       "tag": "bal-tabs",
       "overview": "",
       "usage": {},
@@ -31742,11 +31742,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-tag",
       "filePath": "src/components/bal-tag/bal-tag.tsx",
       "fileName": "bal-tag.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-tag/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-tag/usage",
       "tag": "bal-tag",
       "overview": "",
       "usage": {},
@@ -32079,11 +32079,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-tag/bal-tag-group",
       "filePath": "src/components/bal-tag/bal-tag-group/bal-tag-group.tsx",
       "fileName": "bal-tag-group.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-tag/bal-tag-group/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-tag/bal-tag-group/usage",
       "tag": "bal-tag-group",
       "overview": "",
       "usage": {},
@@ -32102,11 +32102,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-text",
       "filePath": "src/components/bal-text/bal-text.tsx",
       "fileName": "bal-text.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-text/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-text/usage",
       "tag": "bal-text",
       "overview": "",
       "usage": {},
@@ -32540,11 +32540,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-textarea",
       "filePath": "src/components/bal-textarea/bal-textarea.tsx",
       "fileName": "bal-textarea.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-textarea/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-textarea/usage",
       "tag": "bal-textarea",
       "overview": "",
       "usage": {},
@@ -33497,11 +33497,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-time-input",
       "filePath": "src/components/bal-time-input/bal-time-input.tsx",
       "fileName": "bal-time-input.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-time-input/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-time-input/usage",
       "tag": "bal-time-input",
       "overview": "",
       "usage": {},
@@ -33938,11 +33938,11 @@
       ]
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-toast",
       "filePath": "src/components/bal-toast/bal-toast.tsx",
       "fileName": "bal-toast.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-toast/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-toast/usage",
       "tag": "bal-toast",
       "overview": "",
       "usage": {},
@@ -34189,11 +34189,11 @@
       "listeners": []
     },
     {
-      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip",
+      "dirPath": "/__w/design-system/design-system/packages/core/src/components/bal-tooltip",
       "filePath": "src/components/bal-tooltip/bal-tooltip.tsx",
       "fileName": "bal-tooltip.tsx",
-      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip/readme.md",
-      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip/usage",
+      "readmePath": "/__w/design-system/design-system/packages/core/src/components/bal-tooltip/readme.md",
+      "usagesDir": "/__w/design-system/design-system/packages/core/src/components/bal-tooltip/usage",
       "tag": "bal-tooltip",
       "overview": "",
       "usage": {},
