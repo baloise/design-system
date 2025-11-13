@@ -6,7 +6,6 @@ import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-radio-buttons',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">

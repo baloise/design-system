@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
+import type { Components } from '@baloise/ds-core'
 import { BalModalService, balImports } from '../design-system'
 import { CheckboxGroupComponent } from './form-components/checkbox-group.component'
 import { CheckboxTilesComponent } from './form-components/checkbox-tiles.component'
@@ -27,7 +28,6 @@ export interface UpdateControl {
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
@@ -89,7 +89,7 @@ export interface UpdateControl {
 })
 export class AppComponent {
   modalData!: any
-  modal!: HTMLBalModalElement
+  modal!: HTMLElement & Components.BalModal
 
   myForm = new FormGroup({
     input: new FormControl('Init Value', [Validators.required]),
