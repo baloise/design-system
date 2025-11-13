@@ -50,6 +50,7 @@
     "@baloise/ds-maps": "19.8.3",
     "@baloise/ds-brand-icons": "19.8.3",
     "@baloise/ds-favicons": "19.8.3",
+    "@playwright/test": "^1.56.1",
     "compression": "~1.7.4",
     "express": "~4.18.2",
     "serve-index": "~1.9.1",

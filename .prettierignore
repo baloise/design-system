@@ -36,5 +36,6 @@ e2e/cypress/downloads
 
 package-lock.json
 *.svg
+resources/data/components.json
 
 /.nx/workspace-data
