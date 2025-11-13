@@ -11,6 +11,7 @@
   },
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
+  "type": "module",
   "dependencies": {
     "@playwright/test": "^1.56.1",
     "@axe-core/playwright": "^4.10.1",
