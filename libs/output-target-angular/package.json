@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@stencil/core": "4.38.3",
-    "tslib": "~2.3.0"
+    "tslib": "^2.3.0"
   },
   "type": "commonjs",
   "main": "./dist/src/index.js",
