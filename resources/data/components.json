@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-13T09:59:46",
+  "timestamp": "2025-11-13T14:20:07",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.38.3",
@@ -22650,7 +22650,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22689,7 +22689,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22728,7 +22728,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
