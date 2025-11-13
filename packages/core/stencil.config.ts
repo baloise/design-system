@@ -5,6 +5,7 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
+import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
@@ -66,6 +67,13 @@ export const config: Config = {
   ],
   extras: {
     /**
+     * Projects that use a Stencil library built using the `dist` output target may have trouble lazily
+     * loading components when using a bundler such as Vite or Parcel. Setting this flag to `true` will change how Stencil
+     * lazily loads components in a way that works with additional bundlers. Setting this flag to `true` will increase
+     * the size of the compiled output. Defaults to `false`.
+     */
+    enableImportInjection: true,
+    /**
      * When a component is first attached to the DOM, this setting will wait a single tick before
      * rendering. This works around an Angular issue, where Angular attaches the elements before
      * settings their initial state, leading to double renders and unnecessary event dispatches.
@@ -86,10 +94,10 @@ export const config: Config = {
     experimentalScopedSlotChanges: true,
   },
   outputTargets: [
-    {
+    docsJsonWithoutTimestamp({
       type: 'docs-json',
       file: '../../resources/data/components.json',
-    },
+    }),
     ...(!IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {

@@ -1,5 +1,4 @@
 {
-  "timestamp": "2025-11-13T15:08:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.38.3",
@@ -7,12 +6,30 @@
   },
   "components": [
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion",
       "filePath": "src/components/bal-accordion/bal-accordion.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-accordion.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/usage",
       "tag": "bal-accordion",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-accordion": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "active",
@@ -345,49 +362,49 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-accordion": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details",
       "filePath": "src/components/bal-accordion/bal-accordion-details/bal-accordion-details.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-accordion-details.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-details/usage",
       "tag": "bal-accordion-details",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary",
       "filePath": "src/components/bal-accordion/bal-accordion-summary/bal-accordion-summary.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-accordion-summary.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-summary/usage",
       "tag": "bal-accordion-summary",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "trigger",
@@ -421,21 +438,38 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger",
       "filePath": "src/components/bal-accordion/bal-accordion-trigger/bal-accordion-trigger.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-accordion-trigger.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-accordion/bal-accordion-trigger/usage",
       "tag": "bal-accordion-trigger",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-accordion-trigger": [
+          "bal-button",
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "button",
@@ -789,33 +823,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-accordion-trigger": [
-          "bal-button",
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app",
       "filePath": "src/components/bal-app/bal-app.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-app.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-app/usage",
       "tag": "bal-app",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-doc-app"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-doc-app": [
+          "bal-app"
+        ]
+      },
       "props": [
         {
           "name": "animated",
@@ -903,27 +936,37 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-doc-app"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge",
       "filePath": "src/components/bal-badge/bal-badge.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-badge.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-badge/usage",
       "tag": "bal-badge",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-tabs"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-badge"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -1105,32 +1148,71 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button",
+      "filePath": "src/components/bal-button/bal-button.tsx",
+      "fileName": "bal-button.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/usage",
+      "tag": "bal-button",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-tabs"
+        "bal-accordion",
+        "bal-accordion-trigger",
+        "bal-card-button",
+        "bal-data-value",
+        "bal-hint",
+        "bal-input-stepper",
+        "bal-nav",
+        "bal-navbar-brand",
+        "bal-snackbar"
       ],
       "dependencies": [
+        "bal-spinner",
         "bal-icon"
       ],
       "dependencyGraph": {
-        "bal-badge": [
+        "bal-button": [
+          "bal-spinner",
           "bal-icon"
         ],
-        "bal-tabs": [
-          "bal-badge"
+        "bal-accordion": [
+          "bal-button"
+        ],
+        "bal-accordion-trigger": [
+          "bal-button"
+        ],
+        "bal-card-button": [
+          "bal-button"
+        ],
+        "bal-data-value": [
+          "bal-button"
+        ],
+        "bal-hint": [
+          "bal-button"
+        ],
+        "bal-input-stepper": [
+          "bal-button"
+        ],
+        "bal-nav": [
+          "bal-button"
+        ],
+        "bal-navbar-brand": [
+          "bal-button"
+        ],
+        "bal-snackbar": [
+          "bal-button"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-button/bal-button.tsx",
-      "encapsulation": "none",
-      "tag": "bal-button",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "a11yControls",
@@ -2135,6 +2217,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -2142,66 +2227,33 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-accordion",
-        "bal-accordion-trigger",
-        "bal-card-button",
-        "bal-data-value",
-        "bal-hint",
-        "bal-input-stepper",
-        "bal-nav",
-        "bal-navbar-brand",
-        "bal-snackbar"
-      ],
-      "dependencies": [
-        "bal-spinner",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-accordion": [
-          "bal-button"
-        ],
-        "bal-accordion-trigger": [
-          "bal-button"
-        ],
-        "bal-card-button": [
-          "bal-button"
-        ],
-        "bal-data-value": [
-          "bal-button"
-        ],
-        "bal-hint": [
-          "bal-button"
-        ],
-        "bal-input-stepper": [
-          "bal-button"
-        ],
-        "bal-nav": [
-          "bal-button"
-        ],
-        "bal-navbar-brand": [
-          "bal-button"
-        ],
-        "bal-snackbar": [
-          "bal-button"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group",
       "filePath": "src/components/bal-button/bal-button-group/bal-button-group.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-button-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-button/bal-button-group/usage",
       "tag": "bal-button-group",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-card-actions",
+        "bal-hint"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-card-actions": [
+          "bal-button-group"
+        ],
+        "bal-hint": [
+          "bal-button-group"
+        ]
+      },
       "props": [
         {
           "name": "direction",
@@ -2320,31 +2372,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card",
+      "filePath": "src/components/bal-card/bal-card.tsx",
+      "fileName": "bal-card.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/usage",
+      "tag": "bal-card",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-card-actions",
-        "bal-hint"
+        "bal-carousel",
+        "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-actions": [
-          "bal-button-group"
+        "bal-carousel": [
+          "bal-card"
         ],
-        "bal-hint": [
-          "bal-button-group"
+        "bal-file-upload": [
+          "bal-card"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-card/bal-card.tsx",
-      "encapsulation": "none",
-      "tag": "bal-card",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "border",
@@ -2748,31 +2805,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-carousel",
-        "bal-file-upload"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-carousel": [
-          "bal-card"
-        ],
-        "bal-file-upload": [
-          "bal-card"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions",
       "filePath": "src/components/bal-card/bal-card-actions/bal-card-actions.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-card-actions.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-actions/usage",
       "tag": "bal-card-actions",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button-group"
+      ],
+      "dependencyGraph": {
+        "bal-card-actions": [
+          "bal-button-group"
+        ]
+      },
       "props": [
         {
           "name": "position",
@@ -2819,27 +2877,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button-group"
-      ],
-      "dependencyGraph": {
-        "bal-card-actions": [
-          "bal-button-group"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button",
       "filePath": "src/components/bal-card/bal-card-button/bal-card-button.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-card-button.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-button/usage",
       "tag": "bal-card-button",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-card-button": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -3096,38 +3163,23 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-card-button": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content",
       "filePath": "src/components/bal-card/bal-card-content/bal-card-content.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-card-content.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-content/usage",
       "tag": "bal-card-content",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-carousel"
       ],
@@ -3136,15 +3188,30 @@
         "bal-carousel": [
           "bal-card-content"
         ]
-      }
+      },
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle",
       "filePath": "src/components/bal-card/bal-card-subtitle/bal-card-subtitle.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-card-subtitle.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-subtitle/usage",
       "tag": "bal-card-subtitle",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "bold",
@@ -3269,21 +3336,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title",
       "filePath": "src/components/bal-card/bal-card-title/bal-card-title.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-card-title.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-card/bal-card-title/usage",
       "tag": "bal-card-title",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-heading"
+      ],
+      "dependencyGraph": {
+        "bal-card-title": [
+          "bal-heading"
+        ]
+      },
       "props": [
         {
           "name": "inverted",
@@ -3317,27 +3395,34 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-heading"
-      ],
-      "dependencyGraph": {
-        "bal-card-title": [
-          "bal-heading"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel",
       "filePath": "src/components/bal-carousel/bal-carousel.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-carousel.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/usage",
       "tag": "bal-carousel",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-card",
+        "bal-card-content"
+      ],
+      "dependencyGraph": {
+        "bal-carousel": [
+          "bal-card",
+          "bal-card-content"
+        ]
+      },
       "props": [
         {
           "name": "aspectRatio",
@@ -3918,6 +4003,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "touchmove",
@@ -3925,29 +4013,23 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-card",
-        "bal-card-content"
-      ],
-      "dependencyGraph": {
-        "bal-carousel": [
-          "bal-card",
-          "bal-card-content"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item",
       "filePath": "src/components/bal-carousel/bal-carousel-item/bal-carousel-item.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-carousel-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-carousel/bal-carousel-item/usage",
       "tag": "bal-carousel-item",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "color",
@@ -4421,21 +4503,37 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check",
       "filePath": "src/components/bal-checkbox/bal-check/bal-check.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-check.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-check/usage",
       "tag": "bal-check",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-option"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-check": [
+          "bal-icon"
+        ],
+        "bal-option": [
+          "bal-check"
+        ]
+      },
       "props": [
         {
           "name": "checked",
@@ -4556,32 +4654,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-option"
-      ],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-check": [
-          "bal-icon"
-        ],
-        "bal-option": [
-          "bal-check"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox",
       "filePath": "src/components/bal-checkbox/bal-checkbox.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-checkbox.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/usage",
       "tag": "bal-checkbox",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-checkbox-group",
+        "bal-select"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-checkbox-group": [
+          "bal-checkbox"
+        ],
+        "bal-select": [
+          "bal-checkbox"
+        ]
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -5162,6 +5264,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -5175,31 +5280,29 @@
           "capture": true,
           "passive": false
         }
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group",
+      "filePath": "src/components/bal-checkbox/bal-checkbox-group/bal-checkbox-group.tsx",
+      "fileName": "bal-checkbox-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-checkbox-group/usage",
+      "tag": "bal-checkbox-group",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-checkbox"
       ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-checkbox-group",
-        "bal-select"
-      ],
-      "dependencies": [],
       "dependencyGraph": {
         "bal-checkbox-group": [
           "bal-checkbox"
-        ],
-        "bal-select": [
-          "bal-checkbox"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-checkbox/bal-checkbox-group/bal-checkbox-group.tsx",
-      "encapsulation": "none",
-      "tag": "bal-checkbox-group",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -5807,6 +5910,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "balChange",
@@ -5832,27 +5938,50 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-checkbox"
-      ],
-      "dependencyGraph": {
-        "bal-checkbox-group": [
-          "bal-checkbox"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close",
       "filePath": "src/components/bal-close/bal-close.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-close.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-close/usage",
       "tag": "bal-close",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-modal-header",
+        "bal-popup",
+        "bal-snackbar",
+        "bal-tag",
+        "bal-toast"
+      ],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-modal-header": [
+          "bal-close"
+        ],
+        "bal-popup": [
+          "bal-close"
+        ],
+        "bal-snackbar": [
+          "bal-close"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-toast": [
+          "bal-close"
+        ]
+      },
       "props": [
         {
           "name": "inverted",
@@ -5928,48 +6057,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-modal-header",
-        "bal-popup",
-        "bal-snackbar",
-        "bal-tag",
-        "bal-toast"
-      ],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-modal-header": [
-          "bal-close"
-        ],
-        "bal-popup": [
-          "bal-close"
-        ],
-        "bal-snackbar": [
-          "bal-close"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-toast": [
-          "bal-close"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content",
       "filePath": "src/components/bal-content/bal-content.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-content.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-content/usage",
       "tag": "bal-content",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-segment-item"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-segment-item": [
+          "bal-content"
+        ]
+      },
       "props": [
         {
           "name": "align",
@@ -6120,27 +6233,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-segment-item"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-segment-item": [
-          "bal-content"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data",
       "filePath": "src/components/bal-data/bal-data.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-data.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/usage",
       "tag": "bal-data",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "border",
@@ -6203,21 +6315,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item",
       "filePath": "src/components/bal-data/bal-data-item/bal-data-item.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-data-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-item/usage",
       "tag": "bal-data-item",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "border",
@@ -6280,21 +6397,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label",
       "filePath": "src/components/bal-data/bal-data-label/bal-data-label.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-data-label.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-label/usage",
       "tag": "bal-data-label",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "required",
@@ -6328,21 +6450,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value",
       "filePath": "src/components/bal-data/bal-data-value/bal-data-value.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-data-value.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-data/bal-data-value/usage",
       "tag": "bal-data-value",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-data-value": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -6492,31 +6629,42 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-data-value": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date",
       "filePath": "src/components/bal-date/bal-date.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-date.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/usage",
       "tag": "bal-date",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-input-group",
+        "bal-input-date",
+        "bal-icon",
+        "bal-date-calendar"
+      ],
+      "dependencyGraph": {
+        "bal-date": [
+          "bal-input-group",
+          "bal-input-date",
+          "bal-icon",
+          "bal-date-calendar"
+        ],
+        "bal-date-calendar": [
+          "bal-date-calendar-cell",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "allowInvalidValue",
@@ -7589,37 +7737,39 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar",
+      "filePath": "src/components/bal-date/bal-date-calendar/bal-date-calendar.tsx",
+      "fileName": "bal-date-calendar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar/usage",
+      "tag": "bal-date-calendar",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [
+        "bal-date"
+      ],
       "dependencies": [
-        "bal-input-group",
-        "bal-input-date",
-        "bal-icon",
-        "bal-date-calendar"
+        "bal-date-calendar-cell",
+        "bal-icon"
       ],
       "dependencyGraph": {
-        "bal-date": [
-          "bal-input-group",
-          "bal-input-date",
-          "bal-icon",
-          "bal-date-calendar"
-        ],
         "bal-date-calendar": [
           "bal-date-calendar-cell",
           "bal-icon"
+        ],
+        "bal-date": [
+          "bal-date-calendar"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-date/bal-date-calendar/bal-date-calendar.tsx",
-      "encapsulation": "shadow",
-      "tag": "bal-date-calendar",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "allowedDates",
@@ -7815,34 +7965,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-date"
-      ],
-      "dependencies": [
-        "bal-date-calendar-cell",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-date-calendar": [
-          "bal-date-calendar-cell",
-          "bal-icon"
-        ],
-        "bal-date": [
-          "bal-date-calendar"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell",
       "filePath": "src/components/bal-date/bal-date-calendar-cell/bal-date-calendar-cell.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-date-calendar-cell.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-date/bal-date-calendar-cell/usage",
       "tag": "bal-date-calendar-cell",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-date-calendar"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-date-calendar": [
+          "bal-date-calendar-cell"
+        ]
+      },
       "props": [
         {
           "name": "day",
@@ -8069,27 +8217,26 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-date-calendar"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-date-calendar": [
-          "bal-date-calendar-cell"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider",
       "filePath": "src/components/bal-divider/bal-divider.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-divider.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-divider/usage",
       "tag": "bal-divider",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "borderStyle",
@@ -8335,21 +8482,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown",
       "filePath": "src/components/bal-dropdown/bal-dropdown.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-dropdown.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-dropdown/usage",
       "tag": "bal-dropdown",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "autocomplete",
@@ -9362,21 +9514,26 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field",
       "filePath": "src/components/bal-field/bal-field.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-field.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/usage",
       "tag": "bal-field",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "disabled",
@@ -9604,21 +9761,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control",
       "filePath": "src/components/bal-field/bal-field-control/bal-field-control.tsx",
-      "encapsulation": "scoped",
+      "fileName": "bal-field-control.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-control/usage",
       "tag": "bal-field-control",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "scoped",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-field-control": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "expandedOnMobile",
@@ -9749,27 +9917,54 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-field-control": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint",
       "filePath": "src/components/bal-field/bal-field-hint/bal-field-hint.tsx",
-      "encapsulation": "scoped",
+      "fileName": "bal-field-hint.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-hint/usage",
       "tag": "bal-field-hint",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "scoped",
+      "dependents": [],
+      "dependencies": [
+        "bal-hint",
+        "bal-hint-title",
+        "bal-hint-text"
+      ],
+      "dependencyGraph": {
+        "bal-field-hint": [
+          "bal-hint",
+          "bal-hint-title",
+          "bal-hint-text"
+        ],
+        "bal-hint": [
+          "bal-icon",
+          "bal-button-group",
+          "bal-button",
+          "bal-popup"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "closeLabel",
@@ -9890,49 +10085,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-hint",
-        "bal-hint-title",
-        "bal-hint-text"
-      ],
-      "dependencyGraph": {
-        "bal-field-hint": [
-          "bal-hint",
-          "bal-hint-title",
-          "bal-hint-text"
-        ],
-        "bal-hint": [
-          "bal-icon",
-          "bal-button-group",
-          "bal-button",
-          "bal-popup"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-popup": [
-          "bal-stack",
-          "bal-heading",
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label",
       "filePath": "src/components/bal-field/bal-field-label/bal-field-label.tsx",
-      "encapsulation": "scoped",
+      "fileName": "bal-field-label.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-label/usage",
       "tag": "bal-field-label",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "scoped",
+      "dependents": [],
+      "dependencies": [
+        "bal-label"
+      ],
+      "dependencyGraph": {
+        "bal-field-label": [
+          "bal-label"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -10204,27 +10382,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-label"
-      ],
-      "dependencyGraph": {
-        "bal-field-label": [
-          "bal-label"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message",
       "filePath": "src/components/bal-field/bal-field-message/bal-field-message.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-field-message.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-field/bal-field-message/usage",
       "tag": "bal-field-message",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "color",
@@ -10420,21 +10597,51 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload",
       "filePath": "src/components/bal-file-upload/bal-file-upload.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-file-upload.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-file-upload/usage",
       "tag": "bal-file-upload",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-spinner",
+        "bal-icon",
+        "bal-card",
+        "bal-list",
+        "bal-list-item",
+        "bal-list-item-icon",
+        "bal-list-item-content",
+        "bal-list-item-title",
+        "bal-list-item-subtitle"
+      ],
+      "dependencyGraph": {
+        "bal-file-upload": [
+          "bal-spinner",
+          "bal-icon",
+          "bal-card",
+          "bal-list",
+          "bal-list-item",
+          "bal-list-item-icon",
+          "bal-list-item-content",
+          "bal-list-item-title",
+          "bal-list-item-subtitle"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ]
+      },
       "props": [
         {
           "name": "accept",
@@ -11086,6 +11293,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "reset",
@@ -11093,46 +11303,31 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-spinner",
-        "bal-icon",
-        "bal-card",
-        "bal-list",
-        "bal-list-item",
-        "bal-list-item-icon",
-        "bal-list-item-content",
-        "bal-list-item-title",
-        "bal-list-item-subtitle"
-      ],
-      "dependencyGraph": {
-        "bal-file-upload": [
-          "bal-spinner",
-          "bal-icon",
-          "bal-card",
-          "bal-list",
-          "bal-list-item",
-          "bal-list-item-icon",
-          "bal-list-item-content",
-          "bal-list-item-title",
-          "bal-list-item-subtitle"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer",
       "filePath": "src/components/bal-footer/bal-footer.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-footer.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-footer/usage",
       "tag": "bal-footer",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-logo",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-footer": [
+          "bal-logo",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "hideLanguageSelection",
@@ -11316,29 +11511,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-logo",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-footer": [
-          "bal-logo",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form",
       "filePath": "src/components/bal-form/bal-form.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-form.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form/usage",
       "tag": "bal-form",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "formClass",
@@ -11453,21 +11645,26 @@
         }
       ],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col",
       "filePath": "src/components/bal-form-grid/bal-form-col/bal-form-col.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-form-col.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/bal-form-col/usage",
       "tag": "bal-form-col",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "size",
@@ -11531,39 +11728,67 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid",
       "filePath": "src/components/bal-form-grid/bal-form-grid.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-form-grid.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-form-grid/usage",
       "tag": "bal-form-grid",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading",
       "filePath": "src/components/bal-heading/bal-heading.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-heading.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-heading/usage",
       "tag": "bal-heading",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-card-title",
+        "bal-list-item-title",
+        "bal-modal-header",
+        "bal-popup"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-card-title": [
+          "bal-heading"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-modal-header": [
+          "bal-heading"
+        ],
+        "bal-popup": [
+          "bal-heading"
+        ]
+      },
       "props": [
         {
           "name": "autoLevel",
@@ -12051,39 +12276,55 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-card-title",
-        "bal-list-item-title",
-        "bal-modal-header",
-        "bal-popup"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-card-title": [
-          "bal-heading"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
-        "bal-modal-header": [
-          "bal-heading"
-        ],
-        "bal-popup": [
-          "bal-heading"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint",
       "filePath": "src/components/bal-hint/bal-hint.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-hint.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/usage",
       "tag": "bal-hint",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-field-hint"
+      ],
+      "dependencies": [
+        "bal-icon",
+        "bal-button-group",
+        "bal-button",
+        "bal-popup"
+      ],
+      "dependencyGraph": {
+        "bal-hint": [
+          "bal-icon",
+          "bal-button-group",
+          "bal-button",
+          "bal-popup"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-field-hint": [
+          "bal-hint"
+        ]
+      },
       "props": [
         {
           "name": "closeLabel",
@@ -12207,57 +12448,23 @@
         }
       ],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-field-hint"
-      ],
-      "dependencies": [
-        "bal-icon",
-        "bal-button-group",
-        "bal-button",
-        "bal-popup"
-      ],
-      "dependencyGraph": {
-        "bal-hint": [
-          "bal-icon",
-          "bal-button-group",
-          "bal-button",
-          "bal-popup"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-popup": [
-          "bal-stack",
-          "bal-heading",
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-field-hint": [
-          "bal-hint"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text",
       "filePath": "src/components/bal-hint/bal-hint-text/bal-hint-text.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-hint-text.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-text/usage",
       "tag": "bal-hint-text",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-field-hint"
       ],
@@ -12266,22 +12473,27 @@
         "bal-field-hint": [
           "bal-hint-text"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-hint/bal-hint-title/bal-hint-title.tsx",
-      "encapsulation": "none",
-      "tag": "bal-hint-title",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title",
+      "filePath": "src/components/bal-hint/bal-hint-title/bal-hint-title.tsx",
+      "fileName": "bal-hint-title.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-hint/bal-hint-title/usage",
+      "tag": "bal-hint-title",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-field-hint"
       ],
@@ -12290,15 +12502,124 @@
         "bal-field-hint": [
           "bal-hint-title"
         ]
-      }
+      },
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon",
       "filePath": "src/components/bal-icon/bal-icon.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-icon.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-icon/usage",
       "tag": "bal-icon",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-accordion-trigger",
+        "bal-badge",
+        "bal-button",
+        "bal-check",
+        "bal-close",
+        "bal-date",
+        "bal-date-calendar",
+        "bal-field-control",
+        "bal-file-upload",
+        "bal-footer",
+        "bal-hint",
+        "bal-list-item-accordion-head",
+        "bal-nav",
+        "bal-option",
+        "bal-pagination",
+        "bal-segment-item",
+        "bal-select",
+        "bal-snackbar",
+        "bal-stage-back-link",
+        "bal-steps",
+        "bal-switch",
+        "bal-tabs",
+        "bal-time-input"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-accordion-trigger": [
+          "bal-icon"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-icon"
+        ],
+        "bal-check": [
+          "bal-icon"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-date": [
+          "bal-icon"
+        ],
+        "bal-date-calendar": [
+          "bal-icon"
+        ],
+        "bal-field-control": [
+          "bal-icon"
+        ],
+        "bal-file-upload": [
+          "bal-icon"
+        ],
+        "bal-footer": [
+          "bal-icon"
+        ],
+        "bal-hint": [
+          "bal-icon"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-icon"
+        ],
+        "bal-option": [
+          "bal-icon"
+        ],
+        "bal-pagination": [
+          "bal-icon"
+        ],
+        "bal-segment-item": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-icon"
+        ],
+        "bal-snackbar": [
+          "bal-icon"
+        ],
+        "bal-stage-back-link": [
+          "bal-icon"
+        ],
+        "bal-steps": [
+          "bal-icon"
+        ],
+        "bal-switch": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-icon"
+        ],
+        "bal-time-input": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -12762,115 +13083,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-accordion-trigger",
-        "bal-badge",
-        "bal-button",
-        "bal-check",
-        "bal-close",
-        "bal-date",
-        "bal-date-calendar",
-        "bal-field-control",
-        "bal-file-upload",
-        "bal-footer",
-        "bal-hint",
-        "bal-list-item-accordion-head",
-        "bal-nav",
-        "bal-option",
-        "bal-pagination",
-        "bal-segment-item",
-        "bal-select",
-        "bal-snackbar",
-        "bal-stage-back-link",
-        "bal-steps",
-        "bal-switch",
-        "bal-tabs",
-        "bal-time-input"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-accordion-trigger": [
-          "bal-icon"
-        ],
-        "bal-badge": [
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-icon"
-        ],
-        "bal-check": [
-          "bal-icon"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-date": [
-          "bal-icon"
-        ],
-        "bal-date-calendar": [
-          "bal-icon"
-        ],
-        "bal-field-control": [
-          "bal-icon"
-        ],
-        "bal-file-upload": [
-          "bal-icon"
-        ],
-        "bal-footer": [
-          "bal-icon"
-        ],
-        "bal-hint": [
-          "bal-icon"
-        ],
-        "bal-list-item-accordion-head": [
-          "bal-icon"
-        ],
-        "bal-nav": [
-          "bal-icon"
-        ],
-        "bal-option": [
-          "bal-icon"
-        ],
-        "bal-pagination": [
-          "bal-icon"
-        ],
-        "bal-segment-item": [
-          "bal-icon"
-        ],
-        "bal-select": [
-          "bal-icon"
-        ],
-        "bal-snackbar": [
-          "bal-icon"
-        ],
-        "bal-stage-back-link": [
-          "bal-icon"
-        ],
-        "bal-steps": [
-          "bal-icon"
-        ],
-        "bal-switch": [
-          "bal-icon"
-        ],
-        "bal-tabs": [
-          "bal-icon"
-        ],
-        "bal-time-input": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input",
       "filePath": "src/components/bal-input/bal-input.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-input.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/usage",
       "tag": "bal-input",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "accept",
@@ -14133,6 +14365,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -14146,21 +14381,29 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date",
       "filePath": "src/components/bal-input/bal-input-date/bal-input-date.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-input-date.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input/bal-input-date/usage",
       "tag": "bal-input-date",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-date"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-date": [
+          "bal-input-date"
+        ]
+      },
       "props": [
         {
           "name": "allowInvalidValue",
@@ -14887,6 +15130,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "reset",
@@ -14900,27 +15146,33 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group",
+      "filePath": "src/components/bal-input-group/bal-input-group.tsx",
+      "fileName": "bal-input-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-group/usage",
+      "tag": "bal-input-group",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-date"
+        "bal-date",
+        "bal-time-input"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-date": [
-          "bal-input-date"
+          "bal-input-group"
+        ],
+        "bal-time-input": [
+          "bal-input-group"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-input-group/bal-input-group.tsx",
-      "encapsulation": "none",
-      "tag": "bal-input-group",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "disabled",
@@ -15012,31 +15264,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-date",
-        "bal-time-input"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-date": [
-          "bal-input-group"
-        ],
-        "bal-time-input": [
-          "bal-input-group"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider",
       "filePath": "src/components/bal-input-slider/bal-input-slider.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-input-slider.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-slider/usage",
       "tag": "bal-input-slider",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "autoInvalidOff",
@@ -15566,6 +15813,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -15579,21 +15829,33 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper",
       "filePath": "src/components/bal-input-stepper/bal-input-stepper.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-input-stepper.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-input-stepper/usage",
       "tag": "bal-input-stepper",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-input-stepper": [
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -16030,6 +16292,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -16043,31 +16308,33 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-input-stepper": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label",
       "filePath": "src/components/bal-label/bal-label.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-label.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-label/usage",
       "tag": "bal-label",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-field-label",
+        "bal-segment-item"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-field-label": [
+          "bal-label"
+        ],
+        "bal-segment-item": [
+          "bal-label"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -16426,31 +16693,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list",
+      "filePath": "src/components/bal-list/bal-list.tsx",
+      "fileName": "bal-list.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/usage",
+      "tag": "bal-list",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-field-label",
-        "bal-segment-item"
+        "bal-file-upload",
+        "bal-nav"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-field-label": [
-          "bal-label"
+        "bal-file-upload": [
+          "bal-list"
         ],
-        "bal-segment-item": [
-          "bal-label"
+        "bal-nav": [
+          "bal-list"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-list/bal-list.tsx",
-      "encapsulation": "none",
-      "tag": "bal-list",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "accordionOneLevel",
@@ -16627,10 +16899,23 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item",
+      "filePath": "src/components/bal-list/bal-list-item/bal-list-item.tsx",
+      "fileName": "bal-list-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item/usage",
+      "tag": "bal-list-item",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-file-upload",
         "bal-nav"
@@ -16638,20 +16923,12 @@
       "dependencies": [],
       "dependencyGraph": {
         "bal-file-upload": [
-          "bal-list"
+          "bal-list-item"
         ],
         "bal-nav": [
-          "bal-list"
+          "bal-list-item"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-list/bal-list-item/bal-list-item.tsx",
-      "encapsulation": "none",
-      "tag": "bal-list-item",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "accordion",
@@ -17079,31 +17356,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body",
+      "filePath": "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx",
+      "fileName": "bal-list-item-accordion-body.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-body/usage",
+      "tag": "bal-list-item-accordion-body",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-file-upload",
         "bal-nav"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-file-upload": [
-          "bal-list-item"
-        ],
         "bal-nav": [
-          "bal-list-item"
+          "bal-list-item-accordion-body"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx",
-      "encapsulation": "none",
-      "tag": "bal-list-item-accordion-body",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "accordionGroup",
@@ -17217,27 +17495,39 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head",
+      "filePath": "src/components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head.tsx",
+      "fileName": "bal-list-item-accordion-head.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-accordion-head/usage",
+      "tag": "bal-list-item-accordion-head",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-nav"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "bal-list-item-icon",
+        "bal-icon"
+      ],
       "dependencyGraph": {
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon",
+          "bal-icon"
+        ],
         "bal-nav": [
-          "bal-list-item-accordion-body"
+          "bal-list-item-accordion-head"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head.tsx",
-      "encapsulation": "none",
-      "tag": "bal-list-item-accordion-head",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "accordionOpen",
@@ -17330,34 +17620,36 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [
-        "bal-list-item-icon",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon",
-          "bal-icon"
-        ],
-        "bal-nav": [
-          "bal-list-item-accordion-head"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content",
       "filePath": "src/components/bal-list/bal-list-item-content/bal-list-item-content.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-list-item-content.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-content/usage",
       "tag": "bal-list-item-content",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-file-upload": [
+          "bal-list-item-content"
+        ],
+        "bal-nav": [
+          "bal-list-item-content"
+        ]
+      },
       "props": [
         {
           "name": "contentAlignment",
@@ -17385,31 +17677,36 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon",
+      "filePath": "src/components/bal-list/bal-list-item-icon/bal-list-item-icon.tsx",
+      "fileName": "bal-list-item-icon.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-icon/usage",
+      "tag": "bal-list-item-icon",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-file-upload",
-        "bal-nav"
+        "bal-list-item-accordion-head"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-file-upload": [
-          "bal-list-item-content"
+          "bal-list-item-icon"
         ],
-        "bal-nav": [
-          "bal-list-item-content"
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-list/bal-list-item-icon/bal-list-item-icon.tsx",
-      "encapsulation": "none",
-      "tag": "bal-list-item-icon",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "right",
@@ -17443,38 +17740,23 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-file-upload",
-        "bal-list-item-accordion-head"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-file-upload": [
-          "bal-list-item-icon"
-        ],
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle",
       "filePath": "src/components/bal-list/bal-list-item-subtitle/bal-list-item-subtitle.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-list-item-subtitle.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-subtitle/usage",
       "tag": "bal-list-item-subtitle",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-file-upload"
       ],
@@ -17483,15 +17765,45 @@
         "bal-file-upload": [
           "bal-list-item-subtitle"
         ]
-      }
+      },
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title",
       "filePath": "src/components/bal-list/bal-list-item-title/bal-list-item-title.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-list-item-title.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-list/bal-list-item-title/usage",
       "tag": "bal-list-item-title",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-file-upload",
+        "bal-nav"
+      ],
+      "dependencies": [
+        "bal-heading"
+      ],
+      "dependencyGraph": {
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-file-upload": [
+          "bal-list-item-title"
+        ],
+        "bal-nav": [
+          "bal-list-item-title"
+        ]
+      },
       "props": [
         {
           "name": "level",
@@ -17680,36 +17992,40 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-file-upload",
-        "bal-nav"
-      ],
-      "dependencies": [
-        "bal-heading"
-      ],
-      "dependencyGraph": {
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
-        "bal-file-upload": [
-          "bal-list-item-title"
-        ],
-        "bal-nav": [
-          "bal-list-item-title"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo",
       "filePath": "src/components/bal-logo/bal-logo.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-logo.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-logo/usage",
       "tag": "bal-logo",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-footer",
+        "bal-nav",
+        "bal-navbar-brand"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-footer": [
+          "bal-logo"
+        ],
+        "bal-nav": [
+          "bal-logo"
+        ],
+        "bal-navbar-brand": [
+          "bal-logo"
+        ]
+      },
       "props": [
         {
           "name": "animated",
@@ -17820,35 +18136,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-footer",
-        "bal-nav",
-        "bal-navbar-brand"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-footer": [
-          "bal-logo"
-        ],
-        "bal-nav": [
-          "bal-logo"
-        ],
-        "bal-navbar-brand": [
-          "bal-logo"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal",
       "filePath": "src/components/bal-modal/bal-modal.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-modal.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/usage",
       "tag": "bal-modal",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "backdropDismiss",
@@ -18333,6 +18640,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -18355,46 +18665,43 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body",
       "filePath": "src/components/bal-modal/bal-modal-body/bal-modal-body.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-modal-body.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-body/usage",
       "tag": "bal-modal-body",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "encapsulation": "none",
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "src/components/bal-modal/bal-modal-header/bal-modal-header.tsx",
-      "encapsulation": "none",
-      "tag": "bal-modal-header",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header",
+      "filePath": "src/components/bal-modal/bal-modal-header/bal-modal-header.tsx",
+      "fileName": "bal-modal-header.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-modal/bal-modal-header/usage",
+      "tag": "bal-modal-header",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [],
       "dependencies": [
         "bal-heading",
@@ -18408,15 +18715,101 @@
         "bal-close": [
           "bal-icon"
         ]
-      }
+      },
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav",
       "filePath": "src/components/bal-nav/bal-nav.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/usage",
       "tag": "bal-nav",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-nav-meta-bar",
+        "bal-stack",
+        "bal-tabs",
+        "bal-nav-menu-bar",
+        "bal-nav-menu-flyout",
+        "bal-nav-link",
+        "bal-button",
+        "bal-nav-link-grid",
+        "bal-nav-link-grid-col",
+        "bal-list",
+        "bal-list-item",
+        "bal-list-item-content",
+        "bal-list-item-title",
+        "bal-list-item-accordion-head",
+        "bal-list-item-accordion-body",
+        "bal-logo",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-meta-bar",
+          "bal-stack",
+          "bal-tabs",
+          "bal-nav-menu-bar",
+          "bal-nav-menu-flyout",
+          "bal-nav-link",
+          "bal-button",
+          "bal-nav-link-grid",
+          "bal-nav-link-grid-col",
+          "bal-list",
+          "bal-list-item",
+          "bal-list-item-content",
+          "bal-list-item-title",
+          "bal-list-item-accordion-head",
+          "bal-list-item-accordion-body",
+          "bal-logo",
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-icon",
+          "bal-badge",
+          "bal-select",
+          "bal-select-option"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "buttons",
@@ -18534,6 +18927,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "balChange",
@@ -18546,92 +18942,29 @@
           "capture": false,
           "passive": true
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-nav-meta-bar",
-        "bal-stack",
-        "bal-tabs",
-        "bal-nav-menu-bar",
-        "bal-nav-menu-flyout",
-        "bal-nav-link",
-        "bal-button",
-        "bal-nav-link-grid",
-        "bal-nav-link-grid-col",
-        "bal-list",
-        "bal-list-item",
-        "bal-list-item-content",
-        "bal-list-item-title",
-        "bal-list-item-accordion-head",
-        "bal-list-item-accordion-body",
-        "bal-logo",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-meta-bar",
-          "bal-stack",
-          "bal-tabs",
-          "bal-nav-menu-bar",
-          "bal-nav-menu-flyout",
-          "bal-nav-link",
-          "bal-button",
-          "bal-nav-link-grid",
-          "bal-nav-link-grid-col",
-          "bal-list",
-          "bal-list-item",
-          "bal-list-item-content",
-          "bal-list-item-title",
-          "bal-list-item-accordion-head",
-          "bal-list-item-accordion-body",
-          "bal-logo",
-          "bal-icon"
-        ],
-        "bal-tabs": [
-          "bal-icon",
-          "bal-badge",
-          "bal-select",
-          "bal-select-option"
-        ],
-        "bal-badge": [
-          "bal-icon"
-        ],
-        "bal-select": [
-          "bal-tag",
-          "bal-popover",
-          "bal-icon",
-          "bal-popover-content",
-          "bal-checkbox"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon",
-          "bal-icon"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link",
       "filePath": "src/components/bal-nav/bal-nav-link/bal-nav-link.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav-link.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link/usage",
       "tag": "bal-nav-link",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-link"
+        ]
+      },
       "props": [
         {
           "name": "clickable",
@@ -18829,34 +19162,23 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-link"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid",
       "filePath": "src/components/bal-nav/bal-nav-link-grid/bal-nav-link-grid.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav-link-grid.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid/usage",
       "tag": "bal-nav-link-grid",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-nav"
       ],
@@ -18865,15 +19187,36 @@
         "bal-nav": [
           "bal-nav-link-grid"
         ]
-      }
+      },
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col",
       "filePath": "src/components/bal-nav/bal-nav-link-grid-col/bal-nav-link-grid-col.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav-link-grid-col.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-grid-col/usage",
       "tag": "bal-nav-link-grid-col",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-link-grid-col"
+        ]
+      },
       "props": [
         {
           "name": "staticCol",
@@ -18912,27 +19255,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-link-grid-col"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group",
       "filePath": "src/components/bal-nav/bal-nav-link-group/bal-nav-link-group.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav-link-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-link-group/usage",
       "tag": "bal-nav-link-group",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "color",
@@ -18991,21 +19333,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar",
       "filePath": "src/components/bal-nav/bal-nav-menu-bar/bal-nav-menu-bar.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-nav-menu-bar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-bar/usage",
       "tag": "bal-nav-menu-bar",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-menu-bar"
+        ]
+      },
       "props": [
         {
           "name": "invisible",
@@ -19092,27 +19445,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout",
+      "filePath": "src/components/bal-nav/bal-nav-menu-flyout/bal-nav-menu-flyout.tsx",
+      "fileName": "bal-nav-menu-flyout.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-menu-flyout/usage",
+      "tag": "bal-nav-menu-flyout",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-nav"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-nav": [
-          "bal-nav-menu-bar"
+          "bal-nav-menu-flyout"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-nav/bal-nav-menu-flyout/bal-nav-menu-flyout.tsx",
-      "encapsulation": "none",
-      "tag": "bal-nav-menu-flyout",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "navId",
@@ -19166,33 +19524,38 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "focusout",
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar",
+      "filePath": "src/components/bal-nav/bal-nav-meta-bar/bal-nav-meta-bar.tsx",
+      "fileName": "bal-nav-meta-bar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-nav/bal-nav-meta-bar/usage",
+      "tag": "bal-nav-meta-bar",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-nav"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-nav": [
-          "bal-nav-menu-flyout"
+          "bal-nav-meta-bar"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-nav/bal-nav-meta-bar/bal-nav-meta-bar.tsx",
-      "encapsulation": "none",
-      "tag": "bal-nav-meta-bar",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "invisible",
@@ -19398,6 +19761,9 @@
       ],
       "methods": [],
       "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "scroll",
@@ -19405,27 +19771,23 @@
           "capture": false,
           "passive": true
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-meta-bar"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar",
       "filePath": "src/components/bal-navbar/bal-navbar.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-navbar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/usage",
       "tag": "bal-navbar",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "container",
@@ -19574,21 +19936,38 @@
         }
       ],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand",
       "filePath": "src/components/bal-navbar/bal-navbar-brand/bal-navbar-brand.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-navbar-brand.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-brand/usage",
       "tag": "bal-navbar-brand",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-logo",
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-navbar-brand": [
+          "bal-logo",
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "animated",
@@ -19926,105 +20305,118 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-logo",
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-navbar-brand": [
-          "bal-logo",
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu",
       "filePath": "src/components/bal-navbar/bal-navbar-menu/bal-navbar-menu.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-navbar-menu.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu/usage",
       "tag": "bal-navbar-menu",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end",
       "filePath": "src/components/bal-navbar/bal-navbar-menu-end/bal-navbar-menu-end.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-navbar-menu-end.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-end/usage",
       "tag": "bal-navbar-menu-end",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start",
       "filePath": "src/components/bal-navbar/bal-navbar-menu-start/bal-navbar-menu-start.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-navbar-menu-start.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-navbar/bal-navbar-menu-start/usage",
       "tag": "bal-navbar-menu-start",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices",
       "filePath": "src/components/bal-notices/bal-notices.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-notices.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notices/usage",
       "tag": "bal-notices",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification",
       "filePath": "src/components/bal-notification/bal-notification.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-notification.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-notification/usage",
       "tag": "bal-notification",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "color",
@@ -20141,21 +20533,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input",
       "filePath": "src/components/bal-number-input/bal-number-input.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-number-input.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-number-input/usage",
       "tag": "bal-number-input",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "autoInvalidOff",
@@ -20742,6 +21139,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -20755,21 +21155,36 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option",
       "filePath": "src/components/bal-option/bal-option.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-option.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option/usage",
       "tag": "bal-option",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-stack",
+        "bal-check",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-option": [
+          "bal-stack",
+          "bal-check",
+          "bal-icon"
+        ],
+        "bal-check": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -21061,40 +21476,32 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "mouseenter",
           "capture": false,
           "passive": true
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-stack",
-        "bal-check",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-option": [
-          "bal-stack",
-          "bal-check",
-          "bal-icon"
-        ],
-        "bal-check": [
-          "bal-icon"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list",
       "filePath": "src/components/bal-option-list/bal-option-list.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-option-list.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-option-list/usage",
       "tag": "bal-option-list",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "contentHeight",
@@ -21807,6 +22214,9 @@
         }
       ],
       "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "balOptionFocus",
@@ -21818,21 +22228,29 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination",
       "filePath": "src/components/bal-pagination/bal-pagination.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-pagination.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-pagination/usage",
       "tag": "bal-pagination",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-pagination": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "align",
@@ -22194,27 +22612,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-pagination": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover",
       "filePath": "src/components/bal-popover/bal-popover.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-popover.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/usage",
       "tag": "bal-popover",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-select"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-select": [
+          "bal-popover"
+        ]
+      },
       "props": [
         {
           "name": "active",
@@ -22650,7 +23073,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22689,7 +23112,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22728,7 +23151,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -22805,6 +23228,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "balPopoverPrepare",
@@ -22830,27 +23256,29 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content",
+      "filePath": "src/components/bal-popover/bal-popover-content/bal-popover-content.tsx",
+      "fileName": "bal-popover-content.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popover/bal-popover-content/usage",
+      "tag": "bal-popover-content",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-select"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-select": [
-          "bal-popover"
+          "bal-popover-content"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-popover/bal-popover-content/bal-popover-content.tsx",
-      "encapsulation": "none",
-      "tag": "bal-popover-content",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "color",
@@ -23156,27 +23584,44 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-select"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-select": [
-          "bal-popover-content"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup",
       "filePath": "src/components/bal-popup/bal-popup.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-popup.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-popup/usage",
       "tag": "bal-popup",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-hint"
+      ],
+      "dependencies": [
+        "bal-stack",
+        "bal-heading",
+        "bal-close"
+      ],
+      "dependencyGraph": {
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-hint": [
+          "bal-popup"
+        ]
+      },
       "props": [
         {
           "name": "active",
@@ -23677,6 +24122,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -23705,39 +24153,23 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-hint"
-      ],
-      "dependencies": [
-        "bal-stack",
-        "bal-heading",
-        "bal-close"
-      ],
-      "dependencyGraph": {
-        "bal-popup": [
-          "bal-stack",
-          "bal-heading",
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-hint": [
-          "bal-popup"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar",
       "filePath": "src/components/bal-progress-bar/bal-progress-bar.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-progress-bar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-progress-bar/usage",
       "tag": "bal-progress-bar",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "background",
@@ -23901,21 +24333,37 @@
         }
       ],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio",
       "filePath": "src/components/bal-radio/bal-radio.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-radio.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/usage",
       "tag": "bal-radio",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-radio-group"
+      ],
+      "dependencies": [
+        "bal-radio-icon"
+      ],
+      "dependencyGraph": {
+        "bal-radio": [
+          "bal-radio-icon"
+        ],
+        "bal-radio-group": [
+          "bal-radio"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -24425,6 +24873,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -24432,32 +24883,32 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-radio-group"
-      ],
-      "dependencies": [
-        "bal-radio-icon"
-      ],
-      "dependencyGraph": {
-        "bal-radio": [
-          "bal-radio-icon"
-        ],
-        "bal-radio-group": [
-          "bal-radio"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group",
       "filePath": "src/components/bal-radio/bal-radio-group/bal-radio-group.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-radio-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-group/usage",
       "tag": "bal-radio-group",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-radio"
+      ],
+      "dependencyGraph": {
+        "bal-radio-group": [
+          "bal-radio"
+        ],
+        "bal-radio": [
+          "bal-radio-icon"
+        ]
+      },
       "props": [
         {
           "name": "allowEmptySelection",
@@ -25056,6 +25507,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "balChange",
@@ -25087,30 +25541,29 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon",
+      "filePath": "src/components/bal-radio/bal-radio-icon/bal-radio-icon.tsx",
+      "fileName": "bal-radio-icon.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-radio/bal-radio-icon/usage",
+      "tag": "bal-radio-icon",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
+      "dependents": [
         "bal-radio"
       ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-radio-group": [
-          "bal-radio"
-        ],
         "bal-radio": [
           "bal-radio-icon"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-radio/bal-radio-icon/bal-radio-icon.tsx",
-      "encapsulation": "none",
-      "tag": "bal-radio-icon",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "checked",
@@ -25231,27 +25684,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-radio"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-radio": [
-          "bal-radio-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment",
       "filePath": "src/components/bal-segment/bal-segment.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-segment.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/usage",
       "tag": "bal-segment",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "autoInvalidOff",
@@ -25522,6 +25974,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "keydown",
@@ -25534,21 +25989,35 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item",
       "filePath": "src/components/bal-segment/bal-segment-item/bal-segment-item.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-segment-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-segment/bal-segment-item/usage",
       "tag": "bal-segment-item",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon",
+        "bal-stack",
+        "bal-content",
+        "bal-label"
+      ],
+      "dependencyGraph": {
+        "bal-segment-item": [
+          "bal-icon",
+          "bal-stack",
+          "bal-content",
+          "bal-label"
+        ]
+      },
       "props": [
         {
           "name": "disabled",
@@ -25678,7 +26147,6 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [
@@ -25687,29 +26155,48 @@
           "docs": ""
         }
       ],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon",
-        "bal-stack",
-        "bal-content",
-        "bal-label"
-      ],
-      "dependencyGraph": {
-        "bal-segment-item": [
-          "bal-icon",
-          "bal-stack",
-          "bal-content",
-          "bal-label"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select",
       "filePath": "src/components/bal-select/bal-select.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-select.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/usage",
       "tag": "bal-select",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-tabs"
+      ],
+      "dependencies": [
+        "bal-tag",
+        "bal-popover",
+        "bal-icon",
+        "bal-popover-content",
+        "bal-checkbox"
+      ],
+      "dependencyGraph": {
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-select"
+        ]
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -26808,6 +27295,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -26827,46 +27317,29 @@
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option",
+      "filePath": "src/components/bal-select/bal-select-option/bal-select-option.tsx",
+      "fileName": "bal-select-option.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-select/bal-select-option/usage",
+      "tag": "bal-select-option",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
         "bal-tabs"
       ],
-      "dependencies": [
-        "bal-tag",
-        "bal-popover",
-        "bal-icon",
-        "bal-popover-content",
-        "bal-checkbox"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-select": [
-          "bal-tag",
-          "bal-popover",
-          "bal-icon",
-          "bal-popover-content",
-          "bal-checkbox"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-tabs": [
-          "bal-select"
+          "bal-select-option"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-select/bal-select-option/bal-select-option.tsx",
-      "encapsulation": "none",
-      "tag": "bal-select-option",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "disabled",
@@ -26946,27 +27419,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape",
+      "filePath": "src/components/bal-shape/bal-shape.tsx",
+      "fileName": "bal-shape.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-shape/usage",
+      "tag": "bal-shape",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-tabs"
+        "bal-stage"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-tabs": [
-          "bal-select-option"
+        "bal-stage": [
+          "bal-shape"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-shape/bal-shape.tsx",
-      "encapsulation": "none",
-      "tag": "bal-shape",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "color",
@@ -27124,27 +27602,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-stage"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-stage": [
-          "bal-shape"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet",
       "filePath": "src/components/bal-sheet/bal-sheet.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-sheet.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-sheet/usage",
       "tag": "bal-sheet",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "containerSize",
@@ -27199,21 +27676,43 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar",
       "filePath": "src/components/bal-snackbar/bal-snackbar.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-snackbar.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-snackbar/usage",
       "tag": "bal-snackbar",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon",
+        "bal-close",
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-snackbar": [
+          "bal-icon",
+          "bal-close",
+          "bal-button"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "action",
@@ -27583,38 +28082,36 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon",
-        "bal-close",
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-snackbar": [
-          "bal-icon",
-          "bal-close",
-          "bal-button"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner",
       "filePath": "src/components/bal-spinner/bal-spinner.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-spinner.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-spinner/usage",
       "tag": "bal-spinner",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-button",
+        "bal-file-upload"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-button": [
+          "bal-spinner"
+        ],
+        "bal-file-upload": [
+          "bal-spinner"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -27784,31 +28281,48 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack",
+      "filePath": "src/components/bal-stack/bal-stack.tsx",
+      "fileName": "bal-stack.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stack/usage",
+      "tag": "bal-stack",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-button",
-        "bal-file-upload"
+        "bal-nav",
+        "bal-option",
+        "bal-popup",
+        "bal-segment-item",
+        "bal-tooltip"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-button": [
-          "bal-spinner"
+        "bal-nav": [
+          "bal-stack"
         ],
-        "bal-file-upload": [
-          "bal-spinner"
+        "bal-option": [
+          "bal-stack"
+        ],
+        "bal-popup": [
+          "bal-stack"
+        ],
+        "bal-segment-item": [
+          "bal-stack"
+        ],
+        "bal-tooltip": [
+          "bal-stack"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-stack/bal-stack.tsx",
-      "encapsulation": "none",
-      "tag": "bal-stack",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "align",
@@ -28341,43 +28855,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-nav",
-        "bal-option",
-        "bal-popup",
-        "bal-segment-item",
-        "bal-tooltip"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-stack"
-        ],
-        "bal-option": [
-          "bal-stack"
-        ],
-        "bal-popup": [
-          "bal-stack"
-        ],
-        "bal-segment-item": [
-          "bal-stack"
-        ],
-        "bal-tooltip": [
-          "bal-stack"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage",
       "filePath": "src/components/bal-stage/bal-stage.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/usage",
       "tag": "bal-stage",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-shape"
+      ],
+      "dependencyGraph": {
+        "bal-stage": [
+          "bal-shape"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -28616,27 +29119,32 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-shape"
-      ],
-      "dependencyGraph": {
-        "bal-stage": [
-          "bal-shape"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link",
       "filePath": "src/components/bal-stage/bal-stage-back-link/bal-stage-back-link.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage-back-link.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-back-link/usage",
       "tag": "bal-stage-back-link",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-stage-back-link": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "href",
@@ -28745,81 +29253,95 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-stage-back-link": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body",
       "filePath": "src/components/bal-stage/bal-stage-body/bal-stage-body.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage-body.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-body/usage",
       "tag": "bal-stage-body",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot",
       "filePath": "src/components/bal-stage/bal-stage-foot/bal-stage-foot.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage-foot.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-foot/usage",
       "tag": "bal-stage-foot",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head",
       "filePath": "src/components/bal-stage/bal-stage-head/bal-stage-head.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage-head.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-head/usage",
       "tag": "bal-stage-head",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image",
       "filePath": "src/components/bal-stage/bal-stage-image/bal-stage-image.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-stage-image.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-stage/bal-stage-image/usage",
       "tag": "bal-stage-image",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "fallback",
@@ -28870,21 +29392,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item",
       "filePath": "src/components/bal-steps/bal-step-item/bal-step-item.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-step-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/bal-step-item/usage",
       "tag": "bal-step-item",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "active",
@@ -29302,21 +29829,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps",
       "filePath": "src/components/bal-steps/bal-steps.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-steps.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-steps/usage",
       "tag": "bal-steps",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-steps": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "clickable",
@@ -29596,27 +30134,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch",
+      "filePath": "src/components/bal-checkbox/bal-switch/bal-switch.tsx",
+      "fileName": "bal-switch.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-checkbox/bal-switch/usage",
+      "tag": "bal-switch",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [],
       "dependencies": [
         "bal-icon"
       ],
       "dependencyGraph": {
-        "bal-steps": [
+        "bal-switch": [
           "bal-icon"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-checkbox/bal-switch/bal-switch.tsx",
-      "encapsulation": "none",
-      "tag": "bal-switch",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "checked",
@@ -29708,27 +30251,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-switch": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item",
       "filePath": "src/components/bal-tabs/bal-tab-item/bal-tab-item.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-tab-item.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/bal-tab-item/usage",
       "tag": "bal-tab-item",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "a11yControls",
@@ -30284,21 +30826,26 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table",
       "filePath": "src/components/bal-table/bal-table.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-table.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-table/usage",
       "tag": "bal-table",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "expanded",
@@ -30332,21 +30879,59 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs",
       "filePath": "src/components/bal-tabs/bal-tabs.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-tabs.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tabs/usage",
       "tag": "bal-tabs",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [
+        "bal-icon",
+        "bal-badge",
+        "bal-select",
+        "bal-select-option"
+      ],
+      "dependencyGraph": {
+        "bal-tabs": [
+          "bal-icon",
+          "bal-badge",
+          "bal-select",
+          "bal-select-option"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-tabs"
+        ]
+      },
       "props": [
         {
           "name": "accordion",
@@ -31145,60 +31730,46 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "keydown",
           "capture": false,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
+      ]
+    },
+    {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag",
+      "filePath": "src/components/bal-tag/bal-tag.tsx",
+      "fileName": "bal-tag.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/usage",
+      "tag": "bal-tag",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "none",
       "dependents": [
-        "bal-nav"
+        "bal-select"
       ],
       "dependencies": [
-        "bal-icon",
-        "bal-badge",
-        "bal-select",
-        "bal-select-option"
+        "bal-close"
       ],
       "dependencyGraph": {
-        "bal-tabs": [
-          "bal-icon",
-          "bal-badge",
-          "bal-select",
-          "bal-select-option"
-        ],
-        "bal-badge": [
-          "bal-icon"
-        ],
-        "bal-select": [
-          "bal-tag",
-          "bal-popover",
-          "bal-icon",
-          "bal-popover-content",
-          "bal-checkbox"
-        ],
         "bal-tag": [
           "bal-close"
         ],
         "bal-close": [
           "bal-icon"
         ],
-        "bal-nav": [
-          "bal-tabs"
+        "bal-select": [
+          "bal-tag"
         ]
-      }
-    },
-    {
-      "filePath": "src/components/bal-tag/bal-tag.tsx",
-      "encapsulation": "none",
-      "tag": "bal-tag",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
+      },
       "props": [
         {
           "name": "closable",
@@ -31502,53 +32073,49 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-select"
-      ],
-      "dependencies": [
-        "bal-close"
-      ],
-      "dependencyGraph": {
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-select": [
-          "bal-tag"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group",
       "filePath": "src/components/bal-tag/bal-tag-group/bal-tag-group.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-tag-group.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tag/bal-tag-group/usage",
       "tag": "bal-tag-group",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text",
       "filePath": "src/components/bal-text/bal-text.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-text.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-text/usage",
       "tag": "bal-text",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "bold",
@@ -31967,21 +32534,26 @@
       ],
       "methods": [],
       "events": [],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea",
       "filePath": "src/components/bal-textarea/bal-textarea.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-textarea.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-textarea/usage",
       "tag": "bal-textarea",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "autoInvalidOff",
@@ -32906,6 +33478,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -32919,21 +33494,31 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input",
       "filePath": "src/components/bal-time-input/bal-time-input.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-time-input.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-time-input/usage",
       "tag": "bal-time-input",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-input-group",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-time-input": [
+          "bal-input-group",
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -33334,6 +33919,9 @@
           "docsTags": []
         }
       ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -33347,29 +33935,32 @@
           "capture": true,
           "passive": false
         }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-input-group",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-time-input": [
-          "bal-input-group",
-          "bal-icon"
-        ]
-      }
+      ]
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast",
       "filePath": "src/components/bal-toast/bal-toast.tsx",
-      "encapsulation": "none",
+      "fileName": "bal-toast.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-toast/usage",
       "tag": "bal-toast",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [
+        "bal-close"
+      ],
+      "dependencyGraph": {
+        "bal-toast": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "closable",
@@ -33592,30 +34183,32 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-close"
-      ],
-      "dependencyGraph": {
-        "bal-toast": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ]
-      }
+      "listeners": []
     },
     {
+      "dirPath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip",
       "filePath": "src/components/bal-tooltip/bal-tooltip.tsx",
-      "encapsulation": "shadow",
+      "fileName": "bal-tooltip.tsx",
+      "readmePath": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip/readme.md",
+      "usagesDir": "/Users/hirsch/dev/baloise/design-system/accordion/packages/core/src/components/bal-tooltip/usage",
       "tag": "bal-tooltip",
+      "overview": "",
+      "usage": {},
       "docs": "",
       "docsTags": [],
-      "usage": {},
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-stack"
+      ],
+      "dependencyGraph": {
+        "bal-tooltip": [
+          "bal-stack"
+        ]
+      },
       "props": [
         {
           "name": "contentWidth",
@@ -33787,19 +34380,10 @@
           "docsTags": []
         }
       ],
-      "listeners": [],
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-stack"
-      ],
-      "dependencyGraph": {
-        "bal-tooltip": [
-          "bal-stack"
-        ]
-      }
+      "listeners": []
     }
   ],
   "typeLibrary": {

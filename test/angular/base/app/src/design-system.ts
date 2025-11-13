@@ -1,9 +1,8 @@
-import { importProvidersFrom } from '@angular/core'
+import { BalComponentBundle } from './generated/angular/bundles'
+import { provideBaloiseDesignSystem } from './generated/angular/provide'
 
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+export { BalModalService } from './generated/angular/providers/modal.service'
 
-export { BaloiseDesignSystemModule, BalModalService } from '@baloise/ds-angular'
+export const balImports = [...BalComponentBundle]
 
-export const balImports = [BaloiseDesignSystemModule]
-
-export const balProviders = [importProvidersFrom(BaloiseDesignSystemModule.forRoot())]
+export const balProviders = [provideBaloiseDesignSystem()]

@@ -85,7 +85,6 @@ e2e/cypress/snapshots/report.html
 e2e/cypress/downloads
 
 resources/data/commands.json
-resources/data/components.d.ts
 resources/data/contributors.json
 resources/data/selectors.json
 

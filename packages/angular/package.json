@@ -12,29 +12,25 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@angular/common": ">=18.0.0",
-    "@angular/core": ">=18.0.0",
-    "@angular/forms": ">=18.0.0",
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0",
+    "@angular/forms": ">=19.0.0",
     "rxjs": ">=7.8.0"
   },
   "dependencies": {
     "@baloise/ds-core": "19.8.3",
-    "tslib": "~2.3.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/core": "~18.0.0",
-    "@angular-eslint/eslint-plugin": "~18.0.0",
-    "@angular-eslint/eslint-plugin-template": "~18.0.0",
-    "@angular-eslint/template-parser": "~18.0.0",
-    "@angular/common": "~18.0.0",
-    "@angular/compiler": "~18.0.0",
-    "@angular/compiler-cli": "~18.0.0",
-    "@angular/core": "~18.0.0",
-    "@angular/forms": "~18.0.0",
-    "ng-packagr": "~18.0.0",
-    "tslib": "~2.3.0",
-    "rxjs": "~7.8.0",
-    "zone.js": "~0.14.3"
+    "@angular-devkit/core": "~19.0.0",
+    "@angular-eslint/eslint-plugin": "~19.0.0",
+    "@angular-eslint/eslint-plugin-template": "~19.0.0",
+    "@angular-eslint/template-parser": "~19.0.0",
+    "ng-packagr": "~19.0.0",
+    "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "overrides": {
+    "rxjs": "7.8.1"
+  }
 }
