@@ -1,0 +1,19 @@
+{
+  "radius": {
+    "normal": {
+      "$value": "4",
+      "$type": "dimension",
+      "comment": "The normal radius token strikes a balance between softness and structure."
+    },
+    "large": {
+      "$value": "12",
+      "$type": "dimension",
+      "comment": "The large radius token makes a bold visual statement by significantly rounding the corners of elements."
+    },
+    "rounded": {
+      "$value": "9999px",
+      "$type": "number",
+      "comment": "The rounded radius token embraces a curvier design language, introducing a high degree of softness and fluidity to your elements."
+    }
+  }
+}

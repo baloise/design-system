@@ -3,7 +3,7 @@ import * as utils from './utils'
 import { COLON_SEPARATOR } from './utils'
 
 export const generateSpacing = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'size.space', ...options })
+  const tokens = await utils.getTokens({ token: 'space', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop', 'none'] })
 
   const margin = generateResponsiveSpace({ keys, property: 'margin', prefix: 'm' })
