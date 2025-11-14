@@ -3,7 +3,7 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-check',
-  styleUrl: './bal-check.sass',
+  styleUrl: './bal-check.scss',
 })
 export class Check implements ComponentInterface {
   /**

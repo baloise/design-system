@@ -1,0 +1,272 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-divder.vars' as *;
+
+.bal-divider {
+  margin: 0;
+  display: block;
+  border-radius: var(--bal-divider-radius);
+  //
+  // color
+  &--color-primary {
+    background: var(--bal-divider-background-primary);
+  }
+  &--color-primary-light {
+    background: var(--bal-divider-background-primary-light);
+  }
+  &--color-primary-dark {
+    background: var(--bal-divider-background-primary-dark);
+  }
+  &--color-grey-light {
+    background: var(--bal-divider-background-grey-light);
+  }
+  &--color-grey {
+    background: var(--bal-divider-background-grey);
+  }
+  &--color-grey-dark {
+    background: var(--bal-divider-background-grey-dark);
+  }
+  &--color-warning {
+    background: var(--bal-divider-background-warning);
+  }
+  &--color-success {
+    background: var(--bal-divider-background-success);
+  }
+  &--color-danger {
+    background: var(--bal-divider-background-danger);
+  }
+  &--color-danger-dark {
+    background: var(--bal-divider-background-danger-dark);
+  }
+  &--color-danger-darker {
+    background: var(--bal-divider-background-danger-darker);
+  }
+  &--color-white {
+    background: var(--bal-divider-background-white);
+  }
+  &--color-light-blue {
+    background: var(--bal-divider-background-light-blue);
+  }  //
+  // direction
+  &--layout-horizontal {
+    flex: 1 0 100%;
+    width: 100%;
+    min-height: var(--bal-divider-border-width);
+    height: var(--bal-divider-border-width);
+  }
+  &--layout-vertical {
+    height: auto;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: var(--bal-divider-border-width);
+  }  //
+  // border styles
+  &--border-style-dashed#{&}--color-primary {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-primary-light {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary-light) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-primary-dark {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-primary-dark) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-grey-light {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey-light) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-grey {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-grey-dark {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-grey-dark) 0px, var (--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-warning {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-warning) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-success {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-success) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-danger {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-danger-dark {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger-dark) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-danger-darker {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-danger-darker) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-white {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-white) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }
+  &--border-style-dashed#{&}--color-light-blue {
+    background: repeating-linear-gradient( 90deg, var(--bal-divider-background-light-blue) 0px, var(--bal-divider-background-grey) 8px, transparent 8px, transparent 16px );
+  }  //
+  // horizontal spaces
+  &--space-none {
+    margin: 0;
+  }
+  &--space-xx-small {
+    margin: var(--bal-space-xx-small) 0;
+    @include tablet {
+      margin: var(--bal-space-xx-small-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-xx-small-desktop) 0;
+    }
+  }
+  &--space-x-small {
+    margin: var(--bal-space-x-small) 0;
+    @include tablet {
+      margin: var(--bal-space-x-small-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-x-small-desktop) 0;
+    }
+  }
+  &--space-small {
+    margin: var(--bal-space-small) 0;
+    @include tablet {
+      margin: var(--bal-space-small-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-small-desktop) 0;
+    }
+  }
+  &--space-normal {
+    margin: var(--bal-space-normal) 0;
+    @include tablet {
+      margin: var(--bal-space-normal-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-normal-desktop) 0;
+    }
+  }
+  &--space-medium {
+    margin: var(--bal-space-medium) 0;
+    @include tablet {
+      margin: var(--bal-space-medium-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-medium-desktop) 0;
+    }
+  }
+  &--space-large {
+    margin: var(--bal-space-large) 0;
+    @include tablet {
+      margin: var(--bal-space-large-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-large-desktop) 0;
+    }
+  }
+  &--space-x-large {
+    margin: var(--bal-space-x-large) 0;
+    @include tablet {
+      margin: var(--bal-space-x-large-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-x-large-desktop) 0;
+    }
+  }
+  &--space-xx-large {
+    margin: var(--bal-space-xx-large) 0;
+    @include tablet {
+      margin: var(--bal-space-xx-large-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-xx-large-desktop) 0;
+    }
+  }
+  &--space-xxx-large {
+    margin: var(--bal-space-xxx-large) 0;
+    @include tablet {
+      margin: var(--bal-space-xxx-large-tablet) 0;
+    }
+    @include desktop {
+      margin: var(--bal-space-xxx-large-desktop) 0;
+    }  //
+  // vertical spaces
+  }
+  &--layout-vertical#{&}--space-none {
+    margin: 0;
+  }
+  &--layout-vertical#{&}--space-xx-small {
+    margin: 0 var(--bal-space-xx-small);
+    @include tablet {
+      margin: 0 var(--bal-space-xx-small-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-xx-small-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-x-small {
+    margin: 0 var(--bal-space-x-small);
+    @include tablet {
+      margin: 0 var(--bal-space-x-small-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-x-small-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-small {
+    margin: 0 var(--bal-space-small);
+    @include tablet {
+      margin: 0 var(--bal-space-small-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-small-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-normal {
+    margin: 0 var(--bal-space-normal);
+    @include tablet {
+      margin: 0 var(--bal-space-normal-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-normal-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-medium {
+    margin: 0 var(--bal-space-medium);
+    @include tablet {
+      margin: 0 var(--bal-space-medium-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-medium-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-large {
+    margin: 0 var(--bal-space-large);
+    @include tablet {
+      margin: 0 var(--bal-space-large-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-large-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-x-large {
+    margin: 0 var(--bal-space-x-large);
+    @include tablet {
+      margin: 0 var(--bal-space-x-large-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-x-large-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-xx-large {
+    margin: 0 var(--bal-space-xx-large);
+    @include tablet {
+      margin: 0 var(--bal-space-xx-large-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-xx-large-desktop);
+    }
+  }
+  &--layout-vertical#{&}--space-xxx-large {
+    margin: 0 var(--bal-space-xxx-large);
+    @include tablet {
+      margin: 0 var(--bal-space-xxx-large-tablet);
+    }
+    @include desktop {
+      margin: 0 var(--bal-space-xxx-large-desktop);
+    }
+  }
+}

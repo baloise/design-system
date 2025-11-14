@@ -5,7 +5,6 @@ import {
   FunctionalComponent,
   h,
   Host,
-  Listen,
   Method,
   Prop,
   State,
@@ -19,7 +18,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-hint',
-  styleUrl: 'bal-hint.sass',
+  styleUrl: 'bal-hint.scss',
 })
 export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement

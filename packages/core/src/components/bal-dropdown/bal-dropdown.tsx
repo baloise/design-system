@@ -48,7 +48,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 @Component({
   tag: 'bal-dropdown',
-  styleUrl: 'bal-dropdown.sass',
+  styleUrl: 'bal-dropdown.scss',
 })
 export class Dropdown
   implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking, DropdownFormSubmit, DropdownFocus

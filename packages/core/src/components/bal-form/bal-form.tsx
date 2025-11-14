@@ -5,7 +5,7 @@ import { waitAfterFramePaint, waitAfterIdleCallback } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-form',
-  styleUrl: 'bal-form.sass',
+  styleUrl: 'bal-form.scss',
 })
 export class Form implements ComponentInterface {
   @Element() el!: HTMLStencilElement

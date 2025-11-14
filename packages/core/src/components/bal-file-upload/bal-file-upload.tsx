@@ -19,7 +19,7 @@ import { validateFileArray } from './utils/file-validation.util'
 
 @Component({
   tag: 'bal-file-upload',
-  styleUrl: 'bal-file-upload.sass',
+  styleUrl: 'bal-file-upload.scss',
 })
 export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Element() el!: HTMLStencilElement

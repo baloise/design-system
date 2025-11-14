@@ -1,0 +1,37 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-nav-link-group.vars' as *;
+
+// Nav link group
+// --------------------------------------------------
+
+.bal-nav-link-group {
+  display: block;
+  background: var(--bal-nav-link-group-background);
+  border-radius: var(--bal-nav-link-group-radius);
+  padding-top: var(--bal-space-normal);
+  padding-bottom: var(--bal-space-normal);
+  padding-left: var(--bal-space-normal);
+  padding-right: var(--bal-space-normal);
+
+  @include desktop {
+    padding-left: var(--bal-space-large);
+    padding-right: var(--bal-space-large);
+  }
+  //
+  // Colors
+  @include modifier(is-grey) {
+    background: var(--bal-nav-link-group-background-grey);
+  }
+  @include modifier(is-purple) {
+    background: var(--bal-nav-link-group-background-purple);
+  }
+  @include modifier(is-red) {
+    background: var(--bal-nav-link-group-background-red);
+  }
+  @include modifier(is-yellow) {
+    background: var(--bal-nav-link-group-background-yellow);
+  }
+  @include modifier(is-green) {
+    background: var(--bal-nav-link-group-background-green);
+  }
+}

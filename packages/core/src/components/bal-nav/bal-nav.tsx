@@ -40,7 +40,7 @@ import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 
 @Component({
   tag: 'bal-nav',
-  styleUrl: 'bal-nav.sass',
+  styleUrl: 'bal-nav.scss',
 })
 export class Nav
   implements

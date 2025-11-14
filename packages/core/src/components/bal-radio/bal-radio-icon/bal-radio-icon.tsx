@@ -3,7 +3,7 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-radio-icon',
-  styleUrl: './bal-radio-icon.sass',
+  styleUrl: './bal-radio-icon.scss',
 })
 export class RadioIcon implements ComponentInterface {
   /**

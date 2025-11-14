@@ -6,7 +6,7 @@ import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-meta-bar',
-  styleUrl: 'bal-nav-meta-bar.sass',
+  styleUrl: 'bal-nav-meta-bar.scss',
 })
 export class NavMetaBar implements ComponentInterface, Loggable {
   private navMetaBarId = `bal-nav-meta-bar-${NavMetaBarIds++}`

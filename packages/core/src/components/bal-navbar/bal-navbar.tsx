@@ -3,7 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-navbar',
-  styleUrl: 'bal-navbar.sass',
+  styleUrl: 'bal-navbar.scss',
 })
 export class Navbar {
   @Element() element!: HTMLElement

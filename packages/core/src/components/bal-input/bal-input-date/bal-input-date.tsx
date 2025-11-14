@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
@@ -21,11 +22,10 @@ import { inputSetBlur, inputSetFocus } from '../../../utils/form-input'
 import { hasParent } from '../../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { DateMask, MaskComponentAdapter } from '../../../utils/mask'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input-date',
-  styleUrl: 'bal-input-date.sass',
+  styleUrl: 'bal-input-date.scss',
 })
 export class InputDate implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking {
   private inputId = `bal-i-date-${inputDateIds++}`

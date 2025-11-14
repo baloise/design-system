@@ -1,9 +1,9 @@
-import { Component, Host, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-toast',
-  styleUrl: 'bal-toast.sass',
+  styleUrl: 'bal-toast.scss',
 })
 export class Toast {
   @Element() element!: HTMLBalToastElement

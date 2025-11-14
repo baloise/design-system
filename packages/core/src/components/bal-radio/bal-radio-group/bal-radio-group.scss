@@ -1,0 +1,57 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@include block(radio-group) {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  //
+  // inner group element
+  @include element(inner) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: var(--bal-space-normal);
+    //
+    // transform the radios into buttons
+    @include modifier(button) {
+      flex-direction: column;
+      flex-wrap: wrap;
+      flex: 1;
+      gap: var(--bal-space-x-small);
+      @include tablet {
+        flex-direction: row;
+      }
+    }
+    @include modifier(expanded) {
+      align-items: stretch;
+      .bal-radio {
+        flex: 1;
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+    &--button#{&}--vertical {
+      gap: var(--bal-space-x-small);
+    }    //
+    // shows the radios verically
+    @include modifier(vertical) {
+      flex-direction: column;
+      border-radius: var(--bal-radius-normal);
+      gap: 0;
+      @include tablet {
+        align-items: flex-start;
+      }    //
+    // only shows the radios verically on mobile
+    }
+    @include modifier(vertical-mobile) {
+      @include mobile {
+        flex-direction: column;
+        border-radius: var(--bal-radius-normal);
+        gap: 0;
+      }
+    }
+  }
+}

@@ -30,7 +30,7 @@ import { i18nBalDate } from './bal-date.i18n'
 
 @Component({
   tag: 'bal-date',
-  styleUrl: 'bal-date.sass',
+  styleUrl: 'bal-date.scss',
 })
 export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputId = `bal-da-${dateIds++}`

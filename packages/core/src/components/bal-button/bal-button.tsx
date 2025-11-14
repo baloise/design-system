@@ -17,7 +17,7 @@ import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-button',
-  styleUrl: 'bal-button.sass',
+  styleUrl: 'bal-button.scss',
 })
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}

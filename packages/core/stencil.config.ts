@@ -312,7 +312,7 @@ export const config: Config = {
       {
         name: 'watch-external',
         async buildStart() {
-          const styleFiles = await fg(resolve(__dirname, './src/**/*.sass'))
+          const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
           for (const file of styleFiles) {
             this.addWatchFile(file)
           }

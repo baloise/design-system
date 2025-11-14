@@ -17,7 +17,7 @@ import { i18nBalFooter } from './bal-footer.i18n'
 
 @Component({
   tag: 'bal-footer',
-  styleUrl: 'bal-footer.sass',
+  styleUrl: 'bal-footer.scss',
 })
 export class Footer implements BalConfigObserver, Loggable {
   @State() logoSvgContent = ''

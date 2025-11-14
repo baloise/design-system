@@ -34,7 +34,7 @@ import { debounceEvent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-textarea',
-  styleUrl: 'bal-textarea.sass',
+  styleUrl: 'bal-textarea.scss',
 })
 export class Textarea implements ComponentInterface, FormInput<string | undefined>, BalAriaFormLinking {
   private inputId = `bal-textarea-${TextareaIds++}`

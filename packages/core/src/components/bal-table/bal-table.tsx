@@ -4,7 +4,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-table',
-  styleUrl: 'bal-table.sass',
+  styleUrl: 'bal-table.scss',
 })
 export class Table implements ComponentInterface {
   @Element() el!: HTMLStencilElement

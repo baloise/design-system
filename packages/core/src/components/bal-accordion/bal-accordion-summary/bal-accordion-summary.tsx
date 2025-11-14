@@ -8,7 +8,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-accordion-summary',
-  styleUrl: 'bal-accordion-summary.sass',
+  styleUrl: 'bal-accordion-summary.scss',
 })
 export class AccordionSummary implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-summary-${accordionSummaryIds++}`

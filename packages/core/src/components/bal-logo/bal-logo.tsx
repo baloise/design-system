@@ -11,7 +11,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
 
 @Component({
   tag: 'bal-logo',
-  styleUrl: 'bal-logo.sass',
+  styleUrl: 'bal-logo.scss',
 })
 export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver, BalConfigObserver {
   private animationItem!: AnimationItem
