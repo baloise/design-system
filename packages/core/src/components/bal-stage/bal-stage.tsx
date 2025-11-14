@@ -1,9 +1,9 @@
-import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-stage',
-  styleUrl: 'bal-stage.sass',
+  styleUrl: 'bal-stage.scss',
 })
 export class Stage implements ComponentInterface {
   /**

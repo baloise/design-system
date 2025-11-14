@@ -27,7 +27,7 @@ import { BalCheckboxOption } from '../bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox-group',
-  styleUrl: 'bal-checkbox-group.sass',
+  styleUrl: 'bal-checkbox-group.scss',
 })
 export class CheckboxGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver

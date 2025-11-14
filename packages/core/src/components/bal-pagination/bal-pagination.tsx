@@ -20,7 +20,7 @@ import { generatePaginationControl } from './bal-pagination.util'
 
 @Component({
   tag: 'bal-pagination',
-  styleUrl: 'bal-pagination.sass',
+  styleUrl: 'bal-pagination.scss',
 })
 export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLBalPaginationElement

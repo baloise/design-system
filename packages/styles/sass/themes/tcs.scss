@@ -1,0 +1,242 @@
+@font-face {
+  font-family: 'MuseoSlab-300';
+  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.svg#MuseoSlab-300') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuseoSans-300';
+  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.svg#MuseoSans-300') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuseoSlab-700';
+  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.svg#MuseoSlab-700') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuseoSans-700';
+  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.svg#MuseoSans-700') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {  //
+  // Base
+  // Colors
+  --tcs-color-font: black;
+  --tcs-color-green-1: #6b9f27;
+  --tcs-color-green-2: #567f22;
+  --tcs-color-green: var(--tcs-color-green-1);
+  --tcs-color-brown-1: #f7f2e9;
+  --tcs-color-brown-2: #efe1cd;
+  --tcs-color-brown-3: #dccdb2;
+  --tcs-color-brown-4: #cbbba5;
+  --tcs-color-brown-5: #7a7063;
+  --tcs-color-brown-6: #3d3831;
+  --tcs-color-brown: var(--tcs-color-brown-3);
+  --tcs-color-grey-1: #a7a7a7;
+  --tcs-color-grey-2: #4e4e4e;
+  --tcs-color-grey-3: #222222;
+  --tcs-color-grey-4: #1b1b1b;
+  --tcs-color-grey-5: #0e0e0e;
+  --tcs-color-grey-6: #070707;
+  --tcs-color-blue: #005fcc;
+  --bal-color-purple-1: var(--tcs-color-brown-1);
+  --bal-color-purple-2: var(--tcs-color-brown-2);
+  --bal-color-purple-3: var(--tcs-color-brown-3);
+  --bal-color-purple-4: var(--tcs-color-brown-4);
+  --bal-color-purple-5: var(--tcs-color-brown-5);
+  --bal-color-purple-6: var(--tcs-color-brown-6);
+  --bal-color-primary: var(--tcs-color-font);
+  --bal-color-primary-1: var(--tcs-color-brown-1);
+  --bal-color-primary-2: var(--tcs-color-brown-2);
+  --bal-color-primary-3: var(--tcs-color-brown-3);
+  --bal-color-primary-4: var(--tcs-color-brown-4);
+  --bal-color-primary-5: var(--tcs-color-brown-5);
+  --bal-color-primary-6: var(--tcs-color-brown-6);
+  --bal-color-text-primary: var(--tcs-color-font);
+  --bal-color-text-primary-hovered: var(--tcs-color-font);
+  --bal-color-text-primary-pressed: var(--tcs-color-font);
+  --bal-focus-shadow-end-color: var(--tcs-color-blue);
+  --bal-segment-item-focus-border: var(--tcs-color-blue);
+  // Icons
+  --bal-icon-color-primary: var(--tcs-color-font);
+  --bal-icon-tile-background: var(--tcs-color-brown-1);
+  // Hint
+  --bal-hint-icon-color-hover: var(--tcs-color-font);
+  --bal-hint-content-border-color: var(--tcs-color-brown-1);
+  --bal-hint-content-background: white;
+  // Radius
+  --tcs-radius-normal: 5px;
+  --tcs-radius-medium: 6px;
+  --bal-radius-normal: var(--tcs-radius-normal);
+  // Borders
+  --bal-border-width-large: 4px;
+  --bal-border-width-normal: 2px;
+  --bal-border-width-small: 1px;
+  --bal-color-border: var(--tcs-color-brown-3);
+  //
+  // Typography
+  // --bal-body-font-size: 15px
+  --bal-font-family-text: 'MuseoSans-300', sans-serif;
+  --bal-font-family-title: 'MuseoSlab-700', sans-serif;
+  // --bal-font-weight-bold: 400
+  // --bal-link-font-weight: 800
+  --bal-body-color: var(--tcs-color-font);
+  --bal-link-color: var(--tcs-color-font);
+  --bal-link-color-hover: var(--tcs-color-font);
+  --bal-link-color-active: var(--tcs-color-font);
+  //
+  // Footer
+  --bal-footer-background: var(--tcs-color-brown-2);
+  --bal-footer-color: var(--tcs-color-font);
+  --bal-footer-language-color: var(--tcs-color-font);
+  --bal-footer-language-color-hover: var(--tcs-color-font);
+  --bal-footer-language-color-active: var(--tcs-color-font);
+  --bal-footer-language-background: var(--tcs-color-font);
+  --bal-footer-language-background-hover: var(--tcs-color-font);
+  --bal-footer-language-background-active: var(--tcs-color-font);
+  --bal-footer-logo-image-max-height: 64px;
+
+  //
+  // Form
+  --bal-form-field-control-color: var(--tcs-color-font);
+  --bal-form-field-control-placeholder-color: var(--tcs-color-grey-2);
+  --bal-form-field-control-background-hover: var(--tcs-color-brown-1);
+  --bal-form-field-control-background-active: var(--tcs-color-brown-1);
+  --bal-form-field-message-color: var(--tcs-color-grey-2);
+  --bal-form-field-control-border-color-active: var(--tcs-color-font);
+  --bal-form-field-label-font-family: var(--bal-font-family-title);
+  --bal-form-field-label-font-weight: var(--bal-font-weight-bold);
+  --bal-label-small-font-size: var(--bal-text-size-normal);
+  --bal-label-small-font-size-tablet: var(--bal-text-size-normal-tablet);
+  --bal-label-small-font-size-desktop: var(--bal-text-size-normal-desktop);
+  --bal-label-small-line-height: var(--bal-line-height-normal);
+  --bal-label-small-line-height-tablet: var(--bal-line-height-tablet-normal);
+  --bal-label-small-line-height-desktop: var(--bal-line-height-desktop-normal);
+  //
+  // Buttons
+  --bal-button-radius: var(--tcs-radius-medium);
+  --bal-button-color: var(--bal-body-color);
+  --bal-button-color-hover: var(--bal-body-color);
+  --bal-button-color-active: var(--bal-body-color);
+  --bal-button-background: transparent;
+  --bal-button-background-hover: var(--tcs-color-brown-3);
+  --bal-button-background-active: var(--tcs-color-brown-3);
+  --bal-button-border-color: var(--tcs-color-brown-3);
+  --bal-button-border-color-hover: var(--tcs-color-brown-3);
+  --bal-button-border-color-active: var(--tcs-color-brown-3);
+  --bal-button-text-background-hover: var(--tcs-color-brown-3);
+  --bal-button-text-background-active: var(--tcs-color-brown-3);
+  --bal-button-text-border-color-hover: var(--tcs-color-brown-3);
+  --bal-button-text-border-color-active: var(--tcs-color-brown-3);
+  --bal-button-text-color-hover: var(--bal-body-color);
+  --bal-button-text-color-active: var(--bal-body-color);
+  // Primary buttons
+  --bal-button-primary-background: var(--tcs-color-green-1);
+  --bal-button-primary-background-hover: var(--tcs-color-green-2);
+  --bal-button-primary-background-active: var(--tcs-color-green-2);
+  --bal-button-primary-border-color: var(--tcs-color-green-1);
+  --bal-button-primary-border-color-hover: var(--tcs-color-green-2);
+  --bal-button-primary-border-color-active: var(--tcs-color-green-2);
+  // Tertiary buttons
+  --bal-button-tertiary-purple-background: var(--tcs-color-brown-3);
+  --bal-button-tertiary-purple-background-hover: var(--tcs-color-brown-3);
+  --bal-button-tertiary-purple-background-active: var(--tcs-color-brown-3);
+  --bal-button-tertiary-purple-border-color: var(--tcs-color-brown-3);
+  --bal-button-tertiary-purple-border-color-hover: var(--tcs-color-font);
+  --bal-button-tertiary-purple-border-color-active: var(--tcs-color-font);
+  --bal-button-tertiary-purple-color: var(--tcs-color-font);
+  --bal-button-tertiary-purple-color-hover: var(--tcs-color-font);
+  --bal-button-tertiary-purple-color-active: var(--tcs-color-font);
+  //
+  // Navbar
+  --bal-navbar-background: var(--tcs-color-brown-2);
+  --bal-navbar-brand-title-text-color: var(--tcs-color-font);
+  // --bal-card-radius: 2px
+  // --bal-shadow-normal: var(--tcs-color-brown-2) 0px 0px 0px 6px
+  //
+  // Notifications
+  --bal-notification-border-primary: var(--tcs-color-brown-2);
+  --bal-notification-background-light-primary: var(--tcs-color-brown-1);
+  --bal-notification-color-primary: var(--tcs-color-font);
+  --bal-notification-light-radius: var(--tcs-radius-normal);
+  //
+  // Segment
+  --bal-segment-item-text-color: var(--tcs-color-font);
+  --bal-segment-item-text-color-checked: var(--tcs-color-font);
+  --bal-segment-item-text-color-checked-hovered: var(--tcs-color-font);
+  --bal-segment-item-text-color-checked-pressed: var(--tcs-color-font);
+  //
+  // Checkboxe
+  --bal-check-background: transparent;
+  --bal-check-background-hovered: var(--tcs-color-brown-1);
+  --bal-check-background-pressed: var(--tcs-color-brown-2);
+  --bal-check-background-checked: var(--tcs-color-brown-2);
+  --bal-check-background-checked-hovered: var(--tcs-color-brown-3);
+  --bal-check-background-checked-pressed: var(--tcs-color-brown-3);
+  --bal-check-border-color: var(--tcs-color-brown-2);
+  --bal-check-border-color-hovered: var(--tcs-color-brown-2);
+  --bal-check-border-color-pressed: var(--tcs-color-brown-2);
+  --bal-check-border-color-checked: var(--tcs-color-brown-2);
+  --bal-check-border-color-checked-hovered: var(--tcs-color-brown-3);
+  --bal-check-border-color-checked-pressed: var(--tcs-color-brown-3);
+  // Switch
+  --bal-checkbox-switch-label-background-before: var(--tcs-color-brown-2);
+  --bal-checkbox-switch-label-background-hover-after: var(--tcs-color-font);
+  --bal-checkbox-switch-label-background-active-after: var(--tcs-color-font);
+  // Radio
+  --bal-radio-icon-inner-width: 0.5rem;
+  --bal-radio-icon-inner-height: 0.5rem;
+  --bal-radio-icon-border-color: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-hovered: var(--tcs-color-brown-1);
+  --bal-radio-icon-border-color-hovered: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-pressed: var(--tcs-color-brown-1);
+  --bal-radio-icon-border-color-pressed: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-checked-hovered: var(--tcs-color-brown-2);
+  --bal-radio-icon-border-color-checked-hovered: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-checked-pressed: var(--tcs-color-brown-2);
+  --bal-radio-icon-border-color-checked-pressed: var(--tcs-color-brown-2);
+  --bal-radio-icon-inner-background-checked: var(--tcs-color-font);
+  --bal-radio-icon-background-checked: var(--tcs-color-brown-2);
+  --bal-radio-icon-border-color-checked: var(--tcs-color-brown-2);
+  // Steps
+  --bal-steps-step-icon-background: var(--tcs-color-brown-3);
+  --bal-steps-step-label-text-color: var(--bal-color-text-primary);
+  // Tabs
+  --bal-tabs-tab-nav-border-background: var(--bal-color-grey-3);
+  --bal-tabs-tab-label-text-color: var(--bal-color-grey-5);
+  --bal-tabs-tab-label-text-color-active: var(--bal-color-text-primary);
+  --bal-tabs-tab-button-label-text-color-hover: var(--bal-color-text-primary);
+  --bal-tabs-tab-button-icon-text-color-hover: var(--bal-color-text-primary);
+  --bal-tabs-tab-button-label-text-color-active: var(--bal-color-text-primary);
+  --bal-tabs-tab-button-icon-text-color-active: var(--bal-color-text-primary);
+  // Native Lists
+  --bal-description-list-term-color: var(--bal-color-text-primary);
+  --bal-description-list-term-font-weight: var(--bal-font-weight-bold);
+  --bal-description-list-detail-color: var(--bal-color-text-primary);
+}
+body {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-text-size-adjust: 100%;
+}
+.bal-check {
+  --bal-icon-color-white: var(--tcs-color-font);
+}
+.a.link:hover,
+.button.link:hover,
+.a.is-link:hover,
+.button.is-link:hover {
+  text-decoration: none;
+}

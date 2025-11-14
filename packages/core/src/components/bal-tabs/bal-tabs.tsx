@@ -12,6 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { AccordionState, Attributes } from '../../interfaces'
 import { BalAnimationObserverInfo, ListenToAnimation } from '../../utils/animation'
 import { areArraysEqual } from '../../utils/array'
@@ -43,11 +44,10 @@ import { BalTabOption } from './bal-tab.type'
 import { newBalTabOption } from './bal-tab.util'
 import { TabNav } from './components/tab-nav'
 import { TabSelect } from './components/tab-select'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-tabs',
-  styleUrl: 'bal-tabs.sass',
+  styleUrl: 'bal-tabs.scss',
 })
 export class Tabs
   implements

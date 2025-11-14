@@ -3,7 +3,7 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-switch',
-  styleUrl: './bal-switch.sass',
+  styleUrl: './bal-switch.scss',
 })
 export class Switch implements ComponentInterface {
   /**

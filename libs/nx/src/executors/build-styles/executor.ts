@@ -8,10 +8,10 @@ import { generateElevation } from './generators/elevation'
 import { generateFlex } from './generators/flex'
 import { generateInteractions } from './generators/interactions'
 import { generateLayout } from './generators/layout'
-import { BuildStylesExecutorSchema } from './schema'
 import { generateSizing } from './generators/sizing'
 import { generateSpacing } from './generators/spacing'
 import { generateTypography } from './generators/typography'
+import { BuildStylesExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildStylesExecutorSchema) {
   try {
@@ -33,7 +33,7 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
 
     // create css output
     await mkdir(join(options.projectRoot, 'css'))
-    const files = await scan(join(options.projectRoot, 'sass', '**', '*.sass'))
+    const files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
     for (let index = 0; index < files.length; index++) {
       const file = files[index]
       await compileSass(file, options)

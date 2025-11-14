@@ -53,7 +53,7 @@ import {
 
 @Component({
   tag: 'bal-input',
-  styleUrl: 'bal-input.sass',
+  styleUrl: 'bal-input.scss',
 })
 export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable, BalAriaFormLinking {
   private inputId = `bal-input-${InputIds++}`

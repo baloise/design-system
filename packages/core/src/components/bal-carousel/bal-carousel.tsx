@@ -27,7 +27,7 @@ import { TabControl } from './controls/tab-control'
 
 @Component({
   tag: 'bal-carousel',
-  styleUrl: 'bal-carousel.sass',
+  styleUrl: 'bal-carousel.scss',
 })
 export class Carousel
   implements

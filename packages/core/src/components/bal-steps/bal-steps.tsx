@@ -13,7 +13,7 @@ import { StepButton } from './components/step-button'
 
 @Component({
   tag: 'bal-steps',
-  styleUrl: 'bal-steps.sass',
+  styleUrl: 'bal-steps.scss',
 })
 export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserver {
   @Element() el!: HTMLStencilElement

@@ -4,7 +4,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-stack',
-  styleUrl: './bal-stack.sass',
+  styleUrl: './bal-stack.scss',
 })
 export class Stack implements ComponentInterface, Loggable {
   log!: LogInstance

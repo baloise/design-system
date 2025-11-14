@@ -13,8 +13,8 @@ import {
   Watch,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isNaN from 'lodash/isNaN'
 import isEmpty from 'lodash/isEmpty'
+import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
@@ -57,7 +57,7 @@ import {
 
 @Component({
   tag: 'bal-number-input',
-  styleUrl: 'bal-number-input.sass',
+  styleUrl: 'bal-number-input.scss',
 })
 export class NumberInput
   implements

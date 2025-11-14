@@ -3,7 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-sheet',
-  styleUrl: 'bal-sheet.sass',
+  styleUrl: 'bal-sheet.scss',
 })
 export class Sheet {
   /**

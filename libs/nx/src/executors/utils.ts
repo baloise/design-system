@@ -1,12 +1,12 @@
 import autoprefixer from 'autoprefixer'
+import { execSync } from 'child_process'
+import CleanCSS from 'clean-css'
 import { mkdir, writeFile } from 'fs/promises'
 import { glob } from 'glob'
 import { basename, dirname, join, relative } from 'path'
 import postcss from 'postcss'
 import { compileAsync } from 'sass'
-import CleanCSS from 'clean-css'
 import ts from 'typescript'
-import { execSync } from 'child_process'
 
 export const NEWLINE = '\n'
 
@@ -16,7 +16,7 @@ export const scan = async filePath => {
 }
 
 export async function compileSass(file: string, options: { projectRoot: string }) {
-  const fileName = basename(file).replace('.sass', '')
+  const fileName = basename(file).replace('.scss', '')
   const folderPath = relative(options.projectRoot, dirname(file))
     .replace('sass', '')
     .replace(/^\/|\/$/g, '')

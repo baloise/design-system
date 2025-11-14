@@ -1,14 +1,14 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import type { BalConfigObserver, BalConfigState } from '../../utils/config'
 import { raf } from '../../utils/helpers'
 import { BalWindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-progress-bar',
-  styleUrl: 'bal-progress-bar.sass',
+  styleUrl: 'bal-progress-bar.scss',
 })
 export class ProgressBar
   implements ComponentInterface, BalConfigObserver, BalBreakpointObserver, BalWindowResizeObserver

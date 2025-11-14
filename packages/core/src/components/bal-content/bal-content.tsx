@@ -4,7 +4,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-content',
-  styleUrl: './bal-content.sass',
+  styleUrl: './bal-content.scss',
 })
 export class Content implements ComponentInterface, Loggable {
   log!: LogInstance

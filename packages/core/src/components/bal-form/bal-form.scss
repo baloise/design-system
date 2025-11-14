@@ -1,0 +1,6 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@include block(form) {
+  display: block;
+  position: static;
+}

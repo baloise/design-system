@@ -5,7 +5,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-shape',
-  styleUrl: 'bal-shape.sass',
+  styleUrl: 'bal-shape.scss',
 })
 export class Shape implements ComponentInterface {
   @Element() el!: HTMLStencilElement

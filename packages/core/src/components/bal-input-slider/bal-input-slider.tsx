@@ -9,7 +9,7 @@ import { debounceEvent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-input-slider',
-  styleUrl: 'bal-input-slider.sass',
+  styleUrl: 'bal-input-slider.scss',
 })
 export class InputSlider implements BalAriaFormLinking {
   @Element() el!: HTMLStencilElement

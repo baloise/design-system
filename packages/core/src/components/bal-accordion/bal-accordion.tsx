@@ -20,7 +20,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-accordion',
-  styleUrl: 'bal-accordion.sass',
+  styleUrl: 'bal-accordion.scss',
 })
 export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
   private componentId = `bal-accordion-${accordionIds++}`
