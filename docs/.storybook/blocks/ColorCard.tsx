@@ -1,4 +1,3 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 
 export const ColorCard = ({ background, color, small = false }) => {

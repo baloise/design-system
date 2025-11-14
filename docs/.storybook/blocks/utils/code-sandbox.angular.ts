@@ -1,4 +1,4 @@
-import { getParameters } from 'codesandbox/lib/api/define'
+// import { getParameters } from 'codesandbox/lib/api/define'
 import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface AngularProject {
@@ -11,36 +11,30 @@ export const PLACEHOLDER_IMPORT = '/** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */'
 
 export const buildAngularParameters = async (project: AngularProject): Promise<string> => {
   const [
-    src_app_app_component_fullscreen_html,
-    src_app_app_component_project_html,
-    src_app_app_component_html,
-    src_app_app_component_ts,
-    src_app_app_module_project_ts,
-    src_app_app_module_ts,
-    src_app_example_component_ts,
+    src_app_app_basic_ts,
+    src_app_app_fullscreen_ts,
+    src_app_app_hello_world_ts,
+    src_app_app_config_ts,
+    src_app_example_ts,
     src_index_html,
     src_main_ts,
-    src_polyfills_ts,
     src_styles_scss,
-    src_zone_flags_ts,
-    _angular_cli_json,
+    angular_json,
     package_json,
+    tsconfig_app_json,
     tsconfig_json,
   ] = await loadSourceFiles([
-    'angular/src/app/app.component-fullscreen.html',
-    'angular/src/app/app.component-project.html',
-    'angular/src/app/app.component.html',
-    'angular/src/app/app.component.ts',
-    'angular/src/app/app.module-project.ts',
-    'angular/src/app/app.module.ts',
-    'angular/src/app/example.component.ts',
+    'angular/src/app/basic/app.ts',
+    'angular/src/app/fullscreen/app.ts',
+    'angular/src/app/hello-world/app.ts',
+    'angular/src/app/app.config.ts',
+    'angular/src/app/example.ts',
     'angular/src/index.html',
     'angular/src/main.ts',
-    'angular/src/polyfills.ts',
     'angular/src/styles.scss',
-    'angular/src/zone-flags.ts',
-    'angular/angular-cli.json',
+    'angular/angular.json',
     'angular/package.json',
+    'angular/tsconfig.app.json',
     'angular/tsconfig.json',
   ])
 
@@ -53,78 +47,75 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
       ? parseMarkdown(project.template)
       : '<h1 class="title text-xxx-large">Hello World</h1>'
 
-    const new_example_component_ts = src_app_example_component_ts
+    const new_example_component_ts = src_app_example_ts
 
     if (exampleFiles === undefined) {
       exampleFiles = {
-        'src/app/example.component.ts': {
+        'src/app/example.ts': {
           isBinary: false,
           content: new_example_component_ts,
         },
-        'src/app/example.component.html': {
+        'src/app/example.html': {
           isBinary: false,
           content: example_component_html,
         },
-        'src/app/example.component.css': {
-          isBinary: false,
-          content: '',
-        },
+        // 'src/app/example.css': {
+        //   isBinary: false,
+        //   content: '',
+        // },
       }
     }
   }
 
-  return getParameters({
-    files: {
-      'package.json': {
-        isBinary: false,
-        content: package_json,
-      },
-      'tsconfig.json': {
-        isBinary: false,
-        content: tsconfig_json,
-      },
-      '.angular-cli.json': {
-        isBinary: false,
-        content: _angular_cli_json,
-      },
-      'src/app/app.component.html': {
-        isBinary: false,
-        content: isTryOnlineProject
-          ? src_app_app_component_project_html
-          : project.fullscreen
-            ? src_app_app_component_fullscreen_html
-            : src_app_app_component_html,
-      },
-      'src/app/app.component.ts': {
-        isBinary: false,
-        content: src_app_app_component_ts,
-      },
-      'src/app/app.module.ts': {
-        isBinary: false,
-        content: isTryOnlineProject ? src_app_app_module_project_ts : src_app_app_module_ts,
-      },
-      'src/index.html': {
-        isBinary: false,
-        content: src_index_html,
-      },
-      'src/main.ts': {
-        isBinary: false,
-        content: src_main_ts,
-      },
-      'src/polyfills.ts': {
-        isBinary: false,
-        content: src_polyfills_ts,
-      },
-      'src/styles.scss': {
-        isBinary: false,
-        content: src_styles_scss,
-      },
-      'src/zone-flags.ts': {
-        isBinary: false,
-        content: src_zone_flags_ts,
-      },
-      ...(exampleFiles || {}),
-      ...secondComponent,
-    },
-  })
+  return ''
+  // getParameters({
+  //   files: {
+  //     'package.json': {
+  //       isBinary: false,
+  //       content: package_json,
+  //     },
+  //     'tsconfig.json': {
+  //       isBinary: false,
+  //       content: tsconfig_json,
+  //     },
+  //     'tsconfig.app.json': {
+  //       isBinary: false,
+  //       content: tsconfig_app_json,
+  //     },
+  //     'angular.json': {
+  //       isBinary: false,
+  //       content: angular_json,
+  //     },
+  //     'src/app/app.ts': {
+  //       isBinary: false,
+  //       content: isTryOnlineProject
+  //         ? src_app_app_hello_world_ts
+  //         : project.fullscreen
+  //           ? src_app_app_fullscreen_ts
+  //           : src_app_app_basic_ts,
+  //     },
+  //     // 'src/app/app.component.ts': {
+  //     //   isBinary: false,
+  //     //   content: src_app_app_component_ts,
+  //     // },
+  //     'src/app/app.config.ts': {
+  //       isBinary: false,
+  //       content: src_app_app_config_ts,
+  //     },
+  //     'src/index.html': {
+  //       isBinary: false,
+  //       content: src_index_html,
+  //     },
+  //     'src/main.ts': {
+  //       isBinary: false,
+  //       content: src_main_ts,
+  //     },
+  //     'src/styles.scss': {
+  //       isBinary: false,
+  //       content: src_styles_scss,
+  //     },
+  //     ...(exampleFiles || {}),
+  //     ...secondComponent,
+  //   },
+  // })
 }

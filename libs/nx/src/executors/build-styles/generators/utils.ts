@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, dirname } from 'path'
-import get from 'lodash.get'
+import get from 'lodash/get'
 
 export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'
@@ -173,7 +173,7 @@ export const toProps = ({ tokens, prefix = undefined, replace = undefined, repla
   for (const key in tokens) {
     const property = tokens[key]
 
-    if (!property.value) {
+    if (!property.$value) {
       props = {
         ...props,
         ...toProps({ tokens: property, prefix, replace, replace2 }),

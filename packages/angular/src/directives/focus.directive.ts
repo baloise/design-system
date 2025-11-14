@@ -1,8 +1,24 @@
 /* eslint-disable @angular-eslint/directive-class-suffix */
-import { Directive } from '@angular/core'
-import { BalAutoFocus as BalAutoFocusBase } from '@baloise/ds-angular-common'
+import { AfterViewInit, Directive, ElementRef } from '@angular/core'
 
 @Directive({
   selector: '[balAutoFocus]',
 })
-export class BalAutoFocus extends BalAutoFocusBase {}
+export class BalAutoFocus implements AfterViewInit {
+  constructor(protected elementRef: ElementRef) {}
+
+  ngAfterViewInit() {
+    this.setFocus()
+  }
+
+  setFocus() {
+    const el = this.elementRef.nativeElement
+    if (el) {
+      if (el.setFocus) {
+        el.setFocus()
+      } else {
+        el.focus()
+      }
+    }
+  }
+}

@@ -22,11 +22,8 @@
       "@baloise/ds-angular": [
         "packages/angular/src/index.ts"
       ],
-      "@baloise/ds-angular-common": [
-        "packages/angular-common/src/index.ts"
-      ],
-      "@baloise/ds-angular-module": [
-        "packages/angular-module/src/index.ts"
+      "@baloise/ds-tokens": [
+        "packages/tokens/dist/tokens.js"
       ],
       "@baloise/ds-brand-icons": [
         "packages/brand-icons/src/index.ts"

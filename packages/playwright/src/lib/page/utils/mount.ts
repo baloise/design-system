@@ -1,5 +1,6 @@
 import type { TestInfo } from '@playwright/test'
 import type { BalPage } from '../../types'
+import { waitForChanges } from './wait-for-changes'
 
 export const mount = async (page: BalPage, content: string, testInfo: TestInfo) => {
   if (page.isClosed()) {
@@ -27,6 +28,12 @@ export const mount = async (page: BalPage, content: string, testInfo: TestInfo) 
     })
 
     await page.goto(`${baseUrl}#`)
+    await waitForChanges(page)
+    await page.waitForFunction(
+      () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+      {},
+      { timeout: 5000 },
+    )
   } else {
     throw new Error('setContent unavailable: no dev server base URL provided')
   }

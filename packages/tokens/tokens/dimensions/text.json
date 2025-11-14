@@ -1,0 +1,155 @@
+{
+  "font": {
+    "weight": {
+      "$type": "number",
+      "bold": {
+        "$value": "700",
+        "comment": "Bold is used for headings, links and buttons."
+      },
+      "regular": {
+        "$value": "400",
+        "comment": "Default width of paragraphs. Only available with the font BaloiseCreateText."
+      },
+      "light": {
+        "$value": "300",
+        "comment": "Can be used for secondary headings. Only available with the font BaloiseCreateHeadline."
+      }
+    }
+  },
+  "text": {
+    "$type": "dimension",
+    "size": {
+      "x-small": {
+        "mobile": {
+          "$value": "12px",
+          "comment": "Should only be used for helper texts or validation messages of a form control."
+        },
+        "tablet": {
+          "$value": "{text.size.x-small.mobile}"
+        },
+        "desktop": {
+          "$value": "{text.size.x-small.mobile}"
+        }
+      },
+      "small": {
+        "mobile": {
+          "$value": "14px",
+          "comment": "Should only be used for label texts."
+        },
+        "tablet": {
+          "$value": "{text.size.small.mobile}"
+        },
+        "desktop": {
+          "$value": "{text.size.small.mobile}"
+        }
+      },
+      "normal": {
+        "mobile": {
+          "$value": "16px",
+          "comment": "Should only be used for label texts."
+        },
+        "tablet": {
+          "$value": "{text.size.normal.mobile}"
+        },
+        "desktop": {
+          "$value": "{text.size.normal.mobile}"
+        }
+      },
+      "medium": {
+        "mobile": {
+          "$value": "16px",
+          "comment": "Should only be used in a 2/3 grid column to improve readability."
+        },
+        "tablet": {
+          "$value": "18px"
+        },
+        "desktop": {
+          "$value": "{text.size.medium.tablet}"
+        }
+      },
+      "large": {
+        "mobile": {
+          "$value": "18px",
+          "comment": "Should only be used for standard card titles and headings of level 4 or for lead text/paragraphs after a heading."
+        },
+        "tablet": {
+          "$value": "20px"
+        },
+        "desktop": {
+          "$value": "{text.size.large.tablet}"
+        }
+      },
+      "x-large": {
+        "mobile": {
+          "$value": "20px",
+          "comment": "Should only be used for form titles, quick link navigation's and headings of level 3."
+        },
+        "tablet": {
+          "$value": "24px"
+        },
+        "desktop": {
+          "$value": "{text.size.x-large.tablet}"
+        }
+      },
+      "xx-large": {
+        "mobile": {
+          "$value": "24px",
+          "comment": "Should only be used for content titles and headings of level 2."
+        },
+        "tablet": {
+          "$value": "32px"
+        },
+        "desktop": {
+          "$value": "{text.size.xx-large.tablet}"
+        }
+      },
+      "xxx-large": {
+        "mobile": {
+          "$value": "28px",
+          "comment": "Should only be used for stage titles and headings of level 1."
+        },
+        "tablet": {
+          "$value": "40px"
+        },
+        "desktop": {
+          "$value": "{text.size.xxx-large.tablet}"
+        }
+      },
+      "xxxx-large": {
+        "mobile": {
+          "$value": "32px",
+          "comment": "Should only be uses to illustrate large stage areas."
+        },
+        "tablet": {
+          "$value": "48px"
+        },
+        "desktop": {
+          "$value": "{text.size.xxxx-large.tablet}"
+        }
+      },
+      "xxxxx-large": {
+        "mobile": {
+          "$value": "48px",
+          "comment": "Should only be uses to illustrate large stage areas."
+        },
+        "tablet": {
+          "$value": "80px"
+        },
+        "desktop": {
+          "$value": "{text.size.xxxxx-large.tablet}"
+        }
+      }
+    },
+    "line-height": {
+      "$type": "number",
+      "title": {
+        "$value": "1.3",
+        "comment": "Standard line-height for the headings."
+      },
+      "text": {
+        "$value": "1.5",
+        "comment": "Default line height for all text elements."
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+import { Markdown, Meta } from '@storybook/addon-docs'
+import {
+  AngularFramework,
+  Banner,
+  Code,
+  CodeSandbox,
+  CssTypographyColors,
+  DiffSource,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
+  LinkCard,
+  LinkCards,
+  NotAngularFramework,
+  PackageTable,
+  ReactFramework,
+  WarningQuote,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v20" />
+
+<Banner label="Updating to v20" section="Development/Upgrade Guides" />
+
+## One Angular component library
+
+The design system now provides an Angular provider instead of the BaloiseDesignSystemModule.
+
+### Why the Change?
+
+This change simplifies maintenance, ensures the Angular library stays up to date, and removes support for deprecated or optional Angular parts.
+
+The new provider is fully compatible with both Angular module-based applications and the latest Angular solutions.
+
+### How to Upgrade
+
+1. In the app-module.ts replace the `BaloiseDesignSystemModule.forRoot(<config>)` with the provide function `provideBaloiseDesignSystem(<config>)`. `<config>` is the same type as before.
+
+```ts
+@NgModule({
+  declarations: [App],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  providers: [provideBrowserGlobalErrorListeners(), provideBaloiseDesignSystem()],
+  bootstrap: [App],
+})
+export class AppModule {}
+```
+
+2. Remove the `BaloiseDesignSystemModule` in every other module and import the components you need instead or just all components with the bundle `BalComponentBundle`.
+
+```ts
+@NgModule({
+  imports: [BalComponentBundle],
+  // or component by component
+  // imports: [BrowserModule, AppRoutingModule, BalLayoutBundle, BalHeading, BalButton],
+  ...
+})
+export class SharedModule {}
+```
+
+3. Make sure only to import and use `@baloise/ds-angular`.
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

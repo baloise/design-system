@@ -9,13 +9,20 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:clean && npm run build:ts && npm run build:tokens",
+    "build:clean": "rimraf dist",
+    "build:ts": "tsc -p tsconfig.lib.json",
+    "build:tokens": "style-dictionary build --config ./dist/out-tsc/config.js --verbose"
+  },
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "files": [
     "dist/"
   ],
   "main": "dist/tokens.js",
-  "module": "dist/tokens.esm.js",
-  "types": "dist/types/tokens.d.ts",
+  "module": "dist/tokens.js",
+  "types": "dist/tokens.d.ts",
   "style": "dist/tokens.css"
 }

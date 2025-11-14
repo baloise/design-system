@@ -84,8 +84,9 @@ e2e/cypress/snapshots/diff
 e2e/cypress/snapshots/report.html
 e2e/cypress/downloads
 
-resources/data
-!resources/data/tags.json
+resources/data/commands.json
+resources/data/contributors.json
+resources/data/selectors.json
 
 docs/stories/contributing/contributors.md
 docs/stories/development/00-guides/theming/theming.md
@@ -119,8 +120,6 @@ test/react/*
 
 packages/brand-icons/CHANGELOG.md
 packages/devkit/CHANGELOG.md
-packages/angular-common/CHANGELOG.md
-packages/angular-module/CHANGELOG.md
 packages/angular/CHANGELOG.md
 packages/react/CHANGELOG.md
 packages/table/CHANGELOG.md
@@ -141,8 +140,6 @@ e2e/CHANGELOG.md
 packages/core/README.md
 packages/brand-icons/README.md
 packages/devkit/README.md
-packages/angular-common/README.md
-packages/angular-module/README.md
 packages/angular/README.md
 packages/react/README.md
 packages/table/README.md
@@ -163,8 +160,6 @@ e2e/README.md
 packages/core/LICENSE
 packages/brand-icons/LICENSE
 packages/devkit/LICENSE
-packages/angular-common/LICENSE
-packages/angular-module/LICENSE
 packages/angular/LICENSE
 packages/react/LICENSE
 packages/table/LICENSE
@@ -189,3 +184,5 @@ vitest.config.*.timestamp*
 *-darwin.png
 test-results
 playwright.visual.config.ts
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md

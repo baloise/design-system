@@ -1,8 +1,9 @@
+import { expect } from 'vitest'
 import { setupConfig } from '../../config'
 import { MaskComponentMock } from '../__test__/mask-component.mock'
 import { MaskMock } from '../__test__/mask.mock'
-import { MaskComponentAdapter } from './mask-component-adapter'
 import * as exports from '../context'
+import { MaskComponentAdapter } from './mask-component-adapter'
 
 describe('MaskComponentAdapter', () => {
   let mask = new MaskMock()
@@ -39,7 +40,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind locale change and submit changes', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskLocaleContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskLocaleContext').mockImplementation(function () {
       return {
         submit: submitSpy,
         locale: 'en-CH',
@@ -56,7 +57,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind value changes', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskValueChangedContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskValueChangedContext').mockImplementation(function () {
       return {
         submit: submitSpy,
         newValue: 'new',
@@ -74,7 +75,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind key down events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(function () {
       return {
         submit: submitSpy,
         key: 'p',
@@ -91,7 +92,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind key down events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -106,7 +107,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind focus events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -122,7 +123,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind focus events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -138,7 +139,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind blur events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -155,7 +156,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind blur events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -172,7 +173,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind paste events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -187,7 +188,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind paste events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -202,7 +203,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind click events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any
@@ -217,7 +218,7 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind click events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(() => {
+    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(function () {
       return {
         submit: submitSpy,
       } as any

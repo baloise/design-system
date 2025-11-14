@@ -1,0 +1,13 @@
+{
+  "font": {
+    "$type": "fontFamily",
+    "family": {
+      "title": {
+        "$value": ["BaloiseCreateHeadline", "Arial", "sans-serif"]
+      },
+      "text": {
+        "$value": ["BaloiseCreateText", "Arial", "sans-serif"]
+      }
+    }
+  }
+}

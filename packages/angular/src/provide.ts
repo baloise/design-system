@@ -1,34 +1,16 @@
 import { DOCUMENT } from '@angular/common'
-import { APP_INITIALIZER, NgZone, makeEnvironmentProviders } from '@angular/core'
 import type { EnvironmentProviders } from '@angular/core'
-
-import type { BaloiseDesignSystemAngularConfig } from '@baloise/ds-angular-common'
-import {
-  AngularDelegate,
-  BalBreakpointsService,
-  BalConfigService,
-  BalModalService,
-  BalOrientationService,
-  BalSnackbarService,
-  BalToastService,
-  BalTokenBreakpointSubject,
-  BalTokenBreakpoints,
-  BalTokenConfig,
-  BalTokenModal,
-  BalTokenSnackbar,
-  BalTokenToast,
-  BalTokenUserConfig,
-  BalTokenDevice,
-  BalTokenOrientationSubject,
-} from '@baloise/ds-angular-common'
+import { APP_INITIALIZER, NgZone, makeEnvironmentProviders } from '@angular/core'
 
 import {
+  attachToConfig,
   balBreakpointSubject,
   balBreakpoints,
+  balDevice,
   balModalController,
+  balOrientationSubject,
   balSnackbarController,
   balToastController,
-  attachToConfig,
   defaultConfig,
   detachFromConfig,
   updateBalAllowedLanguages,
@@ -36,11 +18,28 @@ import {
   updateBalIcons,
   updateBalLanguage,
   updateBalRegion,
-  balDevice,
-  balOrientationSubject,
 } from '@baloise/ds-core/components'
 
 import { appInitialize } from './app-initialize'
+import { AngularDelegate } from './providers/angular-delegate'
+import { BalBreakpointsService } from './providers/breakpoints.service'
+import { BalConfigService } from './providers/config.service'
+import { BalModalService } from './providers/modal.service'
+import { BalOrientationService } from './providers/orientation.service'
+import { BalSnackbarService } from './providers/snackbar.service'
+import { BalToastService } from './providers/toast.service'
+import { BaloiseDesignSystemAngularConfig } from './utils/config'
+import {
+  BalTokenBreakpointSubject,
+  BalTokenBreakpoints,
+  BalTokenConfig,
+  BalTokenDevice,
+  BalTokenModal,
+  BalTokenOrientationSubject,
+  BalTokenSnackbar,
+  BalTokenToast,
+  BalTokenUserConfig,
+} from './utils/token'
 
 export const provideBaloiseDesignSystem = (config: BaloiseDesignSystemAngularConfig = {}): EnvironmentProviders => {
   return makeEnvironmentProviders([

@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { Component, Input } from '@angular/core'
 import { BalModalService, balImports } from '../design-system'
 
 @Component({
   selector: 'app-modal',
-  standalone: true,
   imports: [CommonModule, ...balImports],
   template: `
     <bal-modal-header>Modal Title</bal-modal-header>

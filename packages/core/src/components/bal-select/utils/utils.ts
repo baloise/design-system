@@ -1,4 +1,4 @@
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isNil'
 import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {

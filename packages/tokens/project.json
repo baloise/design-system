@@ -9,15 +9,11 @@
       "outputs": ["{options.outputFile}"]
     },
     "build": {
-      "executor": "@nxkit/style-dictionary:build",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/build"],
       "options": {
-        "outputPath": "{projectRoot}/dist",
-        "styleDictionaryConfig": "{projectRoot}/style-dictionary.config.ts",
-        "tsConfig": "{projectRoot}/tsconfig.json",
-        "customFormats": "{projectRoot}/src/extensions/formats/index.ts",
-        "customFilters": "{projectRoot}/src/extensions/filters/index.ts",
-        "customTransforms": "{projectRoot}/src/extensions/transforms/index.ts"
+        "cwd": "{projectRoot}",
+        "command": "npm run build"
       }
     }
   },

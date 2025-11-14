@@ -1,13 +1,13 @@
 import { ComponentFactoryResolver, Inject, Injectable, Injector } from '@angular/core'
 
-import type { BalModalController, ModalOptions } from '@baloise/ds-core/components'
+import type { BalModalController, ModalOptions } from '@baloise/ds-core'
 import { defineCustomElement } from '@baloise/ds-core/components/bal-modal'
 
-import { AngularDelegate, OverlayBaseController, BalTokenModal } from '@baloise/ds-angular-common'
+import { AngularDelegate } from './angular-delegate'
+import { OverlayBaseController } from './overlay'
+import { BalTokenModal } from '../utils/token'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {
   constructor(
     private angularDelegate: AngularDelegate,
