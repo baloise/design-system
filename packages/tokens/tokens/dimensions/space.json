@@ -1,0 +1,125 @@
+{
+  "space": {
+    "$type": "dimension",
+    "xx-small": {
+      "mobile": {
+        "$value": "4",
+        "comment": "Minimum space between two elements"
+      },
+      "tablet": {
+        "$value": "{space.xx-small.mobile}"
+      },
+      "desktop": {
+        "$value": "{space.xx-small.mobile}"
+      }
+    },
+    "x-small": {
+      "mobile": {
+        "$value": "8",
+        "comment": "Space between text and icons or headings and content or clickable elements"
+      },
+      "tablet": {
+        "$value": "{space.x-small.mobile}"
+      },
+      "desktop": {
+        "$value": "{space.x-small.mobile}"
+      }
+    },
+    "small": {
+      "mobile": {
+        "$value": "12",
+        "comment": ""
+      },
+      "tablet": {
+        "$value": "{space.small.mobile}"
+      },
+      "desktop": {
+        "$value": "{space.small.mobile}"
+      }
+    },
+    "normal": {
+      "mobile": {
+        "$value": "16",
+        "comment": "Space between large headings and content."
+      },
+      "tablet": {
+        "$value": "{space.normal.mobile}"
+      },
+      "desktop": {
+        "$value": "{space.normal.mobile}"
+      }
+    },
+    "medium": {
+      "mobile": {
+        "$value": "20",
+        "comment": "Inner padding of cards"
+      },
+      "tablet": {
+        "$value": "{space.medium.mobile}"
+      },
+      "desktop": {
+        "$value": "24"
+      }
+    },
+    "large": {
+      "mobile": {
+        "$value": "24",
+        "comment": "Space between cards"
+      },
+      "tablet": {
+        "$value": "{space.large.mobile}"
+      },
+      "desktop": {
+        "$value": "32"
+      }
+    },
+    "x-large": {
+      "mobile": {
+        "$value": "32",
+        "comment": "Space between heading and card"
+      },
+      "tablet": {
+        "$value": "40"
+      },
+      "desktop": {
+        "$value": "48"
+      }
+    },
+    "xx-large": {
+      "mobile": {
+        "$value": "48",
+        "comment": ""
+      },
+      "tablet": {
+        "$value": "56"
+      },
+      "desktop": {
+        "$value": "64"
+      }
+    },
+    "xxx-large": {
+      "mobile": {
+        "$value": "56",
+        "comment": "Footer bottom padding"
+      },
+      "tablet": {
+        "$value": "72"
+      },
+      "desktop": {
+        "$value": "96"
+      }
+    },
+    "xxxx-large": {
+      "mobile": {
+        "$value": "64",
+        "comment": "Space between sections"
+      },
+      "tablet": {
+        "$value": "96"
+      },
+      "desktop": {
+        "$value": "128"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "color": {
+    "$type": "color",
+    "shadow": {
+      "focus": {
+        "start": { "$value": "{color.base.white}" },
+        "end": { "$value": "{color.base.purple.6}" },
+        "inverted-start": { "$value": "{color.base.white}" },
+        "inverted-end": { "$value": "{color.base.yellow.3}" }
+      }
+    }
+  }
+}

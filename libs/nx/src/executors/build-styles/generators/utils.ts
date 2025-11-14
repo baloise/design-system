@@ -173,7 +173,7 @@ export const toProps = ({ tokens, prefix = undefined, replace = undefined, repla
   for (const key in tokens) {
     const property = tokens[key]
 
-    if (!property.value) {
+    if (!property.$value) {
       props = {
         ...props,
         ...toProps({ tokens: property, prefix, replace, replace2 }),

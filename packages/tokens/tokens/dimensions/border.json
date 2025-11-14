@@ -1,0 +1,19 @@
+{
+  "border": {
+    "$type": "dimension",
+    "width": {
+      "small": {
+        "$value": "1",
+        "comment": "The small border size is crafted for subtle, refined delineation."
+      },
+      "normal": {
+        "$value": "2",
+        "comment": "The normal border size strikes a harmonious balance, offering a versatile choice for defining boundaries within your design."
+      },
+      "large": {
+        "$value": "4",
+        "comment": "The large border size makes a bold statement, creating strong visual contrasts and emphasizing key elements within your interface."
+      }
+    }
+  }
+}
