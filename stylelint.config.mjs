@@ -17,6 +17,6 @@ export default {
         ignore: ['after-comment'],
       },
     ],
-    'scss/comment-no-empty': ['never'],
+    'scss/comment-no-empty': null,
   },
 }

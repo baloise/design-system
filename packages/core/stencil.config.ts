@@ -138,6 +138,11 @@ export const config: Config = {
           src: 'components.d.ts',
         },
         {
+          src: join(packagesDir, 'core', 'public', 'section.css'),
+          dest: 'assets/section.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
           dest: 'assets/future-logo.svg',
           warn: true,
@@ -179,7 +184,17 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.min.css',
+          dest: 'assets/basic.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
+          dest: 'assets/components.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
+          dest: 'assets/tokens.css',
           warn: true,
         },
         {
@@ -202,7 +217,7 @@ export const config: Config = {
     /**
      * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {
             type: 'docs-vscode',
@@ -316,6 +331,7 @@ export const config: Config = {
           for (const file of styleFiles) {
             this.addWatchFile(file)
           }
+
           const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
           for (const file of templateFiles) {
             this.addWatchFile(file)

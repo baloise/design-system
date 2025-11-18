@@ -15,11 +15,15 @@ export const scan = async filePath => {
   return glob(filePath.replace(/\\/g, '/'))
 }
 
-export async function compileSass(file: string, options: { projectRoot: string }) {
+export async function compileSass(file: string, options: { projectRoot: string; folderPath?: string }) {
   const fileName = basename(file).replace('.scss', '')
-  const folderPath = relative(options.projectRoot, dirname(file))
-    .replace('sass', '')
-    .replace(/^\/|\/$/g, '')
+
+  let folderPath = options.folderPath
+  if (!folderPath) {
+    folderPath = relative(options.projectRoot, dirname(file))
+      .replace('sass', '')
+      .replace(/^\/|\/$/g, '')
+  }
 
   const sassResult = await compileAsync(file, {
     loadPaths: ['node_modules'],
@@ -46,6 +50,60 @@ export async function compileSass(file: string, options: { projectRoot: string }
   await writeFile(join(options.projectRoot, outputPath, `${fileName}.css`), cssContent)
   await writeFile(join(options.projectRoot, outputPath, `${fileName}.css.map`), JSON.stringify(sassResult.sourceMap))
   await writeFile(join(options.projectRoot, outputPath, `${fileName}.min.css`), cleanResult.styles)
+}
+
+export async function compileSassToMergedFile(
+  files: string[],
+  outputFileName: string,
+  options: { projectRoot: string; folderPath?: string },
+) {
+  let mergedCss = ''
+  const mergedSourceMap = {
+    version: 3,
+    sources: [] as string[],
+    names: [],
+    mappings: '',
+    file: outputFileName,
+  }
+
+  // Compile each sass file and merge the CSS
+  for (const file of files) {
+    const sassResult = await compileAsync(file, {
+      loadPaths: ['node_modules'],
+      sourceMap: true,
+      sourceMapIncludeSources: true,
+    })
+
+    mergedCss += sassResult.css + NEWLINE
+    if (sassResult.sourceMap) {
+      mergedSourceMap.sources.push(...(sassResult.sourceMap.sources || []))
+    }
+  }
+
+  // Apply autoprefixer to the merged CSS
+  const folderPath = options.folderPath || ''
+  const postcssResult = await postcss([autoprefixer({ add: true, grid: true, flexbox: true })])
+    .process(mergedCss, {
+      from: `${options.projectRoot}/css/*.css`,
+      to: `${options.projectRoot}/css`,
+      map: {
+        inline: false,
+        annotation: join(folderPath, `${outputFileName}.map`),
+      },
+    })
+    .async()
+
+  const cssContent = postcssResult.toString()
+  const cleanResult = new CleanCSS({ compatibility: '*', level: 2 }).minify(cssContent)
+
+  const outputPath = join('css', folderPath)
+  await mkdir(join(options.projectRoot, outputPath), { recursive: true })
+  await writeFile(join(options.projectRoot, outputPath, outputFileName), cssContent)
+  await writeFile(join(options.projectRoot, outputPath, `${outputFileName}.map`), JSON.stringify(mergedSourceMap))
+  await writeFile(
+    join(options.projectRoot, outputPath, outputFileName.replace('.css', '.min.css')),
+    cleanResult.styles,
+  )
 }
 
 export const createSourceFile = content => ts.createSourceFile('x.ts', content, ts.ScriptTarget.Latest)
