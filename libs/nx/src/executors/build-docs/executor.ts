@@ -47,7 +47,7 @@ async function archive(fromPath: string, targetPath: string, fileName: string, f
 
 async function copyResources(options: BuildDocsExecutorSchema) {
   async function copyToAsset(from: string, to: string) {
-    await copy(from, join(options.projectRoot, 'stories', 'assets', to), { recursive: true, overwrite: true })
+    await copy(from, join(options.projectRoot, 'src', 'assets', to), { recursive: true, overwrite: true })
   }
 
   async function copyToPublic(from: string, to: string) {

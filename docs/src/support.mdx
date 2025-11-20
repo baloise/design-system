@@ -1,0 +1,97 @@
+import { Description, Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, ButtonCard, Footer, InfoQuote, Lead, LinkCard, LinkCards } from '../.storybook/blocks'
+
+<Meta
+  title="Support"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Support" />
+
+<Lead>Support is provided by the Baloise Design System team for users of the Design System.</Lead>
+
+The **maintainers** will screen the issues every thursday.
+
+If it is a urgent(users in prod are blocked and there are no workarounds) bug needs to be checked
+before thursday, then please contact the Teams channel `Web, Frontend - Angular, React, HTML, CSS`.
+
+<InfoQuote>**TIP** Before contacting us take some time to explore the contents of this documentation.</InfoQuote>
+
+## Create an Issue
+
+All you need is a [public GitHub account](https://github.com/) to get started. Most contributions begin with a GitHub issue using one of these templates:
+
+<Unstyled>
+  <div className="flex flex-wrap gap-normal">
+    <ButtonCard
+      color="yellow"
+      icon="💬"
+      label="Ask a question"
+      description="Usage question or discussion about the Baloise Design System"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=💬+question&template=question_report.yml&title=%3Aspeech_balloon%3A+question%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="🐛"
+      label="Report a bug"
+      description="Create a report to help us improve Get started"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=🐛+bug&template=bug_report.yml&title=%3Abug%3A+fix%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="✨"
+      label="Request a feature"
+      description="Suggest an idea for this project"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=✨+feature&template=feature_report.yml&title=%3Asparkles%3A+feat%28component%29%3A+title"
+    ></ButtonCard>
+  </div>
+</Unstyled>
+
+## Maintainers
+
+Maintainers are members of the community who are committed to the success of individual Baloise Design System projects. In addition to their participation as a contributor, maintainers:
+
+- Label, close, and manage GitHub issues
+- Close and merge GitHub pull requests
+
+<Unstyled>
+  <div className="flex gap-normal">
+    <ButtonCard color="green" label="hirsch88" link="https://github.com/hirsch88">
+      <img src="https://avatars.githubusercontent.com/u/6384499?v=4" alt="hirsch88" />
+    </ButtonCard>
+    <ButtonCard color="green" label="m4rc0z" link="https://github.com/m4rc0z">
+      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" />
+    </ButtonCard>
+    <ButtonCard color="green" label="mmarinkov" link="https://github.com/mmarinkov">
+      <img src="https://avatars.githubusercontent.com/u/161294073?v=4" alt="mmarinkov" />
+    </ButtonCard>
+  </div>
+</Unstyled>
+
+## Contributing
+
+Please have a look at the [contributing guidelines](?path=/docs/contributing-overview--documentation).
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Foundation/Overview'}
+      label={'Foundation'}
+      description={'Design tokens, typography, colors and more'}
+    />
+    <LinkCard
+      pageTitle={'Development/Getting Started'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular or React'}
+    />
+    <LinkCard
+      label={'Contributing'}
+      pageTitle={'Contributing/Overview'}
+      description={'Be part of the Design System Community'}
+    />
+  </LinkCards>
+</Footer>

@@ -178,6 +178,7 @@ export class Heading implements ComponentInterface {
             ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
+          part="native"
           data-testid="bal-heading"
         >
           <slot />

@@ -25,10 +25,10 @@ CHANGELOG_v12.md
 generated
 
 docs/public
-docs/stories/assets
-docs/stories/components/**/api.md
-docs/stories/components/**/testing.md
-docs/stories/components/**/theming.md
+docs/src/assets
+docs/src/components/**/api.md
+docs/src/components/**/testing.md
+docs/src/components/**/theming.md
 
 e2e/cypress/snapshots
 e2e/cypress/videos
@@ -36,6 +36,7 @@ e2e/cypress/downloads
 
 package-lock.json
 *.svg
+*.mdx
 resources/data/components.json
 
 /.nx/workspace-data

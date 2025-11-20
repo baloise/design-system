@@ -1,4 +1,4 @@
-import { create, themes } from '@storybook/theming'
+import { themes, create } from 'storybook/theming'
 import Logo from '../stories/assets/images/storybook.svg'
 
 export default create({

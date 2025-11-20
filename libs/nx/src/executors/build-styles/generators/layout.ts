@@ -91,7 +91,7 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
   })
 
   const zIndex = await utils.staticClassByToken({
-    token: 'size.z-index',
+    token: 'z-index',
     property: 'z-index',
     ...options,
   })

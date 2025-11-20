@@ -1,0 +1,371 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, ButtonCard, Footer, GridCard, GridCards, InfoQuote, Lead, ScssSource } from '../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="CSS Utilities" color="yellow" puzzle />
+
+<Lead>CSS utility classes streamline component styling with pre-defined styles applied directly to HTML elements.</Lead>
+
+## Backgrounds
+
+<GridCards>
+  <GridCard
+    label="Background Colors"
+    pageTitle="CSS Utilities/Background/Background Colors"
+    color="yellow"
+    description="Select from a range of colors for the background of an element."
+  />
+</GridCards>
+
+## Borders
+
+<GridCards>
+  <GridCard
+    label="Border Colors"
+    pageTitle="CSS Utilities/Border/Border Colors"
+    color="yellow"
+    description="Diverse color palettes available for element borders."
+  />
+  <GridCard
+    label="Border Radius"
+    pageTitle="CSS Utilities/Border/Border Radius"
+    color="yellow"
+    description="Defines the radius of an element's corners."
+  />
+  <GridCard
+    label="Border Width"
+    pageTitle="CSS Utilities/Border/Border Width"
+    color="yellow"
+    description="Defines the width of the border."
+  />
+</GridCards>
+
+## Elevation
+
+<GridCards>
+  <GridCard
+    label="Opacity"
+    pageTitle="CSS Utilities/Elevation/Opacity"
+    color="yellow"
+    description="Specifies the level of transparency for an element."
+  />
+  <GridCard
+    label="Shadow"
+    pageTitle="CSS Utilities/Elevation/Shadow"
+    color="yellow"
+    description="Determines the box-shadow or text-shadow effect applied to an element."
+  />
+</GridCards>
+
+## Flexbox
+
+<GridCards>
+  <GridCard
+    label="Align Content"
+    pageTitle="CSS Utilities/Flexbox/Align Content"
+    color="yellow"
+    description="Determines how flex lines are distributed between and around items."
+  />
+  <GridCard
+    label="Align Items"
+    pageTitle="CSS Utilities/Flexbox/Align Items"
+    color="yellow"
+    description="Specifies alignment along the cross axis."
+  />
+  <GridCard
+    label="Align Self"
+    pageTitle="CSS Utilities/Flexbox/Align Self"
+    color="yellow"
+    description="Specifies the alignment for a specific element along the cross axis."
+  />
+  <GridCard
+    label="Flex Direction"
+    pageTitle="CSS Utilities/Flexbox/Flex Direction"
+    color="yellow"
+    description="Determines the direction of flexible items."
+  />
+  <GridCard
+    label="Flex"
+    pageTitle="CSS Utilities/Flexbox/Flex"
+    color="yellow"
+    description="A shorthand property for setting flex-grow, flex-shrink, and flex-basis simultaneously."
+  />
+  <GridCard
+    label="Gap"
+    pageTitle="CSS Utilities/Flexbox/Gap"
+    color="yellow"
+    description="Specifies the gap size between rows and grid. It is a shorthand for column-gap and row-gap."
+  />
+  <GridCard
+    label="Justify Content"
+    pageTitle="CSS Utilities/Flexbox/Justify Content"
+    color="yellow"
+    description="Specifies alignment along the main axis."
+  />
+  <GridCard
+    label="Flex Wrap"
+    pageTitle="CSS Utilities/Flexbox/Flex Wrap"
+    color="yellow"
+    description="Determines whether flexible items should wrap or not."
+  />
+</GridCards>
+
+## Grid
+
+<GridCards>
+  <GridCard
+    label="Grid System"
+    pageTitle="CSS Utilities/Grid/Grid System"
+    color="yellow"
+    description="Determines how flex lines are distributed between and around items."
+  />
+</GridCards>
+
+## Interactions
+
+<GridCards>
+  <GridCard
+    label="Cursor"
+    pageTitle="CSS Utilities/Interactions/Cursor"
+    color="yellow"
+    description="Defines the appearance of the mouse cursor when positioned over an element."
+  />
+  <GridCard
+    label="User Select"
+    pageTitle="CSS Utilities/Interactions/User Select"
+    color="yellow"
+    description="Manages the ability of the user to highlight and select text."
+  />
+</GridCards>
+
+## Layout
+
+<GridCards>
+  <GridCard
+    label="Container"
+    pageTitle="CSS Utilities/Layout/Container"
+    color="yellow"
+    description="A straightforward container for horizontally centering your content."
+  />
+  <GridCard
+    label="Display"
+    pageTitle="CSS Utilities/Layout/Display"
+    color="yellow"
+    description="Specifies the display behavior of an element on a page."
+  />
+  <GridCard
+    label="Position"
+    pageTitle="CSS Utilities/Layout/Position"
+    color="yellow"
+    description="Position a element on the screen."
+  />
+  <GridCard
+    label="Z-Index"
+    pageTitle="CSS Utilities/Layout/Z-Index"
+    color="yellow"
+    description="Specifies the display behavior of an element on a page."
+  />
+  <GridCard
+    label="Overflow"
+    pageTitle="CSS Utilities/Layout/Overflow"
+    color="yellow"
+    description="Specifies the behavior when content exceeds the area of its container."
+  />
+  <GridCard
+    label="Vertical Align"
+    pageTitle="CSS Utilities/Layout/Vertical Align"
+    color="yellow"
+    description="Establishes the vertical alignment of an inline, inline-block, or table-cell box."
+  />
+  <GridCard
+    label="Placement"
+    pageTitle="CSS Utilities/Layout/Placement"
+    color="yellow"
+    description="Specifies the vertical and horizontal position of a positioned element."
+  />
+</GridCards>
+
+## Mixins
+
+<GridCards>
+  <GridCard
+    label="Breakpoints"
+    pageTitle="CSS Utilities/Mixins/Breakpoints"
+    color="yellow"
+    description="To create a responsive layout you can either structure your app with the Sass mixins."
+  />
+</GridCards>
+
+## Sizing
+
+<GridCards>
+  <GridCard
+    label="Max Height"
+    pageTitle="CSS Utilities/Sizing/Max Height"
+    color="yellow"
+    description="Defines the max height of an element."
+  />
+  <GridCard
+    label="Min Height"
+    pageTitle="CSS Utilities/Sizing/Min Height"
+    color="yellow"
+    description="Defines the min height of an element."
+  />
+  <GridCard
+    label="Height"
+    pageTitle="CSS Utilities/Sizing/Height"
+    color="yellow"
+    description="Defines the height of an element."
+  />
+  <GridCard
+    label="Max Width"
+    pageTitle="CSS Utilities/Sizing/Max Width"
+    color="yellow"
+    description="Defines the max width of an element."
+  />
+  <GridCard
+    label="Min Width"
+    pageTitle="CSS Utilities/Sizing/Min Width"
+    color="yellow"
+    description="Defines the min width of an element."
+  />
+  <GridCard
+    label="Width"
+    pageTitle="CSS Utilities/Sizing/Width"
+    color="yellow"
+    description="Defines the width of an element."
+  />
+</GridCards>
+
+## Spacing
+
+<GridCards>
+  <GridCard
+    label="Margin"
+    pageTitle="CSS Utilities/Spacing/Margin"
+    color="yellow"
+    description="Determines the space around an element."
+  />
+  <GridCard
+    label="Padding"
+    pageTitle="CSS Utilities/Spacing/Padding"
+    color="yellow"
+    description="Determines the space between the content and its border."
+  />
+</GridCards>
+
+## Typography
+
+<GridCards>
+  <GridCard
+    label="Text Colors"
+    pageTitle="CSS Utilities/Typography/Text Colors"
+    color="yellow"
+    description="Diverse color palettes available for the text of an element."
+  />
+  <GridCard
+    label="Font Family"
+    pageTitle="CSS Utilities/Typography/Font Family"
+    color="yellow"
+    description="Specifies font family for headings and paragraphs."
+  />
+  <GridCard
+    label="Font Size"
+    pageTitle="CSS Utilities/Typography/Font Size"
+    color="yellow"
+    description="Specifies the font size of an element."
+  />
+  <GridCard
+    label="Text Align"
+    pageTitle="CSS Utilities/Typography/Text Align"
+    color="yellow"
+    description="Determines the alignment of text within an element."
+  />
+  <GridCard
+    label="Text Transform"
+    pageTitle="CSS Utilities/Typography/Text Transform"
+    color="yellow"
+    description="Determines the transformation applied to text within an element."
+  />
+  <GridCard
+    label="Font Weight"
+    pageTitle="CSS Utilities/Typography/Font Weight"
+    color="yellow"
+    description="Defines the font weight of an element."
+  />
+  <GridCard
+    label="White Space"
+    pageTitle="CSS Utilities/Typography/White Space"
+    color="yellow"
+    description="Determines if a word should wrap based on white space or not."
+  />
+</GridCards>
+
+## Installation
+
+Introducing CSS utility classes meticulously crafted around the [design tokens](?path=/docs/foundation-design-tokens--documentation),
+seamlessly integrated into the `@baloise/ds-styles` package. These classes are accessible in
+both **CSS** and **SCSS** formats, ensuring versatile usage.
+
+The `@baloise/ds-styles` is included in the component package, so if that is already installed skip the next step.
+
+```bash
+npm add @baloise/ds-styles
+```
+
+The CSS utility package is designed in a modular fashion, allowing for selective imports based on the specific needs of the application.
+
+```css
+// SASS mixins and variables
+@forward '@baloise/ds-styles/sass/mixins';
+
+// Resets CSS for all browser
+@forward '@baloise/ds-styles/css/normalize';
+@forward '@baloise/ds-styles/css/structure';
+
+// Custom font faces
+@forward '@baloise/ds-styles/sass/font';
+
+// Core CSS, always required
+@forward '@baloise/ds-styles/css/core';
+
+// CSS utilities classes (optional)
+@forward '@baloise/ds-styles/css/utilities/background';
+@forward '@baloise/ds-styles/css/utilities/border';
+@forward '@baloise/ds-styles/css/utilities/elevation';
+@forward '@baloise/ds-styles/css/utilities/flex';
+@forward '@baloise/ds-styles/css/utilities/grid';
+@forward '@baloise/ds-styles/css/utilities/interaction';
+@forward '@baloise/ds-styles/css/utilities/layout';
+@forward '@baloise/ds-styles/css/utilities/sizing';
+@forward '@baloise/ds-styles/css/utilities/spacing';
+@forward '@baloise/ds-styles/css/utilities/typography';
+```
+
+## Component styling
+
+Import `@baloise/ds-styles/sass/mixins` into your component's style imports to gain access to a comprehensive collection of design tokens and Sass mixins.
+
+<ScssSource code={`// SASS mixins and variables
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+.my-component {
+${' '}${' '}background: var(--bal-color-green);
+}
+
+@include desktop() {
+${' '}${' '}// add your custom styles here
+${' '}${' '}.my-component {
+${' '}${' '}${' '}${' '}background: var(--bal-color-red);
+${' '}${' '}}
+}`} />
+
+<Footer />
