@@ -1,18 +1,18 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import path, { sep } from 'path'
-import { globSync } from 'glob'
 import { JsonDocs, JsonDocsStyle, OutputTargetDocsCustom } from '@stencil/core/internal'
-import { writeFileSync, mkdirSync, readFileSync } from 'fs'
-import { propsToMarkdown } from './markdown-props'
+import { mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { globSync } from 'glob'
+import path, { sep } from 'path'
+import contributors from '../../../../resources/data/contributors.json'
+import { NEWLINE, SPACE } from './constants'
+import { MarkdownTable } from './docs-util'
+import { parseStyleDocs } from './markdonw-styles'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
+import { propsToMarkdown } from './markdown-props'
 import { slotsToMarkdown } from './markdown-slots'
-import { NEWLINE, SPACE } from './constants'
-import contributors from '../../../../resources/data/contributors.json'
 import { createTestingMarkdown } from './markdown-testing'
 import { createThemingMarkdown } from './markdown-theming'
-import { parseStyleDocs } from './markdonw-styles'
-import { MarkdownTable } from './docs-util'
 
 const DOC_PATH = path.join(__dirname, '../../../../docs')
 
@@ -82,7 +82,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
      * -----------------------------------------
      * Create theming vars of the css package
      */
-    const cssVarsFiles = globSync(path.join(__dirname, '../../../css/src/core/vars', '*.vars.sass'))
+    const cssVarsFiles = globSync(path.join(__dirname, '../../../css/src/core/vars', '*.vars.scss'))
     const cssVars: { [key: string]: JsonDocsStyle[] } = {}
 
     const camelize = s => s.replace(/-./g, x => ` ${x[1].toUpperCase()}`)
@@ -90,7 +90,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     const capitalized = s => s.charAt(0).toUpperCase() + s.slice(1)
 
     const getFileName = (filePath: string) =>
-      (filePath.split(path.sep).pop() || 'global.vars.sass').replace('.vars.sass', '')
+      (filePath.split(path.sep).pop() || 'global.vars.scss').replace('.vars.scss', '')
 
     for (let index = 0; index < cssVarsFiles.length; index++) {
       const cssVarsFile = cssVarsFiles[index]

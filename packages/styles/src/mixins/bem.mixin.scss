@@ -1,0 +1,49 @@
+$componentPrefix: 'bal-';
+
+@mixin component($name) {
+  #{$componentPrefix}#{$name} {
+    @content;
+  }
+}
+@mixin block($name) {
+  .#{$componentPrefix}#{$name} {
+    @content;
+  }
+}
+@mixin blocks($names) {
+  $selector: ();
+  @each $name in $names {
+    $selector: append($selector, unquote('.#{$componentPrefix}#{$name}'), comma);
+  }
+  #{$selector} {
+    @content;
+  }
+}
+@mixin element($name) {
+  &__#{$name} {
+    @content;
+  }
+}
+@mixin elements($names) {
+  $selector: ();
+  @each $name in $names {
+    $selector: append($selector, unquote('&__#{$name}'), comma);
+  }
+  #{$selector} {
+    @content;
+  }
+}
+@mixin modifier($name) {
+  &--#{$name} {
+    @content;
+  }
+}
+@mixin modifiers($names) {
+  $selector: ();
+  @each $name in $names {
+    $selector: append($selector, unquote('&--#{$name}'), comma);
+  }
+  #{$selector} {
+    @content;
+  }
+}

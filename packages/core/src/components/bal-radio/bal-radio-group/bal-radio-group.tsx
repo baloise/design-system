@@ -26,7 +26,7 @@ import { BalRadioOption } from '../bal-radio.type'
 
 @Component({
   tag: 'bal-radio-group',
-  styleUrl: 'bal-radio-group.sass',
+  styleUrl: 'bal-radio-group.scss',
 })
 export class RadioGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver

@@ -16,7 +16,7 @@ import { i18nBalLabel } from './bal-label.i18n'
 
 @Component({
   tag: 'bal-label',
-  styleUrl: './bal-label.sass',
+  styleUrl: './bal-label.scss',
 })
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
   @Element() el!: HTMLStencilElement

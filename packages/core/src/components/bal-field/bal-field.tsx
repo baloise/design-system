@@ -6,7 +6,7 @@ import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 
 @Component({
   tag: 'bal-field',
-  styleUrl: 'bal-field.sass',
+  styleUrl: 'bal-field.scss',
 })
 export class Field implements ComponentInterface, BalMutationObserver {
   @Element() el!: HTMLStencilElement

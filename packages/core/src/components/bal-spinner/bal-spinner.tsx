@@ -10,7 +10,7 @@ type SpinnerAnimationFunction = (el: HTMLElement | HTMLStencilElement, color: st
 
 @Component({
   tag: 'bal-spinner',
-  styleUrl: 'bal-spinner.sass',
+  styleUrl: 'bal-spinner.scss',
 })
 export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {
   private animationItem!: AnimationItem

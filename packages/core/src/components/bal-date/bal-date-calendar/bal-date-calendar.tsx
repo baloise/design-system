@@ -34,7 +34,7 @@ import { CalendarNav } from './components/bal-date-calendar__nav'
 
 @Component({
   tag: 'bal-date-calendar',
-  styleUrl: 'bal-date-calendar.sass',
+  styleUrl: 'bal-date-calendar.scss',
   shadow: true,
 })
 export class DateCalendar implements ComponentInterface, Loggable, BalConfigObserver, BalSwipeObserver {

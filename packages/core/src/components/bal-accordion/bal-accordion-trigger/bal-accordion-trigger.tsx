@@ -38,7 +38,7 @@ type TextProps = BaseProps & {
 
 @Component({
   tag: 'bal-accordion-trigger',
-  styleUrl: 'bal-accordion-trigger.sass',
+  styleUrl: 'bal-accordion-trigger.scss',
 })
 export class AccordionTrigger implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-trigger-${accordionTriggerIds++}`

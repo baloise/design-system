@@ -1,9 +1,9 @@
-import path from 'path'
-import { writeFileSync, existsSync, readFileSync } from 'fs'
 import { JsonDocsComponent, JsonDocsStyle } from '@stencil/core/internal'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
+import path from 'path'
 import { NEWLINE } from './constants'
-import { parseStyleDocs } from './markdonw-styles'
 import { MarkdownTable } from './docs-util'
+import { parseStyleDocs } from './markdonw-styles'
 
 export const createThemingMarkdown = (docsPath: string, component: JsonDocsComponent) => {
   const START_TAG_TOP = '<!-- START: human documentation -->'
@@ -34,7 +34,7 @@ export const createThemingMarkdown = (docsPath: string, component: JsonDocsCompo
     }
   }
 
-  const filePath = (component.filePath || '').replace('.tsx', '.vars.sass')
+  const filePath = (component.filePath || '').replace('.tsx', '.vars.scss')
   let content: string[] = []
   try {
     const varsFile = readFileSync(path.join(filePath), 'utf8')

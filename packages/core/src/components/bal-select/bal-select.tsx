@@ -49,7 +49,7 @@ const isNotHuman = false
 
 @Component({
   tag: 'bal-select',
-  styleUrl: 'bal-select.sass',
+  styleUrl: 'bal-select.scss',
 })
 export class Select implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputElement!: HTMLInputElement

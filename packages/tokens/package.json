@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "npm run build:clean && npm run build:ts && npm run build:tokens",
+    "build": "npm run build:ts && npm run build:tokens",
     "build:clean": "rimraf dist",
     "build:ts": "tsc -p tsconfig.lib.json",
     "build:tokens": "style-dictionary build --config ./dist/out-tsc/config.js --verbose"

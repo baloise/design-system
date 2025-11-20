@@ -1,20 +1,20 @@
-import { Meta, Markdown } from '@storybook/addon-docs'
+import { Markdown, Meta } from '@storybook/addon-docs'
 import {
-  PackageTable,
+  AngularFramework,
   Banner,
-  Lead,
+  Code,
+  CodeSandbox,
+  DiffSource,
   Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
   LinkCard,
   LinkCards,
-  CodeSandbox,
-  InfoQuote,
-  WarningQuote,
-  Code,
-  AngularFramework,
   NotAngularFramework,
-  HTMLFramework,
+  PackageTable,
   ReactFramework,
-  DiffSource,
+  WarningQuote,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Upgrade Guides/Updating to v11" />
@@ -121,7 +121,7 @@ Property inverted was removed, since there will be no inverted styles for the ne
 In the new version 11 we introduced the packages tokens and css. Those are build on SASS not SCSS and
 provide a lot of CSS-Variables.
 
-Therefore, update your `global.scss` import to just `global` or `global.sass`.
+Therefore, update your `global.scss` import to just `global` or `global.scss`.
 Moreover, change the import path to the alias `~` instead of using a relative path to the installed package.
 
 ```sass

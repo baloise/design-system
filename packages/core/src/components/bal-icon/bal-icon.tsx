@@ -8,7 +8,7 @@ import { sanitizeSvg } from '../../utils/svg'
 
 @Component({
   tag: 'bal-icon',
-  styleUrl: 'bal-icon.sass',
+  styleUrl: 'bal-icon.scss',
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentInterface {
   @State() icons: BalIcons = defaultConfig.icons

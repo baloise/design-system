@@ -12,7 +12,7 @@ import { includes, startsWith } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-option-list',
-  styleUrl: 'bal-option-list.sass',
+  styleUrl: 'bal-option-list.scss',
   shadow: false,
 })
 export class OptionList implements ComponentInterface, Loggable {

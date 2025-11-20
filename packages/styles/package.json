@@ -15,7 +15,7 @@
   "bin": {
     "ds-styles-migrate": "./bin/index.mjs"
   },
-  "main": "scss/baloise-design-system.sass",
+  "main": "scss/baloise-design-system.scss",
   "style": "css/baloise-design-system.css",
   "files": [
     "bin/",

@@ -6,7 +6,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-tag',
-  styleUrl: 'bal-tag.sass',
+  styleUrl: 'bal-tag.scss',
 })
 export class Tag {
   @Element() el!: HTMLStencilElement

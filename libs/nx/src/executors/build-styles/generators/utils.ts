@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { join, dirname } from 'path'
 import get from 'lodash/get'
+import { dirname, join } from 'path'
 
 export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'
@@ -38,7 +38,7 @@ class RuleValue implements BaseRule {
   }
 
   toString(indent = '') {
-    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''}`
+    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''};`
   }
 }
 
@@ -63,7 +63,7 @@ class Rule implements BaseRule {
     const values = this.values.map(value => {
       return [`  ${value.toString(indent)}`].join(NEWLINE)
     })
-    return [selector, ...values].join(NEWLINE) + NEWLINE
+    return [`${selector} {`, ...values, `${indent}}`].join(NEWLINE) + NEWLINE
   }
 }
 
@@ -81,8 +81,9 @@ class BreakpointRule implements BaseRule {
 
   toString(indent = '') {
     return [
-      indent + `+${this.breakpoint}`,
+      indent + `@include ${this.breakpoint} {`,
       indent + this.rules.map(rule => rule.toString(`  ${indent}`)).join(NEWLINE),
+      indent + `}`,
     ].join(`${NEWLINE}`)
   }
 }
@@ -339,7 +340,7 @@ export const styleClassDeprecated = ({
 export const merge = ({ docs = [], rules = [], deprecated = [], visualTest = [] }) => {
   return {
     json: JSON.stringify(docs, undefined, 2),
-    rules: [`@use '../mixins/_all' as *`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
+    rules: [`@use '../mixins/_all' as *;`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
     deprecated: [...deprecated.map(r => r.toString())].join(NEWLINE),
     visualTest: `<!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -396,7 +397,7 @@ export const staticClassByToken = async ({
 
 export const save = async (fileName, projectRoot, { json, rules }) => {
   await writeFileRecursive(join(projectRoot, 'docs', `${fileName}.json`), json)
-  await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.sass`), rules)
+  await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.scss`), rules)
 }
 
 export const getTokens = async ({ token, tokensRoot }) => {

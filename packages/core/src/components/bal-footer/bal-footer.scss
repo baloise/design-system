@@ -1,0 +1,144 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-footer.vars' as *;
+
+@include block(footer) {
+  @include unselectable;
+  display: block;
+  position: static;
+  user-select: auto;
+
+  @include element(slot) {
+    color: var(--bal-footer-color);
+  }
+  @include element(inner) {
+    position: relative;
+    font-family: var(--bal-footer-font-family);
+    background-color: var(--bal-footer-background);
+    padding-top: var(--bal-space-x-small);
+    padding-bottom: var(--bal-space-large);
+    @include tablet {
+      padding-top: var(--bal-space-large);
+      padding-bottom: var(--bal-space-large);
+    }
+    @include desktop {
+      padding-top: var(--bal-space-large);
+      padding-bottom: var(--bal-space-large);
+    }
+    @include element(wrapper) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--bal-space-large);
+
+      @include tablet-only {
+        gap: var(--bal-space-medium-tablet);
+      }
+      @include mobile {
+        gap: var(--bal-space-medium-tablet);
+      }
+      @include element(header-container) {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        @include element(language) {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+
+          @include element(wrapper) {
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+            @include fillSvgImportant(var(--bal-footer-language-background));
+
+            select {
+              padding-left: 2px;
+              padding-right: 2px;
+              background: transparent;
+              -webkit-appearance: none;
+              border: none;
+              color: var(--bal-footer-language-color);
+              font-weight: var(--bal-font-weight-bold);
+              font-family: var(--bal-font-family-title);
+              cursor: pointer;
+
+              option {
+                background: var(--bal-color-white) !important;
+                color: var(--bal-color-primary) !important;
+                font-weight: var(--bal-font-weight-bold) !important;
+                font-family: var(--bal-font-family-text) !important;
+              }
+            }
+            &:hover {
+              @include fillSvgImportant(var(--bal-footer-language-background-hover));
+              select {
+                color: var(--bal-footer-language-color-hover);
+              }
+            }
+            &:active {
+              @include fillSvgImportant(var(--bal-footer-language-background-active));
+              select {
+                color: var(--bal-footer-language-color-active);
+              }
+            }
+          }
+        }
+        @include element(logo) {
+          display: flex;
+          align-items: center;
+          img {
+            max-height: var(--bal-footer-logo-image-max-height);
+          }
+          div {
+            height: var(--bal-footer-logo-image-max-height);
+            min-width: var(--bal-footer-logo-image-max-height);
+          }
+        }
+      }
+      @include element(links-container) {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @include tablet {
+          flex-direction: column;
+        }
+        @include desktop {
+          flex-direction: row;
+        }
+        @include element(legal-links) {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--bal-space-large-desktop);
+
+          a {
+            font-size: var(--bal-text-size-small) !important;
+          }
+          @include mobile {
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            gap: var(--bal-space-normal);
+          }
+        }
+        @include element(social-media-links) {
+          align-items: center;
+          gap: var(--bal-space-large-desktop);
+          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) 0;
+
+          @include tablet-only {
+            padding-bottom: var(--bal-space-large);
+          }
+          @include mobile {
+            padding-bottom: var(--bal-space-large);
+            justify-content: center;
+            width: 100%;
+            padding: var(--bal-space-normal) 0 var(--bal-space-normal) 0;
+          }
+        }
+      }
+    }
+  }
+}

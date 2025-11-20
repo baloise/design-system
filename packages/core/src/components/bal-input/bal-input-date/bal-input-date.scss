@@ -1,0 +1,14 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+.bal-input-date {
+  display: block;
+  width: 100%;
+  flex: 1;
+  // improves the readability of the date value
+  & input:not(:placeholder-shown) {
+    letter-spacing: 0.4px;
+  }
+  @include element(native) {
+    @include hidden-input;
+  }
+}

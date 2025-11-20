@@ -26,7 +26,7 @@ import { BalCheckboxOption } from './bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox',
-  styleUrl: 'bal-checkbox.sass',
+  styleUrl: 'bal-checkbox.scss',
 })
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, BalAriaFormLinking {
   private inputId = `bal-cb-${checkboxIds++}`

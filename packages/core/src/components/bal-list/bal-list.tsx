@@ -4,7 +4,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-list',
-  styleUrl: 'bal-list.sass',
+  styleUrl: 'bal-list.scss',
 })
 export class List {
   @Element() el!: HTMLStencilElement
