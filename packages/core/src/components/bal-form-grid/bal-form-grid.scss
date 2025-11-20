@@ -1,0 +1,14 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@include block(form-grid) {
+  display: flex;
+  flex-direction: column;
+  row-gap: .25rem;
+  @include desktop {
+    flex-direction: row;
+  }
+}
+.bal-form-grid.columns {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

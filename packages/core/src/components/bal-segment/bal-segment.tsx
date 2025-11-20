@@ -39,7 +39,7 @@ import { SegmentValue } from './bal-segment.types'
 
 @Component({
   tag: 'bal-segment',
-  styleUrl: 'bal-segment.sass',
+  styleUrl: 'bal-segment.scss',
 })
 export class Segment
   implements

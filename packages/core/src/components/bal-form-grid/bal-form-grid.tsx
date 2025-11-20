@@ -1,8 +1,8 @@
-import { Component, h, ComponentInterface, Host } from '@stencil/core'
+import { Component, ComponentInterface, h, Host } from '@stencil/core'
 
 @Component({
   tag: 'bal-form-grid',
-  styleUrl: 'bal-form-grid.sass',
+  styleUrl: 'bal-form-grid.scss',
 })
 export class FormGrid implements ComponentInterface {
   render() {

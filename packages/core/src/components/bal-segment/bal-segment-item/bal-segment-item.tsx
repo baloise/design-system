@@ -10,7 +10,7 @@ let SegmentItemIds = 0
 
 @Component({
   tag: 'bal-segment-item',
-  styleUrl: 'bal-segment-item.sass',
+  styleUrl: 'bal-segment-item.scss',
 })
 export class SegmentItem implements ComponentInterface {
   private segmentEl: HTMLBalSegmentElement | null = null

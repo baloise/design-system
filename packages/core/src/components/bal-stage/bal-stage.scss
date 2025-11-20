@@ -1,0 +1,135 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-stage.vars' as *;
+
+@include block(stage) {
+  display: block;
+  position: relative;
+
+  //
+  // Color modifiers
+  @include modifier(is-purple) {
+    background: var(--bal-stage-background-purple);
+  }
+  @include modifier(is-green) {
+    background: var(--bal-stage-background-green);
+  }
+  @include modifier(is-red) {
+    background: var(--bal-stage-background-red);
+  }
+  @include modifier(is-yellow) {
+    background: var(--bal-stage-background-yellow);
+  }
+  @include block(stage-content) {
+    display: block;
+    position: static;
+
+    @include block(stage-image) {
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    @include block(stage-body) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: calc(var(--bal-space-xxxx-large) + 4rem);
+      padding-bottom: var(--bal-space-xxx-large);
+      @include tablet {
+        padding-top: calc(var(--bal-space-xxxx-large-tablet) + 4rem);
+        padding-bottom: var(--bal-space-xx-large-tablet);
+      }
+      @include desktop {
+        padding-top: calc(var(--bal-space-xxxx-large-desktop) + 3rem);
+        padding-bottom: var(--bal-space-xx-large-desktop);
+      }
+    }
+    @include block(stage-back-link) {
+      @include modifier(shadow) {
+        text-shadow: var(--bal-text-shadow-normal);
+      }
+      @include touch {
+        display: none;
+      }
+      @include desktop {
+        a {
+          display: inline-flex;
+          align-items: center;
+          font-family: var(--bal-stage-back-font-family);
+          font-weight: var(--bal-stage-back-font-weight);
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+          &:active {
+            text-decoration: underline;
+          }
+  //
+  // Size Modifiers
+        }
+      }
+    }
+  }
+  @include modifier(is-medium) {
+    @include block(stage-content) {
+      @include block(stage-body) {
+        @include desktop {
+          min-height: 25rem;
+        }
+      }
+    }
+  }
+  @include modifier(is-large) {
+    @include block(stage-content) {
+      @include block(stage-body) {
+        min-height: 23.438rem;
+        @include tablet {
+          min-height: 35rem;
+        }
+        @include desktop {
+          min-height: 52.5rem;
+        }
+  // Shape Modifier
+      }
+    }
+  }
+  @include modifier(has-shape) {
+    @include block(stage-content) {
+      margin-bottom: 1.375rem;
+      @include tablet {
+        margin-bottom: 2.5rem;
+      }
+      @include desktop {
+        margin-bottom: 4.125rem;
+      }
+      @include block(stage-body) {
+        & > * {
+          @include tablet {
+            max-width: calc(100% - 7.5rem);
+          }
+          @include desktop {
+            max-width: calc(100% - 12.375rem);
+          }
+        }
+      }
+      @include block(shape) {
+        position: absolute;
+        bottom: -1.375rem;
+        right: 0;
+        @include tablet {
+          bottom: -2.5rem;
+        }
+        @include desktop {
+          bottom: -4.125rem;
+        }
+      }
+    }
+  }
+}

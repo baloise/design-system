@@ -1,0 +1,36 @@
+main > section {
+  padding: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 4px solid #b8b2ff;
+  position: relative;
+  border-radius: 0.8rem;
+}
+
+main > section > span:first-child {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: black;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: -0.8rem;
+  background: white;
+  padding: 0 0.5rem;
+}
+
+.s-bg-1 {
+  background-color: #b8b2ff;
+}
+
+.s-bg-2 {
+  background-color: #fae052;
+}
+
+.s-mb {
+  margin-bottom: 1rem;
+}
+
+.s-p {
+  padding: 0.5rem;
+}

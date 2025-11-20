@@ -1,0 +1,37 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@include block(logo) {
+  position: static;
+  display: block;
+  height: 22px;
+  // there is lottie issue, svgs are blurry: https://github.com/airbnb/lottie-web/issues/1976
+  svg {
+    transform: unset !important;
+    @include fillSvg($bal-color-primary);
+  }
+  & > div {
+    height: 22px;
+  }
+  @include modifier('animated') {
+    @include desktop {
+      margin-left: -7px;
+    }
+  }
+  @include modifier('white') {
+    svg {
+      @include fillSvg($bal-color-white);
+    }
+  }
+  @include desktop {
+    height: 32px;
+    & > div {
+      height: 32px;
+    }
+  }
+  @include modifier('size-small') {
+    height: 22px;
+    & > div {
+      height: 22px;
+    }
+  }
+}

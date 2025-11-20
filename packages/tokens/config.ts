@@ -1,7 +1,7 @@
 import StyleDictionary, { Config } from 'style-dictionary'
 
 const config: Config = {
-  source: ['tokens/**/*.json'],
+  source: ['tokens/**/*.json', '../../packages/core/src/components/**/*.vars.json'],
   platforms: {
     'css': {
       transformGroup: 'css',
@@ -12,6 +12,10 @@ const config: Config = {
       files: [
         {
           destination: 'tokens.css',
+          format: 'css/variables',
+        },
+        {
+          destination: '../../core/www/assets/tokens.css',
           format: 'css/variables',
         },
         {

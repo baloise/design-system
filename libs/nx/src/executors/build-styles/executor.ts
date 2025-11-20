@@ -1,17 +1,17 @@
 import { copy } from 'fs-extra'
 import { mkdir, rm } from 'fs/promises'
 import { join } from 'path'
-import { compileSass, scan } from '../utils'
+import { compileSass, compileSassToMergedFile, scan } from '../utils'
 import { generateBackgroundColors } from './generators/background'
 import { generateBorder } from './generators/border'
 import { generateElevation } from './generators/elevation'
 import { generateFlex } from './generators/flex'
 import { generateInteractions } from './generators/interactions'
 import { generateLayout } from './generators/layout'
-import { BuildStylesExecutorSchema } from './schema'
 import { generateSizing } from './generators/sizing'
 import { generateSpacing } from './generators/spacing'
 import { generateTypography } from './generators/typography'
+import { BuildStylesExecutorSchema } from './schema'
 
 export default async function runExecutor(options: BuildStylesExecutorSchema) {
   try {
@@ -31,15 +31,34 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     await generateSpacing(options)
     await generateTypography(options)
 
-    // create css output
     await mkdir(join(options.projectRoot, 'css'))
-    const files = await scan(join(options.projectRoot, 'sass', '**', '*.sass'))
+
+    // create css output
+    const files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
     for (let index = 0; index < files.length; index++) {
       const file = files[index]
       await compileSass(file, options)
     }
 
+    // create component style output
+    const components = await scan(join(options.componentRoot, '**', '*.style.scss'))
+    for (let index = 0; index < components.length; index++) {
+      const component = components[index]
+      await compileSass(component, { ...options, folderPath: 'components' })
+    }
+
+    // create components all output
+    await compileSassToMergedFile(components, 'all.css', { ...options, folderPath: 'components' })
+
     // copy generated files to css folder
+    await copy(
+      join(options.projectRoot, 'css', 'basic.min.css'),
+      join(options.projectRoot, '..', 'core', 'www', 'assets', 'basic.css'),
+    )
+    await copy(
+      join(options.projectRoot, 'css', 'components', 'all.min.css'),
+      join(options.projectRoot, '..', 'core', 'www', 'assets', 'components.css'),
+    )
     await copy(
       join(options.projectRoot, 'css', 'themes', 'tcs.css'),
       join(options.projectRoot, '..', 'core', 'www', 'assets', 'tcs.css'),

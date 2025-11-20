@@ -1,0 +1,49 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+bal-button,
+.bal-button {
+  display: inline-block;
+  position: static;
+  &.is-fullwidth {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+  &[disabled] bal-icon {
+    pointer-events: none;
+  }
+}
+.bal-button .button-label.has-no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@include block(button-group) {
+  display: flex;
+  @include modifier(position-center) {
+    justify-content: center;
+  }
+  @include modifier(position-left) {
+    justify-content: flex-start;
+  }
+  @include modifier(position-right) {
+    justify-content: flex-end;
+  }
+  @include modifier(direction-auto) {
+    @include mobile {
+      .field.is-grouped,
+      .bal-button,
+      .bal-button .button {
+        width: 100% !important;
+      }
+    }
+  }
+  @include modifier(direction-column) {
+    @include mobile {
+      .field.is-grouped,
+      .bal-button,
+      .bal-button .button {
+        width: 100% !important;
+      }
+    }
+  }
+}

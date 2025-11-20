@@ -1,10 +1,10 @@
-import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
-import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-link-grid-col',
-  styleUrl: 'bal-nav-link-grid-col.sass',
+  styleUrl: 'bal-nav-link-grid-col.scss',
 })
 export class NavLinkGridCol implements ComponentInterface, Loggable {
   log!: LogInstance

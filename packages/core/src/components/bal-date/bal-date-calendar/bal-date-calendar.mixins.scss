@@ -1,0 +1,52 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-date-calendar.vars' as *;
+
+@mixin calendar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: var(--bal-radius-normal);
+  font-family: var(--bal-font-family-text);
+  font-weight: var(--bal-font-weight-regular);
+  color: var(--bal-date-calendar-button-color);
+  border: none;
+  background: var(--bal-date-calendar-button-background);
+  text-align: center;
+  font-size: var(--bal-text-size-normal);
+  line-height: var(--bal-line-height-normal);
+  hyphens: auto;
+  outline: none;
+  &:not(&--selected):not(&--disabled) {
+    @include hover {
+      &:hover {
+        background: var(--bal-date-calendar-button-background-hover);
+      }
+    }
+    &:active {
+      background: var(--bal-date-calendar-button-background-active);
+    }
+  }
+  &--today:not(&--selected):not(&--disabled) {
+    color: var(--bal-date-calendar-button-today-color);
+    font-weight: var(--bal-font-weight-bold);
+    @include hover {
+      &:hover {
+        color: var(--bal-date-calendar-button-today-color-hover);
+      }
+    }
+    &:active {
+      color: var(--bal-date-calendar-button-today-color-active);
+    }
+  }
+  &--selected {
+    background: var(--bal-date-calendar-button-selected-background);
+    color: var(--bal-date-calendar-button-selected-color);
+    font-weight: var(--bal-font-weight-bold);
+  }
+  &--disabled {
+    cursor: default;
+    background: transparent;
+    color: var(--bal-color-text-grey-light);
+  }
+}

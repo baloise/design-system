@@ -13,7 +13,7 @@ import { i18nBalClose } from './bal-close.i18n'
 
 @Component({
   tag: 'bal-close',
-  styleUrl: 'bal-close.sass',
+  styleUrl: 'bal-close.scss',
 })
 export class Close implements ComponentInterface, BalConfigObserver {
   @Element() el!: HTMLStencilElement

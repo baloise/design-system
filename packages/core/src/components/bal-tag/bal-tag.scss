@@ -1,0 +1,170 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-tag.vars' as *;
+
+@include block(tag) {
+  @include unselectable;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  line-height: 1.5rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  background-color: var(--bal-tag-background);
+  border-radius: var(--bal-tag-radius);
+
+  // sizes
+  @include modifier(is-small) {
+    padding: 0 0.75rem 0 0.75rem;
+    min-height: 1.5rem;
+  }
+  @include modifier(is-medium) {
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+  @include modifier(is-large) {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+  }  // colors
+  @include modifier(is-primary) {
+    background: var(--bal-tag-background-primary);
+  }
+  @include modifier(is-grey) {
+    background: var(--bal-tag-background-grey);
+  }
+  @include modifier(is-success) {
+    background: var(--bal-tag-background-success);
+  }
+  @include modifier(is-info) {
+    background: var(--bal-tag-background-info);
+  }
+  @include modifier(is-warning) {
+    background: var(--bal-tag-background-warning);
+  }
+  @include modifier(is-danger) {
+    background: var(--bal-tag-background-danger);
+  }
+  @include modifier(is-purple) {
+    background: var(--bal-tag-background-purple);
+  }
+  @include modifier(is-red) {
+    background: var(--bal-tag-background-red);
+  }
+  @include modifier(is-yellow) {
+    background: var(--bal-tag-background-yellow);
+  }
+  @include modifier(is-green) {
+    background: var(--bal-tag-background-green);
+  }
+  @include modifier(is-purple-light) {
+    background: var(--bal-tag-background-purple-light);
+  }
+  @include modifier(is-red-light) {
+    background: var(--bal-tag-background-red-light);
+  }
+  @include modifier(is-yellow-light) {
+    background: var(--bal-tag-background-yellow-light);
+  }
+  @include modifier(is-green-light) {
+    background: var(--bal-tag-background-green-light);
+  }
+  @include modifier(is-invalid) {
+    background: var(--bal-tag-background-invalid);
+    color: var(--bal-color-text-white);
+  }  //
+  // tag label
+  @include element(label) {
+    font-family: var(--bal-font-family-text);
+    color: var(--bal-tag-text);
+    font-weight: var(--bal-font-weight-bold);
+    font-size: var(--bal-text-size-normal) !important;
+    hyphens: auto;
+    text-wrap: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    // sizes
+    @include modifier(is-small) {
+      font-size: var(--bal-tag-size-small-font-size) !important;
+      font-weight: var(--bal-tag-size-small-font-weight) !important;
+    }
+    @include modifier(is-medium) {
+      font-size: var(--bal-text-size-medium) !important;
+    }
+    @include modifier(is-large) {
+      font-size: var(--bal-text-size-medium) !important;
+    }    // colors
+    @include modifier(is-primary) {
+      color: var(--bal-tag-text-primary);
+    }
+    @include modifier(is-grey) {
+      color: var(--bal-tag-text-grey);
+    }
+    @include modifier(is-success) {
+      color: var(--bal-tag-text-success);
+    }
+    @include modifier(is-info) {
+      color: var(--bal-tag-text-info);
+    }
+    @include modifier(is-warning) {
+      color: var(--bal-tag-text-warning);
+    }
+    @include modifier(is-danger) {
+      color: var(--bal-tag-text-danger);
+    }
+    @include modifier(is-purple) {
+      color: var(--bal-tag-text-purple);
+    }
+    @include modifier(is-red) {
+      color: var(--bal-tag-text-red);
+    }
+    @include modifier(is-yellow) {
+      color: var(--bal-tag-text-yellow);
+    }
+    @include modifier(is-green) {
+      color: var(--bal-tag-text-green);
+    }
+    @include modifier(is-purple-light) {
+      color: var(--bal-tag-text-purple-light);
+    }
+    @include modifier(is-red-light) {
+      color: var(--bal-tag-text-red-light);
+    }
+    @include modifier(is-yellow-light) {
+      color: var(--bal-tag-text-yellow-light);
+    }
+    @include modifier(is-green-light) {
+      color: var(--bal-tag-text-green-light);
+    }
+    @include modifier(is-invalid) {
+      background: var(--bal-color-border-danger);
+      color: var(--bal-tag-text-invalid);
+    }
+    @include modifier(is-disabled) {
+      background-color: var(--bal-tag-background-disabled);
+      border-color: var(--bal-tag-border-disabled-color);
+    }
+  }
+  @include modifier(is-disabled) {
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+    background-color: var(--bal-tag-background-disabled);
+    border-color: var(--bal-tag-border-disabled-color);
+    box-shadow: none;
+    color: var(--bal-tag-text-disabled);
+
+    & > span {
+      color: var(--bal-tag-text-disabled);
+    }  //
+  // close button
+  }
+  @include element(close) {
+    margin-left: 0.25rem;
+    margin-right: -0.5rem;
+  }
+}
+@include block(tag-group) {
+  display: flex;
+  gap: 0.25rem;
+}

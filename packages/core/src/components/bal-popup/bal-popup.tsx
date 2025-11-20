@@ -12,6 +12,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -27,11 +28,10 @@ import {
   PopupVariantRenderer,
 } from './variants'
 import { VariantRenderer } from './variants/variant.renderer'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-popup',
-  styleUrl: 'bal-popup.sass',
+  styleUrl: 'bal-popup.scss',
 })
 export class Popup implements ComponentInterface, PopupComponentInterface, Loggable {
   private popupId = `bal-pu-${popupIds++}`

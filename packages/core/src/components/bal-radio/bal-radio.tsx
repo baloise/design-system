@@ -26,7 +26,7 @@ import { BalRadioOption } from './bal-radio.type'
 
 @Component({
   tag: 'bal-radio',
-  styleUrl: 'bal-radio.sass',
+  styleUrl: 'bal-radio.scss',
 })
 export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`

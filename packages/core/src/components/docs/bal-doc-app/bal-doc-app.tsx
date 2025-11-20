@@ -10,7 +10,7 @@ import { BalLogger } from '../../../utils/log'
  */
 @Component({
   tag: 'bal-doc-app',
-  styleUrl: 'bal-doc-app.sass',
+  styleUrl: 'bal-doc-app.scss',
 })
 export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''

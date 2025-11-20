@@ -1,0 +1,11 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@include block(input) {
+  @include unselectable;
+  display: block;
+  position: relative;
+  width: 100%;
+  flex: 1;
+  font-family: var(--bal-font-family-text);
+  padding: 0;
+}

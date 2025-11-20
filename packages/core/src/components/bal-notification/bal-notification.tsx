@@ -1,9 +1,9 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-notification',
-  styleUrl: 'bal-notification.sass',
+  styleUrl: 'bal-notification.scss',
 })
 export class Notification {
   /**

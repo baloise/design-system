@@ -10,7 +10,7 @@ import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 
 @Component({
   tag: 'bal-modal',
-  styleUrl: 'bal-modal.sass',
+  styleUrl: 'bal-modal.scss',
 })
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement

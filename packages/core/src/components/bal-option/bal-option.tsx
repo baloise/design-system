@@ -11,6 +11,7 @@ import {
   Prop,
   State,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { BEM } from '../../utils/bem'
 import { BalOption } from '../../utils/dropdown'
@@ -18,11 +19,10 @@ import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } f
 import { BalElementStateListener } from '../../utils/element-states/element-states.listener'
 import { stopEventBubbling } from '../../utils/form-input'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-option',
-  styleUrl: 'bal-option.sass',
+  styleUrl: 'bal-option.scss',
   shadow: false,
 })
 export class Option implements ComponentInterface, Loggable, BalElementStateObserver, BalOption {

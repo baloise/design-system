@@ -21,7 +21,7 @@ import { hideArrowElement, hideContainerElement, showArrowElement, showContainer
 
 @Component({
   tag: 'bal-tooltip',
-  styleUrl: 'bal-tooltip.sass',
+  styleUrl: 'bal-tooltip.scss',
   shadow: true,
 })
 export class Tooltip implements ComponentInterface, Loggable {

@@ -1,0 +1,191 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-icon.vars' as *;
+
+@mixin iconSize($size: 1rem) {
+  width: $size;
+  max-height: $size;
+}
+@include block(icon) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  pointer-events: visible;
+  @include iconSize(1.125rem);
+  //
+  // modifiers
+  @include modifier(shadow) {
+    svg {
+      filter: drop-shadow(0px 0px 5rem rgba(0, 0, 0, 0.5));
+    } //
+    // modifiers
+  }
+  @include modifier(is-inline) {
+    display: inline-flex;
+  } //
+  // inner element
+  @include element(inner) {
+    display: block;
+    position: static;
+    transition: transform 0.2s ease-in-out;
+    padding: 0.063rem;
+    @include iconSize(1.125rem);
+    @include modifier(turn-plus) {
+      transform: rotate(225deg);
+    }
+    @include modifiers((turn-caret-down, turn-caret-up)) {
+      transform: rotate(180deg);
+    }
+    @include modifier(turn-nav-go-down) {
+      transform: rotate(180deg);
+    }
+    & > svg {
+      vertical-align: top;
+    } //
+    // sizes
+  }
+  @include modifier(is-xsmall) {
+    @include iconSize(0.75rem);
+  }
+  @include modifier(is-x-small) {
+    @include iconSize(0.75rem);
+  }
+  @include modifier(is-small) {
+    @include iconSize(0.875rem);
+  }
+  @include modifier(is-medium) {
+    @include iconSize(1.625rem);
+  }
+  @include modifier(is-large) {
+    @include iconSize(2.5rem);
+    padding: 0;
+  }
+  @include modifier(is-x-large) {
+    @include iconSize(5rem);
+    padding: 0;
+  }
+  @include modifier(is-xx-large) {
+    @include iconSize(11rem);
+    padding: 0;
+  } //
+  // tile
+  @include modifier(tile) {
+    background: var(--bal-icon-tile-background);
+    border-radius: var(--bal-icon-tile-radius);
+    height: 2rem;
+    @include iconSize(2rem);
+    @include tablet {
+      height: 3.5rem;
+      @include iconSize(3.5rem);
+    }
+  }
+  @include modifier(tile-color-green) {
+    background: var(--bal-color-green-1);
+  }
+  @include modifier(tile-color-red) {
+    background: var(--bal-color-red-1);
+  }
+  @include modifier(tile-color-yellow) {
+    background: var(--bal-color-yellow-1);
+  }
+  @include element(inner) {
+    @include modifier(tile) {
+      @include iconSize(2rem);
+      @include tablet {
+        @include iconSize(3rem);
+      } //
+      // colors
+    }
+  }
+  @include modifier(is-grey) {
+    @include fillSvg(var(--bal-icon-color-grey));
+  }
+  @include modifier(is-grey-light) {
+    @include fillSvg(var(--bal-icon-color-grey-light));
+  }
+  @include modifier(is-grey-dark) {
+    @include fillSvg(var(--bal-icon-color-grey-dark));
+  }
+  @include modifier(is-success) {
+    @include fillSvg(var(--bal-icon-color-success));
+  }
+  @include modifier(is-success-dark) {
+    @include fillSvg(var(--bal-icon-color-success-dark));
+  }
+  @include modifier(is-success-darker) {
+    @include fillSvg(var(--bal-icon-color-success-darker));
+  }
+  @include modifier(is-warning) {
+    @include fillSvg(var(--bal-icon-color-warning));
+  }
+  @include modifier(is-warning-dark) {
+    @include fillSvg(var(--bal-icon-color-warning-dark));
+  }
+  @include modifier(is-warning-darker) {
+    @include fillSvg(var(--bal-icon-color-warning-darker));
+  }
+  @include modifier(is-danger) {
+    @include fillSvg(var(--bal-icon-color-danger));
+  }
+  @include modifier(is-danger-dark) {
+    @include fillSvg(var(--bal-icon-color-danger-dark));
+  }
+  @include modifier(is-danger-darker) {
+    @include fillSvg(var(--bal-icon-color-danger-darker));
+  }
+  @include modifier(is-primary) {
+    @include fillSvg(var(--bal-icon-color-primary));
+  }
+  @include modifier(is-primary-dark) {
+    @include fillSvg(var(--bal-icon-color-primary-dark));
+  }
+  @include modifier(is-blue) {
+    @include fillSvg(var(--bal-icon-color-blue));
+  }
+  @include modifier(is-light-blue) {
+    @include fillSvg(var(--bal-icon-color-light-blue));
+  }
+  @include modifiers(is-primary-light) {
+    @include fillSvg(var(--bal-icon-color-primary-light));
+  }
+  @include modifiers((is-white, is-inverted)) {
+    @include fillSvg(var(--bal-icon-color-white));
+  }
+}
+.icon-text {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  vertical-align: top;
+  flex-wrap: nowrap;
+  word-break: break-word;
+  line-height: 1.5rem;
+  &.is-small {
+    line-height: 1.75rem;
+  }
+  &.is-medium {
+    line-height: 1.5rem;
+  }
+  &.is-large {
+    line-height: 3rem;
+  }
+  &.is-x-large {
+    line-height: 4rem;
+  }
+  &.is-xlarge {
+    line-height: 4rem;
+  }
+  .icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+    &:not(:first-child) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+div.icon-text {
+  display: flex;
+}

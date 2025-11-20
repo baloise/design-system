@@ -10,16 +10,16 @@ import {
   State,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../../utils/bem'
 import { isDescendant } from '../../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 import { BalScrollHandler } from '../../../utils/scroll'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-nav-menu-flyout',
-  styleUrl: 'bal-nav-menu-flyout.sass',
+  styleUrl: 'bal-nav-menu-flyout.scss',
 })
 export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObserver {
   private bodyScrollHandler = new BalScrollHandler()

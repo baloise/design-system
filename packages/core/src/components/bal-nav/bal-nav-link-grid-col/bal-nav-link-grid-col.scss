@@ -1,0 +1,69 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+// Nav link grid col
+// --------------------------------------------------
+
+.bal-nav-link-grid-col {
+  display: block;
+
+  padding: 0;
+  flex: none;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: var(--bal-space-normal);
+  }
+  @include desktop {
+    flex: none;
+    width: 50%;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: var(--bal-space-large);
+    padding-right: var(--bal-space-large);
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  //
+  // Link group
+  }
+  .bal-nav-link-group {
+    margin-bottom: var(--bal-space-normal);
+    padding-left: var(--bal-space-large);
+    padding-right: var(--bal-space-large);
+  }  //
+  // Non static columns
+  &.bal-nav-link-grid-col--is-static {
+    padding-left: 0;
+
+    @include widescreen {
+      flex: none;
+      width: 33.3333%;
+    }  //
+  // Non static columns
+  }
+  &:not(.bal-nav-link-grid-col--is-static) {
+    @include widescreen {
+      flex: none;
+      width: 66.6666%;
+    }
+    .bal-nav-link-grid-col__inner {
+      @include widescreen {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--bal-space-large);
+      }      //
+      // Link group
+      .bal-nav-link-group {
+        margin: 0;
+        width: 100%;
+        @include desktop {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        @include widescreen {
+          width: calc(50% - calc(var(--bal-space-large) / 2));
+        }
+      }
+    }
+  }
+}

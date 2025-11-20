@@ -14,7 +14,7 @@ import {
 
 @Component({
   tag: 'bal-heading',
-  styleUrl: 'bal-heading.sass',
+  styleUrl: 'bal-heading.scss',
 })
 export class Heading implements ComponentInterface {
   private headingEl?: HTMLElement

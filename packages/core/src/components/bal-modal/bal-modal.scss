@@ -1,0 +1,137 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-modal.vars' as *;
+
+@mixin modalPadding($size: 1rem) {
+  padding: $size;
+  .bal-modal__header {
+    padding-bottom: $size;
+  }
+// Modal
+// --------------------------------------------------
+}
+@include block(modal) {
+  @extend %overlay;
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: fixed;
+  z-index: var(--bal-z-index-modal);
+  @include modifier(is-active) {
+    display: flex;
+  }  //
+  // backdrop background
+  @include element(background) {
+    @extend %overlay;
+    background: var(--bal-modal-backdrop-background);
+    opacity: var(--bal-modal-backdrop-opacity);
+  }
+  @include element(header) {
+    @include element(title) {
+      padding-right: 2.5rem;
+      line-height: 2rem;
+    }
+    @include element(close) {
+      position: absolute !important;
+      display: flex !important;
+      right: 1.25rem !important;
+      top: 1.5rem !important;
+      align-items: center;
+      justify-content: center;
+      min-width: 2rem;
+      max-width: 2rem;
+      min-height: 2rem;
+      max-height: 2rem;
+    }
+  }
+  @include element(container) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: none;
+    overflow-y: auto;
+    -ms-overflow-y: visible;
+    padding: .5rem;
+    @include tablet {
+      padding: 0;
+    }
+  }
+  @include element(content) {
+    overflow: none;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bal-modal-background);
+    border-radius: var(--bal-modal-radius);
+    //
+    // responsiveness
+    @include tablet {
+      margin: 3rem auto;
+
+      // --bal-width is deprecated and will be removed in the next major release
+      width: var(--bal-modal-width, var(--bal-width, 40rem));
+    }    //
+    // spacing
+    @include modalPadding(1rem);
+    .bal-modal__header__close {
+      right: 1.2rem !important;
+      top: .7rem !important;
+    }
+    @include tablet {
+      @include modalPadding(1.5rem);
+      .bal-modal__header__close {
+        right: 1.6rem !important;
+        top: 1.2rem !important;
+      }
+    }
+    @include desktop {
+      @include modalPadding(2.5rem);
+      .bal-modal__header__close {
+        right: 2.7rem !important;
+        top: 2.2rem !important;
+      }    //
+    // sizes
+    }
+    @include modifier(has-spacing-small) {
+      @include tablet {
+        @include modalPadding(1rem);
+        .bal-modal__header__close {
+          right: 1.1rem !important;
+          top: .7rem !important;
+        }
+      }
+      @include desktop {
+        @include modalPadding(1rem);
+        .bal-modal__header__close {
+          right: 1.1rem !important;
+          top: .7rem !important;
+        }
+      }
+    }
+    @include modifier(has-spacing-medium) {
+      @include tablet {
+        @include modalPadding(1.5rem);
+        .bal-modal__header__close {
+          right: 1.6rem !important;
+          top: 1.2rem !important;
+        }
+      }
+      @include desktop {
+        @include modalPadding(1.5rem);
+        .bal-modal__header__close {
+          right: 1.6rem !important;
+          top: 1.2rem !important;
+        }
+      }
+    }
+  }
+  @include element(body) {
+    & > bal-button-group {
+      padding-top: 1rem;
+    }
+  }
+}
