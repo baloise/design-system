@@ -1,9 +1,0 @@
-.my-version {
-  font-weight: 300 !important;
-}
-
-@media only screen and (max-width: 1364px) {
-  .my-version {
-    display: none !important;
-  }
-}
