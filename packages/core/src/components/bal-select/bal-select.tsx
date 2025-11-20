@@ -516,7 +516,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     if (!this.typeahead) {
       await this.syncNativeInput()
     }
-    if (this.didInit && !this.remote) {
+    if (this.didInit) {
       this.validateAfterBlur()
     }
   }
@@ -914,7 +914,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   }
 
   private handleKeyPress = async (ev: KeyboardEvent) => {
-    if (!this.isPopoverOpen && isSpaceKey(ev)) {
+    if (!this.isPopoverOpen) {
       preventDefault(ev)
       await this.open()
     }
@@ -930,10 +930,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   private handleInput = async (ev: Event) => {
     if (!this.disabled && !this.readonly) {
       this.inputValue = (ev.target as HTMLInputElement).value
-
-      if (!this.isPopoverOpen) {
-        this.popoverElement.present()
-      }
 
       this.focusIndex = 0
       this.updateFocus()
