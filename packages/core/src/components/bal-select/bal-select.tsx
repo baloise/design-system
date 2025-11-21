@@ -268,7 +268,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
 
   connectedCallback() {
-    const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
+    const debounceUpdateOptions = debounce(() => this.updateOptions(), 10)
 
     this.initialValue = this.value
 
@@ -477,7 +477,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
 
   private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timeout
-  private async waitForOptionsAndThenUpdateRawValues() {
+  private waitForOptionsAndThenUpdateRawValues = async () => {
     clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
     await deepReady(this.el)
     const hasOptions = this.options.size > 0
@@ -516,8 +516,11 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     if (!this.typeahead) {
       await this.syncNativeInput()
     }
-    if (this.didInit) {
+    if (this.didInit && !this.remote) {
       this.validateAfterBlur()
+    }
+    if (this.didInit && this.remote && this.options.size > 0) {
+      this.validateAfterBlur(true)
     }
   }
 

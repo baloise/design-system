@@ -68,37 +68,37 @@ export const config: Config = {
     initializeNextTick: true,
   },
   outputTargets: [
-    {
-      type: 'docs-json',
-      file: '../../resources/data/components.json',
-    },
-    ...(!IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'dist',
-            esmLoaderPath: '../loader',
-          },
-        ]
-      : []),
+    // {
+    //   type: 'docs-json',
+    //   file: '../../resources/data/components.json',
+    // },
+    // ...(!IS_BAL_PLAYWRIGHT_TESTING
+    //   ? [
+    //       {
+    //         type: 'dist',
+    //         esmLoaderPath: '../loader',
+    //       },
+    //     ]
+    //   : []),
     /**
      * Use this outputs for documentation and e2e testing
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          CustomDocumentationGenerator,
-          webOutputTarget({
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-            isTest: IS_BAL_TESTING,
-          }),
-          {
-            type: 'dist-custom-elements',
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-            empty: true,
-            includeGlobalScripts: false,
-            generateTypeDeclarations: true,
-          },
-        ]
-      : []),
+    // ...(!IS_BAL_DEVELOPMENT && !IS_BAL_PLAYWRIGHT_TESTING
+    //   ? [
+    //       CustomDocumentationGenerator,
+    //       webOutputTarget({
+    //         dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+    //         isTest: IS_BAL_TESTING,
+    //       }),
+    //       {
+    //         type: 'dist-custom-elements',
+    //         dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+    //         empty: true,
+    //         includeGlobalScripts: false,
+    //         generateTypeDeclarations: true,
+    //       },
+    //     ]
+    //   : []),
     {
       type: 'www',
       dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
@@ -176,18 +176,18 @@ export const config: Config = {
     /**
      * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'docs-vscode',
-            file: 'dist/html.html-data.json',
-            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-          },
-          ReactGenerator(),
-          AngularGenerator(),
-          AngularModuleGenerator(),
-        ]
-      : []),
+    // ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
+    //   ? [
+    //       {
+    //         type: 'docs-vscode',
+    //         file: 'dist/html.html-data.json',
+    //         sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+    //       },
+    //       ReactGenerator(),
+    //       AngularGenerator(),
+    //       AngularModuleGenerator(),
+    //     ]
+    //   : []),
   ],
   bundles: [
     { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
