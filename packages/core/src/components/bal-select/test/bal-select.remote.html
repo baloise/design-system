@@ -12,31 +12,9 @@
       <main class="container">
         <bal-heading>Basic</bal-heading>
         <section>
-          <form action="https://www.w3schools.com/action_page.php" target="_blank">
-            <input type="text" name="firstName" autocomplete="given-name" />
-            <bal-select
-              id="bal-select-year"
-              name="street"
-              autocomplete="street-address"
-              placeholder="Try finding a year"
-              typeahead
-              remote
-            ></bal-select>
-            <bal-select id="value" name="value" placeholder="Initial Value" typeahead remote></bal-select>
-            <bal-button element-type="submit" color="primary">Submit</bal-button>
-          </form>
+          <bal-select id="bal-select-year" placeholder="Try finding a year" value="v1997" remote></bal-select>
           <script>
             const selectEl = document.getElementById('bal-select-year')
-            const valueEl = document.getElementById('value')
-
-            selectEl.addEventListener('balInput', event => {
-              console.log('balInput', event.detail)
-              selectEl.appendChild(createSelectOption('Oberer Brühlweg 17'))
-              selectEl.appendChild(createSelectOption('Hauptstrasse 5'))
-              selectEl.appendChild(createSelectOption('Bahnhofstrasse 10'))
-              selectEl.appendChild(createSelectOption('Im Hinterstück 9'))
-              selectEl.appendChild(createSelectOption('Gartenweg 3'))
-            })
 
             function createSelectOption(value) {
               const el = document.createElement('bal-select-option')
@@ -47,17 +25,11 @@
             }
 
             setTimeout(() => {
-              valueEl.value = 'vHauptstrasse 5'
-              console.log('----------------------------')
-            }, 1000)
-
-            setTimeout(() => {
-              valueEl.appendChild(createSelectOption('Oberer Brühlweg 17'))
-              valueEl.appendChild(createSelectOption('Hauptstrasse 5'))
-              valueEl.appendChild(createSelectOption('Bahnhofstrasse 10'))
-              valueEl.appendChild(createSelectOption('Im Hinterstück 9'))
-              valueEl.appendChild(createSelectOption('Gartenweg 3'))
-              console.log('----------------------------')
+              selectEl.appendChild(createSelectOption('1995'))
+              selectEl.appendChild(createSelectOption('1996'))
+              selectEl.appendChild(createSelectOption('1997'))
+              selectEl.appendChild(createSelectOption('1998'))
+              selectEl.appendChild(createSelectOption('1999'))
             }, 2000)
           </script>
         </section>

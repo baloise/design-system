@@ -1,0 +1,67 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+  <body>
+    <bal-doc-app log-components="bal-select">
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <input type="text" name="firstName" autocomplete="given-name" />
+            <bal-select
+              id="bal-select-year"
+              name="street"
+              autocomplete="street-address"
+              placeholder="Try finding a year"
+              typeahead
+              remote
+            ></bal-select>
+            <bal-select id="value" name="value" placeholder="Initial Value" typeahead remote></bal-select>
+            <bal-button element-type="submit" color="primary">Submit</bal-button>
+          </form>
+          <script>
+            const selectEl = document.getElementById('bal-select-year')
+            const valueEl = document.getElementById('value')
+
+            selectEl.addEventListener('balInput', event => {
+              console.log('balInput', event.detail)
+              selectEl.appendChild(createSelectOption('Oberer Brühlweg 17'))
+              selectEl.appendChild(createSelectOption('Hauptstrasse 5'))
+              selectEl.appendChild(createSelectOption('Bahnhofstrasse 10'))
+              selectEl.appendChild(createSelectOption('Im Hinterstück 9'))
+              selectEl.appendChild(createSelectOption('Gartenweg 3'))
+            })
+
+            function createSelectOption(value) {
+              const el = document.createElement('bal-select-option')
+              el.value = `v${value}`
+              el.label = value
+              el.innerHTML = value
+              return el
+            }
+
+            setTimeout(() => {
+              valueEl.value = 'vHauptstrasse 5'
+              console.log('----------------------------')
+            }, 1000)
+
+            setTimeout(() => {
+              valueEl.appendChild(createSelectOption('Oberer Brühlweg 17'))
+              valueEl.appendChild(createSelectOption('Hauptstrasse 5'))
+              valueEl.appendChild(createSelectOption('Bahnhofstrasse 10'))
+              valueEl.appendChild(createSelectOption('Im Hinterstück 9'))
+              valueEl.appendChild(createSelectOption('Gartenweg 3'))
+              console.log('----------------------------')
+            }, 2000)
+          </script>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
