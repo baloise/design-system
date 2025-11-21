@@ -24,7 +24,7 @@
   }
   &.is-success {
     color: var(--bal-form-field-label-success-color);
-  }  // deprecated
+  } // deprecated
   &.is-warning {
     color: var(--bal-color-text-warning);
   }
@@ -44,7 +44,7 @@
   }
   &.is-success {
     color: var(--bal-form-field-message-success-color);
-  }  // deprecated
+  } // deprecated
   &.is-warning {
     color: var(--bal-color-text-warning);
   }
@@ -55,13 +55,13 @@
 .field {
   &:not(:last-child) {
     margin-bottom: 0.25rem;
-  }  // Modifiers
+  } // Modifiers
   &.has-addons {
     display: flex;
     justify-content: flex-start;
     .control {
       &:not(:last-child) {
-        @include ltr-property("margin", -1px);
+        @include ltr-property('margin', -1px);
       }
       &:not(:first-child):not(:last-child) {
         .button,
@@ -174,7 +174,7 @@
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 0;
-    @include ltr-property("margin", 1.5rem);
+    @include ltr-property('margin', 1.5rem);
     text-align: right;
     &.is-small {
       font-size: var(--bal-text-size-small);
@@ -203,7 +203,7 @@
         flex-grow: 1;
       }
       &:not(:last-child) {
-        @include ltr-property("margin", 0.75rem);
+        @include ltr-property('margin', 0.75rem);
       }
     }
   }
@@ -221,7 +221,7 @@
       border-radius: var(--bal-radius-rounded);
       border-right-color: transparent;
       border-top-color: transparent;
-      content: "";
+      content: '';
       display: block;
       height: 1.125em;
       width: 1.125em;

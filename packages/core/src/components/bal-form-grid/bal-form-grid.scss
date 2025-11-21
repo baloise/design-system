@@ -3,7 +3,7 @@
 @include block(form-grid) {
   display: flex;
   flex-direction: column;
-  row-gap: .25rem;
+  row-gap: 0.25rem;
   @include desktop {
     flex-direction: row;
   }

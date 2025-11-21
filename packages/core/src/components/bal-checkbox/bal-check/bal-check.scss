@@ -15,7 +15,7 @@
   overflow: hidden;
   //
   // default color
-  border: var( --bal-check-border-width) solid var(--bal-check-border-color);
+  border: var(--bal-check-border-width) solid var(--bal-check-border-color);
   background-color: var(--bal-check-background);
   &--hovered,
   &:hover {
@@ -28,7 +28,7 @@
   &:active {
     background: var(--bal-check-background-pressed);
     border-color: var(--bal-check-border-color-pressed);
-  }  //
+  } //
   // checked
   bal-icon {
     opacity: 0;
@@ -54,7 +54,7 @@
   }
   &--checked#{&}--inverted {
     border-color: var(--bal-check-color-inverted);
-  }  //
+  } //
   // invalid
   &--invalid {
     border-color: var(--bal-check-border-color-invalid);
@@ -90,7 +90,7 @@
   }
   &--invalid#{&}--checked#{&}--inverted {
     border-color: var(--bal-check-color-inverted);
-  }  //
+  } //
   // disabled
   &--disabled {
     cursor: default !important;

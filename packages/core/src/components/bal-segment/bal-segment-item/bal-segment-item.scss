@@ -25,8 +25,8 @@
     cursor: default !important;
     pointer-events: none !important;
   }
-// Segment Button
-// --------------------------------------------------
+  // Segment Button
+  // --------------------------------------------------
 }
 .bal-segment-item__button {
   @include unselectable;
@@ -81,25 +81,33 @@
 // Line between two not checked items
 // --------------------------------------------------
 
-.bal-segment-item:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(.bal-segment-item--before-checked)::after {
+.bal-segment-item:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(
+    .bal-segment-item--before-checked
+  )::after {
   content: '';
   position: absolute;
   background: var(--bal-segment-item-divider-background);
   border-radius: var(--bal-radius-normal);
 }
-.bal-segment-item:not(.bal-segment-item--vertical):not(.bal-segment-item--checked):not(.bal-segment-item--last):not(.bal-segment-item--before-checked)::after {
+.bal-segment-item:not(.bal-segment-item--vertical):not(.bal-segment-item--checked):not(.bal-segment-item--last):not(
+    .bal-segment-item--before-checked
+  )::after {
   top: 2px;
   bottom: 2px;
   right: -1px;
   width: 2px;
 }
-.bal-segment-item.bal-segment-item--vertical:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(.bal-segment-item--before-checked)::after {
+.bal-segment-item.bal-segment-item--vertical:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(
+    .bal-segment-item--before-checked
+  )::after {
   left: 2px;
   right: 2px;
   bottom: -1px;
   height: 2px;
 }
-.bal-segment-item--invalid:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(.bal-segment-item--before-checked)::after {
+.bal-segment-item--invalid:not(.bal-segment-item--checked):not(.bal-segment-item--last):not(
+    .bal-segment-item--before-checked
+  )::after {
   background: var(--bal-segment-item-divider-background-invalid);
 }
 // Indicator
@@ -131,7 +139,14 @@
 }
 .bal-segment-item__indicator--animated {
   will-change: transform, opacity, top, bottom, left, right, min-width, min-heigth;
-  transition: transform 260ms cubic-bezier(0.4, 0, 0.2, 1), min-width 100ms ease, min-height 100ms ease, top 100ms ease, left 100ms ease, bottom 100ms ease, right 100ms ease;
+  transition:
+    transform 260ms cubic-bezier(0.4, 0, 0.2, 1),
+    min-width 100ms ease,
+    min-height 100ms ease,
+    top 100ms ease,
+    left 100ms ease,
+    bottom 100ms ease,
+    right 100ms ease;
 }
 .bal-segment-item__indicator--checked {
   opacity: 1;
@@ -145,9 +160,9 @@
     left: 2px !important;
     right: 2px !important;
   }
-// Indicator Icon
-// Check icon of the checked item
-// --------------------------------------------------
+  // Indicator Icon
+  // Check icon of the checked item
+  // --------------------------------------------------
 }
 .bal-segment-item__button__icon {
   position: absolute !important;
@@ -166,9 +181,11 @@
 }
 .bal-segment-item__button__icon--animated {
   opacity: 1;
-  width: .875rem !important;
+  width: 0.875rem !important;
   transform: translateX(-4px);
-  transition: opacity 260ms cubic-bezier(0.4, 0, 0.2, 1), transform 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    opacity 260ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 260ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 // Checked
 // --------------------------------------------------
@@ -196,8 +213,8 @@
     .bal-segment-item__button:not(.bal-segment-item__button--checked) {
       color: var(--bal-segment-item-text-color-pressed);
     }
-// Focused
-// --------------------------------------------------
+    // Focused
+    // --------------------------------------------------
   }
 }
 .bal-segment--keyboard {
@@ -208,8 +225,8 @@
     border-style: solid;
     transition: border 300ms ease-in-out;
   }
-// Invalid
-// --------------------------------------------------
+  // Invalid
+  // --------------------------------------------------
 }
 .bal-segment-item.bal-segment-item--invalid:not(.bal-segment-item--disabled) {
   .bal-segment-item__button:not(.bal-segment-item__button--checked) {

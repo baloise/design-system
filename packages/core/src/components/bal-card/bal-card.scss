@@ -124,7 +124,7 @@
   }
   @include modifier(is-yellow-3) {
     background: var(--bal-card-background-yellow-3);
-  }  //
+  } //
   // Modifier
   @include modifier(has-fullheight) {
     &,
@@ -152,8 +152,8 @@
     &:hover {
       box-shadow: var(--bal-shadow-large);
       transform: translate3d(0, -2px, 0);
-    }  //
-  // Spacing
+    } //
+    // Spacing
   }
   @include card-spacing;
   @include tablet {
@@ -178,8 +178,8 @@
     }
     @include desktop {
       @include card-spacing(4rem);
-    }  //
-  // tag placment
+    } //
+    // tag placment
   }
   & > .bal-tag {
     position: absolute;
@@ -212,7 +212,7 @@
   .bal-heading__text {
     .bal-tag-group,
     .bal-button-group {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
   @include tablet {
@@ -226,12 +226,12 @@
       .bal-tag-group,
       .bal-button-group {
         margin-top: 0;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
         display: inline-flex;
       }
       .bal-tag-group {
         .bal-tag {
-          margin-top: .125rem;
+          margin-top: 0.125rem;
         }
       }
       .bal-button-group {

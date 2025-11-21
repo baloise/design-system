@@ -19,7 +19,8 @@
  * @prop --bal-strong-font-weight: TBD
  */
 
-:root {  //
+:root {
+  //
   // body variables
   --bal-body-background: var(--bal-color-text-white);
   --bal-body-font-family: var(--bal-font-family-text);
@@ -38,10 +39,13 @@
   --bal-focus-shadow-start-color: var(--bal-color-white);
   --bal-focus-shadow-end-color: var(--bal-color-purple-6);
   --bal-focus-shadow: var(--bal-focus-shadow-start-color) 0 0 0 2px, var(--bal-focus-shadow-end-color) 0 0 0 5px;
-  --bal-focus-shadow-inset: inset var(--bal-focus-shadow-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-start-color) 0 0 0 5px;
+  --bal-focus-shadow-inset: inset var(--bal-focus-shadow-end-color) 0 0 0 3px,
+    inset var(--bal-focus-shadow-start-color) 0 0 0 5px;
   // inverted
   --bal-focus-shadow-inverted-start-color: var(--bal-color-white);
   --bal-focus-shadow-inverted-end-color: var(--bal-color-yellow);
-  --bal-focus-shadow-inverted: var(--bal-focus-shadow-inverted-start-color) 0 0 0 2px, var(--bal-focus-shadow-inverted-end-color) 0 0 0 5px;
-  --bal-focus-shadow-inverted-inset: inset var(--bal-focus-shadow-inverted-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-inverted-start-color) 0 0 0 5px;
+  --bal-focus-shadow-inverted: var(--bal-focus-shadow-inverted-start-color) 0 0 0 2px,
+    var(--bal-focus-shadow-inverted-end-color) 0 0 0 5px;
+  --bal-focus-shadow-inverted-inset: inset var(--bal-focus-shadow-inverted-end-color) 0 0 0 3px,
+    inset var(--bal-focus-shadow-inverted-start-color) 0 0 0 5px;
 }

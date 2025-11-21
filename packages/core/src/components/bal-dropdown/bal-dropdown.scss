@@ -68,7 +68,9 @@
     }
   }
 }
-.bal-dropdown__root:not(.bal-dropdown__root--disabled):not(.bal-dropdown__root--invalid):not(.bal-dropdown__root--theme-purple):not(.bal-dropdown__root--theme-purple-expanded) {
+.bal-dropdown__root:not(.bal-dropdown__root--disabled):not(.bal-dropdown__root--invalid):not(
+    .bal-dropdown__root--theme-purple
+  ):not(.bal-dropdown__root--theme-purple-expanded) {
   @include hover {
     &:hover {
       background: var(--bal-dropdown-control-background-hover);
@@ -85,8 +87,8 @@
   & > bal-tag {
     z-index: 1;
   }
-// Native form controls
-// --------------------------------------------------
+  // Native form controls
+  // --------------------------------------------------
 }
 .bal-dropdown__root__input {
   appearance: none;
@@ -98,8 +100,8 @@
   top: var(--bal-border-width-normal);
   bottom: var(--bal-border-width-normal);
   opacity: 0;
-  padding-left: calc(.75em - var(--bal-border-width-normal));
-  padding-right: calc(.75em - var(--bal-border-width-normal));
+  padding-left: calc(0.75em - var(--bal-border-width-normal));
+  padding-right: calc(0.75em - var(--bal-border-width-normal));
   cursor: pointer;
   &:disabled {
     cursor: default;
@@ -143,8 +145,8 @@
     visibility: visible;
     opacity: 1;
   }
-// Dropdown native input element
-// --------------------------------------------------
+  // Dropdown native input element
+  // --------------------------------------------------
 }
 .bal-dropdown__native {
   bottom: 0;
@@ -180,8 +182,8 @@
       width: 2px;
       height: 100%;
     }
-// Dropdown rear icon loading clear element
-// --------------------------------------------------
+    // Dropdown rear icon loading clear element
+    // --------------------------------------------------
   }
 }
 .bal-dropdown__rear {
@@ -228,7 +230,9 @@
   border: none;
   background: var(--bal-color-purple-2);
 }
-.bal-dropdown__root--theme-purple-filled:not(.bal-dropdown__root--theme-purple-expanded):not(.bal-dropdown__root--disabled) {
+.bal-dropdown__root--theme-purple-filled:not(.bal-dropdown__root--theme-purple-expanded):not(
+    .bal-dropdown__root--disabled
+  ) {
   @include hover {
     &:hover {
       background: var(--bal-color-purple-3);

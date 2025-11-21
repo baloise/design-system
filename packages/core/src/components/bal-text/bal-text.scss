@@ -13,7 +13,7 @@
   &--inline {
     display: inline;
     margin: 0;
-  }  //
+  } //
   // spaces
   &--space-all {
     margin-top: var(--bal-space-normal);
@@ -29,7 +29,7 @@
   }
   &--space-none {
     margin: 0;
-  }  //
+  } //
   // inner text element
   &__text {
     padding: 0;
@@ -47,7 +47,7 @@
     }
     &--heading {
       font-family: var(--bal-font-family-title);
-    }    //
+    } //
     // text sizes
     &--size-small {
       font-size: var(--bal-text-size-small);
@@ -83,8 +83,8 @@
       @include desktop {
         font-size: var(--bal-text-size-large-desktop);
         line-height: var(--bal-line-height-desktop-large);
-      }    //
-    // text colors
+      } //
+      // text colors
     }
     &--color-light-blue {
       color: var(--bal-text-color-light-blue);

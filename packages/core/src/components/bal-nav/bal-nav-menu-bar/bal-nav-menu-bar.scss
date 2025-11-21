@@ -39,8 +39,8 @@
       padding-left: var(--bal-container-space-desktop);
       padding-right: var(--bal-container-space-desktop);
       max-width: var(--bal-container-size-normal);
-    }  //
-  // hidden
+    } //
+    // hidden
   }
   &--hidden-mobile {
     @include mobile {
@@ -56,19 +56,19 @@
     @include tablet-only {
       display: hidden;
       visibility: hidden;
-    }  //
-  // responsive
+    } //
+    // responsive
   }
   @include widescreen {
     position: fixed;
     margin-top: 1rem;
-  }  //
+  } //
   //
   &--position-fixed-top {
     position: fixed;
   }
-// Inner
-// --------------------------------------------------
+  // Inner
+  // --------------------------------------------------
 }
 .bal-nav-menu-bar__inner {
   background: var(--bal-nav-menu-bar-background);
@@ -101,23 +101,23 @@
       border-radius: var(--bal-nav-menu-bar-radius);
       box-shadow: var(--bal-nav-menu-bar-shadow);
     }
-// Troubleshooting
-// --------------------------------------------------
+    // Troubleshooting
+    // --------------------------------------------------
   }
 }
 .bal-nav-menu-bar .bal-nav__logo {
   align-self: flex-start;
   z-index: 1;
   height: auto;
-  margin-top: .8em;
+  margin-top: 0.8em;
   @include desktop {
     margin-top: 1rem;
   }
   @include widescreen {
     margin-top: 1.5rem;
   }
-// Space helpers for the content after the bar
-// --------------------------------------------------
+  // Space helpers for the content after the bar
+  // --------------------------------------------------
 }
 .bal-nav-menu-bar-body-padding {
   padding-top: 1rem;

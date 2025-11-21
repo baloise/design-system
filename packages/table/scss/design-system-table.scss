@@ -4,7 +4,8 @@
 // @use 'ag-grid-community/styles/ag-grid' as *
 // @use 'ag-grid-community/styles/ag-theme-alpine' as *
 
-.ag-theme-alpine {  // colours & fonts => https://www.ag-grid.com/javascript-data-grid/global-style-customisation-colours/
+.ag-theme-alpine {
+  // colours & fonts => https://www.ag-grid.com/javascript-data-grid/global-style-customisation-colours/
   --ag-font-size: 14px;
   --ag-font-family: var(--bal-font-family-text);
   --ag-alpine-active-color: var(--bal-color-primary);
@@ -50,7 +51,7 @@
 }
 .bal-table-cell-text {
   display: flex;
-  gap: .25rem;
+  gap: 0.25rem;
   align-items: center;
   height: 100%;
 }

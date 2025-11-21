@@ -6,8 +6,8 @@
   .bal-modal__header {
     padding-bottom: $size;
   }
-// Modal
-// --------------------------------------------------
+  // Modal
+  // --------------------------------------------------
 }
 @include block(modal) {
   @extend %overlay;
@@ -20,7 +20,7 @@
   z-index: var(--bal-z-index-modal);
   @include modifier(is-active) {
     display: flex;
-  }  //
+  } //
   // backdrop background
   @include element(background) {
     @extend %overlay;
@@ -54,7 +54,7 @@
     overflow-x: none;
     overflow-y: auto;
     -ms-overflow-y: visible;
-    padding: .5rem;
+    padding: 0.5rem;
     @include tablet {
       padding: 0;
     }
@@ -74,12 +74,12 @@
 
       // --bal-width is deprecated and will be removed in the next major release
       width: var(--bal-modal-width, var(--bal-width, 40rem));
-    }    //
+    } //
     // spacing
     @include modalPadding(1rem);
     .bal-modal__header__close {
       right: 1.2rem !important;
-      top: .7rem !important;
+      top: 0.7rem !important;
     }
     @include tablet {
       @include modalPadding(1.5rem);
@@ -93,22 +93,22 @@
       .bal-modal__header__close {
         right: 2.7rem !important;
         top: 2.2rem !important;
-      }    //
-    // sizes
+      } //
+      // sizes
     }
     @include modifier(has-spacing-small) {
       @include tablet {
         @include modalPadding(1rem);
         .bal-modal__header__close {
           right: 1.1rem !important;
-          top: .7rem !important;
+          top: 0.7rem !important;
         }
       }
       @include desktop {
         @include modalPadding(1rem);
         .bal-modal__header__close {
           right: 1.1rem !important;
-          top: .7rem !important;
+          top: 0.7rem !important;
         }
       }
     }

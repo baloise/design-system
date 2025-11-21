@@ -1,6 +1,10 @@
 @font-face {
   font-family: 'MuseoSlab-300';
-  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.svg#MuseoSlab-300') format('svg');
+  src:
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.eot?#iefix') format('embedded-opentype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.woff') format('woff'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.ttf') format('truetype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-300.svg#MuseoSlab-300') format('svg');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +12,11 @@
 
 @font-face {
   font-family: 'MuseoSans-300';
-  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.svg#MuseoSans-300') format('svg');
+  src:
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.woff') format('woff'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.ttf') format('truetype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-300.svg#MuseoSans-300') format('svg');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +24,11 @@
 
 @font-face {
   font-family: 'MuseoSlab-700';
-  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.svg#MuseoSlab-700') format('svg');
+  src:
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.eot?#iefix') format('embedded-opentype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.woff') format('woff'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.ttf') format('truetype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSlab-700.svg#MuseoSlab-700') format('svg');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -24,13 +36,18 @@
 
 @font-face {
   font-family: 'MuseoSans-700';
-  src: url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.eot?#iefix') format('embedded-opentype'),url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.woff') format('woff'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.ttf') format('truetype'), url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.svg#MuseoSans-700') format('svg');
+  src:
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.eot?#iefix') format('embedded-opentype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.woff') format('woff'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.ttf') format('truetype'),
+    url('https://www.tcs.ch/global/wGlobal/layout/webfonts/MuseoSans-700.svg#MuseoSans-700') format('svg');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-:root {  //
+:root {
+  //
   // Base
   // Colors
   --tcs-color-font: black;

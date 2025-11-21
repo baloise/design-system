@@ -5,11 +5,12 @@
  * @prop --bal-modal-radius: Radius of the modal.
  */
 
-:root {  //
+:root {
+  //
   // background colors
   --bal-modal-background: var(--bal-color-white);
   --bal-modal-backdrop-background: var(--bal-color-primary-6);
-  --bal-modal-backdrop-opacity: .6;
+  --bal-modal-backdrop-opacity: 0.6;
 
   //
   // radius

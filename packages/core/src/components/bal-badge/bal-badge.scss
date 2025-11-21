@@ -12,19 +12,19 @@
   height: 1.5rem;
   border-radius: var(--bal-badge-radius);
   background: var(--bal-badge-background);
-  padding: .25rem;
+  padding: 0.25rem;
   //
   // sizes
   &--size-small {
-    width: .75rem;
-    max-width: .75rem;
-    min-width: .75rem;
-    height: .75rem;
+    width: 0.75rem;
+    max-width: 0.75rem;
+    min-width: 0.75rem;
+    height: 0.75rem;
   }
   &--size-large {
     width: 2rem;
     height: 2rem;
-  }  //
+  } //
   // background colors
   &--background-red,
   &--background-danger {
@@ -43,7 +43,7 @@
   }
   &--background-grey {
     background: var(--bal-badge-background-grey);
-  }  //
+  } //
   // position
   &--position-card,
   &--position-button {
@@ -58,8 +58,8 @@
     &.bal-badge--size-small {
       right: -1rem;
     }
-// Badge Label
-// --------------------------------------------------
+    // Badge Label
+    // --------------------------------------------------
   }
 }
 span.bal-badge__label {
@@ -71,7 +71,7 @@ span.bal-badge__label {
   hyphens: auto;
   &--hidden {
     display: none !important;
-  }  //
+  } //
   // text colors
   &--color-red,
   &--color-danger {
@@ -91,8 +91,8 @@ span.bal-badge__label {
   &--color-purple {
     color: var(--bal-badge-color-purple);
   }
-// Badge Icon
-// --------------------------------------------------
+  // Badge Icon
+  // --------------------------------------------------
 }
 .bal-badge__icon--hidden {
   display: none !important;

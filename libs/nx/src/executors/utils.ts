@@ -100,10 +100,7 @@ export async function compileSassToMergedFile(
   await mkdir(join(options.projectRoot, outputPath), { recursive: true })
   await writeFile(join(options.projectRoot, outputPath, outputFileName), cssContent)
   await writeFile(join(options.projectRoot, outputPath, `${outputFileName}.map`), JSON.stringify(mergedSourceMap))
-  await writeFile(
-    join(options.projectRoot, outputPath, outputFileName.replace('.css', '.min.css')),
-    cleanResult.styles,
-  )
+  await writeFile(join(options.projectRoot, outputPath, outputFileName.replace('.css', '.min.css')), cleanResult.styles)
 }
 
 export const createSourceFile = content => ts.createSourceFile('x.ts', content, ts.ScriptTarget.Latest)

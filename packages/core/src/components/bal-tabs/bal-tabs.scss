@@ -15,7 +15,7 @@
   // Fullwidth
   &--fullwidth {
     width: 100%;
-  }  //
+  } //
   // Vertical layout
   &--vertical {
     flex-direction: column;
@@ -23,16 +23,16 @@
     @include tablet {
       flex-direction: row;
       gap: var(--bal-space-normal);
-    }  //
-  // Navbar layout
+    } //
+    // Navbar layout
   }
   &--navbar {
     @include tablet {
       height: 100%;
     }
-// Tab Item
-// are hidden initialy and only shown when active
-// --------------------------------------------------
+    // Tab Item
+    // are hidden initialy and only shown when active
+    // --------------------------------------------------
   }
 }
 .bal-tab-item {
@@ -41,8 +41,8 @@
   &--active {
     display: block;
   }
-// Accordion
-// --------------------------------------------------
+  // Accordion
+  // --------------------------------------------------
 }
 .bal-tabs--accordion {
   .bal-tabs__content {
@@ -51,8 +51,8 @@
   &.bal-tabs--collapsed .bal-tabs__content {
     display: none;
   }
-// Content
-// --------------------------------------------------
+  // Content
+  // --------------------------------------------------
 }
 .bal-tabs__content {
   width: 100%;
