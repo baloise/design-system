@@ -1,9 +1,9 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensContainersSize = ({ overview }) => {
-  const list = tokens.size.container.size
+export const TokensContainersSize = ({ overview }): React.ReactElement => {
+  const list = tokens.container.size
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -23,7 +23,7 @@ export const TokensContainersSize = ({ overview }) => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
               </td>
             </tr>
             <tr>
@@ -37,8 +37,8 @@ export const TokensContainersSize = ({ overview }) => {
     </table>
   )
 }
-export const TokensContainersSpace = ({ overview }) => {
-  const list = tokens.size.container.space
+export const TokensContainersSpace = ({ overview }): React.ReactElement => {
+  const list = tokens.container.space
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -61,7 +61,7 @@ export const TokensContainersSpace = ({ overview }) => {
                 </p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
               </td>
             </tr>
             <tr>

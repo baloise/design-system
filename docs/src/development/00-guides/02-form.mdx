@@ -1,0 +1,158 @@
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  AngularFramework,
+  Banner,
+  Code,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
+  LinkCard,
+  LinkCards,
+  PackageTable,
+  ReactFramework,
+  WarningQuote,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Form" />
+
+<Banner label="Form" section="Development" />
+
+<Lead>
+  The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid
+  system.
+</Lead>
+
+## Form fields
+
+A basic form field has his container element `bal-field` and 3 child elements:
+
+- `bal-field-label` for adding a label to the form control.
+- `bal-field-control` to contain the control like an input.
+- `bal-field-message` to show validation message or helper messages.
+
+<Code
+  language="html"
+  code={`
+<bal-field>
+  <bal-field-label>Firstname</bal-field-label>
+  <bal-field-control>
+    <bal-input placeholder="Enter your firstname"></bal-input>
+  </bal-field-control>
+  <bal-field-message color="danger">Required Field</bal-field-message>
+</bal-field>
+`}
+/>
+
+## Form Grid
+
+To combine form fields / controls to a bigger form use the [Form Grid component](?path=/docs/components-form-form-grid--basic).
+
+<Code
+  language="html"
+  code={`
+<bal-form-grid>
+  <bal-form-col>
+    <bal-field>
+      <bal-field-control>
+        <bal-radio-group>
+          <bal-radio name="gender" value="male"> Male </bal-radio>
+          <bal-radio name="gender" value="female"> Female </bal-radio>
+        </bal-radio-group>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+  <bal-form-col size="half">
+    <bal-field>
+      <bal-field-label>Firstname</bal-field-label>
+      <bal-field-control>
+        <bal-input placeholder="Enter your firstname"></bal-input>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+  <bal-form-col size="half">
+    <bal-field>
+      <bal-field-label>Lastname</bal-field-label>
+      <bal-field-control>
+        <bal-input placeholder="Enter your lastname"></bal-input>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+</bal-form-grid>
+`}
+/>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Angular  ----------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+## Reactive Forms
+
+The form elements support [Angular Reactive Forms](https://angular.io/guide/reactive-forms).
+Below is a basic example to use the reactive form together with the Design System.
+
+<InfoQuote>
+
+**Tip**
+
+Check out the repository [baloise/web-app-utils](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md) for Baloise
+specific validators.
+
+</InfoQuote>
+
+1. Angular package offers `balAutoFocus` directive which brings focus to the element.
+   Usage can be seen in the following code in bal-field.
+   In order for it to work please import `BalSharedModule` in each Angular module that uses it.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid is-multiline mt-none">
+  <bal-field class="col is-full py-none" required>
+    <bal-field-label required>Email</bal-field-label>
+    <bal-field-control>
+      <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
+    </bal-field-control>
+    <bal-field-message>
+      <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>
+      <bal-ng-error controlName="email" error="isMinLength">Min length is 4</bal-ng-error>
+      <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
+    </bal-field-message>
+  </bal-field>
+  <bal-field class="col is-half py-none">...</bal-field>
+</form>
+`}
+/>
+
+2. In the component class wen can define the validators for the form control.
+
+<Code
+  language="ts"
+  code={`
+import { Component } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+
+@Component({
+${' '}${' '}selector: 'app-form-page',
+${' '}${' '}templateUrl: './form-page.component.html',
+})
+export class FormPageComponent {
+${' '}${' '}form = new FormGroup({
+${' '}${' '}${' '}${' '}email: new FormControl(null, [Validators.required]),
+${' '}${' '}})
+
+${' '}${' '}onSubmit() {
+${' '}${' '}${' '}${' '}alert('Form is submitted!')
+${' '}${' '}}
+}
+`}
+/>
+
+</AngularFramework>
+
+<Footer />

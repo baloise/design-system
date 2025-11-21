@@ -30,8 +30,8 @@
     display: none;
     visibility: hidden;
   }
-// Option Content
-// --------------------------------------------------
+  // Option Content
+  // --------------------------------------------------
 }
 .bal-option__inner {
   font-family: var(--bal-option-font-family);
@@ -64,8 +64,8 @@
     background: var(--bal-option-background-hovered);
     color: var(--bal-option-text-pressed);
   }
-// Selected Option
-// --------------------------------------------------
+  // Selected Option
+  // --------------------------------------------------
 }
 .bal-option--selected {
   background: var(--bal-option-background-selected);
@@ -86,8 +86,8 @@
   .bal-option__inner {
     font-weight: var(--bal-font-weight-bold);
   }
-// Invalid Option
-// --------------------------------------------------
+  // Invalid Option
+  // --------------------------------------------------
 }
 .bal-option--invalid {
   background: var(--bal-option-background-invalid);
@@ -124,8 +124,8 @@
   &:hover {
     background: var(--bal-option-background) !important;
   }
-// Adjust checkbox size
-// --------------------------------------------------
+  // Adjust checkbox size
+  // --------------------------------------------------
 }
 .bal-option {
   --bal-check-size: 1.25rem;

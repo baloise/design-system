@@ -18,18 +18,18 @@
   // hide native input
   &--invisible {
     @include hidden-input;
-  }  //
+  } //
   // flat heigt without padding
   &.bal-checkbox--flat {
     min-height: var(--bal-checkbox-symbol-size);
   }
   &:not(.bal-checkbox--flat) {
     min-height: 3rem;
-  }  //
+  } //
   // invalid
   &--invalid {
     color: var(--bal-form-field-label-danger-color);
-  }  //
+  } //
   // disabled
   &--disabled,
   &--disabled .bal-checkbox__label {
@@ -63,21 +63,21 @@
     text-align: left;
     contain: layout style;
     font-family: var(--bal-font-family-text);
-    padding-top: .25rem;
-    padding-bottom: .25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
     width: 100%;
     &--hidden {
       display: none;
-    }  //
-  // Label Icon
+    } //
+    // Label Icon
   }
   &__icon {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-//
-// hover handling
+  //
+  // hover handling
 }
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--hovered,
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover {
@@ -88,8 +88,8 @@
     .bal-checkbox__label__icon {
       color: var(--bal-color-text-primary-hovered);
     }
-//
-// pressed handling
+    //
+    // pressed handling
   }
 }
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
@@ -100,8 +100,8 @@
   .bal-checkbox__label__icon {
     color: var(--bal-color-text-primary-pressed);
   }
-//
-// invalid hover handling
+  //
+  // invalid hover handling
 }
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled).bal-checkbox--hovered,
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled):hover {
@@ -112,8 +112,8 @@
     .bal-checkbox__label__icon {
       color: var(--bal-color-text-danger-hovered);
     }
-//
-// invalid pressed handling
+    //
+    // invalid pressed handling
   }
 }
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled).bal-checkbox--pressed,
@@ -124,9 +124,9 @@
   .bal-checkbox__label__icon {
     color: var(--bal-color-text-danger-pressed);
   }
-//
-// Buttons
-// -------------------------------------------------
+  //
+  // Buttons
+  // -------------------------------------------------
 }
 .bal-checkbox--button {
   flex-direction: column;
@@ -181,8 +181,8 @@
     .bal-checkbox__label__text .link {
       color: var(--bal-color-white);
     }
-//
-// hover handling
+    //
+    // hover handling
   }
 }
 .bal-checkbox--button:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--hovered,
@@ -193,8 +193,8 @@
     .bal-checkbox__label__text {
       color: var(--bal-color-text-primary-hovered);
     }
-//
-// pressed handling
+    //
+    // pressed handling
   }
 }
 .bal-checkbox--button:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
@@ -204,10 +204,12 @@
   .bal-checkbox__label__text {
     color: var(--bal-color-text-primary-pressed);
   }
-//
-// checked hover handling
+  //
+  // checked hover handling
 }
-.bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--hovered,
+.bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(
+    .bal-checkbox--invalid
+  ).bal-checkbox--hovered,
 .bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover {
   @include hover {
     background: var(--bal-color-border-primary-hovered);
@@ -215,21 +217,23 @@
     .bal-checkbox__label__text {
       color: var(--bal-color-white);
     }
-//
-// checked pressed handling
+    //
+    // checked pressed handling
   }
 }
-.bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
+.bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(
+    .bal-checkbox--invalid
+  ).bal-checkbox--pressed,
 .bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):active {
   background: var(--bal-color-border-primary-pressed);
   border-color: var(--bal-color-border-primary-pressed);
   .bal-checkbox__label__text {
     color: var(--bal-color-white);
   }
-// invalid elements states
-// -------------------------------------------------
+  // invalid elements states
+  // -------------------------------------------------
 
-// hover handling
+  // hover handling
 }
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled).bal-checkbox--hovered,
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled):hover {
@@ -239,8 +243,8 @@
     .bal-checkbox__label__text {
       color: var(--bal-color-text-danger-hovered);
     }
-//
-// pressed handling
+    //
+    // pressed handling
   }
 }
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled).bal-checkbox--pressed,
@@ -250,8 +254,8 @@
   .bal-checkbox__label__text {
     color: var(--bal-color-text-danger-pressed);
   }
-//
-// checked hover handling
+  //
+  // checked hover handling
 }
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled).bal-checkbox--hovered,
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled):hover {
@@ -261,8 +265,8 @@
     .bal-checkbox__label__text {
       color: var(--bal-color-white);
     }
-//
-// checked pressed handling
+    //
+    // checked pressed handling
   }
 }
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled).bal-checkbox--pressed,
@@ -272,9 +276,9 @@
   .bal-checkbox__label__text {
     color: var(--bal-color-white);
   }
-//
-// Tiles
-// -------------------------------------------------
+  //
+  // Tiles
+  // -------------------------------------------------
 }
 .bal-checkbox--tile {
   display: block;

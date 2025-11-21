@@ -25,7 +25,7 @@
     }
     @include desktop {
       padding: var(--bal-space-normal-desktop);
-    }    //
+    } //
     // responsive
     max-width: var(--bal-toast-width);
     width: var(--bal-toast-width);
@@ -36,7 +36,7 @@
     @include desktop {
       max-width: var(--bal-toast-width-desktop);
       width: var(--bal-toast-width-desktop);
-    }    //
+    } //
     // colors
     @include modifier(color-primary) {
       background: var(--bal-toast-background-primary);
@@ -62,7 +62,7 @@
   @include element(label) {
     display: inline-flex;
     flex-direction: column;
-    gap: .125rem;
+    gap: 0.125rem;
     margin-left: 2rem;
     margin-right: 2.5rem;
     hyphens: auto;
@@ -100,7 +100,7 @@
       width: 1.5rem;
       left: 0.825rem;
       top: 1rem;
-      content: "";
+      content: '';
       display: block;
       background-color: var(--bal-color-primary);
       -webkit-mask-repeat: no-repeat;

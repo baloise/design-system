@@ -9,13 +9,13 @@ export const CssTable = ({
   tokens: any
   css: string
   example?: (item: { key: string; name: string; value: string }) => any
-}) => {
-  const keys = Object.keys(tokens).filter(k => tokens[k] && tokens[k].value)
+}): React.ReactElement => {
+  const keys = Object.keys(tokens).filter(k => tokens[k] && tokens[k].$value)
 
   const list = keys.map(key => ({
     key: key.replace('default', ''),
     name: tokens[key].name,
-    value: tokens[key].value,
+    value: tokens[key].$value,
   }))
 
   return (

@@ -53,7 +53,7 @@
 .bal-list__item > a,
 .bal-list__item > div,
 .bal-list__item > button {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   margin: 0;
   outline: none;
   border-radius: var(--bal-list-item-radius);
@@ -441,7 +441,7 @@
       content: none !important;
     }
   }
-}/****************************************************************************
+} /****************************************************************************
  * ACCORDION
  ****************************************************************************/
 
@@ -479,7 +479,9 @@
   max-height: 0 !important;
   overflow: hidden;
 }
-.bal-list__item--collapsed > .bal-list__item__trigger > .bal-list__item__accordion-body:not(.bal-list__item__accordion-body--grouped) {
+.bal-list__item--collapsed
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-body:not(.bal-list__item__accordion-body--grouped) {
   display: none;
 }
 .bal-list__item--collapsed > .bal-list__item__trigger > .bal-list__item__accordion-body {
@@ -533,19 +535,46 @@
   border-radius: var(--bal-list-item-radius);
   background: var(--bal-list-item-border-background);
 }
-.bal-list--size-small.bal-list--border > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--size-small.bal-list--border > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--size-small.bal-list--border > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after {
+.bal-list--size-small.bal-list--border
+  > .bal-list__item--expanded
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--size-small.bal-list--border
+  > .bal-list__item--expanding
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--size-small.bal-list--border
+  > .bal-list__item--collapsing
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after {
   bottom: -2px;
 }
-.bal-list--border.bal-list--background-color > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--border.bal-list--background-color > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--border.bal-list--background-color > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after {
+.bal-list--border.bal-list--background-color
+  > .bal-list__item--expanded
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-color
+  > .bal-list__item--collapsing
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-color
+  > .bal-list__item--expanding
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after {
   background: var(--bal-list-item-border-on-color-background);
 }
-.bal-list--border.bal-list--background-dark > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--border.bal-list--background-dark > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--border.bal-list--background-dark > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after {
+.bal-list--border.bal-list--background-dark
+  > .bal-list__item--expanded
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-dark
+  > .bal-list__item--collapsing
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-dark
+  > .bal-list__item--expanding
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-head:after {
   background: var(--bal-list-item-border-on-dark-background);
 }
 .bal-list__item__accordion-body__content > .bal-list {
@@ -561,7 +590,11 @@
 .bal-list__item--expanding > .bal-list__item__trigger {
   padding-bottom: 0;
 }
-.bal-list--border > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-body > div:not(.bal-list__item__accordion-body__content--space-normal) {
+.bal-list--border
+  > .bal-list__item
+  > .bal-list__item__trigger
+  > .bal-list__item__accordion-body
+  > div:not(.bal-list__item__accordion-body__content--space-normal) {
   padding-bottom: 2px !important;
 }
 .bal-list__item__accordion-body__content {

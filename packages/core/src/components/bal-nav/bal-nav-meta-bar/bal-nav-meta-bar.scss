@@ -40,18 +40,18 @@
       padding-left: var(--bal-container-space-desktop);
       padding-right: var(--bal-container-space-desktop);
       max-width: var(--bal-container-size-normal);
-    }  //
-  // size
+    } //
+    // size
   }
   &--size-normal {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     height: 4rem;
     max-height: 4rem;
   }
   &--size-small {
     min-height: 3rem;
-  }  //
+  } //
   // position
   &--position-fixed-top {
     position: fixed;
@@ -64,7 +64,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-  }  //
+  } //
   // variants
   &--variant-primary {
     background: var(--bal-nav-meta-bar-variant-primary-background);
@@ -77,7 +77,7 @@
   &--variant-white {
     background: var(--bal-nav-meta-bar-variant-white-background);
     box-shadow: var(--bal-nav-meta-bar-variant-white-shadow);
-  }  //
+  } //
   // hidden
   &--hidden-mobile {
     @include mobile {
@@ -94,16 +94,16 @@
       display: hidden !important;
       visibility: hidden !important;
     }
-// Stay on top
-// --------------------------------------------------
+    // Stay on top
+    // --------------------------------------------------
   }
 }
 .bal-nav > .bal-nav-meta-bar {
   @include touch {
     z-index: calc(var(--bal-z-index-popup) + 1) !important;
   }
-// Troubleshooting
-// --------------------------------------------------
+  // Troubleshooting
+  // --------------------------------------------------
 }
 .bal-nav-meta-bar .button-label {
   word-break: keep-all !important;
@@ -113,7 +113,7 @@
 
 .bal-nav-meta-bar-transform {
   will-change: transition;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   position: fixed;
   display: block;
   width: 100%;

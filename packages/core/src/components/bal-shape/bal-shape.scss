@@ -14,7 +14,7 @@
     width: 198px;
     height: 198px;
     border-radius: unset;
-  }  // Rotation modifiers
+  } // Rotation modifiers
   @include modifier(is-rotation-0) {
     transform: rotate(0deg);
   }

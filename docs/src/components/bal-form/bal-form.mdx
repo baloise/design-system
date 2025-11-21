@@ -1,0 +1,70 @@
+import { Canvas, Markdown, Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { navigate } from '@storybook/addon-links'
+import { Banner, Footer, Lead, LinkCard, LinkCards, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as FormStories from './bal-form.stories'
+
+<Meta of={FormStories} />
+
+<StoryHeading of={FormStories.Basic} hidden></StoryHeading>
+
+<Banner of={FormStories} />
+
+<Lead>
+  Before using the component, please refer to the documentation to learn how to structure and build forms with the
+  design system for the best accessibility (a11y) experience.
+</Lead>
+
+<Unstyled>
+  <a
+    className="button is-primary mb-x-large mt-normal"
+    style={{ width: 'auto' }}
+    onClick={() => navigate({ title: 'Development/Form' })}
+  >
+    How to structure form controls
+  </a>
+</Unstyled>
+
+<Lead>
+  {' '}
+  The `bal-form` wraps the form section. It helps to scroll to the first invalid field after a failed submit.
+</Lead>
+
+<Canvas of={FormStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FormStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.Autocomplete}></StoryHeading>
+
+<Canvas of={FormStories.Autocomplete} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

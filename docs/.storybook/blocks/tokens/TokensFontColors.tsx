@@ -1,8 +1,8 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensFontColors = ({ overview }) => {
+export const TokensFontColors = ({ overview }): React.ReactElement => {
   const list = tokens.color.text
 
   function render(key, item, preKey = '') {
@@ -13,7 +13,7 @@ export const TokensFontColors = ({ overview }) => {
             <Clipboard label={item.name} value={`var(--${item.name})`} />
           </td>
           <td style={{ verticalAlign: 'top' }} className="border-none">
-            <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+            <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
           </td>
           <td style={{ verticalAlign: 'top' }} className="border-none">
             <div
@@ -47,7 +47,7 @@ export const TokensFontColors = ({ overview }) => {
 
       {Object.keys(list).map(key => {
         const item = list[key]
-        if (item.value) {
+        if (item.$value) {
           return render(key, item)
         } else {
           return Object.keys(item).map(subKey => {

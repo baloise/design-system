@@ -1,0 +1,123 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  Code,
+  CssFlexboxAlignSelf,
+  CssResponsiveTable,
+  Footer,
+  Lead,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Align Self"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Align Self" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies the alignment for a specific element along the cross axis.</Lead>
+
+## Classes
+
+<CssFlexboxAlignSelf />
+
+## Start
+
+Elements are positioned at the beginning of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="flex align-self-start align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## Center
+
+Elements are centered within the container.
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="flex align-self-center align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## End
+
+Elements are aligned to the end of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="flex align-self-end align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## Stretch
+
+The elements are expanded to fill the container.
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; height: 50px">1</div>
+    <div class="flex align-self-stretch align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; height: 50px">3</div>
+</div>
+`}
+/>
+
+## Baseline
+
+Elements are aligned with the baseline of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="flex align-self-baseline align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="flex align-items-center justify-content-center bg-green radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-self-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

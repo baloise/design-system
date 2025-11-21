@@ -35,7 +35,7 @@
     }
     &--button#{&}--vertical {
       gap: var(--bal-space-x-small);
-    }    //
+    } //
     // shows the radios verically
     @include modifier(vertical) {
       flex-direction: column;
@@ -43,8 +43,8 @@
       gap: 0;
       @include tablet {
         align-items: flex-start;
-      }    //
-    // only shows the radios verically on mobile
+      } //
+      // only shows the radios verically on mobile
     }
     @include modifier(vertical-mobile) {
       @include mobile {

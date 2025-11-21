@@ -49,7 +49,7 @@
       }
       &:active {
         background: rgba($bal-color-white, 0.5);
-      }    //Sizes
+      } //Sizes
     }
     @include modifier(size-small) {
       padding: 0.25rem;

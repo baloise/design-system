@@ -1,6 +1,6 @@
-@use "sass:map";
-@use "sass:string";
-@use "sass:math";
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:math';
 
 @function bulmaRgba($color, $alpha) {
   @if type-of($color) != 'color' {
@@ -49,11 +49,11 @@ $block-spacing: 0.25rem !default;
   }
 }
 @mixin ltr-position($spacing, $right: true) {
-  $normal: if($right, "right", "left");
+  $normal: if($right, 'right', 'left');
   #{$normal}: $spacing;
 }
 @mixin ltr-property($property, $spacing, $right: true) {
-  $normal: if($right, "right", "left");
+  $normal: if($right, 'right', 'left');
   #{$property}-#{$normal}: $spacing;
 }
 @mixin unselectable {

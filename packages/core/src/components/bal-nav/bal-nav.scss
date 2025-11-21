@@ -23,11 +23,11 @@
   padding-bottom: 1rem;
   height: calc(var(--bal-app-height, 100%) - 4rem - 4rem - var(--bal-nav-top, 0rem));
   overflow-y: auto;
-  z-index: calc( var(--bal-z-index-navigation) - 1);
+  z-index: calc(var(--bal-z-index-navigation) - 1);
   @include desktop {
     display: none;
     visibility: hidden;
-  }  //
+  } //
   // container adjustment
   &__container {
     flex-grow: 1;

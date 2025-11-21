@@ -16,14 +16,14 @@
   &--align-end {
     align-items: flex-end;
     text-align: right;
-  }  //
+  } //
   // layout direction
   &--layout-horizontal {
     flex-direction: row;
   }
   &--layout-vertical {
     flex-direction: column;
-  }  //
+  } //
   // spaces
   &--space-none {
     gap: 0rem;
@@ -43,8 +43,8 @@
   &--space-normal {
     gap: 1rem;
   }
-//
-// custom position
+  //
+  // custom position
 }
 .bal-content > .bal-text {
   margin: 0;

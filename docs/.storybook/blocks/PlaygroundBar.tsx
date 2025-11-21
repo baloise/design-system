@@ -1,14 +1,12 @@
 import React from 'react'
-import { Unstyled, useOf } from '@storybook/blocks'
-import { navigate } from '@storybook/addon-links'
-import { CodeSandbox } from './CodeSandbox'
+import { Unstyled, useOf } from '@storybook/addon-docs/blocks'
 
-export const PlaygroundBar = ({ of, children }) => {
-  const resolvedOf = useOf(of || 'story', ['story'])
+export const PlaygroundBar = ({ of, children }): React.ReactElement => {
+  // const resolvedOf = useOf(of || 'story', ['story'])
 
   return (
     <Unstyled>
-      <div className="flex gap-normal justify-content-center">
+      {/* <div className="flex gap-normal justify-content-center">
         <a
           className="button"
           onClick={() => {
@@ -19,7 +17,7 @@ export const PlaygroundBar = ({ of, children }) => {
         </a>
         <CodeSandbox of={of} />
         {children}
-      </div>
+      </div> */}
     </Unstyled>
   )
 }

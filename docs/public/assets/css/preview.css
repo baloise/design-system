@@ -1,7 +1,5 @@
 #storybook-docs > .sbdocs-wrapper {
-  /* padding: 0 4rem 4rem 4rem; */
   padding: 1rem 3rem 3rem 3rem;
-  justify-content: flex-start;
 }
 
 #storybook-docs > .sbdocs-wrapper > .sbdocs-content {
@@ -566,4 +564,8 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .clipboard-button:active > pre > code {
   background-color: #ced0d8 !important;
   color: var(--bal-color-primary-6) !important;
+}
+
+.radius-bottom-large {
+  border-radius: 0 0 12px 12px !important;
 }

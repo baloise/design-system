@@ -31,14 +31,14 @@
 
     .bal-switch__toggle {
       background: var(--bal-checkbox-switch-label-background-pressed-after);
-    }  //
-  // checked
+    } //
+    // checked
   }
   &--checked {
     background: var(--bal-checkbox-switch-label-background-checked-before);
 
     .bal-switch__toggle {
-      background: var(--bal-checkbox-switch-label-background-checked-after),;
+      background: var(--bal-checkbox-switch-label-background-checked-after);
     }
   }
   &--checked#{&}--hovered,
@@ -56,8 +56,8 @@
 
     .bal-switch__toggle {
       background: var(--bal-checkbox-switch-label-background-checked-after);
-    }  //
-  // invalid
+    } //
+    // invalid
   }
   &--invalid {
     background: var(--bal-checkbox-switch-label-background-invalid-before);
@@ -106,8 +106,8 @@
     .bal-switch__toggle {
       background: var(--bal-checkbox-switch-label-background-invalid-checked-after);
     }
-  //
-  // disabled
+    //
+    // disabled
   }
   &--disabled,
   &--disabled:hover,

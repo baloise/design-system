@@ -1,0 +1,133 @@
+import type { Decorator, Preview } from '@storybook/html-vite'
+
+export const decorators: Decorator[] = [(Story: any) => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
+
+const preview: Preview = {
+  globalTypes: {
+    framework: {
+      name: 'Framework',
+      description: 'Integration technology',
+      defaultValue: 'Angular',
+    },
+  },
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    controls: { expanded: true },
+    docs: {
+      toc: {
+        contentsSelector: '.sbdocs-content',
+        headingSelector: 'h2, h3',
+        ignoreSelector: '.docs-story, .title, .subtitle, .bal-heading__text',
+        title: '', //'On this page',
+        disable: false,
+      },
+    },
+    options: {
+      storySort: {
+        order: [
+          'Welcome',
+          'Design System',
+          'Changelog',
+          'Support',
+          'Foundation',
+          [
+            'Overview',
+            'Border & Radius',
+            'Brand Assets',
+            'Colors',
+            'Design Tokens',
+            'Elevation',
+            'Iconography',
+            'Grid',
+            'Layout',
+            'Spacing',
+            'Typography',
+          ],
+          'Development',
+          'Tokens',
+          'CSS Utilities',
+          'Components',
+          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography'],
+        ],
+      },
+    },
+    viewport: {
+      options: {
+        small: {
+          name: 'Small (Mobile) from 320px to 768px',
+          styles: {
+            width: '320px',
+            height: '667px',
+          },
+          type: 'mobile',
+        },
+        medium: {
+          name: 'Medium (Tablet)',
+          styles: {
+            width: '1023px',
+            height: '834px',
+          },
+          type: 'tablet',
+        },
+        large: {
+          name: 'Large (Desktop)',
+          styles: {
+            width: '1216px',
+            height: '801px',
+          },
+          type: 'desktop',
+        },
+        widescreen: {
+          name: 'Widescreen (Desktop)',
+          styles: {
+            width: '1440px',
+            height: '801px',
+          },
+          type: 'desktop',
+        },
+        fullhd: {
+          name: 'FullHD (Desktop)',
+          styles: {
+            width: '1920px',
+            height: '801px',
+          },
+          type: 'desktop',
+        },
+      },
+    },
+    backgrounds: {
+      grid: {
+        cellSize: 8,
+      },
+      default: 'white',
+      options: [
+        {
+          name: 'white',
+          value: '#fff',
+        },
+        {
+          name: 'blue',
+          value: '#000d6e',
+        },
+        {
+          name: 'green',
+          value: '#94e3d4',
+        },
+        {
+          name: 'purple',
+          value: '#b8b2ff',
+        },
+        {
+          name: 'red',
+          value: '#ffaca6',
+        },
+        {
+          name: 'yellow',
+          value: '#fae052',
+        },
+      ],
+    },
+  },
+}
+
+export default preview

@@ -50,7 +50,7 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
 
 const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'size.text.line-height',
+    token: 'text.line-height',
     property: 'line-height',
     responsive: false,
     replace: 'text-',

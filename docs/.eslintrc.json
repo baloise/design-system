@@ -23,6 +23,7 @@
               "@baloise/ds-brand-icons",
               "@baloise/ds-icons",
               "@baloise/ds-tokens",
+              "react",
               "react-dom",
               "js-beautify",
               "storybook",
@@ -34,8 +35,7 @@
               "@storybook/components",
               "@storybook/theming",
               "@storybook/addon-docs",
-              "@storybook/global",
-              "codesandbox"
+              "@storybook/global"
             ]
           }
         ]

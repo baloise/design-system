@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import uiIcons from '../../stories/assets/data/icons.json'
-import brandIcons from '../../stories/assets/data/brand-icons.json'
+import { useState } from 'react'
+import brandIcons from '../../src/assets/data/brand-icons.json'
+import uiIcons from '../../src/assets/data/icons.json'
 
 const icons = [
   ...uiIcons.sort().map(name => ({ name, collection: 'ui-icons', color: 'primary' })),

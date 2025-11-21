@@ -13,12 +13,12 @@
   // wrap elements
   &--use-wrap {
     flex-wrap: wrap;
-  }  //
+  } //
   // fit-content
   &--fit-content {
     flex: unset;
     width: fit-content;
-  }  //
+  } //
   // layout direction
   &--layout-horizontal {
     flex-direction: row;
@@ -35,7 +35,7 @@
   &--layout-vertical-reverse {
     flex-direction: column-reverse;
     align-items: flex-start;
-  }  //
+  } //
   // alignment
   &--align-top-start {
     align-items: flex-start;
@@ -108,7 +108,7 @@
   &--layout-vertical#{&}--align-bottom-end {
     align-items: flex-end;
     justify-content: flex-end;
-  }  //
+  } //
   // horizontal padding
   &--px-none {
     padding-left: 0;
@@ -208,8 +208,8 @@
     @include desktop {
       padding-left: var(--bal-space-xx-large-desktop);
       padding-right: var(--bal-space-xx-large-desktop);
-    }  //
-  // vertical padding
+    } //
+    // vertical padding
   }
   &--py-none {
     padding-top: 0;
@@ -309,8 +309,8 @@
     @include desktop {
       padding-top: var(--bal-space-xx-large-desktop);
       padding-bottom: var(--bal-space-xx-large-desktop);
-    }  //
-  // spaces
+    } //
+    // spaces
   }
   &--space-auto {
     justify-content: space-between;
@@ -385,8 +385,8 @@
     }
     @include desktop {
       gap: var(--bal-space-xx-large-desktop);
-    }  //
-  // Defines space between rows
+    } //
+    // Defines space between rows
   }
   &--space-row-auto {
     justify-content: space-between;
@@ -461,8 +461,8 @@
     }
     @include desktop {
       row-gap: var(--bal-space-xx-large-desktop);
-    }  //
-  // Defines space between rows
+    } //
+    // Defines space between rows
   }
   &--space-column-auto {
     justify-content: space-between;
@@ -538,8 +538,8 @@
     @include desktop {
       column-gap: var(--bal-space-xx-large-desktop);
     }
-//
-// custom position
+    //
+    // custom position
   }
 }
 .bal-stack > bal-radio {

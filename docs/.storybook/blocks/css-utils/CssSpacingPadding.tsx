@@ -1,16 +1,16 @@
+import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
 
-export const CssSpacingPadding = ({}) => {
-  const obj = tokens.size.space
-  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].mobile.value)
+export const CssSpacingPadding = ({}): React.ReactElement => {
+  const obj = tokens.space
+  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].mobile.$value)
 
   const values = keys.map(key => ({
     key,
-    valueMobile: obj[key].mobile.value,
-    valueTablet: obj[key].tablet.value,
-    valueDesktop: obj[key].desktop.value,
+    valueMobile: obj[key].mobile.$value,
+    valueTablet: obj[key].tablet.$value,
+    valueDesktop: obj[key].desktop.$value,
   }))
 
   const list = [

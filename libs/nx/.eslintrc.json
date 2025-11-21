@@ -21,7 +21,7 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredDependencies": ["@nx/devkit", "@nx/vite", "vite", "util"]
+            "ignoredDependencies": ["@nx/devkit", "@nx/vite", "vite", "util", "archiver"]
           }
         ]
       }

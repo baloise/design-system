@@ -1,9 +1,9 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensBorderRadius = ({ overview }) => {
-  const list = tokens.size.radius
+export const TokensBorderRadius = ({ overview }): React.ReactElement => {
+  const list = tokens.radius
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -23,7 +23,7 @@ export const TokensBorderRadius = ({ overview }) => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div

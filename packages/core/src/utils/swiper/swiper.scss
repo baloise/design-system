@@ -43,8 +43,8 @@
     .bal-carousel__item {
       width: 25%;
     }
-// Container element of the slide items
-// --------------------------------------------------
+    // Container element of the slide items
+    // --------------------------------------------------
   }
 }
 .bal-swiper__container {
@@ -56,7 +56,7 @@
   box-sizing: content-box;
   transition-property: transform;
   transition-duration: 0ms;
-  transform: translate3d(0px,0px,0px);
+  transform: translate3d(0px, 0px, 0px);
 }
 .bal-swiper__container--gap-none {
   gap: 0;
@@ -119,8 +119,8 @@
     display: none !important;
     visibility: hidden !important;
   }
-// Shadow move
-// --------------------------------------------------
+  // Shadow move
+  // --------------------------------------------------
 }
 .bal-swiper__inner--shadow-left::before,
 .bal-swiper__inner--shadow-right::after {
@@ -132,16 +132,32 @@
 .bal-swiper__inner--shadow-left::before {
   content: '';
   left: 0;
-  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-before) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--bal-carousel-inner-shadow-left-background-before) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .bal-swiper__inner--shadow-right::after {
   content: '';
   right: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-after) 50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    var(--bal-carousel-inner-shadow-right-background-after) 50%
+  );
 }
 .bal-swiper__inner--shadow-left.bal-swiper__inner--inverted::before {
-  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-inverted-before) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--bal-carousel-inner-shadow-left-background-inverted-before) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .bal-swiper__inner--shadow-right.bal-swiper__inner--inverted::after {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%
+  );
 }

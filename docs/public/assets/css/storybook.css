@@ -123,6 +123,7 @@ html {
   background-color: #f6f6f6;
   border-radius: 4px;
   box-shadow: 0 0 10px 0 rgba(0, 7, 57, 0.15);
+  z-index: 9999;
 }
 
 .my-cookie strong {

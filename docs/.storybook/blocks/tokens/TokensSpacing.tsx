@@ -1,9 +1,9 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensSpacing = ({ overview }) => {
-  const list = tokens.size.space
+export const TokensSpacing = ({ overview }): React.ReactElement => {
+  const list = tokens.space
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -15,7 +15,7 @@ export const TokensSpacing = ({ overview }) => {
       </thead>
 
       {Object.keys(list)
-        .filter(key => list[key].mobile.value)
+        .filter(key => list[key].mobile.$value)
         .map(key => {
           const item = list[key].mobile
           const itemTablet = list[key].tablet
@@ -28,7 +28,7 @@ export const TokensSpacing = ({ overview }) => {
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
                   <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
-                    {item.value} / {itemTablet?.value || '0rem'} / {itemDesktop?.value || '0rem'}
+                    {item.$value} / {itemTablet?.$value || '0rem'} / {itemDesktop?.$value || '0rem'}
                   </p>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">

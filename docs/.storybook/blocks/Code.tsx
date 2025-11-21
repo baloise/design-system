@@ -1,7 +1,7 @@
+import { Source } from '@storybook/addon-docs/blocks'
 import React from 'react'
-import { Source } from '@storybook/addon-docs'
 
-export const Code = ({ code, preview, language, border = false, noPreview = undefined }) => {
+export const Code = ({ code, preview, language, border = false, noPreview = undefined }): React.ReactElement => {
   if (!['html'].includes((language || 'html').toLowerCase()) && noPreview === undefined) {
     noPreview = true as any
   }

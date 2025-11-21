@@ -27,7 +27,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-    }    //
+    } //
     // font sizes
     &--small {
       font-family: var(--bal-label-small-font-family);
@@ -92,8 +92,8 @@
       @include desktop {
         font-size: var(--bal-text-size-xxx-large-desktop);
         line-height: var(--bal-line-height-desktop-xxx-large);
-      }    //
-    // color styles
+      } //
+      // color styles
     }
     &--success {
       color: var(--bal-form-field-label-success-color);
@@ -103,11 +103,11 @@
     }
     &--disabled {
       color: var(--bal-form-field-label-disabled-color) !important;
-    }    //
+    } //
     // font weight
     &--regular {
       font-weight: var(--bal-font-weight-regular);
-    }    //
+    } //
     // interactions
     &--hovered {
       color: var(--bal-form-field-label-color-hover);

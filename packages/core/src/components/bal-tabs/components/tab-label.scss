@@ -32,8 +32,8 @@
         white-space: nowrap;
         border: 0;
       }
-  //
-  // Color status
+      //
+      // Color status
     }
   }
   &--active {
@@ -56,27 +56,27 @@
   &--inverted#{&}--active {
     font-weight: var(--bal-font-weight-bold);
     letter-spacing: 0;
-  }  //
+  } //
   // alert bubble
   &__bubble {
     position: absolute;
     right: -0.5rem;
     top: -0.5rem;
-  }  //
+  } //
   // Vertical layout
   &--vertical {
     text-align: left;
     width: auto;
     white-space: normal;
-  }  //
+  } //
   // Expanded layout
   &--expanded {
     white-space: normal;
-  }  //
+  } //
   // context styles
   &--context-meta {
     font-size: var(--bal-text-size-small);
-  }  //
+  } //
   // sub label
   &__sub-label {
     font-size: var(--bal-text-size-small);

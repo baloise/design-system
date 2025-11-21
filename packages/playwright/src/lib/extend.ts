@@ -100,10 +100,6 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
       })
     }
 
-    await baseTest.step('wait for fonts', async () => {
-      await page.evaluate(() => document.fonts.ready)
-    })
-
     await baseTest.step('wait for images', async () => {
       await page.evaluate(async () => {
         const imgs = Array.from(document.images)

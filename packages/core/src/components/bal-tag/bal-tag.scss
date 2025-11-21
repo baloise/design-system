@@ -25,7 +25,7 @@
   @include modifier(is-large) {
     min-height: 3rem;
     padding: 0.75rem 1.5rem 0.75rem 1.5rem;
-  }  // colors
+  } // colors
   @include modifier(is-primary) {
     background: var(--bal-tag-background-primary);
   }
@@ -71,7 +71,7 @@
   @include modifier(is-invalid) {
     background: var(--bal-tag-background-invalid);
     color: var(--bal-color-text-white);
-  }  //
+  } //
   // tag label
   @include element(label) {
     font-family: var(--bal-font-family-text);
@@ -82,7 +82,7 @@
     text-wrap: auto;
     display: inline-flex;
     align-items: center;
-    gap: .25rem;
+    gap: 0.25rem;
     // sizes
     @include modifier(is-small) {
       font-size: var(--bal-tag-size-small-font-size) !important;
@@ -93,7 +93,7 @@
     }
     @include modifier(is-large) {
       font-size: var(--bal-text-size-medium) !important;
-    }    // colors
+    } // colors
     @include modifier(is-primary) {
       color: var(--bal-tag-text-primary);
     }
@@ -156,8 +156,8 @@
 
     & > span {
       color: var(--bal-tag-text-disabled);
-    }  //
-  // close button
+    } //
+    // close button
   }
   @include element(close) {
     margin-left: 0.25rem;

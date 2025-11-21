@@ -1,22 +1,35 @@
 $font-path: '/assets/fonts/partners' !default;
 
 @font-face {
-  font-family: "Santander Headline Bold";
-  src: url("/assets/fonts/partners/SantanderHeadlineW05-Bold.eot");
-  src: url("/assets/fonts/partners/SantanderHeadlineW05-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-Bold.otf") format("opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-Bold.svg") format("svg"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.ttf") format("truetype"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.woff") format("woff"),url("/assets/fonts/partners/SantanderHeadlineW05-Bold.woff2") format("woff2");
+  font-family: 'Santander Headline Bold';
+  src: url('/assets/fonts/partners/SantanderHeadlineW05-Bold.eot');
+  src:
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.otf') format('opentype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.svg') format('svg'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.ttf') format('truetype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.woff') format('woff'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Santander Headline";
-  src: url("/assets/fonts/partners/SantanderHeadlineW05-RG.eot");
-  src: url("/assets/fonts/partners/SantanderHeadlineW05-RG.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-RG.otf") format("opentype"), url("/assets/fonts/partners/SantanderHeadlineW05-RG.svg") format("svg"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.ttf") format("truetype"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.woff") format("woff"),url("/assets/fonts/partners/SantanderHeadlineW05-RG.woff2") format("woff2");
+  font-family: 'Santander Headline';
+  src: url('/assets/fonts/partners/SantanderHeadlineW05-RG.eot');
+  src:
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.otf') format('opentype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.svg') format('svg'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.ttf') format('truetype'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.woff') format('woff'),
+    url('/assets/fonts/partners/SantanderHeadlineW05-RG.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
-:root {  //
+:root {
+  //
   // Base
   // Colors
   --san-color-font: #333;
@@ -281,7 +294,7 @@ footer a.link {
 }
 button.is-info,
 button.is-secondary {
-  color: var( --bal-color-primary);
+  color: var(--bal-color-primary);
   &:hover {
     color: var(--bal-color-primary-4);
   }

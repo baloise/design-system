@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as ShapeStories from './bal-shape.stories'
+
+<Meta of={ShapeStories} />
+
+<StoryHeading of={ShapeStories.Basic} hidden></StoryHeading>
+
+<Banner of={ShapeStories} />
+
+<Lead>Baloise **Shape** with variable color, size and rotation.</Lead>
+
+<Canvas of={ShapeStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={ShapeStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+
+
+<Footer />

@@ -1,6 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use './bal-carousel.vars'  as *;
-@use '../../utils/swiper/swiper'  as *;
+@use './bal-carousel.vars' as *;
+@use '../../utils/swiper/swiper' as *;
 
 .bal-carousel--full-height {
   height: 100%;
@@ -21,7 +21,7 @@
   height: var(--bal-border-width-normal);
   width: 100%;
   bottom: 0;
-  transform: translate3d(0px,0px,0px);
+  transform: translate3d(0px, 0px, 0px);
 }
 .bal-carousel__inner__container__border--inverted {
   background: var(--bal-carousel-inner-border-background-inverted);
@@ -42,7 +42,11 @@
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  round: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%);
+  round: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%
+  );
 }
 // Card
 // --------------------------------------------------
@@ -87,8 +91,8 @@
       padding-left: 2.5rem;
       padding-right: 2.5rem;
     }
-// Tabs
-// --------------------------------------------------
+    // Tabs
+    // --------------------------------------------------
   }
 }
 .bal-carousel--controls-sticky {
@@ -103,16 +107,16 @@
     padding: 0;
   }
   .bal-card-content {
-    padding: .5rem !important;
-    gap: .5rem;
+    padding: 0.5rem !important;
+    gap: 0.5rem;
     display: flex;
     .bal-button {
       flex: 1;
       .button {
-        padding: .5rem !important;
+        padding: 0.5rem !important;
       }
-// Image
-// --------------------------------------------------
+      // Image
+      // --------------------------------------------------
     }
   }
 }
@@ -153,8 +157,8 @@
       user-drag: none;
       user-zoom: fixed;
     }
-// Product slider
-// --------------------------------------------------
+    // Product slider
+    // --------------------------------------------------
   }
 }
 .bal-carousel--product {

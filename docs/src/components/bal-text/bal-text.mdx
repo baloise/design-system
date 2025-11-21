@@ -1,0 +1,60 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as TextStories from './bal-text.stories'
+
+<Meta of={TextStories} />
+
+<StoryHeading of={TextStories.Basic} hidden></StoryHeading>
+
+<Banner of={TextStories} />
+
+<Lead>**Text** is a fundamental component used to display and present textual content.</Lead>
+
+<InfoQuote>
+  We recommend using standard <b>HTML elements</b> such as `<p>`, `<span>`, `<b>`, and `<strong>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+Additionally, explore CSS utilities for more styling options.
+
+</InfoQuote>
+
+<Canvas of={TextStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={TextStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Text}></StoryHeading>
+
+<Canvas of={TextStories.Text} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.NoWrap}></StoryHeading>
+
+If the text is longer than the container with the property `no-wrap` the text will be cut.
+
+<Canvas of={TextStories.NoWrap} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+
+
+<Footer />

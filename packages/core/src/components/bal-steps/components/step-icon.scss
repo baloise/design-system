@@ -23,7 +23,7 @@
     width: 2rem;
     left: calc(50% - 1rem);
     font-size: var(--bal-text-size-normal);
-  }  //
+  } //
   // Color status
   border: var(--bal-steps-step-border-width) var(--bal-steps-step-border-style) var(--bal-steps-step-border-color);
   background: var(--bal-steps-step-icon-background);
@@ -54,6 +54,6 @@
     border-color: var(--bal-steps-step-border-color-disabled);
     background: var(--bal-steps-step-icon-background-disabled);
     color: var(--bal-steps-step-icon-text-color-disabled);
-    opacity: .6;
+    opacity: 0.6;
   }
 }

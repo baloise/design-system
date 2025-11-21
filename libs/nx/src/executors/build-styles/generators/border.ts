@@ -10,7 +10,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
 
   const borderNone = await utils.staticClass({ property: 'border-width', values: { 'border-none': '0' } })
   const borderWidth = await utils.staticClassByToken({
-    token: 'size.border.width',
+    token: 'border.width',
     property: 'border-width',
     ...options,
   })
@@ -27,7 +27,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
 
   const borderRadius = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: 'border-radius',
     values: {
       ['radius-none']: '0',
@@ -36,7 +36,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   })
 
   const borderRadiusTop = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-left-radius', 'border-top-right-radius'],
     replace: 'radius',
     prefix: 'radius-top',
@@ -46,7 +46,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     ...options,
   })
   const borderRadiusLeft = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-left-radius', 'border-bottom-left-radius'],
     replace: 'radius',
     prefix: 'radius-left',
@@ -56,7 +56,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     ...options,
   })
   const borderRadiusRight = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-right-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-right',
@@ -66,7 +66,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     ...options,
   })
   const borderRadiusBottom = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-bottom-left-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-bottom',
