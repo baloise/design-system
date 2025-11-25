@@ -14,7 +14,7 @@ export class BalSwipeSubject extends SingleSubject<BalSwipeObserver, BalSwipeInf
     })
   }
 
-  attach(observer: BalSwipeObserver): void {
+  override attach(observer: BalSwipeObserver): void {
     if ((this.options.mobileOnly === true && balDevice.isMobile) || this.options.mobileOnly !== true) {
       super.attach(observer)
       this.listener.connect(observer.el)
@@ -22,7 +22,7 @@ export class BalSwipeSubject extends SingleSubject<BalSwipeObserver, BalSwipeInf
     }
   }
 
-  detach(): void {
+  override detach(): void {
     super.detach()
     this.listener.disconnect()
   }

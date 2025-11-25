@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react",
-    "importHelpers": true
+    "jsx": "react"
   },
   "files": [],
   "include": [],

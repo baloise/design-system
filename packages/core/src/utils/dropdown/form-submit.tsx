@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { DropdownComponent } from './component'
 import { BEM } from '../bem'
+import { DropdownComponent } from './component'
 
 export type DropdownFormSubmit = {
-  resetHandler(ev: UIEvent)
+  resetHandler(ev: UIEvent): void
 }
 
 export class DropdownFormSubmitUtil {
@@ -49,7 +49,7 @@ export interface DropdownNativeSelectProps {
   required: boolean
   disabled: boolean
   rawValue: string[]
-  refSelectEl: (el: HTMLSelectElement) => void
+  refSelectEl: (el: HTMLSelectElement | undefined) => void
 }
 
 export const DropdownNativeSelect: FunctionalComponent<DropdownNativeSelectProps> = ({

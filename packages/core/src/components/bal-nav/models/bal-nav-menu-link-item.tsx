@@ -22,7 +22,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
-  get type(): string {
+  override get type(): string {
     return 'NavMenuLinkItem'
   }
 
@@ -93,7 +93,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     if (!hasChildren && this.isLink) {
       return (
         <bal-tab-item
-          a11yControls={context.flyoutId}
+          a11yControls={context?.flyoutId}
           label={this.label}
           value={this.value}
           href={this.href}
@@ -107,7 +107,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
 
     return (
       <bal-tab-item
-        a11yControls={context.flyoutId}
+        a11yControls={context?.flyoutId}
         label={this.label}
         value={this.value}
         no-panel

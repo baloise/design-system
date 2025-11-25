@@ -16,7 +16,7 @@ export class BalElementStateListener<TObserver> extends ListenerAbstract<TObserv
 
   private state: BalElementStateInfo = BalElementStateListener.DefaultState
 
-  connect(el: HTMLElement | HTMLStencilElement): void {
+  override connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
 
     addEventListener(this.el, 'mouseenter', this.onMouseEnter, BalElementStateListener.EventListenerOptions)
@@ -28,7 +28,7 @@ export class BalElementStateListener<TObserver> extends ListenerAbstract<TObserv
     }
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     if (this.el) {
       removeEventListener(this.el, 'mouseenter', this.onMouseEnter)

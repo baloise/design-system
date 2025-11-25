@@ -1,16 +1,15 @@
-import { dateSeparator } from '../../date'
-import { NUMBER_KEYS } from '../../constants/keys.constant'
-import { MaskBlock } from '../blocks'
-import { AbstractMask } from '../mask'
-import { BalDate } from '../../date'
-import { MaskClipboardContext, MaskFocusContext } from '../context'
 import { I18n, I18nKeys } from '../../../interfaces'
+import { NUMBER_KEYS } from '../../constants/keys.constant'
+import { BalDate, dateSeparator } from '../../date'
+import { MaskBlock } from '../blocks'
+import { MaskClipboardContext, MaskFocusContext } from '../context'
+import { AbstractMask } from '../mask'
 import { INVALID_VALUE } from '../mask-util'
 
 export class DateMask extends AbstractMask {
   public maxLength = 10
   public minLength = 10
-  public inputMode: BalProps.BalInputInputMode = 'decimal'
+  public override inputMode: BalProps.BalInputInputMode = 'decimal'
 
   private dayMask: I18n<string> = {
     de: 'T',

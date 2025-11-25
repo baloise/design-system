@@ -15,7 +15,7 @@ export class BalSnackbarController extends BalNoticeController {
     })
   }
 
-  create(options: BalSnackbarOptions): Components.BalSnackbar {
+  override create(options: BalSnackbarOptions): Components.BalSnackbar {
     return super.create(options)
   }
 }

@@ -46,7 +46,7 @@ export const initializeBaloiseDesignSystem = (
  * This is copied from the Stencil core library.
  * src/runtime/bootstrap-lazy.ts
  */
-const generateHydrateForCustomElementsOutput = (cmpTags = []) => {
+const generateHydrateForCustomElementsOutput = (cmpTags = [] as string[]) => {
   const SLOT_FB_CSS = 'slot-fb{display:contents}slot-fb[hidden]{display:none}'
   const HYDRATED_CSS = '{visibility:hidden}.hydrated{visibility:inherit}'
   const win = typeof window !== 'undefined' ? window : ({} as any)

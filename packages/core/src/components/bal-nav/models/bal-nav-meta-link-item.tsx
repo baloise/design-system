@@ -1,10 +1,10 @@
 import { h } from '@stencil/core'
-import { NavLinkItem } from './bal-nav-link-item'
-import { NavMenuLinkItem } from './bal-nav-menu-link-item'
+import { BEM } from '../../../utils/bem'
 import { NavLinkItemObserver } from '../bal-nav.types'
 import { AccordionButton } from '../components/accordion-button'
 import { OverviewLink } from '../components/overview-link'
-import { BEM } from '../../../utils/bem'
+import { NavLinkItem } from './bal-nav-link-item'
+import { NavMenuLinkItem } from './bal-nav-menu-link-item'
 
 export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaLinkItem {
   mainLinkItems: NavMenuLinkItem[] = []
@@ -18,7 +18,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
-  get type(): string {
+  override get type(): string {
     return 'NavMetaLinkItem'
   }
 
@@ -82,7 +82,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     if (this.isLink) {
       return (
         <bal-tab-item
-          a11yControls={context.flyoutId}
+          a11yControls={context?.flyoutId}
           label={this.label}
           value={this.value}
           rel={this.rel}
@@ -95,7 +95,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
 
     return (
       <bal-tab-item
-        a11yControls={context.flyoutId}
+        a11yControls={context?.flyoutId}
         label={this.label}
         value={this.value}
         no-panel

@@ -103,7 +103,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable, BalB
    */
 
   private setControlIdToHead() {
-    const headEl = this.el.parentElement.querySelector('bal-list-item-accordion-head')
+    const headEl = this.el?.parentElement?.querySelector('bal-list-item-accordion-head')
     if (headEl) {
       headEl.setAria({ controlId: this.internalId })
     }

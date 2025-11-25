@@ -48,7 +48,7 @@ export class BalModalController {
     if (balBrowser.hasDocument) {
       return getOverlay(document, this.tag) as any
     }
-    return
+    return undefined
   }
 }
 

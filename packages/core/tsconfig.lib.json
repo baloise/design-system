@@ -1,12 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "sourceMap": false,
     "outDir": "dist/out-tsc",
-    "allowJs": true,
-    "jsx": "react",
-    "jsxFactory": "h",
-    "resolveJsonModule": true,
+    "declaration": true,
     "types": ["node", "vitest/globals"]
   },
   "include": ["src"]

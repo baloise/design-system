@@ -105,7 +105,7 @@ export class SegmentItem implements ComponentInterface {
   private calculateEmptyValue() {
     if (this.segmentEl) {
       const segments = Array.from(this.segmentEl.querySelectorAll('bal-segment-item'))
-      this.hasEmptyValue = !segments.some(item => item.value === this.segmentEl.value)
+      this.hasEmptyValue = !segments.some(item => item.value === this.segmentEl?.value)
     } else {
       this.hasEmptyValue = false
     }
@@ -223,9 +223,9 @@ export class SegmentItem implements ComponentInterface {
         class={{
           ...block.class(),
           ...block.modifier('vertical').class(vertical),
-          ...block.modifier('disabled').class(disabled),
+          ...block.modifier('disabled').class(!!disabled),
           ...block.modifier('checked').class(checked),
-          ...block.modifier('invalid').class(invalid),
+          ...block.modifier('invalid').class(!!invalid),
           ...block.modifier('last').class(this.isLast && !checked),
         }}
       >

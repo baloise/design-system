@@ -6,7 +6,7 @@ export class BalVisibilityListener extends ListenerAbstract {
   private waitAfterFramePrint = false
   private intersectionObserver: IntersectionObserver | undefined = undefined
 
-  async connect(el: HTMLElement | HTMLStencilElement) {
+  override async connect(el: HTMLElement | HTMLStencilElement) {
     super.connect(el)
     if (typeof IntersectionObserver === 'undefined') {
       return
@@ -23,7 +23,7 @@ export class BalVisibilityListener extends ListenerAbstract {
     this.intersectionObserver.observe(el)
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     this.destroyMutationObserver()
   }

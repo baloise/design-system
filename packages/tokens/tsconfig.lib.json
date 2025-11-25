@@ -1,12 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": false,
     "outDir": "dist/out-tsc",
-    "allowJs": true,
-    "types": ["node"],
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "sourceMap": false,
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.js", "config.ts"]
 }

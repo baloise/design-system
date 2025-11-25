@@ -8,7 +8,7 @@ export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, Bal
   private PointerListenerLib: typeof PointerListener | undefined
   private pointerListener: PointerListener | undefined
 
-  async connect(el: HTMLElement | HTMLStencilElement): Promise<void> {
+  override async connect(el: HTMLElement | HTMLStencilElement): Promise<void> {
     super.connect(el)
     await this.loadLib()
     if (this.PointerListenerLib) {
@@ -18,7 +18,7 @@ export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, Bal
     }
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     this.pointerListener?.destroy()
   }

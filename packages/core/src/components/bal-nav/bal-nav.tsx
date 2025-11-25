@@ -462,7 +462,7 @@ export class Nav
                 >
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
-                    ?.mainLinkItems.map((item, index) =>
+                    ?.mainLinkItems.map(item =>
                       item.render({
                         flyoutId: `${this.navId}-menu-flyout`,
                         onClick: () => this.onMenuBarTabChange(item.value),
@@ -652,7 +652,7 @@ export class Nav
 
     let Logo = <bal-logo animated></bal-logo>
     const logoImageUrl = this.logo?.url
-    const logoSvg = sanitizeSvg(this.logo?.svg)
+    const logoSvg = sanitizeSvg(this.logo?.svg || '')
 
     if (logoImageUrl) {
       Logo = <img height={32} style={{ maxHeight: '32px' }} src={logoImageUrl} alt="Logo" />

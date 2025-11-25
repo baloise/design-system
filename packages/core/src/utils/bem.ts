@@ -1,5 +1,5 @@
 const bemReturn = (selector: string) => ({
-  class: (condition = true) => ({ [selector]: condition }),
+  class: (condition: boolean | undefined | null | '' = true) => ({ [selector]: !!condition }),
   element: bemElement(selector),
   modifier: bemModifier(selector),
 })

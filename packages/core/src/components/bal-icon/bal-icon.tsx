@@ -126,7 +126,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    * ------------------------------------------------------
    */
 
-  private generateSvgContent = (iconName: string) => {
+  private generateSvgContent = (iconName: string | undefined) => {
     const hasIcons = Object.keys(this.icons).length > 0
 
     if (hasIcons && iconName && iconName.length > 0) {

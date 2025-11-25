@@ -224,12 +224,12 @@ export class RadioGroup
   hasFocus = false
 
   @ListenToFocus()
-  focusInListener(ev): void {
+  focusInListener(ev: FocusEvent): void {
     this.balFocus.emit(ev)
   }
 
   @ListenToFocus()
-  focusOutListener(ev): void {
+  focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
   }
 
@@ -309,7 +309,7 @@ export class RadioGroup
       }
 
       if (next && radios.includes(next)) {
-        next.setFocus(ev)
+        next.setFocus()
 
         this.value = next.value
         this.balChange.emit(this.value)

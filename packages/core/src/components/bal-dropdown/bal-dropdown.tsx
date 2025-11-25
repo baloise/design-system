@@ -382,7 +382,7 @@ export class Dropdown
    * ------------------------------------------------------
    */
   handleAutoFill = async (ev: Event) => {
-    this.log('(handleAutoFill)', ev, this.nativeEl.value)
+    this.log('(handleAutoFill)', ev, this.nativeEl?.value)
     this.autoFillUtil.handleAutoFill(ev)
   }
 
