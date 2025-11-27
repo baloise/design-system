@@ -4,10 +4,10 @@ export const watchForOptions = <T extends HTMLStencilElement>(
   containerEl: HTMLElement | HTMLStencilElement,
   tagName: string,
   onChange: (el: T | undefined) => void,
-) => {
+): MutationObserver | undefined => {
   /* tslint:disable-next-line */
   if (typeof MutationObserver === 'undefined') {
-    return
+    return undefined
   }
 
   const mutation = new MutationObserver(mutationList => {

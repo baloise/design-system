@@ -227,9 +227,9 @@ StyleDictionary.registerTransform({
   type: `name`,
   transitive: true,
   name: `bal/css/name`,
-  transform: (token, options) => {
+  transform: (token, _options) => {
     const isKebabCase = token.name.indexOf('-') > 0
-    const isColorVariable = token.attributes.category === 'color'
+    const isColorVariable = token.attributes?.['category'] === 'color'
     const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
     const endsWithDefault = token.name.endsWith('-default') || token.name.endsWith('Default')
 

@@ -765,7 +765,7 @@ export class Tabs
     return this.findNextTab(true)
   }
 
-  private tabListSelectNext(ev: KeyboardEvent) {
+  private tabListSelectNext(ev: UIEvent) {
     const nextTab = this.findNextTab()
 
     if (nextTab) {
@@ -820,7 +820,7 @@ export class Tabs
     }
   }
 
-  private onSelectTab = async (ev: Event, tab: BalTabOption) => {
+  private onSelectTab = async (ev: UIEvent, tab: BalTabOption) => {
     if (tab.prevent || tab.disabled || !this.clickable) {
       stopEventBubbling(ev)
     }
@@ -835,7 +835,7 @@ export class Tabs
       }
 
       if (tab.navigate) {
-        tab.navigate.emit(ev)
+        tab.navigate.emit(ev as MouseEvent)
       }
 
       if (tab.value !== this.value) {

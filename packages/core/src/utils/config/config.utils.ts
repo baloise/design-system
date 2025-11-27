@@ -15,7 +15,7 @@ export const onBalConfigChange = (callback: BalConfigChangeFn) => {
 
 export const useBalConfig = (): Config | undefined => {
   if (!balBrowser.hasWindow) {
-    return
+    return undefined
   }
 
   const win = window as any

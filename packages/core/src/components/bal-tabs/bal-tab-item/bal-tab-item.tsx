@@ -130,7 +130,7 @@ export class TabItem {
     this.isActive = active
   }
 
-  get options() {
+  get options(): BalTabOption {
     return {
       tabPanelID: this.tabPanelID,
       value: this.value,

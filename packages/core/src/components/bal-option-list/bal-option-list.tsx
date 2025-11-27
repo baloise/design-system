@@ -249,7 +249,7 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * Updates options
    */
-  @Method() async updateSelected(values?: string[]): Promise<void> {
+  @Method() async updateSelected(values: string[]): Promise<void> {
     this.options.forEach(option => (option.selected = values.includes(option.value)))
     await waitAfterFramePaint()
   }

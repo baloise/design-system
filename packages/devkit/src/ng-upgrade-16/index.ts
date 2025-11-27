@@ -113,7 +113,7 @@ function updateImports(config: RenameConfig): Rule {
       throw new Error('Could not find Angular workspace configuration')
     }
 
-    const project = workspace.projects.get(workspace.projects.keys().next().value)
+    const project = workspace.projects.get(workspace.projects.keys().next().value || '')
 
     if (!project) {
       throw new Error('Could not find project in Angular workspace')

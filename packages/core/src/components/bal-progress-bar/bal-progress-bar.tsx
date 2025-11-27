@@ -79,6 +79,8 @@ export class ProgressBar
         const maxWidth = this.el.clientWidth
         const value = Math.max(0, Math.min(100, this.value))
         const lineWidth = (maxWidth / 100) * value
+        if (this.lineEl === undefined) return
+
         this.lineEl.style.width = `${lineWidth}px`
 
         if (value === 100) {

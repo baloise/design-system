@@ -2,7 +2,7 @@ import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { waitAfterIdleCallback } from './helpers'
 
-export interface FormInput<Value> {
+export interface FormInput<Value, ReturnValue = Value> {
   el: HTMLStencilElement
   disabled: boolean
   readonly: boolean
@@ -13,7 +13,7 @@ export interface FormInput<Value> {
   balClick?: EventEmitter<MouseEvent>
   balFocus?: EventEmitter<FocusEvent>
   balBlur?: EventEmitter<FocusEvent>
-  balChange: EventEmitter<Value>
+  balChange: EventEmitter<ReturnValue>
 }
 
 export const stopEventBubbling = (ev: Event): void => {
@@ -113,7 +113,7 @@ export const isEmptyValue = (value: any): boolean => {
   )
 }
 
-export const parseValue = <Value>(value: Value): Value => {
+export const parseValue = <Value>(value: Value): Value | undefined => {
   return isEmptyValue(value) ? undefined : value
 }
 

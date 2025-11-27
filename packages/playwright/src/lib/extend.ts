@@ -105,7 +105,9 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
         const imgs = Array.from(document.images)
         await Promise.all(
           imgs.map(img => {
-            if (img.complete) return
+            if (img.complete) {
+              return undefined
+            }
             return new Promise(resolve => {
               img.addEventListener('load', resolve)
               img.addEventListener('error', resolve)

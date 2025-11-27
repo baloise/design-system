@@ -241,12 +241,12 @@ export class CheckboxGroup
   hasFocus = false
 
   @ListenToFocus()
-  focusInListener(ev): void {
+  focusInListener(ev: FocusEvent): void {
     this.balFocus.emit(ev)
   }
 
   @ListenToFocus()
-  focusOutListener(ev): void {
+  focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
   }
 

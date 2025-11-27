@@ -459,7 +459,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     const inputAttributes = this.inheritedAttributes
     if (this.buttonTabindex !== undefined) {
-      inputAttributes.tabIndex = this.buttonTabindex
+      inputAttributes['tabIndex'] = this.buttonTabindex
     }
 
     const hasFormControl = !this.nonSubmit

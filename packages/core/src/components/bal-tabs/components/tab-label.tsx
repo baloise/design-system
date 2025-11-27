@@ -32,7 +32,7 @@ export const TabLabel: FunctionalComponent<TabLabelProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier('expanded').class(isExpanded),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
-        ...bemEl.modifier('with-svg').class(item.svg && item.svg.length > 0),
+        ...bemEl.modifier('with-svg').class(!!(item.svg && item.svg.length > 0)),
       }}
       data-testid="bal-tabs-item-label"
     >

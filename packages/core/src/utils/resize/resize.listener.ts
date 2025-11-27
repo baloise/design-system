@@ -10,7 +10,7 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
   private lastWidth: number | undefined
   private lastHeight: number | undefined
 
-  connect(el: HTMLElement | HTMLStencilElement): void {
+  override connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (typeof ResizeObserver === 'undefined') {
       return
@@ -52,7 +52,7 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
     this.resizeObserver.observe(el)
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     this.resizeObserver?.disconnect()
     this.resizeObserver = undefined

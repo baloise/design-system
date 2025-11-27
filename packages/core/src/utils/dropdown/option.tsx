@@ -50,7 +50,7 @@ export const mapOption = (option: Partial<BalOption>): BalOption => {
   return newBalOption(
     {
       value: option.value,
-      label: option.label,
+      label: option.label || '',
     },
     option,
   )

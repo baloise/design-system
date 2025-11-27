@@ -71,7 +71,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   const isTabButton = item.href === undefined || item.href === ''
   const TagType = isTabButton ? 'button' : 'a'
 
-  const attrs = isTabButton
+  const attrs: any = isTabButton
     ? {
         'type': 'button',
         'role': 'tab',
@@ -109,7 +109,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
-        ...bemEl.modifier(`display-svg`).class(item.svg && item.svg.length > 0),
+        ...bemEl.modifier(`display-svg`).class(!!(item.svg && item.svg.length > 0)),
         ...bemEl.modifier('group-has-sub-label').class(hasSubLabelInGroup),
         ...bemEl.modifier('dim-inactive-elements').class(dimInactiveElements),
         'bal-focusable': !item.disabled && !item.invisible,

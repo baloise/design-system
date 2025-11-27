@@ -18,7 +18,7 @@ export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSe
     this.linkItems = (item.linkItems || []).map(item => new NavLinkItem(item, observer))
   }
 
-  get type(): string {
+  override get type(): string {
     return 'NavSectionLinkItem'
   }
 

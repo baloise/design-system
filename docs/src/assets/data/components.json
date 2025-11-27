@@ -769,10 +769,10 @@
         },
         {
           "name": "variant",
-          "type": "\"button\" | \"icon\" | \"text\"",
+          "type": "\"button\" | \"icon\" | \"text\" | undefined",
           "complexType": {
             "original": "BalProps.BalAccordionTriggerVariant",
-            "resolved": "\"button\" | \"icon\" | \"text\"",
+            "resolved": "\"button\" | \"icon\" | \"text\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -797,9 +797,12 @@
             {
               "value": "text",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1012,10 +1015,10 @@
         },
         {
           "name": "icon",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1026,6 +1029,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1188,10 +1194,10 @@
       "props": [
         {
           "name": "a11yControls",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1208,6 +1214,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1217,10 +1226,10 @@
         },
         {
           "name": "a11yHaspopup",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1237,6 +1246,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1246,10 +1258,10 @@
         },
         {
           "name": "a11yLabel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1266,6 +1278,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1275,10 +1290,10 @@
         },
         {
           "name": "a11yTitle",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1295,6 +1310,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1304,14 +1322,13 @@
         },
         {
           "name": "balPopup",
-          "type": "any",
+          "type": "undefined",
           "complexType": {
-            "original": "any",
-            "resolved": "any",
+            "original": "undefined",
+            "resolved": "undefined",
             "references": {}
           },
           "mutable": false,
-          "attr": "bal-popup",
           "reflectToAttr": false,
           "docs": "If `true` the button is a popup.",
           "docsTags": [
@@ -1323,7 +1340,7 @@
           "default": "undefined",
           "values": [
             {
-              "type": "any"
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -1457,10 +1474,10 @@
         },
         {
           "name": "download",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1471,6 +1488,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1581,10 +1601,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1595,6 +1615,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1778,10 +1801,10 @@
         },
         {
           "name": "name",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1798,6 +1821,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -1865,10 +1891,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -1879,6 +1905,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -2060,10 +2089,10 @@
         },
         {
           "name": "value",
-          "type": "number | string",
+          "type": "number | string | undefined",
           "complexType": {
             "original": "string | number",
-            "resolved": "number | string",
+            "resolved": "number | string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -2083,6 +2112,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -2938,10 +2970,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -2952,6 +2984,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -3048,10 +3083,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -3062,6 +3097,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -3366,10 +3404,10 @@
       "props": [
         {
           "name": "aspectRatio",
-          "type": "\"16by9\" | \"1by1\" | \"3by2\" | \"4by3\"",
+          "type": "\"16by9\" | \"1by1\" | \"3by2\" | \"4by3\" | undefined",
           "complexType": {
             "original": "'1by1' | '3by2' | '4by3' | '16by9'",
-            "resolved": "\"16by9\" | \"1by1\" | \"3by2\" | \"4by3\"",
+            "resolved": "\"16by9\" | \"1by1\" | \"3by2\" | \"4by3\" | undefined",
             "references": {}
           },
           "mutable": false,
@@ -3399,6 +3437,9 @@
             {
               "value": "4by3",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -3925,11 +3966,11 @@
       "events": [
         {
           "event": "balChange",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalCarouselChangeDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -3969,10 +4010,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"green\" | \"purple\" | \"red\" | \"white\" | \"yellow\"",
+          "type": "\"green\" | \"purple\" | \"red\" | \"white\" | \"yellow\" | undefined",
           "complexType": {
             "original": "BalProps.BalCarouselItemColor",
-            "resolved": "\"green\" | \"purple\" | \"red\" | \"white\" | \"yellow\"",
+            "resolved": "\"green\" | \"purple\" | \"red\" | \"white\" | \"yellow\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -4005,6 +4046,9 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4014,10 +4058,10 @@
         },
         {
           "name": "download",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4028,6 +4072,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4080,10 +4127,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4094,6 +4141,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4174,10 +4224,10 @@
         },
         {
           "name": "name",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4194,6 +4244,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4203,10 +4256,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4217,6 +4270,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4226,10 +4282,10 @@
         },
         {
           "name": "src",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4240,6 +4296,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4325,10 +4384,10 @@
         },
         {
           "name": "value",
-          "type": "number | string",
+          "type": "number | string | undefined",
           "complexType": {
             "original": "string | number",
-            "resolved": "number | string",
+            "resolved": "number | string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4348,6 +4407,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4498,10 +4560,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4518,6 +4580,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4527,10 +4592,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4547,6 +4612,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4556,10 +4624,10 @@
         },
         {
           "name": "inverted",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -4576,6 +4644,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -4673,10 +4744,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
           "complexType": {
             "original": "BalProps.BalCheckboxTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -4708,6 +4779,9 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5060,7 +5134,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -5076,7 +5150,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -5429,10 +5503,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -5449,6 +5523,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5487,10 +5564,10 @@
         },
         {
           "name": "interface",
-          "type": "\"button\" | \"checkbox\" | \"switch\" | \"tile\"",
+          "type": "\"button\" | \"checkbox\" | \"switch\" | \"tile\" | undefined",
           "complexType": {
             "original": "BalProps.BalCheckboxGroupInterface",
-            "resolved": "\"button\" | \"checkbox\" | \"switch\" | \"tile\"",
+            "resolved": "\"button\" | \"checkbox\" | \"switch\" | \"tile\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -5525,6 +5602,9 @@
             {
               "value": "tile",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5534,10 +5614,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -5554,6 +5634,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5592,10 +5675,10 @@
         },
         {
           "name": "options",
-          "type": "BalCheckboxOption[]",
+          "type": "BalCheckboxOption[] | undefined",
           "complexType": {
             "original": "BalCheckboxOption[]",
-            "resolved": "BalCheckboxOption[]",
+            "resolved": "BalCheckboxOption[] | undefined",
             "references": {
               "BalCheckboxOption": {
                 "location": "import",
@@ -5611,6 +5694,9 @@
           "values": [
             {
               "type": "BalCheckboxOption[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5620,10 +5706,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -5640,6 +5726,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -5738,11 +5827,11 @@
         {
           "name": "getOptionByValue",
           "returns": {
-            "type": "Promise<BalCheckboxOption>",
+            "type": "Promise<BalCheckboxOption | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "(value: string) => Promise<BalCheckboxOption>",
+            "signature": "(value: string) => Promise<BalCheckboxOption | undefined>",
             "parameters": [
               {
                 "name": "value",
@@ -5761,9 +5850,9 @@
                 "id": "src/components/bal-checkbox/bal-checkbox.type.ts::BalCheckboxOption"
               }
             },
-            "return": "Promise<BalCheckboxOption>"
+            "return": "Promise<BalCheckboxOption | undefined>"
           },
-          "signature": "getOptionByValue(value: string) => Promise<BalCheckboxOption>",
+          "signature": "getOptionByValue(value: string) => Promise<BalCheckboxOption | undefined>",
           "parameters": [
             {
               "name": "value",
@@ -6593,10 +6682,10 @@
         },
         {
           "name": "allowedDates",
-          "type": "(dateString: string) => boolean",
+          "type": "((dateString: string) => boolean) | undefined",
           "complexType": {
             "original": "BalProps.BalDateCallback | undefined",
-            "resolved": "(dateString: string) => boolean",
+            "resolved": "((dateString: string) => boolean) | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -6616,7 +6705,10 @@
           "default": "undefined",
           "values": [
             {
-              "type": "(dateString: string) => boolean"
+              "type": "((dateString: string) => boolean)"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -6960,10 +7052,10 @@
         },
         {
           "name": "defaultDate",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -6974,6 +7066,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7070,10 +7165,10 @@
         },
         {
           "name": "max",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -7084,6 +7179,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7093,10 +7191,10 @@
         },
         {
           "name": "maxYearProp",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7107,6 +7205,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7116,10 +7217,10 @@
         },
         {
           "name": "min",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -7130,6 +7231,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7139,10 +7243,10 @@
         },
         {
           "name": "minYearProp",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7153,6 +7257,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7191,10 +7298,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7205,6 +7312,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7301,10 +7411,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -7321,6 +7431,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -7355,7 +7468,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -7371,7 +7484,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -7501,11 +7614,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalDateChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -7577,11 +7690,11 @@
         },
         {
           "event": "balInput",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalDateInputDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -7665,10 +7778,10 @@
       "props": [
         {
           "name": "allowedDates",
-          "type": "(isoDate: string) => boolean",
+          "type": "((isoDate: string) => boolean) | undefined",
           "complexType": {
             "original": "BalProps.BalDateCalendarAllowedDatesCallback | undefined",
-            "resolved": "(isoDate: string) => boolean",
+            "resolved": "((isoDate: string) => boolean) | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -7688,7 +7801,10 @@
           "default": "undefined",
           "values": [
             {
-              "type": "(isoDate: string) => boolean"
+              "type": "((isoDate: string) => boolean)"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -7698,10 +7814,10 @@
         },
         {
           "name": "defaultDate",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7712,6 +7828,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7721,10 +7840,10 @@
         },
         {
           "name": "max",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -7735,6 +7854,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7744,10 +7866,10 @@
         },
         {
           "name": "maxYearProp",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7758,6 +7880,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7767,10 +7892,10 @@
         },
         {
           "name": "min",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -7781,6 +7906,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7790,10 +7918,10 @@
         },
         {
           "name": "minYearProp",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7804,6 +7932,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7813,10 +7944,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7827,6 +7958,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7839,11 +7973,11 @@
       "events": [
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalDateCalendarChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -7882,10 +8016,10 @@
       "props": [
         {
           "name": "day",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7896,6 +8030,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -7980,10 +8117,10 @@
         },
         {
           "name": "month",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -7994,6 +8131,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -8061,10 +8201,10 @@
         },
         {
           "name": "year",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -8075,6 +8215,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -8087,11 +8230,11 @@
       "events": [
         {
           "event": "balSelectDay",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalDateCellSelectDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -9158,10 +9301,10 @@
         },
         {
           "name": "value",
-          "type": "string | string[]",
+          "type": "string | string[] | undefined",
           "complexType": {
             "original": "string | string[]",
-            "resolved": "string | string[]",
+            "resolved": "string | string[] | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9181,6 +9324,9 @@
             },
             {
               "type": "string[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9413,10 +9559,10 @@
       "props": [
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9433,6 +9579,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9442,10 +9591,10 @@
         },
         {
           "name": "horizontal",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9462,6 +9611,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9471,10 +9623,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9491,6 +9643,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9500,10 +9655,10 @@
         },
         {
           "name": "loading",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9520,6 +9675,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9529,10 +9687,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9549,6 +9707,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9558,10 +9719,10 @@
         },
         {
           "name": "required",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9578,6 +9739,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9662,10 +9826,10 @@
       "props": [
         {
           "name": "expandedOnMobile",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9682,6 +9846,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9923,10 +10090,10 @@
         },
         {
           "name": "subject",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9943,6 +10110,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -9978,10 +10148,10 @@
       "props": [
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -9998,6 +10168,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10007,10 +10180,10 @@
         },
         {
           "name": "htmlFor",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10027,6 +10200,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10036,10 +10212,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10056,6 +10232,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10065,10 +10244,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10085,6 +10264,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10177,10 +10359,10 @@
         },
         {
           "name": "valid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10197,6 +10379,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10501,10 +10686,10 @@
       "props": [
         {
           "name": "accept",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10515,6 +10700,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10698,10 +10886,10 @@
         },
         {
           "name": "maxBundleSize",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10712,6 +10900,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10721,10 +10912,10 @@
         },
         {
           "name": "maxFileSize",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10735,6 +10926,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10744,10 +10938,10 @@
         },
         {
           "name": "maxFiles",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -10758,6 +10952,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10883,10 +11080,10 @@
         },
         {
           "name": "subTitle",
-          "type": "(file: File) => string",
+          "type": "((file: File) => string) | undefined",
           "complexType": {
             "original": "(file: File) => string",
-            "resolved": "(file: File) => string",
+            "resolved": "((file: File) => string) | undefined",
             "references": {
               "File": {
                 "location": "global",
@@ -10900,7 +11097,10 @@
           "docsTags": [],
           "values": [
             {
-              "type": "(file: File) => string"
+              "type": "((file: File) => string)"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -10968,7 +11168,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -10984,7 +11184,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -11299,10 +11499,10 @@
         },
         {
           "name": "overrideLinks",
-          "type": "FooterLink[]",
+          "type": "FooterLink[] | undefined",
           "complexType": {
             "original": "FooterLink[] | undefined",
-            "resolved": "FooterLink[]",
+            "resolved": "FooterLink[] | undefined",
             "references": {
               "FooterLink": {
                 "location": "import",
@@ -11324,6 +11524,9 @@
           "values": [
             {
               "type": "FooterLink[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -11628,10 +11831,10 @@
       "props": [
         {
           "name": "autoLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -11704,6 +11907,9 @@
             {
               "value": "xxxxx-large",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -11961,10 +12167,10 @@
         },
         {
           "name": "space",
-          "type": "\"all\" | \"bottom\" | \"none\" | \"top\"",
+          "type": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
           "complexType": {
             "original": "'none' | 'bottom' | 'top' | 'all'",
-            "resolved": "\"all\" | \"bottom\" | \"none\" | \"top\"",
+            "resolved": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
             "references": {}
           },
           "mutable": false,
@@ -11988,6 +12194,9 @@
             {
               "value": "top",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12026,10 +12235,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -12102,6 +12311,9 @@
             {
               "value": "xxxxx-large",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12165,10 +12377,10 @@
       "props": [
         {
           "name": "closeLabel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -12179,6 +12391,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12550,10 +12765,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -12570,6 +12785,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12608,10 +12826,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -12628,6 +12846,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12666,10 +12887,10 @@
         },
         {
           "name": "name",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -12686,6 +12907,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -12927,10 +13151,10 @@
       "props": [
         {
           "name": "accept",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -12941,6 +13165,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -12950,10 +13177,10 @@
         },
         {
           "name": "allowedKeyPress",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -12964,6 +13191,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13433,10 +13663,10 @@
         },
         {
           "name": "inputmode",
-          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
           "complexType": {
             "original": "BalProps.BalInputInputMode",
-            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -13481,6 +13711,9 @@
             {
               "value": "url",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13519,10 +13752,10 @@
         },
         {
           "name": "mask",
-          "type": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\"",
+          "type": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
           "complexType": {
             "original": "BalProps.BalInputMask",
-            "resolved": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\"",
+            "resolved": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -13569,6 +13802,9 @@
             {
               "value": "vehicle-registration-number",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13578,10 +13814,10 @@
         },
         {
           "name": "max",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13592,6 +13828,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13601,10 +13840,10 @@
         },
         {
           "name": "maxLength",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13615,6 +13854,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13624,10 +13866,10 @@
         },
         {
           "name": "min",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13638,6 +13880,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13647,10 +13892,10 @@
         },
         {
           "name": "minLength",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13661,6 +13906,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13670,10 +13918,10 @@
         },
         {
           "name": "multiple",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13684,6 +13932,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13722,10 +13973,10 @@
         },
         {
           "name": "pattern",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13736,6 +13987,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13745,10 +13999,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13759,6 +14013,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -13855,10 +14112,10 @@
         },
         {
           "name": "suffix",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -13869,6 +14126,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -14011,10 +14271,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -14031,6 +14291,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -14111,11 +14374,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -14149,11 +14412,11 @@
         },
         {
           "event": "balInput",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputInputDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -14616,10 +14879,10 @@
         },
         {
           "name": "max",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -14630,6 +14893,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -14639,10 +14905,10 @@
         },
         {
           "name": "min",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -14653,6 +14919,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -14691,10 +14960,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -14705,6 +14974,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -14772,10 +15044,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -14792,6 +15064,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -14872,11 +15147,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputDateChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -14910,11 +15185,11 @@
         },
         {
           "event": "balInput",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputDateInputDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -15444,10 +15719,10 @@
         },
         {
           "name": "value",
-          "type": "number | string",
+          "type": "number | string | undefined",
           "complexType": {
             "original": "string | number",
-            "resolved": "number | string",
+            "resolved": "number | string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -15467,6 +15742,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -15479,7 +15757,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -15495,7 +15773,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -15547,11 +15825,11 @@
         },
         {
           "event": "balChange",
-          "detail": "number | string",
+          "detail": "null | number | string",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputSliderChangeDetail",
-            "resolved": "number | string",
+            "resolved": "null | number | string",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -15585,11 +15863,11 @@
         },
         {
           "event": "balInput",
-          "detail": "number | string",
+          "detail": "null | number | string",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputSliderInputDetail",
-            "resolved": "number | string",
+            "resolved": "null | number | string",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -15957,7 +16235,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -15973,7 +16251,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -16003,11 +16281,11 @@
         },
         {
           "event": "balChange",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputStepperChangeDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -16022,11 +16300,11 @@
         },
         {
           "event": "balDecrease",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputStepperDecreaseDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -16060,11 +16338,11 @@
         },
         {
           "event": "balIncrease",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputStepperIncreaseDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -16079,11 +16357,11 @@
         },
         {
           "event": "balInput",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalInputStepperInputDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -16139,10 +16417,10 @@
       "props": [
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16159,6 +16437,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16168,10 +16449,10 @@
         },
         {
           "name": "htmlFor",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16188,6 +16469,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16197,10 +16481,10 @@
         },
         {
           "name": "htmlId",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16217,6 +16501,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16226,10 +16513,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16246,6 +16533,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16313,10 +16603,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16333,6 +16623,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16425,10 +16718,10 @@
         },
         {
           "name": "valid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16445,6 +16738,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16812,10 +17108,10 @@
         },
         {
           "name": "download",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16826,6 +17122,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -16864,10 +17163,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -16878,6 +17177,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -17174,10 +17476,10 @@
       "props": [
         {
           "name": "accordionGroup",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -17188,6 +17490,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -17434,10 +17739,10 @@
       "props": [
         {
           "name": "contentAlignment",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -17448,6 +17753,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -17675,10 +17983,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17751,6 +18059,9 @@
             {
               "value": "xxxxx-large",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -17949,10 +18260,10 @@
         },
         {
           "name": "component",
-          "type": "Function | HTMLElement | string",
+          "type": "Function | HTMLElement | null | string",
           "complexType": {
             "original": "BalProps.ComponentRef",
-            "resolved": "Function | HTMLElement | string",
+            "resolved": "Function | HTMLElement | null | string",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17973,6 +18284,9 @@
               "type": "HTMLElement"
             },
             {
+              "type": "null"
+            },
+            {
               "type": "string"
             }
           ],
@@ -17983,10 +18297,10 @@
         },
         {
           "name": "componentProps",
-          "type": "{ [key: string]: any; }",
+          "type": "undefined | { [key: string]: any; }",
           "complexType": {
             "original": "BalProps.ComponentProps",
-            "resolved": "{ [key: string]: any; }",
+            "resolved": "undefined | { [key: string]: any; }",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -18000,6 +18314,9 @@
           "docsTags": [],
           "values": [
             {
+              "type": "undefined"
+            },
+            {
               "type": "{ [key: string]: any; }"
             }
           ],
@@ -18010,10 +18327,10 @@
         },
         {
           "name": "cssClass",
-          "type": "string | string[]",
+          "type": "string | string[] | undefined",
           "complexType": {
             "original": "string | string[]",
-            "resolved": "string | string[]",
+            "resolved": "string | string[] | undefined",
             "references": {}
           },
           "mutable": false,
@@ -18027,6 +18344,9 @@
             },
             {
               "type": "string[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -18210,7 +18530,7 @@
               },
               {
                 "name": "role",
-                "type": "string",
+                "type": "string | undefined",
                 "docs": ""
               }
             ],
@@ -18231,7 +18551,7 @@
             },
             {
               "name": "role",
-              "type": "string",
+              "type": "string | undefined",
               "docs": ""
             }
           ],
@@ -18595,10 +18915,10 @@
         },
         {
           "name": "logo",
-          "type": "BalNavLogoLink",
+          "type": "BalNavLogoLink | undefined",
           "complexType": {
             "original": "BalProps.BalNavLogoLink",
-            "resolved": "BalNavLogoLink",
+            "resolved": "BalNavLogoLink | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -18613,6 +18933,9 @@
           "values": [
             {
               "type": "BalNavLogoLink"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -18742,10 +19065,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -18756,6 +19079,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -18765,10 +19091,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -18779,6 +19105,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -19713,10 +20042,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -19733,6 +20062,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -19742,10 +20074,10 @@
         },
         {
           "name": "logo",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -19756,6 +20088,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -19794,10 +20129,10 @@
         },
         {
           "name": "logoLabel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -19808,6 +20143,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -19855,10 +20193,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -19869,6 +20207,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -20419,10 +20760,10 @@
         },
         {
           "name": "max",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -20433,6 +20774,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20442,10 +20786,10 @@
         },
         {
           "name": "min",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -20456,6 +20800,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20523,10 +20870,10 @@
         },
         {
           "name": "pattern",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -20537,6 +20884,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20546,10 +20896,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -20560,6 +20910,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20627,10 +20980,10 @@
         },
         {
           "name": "suffix",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -20641,6 +20994,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20650,10 +21006,10 @@
         },
         {
           "name": "value",
-          "type": "number | string",
+          "type": "number | string | undefined",
           "complexType": {
             "original": "number | string",
-            "resolved": "number | string",
+            "resolved": "number | string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -20673,6 +21029,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -20721,6 +21080,11 @@
               "Promise": {
                 "location": "global",
                 "id": "global::Promise"
+              },
+              "FormInput": {
+                "location": "import",
+                "path": "../../utils/form-input",
+                "id": "src/utils/form-input.ts::FormInput"
               }
             },
             "return": "Promise<void>"
@@ -20753,11 +21117,11 @@
         },
         {
           "event": "balChange",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalNumberInputChangeDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -20791,11 +21155,11 @@
         },
         {
           "event": "balInput",
-          "detail": "number",
+          "detail": "number | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalNumberInputInputDetail",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -21186,10 +21550,10 @@
       "props": [
         {
           "name": "contentHeight",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -21206,6 +21570,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -21312,10 +21679,10 @@
         },
         {
           "name": "labelledby",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -21326,6 +21693,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -21448,7 +21818,7 @@
               },
               {
                 "name": "config",
-                "type": "{ select?: boolean; }",
+                "type": "{ select?: boolean | undefined; }",
                 "docs": ""
               }
             ],
@@ -21473,7 +21843,7 @@
             },
             {
               "name": "config",
-              "type": "{ select?: boolean; }",
+              "type": "{ select?: boolean | undefined; }",
               "docs": ""
             }
           ],
@@ -21675,7 +22045,7 @@
             "parameters": [
               {
                 "name": "values",
-                "type": "string[]",
+                "type": "string[] | undefined",
                 "docs": ""
               }
             ],
@@ -21696,7 +22066,7 @@
           "parameters": [
             {
               "name": "values",
-              "type": "string[]",
+              "type": "string[] | undefined",
               "docs": ""
             }
           ],
@@ -21866,7 +22236,7 @@
             "docs": ""
           },
           "complexType": {
-            "signature": "(values?: string[]) => Promise<void>",
+            "signature": "(values: string[]) => Promise<void>",
             "parameters": [
               {
                 "name": "values",
@@ -21882,7 +22252,7 @@
             },
             "return": "Promise<void>"
           },
-          "signature": "updateSelected(values?: string[]) => Promise<void>",
+          "signature": "updateSelected(values: string[]) => Promise<void>",
           "parameters": [
             {
               "name": "values",
@@ -23435,10 +23805,10 @@
         },
         {
           "name": "contentWidth",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -23449,6 +23819,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -23595,10 +23968,10 @@
         },
         {
           "name": "reference",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -23609,6 +23982,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24024,10 +24400,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
           "complexType": {
             "original": "BalProps.BalRadioTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -24059,6 +24435,9 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24398,7 +24777,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLInputElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -24414,7 +24793,7 @@
                 "id": "global::HTMLInputElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLInputElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
           "parameters": [],
@@ -24764,10 +25143,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -24784,6 +25163,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24822,10 +25204,10 @@
         },
         {
           "name": "interface",
-          "type": "\"button\" | \"radio\" | \"tile\"",
+          "type": "\"button\" | \"radio\" | \"tile\" | undefined",
           "complexType": {
             "original": "BalProps.BalRadioGroupInterface",
-            "resolved": "\"button\" | \"radio\" | \"tile\"",
+            "resolved": "\"button\" | \"radio\" | \"tile\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -24856,6 +25238,9 @@
             {
               "value": "tile",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24865,10 +25250,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -24885,6 +25270,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24923,10 +25311,10 @@
         },
         {
           "name": "options",
-          "type": "BalRadioOption[]",
+          "type": "BalRadioOption[] | undefined",
           "complexType": {
             "original": "BalRadioOption[]",
-            "resolved": "BalRadioOption[]",
+            "resolved": "BalRadioOption[] | undefined",
             "references": {
               "BalRadioOption": {
                 "location": "import",
@@ -24942,6 +25330,9 @@
           "values": [
             {
               "type": "BalRadioOption[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -24951,10 +25342,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -24971,6 +25362,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -25064,11 +25458,11 @@
         {
           "name": "getOptionByValue",
           "returns": {
-            "type": "Promise<BalRadioOption>",
+            "type": "Promise<BalRadioOption | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "(value: string) => Promise<BalRadioOption>",
+            "signature": "(value: string) => Promise<BalRadioOption | undefined>",
             "parameters": [
               {
                 "name": "value",
@@ -25087,9 +25481,9 @@
                 "id": "src/components/bal-radio/bal-radio.type.ts::BalRadioOption"
               }
             },
-            "return": "Promise<BalRadioOption>"
+            "return": "Promise<BalRadioOption | undefined>"
           },
-          "signature": "getOptionByValue(value: string) => Promise<BalRadioOption>",
+          "signature": "getOptionByValue(value: string) => Promise<BalRadioOption | undefined>",
           "parameters": [
             {
               "name": "value",
@@ -25245,10 +25639,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -25265,6 +25659,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -25274,10 +25671,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -25294,6 +25691,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -25303,10 +25703,10 @@
         },
         {
           "name": "inverted",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -25323,6 +25723,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -25497,10 +25900,10 @@
         },
         {
           "name": "value",
-          "type": "boolean | number | string",
+          "type": "boolean | number | string | undefined",
           "complexType": {
             "original": "BalProps.BalSegmentValue",
-            "resolved": "boolean | number | string",
+            "resolved": "boolean | number | string | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -25522,6 +25925,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -26297,10 +26703,10 @@
         },
         {
           "name": "maxLength",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -26311,6 +26717,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -26378,10 +26787,10 @@
         },
         {
           "name": "noDataLabel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -26392,6 +26801,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -26401,10 +26813,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -26415,6 +26827,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -26598,10 +27013,10 @@
         },
         {
           "name": "value",
-          "type": "string | string[]",
+          "type": "string | string[] | undefined",
           "complexType": {
             "original": "string | string[]",
-            "resolved": "string | string[]",
+            "resolved": "string | string[] | undefined",
             "references": {}
           },
           "mutable": true,
@@ -26621,6 +27036,9 @@
             },
             {
               "type": "string[]"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -26699,11 +27117,11 @@
         {
           "name": "getValue",
           "returns": {
-            "type": "Promise<string[]>",
+            "type": "Promise<string[] | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<string[]>",
+            "signature": "() => Promise<string[] | undefined>",
             "parameters": [],
             "references": {
               "Promise": {
@@ -26711,9 +27129,9 @@
                 "id": "global::Promise"
               }
             },
-            "return": "Promise<string[]>"
+            "return": "Promise<string[] | undefined>"
           },
-          "signature": "getValue() => Promise<string[]>",
+          "signature": "getValue() => Promise<string[] | undefined>",
           "parameters": [],
           "docs": "Returns the value of the component",
           "docsTags": []
@@ -26838,11 +27256,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string | string[]",
+          "detail": "string | string[] | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalSelectChangeDetail",
-            "resolved": "string | string[]",
+            "resolved": "string | string[] | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -27005,10 +27423,10 @@
         },
         {
           "name": "label",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -27019,6 +27437,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -27028,10 +27449,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -27042,6 +27463,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -27140,10 +27564,10 @@
         },
         {
           "name": "rotation",
-          "type": "\"0\" | \"180\" | \"270\" | \"90\"",
+          "type": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
           "complexType": {
             "original": "BalProps.BalShapeRotation",
-            "resolved": "\"0\" | \"180\" | \"270\" | \"90\"",
+            "resolved": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -27178,6 +27602,9 @@
             {
               "value": "90",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -27449,10 +27876,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -27463,6 +27890,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -28302,10 +28732,10 @@
         },
         {
           "name": "spaceColumn",
-          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackSpace",
-            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -28361,6 +28791,9 @@
             {
               "value": "xx-small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -28370,10 +28803,10 @@
         },
         {
           "name": "spaceRow",
-          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackSpace",
-            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -28429,6 +28862,9 @@
             {
               "value": "xx-small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -28607,10 +29043,10 @@
         },
         {
           "name": "shapeRotation",
-          "type": "\"0\" | \"180\" | \"270\" | \"90\"",
+          "type": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
           "complexType": {
             "original": "BalProps.BalShapeRotation",
-            "resolved": "\"0\" | \"180\" | \"270\" | \"90\"",
+            "resolved": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -28639,6 +29075,9 @@
             {
               "value": "90",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -28648,10 +29087,10 @@
         },
         {
           "name": "shapeVariation",
-          "type": "\"1\" | \"2\" | \"3\"",
+          "type": "\"1\" | \"2\" | \"3\" | undefined",
           "complexType": {
             "original": "BalProps.BalShapeVariation",
-            "resolved": "\"1\" | \"2\" | \"3\"",
+            "resolved": "\"1\" | \"2\" | \"3\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -28676,6 +29115,9 @@
             {
               "value": "3",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -28805,10 +29247,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -28819,6 +29261,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -28934,10 +29379,10 @@
       "props": [
         {
           "name": "fallback",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -28948,6 +29393,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29232,10 +29680,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -29246,6 +29694,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -29586,10 +30037,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -29606,6 +30057,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29618,11 +30072,11 @@
         {
           "name": "getOptionByValue",
           "returns": {
-            "type": "Promise<BalStepOption>",
+            "type": "Promise<BalStepOption | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "(value: string) => Promise<BalStepOption>",
+            "signature": "(value: string) => Promise<BalStepOption | undefined>",
             "parameters": [
               {
                 "name": "value",
@@ -29641,9 +30095,9 @@
                 "id": "src/components/bal-steps/bal-step.type.ts::BalStepOption"
               }
             },
-            "return": "Promise<BalStepOption>"
+            "return": "Promise<BalStepOption | undefined>"
           },
-          "signature": "getOptionByValue(value: string) => Promise<BalStepOption>",
+          "signature": "getOptionByValue(value: string) => Promise<BalStepOption | undefined>",
           "parameters": [
             {
               "name": "value",
@@ -29697,11 +30151,11 @@
       "events": [
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTabsChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -29769,10 +30223,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -29789,6 +30243,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29798,10 +30255,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -29818,6 +30275,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29847,10 +30307,10 @@
       "props": [
         {
           "name": "a11yControls",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -29867,6 +30327,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29966,10 +30429,10 @@
         },
         {
           "name": "href",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -29986,6 +30449,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -29995,10 +30461,10 @@
         },
         {
           "name": "icon",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -30015,6 +30481,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -30140,10 +30609,10 @@
         },
         {
           "name": "rel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string | undefined",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -30154,6 +30623,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -30587,10 +31059,10 @@
         },
         {
           "name": "context",
-          "type": "\"meta\" | \"navbar\" | \"navigation\"",
+          "type": "\"meta\" | \"navbar\" | \"navigation\" | undefined",
           "complexType": {
             "original": "BalProps.BalTabsContext",
-            "resolved": "\"meta\" | \"navbar\" | \"navigation\"",
+            "resolved": "\"meta\" | \"navbar\" | \"navigation\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -30615,6 +31087,9 @@
             {
               "value": "navigation",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -31031,10 +31506,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -31051,6 +31526,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -31160,11 +31638,11 @@
         {
           "name": "getOptionByValue",
           "returns": {
-            "type": "Promise<BalTabOption>",
+            "type": "Promise<BalTabOption | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "(value: string) => Promise<BalTabOption>",
+            "signature": "(value: string) => Promise<BalTabOption | undefined>",
             "parameters": [
               {
                 "name": "value",
@@ -31183,9 +31661,9 @@
                 "id": "src/components/bal-tabs/bal-tab.type.ts::BalTabOption"
               }
             },
-            "return": "Promise<BalTabOption>"
+            "return": "Promise<BalTabOption | undefined>"
           },
-          "signature": "getOptionByValue(value: string) => Promise<BalTabOption>",
+          "signature": "getOptionByValue(value: string) => Promise<BalTabOption | undefined>",
           "parameters": [
             {
               "name": "value",
@@ -31239,11 +31717,11 @@
       "events": [
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTabsChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -31258,11 +31736,11 @@
         },
         {
           "event": "balDidAnimate",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTabsDidAnimateDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -31277,11 +31755,11 @@
         },
         {
           "event": "balWillAnimate",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTabsWillAnimateDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -31787,10 +32265,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -31807,6 +32285,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -31874,10 +32355,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean",
+            "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
@@ -31894,6 +32375,9 @@
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32469,10 +32953,10 @@
         },
         {
           "name": "cols",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -32483,6 +32967,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32550,10 +33037,10 @@
         },
         {
           "name": "inputmode",
-          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
           "complexType": {
             "original": "BalProps.BalTextareaInputMode",
-            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
+            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -32598,6 +33085,9 @@
             {
               "value": "url",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32636,10 +33126,10 @@
         },
         {
           "name": "maxLength",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -32650,6 +33140,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32659,10 +33152,10 @@
         },
         {
           "name": "minLength",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -32673,6 +33166,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32711,10 +33207,10 @@
         },
         {
           "name": "placeholder",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
@@ -32725,6 +33221,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32792,10 +33291,10 @@
         },
         {
           "name": "rows",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -32806,6 +33305,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32815,10 +33317,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -32835,6 +33337,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32844,10 +33349,10 @@
         },
         {
           "name": "wrap",
-          "type": "\"hard\" | \"off\" | \"soft\"",
+          "type": "\"hard\" | \"off\" | \"soft\" | undefined",
           "complexType": {
             "original": "BalProps.BalTextareaWrap",
-            "resolved": "\"hard\" | \"off\" | \"soft\"",
+            "resolved": "\"hard\" | \"off\" | \"soft\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -32872,6 +33377,9 @@
             {
               "value": "soft",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -32884,7 +33392,7 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLTextAreaElement>",
+            "type": "Promise<HTMLTextAreaElement | undefined>",
             "docs": ""
           },
           "complexType": {
@@ -32900,7 +33408,7 @@
                 "id": "global::HTMLTextAreaElement"
               }
             },
-            "return": "Promise<HTMLTextAreaElement>"
+            "return": "Promise<HTMLTextAreaElement | undefined>"
           },
           "signature": "getInputElement() => Promise<HTMLTextAreaElement | undefined>",
           "parameters": [],
@@ -32952,11 +33460,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTextareaChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -32990,11 +33498,11 @@
         },
         {
           "event": "balInput",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTextareaInputDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -33270,10 +33778,10 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": true,
@@ -33290,6 +33798,9 @@
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -33370,11 +33881,11 @@
         },
         {
           "event": "balChange",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTimeInputChangeDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -33427,11 +33938,11 @@
         },
         {
           "event": "balInput",
-          "detail": "string",
+          "detail": "string | undefined",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalTimeInputInputDetail",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -33749,10 +34260,10 @@
       "props": [
         {
           "name": "contentWidth",
-          "type": "number",
+          "type": "number | undefined",
           "complexType": {
             "original": "number",
-            "resolved": "number",
+            "resolved": "number | undefined",
             "references": {}
           },
           "mutable": false,
@@ -33763,6 +34274,9 @@
           "values": [
             {
               "type": "number"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": true,
@@ -33974,6 +34488,11 @@
       "docstring": "",
       "path": "src/components/bal-modal/bal-modal.type.ts"
     },
+    "src/utils/form-input.ts::FormInput": {
+      "declaration": "export interface FormInput<Value, ReturnValue = Value> {\n  el: HTMLStencilElement\n  disabled: boolean\n  readonly: boolean\n  focused: boolean\n  value?: Value\n  inputValue?: Value\n  nativeInput?: HTMLInputElement | HTMLTextAreaElement\n  balClick?: EventEmitter<MouseEvent>\n  balFocus?: EventEmitter<FocusEvent>\n  balBlur?: EventEmitter<FocusEvent>\n  balChange: EventEmitter<ReturnValue>\n}",
+      "docstring": "",
+      "path": "src/utils/form-input.ts"
+    },
     "src/components/bal-radio/bal-radio.type.ts::BalRadioOption": {
       "declaration": "export interface BalRadioOption {\n  value: any\n  label: string\n  name?: string\n  html?: HtmlFunction | string\n  labelHidden: boolean\n  flat: boolean\n  interface: BalProps.BalRadioInterface\n  disabled: boolean\n  readonly: boolean\n  required: boolean\n  nonSubmit: boolean\n  invalid: boolean\n}",
       "docstring": "",
@@ -33990,7 +34509,7 @@
       "path": "src/components/bal-steps/bal-step.type.ts"
     },
     "src/components/bal-tabs/bal-tab.type.ts::BalTabOption": {
-      "declaration": "export interface BalTabOption {\n  value: string\n  label: string\n  href?: string\n  rel?: string\n  tabPanelID?: string\n  target: BalProps.BalButtonTarget\n  active: boolean\n  disabled: boolean\n  invisible: boolean\n  bubble: boolean | string\n  prevent: boolean\n  icon?: string\n  passed?: boolean\n  index?: number\n  context?: BalProps.BalTabsContext\n  navigate?: EventEmitter<Event>\n  keyDown?: EventEmitter<Event>\n  trackingData?: Attributes\n  hidden?: boolean // deprecated use invisible instead\n  noPanel?: boolean\n  aria?: BalProps.BalTabItemAria\n  subLabel?: string\n  svg?: string\n}",
+      "declaration": "export interface BalTabOption {\n  value: string\n  label: string\n  href?: string\n  rel?: string\n  a11yControls?: string\n  tabPanelID?: string\n  target: BalProps.BalButtonTarget\n  active: boolean\n  disabled: boolean\n  invisible: boolean\n  bubble: boolean | string\n  prevent: boolean\n  icon?: string\n  passed?: boolean\n  index?: number\n  context?: BalProps.BalTabsContext\n  navigate?: EventEmitter<MouseEvent>\n  keyDown?: EventEmitter<KeyboardEvent>\n  trackingData?: Attributes\n  hidden?: boolean // deprecated use invisible instead\n  noPanel?: boolean\n  aria?: BalProps.BalTabItemAria\n  subLabel?: string\n  svg?: string\n}",
       "docstring": "",
       "path": "src/components/bal-tabs/bal-tab.type.ts"
     }

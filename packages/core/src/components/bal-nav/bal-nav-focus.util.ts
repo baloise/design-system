@@ -4,8 +4,8 @@ import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 
 export type TabInformationDetail = {
-  activeMetaLinkValue: string
-  activeMenuLinkValue: string
+  activeMetaLinkValue: string | undefined
+  activeMenuLinkValue: string | undefined
   linkItems: NavMetaLinkItem[]
 }
 
@@ -24,7 +24,7 @@ export const gatherTabInformation = (detail: TabInformationDetail): TabInformati
   const links = detail.linkItems.find(item => item.value === detail.activeMetaLinkValue)?.mainLinkItems
 
   // the selected tab in the main navigation
-  const indexOfActiveTab = links?.findIndex(link => link.value === detail.activeMenuLinkValue)
+  const indexOfActiveTab = links?.findIndex(link => link.value === detail.activeMenuLinkValue) || 0
   const indexOfNextTab = indexOfActiveTab + 1
   const indexOfPreviousTab = indexOfActiveTab - 1
 

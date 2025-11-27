@@ -11,18 +11,18 @@ export function ListenToMutation(options: Partial<MutationObserverOptions>) {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this._balMutationSubject) {
-        this._balMutationSubject = new BalMutationSubject(options)
-        this._balMutationSubject.attach(this)
+      if (!this['_balMutationSubject']) {
+        this['_balMutationSubject'] = new BalMutationSubject(options)
+        this['_balMutationSubject'].attach(this)
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this._balMutationSubject) {
-        this._balMutationSubject.detach()
-        this._balMutationSubject = undefined
+      if (this['_balMutationSubject']) {
+        this['_balMutationSubject'].detach()
+        this['_balMutationSubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

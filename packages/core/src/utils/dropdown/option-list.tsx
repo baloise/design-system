@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BalOption } from './option'
 import { BEM } from '../bem'
+import { BalOption } from './option'
 
 export interface DropdownOptionListProps {
   inputId: string
@@ -13,8 +13,8 @@ export interface DropdownOptionListProps {
   multiple: boolean
   contentHeight: number
   rawOptions: BalOption[]
-  refPanelEl: (el: HTMLDivElement) => void
-  refListEl: (el: HTMLBalOptionListElement) => void
+  refPanelEl: (el: HTMLDivElement | undefined) => void
+  refListEl: (el: HTMLBalOptionListElement | undefined) => void
 }
 
 export const DropdownOptionList: FunctionalComponent<DropdownOptionListProps> = ({

@@ -14,6 +14,7 @@ import { FooterLink } from "@baloise/web-app-utils";
 import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+import { FormInput } from "./utils/form-input";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { SegmentValue } from "./components/bal-segment/bal-segment.types";
@@ -28,6 +29,7 @@ export { FooterLink } from "@baloise/web-app-utils";
 export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+export { FormInput } from "./utils/form-input";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 export { SegmentValue } from "./components/bal-segment/bal-segment.types";
@@ -171,7 +173,7 @@ export namespace Components {
         /**
           * Defines the nature of the accordion trigger.
          */
-        "variant": BalProps.BalAccordionTriggerVariant;
+        "variant"?: BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -231,7 +233,7 @@ export namespace Components {
           * If `true` the button is a popup.
           * @default undefined
          */
-        "balPopup": any;
+        "balPopup": undefined;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'
@@ -797,7 +799,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalCheckboxOption>;
+        "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
         /**
           * Defines the layout of the checkbox button
           * @default undefined
@@ -2904,7 +2906,7 @@ export namespace Components {
         /**
           * Updates options
          */
-        "updateSelected": (values?: string[]) => Promise<void>;
+        "updateSelected": (values: string[]) => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -3314,7 +3316,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalRadioOption>;
+        "getOptionByValue": (value: string) => Promise<BalRadioOption | undefined>;
         /**
           * Defines the layout of the radio button
           * @default undefined
@@ -3501,7 +3503,7 @@ export namespace Components {
         /**
           * Returns the value of the component
          */
-        "getValue": () => Promise<string[]>;
+        "getValue": () => Promise<string[] | undefined>;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -3916,7 +3918,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalStepOption>;
+        "getOptionByValue": (value: string) => Promise<BalStepOption | undefined>;
         /**
           * Steps can be passed as a property or through HTML markup.
           * @default []
@@ -4099,7 +4101,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalTabOption>;
+        "getOptionByValue": (value: string) => Promise<BalTabOption | undefined>;
         /**
           * If `true` then  isTabList becomes true even if there is a link in the list.
           * @default false
@@ -6255,7 +6257,7 @@ declare namespace LocalJSX {
           * If `true` the button is a popup.
           * @default undefined
          */
-        "balPopup"?: any;
+        "balPopup"?: undefined;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'

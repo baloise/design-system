@@ -10,7 +10,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
   icon?: string
   ariaLabel?: string
   htmlTitle?: string
-  id = `nav-meta-button-${NavMetaButtonIDs++}`
+  override id = `nav-meta-button-${NavMetaButtonIDs++}`
 
   constructor(item: BalProps.BalNavMetaButton, observer: NavLinkItemObserver) {
     super(item, observer)
@@ -24,11 +24,11 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
     this.target = item.target || '_self'
   }
 
-  get type(): string {
+  override get type(): string {
     return 'NavMetaButton'
   }
 
-  get isLink() {
+  override get isLink() {
     return !!this.href
   }
 
