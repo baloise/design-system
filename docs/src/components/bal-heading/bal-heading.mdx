@@ -13,10 +13,22 @@ import * as HeadingStories from './bal-heading.stories'
 </Lead>
 
 <InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
   We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
   components. This helps improve the rendering speed of your application or website.
 
-Additionally, explore CSS utilities for more styling options.
+To import only the styles required for this component:
+
+```css
+@import '@baloise/ds-styles/css/components/heading.css';
+```
+
+Or import all components styles:
+
+```css
+@import '@baloise/ds-styles/css/components/all.css';
+```
 
 </InfoQuote>
 
@@ -33,9 +45,27 @@ Additionally, explore CSS utilities for more styling options.
 
 {/* ------------------------------------------------------ */}
 
+<StoryHeading of={HeadingStories.Sizes}></StoryHeading>
+
+<Canvas of={HeadingStories.Sizes} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
 <StoryHeading of={HeadingStories.Colors}></StoryHeading>
 
 <Canvas of={HeadingStories.Colors} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.NoWrap}></StoryHeading>
+
+<Canvas of={HeadingStories.NoWrap} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
+
+<Canvas of={HeadingStories.Spacing} sourceState={'shown'}/>
 
 {/* ------------------------------------------------------ */}
 
@@ -48,12 +78,6 @@ Additionally, explore CSS utilities for more styling options.
 <StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
 
 <Canvas of={HeadingStories.Subtitle} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
-
-<Canvas of={HeadingStories.Spacing} />
 
 {/* ------------------------------------------------------ */}
 

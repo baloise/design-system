@@ -1,0 +1,186 @@
+$has-spacing: true !default;
+
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Normalize
+  */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/**
+  * Basic Style
+  */
+
+.heading:not(.is-subtitle) {
+  color: var(--bal-heading-color-basic);
+  font-family: var(--bal-heading-font-family);
+  font-weight: var(--bal-heading-font-weight);
+  line-height: var(--bal-heading-line-height);
+}
+
+.heading.is-subtitle {
+  color: var(--bal-heading-subtitle-color-basic);
+  font-family: var(--bal-heading-subtitle-font-family);
+  font-weight: var(--bal-heading-subtitle-font-weight);
+  line-height: var(--bal-heading-subtitle-line-height);
+}
+
+/**
+  * Colors
+  */
+
+.heading.is-primary {
+  color: var(--bal-heading-color-primary);
+}
+
+.heading.is-success {
+  color: var(--bal-heading-color-success);
+}
+
+.heading.is-warning {
+  color: var(--bal-heading-color-warning);
+}
+
+.heading.is-danger {
+  color: var(--bal-heading-color-danger);
+}
+
+.heading.is-white {
+  color: var(--bal-heading-color-white);
+}
+
+.heading.is-black {
+  color: var(--bal-heading-color-black);
+}
+
+/**
+  * Sizes
+  */
+
+@mixin size($level) {
+  font-size: var(--bal-heading-size-#{$level});
+
+  @include tablet {
+    font-size: var(--bal-heading-size-#{$level}-tablet);
+  }
+
+  @include desktop {
+    font-size: var(--bal-heading-size-#{$level}-desktop);
+  }
+}
+
+h1.heading {
+  @include size(1);
+}
+
+h2.heading {
+  @include size(2);
+}
+
+h3.heading {
+  @include size(3);
+}
+
+h4.heading {
+  @include size(4);
+}
+
+h5.heading {
+  @include size(5);
+}
+
+.heading.is-level-1,
+.heading.is-xxx-large {
+  @include size(xxx-large);
+}
+
+.heading.is-level-2,
+.heading.is-xx-large {
+  @include size(xx-large);
+}
+
+.heading.is-level-3,
+.heading.is-x-large {
+  @include size(x-large);
+}
+
+.heading.is-level-4,
+.heading.is-large {
+  @include size(large);
+}
+
+.heading.is-level-5,
+.heading.is-normal {
+  @include size(normal);
+}
+
+.heading.is-medium {
+  @include size(medium);
+}
+
+.heading.is-display-1,
+.heading.is-xxxxx-large {
+  @include size(display-1);
+}
+
+.heading.is-display-2,
+.heading.is-xxxx-large {
+  @include size(display-2);
+}
+
+/**
+  * Text Shadow
+  */
+
+.heading.has-shadow {
+  text-shadow: var(--bal-heading-text-shadow);
+}
+
+/**
+  * Text Wrap
+  */
+.heading.has-no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/**
+  * Spaces
+  */
+
+@if $has-spacing {
+  .heading:not(:last-child) {
+    margin-bottom: var(--bal-heading-space-basic);
+  }
+
+  .heading.has-space-all {
+    margin-top: var(--bal-heading-space-basic);
+    margin-bottom: var(--bal-heading-space-basic);
+  }
+
+  .heading.has-space-top {
+    margin-top: var(--bal-heading-space-basic);
+    margin-bottom: 0;
+  }
+
+  .heading.has-space-bottom {
+    margin-bottom: var(--bal-heading-space-basic);
+  }
+
+  .heading.has-space-none {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}

@@ -28,29 +28,72 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   ...withRender(
     () => `
-<h1 class="title text-xxx-large mb-none">Heading</h1>
-<h2 class="subtitle text-xx-large">Subtitle</h2>`,
+<!-- HTML and CSS -->
+<h1 class="heading">Heading</h1>
+<p class="heading is-subtitle is-xx-large">Subtitle</p>
+
+<!-- Web Components -->
+<bal-heading level="h1">Heading</bal-heading>
+<bal-heading level="xx-large" subtitle>Subtitle</bal-heading>
+`,
   ),
 })
 
 export const Levels = Story({
   ...withRender(
     () => `
-<h1 class="title text-xxx-large">Heading 1</h1>
-<h2 class="title text-xx-large">Heading 2</h2>
-<h3 class="title text-x-large">Heading 3</h3>
-<h4 class="title text-large">Heading 4</h4>
-<h5 class="title text-normal">Heading 5</h5>`,
+<h1 class="heading">Heading 1</h1>
+<h2 class="heading">Heading 2</h2>
+<h3 class="heading">Heading 3</h3>
+<h4 class="heading">Heading 4</h4>
+<h5 class="heading">Heading 5</h5>`,
+  ),
+})
+
+export const Sizes = Story({
+  ...withRender(
+    () => `
+<h1 class="heading is-size-1">Heading 1</h1>
+<h1 class="heading is-size-2">Heading 2</h1>
+<h1 class="heading is-size-3">Heading 3</h3>
+<h1 class="heading is-size-4">Heading 4</h4>
+<h1 class="heading is-size-5">Heading 5</h5>`,
   ),
 })
 
 export const Colors = Story({
   ...withRender(
     () => `
-<h4 class="title text-large">Default / Primary</h4>
-<h4 class="title text-large text-success">Success</h4>
-<h4 class="title text-large text-warning">Warning</h4>
-<h4 class="title text-large text-danger">Danger</h4>`,
+<h4 class="heading">Default / Primary</h4>
+<h4 class="heading is-success">Success</h4>
+<h4 class="heading is-warning">Warning</h4>
+<h4 class="heading is-danger">Danger</h4>`,
+  ),
+})
+
+export const NoWrap = Story({
+  ...withRender(
+    () => `
+<h4 class="heading has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
+  ),
+})
+
+export const Spacing = Story({
+  ...withRender(
+    () => `<div>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="heading has-space-all">All</h4>
+    </div>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="heading has-space-none">None</h4>
+    </div>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="heading has-space-top">Top</h4>
+    </div>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="heading has-space-bottom">Bottom</h4>
+    </div>
+  </div>`,
   ),
 })
 
@@ -71,25 +114,6 @@ export const Subtitle = Story({
     space: 'bottom',
     inverted: false,
   },
-})
-
-export const Spacing = Story({
-  ...withRender(
-    () => `<div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="all">All</bal-heading>
-    </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="none">None</bal-heading>
-    </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="top">Top</bal-heading>
-    </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="bottom">Bottom</bal-heading>
-    </div>
-  </div>`,
-  ),
 })
 
 export const AutoLevel = Story({

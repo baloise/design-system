@@ -11806,7 +11806,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-card-title",
         "bal-list-item-title",
@@ -12326,12 +12326,7 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [
-        {
-          "name": "native",
-          "docs": ""
-        }
-      ],
+      "parts": [],
       "listeners": []
     },
     {

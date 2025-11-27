@@ -1,6 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import {
   HEADING_COLORS,
@@ -14,7 +13,8 @@ import {
 
 @Component({
   tag: 'bal-heading',
-  styleUrl: 'bal-heading.scss',
+  styleUrl: 'bal-heading.host.scss',
+  shadow: true,
 })
 export class Heading implements ComponentInterface {
   private headingEl?: HTMLElement
@@ -154,31 +154,37 @@ export class Heading implements ComponentInterface {
    */
 
   render() {
-    const block = BEM.block('heading')
-    const bemTextEl = block.element('text')
+    // const block = BEM.block('heading')
+    // const bemTextEl = block.element('text')
 
     const Heading = this.tag
-    const fontColor = this.fontColor
+    // const fontColor = this.fontColor
 
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier(`space-${this.space}`).class(this.space !== undefined),
-          ...block.modifier(`level-${this.level}`).class(),
+          [`bal-heading-space-${this.space}`]: this.space !== undefined,
+          // ...block.class(),
+          // ...block.modifier(`space-${this.space}`).class(this.space !== undefined),
+          // ...block.modifier(`level-${this.level}`).class(),
         }}
       >
         <Heading
           class={{
-            ...bemTextEl.class(),
-            ...bemTextEl.modifier('no-wrap').class(this.noWrap),
-            ...bemTextEl.modifier('subtitle').class(this.subtitle),
-            ...bemTextEl.modifier('shadow').class(this.shadow),
-            ...bemTextEl.modifier(`color-${fontColor}`).class(),
-            ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
+            'heading': true,
+            'is-subtitle': this.subtitle,
+            'has-no-wrap': this.noWrap,
+            'has-shadow': this.shadow,
+            [`is-${this.fontColor}`]: this.fontColor !== undefined,
+            [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
+            // ...bemTextEl.class(),
+            // ...bemTextEl.modifier('no-wrap').class(this.noWrap),
+            // ...bemTextEl.modifier('subtitle').class(this.subtitle),
+            // ...bemTextEl.modifier('shadow').class(this.shadow),
+            // ...bemTextEl.modifier(`color-${fontColor}`).class(),
+            // ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
-          part="native"
           data-testid="bal-heading"
         >
           <slot />
