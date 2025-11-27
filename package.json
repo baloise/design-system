@@ -72,7 +72,7 @@
     "@nxkit/style-dictionary": "~6.0.0",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "~18.0.0",
-    "@stencil/core": "4.36.3",
+    "@stencil/core": "4.36.0",
     "@stencil/react-output-target": "1.2.0",
     "@stencil/sass": "3.0.12",
     "@swc-node/register": "1.9.2",
