@@ -18,16 +18,16 @@
       <main class="container py-medium">
         <section>
           <bal-stack>
-            <bal-button data-test="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
+            <bal-button data-testid="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
             <bal-button
-              data-test="basic-backdrop-arrow-trigger"
+              data-testid="basic-backdrop-arrow-trigger"
               bal-popup="popup-basic"
               bal-popup-backdrop
               bal-popup-arrow
               >Backdrop & Arrow</bal-button
             >
             <bal-button
-              data-test="basic-backdrop-offset-trigger"
+              data-testid="basic-backdrop-offset-trigger"
               bal-popup="popup-basic"
               bal-popup-backdrop
               bal-popup-offset="32"
@@ -36,30 +36,30 @@
           </bal-stack>
 
           <bal-stack py="medium">
-            <bal-button data-test="placement-right-trigger" bal-popup="popup-small" bal-popup-placement="right"
+            <bal-button data-testid="placement-right-trigger" bal-popup="popup-small" bal-popup-placement="right"
               >Small Right</bal-button
             >
-            <bal-button data-test="placement-left-trigger" bal-popup="popup-small" bal-popup-placement="left"
+            <bal-button data-testid="placement-left-trigger" bal-popup="popup-small" bal-popup-placement="left"
               >Small Left</bal-button
             >
-            <bal-button data-test="placement-top-trigger" bal-popup="popup-small" bal-popup-placement="top"
+            <bal-button data-testid="placement-top-trigger" bal-popup="popup-small" bal-popup-placement="top"
               >Small Top</bal-button
             >
-            <bal-button data-test="placement-bottom-trigger" bal-popup="popup-small" bal-popup-placement="bottom"
+            <bal-button data-testid="placement-bottom-trigger" bal-popup="popup-small" bal-popup-placement="bottom"
               >Small Bottom</bal-button
             >
           </bal-stack>
 
           <bal-stack py="medium">
             <bal-button
-              data-test="fullscreen-trigger"
+              data-testid="fullscreen-trigger"
               bal-popup="popup-small"
               bal-popup-variant="fullscreen"
               bal-popup-closable
               >Fullscreen</bal-button
             >
             <bal-button
-              data-test="drawer-trigger"
+              data-testid="drawer-trigger"
               bal-popup="popup-small"
               bal-popup-variant="drawer"
               bal-popup-closable
@@ -69,10 +69,10 @@
           </bal-stack>
 
           <bal-stack py="medium">
-            <bal-button data-test="tabs-trigger" bal-popup="popup-tabs" bal-popup-closable>Tabs</bal-button>
+            <bal-button data-testid="tabs-trigger" bal-popup="popup-tabs" bal-popup-closable>Tabs</bal-button>
           </bal-stack>
 
-          <bal-popup id="popup-basic" data-test="basic" label="Basic Popup">
+          <bal-popup id="popup-basic" data-testid="basic" label="Basic Popup">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
               numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
@@ -84,9 +84,9 @@
             </p>
           </bal-popup>
 
-          <bal-popup id="popup-small" data-test="small" label="Small Popup">Small Content</bal-popup>
+          <bal-popup id="popup-small" data-testid="small" label="Small Popup">Small Content</bal-popup>
 
-          <bal-popup id="popup-tabs" data-test="tabs" label="Tabs Popup">
+          <bal-popup id="popup-tabs" data-testid="tabs" label="Tabs Popup">
             <div class="py-small">
               <h5 class="title text-x-large" style="margin-top: 0px">Title</h5>
               <p>

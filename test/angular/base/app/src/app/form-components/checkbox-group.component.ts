@@ -15,7 +15,7 @@ import { UpdateControl } from '../app.component'
         <bal-field required>
           <bal-field-label>Checkbox Group Label</bal-field-label>
           <bal-field-control>
-            <bal-checkbox-group control formControlName="checkboxGroup" data-test="checkboxGroup">
+            <bal-checkbox-group control formControlName="checkboxGroup" data-testid="checkboxGroup">
               <bal-checkbox value="Apple">Apple</bal-checkbox>
               <bal-checkbox value="Kiwi">Kiwi</bal-checkbox>
               <bal-checkbox value="Mango">Mango</bal-checkbox>

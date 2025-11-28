@@ -15,7 +15,7 @@ import { UpdateControl } from '../app.component'
         <bal-field required>
           <bal-field-label>Radio Label</bal-field-label>
           <bal-field-control>
-            <bal-radio-group formControlName="radio" data-test="radio">
+            <bal-radio-group formControlName="radio" data-testid="radio">
               <bal-radio value="Apple">Apple</bal-radio>
               <bal-radio value="Kiwi">Kiwi</bal-radio>
               <bal-radio value="Mango">Mango</bal-radio>

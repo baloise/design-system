@@ -1,25 +1,24 @@
-import { test, expect, screenshot } from '@baloise/ds-playwright'
+import { expect, screenshot, test } from '@baloise/ds-playwright'
 
-test.describe('visual', () => {
-  const image = screenshot('bal-tag')
+const TAG = 'bal-tag'
 
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/components/bal-tag/test/bal-tag.visual.html')
-    await page.waitForSelector('bal-tag')
-  })
+const image = screenshot(TAG)
 
-  test('basic', async ({ page }) => {
-    const el = page.getByTestId('basic')
-    await expect(el).toHaveScreenshot(image('basic'))
-  })
+test.beforeEach('Setup', async ({ page }) => {
+  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+})
 
-  test('colors', async ({ page }) => {
-    const el = page.getByTestId('colors')
-    await expect(el).toHaveScreenshot(image('colors'))
-  })
+test('basic', async ({ page }) => {
+  const el = page.getByTestId('basic')
+  await expect(el).toHaveScreenshot(image('basic'))
+})
 
-  test('sizes', async ({ page }) => {
-    const el = page.getByTestId('sizes')
-    await expect(el).toHaveScreenshot(image('sizes'))
-  })
+test('colors', async ({ page }) => {
+  const el = page.getByTestId('colors')
+  await expect(el).toHaveScreenshot(image('colors'))
+})
+
+test('sizes', async ({ page }) => {
+  const el = page.getByTestId('sizes')
+  await expect(el).toHaveScreenshot(image('sizes'))
 })

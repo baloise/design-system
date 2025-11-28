@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
@@ -15,7 +15,7 @@ import { UpdateControl } from '../app.component'
         <bal-field required>
           <bal-field-label>Segment Label</bal-field-label>
           <bal-field-control>
-            <bal-segment formControlName="segment" data-test="segment">
+            <bal-segment formControlName="segment" data-testid="segment">
               <bal-segment-item value="Apple">Apple</bal-segment-item>
               <bal-segment-item value="Kiwi">Kiwi</bal-segment-item>
               <bal-segment-item value="Mango">Mango</bal-segment-item>

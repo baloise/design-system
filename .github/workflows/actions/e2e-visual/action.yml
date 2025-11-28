@@ -16,12 +16,6 @@ runs:
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}
 
-    - name: Report Visual Failures
-      if: failure()
-      working-directory: ./e2e
-      run: npm run visual-report
-      shell: bash
-
     - name: Upload snapshots
       uses: actions/upload-artifact@v4
       if: failure()

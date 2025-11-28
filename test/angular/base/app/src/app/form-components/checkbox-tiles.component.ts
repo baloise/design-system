@@ -15,7 +15,7 @@ import { UpdateControl } from '../app.component'
         <bal-field required>
           <bal-field-label>Checkbox Tile Label</bal-field-label>
           <bal-field-control>
-            <bal-checkbox-group interface="tile" control formControlName="checkboxTiles" data-test="checkboxTiles">
+            <bal-checkbox-group interface="tile" control formControlName="checkboxTiles" data-testid="checkboxTiles">
               <bal-checkbox value="Apple">
                 <bal-stack>
                   <bal-content>

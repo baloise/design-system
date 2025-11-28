@@ -525,7 +525,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
                 }}
               >
                 <bal-heading
-                  data-test="bal-popup-label"
+                  data-testid="bal-popup-label"
                   level="span"
                   visual-level="large"
                   id={`${this.popupId}-heading`}
@@ -533,7 +533,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
                   {this.label}
                 </bal-heading>
                 {this.activeClosable ? (
-                  <bal-close data-test="bal-popup-close" tabindex={-1} onClick={() => this.onCloseClick()}></bal-close>
+                  <bal-close
+                    data-testid="bal-popup-close"
+                    tabindex={-1}
+                    onClick={() => this.onCloseClick()}
+                  ></bal-close>
                 ) : (
                   ''
                 )}
@@ -546,7 +550,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
                 ...innerContentBlock.class(),
               }}
               ref={contentEl => (this.contentEl = contentEl)}
-              data-test="bal-popup-content"
+              data-testid="bal-popup-content"
               tabindex="-1"
             >
               <slot></slot>

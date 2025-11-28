@@ -1,7 +1,7 @@
-import { test, expect, BalTag } from '@baloise/ds-playwright'
+import { BalTag, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach('Setup', async ({ page }) => {
     await page.mount(`
       <bal-tag closable>My tag</bal-tag>
     `)

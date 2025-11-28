@@ -16,7 +16,6 @@
   // default color
   background: var(--bal-checkbox-switch-label-background-before)
 
-
   &--hovered,
   &:hover
     +hover
@@ -81,11 +80,11 @@
       background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
 
   &--invalid#{&}--checked#{&}--hovered,
-    &--invalid#{&}--checked:hover
-      background: var(--bal-checkbox-switch-label-background-invalid-checked-hovered-before)
+  &--invalid#{&}--checked:hover
+    background: var(--bal-checkbox-switch-label-background-invalid-checked-hovered-before)
 
-      .bal-switch__toggle
-        background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
+    .bal-switch__toggle
+      background: var(--bal-checkbox-switch-label-background-invalid-checked-after)
 
   &--invalid#{&}--checked#{&}--pressed,
   &--invalid#{&}--checked:active
@@ -125,7 +124,7 @@
   transform: translateX(100%)
   background: var(--bal-checkbox-switch-label-background-checked-after)
 
-.bal-icon
+.bal-switch .bal-icon
   position: absolute
 
   .bal-switch__icon--checked

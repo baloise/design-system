@@ -108,6 +108,7 @@ test/angular/*
 !test/angular/build.sh
 !test/angular/start.sh
 playwright-report
+playwright.visual.config.ts
 
 test/react/*
 !test/react/base

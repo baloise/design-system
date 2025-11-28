@@ -333,7 +333,7 @@ export class Tooltip implements ComponentInterface, Loggable {
                 ...innerContentBlock.class(),
               }}
               ref={contentEl => (this.contentEl = contentEl)}
-              data-test="bal-tooltip-content"
+              data-testid="bal-tooltip-content"
             >
               <slot></slot>
             </div>

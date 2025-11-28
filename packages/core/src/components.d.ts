@@ -85,7 +85,7 @@ export namespace Components {
          */
         "toggle": () => Promise<boolean>;
         /**
-          * @default 1
+          * @default 2
          */
         "version": number;
     }
@@ -6107,7 +6107,7 @@ declare namespace LocalJSX {
          */
         "openLabel"?: string;
         /**
-          * @default 1
+          * @default 2
          */
         "version"?: number;
     }
