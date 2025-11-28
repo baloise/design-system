@@ -506,10 +506,21 @@ export class Dropdown
               chips={this.chips}
               placeholder={this.placeholder}
               choices={this.choices}
-              invalid={this.invalid}
-              disabled={this.disabled}
-              readonly={this.readonly}
-              onRemoveChip={option => this.valueUtil.removeOption(option)}
+              renderChip={option => {
+                return (
+                  <bal-tag
+                    key={option.value}
+                    data-testid="bal-dropdown-chip"
+                    size="small"
+                    invalid={this.invalid}
+                    disabled={this.disabled || this.readonly}
+                    closable={!(this.disabled || this.readonly)}
+                    onBalCloseClick={() => this.valueUtil.removeOption(option)}
+                  >
+                    {option.label}
+                  </bal-tag>
+                )
+              }}
             ></DropdownValue>
           </span>
           <DropdownInput
