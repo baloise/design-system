@@ -1,0 +1,381 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@forward '../bal-link/bal-link.style';
+
+/**
+  * Mixins
+  */
+
+@mixin color($color, $outline-state: base) {
+  background-color: var(--bal-button-color-background-#{$color}-base);
+  color: var(--bal-button-color-text-#{$color}-base);
+  border: var(--bal-button-border-#{$color}-base);
+
+  @include fillSvg(var(--bal-button-color-text-#{$color}-base));
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      background-color: var(--bal-button-color-background-#{$color}-hover);
+      color: var(--bal-button-color-text-#{$color}-hover);
+      border: var(--bal-button-border-#{$color}-hover);
+
+      @include fillSvg(var(--bal-button-color-text-#{$color}-hover));
+    }
+  }
+
+  &:active,
+  &.is-active {
+    background-color: var(--bal-button-color-background-#{$color}-active);
+    color: var(--bal-button-color-text-#{$color}-active);
+    border: var(--bal-button-border-#{$color}-active);
+    translate: 0 0.5px;
+
+    @include fillSvg(var(--bal-button-color-text-#{$color}-active));
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      box-shadow: var(--bal-button-shadow-outline-#{$outline-state});
+    }
+  }
+}
+
+@mixin dashed($color) {
+  border: var(--bal-button-border-#{$color}-dash);
+  border-style: dashed;
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      border: var(--bal-button-border-#{$color}-hover);
+      border-style: dashed;
+    }
+  }
+
+  &:active,
+  &.is-active {
+    border: var(--bal-button-border-#{$color}-active);
+    border-style: dashed;
+    background: var(--bal-button-color-background-#{$color}-dash);
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.button {
+  @extend %unselectable;
+  @extend %font-smoothing;
+
+  appearance: auto;
+  position: relative;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  gap: 0.375rem;
+  cursor: pointer;
+  min-height: 3rem;
+  padding-inline: 1.5rem;
+  word-break: normal;
+  box-shadow: none;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-select: none;
+  touch-action: manipulation;
+  font-family: var(--bal-button-font-family);
+  font-weight: var(--bal-button-font-weight);
+  line-height: var(--bal-button-line-height);
+  border-radius: var(--bal-button-radius-base);
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  font-size: var(--bal-button-font-size-normal);
+}
+
+button.button {
+  appearance: auto;
+}
+
+.button::-moz-focus-inner {
+  border: 0;
+}
+
+.button:is(input[type='checkbox'], input[type='radio'])[aria-label]::after {
+  --button-content: attr(aria-label);
+
+  content: var(--button-content);
+}
+
+// Wrap
+.button.has-no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// Outline
+.button:focus,
+.button.is-focused,
+.button:active,
+.button.is-active {
+  outline: none;
+}
+
+// Disabled cursor state
+.button[disabled],
+fieldset[disabled] .button {
+  cursor: default;
+}
+
+// Colors
+.button,
+.button.is-primary {
+  @include color(primary, base);
+}
+
+.button.is-secondary {
+  @include color(secondary, base);
+}
+
+.button.is-text,
+.button.is-neutral,
+.button.is-tertiary {
+  @include color(tertiary, base);
+}
+
+.button.is-tertiary-purple {
+  @include color(tertiary-purple, base);
+}
+
+.button.is-tertiary-red {
+  @include color(tertiary-red, base);
+}
+
+.button.is-tertiary-yellow {
+  @include color(tertiary-yellow, base);
+}
+
+.button.is-tertiary-green {
+  @include color(tertiary-green, base);
+}
+
+.button.is-light,
+.button.is-accent {
+  @include color(accent, base);
+}
+
+.button.is-link {
+  text-decoration: var(--bal-link-text-decoration);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+
+  @include color(link, base);
+}
+
+.button.is-info {
+  @include color(info, base);
+}
+
+.button.is-success {
+  @include color(success, base);
+}
+
+.button.is-warning {
+  @include color(warning, base);
+}
+
+.button.is-danger {
+  @include color(danger, base);
+}
+
+.button.is-inverted,
+.button.is-inverted.is-primary {
+  @include color(inverted-primary, base);
+}
+
+.button.is-inverted.is-secondary {
+  @include color(inverted-secondary, base);
+}
+
+.button.is-inverted.is-text,
+.button.is-inverted.is-tertiary {
+  @include color(inverted-tertiary, base);
+}
+
+.button.is-inverted.is-light,
+.button.is-inverted.is-accent {
+  @include color(inverted-accent, base);
+}
+
+.button.is-inverted.is-link {
+  @include color(inverted-link, base);
+}
+
+// Checkbox & Radio
+
+.button:is(input[type='checkbox'], input[type='radio']) {
+  @include color(secondary, base);
+
+  appearance: none;
+  vertical-align: middle;
+}
+
+.button:is(input[type='checkbox'], input[type='radio']):where(input:checked) {
+  @include color(primary, base);
+
+  isolation: isolate;
+}
+
+// Disabled state
+
+.button.is-disabled,
+.button[disabled] {
+  pointer-events: none;
+  opacity: 1;
+  box-shadow: none;
+  cursor: default;
+  background-color: var(--bal-button-color-background-disabled-base);
+  border: var(--bal-button-border-disabled-base);
+  color: var(--bal-button-color-text-disabled-base);
+}
+
+// Sizes
+
+.button.is-small {
+  font-size: var(--bal-button-font-size-small);
+  min-height: 2rem;
+  max-height: 2rem;
+  min-width: 2rem;
+  padding-inline: 0.75rem;
+}
+
+.button.is-large {
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+  min-width: 3.5rem;
+  padding-inline: 1.5rem;
+}
+
+.button.is-fullwidth {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.button.is-flat {
+  padding: 0;
+  padding-inline: 0;
+  min-height: 1.5rem;
+}
+
+.button.is-square {
+  padding-inline: 0;
+  min-width: 3rem;
+  gap: 0;
+}
+
+.button.is-square.is-small {
+  min-width: 2rem;
+}
+
+.button.is-circle {
+  padding-inline: 0;
+  min-width: 3rem;
+  gap: 0;
+  border-radius: var(--bal-button-radius-rounded);
+}
+
+.button.is-circle.is-small {
+  min-width: 2rem;
+}
+
+// Icons
+
+.button:where(:not(.is-square, .is-circle), .is-small) > bal-icon,
+.button:where(:not(.is-square, .is-circle), .is-small) > bal-icon > .bal-icon__inner {
+  width: 0.875rem;
+  max-height: 0.875rem;
+}
+
+.button.is-dashed > bal-icon.is-circle {
+  border-radius: var(--bal-button-radius-rounded);
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.button.is-tertiary-purple.is-dashed > bal-icon.is-circle {
+  background-color: var(--bal-color-purple-3);
+}
+
+.button.is-tertiary-red.is-dashed > bal-icon.is-circle {
+  background-color: var(--bal-color-red-3);
+}
+
+.button.is-tertiary-green.is-dashed > bal-icon.is-circle {
+  background-color: var(--bal-color-green-3);
+}
+
+.button.is-tertiary-yellow.is-dashed > bal-icon.is-circle {
+  background-color: var(--bal-color-yellow-3);
+}
+
+// Spinner
+
+.button > bal-spinner:not([variation='circle']) {
+  width: 2rem;
+}
+
+.button:where(
+    :not(
+        .is-secondary,
+        .is-tertiary,
+        .is-tertiary-purple,
+        .is-tertiary-red,
+        .is-tertiary-yellow,
+        .is-tertiary-green,
+        .is-accent,
+        .is-text,
+        .is-light,
+        .is-link,
+        .is-info,
+        .is-success,
+        .is-warning,
+        .is-danger
+      )
+  )
+  > bal-spinner[variation='circle'] {
+  border-color: var(--bal-color-primary-3);
+  border-top-color: var(--bal-color-white);
+}
+
+// Radius
+
+.button.is-rounded {
+  border-radius: var(--bal-button-radius-rounded);
+}
+
+/**
+  * Dashed Style
+  */
+
+.button.is-tertiary-purple.is-dashed {
+  @include dashed(tertiary-purple);
+}
+
+.button.is-tertiary-red.is-dashed {
+  @include dashed(tertiary-red);
+}
+
+.button.is-tertiary-green.is-dashed {
+  @include dashed(tertiary-green);
+}
+
+.button.is-tertiary-yellow.is-dashed {
+  @include dashed(tertiary-yellow);
+}

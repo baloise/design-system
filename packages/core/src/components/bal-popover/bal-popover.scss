@@ -63,7 +63,7 @@
       box-shadow: none;
     }
     @include modifier(radius-normal) {
-      border-radius: var(--bal-radius-normal);
+      border-radius: var(--bal-radius-base);
     }
     @include modifier(radius-large) {
       border-radius: var(--bal-radius-large);
@@ -72,12 +72,12 @@
       border-radius: 0;
     }
     @include modifier(radius-normal-bottom-none) {
-      border-radius: var(--bal-radius-normal);
+      border-radius: var(--bal-radius-base);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }
     @include modifier(radius-normal-top-none) {
-      border-radius: var(--bal-radius-normal);
+      border-radius: var(--bal-radius-base);
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }

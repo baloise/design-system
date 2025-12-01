@@ -1,0 +1,417 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+$stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-large', 'xx-large');
+
+/**
+  * Mixins
+  */
+
+@mixin gap($space, $property: gap) {
+  #{$property}: var(--bal-space-#{$space});
+
+  @include tablet {
+    #{$property}: var(--bal-space-#{$space}-tablet);
+  }
+
+  @include desktop {
+    #{$property}: var(--bal-space-#{$space}-desktop);
+  }
+}
+
+@mixin p($space) {
+  padding: var(--bal-space-#{$space});
+
+  @include tablet {
+    padding: var(--bal-space-#{$space}-tablet);
+  }
+
+  @include desktop {
+    padding: var(--bal-space-#{$space}-desktop);
+  }
+}
+
+@mixin px($space) {
+  padding-left: var(--bal-space-#{$space});
+  padding-right: var(--bal-space-#{$space});
+
+  @include tablet {
+    padding-left: var(--bal-space-#{$space}-tablet);
+    padding-right: var(--bal-space-#{$space}-tablet);
+  }
+
+  @include desktop {
+    padding-left: var(--bal-space-#{$space}-desktop);
+    padding-right: var(--bal-space-#{$space}-desktop);
+  }
+}
+
+@mixin py($space) {
+  padding-top: var(--bal-space-#{$space});
+  padding-bottom: var(--bal-space-#{$space});
+
+  @include tablet {
+    padding-top: var(--bal-space-#{$space}-tablet);
+    padding-bottom: var(--bal-space-#{$space}-tablet);
+  }
+
+  @include desktop {
+    padding-top: var(--bal-space-#{$space}-desktop);
+    padding-bottom: var(--bal-space-#{$space}-desktop);
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.stack {
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 1rem;
+
+  //
+  // directions
+  &.as-row,
+  &.has-direction-row,
+  &.is-horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.as-col,
+  &.has-direction-column,
+  &.is-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &.as-row-reverse,
+  &.has-direction-row-reverse,
+  &.is-horizontal-reverse {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &.as-col-reverse,
+  &.has-direction-column-reverse,
+  &.is-vertical-reverse {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}
+
+.stack-content {
+  text-align: left;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  gap: 0.25rem;
+
+  //
+  // directions
+  &.as-row,
+  &.has-direction-row,
+  &.is-horizontal {
+    flex-direction: row;
+  }
+
+  &.as-col,
+  &.has-direction-column,
+  &.is-vertical {
+    flex-direction: column;
+  }
+
+  &.as-row-reverse,
+  &.has-direction-row-reverse,
+  &.is-horizontal-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.as-col-reverse,
+  &.has-direction-column-reverse,
+  &.is-vertical-reverse {
+    flex-direction: column-reverse;
+  }
+
+  //
+  // alignment
+  &.align-top-center,
+  &.align-bottom-center,
+  &.align-center {
+    text-align: center;
+  }
+
+  &.align-top-end,
+  &.align-bottom-end,
+  &.align-end {
+    text-align: right;
+  }
+}
+
+.stack,
+.stack-content {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+
+  // wrap elements
+  &.has-wrap {
+    flex-wrap: wrap;
+  }
+
+  // fit-content
+  &.fit-content {
+    flex: unset;
+    width: fit-content;
+  }
+
+  //
+  // alignments
+  &.align-top-start {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &.align-top-center {
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &.align-top-end {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  &.align-start {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.align-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.align-end {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.align-bottom-start {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  &.align-bottom-center {
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  &.align-bottom-end {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &.as-col,
+  &.has-direction-column,
+  &.is-vertical,
+  &.as-col-reverse,
+  &.has-direction-column-reverse,
+  &.is-vertical-reverse {
+    &.align-top-start {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    &.align-top-center {
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &.align-top-end {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    &.align-start {
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    &.align-center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.align-end {
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    &.align-bottom-start {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    &.align-bottom-center {
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &.align-bottom-end {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
+
+  //
+  // Padding
+
+  @each $space in $stack-space {
+    &.p-#{$space} {
+      @include p($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.px-#{$space} {
+      @include px($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.py-#{$space} {
+      @include py($space);
+    }
+  }
+
+  &.p-none {
+    padding: 0;
+  }
+
+  &.px-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.py-none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  //
+  // spaces
+  &.gap-auto,
+  &.gap-x-auto,
+  &.gap-col-auto,
+  &.gap-y-auto,
+  &.gap-row-auto,
+  &.has-space-auto,
+  &.has-space-col-auto,
+  &.has-space-row-auto {
+    justify-content: space-between;
+  }
+
+  &.gap-none,
+  &.has-space-none {
+    gap: 0;
+
+    @include tablet {
+      gap: 0;
+    }
+
+    @include desktop {
+      gap: 0;
+    }
+  }
+
+  &.gap-x-none,
+  &.gap-col-none,
+  &.has-space-col-none {
+    column-gap: 0;
+
+    @include tablet {
+      column-gap: 0;
+    }
+
+    @include desktop {
+      column-gap: 0;
+    }
+  }
+
+  &.gap-y-none,
+  &.gap-row-none,
+  &.has-space-row-none {
+    row-gap: 0;
+
+    @include tablet {
+      row-gap: 0;
+    }
+
+    @include desktop {
+      row-gap: 0;
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-#{$space},
+    &.has-space-#{$space} {
+      @include gap($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-x-#{$space},
+    &.gap-col-#{$space},
+    &.has-space-col-#{$space} {
+      @include gap($space, column-gap);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-y-#{$space},
+    &.gap-row-#{$space},
+    &.has-space-row-#{$space} {
+      @include gap($space, row-gap);
+    }
+  }
+}
+
+//
+// custom position
+.stack > bal-radio {
+  margin-top: -0.25rem;
+}
+
+//
+// reset margin botton space
+.stack > bal-text,
+.stack > bal-label,
+.stack > bal-heading,
+.stack > bal-heading:not(:last-child),
+.stack > .label,
+.stack > .heading,
+.stack > .heading:not(:last-child),
+.stack > .title,
+.stack > .title:not(:last-child),
+.stack > .subtitle,
+.stack > .subtitle:not(:last-child),
+.stack > .link,
+.stack > .is-link,
+.stack > p {
+  margin: 0;
+}
+
+bal-content > .bal-text,
+.stack-content > .bal-text {
+  margin: 0;
+}
+
+.stack-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.25rem;
+}

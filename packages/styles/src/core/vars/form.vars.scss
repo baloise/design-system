@@ -68,13 +68,13 @@
   --bal-form-field-control-font-family: var(--bal-font-family-text);
   --bal-form-field-control-color: var(--bal-color-text-primary);
   --bal-form-field-control-placeholder-color: var(--bal-color-text-primary-light);
-  --bal-form-field-control-radius: var(--bal-radius-normal);
+  --bal-form-field-control-radius: var(--bal-radius-base);
   --bal-form-field-control-background: var(--bal-color-white);
   --bal-form-field-control-background-hover: var(--bal-color-grey-1);
   --bal-form-field-control-background-active: var(--bal-color-grey-1);
-  --bal-form-field-control-border-width: var(--bal-border-width-normal);
+  --bal-form-field-control-border-width: var(--bal-border-width-base);
   --bal-form-field-control-border-style: solid;
-  --bal-form-field-control-border-color: var(--bal-color-border);
+  --bal-form-field-control-border-color: var(--bal-color-border-base);
   --bal-form-field-control-border-color-hover: var(--bal-form-field-control-border-color);
   --bal-form-field-control-border-color-active: var(--bal-color-border-primary);
   // success
@@ -106,8 +106,8 @@
   --bal-form-field-label-color-active: var(--bal-link-color-active);
   --bal-form-field-label-success-color: var(--bal-color-text-success);
   --bal-form-field-label-danger-color: var(--bal-color-text-danger);
-  --bal-form-field-label-danger-color-hover: var(--bal-color-text-danger-hovered);
-  --bal-form-field-label-danger-color-active: var(--bal-color-text-danger-pressed);
+  --bal-form-field-label-danger-color-hover: var(--bal-color-text-danger-hover);
+  --bal-form-field-label-danger-color-active: var(--bal-color-text-danger-active);
   --bal-form-field-label-disabled-color: var(--bal-color-text-grey);
   //
   // field message

@@ -15,8 +15,10 @@ export default {
       {
         except: ['first-nested', 'blockless-after-blockless'],
         ignore: ['after-comment'],
+        ignoreAtRules: ['else'],
       },
     ],
     'scss/comment-no-empty': null,
+    'no-duplicate-selectors': null,
   },
 }

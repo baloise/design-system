@@ -33,8 +33,8 @@
   width: 100%;
   text-align: left;
   gap: 1rem;
-  padding-left: calc(0.75em - var(--bal-border-width-normal));
-  padding-right: calc(0.75em - var(--bal-border-width-normal));
+  padding-left: calc(0.75em - var(--bal-border-width-base));
+  padding-right: calc(0.75em - var(--bal-border-width-base));
   justify-content: center;
   align-items: center;
   &--autofill {
@@ -95,13 +95,13 @@
   border: none;
   background: transparent;
   position: absolute;
-  right: var(--bal-border-width-normal);
-  left: var(--bal-border-width-normal);
-  top: var(--bal-border-width-normal);
-  bottom: var(--bal-border-width-normal);
+  right: var(--bal-border-width-base);
+  left: var(--bal-border-width-base);
+  top: var(--bal-border-width-base);
+  bottom: var(--bal-border-width-base);
   opacity: 0;
-  padding-left: calc(0.75em - var(--bal-border-width-normal));
-  padding-right: calc(0.75em - var(--bal-border-width-normal));
+  padding-left: calc(0.75em - var(--bal-border-width-base));
+  padding-right: calc(0.75em - var(--bal-border-width-base));
   cursor: pointer;
   &:disabled {
     cursor: default;
@@ -132,7 +132,7 @@
   left: 0;
   will-change: left, top, opacity;
   background: var(--bal-color-white);
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   box-shadow: var(--bal-shadow-normal);
   z-index: var(--bal-z-index-popup);
   @include tablet {
@@ -238,10 +238,10 @@
       background: var(--bal-color-purple-3);
       .bal-dropdown__root__input,
       .bal-dropdown__root__content {
-        color: var(--bal-color-text-primary-pressed);
+        color: var(--bal-color-text-primary-active);
       }
       .bal-icon__inner {
-        @include fillSvg(var(--bal-color-text-primary-pressed));
+        @include fillSvg(var(--bal-color-text-primary-active));
       }
     }
     &:active {
@@ -271,12 +271,12 @@
 }
 .bal-dropdown__root--focused.bal-dropdown__root--theme-purple:before {
   content: '';
-  border-width: var(--bal-border-width-normal);
+  border-width: var(--bal-border-width-base);
   border-style: solid;
   border-color: var(--bal-focus-shadow-end-color);
   position: absolute;
   background: transparent;
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   top: -0.25rem;
   bottom: -0.25rem;
   left: -0.25rem;

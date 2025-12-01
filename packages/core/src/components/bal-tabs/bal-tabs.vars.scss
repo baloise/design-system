@@ -25,13 +25,13 @@
 :root {
   //
   // background colors
-  --bal-tabs-tab-nav-border-background: var(--bal-color-border);
+  --bal-tabs-tab-nav-border-background: var(--bal-color-border-base);
   --bal-tabs-tab-nav-border-background-inverted: var(--bal-color-border-inverted);
   --bal-tabs-tab-nav-line-background: var(--bal-color-border-primary);
   --bal-tabs-tab-nav-line-background-inverted: var(--bal-color-border-inverted);
   //
   // radius
-  --bal-tabs-tab-button-radius: var(--bal-radius-normal);
+  --bal-tabs-tab-button-radius: var(--bal-radius-base);
   --bal-tabs-tab-nav-border-radius: var(--bal-radius-rounded);
   --bal-tabs-tab-nav-line-radius: var(--bal-radius-rounded);
   //

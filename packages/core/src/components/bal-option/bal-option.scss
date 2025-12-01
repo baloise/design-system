@@ -51,18 +51,18 @@
 // Focused Option
 // --------------------------------------------------
 .bal-option--focused {
-  background: var(--bal-option-background-hovered);
+  background: var(--bal-option-background-hover);
 }
 .bal-option {
   @include hover {
     &:hover {
-      background: var(--bal-option-background-hovered);
-      color: var(--bal-option-text-hovered);
+      background: var(--bal-option-background-hover);
+      color: var(--bal-option-text-hover);
     }
   }
   &:active {
-    background: var(--bal-option-background-hovered);
-    color: var(--bal-option-text-pressed);
+    background: var(--bal-option-background-hover);
+    color: var(--bal-option-text-active);
   }
   // Selected Option
   // --------------------------------------------------
@@ -71,18 +71,18 @@
   background: var(--bal-option-background-selected);
   @include hover {
     &:hover {
-      background: var(--bal-option-background-selected-hovered);
+      background: var(--bal-option-background-selected-hover);
     }
   }
   &:active {
-    background: var(--bal-option-background-selected-hovered);
+    background: var(--bal-option-background-selected-hover);
   }
 }
 .bal-option--selected .bal-option__inner {
   font-weight: var(--bal-font-weight-bold);
 }
 .bal-option--selected.bal-option--focused {
-  background: var(--bal-option-background-selected-hovered);
+  background: var(--bal-option-background-selected-hover);
   .bal-option__inner {
     font-weight: var(--bal-font-weight-bold);
   }
@@ -93,26 +93,26 @@
   background: var(--bal-option-background-invalid);
   @include hover {
     &:hover {
-      background: var(--bal-option-background-invalid-hovered);
+      background: var(--bal-option-background-invalid-hover);
     }
   }
   &:active {
-    background: var(--bal-option-background-invalid-hovered);
+    background: var(--bal-option-background-invalid-hover);
   }
 }
 .bal-option--invalid.bal-option--focused {
-  background: var(--bal-option-background-invalid-hovered);
+  background: var(--bal-option-background-invalid-hover);
 }
 .bal-option--invalid .bal-option__inner {
-  color: var(--bal-color-text-danger-hovered);
+  color: var(--bal-color-text-danger-hover);
 }
 @include hover {
   .bal-option--invalid:hover .bal-option__inner {
-    color: var(--bal-color-text-danger-hovered);
+    color: var(--bal-color-text-danger-hover);
   }
 }
 .bal-option--invalid:active .bal-option__inner {
-  color: var(--bal-color-text-danger-pressed);
+  color: var(--bal-color-text-danger-active);
 }
 // Disbaled Option
 // --------------------------------------------------

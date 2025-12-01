@@ -46,9 +46,9 @@
 
   outline: none;
   border-color: transparent;
-  border-width: var(--bal-border-width-normal);
+  border-width: var(--bal-border-width-base);
   border-style: solid;
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   background: transparent;
 
   font-size: var(--bal-text-size-normal);
@@ -87,7 +87,7 @@
   content: '';
   position: absolute;
   background: var(--bal-segment-item-divider-background);
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
 }
 .bal-segment-item:not(.bal-segment-item--vertical):not(.bal-segment-item--checked):not(.bal-segment-item--last):not(
     .bal-segment-item--before-checked
@@ -120,7 +120,7 @@
   opacity: 0;
   box-sizing: border-box;
   pointer-events: none;
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   background: var(--bal-segment-item-indicator-background);
   top: 0;
   left: 0;
@@ -205,13 +205,13 @@
   @include hover {
     &:hover {
       .bal-segment-item__button:not(.bal-segment-item__button--checked) {
-        color: var(--bal-segment-item-text-color-hovered);
+        color: var(--bal-segment-item-text-color-hover);
       }
     }
   }
   &:active {
     .bal-segment-item__button:not(.bal-segment-item__button--checked) {
-      color: var(--bal-segment-item-text-color-pressed);
+      color: var(--bal-segment-item-text-color-active);
     }
     // Focused
     // --------------------------------------------------
@@ -221,7 +221,7 @@
   .bal-segment-item__button:not(.bal-segment-item__button--disabled):focus-visible,
   .bal-segment-item__button--focused:not(.bal-segment-item__button--disabled) {
     border-color: var(--bal-segment-item-focus-border);
-    border-width: var(--bal-border-width-normal);
+    border-width: var(--bal-border-width-base);
     border-style: solid;
     transition: border 300ms ease-in-out;
   }
@@ -235,13 +235,13 @@
   @include hover {
     &:hover {
       .bal-segment-item__button:not(.bal-segment-item__button--checked) {
-        color: var(--bal-segment-item-text-color-invalid-hovered);
+        color: var(--bal-segment-item-text-color-invalid-hover);
       }
     }
   }
   &:active {
     .bal-segment-item__button:not(.bal-segment-item__button--checked) {
-      color: var(--bal-segment-item-text-color-invalid-pressed);
+      color: var(--bal-segment-item-text-color-invalid-active);
     }
   }
 }

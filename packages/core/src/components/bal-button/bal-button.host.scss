@@ -1,0 +1,15 @@
+$has-spacing: false;
+
+@forward '../../../../styles/sass/normalize';
+@forward './bal-button.style';
+
+/**
+  * Host Style
+  */
+
+:host {
+  display: inline-block;
+  position: static;
+  margin: 0;
+  padding: 0;
+}

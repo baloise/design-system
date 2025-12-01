@@ -168,7 +168,7 @@
     }
     bal-logo {
       svg {
-        @include fillSvg(var(--bal-color-primary));
+        @include fillSvg(var(--bal-color-brand-primary-base));
       }
     }
   }

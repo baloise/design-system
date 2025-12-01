@@ -1,0 +1,8 @@
+- Icons
+- Text
+- Button Group
+- Check visuals
+- Create new visuals with the new styles
+- Update docs
+- Check Dropdown with Shadow DOM
+- Check to switch label, heading, text, stack, content component in the proxy libs

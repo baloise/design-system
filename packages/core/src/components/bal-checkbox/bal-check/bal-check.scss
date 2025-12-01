@@ -20,14 +20,14 @@
   &--hovered,
   &:hover {
     @include hover {
-      background: var(--bal-check-background-hovered);
-      border-color: var(--bal-check-border-color-hovered);
+      background: var(--bal-check-background-hover);
+      border-color: var(--bal-check-border-color-hover);
     }
   }
   &--pressed,
   &:active {
-    background: var(--bal-check-background-pressed);
-    border-color: var(--bal-check-border-color-pressed);
+    background: var(--bal-check-background-active);
+    border-color: var(--bal-check-border-color-active);
   } //
   // checked
   bal-icon {
@@ -43,14 +43,14 @@
   &--checked#{&}--hovered,
   &--checked:hover {
     @include hover {
-      background: var(--bal-check-background-checked-hovered);
-      border-color: var(--bal-check-border-color-checked-hovered);
+      background: var(--bal-check-background-checked-hover);
+      border-color: var(--bal-check-border-color-checked-hover);
     }
   }
   &--checked#{&}--pressed,
   &--checked:active {
-    background: var(--bal-check-background-checked-pressed);
-    border-color: var(--bal-check-border-color-checked-pressed);
+    background: var(--bal-check-background-checked-active);
+    border-color: var(--bal-check-border-color-checked-active);
   }
   &--checked#{&}--inverted {
     border-color: var(--bal-check-color-inverted);
@@ -63,14 +63,14 @@
   &--invalid#{&}--hovered,
   &--invalid:hover {
     @include hover {
-      background-color: var(--bal-check-background-invalid-hovered);
-      border-color: var(--bal-check-border-color-invalid-hovered);
+      background-color: var(--bal-check-background-invalid-hover);
+      border-color: var(--bal-check-border-color-invalid-hover);
     }
   }
   &--invalid#{&}--pressed,
   &--invalid:active {
-    background-color: var(--bal-check-background-invalid-pressed);
-    border-color: var(--bal-check-border-color-invalid-pressed);
+    background-color: var(--bal-check-background-invalid-active);
+    border-color: var(--bal-check-border-color-invalid-active);
   }
   &--invalid#{&}--checked {
     border-color: var(--bal-check-border-color-invalid);
@@ -79,14 +79,14 @@
   &--invalid#{&}--checked#{&}--hovered,
   &--invalid#{&}--checked:hover {
     @include hover {
-      background-color: var(--bal-check-background-invalid-checked-hovered);
-      border-color: var(--bal-check-border-color-invalid-hovered);
+      background-color: var(--bal-check-background-invalid-checked-hover);
+      border-color: var(--bal-check-border-color-invalid-hover);
     }
   }
   &--invalid#{&}--checked#{&}--pressed,
   &--invalid#{&}--checked:active {
-    background-color: var(--bal-check-background-invalid-checked-pressed);
-    border-color: var(--bal-check-border-color-invalid-pressed);
+    background-color: var(--bal-check-background-invalid-checked-active);
+    border-color: var(--bal-check-border-color-invalid-active);
   }
   &--invalid#{&}--checked#{&}--inverted {
     border-color: var(--bal-check-color-inverted);

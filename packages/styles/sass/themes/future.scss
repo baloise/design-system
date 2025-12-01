@@ -40,8 +40,8 @@
   --bal-color-green: var(--bal-color-green-4);
 
   --bal-color-text-primary: var(--bal-color-primary-4);
-  --bal-color-text-primary-hovered: var(--bal-color-primary-5);
-  --bal-color-text-primary-pressed: var(--bal-color-primary-6);
+  --bal-color-text-primary-hover: var(--bal-color-primary-5);
+  --bal-color-text-primary-active: var(--bal-color-primary-6);
 
   --bal-link-color: var(--bal-color-purple-4);
   --bal-link-color-hover: var(--bal-color-purple-5);
@@ -56,16 +56,16 @@
   --bal-button-color: var(--bal-color-purple-4);
   --bal-button-color-hover: var(--bal-color-purple-5);
   --bal-button-color-active: var(--bal-color-purple-6);
-  --bal-button-border-color: var(--bal-color-primary);
+  --bal-button-border-color: var(--bal-color-brand-primary-base);
   --bal-button-background-hover: var(--bal-color-grey-1);
   --bal-button-background-active: var(--bal-color-grey-2);
   --bal-button-border-color-hover: var(--bal-color-primary-4);
   --bal-button-border-color-active: var(--bal-color-primary-5);
   // Primary buttons
-  --bal-button-primary-background: var(--bal-color-primary);
+  --bal-button-primary-background: var(--bal-color-brand-primary-base);
   --bal-button-primary-background-hover: var(--bal-color-primary-5);
   --bal-button-primary-background-active: var(--bal-color-primary-6);
-  --bal-button-primary-border-color: var(--bal-color-primary);
+  --bal-button-primary-border-color: var(--bal-color-brand-primary-base);
   --bal-button-primary-border-color-hover: var(--bal-color-primary-5);
   --bal-button-primary-border-color-active: var(--bal-color-primary-6);
   //
@@ -120,11 +120,11 @@
   --bal-segment-item-indicator-background: var(--bal-color-green);
   --bal-segment-item-divider-background: var(--bal-color-grey-3);
   --bal-segment-item-text-color: var(--bal-color-grey-6);
-  --bal-segment-item-text-color-hovered: black;
-  --bal-segment-item-text-color-pressed: black;
+  --bal-segment-item-text-color-hover: black;
+  --bal-segment-item-text-color-active: black;
   --bal-segment-item-text-color-checked: white;
-  --bal-segment-item-text-color-checked-hovered: white;
-  --bal-segment-item-text-color-checked-pressed: white;
+  --bal-segment-item-text-color-checked-hover: white;
+  --bal-segment-item-text-color-checked-active: white;
   //
   // select
   --bal-select-control-border-color-focused: var(--bal-color-green);
@@ -134,22 +134,22 @@
   --bal-select-control-input-option-background-hover: var(--bal-color-grey-2);
   --bal-select-control-input-option-background-active: var(--bal-color-grey-3);
   --bal-option-background-selected: var(--bal-color-green-2);
-  --bal-option-background-hovered: var(--bal-color-grey-2);
-  --bal-option-background-pressed: var(--bal-color-grey-2);
-  --bal-option-background-selected-hovered: var(--bal-color-grey-2);
-  --bal-option-background-selected-pressed: var(--bal-color-grey-2);
-  --bal-option-text-hovered: black;
+  --bal-option-background-hover: var(--bal-color-grey-2);
+  --bal-option-background-active: var(--bal-color-grey-2);
+  --bal-option-background-selected-hover: var(--bal-color-grey-2);
+  --bal-option-background-selected-active: var(--bal-color-grey-2);
+  --bal-option-text-hover: black;
 
   --bal-check-border-color: var(--bal-color-green);
-  --bal-check-border-color-hovered: var(--bal-color-green-4);
-  --bal-check-border-color-pressed: var(--bal-color-green-5);
+  --bal-check-border-color-hover: var(--bal-color-green-4);
+  --bal-check-border-color-active: var(--bal-color-green-5);
 
   --bal-check-background-checked: var(--bal-color-green);
-  --bal-check-background-checked-hovered: var(--bal-color-green-4);
-  --bal-check-background-checked-pressed: var(--bal-color-green-5);
+  --bal-check-background-checked-hover: var(--bal-color-green-4);
+  --bal-check-background-checked-active: var(--bal-color-green-5);
   --bal-check-border-color-checked: var(--bal-color-green);
-  --bal-check-border-color-checked-hovered: var(--bal-color-green-4);
-  --bal-check-border-color-checked-pressed: var(--bal-color-green-5);
+  --bal-check-border-color-checked-hover: var(--bal-color-green-4);
+  --bal-check-border-color-checked-active: var(--bal-color-green-5);
   --bal-checkbox-switch-label-background-before: var(--bal-color-green-1);
   --bal-checkbox-switch-label-background-after: var(--bal-color-green);
   --bal-checkbox-switch-label-background-hover-after: var(--bal-color-green-5);
@@ -159,28 +159,28 @@
   --bal-checkbox-switch-label-background-checked-pressed-before: var(--bal-color-green-6);
 
   --bal-radio-icon-background-checked: var(--bal-color-green);
-  --bal-radio-icon-background-checked-hovered: var(--bal-color-green-5);
-  --bal-radio-icon-background-checked-pressed: var(--bal-color-green-6);
+  --bal-radio-icon-background-checked-hover: var(--bal-color-green-5);
+  --bal-radio-icon-background-checked-active: var(--bal-color-green-6);
   --bal-radio-icon-border-color: var(--bal-color-green);
-  --bal-radio-icon-border-color-hovered: var(--bal-color-green-5);
-  --bal-radio-icon-border-color-pressed: var(--bal-color-green-6);
+  --bal-radio-icon-border-color-hover: var(--bal-color-green-5);
+  --bal-radio-icon-border-color-active: var(--bal-color-green-6);
   --bal-radio-icon-border-color-checked: var(--bal-color-green);
-  --bal-radio-icon-border-color-checked-hovered: var(--bal-color-green-5);
-  --bal-radio-icon-border-color-checked-pressed: var(--bal-color-green-6);
+  --bal-radio-icon-border-color-checked-hover: var(--bal-color-green-5);
+  --bal-radio-icon-border-color-checked-active: var(--bal-color-green-6);
   //
   // Steps
-  --bal-steps-step-border-color-done: var(--bal-color-primary);
-  --bal-steps-step-border-color-done: var(--bal-color-primary);
-  --bal-steps-step-icon-background-done: var(--bal-color-primary);
+  --bal-steps-step-border-color-done: var(--bal-color-brand-primary-base);
+  --bal-steps-step-border-color-done: var(--bal-color-brand-primary-base);
+  --bal-steps-step-icon-background-done: var(--bal-color-brand-primary-base);
   --bal-steps-step-label-text-color-done: var(--bal-color-grey-6);
   --bal-steps-step-label-text-color: var(--bal-color-grey-6);
   --bal-steps-step-label-text-color-active: black;
   --bal-steps-step-icon-text-color: black;
   --bal-steps-step-border-color: var(--bal-color-grey-3);
   --bal-steps-step-button-progress-line-background: var(--bal-color-grey-3);
-  --bal-steps-step-border-color-active: var(--bal-color-primary);
-  --bal-steps-step-icon-background-active: var(--bal-color-primary);
-  --bal-steps-step-button-passed-background: var(--bal-color-primary);
+  --bal-steps-step-border-color-active: var(--bal-color-brand-primary-base);
+  --bal-steps-step-icon-background-active: var(--bal-color-brand-primary-base);
+  --bal-steps-step-button-passed-background: var(--bal-color-brand-primary-base);
   //
   // Pagination
   --bal-pagination-small-background: var(--bal-color-grey-3);
@@ -188,7 +188,7 @@
   // Tabs
   --bal-tabs-tab-nav-border-background: var(--bal-color-grey-3);
   --bal-tabs-tab-label-text-color: var(--bal-grey-6);
-  --bal-tabs-tab-label-text-color-active: var(--bal-color-primary);
+  --bal-tabs-tab-label-text-color-active: var(--bal-color-brand-primary-base);
   --bal-tabs-tab-button-label-text-color-hover: var(--bal-color-primary-5);
   --bal-tabs-tab-button-label-text-color-active: var(--bal-color-primary-6);
   --bal-tabs-tab-label-text-color-disabled: var(--bal-color-grey-5);
@@ -227,7 +227,7 @@
   // Spinner
   --bal-spinner-circle-background: var(--bal-color-info-1);
   --bal-spinner-circle-progress: var(--bal-color-green);
-  --bal-spinner-circle-progress-inverted: var(--bal-color-primary);
+  --bal-spinner-circle-progress-inverted: var(--bal-color-brand-primary-base);
   //
   // Footer
   --bal-footer-background: var(--bal-color-primary-5);
@@ -287,7 +287,7 @@ footer a.link {
 
 button.is-info,
 button.is-secondary {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-brand-primary-base);
   &:hover {
     color: var(--bal-color-primary-4);
   }

@@ -37,7 +37,7 @@ if (fileChanges) {
     copy('packages/tokens/dist/tokens.css', 'tokens.css')
 
     exec(
-      'node_modules/.bin/stylelint "**/*{style,host}.scss" --fix',
+      'node_modules/.bin/stylelint "**/*{style,host}.scss"',
       { cwd: workspaceRoot },
       (lintError, lintStdout, lintStderr) => {
         if (lintStderr) {

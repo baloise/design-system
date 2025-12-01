@@ -1,0 +1,10 @@
+@forward '../../../../styles/sass/normalize';
+@forward '../bal-stack/bal-stack.style';
+
+/**
+  * Host Style
+  */
+
+bal-content {
+  position: static;
+}

@@ -1,6 +1,11 @@
 $has-spacing: false;
 
+@forward '../../../../styles/sass/normalize';
 @forward './bal-heading.style';
+
+/**
+  * Host Style
+  */
 
 :host {
   display: block;

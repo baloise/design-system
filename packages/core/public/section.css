@@ -19,18 +19,30 @@ main > section > span:first-child {
   padding: 0 0.5rem;
 }
 
+.s-bg-inverted {
+  background-color: #000d6e !important;
+}
+
 .s-bg-1 {
-  background-color: #b8b2ff;
+  background-color: #b8b2ff !important;
 }
 
 .s-bg-2 {
-  background-color: #fae052;
+  background-color: #fae052 !important;
 }
 
 .s-mb {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
+}
+
+.s-height-4rem {
+  height: 4rem !important;
+}
+
+.s-height-8rem {
+  height: 8rem !important;
 }
 
 .s-p {
-  padding: 0.5rem;
+  padding: 0.5rem !important;
 }

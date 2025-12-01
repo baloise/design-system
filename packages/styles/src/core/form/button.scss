@@ -148,7 +148,9 @@
     border-color: var(--bal-button-border-color-active);
     color: var(--bal-button-color-active);
     @include fillSvg(var(--bal-button-color-active));
-  } // Colors
+  }
+
+  // Colors
   &.is-primary {
     background: var(--bal-button-primary-background);
     border-color: var(--bal-button-primary-border-color);
@@ -320,8 +322,8 @@
   &.is-info-light {
     background: var(--bal-color-info-1);
     border-color: var(--bal-color-info-5);
-    color: var(--bal-color-primary);
-    @include fillSvg(var(--bal-color-primary));
+    color: var(--bal-color-brand-primary-base);
+    @include fillSvg(var(--bal-color-brand-primary-base));
     // States
     @include hover {
       &:hover,

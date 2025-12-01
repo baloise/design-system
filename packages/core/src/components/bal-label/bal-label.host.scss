@@ -1,0 +1,9 @@
+@forward '../../../../styles/sass/normalize';
+@forward './bal-label.style';
+
+bal-label {
+  display: inline;
+  box-sizing: content-box;
+  position: static;
+  overflow-wrap: break-word;
+}

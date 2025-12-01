@@ -1,0 +1,33 @@
+{
+  "body": {
+    "color": {
+      "$type": "color",
+      "background": {
+        "$value": "{color.background.white}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      }
+    },
+    "text": {
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{text.line-height.text}"
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "{text.size.normal.mobile}"
+      }
+    },
+    "font": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.text}"
+      },
+      "weight": {
+        "$type": "number",
+        "$value": "{font.weight.regular}"
+      }
+    }
+  }
+}

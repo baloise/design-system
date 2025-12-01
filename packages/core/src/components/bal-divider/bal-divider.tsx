@@ -1,10 +1,10 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-divider',
-  styleUrl: './bal-divider.scss',
+  styleUrl: './bal-divider.host.scss',
+  shadow: false,
 })
 export class Divider implements ComponentInterface, Loggable {
   log!: LogInstance
@@ -46,25 +46,17 @@ export class Divider implements ComponentInterface, Loggable {
    */
 
   render() {
-    const block = BEM.block('divider')
-    const layout = !!this.layout
-    const space = !!this.space
-    const color = !!this.color
-    const borderStyle = !!this.borderStyle
-
     return (
       <Host
         role="separator"
         class={{
-          ...block.class(),
-          ...block.modifier(`layout-${this.layout}`).class(layout),
-          ...block.modifier(`space-${this.space}`).class(space),
-          ...block.modifier(`color-${this.color}`).class(color),
-          ...block.modifier(`border-style-${this.borderStyle}`).class(borderStyle),
+          divider: true,
+          [`is-${this.layout}`]: !!this.layout,
+          [`is-${this.color}`]: !!this.color,
+          [`has-space-${this.space}`]: !!this.space,
+          [`is-dashed`]: this.borderStyle === 'dashed',
         }}
-      >
-        <slot></slot>
-      </Host>
+      ></Host>
     )
   }
 }

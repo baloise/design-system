@@ -186,7 +186,7 @@
   padding-top: 1rem;
 }
 .bal-nav__mobile-service-list > li {
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -208,7 +208,7 @@
 }
 .bal-nav__line {
   background-color: var(--bal-color-border-grey-light);
-  height: var(--bal-border-width-normal);
+  height: var(--bal-border-width-base);
   border: none;
   display: block;
   border-radius: var(--bal-list-item-radius);

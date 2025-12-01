@@ -17,14 +17,14 @@
     min-height: 2.5rem;
   }
   &--vertical#{&}--active {
-    width: var(--bal-border-width-normal);
+    width: var(--bal-border-width-base);
   }
   &:not(&--vertical) {
     bottom: 0;
     min-width: 5rem;
   }
   &:not(&--vertical)#{&}--active {
-    height: var(--bal-border-width-normal);
+    height: var(--bal-border-width-base);
   }
   &--animated {
     will-change: min-width, width, min-height, height, transform;

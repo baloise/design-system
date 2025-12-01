@@ -1,0 +1,107 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use 'sass:list';
+
+/**
+  * Mixins
+  */
+
+$label-sizes: ('small', 'normal', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large');
+$label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
+
+@mixin size($level) {
+  font-size: var(--bal-label-size-#{$level});
+
+  @if list.index($label-title-sizes, $level) {
+    font-family: var(--bal-font-family-title);
+  }
+
+  @include tablet {
+    font-size: var(--bal-label-size-#{$level}-tablet);
+  }
+
+  @include desktop {
+    font-size: var(--bal-label-size-#{$level}-desktop);
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.label {
+  display: block;
+  white-space: pre;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  min-width: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--bal-label-color-basic);
+  font-family: var(--bal-label-font-family);
+  font-weight: var(--bal-label-font-weight);
+  line-height: var(--bal-label-line-height);
+
+  &.is-multiline {
+    white-space: normal;
+  }
+
+  &.is-regular {
+    font-weight: var(--bal-font-weight-regular);
+  }
+
+  &.is-title {
+    font-family: var(--bal-font-family-title);
+  }
+
+  &.is-text {
+    font-family: var(--bal-font-family-text);
+  }
+
+  &.has-no-wrap {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  // font sizes
+
+  @each $size in $label-sizes {
+    &.is-#{$size} {
+      @include size($size);
+    }
+  }
+
+  // colors
+  &.is-success {
+    color: var(--bal-label-color-success);
+  }
+
+  &.is-warning {
+    color: var(--bal-label-color-warning);
+  }
+
+  &.is-danger {
+    color: var(--bal-label-color-danger);
+  }
+
+  &.is-hovered {
+    color: var(--bal-label-color-hover);
+  }
+
+  &.is-pressed {
+    color: var(--bal-label-color-active);
+  }
+
+  &.is-danger.is-hovered {
+    color: var(--bal-label-color-danger-hover);
+  }
+
+  &.is-danger.is-pressed {
+    color: var(--bal-label-color-danger-active);
+  }
+
+  &.is-disabled {
+    color: var(--bal-label-color-disabled) !important;
+  }
+}

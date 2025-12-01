@@ -1,0 +1,129 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+$divider-colors: (
+  'primary',
+  'primary-light',
+  'primary-dark',
+  'grey-light',
+  'grey',
+  'grey-dark',
+  'warning',
+  'success',
+  'danger',
+  'danger-dark',
+  'danger-darker',
+  'white',
+  'light-blue'
+);
+$divider-spaces: (
+  'none',
+  'xx-small',
+  'x-small',
+  'small',
+  'normal',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large',
+  'xxx-large'
+);
+
+hr,
+.divider {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--bal-divider-radius-base);
+  height: var(--bal-divider-border-width-base);
+  background-color: var(--bal-divider-color-background-base);
+
+  // colors
+  @each $color in $divider-colors {
+    &.is-#{$color} {
+      background-color: var(--bal-divider-color-background-#{$color});
+    }
+  }
+
+  // dashed border style
+  &.is-dashed {
+    @each $color in $divider-colors {
+      &.is-#{$color} {
+        background: repeating-linear-gradient(
+          90deg,
+          var(--bal-divider-color-background-#{$color}) 0,
+          var(--bal-divider-color-background-#{$color}) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+    }
+  }
+
+  // default spaces
+  margin-top: var(--bal-space-xx-large);
+  margin-bottom: var(--bal-space-xx-large);
+
+  @include tablet {
+    margin-top: var(--bal-space-xx-large-tablet);
+    margin-bottom: var(--bal-space-xx-large-tablet);
+  }
+
+  @include desktop {
+    margin-top: var(--bal-space-xx-large-desktop);
+    margin-bottom: var(--bal-space-xx-large-desktop);
+  }
+
+  // directions
+  &.is-horizontal {
+    flex: 1 0 100%;
+    width: 100%;
+    min-height: var(--bal-divider-border-width-base);
+    height: var(--bal-divider-border-width-base);
+  }
+
+  // horizontal spaces
+  @each $space in $divider-spaces {
+    &.has-space-#{$space} {
+      @if $space == 'none' {
+        margin: 0;
+      } @else {
+        margin: var(--bal-space-#{$space}) 0;
+
+        @include tablet {
+          margin: var(--bal-space-#{$space}-tablet) 0;
+        }
+
+        @include desktop {
+          margin: var(--bal-space-#{$space}-desktop) 0;
+        }
+      }
+    }
+  }
+
+  &.is-vertical {
+    height: auto;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: var(--bal-divider-border-width-base);
+
+    // vertical spaces
+    @each $space in $divider-spaces {
+      &.has-space-#{$space} {
+        @if $space == 'none' {
+          margin: 0;
+        } @else {
+          margin: 0 var(--bal-space-#{$space});
+
+          @include tablet {
+            margin: 0 var(--bal-space-#{$space}-tablet);
+          }
+
+          @include desktop {
+            margin: 0 var(--bal-space-#{$space}-desktop);
+          }
+        }
+      }
+    }
+  }
+}

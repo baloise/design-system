@@ -70,7 +70,7 @@ a.bal-nav-link__native {
   }
   &:focus-visible {
     @extend %focus-shadow;
-    border-radius: var(--bal-radius-normal);
+    border-radius: var(--bal-radius-base);
   }
   &:active {
     text-decoration: var(--bal-link-text-decoration);

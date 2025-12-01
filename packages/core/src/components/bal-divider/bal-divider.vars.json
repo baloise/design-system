@@ -1,0 +1,33 @@
+{
+  "divider": {
+    "color": {
+      "$type": "color",
+      "background": {
+        "base": { "$value": "{color.border.grey.base}" },
+        "primary": { "$value": "{color.border.primary.base}" },
+        "primary-light": { "$value": "{color.border.primary.light}" },
+        "primary-dark": { "$value": "{color.border.primary.active}" },
+        "grey-light": { "$value": "{color.border.grey.light}" },
+        "grey": { "$value": "{color.border.grey.base}" },
+        "grey-dark": { "$value": "{color.border.grey.dark}" },
+        "warning": { "$value": "{color.border.warning.base}" },
+        "success": { "$value": "{color.border.success.base}" },
+        "danger": { "$value": "{color.border.danger.base}" },
+        "danger-dark": { "$value": "{color.border.danger.hover}" },
+        "danger-darker": { "$value": "{color.border.danger.active}" },
+        "white": { "$value": "{color.border.white}" },
+        "light-blue": { "$value": "{color.border.primary.hover}" }
+      }
+    },
+    "border": {
+      "width": {
+        "$type": "dimension",
+        "base": { "$value": "{border.width.base}" }
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "base": { "$value": "{radius.rounded}" }
+    }
+  }
+}

@@ -8,7 +8,7 @@
   align-items: center;
   outline: none;
   min-width: var(--bal-checkbox-symbol-size);
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   cursor: pointer;
 
   .bal-checkbox__label {
@@ -83,10 +83,10 @@
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover {
   @include hover {
     .bal-checkbox__label__text {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     .bal-checkbox__label__icon {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     //
     // pressed handling
@@ -95,10 +95,10 @@
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
 .bal-checkbox:not(.bal-checkbox--button):not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):active {
   .bal-checkbox__label__text {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   .bal-checkbox__label__icon {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   //
   // invalid hover handling
@@ -107,10 +107,10 @@
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled):hover {
   @include hover {
     .bal-checkbox__label__text {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     .bal-checkbox__label__icon {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     //
     // invalid pressed handling
@@ -119,10 +119,10 @@
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled).bal-checkbox--pressed,
 .bal-checkbox--invalid:not(.bal-checkbox--button):not(.bal-checkbox--disabled):active {
   .bal-checkbox__label__text {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   .bal-checkbox__label__icon {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   //
   // Buttons
@@ -153,7 +153,7 @@
 }
 .bal-checkbox--button.bal-checkbox--invalid {
   border-color: var(--bal-color-border-danger);
-  color: var(--bal-color-text-danger-hovered);
+  color: var(--bal-color-text-danger-hover);
   background: var(--bal-color-danger-1);
 
   &.bal-checkbox--checked {
@@ -189,9 +189,9 @@
 .bal-checkbox--button:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover {
   @include hover {
     background: var(--bal-color-grey-2);
-    border-color: var(--bal-color-border-primary-hovered);
+    border-color: var(--bal-color-border-primary-hover);
     .bal-checkbox__label__text {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     //
     // pressed handling
@@ -200,9 +200,9 @@
 .bal-checkbox--button:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid).bal-checkbox--pressed,
 .bal-checkbox--button:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):active {
   background: var(--bal-color-grey-2);
-  border-color: var(--bal-color-border-primary-pressed);
+  border-color: var(--bal-color-border-primary-active);
   .bal-checkbox__label__text {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   //
   // checked hover handling
@@ -212,8 +212,8 @@
   ).bal-checkbox--hovered,
 .bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):hover {
   @include hover {
-    background: var(--bal-color-border-primary-hovered);
-    border-color: var(--bal-color-border-primary-hovered);
+    background: var(--bal-color-border-primary-hover);
+    border-color: var(--bal-color-border-primary-hover);
     .bal-checkbox__label__text {
       color: var(--bal-color-white);
     }
@@ -225,8 +225,8 @@
     .bal-checkbox--invalid
   ).bal-checkbox--pressed,
 .bal-checkbox--button.bal-checkbox--checked:not(.bal-checkbox--disabled):not(.bal-checkbox--invalid):active {
-  background: var(--bal-color-border-primary-pressed);
-  border-color: var(--bal-color-border-primary-pressed);
+  background: var(--bal-color-border-primary-active);
+  border-color: var(--bal-color-border-primary-active);
   .bal-checkbox__label__text {
     color: var(--bal-color-white);
   }
@@ -239,9 +239,9 @@
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled):hover {
   @include hover {
     background: var(--bal-color-danger-1);
-    border-color: var(--bal-color-border-danger-hovered);
+    border-color: var(--bal-color-border-danger-hover);
     .bal-checkbox__label__text {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     //
     // pressed handling
@@ -250,9 +250,9 @@
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled).bal-checkbox--pressed,
 .bal-checkbox--button.bal-checkbox--invalid:not(.bal-checkbox--disabled):active {
   background: var(--bal-color-danger-1);
-  border-color: var(--bal-color-border-danger-pressed);
+  border-color: var(--bal-color-border-danger-active);
   .bal-checkbox__label__text {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   //
   // checked hover handling
@@ -260,8 +260,8 @@
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled).bal-checkbox--hovered,
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled):hover {
   @include hover {
-    background: var(--bal-color-border-danger-hovered);
-    border-color: var(--bal-color-border-danger-hovered);
+    background: var(--bal-color-border-danger-hover);
+    border-color: var(--bal-color-border-danger-hover);
     .bal-checkbox__label__text {
       color: var(--bal-color-white);
     }
@@ -271,8 +271,8 @@
 }
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled).bal-checkbox--pressed,
 .bal-checkbox--button.bal-checkbox--invalid.bal-checkbox--checked:not(.bal-checkbox--disabled):active {
-  background: var(--bal-color-border-danger-pressed);
-  border-color: var(--bal-color-border-danger-pressed);
+  background: var(--bal-color-border-danger-active);
+  border-color: var(--bal-color-border-danger-active);
   .bal-checkbox__label__text {
     color: var(--bal-color-white);
   }

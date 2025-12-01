@@ -8,7 +8,7 @@
   align-items: center;
   outline: none;
   min-width: var(--bal-radio-symbol-size);
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   cursor: pointer;
 
   .bal-radio__label {
@@ -83,10 +83,10 @@
 .bal-radio:not(.bal-radio--button):not(.bal-radio--disabled):not(.bal-radio--invalid):hover {
   @include hover {
     .bal-radio__label__text {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     .bal-radio__label__icon {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     //
     // pressed handling
@@ -95,10 +95,10 @@
 .bal-radio:not(.bal-radio--button):not(.bal-radio--disabled):not(.bal-radio--invalid).bal-radio--pressed,
 .bal-radio:not(.bal-radio--button):not(.bal-radio--disabled):not(.bal-radio--invalid):active {
   .bal-radio__label__text {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   .bal-radio__label__icon {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   //
   // invalid hover handling
@@ -107,10 +107,10 @@
 .bal-radio--invalid:not(.bal-radio--button):not(.bal-radio--disabled):hover {
   @include hover {
     .bal-radio__label__text {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     .bal-radio__label__icon {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     //
     // invalid pressed handling
@@ -119,10 +119,10 @@
 .bal-radio--invalid:not(.bal-radio--button):not(.bal-radio--disabled).bal-radio--pressed,
 .bal-radio--invalid:not(.bal-radio--button):not(.bal-radio--disabled):active {
   .bal-radio__label__text {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   .bal-radio__label__icon {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   //
   // Buttons
@@ -153,7 +153,7 @@
 }
 .bal-radio--button.bal-radio--invalid {
   border-color: var(--bal-color-border-danger);
-  color: var(--bal-color-text-danger-hovered);
+  color: var(--bal-color-text-danger-hover);
   background: var(--bal-color-danger-1);
 
   &.bal-radio--checked {
@@ -189,9 +189,9 @@
 .bal-radio--button:not(.bal-radio--disabled):not(.bal-radio--invalid):hover {
   @include hover {
     background: var(--bal-color-grey-2);
-    border-color: var(--bal-color-border-primary-hovered);
+    border-color: var(--bal-color-border-primary-hover);
     .bal-radio__label__text {
-      color: var(--bal-color-text-primary-hovered);
+      color: var(--bal-color-text-primary-hover);
     }
     //
     // pressed handling
@@ -200,9 +200,9 @@
 .bal-radio--button:not(.bal-radio--disabled):not(.bal-radio--invalid).bal-radio--pressed,
 .bal-radio--button:not(.bal-radio--disabled):not(.bal-radio--invalid):active {
   background: var(--bal-color-grey-2);
-  border-color: var(--bal-color-border-primary-pressed);
+  border-color: var(--bal-color-border-primary-active);
   .bal-radio__label__text {
-    color: var(--bal-color-text-primary-pressed);
+    color: var(--bal-color-text-primary-active);
   }
   //
   // checked hover handling
@@ -210,8 +210,8 @@
 .bal-radio--button.bal-radio--checked:not(.bal-radio--disabled):not(.bal-radio--invalid).bal-radio--hovered,
 .bal-radio--button.bal-radio--checked:not(.bal-radio--disabled):not(.bal-radio--invalid):hover {
   @include hover {
-    background: var(--bal-color-border-primary-hovered);
-    border-color: var(--bal-color-border-primary-hovered);
+    background: var(--bal-color-border-primary-hover);
+    border-color: var(--bal-color-border-primary-hover);
     .bal-radio__label__text {
       color: var(--bal-color-white);
     }
@@ -221,8 +221,8 @@
 }
 .bal-radio--button.bal-radio--checked:not(.bal-radio--disabled):not(.bal-radio--invalid).bal-radio--pressed,
 .bal-radio--button.bal-radio--checked:not(.bal-radio--disabled):not(.bal-radio--invalid):active {
-  background: var(--bal-color-border-primary-pressed);
-  border-color: var(--bal-color-border-primary-pressed);
+  background: var(--bal-color-border-primary-active);
+  border-color: var(--bal-color-border-primary-active);
   .bal-radio__label__text {
     color: var(--bal-color-white);
   }
@@ -235,9 +235,9 @@
 .bal-radio--button.bal-radio--invalid:not(.bal-radio--disabled):hover {
   @include hover {
     background: var(--bal-color-danger-1);
-    border-color: var(--bal-color-border-danger-hovered);
+    border-color: var(--bal-color-border-danger-hover);
     .bal-radio__label__text {
-      color: var(--bal-color-text-danger-hovered);
+      color: var(--bal-color-text-danger-hover);
     }
     //
     // pressed handling
@@ -246,9 +246,9 @@
 .bal-radio--button.bal-radio--invalid:not(.bal-radio--disabled).bal-radio--pressed,
 .bal-radio--button.bal-radio--invalid:not(.bal-radio--disabled):active {
   background: var(--bal-color-danger-1);
-  border-color: var(--bal-color-border-danger-pressed);
+  border-color: var(--bal-color-border-danger-active);
   .bal-radio__label__text {
-    color: var(--bal-color-text-danger-pressed);
+    color: var(--bal-color-text-danger-active);
   }
   //
   // checked hover handling
@@ -256,8 +256,8 @@
 .bal-radio--button.bal-radio--invalid.bal-radio--checked:not(.bal-radio--disabled).bal-radio--hovered,
 .bal-radio--button.bal-radio--invalid.bal-radio--checked:not(.bal-radio--disabled):hover {
   @include hover {
-    background: var(--bal-color-border-danger-hovered);
-    border-color: var(--bal-color-border-danger-hovered);
+    background: var(--bal-color-border-danger-hover);
+    border-color: var(--bal-color-border-danger-hover);
     .bal-radio__label__text {
       color: var(--bal-color-white);
     }
@@ -267,8 +267,8 @@
 }
 .bal-radio--button.bal-radio--invalid.bal-radio--checked:not(.bal-radio--disabled).bal-radio--pressed,
 .bal-radio--button.bal-radio--invalid.bal-radio--checked:not(.bal-radio--disabled):active {
-  background: var(--bal-color-border-danger-pressed);
-  border-color: var(--bal-color-border-danger-pressed);
+  background: var(--bal-color-border-danger-active);
+  border-color: var(--bal-color-border-danger-active);
   .bal-radio__label__text {
     color: var(--bal-color-white);
   }

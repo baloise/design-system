@@ -125,7 +125,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
   const tokens = await utils.getTokens({ token: 'color.border', ...options })
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
-    [`border${formattedPlacement}`]: 'var(--bal-color-grey-3)',
+    [`border${formattedPlacement}`]: 'var(--bal-color-border-base)',
     ...utils.toProps({
       tokens: tokens,
       replace: 'color-border-',
