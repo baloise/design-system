@@ -106,9 +106,9 @@
     &:focus-within {
       .file-cta {
         border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-active);
+        color: var(--bal-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-active);
+          color: var(--bal-link-color-text-primary-active);
         }
       }
     }
@@ -128,9 +128,9 @@
     &:focus-within {
       .file-cta {
         border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-active);
+        color: var(--bal-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-active);
+          color: var(--bal-link-color-text-primary-active);
         }
         // warning is deprecated
       }
@@ -143,7 +143,7 @@
     color: var(--bal-color-text-warning);
   }
   .file-cta {
-    border-color: var(--bal-color-border-warning);
+    border-color: var(--bal-color-border-warning-base);
     background: var(--bal-color-warning-1);
   }
   .file-label {
@@ -151,9 +151,9 @@
     &:focus-within {
       .file-cta {
         border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-active);
+        color: var(--bal-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-active);
+          color: var(--bal-link-color-text-primary-active);
         }
       }
     }

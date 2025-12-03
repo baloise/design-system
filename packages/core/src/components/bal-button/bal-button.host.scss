@@ -2,6 +2,7 @@ $has-spacing: false;
 
 @forward '../../../../styles/sass/normalize';
 @forward './bal-button.style';
+@forward '../bal-link/bal-link.style';
 
 /**
   * Host Style

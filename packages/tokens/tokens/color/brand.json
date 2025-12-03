@@ -15,10 +15,10 @@
         }
       },
       "primary": {
-        "lighter": { "$value": "{color.primary.1}" },
-        "light": { "$value": "{color.primary.2}" },
-        "base": { "$value": "{color.primary.3}" },
-        "dark": { "$value": "{color.primary.4}" },
+        "lighter": { "$value": "{color.primary.3}" },
+        "light": { "$value": "{color.primary.4}" },
+        "base": { "$value": "{color.primary.5}" },
+        "dark": { "$value": "{color.primary.5}" },
         "darker": { "$value": "{color.primary.5}" },
         "darkest": { "$value": "{color.primary.6}" }
       },

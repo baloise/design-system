@@ -1,10 +1,10 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
-  styleUrl: 'bal-text.scss',
+  styleUrl: 'bal-text.host.scss',
+  shadow: true,
 })
 export class Text implements ComponentInterface, BalElementStateInfo {
   /**
@@ -121,30 +121,26 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   render() {
     const Text = this.inline ? 'span' : 'p'
     const color = this.parseColor()
-    const block = BEM.block('text')
 
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier(`space-${this.space}`).class(this.space !== ''),
-          ...block.modifier(`inline`).class(this.inline),
+          [`has-space-${this.space}`]: this.space !== '',
+          [`is-inline-${this.space}`]: this.inline,
         }}
       >
         <Text
-          class={{
-            ...block.element('text').class(),
-            ...block.element('text').modifier(`color-${color}`).class(!!color),
-            ...block.element('text').modifier(`bold`).class(this.bold),
-            ...block.element('text').modifier(`heading`).class(this.heading),
-            ...block.element('text').modifier(`shadow`).class(this.shadow),
-            ...block.element('text').modifier(`no-wrap`).class(this.noWrap),
-            ...block
-              .element('text')
-              .modifier(`size-${this.size}`)
-              .class(this.size !== ''),
-          }}
+          part="native"
           data-testid="bal-text"
+          class={{
+            text: true,
+            [`is-${color}`]: !!color,
+            [`is-bold`]: this.bold,
+            [`has-shadow`]: this.shadow,
+            [`has-no-wrap`]: this.noWrap,
+            [`is-heading`]: this.heading,
+            [`is-${this.size}`]: this.size !== '',
+          }}
         >
           <slot></slot>
         </Text>

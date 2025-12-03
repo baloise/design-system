@@ -86,20 +86,20 @@
   @include modifier(is-danger) {
     &,
     .input {
-      border-color: var(--bal-color-border-danger);
+      border-color: var(--bal-color-border-danger-base);
       background: var(--bal-color-danger-1);
     }
     svg {
       g,
       path,
       circle {
-        fill: var(--bal-color-border-danger);
+        fill: var(--bal-color-border-danger-base);
       }
     }
   }
-  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger));
-  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success));
-  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning));
+  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger-base));
+  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success-base));
+  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning-base));
   @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-grey-dark));
 
   @include modifier(is-disabled) {

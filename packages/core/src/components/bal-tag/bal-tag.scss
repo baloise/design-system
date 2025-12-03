@@ -137,7 +137,7 @@
       color: var(--bal-tag-text-green-light);
     }
     @include modifier(is-invalid) {
-      background: var(--bal-color-border-danger);
+      background: var(--bal-color-border-danger-base);
       color: var(--bal-tag-text-invalid);
     }
     @include modifier(is-disabled) {

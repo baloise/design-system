@@ -23,6 +23,7 @@
         "$value": "{color.primary.3}",
         "comment": "Secondary font color for help messages."
       },
+      "hint": { "$value": "{color.text.primary-light}" },
 
       "grey-light": {
         "$value": "{color.grey.4}",

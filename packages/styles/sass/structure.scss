@@ -13,12 +13,14 @@ html {
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: auto;
 }
+
 *:focus {
   -webkit-tap-highlight-color: transparent;
   outline: none;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
+
 article,
 aside,
 figure,
@@ -28,6 +30,7 @@ hgroup,
 section {
   display: block;
 }
+
 body,
 button,
 input,
@@ -36,6 +39,7 @@ select,
 textarea {
   font-family: var(--bal-body-font-family);
 }
+
 body {
   color: var(--bal-body-color-text);
   font-size: var(--bal-body-text-size);
@@ -43,40 +47,46 @@ body {
   line-height: var(--bal-body-text-line-height);
   -webkit-overflow-scrolling: auto;
 }
-p {
+
+p:not(.text) {
   hyphens: auto;
   margin: 0;
-  word-break: break-word;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   strong {
     color: currentColor;
   }
   &:not(:last-child) {
-    margin-bottom: var(--bal-space-base);
+    margin-bottom: var(--bal-space-normal);
   }
 }
 
 small {
   font-size: var(--bal-text-size-small);
 }
+
 span {
   font-style: inherit;
   font-weight: inherit;
 }
+
 b,
 strong {
   color: inherit;
   font-weight: var(--bal-font-weight-bold);
 }
+
 img {
   height: auto;
   max-width: 100%;
 }
+
 input[type='checkbox'],
 input[type='radio'] {
   vertical-align: baseline;
 }
+
 fieldset {
   border: none;
 }

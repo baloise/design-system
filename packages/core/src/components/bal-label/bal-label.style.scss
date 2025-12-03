@@ -8,7 +8,7 @@
 $label-sizes: ('small', 'normal', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large');
 $label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
 
-@mixin size($level) {
+@mixin label-size($level) {
   font-size: var(--bal-label-size-#{$level});
 
   @if list.index($label-title-sizes, $level) {
@@ -40,6 +40,7 @@ $label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
   font-family: var(--bal-label-font-family);
   font-weight: var(--bal-label-font-weight);
   line-height: var(--bal-label-line-height);
+  font-size: var(--bal-label-size-small);
 
   &.is-multiline {
     white-space: normal;
@@ -68,7 +69,7 @@ $label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
 
   @each $size in $label-sizes {
     &.is-#{$size} {
-      @include size($size);
+      @include label-size($size);
     }
   }
 

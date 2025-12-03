@@ -539,8 +539,8 @@
         },
         "inverted-secondary": {
           "base": { "$value": "transparent" },
-          "hover": { "$value": "{color.brand.primary.base}" },
-          "active": { "$value": "{color.brand.primary.base}" }
+          "hover": { "$value": "{color.brand.primary.lighter}" },
+          "active": { "$value": "{color.brand.primary.lighter}" }
         },
         "inverted-accent": {
           "base": { "$value": "{color.brand.primary.dark}" },

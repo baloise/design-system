@@ -1,2 +1,89 @@
 @forward '../mixins';
 @forward '../../src/generated/background';
+
+/**
+  * Deprecated
+  */
+
+// Auto text color rules for dark backgrounds (removed in new version)
+// Users should now manually add text color classes like .text-white
+
+.bg-primary {
+  color: var(--bal-color-white);
+}
+
+.bg-primary-3 {
+  color: var(--bal-color-white);
+}
+
+.bg-primary-4 {
+  color: var(--bal-color-white);
+}
+
+.bg-primary-5 {
+  color: var(--bal-color-white);
+}
+
+.bg-primary-6 {
+  color: var(--bal-color-white);
+}
+
+.focus\:bg-primary:focus {
+  color: var(--bal-color-white);
+}
+
+.hover\:bg-primary:hover {
+  color: var(--bal-color-white);
+}
+
+.active\:bg-primary:active {
+  color: var(--bal-color-white);
+}
+
+.focus\:bg-primary-3:focus {
+  color: var(--bal-color-white);
+}
+
+.hover\:bg-primary-3:hover {
+  color: var(--bal-color-white);
+}
+
+.active\:bg-primary-3:active {
+  color: var(--bal-color-white);
+}
+
+.focus\:bg-primary-4:focus {
+  color: var(--bal-color-white);
+}
+
+.hover\:bg-primary-4:hover {
+  color: var(--bal-color-white);
+}
+
+.active\:bg-primary-4:active {
+  color: var(--bal-color-white);
+}
+
+.focus\:bg-primary-5:focus {
+  color: var(--bal-color-white);
+}
+
+.hover\:bg-primary-5:hover {
+  color: var(--bal-color-white);
+}
+
+.active\:bg-primary-5:active {
+  color: var(--bal-color-white);
+}
+
+.focus\:bg-primary-6:focus {
+  color: var(--bal-color-white);
+}
+
+.hover\:bg-primary-6:hover {
+  color: var(--bal-color-white);
+}
+
+.active\:bg-primary-6:active {
+  color: var(--bal-color-white);
+}

@@ -154,19 +154,12 @@ export class Heading implements ComponentInterface {
    */
 
   render() {
-    // const block = BEM.block('heading')
-    // const bemTextEl = block.element('text')
-
     const Heading = this.tag
-    // const fontColor = this.fontColor
 
     return (
       <Host
         class={{
           [`bal-heading-space-${this.space}`]: this.space !== undefined,
-          // ...block.class(),
-          // ...block.modifier(`space-${this.space}`).class(this.space !== undefined),
-          // ...block.modifier(`level-${this.level}`).class(),
         }}
       >
         <Heading
@@ -177,12 +170,6 @@ export class Heading implements ComponentInterface {
             'has-shadow': this.shadow,
             [`is-${this.fontColor}`]: this.fontColor !== undefined,
             [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
-            // ...bemTextEl.class(),
-            // ...bemTextEl.modifier('no-wrap').class(this.noWrap),
-            // ...bemTextEl.modifier('subtitle').class(this.subtitle),
-            // ...bemTextEl.modifier('shadow').class(this.shadow),
-            // ...bemTextEl.modifier(`color-${fontColor}`).class(),
-            // ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
           data-testid="bal-heading"

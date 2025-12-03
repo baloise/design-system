@@ -152,13 +152,13 @@
   }
 }
 .bal-radio--button.bal-radio--invalid {
-  border-color: var(--bal-color-border-danger);
+  border-color: var(--bal-color-border-danger-base);
   color: var(--bal-color-text-danger-hover);
   background: var(--bal-color-danger-1);
 
   &.bal-radio--checked {
     color: var(--bal-color-white);
-    background: var(--bal-color-border-danger);
+    background: var(--bal-color-border-danger-base);
 
     .bal-radio__label__text,
     .bal-radio__label__text .link {

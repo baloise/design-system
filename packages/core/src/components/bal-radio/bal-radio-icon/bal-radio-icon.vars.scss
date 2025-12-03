@@ -24,11 +24,11 @@
   --bal-radio-icon-background-checked-hover: var(--bal-color-border-primary-hover);
   --bal-radio-icon-background-checked-active: var(--bal-color-border-primary-active);
 
-  --bal-radio-icon-border-color-invalid: var(--bal-color-border-danger);
+  --bal-radio-icon-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-radio-icon-border-color-invalid-hover: var(--bal-color-border-danger-hover);
   --bal-radio-icon-border-color-invalid-active: var(--bal-color-border-danger-active);
 
-  --bal-radio-icon-border-color-invalid-checked: var(--bal-color-border-danger);
+  --bal-radio-icon-border-color-invalid-checked: var(--bal-color-border-danger-base);
   --bal-radio-icon-border-color-invalid-checked-hover: var(--bal-color-border-danger-hover);
   --bal-radio-icon-border-color-invalid-checked-active: var(--bal-color-border-danger-active);
 
@@ -36,7 +36,7 @@
   --bal-radio-icon-background-invalid-hover: var(--bal-color-danger-1);
   --bal-radio-icon-background-invalid-active: var(--bal-color-danger-1);
 
-  --bal-radio-icon-background-invalid-checked: var(--bal-color-border-danger);
+  --bal-radio-icon-background-invalid-checked: var(--bal-color-border-danger-base);
   --bal-radio-icon-background-invalid-checked-hover: var(--bal-color-border-danger-hover);
   --bal-radio-icon-background-invalid-checked-active: var(--bal-color-border-danger-active);
 

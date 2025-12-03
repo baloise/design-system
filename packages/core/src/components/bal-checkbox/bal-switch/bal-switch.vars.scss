@@ -14,9 +14,9 @@
 
   // Invalid State
   --bal-checkbox-switch-label-background-invalid-before: var(--bal-color-danger-1);
-  --bal-checkbox-switch-label-background-invalid-after: var(--bal-color-border-danger);
+  --bal-checkbox-switch-label-background-invalid-after: var(--bal-color-border-danger-base);
   --bal-checkbox-switch-label-background-invalid-hover-after: var(--bal-color-border-danger-hover);
-  --bal-checkbox-switch-label-background-invalid-active-after: var(--bal-color-border-danger);
+  --bal-checkbox-switch-label-background-invalid-active-after: var(--bal-color-border-danger-base);
   --bal-checkbox-switch-label-background-invalid-pressed-after: var(--bal-color-border-danger-active);
 
   // Invalid Checked State

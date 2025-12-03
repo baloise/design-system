@@ -114,11 +114,8 @@
           }
         ]
       }
-    }
-  },
-  "text": {
-    "shadow": {
-      "$type": "shadow",
+    },
+    "text": {
       "base": {
         "$value": [
           {

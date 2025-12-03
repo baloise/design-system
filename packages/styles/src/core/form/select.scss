@@ -117,7 +117,7 @@
   }
   &.is-warning {
     select {
-      border-color: var(--bal-color-border-warning);
+      border-color: var(--bal-color-border-warning-base);
       background: var(--bal-color-warning-1);
       &.bal-focused,
       &:focus,
@@ -128,7 +128,7 @@
       }
     }
     &::after {
-      border-color: var(--bal-color-border-warning) !important;
+      border-color: var(--bal-color-border-warning-base) !important;
     }
     &:focus::after,
     &:active::after,

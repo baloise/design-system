@@ -1,0 +1,38 @@
+$text-has-spacing: false;
+
+@forward '../../../../styles/sass/normalize';
+@forward './bal-text.style';
+
+/**
+  * Host Style
+  */
+
+:host {
+  display: block;
+  position: static;
+  padding: 0;
+  margin: 0 0 var(--bal-space-normal) 0;
+}
+
+:host(.is-inline) {
+  display: inline;
+}
+
+:host(.has-space-all) {
+  margin-top: var(--bal-space-normal);
+  margin-bottom: var(--bal-space-normal);
+}
+
+:host(.has-space-top) {
+  margin-top: var(--bal-space-normal);
+  margin-bottom: 0;
+}
+
+:host(.has-space-bottom) {
+  margin-top: 0;
+  margin-bottom: var(--bal-space-normal);
+}
+
+:host(.has-space-none) {
+  margin: 0;
+}

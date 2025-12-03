@@ -1,11 +1,14 @@
-$has-spacing: true !default;
+$heading-has-spacing: true !default;
 
 @use '@baloise/ds-styles/sass/mixins' as *;
 
 /**
   * Mixins
   */
-@mixin size($level) {
+
+$heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
+
+@mixin heading-size($level) {
   font-size: var(--bal-heading-size-#{$level});
 
   @include tablet {
@@ -15,6 +18,10 @@ $has-spacing: true !default;
   @include desktop {
     font-size: var(--bal-heading-size-#{$level}-desktop);
   }
+}
+
+@mixin heading-color($color) {
+  color: var(--bal-heading-color-#{$color});
 }
 
 /**
@@ -58,28 +65,10 @@ $has-spacing: true !default;
   * Colors
   */
 
-  &.is-primary {
-    color: var(--bal-heading-color-primary);
-  }
-
-  &.is-success {
-    color: var(--bal-heading-color-success);
-  }
-
-  &.is-warning {
-    color: var(--bal-heading-color-warning);
-  }
-
-  &.is-danger {
-    color: var(--bal-heading-color-danger);
-  }
-
-  &.is-white {
-    color: var(--bal-heading-color-white);
-  }
-
-  &.is-black {
-    color: var(--bal-heading-color-black);
+  @each $color in $heading-colors {
+    &.is-#{$color} {
+      @include heading-color($color);
+    }
   }
 }
 
@@ -87,76 +76,62 @@ $has-spacing: true !default;
   * Sizes
   */
 
-h1.title,
-h1.subtitle,
-h1.heading {
-  @include size(1);
-}
-
-h2.title,
-h2.subtitle,
-h2.heading {
-  @include size(2);
-}
-
-h3.title,
-h3.subtitle,
-h3.heading {
-  @include size(3);
-}
-
-h4.title,
-h4.subtitle,
-h4.heading {
-  @include size(4);
-}
-
-h5.title,
-h5.subtitle,
-h5.heading {
-  @include size(5);
+@for $i from 1 through 5 {
+  h#{$i}.title,
+  h#{$i}.subtitle,
+  h#{$i}.heading,
+  [role='heading'][aria-level='#{$i}'].title,
+  [role='heading'][aria-level='#{$i}'].subtitle,
+  [role='heading'][aria-level='#{$i}'].heading {
+    @include heading-size($i);
+  }
 }
 
 .title,
 .subtitle,
 .heading {
+  &.is-1,
   &.is-level-1,
   &.is-xxx-large {
-    @include size(xxx-large);
+    @include heading-size(xxx-large);
   }
 
+  &.is-2,
   &.is-level-2,
   &.is-xx-large {
-    @include size(xx-large);
+    @include heading-size(xx-large);
   }
 
+  &.is-3,
   &.is-level-3,
   &.is-x-large {
-    @include size(x-large);
+    @include heading-size(x-large);
   }
 
+  &.is-4,
   &.is-level-4,
   &.is-large {
-    @include size(large);
+    @include heading-size(large);
   }
 
+  &.is-5,
   &.is-level-5,
   &.is-normal {
-    @include size(normal);
+    @include heading-size(normal);
   }
 
   &.is-medium {
-    @include size(medium);
+    @include heading-size(medium);
   }
 
   &.is-display-1,
   &.is-xxxxx-large {
-    @include size(display-1);
+    @include heading-size(display-1);
   }
 
   &.is-display-2,
   &.is-xxxx-large {
-    @include size(display-2);
+    @include heading-size(display-2);
   }
 
   /**
@@ -180,7 +155,7 @@ h5.heading {
   * Spaces
   */
 
-@if $has-spacing {
+@if $heading-has-spacing {
   .title,
   .subtitle,
   .heading {

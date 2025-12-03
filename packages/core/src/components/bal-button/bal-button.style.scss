@@ -1,11 +1,10 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@forward '../bal-link/bal-link.style';
 
 /**
   * Mixins
   */
 
-@mixin color($color, $outline-state: base) {
+@mixin button-color($color, $outline-state: base) {
   background-color: var(--bal-button-color-background-#{$color}-base);
   color: var(--bal-button-color-text-#{$color}-base);
   border: var(--bal-button-border-#{$color}-base);
@@ -24,7 +23,7 @@
   }
 
   &:active,
-  &.is-active {
+  &.is-pressed {
     background-color: var(--bal-button-color-background-#{$color}-active);
     color: var(--bal-button-color-text-#{$color}-active);
     border: var(--bal-button-border-#{$color}-active);
@@ -41,7 +40,7 @@
   }
 }
 
-@mixin dashed($color) {
+@mixin button-dashed($color) {
   border: var(--bal-button-border-#{$color}-dash);
   border-style: dashed;
 
@@ -54,7 +53,7 @@
   }
 
   &:active,
-  &.is-active {
+  &.is-pressed {
     border: var(--bal-button-border-#{$color}-active);
     border-style: dashed;
     background: var(--bal-button-color-background-#{$color}-dash);
@@ -124,51 +123,45 @@ button.button {
 .button:focus,
 .button.is-focused,
 .button:active,
-.button.is-active {
+.button.is-pressed {
   outline: none;
-}
-
-// Disabled cursor state
-.button[disabled],
-fieldset[disabled] .button {
-  cursor: default;
 }
 
 // Colors
 .button,
 .button.is-primary {
-  @include color(primary, base);
+  @include button-color(primary, base);
 }
 
 .button.is-secondary {
-  @include color(secondary, base);
+  @include button-color(secondary, base);
 }
 
 .button.is-text,
 .button.is-neutral,
 .button.is-tertiary {
-  @include color(tertiary, base);
+  @include button-color(tertiary, base);
 }
 
 .button.is-tertiary-purple {
-  @include color(tertiary-purple, base);
+  @include button-color(tertiary-purple, base);
 }
 
 .button.is-tertiary-red {
-  @include color(tertiary-red, base);
+  @include button-color(tertiary-red, base);
 }
 
 .button.is-tertiary-yellow {
-  @include color(tertiary-yellow, base);
+  @include button-color(tertiary-yellow, base);
 }
 
 .button.is-tertiary-green {
-  @include color(tertiary-green, base);
+  @include button-color(tertiary-green, base);
 }
 
 .button.is-light,
 .button.is-accent {
-  @include color(accent, base);
+  @include button-color(accent, base);
 }
 
 .button.is-link {
@@ -176,74 +169,61 @@ fieldset[disabled] .button {
   text-underline-offset: var(--bal-link-text-underline-offset);
   text-decoration-thickness: var(--bal-link-text-decoration-thickness);
 
-  @include color(link, base);
+  @include button-color(link, base);
 }
 
 .button.is-info {
-  @include color(info, base);
+  @include button-color(info, base);
 }
 
 .button.is-success {
-  @include color(success, base);
+  @include button-color(success, base);
 }
 
 .button.is-warning {
-  @include color(warning, base);
+  @include button-color(warning, base);
 }
 
 .button.is-danger {
-  @include color(danger, base);
+  @include button-color(danger, base);
 }
 
 .button.is-inverted,
 .button.is-inverted.is-primary {
-  @include color(inverted-primary, base);
+  @include button-color(inverted-primary, inverted);
 }
 
 .button.is-inverted.is-secondary {
-  @include color(inverted-secondary, base);
+  @include button-color(inverted-secondary, inverted);
 }
 
 .button.is-inverted.is-text,
 .button.is-inverted.is-tertiary {
-  @include color(inverted-tertiary, base);
+  @include button-color(inverted-tertiary, inverted);
 }
 
 .button.is-inverted.is-light,
 .button.is-inverted.is-accent {
-  @include color(inverted-accent, base);
+  @include button-color(inverted-accent, inverted);
 }
 
 .button.is-inverted.is-link {
-  @include color(inverted-link, base);
+  @include button-color(inverted-link, inverted);
 }
 
 // Checkbox & Radio
 
 .button:is(input[type='checkbox'], input[type='radio']) {
-  @include color(secondary, base);
+  @include button-color(secondary, base);
 
   appearance: none;
   vertical-align: middle;
 }
 
 .button:is(input[type='checkbox'], input[type='radio']):where(input:checked) {
-  @include color(primary, base);
+  @include button-color(primary, base);
 
   isolation: isolate;
-}
-
-// Disabled state
-
-.button.is-disabled,
-.button[disabled] {
-  pointer-events: none;
-  opacity: 1;
-  box-shadow: none;
-  cursor: default;
-  background-color: var(--bal-button-color-background-disabled-base);
-  border: var(--bal-button-border-disabled-base);
-  color: var(--bal-button-color-text-disabled-base);
 }
 
 // Sizes
@@ -365,17 +345,130 @@ fieldset[disabled] .button {
   */
 
 .button.is-tertiary-purple.is-dashed {
-  @include dashed(tertiary-purple);
+  @include button-dashed(tertiary-purple);
 }
 
 .button.is-tertiary-red.is-dashed {
-  @include dashed(tertiary-red);
+  @include button-dashed(tertiary-red);
 }
 
 .button.is-tertiary-green.is-dashed {
-  @include dashed(tertiary-green);
+  @include button-dashed(tertiary-green);
 }
 
 .button.is-tertiary-yellow.is-dashed {
-  @include dashed(tertiary-yellow);
+  @include button-dashed(tertiary-yellow);
 }
+
+/**
+  Grouped Buttons
+  */
+
+/* stylelint-disable no-descending-specificity */
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  & > .button {
+    margin-bottom: 0.5rem;
+
+    &:not(:last-child, .is-fullwidth) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: -0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  // Addons
+  &.has-addons {
+    .button {
+      &:not(:first-child) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+
+      &:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+
+        @include ltr-property('margin', -1px);
+      }
+
+      &:last-child {
+        @include ltr-property('margin', 0);
+      }
+
+      &:hover,
+      &.is-hovered {
+        z-index: 2;
+      }
+
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-pressed,
+      &.is-selected {
+        z-index: 3;
+
+        &:hover {
+          z-index: 4;
+        }
+      }
+
+      &.is-fullwidth {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+
+  // Centered
+  &.is-centered {
+    justify-content: center;
+
+    &:not(.has-addons) {
+      .button:not(.is-fullwidth) {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+
+  // Right aligned
+  &.is-right {
+    justify-content: flex-end;
+
+    &:not(.has-addons) {
+      .button:not(.is-fullwidth) {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+// Disabled cursor state
+/* stylelint-disable no-descending-specificity */
+fieldset[disabled] .button,
+.button.is-disabled,
+.button.is-inverted.is-disabled,
+.button[disabled] {
+  pointer-events: none;
+  opacity: 1;
+  box-shadow: none;
+  text-decoration: none;
+  cursor: default;
+  background-color: var(--bal-button-color-background-disabled-base);
+  border: var(--bal-button-border-disabled-base);
+  color: var(--bal-button-color-text-disabled-base);
+}
+/* stylelint-enable no-descending-specificity */

@@ -31,6 +31,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     property: 'border-radius',
     values: {
       ['radius-none']: '0',
+      ['radius-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -42,6 +43,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     prefix: 'radius-top',
     values: {
       ['radius-top-none']: '0',
+      ['radius-top-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -52,6 +54,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     prefix: 'radius-left',
     values: {
       ['radius-left-none']: '0',
+      ['radius-left-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -62,6 +65,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     prefix: 'radius-right',
     values: {
       ['radius-right-none']: '0',
+      ['radius-right-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -72,6 +76,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     prefix: 'radius-bottom',
     values: {
       ['radius-bottom-none']: '0',
+      ['radius-bottom-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -141,7 +146,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
     important: true,
     states: true,
     additionalValues: {
-      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal) !important',
+      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-base) !important',
       [`border${formattedPlacement}-style`]: 'solid',
     },
   })

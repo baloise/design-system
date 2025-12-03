@@ -5,7 +5,7 @@
  */
 
 :root {
-  --bal-nav-link-text-color: var(--bal-link-color);
-  --bal-nav-link-text-color-hover: var(--bal-link-color-hover);
-  --bal-nav-link-text-color-active: var(--bal-link-color-active);
+  --bal-nav-link-text-color: var(--bal-link-color-text-primary-base);
+  --bal-nav-link-text-color-hover: var(--bal-link-color-text-primary-hover);
+  --bal-nav-link-text-color-active: var(--bal-link-color-text-primary-active);
 }

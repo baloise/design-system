@@ -13,10 +13,20 @@ const config: Config = {
         {
           destination: 'tokens.css',
           format: 'css/variables',
+          filter: token => !token.filePath.includes('deprecated.json'),
         },
         {
           destination: '../../core/www/assets/tokens.css',
           format: 'css/variables',
+          filter: token => !token.filePath.includes('deprecated.json'),
+        },
+        {
+          destination: 'tokens.deprecated.css',
+          format: 'css/variables',
+          filter: token => token.filePath.includes('deprecated.json'),
+          options: {
+            outputReferences: false,
+          },
         },
         {
           format: 'json',
@@ -24,6 +34,7 @@ const config: Config = {
           options: {
             outputReferences: true,
           },
+          filter: token => !token.filePath.includes('deprecated.json'),
         },
       ],
       options: {
@@ -257,6 +268,13 @@ StyleDictionary.registerTransform({
       if (endsWithDefault) {
         tokenName = tokenName.replace('Default', '')
       }
+    }
+
+    // Remove 'deprecated' prefix for deprecated tokens
+    if (isKebabCase) {
+      tokenName = tokenName.replace('bal-deprecated-', 'bal-')
+    } else {
+      tokenName = tokenName.replace('balDeprecated', 'bal').replace('BalDeprecated', 'Bal')
     }
 
     return tokenName
