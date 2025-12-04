@@ -1,15 +1,34 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { createCssMappings, cssClasses, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.BalDivider & { content: string }
+
+const tag = 'bal-divider'
+const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Layout/Divider',
   argTypes: {
-    ...withComponentControls({ tag: 'bal-divider' }),
+    ...withComponentControls({ tag }),
   },
-  ...withRender(({ ...args }) => `<bal-divider ${props(args)}></bal-divider>`),
+  ...withRender(
+    ({ ...args }) =>
+      `
+<div class="stack ${args.layout === 'vertical' ? 'as-row' : 'as-col'}">
+  <span>Before</span>
+  <hr ${cssClasses(
+    {
+      ...css('color', (color: string) => `is-${color}`),
+      ...css('borderStyle', (borderStyle: string) => `is-${borderStyle}`),
+      ...css('layout', (layout: string) => `is-${layout}`),
+      ...css('space', (space: string) => `has-space-${space}`),
+    },
+    args,
+  )}/>
+  <span>After</span>
+</div>`,
+  ),
 }
 
 export default meta
@@ -29,16 +48,8 @@ export const Dashed = Story({
   },
 })
 
-export const LayoutVertical = Story({
+export const Vertical = Story({
   args: {
     layout: 'vertical',
-    color: 'primary',
   },
-  ...withRender(
-    ({ ...args }) => `<bal-stack>
-  <bal-text>Left</bal-text>
-  <bal-divider ${props(args)}></bal-divider>
-  <bal-text>Right</bal-text>
-</bal-stack>`,
-  ),
 })

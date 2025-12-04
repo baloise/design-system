@@ -14,8 +14,11 @@ import * as TextStories from './bal-text.stories'
   We recommend using standard <b>HTML elements</b> such as `<p>`, `<span>`, `<b>`, and `<strong>` whenever possible instead of web
   components. This helps improve the rendering speed of your application or website.
 
-Additionally, explore CSS utilities for more styling options.
+  These styles are included in the core styles:
 
+  ```css
+  @import '@baloise/ds-styles/css/core.css';
+  ```
 </InfoQuote>
 
 <Canvas of={TextStories.Basic} sourceState="shown" />
@@ -25,9 +28,45 @@ Additionally, explore CSS utilities for more styling options.
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.Text}></StoryHeading>
+<StoryHeading of={TextStories.BoldText}></StoryHeading>
 
-<Canvas of={TextStories.Text} sourceState="shown" />
+<Canvas of={TextStories.BoldText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Colors}></StoryHeading>
+
+<Canvas of={TextStories.Colors} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Sizes}></StoryHeading>
+
+<Canvas of={TextStories.Sizes} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Spacing}></StoryHeading>
+
+<Canvas of={TextStories.Spacing} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.NestedText}></StoryHeading>
+
+<Canvas of={TextStories.NestedText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.FontFamily}></StoryHeading>
+
+<Canvas of={TextStories.FontFamily} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.FontWeight}></StoryHeading>
+
+<Canvas of={TextStories.FontWeight} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -54,7 +93,5 @@ import integration from '../../snippets/integration.md?raw'
 import theming from './theming.md?raw'
 
 <Markdown>{theming}</Markdown>
-
-
 
 <Footer />

@@ -172,8 +172,8 @@ $text-colors: (
 
 // sizes
 .text {
-  @each $class, $size in $text-sizes {
-    &.is-#{$class} {
+  @each $size in $text-sizes {
+    &.is-#{$size} {
       @include text-size($size);
     }
   }

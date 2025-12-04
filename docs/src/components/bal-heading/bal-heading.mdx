@@ -12,7 +12,7 @@ import * as HeadingStories from './bal-heading.stories'
   **Heading** is a key component for displaying important titles and headers to organize and emphasize content.
 </Lead>
 
-<InfoQuote>
+{/* <InfoQuote>
 <p class='heading is-level-3'>Style import</p>
 
   We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
@@ -28,6 +28,20 @@ Or import all components styles:
 
 ```css
 @import '@baloise/ds-styles/css/components/all.css';
+```
+
+</InfoQuote> */}
+
+<InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
+  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+These styles are included in the core styles:
+
+```css
+@import '@baloise/ds-styles/css/core.css';
 ```
 
 </InfoQuote>
@@ -69,15 +83,9 @@ Or import all components styles:
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HeadingStories.Title}></StoryHeading>
+<StoryHeading of={HeadingStories.WebComponent}></StoryHeading>
 
-<Canvas of={HeadingStories.Title} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
-
-<Canvas of={HeadingStories.Subtitle} />
+<Canvas of={HeadingStories.WebComponent} sourceState={'shown'}/>
 
 {/* ------------------------------------------------------ */}
 
@@ -90,7 +98,7 @@ Using `auto-level`, one can specify the minimum visual level at which the headin
 
 {/* ------------------------------------------------------ */}
 
-## Component API
+### Component API
 
 import api from './api.md?raw'
 

@@ -46,7 +46,16 @@ hr,
   }
 
   // dashed border style
-  &.is-dashed {
+  &.is-dashed:not(.is-vertical) {
+    // default
+    background: repeating-linear-gradient(
+      90deg,
+      var(--bal-divider-color-background-base) 0,
+      var(--bal-divider-color-background-base) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+
     @each $color in $divider-colors {
       &.is-#{$color} {
         background: repeating-linear-gradient(
@@ -60,31 +69,55 @@ hr,
     }
   }
 
-  // default spaces
-  margin-top: var(--bal-space-xx-large);
-  margin-bottom: var(--bal-space-xx-large);
+  &.is-dashed.is-vertical {
+    // default
+    background: repeating-linear-gradient(
+      180deg,
+      var(--bal-divider-color-background-base) 0,
+      var(--bal-divider-color-background-base) 8px,
+      transparent 8px,
+      transparent 16px
+    );
 
-  @include tablet {
-    margin-top: var(--bal-space-xx-large-tablet);
-    margin-bottom: var(--bal-space-xx-large-tablet);
-  }
-
-  @include desktop {
-    margin-top: var(--bal-space-xx-large-desktop);
-    margin-bottom: var(--bal-space-xx-large-desktop);
+    @each $color in $divider-colors {
+      &.is-#{$color} {
+        background: repeating-linear-gradient(
+          180deg,
+          var(--bal-divider-color-background-#{$color}) 0,
+          var(--bal-divider-color-background-#{$color}) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+    }
   }
 
   // directions
+  &:not(.is-vertical),
   &.is-horizontal {
     flex: 1 0 100%;
     width: 100%;
     min-height: var(--bal-divider-border-width-base);
     height: var(--bal-divider-border-width-base);
+
+    // default space
+    margin-top: var(--bal-space-xx-large);
+    margin-bottom: var(--bal-space-xx-large);
+
+    @include tablet {
+      margin-top: var(--bal-space-xx-large-tablet);
+      margin-bottom: var(--bal-space-xx-large-tablet);
+    }
+
+    @include desktop {
+      margin-top: var(--bal-space-xx-large-desktop);
+      margin-bottom: var(--bal-space-xx-large-desktop);
+    }
   }
 
   // horizontal spaces
   @each $space in $divider-spaces {
-    &.has-space-#{$space} {
+    &.has-space-#{$space}:not(.is-vertical) {
       @if $space == 'none' {
         margin: 0;
       } @else {
@@ -96,6 +129,21 @@ hr,
 
         @include desktop {
           margin: var(--bal-space-#{$space}-desktop) 0;
+        }
+      }
+    }
+    &.has-space-#{$space}.is-vertical {
+      @if $space == 'none' {
+        margin: 0;
+      } @else {
+        margin: 0 var(--bal-space-#{$space});
+
+        @include tablet {
+          margin: 0 var(--bal-space-#{$space}-tablet);
+        }
+
+        @include desktop {
+          margin: 0 var(--bal-space-#{$space}-desktop);
         }
       }
     }

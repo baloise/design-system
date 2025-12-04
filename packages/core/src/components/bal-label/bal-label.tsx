@@ -69,22 +69,22 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop() valid?: boolean = undefined
+  @Prop() valid: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid?: boolean = undefined
+  @Prop() invalid: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled?: boolean = undefined
+  @Prop() disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly?: boolean = undefined
+  @Prop() readonly: boolean = false
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used

@@ -31,7 +31,7 @@ StyleDictionary.registerFormat({
     }
 
     let output = '## CSS Variables\n\n'
-    output += 'The component can be customization by changing the CSS variables.\n'
+    output += 'The component can be customization by changing the CSS variables.\n\n'
     output +=
       '<a class="sb-unstyled button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>\n\n'
 

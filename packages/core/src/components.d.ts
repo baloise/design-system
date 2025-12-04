@@ -2138,9 +2138,9 @@ export namespace Components {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * @default false
          */
@@ -2157,9 +2157,9 @@ export namespace Components {
         "htmlId"?: string;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
-        "invalid"?: boolean;
+        "invalid": boolean;
         /**
           * When true, the text will is able to break on multiple lines.
           * @default false
@@ -2176,9 +2176,9 @@ export namespace Components {
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default undefined
+          * @default false
          */
-        "readonly"?: boolean;
+        "readonly": boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -2192,9 +2192,9 @@ export namespace Components {
         "size": BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
-          * @default undefined
+          * @default false
          */
-        "valid"?: boolean;
+        "valid": boolean;
         /**
           * Defines the font weight of the label.
           * @default 'bold'
@@ -4218,9 +4218,9 @@ export namespace Components {
         "color": BalProps.BalTextColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * If `true` the text has heading font family
           * @default false
@@ -4237,9 +4237,9 @@ export namespace Components {
         "inline": boolean;
         /**
           * If `true` the component gets a invalid style.
-          * @default undefined
+          * @default false
          */
-        "invalid"?: boolean;
+        "invalid": boolean;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -8232,7 +8232,7 @@ declare namespace LocalJSX {
     interface BalLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -8251,7 +8251,7 @@ declare namespace LocalJSX {
         "htmlId"?: string;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
         "invalid"?: boolean;
         /**
@@ -8270,7 +8270,7 @@ declare namespace LocalJSX {
         "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default undefined
+          * @default false
          */
         "readonly"?: boolean;
         /**
@@ -8285,7 +8285,7 @@ declare namespace LocalJSX {
         "size"?: BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
-          * @default undefined
+          * @default false
          */
         "valid"?: boolean;
         /**
@@ -10259,7 +10259,7 @@ declare namespace LocalJSX {
         "color"?: BalProps.BalTextColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -10278,7 +10278,7 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         /**
           * If `true` the component gets a invalid style.
-          * @default undefined
+          * @default false
          */
         "invalid"?: boolean;
         /**

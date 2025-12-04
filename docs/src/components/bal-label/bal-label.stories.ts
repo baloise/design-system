@@ -1,8 +1,19 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import {
+  createCssMappings,
+  cssClasses,
+  StoryFactory,
+  withComponentControls,
+  withContent,
+  withDefaultContent,
+  withRender,
+} from '../../utils'
 
 type Args = JSX.BalLabel & { content: string }
+
+const tag = 'bal-label'
+const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Typography/Label',
@@ -11,9 +22,25 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-label' }),
+    ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<bal-label ${props(args)}>${content}</bal-label>`),
+  ...withRender(
+    ({ content, ...args }) => `
+<label ${cssClasses(
+      {
+        ...css('color', (color: string) => `is-${color}`),
+        ...css('size', (size: string) => `is-${size}`),
+        disabled: 'is-disabled',
+        valid: 'is-success',
+        invalid: 'is-danger',
+        multiline: 'is-multiline',
+        noWrap: 'has-no-wrap',
+      },
+      args,
+      'label',
+    )}>${content}</label>
+  `,
+  ),
 }
 
 export default meta
@@ -39,30 +66,20 @@ export const RequiredAndOptional = Story({
 
 export const States = Story({
   ...withRender(
-    () => `<div>
-  <div>
-    <bal-label invalid="true">Invalid Label</bal-label>
-  </div>
-  <div>
-    <bal-label disabled="true">Disabled Label</bal-label>
-  </div>
-</div>`,
+    () => `
+<label class="label is-danger">Invalid Label</label>
+<label class="label is-disabled">Disabled Label</label>
+`,
   ),
 })
 
 export const Sizes = Story({
   ...withRender(
-    () => `<div>
-    <div>
-      <bal-label size="small">Small Label</bal-label>
-    </div>
-    <div>
-      <bal-label>Normal Label</bal-label>
-    </div>
-    <div>
-      <bal-label size="large">Large Label</bal-label>
-    </div>
-  </div>`,
+    () => `
+<label class="label is-small">Small Label</label>
+<label class="label">Normal Label</label>
+<label class="label is-large">Large Label</label>
+`,
   ),
 })
 

@@ -15,9 +15,38 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <div class="stack">
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+        </div>
+      </section>
+
+      <!-- Nested -->
+      <section data-testid="nested">
+        <span>Nested</span>
+        <div class="stack">
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="stack has-space-x-small">
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+            <div class="stack has-space-large as-row">
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+            </div>
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+          </div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+        </div>
+      </section>
+
+      <!-- Item -->
+      <section>
+        <span>Item</span>
+        <div class="stack as-row">
           <bal-icon name="date" size="medium"></bal-icon>
           <div class="stack-content">
             <label class="label">My Item</label>
@@ -30,7 +59,7 @@
       <!-- Alignment -->
       <section>
         <span>Alignment</span>
-        <div class="stack align-top-start">
+        <div class="stack as-row align-top-start">
           <div class="stack-content">
             <label class="label">Alignment Start</label>
             <bal-text
@@ -44,7 +73,7 @@
           </button>
         </div>
 
-        <div class="stack align-center">
+        <div class="stack as-row align-center">
           <div class="stack-content">
             <label class="label">Alignment Center</label>
             <bal-text
@@ -58,7 +87,7 @@
           </button>
         </div>
 
-        <div class="stack align-bottom-end">
+        <div class="stack as-row align-bottom-end">
           <div class="stack-content">
             <label class="label">Alignment End</label>
             <bal-text
@@ -76,7 +105,7 @@
       <!-- Direction -->
       <section>
         <span>Direction</span>
-        <div class="stack is-vertical">
+        <div class="stack as-col">
           <div class="stack-content">
             <label class="label">Direction Column</label>
             <bal-text
@@ -122,7 +151,7 @@
       <!-- Spaces -->
       <section class="s-bg-1">
         <span>Spaces</span>
-        <div class="stack has-space-none">
+        <div class="stack as-row has-space-none">
           <div class="stack-content s-bg-2">
             <label class="label">Space None</label>
             <bal-text
@@ -134,7 +163,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-xx-small">
+        <div class="stack as-row has-space-xx-small">
           <div class="stack-content s-bg-2">
             <label class="label">Space XX Small</label>
             <bal-text
@@ -146,7 +175,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-x-small">
+        <div class="stack as-row has-space-x-small">
           <div class="stack-content s-bg-2">
             <label class="label">Space X Small</label>
             <bal-text
@@ -158,7 +187,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-small">
+        <div class="stack as-row has-space-small">
           <div class="stack-content s-bg-2">
             <label class="label">Space Small</label>
             <bal-text
@@ -170,7 +199,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-normal">
+        <div class="stack as-row has-space-normal">
           <div class="stack-content s-bg-2">
             <label class="label">Space Normal</label>
             <bal-text
@@ -182,7 +211,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-medium">
+        <div class="stack as-row has-space-medium">
           <div class="stack-content s-bg-2">
             <label class="label">Space Medium</label>
             <bal-text
@@ -194,7 +223,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-large">
+        <div class="stack as-row has-space-large">
           <div class="stack-content s-bg-2">
             <label class="label">Space Large</label>
             <bal-text
@@ -206,7 +235,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-x-large">
+        <div class="stack as-row has-space-x-large">
           <div class="stack-content s-bg-2">
             <label class="label">Space X Large</label>
             <bal-text
@@ -218,7 +247,7 @@
           <button class="button is-small">Button</button>
         </div>
 
-        <div class="stack has-space-xx-large">
+        <div class="stack as-row has-space-xx-large">
           <div class="stack-content s-bg-2">
             <label class="label">Space XX Large</label>
             <bal-text

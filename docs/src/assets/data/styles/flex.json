@@ -246,6 +246,12 @@
         "value": "auto"
       },
       {
+        "class": "gap-xxx-small",
+        "css": "gap: var(--bal-space-xxx-small);",
+        "property": "gap",
+        "value": "var(--bal-space-xxx-small)"
+      },
+      {
         "class": "gap-xx-small",
         "css": "gap: var(--bal-space-xx-small);",
         "property": "gap",

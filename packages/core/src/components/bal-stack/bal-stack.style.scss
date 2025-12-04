@@ -63,10 +63,11 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 /**
   * Basic Style
   */
-
 .stack {
-  align-items: center;
-  flex-flow: row nowrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column nowrap;
   gap: 1rem;
 
   //
@@ -74,29 +75,31 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
   &.as-row,
   &.has-direction-row,
   &.is-horizontal {
-    flex-direction: row;
+    flex-flow: row nowrap;
+    justify-content: center;
     align-items: center;
   }
 
   &.as-col,
   &.has-direction-column,
   &.is-vertical {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
   }
 
   &.as-row-reverse,
   &.has-direction-row-reverse,
   &.is-horizontal-reverse {
-    flex-direction: row-reverse;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
     align-items: center;
   }
 
   &.as-col-reverse,
   &.has-direction-column-reverse,
   &.is-vertical-reverse {
-    flex-direction: column-reverse;
-    align-items: flex-start;
+    flex-flow: column-reverse nowrap;
+    justify-content: flex-start;
   }
 }
 

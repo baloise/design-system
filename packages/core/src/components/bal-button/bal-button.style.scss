@@ -77,7 +77,7 @@
   align-items: center;
   text-align: center;
   vertical-align: middle;
-  gap: 0.375rem;
+  gap: 0.5rem;
   cursor: pointer;
   min-height: 3rem;
   padding-inline: 1.5rem;
@@ -277,6 +277,10 @@ button.button {
 
 // Icons
 
+.button:where(:not(.is-square, .is-circle)) > bal-icon {
+  margin-left: -4px;
+}
+
 .button:where(:not(.is-square, .is-circle), .is-small) > bal-icon,
 .button:where(:not(.is-square, .is-circle), .is-small) > bal-icon > .bal-icon__inner {
   width: 0.875rem;
@@ -366,16 +370,27 @@ button.button {
 
 /* stylelint-disable no-descending-specificity */
 .buttons {
-  align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-flow: column wrap;
 
-  & > .button {
-    margin-bottom: 0.5rem;
+  @include tablet {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
-    &:not(:last-child, .is-fullwidth) {
-      margin-right: 0.5rem;
+  &.as-row {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.as-col {
+    flex-flow: column wrap;
+
+    @include tablet {
+      align-items: flex-start;
     }
   }
 
@@ -387,70 +402,29 @@ button.button {
     margin-bottom: 1rem;
   }
 
-  // Addons
-  &.has-addons {
-    .button {
-      &:not(:first-child) {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-      }
-
-      &:not(:last-child) {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-
-        @include ltr-property('margin', -1px);
-      }
-
-      &:last-child {
-        @include ltr-property('margin', 0);
-      }
-
-      &:hover,
-      &.is-hovered {
-        z-index: 2;
-      }
-
-      &:focus,
-      &.is-focused,
-      &:active,
-      &.is-pressed,
-      &.is-selected {
-        z-index: 3;
-
-        &:hover {
-          z-index: 4;
-        }
-      }
-
-      &.is-fullwidth {
-        flex-grow: 1;
-        flex-shrink: 1;
-      }
+  @include mobile {
+    .button:not(.is-square, .is-circle) {
+      flex: 1 1 auto;
     }
   }
 
   // Centered
-  &.is-centered {
-    justify-content: center;
-
-    &:not(.has-addons) {
-      .button:not(.is-fullwidth) {
-        margin-left: 0.25rem;
-        margin-right: 0.25rem;
-      }
+  @include tablet {
+    &.is-centered:not(.as-col) {
+      justify-content: center;
     }
-  }
 
-  // Right aligned
-  &.is-right {
-    justify-content: flex-end;
+    &.is-centered.as-col {
+      align-items: center;
+    }
 
-    &:not(.has-addons) {
-      .button:not(.is-fullwidth) {
-        margin-left: 0.25rem;
-        margin-right: 0.25rem;
-      }
+    // Right aligned
+    &.is-right:not(.as-col) {
+      justify-content: flex-end;
+    }
+
+    &.is-right.as-col {
+      align-items: flex-end;
     }
   }
 }
@@ -470,5 +444,12 @@ fieldset[disabled] .button,
   background-color: var(--bal-button-color-background-disabled-base);
   border: var(--bal-button-border-disabled-base);
   color: var(--bal-button-color-text-disabled-base);
+
+  @include fillSvg(var(--bal-button-color-text-disabled-base));
+
+  & > bal-spinner[variation='circle'] {
+    border-color: var(--bal-color-grey-4);
+    border-top-color: var(--bal-button-color-text-disabled-base);
+  }
 }
 /* stylelint-enable no-descending-specificity */

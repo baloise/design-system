@@ -1,8 +1,19 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import {
+  createCssMappings,
+  props,
+  StoryFactory,
+  withComponentControls,
+  withContent,
+  withDefaultContent,
+  withRender,
+} from '../../utils'
 
 type Args = JSX.BalButton & { content: string }
+
+const tag = 'bal-button'
+const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Containment/Button',
@@ -11,7 +22,7 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-button' }),
+    ...withComponentControls({ tag }),
   },
   ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
 }
@@ -29,35 +40,68 @@ export const Basic = Story({
   ...withRender(() => `<button class="button is-primary">Button</button>`),
 })
 
-export const Component = Story({
-  args: {
-    content: 'Primary',
-    icon: 'plus',
-  },
-})
-
-export const Variants = Story({
+export const WithIcon = Story({
   ...withRender(
-    () => `<bal-button-group direction="column" position="center">
-  <bal-button>Primary</bal-button>
-  <bal-button color="secondary">Secondary</bal-button>
-  <bal-button color="tertiary">Tertiary</bal-button>
-  <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
-  <bal-button color="tertiary-red">Tertiary Red</bal-button>
-  <bal-button color="tertiary-yellow">Tertiary Yellow</bal-button>
-  <bal-button color="tertiary-green">Tertiary Green</bal-button>
-  <bal-button color="link">Link</bal-button>
-</bal-button-group>`,
+    () => `<button class="button is-primary">
+  <bal-icon name="plus"></bal-icon>
+  Button
+  </button>`,
   ),
 })
 
 export const States = Story({
   ...withRender(
-    () => `<bal-button-group>
-  <bal-button loading>Loading</bal-button>
-  <bal-button disabled>Disabled</bal-button>
-</bal-button-group>`,
+    () => `<div class="buttons">
+  <button class="button is-loading">
+    <bal-spinner></bal-spinner>
+    loading...
+  </button>
+  <button class="button is-loading" disabled>
+    <bal-spinner variation="circle"></bal-spinner>
+    loading...
+  </button>
+  <button class="button" disabled>Disabled</button>
+</div>`,
   ),
+})
+
+export const Variants = Story({
+  ...withRender(
+    () => `<div class="buttons">
+  <button class="button is-primary">Primary</button>
+  <button class="button is-secondary">Secondary</button>
+  <button class="button is-tertiary">Tertiary</button>
+  <button class="button is-accent">Accent</button>
+</div>
+<div class="buttons">
+  <button class="button is-tertiary-purple">Tertiary Purple</button>
+  <button class="button is-tertiary-red">Tertiary Red</button>
+  <button class="button is-tertiary-yellow">Tertiary Yellow</button>
+  <button class="button is-tertiary-green">Tertiary Green</button>
+</div>
+<div class="buttons">
+  <button class="button is-link">Link</button>
+</div>`,
+  ),
+})
+
+export const ButtonGroup = Story({
+  ...withRender(
+    () => `
+<div class="buttons">
+  <button class="button is-tertiary-purple">Purple</button>
+  <button class="button is-tertiary-red">Red</button>
+  <button class="button is-tertiary-yellow">Yellow</button>
+  <button class="button is-tertiary-green">Green</button>
+</div>`,
+  ),
+})
+
+export const Component = Story({
+  args: {
+    content: 'Primary',
+    icon: 'plus',
+  },
 })
 
 export const AlertButtons = Story({
@@ -81,22 +125,22 @@ export const SquareButtons = Story({
   ),
 })
 
-export const ButtonGroup = Story({
-  ...withRender(
-    () => `<bal-button-group>
-  <bal-button color="link">Left</bal-button>
-  <bal-button>Aligned</bal-button>
-</bal-button-group>
-<bal-button-group position="center">
-  <bal-button color="link">Center</bal-button>
-  <bal-button>Aligned</bal-button>
-</bal-button-group>
-<bal-button-group position="right">
-  <bal-button color="link">Right</bal-button>
-  <bal-button>Aligned</bal-button>
-</bal-button-group>`,
-  ),
-})
+// export const ButtonGroup = Story({
+//   ...withRender(
+//     () => `<bal-button-group>
+//   <bal-button color="link">Left</bal-button>
+//   <bal-button>Aligned</bal-button>
+// </bal-button-group>
+// <bal-button-group position="center">
+//   <bal-button color="link">Center</bal-button>
+//   <bal-button>Aligned</bal-button>
+// </bal-button-group>
+// <bal-button-group position="right">
+//   <bal-button color="link">Right</bal-button>
+//   <bal-button>Aligned</bal-button>
+// </bal-button-group>`,
+//   ),
+// })
 
 export const Link = Story({
   ...withRender(() => `<bal-button color="link" icon-right="plus">Link</bal-button>`),

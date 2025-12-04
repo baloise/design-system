@@ -203,20 +203,94 @@
       <!-- Loading -->
       <section>
         <span>Loading</span>
-        <button class="button is-square">
-          <bal-spinner></bal-spinner>
-        </button>
-        <button class="button is-secondary is-loading">
-          <bal-spinner></bal-spinner>
-          loading...
-        </button>
-        <button class="button is-square is-loading">
-          <bal-spinner variation="circle"></bal-spinner>
-        </button>
-        <button class="button is-secondary is-loading">
-          <bal-spinner variation="circle"></bal-spinner>
-          loading...
-        </button>
+        <div class="buttons">
+          <button class="button is-square">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading">
+            <bal-spinner></bal-spinner>
+            loading...
+          </button>
+          <button class="button is-square is-loading">
+            <bal-spinner variation="circle"></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading">
+            <bal-spinner variation="circle"></bal-spinner>
+            loading...
+          </button>
+        </div>
+        <div class="buttons">
+          <button class="button is-square is-loading" disabled>
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading" disabled>
+            <bal-spinner></bal-spinner>
+            loading...
+          </button>
+
+          <button class="button is-square is-loading" disabled>
+            <bal-spinner variation="circle"></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading" disabled>
+            <bal-spinner variation="circle"></bal-spinner>
+            loading...
+          </button>
+        </div>
+      </section>
+
+      <!-- Group -->
+      <section>
+        <span>Group</span>
+        <div class="buttons">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons is-centered">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons is-right">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+      </section>
+
+      <!-- Two Row Button Group -->
+      <section>
+        <span>Two Row Button Group</span>
+        <div class="buttons as-row">
+          <button class="button">Left</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-row">
+          <button class="button is-square">
+            <bal-icon name="plus"></bal-icon>
+          </button>
+          <button class="button">Right</button>
+        </div>
+      </section>
+
+      <!-- Group Column-->
+      <section>
+        <span>Group Column</span>
+        <div class="buttons as-col">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-col is-centered">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-col is-right">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
       </section>
     </main>
   </body>

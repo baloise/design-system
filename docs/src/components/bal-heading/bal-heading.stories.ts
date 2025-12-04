@@ -1,8 +1,20 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import {
+  createCssMappings,
+  cssClasses,
+  props,
+  StoryFactory,
+  withComponentControls,
+  withContent,
+  withDefaultContent,
+  withRender,
+} from '../../utils'
 
 type Args = JSX.BalHeading & { content: string }
+
+const tag = 'bal-heading'
+const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Typography/Heading',
@@ -11,7 +23,7 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-heading' }),
+    ...withComponentControls({ tag }),
   },
   ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
 }
@@ -27,14 +39,23 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    () => `
-<!-- HTML and CSS -->
-<h1 class="heading">Heading</h1>
-<p class="heading is-subtitle is-xx-large">Subtitle</p>
-
-<!-- Web Components -->
-<bal-heading level="h1">Heading</bal-heading>
-<bal-heading level="xx-large" subtitle>Subtitle</bal-heading>
+    ({ content, ...args }) => `
+<h1 ${cssClasses(
+      {
+        ...css('color', (color: string) => `is-${color}`),
+        ...css('level', (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`),
+        ...css(
+          'visualLevel',
+          (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`,
+        ),
+        subtitle: 'subtitle',
+        noWrap: 'has-no-wrap',
+        shadow: 'has-shadow',
+      },
+      args,
+      'title',
+    )}>${content}</h1>
+<p class="subtitle is-xx-large">Subtitle</p>
 `,
   ),
 })
@@ -42,39 +63,39 @@ export const Basic = Story({
 export const Levels = Story({
   ...withRender(
     () => `
-<h1 class="heading">Heading 1</h1>
-<h2 class="heading">Heading 2</h2>
-<h3 class="heading">Heading 3</h3>
-<h4 class="heading">Heading 4</h4>
-<h5 class="heading">Heading 5</h5>`,
+<h1 class="title">Heading 1</h1>
+<h2 class="title">Heading 2</h2>
+<h3 class="title">Heading 3</h3>
+<h4 class="title">Heading 4</h4>
+<h5 class="title">Heading 5</h5>`,
   ),
 })
 
 export const Sizes = Story({
   ...withRender(
     () => `
-<h1 class="heading is-size-1">Heading 1</h1>
-<h1 class="heading is-size-2">Heading 2</h1>
-<h1 class="heading is-size-3">Heading 3</h3>
-<h1 class="heading is-size-4">Heading 4</h4>
-<h1 class="heading is-size-5">Heading 5</h5>`,
+<h1 class="title is-1">Size 1 (xxx-large)</h1>
+<h1 class="title is-xx-large">Size 2 (xx-large)</h1>
+<h1 class="title is-level-3">Size 3 (x-large)</h3>
+<h1 class="title is-level-4">Size 4 (large)</h4>
+<h1 class="title is-level-5">Size 5 (normal)</h5>`,
   ),
 })
 
 export const Colors = Story({
   ...withRender(
     () => `
-<h4 class="heading">Default / Primary</h4>
-<h4 class="heading is-success">Success</h4>
-<h4 class="heading is-warning">Warning</h4>
-<h4 class="heading is-danger">Danger</h4>`,
+<h4 class="title">Default / Primary</h4>
+<h4 class="title is-success">Success</h4>
+<h4 class="title is-warning">Warning</h4>
+<h4 class="title is-danger">Danger</h4>`,
   ),
 })
 
 export const NoWrap = Story({
   ...withRender(
     () => `
-<h4 class="heading has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
+<h4 class="title has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
   ),
 })
 
@@ -82,35 +103,25 @@ export const Spacing = Story({
   ...withRender(
     () => `<div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="heading has-space-all">All</h4>
+      <h4 class="title has-space-all">All</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="heading has-space-none">None</h4>
+      <h4 class="title has-space-none">None</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="heading has-space-top">Top</h4>
+      <h4 class="title has-space-top">Top</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="heading has-space-bottom">Bottom</h4>
+      <h4 class="title has-space-bottom">Bottom</h4>
     </div>
   </div>`,
   ),
 })
 
-export const Title = Story({
+export const WebComponent = Story({
   args: {
     level: 'h1',
     subtitle: false,
-    space: 'bottom',
-    inverted: false,
-  },
-})
-
-export const Subtitle = Story({
-  args: {
-    content: 'Subtitle',
-    level: 'h3',
-    subtitle: true,
     space: 'bottom',
     inverted: false,
   },

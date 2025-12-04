@@ -1,13 +1,9 @@
 @forward '../../../../styles/sass/normalize';
-@forward './bal-divider.style';
 
 /**
   * Host Style
   */
 
 bal-divider {
-  display: block;
   position: static;
-  margin: 0;
-  padding: 0;
 }

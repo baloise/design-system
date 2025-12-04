@@ -31,8 +31,20 @@ main > section > span:first-child {
   background-color: #fae052 !important;
 }
 
+.s-bg-3 {
+  background-color: #da2f4c !important;
+}
+
 .s-mb {
   margin-bottom: 1rem !important;
+}
+
+.s-fullwidth {
+  width: 100% !important;
+}
+
+.s-height-2rem {
+  height: 2rem !important;
 }
 
 .s-height-4rem {
@@ -42,6 +54,11 @@ main > section > span:first-child {
 .s-height-8rem {
   height: 8rem !important;
 }
+
+.s-flex-1 {
+  flex: 1 !important;
+}
+
 
 .s-p {
   padding: 0.5rem !important;

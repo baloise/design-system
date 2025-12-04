@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as LabelStories from './bal-label.stories'
 
 <Meta of={LabelStories} />
@@ -9,6 +9,20 @@ import * as LabelStories from './bal-label.stories'
 <Banner of={LabelStories} />
 
 <Lead>**Label** component represents a caption for a form control component.</Lead>
+
+<InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
+  We recommend using standard <b>HTML elements</b> like `<label>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+These styles are included in the core styles:
+
+```css
+@import '@baloise/ds-styles/css/core.css';
+```
+
+</InfoQuote>
 
 <Canvas of={LabelStories.Basic} sourceState="shown" />
 

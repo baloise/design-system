@@ -138,7 +138,7 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
   * Text Shadow
   */
   &.has-shadow {
-    text-shadow: var(--bal-heading-text-shadow);
+    text-shadow: var(--bal-heading-shadow);
   }
 
   /**

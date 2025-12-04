@@ -18,6 +18,12 @@ import * as ButtonStories from './bal-button.stories'
   We recommend using standard <b>HTML elements</b> such as `<button>` and `<a>` whenever possible instead of web
   components. However in combination with a spinner or icon use the component.
   This helps improve the rendering speed of your application or website.
+
+  These styles are included in the core styles:
+
+  ```css
+  @import '@baloise/ds-styles/css/core.css';
+  ```
 </InfoQuote>
 
 <Canvas of={ButtonStories.Basic} sourceState="shown" />
@@ -25,6 +31,20 @@ import * as ButtonStories from './bal-button.stories'
 <PlaygroundBar of={ButtonStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.WithIcon}></StoryHeading>
+
+<Canvas of={ButtonStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.States}></StoryHeading>
+
+<Canvas of={ButtonStories.States} />
+
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Component}></StoryHeading>
@@ -46,9 +66,9 @@ are not suitable for use on non-white backgrounds.
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.States}></StoryHeading>
+<StoryHeading of={ButtonStories.WithIcon}></StoryHeading>
 
-<Canvas of={ButtonStories.States} />
+<Canvas of={ButtonStories.WithIcon} />
 
 {/* ------------------------------------------------------ */}
 

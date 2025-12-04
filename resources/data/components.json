@@ -1142,7 +1142,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-accordion",
         "bal-accordion-trigger",
@@ -16412,10 +16412,10 @@
       "props": [
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16425,19 +16425,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16508,10 +16505,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16521,19 +16518,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16598,10 +16592,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16611,19 +16605,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16713,10 +16704,10 @@
         },
         {
           "name": "valid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16726,19 +16717,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -23111,7 +23099,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -23150,7 +23138,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -23189,7 +23177,7 @@
               },
               "PopoverPresentOptions": {
                 "location": "local",
-                "path": "/__w/design-system/design-system/packages/core/src/components/bal-popover/bal-popover.tsx",
+                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-popover/bal-popover.tsx",
                 "id": "src/components/bal-popover/bal-popover.tsx::PopoverPresentOptions"
               }
             },
@@ -32138,7 +32126,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -32260,10 +32248,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -32273,19 +32261,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -32350,10 +32335,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -32363,19 +32348,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -32568,7 +32550,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
