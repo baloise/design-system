@@ -113,3 +113,52 @@ $close-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' v
     }
   }
 }
+
+/**
+  * Close inside tag
+  */
+.tag {
+  &.is-small > .close {
+    padding: 0.25rem;
+
+    &::after {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &.is-grey,
+  &.is-info,
+  &.is-success,
+  &.is-danger,
+  &.is-purple-dark,
+  &.is-red-dark,
+  &.is-green-dark,
+  &.is-yellow-dark,
+  &.is-primary {
+    > .close {
+      &::after {
+        background-color: var(--bal-close-color-icon-inverted);
+      }
+
+      @include hover {
+        &:hover,
+        &.is-hovered {
+          background: var(--bal-close-color-background-inverted-hover);
+        }
+      }
+
+      &:active,
+      &.is-pressed {
+        background: var(--bal-close-color-background-inverted-active);
+      }
+
+      &:focus-visible,
+      &.is-focused {
+        &:not(:active) {
+          box-shadow: var(--bal-close-shadow-outline-inverted);
+        }
+      }
+    }
+  }
+}

@@ -207,7 +207,7 @@
                   size="xx-large"
                 ></bal-icon>
                 <div class="stack-content align-center">
-                  <h3 class="title" id="teaser-card-title-1 is-centered"">Teaser Card</h3>
+                  <h3 class="title" id="teaser-card-title-1 is-centered">Teaser Card</h3>
                   <span class="text is-centered">
                     The item component can easily be combined with the card component to achieve a nice teaser layout.
                   </span>
@@ -256,87 +256,86 @@
       <!-- Dashboard -->
       <section>
         <span>Dashboard</span>
-          <div class="grid is-multiline">
-            <div class="col is-half">
-              <button class="card align-center is-fullheight">
-                <img
-                  class="mb-normal"
-                  style="max-width: 88px"
-                  src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg"
-                />
-                <header class="card-header">
-                  <h3 class="title">Clickable Card</h3>
-                </header>
-              </button>
-            </div>
-            <div class="col is-half">
-              <article class="card is-purple is-fullheight">
-                <header class="card-header">
-                  <h3 class="title">Info Card</h3>
-                </header>
-                <div class="card-content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                </div>
-                <footer class="card-footer">
-                  <a href="#" class="button">Read more</a>
-                </footer>
-              </article>
-            </div>
+        <div class="grid is-multiline">
+          <div class="col is-half">
+            <button class="card align-center is-fullheight">
+              <img
+                class="mb-normal"
+                style="max-width: 88px"
+                src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg"
+              />
+              <header class="card-header">
+                <h3 class="title">Clickable Card</h3>
+              </header>
+            </button>
+          </div>
+          <div class="col is-half">
+            <article class="card is-purple is-fullheight">
+              <header class="card-header">
+                <h3 class="title">Info Card</h3>
+              </header>
+              <div class="card-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua
+              </div>
+              <footer class="card-footer">
+                <a href="#" class="button">Read more</a>
+              </footer>
+            </article>
+          </div>
 
-            <div class="col is-half">
-              <article class="card is-fullheight">
-                <header class="card-header">
-                  <h3 class="title">List Card</h3>
-                  <a class="link">Show All</a>
-                </header>
-                <div class="card-content">
-                  <bal-list border="true" size="large" class="mb-normal">
-              <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
-                <bal-list-item-content>
-                    <bal-list-item-title>External Link</bal-list-item-title>
-                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-                </bal-list-item-content>
-                <bal-list-item-icon right="true">
-                    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-                </bal-list-item-icon>
-              </bal-list-item>
-              <bal-list-item disabled="true" clickable="true" href="http://www.baloise.com" target="_blank">
-                <bal-list-item-content>
-                  <bal-list-item-title>Disabled Link</bal-list-item-title>
-                  <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-                </bal-list-item-content>
-                <bal-list-item-icon right="true">
-                  <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-                </bal-list-item-icon>
-              </bal-list-item>
-            </bal-list>
-                </div>
-                <footer class="card-footer">
-                  <a href="#" class="button is-secondary is-fullwidth">Read more</a>
-                </footer>
-              </article>
-            </div>
+          <div class="col is-half">
+            <article class="card is-fullheight">
+              <header class="card-header">
+                <h3 class="title">List Card</h3>
+                <a class="link">Show All</a>
+              </header>
+              <div class="card-content">
+                <bal-list border="true" size="large" class="mb-normal">
+                  <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
+                    <bal-list-item-content>
+                      <bal-list-item-title>External Link</bal-list-item-title>
+                      <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right="true">
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </bal-list-item>
+                  <bal-list-item disabled="true" clickable="true" href="http://www.baloise.com" target="_blank">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Disabled Link</bal-list-item-title>
+                      <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right="true">
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </bal-list-item>
+                </bal-list>
+              </div>
+              <footer class="card-footer">
+                <a href="#" class="button is-secondary is-fullwidth">Read more</a>
+              </footer>
+            </article>
+          </div>
 
-            <div class="col is-half">
-              <article class="card is-fullheight">
-                <header class="card-header">
-                  <h3 class="title">Action Card</h3>
-                </header>
-                <div class="card-content">
-                  <bal-input-group>
-                    <bal-icon size="small" name="check"></bal-icon>
-                    <bal-input placeholder="Placeholder"></bal-input>
-                  </bal-input-group>
-                  <div class="buttons mt-normal is-centered">
-                    <a href="#" class="button is-secondary ">Search</a>
-                  </div>
+          <div class="col is-half">
+            <article class="card is-fullheight">
+              <header class="card-header">
+                <h3 class="title">Action Card</h3>
+              </header>
+              <div class="card-content">
+                <bal-input-group>
+                  <bal-icon size="small" name="check"></bal-icon>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-input-group>
+                <div class="buttons mt-normal is-centered">
+                  <a href="#" class="button is-secondary">Search</a>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
     </main>
   </body>
 </html>
-

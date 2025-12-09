@@ -14,13 +14,18 @@ $tag-colors: (
   'red',
   'yellow',
   'green',
+  'purple-dark',
+  'red-dark',
+  'yellow-dark',
+  'green-dark',
   'purple-light',
   'red-light',
   'yellow-light',
   'green-light'
 );
 
-@mixin tag-background($color) {
+@mixin tag-colors($color) {
+  color: var(--bal-tag-color-text-#{$color});
   background: var(--bal-tag-color-background-#{$color});
 }
 
@@ -35,10 +40,14 @@ $tag-colors: (
   align-items: center;
   justify-content: center;
   min-height: 2rem;
-  line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
+  vertical-align: middle;
   background-color: var(--bal-tag-color-background-base);
   border-radius: var(--bal-tag-radius-base);
+  font-family: var(--bal-tag-font-family);
+  line-height: var(--bal-tag-line-height);
+  font-size: var(--bal-tag-text-size-normal);
+  font-weight: var(--bal-tag-font-weight-normal);
   gap: 0.25rem;
 
   > .close,
@@ -51,7 +60,37 @@ $tag-colors: (
     */
   @each $color in $tag-colors {
     &.is-#{$color} {
-      @include tag-background($color);
+      @include tag-colors($color);
     }
   }
+
+  &.is-pill {
+    border-radius: var(--bal-tag-radius-pill);
+  }
+
+  &.is-small {
+    padding: 0 0.75rem 0 0.75rem;
+    min-height: 1.5rem;
+    font-size: var(--bal-tag-text-size-small);
+    font-weight: var(--bal-tag-font-weight-small);
+  }
+
+  &.is-medium {
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: var(--bal-tag-text-size-medium);
+    font-weight: var(--bal-tag-font-weight-medium);
+  }
+
+  &.is-large {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+    font-size: var(--bal-tag-text-size-large);
+    font-weight: var(--bal-tag-font-weight-large);
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 0.25rem;
 }

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/assets/tokens.css" />
     <link rel="stylesheet" href="/assets/basic.css" />
     <link rel="stylesheet" href="/assets/components.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <main class="container">
@@ -15,6 +18,87 @@
       <section>
         <span>Basic</span>
         <span class="tag">Tag</span>
+      </section>
+
+      <!-- Variants -->
+      <section>
+        <span>Variants</span>
+        <span class="tag is-purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </span>
+        <span class="tag is-purple-light">
+          <bal-icon name="check" size="small"></bal-icon>
+          Title
+        </span>
+        <br />
+        <br />
+        <span class="tag is-small is-purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </span>
+        <span class="tag is-small is-purple-light">
+          <bal-icon name="check" size="small"></bal-icon>
+          <b>Title</b>
+        </span>
+      </section>
+
+      <!-- Closeable-->
+      <section>
+        <span>Closeable</span>
+        <span class="tag">
+          Tag
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+      </section>
+
+      <!-- Pill-->
+      <section>
+        <span>Pill</span>
+        <span class="tag is-pill">
+          Tag
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <span class="tag is-small">
+          Small
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag">
+          Normal
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-medium">
+          Medium
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-large">
+          Large
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+
+        <br />
+        <br />
+        <span class="tag is-pill is-small">
+          Small
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-pill">
+          Normal
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-pill is-medium">
+          Medium
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-pill is-large">
+          Large
+          <button class="close" aria-label="remove tag"></button>
+        </span>
       </section>
 
       <!-- Closeable-->
@@ -29,10 +113,20 @@
       <!-- Colors-->
       <section>
         <span>Colors</span>
+        <span class="tag">
+          base
+          <button class="close" aria-label="remove tag"></button>
+        </span>
         <span class="tag is-primary">
           primary
           <button class="close" aria-label="remove tag"></button>
         </span>
+        <span class="tag is-grey">
+          grey
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <br />
+        <br />
         <span class="tag is-info">
           info
           <button class="close" aria-label="remove tag"></button>
@@ -49,15 +143,60 @@
           danger
           <button class="close" aria-label="remove tag"></button>
         </span>
+        <br />
+        <br />
+        <span class="tag is-purple-dark">
+          purple dark
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-red-dark">
+          red dark
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-yellow-dark">
+          yellow dark
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-green-dark">
+          green dark
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <br />
+        <br />
         <span class="tag is-purple">
           purple
           <button class="close" aria-label="remove tag"></button>
         </span>
-        <span class="tag is-purple">
-          purple
+        <span class="tag is-red">
+          red
           <button class="close" aria-label="remove tag"></button>
         </span>
-
+        <span class="tag is-yellow">
+          yellow
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-green">
+          green
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <br />
+        <br />
+        <span class="tag is-purple-light">
+          purple light
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-red-light">
+          red light
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-yellow-light">
+          yellow light
+          <button class="close" aria-label="remove tag"></button>
+        </span>
+        <span class="tag is-green-light">
+          green light
+          <button class="close" aria-label="remove tag"></button>
+        </span>
       </section>
     </main>
   </body>

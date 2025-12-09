@@ -198,4 +198,12 @@ $text-colors: (
   &.is-justified {
     text-align: justify;
   }
+
+  &.is-bold {
+    font-weight: var(--bal-font-weight-bold);
+  }
+
+  &.is-regular {
+    font-weight: var(--bal-font-weight-regular);
+  }
 }
