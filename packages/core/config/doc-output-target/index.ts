@@ -8,8 +8,6 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { propsToMarkdown } from './markdown-props'
 import { slotsToMarkdown } from './markdown-slots'
-import { createTestingMarkdown } from './markdown-testing'
-import { createThemingMarkdown } from './markdown-theming'
 
 const TOKEN_PATH = path.join(__dirname, '../../../../packages/tokens')
 
@@ -25,25 +23,42 @@ StyleDictionary.registerFormat({
       return value
     }
 
+    const formatBorderValue = (value: any) => {
+      return `${value.style} ${value.width} ${value.color}`
+    }
+
     const tokens = dictionary.allTokens
     if (tokens.length === 0) {
       return '## CSS Variables\n\nNo custom variables defined for this component.\n'
     }
 
     let output = '## CSS Variables\n\n'
-    output += 'The component can be customization by changing the CSS variables.\n\n'
+    output += 'The component can be customized by changing the CSS variables.\n\n'
     output +=
       '<a class="sb-unstyled button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>\n\n'
 
-    output += '| Variable | Reference | Value |\n'
-    output += '|----------|-------|-------|\n'
+    output += '<div style="overflow-x: auto; max-height: 600px; margin-top: 48px">\n'
+    output += '<table class="table w-full is-striped">\n'
+    output += '  <thead>\n'
+    output += '    <tr>\n'
+    output += '      <th style="border-top: none; border-left: none; border-right: none;">Variable</th>\n'
+    output += '      <th>Reference</th>\n'
+    output += '      <th>Value</th>\n'
+    output += '    </tr>\n'
+    output += '  </thead>\n'
+    output += '  <tbody>\n'
+
+    const formatKeyToCssVar = (key: string | undefined) => {
+      // create kebab-case css variable name from key like {color.red.500} => --color-red-500
+      if (!key) return ''
+      return `--${key.replace(/[{}]/g, '').replace(/\./g, '-')}`
+    }
 
     tokens
       .filter(token => {
         return token.filePath?.includes('/packages/core/')
       })
       .forEach(token => {
-        const referenceToken = token.original.$value ? dictionary.tokenMap.get(token.original.$value) : ''
         const name = `--${token.name}`
 
         // Format shadow values if type is shadow
@@ -51,9 +66,27 @@ StyleDictionary.registerFormat({
         if (token.$type === 'shadow') {
           value = formatShadowValue(value)
         }
+        if (token.$type === 'border') {
+          value = formatBorderValue(value)
+        }
 
-        output += `| \`${name}\` | \`${referenceToken ? `--${referenceToken.name}` : ''}\` | \`${value}\` |\n`
+        const referenceToken = token.original.key
+          ? dictionary.tokenMap.get(token.original.key)
+          : token.original.$value
+            ? dictionary.tokenMap.get(token.original.$value)
+            : ''
+        const referenceTokenName = referenceToken ? `--${referenceToken.name}` : formatKeyToCssVar(token.original.key)
+
+        output += '    <tr>\n'
+        output += `      <td><code>${name}</code></td>\n`
+        output += `      <td><code>${referenceTokenName}</code></td>\n`
+        output += `      <td><code>${String(value).replace(/#/g, '\\#')}</code></td>\n`
+        output += '    </tr>\n'
       })
+
+    output += '  </tbody>\n'
+    output += '</table>\n'
+    output += '</div>\n'
 
     return output
   },
@@ -73,8 +106,8 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         const componentName = component.tag
         const storyPath = component.dirPath?.replace('packages/core/src', 'docs/src') || ''
 
-        const componentFolderDepth = component.filePath?.split(sep).length
-        const isRoot = componentFolderDepth === 4
+        // const componentFolderDepth = component.filePath?.split(sep).length
+        // const isRoot = componentFolderDepth === 4
 
         try {
           mkdirSync(storyPath, { recursive: true })
@@ -102,21 +135,21 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
           console.error(err)
         }
 
-        if (isRoot) {
-          // Testing
-          try {
-            createTestingMarkdown(storyPath, component)
-          } catch (err) {
-            console.error(err)
-          }
+        // if (isRoot) {
+        // Testing
+        // try {
+        //   createTestingMarkdown(storyPath, component)
+        // } catch (err) {
+        //   console.error(err)
+        // }
 
-          // Theming
-          try {
-            createThemingMarkdown(storyPath, component)
-          } catch (err) {
-            console.error(err)
-          }
-        }
+        // // Theming
+        // try {
+        //   createThemingMarkdown(storyPath, component)
+        // } catch (err) {
+        //   console.error(err)
+        // }
+        // }
       }
     }
 

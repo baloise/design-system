@@ -13,19 +13,44 @@ import * as StackStories from './bal-stack.stories'
   also allowing for the inclusion of optional spacing between each child.
 </Lead>
 
-<InfoQuote>
-**TIP**
+<br />
+<br />
 
 The **Stack** component deals with layouts in one dimension, whereas the [Grid](?path=/docs/foundation-grid--documentation) manages layouts in two dimensions.
 By default, the **Stack** component stacks children vertically in a column.
+
+<InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
+  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+These styles are included in the core styles:
+
+```css
+@import '@baloise/ds-styles/css/core.css';
+```
 
 </InfoQuote>
 
 <Canvas of={StackStories.Basic} sourceState="shown" />
 
+
 <PlaygroundBar of={StackStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Nested}></StoryHeading>
+
+<Canvas of={StackStories.Nested} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Item}></StoryHeading>
+
+<Canvas of={StackStories.Item} />
+
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={StackStories.Direction}></StoryHeading>

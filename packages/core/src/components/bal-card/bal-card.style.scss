@@ -1,0 +1,204 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Variables
+  */
+
+$card-breakpoints: ('mobile', 'tablet', 'desktop');
+$card-colors: (
+  'base',
+  'white',
+  'primary',
+  'primary-light',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'grey',
+  'grey-light',
+  'red',
+  'red-light',
+  'red-lighter',
+  'green',
+  'green-light',
+  'green-lighter',
+  'purple',
+  'purple-light',
+  'purple-lighter',
+  'yellow',
+  'yellow-light',
+  'yellow-lighter'
+);
+
+/**
+  * Mixins
+  */
+
+@mixin card-color($color) {
+  &.is-#{$color} {
+    background: var(--bal-card-color-background-#{$color});
+    color: var(--bal-card-color-text-#{$color});
+
+    &.is-outlined {
+      border: var(--bal-card-outlined-border-#{$color});
+    }
+  }
+}
+
+@mixin card-space($spacing, $property) {
+  #{$property}: var(--bal-card-space-#{$spacing});
+
+  @include tablet {
+    #{$property}: var(--bal-card-space-#{$spacing}-tablet);
+  }
+
+  @include desktop {
+    #{$property}: var(--bal-card-space-#{$spacing}-desktop);
+  }
+}
+
+@mixin card-space-all($spacing) {
+  gap: var(--bal-card-space-#{$spacing});
+
+  @include tablet {
+    gap: var(--bal-card-space-#{$spacing}-tablet);
+  }
+
+  @include desktop {
+    gap: var(--bal-card-space-#{$spacing}-desktop);
+  }
+
+  .card-header,
+  .card-footer,
+  .card-content {
+    @include card-space($spacing, padding-inline);
+  }
+
+  > :first-child {
+    @include card-space($spacing, padding-top);
+  }
+
+  > :last-child {
+    @include card-space($spacing, padding-bottom);
+  }
+
+  .card-header {
+    gap: var(--bal-card-space-#{$spacing});
+
+    @include tablet {
+      gap: var(--bal-card-space-#{$spacing}-tablet);
+    }
+
+    @include desktop {
+      gap: var(--bal-card-space-#{$spacing}-desktop);
+    }
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--bal-card-color-background-base);
+  border-radius: var(--bal-card-radius-base);
+  border-width: var(--bal-border-width-base);
+  border-style: solid;
+  border-color: transparent;
+
+  &:not(.is-flat) {
+    box-shadow: var(--bal-card-shadow-base);
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.is-outlined {
+    border: var(--bal-card-outlined-border-base);
+  }
+
+  &.is-fullheight {
+    &,
+    .card-content,
+    .card-content > .stack,
+    .card-content > .flex,
+    .card-content > .is-flex {
+      height: 100%;
+    }
+  }
+
+  // header
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title,
+    .subtitle,
+    .heading {
+      margin: 0;
+    }
+  }
+
+  // spacing
+  @include card-space-all(normal);
+
+  &.has-space-small {
+    @include card-space-all(small);
+  }
+
+  &.has-space-large {
+    @include card-space-all(large);
+  }
+
+  // colors
+  @each $color in $card-colors {
+    @include card-color($color);
+  }
+}
+
+a.card,
+button.card {
+  cursor: pointer !important;
+  appearance: auto;
+  user-select: none;
+  touch-action: manipulation;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-pressed {
+    outline: none;
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      box-shadow: var(--bal-card-shadow-large);
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    translate: 0 0.5px;
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      box-shadow: var(--bal-card-shadow-large), var(--bal-button-shadow-outline-base);
+    }
+  }
+}

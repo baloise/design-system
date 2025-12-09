@@ -149,6 +149,19 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
     overflow: hidden;
     white-space: nowrap;
   }
+
+  // alignments
+  &.is-centered {
+    text-align: center;
+  }
+
+  &.is-right {
+    text-align: right;
+  }
+
+  &.is-justified {
+    text-align: justify;
+  }
 }
 
 /**
@@ -201,8 +214,8 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
     }
 
     &.has-space-none {
-      margin-bottom: 0;
-      margin-top: 0;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
     }
   }
 }

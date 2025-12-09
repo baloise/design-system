@@ -1,10 +1,13 @@
 @forward '../../../../styles/sass/normalize';
-@forward '../bal-stack/bal-stack.core';
+@forward './bal-tag.style';
 
 /**
   * Host Style
   */
 
-bal-content {
+:host {
+  display: block;
   position: static;
+  margin: 0;
+  padding: 0;
 }

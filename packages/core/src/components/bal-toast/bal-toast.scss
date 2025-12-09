@@ -17,7 +17,7 @@
     position: relative;
     display: inline-flex;
     flex-grow: 1;
-    box-shadow: var(--bal-shadow-normal);
+    box-shadow: var(--bal-shadow-base);
     padding: var(--bal-space-normal);
 
     @include tablet {

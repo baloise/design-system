@@ -32,12 +32,13 @@ if (fileChanges) {
 
     // copy generated component styles to core www assets
     copy('packages/styles/css/components/all.min.css', 'components.css')
+    copy('packages/styles/css/utilities/all.min.css', 'utilities.css')
     copy('packages/styles/css/basic.min.css', 'basic.css')
     copy('packages/styles/css/all.min.css', 'all.css')
     copy('packages/tokens/dist/tokens.css', 'tokens.css')
 
     exec(
-      'node_modules/.bin/stylelint "**/*{style,host}.scss"',
+      'node_modules/.bin/stylelint "**/*{core,style,host}.scss"',
       { cwd: workspaceRoot },
       (lintError, lintStdout, lintStderr) => {
         if (lintStderr) {

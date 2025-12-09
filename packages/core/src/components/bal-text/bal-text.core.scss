@@ -170,8 +170,8 @@ $text-colors: (
   }
 }
 
-// sizes
 .text {
+  // sizes
   @each $size in $text-sizes {
     &.is-#{$size} {
       @include text-size($size);
@@ -184,5 +184,18 @@ $text-colors: (
 
   &.is-lead {
     @include text-size(large);
+  }
+
+  // alignments
+  &.is-centered {
+    text-align: center;
+  }
+
+  &.is-right {
+    text-align: right;
+  }
+
+  &.is-justified {
+    text-align: justify;
   }
 }

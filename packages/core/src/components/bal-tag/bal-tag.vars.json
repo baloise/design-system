@@ -1,0 +1,70 @@
+{
+  "tag": {
+    "font": {
+      "family": {
+        "$type": "font-family",
+        "$value": "{font.family.text}"
+      },
+      "weight": {
+        "$type": "font-weight",
+        "small": { "$value": "{font.weight.regular}" },
+        "normal": { "$value": "{font.weight.bold}" },
+        "large": { "$value": "{font.weight.bold}" }
+      }
+    },
+    "text": {
+      "$type": "dimension",
+      "size": {
+        "small": { "$value": "{text.size.small.mobile}" },
+        "normal": { "$value": "{text.size.normal.mobile}" },
+        "large": { "$value": "{text.size.normal.mobile}" }
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "base": {
+        "$value": "12"
+      }
+    },
+    "color": {
+      "$type": "color",
+      "text": {
+        "base": { "$value": "{color.text.primary}" },
+        "primary": { "$value": "{color.text.white}" },
+        "info": { "$value": "{color.text.white}" },
+        "success": { "$value": "{color.text.white}" },
+        "warning": { "$value": "{color.text.primary}" },
+        "danger": { "$value": "{color.text.white}" },
+        "purple": { "$value": "{color.text.white}" },
+        "red": { "$value": "{color.text.white}" },
+        "yellow": { "$value": "{color.text.primary}" },
+        "green": { "$value": "{color.text.primary}" },
+        "purple-light": { "$value": "{color.text.primary}" },
+        "red-light": { "$value": "{color.text.primary}" },
+        "yellow-light": { "$value": "{color.text.primary}" },
+        "green-light": { "$value": "{color.text.primary}" },
+        "grey": { "$value": "{color.text.white}" }
+      },
+      "background": {
+        "base": { "$value": "{color.background.grey}" },
+        "primary": { "$value": "{color.background.primary}" },
+        "info": { "$value": "{color.background.info}" },
+        "success": { "$value": "{color.background.green}" },
+        "warning": { "$value": "{color.background.yellow}" },
+        "danger": { "$value": "{color.background.red}" },
+
+        "purple": { "$value": "{color.background.purple}" },
+        "red": { "$value": "{color.background.red}" },
+        "yellow": { "$value": "{color.background.yellow}" },
+        "green": { "$value": "{color.background.green}" },
+
+        "purple-light": { "$value": "{color.background.purple}" },
+        "red-light": { "$value": "{color.background.red}" },
+        "yellow-light": { "$value": "{color.background.yellow}" },
+        "green-light": { "$value": "{color.background.green}" },
+
+        "grey": { "$value": "{color.background.grey}" }
+      }
+    }
+  }
+}

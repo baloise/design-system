@@ -162,7 +162,7 @@
   }
   @include modifiers(is-light) {
     background-color: var(--bal-navbar-light-background);
-    box-shadow: var(--bal-shadow-normal);
+    box-shadow: var(--bal-shadow-base);
     .bal-navbar__brand__title {
       color: var(--bal-navbar-brand-title-light-text-color);
     }

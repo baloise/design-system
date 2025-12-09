@@ -48,6 +48,10 @@ body {
   -webkit-overflow-scrolling: auto;
 }
 
+button {
+  color: inherit;
+}
+
 p:not(.text) {
   hyphens: auto;
   margin: 0;

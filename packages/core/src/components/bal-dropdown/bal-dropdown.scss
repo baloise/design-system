@@ -133,7 +133,7 @@
   will-change: left, top, opacity;
   background: var(--bal-color-white);
   border-radius: var(--bal-radius-base);
-  box-shadow: var(--bal-shadow-normal);
+  box-shadow: var(--bal-shadow-base);
   z-index: var(--bal-z-index-popup);
   @include tablet {
     max-width: 100vw;

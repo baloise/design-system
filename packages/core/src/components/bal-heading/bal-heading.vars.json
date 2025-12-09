@@ -187,7 +187,7 @@
     "color": {
       "$type": "color",
       "basic": {
-        "$value": "{color.text.primary}"
+        "$value": "inherit"
       },
       "primary": {
         "$value": "{color.text.primary}"

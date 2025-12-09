@@ -1,0 +1,57 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Mixins
+  */
+$tag-colors: (
+  'primary',
+  'grey',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'purple',
+  'red',
+  'yellow',
+  'green',
+  'purple-light',
+  'red-light',
+  'yellow-light',
+  'green-light'
+);
+
+@mixin tag-background($color) {
+  background: var(--bal-tag-color-background-#{$color});
+}
+
+/**
+  * Basic Style
+  */
+
+.tag {
+  @include unselectable;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  line-height: 1.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--bal-tag-color-background-base);
+  border-radius: var(--bal-tag-radius-base);
+  gap: 0.25rem;
+
+  > .close,
+  > bal-close {
+    margin-right: -0.25rem;
+  }
+
+  /**
+    * Colors
+    */
+  @each $color in $tag-colors {
+    &.is-#{$color} {
+      @include tag-background($color);
+    }
+  }
+}

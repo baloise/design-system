@@ -1,0 +1,89 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Variables
+  */
+
+$badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'danger');
+
+/**
+  * Mixins
+  */
+
+@mixin badge-color($color) {
+  &.is-#{$color} {
+    background: var(--bal-badge-color-background-#{$color});
+    color: var(--bal-badge-color-text-#{$color});
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.badge {
+  @include unselectable;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  hyphens: auto;
+  font-size: 85%;
+  min-width: var(--bal-badge-size-normal);
+  height: var(--bal-badge-size-normal);
+  border-radius: calc(var(--bal-badge-size-normal) / 2);
+  background: var(--bal-badge-color-background-base);
+  color: var(--bal-badge-color-text-base);
+  font-family: var(--bal-badge-font-family);
+  font-weight: var(--bal-badge-font-weight);
+  gap: calc(var(--bal-badge-space-base) / 2);
+  padding-inline: calc(var(--bal-badge-space-base) / 2);
+  padding-block: calc(var(--bal-badge-space-base) / 2);
+
+  // colors
+  @each $color in $badge-colors {
+    @include badge-color($color);
+  }
+
+  &.is-grey {
+    @include fillSvg(var(--bal-badge-color-text-grey));
+  }
+
+  // icons
+  &:not(.is-large) {
+    bal-icon,
+    bal-icon > .bal-icon__inner {
+      width: 0.875rem;
+      max-height: 0.875rem;
+    }
+  }
+
+  // sizes
+  &.is-small {
+    min-width: var(--bal-badge-size-small);
+    max-width: var(--bal-badge-size-small);
+    height: var(--bal-badge-size-small);
+    border-radius: calc(var(--bal-badge-size-small) / 2);
+    padding: 0;
+    font-size: 0;
+    overflow: hidden;
+
+    > * {
+      display: none;
+    }
+  }
+
+  &.is-large {
+    min-width: var(--bal-badge-size-large);
+    height: var(--bal-badge-size-large);
+    border-radius: calc(var(--bal-badge-size-large) / 2);
+    font-size: 1rem;
+  }
+}
+
+.button > bal-badge,
+.button > .badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+}

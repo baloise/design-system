@@ -1,11 +1,3 @@
 @forward './tokens.scss';
 @forward './mixins';
 @forward '../src/core/_all';
-
-@forward '../../core/src/components/bal-heading/bal-heading.style.scss';
-@forward '../../core/src/components/bal-text/bal-text.style.scss';
-@forward '../../core/src/components/bal-label/bal-label.style.scss';
-@forward '../../core/src/components/bal-link/bal-link.style.scss';
-@forward '../../core/src/components/bal-divider/bal-divider.style.scss';
-@forward '../../core/src/components/bal-button/bal-button.style.scss';
-@forward '../../core/src/components/bal-stack/bal-stack.style.scss';

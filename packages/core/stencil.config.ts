@@ -193,6 +193,11 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
+          dest: 'assets/utilities.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
           dest: 'assets/tokens.css',
           warn: true,
