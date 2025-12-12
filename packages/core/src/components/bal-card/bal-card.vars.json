@@ -73,7 +73,7 @@
       "normal": {
         "mobile": { "$value": "16" },
         "tablet": { "$value": "24" },
-        "desktop": { "$value": "32" }
+        "desktop": { "$value": "24" }
       },
       "large": {
         "mobile": { "$value": "16" },

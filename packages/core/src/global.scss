@@ -6,10 +6,10 @@ $with-core-components: false;
 // core styles
 @forward './components/bal-text/bal-text.core.scss';
 @forward './components/bal-stack/bal-stack.core.scss';
-@forward './components/bal-label/bal-label.core.scss';
 @forward './components/bal-link/bal-link.core.scss';
-@forward './components/bal-heading/bal-heading.core.scss';
+@forward './components/bal-label/bal-label.core.scss';
 @forward './components/bal-divider/bal-divider.core.scss';
+@forward './components/bal-heading/bal-heading.core.scss';
 @forward './components/bal-button/bal-button.core.scss';
 
 // styles

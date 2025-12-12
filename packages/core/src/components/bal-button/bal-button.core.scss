@@ -396,12 +396,19 @@ button.button {
     flex-flow: row wrap;
     align-items: center;
     justify-content: flex-start;
+
+    &.is-expanded {
+      .button {
+        flex: 1;
+      }
+    }
   }
 
   &.as-col {
     flex-flow: column wrap;
 
     .button {
+      flex: 1;
       width: 100%;
     }
 
