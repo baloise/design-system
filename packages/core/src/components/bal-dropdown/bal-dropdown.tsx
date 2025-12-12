@@ -34,7 +34,6 @@ import {
   DropdownIcon,
   DropdownInput,
   DropdownNativeSelect,
-  DropdownOptionList,
   DropdownOptionUtil,
   DropdownPopupUtil,
   DropdownValue,
@@ -507,10 +506,21 @@ export class Dropdown
               chips={this.chips}
               placeholder={this.placeholder}
               choices={this.choices}
-              invalid={this.invalid}
-              disabled={this.disabled}
-              readonly={this.readonly}
-              onRemoveChip={option => this.valueUtil.removeOption(option)}
+              renderChip={option => {
+                return (
+                  <bal-tag
+                    key={option.value}
+                    data-testid="bal-dropdown-chip"
+                    size="small"
+                    invalid={this.invalid}
+                    disabled={this.disabled || this.readonly}
+                    closable={!(this.disabled || this.readonly)}
+                    onBalCloseClick={() => this.valueUtil.removeOption(option)}
+                  >
+                    {option.label}
+                  </bal-tag>
+                )
+              }}
             ></DropdownValue>
           </span>
           <DropdownInput
@@ -556,22 +566,42 @@ export class Dropdown
             disabled={this.valueUtil.isDisabled()}
           ></DropdownIcon>
         </div>
-        <DropdownOptionList
-          inputId={this.inputId}
-          block={this.inputId}
-          filter={this.filter}
-          required={this.required}
-          isExpanded={this.isExpanded}
-          isDisabled={this.valueUtil.isDisabled()}
-          hasPropOptions={this.optionUtil.hasPropOptions()}
-          multiple={this.multiple}
-          contentHeight={this.contentHeight}
-          rawOptions={this.rawOptions}
-          refPanelEl={el => (this.panelEl = el)}
-          refListEl={el => (this.listEl = el)}
+        <div
+          id={`${this.inputId}-menu`}
+          class={{
+            ...block.element('list').class(),
+            ...block.element('list').modifier('expanded').class(this.isExpanded),
+          }}
+          ref={el => (this.panelEl = el)}
         >
-          <slot></slot>
-        </DropdownOptionList>
+          <bal-option-list
+            multiple={this.multiple}
+            disabled={this.valueUtil.isDisabled()}
+            filter={this.filter}
+            required={this.required}
+            contentHeight={this.contentHeight}
+            ref={el => (this.listEl = el)}
+          >
+            <slot />
+            {this.optionUtil.hasPropOptions()
+              ? this.rawOptions.map(option => (
+                  <bal-option
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                    disabled={option.disabled}
+                    multiline={option.multiline}
+                    invalid={option.invalid}
+                    hidden={option.hidden}
+                    selected={option.selected}
+                    focused={option.focused}
+                  >
+                    {option.label}
+                  </bal-option>
+                ))
+              : ''}
+          </bal-option-list>
+        </div>
       </Host>
     )
   }
