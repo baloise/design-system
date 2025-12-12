@@ -53,7 +53,7 @@ export class Card {
   @Prop() color: BalProps.BalCardColor = 'white'
 
   get colorTypeClass(): string {
-    let color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
+    const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
 
     const colorMap: Record<string, string> = {
       'blue': 'primary',

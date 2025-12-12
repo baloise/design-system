@@ -62,12 +62,12 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled: boolean = false
+  @Prop() disabled = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid: boolean = false
+  @Prop() invalid = false
 
   /**
    * @internal
