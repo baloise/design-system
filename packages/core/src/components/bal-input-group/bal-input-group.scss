@@ -69,9 +69,11 @@
   & > *:last-child.input {
     padding-right: 0.625rem;
   }
+  & > *:last-child.tag,
   & > *:last-child.bal-tag {
     margin-right: 0.625rem;
   }
+  & > *:first-child.tag,
   & > *:first-child.bal-tag {
     margin-left: 0.625rem;
   }

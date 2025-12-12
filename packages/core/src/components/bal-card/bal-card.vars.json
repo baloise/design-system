@@ -2,9 +2,8 @@
   "card": {
     "radius": {
       "$type": "dimension",
-      "base": {
-        "$value": "{radius.large}"
-      }
+      "base": { "$value": "{radius.large}" },
+      "square": { "$value": "{radius.base}" }
     },
     "shadow": {
       "$type": "shadow",

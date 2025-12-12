@@ -663,8 +663,11 @@
       }
     },
     "shadow": {
+      "$type": "shadow",
+      "base": {
+        "$value": "{shadow.text.base}"
+      },
       "outline": {
-        "$type": "shadow",
         "base": {
           "$value": "{shadow.outline.base}"
         },

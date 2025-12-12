@@ -244,8 +244,6 @@
   --bal-popup-backdrop-background: rgba(70, 73, 75, 0.8);
   //
   // Stage & Nav
-  --bal-nav-link-text-color: var(--bal-color-black);
-  --bal-nav-link-group-background-purple: var(--bal-color-primary-1);
   --bal-stage-background-purple: var(--bal-color-primary-1);
   --bal-button-inverted-light-border-color: var(--bal-color-primary-3);
   --bal-button-inverted-light-border-color-hover: var(--bal-color-white);
@@ -365,24 +363,6 @@ ul.is-list {
     }
     &:active {
       fill: var(--bal-color-primary-6) !important;
-    }
-  }
-}
-
-bal-nav {
-  --bal-tabs-tab-nav-line-background: var(--bal-color-purple-4);
-  --bal-tabs-tab-label-text-color-active: var(--bal-color-purple-4);
-  --bal-tabs-tab-button-label-text-color-hover: var(--bal-color-purple-5);
-  --bal-tabs-tab-button-label-text-color-active: var(--bal-color-purple-6);
-  .bal-nav-link__native {
-    color: var(--bal-color-black);
-    &:hover {
-      color: var(--bal-color-purple-5);
-      text-decoration: underline;
-    }
-    &:active {
-      color: var(--bal-color-purple-6);
-      text-decoration: underline;
     }
   }
 }

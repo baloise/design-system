@@ -6,14 +6,11 @@
   */
 
 :host {
-  display: block;
-  position: static;
+  display: inline-block;
+  vertical-align: text-bottom;
   margin: 0;
   padding: 0;
-}
-
-:host {
-  position: var(--badge-position);
+  position: var(--badge-position, static);
   top: var(--badge-position-top);
   right: var(--badge-position-right);
 }

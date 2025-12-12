@@ -36,19 +36,19 @@ if (fileChanges) {
     copy('packages/styles/css/basic.min.css', 'basic.css')
     copy('packages/styles/css/all.min.css', 'all.css')
     copy('packages/tokens/dist/tokens.css', 'tokens.css')
-
-    exec(
-      'node_modules/.bin/stylelint "**/*{core,style,host}.scss"',
-      { cwd: workspaceRoot },
-      (lintError, lintStdout, lintStderr) => {
-        if (lintStderr) {
-          console.error(`stylelint stderr: ${lintStderr}`)
-          return
-        }
-        console.log(lintStdout)
-      },
-    )
   })
+
+  exec(
+    'node_modules/.bin/stylelint "**/*{core,style,host}.scss"',
+    { cwd: workspaceRoot },
+    (lintError, lintStdout, lintStderr) => {
+      if (lintStderr) {
+        console.error(`stylelint stderr: ${lintStderr}`)
+        return
+      }
+      console.log(lintStdout)
+    },
+  )
   // })
 } else {
   console.log('No file changes detected')

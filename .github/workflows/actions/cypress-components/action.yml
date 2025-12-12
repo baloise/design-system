@@ -1,0 +1,19 @@
+name: 'Cypress Components'
+description: 'Cypress Components'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Cypress components tests 🧪
+      uses: cypress-io/github-action@v6
+      with:
+        working-directory: e2e
+        install: false
+        component: true
+        browser: chrome
+
+    - name: Upload snapshots
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: cypress-components-snapshots
+        path: e2e/cypress/snapshots

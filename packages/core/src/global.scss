@@ -1,0 +1,19 @@
+$with-core-components: false;
+
+@forward '../../styles/css/tokens.css';
+@forward '../../styles/sass/basic.scss';
+
+// core styles
+@forward './components/bal-stack/bal-stack.core.scss';
+@forward './components/bal-text/bal-text.core.scss';
+@forward './components/bal-link/bal-link.core.scss';
+@forward './components/bal-label/bal-label.core.scss';
+@forward './components/bal-heading/bal-heading.core.scss';
+@forward './components/bal-divider/bal-divider.core.scss';
+@forward './components/bal-button/bal-button.core.scss';
+
+// styles
+@forward './components/bal-tag/bal-tag.style.scss';
+@forward './components/bal-close/bal-close.style.scss';
+@forward './components/bal-card/bal-card.style.scss';
+@forward './components/bal-badge/bal-badge.style.scss';

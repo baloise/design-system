@@ -1,3 +1,5 @@
+@use 'sass:meta';
+
 @forward 'vars/_all';
 @forward 'form/_all';
 @forward 'container';
@@ -5,13 +7,17 @@
 @forward 'list';
 @forward 'table';
 
-@forward '../../../core/src/components/bal-heading/bal-heading.core.scss';
-@forward '../../../core/src/components/bal-text/bal-text.core.scss';
-@forward '../../../core/src/components/bal-label/bal-label.core.scss';
-@forward '../../../core/src/components/bal-link/bal-link.core.scss';
-@forward '../../../core/src/components/bal-divider/bal-divider.core.scss';
-@forward '../../../core/src/components/bal-button/bal-button.core.scss';
-@forward '../../../core/src/components/bal-stack/bal-stack.core.scss';
+$with-core-components: true !default;
+
+@if $with-core-components {
+  @include meta.load-css('../../../core/src/components/bal-heading/bal-heading.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-text/bal-text.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-label/bal-label.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-link/bal-link.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-divider/bal-divider.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-button/bal-button.core.scss');
+  @include meta.load-css('../../../core/src/components/bal-stack/bal-stack.core.scss');
+}
 
 .has-sticky-footer {
   min-height: 100vh;

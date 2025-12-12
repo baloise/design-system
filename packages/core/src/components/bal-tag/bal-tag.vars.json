@@ -35,6 +35,25 @@
         "$value": "37.5%"
       }
     },
+    "space": {
+      "$type": "dimension",
+      "small": {
+        "y": { "$value": "0" },
+        "x": { "$value": "12" }
+      },
+      "normal": {
+        "y": { "$value": "4" },
+        "x": { "$value": "12" }
+      },
+      "medium": {
+        "y": { "$value": "8" },
+        "x": { "$value": "16" }
+      },
+      "large": {
+        "y": { "$value": "12" },
+        "x": { "$value": "24" }
+      }
+    },
     "color": {
       "$type": "color",
       "text": {

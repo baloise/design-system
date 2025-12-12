@@ -25,6 +25,7 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
   @include unselectable;
 
   display: inline-flex;
+  vertical-align: text-top;
   justify-content: center;
   align-items: center;
   hyphens: auto;
@@ -81,9 +82,22 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
   }
 }
 
+/**
+  * Badge in button & card
+  */
+/* stylelint-disable */
+
+bal-button > bal-badge,
+bal-button > .badge,
 .button > bal-badge,
-.button > .badge {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
+.button > .badge,
+bal-card > bal-badge,
+bal-card > .badge,
+.card > bal-badge,
+.card > .badge {
+  --badge-position: absolute;
+  --badge-position-top: -0.5rem;
+  --badge-position-right: -0.5rem;
 }
+
+/* stylelint-enable */

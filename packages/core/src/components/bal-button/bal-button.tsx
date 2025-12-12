@@ -232,9 +232,19 @@ export class Button implements ComponentInterface {
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
+    const colorMap: Record<string, string> = {
+      'light': 'accent',
+      'text': 'tertiary',
+      'info': 'info',
+      'primary-light': 'primary',
+      'info-light': 'info',
+    }
+
+    const color = colorMap[this.color] || this.color
+
     return {
       'button': true,
-      [`is-${this.color}`]: true,
+      [`is-${color}`]: true,
       'is-flat': this.flat,
       'is-square': this.square,
       'is-small': this.size === 'small',
@@ -245,7 +255,7 @@ export class Button implements ComponentInterface {
       'is-disabled': this.disabled,
       'is-loading': this.loading,
       'is-rounded': this.rounded === true,
-      'has-blur-shadow': this.shadow === true,
+      'has-shadow': this.shadow === true,
     }
   }
 
@@ -345,10 +355,7 @@ export class Button implements ComponentInterface {
       <Host
         onClick={this.handleClick}
         class={{
-          'bal-button': true,
-          'control': true,
           'is-fullwidth': this.expanded,
-          'is-disabled': this.disabled,
         }}
       >
         <TagType

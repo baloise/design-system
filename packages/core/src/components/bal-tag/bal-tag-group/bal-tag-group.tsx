@@ -8,8 +8,10 @@ import { Component, h, Host } from '@stencil/core'
 export class TagGroup {
   render() {
     return (
-      <Host class="tags">
-        <slot />
+      <Host>
+        <div class="tags">
+          <slot />
+        </div>
       </Host>
     )
   }

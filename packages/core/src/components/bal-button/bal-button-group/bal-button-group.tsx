@@ -1,5 +1,4 @@
-import { Component, h, Prop, Host, ComponentInterface } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-button-group',
@@ -22,21 +21,22 @@ export class ButtonGroup implements ComponentInterface {
   @Prop() reverse = false
 
   render() {
-    const block = BEM.block('button-group')
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier(`position-${this.position}`).class(),
-          ...block.modifier(`direction-${this.direction}`).class(),
+          'stack': true,
+          'align-center': this.position === 'center',
         }}
       >
         <div
           class={{
-            'field': true,
-            'is-grouped': true,
+            'buttons': true,
+            'fit-content': this.position === 'center' && this.direction === 'column',
+            'as-col': this.direction === 'column',
+            'as-row': this.direction === 'row',
             'is-reverse': this.reverse,
-            [`has-direction-${this.direction}`]: true,
+            'is-centered': this.position === 'center',
+            'is-right': this.position === 'right',
           }}
         >
           <slot />

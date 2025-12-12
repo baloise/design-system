@@ -25,13 +25,21 @@ export class CardSubtitle {
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier('bold').class(this.bold),
-          ...block.modifier(`color-${this.color}`).class(!this.inverted),
-          ...block.modifier('inverted').class(this.inverted),
+          'card-header': true,
+          // ...block.class(),
+          // ...block.modifier('bold').class(this.bold),
+          // ...block.modifier(`color-${this.color}`).class(!this.inverted),
+          // ...block.modifier('inverted').class(this.inverted),
         }}
       >
-        <span>
+        <span
+          class={{
+            'text': true,
+            'is-bold': this.bold,
+            [`is-${this.color}`]: this.color !== '' && !this.inverted,
+            'is-inverted': this.inverted,
+          }}
+        >
           <slot></slot>
         </span>
       </Host>

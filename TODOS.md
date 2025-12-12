@@ -6,6 +6,7 @@
 - Check Dropdown with Shadow DOM
 - Check visuals
 - Update docs
+- replace all base colors with brand colors
 
 ## MIGRATION
 
@@ -20,3 +21,18 @@
 ## MIGRATION NOTES
 
 - renaming of hovered => hover and pressed => active
+
+Check Visuals
+
+- Content
+- Badge
+- Text
+- Heading
+- Divider
+- Close
+- Tag
+
+NExt
+
+- Button
+- Card

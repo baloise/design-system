@@ -35,12 +35,13 @@ $tag-colors: (
 
 .tag {
   @include unselectable;
+
   position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 2rem;
-  padding: 0.25rem 0.75rem;
+  padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
   vertical-align: middle;
   background-color: var(--bal-tag-color-background-base);
   border-radius: var(--bal-tag-radius-base);
@@ -52,7 +53,7 @@ $tag-colors: (
 
   > .close,
   > bal-close {
-    margin-right: -0.25rem;
+    margin-right: calc(0.25rem * -1);
   }
 
   /**
@@ -69,7 +70,7 @@ $tag-colors: (
   }
 
   &.is-small {
-    padding: 0 0.75rem 0 0.75rem;
+    padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
     min-height: 1.5rem;
     font-size: var(--bal-tag-text-size-small);
     font-weight: var(--bal-tag-font-weight-small);
@@ -77,14 +78,14 @@ $tag-colors: (
 
   &.is-medium {
     min-height: 2.5rem;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
     font-size: var(--bal-tag-text-size-medium);
     font-weight: var(--bal-tag-font-weight-medium);
   }
 
   &.is-large {
     min-height: 3rem;
-    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+    padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
     font-size: var(--bal-tag-text-size-large);
     font-weight: var(--bal-tag-font-weight-large);
   }
@@ -92,5 +93,5 @@ $tag-colors: (
 
 .tags {
   display: flex;
-  gap: 0.25rem;
+  gap: var(--bal-tag-space-normal-x);
 }

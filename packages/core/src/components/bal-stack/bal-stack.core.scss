@@ -76,7 +76,7 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
   &.has-direction-row,
   &.is-horizontal {
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -91,7 +91,7 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
   &.has-direction-row-reverse,
   &.is-horizontal-reverse {
     flex-flow: row-reverse nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -186,7 +186,7 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
   }
 
   &.align-start {
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
   }
 
@@ -238,7 +238,7 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 
     &.align-start {
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     &.align-center {
@@ -388,6 +388,10 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 
 //
 // reset margin botton space
+bal-content > bal-text,
+.stack-content > bal-text,
+bal-content > .text,
+.stack-content > .text,
 .stack > bal-text,
 .stack > bal-label,
 .stack > bal-heading,
@@ -402,11 +406,6 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 .stack > .link,
 .stack > .is-link,
 .stack > p {
-  margin: 0;
-}
-
-bal-content > .bal-text,
-.stack-content > .bal-text {
   margin: 0;
 }
 

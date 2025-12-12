@@ -74,11 +74,18 @@ $card-colors: (
     @include card-space($spacing, padding-inline);
   }
 
-  > :first-child {
+  > :first-child:not(.tag, .badge, bal-tag, bal-badge) {
     @include card-space($spacing, padding-top);
   }
 
-  > :last-child {
+  > .badge:first-child + *,
+  > bal-badge:first-child + *,
+  > .tag:first-child + *,
+  > bal-tag:first-child + * {
+    @include card-space($spacing, padding-top);
+  }
+
+  > :last-child:not(.tag, .badge, bal-tag, bal-badge) {
     @include card-space($spacing, padding-bottom);
   }
 
@@ -112,6 +119,10 @@ $card-colors: (
 
   &:not(.is-flat) {
     box-shadow: var(--bal-card-shadow-base);
+  }
+
+  &.is-square {
+    border-radius: var(--bal-card-radius-square);
   }
 
   &.align-center {
@@ -162,6 +173,10 @@ $card-colors: (
   }
 }
 
+/**
+  * Clickable Style
+  */
+
 a.card,
 button.card {
   cursor: pointer !important;
@@ -199,6 +214,172 @@ button.card {
   &.is-focused {
     &:not(:active) {
       box-shadow: var(--bal-card-shadow-large), var(--bal-button-shadow-outline-base);
+    }
+  }
+}
+
+/**
+  * Tag Positioning
+  */
+
+@mixin card-tag-position($tag-size, $card-size, $property) {
+  #{$property}: calc(var(--bal-card-space-#{$card-size}) - var(--bal-tag-space-#{$tag-size}-x));
+
+  @include tablet {
+    #{$property}: calc(var(--bal-card-space-#{$card-size}-tablet) - var(--bal-tag-space-#{$tag-size}-x));
+  }
+
+  @include desktop {
+    #{$property}: calc(var(--bal-card-space-#{$card-size}-desktop) - var(--bal-tag-space-#{$tag-size}-x));
+  }
+}
+
+.card > .tag:first-child {
+  position: absolute;
+  top: 0;
+
+  // center is default
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &.is-left,
+  &.is-right {
+    transform: translateY(-50%);
+  }
+
+  // &.is-left {
+  //   // @include card-tag-position(normal, left);
+
+  //   // &.is-small {
+  //   //   @include card-tag-position(small, left);
+  //   // }
+
+  //   // &.is-medium {
+  //   //   @include card-tag-position(medium, left);
+  //   // }
+
+  //   // &.is-large {
+  //   //   @include card-tag-position(large, left);
+  //   // }
+  // }
+
+  &.is-right {
+    left: auto;
+
+    // @include card-tag-position(normal, right);
+
+    // &.is-small {
+    //   @include card-tag-position(small, right);
+    // }
+
+    // &.is-medium {
+    //   @include card-tag-position(medium, right);
+    // }
+
+    // &.is-large {
+    //   @include card-tag-position(large, right);
+    // }
+  }
+}
+
+.card:not(.has-space-small, .has-space-large) > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, normal, left);
+
+    &.is-small {
+      @include card-tag-position(small, normal, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, normal, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, normal, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, normal, right);
+
+    &.is-small {
+      @include card-tag-position(small, normal, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, normal, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, normal, right);
+    }
+  }
+}
+
+.card.has-space-small > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, small, left);
+
+    &.is-small {
+      @include card-tag-position(small, small, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, small, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, small, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, small, right);
+
+    &.is-small {
+      @include card-tag-position(small, small, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, small, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, small, right);
+    }
+  }
+}
+
+.card.has-space-large > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, large, left);
+
+    &.is-small {
+      @include card-tag-position(small, large, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, large, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, large, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, large, right);
+
+    &.is-small {
+      @include card-tag-position(small, large, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, large, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, large, right);
     }
   }
 }

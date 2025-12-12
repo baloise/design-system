@@ -1,6 +1,6 @@
 import { copy } from 'fs-extra'
-import { mkdir, rm } from 'fs/promises'
-import { join } from 'path'
+import { mkdir, rm, writeFile } from 'fs/promises'
+import { join, relative } from 'path'
 import { compileSass, compileSassToMergedFile, scan } from '../utils'
 import { generateBackgroundColors } from './generators/background'
 import { generateBorder } from './generators/border'
@@ -46,6 +46,39 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
       const component = components[index]
       await compileSass(component, { ...options, folderPath: 'components' })
     }
+
+    // update global styles
+    const componentsCore = await scan(join(options.componentRoot, '**', '*.core.scss'))
+    const componentsStyles = await scan(join(options.componentRoot, '**', '*.style.scss'))
+
+    // Generate global.scss content
+    const globalScssPath = join(options.componentRoot, '..', 'global.scss')
+    const coreImports = componentsCore
+      .map(file => {
+        const relativePath = relative(join(options.componentRoot, '..'), file)
+        return `@forward './${relativePath}';`
+      })
+      .join('\n')
+
+    const styleImports = componentsStyles
+      .map(file => {
+        const relativePath = relative(join(options.componentRoot, '..'), file)
+        return `@forward './${relativePath}';`
+      })
+      .join('\n')
+
+    const globalScssContent = `$with-core-components: false;
+
+@forward '../../styles/css/tokens.css';
+@forward '../../styles/sass/basic.scss';
+
+// core styles
+${coreImports}
+
+// styles
+${styleImports}
+`
+    await writeFile(globalScssPath, globalScssContent)
 
     // create components all output
     await compileSassToMergedFile(components, 'all.css', { ...options, folderPath: 'components' })

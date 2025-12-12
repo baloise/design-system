@@ -9,6 +9,10 @@ import { sanitizeSvg } from '../../utils/svg'
 @Component({
   tag: 'bal-icon',
   styleUrl: 'bal-icon.scss',
+  /**
+   * Do not enable shadow DOM here because we want to style the inner svg from outside
+   */
+  shadow: false,
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentInterface {
   @State() icons: BalIcons = defaultConfig.icons

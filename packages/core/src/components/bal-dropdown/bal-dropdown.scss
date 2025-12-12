@@ -84,6 +84,7 @@
   gap: var(--bal-space-xx-small);
   padding-top: var(--bal-space-x-small);
   padding-bottom: var(--bal-space-x-small);
+  & > .tag,
   & > bal-tag {
     z-index: 1;
   }

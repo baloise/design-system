@@ -68,6 +68,7 @@
   @extend %unselectable;
   @extend %font-smoothing;
 
+  width: var(--button-width, auto);
   appearance: auto;
   position: relative;
   display: inline-flex;
@@ -125,6 +126,12 @@ button.button {
 .button:active,
 .button.is-pressed {
   outline: none;
+}
+
+// Colors
+
+.button.has-shadow {
+  box-shadow: var(--bal-button-shadow-base);
 }
 
 // Colors
@@ -376,6 +383,10 @@ button.button {
   width: 100%;
 
   @include tablet {
+    &.fit-content {
+      width: fit-content;
+    }
+
     flex-flow: row wrap;
     align-items: center;
     justify-content: flex-start;
@@ -390,9 +401,21 @@ button.button {
   &.as-col {
     flex-flow: column wrap;
 
+    .button {
+      width: 100%;
+    }
+
     @include tablet {
       align-items: flex-start;
     }
+  }
+
+  &.is-reverse.as-row {
+    flex-flow: row-reverse wrap;
+  }
+
+  &.is-reverse.as-col {
+    flex-flow: column-reverse wrap;
   }
 
   &:last-child {
@@ -451,6 +474,24 @@ fieldset[disabled] .button,
   & > bal-spinner[variation='circle'] {
     border-color: var(--bal-color-grey-4);
     border-top-color: var(--bal-button-color-text-disabled-base);
+  }
+}
+
+.buttons.fit-content bal-button {
+  --button-width: 100%;
+
+  width: 100%;
+}
+
+@include mobile {
+  .buttons {
+    --button-width: 100%;
+  }
+
+  .buttons bal-button {
+    --button-width: 100%;
+
+    width: 100%;
   }
 }
 /* stylelint-enable no-descending-specificity */
