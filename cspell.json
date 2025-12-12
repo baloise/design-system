@@ -9,6 +9,8 @@
     "packages/core/src/**/*.i18n.ts",
     "packages/core/src/**/*.data.ts",
     "packages/core/src/**/*.spec.ts",
+    "packages/core/src/**/*.play.ts",
+    "docs/src/components/bal-select/code-sandbox",
     "docs/public/*",
     "docs/assets/*"
   ],
