@@ -1,13 +1,13 @@
 {
   "name": "e2e",
-  "version": "15.2.49",
+  "version": "15.2.50",
   "private": true,
   "scripts": {
     "postinstall": "cypress install"
   },
   "dependencies": {
-    "@baloise/ds-core": "19.8.3",
-    "@baloise/ds-testing": "19.8.3",
+    "@baloise/ds-core": "19.8.4",
+    "@baloise/ds-testing": "19.8.4",
     "@cypress/mount-utils": "^4.1.0",
     "compression": "~1.8.1",
     "cypress": "~13.6.3",

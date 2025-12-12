@@ -8523,8 +8523,32 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "dependencies": [
+        "bal-tag",
+        "bal-option-list",
+        "bal-option"
+      ],
+      "dependencyGraph": {
+        "bal-dropdown": [
+          "bal-tag",
+          "bal-option-list",
+          "bal-option"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-option": [
+          "bal-stack",
+          "bal-check",
+          "bal-icon"
+        ],
+        "bal-check": [
+          "bal-icon"
+        ]
+      },
       "props": [
         {
           "name": "autocomplete",
@@ -21201,7 +21225,9 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
-      "dependents": [],
+      "dependents": [
+        "bal-dropdown"
+      ],
       "dependencies": [
         "bal-stack",
         "bal-check",
@@ -21215,6 +21241,9 @@
         ],
         "bal-check": [
           "bal-icon"
+        ],
+        "bal-dropdown": [
+          "bal-option"
         ]
       },
       "props": [
@@ -21527,9 +21556,15 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
-      "dependents": [],
+      "dependents": [
+        "bal-dropdown"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
+      "dependencyGraph": {
+        "bal-dropdown": [
+          "bal-option-list"
+        ]
+      },
       "props": [
         {
           "name": "contentHeight",
@@ -31776,6 +31811,7 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
+        "bal-dropdown",
         "bal-select"
       ],
       "dependencies": [
@@ -31787,6 +31823,9 @@
         ],
         "bal-close": [
           "bal-icon"
+        ],
+        "bal-dropdown": [
+          "bal-tag"
         ],
         "bal-select": [
           "bal-tag"

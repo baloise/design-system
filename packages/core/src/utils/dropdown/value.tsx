@@ -110,12 +110,9 @@ export interface DropdownValueProps {
   inlineLabel: string
   filled: boolean
   chips: boolean
-  invalid: boolean
-  disabled: boolean
-  readonly: boolean
   placeholder: string
   choices: BalOption[]
-  onRemoveChip: (option: BalOption) => void
+  renderChip: (option: BalOption) => Node | Node[]
 }
 
 export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
@@ -124,10 +121,7 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
   chips,
   placeholder,
   choices,
-  invalid,
-  disabled,
-  readonly,
-  onRemoveChip,
+  renderChip,
 }) => {
   const block = BEM.block('dropdown')
 
@@ -135,19 +129,7 @@ export const DropdownValue: FunctionalComponent<DropdownValueProps> = ({
     if (chips) {
       return (
         <div class={{ ...block.element('root').element('content').element('chips').class() }}>
-          {choices.map(option => (
-            <bal-tag
-              key={option.value}
-              data-testid="bal-dropdown-chip"
-              size="small"
-              invalid={invalid}
-              disabled={disabled || readonly}
-              closable={!(disabled || readonly)}
-              onBalCloseClick={() => onRemoveChip(option)}
-            >
-              {option.label}
-            </bal-tag>
-          ))}
+          {choices.map(option => renderChip(option))}
         </div>
       )
     } else {
