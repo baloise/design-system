@@ -2,8 +2,8 @@
 @forward './bal-label.core';
 
 bal-label {
-  display: inline;
-  box-sizing: content-box;
   position: static;
-  overflow-wrap: break-word;
+  display: block;
+  // box-sizing: content-box;
+  // overflow-wrap: break-word;
 }
