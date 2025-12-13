@@ -7,7 +7,7 @@ type Args = JSX.BalSteps
 const meta: Meta<Args> = {
   title: 'Components/Navigation/Steps',
   args: {
-    value: 'tab-c',
+    value: 'step-c',
   },
   argTypes: {
     ...withComponentControls({ tag: 'bal-steps' }),

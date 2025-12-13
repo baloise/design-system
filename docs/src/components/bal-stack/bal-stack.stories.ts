@@ -156,11 +156,6 @@ export const Padding = Story({
 })
 
 export const TeaserCards = Story({
-  args: {
-    layout: 'vertical',
-    align: 'center',
-    space: 'large',
-  },
   ...withRender(
     ({ ...args }) => `<div class="grid">
   <div class="col is-one-third">

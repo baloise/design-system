@@ -93,56 +93,52 @@ export const CardTitle = Story({
 })
 
 export const TeaserCards = Story({
-  args: {
-    color: 'purple-light',
-    fullheight: true,
-  },
   ...withRender(
     ({ ...args }) => `<div class="grid">
-  <div class="col is-one-third">
-    <bal-card ${props(args)}>
-      <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
-          <bal-icon svg='${svgPigPurple}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Teaser Card</bal-heading>
-            <bal-text>The item component can easily be combined with the card component to achieve a nice
-            teaser layout.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="col is-one-third">
-    <bal-card color="yellow-light" fullheight="true">
-      <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
-          <bal-icon svg='${svgPigYellow}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Auto Height</bal-heading>
-            <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="col is-one-third">
-    <bal-card color="red-light" fullheight="true">
-      <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
-          <bal-icon svg='${svgPigRed}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Item Component</bal-heading>
-            <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
-  </div>
-</div>`,
+      <div class="col is-one-third">
+        <article class="card is-purple-light is-fullheight">
+          <div class="card-content">
+            <div class="stack align-center has-space-large">
+              <bal-icon svg='${svgPigPurple}' color="auto" size="xx-large"></bal-icon>
+              <div class="stack-content align-top-center">
+                <h3 class="title">Teaser Card</h3>
+                The item component can easily be combined with the card component to achieve a nice
+                teaser layout.
+              </div>
+              <button class="button">Button</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="col is-one-third">
+        <article class="card is-yellow-light is-fullheight">
+          <div class="card-content">
+            <div class="stack align-center has-space-large">
+              <bal-icon svg='${svgPigYellow}' color="auto" size="xx-large"></bal-icon>
+              <div class="stack-content align-top-center">
+                <h3 class="title">Auto Height</h3>
+                The height of the cards adjust to the longest in the row.
+              </div>
+              <button class="button">Button</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="col is-one-third">
+          <article class="card is-red-light is-fullheight">
+          <div class="card-content">
+            <div class="stack align-center has-space-large">
+              <bal-icon svg='${svgPigRed}' color="auto" size="xx-large"></bal-icon>
+              <div class="stack-content align-top-center">
+                <h3 class="title">Item Component</h3>
+                Item is used to easaly group components and not be concered about the correct spacing.
+              </div>
+              <button class="button">Button</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>`,
   ),
 })
 

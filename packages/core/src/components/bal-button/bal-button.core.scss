@@ -407,11 +407,6 @@ button.button {
   &.as-col {
     flex-flow: column wrap;
 
-    .button {
-      flex: 1;
-      width: 100%;
-    }
-
     @include tablet {
       align-items: flex-start;
     }

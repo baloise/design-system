@@ -24,8 +24,6 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 })
 export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
   private componentId = `bal-accordion-${accordionIds++}`
-  private contentEl: HTMLDivElement | undefined
-  private contentElWrapper: HTMLDivElement | undefined
   private currentRaf: number | undefined
 
   @Element() el!: HTMLStencilElement
@@ -90,12 +88,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * If `true` the accordion is used on the bottom of a card
    */
   @Prop() card = false
-
-  /**
-   * @internal
-   * defines the version of the component
-   */
-  @Prop() version = 2
 
   /**
    * Emitted when the accordion has opened or closed
@@ -205,18 +197,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   private get detailsElement(): HTMLBalAccordionDetailsElement | HTMLDivElement | null {
-    if (this.version === 1) {
-      return this.contentEl || null
-    }
-
     return this.el?.querySelector(`#${this.componentId}-details`) || null
   }
 
   private get detailsWrapperElement(): HTMLDivElement | null {
-    if (this.version === 1) {
-      return this.contentElWrapper || null
-    }
-
     return this.el?.querySelector(`#${this.componentId}-details > div`) || null
   }
 
@@ -235,11 +219,9 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
   private setState = (state: AccordionState) => {
     this.state = state
-    if (this.version === 2) {
-      this.updateTriggerElement()
-      this.updateDetailsElement()
-      this.updateSummaryElement()
-    }
+    this.updateTriggerElement()
+    this.updateDetailsElement()
+    this.updateSummaryElement()
   }
 
   private updateDetailsElement = () => {
@@ -364,24 +346,11 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   /**
-   * EVENT BINDING
-   * ------------------------------------------------------
-   */
-
-  private onTriggerClickV1 = () => {
-    this.humanToggle()
-  }
-
-  /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
-    return this.version === 2 ? this.renderVersion2() : this.renderVersion1()
-  }
-
-  renderVersion2() {
     const block = BEM.block('accordion')
 
     return (
@@ -394,85 +363,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           ...block.modifier('animated').class(this.animated),
         }}
       ></Host>
-    )
-  }
-
-  renderVersion1() {
-    const label = this.active ? this.closeLabel : this.openLabel
-    const icon = this.active ? this.closeIcon : this.openIcon
-    const block = BEM.block('accordion')
-
-    const expanded = this.state === AccordionState.Expanded || this.state === AccordionState.Expanding
-    const buttonPart = expanded ? 'button expanded' : 'button'
-    const contentPart = expanded ? 'content expanded' : 'content'
-
-    return (
-      <Host
-        id={this.componentId}
-        class={{
-          ...block.class(),
-          ...block.modifier('card-v1').class(this.card),
-          ...block.modifier('active').class(this.active),
-          ...block.modifier('expanding').class(this.state === AccordionState.Expanding),
-          ...block.modifier('expanded').class(this.state === AccordionState.Expanded),
-          ...block.modifier('collapsing').class(this.state === AccordionState.Collapsing),
-          ...block.modifier('collapsed').class(this.state === AccordionState.Collapsed),
-          ...block.modifier('animated').class(this.animated),
-        }}
-      >
-        <div
-          class={{
-            ...block.element('wrapper').class(),
-          }}
-        >
-          <div
-            class={{
-              ...block.element('trigger').class(),
-              ...block.element('trigger').modifier('card').class(this.card),
-            }}
-            data-testid="bal-accordion-summary"
-          >
-            <bal-button
-              id={`${this.componentId}-button`}
-              aria-controls={`${this.componentId}-content`}
-              part={buttonPart}
-              data-testid="bal-accordion-trigger"
-              expanded={true}
-              color={'info'}
-              icon={icon}
-              onClick={this.onTriggerClickV1}
-            >
-              {label}
-            </bal-button>
-          </div>
-          <div
-            id={`${this.componentId}-content`}
-            aria-labelledby={`${this.componentId}-button`}
-            role="region"
-            part={contentPart}
-            class={{
-              ...block.element('content').class(),
-              ...block.element('content').modifier('card').class(this.card),
-              ...block
-                .element('content')
-                .modifier('overflow-hidden')
-                .class(this.state !== AccordionState.Expanded),
-            }}
-            ref={contentEl => (this.contentEl = contentEl)}
-          >
-            <div
-              id={`${this.componentId}-content-wrapper`}
-              data-testid="bal-accordion-details"
-              class={{
-                ...block.element('content').element('wrapper').class(),
-              }}
-              ref={contentElWrapper => (this.contentElWrapper = contentElWrapper)}
-            >
-              <slot></slot>
-            </div>
-          </div>
-        </div>
-      </Host>
     )
   }
 }

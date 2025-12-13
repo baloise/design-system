@@ -31,6 +31,7 @@ export const WithIcon = Story({
   args: {
     color: 'success',
     icon: 'check',
+    content: '',
   },
 })
 
@@ -103,7 +104,7 @@ export const ListBadges = Story({
     () => `<bal-list border>
   <bal-list-item clickable>
     <bal-list-item-icon>
-      <bal-badge color="green" size="large" icon="check">1</bal-badge>
+      <bal-badge color="green" size="large" icon="check"></bal-badge>
     </bal-list-item-icon>
     <bal-list-item-content>
       <bal-list-item-title>Clickable item</bal-list-item-title>

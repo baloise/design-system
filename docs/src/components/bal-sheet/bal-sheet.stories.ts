@@ -17,15 +17,7 @@ const meta: Meta<Args> = {
   ...withRender(
     ({ content, ...args }) => `<div>
   <div class="container is-compact mb-xx-small">
-    <bal-card>
-      <bal-card-title>BaloiseCombi</bal-card-title>
-      <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-      <bal-card-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</bal-card-content>
-      <bal-card-actions position="right">
-        <bal-button>Main Action</bal-button>
-        <bal-button color="secondary" outlined>Secondary Action</bal-button>
-      </bal-card-actions>
-    </bal-card>
+    <h1 class="title">Sheet Example</h1>
   </div>
 
   <bal-sheet ${props(args)}>
@@ -36,7 +28,7 @@ const meta: Meta<Args> = {
     <bal-stack class="mobile:hidden">
       <bal-heading level="p" visual-level="h4">1'234 CHF</bal-heading>
       <bal-content>
-        <p class="text-small m-none flex-1">${content}</p>
+        <p class="text-small m-none">${content}</p>
       </bal-content>
       <bal-button-group>
         <bal-button color="secondary">Back</bal-button>

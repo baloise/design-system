@@ -76,17 +76,3 @@ export const ButtonAccordion = Story({
 </bal-card>`,
   ),
 })
-
-export const OldVersion = Story({
-  args: {
-    openIcon: 'edit',
-    openLabel: 'Bearbeiten',
-    closeLabel: 'Schliessen',
-    closeIcon: 'close',
-  },
-  ...withRender(
-    ({ content, ...args }) => `<bal-accordion ${props(args)}>
-  <p class="py-medium">${content}</p>
-</bal-accordion>`,
-  ),
-})
