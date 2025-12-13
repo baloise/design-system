@@ -43,10 +43,10 @@ runs:
       shell: bash
       run: npx nx run-many -t build
 
-    - name: Releae dry-run
-      if: inputs.build == 'true'
-      shell: bash
-      run: npx nx release publish -d
+    # - name: Releae dry-run
+    #   if: inputs.build == 'true'
+    #   shell: bash
+    #   run: npx nx release publish -d
 
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'

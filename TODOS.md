@@ -6,6 +6,14 @@
 - Check visuals
 - Update docs
 - replace all base colors with brand colors
+- replace all core components in the other components
+  - text
+  - heading
+  - link
+  - button
+  - stack
+  - label
+  - divider
 
 ## MIGRATION
 
