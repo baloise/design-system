@@ -18,6 +18,7 @@ export default {
         ignoreAtRules: ['else'],
       },
     ],
+    'no-descending-specificity': [true, { ignore: ['selectors-within-list'] }],
     'scss/comment-no-empty': null,
     'no-duplicate-selectors': null,
   },

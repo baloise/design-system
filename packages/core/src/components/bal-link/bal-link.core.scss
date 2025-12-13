@@ -36,9 +36,9 @@
 /**
   * Basic Style
   */
-.content a:any-link:not(.button),
 a.link:not(.button),
-a.is-link:not(.button) {
+a.is-link:not(.button),
+.content > a:any-link:not(.button) {
   cursor: pointer;
   hyphens: auto;
   margin: 0;
@@ -55,7 +55,7 @@ a.is-link:not(.button) {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
-  strong {
+  & > strong {
     color: currentcolor;
   }
 

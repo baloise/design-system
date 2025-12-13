@@ -18,7 +18,6 @@ export class AccordionSummary implements ComponentInterface, Loggable {
   @State() parentAccordionId?: string
 
   log!: LogInstance
-
   @Logger('bal-accordion-summary')
   createLogger(log: LogInstance) {
     this.log = log
@@ -50,20 +49,10 @@ export class AccordionSummary implements ComponentInterface, Loggable {
    */
 
   connectedCallback() {
-    const accordion = this.parentAccordionElement
-    if (accordion) {
-      accordion.version = 2
-    }
-
     this.updateAccordionId()
   }
 
   disconnectedCallback() {
-    const accordion = this.parentAccordionElement
-    if (accordion) {
-      accordion.version = 1
-    }
-
     this.updateAccordionId()
   }
 

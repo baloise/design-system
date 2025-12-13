@@ -86,10 +86,6 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<boolean>;
-        /**
-          * @default 2
-         */
-        "version": number;
     }
     interface BalAccordionDetails {
         /**
@@ -5913,10 +5909,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "openLabel"?: string;
-        /**
-          * @default 2
-         */
-        "version"?: number;
     }
     interface BalAccordionDetails {
         /**
