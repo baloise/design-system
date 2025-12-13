@@ -87,6 +87,10 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 
 .stack,
 .stack-content {
+  &.has-wrap {
+    flex-wrap: wrap;
+  }
+
   &.as-row,
   &.is-horizontal,
   &.has-direction-row {
