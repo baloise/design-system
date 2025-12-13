@@ -113,7 +113,8 @@
 }
 .bal-snackbar__button-wrapper {
   display: flex;
-  .bal-button {
+  .button,
+  bal-button {
     margin-inline-start: calc(1rem + 1.5rem);
     margin-block-start: 0.5rem;
   }

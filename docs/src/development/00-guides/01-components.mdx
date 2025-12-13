@@ -137,8 +137,8 @@ color of a button.
 To showcase property interaction, an attempt is made to modify the color property of the button component.
 
 ```html
-<!-- with color info -->
-<bal-button color="info">My info button</bal-button>
+<!-- with color secondary -->
+<bal-button color="secondary">My secondary button</bal-button>
 ```
 
 If the property is of type `boolean` it is enough to just set the property without a value:
@@ -162,18 +162,18 @@ import { Component } from '@angular/core'
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  buttonColor = 'info'
+  buttonColor = 'secondary'
 }
 ```
 
 **app.component.html**
 
 ```html
-<bal-button color="info">My info button</bal-button>
+<bal-button color="secondary">My secondary button</bal-button>
 
 <!-- To bind a value use the [] around the prop -->
 
-<bal-button [color]="buttonColor">My info button</bal-button>
+<bal-button [color]="buttonColor">My secondary button</bal-button>
 ```
 
 </AngularFramework>
@@ -189,12 +189,12 @@ export class AppComponent {
 ### Bind properties
 
 ```html
-<bal-button color="info">My info button</bal-button>
-<bal-button id="my-info-button">My info button</bal-button>
+<bal-button color="secondary">My secondary button</bal-button>
+<bal-button id="my-secondary-button">My secondary button</bal-button>
 
 <script>
-  const buttonElement = document.querySelector('#my-info-button')
-  buttonElement.color = 'info'
+  const buttonElement = document.querySelector('#my-secondary-button')
+  buttonElement.color = 'secondary'
 </script>
 ```
 

@@ -50,7 +50,7 @@ export class CardButton {
     return (
       <Host class="card-footer">
         <bal-button
-          color="info"
+          color="secondary"
           expanded
           bottom-rounded
           icon={this.icon}

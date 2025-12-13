@@ -39,17 +39,16 @@
       display: block;
       margin-bottom: 1rem;
       @include element(heading) {
-        font-family: var(--bal-title-font-family);
-        font-weight: var(--bal-title-font-weight);
+        color: var(--bal-heading-color-basic);
+        font-family: var(--bal-heading-font-family);
+        font-weight: var(--bal-heading-font-weight);
+        line-height: var(--bal-heading-line-height);
         font-size: var(--bal-text-size-x-large);
-        line-height: var(--bal-line-height-x-large);
         @include tablet {
           font-size: var(--bal-text-size-x-large-tablet);
-          line-height: var(--bal-line-height-tablet-x-large);
         }
         @include desktop {
           font-size: var(--bal-text-size-x-large-desktop);
-          line-height: var(--bal-line-height-desktop-x-large);
         }
       }
     }

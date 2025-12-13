@@ -28,7 +28,7 @@ const meta: Meta<Args> = {
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-card-content>${content}</bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="info">Secondary Action</bal-button>
+    <bal-button color="secondary">Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>`,
@@ -62,7 +62,7 @@ export const FlatCard = Story({
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-card-content>${content}</bal-card-content>
   <bal-card-actions position="right">
-      <bal-button color="info">Secondary Action</bal-button>
+      <bal-button color="secondary">Secondary Action</bal-button>
       <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>`,
@@ -85,7 +85,7 @@ export const CardTitle = Story({
   </bal-card-title>
   <bal-card-content>${content}</bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="info" outlined="true">Secondary Action</bal-button>
+    <bal-button color="secondary" outlined="true">Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>`,
@@ -206,7 +206,7 @@ export const CardVariations = Story({
               </bal-list-item>
             </bal-list>
             <bal-button-group position="center" class="mt-auto">
-              <bal-button expanded="true" outlined="true" color="info">Button</bal-button>
+              <bal-button expanded="true" outlined="true" color="secondary">Button</bal-button>
             </bal-button-group>
           </div>
         </bal-card-content>
@@ -222,7 +222,7 @@ export const CardVariations = Story({
               <bal-input placeholder="Placeholder"></bal-input>
             </bal-input-group>
             <bal-button-group position="center" class="mt-auto">
-              <bal-button expanded="true" outlined="true" color="info" class="mt-normal">Search</bal-button>
+              <bal-button expanded="true" outlined="true" color="secondary" class="mt-normal">Search</bal-button>
             </bal-button-group>
           </div>
         </bal-card-content>

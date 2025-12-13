@@ -19,7 +19,7 @@
   }
   @include modifier('white') {
     svg {
-      @include fillSvg($bal-color-white);
+      @include fillSvg(var(--bal-color-white));
     }
   }
   @include desktop {

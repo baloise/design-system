@@ -36,7 +36,7 @@
 /**
   * Basic Style
   */
-a:any-link:not(.button),
+.content a:any-link:not(.button),
 a.link:not(.button),
 a.is-link:not(.button) {
   cursor: pointer;

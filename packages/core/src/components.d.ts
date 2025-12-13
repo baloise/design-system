@@ -142,7 +142,7 @@ export namespace Components {
         "closeLabel": string;
         /**
           * The color to use from your application's color palette.
-          * @default 'info'
+          * @default 'secondary'
          */
         "color": BalProps.BalButtonColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
@@ -5969,7 +5969,7 @@ declare namespace LocalJSX {
         "closeLabel"?: string;
         /**
           * The color to use from your application's color palette.
-          * @default 'info'
+          * @default 'secondary'
          */
         "color"?: BalProps.BalButtonColor;
         /**

@@ -46,7 +46,7 @@ export const Addons = Story({
   <bal-field-label required="true">Search</bal-field-label>
   <bal-field-control>
       <bal-input ${props(args)}></bal-input>
-      <bal-button color="info">Search</bal-button>
+      <bal-button color="secondary">Search</bal-button>
   </bal-field-control>
 </bal-field>`,
   ),

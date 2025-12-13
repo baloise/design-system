@@ -467,20 +467,29 @@ fieldset[disabled] .button,
 .button.is-disabled,
 .button.is-inverted.is-disabled,
 .button[disabled] {
-  pointer-events: none;
-  opacity: 1;
-  box-shadow: none;
-  text-decoration: none;
-  cursor: default;
-  background-color: var(--bal-button-color-background-disabled-base);
-  border: var(--bal-button-border-disabled-base);
-  color: var(--bal-button-color-text-disabled-base);
+  &,
+  &:hover,
+  &.is-hovered,
+  &:active,
+  &.is-pressed,
+  &:focus,
+  &.is-focused {
+    pointer-events: none;
+    opacity: 1;
+    box-shadow: none;
+    text-decoration: none;
+    cursor: default;
+    translate: 0 0;
+    background-color: var(--bal-button-color-background-disabled-base);
+    border: var(--bal-button-border-disabled-base);
+    color: var(--bal-button-color-text-disabled-base);
 
-  @include fillSvg(var(--bal-button-color-text-disabled-base));
+    @include fillSvg(var(--bal-button-color-text-disabled-base));
 
-  & > bal-spinner[variation='circle'] {
-    border-color: var(--bal-color-grey-4);
-    border-top-color: var(--bal-button-color-text-disabled-base);
+    & > bal-spinner[variation='circle'] {
+      border-color: var(--bal-color-grey-4);
+      border-top-color: var(--bal-button-color-text-disabled-base);
+    }
   }
 }
 

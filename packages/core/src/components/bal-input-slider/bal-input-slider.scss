@@ -18,7 +18,7 @@
     right: 0px;
     z-index: 0;
     border-radius: var(--bal-radius-rounded);
-    background: var(--bal-color-green);
+    background: var(--bal-color-brand-green-base);
     height: 1rem;
     width: 100%;
     overflow: hidden;
@@ -38,7 +38,7 @@
     @include element(upper) {
       right: 0px;
       > div {
-        background: var(--bal-color-green);
+        background: var(--bal-color-brand-green-base);
         border-top-right-radius: var(--bal-radius-rounded);
         border-bottom-right-radius: var(--bal-radius-rounded);
       }
@@ -46,7 +46,7 @@
     @include element(lower) {
       left: 0px;
       > div {
-        background: var(--bal-color-green-5);
+        background: var(--bal-color-brand-green-darker);
         border-top-left-radius: var(--bal-radius-rounded);
         border-bottom-left-radius: var(--bal-radius-rounded);
       }
@@ -54,12 +54,12 @@
     &--disabled {
       cursor: default;
       pointer-events: none;
-      background: var(--bal-color-grey-2);
+      background: var(--bal-color-brand-grey-light);
       .bal-input-slider__background__upper__inner {
-        background: var(--bal-color-grey-2);
+        background: var(--bal-color-brand-grey-light);
       }
       .bal-input-slider__background__lower__inner {
-        background: var(--bal-color-grey-4);
+        background: var(--bal-color-brand-grey-dark);
       }
     }
   }

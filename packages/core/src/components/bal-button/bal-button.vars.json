@@ -543,7 +543,7 @@
           "active": { "$value": "{color.brand.primary.lighter}" }
         },
         "inverted-accent": {
-          "base": { "$value": "{color.brand.primary.dark}" },
+          "base": { "$value": "{color.primary.4}" },
           "hover": { "$value": "{color.brand.light-blue.light}" },
           "active": { "$value": "{color.brand.core.white}" }
         },

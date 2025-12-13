@@ -173,12 +173,14 @@
     }
   }
 }
-.bal-navbar__brand__burger.bal-button {
+
+bal-button.bal-navbar__brand__burger {
   margin-left: auto;
   @include desktop {
     display: none;
   }
 }
-.bal-navbar__brand__burger--hidden.bal-button {
+
+bal-button.bal-navbar__brand__burger--hidden {
   display: none !important;
 }
