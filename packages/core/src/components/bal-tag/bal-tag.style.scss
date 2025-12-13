@@ -33,7 +33,7 @@ $tag-colors: (
   * Basic Style
   */
 
-.tag {
+.tag:not(.token) {
   @include unselectable;
 
   position: static;

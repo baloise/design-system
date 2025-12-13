@@ -567,10 +567,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'info'"
+              "text": "'secondary'"
             }
           ],
-          "default": "'info'",
+          "default": "'secondary'",
           "values": [
             {
               "value": "danger",
