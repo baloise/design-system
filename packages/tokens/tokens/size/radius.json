@@ -1,8 +1,8 @@
 {
   "radius": {
     "base": {
-      "$value": "4",
       "$type": "dimension",
+      "$value": "4",
       "comment": "The normal radius token strikes a balance between softness and structure."
     },
     "large": {

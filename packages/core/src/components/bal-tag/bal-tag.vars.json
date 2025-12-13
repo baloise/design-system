@@ -27,12 +27,14 @@
       }
     },
     "radius": {
-      "$type": "dimension",
       "base": {
-        "$value": "4"
+        "$value": "{radius.large}"
+      },
+      "square": {
+        "$value": "{radius.base}"
       },
       "pill": {
-        "$value": "37.5%"
+        "$value": "{radius.rounded}"
       }
     },
     "space": {

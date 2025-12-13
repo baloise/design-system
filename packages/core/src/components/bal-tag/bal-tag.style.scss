@@ -65,6 +65,10 @@ $tag-colors: (
     }
   }
 
+  &.is-square {
+    border-radius: var(--bal-tag-radius-square);
+  }
+
   &.is-pill {
     border-radius: var(--bal-tag-radius-pill);
   }

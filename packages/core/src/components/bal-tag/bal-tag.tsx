@@ -85,8 +85,7 @@ export class Tag {
       <Host>
         <span
           class={{
-            'tag': true,
-            'is-pill': true,
+            tag: true,
             [sizeClass]: hasSize,
             [colorClass]: hasColor,
           }}

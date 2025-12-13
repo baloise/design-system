@@ -30,6 +30,4 @@
 
 ## FIXES
 
-- List since heading is shadow we need to use variables
-- Tag use default style current and move new default to is-square
 - Icons does not work wiht checkbox tiles
