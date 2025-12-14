@@ -46,14 +46,14 @@ $card-colors: (
 }
 
 @mixin card-space($spacing, $property) {
-  #{$property}: var(--bal-card-space-#{$spacing});
+  #{$property}: calc(var(--bal-card-space-#{$spacing}) - var(--bal-border-width-base));
 
   @include tablet {
-    #{$property}: var(--bal-card-space-#{$spacing}-tablet);
+    #{$property}: calc(var(--bal-card-space-#{$spacing}-tablet) - var(--bal-border-width-base));
   }
 
   @include desktop {
-    #{$property}: var(--bal-card-space-#{$spacing}-desktop);
+    #{$property}: calc(var(--bal-card-space-#{$spacing}-desktop) - var(--bal-border-width-base));
   }
 }
 

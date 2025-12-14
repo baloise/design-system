@@ -40,7 +40,7 @@ $label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
   font-family: var(--bal-label-font-family);
   font-weight: var(--bal-label-font-weight);
   line-height: var(--bal-label-line-height);
-  font-size: var(--bal-label-size-small);
+  font-size: var(--bal-label-size-normal);
 
   &.is-multiline {
     white-space: normal;
