@@ -258,7 +258,7 @@ button.button {
 .button.is-flat {
   padding: 0;
   padding-inline: 0;
-  min-height: 1.5rem;
+  min-height: 1.75rem;
 }
 
 .button.is-square {
@@ -283,10 +283,6 @@ button.button {
 }
 
 // Icons
-
-.button:where(:not(.is-square, .is-circle)) > bal-icon {
-  margin-left: -4px;
-}
 
 .button:where(:not(.is-square, .is-circle), .is-small) > bal-icon,
 .button:where(:not(.is-square, .is-circle), .is-small) > bal-icon > .bal-icon__inner {

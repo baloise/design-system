@@ -1,4 +1,4 @@
-import { matchers } from '@baloise/ds-playwright'
+import { expect as baseExpect } from '@baloise/ds-playwright'
 import { workspaceRoot } from '@nx/devkit'
 import { nxE2EPreset } from '@nx/playwright/preset'
 import { defineConfig, devices, expect } from '@playwright/test'
@@ -13,7 +13,7 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4000'
 // require('dotenv').config();
 
 // Add custom Stencil matchers to Playwright assertions
-expect.extend(matchers)
+expect.extend(baseExpect)
 
 /**
  * See https://playwright.dev/docs/test-configuration.
