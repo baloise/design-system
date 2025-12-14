@@ -14,18 +14,8 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-accordion": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "active",
@@ -1139,7 +1129,6 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-accordion",
         "bal-accordion-trigger",
         "bal-card-button",
         "bal-data-value",
@@ -1156,9 +1145,6 @@
         "bal-button": [
           "bal-spinner",
           "bal-icon"
-        ],
-        "bal-accordion": [
-          "bal-button"
         ],
         "bal-accordion-trigger": [
           "bal-button"
@@ -10675,9 +10661,6 @@
           "bal-list-item-content",
           "bal-list-item-title",
           "bal-list-item-subtitle"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
         ]
       },
       "props": [
@@ -11806,16 +11789,12 @@
       "encapsulation": "shadow",
       "dependents": [
         "bal-card-title",
-        "bal-list-item-title",
         "bal-modal-header",
         "bal-popup"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-card-title": [
-          "bal-heading"
-        ],
-        "bal-list-item-title": [
           "bal-heading"
         ],
         "bal-modal-header": [
@@ -17812,13 +17791,8 @@
       "dependents": [
         "bal-file-upload"
       ],
-      "dependencies": [
-        "bal-heading"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
         "bal-file-upload": [
           "bal-list-item-title"
         ]
