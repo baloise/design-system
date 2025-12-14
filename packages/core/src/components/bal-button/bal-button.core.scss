@@ -416,13 +416,13 @@ button.button {
     flex-flow: column-reverse wrap;
   }
 
-  &:last-child {
-    margin-bottom: -0.5rem;
-  }
+  // &:last-child {
+  //   margin-bottom: -0.5rem;
+  // }
 
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+  // &:not(:last-child) {
+  //   margin-bottom: 1rem;
+  // }
 
   @include mobile {
     .button:not(.is-square, .is-circle) {

@@ -54,6 +54,7 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     // Generate global.scss content
     const globalScssPath = join(options.componentRoot, '..', 'global.scss')
     const coreImports = componentsCore
+      .sort()
       .map(file => {
         const relativePath = relative(join(options.componentRoot, '..'), file)
         return `@forward './${relativePath}';`
@@ -61,6 +62,7 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
       .join('\n')
 
     const styleImports = componentsStyles
+      .sort()
       .map(file => {
         const relativePath = relative(join(options.componentRoot, '..'), file)
         return `@forward './${relativePath}';`
