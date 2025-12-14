@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import {
-  expect as baseExpect,
   test as baseTest,
+  expect,
   Locator,
   Page,
+  PageAssertionsToHaveScreenshotOptions,
   PlaywrightTestArgs,
   PlaywrightTestOptions,
   PlaywrightWorkerArgs,
@@ -13,36 +14,26 @@ import {
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { a11y } from './functions/a11y'
-import { matchers } from './matchers'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
 import { BalPage, BalPageOptions } from './types'
 
-export const expect = baseExpect.extend({
-  ...matchers,
-  async toHaveScreenshot(
-    received: Locator | Page,
-    name?: string | string[],
-    options?: Parameters<Locator['screenshot']>[0],
-  ) {
-    // Get page from received (either it's a Page or a Locator with .page())
-    const page = 'page' in received ? received.page() : received
-    await waitForChanges(page as BalPage)
+export { expect } from '@playwright/test'
 
-    try {
-      await baseExpect(received).toHaveScreenshot(name as string | string[], options)
-      return {
-        pass: true,
-        message: () => 'Screenshot matches',
-      }
-    } catch (error: unknown) {
-      return {
-        pass: false,
-        message: () => (error instanceof Error ? error.message : String(error)),
-      }
-    }
-  },
-})
+/**
+ * Custom screenshot assertion that waits for changes before taking the screenshot
+ */
+export async function expectScreenshot(
+  received: Locator | Page,
+  name?: string | string[],
+  options?: PageAssertionsToHaveScreenshotOptions,
+) {
+  // Get page from received (either it's a Page or a Locator with .page())
+  const page = 'page' in received ? received.page() : received
+  await waitForChanges(page as BalPage)
+
+  await expect(received).toHaveScreenshot(name as string | string[], options)
+}
 
 type CustomTestArgs = PlaywrightTestArgs &
   PlaywrightTestOptions &

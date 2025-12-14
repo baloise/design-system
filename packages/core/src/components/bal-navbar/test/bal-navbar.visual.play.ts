@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-navbar'
 const VARIANTS = ['basic', 'simple-light', 'container']
@@ -12,14 +12,14 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(el, image(`${variant}`))
   })
 })
 
 test('toggle', async ({ page }) => {
   const el = page.getByTestId('toggle')
   const buttonEl = page.getByTestId('toggle-button')
-  await expect(el).toHaveScreenshot(image(`toggle-before`))
+  await expectScreenshot(el, image(`toggle-before`))
   await buttonEl.click()
-  await expect(el).toHaveScreenshot(image(`toggle-after`))
+  await expectScreenshot(el, image(`toggle-after`))
 })
