@@ -78,24 +78,13 @@ export class Card {
     return (
       <Host
         class={{
-          'card': true,
-          [`is-${this.colorTypeClass}`]: !isEmpty(this.color),
+          card: true,
+          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
           [`has-space-${this.space}`]: !isEmpty(this.space),
-          [`is-flat`]: this.flat,
           [`is-fullheight`]: this.fullheight,
           [`is-square`]: this.square,
-          [`is-dashed`]: this.border,
-
-          // 'bal-card--has-border': this.border,
-          // 'bal-card--is-flat': this.flat,
-          // 'bal-card--is-clickable': this.clickable,
-          // 'bal-card--is-selected': this.selected,
-          // 'bal-card--is-square': this.square,
-          // 'bal-card--has-fullheight': this.fullheight,
-
-          'bal-card--has-border': this.border,
-          'bal-card--is-clickable': this.clickable,
-          'bal-card--is-selected': this.selected,
+          [`is-outlined`]: this.border,
+          [`is-flat`]: this.border || this.flat,
         }}
       >
         <slot></slot>

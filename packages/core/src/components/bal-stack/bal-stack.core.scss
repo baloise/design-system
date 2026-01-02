@@ -77,12 +77,17 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
 
 .stack-content {
   flex: 1;
+  height: 100%;
   gap: 0.25rem;
 }
 
 .stack > .stack,
 .stack > .stack-content {
   align-self: stretch;
+}
+
+.stack.is-horizontal > .stack-content {
+  align-self: center;
 }
 
 .stack,
@@ -274,6 +279,18 @@ $stack-space: ('xx-small', 'x-small', 'small', 'normal', 'medium', 'large', 'x-l
   &.align-center-end,
   &.align-bottom-right,
   &.align-bottom-end {
+    text-align: right;
+  }
+
+  &.text-left {
+    text-align: left;
+  }
+
+  &.text-center {
+    text-align: center;
+  }
+
+  &.text-right {
     text-align: right;
   }
 }

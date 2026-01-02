@@ -1,19 +1,7 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-button',
@@ -24,8 +12,6 @@ export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
 
   @Element() el!: HTMLStencilElement
-
-  @State() isLargestContentPaintDone = false
 
   /**
    * The color to use from your application's color palette.
@@ -205,10 +191,6 @@ export class Button implements ComponentInterface {
     }
   }
 
-  componentDidLoad(): void {
-    rOnLoad(() => (this.isLargestContentPaintDone = true))
-  }
-
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -372,12 +354,12 @@ export class Button implements ComponentInterface {
           data-testid="bal-button"
           {...ariaAttributes}
         >
-          {this.isLargestContentPaintDone && this.loading ? (
+          {this.loading ? (
             <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           ) : (
             ''
           )}
-          {this.isLargestContentPaintDone && this.icon ? (
+          {this.icon ? (
             <bal-icon
               {...this.leftIconAttrs}
               class={this.square ? '' : 'icon-left'}
@@ -400,7 +382,7 @@ export class Button implements ComponentInterface {
           >
             <slot />
           </span>
-          {this.isLargestContentPaintDone && this.iconRight ? (
+          {this.iconRight ? (
             <bal-icon
               {...this.leftRightAttrs}
               class="icon-right"

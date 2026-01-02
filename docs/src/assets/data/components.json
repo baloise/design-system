@@ -2217,7 +2217,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-card-actions",
         "bal-hint"
@@ -6073,7 +6073,7 @@
           "mutable": false,
           "attr": "align",
           "reflectToAttr": false,
-          "docs": "Defines the text positioning like center, end or\ndefault to start.",
+          "docs": "Defines the positioning like center, end or\ndefault to start.",
           "docsTags": [
             {
               "name": "default",
@@ -6195,6 +6195,52 @@
             },
             {
               "value": "xxx-small",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "textAlign",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "complexType": {
+            "original": "BalProps.BalContentTextAlignment",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "text-align",
+          "reflectToAttr": false,
+          "docs": "Defines the text positioning like center, right or\ndefault to left.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
               "type": "string"
             }
           ],

@@ -126,7 +126,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
       <Host
         class={{
           [`has-space-${this.space}`]: this.space !== '',
-          [`is-inline-${this.space}`]: this.inline,
+          [`is-inline`]: this.inline,
         }}
       >
         <Text

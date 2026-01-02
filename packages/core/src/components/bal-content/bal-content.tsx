@@ -25,10 +25,16 @@ export class Content implements ComponentInterface, Loggable {
   @Prop() layout: BalProps.BalContentLayout = 'vertical'
 
   /**
-   * Defines the text positioning like center, end or
+   * Defines the positioning like center, end or
    * default to start.
    */
   @Prop() align: BalProps.BalContentAlignment = 'start'
+
+  /**
+   * Defines the text positioning like center, right or
+   * default to left.
+   */
+  @Prop() textAlign: BalProps.BalContentTextAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is xx-small.
@@ -75,6 +81,7 @@ export class Content implements ComponentInterface, Loggable {
           'stack-content': true,
           [`is-${layoutValue}`]: layout || direction,
           [`align-${alignValue}`]: align || alignment,
+          [`text-${this.textAlign}`]: this.textAlign !== '',
           [`has-space-${this.space}`]: space,
         }}
       >

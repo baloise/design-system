@@ -853,7 +853,7 @@ export namespace Components {
     }
     interface BalContent {
         /**
-          * Defines the text positioning like center, end or default to start.
+          * Defines the positioning like center, end or default to start.
           * @default 'start'
          */
         "align": BalProps.BalContentAlignment;
@@ -875,6 +875,11 @@ export namespace Components {
           * @default 'xx-small'
          */
         "space": BalProps.BalContentSpace;
+        /**
+          * Defines the text positioning like center, right or default to left.
+          * @default ''
+         */
+        "textAlign": BalProps.BalContentTextAlignment;
     }
     interface BalData {
         /**
@@ -6705,7 +6710,7 @@ declare namespace LocalJSX {
     }
     interface BalContent {
         /**
-          * Defines the text positioning like center, end or default to start.
+          * Defines the positioning like center, end or default to start.
           * @default 'start'
          */
         "align"?: BalProps.BalContentAlignment;
@@ -6727,6 +6732,11 @@ declare namespace LocalJSX {
           * @default 'xx-small'
          */
         "space"?: BalProps.BalContentSpace;
+        /**
+          * Defines the text positioning like center, right or default to left.
+          * @default ''
+         */
+        "textAlign"?: BalProps.BalContentTextAlignment;
     }
     interface BalData {
         /**

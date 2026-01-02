@@ -21,7 +21,7 @@ if (fileChanges) {
   const workspaceRoot = path.join(__dirname, '../..')
 
   // Now build styles after tokens are ready
-  exec('node_modules/.bin/nx run styles:build', { cwd: workspaceRoot }, (error, stdout, stderr) => {
+  exec('node_modules/.bin/nx run styles:build --skip-cache', { cwd: workspaceRoot }, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error rebuilding styles: ${error.message}`)
       console.error(`stderr: ${stderr}`)

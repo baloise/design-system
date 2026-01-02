@@ -130,8 +130,12 @@ button.button {
 
 // Colors
 
-.button.has-shadow {
+.button:not(.is-link).has-shadow {
   box-shadow: var(--bal-button-shadow-base);
+}
+
+.button.is-link.has-shadow {
+  text-shadow: var(--bal-button-shadow-base);
 }
 
 // Colors
@@ -264,22 +268,26 @@ button.button {
 .button.is-square {
   padding-inline: 0;
   min-width: 3rem;
+  min-height: 3rem;
   gap: 0;
 }
 
 .button.is-square.is-small {
   min-width: 2rem;
+  min-height: 2rem;
 }
 
 .button.is-circle {
   padding-inline: 0;
   min-width: 3rem;
+  min-height: 3rem;
   gap: 0;
   border-radius: var(--bal-button-radius-rounded);
 }
 
 .button.is-circle.is-small {
   min-width: 2rem;
+  min-height: 2rem;
 }
 
 // Icons
