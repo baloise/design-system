@@ -50,8 +50,8 @@ const template = (html: string) => `
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
 
-    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
+    <link rel="preload" href="/assets/basic.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/basic.css" /></noscript>
   </head>
 
   <body>
