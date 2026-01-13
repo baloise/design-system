@@ -31,7 +31,7 @@ describe('bal-input-stepper', () => {
   })
 
   it('should increase a value and fire input, increase and change event', () => {
-    cy.get('bal-input-stepper').find('.bal-button').eq(1).click()
+    cy.get('bal-input-stepper').find('.button').eq(1).click()
     cy.get('@balInput').should('have.been.calledOnce')
     cy.get('@balIncrease').should('have.been.calledOnce')
     cy.get('@balChange').should('have.been.calledOnce')
@@ -39,7 +39,7 @@ describe('bal-input-stepper', () => {
   })
 
   it('should decrease a value and fire input, decrease and change event', () => {
-    cy.get('bal-input-stepper').find('.bal-button').eq(0).click()
+    cy.get('bal-input-stepper').find('.button').eq(0).click()
     cy.get('@balInput').should('have.been.calledOnce')
     cy.get('@balDecrease').should('have.been.calledOnce')
     cy.get('@balChange').should('have.been.calledOnce')
@@ -47,8 +47,8 @@ describe('bal-input-stepper', () => {
   })
 
   it('should decrease a value, decrease button should become disabled and it should only fire input, decrease and change event once', () => {
-    cy.get('bal-input-stepper').find('.bal-button').eq(0).click({ force: true })
-    cy.get('bal-input-stepper').find('.bal-button').eq(0).should('be.disabled')
+    cy.get('bal-input-stepper').find('.button').eq(0).click({ force: true })
+    cy.get('bal-input-stepper').find('.button').eq(0).should('be.disabled')
     cy.get('@balInput').should('have.been.calledOnce')
     cy.get('@balDecrease').should('have.been.calledOnce')
     cy.get('@balChange').should('have.been.calledOnce')
@@ -56,8 +56,8 @@ describe('bal-input-stepper', () => {
   })
 
   it('should increase a value, increase become should become disabled and it should only fire input, decrease and change event once', () => {
-    cy.get('bal-input-stepper').find('.bal-button').eq(1).click({ force: true })
-    cy.get('bal-input-stepper').find('.bal-button').eq(1).should('be.disabled')
+    cy.get('bal-input-stepper').find('.button').eq(1).click({ force: true })
+    cy.get('bal-input-stepper').find('.button').eq(1).should('be.disabled')
     cy.get('@balInput').should('have.been.calledOnce')
     cy.get('@balIncrease').should('have.been.calledOnce')
     cy.get('@balChange').should('have.been.calledOnce')
