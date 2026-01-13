@@ -15,12 +15,12 @@ describe('bal-checkbox tile', () => {
       .getDescribingElement()
       .should('not.contain', 'This field is required')
 
-    cy.getByRole('button', { name: 'Update Checkbox Buttons' }).click()
+    cy.getByRole('button', { name: 'Update Checkbox Tiles' }).click()
 
-    cy.getByRole('button', { name: 'Disable Checkbox Buttons' }).click()
+    cy.getByRole('button', { name: 'Disable Checkbox Tiles' }).click()
     cy.getByTestId('checkboxTiles').should('have.attr', 'aria-disabled', 'true')
 
-    cy.getByRole('button', { name: 'Enable Checkbox Buttons' }).click()
+    cy.getByRole('button', { name: 'Enable Checkbox Tiles' }).click()
     cy.getByTestId('checkboxTiles').should('have.attr', 'aria-disabled', 'false')
 
     cy.getByTestId('result').contains('"Apple"')
