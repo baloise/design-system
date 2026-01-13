@@ -45,17 +45,17 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="checkboxTiles" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'checkboxTiles', value: ['Apple'] })">
-            Update Checkbox Buttons
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('checkboxTiles')?.enable()"
-            >Enable Checkbox Buttons</bal-button
-          >
-          <bal-button color="tertiary" (click)="form.get('checkboxTiles')?.disable()"
-            >Disable Checkbox Buttons</bal-button
-          >
-        </bal-button-group>
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'checkboxTiles', value: ['Apple'] })">
+            Update Checkbox Tiles
+          </button>
+          <button class="button is-tertiary" (click)="form.get('checkboxTiles')?.enable()">
+            Enable Checkbox Tiles
+          </button>
+          <button class="button is-tertiary" (click)="form.get('checkboxTiles')?.disable()">
+            Disable Checkbox Tiles
+          </button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,
