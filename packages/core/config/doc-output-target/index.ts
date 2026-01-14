@@ -42,17 +42,17 @@ StyleDictionary.registerFormat({
     output += '  <thead>\n'
     output += '    <tr>\n'
     output += '      <th style="border-top: none; border-left: none; border-right: none;">Variable</th>\n'
-    output += '      <th>Reference</th>\n'
-    output += '      <th>Value</th>\n'
+    // output += '      <th style="border-top: none; border-left: none; border-right: none;">Reference</th>\n'
+    output += '      <th style="border-top: none; border-left: none; border-right: none;">Value</th>\n'
     output += '    </tr>\n'
     output += '  </thead>\n'
     output += '  <tbody>\n'
 
-    const formatKeyToCssVar = (key: string | undefined) => {
-      // create kebab-case css variable name from key like {color.red.500} => --color-red-500
-      if (!key) return ''
-      return `--${key.replace(/[{}]/g, '').replace(/\./g, '-')}`
-    }
+    // const formatKeyToCssVar = (key: string | undefined) => {
+    //   // create kebab-case css variable name from key like {color.red.500} => --color-red-500
+    //   if (!key) return ''
+    //   return `--${key.replace(/[{}]/g, '').replace(/\./g, '-')}`
+    // }
 
     tokens
       .filter(token => {
@@ -70,16 +70,16 @@ StyleDictionary.registerFormat({
           value = formatBorderValue(value)
         }
 
-        const referenceToken = token.original.key
-          ? dictionary.tokenMap.get(token.original.key)
-          : token.original.$value
-            ? dictionary.tokenMap.get(token.original.$value)
-            : ''
-        const referenceTokenName = referenceToken ? `--${referenceToken.name}` : formatKeyToCssVar(token.original.key)
+        // const referenceToken = token.original.key
+        //   ? dictionary.tokenMap.get(token.original.key)
+        //   : token.original.$value
+        //     ? dictionary.tokenMap.get(token.original.$value)
+        //     : ''
+        // const referenceTokenName = referenceToken ? `--${referenceToken.name}` : formatKeyToCssVar(token.original.key)
 
         output += '    <tr>\n'
         output += `      <td><code>${name}</code></td>\n`
-        output += `      <td><code>${referenceTokenName}</code></td>\n`
+        // output += `      <td><code>${referenceTokenName}</code></td>\n`
         output += `      <td><code>${String(value).replace(/#/g, '\\#')}</code></td>\n`
         output += '    </tr>\n'
       })

@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withContent, withDefaultCon
 type Args = JSX.BalBadge & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Badge',
+  title: 'Components/Data Display/Badge 👻',
   args: {
     ...withDefaultContent('42'),
   },
