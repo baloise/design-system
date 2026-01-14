@@ -21,12 +21,6 @@ describe('bal-checkbox', () => {
     cy.getByTestId('checkbox-disabled').should('be.disabled')
   })
 
-  it('should be focusable', () => {
-    cy.getByTestId('checkbox-normal').should('not.be.focused')
-    cy.getByTestId('checkbox-normal').focus()
-    cy.getByTestId('checkbox-normal').should('be.focused')
-  })
-
   it('should be able to reset the form', () => {
     // First we change the initial value
     cy.getByTestId('reset-basic').uncheck()

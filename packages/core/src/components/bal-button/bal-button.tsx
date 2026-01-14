@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 
@@ -7,9 +7,11 @@ import { Attributes, inheritAttributes } from '../../utils/attributes'
   tag: 'bal-button',
   styleUrl: 'bal-button.host.scss',
   shadow: true,
+  formAssociated: true,
 })
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
+  @AttachInternals() internals!: ElementInternals
 
   @Element() el!: HTMLStencilElement
 
@@ -287,6 +289,13 @@ export class Button implements ComponentInterface {
 
   private onClick = (ev: MouseEvent) => {
     if (!this.disabled) {
+      if (this.elementType === 'submit') {
+        this.internals.form?.requestSubmit()
+      }
+      if (this.elementType === 'reset') {
+        this.internals.form?.reset()
+      }
+
       this.balClick.emit(ev)
 
       if (this.href !== undefined) {
