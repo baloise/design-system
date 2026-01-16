@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, StylesQuote, Tabs } from '../../../.storybook/blocks'
 import * as CloseStories from './bal-close.stories'
 
 <Meta of={CloseStories} />
@@ -10,7 +10,7 @@ import * as CloseStories from './bal-close.stories'
 
 <Lead>Close is used as a close button for modals, toast and other components.</Lead>
 
-<Canvas of={CloseStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="close" htmlStory={CloseStories.Basic} webComponentStory={CloseStories.WebComponentBasic} />
 
 <PlaygroundBar of={CloseStories.Basic}></PlaygroundBar>
 

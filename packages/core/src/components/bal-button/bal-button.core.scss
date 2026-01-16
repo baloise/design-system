@@ -510,3 +510,14 @@ fieldset[disabled] .button,
   }
 }
 /* stylelint-enable no-descending-specificity */
+
+/**
+  * Badge Positioning
+  */
+
+.button > .badge:first-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}

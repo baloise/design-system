@@ -77,11 +77,23 @@ StyleDictionary.registerFormat({
         //     : ''
         // const referenceTokenName = referenceToken ? `--${referenceToken.name}` : formatKeyToCssVar(token.original.key)
 
-        output += '    <tr>\n'
-        output += `      <td><code>${name}</code></td>\n`
-        // output += `      <td><code>${referenceTokenName}</code></td>\n`
-        output += `      <td><code>${String(value).replace(/#/g, '\\#')}</code></td>\n`
-        output += '    </tr>\n'
+        if (token.$type === 'color') {
+          const hex = value.hex ? value.hex : value
+
+          output += '    <tr>\n'
+          output += `      <td><code>${name}</code></td>\n`
+          // output += `      <td><code>${referenceTokenName}</code></td>\n`
+          output += `      <td>
+                <span style="height: 21px; width: 21px; display: inline-block; border: 1px solid #e5e7f0; background-color: ${hex}; border-radius: 3px; margin-right: 4px; vertical-align: middle;"></span>
+                <code>${String(hex).replace(/#/g, '\\#')}</code></td>\n`
+          output += '    </tr>\n'
+        } else {
+          output += '    <tr>\n'
+          output += `      <td><code>${name}</code></td>\n`
+          // output += `      <td><code>${referenceTokenName}</code></td>\n`
+          output += `      <td><code>${String(value).replace(/#/g, '\\#')}</code></td>\n`
+          output += '    </tr>\n'
+        }
       })
 
     output += '  </tbody>\n'

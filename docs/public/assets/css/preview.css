@@ -175,7 +175,7 @@ a.sbdocs-a:not(.button) {
  ***************************************/
 
 blockquote {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary) !important;
   font-size: var(--bal-text-size-small) !important;
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;

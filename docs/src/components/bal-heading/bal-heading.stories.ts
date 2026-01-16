@@ -17,7 +17,7 @@ const tag = 'bal-heading'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Heading',
+  title: 'Components/Typography/Heading 👻',
   args: {
     ...withDefaultContent('Heading'),
   },
@@ -25,19 +25,6 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     ({ content, ...args }) => `
 <h1 ${cssClasses(
@@ -58,6 +45,27 @@ export const Basic = Story({
 <p class="subtitle is-xx-large">Subtitle</p>
 `,
   ),
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
+
+export const WebComponentBasic = Story({
+  args: {
+    level: 'h1',
+    subtitle: false,
+    space: 'bottom',
+    inverted: false,
+  },
+  ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
 })
 
 export const Levels = Story({
@@ -116,15 +124,6 @@ export const Spacing = Story({
     </div>
   </div>`,
   ),
-})
-
-export const WebComponent = Story({
-  args: {
-    level: 'h1',
-    subtitle: false,
-    space: 'bottom',
-    inverted: false,
-  },
 })
 
 export const AutoLevel = Story({

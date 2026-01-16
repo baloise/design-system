@@ -247,38 +247,8 @@ button.card {
     transform: translateY(-50%);
   }
 
-  // &.is-left {
-  //   // @include card-tag-position(normal, left);
-
-  //   // &.is-small {
-  //   //   @include card-tag-position(small, left);
-  //   // }
-
-  //   // &.is-medium {
-  //   //   @include card-tag-position(medium, left);
-  //   // }
-
-  //   // &.is-large {
-  //   //   @include card-tag-position(large, left);
-  //   // }
-  // }
-
   &.is-right {
     left: auto;
-
-    // @include card-tag-position(normal, right);
-
-    // &.is-small {
-    //   @include card-tag-position(small, right);
-    // }
-
-    // &.is-medium {
-    //   @include card-tag-position(medium, right);
-    // }
-
-    // &.is-large {
-    //   @include card-tag-position(large, right);
-    // }
   }
 }
 
@@ -382,4 +352,15 @@ button.card {
       @include card-tag-position(large, large, right);
     }
   }
+}
+
+/**
+  * Badge Positioning
+  */
+
+.card > .badge:first-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
 }

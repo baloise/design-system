@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/html-vite'
 import {
   createCssMappings,
   cssClasses,
+  props,
   StoryFactory,
   withComponentControls,
   withContent,
@@ -16,7 +17,7 @@ const tag = 'bal-text'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Text',
+  title: 'Components/Typography/Text 👻',
   args: {
     ...withDefaultContent(),
   },
@@ -55,6 +56,9 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+export const WebComponentBasic = Story({
+  ...withRender(({ content, ...args }) => `<bal-text ${props(args)}>${content}</bal-text>`),
+})
 
 export const BoldText = Story({
   args: {

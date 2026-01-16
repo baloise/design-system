@@ -17,7 +17,7 @@ const tag = 'bal-button'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Button',
+  title: 'Components/Containment/Button 👻',
   args: {
     ...withDefaultContent('Button'),
   },
@@ -25,19 +25,6 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     ({ content, ...args }) => `
 <button ${cssClasses(
@@ -57,6 +44,21 @@ export const Basic = Story({
     )}>${content}</button>
 `,
   ),
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
+
+export const WebComponentBasic = Story({
+  ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
 })
 
 export const Variants = Story({
@@ -67,13 +69,13 @@ export const Variants = Story({
   <button class="button is-tertiary">Tertiary</button>
   <button class="button is-accent">Accent</button>
 </div>
-<div class="buttons">
+<div class="buttons mt-normal">
   <button class="button is-tertiary-purple">Tertiary Purple</button>
   <button class="button is-tertiary-red">Tertiary Red</button>
   <button class="button is-tertiary-yellow">Tertiary Yellow</button>
   <button class="button is-tertiary-green">Tertiary Green</button>
 </div>
-<div class="buttons">
+<div class="buttons mt-normal">
   <button class="button is-link">Link</button>
 </div>`,
   ),
@@ -113,10 +115,11 @@ export const Inverted = Story({
 
 export const WithIcon = Story({
   ...withRender(
-    () => `<button class="button is-primary">
+    () => `
+<button class="button is-primary">
   <bal-icon name="plus"></bal-icon>
   Button
-  </button>`,
+</button>`,
   ),
 })
 
@@ -302,17 +305,4 @@ export const NativeLink = Story({
   </div>
 </div>`,
   ),
-})
-
-/**
- * COMPONENT
- * ------------------------------------------------------
- */
-
-export const Component = Story({
-  args: {
-    content: 'Primary',
-    icon: 'plus',
-  },
-  ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
 })

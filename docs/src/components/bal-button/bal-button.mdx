@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as ButtonStories from './bal-button.stories'
 
 <Meta of={ButtonStories} />
@@ -14,19 +14,7 @@ import * as ButtonStories from './bal-button.stories'
   way.
 </Lead>
 
-<InfoQuote>
-  We recommend using standard <b>HTML elements</b> such as `<button>` and `<a>` whenever possible instead of web
-  components. However in combination with a spinner or icon use the component.
-  This helps improve the rendering speed of your application or website.
-
-  These styles are included in the core styles:
-
-  ```css
-  @import '@baloise/ds-styles/css/core.css';
-  ```
-</InfoQuote>
-
-<Canvas of={ButtonStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.Basic} webComponentStory={ButtonStories.WebComponentBasic} />
 
 <PlaygroundBar of={ButtonStories.Basic}></PlaygroundBar>
 
@@ -128,12 +116,12 @@ are not suitable for use on non-white backgrounds.
 {/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.Component}></StoryHeading>
+<StoryHeading of={ButtonStories.WebComponentBasic}></StoryHeading>
 
 We recommend using the <b>web component</b> in combination with a `<bal-spinner>` or `<bal-icon>`,
 as it provides all necessary styles, library integrations and performance updates.
 
-<Canvas of={ButtonStories.Component} />
+<Canvas of={ButtonStories.WebComponentBasic} />
 
 {/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}

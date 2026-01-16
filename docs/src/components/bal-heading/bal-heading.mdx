@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as HeadingStories from './bal-heading.stories'
 
 <Meta of={HeadingStories} />
@@ -12,41 +12,12 @@ import * as HeadingStories from './bal-heading.stories'
   **Heading** is a key component for displaying important titles and headers to organize and emphasize content.
 </Lead>
 
-{/* <InfoQuote>
-<p class='heading is-level-3'>Style import</p>
+<br/>
 
-  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
-  components. This helps improve the rendering speed of your application or website.
+We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+components. This helps improve the rendering speed of your application or website.
 
-To import only the styles required for this component:
-
-```css
-@import '@baloise/ds-styles/css/components/heading.css';
-```
-
-Or import all components styles:
-
-```css
-@import '@baloise/ds-styles/css/components/all.css';
-```
-
-</InfoQuote> */}
-
-<InfoQuote>
-<p class='heading is-level-3'>Style import</p>
-
-  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
-  components. This helps improve the rendering speed of your application or website.
-
-These styles are included in the core styles:
-
-```css
-@import '@baloise/ds-styles/css/core.css';
-```
-
-</InfoQuote>
-
-<Canvas of={HeadingStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="heading" htmlStory={HeadingStories.Basic} webComponentStory={HeadingStories.WebComponentBasic} />
 
 <PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
 
@@ -80,12 +51,6 @@ These styles are included in the core styles:
 <StoryHeading of={HeadingStories.Spacing}></StoryHeading>
 
 <Canvas of={HeadingStories.Spacing} sourceState={'shown'}/>
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HeadingStories.WebComponent}></StoryHeading>
-
-<Canvas of={HeadingStories.WebComponent} sourceState={'shown'}/>
 
 {/* ------------------------------------------------------ */}
 

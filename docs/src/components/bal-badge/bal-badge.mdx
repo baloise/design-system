@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as BadgeStories from './bal-badge.stories'
 
 <Meta of={BadgeStories} />
@@ -15,7 +15,7 @@ import * as BadgeStories from './bal-badge.stories'
   [BalTabs](?path=/docs/components-navigation-tabs--documentation).
 </Lead>
 
-<Canvas of={BadgeStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="badge" htmlStory={BadgeStories.Basic} webComponentStory={BadgeStories.WebComponentBasic} />
 
 <PlaygroundBar of={BadgeStories.Basic}></PlaygroundBar>
 
