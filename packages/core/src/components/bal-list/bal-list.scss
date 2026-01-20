@@ -329,7 +329,7 @@
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after {
-        background: var(--bal-color-primary);
+        background: var(--bal-color-brand-primary-base);
       }
     }
     .bal-list__item--disabled {

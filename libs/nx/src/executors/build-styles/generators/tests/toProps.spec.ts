@@ -6,12 +6,12 @@ describe('toProps', () => {
       toProps({
         tokens: {
           black: {
-            value: '#000000',
+            $value: '#000000',
             noFigmaImport: true,
             filePath: 'src/color/color-base.json',
             isSource: true,
             original: {
-              value: '#000000',
+              $value: '#000000',
               noFigmaImport: true,
             },
             name: 'bal-color-black',
@@ -33,11 +33,11 @@ describe('toProps', () => {
         tokens: {
           primary: {
             1: {
-              value: '#e5e7f0',
+              $value: '#e5e7f0',
               filePath: 'src/color/color-base.json',
               isSource: true,
               original: {
-                value: '#e5e7f0',
+                $value: '#e5e7f0',
               },
               name: 'bal-color-primary-1',
               attributes: {
@@ -59,12 +59,12 @@ describe('toProps', () => {
       toProps({
         tokens: {
           primary: {
-            value: '#000d6e',
+            $value: '#000d6e',
             noFigmaImport: true,
             filePath: 'src/color/color-alias.json',
             isSource: true,
             original: {
-              value: '{color.base.primary.5}',
+              $value: '{color.base.primary.5}',
               noFigmaImport: true,
             },
             name: 'bal-color-primary',
@@ -85,7 +85,7 @@ describe('toProps', () => {
         prefix: 'has',
         tokens: {
           primary: {
-            value: '#000d6e',
+            $value: '#000d6e',
             noFigmaImport: true,
             filePath: 'src/color/color-alias.json',
             isSource: true,
@@ -111,11 +111,11 @@ describe('toProps', () => {
         tokens: {
           primary: {
             1: {
-              value: '#e5e7f0',
+              $value: '#e5e7f0',
               filePath: 'src/color/color-base.json',
               isSource: true,
               original: {
-                value: '#e5e7f0',
+                $value: '#e5e7f0',
               },
               name: 'bal-color-primary-1',
               attributes: {
@@ -129,7 +129,7 @@ describe('toProps', () => {
           },
           red: {
             1: {
-              value: '#e5e7f0',
+              $value: '#e5e7f0',
               filePath: 'src/color/color-base.json',
               isSource: true,
               original: {

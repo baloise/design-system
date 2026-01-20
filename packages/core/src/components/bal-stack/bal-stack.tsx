@@ -1,10 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-stack',
-  styleUrl: './bal-stack.scss',
+  styleUrl: './bal-stack.host.scss',
 })
 export class Stack implements ComponentInterface, Loggable {
   log!: LogInstance
@@ -84,7 +83,6 @@ export class Stack implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
   render() {
-    const block = BEM.block('stack')
     const direction = !!this.direction
     const layout = !!this.layout
     const align = !!this.align
@@ -110,16 +108,16 @@ export class Stack implements ComponentInterface, Loggable {
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier(`use-wrap`).class(useWrap),
-          ...block.modifier(`layout-${layoutValue}`).class(layout || direction),
-          ...block.modifier(`align-${alignValue}`).class(align || alignment),
-          ...block.modifier(`space-${this.space}`).class(space),
-          ...block.modifier(`space-row-${this.spaceRow}`).class(spaceRow),
-          ...block.modifier(`space-row-${this.spaceColumn}`).class(spaceColumn),
-          ...block.modifier(`px-${this.px}`).class(px),
-          ...block.modifier(`py-${this.py}`).class(py),
-          ...block.modifier(`fit-content`).class(fitContent),
+          'stack': true,
+          'has-wrap': useWrap,
+          'fit-content': fitContent,
+          [`is-${layoutValue}`]: layout || direction,
+          [`align-${alignValue}`]: align || alignment,
+          [`has-space-${this.space}`]: space,
+          [`has-space-row-${this.spaceRow}`]: spaceRow,
+          [`has-space-col-${this.spaceColumn}`]: spaceColumn,
+          [`px-${this.px}`]: px,
+          [`py-${this.py}`]: py,
         }}
       >
         <slot></slot>

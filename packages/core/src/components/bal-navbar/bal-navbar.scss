@@ -162,23 +162,25 @@
   }
   @include modifiers(is-light) {
     background-color: var(--bal-navbar-light-background);
-    box-shadow: var(--bal-shadow-normal);
+    box-shadow: var(--bal-shadow-base);
     .bal-navbar__brand__title {
       color: var(--bal-navbar-brand-title-light-text-color);
     }
     bal-logo {
       svg {
-        @include fillSvg(var(--bal-color-primary));
+        @include fillSvg(var(--bal-color-brand-primary-base));
       }
     }
   }
 }
-.bal-navbar__brand__burger.bal-button {
+
+bal-button.bal-navbar__brand__burger {
   margin-left: auto;
   @include desktop {
     display: none;
   }
 }
-.bal-navbar__brand__burger--hidden.bal-button {
+
+bal-button.bal-navbar__brand__burger--hidden {
   display: none !important;
 }

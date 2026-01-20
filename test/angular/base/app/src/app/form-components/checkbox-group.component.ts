@@ -24,15 +24,17 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="checkboxGroup" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'checkboxGroup', value: ['Apple'] })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'checkboxGroup', value: ['Apple'] })">
             Update Checkbox Group
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('checkboxGroup')?.enable()">Enable Checkbox Group</bal-button>
-          <bal-button color="tertiary" (click)="form.get('checkboxGroup')?.disable()"
-            >Disable Checkbox Group</bal-button
-          >
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('checkboxGroup')?.enable()">
+            Enable Checkbox Group
+          </button>
+          <button class="button is-tertiary" (click)="form.get('checkboxGroup')?.disable()">
+            Disable Checkbox Group
+          </button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

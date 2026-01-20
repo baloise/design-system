@@ -1,4 +1,4 @@
-import { expect, screenshot, test, useDesktop } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test, useDesktop } from '@baloise/ds-playwright'
 
 const VARIANTS = ['basic', 'inheritance']
 
@@ -13,6 +13,6 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(el, image(`${variant}`))
   })
 })

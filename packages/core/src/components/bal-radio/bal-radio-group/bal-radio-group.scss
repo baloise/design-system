@@ -39,7 +39,7 @@
     // shows the radios verically
     @include modifier(vertical) {
       flex-direction: column;
-      border-radius: var(--bal-radius-normal);
+      border-radius: var(--bal-radius-base);
       gap: 0;
       @include tablet {
         align-items: flex-start;
@@ -49,7 +49,7 @@
     @include modifier(vertical-mobile) {
       @include mobile {
         flex-direction: column;
-        border-radius: var(--bal-radius-normal);
+        border-radius: var(--bal-radius-base);
         gap: 0;
       }
     }

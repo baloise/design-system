@@ -913,7 +913,7 @@
     imports: [CommonModule, BalApp, BalButton],
     template: `
       <bal-app>
-        <main class="container py-normal">
+        <main class="container py-base">
           <bal-button>My Button</bal-button>
         </main>
       </bal-app>

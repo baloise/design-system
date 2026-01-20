@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-tag'
 
@@ -10,15 +10,15 @@ test.beforeEach('Setup', async ({ page }) => {
 
 test('basic', async ({ page }) => {
   const el = page.getByTestId('basic')
-  await expect(el).toHaveScreenshot(image('basic'))
+  await expectScreenshot(el, image('basic'))
 })
 
 test('colors', async ({ page }) => {
   const el = page.getByTestId('colors')
-  await expect(el).toHaveScreenshot(image('colors'))
+  await expectScreenshot(el, image('colors'))
 })
 
 test('sizes', async ({ page }) => {
   const el = page.getByTestId('sizes')
-  await expect(el).toHaveScreenshot(image('sizes'))
+  await expectScreenshot(el, image('sizes'))
 })

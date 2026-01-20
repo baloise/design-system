@@ -1,0 +1,297 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens.css" />
+    <link rel="stylesheet" href="/assets/basic.css" />
+    <link rel="stylesheet" href="/assets/components.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <button class="button">Button</button>
+      </section>
+
+      <!-- Link -->
+      <section>
+        <span>Link</span>
+        <button class="button is-link">Link Button</button>
+        <a class="link" href="">Link Button</a>
+        <br />
+        <br />
+        <div class="s-bg-inverted">
+          <button class="button is-link is-inverted">Link Button</button>
+          <a class="link is-inverted" href="">Link Button</a>
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section>
+        <span>Colors</span>
+        <button class="button is-primary">Primary</button>
+        <button class="button is-secondary">Secondary</button>
+        <button class="button is-tertiary">Tertiary</button>
+        <button class="button is-accent">Accent</button>
+
+        <br />
+        <br />
+
+        <button class="button is-tertiary-purple">Tertiary Purple</button>
+        <button class="button is-tertiary-red">Tertiary Red</button>
+        <button class="button is-tertiary-yellow">Tertiary Yellow</button>
+        <button class="button is-tertiary-green">Tertiary Green</button>
+
+        <br />
+        <br />
+        <button class="button is-info">Info</button>
+        <button class="button is-success">Success</button>
+        <button class="button is-warning">Warning</button>
+        <button class="button is-danger">Danger</button>
+      </section>
+
+      <!-- Dashed -->
+      <section>
+        <span>Dashed</span>
+        <button class="button is-tertiary-purple is-dashed">Tertiary Purple</button>
+        <button class="button is-tertiary-red is-dashed">Tertiary Red</button>
+        <button class="button is-tertiary-yellow is-dashed">Tertiary Yellow</button>
+        <button class="button is-tertiary-green is-dashed">Tertiary Green</button>
+
+        <br />
+        <br />
+        <button class="button is-tertiary-purple is-large is-dashed">
+          <bal-icon name="plus" class="is-circle"></bal-icon>
+          Purple
+        </button>
+        <button class="button is-tertiary-red is-large is-dashed">
+          <bal-icon name="plus" class="is-circle"></bal-icon>
+          Red
+        </button>
+        <button class="button is-tertiary-yellow is-large is-dashed">
+          <bal-icon name="plus" class="is-circle"></bal-icon>
+          Yellow
+        </button>
+        <button class="button is-tertiary-green is-large is-dashed">
+          <bal-icon name="plus" class="is-circle"></bal-icon>
+          Green
+        </button>
+      </section>
+
+      <!-- Inverted -->
+      <section class="s-bg-inverted">
+        <span>Inverted</span>
+        <button class="button is-inverted is-primary">Primary</button>
+        <button class="button is-inverted is-secondary">Secondary</button>
+        <button class="button is-inverted is-tertiary">Tertiary</button>
+        <button class="button is-inverted is-accent">Accent</button>
+
+        <br />
+        <br />
+
+        <button class="button is-inverted is-tertiary-purple">Tertiary Purple</button>
+        <button class="button is-inverted is-tertiary-red">Tertiary Red</button>
+        <button class="button is-inverted is-tertiary-yellow">Tertiary Yellow</button>
+        <button class="button is-inverted is-tertiary-green">Tertiary Green</button>
+
+        <br />
+        <br />
+        <button class="button is-inverted is-info">Info</button>
+        <button class="button is-inverted is-success">Success</button>
+        <button class="button is-inverted is-warning">Warning</button>
+        <button class="button is-inverted is-danger">Danger</button>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <button class="button">Normal</button>
+        <button class="button is-small">Small</button>
+      </section>
+
+      <!-- Expanded -->
+      <section>
+        <span>Expanded</span>
+        <button class="button is-fullwidth">Fullwidth</button>
+      </section>
+
+      <!-- Long Content -->
+      <section>
+        <span>Long Content</span>
+        <button class="button">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
+          aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
+          totam assumenda.
+        </button>
+      </section>
+
+      <!-- Flat -->
+      <section>
+        <span>Flat</span>
+        <button class="button is-flat">Flat Button</button>
+      </section>
+
+      <!-- Rounded -->
+      <section>
+        <span>Rounded</span>
+        <button class="button is-rounded">Rounded Button</button>
+      </section>
+
+      <!-- Disabled -->
+      <section>
+        <span>Disabled</span>
+        <button class="button" disabled="disabled">Disabled using attribute</button>
+        <button class="button is-disabled" tabindex="-1" role="button" aria-disabled="true">
+          Disabled using class name
+        </button>
+      </section>
+
+      <!-- Buttons with any HTML tags -->
+      <section>
+        <span>Buttons with any HTML tags</span>
+        <form>
+          <a role="button" class="button">Link</a>
+          <button type="submit" class="button">Button</button>
+          <input type="button" value="Input" class="button" />
+          <input type="submit" value="Submit" class="button" />
+          <input type="radio" aria-label="Radio" class="button" />
+          <input type="checkbox" aria-label="Checkbox" class="button" />
+          <input type="reset" value="Reset" class="button" />
+        </form>
+      </section>
+
+      <!-- Square & Circle -->
+      <section>
+        <span>Square & Circle</span>
+        <button class="button is-square">
+          <bal-icon name="check"></bal-icon>
+        </button>
+        <button class="button is-circle">
+          <bal-icon name="check"></bal-icon>
+        </button>
+
+        <br />
+        <br />
+        <button class="button is-square is-small">
+          <bal-icon name="check"></bal-icon>
+        </button>
+        <button class="button is-circle is-small">
+          <bal-icon name="check"></bal-icon>
+        </button>
+      </section>
+
+      <!-- Icon -->
+      <section>
+        <span>Icon</span>
+        <button class="button">
+          <bal-icon name="plus"></bal-icon>
+          Button
+        </button>
+        <button class="button is-secondary">
+          Button
+          <bal-icon name="plus"></bal-icon>
+        </button>
+      </section>
+
+      <!-- Loading -->
+      <section>
+        <span>Loading</span>
+        <div class="buttons">
+          <button class="button is-square">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading">
+            <bal-spinner></bal-spinner>
+            loading...
+          </button>
+          <button class="button is-square is-loading">
+            <bal-spinner variation="circle"></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading">
+            <bal-spinner variation="circle"></bal-spinner>
+            loading...
+          </button>
+        </div>
+        <div class="buttons">
+          <button class="button is-square is-loading" disabled>
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading" disabled>
+            <bal-spinner></bal-spinner>
+            loading...
+          </button>
+
+          <button class="button is-square is-loading" disabled>
+            <bal-spinner variation="circle"></bal-spinner>
+          </button>
+          <button class="button is-secondary is-loading" disabled>
+            <bal-spinner variation="circle"></bal-spinner>
+            loading...
+          </button>
+        </div>
+      </section>
+
+      <!-- Group -->
+      <section>
+        <span>Group</span>
+        <div class="buttons">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons is-centered">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons is-right">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+      </section>
+
+      <!-- Two Row Button Group -->
+      <section>
+        <span>Two Row Button Group</span>
+        <div class="buttons as-row">
+          <button class="button">Left</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-row">
+          <button class="button is-square">
+            <bal-icon name="plus"></bal-icon>
+          </button>
+          <button class="button">Right</button>
+        </div>
+      </section>
+
+      <!-- Group Column-->
+      <section>
+        <span>Group Column</span>
+        <div class="buttons as-col">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-col is-centered">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+        <div class="buttons as-col is-right">
+          <button class="button">Left</button>
+          <button class="button">Middle</button>
+          <button class="button">Right</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

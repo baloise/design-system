@@ -38,11 +38,11 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-components
+      - uses: ./.github/workflows/actions/cypress-setup
+      - uses: ./.github/workflows/actions/cypress-components
 
-  e2e-visual:
-    name: 🧪 E2E Tests
+  cypress:
+    name: 🧪 Cypress
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     env:
@@ -57,8 +57,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-visual
+      - uses: ./.github/workflows/actions/cypress-setup
+      - uses: ./.github/workflows/actions/cypress-run
 
   angular:
     name: 🧪 Angular Tests
@@ -193,6 +193,7 @@ jobs:
 
       - name: Run Playwright tests
         run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npx nx run core:ci-e2e
         # run: npx nx run core:ci-e2e -- --update-snapshots
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'

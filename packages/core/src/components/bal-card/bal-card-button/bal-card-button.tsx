@@ -48,9 +48,9 @@ export class CardButton {
 
   render() {
     return (
-      <Host class="bal-card-button">
+      <Host class="card-footer">
         <bal-button
-          color="info"
+          color="secondary"
           expanded
           bottom-rounded
           icon={this.icon}

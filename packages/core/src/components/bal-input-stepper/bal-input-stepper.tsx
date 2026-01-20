@@ -285,7 +285,7 @@ export class InputStepper
             data-testid="bal-input-stepper-decrease"
             outlined={!this.invalid}
             icon="minus"
-            color={this.invalid ? 'danger' : 'info'}
+            color={this.invalid ? 'danger' : 'secondary'}
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
             onBalFocus={ev => this.onFocusDecrease(ev)}
@@ -310,7 +310,7 @@ export class InputStepper
             square
             outlined={!this.invalid}
             icon="plus"
-            color={this.invalid ? 'danger' : 'info'}
+            color={this.invalid ? 'danger' : 'secondary'}
             disabled={this.disabled || this.readonly || this.value >= this.max}
             onClick={_ => this.increase()}
             onBalFocus={ev => this.onFocusIncrease(ev)}

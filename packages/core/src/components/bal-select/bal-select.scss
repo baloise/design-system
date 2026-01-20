@@ -28,7 +28,7 @@
   // visible form control of the select
   @include element(control) {
     display: flex;
-    border-width: var(--bal-border-width-normal);
+    border-width: var(--bal-border-width-base);
     border-style: solid;
     border-color: var(--bal-select-control-border-color);
     border-radius: var(--bal-select-control-border-radius);

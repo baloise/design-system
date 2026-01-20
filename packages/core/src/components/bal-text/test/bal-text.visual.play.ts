@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-text'
 const VARIANTS = ['basic', 'no-wrap', 'colors', 'sizes', 'bold', 'heading', 'inline', 'inverted', 'shadow', 'space']
@@ -12,6 +12,6 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(el, image(`${variant}`))
   })
 })

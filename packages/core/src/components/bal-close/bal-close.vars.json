@@ -1,0 +1,55 @@
+{
+  "close": {
+    "radius": {
+      "$type": "dimension",
+      "base": {
+        "$value": "{radius.rounded}"
+      }
+    },
+    "color": {
+      "$type": "color",
+      "background": {
+        "base": { "$value": "transparent" },
+        "hover": {
+          "$value": {
+            "hex": "{color.primary.6}",
+            "alpha": "0.1"
+          }
+        },
+        "active": {
+          "$value": {
+            "hex": "{color.primary.6}",
+            "alpha": "0.3"
+          }
+        },
+        "inverted-hover": {
+          "$value": {
+            "hex": "{color.white}",
+            "alpha": "0.3"
+          }
+        },
+        "inverted-active": {
+          "$value": {
+            "hex": "{color.white}",
+            "alpha": "0.5"
+          }
+        }
+      },
+      "icon": {
+        "base": { "$value": "{color.text.primary}" },
+        "inverted": { "$value": "{color.text.white}" }
+      }
+    },
+    "shadow": {
+      "outline": {
+        "$type": "shadow",
+        "base": {
+          "$value": "{shadow.outline.base}"
+        },
+        "inverted": {
+          "$value": "{shadow.outline.inverted}"
+        }
+      }
+    }
+  }
+}

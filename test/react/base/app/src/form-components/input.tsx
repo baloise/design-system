@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import {
-  BalButton,
-  BalButtonGroup,
   BalCard,
   BalCardContent,
   BalCardTitle,
@@ -38,17 +36,17 @@ function Input({}) {
           </BalFieldControl>
           <BalFieldMessage>{dirty && !value ? 'This field is required' : ''}</BalFieldMessage>
         </BalField>
-        <BalButtonGroup>
-          <BalButton color="secondary" onClick={() => setValue('updated value')}>
+        <div className="buttons">
+          <button className="button is-secondary" onClick={() => setValue('updated value')}>
             Update Input
-          </BalButton>
-          <BalButton color="tertiary" onClick={() => setDisabled(false)}>
+          </button>
+          <button className="button is-tertiary" onClick={() => setDisabled(false)}>
             Enable Input
-          </BalButton>
-          <BalButton color="tertiary" onClick={() => setDisabled(true)}>
+          </button>
+          <button className="button is-tertiary" onClick={() => setDisabled(true)}>
             Disable Input
-          </BalButton>
-        </BalButtonGroup>
+          </button>
+        </div>
       </BalCardContent>
     </BalCard>
   )

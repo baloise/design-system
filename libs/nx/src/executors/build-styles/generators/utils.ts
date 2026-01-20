@@ -131,12 +131,14 @@ export const toCssVarName = (tokenName, token) => {
   const isColorVariable = token.attributes.category === 'color'
   const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
   const endsWithDefault = token.name.endsWith('-default') || token.name.endsWith('Default')
+  // const endsWithBase = token.name.endsWith('-base') || token.name.endsWith('Base')
 
   if (isSizeVariable) {
     tokenName = tokenName.replace('bal-size', 'bal')
   }
   if (isColorVariable) {
     tokenName = tokenName.replace('bal-color-base', 'bal-color')
+    tokenName = tokenName.replace('bal-color-brand', 'bal-color')
   }
   if (endsWithMobile) {
     tokenName = tokenName.replace('-mobile', '')
@@ -144,6 +146,9 @@ export const toCssVarName = (tokenName, token) => {
   if (endsWithDefault) {
     tokenName = tokenName.replace('-default', '')
   }
+  // if (endsWithBase) {
+  //   tokenName = tokenName.replace('-base', '')
+  // }
   return tokenName
 }
 
@@ -161,7 +166,7 @@ const removeLeadingTrailingDashes = inputString => {
 export const toProp = ({ property, prefix, replace, replace2 }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
   const propName = removeLeadingTrailingDashes(
-    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, ''),
+    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, '').replace('base', ''),
   )
   const propValue = toCssVar(property)
   return {

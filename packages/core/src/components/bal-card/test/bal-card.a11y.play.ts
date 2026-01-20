@@ -10,7 +10,7 @@ const template = `
     dolore magna aliqua.
   </bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button color="secondary" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>

@@ -25,13 +25,13 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="numberInput" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'numberInput', value: 42.15 })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'numberInput', value: 42.15 })">
             Update Number Input
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('numberInput')?.enable()">Enable Number Input</bal-button>
-          <bal-button color="tertiary" (click)="form.get('numberInput')?.disable()">Disable Number Input</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('numberInput')?.enable()">Enable Number Input</button>
+          <button class="button is-tertiary" (click)="form.get('numberInput')?.disable()">Disable Number Input</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

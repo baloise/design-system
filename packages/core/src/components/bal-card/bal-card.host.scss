@@ -1,0 +1,45 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@forward '../../../../styles/sass/normalize';
+@forward './bal-card.style';
+
+/**
+  * Host Style
+  */
+
+bal-card {
+  display: block;
+  position: static;
+  margin: 0;
+  padding: 0;
+
+  --badge-position: absolute;
+  --badge-position-top: -0.5rem;
+  --badge-position-right: -0.5rem;
+}
+
+@mixin card-title-spacing($spacing) {
+  margin-top: calc(var(--bal-card-space-#{$spacing}) * -1);
+
+  @include tablet {
+    margin-top: calc(var(--bal-card-space-#{$spacing}-tablet) * -1);
+  }
+
+  @include desktop {
+    margin-top: calc(var(--bal-card-space-#{$spacing}-desktop) * -1);
+  }
+}
+
+bal-card bal-card-subtitle + bal-card-title,
+bal-card bal-card-title + bal-card-subtitle {
+  @include card-title-spacing(normal);
+}
+
+bal-card.has-small-space bal-card-subtitle + bal-card-title,
+bal-card.has-small-space bal-card-title + bal-card-subtitle {
+  @include card-title-spacing(small);
+}
+
+bal-card.has-large-space bal-card-subtitle + bal-card-title,
+bal-card.has-large-space bal-card-title + bal-card-subtitle {
+  @include card-title-spacing(large);
+}

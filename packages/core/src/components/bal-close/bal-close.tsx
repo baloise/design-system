@@ -1,6 +1,5 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -13,7 +12,8 @@ import { i18nBalClose } from './bal-close.i18n'
 
 @Component({
   tag: 'bal-close',
-  styleUrl: 'bal-close.scss',
+  styleUrl: 'bal-close.host.scss',
+  shadow: true,
 })
 export class Close implements ComponentInterface, BalConfigObserver {
   @Element() el!: HTMLStencilElement
@@ -42,34 +42,23 @@ export class Close implements ComponentInterface, BalConfigObserver {
   }
 
   render() {
-    const blockEl = BEM.block('close')
-    const buttonEl = blockEl.element('button')
-    const iconEl = buttonEl.element('icon')
     const label = i18nBalClose[this.language].close
 
     return (
-      <Host class={{ ...blockEl.class() }}>
+      <Host>
         <button
           type="button"
           aria-label={label}
           title={label}
           tabindex="0"
           class={{
-            ...buttonEl.class(),
-            ...buttonEl.modifier('inverted').class(this.inverted),
-            ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
+            'close': true,
+            'is-small': this.size === 'small',
+            'is-medium': this.size === 'medium',
+            'is-inverted': this.inverted,
           }}
           data-testid="bal-close"
-        >
-          <bal-icon
-            name="close"
-            size={this.size === 'small' ? 'x-small' : this.size === 'medium' ? 'medium' : 'small'}
-            inverted={this.inverted}
-            class={{
-              ...iconEl.class(),
-            }}
-          ></bal-icon>
-        </button>
+        ></button>
       </Host>
     )
   }

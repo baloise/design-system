@@ -1,5 +1,5 @@
 import { byTestId } from '../../selectors'
-import { log, wrapOptions, checkAriaLabel } from '../helpers'
+import { checkAriaLabel, log, wrapOptions } from '../helpers'
 
 Cypress.Commands.add('getByTestId', (testID, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
@@ -91,7 +91,9 @@ Cypress.Commands.add(
     const o = wrapOptions(options)
 
     function findElements() {
-      return subject ? cy.wrap(subject, o).find(`${role}, [role="${role}"]`, o) : cy.get(`${role}, [role="${role}"]`, o)
+      const selector = `${role}, [role="${role}"]`
+      const searchOptions = { ...o, includeShadowDom: true }
+      return subject ? cy.wrap(subject, o).find(selector, searchOptions) : cy.get(selector, searchOptions)
     }
 
     function filterVisibleElements(elements: HTMLElement[]) {

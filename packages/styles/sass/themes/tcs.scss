@@ -82,8 +82,8 @@
   --bal-color-primary-5: var(--tcs-color-brown-5);
   --bal-color-primary-6: var(--tcs-color-brown-6);
   --bal-color-text-primary: var(--tcs-color-font);
-  --bal-color-text-primary-hovered: var(--tcs-color-font);
-  --bal-color-text-primary-pressed: var(--tcs-color-font);
+  --bal-color-text-primary-hover: var(--tcs-color-font);
+  --bal-color-text-primary-active: var(--tcs-color-font);
   --bal-focus-shadow-end-color: var(--tcs-color-blue);
   --bal-segment-item-focus-border: var(--tcs-color-blue);
   // Icons
@@ -96,10 +96,10 @@
   // Radius
   --tcs-radius-normal: 5px;
   --tcs-radius-medium: 6px;
-  --bal-radius-normal: var(--tcs-radius-normal);
+  --bal-radius-base: var(--tcs-radius-normal);
   // Borders
   --bal-border-width-large: 4px;
-  --bal-border-width-normal: 2px;
+  --bal-border-width-base: 2px;
   --bal-border-width-small: 1px;
   --bal-color-border: var(--tcs-color-brown-3);
   //
@@ -192,22 +192,22 @@
   // Segment
   --bal-segment-item-text-color: var(--tcs-color-font);
   --bal-segment-item-text-color-checked: var(--tcs-color-font);
-  --bal-segment-item-text-color-checked-hovered: var(--tcs-color-font);
-  --bal-segment-item-text-color-checked-pressed: var(--tcs-color-font);
+  --bal-segment-item-text-color-checked-hover: var(--tcs-color-font);
+  --bal-segment-item-text-color-checked-active: var(--tcs-color-font);
   //
   // Checkboxe
   --bal-check-background: transparent;
-  --bal-check-background-hovered: var(--tcs-color-brown-1);
-  --bal-check-background-pressed: var(--tcs-color-brown-2);
+  --bal-check-background-hover: var(--tcs-color-brown-1);
+  --bal-check-background-active: var(--tcs-color-brown-2);
   --bal-check-background-checked: var(--tcs-color-brown-2);
-  --bal-check-background-checked-hovered: var(--tcs-color-brown-3);
-  --bal-check-background-checked-pressed: var(--tcs-color-brown-3);
+  --bal-check-background-checked-hover: var(--tcs-color-brown-3);
+  --bal-check-background-checked-active: var(--tcs-color-brown-3);
   --bal-check-border-color: var(--tcs-color-brown-2);
-  --bal-check-border-color-hovered: var(--tcs-color-brown-2);
-  --bal-check-border-color-pressed: var(--tcs-color-brown-2);
+  --bal-check-border-color-hover: var(--tcs-color-brown-2);
+  --bal-check-border-color-active: var(--tcs-color-brown-2);
   --bal-check-border-color-checked: var(--tcs-color-brown-2);
-  --bal-check-border-color-checked-hovered: var(--tcs-color-brown-3);
-  --bal-check-border-color-checked-pressed: var(--tcs-color-brown-3);
+  --bal-check-border-color-checked-hover: var(--tcs-color-brown-3);
+  --bal-check-border-color-checked-active: var(--tcs-color-brown-3);
   // Switch
   --bal-checkbox-switch-label-background-before: var(--tcs-color-brown-2);
   --bal-checkbox-switch-label-background-hover-after: var(--tcs-color-font);
@@ -216,14 +216,14 @@
   --bal-radio-icon-inner-width: 0.5rem;
   --bal-radio-icon-inner-height: 0.5rem;
   --bal-radio-icon-border-color: var(--tcs-color-brown-2);
-  --bal-radio-icon-background-hovered: var(--tcs-color-brown-1);
-  --bal-radio-icon-border-color-hovered: var(--tcs-color-brown-2);
-  --bal-radio-icon-background-pressed: var(--tcs-color-brown-1);
-  --bal-radio-icon-border-color-pressed: var(--tcs-color-brown-2);
-  --bal-radio-icon-background-checked-hovered: var(--tcs-color-brown-2);
-  --bal-radio-icon-border-color-checked-hovered: var(--tcs-color-brown-2);
-  --bal-radio-icon-background-checked-pressed: var(--tcs-color-brown-2);
-  --bal-radio-icon-border-color-checked-pressed: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-hover: var(--tcs-color-brown-1);
+  --bal-radio-icon-border-color-hover: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-active: var(--tcs-color-brown-1);
+  --bal-radio-icon-border-color-active: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-checked-hover: var(--tcs-color-brown-2);
+  --bal-radio-icon-border-color-checked-hover: var(--tcs-color-brown-2);
+  --bal-radio-icon-background-checked-active: var(--tcs-color-brown-2);
+  --bal-radio-icon-border-color-checked-active: var(--tcs-color-brown-2);
   --bal-radio-icon-inner-background-checked: var(--tcs-color-font);
   --bal-radio-icon-background-checked: var(--tcs-color-brown-2);
   --bal-radio-icon-border-color-checked: var(--tcs-color-brown-2);

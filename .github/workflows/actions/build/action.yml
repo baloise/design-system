@@ -20,23 +20,23 @@ runs:
     - name: Define Nx cache
       uses: nrwl/nx-set-shas@v4
 
-    # - name: Check format
-    #   shell: bash
-    #   run: npx nx format:check
+    - name: Check format
+      shell: bash
+      run: npx nx format:check
 
-    # - name: Check spelling
-    #   shell: bash
-    #   run: npm run spell
+    - name: Check spelling
+      shell: bash
+      run: npm run spell
 
-    # - name: Lint & Test
-    #   if: inputs.build == 'false'
-    #   shell: bash
-    #   run: npx nx run-many -t lint test
+    - name: Lint & Test
+      if: inputs.build == 'false'
+      shell: bash
+      run: npx nx run-many -t lint test
 
-    # - name: Lint & Test & Build
-    #   if: inputs.build == 'true'
-    #   shell: bash
-    #   run: npx nx run-many -t lint test build
+    - name: Lint & Test & Build
+      if: inputs.build == 'true'
+      shell: bash
+      run: npx nx run-many -t lint test build
 
     - name: Build
       if: inputs.build == 'true'

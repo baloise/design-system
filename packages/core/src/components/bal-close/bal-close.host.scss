@@ -1,0 +1,9 @@
+@forward '../../../../styles/sass/normalize';
+@forward './bal-close.style';
+
+:host {
+  display: inline-block;
+  position: static;
+  margin: 0;
+  padding: 0;
+}

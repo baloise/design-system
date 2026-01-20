@@ -30,7 +30,7 @@
  */
 
 :root {
-  --bal-list-item-radius: var(--bal-radius-normal);
+  --bal-list-item-radius: var(--bal-radius-base);
   --bal-list-item-subtile-color: var(--bal-color-text-primary);
   --bal-list-item-background-hover: var(--bal-color-light-blue-5);
   --bal-list-item-background-active: var(--bal-color-primary-6);
@@ -51,13 +51,13 @@
   //
   // border
   --bal-list-item-border-background: var(--bal-color-grey-2);
-  --bal-list-item-border-on-color-background: var(--bal-color-primary);
+  --bal-list-item-border-on-color-background: var(--bal-color-brand-primary-base);
   --bal-list-item-border-on-dark-background: var(--bal-color-primary-4);
   //
   // accordion
-  --bal-list-accordion-head-color-hover: var(--bal-color-text-light-blue);
+  --bal-list-accordion-head-color-hover: var(--bal-color-text-primary-hover);
   --bal-list-accordion-head-background-hover: var(--bal-color-light-blue-5);
-  --bal-list-accordion-head-color-active: var(--bal-color-text-primary-dark);
+  --bal-list-accordion-head-color-active: var(--bal-color-text-primary-active);
   --bal-list-accordion-head-background-active: var(--bal-color-primary-6);
   --bal-list-accordion-body-color: var(--bal-color-text-white);
   // dark

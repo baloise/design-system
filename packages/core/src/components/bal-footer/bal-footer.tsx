@@ -276,7 +276,7 @@ export class Footer implements BalConfigObserver, Loggable {
                       target="_blank"
                       class={{
                         'link': true,
-                        'is-light': true,
+                        'is-inverted': true,
                       }}
                     >
                       {link.label}

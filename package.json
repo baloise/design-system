@@ -22,7 +22,8 @@
     "angular": "npx nx run angular-create",
     "angular:start": "npx nx run angular-start",
     "react": "npx nx run react-create",
-    "react:start": "npx nx run react-start"
+    "react:start": "npx nx run react-start",
+    "kill:ports": "kill -9 $(lsof -t -i:4000) || true && kill -9 $(lsof -t -i:4001) || true && kill -9 $(lsof -t -i:4002) || true && kill -9 $(lsof -t -i:4003) || true && kill -9 $(lsof -t -i:4004) || true"
   },
   "nx": {
     "includedScripts": []
@@ -35,11 +36,11 @@
     "e2e"
   ],
   "devDependencies": {
-    "@angular/common": "~19.0.0",
-    "@angular/compiler": "~19.0.0",
-    "@angular/compiler-cli": "~19.0.0",
-    "@angular/core": "~19.0.0",
-    "@angular/forms": "~19.0.0",
+    "@angular/common": "~19.2.16",
+    "@angular/compiler": "~19.2.16",
+    "@angular/compiler-cli": "~19.2.16",
+    "@angular/core": "~19.2.16",
+    "@angular/forms": "~19.2.16",
     "@axe-core/playwright": "^4.10.1",
     "@changesets/changelog-github": "~0.5.0",
     "@changesets/cli": "~2.27.1",
@@ -110,7 +111,7 @@
     "chokidar": "4.0.3",
     "vite": "7.2.2",
     "rxjs": "7.8.1",
-    "@angular/platform-browser": "19.0.7",
+    "@angular/platform-browser": "19.2.16",
     "ng-packagr": "19.2.2",
     "@babel/runtime": "7.27.3"
   }

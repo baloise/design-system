@@ -23,24 +23,24 @@
 :host {
   //
   // icon colors
-  --bal-icon-color-grey: var(--bal-color-grey-5);
-  --bal-icon-color-grey-light: var(--bal-color-border-grey-dark);
-  --bal-icon-color-grey-dark: var(--bal-color-grey-6);
-  --bal-icon-color-success: var(--bal-color-success);
-  --bal-icon-color-success-dark: var(--bal-color-success-5);
-  --bal-icon-color-success-darker: var(--bal-color-success-6);
-  --bal-icon-color-warning: var(--bal-color-warning);
-  --bal-icon-color-warning-dark: var(--bal-color-warning-5);
-  --bal-icon-color-warning-darker: var(--bal-color-warning-6);
-  --bal-icon-color-danger: var(--bal-color-danger);
-  --bal-icon-color-danger-dark: var(--bal-color-danger-5);
-  --bal-icon-color-danger-darker: var(--bal-color-danger-6);
-  --bal-icon-color-primary: var(--bal-color-primary);
-  --bal-icon-color-primary-dark: var(--bal-color-primary-6);
-  --bal-icon-color-blue: var(--bal-color-primary);
+  --bal-icon-color-grey-light: var(--bal-color-brand-grey-dark);
+  --bal-icon-color-grey: var(--bal-color-brand-grey-darker);
+  --bal-icon-color-grey-dark: var(--bal-color-brand-grey-darkest);
+  --bal-icon-color-success: var(--bal-color-brand-success-base);
+  --bal-icon-color-success-dark: var(--bal-color-brand-success-dark);
+  --bal-icon-color-success-darker: var(--bal-color-brand-success-darker);
+  --bal-icon-color-warning: var(--bal-color-brand-warning-base);
+  --bal-icon-color-warning-dark: var(--bal-color-brand-warning-dark);
+  --bal-icon-color-warning-darker: var(--bal-color-brand-warning-darker);
+  --bal-icon-color-danger: var(--bal-color-brand-danger-base);
+  --bal-icon-color-danger-dark: var(--bal-color-brand-danger-dark);
+  --bal-icon-color-danger-darker: var(--bal-color-brand-danger-darker);
+  --bal-icon-color-primary: var(--bal-color-brand-primary-dark);
+  --bal-icon-color-primary-dark: var(--bal-color-brand-primary-darker);
+  --bal-icon-color-blue: var(--bal-color-brand-primary-base);
   --bal-icon-color-light-blue: var(--bal-color-light-blue-5);
-  --bal-icon-color-primary-light: var(--bal-color-primary-3);
+  --bal-icon-color-primary-light: var(--bal-color-brand-primary-base);
   --bal-icon-color-white: var(--bal-color-white);
-  --bal-icon-tile-background: var(--bal-color-purple-1);
-  --bal-icon-tile-radius: var(--bal-radius-normal);
+  --bal-icon-tile-background: var(--bal-color-brand-purple-lighter);
+  --bal-icon-tile-radius: var(--bal-radius-base);
 }

@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as HeadingStories from './bal-heading.stories'
 
 <Meta of={HeadingStories} />
@@ -12,15 +12,12 @@ import * as HeadingStories from './bal-heading.stories'
   **Heading** is a key component for displaying important titles and headers to organize and emphasize content.
 </Lead>
 
-<InfoQuote>
-  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
-  components. This helps improve the rendering speed of your application or website.
+<br/>
 
-Additionally, explore CSS utilities for more styling options.
+We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+components. This helps improve the rendering speed of your application or website.
 
-</InfoQuote>
-
-<Canvas of={HeadingStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="heading" htmlStory={HeadingStories.Basic} webComponentStory={HeadingStories.WebComponentBasic} />
 
 <PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
 
@@ -33,27 +30,27 @@ Additionally, explore CSS utilities for more styling options.
 
 {/* ------------------------------------------------------ */}
 
+<StoryHeading of={HeadingStories.Sizes}></StoryHeading>
+
+<Canvas of={HeadingStories.Sizes} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
 <StoryHeading of={HeadingStories.Colors}></StoryHeading>
 
 <Canvas of={HeadingStories.Colors} sourceState={'shown'} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HeadingStories.Title}></StoryHeading>
+<StoryHeading of={HeadingStories.NoWrap}></StoryHeading>
 
-<Canvas of={HeadingStories.Title} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
-
-<Canvas of={HeadingStories.Subtitle} />
+<Canvas of={HeadingStories.NoWrap} sourceState={'shown'} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={HeadingStories.Spacing}></StoryHeading>
 
-<Canvas of={HeadingStories.Spacing} />
+<Canvas of={HeadingStories.Spacing} sourceState={'shown'}/>
 
 {/* ------------------------------------------------------ */}
 
@@ -66,7 +63,7 @@ Using `auto-level`, one can specify the minimum visual level at which the headin
 
 {/* ------------------------------------------------------ */}
 
-## Component API
+### Component API
 
 import api from './api.md?raw'
 

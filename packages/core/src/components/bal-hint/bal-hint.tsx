@@ -187,7 +187,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
               ...elButtons.modifier('is-hidden-desktop').class(this.small),
             }}
           >
-            <bal-button data-testid="bal-hint-close" color="info" onClick={() => this.dismiss()}>
+            <bal-button data-testid="bal-hint-close" color="secondary" onClick={() => this.dismiss()}>
               {this.closeLabel ? this.closeLabel : this.innerCloseLabel}
             </bal-button>
           </bal-button-group>

@@ -1,4 +1,4 @@
-import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   AngularFramework,
   Banner,
@@ -17,9 +17,38 @@ import {
   WarningQuote,
 } from '../../../.storybook/blocks'
 
+import * as HeadingStories from '../../components/bal-heading/bal-heading.stories'
+
 <Meta title="Development/Upgrade Guides/Updating to v20" />
 
 <Banner label="Updating to v20" section="Development/Upgrade Guides" />
+
+## Overview
+
+Here is an overview of the breaking changes of the newly introduced version 20:
+
+- One Angular component library (breaking change)
+- Update dependencies to Angular 19
+- Prepare components for support of Shadow DOM
+  - Add Shadow DOM support to bal-heading and bal-button, more will follow in future releases
+  - Expose CSS parts for bal-heading and bal-button for usage without a web component
+- Remove deprecated SCSS variables and mixins
+- Update dependencies to Storybook 10
+- Move visual regression tests to Playwright for better maintainability
+- Move accessibility tests to Playwright for better maintainability
+- Improve build artifacts and tree shaking
+- Fix vulnerabilities in dependencies to align with the Cyber Resilience Act (CRA)
+
+
+## Shadow DOM Support
+
+We introduced Shadow DOM support for some components in version 20.
+This change improves style encapsulation and prevents style leakage between components and the global styles of your application.
+Shadow DOM support frameworks like React better in performance and compatibility.
+
+Moreover, we exposed CSS parts for components with Shadow DOM support to allow styling without using the web component.
+
+<Canvas of={HeadingStories.Basic} sourceState="shown" />
 
 ## One Angular component library
 

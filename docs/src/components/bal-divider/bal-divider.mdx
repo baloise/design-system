@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as DividerStories from './bal-divider.stories'
 
 <Meta of={DividerStories} />
@@ -13,6 +13,20 @@ import * as DividerStories from './bal-divider.stories'
   differentiate sections of content or groups of menu items.
 </Lead>
 
+<InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
+  We recommend using standard <b>HTML elements</b> like `<hr />` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+These styles are included in the core styles:
+
+```css
+@import '@baloise/ds-styles/css/core.css';
+```
+
+</InfoQuote>
+
 <Canvas of={DividerStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={DividerStories.Basic}></PlaygroundBar>
@@ -20,11 +34,13 @@ import * as DividerStories from './bal-divider.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={DividerStories.LayoutVertical}></StoryHeading>
+<StoryHeading of={DividerStories.Vertical}></StoryHeading>
 
 Change the layout of the divider to vertical to use them in a horizontal stack component.
 
-<Canvas of={DividerStories.LayoutVertical} />
+<Canvas of={DividerStories.Vertical} />
+
+{/* ------------------------------------------------------ */}
 
 <StoryHeading of={DividerStories.Dashed}></StoryHeading>
 

@@ -45,7 +45,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }): React.R
         position: 'relative',
       }}
     >
-      <div className="flex gap-normal">
+      <div className="flex gap-base">
         <div className="flex-1">
           <span className="subtitle text-large mb-none">{subtitle}</span>
           <h1

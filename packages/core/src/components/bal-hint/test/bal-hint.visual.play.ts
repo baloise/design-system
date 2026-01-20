@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-hint'
 const VARIANTS = ['basic', 'close-label', 'small']
@@ -12,9 +12,9 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}-before`))
+    await expectScreenshot(el, image(`${variant}-before`))
 
     el.click()
-    await expect(el).toHaveScreenshot(image(`${variant}-after`))
+    await expectScreenshot(el, image(`${variant}-after`))
   })
 })

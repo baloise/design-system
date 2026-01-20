@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
 import { ariaBooleanToString } from 'packages/core/src/utils/aria'
 import { toKebabCase } from 'packages/core/src/utils/string'
+import { BEM } from '../../../utils/bem'
 
 export interface TabControlItem {
   label: string
@@ -28,23 +28,24 @@ export const TabControl: FunctionalComponent<TabControlProps> = ({ value, items,
     >
       <bal-card>
         <bal-card-content role="tabs">
-          {items.map(item => (
-            <button
-              class={{
-                'button': true,
-                'is-fullwidth': true,
-                'is-primary': value === item.value,
-                'is-light': value !== item.value,
-              }}
-              role="tab"
-              aria-selected={ariaBooleanToString(value === item.value)}
-              aria-controls={containerId + '-' + toKebabCase(item.label)}
-              key={item.value}
-              onClick={() => onControlChange(item)}
-            >
-              {item.label}
-            </button>
-          ))}
+          <div class="buttons as-row is-expanded">
+            {items.map(item => (
+              <button
+                class={{
+                  'button': true,
+                  'is-primary': value === item.value,
+                  'is-light': value !== item.value,
+                }}
+                role="tab"
+                aria-selected={ariaBooleanToString(value === item.value)}
+                aria-controls={containerId + '-' + toKebabCase(item.label)}
+                key={item.value}
+                onClick={() => onControlChange(item)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </bal-card-content>
       </bal-card>
     </div>

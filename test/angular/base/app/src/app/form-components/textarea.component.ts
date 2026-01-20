@@ -20,13 +20,16 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="textarea" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'textarea', value: 'updated value' })">
+        <div class="buttons">
+          <button
+            class="button is-secondary"
+            (click)="updateControl.emit({ name: 'textarea', value: 'updated value' })"
+          >
             Update Textarea
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('textarea')?.enable()">Enable Textarea</bal-button>
-          <bal-button color="tertiary" (click)="form.get('textarea')?.disable()">Disable Textarea</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('textarea')?.enable()">Enable Textarea</button>
+          <button class="button is-tertiary" (click)="form.get('textarea')?.disable()">Disable Textarea</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

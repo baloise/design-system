@@ -8,4 +8,5 @@ namespace BalProps {
   export type BalContentDirection = 'column' | 'row' | ''
   export type BalContentSpace = 'none' | 'xxx-small' | 'xx-small' | 'x-small' | 'small' | 'normal' | ''
   export type BalContentAlignment = 'start' | 'center' | 'end' | ''
+  export type BalContentTextAlignment = 'left' | 'center' | 'right' | ''
 }

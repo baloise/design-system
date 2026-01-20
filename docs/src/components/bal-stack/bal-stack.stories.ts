@@ -35,89 +35,104 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
+export const Basic = Story({
+  ...withRender(
+    () => `
+<div class="stack">
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+</div>`,
+  ),
+})
+
+export const Nested = Story({
+  ...withRender(
+    () => `
+<div class="stack">
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <div class="stack has-space-x-small">
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+    <div class="stack has-space-large as-row">
+      <div class="bg-red-3 h-2rem w-full"></div>
+      <div class="bg-red-3 h-2rem w-full"></div>
+      <div class="bg-red-3 h-2rem w-full"></div>
+    </div>
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+  </div>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+</div>`,
+  ),
+})
+
+export const Item = Story({
+  ...withRender(
+    () => `
+<div class="stack as-row bg-purple-light p-normal radius-normal">
+  <bal-icon name="date" size="medium"></bal-icon>
+  <div class="stack-content">
+    <label class="label">My Item</label>
+    <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
+  </div>
+  <button class="button">Button</button>
+</div>`,
+  ),
+})
 
 export const Direction = Story({
-  args: {
-    layout: 'vertical',
-  },
   ...withRender(
-    ({ ...args }) => `<bal-stack ${props(args)}>
-  <bal-icon name="date" size="medium"></bal-icon>
-  <bal-content>
-    <bal-label>My Item</bal-label>
-    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-  </bal-content>
-  <bal-button>Button</bal-button>
-</bal-stack>`,
+    () => `
+<div class="stack has-space-large">
+  <div class="stack as-row">
+    <div class="bg-red-3 p-normal w-full">Row</div>
+    <div class="bg-red-3 p-normal w-full">Row</div>
+    <div class="bg-red-3 p-normal w-full">Row</div>
+  </div>
+  <div class="bg-yellow-3 p-normal w-full">Column</div>
+  <div class="bg-yellow-3 p-normal w-full">Column</div>
+</div>`,
   ),
 })
 
 export const Alignment = Story({
-  args: {
-    layout: 'vertical',
-    align: 'center',
-    space: 'large',
-  },
   ...withRender(
-    ({ ...args }) => `<bal-stack ${props(args)}>
+    () => `
+<div class="stack as-col align-center bg-red-light p-normal radius-normal">
   <bal-icon name="date" size="medium"></bal-icon>
-  <bal-content align="center">
-    <bal-label>My Item</bal-label>
-    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-  </bal-content>
-  <bal-button>Button</bal-button>
-</bal-stack>`,
+  <div class="stack-content align-center">
+    <label class="label">My Item</label>
+    <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
+  </div>
+  <button class="button">Button</button>
+</div>`,
   ),
 })
 
+const spaceBox = (size: string) => `
+<div class="stack as-row bg-red-2 has-space-${size}">
+  <div class="stack-content bg-green-2">
+    <label class="label">${size}</label>
+  </div>
+  <div class="stack-content bg-green-2">
+    <label class="label">${size}</label>
+  </div>
+  <div class="stack-content bg-green-2">
+    <label class="label">${size}</label>
+  </div>
+</div>
+`
 export const Space = Story({
   ...withRender(
-    () => `<div>
-  <bal-stack class="bg-red-2">
-    <bal-content class="bg-green-2">
-      <bal-label>Space Default</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space Default</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space Default</bal-label>
-    </bal-content>
-  </bal-stack>
-  <bal-stack space="large" class="bg-red-2 my-large">
-    <bal-content class="bg-green-2">
-      <bal-label>Space Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space Large</bal-label>
-    </bal-content>
-  </bal-stack>
-  <bal-stack space="x-large" class="bg-red-2 my-large">
-    <bal-content class="bg-green-2">
-      <bal-label>Space X-Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space X-Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space X-Large</bal-label>
-    </bal-content>
-  </bal-stack>
-  <bal-stack space="xx-large" class="bg-red-2">
-    <bal-content class="bg-green-2">
-      <bal-label>Space XX-Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space XX-Large</bal-label>
-    </bal-content>
-    <bal-content class="bg-green-2">
-      <bal-label>Space XX-Large</bal-label>
-    </bal-content>
-  </bal-stack>
+    () => `<div class="stack">
+  ${spaceBox('xx-small')}
+  ${spaceBox('x-small')}
+  ${spaceBox('small')}
+  ${spaceBox('normal')}
+  ${spaceBox('medium')}
+  ${spaceBox('large')}
+  ${spaceBox('x-large')}
+  ${spaceBox('xx-large')}
 </div>`,
   ),
 })
@@ -125,71 +140,66 @@ export const Space = Story({
 export const Padding = Story({
   ...withRender(
     () => `<div>
-  <bal-stack py="medium" class="bg-red-2">
-    <bal-content class="bg-green-2">
-      <bal-label>Padding Horizontal Medium</bal-label>
-    </bal-content>
-  </bal-stack>
+  <div class="stack py-medium bg-red-2">
+    <div class="stack-content bg-green-2">
+      <label class="label">Padding Horizontal Medium</label>
+    </div>
+  </div>
   <br/>
-  <bal-stack px="medium" class="bg-red-2">
-    <bal-content class="bg-green-2">
-      <bal-label>Padding Vertical Medium</bal-label>
-    </bal-content>
-  </bal-stack>
+  <div class="stack px-medium bg-red-2">
+    <div class="stack-content bg-green-2">
+      <label class="label">Padding Vertical Medium</label>
+    </div>
+  </div>
 </div>`,
   ),
 })
 
 export const TeaserCards = Story({
-  args: {
-    layout: 'vertical',
-    align: 'center',
-    space: 'large',
-  },
   ...withRender(
-    ({ ...args }) => `<div class="columns">
-  <div class="column is-one-third">
-    <bal-card color="purple-light" fullheight="true">
-      <bal-card-content>
-        <bal-stack ${props(args)}>
+    ({ ...args }) => `<div class="grid">
+  <div class="col is-one-third">
+    <article class="card is-purple-light is-fullheight">
+      <div class="card-content">
+        <div class="stack align-center has-space-large">
           <bal-icon svg='${balBrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Teaser Card</bal-heading>
-            <bal-text>The item component can easily be combined with the card component to achieve a nice
-            teaser layout.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
+          <div class="stack-content align-top-center">
+            <h3 class="title">Teaser Card</h3>
+            The item component can easily be combined with the card component to achieve a nice
+            teaser layout.
+          </div>
+          <button class="button">Button</button>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="column is-one-third">
-    <bal-card color="yellow-light" fullheight="true">
-      <bal-card-content>
-        <bal-stack ${props(args)}>
+  <div class="col is-one-third">
+    <article class="card is-yellow-light is-fullheight">
+      <div class="card-content">
+        <div class="stack align-center has-space-large">
           <bal-icon svg='${balBrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Auto Height</bal-heading>
-            <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
+          <div class="stack-content align-top-center">
+            <h3 class="title">Auto Height</h3>
+            The height of the cards adjust to the longest in the row.
+          </div>
+          <button class="button">Button</button>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="column is-one-third">
-    <bal-card color="red-light" fullheight="true">
-      <bal-card-content>
-        <bal-stack ${props(args)}>
+  <div class="col is-one-third">
+      <article class="card is-red-light is-fullheight">
+      <div class="card-content">
+        <div class="stack align-center has-space-large">
           <bal-icon svg='${balBrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>
-          <bal-content align="center">
-            <bal-heading level="x-large">Item Component</bal-heading>
-            <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-          </bal-content>
-          <bal-button>Button</bal-button>
-        </bal-stack>
-      </bal-card-content>
-    </bal-card>
+          <div class="stack-content align-top-center">
+            <h3 class="title">Item Component</h3>
+            Item is used to easaly group components and not be concered about the correct spacing.
+          </div>
+          <button class="button">Button</button>
+        </div>
+      </div>
+    </article>
   </div>
 </div>`,
   ),

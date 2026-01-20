@@ -38,21 +38,21 @@
     content: ' ';
     display: block;
     position: absolute;
-    height: var(--bal-border-width-normal);
+    height: var(--bal-border-width-base);
     left: 50%;
     right: -50%;
     top: 50%;
     background-color: var(--bal-steps-step-button-progress-line-background);
     border-radius: var(--bal-steps-step-button-progress-line-radius);
     margin-top: 3px;
-    margin-left: calc(1.5rem - var(--bal-border-width-normal));
+    margin-left: calc(1.5rem - var(--bal-border-width-base));
     margin-right: 1.25rem;
   }
   @include tablet {
     &:not(:last-child)::after {
       top: 1rem;
       margin-top: 6px;
-      margin-left: calc(1.5rem - var(--bal-border-width-normal));
+      margin-left: calc(1.5rem - var(--bal-border-width-base));
       margin-right: 1.5rem;
     }
   }

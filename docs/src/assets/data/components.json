@@ -14,18 +14,8 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-accordion": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "active",
@@ -567,10 +557,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'info'"
+              "text": "'secondary'"
             }
           ],
-          "default": "'info'",
+          "default": "'secondary'",
           "values": [
             {
               "value": "danger",
@@ -931,19 +921,14 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-tabs"
-      ],
+      "encapsulation": "shadow",
+      "dependents": [],
       "dependencies": [
         "bal-icon"
       ],
       "dependencyGraph": {
         "bal-badge": [
           "bal-icon"
-        ],
-        "bal-tabs": [
-          "bal-badge"
         ]
       },
       "props": [
@@ -1142,15 +1127,13 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
-        "bal-accordion",
         "bal-accordion-trigger",
         "bal-card-button",
         "bal-data-value",
         "bal-hint",
         "bal-input-stepper",
-        "bal-nav",
         "bal-navbar-brand",
         "bal-snackbar"
       ],
@@ -1162,9 +1145,6 @@
         "bal-button": [
           "bal-spinner",
           "bal-icon"
-        ],
-        "bal-accordion": [
-          "bal-button"
         ],
         "bal-accordion-trigger": [
           "bal-button"
@@ -1179,9 +1159,6 @@
           "bal-button"
         ],
         "bal-input-stepper": [
-          "bal-button"
-        ],
-        "bal-nav": [
           "bal-button"
         ],
         "bal-navbar-brand": [
@@ -2240,7 +2217,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-card-actions",
         "bal-hint"
@@ -5960,21 +5937,15 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-modal-header",
         "bal-popup",
         "bal-snackbar",
-        "bal-tag",
         "bal-toast"
       ],
-      "dependencies": [
-        "bal-icon"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-modal-header": [
           "bal-close"
         ],
@@ -5982,9 +5953,6 @@
           "bal-close"
         ],
         "bal-snackbar": [
-          "bal-close"
-        ],
-        "bal-tag": [
           "bal-close"
         ],
         "bal-toast": [
@@ -6105,7 +6073,7 @@
           "mutable": false,
           "attr": "align",
           "reflectToAttr": false,
-          "docs": "Defines the text positioning like center, end or\ndefault to start.",
+          "docs": "Defines the positioning like center, end or\ndefault to start.",
           "docsTags": [
             {
               "name": "default",
@@ -6227,6 +6195,52 @@
             },
             {
               "value": "xxx-small",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "textAlign",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "complexType": {
+            "original": "BalProps.BalContentTextAlignment",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "text-align",
+          "reflectToAttr": false,
+          "docs": "Defines the text positioning like center, right or\ndefault to left.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
               "type": "string"
             }
           ],
@@ -8534,12 +8548,6 @@
           "bal-option-list",
           "bal-option"
         ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-option": [
           "bal-stack",
           "bal-check",
@@ -10019,9 +10027,6 @@
           "bal-stack",
           "bal-heading",
           "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
         ]
       },
       "props": [
@@ -10702,9 +10707,6 @@
           "bal-list-item-content",
           "bal-list-item-title",
           "bal-list-item-subtitle"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
         ]
       },
       "props": [
@@ -11830,19 +11832,15 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-card-title",
-        "bal-list-item-title",
         "bal-modal-header",
         "bal-popup"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-card-title": [
-          "bal-heading"
-        ],
-        "bal-list-item-title": [
           "bal-heading"
         ],
         "bal-modal-header": [
@@ -12350,12 +12348,7 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [
-        {
-          "name": "native",
-          "docs": ""
-        }
-      ],
+      "parts": [],
       "listeners": []
     },
     {
@@ -12390,9 +12383,6 @@
           "bal-stack",
           "bal-heading",
           "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
         ],
         "bal-field-hint": [
           "bal-hint"
@@ -12592,7 +12582,6 @@
         "bal-badge",
         "bal-button",
         "bal-check",
-        "bal-close",
         "bal-date",
         "bal-date-calendar",
         "bal-field-control",
@@ -12600,7 +12589,6 @@
         "bal-footer",
         "bal-hint",
         "bal-list-item-accordion-head",
-        "bal-nav",
         "bal-option",
         "bal-pagination",
         "bal-segment-item",
@@ -12626,9 +12614,6 @@
         "bal-check": [
           "bal-icon"
         ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-date": [
           "bal-icon"
         ],
@@ -12648,9 +12633,6 @@
           "bal-icon"
         ],
         "bal-list-item-accordion-head": [
-          "bal-icon"
-        ],
-        "bal-nav": [
           "bal-icon"
         ],
         "bal-option": [
@@ -16441,10 +16423,10 @@
       "props": [
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16454,19 +16436,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16537,10 +16516,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16550,19 +16529,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16627,10 +16603,10 @@
         },
         {
           "name": "readonly",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16640,19 +16616,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16742,10 +16715,10 @@
         },
         {
           "name": "valid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -16755,19 +16728,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16828,15 +16798,11 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-file-upload",
-        "bal-nav"
+        "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-file-upload": [
-          "bal-list"
-        ],
-        "bal-nav": [
           "bal-list"
         ]
       },
@@ -17030,15 +16996,11 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-file-upload",
-        "bal-nav"
+        "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-file-upload": [
-          "bal-list-item"
-        ],
-        "bal-nav": [
           "bal-list-item"
         ]
       },
@@ -17488,15 +17450,9 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
+      "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-list-item-accordion-body"
-        ]
-      },
+      "dependencyGraph": {},
       "props": [
         {
           "name": "accordionGroup",
@@ -17626,9 +17582,7 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
+      "dependents": [],
       "dependencies": [
         "bal-list-item-icon",
         "bal-icon"
@@ -17637,9 +17591,6 @@
         "bal-list-item-accordion-head": [
           "bal-list-item-icon",
           "bal-icon"
-        ],
-        "bal-nav": [
-          "bal-list-item-accordion-head"
         ]
       },
       "props": [
@@ -17748,15 +17699,11 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-file-upload",
-        "bal-nav"
+        "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-file-upload": [
-          "bal-list-item-content"
-        ],
-        "bal-nav": [
           "bal-list-item-content"
         ]
       },
@@ -17888,20 +17835,11 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-file-upload",
-        "bal-nav"
+        "bal-file-upload"
       ],
-      "dependencies": [
-        "bal-heading"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
         "bal-file-upload": [
-          "bal-list-item-title"
-        ],
-        "bal-nav": [
           "bal-list-item-title"
         ]
       },
@@ -18111,15 +18049,11 @@
       "encapsulation": "none",
       "dependents": [
         "bal-footer",
-        "bal-nav",
         "bal-navbar-brand"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-footer": [
-          "bal-logo"
-        ],
-        "bal-nav": [
           "bal-logo"
         ],
         "bal-navbar-brand": [
@@ -18808,9 +18742,6 @@
         "bal-modal-header": [
           "bal-heading",
           "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
         ]
       },
       "props": [],
@@ -18820,1032 +18751,6 @@
       "slots": [],
       "parts": [],
       "listeners": []
-    },
-    {
-      "fileName": "bal-nav.tsx",
-      "tag": "bal-nav",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [
-        "bal-nav-meta-bar",
-        "bal-stack",
-        "bal-tabs",
-        "bal-nav-menu-bar",
-        "bal-nav-menu-flyout",
-        "bal-nav-link",
-        "bal-button",
-        "bal-nav-link-grid",
-        "bal-nav-link-grid-col",
-        "bal-list",
-        "bal-list-item",
-        "bal-list-item-content",
-        "bal-list-item-title",
-        "bal-list-item-accordion-head",
-        "bal-list-item-accordion-body",
-        "bal-logo",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-meta-bar",
-          "bal-stack",
-          "bal-tabs",
-          "bal-nav-menu-bar",
-          "bal-nav-menu-flyout",
-          "bal-nav-link",
-          "bal-button",
-          "bal-nav-link-grid",
-          "bal-nav-link-grid-col",
-          "bal-list",
-          "bal-list-item",
-          "bal-list-item-content",
-          "bal-list-item-title",
-          "bal-list-item-accordion-head",
-          "bal-list-item-accordion-body",
-          "bal-logo",
-          "bal-icon"
-        ],
-        "bal-tabs": [
-          "bal-icon",
-          "bal-badge",
-          "bal-select",
-          "bal-select-option"
-        ],
-        "bal-badge": [
-          "bal-icon"
-        ],
-        "bal-select": [
-          "bal-tag",
-          "bal-popover",
-          "bal-icon",
-          "bal-popover-content",
-          "bal-checkbox"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
-        ],
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon",
-          "bal-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "buttons",
-          "type": "BalNavMetaButton[]",
-          "complexType": {
-            "original": "BalProps.BalNavMetaButtons",
-            "resolved": "BalNavMetaButton[]",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "reflectToAttr": false,
-          "docs": "Link level structure.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "[]"
-            }
-          ],
-          "default": "[]",
-          "values": [
-            {
-              "type": "BalNavMetaButton[]"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "logo",
-          "type": "BalNavLogoLink | undefined",
-          "complexType": {
-            "original": "BalProps.BalNavLogoLink",
-            "resolved": "BalNavLogoLink | undefined",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "reflectToAttr": false,
-          "docs": "Link level structure.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "BalNavLogoLink"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "options",
-          "type": "BalNavMetaLinkItem[]",
-          "complexType": {
-            "original": "BalProps.BalNavOptions",
-            "resolved": "BalNavMetaLinkItem[]",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "reflectToAttr": false,
-          "docs": "Link level structure.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "[]"
-            }
-          ],
-          "default": "[]",
-          "values": [
-            {
-              "type": "BalNavMetaLinkItem[]"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [
-        {
-          "event": "balNavItemClick",
-          "detail": "BalNavClickedItem",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalNavItemClickDetail",
-            "resolved": "BalNavClickedItem",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when a nav link item is clicked. This event can be used to\nadd data tracking",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": [
-        {
-          "event": "balChange",
-          "capture": false,
-          "passive": false
-        },
-        {
-          "event": "click",
-          "target": "document",
-          "capture": false,
-          "passive": true
-        }
-      ]
-    },
-    {
-      "fileName": "bal-nav-link.tsx",
-      "tag": "bal-nav-link",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-link"
-        ]
-      },
-      "props": [
-        {
-          "name": "clickable",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "clickable",
-          "reflectToAttr": false,
-          "docs": "If `true` the link can be clickable",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "href",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "href",
-          "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "rel",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "rel",
-          "reflectToAttr": false,
-          "docs": "Specifies the relationship of the target object to the link object.\nThe value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "selected",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "selected",
-          "reflectToAttr": false,
-          "docs": "If `true` the link gets selected with a underline",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-          "complexType": {
-            "original": "BalProps.BalButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "target",
-          "reflectToAttr": false,
-          "docs": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'_self'"
-            }
-          ],
-          "default": "'_self'",
-          "values": [
-            {
-              "value": " _parent",
-              "type": "string"
-            },
-            {
-              "value": "_blank",
-              "type": "string"
-            },
-            {
-              "value": "_self",
-              "type": "string"
-            },
-            {
-              "value": "_top",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "variant",
-          "type": "\"\" | \"overview\" | \"title\"",
-          "complexType": {
-            "original": "BalProps.BalNavLinkVariant",
-            "resolved": "\"\" | \"overview\" | \"title\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Defines the variant of the link",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "overview",
-              "type": "string"
-            },
-            {
-              "value": "title",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-nav-link-grid.tsx",
-      "tag": "bal-nav-link-grid",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-link-grid"
-        ]
-      },
-      "props": [],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-nav-link-grid-col.tsx",
-      "tag": "bal-nav-link-grid-col",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-link-grid-col"
-        ]
-      },
-      "props": [
-        {
-          "name": "staticCol",
-          "type": "boolean",
-          "complexType": {
-            "original": "BalProps.BalNavLinkGridCol",
-            "resolved": "boolean",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "static-col",
-          "reflectToAttr": false,
-          "docs": "Defines the static column which is always aligned to the right",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-nav-link-group.tsx",
-      "tag": "bal-nav-link-group",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "\"\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-          "complexType": {
-            "original": "BalProps.BalNavLinkGroupColor",
-            "resolved": "\"\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Defines the color of the group",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "gray",
-              "type": "string"
-            },
-            {
-              "value": "green",
-              "type": "string"
-            },
-            {
-              "value": "purple",
-              "type": "string"
-            },
-            {
-              "value": "red",
-              "type": "string"
-            },
-            {
-              "value": "yellow",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-nav-menu-bar.tsx",
-      "tag": "bal-nav-menu-bar",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-menu-bar"
-        ]
-      },
-      "props": [
-        {
-          "name": "invisible",
-          "type": "\"mobile\" | \"none\" | \"tablet\"",
-          "complexType": {
-            "original": "BalProps.BalNavMenuBarInvisible",
-            "resolved": "\"mobile\" | \"none\" | \"tablet\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "invisible",
-          "reflectToAttr": false,
-          "docs": "Tells when to hide the bar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'none'"
-            }
-          ],
-          "default": "'none'",
-          "values": [
-            {
-              "value": "mobile",
-              "type": "string"
-            },
-            {
-              "value": "none",
-              "type": "string"
-            },
-            {
-              "value": "tablet",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "position",
-          "type": "\"fixed-top\" | \"none\"",
-          "complexType": {
-            "original": "BalProps.BalNavMenuBarPosition",
-            "resolved": "\"fixed-top\" | \"none\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "position",
-          "reflectToAttr": false,
-          "docs": "Defines the position of the bar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'none'"
-            }
-          ],
-          "default": "'none'",
-          "values": [
-            {
-              "value": "fixed-top",
-              "type": "string"
-            },
-            {
-              "value": "none",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-nav-menu-flyout.tsx",
-      "tag": "bal-nav-menu-flyout",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-menu-flyout"
-        ]
-      },
-      "props": [
-        {
-          "name": "navId",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "nav-id",
-          "reflectToAttr": false,
-          "docs": "This is used to connect the flyout to the aria controls",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "`bal-nav-x${NavMenuFlyOutIds++}`"
-            }
-          ],
-          "default": "`bal-nav-x${NavMenuFlyOutIds++}`",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [
-        {
-          "event": "balFocusOut",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalNavFlyoutFocusOutDetail",
-            "resolved": "FocusEvent",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the flyout loses focus",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": [
-        {
-          "event": "focusout",
-          "capture": false,
-          "passive": false
-        }
-      ]
-    },
-    {
-      "fileName": "bal-nav-meta-bar.tsx",
-      "tag": "bal-nav-meta-bar",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-nav": [
-          "bal-nav-meta-bar"
-        ]
-      },
-      "props": [
-        {
-          "name": "invisible",
-          "type": "\"mobile\" | \"none\" | \"tablet\"",
-          "complexType": {
-            "original": "BalProps.BalNavMetaBarInvisible",
-            "resolved": "\"mobile\" | \"none\" | \"tablet\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "invisible",
-          "reflectToAttr": false,
-          "docs": "Tells when to hide the bar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'none'"
-            }
-          ],
-          "default": "'none'",
-          "values": [
-            {
-              "value": "mobile",
-              "type": "string"
-            },
-            {
-              "value": "none",
-              "type": "string"
-            },
-            {
-              "value": "tablet",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "position",
-          "type": "\"fixed-bottom\" | \"fixed-top\" | \"none\" | \"sticky-top\"",
-          "complexType": {
-            "original": "BalProps.BalNavMetaBarPosition",
-            "resolved": "\"fixed-bottom\" | \"fixed-top\" | \"none\" | \"sticky-top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "position",
-          "reflectToAttr": false,
-          "docs": "Defines the position of the bar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'none'"
-            }
-          ],
-          "default": "'none'",
-          "values": [
-            {
-              "value": "fixed-bottom",
-              "type": "string"
-            },
-            {
-              "value": "fixed-top",
-              "type": "string"
-            },
-            {
-              "value": "none",
-              "type": "string"
-            },
-            {
-              "value": "sticky-top",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "size",
-          "type": "\"normal\" | \"small\"",
-          "complexType": {
-            "original": "BalProps.BalNavMetaBarSize",
-            "resolved": "\"normal\" | \"small\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "size",
-          "reflectToAttr": false,
-          "docs": "Defines the height of the bar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'normal'"
-            }
-          ],
-          "default": "'normal'",
-          "values": [
-            {
-              "value": "normal",
-              "type": "string"
-            },
-            {
-              "value": "small",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "stayOnTopOfBackdrop",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "stay-on-top-of-backdrop",
-          "reflectToAttr": false,
-          "docs": "Defines if the bar should stay on top of the backdrop",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "variant",
-          "type": "\"grey\" | \"primary\" | \"white\"",
-          "complexType": {
-            "original": "BalProps.BalNavMetaBarVariant",
-            "resolved": "\"grey\" | \"primary\" | \"white\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Defines the color variant",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "grey",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "white",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": [
-        {
-          "event": "scroll",
-          "target": "window",
-          "capture": false,
-          "passive": true
-        }
-      ]
     },
     {
       "fileName": "bal-navbar.tsx",
@@ -23685,9 +22590,6 @@
           "bal-heading",
           "bal-close"
         ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-hint": [
           "bal-popup"
         ]
@@ -26265,12 +25167,6 @@
           "bal-popover-content",
           "bal-checkbox"
         ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-tabs": [
           "bal-select"
         ]
@@ -27788,9 +26684,6 @@
           "bal-close",
           "bal-button"
         ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-button": [
           "bal-spinner",
           "bal-icon"
@@ -28377,7 +27270,6 @@
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-nav",
         "bal-option",
         "bal-popup",
         "bal-segment-item",
@@ -28385,9 +27277,6 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-nav": [
-          "bal-stack"
-        ],
         "bal-option": [
           "bal-stack"
         ],
@@ -30968,24 +29857,17 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
-      "dependents": [
-        "bal-nav"
-      ],
+      "dependents": [],
       "dependencies": [
         "bal-icon",
-        "bal-badge",
         "bal-select",
         "bal-select-option"
       ],
       "dependencyGraph": {
         "bal-tabs": [
           "bal-icon",
-          "bal-badge",
           "bal-select",
           "bal-select-option"
-        ],
-        "bal-badge": [
-          "bal-icon"
         ],
         "bal-select": [
           "bal-tag",
@@ -30993,15 +29875,6 @@
           "bal-icon",
           "bal-popover-content",
           "bal-checkbox"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
-        "bal-nav": [
-          "bal-tabs"
         ]
       },
       "props": [
@@ -31826,21 +30699,13 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-dropdown",
         "bal-select"
       ],
-      "dependencies": [
-        "bal-close"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ],
         "bal-dropdown": [
           "bal-tag"
         ],
@@ -32163,7 +31028,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -32182,7 +31047,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -32304,10 +31169,10 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -32317,19 +31182,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -32394,10 +31256,10 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
-            "resolved": "boolean | undefined",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
@@ -32407,19 +31269,16 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "undefined"
+              "text": "false"
             }
           ],
-          "default": "undefined",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -32612,7 +31471,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "native",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -34047,9 +32911,6 @@
       "dependencyGraph": {
         "bal-toast": [
           "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
         ]
       },
       "props": [

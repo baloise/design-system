@@ -5,11 +5,11 @@
  * @prop --bal-segment-item-focus-border: TBD
  * @prop --bal-segment-item-text-color: TBD
  * @prop --bal-segment-item-text-color-checked: TBD
- * @prop --bal-segment-item-text-color-checked-hovered: TBD
- * @prop --bal-segment-item-text-color-checked-pressed: TBD
+ * @prop --bal-segment-item-text-color-checked-hover: TBD
+ * @prop --bal-segment-item-text-color-checked-active: TBD
  * @prop --bal-segment-item-text-color-invalid: TBD
- * @prop --bal-segment-item-text-color-invalid-hovered: TBD
- * @prop --bal-segment-item-text-color-invalid-pressed: TBD
+ * @prop --bal-segment-item-text-color-invalid-hover: TBD
+ * @prop --bal-segment-item-text-color-invalid-active: TBD
  * @prop --bal-segment-item-text-color-disabled: TBD
  * @prop --bal-segment-item-text-color-disabled-checked: TBD
  * @prop --bal-segment-item-divider-background: TBD
@@ -29,17 +29,17 @@
 
   --bal-segment-item-text-color: var(--bal-body-color);
   --bal-segment-item-text-color-checked: var(--bal-body-color);
-  --bal-segment-item-text-color-checked-hovered: var(--bal-color-text-primary-hovered);
-  --bal-segment-item-text-color-checked-pressed: var(--bal-color-text-primary-pressed);
+  --bal-segment-item-text-color-checked-hover: var(--bal-color-text-primary-hover);
+  --bal-segment-item-text-color-checked-active: var(--bal-color-text-primary-active);
 
   --bal-segment-item-text-color-invalid: var(--bal-color-text-danger);
-  --bal-segment-item-text-color-invalid-hovered: var(--bal-color-text-danger-hovered);
-  --bal-segment-item-text-color-invalid-pressed: var(--bal-color-text-danger-pressed);
+  --bal-segment-item-text-color-invalid-hover: var(--bal-color-text-danger-hover);
+  --bal-segment-item-text-color-invalid-active: var(--bal-color-text-danger-active);
 
   --bal-segment-item-text-color-disabled: var(--bal-color-text-grey);
   --bal-segment-item-text-color-disabled-checked: var(--bal-color-text-grey-dark);
 
-  --bal-segment-item-divider-background: var(--bal-color-grey);
+  --bal-segment-item-divider-background: var(--bal-color-grey-3);
   --bal-segment-item-divider-background-invalid: var(--bal-color-danger-2);
 
   --bal-segment-item-indicator-background: var(--bal-color-purple-2);

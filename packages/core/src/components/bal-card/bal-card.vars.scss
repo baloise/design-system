@@ -42,9 +42,9 @@
   // background colors
   --bal-card-background: transparent;
   --bal-card-background-white: var(--bal-color-white);
-  --bal-card-background-blue: var(--bal-color-primary);
-  --bal-card-background-primary: var(--bal-color-primary);
-  --bal-card-background-info: var(--bal-color-primary);
+  --bal-card-background-blue: var(--bal-color-brand-primary-base);
+  --bal-card-background-primary: var(--bal-color-brand-primary-base);
+  --bal-card-background-info: var(--bal-color-brand-primary-base);
   --bal-card-background-success: var(--bal-color-success-2);
   --bal-card-background-warning: var(--bal-color-warning-2);
   --bal-card-background-danger: var(--bal-color-danger-2);
@@ -77,5 +77,5 @@
   --bal-card-square-radius: 0;
   //
   // border
-  --bal-card-border: var(--bal-border-width-normal) dashed var(--bal-color-grey);
+  --bal-card-border: var(--bal-border-width-base) dashed var(--bal-color-grey);
 }

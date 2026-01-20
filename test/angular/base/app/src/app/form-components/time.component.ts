@@ -20,13 +20,13 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="time" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'time', value: '09:30' })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'time', value: '09:30' })">
             Update Time
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('time')?.enable()">Enable Time</bal-button>
-          <bal-button color="tertiary" (click)="form.get('time')?.disable()">Disable Time</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('time')?.enable()">Enable Time</button>
+          <button class="button is-tertiary" (click)="form.get('time')?.disable()">Disable Time</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as ButtonStories from './bal-button.stories'
 
 <Meta of={ButtonStories} />
@@ -14,26 +14,11 @@ import * as ButtonStories from './bal-button.stories'
   way.
 </Lead>
 
-<InfoQuote>
-  We recommend using standard <b>HTML elements</b> such as `<button>` and `<a>` whenever possible instead of web
-  components. However in combination with a spinner or icon use the component.
-  This helps improve the rendering speed of your application or website.
-</InfoQuote>
-
-<Canvas of={ButtonStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.Basic} webComponentStory={ButtonStories.WebComponentBasic} />
 
 <PlaygroundBar of={ButtonStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ButtonStories.Component}></StoryHeading>
-
-We recommend using the <b>web component</b> in combination with a `<bal-spinner>` or `<bal-icon>`,
-as it provides all necessary styles, library integrations and performance updates.
-
-<Canvas of={ButtonStories.Component} />
-
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Variants}></StoryHeading>
@@ -46,9 +31,34 @@ are not suitable for use on non-white backgrounds.
 
 {/* ------------------------------------------------------ */}
 
+<StoryHeading of={ButtonStories.Sizes}></StoryHeading>
+
+<Canvas of={ButtonStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Inverted}></StoryHeading>
+
+<Canvas of={ButtonStories.Inverted} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.WithIcon}></StoryHeading>
+
+<Canvas of={ButtonStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
 <StoryHeading of={ButtonStories.States}></StoryHeading>
 
 <Canvas of={ButtonStories.States} />
+
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Dashed}></StoryHeading>
+
+<Canvas of={ButtonStories.Dashed} />
 
 {/* ------------------------------------------------------ */}
 
@@ -63,11 +73,33 @@ are not suitable for use on non-white backgrounds.
 <Canvas of={ButtonStories.SquareButtons} />
 
 {/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.ButtonGroup}></StoryHeading>
 
 <Canvas of={ButtonStories.ButtonGroup} />
 
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAlignment}></StoryHeading>
+
+<Canvas of={ButtonStories.ButtonGroupAlignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAsRow}></StoryHeading>
+
+<Canvas of={ButtonStories.ButtonGroupAsRow} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAsCol}></StoryHeading>
+
+<Canvas of={ButtonStories.ButtonGroupAsCol} />
+
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Link}></StoryHeading>
@@ -76,15 +108,24 @@ are not suitable for use on non-white backgrounds.
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.NativeButton}></StoryHeading>
+<StoryHeading of={ButtonStories.LinkButton}></StoryHeading>
 
-<Canvas of={ButtonStories.NativeButton} />
+<Canvas of={ButtonStories.LinkButton} />
 
 {/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.NativeLink}></StoryHeading>
+<StoryHeading of={ButtonStories.WebComponentBasic}></StoryHeading>
 
-<Canvas of={ButtonStories.NativeLink} />
+We recommend using the <b>web component</b> in combination with a `<bal-spinner>` or `<bal-icon>`,
+as it provides all necessary styles, library integrations and performance updates.
+
+<Canvas of={ButtonStories.WebComponentBasic} />
+
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
 
 ## Component API
 

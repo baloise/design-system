@@ -1,0 +1,81 @@
+{
+  "color": {
+    "$type": "color",
+    "border": {
+      "white": { "$value": "{color.white}", "comment": "Default color on dark backgrounds." },
+
+      "base": { "$value": "{color.border.grey.base}", "comment": "Default border color" },
+      "inverted": { "$value": "{color.border.white}", "comment": "Default color on dark backgrounds." },
+
+      "grey": {
+        "light": { "$value": "{color.grey.2}", "comment": "Can be use for a divider" },
+        "base": { "$value": "{color.grey.3}", "comment": "Default border color used for form controls" },
+        "dark": { "$value": "{color.grey.4}", "comment": "Use for disabled state." }
+      },
+
+      "disabled": { "$value": "{color.border.grey.dark}", "comment": "Disabled." },
+      "inverted-disabled": { "$value": "{color.border.primary.light}", "comment": "Disabled." },
+
+      "primary": {
+        "light": { "$value": "{color.primary.3}", "comment": "Disabled or secondary color on dark backgrounds" },
+        "base": { "$value": "{color.primary.5}", "comment": "Use for focused or selected state." },
+        "hover": { "$value": "{color.light-blue.5}" },
+        "active": { "$value": "{color.primary.6}" }
+      },
+
+      "inverted-primary": {
+        "base": { "$value": "{color.primary.4}" },
+        "hover": { "$value": "{color.light-blue.2}" },
+        "active": { "$value": "{color.light-blue.4}" }
+      },
+
+      "info": {
+        "base": { "$value": "{color.info.4}" },
+        "hover": { "$value": "{color.info.5}" },
+        "active": { "$value": "{color.info.6}" }
+      },
+
+      "success": {
+        "base": { "$value": "{color.success.4}" },
+        "hover": { "$value": "{color.success.5}" },
+        "active": { "$value": "{color.success.6}" }
+      },
+
+      "warning": {
+        "base": { "$value": "{color.warning.4}" },
+        "hover": { "$value": "{color.warning.5}" },
+        "active": { "$value": "{color.warning.6}" }
+      },
+
+      "danger": {
+        "base": { "$value": "{color.danger.4}" },
+        "hover": { "$value": "{color.danger.5}" },
+        "active": { "$value": "{color.danger.6}" }
+      },
+
+      "purple": {
+        "base": { "$value": "{color.purple.4}" },
+        "hover": { "$value": "{color.purple.5}" },
+        "active": { "$value": "{color.purple.6}" }
+      },
+
+      "green": {
+        "base": { "$value": "{color.green.4}" },
+        "hover": { "$value": "{color.green.5}" },
+        "active": { "$value": "{color.green.6}" }
+      },
+
+      "red": {
+        "base": { "$value": "{color.red.4}" },
+        "hover": { "$value": "{color.red.5}" },
+        "active": { "$value": "{color.red.6}" }
+      },
+
+      "yellow": {
+        "base": { "$value": "{color.yellow.4}" },
+        "hover": { "$value": "{color.yellow.5}" },
+        "active": { "$value": "{color.yellow.6}" }
+      }
+    }
+  }
+}

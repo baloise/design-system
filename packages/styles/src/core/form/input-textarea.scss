@@ -69,7 +69,7 @@ textarea.textarea {
     } // deprecated
   }
   &.is-warning {
-    border-color: var(--bal-color-border-warning);
+    border-color: var(--bal-color-border-warning-base);
     background: var(--bal-color-warning-1);
     &.bal-focused,
     &:focus,

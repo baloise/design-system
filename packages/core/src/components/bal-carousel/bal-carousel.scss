@@ -12,13 +12,13 @@
   height: 100%;
 }
 .bal-carousel__inner__container--border {
-  padding-bottom: var(--bal-border-width-normal);
+  padding-bottom: var(--bal-border-width-base);
 }
 .bal-carousel__inner__container__border {
   position: absolute;
   background: var(--bal-carousel-inner-border-background);
   border-radius: var(--bal-carousel-inner-border-radius);
-  height: var(--bal-border-width-normal);
+  height: var(--bal-border-width-base);
   width: 100%;
   bottom: 0;
   transform: translate3d(0px, 0px, 0px);

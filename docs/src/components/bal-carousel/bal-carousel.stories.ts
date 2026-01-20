@@ -16,7 +16,7 @@ const meta: Meta<Args> = {
   ...withRender(
     () => `<bal-carousel>
   <bal-carousel-item>
-    <div class="background-green-1 p-normal w-full">Slide 1</div>
+    <div class="bg-green-1 p-normal w-full">Slide 1</div>
   </bal-carousel-item>
   <bal-carousel-item>
     <div class="bg-green-2 p-normal w-full">Slide 2</div>

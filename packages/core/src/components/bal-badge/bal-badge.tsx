@@ -1,10 +1,10 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-badge',
-  styleUrl: 'bal-badge.scss',
+  styleUrl: 'bal-badge.host.scss',
+  shadow: true,
 })
 export class Badge implements ComponentInterface {
   @Element() el!: HTMLStencilElement
@@ -30,46 +30,18 @@ export class Badge implements ComponentInterface {
   @Prop() position: BalProps.BalBadgePosition = ''
 
   render() {
-    const block = BEM.block('badge')
-    const labelEl = block.element('label')
-    const iconEl = block.element('icon')
-    const color = this.color !== ''
-    const size = this.size !== ''
-    const position = this.position !== ''
-    const labelHidden = !!this.icon || this.size === 'small'
-
     return (
-      <Host
-        class={{
-          ...block.class(),
-          ...block.modifier(`background-${this.color}`).class(color),
-          ...block.modifier(`position-${this.position}`).class(position),
-          ...block.modifier(`size-${this.size}`).class(size),
-        }}
-      >
+      <Host>
         <span
           class={{
-            ...labelEl.class(),
-            ...labelEl.modifier(`color-${this.color}`).class(color),
-            ...labelEl.modifier(`hidden`).class(labelHidden),
+            badge: true,
+            [`is-${this.size}`]: this.size !== '',
+            [`is-${this.color}`]: this.color !== '',
           }}
-          data-testid="bal-badge-label"
         >
           <slot></slot>
+          {this.size !== 'small' && !!this.icon ? <bal-icon name={this.icon}></bal-icon> : ''}
         </span>
-        {this.size !== 'small' ? (
-          <bal-icon
-            class={{
-              ...iconEl.class(),
-              ...iconEl.modifier(`hidden`).class(!labelHidden),
-            }}
-            size={this.size === '' ? 'small' : ''}
-            name={this.icon}
-            color={this.color === 'grey' ? 'grey' : 'primary'}
-          ></bal-icon>
-        ) : (
-          ''
-        )}
       </Host>
     )
   }

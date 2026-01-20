@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import {
   test as baseTest,
+  expect,
+  Locator,
+  Page,
+  PageAssertionsToHaveScreenshotOptions,
   PlaywrightTestArgs,
   PlaywrightTestOptions,
   PlaywrightWorkerArgs,
@@ -15,6 +19,21 @@ import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } 
 import { BalPage, BalPageOptions } from './types'
 
 export { expect } from '@playwright/test'
+
+/**
+ * Custom screenshot assertion that waits for changes before taking the screenshot
+ */
+export async function expectScreenshot(
+  received: Locator | Page,
+  name?: string | string[],
+  options?: PageAssertionsToHaveScreenshotOptions,
+) {
+  // Get page from received (either it's a Page or a Locator with .page())
+  const page = 'page' in received ? received.page() : received
+  await waitForChanges(page as BalPage)
+
+  await expect(received).toHaveScreenshot(name as string | string[], options)
+}
 
 type CustomTestArgs = PlaywrightTestArgs &
   PlaywrightTestOptions &

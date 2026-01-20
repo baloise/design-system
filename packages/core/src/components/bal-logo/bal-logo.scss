@@ -7,7 +7,7 @@
   // there is lottie issue, svgs are blurry: https://github.com/airbnb/lottie-web/issues/1976
   svg {
     transform: unset !important;
-    @include fillSvg($bal-color-primary);
+    @include fillSvg(var(--bal-color-brand-primary-base));
   }
   & > div {
     height: 22px;
@@ -19,7 +19,7 @@
   }
   @include modifier('white') {
     svg {
-      @include fillSvg($bal-color-white);
+      @include fillSvg(var(--bal-color-white));
     }
   }
   @include desktop {

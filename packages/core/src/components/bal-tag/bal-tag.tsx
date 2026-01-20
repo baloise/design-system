@@ -1,12 +1,11 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
-import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-tag',
-  styleUrl: 'bal-tag.scss',
+  styleUrl: 'bal-tag.host.scss',
+  shadow: true,
 })
 export class Tag {
   @Element() el!: HTMLStencilElement
@@ -65,61 +64,48 @@ export class Tag {
   }
 
   render() {
-    const block = BEM.block('tag')
-    const elLabel = block.element('label')
-    const sizeClass = `is-${this.size}`
+    const sizeClass = this.size && `is-${this.size}`
     const hasSize = this.size !== undefined
+
     const hasColor = this.color !== ''
-    const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
-    const disabledClass = 'is-disabled'
-    const hasDisabled = this.disabled
-    const positionClass = `is-${this.position}`
-    const hasPosition = this.position !== undefined
+    let colorClass = `is-${this.color}${this.light ? '-light' : ''}`
+
+    if (this.invalid) {
+      colorClass = 'is-danger'
+    }
+
+    if (this.disabled) {
+      colorClass = 'is-grey'
+    }
+
+    // const positionClass = `is-${this.position}`
+    // const hasPosition = this.position !== undefined
 
     return (
-      <Host
-        aria-disabled={ariaBooleanToString(this.disabled)}
-        class={{
-          ...block.class(),
-          ...block.modifier(sizeClass).class(hasSize),
-          ...block.modifier(colorClass).class(hasColor),
-          ...block.modifier(disabledClass).class(hasDisabled),
-          ...block.modifier(positionClass).class(hasPosition),
-          ...block.modifier('is-invalid').class(this.invalid),
-        }}
-        {...this.inheritedAttributes}
-      >
+      <Host>
         <span
           class={{
-            ...elLabel.class(),
-            ...elLabel.modifier(sizeClass).class(hasSize),
-            ...elLabel.modifier(colorClass).class(hasColor),
-            ...elLabel.modifier(disabledClass).class(hasDisabled),
-            ...elLabel.modifier('is-invalid').class(this.invalid),
+            tag: true,
+            [sizeClass]: hasSize,
+            [colorClass]: hasColor,
           }}
-          data-testid="bal-tag-label"
+          {...this.inheritedAttributes}
         >
-          <slot />
+          <span data-testid="bal-tag-label">
+            <slot />
+          </span>
+          {this.closable && !this.disabled ? (
+            <button
+              class="close"
+              data-testid="bal-tag-close"
+              aria-label="remove tag"
+              onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
+              {...this.inheritedAttributesClose}
+            ></button>
+          ) : (
+            ''
+          )}
         </span>
-        <bal-close
-          class={{
-            ...block.element('close').class(),
-          }}
-          style={{
-            display: this.closable && !this.disabled ? 'flex' : 'none',
-          }}
-          size={this.size === 'small' ? 'small' : ''}
-          inverted={
-            (['blue', 'primary', 'info', 'success', 'warning', 'danger', 'red', 'purple', 'yellow', 'green'].includes(
-              this.color,
-            ) &&
-              !this.light) ||
-            this.invalid
-          }
-          data-testid="bal-tag-close"
-          onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
-          {...this.inheritedAttributesClose}
-        ></bal-close>
       </Host>
     )
   }

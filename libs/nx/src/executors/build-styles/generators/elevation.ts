@@ -36,6 +36,7 @@ const generateShadow = async (options: BuildStylesExecutorSchema) => {
     property,
     values: {
       ['shadow-none']: 'none',
+      ['shadow-normal']: 'var(--bal-shadow-base)',
       ...values,
     },
     important: true,
@@ -56,7 +57,10 @@ const generateTextShadow = async (options: BuildStylesExecutorSchema) => {
 
   const rules = utils.styleClass({
     property,
-    values,
+    values: {
+      ['text-shadow-normal']: 'var(--bal-shadow-text-base)',
+      ...values,
+    },
     important: true,
     responsive: true,
     states: false,

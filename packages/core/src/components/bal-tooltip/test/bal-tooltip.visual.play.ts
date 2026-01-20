@@ -1,4 +1,4 @@
-import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-tooltip'
 const VARIANTS = ['basic', 'placement-right']
@@ -16,6 +16,6 @@ VARIANTS.forEach(variant => {
     await triggerEl.hover()
     await waitForChanges(page)
 
-    await expect(page).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(page, image(`${variant}`))
   })
 })

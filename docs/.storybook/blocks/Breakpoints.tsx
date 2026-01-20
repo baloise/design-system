@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Pixel = ({ children }) => (
   <pre>
     <code>{children}</code>
@@ -7,7 +5,7 @@ export const Pixel = ({ children }) => (
 )
 
 export const Block = ({ label = '' }) => (
-  <div className={`p-small radius-normal bg-${label ? 'green' : 'grey'}-2`}>
+  <div className={`p-small radius-base bg-${label ? 'green' : 'grey'}-2`}>
     <span className="font-weight-bold">{label || '-'}</span>
   </div>
 )

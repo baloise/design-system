@@ -58,6 +58,7 @@ export const config: Config = {
   enableCache: true,
   buildEs5: 'prod',
   globalScript: 'src/global.ts',
+  globalStyle: 'src/global.scss',
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
@@ -193,6 +194,11 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
+          dest: 'assets/utilities.css',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
           dest: 'assets/tokens.css',
           warn: true,
@@ -284,18 +290,6 @@ export const config: Config = {
     { components: ['bal-table'] },
     { components: ['bal-tabs', 'bal-tab-item'] },
     { components: ['bal-tag', 'bal-tag-group'] },
-    {
-      components: [
-        'bal-nav',
-        'bal-nav-link',
-        'bal-nav-link-grid',
-        'bal-nav-link-grid-col',
-        'bal-nav-link-group',
-        'bal-nav-menu-bar',
-        'bal-nav-menu-flyout',
-        'bal-nav-meta-bar',
-      ],
-    },
     //
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },

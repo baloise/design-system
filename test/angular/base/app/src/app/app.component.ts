@@ -82,7 +82,7 @@ export interface UpdateControl {
           <pre data-testid="result">{{ myForm.value | json }}</pre>
           <pre data-testid="result-modal">{{ modalData() | json }}</pre>
         </form>
-        <bal-button (click)="openModal()">Open Modal</bal-button>
+        <button class="button" (click)="openModal()">Open Modal</button>
       </main>
     </bal-app>
   `,

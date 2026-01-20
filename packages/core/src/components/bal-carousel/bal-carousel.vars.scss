@@ -29,12 +29,12 @@
 :root {
   //
   // background colors
-  --bal-carousel-inner-border-background: var(--bal-color-border);
+  --bal-carousel-inner-border-background: var(--bal-color-border-base);
   --bal-carousel-inner-border-background-inverted: var(--bal-color-border-primary-light);
   --bal-carousel-inner-shadow-left-background-before: var(--bal-color-white);
   --bal-carousel-inner-shadow-right-background-after: var(--bal-color-white);
-  --bal-carousel-inner-shadow-left-background-inverted-before: var(--bal-color-primary);
-  --bal-carousel-inner-shadow-right-background-inverted-after: var(--bal-color-primary);
+  --bal-carousel-inner-shadow-left-background-inverted-before: var(--bal-color-brand-primary-base);
+  --bal-carousel-inner-shadow-right-background-inverted-after: var(--bal-color-brand-primary-base);
   --bal-carousel-product-item-button-background: var(--bal-color-white);
   --bal-carousel-product-item-button-background-green: var(--bal-color-green-1);
   --bal-carousel-product-item-button-background-green-hover: var(--bal-color-green-1);
@@ -51,7 +51,7 @@
   //
   // radius
   --bal-carousel-inner-border-radius: var(--bal-radius-rounded);
-  --bal-carousel-image-border-radius: var(--bal-radius-normal);
+  --bal-carousel-image-border-radius: var(--bal-radius-base);
   --bal-carousel-product-item-button-border-radius: var(--bal-radius-large);
   //
   // text colors

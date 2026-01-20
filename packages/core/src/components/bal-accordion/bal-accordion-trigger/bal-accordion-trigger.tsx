@@ -99,7 +99,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: BalProps.BalButtonColor = 'info'
+  @Prop() color: BalProps.BalButtonColor = 'secondary'
 
   /**
    * Size of the button

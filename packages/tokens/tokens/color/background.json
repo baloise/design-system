@@ -1,0 +1,85 @@
+{
+  "color": {
+    "$type": "color",
+    "background": {
+      "white": {
+        "$value": "{color.white}"
+      },
+      "neutral": {
+        "$value": "transparent"
+      },
+      "grey-light": {
+        "$value": "{color.grey.2}"
+      },
+      "grey": {
+        "$value": "{color.grey.3}"
+      },
+
+      "primary-light": {
+        "$value": "{color.brand.primary.light}"
+      },
+      "primary": {
+        "$value": "{color.brand.primary.base}"
+      },
+
+      "light-blue": {
+        "$value": "{color.light-blue.2}"
+      },
+
+      "green-lighter": {
+        "$value": "{color.green.1}",
+        "comment": "Default brand background color to use"
+      },
+      "green-light": {
+        "$value": "{color.green.2}"
+      },
+      "green": {
+        "$value": "{color.green.3}",
+        "comment": "Use this background for call to action sections"
+      },
+
+      "purple-lighter": {
+        "$value": "{color.purple.1}",
+        "comment": "Default brand background color to use"
+      },
+      "purple-light": {
+        "$value": "{color.purple.2}"
+      },
+      "purple": {
+        "$value": "{color.purple.3}",
+        "comment": "Use this background for call to action sections"
+      },
+
+      "yellow-lighter": {
+        "$value": "{color.yellow.1}",
+        "comment": "Default brand background color to use"
+      },
+      "yellow-light": {
+        "$value": "{color.yellow.2}"
+      },
+      "yellow": {
+        "$value": "{color.yellow.3}",
+        "comment": "Use this background for call to action sections"
+      },
+
+      "red-lighter": {
+        "$value": "{color.red.1}",
+        "comment": "Default brand background color to use"
+      },
+      "red-light": {
+        "$value": "{color.red.2}"
+      },
+      "red": {
+        "$value": "{color.red.3}",
+        "comment": "Use this background for call to action sections"
+      },
+
+      "disabled": { "$value": "{color.grey.3}" },
+
+      "info": { "$value": "{color.info.3}" },
+      "success": { "$value": "{color.success.3}" },
+      "warning": { "$value": "{color.warning.3}" },
+      "danger": { "$value": "{color.danger.3}" }
+    }
+  }
+}

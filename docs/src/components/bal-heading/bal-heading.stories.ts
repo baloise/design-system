@@ -1,19 +1,50 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import {
+  createCssMappings,
+  cssClasses,
+  props,
+  StoryFactory,
+  withComponentControls,
+  withContent,
+  withDefaultContent,
+  withRender,
+} from '../../utils'
 
 type Args = JSX.BalHeading & { content: string }
 
+const tag = 'bal-heading'
+const css = createCssMappings(tag)
+
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Heading',
+  title: 'Components/Typography/Heading 👻',
   args: {
     ...withDefaultContent('Heading'),
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-heading' }),
+    ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
+  ...withRender(
+    ({ content, ...args }) => `
+<h1 ${cssClasses(
+      {
+        ...css('color', (color: string) => `is-${color}`),
+        ...css('level', (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`),
+        ...css(
+          'visualLevel',
+          (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`,
+        ),
+        subtitle: 'subtitle',
+        noWrap: 'has-no-wrap',
+        shadow: 'has-shadow',
+      },
+      args,
+      'title',
+    )}>${content}</h1>
+<p class="subtitle is-xx-large">Subtitle</p>
+`,
+  ),
 }
 
 export default meta
@@ -25,68 +56,71 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<h1 class="title text-xxx-large mb-none">Heading</h1>
-<h2 class="subtitle text-xx-large">Subtitle</h2>`,
-  ),
-})
+export const Basic = Story()
 
-export const Levels = Story({
-  ...withRender(
-    () => `
-<h1 class="title text-xxx-large">Heading 1</h1>
-<h2 class="title text-xx-large">Heading 2</h2>
-<h3 class="title text-x-large">Heading 3</h3>
-<h4 class="title text-large">Heading 4</h4>
-<h5 class="title text-normal">Heading 5</h5>`,
-  ),
-})
-
-export const Colors = Story({
-  ...withRender(
-    () => `
-<h4 class="title text-large">Default / Primary</h4>
-<h4 class="title text-large text-success">Success</h4>
-<h4 class="title text-large text-warning">Warning</h4>
-<h4 class="title text-large text-danger">Danger</h4>`,
-  ),
-})
-
-export const Title = Story({
+export const WebComponentBasic = Story({
   args: {
     level: 'h1',
     subtitle: false,
     space: 'bottom',
     inverted: false,
   },
+  ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
 })
 
-export const Subtitle = Story({
-  args: {
-    content: 'Subtitle',
-    level: 'h3',
-    subtitle: true,
-    space: 'bottom',
-    inverted: false,
-  },
+export const Levels = Story({
+  ...withRender(
+    () => `
+<h1 class="title">Heading 1</h1>
+<h2 class="title">Heading 2</h2>
+<h3 class="title">Heading 3</h3>
+<h4 class="title">Heading 4</h4>
+<h5 class="title">Heading 5</h5>`,
+  ),
+})
+
+export const Sizes = Story({
+  ...withRender(
+    () => `
+<h1 class="title is-1">Size 1 (xxx-large)</h1>
+<h1 class="title is-xx-large">Size 2 (xx-large)</h1>
+<h1 class="title is-level-3">Size 3 (x-large)</h3>
+<h1 class="title is-level-4">Size 4 (large)</h4>
+<h1 class="title is-level-5">Size 5 (normal)</h5>`,
+  ),
+})
+
+export const Colors = Story({
+  ...withRender(
+    () => `
+<h4 class="title">Default / Primary</h4>
+<h4 class="title is-success">Success</h4>
+<h4 class="title is-warning">Warning</h4>
+<h4 class="title is-danger">Danger</h4>`,
+  ),
+})
+
+export const NoWrap = Story({
+  ...withRender(
+    () => `
+<h4 class="title has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
+  ),
 })
 
 export const Spacing = Story({
   ...withRender(
     () => `<div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="all">All</bal-heading>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="title has-space-all">All</h4>
     </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="none">None</bal-heading>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="title has-space-none">None</h4>
     </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="top">Top</bal-heading>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="title has-space-top">Top</h4>
     </div>
-    <div class="bg-blue-1 flex mb-small">
-      <bal-heading level="h4" space="bottom">Bottom</bal-heading>
+    <div class="bg-primary-1 flex mb-small">
+      <h4 class="title has-space-bottom">Bottom</h4>
     </div>
   </div>`,
   ),

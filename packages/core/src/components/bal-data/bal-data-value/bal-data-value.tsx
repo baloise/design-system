@@ -64,21 +64,23 @@ export class DataValue {
         <div>
           <slot></slot>
         </div>
-        <bal-button
-          class={{
-            ...buttonEl.class(),
-          }}
-          data-testid="bal-data-value-button"
-          square
-          outlined
-          color="text"
-          size="small"
-          icon="edit"
-          disabled={this.disabled}
-          onBalBlur={_ => this.balBlur.emit()}
-          onBalFocus={_ => this.balFocus.emit()}
-          onBalClick={ev => this.onClickHandler(ev)}
-        ></bal-button>
+        {this.editable && (
+          <bal-button
+            class={{
+              ...buttonEl.class(),
+            }}
+            data-testid="bal-data-value-button"
+            square
+            outlined
+            color="text"
+            size="small"
+            icon="edit"
+            disabled={this.disabled}
+            onBalBlur={_ => this.balBlur.emit()}
+            onBalFocus={_ => this.balFocus.emit()}
+            onBalClick={ev => this.onClickHandler(ev)}
+          ></bal-button>
+        )}
       </Host>
     )
   }

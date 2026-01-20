@@ -11,10 +11,11 @@
     </style>
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
+    <link rel="stylesheet" href="/build/baloise-design-system.css" />
   </head>
 
   <body>
-    <bal-doc-app>
+    <bal-app>
       <main class="container py-medium">
         <section data-testid="basic">
           <bal-checkbox-group interface="tile">
@@ -94,7 +95,7 @@
             <bal-checkbox name="checkbox-example" value="1" checked>
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
+                <bal-content align="top-center">
                   <bal-label size="large">Headline 4 Bold</bal-label>
                 </bal-content>
                 <bal-check></bal-check>
@@ -104,7 +105,7 @@
             <bal-checkbox name="checkbox-example" value="2">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
+                <bal-content align="top-center">
                   <bal-label size="large">Headline 4 Bold</bal-label>
                   <bal-text size="small"
                     >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
@@ -118,7 +119,7 @@
             <bal-checkbox name="checkbox-example" value="5">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
+                <bal-content align="top-center">
                   <bal-label size="large">Headline 4 Bold</bal-label>
                   <bal-text size="small"
                     >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
@@ -132,7 +133,7 @@
             <bal-checkbox invalid name="checkbox-example" value="3">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
+                <bal-content align="top-center">
                   <bal-label size="large">Invalid</bal-label>
                   <bal-text size="small"
                     >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
@@ -147,7 +148,7 @@
             <bal-checkbox disabled name="checkbox-example" value="4">
               <bal-stack layout="vertical" align="center">
                 <bal-icon size="x-large" color="auto"></bal-icon>
-                <bal-content align="center">
+                <bal-content align="top-center">
                   <bal-label size="large">Disabled</bal-label>
                   <bal-text size="small"
                     >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
@@ -227,6 +228,6 @@
           })
         </script>
       </main>
-    </bal-doc-app>
+    </bal-app>
   </body>
 </html>

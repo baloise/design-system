@@ -1,0 +1,243 @@
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  AngularFramework,
+  Banner,
+  Code,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  Lead,
+  LinkCard,
+  LinkCards,
+  NotAngularFramework,
+  PackageTable,
+  ReactFramework,
+  Tabs,
+  WarningQuote,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Styles" />
+
+<Banner label="Styles" section="Development" />
+
+<Lead>
+  Comprehensive styling guide covering design tokens, component styles, and utility classes for building consistent and
+  maintainable interfaces.
+</Lead>
+
+## Installation
+
+To use the Baloise Design System styles in your project, first install the
+`@baloise/ds-styles` package via npm or yarn:
+
+```bash
+npm install @baloise/ds-styles
+# or
+yarn add @baloise/ds-styles
+```
+
+## Import
+
+The Baloise Design System styles are organized into three main categories: core, utility, and component styles.
+
+### Core
+
+The core styles include resets, structure, fonts, and essential component styles.
+These styles are required for the proper functioning of the Design System components.
+You can import the core styles into your global stylesheet as follows:
+
+<Tabs
+  tabs={[
+    {
+      label: 'CSS',
+      content: (
+        <Code
+          language="css"
+          code={`
+@import '@baloise/ds-styles/css/basic.css';
+`}
+        />
+      ),
+    },
+    {
+      label: 'Sass',
+      content: (
+        <Code
+          language="css"
+          code={`
+@forward '@baloise/ds-styles/sass/basic';
+`}
+        />
+      ),
+    },
+  ]}
+/>
+
+### Utility
+
+The utility styles provide a set of helper classes for common CSS properties such as layout, spacing, typography, and more.
+These styles are optional and can be imported based on your project's requirements.
+
+<Tabs
+  tabs={[
+    {
+      label: 'CSS',
+      content: (
+        <Code
+          language="css"
+          code={`
+@import '@baloise/ds-styles/css/utilities/background.css';
+@import '@baloise/ds-styles/css/utilities/border.css';
+@import '@baloise/ds-styles/css/utilities/elevation.css';
+@import '@baloise/ds-styles/css/utilities/flex.css';
+@import '@baloise/ds-styles/css/utilities/interaction.css';
+@import '@baloise/ds-styles/css/utilities/layout.css';
+@import '@baloise/ds-styles/css/utilities/sizing.css';
+@import '@baloise/ds-styles/css/utilities/spacing.css';
+@import '@baloise/ds-styles/css/utilities/typography.css';
+
+// or if you want to import all utility styles
+@import '@baloise/ds-styles/css/utilities/all.css';
+`}
+        />
+      ),
+    },
+    {
+      label: 'Sass',
+      content: (
+        <Code
+          language="css"
+          code={`
+@forward '@baloise/ds-styles/css/utilities/background';
+@forward '@baloise/ds-styles/css/utilities/border';
+@forward '@baloise/ds-styles/css/utilities/elevation';
+@forward '@baloise/ds-styles/css/utilities/flex';
+@forward '@baloise/ds-styles/css/utilities/interaction';
+@forward '@baloise/ds-styles/css/utilities/layout';
+@forward '@baloise/ds-styles/css/utilities/sizing';
+@forward '@baloise/ds-styles/css/utilities/spacing';
+@forward '@baloise/ds-styles/css/utilities/typography';
+
+// or if you want to import all utility styles
+@forward '@baloise/ds-styles/css/utilities/all';
+`}
+        />
+      ),
+    },
+  ]}
+/>
+
+### Component
+
+Each component in the Baloise Design System has its own stylesheet that can be imported individually.
+This allows you to include only the styles for the components you are using in your project, reducing the overall bundle size.
+
+> However, if you prefer to use the **web components**, the styles of the component gets **loaded automatically**.
+
+To import the styles for a specific component, use the following syntax:
+
+<Tabs
+  tabs={[
+    {
+      label: 'CSS',
+      content: (
+        <Code
+          language="css"
+          code={`
+@import '@baloise/ds-styles/css/components/bal-badge.css';
+@import '@baloise/ds-styles/css/components/bal-tag.css';
+
+// or if you want to import all component styles
+@import '@baloise/ds-styles/css/components/all.css';
+`}
+        />
+      ),
+    },
+    {
+      label: 'Sass',
+      content: (
+        <Code
+          language="css"
+          code={`
+@forward '@baloise/ds-styles/css/components/bal-badge';
+@forward '@baloise/ds-styles/css/components/bal-tag';
+
+// or if you want to import all component styles
+@forward '@baloise/ds-styles/css/components/all';
+`}
+        />
+      ),
+    },
+  ]}
+/>
+
+## Themes
+
+### Compact
+
+The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
+
+To activate the compact theme, import the theme-compact stylesheet into the root App component or a global stylesheet.
+
+It is recommended to import the theme-compact file at the end of your stylesheet, after the other imports from the Design System.
+
+<Tabs
+  tabs={[
+    {
+      label: 'CSS',
+      content: (
+        <Code
+          language="css"
+          code={`@import '@baloise/ds-styles/css/themes/compact.css';`}
+        />
+      ),
+    },
+    {
+      label: 'Sass',
+      content: (
+        <Code
+          language="css"
+          code={`@forward '@baloise/ds-styles/css/themes/compact';`}
+        />
+      ),
+    },
+  ]}
+/>
+
+### White label 🧪
+
+The white label themes allow you to quickly adapt the Design System styles to match specific brand guidelines.
+
+<Tabs
+  tabs={[
+    {
+      label: 'CSS',
+      content: (
+        <Code
+          language="css"
+          code={`
+@import '@baloise/ds-styles/css/themes/tcs.css';
+// or
+@import '@baloise/ds-styles/css/themes/santander.css';
+`}
+        />
+      ),
+    },
+    {
+      label: 'Sass',
+      content: (
+        <Code
+          language="css"
+          code={`
+@forward '@baloise/ds-styles/css/themes/tcs';
+// or
+@forward '@baloise/ds-styles/css/themes/santander';
+`}
+        />
+      ),
+    },
+  ]}
+/>
+
+
+<Footer />

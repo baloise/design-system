@@ -102,7 +102,7 @@ export const FormWizardMobile = Story({
       <div class="bg-white" style="position: fixed; bottom: 0; width:100%">
         <bal-progress-bar background="grey" value="75"></bal-progress-bar>
         <bal-stack py="normal" px="normal" space="auto">
-          <bal-button color="info" square icon="back"></bal-button>
+          <bal-button color="secondary" square icon="back"></bal-button>
           <bal-button expanded>Next</bal-button>
         </bal-stack>
       </div>

@@ -8,13 +8,13 @@
   // background colors
   --bal-radio-button-background-hover: var(--bal-color-grey-2);
   --bal-radio-button-background-active: var(--bal-color-grey-2);
-  --bal-radio-button-background-checked: var(--bal-color-primary);
+  --bal-radio-button-background-checked: var(--bal-color-brand-primary-base);
   --bal-radio-button-background-checked-hover: var(--bal-color-light-blue-5);
   --bal-radio-button-background-checked-active: var(--bal-color-primary-6);
   --bal-radio-button-background-invalid: var(--bal-color-danger-1);
   --bal-radio-button-background-invalid-hover: var(--bal-color-danger-1);
   --bal-radio-button-background-invalid-active: var(--bal-color-danger-1);
-  --bal-radio-button-background-invalid-checked: var(--bal-color-border-danger);
+  --bal-radio-button-background-invalid-checked: var(--bal-color-border-danger-base);
   --bal-radio-button-background-invalid-checked-hover: var(--bal-color-danger-5);
   --bal-radio-button-background-invalid-checked-active: var(--bal-color-danger-6);
   --bal-radio-button-background-disabled-hover-active: var(--bal-color-grey-2);
@@ -29,13 +29,13 @@
   --bal-radio-button-background-hover: var(--bal-color-grey-1);
   //
   // border colors
-  --bal-radio-button-border-color: var(--bal-color-primary);
+  --bal-radio-button-border-color: var(--bal-color-brand-primary-base);
   --bal-radio-button-border-color-hover: var(--bal-color-light-blue-5);
   --bal-radio-button-border-color-active: var(--bal-color-primary-6);
-  --bal-radio-button-border-color-invalid: var(--bal-color-border-danger);
+  --bal-radio-button-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-radio-button-border-color-invalid-hover: var(--bal-color-danger-5);
   --bal-radio-button-border-color-invalid-active: var(--bal-color-danger-6);
-  --bal-radio-button-border-color-invalid-checked: var(--bal-color-border-danger);
+  --bal-radio-button-border-color-invalid-checked: var(--bal-color-border-danger-base);
   --bal-radio-button-border-color-invalid-checked-hover: var(--bal-color-danger-5);
   --bal-radio-button-border-color-invalid-checked-active: var(--bal-color-danger-6);
   --bal-radio-button-border-color-disabled-hover-active: var(--bal-color-border-grey-dark);
@@ -57,12 +57,12 @@
   --bal-radio-tile-border-width: var(--bal-form-field-control-border-width);
   --bal-radio-tile-padding: var(--bal-text-size-medium);
 
-  --bal-radio-tile-border-color: var(--bal-color-border);
-  --bal-radio-tile-border-color-hover: var(--bal-color-border-primary-hovered);
-  --bal-radio-tile-border-color-active: var(--bal-color-border-primary-pressed);
-  --bal-radio-tile-border-color-invalid-hover: var(--bal-color-border-danger-hovered);
-  --bal-radio-tile-border-color-invalid-active: var(--bal-color-border-danger-pressed);
+  --bal-radio-tile-border-color: var(--bal-color-border-base);
+  --bal-radio-tile-border-color-hover: var(--bal-color-border-primary-hover);
+  --bal-radio-tile-border-color-active: var(--bal-color-border-primary-active);
+  --bal-radio-tile-border-color-invalid-hover: var(--bal-color-border-danger-hover);
+  --bal-radio-tile-border-color-invalid-active: var(--bal-color-border-danger-active);
   --bal-radio-tile-border-color-checked: var(--bal-color-border-primary);
-  --bal-radio-tile-border-color-invalid: var(--bal-color-border-danger);
+  --bal-radio-tile-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-radio-tile-border-color-disabled: var(--bal-color-border-grey-dark);
 }

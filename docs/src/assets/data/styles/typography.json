@@ -2,10 +2,52 @@
   {
     "color": [
       {
+        "class": "text-white",
+        "css": "color: var(--bal-color-text-white);",
+        "property": "color",
+        "value": "var(--bal-color-text-white)"
+      },
+      {
+        "class": "text-black",
+        "css": "color: var(--bal-color-text-black);",
+        "property": "color",
+        "value": "var(--bal-color-text-black)"
+      },
+      {
         "class": "text-primary",
         "css": "color: var(--bal-color-text-primary);",
         "property": "color",
         "value": "var(--bal-color-text-primary)"
+      },
+      {
+        "class": "text-primary-hover",
+        "css": "color: var(--bal-color-text-primary-hover);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary-hover)"
+      },
+      {
+        "class": "text-primary-active",
+        "css": "color: var(--bal-color-text-primary-active);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary-active)"
+      },
+      {
+        "class": "text-inverted-primary",
+        "css": "color: var(--bal-color-text-inverted-primary);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-primary)"
+      },
+      {
+        "class": "text-inverted-primary-hover",
+        "css": "color: var(--bal-color-text-inverted-primary-hover);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-primary-hover)"
+      },
+      {
+        "class": "text-inverted-primary-active",
+        "css": "color: var(--bal-color-text-inverted-primary-active);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-primary-active)"
       },
       {
         "class": "text-primary-light",
@@ -14,10 +56,10 @@
         "value": "var(--bal-color-text-primary-light)"
       },
       {
-        "class": "text-white",
-        "css": "color: var(--bal-color-text-white);",
+        "class": "text-hint",
+        "css": "color: var(--bal-color-text-hint);",
         "property": "color",
-        "value": "var(--bal-color-text-white)"
+        "value": "var(--bal-color-text-hint)"
       },
       {
         "class": "text-grey-light",
@@ -36,6 +78,18 @@
         "css": "color: var(--bal-color-text-grey-dark);",
         "property": "color",
         "value": "var(--bal-color-text-grey-dark)"
+      },
+      {
+        "class": "text-disabled",
+        "css": "color: var(--bal-color-text-disabled);",
+        "property": "color",
+        "value": "var(--bal-color-text-disabled)"
+      },
+      {
+        "class": "text-inverted-disabled",
+        "css": "color: var(--bal-color-text-inverted-disabled);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-disabled)"
       },
       {
         "class": "text-info",
@@ -62,58 +116,16 @@
         "value": "var(--bal-color-text-danger)"
       },
       {
-        "class": "text-black",
-        "css": "color: var(--bal-color-text-black);",
+        "class": "text-danger-hover",
+        "css": "color: var(--bal-color-text-danger-hover);",
         "property": "color",
-        "value": "var(--bal-color-text-black)"
+        "value": "var(--bal-color-text-danger-hover)"
       },
       {
-        "class": "text-primary-hovered",
-        "css": "color: var(--bal-color-text-primary-hovered);",
+        "class": "text-danger-active",
+        "css": "color: var(--bal-color-text-danger-active);",
         "property": "color",
-        "value": "var(--bal-color-text-primary-hovered)"
-      },
-      {
-        "class": "text-primary-pressed",
-        "css": "color: var(--bal-color-text-primary-pressed);",
-        "property": "color",
-        "value": "var(--bal-color-text-primary-pressed)"
-      },
-      {
-        "class": "text-danger-hovered",
-        "css": "color: var(--bal-color-text-danger-hovered);",
-        "property": "color",
-        "value": "var(--bal-color-text-danger-hovered)"
-      },
-      {
-        "class": "text-danger-pressed",
-        "css": "color: var(--bal-color-text-danger-pressed);",
-        "property": "color",
-        "value": "var(--bal-color-text-danger-pressed)"
-      },
-      {
-        "class": "text-inverted",
-        "css": "color: var(--bal-color-text-inverted);",
-        "property": "color",
-        "value": "var(--bal-color-text-inverted)"
-      },
-      {
-        "class": "text-inverted-disabled",
-        "css": "color: var(--bal-color-text-inverted-disabled);",
-        "property": "color",
-        "value": "var(--bal-color-text-inverted-disabled)"
-      },
-      {
-        "class": "text-inverted-hovered",
-        "css": "color: var(--bal-color-text-inverted-hovered);",
-        "property": "color",
-        "value": "var(--bal-color-text-inverted-hovered)"
-      },
-      {
-        "class": "text-inverted-pressed",
-        "css": "color: var(--bal-color-text-inverted-pressed);",
-        "property": "color",
-        "value": "var(--bal-color-text-inverted-pressed)"
+        "value": "var(--bal-color-text-danger-active)"
       }
     ]
   },

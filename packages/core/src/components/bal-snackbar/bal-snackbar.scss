@@ -12,7 +12,7 @@
   border-radius: var(--bal-snackbar-radius);
   background: var(--bal-snackbar-background);
   color: var(--bal-snackbar-color);
-  box-shadow: var(--bal-shadow-normal);
+  box-shadow: var(--bal-shadow-base);
   hyphens: auto;
   min-height: 3.5rem;
   width: 18rem;
@@ -113,7 +113,8 @@
 }
 .bal-snackbar__button-wrapper {
   display: flex;
-  .bal-button {
+  .button,
+  bal-button {
     margin-inline-start: calc(1rem + 1.5rem);
     margin-block-start: 0.5rem;
   }

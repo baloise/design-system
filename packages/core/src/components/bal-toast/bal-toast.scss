@@ -17,7 +17,7 @@
     position: relative;
     display: inline-flex;
     flex-grow: 1;
-    box-shadow: var(--bal-shadow-normal);
+    box-shadow: var(--bal-shadow-base);
     padding: var(--bal-space-normal);
 
     @include tablet {
@@ -61,6 +61,7 @@
   }
   @include element(label) {
     display: inline-flex;
+    flex: 1;
     flex-direction: column;
     gap: 0.125rem;
     margin-left: 2rem;
@@ -102,7 +103,7 @@
       top: 1rem;
       content: '';
       display: block;
-      background-color: var(--bal-color-primary);
+      background-color: var(--bal-color-brand-primary-base);
       -webkit-mask-repeat: no-repeat;
       mask-repeat: no-repeat;
       -webkit-mask-size: contain;

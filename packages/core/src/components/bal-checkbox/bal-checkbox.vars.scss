@@ -8,13 +8,13 @@
   // background colors
   --bal-checkbox-button-background-hover: var(--bal-color-grey-2);
   --bal-checkbox-button-background-active: var(--bal-color-grey-2);
-  --bal-checkbox-button-background-checked: var(--bal-color-primary);
+  --bal-checkbox-button-background-checked: var(--bal-color-brand-primary-base);
   --bal-checkbox-button-background-checked-hover: var(--bal-color-light-blue-5);
   --bal-checkbox-button-background-checked-active: var(--bal-color-primary-6);
   --bal-checkbox-button-background-invalid: var(--bal-color-danger-1);
   --bal-checkbox-button-background-invalid-hover: var(--bal-color-danger-1);
   --bal-checkbox-button-background-invalid-active: var(--bal-color-danger-1);
-  --bal-checkbox-button-background-invalid-checked: var(--bal-color-border-danger);
+  --bal-checkbox-button-background-invalid-checked: var(--bal-color-border-danger-base);
   --bal-checkbox-button-background-invalid-checked-hover: var(--bal-color-danger-5);
   --bal-checkbox-button-background-invalid-checked-active: var(--bal-color-danger-6);
   --bal-checkbox-button-background-disabled-hover-active: var(--bal-color-grey-2);
@@ -29,13 +29,13 @@
   --bal-checkbox-button-background-hover: var(--bal-color-grey-1);
   //
   // border colors
-  --bal-checkbox-button-border-color: var(--bal-color-primary);
+  --bal-checkbox-button-border-color: var(--bal-color-brand-primary-base);
   --bal-checkbox-button-border-color-hover: var(--bal-color-light-blue-5);
   --bal-checkbox-button-border-color-active: var(--bal-color-primary-6);
-  --bal-checkbox-button-border-color-invalid: var(--bal-color-border-danger);
+  --bal-checkbox-button-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-checkbox-button-border-color-invalid-hover: var(--bal-color-danger-5);
   --bal-checkbox-button-border-color-invalid-active: var(--bal-color-danger-6);
-  --bal-checkbox-button-border-color-invalid-checked: var(--bal-color-border-danger);
+  --bal-checkbox-button-border-color-invalid-checked: var(--bal-color-border-danger-base);
   --bal-checkbox-button-border-color-invalid-checked-hover: var(--bal-color-danger-5);
   --bal-checkbox-button-border-color-invalid-checked-active: var(--bal-color-danger-6);
   --bal-checkbox-button-border-color-disabled-hover-active: var(--bal-color-border-grey-dark);
@@ -57,12 +57,12 @@
   --bal-checkbox-tile-border-width: var(--bal-form-field-control-border-width);
   --bal-checkbox-tile-padding: var(--bal-text-size-medium);
 
-  --bal-checkbox-tile-border-color: var(--bal-color-border);
-  --bal-checkbox-tile-border-color-hover: var(--bal-color-border-primary-hovered);
-  --bal-checkbox-tile-border-color-active: var(--bal-color-border-primary-pressed);
-  --bal-checkbox-tile-border-color-invalid-hover: var(--bal-color-border-danger-hovered);
-  --bal-checkbox-tile-border-color-invalid-active: var(--bal-color-border-danger-pressed);
+  --bal-checkbox-tile-border-color: var(--bal-color-border-base);
+  --bal-checkbox-tile-border-color-hover: var(--bal-color-border-primary-hover);
+  --bal-checkbox-tile-border-color-active: var(--bal-color-border-primary-active);
+  --bal-checkbox-tile-border-color-invalid-hover: var(--bal-color-border-danger-hover);
+  --bal-checkbox-tile-border-color-invalid-active: var(--bal-color-border-danger-active);
   --bal-checkbox-tile-border-color-checked: var(--bal-color-border-primary);
-  --bal-checkbox-tile-border-color-invalid: var(--bal-color-border-danger);
+  --bal-checkbox-tile-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-checkbox-tile-border-color-disabled: var(--bal-color-border-grey-dark);
 }

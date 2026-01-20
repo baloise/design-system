@@ -45,13 +45,15 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="radioButtons" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'radioButtons', value: 'Apple' })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'radioButtons', value: 'Apple' })">
             Update Radio Buttons
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('radioButtons')?.enable()">Enable Radio Buttons</bal-button>
-          <bal-button color="tertiary" (click)="form.get('radioButtons')?.disable()">Disable Radio Buttons</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('radioButtons')?.enable()">Enable Radio Buttons</button>
+          <button class="button is-tertiary" (click)="form.get('radioButtons')?.disable()">
+            Disable Radio Buttons
+          </button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

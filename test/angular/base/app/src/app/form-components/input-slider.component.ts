@@ -20,13 +20,13 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="slider" error="min">Min is 10</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'slider', value: '09:30' })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'slider', value: '09:30' })">
             Update Slider
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('slider')?.enable()">Enable Slider</bal-button>
-          <bal-button color="tertiary" (click)="form.get('slider')?.disable()">Disable Slider</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('slider')?.enable()">Enable Slider</button>
+          <button class="button is-tertiary" (click)="form.get('slider')?.disable()">Disable Slider</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

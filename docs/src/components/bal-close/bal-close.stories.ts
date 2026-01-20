@@ -1,16 +1,30 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.BalClose & { content: string }
 
+const tag = 'bal-close'
+const css = createCssMappings(tag)
+
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Close',
+  title: 'Components/Navigation/Close 👻',
   args: {},
   argTypes: {
-    ...withComponentControls({ tag: 'bal-close' }),
+    ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<bal-close ${props(args)}></bal-close>`),
+  ...withRender(
+    ({ content, ...args }) => `
+<button ${cssClasses(
+      {
+        ...css('color', (color: string) => `is-${color}`),
+        ...css('size', (size: string) => `is-${size}`),
+      },
+      args,
+      'close',
+    )} aria-label="close" title="Close" tabindex="0"></button>
+`,
+  ),
 }
 
 export default meta
@@ -24,8 +38,6 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
+export const WebComponentBasic = Story({
+  ...withRender(({ content, ...args }) => `<bal-close ${props(args)}></bal-close>`),
 })

@@ -22,7 +22,6 @@ bal-spinner,
 // --------------------------------------------------
 
 .bal-spinner--circle {
-  margin: auto;
   border-width: 0.25rem;
   border-style: solid;
   border-color: var(--bal-spinner-circle-background);
@@ -43,6 +42,7 @@ bal-spinner,
   border-color: var(--bal-spinner-circle-background-inverted);
   border-top-color: var(--bal-spinner-circle-progress-inverted);
 }
+// TODO: add new inverted style from the button
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

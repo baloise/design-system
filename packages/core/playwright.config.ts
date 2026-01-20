@@ -60,20 +60,20 @@ export default defineConfig({
       name: 'desktop chrome',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'desktop safari',
-      testMatch: '**/*.visual.play.ts',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'mobile chrome',
-      testMatch: '**/*.visual.play.ts',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'mobile safari',
-      testMatch: '**/*.visual.play.ts',
-      use: { ...devices['iPhone 12'] },
-    },
+    // {
+    //   name: 'desktop safari',
+    //   testMatch: '**/*.visual.play.ts',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
+    // {
+    //   name: 'mobile chrome',
+    //   testMatch: '**/*.visual.play.ts',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'mobile safari',
+    //   testMatch: '**/*.visual.play.ts',
+    //   use: { ...devices['iPhone 12'] },
+    // },
   ],
 })

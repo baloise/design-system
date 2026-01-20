@@ -8,8 +8,6 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { propsToMarkdown } from './markdown-props'
 import { slotsToMarkdown } from './markdown-slots'
-import { createTestingMarkdown } from './markdown-testing'
-import { createThemingMarkdown } from './markdown-theming'
 
 const TOKEN_PATH = path.join(__dirname, '../../../../packages/tokens')
 
@@ -25,25 +23,42 @@ StyleDictionary.registerFormat({
       return value
     }
 
+    const formatBorderValue = (value: any) => {
+      return `${value.style} ${value.width} ${value.color}`
+    }
+
     const tokens = dictionary.allTokens
     if (tokens.length === 0) {
       return '## CSS Variables\n\nNo custom variables defined for this component.\n'
     }
 
     let output = '## CSS Variables\n\n'
-    output += 'The component can be customization by changing the CSS variables.\n'
+    output += 'The component can be customized by changing the CSS variables.\n\n'
     output +=
       '<a class="sb-unstyled button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>\n\n'
 
-    output += '| Variable | Reference | Value |\n'
-    output += '|----------|-------|-------|\n'
+    output += '<div style="overflow-x: auto; max-height: 600px; margin-top: 48px">\n'
+    output += '<table class="table w-full is-striped">\n'
+    output += '  <thead>\n'
+    output += '    <tr>\n'
+    output += '      <th style="border-top: none; border-left: none; border-right: none;">Variable</th>\n'
+    // output += '      <th style="border-top: none; border-left: none; border-right: none;">Reference</th>\n'
+    output += '      <th style="border-top: none; border-left: none; border-right: none;">Value</th>\n'
+    output += '    </tr>\n'
+    output += '  </thead>\n'
+    output += '  <tbody>\n'
+
+    // const formatKeyToCssVar = (key: string | undefined) => {
+    //   // create kebab-case css variable name from key like {color.red.500} => --color-red-500
+    //   if (!key) return ''
+    //   return `--${key.replace(/[{}]/g, '').replace(/\./g, '-')}`
+    // }
 
     tokens
       .filter(token => {
         return token.filePath?.includes('/packages/core/')
       })
       .forEach(token => {
-        const referenceToken = token.original.$value ? dictionary.tokenMap.get(token.original.$value) : ''
         const name = `--${token.name}`
 
         // Format shadow values if type is shadow
@@ -51,9 +66,39 @@ StyleDictionary.registerFormat({
         if (token.$type === 'shadow') {
           value = formatShadowValue(value)
         }
+        if (token.$type === 'border') {
+          value = formatBorderValue(value)
+        }
 
-        output += `| \`${name}\` | \`${referenceToken ? `--${referenceToken.name}` : ''}\` | \`${value}\` |\n`
+        // const referenceToken = token.original.key
+        //   ? dictionary.tokenMap.get(token.original.key)
+        //   : token.original.$value
+        //     ? dictionary.tokenMap.get(token.original.$value)
+        //     : ''
+        // const referenceTokenName = referenceToken ? `--${referenceToken.name}` : formatKeyToCssVar(token.original.key)
+
+        if (token.$type === 'color') {
+          const hex = value.hex ? value.hex : value
+
+          output += '    <tr>\n'
+          output += `      <td><code>${name}</code></td>\n`
+          // output += `      <td><code>${referenceTokenName}</code></td>\n`
+          output += `      <td>
+                <span style="height: 21px; width: 21px; display: inline-block; border: 1px solid #e5e7f0; background-color: ${hex}; border-radius: 3px; margin-right: 4px; vertical-align: middle;"></span>
+                <code>${String(hex).replace(/#/g, '\\#')}</code></td>\n`
+          output += '    </tr>\n'
+        } else {
+          output += '    <tr>\n'
+          output += `      <td><code>${name}</code></td>\n`
+          // output += `      <td><code>${referenceTokenName}</code></td>\n`
+          output += `      <td><code>${String(value).replace(/#/g, '\\#')}</code></td>\n`
+          output += '    </tr>\n'
+        }
       })
+
+    output += '  </tbody>\n'
+    output += '</table>\n'
+    output += '</div>\n'
 
     return output
   },
@@ -73,8 +118,8 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         const componentName = component.tag
         const storyPath = component.dirPath?.replace('packages/core/src', 'docs/src') || ''
 
-        const componentFolderDepth = component.filePath?.split(sep).length
-        const isRoot = componentFolderDepth === 4
+        // const componentFolderDepth = component.filePath?.split(sep).length
+        // const isRoot = componentFolderDepth === 4
 
         try {
           mkdirSync(storyPath, { recursive: true })
@@ -101,22 +146,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         } catch (err) {
           console.error(err)
         }
-
-        if (isRoot) {
-          // Testing
-          try {
-            createTestingMarkdown(storyPath, component)
-          } catch (err) {
-            console.error(err)
-          }
-
-          // Theming
-          try {
-            createThemingMarkdown(storyPath, component)
-          } catch (err) {
-            console.error(err)
-          }
-        }
       }
     }
 
@@ -141,6 +170,11 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
         // check if file exists
         if (!existsSync(varsFilePath)) {
+          try {
+            writeFileSync(path.join(storyPath, 'theming.md'), '')
+          } catch (err) {
+            console.error(err)
+          }
           continue
         }
 
@@ -171,73 +205,5 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         sd.buildPlatform('web')
       }
     }
-
-    // const cssVarsFiles = globSync(path.join(__dirname, '../../../css/src/core/vars', '*.vars.sass'))
-
-    // const cssVars: { [key: string]: JsonDocsStyle[] } = {}
-
-    // const camelize = s => s.replace(/-./g, x => ` ${x[1].toUpperCase()}`)
-
-    // const capitalized = s => s.charAt(0).toUpperCase() + s.slice(1)
-
-    // const getFileName = (filePath: string) =>
-    //   (filePath.split(path.sep).pop() || 'global.vars.sass').replace('.vars.sass', '')
-
-    // for (let index = 0; index < cssVarsFiles.length; index++) {
-    //   const cssVarsFile = cssVarsFiles[index]
-    //   const varsFile = readFileSync(cssVarsFile, 'utf8')
-    //   const styleDocs: JsonDocsStyle[] = []
-    //   parseStyleDocs(styleDocs, varsFile)
-    //   cssVars[capitalized(camelize(getFileName(cssVarsFile)))] = styleDocs
-    // }
-
-    // let themingLines: string[] = []
-    // for (const key in cssVars) {
-    //   const table = new MarkdownTable()
-    //   table.addHeader(['Variable'])
-    //   cssVars[key].forEach(styleVariable => {
-    //     table.addRow([`\`${styleVariable.name}\``])
-    //   })
-    //   themingLines = [...themingLines, '', `### ${key}`, '', ...table.toMarkdown()]
-    // }
-
-    // const contentTheming: string[] = [
-    //   `## Global CSS Variables`,
-    //   '',
-    //   'These are the variables of the CSS-Framework which inherit from the design tokens.',
-    //   '',
-    //   ...themingLines,
-    //   '',
-    // ]
-    // mkdirSync(path.join(DOC_PATH, 'src/development/00-guides/theming'), { recursive: true })
-    // writeFileSync(path.join(DOC_PATH, 'src/development/00-guides/theming/theming.md'), contentTheming.join(NEWLINE))
-
-    /**
-     * Create contributors page
-     */
-    //   const avatar =
-    //     (contributor: any) => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-purple-1 p-normal radius-normal text-large text-primary"
-    // >
-    //   <span className='block text-xx-large text-align-center'>
-    //     <img src="${contributor.avatar}" alt="${contributor.name}" />
-    //   </span>
-    //   <span className='block title text-medium text-align-center mb-none text-decoration-none'>${contributor.name}</span>
-    // </a>`
-
-    //   const contributorsContent = [
-    //     `<div className="sb-unstyled flex flex-wrap gap-normal">`,
-    //     ...contributors.map(c => avatar(c)),
-    //     `</div>`,
-    //     SPACE,
-    //   ]
-
-    //   try {
-    //     writeFileSync(
-    //       path.join(DOC_PATH, 'src', 'contributing', 'contributors.md'),
-    //       contributorsContent.join(NEWLINE),
-    //     )
-    //   } catch (err) {
-    //     console.error(err)
-    //   }
   },
 }

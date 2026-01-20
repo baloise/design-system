@@ -10,12 +10,12 @@
  */
 
 :root {
-  --bal-pagination-small-background: var(--bal-color-grey);
-  --bal-pagination-small-radius: var(--bal-radius-normal);
+  --bal-pagination-small-background: var(--bal-color-brand-grey-base);
+  --bal-pagination-small-radius: var(--bal-radius-base);
   --bal-pagination-tabs-background: var(--bal-color-white);
-  --bal-pagination-tabs-shadow: var(--bal-shadow-normal);
+  --bal-pagination-tabs-shadow: var(--bal-shadow-base);
   --bal-pagination-tabs-radius: var(--bal-radius-large);
   --bal-pagination-dot-radius: var(--bal-radius-rounded);
-  --bal-pagination-dot-background-active: var(--bal-color-primary);
+  --bal-pagination-dot-background-active: var(--bal-color-brand-primary-base);
   --bal-pagination-dot-background-inactive: var(--bal-color-white);
 }

@@ -11,7 +11,7 @@
       },
       "comment": ""
     },
-    "normal": {
+    "base": {
       "$value": {
         "color": "rgba(0, 7, 57, 0.15)",
         "offsetX": "0",
@@ -40,12 +40,83 @@
         "spread": "0"
       },
       "comment": "Shadow effect for a header bar"
-    }
-  },
-  "text": {
-    "shadow": {
-      "$type": "shadow",
-      "normal": {
+    },
+    "outline": {
+      "base": {
+        "$value": [
+          {
+            "color": "{color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "{color.brand.purple.darkest}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "base-inset": {
+        "$value": [
+          {
+            "color": "inset {color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "inset {color.brand.purple.darkest}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "inverted": {
+        "$value": [
+          {
+            "color": "{color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "{color.brand.yellow.base}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "inverted-inset": {
+        "$value": [
+          {
+            "color": "inset {color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "inset {color.brand.yellow.base}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      }
+    },
+    "text": {
+      "base": {
         "$value": [
           {
             "color": "rgba(0, 0, 0, 0.15)",

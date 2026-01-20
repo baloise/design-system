@@ -5,7 +5,7 @@ const config: Config = {
   platforms: {
     'css': {
       transformGroup: 'css',
-      transforms: ['size/pxToRem', 'bal/css/name'],
+      transforms: ['size/pxToRem', 'bal/color/rgba', 'bal/css/name'],
       basePxFontSize: 16,
       buildPath: 'dist/',
       prefix: 'bal',
@@ -13,10 +13,20 @@ const config: Config = {
         {
           destination: 'tokens.css',
           format: 'css/variables',
+          filter: token => !token.filePath.includes('deprecated.json'),
         },
         {
           destination: '../../core/www/assets/tokens.css',
           format: 'css/variables',
+          filter: token => !token.filePath.includes('deprecated.json'),
+        },
+        {
+          destination: 'tokens.deprecated.css',
+          format: 'css/variables',
+          filter: token => token.filePath.includes('deprecated.json'),
+          options: {
+            outputReferences: false,
+          },
         },
         {
           format: 'json',
@@ -24,6 +34,7 @@ const config: Config = {
           options: {
             outputReferences: true,
           },
+          filter: token => !token.filePath.includes('deprecated.json'),
         },
       ],
       options: {
@@ -32,7 +43,7 @@ const config: Config = {
     },
     'scss': {
       transformGroup: 'scss',
-      transforms: ['size/pxToRem', 'bal/css/name'],
+      transforms: ['size/pxToRem', 'bal/color/rgba', 'bal/css/name'],
       basePxFontSize: 16,
       buildPath: 'dist/',
       prefix: 'bal',
@@ -48,7 +59,7 @@ const config: Config = {
     },
     'js': {
       transformGroup: 'js',
-      transforms: ['size/pxToRem', 'name/camel', 'bal/css/name'],
+      transforms: ['size/pxToRem', 'bal/color/rgba', 'name/camel', 'bal/css/name'],
       buildPath: 'dist/',
       prefix: 'bal',
       files: [
@@ -224,6 +235,26 @@ const config: Config = {
 }
 
 StyleDictionary.registerTransform({
+  type: `value`,
+  transitive: true,
+  name: `bal/color/rgba`,
+  filter: token => token.$type === 'color',
+  transform: (token, _options) => {
+    const value = token.$value ?? token.value
+    // Handle object values with hex and alpha properties
+    if (typeof value === 'object' && value !== null && 'hex' in value && 'alpha' in value) {
+      const hex = value.hex.replace('#', '')
+      const r = parseInt(hex.substring(0, 2), 16)
+      const g = parseInt(hex.substring(2, 4), 16)
+      const b = parseInt(hex.substring(4, 6), 16)
+      const a = parseFloat(value.alpha)
+      return `rgba(${r}, ${g}, ${b}, ${a})`
+    }
+    return value
+  },
+})
+
+StyleDictionary.registerTransform({
   type: `name`,
   transitive: true,
   name: `bal/css/name`,
@@ -257,6 +288,13 @@ StyleDictionary.registerTransform({
       if (endsWithDefault) {
         tokenName = tokenName.replace('Default', '')
       }
+    }
+
+    // Remove 'deprecated' prefix for deprecated tokens
+    if (isKebabCase) {
+      tokenName = tokenName.replace('bal-deprecated-', 'bal-')
+    } else {
+      tokenName = tokenName.replace('balDeprecated', 'bal').replace('BalDeprecated', 'Bal')
     }
 
     return tokenName

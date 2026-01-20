@@ -1,30 +1,19 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
+import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { rOnLoad } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-button',
-  styleUrl: 'bal-button.scss',
+  styleUrl: 'bal-button.host.scss',
+  shadow: true,
+  formAssociated: true,
 })
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}
+  @AttachInternals() internals!: ElementInternals
 
   @Element() el!: HTMLStencilElement
-
-  @State() isLargestContentPaintDone = false
 
   /**
    * The color to use from your application's color palette.
@@ -204,10 +193,6 @@ export class Button implements ComponentInterface {
     }
   }
 
-  componentDidLoad(): void {
-    rOnLoad(() => (this.isLargestContentPaintDone = true))
-  }
-
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -231,9 +216,19 @@ export class Button implements ComponentInterface {
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
+    const colorMap: Record<string, string> = {
+      'light': 'accent',
+      'text': 'tertiary',
+      'info': 'info',
+      'primary-light': 'primary',
+      'info-light': 'info',
+    }
+
+    const color = colorMap[this.color] || this.color
+
     return {
       'button': true,
-      [`is-${this.color}`]: true,
+      [`is-${color}`]: true,
       'is-flat': this.flat,
       'is-square': this.square,
       'is-small': this.size === 'small',
@@ -244,7 +239,7 @@ export class Button implements ComponentInterface {
       'is-disabled': this.disabled,
       'is-loading': this.loading,
       'is-rounded': this.rounded === true,
-      'has-blur-shadow': this.shadow === true,
+      'has-shadow': this.shadow === true,
     }
   }
 
@@ -294,6 +289,13 @@ export class Button implements ComponentInterface {
 
   private onClick = (ev: MouseEvent) => {
     if (!this.disabled) {
+      if (this.elementType === 'submit') {
+        this.internals.form?.requestSubmit()
+      }
+      if (this.elementType === 'reset') {
+        this.internals.form?.reset()
+      }
+
       this.balClick.emit(ev)
 
       if (this.href !== undefined) {
@@ -344,10 +346,7 @@ export class Button implements ComponentInterface {
       <Host
         onClick={this.handleClick}
         class={{
-          'bal-button': true,
-          'control': true,
           'is-fullwidth': this.expanded,
-          'is-disabled': this.disabled,
         }}
       >
         <TagType
@@ -364,12 +363,12 @@ export class Button implements ComponentInterface {
           data-testid="bal-button"
           {...ariaAttributes}
         >
-          {this.isLargestContentPaintDone && this.loading ? (
+          {this.loading ? (
             <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           ) : (
             ''
           )}
-          {this.isLargestContentPaintDone && this.icon ? (
+          {this.icon ? (
             <bal-icon
               {...this.leftIconAttrs}
               class={this.square ? '' : 'icon-left'}
@@ -392,7 +391,7 @@ export class Button implements ComponentInterface {
           >
             <slot />
           </span>
-          {this.isLargestContentPaintDone && this.iconRight ? (
+          {this.iconRight ? (
             <bal-icon
               {...this.leftRightAttrs}
               class="icon-right"
