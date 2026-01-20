@@ -6,7 +6,7 @@ import { Code } from './Code'
 import { AngularFramework } from './Framework'
 import { Tabs } from './Tabs'
 
-type InfoQuoteProps = PropsWithChildren<{}>
+type InfoQuoteProps = PropsWithChildren
 
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
