@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.0.0-next.1
+
+### Major Changes
+
+- **core**: introducing first components with shadow dom and component tokens ( [#1856](https://github.com/baloise/design-system/pull/1856))
+
 ## 20.0.0-next.0
 
 ### Major Changes
