@@ -1,15 +1,15 @@
 {
   "name": "docs",
   "private": true,
-  "version": "15.2.50",
+  "version": "15.2.51-next.0",
   "type": "module",
   "scripts": {
     "start": "storybook dev -p 6006",
     "build": "storybook build"
   },
   "dependencies": {
-    "@baloise/ds-core": "19.8.4",
-    "@baloise/ds-styles": "19.8.4",
+    "@baloise/ds-core": "20.0.0-next.0",
+    "@baloise/ds-styles": "20.0.0-next.0",
     "@storybook/addon-docs": "^10.0.8",
     "@storybook/addon-links": "^10.0.8",
     "@storybook/html-vite": "^10.0.8",

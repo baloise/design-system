@@ -1,5 +1,5 @@
 ---
-'@baloise/ds-core': patch
+'@baloise/ds-core': major
 ---
 
-**core**: improve slot handling
+**core**: introducing first components with shadow dom and component tokens
