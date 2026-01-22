@@ -28,6 +28,8 @@ const shouldAndAndCommand = (
   value: any,
   options: any,
 ) => {
+  const hasShadowRoot = (element as any)[0]?.shadowRoot
+
   if (isAccordion(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
       return originalFn(element.find(selectors.accordion.trigger, { log: false }), condition, key, value, options)
@@ -36,6 +38,13 @@ const shouldAndAndCommand = (
 
   if (isButton(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
+      if (hasShadowRoot) {
+        return cy
+          .wrap(element)
+          .shadow()
+          .find(selectors.button.native, { log: false })
+          .should(condition as any, key, value)
+      }
       return originalFn(element.find(selectors.button.native, { log: false }), condition, key, value, options)
     }
   }
@@ -52,27 +61,52 @@ const shouldAndAndCommand = (
     }
 
     if ('be.checked' === condition) {
-      return originalFn(element, 'have.attr', 'aria-checked', 'true', options)
+      return originalFn(
+        hasShadowRoot ? cy.wrap(element).shadow() : element,
+        'have.attr',
+        'aria-checked',
+        'true',
+        options,
+      )
     }
 
     if ('not.be.checked' === condition) {
-      return originalFn(element, 'have.attr', 'aria-checked', 'false', options)
+      console.log('shouldAndAndCommand', hasShadowRoot, element)
+      return originalFn(
+        hasShadowRoot ? cy.wrap(element).shadow() : element,
+        'have.attr',
+        'aria-checked',
+        'false',
+        options,
+      )
     }
 
     if ('be.disabled' === condition) {
-      return originalFn(element, 'have.attr', 'aria-disabled', 'true', options)
+      return originalFn(
+        hasShadowRoot ? cy.wrap(element).shadow() : element,
+        'have.attr',
+        'aria-disabled',
+        'true',
+        options,
+      )
     }
 
     if ('not.be.disabled' === condition) {
-      return originalFn(element, 'not.have.attr', 'aria-disabled', options)
+      return originalFn(hasShadowRoot ? cy.wrap(element).shadow() : element, 'not.have.attr', 'aria-disabled', options)
     }
 
     if ('be.focused' === condition) {
-      return originalFn(element, 'have.attr', 'aria-focused', 'true', options)
+      return originalFn(
+        hasShadowRoot ? cy.wrap(element).shadow() : element,
+        'have.attr',
+        'aria-focused',
+        'true',
+        options,
+      )
     }
 
     if ('not.be.focused' === condition) {
-      return originalFn(element, 'not.have.attr', 'aria-focused', options)
+      return originalFn(hasShadowRoot ? cy.wrap(element).shadow() : element, 'not.have.attr', 'aria-focused', options)
     }
   }
 

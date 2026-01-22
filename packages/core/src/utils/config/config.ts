@@ -167,7 +167,7 @@ export const config = /*@__PURE__*/ new Config()
 
 export const configFromLocalStorage = (win: Window): any => {
   try {
-    const animated = JSON.parse(win.localStorage.getItem(BALOISE_ANIMATION_KEY))
+    const animated = JSON.parse(win.localStorage.getItem(BALOISE_ANIMATION_KEY) || 'true')
 
     if (animated !== null) {
       return {

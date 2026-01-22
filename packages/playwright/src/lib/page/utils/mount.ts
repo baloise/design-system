@@ -1,5 +1,6 @@
 import type { TestInfo } from '@playwright/test'
 import type { BalPage } from '../../types'
+import { waitForChanges } from './wait-for-changes'
 
 export const mount = async (page: BalPage, content: string, testInfo: TestInfo) => {
   if (page.isClosed()) {
@@ -27,6 +28,13 @@ export const mount = async (page: BalPage, content: string, testInfo: TestInfo) 
     })
 
     await page.goto(`${baseUrl}#`)
+
+    await waitForChanges(page)
+    await page.waitForFunction(
+      () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+      {},
+      { timeout: 5000 },
+    )
   } else {
     throw new Error('setContent unavailable: no dev server base URL provided')
   }
@@ -43,8 +51,8 @@ const template = (html: string) => `
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
 
-    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
+    <link rel="preload" href="/build/baloise-design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/build/baloise-design-system.css" /></noscript>
   </head>
 
   <body>

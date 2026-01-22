@@ -23,7 +23,7 @@ import { toKebabCase } from '../../../utils/string'
 })
 export class CarouselItem implements ComponentInterface {
   private imageInheritAttributes: Attributes = {}
-  private buttonEl: HTMLButtonElement | HTMLLinkElement
+  private buttonEl: HTMLAnchorElement | HTMLButtonElement | undefined
 
   @Element() el!: HTMLStencilElement
 

@@ -6,7 +6,7 @@ import { Component, Host, h } from '@stencil/core'
 export class CardContent {
   render() {
     return (
-      <Host class="bal-card-content">
+      <Host class="card-content">
         <slot></slot>
       </Host>
     )

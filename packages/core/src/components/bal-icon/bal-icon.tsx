@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State } from '@stencil/core'
-import camelCase from 'lodash.camelcase'
-import upperFirst from 'lodash.upperfirst'
+import camelCase from 'lodash/camelCase'
+import upperFirst from 'lodash/upperFirst'
 import { BEM } from '../../utils/bem'
 import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
@@ -8,7 +8,11 @@ import { sanitizeSvg } from '../../utils/svg'
 
 @Component({
   tag: 'bal-icon',
-  styleUrl: 'bal-icon.sass',
+  styleUrl: 'bal-icon.scss',
+  /**
+   * Do not enable shadow DOM here because we want to style the inner svg from outside
+   */
+  shadow: false,
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentInterface {
   @State() icons: BalIcons = defaultConfig.icons
@@ -126,7 +130,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
    * ------------------------------------------------------
    */
 
-  private generateSvgContent = (iconName: string) => {
+  private generateSvgContent = (iconName: string | undefined) => {
     const hasIcons = Object.keys(this.icons).length > 0
 
     if (hasIcons && iconName && iconName.length > 0) {

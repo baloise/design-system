@@ -6,14 +6,14 @@ import { BalKeyboardInfo } from './keyboard.interfaces'
 export class BalKeyboardListener<TObserver> extends ListenerAbstract<TObserver, BalKeyboardInfo> {
   private info: BalKeyboardInfo = { keyboardFocus: false }
 
-  connect(el: HTMLElement): void {
+  override connect(el: HTMLElement): void {
     super.connect(el)
     addEventListener(this.el, 'keydown', this.onKeydown)
     addEventListener(this.el, 'touchstart', this.onPointerDown)
     addEventListener(this.el, 'mousedown', this.onPointerDown)
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     if (this.el) {
       removeEventListener(this.el, 'keydown', this.onKeydown as any)

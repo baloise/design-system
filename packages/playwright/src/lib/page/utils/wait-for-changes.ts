@@ -1,7 +1,7 @@
-import type { BalPage } from '../../types'
 import type { HostElement } from '@stencil/core/internal'
+import type { BalPage } from '../../types'
 
-export const waitForChanges = async (page: BalPage, timeoutMs = 100) => {
+export const waitForChanges = async (page: BalPage, timeoutMs = 300) => {
   try {
     if (page.isClosed()) {
       /**
@@ -49,6 +49,7 @@ export const waitForChanges = async (page: BalPage, timeoutMs = 100) => {
     if (page.isClosed()) {
       return
     }
+    await page.waitForLoadState('networkidle')
     await page.waitForTimeout(timeoutMs)
   } catch (e) {
     console.error(e)

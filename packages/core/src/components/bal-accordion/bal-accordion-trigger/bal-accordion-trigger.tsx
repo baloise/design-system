@@ -9,7 +9,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nBalAccordion } from '../bal-accordion.i18n'
 
 type BaseProps = {
-  variant: BalProps.BalAccordionTriggerVariant
+  variant?: BalProps.BalAccordionTriggerVariant
   id: string
   label: string
   icon: string
@@ -38,7 +38,7 @@ type TextProps = BaseProps & {
 
 @Component({
   tag: 'bal-accordion-trigger',
-  styleUrl: 'bal-accordion-trigger.sass',
+  styleUrl: 'bal-accordion-trigger.scss',
 })
 export class AccordionTrigger implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-trigger-${accordionTriggerIds++}`
@@ -69,7 +69,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   /**
    * Defines the nature of the accordion trigger.
    */
-  @Prop() variant: BalProps.BalAccordionTriggerVariant
+  @Prop() variant?: BalProps.BalAccordionTriggerVariant
 
   /**
    * If `true` the button is aligned over the whole width
@@ -99,7 +99,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: BalProps.BalButtonColor = 'info'
+  @Prop() color: BalProps.BalButtonColor = 'secondary'
 
   /**
    * Size of the button
@@ -148,7 +148,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private get realVariant(): BalProps.BalAccordionTriggerVariant {
+  private get realVariant(): BalProps.BalAccordionTriggerVariant | undefined {
     if (this.button) {
       return 'button'
     }

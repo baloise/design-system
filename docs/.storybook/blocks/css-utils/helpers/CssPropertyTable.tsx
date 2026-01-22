@@ -20,7 +20,7 @@ export const CssUtilitiesTable = ({
   list?: any[]
   search: string | string[]
   example?: any
-}) => {
+}): React.ReactElement => {
   function getValues(list, search) {
     let results: CssUtility[] = []
     if (!Array.isArray(search)) {

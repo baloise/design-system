@@ -1,0 +1,35 @@
+@use 'general.mixin' as *;
+
+%bottomSpacing {
+  @include bottomSpacing;
+}
+%hidden-input {
+  @include hidden-input;
+}
+%focus-shadow {
+  @include focus-shadow;
+}
+%focus-inverted-shadow {
+  @include focus-inverted-shadow;
+}
+%focus-inset-shadow {
+  @include focus-inset-shadow;
+}
+%focus-inverted-inset-shadow {
+  @include focus-inverted-inset-shadow;
+}
+%disabled {
+  @include disabled;
+}
+%unselectable {
+  @include unselectable;
+}
+%font-smoothing {
+  @include font-smoothing;
+}
+%reset {
+  @include reset;
+}
+%overlay {
+  @include overlay;
+}

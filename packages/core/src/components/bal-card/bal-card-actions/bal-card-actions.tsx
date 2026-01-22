@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 @Component({
   tag: 'bal-card-actions',
 })
@@ -10,7 +10,7 @@ export class CardActions {
 
   render() {
     return (
-      <Host class="bal-card-actions">
+      <Host class="card-footer">
         <bal-button-group class="m-none" position={this.position}>
           <slot />
         </bal-button-group>

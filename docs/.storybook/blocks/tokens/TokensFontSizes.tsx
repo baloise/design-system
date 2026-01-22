@@ -1,9 +1,9 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensFontSize = ({ overview }) => {
-  const list = tokens.size.text.size
+export const TokensFontSize = ({ overview }): React.ReactElement => {
+  const list = tokens.text.size
 
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
@@ -26,7 +26,8 @@ export const TokensFontSize = ({ overview }) => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
-                  {item?.mobile?.value || '0rem'} / {item?.tablet?.value || '0rem'} / {item?.desktop?.value || '0rem'}
+                  {item?.mobile?.$value || '0rem'} / {item?.tablet?.$value || '0rem'} /{' '}
+                  {item?.desktop?.$value || '0rem'}
                 </p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">

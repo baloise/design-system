@@ -1,9 +1,9 @@
-import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-snackbar',
-  styleUrl: 'bal-snackbar.sass',
+  styleUrl: 'bal-snackbar.scss',
 })
 export class Snackbar {
   @Element() element!: HTMLElement
@@ -102,20 +102,6 @@ export class Snackbar {
     this.actionHandler()
   }
 
-  // get colorType() {
-  //   if (this.color === '') {
-  //     return ''
-  //   }
-  //   return `bal-snackbar__inner--is-${this.color}`
-  // }
-
-  // get buttonType(): BalProps.BalButtonColor {
-  //   if (this.color === '') {
-  //     return 'info'
-  //   }
-  //   return this.color
-  // }
-
   render() {
     const block = BEM.block('snackbar')
     const detailsEl = block.element('details')
@@ -178,7 +164,7 @@ export class Snackbar {
         {this.action ? (
           <div class={{ ...buttonWrapperEl.class() }}>
             <bal-button
-              color="info"
+              color="secondary"
               size="small"
               href={this.href}
               target={this.target}

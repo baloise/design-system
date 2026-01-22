@@ -1,7 +1,5 @@
 #storybook-docs > .sbdocs-wrapper {
-  /* padding: 0 4rem 4rem 4rem; */
   padding: 1rem 3rem 3rem 3rem;
-  justify-content: flex-start;
 }
 
 #storybook-docs > .sbdocs-wrapper > .sbdocs-content {
@@ -177,7 +175,7 @@ a.sbdocs-a:not(.button) {
  ***************************************/
 
 blockquote {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary) !important;
   font-size: var(--bal-text-size-small) !important;
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
@@ -325,11 +323,11 @@ a > code {
 }
 
 .doc-shadow-hover:hover {
-  box-shadow: var(--bal-shadow-normal) !important;
+  box-shadow: var(--bal-shadow-base) !important;
 }
 
 .doc-shadow-large-hover {
-  box-shadow: var(--bal-shadow-normal);
+  box-shadow: var(--bal-shadow-base);
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 
@@ -472,7 +470,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   text-decoration: none;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: var(--bal-shadow-normal);
+  box-shadow: var(--bal-shadow-base);
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: #fff9e8;
 }
@@ -566,4 +564,8 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .clipboard-button:active > pre > code {
   background-color: #ced0d8 !important;
   color: var(--bal-color-primary-6) !important;
+}
+
+.radius-bottom-large {
+  border-radius: 0 0 12px 12px !important;
 }

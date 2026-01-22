@@ -6,6 +6,7 @@ export interface BalTabOption {
   label: string
   href?: string
   rel?: string
+  a11yControls?: string
   tabPanelID?: string
   target: BalProps.BalButtonTarget
   active: boolean
@@ -17,8 +18,8 @@ export interface BalTabOption {
   passed?: boolean
   index?: number
   context?: BalProps.BalTabsContext
-  navigate?: EventEmitter<Event>
-  keyDown?: EventEmitter<Event>
+  navigate?: EventEmitter<MouseEvent>
+  keyDown?: EventEmitter<KeyboardEvent>
   trackingData?: Attributes
   hidden?: boolean // deprecated use invisible instead
   noPanel?: boolean

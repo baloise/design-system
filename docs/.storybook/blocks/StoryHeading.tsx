@@ -1,5 +1,5 @@
-import { Unstyled, useOf } from '@storybook/blocks'
 import React from 'react'
+import { Unstyled, useOf } from '@storybook/addon-docs/blocks'
 
 export const StoryHeading = ({ of, children, hidden }) => {
   const { story } = useOf(of || 'story', ['story'])

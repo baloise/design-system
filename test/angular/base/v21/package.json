@@ -1,0 +1,43 @@
+{
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "link": "bash scripts/link.sh",
+    "copy": "bash scripts/copy.sh",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "ng:test": "ng test",
+    "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",
+    "e2e:test": "npm run cy:open",
+    "e2e:server": "npm run start",
+    "cy:install": "cypress install",
+    "cy:open": "cypress open --browser chrome",
+    "cy:start": "node ./web-server.js"
+  },
+  "dependencies": {
+    "@angular/animations": "^21.0.0-rc.2",
+    "@angular/common": "^21.0.0-rc.2",
+    "@angular/compiler": "^21.0.0-rc.2",
+    "@angular/core": "^21.0.0-rc.2",
+    "@angular/forms": "^21.0.0-rc.2",
+    "@angular/platform-browser": "^21.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "^21.0.0-rc.2",
+    "@angular/router": "^21.0.0-rc.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.0-rc.2",
+    "@angular/cli": "~21.0.0-rc.2",
+    "@angular/compiler-cli": "^21.0.0-rc.2",
+    "jsdom": "^27.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8",
+    "compression": "~1.8.1",
+    "cypress": "~13.6.3",
+    "serve-index": "~1.9.1"
+  }
+}

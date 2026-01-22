@@ -1,6 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { BEM } from '../../utils/bem'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -16,7 +15,7 @@ import { i18nBalLabel } from './bal-label.i18n'
 
 @Component({
   tag: 'bal-label',
-  styleUrl: './bal-label.sass',
+  styleUrl: './bal-label.host.scss',
 })
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
   @Element() el!: HTMLStencilElement
@@ -70,22 +69,22 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop() valid?: boolean = undefined
+  @Prop() valid = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid?: boolean = undefined
+  @Prop() invalid = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled?: boolean = undefined
+  @Prop() disabled = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly?: boolean = undefined
+  @Prop() readonly = false
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
@@ -142,7 +141,6 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    */
 
   render() {
-    const block = BEM.block('label')
     const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
     const disabled = !!this.disabled || !!this.readonly
     const danger = !!this.invalid
@@ -158,25 +156,25 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
     const htmlFor = this.htmlFor || this.ariaForm.controlId
 
     return (
-      <Host class={{ ...block.class() }}>
+      <Host>
         <label
           id={id}
           htmlFor={htmlFor}
           class={{
-            ...block.element('native').class(),
-            ...block.element('native').modifier('multiline').class(this.multiline),
-            ...block.element('native').modifier('no-wrap').class(this.noWrap),
-            ...block.element('native').modifier('disabled').class(disabled),
-            ...block.element('native').modifier('danger').class(danger),
-            ...block.element('native').modifier('success').class(success),
-            ...block.element('native').modifier('regular').class(regular),
-            ...block.element('native').modifier('small').class(small),
-            ...block.element('native').modifier('large').class(large),
-            ...block.element('native').modifier('x-large').class(xLarge),
-            ...block.element('native').modifier('xx-large').class(xxLarge),
-            ...block.element('native').modifier('xxx-large').class(xxxLarge),
-            ...block.element('native').modifier('hovered').class(this.hovered),
-            ...block.element('native').modifier('pressed').class(this.pressed),
+            'label': true,
+            'is-multiline': this.multiline,
+            'has-no-wrap': this.noWrap,
+            'is-disabled': disabled,
+            'is-danger': danger,
+            'is-success': success,
+            'is-regular': regular,
+            'is-small': small,
+            'is-large': large,
+            'is-x-large': xLarge,
+            'is-xx-large': xxLarge,
+            'is-xxx-large': xxxLarge,
+            'is-hovered': this.hovered,
+            'is-pressed': this.pressed,
           }}
         >
           <slot></slot>

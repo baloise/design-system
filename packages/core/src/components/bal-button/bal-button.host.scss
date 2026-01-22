@@ -1,0 +1,24 @@
+$has-spacing: false;
+
+@forward '../../../../styles/sass/normalize';
+@forward './bal-button.core';
+@forward '../bal-link/bal-link.core';
+
+/**
+  * Host Style
+  */
+
+:host {
+  --badge-position: absolute;
+  --badge-position-top: -0.5rem;
+  --badge-position-right: -0.5rem;
+
+  display: inline-block;
+  position: static;
+  margin: 0;
+  padding: 0;
+}
+
+:host(.is-fullwidth) {
+  width: 100%;
+}

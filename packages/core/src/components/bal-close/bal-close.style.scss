@@ -1,0 +1,164 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+// Close icon SVG encoded as data URI
+$close-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill-rule='evenodd' d='M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+
+.close {
+  @include unselectable;
+
+  display: inline-block;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  background: var(--bal-close-color-background-base);
+  border-radius: var(--bal-close-radius-base);
+
+  /**
+    * Icon
+    */
+  &::after {
+    content: '';
+    display: block;
+
+    // Use mask-image to allow background-color to define the icon color
+    mask-image: $close-icon;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    // Default color (blue/primary)
+    background-color: var(--bal-close-color-icon-base);
+  }
+
+  /**
+    * Inverted
+    */
+  &.is-inverted::after {
+    background-color: var(--bal-close-color-icon-inverted);
+  }
+
+  /**
+    * Sizes
+    */
+
+  padding: 0.313rem;
+
+  &::after {
+    width: 12px;
+    height: 12px;
+  }
+
+  &.is-small {
+    padding: 0.25rem;
+
+    &::after {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &.is-medium {
+    padding: 0.531rem;
+
+    &::after {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  /**
+    * States
+    */
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      background: var(--bal-close-color-background-hover);
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    background: var(--bal-close-color-background-active);
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      box-shadow: var(--bal-close-shadow-outline-base);
+    }
+  }
+
+  &.is-inverted {
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        background: var(--bal-close-color-background-inverted-hover);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      background: var(--bal-close-color-background-inverted-active);
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        box-shadow: var(--bal-close-shadow-outline-inverted);
+      }
+    }
+  }
+}
+
+/**
+  * Close inside tag
+  */
+.tag {
+  &.is-small > .close {
+    padding: 0.25rem;
+
+    &::after {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &.is-grey,
+  &.is-info,
+  &.is-success,
+  &.is-danger,
+  &.is-purple-dark,
+  &.is-red-dark,
+  &.is-green-dark,
+  &.is-yellow-dark,
+  &.is-primary {
+    > .close {
+      &::after {
+        background-color: var(--bal-close-color-icon-inverted);
+      }
+
+      @include hover {
+        &:hover,
+        &.is-hovered {
+          background: var(--bal-close-color-background-inverted-hover);
+        }
+      }
+
+      &:active,
+      &.is-pressed {
+        background: var(--bal-close-color-background-inverted-active);
+      }
+
+      &:focus-visible,
+      &.is-focused {
+        &:not(:active) {
+          box-shadow: var(--bal-close-shadow-outline-inverted);
+        }
+      }
+    }
+  }
+}

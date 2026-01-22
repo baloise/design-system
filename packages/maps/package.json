@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-maps",
-  "version": "19.8.4",
+  "version": "20.0.0-next.1",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -12,5 +12,8 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "type": "module",
-  "types": "./index.esm.d.ts"
+  "types": "./index.esm.d.ts",
+  "devDependencies": {
+    "@types/google.maps": "~3.58.1"
+  }
 }

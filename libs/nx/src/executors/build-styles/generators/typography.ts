@@ -50,7 +50,7 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
 
 const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'size.text.line-height',
+    token: 'text.line-height',
     property: 'line-height',
     responsive: false,
     replace: 'text-',
@@ -99,7 +99,7 @@ const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }
 }
 
 const generateFontSize = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'size.text.size', ...options })
+  const tokens = await utils.getTokens({ token: 'text.size', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop'] })
   const property = 'font-size'
 
@@ -135,7 +135,7 @@ const generateTextTransform = () => {
 }
 
 const generateFontWeight = async (options: BuildStylesExecutorSchema) => {
-  return utils.staticClassByToken({ token: 'size.font.weight', property: 'font-weight', responsive: false, ...options })
+  return utils.staticClassByToken({ token: 'font.weight', property: 'font-weight', responsive: false, ...options })
 }
 
 const generateWhiteSpace = () => {

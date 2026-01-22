@@ -1,0 +1,271 @@
+{
+  "$description": "Deprecated tokens for backward compatibility. These will be removed in a future major version.",
+  "deprecated": {
+    "container": {
+      "size": {
+        "normal": {
+          "$value": "{container.size.base}",
+          "comment": "@deprecated Use container.size.base instead"
+        }
+      }
+    },
+    "shadow": {
+      "normal": {
+        "$type": "shadow",
+        "$value": "{shadow.base}",
+        "comment": "@deprecated Use shadow.base instead"
+      },
+      "text": {
+        "normal": {
+          "$type": "shadow",
+          "$value": "{shadow.text.base}",
+          "comment": "@deprecated Use shadow.text.base instead"
+        }
+      }
+    },
+    "border": {
+      "width": {
+        "normal": {
+          "$type": "dimension",
+          "$value": "{border.width.base}",
+          "comment": "@deprecated Use border.width.base instead"
+        }
+      }
+    },
+    "radius": {
+      "normal": {
+        "$type": "dimension",
+        "$value": "{radius.base}",
+        "comment": "@deprecated Use radius.base instead"
+      }
+    },
+    "color": {
+      "$type": "color",
+      "primary": {
+        "$value": "{color.primary.5}",
+        "comment": "@deprecated Use color.primary.5 or color.brand.primary.darker instead"
+      },
+      "grey": {
+        "$value": "{color.grey.3}",
+        "comment": "@deprecated Use color.grey.3 instead"
+      },
+      "light-blue": {
+        "$value": "{color.light-blue.1}",
+        "comment": "@deprecated Use color.light-blue.1 instead"
+      },
+      "purple": {
+        "$value": "{color.purple.3}",
+        "comment": "@deprecated Use color.purple.3 instead"
+      },
+      "green": {
+        "$value": "{color.green.3}",
+        "comment": "@deprecated Use color.green.3 instead"
+      },
+      "yellow": {
+        "$value": "{color.yellow.3}",
+        "comment": "@deprecated Use color.yellow.3 instead"
+      },
+      "red": {
+        "$value": "{color.red.3}",
+        "comment": "@deprecated Use color.red.3 instead"
+      },
+      "info": {
+        "$value": "{color.info.3}",
+        "comment": "@deprecated Use color.info.3 instead"
+      },
+      "success": {
+        "$value": "{color.success.3}",
+        "comment": "@deprecated Use color.success.3 instead"
+      },
+      "warning": {
+        "$value": "{color.warning.3}",
+        "comment": "@deprecated Use color.warning.3 instead"
+      },
+      "danger": {
+        "$value": "{color.danger.3}",
+        "comment": "@deprecated Use color.danger.3 instead"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.border.base}",
+        "comment": "@deprecated Use color.border.base instead",
+        "grey": {
+          "$value": "{color.border.grey.base}",
+          "comment": "@deprecated Use color.border.grey.base instead"
+        },
+        "primary": {
+          "$value": "{color.border.primary.base}",
+          "comment": "@deprecated Use color.border.primary.base instead",
+          "hovered": {
+            "$value": "{color.border.primary.hover}",
+            "comment": "@deprecated Use color.border.primary.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.primary.active}",
+            "comment": "@deprecated Use color.border.primary.active instead"
+          }
+        },
+        "inverted": {
+          "primary": {
+            "$value": "{color.border.inverted-primary.base}",
+            "comment": "@deprecated Use color.border.inverted.primary.base instead",
+            "hovered": {
+              "$value": "{color.border.inverted-primary.hover}",
+              "comment": "@deprecated Use color.border.inverted-primary.hover instead"
+            },
+            "pressed": {
+              "$value": "{color.border.inverted-primary.active}",
+              "comment": "@deprecated Use color.border.inverted-primary.active instead"
+            }
+          }
+        },
+        "info": {
+          "$value": "{color.border.info.base}",
+          "comment": "@deprecated Use color.border.info.base instead",
+          "hovered": {
+            "$value": "{color.border.info.hover}",
+            "comment": "@deprecated Use color.border.info.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.info.active}",
+            "comment": "@deprecated Use color.border.info.active instead"
+          }
+        },
+        "success": {
+          "$value": "{color.border.success.base}",
+          "comment": "@deprecated Use color.border.success.base instead",
+          "hovered": {
+            "$value": "{color.border.success.hover}",
+            "comment": "@deprecated Use color.border.success.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.success.active}",
+            "comment": "@deprecated Use color.border.success.active instead"
+          }
+        },
+        "warning": {
+          "$value": "{color.border.warning.base}",
+          "comment": "@deprecated Use color.border.warning.base instead",
+          "hovered": {
+            "$value": "{color.border.warning.hover}",
+            "comment": "@deprecated Use color.border.warning.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.warning.active}",
+            "comment": "@deprecated Use color.border.warning.active instead"
+          }
+        },
+        "danger": {
+          "$value": "{color.border.danger.base}",
+          "comment": "@deprecated Use color.border.danger.base instead",
+          "hovered": {
+            "$value": "{color.border.danger.hover}",
+            "comment": "@deprecated Use color.border.danger.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.danger.active}",
+            "comment": "@deprecated Use color.border.danger.active instead"
+          }
+        },
+        "purple": {
+          "hovered": {
+            "$value": "{color.border.purple.hover}",
+            "comment": "@deprecated Use color.border.purple.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.purple.active}",
+            "comment": "@deprecated Use color.border.purple.active instead"
+          }
+        },
+        "green": {
+          "hovered": {
+            "$value": "{color.border.green.hover}",
+            "comment": "@deprecated Use color.border.green.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.green.active}",
+            "comment": "@deprecated Use color.border.green.active instead"
+          }
+        },
+        "red": {
+          "hovered": {
+            "$value": "{color.border.red.hover}",
+            "comment": "@deprecated Use color.border.red.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.red.active}",
+            "comment": "@deprecated Use color.border.red.active instead"
+          }
+        },
+        "yellow": {
+          "hovered": {
+            "$value": "{color.border.yellow.hover}",
+            "comment": "@deprecated Use color.border.yellow.hover instead"
+          },
+          "pressed": {
+            "$value": "{color.border.yellow.active}",
+            "comment": "@deprecated Use color.border.yellow.active instead"
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "primary": {
+          "hovered": {
+            "$value": "{color.text.primary-hover}",
+            "comment": "@deprecated Use color.text.primary-hover instead"
+          },
+          "pressed": {
+            "$value": "{color.text.primary-active}",
+            "comment": "@deprecated Use color.text.primary-active instead"
+          }
+        },
+        "inverted": {
+          "$value": "{color.text.inverted-primary}",
+          "comment": "@deprecated Use color.text.inverted-primary instead",
+          "hovered": {
+            "$value": "{color.text.inverted-primary-hover}",
+            "comment": "@deprecated Use color.text.inverted-primary-hover instead"
+          },
+          "pressed": {
+            "$value": "{color.text.inverted-primary-active}",
+            "comment": "@deprecated Use color.text.inverted-primary-active instead"
+          }
+        },
+        "danger": {
+          "hovered": {
+            "$value": "{color.text.danger-hover}",
+            "comment": "@deprecated Use color.text.danger-hover instead"
+          },
+          "pressed": {
+            "$value": "{color.text.danger-active}",
+            "comment": "@deprecated Use color.text.danger-active instead"
+          }
+        }
+      },
+      "shadow": {
+        "$type": "color",
+        "focus": {
+          "start": {
+            "$value": "{color.white}",
+            "comment": "@deprecated Use shadow.outline.base colors instead"
+          },
+          "end": {
+            "$value": "{color.purple.6}",
+            "comment": "@deprecated Use shadow.outline.base colors instead"
+          },
+          "inverted": {
+            "start": {
+              "$value": "{color.white}",
+              "comment": "@deprecated Use shadow.outline.inverted colors instead"
+            },
+            "end": {
+              "$value": "{color.yellow.3}",
+              "comment": "@deprecated Use shadow.outline.inverted colors instead"
+            }
+          }
+        }
+      }
+    }
+  }
+}

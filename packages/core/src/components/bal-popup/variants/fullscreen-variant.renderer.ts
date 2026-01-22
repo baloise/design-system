@@ -9,9 +9,6 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
       this.offset = component.getValue(component.trigger, 'bal-popup-offset', component.offset)
 
       component.containerEl.style.setProperty('inset', `${this.offset}px auto auto 0px`)
-      if (this.offset > 0) {
-        component.containerEl.style.setProperty('box-shadow', `inset var(--bal-nav-meta-bar-variant-white-shadow)`)
-      }
 
       if (component.innerEl) {
         component.innerEl.style.setProperty('max-height', `calc(var(--bal-app-height, 100%) - ${this.offset}px)`)

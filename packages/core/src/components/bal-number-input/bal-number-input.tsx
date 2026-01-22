@@ -13,9 +13,9 @@ import {
   Watch,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isEmpty from 'lodash.isempty'
-import isNaN from 'lodash.isnan'
-import isNil from 'lodash.isnil'
+import isEmpty from 'lodash/isEmpty'
+import isNaN from 'lodash/isNaN'
+import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -57,13 +57,13 @@ import {
 
 @Component({
   tag: 'bal-number-input',
-  styleUrl: 'bal-number-input.sass',
+  styleUrl: 'bal-number-input.scss',
 })
 export class NumberInput
   implements
     ComponentInterface,
     BalConfigObserver,
-    FormInput<number | string | undefined>,
+    FormInput<number | string | undefined, number | undefined>,
     BalAriaFormLinking,
     Loggable
 {
@@ -253,7 +253,7 @@ export class NumberInput
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    inputListenOnClick(this, ev)
+    inputListenOnClick(this as FormInput<any>, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timeout
@@ -262,7 +262,7 @@ export class NumberInput
   resetHandler(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
+      inputHandleReset(this as FormInput<any>, this.initialValue, this.resetHandlerTimer)
     }
   }
 
@@ -297,7 +297,7 @@ export class NumberInput
    */
   @Method()
   async setFocus() {
-    inputSetFocus(this)
+    inputSetFocus(this as FormInput<any>)
   }
 
   /**
@@ -307,7 +307,7 @@ export class NumberInput
    */
   @Method()
   async setBlur() {
-    inputSetBlur(this)
+    inputSetBlur(this as FormInput<any>)
   }
 
   /**
@@ -368,9 +368,9 @@ export class NumberInput
    * ------------------------------------------------------
    */
 
-  private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
+  private onClick = (ev: MouseEvent) => inputHandleClick(this as FormInput<any>, ev)
 
-  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
+  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this as FormInput<any>, ev)
 
   private onInput = (_ev: Event) => {
     //
@@ -389,18 +389,18 @@ export class NumberInput
   }
 
   private onFocus = (ev: FocusEvent) => {
-    inputHandleFocus(this, ev)
+    inputHandleFocus(this as FormInput<any>, ev)
     //
     // restore the input with the last user value without the formatting
     if (this.nativeInput) {
       this.nativeInputValue = mapDecimalSeparator(this.lastValue || '')
       clearTimeout(this.selectTimeout)
-      this.selectTimeout = setTimeout(() => this.nativeInput.select())
+      this.selectTimeout = setTimeout(() => this.nativeInput?.select())
     }
   }
 
   private onBlur = (ev: FocusEvent) => {
-    inputHandleBlur(this, ev)
+    inputHandleBlur(this as FormInput<any>, ev)
 
     //
     // on focus out the input value gets a pretty format
@@ -412,12 +412,12 @@ export class NumberInput
 
     this.inputValue = toNumber(this.lastValueGetter, this.decimal)
 
-    inputHandleChange(this)
+    inputHandleChange(this as FormInput<any>)
   }
 
   private onKeydown = (ev: KeyboardEvent) => {
-    const oldValue = getNativeInputValue(this)
-    const newValue = getUpcomingValue(this, ev)
+    const oldValue = getNativeInputValue(this as FormInput<any>)
+    const newValue = getUpcomingValue(this as FormInput<any>, ev)
     const input = ev?.target as HTMLInputElement
 
     if (

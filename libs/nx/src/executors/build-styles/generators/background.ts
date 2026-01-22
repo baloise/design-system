@@ -5,16 +5,16 @@ export const generateBackgroundColors = async (options: BuildStylesExecutorSchem
   const tokens = await utils.getTokens({ token: 'color.background', ...options })
   const props = utils.toProps({ tokens, prefix: 'bg', replace: 'color-background-' })
 
-  const tokensAlias = await utils.getTokens({ token: 'color.alias', ...options })
-  const propsAlias = utils.toProps({ tokens: tokensAlias, prefix: 'bg', replace: 'color' })
+  const tokensBrand = await utils.getTokens({ token: 'color.brand', ...options })
+  const propsBrand = utils.toProps({ tokens: tokensBrand, prefix: 'bg', replace: 'color' })
 
-  const tokensBase = await utils.getTokens({ token: 'color.base', ...options })
+  const tokensBase = await utils.getTokens({ token: 'color', ...options })
   const propsBase = utils.toProps({ tokens: tokensBase, prefix: 'bg', replace: 'color' })
 
   // merge colors
-  for (const key in propsAlias) {
+  for (const key in propsBrand) {
     if (!Object.keys(props).includes(key)) {
-      props[key] = propsAlias[key]
+      props[key] = propsBrand[key]
     }
   }
 
@@ -45,22 +45,6 @@ export const generateBackgroundColors = async (options: BuildStylesExecutorSchem
     breakpoints: utils.minBreakpoints,
   })
 
-  // inverted styles
-  const rulesPrimary = utils.styleClass({
-    property: 'color',
-    values: {
-      'bg-primary': `var(--bal-color-white)`,
-      'bg-primary-3': `var(--bal-color-white)`,
-      'bg-primary-4': `var(--bal-color-white)`,
-      'bg-primary-5': `var(--bal-color-white)`,
-      'bg-primary-6': `var(--bal-color-white)`,
-    },
-    important: false,
-    responsive: false,
-    states: true,
-    breakpoints: utils.minBreakpoints,
-  })
-
   /**
    * EXPORT
    * ------------------------------------------------------------------------------------------
@@ -71,7 +55,7 @@ export const generateBackgroundColors = async (options: BuildStylesExecutorSchem
     options.projectRoot,
     utils.merge({
       docs: [docs],
-      rules: [rules, rulesPrimary],
+      rules: [rules],
     }),
   )
 }

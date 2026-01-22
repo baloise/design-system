@@ -1,10 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-content',
-  styleUrl: './bal-content.sass',
+  styleUrl: './bal-content.host.scss',
 })
 export class Content implements ComponentInterface, Loggable {
   log!: LogInstance
@@ -26,10 +25,16 @@ export class Content implements ComponentInterface, Loggable {
   @Prop() layout: BalProps.BalContentLayout = 'vertical'
 
   /**
-   * Defines the text positioning like center, end or
+   * Defines the positioning like center, end or
    * default to start.
    */
   @Prop() align: BalProps.BalContentAlignment = 'start'
+
+  /**
+   * Defines the text positioning like center, right or
+   * default to left.
+   */
+  @Prop() textAlign: BalProps.BalContentTextAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is xx-small.
@@ -54,7 +59,6 @@ export class Content implements ComponentInterface, Loggable {
    */
 
   render() {
-    const block = BEM.block('content')
     const direction = !!this.direction
     const layout = !!this.layout
     const alignment = !!this.alignment
@@ -74,10 +78,11 @@ export class Content implements ComponentInterface, Loggable {
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier(`layout-${layoutValue}`).class(layout || direction),
-          ...block.modifier(`align-${alignValue}`).class(align || alignment),
-          ...block.modifier(`space-${this.space}`).class(space),
+          'stack-content': true,
+          [`is-${layoutValue}`]: layout || direction,
+          [`align-${alignValue}`]: align || alignment,
+          [`text-${this.textAlign}`]: this.textAlign !== '',
+          [`has-space-${this.space}`]: space,
         }}
       >
         <slot></slot>

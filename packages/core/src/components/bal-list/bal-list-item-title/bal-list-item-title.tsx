@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
+import { HEADING_SIZES, HEADING_TAGS, HeadingSize, HeadingTag } from '../../bal-heading/bal-heading.const'
 
 @Component({
   tag: 'bal-list-item-title',
@@ -18,12 +19,28 @@ export class ListItemTitle {
    */
   @Prop() visualLevel?: BalProps.BalHeadingVisualLevel
 
+  private get fontSize(): HeadingSize {
+    return HEADING_SIZES[this.visualLevel ? this.visualLevel : this.level]
+  }
+
+  private get tag(): HeadingTag {
+    return HEADING_TAGS[this.level]
+  }
+
   render() {
+    const Heading = this.tag
+
     return (
       <Host class="bal-list__item__title">
-        <bal-heading level={this.level} visualLevel={this.visualLevel} space="none">
+        <Heading
+          class={{
+            'title': true,
+            'has-space-none': true,
+            [`is-${this.fontSize}`]: this.fontSize !== undefined,
+          }}
+        >
           <slot></slot>
-        </bal-heading>
+        </Heading>
       </Host>
     )
   }

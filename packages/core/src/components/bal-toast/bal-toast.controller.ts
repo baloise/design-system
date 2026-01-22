@@ -10,7 +10,7 @@ export class BalToastController extends BalNoticeController {
     })
   }
 
-  create(options: BalToastOptions): Components.BalToast {
+  override create(options: BalToastOptions): Components.BalToast {
     return super.create(options)
   }
 }

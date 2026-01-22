@@ -4,3 +4,4 @@ loader
 components
 www
 !src/components
+playwright-report

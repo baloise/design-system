@@ -1,0 +1,73 @@
+import { ArgTypes, Canvas, ColorItem, ColorPalette, Markdown, Meta, Subtitle, Title, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as TagStories from './bal-tag.stories'
+
+<Meta of={TagStories} />
+
+<StoryHeading of={TagStories.Basic} hidden></StoryHeading>
+
+<Banner of={TagStories} />
+
+<Lead>**Tag** highlights a label for quick recognition.</Lead>
+
+<BasicStoryTabs tag="tag" htmlStory={TagStories.Basic} webComponentStory={TagStories.WebComponentBasic} />
+
+<PlaygroundBar of={TagStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.Closable}></StoryHeading>
+
+The tag component can include a close button by using the `closable` property.
+
+<Canvas of={TagStories.Closable} />
+
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.Colors}></StoryHeading>
+
+The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
+
+<Canvas of={TagStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.TagGroup}></StoryHeading>
+
+The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
+
+<Canvas of={TagStories.TagGroup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.TagCard}></StoryHeading>
+
+Tags can be seamlessly integrated with a `bal-card` component. Additionally, you have the flexibility to position them either on the left or at the center.
+
+<Canvas of={TagStories.TagCard} />
+
+<Canvas of={TagStories.TeaserCard} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+
+
+<Footer />

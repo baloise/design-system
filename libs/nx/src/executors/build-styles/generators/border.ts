@@ -10,7 +10,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
 
   const borderNone = await utils.staticClass({ property: 'border-width', values: { 'border-none': '0' } })
   const borderWidth = await utils.staticClassByToken({
-    token: 'size.border.width',
+    token: 'border.width',
     property: 'border-width',
     ...options,
   })
@@ -27,51 +27,56 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
 
   const borderRadius = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: 'border-radius',
     values: {
       ['radius-none']: '0',
+      ['radius-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
 
   const borderRadiusTop = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-left-radius', 'border-top-right-radius'],
     replace: 'radius',
     prefix: 'radius-top',
     values: {
       ['radius-top-none']: '0',
+      ['radius-top-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
   const borderRadiusLeft = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-left-radius', 'border-bottom-left-radius'],
     replace: 'radius',
     prefix: 'radius-left',
     values: {
       ['radius-left-none']: '0',
+      ['radius-left-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
   const borderRadiusRight = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-top-right-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-right',
     values: {
       ['radius-right-none']: '0',
+      ['radius-right-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
   const borderRadiusBottom = await utils.staticClassByToken({
-    token: 'size.radius',
+    token: 'radius',
     property: ['border-bottom-left-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-bottom',
     values: {
       ['radius-bottom-none']: '0',
+      ['radius-bottom-normal']: 'var(--bal-radius-base)',
     },
     ...options,
   })
@@ -125,7 +130,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
   const tokens = await utils.getTokens({ token: 'color.border', ...options })
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
-    [`border${formattedPlacement}`]: 'var(--bal-color-grey-3)',
+    [`border${formattedPlacement}`]: 'var(--bal-color-border-base)',
     ...utils.toProps({
       tokens: tokens,
       replace: 'color-border-',
@@ -141,7 +146,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
     important: true,
     states: true,
     additionalValues: {
-      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal) !important',
+      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-base) !important',
       [`border${formattedPlacement}-style`]: 'solid',
     },
   })

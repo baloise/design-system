@@ -12,6 +12,7 @@ import {
   Watch,
   h,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import Big from 'big.js'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
@@ -30,11 +31,10 @@ import { debounceEvent, rIC } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { formatLocaleNumber } from '../../utils/number'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input-stepper',
-  styleUrl: 'bal-input-stepper.sass',
+  styleUrl: 'bal-input-stepper.scss',
 })
 export class InputStepper
   implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
@@ -285,7 +285,7 @@ export class InputStepper
             data-testid="bal-input-stepper-decrease"
             outlined={!this.invalid}
             icon="minus"
-            color={this.invalid ? 'danger' : 'info'}
+            color={this.invalid ? 'danger' : 'secondary'}
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
             onBalFocus={ev => this.onFocusDecrease(ev)}
@@ -310,7 +310,7 @@ export class InputStepper
             square
             outlined={!this.invalid}
             icon="plus"
-            color={this.invalid ? 'danger' : 'info'}
+            color={this.invalid ? 'danger' : 'secondary'}
             disabled={this.disabled || this.readonly || this.value >= this.max}
             onClick={_ => this.increase()}
             onBalFocus={ev => this.onFocusIncrease(ev)}

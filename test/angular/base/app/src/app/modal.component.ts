@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { Component, Input } from '@angular/core'
 import { BalModalService, balImports } from '../design-system'
 
 @Component({
   selector: 'app-modal',
-  standalone: true,
   imports: [CommonModule, ...balImports],
   template: `
     <bal-modal-header>Modal Title</bal-modal-header>
@@ -15,10 +14,10 @@ import { BalModalService, balImports } from '../design-system'
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
       </p>
-      <bal-button-group position="right" class="mt-medium">
-        <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-        <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-      </bal-button-group>
+      <div class="buttons is-right mt-medium">
+        <button class="button is-link" (click)="closeModal()">Cancel</button>
+        <button class="button is-primary" (click)="closeModal()">Okay</button>
+      </div>
     </bal-modal-body>
   `,
 })

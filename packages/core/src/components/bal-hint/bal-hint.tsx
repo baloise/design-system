@@ -5,7 +5,6 @@ import {
   FunctionalComponent,
   h,
   Host,
-  Listen,
   Method,
   Prop,
   State,
@@ -19,7 +18,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-hint',
-  styleUrl: 'bal-hint.sass',
+  styleUrl: 'bal-hint.scss',
 })
 export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement
@@ -188,7 +187,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
               ...elButtons.modifier('is-hidden-desktop').class(this.small),
             }}
           >
-            <bal-button data-testid="bal-hint-close" color="info" onClick={() => this.dismiss()}>
+            <bal-button data-testid="bal-hint-close" color="secondary" onClick={() => this.dismiss()}>
               {this.closeLabel ? this.closeLabel : this.innerCloseLabel}
             </bal-button>
           </bal-button-group>

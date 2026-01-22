@@ -12,7 +12,7 @@ export class BalWindowResizeSubject extends SingleSubject<BalWindowResizeObserve
     })
   }
 
-  attach(observer: BalWindowResizeObserver): void {
+  override attach(observer: BalWindowResizeObserver): void {
     super.attach(observer)
     if (balBrowser.hasWindow) {
       this.listener.connect(window)
@@ -20,7 +20,7 @@ export class BalWindowResizeSubject extends SingleSubject<BalWindowResizeObserve
     }
   }
 
-  detach(): void {
+  override detach(): void {
     super.detach()
     this.listener.disconnect()
   }

@@ -1,9 +1,10 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import isEmpty from 'lodash.isempty'
+import isEmpty from 'lodash/isEmpty'
 
 @Component({
   tag: 'bal-card',
-  styleUrl: 'bal-card.sass',
+  styleUrl: 'bal-card.host.scss',
+  shadow: false,
 })
 export class Card {
   /**
@@ -52,22 +53,38 @@ export class Card {
   @Prop() color: BalProps.BalCardColor = 'white'
 
   get colorTypeClass(): string {
-    return isEmpty(this.color) ? '' : `is-${this.inverted ? 'blue' : this.color}`
+    const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
+
+    const colorMap: Record<string, string> = {
+      'blue': 'primary',
+      'purple-1': 'purple-lighter',
+      'purple-2': 'purple-light',
+      'purple-3': 'purple',
+      'red-1': 'red-lighter',
+      'red-2': 'red-light',
+      'red-3': 'red',
+      'green-1': 'green-lighter',
+      'green-2': 'green-light',
+      'green-3': 'green',
+      'yellow-1': 'yellow-lighter',
+      'yellow-2': 'yellow-light',
+      'yellow-3': 'yellow',
+    }
+
+    return colorMap[color] || color
   }
 
   render() {
     return (
       <Host
         class={{
-          'bal-card': true,
-          [`bal-card--${this.colorTypeClass}`]: !isEmpty(this.color),
-          [`bal-card--is-${this.space}`]: this.space !== '',
-          'bal-card--has-border': this.border,
-          'bal-card--is-flat': this.flat,
-          'bal-card--is-clickable': this.clickable,
-          'bal-card--is-selected': this.selected,
-          'bal-card--is-square': this.square,
-          'bal-card--has-fullheight': this.fullheight,
+          card: true,
+          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
+          [`has-space-${this.space}`]: !isEmpty(this.space),
+          [`is-fullheight`]: this.fullheight,
+          [`is-square`]: this.square,
+          [`is-outlined`]: this.border,
+          [`is-flat`]: this.border || this.flat,
         }}
       >
         <slot></slot>

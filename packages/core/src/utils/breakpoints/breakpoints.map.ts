@@ -1,12 +1,18 @@
-import * as BaloiseDesignToken from '@baloise/ds-tokens'
+import {
+  balBreakpointDesktop,
+  balBreakpointFullhd,
+  balBreakpointHighDefinition,
+  balBreakpointTablet,
+  balBreakpointWidescreen,
+} from '@baloise/ds-tokens'
 
 const toNumber = (pixel: string): number => parseInt(pixel.slice(0, -2), 10)
 
-const breakpointTablet = toNumber(BaloiseDesignToken.balBreakpointTablet)
-const breakpointDesktop = toNumber(BaloiseDesignToken.balBreakpointDesktop)
-const breakpointHighDefinition = toNumber(BaloiseDesignToken.balBreakpointHighDefinition)
-const breakpointWidescreen = toNumber(BaloiseDesignToken.balBreakpointWidescreen)
-const balBreakpointFullhd = toNumber(BaloiseDesignToken.balBreakpointFullhd)
+const breakpointTablet = toNumber(balBreakpointTablet)
+const breakpointDesktop = toNumber(balBreakpointDesktop)
+const breakpointHighDefinition = toNumber(balBreakpointHighDefinition)
+const breakpointWidescreen = toNumber(balBreakpointWidescreen)
+const breakpointFullhd = toNumber(balBreakpointFullhd)
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth
@@ -29,12 +35,12 @@ const isHighDefinition = (win: Window) => {
 
 const isWideScreen = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointWidescreen && width < balBreakpointFullhd
+  return width >= breakpointWidescreen && width < breakpointFullhd
 }
 
 const isFullHD = (win: Window) => {
   const width = win.innerWidth
-  return width >= balBreakpointFullhd
+  return width >= breakpointFullhd
 }
 
 export const BREAKPOINTS_MAP = {

@@ -1,0 +1,16 @@
+@forward '../../../../styles/sass/normalize';
+@forward './bal-badge.style';
+
+/**
+  * Host Style
+  */
+
+:host {
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin: 0;
+  padding: 0;
+  position: var(--badge-position, static);
+  top: var(--badge-position-top);
+  right: var(--badge-position-right);
+}

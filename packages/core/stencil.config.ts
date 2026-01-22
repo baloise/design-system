@@ -5,7 +5,8 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
-import { AngularGenerator, AngularModuleGenerator } from './config/stencil.bindings.angular'
+import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
+import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
@@ -57,6 +58,7 @@ export const config: Config = {
   enableCache: true,
   buildEs5: 'prod',
   globalScript: 'src/global.ts',
+  globalStyle: 'src/global.scss',
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
@@ -65,13 +67,38 @@ export const config: Config = {
     }),
   ],
   extras: {
+    /**
+     * Projects that use a Stencil library built using the `dist` output target may have trouble lazily
+     * loading components when using a bundler such as Vite or Parcel. Setting this flag to `true` will change how Stencil
+     * lazily loads components in a way that works with additional bundlers. Setting this flag to `true` will increase
+     * the size of the compiled output. Defaults to `false`.
+     */
+    enableImportInjection: true,
+    /**
+     * When a component is first attached to the DOM, this setting will wait a single tick before
+     * rendering. This works around an Angular issue, where Angular attaches the elements before
+     * settings their initial state, leading to double renders and unnecessary event dispatches.
+     * Defaults to `false`.
+     */
     initializeNextTick: true,
+    /**
+     * `experimentalSlotFixes` is necessary in Stencil v4 until the fixes described in
+     * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes the Stencil docs for the flag} are the
+     * default behavior (slated for a future Stencil major version).
+     */
+    experimentalSlotFixes: false,
+    /**
+     * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
+     * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
+     * the default behavior (slated for a future Stencil major version).
+     */
+    experimentalScopedSlotChanges: true,
   },
   outputTargets: [
-    {
+    docsJsonWithoutTimestamp({
       type: 'docs-json',
       file: '../../resources/data/components.json',
-    },
+    }),
     ...(!IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {
@@ -110,6 +137,11 @@ export const config: Config = {
         },
         {
           src: 'components.d.ts',
+        },
+        {
+          src: join(packagesDir, 'core', 'public', 'section.css'),
+          dest: 'assets/section.css',
+          warn: true,
         },
         {
           src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
@@ -153,7 +185,22 @@ export const config: Config = {
         },
         {
           src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.min.css',
+          dest: 'assets/basic.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
+          dest: 'assets/components.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
+          dest: 'assets/utilities.css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
+          dest: 'assets/tokens.css',
           warn: true,
         },
         {
@@ -176,7 +223,7 @@ export const config: Config = {
     /**
      * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {
             type: 'docs-vscode',
@@ -185,7 +232,6 @@ export const config: Config = {
           },
           ReactGenerator(),
           AngularGenerator(),
-          AngularModuleGenerator(),
         ]
       : []),
   ],
@@ -244,18 +290,6 @@ export const config: Config = {
     { components: ['bal-table'] },
     { components: ['bal-tabs', 'bal-tab-item'] },
     { components: ['bal-tag', 'bal-tag-group'] },
-    {
-      components: [
-        'bal-nav',
-        'bal-nav-link',
-        'bal-nav-link-grid',
-        'bal-nav-link-grid-col',
-        'bal-nav-link-group',
-        'bal-nav-menu-bar',
-        'bal-nav-menu-flyout',
-        'bal-nav-meta-bar',
-      ],
-    },
     //
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },
@@ -287,10 +321,11 @@ export const config: Config = {
       {
         name: 'watch-external',
         async buildStart() {
-          const styleFiles = await fg(resolve(__dirname, './src/**/*.sass'))
+          const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
           for (const file of styleFiles) {
             this.addWatchFile(file)
           }
+
           const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
           for (const file of templateFiles) {
             this.addWatchFile(file)

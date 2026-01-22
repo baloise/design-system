@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-checkbox',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">
@@ -21,13 +20,13 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="checkbox" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'checkbox', value: false })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'checkbox', value: false })">
             Update Checkbox
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('checkbox')?.enable()">Enable Checkbox</bal-button>
-          <bal-button color="tertiary" (click)="form.get('checkbox')?.disable()">Disable Checkbox</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('checkbox')?.enable()">Enable Checkbox</button>
+          <button class="button is-tertiary" (click)="form.get('checkbox')?.disable()">Disable Checkbox</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

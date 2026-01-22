@@ -26,7 +26,7 @@ export class BalMutationListener extends ListenerAbstract {
     }
   }
 
-  async connect(el: HTMLElement | HTMLStencilElement) {
+  override async connect(el: HTMLElement | HTMLStencilElement) {
     super.connect(el)
     if (typeof MutationObserver === 'undefined') {
       return
@@ -40,7 +40,7 @@ export class BalMutationListener extends ListenerAbstract {
     this.mutationObserver.observe(el, this.mutationObserverInit)
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     this.destroyMutationObserver()
   }
@@ -73,7 +73,7 @@ export class BalMutationListener extends ListenerAbstract {
       )
     }
     const hasAttributeChanges = tagRecords.some(
-      record => record.type === 'attributes' && attributeNameCheck(record.attributeName),
+      record => record.type === 'attributes' && attributeNameCheck(record.attributeName || ''),
     )
 
     if (hasAddedNodeChanges || hasAttributeChanges || hasRemovedNodeChanges) {

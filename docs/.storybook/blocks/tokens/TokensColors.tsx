@@ -1,8 +1,8 @@
-import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensColors = ({ overview }) => {
+export const TokensColors = ({ overview }): React.ReactElement => {
   const listBase = tokens.color.base
   const listAlias = tokens.color.alias
 
@@ -30,7 +30,7 @@ export const TokensColors = ({ overview }) => {
                   <Clipboard label={item.name} value={`var(--${item.name})`} />
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
-                  <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.value}</p>
+                  <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
@@ -40,11 +40,11 @@ export const TokensColors = ({ overview }) => {
                 </td>
               </tr>
               <tr>
-                <td colSpan={3} className={subItems.value ? 'border-bottom-grey' : 'border-none'}>
+                <td colSpan={3} className={subItems.$value ? 'border-bottom-grey' : 'border-none'}>
                   <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
               </tr>
-              {!subItems.value ? (
+              {!subItems.$value ? (
                 <tr>
                   <td colSpan={3} className="border-bottom-grey">
                     <p className="font-weight-bold mb-none">Shades</p>

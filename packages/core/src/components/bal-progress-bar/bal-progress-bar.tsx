@@ -1,14 +1,14 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import type { BalConfigObserver, BalConfigState } from '../../utils/config'
 import { raf } from '../../utils/helpers'
 import { BalWindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-progress-bar',
-  styleUrl: 'bal-progress-bar.sass',
+  styleUrl: 'bal-progress-bar.scss',
 })
 export class ProgressBar
   implements ComponentInterface, BalConfigObserver, BalBreakpointObserver, BalWindowResizeObserver
@@ -79,6 +79,8 @@ export class ProgressBar
         const maxWidth = this.el.clientWidth
         const value = Math.max(0, Math.min(100, this.value))
         const lineWidth = (maxWidth / 100) * value
+        if (this.lineEl === undefined) return
+
         this.lineEl.style.width = `${lineWidth}px`
 
         if (value === 100) {

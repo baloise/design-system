@@ -12,7 +12,8 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import isNil from 'lodash.isnil'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -49,11 +50,10 @@ import {
   MAX_LENGTH_OFFER_NUMBER,
   MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER,
 } from './bal-input-util'
-import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-input',
-  styleUrl: 'bal-input.sass',
+  styleUrl: 'bal-input.scss',
 })
 export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable, BalAriaFormLinking {
   private inputId = `bal-input-${InputIds++}`

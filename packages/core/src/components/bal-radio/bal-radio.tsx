@@ -26,13 +26,13 @@ import { BalRadioOption } from './bal-radio.type'
 
 @Component({
   tag: 'bal-radio',
-  styleUrl: 'bal-radio.sass',
+  styleUrl: 'bal-radio.scss',
 })
 export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
-  nativeInput!: HTMLInputElement
+  nativeInput!: HTMLInputElement | undefined
 
   @Element() el!: HTMLBalRadioElement
 
@@ -452,7 +452,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
 
     const inputAttributes = this.inheritedAttributes
     if (this.buttonTabindex !== undefined) {
-      inputAttributes.tabIndex = this.buttonTabindex
+      inputAttributes['tabIndex'] = this.buttonTabindex
     }
 
     if (this.labelHidden) {

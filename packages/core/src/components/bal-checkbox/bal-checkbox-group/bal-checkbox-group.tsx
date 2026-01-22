@@ -27,7 +27,7 @@ import { BalCheckboxOption } from '../bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox-group',
-  styleUrl: 'bal-checkbox-group.sass',
+  styleUrl: 'bal-checkbox-group.scss',
 })
 export class CheckboxGroup
   implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
@@ -241,12 +241,12 @@ export class CheckboxGroup
   hasFocus = false
 
   @ListenToFocus()
-  focusInListener(ev): void {
+  focusInListener(ev: FocusEvent): void {
     this.balFocus.emit(ev)
   }
 
   @ListenToFocus()
-  focusOutListener(ev): void {
+  focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
   }
 

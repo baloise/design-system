@@ -8,17 +8,17 @@ export class BalResizeSubject extends SingleSubject<BalResizeObserver, BalResize
 
   constructor() {
     super((observer, data) => {
-      rIC(() => observer.resizeListener(data))
+      rIC(() => data && observer.resizeListener(data))
     })
   }
 
-  attach(observer: BalResizeObserver): void {
+  override attach(observer: BalResizeObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))
   }
 
-  detach(): void {
+  override detach(): void {
     super.detach()
     this.listener.disconnect()
   }

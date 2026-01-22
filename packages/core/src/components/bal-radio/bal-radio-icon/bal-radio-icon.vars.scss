@@ -1,0 +1,47 @@
+:root {
+  --bal-radio-icon-size: 1.5rem;
+  --bal-radio-icon-border-width: 2px;
+  --bal-radio-icon-border-radius: var(--bal-radius-rounded);
+
+  --bal-radio-icon-inner-width: 0.375rem;
+  --bal-radio-icon-inner-height: 0.375rem;
+  --bal-radio-icon-inner-background-checked: white;
+
+  --bal-radio-icon-color-inverted: var(--bal-color-white);
+  --bal-radio-icon-border-color: var(--bal-color-brand-primary-base);
+  --bal-radio-icon-border-color-hover: var(--bal-color-border-primary-hover);
+  --bal-radio-icon-border-color-active: var(--bal-color-border-primary-active);
+
+  --bal-radio-icon-border-color-checked: var(--bal-color-brand-primary-base);
+  --bal-radio-icon-border-color-checked-hover: var(--bal-color-border-primary-hover);
+  --bal-radio-icon-border-color-checked-active: var(--bal-color-border-primary-active);
+
+  --bal-radio-icon-background: transparent;
+  --bal-radio-icon-background-hover: var(--bal-color-grey-2);
+  --bal-radio-icon-background-active: var(--bal-color-grey-2);
+
+  --bal-radio-icon-background-checked: var(--bal-color-brand-primary-base);
+  --bal-radio-icon-background-checked-hover: var(--bal-color-border-primary-hover);
+  --bal-radio-icon-background-checked-active: var(--bal-color-border-primary-active);
+
+  --bal-radio-icon-border-color-invalid: var(--bal-color-border-danger-base);
+  --bal-radio-icon-border-color-invalid-hover: var(--bal-color-border-danger-hover);
+  --bal-radio-icon-border-color-invalid-active: var(--bal-color-border-danger-active);
+
+  --bal-radio-icon-border-color-invalid-checked: var(--bal-color-border-danger-base);
+  --bal-radio-icon-border-color-invalid-checked-hover: var(--bal-color-border-danger-hover);
+  --bal-radio-icon-border-color-invalid-checked-active: var(--bal-color-border-danger-active);
+
+  --bal-radio-icon-background-invalid: transparent;
+  --bal-radio-icon-background-invalid-hover: var(--bal-color-danger-1);
+  --bal-radio-icon-background-invalid-active: var(--bal-color-danger-1);
+
+  --bal-radio-icon-background-invalid-checked: var(--bal-color-border-danger-base);
+  --bal-radio-icon-background-invalid-checked-hover: var(--bal-color-border-danger-hover);
+  --bal-radio-icon-background-invalid-checked-active: var(--bal-color-border-danger-active);
+
+  --bal-radio-icon-background-disabled: var(--bal-color-grey-2);
+  --bal-radio-icon-border-color-disabled: var(--bal-color-border-grey-dark);
+  --bal-radio-icon-background-checked-disabled: var(--bal-color-border-grey-dark);
+  --bal-radio-icon-border-color-checked-disabled: var(--bal-color-border-grey-dark);
+}

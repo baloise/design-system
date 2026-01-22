@@ -1,12 +1,12 @@
 import React from 'react'
-import { useOf } from '@storybook/blocks'
+import { useOf } from '@storybook/addon-docs/blocks'
 
-import PuzzleGreen from '../../stories/assets/images/home/puzzle-green-dark.svg'
-import PuzzlePurple from '../../stories/assets/images/home/puzzle-purple-dark.svg'
-import PuzzleYellow from '../../stories/assets/images/home/puzzle-yellow-dark.svg'
-import PuzzleRed from '../../stories/assets/images/home/puzzle-red-dark.svg'
+import PuzzleGreen from '../../src/assets/images/home/puzzle-green-dark.svg'
+import PuzzlePurple from '../../src/assets/images/home/puzzle-purple-dark.svg'
+import PuzzleRed from '../../src/assets/images/home/puzzle-red-dark.svg'
+import PuzzleYellow from '../../src/assets/images/home/puzzle-yellow-dark.svg'
 
-export const Banner = ({ of, children, color, label, section, puzzle }) => {
+export const Banner = ({ of, children, color, label, section, puzzle }): React.ReactElement => {
   let title = label
   let subtitle = section
   let isDeprecated = false
@@ -45,7 +45,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
         position: 'relative',
       }}
     >
-      <div className="flex gap-normal">
+      <div className="flex gap-base">
         <div className="flex-1">
           <span className="subtitle text-large mb-none">{subtitle}</span>
           <h1

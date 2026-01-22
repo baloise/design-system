@@ -1,32 +1,35 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
     "rootDir": ".",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "importHelpers": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "moduleResolution": "node",
     "target": "es2017",
     "module": "esnext",
     "lib": [
       "es2020",
       "dom"
     ],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "@baloise/ds-angular": [
         "packages/angular/src/index.ts"
       ],
-      "@baloise/ds-angular-common": [
-        "packages/angular-common/src/index.ts"
-      ],
-      "@baloise/ds-angular-module": [
-        "packages/angular-module/src/index.ts"
+      "@baloise/ds-tokens": [
+        "packages/tokens/dist/tokens.js"
       ],
       "@baloise/ds-brand-icons": [
         "packages/brand-icons/src/index.ts"

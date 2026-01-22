@@ -1,0 +1,37 @@
+@forward '../../src/generated/typography';
+@use '../../src/mixins/_all' as *;
+
+.text-xxxxx-large,
+.text-xxxx-large {
+  line-height: var(--bal-text-line-height-title);
+  &:not(:last-child) {
+    margin-bottom: var(--bal-space-normal);
+  }
+}
+
+.text-xxx-large,
+.text-xx-large,
+.text-x-large,
+.text-large {
+  line-height: var(--bal-text-line-height-title);
+  &:not(:last-child) {
+    margin-bottom: var(--bal-space-x-small);
+  }
+}
+
+.text-medium {
+  line-height: var(--bal-text-line-height-text);
+  &:not(:last-child) {
+    margin-bottom: var(--bal-space-x-small);
+  }
+}
+
+.text-medium,
+.text,
+.text-small,
+.text-x-small {
+  line-height: var(--bal-text-line-height-text);
+  &:not(:last-child) {
+    margin-bottom: var(--bal-space-xx-small);
+  }
+}

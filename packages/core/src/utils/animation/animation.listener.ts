@@ -14,7 +14,7 @@ export class BalAnimationListener extends ListenerAbstract<unknown, BalAnimation
     isChildOfEventTarget(ev, this.el, target => this.debouncedNotify(target))
   }
 
-  connect(el?: HTMLElement | HTMLStencilElement | Window | Document): void {
+  override connect(el?: HTMLElement | HTMLStencilElement | Window | Document): void {
     super.connect(el)
     const win = window
     if (win) {
@@ -23,7 +23,7 @@ export class BalAnimationListener extends ListenerAbstract<unknown, BalAnimation
     }
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     const win = window
     if (win) {

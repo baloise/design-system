@@ -14,7 +14,11 @@ export class DropdownAutoFillUtil {
     if (this.isAutoFillAllowed()) {
       this.component.isAutoFilled = true
 
-      const autoFillValue = this.component.nativeEl.value
+      const autoFillValue = this.component.nativeEl?.value
+      if (!autoFillValue) {
+        this.component.isAutoFilled = false
+        return
+      }
       const newValue = await this.parseAutoFillValueWithOptions(autoFillValue)
       if (newValue === undefined) {
         this.component.isAutoFilled = false
@@ -32,8 +36,12 @@ export class DropdownAutoFillUtil {
   }
 
   private async parseAutoFillValueWithOptions(autoFillValue: string): Promise<string[] | undefined> {
-    const options = await this.component.listEl.getOptions()
+    const options = await this.component?.listEl?.getOptions()
     const value = undefined
+
+    if (!options) {
+      return value
+    }
 
     for (let index = 0; index < options.length; index++) {
       const option = options[index]

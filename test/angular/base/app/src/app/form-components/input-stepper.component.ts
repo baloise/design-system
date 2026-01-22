@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-input-stepper',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">
@@ -21,13 +20,18 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="inputStepper" error="min">Min is 2</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'inputStepper', value: 'updated value' })">
+        <div class="buttons">
+          <button
+            class="button is-secondary"
+            (click)="updateControl.emit({ name: 'inputStepper', value: 'updated value' })"
+          >
             Update Input Stepper
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('inputStepper')?.enable()">Enable Input Stepper</bal-button>
-          <bal-button color="tertiary" (click)="form.get('inputStepper')?.disable()">Disable Input Stepper</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('inputStepper')?.enable()">Enable Input Stepper</button>
+          <button class="button is-tertiary" (click)="form.get('inputStepper')?.disable()">
+            Disable Input Stepper
+          </button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

@@ -118,7 +118,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
    */
 
   private setLabelledby() {
-    const bodyEl = this.el.parentElement.querySelector('bal-list-item-accordion-body')
+    const bodyEl = this.el.parentElement?.querySelector('bal-list-item-accordion-body')
     if (bodyEl) {
       bodyEl.setAria({ labelledby: this.internalId })
     }

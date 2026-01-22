@@ -7,9 +7,15 @@
     "build": {
       "executor": "@baloise/ds-nx:build-styles",
       "outputs": ["{projectRoot}/css"],
+      "inputs": [
+        "{projectRoot}/**/*.scss",
+        "{workspaceRoot}/packages/core/src/components/**/*core.scss",
+        "{workspaceRoot}/packages/core/src/components/**/*style.scss"
+      ],
       "options": {
         "projectRoot": "{projectRoot}",
-        "tokensRoot": "{workspaceRoot}/packages/tokens"
+        "tokensRoot": "{workspaceRoot}/packages/tokens",
+        "componentRoot": "{workspaceRoot}/packages/core/src/components"
       }
     },
     "link": {

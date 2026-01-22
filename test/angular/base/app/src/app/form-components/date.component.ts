@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-date',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">
@@ -21,13 +20,13 @@ import { UpdateControl } from '../app.component'
             <bal-ng-error controlName="date" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
-        <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'date', value: '2023-10-21' })">
+        <div class="buttons">
+          <button class="button is-secondary" (click)="updateControl.emit({ name: 'date', value: '2023-10-21' })">
             Update Date
-          </bal-button>
-          <bal-button color="tertiary" (click)="form.get('date')?.enable()">Enable Date</bal-button>
-          <bal-button color="tertiary" (click)="form.get('date')?.disable()">Disable Date</bal-button>
-        </bal-button-group>
+          </button>
+          <button class="button is-tertiary" (click)="form.get('date')?.enable()">Enable Date</button>
+          <button class="button is-tertiary" (click)="form.get('date')?.disable()">Disable Date</button>
+        </div>
       </bal-card-content>
     </bal-card>
   `,

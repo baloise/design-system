@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core'
 
-import type { BalSnackbarController, BalSnackbarOptions, Components } from '@baloise/ds-core/components'
+import type { BalSnackbarController, BalSnackbarOptions, Components } from '@baloise/ds-core'
 
 import { defineCustomElement as defineNoticeElement } from '@baloise/ds-core/components/bal-notices'
 import { defineCustomElement } from '@baloise/ds-core/components/bal-snackbar'
-import { BalTokenSnackbar } from '@baloise/ds-angular-common'
+import { BalTokenSnackbar } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',

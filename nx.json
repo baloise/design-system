@@ -4,6 +4,9 @@
       "analyzeSourceFiles": true
     }
   },
+  "tui": {
+    "enabled": false
+  },
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
@@ -19,7 +22,7 @@
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
     },
-    "@nx/vite:test": {
+    "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^default"]
     },
@@ -27,19 +30,6 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
-    },
-    "@nx/jest:jest": {
-      "cache": true,
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
     },
     "@nx/angular:package": {
       "cache": true,
@@ -57,12 +47,6 @@
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
-      }
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
       }
     },
     {

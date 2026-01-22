@@ -19,7 +19,7 @@ export type BackButtonEvent = CustomEvent<BackButtonEventDetail>
 
 export interface HTMLBalOverlayElement extends HTMLStencilElement {
   overlayIndex: number
-  lastFocus: HTMLElement
+  lastFocus: HTMLElement | undefined
   el: HTMLBalOverlayElement
   dismiss(data?: any, role?: string): Promise<boolean>
 }

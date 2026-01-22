@@ -1,0 +1,8 @@
+{
+  "column": {
+    "$type": "dimension",
+    "gap": {
+      "$value": "{space.normal.mobile}"
+    }
+  }
+}

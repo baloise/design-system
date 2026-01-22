@@ -13,13 +13,13 @@ export class BalElementStateSubject extends SingleSubject<BalElementStateObserve
     })
   }
 
-  attach(observer: BalElementStateObserver): void {
+  override attach(observer: BalElementStateObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))
   }
 
-  detach(): void {
+  override detach(): void {
     super.detach()
     this.listener.disconnect()
   }

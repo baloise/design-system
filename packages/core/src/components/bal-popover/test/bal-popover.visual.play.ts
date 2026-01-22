@@ -1,4 +1,4 @@
-import { expect, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-popover'
 
@@ -11,9 +11,9 @@ test.beforeEach('Setup', async ({ page }) => {
 test('basic', async ({ page }) => {
   const triggerEl = page.getByTestId('basic-trigger').locator('button')
 
-  await expect(page).toHaveScreenshot(image('basic-before'))
+  await expectScreenshot(page, image('basic-before'))
 
   await triggerEl.click()
   await waitForChanges(page)
-  await expect(page).toHaveScreenshot(image('basic-open'))
+  await expectScreenshot(page, image('basic-open'))
 })

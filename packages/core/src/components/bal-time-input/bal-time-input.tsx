@@ -13,7 +13,7 @@ import {
   h,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -45,7 +45,7 @@ import { i18nBalTimeInput } from './bal-time-input.i18n'
 
 @Component({
   tag: 'bal-time-input',
-  styleUrl: 'bal-time-input.sass',
+  styleUrl: 'bal-time-input.scss',
 })
 export class TimeInput
   implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, BalAriaFormLinking, Loggable

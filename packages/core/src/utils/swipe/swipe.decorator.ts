@@ -11,17 +11,17 @@ export function ListenToSwipe(options: { mobileOnly: boolean } = { mobileOnly: f
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this._balSwipeSubject) {
-        this._balSwipeSubject = new BalSwipeSubject(options)
-        this._balSwipeSubject.attach(this)
+      if (!this['_balSwipeSubject']) {
+        this['_balSwipeSubject'] = new BalSwipeSubject(options)
+        this['_balSwipeSubject'].attach(this)
       }
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this._balSwipeSubject) {
-        this._balSwipeSubject.detach()
-        this._balSwipeSubject = undefined
+      if (this['_balSwipeSubject']) {
+        this['_balSwipeSubject'].detach()
+        this['_balSwipeSubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

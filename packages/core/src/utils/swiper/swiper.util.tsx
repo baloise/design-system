@@ -27,7 +27,7 @@ export class SwiperUtil {
   id = `bal-swiper-${SwiperIds++}`
   containerId = `${this.id}-container`
 
-  containerEl?: HTMLElement
+  containerEl?: HTMLDivElement | HTMLUListElement
   innerEl?: HTMLElement
   borderEl?: HTMLElement
 
@@ -212,7 +212,7 @@ export class SwiperUtil {
     return this.isLastSlideVisible
   }
 
-  public async previous(steps = this.steps): Promise<SwiperSlide | undefined> {
+  public async previous(steps = this.steps): Promise<SwiperSlide | void> {
     let previousValue = this.index - steps
     if (previousValue < 0) {
       previousValue = 0
@@ -255,6 +255,8 @@ export class SwiperUtil {
 
       return activeSlide
     }
+
+    return undefined
   }
 
   public renderControls() {

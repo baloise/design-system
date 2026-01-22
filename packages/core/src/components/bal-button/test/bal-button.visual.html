@@ -83,10 +83,10 @@
         <br />
         <section data-testid="variants">
           <bal-button-group direction="column" position="center">
-            <bal-button group-direction="column" group-position="center">Primary</bal-button>
-            <bal-button group-direction="column" group-position="center" color="info">Secondary</bal-button>
-            <bal-button group-direction="column" group-position="center" color="info" outlined>Tertiary</bal-button>
-            <bal-button group-direction="column" group-position="center" color="link">Link</bal-button>
+            <bal-button>Primary</bal-button>
+            <bal-button color="secondary">Secondary</bal-button>
+            <bal-button color="tertiary">Tertiary</bal-button>
+            <bal-button color="link">Link</bal-button>
           </bal-button-group>
         </section>
         <br />
@@ -113,24 +113,24 @@
         <section data-testid="square">
           <bal-button-group>
             <bal-button color="primary" square icon="plus"></bal-button>
-            <bal-button square color="info" icon="account"></bal-button>
-            <bal-button square color="info" outlined>42</bal-button>
+            <bal-button square color="secondary" icon="account"></bal-button>
+            <bal-button square color="secondary" outlined>42</bal-button>
           </bal-button-group>
         </section>
         <br />
         <br />
         <section data-testid="group">
           <bal-button-group>
-            <bal-button v-bind="args" color="link">Left</bal-button>
-            <bal-button v-bind="args">Aligned</bal-button>
+            <bal-button color="link">Left</bal-button>
+            <bal-button>Aligned</bal-button>
           </bal-button-group>
           <bal-button-group position="center">
-            <bal-button v-bind="args" color="link">Center</bal-button>
-            <bal-button v-bind="args">Aligned</bal-button>
+            <bal-button color="link">Center</bal-button>
+            <bal-button>Aligned</bal-button>
           </bal-button-group>
           <bal-button-group position="right">
-            <bal-button v-bind="args" color="link">Right</bal-button>
-            <bal-button v-bind="args">Aligned</bal-button>
+            <bal-button color="link">Right</bal-button>
+            <bal-button>Aligned</bal-button>
           </bal-button-group>
         </section>
         <br />

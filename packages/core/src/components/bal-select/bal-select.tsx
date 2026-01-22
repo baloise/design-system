@@ -13,7 +13,7 @@ import {
   Watch,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { areArraysEqual } from '../../utils/array'
 import { inheritAttributes } from '../../utils/attributes'
@@ -49,7 +49,7 @@ const isNotHuman = false
 
 @Component({
   tag: 'bal-select',
-  styleUrl: 'bal-select.sass',
+  styleUrl: 'bal-select.scss',
 })
 export class Select implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputElement!: HTMLInputElement

@@ -31,8 +31,9 @@ describe('styleClass', () => {
         },
       ],
     })
-    expect(rules.toString()).toEqual(`.size-large
-  size: 4rem
+    expect(rules.toString()).toEqual(`.size-large {
+  size: 4rem;
+}
 `)
   })
 
@@ -58,8 +59,9 @@ describe('styleClass', () => {
         },
       ],
     })
-    expect(rules.toString()).toEqual(`.size-large
-  size: 4rem !important
+    expect(rules.toString()).toEqual(`.size-large {
+  size: 4rem !important;
+}
 `)
   })
 
@@ -72,17 +74,22 @@ describe('styleClass', () => {
       responsive: true,
       breakpoints: ['mobile', 'desktop'],
     })
-    expect(rules.toString()).toEqual(`.size-large
-  size: 4rem
+    expect(rules.toString()).toEqual(`.size-large {
+  size: 4rem;
+}
 
-+mobile
-  .mobile\\:size-large
-    size: 4rem
+@include mobile {
+  .mobile\\:size-large {
+    size: 4rem;
+  }
 
-+desktop
-  .desktop\\:size-large
-    size: 4rem
-`)
+}
+@include desktop {
+  .desktop\\:size-large {
+    size: 4rem;
+  }
+
+}`)
   })
 
   test('should create states classes', () => {
@@ -93,17 +100,21 @@ describe('styleClass', () => {
       },
       states: true,
     })
-    expect(rules.toString()).toEqual(`.size-large
-  size: 4rem
+    expect(rules.toString()).toEqual(`.size-large {
+  size: 4rem;
+}
 
-.focus\\:size-large:focus
-  size: 4rem
+.focus\\:size-large:focus {
+  size: 4rem;
+}
 
-.hover\\:size-large:hover
-  size: 4rem
+.hover\\:size-large:hover {
+  size: 4rem;
+}
 
-.active\\:size-large:active
-  size: 4rem
+.active\\:size-large:active {
+  size: 4rem;
+}
 `)
   })
 
@@ -117,43 +128,57 @@ describe('styleClass', () => {
       states: true,
       breakpoints: ['mobile', 'desktop'],
     })
-    expect(rules.toString()).toEqual(`.size-large
-  size: 4rem
+    expect(rules.toString()).toEqual(`.size-large {
+  size: 4rem;
+}
 
-.focus\\:size-large:focus
-  size: 4rem
+.focus\\:size-large:focus {
+  size: 4rem;
+}
 
-.hover\\:size-large:hover
-  size: 4rem
+.hover\\:size-large:hover {
+  size: 4rem;
+}
 
-.active\\:size-large:active
-  size: 4rem
+.active\\:size-large:active {
+  size: 4rem;
+}
 
-+mobile
-  .mobile\\:size-large
-    size: 4rem
+@include mobile {
+  .mobile\\:size-large {
+    size: 4rem;
+  }
 
-  .mobile\\:focus\\:size-large:focus
-    size: 4rem
+  .mobile\\:focus\\:size-large:focus {
+    size: 4rem;
+  }
 
-  .mobile\\:hover\\:size-large:hover
-    size: 4rem
+  .mobile\\:hover\\:size-large:hover {
+    size: 4rem;
+  }
 
-  .mobile\\:active\\:size-large:active
-    size: 4rem
+  .mobile\\:active\\:size-large:active {
+    size: 4rem;
+  }
 
-+desktop
-  .desktop\\:size-large
-    size: 4rem
+}
+@include desktop {
+  .desktop\\:size-large {
+    size: 4rem;
+  }
 
-  .desktop\\:focus\\:size-large:focus
-    size: 4rem
+  .desktop\\:focus\\:size-large:focus {
+    size: 4rem;
+  }
 
-  .desktop\\:hover\\:size-large:hover
-    size: 4rem
+  .desktop\\:hover\\:size-large:hover {
+    size: 4rem;
+  }
 
-  .desktop\\:active\\:size-large:active
-    size: 4rem
-`)
+  .desktop\\:active\\:size-large:active {
+    size: 4rem;
+  }
+
+}`)
   })
 })

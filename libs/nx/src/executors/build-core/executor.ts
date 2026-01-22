@@ -52,12 +52,12 @@ async function createTestingSelectors(options: BuildCoreExecutorSchema) {
   )
 }
 
-function parseTestingSelectorTypes(fileContent) {
+function parseTestingSelectorTypes(fileContent: string) {
   const sourceFile = createSourceFile(fileContent)
   const variableStatementsNode = filterVariableStatement(sourceFile.statements)
   const properties = variableStatementsNode[0].declarationList.declarations[0].initializer.properties
-  const selectors = {}
-  properties.forEach(commandNode => {
+  const selectors = {} as any
+  properties.forEach((commandNode: any) => {
     const commandComment = parseSelectorComment(commandNode, sourceFile)
     const selectorsList = []
 
@@ -108,18 +108,18 @@ async function createTestingDocs(options: BuildCoreExecutorSchema) {
   )
 }
 
-function parseTestingType(fileContent, filePath) {
+function parseTestingType(fileContent: string, filePath: string) {
   const sourceFile = createSourceFile(fileContent)
   const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
   const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
-  const commands = []
-  interfaceDeclarationNode.members.forEach(commandNode => {
+  const commands = [] as any[]
+  interfaceDeclarationNode.members.forEach((commandNode: any) => {
     commands.push({
       name: commandNode.name.escapedText,
       description: parseFunctionComment(commandNode, sourceFile),
       signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
       path: filePath,
-      component: filePath.split(sep).pop().replace('.types.ts', ''),
+      component: filePath.split(sep).pop()?.replace('.types.ts', ''),
     })
   })
   return commands

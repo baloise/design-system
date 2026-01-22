@@ -6,7 +6,7 @@ import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssLayoutContainer = ({}) => {
   return CssTable({
-    tokens: tokens.size.container.size,
+    tokens: tokens.container.size,
     css: 'container is',
   })
 }

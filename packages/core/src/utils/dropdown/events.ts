@@ -3,8 +3,8 @@ import { rIC } from '../helpers'
 import { DropdownComponent } from './component'
 
 export type DropdownEvents = {
-  listenOnClickOutside(ev: UIEvent)
-  listenOnClick(ev: UIEvent)
+  listenOnClickOutside(ev: UIEvent): void
+  listenOnClick(ev: UIEvent): void
 }
 
 export class DropdownEventsUtil {

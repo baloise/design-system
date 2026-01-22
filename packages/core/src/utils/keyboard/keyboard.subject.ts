@@ -13,13 +13,13 @@ export class BalKeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKe
     })
   }
 
-  attach(observer: BalKeyboardObserver): void {
+  override attach(observer: BalKeyboardObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))
   }
 
-  detach(): void {
+  override detach(): void {
     super.detach()
     this.listener.disconnect()
   }

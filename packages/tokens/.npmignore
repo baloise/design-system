@@ -1,4 +1,4 @@
 project.json
-style-dictionary.config.ts
+config.ts
 tsconfig.json
 tsconfig.lib.json

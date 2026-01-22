@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalElementStateSubject } from './element-states.subject'
 import { BalElementStateObserver } from './element-states.interfaces'
+import { BalElementStateSubject } from './element-states.subject'
 
 export function ListenToElementStates() {
   return function (
@@ -11,18 +11,18 @@ export function ListenToElementStates() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this._balElementStateSubject) {
-        this._balElementStateSubject = new BalElementStateSubject()
-        this._balElementStateSubject.attach(this)
+      if (!this['_balElementStateSubject']) {
+        this['_balElementStateSubject'] = new BalElementStateSubject()
+        this['_balElementStateSubject'].attach(this)
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this._balElementStateSubject) {
-        this._balElementStateSubject.detach()
-        this._balElementStateSubject = undefined
+      if (this['_balElementStateSubject']) {
+        this['_balElementStateSubject'].detach()
+        this['_balElementStateSubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

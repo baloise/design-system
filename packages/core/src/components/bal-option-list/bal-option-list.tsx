@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import isNil from 'lodash.isnil'
+import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
@@ -12,7 +12,7 @@ import { includes, startsWith } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-option-list',
-  styleUrl: 'bal-option-list.sass',
+  styleUrl: 'bal-option-list.scss',
   shadow: false,
 })
 export class OptionList implements ComponentInterface, Loggable {
@@ -249,7 +249,7 @@ export class OptionList implements ComponentInterface, Loggable {
   /**
    * Updates options
    */
-  @Method() async updateSelected(values?: string[]): Promise<void> {
+  @Method() async updateSelected(values: string[]): Promise<void> {
     this.options.forEach(option => (option.selected = values.includes(option.value)))
     await waitAfterFramePaint()
   }

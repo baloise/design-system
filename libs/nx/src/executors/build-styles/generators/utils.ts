@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { join, dirname } from 'path'
-import get from 'lodash.get'
+import get from 'lodash/get'
+import { dirname, join } from 'path'
 
 export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'
@@ -38,7 +38,7 @@ class RuleValue implements BaseRule {
   }
 
   toString(indent = '') {
-    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''}`
+    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''};`
   }
 }
 
@@ -63,7 +63,7 @@ class Rule implements BaseRule {
     const values = this.values.map(value => {
       return [`  ${value.toString(indent)}`].join(NEWLINE)
     })
-    return [selector, ...values].join(NEWLINE) + NEWLINE
+    return [`${selector} {`, ...values, `${indent}}`].join(NEWLINE) + NEWLINE
   }
 }
 
@@ -81,8 +81,9 @@ class BreakpointRule implements BaseRule {
 
   toString(indent = '') {
     return [
-      indent + `+${this.breakpoint}`,
+      indent + `@include ${this.breakpoint} {`,
       indent + this.rules.map(rule => rule.toString(`  ${indent}`)).join(NEWLINE),
+      indent + `}`,
     ].join(`${NEWLINE}`)
   }
 }
@@ -130,12 +131,14 @@ export const toCssVarName = (tokenName, token) => {
   const isColorVariable = token.attributes.category === 'color'
   const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
   const endsWithDefault = token.name.endsWith('-default') || token.name.endsWith('Default')
+  // const endsWithBase = token.name.endsWith('-base') || token.name.endsWith('Base')
 
   if (isSizeVariable) {
     tokenName = tokenName.replace('bal-size', 'bal')
   }
   if (isColorVariable) {
     tokenName = tokenName.replace('bal-color-base', 'bal-color')
+    tokenName = tokenName.replace('bal-color-brand', 'bal-color')
   }
   if (endsWithMobile) {
     tokenName = tokenName.replace('-mobile', '')
@@ -143,6 +146,9 @@ export const toCssVarName = (tokenName, token) => {
   if (endsWithDefault) {
     tokenName = tokenName.replace('-default', '')
   }
+  // if (endsWithBase) {
+  //   tokenName = tokenName.replace('-base', '')
+  // }
   return tokenName
 }
 
@@ -160,7 +166,7 @@ const removeLeadingTrailingDashes = inputString => {
 export const toProp = ({ property, prefix, replace, replace2 }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
   const propName = removeLeadingTrailingDashes(
-    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, ''),
+    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, '').replace('base', ''),
   )
   const propValue = toCssVar(property)
   return {
@@ -173,7 +179,7 @@ export const toProps = ({ tokens, prefix = undefined, replace = undefined, repla
   for (const key in tokens) {
     const property = tokens[key]
 
-    if (!property.value) {
+    if (!property.$value) {
       props = {
         ...props,
         ...toProps({ tokens: property, prefix, replace, replace2 }),
@@ -339,7 +345,7 @@ export const styleClassDeprecated = ({
 export const merge = ({ docs = [], rules = [], deprecated = [], visualTest = [] }) => {
   return {
     json: JSON.stringify(docs, undefined, 2),
-    rules: [`@use '../mixins/_all' as *`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
+    rules: [`@use '../mixins/_all' as *;`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
     deprecated: [...deprecated.map(r => r.toString())].join(NEWLINE),
     visualTest: `<!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -396,7 +402,7 @@ export const staticClassByToken = async ({
 
 export const save = async (fileName, projectRoot, { json, rules }) => {
   await writeFileRecursive(join(projectRoot, 'docs', `${fileName}.json`), json)
-  await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.sass`), rules)
+  await writeFileRecursive(join(projectRoot, 'src/generated', `${fileName}.scss`), rules)
 }
 
 export const getTokens = async ({ token, tokensRoot }) => {

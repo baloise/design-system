@@ -17,7 +17,7 @@ import { i18nBalFooter } from './bal-footer.i18n'
 
 @Component({
   tag: 'bal-footer',
-  styleUrl: 'bal-footer.sass',
+  styleUrl: 'bal-footer.scss',
 })
 export class Footer implements BalConfigObserver, Loggable {
   @State() logoSvgContent = ''
@@ -276,7 +276,7 @@ export class Footer implements BalConfigObserver, Loggable {
                       target="_blank"
                       class={{
                         'link': true,
-                        'is-light': true,
+                        'is-inverted': true,
                       }}
                     >
                       {link.label}

@@ -11,18 +11,18 @@ export function ListenToFocus() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this._balFocusSubject) {
-        this._balFocusSubject = new BalFocusSubject()
-        this._balFocusSubject.attach(this)
+      if (!this['_balFocusSubject']) {
+        this['_balFocusSubject'] = new BalFocusSubject()
+        this['_balFocusSubject'].attach(this)
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this._balFocusSubject) {
-        this._balFocusSubject.detach()
-        this._balFocusSubject = undefined
+      if (this['_balFocusSubject']) {
+        this['_balFocusSubject'].detach()
+        this['_balFocusSubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

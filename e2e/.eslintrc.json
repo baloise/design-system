@@ -1,6 +1,6 @@
 {
   "extends": ["../.eslintrc.base.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "**/vite.config.*.timestamp*", "**/vitest.config.*.timestamp*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
@@ -25,7 +25,7 @@
           "error",
           {
             "ignoredFiles": [],
-            "ignoredDependencies": []
+            "ignoredDependencies": ["vitest"]
           }
         ]
       }

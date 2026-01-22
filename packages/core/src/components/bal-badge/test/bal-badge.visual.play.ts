@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-badge'
 const VARIANTS = ['basic', 'icon', 'card', 'button', 'sizes', 'colors', 'long-content']
@@ -12,6 +12,6 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(el, image(`${variant}`))
   })
 })

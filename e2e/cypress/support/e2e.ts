@@ -14,28 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import 'cypress-axe'
-
 import 'cypress-file-upload'
 import 'cypress-terminal-report/src/installLogsCollector'
-import { addCompareSnapshotCommand } from './lib/visuals'
-
-addCompareSnapshotCommand({
-  capture: 'fullPage',
-  errorThreshold: 0.3,
-})
-
-Cypress.Screenshot.defaults({
-  onBeforeScreenshot($el) {
-    if ($el.is('html')) {
-      $el.css('overflow', 'hidden')
-    }
-  },
-  onAfterScreenshot($el) {
-    if ($el.is('html')) {
-      $el.css('overflow', 'hidden scroll')
-    }
-  },
-})
 
 import './commands'

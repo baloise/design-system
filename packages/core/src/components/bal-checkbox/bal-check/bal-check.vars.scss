@@ -1,0 +1,43 @@
+:root {
+  --bal-check-size: 1.5rem;
+  --bal-check-border-width: 2px;
+  --bal-check-border-radius: var(--bal-radius-base);
+
+  --bal-check-color-inverted: var(--bal-color-white);
+  --bal-check-border-color: var(--bal-color-brand-primary-base);
+  --bal-check-border-color-hover: var(--bal-color-border-primary-hover);
+  --bal-check-border-color-active: var(--bal-color-border-primary-active);
+
+  --bal-check-border-color-checked: var(--bal-color-brand-primary-base);
+  --bal-check-border-color-checked-hover: var(--bal-color-border-primary-hover);
+  --bal-check-border-color-checked-active: var(--bal-color-border-primary-active);
+
+  --bal-check-background: transparent;
+  --bal-check-background-hover: var(--bal-color-grey-2);
+  --bal-check-background-active: var(--bal-color-grey-2);
+
+  --bal-check-background-checked: var(--bal-color-brand-primary-base);
+  --bal-check-background-checked-hover: var(--bal-color-border-primary-hover);
+  --bal-check-background-checked-active: var(--bal-color-border-primary-active);
+
+  --bal-check-border-color-invalid: var(--bal-color-border-danger-base);
+  --bal-check-border-color-invalid-hover: var(--bal-color-border-danger-hover);
+  --bal-check-border-color-invalid-active: var(--bal-color-border-danger-active);
+
+  --bal-check-border-color-invalid-checked: var(--bal-color-border-danger-base);
+  --bal-check-border-color-invalid-checked-hover: var(--bal-color-border-danger-hover);
+  --bal-check-border-color-invalid-checked-active: var(--bal-color-border-danger-active);
+
+  --bal-check-background-invalid: transparent;
+  --bal-check-background-invalid-hover: var(--bal-color-danger-1);
+  --bal-check-background-invalid-active: var(--bal-color-danger-1);
+
+  --bal-check-background-invalid-checked: var(--bal-color-border-danger-base);
+  --bal-check-background-invalid-checked-hover: var(--bal-color-border-danger-hover);
+  --bal-check-background-invalid-checked-active: var(--bal-color-border-danger-active);
+
+  --bal-check-background-disabled: var(--bal-color-grey-2);
+  --bal-check-border-color-disabled: var(--bal-color-border-grey-dark);
+  --bal-check-background-checked-disabled: var(--bal-color-border-grey-dark);
+  --bal-check-border-color-checked-disabled: var(--bal-color-border-grey-dark);
+}

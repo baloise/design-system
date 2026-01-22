@@ -30,7 +30,7 @@ import { i18nBalDate } from './bal-date.i18n'
 
 @Component({
   tag: 'bal-date',
-  styleUrl: 'bal-date.sass',
+  styleUrl: 'bal-date.scss',
 })
 export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputId = `bal-da-${dateIds++}`
@@ -391,7 +391,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
       this.balWillAnimate.emit()
       this.isExpanded = true
       this.popupCleanup = lib.autoUpdate(this.referenceEl, this.floatingEl, () => {
-        this.updatePosition(this.referenceEl, this.floatingEl as HTMLElement)
+        this.updatePosition(this.referenceEl, this.floatingEl)
       })
     }
 
@@ -411,9 +411,12 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   }
 
   private async updatePosition(
-    referenceEl: HTMLElement | HTMLStencilElement,
-    floatingEl: HTMLElement | HTMLStencilElement,
+    referenceEl: HTMLStencilElement | HTMLDivElement | undefined,
+    floatingEl: HTMLStencilElement | HTMLDivElement | undefined,
   ) {
+    if (!referenceEl || !floatingEl) {
+      return
+    }
     const lib = await balFloatingUi.load()
     lib
       .computePosition(referenceEl, floatingEl as HTMLElement, {

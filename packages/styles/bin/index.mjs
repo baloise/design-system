@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-import prompts from 'prompts'
-import replace from 'replace-in-file'
-import path from 'path'
-import fs from 'fs'
-import fsp from 'fs/promises'
 import { tsquery } from '@phenomnomnominal/tsquery'
 import { load } from 'cheerio'
+import fs from 'fs'
+import fsp from 'fs/promises'
 import { glob } from 'glob'
+import path from 'path'
+import prompts from 'prompts'
+import replace from 'replace-in-file'
 
 // ================================================================================
 // MAIN
@@ -1227,10 +1227,10 @@ const replacementsCSSVariablesColors = {
     /var\(--bal-color-text-danger-dark\)/g,
   ],
   to: [
-    'var(--bal-color-border-primary-pressed)',
-    'var(--bal-color-border-primary-hovered)',
-    'var(--bal-color-border-danger-hovered)',
-    'var(--bal-color-border-danger-pressed)',
+    'var(--bal-color-border-primary-active)',
+    'var(--bal-color-border-primary-hover)',
+    'var(--bal-color-border-danger-hover)',
+    'var(--bal-color-border-danger-active)',
     'var(--bal-color-primary-1)',
     'var(--bal-color-primary-2)',
     'var(--bal-color-primary-3)',
@@ -1239,12 +1239,12 @@ const replacementsCSSVariablesColors = {
     'var(--bal-color-primary-6)',
     'var(--bal-color-primary)',
     'transparent',
-    'var(--bal-color-text-primary-hovered)',
-    'var(--bal-color-text-inverted-hovered)',
-    'var(--bal-color-text-inverted-pressed)',
-    'var(--bal-color-text-primary-pressed)',
-    'var(--bal-color-text-danger-hovered)',
-    'var(--bal-color-text-danger-pressed)',
+    'var(--bal-color-text-primary-hover)',
+    'var(--bal-color-text-inverted-hover)',
+    'var(--bal-color-text-inverted-active)',
+    'var(--bal-color-text-primary-active)',
+    'var(--bal-color-text-danger-hover)',
+    'var(--bal-color-text-danger-active)',
   ],
 }
 

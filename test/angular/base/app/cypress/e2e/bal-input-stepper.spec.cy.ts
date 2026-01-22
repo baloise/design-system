@@ -5,15 +5,14 @@ describe('bal-input-stepper', () => {
   it('should change value', () => {
     cy.getByLabelText('Input Stepper Label').should('have.value', 0)
 
-    cy.getByLabelText('Input Stepper Label').getControl('erhöhen').click().blur()
+    cy.getByLabelText('Input Stepper Label').getControl('erhöhen').click().blur({ force: true })
     cy.getByLabelText('Input Stepper Label')
       .should('have.value', 1)
       .shouldBeInvalid()
       .getDescribingElement()
       .contains('Min is 2')
 
-    cy.getByLabelText('Input Stepper Label').getControl('erhöhen').click().blur()
-
+    cy.getByLabelText('Input Stepper Label').getControl('erhöhen').click().blur({ force: true })
     cy.getByLabelText('Input Stepper Label')
       .should('have.value', 2)
       .shouldBeValid()

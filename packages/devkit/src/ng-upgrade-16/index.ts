@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics'
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks'
-import { findNodes } from '@schematics/angular/utility/ast-utils'
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript'
+import { findNodes } from '@schematics/angular/utility/ast-utils'
 import { glob } from 'glob'
 
-import { AngularType, SchemaOptions } from './schema'
 import { getWorkspace } from '@schematics/angular/utility/workspace'
 import { join } from 'path'
+import { AngularType, SchemaOptions } from './schema'
 
 interface RenameConfig {
   [oldName: string]: string // oldName -> newName
@@ -113,7 +113,7 @@ function updateImports(config: RenameConfig): Rule {
       throw new Error('Could not find Angular workspace configuration')
     }
 
-    const project = workspace.projects.get(workspace.projects.keys().next().value)
+    const project = workspace.projects.get(workspace.projects.keys().next().value || '')
 
     if (!project) {
       throw new Error('Could not find project in Angular workspace')

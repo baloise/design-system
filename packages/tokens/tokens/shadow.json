@@ -1,0 +1,144 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "small": {
+      "$value": {
+        "color": "rgba(0, 7, 57, 0.15)",
+        "offsetX": "0",
+        "offsetY": "2px",
+        "blur": "5px",
+        "spread": "1px"
+      },
+      "comment": ""
+    },
+    "base": {
+      "$value": {
+        "color": "rgba(0, 7, 57, 0.15)",
+        "offsetX": "0",
+        "offsetY": "0",
+        "blur": "10px",
+        "spread": "0"
+      },
+      "comment": "Default shadow size to elevate an element."
+    },
+    "large": {
+      "$value": {
+        "color": "rgba(0, 7, 57, 0.15)",
+        "offsetX": "0",
+        "offsetY": "0",
+        "blur": "30px",
+        "spread": "0"
+      },
+      "comment": "Large shadow are used for hover effects."
+    },
+    "header": {
+      "$value": {
+        "color": "rgba(0, 7, 57, 0.15)",
+        "offsetX": "0",
+        "offsetY": "4px",
+        "blur": "4px",
+        "spread": "0"
+      },
+      "comment": "Shadow effect for a header bar"
+    },
+    "outline": {
+      "base": {
+        "$value": [
+          {
+            "color": "{color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "{color.brand.purple.darkest}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "base-inset": {
+        "$value": [
+          {
+            "color": "inset {color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "inset {color.brand.purple.darkest}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "inverted": {
+        "$value": [
+          {
+            "color": "{color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "{color.brand.yellow.base}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      },
+      "inverted-inset": {
+        "$value": [
+          {
+            "color": "inset {color.brand.core.white}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "2px"
+          },
+          {
+            "color": "inset {color.brand.yellow.base}",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "0",
+            "spread": "5px"
+          }
+        ]
+      }
+    },
+    "text": {
+      "base": {
+        "$value": [
+          {
+            "color": "rgba(0, 0, 0, 0.15)",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "4px"
+          },
+          {
+            "color": "rgba(0, 0, 0, 0.25)",
+            "offsetX": "0",
+            "offsetY": "4px",
+            "blur": "12px"
+          },
+          {
+            "color": "rgba(0, 0, 0, 0.5)",
+            "offsetX": "0",
+            "offsetY": "0",
+            "blur": "80px"
+          }
+        ],
+        "comment": "Increases readability when used on a image background."
+      }
+    }
+  }
+}

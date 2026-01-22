@@ -1,0 +1,101 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Mixins
+  */
+$tag-colors: (
+  'primary',
+  'grey',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'purple',
+  'red',
+  'yellow',
+  'green',
+  'purple-dark',
+  'red-dark',
+  'yellow-dark',
+  'green-dark',
+  'purple-light',
+  'red-light',
+  'yellow-light',
+  'green-light'
+);
+
+@mixin tag-colors($color) {
+  color: var(--bal-tag-color-text-#{$color});
+  background: var(--bal-tag-color-background-#{$color});
+}
+
+/**
+  * Basic Style
+  */
+
+.tag:not(.token) {
+  @include unselectable;
+
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
+  vertical-align: middle;
+  background-color: var(--bal-tag-color-background-base);
+  border-radius: var(--bal-tag-radius-base);
+  font-family: var(--bal-tag-font-family);
+  line-height: var(--bal-tag-line-height);
+  font-size: var(--bal-tag-text-size-normal);
+  font-weight: var(--bal-tag-font-weight-normal);
+  gap: 0.25rem;
+
+  > .close,
+  > bal-close {
+    margin-right: calc(0.25rem * -1);
+  }
+
+  /**
+    * Colors
+    */
+  @each $color in $tag-colors {
+    &.is-#{$color} {
+      @include tag-colors($color);
+    }
+  }
+
+  &.is-square {
+    border-radius: var(--bal-tag-radius-square);
+  }
+
+  &.is-pill {
+    border-radius: var(--bal-tag-radius-pill);
+  }
+
+  &.is-small {
+    padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
+    min-height: 1.5rem;
+    font-size: var(--bal-tag-text-size-small);
+    font-weight: var(--bal-tag-font-weight-small);
+  }
+
+  &.is-medium {
+    min-height: 2.5rem;
+    padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
+    font-size: var(--bal-tag-text-size-medium);
+    font-weight: var(--bal-tag-font-weight-medium);
+  }
+
+  &.is-large {
+    min-height: 3rem;
+    padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
+    font-size: var(--bal-tag-text-size-large);
+    font-weight: var(--bal-tag-font-weight-large);
+  }
+}
+
+.tags {
+  display: flex;
+  gap: var(--bal-tag-space-normal-x);
+}

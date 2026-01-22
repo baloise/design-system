@@ -27,7 +27,7 @@ export interface PopoverPresentOptions {
 
 @Component({
   tag: 'bal-popover',
-  styleUrl: 'bal-popover.sass',
+  styleUrl: 'bal-popover.scss',
 })
 export class Popover implements ComponentInterface, Loggable, BalBreakpointObserver {
   private popoverId = `bal-po-${PopoverIds++}`
@@ -151,7 +151,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
 
   componentWillLoad() {
     this.backdropHeight = this.getBackdropHeight()
-    this.triggerElement.setAttribute('aria-haspopup', 'true')
+    this.triggerElement?.setAttribute('aria-haspopup', 'true')
   }
 
   componentDidLoad() {

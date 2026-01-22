@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-sheet'
 const VARIANTS = ['basic']
@@ -11,6 +11,6 @@ test.beforeEach('Setup', async ({ page }) => {
 
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
-    await expect(page).toHaveScreenshot(image(`${variant}`))
+    await expectScreenshot(page, image(`${variant}`))
   })
 })

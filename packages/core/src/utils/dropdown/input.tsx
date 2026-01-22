@@ -1,10 +1,10 @@
-import { h, FunctionalComponent } from '@stencil/core'
-import { BEM } from '../bem'
-import { i18nBalDropdown } from './dropdown.i18n'
+import { FunctionalComponent, h } from '@stencil/core'
 import { ariaBooleanToString } from '../aria'
-import { BalAriaForm } from '../form'
-import { BalLanguage } from '../config'
 import { Attributes } from '../attributes'
+import { BEM } from '../bem'
+import { BalLanguage } from '../config'
+import { BalAriaForm } from '../form'
+import { i18nBalDropdown } from './dropdown.i18n'
 
 export interface DropdownInputProps {
   inputId: string
@@ -21,7 +21,7 @@ export interface DropdownInputProps {
   invalid: boolean
   language: BalLanguage
   inheritedAttributes: Attributes
-  refInputEl: (el: HTMLInputElement) => void
+  refInputEl: (el: HTMLInputElement | undefined) => void
   onChange: (ev: Event) => void
   onFocus: (ev: FocusEvent) => void
   onBlur: (ev: FocusEvent) => void

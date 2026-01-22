@@ -4,12 +4,23 @@
   "sourceRoot": "packages/core/src",
   "projectType": "library",
   "targets": {
-    "start": {
+    "clean": {
       "executor": "nx:run-commands",
-      "dependsOn": ["^build"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "stencil build --dev --serve --watch --port=4000",
+        "command": "npx rimraf .stencil dist components loader"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build", "clean"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": [
+          "stencil build --dev --serve --watch --port=4000",
+          "npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'"
+        ],
+        "parallel": true,
         "env": {
           "BAL_DEVELOPMENT": "true"
         }
@@ -92,8 +103,7 @@
         "{projectRoot}/components",
         "{projectRoot}/dist",
         "{projectRoot}/loader",
-        "{projectRoot}/www",
-        "{projectRoot}/icons"
+        "{projectRoot}/www"
       ],
       "options": {
         "projectRoot": "{projectRoot}"

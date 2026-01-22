@@ -46,9 +46,7 @@ export const TabIcon: FunctionalComponent<TabIconProps> = ({
         ></bal-icon>
       )}
       {hasBubble ? (
-        <bal-badge class={{ ...bemEl.element('bubble').class() }} size="small">
-          {item.bubble}
-        </bal-badge>
+        <span class={{ ...bemEl.element('bubble').class(), 'badge': true, 'is-small': true }}>{item.bubble}</span>
       ) : (
         ''
       )}

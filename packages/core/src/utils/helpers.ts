@@ -56,7 +56,7 @@ export const rLCP = (callback: () => void, timeout = 3000) => {
       }
     }, timeout)
   } else {
-    return setTimeout(callback, 32)
+    setTimeout(callback, 32)
   }
 }
 
@@ -124,8 +124,8 @@ export const hasTagName = (element: any, tag: string) => {
 }
 
 export const isDescendant = (
-  parent: HTMLElement | HTMLStencilElement,
-  child: HTMLElement | HTMLStencilElement | EventTarget,
+  parent: HTMLElement | HTMLStencilElement | undefined,
+  child: HTMLElement | HTMLStencilElement | EventTarget | undefined | null,
 ) => {
   let node = (child as any).parentNode
   while (node != null) {
@@ -305,7 +305,7 @@ export const waitForComponent = async (el: HTMLElement | HTMLStencilElement | nu
 
 export const isChildOfEventTarget = async (
   ev: any,
-  el: HTMLElement | HTMLStencilElement | Window | Document,
+  el: HTMLElement | HTMLStencilElement | Window | Document | null | undefined,
   callback: (target: HTMLElement | HTMLStencilElement) => void,
 ) => {
   if (ev && ev.target && el && el !== ev.target) {

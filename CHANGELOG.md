@@ -737,9 +737,7 @@
   | Old Package Name                                       |       | New Package Name             |
   | :----------------------------------------------------- | :---: | :--------------------------- |
   | `@baloise/design-system-components`                    | **→** | `@baloise/ds-core`           |
-  | `@baloise/design-system-components-angular`            | **→** | `@baloise/ds-angular-module` |
   | `@baloise/design-system-components-angular/standalone` | **→** | `@baloise/ds-angular`        |
-  | `@baloise/design-system-components-angular/legacy`     | **→** | `@baloise/ds-angular-legacy` |
   | `@baloise/design-system-components-react`              | **→** | `@baloise/ds-react`          |
   | `@baloise/design-system-components-table`              | **→** | `@baloise/ds-table`          |
   | `@baloise/design-system-cli`                           | **→** | `@baloise/ds-devkit`         |
@@ -915,7 +913,7 @@
     imports: [CommonModule, BalApp, BalButton],
     template: `
       <bal-app>
-        <main class="container py-normal">
+        <main class="container py-base">
           <bal-button>My Button</bal-button>
         </main>
       </bal-app>

@@ -78,7 +78,7 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     },
   })
 
-  const tokens = await utils.getTokens({ token: 'size.space', ...options })
+  const tokens = await utils.getTokens({ token: 'space', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop', 'none'] })
 
   const valuesGap = {

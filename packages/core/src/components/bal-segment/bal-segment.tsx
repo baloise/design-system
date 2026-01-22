@@ -39,7 +39,7 @@ import { SegmentValue } from './bal-segment.types'
 
 @Component({
   tag: 'bal-segment',
-  styleUrl: 'bal-segment.sass',
+  styleUrl: 'bal-segment.scss',
 })
 export class Segment
   implements
@@ -185,12 +185,12 @@ export class Segment
   hasFocus = false
 
   @ListenToFocus()
-  focusInListener(ev): void {
+  focusInListener(ev: FocusEvent): void {
     this.balFocus.emit(ev)
   }
 
   @ListenToFocus()
-  focusOutListener(ev): void {
+  focusOutListener(ev: FocusEvent): void {
     this.balBlur.emit(ev)
   }
 
@@ -216,7 +216,11 @@ export class Segment
   @ListenToWindowResize()
   windowResizeListener(): void {
     if (this.vertical === false && this.maxWidth > 0) {
-      const parent = this.el.parentElement.getBoundingClientRect()
+      const parent = this.el.parentElement?.getBoundingClientRect()
+
+      if (!parent) {
+        return
+      }
 
       if (parent.width < this.maxWidth) {
         //
@@ -242,13 +246,13 @@ export class Segment
     this.keyboardMode = FOCUS_KEYS.includes(ev.key)
     let forceChange = false
 
-    let current: undefined | HTMLBalSegmentItemElement
+    let current: undefined | HTMLBalSegmentItemElement | null
 
     if (isSpaceKey(ev) || isEnterKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('current')
-      forceChange = this.value !== current.value
-      this.value = current.value
+      forceChange = this.value !== current?.value
+      this.value = current?.value
     } else if (isArrowUpKey(ev) || isArrowLeftKey(ev)) {
       stopEventBubbling(ev)
       current = this.getSegmentItem('previous')
@@ -269,7 +273,9 @@ export class Segment
 
     const previous = this.checked
     if (current !== previous || forceChange) {
-      this.checkButton(previous, current)
+      if (previous) {
+        this.checkButton(previous, current)
+      }
       this.emitValueChange()
     }
 
@@ -308,7 +314,7 @@ export class Segment
     selector: 'first' | 'last' | 'next' | 'previous' | 'current',
   ): HTMLBalSegmentItemElement | null => {
     const items = this.allItems.filter(item => !item.disabled)
-    const currIndex = items.findIndex(item => item === document.activeElement.closest('bal-segment-item'))
+    const currIndex = items.findIndex(item => item === document.activeElement?.closest('bal-segment-item'))
 
     switch (selector) {
       case 'current':

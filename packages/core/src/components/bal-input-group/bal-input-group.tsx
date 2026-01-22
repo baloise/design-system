@@ -4,7 +4,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-input-group',
-  styleUrl: 'bal-input-group.sass',
+  styleUrl: 'bal-input-group.scss',
 })
 export class InputGroup implements ComponentInterface {
   @Element() el!: HTMLStencilElement

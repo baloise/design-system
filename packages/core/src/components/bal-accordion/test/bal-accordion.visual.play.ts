@@ -1,4 +1,4 @@
-import { expect, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-accordion'
 const VARIANTS = ['basic', 'button', 'text-variant', 'stack']
@@ -12,9 +12,10 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expect(el).toHaveScreenshot(image(`${variant}-closed`))
+    await expectScreenshot(el, image(`${variant}-closed`))
     const trigger = el.locator('bal-accordion-trigger').locator('button')
     await trigger.click()
-    await expect(el).toHaveScreenshot(image(`${variant}-open`))
+    await waitForChanges(page)
+    await expectScreenshot(el, image(`${variant}-open`))
   })
 })

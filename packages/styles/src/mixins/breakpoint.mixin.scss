@@ -1,0 +1,87 @@
+@use '@baloise/ds-tokens/dist/tokens.scss' as *;
+
+@mixin from($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+@mixin until($device) {
+  @media screen and (max-width: $device - 1px) {
+    @content;
+  }
+}
+@mixin between($min-device, $max-device) {
+  @media screen and (min-width: $min-device) and (max-width: $max-device - 1px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: $bal-breakpoint-tablet - 1px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: $bal-breakpoint-tablet), print {
+    @content;
+  }
+}
+@mixin tablet-only {
+  @media screen and (min-width: $bal-breakpoint-tablet) and (max-width: $bal-breakpoint-desktop - 1px) {
+    @content;
+  }
+}
+@mixin touch {
+  @media screen and (max-width: $bal-breakpoint-desktop - 1px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: $bal-breakpoint-desktop) {
+    @content;
+  }
+}
+@mixin desktop-only {
+  @media screen and (min-width: $bal-breakpoint-desktop) and (max-width: $bal-breakpoint-high-definition - 1px) {
+    @content;
+  }
+}
+@mixin high-definition {
+  @media screen and (min-width: $bal-breakpoint-high-definition) {
+    @content;
+  }
+}
+@mixin high-definition-only {
+  @media screen and (min-width: $bal-breakpoint-high-definition) and (max-width: $bal-breakpoint-widescreen - 1px) {
+    @content;
+  }
+}
+@mixin until-high-definition {
+  @media screen and (max-width: $bal-breakpoint-high-definition - 1px) {
+    @content;
+  }
+}
+@mixin until-widescreen {
+  @media screen and (max-width: $bal-breakpoint-widescreen - 1px) {
+    @content;
+  }
+}
+@mixin widescreen {
+  @media screen and (min-width: $bal-breakpoint-widescreen) {
+    @content;
+  }
+}
+@mixin widescreen-only {
+  @media screen and (min-width: $bal-breakpoint-widescreen) and (max-width: $bal-breakpoint-fullhd - 1px) {
+    @content;
+  }
+}
+@mixin until-fullhd {
+  @media screen and (max-width: $bal-breakpoint-fullhd - 1px) {
+    @content;
+  }
+}
+@mixin fullhd {
+  @media screen and (min-width: $bal-breakpoint-fullhd) {
+    @content;
+  }
+}

@@ -1,0 +1,66 @@
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, LinkCard, LinkCards, PackageTable } from '../.storybook/blocks'
+
+<Meta title="Changelog" />
+
+<Banner label="Changelog" />
+
+<Lead>
+  All notable changes to this project will be documented in dedicated [changelog
+  files](https://github.com/baloise/design-system/blob/main/CHANGELOG.md).
+</Lead>
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="https://github.com/baloise/design-system/blob/main/CHANGELOG.md"
+  target="_blank"
+>
+  Open Changelog
+</a>
+
+<br />
+
+<InfoQuote>
+
+[Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_OLD.md) below 15.0.0 are document in
+a separate changelog file.
+
+</InfoQuote>
+
+<br />
+
+#### Older Documentation
+
+Older versions of the documentation can be changed with the version selector in the top right corner of the
+documentation.
+
+import Versions from './assets/images/versions.png'
+
+<img src={Versions} />
+
+#### Upgrade Guides
+
+- [Upgrade from 17.x to 18.x](?path=/docs/development-upgrade-guides-updating-to-v18--documentation)
+- [Upgrade from 16.x to 17.x](?path=/docs/development-upgrade-guides-updating-to-v17--documentation)
+- [Upgrade from 15.x to 16.x](?path=/docs/development-upgrade-guides-updating-to-v16--documentation)
+- [Upgrade from 14.x to 15.x](?path=/docs/development-upgrade-guides-updating-to-v15--documentation)
+- [Upgrade from 13.x to 14.x](?path=/docs/development-upgrade-guides-updating-to-v14--documentation)
+- [Upgrade from 12.x to 13.x](?path=/docs/development-upgrade-guides-updating-to-v13--documentation)
+- [Upgrade from 11.x to 12.x](?path=/docs/development-upgrade-guides-updating-to-v12--documentation)
+- [Upgrade from 10.x to 11.x](?path=/docs/development-upgrade-guides-updating-to-v11--documentation)
+- [Upgrade from 9.x to 10.x](?path=/docs/development-upgrade-guides-updating-to-v10--documentation)
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Development/Getting Started'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular or React'}
+    />
+    <LinkCard
+      label={'Contributing'}
+      pageTitle={'Contributing/Overview'}
+      description={'Be part of the Design System Community'}
+    />
+  </LinkCards>
+</Footer>

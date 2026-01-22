@@ -11,23 +11,23 @@ export function ListenToVisibility() {
     const { connectedCallback, componentDidLoad, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this._balVisibilitySubject) {
-        this._balVisibilitySubject = new BalVisibilitySubject()
+      if (!this['_balVisibilitySubject']) {
+        this['_balVisibilitySubject'] = new BalVisibilitySubject()
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.componentDidLoad = function () {
-      this._balVisibilitySubject.attach(this)
+      this['_balVisibilitySubject'].attach(this)
 
       return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this._balVisibilitySubject) {
-        this._balVisibilitySubject.detach()
-        this._balVisibilitySubject = undefined
+      if (this['_balVisibilitySubject']) {
+        this['_balVisibilitySubject'].detach()
+        this['_balVisibilitySubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

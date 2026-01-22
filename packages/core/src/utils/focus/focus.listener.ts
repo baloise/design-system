@@ -5,7 +5,7 @@ import { ListenerAbstract } from '../types/listener'
 import { BalFocusInfo } from './focus.interfaces'
 
 export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, BalFocusInfo> {
-  connect(el: HTMLElement | HTMLStencilElement): void {
+  override connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (this.el) {
       addEventListener(this.el, 'focusin', this.onFocusin as any)
@@ -13,7 +13,7 @@ export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, Bal
     }
   }
 
-  disconnect(): void {
+  override disconnect(): void {
     super.disconnect()
     if (this.el) {
       removeEventListener(this.el, 'focusin', this.onFocusin as any)

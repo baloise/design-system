@@ -14,6 +14,7 @@ import { FooterLink } from "@baloise/web-app-utils";
 import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+import { FormInput } from "./utils/form-input";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { SegmentValue } from "./components/bal-segment/bal-segment.types";
@@ -28,6 +29,7 @@ export { FooterLink } from "@baloise/web-app-utils";
 export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+export { FormInput } from "./utils/form-input";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 export { SegmentValue } from "./components/bal-segment/bal-segment.types";
@@ -84,10 +86,6 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<boolean>;
-        /**
-          * @default 2
-         */
-        "version": number;
     }
     interface BalAccordionDetails {
         /**
@@ -140,7 +138,7 @@ export namespace Components {
         "closeLabel": string;
         /**
           * The color to use from your application's color palette.
-          * @default 'info'
+          * @default 'secondary'
          */
         "color": BalProps.BalButtonColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
@@ -171,7 +169,7 @@ export namespace Components {
         /**
           * Defines the nature of the accordion trigger.
          */
-        "variant": BalProps.BalAccordionTriggerVariant;
+        "variant"?: BalProps.BalAccordionTriggerVariant;
     }
     interface BalApp {
         /**
@@ -231,7 +229,7 @@ export namespace Components {
           * If `true` the button is a popup.
           * @default undefined
          */
-        "balPopup": any;
+        "balPopup": undefined;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'
@@ -797,7 +795,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalCheckboxOption>;
+        "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
         /**
           * Defines the layout of the checkbox button
           * @default undefined
@@ -855,7 +853,7 @@ export namespace Components {
     }
     interface BalContent {
         /**
-          * Defines the text positioning like center, end or default to start.
+          * Defines the positioning like center, end or default to start.
           * @default 'start'
          */
         "align": BalProps.BalContentAlignment;
@@ -877,6 +875,11 @@ export namespace Components {
           * @default 'xx-small'
          */
         "space": BalProps.BalContentSpace;
+        /**
+          * Defines the text positioning like center, right or default to left.
+          * @default ''
+         */
+        "textAlign": BalProps.BalContentTextAlignment;
     }
     interface BalData {
         /**
@@ -2136,9 +2139,9 @@ export namespace Components {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * @default false
          */
@@ -2155,9 +2158,9 @@ export namespace Components {
         "htmlId"?: string;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
-        "invalid"?: boolean;
+        "invalid": boolean;
         /**
           * When true, the text will is able to break on multiple lines.
           * @default false
@@ -2174,9 +2177,9 @@ export namespace Components {
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default undefined
+          * @default false
          */
-        "readonly"?: boolean;
+        "readonly": boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -2190,9 +2193,9 @@ export namespace Components {
         "size": BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
-          * @default undefined
+          * @default false
          */
-        "valid"?: boolean;
+        "valid": boolean;
         /**
           * Defines the font weight of the label.
           * @default 'bold'
@@ -2427,115 +2430,6 @@ export namespace Components {
     interface BalModalBody {
     }
     interface BalModalHeader {
-    }
-    interface BalNav {
-        /**
-          * Link level structure.
-          * @default []
-         */
-        "buttons": BalProps.BalNavMetaButtons;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Link level structure.
-         */
-        "logo"?: BalProps.BalNavLogoLink;
-        /**
-          * Link level structure.
-          * @default []
-         */
-        "options": BalProps.BalNavOptions;
-    }
-    interface BalNavLink {
-        /**
-          * If `true` the link can be clickable
-          * @default false
-         */
-        "clickable": boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel": string | undefined;
-        /**
-          * If `true` the link gets selected with a underline
-          * @default false
-         */
-        "selected": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target": BalProps.BalButtonTarget;
-        /**
-          * Defines the variant of the link
-          * @default ''
-         */
-        "variant": BalProps.BalNavLinkVariant;
-    }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
-        /**
-          * Defines the static column which is always aligned to the right
-          * @default false
-         */
-        "staticCol": BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
-        /**
-          * Defines the color of the group
-          * @default ''
-         */
-        "color": BalProps.BalNavLinkGroupColor;
-    }
-    interface BalNavMenuBar {
-        /**
-          * Tells when to hide the bar
-          * @default 'none'
-         */
-        "invisible": BalProps.BalNavMenuBarInvisible;
-        /**
-          * Defines the position of the bar
-          * @default 'none'
-         */
-        "position": BalProps.BalNavMenuBarPosition;
-    }
-    interface BalNavMenuFlyout {
-        /**
-          * This is used to connect the flyout to the aria controls
-          * @default `bal-nav-x${NavMenuFlyOutIds++}`
-         */
-        "navId": string;
-    }
-    interface BalNavMetaBar {
-        /**
-          * Tells when to hide the bar
-          * @default 'none'
-         */
-        "invisible": BalProps.BalNavMetaBarInvisible;
-        /**
-          * Defines the position of the bar
-          * @default 'none'
-         */
-        "position": BalProps.BalNavMetaBarPosition;
-        /**
-          * Defines the height of the bar
-          * @default 'normal'
-         */
-        "size": BalProps.BalNavMetaBarSize;
-        /**
-          * Defines if the bar should stay on top of the backdrop
-          * @default false
-         */
-        "stayOnTopOfBackdrop": boolean;
-        /**
-          * Defines the color variant
-          * @default 'primary'
-         */
-        "variant": BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -2904,7 +2798,7 @@ export namespace Components {
         /**
           * Updates options
          */
-        "updateSelected": (values?: string[]) => Promise<void>;
+        "updateSelected": (values: string[]) => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -3314,7 +3208,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalRadioOption>;
+        "getOptionByValue": (value: string) => Promise<BalRadioOption | undefined>;
         /**
           * Defines the layout of the radio button
           * @default undefined
@@ -3501,7 +3395,7 @@ export namespace Components {
         /**
           * Returns the value of the component
          */
-        "getValue": () => Promise<string[]>;
+        "getValue": () => Promise<string[] | undefined>;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -3916,7 +3810,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalStepOption>;
+        "getOptionByValue": (value: string) => Promise<BalStepOption | undefined>;
         /**
           * Steps can be passed as a property or through HTML markup.
           * @default []
@@ -4099,7 +3993,7 @@ export namespace Components {
         /**
           * Find the options properties by its value
          */
-        "getOptionByValue": (value: string) => Promise<BalTabOption>;
+        "getOptionByValue": (value: string) => Promise<BalTabOption | undefined>;
         /**
           * If `true` then  isTabList becomes true even if there is a link in the list.
           * @default false
@@ -4216,9 +4110,9 @@ export namespace Components {
         "color": BalProps.BalTextColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * If `true` the text has heading font family
           * @default false
@@ -4235,9 +4129,9 @@ export namespace Components {
         "inline": boolean;
         /**
           * If `true` the component gets a invalid style.
-          * @default undefined
+          * @default false
          */
-        "invalid"?: boolean;
+        "invalid": boolean;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -4573,14 +4467,6 @@ export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalModalElement;
-}
-export interface BalNavCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalNavElement;
-}
-export interface BalNavMenuFlyoutCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalNavMenuFlyoutElement;
 }
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5330,76 +5216,6 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
-    interface HTMLBalNavElementEventMap {
-        "balNavItemClick": BalEvents.BalNavItemClickDetail;
-    }
-    interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalNavElement: {
-        prototype: HTMLBalNavElement;
-        new (): HTMLBalNavElement;
-    };
-    interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkElement: {
-        prototype: HTMLBalNavLinkElement;
-        new (): HTMLBalNavLinkElement;
-    };
-    interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGridElement: {
-        prototype: HTMLBalNavLinkGridElement;
-        new (): HTMLBalNavLinkGridElement;
-    };
-    interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGridColElement: {
-        prototype: HTMLBalNavLinkGridColElement;
-        new (): HTMLBalNavLinkGridColElement;
-    };
-    interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
-    }
-    var HTMLBalNavLinkGroupElement: {
-        prototype: HTMLBalNavLinkGroupElement;
-        new (): HTMLBalNavLinkGroupElement;
-    };
-    interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
-    }
-    var HTMLBalNavMenuBarElement: {
-        prototype: HTMLBalNavMenuBarElement;
-        new (): HTMLBalNavMenuBarElement;
-    };
-    interface HTMLBalNavMenuFlyoutElementEventMap {
-        "balFocusOut": BalEvents.BalNavFlyoutFocusOutDetail;
-    }
-    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNavMenuFlyoutElementEventMap>(type: K, listener: (this: HTMLBalNavMenuFlyoutElement, ev: BalNavMenuFlyoutCustomEvent<HTMLBalNavMenuFlyoutElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalNavMenuFlyoutElement: {
-        prototype: HTMLBalNavMenuFlyoutElement;
-        new (): HTMLBalNavMenuFlyoutElement;
-    };
-    interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
-    }
-    var HTMLBalNavMetaBarElement: {
-        prototype: HTMLBalNavMetaBarElement;
-        new (): HTMLBalNavMetaBarElement;
-    };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
     var HTMLBalNavbarElement: {
@@ -6001,14 +5817,6 @@ declare global {
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
-        "bal-nav": HTMLBalNavElement;
-        "bal-nav-link": HTMLBalNavLinkElement;
-        "bal-nav-link-grid": HTMLBalNavLinkGridElement;
-        "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
-        "bal-nav-link-group": HTMLBalNavLinkGroupElement;
-        "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
-        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
-        "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -6106,10 +5914,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "openLabel"?: string;
-        /**
-          * @default 2
-         */
-        "version"?: number;
     }
     interface BalAccordionDetails {
         /**
@@ -6162,7 +5966,7 @@ declare namespace LocalJSX {
         "closeLabel"?: string;
         /**
           * The color to use from your application's color palette.
-          * @default 'info'
+          * @default 'secondary'
          */
         "color"?: BalProps.BalButtonColor;
         /**
@@ -6255,7 +6059,7 @@ declare namespace LocalJSX {
           * If `true` the button is a popup.
           * @default undefined
          */
-        "balPopup"?: any;
+        "balPopup"?: undefined;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'
@@ -6906,7 +6710,7 @@ declare namespace LocalJSX {
     }
     interface BalContent {
         /**
-          * Defines the text positioning like center, end or default to start.
+          * Defines the positioning like center, end or default to start.
           * @default 'start'
          */
         "align"?: BalProps.BalContentAlignment;
@@ -6928,6 +6732,11 @@ declare namespace LocalJSX {
           * @default 'xx-small'
          */
         "space"?: BalProps.BalContentSpace;
+        /**
+          * Defines the text positioning like center, right or default to left.
+          * @default ''
+         */
+        "textAlign"?: BalProps.BalContentTextAlignment;
     }
     interface BalData {
         /**
@@ -8230,7 +8039,7 @@ declare namespace LocalJSX {
     interface BalLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -8249,7 +8058,7 @@ declare namespace LocalJSX {
         "htmlId"?: string;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
         "invalid"?: boolean;
         /**
@@ -8268,7 +8077,7 @@ declare namespace LocalJSX {
         "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default undefined
+          * @default false
          */
         "readonly"?: boolean;
         /**
@@ -8283,7 +8092,7 @@ declare namespace LocalJSX {
         "size"?: BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
-          * @default undefined
+          * @default false
          */
         "valid"?: boolean;
         /**
@@ -8522,122 +8331,6 @@ declare namespace LocalJSX {
     interface BalModalBody {
     }
     interface BalModalHeader {
-    }
-    interface BalNav {
-        /**
-          * Link level structure.
-          * @default []
-         */
-        "buttons"?: BalProps.BalNavMetaButtons;
-        /**
-          * Link level structure.
-         */
-        "logo"?: BalProps.BalNavLogoLink;
-        /**
-          * Emitted when a nav link item is clicked. This event can be used to add data tracking
-         */
-        "onBalNavItemClick"?: (event: BalNavCustomEvent<BalEvents.BalNavItemClickDetail>) => void;
-        /**
-          * Link level structure.
-          * @default []
-         */
-        "options"?: BalProps.BalNavOptions;
-    }
-    interface BalNavLink {
-        /**
-          * If `true` the link can be clickable
-          * @default false
-         */
-        "clickable"?: boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string | undefined;
-        /**
-          * If `true` the link gets selected with a underline
-          * @default false
-         */
-        "selected"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target"?: BalProps.BalButtonTarget;
-        /**
-          * Defines the variant of the link
-          * @default ''
-         */
-        "variant"?: BalProps.BalNavLinkVariant;
-    }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
-        /**
-          * Defines the static column which is always aligned to the right
-          * @default false
-         */
-        "staticCol"?: BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
-        /**
-          * Defines the color of the group
-          * @default ''
-         */
-        "color"?: BalProps.BalNavLinkGroupColor;
-    }
-    interface BalNavMenuBar {
-        /**
-          * Tells when to hide the bar
-          * @default 'none'
-         */
-        "invisible"?: BalProps.BalNavMenuBarInvisible;
-        /**
-          * Defines the position of the bar
-          * @default 'none'
-         */
-        "position"?: BalProps.BalNavMenuBarPosition;
-    }
-    interface BalNavMenuFlyout {
-        /**
-          * This is used to connect the flyout to the aria controls
-          * @default `bal-nav-x${NavMenuFlyOutIds++}`
-         */
-        "navId"?: string;
-        /**
-          * Emitted when the flyout loses focus
-         */
-        "onBalFocusOut"?: (event: BalNavMenuFlyoutCustomEvent<BalEvents.BalNavFlyoutFocusOutDetail>) => void;
-    }
-    interface BalNavMetaBar {
-        /**
-          * Tells when to hide the bar
-          * @default 'none'
-         */
-        "invisible"?: BalProps.BalNavMetaBarInvisible;
-        /**
-          * Defines the position of the bar
-          * @default 'none'
-         */
-        "position"?: BalProps.BalNavMetaBarPosition;
-        /**
-          * Defines the height of the bar
-          * @default 'normal'
-         */
-        "size"?: BalProps.BalNavMetaBarSize;
-        /**
-          * Defines if the bar should stay on top of the backdrop
-          * @default false
-         */
-        "stayOnTopOfBackdrop"?: boolean;
-        /**
-          * Defines the color variant
-          * @default 'primary'
-         */
-        "variant"?: BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -10257,7 +9950,7 @@ declare namespace LocalJSX {
         "color"?: BalProps.BalTextColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -10276,7 +9969,7 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         /**
           * If `true` the component gets a invalid style.
-          * @default undefined
+          * @default false
          */
         "invalid"?: boolean;
         /**
@@ -10613,14 +10306,6 @@ declare namespace LocalJSX {
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
-        "bal-nav": BalNav;
-        "bal-nav-link": BalNavLink;
-        "bal-nav-link-grid": BalNavLinkGrid;
-        "bal-nav-link-grid-col": BalNavLinkGridCol;
-        "bal-nav-link-group": BalNavLinkGroup;
-        "bal-nav-menu-bar": BalNavMenuBar;
-        "bal-nav-menu-flyout": BalNavMenuFlyout;
-        "bal-nav-meta-bar": BalNavMetaBar;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -10737,14 +10422,6 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
-            "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
-            "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
-            "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
-            "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
-            "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
-            "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
-            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
-            "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;

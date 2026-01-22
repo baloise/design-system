@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.base.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "**/vite.config.*.timestamp*", "**/vitest.config.*.timestamp*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -21,7 +21,7 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredDependencies": ["@nx/devkit", "@nx/vite", "vite", "util"]
+            "ignoredDependencies": ["@nx/devkit", "@nx/vite", "vite", "util", "archiver"]
           }
         ]
       }
