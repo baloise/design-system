@@ -1,0 +1,10 @@
+@forward '../../../../styles/sass/normalize';
+@forward './bal-accordion.style';
+
+/**
+  * Host Style
+  */
+
+:host {
+  display: block;
+}

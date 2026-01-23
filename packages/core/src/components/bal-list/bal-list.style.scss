@@ -1,0 +1,231 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+// TODO: add sizes like large with 72px min height
+// TODO: not only use native elements like ul also role="list" and the ohters too
+// TODO: implement hover and active states for link and button list items also change color of icons through css variables
+// TODO: implement disabled state for link and button list items
+
+ul.list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  min-height: 3.5rem;
+  box-sizing: border-box;
+
+  // icon width
+  a > bal-icon,
+  button > bal-icon {
+    min-width: 1.5rem;
+  }
+}
+
+ul.list li.item,
+ul.list li .item {
+  grid-template-columns: 1fr;
+}
+
+ul.list li a.item,
+ul.list li button.item {
+  grid-template-columns: 1fr auto;
+}
+
+ul.list li details.item {
+  grid-template-columns: 1fr !important;
+}
+
+ul.list li.item,
+ul.list li .item {
+  background: inherit;
+  border: none;
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  height: 100%;
+  align-self: stretch;
+  width: 100%;
+  padding: 0.5rem 0;
+  padding-bottom: calc(0.5rem + 2px);
+  text-align: left;
+
+  /* exactly 2 children */
+  &:has(:nth-child(2)):not(:has(:nth-child(3))) {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* 3 or more children */
+  &:has(:nth-child(3)) {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  // content
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .item-title {
+    font-family: var(--bal-font-family-title);
+    font-weight: var(--bal-font-weight-bold);
+    margin: 0;
+
+    font-size: var(--bal-heading-size-normal);
+
+    @include tablet {
+      font-size: var(--bal-heading-size-normal-tablet);
+    }
+
+    @include desktop {
+      font-size: var(--bal-heading-size-normal-desktop);
+    }
+  }
+
+  .item-text,
+  .item-subtitle {
+    font-family: var(--bal-font-family-text);
+    font-weight: var(--bal-font-weight-regular);
+    font-size: var(--bal-text-size-small);
+    margin: 0;
+  }
+
+  // border
+  &:after {
+    content: '';
+    height: 2px;
+    border-radius: 12px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: red;
+  }
+}
+
+/**
+  * Link inside list item
+  */
+
+ul.list li a.item {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-family: var(--bal-font-family-title);
+}
+
+/**
+  * Accordion inside list item
+  */
+
+ul.list li details {
+  position: relative;
+  padding: 0;
+
+  &:after {
+    content: '';
+    height: 2px;
+    border-radius: 12px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: red;
+  }
+
+  &,
+  & summary {
+    min-height: calc(3.5rem - 1rem);
+  }
+
+  summary {
+    padding: 0.5rem 0;
+    position: relative;
+    &:before {
+      content: '';
+      height: 2px;
+      border-radius: 12px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: lime;
+    }
+  }
+}
+
+//   // remove padding if item is an accordion or a link
+//   &:not(.has-accordion, .has-link) {
+//     padding: 0.5rem 0;
+//     padding-bottom: calc(0.5rem + 2px);
+//   }
+
+//   &.is-disabled {
+//     pointer-events: none;
+//     color: grey;
+//   }
+
+//   & > button {
+//     background: inherit;
+//     border: none;
+//     display: grid;
+//     grid-template-columns: auto 1fr auto;
+//     gap: 1rem;
+//     align-items: center;
+//     height: 100%;
+//     align-self: stretch;
+//     width: 100%;
+//     padding: 0.5rem 0;
+//     padding-bottom: calc(0.5rem + 2px);
+//     text-align: left;
+//   }
+
+//   &.has-link {
+//     align-items: stretch;
+
+//     a {
+//       display: grid;
+//       grid-template-columns: 1fr auto;
+//       align-items: center;
+//       text-decoration: none;
+//       color: inherit;
+//       height: 100%;
+//       align-self: stretch;
+//       width: 100%;
+//       font-weight: 700;
+//       font-family: var(--bal-font-family-title);
+
+//       padding: 0.5rem 0;
+//       padding-bottom: calc(0.5rem + 2px);
+//     }
+
+//     &:not(.is-disabled) {
+//       @include hover {
+//         &:hover {
+//           a {
+//             color: lime;
+//           }
+//           &:after {
+//             background: lime;
+//           }
+//         }
+//       }
+//       &:active {
+//         a {
+//           color: yellow;
+//         }
+//         &:after {
+//           background: yellow;
+//         }
+//       }
+//     }
+//   }

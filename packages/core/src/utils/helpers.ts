@@ -3,6 +3,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from './browser'
 import { BalConfig, useBalConfig } from './config'
 import {
+  balIconAudio,
   balIconCaretDown,
   balIconCaretLeft,
   balIconCaretRight,
@@ -12,16 +13,21 @@ import {
   balIconDate,
   balIconDocument,
   balIconEdit,
+  balIconFile,
   balIconInfoCircle,
+  balIconLink,
   balIconMenuBars,
   balIconMinus,
   balIconNavGoDown,
   balIconNavGoLeft,
   balIconNavGoRight,
   balIconNavGoUp,
+  balIconPicture,
   balIconPlus,
   balIconTrash,
   balIconUpload,
+  balIconVideo,
+  balIconDownload,
 } from './constants/icons.constant'
 
 declare const __zone_symbol__requestAnimationFrame: any
@@ -346,6 +352,11 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       balIconDocument,
       balIconUpload,
       balIconMenuBars,
+      balIconLink,
+      balIconFile,
+      balIconPicture,
+      balIconVideo,
+      balIconAudio,
     },
     ..._config,
   }

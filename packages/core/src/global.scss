@@ -13,7 +13,9 @@ $with-core-components: false;
 @forward './components/bal-text/bal-text.core.scss';
 
 // styles
+@forward './components/bal-accordion/bal-accordion.style.scss';
 @forward './components/bal-badge/bal-badge.style.scss';
 @forward './components/bal-card/bal-card.style.scss';
 @forward './components/bal-close/bal-close.style.scss';
+@forward './components/bal-list/bal-list.style.scss';
 @forward './components/bal-tag/bal-tag.style.scss';

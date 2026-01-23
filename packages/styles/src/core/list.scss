@@ -1,9 +1,9 @@
 @use '../mixins/_all' as *;
 
-ol.list,
-ul.list,
-ol.is-list,
-ul.is-list {
+ol.list.has-bullets,
+ul.list.has-bullets,
+ol.is-list.has-bullets,
+ul.is-list.has-bullets {
   margin-bottom: 1.5rem;
   margin-left: 2rem;
   @include desktop {
@@ -150,10 +150,12 @@ ul.is-list {
     }
   }
 }
-ul.list:not(.has-bullet-circle):not(.has-bullet-check) li,
-ul.is-list:not(.has-bullet-circle):not(.has-bullet-check) li {
+
+ul.list.has-bullets:not(.has-bullet-circle):not(.has-bullet-check) li,
+ul.is-list.has-bullets:not(.has-bullet-circle):not(.has-bullet-check) li {
   list-style: disc;
 }
+
 dl.list {
   display: grid;
   grid-template-columns: var(--bal-description-list-grid-term) var(--bal-description-list-grid-detail);

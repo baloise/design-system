@@ -100,19 +100,19 @@ hr,
     min-height: var(--bal-divider-border-width-base);
     height: var(--bal-divider-border-width-base);
 
-    // default space
-    margin-top: var(--bal-space-xx-large);
-    margin-bottom: var(--bal-space-xx-large);
+    // // default space
+    // margin-top: var(--bal-space-xx-large);
+    // margin-bottom: var(--bal-space-xx-large);
 
-    @include tablet {
-      margin-top: var(--bal-space-xx-large-tablet);
-      margin-bottom: var(--bal-space-xx-large-tablet);
-    }
+    // @include tablet {
+    //   margin-top: var(--bal-space-xx-large-tablet);
+    //   margin-bottom: var(--bal-space-xx-large-tablet);
+    // }
 
-    @include desktop {
-      margin-top: var(--bal-space-xx-large-desktop);
-      margin-bottom: var(--bal-space-xx-large-desktop);
-    }
+    // @include desktop {
+    //   margin-top: var(--bal-space-xx-large-desktop);
+    //   margin-bottom: var(--bal-space-xx-large-desktop);
+    // }
   }
 
   // horizontal spaces
