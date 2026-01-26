@@ -1,9 +1,10 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use './bal-select.vars' as *;
 
-@include component(select-option) {
+@include block(select-option) {
   display: none !important;
 }
+
 @include block(select) {
   display: block;
   position: relative;

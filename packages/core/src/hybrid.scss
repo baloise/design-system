@@ -1,0 +1,35 @@
+@mixin vars($name, $is-host: false) {
+  @if $is-host {
+    :host {
+      @content;
+    }
+  } @else {
+    .#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin component($name, $is-host: false) {
+  @if $is-host {
+    ##{$name} {
+      @content;
+    }
+  } @else {
+    .#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin host-only($is-host: false) {
+  @if $is-host {
+    @content;
+  }
+}
+
+@mixin styles-only($is-host: false) {
+  @if not $is-host {
+    @content;
+  }
+}

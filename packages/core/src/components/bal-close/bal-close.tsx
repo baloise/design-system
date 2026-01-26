@@ -47,12 +47,13 @@ export class Close implements ComponentInterface, BalConfigObserver {
     return (
       <Host>
         <button
+          id="close"
+          part="button"
           type="button"
           aria-label={label}
           title={label}
           tabindex="0"
           class={{
-            'close': true,
             'is-small': this.size === 'small',
             'is-medium': this.size === 'medium',
             'is-inverted': this.inverted,

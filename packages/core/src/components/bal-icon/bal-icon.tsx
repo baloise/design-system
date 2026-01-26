@@ -1,18 +1,14 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { BEM } from '../../utils/bem'
 import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
 import { sanitizeSvg } from '../../utils/svg'
 
 @Component({
   tag: 'bal-icon',
-  styleUrl: 'bal-icon.scss',
-  /**
-   * Do not enable shadow DOM here because we want to style the inner svg from outside
-   */
-  shadow: false,
+  styleUrl: 'bal-icon.host.scss',
+  shadow: true,
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentInterface {
   @State() icons: BalIcons = defaultConfig.icons
@@ -80,12 +76,12 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled?: boolean = undefined
+  @Prop() disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid?: boolean = undefined
+  @Prop() invalid: boolean = false
 
   /**
    * @internal
@@ -221,32 +217,24 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
 
   render() {
     const color = this.parseColor()
-    const block = BEM.block('icon')
 
     return (
       <Host
         aria-hidden="true"
         class={{
-          ...block.class(),
-          ...block.modifier('tile').class(this.tile),
-          ...block.modifier(`tile-color-${this.tileColor}`).class(this.tile && !!this.tileColor),
-          ...block.modifier('is-inverted').class(this.inverted),
-          ...block.modifier('is-inline').class(this.inline),
-          ...block.modifier('is-disabled').class(this.disabled),
-          ...block.modifier('shadow').class(this.shadow),
-          ...block.modifier(`is-${this.size}`).class(!!this.size),
-          ...block.modifier(`is-${color}`).class(),
+          'is-inverted': this.inverted,
+          'is-inline': this.inline,
+          'is-disabled': this.disabled,
+          'has-shadow': this.shadow,
+          [`is-${this.tile ? 'tile' : 'icon'}-${this.size}`]: !!this.size,
+          [`is-${color}`]: true,
+          'icon': !this.tile || this.color === 'auto',
+          'tile': this.tile,
+          [`tile-color-${this.tileColor}`]: this.tile && !!this.tileColor,
+          [`turn-${this.name}`]: this.turn,
         }}
       >
-        <div
-          class={{
-            ...block.element('inner').class(),
-            ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
-            ...block.element('inner').modifier('tile').class(this.tile),
-            ...block.modifier(`is-${this.size}`).class(!!this.size),
-          }}
-          innerHTML={this.svgContent}
-        ></div>
+        <div id="inner" part="inner" innerHTML={this.svgContent}></div>
       </Host>
     )
   }

@@ -1,8 +1,66 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+$tag-use-host: false !default;
 
 /**
-  * Mixins
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include hybrid.vars(tag, $tag-use-host) {
+  --tag-min-height: 2rem;
+  --tag-gap: 0.25rem;
+  --tag-padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
+  --tag-radius: var(--bal-tag-radius-base);
+  --tag-color-text: var(--bal-tag-color-text-base);
+  --tag-color-background: var(--bal-tag-color-background-base);
+  --tag-font-family: var(--bal-tag-font-family);
+  --tag-line-height: 1;
+  --tag-font-size: var(--bal-tag-text-size-normal);
+  --tag-font-weight: var(--bal-tag-font-weight-normal);
+  --tag-margin-right-close: calc(0.25rem * -1);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
+
+@include hybrid.component(tag, $tag-use-host) {
+  @include unselectable;
+
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-height: var(--tag-min-height);
+  gap: var(--tag-gap);
+  padding: var(--tag-padding);
+  border-radius: var(--tag-radius);
+  color: var(--tag-color-text);
+  background-color: var(--tag-color-background);
+  font-family: var(--tag-font-family);
+  line-height: var(--tag-line-height);
+  font-size: var(--tag-font-size);
+  font-weight: var(--tag-font-weight);
+
+  > .close,
+  > bal-close {
+    margin-right: var(--tag-margin-right-close);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
 $tag-colors: (
   'primary',
   'grey',
@@ -25,77 +83,100 @@ $tag-colors: (
 );
 
 @mixin tag-colors($color) {
-  color: var(--bal-tag-color-text-#{$color});
-  background: var(--bal-tag-color-background-#{$color});
+  --tag-color-text: var(--bal-tag-color-text-#{$color});
+  --tag-color-background: var(--bal-tag-color-background-#{$color});
 }
 
-/**
-  * Basic Style
-  */
-
-.tag:not(.token) {
-  @include unselectable;
-
-  position: static;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
-  vertical-align: middle;
-  background-color: var(--bal-tag-color-background-base);
-  border-radius: var(--bal-tag-radius-base);
-  font-family: var(--bal-tag-font-family);
-  line-height: var(--bal-tag-line-height);
-  font-size: var(--bal-tag-text-size-normal);
-  font-weight: var(--bal-tag-font-weight-normal);
-  gap: 0.25rem;
-
-  > .close,
-  > bal-close {
-    margin-right: calc(0.25rem * -1);
-  }
-
-  /**
-    * Colors
-    */
+@include hybrid.component(tag, $tag-use-host) {
+  //
+  // Colors
   @each $color in $tag-colors {
     &.is-#{$color} {
       @include tag-colors($color);
     }
   }
 
+  //
+  // Shapes
   &.is-square {
-    border-radius: var(--bal-tag-radius-square);
+    --tag-radius: var(--bal-tag-radius-square);
   }
 
   &.is-pill {
-    border-radius: var(--bal-tag-radius-pill);
+    --tag-radius: var(--bal-tag-radius-pill);
   }
 
+  //
+  // Sizes
   &.is-small {
-    padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
-    min-height: 1.5rem;
-    font-size: var(--bal-tag-text-size-small);
-    font-weight: var(--bal-tag-font-weight-small);
+    --tag-padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
+    --tag-min-height: 1.5rem;
+    --tag-font-size: var(--bal-tag-text-size-small);
+    --tag-font-weight: var(--bal-tag-font-weight-small);
   }
 
   &.is-medium {
-    min-height: 2.5rem;
-    padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
-    font-size: var(--bal-tag-text-size-medium);
-    font-weight: var(--bal-tag-font-weight-medium);
+    --tag-min-height: 2.5rem;
+    --tag-padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
+    --tag-font-size: var(--bal-tag-text-size-medium);
+    --tag-font-weight: var(--bal-tag-font-weight-medium);
   }
 
   &.is-large {
-    min-height: 3rem;
-    padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
-    font-size: var(--bal-tag-text-size-large);
-    font-weight: var(--bal-tag-font-weight-large);
+    --tag-min-height: 3rem;
+    --tag-padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
+    --tag-font-size: var(--bal-tag-text-size-large);
+    --tag-font-weight: var(--bal-tag-font-weight-large);
   }
 }
 
-.tags {
-  display: flex;
-  gap: var(--bal-tag-space-normal-x);
+/**
+  * Overrides child component styles
+  * --------------------------------
+  * Define here the styles to override child components inside the tag component.
+  * Example: close inside tag
+  */
+
+@include hybrid.component(tag, $tag-use-host) {
+  //
+  // Sizes
+  &.is-small {
+    > .close,
+    > bal-close {
+      --close-padding: 0.25rem;
+      --close-size-icon: 10px;
+    }
+  }
+  //
+  // Colors
+  &.is-grey,
+  &.is-info,
+  &.is-success,
+  &.is-danger,
+  &.is-purple-dark,
+  &.is-red-dark,
+  &.is-green-dark,
+  &.is-yellow-dark,
+  &.is-primary {
+    > .close,
+    > bal-close {
+      --close-color-icon: var(--bal-close-color-icon-inverted);
+      --close-color-background-hover: var(--bal-close-color-background-inverted-hover);
+      --close-color-background-active: var(--bal-close-color-background-inverted-active);
+      --close-shadow-focus: var(--bal-close-shadow-outline-inverted);
+    }
+  }
+}
+
+/**
+  * Tags container
+  * --------------------------------
+  * Define here the styles for tags container to be able to use a flex layout with gap.
+  */
+
+@include hybrid.styles-only($tag-use-host) {
+  .tags {
+    display: flex;
+    gap: var(--bal-tag-space-normal-x);
+  }
 }

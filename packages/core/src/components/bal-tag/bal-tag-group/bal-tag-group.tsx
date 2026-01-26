@@ -9,9 +9,7 @@ export class TagGroup {
   render() {
     return (
       <Host>
-        <div class="tags">
-          <slot />
-        </div>
+        <slot />
       </Host>
     )
   }

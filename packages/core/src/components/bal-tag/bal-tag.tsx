@@ -24,6 +24,11 @@ export class Tag {
   @Prop() size: BalProps.BalTagSize = ''
 
   /**
+   * The shape of the tag element like square or pill
+   */
+  @Prop() shape: BalProps.BalTagShape = ''
+
+  /**
    * The theme type of the tag.
    */
   @Prop() closable = false
@@ -67,6 +72,9 @@ export class Tag {
     const sizeClass = this.size && `is-${this.size}`
     const hasSize = this.size !== undefined
 
+    const shapeClass = this.shape && `is-${this.shape}`
+    const hasShape = this.shape !== undefined
+
     const hasColor = this.color !== ''
     let colorClass = `is-${this.color}${this.light ? '-light' : ''}`
 
@@ -78,16 +86,16 @@ export class Tag {
       colorClass = 'is-grey'
     }
 
-    // const positionClass = `is-${this.position}`
-    // const hasPosition = this.position !== undefined
-
     return (
       <Host>
         <span
+          id="tag"
+          part="tag"
           class={{
             tag: true,
             [sizeClass]: hasSize,
             [colorClass]: hasColor,
+            [shapeClass]: hasShape,
           }}
           {...this.inheritedAttributes}
         >
@@ -95,13 +103,11 @@ export class Tag {
             <slot />
           </span>
           {this.closable && !this.disabled ? (
-            <button
-              class="close"
+            <bal-close
               data-testid="bal-tag-close"
-              aria-label="remove tag"
-              onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
               {...this.inheritedAttributesClose}
-            ></button>
+              onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
+            ></bal-close>
           ) : (
             ''
           )}

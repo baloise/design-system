@@ -1,13 +1,8 @@
-@forward '../../../../../styles/sass/normalize';
-@forward '../bal-tag.style';
-
 /**
   * Host Style
   */
 
 :host {
-  display: block;
-  position: static;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  gap: var(--bal-tag-space-normal-x);
 }

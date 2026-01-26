@@ -1692,9 +1692,9 @@ export namespace Components {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * @default false
          */
@@ -1706,9 +1706,9 @@ export namespace Components {
         "inline": boolean;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
-        "invalid"?: boolean;
+        "invalid": boolean;
         /**
           * If `true` the icon is inverted
           * @default false
@@ -4085,6 +4085,11 @@ export namespace Components {
           * @default 'left'
          */
         "position": BalProps.BalTagPlacement;
+        /**
+          * The shape of the tag element like square or pill
+          * @default ''
+         */
+        "shape": BalProps.BalTagShape;
         /**
           * The size of the tag element
           * @default ''
@@ -7551,7 +7556,7 @@ declare namespace LocalJSX {
         "colorPressed"?: BalProps.BalIconColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -7565,7 +7570,7 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
-          * @default undefined
+          * @default false
          */
         "invalid"?: boolean;
         /**
@@ -9925,6 +9930,11 @@ declare namespace LocalJSX {
           * @default 'left'
          */
         "position"?: BalProps.BalTagPlacement;
+        /**
+          * The shape of the tag element like square or pill
+          * @default ''
+         */
+        "shape"?: BalProps.BalTagShape;
         /**
           * The size of the tag element
           * @default ''

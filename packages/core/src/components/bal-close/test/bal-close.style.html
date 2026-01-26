@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/utilities.css" />
+    <link rel="stylesheet" href="/build/baloise-design-system.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <main class="container">
@@ -17,12 +19,36 @@
         <button class="close" aria-label="close" title="Close" tabindex="0"></button>
       </section>
 
+      <!-- WebComponent -->
+      <section>
+        <span>WebComponent</span>
+        <bal-close></bal-close>
+      </section>
+
+      <!-- Themeing -->
+      <section class="my-theme">
+        <span>Themeing</span>
+        <style>
+          .my-theme .close,
+          .my-theme bal-close {
+            --close-color-background: #ff0000;
+            --close-color-icon: #00ff00;
+          }
+        </style>
+        <button class="close" aria-label="close" title="Close" tabindex="0"></button>
+        <bal-close></bal-close>
+      </section>
+
       <!-- Sizes -->
       <section>
         <span>Sizes</span>
         <button class="close is-small" aria-label="close" title="Close" tabindex="0"></button>
         <button class="close" aria-label="close" title="Close" tabindex="0"></button>
         <button class="close is-medium" aria-label="close" title="Close" tabindex="0"></button>
+        <hr class="divider" />
+        <bal-close size="small"></bal-close>
+        <bal-close></bal-close>
+        <bal-close size="medium"></bal-close>
       </section>
 
       <!-- Inverted -->
@@ -31,6 +57,10 @@
         <button class="close is-inverted is-small" aria-label="close" title="Close" tabindex="0"></button>
         <button class="close is-inverted" aria-label="close" title="Close" tabindex="0"></button>
         <button class="close is-inverted is-medium" aria-label="close" title="Close" tabindex="0"></button>
+        <hr class="divider" />
+        <bal-close inverted size="small"></bal-close>
+        <bal-close inverted></bal-close>
+        <bal-close inverted size="medium"></bal-close>
       </section>
     </main>
   </body>

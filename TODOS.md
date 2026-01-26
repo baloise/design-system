@@ -39,3 +39,63 @@
 ## FIXES
 
 - Icons does not work wiht checkbox tiles
+
+## components
+
+### atomic components and prio for website
+
+| Component              | Recommended Type   | TODO   |
+| ---------------------- | ------------------ | ------ |
+| bal-close              | Hybrid             | ⬜     |
+| bal-tag                | Hybrid             | ⬜     |
+| bal-badge              | Hybrid             | ⬜     |
+| bal-button             | Hybrid             | ⬜     |
+| bal-card               | Hybrid             | ⬜     |
+| bal-divider            | Hybrid             | ⬜     |
+| bal-heading            | Hybrid             | ⬜     |
+| bal-label              | Hybrid             | ⬜     |
+| bal-list               | Hybrid             | ⬜     |
+| bal-stack              | Hybrid             | ⬜     |
+| bal-text               | Hybrid             | ⬜     |
+| bal-notification       | Hybrid             | ⬜     |
+| bal-accordion          | Hybrid             | ⬜     |
+| ---------------------- | ------------------ | ------ |
+| bal-icon               | Web Component      | ⬜     |
+| bal-logo               | Web Component      | ⬜     |
+| bal-switch             | Web Component      | ⬜     |
+| bal-check              | Web Component      | ⬜     |
+| bal-toast              | Web Component      | ⬜     |
+| bal-snackbar           | Web Component      | ⬜     |
+| bal-spinner            | Web Component      | ⬜     |
+
+### rest components
+
+| Component              | Recommended Type   | TODO   |
+| ---------------------- | ------------------ | ------ |
+| bal-data               | Hybrid             | ⬜     |
+| bal-input              | Hybrid             | ⬜     |
+| bal-modal              | Hybrid             | ⬜     |
+| bal-pagination         | Hybrid             | ⬜     |
+| bal-popover            | Hybrid             | ⬜     |
+| bal-progress-bar       | Hybrid             | ⬜     |
+| bal-step-item          | Hybrid             | ⬜     |
+| bal-steps              | Hybrid             | ⬜     |
+| bal-table              | Hybrid             | ⬜     |
+| bal-tabs               | Hybrid             | ⬜     |
+| bal-tooltip            | Hybrid             | ⬜     |
+| ---------------------- | ------------------ | ------ |
+| bal-footer             | Web Component      | ⬜     |
+| bal-radio              | Web Component      | ⬜     |
+| bal-segment            | Web Component      | ⬜     |
+| bal-app                | Web Component      | ⬜     |
+| bal-carousel           | Web Component      | ⬜     |
+| bal-date               | Web Component      | ⬜     |
+| bal-dropdown           | Web Component      | ⬜     |
+| bal-file-upload        | Web Component      | ⬜     |
+| bal-hint               | Web Component      | ⬜     |
+| bal-number-input       | Web Component      | ⬜     |
+| bal-option             | Web Component      | ⬜     |
+| bal-popup              | Web Component      | ⬜     |
+| bal-select             | Web Component      | ⬜     |
+| bal-sheet              | Web Component      | ⬜     |
+| bal-time-input         | Web Component      | ⬜     |

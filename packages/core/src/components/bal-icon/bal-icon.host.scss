@@ -1,0 +1,172 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+// move to tokens
+@use './bal-icon.vars' as *;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  --icon-size: 1.125rem;
+  --icon-color: var(--bal-icon-color-primary);
+
+  --icon-tile-size: 2rem;
+  --icon-tile-size-tablet: 3rem;
+  --icon-tile-color-background: var(--bal-icon-tile-background);
+  --icon-tile-radius: var(--bal-icon-tile-radius);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  pointer-events: visible;
+  // Size
+  width: var(--icon-size);
+  max-height: var(--icon-size);
+}
+
+// Color
+:host(.icon) {
+  @include fillSvg(var(--icon-color));
+}
+
+#inner {
+  display: block;
+  position: static;
+  transition: transform 0.2s ease-in-out;
+  padding: 0.063rem;
+  // Size
+  width: var(--icon-size);
+  max-height: var(--icon-size);
+  // Inner SVG Icon
+  & > svg {
+    vertical-align: top;
+  }
+}
+
+// Inline
+:host(.is-inline) {
+  display: inline-flex;
+  line-height: 1;
+}
+
+// Shadow
+:host(.has-shadow) {
+  svg {
+    filter: drop-shadow(0px 0px 5rem rgba(0, 0, 0, 0.5));
+  }
+}
+
+// Turn Modifiers
+:host(.turn-plus) #inner {
+  transform: rotate(225deg);
+}
+:host(.turn-nav-go-down) #inner,
+:host(.turn-caret-down) #inner,
+:host(.turn-caret-up) #inner {
+  transform: rotate(180deg);
+}
+
+// Tile
+:host(.tile) {
+  background: var(--icon-tile-color-background);
+  border-radius: var(--icon-tile-radius);
+
+  height: var(--icon-tile-size);
+  --icon-size: var(--icon-tile-size);
+
+  @include tablet {
+    height: var(--icon-tile-size-tablet);
+    --icon-size: var(--icon-tile-size-tablet);
+  }
+}
+
+:host(.tile-color-green) {
+  --icon-tile-color-background: var(--bal-color-green-1);
+}
+:host(.tile-color-red) {
+  --icon-tile-color-background: var(--bal-color-red-1);
+}
+:host(.tile-color-yellow) {
+  --icon-tile-color-background: var(--bal-color-yellow-1);
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Sizes
+$icon-sizes: (
+  'x-small': 0.75rem,
+  'small': 0.875rem,
+  'medium': 1.625rem,
+  'large': 2.5rem,
+  'x-large': 5rem,
+  'xx-large': 11rem,
+);
+
+@each $size, $value in $icon-sizes {
+  :host(.is-icon-#{$size}) {
+    --icon-size: #{$value};
+  }
+}
+
+// Tile Sizes
+
+:host(.is-tile-large) {
+  --icon-tile-size: 3rem;
+  --icon-tile-size-tablet: 4rem;
+}
+
+:host(.is-tile-x-large) {
+  --icon-tile-size: 4rem;
+  --icon-tile-size-tablet: 6rem;
+}
+
+//
+// Colors
+$icon-colors: (
+  'blue',
+  'light-blue',
+  'success',
+  'success-dark',
+  'success-darker',
+  'danger',
+  'danger-dark',
+  'danger-darker',
+  'warning',
+  'warning-dark',
+  'warning-darker',
+  'white',
+  'grey',
+  'grey-light',
+  'grey-dark',
+  'primary',
+  'primary-light',
+  'primary-dark'
+);
+
+@each $color in $icon-colors {
+  :host(.is-#{$color}) {
+    --icon-color: var(--bal-icon-color-#{$color});
+  }
+}
+
+:host(.is-inverted) {
+  --icon-color: var(--bal-icon-color-white);
+}

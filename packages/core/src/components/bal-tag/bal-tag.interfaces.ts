@@ -17,6 +17,7 @@ namespace BalProps {
     | 'red'
     | 'purple'
     | ''
+  export type BalTagShape = 'square' | 'pill' | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
   export type BalTagFontWeight = 'regular' | 'bold'
   export type BalTagPlacement = 'left' | 'center'

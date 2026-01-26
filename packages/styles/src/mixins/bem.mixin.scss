@@ -1,10 +1,5 @@
 $componentPrefix: 'bal-';
 
-@mixin component($name) {
-  #{$componentPrefix}#{$name} {
-    @content;
-  }
-}
 @mixin block($name) {
   .#{$componentPrefix}#{$name} {
     @content;

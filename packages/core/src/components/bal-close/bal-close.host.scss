@@ -1,5 +1,6 @@
-@forward '../../../../styles/sass/normalize';
-@forward './bal-close.style';
+@use './bal-close.style' with (
+  $close-use-host: true
+);
 
 :host {
   display: inline-block;
