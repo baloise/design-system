@@ -53,6 +53,10 @@ $tag-use-host: false !default;
   > bal-close {
     margin-right: var(--tag-margin-right-close);
   }
+
+  > bal-icon {
+    --icon-size: 0.875rem;
+  }
 }
 
 /**
@@ -164,6 +168,9 @@ $tag-colors: (
       --close-color-background-hover: var(--bal-close-color-background-inverted-hover);
       --close-color-background-active: var(--bal-close-color-background-inverted-active);
       --close-shadow-focus: var(--bal-close-shadow-outline-inverted);
+    }
+    > bal-icon {
+      --icon-color: var(--bal-close-color-icon-inverted);
     }
   }
 }

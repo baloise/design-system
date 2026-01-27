@@ -6095,6 +6095,10 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;

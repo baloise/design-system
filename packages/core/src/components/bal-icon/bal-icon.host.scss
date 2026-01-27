@@ -1,4 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
 
 // move to tokens
 @use './bal-icon.vars' as *;
@@ -11,6 +12,8 @@
  */
 
 :host {
+  @include hybrid.host-base-vars('icon');
+
   --icon-size: 1.125rem;
   --icon-color: var(--bal-icon-color-primary);
 
@@ -27,10 +30,14 @@
   */
 
 :host {
+  @include hybrid.host-base-style('icon');
+
+  @include unselectable;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: static;
+  align-items: baseline;
+  vertical-align: middle;
   pointer-events: visible;
   // Size
   width: var(--icon-size);

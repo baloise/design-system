@@ -22,6 +22,34 @@
   }
 }
 
+@mixin host-base($name, $display: inline-block) {
+  :host {
+    @include host-base-vars($name);
+
+    display: $display;
+
+    @include host-base-style($name);
+  }
+}
+
+@mixin host-base-vars($name) {
+  --#{$name}-margin: 0;
+  --#{$name}-position: static;
+  --#{$name}-top: auto;
+  --#{$name}-right: auto;
+  --#{$name}-bottom: auto;
+  --#{$name}-left: auto;
+}
+
+@mixin host-base-style($name) {
+  margin: var(--#{$name}-margin);
+  position: var(--#{$name}-position);
+  top: var(--#{$name}-top);
+  right: var(--#{$name}-right);
+  bottom: var(--#{$name}-bottom);
+  left: var(--#{$name}-left);
+}
+
 @mixin host-only($is-host: false) {
   @if $is-host {
     @content;

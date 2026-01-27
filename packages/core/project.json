@@ -18,7 +18,7 @@
         "cwd": "{projectRoot}",
         "commands": [
           "stencil build --dev --serve --watch --port=4000",
-          "npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'"
+          "echo npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'"
         ],
         "parallel": true,
         "env": {

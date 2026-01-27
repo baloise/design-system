@@ -46,27 +46,27 @@
 
 | Component              | Recommended Type   | TODO   |
 | ---------------------- | ------------------ | ------ |
-| bal-close              | Hybrid             | ⬜     |
-| bal-tag                | Hybrid             | ⬜     |
-| bal-badge              | Hybrid             | ⬜     |
+| bal-close              | Hybrid             | ✅     |
+| bal-tag                | Hybrid             | ✅     |
+| bal-badge              | Hybrid             | ✅     |
+| bal-heading            | Hybrid             | ⬜     |
+| bal-text               | Hybrid             | ⬜     |
+| bal-label              | Hybrid             | ⬜     |
+| bal-divider            | Hybrid             | ⬜     |
 | bal-button             | Hybrid             | ⬜     |
 | bal-card               | Hybrid             | ⬜     |
-| bal-divider            | Hybrid             | ⬜     |
-| bal-heading            | Hybrid             | ⬜     |
-| bal-label              | Hybrid             | ⬜     |
 | bal-list               | Hybrid             | ⬜     |
 | bal-stack              | Hybrid             | ⬜     |
-| bal-text               | Hybrid             | ⬜     |
 | bal-notification       | Hybrid             | ⬜     |
 | bal-accordion          | Hybrid             | ⬜     |
 | ---------------------- | ------------------ | ------ |
-| bal-icon               | Web Component      | ⬜     |
+| bal-icon               | Web Component      | ✅     |
+| bal-spinner            | Web Component      | ✅     |
 | bal-logo               | Web Component      | ⬜     |
 | bal-switch             | Web Component      | ⬜     |
 | bal-check              | Web Component      | ⬜     |
 | bal-toast              | Web Component      | ⬜     |
 | bal-snackbar           | Web Component      | ⬜     |
-| bal-spinner            | Web Component      | ⬜     |
 
 ### rest components
 

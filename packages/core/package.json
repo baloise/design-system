@@ -28,16 +28,16 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@baloise/ds-styles": "20.0.0-next.1",
     "@baloise/ds-icons": "20.0.0-next.1",
+    "@baloise/ds-styles": "20.0.0-next.1",
     "@baloise/web-app-utils": "3.15.0",
     "@floating-ui/dom": "~1.7.4",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "4.38.3",
+    "@stencil/core": "4.41.3",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
-    "filesize.js": "~2.0.0",
     "dompurify": "~3.2.4",
+    "filesize.js": "~2.0.0",
     "lodash": "~4.17.21",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
@@ -45,17 +45,18 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@baloise/output-target-angular": "0.0.0",
-    "@baloise/output-target-web": "0.0.0",
-    "@baloise/ds-maps": "20.0.0-next.1",
     "@baloise/ds-brand-icons": "20.0.0-next.1",
     "@baloise/ds-favicons": "20.0.0-next.1",
+    "@baloise/ds-maps": "20.0.0-next.1",
     "@baloise/ds-playwright": "20.0.0-next.1",
+    "@baloise/output-target-angular": "0.0.0",
+    "@baloise/output-target-web": "0.0.0",
     "@playwright/test": "^1.56.1",
+    "@types/luxon": "~3.4.2",
+    "baseline-browser-mapping": "^2.9.18",
     "compression": "~1.8.1",
     "express": "~5.1.0",
-    "serve-index": "~1.9.1",
-    "@types/luxon": "~3.4.2"
+    "serve-index": "~1.9.1"
   },
   "sideEffects": false
 }

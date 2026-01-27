@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use 'sass:string';
+
 $componentPrefix: 'bal-';
 
 @mixin block($name) {
@@ -8,7 +11,7 @@ $componentPrefix: 'bal-';
 @mixin blocks($names) {
   $selector: ();
   @each $name in $names {
-    $selector: append($selector, unquote('.#{$componentPrefix}#{$name}'), comma);
+    $selector: list.append($selector, string.unquote('.#{$componentPrefix}#{$name}'), comma);
   }
   #{$selector} {
     @content;
@@ -22,7 +25,7 @@ $componentPrefix: 'bal-';
 @mixin elements($names) {
   $selector: ();
   @each $name in $names {
-    $selector: append($selector, unquote('&__#{$name}'), comma);
+    $selector: list.append($selector, string.unquote('&__#{$name}'), comma);
   }
   #{$selector} {
     @content;
@@ -36,7 +39,7 @@ $componentPrefix: 'bal-';
 @mixin modifiers($names) {
   $selector: ();
   @each $name in $names {
-    $selector: append($selector, unquote('&--#{$name}'), comma);
+    $selector: list.append($selector, string.unquote('&--#{$name}'), comma);
   }
   #{$selector} {
     @content;

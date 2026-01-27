@@ -1,7 +1,9 @@
+@use 'sass:string';
+
 $font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
 
-$font-heading-bold-woff: str-insert('/BaloiseCreateHeadline-bold.woff', $font-path, 0);
-$font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-bold.woff2', $font-path, 0);
+$font-heading-bold-woff: string.insert('/BaloiseCreateHeadline-bold.woff', $font-path, 1);
+$font-heading-bold-woff2: string.insert('/BaloiseCreateHeadline-bold.woff2', $font-path, 1);
 
 @font-face {
   font-family: BaloiseCreateHeadline;
@@ -15,8 +17,8 @@ $font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-bold.woff2', $font-
     url('#{$font-heading-bold-woff}') format('woff');
 }
 
-$font-heading-light-woff: str-insert('/BaloiseCreateHeadline-light.woff', $font-path, 0);
-$font-heading-light-woff2: str-insert('/BaloiseCreateHeadline-light.woff2', $font-path, 0);
+$font-heading-light-woff: string.insert('/BaloiseCreateHeadline-light.woff', $font-path, 1);
+$font-heading-light-woff2: string.insert('/BaloiseCreateHeadline-light.woff2', $font-path, 1);
 
 @font-face {
   font-family: BaloiseCreateHeadline;
@@ -29,8 +31,8 @@ $font-heading-light-woff2: str-insert('/BaloiseCreateHeadline-light.woff2', $fon
     url('#{$font-heading-light-woff}') format('woff');
 }
 
-$font-text-bold-woff: str-insert('/BaloiseCreateText-bold.woff', $font-path, 0);
-$font-text-bold-woff2: str-insert('/BaloiseCreateText-bold.woff2', $font-path, 0);
+$font-text-bold-woff: string.insert('/BaloiseCreateText-bold.woff', $font-path, 1);
+$font-text-bold-woff2: string.insert('/BaloiseCreateText-bold.woff2', $font-path, 1);
 
 @font-face {
   font-family: BaloiseCreateText;
@@ -43,8 +45,8 @@ $font-text-bold-woff2: str-insert('/BaloiseCreateText-bold.woff2', $font-path, 0
     url('#{$font-text-bold-woff}') format('woff');
 }
 
-$font-text-regular-woff: str-insert('/BaloiseCreateText-regular.woff', $font-path, 0);
-$font-text-regular-woff2: str-insert('/BaloiseCreateText-regular.woff2', $font-path, 0);
+$font-text-regular-woff: string.insert('/BaloiseCreateText-regular.woff', $font-path, 1);
+$font-text-regular-woff2: string.insert('/BaloiseCreateText-regular.woff2', $font-path, 1);
 
 @font-face {
   font-family: BaloiseCreateText;

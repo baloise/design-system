@@ -1,16 +1,16 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { BEM } from '../../utils/bem'
 import { BalConfigObserver, BalConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
 import { raf, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
-type SpinnerAnimationFunction = (el: HTMLElement | HTMLStencilElement, color: string) => AnimationItem
+type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
 @Component({
   tag: 'bal-spinner',
-  styleUrl: 'bal-spinner.scss',
+  styleUrl: 'bal-spinner.host.scss',
+  shadow: true,
 })
 export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {
   private animationItem!: AnimationItem
@@ -27,6 +27,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   }
 
   @Element() el!: HTMLStencilElement
+  innerEl: HTMLDivElement | undefined
 
   /**
    * PUBLIC PROPERTY API
@@ -92,7 +93,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   }
 
   disconnectedCallback() {
-    if (this.el && !this.el.isConnected) {
+    if (this.el && this.innerEl && !this.el.isConnected) {
       this.destroy()
     }
   }
@@ -130,8 +131,8 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
     if (this.shouldAnimate()) {
       this.destroy()
       this.currentRaf = raf(async () => {
-        if (this.animationFunction) {
-          this.animationFunction(this.el, this.getColor())
+        if (this.animationFunction && this.innerEl) {
+          this.animationFunction(this.innerEl, this.getColor())
         }
       })
     }
@@ -141,7 +142,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
     if (this.animationItem && this.animationItem.destroy) {
       this.animationItem.destroy()
     }
-    this.el.innerHTML = ''
+    this.innerEl!.innerHTML = ''
   }
 
   private shouldAnimate = () => {
@@ -192,20 +193,19 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
    */
 
   render() {
-    const block = BEM.block('spinner')
-
     return (
       <Host
-        class={{
-          ...block.class(),
-          ...block.modifier('circle').class(this.variation === 'circle'),
-          ...block.modifier('small').class(this.small),
-          ...block.modifier('animated').class(this.animated),
-          ...block.modifier(`color-${this.color}`).class(this.variation === 'circle'),
-        }}
         role="progressbar"
         aria-hidden="true"
-      ></Host>
+        class={{
+          ['is-circle']: this.variation === 'circle',
+          ['is-small']: this.small,
+          ['is-animated']: this.animated,
+          [`is-${this.color}`]: this.variation === 'circle',
+        }}
+      >
+        <div id="inner" part="inner" ref={el => (this.innerEl = el)}></div>
+      </Host>
     )
   }
 }

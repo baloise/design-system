@@ -52,18 +52,21 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
+  sourceMap: false, //IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
   namespace: 'baloise-design-system',
+  preamble: '(C) Baloise Design System https://design.baloise.dev/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
-  buildEs5: 'prod',
+  // buildEs5: 'prod',
   globalScript: 'src/global.ts',
   globalStyle: 'src/global.scss',
+  // transformAliasedImportPaths: true,
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
       outputStyle: 'compressed',
       includePaths: [nodeModulesWorkspace, nodeModulesProject, 'node_modules'],
+      silenceDeprecations: ['bogus-combinators'],
     }),
   ],
   extras: {
@@ -73,32 +76,30 @@ export const config: Config = {
      * lazily loads components in a way that works with additional bundlers. Setting this flag to `true` will increase
      * the size of the compiled output. Defaults to `false`.
      */
-    enableImportInjection: true,
+    enableImportInjection: !IS_BAL_DEVELOPMENT, // true,
     /**
      * When a component is first attached to the DOM, this setting will wait a single tick before
      * rendering. This works around an Angular issue, where Angular attaches the elements before
      * settings their initial state, leading to double renders and unnecessary event dispatches.
      * Defaults to `false`.
      */
-    initializeNextTick: true,
-    /**
-     * `experimentalSlotFixes` is necessary in Stencil v4 until the fixes described in
-     * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes the Stencil docs for the flag} are the
-     * default behavior (slated for a future Stencil major version).
-     */
-    experimentalSlotFixes: false,
+    initializeNextTick: !IS_BAL_DEVELOPMENT, // true,
     /**
      * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
      * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
      * the default behavior (slated for a future Stencil major version).
      */
-    experimentalScopedSlotChanges: true,
+    experimentalScopedSlotChanges: !IS_BAL_DEVELOPMENT, // true,,
   },
   outputTargets: [
-    docsJsonWithoutTimestamp({
-      type: 'docs-json',
-      file: '../../resources/data/components.json',
-    }),
+    ...(!IS_BAL_DEVELOPMENT
+      ? [
+          docsJsonWithoutTimestamp({
+            type: 'docs-json',
+            file: '../../resources/data/components.json',
+          }),
+        ]
+      : []),
     ...(!IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {
@@ -135,89 +136,89 @@ export const config: Config = {
         {
           src: '**/*.html',
         },
-        {
-          src: 'components.d.ts',
-        },
+        // {
+        //   src: 'components.d.ts',
+        // },
         {
           src: join(packagesDir, 'core', 'public', 'section.css'),
           dest: 'assets/section.css',
           warn: true,
         },
-        {
-          src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
-          dest: 'assets/future-logo.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'core', 'public', 'future-logo-red.svg'),
-          dest: 'assets/future-logo-red.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'core', 'public', 'future-logo-black.svg'),
-          dest: 'assets/future-logo-black.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
-          dest: 'assets/tcs.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
-          dest: 'assets/santander.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'future.css'),
-          dest: 'assets/future.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-          dest: 'assets/compact.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'all.css'),
-          dest: 'assets/all.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
-          dest: 'assets/components.css',
-          warn: true,
-        },
+        // {
+        //   src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
+        //   dest: 'assets/future-logo.svg',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'core', 'public', 'future-logo-red.svg'),
+        //   dest: 'assets/future-logo-red.svg',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'core', 'public', 'future-logo-black.svg'),
+        //   dest: 'assets/future-logo-black.svg',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
+        //   dest: 'assets/tcs.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
+        //   dest: 'assets/santander.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'themes', 'future.css'),
+        //   dest: 'assets/future.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
+        //   dest: 'assets/compact.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'all.css'),
+        //   dest: 'assets/all.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
+        //   dest: 'assets/basic.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
+        //   dest: 'assets/components.css',
+        //   warn: true,
+        // },
         {
           src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
           dest: 'assets/utilities.css',
           warn: true,
         },
-        {
-          src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
-          dest: 'assets/tokens.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
-          dest: 'assets/maps.js',
-          warn: true,
-        },
+        // {
+        //   src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
+        //   dest: 'assets/tokens.css',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
+        //   dest: 'assets/maps.js',
+        //   warn: true,
+        // },
         {
           src: join(packagesDir, 'fonts', 'assets'),
           dest: 'assets/fonts',
           warn: true,
         },
-        {
-          src: join(packagesDir, 'brand-icons', 'src', 'assets'),
-          dest: 'assets/images/brand-icons',
-          warn: true,
-        },
+        // {
+        //   src: join(packagesDir, 'brand-icons', 'src', 'assets'),
+        //   dest: 'assets/images/brand-icons',
+        //   warn: true,
+        // },
       ],
     },
     /**
