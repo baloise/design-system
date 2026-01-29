@@ -4166,6 +4166,11 @@ export namespace Components {
           * @default ''
          */
         "space": BalProps.BalTextSpace;
+        /**
+          * If `true` the text has subtitle font family
+          * @default false
+         */
+        "subtitle": boolean;
     }
     interface BalTextarea {
         /**
@@ -10015,6 +10020,11 @@ declare namespace LocalJSX {
           * @default ''
          */
         "space"?: BalProps.BalTextSpace;
+        /**
+          * If `true` the text has subtitle font family
+          * @default false
+         */
+        "subtitle"?: boolean;
     }
     interface BalTextarea {
         /**

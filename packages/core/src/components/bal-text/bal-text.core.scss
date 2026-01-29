@@ -1,113 +1,56 @@
-$text-has-spacing: true !default;
-
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+$text-use-host: false !default;
 
 /**
-  * Mixins
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include hybrid.vars((text), $text-use-host) {
+  @include hybrid.host-base-margin-vars(text);
+
+  --text-color-text: initial;
+  --text-font-family: var(--bal-text-font-family);
+  --text-font-weight: var(--bal-text-font-weight);
+  --text-line-height: var(--bal-text-line-height);
+  --text-font-size: var(--bal-text-size-1);
+  --text-font-size-tablet: var(--bal-text-size-1-tablet);
+  --text-font-size-desktop: var(--bal-text-size-1-desktop);
+  --text-shadow-text: var(--bal-shadow-text-base);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
+@include hybrid.component(text, $text-use-host) {
+  @include hybrid.host-base-margin-style(text);
+  @include font-smoothing();
 
-$text-weights: ('light', 'regular', 'bold');
-$text-sizes: (
-  'x-small',
-  'small',
-  'normal',
-  'medium',
-  'large',
-  'x-large',
-  'xx-large',
-  'xxx-large',
-  'xxxx-large',
-  'xxxxx-large'
-);
-$text-colors: (
-  'white',
-  'black',
-  'primary',
-  'primary-hover',
-  'primary-active',
-  'inverted-primary',
-  'inverted-primary-hover',
-  'inverted-primary-active',
-  'primary-light',
-  'hint',
-  'grey-light',
-  'grey',
-  'grey-dark',
-  'disabled',
-  'inverted-disabled',
-  'info',
-  'warning',
-  'success',
-  'danger',
-  'danger-hover',
-  'danger-active'
-);
+  position: static;
+  display: block;
+  box-sizing: content-box;
 
-@mixin text-size($level) {
-  font-size: var(--bal-text-size-#{$level});
+  hyphens: auto;
+  overflow-wrap: break-word;
+
+  color: var(--text-color-text);
+  font-family: var(--text-font-family);
+  font-weight: var(--text-font-weight);
+  line-height: var(--text-line-height);
+  font-size: var(--text-font-size);
 
   @include tablet {
-    font-size: var(--bal-text-size-#{$level}-tablet);
+    font-size: var(--text-font-size-tablet);
   }
 
   @include desktop {
-    font-size: var(--bal-text-size-#{$level}-desktop);
-  }
-}
-
-@mixin text-weight($weight) {
-  font-weight: var(--bal-font-weight-#{$weight});
-}
-
-@mixin text-color($color) {
-  color: var(--bal-color-text-#{$color});
-}
-
-/**
-  * Basic Style
-  */
-
-.text {
-  hyphens: auto;
-  display: block;
-  box-sizing: content-box;
-  position: static;
-  overflow-wrap: break-word;
-  padding: 0;
-  margin: 0;
-  line-height: var(--bal-text-line-height-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-normal);
-  }
-
-  // display inline
-  &.is-inline {
-    display: inline;
-    margin: 0;
-  }
-
-  // font family
-  &.is-heading,
-  &.is-title {
-    font-family: var(--bal-font-family-title);
-    font-weight: var(--bal-font-weight-bold);
-    line-height: var(--bal-text-line-height-title);
-  }
-
-  &.is-subtitle {
-    font-family: var(--bal-font-family-title);
-    font-weight: var(--bal-font-weight-light);
-    line-height: var(--bal-text-line-height-title);
-  }
-
-  // font weight
-  @each $weight in $text-weights {
-    &.is-#{$weight} {
-      @include text-weight($weight);
-    }
+    font-size: var(--text-font-size-desktop);
   }
 
   // no wrap
@@ -117,73 +60,9 @@ $text-colors: (
     white-space: nowrap;
   }
 
-  // text shadow
+  // text shadow to increase readability on images
   &.has-shadow {
-    text-shadow: var(--bal-shadow-text-base);
-  }
-
-  // spaces
-  @if $text-has-spacing {
-    &.has-space-all {
-      margin-top: var(--bal-space-normal);
-      margin-bottom: var(--bal-space-normal);
-    }
-
-    &.has-space-top {
-      margin-top: var(--bal-space-normal);
-      margin-bottom: 0;
-    }
-
-    &.has-space-bottom {
-      margin-top: 0;
-      margin-bottom: var(--bal-space-normal);
-    }
-
-    &.has-space-none {
-      margin: 0;
-    }
-  }
-
-  // colors
-  @each $color in $text-colors {
-    &.is-#{$color} {
-      @include text-color($color);
-    }
-  }
-
-  // inner elements
-  b,
-  strong {
-    color: inherit;
-    font-weight: var(--bal-font-weight-bold);
-  }
-
-  span {
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  small {
-    color: inherit;
-    font-weight: inherit;
-    font-size: var(--bal-text-size-small);
-  }
-}
-
-.text {
-  // sizes
-  @each $size in $text-sizes {
-    &.is-#{$size} {
-      @include text-size($size);
-    }
-  }
-
-  &.is-block {
-    @include text-size(medium);
-  }
-
-  &.is-lead {
-    @include text-size(large);
+    text-shadow: var(--text-shadow-text);
   }
 
   // alignments
@@ -198,12 +77,182 @@ $text-colors: (
   &.is-justified {
     text-align: justify;
   }
+}
+
+@include hybrid.core($text-use-host) {
+  .text {
+    // Display
+    &.is-inline {
+      display: inline;
+    }
+
+    // Space
+    &:not(:last-child) {
+      --text-margin-bottom: var(--bal-text-space-base);
+    }
+  }
+}
+
+@include hybrid.host($text-use-host) {
+  :host(.is-inline) {
+    display: inline;
+  }
+
+  :host(:not(:last-child)) {
+    --text-margin-bottom: var(--bal-text-space-base);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+@mixin text-size($level) {
+  --text-font-size: var(--bal-text-size-#{$level});
+  --text-font-size-tablet: var(--bal-text-size-#{$level}-tablet);
+  --text-font-size-desktop: var(--bal-text-size-#{$level}-desktop);
+}
+
+@include hybrid.component(text, $text-use-host) {
+  //
+  // Font Weight
+  $text-weights: ('light', 'regular', 'bold');
+  @each $weight in $text-weights {
+    &.is-#{$weight} {
+      --text-font-weight: var(--bal-font-weight-#{$weight});
+    }
+  }
 
   &.is-bold {
-    font-weight: var(--bal-font-weight-bold);
+    --text-font-weight: var(--bal-font-weight-bold);
   }
 
   &.is-regular {
-    font-weight: var(--bal-font-weight-regular);
+    --text-font-weight: var(--bal-font-weight-regular);
+  }
+
+  //
+  // Font Family
+  &.is-heading,
+  &.is-title {
+    --text-font-family: var(--bal-font-family-title);
+    --text-font-weight: var(--bal-font-weight-bold);
+    --text-line-height: var(--bal-text-line-height-title);
+  }
+
+  &.is-subtitle {
+    --text-font-family: var(--bal-font-family-title);
+    --text-font-weight: var(--bal-font-weight-light);
+    --text-line-height: var(--bal-text-line-height-title);
+  }
+
+  //
+  // Colors
+  $text-colors: (
+    'white',
+    'black',
+    'primary',
+    'primary-hover',
+    'primary-active',
+    'inverted-primary',
+    'inverted-primary-hover',
+    'inverted-primary-active',
+    'primary-light',
+    'hint',
+    'grey-light',
+    'grey',
+    'grey-dark',
+    'disabled',
+    'inverted-disabled',
+    'info',
+    'warning',
+    'success',
+    'danger',
+    'danger-hover',
+    'danger-active'
+  );
+  @each $color in $text-colors {
+    &.is-#{$color} {
+      --text-color-text: var(--bal-color-text-#{$color});
+    }
+  }
+
+  //
+  // Sizes
+  &.is-block {
+    @include text-size(medium);
+  }
+
+  &.is-lead {
+    @include text-size(large);
+  }
+
+  $text-sizes: (
+    'x-small',
+    'small',
+    'normal',
+    'medium',
+    'large',
+    'x-large',
+    'xx-large',
+    'xxx-large',
+    'xxxx-large',
+    'xxxxx-large'
+  );
+
+  @each $size in $text-sizes {
+    &.is-#{$size} {
+      @include text-size($size);
+    }
+  }
+}
+
+//
+// Spaces
+@include hybrid.core($text-use-host) {
+  .text {
+    &.has-space-all {
+      --text-margin-top: var(--bal-space-normal);
+      --text-margin-bottom: var(--bal-space-normal);
+    }
+
+    &.has-space-top {
+      --text-margin-top: var(--bal-space-normal);
+      --text-margin-bottom: 0;
+    }
+
+    &.has-space-bottom {
+      --text-margin-top: 0;
+      --text-margin-bottom: var(--bal-space-normal);
+    }
+
+    &.has-space-none {
+      --text-margin-top: 0;
+      --text-margin-bottom: 0;
+    }
+  }
+}
+
+@include hybrid.host($text-use-host) {
+  :host(.has-space-all) {
+    --text-margin-top: var(--bal-space-normal);
+    --text-margin-bottom: var(--bal-space-normal);
+  }
+
+  :host(.has-space-top) {
+    --text-margin-top: var(--bal-space-normal);
+    --text-margin-bottom: 0;
+  }
+
+  :host(.has-space-bottom) {
+    --text-margin-top: 0;
+    --text-margin-bottom: var(--bal-space-normal);
+  }
+
+  :host(.has-space-none) {
+    --text-margin-top: 0;
+    --text-margin-bottom: 0;
   }
 }

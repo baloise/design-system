@@ -15,15 +15,14 @@
       <!-- Basic Style -->
       <section>
         <span>Basic</span>
-        <p class="text">Basic Paragraph</p>
-        <span class="text">Basic Inline Text</span>
+        <bal-text>Basic Paragraph</bal-text>
       </section>
 
       <!-- Theme -->
       <section>
         <span>Theme</span>
         <style>
-          .text.my-theme {
+          bal-text.my-theme {
             --text-color-text: red;
             --text-font-size: 2rem;
             --text-font-size-tablet: 2rem;
@@ -31,13 +30,13 @@
             --text-font-weight: 400;
           }
         </style>
-        <p class="text my-theme">Basic Paragraph</p>
+        <bal-text class="my-theme">Basic Paragraph</bal-text>
       </section>
 
       <!-- No Wrap -->
       <section>
         <span>No Wrap</span>
-        <p class="text has-no-wrap">
+        <bal-text no-wrap>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, voluptatum. Fugit tempore harum, aut
           impedit non illum numquam consequuntur porro dolore itaque explicabo maiores sint velit corrupti enim
           asperiores. Ratione. Dolorum a exercitationem quaerat asperiores modi accusantium maiores dolorem non
@@ -51,76 +50,78 @@
           quibusdam, modi assumenda, impedit adipisci totam quos beatae dolor repudiandae possimus! Rem est consequatur
           numquam voluptates, quaerat quidem quasi nisi, corporis pariatur non, quas esse neque! Sint fuga excepturi
           molestiae placeat sapiente animi iusto? Sit voluptas rem aspernatur quisquam. Ut, sunt?
-        </p>
+        </bal-text>
       </section>
 
       <!-- Colors -->
       <section class="s-bg-1">
         <span>Colors</span>
-        <p class="text is-white">white paragraph</p>
-        <p class="text is-black">black paragraph</p>
-        <p class="text is-primary">primary paragraph</p>
-        <p class="text is-primary-hover">primary-hover paragraph</p>
-        <p class="text is-primary-active">primary-active paragraph</p>
-        <p class="text is-inverted-primary">inverted-primary paragraph</p>
-        <p class="text is-inverted-primary-hover">inverted-primary-hover paragraph</p>
-        <p class="text is-inverted-primary-active">inverted-primary-active paragraph</p>
-        <p class="text is-primary-light">primary-light paragraph</p>
-        <p class="text is-hint">hint paragraph</p>
-        <p class="text is-grey-light">grey-light paragraph</p>
-        <p class="text is-grey">grey paragraph</p>
-        <p class="text is-grey-dark">grey-dark paragraph</p>
-        <p class="text is-disabled">disabled paragraph</p>
-        <p class="text is-inverted-disabled">inverted-disabled paragraph</p>
-        <p class="text is-info">info paragraph</p>
-        <p class="text is-warning">warning paragraph</p>
-        <p class="text is-success">success paragraph</p>
-        <p class="text is-danger">danger paragraph</p>
-        <p class="text is-danger-hover">danger-hover paragraph</p>
-        <p class="text is-danger-active">danger-active paragraph</p>
+        <bal-text color="white">white paragraph</bal-text>
+        <bal-text color="black">black paragraph</bal-text>
+        <bal-text color="primary">primary paragraph</bal-text>
+        <bal-text color="primary-hover">primary-hover paragraph</bal-text>
+        <bal-text color="primary-active">primary-active paragraph</bal-text>
+        <bal-text color="inverted-primary">inverted-primary paragraph</bal-text>
+        <bal-text color="inverted-primary-hover">inverted-primary-hover paragraph</bal-text>
+        <bal-text color="inverted-primary-active">inverted-primary-active paragraph</bal-text>
+        <bal-text color="primary-light">primary-light paragraph</bal-text>
+        <bal-text color="hint">hint paragraph</bal-text>
+        <bal-text color="grey-light">grey-light paragraph</bal-text>
+        <bal-text color="grey">grey paragraph</bal-text>
+        <bal-text color="grey-dark">grey-dark paragraph</bal-text>
+        <bal-text color="disabled">disabled paragraph</bal-text>
+        <bal-text color="inverted-disabled">inverted-disabled paragraph</bal-text>
+        <bal-text color="info">info paragraph</bal-text>
+        <bal-text color="warning">warning paragraph</bal-text>
+        <bal-text color="success">success paragraph</bal-text>
+        <bal-text color="danger">danger paragraph</bal-text>
+        <bal-text color="danger-hover">danger-hover paragraph</bal-text>
+        <bal-text color="danger-active">danger-active paragraph</bal-text>
       </section>
 
       <!-- Sizes -->
       <section>
         <span>Sizes</span>
-        <p class="text is-small">small paragraph</p>
-        <p class="text">base paragraph</p>
-        <p class="text is-block">block paragraph</p>
-        <p class="text is-lead">lead paragraph</p>
+        <bal-text size="small">small paragraph</bal-text>
+        <bal-text>base paragraph</bal-text>
+        <bal-text size="block">block paragraph</bal-text>
+        <bal-text size="lead">lead paragraph</bal-text>
       </section>
 
       <!-- Font Weight -->
       <section>
         <span>Font Weight</span>
-        <p class="text is-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <bal-text bold>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Heading -->
       <section>
         <span>Heading</span>
-        <p class="text is-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p class="text is-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <bal-text heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Inline -->
       <section>
         <span>Inline</span>
-        <p class="text is-inline">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <bal-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Shadow -->
       <section>
         <span>Shadow</span>
-        <p class="text has-shadow">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <bal-text shadow>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Space -->
       <section class="s-bg-1">
         <span>Space</span>
-        <p class="text s-bg-2 has-space-none">None - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p class="text s-bg-2 has-space-top">Top - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p class="text s-bg-2 has-space-bottom">Bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p class="text s-bg-2 has-space-all">All - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <bal-text space="none" class="s-bg-2">None - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="top" class="s-bg-2">Top - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="bottom" class="s-bg-2"
+          >Bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text
+        >
+        <bal-text space="all" class="s-bg-2">All - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
     </main>
   </body>

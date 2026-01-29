@@ -23,6 +23,11 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   @Prop() heading = false
 
   /**
+   * If `true` the text has subtitle font family
+   */
+  @Prop() subtitle = false
+
+  /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
@@ -130,7 +135,8 @@ export class Text implements ComponentInterface, BalElementStateInfo {
         }}
       >
         <Text
-          part="native"
+          id="text"
+          part="text"
           data-testid="bal-text"
           class={{
             text: true,
@@ -139,6 +145,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
             [`has-shadow`]: this.shadow,
             [`has-no-wrap`]: this.noWrap,
             [`is-heading`]: this.heading,
+            [`is-subtitle`]: this.subtitle,
             [`is-${this.size}`]: this.size !== '',
           }}
         >
