@@ -15,9 +15,6 @@ if (fileChanges) {
     return
   }
 
-  console.log('')
-  console.log('🎨 Tokens & Styles rebuild triggered... 🎨')
-
   const workspaceRoot = path.join(__dirname, '../..')
 
   // Now build styles after tokens are ready --skip-cache
@@ -28,14 +25,20 @@ if (fileChanges) {
       console.log(error)
       return
     }
-    console.log(stdout)
+
+    // console.log('')
+    // console.log('🎨 Tokens & Styles rebuild triggered... 🎨')
+    // console.log(stdout)
 
     // copy generated component styles to core www assets
+    copy('packages/styles/css/baloise-design-system.local.min.css', 'styles/baloise-design-system.local.min.css')
     // copy('packages/styles/css/components/all.min.css', 'components.css')
     // copy('packages/styles/css/utilities/all.min.css', 'utilities.css')
     // copy('packages/styles/css/basic.min.css', 'basic.css')
     // copy('packages/styles/css/all.min.css', 'all.css')
     // copy('packages/tokens/dist/tokens.css', 'tokens.css')
+
+    console.log('🎨 Tokens & Styles rebuild done 🎨')
   })
 
   // exec(

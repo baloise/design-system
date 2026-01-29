@@ -52,7 +52,8 @@ const template = (html: string) => `
     <script nomodule src="/build/baloise-design-system.js"></script>
 
     <link rel="preload" href="/build/baloise-design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/build/baloise-design-system.css" /></noscript>
+    <noscript><link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+</noscript>
   </head>
 
   <body>

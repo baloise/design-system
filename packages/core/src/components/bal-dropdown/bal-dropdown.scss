@@ -115,7 +115,7 @@
   }
 }
 .bal-dropdown__root__select {
-  @include hidden-input;
+  @include visually-hidden;
 }
 .bal-dropdown__root--autofill .bal-dropdown__root__input {
   opacity: 0;

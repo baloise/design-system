@@ -9,6 +9,6 @@
     letter-spacing: 0.4px;
   }
   @include element(native) {
-    @include hidden-input;
+    @include visually-hidden;
   }
 }

@@ -20,7 +20,7 @@
   border: none;
   background-color: transparent;
   &--hidden {
-    @include hide-element;
+    @include visually-hidden;
   } //
   // Cursor action on clickable
   &--clickable {

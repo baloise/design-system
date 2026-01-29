@@ -1,1 +1,6 @@
-@forward '@baloise/ds-fonts/scss/fonts.scss';
+$font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
+
+// Configure ds-fonts (prevents `$insert: false is not a string`).
+@use '@baloise/ds-fonts/scss/fonts' with (
+  $font-path: $font-path
+);

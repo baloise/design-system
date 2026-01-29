@@ -48,64 +48,64 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     }
 
     // update global styles
-    const componentsCore = await scan(join(options.componentRoot, '**', '*.core.scss'))
-    const componentsStyles = await scan(join(options.componentRoot, '**', '*.style.scss'))
+    // const componentsCore = await scan(join(options.componentRoot, '**', '*.core.scss'))
+    // const componentsStyles = await scan(join(options.componentRoot, '**', '*.style.scss'))
 
     // Generate global.scss content
-    const globalScssPath = join(options.componentRoot, '..', 'global.scss')
-    const coreImports = componentsCore
-      .sort()
-      .map(file => {
-        const relativePath = relative(join(options.componentRoot, '..'), file)
-        return `@forward './${relativePath}';`
-      })
-      .join('\n')
+    //     const globalScssPath = join(options.componentRoot, '..', 'global.scss')
+    //     const coreImports = componentsCore
+    //       .sort()
+    //       .map(file => {
+    //         const relativePath = relative(join(options.componentRoot, '..'), file)
+    //         return `@forward './${relativePath}';`
+    //       })
+    //       .join('\n')
 
-    const styleImports = componentsStyles
-      .sort()
-      .map(file => {
-        const relativePath = relative(join(options.componentRoot, '..'), file)
-        return `@forward './${relativePath}';`
-      })
-      .join('\n')
+    //     const styleImports = componentsStyles
+    //       .sort()
+    //       .map(file => {
+    //         const relativePath = relative(join(options.componentRoot, '..'), file)
+    //         return `@forward './${relativePath}';`
+    //       })
+    //       .join('\n')
 
-    const globalScssContent = `$with-core-components: false;
+    //     const globalScssContent = `$with-core-components: false;
 
-@forward '../../styles/css/tokens.css';
-@forward '../../styles/sass/basic.scss';
+    // @forward '../../styles/css/tokens.css';
+    // @forward '../../styles/sass/basic.scss';
 
-// core styles
-${coreImports}
+    // // core styles
+    // ${coreImports}
 
-// styles
-${styleImports}
-`
-    await writeFile(globalScssPath, globalScssContent)
+    // // styles
+    // ${styleImports}
+    // `
+    //     await writeFile(globalScssPath, globalScssContent)
 
     // create components all output
     await compileSassToMergedFile(components, 'all.css', { ...options, folderPath: 'components' })
 
     // copy generated files to css folder
-    await copy(
-      join(options.projectRoot, 'css', 'basic.min.css'),
-      join(options.projectRoot, '..', 'core', 'www', 'assets', 'basic.css'),
-    )
-    await copy(
-      join(options.projectRoot, 'css', 'components', 'all.min.css'),
-      join(options.projectRoot, '..', 'core', 'www', 'assets', 'components.css'),
-    )
-    await copy(
-      join(options.projectRoot, 'css', 'themes', 'tcs.css'),
-      join(options.projectRoot, '..', 'core', 'www', 'assets', 'tcs.css'),
-    )
-    await copy(
-      join(options.projectRoot, 'css', 'themes', 'santander.css'),
-      join(options.projectRoot, '..', 'core', 'www', 'assets', 'santander.css'),
-    )
-    await copy(
-      join(options.projectRoot, 'css', 'themes', 'future.css'),
-      join(options.projectRoot, '..', 'core', 'www', 'assets', 'future.css'),
-    )
+    // await copy(
+    //   join(options.projectRoot, 'css', 'basic.min.css'),
+    //   join(options.projectRoot, '..', 'core', 'www', 'assets', 'basic.css'),
+    // )
+    // await copy(
+    //   join(options.projectRoot, 'css', 'components', 'all.min.css'),
+    //   join(options.projectRoot, '..', 'core', 'www', 'assets', 'components.css'),
+    // )
+    // await copy(
+    //   join(options.projectRoot, 'css', 'themes', 'tcs.css'),
+    //   join(options.projectRoot, '..', 'core', 'www', 'assets', 'tcs.css'),
+    // )
+    // await copy(
+    //   join(options.projectRoot, 'css', 'themes', 'santander.css'),
+    //   join(options.projectRoot, '..', 'core', 'www', 'assets', 'santander.css'),
+    // )
+    // await copy(
+    //   join(options.projectRoot, 'css', 'themes', 'future.css'),
+    //   join(options.projectRoot, '..', 'core', 'www', 'assets', 'future.css'),
+    // )
   } catch (error) {
     console.error(error)
     return { success: false }

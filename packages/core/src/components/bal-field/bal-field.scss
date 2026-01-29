@@ -27,7 +27,7 @@
   line-height: var(--bal-line-height-normal);
 }
 @include block(field-hidden) {
-  @include hide-element;
+  @include visually-hidden;
 }
 @include block(field-control) {
   display: flex;

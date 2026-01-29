@@ -1,56 +1,48 @@
-$heading-has-spacing: false;
+@use '../../hybrid' as hybrid;
 
-@forward '../../../../styles/sass/normalize';
-@forward './bal-heading.core';
+@use './bal-heading.core' with (
+  $heading-use-host: true
+);
 
-/**
-  * Host Style
-  */
+@include hybrid.host-base(heading, block);
 
-:host {
-  display: block;
-  position: static;
-  margin: 0;
-  padding: 0;
-}
+// :host(:not(:last-child)) {
+//   margin-bottom: var(--bal-space-x-small);
+// }
 
-:host(:not(:last-child)) {
-  margin-bottom: var(--bal-space-x-small);
-}
+// :host(.bal-heading-space-all) {
+//   margin-top: var(--bal-space-x-small);
+//   margin-bottom: var(--bal-space-x-small);
+// }
 
-:host(.bal-heading-space-all) {
-  margin-top: var(--bal-space-x-small);
-  margin-bottom: var(--bal-space-x-small);
-}
+// :host(.bal-heading-space-top) {
+//   margin-top: var(--bal-space-x-small);
+//   margin-bottom: 0;
+// }
 
-:host(.bal-heading-space-top) {
-  margin-top: var(--bal-space-x-small);
-  margin-bottom: 0;
-}
+// :host(.bal-heading-space-bottom) {
+//   margin-bottom: var(--bal-space-x-small);
+// }
 
-:host(.bal-heading-space-bottom) {
-  margin-bottom: var(--bal-space-x-small);
-}
+// :host(.bal-heading-space-none) {
+//   margin-bottom: 0;
+//   margin-top: 0;
+// }
 
-:host(.bal-heading-space-none) {
-  margin-bottom: 0;
-  margin-top: 0;
-}
+// :host(.bal-heading-level-display:not(:last-child)) {
+//   margin-bottom: var(--bal-space-normal);
+// }
 
-:host(.bal-heading-level-display:not(:last-child)) {
-  margin-bottom: var(--bal-space-normal);
-}
+// :host(.bal-heading-level-display.bal-heading-space-all) {
+//   margin-top: var(--bal-space-normal);
+//   margin-bottom: var(--bal-space-normal);
+// }
 
-:host(.bal-heading-level-display.bal-heading-space-all) {
-  margin-top: var(--bal-space-normal);
-  margin-bottom: var(--bal-space-normal);
-}
+// :host(.bal-heading-level-display.bal-heading-space-top) {
+//   margin-top: var(--bal-space-normal);
+//   margin-bottom: 0;
+// }
 
-:host(.bal-heading-level-display.bal-heading-space-top) {
-  margin-top: var(--bal-space-normal);
-  margin-bottom: 0;
-}
-
-:host(.bal-heading-level-display.bal-heading-space-bottom) {
-  margin-bottom: var(--bal-space-normal);
-}
+// :host(.bal-heading-level-display.bal-heading-space-bottom) {
+//   margin-bottom: var(--bal-space-normal);
+// }

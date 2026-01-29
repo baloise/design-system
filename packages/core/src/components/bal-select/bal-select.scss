@@ -24,7 +24,7 @@
     }
   }
   @include element(native) {
-    @include hidden-input;
+    @include visually-hidden;
   } //
   // visible form control of the select
   @include element(control) {

@@ -1,52 +1,53 @@
-$heading-has-spacing: true !default;
-
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+$heading-use-host: false !default;
 
 /**
-  * Mixins
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include hybrid.vars((heading, title, subtitle), $heading-use-host) {
+  @include hybrid.host-base-margin-vars(heading);
+
+  --heading-color-text: initial;
+  --heading-font-family: var(--bal-heading-font-family);
+  --heading-font-weight: var(--bal-heading-font-weight);
+  --heading-line-height: var(--bal-heading-line-height);
+  --heading-font-size: var(--bal-heading-size-1);
+  --heading-font-size-tablet: var(--bal-heading-size-1-tablet);
+  --heading-font-size-desktop: var(--bal-heading-size-1-desktop);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-$heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
+@include hybrid.component((heading, title, subtitle), $heading-use-host) {
+  @include hybrid.host-base-margin-style(heading);
+  @include font-smoothing();
 
-@mixin heading-size($level) {
-  font-size: var(--bal-heading-size-#{$level});
+  flex: 1;
+
+  color: var(--heading-color-text);
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  font-size: var(--heading-font-size);
 
   @include tablet {
-    font-size: var(--bal-heading-size-#{$level}-tablet);
+    font-size: var(--heading-font-size-tablet);
   }
 
   @include desktop {
-    font-size: var(--bal-heading-size-#{$level}-desktop);
+    font-size: var(--heading-font-size-desktop);
   }
-}
 
-@mixin heading-color($color) {
-  color: var(--bal-heading-color-#{$color});
-}
-
-/**
-  * Basic Style
-  */
-
-.title,
-.heading {
-  color: var(--bal-heading-color-basic);
-  font-family: var(--bal-heading-font-family);
-  font-weight: var(--bal-heading-font-weight);
-  line-height: var(--bal-heading-line-height);
-}
-
-.subtitle,
-.heading.is-subtitle {
-  color: var(--bal-heading-subtitle-color-basic);
-  font-family: var(--bal-heading-subtitle-font-family);
-  font-weight: var(--bal-heading-subtitle-font-weight);
-  line-height: var(--bal-heading-line-height);
-}
-
-.title,
-.subtitle,
-.heading {
   hyphens: auto;
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
@@ -61,89 +62,11 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
     font-weight: var(--bal-font-weight-bold);
   }
 
-  /**
-  * Colors
-  */
-
-  @each $color in $heading-colors {
-    &.is-#{$color} {
-      @include heading-color($color);
-    }
-  }
-}
-
-/**
-  * Sizes
-  */
-
-@for $i from 1 through 5 {
-  h#{$i}.title,
-  h#{$i}.subtitle,
-  h#{$i}.heading,
-  [role='heading'][aria-level='#{$i}'].title,
-  [role='heading'][aria-level='#{$i}'].subtitle,
-  [role='heading'][aria-level='#{$i}'].heading {
-    @include heading-size($i);
-  }
-}
-
-.title,
-.subtitle,
-.heading {
-  &.is-1,
-  &.is-level-1,
-  &.is-xxx-large {
-    @include heading-size(xxx-large);
-  }
-
-  &.is-2,
-  &.is-level-2,
-  &.is-xx-large {
-    @include heading-size(xx-large);
-  }
-
-  &.is-3,
-  &.is-level-3,
-  &.is-x-large {
-    @include heading-size(x-large);
-  }
-
-  &.is-4,
-  &.is-level-4,
-  &.is-large {
-    @include heading-size(large);
-  }
-
-  &.is-5,
-  &.is-level-5,
-  &.is-normal {
-    @include heading-size(normal);
-  }
-
-  &.is-medium {
-    @include heading-size(medium);
-  }
-
-  &.is-display-1,
-  &.is-xxxxx-large {
-    @include heading-size(display-1);
-  }
-
-  &.is-display-2,
-  &.is-xxxx-large {
-    @include heading-size(display-2);
-  }
-
-  /**
-  * Text Shadow
-  */
+  // modifiers
   &.has-shadow {
     text-shadow: var(--bal-heading-shadow);
   }
 
-  /**
-  * Text Wrap
-  */
   &.has-no-wrap {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -164,30 +87,134 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
   }
 }
 
-/**
-  * Spaces
-  */
+// Dedup helper for subtitle styling
+@mixin heading-subtitle-style {
+  color: var(--bal-heading-subtitle-color-basic);
+  font-family: var(--bal-heading-subtitle-font-family);
+  font-weight: var(--bal-heading-subtitle-font-weight);
+}
 
-@if $heading-has-spacing {
+@include hybrid.core($heading-use-host) {
+  .subtitle,
+  .heading.is-subtitle {
+    @include heading-subtitle-style;
+  }
+
   .title,
   .subtitle,
   .heading {
     &:not(:last-child) {
-      margin-bottom: var(--bal-heading-space-base);
+      --heading-margin-bottom: var(--bal-heading-space-base);
     }
+  }
+}
 
+@include hybrid.host($heading-use-host) {
+  :host(.is-subtitle) #heading {
+    @include heading-subtitle-style;
+  }
+
+  :host(:not(:last-child)) {
+    --heading-margin-bottom: var(--bal-heading-space-base);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+$heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
+
+@mixin heading-colors($color) {
+  --heading-color-text: var(--bal-heading-color-#{$color});
+}
+
+@include hybrid.component((heading, title, subtitle), $heading-use-host) {
+  @each $color in $heading-colors {
+    &.is-#{$color} {
+      @include heading-colors($color);
+    }
+  }
+}
+
+//
+// Sizes
+
+@mixin heading-size($level) {
+  --heading-font-size: var(--bal-heading-size-#{$level});
+  --heading-font-size-tablet: var(--bal-heading-size-#{$level}-tablet);
+  --heading-font-size-desktop: var(--bal-heading-size-#{$level}-desktop);
+}
+
+// Maps groups of class aliases to the size token used by `heading-size()`
+$heading-size-aliases: (
+  (is-1, is-level-1, is-xxx-large): xxx-large,
+  (is-2, is-level-2, is-xx-large): xx-large,
+  (is-3, is-level-3, is-x-large): x-large,
+  (is-4, is-level-4, is-large): large,
+  (is-5, is-level-5, is-normal): normal,
+  (is-medium): medium,
+  (is-display-1, is-xxxxx-large): display-1,
+  (is-display-2, is-xxxx-large): display-2,
+);
+
+@include hybrid.host($heading-use-host) {
+  @each $class-group, $token in $heading-size-aliases {
+    @each $class in $class-group {
+      :host(.#{$class}) #heading {
+        @include heading-size($token);
+      }
+    }
+  }
+}
+
+@include hybrid.core($heading-use-host) {
+  @for $i from 1 through 5 {
+    h#{$i}.title,
+    h#{$i}.subtitle,
+    h#{$i}.heading,
+    [role='heading'][aria-level='#{$i}'].title,
+    [role='heading'][aria-level='#{$i}'].subtitle,
+    [role='heading'][aria-level='#{$i}'].heading {
+      @include heading-size($i);
+    }
+  }
+
+  .title,
+  .subtitle,
+  .heading {
+    @each $class-group, $token in $heading-size-aliases {
+      @each $class in $class-group {
+        &.#{$class} {
+          @include heading-size($token);
+        }
+      }
+    }
+  }
+}
+
+//
+// Spaces
+@include hybrid.core($heading-use-host) {
+  .title,
+  .subtitle,
+  .heading {
     &.has-space-all {
-      margin-top: var(--bal-heading-space-base);
-      margin-bottom: var(--bal-heading-space-base);
+      --heading-margin-top: var(--bal-heading-space-base);
+      --heading-margin-bottom: var(--bal-heading-space-base);
     }
 
     &.has-space-top {
-      margin-top: var(--bal-heading-space-base);
-      margin-bottom: 0;
+      --heading-margin-top: var(--bal-heading-space-base);
+      --heading-margin-bottom: 0;
     }
 
     &.has-space-bottom {
-      margin-bottom: var(--bal-heading-space-base);
+      --heading-margin-bottom: var(--bal-heading-space-base);
     }
 
     &.is-display-1,
@@ -195,27 +222,71 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
     &.is-display-2,
     &.is-xxxx-large {
       &:not(:last-child) {
-        margin-bottom: var(--bal-heading-space-display);
+        --heading-margin-bottom: var(--bal-heading-space-display);
       }
 
       &.has-space-all {
-        margin-top: var(--bal-heading-space-display);
-        margin-bottom: var(--bal-heading-space-display);
+        --heading-margin-top: var(--bal-heading-space-display);
+        --heading-margin-bottom: var(--bal-heading-space-display);
       }
 
       &.has-space-top {
-        margin-top: var(--bal-heading-space-display);
-        margin-bottom: 0;
+        --heading-margin-top: var(--bal-heading-space-display);
+        --heading-margin-bottom: 0;
       }
 
       &.has-space-bottom {
-        margin-bottom: var(--bal-heading-space-display);
+        --heading-margin-bottom: var(--bal-heading-space-display);
       }
     }
 
     &.has-space-none {
-      margin-bottom: 0 !important;
-      margin-top: 0 !important;
+      --heading-margin-bottom: 0;
+      --heading-margin-top: 0;
     }
+  }
+}
+
+@include hybrid.host($heading-use-host) {
+  :host(.has-space-all) {
+    --heading-margin-top: var(--bal-heading-space-base);
+    --heading-margin-bottom: var(--bal-heading-space-base);
+  }
+
+  :host(.has-space-top) {
+    --heading-margin-top: var(--bal-heading-space-base);
+    --heading-margin-bottom: 0;
+  }
+
+  :host(.has-space-bottom) {
+    --heading-margin-bottom: var(--bal-heading-space-base);
+  }
+
+  :host(.is-display-1),
+  :host(.is-xxxxx-large),
+  :host(.is-display-2),
+  :host(.is-xxxx-large) {
+    &:not(:last-child) {
+      --heading-margin-bottom: var(--bal-heading-space-display);
+    }
+
+    &.has-space-all {
+      --heading-margin-top: var(--bal-heading-space-display);
+      --heading-margin-bottom: var(--bal-heading-space-display);
+    }
+
+    &.has-space-top {
+      --heading-margin-top: var(--bal-heading-space-display);
+      --heading-margin-bottom: 0;
+    }
+
+    &.has-space-bottom {
+      --heading-margin-bottom: var(--bal-heading-space-display);
+    }
+  }
+
+  :host(.has-space-none) {
+    --heading-margin-bottom: 0;
+    --heading-margin-top: 0;
   }
 }

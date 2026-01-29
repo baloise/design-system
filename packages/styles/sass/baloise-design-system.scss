@@ -1,1 +1,12 @@
-@forward './all';
+$font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
+
+@forward './mixins';
+@forward './normalize';
+@forward './structure';
+
+@use '@baloise/ds-fonts/scss/fonts' with (
+  $font-path: $font-path
+);
+
+@forward './core';
+@forward './utilities/all';

@@ -17,7 +17,7 @@
   //
   // hide native input
   &--invisible {
-    @include hidden-input;
+    @include visually-hidden;
   } //
   // flat heigt without padding
   &.bal-checkbox--flat {
@@ -43,7 +43,7 @@
   }
 }
 .bal-checkbox__input {
-  @include hidden-input;
+  @include visually-hidden;
   width: 100%;
   height: 100%;
 }

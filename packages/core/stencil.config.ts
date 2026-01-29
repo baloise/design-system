@@ -144,6 +144,11 @@ export const config: Config = {
           dest: 'assets/section.css',
           warn: true,
         },
+        {
+          src: join(packagesDir, 'styles', 'css'),
+          dest: 'assets/styles',
+          warn: true,
+        },
         // {
         //   src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
         //   dest: 'assets/future-logo.svg',

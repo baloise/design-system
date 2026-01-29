@@ -55,7 +55,7 @@
     flex-direction: row;
   }
   &--hidden {
-    @include hide-element;
+    @include visually-hidden;
   }
   &--expanded {
     flex: 1;

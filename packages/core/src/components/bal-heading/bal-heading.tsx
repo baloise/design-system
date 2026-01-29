@@ -159,17 +159,18 @@ export class Heading implements ComponentInterface {
     return (
       <Host
         class={{
-          [`bal-heading-space-${this.space}`]: this.space !== undefined,
+          [`has-space-${this.space}`]: this.space !== undefined,
+          [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
+          'is-subtitle': this.subtitle,
         }}
       >
         <Heading
+          id="heading"
+          part="heading"
           class={{
-            'heading': true,
-            'is-subtitle': this.subtitle,
+            [`is-${this.fontColor}`]: this.fontColor !== undefined,
             'has-no-wrap': this.noWrap,
             'has-shadow': this.shadow,
-            [`is-${this.fontColor}`]: this.fontColor !== undefined,
-            [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
           data-testid="bal-heading"
