@@ -7,7 +7,7 @@
   @if meta.type-of($value) == 'list' {
     @return $value;
   }
-  @return ($value);
+  @return ($value,);
 }
 
 @mixin host($is-host: false) {

@@ -48,13 +48,15 @@ use id's and parts in the shadow dom components
 
 ### atomic components and prio for website
 
+https://token-base.com/3c5a2aab-af28-4332-951f-d6e632cc208d/12dd1a2f-237f-4622-8825-8c80d3c2353d
+
 | Component         | Recommended Type | Shadow DOM | Docs | Design Tokens |
 | ----------------- | ---------------- | ---------- | ---- | ------------- |
 | bal-close         | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-tag           | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-badge         | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-heading       | Hybrid           | ✅         | ⬜   | ⬜            |
-| bal-text          | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-text          | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-label         | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-divider       | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-button        | Hybrid           | ⬜         | ⬜   | ⬜            |
