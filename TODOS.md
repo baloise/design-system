@@ -40,6 +40,14 @@
 
 - Icons does not work wiht checkbox tiles
 
+## generel
+
+| Item          | Description                                                           | Status |
+| ------------- | --------------------------------------------------------------------- | ------ |
+| T-Shirt Sizes | Change to 2xl and get rid off normal and use medium instead           | ⬜     |
+| FIGMA API     | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
+| Playwright    | Replace all Cypess test with Playwright                               | ⬜     |
+
 ## components
 
 Rules
@@ -48,8 +56,6 @@ use id's and parts in the shadow dom components
 
 ### atomic components and prio for website
 
-https://token-base.com/3c5a2aab-af28-4332-951f-d6e632cc208d/12dd1a2f-237f-4622-8825-8c80d3c2353d
-
 | Component         | Recommended Type | Shadow DOM | Docs | Design Tokens |
 | ----------------- | ---------------- | ---------- | ---- | ------------- |
 | bal-close         | Hybrid           | ✅         | ⬜   | ⬜            |
@@ -57,12 +63,12 @@ https://token-base.com/3c5a2aab-af28-4332-951f-d6e632cc208d/12dd1a2f-237f-4622-8
 | bal-badge         | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-heading       | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-text          | Hybrid           | ✅         | ⬜   | ⬜            |
-| bal-label         | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-divider       | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-button        | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-card          | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-label         | Hybrid           | ⏳         | ⬜   | ⬜            |
+| bal-divider       | Hybrid           | ⏳         | ⬜   | ⬜            |
+| bal-button        | Hybrid           | ⏳         | ⬜   | ⬜            |
+| bal-card          | Hybrid           | ⏳         | ⬜   | ⬜            |
+| bal-stack         | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-list          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-stack         | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-notification  | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-accordion     | Hybrid           | ⬜         | ⬜   | ⬜            |
 | ----------------- | ---------------- | ---------- | ---- | ------------- |

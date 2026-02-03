@@ -1,6 +1,6 @@
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 
 export const CssSpacingMargin = ({}): React.ReactElement => {
   const obj = tokens.space

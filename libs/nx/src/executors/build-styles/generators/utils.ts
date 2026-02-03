@@ -179,7 +179,7 @@ export const toProps = ({ tokens, prefix = undefined, replace = undefined, repla
   for (const key in tokens) {
     const property = tokens[key]
 
-    if (!property.$value) {
+    if (property.$value === undefined) {
       props = {
         ...props,
         ...toProps({ tokens: property, prefix, replace, replace2 }),
@@ -406,7 +406,7 @@ export const save = async (fileName, projectRoot, { json, rules }) => {
 }
 
 export const getTokens = async ({ token, tokensRoot }) => {
-  const content = await readFile(join(tokensRoot, `dist/tokens.docs.json`), 'utf8')
+  const content = await readFile(join(tokensRoot, `dist/docs/base.tokens.json`), 'utf8')
   const json = JSON.parse(content)
   return get(json, token)
 }

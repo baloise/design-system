@@ -1,9 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 
-// move to tokens
-@use './bal-icon.vars' as *;
-
 /**
  * Variables
  * --------------------------------
@@ -14,12 +11,12 @@
 :host {
   @include hybrid.host-base-vars('icon');
 
-  --icon-size: 1.125rem;
+  --icon-size: var(--bal-icon-size-normal);
   --icon-color: var(--bal-icon-color-primary);
 
-  --icon-tile-size: 2rem;
-  --icon-tile-size-tablet: 3rem;
-  --icon-tile-color-background: var(--bal-icon-tile-background);
+  --icon-tile-size: var(--bal-icon-tile-size-normal-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-normal-tablet);
+  --icon-tile-color-background: var(--bal-icon-tile-color-purple);
   --icon-tile-radius: var(--bal-icon-tile-radius);
 }
 
@@ -101,13 +98,13 @@
 }
 
 :host(.tile-color-green) {
-  --icon-tile-color-background: var(--bal-color-green-1);
+  --icon-tile-color-background: var(--bal-icon-tile-color-green);
 }
 :host(.tile-color-red) {
-  --icon-tile-color-background: var(--bal-color-red-1);
+  --icon-tile-color-background: var(--bal-icon-tile-color-red);
 }
 :host(.tile-color-yellow) {
-  --icon-tile-color-background: var(--bal-color-yellow-1);
+  --icon-tile-color-background: var(--bal-icon-tile-color-yellow);
 }
 
 /**
@@ -118,54 +115,49 @@
 
 //
 // Sizes
-$icon-sizes: (
-  'x-small': 0.75rem,
-  'small': 0.875rem,
-  'medium': 1.625rem,
-  'large': 2.5rem,
-  'x-large': 5rem,
-  'xx-large': 11rem,
-);
+$icon-sizes: ('x-small', 'small', 'medium', 'large', 'x-large', 'xx-large');
 
-@each $size, $value in $icon-sizes {
+@each $size in $icon-sizes {
   :host(.is-icon-#{$size}) {
-    --icon-size: #{$value};
+    --icon-size: var(--bal-icon-size-#{$size});
   }
 }
 
 // Tile Sizes
 
 :host(.is-tile-large) {
-  --icon-tile-size: 3rem;
-  --icon-tile-size-tablet: 4rem;
+  --icon-tile-size: var(--bal-icon-tile-size-large-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-large-tablet);
 }
 
 :host(.is-tile-x-large) {
-  --icon-tile-size: 4rem;
-  --icon-tile-size-tablet: 6rem;
+  --icon-tile-size: var(--bal-icon-tile-size-x-large-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-x-large-tablet);
 }
 
 //
 // Colors
 $icon-colors: (
-  'blue',
-  'light-blue',
-  'success',
-  'success-dark',
-  'success-darker',
-  'danger',
-  'danger-dark',
-  'danger-darker',
-  'warning',
-  'warning-dark',
-  'warning-darker',
-  'white',
-  'grey',
-  'grey-light',
-  'grey-dark',
   'primary',
   'primary-light',
-  'primary-dark'
+  // 'primary-dark'
+  // 'blue',
+  // 'light-blue',
+  'info',
+  'success',
+  // 'success-dark',
+  // 'success-darker',
+  'danger',
+  // 'danger-dark',
+  // 'danger-darker',
+  'warning',
+  // 'warning-dark',
+  // 'warning-darker',
+  'white',
+  'grey',
+  // 'grey-light',
+  // 'grey-dark',
+  'disabled'
 );
 
 @each $color in $icon-colors {

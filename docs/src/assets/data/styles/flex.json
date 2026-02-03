@@ -241,15 +241,9 @@
       },
       {
         "class": "gap-auto",
-        "css": "gap: auto;",
+        "css": "gap: var(--bal-space-auto);",
         "property": "gap",
-        "value": "auto"
-      },
-      {
-        "class": "gap-xxx-small",
-        "css": "gap: var(--bal-space-xxx-small);",
-        "property": "gap",
-        "value": "var(--bal-space-xxx-small)"
+        "value": "var(--bal-space-auto)"
       },
       {
         "class": "gap-xx-small",

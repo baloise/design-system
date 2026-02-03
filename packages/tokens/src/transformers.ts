@@ -61,6 +61,11 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
         tokenName = tokenName.replace('-semantic', '')
       }
 
+      const isComponent = token.path.includes('🧩 Component')
+      if (isComponent) {
+        tokenName = tokenName.replace('-component', '')
+      }
+
       return tokenName
     },
   })

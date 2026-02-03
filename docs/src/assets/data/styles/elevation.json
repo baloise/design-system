@@ -2,108 +2,29 @@
   {
     "opacity": [
       {
-        "class": "opacity-0",
-        "css": "opacity: var(--bal-opacity-0);",
+        "class": "opacity-hidden",
+        "css": "opacity: var(--bal-opacity-hidden);",
         "property": "opacity",
-        "value": "var(--bal-opacity-0)"
+        "value": "var(--bal-opacity-hidden)"
       },
       {
-        "class": "opacity-30",
-        "css": "opacity: var(--bal-opacity-30);",
+        "class": "opacity-disabled",
+        "css": "opacity: var(--bal-opacity-disabled);",
         "property": "opacity",
-        "value": "var(--bal-opacity-30)"
+        "value": "var(--bal-opacity-disabled)"
       },
       {
-        "class": "opacity-40",
-        "css": "opacity: var(--bal-opacity-40);",
+        "class": "opacity-backdrop",
+        "css": "opacity: var(--bal-opacity-backdrop);",
         "property": "opacity",
-        "value": "var(--bal-opacity-40)"
+        "value": "var(--bal-opacity-backdrop)"
       },
       {
-        "class": "opacity-50",
-        "css": "opacity: var(--bal-opacity-50);",
+        "class": "opacity-full",
+        "css": "opacity: var(--bal-opacity-full);",
         "property": "opacity",
-        "value": "var(--bal-opacity-50)"
-      },
-      {
-        "class": "opacity-60",
-        "css": "opacity: var(--bal-opacity-60);",
-        "property": "opacity",
-        "value": "var(--bal-opacity-60)"
-      },
-      {
-        "class": "opacity-80",
-        "css": "opacity: var(--bal-opacity-80);",
-        "property": "opacity",
-        "value": "var(--bal-opacity-80)"
-      },
-      {
-        "class": "opacity-100",
-        "css": "opacity: var(--bal-opacity-100);",
-        "property": "opacity",
-        "value": "var(--bal-opacity-100)"
+        "value": "var(--bal-opacity-full)"
       }
     ]
-  },
-  {
-    "box-shadow": [
-      {
-        "class": "shadow-small",
-        "css": "box-shadow: var(--bal-shadow-small);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-small)"
-      },
-      {
-        "class": "shadow",
-        "css": "box-shadow: var(--bal-shadow-base);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-base)"
-      },
-      {
-        "class": "shadow-large",
-        "css": "box-shadow: var(--bal-shadow-large);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-large)"
-      },
-      {
-        "class": "shadow-header",
-        "css": "box-shadow: var(--bal-shadow-header);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-header)"
-      },
-      {
-        "class": "shadow-outline",
-        "css": "box-shadow: var(--bal-shadow-outline-base);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-outline-base)"
-      },
-      {
-        "class": "shadow-outline-inset",
-        "css": "box-shadow: var(--bal-shadow-outline-base-inset);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-outline-base-inset)"
-      },
-      {
-        "class": "shadow-outline-inverted",
-        "css": "box-shadow: var(--bal-shadow-outline-inverted);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-outline-inverted)"
-      },
-      {
-        "class": "shadow-outline-inverted-inset",
-        "css": "box-shadow: var(--bal-shadow-outline-inverted-inset);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-outline-inverted-inset)"
-      },
-      {
-        "class": "shadow-text",
-        "css": "box-shadow: var(--bal-shadow-text-base);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-text-base)"
-      }
-    ]
-  },
-  {
-    "text-shadow": []
   }
 ]

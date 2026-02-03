@@ -11,19 +11,23 @@ $badge-use-host: false !default;
  */
 
 @include hybrid.vars(badge, $badge-use-host) {
+  --badge-font-family: var(--bal-badge-text-family);
+  --badge-font-weight: var(--bal-badge-text-weight);
+
   --badge-min-width: var(--bal-badge-size-normal);
   --badge-height: var(--bal-badge-size-normal);
   --badge-radius: calc(var(--bal-badge-size-normal) / 2);
-  --badge-color-background: var(--bal-badge-color-background-base);
-  --badge-color-text: var(--bal-badge-color-text-base);
-  --badge-font-family: var(--bal-badge-font-family);
-  --badge-font-weight: var(--bal-badge-font-weight);
+
+  --badge-color-background: var(--bal-badge-color-base-background);
+  --badge-color-text: var(--bal-badge-color-base-text);
+  --badge-pulse-color: var(--bal-badge-color-base-background);
+
   --badge-font-size: 85%;
-  --badge-gap: calc(var(--bal-badge-space-base) / 2);
-  --badge-padding-inline: calc(var(--bal-badge-space-base) / 2);
-  --badge-padding-block: calc(var(--bal-badge-space-base) / 2);
-  --badge-pulse-color: var(--bal-badge-color-background-base);
   --badge-icon-size: 0.875rem;
+
+  --badge-gap: 4px;
+  --badge-padding-inline: 4px;
+  --badge-padding-block: 4px;
 }
 
 /**
@@ -73,12 +77,12 @@ $badge-use-host: false !default;
 $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'danger');
 
 @mixin badge-colors($color) {
-  --badge-color-text: var(--bal-badge-color-text-#{$color});
-  --badge-color-background: var(--bal-badge-color-background-#{$color});
-  --badge-pulse-color: var(--bal-badge-color-background-#{$color});
+  --badge-color-text: var(--bal-badge-color-#{$color}-text);
+  --badge-color-background: var(--bal-badge-color-#{$color}-background);
+  --badge-pulse-color: var(--bal-badge-color-#{$color}-background);
 
   bal-icon {
-    --icon-color: var(--bal-badge-color-text-#{$color});
+    --icon-color: var(--bal-badge-color-#{$color}-text);
   }
 }
 

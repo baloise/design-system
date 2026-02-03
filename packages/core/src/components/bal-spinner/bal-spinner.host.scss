@@ -1,9 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 
-// TODO: move to tokens
-@use './bal-spinner.vars' as *;
-
 /**
  * Variables
  * --------------------------------
@@ -14,11 +11,11 @@
 :host {
   @include hybrid.host-base-vars('spinner');
 
-  --spinner-size: 4rem;
-  --spinner-circle-size: 1.5rem;
-  --spinner-circle-border-width: 0.25rem;
-  --spinner-circle-color-border-background: var(--bal-spinner-circle-background);
-  --spinner-circle-color-border-progress: var(--bal-spinner-circle-progress);
+  --spinner-size: var(--bal-spinner-size);
+  --spinner-circle-size: var(--bal-spinner-circle-size);
+  --spinner-circle-border-width: var(--bal-spinner-circle-border);
+  --spinner-circle-color-border-background: var(--bal-spinner-circle-color-background);
+  --spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress);
 }
 
 /**
@@ -74,8 +71,8 @@
 }
 
 :host(.is-white) {
-  --spinner-circle-color-border-background: var(--bal-spinner-circle-background-inverted);
-  --spinner-circle-color-border-progress: var(--bal-spinner-circle-progress-inverted);
+  --spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
+  --spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
 }
 
 /**

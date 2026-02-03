@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 
 export const ColorCard = ({ background, color, small = false }) => {
   const colors = tokens.color

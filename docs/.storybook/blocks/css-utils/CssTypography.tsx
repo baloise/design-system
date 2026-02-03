@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import json from '../../../../packages/styles/docs/typography.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'

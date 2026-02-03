@@ -13,14 +13,14 @@ $tag-use-host: false !default;
 @include hybrid.vars(tag, $tag-use-host) {
   --tag-min-height: 2rem;
   --tag-gap: 0.25rem;
-  --tag-padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
+  --tag-padding: var(--bal-tag-space-y) var(--bal-tag-space-x);
   --tag-radius: var(--bal-tag-radius-base);
-  --tag-color-text: var(--bal-tag-color-text-base);
-  --tag-color-background: var(--bal-tag-color-background-base);
-  --tag-font-family: var(--bal-tag-font-family);
   --tag-line-height: 1;
-  --tag-font-size: var(--bal-tag-text-size-normal);
-  --tag-font-weight: var(--bal-tag-font-weight-normal);
+  --tag-color-text: var(--bal-tag-color-base-text);
+  --tag-color-background: var(--bal-tag-color-base-background);
+  --tag-font-family: var(--bal-tag-family);
+  --tag-font-size: var(--bal-tag-size);
+  --tag-font-weight: var(--bal-tag-weight);
   --tag-margin-right-close: calc(0.25rem * -1);
 }
 
@@ -87,8 +87,8 @@ $tag-colors: (
 );
 
 @mixin tag-colors($color) {
-  --tag-color-text: var(--bal-tag-color-text-#{$color});
-  --tag-color-background: var(--bal-tag-color-background-#{$color});
+  --tag-color-text: var(--bal-tag-color-#{$color}-text);
+  --tag-color-background: var(--bal-tag-color-#{$color}-background);
 }
 
 @include hybrid.component(tag, $tag-use-host) {
@@ -113,24 +113,24 @@ $tag-colors: (
   //
   // Sizes
   &.is-small {
-    --tag-padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
     --tag-min-height: 1.5rem;
-    --tag-font-size: var(--bal-tag-text-size-small);
-    --tag-font-weight: var(--bal-tag-font-weight-small);
+    --tag-padding: var(--bal-tag-small-space-y) var(--bal-tag-small-space-x);
+    --tag-font-size: var(--bal-tag-small-size);
+    --tag-font-weight: var(--bal-tag-small-weight);
   }
 
   &.is-medium {
     --tag-min-height: 2.5rem;
-    --tag-padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
-    --tag-font-size: var(--bal-tag-text-size-medium);
-    --tag-font-weight: var(--bal-tag-font-weight-medium);
+    --tag-padding: var(--bal-tag-medium-space-y) var(--bal-tag-medium-space-x);
+    --tag-font-size: var(--bal-tag-medium-size);
+    --tag-font-weight: var(--bal-tag-medium-weight);
   }
 
   &.is-large {
     --tag-min-height: 3rem;
-    --tag-padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
-    --tag-font-size: var(--bal-tag-text-size-large);
-    --tag-font-weight: var(--bal-tag-font-weight-large);
+    --tag-padding: var(--bal-tag-large-space-y) var(--bal-tag-large-space-x);
+    --tag-font-size: var(--bal-tag-large-size);
+    --tag-font-weight: var(--bal-tag-large-weight);
   }
 }
 
@@ -184,6 +184,6 @@ $tag-colors: (
 @include hybrid.styles-only($tag-use-host) {
   .tags {
     display: flex;
-    gap: var(--bal-tag-space-normal-x);
+    gap: var(--bal-tag-space-x);
   }
 }

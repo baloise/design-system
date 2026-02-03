@@ -136,9 +136,6 @@ export const config: Config = {
         {
           src: '**/*.html',
         },
-        // {
-        //   src: 'components.d.ts',
-        // },
         {
           src: join(packagesDir, 'core', 'public', 'section.css'),
           dest: 'assets/section.css',
@@ -149,6 +146,19 @@ export const config: Config = {
           dest: 'assets/styles',
           warn: true,
         },
+        {
+          src: join(packagesDir, 'fonts', 'assets'),
+          dest: 'assets/fonts',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'tokens', 'dist', 'css'),
+          dest: 'assets/tokens',
+          warn: true,
+        },
+        // {
+        //   src: 'components.d.ts',
+        // },
         // {
         //   src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
         //   dest: 'assets/future-logo.svg',
@@ -185,40 +195,10 @@ export const config: Config = {
         //   warn: true,
         // },
         // {
-        //   src: join(packagesDir, 'styles', 'css', 'all.css'),
-        //   dest: 'assets/all.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-        //   dest: 'assets/basic.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
-        //   dest: 'assets/components.css',
-        //   warn: true,
-        // },
-        {
-          src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
-          dest: 'assets/utilities.css',
-          warn: true,
-        },
-        // {
-        //   src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
-        //   dest: 'assets/tokens.css',
-        //   warn: true,
-        // },
-        // {
         //   src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
         //   dest: 'assets/maps.js',
         //   warn: true,
         // },
-        {
-          src: join(packagesDir, 'fonts', 'assets'),
-          dest: 'assets/fonts',
-          warn: true,
-        },
         // {
         //   src: join(packagesDir, 'brand-icons', 'src', 'assets'),
         //   dest: 'assets/images/brand-icons',

@@ -37,14 +37,14 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--bal-body-font-family);
+  font-family: var(--bal-body-family);
 }
 
 body {
-  color: var(--bal-body-color-text);
-  font-size: var(--bal-body-text-size);
-  font-weight: var(--bal-body-font-weight);
-  line-height: var(--bal-body-text-line-height);
+  color: var(--bal-body-color);
+  font-size: var(--bal-body-size);
+  font-weight: var(--bal-body-weight);
+  line-height: var(--bal-body-line-height);
   -webkit-overflow-scrolling: auto;
 }
 
@@ -52,7 +52,7 @@ button {
   color: inherit;
 }
 
-p:not(.text) {
+p:not(.text, .title, .subtitle, .heading) {
   hyphens: auto;
   margin: 0;
   overflow-wrap: break-word;

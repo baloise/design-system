@@ -1,5 +1,6 @@
 $font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
 
+@forward './tokens';
 @forward './mixins';
 @forward './normalize';
 @forward './structure';

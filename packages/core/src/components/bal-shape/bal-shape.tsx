@@ -29,31 +29,31 @@ export class Shape implements ComponentInterface {
     let color: string
     switch (this.color) {
       case 'green':
-        color = BaloiseDesignToken.balColorGreen6
+        color = BaloiseDesignToken.BalColorGreen6
         break
       case 'green-light':
-        color = BaloiseDesignToken.balColorGreen3
+        color = BaloiseDesignToken.BalColorGreen3
         break
       case 'red':
-        color = BaloiseDesignToken.balColorRed5
+        color = BaloiseDesignToken.BalColorRed5
         break
       case 'red-light':
-        color = BaloiseDesignToken.balColorRed3
+        color = BaloiseDesignToken.BalColorRed3
         break
       case 'purple':
-        color = BaloiseDesignToken.balColorPurple6
+        color = BaloiseDesignToken.BalColorPurple6
         break
       case 'purple-light':
-        color = BaloiseDesignToken.balColorPurple3
+        color = BaloiseDesignToken.BalColorPurple3
         break
       case 'yellow':
-        color = BaloiseDesignToken.balColorYellow5
+        color = BaloiseDesignToken.BalColorYellow5
         break
       case 'yellow-light':
-        color = BaloiseDesignToken.balColorYellow3
+        color = BaloiseDesignToken.BalColorYellow3
         break
       default:
-        color = BaloiseDesignToken.balColorGrey4
+        color = BaloiseDesignToken.BalColorGrey4
     }
     return color
   }

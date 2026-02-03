@@ -1,18 +1,16 @@
 import {
-  balBreakpointDesktop,
-  balBreakpointFullhd,
-  balBreakpointHighDefinition,
-  balBreakpointTablet,
-  balBreakpointWidescreen,
+  BalBreakpointDesktop,
+  BalBreakpointFullhd,
+  BalBreakpointHighDefinition,
+  BalBreakpointTablet,
+  BalBreakpointWidescreen,
 } from '@baloise/ds-tokens'
 
-const toNumber = (pixel: string): number => parseInt(pixel.slice(0, -2), 10)
-
-const breakpointTablet = toNumber(balBreakpointTablet)
-const breakpointDesktop = toNumber(balBreakpointDesktop)
-const breakpointHighDefinition = toNumber(balBreakpointHighDefinition)
-const breakpointWidescreen = toNumber(balBreakpointWidescreen)
-const breakpointFullhd = toNumber(balBreakpointFullhd)
+const breakpointTablet = BalBreakpointTablet
+const breakpointDesktop = BalBreakpointDesktop
+const breakpointHighDefinition = BalBreakpointHighDefinition
+const breakpointWidescreen = BalBreakpointWidescreen
+const breakpointFullhd = BalBreakpointFullhd
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth

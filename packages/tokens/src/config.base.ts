@@ -14,8 +14,24 @@ const config: Config = {
       prefix: 'bal',
       files: [
         {
-          format: 'css/variables',
+          format: 'bal/css/variables-responsive',
           destination: `css/${mode.toLowerCase()}.tokens.css`,
+        },
+      ],
+      options: {
+        outputReferences: true,
+      },
+    },
+    scss: {
+      transformGroup: 'scss',
+      transforms: ['bal/size/rem', 'bal/color/rgba', 'bal/css/name'],
+      basePxFontSize,
+      buildPath: 'dist/',
+      prefix: 'bal',
+      files: [
+        {
+          format: 'scss/variables',
+          destination: `sass/${mode.toLowerCase()}.tokens.scss`,
         },
       ],
       options: {
@@ -31,6 +47,21 @@ const config: Config = {
         {
           format: 'json/flat',
           destination: `web/${mode.toLowerCase()}.tokens.json`,
+        },
+      ],
+      options: {
+        outputReferences: true,
+      },
+    },
+    docs: {
+      transformGroup: 'web',
+      transforms: ['bal/size/rem', 'bal/color/hex', 'bal/css/name'],
+      prefix: 'bal',
+      buildPath: 'dist/',
+      files: [
+        {
+          format: 'json',
+          destination: `docs/${mode.toLowerCase()}.tokens.json`,
         },
       ],
       options: {

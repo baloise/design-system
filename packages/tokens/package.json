@@ -10,6 +10,9 @@
     "access": "public"
   },
   "type": "module",
+  "main": "dist/js/base.tokens.js",
+  "module": "dist/js/base.tokens.js",
+  "style": "dist/css/base.tokens.css",
   "scripts": {
     "build": "npx tsc && node dist/out-tsc",
     "build:clean": "rimraf dist"

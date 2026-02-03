@@ -1,4 +1,4 @@
-@use '@baloise/ds-tokens/dist/tokens.scss' as *;
+@use '@baloise/ds-tokens/dist/sass/base.tokens.scss' as *;
 
 @mixin from($device) {
   @media screen and (min-width: $device) {

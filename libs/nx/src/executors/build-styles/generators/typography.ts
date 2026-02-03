@@ -19,10 +19,8 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
       docs: [
         textColors.docs,
         fontFamily.docs,
-        // fontFamilyLineHeight.rules,
-        fontSize.rules,
-        fontSize.rulesTablet,
-        fontSize.rulesDesktop,
+        lineHeight.docs,
+        // fontSize.docs,
         textAlign.docs,
         textTransform.docs,
         fontWeight.docs,
@@ -33,10 +31,8 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
       rules: [
         textColors.rules,
         fontFamily.rules,
-        // fontFamilyLineHeight.rules,
+        lineHeight.rules,
         fontSize.rules,
-        fontSize.rulesTablet,
-        fontSize.rulesDesktop,
         textAlign.rules,
         textTransform.rules,
         fontWeight.rules,
@@ -50,7 +46,7 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
 
 const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'text.line-height',
+    token: '🏷️ Semantic.🔤 Text.LineHeight',
     property: 'line-height',
     responsive: false,
     replace: 'text-',
@@ -69,7 +65,7 @@ const generateTextOverflow = async () => {
 }
 
 const generateTextColors = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'color.text', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Color', ...options })
   const values = utils.toProps({ tokens, replace: 'color-' })
   const property = 'color'
 
@@ -81,7 +77,7 @@ const generateTextColors = async (options: BuildStylesExecutorSchema) => {
 
 const generateFontFamily = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'font.family',
+    token: '🏷️ Semantic.🔤 Text.Family',
     property: 'font-family',
     responsive: false,
     ...options,
@@ -92,22 +88,19 @@ const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }
   const values = {}
   for (const index in keys) {
     const key = keys[index]
-    values[`${prefix}-${key}`] =
-      `var(--bal-text-size-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
+    values[`${prefix}-${key}`] = `var(--bal-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }
 
 const generateFontSize = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'text.size', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Size', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop'] })
   const property = 'font-size'
 
   const rules = generateFontSizeRule({ keys, property, prefix: 'text' })
-  const rulesTablet = generateFontSizeRule({ keys, property, prefix: 'text', breakpoint: 'tablet' })
-  const rulesDesktop = generateFontSizeRule({ keys, property, prefix: 'text', breakpoint: 'desktop' })
 
-  return { rules, rulesTablet, rulesDesktop }
+  return { rules }
 }
 
 const generateTextAlign = () => {

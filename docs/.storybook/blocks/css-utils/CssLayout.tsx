@@ -1,6 +1,6 @@
 import React from 'react'
 import { CssTable } from './helpers/CssTable'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import json from '../../../../packages/styles/docs/layout.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 

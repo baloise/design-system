@@ -1,4 +1,4 @@
-import StyleDictionary from 'style-dictionary'
+import StyleDictionary, { Dictionary } from 'style-dictionary'
 import { fileHeader, formattedVariables } from 'style-dictionary/utils'
 import { propertyFormatNames } from 'style-dictionary/enums'
 import path from 'path'
@@ -14,6 +14,59 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
       const { outputReferences } = options
       const header = await fileHeader({ file })
 
+      // find reponsive tokens in dictionary which ends with -mobile, -tablet or -desktop
+      const baseTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-mobile'))
+      // create a deeop copy of base tokens
+      const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
+      const deviceBaseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
+
+      //
+      // Base tokens
+      // ------------------------------------------------------
+
+      // same as mobile but without the suffix
+      baseTokens.forEach(token => {
+        token.name = token.name.replace('-mobile', '')
+      })
+
+      const baseDictionary = {
+        ...dictionary,
+        allTokens: baseTokens,
+      } as Dictionary
+
+      //
+      // Device tokens
+      // ------------------------------------------------------
+
+      // same as mobile but without the suffix
+      deviceBaseTokens.forEach(token => {
+        token.name = token.name.replace('-mobile', '-device')
+      })
+      const deviceBaseDictionary = {
+        ...dictionary,
+        allTokens: deviceBaseTokens,
+      } as Dictionary
+
+      const tabletTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-tablet'))
+      const deviceTabletTokens = JSON.parse(JSON.stringify(tabletTokensOriginal))
+      deviceTabletTokens.forEach(token => {
+        token.name = token.name.replace('-tablet', '-device')
+      })
+      const deviceTabletDictionary = {
+        ...dictionary,
+        allTokens: deviceTabletTokens,
+      } as Dictionary
+
+      const desktopTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-desktop'))
+      const deviceDesktopTokens = JSON.parse(JSON.stringify(desktopTokensOriginal))
+      deviceDesktopTokens.forEach(token => {
+        token.name = token.name.replace('-desktop', '-device')
+      })
+      const deviceDesktopDictionary = {
+        ...dictionary,
+        allTokens: deviceDesktopTokens,
+      } as Dictionary
+
       const mobileCss =
         ':root {\n' +
         formattedVariables({
@@ -22,177 +75,93 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
           outputReferences,
           usesDtcg: true,
         }) +
-        '\n}\n'
-
-      const tabletCss = await getResponsiveCss(sd, 'tokens/responsive/Tablet.tokens.json', options)
-      const tabletCssKeyWithSuffix = await getResponsiveCss(
-        sd,
-        'tokens/responsive/Tablet.tokens.json',
-        options,
-        'tablet',
-      )
-
-      const desktopCss = await getResponsiveCss(sd, 'tokens/responsive/Desktop.tokens.json', options)
-      const desktopCssKeyWithSuffix = await getResponsiveCss(
-        sd,
-        'tokens/responsive/Desktop.tokens.json',
-        options,
-        'desktop',
-      )
-
-      return (
-        header +
-        mobileCss +
-        `\n@media (min-width: 769px) {\n${tabletCss}\n}\n` +
-        `\n@media (min-width: 1024px) {\n${desktopCss}\n}\n` +
-        `\n${tabletCssKeyWithSuffix}\n` +
-        `\n${desktopCssKeyWithSuffix}\n`
-      )
-    },
-  })
-
-  /**
-   * JSON Responsive Formatter
-   * ------------------------------------------------------
-   */
-  sd.registerFormat({
-    name: 'bal/json/variables-responsive',
-    format: async ({ dictionary, file, options }) => {
-      const mobileTokens = dictionary.allTokens
-      const tabletTokens = await getResponsiveTokens(sd, 'tokens/responsive/Tablet.tokens.json', 'tablet')
-      const desktopTokens = await getResponsiveTokens(sd, 'tokens/responsive/Desktop.tokens.json', 'desktop')
-
-      const tokens = [...mobileTokens, ...tabletTokens, ...desktopTokens]
-      const result: Record<string, any> = {}
-      tokens.forEach(token => {
-        result[token.name] = token.$value
-      })
-
-      return JSON.stringify(result, null, 2)
-    },
-  })
-
-  /**
-   * JavaScript Responsive Formatter
-   * ------------------------------------------------------
-   */
-  sd.registerFormat({
-    name: 'bal/javascript/variables-responsive',
-    format: async ({ dictionary, file, options }) => {
-      const header = await fileHeader({ file })
-
-      const mobileTokens = dictionary.allTokens
-      const tabletTokens = await getResponsiveJavascriptTokens(sd, 'tokens/responsive/Tablet.tokens.json', 'tablet')
-      const desktopTokens = await getResponsiveJavascriptTokens(sd, 'tokens/responsive/Desktop.tokens.json', 'desktop')
-
-      const tokens = [...mobileTokens, ...tabletTokens, ...desktopTokens]
-      const result: Record<string, any> = {}
-      tokens.forEach(token => {
-        result[token.name] = token.$value
-      })
+        '\n\n' +
+        '  /* Base tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: baseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n\n' +
+        '  /* Device tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceBaseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n}\n\n' +
+        '/* Device tokens: Tablet */\n' +
+        `\n@media (min-width: 769px) {\n` +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceTabletDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}\n\n` +
+        '/* Device tokens: Desktop */\n' +
+        `\n@media (min-width: 1024px) {\n` +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceDesktopDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}\n` +
+        '\n'
 
       return (
         header +
-        tokens.reduce((acc, token) => {
-          acc += `export const ${token.name} = ${JSON.stringify(token.$value)};\n`
-          return acc
-        }, '')
+        ':root {\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n\n' +
+        '  /* Base tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: baseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n\n' +
+        '  /* Device tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceBaseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n}\n\n' +
+        '/* Device tokens: Tablet */\n' +
+        `\n@media (min-width: 769px) {\n` +
+        ':root {\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceTabletDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}` +
+        `\n}\n\n` +
+        '/* Device tokens: Desktop */\n' +
+        `\n@media (min-width: 1024px) {\n` +
+        ':root {\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceDesktopDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}` +
+        `\n}\n` +
+        '\n'
       )
     },
   })
-}
-
-/**
- * Utility functions
- * ------------------------------------------------------
- */
-
-async function getResponsiveJavascriptTokens(sd: typeof StyleDictionary, filePath: string, suffix?: string) {
-  const fullPath = path.join(process.cwd(), filePath)
-
-  const config = {
-    source: [fullPath],
-    platforms: {
-      css: {
-        transformGroup: 'js', // Changed to js for JS generation
-        prefix: 'bal',
-        transforms: ['bal/size/round', 'bal/color/hex', 'bal/js/name'], // Use JS transforms
-      },
-    },
-  }
-
-  const instance = new sd(config)
-  const dictionary = await instance.getPlatformTokens('css') // Platform key in config is 'css' despite containing JS rules above for reuse simplicity, or better: rename
-
-  if (suffix) {
-    dictionary.allTokens.forEach(token => {
-      // For JS, we append the suffix directly to the PascalCase name if it exists,
-      // or ensure the transform chain already handles it.
-      // Assuming bal/js/name produces PascalCase (e.g. BalSizeText).
-      token.name = `${token.name}${suffix}`
-    })
-  }
-
-  return dictionary.allTokens
-}
-
-async function getResponsiveTokens(sd: typeof StyleDictionary, filePath: string, suffix?: string) {
-  const fullPath = path.join(process.cwd(), filePath)
-
-  const config = {
-    source: [fullPath],
-    platforms: {
-      css: {
-        transformGroup: 'css',
-        prefix: 'bal',
-        transforms: ['bal/size/rem', 'bal/color/hex', 'bal/css/name'],
-      },
-    },
-  }
-
-  const instance = new sd(config)
-  const dictionary = await instance.getPlatformTokens('css')
-
-  if (suffix) {
-    dictionary.allTokens.forEach(token => {
-      token.name = `${token.name}-${suffix}`
-    })
-  }
-
-  return dictionary.allTokens
-}
-
-async function getResponsiveCss(sd: typeof StyleDictionary, filePath: string, options: any, suffix?: string) {
-  const { outputReferences } = options
-  const fullPath = path.join(process.cwd(), filePath)
-
-  const config = {
-    source: [fullPath],
-    platforms: {
-      css: {
-        transformGroup: 'css',
-        transforms: ['bal/size/rem', 'bal/css/name'],
-      },
-    },
-  }
-
-  const instance = new sd(config)
-  const dictionary = await instance.getPlatformTokens('css')
-
-  if (suffix) {
-    dictionary.allTokens.forEach(token => {
-      token.name = `${token.name}-${suffix}`
-    })
-  }
-
-  return (
-    ':root {\n' +
-    formattedVariables({
-      format: propertyFormatNames.css,
-      dictionary,
-      outputReferences,
-      usesDtcg: true,
-    }) +
-    '\n}'
-  )
 }

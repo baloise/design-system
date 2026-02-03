@@ -1,3 +1,4 @@
+import { isArray } from 'lodash'
 import { BuildStylesExecutorSchema } from '../schema'
 import * as utils from './utils'
 
@@ -8,133 +9,101 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   const bordersBottom = await generateBorderByColor(options, { placement: 'bottom' })
   const bordersLeft = await generateBorderByColor(options, { placement: 'left' })
 
-  const borderNone = await utils.staticClass({ property: 'border-width', values: { 'border-none': '0' } })
   const borderWidth = await utils.staticClassByToken({
     token: 'border.width',
     property: 'border-width',
     ...options,
   })
 
-  const borderNoneTop = await utils.staticClass({ property: 'border-top-width', values: { 'border-top-none': '0' } })
-  const borderNoneRight = await utils.staticClass({
-    property: 'border-right-width',
-    values: { 'border-right-none': '0' },
-  })
-  const borderNoneBottom = await utils.staticClass({
-    property: 'border-bottom-width',
-    values: { 'border-bottom-none': '0' },
-  })
-  const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
-
-  const borderRadius = await utils.staticClassByToken({
-    token: 'radius',
-    property: 'border-radius',
-    values: {
-      ['radius-none']: '0',
-      ['radius-normal']: 'var(--bal-radius-base)',
-    },
-    ...options,
-  })
-
-  const borderRadiusTop = await utils.staticClassByToken({
-    token: 'radius',
-    property: ['border-top-left-radius', 'border-top-right-radius'],
-    replace: 'radius',
-    prefix: 'radius-top',
-    values: {
-      ['radius-top-none']: '0',
-      ['radius-top-normal']: 'var(--bal-radius-base)',
-    },
-    ...options,
-  })
-  const borderRadiusLeft = await utils.staticClassByToken({
-    token: 'radius',
-    property: ['border-top-left-radius', 'border-bottom-left-radius'],
-    replace: 'radius',
-    prefix: 'radius-left',
-    values: {
-      ['radius-left-none']: '0',
-      ['radius-left-normal']: 'var(--bal-radius-base)',
-    },
-    ...options,
-  })
-  const borderRadiusRight = await utils.staticClassByToken({
-    token: 'radius',
-    property: ['border-top-right-radius', 'border-bottom-right-radius'],
-    replace: 'radius',
-    prefix: 'radius-right',
-    values: {
-      ['radius-right-none']: '0',
-      ['radius-right-normal']: 'var(--bal-radius-base)',
-    },
-    ...options,
-  })
-  const borderRadiusBottom = await utils.staticClassByToken({
-    token: 'radius',
-    property: ['border-bottom-left-radius', 'border-bottom-right-radius'],
-    replace: 'radius',
-    prefix: 'radius-bottom',
-    values: {
-      ['radius-bottom-none']: '0',
-      ['radius-bottom-normal']: 'var(--bal-radius-base)',
-    },
-    ...options,
-  })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔵 Radius', ...options })
+  const radius = await generateRadius(tokens)
+  const radiusTop = await generateRadius(tokens, 'top', ['top-left', 'top-right'])
+  const radiusTopLeft = await generateRadius(tokens, 'top-left', ['top-left'])
+  const radiusTopRight = await generateRadius(tokens, 'top-right', ['top-right'])
+  const radiusBottom = await generateRadius(tokens, 'bottom', ['bottom-left', 'bottom-right'])
+  const radiusBottomLeft = await generateRadius(tokens, 'bottom-left', ['bottom-left'])
+  const radiusBottomRight = await generateRadius(tokens, 'bottom-right', ['bottom-right'])
 
   return utils.save(
     'border',
     options.projectRoot,
     utils.merge({
       docs: [
-        borderNone.docs,
-        borderNoneTop.docs,
-        borderNoneRight.docs,
-        borderNoneBottom.docs,
-        borderNoneLeft.docs,
+        radius.docs,
+        radiusTop.docs,
+        radiusTopLeft.docs,
+        radiusTopRight.docs,
+        radiusBottom.docs,
+        radiusBottomLeft.docs,
+        radiusBottomRight.docs,
         borders.docs,
         bordersTop.docs,
         bordersRight.docs,
         bordersBottom.docs,
         bordersLeft.docs,
         borderWidth.docs,
-        borderRadius.docs,
-        borderRadiusTop.docs,
-        borderRadiusLeft.docs,
-        borderRadiusRight.docs,
-        borderRadiusBottom.docs,
       ],
       rules: [
+        radius.rules,
+        radiusTop.rules,
+        radiusTopLeft.rules,
+        radiusTopRight.rules,
+        radiusBottom.rules,
+        radiusBottomLeft.rules,
+        radiusBottomRight.rules,
         borders.rules,
         bordersTop.rules,
         bordersRight.rules,
         bordersBottom.rules,
         bordersLeft.rules,
         borderWidth.rules,
-        borderRadius.rules,
-        borderRadiusTop.rules,
-        borderRadiusLeft.rules,
-        borderRadiusRight.rules,
-        borderRadiusBottom.rules,
-        borderNone.rules,
-        borderNoneTop.rules,
-        borderNoneRight.rules,
-        borderNoneBottom.rules,
-        borderNoneLeft.rules,
       ],
       visualTest: [],
     }),
   )
 }
 
+async function generateRadius(tokens, name = undefined, positions: string[] = []) {
+  const props = utils.toProps({
+    tokens,
+    prefix: name ? `radius-${name}` : 'radius',
+    replace: 'radius',
+  })
+
+  let property: any = positions.map(position => `border-${position}-radius`) as any
+  if (positions.length === 0) {
+    property = 'border-radius'
+  }
+
+  const docs = utils.jsonClass({
+    property: isArray(property) ? property.join(', ') : property,
+    values: {
+      ...props,
+    },
+  })
+
+  const rules = utils.styleClass({
+    property,
+    values: {
+      ...props,
+    },
+    important: true,
+    responsive: false,
+    states: false,
+    breakpoints: utils.minBreakpoints,
+  })
+
+  return { docs, rules }
+}
+
 async function generateBorderByColor(options: BuildStylesExecutorSchema, { placement = '' } = {}) {
-  const tokens = await utils.getTokens({ token: 'color.border', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.▭ Border.Color', ...options })
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
-    [`border${formattedPlacement}`]: 'var(--bal-color-border-base)',
     ...utils.toProps({
       tokens: tokens,
-      replace: 'color-border-',
-      replace2: 'color-border',
+      replace: 'border-color-',
+      replace2: 'border-color',
       prefix: `border${formattedPlacement}`,
     }),
   }
@@ -146,7 +115,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
     important: true,
     states: true,
     additionalValues: {
-      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-base) !important',
+      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal) !important',
       [`border${formattedPlacement}-style`]: 'solid',
     },
   })

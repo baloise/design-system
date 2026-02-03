@@ -3,21 +3,27 @@ import * as utils from './utils'
 
 export const generateElevation = async (options: BuildStylesExecutorSchema) => {
   const { rules: rulesOpacity, docs: docsOpacity } = await generateOpacity(options)
-  const { rules: rulesShadow, docs: docsShadow } = await generateShadow(options)
-  const { rules: rulesTextShadow, docs: docsTextShadow } = await generateTextShadow(options)
+  // const { rules: rulesShadow, docs: docsShadow } = await generateShadow(options)
+  // const { rules: rulesTextShadow, docs: docsTextShadow } = await generateTextShadow(options)
 
   return utils.save(
     'elevation',
     options.projectRoot,
     utils.merge({
-      docs: [docsOpacity, docsShadow, docsTextShadow],
-      rules: [rulesOpacity, rulesShadow, rulesTextShadow],
+      docs: [
+        docsOpacity,
+        //docsShadow, docsTextShadow
+      ],
+      rules: [
+        rulesOpacity,
+        //rulesShadow, rulesTextShadow
+      ],
     }),
   )
 }
 
 const generateOpacity = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'opacity', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🌫️ Opacity', ...options })
   const values = utils.toProps({ tokens })
   const property = 'opacity'
 
@@ -28,7 +34,7 @@ const generateOpacity = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateShadow = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'shadow', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🌓 Shadow', ...options })
   const values = utils.toProps({ tokens })
   const property = 'box-shadow'
   const docs = utils.jsonClass({ property, values })
@@ -36,7 +42,6 @@ const generateShadow = async (options: BuildStylesExecutorSchema) => {
     property,
     values: {
       ['shadow-none']: 'none',
-      ['shadow-normal']: 'var(--bal-shadow-base)',
       ...values,
     },
     important: true,
@@ -49,7 +54,7 @@ const generateShadow = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateTextShadow = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'text.shadow', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Shadow', ...options })
   const values = utils.toProps({ tokens })
   const property = 'text-shadow'
 
@@ -58,7 +63,7 @@ const generateTextShadow = async (options: BuildStylesExecutorSchema) => {
   const rules = utils.styleClass({
     property,
     values: {
-      ['text-shadow-normal']: 'var(--bal-shadow-text-base)',
+      ['text-shadow-normal']: 'var(--bal-text-shadow)',
       ...values,
     },
     important: true,

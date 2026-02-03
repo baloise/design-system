@@ -13,14 +13,13 @@ $text-use-host: false !default;
 @include hybrid.vars((text), $text-use-host) {
   @include hybrid.host-base-margin-vars(text);
 
-  --text-color-text: initial;
-  --text-font-family: var(--bal-text-font-family);
-  --text-font-weight: var(--bal-text-font-weight);
-  --text-line-height: var(--bal-text-line-height);
-  --text-font-size: var(--bal-text-size-1);
-  --text-font-size-tablet: var(--bal-text-size-1-tablet);
-  --text-font-size-desktop: var(--bal-text-size-1-desktop);
-  --text-shadow-text: var(--bal-shadow-text-base);
+  --text-color: initial;
+  --text-family: var(--bal-body-font-family);
+  --text-weight: var(--bal-body-font-weight);
+  --text-line-height: var(--bal-body-line-height);
+  --text-size: var(--bal-text-size-normal-device);
+  --text-shadow: var(--bal-shadow-text);
+  --text-space: var(--bal-body-space);
 }
 
 /**
@@ -39,19 +38,11 @@ $text-use-host: false !default;
   hyphens: auto;
   overflow-wrap: break-word;
 
-  color: var(--text-color-text);
-  font-family: var(--text-font-family);
-  font-weight: var(--text-font-weight);
+  color: var(--text-color);
+  font-family: var(--text-family);
+  font-weight: var(--text-weight);
   line-height: var(--text-line-height);
-  font-size: var(--text-font-size);
-
-  @include tablet {
-    font-size: var(--text-font-size-tablet);
-  }
-
-  @include desktop {
-    font-size: var(--text-font-size-desktop);
-  }
+  font-size: var(--text-size);
 
   // no wrap
   &.has-no-wrap {
@@ -62,7 +53,7 @@ $text-use-host: false !default;
 
   // text shadow to increase readability on images
   &.has-shadow {
-    text-shadow: var(--text-shadow-text);
+    text-shadow: var(--text-shadow);
   }
 
   // alignments
@@ -110,9 +101,7 @@ $text-use-host: false !default;
   */
 
 @mixin text-size($level) {
-  --text-font-size: var(--bal-text-size-#{$level});
-  --text-font-size-tablet: var(--bal-text-size-#{$level}-tablet);
-  --text-font-size-desktop: var(--bal-text-size-#{$level}-desktop);
+  --text-size: var(--bal-text-size-#{$level});
 }
 
 @include hybrid.component(text, $text-use-host) {
@@ -121,31 +110,31 @@ $text-use-host: false !default;
   $text-weights: ('light', 'regular', 'bold');
   @each $weight in $text-weights {
     &.is-#{$weight} {
-      --text-font-weight: var(--bal-font-weight-#{$weight});
+      --text-weight: var(--bal-text-weight-#{$weight});
     }
   }
 
   &.is-bold {
-    --text-font-weight: var(--bal-font-weight-bold);
+    --text-weight: var(--bal-text-weight-bold);
   }
 
   &.is-regular {
-    --text-font-weight: var(--bal-font-weight-regular);
+    --text-weight: var(--bal-text-weight-regular);
   }
 
   //
   // Font Family
   &.is-heading,
   &.is-title {
-    --text-font-family: var(--bal-font-family-title);
-    --text-font-weight: var(--bal-font-weight-bold);
-    --text-line-height: var(--bal-text-line-height-title);
+    --text-family: var(--bal-text-family-heading);
+    --text-weight: var(--bal-text-weight-bold);
+    --text-line-height: var(--bal-text-line-height-heading);
   }
 
   &.is-subtitle {
-    --text-font-family: var(--bal-font-family-title);
-    --text-font-weight: var(--bal-font-weight-light);
-    --text-line-height: var(--bal-text-line-height-title);
+    --text-family: var(--bal-text-family-heading);
+    --text-weight: var(--bal-text-weight-light);
+    --text-line-height: var(--bal-text-line-height-heading);
   }
 
   //
@@ -175,7 +164,7 @@ $text-use-host: false !default;
   );
   @each $color in $text-colors {
     &.is-#{$color} {
-      --text-color-text: var(--bal-color-text-#{$color});
+      --text-color: var(--bal-text-color-#{$color});
     }
   }
 
@@ -214,18 +203,18 @@ $text-use-host: false !default;
 @include hybrid.core($text-use-host) {
   .text {
     &.has-space-all {
-      --text-margin-top: var(--bal-space-normal);
-      --text-margin-bottom: var(--bal-space-normal);
+      --text-margin-top: var(--text-space);
+      --text-margin-bottom: var(--text-space);
     }
 
     &.has-space-top {
-      --text-margin-top: var(--bal-space-normal);
+      --text-margin-top: var(--text-space);
       --text-margin-bottom: 0;
     }
 
     &.has-space-bottom {
       --text-margin-top: 0;
-      --text-margin-bottom: var(--bal-space-normal);
+      --text-margin-bottom: var(--text-space);
     }
 
     &.has-space-none {
@@ -237,18 +226,18 @@ $text-use-host: false !default;
 
 @include hybrid.host($text-use-host) {
   :host(.has-space-all) {
-    --text-margin-top: var(--bal-space-normal);
-    --text-margin-bottom: var(--bal-space-normal);
+    --text-margin-top: var(--text-space);
+    --text-margin-bottom: var(--text-space);
   }
 
   :host(.has-space-top) {
-    --text-margin-top: var(--bal-space-normal);
+    --text-margin-top: var(--text-space);
     --text-margin-bottom: 0;
   }
 
   :host(.has-space-bottom) {
     --text-margin-top: 0;
-    --text-margin-bottom: var(--bal-space-normal);
+    --text-margin-bottom: var(--text-space);
   }
 
   :host(.has-space-none) {

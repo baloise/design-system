@@ -1,5 +1,5 @@
 import React from 'react'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import { Clipboard } from '../Clipboard'
 
 export const TokensBorder = ({ overview }): React.ReactElement => {
