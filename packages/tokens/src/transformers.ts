@@ -12,13 +12,16 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transform: (token, _options) => {
       const value = token.$value ?? token.value
       // Handle object values with hex and alpha properties
-      if (typeof value === 'object' && value !== null && 'hex' in value && 'alpha' in value) {
+      if (typeof value === 'object' && value !== null && 'hex' in value && 'alpha' in value && value.alpha < 1) {
         const hex = value.hex.replace('#', '')
         const r = parseInt(hex.substring(0, 2), 16)
         const g = parseInt(hex.substring(2, 4), 16)
         const b = parseInt(hex.substring(4, 6), 16)
         const a = parseFloat(value.alpha)
         return `rgba(${r}, ${g}, ${b}, ${a})`
+      }
+      if (value.hex) {
+        return value.hex
       }
       return value
     },
@@ -112,21 +115,22 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
       }
 
       // ignore specific tokens
+      const isPixel = ['breakpoint', 'radius-rounded', 'size-container', 'Breakpoint', 'RadiusRounded', 'SizeContainer']
+      if (isPixel.some(ignored => tokenName.includes(ignored))) {
+        return `${value}px`
+      }
+
       const ignore = [
         'line-height',
-        'breakpoint',
-        'radius-rounded',
         'z-index',
         'opacity',
-        'size-container',
         'font-weight',
         'LineHeight',
-        'Breakpoint',
-        'RadiusRounded',
         'ZIndex',
         'Opacity',
-        'SizeContainer',
         'FontWeight',
+        'Interaction',
+        'interaction',
       ]
       if (ignore.some(ignored => tokenName.includes(ignored))) {
         return value

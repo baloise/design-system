@@ -42,11 +42,15 @@
 
 ## generel
 
-| Item          | Description                                                           | Status |
-| ------------- | --------------------------------------------------------------------- | ------ |
-| T-Shirt Sizes | Change to 2xl and get rid off normal and use medium instead           | ⬜     |
-| FIGMA API     | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
-| Playwright    | Replace all Cypess test with Playwright                               | ⬜     |
+| Item            | Description                                                           | Status |
+| --------------- | --------------------------------------------------------------------- | ------ |
+| T-Shirt Sizes   | Change to 2xl and get rid off normal and use medium instead           | ⬜     |
+| FIGMA API       | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
+| Playwright      | Replace all Cypess test with Playwright                               | ⬜     |
+| Default vs Base | Use Default for states with hover and active                          | ⬜     |
+| Modal           | Use new native dialog API                                             | ⬜     |
+| Popup           | Use new native popup API                                              | ⬜     |
+| Accordion       | Use new native accordion API                                          | ⬜     |
 
 ## components
 
@@ -63,6 +67,7 @@ use id's and parts in the shadow dom components
 | bal-badge         | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-heading       | Hybrid           | ✅         | ⬜   | ⬜            |
 | bal-text          | Hybrid           | ✅         | ⬜   | ⬜            |
+| bal-Link          | CSS-Only         | ⏳         | ⬜   | ⬜            |
 | bal-label         | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-divider       | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-button        | Hybrid           | ⏳         | ⬜   | ⬜            |

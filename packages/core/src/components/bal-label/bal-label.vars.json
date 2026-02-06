@@ -22,7 +22,7 @@
       "warning": { "$value": "{color.text.warning}" },
       "hover": { "$value": "{color.text.primary-hover}" },
       "active": { "$value": "{color.text.primary-active}" },
-      "danger-hover": { "$value": "{color.text.danger-hover}" },
+      "danger-hover": { "$value": "{color.text.danger-hover}",
       "danger-active": { "$value": "{color.text.danger-active}" },
       "disabled": { "$value": "{color.text.grey}" }
     },

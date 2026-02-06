@@ -11,6 +11,8 @@ $badge-use-host: false !default;
  */
 
 @include hybrid.vars(badge, $badge-use-host) {
+  @include hybrid.host-base-vars('badge');
+
   --badge-font-family: var(--bal-badge-text-family);
   --badge-font-weight: var(--bal-badge-text-weight);
 
@@ -38,6 +40,7 @@ $badge-use-host: false !default;
 
 @include hybrid.component(badge, $badge-use-host) {
   @include unselectable;
+  @include font-smoothing;
 
   display: inline-flex;
   vertical-align: text-top;
@@ -47,6 +50,7 @@ $badge-use-host: false !default;
   font-size: var(--badge-font-size);
   white-space: nowrap;
   line-height: 1;
+  z-index: 1;
   cursor: inherit;
   min-width: var(--badge-min-width);
   height: var(--badge-height);
@@ -83,6 +87,12 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
 
   bal-icon {
     --icon-color: var(--bal-badge-color-#{$color}-text);
+  }
+}
+
+@include hybrid.core($badge-use-host) {
+  .badge {
+    @include hybrid.host-base-style('badge');
   }
 }
 

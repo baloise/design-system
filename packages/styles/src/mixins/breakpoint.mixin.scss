@@ -21,7 +21,7 @@
   }
 }
 @mixin tablet {
-  @media screen and (min-width: $bal-breakpoint-tablet), print {
+  @media screen and (min-width: $bal-breakpoint-tablet) {
     @content;
   }
 }

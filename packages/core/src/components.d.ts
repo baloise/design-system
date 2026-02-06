@@ -231,7 +231,7 @@ export namespace Components {
          */
         "balPopup": undefined;
         /**
-          * The color to use from your application's color palette.
+          * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
         "color": BalProps.BalButtonColor;
@@ -6071,7 +6071,7 @@ declare namespace LocalJSX {
          */
         "balPopup"?: undefined;
         /**
-          * The color to use from your application's color palette.
+          * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
         "color"?: BalProps.BalButtonColor;

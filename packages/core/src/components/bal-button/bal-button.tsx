@@ -16,7 +16,7 @@ export class Button implements ComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
-   * The color to use from your application's color palette.
+   * The color to use from your application's color palette.aaa
    */
   @Prop() color: BalProps.BalButtonColor = 'primary'
 

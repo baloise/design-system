@@ -131,7 +131,7 @@ export const config: Config = {
       type: 'www',
       dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
       serviceWorker: false,
-      empty: true,
+      empty: false,
       copy: [
         {
           src: '**/*.html',
@@ -142,20 +142,20 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'styles', 'css'),
-          dest: 'assets/styles',
-          warn: true,
-        },
-        {
           src: join(packagesDir, 'fonts', 'assets'),
           dest: 'assets/fonts',
           warn: true,
         },
-        {
-          src: join(packagesDir, 'tokens', 'dist', 'css'),
-          dest: 'assets/tokens',
-          warn: true,
-        },
+        // {
+        //   src: join(packagesDir, 'styles', 'css'),
+        //   dest: 'assets/styles',
+        //   warn: true,
+        // },
+        // {
+        //   src: join(packagesDir, 'tokens', 'dist', 'css'),
+        //   dest: 'assets/tokens',
+        //   warn: true,
+        // },
         // {
         //   src: 'components.d.ts',
         // },

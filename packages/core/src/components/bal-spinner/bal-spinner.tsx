@@ -184,6 +184,15 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
    */
 
   private getColor(): string {
+    // Prefer a CSS custom property override if present on the host
+    try {
+      const cssVar = this.el ? getComputedStyle(this.el).getPropertyValue('--spinner-color').trim() : ''
+      if (cssVar) {
+        return cssVar
+      }
+    } catch {}
+
+    // Fallback to component props
     return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'
   }
 
