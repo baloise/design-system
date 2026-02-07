@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $text-use-host: false !default;
+$text-name: text;
+$text-css-selector: ('.text');
+$text-host-selector: ('#text');
 
 /**
  * Variables
@@ -10,8 +13,8 @@ $text-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars((text), $text-use-host) {
-  @include hybrid.host-base-margin-vars(text);
+@include hybrid.vars($text-css-selector, $text-use-host) {
+  @include hybrid.margin-vars($text-name);
 
   --text-color: initial;
   --text-family: var(--bal-body-font-family);
@@ -27,8 +30,8 @@ $text-use-host: false !default;
   * --------------------------------
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
-@include hybrid.component(text, $text-use-host) {
-  @include hybrid.host-base-margin-style(text);
+@include hybrid.component($text-host-selector, $text-css-selector, $text-use-host) {
+  @include hybrid.margin-styles($text-name);
   @include font-smoothing();
 
   position: static;
@@ -70,7 +73,7 @@ $text-use-host: false !default;
   }
 }
 
-@include hybrid.core($text-use-host) {
+@include hybrid.styles-only($text-use-host) {
   .text {
     // Display
     &.is-inline {
@@ -84,7 +87,7 @@ $text-use-host: false !default;
   }
 }
 
-@include hybrid.host($text-use-host) {
+@include hybrid.host-only($text-use-host) {
   :host(.is-inline) {
     display: inline;
   }
@@ -104,7 +107,7 @@ $text-use-host: false !default;
   --text-size: var(--bal-text-size-#{$level});
 }
 
-@include hybrid.component(text, $text-use-host) {
+@include hybrid.component($text-host-selector, $text-css-selector, $text-use-host) {
   //
   // Font Weight
   $text-weights: ('light', 'regular', 'bold');
@@ -200,7 +203,7 @@ $text-use-host: false !default;
 
 //
 // Spaces
-@include hybrid.core($text-use-host) {
+@include hybrid.styles-only($text-use-host) {
   .text {
     &.has-space-all {
       --text-margin-top: var(--text-space);
@@ -224,7 +227,7 @@ $text-use-host: false !default;
   }
 }
 
-@include hybrid.host($text-use-host) {
+@include hybrid.host-only($text-use-host) {
   :host(.has-space-all) {
     --text-margin-top: var(--text-space);
     --text-margin-bottom: var(--text-space);

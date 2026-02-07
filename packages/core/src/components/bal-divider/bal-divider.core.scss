@@ -1,4 +1,26 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+$divider-use-host: false !default;
+$divider-name: divider;
+$divider-css-selector: (hr, '.divider');
+$divider-host-selector: ('#divider');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include hybrid.vars($divider-css-selector, $divider-use-host) {
+  @include hybrid.margin-vars($divider-name);
+
+  --divider-color: var(--bal-divider-color-base);
+  --divider-width: var(--bal-divider-width);
+  --divider-radius: var(--bal-divider-radius);
+  --divider-space: var(--bal-space-xx-large-device);
+}
 
 $divider-colors: (
   'primary',
@@ -15,6 +37,7 @@ $divider-colors: (
   'white',
   'light-blue'
 );
+
 $divider-spaces: (
   'none',
   'xx-small',
@@ -28,150 +51,99 @@ $divider-spaces: (
   'xxx-large'
 );
 
-hr,
-.divider {
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($divider-host-selector, $divider-css-selector, $divider-use-host) {
   display: block;
   padding: 0;
   margin: 0;
   border: none;
-  border-radius: var(--bal-divider-radius-base);
-  height: var(--bal-divider-border-width-base);
-  background-color: var(--bal-divider-color-background-base);
+  border-radius: var(--divider-radius);
+  height: var(--divider-width);
+  background-color: var(--divider-color);
+}
 
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+@include hybrid.component($divider-host-selector, $divider-css-selector, $divider-use-host) {
   // colors
   @each $color in $divider-colors {
     &.is-#{$color} {
-      background-color: var(--bal-divider-color-background-#{$color});
+      --divider-color: var(--bal-divider-color-#{$color});
     }
   }
 
+  //
+  // horizontal direction
+  &:not(.is-vertical),
+  &.is-horizontal {
+    flex: 1 0 100%;
+    width: 100%;
+    min-height: var(--divider-width);
+    height: var(--divider-width);
+    margin-top: var(--divider-space);
+    margin-bottom: var(--divider-space);
+  }
+
+  //
+  // vertical direction
+  &.is-vertical {
+    height: auto;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: var(--divider-width);
+    margin-left: var(--divider-space);
+    margin-right: var(--divider-space);
+  }
+
+  //
   // dashed border style
   &.is-dashed:not(.is-vertical) {
     // default
     background: repeating-linear-gradient(
       90deg,
-      var(--bal-divider-color-background-base) 0,
-      var(--bal-divider-color-background-base) 8px,
+      var(--divider-color) 0,
+      var(--divider-color) 8px,
       transparent 8px,
       transparent 16px
     );
-
-    @each $color in $divider-colors {
-      &.is-#{$color} {
-        background: repeating-linear-gradient(
-          90deg,
-          var(--bal-divider-color-background-#{$color}) 0,
-          var(--bal-divider-color-background-#{$color}) 8px,
-          transparent 8px,
-          transparent 16px
-        );
-      }
-    }
   }
 
   &.is-dashed.is-vertical {
-    // default
     background: repeating-linear-gradient(
       180deg,
-      var(--bal-divider-color-background-base) 0,
-      var(--bal-divider-color-background-base) 8px,
+      var(--divider-color) 0,
+      var(--divider-color) 8px,
       transparent 8px,
       transparent 16px
     );
 
-    @each $color in $divider-colors {
-      &.is-#{$color} {
-        background: repeating-linear-gradient(
-          180deg,
-          var(--bal-divider-color-background-#{$color}) 0,
-          var(--bal-divider-color-background-#{$color}) 8px,
-          transparent 8px,
-          transparent 16px
-        );
-      }
-    }
-  }
-
-  // directions
-  &:not(.is-vertical),
-  &.is-horizontal {
-    flex: 1 0 100%;
-    width: 100%;
-    min-height: var(--bal-divider-border-width-base);
-    height: var(--bal-divider-border-width-base);
-
-    // // default space
-    // margin-top: var(--bal-space-xx-large);
-    // margin-bottom: var(--bal-space-xx-large);
-
-    // @include tablet {
-    //   margin-top: var(--bal-space-xx-large-tablet);
-    //   margin-bottom: var(--bal-space-xx-large-tablet);
-    // }
-
-    // @include desktop {
-    //   margin-top: var(--bal-space-xx-large-desktop);
-    //   margin-bottom: var(--bal-space-xx-large-desktop);
+    // @each $color in $divider-colors {
+    //   &.is-#{$color} {
+    //     background: repeating-linear-gradient(
+    //       180deg,
+    //       var(--bal-divider-color-background-#{$color}) 0,
+    //       var(--bal-divider-color-background-#{$color}) 8px,
+    //       transparent 8px,
+    //       transparent 16px
+    //     );
+    //   }
     // }
   }
 
-  // horizontal spaces
+  //
+  // spaces
   @each $space in $divider-spaces {
-    &.has-space-#{$space}:not(.is-vertical) {
-      @if $space == 'none' {
-        margin: 0;
-      } @else {
-        margin: var(--bal-space-#{$space}) 0;
-
-        @include tablet {
-          margin: var(--bal-space-#{$space}-tablet) 0;
-        }
-
-        @include desktop {
-          margin: var(--bal-space-#{$space}-desktop) 0;
-        }
-      }
-    }
-    &.has-space-#{$space}.is-vertical {
-      @if $space == 'none' {
-        margin: 0;
-      } @else {
-        margin: 0 var(--bal-space-#{$space});
-
-        @include tablet {
-          margin: 0 var(--bal-space-#{$space}-tablet);
-        }
-
-        @include desktop {
-          margin: 0 var(--bal-space-#{$space}-desktop);
-        }
-      }
-    }
-  }
-
-  &.is-vertical {
-    height: auto;
-    flex-shrink: 0;
-    align-self: stretch;
-    width: var(--bal-divider-border-width-base);
-
-    // vertical spaces
-    @each $space in $divider-spaces {
-      &.has-space-#{$space} {
-        @if $space == 'none' {
-          margin: 0;
-        } @else {
-          margin: 0 var(--bal-space-#{$space});
-
-          @include tablet {
-            margin: 0 var(--bal-space-#{$space}-tablet);
-          }
-
-          @include desktop {
-            margin: 0 var(--bal-space-#{$space}-desktop);
-          }
-        }
-      }
+    &.has-space-#{$space} {
+      --divider-space: var(--bal-space-#{$space}-device);
     }
   }
 }

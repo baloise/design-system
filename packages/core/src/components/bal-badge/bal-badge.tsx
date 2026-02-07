@@ -34,9 +34,7 @@ export class Badge implements ComponentInterface {
       <Host>
         <span
           id="badge"
-          part="badge"
           class={{
-            badge: true,
             [`is-${this.size}`]: this.size !== '',
             [`is-${this.color}`]: this.color !== '',
           }}

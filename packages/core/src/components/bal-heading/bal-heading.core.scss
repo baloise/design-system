@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $heading-use-host: false !default;
+$heading-name: heading;
+$heading-css-selector: ('.heading', '.title', '.subtitle');
+$heading-host-selector: ('#heading');
 
 /**
  * Variables
@@ -10,8 +13,8 @@ $heading-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars((heading, title, subtitle), $heading-use-host) {
-  @include hybrid.host-base-margin-vars(heading);
+@include hybrid.vars($heading-css-selector, $heading-use-host) {
+  @include hybrid.margin-vars($heading-name);
 
   --heading-color: initial;
   --heading-family: var(--bal-heading-family);
@@ -28,8 +31,8 @@ $heading-use-host: false !default;
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component((heading, title, subtitle), $heading-use-host) {
-  @include hybrid.host-base-margin-style(heading);
+@include hybrid.component($heading-host-selector, $heading-css-selector, $heading-use-host) {
+  @include hybrid.margin-styles($heading-name);
   @include font-smoothing();
 
   flex: 1;
@@ -84,7 +87,7 @@ $heading-use-host: false !default;
   line-height: var(--bal-heading-subtitle-line-height);
 }
 
-@include hybrid.core($heading-use-host) {
+@include hybrid.styles-only($heading-use-host) {
   .subtitle,
   .heading.is-subtitle {
     @include heading-subtitle-style;
@@ -99,7 +102,7 @@ $heading-use-host: false !default;
   }
 }
 
-@include hybrid.host($heading-use-host) {
+@include hybrid.host-only($heading-use-host) {
   :host(.is-subtitle) #heading {
     @include heading-subtitle-style;
   }
@@ -123,7 +126,7 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
   --heading-color: var(--bal-heading-color-#{$color});
 }
 
-@include hybrid.component((heading, title, subtitle), $heading-use-host) {
+@include hybrid.component($heading-host-selector, $heading-css-selector, $heading-use-host) {
   @each $color in $heading-colors {
     &.is-#{$color} {
       @include heading-colors($color);
@@ -150,7 +153,7 @@ $heading-size-aliases: (
   (is-display-2, is-xxxx-large): display-2,
 );
 
-@include hybrid.host($heading-use-host) {
+@include hybrid.host-only($heading-use-host) {
   @each $class-group, $token in $heading-size-aliases {
     @each $class in $class-group {
       :host(.#{$class}) #heading {
@@ -160,7 +163,7 @@ $heading-size-aliases: (
   }
 }
 
-@include hybrid.core($heading-use-host) {
+@include hybrid.styles-only($heading-use-host) {
   @for $i from 1 through 5 {
     h#{$i}.title,
     h#{$i}.subtitle,
@@ -187,7 +190,7 @@ $heading-size-aliases: (
 
 //
 // Spaces
-@include hybrid.core($heading-use-host) {
+@include hybrid.styles-only($heading-use-host) {
   .title,
   .subtitle,
   .heading {
@@ -212,7 +215,7 @@ $heading-size-aliases: (
   }
 }
 
-@include hybrid.host($heading-use-host) {
+@include hybrid.host-only($heading-use-host) {
   :host(.has-space-all) {
     --heading-margin-top: var(--heading-space);
     --heading-margin-bottom: var(--heading-space);

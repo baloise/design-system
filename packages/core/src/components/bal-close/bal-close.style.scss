@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $close-use-host: false !default;
+$close-name: close;
+$close-css-selector: ('.close');
+$close-host-selector: ('#close');
 
 /**
  * Variables
@@ -10,7 +13,7 @@ $close-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars(close, $close-use-host) {
+@include hybrid.vars($close-css-selector, $close-use-host) {
   --close-color-background: var(--bal-close-color-background-base);
   --close-color-background-hover: var(--bal-close-color-background-hover);
   --close-color-background-active: var(--bal-close-color-background-active);
@@ -28,7 +31,7 @@ $close-use-host: false !default;
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component(close, $close-use-host) {
+@include hybrid.component($close-host-selector, $close-css-selector, $close-use-host) {
   @include unselectable;
 
   position: relative;
@@ -89,7 +92,7 @@ $close-use-host: false !default;
   * Define here the variants and states like size or colors for the component.
   */
 
-@include hybrid.component(close, $close-use-host) {
+@include hybrid.component($close-host-selector, $close-css-selector, $close-use-host) {
   //
   // Size Variants
   &.is-small {

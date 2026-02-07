@@ -1,9 +1,7 @@
-@forward '../../../../styles/sass/normalize';
+@use '../../hybrid' as hybrid;
 
-/**
-  * Host Style
-  */
+@use './bal-divider.core' with (
+  $divider-use-host: true
+);
 
-bal-divider {
-  position: static;
-}
+@include hybrid.host-base(divider, block);

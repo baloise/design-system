@@ -9,7 +9,7 @@
  */
 
 :host {
-  @include hybrid.host-base-vars('spinner');
+  @include hybrid.base-vars('spinner');
 
   --spinner-size: var(--bal-spinner-size);
   --spinner-circle-size: var(--bal-spinner-circle-size);
@@ -25,7 +25,7 @@
   */
 
 :host {
-  @include hybrid.host-base-style('spinner');
+  @include hybrid.base-styles('spinner');
 
   @include unselectable;
 

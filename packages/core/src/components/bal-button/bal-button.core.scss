@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $button-use-host: false !default;
+$button-name: button;
+$button-css-selector: ('.button');
+$button-host-selector: ('#button');
 
 /**
   * Mixins
@@ -96,8 +99,8 @@ $button-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars(button, $button-use-host) {
-  @include hybrid.host-base-margin-vars(button);
+@include hybrid.vars($button-css-selector, $button-use-host) {
+  @include hybrid.margin-vars($button-name);
 
   --button-font-family: var(--bal-button-family);
   --button-font-weight: var(--bal-button-weight);
@@ -119,10 +122,10 @@ $button-use-host: false !default;
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component(button, $button-use-host) {
+@include hybrid.component($button-host-selector, $button-css-selector, $button-use-host) {
   @include unselectable();
   @include font-smoothing();
-  @include hybrid.host-base-margin-style(button);
+  @include hybrid.margin-styles($button-name);
 
   width: var(--button-width, auto);
   appearance: auto;
@@ -171,13 +174,6 @@ $button-use-host: false !default;
     --icon-color: var(--button-color-text);
   }
 
-  & .badge,
-  bal-badge {
-    --badge-position: absolute;
-    --badge-top: -0.5rem;
-    --badge-right: -0.5rem;
-  }
-
   // Outline
   &:focus,
   &.is-focused,
@@ -219,10 +215,28 @@ $button-use-host: false !default;
   // }
 }
 
-@include hybrid.host($button-use-host) {
+@include hybrid.host-only($button-use-host) {
   :host(.is-fullwidth) {
     width: 100%;
     flex: 1 1 auto;
+  }
+
+  :host ::slotted(bal-badge),
+  :host ::slotted(.badge) {
+    --badge-position: absolute;
+    --badge-top: -0.5rem;
+    --badge-right: -0.5rem;
+  }
+}
+
+@include hybrid.styles-only($button-use-host) {
+  .button {
+    .badge,
+    bal-badge {
+      --badge-position: absolute;
+      --badge-top: -0.5rem;
+      --badge-right: -0.5rem;
+    }
   }
 }
 
@@ -246,7 +260,7 @@ $button-colors: (
   'link'
 );
 
-@include hybrid.component(button, $button-use-host) {
+@include hybrid.component($button-host-selector, $button-css-selector, $button-use-host) {
   //
   // Color Variants
   @each $color in $button-colors {
@@ -383,13 +397,13 @@ $button-colors: (
   }
 }
 
-@include hybrid.host($button-use-host) {
+@include hybrid.host-only($button-use-host) {
   #button.is-disabled {
     @include button-disabled();
   }
 }
 
-@include hybrid.core($button-use-host) {
+@include hybrid.styles-only($button-use-host) {
   .button:is(input[type='checkbox'], input[type='radio'])[aria-label]::after {
     --button-content: attr(aria-label);
 

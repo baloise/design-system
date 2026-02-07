@@ -9,7 +9,7 @@
  */
 
 :host {
-  @include hybrid.host-base-vars('icon');
+  @include hybrid.base-vars('icon');
 
   --icon-size: var(--bal-icon-size-normal);
   --icon-color: var(--bal-icon-color-primary);
@@ -27,11 +27,11 @@
   */
 
 :host {
-  @include hybrid.host-base-style('icon');
+  @include hybrid.base-styles('icon');
 
   @include unselectable;
 
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: baseline;
   vertical-align: middle;

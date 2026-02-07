@@ -7,111 +7,14 @@
   @if meta.type-of($value) == 'list' {
     @return $value;
   }
-  @return ($value,);
+  @return ($value);
 }
 
-@mixin host($is-host: false) {
-  @if $is-host {
-    @content;
-  }
-}
-
-@mixin core($is-host: false) {
-  @if not $is-host {
-    @content;
-  }
-}
-
-@mixin vars($name, $is-host: false) {
-  @if $is-host {
-    :host {
-      @content;
-    }
-  } @else {
-    $names: _as-list($name);
-    $selector: ();
-
-    @each $n in $names {
-      $selector: list.append($selector, string.unquote('.#{$n}'), comma);
-    }
-
-    #{$selector} {
-      @content;
-    }
-  }
-}
-
-@mixin component($name, $is-host: false) {
-  $names: _as-list($name);
-
-  @if $is-host {
-    $hostName: list.nth($names, 1);
-
-    ##{$hostName} {
-      @content;
-    }
-  } @else {
-    $selector: ();
-
-    @each $n in $names {
-      $selector: list.append($selector, string.unquote('.#{$n}'), comma);
-    }
-
-    #{$selector} {
-      @content;
-    }
-  }
-}
-
-@mixin host-base($name, $display: inline-block) {
-  :host {
-    @include host-base-vars($name);
-
-    display: $display;
-
-    @include host-base-style($name);
-  }
-}
-
-@mixin host-base-position-vars($name) {
-  --#{$name}-position: static;
-  --#{$name}-top: auto;
-  --#{$name}-right: auto;
-  --#{$name}-bottom: auto;
-  --#{$name}-left: auto;
-}
-
-@mixin host-base-margin-vars($name) {
-  --#{$name}-margin-left: 0;
-  --#{$name}-margin-right: 0;
-  --#{$name}-margin-top: 0;
-  --#{$name}-margin-bottom: 0;
-}
-
-@mixin host-base-vars($name) {
-  @include host-base-margin-vars($name);
-  @include host-base-position-vars($name);
-}
-
-@mixin host-base-margin-style($name) {
-  margin-left: var(--#{$name}-margin-left);
-  margin-right: var(--#{$name}-margin-right);
-  margin-top: var(--#{$name}-margin-top);
-  margin-bottom: var(--#{$name}-margin-bottom);
-}
-
-@mixin host-base-position-style($name) {
-  position: var(--#{$name}-position);
-  top: var(--#{$name}-top);
-  right: var(--#{$name}-right);
-  bottom: var(--#{$name}-bottom);
-  left: var(--#{$name}-left);
-}
-
-@mixin host-base-style($name) {
-  @include host-base-margin-style($name);
-  @include host-base-position-style($name);
-}
+/**
+  * Mixin only generates styles for host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
 
 @mixin host-only($is-host: false) {
   @if $is-host {
@@ -119,8 +22,118 @@
   }
 }
 
+/**
+  * Mixin only generates styles for non-host mode.
+  * The styles are not wrapped in a :host selector and only applied if the component is used in non-host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+
 @mixin styles-only($is-host: false) {
   @if not $is-host {
     @content;
   }
+}
+
+/**
+  * Mixin to support host and non-host mode for hybrid components.
+  * The mixin takes care of the correct selector and allows to write the styles only once.
+  * The $selectors parameter can be a single selector or a list of selectors.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin vars($selectors, $is-host: false) {
+  @if $is-host {
+    :host {
+      @content;
+    }
+  } @else {
+    $names: _as-list($selectors);
+    $selector: ();
+
+    @each $n in $names {
+      $selector: list.append($selector, string.unquote('#{$n}'), comma);
+    }
+
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin to support host and non-host mode for hybrid components.
+  * The mixin takes care of the correct selector and allows to write the styles only once.
+  * The $selectors parameter can be a single selector or a list of selectors.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin component($hostSelector, $coreSelectors, $is-host: false) {
+  $names: _as-list($coreSelectors);
+
+  @if $is-host {
+    #{$hostSelector} {
+      @content;
+    }
+  } @else {
+    $selector: ();
+
+    @each $n in $names {
+      $selector: list.append($selector, string.unquote('#{$n}'), comma);
+    }
+
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin to define the host base variables and display property for a component.
+  */
+@mixin host-base($name, $display: inline-block) {
+  :host {
+    @include base-vars($name);
+
+    display: $display;
+
+    @include base-styles($name);
+  }
+}
+
+@mixin base-vars($name) {
+  @include margin-vars($name);
+  @include position-vars($name);
+}
+
+@mixin position-vars($name) {
+  --#{$name}-position: static;
+  --#{$name}-top: auto;
+  --#{$name}-right: auto;
+  --#{$name}-bottom: auto;
+  --#{$name}-left: auto;
+}
+
+@mixin margin-vars($name) {
+  --#{$name}-margin-left: 0;
+  --#{$name}-margin-right: 0;
+  --#{$name}-margin-top: 0;
+  --#{$name}-margin-bottom: 0;
+}
+
+@mixin margin-styles($name) {
+  margin-left: var(--#{$name}-margin-left);
+  margin-right: var(--#{$name}-margin-right);
+  margin-top: var(--#{$name}-margin-top);
+  margin-bottom: var(--#{$name}-margin-bottom);
+}
+
+@mixin position-styles($name) {
+  position: var(--#{$name}-position);
+  top: var(--#{$name}-top);
+  right: var(--#{$name}-right);
+  bottom: var(--#{$name}-bottom);
+  left: var(--#{$name}-left);
+}
+
+@mixin base-styles($name) {
+  @include margin-styles($name);
+  @include position-styles($name);
 }

@@ -1,79 +1,103 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 
 /**
-  * Link State Mixin
-  */
-
-@mixin link-states($base-color, $hover-color, $active-color, $outline-shadow) {
-  color: $base-color;
-
-  @include fillSvg($base-color);
-
-  @include hover {
-    &:hover,
-    &.is-hovered {
-      color: $hover-color;
-
-      @include fillSvg($hover-color);
-    }
-  }
-
-  &:active,
-  &.is-active {
-    color: $active-color;
-
-    @include fillSvg($active-color);
-  }
-
-  &:focus-visible,
-  &.is-focused {
-    &:not(:active) {
-      box-shadow: $outline-shadow;
-    }
-  }
-}
-
-/**
   * Basic Style
   */
 a.link:not(.button),
 a.is-link:not(.button),
 .content > a:any-link:not(.button) {
+  @include font-smoothing();
+
   cursor: pointer;
   hyphens: auto;
   margin: 0;
   overflow-wrap: break-word;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: var(--bal-link-font-family);
-  font-weight: var(--bal-link-font-weight);
-  line-height: var(--bal-link-line-height);
-  text-decoration: var(--bal-link-text-decoration);
-  text-underline-offset: var(--bal-link-text-underline-offset);
-  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  font-family: var(--bal-link-family);
+  font-weight: var(--bal-link-weight);
+  border-radius: var(--bal-radius-normal);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: var(--bal-border-width-normal);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  outline: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
   & > strong {
     color: currentcolor;
   }
 
   &:not(.is-inverted) {
-    @include link-states(
-      var(--bal-link-color-text-primary-base),
-      var(--bal-link-color-text-primary-hover),
-      var(--bal-link-color-text-primary-active),
-      var(--bal-link-shadow-outline-base)
-    );
+    color: var(--bal-link-color-base);
+
+    bal-icon {
+      --icon-color: var(--bal-link-color-base);
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        color: var(--bal-link-color-base-hover);
+
+        bal-icon {
+          --icon-color: var(--bal-link-color-base-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-active {
+      color: var(--bal-link-color-base-active);
+
+      bal-icon {
+        --icon-color: var(--bal-link-color-base-active);
+      }
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-shadow();
+      }
+    }
   }
 
   &.is-inverted {
-    @include link-states(
-      var(--bal-link-color-text-inverted-base),
-      var(--bal-link-color-text-inverted-hover),
-      var(--bal-link-color-text-inverted-active),
-      var(--bal-link-shadow-outline-inverted)
-    );
+    color: var(--bal-link-color-inverted);
+
+    bal-icon {
+      --icon-color: var(--bal-link-color-inverted);
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        color: var(--bal-link-color-inverted-hover);
+
+        bal-icon {
+          --icon-color: var(--bal-link-color-inverted-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-active {
+      color: var(--bal-link-color-inverted-active);
+
+      bal-icon {
+        --icon-color: var(--bal-link-color-inverted-active);
+      }
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-inverted-shadow();
+      }
+    }
   }
 }

@@ -354,6 +354,7 @@ export class Button implements ComponentInterface {
           {...this.inheritAttributes}
           type={this.elementType}
           class={this.buttonCssClass}
+          id="button"
           part="native"
           disabled={this.disabled}
           onFocus={this.onFocus}

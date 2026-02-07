@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $tag-use-host: false !default;
+$tag-name: tag;
+$tag-css-selector: ('.tag');
+$tag-host-selector: ('#tag');
 
 /**
  * Variables
@@ -10,7 +13,7 @@ $tag-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars(tag, $tag-use-host) {
+@include hybrid.vars($tag-css-selector, $tag-use-host) {
   --tag-min-height: 2rem;
   --tag-gap: 0.25rem;
   --tag-padding: var(--bal-tag-space-y) var(--bal-tag-space-x);
@@ -30,7 +33,7 @@ $tag-use-host: false !default;
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component(tag, $tag-use-host) {
+@include hybrid.component($tag-host-selector, $tag-css-selector, $tag-use-host) {
   @include unselectable;
 
   position: static;
@@ -91,7 +94,7 @@ $tag-colors: (
   --tag-color-background: var(--bal-tag-color-#{$color}-background);
 }
 
-@include hybrid.component(tag, $tag-use-host) {
+@include hybrid.component($tag-host-selector, $tag-css-selector, $tag-use-host) {
   //
   // Colors
   @each $color in $tag-colors {
@@ -141,7 +144,7 @@ $tag-colors: (
   * Example: close inside tag
   */
 
-@include hybrid.component(tag, $tag-use-host) {
+@include hybrid.component($tag-host-selector, $tag-css-selector, $tag-use-host) {
   //
   // Sizes
   &.is-small {

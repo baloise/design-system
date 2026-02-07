@@ -159,6 +159,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
       <Host>
         <label
           id={id}
+          part="label"
           htmlFor={htmlFor}
           class={{
             'label': true,

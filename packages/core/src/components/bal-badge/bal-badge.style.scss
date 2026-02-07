@@ -2,6 +2,9 @@
 @use '../../hybrid' as hybrid;
 
 $badge-use-host: false !default;
+$badge-name: badge;
+$badge-css-selector: ('.badge');
+$badge-host-selector: ('#badge');
 
 /**
  * Variables
@@ -10,8 +13,8 @@ $badge-use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars(badge, $badge-use-host) {
-  @include hybrid.host-base-vars('badge');
+@include hybrid.vars($badge-css-selector, $badge-use-host) {
+  @include hybrid.base-vars($badge-name);
 
   --badge-font-family: var(--bal-badge-text-family);
   --badge-font-weight: var(--bal-badge-text-weight);
@@ -38,7 +41,7 @@ $badge-use-host: false !default;
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component(badge, $badge-use-host) {
+@include hybrid.component($badge-host-selector, $badge-css-selector, $badge-use-host) {
   @include unselectable;
   @include font-smoothing;
 
@@ -90,13 +93,13 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
   }
 }
 
-@include hybrid.core($badge-use-host) {
+@include hybrid.styles-only($badge-use-host) {
   .badge {
-    @include hybrid.host-base-style('badge');
+    @include hybrid.base-styles($badge-name);
   }
 }
 
-@include hybrid.component(badge, $badge-use-host) {
+@include hybrid.component($badge-host-selector, $badge-css-selector, $badge-use-host) {
   //
   // Color Variants
   @each $color in $badge-colors {
