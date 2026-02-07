@@ -1,0 +1,193 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../hybrid' as hybrid;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include hybrid.base-vars('switch');
+
+  --switch-radius: var(--bal-radius-rounded);
+
+  --switch-color-background: var(--bal-color-primary-1);
+  --switch-color-toggle: var(--bal-color-primary-5);
+  --switch-color-icon: transparent;
+
+  --switch-color-background-hover: var(--bal-color-primary-1);
+  --switch-color-toggle-hover: var(--bal-color-light-blue-5);
+  --switch-color-icon-hover: transparent;
+
+  --switch-color-background-active: var(--bal-color-primary-1);
+  --switch-color-toggle-active: var(--bal-color-primary-6);
+  --switch-color-icon-active: transparent;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include hybrid.base-styles('switch');
+  @include font-smoothing();
+  @include unselectable();
+
+  display: inline-flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+
+  width: 2.5rem;
+  height: 1.5rem;
+  padding: 0.25rem;
+
+  border-radius: var(--switch-radius);
+  background: var(--switch-color-background);
+
+  bal-icon {
+    opacity: 0;
+    --icon-color: var(--switch-color-icon);
+  }
+}
+
+:host([checked]:not([checked='false'])) {
+  bal-icon {
+    opacity: 1;
+  }
+}
+
+//
+// Unchecked
+
+:host #toggle {
+  background: var(--switch-color-toggle);
+  border-radius: 50%;
+  position: absolute;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+:host(.is-hovered),
+:host(:hover) {
+  @include hover {
+    bal-icon {
+      --icon-color: var(--switch-color-icon-hover);
+    }
+    background: var(--switch-color-background-hover);
+
+    #toggle {
+      background: var(--switch-color-toggle-hover);
+    }
+  }
+}
+
+:host(.is-pressed),
+:host(:active) {
+  bal-icon {
+    --icon-color: var(--switch-color-icon-active);
+  }
+  background: var(--switch-color-background-active);
+
+  #toggle {
+    background: var(--switch-color-toggle-active);
+  }
+}
+
+//
+// Checked
+
+:host([checked]:not([checked='false'])) {
+  --switch-color-icon: var(--bal-color-white);
+  --switch-color-icon-hover: var(--bal-color-white);
+  --switch-color-icon-active: var(--bal-color-white);
+
+  --switch-color-background: var(--bal-color-success-4);
+  --switch-color-background-hover: var(--bal-color-success-5);
+  --switch-color-background-active: var(--bal-color-success-6);
+
+  #toggle {
+    transform: translateX(100%);
+
+    --switch-color-toggle: var(--bal-color-white);
+    --switch-color-toggle-hover: var(--bal-color-white);
+    --switch-color-toggle-active: var(--bal-color-white);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+:host([invalid]:not([invalid='false'])) {
+  --switch-color-background: var(--bal-color-danger-1);
+  --switch-color-background-hover: var(--bal-color-danger-1);
+  --switch-color-background-active: var(--bal-color-danger-1);
+
+  #toggle {
+    --switch-color-toggle: var(--bal-color-danger-4);
+    --switch-color-toggle-hover: var(--bal-color-danger-5);
+    --switch-color-toggle-active: var(--bal-color-danger-6);
+  }
+}
+
+:host([invalid]:not([invalid='false'])[checked]:not([checked='false'])) {
+  --switch-color-icon: var(--bal-color-white);
+  --switch-color-icon-hover: var(--bal-color-white);
+  --switch-color-icon-active: var(--bal-color-white);
+
+  --switch-color-background: var(--bal-color-danger-4);
+  --switch-color-background-hover: var(--bal-color-danger-5);
+  --switch-color-background-active: var(--bal-color-danger-6);
+
+  #toggle {
+    transform: translateX(100%);
+
+    --switch-color-toggle: var(--bal-color-white);
+    --switch-color-toggle-hover: var(--bal-color-white);
+    --switch-color-toggle-active: var(--bal-color-white);
+  }
+}
+
+:host([disabled]:not([disabled='false'])) {
+  cursor: default;
+  pointer-events: none;
+
+  --switch-color-background: var(--bal-color-grey-3);
+  --switch-color-background-hover: var(--bal-color-grey-3);
+  --switch-color-background-active: var(--bal-color-grey-3);
+
+  #toggle {
+    --switch-color-toggle: var(--bal-color-grey-4);
+    --switch-color-toggle-hover: var(--bal-color-grey-4);
+    --switch-color-toggle-active: var(--bal-color-grey-4);
+  }
+}
+
+:host([disabled]:not([disabled='false'])[checked]:not([checked='false'])) {
+  --switch-color-icon: var(--bal-color-white);
+  --switch-color-icon-hover: var(--bal-color-white);
+  --switch-color-icon-active: var(--bal-color-white);
+
+  --switch-color-background: var(--bal-color-grey-4);
+  --switch-color-background-hover: var(--bal-color-grey-4);
+  --switch-color-background-active: var(--bal-color-grey-4);
+
+  #toggle {
+    transform: translateX(100%);
+
+    --switch-color-toggle: var(--bal-color-white);
+    --switch-color-toggle-hover: var(--bal-color-white);
+    --switch-color-toggle-active: var(--bal-color-white);
+  }
+}

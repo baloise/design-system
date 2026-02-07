@@ -3,7 +3,8 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-check',
-  styleUrl: './bal-check.scss',
+  styleUrl: './bal-check.host.scss',
+  shadow: true,
 })
 export class Check implements ComponentInterface {
   /**
@@ -47,7 +48,6 @@ export class Check implements ComponentInterface {
    */
 
   render() {
-    const block = BEM.block('check')
     const checked = !!this.checked
     const disabled = !!this.disabled
     const invalid = !!this.invalid
@@ -56,24 +56,23 @@ export class Check implements ComponentInterface {
     return (
       <Host
         class={{
-          ...block.class(),
-          ...block.modifier('checked').class(checked),
-          ...block.modifier('disabled').class(disabled),
-          ...block.modifier('invalid').class(invalid),
-          ...block.modifier('inverted').class(inverted),
-          ...block.modifier('hovered').class(this.hovered),
-          ...block.modifier('pressed').class(this.pressed),
+          'is-checked': checked,
+          'is-disabled': disabled,
+          'is-invalid': invalid,
+          'is-inverted': inverted,
+          'is-hovered': this.hovered,
+          'is-pressed': this.pressed,
         }}
       >
         <bal-icon
           name="check"
-          color="white"
-          colorHovered="white"
-          colorPressed="white"
           size="small"
-          aria-hidden="true"
-          hovered={this.hovered}
-          pressed={this.pressed}
+          // color="white"
+          // colorHovered="white"
+          // colorPressed="white"
+          // aria-hidden="true"
+          // hovered={this.hovered}
+          // pressed={this.pressed}
         ></bal-icon>
       </Host>
     )

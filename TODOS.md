@@ -52,15 +52,15 @@ use id's and parts in the shadow dom components
 | bal-divider       | Hybrid           | ✅         | ⬜   | ✅            |
 | bal-card          | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-stack         | Hybrid           | ✅         | ⬜   | ⬜            |
+| bal-accordion     | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-list          | Hybrid           | ⬜         | ⬜   | ⬜            |
 | bal-notification  | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-accordion     | Hybrid           | ⬜         | ⬜   | ⬜            |
 | ----------------- | ---------------- | ---------- | ---- | ------------- |
 | bal-icon          | Web Component    | ✅         | ⬜   | ⬜            |
 | bal-spinner       | Web Component    | ✅         | ⬜   | ✅            |
-| bal-logo          | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-switch        | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-check         | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-logo          | Web Component    | ✅         | ⬜   | ⬜            |
+| bal-switch        | Web Component    | ✅         | ⬜   | ⬜            |
+| bal-check         | Web Component    | ✅         | ⬜   | ⬜            |
 | bal-toast         | Web Component    | ⬜         | ⬜   | ⬜            |
 | bal-snackbar      | Web Component    | ⬜         | ⬜   | ⬜            |
 

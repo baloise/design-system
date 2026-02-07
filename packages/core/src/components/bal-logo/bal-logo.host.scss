@@ -1,0 +1,66 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include hybrid.base-vars('logo');
+
+  --logo-color: var(--bal-color-primary-5);
+  --logo-height: 22px;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include hybrid.base-styles('logo');
+
+  position: static;
+  display: block;
+
+  svg {
+    transform: unset !important;
+    @include fillSvg(var(--logo-color));
+  }
+
+  height: var(--logo-height);
+  & > div {
+    height: var(--logo-height);
+  }
+
+  @include desktop {
+    --logo-height: 32px;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+:host(.is-animated) {
+  @include desktop {
+    margin-left: -7px;
+  }
+}
+
+:host(.is-inverted) {
+  --logo-color: var(--bal-color-white);
+}
+
+:host(.is-small) {
+  --logo-height: 22px;
+  @include desktop {
+    --logo-height: 22px;
+  }
+}

@@ -1,0 +1,193 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../hybrid' as hybrid;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include hybrid.base-vars('check');
+
+  --check-color-background: transparent;
+  --check-color-border: var(--bal-color-primary-5);
+  --check-color-icon: var(--bal-color-primary-5);
+
+  --check-color-background-hover: var(--bal-color-grey-2);
+  --check-color-border-hover: var(--bal-color-light-blue-5);
+  --check-color-icon-hover: var(--bal-color-light-blue-5);
+
+  --check-color-background-active: var(--bal-color-grey-2);
+  --check-color-border-active: var(--bal-color-primary-6);
+  --check-color-icon-active: var(--bal-color-primary-6);
+
+  --check-border-width: var(--bal-border-width-normal);
+  --check-radius: var(--bal-radius-normal);
+  --check-size: 1.5rem;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include hybrid.base-styles('check');
+  @include font-smoothing();
+  @include unselectable();
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+
+  width: var(--check-size);
+  max-width: var(--check-size);
+  height: var(--check-size);
+  max-height: var(--check-size);
+  border-radius: var(--check-radius);
+  border: var(--check-border-width) solid var(--check-color-border);
+  background: var(--check-color-background);
+
+  bal-icon {
+    display: none;
+    opacity: 0;
+    --icon-color: var(--check-color-icon);
+  }
+}
+
+:host(.is-hovered),
+:host(:hover) {
+  @include hover {
+    bal-icon {
+      --icon-color: var(--check-color-icon-hover);
+    }
+    border-color: var(--check-color-border-hover);
+    background: var(--check-color-background-hover);
+  }
+}
+
+:host(.is-pressed),
+:host(:active) {
+  bal-icon {
+    --icon-color: var(--check-color-icon-active);
+  }
+  border-color: var(--check-color-border-active);
+  background: var(--check-color-background-active);
+}
+
+:host(.is-checked) {
+  --check-color-icon: var(--bal-color-white);
+  --check-color-border: var(--bal-color-primary-5);
+  --check-color-background: var(--bal-color-primary-5);
+
+  --check-color-icon-hover: var(--bal-color-white);
+  --check-color-border-hover: var(--bal-color-light-blue-5);
+  --check-color-background-hover: var(--bal-color-light-blue-5);
+
+  --check-color-icon-active: var(--bal-color-white);
+  --check-color-border-active: var(--bal-color-primary-6);
+  --check-color-background-active: var(--bal-color-primary-6);
+
+  bal-icon {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+:host(.is-inverted) {
+  --check-color-icon: transparent;
+  --check-color-border: var(--bal-color-white);
+  --check-color-background: transparent;
+
+  --check-color-icon-hover: transparent;
+  --check-color-border-hover: var(--bal-color-light-blue-1);
+  --check-color-background-hover: transparent;
+
+  --check-color-icon-active: transparent;
+  --check-color-border-active: var(--bal-color-light-blue-2);
+  --check-color-background-active: transparent;
+}
+
+:host(.is-inverted.is-checked) {
+  --check-color-icon: var(--bal-color-primary-5);
+  --check-color-border: var(--bal-color-white);
+  --check-color-background: var(--bal-color-white);
+
+  --check-color-icon-hover: var(--bal-color-primary-5);
+  --check-color-border-hover: var(--bal-color-light-blue-1);
+  --check-color-background-hover: var(--bal-color-light-blue-1);
+
+  --check-color-icon-active: var(--bal-color-primary-5);
+  --check-color-border-active: var(--bal-color-light-blue-2);
+  --check-color-background-active: var(--bal-color-light-blue-2);
+}
+
+:host(.is-invalid) {
+  --check-color-icon: transparent;
+  --check-color-border: var(--bal-divider-color-danger);
+  --check-color-background: transparent;
+
+  --check-color-icon-hover: transparent;
+  --check-color-border-hover: var(--bal-divider-color-danger-dark);
+  --check-color-background-hover: var(--bal-color-grey-2);
+
+  --check-color-icon-active: transparent;
+  --check-color-border-active: var(--bal-divider-color-danger-darker);
+  --check-color-background-active: var(--bal-color-grey-2);
+}
+
+:host(.is-invalid.is-checked) {
+  --check-color-icon: var(--bal-color-white);
+  --check-color-border: var(--bal-divider-color-danger);
+  --check-color-background: var(--bal-divider-color-danger);
+
+  --check-color-icon-hover: var(--bal-color-white);
+  --check-color-border-hover: var(--bal-divider-color-danger-dark);
+  --check-color-background-hover: var(--bal-divider-color-danger-dark);
+
+  --check-color-icon-active: var(--bal-color-white);
+  --check-color-border-active: var(--bal-divider-color-danger-darker);
+  --check-color-background-active: var(--bal-divider-color-danger-darker);
+}
+
+:host(.is-disabled) {
+  cursor: default !important;
+
+  --check-color-icon: transparent;
+  --check-color-border: var(--bal-border-color-disabled);
+  --check-color-background: var(--bal-color-grey-2);
+
+  --check-color-icon-hover: transparent;
+  --check-color-border-hover: var(--bal-border-color-disabled);
+  --check-color-background-hover: var(--bal-color-grey-2);
+
+  --check-color-icon-active: transparent;
+  --check-color-border-active: var(--bal-border-color-disabled);
+  --check-color-background-active: var(--bal-color-grey-2);
+}
+
+:host(.is-disabled.is-checked) {
+  --check-color-icon: var(--bal-color-white);
+  --check-color-border: var(--bal-border-color-disabled);
+  --check-color-background: var(--bal-border-color-disabled);
+
+  --check-color-icon-hover: var(--bal-color-white);
+  --check-color-border-hover: var(--bal-border-color-disabled);
+  --check-color-background-hover: var(--bal-border-color-disabled);
+
+  --check-color-icon-active: var(--bal-color-white);
+  --check-color-border-active: var(--bal-border-color-disabled);
+  --check-color-background-active: var(--bal-border-color-disabled);
+}

@@ -1,7 +1,6 @@
 import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { rOnLoad } from '../../utils/helpers'
@@ -11,7 +10,8 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
 
 @Component({
   tag: 'bal-logo',
-  styleUrl: 'bal-logo.scss',
+  styleUrl: 'bal-logo.host.scss',
+  shadow: true,
 })
 export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver, BalConfigObserver {
   private animationItem!: AnimationItem
@@ -144,8 +144,6 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    */
 
   render() {
-    const logoBlock = BEM.block('logo')
-
     const AnimatedLogo: FunctionalComponent = () => {
       return (
         <div
@@ -209,10 +207,9 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     return (
       <Host
         class={{
-          ...logoBlock.class(),
-          ...logoBlock.modifier(this.color).class(),
-          ...logoBlock.modifier(`size-${this.size}`).class(this.size !== ''),
-          ...logoBlock.modifier('animated').class(this.animated),
+          'is-animated': this.animated,
+          'is-inverted': this.color === 'white',
+          [`is-${this.size}`]: this.size !== '',
         }}
       >
         <LogoElement></LogoElement>

@@ -17,22 +17,26 @@
       <main class="container py-medium">
         <section data-testid="basic">
           <span>Basic</span>
-          <bal-logo></bal-logo>
+          <bal-check></bal-check>
+          <bal-check checked></bal-check>
         </section>
 
-        <section data-testid="sizes">
-          <span>Sizes</span>
-          <bal-logo size="small"></bal-logo>
+        <section data-testid="disabled">
+          <span>Disabled</span>
+          <bal-check disabled></bal-check>
+          <bal-check checked disabled></bal-check>
+        </section>
+
+        <section data-testid="invalid">
+          <span>Invalid</span>
+          <bal-check invalid></bal-check>
+          <bal-check checked invalid></bal-check>
         </section>
 
         <section data-testid="inverted" class="s-bg-inverted">
           <span>Inverted</span>
-          <bal-logo color="white"> </bal-logo>
-        </section>
-
-        <section data-testid="animated">
-          <span>Animated</span>
-          <bal-logo animated></bal-logo>
+          <bal-check inverted></bal-check>
+          <bal-check checked inverted></bal-check>
         </section>
       </main>
     </bal-doc-app>
