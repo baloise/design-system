@@ -1,7 +1,7 @@
 @use '../../hybrid' as hybrid;
 
-@forward '../bal-button/bal-button.core';
-@use './bal-accordion.core' with (
+@forward '../bal-button/bal-button.style';
+@use './bal-accordion.style' with (
   $accordion-use-host: true
 );
 

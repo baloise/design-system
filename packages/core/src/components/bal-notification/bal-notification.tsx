@@ -3,7 +3,8 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-notification',
-  styleUrl: 'bal-notification.scss',
+  styleUrl: 'bal-notification.host.scss',
+  shadow: true,
 })
 export class Notification {
   /**

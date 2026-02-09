@@ -10,4 +10,5 @@ $font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
 );
 
 @forward './core';
+// @forward './components/all';
 @forward './utilities/all';

@@ -1,6 +1,6 @@
 @use '../../hybrid' as hybrid;
 
-@use './bal-label.core' with (
+@use './bal-label.style' with (
   $label-use-host: true
 );
 

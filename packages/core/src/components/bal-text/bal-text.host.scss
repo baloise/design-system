@@ -1,6 +1,6 @@
 @use '../../hybrid' as hybrid;
 
-@use './bal-text.core' with (
+@use './bal-text.style' with (
   $text-use-host: true
 );
 

@@ -1,6 +1,6 @@
 @use '../../hybrid' as hybrid;
 
-@use './bal-heading.core' with (
+@use './bal-heading.style' with (
   $heading-use-host: true
 );
 

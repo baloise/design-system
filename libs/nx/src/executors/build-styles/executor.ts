@@ -1,5 +1,5 @@
 import { copy } from 'fs-extra'
-import { mkdir, rm } from 'fs/promises'
+import { mkdir, rm, writeFile } from 'fs/promises'
 import { join } from 'path'
 import { compileSass, compileSassToMergedFile, scan } from '../utils'
 import { generateBackgroundColors } from './generators/background'
@@ -22,58 +22,43 @@ function formatSeconds(seconds) {
 
 export default async function runExecutor(options: BuildStylesExecutorSchema) {
   try {
-    options.dev
-      ? console.log('Running styles executor in development mode...')
-      : console.log('Running styles executor...')
+    // clean generated files
+    await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
+    await rm(join(options.projectRoot, 'docs'), { recursive: true, force: true })
+    await rm(join(options.projectRoot, 'src/generated'), { recursive: true, force: true })
 
-    if (options.dev !== true) {
-      // clean generated files
-      await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
-      await rm(join(options.projectRoot, 'docs'), { recursive: true, force: true })
-      await rm(join(options.projectRoot, 'src/generated'), { recursive: true, force: true })
+    // generate css utils
+    const startTimeUtilities = process.hrtime.bigint()
+    await generateBackgroundColors(options)
+    await generateBorder(options)
+    await generateElevation(options)
+    await generateFlex(options)
+    await generateInteractions(options)
+    await generateLayout(options)
+    await generateSizing(options)
+    await generateSpacing(options)
+    await generateTypography(options)
+    console.log(`Generated utilities in ${formatSeconds(startTimeUtilities)}`)
 
-      // generate css utils
-      const startTimeUtilities = process.hrtime.bigint()
-      await generateBackgroundColors(options)
-      await generateBorder(options)
-      await generateElevation(options)
-      await generateFlex(options)
-      await generateInteractions(options)
-      await generateLayout(options)
-      await generateSizing(options)
-      await generateSpacing(options)
-      await generateTypography(options)
-      console.log(`Generated utilities in ${formatSeconds(startTimeUtilities)}`)
+    await mkdir(join(options.projectRoot, 'css'))
 
-      await mkdir(join(options.projectRoot, 'css'))
-
-      // create css output
-      const startTimeCss = process.hrtime.bigint()
-      const files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
-      await Promise.all(files.map(file => compileSass(file, options)))
-      console.log(`Generated css in ${formatSeconds(startTimeCss)}`)
-    } else {
-      // In dev mode compile only the local stylesheet variant
-      const startTimeCss = process.hrtime.bigint()
-      const devFiles = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
-      const targetFiles = devFiles.filter(f => f.includes('baloise-design-system.local'))
-
-      if (targetFiles.length === 0) {
-        console.warn('No SCSS file found including "baloise-design-system.local"')
-      } else {
-        await Promise.all(targetFiles.map(file => compileSass(file, options)))
-      }
-      console.log(`Generated css in ${formatSeconds(startTimeCss)}`)
-    }
-
-    // create component style output
-    const startTimeComponents = process.hrtime.bigint()
+    // create components styles
     const components = await scan(join(options.componentRoot, '**', '*.style.scss'))
-    await Promise.all(components.map(component => compileSass(component, { ...options, folderPath: 'components' })))
+    const generatedComponentStylesPath = join(options.projectRoot, 'src', 'generated')
+    await mkdir(generatedComponentStylesPath, { recursive: true })
+    const componentStyleContent = components
+      .map(component => {
+        const relativePath = `../../../../${component.replace(/\\/g, '/')}`
+        return `@forward '${relativePath}';`
+      })
+      .join('\n')
+    await writeFile(join(generatedComponentStylesPath, 'components.scss'), componentStyleContent)
 
-    // create components all output
-    await compileSassToMergedFile(components, 'all.css', { ...options, folderPath: 'components' })
-    console.log(`Generated component in ${formatSeconds(startTimeComponents)}`)
+    // create css output
+    const startTimeCss = process.hrtime.bigint()
+    const files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
+    await Promise.all(files.map(file => compileSass(file, options)))
+    console.log(`Generated css in ${formatSeconds(startTimeCss)}`)
 
     // copy generated files to css folder
     const startTimeCopy = process.hrtime.bigint()
