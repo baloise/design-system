@@ -19,7 +19,7 @@ $divider-host-selector: ('#divider');
   --divider-color: var(--bal-divider-color-base);
   --divider-width: var(--bal-divider-width);
   --divider-radius: var(--bal-divider-radius);
-  --divider-space: var(--bal-space-xx-large-device);
+  --divider-space: 0;
 }
 
 $divider-colors: (
@@ -125,18 +125,6 @@ $divider-spaces: (
       transparent 8px,
       transparent 16px
     );
-
-    // @each $color in $divider-colors {
-    //   &.is-#{$color} {
-    //     background: repeating-linear-gradient(
-    //       180deg,
-    //       var(--bal-divider-color-background-#{$color}) 0,
-    //       var(--bal-divider-color-background-#{$color}) 8px,
-    //       transparent 8px,
-    //       transparent 16px
-    //     );
-    //   }
-    // }
   }
 
   //

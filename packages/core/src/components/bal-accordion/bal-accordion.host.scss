@@ -1,10 +1,8 @@
-@forward '../../../../styles/sass/normalize';
-@forward './bal-accordion.style';
+@use '../../hybrid' as hybrid;
 
-/**
-  * Host Style
-  */
+@forward '../bal-button/bal-button.core';
+@use './bal-accordion.core' with (
+  $accordion-use-host: true
+);
 
-:host {
-  display: block;
-}
+@include hybrid.host-base(accordion, block);

@@ -1,0 +1,48 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use 'sass:list';
+@use 'sass:meta';
+
+// Truthy host attribute selector mixin.
+// Accepts one or more attribute names and matches when ALL are present
+// or set to "true", but excludes explicit "false" values.
+// Usage examples:
+//   @include hasAttr(checked) { ... }
+//   @include hasAttr(checked, invalid, inverted) { ... }
+@mixin hasAttr($attrs...) {
+  // Normalize: allow passing a list as a single argument or variadic args
+  $list: $attrs;
+  @if list.length($attrs) == 1 and meta.type-of(list.nth($attrs, 1)) == 'list' {
+    $list: list.nth($attrs, 1);
+  }
+
+  // Build a combined :host selector with all attribute checks
+  $sel: '';
+  // @each $attr in $list {
+  //   $sel: '#{$sel}[#{$attr}]:not([#{$attr}=' false '])';
+  // }
+
+  @each $attr in $list {
+    $sel: '#{$sel}[#{$attr}]:not([#{$attr}=' false '])';
+  }
+
+  // Emit the selector
+  :host(#{$sel}) {
+    @content;
+  }
+}
+
+@mixin hovered() {
+  :host(.is-hovered),
+  :host(:hover) {
+    @include hover {
+      @content;
+    }
+  }
+}
+
+@mixin pressed() {
+  :host(.is-pressed),
+  :host(:active) {
+    @content;
+  }
+}

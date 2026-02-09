@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState } from "./utils/config";
-import { AccordionState } from "./interfaces";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
 import { BalOption } from "./utils/dropdown";
@@ -21,7 +20,6 @@ import { SegmentValue } from "./components/bal-segment/bal-segment.types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState } from "./utils/config";
-export { AccordionState } from "./interfaces";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
 export { BalOption } from "./utils/dropdown";
@@ -38,138 +36,45 @@ export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
-          * If `true` the accordion is open.
-          * @default false
-         */
-        "active": boolean;
-        /**
-          * If `true` the accordion is used on the bottom of a card
-          * @default false
-         */
-        "card": boolean;
-        /**
-          * BalIcon of the close trigger button
-          * @default 'close'
-         */
-        "closeIcon": string;
-        /**
-          * Label of the close trigger button
-          * @default ''
-         */
-        "closeLabel": string;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * Closes the accordion
-         */
-        "dismiss": () => Promise<boolean>;
-        "humanToggle": () => Promise<boolean>;
-        /**
-          * BalIcon of the open trigger button
-          * @default 'plus'
-         */
-        "openIcon": string;
-        /**
-          * Label of the open trigger button
-          * @default ''
-         */
-        "openLabel": string;
-        /**
-          * Opens the accordion
-         */
-        "present": () => Promise<boolean>;
-        /**
-          * Triggers the accordion
-         */
-        "toggle": () => Promise<boolean>;
-    }
-    interface BalAccordionDetails {
-        /**
-          * @default false
-         */
-        "active": boolean;
-        /**
-          * @default true
-         */
-        "animated": boolean;
-        /**
-          * @default AccordionState.Collapsed
-         */
-        "state": AccordionState;
-    }
-    interface BalAccordionSummary {
-        /**
-          * @default false
-         */
-        "active": boolean;
-        /**
-          * @default AccordionState.Collapsed
-         */
-        "state": AccordionState;
-        /**
-          * If `true` the whole summary component acts as a trigger and can be clicked
-          * @default false
-         */
-        "trigger": boolean;
-    }
-    interface BalAccordionTrigger {
-        /**
-          * @default false
-         */
-        "active": boolean;
-        /**
-          * @deprecated Trigger will be a bal-button
+          * Displays the summary as a button and hides the default marker.
           * @default false
          */
         "button": boolean;
         /**
-          * BalIcon of the close trigger button
-          * @default ''
-         */
-        "closeIcon": string;
-        /**
-          * Label of the close trigger button
-          * @default ''
-         */
-        "closeLabel": string;
-        /**
-          * The color to use from your application's color palette.
+          * The color of the button. Only applies if `button` is `true`.
           * @default 'secondary'
          */
-        "color": BalProps.BalButtonColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "buttonColor": BalProps.BalButtonColor;
         /**
-          * If `true` the button is aligned over the whole width
-          * @default true
+          * BalIcon of the close trigger button
+          * @default 'caret-up'
          */
-        "expanded": boolean;
+        "buttonIconClose": string;
         /**
           * BalIcon of the open trigger button
           * @default 'caret-down'
          */
-        "openIcon": string;
+        "buttonIconOpen": string;
+        /**
+          * Label of the close trigger button
+          * @default ''
+         */
+        "buttonLabelClose": string;
         /**
           * Label of the open trigger button
           * @default ''
          */
-        "openLabel": string;
+        "buttonLabelOpen": string;
         /**
-          * Size of the button
+          * The size of the button. Only applies if `button` is `true`.
           * @default ''
          */
-        "size": BalProps.BalButtonSize;
+        "buttonSize": BalProps.BalButtonSize;
         /**
-          * @default AccordionState.Collapsed
+          * If `true` the accordion is open.
+          * @default false
          */
-        "state": AccordionState;
-        /**
-          * Defines the nature of the accordion trigger.
-         */
-        "variant"?: BalProps.BalAccordionTriggerVariant;
+        "open": boolean;
     }
     interface BalApp {
         /**
@@ -1745,7 +1650,7 @@ export namespace Components {
         "tile": boolean;
         /**
           * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default ''
+          * @default 'purple'
          */
         "tileColor": BalProps.BalIconTileColor;
         /**
@@ -4560,9 +4465,7 @@ export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBalAccordionElementEventMap {
-        "balChange": BalEvents.BalAccordionChangeDetail;
-        "balWillAnimate": BalEvents.BalAccordionWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalAccordionDidAnimateDetail;
+        "balToggle": BalEvents.BalAccordionToggleDetail;
     }
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4577,24 +4480,6 @@ declare global {
     var HTMLBalAccordionElement: {
         prototype: HTMLBalAccordionElement;
         new (): HTMLBalAccordionElement;
-    };
-    interface HTMLBalAccordionDetailsElement extends Components.BalAccordionDetails, HTMLStencilElement {
-    }
-    var HTMLBalAccordionDetailsElement: {
-        prototype: HTMLBalAccordionDetailsElement;
-        new (): HTMLBalAccordionDetailsElement;
-    };
-    interface HTMLBalAccordionSummaryElement extends Components.BalAccordionSummary, HTMLStencilElement {
-    }
-    var HTMLBalAccordionSummaryElement: {
-        prototype: HTMLBalAccordionSummaryElement;
-        new (): HTMLBalAccordionSummaryElement;
-    };
-    interface HTMLBalAccordionTriggerElement extends Components.BalAccordionTrigger, HTMLStencilElement {
-    }
-    var HTMLBalAccordionTriggerElement: {
-        prototype: HTMLBalAccordionTriggerElement;
-        new (): HTMLBalAccordionTriggerElement;
     };
     interface HTMLBalAppElementEventMap {
         "balAppReady": void;
@@ -5764,9 +5649,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
-        "bal-accordion-details": HTMLBalAccordionDetailsElement;
-        "bal-accordion-summary": HTMLBalAccordionSummaryElement;
-        "bal-accordion-trigger": HTMLBalAccordionTriggerElement;
         "bal-app": HTMLBalAppElement;
         "bal-badge": HTMLBalBadgeElement;
         "bal-button": HTMLBalButtonElement;
@@ -5878,135 +5760,49 @@ declare global {
 declare namespace LocalJSX {
     interface BalAccordion {
         /**
-          * If `true` the accordion is open.
-          * @default false
-         */
-        "active"?: boolean;
-        /**
-          * If `true` the accordion is used on the bottom of a card
-          * @default false
-         */
-        "card"?: boolean;
-        /**
-          * BalIcon of the close trigger button
-          * @default 'close'
-         */
-        "closeIcon"?: string;
-        /**
-          * Label of the close trigger button
-          * @default ''
-         */
-        "closeLabel"?: string;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * Emitted when the accordion has opened or closed
-         */
-        "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
-        /**
-          * BalIcon of the open trigger button
-          * @default 'plus'
-         */
-        "openIcon"?: string;
-        /**
-          * Label of the open trigger button
-          * @default ''
-         */
-        "openLabel"?: string;
-    }
-    interface BalAccordionDetails {
-        /**
-          * @default false
-         */
-        "active"?: boolean;
-        /**
-          * @default true
-         */
-        "animated"?: boolean;
-        /**
-          * @default AccordionState.Collapsed
-         */
-        "state"?: AccordionState;
-    }
-    interface BalAccordionSummary {
-        /**
-          * @default false
-         */
-        "active"?: boolean;
-        /**
-          * @default AccordionState.Collapsed
-         */
-        "state"?: AccordionState;
-        /**
-          * If `true` the whole summary component acts as a trigger and can be clicked
-          * @default false
-         */
-        "trigger"?: boolean;
-    }
-    interface BalAccordionTrigger {
-        /**
-          * @default false
-         */
-        "active"?: boolean;
-        /**
-          * @deprecated Trigger will be a bal-button
+          * Displays the summary as a button and hides the default marker.
           * @default false
          */
         "button"?: boolean;
         /**
-          * BalIcon of the close trigger button
-          * @default ''
-         */
-        "closeIcon"?: string;
-        /**
-          * Label of the close trigger button
-          * @default ''
-         */
-        "closeLabel"?: string;
-        /**
-          * The color to use from your application's color palette.
+          * The color of the button. Only applies if `button` is `true`.
           * @default 'secondary'
          */
-        "color"?: BalProps.BalButtonColor;
+        "buttonColor"?: BalProps.BalButtonColor;
         /**
-          * If `true` the button is aligned over the whole width
-          * @default true
+          * BalIcon of the close trigger button
+          * @default 'caret-up'
          */
-        "expanded"?: boolean;
+        "buttonIconClose"?: string;
         /**
           * BalIcon of the open trigger button
           * @default 'caret-down'
          */
-        "openIcon"?: string;
+        "buttonIconOpen"?: string;
+        /**
+          * Label of the close trigger button
+          * @default ''
+         */
+        "buttonLabelClose"?: string;
         /**
           * Label of the open trigger button
           * @default ''
          */
-        "openLabel"?: string;
+        "buttonLabelOpen"?: string;
         /**
-          * Size of the button
+          * The size of the button. Only applies if `button` is `true`.
           * @default ''
          */
-        "size"?: BalProps.BalButtonSize;
+        "buttonSize"?: BalProps.BalButtonSize;
         /**
-          * @default AccordionState.Collapsed
+          * Emitted when the input value has changed.
          */
-        "state"?: AccordionState;
+        "onBalToggle"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
         /**
-          * Defines the nature of the accordion trigger.
+          * If `true` the accordion is open.
+          * @default false
          */
-        "variant"?: BalProps.BalAccordionTriggerVariant;
+        "open"?: boolean;
     }
     interface BalApp {
         /**
@@ -7618,7 +7414,7 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default ''
+          * @default 'purple'
          */
         "tileColor"?: BalProps.BalIconTileColor;
         /**
@@ -10267,9 +10063,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
-        "bal-accordion-details": BalAccordionDetails;
-        "bal-accordion-summary": BalAccordionSummary;
-        "bal-accordion-trigger": BalAccordionTrigger;
         "bal-app": BalApp;
         "bal-badge": BalBadge;
         "bal-button": BalButton;
@@ -10383,9 +10176,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
-            "bal-accordion-details": LocalJSX.BalAccordionDetails & JSXBase.HTMLAttributes<HTMLBalAccordionDetailsElement>;
-            "bal-accordion-summary": LocalJSX.BalAccordionSummary & JSXBase.HTMLAttributes<HTMLBalAccordionSummaryElement>;
-            "bal-accordion-trigger": LocalJSX.BalAccordionTrigger & JSXBase.HTMLAttributes<HTMLBalAccordionTriggerElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;

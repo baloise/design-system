@@ -296,7 +296,7 @@ $button-colors: (
   //
   // Sizes
   &.is-small {
-    --button-size: var(--bal-button-size-small);
+    --button-font-size: var(--bal-button-size-small);
     min-height: 2rem;
     max-height: 2rem;
     min-width: 2rem;
@@ -304,7 +304,7 @@ $button-colors: (
   }
 
   &.is-large {
-    --button-size: var(--bal-button-size-large);
+    --button-font-size: var(--bal-button-size-large);
     min-height: 3.5rem;
     max-height: 3.5rem;
     min-width: 3.5rem;
@@ -355,7 +355,7 @@ $button-colors: (
   // Icons
 
   &:where(:not(.is-square, .is-circle), .is-small) > bal-icon {
-    --icon-size: 0.875rem;
+    --icon-size: var(--bal-icon-size-small);
   }
 
   &.is-dashed > bal-icon.is-circle {

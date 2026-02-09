@@ -222,7 +222,7 @@ export const config: Config = {
       : []),
   ],
   bundles: [
-    { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
+    { components: ['bal-accordion'] },
     { components: ['bal-app'] },
     { components: ['bal-badge'] },
     { components: ['bal-button', 'bal-button-group'] },

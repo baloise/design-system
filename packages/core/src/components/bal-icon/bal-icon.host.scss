@@ -42,7 +42,7 @@
 }
 
 // Color
-:host(.icon) {
+:host(:not(.no-color)) {
   @include fillSvg(var(--icon-color));
 }
 

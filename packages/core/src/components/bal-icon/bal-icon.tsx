@@ -51,7 +51,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
-  @Prop() tileColor: BalProps.BalIconTileColor = ''
+  @Prop() tileColor: BalProps.BalIconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
@@ -228,7 +228,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
           'has-shadow': this.shadow,
           [`is-${this.tile ? 'tile' : 'icon'}-${this.size}`]: !!this.size,
           [`is-${color}`]: true,
-          'icon': !this.tile || this.color === 'auto',
+          'no-color': this.tile || this.color === 'auto',
           'tile': this.tile,
           [`tile-color-${this.tileColor}`]: this.tile && !!this.tileColor,
           [`turn-${this.name}`]: this.turn,

@@ -1,8 +1,5 @@
 export const tags = [
   "bal-accordion",
-  "bal-accordion-details",
-  "bal-accordion-summary",
-  "bal-accordion-trigger",
   "bal-app",
   "bal-badge",
   "bal-button",

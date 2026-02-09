@@ -52,8 +52,8 @@ use id's and parts in the shadow dom components
 | bal-divider       | Hybrid           | ✅         | ⬜   | ✅            |
 | bal-card          | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-stack         | Hybrid           | ✅         | ⬜   | ⬜            |
-| bal-accordion     | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-list          | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-accordion     | Hybrid           | ✅         | ⬜   | ⬜            |
+| bal-list          | Hybrid           | ⏳         | ⬜   | ⬜            |
 | bal-notification  | Hybrid           | ⬜         | ⬜   | ⬜            |
 | ----------------- | ---------------- | ---------- | ---- | ------------- |
 | bal-icon          | Web Component    | ✅         | ⬜   | ⬜            |
@@ -63,35 +63,37 @@ use id's and parts in the shadow dom components
 | bal-check         | Web Component    | ✅         | ⬜   | ⬜            |
 | bal-toast         | Web Component    | ⬜         | ⬜   | ⬜            |
 | bal-snackbar      | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-shape         | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-stage         | Web Component    | ⬜         | ⬜   | ⬜            |
 
 ### rest components
 
-| Component          | Recommended Type | Shadow DOM | Docs | Design Tokens |
-| ------------------ | ---------------- | ---------- | ---- | ------------- |
-| bal-data           | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-input          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-modal          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-pagination     | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-popover        | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-progress-bar   | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-step-item      | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-steps          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-table          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-tabs           | Hybrid           | ⬜         | ⬜   | ⬜            |
-| bal-tooltip        | Hybrid           | ⬜         | ⬜   | ⬜            |
-| ------------------ | ---------------- | ---------- | ---- | ------------- |
-| bal-footer         | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-radio          | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-segment        | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-app            | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-carousel       | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-date           | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-dropdown       | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-file-upload    | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-hint           | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-number-input   | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-option         | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-popup          | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-select         | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-sheet          | Web Component    | ⬜         | ⬜   | ⬜            |
-| bal-time-input     | Web Component    | ⬜         | ⬜   | ⬜            |
+| Component               | Recommended Type | Shadow DOM | Docs | Design Tokens |
+| ----------------------- | ---------------- | ---------- | ---- | ------------- |
+| bal-data                | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-input               | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-progress-bar        | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-step-item           | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-steps               | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-table               | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
+| bal-tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
+| ------------------      | ---------------- | ---------- | ---- | ------------- |
+| bal-footer              | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-radio               | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-segment             | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-app                 | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-carousel            | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-date                | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-dropdown            | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-file-upload         | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-hint                | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-number-input        | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-option              | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-popup               | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-select (deprecated) | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-sheet               | Web Component    | ⬜         | ⬜   | ⬜            |
+| bal-time-input          | Web Component    | ⬜         | ⬜   | ⬜            |

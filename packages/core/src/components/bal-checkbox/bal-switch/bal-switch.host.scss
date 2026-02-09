@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../../hybrid' as hybrid;
+@use '../../../host' as host;
 
 /**
  * Variables
@@ -37,6 +38,7 @@
   @include font-smoothing();
   @include unselectable();
 
+  box-sizing: border-box !important;
   display: inline-flex;
   position: relative;
   justify-content: flex-start;
@@ -57,7 +59,7 @@
   }
 }
 
-:host([checked]:not([checked='false'])) {
+@include host.hasAttr(checked) {
   bal-icon {
     opacity: 1;
   }
@@ -76,22 +78,15 @@
   transition: transform 0.3s ease-in-out;
 }
 
-:host(.is-hovered),
-:host(:hover) {
-  @include hover {
-    bal-icon {
-      --icon-color: var(--switch-color-icon-hover);
-    }
-    background: var(--switch-color-background-hover);
+@include host.hovered() {
+  background: var(--switch-color-background-hover);
 
-    #toggle {
-      background: var(--switch-color-toggle-hover);
-    }
+  #toggle {
+    background: var(--switch-color-toggle-hover);
   }
 }
 
-:host(.is-pressed),
-:host(:active) {
+@include host.pressed() {
   bal-icon {
     --icon-color: var(--switch-color-icon-active);
   }
@@ -105,7 +100,7 @@
 //
 // Checked
 
-:host([checked]:not([checked='false'])) {
+@include host.hasAttr(checked) {
   --switch-color-icon: var(--bal-color-white);
   --switch-color-icon-hover: var(--bal-color-white);
   --switch-color-icon-active: var(--bal-color-white);
@@ -129,7 +124,7 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-:host([invalid]:not([invalid='false'])) {
+@include host.hasAttr(invalid) {
   --switch-color-background: var(--bal-color-danger-1);
   --switch-color-background-hover: var(--bal-color-danger-1);
   --switch-color-background-active: var(--bal-color-danger-1);
@@ -159,7 +154,7 @@
   }
 }
 
-:host([disabled]:not([disabled='false'])) {
+@include host.hasAttr(disabled) {
   cursor: default;
   pointer-events: none;
 
@@ -174,7 +169,7 @@
   }
 }
 
-:host([disabled]:not([disabled='false'])[checked]:not([checked='false'])) {
+@include host.hasAttr(disabled, checked) {
   --switch-color-icon: var(--bal-color-white);
   --switch-color-icon-hover: var(--bal-color-white);
   --switch-color-icon-active: var(--bal-color-white);

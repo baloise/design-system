@@ -15,22 +15,22 @@ export class Check implements ComponentInterface {
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true }) checked = false
+  @Prop({ reflect: true }) checked = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid?: boolean = undefined
+  @Prop({ reflect: true }) invalid?: boolean = undefined
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled?: boolean = undefined
+  @Prop({ reflect: true }) disabled?: boolean = undefined
 
   /**
    * If `true`, the checkbox is inverted and works on dark backgrounds.
    */
-  @Prop() inverted?: boolean = undefined
+  @Prop({ reflect: true }) inverted?: boolean = undefined
 
   /**
    * @internal
@@ -48,32 +48,14 @@ export class Check implements ComponentInterface {
    */
 
   render() {
-    const checked = !!this.checked
-    const disabled = !!this.disabled
-    const invalid = !!this.invalid
-    const inverted = !!this.inverted
-
     return (
       <Host
         class={{
-          'is-checked': checked,
-          'is-disabled': disabled,
-          'is-invalid': invalid,
-          'is-inverted': inverted,
           'is-hovered': this.hovered,
           'is-pressed': this.pressed,
         }}
       >
-        <bal-icon
-          name="check"
-          size="small"
-          // color="white"
-          // colorHovered="white"
-          // colorPressed="white"
-          // aria-hidden="true"
-          // hovered={this.hovered}
-          // pressed={this.pressed}
-        ></bal-icon>
+        <bal-icon name="check" size="small"></bal-icon>
       </Host>
     )
   }
