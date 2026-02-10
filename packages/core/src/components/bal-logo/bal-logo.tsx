@@ -47,7 +47,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   @Prop() size: BalProps.BalLogoSize = ''
 
   /**
-   * Defines the brand of the logo.
+   * Defines the brand of the logo. Default is 'baloise'.
    */
   @Prop() brand: BalProps.BalLogoBrand = ''
 
