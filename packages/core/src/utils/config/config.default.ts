@@ -63,6 +63,7 @@ export const defaultIcons = {
 }
 
 export const defaultConfig: BalConfigState = {
+  brand: 'baloise',
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],

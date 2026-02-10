@@ -29,6 +29,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @State() isTouch = balBreakpoints.isTouch
   @State() doesConfigAllowAnimation = true
+  @State() configBrand: BalProps.BalLogoBrand = 'baloise'
 
   /**
    * PUBLIC PROPERTY API
@@ -44,6 +45,11 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    * Size of the logo svg
    */
   @Prop() size: BalProps.BalLogoSize = ''
+
+  /**
+   * Defines the brand of the logo.
+   */
+  @Prop() brand: BalProps.BalLogoBrand = ''
 
   /**
    * Defines if the animation should be active
@@ -92,6 +98,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   @ListenToConfig()
   configChanged(state: BalConfigState): void {
     this.doesConfigAllowAnimation = state.animated
+    this.configBrand = state.brand
   }
 
   /**
@@ -99,13 +106,18 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    * ------------------------------------------------------
    */
 
+  private get isHelvetia() {
+    return this.brand === 'helvetia' || (this.brand === '' && this.configBrand === 'helvetia')
+  }
+
   private get isAnimated() {
+    return true
     return this.doesConfigAllowAnimation && this.animated
   }
 
   private async resetAnimation() {
     this.destroyAnimation()
-    if (this.animated) {
+    if (this.isAnimated) {
       await this.loadAnimation()
 
       if (this.animationFunction) {
@@ -136,6 +148,9 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     if (this.animated && this.animationItem && this.animationItem.destroy) {
       this.animationItem.destroy()
     }
+    if (this.animatedLogoElement) {
+      this.animatedLogoElement.innerHTML = ''
+    }
   }
 
   /**
@@ -146,26 +161,33 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   render() {
     const logoBlock = BEM.block('logo')
 
-    const AnimatedLogo: FunctionalComponent = () => {
-      return (
-        <div
-          style={{
-            width: this.isTouch ? '100px' : '158px',
-            height: this.isTouch ? '22px' : '32px',
-          }}
-          ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
-        ></div>
-      )
-    }
-
-    const LargeLogo: FunctionalComponent = () => {
-      return (
+    const LargeLogo: FunctionalComponent<{ onlyText?: boolean }> = ({ onlyText }) => {
+      const baseHeight = 32
+      const helvetiaWidth = (1084 / 204) * baseHeight
+      return this.isHelvetia ? (
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          width={helvetiaWidth}
+          height={baseHeight}
+          viewBox={`${onlyText === true ? '230' : '0'} 0 1084 204`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M2.52,97.92c-3.36,3.36-3.36,8.8,0,12.15l91.41,91.41c3.36,3.36,8.8,3.36,12.15,0l50.72-50.72-30.87-30.87-25.93,25.93-41.81-41.81,41.81-41.81,72.69,72.69,24.8-24.8c3.36-3.36,3.36-8.8,0-12.15L106.08,6.52c-3.36-3.36-8.8-3.36-12.15,0L2.52,97.92ZM352.2,101.98v73.06h-36.42v-65.86c0-12.43-8.5-19.63-19.41-19.63s-19.85,7.85-19.85,18.32v67.17h-36.42V15.62h36.42v51.9c7.85-6.32,18.32-10.25,30.97-10.25,27.04,0,44.71,18.32,44.71,44.71ZM403.23,128.37c3.71,12.87,13.96,19.85,27.7,19.85,12.87,0,19.19-4.36,23.77-11.99l27.26,18.1c-9.16,11.99-23.55,23.55-52.12,23.55-37.95,0-61.93-25.95-61.93-60.19s26.61-60.41,59.75-60.41c37.51,0,59.75,29.66,59.75,58.01,0,5.67-.44,10.03-.87,13.08h-83.31ZM453.6,105.69c-3.05-13.08-11.78-21.15-25.08-21.15s-22.68,7.2-25.73,21.15h50.81ZM503.97,175.04V15.62h36.42v159.42h-36.42ZM638.52,60.11h37.51l-40.78,114.93h-42.53l-40.78-114.93h37.51l24.42,79.16,24.64-79.16ZM712.23,128.37c3.71,12.87,13.96,19.85,27.7,19.85,12.87,0,19.19-4.36,23.77-11.99l27.26,18.1c-9.16,11.99-23.55,23.55-52.12,23.55-37.95,0-61.93-25.95-61.93-60.19s26.61-60.41,59.75-60.41c37.51,0,59.75,29.66,59.75,58.01,0,5.67-.44,10.03-.87,13.08h-83.31ZM762.6,105.69c-3.05-13.08-11.78-21.15-25.08-21.15s-22.68,7.2-25.73,21.15h50.81ZM867.71,175.04c-29.66,0-44.71-17.66-44.71-44.27v-39.69h-19.19v-30.97h9.16c8.07,0,12.21-4.36,12.21-12.87v-17.66h35.33v30.53h26.17v30.97h-27.48v35.33c0,11.12,5.89,17.01,16.14,17.01h11.99v31.62h-19.63ZM902.6,22.46c0-12.87,10.03-22.46,22.9-22.46s22.9,9.6,22.9,22.46-10.03,22.24-22.9,22.24-22.9-9.16-22.9-22.24ZM907.18,175.04V60.11h36.42v114.93h-36.42ZM1050.42,60.11h33.58v114.93h-33.58v-10.47c-8.07,8.5-18.97,13.3-33.15,13.3-33.37,0-57.35-25.73-57.35-60.19s23.99-58.01,57.35-58.01c14.18,0,25.08,4.36,33.15,12.43v-11.99ZM1049.11,117.68c0-16.79-10.69-28.35-26.61-28.35s-26.39,11.99-26.39,28.35,10.9,28.13,26.39,28.13,26.61-11.56,26.61-28.13Z"
+            fill="#000D6E"
+          />
+        </svg>
+      ) : (
         <svg
           focusable="false"
           aria-hidden="true"
           width="158"
           height="32"
-          viewBox="0 0 158 32"
+          viewBox={`${onlyText === true ? '35' : '0'} 0 158 32`}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -179,14 +201,33 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       )
     }
 
-    const SmallLogo: FunctionalComponent = () => {
-      return (
+    const SmallLogo: FunctionalComponent<{ onlyText?: boolean }> = ({ onlyText }) => {
+      const baseHeight = 22
+      const helvetiaWidth = (1084 / 204) * baseHeight
+      return this.isHelvetia ? (
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          width={helvetiaWidth}
+          height={baseHeight}
+          viewBox={`${onlyText === true ? '230' : '0'} 0 1084 204`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M2.52,97.92c-3.36,3.36-3.36,8.8,0,12.15l91.41,91.41c3.36,3.36,8.8,3.36,12.15,0l50.72-50.72-30.87-30.87-25.93,25.93-41.81-41.81,41.81-41.81,72.69,72.69,24.8-24.8c3.36-3.36,3.36-8.8,0-12.15L106.08,6.52c-3.36-3.36-8.8-3.36-12.15,0L2.52,97.92ZM352.2,101.98v73.06h-36.42v-65.86c0-12.43-8.5-19.63-19.41-19.63s-19.85,7.85-19.85,18.32v67.17h-36.42V15.62h36.42v51.9c7.85-6.32,18.32-10.25,30.97-10.25,27.04,0,44.71,18.32,44.71,44.71ZM403.23,128.37c3.71,12.87,13.96,19.85,27.7,19.85,12.87,0,19.19-4.36,23.77-11.99l27.26,18.1c-9.16,11.99-23.55,23.55-52.12,23.55-37.95,0-61.93-25.95-61.93-60.19s26.61-60.41,59.75-60.41c37.51,0,59.75,29.66,59.75,58.01,0,5.67-.44,10.03-.87,13.08h-83.31ZM453.6,105.69c-3.05-13.08-11.78-21.15-25.08-21.15s-22.68,7.2-25.73,21.15h50.81ZM503.97,175.04V15.62h36.42v159.42h-36.42ZM638.52,60.11h37.51l-40.78,114.93h-42.53l-40.78-114.93h37.51l24.42,79.16,24.64-79.16ZM712.23,128.37c3.71,12.87,13.96,19.85,27.7,19.85,12.87,0,19.19-4.36,23.77-11.99l27.26,18.1c-9.16,11.99-23.55,23.55-52.12,23.55-37.95,0-61.93-25.95-61.93-60.19s26.61-60.41,59.75-60.41c37.51,0,59.75,29.66,59.75,58.01,0,5.67-.44,10.03-.87,13.08h-83.31ZM762.6,105.69c-3.05-13.08-11.78-21.15-25.08-21.15s-22.68,7.2-25.73,21.15h50.81ZM867.71,175.04c-29.66,0-44.71-17.66-44.71-44.27v-39.69h-19.19v-30.97h9.16c8.07,0,12.21-4.36,12.21-12.87v-17.66h35.33v30.53h26.17v30.97h-27.48v35.33c0,11.12,5.89,17.01,16.14,17.01h11.99v31.62h-19.63ZM902.6,22.46c0-12.87,10.03-22.46,22.9-22.46s22.9,9.6,22.9,22.46-10.03,22.24-22.9,22.24-22.9-9.16-22.9-22.24ZM907.18,175.04V60.11h36.42v114.93h-36.42ZM1050.42,60.11h33.58v114.93h-33.58v-10.47c-8.07,8.5-18.97,13.3-33.15,13.3-33.37,0-57.35-25.73-57.35-60.19s23.99-58.01,57.35-58.01c14.18,0,25.08,4.36,33.15,12.43v-11.99ZM1049.11,117.68c0-16.79-10.69-28.35-26.61-28.35s-26.39,11.99-26.39,28.35,10.9,28.13,26.39,28.13,26.61-11.56,26.61-28.13Z"
+            fill="#000D6E"
+          />
+        </svg>
+      ) : (
         <svg
           focusable="false"
           aria-hidden="true"
           width="100"
           height="22"
-          viewBox="0 0 100 22"
+          viewBox={`${onlyText === true ? '24' : '0'} 0 100 22`}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -200,11 +241,24 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       )
     }
 
-    const LogoElement = this.isAnimated
-      ? AnimatedLogo
-      : (this.isTouch && this.size === '') || this.size === 'small'
-        ? SmallLogo
-        : LargeLogo
+    const Logo = (this.isTouch && this.size === '') || this.size === 'small' ? SmallLogo : LargeLogo
+
+    const AnimatedLogo: FunctionalComponent = () => {
+      return (
+        <div class="bal-logo__animated-wrapper">
+          <div
+            style={{
+              width: this.isTouch ? '25px' : '36px',
+              height: this.isTouch ? '25px' : '36px',
+            }}
+            ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
+          ></div>
+          <Logo onlyText={this.isAnimated} />
+        </div>
+      )
+    }
+
+    const LogoElement = this.isAnimated ? AnimatedLogo : Logo
 
     return (
       <Host
@@ -212,7 +266,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
           ...logoBlock.class(),
           ...logoBlock.modifier(this.color).class(),
           ...logoBlock.modifier(`size-${this.size}`).class(this.size !== ''),
-          ...logoBlock.modifier('animated').class(this.animated),
+          ...logoBlock.modifier('animated').class(this.isAnimated),
         }}
       >
         <LogoElement></LogoElement>
