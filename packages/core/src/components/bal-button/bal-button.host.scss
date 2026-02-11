@@ -4,3 +4,8 @@
 );
 
 @include hybrid.host-base(button, inline-block);
+
+// Target the internal native control via the exposed part
+:host #button {
+  margin: 0 !important;
+}

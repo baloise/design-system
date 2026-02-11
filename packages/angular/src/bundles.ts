@@ -18,9 +18,6 @@ import {
 import { BalNgErrorComponent } from './directives/error.component'
 import {
   BalAccordion,
-  BalAccordionDetails,
-  BalAccordionSummary,
-  BalAccordionTrigger,
   BalApp,
   BalBadge,
   BalButton,
@@ -91,7 +88,6 @@ import {
   BalSelectOption,
   BalShape,
   BalSheet,
-  BalSnackbar,
   BalSpinner,
   BalStack,
   BalStage,
@@ -109,11 +105,10 @@ import {
   BalTag,
   BalTagGroup,
   BalText,
-  BalToast,
   BalTooltip,
 } from './generated/proxies'
 
-export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger] as const
+export const BalAccordionBundle = [BalAccordion] as const
 
 export const BalButtonBundle = [BalButton, BalButtonGroup] as const
 
@@ -219,9 +214,6 @@ export const BalTypographyBundle = [BalHeading, BalText, BalLabel] as const
 export const BalComponentBundle = [
   BalNgErrorComponent,
   BalAccordion,
-  BalAccordionDetails,
-  BalAccordionSummary,
-  BalAccordionTrigger,
   BalApp,
   BalBadge,
   BalButton,
@@ -305,7 +297,6 @@ export const BalComponentBundle = [
   BalSelectOption,
   BalShape,
   BalSheet,
-  BalSnackbar,
   BalSpinner,
   BalStack,
   BalStage,
@@ -325,6 +316,5 @@ export const BalComponentBundle = [
   BalText,
   BalTextarea,
   BalTimeInput,
-  BalToast,
   BalTooltip,
 ] as const

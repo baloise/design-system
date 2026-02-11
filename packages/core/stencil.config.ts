@@ -298,8 +298,7 @@ export const config: Config = {
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },
-    { components: ['bal-notices', 'bal-toast', 'bal-snackbar'] },
-    { components: ['bal-notification'] },
+    { components: ['bal-notification', 'bal-notification-container'] },
     { components: ['bal-sheet'] },
   ],
   rollupPlugins: {

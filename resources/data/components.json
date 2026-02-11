@@ -12,435 +12,13 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "active",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "active",
-          "reflectToAttr": true,
-          "docs": "If `true` the accordion is open.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "card",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "card",
-          "reflectToAttr": false,
-          "docs": "If `true` the accordion is used on the bottom of a card",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "closeIcon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "close-icon",
-          "reflectToAttr": false,
-          "docs": "BalIcon of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'close'"
-            }
-          ],
-          "default": "'close'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "closeLabel",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "close-label",
-          "reflectToAttr": false,
-          "docs": "Label of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "debounce",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "debounce",
-          "reflectToAttr": false,
-          "docs": "Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "0"
-            }
-          ],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "openIcon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "open-icon",
-          "reflectToAttr": false,
-          "docs": "BalIcon of the open trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'plus'"
-            }
-          ],
-          "default": "'plus'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "openLabel",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "open-label",
-          "reflectToAttr": false,
-          "docs": "Label of the open trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "dismiss",
-          "returns": {
-            "type": "Promise<boolean>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<boolean>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<boolean>"
-          },
-          "signature": "dismiss() => Promise<boolean>",
-          "parameters": [],
-          "docs": "Closes the accordion",
-          "docsTags": []
-        },
-        {
-          "name": "present",
-          "returns": {
-            "type": "Promise<boolean>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<boolean>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<boolean>"
-          },
-          "signature": "present() => Promise<boolean>",
-          "parameters": [],
-          "docs": "Opens the accordion",
-          "docsTags": []
-        },
-        {
-          "name": "toggle",
-          "returns": {
-            "type": "Promise<boolean>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<boolean>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<boolean>"
-          },
-          "signature": "toggle() => Promise<boolean>",
-          "parameters": [],
-          "docs": "Triggers the accordion",
-          "docsTags": []
-        }
-      ],
-      "events": [
-        {
-          "event": "balChange",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalAccordionChangeDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the accordion has opened or closed",
-          "docsTags": []
-        },
-        {
-          "event": "balDidAnimate",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalAccordionDidAnimateDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted after the animation has finished",
-          "docsTags": []
-        },
-        {
-          "event": "balWillAnimate",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalAccordionWillAnimateDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted before the animation starts",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-accordion-details.tsx",
-      "tag": "bal-accordion-details",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-accordion-summary.tsx",
-      "tag": "bal-accordion-summary",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "trigger",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "trigger",
-          "reflectToAttr": false,
-          "docs": "If `true` the whole summary component acts as a trigger and can be clicked",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-accordion-trigger.tsx",
-      "tag": "bal-accordion-trigger",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-button",
         "bal-icon"
       ],
       "dependencyGraph": {
-        "bal-accordion-trigger": [
-          "bal-button",
-          "bal-icon"
-        ],
-        "bal-button": [
-          "bal-spinner",
+        "bal-accordion": [
           "bal-icon"
         ]
       },
@@ -455,20 +33,15 @@
           },
           "mutable": false,
           "attr": "button",
-          "reflectToAttr": false,
-          "docs": "",
+          "reflectToAttr": true,
+          "docs": "Displays the summary as a button and hides the default marker.",
           "docsTags": [
-            {
-              "name": "deprecated",
-              "text": "Trigger will be a bal-button"
-            },
             {
               "name": "default",
               "text": "false"
             }
           ],
           "default": "false",
-          "deprecation": "Trigger will be a bal-button",
           "values": [
             {
               "type": "boolean"
@@ -480,65 +53,7 @@
           "setter": false
         },
         {
-          "name": "closeIcon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "close-icon",
-          "reflectToAttr": false,
-          "docs": "BalIcon of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "closeLabel",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "close-label",
-          "reflectToAttr": false,
-          "docs": "Label of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "color",
+          "name": "buttonColor",
           "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
             "original": "BalProps.BalButtonColor",
@@ -551,9 +66,9 @@
             }
           },
           "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette.",
+          "attr": "button-color",
+          "reflectToAttr": true,
+          "docs": "The color of the button. Only applies if `button` is `true`.",
           "docsTags": [
             {
               "name": "default",
@@ -633,27 +148,27 @@
           "setter": false
         },
         {
-          "name": "expanded",
-          "type": "boolean",
+          "name": "buttonIconClose",
+          "type": "string",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "expanded",
+          "attr": "button-icon-close",
           "reflectToAttr": false,
-          "docs": "If `true` the button is aligned over the whole width",
+          "docs": "BalIcon of the close trigger button",
           "docsTags": [
             {
               "name": "default",
-              "text": "true"
+              "text": "'caret-up'"
             }
           ],
-          "default": "true",
+          "default": "'caret-up'",
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
@@ -662,7 +177,7 @@
           "setter": false
         },
         {
-          "name": "openIcon",
+          "name": "buttonIconOpen",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -670,7 +185,7 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "open-icon",
+          "attr": "button-icon-open",
           "reflectToAttr": false,
           "docs": "BalIcon of the open trigger button",
           "docsTags": [
@@ -691,7 +206,7 @@
           "setter": false
         },
         {
-          "name": "openLabel",
+          "name": "buttonLabelClose",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -699,7 +214,36 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "open-label",
+          "attr": "button-label-close",
+          "reflectToAttr": false,
+          "docs": "Label of the close trigger button",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "buttonLabelOpen",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "button-label-open",
           "reflectToAttr": false,
           "docs": "Label of the open trigger button",
           "docsTags": [
@@ -720,7 +264,7 @@
           "setter": false
         },
         {
-          "name": "size",
+          "name": "buttonSize",
           "type": "\"\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalButtonSize",
@@ -733,9 +277,9 @@
             }
           },
           "mutable": false,
-          "attr": "size",
-          "reflectToAttr": false,
-          "docs": "Size of the button",
+          "attr": "button-size",
+          "reflectToAttr": true,
+          "docs": "The size of the button. Only applies if `button` is `true`.",
           "docsTags": [
             {
               "name": "default",
@@ -758,51 +302,73 @@
           "setter": false
         },
         {
-          "name": "variant",
-          "type": "\"button\" | \"icon\" | \"text\" | undefined",
+          "name": "open",
+          "type": "boolean",
           "complexType": {
-            "original": "BalProps.BalAccordionTriggerVariant",
-            "resolved": "\"button\" | \"icon\" | \"text\" | undefined",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
           },
-          "mutable": false,
-          "attr": "variant",
-          "reflectToAttr": false,
-          "docs": "Defines the nature of the accordion trigger.",
-          "docsTags": [],
-          "values": [
+          "mutable": true,
+          "attr": "open",
+          "reflectToAttr": true,
+          "docs": "If `true` the accordion is open.",
+          "docsTags": [
             {
-              "value": "button",
-              "type": "string"
-            },
-            {
-              "value": "icon",
-              "type": "string"
-            },
-            {
-              "value": "text",
-              "type": "string"
-            },
-            {
-              "type": "undefined"
+              "name": "default",
+              "text": "false"
             }
           ],
-          "optional": true,
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "balToggle",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalAccordionToggleDetail",
+            "resolved": "boolean",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input value has changed.",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "content",
+          "docs": ""
+        },
+        {
+          "name": "item",
+          "docs": ""
+        },
+        {
+          "name": "summary",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -1129,13 +695,12 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-accordion-trigger",
         "bal-card-button",
         "bal-data-value",
         "bal-hint",
         "bal-input-stepper",
         "bal-navbar-brand",
-        "bal-snackbar"
+        "bal-notification"
       ],
       "dependencies": [
         "bal-spinner",
@@ -1145,9 +710,6 @@
         "bal-button": [
           "bal-spinner",
           "bal-icon"
-        ],
-        "bal-accordion-trigger": [
-          "bal-button"
         ],
         "bal-card-button": [
           "bal-button"
@@ -1164,7 +726,7 @@
         "bal-navbar-brand": [
           "bal-button"
         ],
-        "bal-snackbar": [
+        "bal-notification": [
           "bal-button"
         ]
       },
@@ -1341,7 +903,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "The color to use from your application's color palette.",
+          "docs": "The color to use from your application's color palette.aaa",
           "docsTags": [
             {
               "name": "default",
@@ -4490,7 +4052,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-option"
       ],
@@ -4514,9 +4076,9 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the checkbox is selected.",
           "docsTags": [
             {
@@ -4545,7 +4107,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
           "docsTags": [
             {
@@ -4577,7 +4139,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid red style.",
           "docsTags": [
             {
@@ -4609,7 +4171,7 @@
           },
           "mutable": false,
           "attr": "inverted",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the checkbox is inverted and works on dark backgrounds.",
           "docsTags": [
             {
@@ -5943,26 +5505,22 @@
       "encapsulation": "shadow",
       "dependents": [
         "bal-modal-header",
+        "bal-notification",
         "bal-popup",
-        "bal-snackbar",
-        "bal-tag",
-        "bal-toast"
+        "bal-tag"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-modal-header": [
           "bal-close"
         ],
+        "bal-notification": [
+          "bal-close"
+        ],
         "bal-popup": [
           "bal-close"
         ],
-        "bal-snackbar": [
-          "bal-close"
-        ],
         "bal-tag": [
-          "bal-close"
-        ],
-        "bal-toast": [
           "bal-close"
         ]
       },
@@ -8286,7 +7844,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -12600,7 +12158,7 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-accordion-trigger",
+        "bal-accordion",
         "bal-badge",
         "bal-button",
         "bal-check",
@@ -12615,7 +12173,6 @@
         "bal-pagination",
         "bal-segment-item",
         "bal-select",
-        "bal-snackbar",
         "bal-stage-back-link",
         "bal-steps",
         "bal-switch",
@@ -12624,7 +12181,7 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-accordion-trigger": [
+        "bal-accordion": [
           "bal-icon"
         ],
         "bal-badge": [
@@ -12667,9 +12224,6 @@
           "bal-icon"
         ],
         "bal-select": [
-          "bal-icon"
-        ],
-        "bal-snackbar": [
           "bal-icon"
         ],
         "bal-stage-back-link": [
@@ -13090,10 +12644,10 @@
         },
         {
           "name": "tileColor",
-          "type": "string",
+          "type": "\"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "BalProps.BalIconTileColor",
-            "resolved": "string",
+            "resolved": "\"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -13108,12 +12662,25 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "''"
+              "text": "'purple'"
             }
           ],
-          "default": "''",
+          "default": "'purple'",
           "values": [
             {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
               "type": "string"
             }
           ],
@@ -16807,7 +16374,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "label",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -18067,7 +17639,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-footer",
         "bal-navbar-brand"
@@ -19399,17 +18971,197 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "encapsulation": "shadow",
+      "dependents": [
+        "bal-notification-container"
+      ],
+      "dependencies": [
+        "bal-close",
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-notification": [
+          "bal-close",
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-notification-container": [
+          "bal-notification"
+        ]
+      },
       "props": [
         {
+          "name": "action",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the notification, if not provided it will be derived from the color property",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionHref",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-href",
+          "reflectToAttr": false,
+          "docs": "Specifies the URL of the page the link goes to",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionIcon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-icon",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the action button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionTarget",
+          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "complexType": {
+            "original": "BalProps.BalButtonTarget",
+            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "action-target",
+          "reflectToAttr": false,
+          "docs": "Specifies where to open the linked document.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'_blank'"
+            }
+          ],
+          "default": "'_blank'",
+          "values": [
+            {
+              "value": " _parent",
+              "type": "string"
+            },
+            {
+              "value": "_blank",
+              "type": "string"
+            },
+            {
+              "value": "_self",
+              "type": "string"
+            },
+            {
+              "value": "_top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "If `true` the notification can be closed by the user.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "color",
-          "type": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "BalProps.BalNotificationColor",
-            "resolved": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -19433,6 +19185,10 @@
               "type": "\"\""
             },
             {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "danger",
               "type": "string"
             },
@@ -19441,7 +19197,23 @@
               "type": "string"
             },
             {
-              "value": "primary",
+              "value": "outline-base",
+              "type": "string"
+            },
+            {
+              "value": "outline-green",
+              "type": "string"
+            },
+            {
+              "value": "outline-purple",
+              "type": "string"
+            },
+            {
+              "value": "outline-red",
+              "type": "string"
+            },
+            {
+              "value": "outline-yellow",
               "type": "string"
             },
             {
@@ -19459,27 +19231,85 @@
           "setter": false
         },
         {
-          "name": "light",
-          "type": "boolean",
+          "name": "duration",
+          "type": "number",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
-          "attr": "light",
+          "attr": "duration",
           "reflectToAttr": false,
-          "docs": "If `true` the notifications are presented in a light variant",
+          "docs": "The duration of the toast in milliseconds.",
           "docsTags": [
             {
               "name": "default",
-              "text": "false"
+              "text": "0"
             }
           ],
-          "default": "false",
+          "default": "0",
           "values": [
             {
-              "type": "boolean"
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Defines the heading of the notification.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "message",
+          "reflectToAttr": false,
+          "docs": "Defines the message of the notification as html content",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -19515,9 +19345,478 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "size",
+          "type": "\"\" | \"large\" | \"medium\" | \"small\"",
+          "complexType": {
+            "original": "BalProps.BalNotificationSize",
+            "resolved": "\"\" | \"large\" | \"medium\" | \"small\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Defines the size of the notification, small, medium or large.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "type",
+          "type": "\"\" | \"snackbar\" | \"toast\"",
+          "complexType": {
+            "original": "BalProps.BalNotificationType",
+            "resolved": "\"\" | \"snackbar\" | \"toast\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "Defines the type of the notification, alert or snackbar.\nAlert is used for important messages that require immediate attention,\nwhile snackbar is used for less important messages that can be ignored by the user.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "snackbar",
+              "type": "string"
+            },
+            {
+              "value": "toast",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "visible",
+          "reflectToAttr": false,
+          "docs": "If `true` the notification is visible.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes this notification",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "balActionClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalNotificationActionClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the action button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balCloseClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalNotificationCloseClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the close button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balDidLoad",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the component has loaded.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "button",
+          "docs": ""
+        },
+        {
+          "name": "close",
+          "docs": ""
+        },
+        {
+          "name": "content",
+          "docs": ""
+        },
+        {
+          "name": "heading",
+          "docs": ""
+        },
+        {
+          "name": "section",
+          "docs": ""
+        }
+      ],
+      "listeners": []
+    },
+    {
+      "fileName": "bal-notification-container.tsx",
+      "tag": "bal-notification-container",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-notification"
+      ],
+      "dependencyGraph": {
+        "bal-notification-container": [
+          "bal-notification"
+        ],
+        "bal-notification": [
+          "bal-close",
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "animated",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "animated",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "container",
+          "type": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
+          "complexType": {
+            "original": "'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | ''",
+            "resolved": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "container",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "blog-page",
+              "type": "string"
+            },
+            {
+              "value": "compact",
+              "type": "string"
+            },
+            {
+              "value": "detail-page",
+              "type": "string"
+            },
+            {
+              "value": "fluid",
+              "type": "string"
+            },
+            {
+              "value": "wide",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "type",
+          "type": "\"\" | \"snackbar\" | \"toast\"",
+          "complexType": {
+            "original": "BalProps.BalNotificationType",
+            "resolved": "\"\" | \"snackbar\" | \"toast\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'toast'"
+            }
+          ],
+          "default": "'toast'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "snackbar",
+              "type": "string"
+            },
+            {
+              "value": "toast",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "addNotification",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(notification: Notification) => Promise<string>",
+            "parameters": [
+              {
+                "name": "notification",
+                "type": "Notification",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "Notification": {
+                "location": "local",
+                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-notification/bal-notification-container.tsx",
+                "id": "src/components/bal-notification/bal-notification-container.tsx::Notification"
+              },
+              "NotificationInterface": {
+                "location": "local",
+                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-notification/bal-notification-container.tsx",
+                "id": "src/components/bal-notification/bal-notification-container.tsx::NotificationInterface"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "addNotification(notification: Notification) => Promise<string>",
+          "parameters": [
+            {
+              "name": "notification",
+              "type": "Notification",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "removeAll",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "removeAll() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "removeNotification",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(id: string) => Promise<void>",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "removeNotification(id: string) => Promise<void>",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
       "events": [],
       "styles": [],
       "slots": [],
@@ -26699,408 +26998,6 @@
       "listeners": []
     },
     {
-      "fileName": "bal-snackbar.tsx",
-      "tag": "bal-snackbar",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [
-        "bal-icon",
-        "bal-close",
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-snackbar": [
-          "bal-icon",
-          "bal-close",
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "action",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "action",
-          "reflectToAttr": false,
-          "docs": "Label text for the action button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "color",
-          "type": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "BalProps.BalSnackbarColor",
-            "resolved": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "The theme type of the snackbar.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "duration",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "duration",
-          "reflectToAttr": false,
-          "docs": "The duration of the snackbar",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "0"
-            }
-          ],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "href",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "href",
-          "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "icon",
-          "reflectToAttr": false,
-          "docs": "The icon of the snackbar header",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "message",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "message",
-          "reflectToAttr": false,
-          "docs": "The message of the snackbar as html content",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "subject",
-          "reflectToAttr": false,
-          "docs": "The subject of the snackbar header",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-          "complexType": {
-            "original": "BalProps.BalButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "target",
-          "reflectToAttr": false,
-          "docs": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'_self'"
-            }
-          ],
-          "default": "'_self'",
-          "values": [
-            {
-              "value": " _parent",
-              "type": "string"
-            },
-            {
-              "value": "_blank",
-              "type": "string"
-            },
-            {
-              "value": "_self",
-              "type": "string"
-            },
-            {
-              "value": "_top",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "close",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "close() => Promise<void>",
-          "parameters": [],
-          "docs": "Closes this snackbar",
-          "docsTags": []
-        },
-        {
-          "name": "closeIn",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "(duration: number) => Promise<void>",
-            "parameters": [
-              {
-                "name": "duration",
-                "type": "number",
-                "docs": ""
-              }
-            ],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "closeIn(duration: number) => Promise<void>",
-          "parameters": [
-            {
-              "name": "duration",
-              "type": "number",
-              "docs": ""
-            }
-          ],
-          "docs": "Closes the snackbar after the given duration in ms",
-          "docsTags": []
-        }
-      ],
-      "events": [
-        {
-          "event": "balAction",
-          "detail": "string",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalSnackbarActionDetail",
-            "resolved": "string",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the action button is clicked",
-          "docsTags": []
-        },
-        {
-          "event": "balClose",
-          "detail": "string",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalSnackbarCloseDetail",
-            "resolved": "string",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when snackbar is closed",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
       "fileName": "bal-spinner.tsx",
       "tag": "bal-spinner",
       "overview": "",
@@ -29148,7 +29045,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
         "bal-icon"
@@ -29167,9 +29064,9 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the checkbox is selected.",
           "docsTags": [
             {
@@ -29198,7 +29095,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
           "docsTags": [
             {
@@ -29230,7 +29127,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid red style.",
           "docsTags": [
             {
@@ -29257,7 +29154,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "toggle",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -33023,250 +32925,6 @@
       ]
     },
     {
-      "fileName": "bal-toast.tsx",
-      "tag": "bal-toast",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [
-        "bal-close"
-      ],
-      "dependencyGraph": {
-        "bal-toast": [
-          "bal-close"
-        ]
-      },
-      "props": [
-        {
-          "name": "closable",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "closable",
-          "reflectToAttr": false,
-          "docs": "If `true` the toast has a cross icon to close the toast.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "true"
-            }
-          ],
-          "default": "true",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "color",
-          "type": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "BalProps.BalToastColor",
-            "resolved": "\"\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "The theme type of the toast.\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "duration",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "duration",
-          "reflectToAttr": false,
-          "docs": "The duration of the toast in milliseconds.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "0"
-            }
-          ],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "message",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "message",
-          "reflectToAttr": false,
-          "docs": "Content message",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "close",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "close() => Promise<void>",
-          "parameters": [],
-          "docs": "Closes this toast",
-          "docsTags": []
-        },
-        {
-          "name": "closeIn",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "(duration: number) => Promise<void>",
-            "parameters": [
-              {
-                "name": "duration",
-                "type": "number",
-                "docs": ""
-              }
-            ],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "closeIn(duration: number) => Promise<void>",
-          "parameters": [
-            {
-              "name": "duration",
-              "type": "number",
-              "docs": ""
-            }
-          ],
-          "docs": "Closes the toast after the given duration in ms",
-          "docsTags": []
-        }
-      ],
-      "events": [
-        {
-          "event": "balClose",
-          "detail": "string",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalToastCloseDetail",
-            "resolved": "string",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when toast is closed",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
       "fileName": "bal-tooltip.tsx",
       "tag": "bal-tooltip",
       "overview": "",
@@ -33464,6 +33122,16 @@
     }
   ],
   "typeLibrary": {
+    "src/components/bal-notification/bal-notification-container.tsx::Notification": {
+      "declaration": "export interface Notification {\n  message: string\n  duration: number\n  heading: string | undefined\n  color: BalProps.BalNotificationColor | ''\n  closeHandler: () => void\n  action: string | undefined\n  actionIcon: string | undefined\n  actionTarget: BalProps.BalButtonTarget | undefined\n  actionHref: string | undefined\n  actionHandler: () => void\n}",
+      "docstring": "",
+      "path": "src/components/bal-notification/bal-notification-container.tsx"
+    },
+    "src/components/bal-notification/bal-notification-container.tsx::NotificationInterface": {
+      "declaration": "export interface NotificationInterface extends Notification {\n  id: string\n  type: BalProps.BalNotificationType\n  closable: boolean\n  visible: boolean\n}",
+      "docstring": "",
+      "path": "src/components/bal-notification/bal-notification-container.tsx"
+    },
     "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx::BalListItemAccordionBodyAria": {
       "declaration": "export interface BalListItemAccordionBodyAria {\n  labelledby?: string\n}",
       "docstring": "",
@@ -33483,11 +33151,6 @@
       "declaration": "export interface PopoverPresentOptions {\n  force: boolean\n}",
       "docstring": "",
       "path": "src/components/bal-popover/bal-popover.tsx"
-    },
-    "src/interfaces.d.ts::AccordionState": {
-      "declaration": "export const enum AccordionState {\n  Collapsed = 1 << 0,\n  Collapsing = 1 << 1,\n  Expanded = 1 << 2,\n  Expanding = 1 << 3,\n}",
-      "docstring": "",
-      "path": "src/interfaces.d.ts"
     },
     "src/components/bal-checkbox/bal-checkbox.type.ts::BalCheckboxOption": {
       "declaration": "export interface BalCheckboxOption {\n  value: any\n  checked: boolean\n  name?: string\n  label?: string\n  html?: HtmlFunction | string\n  labelHidden: boolean\n  flat: boolean\n  interface: BalProps.BalCheckboxInterface\n  disabled: boolean\n  readonly: boolean\n  required: boolean\n  nonSubmit: boolean\n  invalid: boolean\n}",

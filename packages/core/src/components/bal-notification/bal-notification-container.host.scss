@@ -1,0 +1,74 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../host' as host;
+
+@forward '../../../../styles/src/core/container.scss';
+
+:host {
+  --notification-container-top: 1rem;
+
+  position: fixed;
+
+  #wrapper {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+:host(.is-toast) {
+  z-index: var(--bal-z-index-toast);
+
+  top: var(--notification-container-top);
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  #wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    bal-notification {
+      width: 100%;
+
+      --notification-animation-start-opacity: 0;
+      --notification-animation-start-transform: translateY(-120%);
+
+      --notification-animation-transition: transform 300ms ease, opacity 300ms ease;
+
+      --notification-animation-end-opacity: 1;
+      --notification-animation-end-transform: translateY(0);
+    }
+  }
+}
+
+:host(.is-snackbar) {
+  z-index: calc(var(--bal-z-index-toast) - 1);
+
+  right: 1rem;
+  bottom: 1rem;
+
+  #wrapper {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    bal-notification {
+      --notification-animation-start-opacity: 0;
+      --notification-animation-start-transform: translateX(120%);
+
+      --notification-animation-transition: transform 300ms ease, opacity 300ms ease;
+
+      --notification-animation-end-opacity: 1;
+      --notification-animation-end-transform: translateX(0);
+
+      width: 100%;
+
+      @include tablet {
+        min-width: 18rem;
+        max-width: 18rem;
+        width: 18rem;
+      }
+    }
+  }
+}

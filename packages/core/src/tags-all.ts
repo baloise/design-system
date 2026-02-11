@@ -66,6 +66,7 @@ export const tags = [
   "bal-navbar-menu-start",
   "bal-notices",
   "bal-notification",
+  "bal-notification-container",
   "bal-number-input",
   "bal-option",
   "bal-option-list",
@@ -83,7 +84,6 @@ export const tags = [
   "bal-select-option",
   "bal-shape",
   "bal-sheet",
-  "bal-snackbar",
   "bal-spinner",
   "bal-stack",
   "bal-stage",
@@ -103,6 +103,5 @@ export const tags = [
   "bal-text",
   "bal-textarea",
   "bal-time-input",
-  "bal-toast",
   "bal-tooltip"
 ]

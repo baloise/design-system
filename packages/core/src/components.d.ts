@@ -13,6 +13,7 @@ import { FooterLink } from "@baloise/web-app-utils";
 import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+import { Notification, NotificationInterface } from "./components/bal-notification/bal-notification-container";
 import { FormInput } from "./utils/form-input";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -27,6 +28,7 @@ export { FooterLink } from "@baloise/web-app-utils";
 export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+export { Notification, NotificationInterface } from "./components/bal-notification/bal-notification-container";
 export { FormInput } from "./utils/form-input";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
@@ -2442,20 +2444,99 @@ export namespace Components {
     }
     interface BalNotification {
         /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action": string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler": () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref": string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon": string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget": BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable": boolean;
+        /**
+          * Closes this notification
+         */
+        "close": () => Promise<void>;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler": () => void;
+        /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
           * @default ''
          */
         "color": BalProps.BalNotificationColor;
         /**
-          * If `true` the notifications are presented in a light variant
-          * @default false
+          * The duration of the toast in milliseconds.
+          * @default 0
          */
-        "light": boolean;
+        "duration": number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading": string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message": string;
         /**
           * If `true` there will be no icon provided
           * @default false
          */
         "noIcon": boolean;
+        /**
+          * Defines the size of the notification, small, medium or large.
+          * @default ''
+         */
+        "size": BalProps.BalNotificationSize;
+        /**
+          * Defines the type of the notification, alert or snackbar. Alert is used for important messages that require immediate attention, while snackbar is used for less important messages that can be ignored by the user.
+          * @default ''
+         */
+        "type": BalProps.BalNotificationType;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible": boolean;
+    }
+    interface BalNotificationContainer {
+        "addNotification": (notification: Notification) => Promise<string>;
+        /**
+          * @default false
+         */
+        "animated": boolean;
+        /**
+          * @default ''
+         */
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        "removeAll": () => Promise<void>;
+        "removeNotification": (id: string) => Promise<void>;
+        /**
+          * @default 'toast'
+         */
+        "type": BalProps.BalNotificationType;
     }
     interface BalNumberInput {
         /**
@@ -3429,63 +3510,6 @@ export namespace Components {
          */
         "containerSize": BalProps.BalSheetContainer;
     }
-    interface BalSnackbar {
-        /**
-          * Label text for the action button
-          * @default ''
-         */
-        "action": string;
-        /**
-          * @default () => void 0
-         */
-        "actionHandler": () => void;
-        /**
-          * Closes this snackbar
-         */
-        "close": () => Promise<void>;
-        /**
-          * @default () => void 0
-         */
-        "closeHandler": () => void;
-        /**
-          * Closes the snackbar after the given duration in ms
-         */
-        "closeIn": (duration: number) => Promise<void>;
-        /**
-          * The theme type of the snackbar.
-          * @default ''
-         */
-        "color": BalProps.BalSnackbarColor;
-        /**
-          * The duration of the snackbar
-          * @default 0
-         */
-        "duration": number;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * The icon of the snackbar header
-          * @default ''
-         */
-        "icon": string;
-        /**
-          * The message of the snackbar as html content
-          * @default ''
-         */
-        "message": string;
-        /**
-          * The subject of the snackbar header
-          * @default ''
-         */
-        "subject": string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target": BalProps.BalButtonTarget;
-    }
     interface BalSpinner {
         /**
           * Defines the color of the spinner.
@@ -4236,40 +4260,6 @@ export namespace Components {
          */
         "value"?: string;
     }
-    interface BalToast {
-        /**
-          * If `true` the toast has a cross icon to close the toast.
-          * @default true
-         */
-        "closable": boolean;
-        /**
-          * Closes this toast
-         */
-        "close": () => Promise<void>;
-        /**
-          * @default () => void 0
-         */
-        "closeHandler": () => void;
-        /**
-          * Closes the toast after the given duration in ms
-         */
-        "closeIn": (duration: number) => Promise<void>;
-        /**
-          * The theme type of the toast. Color type primary is deprecated, please use info instead.
-          * @default ''
-         */
-        "color": BalProps.BalToastColor;
-        /**
-          * The duration of the toast in milliseconds.
-          * @default 0
-         */
-        "duration": number;
-        /**
-          * Content message
-          * @default ''
-         */
-        "message": string;
-    }
     interface BalTooltip {
         /**
           * Defines the width of the content
@@ -4387,6 +4377,10 @@ export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
 }
+export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNotificationElement;
+}
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNumberInputElement;
@@ -4423,10 +4417,6 @@ export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSelectElement;
 }
-export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalSnackbarElement;
-}
 export interface BalStepItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalStepItemElement;
@@ -4454,10 +4444,6 @@ export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
 export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTimeInputElement;
-}
-export interface BalToastCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalToastElement;
 }
 export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5160,11 +5146,30 @@ declare global {
         prototype: HTMLBalNoticesElement;
         new (): HTMLBalNoticesElement;
     };
+    interface HTMLBalNotificationElementEventMap {
+        "balCloseClick": BalEvents.BalNotificationCloseClickDetail;
+        "balActionClick": BalEvents.BalNotificationActionClickDetail;
+        "balDidLoad": void;
+    }
     interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNotificationElementEventMap>(type: K, listener: (this: HTMLBalNotificationElement, ev: BalNotificationCustomEvent<HTMLBalNotificationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNotificationElementEventMap>(type: K, listener: (this: HTMLBalNotificationElement, ev: BalNotificationCustomEvent<HTMLBalNotificationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNotificationElement: {
         prototype: HTMLBalNotificationElement;
         new (): HTMLBalNotificationElement;
+    };
+    interface HTMLBalNotificationContainerElement extends Components.BalNotificationContainer, HTMLStencilElement {
+    }
+    var HTMLBalNotificationContainerElement: {
+        prototype: HTMLBalNotificationContainerElement;
+        new (): HTMLBalNotificationContainerElement;
     };
     interface HTMLBalNumberInputElementEventMap {
         "balInput": BalEvents.BalNumberInputInputDetail;
@@ -5391,24 +5396,6 @@ declare global {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
     };
-    interface HTMLBalSnackbarElementEventMap {
-        "balClose": BalEvents.BalSnackbarCloseDetail;
-        "balAction": BalEvents.BalSnackbarActionDetail;
-    }
-    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalSnackbarElement: {
-        prototype: HTMLBalSnackbarElement;
-        new (): HTMLBalSnackbarElement;
-    };
     interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
     }
     var HTMLBalSpinnerElement: {
@@ -5612,23 +5599,6 @@ declare global {
         prototype: HTMLBalTimeInputElement;
         new (): HTMLBalTimeInputElement;
     };
-    interface HTMLBalToastElementEventMap {
-        "balClose": BalEvents.BalToastCloseDetail;
-    }
-    interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalToastElement: {
-        prototype: HTMLBalToastElement;
-        new (): HTMLBalToastElement;
-    };
     interface HTMLBalTooltipElementEventMap {
         "balWillAnimate": BalEvents.BalTooltipWillAnimateDetail;
         "balDidAnimate": BalEvents.BalTooltipDidAnimateDetail;
@@ -5716,6 +5686,7 @@ declare global {
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
+        "bal-notification-container": HTMLBalNotificationContainerElement;
         "bal-number-input": HTMLBalNumberInputElement;
         "bal-option": HTMLBalOptionElement;
         "bal-option-list": HTMLBalOptionListElement;
@@ -5733,7 +5704,6 @@ declare global {
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
-        "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stack": HTMLBalStackElement;
         "bal-stage": HTMLBalStageElement;
@@ -5753,7 +5723,6 @@ declare global {
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
         "bal-time-input": HTMLBalTimeInputElement;
-        "bal-toast": HTMLBalToastElement;
         "bal-tooltip": HTMLBalTooltipElement;
     }
 }
@@ -8253,20 +8222,104 @@ declare namespace LocalJSX {
     }
     interface BalNotification {
         /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action"?: string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler"?: () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref"?: string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon"?: string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget"?: BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler"?: () => void;
+        /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
           * @default ''
          */
         "color"?: BalProps.BalNotificationColor;
         /**
-          * If `true` the notifications are presented in a light variant
-          * @default false
+          * The duration of the toast in milliseconds.
+          * @default 0
          */
-        "light"?: boolean;
+        "duration"?: number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message"?: string;
         /**
           * If `true` there will be no icon provided
           * @default false
          */
         "noIcon"?: boolean;
+        /**
+          * Emitted when the action button got clicked.
+         */
+        "onBalActionClick"?: (event: BalNotificationCustomEvent<BalEvents.BalNotificationActionClickDetail>) => void;
+        /**
+          * Emitted when the close button got clicked.
+         */
+        "onBalCloseClick"?: (event: BalNotificationCustomEvent<BalEvents.BalNotificationCloseClickDetail>) => void;
+        /**
+          * Emitted when the component has loaded.
+         */
+        "onBalDidLoad"?: (event: BalNotificationCustomEvent<void>) => void;
+        /**
+          * Defines the size of the notification, small, medium or large.
+          * @default ''
+         */
+        "size"?: BalProps.BalNotificationSize;
+        /**
+          * Defines the type of the notification, alert or snackbar. Alert is used for important messages that require immediate attention, while snackbar is used for less important messages that can be ignored by the user.
+          * @default ''
+         */
+        "type"?: BalProps.BalNotificationType;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible"?: boolean;
+    }
+    interface BalNotificationContainer {
+        /**
+          * @default false
+         */
+        "animated"?: boolean;
+        /**
+          * @default ''
+         */
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * @default 'toast'
+         */
+        "type"?: BalProps.BalNotificationType;
     }
     interface BalNumberInput {
         /**
@@ -9178,63 +9231,6 @@ declare namespace LocalJSX {
          */
         "containerSize"?: BalProps.BalSheetContainer;
     }
-    interface BalSnackbar {
-        /**
-          * Label text for the action button
-          * @default ''
-         */
-        "action"?: string;
-        /**
-          * @default () => void 0
-         */
-        "actionHandler"?: () => void;
-        /**
-          * @default () => void 0
-         */
-        "closeHandler"?: () => void;
-        /**
-          * The theme type of the snackbar.
-          * @default ''
-         */
-        "color"?: BalProps.BalSnackbarColor;
-        /**
-          * The duration of the snackbar
-          * @default 0
-         */
-        "duration"?: number;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * The icon of the snackbar header
-          * @default ''
-         */
-        "icon"?: string;
-        /**
-          * The message of the snackbar as html content
-          * @default ''
-         */
-        "message"?: string;
-        /**
-          * Emitted when the action button is clicked
-         */
-        "onBalAction"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionDetail>) => void;
-        /**
-          * Emitted when snackbar is closed
-         */
-        "onBalClose"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseDetail>) => void;
-        /**
-          * The subject of the snackbar header
-          * @default ''
-         */
-        "subject"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target"?: BalProps.BalButtonTarget;
-    }
     interface BalSpinner {
         /**
           * Defines the color of the spinner.
@@ -9998,36 +9994,6 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
-    interface BalToast {
-        /**
-          * If `true` the toast has a cross icon to close the toast.
-          * @default true
-         */
-        "closable"?: boolean;
-        /**
-          * @default () => void 0
-         */
-        "closeHandler"?: () => void;
-        /**
-          * The theme type of the toast. Color type primary is deprecated, please use info instead.
-          * @default ''
-         */
-        "color"?: BalProps.BalToastColor;
-        /**
-          * The duration of the toast in milliseconds.
-          * @default 0
-         */
-        "duration"?: number;
-        /**
-          * Content message
-          * @default ''
-         */
-        "message"?: string;
-        /**
-          * Emitted when toast is closed
-         */
-        "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
-    }
     interface BalTooltip {
         /**
           * Defines the width of the content
@@ -10130,6 +10096,7 @@ declare namespace LocalJSX {
         "bal-navbar-menu-start": BalNavbarMenuStart;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
+        "bal-notification-container": BalNotificationContainer;
         "bal-number-input": BalNumberInput;
         "bal-option": BalOption;
         "bal-option-list": BalOptionList;
@@ -10147,7 +10114,6 @@ declare namespace LocalJSX {
         "bal-select-option": BalSelectOption;
         "bal-shape": BalShape;
         "bal-sheet": BalSheet;
-        "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stack": BalStack;
         "bal-stage": BalStage;
@@ -10167,7 +10133,6 @@ declare namespace LocalJSX {
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
         "bal-time-input": BalTimeInput;
-        "bal-toast": BalToast;
         "bal-tooltip": BalTooltip;
     }
 }
@@ -10243,6 +10208,7 @@ declare module "@stencil/core" {
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
+            "bal-notification-container": LocalJSX.BalNotificationContainer & JSXBase.HTMLAttributes<HTMLBalNotificationContainerElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
             "bal-option": LocalJSX.BalOption & JSXBase.HTMLAttributes<HTMLBalOptionElement>;
             "bal-option-list": LocalJSX.BalOptionList & JSXBase.HTMLAttributes<HTMLBalOptionListElement>;
@@ -10260,7 +10226,6 @@ declare module "@stencil/core" {
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
-            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
@@ -10280,7 +10245,6 @@ declare module "@stencil/core" {
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
-            "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
             "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
         }
     }

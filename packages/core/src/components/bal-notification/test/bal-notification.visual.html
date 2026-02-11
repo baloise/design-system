@@ -12,70 +12,63 @@
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section>
-          <bal-notification data-testid="basic" no-icon>
-            <strong>Strong Title </strong>
-            <span>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. <a class="link">Link</a></span>
-          </bal-notification>
-        </section>
-        <br />
-        <br />
-        <!-- Colors -->
-        <section data-testid="colors" class="flex gap-small flex-direction-column">
-          <bal-notification no-icon>
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification color="danger">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification color="info">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification color="primary">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification color="success">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification color="warning">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-        </section>
-        <br />
-        <br />
-        <!-- Ligth Colors -->
-        <section data-testid="light-colors" class="flex gap-small flex-direction-column">
-          <bal-notification light no-icon>
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification light color="danger">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification light color="info">
-            <strong>Strong Title </strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification light color="primary">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification light color="success">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-          <bal-notification light color="warning">
-            <strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </bal-notification>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <bal-notification heading="Information">Your changes have been saved.</bal-notification>
+      </section>
+
+      <!-- Alert -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Alert</span>
+        <bal-notification no-icon type="toast" closable>Your changes have been saved.</bal-notification>
+        <bal-notification type="toast" closable heading="Heading">Your changes have been saved.</bal-notification>
+        <bal-notification type="toast" closable>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
+          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
+          laboriosam amet.
+        </bal-notification>
+        <bal-notification type="toast" closable color="danger">Your changes have been saved.</bal-notification>
+        <bal-notification type="toast" closable color="success" action="Okay"
+          >Your changes have been saved.</bal-notification
+        >
+      </section>
+
+      <!-- Colors -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Colors</span>
+        <bal-notification heading="Default">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Information" color="info">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Success" color="success">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Warning" color="warning">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Danger" color="danger">Your changes have been saved.</bal-notification>
+      </section>
+
+      <!-- Outline -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Outline</span>
+        <bal-notification heading="Default" color="outline-base">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Purple" color="outline-purple">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Green" color="outline-green">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Yellow" color="outline-yellow">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Red" color="outline-red">Your changes have been saved.</bal-notification>
+      </section>
+
+      <!-- Sizes -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Sizes</span>
+        <bal-notification heading="Small" color="outline-purple" size="small"
+          >Your changes have been saved.</bal-notification
+        >
+        <bal-notification heading="Default" color="outline-purple">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Medium" color="outline-purple" size="medium"
+          >Your changes have been saved.</bal-notification
+        >
+        <bal-notification heading="Large" color="outline-purple" size="large"
+          >Your changes have been saved.</bal-notification
+        >
+      </section>
+    </main>
   </body>
 </html>

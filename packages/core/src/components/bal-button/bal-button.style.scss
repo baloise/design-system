@@ -112,8 +112,12 @@ $button-host-selector: ('#button');
   --button-color-border: var(--bal-button-color-secondary-border);
   --button-color-background: var(--bal-button-color-secondary-background);
 
-  --button-width: auto;
+  --button-width: fit-content;
   --button-border-style: solid;
+
+  --button-min-height: 3rem;
+  --button-min-width: 3rem;
+  --button-padding-inline: 1.5rem;
 }
 
 /**
@@ -127,7 +131,7 @@ $button-host-selector: ('#button');
   @include font-smoothing();
   @include hybrid.margin-styles($button-name);
 
-  width: var(--button-width, auto);
+  width: var(--button-width, fit-content);
   appearance: auto;
   position: relative;
   display: inline-flex;
@@ -139,8 +143,9 @@ $button-host-selector: ('#button');
   vertical-align: middle;
   gap: 0.5rem;
   cursor: pointer;
-  min-height: 3rem;
-  padding-inline: 1.5rem;
+  min-width: var(--button-min-width);
+  min-height: var(--button-min-height);
+  padding-inline: var(--button-padding-inline);
   word-break: normal;
   box-shadow: none;
   outline: none;
@@ -297,18 +302,16 @@ $button-colors: (
   // Sizes
   &.is-small {
     --button-font-size: var(--bal-button-size-small);
-    min-height: 2rem;
-    max-height: 2rem;
-    min-width: 2rem;
-    padding-inline: 0.75rem;
+    --button-min-height: 2rem;
+    --button-min-width: 2rem;
+    --button-padding-inline: 0.75rem;
   }
 
   &.is-large {
     --button-font-size: var(--bal-button-size-large);
-    min-height: 3.5rem;
-    max-height: 3.5rem;
-    min-width: 3.5rem;
-    padding-inline: 1.5rem;
+    --button-min-height: 3.5rem;
+    --button-min-width: 3.5rem;
+    --button-padding-inline: 1.5rem;
   }
 
   //

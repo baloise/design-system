@@ -1,21 +1,19 @@
 import { Inject, Injectable } from '@angular/core'
-
-import type { BalSnackbarController, BalSnackbarOptions, Components } from '@baloise/ds-core'
-
-import { defineCustomElement as defineNoticeElement } from '@baloise/ds-core/components/bal-notices'
-import { defineCustomElement } from '@baloise/ds-core/components/bal-snackbar'
+import type { NotificationController, Notification } from '@baloise/ds-core'
+import { defineCustomElement as defineContainerElement } from '@baloise/ds-core/components/bal-notification-container'
+import { defineCustomElement } from '@baloise/ds-core/components/bal-notification'
 import { BalTokenSnackbar } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalSnackbarService {
-  constructor(@Inject(BalTokenSnackbar) private ctrl: BalSnackbarController) {
-    defineNoticeElement()
+  constructor(@Inject(BalTokenSnackbar) private ctrl: NotificationController) {
+    defineContainerElement()
     defineCustomElement()
   }
 
-  create(options: BalSnackbarOptions): Components.BalSnackbar {
+  async create(options: Notification): Promise<string | undefined> {
     return this.ctrl.create(options)
   }
 
