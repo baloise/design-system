@@ -59,7 +59,7 @@ use id's and parts in the shadow dom components
 | bal-list           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      |
 | bal-list-accordion | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      |
 | -----------------  | ----------------   | ---------- | ---- | ------------- | --      |
-| bal-icon           | Web Component      | ✅         | ⬜   | ⬜            | ⬜      |
+| bal-icon           | Web Component      | ✅         | ⬜   | ✅            | ⬜      |
 | bal-spinner        | Web Component      | ✅         | ⬜   | ✅            | ⬜      |
 | bal-logo           | Web Component      | ✅         | ⬜   | ⬜            | ⬜      |
 | bal-switch         | Web Component      | ✅         | ⬜   | ⬜            | ⬜      |

@@ -25,7 +25,10 @@
   @include hybrid.base-styles('logo');
 
   position: static;
-  display: block;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 4px;
 
   svg {
     transform: unset !important;
@@ -40,6 +43,12 @@
   @include desktop {
     --logo-height: 32px;
   }
+
+  #animated {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 
 /**
@@ -49,8 +58,12 @@
   */
 
 :host(.is-animated) {
-  @include desktop {
-    margin-left: -7px;
+  grid-template-columns: auto 1fr;
+
+  #animated {
+    display: block;
+    width: var(--logo-height);
+    height: var(--logo-height);
   }
 }
 
@@ -60,6 +73,7 @@
 
 :host(.is-small) {
   --logo-height: 22px;
+
   @include desktop {
     --logo-height: 22px;
   }

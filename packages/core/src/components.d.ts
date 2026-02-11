@@ -2255,8 +2255,13 @@ export namespace Components {
          */
         "animated": boolean;
         /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "brand": BalProps.BalLogoBrand;
+        /**
           * Defines the color of the logo.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color": BalProps.BalLogoColor;
         /**
@@ -8030,8 +8035,13 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "brand"?: BalProps.BalLogoBrand;
+        /**
           * Defines the color of the logo.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color"?: BalProps.BalLogoColor;
         /**

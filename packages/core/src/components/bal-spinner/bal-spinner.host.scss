@@ -33,15 +33,14 @@
   justify-content: center;
   align-content: center;
   text-align: center;
-  width: var(--spinner-size);
 
   svg {
     transform: unset !important;
   }
 }
 
-:host(.is-circle) {
-  --spinner-size: var(--spinner-circle-size);
+:host(:not(.is-circle)) {
+  width: var(--spinner-size);
 }
 
 :host(.is-circle) #inner {

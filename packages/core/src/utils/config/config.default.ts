@@ -75,6 +75,7 @@ export const defaultIcons = {
 }
 
 export const defaultConfig: BalConfigState = {
+  brand: 'helvetia',
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
