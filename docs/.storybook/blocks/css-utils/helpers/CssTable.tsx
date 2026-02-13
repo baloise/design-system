@@ -41,7 +41,12 @@ export const CssTable = ({
           {list.map(item => (
             <tr key={item.name}>
               <td>
-                <Clipboard label={[css, item.key].filter(i => i).join('-')} />
+                <Clipboard
+                  label={[css, item.key]
+                    .filter(i => i)
+                    .join('-')
+                    .toLowerCase()}
+                />
               </td>
               <td>
                 <Clipboard label={`var(--${item.name})`} value={`var(--${item.name})`} />

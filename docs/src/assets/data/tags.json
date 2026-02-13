@@ -37,7 +37,6 @@
   "bal-select",
   "bal-shape",
   "bal-sheet",
-  "bal-snackbar",
   "bal-spinner",
   "bal-stack",
   "bal-stage",
@@ -49,6 +48,5 @@
   "bal-tag",
   "bal-text",
   "bal-time-input",
-  "bal-toast",
   "bal-tooltip"
 ]

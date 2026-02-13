@@ -23,34 +23,34 @@
  */
 
 :root {
-  --bal-table-color: var(--bal-color-brand-primary-base);
+  --bal-table-color: var(--bal-color-primary-5);
   --bal-table-background-color: var(--bal-color-white);
   --bal-table-body-background-color: transparent;
   //
   // cell
-  --bal-table-cell-border-color: var(--bal-color-border-base);
+  --bal-table-cell-border-color: var(--bal-border-color-base);
   --bal-table-cell-border: 2px solid var(--bal-table-cell-border-color);
   --bal-table-cell-border-width: 0 0 2px;
   --bal-table-cell-padding: 0.5em 0.75em;
-  --bal-table-cell-heading-color: var(--bal-color-brand-primary-base);
+  --bal-table-cell-heading-color: var(--bal-color-primary-5);
   //
   // head
   --bal-table-head-cell-border-width: 0 0 1px;
-  --bal-table-head-cell-border-color: var(--bal-color-brand-primary-base);
-  --bal-table-head-cell-color: var(--bal-color-brand-primary-base);
+  --bal-table-head-cell-border-color: var(--bal-color-primary-5);
+  --bal-table-head-cell-color: var(--bal-color-primary-5);
   --bal-table-head-background-color: transparent;
   --bal-table-head-font-size: var(--bal-text-size-normal);
-  --bal-table-head-font-family: var(--bal-font-family-text);
+  --bal-table-head-font-family: var(--bal-font-family-title);
   //
   // foot
   --bal-table-foot-cell-border-width: 0 0 0;
-  --bal-table-foot-cell-color: var(--bal-color-brand-primary-base);
+  --bal-table-foot-cell-color: var(--bal-color-primary-5);
   --bal-table-foot-background-color: transparent;
   //
   // row
   --bal-table-row-background-color-hover: var(--bal-color-grey-2);
   --bal-table-row-background-color-active: var(--bal-color-primary-1);
-  --bal-table-row-color-active: var(--bal-color-brand-primary-base);
+  --bal-table-row-color-active: var(--bal-color-primary-5);
   --bal-table-striped-row-even-background-color: var(--bal-color-grey-1);
   --bal-table-striped-row-even-background-color-hover: var(--bal-color-grey-2);
 }

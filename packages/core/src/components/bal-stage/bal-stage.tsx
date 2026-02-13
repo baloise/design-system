@@ -4,6 +4,7 @@ import { BEM } from '../../utils/bem'
 @Component({
   tag: 'bal-stage',
   styleUrl: 'bal-stage.scss',
+  shadow: true,
 })
 export class Stage implements ComponentInterface {
   /**

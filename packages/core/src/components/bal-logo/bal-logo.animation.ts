@@ -9,8 +9,7 @@ export const animate = (el: HTMLElement, color: string, loop = false): Animation
     renderer: 'svg',
     loop: loop,
     autoplay: true,
-    // animationData: LogoAnimationData(color),
-    animationData: flatten('red', LogoAnimationData('red')),
+    animationData: flatten(color, LogoAnimationData(color)),
     rendererSettings: {
       viewBoxOnly: true,
       viewBoxSize: '80 80 980 980',

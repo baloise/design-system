@@ -1,9 +1,13 @@
 import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import React from 'react'
 
-export const ColorCard = ({ background, color, small = false }) => {
-  const colors = tokens.color
+export const ColorCard = ({ background, color, small = false }): React.ReactElement => {
+  const colors = tokens
   const colorPath = color.split('.')
-  const colorVariable = colorPath.reduce((acc, val) => acc[val] || {}, colors)
+  const colorVariable = colorPath.reduce((acc, val) => {
+    return acc[val] || {}
+  }, colors)
+
   return (
     <div
       className="sb-unstyled radius-large bg-white shadow-normal flex-1"
@@ -14,14 +18,24 @@ export const ColorCard = ({ background, color, small = false }) => {
         style={{
           minHeight: '64px',
           background: `var(--${colorVariable.name})`,
-          color: ['bal-color-primary'].includes(colorVariable.name) ? 'var(--bal-color-text-white)' : 'current',
+          color: ['bal-color-primary-5', 'bal-text-color-primary-base', 'bal-background-color-primary-base'].includes(
+            colorVariable.name,
+          )
+            ? 'var(--bal-color-white)'
+            : 'current',
         }}
       >
         {background ? 'A-a' : ''}
       </div>
       <div className={`radius-bottom-large p-small text-align-center`}>
-        <div className="title text-normal text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
-        <div className="text-small text-primary">{colorVariable.value}</div>
+        <div className="title text-normal text-primary">
+          {colorVariable.name
+            .replace('bal-color-', '')
+            .replace('bal-text-color-', '')
+            .replace('bal-background-color-', '')}
+        </div>
+        <div className="text-small text-primary">{colorVariable.$value}</div>
+        {/* <div className="text-small text-primary">{color}</div> */}
       </div>
     </div>
   )

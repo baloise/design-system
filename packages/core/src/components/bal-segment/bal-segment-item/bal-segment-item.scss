@@ -52,7 +52,7 @@
   background: transparent;
 
   font-size: var(--bal-text-size-normal);
-  font-weight: var(--bal-font-weight-bold);
+  font-weight: var(--bal-text-weight-bold);
   color: var(--bal-segment-item-text-color);
 
   overflow: hidden;
@@ -69,7 +69,7 @@
   }
   span {
     font-size: var(--bal-text-size-small);
-    font-weight: var(--bal-font-weight-regular);
+    font-weight: var(--bal-text-weight-regular);
   }
 }
 .bal-segment-item__button {

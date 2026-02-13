@@ -48,8 +48,8 @@ const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
     token: '🏷️ Semantic.🔤 Text.LineHeight',
     property: 'line-height',
-    responsive: false,
     replace: 'text-',
+    responsive: false,
     ...options,
   })
 }
@@ -79,6 +79,8 @@ const generateFontFamily = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
     token: '🏷️ Semantic.🔤 Text.Family',
     property: 'font-family',
+    replace: 'text-family-',
+    prefix: 'font-family',
     responsive: false,
     ...options,
   })
@@ -128,7 +130,14 @@ const generateTextTransform = () => {
 }
 
 const generateFontWeight = async (options: BuildStylesExecutorSchema) => {
-  return utils.staticClassByToken({ token: 'font.weight', property: 'font-weight', responsive: false, ...options })
+  return utils.staticClassByToken({
+    token: '🏷️ Semantic.🔤 Text.Weight',
+    property: 'font-weight',
+    replace: 'text-weight-',
+    prefix: 'font-weight',
+    responsive: false,
+    ...options,
+  })
 }
 
 const generateWhiteSpace = () => {

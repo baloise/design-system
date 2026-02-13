@@ -19,19 +19,23 @@
 
 ## generel
 
-| Item            | Description                                                           | Status |
-| --------------- | --------------------------------------------------------------------- | ------ |
-| Outline Shadow  | Define it as a variable to overide the color                          | ⬜     |
-| T-Shirt Sizes   | Change to 2xl and get rid off normal and use medium instead           | ⬜     |
-| FIGMA API       | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
-| Playwright      | Replace all Cypess test with Playwright                               | ⬜     |
-| Default vs Base | Use Default for states with hover and active                          | ⬜     |
-| Modal           | Use new native dialog API                                             | ⬜     |
-| Popup           | Use new native popup API                                              | ⬜     |
-| Accordion       | Use new native accordion API                                          | ⬜     |
-| Sandbox         | Use new sandbox api                                                   | ⬜     |
-| Brand Icons     | Update brand icons                                                    | ⬜     |
-| Brand Icons API | Create a task to automate the update                                  | ⬜     |
+| Item                       | Description                                                           | Status |
+| -------------------------- | --------------------------------------------------------------------- | ------ |
+| Accordion                  | Use new native accordion API                                          | ✅     |
+| Outline Shadow             | Define it as a variable to overide the color                          | ⬜     |
+| T-Shirt Sizes              | Change to 2xl and get rid off normal and use medium instead           | ⬜     |
+| FIGMA API                  | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
+| Playwright                 | Replace all Cypess test with Playwright                               | ⬜     |
+| Default vs Base            | Use Default for states with hover and active                          | ⬜     |
+| Modal                      | Use new native dialog API                                             | ⬜     |
+| Popup                      | Use new native popup API                                              | ⬜     |
+| Sandbox                    | Use new sandbox api                                                   | ⬜     |
+| Brand Icons                | Update brand icons                                                    | ⬜     |
+| Brand Icons API            | Create a task to automate the update                                  | ⬜     |
+| Stage                      | Would should we do with stage                                         | ⬜     |
+| Gap Analyses Material      | Check Components use cases                                            | ⬜     |
+| NPM Updates                | Check Vurnabilites                                                    | ⬜     |
+| UI Icons change base color | Change base color of svg to primary and not black                     | ⬜     |
 
 ## components
 
@@ -44,7 +48,7 @@ use id's and parts in the shadow dom components
 | Component          | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- |
 | bal-link           | CSS-Only           | ✅         | ⬜   | ✅            | ⬜      |
-| bal-stack          | Hybrid (No Shadow) | ✅         | ⬜   | ⬜            | ⬜      |
+| bal-stack          | Hybrid (No Shadow) | ✅         | ⬜   | ⛔            | ⬜      |
 | bal-close          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-tag            | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-badge          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
@@ -66,8 +70,8 @@ use id's and parts in the shadow dom components
 | bal-check          | Web Component      | ✅         | ⬜   | ⬜            | ⬜      |
 | bal-toast          | Web Component      | ✅         | ⬜   | ✅            | ⬜      |
 | bal-snackbar       | Web Component      | ✅         | ⬜   | ✅            | ⬜      |
-| bal-shape          | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      |
-| bal-stage          | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      |
+| bal-shape          | Web Component      | ✅         | ⬜   | ❓            | ⬜      |
+| bal-stage          | Web Component      | ❓         | ❓   | ❓            | ❓      |
 
 ### rest components
 

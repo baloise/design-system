@@ -59,14 +59,14 @@
               -webkit-appearance: none;
               border: none;
               color: var(--bal-footer-language-color);
-              font-weight: var(--bal-font-weight-bold);
+              font-weight: var(--bal-text-weight-bold);
               font-family: var(--bal-font-family-title);
               cursor: pointer;
 
               option {
                 background: var(--bal-color-white) !important;
                 color: var(--bal-color-brand-primary-base) !important;
-                font-weight: var(--bal-font-weight-bold) !important;
+                font-weight: var(--bal-text-weight-bold) !important;
                 font-family: var(--bal-font-family-text) !important;
               }
             }

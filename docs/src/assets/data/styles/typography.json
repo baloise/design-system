@@ -62,10 +62,10 @@
         "value": "var(--bal-text-color-danger-base)"
       },
       {
-        "class": "text-dagner-hover",
-        "css": "color: var(--bal-text-color-dagner-hover);",
+        "class": "text-danger-hover",
+        "css": "color: var(--bal-text-color-danger-hover);",
         "property": "color",
-        "value": "var(--bal-text-color-dagner-hover)"
+        "value": "var(--bal-text-color-danger-hover)"
       },
       {
         "class": "text-danger-active",
@@ -132,13 +132,13 @@
   {
     "font-family": [
       {
-        "class": "text-family-title",
-        "css": "font-family: var(--bal-text-family-title);",
+        "class": "font-family-heading",
+        "css": "font-family: var(--bal-text-family-heading);",
         "property": "font-family",
-        "value": "var(--bal-text-family-title)"
+        "value": "var(--bal-text-family-heading)"
       },
       {
-        "class": "text-family-body",
+        "class": "font-family-body",
         "css": "font-family: var(--bal-text-family-body);",
         "property": "font-family",
         "value": "var(--bal-text-family-body)"
@@ -154,10 +154,10 @@
         "value": "var(--bal-text-line-height-single)"
       },
       {
-        "class": "line-height-title",
-        "css": "line-height: var(--bal-text-line-height-title);",
+        "class": "line-height-heading",
+        "css": "line-height: var(--bal-text-line-height-heading);",
         "property": "line-height",
-        "value": "var(--bal-text-line-height-title)"
+        "value": "var(--bal-text-line-height-heading)"
       },
       {
         "class": "line-height-body",
@@ -224,7 +224,26 @@
     ]
   },
   {
-    "font-weight": []
+    "font-weight": [
+      {
+        "class": "font-weight-light",
+        "css": "font-weight: var(--bal-text-weight-light);",
+        "property": "font-weight",
+        "value": "var(--bal-text-weight-light)"
+      },
+      {
+        "class": "font-weight-regular",
+        "css": "font-weight: var(--bal-text-weight-regular);",
+        "property": "font-weight",
+        "value": "var(--bal-text-weight-regular)"
+      },
+      {
+        "class": "font-weight-bold",
+        "css": "font-weight: var(--bal-text-weight-bold);",
+        "property": "font-weight",
+        "value": "var(--bal-text-weight-bold)"
+      }
+    ]
   },
   {
     "white-space": [
@@ -251,10 +270,10 @@
         "value": "var(--bal-text-line-height-single)"
       },
       {
-        "class": "line-height-title",
-        "css": "line-height: var(--bal-text-line-height-title);",
+        "class": "line-height-heading",
+        "css": "line-height: var(--bal-text-line-height-heading);",
         "property": "line-height",
-        "value": "var(--bal-text-line-height-title)"
+        "value": "var(--bal-text-line-height-heading)"
       },
       {
         "class": "line-height-body",

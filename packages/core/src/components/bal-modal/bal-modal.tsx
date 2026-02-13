@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, writeTask } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../../utils/browser'
-import { getClassMap } from '../../utils/css-classes'
+import { getClassMap } from '../../utils/css'
 import { attachComponent, detachComponent } from '../../utils/framework-delegate'
 import { deepReady, wait } from '../../utils/helpers'
 import { dismiss, eventMethod, FOCUS_TRAP_DISABLE_CLASS, prepareOverlay } from '../../utils/overlays/overlays'

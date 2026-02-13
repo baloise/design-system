@@ -78,3 +78,11 @@
     --logo-height: 22px;
   }
 }
+
+:host(.is-large) {
+  --logo-height: 32px;
+
+  @include desktop {
+    --logo-height: 48px;
+  }
+}

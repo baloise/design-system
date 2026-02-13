@@ -8,7 +8,7 @@
   cursor: pointer;
   border-radius: var(--bal-radius-base);
   font-family: var(--bal-font-family-text);
-  font-weight: var(--bal-font-weight-regular);
+  font-weight: var(--bal-text-weight-regular);
   color: var(--bal-date-calendar-button-color);
   border: none;
   background: var(--bal-date-calendar-button-background);
@@ -29,7 +29,7 @@
   }
   &--today:not(&--selected):not(&--disabled) {
     color: var(--bal-date-calendar-button-today-color);
-    font-weight: var(--bal-font-weight-bold);
+    font-weight: var(--bal-text-weight-bold);
     @include hover {
       &:hover {
         color: var(--bal-date-calendar-button-today-color-hover);
@@ -42,7 +42,7 @@
   &--selected {
     background: var(--bal-date-calendar-button-selected-background);
     color: var(--bal-date-calendar-button-selected-color);
-    font-weight: var(--bal-font-weight-bold);
+    font-weight: var(--bal-text-weight-bold);
   }
   &--disabled {
     cursor: default;

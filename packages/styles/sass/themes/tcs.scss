@@ -107,7 +107,7 @@
   // --bal-body-font-size: 15px
   --bal-font-family-text: 'MuseoSans-300', sans-serif;
   --bal-font-family-title: 'MuseoSlab-700', sans-serif;
-  // --bal-font-weight-bold: 400
+  // --bal-text-weight-bold): 400
   // --bal-link-font-weight: 800
   --bal-body-color: var(--tcs-color-font);
   --bal-link-color: var(--tcs-color-font);
@@ -134,7 +134,7 @@
   --bal-form-field-message-color: var(--tcs-color-grey-2);
   --bal-form-field-control-border-color-active: var(--tcs-color-font);
   --bal-form-field-label-font-family: var(--bal-font-family-title);
-  --bal-form-field-label-font-weight: var(--bal-font-weight-bold);
+  --bal-form-field-label-font-weight: var(--bal-text-weight-bold);
   --bal-label-small-font-size: var(--bal-text-size-normal);
   --bal-label-small-font-size-tablet: var(--bal-text-size-normal-tablet);
   --bal-label-small-font-size-desktop: var(--bal-text-size-normal-desktop);
@@ -240,7 +240,7 @@
   --bal-tabs-tab-button-icon-text-color-active: var(--bal-color-text-primary);
   // Native Lists
   --bal-description-list-term-color: var(--bal-color-text-primary);
-  --bal-description-list-term-font-weight: var(--bal-font-weight-bold);
+  --bal-description-list-term-font-weight: var(--bal-text-weight-bold);
   --bal-description-list-detail-color: var(--bal-color-text-primary);
 }
 body {

@@ -10,9 +10,44 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   const bordersLeft = await generateBorderByColor(options, { placement: 'left' })
 
   const borderWidth = await utils.staticClassByToken({
-    token: 'border.width',
+    token: '🏷️ Semantic.▭ Border.Width',
     property: 'border-width',
     ...options,
+  })
+
+  const borderNone = utils.staticClass({
+    property: 'border',
+    values: {
+      'border-none': 'none',
+    },
+  })
+
+  const borderTopNone = utils.staticClass({
+    property: 'border-top',
+    values: {
+      'border-top-none': 'none',
+    },
+  })
+
+  const borderRightNone = utils.staticClass({
+    property: 'border-right',
+    values: {
+      'border-right-none': 'none',
+    },
+  })
+
+  const borderBottomNone = utils.staticClass({
+    property: 'border-bottom',
+    values: {
+      'border-bottom-none': 'none',
+    },
+  })
+
+  const borderLeftNone = utils.staticClass({
+    property: 'border-left',
+    values: {
+      'border-left-none': 'none',
+    },
   })
 
   const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔵 Radius', ...options })
@@ -42,6 +77,11 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
         bordersBottom.docs,
         bordersLeft.docs,
         borderWidth.docs,
+        borderNone.docs,
+        borderTopNone.docs,
+        borderRightNone.docs,
+        borderBottomNone.docs,
+        borderLeftNone.docs,
       ],
       rules: [
         radius.rules,
@@ -57,6 +97,11 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
         bordersBottom.rules,
         bordersLeft.rules,
         borderWidth.rules,
+        borderNone.rules,
+        borderTopNone.rules,
+        borderRightNone.rules,
+        borderBottomNone.rules,
+        borderLeftNone.rules,
       ],
       visualTest: [],
     }),

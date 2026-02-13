@@ -1,5 +1,63 @@
 [
   {
+    "z-index": [
+      {
+        "class": "z-index-deep",
+        "css": "z-index: var(--bal-z-index-deep);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-deep)"
+      },
+      {
+        "class": "z-index-masked",
+        "css": "z-index: var(--bal-z-index-masked);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-masked)"
+      },
+      {
+        "class": "z-index-mask",
+        "css": "z-index: var(--bal-z-index-mask);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-mask)"
+      },
+      {
+        "class": "z-index-sticky",
+        "css": "z-index: var(--bal-z-index-sticky);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-sticky)"
+      },
+      {
+        "class": "z-index-navigation",
+        "css": "z-index: var(--bal-z-index-navigation);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-navigation)"
+      },
+      {
+        "class": "z-index-popup",
+        "css": "z-index: var(--bal-z-index-popup);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-popup)"
+      },
+      {
+        "class": "z-index-modal",
+        "css": "z-index: var(--bal-z-index-modal);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-modal)"
+      },
+      {
+        "class": "z-index-toast",
+        "css": "z-index: var(--bal-z-index-toast);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-toast)"
+      },
+      {
+        "class": "z-index-tooltip",
+        "css": "z-index: var(--bal-z-index-tooltip);",
+        "property": "z-index",
+        "value": "var(--bal-z-index-tooltip)"
+      }
+    ]
+  },
+  {
     "opacity": [
       {
         "class": "opacity-hidden",
@@ -24,6 +82,62 @@
         "css": "opacity: var(--bal-opacity-full);",
         "property": "opacity",
         "value": "var(--bal-opacity-full)"
+      },
+      {
+        "class": "opacity-half",
+        "css": "opacity: var(--bal-opacity-half);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-half)"
+      }
+    ]
+  },
+  {
+    "box-shadow": [
+      {
+        "class": "shadow-none",
+        "css": "box-shadow: var(--bal-shadow-box-none);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-none)"
+      },
+      {
+        "class": "shadow-small",
+        "css": "box-shadow: var(--bal-shadow-box-small);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-small)"
+      },
+      {
+        "class": "shadow-normal",
+        "css": "box-shadow: var(--bal-shadow-box-normal);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-normal)"
+      },
+      {
+        "class": "shadow-large",
+        "css": "box-shadow: var(--bal-shadow-box-large);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-large)"
+      },
+      {
+        "class": "shadow-header",
+        "css": "box-shadow: var(--bal-shadow-box-header);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-header)"
+      }
+    ]
+  },
+  {
+    "text-shadow": [
+      {
+        "class": "shadow-text-none",
+        "css": "text-shadow: var(--bal-shadow-text-none);",
+        "property": "text-shadow",
+        "value": "var(--bal-shadow-text-none)"
+      },
+      {
+        "class": "shadow-text-normal",
+        "css": "text-shadow: var(--bal-shadow-text-normal);",
+        "property": "text-shadow",
+        "value": "var(--bal-shadow-text-normal)"
       }
     ]
   }

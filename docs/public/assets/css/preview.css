@@ -21,7 +21,7 @@
 
 .sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
   font-family: 'BaloiseCreateText' !important;
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
   font-size: 1rem;
 }
 
@@ -39,13 +39,13 @@
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
   font-family: 'BaloiseCreateHeadline';
   font-weight: 700;
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: 1rem;
 }
 
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1 {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: var(--bal-text-size-xxx-large);
   line-height: 1.3;
   margin-top: 2.5rem !important;
@@ -120,13 +120,13 @@
 .sbdocs-content > div:not(.sb-unstyled) > p {
   font-family: 'BaloiseCreateText';
   font-weight: 400;
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: var(--bal-text-size-normal);
   line-height: 1.5;
 }
 
 a.sbdocs-a:not(.button) {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: inherit;
   font-weight: var(--bal-link-font-weight) !important;
   text-decoration: var(--bal-link-text-decoration) !important;
@@ -145,7 +145,7 @@ a.sbdocs-a:not(.button) {
 
 .sbdocs-content > ol > li,
 .sbdocs-content > ul > li {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: 1rem;
   hyphens: auto;
 }
@@ -175,7 +175,7 @@ a.sbdocs-a:not(.button) {
  ***************************************/
 
 blockquote {
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
   font-size: var(--bal-text-size-small) !important;
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
@@ -187,7 +187,7 @@ blockquote {
 }
 
 blockquote > p {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: var(--bal-text-size-small-desktop) !important;
   line-height: var(--bal-line-height-small-desktop) !important;
 }
@@ -199,13 +199,13 @@ blockquote > p {
 code:not(.language-diff, .language-scss) {
   background-color: var(--bal-color-primary-1) !important;
   border: 1px solid var(--bal-color-primary-1) !important;
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
 }
 
 a > code {
   background-color: var(--bal-color-primary-1) !important;
   border: 1px solid var(--bal-color-primary-1) !important;
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
 
   font-weight: var(--bal-link-font-weight) !important;
   text-decoration: var(--bal-link-text-decoration) !important;
@@ -219,7 +219,7 @@ a > code {
 
 .sbdocs-content table thead tr th,
 .sbdocs-content table tbody tr td {
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
 }
 
 /***************************************
@@ -229,18 +229,18 @@ a > code {
 .sbdocs-wrapper > div:not(.sbdocs-content) p {
   font-family: 'BaloiseCreateHeadline';
   font-weight: 700;
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
   font-size: 1rem;
 }
 
 .toc-link {
   font-family: 'BaloiseCreateText';
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
   opacity: 0.7;
 }
 
 .toc-list-item.is-active-li > a {
-  color: var(--bal-color-primary) !important;
+  color: var(--bal-color-primary-5) !important;
   opacity: 1;
 }
 
@@ -381,7 +381,7 @@ a.sbdocs-a.text-decoration-none {
   position: absolute;
   content: '';
   display: block;
-  background: var(--bal-color-primary);
+  background: var(--bal-color-primary-5);
   width: 100%;
   height: 2px;
   bottom: 0;
@@ -490,13 +490,13 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   font-size: 1.2rem !important;
   font-weight: 700 !important;
   margin-top: 1rem !important;
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
 }
 
 .support__label {
   font-size: 1rem !important;
   font-weight: 400;
-  color: var(--bal-color-primary);
+  color: var(--bal-color-primary-5);
 }
 
 /***************************************
@@ -541,7 +541,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   background-color: var(--bal-color-primary-6) !important;
   color: var(--bal-color-white) !important;
   border-radius: 4px;
-  padding: 0 4px;
+  padding: 4px;
   z-index: 100;
   font-family: var(--bal-font-family-text);
 }

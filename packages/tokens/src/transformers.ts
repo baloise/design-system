@@ -98,44 +98,49 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     name: `bal/size/rem`,
     filter: token => token.$type === 'number',
     transform: (token, _options) => {
-      const value = token.$value ?? token.value
+      const name = token.name
+      const value = token.$value
+      const originalValue = token.original.$value
+      const path = token.path
+      const isReference =
+        typeof originalValue === 'string' && originalValue.startsWith('{') && originalValue.endsWith('}')
 
-      const tokenName = Array.isArray((token as any).name)
-        ? (token as any).name.join('-')
-        : String((token as any).name ?? '')
-
-      // if line-height round the value to 1 decimal place
-      if (
-        tokenName.includes('line-height') ||
-        tokenName.includes('opacity') ||
-        tokenName.includes('LineHeight') ||
-        tokenName.includes('Opacity')
-      ) {
-        return Math.round(value * 10) / 10
-      }
-
-      // ignore specific tokens
-      const isPixel = ['breakpoint', 'radius-rounded', 'size-container', 'Breakpoint', 'RadiusRounded', 'SizeContainer']
-      if (isPixel.some(ignored => tokenName.includes(ignored))) {
-        return `${value}px`
-      }
-
-      const ignore = [
-        'line-height',
-        'z-index',
-        'opacity',
-        'font-weight',
-        'LineHeight',
-        'ZIndex',
-        'Opacity',
-        'FontWeight',
-        'Interaction',
-        'interaction',
-      ]
-      if (ignore.some(ignored => tokenName.includes(ignored))) {
+      if (`${value}`.endsWith('px')) {
         return value
       }
 
+      if (`${value}`.endsWith('rem')) {
+        return value
+      }
+
+      // Number only values with no unit
+      const tokenToBeNumberOnly = [
+        'LineHeight',
+        'FontWeight',
+        'Opacity',
+        '🌫️ Opacity',
+        'Z-Index',
+        '🗂️ Z-Index',
+        'Interaction',
+        '✨ Interaction',
+      ]
+      if (tokenToBeNumberOnly.some(ignored => path.includes(ignored))) {
+        return Math.round(value * 10) / 10
+      }
+
+      // Number only values with no unit
+      const tokenToBeNumberPixel = ['📐 Breakpoint', 'Breakpoint', '🗃️ Container', 'Container']
+      if (tokenToBeNumberPixel.some(ignored => path.includes(ignored))) {
+        console.log(path, value)
+        return value + 'px'
+      }
+
+      // Extra case for rounded radius
+      if (value === 9999) {
+        return value + 'px'
+      }
+
+      // turn pixel into rem
       return value / 16 + 'rem'
     },
   })

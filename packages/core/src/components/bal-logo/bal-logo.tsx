@@ -6,6 +6,7 @@ import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/c
 import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { LogoBaloise, LogoHelvetia } from './bal-logo.icons'
+import { cssVariables } from '../../utils/css'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
@@ -107,10 +108,6 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    * ------------------------------------------------------
    */
 
-  private get isHelvetia() {
-    return this.brand === 'helvetia' || (this.brand === '' && this.configBrand === 'helvetia')
-  }
-
   private get isAnimated() {
     return this.doesConfigAllowAnimation && this.animated
   }
@@ -122,7 +119,8 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
       if (this.animationFunction) {
         this.destroyAnimation()
-        this.animationItem = this.animationFunction(this.animatedLogoElement, this.color, false)
+
+        this.animationItem = this.animationFunction(this.animatedLogoElement, this.getColor(), false)
       }
     }
   }
@@ -153,6 +151,22 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     }
   }
 
+  private getColor() {
+    return this.color === 'white' ? '#ffffff' : '#151f6d'
+  }
+
+  private getHeight() {
+    if (this.size === 'small') {
+      return 22
+    }
+
+    if (this.size === 'large') {
+      return this.isTouch ? 32 : 48
+    }
+
+    return this.isTouch ? 22 : 32
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -161,15 +175,16 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   render() {
     const LogoElement =
       this.brand === 'helvetia' || (this.brand === '' && this.configBrand === 'helvetia') ? (
-        <LogoHelvetia onlyText={this.animated} small={this.isTouch || this.size === 'small'} />
+        <LogoHelvetia onlyText={this.animated} height={this.getHeight()} />
       ) : (
-        <LogoBaloise onlyText={this.animated} small={this.isTouch || this.size === 'small'} />
+        <LogoBaloise onlyText={this.animated} height={this.getHeight()} />
       )
 
     return (
       <Host
         class={{
           'is-small': this.size === 'small',
+          'is-large': this.size === 'large',
           'is-animated': this.animated,
           'is-inverted': this.color === 'white',
         }}
@@ -181,8 +196,8 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
           aria-hidden="true"
           style={{
             display: this.isAnimated ? 'block' : 'none',
-            width: this.isTouch || this.size === 'small' ? '22px' : '32px',
-            height: this.isTouch || this.size === 'small' ? '22px' : '32px',
+            width: this.getHeight() + 'px',
+            height: this.getHeight() + 'px',
           }}
         ></div>
         {LogoElement}

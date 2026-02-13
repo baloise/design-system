@@ -17684,11 +17684,53 @@
           "setter": false
         },
         {
+          "name": "brand",
+          "type": "\"\" | \"baloise\" | \"helvetia\"",
+          "complexType": {
+            "original": "BalProps.BalLogoBrand",
+            "resolved": "\"\" | \"baloise\" | \"helvetia\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "brand",
+          "reflectToAttr": false,
+          "docs": "Defines the brand of the logo. Default is 'baloise'.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "baloise",
+              "type": "string"
+            },
+            {
+              "value": "helvetia",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "color",
-          "type": "\"blue\" | \"white\"",
+          "type": "\"primary\" | \"white\"",
           "complexType": {
             "original": "BalProps.BalLogoColor",
-            "resolved": "\"blue\" | \"white\"",
+            "resolved": "\"primary\" | \"white\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17703,13 +17745,13 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'blue'"
+              "text": "'primary'"
             }
           ],
-          "default": "'blue'",
+          "default": "'primary'",
           "values": [
             {
-              "value": "blue",
+              "value": "primary",
               "type": "string"
             },
             {
@@ -17724,10 +17766,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"small\"",
+          "type": "\"\" | \"large\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalLogoSize",
-            "resolved": "\"\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17751,6 +17793,10 @@
               "type": "\"\""
             },
             {
+              "value": "large",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             }
@@ -17765,7 +17811,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "animated",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -18679,10 +18730,10 @@
         },
         {
           "name": "logoSize",
-          "type": "\"\" | \"small\"",
+          "type": "\"\" | \"large\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalLogoSize",
-            "resolved": "\"\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -18704,6 +18755,10 @@
           "values": [
             {
               "type": "\"\""
+            },
+            {
+              "value": "large",
+              "type": "string"
             },
             {
               "value": "small",
@@ -26752,7 +26807,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-stage"
       ],
@@ -27776,7 +27831,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
         "bal-shape"

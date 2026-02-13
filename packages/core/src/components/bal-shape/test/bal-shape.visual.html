@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/styles/components/all.min.css" />
     <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
@@ -13,52 +12,51 @@
   </head>
 
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section>
-          <bal-shape data-testid="basic"></bal-shape>
-        </section>
-        <br />
-        <br />
-        <!-- Colors -->
-        <section class="flex flex-direction-row">
-          <bal-shape color="green"></bal-shape>
-          <bal-shape color="green-light"></bal-shape>
-          <bal-shape color="purple"></bal-shape>
-          <bal-shape color="purple-light"></bal-shape>
-          <bal-shape color="red"></bal-shape>
-          <bal-shape color="red-light"></bal-shape>
-          <bal-shape color="yellow"></bal-shape>
-          <bal-shape color="yellow-light"></bal-shape>
-        </section>
-        <br />
-        <br />
-        <!-- Variation 1 -->
-        <section class="flex flex-direction-row justify-content-space-between">
-          <bal-shape variation="1" rotation="0"></bal-shape>
-          <bal-shape variation="1" rotation="180"></bal-shape>
-          <bal-shape variation="1" rotation="270"></bal-shape>
-          <bal-shape variation="1" rotation="90"></bal-shape>
-        </section>
-        <br />
-        <br />
-        <!-- Variation 2 -->
-        <section class="flex flex-direction-row justify-content-space-between">
-          <bal-shape variation="2" rotation="0"></bal-shape>
-          <bal-shape variation="2" rotation="180"></bal-shape>
-          <bal-shape variation="2" rotation="270"></bal-shape>
-          <bal-shape variation="2" rotation="90"></bal-shape>
-        </section>
-        <br />
-        <br />
-        <!-- Variation 3 -->
-        <section class="flex flex-direction-row justify-content-space-between">
-          <bal-shape variation="3" rotation="0"></bal-shape>
-          <bal-shape variation="3" rotation="180"></bal-shape>
-          <bal-shape variation="3" rotation="270"></bal-shape>
-          <bal-shape variation="3" rotation="90"></bal-shape>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <section>
+        <span>Basic</span>
+        <bal-shape data-testid="basic"></bal-shape>
+      </section>
+
+      <!-- Colors -->
+      <section class="flex flex-direction-row gap-small">
+        <span>Colors</span>
+        <bal-shape color="green"></bal-shape>
+        <bal-shape color="green-light"></bal-shape>
+        <bal-shape color="purple"></bal-shape>
+        <bal-shape color="purple-light"></bal-shape>
+        <bal-shape color="red"></bal-shape>
+        <bal-shape color="red-light"></bal-shape>
+        <bal-shape color="yellow"></bal-shape>
+        <bal-shape color="yellow-light"></bal-shape>
+      </section>
+
+      <!-- Variation 1 -->
+      <section class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 1</span>
+        <bal-shape variation="1" rotation="0"></bal-shape>
+        <bal-shape variation="1" rotation="180"></bal-shape>
+        <bal-shape variation="1" rotation="270"></bal-shape>
+        <bal-shape variation="1" rotation="90"></bal-shape>
+      </section>
+
+      <!-- Variation 2 -->
+      <section class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 2</span>
+        <bal-shape variation="2" rotation="0"></bal-shape>
+        <bal-shape variation="2" rotation="180"></bal-shape>
+        <bal-shape variation="2" rotation="270"></bal-shape>
+        <bal-shape variation="2" rotation="90"></bal-shape>
+      </section>
+
+      <!-- Variation 3 -->
+      <section class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 3</span>
+        <bal-shape variation="3" rotation="0"></bal-shape>
+        <bal-shape variation="3" rotation="180"></bal-shape>
+        <bal-shape variation="3" rotation="270"></bal-shape>
+        <bal-shape variation="3" rotation="90"></bal-shape>
+      </section>
+    </main>
   </body>
 </html>

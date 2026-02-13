@@ -79,12 +79,12 @@
   }
 }
 .bal-option--selected .bal-option__inner {
-  font-weight: var(--bal-font-weight-bold);
+  font-weight: var(--bal-text-weight-bold);
 }
 .bal-option--selected.bal-option--focused {
   background: var(--bal-option-background-selected-hover);
   .bal-option__inner {
-    font-weight: var(--bal-font-weight-bold);
+    font-weight: var(--bal-text-weight-bold);
   }
   // Invalid Option
   // --------------------------------------------------

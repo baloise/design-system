@@ -3,7 +3,7 @@
 
 $tag-use-host: false !default;
 $tag-name: tag;
-$tag-css-selector: ('.tag');
+$tag-css-selector: ('.tag:not(.token)');
 $tag-host-selector: ('#tag');
 
 /**

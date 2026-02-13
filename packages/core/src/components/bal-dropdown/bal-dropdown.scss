@@ -17,7 +17,7 @@
   border-color: var(--bal-dropdown-control-border-color);
   border-radius: var(--bal-dropdown-control-border-radius);
   background: var(--bal-dropdown-control-background);
-  font-weight: var(--bal-font-weight-regular);
+  font-weight: var(--bal-text-weight-regular);
   font-size: var(--bal-text-size-normal);
   font-family: var(--bal-font-family-text);
   color: var(--bal-dropdown-control-text-color);
@@ -285,7 +285,7 @@
 }
 .bal-dropdown__root__content--size-small {
   font-size: var(--bal-text-size-small);
-  font-weight: var(--bal-font-weight-bold);
+  font-weight: var(--bal-text-weight-bold);
 }
 .bal-dropdown__clear--theme-purple {
   height: 2rem;

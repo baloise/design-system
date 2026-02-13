@@ -430,6 +430,12 @@
         "css": "border-color: var(--bal-border-color-yellow-active);",
         "property": "border-color",
         "value": "var(--bal-border-color-yellow-active)"
+      },
+      {
+        "class": "border-yellow-active-2",
+        "css": "border-color: var(--bal-border-color-yellow-active-2);",
+        "property": "border-color",
+        "value": "var(--bal-border-color-yellow-active-2)"
       }
     ]
   },
@@ -668,6 +674,12 @@
         "css": "border-top-color: var(--bal-border-color-yellow-active);",
         "property": "border-top-color",
         "value": "var(--bal-border-color-yellow-active)"
+      },
+      {
+        "class": "border-top-yellow-active-2",
+        "css": "border-top-color: var(--bal-border-color-yellow-active-2);",
+        "property": "border-top-color",
+        "value": "var(--bal-border-color-yellow-active-2)"
       }
     ]
   },
@@ -906,6 +918,12 @@
         "css": "border-right-color: var(--bal-border-color-yellow-active);",
         "property": "border-right-color",
         "value": "var(--bal-border-color-yellow-active)"
+      },
+      {
+        "class": "border-right-yellow-active-2",
+        "css": "border-right-color: var(--bal-border-color-yellow-active-2);",
+        "property": "border-right-color",
+        "value": "var(--bal-border-color-yellow-active-2)"
       }
     ]
   },
@@ -1144,6 +1162,12 @@
         "css": "border-bottom-color: var(--bal-border-color-yellow-active);",
         "property": "border-bottom-color",
         "value": "var(--bal-border-color-yellow-active)"
+      },
+      {
+        "class": "border-bottom-yellow-active-2",
+        "css": "border-bottom-color: var(--bal-border-color-yellow-active-2);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-border-color-yellow-active-2)"
       }
     ]
   },
@@ -1382,10 +1406,91 @@
         "css": "border-left-color: var(--bal-border-color-yellow-active);",
         "property": "border-left-color",
         "value": "var(--bal-border-color-yellow-active)"
+      },
+      {
+        "class": "border-left-yellow-active-2",
+        "css": "border-left-color: var(--bal-border-color-yellow-active-2);",
+        "property": "border-left-color",
+        "value": "var(--bal-border-color-yellow-active-2)"
       }
     ]
   },
   {
-    "border-width": []
+    "border-width": [
+      {
+        "class": "border-width-none",
+        "css": "border-width: var(--bal-border-width-none);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-none)"
+      },
+      {
+        "class": "border-width-small",
+        "css": "border-width: var(--bal-border-width-small);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-small)"
+      },
+      {
+        "class": "border-width-normal",
+        "css": "border-width: var(--bal-border-width-normal);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-normal)"
+      },
+      {
+        "class": "border-width-large",
+        "css": "border-width: var(--bal-border-width-large);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-large)"
+      }
+    ]
+  },
+  {
+    "border": [
+      {
+        "class": "border-none",
+        "css": "border: none;",
+        "property": "border",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "border-top": [
+      {
+        "class": "border-top-none",
+        "css": "border-top: none;",
+        "property": "border-top",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "border-right": [
+      {
+        "class": "border-right-none",
+        "css": "border-right: none;",
+        "property": "border-right",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "border-bottom": [
+      {
+        "class": "border-bottom-none",
+        "css": "border-bottom: none;",
+        "property": "border-bottom",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "border-left": [
+      {
+        "class": "border-left-none",
+        "css": "border-left: none;",
+        "property": "border-left",
+        "value": "none"
+      }
+    ]
   }
 ]

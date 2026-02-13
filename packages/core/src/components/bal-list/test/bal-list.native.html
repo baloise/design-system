@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/styles/components/all.min.css" />
     <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
@@ -13,127 +12,88 @@
   </head>
 
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <h2 class="title text-xx-large">Basic</h2>
-        <section>
+    <main class="container py-medium">
+      <section>
+        <span>Basic</span>
+        <div>
           <ul class="list">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ul>
-        </section>
-        <section>
-          <ol class="list">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ol>
-        </section>
-        <section class="text-align-center">
-          <ol class="list is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ol>
-        </section>
-        <h2 class="title text-xx-large">Bullet Circle</h2>
-        <section>
           <ul class="list has-bullet-circle">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li>Green Circle List Item 1</li>
+            <li>Green Circle List Item 3</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list has-bullet-circle is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+          <ul class="list has-bullet-circle has-bullet-purple">
+            <li>Purple Circle List Item 1</li>
+            <li>Purple Circle List Item 3</li>
           </ul>
-        </section>
-        <h2 class="title text-xx-large">Bullet Check</h2>
-        <section>
+          <ul class="list has-bullet-circle has-bullet-red">
+            <li>Red Circle List Item 1</li>
+            <li>Red Circle List Item 3</li>
+          </ul>
+          <ul class="list has-bullet-circle has-bullet-yellow">
+            <li>Yellow Circle List Item 1</li>
+            <li>Yellow Circle List Item 3</li>
+          </ul>
+          <ol class="list">
+            <li>Numbered List Item 1</li>
+            <li>Numbered List Item 2</li>
+          </ol>
           <ul class="list has-bullet-check">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li>Checked List Item 1</li>
+            <li>Checked List Item 2</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list has-bullet-check is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ul>
-        </section>
-        <h2 class="title text-xx-large">Bullet Check Circle</h2>
-        <section>
           <ul class="list has-bullet-check-circle">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li>Checked List Item 1</li>
+            <li>Checked List Item 2</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list has-bullet-check-circle is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ul>
-        </section>
-        <h2 class="title text-xx-large">Bullet Close</h2>
-        <section>
           <ul class="list has-bullet-close">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li class="opacity-50">Close List Item 1</li>
+            <li class="opacity-50">Close List Item 2</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list has-bullet-close is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ul>
-        </section>
-        <h2 class="title text-xx-large">Bullet Arrow Down</h2>
-        <section>
           <ul class="list has-bullet-arrow-down">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            <li>Arrow Down List Item 1</li>
+            <li>Arrow Down List Item 2</li>
           </ul>
-        </section>
-        <section class="text-align-center">
-          <ul class="list has-bullet-arrow-down is-inside">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+          <ul class="list has-bullets">
+            <li class="has-bullet-check">Checked List Item 1</li>
+            <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>
+            <li class="has-bullet-close opacity-50">Close List Item 2</li>
+            <li class="has-bullet-close opacity-50 has-bullet-red">Red Close List Item 2</li>
           </ul>
-        </section>
-      </main>
-    </bal-doc-app>
+          <div class="s-bg-inverted p-x-small">
+            <ul class="list has-bullets is-inverted">
+              <li class="has-bullet-check">Inverted checked List Item 1</li>
+              <li class="has-bullet-close opacity-50">Inverted close List Item 2</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <span>Inside</span>
+        <ul class="list is-inside">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </section>
+
+      <section>
+        <span>Data List</span>
+        <dl class="list">
+          <dt>Term 1</dt>
+          <dd>Description 1</dd>
+          <dt>Term 2</dt>
+          <dd>Description 2</dd>
+          <dt>Term 3</dt>
+          <dd>Description 3</dd>
+          <dt>Term 4</dt>
+          <dd>Description 4</dd>
+        </dl>
+      </section>
+    </main>
   </body>
 </html>

@@ -62,7 +62,7 @@
     @include element(text) {
       @include element(field) {
         font-family: var(--bal-font-family-text);
-        font-weight: var(--bal-font-weight-regular);
+        font-weight: var(--bal-text-weight-regular);
         line-height: var(--bal-text-line-height-text);
         font-size: var(--bal-text-size-normal);
       }

@@ -57,7 +57,7 @@
       text-align: center;
 
       & > span {
-        font-weight: var(--bal-font-weight-bold);
+        font-weight: var(--bal-text-weight-bold);
       }
       @include tablet {
         gap: 8px;

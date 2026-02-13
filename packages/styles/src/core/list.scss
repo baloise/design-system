@@ -1,9 +1,9 @@
 @use '../mixins/_all' as *;
 
-ol.list.has-bullets,
-ul.list.has-bullets,
-ol.is-list.has-bullets,
-ul.is-list.has-bullets {
+ol.list,
+ul.list,
+ol.is-list,
+ul.is-list {
   margin-bottom: 1.5rem;
   margin-left: 2rem;
   @include desktop {
@@ -151,8 +151,8 @@ ul.is-list.has-bullets {
   }
 }
 
-ul.list.has-bullets:not(.has-bullet-circle):not(.has-bullet-check) li,
-ul.is-list.has-bullets:not(.has-bullet-circle):not(.has-bullet-check) li {
+ul.list:not(.has-bullet-circle):not(.has-bullet-check) li,
+ul.is-list:not(.has-bullet-circle):not(.has-bullet-check) li {
   list-style: disc;
 }
 

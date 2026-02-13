@@ -5,6 +5,6 @@
 
 namespace BalProps {
   export type BalLogoColor = 'primary' | 'white'
-  export type BalLogoSize = 'small' | ''
+  export type BalLogoSize = 'large' | 'small' | ''
   export type BalLogoBrand = 'baloise' | 'helvetia' | ''
 }

@@ -8,10 +8,10 @@
         "value": "var(--bal-background-color-white)"
       },
       {
-        "class": "bg-neutral",
-        "css": "background: var(--bal-background-color-neutral);",
+        "class": "bg-transparent",
+        "css": "background: var(--bal-background-color-transparent);",
         "property": "background",
-        "value": "var(--bal-background-color-neutral)"
+        "value": "var(--bal-background-color-transparent)"
       },
       {
         "class": "bg-light-blue",
@@ -32,10 +32,34 @@
         "value": "var(--bal-background-color-info)"
       },
       {
+        "class": "bg-info-light",
+        "css": "background: var(--bal-background-color-info-light);",
+        "property": "background",
+        "value": "var(--bal-background-color-info-light)"
+      },
+      {
+        "class": "bg-info-dark",
+        "css": "background: var(--bal-background-color-info-dark);",
+        "property": "background",
+        "value": "var(--bal-background-color-info-dark)"
+      },
+      {
         "class": "bg-success",
         "css": "background: var(--bal-background-color-success);",
         "property": "background",
         "value": "var(--bal-background-color-success)"
+      },
+      {
+        "class": "bg-success-light",
+        "css": "background: var(--bal-background-color-success-light);",
+        "property": "background",
+        "value": "var(--bal-background-color-success-light)"
+      },
+      {
+        "class": "bg-success-dark",
+        "css": "background: var(--bal-background-color-success-dark);",
+        "property": "background",
+        "value": "var(--bal-background-color-success-dark)"
       },
       {
         "class": "bg-warning",
@@ -44,10 +68,34 @@
         "value": "var(--bal-background-color-warning)"
       },
       {
+        "class": "bg-warning-light",
+        "css": "background: var(--bal-background-color-warning-light);",
+        "property": "background",
+        "value": "var(--bal-background-color-warning-light)"
+      },
+      {
+        "class": "bg-warning-dark",
+        "css": "background: var(--bal-background-color-warning-dark);",
+        "property": "background",
+        "value": "var(--bal-background-color-warning-dark)"
+      },
+      {
         "class": "bg-danger",
         "css": "background: var(--bal-background-color-danger);",
         "property": "background",
         "value": "var(--bal-background-color-danger)"
+      },
+      {
+        "class": "bg-danger-light",
+        "css": "background: var(--bal-background-color-danger-light);",
+        "property": "background",
+        "value": "var(--bal-background-color-danger-light)"
+      },
+      {
+        "class": "bg-danger-dark",
+        "css": "background: var(--bal-background-color-danger-dark);",
+        "property": "background",
+        "value": "var(--bal-background-color-danger-dark)"
       },
       {
         "class": "bg-grey-light",
@@ -62,6 +110,12 @@
         "value": "var(--bal-background-color-grey-base)"
       },
       {
+        "class": "bg-grey-dark",
+        "css": "background: var(--bal-background-color-grey-dark);",
+        "property": "background",
+        "value": "var(--bal-background-color-grey-dark)"
+      },
+      {
         "class": "bg-primary-light",
         "css": "background: var(--bal-background-color-primary-light);",
         "property": "background",
@@ -74,10 +128,22 @@
         "value": "var(--bal-background-color-primary-base)"
       },
       {
-        "class": "bg-green-ligher",
-        "css": "background: var(--bal-background-color-green-ligher);",
+        "class": "bg-primary-hover",
+        "css": "background: var(--bal-background-color-primary-hover);",
         "property": "background",
-        "value": "var(--bal-background-color-green-ligher)"
+        "value": "var(--bal-background-color-primary-hover)"
+      },
+      {
+        "class": "bg-primary-active",
+        "css": "background: var(--bal-background-color-primary-active);",
+        "property": "background",
+        "value": "var(--bal-background-color-primary-active)"
+      },
+      {
+        "class": "bg-green-lighter",
+        "css": "background: var(--bal-background-color-green-lighter);",
+        "property": "background",
+        "value": "var(--bal-background-color-green-lighter)"
       },
       {
         "class": "bg-green-light",
@@ -110,10 +176,10 @@
         "value": "var(--bal-background-color-purple-base)"
       },
       {
-        "class": "bg-red-ligher",
-        "css": "background: var(--bal-background-color-red-ligher);",
+        "class": "bg-red-lighter",
+        "css": "background: var(--bal-background-color-red-lighter);",
         "property": "background",
-        "value": "var(--bal-background-color-red-ligher)"
+        "value": "var(--bal-background-color-red-lighter)"
       },
       {
         "class": "bg-red-light",
@@ -128,10 +194,10 @@
         "value": "var(--bal-background-color-red-base)"
       },
       {
-        "class": "bg-yellow-ligher",
-        "css": "background: var(--bal-background-color-yellow-ligher);",
+        "class": "bg-yellow-lighter",
+        "css": "background: var(--bal-background-color-yellow-lighter);",
         "property": "background",
-        "value": "var(--bal-background-color-yellow-ligher)"
+        "value": "var(--bal-background-color-yellow-lighter)"
       },
       {
         "class": "bg-yellow-light",
@@ -150,6 +216,12 @@
         "css": "background: var(--bal-color-black);",
         "property": "background",
         "value": "var(--bal-color-black)"
+      },
+      {
+        "class": "bg-neutral",
+        "css": "background: var(--bal-color-neutral);",
+        "property": "background",
+        "value": "var(--bal-color-neutral)"
       },
       {
         "class": "bg-danger-1",

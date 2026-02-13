@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensZIndex = ({ overview }): React.ReactElement => {
-  const list = tokens['z-index']
+  const list = tokens['🏷️ Semantic']['🗂️ Z-Index']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -17,19 +17,19 @@ export const TokensZIndex = ({ overview }): React.ReactElement => {
         const item = list[key]
         return (
           <tbody key={key}>
-            <tr>
-              <td style={{ verticalAlign: 'top' }} className="border-none">
+            <tr className="border-bottom-grey">
+              <td>
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
-              <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
+              <td>
+                <p className={`text-small text-weight-bold`}>{item.$value}</p>
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={2} className="border-bottom-grey">
                 <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         )
       })}

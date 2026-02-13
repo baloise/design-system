@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import brandIcons from '../../src/assets/data/brand-icons.json'
 import uiIcons from '../../src/assets/data/icons.json'
+import React from 'react'
 
 const icons = [
   ...uiIcons.sort().map(name => ({ name, collection: 'ui-icons', color: 'primary' })),
@@ -19,7 +20,7 @@ const icons = [
   })),
 ].sort((a, b) => a.name.localeCompare(b.name))
 
-export const IconOverview = ({ children }) => {
+export const IconOverview = ({ children }): React.ReactElement => {
   const [collection, setCollection] = useState('ui-icons')
   const [color, setColor] = useState('primary')
   const [searchItem, setSearchItem] = useState('')
@@ -101,19 +102,11 @@ export const IconOverview = ({ children }) => {
               className={`bg-${icon.color}-1 radius-normal px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
               style={{ width: '138px' }}
             >
-              {icon.collection === 'ui-icons' ? (
-                <div
-                  style={{
-                    maskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                    WebkitMaskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                    backgroundColor: 'var(--bal-color-primary)',
-                    height: '32px',
-                    width: '32px',
-                  }}
-                ></div>
-              ) : (
-                <img src={`/assets/images/brand-icons/${icon.name}.svg`} alt={icon.name} width={'64px'} />
-              )}
+              <img
+                src={`/assets/images/${icon.collection.replace('ui-icons', 'icons')}/${icon.name}.svg`}
+                alt={icon.name}
+                width={'64px'}
+              />
               <span
                 className="text-x-small font-weight-bold flex justify-content-center align-items-center"
                 style={{ minHeight: '40px' }}

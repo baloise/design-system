@@ -1262,8 +1262,8 @@ const replacementsCSSVariablesVarious = {
   to: [
     '0',
     'var(--bal-container-size-normal)',
-    'var(--bal-font-weight-bold)',
-    'var(--bal-font-weight-regular)',
+    'var(--bal-text-weight-bold)',
+    'var(--bal-text-weight-regular)',
     'var(--bal-font-weight-light)',
     '0',
     'none',

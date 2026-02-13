@@ -2,13 +2,14 @@ import { FunctionalComponent, h, JSX } from '@stencil/core'
 
 type LogoProps = {
   onlyText?: boolean
-  small?: boolean
+  // small?: boolean
+  height: number
 }
 
 type LogoComponent = FunctionalComponent<LogoProps>
 
-export const LogoHelvetia: LogoComponent = ({ onlyText, small }) => {
-  const height = small ? 22 : 32
+export const LogoHelvetia: LogoComponent = ({ onlyText, height }) => {
+  // const height = small ? 22 : 32
   const width = (1084 / 204) * height
 
   return (
@@ -31,8 +32,8 @@ export const LogoHelvetia: LogoComponent = ({ onlyText, small }) => {
   )
 }
 
-export const LogoBaloise: LogoComponent = ({ onlyText, small }) => {
-  const height = small ? 22 : 32
+export const LogoBaloise: LogoComponent = ({ onlyText, height }) => {
+  // const height = small ? 22 : 32
   const width = (158 / 32) * height
 
   return (
