@@ -29,7 +29,7 @@ export const TokensColorsBackgrounds = ({ overview }): React.ReactElement => {
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
-                    className="radius-normal"
+                    className="radius"
                     style={{ width: '48px', height: '48px', background: `var(--${item.name})` }}
                   ></div>
                 </td>

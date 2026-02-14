@@ -29,7 +29,7 @@ export const TokensBorderWidth = ({ overview }): React.ReactElement => {
                 <div
                   style={{
                     background: 'var(--bal-color-purple-4)',
-                    borderRadius: 'var(--bal-radius-normal)',
+                    borderRadius: 'var(--bal-radius)',
                     height: `var(--${item.name})`,
                     width: '48px',
                   }}

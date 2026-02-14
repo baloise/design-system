@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensZIndex = ({ overview }): React.ReactElement => {
-  const list = tokens['🏷️ Semantic']['🗂️ Z-Index']
+  const list = tokens['🏷️ Semantic']['🗂️ ZIndex']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>

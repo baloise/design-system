@@ -1,16 +1,16 @@
 import {
-  BalBreakpointDesktop,
-  BalBreakpointFullhd,
-  BalBreakpointHighDefinition,
   BalBreakpointTablet,
-  BalBreakpointWidescreen,
+  BalBreakpointDesktop,
+  BalBreakpointDesktopLg,
+  BalBreakpointDesktopXl,
+  BalBreakpointDesktop2Xl,
 } from '@baloise/ds-tokens'
 
 const breakpointTablet = BalBreakpointTablet
 const breakpointDesktop = BalBreakpointDesktop
-const breakpointHighDefinition = BalBreakpointHighDefinition
-const breakpointWidescreen = BalBreakpointWidescreen
-const breakpointFullhd = BalBreakpointFullhd
+const breakpointDesktopLg = BalBreakpointDesktopLg
+const breakpointDesktopXl = BalBreakpointDesktopXl
+const breakpointDesktop2Xl = BalBreakpointDesktop2Xl
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth
@@ -26,19 +26,19 @@ const isTouch = (win: Window) => isMobile(win) || isTablet(win)
 
 const isDesktop = (win: Window) => !isTouch(win)
 
-const isHighDefinition = (win: Window) => {
+const isDesktopLg = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointHighDefinition && width < breakpointWidescreen
+  return width >= breakpointDesktopLg && width < breakpointDesktopXl
 }
 
-const isWideScreen = (win: Window) => {
+const isDesktopXl = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointWidescreen && width < breakpointFullhd
+  return width >= breakpointDesktopXl && width < breakpointDesktop2Xl
 }
 
-const isFullHD = (win: Window) => {
+const isDesktop2Xl = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointFullhd
+  return width >= breakpointDesktop2Xl
 }
 
 export const BREAKPOINTS_MAP = {
@@ -46,7 +46,7 @@ export const BREAKPOINTS_MAP = {
   tablet: isTablet,
   touch: isTouch,
   desktop: isDesktop,
-  highDefinition: isHighDefinition,
-  widescreen: isWideScreen,
-  fullhd: isFullHD,
+  desktopLg: isDesktopLg,
+  desktopXl: isDesktopXl,
+  desktop2Xl: isDesktop2Xl,
 }

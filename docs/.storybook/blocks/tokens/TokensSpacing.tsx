@@ -35,7 +35,7 @@ export const TokensSpacing = ({ overview }): React.ReactElement => {
                 </td>
                 <td className="flex justify-content-center">
                   <div
-                    className="radius-normal"
+                    className="radius"
                     style={{
                       background: 'var(--bal-color-purple-4)',
                       width: `var(--${item.name})`,

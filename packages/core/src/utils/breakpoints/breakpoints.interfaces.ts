@@ -3,9 +3,9 @@ export type BalBreakpoints = {
   tablet: boolean
   touch: boolean
   desktop: boolean
-  highDefinition: boolean
-  widescreen: boolean
-  fullhd: boolean
+  desktopLg: boolean
+  desktopXl: boolean
+  desktop2Xl: boolean
 }
 
 export interface BalBreakpointObserver {

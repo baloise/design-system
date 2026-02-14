@@ -103,7 +103,6 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
         borderBottomNone.rules,
         borderLeftNone.rules,
       ],
-      visualTest: [],
     }),
   )
 }

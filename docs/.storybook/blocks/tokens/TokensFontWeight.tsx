@@ -28,7 +28,7 @@ export const TokensFontWeight = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`radius-normal text-primary text-x-large flex justify-content-center align-items-center`}
+                  className={`radius text-primary text-x-large flex justify-content-center align-items-center`}
                   style={{ width: '48px', height: '48px', fontWeight: `var(--${item.name})` }}
                 >
                   Aa

@@ -17,7 +17,7 @@ export const TokensFontColors = ({ overview }): React.ReactElement => {
           </td>
           <td style={{ verticalAlign: 'top' }} className="border-none">
             <div
-              className={`radius-normal font-weight-bold text-x-large flex justify-content-center align-items-center ${
+              className={`radius font-weight-bold text-x-large flex justify-content-center align-items-center ${
                 key === 'white' || preKey === 'inverted-' ? 'bg-primary' : ''
               }`}
               style={{ width: '48px', height: '48px', color: `var(--${item.name})` }}

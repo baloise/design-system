@@ -46,73 +46,41 @@
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1 {
   color: var(--bal-color-primary-5);
-  font-size: var(--bal-text-size-xxx-large);
+  font-size: var(--bal-text-size-3xl-device);
   line-height: 1.3;
   margin-top: 2.5rem !important;
 }
 
-@media screen and (min-width: 769px) {
-  .sbdocs-content > h1,
-  .sbdocs-content > div:not(.sb-unstyled) > h1 {
-    font-size: var(--bal-text-size-xxx-large-desktop);
-    margin-top: 3rem !important;
-  }
-}
-
 .sbdocs-content > h2,
 .sbdocs-content > div:not(.sb-unstyled) > h2 {
-  font-size: var(--bal-text-size-xx-large);
+  font-size: var(--bal-text-size-2xl-device§);
   line-height: 1.3;
   margin-top: 3rem !important;
 }
 
-@media screen and (min-width: 769px) {
-  .sbdocs-content > h2,
-  .sbdocs-content > div:not(.sb-unstyled) > h2 {
-    font-size: var(--bal-text-size-xx-large-desktop);
-    margin-top: 4rem !important;
-  }
-}
-
 .sbdocs-content > h3,
 .sbdocs-content > div:not(.sb-unstyled) > h3 {
-  font-size: var(--bal-text-size-x-large);
+  font-size: var(--bal-text-size-xl-device);
   line-height: 1.3;
   margin-top: 2rem !important;
 }
 
-@media screen and (min-width: 769px) {
-  .sbdocs-content > h3,
-  .sbdocs-content > div:not(.sb-unstyled) > h3 {
-    font-size: var(--bal-text-size-x-large-desktop);
-    margin-top: 4rem !important;
-  }
-}
-
 .sbdocs-content > h4,
 .sbdocs-content > div:not(.sb-unstyled) > h4 {
-  font-size: var(--bal-text-size-large);
+  font-size: var(--bal-text-size-lg-device);
   line-height: 1.3;
   margin-top: 1.5rem !important;
 }
 
-@media screen and (min-width: 769px) {
-  .sbdocs-content > h4,
-  .sbdocs-content > div:not(.sb-unstyled) > h4 {
-    font-size: var(--bal-text-size-large: desktop);
-    margin-top: 2rem !important;
-  }
-}
-
 .sbdocs-content > h5,
 .sbdocs-content > div:not(.sb-unstyled) > h5 {
-  font-size: var(--bal-text-size-medium: desktop);
+  font-size: var(--bal-text-size-md-device);
   line-height: 1.5;
 }
 
 .sbdocs-content > h6,
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
-  font-size: var(--bal-text-size-normal);
+  font-size: var(--bal-text-size-base-device);
   line-height: 1.5;
 }
 
@@ -121,22 +89,22 @@
   font-family: 'BaloiseCreateText';
   font-weight: 400;
   color: var(--bal-color-primary-5);
-  font-size: var(--bal-text-size-normal);
+  font-size: var(--bal-text-size-base-device);
   line-height: 1.5;
 }
 
 a.sbdocs-a:not(.button) {
   color: var(--bal-color-primary-5);
   font-size: inherit;
-  font-weight: var(--bal-link-font-weight) !important;
-  text-decoration: var(--bal-link-text-decoration) !important;
-  text-underline-offset: var(--bal-link-text-underline-offset) !important;
-  text-decoration-thickness: var(--bal-link-text-decoration-thickness) !important;
+  font-weight: var(--bal-link-weight) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.25rem !important;
+  text-decoration-thickness: var(--bal-link-border-width) !important;
 }
 
 .is-size-large a.sbdocs-a:not(.button) {
-  font-size: var(--bal-text-size-large-desktop);
-  line-height: var(--bal-line-height-large-desktop);
+  font-size: var(--bal-text-size-lg-device);
+  line-height: var(--bal-text-line-height-body);
 }
 
 /***************************************
@@ -152,7 +120,7 @@ a.sbdocs-a:not(.button) {
 
 .sbdocs-content > ul > li:not(:first-child),
 .sbdocs-content > ol > li:not(:first-child) {
-  margin-top: var(--bal-space-small);
+  margin-top: var(--bal-space-sm-device);
 }
 
 .sbdocs-content > ul li::marker {
@@ -167,7 +135,7 @@ a.sbdocs-a:not(.button) {
 
 .sbdocs-content > ol,
 .sbdocs-content > ul {
-  margin-bottom: var(--bal-space-x-large);
+  margin-bottom: var(--bal-space-xl-device);
 }
 
 /***************************************
@@ -176,8 +144,8 @@ a.sbdocs-a:not(.button) {
 
 blockquote {
   color: var(--bal-color-primary-5) !important;
-  font-size: var(--bal-text-size-small) !important;
-  line-height: var(--bal-line-height-small) !important;
+  font-size: var(--bal-text-size-sm-device) !important;
+  line-height: var(--bal-text-line-height-body) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
   background: #f9f3ff !important;
@@ -188,8 +156,8 @@ blockquote {
 
 blockquote > p {
   color: var(--bal-color-primary-5);
-  font-size: var(--bal-text-size-small-desktop) !important;
-  line-height: var(--bal-line-height-small-desktop) !important;
+  font-size: var(--bal-text-size-sm-device) !important;
+  line-height: var(--bal-text-line-height-body) !important;
 }
 
 /***************************************
@@ -207,10 +175,10 @@ a > code {
   border: 1px solid var(--bal-color-primary-1) !important;
   color: var(--bal-color-primary-5) !important;
 
-  font-weight: var(--bal-link-font-weight) !important;
-  text-decoration: var(--bal-link-text-decoration) !important;
-  text-underline-offset: var(--bal-link-text-underline-offset) !important;
-  text-decoration-thickness: var(--bal-link-text-decoration-thickness) !important;
+  font-weight: var(--bal-link-weight) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.25rem !important;
+  text-decoration-thickness: var(--bal-link-border-width) !important;
 }
 
 /***************************************
@@ -295,25 +263,6 @@ a > code {
   }
 }
 
-/* .my-welcome-guide {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-@media screen and (min-width: 769px), print {
-  .my-welcome-guide {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-  }
-}
-
-@media screen and (min-width: 1024px), print {
-  .my-welcome-guide {
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-  }
-} */
-
 /***************************************
  * SHADOW UTILS
  ***************************************/
@@ -323,24 +272,25 @@ a > code {
 }
 
 .doc-shadow-hover:hover {
-  box-shadow: var(--bal-shadow-base) !important;
+  box-shadow: var(--bal-shadow-box-base) !important;
 }
 
 .doc-shadow-large-hover {
-  box-shadow: var(--bal-shadow-base);
+  box-shadow: var(--bal-shadow-box-base);
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 
 .doc-shadow-large-hover:hover {
-  box-shadow: var(--bal-shadow-large) !important;
+  box-shadow: var(--bal-shadow-box-elevated) !important;
 }
 
 .doc-button-card img {
   max-width: 80px !important;
   width: 80px !important;
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
 }
 
+.doc-button-card,
 .text-decoration-none,
 a.text-decoration-none,
 a.sbdocs-a.text-decoration-none {
@@ -389,8 +339,8 @@ a.sbdocs-a.text-decoration-none {
 
 .doc-table-pre code {
   padding: 2px;
-  font-size: var(--bal-text-size-small);
-  border-radius: var(--bal-radius-normal);
+  font-size: var(--bal-text-size-sm-device);
+  border-radius: var(--bal-radius-base);
 }
 
 .doc-image-canvas img {
@@ -470,13 +420,13 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   text-decoration: none;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: var(--bal-shadow-base);
+  box-shadow: var(--bal-shadow-box-base);
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: #fff9e8;
 }
 
 .support > a:hover {
-  box-shadow: var(--bal-shadow-large) !important;
+  box-shadow: var(--bal-shadow-box-elevated) !important;
 }
 
 .support__icon {
@@ -543,7 +493,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   border-radius: 4px;
   padding: 4px;
   z-index: 100;
-  font-family: var(--bal-font-family-text);
+  font-family: var(--bal-font-family-body);
 }
 
 .clipboard-button:hover::after {
@@ -566,6 +516,6 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   color: var(--bal-color-primary-6) !important;
 }
 
-.radius-bottom-large {
+.radius-bottom-lg {
   border-radius: 0 0 12px 12px !important;
 }

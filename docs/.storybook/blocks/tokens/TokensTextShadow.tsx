@@ -27,7 +27,7 @@ export const TokensTextShadow = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className="radius-normal font-weight-bold text-x-large flex justify-content-center align-items-center"
+                  className="radius font-weight-bold text-x-large flex justify-content-center align-items-center"
                   style={{
                     height: '48px',
                     width: '48px',

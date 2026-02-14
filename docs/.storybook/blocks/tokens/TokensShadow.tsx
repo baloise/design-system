@@ -27,7 +27,7 @@ export const TokensShadow = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className="radius-normal"
+                  className="radius"
                   style={{
                     background: 'var(--bal-color-grey)',
                     height: '48px',

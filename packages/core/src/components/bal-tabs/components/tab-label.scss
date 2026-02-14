@@ -42,10 +42,11 @@
   &--disabled {
     color: var(--bal-tabs-tab-label-text-color-disabled);
   }
-      font-size: var(--bal-text-size-lg);
-    font-family: var(--bal-font-family-text);
-    color: var(--bal-tabs-tab-label-text-color-inverted);
-  }
+
+  // font-size: var(--bal-text-size-lg);
+  // font-family: var(--bal-font-family-text);
+  // color: var(--bal-tabs-tab-label-text-color-inverted);
+  // }
   &--inverted#{&}--disabled {
     color: var(--bal-tabs-tab-label-text-color-inverted-disabled);
   }

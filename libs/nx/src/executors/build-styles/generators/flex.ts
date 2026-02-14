@@ -115,72 +115,91 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     },
   })
 
+  const tshirtSizesMapping = {
+    '3xs': 'xx-small',
+    '2xs': 'xx-small',
+    'xs': 'x-small',
+    'sm': 'small',
+    'base': 'normal',
+    'md': 'medium',
+    'lg': 'large',
+    'xl': 'x-large',
+    '2xl': 'xx-large',
+    '3xl': 'xxx-large',
+    '4xl': 'xxxx-large',
+    '5xl': 'xxxxx-large',
+    '6xl': 'xxxxxx-large',
+  }
+
   for (const index in keys) {
     const key = keys[index]
-    valuesGap[`gap-${key}`] = `var(--bal-space-${key})`
-    valuesRowGap[`row-gap-${key}`] = `var(--bal-space-${key})`
-    valuesColumnGap[`column-gap-${key}`] = `var(--bal-space-${key})`
+    const oldKey = tshirtSizesMapping[key.toLowerCase()]
+
+    valuesGap[`gap-${key}${oldKey ? `, .gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
+    valuesRowGap[`row-gap-${key}${oldKey ? `, .row-gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
+    valuesColumnGap[`column-gap-${key}${oldKey ? `, .column-gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
   }
   const rulesFlexGap = utils.styleClass({ property: 'gap', values: valuesGap, important: true })
   const rulesFlexGapDocs = utils.jsonClass({ property: 'gap', values: valuesGap })
   const rulesFlexGapRow = utils.styleClass({ property: 'row-gap', values: valuesRowGap, important: true })
   const rulesFlexGapColumn = utils.styleClass({ property: 'column-gap', values: valuesColumnGap, important: true })
 
-  const valuesGapTablet = {}
-  const valuesRowGapTablet = {}
-  const valuesColumnGapTablet = {}
-  for (const index in keys) {
-    const key = keys[index]
-    valuesGapTablet[`gap-${key}`] = `var(--bal-space-${key}-tablet)`
-    valuesRowGapTablet[`row-gap-${key}`] = `var(--bal-space-${key}-tablet)`
-    valuesColumnGapTablet[`column-gap-${key}`] = `var(--bal-space-${key}-tablet)`
-  }
-  const rulesFlexGapTablet = utils.styleClass({
-    property: 'gap',
-    values: valuesGapTablet,
-    important: true,
-    breakpoint: 'tablet',
-  })
-  const rulesFlexGapRowTablet = utils.styleClass({
-    property: 'row-gap',
-    values: valuesRowGapTablet,
-    important: true,
-    breakpoint: 'tablet',
-  })
-  const rulesFlexGapColumnTablet = utils.styleClass({
-    property: 'column-gap',
-    values: valuesColumnGapTablet,
-    important: true,
-    breakpoint: 'tablet',
-  })
+  // const valuesGapTablet = {}
+  // const valuesRowGapTablet = {}
+  // const valuesColumnGapTablet = {}
+  // for (const index in keys) {
+  //   const key = keys[index]
+  //   valuesGapTablet[`gap-${key}`] = `var(--bal-space-${key}-tablet)`
+  //   valuesRowGapTablet[`row-gap-${key}`] = `var(--bal-space-${key}-tablet)`
+  //   valuesColumnGapTablet[`column-gap-${key}`] = `var(--bal-space-${key}-tablet)`
+  // }
+  // const rulesFlexGapTablet = utils.styleClass({
+  //   property: 'gap',
+  //   values: valuesGapTablet,
+  //   important: true,
+  //   breakpoint: 'tablet',
+  // })
+  // const rulesFlexGapRowTablet = utils.styleClass({
+  //   property: 'row-gap',
+  //   values: valuesRowGapTablet,
+  //   important: true,
+  //   breakpoint: 'tablet',
+  // })
+  // const rulesFlexGapColumnTablet = utils.styleClass({
+  //   property: 'column-gap',
+  //   values: valuesColumnGapTablet,
+  //   important: true,
+  //   breakpoint: 'tablet',
+  // })
 
-  const valuesGapDesktop = {}
-  const valuesRowGapDesktop = {}
-  const valuesColumnGapDesktop = {}
-  for (const index in keys) {
-    const key = keys[index]
-    valuesGapDesktop[`gap-${key}`] = `var(--bal-space-${key}-desktop)`
-    valuesRowGapDesktop[`row-gap-${key}`] = `var(--bal-space-${key}-desktop)`
-    valuesColumnGapDesktop[`column-gap-${key}`] = `var(--bal-space-${key}-desktop)`
-  }
-  const rulesFlexGapDesktop = utils.styleClass({
-    property: 'gap',
-    values: valuesGapDesktop,
-    important: true,
-    breakpoint: 'desktop',
-  })
-  const rulesFlexGapRowDesktop = utils.styleClass({
-    property: 'row-gap',
-    values: valuesRowGapDesktop,
-    important: true,
-    breakpoint: 'desktop',
-  })
-  const rulesFlexGapColumnDesktop = utils.styleClass({
-    property: 'column-gap',
-    values: valuesColumnGapDesktop,
-    important: true,
-    breakpoint: 'desktop',
-  })
+  // const valuesGapDesktop = {}
+  // const valuesRowGapDesktop = {}
+  // const valuesColumnGapDesktop = {}
+
+  // for (const index in keys) {
+  //   const key = keys[index]
+  //   valuesGapDesktop[`gap-${key}`] = `var(--bal-space-${key}-desktop)`
+  //   valuesRowGapDesktop[`row-gap-${key}`] = `var(--bal-space-${key}-desktop)`
+  //   valuesColumnGapDesktop[`column-gap-${key}`] = `var(--bal-space-${key}-desktop)`
+  // }
+  // const rulesFlexGapDesktop = utils.styleClass({
+  //   property: 'gap',
+  //   values: valuesGapDesktop,
+  //   important: true,
+  //   breakpoint: 'desktop',
+  // })
+  // const rulesFlexGapRowDesktop = utils.styleClass({
+  //   property: 'row-gap',
+  //   values: valuesRowGapDesktop,
+  //   important: true,
+  //   breakpoint: 'desktop',
+  // })
+  // const rulesFlexGapColumnDesktop = utils.styleClass({
+  //   property: 'column-gap',
+  //   values: valuesColumnGapDesktop,
+  //   important: true,
+  //   breakpoint: 'desktop',
+  // })
 
   return utils.save(
     'flex',
@@ -207,12 +226,6 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
         rulesFlexGap,
         rulesFlexGapRow,
         rulesFlexGapColumn,
-        rulesFlexGapTablet,
-        rulesFlexGapRowTablet,
-        rulesFlexGapColumnTablet,
-        rulesFlexGapDesktop,
-        rulesFlexGapRowDesktop,
-        rulesFlexGapColumnDesktop,
         gapNone.rules,
         gapRowNone.rules,
         gapColumnNone.rules,

@@ -5,7 +5,7 @@ export const initialBreakpoints: BalBreakpoints = {
   tablet: false,
   touch: false,
   desktop: false,
-  highDefinition: false,
-  widescreen: false,
-  fullhd: false,
+  desktopLg: false,
+  desktopXl: false,
+  desktop2Xl: false,
 }

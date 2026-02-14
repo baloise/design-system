@@ -193,7 +193,7 @@ export const TokenOverview = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="bg-grey-light radius-normal px-large pb-large" style={{ maxHeight: '680px', overflowY: 'auto' }}>
+      <div className="bg-grey-light radius px-large pb-large" style={{ maxHeight: '680px', overflowY: 'auto' }}>
         <div
           className="bg-grey-light"
           style={{
@@ -244,7 +244,7 @@ export const TokenOverview = (): React.ReactElement => {
                 <div className="flex gap-small align-items-center justify-content-start">
                   {token.tokenType === 'color' && (
                     <div
-                      className="radius-normal"
+                      className="radius"
                       style={{
                         width: '24px',
                         height: '24px',

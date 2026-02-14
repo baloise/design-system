@@ -66,6 +66,12 @@
         "value": "var(--bal-opacity-hidden)"
       },
       {
+        "class": "opacity-half",
+        "css": "opacity: var(--bal-opacity-half);",
+        "property": "opacity",
+        "value": "var(--bal-opacity-half)"
+      },
+      {
         "class": "opacity-disabled",
         "css": "opacity: var(--bal-opacity-disabled);",
         "property": "opacity",
@@ -82,12 +88,6 @@
         "css": "opacity: var(--bal-opacity-full);",
         "property": "opacity",
         "value": "var(--bal-opacity-full)"
-      },
-      {
-        "class": "opacity-half",
-        "css": "opacity: var(--bal-opacity-half);",
-        "property": "opacity",
-        "value": "var(--bal-opacity-half)"
       }
     ]
   },
@@ -100,45 +100,26 @@
         "value": "var(--bal-shadow-box-none)"
       },
       {
-        "class": "shadow-small",
-        "css": "box-shadow: var(--bal-shadow-box-small);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-box-small)"
-      },
-      {
-        "class": "shadow-normal",
-        "css": "box-shadow: var(--bal-shadow-box-normal);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-box-normal)"
-      },
-      {
-        "class": "shadow-large",
-        "css": "box-shadow: var(--bal-shadow-box-large);",
-        "property": "box-shadow",
-        "value": "var(--bal-shadow-box-large)"
-      },
-      {
         "class": "shadow-header",
         "css": "box-shadow: var(--bal-shadow-box-header);",
         "property": "box-shadow",
         "value": "var(--bal-shadow-box-header)"
+      },
+      {
+        "class": "shadow",
+        "css": "box-shadow: var(--bal-shadow-box-base);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-base)"
+      },
+      {
+        "class": "shadow-elevated",
+        "css": "box-shadow: var(--bal-shadow-box-elevated);",
+        "property": "box-shadow",
+        "value": "var(--bal-shadow-box-elevated)"
       }
     ]
   },
   {
-    "text-shadow": [
-      {
-        "class": "shadow-text-none",
-        "css": "text-shadow: var(--bal-shadow-text-none);",
-        "property": "text-shadow",
-        "value": "var(--bal-shadow-text-none)"
-      },
-      {
-        "class": "shadow-text-normal",
-        "css": "text-shadow: var(--bal-shadow-text-normal);",
-        "property": "text-shadow",
-        "value": "var(--bal-shadow-text-normal)"
-      }
-    ]
+    "text-shadow": []
   }
 ]

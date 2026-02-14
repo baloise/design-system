@@ -8,12 +8,6 @@
         "value": "var(--bal-text-color-white)"
       },
       {
-        "class": "text-black",
-        "css": "color: var(--bal-text-color-black);",
-        "property": "color",
-        "value": "var(--bal-text-color-black)"
-      },
-      {
         "class": "text-primary-light",
         "css": "color: var(--bal-text-color-primary-light);",
         "property": "color",
@@ -57,9 +51,9 @@
       },
       {
         "class": "text-danger",
-        "css": "color: var(--bal-text-color-danger-base);",
+        "css": "color: var(--bal-text-color-danger);",
         "property": "color",
-        "value": "var(--bal-text-color-danger-base)"
+        "value": "var(--bal-text-color-danger)"
       },
       {
         "class": "text-danger-hover",
@@ -75,9 +69,9 @@
       },
       {
         "class": "text-primary",
-        "css": "color: var(--bal-text-color-primary-base);",
+        "css": "color: var(--bal-text-color-primary);",
         "property": "color",
-        "value": "var(--bal-text-color-primary-base)"
+        "value": "var(--bal-text-color-primary)"
       },
       {
         "class": "text-primary-hover",
@@ -93,9 +87,9 @@
       },
       {
         "class": "text-inverted-primary",
-        "css": "color: var(--bal-text-color-inverted-primary-base);",
+        "css": "color: var(--bal-text-color-inverted-primary);",
         "property": "color",
-        "value": "var(--bal-text-color-inverted-primary-base)"
+        "value": "var(--bal-text-color-inverted-primary)"
       },
       {
         "class": "text-inverted-primary-hover",
@@ -117,9 +111,9 @@
       },
       {
         "class": "text-grey",
-        "css": "color: var(--bal-text-color-grey-base);",
+        "css": "color: var(--bal-text-color-grey);",
         "property": "color",
-        "value": "var(--bal-text-color-grey-base)"
+        "value": "var(--bal-text-color-grey)"
       },
       {
         "class": "text-grey-dark",

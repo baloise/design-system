@@ -51,7 +51,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('ui-icons', 'primary')}
           className={`${
             color === 'primary' ? 'bg-primary text-white' : 'bg-primary-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           UI Icons
         </button>
@@ -59,7 +59,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('brand-icons', 'purple')}
           className={`${
             color === 'purple' ? 'bg-purple-5 text-white' : 'bg-purple-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Purple
         </button>
@@ -67,7 +67,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
           className={`${
             color === 'green' ? 'bg-green-5 text-white' : 'bg-green-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Green
         </button>
@@ -75,7 +75,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('brand-icons', 'red')}
           className={`${
             color === 'red' ? 'bg-red-5 text-white' : 'bg-red-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Red
         </button>
@@ -83,7 +83,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('brand-icons', 'yellow')}
           className={`${
             color === 'yellow' ? 'bg-yellow-5 text-white' : 'bg-yellow-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Yellow
         </button>
@@ -99,7 +99,7 @@ export const IconOverview = ({ children }): React.ReactElement => {
           .map(icon => (
             <div
               key={`${icon.collection}__${icon.name}`}
-              className={`bg-${icon.color}-1 radius-normal px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
+              className={`bg-${icon.color}-1 radius px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
               style={{ width: '138px' }}
             >
               <img

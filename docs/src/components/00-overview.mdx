@@ -53,7 +53,7 @@ uniform design or appearance.
     </bal-accordion>
     <bal-accordion class="mt-small">
       <bal-accordion-summary>
-        <bal-stack class="bg-white px-x-small radius-normal">
+        <bal-stack class="bg-white px-x-small radius">
           <bal-content>
             <bal-label>Mango Cake</bal-label>
           </bal-content>
@@ -242,7 +242,7 @@ These components serve to present data and information in a diverse range of for
     <div class="py-normal">
       <bal-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></bal-icon>
       <div
-        class="bg-grey radius-normal shadow-normal p-normal"
+        class="bg-grey radius shadow p-normal"
         style={{ scale: '0.5', position: 'absolute', top: '-10%' }}
       >
         <bal-stack layout="vertical">
@@ -545,7 +545,7 @@ Form components serve as tools for gathering user input through a range of metho
     <bal-field>
       <bal-field-label required>Label</bal-field-label>
       <bal-field-control>
-        <div class="bg-red-2 radius-normal" style={{ width: '200px', height: '48px' }}></div>
+        <div class="bg-red-2 radius" style={{ width: '200px', height: '48px' }}></div>
       </bal-field-control>
       <bal-field-message color="hint">Field Message</bal-field-message>
     </bal-field>
@@ -566,11 +566,11 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components/Form/Form"
     description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
   >
-    <div class="bg-red-2 radius-large mb-small mt-xx-large" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-red-2 radius-normal mb-medium" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-red-2 radius-large mb-small mt-large" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-red-2 radius-normal mb-large" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-red-2 radius-normal p-normal" style={{ width: '20%', height: '48px' }}></div>
+    <div class="bg-red-2 radius-lg mb-small mt-xx-large" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-red-2 radius mb-medium" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-red-2 radius-lg mb-small mt-large" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-red-2 radius mb-large" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-red-2 radius p-normal" style={{ width: '20%', height: '48px' }}></div>
   </GridComponent>
   <GridComponent
     scale="0.5"
@@ -583,34 +583,34 @@ Form components serve as tools for gathering user input through a range of metho
   >
     <bal-form-grid>
       <bal-form-col>
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="half">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="half">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-third">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
       <bal-form-col size="one-quarter">
-        <div class="bg-red-2 radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-red-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
       </bal-form-col>
     </bal-form-grid>
   </GridComponent>
@@ -739,7 +739,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     description="App is a container element for an Baloise Design System application."
   >
     <bal-app
-      class="bg-white h-full radius-normal flex flex-direction-column"
+      class="bg-white h-full radius flex flex-direction-column"
       style={{ minHeight: '336px', margin: '32px', overflow: 'hidden' }}
     >
       <header>
@@ -829,14 +829,14 @@ Navigation components facilitate the movement between various views or pages.
     pageTitle="Components/Navigation/Close"
     description="Close is used as a close button for modals, toast and other components."
   >
-    <div class="bg-red-2 radius-normal p-normal" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
+    <div class="bg-red-2 radius p-normal" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
       <bal-stack style={{ height: '24px' }}>
-        <div class="bg-red-1 radius-large" style={{ width: '100%', height: '16px' }}></div>
+        <div class="bg-red-1 radius-lg" style={{ width: '100%', height: '16px' }}></div>
         <bal-close></bal-close>
       </bal-stack>
-      <div class="bg-red-1 radius-large mt-normal" style={{ width: '80%', height: '10px' }}></div>
-      <div class="bg-red-1 radius-large mt-x-small" style={{ width: '90%', height: '10px' }}></div>
-      <div class="bg-red-1 radius-large mt-x-small" style={{ width: '60%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-normal" style={{ width: '80%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-x-small" style={{ width: '90%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-x-small" style={{ width: '60%', height: '10px' }}></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -848,13 +848,13 @@ Navigation components facilitate the movement between various views or pages.
     description="Navigation component serves as a central hub for seamless user navigation within the applications."
   >
     <div class="bg-primary mt-small" style={{ width: '100%', height: '24px' }}></div>
-    <div class="bg-white radius-large mt-small p-x-small" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
+    <div class="bg-white radius-lg mt-small p-x-small" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
       <bal-stack>
         <bal-logo style={{ scale: '0.5', marginLeft: '-24px' }}></bal-logo>
-        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-large" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
+        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
       </bal-stack>
     </div>
   </GridComponent>
@@ -911,7 +911,7 @@ Navigation components facilitate the movement between various views or pages.
       </bal-navbar-menu>
     </bal-navbar>
     <div class="container mt-normal" style={{ height: '280px' }}>
-      <div class="h-full bg-red-2 radius-normal"></div>
+      <div class="h-full bg-red-2 radius"></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -976,7 +976,7 @@ Typography components serve as wrappers for text elements, providing additional 
     description="The label component represents a caption for a form control component."
   >
     <bal-label>Label</bal-label>
-    <div class="bg-red-2 radius-normal" style={{ height: '48px', width: '200px' }}></div>
+    <div class="bg-red-2 radius" style={{ height: '48px', width: '200px' }}></div>
   </GridComponent>
   <GridComponent
     scale="1"

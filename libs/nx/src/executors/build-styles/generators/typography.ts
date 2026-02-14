@@ -96,18 +96,18 @@ const tshirtSizesMapping = {
   'lg': 'large',
   'xl': 'x-large',
   '2xl': 'xx-large',
-  '3xl': 'xx-large',
-  '4xl': 'xx-large',
-  '5xl': 'xx-large',
-  '6xl': 'xx-large',
+  '3xl': 'xxx-large',
+  '4xl': 'xxxx-large',
+  '5xl': 'xxxxx-large',
+  '6xl': 'xxxxxx-large',
 }
 
 const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }) => {
   const values = {}
   for (const index in keys) {
     const key = keys[index]
-    const oldKey = tshirtSizesMapping[key]
-    values[`${prefix}-${key}${oldKey ? `.${prefix}-${oldKey}` : ''}`] = `var(--bal-text-size-${key}-device)`
+    const oldKey = tshirtSizesMapping[key.toLowerCase().replace('text-size-', '')]
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--bal-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }

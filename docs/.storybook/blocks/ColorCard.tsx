@@ -10,15 +10,15 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
 
   return (
     <div
-      className="sb-unstyled radius-large bg-white shadow-normal flex-1"
+      className="sb-unstyled radius-lg bg-white shadow flex-1"
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal text-align-center radius-top-large title text-x-large m-none`}
+        className={`px-small py-normal text-align-center radius-top-lg title text-x-large m-none`}
         style={{
           minHeight: '64px',
           background: `var(--${colorVariable.name})`,
-          color: ['bal-color-primary-5', 'bal-text-color-primary-base', 'bal-background-color-primary-base'].includes(
+          color: ['bal-color-primary-5', 'bal-text-color-primary', 'bal-background-color-primary'].includes(
             colorVariable.name,
           )
             ? 'var(--bal-color-white)'
@@ -27,7 +27,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       >
         {background ? 'A-a' : ''}
       </div>
-      <div className={`radius-bottom-large p-small text-align-center`}>
+      <div className={`radius-bottom-lg p-small text-align-center`}>
         <div className="title text-normal text-primary">
           {colorVariable.name
             .replace('bal-color-', '')

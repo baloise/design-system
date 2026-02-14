@@ -1,6 +1,6 @@
 import { expect, expectScreenshot, screenshot, test, useDesktop } from '@baloise/ds-playwright'
 
-const VARIANTS = ['radius-none', 'radius-normal', 'radius-large', 'radius-rounded']
+const VARIANTS = ['radius-none', 'radius', 'radius-lg', 'radius-rounded']
 
 useDesktop()
 

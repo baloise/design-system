@@ -34,7 +34,7 @@ export const TokensBorderColors = ({ overview }): React.ReactElement => {
                   }`}
                 >
                   <div
-                    className="radius-normal"
+                    className="radius"
                     style={{
                       width: '24px',
                       height: '24px',

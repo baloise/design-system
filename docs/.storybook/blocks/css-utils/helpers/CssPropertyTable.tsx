@@ -40,7 +40,7 @@ export const CssUtilitiesTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
@@ -108,7 +108,7 @@ export const CssPropertyTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',

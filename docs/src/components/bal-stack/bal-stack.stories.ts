@@ -69,7 +69,7 @@ export const Nested = Story({
 export const Item = Story({
   ...withRender(
     () => `
-<div class="stack as-row bg-purple-light p-normal radius-normal">
+<div class="stack as-row bg-purple-light p-normal radius">
   <bal-icon name="date" size="medium"></bal-icon>
   <div class="stack-content">
     <label class="label">My Item</label>
@@ -98,7 +98,7 @@ export const Direction = Story({
 export const Alignment = Story({
   ...withRender(
     () => `
-<div class="stack as-col align-center bg-red-light p-normal radius-normal">
+<div class="stack as-col align-center bg-red-light p-normal radius">
   <bal-icon name="date" size="medium"></bal-icon>
   <div class="stack-content align-center">
     <label class="label">My Item</label>
