@@ -43,12 +43,12 @@
         font-family: var(--bal-heading-font-family);
         font-weight: var(--bal-heading-font-weight);
         line-height: var(--bal-heading-line-height);
-        font-size: var(--bal-text-size-x-large);
+        font-size: var(--bal-text-size-xl);
         @include tablet {
-          font-size: var(--bal-text-size-x-large-tablet);
+          font-size: var(--bal-text-size-xl-tablet);
         }
         @include desktop {
-          font-size: var(--bal-text-size-x-large-desktop);
+          font-size: var(--bal-text-size-xl-desktop);
         }
       }
     }
@@ -63,8 +63,8 @@
       @include element(field) {
         font-family: var(--bal-font-family-text);
         font-weight: var(--bal-text-weight-regular);
-        line-height: var(--bal-text-line-height-text);
-        font-size: var(--bal-text-size-normal);
+        line-height: var(--bal-text-line-height-body);
+        font-size: var(--bal-text-size-base);
       }
     }
   }

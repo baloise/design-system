@@ -131,7 +131,7 @@
 .bal-checkbox--button {
   flex-direction: column;
   flex-wrap: wrap;
-  gap: var(--bal-space-x-small);
+  gap: var(--bal-space-xs);
   justify-content: center;
   align-items: flex-start;
   padding-left: 0.75rem;
@@ -364,46 +364,46 @@
 .bal-checkbox {
   @include tablet {
     &--column-2 {
-      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2));
+      flex: 0 0 calc(50% - calc(var(--bal-space-base) * 1 / 2));
     }
     &--column-3 {
-      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3));
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-base) * 2 / 3));
     }
     &--column-4 {
-      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4));
+      flex: 0 0 calc(25% - calc(var(--bal-space-base) * 3 / 4));
     }
   }
   @include mobile {
     &--column-mobile-2 {
-      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2));
+      flex: 0 0 calc(50% - calc(var(--bal-space-base) * 1 / 2));
     }
     &--column-mobile-3 {
-      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3));
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-base) * 2 / 3));
     }
     &--column-mobile-4 {
-      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4));
+      flex: 0 0 calc(25% - calc(var(--bal-space-base) * 3 / 4));
     }
   }
   @include tablet {
     &--column-tablet-2 {
-      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2));
+      flex: 0 0 calc(50% - calc(var(--bal-space-base) * 1 / 2));
     }
     &--column-tablet-3 {
-      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3));
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-base) * 2 / 3));
     }
     &--column-tablet-4 {
-      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4));
+      flex: 0 0 calc(25% - calc(var(--bal-space-base) * 3 / 4));
     }
   }
   @include desktop {
     &--column-2 {
-      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2));
+      flex: 0 0 calc(50% - calc(var(--bal-space-base) * 1 / 2));
     }
     &--column-3 {
-      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3));
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-base) * 2 / 3));
     }
     &--column-4 {
-      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4));
+      flex: 0 0 calc(25% - calc(var(--bal-space-base) * 3 / 4));
     }
   }
 }

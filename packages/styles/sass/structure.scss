@@ -62,12 +62,12 @@ p:not(.text, .title, .subtitle, .heading) {
     color: currentColor;
   }
   &:not(:last-child) {
-    margin-bottom: var(--bal-space-normal);
+    margin-bottom: var(--bal-space-base);
   }
 }
 
 small {
-  font-size: var(--bal-text-size-small);
+  font-size: var(--bal-text-size-sm);
 }
 
 span {

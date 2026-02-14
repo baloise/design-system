@@ -14,26 +14,26 @@
     position: relative;
     font-family: var(--bal-footer-font-family);
     background-color: var(--bal-footer-background);
-    padding-top: var(--bal-space-x-small);
-    padding-bottom: var(--bal-space-large);
+    padding-top: var(--bal-space-xs);
+    padding-bottom: var(--bal-space-lg);
     @include tablet {
-      padding-top: var(--bal-space-large);
-      padding-bottom: var(--bal-space-large);
+      padding-top: var(--bal-space-lg);
+      padding-bottom: var(--bal-space-lg);
     }
     @include desktop {
-      padding-top: var(--bal-space-large);
-      padding-bottom: var(--bal-space-large);
+      padding-top: var(--bal-space-lg);
+      padding-bottom: var(--bal-space-lg);
     }
     @include element(wrapper) {
       display: flex;
       flex-direction: column;
-      gap: var(--bal-space-large);
+      gap: var(--bal-space-lg);
 
       @include tablet-only {
-        gap: var(--bal-space-medium-tablet);
+        gap: var(--bal-space-md-tablet);
       }
       @include mobile {
-        gap: var(--bal-space-medium-tablet);
+        gap: var(--bal-space-md-tablet);
       }
       @include element(header-container) {
         display: flex;
@@ -111,31 +111,31 @@
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          gap: var(--bal-space-large-desktop);
+          gap: var(--bal-space-lg-desktop);
 
           a {
-            font-size: var(--bal-text-size-small) !important;
+            font-size: var(--bal-text-size-sm) !important;
           }
           @include mobile {
             flex-direction: column;
             justify-content: center;
             width: 100%;
-            gap: var(--bal-space-normal);
+            gap: var(--bal-space-base);
           }
         }
         @include element(social-media-links) {
           align-items: center;
-          gap: var(--bal-space-large-desktop);
-          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) 0;
+          gap: var(--bal-space-lg-desktop);
+          padding: var(--bal-space-base) var(--bal-space-base) var(--bal-space-base) 0;
 
           @include tablet-only {
-            padding-bottom: var(--bal-space-large);
+            padding-bottom: var(--bal-space-lg);
           }
           @include mobile {
-            padding-bottom: var(--bal-space-large);
+            padding-bottom: var(--bal-space-lg);
             justify-content: center;
             width: 100%;
-            padding: var(--bal-space-normal) 0 var(--bal-space-normal) 0;
+            padding: var(--bal-space-base) 0 var(--bal-space-base) 0;
           }
         }
       }

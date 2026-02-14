@@ -87,7 +87,7 @@
     width: 2rem;
     font-family: var(--bal-font-family-title);
     font-weight: var(--bal-text-weight-bold);
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
     line-height: var(--bal-line-height-normal);
     hyphens: auto;
     text-wrap: nowrap;
@@ -104,7 +104,7 @@
     width: 2rem;
     height: 2rem;
     text-align: center;
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
     line-height: var(--bal-line-height-normal);
     hyphens: auto;
   }

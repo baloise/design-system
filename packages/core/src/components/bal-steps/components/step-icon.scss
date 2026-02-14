@@ -12,7 +12,7 @@
   overflow: hidden;
   font-weight: var(--bal-text-weight-bold);
   border-radius: var(--bal-steps-step-icon-radius);
-  font-size: var(--bal-text-size-small);
+  font-size: var(--bal-text-size-sm);
   //
   // Responive Sizes
   height: 1.5rem;
@@ -22,7 +22,7 @@
     height: 2rem;
     width: 2rem;
     left: calc(50% - 1rem);
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
   } //
   // Color status
   border: var(--bal-steps-step-border-width) var(--bal-steps-step-border-style) var(--bal-steps-step-border-color);
@@ -42,12 +42,12 @@
     border-color: var(--bal-steps-step-border-color-failed);
     background: var(--bal-steps-step-icon-background-failed);
     color: var(--bal-steps-step-icon-text-color-failed);
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
     @include tablet {
-      font-size: var(--bal-text-size-large-tablet);
+      font-size: var(--bal-text-size-lg-tablet);
     }
     @include desktop {
-      font-size: var(--bal-text-size-large-desktop);
+      font-size: var(--bal-text-size-lg-desktop);
     }
   }
   &--disabled {

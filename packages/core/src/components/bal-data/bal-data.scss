@@ -45,8 +45,8 @@
 
   font-family: var(--bal-font-family-text);
   font-weight: var(--bal-text-weight-bold);
-  font-size: var(--bal-text-size-small);
-  line-height: var(--bal-text-size-normal);
+  font-size: var(--bal-text-size-sm);
+  line-height: var(--bal-text-size-base);
   hyphens: auto;
 
   @include block(hint) {
@@ -66,14 +66,14 @@
 
   font-family: var(--bal-font-family-text);
   font-weight: var(--bal-text-weight-bold);
-  font-size: var(--bal-text-size-small);
-  line-height: var(--bal-text-size-normal);
+  font-size: var(--bal-text-size-sm);
+  line-height: var(--bal-text-size-base);
 
   &,
   & > div {
     font-family: var(--bal-font-family-text);
     font-weight: var(--bal-text-weight-regular);
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
     line-height: 1.25rem;
     hyphens: auto;
     white-space: nowrap;
@@ -138,7 +138,7 @@
   }
   .bal-data:not(.bal-data--is-horizontal) {
     @include block(data-label) {
-      font-size: var(--bal-text-size-normal);
+      font-size: var(--bal-text-size-base);
     }
     @include block(data-value) {
       margin-top: 2px;

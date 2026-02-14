@@ -86,11 +86,28 @@ const generateFontFamily = async (options: BuildStylesExecutorSchema) => {
   })
 }
 
+const tshirtSizesMapping = {
+  '3xs': 'xx-small',
+  '2xs': 'xx-small',
+  'xs': 'x-small',
+  'sm': 'small',
+  'base': 'normal',
+  'md': 'medium',
+  'lg': 'large',
+  'xl': 'x-large',
+  '2xl': 'xx-large',
+  '3xl': 'xx-large',
+  '4xl': 'xx-large',
+  '5xl': 'xx-large',
+  '6xl': 'xx-large',
+}
+
 const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }) => {
   const values = {}
   for (const index in keys) {
     const key = keys[index]
-    values[`${prefix}-${key}`] = `var(--bal-text-size-${key}-device)`
+    const oldKey = tshirtSizesMapping[key]
+    values[`${prefix}-${key}${oldKey ? `.${prefix}-${oldKey}` : ''}`] = `var(--bal-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }

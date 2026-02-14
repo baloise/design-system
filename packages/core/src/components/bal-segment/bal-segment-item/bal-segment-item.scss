@@ -51,7 +51,7 @@
   border-radius: var(--bal-radius-base);
   background: transparent;
 
-  font-size: var(--bal-text-size-normal);
+  font-size: var(--bal-text-size-base);
   font-weight: var(--bal-text-weight-bold);
   color: var(--bal-segment-item-text-color);
 
@@ -68,7 +68,7 @@
     padding-right: 0.75rem;
   }
   span {
-    font-size: var(--bal-text-size-small);
+    font-size: var(--bal-text-size-sm);
     font-weight: var(--bal-text-weight-regular);
   }
 }

@@ -62,7 +62,7 @@
   --bal-tag-background-disabled: var(--bal-color-border-grey-dark);
   //
   // radius
-  --bal-tag-radius: var(--bal-radius-large);
+  --bal-tag-radius: var(--bal-radius-lg);
   //
   // border
   --bal-tag-border-disabled-color: var(--bal-color-border-grey-dark);
@@ -87,6 +87,6 @@
   --bal-tag-text-disabled: var(--bal-color-text-white);
   //
   // size small
-  --bal-tag-size-small-font-size: var(--bal-text-size-small);
+  --bal-tag-size-small-font-size: var(--bal-text-size-sm);
   --bal-tag-size-small-font-weight: var(--bal-text-weight-regular);
 }

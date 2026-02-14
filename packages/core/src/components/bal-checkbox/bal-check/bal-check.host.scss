@@ -17,15 +17,15 @@
   --check-color-icon: var(--bal-color-primary-5);
 
   --check-color-background-hover: var(--bal-color-grey-2);
-  --check-color-border-hover: var(--bal-color-light-blue-5);
-  --check-color-icon-hover: var(--bal-color-light-blue-5);
+  --check-color-border-hover: var(--bal-color-sky-5);
+  --check-color-icon-hover: var(--bal-color-sky-5);
 
   --check-color-background-active: var(--bal-color-grey-2);
   --check-color-border-active: var(--bal-color-primary-6);
   --check-color-icon-active: var(--bal-color-primary-6);
 
   --check-border-width: var(--bal-border-width-normal);
-  --check-radius: var(--bal-radius-normal);
+  --check-radius: var(--bal-radius-base);
   --check-size: 1.5rem;
 }
 
@@ -85,8 +85,8 @@
   --check-color-background: var(--bal-color-primary-5);
 
   --check-color-icon-hover: var(--bal-color-white);
-  --check-color-border-hover: var(--bal-color-light-blue-5);
-  --check-color-background-hover: var(--bal-color-light-blue-5);
+  --check-color-border-hover: var(--bal-color-sky-5);
+  --check-color-background-hover: var(--bal-color-sky-5);
 
   --check-color-icon-active: var(--bal-color-white);
   --check-color-border-active: var(--bal-color-primary-6);
@@ -110,11 +110,11 @@
   --check-color-background: transparent;
 
   --check-color-icon-hover: transparent;
-  --check-color-border-hover: var(--bal-color-light-blue-1);
+  --check-color-border-hover: var(--bal-color-sky-1);
   --check-color-background-hover: transparent;
 
   --check-color-icon-active: transparent;
-  --check-color-border-active: var(--bal-color-light-blue-2);
+  --check-color-border-active: var(--bal-color-sky-2);
   --check-color-background-active: transparent;
 }
 
@@ -124,12 +124,12 @@
   --check-color-background: var(--bal-color-white);
 
   --check-color-icon-hover: var(--bal-color-primary-5);
-  --check-color-border-hover: var(--bal-color-light-blue-1);
-  --check-color-background-hover: var(--bal-color-light-blue-1);
+  --check-color-border-hover: var(--bal-color-sky-1);
+  --check-color-background-hover: var(--bal-color-sky-1);
 
   --check-color-icon-active: var(--bal-color-primary-5);
-  --check-color-border-active: var(--bal-color-light-blue-2);
-  --check-color-background-active: var(--bal-color-light-blue-2);
+  --check-color-border-active: var(--bal-color-sky-2);
+  --check-color-background-active: var(--bal-color-sky-2);
 }
 
 @include host.hasAttr(invalid) {

@@ -12,14 +12,14 @@
     justify-content: flex-start;
     align-items: stretch;
     flex-wrap: wrap;
-    gap: var(--bal-space-normal);
+    gap: var(--bal-space-base);
     //
     // transform the radios into buttons
     @include modifier(button) {
       flex-direction: column;
       flex-wrap: wrap;
       flex: 1;
-      gap: var(--bal-space-x-small);
+      gap: var(--bal-space-xs);
       @include tablet {
         flex-direction: row;
       }
@@ -34,7 +34,7 @@
       }
     }
     &--button#{&}--vertical {
-      gap: var(--bal-space-x-small);
+      gap: var(--bal-space-xs);
     } //
     // shows the radios verically
     @include modifier(vertical) {

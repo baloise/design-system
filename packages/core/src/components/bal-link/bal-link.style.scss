@@ -14,10 +14,10 @@ a.is-link:not(.button),
   overflow-wrap: break-word;
   font-family: var(--bal-link-family);
   font-weight: var(--bal-link-weight);
-  border-radius: var(--bal-radius-normal);
+  border-radius: var(--bal-radius-base);
   text-decoration: underline;
   text-underline-offset: 0.25rem;
-  text-decoration-thickness: var(--bal-border-width-normal);
+  text-decoration-thickness: var(--bal-link-border-width);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);

@@ -24,12 +24,12 @@ $notification-host-selector: ('#notification');
 
   --notification-heading-family: var(--bal-text-family-heading);
   --notification-heading-weight: var(--bal-text-weight-bold);
-  --notification-heading-size: var(--bal-text-size-large-device);
+  --notification-heading-size: var(--bal-text-size-lg-device);
   --notification-heading-line-height: var(--bal-text-line-height-heading);
 
   --notification-content-family: var(--bal-text-family-body);
   --notification-content-weight: inherit;
-  --notification-content-size: var(--bal-text-size-normal-device);
+  --notification-content-size: var(--bal-text-size-base-device);
   --notification-content-line-height: var(--bal-text-line-height-body);
 
   --notification-icon: var(--bal-notification-color-base-icon);
@@ -291,7 +291,7 @@ $notification-colors: (
     --notification-radius: var(--bal-notification-radius-alert);
     --notification-space: var(--bal-space-normal-device);
 
-    --notification-heading-size: var(--bal-text-size-normal-device);
-    --notification-content-size: var(--bal-text-size-small-device);
+    --notification-heading-size: var(--bal-text-size-base-device);
+    --notification-content-size: var(--bal-text-size-sm-device);
   }
 }

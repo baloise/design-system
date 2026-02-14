@@ -154,7 +154,7 @@
     @include ltr-property('margin', 1.5rem);
     text-align: right;
     &.is-small {
-      font-size: var(--bal-text-size-small);
+      font-size: var(--bal-text-size-sm);
       padding-top: 0.375em;
     }
     &.is-normal {

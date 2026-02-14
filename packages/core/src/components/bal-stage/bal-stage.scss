@@ -40,15 +40,15 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: calc(var(--bal-space-xxxx-large) + 4rem);
-      padding-bottom: var(--bal-space-xxx-large);
+      padding-top: calc(var(--bal-space-4xl) + 4rem);
+      padding-bottom: var(--bal-space-3xl);
       @include tablet {
-        padding-top: calc(var(--bal-space-xxxx-large-tablet) + 4rem);
-        padding-bottom: var(--bal-space-xx-large-tablet);
+        padding-top: calc(var(--bal-space-4xl-tablet) + 4rem);
+        padding-bottom: var(--bal-space-2xl-tablet);
       }
       @include desktop {
-        padding-top: calc(var(--bal-space-xxxx-large-desktop) + 3rem);
-        padding-bottom: var(--bal-space-xx-large-desktop);
+        padding-top: calc(var(--bal-space-4xl-desktop) + 3rem);
+        padding-bottom: var(--bal-space-2xl-desktop);
       }
     }
     @include block(stage-back-link) {

@@ -9,7 +9,7 @@
 // When the `alert` attribute is set, only reduce content font size.
 // Uses the CSS variable consumed by content rules in style.scss.
 @include host.hasAttr(alert, heading) {
-  --notification-content-size: var(--bal-text-size-small-device);
+  --notification-content-size: var(--bal-text-size-sm-device);
   font-size: var(--notification-content-size);
 }
 

@@ -64,7 +64,7 @@
 :root {
   //
   // form control
-  --bal-form-field-control-font-size: var(--bal-text-size-normal);
+  --bal-form-field-control-font-size: var(--bal-text-size-base);
   --bal-form-field-control-font-family: var(--bal-font-family-text);
   --bal-form-field-control-color: var(--bal-color-text-primary);
   --bal-form-field-control-placeholder-color: var(--bal-color-text-primary-light);
@@ -97,7 +97,7 @@
   --bal-form-field-control-disabled-border-color: var(--bal-color-border-grey-dark);
   //
   // field label
-  --bal-form-field-label-font-size: var(--bal-text-size-small);
+  --bal-form-field-label-font-size: var(--bal-text-size-sm);
   --bal-form-field-label-line-height: var(--bal-line-height-small);
   --bal-form-field-label-font-weight: var(--bal-text-weight-bold);
   --bal-form-field-label-font-family: var(--bal-font-family-text);
@@ -111,7 +111,7 @@
   --bal-form-field-label-disabled-color: var(--bal-color-text-grey);
   //
   // field message
-  --bal-form-field-message-font-size: var(--bal-text-size-x-small);
+  --bal-form-field-message-font-size: var(--bal-text-size-xs);
   --bal-form-field-message-font-weight: var(--bal-text-weight-regular);
   --bal-form-field-message-color: var(--bal-color-text-primary-light);
   --bal-form-field-message-color-hover: var(--bal-link-color-text-primary-hover);

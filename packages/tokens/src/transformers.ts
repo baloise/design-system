@@ -69,6 +69,17 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
         tokenName = tokenName.replace('-component', '')
       }
 
+      // we use t-shirt sizes and need to make sure that 2xl becomes 2xl and not 2-xl
+      // check if token names has number followed by xl or xs and replace it with numberxl without dash
+      if (/-?([0-9]+)-(xl|xs)/.test(tokenName)) {
+        tokenName = tokenName.replace(/-?([0-9]+)-(xl|xs)/, '-$1$2')
+      }
+
+      // check that no name has double dash and replace it with single dash
+      if (tokenName.includes('--')) {
+        tokenName = tokenName.replace(/--+/g, '-')
+      }
+
       return tokenName
     },
   })
@@ -131,7 +142,6 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
       // Number only values with no unit
       const tokenToBeNumberPixel = ['📐 Breakpoint', 'Breakpoint', '🗃️ Container', 'Container']
       if (tokenToBeNumberPixel.some(ignored => path.includes(ignored))) {
-        console.log(path, value)
         return value + 'px'
       }
 

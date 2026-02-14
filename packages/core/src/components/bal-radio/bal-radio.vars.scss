@@ -9,7 +9,7 @@
   --bal-radio-button-background-hover: var(--bal-color-grey-2);
   --bal-radio-button-background-active: var(--bal-color-grey-2);
   --bal-radio-button-background-checked: var(--bal-color-brand-primary-base);
-  --bal-radio-button-background-checked-hover: var(--bal-color-light-blue-5);
+  --bal-radio-button-background-checked-hover: var(--bal-color-sky-5);
   --bal-radio-button-background-checked-active: var(--bal-color-primary-6);
   --bal-radio-button-background-invalid: var(--bal-color-danger-1);
   --bal-radio-button-background-invalid-hover: var(--bal-color-danger-1);
@@ -30,7 +30,7 @@
   //
   // border colors
   --bal-radio-button-border-color: var(--bal-color-brand-primary-base);
-  --bal-radio-button-border-color-hover: var(--bal-color-light-blue-5);
+  --bal-radio-button-border-color-hover: var(--bal-color-sky-5);
   --bal-radio-button-border-color-active: var(--bal-color-primary-6);
   --bal-radio-button-border-color-invalid: var(--bal-color-border-danger-base);
   --bal-radio-button-border-color-invalid-hover: var(--bal-color-danger-5);
@@ -55,7 +55,7 @@
   --bal-radio-tile-border-style: var(--bal-form-field-control-border-style);
   --bal-radio-tile-border-radius: var(--bal-form-field-control-radius);
   --bal-radio-tile-border-width: var(--bal-form-field-control-border-width);
-  --bal-radio-tile-padding: var(--bal-text-size-medium);
+  --bal-radio-tile-padding: var(--bal-text-size-md);
 
   --bal-radio-tile-border-color: var(--bal-color-border-base);
   --bal-radio-tile-border-color-hover: var(--bal-color-border-primary-hover);

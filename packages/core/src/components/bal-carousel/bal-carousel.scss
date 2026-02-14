@@ -29,7 +29,7 @@
 .bal-carousel__item {
   box-sizing: border-box;
   text-align: center;
-  font-size: var(--bal-text-size-large);
+  font-size: var(--bal-text-size-lg);
   min-height: 2rem;
   display: flex;
   justify-content: center;
@@ -198,7 +198,7 @@
     align-items: center;
     gap: 1rem;
     border-radius: var(--bal-carousel-product-item-button-border-radius);
-    padding: var(--bal-text-size-x-small);
+    padding: var(--bal-text-size-xs);
     border: none;
     cursor: pointer;
     user-select: none;
@@ -269,7 +269,7 @@
   .bal-carousel__item__button__label {
     font-weight: var(--bal-text-weight-bold);
     color: var(--bal-carousel-product-item-button-label-text-color);
-    font-size: var(--bal-text-size-normal);
+    font-size: var(--bal-text-size-base);
     hyphens: auto;
     height: 3.5rem;
     overflow: hidden;
