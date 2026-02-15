@@ -20,8 +20,18 @@ namespace BalProps {
     | 'danger-darker'
     | 'white'
     | 'light-blue'
+
   export type BalDividerSpace =
     | 'none'
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
     | 'xx-small'
     | 'x-small'
     | 'small'

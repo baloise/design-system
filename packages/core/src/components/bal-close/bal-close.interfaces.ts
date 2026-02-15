@@ -4,5 +4,5 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalCloseSize = 'small' | 'medium' | ''
+  export type BalCloseSize = 'sm' | 'md' | '' | 'small' | 'medium'
 }

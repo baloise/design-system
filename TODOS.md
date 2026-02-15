@@ -47,16 +47,16 @@ use id's and parts in the shadow dom components
 
 | Component          | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- |
-| bal-link           | CSS-Only           | ✅         | ⬜   | ✅            | ⬜      |
-| bal-stack          | Hybrid (No Shadow) | ✅         | ⬜   | ⛔            | ⬜      |
-| bal-close          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
-| bal-tag            | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
-| bal-badge          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-heading        | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-text           | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
-| bal-button         | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-label          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
+| bal-link           | CSS-Only           | ✅         | ⬜   | ✅            | ⬜      |
+| bal-stack          | Hybrid (No Shadow) | ✅         | ⬜   | ⛔            | ⬜      |
 | bal-divider        | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
+| bal-close          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
+| bal-badge          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
+| bal-tag            | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
+| bal-button         | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-accordion      | Hybrid             | ✅         | ⬜   | ⬜            | ⬜      |
 | bal-notification   | Hybrid             | ✅         | ⬜   | ✅            | ⬜      |
 | bal-card           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      |

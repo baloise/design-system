@@ -95,12 +95,12 @@ $close-host-selector: ('#close');
 @include hybrid.component($close-host-selector, $close-css-selector, $close-use-host) {
   //
   // Size Variants
-  &.is-small {
+  &.is-sm {
     --close-padding: 0.25rem;
     --close-size-icon: 10px;
   }
 
-  &.is-medium {
+  &.is-md {
     --close-padding: 0.531rem;
     --close-size-icon: 24px;
   }

@@ -19,9 +19,9 @@ $badge-host-selector: ('#badge');
   --badge-font-family: var(--bal-badge-text-family);
   --badge-font-weight: var(--bal-badge-text-weight);
 
-  --badge-min-width: var(--bal-badge-size-normal);
-  --badge-height: var(--bal-badge-size-normal);
-  --badge-radius: calc(var(--bal-badge-size-normal) / 2);
+  --badge-min-width: var(--bal-badge-size-base);
+  --badge-height: var(--bal-badge-size-base);
+  --badge-radius: calc(var(--bal-badge-size-base) / 2);
 
   --badge-color-background: var(--bal-badge-color-base-background);
   --badge-color-text: var(--bal-badge-color-base-text);
@@ -110,15 +110,15 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
 
   //
   // Size Variants
-  &.is-small {
-    --badge-radius: calc(var(--bal-badge-size-small) / 2);
-    --badge-height: var(--bal-badge-size-small);
-    --badge-min-width: var(--bal-badge-size-small);
+  &.is-sm {
+    --badge-radius: calc(var(--bal-badge-size-sm) / 2);
+    --badge-height: var(--bal-badge-size-sm);
+    --badge-min-width: var(--bal-badge-size-sm);
     --badge-padding-inline: 0;
     --badge-padding-block: 0;
     --badge-font-size: 0;
 
-    max-width: var(--bal-badge-size-small);
+    max-width: var(--bal-badge-size-sm);
     padding: 0;
     overflow: hidden;
 
@@ -127,10 +127,10 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
     }
   }
 
-  &.is-large {
-    --badge-min-width: var(--bal-badge-size-large);
-    --badge-height: var(--bal-badge-size-large);
-    --badge-radius: calc(var(--bal-badge-size-large) / 2);
+  &.is-lg {
+    --badge-min-width: var(--bal-badge-size-lg);
+    --badge-height: var(--bal-badge-size-lg);
+    --badge-radius: calc(var(--bal-badge-size-lg) / 2);
     --badge-font-size: 1rem;
     --badge-icon-size: 1.125rem;
   }

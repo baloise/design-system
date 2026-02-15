@@ -17,8 +17,8 @@ $text-host-selector: ('#text');
   @include hybrid.margin-vars($text-name);
 
   --text-color: initial;
-  --text-family: var(--bal-body-font-family);
-  --text-weight: var(--bal-body-font-weight);
+  --text-family: var(--bal-body-family);
+  --text-weight: var(--bal-body-weight);
   --text-line-height: var(--bal-body-line-height);
   --text-size: var(--bal-text-size-base-device);
   --text-shadow: var(--bal-shadow-text);
@@ -82,7 +82,7 @@ $text-host-selector: ('#text');
 
     // Space
     &:not(:last-child) {
-      --text-margin-bottom: var(--bal-text-space-base);
+      --text-margin-bottom: var(--bal-space-2xs-device);
     }
   }
 }
@@ -93,7 +93,7 @@ $text-host-selector: ('#text');
   }
 
   :host(:not(:last-child)) {
-    --text-margin-bottom: var(--bal-text-space-base);
+    --text-margin-bottom: var(--bal-space-2xs-device);
   }
 }
 
@@ -173,26 +173,19 @@ $text-host-selector: ('#text');
 
   //
   // Sizes
+  &.is-small {
+    @include text-size(sm);
+  }
+
   &.is-block {
-    @include text-size(medium);
+    @include text-size(md);
   }
 
   &.is-lead {
-    @include text-size(large);
+    @include text-size(lg);
   }
 
-  $text-sizes: (
-    'x-small',
-    'small',
-    'normal',
-    'medium',
-    'large',
-    'x-large',
-    'xx-large',
-    'xxx-large',
-    'xxxx-large',
-    'xxxxx-large'
-  );
+  $text-sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
 
   @each $size in $text-sizes {
     &.is-#{$size} {

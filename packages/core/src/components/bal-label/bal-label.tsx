@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -12,6 +12,7 @@ import { BalElementStateInfo } from '../../utils/element-states'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { i18nBalLabel } from './bal-label.i18n'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-label',
@@ -90,7 +91,11 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop() size: BalProps.BalLabelSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalLabelSize = ''
+  @Watch('size')
+  sizeChanged(newValue: BalProps.BalLabelSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines the font weight of the label.
@@ -133,6 +138,10 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
   @Method()
   async setAriaForm(ariaForm: BalAriaForm) {
     this.ariaForm = { ...ariaForm }
+  }
+
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
   /**

@@ -21,7 +21,7 @@ $label-host-selector: ('#label');
   --label-family: var(--bal-label-family);
   --label-weight: var(--bal-label-weight);
   --label-line-height: var(--bal-label-line-height);
-  --label-font-size: var(--bal-label-size-normal-device);
+  --label-font-size: var(--bal-label-size-base-device);
 }
 
 /**
@@ -30,8 +30,8 @@ $label-host-selector: ('#label');
   * Define here the mixins for the component to be able to use it in host or non-host mode.
   */
 
-$label-sizes: ('small', 'normal', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large');
-$label-title-sizes: ('large', 'x-large', 'xx-large', 'xxx-large');
+$label-sizes: ('sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
+$label-title-sizes: ('lg', 'xl', '2xl', '3xl');
 
 @mixin label-size($level) {
   --label-font-size: var(--bal-label-size-#{$level});

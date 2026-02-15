@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as HeadingStories from './bal-heading.stories'
 
 <Meta of={HeadingStories} />
@@ -63,11 +63,15 @@ Using `auto-level`, one can specify the minimum visual level at which the headin
 
 {/* ------------------------------------------------------ */}
 
-### Component API
+## Component API
 
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="heading" />
 
 ## Integration
 
@@ -75,10 +79,5 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
-import theming from './theming.md?raw'
-
-<Markdown>{theming}</Markdown>
-
-
-
 <Footer />
+

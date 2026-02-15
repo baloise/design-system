@@ -42,9 +42,6 @@ input,
 select {
   margin: 0;
 }
-:host {
-  box-sizing: border-box;
-}
 img,
 video {
   height: auto;
@@ -60,4 +57,10 @@ table {
 td,
 th {
   padding: 0;
+}
+:host {
+  box-sizing: border-box;
+}
+:host * {
+  box-sizing: border-box;
 }

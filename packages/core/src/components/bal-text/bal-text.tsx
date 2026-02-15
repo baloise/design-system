@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
 import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
@@ -15,7 +15,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the size of the paragraph
    */
-  @Prop() size: BalProps.BalTextSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalTextSize = ''
 
   /**
    * If `true` the text has heading font family
@@ -146,7 +146,9 @@ export class Text implements ComponentInterface, BalElementStateInfo {
             [`has-no-wrap`]: this.noWrap,
             [`is-heading`]: this.heading,
             [`is-subtitle`]: this.subtitle,
-            [`is-${this.size}`]: this.size !== '',
+            [`is-lg`]: this.size === 'lead',
+            [`is-md`]: this.size === 'block',
+            [`is-sm`]: this.size === 'small',
           }}
         >
           <slot></slot>

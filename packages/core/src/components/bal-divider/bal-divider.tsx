@@ -1,5 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-divider',
@@ -28,7 +29,11 @@ export class Divider implements ComponentInterface, Loggable {
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop() space: BalProps.BalDividerSpace = 'none'
+  @Prop({ mutable: true }) space: BalProps.BalDividerSpace = 'none'
+  @Watch('space')
+  validateSpace(newValue: BalProps.BalDividerSpace) {
+    this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
+  }
 
   /**
    * Defines the color of the separator line.
@@ -39,6 +44,10 @@ export class Divider implements ComponentInterface, Loggable {
    * Defines the color of the separator line.
    */
   @Prop() borderStyle: BalProps.BalDividerBorderStyle = 'solid'
+
+  connectedCallback(): void {
+    this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
+  }
 
   /**
    * RENDER

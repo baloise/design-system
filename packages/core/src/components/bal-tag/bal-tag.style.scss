@@ -115,25 +115,25 @@ $tag-colors: (
 
   //
   // Sizes
-  &.is-small {
+  &.is-sm {
     --tag-min-height: 1.5rem;
-    --tag-padding: var(--bal-tag-small-space-y) var(--bal-tag-small-space-x);
-    --tag-font-size: var(--bal-tag-small-size);
-    --tag-font-weight: var(--bal-tag-small-weight);
+    --tag-padding: var(--bal-tag-sm-space-y) var(--bal-tag-sm-space-x);
+    --tag-font-size: var(--bal-tag-sm-size);
+    --tag-font-weight: var(--bal-tag-sm-weight);
   }
 
-  &.is-medium {
+  &.is-md {
     --tag-min-height: 2.5rem;
-    --tag-padding: var(--bal-tag-medium-space-y) var(--bal-tag-medium-space-x);
-    --tag-font-size: var(--bal-tag-medium-size);
-    --tag-font-weight: var(--bal-tag-medium-weight);
+    --tag-padding: var(--bal-tag-md-space-y) var(--bal-tag-md-space-x);
+    --tag-font-size: var(--bal-tag-md-size);
+    --tag-font-weight: var(--bal-tag-md-weight);
   }
 
-  &.is-large {
+  &.is-lg {
     --tag-min-height: 3rem;
-    --tag-padding: var(--bal-tag-large-space-y) var(--bal-tag-large-space-x);
-    --tag-font-size: var(--bal-tag-large-size);
-    --tag-font-weight: var(--bal-tag-large-weight);
+    --tag-padding: var(--bal-tag-lg-space-y) var(--bal-tag-lg-space-x);
+    --tag-font-size: var(--bal-tag-lg-size);
+    --tag-font-weight: var(--bal-tag-lg-weight);
   }
 }
 
@@ -147,7 +147,7 @@ $tag-colors: (
 @include hybrid.component($tag-host-selector, $tag-css-selector, $tag-use-host) {
   //
   // Sizes
-  &.is-small {
+  &.is-sm {
     > .close,
     > bal-close {
       --close-padding: 0.25rem;

@@ -98,14 +98,16 @@ const flattenTokens = (source: unknown): FlattenedToken[] => {
   return result
 }
 
-export const TokenOverview = (): React.ReactElement => {
+type TokenOverviewProps = {
+  component?: string
+}
+
+export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactElement => {
   const [categoryFilter, setCategoryFilter] = React.useState<TokenCategory>('all')
   const [typeFilter, setTypeFilter] = React.useState<string>('all')
   const [searchQuery, setSearchQuery] = React.useState<string>('')
 
   const flattened = React.useMemo(() => flattenTokens(tokens), [])
-
-  console.log('Flattened tokens:', flattened)
 
   const typeOptions = React.useMemo(() => {
     const set = new Set<string>()
@@ -117,6 +119,15 @@ export const TokenOverview = (): React.ReactElement => {
 
   const filteredTokens = React.useMemo(() => {
     return flattened.filter(token => {
+      if (component) {
+        const componentPrefix = component.startsWith('bal-')
+          ? component.slice(4).toLowerCase()
+          : component.toLowerCase()
+        if (!token.typeLabel.toLowerCase().includes(componentPrefix)) {
+          return false
+        }
+      }
+
       if (categoryFilter !== 'all' && token.category !== categoryFilter) {
         return false
       }
@@ -141,58 +152,58 @@ export const TokenOverview = (): React.ReactElement => {
 
   return (
     <div className="my-large">
-      <div className="flex flex-wrap gap-small mb-small align-items-center">
-        <div className="mr-small">
-          <label className="text-small font-weight-bold mr-x-small" htmlFor="token-category-filter">
-            Category
-          </label>
-          <select
-            id="token-category-filter"
-            className="select is-small"
-            value={categoryFilter}
-            onChange={event => setCategoryFilter(event.target.value as TokenCategory)}
-          >
-            <option value="all">All</option>
-            <option value="primitive">🧱 Primitive</option>
-            <option value="semantic">🏷️ Semantic</option>
-            <option value="component">🧩 Component</option>
-          </select>
-        </div>
+      {!component && (
+        <div className="flex flex-wrap gap-small mb-small align-items-center">
+          <div className="mr-small">
+            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-category-filter">
+              Category
+            </label>
+            <select
+              id="token-category-filter"
+              className="select is-small"
+              value={categoryFilter}
+              onChange={event => setCategoryFilter(event.target.value as TokenCategory)}
+            >
+              <option value="all">All</option>
+              <option value="primitive">🧱 Primitive</option>
+              <option value="semantic">🏷️ Semantic</option>
+              <option value="component">🧩 Component</option>
+            </select>
+          </div>
+          <div className="mr-small">
+            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-type-filter">
+              Type
+            </label>
+            <select
+              id="token-type-filter"
+              className="select is-small"
+              value={typeFilter}
+              onChange={event => setTypeFilter(event.target.value)}
+            >
+              <option value="all">All types</option>
+              {typeOptions.map(type => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="mr-small">
-          <label className="text-small font-weight-bold mr-x-small" htmlFor="token-type-filter">
-            Type
-          </label>
-          <select
-            id="token-type-filter"
-            className="select is-small"
-            value={typeFilter}
-            onChange={event => setTypeFilter(event.target.value)}
-          >
-            <option value="all">All types</option>
-            {typeOptions.map(type => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
+          <div className="flex-grow-1 min-width-0">
+            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-search">
+              Search
+            </label>
+            <input
+              id="token-search"
+              type="search"
+              className="input is-small w-100"
+              placeholder="Search by name, variable, value, or path"
+              value={searchQuery}
+              onChange={event => setSearchQuery(event.target.value)}
+            />
+          </div>
         </div>
-
-        <div className="flex-grow-1 min-width-0">
-          <label className="text-small font-weight-bold mr-x-small" htmlFor="token-search">
-            Search
-          </label>
-          <input
-            id="token-search"
-            type="search"
-            className="input is-small w-100"
-            placeholder="Search by name, variable, value, or path"
-            value={searchQuery}
-            onChange={event => setSearchQuery(event.target.value)}
-          />
-        </div>
-      </div>
-
+      )}
       <div className="bg-grey-light radius px-large pb-large" style={{ maxHeight: '680px', overflowY: 'auto' }}>
         <div
           className="bg-grey-light"
@@ -235,7 +246,7 @@ export const TokenOverview = (): React.ReactElement => {
                 )}
               </div>
               <div className="py-x-small border-bottom-grey text-small flex gap-small align-items-center justify-content-start">
-                {token.typeLabel || '—'}
+                {(component ? token.tokenType : token.typeLabel) || '—'}
               </div>
               <div
                 className="py-x-small border-bottom-grey text-small flex gap-small align-items-start justify-content-center flex-direction-column"

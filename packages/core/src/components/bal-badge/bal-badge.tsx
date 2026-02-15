@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-badge',
@@ -17,7 +18,11 @@ export class Badge implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop() size: BalProps.BalBadgeSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalBadgeSize = ''
+  @Watch('size')
+  watchSize(newValue: BalProps.BalBadgeSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Define the color for the badge.
@@ -28,6 +33,10 @@ export class Badge implements ComponentInterface {
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop() position: BalProps.BalBadgePosition = ''
+
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+  }
 
   render() {
     return (

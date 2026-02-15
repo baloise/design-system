@@ -38,18 +38,7 @@ $divider-colors: (
   'light-blue'
 );
 
-$divider-spaces: (
-  'none',
-  'xx-small',
-  'x-small',
-  'small',
-  'normal',
-  'medium',
-  'large',
-  'x-large',
-  'xx-large',
-  'xxx-large'
-);
+$divider-spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 
 /**
   * Basic Component Styles

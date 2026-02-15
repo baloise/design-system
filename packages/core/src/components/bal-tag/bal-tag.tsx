@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { inheritAttributes } from '../../utils/attributes'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-tag',
@@ -21,7 +22,11 @@ export class Tag {
   /**
    * The size of the tag element
    */
-  @Prop() size: BalProps.BalTagSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalTagSize = ''
+  @Watch('size')
+  watchSize(newValue: BalProps.BalTagSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * The shape of the tag element like square or pill
@@ -62,6 +67,10 @@ export class Tag {
    * Emitted when the input got clicked.
    */
   @Event() balCloseClick!: EventEmitter<BalEvents.BalTagCloseClickDetail>
+
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+  }
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])
