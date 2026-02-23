@@ -60,9 +60,21 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   @Prop() color: BalProps.BalSpinnerColor = 'blue'
 
   /**
-   * If `true` the component is smaller
+   * @Deprecated
+   * Use size="sm" instead. If `true` the component is smaller
    */
   @Prop() small = false
+  @Watch('small')
+  watchSize(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue && newValue === true) {
+      this.size = 'sm'
+    }
+  }
+
+  /**
+   * Defines the size of the spinner. If `sm` the spinner is smaller.
+   */
+  @Prop({ reflect: true, mutable: true }) size: BalProps.BalSpinnerSize = ''
 
   /**
    * Defines the look of the spinner
@@ -83,6 +95,10 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
    * LIFECYCLE
    * ------------------------------------------------------
    */
+
+  connectedCallback(): void {
+    this.watchSize(this.small, false)
+  }
 
   componentDidLoad() {
     if (this.variation === 'logo') {
@@ -207,9 +223,9 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
         role="progressbar"
         aria-hidden="true"
         class={{
-          ['is-circle']: this.variation === 'circle',
-          ['is-small']: this.small,
           ['is-animated']: this.animated,
+          [`is-${this.size}`]: this.size !== '',
+          ['is-circle']: this.variation === 'circle',
           [`is-${this.color}`]: this.variation === 'circle',
         }}
       >

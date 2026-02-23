@@ -164,7 +164,7 @@ $button-host-selector: ('#button');
   line-height: var(--button-line-height);
   border-radius: var(--button-radius);
   border-style: var(--button-border-style);
-  border-width: var(--bal-border-width-normal);
+  border-width: var(--bal-border-width-base);
 
   @include button-color(secondary);
   background-color: var(--button-color-background);
@@ -300,15 +300,17 @@ $button-colors: (
 
   //
   // Sizes
+  &.is-sm,
   &.is-small {
-    --button-font-size: var(--bal-button-size-small);
+    --button-font-size: var(--bal-button-size-sm);
     --button-min-height: 2rem;
     --button-min-width: 2rem;
     --button-padding-inline: 0.75rem;
   }
 
+  &.is-lg,
   &.is-large {
-    --button-font-size: var(--bal-button-size-large);
+    --button-font-size: var(--bal-button-size-lg);
     --button-min-height: 3.5rem;
     --button-min-width: 3.5rem;
     --button-padding-inline: 1.5rem;
@@ -333,10 +335,12 @@ $button-colors: (
     gap: 0;
   }
 
+  &.is-square:not(.is-sm),
   &.is-square:not(.is-small) {
     --icon-size: 1.5rem;
   }
 
+  &.is-square.is-sm,
   &.is-square.is-small {
     min-width: 2rem;
     min-height: 2rem;
@@ -350,6 +354,7 @@ $button-colors: (
     border-radius: var(--bal-button-radius-rounded);
   }
 
+  &.is-circle.is-sm,
   &.is-circle.is-small {
     min-width: 2rem;
     min-height: 2rem;
@@ -357,8 +362,9 @@ $button-colors: (
 
   // Icons
 
+  &:where(:not(.is-square, .is-circle), .is-sm) > bal-icon,
   &:where(:not(.is-square, .is-circle), .is-small) > bal-icon {
-    --icon-size: var(--bal-icon-size-small);
+    --icon-size: var(--bal-icon-size-sm);
   }
 
   &.is-dashed > bal-icon.is-circle {

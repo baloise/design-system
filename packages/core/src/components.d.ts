@@ -3532,7 +3532,12 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the component is smaller
+          * Defines the size of the spinner. If `sm` the spinner is smaller.
+          * @default ''
+         */
+        "size": BalProps.BalSpinnerSize;
+        /**
+          * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
          */
         "small": boolean;
@@ -9258,7 +9263,12 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the component is smaller
+          * Defines the size of the spinner. If `sm` the spinner is smaller.
+          * @default ''
+         */
+        "size"?: BalProps.BalSpinnerSize;
+        /**
+          * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
          */
         "small"?: boolean;

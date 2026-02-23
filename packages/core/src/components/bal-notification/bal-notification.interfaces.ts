@@ -5,7 +5,7 @@
 
 namespace BalProps {
   export type BalNotificationType = 'toast' | 'snackbar' | ''
-  export type BalNotificationSize = 'small' | 'medium' | 'large' | ''
+  export type BalNotificationSize = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
   export type BalNotificationColor =
     | 'base'
     | 'info'

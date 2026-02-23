@@ -1,7 +1,8 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-button',
@@ -33,7 +34,11 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: BalProps.BalButtonSize = ''
+  @Prop({ reflect: true, mutable: true }) size: BalProps.BalButtonSize = ''
+  @Watch('size')
+  watchSize(newValue: BalProps.BalButtonSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Specifies the URL of the page the link goes to
@@ -193,6 +198,10 @@ export class Button implements ComponentInterface {
     }
   }
 
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+  }
+
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -231,7 +240,8 @@ export class Button implements ComponentInterface {
       [`is-${color}`]: true,
       'is-flat': this.flat,
       'is-square': this.square,
-      'is-small': this.size === 'small',
+      'is-sm': this.size === 'sm',
+      'is-lg': this.size === 'lg',
       'is-inverted': this.inverted,
       'is-active': this.isActive,
       'is-outlined': this.outlined,

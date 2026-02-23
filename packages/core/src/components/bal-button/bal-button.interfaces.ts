@@ -24,7 +24,7 @@ namespace BalProps {
     | 'primary-light' // deprecated
     | 'info-light' // deprecated
   export type BalButtonElementType = 'button' | 'reset' | 'submit'
-  export type BalButtonSize = 'small' | ''
+  export type BalButtonSize = 'sm' | '' | 'lg' | 'small'
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
   export type BalButtonAria = {
     controls?: string

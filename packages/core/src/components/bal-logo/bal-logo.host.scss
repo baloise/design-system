@@ -71,7 +71,7 @@
   --logo-color: var(--bal-color-white);
 }
 
-:host(.is-small) {
+:host(.is-sm) {
   --logo-height: 22px;
 
   @include desktop {
@@ -79,7 +79,7 @@
   }
 }
 
-:host(.is-large) {
+:host(.is-lg) {
   --logo-height: 32px;
 
   @include desktop {

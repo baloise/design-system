@@ -33,7 +33,7 @@ $notification-host-selector: ('#notification');
   --notification-content-line-height: var(--bal-text-line-height-body);
 
   --notification-icon: var(--bal-notification-color-base-icon);
-  --notification-space: var(--bal-card-space-normal-device);
+  --notification-space: var(--bal-card-space-base-device, 24px);
   --notification-close-offset: 2rem; // extra space reserved when a close button is present
   --notification-gap: 0.125rem;
 
@@ -60,7 +60,7 @@ $notification-host-selector: ('#notification');
   position: relative;
   hyphens: auto;
 
-  border: var(--bal-border-width-normal) solid var(--notification-color-border);
+  border: var(--bal-border-width-base) solid var(--notification-color-border);
   border-radius: var(--notification-radius);
   background: var(--notification-color-background);
   color: var(--notification-color-text);
@@ -270,26 +270,29 @@ $notification-colors: (
   }
 
   // Sizes
+  &.is-sm,
   &.is-small {
-    --notification-space: var(--bal-card-space-small-device);
+    --notification-space: var(--bal-card-space-sm-device);
   }
 
+  &.is-md,
   &.is-medium {
-    --notification-space: var(--bal-card-space-medium-device);
+    --notification-space: var(--bal-card-space-md-device);
   }
 
+  &.is-lg,
   &.is-large {
-    --notification-space: var(--bal-card-space-large-device);
+    --notification-space: var(--bal-card-space-lg-device);
   }
 
   // Alert
   &.is-toast,
   &.is-snackbar {
     @include unselectable;
-    box-shadow: var(--bal-shadow-normal);
+    box-shadow: var(--bal-shadow-base);
 
     --notification-radius: var(--bal-notification-radius-alert);
-    --notification-space: var(--bal-space-normal-device);
+    --notification-space: var(--bal-space-base-device);
 
     --notification-heading-size: var(--bal-text-size-base-device);
     --notification-content-size: var(--bal-text-size-sm-device);

@@ -12,6 +12,7 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../utils/form-input'
 import { NotificationInterface } from './bal-notification-container'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 export interface NotificationComponentInterface extends Omit<NotificationInterface, 'id'> {}
 
@@ -62,7 +63,10 @@ export class Notification implements ComponentInterface, NotificationComponentIn
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop() size: BalProps.BalNotificationSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalNotificationSize = ''
+  watchSize(newValue: BalProps.BalNotificationSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Defines the message of the notification as html content
@@ -118,6 +122,10 @@ export class Notification implements ComponentInterface, NotificationComponentIn
    * Emitted when the component has loaded.
    */
   @Event() balDidLoad!: EventEmitter<void>
+
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+  }
 
   componentDidLoad(): void {
     this.didLoad = true
@@ -185,7 +193,7 @@ export class Notification implements ComponentInterface, NotificationComponentIn
           {this.action && (
             <bal-button
               color="primary"
-              size="small"
+              size="sm"
               part="button"
               icon={this.actionIcon}
               target={this.actionTarget}

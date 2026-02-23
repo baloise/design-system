@@ -11,11 +11,11 @@
 :host {
   @include hybrid.base-vars('icon');
 
-  --icon-size: var(--bal-icon-size-normal);
+  --icon-size: var(--bal-icon-size-base);
   --icon-color: var(--bal-icon-color-primary);
 
-  --icon-tile-size: var(--bal-icon-tile-size-normal-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-normal-tablet);
+  --icon-tile-size: var(--bal-icon-tile-size-base-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-base-tablet);
   --icon-tile-color-background: var(--bal-icon-tile-color-purple);
   --icon-tile-radius: var(--bal-icon-tile-radius);
 }
@@ -115,7 +115,7 @@
 
 //
 // Sizes
-$icon-sizes: ('x-small', 'small', 'medium', 'large', 'x-large', 'xx-large');
+$icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl');
 
 @each $size in $icon-sizes {
   :host(.is-icon-#{$size}) {
@@ -125,14 +125,14 @@ $icon-sizes: ('x-small', 'small', 'medium', 'large', 'x-large', 'xx-large');
 
 // Tile Sizes
 
-:host(.is-tile-large) {
-  --icon-tile-size: var(--bal-icon-tile-size-large-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-large-tablet);
+:host(.is-tile-lg) {
+  --icon-tile-size: var(--bal-icon-tile-size-lg-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-lg-tablet);
 }
 
-:host(.is-tile-x-large) {
-  --icon-tile-size: var(--bal-icon-tile-size-x-large-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-x-large-tablet);
+:host(.is-tile-xl) {
+  --icon-tile-size: var(--bal-icon-tile-size-xl-mobile);
+  --icon-tile-size-tablet: var(--bal-icon-tile-size-xl-tablet);
 }
 
 //

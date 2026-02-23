@@ -63,7 +63,7 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-:host(.is-small) {
+:host(.is-sm) {
   --spinner-size: 2rem;
   --spinner-circle-size: 1.125rem;
   --spinner-circle-border-width: 0.2rem;

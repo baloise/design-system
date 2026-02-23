@@ -6,6 +6,7 @@
 namespace BalProps {
   export type BalSpinnerColor = 'blue' | 'white'
   export type BalSpinnerVariation = 'logo' | 'circle'
+  export type BalSpinnerSize = 'sm' | ''
 }
 
 namespace BalEvents {}

@@ -1,9 +1,10 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
 import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
 import { sanitizeSvg } from '../../utils/svg'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-icon',
@@ -34,7 +35,11 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: BalProps.BalIconSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalIconSize = ''
+  @Watch('size')
+  watchSize(newValue: BalProps.BalIconSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * The theme type of the button.
@@ -100,6 +105,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
 
   connectedCallback() {
     this.generateSvgContent(this.name)
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
   componentWillRender(): Promise<void> | void {

@@ -3362,6 +3362,17 @@
             ],
             "com.figma.isOverride": true
           }
+        },
+        "MD": {
+          "$type": "number",
+          "$value": "{🧱 Primitive.📏 Size.Border.3}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:177:2",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
         }
       }
     },
@@ -10618,7 +10629,7 @@
       "Circle": {
         "BorderWidth": {
           "$type": "number",
-          "$value": "{🏷️ Semantic.▭ Border.Width.Base}",
+          "$value": "{🏷️ Semantic.▭ Border.Width.MD}",
           "$extensions": {
             "com.figma.variableId": "VariableID:45:46",
             "com.figma.scopes": [
@@ -10847,7 +10858,7 @@
           }
         },
         "Size": {
-          "normal": {
+          "Base": {
             "Mobile": {
               "$type": "number",
               "$value": "{🧱 Primitive.📏 Size.Space.32}",
@@ -11101,7 +11112,7 @@
           }
         },
         "Size": {
-          "rmal": {
+          "SM": {
             "$type": "number",
             "$value": "{🏷️ Semantic.🔤 Text.Size.None.Mobile}",
             "$extensions": {

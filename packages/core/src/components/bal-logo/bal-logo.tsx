@@ -7,6 +7,7 @@ import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { LogoBaloise, LogoHelvetia } from './bal-logo.icons'
 import { cssVariables } from '../../utils/css'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
@@ -46,7 +47,11 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   /**
    * Size of the logo svg
    */
-  @Prop() size: BalProps.BalLogoSize = ''
+  @Prop({ mutable: true }) size: BalProps.BalLogoSize = ''
+  @Watch('size')
+  watchSize(newValue: BalProps.BalLogoSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Defines the brand of the logo. Default is 'baloise'.
@@ -70,6 +75,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    */
 
   connectedCallback() {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
     this.animatedWatcher()
   }
 
@@ -156,11 +162,11 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   }
 
   private getHeight() {
-    if (this.size === 'small') {
+    if (this.size === 'sm') {
       return 22
     }
 
-    if (this.size === 'large') {
+    if (this.size === 'lg') {
       return this.isTouch ? 32 : 48
     }
 
@@ -183,8 +189,8 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     return (
       <Host
         class={{
-          'is-small': this.size === 'small',
-          'is-large': this.size === 'large',
+          'is-sm': this.size === 'sm',
+          'is-lg': this.size === 'lg',
           'is-animated': this.animated,
           'is-inverted': this.color === 'white',
         }}

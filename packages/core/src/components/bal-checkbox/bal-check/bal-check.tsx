@@ -55,7 +55,7 @@ export class Check implements ComponentInterface {
           'is-pressed': this.pressed,
         }}
       >
-        <bal-icon name="check" size="small"></bal-icon>
+        <bal-icon name="check" size="sm"></bal-icon>
       </Host>
     )
   }

@@ -49,7 +49,7 @@ export class Switch implements ComponentInterface {
           'is-pressed': this.pressed,
         }}
       >
-        <bal-icon name="check" size="small"></bal-icon>
+        <bal-icon name="check" size="sm"></bal-icon>
         <div id="toggle" part="toggle"></div>
       </Host>
     )
