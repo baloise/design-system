@@ -88,7 +88,7 @@ $notification-host-selector: ('#notification');
     bal-button,
     a.button,
     button.button {
-      --button-margin-top: calc(var(--notification-space) - var(--notification-gap));
+      --bal-button-mt: calc(var(--notification-space) - var(--notification-gap));
     }
   }
 

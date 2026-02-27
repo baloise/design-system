@@ -48,7 +48,7 @@ export class CardButton {
 
   render() {
     return (
-      <Host class="card-footer">
+      <Host role="contentinfo" class="card-footer">
         <bal-button
           color="secondary"
           expanded

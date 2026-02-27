@@ -10,7 +10,7 @@ export class CardActions {
 
   render() {
     return (
-      <Host class="card-footer">
+      <Host role="contentinfo" class="card-footer">
         <bal-button-group class="m-none" position={this.position}>
           <slot />
         </bal-button-group>

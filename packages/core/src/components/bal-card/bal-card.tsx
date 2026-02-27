@@ -1,12 +1,14 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-card',
   styleUrl: 'bal-card.host.scss',
-  shadow: false,
+  shadow: true,
 })
 export class Card {
+  @Element() el!: HTMLElement
   /**
    * If `true` a light blue border is added to the card.
    */
@@ -45,12 +47,20 @@ export class Card {
   /**
    * Defines the space of the card content.
    */
-  @Prop() space: BalProps.BalCardSpace = ''
+  @Prop({ mutable: true }) space: BalProps.BalCardSpace = ''
+  @Watch('space')
+  watchSpace(newValue: BalProps.BalCardSpace) {
+    this.space = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Defines the color of the card.
    */
   @Prop() color: BalProps.BalCardColor = 'white'
+
+  connectedCallback(): void {
+    this.space = normalizeDeprecatedTShirtSize(this.space) || ''
+  }
 
   get colorTypeClass(): string {
     const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
@@ -78,16 +88,24 @@ export class Card {
     return (
       <Host
         class={{
-          card: true,
-          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${this.space}`]: !isEmpty(this.space),
+          // card: true,
           [`is-fullheight`]: this.fullheight,
-          [`is-square`]: this.square,
-          [`is-outlined`]: this.border,
-          [`is-flat`]: this.border || this.flat,
         }}
       >
-        <slot></slot>
+        <article
+          id="card"
+          class={{
+            // card: true,
+            [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
+            [`has-space-${this.space}`]: !isEmpty(this.space),
+            [`is-fullheight`]: this.fullheight,
+            [`is-square`]: this.square,
+            [`is-outlined`]: this.border,
+            [`is-flat`]: this.border || this.flat,
+          }}
+        >
+          <slot></slot>
+        </article>
       </Host>
     )
   }

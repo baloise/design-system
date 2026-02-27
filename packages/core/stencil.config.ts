@@ -146,6 +146,11 @@ export const config: Config = {
           dest: 'assets/fonts',
           warn: true,
         },
+        {
+          src: join(packagesDir, '..', 'resources', 'images'),
+          dest: 'assets/images',
+          warn: true,
+        },
         // {
         //   src: join(packagesDir, 'styles', 'css'),
         //   dest: 'assets/styles',
@@ -229,11 +234,13 @@ export const config: Config = {
     {
       components: [
         'bal-card',
-        'bal-card-actions',
-        'bal-card-button',
+        'bal-card-header',
         'bal-card-content',
-        'bal-card-subtitle',
-        'bal-card-title',
+        'bal-card-footer',
+        'bal-card-actions', // deprecated
+        'bal-card-button', // deprecated
+        'bal-card-subtitle', // deprecated
+        'bal-card-title', // deprecated
       ],
     },
     { components: ['bal-close'] },

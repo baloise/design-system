@@ -11,7 +11,7 @@ export class CardTitle {
 
   render() {
     return (
-      <Host class="card-header">
+      <Host role="banner" class="card-header">
         <bal-heading level="h3" space="none" inverted={this.inverted}>
           <slot></slot>
         </bal-heading>

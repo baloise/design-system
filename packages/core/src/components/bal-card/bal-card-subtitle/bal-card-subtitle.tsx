@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { BEM } from 'packages/core/src/utils/bem'
+
 @Component({
   tag: 'bal-card-subtitle',
 })
@@ -20,16 +20,10 @@ export class CardSubtitle {
   @Prop() color: BalProps.BalHeadingColor = ''
 
   render() {
-    const block = BEM.block('card-subtitle')
-
     return (
       <Host
         class={{
           'card-header': true,
-          // ...block.class(),
-          // ...block.modifier('bold').class(this.bold),
-          // ...block.modifier(`color-${this.color}`).class(!this.inverted),
-          // ...block.modifier('inverted').class(this.inverted),
         }}
       >
         <span

@@ -11,6 +11,44 @@
 }
 
 /**
+  * Mixin sets the selector for host and non-host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  * The $selector parameter is the selector for non-host mode and can be a single selector or a list of selectors.
+  */
+@mixin component-modifier($selector, $css-selector, $is-host: false) {
+  @if $is-host {
+    :host(#{$selector}) {
+      @content;
+    }
+  } @else {
+    #{$css-selector}#{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin generates styles for an element of a component for host and non-host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  * The $selector parameter is the selector for non-host mode and can be a single selector or a list of selectors.
+  */
+@mixin component-element($selector, $css-selector, $is-host: false) {
+  @if $is-host {
+    :host #{$selector} {
+      @content;
+    }
+  } @else {
+    #{$css-selector} {
+      #{$selector} {
+        @content;
+      }
+    }
+  }
+}
+
+/**
   * Mixin only generates styles for host mode.
   * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
   * The $is-host parameter determines if the component is in host mode or not.
@@ -64,13 +102,20 @@
   * The mixin takes care of the correct selector and allows to write the styles only once.
   * The $selectors parameter can be a single selector or a list of selectors.
   * The $is-host parameter determines if the component is in host mode or not.
+  * The $use-host parameter determines if the component should use the :host selector or not.
   */
-@mixin component($hostSelector, $coreSelectors, $is-host: false) {
+@mixin component($hostSelector, $coreSelectors, $is-host: false, $use-host: false) {
   $names: _as-list($coreSelectors);
 
   @if $is-host {
-    #{$hostSelector} {
-      @content;
+    @if $use-host {
+      :host {
+        @content;
+      }
+    } @else {
+      #{$hostSelector} {
+        @content;
+      }
     }
   } @else {
     $selector: ();
@@ -104,25 +149,31 @@
 }
 
 @mixin position-vars($name) {
-  --#{$name}-position: static;
-  --#{$name}-top: auto;
-  --#{$name}-right: auto;
-  --#{$name}-bottom: auto;
-  --#{$name}-left: auto;
+  --#{$name}-position: var(--bal-#{$name}-position, static);
+  --#{$name}-top: var(--bal-#{$name}-top);
+  --#{$name}-right: var(--bal-#{$name}-right);
+  --#{$name}-bottom: var(--bal-#{$name}-bottom);
+  --#{$name}-left: var(--bal-#{$name}-left);
 }
 
 @mixin margin-vars($name) {
-  --#{$name}-margin-left: 0;
-  --#{$name}-margin-right: 0;
-  --#{$name}-margin-top: 0;
-  --#{$name}-margin-bottom: 0;
+  --#{$name}-m: var(--bal-#{$name}-m, 0);
+  --#{$name}-my: var(--bal-#{$name}-my);
+  --#{$name}-mx: var(--bal-#{$name}-mx);
+  --#{$name}-ml: var(--bal-#{$name}-ml);
+  --#{$name}-mr: var(--bal-#{$name}-mr);
+  --#{$name}-mt: var(--bal-#{$name}-mt);
+  --#{$name}-mb: var(--bal-#{$name}-mb);
 }
 
 @mixin margin-styles($name) {
-  margin-left: var(--#{$name}-margin-left);
-  margin-right: var(--#{$name}-margin-right);
-  margin-top: var(--#{$name}-margin-top);
-  margin-bottom: var(--#{$name}-margin-bottom);
+  margin: var(--#{$name}-m);
+  margin-inline: var(--#{$name}-mx);
+  margin-block: var(--#{$name}-my);
+  margin-left: var(--#{$name}-ml);
+  margin-right: var(--#{$name}-mr);
+  margin-top: var(--#{$name}-mt);
+  margin-bottom: var(--#{$name}-mb);
 }
 
 @mixin position-styles($name) {

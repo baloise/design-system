@@ -1,0 +1,20 @@
+@use '../../../hybrid' as hybrid;
+
+@include hybrid.host-base(card-header, flex);
+
+:host {
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding-inline: calc(var(--card-space) - var(--card-border-width));
+  gap: var(--card-space);
+}
+
+:host(:first-child) {
+  padding-top: calc(var(--card-space) - var(--card-border-width));
+}
+
+:host(:last-child) {
+  padding-bottom: calc(var(--card-space) - var(--card-border-width));
+  --card-header-margin-bottom: 0;
+}

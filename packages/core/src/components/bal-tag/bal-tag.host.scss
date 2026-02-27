@@ -3,4 +3,7 @@
   $tag-use-host: true
 );
 
-@include hybrid.host-base(tag, inline-block);
+:host {
+  display: inline-block;
+}
+// @include hybrid.host-base(tag, inline-block);

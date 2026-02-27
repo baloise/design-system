@@ -1,0 +1,62 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@mixin content() {
+  bal-heading:not(:last-child),
+  h1:is(.title, .subtitle, .heading):not(:last-child) {
+    --heading-mb: var(--bal-space-xs-device);
+  }
+
+  h1:not(.title, .subtitle, .heading, :last-child) {
+    margin-bottom: var(--bal-space-xs-device);
+  }
+
+  h2:is(.title, .subtitle, .heading):not(:last-child) {
+    --heading-mb: var(--bal-space-xs-device);
+  }
+
+  h2:not(.title, .subtitle, .heading, :last-child) {
+    margin-bottom: var(--bal-space-xs-device);
+  }
+
+  h3:is(.title, .subtitle, .heading):not(:last-child) {
+    --heading-mb: var(--bal-space-xs-device);
+  }
+
+  h3:not(.title, .subtitle, .heading, :last-child) {
+    margin-bottom: var(--bal-space-xs-device);
+  }
+
+  h4:is(.title, .subtitle, .heading):not(:last-child) {
+    --heading-mb: var(--bal-space-xs-device);
+  }
+
+  h4:not(.title, .subtitle, .heading, :last-child) {
+    margin-bottom: var(--bal-space-xs-device);
+  }
+
+  h5:is(.title, .subtitle, .heading):not(:last-child) {
+    --heading-mb: var(--bal-space-2xs-device);
+  }
+
+  h5:not(.title, .subtitle, .heading, :last-child) {
+    margin-bottom: var(--bal-space-2xs-device);
+  }
+
+  bal-text:not(:last-child),
+  p.text:not(:last-child) {
+    --text-mb: var(--bal-space-base-device);
+  }
+
+  p:not(.text, :last-child) {
+    margin-bottom: var(--bal-space-base-device);
+  }
+
+  > :is(h1, h2, h3, h4, h5, h6, bal-heading) + p.text,
+  > :is(h1, h2, h3, h4, h5, h6, bal-heading) + bal-text {
+    --text-mt: var(--bal-space-base-device);
+  }
+
+  > :is(h1, h2, h3, h4, h5, h6, bal-heading) + p:not(.text, bal-text) {
+    margin-top: var(--bal-space-base-device);
+  }
+}

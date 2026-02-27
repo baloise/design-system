@@ -16,12 +16,12 @@ $heading-host-selector: ('#heading');
 @include hybrid.vars($heading-css-selector, $heading-use-host) {
   @include hybrid.margin-vars($heading-name);
 
-  --heading-color: initial;
+  --heading-color: var(--bal-heading-color, inherit);
   --heading-family: var(--bal-heading-family);
   --heading-weight: var(--bal-heading-weight);
   --heading-line-height: var(--bal-heading-line-height);
 
-  --heading-font-size: var(--bal-heading-1-size-device);
+  --heading-font-size: var(--bal-heading-font-size, inherit);
   --heading-space: var(--bal-heading-1-space);
 }
 
@@ -35,8 +35,7 @@ $heading-host-selector: ('#heading');
   @include hybrid.margin-styles($heading-name);
   @include font-smoothing();
 
-  flex: 1;
-
+  display: block;
   font-family: var(--heading-family);
   font-weight: var(--heading-weight);
   font-size: var(--heading-font-size);
@@ -45,13 +44,18 @@ $heading-host-selector: ('#heading');
 
   hyphens: auto;
   overflow-wrap: break-word;
+  text-wrap: balance;
 
-  em,
-  span {
+  em:not(.text),
+  span:not(.text) {
     font-weight: inherit;
   }
 
   strong {
+    font-weight: var(--bal-text-weight-bold);
+  }
+
+  &.is-bold {
     font-weight: var(--bal-text-weight-bold);
   }
 
@@ -92,23 +96,11 @@ $heading-host-selector: ('#heading');
   .heading.is-subtitle {
     @include heading-subtitle-style;
   }
-
-  .title,
-  .subtitle,
-  .heading {
-    &:not(:last-child) {
-      --heading-margin-bottom: var(--heading-space);
-    }
-  }
 }
 
 @include hybrid.host-only($heading-use-host) {
   :host(.is-subtitle) #heading {
     @include heading-subtitle-style;
-  }
-
-  :host(:not(:last-child)) {
-    --heading-margin-bottom: var(--heading-space);
   }
 }
 
@@ -138,7 +130,7 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
 // Sizes
 
 @mixin heading-size($level) {
-  --heading-font-size: var(--bal-heading-#{$level}-size-device);
+  --bal-heading-font-size: var(--bal-heading-#{$level}-size-device);
   --heading-space: var(--bal-heading-#{$level}-space);
 }
 
@@ -165,12 +157,8 @@ $heading-size-aliases: (
 
 @include hybrid.styles-only($heading-use-host) {
   @for $i from 1 through 5 {
-    h#{$i}.title,
-    h#{$i}.subtitle,
-    h#{$i}.heading,
-    [role='heading'][aria-level='#{$i}'].title,
-    [role='heading'][aria-level='#{$i}'].subtitle,
-    [role='heading'][aria-level='#{$i}'].heading {
+    h#{$i},
+    [role='heading'][aria-level='#{$i}'] {
       @include heading-size($i);
     }
   }
@@ -195,43 +183,43 @@ $heading-size-aliases: (
   .subtitle,
   .heading {
     &.has-space-all {
-      --heading-margin-top: var(--heading-space);
-      --heading-margin-bottom: var(--heading-space);
+      --heading-mt: var(--heading-space);
+      --heading-mb: var(--heading-space);
     }
 
     &.has-space-top {
-      --heading-margin-top: var(--heading-space);
-      --heading-margin-bottom: 0;
+      --heading-mt: var(--heading-space);
+      --heading-mb: 0;
     }
 
     &.has-space-bottom {
-      --heading-margin-bottom: var(--heading-space);
+      --heading-mb: var(--heading-space);
     }
 
     &.has-space-none {
-      --heading-margin-bottom: 0;
-      --heading-margin-top: 0;
+      --heading-mb: 0;
+      --heading-mt: 0;
     }
   }
 }
 
 @include hybrid.host-only($heading-use-host) {
   :host(.has-space-all) {
-    --heading-margin-top: var(--heading-space);
-    --heading-margin-bottom: var(--heading-space);
+    --heading-mt: var(--heading-space);
+    --heading-mb: var(--heading-space);
   }
 
   :host(.has-space-top) {
-    --heading-margin-top: var(--heading-space);
-    --heading-margin-bottom: 0;
+    --heading-mt: var(--heading-space);
+    --heading-mb: 0;
   }
 
   :host(.has-space-bottom) {
-    --heading-margin-bottom: var(--heading-space);
+    --heading-mb: var(--heading-space);
   }
 
   :host(.has-space-none) {
-    --heading-margin-bottom: 0;
-    --heading-margin-top: 0;
+    --heading-mb: 0;
+    --heading-mt: 0;
   }
 }

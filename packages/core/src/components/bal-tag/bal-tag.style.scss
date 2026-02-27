@@ -14,6 +14,8 @@ $tag-host-selector: ('#tag');
  */
 
 @include hybrid.vars($tag-css-selector, $tag-use-host) {
+  @include hybrid.base-vars($tag-name);
+
   --tag-min-height: 2rem;
   --tag-gap: 0.25rem;
   --tag-padding: var(--bal-tag-space-y) var(--bal-tag-space-x);
@@ -24,7 +26,7 @@ $tag-host-selector: ('#tag');
   --tag-font-family: var(--bal-tag-family);
   --tag-font-size: var(--bal-tag-size);
   --tag-font-weight: var(--bal-tag-weight);
-  --tag-margin-right-close: calc(0.25rem * -1);
+  --tag-close-mr: calc(0.25rem * -1);
 }
 
 /**
@@ -34,9 +36,9 @@ $tag-host-selector: ('#tag');
   */
 
 @include hybrid.component($tag-host-selector, $tag-css-selector, $tag-use-host) {
+  @include hybrid.base-styles($tag-name);
   @include unselectable;
 
-  position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +56,8 @@ $tag-host-selector: ('#tag');
 
   > .close,
   > bal-close {
-    margin-right: var(--tag-margin-right-close);
+    --bal-close-mr: var(--tag-close-mr);
+    // margin-right: var(--tag-close-mr);
   }
 
   > bal-icon {

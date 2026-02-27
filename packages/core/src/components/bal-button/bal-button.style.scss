@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use './bal-button-group/bal-button-group.mixin.scss' as button-group;
 
 $button-use-host: false !default;
 $button-name: button;
@@ -108,9 +109,9 @@ $button-host-selector: ('#button');
   --button-line-height: var(--bal-button-line-height);
   --button-radius: var(--bal-button-radius-base);
 
-  --button-color-text: var(--bal-button-color-secondary-text);
-  --button-color-border: var(--bal-button-color-secondary-border);
-  --button-color-background: var(--bal-button-color-secondary-background);
+  --button-color-text: var(--bal-button-color-primary-text);
+  --button-color-border: var(--bal-button-color-primary-border);
+  --button-color-background: var(--bal-button-color-primary-background);
 
   --button-width: fit-content;
   --button-border-style: solid;
@@ -166,7 +167,7 @@ $button-host-selector: ('#button');
   border-style: var(--button-border-style);
   border-width: var(--bal-border-width-base);
 
-  @include button-color(secondary);
+  @include button-color(primary);
   background-color: var(--button-color-background);
   color: var(--button-color-text);
   border-color: var(--button-color-border);
@@ -198,26 +199,25 @@ $button-host-selector: ('#button');
     flex: 1 1 auto;
   }
 
-  &:not(.is-link).has-shadow {
+  &:not(.is-link, .is-text).has-shadow {
     box-shadow: var(--bal-button-shadow-base);
   }
 
+  &.is-text.has-shadow,
   &.is-link.has-shadow {
     text-shadow: var(--bal-button-shadow-base);
+  }
+
+  &.is-link {
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+    text-decoration-thickness: var(--bal-link-border-width);
   }
 
   // Spinner
   & > bal-spinner:not([variation='circle']) {
     --spinner-size: 2rem;
   }
-
-  // badge positioning
-  // .badge:first-child {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   transform: translate(50%, -50%);
-  // }
 }
 
 @include hybrid.host-only($button-use-host) {
@@ -251,7 +251,7 @@ $button-host-selector: ('#button');
   * Define here the variants and states like size or colors for the component.
   */
 $button-colors: (
-  'primary',
+  'secondary',
   'tertiary',
   'tertiary-yellow',
   'tertiary-purple',
@@ -262,7 +262,8 @@ $button-colors: (
   'success',
   'warning',
   'danger',
-  'link'
+  'link',
+  'text'
 );
 
 @include hybrid.component($button-host-selector, $button-css-selector, $button-use-host) {
@@ -278,7 +279,7 @@ $button-colors: (
   // Inverted Variants
   &.is-inverted {
     @each $color in $button-colors {
-      @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link') {
+      @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link' and $color != 'text') {
         &.is-#{$color} {
           @include button-color(inverted);
         }
@@ -291,6 +292,10 @@ $button-colors: (
 
     &.is-tertiary {
       @include button-color(inverted-tertiary);
+    }
+
+    &.is-text {
+      @include button-color(inverted-text);
     }
 
     &.is-link {
@@ -444,95 +449,100 @@ $button-colors: (
     Grouped Buttons
     */
   .buttons {
-    display: flex;
-    gap: 0.5rem;
-    flex-flow: column wrap;
-    width: 100%;
-
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-
-    @include mobile {
-      .button:not(.is-square, .is-circle) {
-        flex: 1 1 auto;
-      }
-    }
-
-    @include tablet {
-      &.fit-content {
-        width: fit-content;
-      }
-
-      flex-flow: row wrap;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    &.as-row {
-      flex-flow: row wrap;
-      align-items: center;
-      justify-content: flex-start;
-
-      &.is-expanded {
-        .button {
-          flex: 1;
-        }
-      }
-    }
-
-    &.as-col {
-      flex-flow: column wrap;
-
-      @include tablet {
-        align-items: flex-start;
-      }
-    }
-
-    &.is-reverse.as-row {
-      flex-flow: row-reverse wrap;
-    }
-
-    &.is-reverse.as-col {
-      flex-flow: column-reverse wrap;
-    }
-
-    // Centered
-    @include tablet {
-      &.is-centered:not(.as-col) {
-        justify-content: center;
-      }
-
-      &.is-centered.as-col {
-        align-items: center;
-      }
-
-      // Right aligned
-      &.is-right:not(.as-col) {
-        justify-content: flex-end;
-      }
-
-      &.is-right.as-col {
-        align-items: flex-end;
-      }
-    }
+    @include button-group.style();
   }
+  // .buttons {
+  //   display: flex;
+  //   gap: 0.5rem;
+  //   flex-flow: column wrap;
+  //   width: 100%;
 
-  .buttons.fit-content bal-button {
-    --button-width: 100%;
+  //   &:not(:last-child) {
+  //     margin-bottom: 1rem;
+  //   }
 
-    width: 100%;
-  }
+  //   @include mobile {
+  //     .button:not(.is-square, .is-circle) {
+  //       flex: 1 1 auto;
+  //     }
+  //   }
 
-  @include mobile {
-    .buttons {
-      --button-width: 100%;
-    }
+  //   @include tablet {
+  //     &.fit-content {
+  //       width: fit-content;
+  //     }
 
-    .buttons bal-button {
-      --button-width: 100%;
+  //     flex-flow: row wrap;
+  //     align-items: center;
+  //     justify-content: flex-start;
+  //   }
 
-      width: 100%;
-    }
-  }
+  //   &.as-row {
+  //     flex-flow: row wrap;
+  //     align-items: center;
+  //     justify-content: flex-start;
+
+  //     &.is-expanded {
+  //       .button {
+  //         flex: 1;
+  //       }
+  //     }
+  //   }
+
+  //   &.as-col {
+  //     flex-flow: column wrap;
+
+  //     @include tablet {
+  //       align-items: flex-start;
+  //     }
+  //   }
+
+  //   &.is-reverse.as-row {
+  //     flex-flow: row-reverse wrap;
+  //   }
+
+  //   &.is-reverse.as-col {
+  //     flex-flow: column-reverse wrap;
+  //   }
+
+  //   // Centered
+  //   @include tablet {
+  //     &.is-center:not(.as-col),
+  //     &.is-centered:not(.as-col) {
+  //       justify-content: center;
+  //     }
+
+  //     &.is-center.as-col,
+  //     &.is-centered.as-col {
+  //       align-items: center;
+  //     }
+
+  //     // Right aligned
+  //     &.is-right:not(.as-col) {
+  //       justify-content: flex-end;
+  //     }
+
+  //     &.is-right.as-col {
+  //       align-items: flex-end;
+  //     }
+  //   }
+
+  //   &.fit-content bal-button {
+  //     --button-width: 100%;
+
+  //     width: 100%;
+  //   }
+
+  //   @include mobile {
+  //     & {
+  //       --button-width: 100%;
+  //     }
+
+  //     & bal-button {
+  //       --button-width: 100%;
+
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 }

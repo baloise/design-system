@@ -363,6 +363,22 @@ export namespace Components {
     }
     interface BalCardContent {
     }
+    interface BalCardFooter {
+        /**
+          * @default false
+         */
+        "buttons": boolean;
+        /**
+          * @default ''
+         */
+        "position": BalProps.BalCardFooterPosition;
+    }
+    interface BalCardHeader {
+        /**
+          * @default 'row'
+         */
+        "direction": BalProps.BalCardHeaderDirection;
+    }
     interface BalCardSubtitle {
         /**
           * If `true` the card text color is bold.
@@ -4551,6 +4567,18 @@ declare global {
         prototype: HTMLBalCardContentElement;
         new (): HTMLBalCardContentElement;
     };
+    interface HTMLBalCardFooterElement extends Components.BalCardFooter, HTMLStencilElement {
+    }
+    var HTMLBalCardFooterElement: {
+        prototype: HTMLBalCardFooterElement;
+        new (): HTMLBalCardFooterElement;
+    };
+    interface HTMLBalCardHeaderElement extends Components.BalCardHeader, HTMLStencilElement {
+    }
+    var HTMLBalCardHeaderElement: {
+        prototype: HTMLBalCardHeaderElement;
+        new (): HTMLBalCardHeaderElement;
+    };
     interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
     }
     var HTMLBalCardSubtitleElement: {
@@ -5637,6 +5665,8 @@ declare global {
         "bal-card-actions": HTMLBalCardActionsElement;
         "bal-card-button": HTMLBalCardButtonElement;
         "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-footer": HTMLBalCardFooterElement;
+        "bal-card-header": HTMLBalCardHeaderElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-carousel": HTMLBalCarouselElement;
@@ -6094,6 +6124,22 @@ declare namespace LocalJSX {
         "target"?: BalProps.BalCardButtonTarget;
     }
     interface BalCardContent {
+    }
+    interface BalCardFooter {
+        /**
+          * @default false
+         */
+        "buttons"?: boolean;
+        /**
+          * @default ''
+         */
+        "position"?: BalProps.BalCardFooterPosition;
+    }
+    interface BalCardHeader {
+        /**
+          * @default 'row'
+         */
+        "direction"?: BalProps.BalCardHeaderDirection;
     }
     interface BalCardSubtitle {
         /**
@@ -10057,6 +10103,8 @@ declare namespace LocalJSX {
         "bal-card-actions": BalCardActions;
         "bal-card-button": BalCardButton;
         "bal-card-content": BalCardContent;
+        "bal-card-footer": BalCardFooter;
+        "bal-card-header": BalCardHeader;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
         "bal-carousel": BalCarousel;
@@ -10169,6 +10217,8 @@ declare module "@stencil/core" {
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
             "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-footer": LocalJSX.BalCardFooter & JSXBase.HTMLAttributes<HTMLBalCardFooterElement>;
+            "bal-card-header": LocalJSX.BalCardHeader & JSXBase.HTMLAttributes<HTMLBalCardHeaderElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;

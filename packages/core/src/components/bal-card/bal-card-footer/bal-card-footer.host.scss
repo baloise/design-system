@@ -1,0 +1,18 @@
+@use '../../../hybrid' as hybrid;
+
+@include hybrid.host-base(card-footer, block);
+
+:host {
+  --card-footer-margin-bottom: var(--card-space);
+
+  padding-inline: calc(var(--card-space) - var(--card-border-width));
+}
+
+:host(:first-child) {
+  padding-top: calc(var(--card-space) - var(--card-border-width));
+}
+
+:host(:last-child) {
+  padding-bottom: calc(var(--card-space) - var(--card-border-width));
+  --card-footer-margin-bottom: 0;
+}

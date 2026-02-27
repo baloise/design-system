@@ -82,8 +82,13 @@ $text-host-selector: ('#text');
 
     // Space
     &:not(:last-child) {
-      --text-margin-bottom: var(--bal-space-2xs-device);
+      --text-mb: var(--bal-space-2xs-device);
     }
+  }
+
+  strong.text,
+  b.text {
+    font-weight: var(--bal-text-weight-bold);
   }
 }
 
@@ -93,7 +98,7 @@ $text-host-selector: ('#text');
   }
 
   :host(:not(:last-child)) {
-    --text-margin-bottom: var(--bal-space-2xs-device);
+    --text-mb: var(--bal-space-2xs-device);
   }
 }
 
@@ -199,45 +204,45 @@ $text-host-selector: ('#text');
 @include hybrid.styles-only($text-use-host) {
   .text {
     &.has-space-all {
-      --text-margin-top: var(--text-space);
-      --text-margin-bottom: var(--text-space);
+      --text-mt: var(--text-space);
+      --text-mb: var(--text-space);
     }
 
     &.has-space-top {
-      --text-margin-top: var(--text-space);
-      --text-margin-bottom: 0;
+      --text-mt: var(--text-space);
+      --text-mb: 0;
     }
 
     &.has-space-bottom {
-      --text-margin-top: 0;
-      --text-margin-bottom: var(--text-space);
+      --text-mt: 0;
+      --text-mb: var(--text-space);
     }
 
     &.has-space-none {
-      --text-margin-top: 0;
-      --text-margin-bottom: 0;
+      --text-mt: 0;
+      --text-mb: 0;
     }
   }
 }
 
 @include hybrid.host-only($text-use-host) {
   :host(.has-space-all) {
-    --text-margin-top: var(--text-space);
-    --text-margin-bottom: var(--text-space);
+    --text-mt: var(--text-space);
+    --text-mb: var(--text-space);
   }
 
   :host(.has-space-top) {
-    --text-margin-top: var(--text-space);
-    --text-margin-bottom: 0;
+    --text-mt: var(--text-space);
+    --text-mb: 0;
   }
 
   :host(.has-space-bottom) {
-    --text-margin-top: 0;
-    --text-margin-bottom: var(--text-space);
+    --text-mt: 0;
+    --text-mb: var(--text-space);
   }
 
   :host(.has-space-none) {
-    --text-margin-top: 0;
-    --text-margin-bottom: 0;
+    --text-mt: 0;
+    --text-mb: 0;
   }
 }

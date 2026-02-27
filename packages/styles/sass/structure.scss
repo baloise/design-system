@@ -61,9 +61,6 @@ p:not(.text, .title, .subtitle, .heading) {
   strong {
     color: currentColor;
   }
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-base);
-  }
 }
 
 small {

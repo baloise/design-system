@@ -23,24 +23,28 @@ function formatSeconds(seconds) {
 export default async function runExecutor(options: BuildStylesExecutorSchema) {
   try {
     // clean generated files
-    await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
-    await rm(join(options.projectRoot, 'docs'), { recursive: true, force: true })
-    await rm(join(options.projectRoot, 'src/generated'), { recursive: true, force: true })
+    if (!options.dev) {
+      await rm(join(options.projectRoot, 'css'), { recursive: true, force: true })
+      await rm(join(options.projectRoot, 'docs'), { recursive: true, force: true })
+      await rm(join(options.projectRoot, 'src/generated'), { recursive: true, force: true })
+    }
 
     // generate css utils
-    const startTimeUtilities = process.hrtime.bigint()
-    await generateBackgroundColors(options)
-    await generateBorder(options)
-    await generateElevation(options)
-    await generateFlex(options)
-    await generateInteractions(options)
-    await generateLayout(options)
-    await generateSizing(options)
-    await generateSpacing(options)
-    await generateTypography(options)
-    console.log(`Generated utilities in ${formatSeconds(startTimeUtilities)}`)
+    if (!options.dev) {
+      const startTimeUtilities = process.hrtime.bigint()
+      await generateBackgroundColors(options)
+      await generateBorder(options)
+      await generateElevation(options)
+      await generateFlex(options)
+      await generateInteractions(options)
+      await generateLayout(options)
+      await generateSizing(options)
+      await generateSpacing(options)
+      await generateTypography(options)
+      console.log(`Generated utilities in ${formatSeconds(startTimeUtilities)}`)
 
-    await mkdir(join(options.projectRoot, 'css'))
+      await mkdir(join(options.projectRoot, 'css'))
+    }
 
     // create components styles
     const components = await scan(join(options.componentRoot, '**', '*.style.scss'))
@@ -56,14 +60,25 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
 
     // create css output
     const startTimeCss = process.hrtime.bigint()
-    const files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
+
+    let files = []
+    if (options.dev) {
+      console.log('Running in dev mode, only compiling local styles')
+      files = await scan(join(options.projectRoot, 'sass', 'baloise-design-system.local.scss'))
+    } else {
+      files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
+    }
+
     await Promise.all(files.map(file => compileSass(file, options)))
     console.log(`Generated css in ${formatSeconds(startTimeCss)}`)
 
     // copy generated files to css folder
     const startTimeCopy = process.hrtime.bigint()
-    await rm(join(options.projectRoot, '..', 'core', 'www', 'assets', 'tokens'), { recursive: true, force: true })
-    await rm(join(options.projectRoot, '..', 'core', 'www', 'assets', 'styles'), { recursive: true, force: true })
+    if (!options.dev) {
+      await rm(join(options.projectRoot, '..', 'core', 'www', 'assets', 'tokens'), { recursive: true, force: true })
+      await rm(join(options.projectRoot, '..', 'core', 'www', 'assets', 'styles'), { recursive: true, force: true })
+    }
+
     await copy(
       join(options.projectRoot, '..', 'tokens', 'dist', 'css'),
       join(options.projectRoot, '..', 'core', 'www', 'assets', 'tokens'),

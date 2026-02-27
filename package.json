@@ -16,6 +16,8 @@
     "tokens:force": "npx nx reset && npm run tokens",
     "styles": "npx nx run styles:build",
     "styles:force": "npx nx reset && npm run styles",
+    "styles:dev": "npx nx run styles:build -- --dev",
+    "styles:dev:force": "npx nx reset && npm run styles:dev",
     "lint": "npx nx run-many -t lint && npm run stylelint",
     "test": "npx nx run-many -t test -- --watch=false",
     "stylelint": "stylelint \"**/*{style,host}.scss\"",
