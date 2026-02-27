@@ -14,7 +14,8 @@
   }
 
   @include mobile {
-    .button:not(.is-square, .is-circle) {
+    .button:not(.is-square, .is-circle),
+    bal-button:not(.is-square, .is-circle) {
       flex: 1 1 auto;
     }
   }
@@ -35,7 +36,8 @@
     justify-content: var(--buttons-justify-content);
 
     &.is-expanded {
-      .button {
+      .button,
+      bal-button {
         flex: 1;
       }
     }
@@ -85,18 +87,18 @@
   }
 
   &.fit-content bal-button {
-    --button-width: 100%;
+    --bal-button-width: 100%;
 
     width: 100%;
   }
 
   @include mobile {
     & {
-      --button-width: 100%;
+      --bal-button-width: 100%;
     }
 
     & bal-button {
-      --button-width: 100%;
+      --bal-button-width: 100%;
 
       width: 100%;
     }

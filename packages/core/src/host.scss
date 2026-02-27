@@ -46,3 +46,11 @@
     @content;
   }
 }
+
+@mixin focused() {
+  :host(.is-focused),
+  :host(:focus-visible:not(:active)) {
+    @include focus-shadow();
+    @content;
+  }
+}

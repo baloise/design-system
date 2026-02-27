@@ -1,3 +1,12 @@
-$has-spacing: false;
+@use '../../../hybrid' as hybrid;
+@use './bal-button-group.mixin.scss' as button-group;
 
-@forward '../bal-button.style';
+@include hybrid.host-base(button-group, block);
+
+:host #group {
+  @include button-group.style();
+}
+
+:host(:not(:last-child)) {
+  margin-bottom: 1rem;
+}

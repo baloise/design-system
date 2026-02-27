@@ -89,7 +89,7 @@ $badge-colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning'
   --badge-pulse-color: var(--bal-badge-color-#{$color}-background);
 
   bal-icon {
-    --icon-color: var(--bal-badge-color-#{$color}-text);
+    --bal-icon-color: var(--bal-badge-color-#{$color}-text);
   }
 }
 

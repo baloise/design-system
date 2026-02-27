@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 
 /**
  * Variables
@@ -9,10 +10,9 @@
  */
 
 :host {
-  @include hybrid.base-vars('logo');
-
-  --logo-color: var(--bal-color-primary-5);
-  --logo-height: 22px;
+  @include vars.base(logo);
+  @include vars.local(logo-color, var(--bal-color-primary-5));
+  @include vars.local(logo-height, 22px);
 }
 
 /**
@@ -22,7 +22,7 @@
   */
 
 :host {
-  @include hybrid.base-styles('logo');
+  @include vars.styles(logo);
 
   position: static;
   display: grid;
@@ -32,16 +32,16 @@
 
   svg {
     transform: unset !important;
-    @include fillSvg(var(--logo-color));
+    @include fillSvg(var(--_logo-color));
   }
 
-  height: var(--logo-height);
+  height: var(--_logo-height);
   & > div {
-    height: var(--logo-height);
+    height: var(--_logo-height);
   }
 
   @include desktop {
-    --logo-height: 32px;
+    --mod-logo-height: 32px;
   }
 
   #animated {
@@ -62,27 +62,27 @@
 
   #animated {
     display: block;
-    width: var(--logo-height);
-    height: var(--logo-height);
+    width: var(--_logo-height);
+    height: var(--_logo-height);
   }
 }
 
 :host(.is-inverted) {
-  --logo-color: var(--bal-color-white);
+  --mod-logo-color: var(--bal-color-white);
 }
 
 :host(.is-sm) {
-  --logo-height: 22px;
+  --mod-logo-height: 22px;
 
   @include desktop {
-    --logo-height: 22px;
+    --mod-logo-height: 22px;
   }
 }
 
 :host(.is-lg) {
-  --logo-height: 32px;
+  --mod-logo-height: 32px;
 
   @include desktop {
-    --logo-height: 48px;
+    --mod-logo-height: 48px;
   }
 }

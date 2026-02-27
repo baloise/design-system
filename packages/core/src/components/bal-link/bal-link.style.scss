@@ -35,7 +35,7 @@ a.is-link:not(.button),
     color: var(--bal-link-color-base);
 
     bal-icon {
-      --icon-color: var(--bal-link-color-base);
+      --bal-icon-color: var(--bal-link-color-base);
     }
 
     @include hover {
@@ -44,7 +44,7 @@ a.is-link:not(.button),
         color: var(--bal-link-color-base-hover);
 
         bal-icon {
-          --icon-color: var(--bal-link-color-base-hover);
+          --bal-icon-color: var(--bal-link-color-base-hover);
         }
       }
     }
@@ -54,7 +54,7 @@ a.is-link:not(.button),
       color: var(--bal-link-color-base-active);
 
       bal-icon {
-        --icon-color: var(--bal-link-color-base-active);
+        --bal-icon-color: var(--bal-link-color-base-active);
       }
     }
 
@@ -70,7 +70,7 @@ a.is-link:not(.button),
     color: var(--bal-link-color-inverted);
 
     bal-icon {
-      --icon-color: var(--bal-link-color-inverted);
+      --bal-icon-color: var(--bal-link-color-inverted);
     }
 
     @include hover {
@@ -79,7 +79,7 @@ a.is-link:not(.button),
         color: var(--bal-link-color-inverted-hover);
 
         bal-icon {
-          --icon-color: var(--bal-link-color-inverted-hover);
+          --bal-icon-color: var(--bal-link-color-inverted-hover);
         }
       }
     }
@@ -89,7 +89,7 @@ a.is-link:not(.button),
       color: var(--bal-link-color-inverted-active);
 
       bal-icon {
-        --icon-color: var(--bal-link-color-inverted-active);
+        --bal-icon-color: var(--bal-link-color-inverted-active);
       }
     }
 

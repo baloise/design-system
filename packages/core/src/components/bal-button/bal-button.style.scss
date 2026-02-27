@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 @use './bal-button-group/bal-button-group.mixin.scss' as button-group;
 
 $button-use-host: false !default;
@@ -31,7 +32,7 @@ $button-host-selector: ('#button');
     color: var(--bal-button-color-disabled-base-text);
 
     & > bal-icon {
-      --icon-color: var(--bal-button-color-disabled-base-text);
+      --icon-size: var(--bal-button-color-disabled-base-text);
     }
 
     & > bal-spinner {
@@ -113,7 +114,7 @@ $button-host-selector: ('#button');
   --button-color-border: var(--bal-button-color-primary-border);
   --button-color-background: var(--bal-button-color-primary-background);
 
-  --button-width: fit-content;
+  --button-width: var(--bal-button-width, fit-content);
   --button-border-style: solid;
 
   --button-min-height: 3rem;

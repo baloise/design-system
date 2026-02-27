@@ -4,4 +4,6 @@
   $heading-use-host: true
 );
 
-@include hybrid.host-base(heading, block);
+:host {
+  display: block;
+}

@@ -2,6 +2,7 @@
 @use '../../hybrid' as hybrid;
 @use '../../typography' as typography;
 @use '../bal-button/bal-button-group/bal-button-group.mixin.scss' as button-group;
+@use './bal-card-header/bal-card-header.mixin.scss' as card-header;
 
 $card-use-host: false !default;
 $card-name: card;
@@ -116,18 +117,7 @@ $card-host-selector: ('#card');
 
   // Header
   .card-header {
-    --bal-heading-line-height: 32px;
-
-    gap: var(--card-gap);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    .title,
-    .subtitle,
-    .heading {
-      margin: 0;
-    }
+    @include card-header.stlye();
   }
 
   // Content

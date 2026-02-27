@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 
 /**
  * Variables
@@ -9,15 +10,14 @@
  */
 
 :host {
-  @include hybrid.base-vars('icon');
+  @include vars.base(icon);
+  @include vars.local(icon-size, var(--bal-icon-size-base));
+  @include vars.local(icon-color, var(--bal-icon-color-primary));
 
-  --icon-size: var(--bal-icon-size-base);
-  --icon-color: var(--bal-icon-color-primary);
-
-  --icon-tile-size: var(--bal-icon-tile-size-base-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-base-tablet);
-  --icon-tile-color-background: var(--bal-icon-tile-color-purple);
-  --icon-tile-radius: var(--bal-icon-tile-radius);
+  @include vars.local(icon-tile-size, var(--bal-icon-tile-size-base-mobile));
+  @include vars.local(icon-tile-size-tablet, var(--bal-icon-tile-size-base-tablet));
+  @include vars.local(icon-tile-color-background, var(--bal-icon-tile-color-purple));
+  @include vars.local(icon-tile-radius, var(--bal-icon-tile-radius));
 }
 
 /**
@@ -27,8 +27,7 @@
   */
 
 :host {
-  @include hybrid.base-styles('icon');
-
+  @include vars.styles(icon);
   @include unselectable;
 
   display: inline-flex;
@@ -37,13 +36,13 @@
   vertical-align: middle;
   pointer-events: visible;
   // Size
-  width: var(--icon-size);
-  max-height: var(--icon-size);
+  width: var(--_icon-size);
+  max-height: var(--_icon-size);
 }
 
 // Color
 :host(:not(.no-color)) {
-  @include fillSvg(var(--icon-color));
+  @include fillSvg(var(--_icon-color));
 }
 
 #inner {
@@ -52,8 +51,8 @@
   transition: transform 0.2s ease-in-out;
   padding: 0.063rem;
   // Size
-  width: var(--icon-size);
-  max-height: var(--icon-size);
+  width: var(--_icon-size);
+  max-height: var(--_icon-size);
   // Inner SVG Icon
   & > svg {
     vertical-align: top;
@@ -85,26 +84,26 @@
 
 // Tile
 :host(.tile) {
-  background: var(--icon-tile-color-background);
-  border-radius: var(--icon-tile-radius);
+  background: var(--_icon-tile-color-background);
+  border-radius: var(--_icon-tile-radius);
 
-  height: var(--icon-tile-size);
-  --icon-size: var(--icon-tile-size);
+  height: var(--_icon-tile-size);
+  --mod-icon-size: var(--_icon-tile-size);
 
   @include tablet {
-    height: var(--icon-tile-size-tablet);
-    --icon-size: var(--icon-tile-size-tablet);
+    height: var(--_icon-tile-size-tablet);
+    --mod-icon-size: var(--_icon-tile-size-tablet);
   }
 }
 
 :host(.tile-color-green) {
-  --icon-tile-color-background: var(--bal-icon-tile-color-green);
+  --mod-icon-tile-color-background: var(--bal-icon-tile-color-green);
 }
 :host(.tile-color-red) {
-  --icon-tile-color-background: var(--bal-icon-tile-color-red);
+  --mod-icon-tile-color-background: var(--bal-icon-tile-color-red);
 }
 :host(.tile-color-yellow) {
-  --icon-tile-color-background: var(--bal-icon-tile-color-yellow);
+  --mod-icon-tile-color-background: var(--bal-icon-tile-color-yellow);
 }
 
 /**
@@ -119,53 +118,32 @@ $icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl');
 
 @each $size in $icon-sizes {
   :host(.is-icon-#{$size}) {
-    --icon-size: var(--bal-icon-size-#{$size});
+    --mod-icon-size: var(--bal-icon-size-#{$size});
   }
 }
 
 // Tile Sizes
 
 :host(.is-tile-lg) {
-  --icon-tile-size: var(--bal-icon-tile-size-lg-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-lg-tablet);
+  --mod-icon-tile-size: var(--bal-icon-tile-size-lg-mobile);
+  --mod-icon-tile-size-tablet: var(--bal-icon-tile-size-lg-tablet);
 }
 
 :host(.is-tile-xl) {
-  --icon-tile-size: var(--bal-icon-tile-size-xl-mobile);
-  --icon-tile-size-tablet: var(--bal-icon-tile-size-xl-tablet);
+  --mod-icon-tile-size: var(--bal-icon-tile-size-xl-mobile);
+  --mod-icon-tile-size-tablet: var(--bal-icon-tile-size-xl-tablet);
 }
 
 //
 // Colors
-$icon-colors: (
-  'primary',
-  'primary-light',
-  // 'primary-dark'
-  // 'blue',
-  // 'light-blue',
-  'info',
-  'success',
-  // 'success-dark',
-  // 'success-darker',
-  'danger',
-  // 'danger-dark',
-  // 'danger-darker',
-  'warning',
-  // 'warning-dark',
-  // 'warning-darker',
-  'white',
-  'grey',
-  // 'grey-light',
-  // 'grey-dark',
-  'disabled'
-);
+$icon-colors: ('primary', 'primary-light', 'info', 'success', 'danger', 'warning', 'white', 'grey', 'disabled');
 
 @each $color in $icon-colors {
   :host(.is-#{$color}) {
-    --icon-color: var(--bal-icon-color-#{$color});
+    --mod-icon-color: var(--bal-icon-color-#{$color});
   }
 }
 
 :host(.is-inverted) {
-  --icon-color: var(--bal-icon-color-white);
+  --mod-icon-color: var(--bal-icon-color-white);
 }

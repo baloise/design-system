@@ -1,18 +1,8 @@
 @use '../../../hybrid' as hybrid;
+@use '../../../typography' as typography;
 
 @include hybrid.host-base(card-content, block);
 
 :host {
-  --card-content-margin-bottom: var(--card-space);
-
-  padding-inline: calc(var(--card-space) - var(--card-border-width));
-}
-
-:host(:first-child) {
-  padding-top: calc(var(--card-space) - var(--card-border-width));
-}
-
-:host(:last-child) {
-  padding-bottom: calc(var(--card-space) - var(--card-border-width));
-  --card-content-margin-bottom: 0;
+  @include typography.content();
 }

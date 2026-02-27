@@ -375,6 +375,10 @@ export namespace Components {
     }
     interface BalCardHeader {
         /**
+          * @default false
+         */
+        "closable": boolean;
+        /**
           * @default 'row'
          */
         "direction": BalProps.BalCardHeaderDirection;
@@ -402,6 +406,15 @@ export namespace Components {
           * @default false
          */
         "inverted": boolean;
+        /**
+          * The actual heading level used in the HTML markup.
+          * @default 'h3'
+         */
+        "level": BalProps.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalCarousel {
         /**
@@ -6137,6 +6150,10 @@ declare namespace LocalJSX {
     }
     interface BalCardHeader {
         /**
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
           * @default 'row'
          */
         "direction"?: BalProps.BalCardHeaderDirection;
@@ -6164,6 +6181,15 @@ declare namespace LocalJSX {
           * @default false
          */
         "inverted"?: boolean;
+        /**
+          * The actual heading level used in the HTML markup.
+          * @default 'h3'
+         */
+        "level"?: BalProps.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalCarousel {
         /**

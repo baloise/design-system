@@ -233,7 +233,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo, ComponentIn
           'is-disabled': this.disabled,
           'has-shadow': this.shadow,
           [`is-${this.tile ? 'tile' : 'icon'}-${this.size}`]: !!this.size,
-          [`is-${color}`]: true,
+          [`is-${color}`]: this.color !== '',
           'no-color': this.tile || this.color === 'auto',
           'tile': this.tile,
           [`tile-color-${this.tileColor}`]: this.tile && !!this.tileColor,

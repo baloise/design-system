@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:meta';
 @use 'sass:string';
+@use './vars.scss';
 
 // Always return a proper Sass list (single-item lists need a trailing comma).
 @function _as-list($value) {
@@ -135,17 +136,17 @@
   */
 @mixin host-base($name, $display: inline-block) {
   :host {
-    @include base-vars($name);
+    @include vars.base($name);
 
     display: $display;
 
-    @include base-styles($name);
+    @include vars.styles($name);
   }
 }
 
 @mixin base-vars($name) {
-  @include margin-vars($name);
-  @include position-vars($name);
+  @include vars.margin($name);
+  @include vars.position($name);
 }
 
 @mixin position-vars($name) {

@@ -176,7 +176,7 @@ $tag-colors: (
       --close-shadow-focus: var(--bal-close-shadow-outline-inverted);
     }
     > bal-icon {
-      --icon-color: var(--bal-close-color-icon-inverted);
+      --bal-icon-color: var(--bal-close-color-icon-inverted);
     }
   }
 }

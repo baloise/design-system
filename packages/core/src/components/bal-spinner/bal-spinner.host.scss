@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 
 /**
  * Variables
@@ -9,13 +10,13 @@
  */
 
 :host {
-  @include hybrid.base-vars('spinner');
+  @include vars.base(spinner);
+  @include vars.local(spinner-size, var(--bal-spinner-size));
 
-  --spinner-size: var(--bal-spinner-size);
-  --spinner-circle-size: var(--bal-spinner-circle-size);
-  --spinner-circle-border-width: var(--bal-spinner-circle-border-width);
-  --spinner-circle-color-border-background: var(--bal-spinner-circle-color-background);
-  --spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress);
+  @include vars.local(spinner-circle-size, var(--bal-spinner-circle-size));
+  @include vars.local(spinner-circle-border-width, var(--bal-spinner-circle-border-width));
+  @include vars.local(spinner-circle-color-border-background, var(--bal-spinner-circle-color-background));
+  @include vars.local(spinner-circle-color-border-progress, var(--bal-spinner-circle-color-progress));
 }
 
 /**
@@ -25,8 +26,7 @@
   */
 
 :host {
-  @include hybrid.base-styles('spinner');
-
+  @include vars.styles(spinner);
   @include unselectable;
 
   display: flex;
@@ -40,17 +40,17 @@
 }
 
 :host(:not(.is-circle)) {
-  width: var(--spinner-size);
+  width: var(--_spinner-size);
 }
 
 :host(.is-circle) #inner {
   border-radius: 50%;
   border-style: solid;
-  border-width: var(--spinner-circle-border-width);
-  border-color: var(--spinner-circle-color-border-background);
-  border-top-color: var(--spinner-circle-color-border-progress);
-  width: var(--spinner-circle-size);
-  height: var(--spinner-circle-size);
+  border-width: var(--_spinner-circle-border-width);
+  border-color: var(--_spinner-circle-color-border-background);
+  border-top-color: var(--_spinner-circle-color-border-progress);
+  width: var(--_spinner-circle-size);
+  height: var(--_spinner-circle-size);
 }
 
 :host(.is-animated) #inner {
@@ -64,14 +64,14 @@
   */
 
 :host(.is-sm) {
-  --spinner-size: 2rem;
-  --spinner-circle-size: 1.125rem;
-  --spinner-circle-border-width: 0.2rem;
+  --mod-spinner-size: 2rem;
+  --mod-spinner-circle-size: 1.125rem;
+  --mod-spinner-circle-border-width: 0.2rem;
 }
 
 :host(.is-white) {
-  --spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
-  --spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
+  --mod-spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
+  --mod-spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
 }
 
 /**

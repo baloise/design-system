@@ -128,21 +128,20 @@ $heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
 
 //
 // Sizes
-
 @mixin heading-size($level) {
-  --bal-heading-font-size: var(--bal-heading-#{$level}-size-device);
+  --heading-font-size: var(--bal-heading-#{$level}-size-device);
   --heading-space: var(--bal-heading-#{$level}-space);
 }
 
 // Maps groups of class aliases to the size token used by `heading-size()`
 $heading-size-aliases: (
-  (is-1, is-level-1, is-xxx-large): 1,
-  (is-2, is-level-2, is-xx-large): 2,
-  (is-3, is-level-3, is-x-large): 3,
-  (is-4, is-level-4, is-large): 4,
-  (is-5, is-level-5, is-normal): 5,
-  (is-display-1, is-xxxxx-large): display1,
-  (is-display-2, is-xxxx-large): display2,
+  (is-1, is-level-1, is-3xl): 1,
+  (is-2, is-level-2, is-2xl): 2,
+  (is-3, is-level-3, is-xl): 3,
+  (is-4, is-level-4, is-lg): 4,
+  (is-5, is-level-5, is-base): 5,
+  (is-display-1, is-5xl): display1,
+  (is-display-2, is-4xl): display2,
 );
 
 @include hybrid.host-only($heading-use-host) {

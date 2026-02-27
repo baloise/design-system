@@ -1,6 +1,7 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../../hybrid' as hybrid;
 @use '../../../host' as host;
+@use '../../../vars' as vars;
 
 /**
  * Variables
@@ -10,21 +11,22 @@
  */
 
 :host {
-  @include hybrid.base-vars('switch');
+  @include vars.base(switch);
 
-  --switch-radius: var(--bal-radius-rounded);
+  @include vars.local(switch-size, var(--bal-icon-size-base));
+  @include vars.local(switch-radius, var(--bal-radius-rounded));
 
-  --switch-color-background: var(--bal-color-primary-1);
-  --switch-color-toggle: var(--bal-color-primary-5);
-  --switch-color-icon: transparent;
+  @include vars.local(switch-color-background, var(--bal-color-primary-1));
+  @include vars.local(switch-color-toggle, var(--bal-color-primary-5));
+  @include vars.local(switch-color-icon, transparent);
 
-  --switch-color-background-hover: var(--bal-color-primary-1);
-  --switch-color-toggle-hover: var(--bal-color-sky-5);
-  --switch-color-icon-hover: transparent;
+  @include vars.local(switch-color-background-hover, var(--bal-color-primary-1));
+  @include vars.local(switch-color-toggle-hover, var(--bal-color-sky-5));
+  @include vars.local(switch-color-icon-hover, transparent);
 
-  --switch-color-background-active: var(--bal-color-primary-1);
-  --switch-color-toggle-active: var(--bal-color-primary-6);
-  --switch-color-icon-active: transparent;
+  @include vars.local(switch-color-background-active, var(--bal-color-primary-1));
+  @include vars.local(switch-color-toggle-active, var(--bal-color-primary-6));
+  @include vars.local(switch-color-icon-active, transparent);
 }
 
 /**
@@ -34,7 +36,7 @@
   */
 
 :host {
-  @include hybrid.base-styles('switch');
+  @include vars.styles(switch);
   @include font-smoothing();
   @include unselectable();
 
@@ -50,12 +52,12 @@
   height: 1.5rem;
   padding: 0.25rem;
 
-  border-radius: var(--switch-radius);
-  background: var(--switch-color-background);
+  border-radius: var(--_switch-radius);
+  background: var(--_switch-color-background);
 
   bal-icon {
     opacity: 0;
-    --icon-color: var(--switch-color-icon);
+    --icon-color: var(--_switch-color-icon);
   }
 }
 
@@ -69,7 +71,7 @@
 // Unchecked
 
 :host #toggle {
-  background: var(--switch-color-toggle);
+  background: var(--_switch-color-toggle);
   border-radius: 50%;
   position: absolute;
   top: 0.25rem;
@@ -79,21 +81,20 @@
 }
 
 @include host.hovered() {
-  background: var(--switch-color-background-hover);
+  background: var(--_switch-color-background-hover);
 
   #toggle {
-    background: var(--switch-color-toggle-hover);
+    background: var(--_switch-color-toggle-hover);
   }
 }
 
 @include host.pressed() {
-  bal-icon {
-    --icon-color: var(--switch-color-icon-active);
-  }
-  background: var(--switch-color-background-active);
+  --icon-color: var(--_switch-color-icon-active);
+
+  background: var(--_switch-color-background-active);
 
   #toggle {
-    background: var(--switch-color-toggle-active);
+    background: var(--_switch-color-toggle-active);
   }
 }
 
@@ -101,20 +102,20 @@
 // Checked
 
 @include host.hasAttr(checked) {
-  --switch-color-icon: var(--bal-color-white);
-  --switch-color-icon-hover: var(--bal-color-white);
-  --switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--bal-color-white);
+  --mod-switch-color-icon-hover: var(--bal-color-white);
+  --mod-switch-color-icon-active: var(--bal-color-white);
 
-  --switch-color-background: var(--bal-color-success-4);
-  --switch-color-background-hover: var(--bal-color-success-5);
-  --switch-color-background-active: var(--bal-color-success-6);
+  --mod-switch-color-background: var(--bal-color-success-4);
+  --mod-switch-color-background-hover: var(--bal-color-success-5);
+  --mod-switch-color-background-active: var(--bal-color-success-6);
+
+  --mod-switch-color-toggle: var(--bal-color-white);
+  --mod-switch-color-toggle-hover: var(--bal-color-white);
+  --mod-switch-color-toggle-active: var(--bal-color-white);
 
   #toggle {
     transform: translateX(100%);
-
-    --switch-color-toggle: var(--bal-color-white);
-    --switch-color-toggle-hover: var(--bal-color-white);
-    --switch-color-toggle-active: var(--bal-color-white);
   }
 }
 
@@ -125,32 +126,30 @@
   */
 
 @include host.hasAttr(invalid) {
-  --switch-color-background: var(--bal-color-danger-1);
-  --switch-color-background-hover: var(--bal-color-danger-1);
-  --switch-color-background-active: var(--bal-color-danger-1);
+  --mod-switch-color-background: var(--bal-color-danger-1);
+  --mod-switch-color-background-hover: var(--bal-color-danger-1);
+  --mod-switch-color-background-active: var(--bal-color-danger-1);
 
-  #toggle {
-    --switch-color-toggle: var(--bal-color-danger-4);
-    --switch-color-toggle-hover: var(--bal-color-danger-5);
-    --switch-color-toggle-active: var(--bal-color-danger-6);
-  }
+  --mod-switch-color-toggle: var(--bal-color-danger-4);
+  --mod-switch-color-toggle-hover: var(--bal-color-danger-5);
+  --mod-switch-color-toggle-active: var(--bal-color-danger-6);
 }
 
 :host([invalid]:not([invalid='false'])[checked]:not([checked='false'])) {
-  --switch-color-icon: var(--bal-color-white);
-  --switch-color-icon-hover: var(--bal-color-white);
-  --switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--bal-color-white);
+  --mod-switch-color-icon-hover: var(--bal-color-white);
+  --mod-switch-color-icon-active: var(--bal-color-white);
 
-  --switch-color-background: var(--bal-color-danger-4);
-  --switch-color-background-hover: var(--bal-color-danger-5);
-  --switch-color-background-active: var(--bal-color-danger-6);
+  --mod-switch-color-background: var(--bal-color-danger-4);
+  --mod-switch-color-background-hover: var(--bal-color-danger-5);
+  --mod-switch-color-background-active: var(--bal-color-danger-6);
+
+  --mod-switch-color-toggle: var(--bal-color-white);
+  --mod-switch-color-toggle-hover: var(--bal-color-white);
+  --mod-switch-color-toggle-active: var(--bal-color-white);
 
   #toggle {
     transform: translateX(100%);
-
-    --switch-color-toggle: var(--bal-color-white);
-    --switch-color-toggle-hover: var(--bal-color-white);
-    --switch-color-toggle-active: var(--bal-color-white);
   }
 }
 
@@ -158,31 +157,29 @@
   cursor: default;
   pointer-events: none;
 
-  --switch-color-background: var(--bal-color-grey-3);
-  --switch-color-background-hover: var(--bal-color-grey-3);
-  --switch-color-background-active: var(--bal-color-grey-3);
+  --mod-switch-color-background: var(--bal-color-grey-3);
+  --mod-switch-color-background-hover: var(--bal-color-grey-3);
+  --mod-switch-color-background-active: var(--bal-color-grey-3);
 
-  #toggle {
-    --switch-color-toggle: var(--bal-color-grey-4);
-    --switch-color-toggle-hover: var(--bal-color-grey-4);
-    --switch-color-toggle-active: var(--bal-color-grey-4);
-  }
+  --mod-switch-color-toggle: var(--bal-color-grey-4);
+  --mod-switch-color-toggle-hover: var(--bal-color-grey-4);
+  --mod-switch-color-toggle-active: var(--bal-color-grey-4);
 }
 
 @include host.hasAttr(disabled, checked) {
-  --switch-color-icon: var(--bal-color-white);
-  --switch-color-icon-hover: var(--bal-color-white);
-  --switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--bal-color-white);
+  --mod-switch-color-icon-hover: var(--bal-color-white);
+  --mod-switch-color-icon-active: var(--bal-color-white);
 
-  --switch-color-background: var(--bal-color-grey-4);
-  --switch-color-background-hover: var(--bal-color-grey-4);
-  --switch-color-background-active: var(--bal-color-grey-4);
+  --mod-switch-color-background: var(--bal-color-grey-4);
+  --mod-switch-color-background-hover: var(--bal-color-grey-4);
+  --mod-switch-color-background-active: var(--bal-color-grey-4);
+
+  --mod-switch-color-toggle: var(--bal-color-white);
+  --mod-switch-color-toggle-hover: var(--bal-color-white);
+  --mod-switch-color-toggle-active: var(--bal-color-white);
 
   #toggle {
     transform: translateX(100%);
-
-    --switch-color-toggle: var(--bal-color-white);
-    --switch-color-toggle-hover: var(--bal-color-white);
-    --switch-color-toggle-active: var(--bal-color-white);
   }
 }
