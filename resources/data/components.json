@@ -265,10 +265,10 @@
         },
         {
           "name": "buttonSize",
-          "type": "\"\" | \"small\"",
+          "type": "\"\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalButtonSize",
-            "resolved": "\"\" | \"small\"",
+            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -290,6 +290,14 @@
           "values": [
             {
               "type": "\"\""
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
             },
             {
               "value": "small",
@@ -649,7 +657,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Define the size of badge. Small is recommended for tabs.",
@@ -700,7 +708,9 @@
         "bal-hint",
         "bal-input-stepper",
         "bal-navbar-brand",
-        "bal-notification"
+        "bal-notification",
+        "bal-snackbar",
+        "bal-toast"
       ],
       "dependencies": [
         "bal-spinner",
@@ -727,6 +737,12 @@
           "bal-button"
         ],
         "bal-notification": [
+          "bal-button"
+        ],
+        "bal-snackbar": [
+          "bal-button"
+        ],
+        "bal-toast": [
           "bal-button"
         ]
       },
@@ -1514,10 +1530,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"small\"",
+          "type": "\"\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalButtonSize",
-            "resolved": "\"\" | \"small\"",
+            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -1525,7 +1541,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Size of the button",
@@ -1539,6 +1555,14 @@
           "values": [
             {
               "type": "\"\""
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
             },
             {
               "value": "small",
@@ -1913,7 +1937,12 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "group",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -1923,7 +1952,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-carousel",
         "bal-file-upload"
@@ -2264,10 +2293,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"large\" | \"medium\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalCardSpace",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -2275,7 +2304,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space of the card content.",
@@ -2295,7 +2324,19 @@
               "type": "string"
             },
             {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
               "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -2352,7 +2393,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
         "bal-button-group"
@@ -2708,7 +2749,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [
         "bal-carousel"
       ],
@@ -2719,6 +2760,191 @@
         ]
       },
       "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
+    },
+    {
+      "fileName": "bal-card-footer.tsx",
+      "tag": "bal-card-footer",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "buttons",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "buttons",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "position",
+          "type": "\"\" | \"center\" | \"right\"",
+          "complexType": {
+            "original": "BalProps.BalCardFooterPosition",
+            "resolved": "\"\" | \"center\" | \"right\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
+    },
+    {
+      "fileName": "bal-card-header.tsx",
+      "tag": "bal-card-header",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-close"
+      ],
+      "dependencyGraph": {
+        "bal-card-header": [
+          "bal-close"
+        ]
+      },
+      "props": [
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "direction",
+          "type": "\"column\" | \"row\"",
+          "complexType": {
+            "original": "BalProps.BalCardHeaderDirection",
+            "resolved": "\"column\" | \"row\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "direction",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'row'"
+            }
+          ],
+          "default": "'row'",
+          "values": [
+            {
+              "value": "column",
+              "type": "string"
+            },
+            {
+              "value": "row",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
       "methods": [],
       "events": [],
       "styles": [],
@@ -2873,7 +3099,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
         "bal-heading"
@@ -2909,6 +3135,193 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "level",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
+          "complexType": {
+            "original": "BalProps.BalHeadingLevel",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "level",
+          "reflectToAttr": false,
+          "docs": "The actual heading level used in the HTML markup.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h3'"
+            }
+          ],
+          "default": "'h3'",
+          "values": [
+            {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "display",
+              "type": "string"
+            },
+            {
+              "value": "display-2",
+              "type": "string"
+            },
+            {
+              "value": "h1",
+              "type": "string"
+            },
+            {
+              "value": "h2",
+              "type": "string"
+            },
+            {
+              "value": "h3",
+              "type": "string"
+            },
+            {
+              "value": "h4",
+              "type": "string"
+            },
+            {
+              "value": "h5",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "p",
+              "type": "string"
+            },
+            {
+              "value": "span",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "visualLevel",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalHeadingVisualLevel",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "visual-level",
+          "reflectToAttr": false,
+          "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "display",
+              "type": "string"
+            },
+            {
+              "value": "display-2",
+              "type": "string"
+            },
+            {
+              "value": "h1",
+              "type": "string"
+            },
+            {
+              "value": "h2",
+              "type": "string"
+            },
+            {
+              "value": "h3",
+              "type": "string"
+            },
+            {
+              "value": "h4",
+              "type": "string"
+            },
+            {
+              "value": "h5",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -5504,13 +5917,19 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
+        "bal-card-header",
         "bal-modal-header",
         "bal-notification",
         "bal-popup",
-        "bal-tag"
+        "bal-snackbar",
+        "bal-tag",
+        "bal-toast"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-card-header": [
+          "bal-close"
+        ],
         "bal-modal-header": [
           "bal-close"
         ],
@@ -5520,7 +5939,13 @@
         "bal-popup": [
           "bal-close"
         ],
+        "bal-snackbar": [
+          "bal-close"
+        ],
         "bal-tag": [
+          "bal-close"
+        ],
+        "bal-toast": [
           "bal-close"
         ]
       },
@@ -5556,10 +5981,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"medium\" | \"small\"",
+          "type": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalCloseSize",
-            "resolved": "\"\" | \"medium\" | \"small\"",
+            "resolved": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -5567,7 +5992,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Define the size of badge. Small is recommended for tabs.",
@@ -5583,7 +6008,15 @@
               "type": "\"\""
             },
             {
+              "value": "md",
+              "type": "string"
+            },
+            {
               "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -8018,10 +8451,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
+          "type": "\"\" | \"2xl\" | \"2xs\" | \"3xl\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
           "complexType": {
             "original": "BalProps.BalDividerSpace",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
+            "resolved": "\"\" | \"2xl\" | \"2xs\" | \"3xl\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8029,7 +8462,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
@@ -8045,7 +8478,31 @@
               "type": "\"\""
             },
             {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "2xs",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -8061,6 +8518,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -8070,6 +8531,14 @@
             },
             {
               "value": "x-small",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             },
             {
@@ -11428,10 +11897,10 @@
       "props": [
         {
           "name": "autoLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -11445,6 +11914,26 @@
           "docs": "The actual heading level used in the HTML markup.",
           "docsTags": [],
           "values": [
+            {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
             {
               "value": "display",
               "type": "string"
@@ -11474,35 +11963,15 @@
               "type": "string"
             },
             {
-              "value": "large",
+              "value": "lg",
               "type": "string"
             },
             {
-              "value": "medium",
+              "value": "md",
               "type": "string"
             },
             {
-              "value": "normal",
-              "type": "string"
-            },
-            {
-              "value": "x-large",
-              "type": "string"
-            },
-            {
-              "value": "xx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxxx-large",
+              "value": "xl",
               "type": "string"
             },
             {
@@ -11607,10 +12076,10 @@
         },
         {
           "name": "level",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"p\" | \"span\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
           "complexType": {
             "original": "BalProps.BalHeadingLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"p\" | \"span\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -11630,6 +12099,26 @@
           ],
           "default": "'h1'",
           "values": [
+            {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
             {
               "value": "display",
               "type": "string"
@@ -11659,15 +12148,11 @@
               "type": "string"
             },
             {
-              "value": "large",
+              "value": "lg",
               "type": "string"
             },
             {
-              "value": "medium",
-              "type": "string"
-            },
-            {
-              "value": "normal",
+              "value": "md",
               "type": "string"
             },
             {
@@ -11679,23 +12164,7 @@
               "type": "string"
             },
             {
-              "value": "x-large",
-              "type": "string"
-            },
-            {
-              "value": "xx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxxx-large",
+              "value": "xl",
               "type": "string"
             }
           ],
@@ -11832,10 +12301,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -11849,6 +12318,26 @@
           "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
           "docsTags": [],
           "values": [
+            {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
             {
               "value": "display",
               "type": "string"
@@ -11878,35 +12367,15 @@
               "type": "string"
             },
             {
-              "value": "large",
+              "value": "lg",
               "type": "string"
             },
             {
-              "value": "medium",
+              "value": "md",
               "type": "string"
             },
             {
-              "value": "normal",
-              "type": "string"
-            },
-            {
-              "value": "x-large",
-              "type": "string"
-            },
-            {
-              "value": "xx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxxx-large",
+              "value": "xl",
               "type": "string"
             },
             {
@@ -12173,6 +12642,7 @@
         "bal-pagination",
         "bal-segment-item",
         "bal-select",
+        "bal-snackbar",
         "bal-stage-back-link",
         "bal-steps",
         "bal-switch",
@@ -12224,6 +12694,9 @@
           "bal-icon"
         ],
         "bal-select": [
+          "bal-icon"
+        ],
+        "bal-snackbar": [
           "bal-icon"
         ],
         "bal-stage-back-link": [
@@ -12524,10 +12997,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"medium\" | \"small\" | \"x-large\" | \"x-small\" | \"xsmall\" | \"xx-large\"",
+          "type": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\"",
           "complexType": {
             "original": "BalProps.BalIconSize",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"small\" | \"x-large\" | \"x-small\" | \"xsmall\" | \"xx-large\"",
+            "resolved": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -12535,7 +13008,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the icon.",
@@ -12551,11 +13024,27 @@
               "type": "\"\""
             },
             {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
               "value": "large",
               "type": "string"
             },
             {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
               "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -12568,6 +13057,14 @@
             },
             {
               "value": "x-small",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             },
             {
@@ -16249,10 +16746,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"small\" | \"x-large\" | \"xx-large\" | \"xxx-large\"",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"sm\" | \"small\" | \"x-large\" | \"xl\" | \"xx-large\" | \"xxx-large\"",
           "complexType": {
             "original": "BalProps.BalLabelSize",
-            "resolved": "\"\" | \"large\" | \"small\" | \"x-large\" | \"xx-large\" | \"xxx-large\"",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"sm\" | \"small\" | \"x-large\" | \"xl\" | \"xx-large\" | \"xxx-large\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -16260,7 +16757,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the font. Default is like a heading 5 and small is used\nwith the form fields.",
@@ -16276,7 +16773,23 @@
               "type": "\"\""
             },
             {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -16285,6 +16798,10 @@
             },
             {
               "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "xl",
               "type": "string"
             },
             {
@@ -17439,10 +17956,10 @@
       "props": [
         {
           "name": "level",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"p\" | \"span\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
           "complexType": {
             "original": "BalProps.BalHeadingLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"p\" | \"span\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17463,6 +17980,26 @@
           "default": "'h5'",
           "values": [
             {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "display",
               "type": "string"
             },
@@ -17491,15 +18028,11 @@
               "type": "string"
             },
             {
-              "value": "large",
+              "value": "lg",
               "type": "string"
             },
             {
-              "value": "medium",
-              "type": "string"
-            },
-            {
-              "value": "normal",
+              "value": "md",
               "type": "string"
             },
             {
@@ -17511,23 +18044,7 @@
               "type": "string"
             },
             {
-              "value": "x-large",
-              "type": "string"
-            },
-            {
-              "value": "xx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxxx-large",
+              "value": "xl",
               "type": "string"
             }
           ],
@@ -17538,10 +18055,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"large\" | \"medium\" | \"normal\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"xxxx-large\" | \"xxxxx-large\" | undefined",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17556,6 +18073,26 @@
           "docsTags": [],
           "values": [
             {
+              "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
+              "type": "string"
+            },
+            {
+              "value": "4xl",
+              "type": "string"
+            },
+            {
+              "value": "5xl",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "display",
               "type": "string"
             },
@@ -17584,35 +18121,15 @@
               "type": "string"
             },
             {
-              "value": "large",
+              "value": "lg",
               "type": "string"
             },
             {
-              "value": "medium",
+              "value": "md",
               "type": "string"
             },
             {
-              "value": "normal",
-              "type": "string"
-            },
-            {
-              "value": "x-large",
-              "type": "string"
-            },
-            {
-              "value": "xx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxx-large",
-              "type": "string"
-            },
-            {
-              "value": "xxxxx-large",
+              "value": "xl",
               "type": "string"
             },
             {
@@ -17766,10 +18283,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalLogoSize",
-            "resolved": "\"\" | \"large\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -17777,7 +18294,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Size of the logo svg",
@@ -17794,6 +18311,14 @@
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -18730,10 +19255,10 @@
         },
         {
           "name": "logoSize",
-          "type": "\"\" | \"large\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalLogoSize",
-            "resolved": "\"\" | \"large\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -18758,6 +19283,14 @@
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -19192,7 +19725,7 @@
           },
           "mutable": false,
           "attr": "closable",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the notification can be closed by the user.",
           "docsTags": [
             {
@@ -19226,7 +19759,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
           "docsTags": [
             {
@@ -19382,7 +19915,7 @@
           },
           "mutable": false,
           "attr": "no-icon",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` there will be no icon provided",
           "docsTags": [
             {
@@ -19403,10 +19936,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"medium\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BalProps.BalNotificationSize",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -19414,9 +19947,9 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Defines the size of the notification, small, medium or large.",
           "docsTags": [
             {
@@ -19434,7 +19967,19 @@
               "type": "string"
             },
             {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
               "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -19462,7 +20007,7 @@
           },
           "mutable": false,
           "attr": "type",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Defines the type of the notification, alert or snackbar.\nAlert is used for important messages that require immediate attention,\nwhile snackbar is used for less important messages that can be ignored by the user.",
           "docsTags": [
             {
@@ -19499,7 +20044,7 @@
           },
           "mutable": false,
           "attr": "visible",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the notification is visible.",
           "docsTags": [
             {
@@ -27053,6 +27598,509 @@
       "listeners": []
     },
     {
+      "fileName": "bal-snackbar.tsx",
+      "tag": "bal-snackbar",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon",
+        "bal-close",
+        "bal-button"
+      ],
+      "dependencyGraph": {
+        "bal-snackbar": [
+          "bal-icon",
+          "bal-close",
+          "bal-button"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "action",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the notification, if not provided it will be derived from the color property",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionHref",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-href",
+          "reflectToAttr": false,
+          "docs": "Specifies the URL of the page the link goes to",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionIcon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-icon",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the action button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionTarget",
+          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "complexType": {
+            "original": "BalProps.BalButtonTarget",
+            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "action-target",
+          "reflectToAttr": false,
+          "docs": "Specifies where to open the linked document.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'_blank'"
+            }
+          ],
+          "default": "'_blank'",
+          "values": [
+            {
+              "value": " _parent",
+              "type": "string"
+            },
+            {
+              "value": "_blank",
+              "type": "string"
+            },
+            {
+              "value": "_self",
+              "type": "string"
+            },
+            {
+              "value": "_top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": true,
+          "docs": "If `true` the notification can be closed by the user.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "BalProps.BalSnackbarColor",
+            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "duration",
+          "reflectToAttr": false,
+          "docs": "The duration of the snackbar in milliseconds.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Defines the heading of the notification.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the notification.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "message",
+          "reflectToAttr": false,
+          "docs": "Defines the message of the notification as html content",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "svg",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "svg",
+          "reflectToAttr": false,
+          "docs": "Defines the svg content of the icon",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "visible",
+          "reflectToAttr": true,
+          "docs": "If `true` the notification is visible.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "balActionClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalSnackbarActionClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the action button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balCloseClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalSnackbarCloseClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the close button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balDidLoad",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the component has loaded.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "actions",
+          "docs": ""
+        },
+        {
+          "name": "button",
+          "docs": ""
+        },
+        {
+          "name": "close",
+          "docs": ""
+        },
+        {
+          "name": "heading",
+          "docs": ""
+        },
+        {
+          "name": "icon",
+          "docs": ""
+        },
+        {
+          "name": "message",
+          "docs": ""
+        }
+      ],
+      "listeners": []
+    },
+    {
       "fileName": "bal-spinner.tsx",
       "tag": "bal-spinner",
       "overview": "",
@@ -27172,6 +28220,44 @@
           "setter": false
         },
         {
+          "name": "size",
+          "type": "\"\" | \"sm\"",
+          "complexType": {
+            "original": "BalProps.BalSpinnerSize",
+            "resolved": "\"\" | \"sm\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Defines the size of the spinner. If `sm` the spinner is smaller.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "small",
           "type": "boolean",
           "complexType": {
@@ -27182,8 +28268,12 @@
           "mutable": false,
           "attr": "small",
           "reflectToAttr": false,
-          "docs": "If `true` the component is smaller",
+          "docs": "",
           "docsTags": [
+            {
+              "name": "Deprecated",
+              "text": "Use size=\"sm\" instead. If `true` the component is smaller"
+            },
             {
               "name": "default",
               "text": "false"
@@ -31014,7 +32104,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "The size of the tag element",
@@ -31437,7 +32527,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the paragraph",
@@ -32978,6 +34068,468 @@
           "passive": false
         }
       ]
+    },
+    {
+      "fileName": "bal-toast.tsx",
+      "tag": "bal-toast",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-button",
+        "bal-close"
+      ],
+      "dependencyGraph": {
+        "bal-toast": [
+          "bal-button",
+          "bal-close"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "action",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the notification, if not provided it will be derived from the color property",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionHref",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-href",
+          "reflectToAttr": false,
+          "docs": "Specifies the URL of the page the link goes to",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionIcon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "action-icon",
+          "reflectToAttr": false,
+          "docs": "Defines the icon of the action button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "actionTarget",
+          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "complexType": {
+            "original": "BalProps.BalButtonTarget",
+            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "action-target",
+          "reflectToAttr": false,
+          "docs": "Specifies where to open the linked document.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'_blank'"
+            }
+          ],
+          "default": "'_blank'",
+          "values": [
+            {
+              "value": " _parent",
+              "type": "string"
+            },
+            {
+              "value": "_blank",
+              "type": "string"
+            },
+            {
+              "value": "_self",
+              "type": "string"
+            },
+            {
+              "value": "_top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": true,
+          "docs": "If `true` the notification can be closed by the user.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "BalProps.BalToastColor",
+            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "duration",
+          "reflectToAttr": false,
+          "docs": "The duration of the toast in milliseconds.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Defines the heading of the notification.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "message",
+          "reflectToAttr": false,
+          "docs": "Defines the message of the notification as html content",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "visible",
+          "reflectToAttr": true,
+          "docs": "If `true` the notification is visible.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "close() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes this notification",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "balActionClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalToastActionClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the action button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balCloseClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalToastCloseClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the close button got clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "balDidLoad",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the component has loaded.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "button",
+          "docs": ""
+        },
+        {
+          "name": "close",
+          "docs": ""
+        },
+        {
+          "name": "content",
+          "docs": ""
+        },
+        {
+          "name": "heading",
+          "docs": ""
+        },
+        {
+          "name": "section",
+          "docs": ""
+        }
+      ],
+      "listeners": []
     },
     {
       "fileName": "bal-tooltip.tsx",

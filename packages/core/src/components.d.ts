@@ -133,15 +133,15 @@ export namespace Components {
          */
         "a11yTitle"?: string;
         /**
-          * If `true` the button is a popup.
-          * @default undefined
-         */
-        "balPopup": undefined;
-        /**
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
         "color": BalProps.BalButtonColor;
+        /**
+          * If `true` the button has a dashed border.
+          * @default false
+         */
+        "dashed": boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -191,15 +191,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the button has a active theme
-          * @default false
-         */
-        "isActive": boolean;
-        /**
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading": boolean;
+        "loading": BalProps.BalButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
           * @default ''
@@ -231,7 +226,7 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Size of the button
-          * @default ''
+          * @default undefined
          */
         "size": BalProps.BalButtonSize;
         /**
@@ -783,7 +778,7 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
+          * @default undefined
          */
         "size": BalProps.BalCloseSize;
     }
@@ -1613,28 +1608,21 @@ export namespace Components {
     }
     interface BalIcon {
         /**
+          * If `true` the icon is displayed in a circle with a background color.
+          * @default false
+         */
+        "circle": boolean;
+        /**
           * The theme type of the button.
-          * @default ''
+          * @default undefined
          */
         "color": BalProps.BalIconColor;
-        /**
-          * @default ''
-         */
-        "colorHovered": BalProps.BalIconColor;
-        /**
-          * @default ''
-         */
-        "colorPressed": BalProps.BalIconColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
          */
         "disabled": boolean;
-        /**
-          * @default false
-         */
-        "hovered": boolean;
         /**
           * If `true` the icon has display inline style
           * @default false
@@ -1656,17 +1644,12 @@ export namespace Components {
          */
         "name": string | undefined;
         /**
-          * @default false
-         */
-        "pressed": boolean;
-        /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow": boolean;
         /**
           * Defines the size of the icon.
-          * @default ''
          */
         "size": BalProps.BalIconSize;
         /**
@@ -3544,6 +3527,76 @@ export namespace Components {
          */
         "containerSize": BalProps.BalSheetContainer;
     }
+    interface BalSnackbar {
+        /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action": string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler": () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref": string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon": string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget": BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable": boolean;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler": () => void;
+        /**
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
+         */
+        "color": BalProps.BalSnackbarColor;
+        /**
+          * The duration of the snackbar in milliseconds.
+          * @default 0
+         */
+        "duration": number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading": string;
+        /**
+          * Defines the icon of the notification.
+          * @default ''
+         */
+        "icon": string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message": string;
+        /**
+          * Defines the svg content of the icon
+          * @default ''
+         */
+        "svg": string;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible": boolean;
+    }
     interface BalSpinner {
         /**
           * Defines the color of the spinner.
@@ -4082,7 +4135,7 @@ export namespace Components {
          */
         "color": BalProps.BalTextColor;
         /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
          */
         "disabled": boolean;
@@ -4299,6 +4352,70 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BalToast {
+        /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action": string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler": () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref": string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon": string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget": BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable": boolean;
+        /**
+          * Closes this notification
+         */
+        "close": () => Promise<void>;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler": () => void;
+        /**
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
+         */
+        "color": BalProps.BalToastColor;
+        /**
+          * The duration of the toast in milliseconds.
+          * @default 0
+         */
+        "duration": number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading": string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message": string;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible": boolean;
+    }
     interface BalTooltip {
         /**
           * Defines the width of the content
@@ -4456,6 +4573,10 @@ export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSelectElement;
 }
+export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSnackbarElement;
+}
 export interface BalStepItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalStepItemElement;
@@ -4483,6 +4604,10 @@ export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
 export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTimeInputElement;
+}
+export interface BalToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalToastElement;
 }
 export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5447,6 +5572,25 @@ declare global {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
     };
+    interface HTMLBalSnackbarElementEventMap {
+        "balCloseClick": BalEvents.BalSnackbarCloseClickDetail;
+        "balActionClick": BalEvents.BalSnackbarActionClickDetail;
+        "balDidLoad": void;
+    }
+    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalSnackbarElement: {
+        prototype: HTMLBalSnackbarElement;
+        new (): HTMLBalSnackbarElement;
+    };
     interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
     }
     var HTMLBalSpinnerElement: {
@@ -5650,6 +5794,25 @@ declare global {
         prototype: HTMLBalTimeInputElement;
         new (): HTMLBalTimeInputElement;
     };
+    interface HTMLBalToastElementEventMap {
+        "balCloseClick": BalEvents.BalToastCloseClickDetail;
+        "balActionClick": BalEvents.BalToastActionClickDetail;
+        "balDidLoad": void;
+    }
+    interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalToastElement: {
+        prototype: HTMLBalToastElement;
+        new (): HTMLBalToastElement;
+    };
     interface HTMLBalTooltipElementEventMap {
         "balWillAnimate": BalEvents.BalTooltipWillAnimateDetail;
         "balDidAnimate": BalEvents.BalTooltipDidAnimateDetail;
@@ -5757,6 +5920,7 @@ declare global {
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
+        "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stack": HTMLBalStackElement;
         "bal-stage": HTMLBalStageElement;
@@ -5776,6 +5940,7 @@ declare global {
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
         "bal-time-input": HTMLBalTimeInputElement;
+        "bal-toast": HTMLBalToastElement;
         "bal-tooltip": HTMLBalTooltipElement;
     }
 }
@@ -5884,15 +6049,15 @@ declare namespace LocalJSX {
          */
         "a11yTitle"?: string;
         /**
-          * If `true` the button is a popup.
-          * @default undefined
-         */
-        "balPopup"?: undefined;
-        /**
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
         "color"?: BalProps.BalButtonColor;
+        /**
+          * If `true` the button has a dashed border.
+          * @default false
+         */
+        "dashed"?: boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -5946,15 +6111,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the button has a active theme
-          * @default false
-         */
-        "isActive"?: boolean;
-        /**
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading"?: boolean;
+        "loading"?: BalProps.BalButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
           * @default ''
@@ -6006,7 +6166,7 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Size of the button
-          * @default ''
+          * @default undefined
          */
         "size"?: BalProps.BalButtonSize;
         /**
@@ -6565,7 +6725,7 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
+          * @default undefined
          */
         "size"?: BalProps.BalCloseSize;
     }
@@ -7398,27 +7558,20 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
+          * If `true` the icon is displayed in a circle with a background color.
+          * @default false
+         */
+        "circle"?: boolean;
+        /**
           * The theme type of the button.
-          * @default ''
+          * @default undefined
          */
         "color"?: BalProps.BalIconColor;
-        /**
-          * @default ''
-         */
-        "colorHovered"?: BalProps.BalIconColor;
-        /**
-          * @default ''
-         */
-        "colorPressed"?: BalProps.BalIconColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
          */
         "disabled"?: boolean;
-        /**
-          * @default false
-         */
-        "hovered"?: boolean;
         /**
           * If `true` the icon has display inline style
           * @default false
@@ -7440,17 +7593,12 @@ declare namespace LocalJSX {
          */
         "name"?: string | undefined;
         /**
-          * @default false
-         */
-        "pressed"?: boolean;
-        /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow"?: boolean;
         /**
           * Defines the size of the icon.
-          * @default ''
          */
         "size"?: BalProps.BalIconSize;
         /**
@@ -9318,6 +9466,88 @@ declare namespace LocalJSX {
          */
         "containerSize"?: BalProps.BalSheetContainer;
     }
+    interface BalSnackbar {
+        /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action"?: string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler"?: () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref"?: string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon"?: string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget"?: BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler"?: () => void;
+        /**
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
+         */
+        "color"?: BalProps.BalSnackbarColor;
+        /**
+          * The duration of the snackbar in milliseconds.
+          * @default 0
+         */
+        "duration"?: number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * Defines the icon of the notification.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message"?: string;
+        /**
+          * Emitted when the action button got clicked.
+         */
+        "onBalActionClick"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionClickDetail>) => void;
+        /**
+          * Emitted when the close button got clicked.
+         */
+        "onBalCloseClick"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseClickDetail>) => void;
+        /**
+          * Emitted when the component has loaded.
+         */
+        "onBalDidLoad"?: (event: BalSnackbarCustomEvent<void>) => void;
+        /**
+          * Defines the svg content of the icon
+          * @default ''
+         */
+        "svg"?: string;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible"?: boolean;
+    }
     interface BalSpinner {
         /**
           * Defines the color of the spinner.
@@ -9852,7 +10082,7 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalTextColor;
         /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
          */
         "disabled"?: boolean;
@@ -10086,6 +10316,78 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalToast {
+        /**
+          * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
+         */
+        "action"?: string;
+        /**
+          * @default () => void 0
+         */
+        "actionHandler"?: () => void;
+        /**
+          * Specifies the URL of the page the link goes to
+          * @default ''
+         */
+        "actionHref"?: string;
+        /**
+          * Defines the icon of the action button.
+          * @default ''
+         */
+        "actionIcon"?: string;
+        /**
+          * Specifies where to open the linked document.
+          * @default '_blank'
+         */
+        "actionTarget"?: BalProps.BalButtonTarget;
+        /**
+          * If `true` the notification can be closed by the user.
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * @default () => void 0
+         */
+        "closeHandler"?: () => void;
+        /**
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
+         */
+        "color"?: BalProps.BalToastColor;
+        /**
+          * The duration of the toast in milliseconds.
+          * @default 0
+         */
+        "duration"?: number;
+        /**
+          * Defines the heading of the notification.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * Defines the message of the notification as html content
+          * @default ''
+         */
+        "message"?: string;
+        /**
+          * Emitted when the action button got clicked.
+         */
+        "onBalActionClick"?: (event: BalToastCustomEvent<BalEvents.BalToastActionClickDetail>) => void;
+        /**
+          * Emitted when the close button got clicked.
+         */
+        "onBalCloseClick"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseClickDetail>) => void;
+        /**
+          * Emitted when the component has loaded.
+         */
+        "onBalDidLoad"?: (event: BalToastCustomEvent<void>) => void;
+        /**
+          * If `true` the notification is visible.
+          * @default true
+         */
+        "visible"?: boolean;
+    }
     interface BalTooltip {
         /**
           * Defines the width of the content
@@ -10208,6 +10510,7 @@ declare namespace LocalJSX {
         "bal-select-option": BalSelectOption;
         "bal-shape": BalShape;
         "bal-sheet": BalSheet;
+        "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stack": BalStack;
         "bal-stage": BalStage;
@@ -10227,6 +10530,7 @@ declare namespace LocalJSX {
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
         "bal-time-input": BalTimeInput;
+        "bal-toast": BalToast;
         "bal-tooltip": BalTooltip;
     }
 }
@@ -10322,6 +10626,7 @@ declare module "@stencil/core" {
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
+            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
@@ -10341,6 +10646,7 @@ declare module "@stencil/core" {
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
+            "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
             "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
         }
     }

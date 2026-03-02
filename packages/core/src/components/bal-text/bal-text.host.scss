@@ -1,7 +1,7 @@
-@use '../../hybrid' as hybrid;
-
 @use './bal-text.style' with (
-  $text-use-host: true
+  $use-host: true
 );
 
-@include hybrid.host-base(text, block);
+:host {
+  display: block;
+}

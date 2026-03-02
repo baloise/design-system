@@ -53,7 +53,7 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     const componentStyleContent = components
       .map(component => {
         const relativePath = `../../../../${component.replace(/\\/g, '/')}`
-        return `@forward '${relativePath}';`
+        return `@use '${relativePath}';`
       })
       .join('\n')
     await writeFile(join(generatedComponentStylesPath, 'components.scss'), componentStyleContent)

@@ -1,5 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../../../hybrid' as hybrid;
+@use '../../../attr' as attr;
 @use '../../../host' as host;
 @use '../../../vars' as vars;
 
@@ -36,7 +36,6 @@
   */
 
 :host {
-  @include vars.styles(switch);
   @include font-smoothing();
   @include unselectable();
 
@@ -61,7 +60,7 @@
   }
 }
 
-@include host.hasAttr(checked) {
+@include attr.has(checked) {
   bal-icon {
     opacity: 1;
   }
@@ -101,7 +100,7 @@
 //
 // Checked
 
-@include host.hasAttr(checked) {
+@include attr.has(checked) {
   --mod-switch-color-icon: var(--bal-color-white);
   --mod-switch-color-icon-hover: var(--bal-color-white);
   --mod-switch-color-icon-active: var(--bal-color-white);
@@ -125,7 +124,7 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-@include host.hasAttr(invalid) {
+@include attr.has(invalid) {
   --mod-switch-color-background: var(--bal-color-danger-1);
   --mod-switch-color-background-hover: var(--bal-color-danger-1);
   --mod-switch-color-background-active: var(--bal-color-danger-1);
@@ -135,7 +134,12 @@
   --mod-switch-color-toggle-active: var(--bal-color-danger-6);
 }
 
-:host([invalid]:not([invalid='false'])[checked]:not([checked='false'])) {
+@include attr.hasMany(
+  (
+    invalid: true,
+    checked: true,
+  )
+) {
   --mod-switch-color-icon: var(--bal-color-white);
   --mod-switch-color-icon-hover: var(--bal-color-white);
   --mod-switch-color-icon-active: var(--bal-color-white);
@@ -153,7 +157,7 @@
   }
 }
 
-@include host.hasAttr(disabled) {
+@include attr.has(disabled) {
   cursor: default;
   pointer-events: none;
 
@@ -166,7 +170,12 @@
   --mod-switch-color-toggle-active: var(--bal-color-grey-4);
 }
 
-@include host.hasAttr(disabled, checked) {
+@include attr.hasMany(
+  (
+    disabled: true,
+    checked: true,
+  )
+) {
   --mod-switch-color-icon: var(--bal-color-white);
   --mod-switch-color-icon-hover: var(--bal-color-white);
   --mod-switch-color-icon-active: var(--bal-color-white);

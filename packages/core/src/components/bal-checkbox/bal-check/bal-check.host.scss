@@ -1,5 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../../../hybrid' as hybrid;
+@use '../../../attr' as attr;
 @use '../../../host' as host;
 @use '../../../vars' as vars;
 
@@ -37,7 +37,6 @@
   */
 
 :host {
-  @include vars.styles(check);
   @include font-smoothing();
   @include unselectable();
 
@@ -80,7 +79,7 @@
   background: var(--_check-color-background-active);
 }
 
-@include host.hasAttr(checked) {
+@include attr.has(checked) {
   --mod-check-color-icon: var(--bal-color-white);
   --mod-check-color-border: var(--bal-color-primary-5);
   --mod-check-color-background: var(--bal-color-primary-5);
@@ -105,7 +104,7 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-@include host.hasAttr(inverted) {
+@include attr.has(inverted) {
   --mod-check-color-icon: transparent;
   --mod-check-color-border: var(--bal-color-white);
   --mod-check-color-background: transparent;
@@ -119,7 +118,12 @@
   --mod-check-color-background-active: transparent;
 }
 
-@include host.hasAttr(inverted, checked) {
+@include attr.hasMany(
+  (
+    inverted: true,
+    checked: true,
+  )
+) {
   --mod-check-color-icon: var(--bal-color-primary-5);
   --mod-check-color-border: var(--bal-color-white);
   --mod-check-color-background: var(--bal-color-white);
@@ -133,7 +137,7 @@
   --mod-check-color-background-active: var(--bal-color-sky-2);
 }
 
-@include host.hasAttr(invalid) {
+@include attr.has(invalid) {
   --mod-check-color-icon: transparent;
   --mod-check-color-border: var(--bal-divider-color-danger);
   --mod-check-color-background: transparent;
@@ -147,7 +151,12 @@
   --mod-check-color-background-active: var(--bal-color-grey-2);
 }
 
-@include host.hasAttr(invalid, checked) {
+@include attr.hasMany(
+  (
+    invalid: true,
+    checked: true,
+  )
+) {
   --mod-check-color-icon: var(--bal-color-white);
   --mod-check-color-border: var(--bal-divider-color-danger);
   --mod-check-color-background: var(--bal-divider-color-danger);
@@ -161,7 +170,7 @@
   --mod-check-color-background-active: var(--bal-divider-color-danger-darker);
 }
 
-@include host.hasAttr(disabled) {
+@include attr.has(disabled) {
   cursor: default !important;
 
   --mod-check-color-icon: transparent;
@@ -177,7 +186,12 @@
   --mod-check-color-background-active: var(--bal-color-grey-2);
 }
 
-@include host.hasAttr(disabled, checked) {
+@include attr.hasMany(
+  (
+    disabled: true,
+    checked: true,
+  )
+) {
   --mod-check-color-icon: var(--bal-color-white);
   --mod-check-color-border: var(--bal-border-color-disabled);
   --mod-check-color-background: var(--bal-border-color-disabled);

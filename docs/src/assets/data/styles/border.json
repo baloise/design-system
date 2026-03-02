@@ -1398,6 +1398,12 @@
         "css": "border-width: var(--bal-border-width-base);",
         "property": "border-width",
         "value": "var(--bal-border-width-base)"
+      },
+      {
+        "class": "border-width-md",
+        "css": "border-width: var(--bal-border-width-md);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-md)"
       }
     ]
   },

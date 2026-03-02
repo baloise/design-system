@@ -1,5 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../../hybrid' as hybrid;
+@use '../../attr' as attr;
 @use '../../vars' as vars;
 
 /**
@@ -57,7 +57,7 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-:host(.is-animated) {
+:host([animated]) {
   grid-template-columns: auto 1fr;
 
   #animated {
@@ -67,11 +67,11 @@
   }
 }
 
-:host(.is-inverted) {
+:host([color='white']) {
   --mod-logo-color: var(--bal-color-white);
 }
 
-:host(.is-sm) {
+:host([size='sm']) {
   --mod-logo-height: 22px;
 
   @include desktop {
@@ -79,7 +79,7 @@
   }
 }
 
-:host(.is-lg) {
+:host([size='lg']) {
   --mod-logo-height: 32px;
 
   @include desktop {

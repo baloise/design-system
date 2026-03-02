@@ -37,12 +37,12 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   /**
    * If `true` the component can be used on dark background
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
-  @Prop() deactivated = false
+  @Prop({ reflect: true }) deactivated = false
   @Watch('deactivated')
   deactivatedWatcher(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue) {
@@ -57,7 +57,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   /**
    * Defines the color of the spinner.
    */
-  @Prop() color: BalProps.BalSpinnerColor = 'blue'
+  @Prop({ reflect: true }) color: BalProps.BalSpinnerColor = 'blue'
 
   /**
    * @Deprecated
@@ -79,7 +79,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   /**
    * Defines the look of the spinner
    */
-  @Prop() variation: BalProps.BalSpinnerVariation = 'logo'
+  @Prop({ reflect: true }) variation: BalProps.BalSpinnerVariation = 'logo'
   @Watch('variation')
   variationWatcher(newValue: BalProps.BalSpinnerVariation, oldValue: BalProps.BalSpinnerVariation) {
     if (newValue !== oldValue) {
@@ -224,9 +224,6 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
         aria-hidden="true"
         class={{
           ['is-animated']: this.animated,
-          [`is-${this.size}`]: this.size !== '',
-          ['is-circle']: this.variation === 'circle',
-          [`is-${this.color}`]: this.variation === 'circle',
         }}
       >
         <div id="inner" part="inner" ref={el => (this.innerEl = el)}></div>

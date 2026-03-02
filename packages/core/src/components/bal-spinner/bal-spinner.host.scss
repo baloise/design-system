@@ -1,6 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
+@use '../../attr' as attr;
 
 /**
  * Variables
@@ -26,8 +26,7 @@
   */
 
 :host {
-  @include vars.styles(spinner);
-  @include unselectable;
+  @include unselectable();
 
   display: flex;
   justify-content: center;
@@ -39,11 +38,11 @@
   }
 }
 
-:host(:not(.is-circle)) {
+:host(:not([variation='circle'])) {
   width: var(--_spinner-size);
 }
 
-:host(.is-circle) #inner {
+:host([variation='circle']) #inner {
   border-radius: 50%;
   border-style: solid;
   border-width: var(--_spinner-circle-border-width);
@@ -63,13 +62,13 @@
   * Define here the variants and states like size or colors for the component.
   */
 
-:host(.is-sm) {
+:host([size='sm']) {
   --mod-spinner-size: 2rem;
   --mod-spinner-circle-size: 1.125rem;
   --mod-spinner-circle-border-width: 0.2rem;
 }
 
-:host(.is-white) {
+:host([color='white']) {
   --mod-spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
   --mod-spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
 }

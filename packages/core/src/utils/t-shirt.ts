@@ -25,7 +25,7 @@ export type TShirtSizeVerbose = (typeof TShirtSizesMapping)[TShirtSizeShort]
  * adopt the new shorthand sizes. Unknown values are passed through unchanged.
  */
 export const normalizeDeprecatedTShirtSize = <T extends string | undefined | null>(size: T) => {
-  if (size == null || size === '') {
+  if (size == undefined || size == null || size === '') {
     return size
   }
 

@@ -1,0 +1,20 @@
+@use '../../hybrid' as hybrid;
+@use '../../host' as host;
+@use './bal-toast.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+  opacity: var(--_toast-animation-start-opacity);
+  transform: var(--_toast-animation-start-transform);
+}
+
+:host(.is-ready) {
+  transition: var(--_toast-animation-transition);
+}
+
+:host([visible]) {
+  opacity: var(--_toast-animation-end-opacity);
+  transform: var(--_toast-animation-end-transform);
+}

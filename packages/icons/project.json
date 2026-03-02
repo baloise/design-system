@@ -55,6 +55,8 @@
         "svgReplaceBlack": true,
         "dsMinSetPath": "../core/src/utils/constants/icons.constant.ts",
         "dsMinSet": [
+          "balIconInformation",
+          "balIconAlert",
           "balIconFile",
           "balIconPicture",
           "balIconVideo",

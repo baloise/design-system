@@ -24,9 +24,10 @@
   * The $selectors parameter can be a single selector or a list of selectors.
   * The $is-host parameter determines if the component is in host mode or not.
   */
-@mixin component($selectors, $is-host: false) {
+@mixin hybrid($name, $selectors, $is-host: false) {
   @if $is-host {
     :host {
+      @include base($name);
       @content;
     }
   } @else {
@@ -38,17 +39,13 @@
     }
 
     #{$selector} {
+      @include base($name);
       @content;
     }
   }
 }
 
-@mixin base($name) {
-  @include margin($name);
-  @include position($name);
-}
-
-@mixin position($name) {
+@mixin position-vars($name) {
   @include local(#{$name}-position, static);
   @include local(#{$name}-top);
   @include local(#{$name}-right);
@@ -56,7 +53,7 @@
   @include local(#{$name}-left);
 }
 
-@mixin margin($name) {
+@mixin margin-vars($name) {
   @include local(#{$name}-m, 0);
   @include local(#{$name}-my);
   @include local(#{$name}-mx);
@@ -87,4 +84,19 @@
 @mixin styles($name) {
   @include margin-styles($name);
   @include position-styles($name);
+}
+
+@mixin margin($name) {
+  @include margin-vars($name);
+  @include margin-styles($name);
+}
+
+@mixin position($name) {
+  @include position-vars($name);
+  @include position-styles($name);
+}
+
+@mixin base($name) {
+  @include position($name);
+  @include margin($name);
 }

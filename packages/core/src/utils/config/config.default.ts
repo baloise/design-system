@@ -33,6 +33,8 @@ import {
   balIconX,
   balIconXing,
   balIconYoutube,
+  balIconAlert,
+  balIconInformation,
 } from '../constants/icons.constant'
 import { defaultLoggerConfig } from '../log'
 import type { BalConfigState } from './config.types'
@@ -72,6 +74,8 @@ export const defaultIcons = {
   balIconVideo,
   balIconAudio,
   balIconDownload,
+  balIconAlert,
+  balIconInformation,
 }
 
 export const defaultConfig: BalConfigState = {

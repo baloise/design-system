@@ -12,11 +12,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@mixin focus-shadow {
+@mixin focus-shadow($color: var(--bal-interaction-focus-color-start)) {
   @include hover {
     box-shadow:
-      var(--bal-interaction-focus-color-start) 0 0 0 2px,
-      var(--bal-interaction-focus-color-end) 0 0 0 5px !important;
+      var(--bal-interaction-focus-color-border) 0 0 0 2px,
+      #{$color} 0 0 0 5px !important;
   }
 }
 

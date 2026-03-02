@@ -1,10 +1,12 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
 
-$heading-use-host: false !default;
-$heading-name: heading;
-$heading-css-selector: ('.heading', '.title', '.subtitle');
-$heading-host-selector: ('#heading');
+$use-host: false !default;
+$name: heading;
+$css-selector: ('.heading', '.title', '.subtitle');
+$host-selector: ('#heading');
 
 /**
  * Variables
@@ -13,16 +15,15 @@ $heading-host-selector: ('#heading');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($heading-css-selector, $heading-use-host) {
-  @include hybrid.margin-vars($heading-name);
-
-  --heading-color: var(--bal-heading-color, inherit);
-  --heading-family: var(--bal-heading-family);
-  --heading-weight: var(--bal-heading-weight);
-  --heading-line-height: var(--bal-heading-line-height);
-
-  --heading-font-size: var(--bal-heading-font-size, inherit);
-  --heading-space: var(--bal-heading-1-space);
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(heading-color, inherit);
+  @include vars.local(heading-family, var(--bal-heading-family));
+  @include vars.local(heading-weight, var(--bal-heading-weight));
+  @include vars.local(heading-line-height, var(--bal-heading-line-height));
+  @include vars.local(heading-font-size, var(--bal-heading-1-size-device));
+  @include vars.local(heading-space, var(--bal-heading-1-space));
+  @include vars.local(heading-shadow, none); // var(--bal-heading-shadow)
+  @include vars.local(heading-text-align, left);
 }
 
 /**
@@ -31,76 +32,73 @@ $heading-host-selector: ('#heading');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component($heading-host-selector, $heading-css-selector, $heading-use-host) {
-  @include hybrid.margin-styles($heading-name);
+@include hybrid.component($host-selector, $css-selector, $use-host) {
   @include font-smoothing();
 
   display: block;
-  font-family: var(--heading-family);
-  font-weight: var(--heading-weight);
-  font-size: var(--heading-font-size);
-  line-height: var(--heading-line-height);
-  color: var(--heading-color);
+  box-sizing: content-box;
 
   hyphens: auto;
   overflow-wrap: break-word;
   text-wrap: balance;
+
+  font-family: var(--_heading-family);
+  font-weight: var(--_heading-weight);
+  font-size: var(--_heading-font-size);
+  line-height: var(--_heading-line-height);
+  color: var(--_heading-color);
+  text-align: var(--_heading-text-align);
+  text-shadow: var(--_heading-shadow);
 
   em:not(.text),
   span:not(.text) {
     font-weight: inherit;
   }
 
-  strong {
+  b,
+  strong,
+  .is-bold {
     font-weight: var(--bal-text-weight-bold);
   }
 
-  &.is-bold {
-    font-weight: var(--bal-text-weight-bold);
-  }
+  @include hybrid.styles-only($use-host) {
+    &.is-bold {
+      font-weight: var(--bal-text-weight-bold);
+    }
 
-  // modifiers
-  &.has-shadow {
-    text-shadow: var(--bal-heading-shadow);
-  }
+    // alignments
+    &.is-centered {
+      text-align: center;
+    }
 
+    &.is-right {
+      text-align: right;
+    }
+
+    &.is-justified {
+      text-align: justify;
+    }
+  }
+}
+
+//
+// No Wrap
+// --------------------------------
+@mixin noWrap() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@include hybrid.styles($css-selector, $use-host) {
   &.has-no-wrap {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  // alignments
-  &.is-centered {
-    text-align: center;
-  }
-
-  &.is-right {
-    text-align: right;
-  }
-
-  &.is-justified {
-    text-align: justify;
+    @include noWrap();
   }
 }
 
-// Dedup helper for subtitle styling
-@mixin heading-subtitle-style {
-  font-family: var(--bal-heading-subtitle-family);
-  font-weight: var(--bal-heading-subtitle-weight);
-  line-height: var(--bal-heading-subtitle-line-height);
-}
-
-@include hybrid.styles-only($heading-use-host) {
-  .subtitle,
-  .heading.is-subtitle {
-    @include heading-subtitle-style;
-  }
-}
-
-@include hybrid.host-only($heading-use-host) {
-  :host(.is-subtitle) #heading {
-    @include heading-subtitle-style;
+@include attr.has(no-wrap) {
+  #heading {
+    @include noWrap();
   }
 }
 
@@ -111,30 +109,76 @@ $heading-host-selector: ('#heading');
   */
 
 //
-// Colors
-$heading-colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
-
-@mixin heading-colors($color) {
-  --heading-color: var(--bal-heading-color-#{$color});
+// Shadow
+// --------------------------------
+@mixin shadow {
+  --mod-heading-shadow: var(--bal-heading-shadow);
 }
 
-@include hybrid.component($heading-host-selector, $heading-css-selector, $heading-use-host) {
-  @each $color in $heading-colors {
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-shadow {
+    @include shadow();
+  }
+}
+
+@include attr.has(shadow) {
+  @include shadow();
+}
+
+//
+// Subtitle
+// --------------------------------
+@mixin subtitle {
+  --mod-heading-family: var(--bal-heading-subtitle-family);
+  --mod-heading-weight: var(--bal-heading-subtitle-weight);
+  --mod-heading-line-height: var(--bal-heading-subtitle-line-height);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.subtitle,
+  &.is-subtitle {
+    @include subtitle();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host([subtitle]) {
+    @include subtitle();
+  }
+}
+
+//
+// Colors
+// --------------------------------
+$colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
+
+@mixin color($color) {
+  --mod-heading-color: var(--bal-heading-color-#{$color});
+}
+
+@each $color in $colors {
+  @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      @include heading-colors($color);
+      @include color($color);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include color($color);
     }
   }
 }
 
 //
 // Sizes
-@mixin heading-size($level) {
-  --heading-font-size: var(--bal-heading-#{$level}-size-device);
-  --heading-space: var(--bal-heading-#{$level}-space);
+// --------------------------------
+@mixin size($level) {
+  --mod-heading-font-size: var(--bal-heading-#{$level}-size-device);
+  --mod-heading-space: var(--bal-heading-#{$level}-space);
 }
 
-// Maps groups of class aliases to the size token used by `heading-size()`
-$heading-size-aliases: (
+$size-aliases: (
   (is-1, is-level-1, is-3xl): 1,
   (is-2, is-level-2, is-2xl): 2,
   (is-3, is-level-3, is-xl): 3,
@@ -144,81 +188,84 @@ $heading-size-aliases: (
   (is-display-2, is-4xl): display2,
 );
 
-@include hybrid.host-only($heading-use-host) {
-  @each $class-group, $token in $heading-size-aliases {
+@include hybrid.styles($css-selector, $use-host) {
+  @each $class-group, $token in $size-aliases {
     @each $class in $class-group {
-      :host(.#{$class}) #heading {
-        @include heading-size($token);
+      &.#{$class} {
+        @include size($token);
       }
     }
   }
 }
 
-@include hybrid.styles-only($heading-use-host) {
+@include hybrid.styles-only($use-host) {
   @for $i from 1 through 5 {
     h#{$i},
     [role='heading'][aria-level='#{$i}'] {
-      @include heading-size($i);
+      @include size($i);
     }
   }
+}
 
-  .title,
-  .subtitle,
-  .heading {
-    @each $class-group, $token in $heading-size-aliases {
-      @each $class in $class-group {
-        &.#{$class} {
-          @include heading-size($token);
-        }
-      }
+$size-host-aliases: (
+  is-3xl: 1,
+  is-2xl: 2,
+  is-xl: 3,
+  is-lg: 4,
+  is-base: 5,
+  is-5xl: display1,
+  is-4xl: display2,
+);
+
+@include hybrid.host($use-host) {
+  @each $class, $token in $size-host-aliases {
+    :host(.#{$class}) {
+      @include size($token);
     }
   }
 }
 
 //
 // Spaces
-@include hybrid.styles-only($heading-use-host) {
-  .title,
-  .subtitle,
-  .heading {
-    &.has-space-all {
-      --heading-mt: var(--heading-space);
-      --heading-mb: var(--heading-space);
-    }
+// --------------------------------
 
-    &.has-space-top {
-      --heading-mt: var(--heading-space);
-      --heading-mb: 0;
-    }
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-space-all {
+    --mod-heading-mt: var(--_heading-space);
+    --mod-heading-mb: var(--_heading-space);
+  }
 
-    &.has-space-bottom {
-      --heading-mb: var(--heading-space);
-    }
+  &.has-space-top {
+    --mod-heading-mt: var(--_heading-space);
+    --mod-heading-mb: 0;
+  }
 
-    &.has-space-none {
-      --heading-mb: 0;
-      --heading-mt: 0;
-    }
+  &.has-space-bottom {
+    --mod-heading-mb: var(--_heading-space);
+  }
+
+  &.has-space-none {
+    --mod-heading-mb: 0;
+    --mod-heading-mt: 0;
   }
 }
 
-@include hybrid.host-only($heading-use-host) {
-  :host(.has-space-all) {
-    --heading-mt: var(--heading-space);
-    --heading-mb: var(--heading-space);
-  }
+@include attr.has(space, 'all') {
+  --heading-mt: var(--_heading-space);
+  --heading-mb: var(--_heading-space);
+}
 
-  :host(.has-space-top) {
-    --heading-mt: var(--heading-space);
-    --heading-mb: 0;
-  }
+@include attr.has(space, 'top') {
+  --heading-mt: var(--_heading-space);
+  --heading-mb: 0;
+}
 
-  :host(.has-space-bottom) {
-    --heading-mb: var(--heading-space);
-  }
+@include attr.has(space, 'bottom') {
+  --heading-mt: 0;
+  --heading-mb: var(--_heading-space);
+}
 
-  :host(.has-space-none) {
-    --heading-mb: 0;
-    --heading-mt: 0;
-  }
+@include attr.has(space, 'none') {
+  --heading-mt: 0;
+  --heading-mb: 0;
 }

@@ -11,24 +11,41 @@
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section>
-          <bal-close data-testid="basic"></bal-close>
-        </section>
-        <!-- Sizes -->
-        <section data-testid="sizes">
-          <bal-close size="small"></bal-close>
-          <bal-close size=""></bal-close>
-          <bal-close size="medium"></bal-close>
-        </section>
-        <!-- Inverted -->
-        <section data-testid="inverted" class="bg-primary">
-          <bal-close size="small" inverted></bal-close>
-          <bal-close size="" inverted></bal-close>
-          <bal-close size="medium" inverted></bal-close>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <!-- <button class="close" aria-label="close" title="Close" tabindex="0"></button> -->
+        <bal-close></bal-close>
+      </section>
+
+      <!-- Themeing -->
+      <section class="my-theme">
+        <span>Themeing</span>
+        <style>
+          .my-theme bal-close {
+            --close-color-background: #ff0000;
+            --close-color-icon: #00ff00;
+          }
+        </style>
+        <bal-close></bal-close>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <bal-close size="small"></bal-close>
+        <bal-close></bal-close>
+        <bal-close size="medium"></bal-close>
+      </section>
+
+      <!-- Inverted -->
+      <section class="s-bg-inverted">
+        <span>Inverted</span>
+        <bal-close inverted size="small"></bal-close>
+        <bal-close inverted></bal-close>
+        <bal-close inverted size="medium"></bal-close>
+      </section>
+    </main>
   </body>
 </html>

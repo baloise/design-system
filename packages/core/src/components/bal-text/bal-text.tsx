@@ -15,34 +15,34 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the size of the paragraph
    */
-  @Prop({ mutable: true }) size: BalProps.BalTextSize = ''
+  @Prop({ mutable: true, reflect: true }) size: BalProps.BalTextSize = ''
 
   /**
    * If `true` the text has heading font family
    */
-  @Prop() heading = false
+  @Prop({ reflect: true }) heading = false
 
   /**
    * If `true` the text has subtitle font family
    */
-  @Prop() subtitle = false
+  @Prop({ reflect: true }) subtitle = false
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop() noWrap = false
+  @Prop({ reflect: true }) noWrap = false
 
   /**
    * If `true` the text is bold
    */
-  @Prop() bold = false
+  @Prop({ reflect: true }) bold = false
 
   /**
    * If `true` the text is shown as a display inline
    */
-  @Prop() inline = false
+  @Prop({ reflect: true }) inline = false
 
   /**
    * Defines the color of the text.
@@ -52,27 +52,27 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: BalProps.BalTextSpace = ''
+  @Prop({ reflect: true }) space: BalProps.BalTextSpace = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop() shadow = false
+  @Prop({ reflect: true }) shadow = false
 
   /**
-   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid = false
+  @Prop({ reflect: true }) invalid = false
 
   /**
    * @internal
@@ -130,26 +130,29 @@ export class Text implements ComponentInterface, BalElementStateInfo {
     return (
       <Host
         class={{
-          [`has-space-${this.space}`]: this.space !== '',
-          [`is-inline`]: this.inline,
+          [`is-${color}`]: !!color,
+          // [`has-space-${this.space}`]: this.space !== '',
+          // [`is-inline`]: this.inline,
         }}
       >
         <Text
           id="text"
           part="text"
           data-testid="bal-text"
-          class={{
-            text: true,
-            [`is-${color}`]: !!color,
-            [`is-bold`]: this.bold,
-            [`has-shadow`]: this.shadow,
-            [`has-no-wrap`]: this.noWrap,
-            [`is-heading`]: this.heading,
-            [`is-subtitle`]: this.subtitle,
-            [`is-lg`]: this.size === 'lead',
-            [`is-md`]: this.size === 'block',
-            [`is-sm`]: this.size === 'small',
-          }}
+          class={
+            {
+              // text: true,
+              // [`is-${color}`]: !!color,
+              // [`is-bold`]: this.bold,
+              // [`has-shadow`]: this.shadow,
+              // [`has-no-wrap`]: this.noWrap,
+              // [`is-heading`]: this.heading,
+              // [`is-subtitle`]: this.subtitle,
+              // [`is-lg`]: this.size === 'lead',
+              // [`is-md`]: this.size === 'block',
+              // [`is-sm`]: this.size === 'small',
+            }
+          }
         >
           <slot></slot>
         </Text>

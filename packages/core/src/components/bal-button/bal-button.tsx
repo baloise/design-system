@@ -19,12 +19,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.aaa
    */
-  @Prop() color: BalProps.BalButtonColor = 'primary'
+  @Prop({ reflect: true }) color: BalProps.BalButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop() elementType: BalProps.BalButtonElementType = 'button'
+  @Prop({ reflect: true }) elementType: BalProps.BalButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -34,10 +34,10 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true, mutable: true }) size: BalProps.BalButtonSize = ''
+  @Prop({ reflect: true, mutable: true }) size: BalProps.BalButtonSize = undefined
   @Watch('size')
   watchSize(newValue: BalProps.BalButtonSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
@@ -66,54 +66,59 @@ export class Button implements ComponentInterface {
   @Prop() download?: string
 
   /**
+   * If `true` the button has a dashed border.
+   * */
+  @Prop({ reflect: true }) dashed = false
+
+  /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() shadow = false
+  @Prop({ reflect: true }) shadow = false
 
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() square = false
+  @Prop({ reflect: true }) square = false
 
-  /**
-   * If `true` the button has a active theme
-   */
-  @Prop() isActive = false
+  // /**
+  //  * If `true` the button has a active theme
+  //  */
+  // @Prop() isActive = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop() expanded = false
+  @Prop({ reflect: true }) expanded = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
-  @Prop() flat = false
+  @Prop({ reflect: true }) flat = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() outlined = false
+  @Prop({ reflect: true }) outlined = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop() loading = false
+  @Prop({ reflect: true }) loading: BalProps.BalButtonSpinner = false
 
   /**
    * If `true` the button is rounded.
    */
-  @Prop() rounded = false
+  @Prop({ reflect: true }) rounded = false
 
-  /**
-   * If `true` the button is a popup.
-   */
-  @Prop() balPopup = undefined
+  // /**
+  //  * If `true` the button is a popup.
+  //  */
+  // @Prop() balPopup = undefined
 
   /**
    * Name of the left button icon
@@ -133,7 +138,7 @@ export class Button implements ComponentInterface {
   /**
    * The label of the button will not break
    */
-  @Prop() noWrap = false
+  @Prop({ reflect: true }) noWrap = false
 
   /**
    * The name of the button, which is submitted with the form data.
@@ -199,7 +204,7 @@ export class Button implements ComponentInterface {
   }
 
   connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+    this.size = normalizeDeprecatedTShirtSize(this.size)
   }
 
   componentWillLoad() {
@@ -224,37 +229,41 @@ export class Button implements ComponentInterface {
     return this.inverted
   }
 
-  private get buttonCssClass(): { [className: string]: boolean } {
-    const colorMap: Record<string, string> = {
-      'light': 'accent',
-      'text': 'tertiary',
-      'info': 'info',
-      'primary-light': 'primary',
-      'info-light': 'info',
-    }
+  // private get buttonCssClass(): { [className: string]: boolean } {
+  //   // const colorMap: Record<string, string> = {
+  //   //   'light': 'accent',
+  //   //   'text': 'tertiary',
+  //   //   'info': 'info',
+  //   //   'primary-light': 'primary',
+  //   //   'info-light': 'info',
+  //   // }
 
-    const color = colorMap[this.color] || this.color
+  //   // const color = colorMap[this.color] || this.color
 
-    return {
-      'button': true,
-      [`is-${color}`]: true,
-      'is-flat': this.flat,
-      'is-square': this.square,
-      'is-sm': this.size === 'sm',
-      'is-lg': this.size === 'lg',
-      'is-inverted': this.inverted,
-      'is-active': this.isActive,
-      'is-outlined': this.outlined,
-      'is-fullwidth': this.expanded,
-      'is-disabled': this.disabled,
-      'is-loading': this.loading,
-      'is-rounded': this.rounded === true,
-      'has-shadow': this.shadow === true,
-    }
+  //   return {
+  //     // 'button': true,
+  //     // [`is-${this.color}`]: true,
+  //     // 'is-flat': this.flat,
+  //     // 'is-square': this.square,
+  //     // 'is-sm': this.size === 'sm',
+  //     // 'is-lg': this.size === 'lg',
+  //     // 'is-inverted': this.inverted,
+  //     // 'is-active': this.isActive,
+  //     // 'is-outlined': this.outlined,
+  //     // 'is-fullwidth': this.expanded,
+  //     // 'is-disabled': this.disabled,
+  //     // 'is-loading': this.loading,
+  //     // 'is-rounded': this.rounded === true,
+  //     // 'has-shadow': this.shadow === true,
+  //   }
+  // }
+
+  private get isLoading(): boolean {
+    return this.loading === true || this.loading === 'logo' || this.loading === 'circle' || this.loading === ''
   }
 
   private get leftIconAttrs() {
-    if (!this.icon || this.loading) {
+    if (!this.icon || this.isLoading) {
       return {
         style: { display: 'none' },
       }
@@ -263,7 +272,7 @@ export class Button implements ComponentInterface {
   }
 
   private get leftRightAttrs() {
-    if (!this.iconRight || this.loading) {
+    if (!this.iconRight || this.isLoading) {
       return {
         style: { display: 'none' },
       }
@@ -272,13 +281,13 @@ export class Button implements ComponentInterface {
   }
 
   private get loadingAttrs() {
-    if (!this.loading) {
+    if (!this.isLoading) {
       return {
         style: { display: 'none' },
       }
     }
     return {
-      style: { position: 'absolute' },
+      style: { display: 'block' },
     }
   }
 
@@ -327,23 +336,6 @@ export class Button implements ComponentInterface {
             target,
           }
 
-    const spinnerColor = () => {
-      if (this.disabled) {
-        return 'blue'
-      }
-
-      switch (this.color) {
-        case 'primary':
-        case 'success':
-        case 'warning':
-        case 'danger':
-          return this.inverted ? 'blue' : 'white'
-
-        default:
-          return this.inverted ? 'white' : 'blue'
-      }
-    }
-
     const ariaAttributes = {
       'title': this.a11yTitle || this.inheritAttributes['title'],
       'aria-label':
@@ -355,15 +347,18 @@ export class Button implements ComponentInterface {
     return (
       <Host
         onClick={this.handleClick}
-        class={{
-          'is-fullwidth': this.expanded,
-        }}
+        class={
+          {
+            // 'is-fullwidth': this.expanded,
+            // [`is-${this.color}`]: true,
+          }
+        }
       >
         <TagType
           {...attrs}
           {...this.inheritAttributes}
           type={this.elementType}
-          class={this.buttonCssClass}
+          // class={this.buttonCssClass}
           id="button"
           part="native"
           disabled={this.disabled}
@@ -371,40 +366,40 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
           aria-disabled={ariaBooleanToString(this.disabled)}
-          data-testid="bal-button"
           {...ariaAttributes}
         >
-          {this.loading ? (
-            <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
+          {this.isLoading ? (
+            <bal-spinner
+              {...this.loadingAttrs}
+              part="spinner"
+              variation={this.loading === 'circle' ? 'circle' : 'logo'}
+              size="sm"
+              deactivated={!this.isLoading}
+            />
           ) : (
             ''
           )}
           {this.icon ? (
             <bal-icon
               {...this.leftIconAttrs}
+              part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
               size={this.square ? this.size : 'small'}
+              circle={this.dashed}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />
           ) : (
             ''
           )}
-          <span
-            class={{
-              'button-label': true,
-              'has-no-wrap': this.noWrap,
-              'is-small': this.size === 'small',
-            }}
-            style={{ opacity: this.loading ? '0' : '1' }}
-            data-testid="bal-button-label"
-          >
+          <span part="label">
             <slot />
           </span>
           {this.iconRight ? (
             <bal-icon
               {...this.leftRightAttrs}
+              part="icon-right"
               class="icon-right"
               name={this.iconRight}
               size={'small'}

@@ -42,12 +42,12 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   /**
    * Defines the color of the logo.
    */
-  @Prop() color: BalProps.BalLogoColor = 'primary'
+  @Prop({ reflect: true }) color: BalProps.BalLogoColor = 'primary'
 
   /**
    * Size of the logo svg
    */
-  @Prop({ mutable: true }) size: BalProps.BalLogoSize = ''
+  @Prop({ mutable: true, reflect: true }) size: BalProps.BalLogoSize = ''
   @Watch('size')
   watchSize(newValue: BalProps.BalLogoSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
@@ -56,12 +56,12 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   /**
    * Defines the brand of the logo. Default is 'baloise'.
    */
-  @Prop() brand: BalProps.BalLogoBrand = ''
+  @Prop({ reflect: true }) brand: BalProps.BalLogoBrand = ''
 
   /**
    * Defines if the animation should be active
    */
-  @Prop() animated = false
+  @Prop({ reflect: true }) animated = false
   @Watch('animated')
   animatedWatcher() {
     if (!this.isAnimated) {
@@ -187,14 +187,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       )
 
     return (
-      <Host
-        class={{
-          'is-sm': this.size === 'sm',
-          'is-lg': this.size === 'lg',
-          'is-animated': this.animated,
-          'is-inverted': this.color === 'white',
-        }}
-      >
+      <Host>
         <div
           id="animated"
           part="animated"

@@ -28,6 +28,8 @@ import {
   balIconUpload,
   balIconVideo,
   balIconDownload,
+  balIconAlert,
+  balIconInformation,
 } from './constants/icons.constant'
 
 declare const __zone_symbol__requestAnimationFrame: any
@@ -357,6 +359,9 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       balIconPicture,
       balIconVideo,
       balIconAudio,
+      balIconDownload,
+      balIconAlert,
+      balIconInformation,
     },
     ..._config,
   }

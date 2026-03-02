@@ -10,52 +10,152 @@
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
-
   <body>
-    <main class="container py-medium">
-      <section><bal-badge data-testid="basic" color="danger">42</bal-badge></section>
+    <main class="container">
+      <!-- Basic Style -->
       <section>
-        <bal-badge data-testid="icon" color="success" icon="check"></bal-badge>
+        <span>Basic</span>
+        <span class="badge">1</span>
+        <span class="badge">99</span>
+        <span class="badge">100</span>
       </section>
+
+      <!-- Colors -->
       <section>
-        <bal-card data-testid="card">
-          <bal-badge color="danger" position="card">42</bal-badge>
-          <bal-card-title>Title</bal-card-title>
-          <bal-card-content>
+        <span>Colors</span>
+        <div class="stack as-row">
+          <span class="badge is-red">R</span>
+          <span class="badge is-green">G</span>
+          <span class="badge is-yellow">Y</span>
+          <span class="badge is-purple">P</span>
+          <span class="badge is-grey">G</span>
+          <span class="badge is-success">S</span>
+          <span class="badge is-warning">W</span>
+          <span class="badge is-danger">D</span>
+        </div>
+        <div class="stack as-row">
+          <span class="badge is-red"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-green"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-yellow"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-purple"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-grey"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-success"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-warning"><bal-icon name="check"></bal-icon></span>
+          <span class="badge is-danger"><bal-icon name="check"></bal-icon></span>
+        </div>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <span class="badge is-sm">S</span>
+        <span class="badge">M</span>
+        <span class="badge is-lg">L</span>
+      </section>
+
+      <!-- Icon -->
+      <section>
+        <span>Icon</span>
+        <span class="badge is-green">
+          <bal-icon name="check"></bal-icon>
+        </span>
+        <span class="badge is-green is-lg">
+          <bal-icon name="check"></bal-icon>
+        </span>
+      </section>
+
+      <!-- Attention -->
+      <section>
+        <span>Attention</span>
+        <div class="stack as-row">
+          <span class="badge is-red has-pulse">R</span>
+          <span class="badge is-green has-pulse">G</span>
+          <span class="badge is-yellow has-pulse">Y</span>
+          <span class="badge is-purple has-pulse">P</span>
+          <span class="badge is-grey has-pulse">G</span>
+        </div>
+      </section>
+
+      <!-- List -->
+      <section>
+        <span>List</span>
+        <div class="stack">
+          <!-- Row -->
+          <div class="stack as-row">
+            <span class="badge is-lg is-green">
+              <bal-icon name="check"></bal-icon>
+            </span>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <bal-icon name="caret-right"></bal-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <span class="badge is-lg is-purple">2</span>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <bal-icon name="caret-right"></bal-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <span class="badge is-lg is-grey">3</span>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <bal-icon name="caret-right"></bal-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <span class="badge is-lg is-grey">
+              <bal-icon name="document"></bal-icon>
+            </span>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <bal-icon name="caret-right"></bal-icon>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card Position -->
+      <section>
+        <span>Card Position</span>
+        <article class="card">
+          <span class="badge is-green">
+            <bal-icon name="check"></bal-icon>
+          </span>
+          <header class="card-header">
+            <h3 class="title" id="card-title-1">Header</h3>
+          </header>
+          <div class="card-content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
-          </bal-card-content>
-        </bal-card>
+          </div>
+        </article>
       </section>
+
+      <!-- Button Position -->
       <section>
-        <bal-button data-testid="button">
-          <bal-badge color="danger" position="button">42</bal-badge>
+        <span>Button Position</span>
+        <button class="button">
+          <span class="badge">42</span>
           Button
-        </bal-button>
+        </button>
       </section>
-      <section data-testid="sizes">
-        <bal-stack>
-          <bal-badge size="small">S</bal-badge>
-          <bal-badge>N</bal-badge>
-          <bal-badge size="large">L</bal-badge>
-        </bal-stack>
-      </section>
-      <section data-testid="colors">
-        <bal-stack>
-          <bal-badge color="red">42</bal-badge>
-          <bal-badge color="yellow">42</bal-badge>
-          <bal-badge color="green">42</bal-badge>
-          <bal-badge color="purple">42</bal-badge>
-          <bal-badge color="grey">42</bal-badge>
-          <bal-badge color="red" icon="check">42</bal-badge>
-          <bal-badge color="yellow" icon="check">42</bal-badge>
-          <bal-badge color="green" icon="check">42</bal-badge>
-          <bal-badge color="purple" icon="check">42</bal-badge>
-          <bal-badge color="grey" icon="check">42</bal-badge>
-        </bal-stack>
-      </section>
+
+      <!-- Tabs Position -->
       <section>
-        <bal-badge data-testid="long-content" color="green">12345</bal-badge>
+        <span>Tabs Position</span>
+        <bal-tabs interface="tabs" value="tab-b">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</bal-tab-item>
+        </bal-tabs>
       </section>
     </main>
   </body>

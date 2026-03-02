@@ -8,6 +8,8 @@ export const tags = [
   "bal-card-actions",
   "bal-card-button",
   "bal-card-content",
+  "bal-card-footer",
+  "bal-card-header",
   "bal-card-subtitle",
   "bal-card-title",
   "bal-carousel",
@@ -84,6 +86,7 @@ export const tags = [
   "bal-select-option",
   "bal-shape",
   "bal-sheet",
+  "bal-snackbar",
   "bal-spinner",
   "bal-stack",
   "bal-stage",
@@ -103,5 +106,6 @@ export const tags = [
   "bal-text",
   "bal-textarea",
   "bal-time-input",
+  "bal-toast",
   "bal-tooltip"
 ]

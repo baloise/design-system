@@ -1,10 +1,13 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
+@use '../../host' as host;
 
-$text-use-host: false !default;
-$text-name: text;
-$text-css-selector: ('.text');
-$text-host-selector: ('#text');
+$use-host: false !default;
+$name: text;
+$css-selector: ('.text');
+$host-selector: ('#text');
 
 /**
  * Variables
@@ -13,16 +16,16 @@ $text-host-selector: ('#text');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($text-css-selector, $text-use-host) {
-  @include hybrid.margin-vars($text-name);
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(text-color, inherit);
+  @include vars.local(text-family, var(--bal-body-family));
+  @include vars.local(text-weight, var(--bal-body-weight));
+  @include vars.local(text-line-height, var(--bal-body-line-height));
+  @include vars.local(text-size, var(--bal-text-size-base-device));
+  @include vars.local(text-shadow, var(--bal-shadow-text));
+  @include vars.local(text-space, var(--bal-body-space));
 
-  --text-color: initial;
-  --text-family: var(--bal-body-family);
-  --text-weight: var(--bal-body-weight);
-  --text-line-height: var(--bal-body-line-height);
-  --text-size: var(--bal-text-size-base-device);
-  --text-shadow: var(--bal-shadow-text);
-  --text-space: var(--bal-body-space);
+  @include vars.local(text-shadow, none); // var(--bal-heading-shadow)
 }
 
 /**
@@ -30,75 +33,63 @@ $text-host-selector: ('#text');
   * --------------------------------
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
-@include hybrid.component($text-host-selector, $text-css-selector, $text-use-host) {
-  @include hybrid.margin-styles($text-name);
+@include hybrid.component($host-selector, $css-selector, $use-host) {
   @include font-smoothing();
 
-  position: static;
   display: block;
   box-sizing: content-box;
 
   hyphens: auto;
   overflow-wrap: break-word;
+  text-wrap: balance;
 
-  color: var(--text-color);
-  font-family: var(--text-family);
-  font-weight: var(--text-weight);
-  line-height: var(--text-line-height);
-  font-size: var(--text-size);
+  color: var(--_text-color);
+  font-family: var(--_text-family);
+  font-weight: var(--_text-weight);
+  line-height: var(--_text-line-height);
+  font-size: var(--_text-size);
+  text-shadow: var(--_text-shadow);
 
-  // no wrap
-  &.has-no-wrap {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  // text shadow to increase readability on images
-  &.has-shadow {
-    text-shadow: var(--text-shadow);
+  b,
+  strong,
+  .is-bold {
+    font-weight: var(--bal-text-weight-bold);
   }
 
   // alignments
-  &.is-centered {
-    text-align: center;
-  }
+  @include hybrid.styles-only($use-host) {
+    &.is-centered {
+      text-align: center;
+    }
 
-  &.is-right {
-    text-align: right;
-  }
+    &.is-right {
+      text-align: right;
+    }
 
-  &.is-justified {
-    text-align: justify;
+    &.is-justified {
+      text-align: justify;
+    }
   }
 }
 
-@include hybrid.styles-only($text-use-host) {
-  .text {
-    // Display
-    &.is-inline {
-      display: inline;
-    }
+//
+// No Wrap
+// --------------------------------
+@mixin noWrap() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-    // Space
-    &:not(:last-child) {
-      --text-mb: var(--bal-space-2xs-device);
-    }
-  }
-
-  strong.text,
-  b.text {
-    font-weight: var(--bal-text-weight-bold);
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-no-wrap {
+    @include noWrap();
   }
 }
 
-@include hybrid.host-only($text-use-host) {
-  :host(.is-inline) {
-    display: inline;
-  }
-
-  :host(:not(:last-child)) {
-    --text-mb: var(--bal-space-2xs-device);
+@include attr.has(no-wrap) {
+  #text {
+    @include noWrap();
   }
 }
 
@@ -108,141 +99,220 @@ $text-host-selector: ('#text');
   * Define here the variants and states like size or colors for the component.
   */
 
-@mixin text-size($level) {
-  --text-size: var(--bal-text-size-#{$level});
+//
+// Weights
+// --------------------------------
+$weights: ('light', 'regular', 'bold');
+
+@include hybrid.styles($css-selector, $use-host) {
+  @each $weight in $weights {
+    &.is-#{$weight} {
+      --mod-text-weight: var(--bal-text-weight-#{$weight});
+    }
+  }
 }
 
-@include hybrid.component($text-host-selector, $text-css-selector, $text-use-host) {
-  //
-  // Font Weight
-  $text-weights: ('light', 'regular', 'bold');
-  @each $weight in $text-weights {
-    &.is-#{$weight} {
-      --text-weight: var(--bal-text-weight-#{$weight});
-    }
-  }
+@include attr.has(bold) {
+  --mod-text-weight: var(--bal-text-weight-bold);
+}
 
-  &.is-bold {
-    --text-weight: var(--bal-text-weight-bold);
-  }
+//
+// Shadow
+// --------------------------------
+@mixin shadow {
+  --mod-text-shadow: var(--bal-text-shadow);
+}
 
-  &.is-regular {
-    --text-weight: var(--bal-text-weight-regular);
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-shadow {
+    @include shadow();
   }
+}
 
-  //
-  // Font Family
-  &.is-heading,
-  &.is-title {
-    --text-family: var(--bal-text-family-heading);
-    --text-weight: var(--bal-text-weight-bold);
-    --text-line-height: var(--bal-text-line-height-heading);
+@include attr.has(shadow) {
+  @include shadow();
+}
+
+//
+// Inline
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-inline {
+    display: inline;
   }
+}
 
-  &.is-subtitle {
-    --text-family: var(--bal-text-family-heading);
-    --text-weight: var(--bal-text-weight-light);
-    --text-line-height: var(--bal-text-line-height-heading);
-  }
+@include attr.has(inline) {
+  display: inline;
+}
 
-  //
-  // Colors
-  $text-colors: (
-    'white',
-    'black',
-    'primary',
-    'primary-hover',
-    'primary-active',
-    'inverted-primary',
-    'inverted-primary-hover',
-    'inverted-primary-active',
-    'primary-light',
-    'hint',
-    'grey-light',
-    'grey',
-    'grey-dark',
-    'disabled',
-    'inverted-disabled',
-    'info',
-    'warning',
-    'success',
-    'danger',
-    'danger-hover',
-    'danger-active'
-  );
-  @each $color in $text-colors {
+//
+// Colors
+// --------------------------------
+$colors: (
+  'white',
+  'black',
+  'primary',
+  'primary-hover',
+  'primary-active',
+  'inverted-primary',
+  'inverted-primary-hover',
+  'inverted-primary-active',
+  'primary-light',
+  'hint',
+  'grey-light',
+  'grey',
+  'grey-dark',
+  'disabled',
+  'inverted-disabled',
+  'info',
+  'warning',
+  'success',
+  'danger',
+  'danger-hover',
+  'danger-active'
+);
+
+@mixin color($color) {
+  --mod-text-color: var(--bal-text-color-#{$color});
+}
+
+@each $color in $colors {
+  @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --text-color: var(--bal-text-color-#{$color});
+      @include color($color);
     }
   }
 
-  //
-  // Sizes
-  &.is-small {
-    @include text-size(sm);
-  }
-
-  &.is-block {
-    @include text-size(md);
-  }
-
-  &.is-lead {
-    @include text-size(lg);
-  }
-
-  $text-sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
-
-  @each $size in $text-sizes {
-    &.is-#{$size} {
-      @include text-size($size);
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include color($color);
     }
   }
 }
 
 //
-// Spaces
-@include hybrid.styles-only($text-use-host) {
-  .text {
-    &.has-space-all {
-      --text-mt: var(--text-space);
-      --text-mb: var(--text-space);
-    }
+// Sizes
+// --------------------------------
+@mixin size($level) {
+  --mod-text-size: var(--bal-text-size-#{$level}-device);
+}
 
-    &.has-space-top {
-      --text-mt: var(--text-space);
-      --text-mb: 0;
-    }
+$size-aliases: (
+  (is-xxxxx-large, is-5xl): 5xl,
+  (is-xxxx-large, is-4xl): 4xl,
+  (is-xxx-large, is-3xl): 3xl,
+  (is-xx-large, is-2xl): 2xl,
+  (is-x-large, is-xl): xl,
+  (is-large, is-lead, is-lg): lg,
+  (is-medium, is-block, is-md): md,
+  (is-normal, is-base): base,
+  (is-small, is-sm): sm,
+  (is-x-small, is-xs): xs,
+);
 
-    &.has-space-bottom {
-      --text-mt: 0;
-      --text-mb: var(--text-space);
-    }
-
-    &.has-space-none {
-      --text-mt: 0;
-      --text-mb: 0;
+@include hybrid.styles($css-selector, $use-host) {
+  @each $class-group, $token in $size-aliases {
+    @each $class in $class-group {
+      &.#{$class} {
+        @include size($token);
+      }
     }
   }
 }
 
-@include hybrid.host-only($text-use-host) {
-  :host(.has-space-all) {
-    --text-mt: var(--text-space);
-    --text-mb: var(--text-space);
+$sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
+@include hybrid.host($use-host) {
+  @each $token in $sizes {
+    :host([size='#{$token}']) {
+      @include size($token);
+    }
   }
 
-  :host(.has-space-top) {
-    --text-mt: var(--text-space);
-    --text-mb: 0;
+  :host([size='small']) {
+    @include size('sm');
   }
 
-  :host(.has-space-bottom) {
-    --text-mt: 0;
-    --text-mb: var(--text-space);
+  :host([size='lead']) {
+    @include size('lg');
   }
 
-  :host(.has-space-none) {
-    --text-mt: 0;
-    --text-mb: 0;
+  :host([size='block']) {
+    @include size('md');
   }
+}
+
+//
+// Font Family
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-heading,
+  &.is-title {
+    --mod-text-family: var(--bal-text-family-heading);
+    --mod-text-weight: var(--bal-text-weight-bold);
+    --mod-text-line-height: var(--bal-text-line-height-heading);
+  }
+
+  &.is-subtitle {
+    --mod-text-family: var(--bal-text-family-heading);
+    --mod-text-weight: var(--bal-text-weight-light);
+    --mod-text-line-height: var(--bal-text-line-height-heading);
+  }
+}
+
+@include attr.has(heading) {
+  --mod-text-family: var(--bal-text-family-heading);
+  --mod-text-weight: var(--bal-text-weight-bold);
+  --mod-text-line-height: var(--bal-text-line-height-heading);
+}
+
+@include attr.has(subtitle) {
+  --mod-text-family: var(--bal-text-family-heading);
+  --mod-text-weight: var(--bal-text-weight-light);
+  --mod-text-line-height: var(--bal-text-line-height-heading);
+}
+
+//
+// Spaces
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-space-all {
+    --mod-text-mt: var(--_text-space);
+    --mod-text-mb: var(--_text-space);
+  }
+
+  &.has-space-top {
+    --mod-text-mt: var(--_text-space);
+    --mod-text-mb: 0;
+  }
+
+  &.has-space-bottom {
+    --mod-text-mb: var(--_text-space);
+  }
+
+  &.has-space-none {
+    --mod-text-mb: 0;
+    --mod-text-mt: 0;
+  }
+}
+
+@include attr.has(space, 'all') {
+  --text-mt: var(--_text-space);
+  --text-mb: var(--_text-space);
+}
+
+@include attr.has(space, 'top') {
+  --text-mt: var(--_text-space);
+  --text-mb: 0;
+}
+
+@include attr.has(space, 'bottom') {
+  --text-mt: 0;
+  --text-mb: var(--_text-space);
+}
+
+@include attr.has(space, 'none') {
+  --text-mt: 0;
+  --text-mb: 0;
 }

@@ -9,7 +9,6 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { i18nBalClose } from './bal-close.i18n'
-import { normalize } from 'path'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
@@ -26,16 +25,16 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true }) size: BalProps.BalCloseSize = ''
+  @Prop({ mutable: true, reflect: true }) size: BalProps.BalCloseSize = undefined
   @Watch('size')
   validateSize(newValue: BalProps.BalCloseSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * @internal define config for the component
@@ -48,32 +47,15 @@ export class Close implements ComponentInterface, BalConfigObserver {
   }
 
   connectedCallback(): void {
-    console.log('START', this.size)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
-    console.log('END', this.size)
+    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
   }
 
   render() {
     const label = i18nBalClose[this.language].close
 
-    console.log(this.size)
-
     return (
       <Host>
-        <button
-          id="close"
-          part="button"
-          type="button"
-          aria-label={label}
-          title={label}
-          tabindex="0"
-          class={{
-            'is-sm': this.size === 'sm',
-            'is-md': this.size === 'md',
-            'is-inverted': this.inverted,
-          }}
-          data-testid="bal-close"
-        ></button>
+        <button id="close" part="button" type="button" aria-label={label} title={label} tabindex="0"></button>
       </Host>
     )
   }

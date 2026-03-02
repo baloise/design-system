@@ -25,6 +25,7 @@ namespace BalProps {
     | 'primary-dark'
     | ''
     | string
+    | undefined
   export type BalIconTileColor = 'purple' | 'red' | 'yellow' | 'green'
 
   export type BalIconSize =
@@ -42,4 +43,5 @@ namespace BalProps {
     | 'large'
     | 'x-large'
     | 'xx-large'
+    | undefined
 }

@@ -45,32 +45,41 @@ use id's and parts in the shadow dom components
 
 ### atomic components and prio for website
 
+Checklist
+
+1. has shadow dom
+2. style ends with host or/and style
+3. reflect @props if use for theming
+4. use mixins correctly
+5. has variables
+6. has one visual file for the component
+
 | Component          | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing | Vars |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| bal-heading        | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-text           | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-label          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-link           | CSS-Only           | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-stack          | Hybrid (No Shadow) | ✅         | ⬜   | ⛔            | ⬜      | ⬜   |
-| bal-divider        | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-close          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-badge          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-tag            | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-button         | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-accordion      | Hybrid             | ✅         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-notification   | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-card           | Hybrid             | ⬜✅       | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-heading        | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-text           | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-label          | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-link           | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-stack          | Hybrid (No Shadow) | ⬜         | ⬜   | ⛔            | ⬜      | ⬜   |
+| bal-divider        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-badge          | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-tag            | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-button         | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-accordion      | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-notification   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-card           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list-accordion | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
 | bal-icon           | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
 | bal-spinner        | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
-| bal-logo           | Web Component      | ✅         | ⬜   | ⬜            | ⬜      | ✅   |
-| bal-switch         | Web Component      | ✅         | ⬜   | ⬜            | ⬜      | ✅   |
-| bal-check          | Web Component      | ✅         | ⬜   | ⬜            | ⬜      | ✅   |
-| bal-toast          | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-snackbar       | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ⬜   |
-| bal-shape          | Web Component      | ✅         | ⬜   | ❓            | ⬜      | ⬜   |
+| bal-logo           | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-check          | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-switch         | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-close          | Web Component      | ✅         | ⬜   | ⬜            | ⬜      | ✅   |
+| bal-toast          | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-snackbar       | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-shape          | Web Component      | ⬜         | ⬜   | ❓            | ⬜      | ⬜   |
 | bal-stage          | Web Component      | ❓         | ❓   | ❓            | ❓      | ⬜   |
 
 ### rest components

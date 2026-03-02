@@ -31,42 +31,42 @@ export class Notification implements ComponentInterface, NotificationComponentIn
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color: BalProps.BalNotificationColor = ''
+  @Prop({ reflect: true }) color: BalProps.BalNotificationColor = ''
 
   /**
    * Defines the type of the notification, alert or snackbar.
    * Alert is used for important messages that require immediate attention,
    * while snackbar is used for less important messages that can be ignored by the user.
    */
-  @Prop() type: BalProps.BalNotificationType = ''
+  @Prop({ reflect: true }) type: BalProps.BalNotificationType = ''
 
   /**
    * If `true` the notification is visible.
    */
-  @Prop() visible = true
+  @Prop({ reflect: true }) visible = true
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() closable = false
+  @Prop({ reflect: true }) closable = false
 
   /**
    * If `true` there will be no icon provided
    */
-  @Prop() noIcon = false
+  @Prop({ reflect: true }) noIcon = false
+
+  /**
+   * Defines the size of the notification, small, medium or large.
+   */
+  @Prop({ reflect: true, mutable: true }) size: BalProps.BalNotificationSize = ''
+  watchSize(newValue: BalProps.BalNotificationSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
 
   /**
    * Defines the heading of the notification.
    */
   @Prop() heading = ''
-
-  /**
-   * Defines the size of the notification, small, medium or large.
-   */
-  @Prop({ mutable: true }) size: BalProps.BalNotificationSize = ''
-  watchSize(newValue: BalProps.BalNotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
-  }
 
   /**
    * Defines the message of the notification as html content
@@ -161,20 +161,22 @@ export class Notification implements ComponentInterface, NotificationComponentIn
       <Host
         {...a11yAttributes}
         class={{
-          [`has-heading`]: !!this.heading,
-          [`is-visible`]: !!this.visible,
           [`is-ready`]: this.didLoad,
+          // [`has-heading`]: !!this.heading,
+          // [`is-visible`]: !!this.visible,
+          // [`is-${this.color}`]: !!this.color,
         }}
       >
         <section
           id="notification"
-          class={{
-            'has-no-icon': this.noIcon,
-            'is-toast': this.type === 'toast',
-            'is-snackbar': this.type === 'snackbar',
-            [`is-${this.color}`]: !!this.color,
-            [`is-${this.size}`]: !!this.size,
-          }}
+          class={
+            {
+              // 'has-no-icon': this.noIcon,
+              // 'is-toast': this.type === 'toast',
+              // 'is-snackbar': this.type === 'snackbar',
+              // [`is-${this.size}`]: !!this.size,
+            }
+          }
           part="section"
         >
           {this.closable && (
@@ -189,7 +191,9 @@ export class Notification implements ComponentInterface, NotificationComponentIn
           {this.heading && <h2 part="heading">{this.heading}</h2>}
           {this.heading && this.message && <p part="content">{this.message}</p>}
           {!this.heading && this.message && this.message}
-          <slot></slot>
+          <span>
+            <slot></slot>
+          </span>
           {this.action && (
             <bal-button
               color="primary"

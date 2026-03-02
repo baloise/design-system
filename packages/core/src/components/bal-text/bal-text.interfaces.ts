@@ -4,7 +4,21 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalTextSize = 'small' | 'lead' | 'block' | ''
+  export type BalTextSize =
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | 'small'
+    | 'lead'
+    | 'block'
+    | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
     | 'light-blue'

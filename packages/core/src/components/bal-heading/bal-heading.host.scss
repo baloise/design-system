@@ -1,7 +1,7 @@
 @use '../../hybrid' as hybrid;
 
 @use './bal-heading.style' with (
-  $heading-use-host: true
+  $use-host: true
 );
 
 :host {

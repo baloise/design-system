@@ -1,12 +1,10 @@
 @use '../../hybrid' as hybrid;
 @use './bal-button.style' with (
-  $button-use-host: true
+  $use-host: true
 );
 
-@include hybrid.host-base(button, inline-block);
-
-// Target the internal native control via the exposed part
 :host {
+  display: inline-block;
   width: var(--bal-button-width, fit-content);
 }
 
