@@ -17,14 +17,14 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
 
-    - name: Create .npmrc
-      run: |
-        cat << EOF > "$HOME/.npmrc"
-          //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
-        EOF
-      shell: bash
-      env:
-        NPM_PUBLISH_TOKEN: ${{ inputs.npm-token }}
+    # - name: Create .npmrc
+    #   run: |
+    #     cat << EOF > "$HOME/.npmrc"
+    #       //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
+    #     EOF
+    #   shell: bash
+    #   env:
+    #     NPM_PUBLISH_TOKEN: ${{ inputs.npm-token }}
 
     - name: Clean install
       shell: bash

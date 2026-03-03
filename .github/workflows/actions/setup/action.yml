@@ -16,11 +16,12 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
 
-    - name: Stetup Node.JS
+    - name: Setup Node.JS
       uses: actions/setup-node@v4
       with:
-        node-version: 20
         cache: 'npm'
+        node-version: 22
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Update NPM registry path
       continue-on-error: true
