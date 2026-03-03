@@ -53,14 +53,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Merge main -> production
-      #   uses: devmasx/merge-branch@master
-      #   with:
-      #     type: now
-      #     from_branch: main
-      #     target_branch: production
-      #     message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge main -> production
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: production
+          message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
         run: npx nx release publish
