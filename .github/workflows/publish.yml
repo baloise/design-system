@@ -35,8 +35,8 @@ jobs:
       - name: Update changelog file
         run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
 
-      # - name: Pre-Publish
-      #   run: npx nx run pre-publish
+      - name: Pre-Publish
+        run: npx nx run pre-publish
 
       - name: get-npm-version
         id: package-version
