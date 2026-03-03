@@ -5,10 +5,6 @@ on:
   pull_request:
     types: [closed]
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
@@ -19,16 +15,19 @@ jobs:
     name: 🚀 Publish
     if: (github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/release-setup
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Clean install
+        shell: bash
+        run: npm i
 
       - name: Build
         run: npx nx run-many -t build --projects=tag:scope:release
@@ -36,8 +35,8 @@ jobs:
       - name: Update changelog file
         run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
 
-      - name: Pre-Publish
-        run: npx nx run pre-publish
+      # - name: Pre-Publish
+      #   run: npx nx run pre-publish
 
       - name: get-npm-version
         id: package-version
@@ -65,3 +64,7 @@ jobs:
 
       - name: Publish
         run: npx nx release publish
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

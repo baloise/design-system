@@ -2345,7 +2345,7 @@ export namespace Components {
          */
         "animated": boolean;
         /**
-          * Defines the brand of the logo.
+          * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
         "brand": BalProps.BalLogoBrand;
@@ -8447,7 +8447,7 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
-          * Defines the brand of the logo.
+          * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
         "brand"?: BalProps.BalLogoBrand;
