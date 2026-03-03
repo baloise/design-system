@@ -53,19 +53,11 @@
   "devDependencies": {
     "@baloise/output-target-angular": "0.0.0",
     "@baloise/output-target-web": "0.0.0",
-<<<<<<< HEAD
-    "@baloise/ds-maps": "19.8.4",
-    "@baloise/ds-brand-icons": "19.8.4",
-    "@baloise/ds-favicons": "19.8.4",
-    "compression": "~1.8.1",
-    "express": "~4.22.1",
-=======
     "@baloise/ds-maps": "19.9.0",
     "@baloise/ds-brand-icons": "19.9.0",
     "@baloise/ds-favicons": "19.9.0",
-    "compression": "~1.7.4",
-    "express": "~4.18.2",
->>>>>>> main
+    "compression": "~1.8.1",
+    "express": "~4.22.1",
     "serve-index": "~1.9.1"
   },
   "sideEffects": false
