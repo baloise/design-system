@@ -11,6 +11,9 @@ jobs:
   release:
     name: 🚀 Release
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -53,6 +56,10 @@ jobs:
 
       - name: Publish
         run: npx nx release publish --tag=nightly
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Git Reset
         run: git reset --hard

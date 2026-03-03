@@ -19,6 +19,9 @@ jobs:
     name: 🚚 Create Snapshot
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/snapshot')
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read
     timeout-minutes: 15
     steps:
       - name: Get Action URL
@@ -91,6 +94,10 @@ jobs:
 
       - name: Publish
         run: npx nx release publish --tag=snapshot
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Create comment
         if: success()

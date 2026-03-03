@@ -132,6 +132,7 @@ packages/icons/CHANGELOG.md
 packages/maps/CHANGELOG.md
 packages/testing/CHANGELOG.md
 packages/tokens/CHANGELOG.md
+packages/playwright/CHANGELOG.md
 libs/nx/CHANGELOG.md
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
@@ -154,6 +155,7 @@ packages/icons/README.md
 packages/maps/README.md
 packages/testing/README.md
 packages/tokens/README.md
+packages/playwright/README.md
 libs/nx/README.md
 libs/output-targets-angular/README.md
 libs/output-targets-react/README.md
@@ -164,6 +166,7 @@ packages/core/LICENSE
 packages/brand-icons/LICENSE
 packages/devkit/LICENSE
 packages/angular-common/LICENSE
+packages/playwright/LICENSE
 packages/angular-module/LICENSE
 packages/angular/LICENSE
 packages/react/LICENSE
