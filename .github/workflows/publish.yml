@@ -1,8 +1,13 @@
 name: 🚀 Publish
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [closed]
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -12,7 +17,7 @@ env:
 jobs:
   Publish:
     name: 🚀 Publish
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main'
+    if: (github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
