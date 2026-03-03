@@ -1,8 +1,7 @@
-name: 🚀 Publish
+name: 🚀 bubu
 
 on:
-  pull_request:
-    types: [closed]
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -12,7 +11,6 @@ env:
 jobs:
   Publish:
     name: 🚀 Publish
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
