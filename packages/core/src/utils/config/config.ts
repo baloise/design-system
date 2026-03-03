@@ -1,7 +1,7 @@
 import { BalLogger } from '../log'
 import { BALOISE_ANIMATION_KEY } from './config.const'
 import { defaultConfig } from './config.default'
-import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
+import { BalBrand, BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
 
 export class Config {
@@ -32,6 +32,17 @@ export class Config {
 
   get language(): BalLanguage {
     return this._config.language
+  }
+
+  get brand(): BalBrand {
+    return this._config.brand
+  }
+
+  set brand(brand: BalBrand) {
+    if (brand !== this._config.brand) {
+      this._config.brand = brand
+      this._notify()
+    }
   }
 
   set language(language: BalLanguage) {
