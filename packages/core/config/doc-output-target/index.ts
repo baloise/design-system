@@ -123,6 +123,18 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
         try {
           mkdirSync(storyPath, { recursive: true })
+          const mdFiles = ['testing.md', 'theming.md', 'api.md']
+          mdFiles.forEach(file => {
+            const filePath = path.join(storyPath, file)
+            if (existsSync(filePath)) {
+              try {
+                // delete file
+                writeFileSync(filePath, '')
+              } catch (err) {
+                console.error(err)
+              }
+            }
+          })
         } catch (err) {
           console.error(err)
         }

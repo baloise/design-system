@@ -16,7 +16,7 @@ import { BuildCoreExecutorSchema } from './schema'
 export default async function runExecutor(options: BuildCoreExecutorSchema) {
   try {
     // pre build tasks
-    await createTestingDocs(options)
+    // await createTestingDocs(options)
     // await createTestingSelectors(options)
     await createContributorList(options)
 
@@ -63,33 +63,33 @@ async function createContributorList(options: BuildCoreExecutorSchema) {
 // This script reads the defined filter functions and creates
 // a JSON file with all the meta information for documentation
 // and code generations.
-async function createTestingDocs(options: BuildCoreExecutorSchema) {
-  const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/bal-**.types.ts')
-  const typeFilePaths = await scan(pathToTypes)
-  const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f, 'utf-8')))
-  const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
-  await writeFile(
-    join(options.projectRoot, '../../resources/data/commands.json'),
-    JSON.stringify(commands, undefined, 2),
-  )
-}
+// async function createTestingDocs(options: BuildCoreExecutorSchema) {
+//   const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/bal-**.types.ts')
+//   const typeFilePaths = await scan(pathToTypes)
+//   const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f, 'utf-8')))
+//   const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
+//   await writeFile(
+//     join(options.projectRoot, '../../resources/data/commands.json'),
+//     JSON.stringify(commands, undefined, 2),
+//   )
+// }
 
-function parseTestingType(fileContent: string, filePath: string) {
-  const sourceFile = createSourceFile(fileContent)
-  const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
-  const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
-  const commands = [] as any[]
-  interfaceDeclarationNode.members.forEach((commandNode: any) => {
-    commands.push({
-      name: commandNode.name.escapedText,
-      description: parseFunctionComment(commandNode, sourceFile),
-      signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
-      path: filePath,
-      component: filePath.split(sep).pop()?.replace('.types.ts', ''),
-    })
-  })
-  return commands
-}
+// function parseTestingType(fileContent: string, filePath: string) {
+//   const sourceFile = createSourceFile(fileContent)
+//   const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
+//   const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
+//   const commands = [] as any[]
+//   interfaceDeclarationNode.members.forEach((commandNode: any) => {
+//     commands.push({
+//       name: commandNode.name.escapedText,
+//       description: parseFunctionComment(commandNode, sourceFile),
+//       signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
+//       path: filePath,
+//       component: filePath.split(sep).pop()?.replace('.types.ts', ''),
+//     })
+//   })
+//   return commands
+// }
 
 /********************************************************************************
  * post build task
