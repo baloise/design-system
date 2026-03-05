@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.9.1
+
+### Patch Changes
+
+- **core**: fix audit issues ( [#1885](https://github.com/baloise/design-system/pull/1885))
+
 ## 19.9.0
 
 ### Minor Changes
