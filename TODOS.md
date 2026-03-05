@@ -72,9 +72,9 @@ Checklist
 | bal-list           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list-accordion | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| bal-icon           | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
-| bal-spinner        | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
-| bal-logo           | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
+| bal-icon           | Web Component      | ✅         | ⬜   | ✅            | ✅      | ✅   |
+| bal-spinner        | Web Component      | ✅         | ⬜   | ✅            | ✅      | ✅   |
+| bal-logo           | Web Component      | ✅         | ⬜   | ✅            | ✅      | ✅   |
 | bal-check          | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
 | bal-switch         | Web Component      | ✅         | ⬜   | ✅            | ⬜      | ✅   |
 | bal-close          | Web Component      | ✅         | ⬜   | ⬜            | ⬜      | ✅   |

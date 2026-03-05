@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-icon'
-const VARIANTS = ['basic', 'override', 'inline', 'svg-content', 'shadow', 'turn', 'colors', 'states', 'sizes', 'tile']
+const TAG = 'bal-spinner'
+const VARIANTS = ['basic', 'sizes', 'inverted', 'circle-variation']
 
 const image = screenshot(TAG)
 

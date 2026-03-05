@@ -129,7 +129,7 @@ export class Icon implements BalConfigObserver, ComponentInterface {
     const hasIcons = Object.keys(this.icons).length > 0
 
     if (hasIcons && iconName && iconName.length > 0) {
-      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(iconName))}`]
+      const icon: string | undefined = this.icons[`Icon${upperFirst(camelCase(iconName))}`]
       if (icon) {
         this.svgContent = icon
         return
