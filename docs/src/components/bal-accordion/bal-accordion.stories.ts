@@ -1,4 +1,4 @@
-// import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
+import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import {
@@ -26,7 +26,7 @@ const meta: Meta<Args> = {
     ({ content }) => `<bal-accordion>
   <bal-accordion-summary>
     <bal-stack>
-      <bal-icon svg='${/*BrandIconCarGreen*/ ''}' color="auto" size="large"></bal-icon>
+      <bal-icon svg='${BrandIconCarGreen}' color="auto" size="large"></bal-icon>
       <bal-content>
         <bal-label>Label Heading</bal-label>
         <bal-text size="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus
