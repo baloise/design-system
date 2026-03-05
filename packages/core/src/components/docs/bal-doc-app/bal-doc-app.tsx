@@ -1,4 +1,3 @@
-import * as balIcons from '@baloise/ds-icons'
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import globalScript from '../../../global'
 import { balBrowser } from '../../../utils/browser'
@@ -29,7 +28,8 @@ export class DocApp implements ComponentInterface {
 
   connectedCallback() {
     globalScript()
-    updateBalIcons(balIcons)
+    // TODO: add all icons for the docs
+    // updateBalIcons(balIcons)
   }
 
   componentDidRender() {

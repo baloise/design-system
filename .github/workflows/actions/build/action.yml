@@ -65,9 +65,9 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'
       with:
-        name: icons-dist
-        output: packages/icons/IconsDist.zip
-        paths: packages/icons/dist
+        name: assets-dist
+        output: packages/assets/AssetsDist.zip
+        paths: packages/assets/dist
 
     - uses: ./.github/workflows/actions/upload-archive
       if: inputs.build == 'true'
@@ -103,17 +103,3 @@ runs:
         name: angular
         output: packages/angular/src/Angular.zip
         paths: packages/angular/src/generated
-
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: testing-dist
-        output: packages/testing/TestingDist.zip
-        paths: packages/testing/dist
-
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: e2e-artifacts
-        output: e2e/E2eBuildArtifacts.zip
-        paths: e2e/generated

@@ -1,4 +1,4 @@
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons/dist'
+// import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
@@ -117,6 +117,6 @@ export const BrandIcons = Story({
   },
   ...withRender(
     ({ content, ...args }) =>
-      `<bal-icon ${props(args)} svg='${balBrandIconCarCrashWithAnimalGreen}'>${content}</bal-icon>`,
+      `<bal-icon ${props(args)} svg='${/*BrandIconCarCrashWithAnimalGreen*/ ''}'>${content}</bal-icon>`,
   ),
 })

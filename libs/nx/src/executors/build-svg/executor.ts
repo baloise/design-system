@@ -8,20 +8,69 @@ import { BuildSvgExecutorSchema } from './schema'
 
 export default async function runSvgExecutor(options: BuildSvgExecutorSchema) {
   try {
-    const files = await optimizeFiles(options)
+    if (options.subPackages && options.subPackages.length > 0) {
+      for (const subPackage of options.subPackages) {
+        const subPackageRoot = join(options.projectRoot, 'src', subPackage)
+        const svgFilePaths = join(subPackageRoot, 'svg', '*.svg')
 
-    if (options.jsOutput) {
-      await writeJsOutput(files, options)
-    }
+        await mkdir(subPackageRoot, { recursive: true })
+        const svgPaths = await scan(svgFilePaths)
+        const svgs = await optimizeFiles(svgPaths, options)
+        const content = await buildJsOutput(subPackage, svgs)
+        await writeFile(join(subPackageRoot, 'svg.ts'), content)
+        await writeJsonOutput(subPackageRoot, svgs, options)
 
-    // eslint-disable-next-line no-extra-boolean-cast
-    if (!!options.jsonPath) {
-      await writeJsonOutput(files, options)
-    }
+        // We need to create the min set of icons for the core of the design system
+        // so we can export the js export directly to the core package.
+        if (subPackage === 'icons') {
+          const dsMinSetPath = '../core/src/utils/constants/icons.constant.ts'
+          const dsMinSetFullPath = join(options.projectRoot, dsMinSetPath)
+          await mkdir(dirname(dsMinSetFullPath), { recursive: true })
 
-    // eslint-disable-next-line no-extra-boolean-cast
-    if (!!options.dsMinSetPath) {
-      await writeDSMinSet(files, options)
+          const dsMinSetIcons = [
+            'IconInformation',
+            'IconAlert',
+            'IconFile',
+            'IconPicture',
+            'IconVideo',
+            'IconAudio',
+            'IconClock',
+            'IconClose',
+            'IconInfoCircle',
+            'IconLink',
+            'IconPlus',
+            'IconMinus',
+            'IconNavGoLeft',
+            'IconNavGoRight',
+            'IconNavGoDown',
+            'IconNavGoUp',
+            'IconCaretUp',
+            'IconCaretRight',
+            'IconCaretDown',
+            'IconCaretLeft',
+            'IconCheck',
+            'IconDate',
+            'IconDocument',
+            'IconDownload',
+            'IconEdit',
+            'IconTrash',
+            'IconUpload',
+            'IconMenuBars',
+            'IconFacebook',
+            'IconInstagram',
+            'IconXing',
+            'IconLinkedin',
+            'IconTwitter',
+            'IconX',
+            'IconYoutube',
+            'IconWeb',
+          ]
+
+          const content = await buildJsOutput(subPackage, svgs, dsMinSetIcons)
+
+          await writeFile(dsMinSetFullPath, content)
+        }
+      }
     }
   } catch (error) {
     console.error(error)
@@ -35,20 +84,15 @@ export default async function runSvgExecutor(options: BuildSvgExecutorSchema) {
   }
 }
 
-async function optimizeFiles(options: BuildSvgExecutorSchema): Promise<Map<string, string>> {
-  // Search for all svg file paths
-  const files = await scan(join(options.projectRoot, 'src', 'assets', '*.svg'))
-
+async function optimizeFiles(filePaths: string[], options: BuildSvgExecutorSchema): Promise<Map<string, string>> {
   // Read the svg file and optimize it
   const contents = new Map<string, string>()
-  for (let index = 0; index < files.length; index++) {
-    const file = files[index]
+  for (let index = 0; index < filePaths.length; index++) {
+    const file = filePaths[index]
     const fileName = parse(file).name
     const content = await readFile(file, 'utf-8')
     const optimizedSvgContent = await optimizeSvg(content, options)
-    if (options.svgOptimize) {
-      await writeFile(file, optimizedSvgContent)
-    }
+    await writeFile(file, optimizedSvgContent)
     contents.set(fileName, optimizedSvgContent)
   }
 
@@ -56,54 +100,36 @@ async function optimizeFiles(options: BuildSvgExecutorSchema): Promise<Map<strin
 }
 
 async function optimizeSvg(content: string, options: BuildSvgExecutorSchema) {
-  if (options.svgOptimize) {
-    const svg = await svgo.optimize(content, {
-      plugins: options.svgPlugins || [],
-    })
-    if (options.svgReplaceBlack) {
-      return svg.data.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '')
-    }
-    return svg.data
+  const svg = await svgo.optimize(content, {
+    plugins: options.svgPlugins || [],
+  })
+  if (options.svgReplaceBlack) {
+    return svg.data.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '')
   }
-  return content
+  return svg.data
 }
 
-async function writeJsOutput(files: Map<string, string>, options: BuildSvgExecutorSchema) {
+async function buildJsOutput(subPackage: string, files: Map<string, string>, filterIcons?: string[]): Promise<string> {
   const lines = ['// generated file', '']
   const regex = /[\r\n]+/g // remove all line breaks
 
-  files.forEach((value, key) => {
-    lines.push(
-      `export const ${options.jsOutputName}${upperFirst(camelCase(key))} = '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
-    )
+  for (const [key, value] of files) {
+    const name = `${upperFirst(camelCase(key))}`
+    // make the subpacke singular if it is plural, e.g. icons -> icon
+    const singularSubPackage = subPackage.endsWith('s') ? subPackage.slice(0, -1) : subPackage
+    const exportName = `${upperFirst(camelCase(singularSubPackage))}${name}`
+    if (filterIcons && !filterIcons.includes(exportName)) {
+      continue
+    }
+    lines.push(`export const ${exportName} = '${value.replace(regex, '')}';`)
     lines.push(``)
-  })
+  }
 
-  await mkdir(dirname(join(options.projectRoot, options.jsOutputPath)), { recursive: true })
-  await writeFile(join(options.projectRoot, options.jsOutputPath), lines.join(NEWLINE))
+  return lines.join(NEWLINE)
 }
 
-async function writeJsonOutput(files: Map<string, string>, options: BuildSvgExecutorSchema) {
+async function writeJsonOutput(subPackageRoot: string, files: Map<string, string>, options: BuildSvgExecutorSchema) {
   const content = JSON.stringify([...files.keys()], undefined, 2)
 
-  await mkdir(dirname(join(options.projectRoot, options.jsonPath)), { recursive: true })
-  await writeFile(join(options.projectRoot, options.jsonPath), content)
-}
-
-async function writeDSMinSet(files: Map<string, string>, options: BuildSvgExecutorSchema) {
-  const lines = ['// generated file', '']
-  const regex = /[\r\n]+/g // remove all line breaks
-
-  files.forEach((value, key) => {
-    const iconName = `${options.jsOutputName}${upperFirst(camelCase(key))}`
-    if ((options.dsMinSet || []).includes(iconName)) {
-      lines.push(
-        `export const ${iconName} = '${options.jsInlineData ? 'data:image/svg+xml;utf-8, ' : ''}${value.replace(regex, '')}';`,
-      )
-      lines.push(``)
-    }
-  })
-
-  await mkdir(dirname(join(options.projectRoot, options.dsMinSetPath)), { recursive: true })
-  await writeFile(join(options.projectRoot, options.dsMinSetPath), lines.join(NEWLINE))
+  await writeFile(join(subPackageRoot, 'svg.json'), content)
 }

@@ -55,9 +55,9 @@ async function copyResources(options: BuildDocsExecutorSchema) {
   }
 
   const packageRoot = join(options.projectRoot, '..', 'packages')
-  await copyToAsset(join(packageRoot, 'maps/src/assets'), 'images/map-markers')
-  await copyToAsset(join(packageRoot, 'icons/src/icons.json'), 'data/icons.json')
-  await copyToAsset(join(packageRoot, 'brand-icons/src/icons.json'), 'data/brand-icons.json')
+  await copyToAsset(join(packageRoot, 'assets/src/maps/svg.json'), 'data/maps.json')
+  await copyToAsset(join(packageRoot, 'assets/src/icons/svg.json'), 'data/icons.json')
+  await copyToAsset(join(packageRoot, 'assets/src/brand-icons/svg.json'), 'data/brand-icons.json')
   await copyToAsset(join(packageRoot, 'styles/docs'), 'data/styles')
 
   const resourceRoot = join(options.projectRoot, '..', 'resources', 'data')
@@ -73,9 +73,10 @@ async function copyResources(options: BuildDocsExecutorSchema) {
     join(packageRoot, 'styles/css/baloise-design-system.local.min.css'),
     'assets/css/baloise-design-system.min.css',
   )
-  await copyToPublic(join(packageRoot, 'icons/src/assets'), 'assets/images/icons')
-  await copyToPublic(join(packageRoot, 'brand-icons/src/assets'), 'assets/images/brand-icons')
-  await copyToPublic(join(packageRoot, 'fonts/assets'), 'assets/fonts')
+  await copyToAsset(join(packageRoot, 'assets/src/maps/svg'), 'images/map-markers')
+  await copyToPublic(join(packageRoot, 'assets/src/icons/svg'), 'assets/images/icons')
+  await copyToPublic(join(packageRoot, 'assets/src/brand-icons/svg'), 'assets/images/brand-icons')
+  await copyToPublic(join(packageRoot, 'assets/src/fonts'), 'assets/fonts')
 }
 
 async function compile(options: BuildDocsExecutorSchema): Promise<void> {

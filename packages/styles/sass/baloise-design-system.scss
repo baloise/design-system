@@ -5,7 +5,7 @@ $font-path: 'https://www.baloise.ch/app-integration/assets/fonts' !default;
 @forward './normalize';
 @forward './structure';
 
-@use '@baloise/ds-fonts/scss/fonts' with (
+@use '@baloise/ds-assets/src/fonts/scss/fonts.scss' with (
   $font-path: $font-path
 );
 

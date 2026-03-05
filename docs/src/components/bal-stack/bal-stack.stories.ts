@@ -1,8 +1,8 @@
-import {
-  balBrandIconInvestSaveChfRed,
-  balBrandIconPiggyBankPurple,
-  balBrandIconSafeSavingChildTangerine,
-} from '@baloise/ds-brand-icons/dist'
+// import {
+//   BrandIconInvestSaveChfRed,
+//   BrandIconPiggyBankPurple,
+//   BrandIconSafeSavingChildTangerine,
+// } from '@baloise/ds-assets'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
@@ -155,55 +155,55 @@ export const Padding = Story({
   ),
 })
 
-export const TeaserCards = Story({
-  ...withRender(
-    ({ ...args }) => `<div class="grid">
-  <div class="col is-one-third">
-    <article class="card is-purple-light is-fullheight">
-      <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${balBrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
-          <div class="stack-content align-top-center">
-            <h3 class="title">Teaser Card</h3>
-            The item component can easily be combined with the card component to achieve a nice
-            teaser layout.
-          </div>
-          <button class="button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="col is-one-third">
-    <article class="card is-yellow-light is-fullheight">
-      <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${balBrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
-          <div class="stack-content align-top-center">
-            <h3 class="title">Auto Height</h3>
-            The height of the cards adjust to the longest in the row.
-          </div>
-          <button class="button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="col is-one-third">
-      <article class="card is-red-light is-fullheight">
-      <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${balBrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>
-          <div class="stack-content align-top-center">
-            <h3 class="title">Item Component</h3>
-            Item is used to easaly group components and not be concered about the correct spacing.
-          </div>
-          <button class="button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-</div>`,
-  ),
-})
+// export const TeaserCards = Story({
+//   ...withRender(
+//     ({ ...args }) => `<div class="grid">
+//   <div class="col is-one-third">
+//     <article class="card is-purple-light is-fullheight">
+//       <div class="card-content">
+//         <div class="stack align-center has-space-large">
+//           <bal-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
+//           <div class="stack-content align-top-center">
+//             <h3 class="title">Teaser Card</h3>
+//             The item component can easily be combined with the card component to achieve a nice
+//             teaser layout.
+//           </div>
+//           <button class="button">Button</button>
+//         </div>
+//       </div>
+//     </article>
+//   </div>
+//   <div class="col is-one-third">
+//     <article class="card is-yellow-light is-fullheight">
+//       <div class="card-content">
+//         <div class="stack align-center has-space-large">
+//           <bal-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
+//           <div class="stack-content align-top-center">
+//             <h3 class="title">Auto Height</h3>
+//             The height of the cards adjust to the longest in the row.
+//           </div>
+//           <button class="button">Button</button>
+//         </div>
+//       </div>
+//     </article>
+//   </div>
+//   <div class="col is-one-third">
+//       <article class="card is-red-light is-fullheight">
+//       <div class="card-content">
+//         <div class="stack align-center has-space-large">
+//           <bal-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>
+//           <div class="stack-content align-top-center">
+//             <h3 class="title">Item Component</h3>
+//             Item is used to easaly group components and not be concered about the correct spacing.
+//           </div>
+//           <button class="button">Button</button>
+//         </div>
+//       </div>
+//     </article>
+//   </div>
+// </div>`,
+//   ),
+// })
 
 export const StackedTabs = Story({
   args: {

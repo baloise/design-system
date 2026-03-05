@@ -142,7 +142,7 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'fonts', 'assets'),
+          src: join(packagesDir, 'assets', 'src', 'fonts'),
           dest: 'assets/fonts',
           warn: true,
         },
