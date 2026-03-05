@@ -65,7 +65,6 @@ async function copyResources(options: BuildDocsExecutorSchema) {
   await copyToAsset(join(resourceRoot, 'components.json'), 'data/components.json')
   await copyToAsset(join(resourceRoot, 'components.d.ts'), 'data/components.d.ts')
   await copyToAsset(join(resourceRoot, 'contributors.json'), 'data/contributors.json')
-  // await copyToAsset(join(resourceRoot, 'selectors.json'), 'data/selectors.json')
   await copyToAsset(join(resourceRoot, 'tags.json'), 'data/tags.json')
 
   await copyToPublic(join(packageRoot, 'core/www/build'), 'build')
