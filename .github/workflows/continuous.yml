@@ -27,94 +27,94 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   # e2e-components:
-    name: 🧪 Component Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-components
+  #   name: 🧪 Component Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-components
 
   # e2e-visual:
-    name: 🧪 E2E Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/e2e-setup
-      - uses: ./.github/workflows/actions/e2e-visual
+  #   name: 🧪 E2E Tests
+  #   runs-on: ubuntu-22.04
+  #   timeout-minutes: 30
+  #   env:
+  #     HUSKY: 0
+  #   needs: [build]
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       containers: [1, 2, 3, 4]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: ./.github/workflows/actions/setup
+  #     - uses: ./.github/workflows/actions/e2e-setup
+  #     - uses: ./.github/workflows/actions/e2e-visual
 
   # angular:
-    name: 🧪 Angular Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v18, v19, v20]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: angular
+  # name: 🧪 Angular Tests
+  # runs-on: ubuntu-22.04
+  # timeout-minutes: 30
+  # env:
+  #   HUSKY: 0
+  # strategy:
+  #   fail-fast: false
+  #   matrix:
+  #     apps: [v18, v19, v20]
+  # needs: [build]
+  # steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+  #   - uses: ./.github/workflows/actions/setup
+  #   - uses: ./.github/workflows/actions/framework-setup
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #   - uses: ./.github/workflows/actions/framework-build
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #       framework: angular
+  #   - uses: ./.github/workflows/actions/framework-test
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #       framework: angular
 
   # react:
-    name: 🧪 React Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v19]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/framework-setup
-        with:
-          app: ${{ matrix.apps }}
-      - uses: ./.github/workflows/actions/framework-build
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
-      - uses: ./.github/workflows/actions/framework-test
-        with:
-          app: ${{ matrix.apps }}
-          framework: react
+  # name: 🧪 React Tests
+  # runs-on: ubuntu-22.04
+  # timeout-minutes: 30
+  # env:
+  #   HUSKY: 0
+  # strategy:
+  #   fail-fast: false
+  #   matrix:
+  #     apps: [v19]
+  # needs: [build]
+  # steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+  #   - uses: ./.github/workflows/actions/setup
+  #   - uses: ./.github/workflows/actions/framework-setup
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #   - uses: ./.github/workflows/actions/framework-build
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #       framework: react
+  #   - uses: ./.github/workflows/actions/framework-test
+  #     with:
+  #       app: ${{ matrix.apps }}
+  #       framework: react
 
   assembleInformation:
     name: 📝 Assemble Information
