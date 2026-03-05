@@ -28,7 +28,9 @@ const getCssVariable = (el: HTMLElement, variableName: string, fallbackValue: st
     if (cssVar) {
       return cssVar
     }
-  } catch {}
+  } catch {
+    // Non-fatal; if we can't create it, we'll just skip PID tracking
+  }
 
   return fallbackValue
 }

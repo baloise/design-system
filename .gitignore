@@ -117,64 +117,46 @@ test/react/*
 
 .angular
 
-packages/brand-icons/CHANGELOG.md
+packages/assets/CHANGELOG.md
 packages/devkit/CHANGELOG.md
 packages/angular/CHANGELOG.md
 packages/react/CHANGELOG.md
 packages/table/CHANGELOG.md
 packages/css/CHANGELOG.md
 packages/styles/CHANGELOG.md
-packages/favicons/CHANGELOG.md
-packages/fonts/CHANGELOG.md
-packages/icons/CHANGELOG.md
-packages/maps/CHANGELOG.md
-packages/testing/CHANGELOG.md
 packages/tokens/CHANGELOG.md
 libs/nx/CHANGELOG.md
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 docs/CHANGELOG.md
-e2e/CHANGELOG.md
 
 packages/core/README.md
-packages/brand-icons/README.md
+packages/assets/README.md
 packages/devkit/README.md
 packages/angular/README.md
 packages/react/README.md
 packages/table/README.md
 packages/css/README.md
 packages/styles/README.md
-packages/favicons/README.md
-packages/fonts/README.md
-packages/icons/README.md
-packages/maps/README.md
-packages/testing/README.md
 packages/tokens/README.md
 libs/nx/README.md
 libs/output-targets-angular/README.md
 libs/output-targets-react/README.md
 docs/README.md
-e2e/README.md
 
 packages/core/LICENSE
-packages/brand-icons/LICENSE
+packages/assets/LICENSE
 packages/devkit/LICENSE
 packages/angular/LICENSE
 packages/react/LICENSE
 packages/table/LICENSE
 packages/css/LICENSE
 packages/styles/LICENSE
-packages/favicons/LICENSE
-packages/fonts/LICENSE
-packages/icons/LICENSE
-packages/maps/LICENSE
-packages/testing/LICENSE
 packages/tokens/LICENSE
 libs/nx/LICENSE
 libs/output-targets-angular/LICENSE
 libs/output-targets-react/LICENSE
 docs/LICENSE
-e2e/LICENSE
 
 vite.config.*.timestamp*
 vitest.config.*.timestamp*

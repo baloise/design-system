@@ -206,7 +206,9 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
       if (cssVar) {
         return cssVar
       }
-    } catch {}
+    } catch {
+      // Ignore errors, e.g. if getComputedStyle is not available
+    }
 
     // Fallback to component props
     return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'

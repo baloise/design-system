@@ -12,7 +12,7 @@ import { ReactGenerator } from './config/stencil.bindings.react'
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
 const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
-const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
+// const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
 const IS_BAL_PLAYWRIGHT_TESTING = process.env.BAL_PLAYWRIGHT_TESTING === 'true'
 
 if (IS_BAL_DS_RELEASE) {
@@ -33,11 +33,11 @@ if (IS_BAL_DEVELOPMENT) {
   console.log('')
 }
 
-if (IS_BAL_TESTING) {
-  console.log('')
-  console.log('🧪 Build is set to testing 🧪')
-  console.log('')
-}
+// if (IS_BAL_TESTING) {
+//   console.log('')
+//   console.log('🧪 Build is set to testing 🧪')
+//   console.log('')
+// }
 
 if (IS_BAL_PLAYWRIGHT_TESTING) {
   console.log('')
@@ -115,12 +115,12 @@ export const config: Config = {
       ? [
           CustomDocumentationGenerator,
           webOutputTarget({
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-            isTest: IS_BAL_TESTING,
+            dir: 'components',
+            isTest: false,
           }),
           {
             type: 'dist-custom-elements',
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
+            dir: 'components',
             empty: true,
             includeGlobalScripts: false,
             generateTypeDeclarations: true,
@@ -129,7 +129,7 @@ export const config: Config = {
       : []),
     {
       type: 'www',
-      dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
+      dir: 'www',
       serviceWorker: false,
       empty: false,
       copy: [
@@ -214,7 +214,7 @@ export const config: Config = {
     /**
      * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_PLAYWRIGHT_TESTING
       ? [
           {
             type: 'docs-vscode',

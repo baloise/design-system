@@ -8,7 +8,7 @@ import { Component, Host, Prop, h } from '@stencil/core'
 export class CardHeader {
   @Prop() direction: BalProps.BalCardHeaderDirection = 'row'
 
-  @Prop() closable: boolean = false
+  @Prop() closable = false
 
   render() {
     return (

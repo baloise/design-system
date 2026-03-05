@@ -32,7 +32,9 @@ if (fileChanges) {
   const tmpDir = path.join(workspaceRoot, 'tmp')
   try {
     fs.mkdirSync(tmpDir, { recursive: true })
-  } catch {}
+  } catch {
+    // Non-fatal; if we can't create it, we'll just skip PID tracking
+  }
 
   const pidFile = path.join(tmpDir, 'nx-styles-build.pid')
   console.log(pidFile)
@@ -49,7 +51,9 @@ if (fileChanges) {
         } catch {
           try {
             process.kill(previousPid, 'SIGTERM')
-          } catch {}
+          } catch {
+            // Non-fatal; if we can't create it, we'll just skip PID tracking
+          }
         }
         console.log(`${grey('[  🛑   ]')}  canceled previous styles build (pid ${previousPid})`)
       }
@@ -68,7 +72,9 @@ if (fileChanges) {
   // Track PID for future cancellations
   try {
     fs.writeFileSync(pidFile, String(child.pid))
-  } catch {}
+  } catch {
+    // Non-fatal; if we can't create it, we'll just skip PID tracking
+  }
 
   child.on('close', code => {
     const endTime = process.hrtime.bigint()
@@ -83,7 +89,9 @@ if (fileChanges) {
           fs.unlinkSync(pidFile)
         }
       }
-    } catch {}
+    } catch {
+      // Non-fatal; if we can't create it, we'll just skip PID tracking
+    }
 
     if (code !== 0) {
       console.error(`Error rebuilding styles: process exited with code ${code}`)

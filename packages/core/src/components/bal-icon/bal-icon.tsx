@@ -84,12 +84,12 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) disabled: boolean = false
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop({ reflect: true }) invalid: boolean = false
+  @Prop({ reflect: true }) invalid = false
 
   /**
    * LIFE CYCLE
