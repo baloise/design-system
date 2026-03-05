@@ -10,52 +10,76 @@
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
-
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section data-testid="basic">
-          <bal-label>Label default</bal-label>
-          <br />
-          <bal-label weight="regular">Label weight regular</bal-label>
-        </section>
-        <section data-testid="no-wrap">
-          <bal-label no-wrap
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ut adipisci eveniet fugiat repudiandae placeat
-            nemo pariatur! Expedita fugiat exercitationem quibusdam! Tempora reprehenderit vero eos explicabo iste velit
-            quas id! Voluptatem ratione laboriosam minima dolorem! Consequuntur rerum suscipit nam praesentium ad quos
-            ut quisquam saepe doloribus, sit repudiandae veniam voluptate debitis ipsa laboriosam officiis vero quidem.
-            Numquam molestias rerum nemo! Ullam et consequatur, at, saepe animi natus, fuga neque deserunt ad dolore
-            autem. Ea deleniti illo reprehenderit animi possimus non, voluptatum facere fugiat architecto sapiente ipsam
-            aspernatur aliquam vero amet. Deleniti perferendis explicabo sit nobis, mollitia praesentium ipsam obcaecati
-            officia quas perspiciatis? Minima rerum laborum molestias explicabo magnam iste tempore, ipsam pariatur?
-            Dolor, perferendis doloremque. Delectus deleniti maxime voluptatibus sint.</bal-label
-          >
-        </section>
-        <section data-testid="sizes">
-          <bal-label size="small">Label small</bal-label>
-          <br />
-          <bal-label>Label normal</bal-label>
-          <br />
-          <bal-label size="large">Label large</bal-label>
-        </section>
-        <section data-testid="states">
-          <bal-label disabled>Label disabled</bal-label>
-          <br />
-          <bal-label valid>Label valid</bal-label>
-          <br />
-          <bal-label invalid>Label invalid</bal-label>
-        </section>
-        <section data-testid="field">
-          <bal-field>
-            <bal-field-label size="x-large" weight="bold" font-family="title">My Long Title Label</bal-field-label>
-            <bal-field-control>
-              <bal-input></bal-input>
-            </bal-field-control>
-            <bal-field-message>Message</bal-field-message>
-          </bal-field>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <bal-label>Label default</bal-label>
+      </section>
+
+      <!-- No Wrap -->
+      <section>
+        <span>No Wrap</span>
+        <bal-label no-wrap>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ut adipisci eveniet fugiat repudiandae placeat
+          nemo pariatur! Expedita fugiat exercitationem quibusdam! Tempora reprehenderit vero eos explicabo iste velit
+          quas id! Voluptatem ratione laboriosam minima dolorem! Consequuntur rerum suscipit nam praesentium ad quos ut
+          quisquam saepe doloribus, sit repudiandae veniam voluptate debitis ipsa laboriosam officiis vero quidem.
+          Numquam molestias rerum nemo! Ullam et consequatur, at, saepe animi natus, fuga neque deserunt ad dolore
+          autem. Ea deleniti illo reprehenderit animi possimus non, voluptatum facere fugiat architecto sapiente ipsam
+          aspernatur aliquam vero amet. Deleniti perferendis explicabo sit nobis, mollitia praesentium ipsam obcaecati
+          officia quas perspiciatis? Minima rerum laborum molestias explicabo magnam iste tempore, ipsam pariatur?
+          Dolor, perferendis doloremque. Delectus deleniti maxime voluptatibus sint.
+        </bal-label>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <div class="stack-content">
+          <bal-label size="sm">Small</bal-label>
+          <bal-label size="base">Normal</bal-label>
+          <bal-label size="md">Medium</bal-label>
+          <bal-label size="lg">Large</bal-label>
+          <bal-label size="xl">X-Large</bal-label>
+          <bal-label size="2xl">XX-Large</bal-label>
+          <bal-label size="3xl">XXX-Large</bal-label>
+        </div>
+      </section>
+
+      <!-- Required -->
+      <section>
+        <span>Required</span>
+        <bal-label required="false">Required</bal-label>
+      </section>
+
+      <!-- States -->
+      <section>
+        <span>States</span>
+        <div class="stack-content">
+          <bal-label valid>Valid</bal-label>
+          <bal-label invalid>Invalid</bal-label>
+          <bal-label disabled>Disabled</bal-label>
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section>
+        <span>Colors</span>
+        <div class="stack-content">
+          <bal-label valid>Success</bal-label>
+
+          <bal-label disabled>Disabled</bal-label>
+          <bal-label>Base</bal-label>
+          <bal-label hovered>Hovered</bal-label>
+          <bal-label pressed>Pressed</bal-label>
+
+          <bal-label invalid>Danger</bal-label>
+          <bal-label invalid hovered>Hovered</bal-label>
+          <bal-label invalid pressed>Pressed</bal-label>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

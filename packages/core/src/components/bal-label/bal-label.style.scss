@@ -1,11 +1,13 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
 @use 'sass:list';
 
-$label-use-host: false !default;
-$label-name: label;
-$label-css-selector: ('.label');
-$label-host-selector: ('#label');
+$use-host: false !default;
+$name: label;
+$css-selector: ('.label');
+$host-selector: ('#label');
 
 /**
  * Variables
@@ -14,39 +16,12 @@ $label-host-selector: ('#label');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($label-css-selector, $label-use-host) {
-  @include hybrid.margin-vars($label-name);
-
-  --label-color: initial;
-  --label-family: var(--bal-label-family);
-  --label-weight: var(--bal-label-weight);
-  --label-line-height: var(--bal-label-line-height);
-  --label-font-size: var(--bal-label-size-base-device);
-}
-
-/**
-  * Mixinx
-  * --------------------------------
-  * Define here the mixins for the component to be able to use it in host or non-host mode.
-  */
-
-$label-sizes: ('sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
-$label-title-sizes: ('lg', 'xl', '2xl', '3xl');
-
-@mixin label-size($level) {
-  --label-font-size: var(--bal-label-size-#{$level});
-
-  @if list.index($label-title-sizes, $level) {
-    --label-family: var(--bal-font-family-title);
-  }
-
-  @include tablet {
-    --label-font-size: var(--bal-label-size-#{$level}-tablet);
-  }
-
-  @include desktop {
-    --label-font-size: var(--bal-label-size-#{$level}-desktop);
-  }
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(label-color, inherit);
+  @include vars.local(label-family, var(--bal-label-family));
+  @include vars.local(label-weight, var(--bal-label-weight));
+  @include vars.local(label-line-height, var(--bal-label-line-height));
+  @include vars.local(label-size, var(--bal-label-size-base-device));
 }
 
 /**
@@ -55,83 +30,205 @@ $label-title-sizes: ('lg', 'xl', '2xl', '3xl');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-.label {
+@mixin base() {
   @include font-smoothing();
-  @include hybrid.margin-styles($label-name);
 
-  display: inline;
+  display: block;
+  box-sizing: content-box;
+
   hyphens: auto;
   overflow-wrap: break-word;
+  text-wrap: balance;
   min-width: 0;
 
-  color: var(--label-color);
-  font-family: var(--label-family);
-  font-weight: var(--label-weight);
-  line-height: var(--label-line-height);
-  font-size: var(--label-font-size);
+  color: var(--_label-color);
+  font-family: var(--_label-family);
+  font-weight: var(--_label-weight);
+  font-size: var(--_label-size);
+  line-height: var(--_label-line-height);
+}
 
-  &.is-multiline {
-    white-space: normal;
+@include hybrid.styles($css-selector, $use-host) {
+  @include base();
+}
+
+@include hybrid.host($use-host) {
+  :host label {
+    @include base();
   }
+}
 
-  &.is-regular {
-    font-weight: var(--bal-text-weight-regular);
-  }
+//
+// No Wrap
+// --------------------------------
+@mixin noWrap() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-  &.is-title {
-    font-family: var(--bal-font-family-title);
-  }
-
-  &.is-text {
-    font-family: var(--bal-font-family-text);
-  }
-
+@include hybrid.styles($css-selector, $use-host) {
   &.has-no-wrap {
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    @include noWrap();
   }
+}
 
-  //
-  // font sizes
-  @each $size in $label-sizes {
-    &.is-#{$size} {
-      @include label-size($size);
+@include attr.has(no-wrap) {
+  label {
+    @include noWrap();
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Family
+// --------------------------------
+
+@mixin family() {
+  --mod-label-family: var(--bal-text-family-heading);
+}
+
+$sizes-for-heading: ('lg', 'xl', '2xl', '3xl');
+
+@include hybrid.styles($css-selector, $use-host) {
+  @each $token in $sizes-for-heading {
+    &.is-#{$token} {
+      @include family();
     }
   }
+}
 
-  //
-  // colors
+@include hybrid.host($use-host) {
+  @each $token in $sizes-for-heading {
+    :host([size='#{$token}']) {
+      @include family();
+    }
+  }
+}
+
+//
+// Sizes
+// --------------------------------
+
+@mixin size($level) {
+  --mod-label-size: var(--bal-label-size-#{$level}-device);
+}
+
+$size-aliases: (
+  (is-xxx-large, is-3xl): 3xl,
+  (is-xx-large, is-2xl): 2xl,
+  (is-x-large, is-xl): xl,
+  (is-large, is-lg): lg,
+  (is-normal, is-base): base,
+  (is-small, is-sm): sm,
+);
+
+@include hybrid.styles($css-selector, $use-host) {
+  @each $class-group, $token in $size-aliases {
+    @each $class in $class-group {
+      &.#{$class} {
+        @include size($token);
+      }
+    }
+  }
+}
+
+$sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
+@include hybrid.host($use-host) {
+  @each $token in $sizes {
+    :host([size='#{$token}']) {
+      @include size($token);
+    }
+  }
+}
+
+//
+// Colors
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
   &.is-success {
-    --label-color: var(--bal-label-color-success);
+    --mod-label-color: var(--bal-label-color-success);
   }
 
   &.is-warning {
-    --label-color: var(--bal-label-color-warning);
+    --mod-label-color: var(--bal-label-color-warning);
   }
 
   &.is-danger {
-    --label-color: var(--bal-label-color-danger);
+    --mod-label-color: var(--bal-label-color-danger);
   }
 
   &.is-hovered {
-    --label-color: var(--bal-label-color-base-hover);
+    --mod-label-color: var(--bal-label-color-base-hover);
   }
 
   &.is-pressed {
-    --label-color: var(--bal-label-color-base-active);
+    --mod-label-color: var(--bal-label-color-base-active);
   }
 
   &.is-danger.is-hovered {
-    --label-color: var(--bal-label-color-danger-hover);
+    --mod-label-color: var(--bal-label-color-danger-hover);
   }
 
   &.is-danger.is-pressed {
-    --label-color: var(--bal-label-color-danger-active);
+    --mod-label-color: var(--bal-label-color-danger-active);
   }
 
   &.is-disabled {
-    --label-color: var(--bal-label-color-disabled) !important;
+    --mod-label-color: var(--bal-label-color-disabled) !important;
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-hovered) {
+    --mod-label-color: var(--bal-label-color-base-hover);
+  }
+
+  :host(.is-pressed) {
+    --mod-label-color: var(--bal-label-color-base-active);
+  }
+
+  @include attr.has('valid') {
+    --mod-label-color: var(--bal-label-color-success);
+  }
+
+  @include attr.has('invalid') {
+    --mod-label-color: var(--bal-label-color-danger);
+  }
+
+  :host(.is-hovered) {
+    --mod-label-color: var(--bal-label-color-base-hover);
+  }
+
+  :host(.is-pressed) {
+    --mod-label-color: var(--bal-label-color-base-active);
+  }
+
+  // @include attr.hasMany(
+  //   (
+  //     'invalid': true,
+  //     'hovered': true,
+  //   )
+  // ) {
+  //   --mod-label-color: var(--bal-label-color-danger-hover);
+  // }
+
+  // @include attr.hasMany(
+  //   (
+  //     'invalid': true,
+  //     'pressed': true,
+  //   )
+  // ) {
+  //   --mod-label-color: var(--bal-label-color-danger-active);
+  // }
+
+  @include attr.has('disabled') {
+    --mod-label-color: var(--bal-label-color-disabled);
   }
 }

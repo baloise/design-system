@@ -1339,11 +1339,6 @@ export namespace Components {
           * @default undefined
          */
         "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-          * @default 'bold'
-         */
-        "weight": BalProps.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -2081,11 +2076,6 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * When true, the text will is able to break on multiple lines.
-          * @default false
-         */
-        "multiline": boolean;
-        /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
          */
@@ -2107,19 +2097,13 @@ export namespace Components {
         "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-          * @default ''
          */
-        "size": BalProps.BalLabelSize;
+        "size"?: BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
           * @default false
          */
         "valid": boolean;
-        /**
-          * Defines the font weight of the label.
-          * @default 'bold'
-         */
-        "weight": BalProps.BalLabelWeight;
     }
     interface BalList {
         /**
@@ -7297,11 +7281,6 @@ declare namespace LocalJSX {
           * @default undefined
          */
         "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-          * @default 'bold'
-         */
-        "weight"?: BalProps.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -8071,11 +8050,6 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * When true, the text will is able to break on multiple lines.
-          * @default false
-         */
-        "multiline"?: boolean;
-        /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
          */
@@ -8096,7 +8070,6 @@ declare namespace LocalJSX {
         "required"?: boolean;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
-          * @default ''
          */
         "size"?: BalProps.BalLabelSize;
         /**
@@ -8104,11 +8077,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "valid"?: boolean;
-        /**
-          * Defines the font weight of the label.
-          * @default 'bold'
-         */
-        "weight"?: BalProps.BalLabelWeight;
     }
     interface BalList {
         /**

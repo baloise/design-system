@@ -3,13 +3,9 @@
 @use 'sass:meta';
 @use 'sass:map';
 
-// @function bool($name) {
-//   @return '[#{$name}]:not([#{$name}=' false '])';
-// }
-
-// @function val($name, $value) {
-//   @return '[#{$name}=' #{$value}']';
-// }
+@function bool($name) {
+  @return '[#{$name}]:not([#{$name}=' false '])';
+}
 
 /**
   * Usage examples:

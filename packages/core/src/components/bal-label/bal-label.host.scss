@@ -1,7 +1,9 @@
 @use '../../hybrid' as hybrid;
 
 @use './bal-label.style' with (
-  $label-use-host: true
+  $use-host: true
 );
 
-@include hybrid.host-base(label, inline);
+:host {
+  display: block;
+}

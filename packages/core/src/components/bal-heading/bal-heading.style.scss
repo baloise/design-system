@@ -42,11 +42,11 @@ $host-selector: ('#heading');
   overflow-wrap: break-word;
   text-wrap: balance;
 
+  color: var(--_heading-color);
   font-family: var(--_heading-family);
   font-weight: var(--_heading-weight);
   font-size: var(--_heading-font-size);
   line-height: var(--_heading-line-height);
-  color: var(--_heading-color);
   text-align: var(--_heading-text-align);
   text-shadow: var(--_heading-shadow);
 

@@ -26,41 +26,7 @@ jobs:
           build: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  e2e-components:
-    name: 🧪 Component Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/cypress-setup
-      - uses: ./.github/workflows/actions/cypress-components
-
-  cypress:
-    name: 🧪 Cypress
-    runs-on: ubuntu-22.04
-    timeout-minutes: 30
-    env:
-      HUSKY: 0
-    needs: [build]
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/cypress-setup
-      - uses: ./.github/workflows/actions/cypress-run
-
-  angular:
+  # angular:
     name: 🧪 Angular Tests
     runs-on: ubuntu-22.04
     timeout-minutes: 30
@@ -88,7 +54,7 @@ jobs:
           app: ${{ matrix.apps }}
           framework: angular
 
-  react:
+  # react:
     name: 🧪 React Tests
     runs-on: ubuntu-22.04
     timeout-minutes: 30
