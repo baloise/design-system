@@ -61,7 +61,6 @@ async function copyResources(options: BuildDocsExecutorSchema) {
   await copyToAsset(join(packageRoot, 'styles/docs'), 'data/styles')
 
   const resourceRoot = join(options.projectRoot, '..', 'resources', 'data')
-  await copyToAsset(join(resourceRoot, 'commands.json'), 'data/commands.json')
   await copyToAsset(join(resourceRoot, 'components.json'), 'data/components.json')
   await copyToAsset(join(resourceRoot, 'components.d.ts'), 'data/components.d.ts')
   await copyToAsset(join(resourceRoot, 'contributors.json'), 'data/contributors.json')
