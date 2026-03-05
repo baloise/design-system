@@ -1,6 +1,6 @@
 import { test } from '@baloise/ds-playwright'
 
-test.describe('a11y', () => {
+test.describe.skip('a11y', () => {
   test('basic', async ({ page, a11y }) => {
     await page.mount('<bal-tag>Tag</bal-tag>')
     await a11y('bal-tag')

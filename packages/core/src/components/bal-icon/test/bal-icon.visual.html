@@ -13,20 +13,20 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-icon name="check"></bal-icon>
       </section>
 
       <!-- Override -->
-      <section style="--icon-color: red">
+      <section data-testid="override" style="--icon-color: red">
         <span>Override</span>
         <bal-icon name="check"></bal-icon>
         <bal-icon name="check" color="primary"></bal-icon>
       </section>
 
       <!-- Inline-->
-      <section>
+      <section data-testid="inline">
         <span>Inline</span>
         Lorem ipsum dolor sit amet consectetur
         <bal-icon name="info-circle" inline color="danger" size="small"></bal-icon> adipisicing elit. Inventore quos
@@ -35,7 +35,7 @@
       </section>
 
       <!-- SVG Content-->
-      <section>
+      <section data-testid="svg-content">
         <span>SVG Content</span>
         <bal-icon
           color="primary"
@@ -45,13 +45,13 @@
       </section>
 
       <!-- Shadow -->
-      <section>
+      <section data-testid="shadow">
         <span>Shadow</span>
         <bal-icon name="check" shadow></bal-icon>
       </section>
 
       <!-- Turn -->
-      <section>
+      <section data-testid="turn">
         <span>Turn</span>
         <div class="stack as-row">
           <bal-icon name="plus"></bal-icon>
@@ -72,7 +72,7 @@
       </section>
 
       <!-- Colors-->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <div class="stack as-row">
           <bal-icon name="check" color="blue"></bal-icon>
@@ -117,7 +117,7 @@
       </section>
 
       <!-- States-->
-      <section>
+      <section data-testid="states">
         <span>States</span>
         <bal-icon name="info-circle"></bal-icon>
         <bal-icon invalid name="info-circle"></bal-icon>
@@ -125,7 +125,7 @@
       </section>
 
       <!-- Sizes-->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <div class="stack as-row">
           <bal-icon name="check" size="x-small"></bal-icon>
@@ -139,7 +139,7 @@
       </section>
 
       <!-- Tile -->
-      <section>
+      <section data-testid="tile">
         <span>Tile</span>
         <div class="stack as-row">
           <bal-icon tile tile-color="purple"></bal-icon>

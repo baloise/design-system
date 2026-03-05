@@ -1,7 +1,7 @@
-import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expect, expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-icon'
-const VARIANTS = ['basic', 'inline', 'shadow', 'svg', 'colors', 'inverted', 'sizes', 'turn', 'tile']
+const VARIANTS = ['basic', 'override', 'inline', 'svg-content', 'shadow', 'turn', 'colors', 'states', 'sizes', 'tile']
 
 const image = screenshot(TAG)
 
@@ -12,6 +12,6 @@ test.beforeEach('Setup', async ({ page }) => {
 VARIANTS.forEach(variant => {
   test(variant, async ({ page }) => {
     const el = page.getByTestId(variant)
-    await expectScreenshot(el, image(`${variant}`))
+    await expectScreenshot(el, image(variant))
   })
 })
