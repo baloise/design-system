@@ -13,14 +13,14 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-heading>Basic Heading</bal-heading>
         <bal-heading subtitle>Basic Subtitle</bal-heading>
       </section>
 
       <!-- Colors -->
-      <section class="s-bg-1">
+      <section class="s-bg-1" data-testid="colors">
         <span>Colors</span>
         <bal-heading color="primary">Primary</bal-heading>
         <bal-heading color="success">Success</bal-heading>
@@ -31,7 +31,7 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <bal-heading level="h1">Level 1</bal-heading>
         <bal-heading level="h2">Level 2</bal-heading>
@@ -49,13 +49,13 @@
       </section>
 
       <!-- Shadow -->
-      <section>
+      <section data-testid="shadow">
         <span>Text Shadow</span>
         <bal-heading shadow>Heading with Text Shadow</bal-heading>
       </section>
 
       <!-- No Wrap  -->
-      <section>
+      <section data-testid="no-wrap">
         <span>No Wrap</span>
         <bal-heading no-wrap>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium tempore nisi perspiciatis sint! Minus,
@@ -64,7 +64,7 @@
       </section>
 
       <!-- Spaces  -->
-      <section>
+      <section data-testid="spaces">
         <span>Spaces</span>
         <div class="s-bg-1 s-mb">
           <bal-heading class="s-bg-2" level="h5">Space Basic</bal-heading>

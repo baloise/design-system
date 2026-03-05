@@ -13,13 +13,13 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-text>Basic Paragraph</bal-text>
       </section>
 
       <!-- Theme -->
-      <section>
+      <section data-testid="theme">
         <span>Theme</span>
         <style>
           bal-text.my-theme {
@@ -32,7 +32,7 @@
       </section>
 
       <!-- No Wrap -->
-      <section>
+      <section data-testid="no-wrap">
         <span>No Wrap</span>
         <bal-text no-wrap>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, voluptatum. Fugit tempore harum, aut
@@ -52,7 +52,7 @@
       </section>
 
       <!-- Colors -->
-      <section class="s-bg-1">
+      <section data-testid="colors" class="s-bg-1">
         <span>Colors</span>
         <bal-text color="white">white paragraph</bal-text>
         <bal-text color="black">black paragraph</bal-text>
@@ -78,7 +78,7 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <bal-text size="small">small paragraph</bal-text>
         <bal-text>base paragraph</bal-text>
@@ -87,32 +87,32 @@
       </section>
 
       <!-- Font Weight -->
-      <section>
+      <section data-testid="font-weight">
         <span>Font Weight</span>
         <bal-text bold>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Heading -->
-      <section>
+      <section data-testid="heading">
         <span>Heading</span>
         <bal-text heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
         <bal-text subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Inline -->
-      <section>
+      <section data-testid="inline">
         <span>Inline</span>
         <bal-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Shadow -->
-      <section>
+      <section data-testid="shadow">
         <span>Shadow</span>
         <bal-text shadow>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
 
       <!-- Space -->
-      <section class="s-bg-1">
+      <section data-testid="space" class="s-bg-1">
         <span>Space</span>
         <bal-text space="none" class="s-bg-2">None - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
         <bal-text space="top" class="s-bg-2">Top - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>

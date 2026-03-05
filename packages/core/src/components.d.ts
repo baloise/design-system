@@ -391,6 +391,36 @@ export namespace Components {
          */
         "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default undefined
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "hovered": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default undefined
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+          * @default undefined
+         */
+        "inverted"?: boolean;
+        /**
+          * @default false
+         */
+        "pressed": boolean;
+    }
     interface BalClose {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
@@ -1085,6 +1115,31 @@ export namespace Components {
          */
         "useWrap": boolean;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default undefined
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "hovered": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default undefined
+         */
+        "invalid"?: boolean;
+        /**
+          * @default false
+         */
+        "pressed": boolean;
+    }
     interface BalTag {
         /**
           * The theme type of the tag.
@@ -1420,6 +1475,12 @@ declare global {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
     };
+    interface HTMLBalCheckElement extends Components.BalCheck, HTMLStencilElement {
+    }
+    var HTMLBalCheckElement: {
+        prototype: HTMLBalCheckElement;
+        new (): HTMLBalCheckElement;
+    };
     interface HTMLBalCloseElement extends Components.BalClose, HTMLStencilElement {
     }
     var HTMLBalCloseElement: {
@@ -1603,6 +1664,12 @@ declare global {
         prototype: HTMLBalStackElement;
         new (): HTMLBalStackElement;
     };
+    interface HTMLBalSwitchElement extends Components.BalSwitch, HTMLStencilElement {
+    }
+    var HTMLBalSwitchElement: {
+        prototype: HTMLBalSwitchElement;
+        new (): HTMLBalSwitchElement;
+    };
     interface HTMLBalTagElementEventMap {
         "balCloseClick": BalEvents.BalTagCloseClickDetail;
     }
@@ -1665,6 +1732,7 @@ declare global {
         "bal-card-header": HTMLBalCardHeaderElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
+        "bal-check": HTMLBalCheckElement;
         "bal-close": HTMLBalCloseElement;
         "bal-content": HTMLBalContentElement;
         "bal-divider": HTMLBalDividerElement;
@@ -1687,6 +1755,7 @@ declare global {
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stack": HTMLBalStackElement;
+        "bal-switch": HTMLBalSwitchElement;
         "bal-tag": HTMLBalTagElement;
         "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
@@ -2099,6 +2168,36 @@ declare namespace LocalJSX {
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
         "visualLevel"?: BalProps.BalHeadingVisualLevel;
+    }
+    interface BalCheck {
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default undefined
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "hovered"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default undefined
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the checkbox is inverted and works on dark backgrounds.
+          * @default undefined
+         */
+        "inverted"?: boolean;
+        /**
+          * @default false
+         */
+        "pressed"?: boolean;
     }
     interface BalClose {
         /**
@@ -2811,6 +2910,31 @@ declare namespace LocalJSX {
          */
         "useWrap"?: boolean;
     }
+    interface BalSwitch {
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default undefined
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "hovered"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default undefined
+         */
+        "invalid"?: boolean;
+        /**
+          * @default false
+         */
+        "pressed"?: boolean;
+    }
     interface BalTag {
         /**
           * The theme type of the tag.
@@ -3019,6 +3143,7 @@ declare namespace LocalJSX {
         "bal-card-header": BalCardHeader;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
+        "bal-check": BalCheck;
         "bal-close": BalClose;
         "bal-content": BalContent;
         "bal-divider": BalDivider;
@@ -3041,6 +3166,7 @@ declare namespace LocalJSX {
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stack": BalStack;
+        "bal-switch": BalSwitch;
         "bal-tag": BalTag;
         "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
@@ -3064,6 +3190,7 @@ declare module "@stencil/core" {
             "bal-card-header": LocalJSX.BalCardHeader & JSXBase.HTMLAttributes<HTMLBalCardHeaderElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-check": LocalJSX.BalCheck & JSXBase.HTMLAttributes<HTMLBalCheckElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
             "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
@@ -3086,6 +3213,7 @@ declare module "@stencil/core" {
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
+            "bal-switch": LocalJSX.BalSwitch & JSXBase.HTMLAttributes<HTMLBalSwitchElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
