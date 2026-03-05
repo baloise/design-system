@@ -83,7 +83,6 @@ e2e/reg.json
 
 resources/data/commands.json
 resources/data/contributors.json
-resources/data/selectors.json
 
 docs/src/contributing/contributors.md
 docs/src/development/00-guides/theming/theming.md
