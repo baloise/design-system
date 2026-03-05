@@ -81,6 +81,7 @@ e2e/generated
 e2e/downloads
 e2e/reg.json
 
+resources/data/commands.json
 resources/data/contributors.json
 
 docs/src/contributing/contributors.md
