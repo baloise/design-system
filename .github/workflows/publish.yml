@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write # Required for OIDC
-      contents: read
+      contents: write
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -50,9 +50,8 @@ jobs:
           add: "['package-lock.json', 'CHANGELOG.md']"
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
           tag: 'v${{ steps.package-version.outputs.current-version }}'
-          default_author: github_actions
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Merge main -> production
         uses: devmasx/merge-branch@master
