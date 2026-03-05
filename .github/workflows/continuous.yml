@@ -23,7 +23,6 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/workflows/actions/build
         with:
-          build: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
   # angular:

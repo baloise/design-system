@@ -28,20 +28,23 @@ runs:
       shell: bash
       run: npm run spell
 
-    - name: Lint & Test
-      if: inputs.build == 'false'
+    # - name: Lint & Test
+    #   if: inputs.build == 'false'
+    #   shell: bash
+    #   run: npx nx run-many -t lint test
+
+    - name: PWD
       shell: bash
-      run: npx nx run-many -t lint test
+      run: pwd
 
     - name: Lint & Test & Build
-      if: inputs.build == 'true'
       shell: bash
       run: npx nx run-many -t lint test build
 
-    - name: Build
-      if: inputs.build == 'true'
-      shell: bash
-      run: npx nx run-many -t build
+    # - name: Build
+    #   if: inputs.build == 'true'
+    #   shell: bash
+    #   run: npx nx run-many -t build
 
     # - name: Releae dry-run
     #   if: inputs.build == 'true'
@@ -49,57 +52,63 @@ runs:
     #   run: npx nx release publish -d
 
     - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
       with:
-        name: tokens-dist
-        output: packages/tokens/TokensDist.zip
-        paths: packages/tokens/dist
+        name: docs
+        output: docs/Dist.zip
+        paths: docs
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: styles-dist
-        output: packages/styles/StylesDist.zip
-        paths: packages/styles/css
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: tokens-dist
+    #     output: packages/tokens/TokensDist.zip
+    #     paths: packages/tokens/dist
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: assets-dist
-        output: packages/assets/AssetsDist.zip
-        paths: packages/assets/dist
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: styles-dist
+    #     output: packages/styles/StylesDist.zip
+    #     paths: packages/styles/css
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: core-dist
-        output: packages/core/CoreDist.zip
-        paths: packages/core/dist
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: assets-dist
+    #     output: packages/assets/AssetsDist.zip
+    #     paths: packages/assets/dist
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: core-loader
-        output: packages/core/CoreLoader.zip
-        paths: packages/core/loader
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: core-dist
+    #     output: packages/core/CoreDist.zip
+    #     paths: packages/core/dist
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: core-components
-        output: packages/core/CoreComponents.zip
-        paths: packages/core/components
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: core-loader
+    #     output: packages/core/CoreLoader.zip
+    #     paths: packages/core/loader
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: react
-        output: packages/react/src/React.zip
-        paths: packages/react/src/generated
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: core-components
+    #     output: packages/core/CoreComponents.zip
+    #     paths: packages/core/components
 
-    - uses: ./.github/workflows/actions/upload-archive
-      if: inputs.build == 'true'
-      with:
-        name: angular
-        output: packages/angular/src/Angular.zip
-        paths: packages/angular/src/generated
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: react
+    #     output: packages/react/src/React.zip
+    #     paths: packages/react/src/generated
+
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   if: inputs.build == 'true'
+    #   with:
+    #     name: angular
+    #     output: packages/angular/src/Angular.zip
+    #     paths: packages/angular/src/generated
