@@ -36,6 +36,7 @@
 | Gap Analyses Material      | Check Components use cases                                            | ⬜     |
 | NPM Updates                | Check Vurnabilites                                                    | ⬜     |
 | UI Icons change base color | Change base color of svg to primary and not black                     | ⬜     |
+| Anuglar React              | Add frameworks back after migrating too shadow dom                    | ⬜     |
 
 ## components
 

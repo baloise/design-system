@@ -151,64 +151,6 @@ export const config: Config = {
           dest: 'assets/images',
           warn: true,
         },
-        // {
-        //   src: join(packagesDir, 'styles', 'css'),
-        //   dest: 'assets/styles',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'tokens', 'dist', 'css'),
-        //   dest: 'assets/tokens',
-        //   warn: true,
-        // },
-        // {
-        //   src: 'components.d.ts',
-        // },
-        // {
-        //   src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
-        //   dest: 'assets/future-logo.svg',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'core', 'public', 'future-logo-red.svg'),
-        //   dest: 'assets/future-logo-red.svg',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'core', 'public', 'future-logo-black.svg'),
-        //   dest: 'assets/future-logo-black.svg',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
-        //   dest: 'assets/tcs.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
-        //   dest: 'assets/santander.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'themes', 'future.css'),
-        //   dest: 'assets/future.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-        //   dest: 'assets/compact.css',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
-        //   dest: 'assets/maps.js',
-        //   warn: true,
-        // },
-        // {
-        //   src: join(packagesDir, 'brand-icons', 'src', 'assets'),
-        //   dest: 'assets/images/brand-icons',
-        //   warn: true,
-        // },
       ],
     },
     /**

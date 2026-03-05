@@ -123,23 +123,13 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
         try {
           mkdirSync(storyPath, { recursive: true })
-          const mdFiles = ['testing.md', 'theming.md', 'api.md']
-          mdFiles.forEach(file => {
-            const filePath = path.join(storyPath, file)
-            if (existsSync(filePath)) {
-              try {
-                // delete file
-                writeFileSync(filePath, '')
-              } catch (err) {
-                console.error(err)
-              }
-            }
-          })
         } catch (err) {
           console.error(err)
         }
 
         // Component API
+        console.log(`===============================`)
+        console.log(`Generating API documentation for component: ${componentName}`)
         const props = propsToMarkdown(component.props)
         const events = eventsToMarkdown(component.events)
         const methods = methodsToMarkdown(component.methods)
@@ -154,6 +144,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         }
 
         try {
+          console.log(`Writing API documentation for component: ${componentName} to ${path.join(storyPath, 'api.md')}`)
           writeFileSync(path.join(storyPath, 'api.md'), content.join(NEWLINE))
         } catch (err) {
           console.error(err)
