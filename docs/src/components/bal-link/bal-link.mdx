@@ -1,0 +1,33 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BasicStoryTabs,
+  Footer,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  StylesQuote,
+  Tabs,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as LinkStories from './bal-link.stories'
+
+<Meta of={LinkStories} />
+
+<StoryHeading of={LinkStories.Basic} hidden></StoryHeading>
+
+<Banner of={LinkStories} />
+
+<Lead>Link is used as a navigation element to direct users to different pages or sections.</Lead>
+
+<BasicStoryTabs tag="link" htmlStory={LinkStories.Basic} />
+
+<PlaygroundBar of={LinkStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## CSS Variables
+
+<TokenOverview component="link" />
+
+<Footer />

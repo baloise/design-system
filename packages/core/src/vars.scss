@@ -100,3 +100,17 @@
   @include position($name);
   @include margin($name);
 }
+
+// box-shadow:
+//   var(--bal-interaction-focus-color-border) 0 0 0 2px,
+//   #{$color} 0 0 0 5px !important;
+
+@mixin focus($name) {
+  @include local(#{$name}-focus, var(--bal-interaction-focus-color-base));
+}
+
+@mixin focus-styles($name) {
+  box-shadow:
+    var(--bal-interaction-focus-color-border) 0 0 0 2px,
+    var(--_#{$name}-focus) 0 0 0 5px !important;
+}

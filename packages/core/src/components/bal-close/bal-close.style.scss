@@ -80,7 +80,7 @@ $close-host-selector: ('#close');
   &:focus-visible,
   &.is-focused {
     &:not(:active) {
-      @include focus-shadow;
+      @include focus-shadow();
       // box-shadow: var(--close-shadow-focus);
     }
   }

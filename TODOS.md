@@ -59,8 +59,8 @@ Checklist
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
 | bal-heading        | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-text           | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-label          | Hybrid             | ✅         | ⬜   | ✅            | ⬜      | ✅   |
-| bal-link           | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-label          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-link           | CSS-Only           |            | ✅   | ✅            | ✅      | ✅   |
 | bal-stack          | Hybrid (No Shadow) | ⬜         | ⬜   | ⛔            | ⬜      | ⬜   |
 | bal-divider        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-badge          | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
