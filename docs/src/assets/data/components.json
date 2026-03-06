@@ -524,7 +524,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Define the color for the badge.",
           "docsTags": [
             {
@@ -616,7 +616,7 @@
           },
           "mutable": false,
           "attr": "position",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the badge is added to the top right corner of the card.",
           "docsTags": [
             {
@@ -648,6 +648,35 @@
           "setter": false
         },
         {
+          "name": "pulse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pulse",
+          "reflectToAttr": true,
+          "docs": "If `true` the badge is added to the top right corner of the card.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "size",
           "type": "\"\" | \"large\" | \"small\"",
           "complexType": {
@@ -662,7 +691,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
           "docsTags": [
             {
@@ -694,7 +723,16 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "badge",
+          "docs": ""
+        },
+        {
+          "name": "icon",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {

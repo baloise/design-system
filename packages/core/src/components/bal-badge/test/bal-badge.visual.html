@@ -13,78 +13,72 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
-        <span class="badge">1</span>
-        <span class="badge">99</span>
-        <span class="badge">100</span>
+        <bal-badge>1</bal-badge>
+        <bal-badge>99</bal-badge>
+        <bal-badge>Urgent</bal-badge>
       </section>
 
       <!-- Colors -->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <div class="stack as-row">
-          <span class="badge is-red">R</span>
-          <span class="badge is-green">G</span>
-          <span class="badge is-yellow">Y</span>
-          <span class="badge is-purple">P</span>
-          <span class="badge is-grey">G</span>
-          <span class="badge is-success">S</span>
-          <span class="badge is-warning">W</span>
-          <span class="badge is-danger">D</span>
+          <bal-badge color="red">R</bal-badge>
+          <bal-badge color="green">G</bal-badge>
+          <bal-badge color="yellow">Y</bal-badge>
+          <bal-badge color="purple">P</bal-badge>
+          <bal-badge color="grey">G</bal-badge>
+          <bal-badge color="success">S</bal-badge>
+          <bal-badge color="warning">W</bal-badge>
+          <bal-badge color="danger">D</bal-badge>
         </div>
         <div class="stack as-row">
-          <span class="badge is-red"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-green"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-yellow"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-purple"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-grey"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-success"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-warning"><bal-icon name="check"></bal-icon></span>
-          <span class="badge is-danger"><bal-icon name="check"></bal-icon></span>
+          <bal-badge color="red" icon="check"></bal-badge>
+          <bal-badge color="green" icon="check"></bal-badge>
+          <bal-badge color="yellow" icon="check"></bal-badge>
+          <bal-badge color="purple" icon="check"></bal-badge>
+          <bal-badge color="grey" icon="check"></bal-badge>
+          <bal-badge color="success" icon="check"></bal-badge>
+          <bal-badge color="warning" icon="check"></bal-badge>
+          <bal-badge color="danger" icon="check"></bal-badge>
         </div>
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
-        <span class="badge is-sm">S</span>
-        <span class="badge">M</span>
-        <span class="badge is-lg">L</span>
+        <bal-badge size="sm">S</bal-badge>
+        <bal-badge size="md">M</bal-badge>
+        <bal-badge size="lg">L</bal-badge>
       </section>
 
       <!-- Icon -->
-      <section>
+      <section data-testid="icon">
         <span>Icon</span>
-        <span class="badge is-green">
-          <bal-icon name="check"></bal-icon>
-        </span>
-        <span class="badge is-green is-lg">
-          <bal-icon name="check"></bal-icon>
-        </span>
+        <bal-badge color="green" icon="check"></bal-badge>
+        <bal-badge color="green" icon="check" size="lg"></bal-badge>
       </section>
 
       <!-- Attention -->
-      <section>
+      <section data-testid="attention">
         <span>Attention</span>
         <div class="stack as-row">
-          <span class="badge is-red has-pulse">R</span>
-          <span class="badge is-green has-pulse">G</span>
-          <span class="badge is-yellow has-pulse">Y</span>
-          <span class="badge is-purple has-pulse">P</span>
-          <span class="badge is-grey has-pulse">G</span>
+          <bal-badge color="red" pulse>R</bal-badge>
+          <bal-badge color="green" pulse>G</bal-badge>
+          <bal-badge color="yellow" pulse>Y</bal-badge>
+          <bal-badge color="purple" pulse>P</bal-badge>
+          <bal-badge color="grey" pulse>G</bal-badge>
         </div>
       </section>
 
       <!-- List -->
-      <section>
+      <section data-testid="list">
         <span>List</span>
         <div class="stack">
           <!-- Row -->
           <div class="stack as-row">
-            <span class="badge is-lg is-green">
-              <bal-icon name="check"></bal-icon>
-            </span>
+            <bal-badge color="green" icon="check" size="lg"></bal-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -93,7 +87,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <span class="badge is-lg is-purple">2</span>
+            <bal-badge color="purple" size="lg">2</bal-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -102,7 +96,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <span class="badge is-lg is-grey">3</span>
+            <bal-badge color="grey" size="lg">3</bal-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -111,9 +105,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <span class="badge is-lg is-grey">
-              <bal-icon name="document"></bal-icon>
-            </span>
+            <bal-badge color="grey" icon="document" size="lg"></bal-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -124,12 +116,10 @@
       </section>
 
       <!-- Card Position -->
-      <section>
+      <!-- <section data-testid="card-position">
         <span>Card Position</span>
         <article class="card">
-          <span class="badge is-green">
-            <bal-icon name="check"></bal-icon>
-          </span>
+          <bal-badge color="green" icon="check"></bal-badge>
           <header class="card-header">
             <h3 class="title" id="card-title-1">Header</h3>
           </header>
@@ -138,25 +128,25 @@
             dolore magna aliqua.
           </div>
         </article>
-      </section>
+      </section> -->
 
       <!-- Button Position -->
-      <section>
+      <!-- <section data-testid="button-position">
         <span>Button Position</span>
         <button class="button">
-          <span class="badge">42</span>
+          <bal-badge icon="check"></bal-badge>
           Button
         </button>
-      </section>
+      </section> -->
 
       <!-- Tabs Position -->
-      <section>
+      <!-- <section data-testid="tabs-position">
         <span>Tabs Position</span>
         <bal-tabs interface="tabs" value="tab-b">
           <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
           <bal-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</bal-tab-item>
         </bal-tabs>
-      </section>
+      </section> -->
     </main>
   </body>
 </html>

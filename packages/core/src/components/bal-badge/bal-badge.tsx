@@ -18,7 +18,7 @@ export class Badge implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true }) size: BalProps.BalBadgeSize = ''
+  @Prop({ mutable: true, reflect: true }) size: BalProps.BalBadgeSize = ''
   @Watch('size')
   watchSize(newValue: BalProps.BalBadgeSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
@@ -27,12 +27,17 @@ export class Badge implements ComponentInterface {
   /**
    * Define the color for the badge.
    */
-  @Prop() color: BalProps.BalBadgeColor = ''
+  @Prop({ reflect: true }) color: BalProps.BalBadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop() position: BalProps.BalBadgePosition = ''
+  @Prop({ reflect: true }) position: BalProps.BalBadgePosition = ''
+
+  /**
+   * If `true` the badge is added to the top right corner of the card.
+   */
+  @Prop({ reflect: true }) pulse = false
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
@@ -41,15 +46,9 @@ export class Badge implements ComponentInterface {
   render() {
     return (
       <Host>
-        <span
-          id="badge"
-          class={{
-            [`is-${this.size}`]: this.size !== '',
-            [`is-${this.color}`]: this.color !== '',
-          }}
-        >
+        <span id="badge" part="badge">
           <slot></slot>
-          {this.size !== 'small' && !!this.icon ? <bal-icon name={this.icon}></bal-icon> : ''}
+          {this.size !== 'small' && !!this.icon ? <bal-icon part="icon" name={this.icon}></bal-icon> : ''}
         </span>
       </Host>
     )

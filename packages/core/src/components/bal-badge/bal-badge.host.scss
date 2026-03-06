@@ -1,6 +1,133 @@
-@use '../../hybrid' as hybrid;
-@use './bal-badge.style' with (
-  $badge-use-host: true
-);
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
 
-@include hybrid.host-base(badge, inline-block);
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include vars.base(badge);
+  @include vars.local(badge-font-family, var(--bal-badge-text-family));
+  @include vars.local(badge-font-weight, var(--bal-badge-text-weight));
+  @include vars.local(badge-min-width, var(--bal-badge-size-base));
+  @include vars.local(badge-height, var(--bal-badge-size-base));
+  @include vars.local(badge-radius, calc(var(--bal-badge-size-base) / 2));
+  @include vars.local(badge-color-background, var(--bal-badge-color-base-background));
+  @include vars.local(badge-color-text, var(--bal-badge-color-base-text));
+  @include vars.local(badge-pulse-color, var(--bal-badge-color-base-background));
+  @include vars.local(badge-font-size, 85%);
+  @include vars.local(badge-icon-size, 0.875rem);
+  @include vars.local(badge-icon-color, var(--bal-badge-color-base-text));
+  @include vars.local(badge-gap, 4px);
+  @include vars.local(badge-padding-inline, 4px);
+  @include vars.local(badge-padding-block, 4px);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable();
+  @include font-smoothing();
+
+  display: inline-flex;
+  vertical-align: text-top;
+  justify-content: center;
+  align-items: center;
+  hyphens: auto;
+  font-size: var(--_badge-font-size);
+  white-space: nowrap;
+  line-height: 1;
+  z-index: 1;
+  cursor: inherit;
+  min-width: var(--_badge-min-width);
+  height: var(--_badge-height);
+  border-radius: var(--_badge-radius);
+  background: var(--_badge-color-background);
+  color: var(--_badge-color-text);
+  font-family: var(--_badge-font-family);
+  font-weight: var(--_badge-font-weight);
+  gap: var(--_badge-gap);
+  padding-inline: var(--_badge-padding-inline);
+  padding-block: var(--_badge-padding-block);
+
+  & > bal-icon {
+    --icon-size: var(--_badge-icon-size);
+    --icon-color: var(--_badge-icon-color);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+$colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'danger');
+
+@each $color in $colors {
+  @include attr.has('color', $color) {
+    --mod-badge-color-text: var(--bal-badge-color-#{$color}-text);
+    --mod-badge-color-background: var(--bal-badge-color-#{$color}-background);
+    --mod-badge-pulse-color: var(--bal-badge-color-#{$color}-background);
+    --mod-badge-icon-color: var(--bal-badge-color-#{$color}-text);
+  }
+}
+
+//
+// Sizes
+@include attr.has('size', 'sm') {
+  --mod-badge-radius: calc(var(--bal-badge-size-sm) / 2);
+  --mod-badge-height: var(--bal-badge-size-sm);
+  --mod-badge-min-width: var(--bal-badge-size-sm);
+  --mod-badge-padding-inline: 0;
+  --mod-badge-padding-block: 0;
+  --mod-badge-font-size: 0;
+
+  max-width: var(--bal-badge-size-sm);
+  padding: 0;
+  overflow: hidden;
+
+  > * {
+    display: none;
+  }
+}
+
+@include attr.has('size', 'lg') {
+  --mod-badge-min-width: var(--bal-badge-size-lg);
+  --mod-badge-height: var(--bal-badge-size-lg);
+  --mod-badge-radius: calc(var(--bal-badge-size-lg) / 2);
+  --mod-badge-font-size: 1rem;
+  --mod-badge-icon-size: 1.125rem;
+}
+
+/**
+  * Animations
+  * --------------------------------
+  * Define here the animations for the component.
+  */
+
+@include attr.has('pulse', true) {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--_badge-pulse-color);
+  }
+  70% {
+    box-shadow: 0 0 0 0.5rem transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}

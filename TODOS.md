@@ -63,7 +63,6 @@ Checklist
 | bal-link           | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
 | bal-stack          | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
 | bal-divider        | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-badge          | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-tag            | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-button         | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-card           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
@@ -78,6 +77,7 @@ Checklist
 | bal-check          | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-switch         | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-close          | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-badge          | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-toast          | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-snackbar       | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-shape          | Web Component      | ⬜         | ⬜   | ❓            | ⬜      | ⬜   |

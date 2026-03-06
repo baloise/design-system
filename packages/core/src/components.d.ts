@@ -86,6 +86,11 @@ export namespace Components {
          */
         "position": BalProps.BalBadgePosition;
         /**
+          * If `true` the badge is added to the top right corner of the card.
+          * @default false
+         */
+        "pulse": boolean;
+        /**
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
          */
@@ -1824,6 +1829,11 @@ declare namespace LocalJSX {
           * @default ''
          */
         "position"?: BalProps.BalBadgePosition;
+        /**
+          * If `true` the badge is added to the top right corner of the card.
+          * @default false
+         */
+        "pulse"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
