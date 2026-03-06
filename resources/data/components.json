@@ -7698,12 +7698,12 @@
               },
               "Notification": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-notification/bal-notification-container.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-notification/bal-notification-container.tsx",
                 "id": "src/components/bal-notification/bal-notification-container.tsx::Notification"
               },
               "NotificationInterface": {
                 "location": "local",
-                "path": "/Users/hirsch/dev/baloise/design-system/next/packages/core/src/components/bal-notification/bal-notification-container.tsx",
+                "path": "/__w/design-system/design-system/packages/core/src/components/bal-notification/bal-notification-container.tsx",
                 "id": "src/components/bal-notification/bal-notification-container.tsx::NotificationInterface"
               }
             },
