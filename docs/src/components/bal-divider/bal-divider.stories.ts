@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { createCssMappings, cssClasses, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.BalDivider & { content: string }
 
@@ -20,7 +20,7 @@ const meta: Meta<Args> = {
   <hr ${cssClasses(
     {
       ...css('color', (color: string) => `is-${color}`),
-      ...css('borderStyle', (borderStyle: string) => `is-${borderStyle}`),
+      ...css('dashed', (dashed: string) => (dashed === 'true' ? 'is-dashed' : '')),
       ...css('layout', (layout: string) => `is-${layout}`),
       ...css('space', (space: string) => `has-space-${space}`),
     },
@@ -42,9 +42,21 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
+export const WebComponentBasic = Story({
+  ...withRender(
+    ({ content, ...args }) => `
+<div class="stack as-col">
+  <span>Before</span>
+  <bal-divider ${props(args)}></bal-divider>
+  <span>After</span>
+</div>
+   `,
+  ),
+})
+
 export const Dashed = Story({
   args: {
-    borderStyle: 'dashed',
+    dashed: true,
   },
 })
 

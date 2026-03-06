@@ -5,7 +5,6 @@ import { createCssMappings, cssClasses, props, StoryFactory, withComponentContro
 type Args = JSX.BalClose & { content: string }
 
 const tag = 'bal-close'
-const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Navigation/Close',
@@ -13,18 +12,7 @@ const meta: Meta<Args> = {
   argTypes: {
     ...withComponentControls({ tag }),
   },
-  ...withRender(
-    ({ content, ...args }) => `
-<button ${cssClasses(
-      {
-        ...css('color', (color: string) => `is-${color}`),
-        ...css('size', (size: string) => `is-${size}`),
-      },
-      args,
-      'close',
-    )} aria-label="close" title="Close" tabindex="0"></button>
-`,
-  ),
+  ...withRender(({ ...args }) => `<bal-close ${props(args)}></bal-close>`),
 }
 
 export default meta
@@ -37,7 +25,3 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-
-export const WebComponentBasic = Story({
-  ...withRender(({ content, ...args }) => `<bal-close ${props(args)}></bal-close>`),
-})

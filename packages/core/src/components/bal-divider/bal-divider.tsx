@@ -41,9 +41,9 @@ export class Divider implements ComponentInterface, Loggable {
   @Prop() color: BalProps.BalDividerColor = 'grey'
 
   /**
-   * Defines the color of the separator line.
+   * Defines if the separator line is dashed or solid. Default is solid.
    */
-  @Prop() borderStyle: BalProps.BalDividerBorderStyle = 'solid'
+  @Prop() dashed = false
 
   connectedCallback(): void {
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
@@ -63,7 +63,7 @@ export class Divider implements ComponentInterface, Loggable {
           [`is-${this.layout}`]: !!this.layout,
           [`is-${this.color}`]: !!this.color,
           [`has-space-${this.space}`]: !!this.space,
-          [`is-dashed`]: this.borderStyle === 'dashed',
+          [`is-dashed`]: this.dashed,
         }}
       ></Host>
     )

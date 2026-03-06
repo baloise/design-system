@@ -29,8 +29,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         }
 
         // Component API
-        console.log(`===============================`)
-        console.log(`Generating API documentation for component: ${componentName}`)
         const props = propsToMarkdown(component.props)
         const events = eventsToMarkdown(component.events)
         const methods = methodsToMarkdown(component.methods)
@@ -45,7 +43,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         }
 
         try {
-          console.log(`Writing API documentation for component: ${componentName} to ${path.join(storyPath, 'api.md')}`)
           writeFileSync(path.join(storyPath, 'api.md'), content.join(NEWLINE))
         } catch (err) {
           console.error(err)

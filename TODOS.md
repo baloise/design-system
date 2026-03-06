@@ -62,13 +62,13 @@ Checklist
 | bal-label          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-link           | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
 | bal-stack          | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
-| bal-divider        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-divider        | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-badge          | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-tag            | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-button         | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-accordion      | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-notification   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-card           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-notification   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-accordion      | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list-accordion | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |

@@ -56,6 +56,14 @@ export const createCssMappings =
   (propName: string, classMapper: (value: string) => string): CssClassMapping => {
     const values = getPropValues(tag, propName)
 
+    // If the prop is a boolean, we can just return a single mapping for the "true" value
+    if (values.length === 1 && values[0] === 'boolean') {
+      return {
+        [propName]: classMapper('true'),
+      }
+    }
+
+    // For non-boolean props, we create a mapping for each possible value
     return values.reduce((acc, value) => {
       acc[`${propName}.${value}`] = classMapper(value)
       return acc

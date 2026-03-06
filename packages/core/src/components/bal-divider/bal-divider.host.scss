@@ -1,7 +1,9 @@
 @use '../../hybrid' as hybrid;
 
 @use './bal-divider.style' with (
-  $divider-use-host: true
+  $use-host: true
 );
 
-@include hybrid.host-base(divider, block);
+:host {
+  display: block;
+}

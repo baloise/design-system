@@ -1,10 +1,11 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 
-$divider-use-host: false !default;
-$divider-name: divider;
-$divider-css-selector: (hr, '.divider');
-$divider-host-selector: ('#divider');
+$use-host: false !default;
+$name: divider;
+$css-selector: (hr, '.divider');
+$host-selector: ('#divider');
 
 /**
  * Variables
@@ -13,16 +14,62 @@ $divider-host-selector: ('#divider');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($divider-css-selector, $divider-use-host) {
-  @include hybrid.margin-vars($divider-name);
-
-  --divider-color: var(--bal-divider-color-base);
-  --divider-width: var(--bal-divider-width);
-  --divider-radius: var(--bal-divider-radius);
-  --divider-space: 0;
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(divider-color, var(--bal-divider-color-base));
+  @include vars.local(divider-width, var(--bal-divider-width));
+  @include vars.local(divider-radius, var(--bal-divider-radius));
+  @include vars.local(divider-space, 0);
 }
 
-$divider-colors: (
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--_divider-radius);
+  height: var(--_divider-width);
+  background-color: var(--_divider-color);
+
+  //
+  // horizontal direction
+  &:not(.is-vertical),
+  &.is-horizontal {
+    flex: 1 0 100%;
+    width: 100%;
+    min-height: var(--_divider-width);
+    height: var(--_divider-width);
+    margin-top: var(--_divider-space);
+    margin-bottom: var(--_divider-space);
+  }
+
+  //
+  // vertical direction
+  &.is-vertical {
+    height: auto;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: var(--_divider-width);
+    margin-left: var(--_divider-space);
+    margin-right: var(--_divider-space);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+// --------------------------------
+$colors: (
   'primary',
   'primary-light',
   'primary-dark',
@@ -38,69 +85,37 @@ $divider-colors: (
   'light-blue'
 );
 
-$divider-spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
-
-/**
-  * Basic Component Styles
-  * --------------------------------
-  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
-  */
-
-@include hybrid.component($divider-host-selector, $divider-css-selector, $divider-use-host) {
-  display: block;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: var(--divider-radius);
-  height: var(--divider-width);
-  background-color: var(--divider-color);
-}
-
-/**
-  * Variants and States
-  * --------------------------------
-  * Define here the variants and states like size or colors for the component.
-  */
-
-@include hybrid.component($divider-host-selector, $divider-css-selector, $divider-use-host) {
-  // colors
-  @each $color in $divider-colors {
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  @each $color in $colors {
     &.is-#{$color} {
-      --divider-color: var(--bal-divider-color-#{$color});
+      --mod-divider-color: var(--bal-divider-color-#{$color});
     }
   }
+}
 
-  //
-  // horizontal direction
-  &:not(.is-vertical),
-  &.is-horizontal {
-    flex: 1 0 100%;
-    width: 100%;
-    min-height: var(--divider-width);
-    height: var(--divider-width);
-    margin-top: var(--divider-space);
-    margin-bottom: var(--divider-space);
+//
+// Spaces
+// --------------------------------
+$spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  @each $space in $spaces {
+    &.has-space-#{$space} {
+      --mod-divider-space: var(--bal-space-#{$space}-device);
+    }
   }
+}
 
-  //
-  // vertical direction
-  &.is-vertical {
-    height: auto;
-    flex-shrink: 0;
-    align-self: stretch;
-    width: var(--divider-width);
-    margin-left: var(--divider-space);
-    margin-right: var(--divider-space);
-  }
+//
+// Dashed
+// --------------------------------
 
-  //
-  // dashed border style
+@include hybrid.component($host-selector, $css-selector, $use-host) {
   &.is-dashed:not(.is-vertical) {
-    // default
     background: repeating-linear-gradient(
       90deg,
-      var(--divider-color) 0,
-      var(--divider-color) 8px,
+      var(--_divider-color) 0,
+      var(--_divider-color) 8px,
       transparent 8px,
       transparent 16px
     );
@@ -109,18 +124,10 @@ $divider-spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3
   &.is-dashed.is-vertical {
     background: repeating-linear-gradient(
       180deg,
-      var(--divider-color) 0,
-      var(--divider-color) 8px,
+      var(--_divider-color) 0,
+      var(--_divider-color) 8px,
       transparent 8px,
       transparent 16px
     );
-  }
-
-  //
-  // spaces
-  @each $space in $divider-spaces {
-    &.has-space-#{$space} {
-      --divider-space: var(--bal-space-#{$space}-device);
-    }
   }
 }

@@ -11,7 +11,7 @@ type InfoQuoteProps = PropsWithChildren
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" name="info" style={{ marginTop: '2px' }}></bal-icon>
+      <bal-icon color="primary" name="information" style={{ marginTop: '2px' }}></bal-icon>
       <span>{children}</span>
     </div>
   )

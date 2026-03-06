@@ -460,14 +460,14 @@ export namespace Components {
     interface BalDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'solid'
-         */
-        "borderStyle": BalProps.BalDividerBorderStyle;
-        /**
-          * Defines the color of the separator line.
           * @default 'grey'
          */
         "color": BalProps.BalDividerColor;
+        /**
+          * Defines if the separator line is dashed or solid. Default is solid.
+          * @default false
+         */
+        "dashed": boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
@@ -2222,14 +2222,14 @@ declare namespace LocalJSX {
     interface BalDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'solid'
-         */
-        "borderStyle"?: BalProps.BalDividerBorderStyle;
-        /**
-          * Defines the color of the separator line.
           * @default 'grey'
          */
         "color"?: BalProps.BalDividerColor;
+        /**
+          * Defines if the separator line is dashed or solid. Default is solid.
+          * @default false
+         */
+        "dashed"?: boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
