@@ -3594,10 +3594,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"end\" | \"start\"",
+          "type": "\"center\" | \"end\" | \"start\" | undefined",
           "complexType": {
             "original": "BalProps.BalContentAlignment",
-            "resolved": "\"\" | \"center\" | \"end\" | \"start\"",
+            "resolved": "\"center\" | \"end\" | \"start\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -3609,17 +3609,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the positioning like center, end or\ndefault to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'start'"
-            }
-          ],
-          "default": "'start'",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -3631,19 +3622,66 @@
             {
               "value": "start",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "direction",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalStackDirection",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "direction",
+          "reflectToAttr": false,
+          "docs": "Defines the direction of the child elements. Default is column.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "column",
+              "type": "string"
+            },
+            {
+              "value": "column-reverse",
+              "type": "string"
+            },
+            {
+              "value": "row",
+              "type": "string"
+            },
+            {
+              "value": "row-reverse",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"vertical\"",
+          "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
-            "original": "BalProps.BalContentLayout",
-            "resolved": "\"\" | \"horizontal\" | \"vertical\"",
+            "original": "BalProps.BalStackLayout",
+            "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -3654,38 +3692,46 @@
           "mutable": false,
           "attr": "layout",
           "reflectToAttr": false,
-          "docs": "Defines the position of the child elements if they\nare showed verticaly or horizontally. Default is verticaly.",
+          "docs": "",
           "docsTags": [
             {
-              "name": "default",
-              "text": "'vertical'"
+              "name": "deprecated",
+              "text": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally."
             }
           ],
-          "default": "'vertical'",
+          "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "horizontal",
               "type": "string"
             },
             {
+              "value": "horizontal-reverse",
+              "type": "string"
+            },
+            {
               "value": "vertical",
               "type": "string"
+            },
+            {
+              "value": "vertical-reverse",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"\" | \"none\" | \"normal\" | \"small\" | \"x-small\" | \"xx-small\" | \"xxx-small\"",
+          "type": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
           "complexType": {
             "original": "BalProps.BalContentSpace",
-            "resolved": "\"\" | \"none\" | \"normal\" | \"small\" | \"x-small\" | \"xx-small\" | \"xxx-small\"",
+            "resolved": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -3693,20 +3739,23 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'xx-small'"
-            }
-          ],
-          "default": "'xx-small'",
+          "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
+            },
+            {
+              "value": "3xs",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
             },
             {
               "value": "none",
@@ -3714,6 +3763,10 @@
             },
             {
               "value": "normal",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -3725,25 +3778,32 @@
               "type": "string"
             },
             {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-small",
               "type": "string"
             },
             {
               "value": "xxx-small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "textAlign",
-          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalContentTextAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -3755,17 +3815,8 @@
           "attr": "text-align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or\ndefault to left.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -3777,9 +3828,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -8631,10 +8685,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+          "type": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackAlignment",
-            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+            "resolved": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8646,17 +8700,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or\ndefault to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "bottom center",
               "type": "string"
@@ -8691,6 +8736,56 @@
             },
             {
               "value": "top start",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "direction",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "complexType": {
+            "original": "BalProps.BalStackDirection",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "direction",
+          "reflectToAttr": false,
+          "docs": "Defines the direction of the child elements. Default is column.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'column'"
+            }
+          ],
+          "default": "'column'",
+          "values": [
+            {
+              "value": "column",
+              "type": "string"
+            },
+            {
+              "value": "column-reverse",
+              "type": "string"
+            },
+            {
+              "value": "row",
+              "type": "string"
+            },
+            {
+              "value": "row-reverse",
               "type": "string"
             }
           ],
@@ -8730,10 +8825,10 @@
         },
         {
           "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+          "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackLayout",
-            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+            "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8744,18 +8839,15 @@
           "mutable": false,
           "attr": "layout",
           "reflectToAttr": false,
-          "docs": "Defines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
+          "docs": "",
           "docsTags": [
             {
-              "name": "default",
-              "text": "'horizontal'"
+              "name": "deprecated",
+              "text": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally."
             }
           ],
-          "default": "'horizontal'",
+          "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "horizontal",
               "type": "string"
@@ -8771,19 +8863,118 @@
             {
               "value": "vertical-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "p",
+          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalStackPadding",
+            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "p",
+          "reflectToAttr": false,
+          "docs": "Defines the horizontal padding left and right of the stack element.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "2xs",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "normal",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "x-small",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
+              "type": "string"
+            },
+            {
+              "value": "xx-small",
+              "type": "string"
+            },
+            {
+              "value": "xxl",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "px",
-          "type": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackPadding",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8795,19 +8986,26 @@
           "attr": "px",
           "reflectToAttr": false,
           "docs": "Defines the horizontal padding left and right of the stack element.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -8823,6 +9021,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -8835,25 +9037,40 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-large",
               "type": "string"
             },
             {
               "value": "xx-small",
               "type": "string"
+            },
+            {
+              "value": "xxl",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "py",
-          "type": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackPadding",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8865,19 +9082,26 @@
           "attr": "py",
           "reflectToAttr": false,
           "docs": "Defines the vertical padding top and bottom of the stack element.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
+            },
+            {
+              "value": "base",
+              "type": "string"
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -8893,6 +9117,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -8905,25 +9133,40 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-large",
               "type": "string"
             },
             {
               "value": "xx-small",
               "type": "string"
+            },
+            {
+              "value": "xxl",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackSpace",
-            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\"",
+            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -8931,27 +9174,34 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is normal.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'normal'"
-            }
-          ],
-          "default": "'normal'",
+          "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
             },
             {
               "value": "auto",
               "type": "string"
             },
             {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -8967,6 +9217,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -8979,25 +9233,40 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-large",
               "type": "string"
             },
             {
               "value": "xx-small",
               "type": "string"
+            },
+            {
+              "value": "xxl",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "spaceColumn",
-          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackSpace",
-            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9012,14 +9281,27 @@
           "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
             },
             {
               "value": "auto",
               "type": "string"
             },
             {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -9035,6 +9317,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -9047,11 +9333,23 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-large",
               "type": "string"
             },
             {
               "value": "xx-small",
+              "type": "string"
+            },
+            {
+              "value": "xxl",
               "type": "string"
             },
             {
@@ -9065,10 +9363,10 @@
         },
         {
           "name": "spaceRow",
-          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "BalProps.BalStackSpace",
-            "resolved": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9083,14 +9381,27 @@
           "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "2xs",
+              "type": "string"
             },
             {
               "value": "auto",
               "type": "string"
             },
             {
+              "value": "base",
+              "type": "string"
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -9106,6 +9417,10 @@
               "type": "string"
             },
             {
+              "value": "sm",
+              "type": "string"
+            },
+            {
               "value": "small",
               "type": "string"
             },
@@ -9118,11 +9433,23 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            },
+            {
               "value": "xx-large",
               "type": "string"
             },
             {
               "value": "xx-small",
+              "type": "string"
+            },
+            {
+              "value": "xxl",
               "type": "string"
             },
             {

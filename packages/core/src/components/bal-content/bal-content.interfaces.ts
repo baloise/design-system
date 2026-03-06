@@ -4,9 +4,21 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalContentLayout = 'horizontal' | 'vertical' | ''
-  export type BalContentDirection = 'column' | 'row' | ''
-  export type BalContentSpace = 'none' | 'xxx-small' | 'xx-small' | 'x-small' | 'small' | 'normal' | ''
-  export type BalContentAlignment = 'start' | 'center' | 'end' | ''
-  export type BalContentTextAlignment = 'left' | 'center' | 'right' | ''
+  export type BalContentLayout = 'horizontal' | 'vertical'
+  export type BalContentDirection = 'column' | 'row'
+  export type BalContentSpace =
+    | 'none'
+    | '3xs'
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'base'
+    // deprecated
+    | 'xxx-small'
+    | 'xx-small'
+    | 'x-small'
+    | 'small'
+    | 'normal'
+  export type BalContentAlignment = 'start' | 'center' | 'end'
+  export type BalContentTextAlignment = 'left' | 'center' | 'right'
 }

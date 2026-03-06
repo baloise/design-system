@@ -13,10 +13,10 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
-        <div class="content">
-          <bal-label>Label</bal-label>
+        <div class="stack-content">
+          <label class="label">Label</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
@@ -26,18 +26,18 @@
       </section>
 
       <!-- Alignment -->
-      <section>
+      <section data-testid="alignment">
         <span>Alignment</span>
-        <div class="content align-center">
-          <bal-label>Center</bal-label>
+        <div class="stack-content align-center">
+          <label class="label">Center</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
             necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
           >
         </div>
-        <div class="content align-end">
-          <bal-label>End</bal-label>
+        <div class="stack-content align-end">
+          <label class="label">End</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
@@ -47,10 +47,10 @@
       </section>
 
       <!-- Direction -->
-      <section>
+      <section data-testid="direction">
         <span>Direction</span>
-        <div class="content as-row">
-          <bal-label>Row</bal-label>
+        <div class="stack-content as-row s-height-4rem">
+          <label class="label s-w-third">Row</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
@@ -58,8 +58,8 @@
           >
         </div>
 
-        <div class="content as-row align-center">
-          <bal-label>Row Center</bal-label>
+        <div class="stack-content as-row align-center s-height-4rem">
+          <label class="label s-w-third">Row Center</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
@@ -67,8 +67,8 @@
           >
         </div>
 
-        <div class="content as-row align-end">
-          <bal-label>Row End</bal-label>
+        <div class="stack-content as-row align-end s-height-4rem">
+          <label class="label s-w-third">Row End</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
@@ -78,26 +78,26 @@
       </section>
 
       <!-- Space -->
-      <section>
+      <section data-testid="space">
         <span>Space</span>
-        <div class="content has-space-x-small">
-          <bal-label>Space X-Small</bal-label>
+        <div class="stack-content has-space-xs">
+          <label class="label">Space X-Small</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
             necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
           >
         </div>
-        <div class="content has-space-small">
-          <bal-label>Space Small</bal-label>
+        <div class="stack-content has-space-sm">
+          <label class="label">Space Small</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
             necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
           >
         </div>
-        <div class="content has-space-normal">
-          <bal-label>Space Normal</bal-label>
+        <div class="stack-content has-space-base">
+          <label class="label">Space Normal</label>
           <bal-text
             >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
             accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit

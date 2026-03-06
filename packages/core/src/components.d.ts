@@ -437,32 +437,25 @@ export namespace Components {
     interface BalContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default 'start'
          */
-        "align": BalProps.BalContentAlignment;
+        "align"?: BalProps.BalContentAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
         /**
-          * @default ''
+          * Defines the direction of the child elements. Default is column.
          */
-        "alignment": BalProps.BalStackAlignment;
+        "direction"?: BalProps.BalStackDirection;
         /**
-          * @default ''
+          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "direction": BalProps.BalStackDirection;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-          * @default 'vertical'
-         */
-        "layout": BalProps.BalContentLayout;
+        "layout"?: BalProps.BalStackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default 'xx-small'
          */
-        "space": BalProps.BalContentSpace;
+        "space"?: BalProps.BalContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
-        "textAlign": BalProps.BalContentTextAlignment;
+        "textAlign"?: BalProps.BalContentTextAlignment;
     }
     interface BalDivider {
         /**
@@ -1060,15 +1053,12 @@ export namespace Components {
     interface BalStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
-        "align": BalProps.BalStackAlignment;
+        "align"?: BalProps.BalStackAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
         /**
-          * @default ''
-         */
-        "alignment": BalProps.BalStackAlignment;
-        /**
-          * @default ''
+          * Defines the direction of the child elements. Default is column.
+          * @default 'column'
          */
         "direction": BalProps.BalStackDirection;
         /**
@@ -1077,25 +1067,25 @@ export namespace Components {
          */
         "fitContent": boolean;
         /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-          * @default 'horizontal'
+          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout": BalProps.BalStackLayout;
+        "layout"?: BalProps.BalStackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
-          * @default ''
          */
-        "px": BalProps.BalStackPadding;
+        "p"?: BalProps.BalStackPadding;
+        /**
+          * Defines the horizontal padding left and right of the stack element.
+         */
+        "px"?: BalProps.BalStackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
-          * @default ''
          */
-        "py": BalProps.BalStackPadding;
+        "py"?: BalProps.BalStackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
-          * @default 'normal'
          */
-        "space": BalProps.BalStackSpace;
+        "space"?: BalProps.BalStackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
@@ -2209,30 +2199,23 @@ declare namespace LocalJSX {
     interface BalContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default 'start'
          */
         "align"?: BalProps.BalContentAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: BalProps.BalStackAlignment;
         /**
-          * @default ''
+          * Defines the direction of the child elements. Default is column.
          */
         "direction"?: BalProps.BalStackDirection;
         /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
-          * @default 'vertical'
+          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: BalProps.BalContentLayout;
+        "layout"?: BalProps.BalStackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default 'xx-small'
          */
         "space"?: BalProps.BalContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
         "textAlign"?: BalProps.BalContentTextAlignment;
     }
@@ -2850,15 +2833,12 @@ declare namespace LocalJSX {
     interface BalStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
         "align"?: BalProps.BalStackAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: BalProps.BalStackAlignment;
         /**
-          * @default ''
+          * Defines the direction of the child elements. Default is column.
+          * @default 'column'
          */
         "direction"?: BalProps.BalStackDirection;
         /**
@@ -2867,23 +2847,23 @@ declare namespace LocalJSX {
          */
         "fitContent"?: boolean;
         /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-          * @default 'horizontal'
+          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "layout"?: BalProps.BalStackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
-          * @default ''
+         */
+        "p"?: BalProps.BalStackPadding;
+        /**
+          * Defines the horizontal padding left and right of the stack element.
          */
         "px"?: BalProps.BalStackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
-          * @default ''
          */
         "py"?: BalProps.BalStackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
-          * @default 'normal'
          */
         "space"?: BalProps.BalStackSpace;
         /**

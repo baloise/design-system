@@ -16,7 +16,7 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     () => `<bal-stack>
-  <bal-icon name="date" size="medium"></bal-icon>
+  <bal-icon name="date" size="md"></bal-icon>
   <bal-content>
     <bal-label>My Item</bal-label>
     <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
@@ -51,9 +51,9 @@ export const Nested = Story({
     () => `
 <div class="stack">
   <div class="bg-purple-3 h-2rem w-full"></div>
-  <div class="stack has-space-x-small">
+  <div class="stack has-space-xs">
     <div class="bg-yellow-3 h-2rem w-full"></div>
-    <div class="stack has-space-large as-row">
+    <div class="stack has-space-lg as-row">
       <div class="bg-red-3 h-2rem w-full"></div>
       <div class="bg-red-3 h-2rem w-full"></div>
       <div class="bg-red-3 h-2rem w-full"></div>
@@ -69,8 +69,8 @@ export const Nested = Story({
 export const Item = Story({
   ...withRender(
     () => `
-<div class="stack as-row bg-purple-light p-normal radius">
-  <bal-icon name="date" size="medium"></bal-icon>
+<div class="stack as-row bg-purple-light p-base radius">
+  <bal-icon name="date" size="md"></bal-icon>
   <div class="stack-content">
     <label class="label">My Item</label>
     <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
@@ -83,14 +83,14 @@ export const Item = Story({
 export const Direction = Story({
   ...withRender(
     () => `
-<div class="stack has-space-large">
+<div class="stack has-space-lg">
   <div class="stack as-row">
-    <div class="bg-red-3 p-normal w-full">Row</div>
-    <div class="bg-red-3 p-normal w-full">Row</div>
-    <div class="bg-red-3 p-normal w-full">Row</div>
+    <div class="bg-red-3 p-base w-full">Row</div>
+    <div class="bg-red-3 p-base w-full">Row</div>
+    <div class="bg-red-3 p-base w-full">Row</div>
   </div>
-  <div class="bg-yellow-3 p-normal w-full">Column</div>
-  <div class="bg-yellow-3 p-normal w-full">Column</div>
+  <div class="bg-yellow-3 p-base w-full">Column</div>
+  <div class="bg-yellow-3 p-base w-full">Column</div>
 </div>`,
   ),
 })
@@ -98,8 +98,8 @@ export const Direction = Story({
 export const Alignment = Story({
   ...withRender(
     () => `
-<div class="stack as-col align-center bg-red-light p-normal radius">
-  <bal-icon name="date" size="medium"></bal-icon>
+<div class="stack as-col align-center bg-red-light p-base radius">
+  <bal-icon name="date" size="md"></bal-icon>
   <div class="stack-content align-center">
     <label class="label">My Item</label>
     <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
@@ -125,14 +125,14 @@ const spaceBox = (size: string) => `
 export const Space = Story({
   ...withRender(
     () => `<div class="stack">
-  ${spaceBox('xx-small')}
-  ${spaceBox('x-small')}
-  ${spaceBox('small')}
-  ${spaceBox('normal')}
-  ${spaceBox('medium')}
-  ${spaceBox('large')}
-  ${spaceBox('x-large')}
-  ${spaceBox('xx-large')}
+  ${spaceBox('2xs')}
+  ${spaceBox('xs')}
+  ${spaceBox('sm')}
+  ${spaceBox('base')}
+  ${spaceBox('md')}
+  ${spaceBox('lg')}
+  ${spaceBox('xl')}
+  ${spaceBox('2xl')}
 </div>`,
   ),
 })
@@ -140,13 +140,13 @@ export const Space = Story({
 export const Padding = Story({
   ...withRender(
     () => `<div>
-  <div class="stack py-medium bg-red-2">
+  <div class="stack py-md bg-red-2">
     <div class="stack-content bg-green-2">
       <label class="label">Padding Horizontal Medium</label>
     </div>
   </div>
   <br/>
-  <div class="stack px-medium bg-red-2">
+  <div class="stack px-md bg-red-2">
     <div class="stack-content bg-green-2">
       <label class="label">Padding Vertical Medium</label>
     </div>
@@ -161,10 +161,10 @@ export const TeaserCards = Story({
   <div class="col is-one-third">
     <article class="card is-purple-light is-fullheight">
       <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
+        <div class="stack align-center has-space-lg">
+          <bal-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></bal-icon>
           <div class="stack-content align-top-center">
-            <h3 class="title">Teaser Card</h3>
+            <h3 class="title is-centered">Teaser Card</h3>
             The item component can easily be combined with the card component to achieve a nice
             teaser layout.
           </div>
@@ -176,10 +176,10 @@ export const TeaserCards = Story({
   <div class="col is-one-third">
     <article class="card is-yellow-light is-fullheight">
       <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
+        <div class="stack align-center has-space-lg">
+          <bal-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></bal-icon>
           <div class="stack-content align-top-center">
-            <h3 class="title">Auto Height</h3>
+            <h3 class="title is-centered">Auto Height</h3>
             The height of the cards adjust to the longest in the row.
           </div>
           <button class="button">Button</button>
@@ -190,10 +190,10 @@ export const TeaserCards = Story({
   <div class="col is-one-third">
       <article class="card is-red-light is-fullheight">
       <div class="card-content">
-        <div class="stack align-center has-space-large">
-          <bal-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>
+        <div class="stack align-center has-space-lg">
+          <bal-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></bal-icon>
           <div class="stack-content align-top-center">
-            <h3 class="title">Item Component</h3>
+            <h3 class="title is-centered">Item Component</h3>
             Item is used to easaly group components and not be concered about the correct spacing.
           </div>
           <button class="button">Button</button>
@@ -208,7 +208,7 @@ export const TeaserCards = Story({
 export const StackedTabs = Story({
   args: {
     align: 'center',
-    space: 'normal',
+    space: 'base',
   },
   ...withRender(
     ({ ...args }) => `<bal-stack ${props(args)}>

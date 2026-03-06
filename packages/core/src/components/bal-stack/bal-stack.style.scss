@@ -7,57 +7,21 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   */
 
 @mixin gap($space, $property: gap) {
-  #{$property}: var(--bal-space-#{$space});
-
-  @include tablet {
-    #{$property}: var(--bal-space-#{$space}-tablet);
-  }
-
-  @include desktop {
-    #{$property}: var(--bal-space-#{$space}-desktop);
-  }
+  #{$property}: var(--bal-space-#{$space}-device);
 }
 
 @mixin p($space) {
-  padding: var(--bal-space-#{$space});
-
-  @include tablet {
-    padding: var(--bal-space-#{$space}-tablet);
-  }
-
-  @include desktop {
-    padding: var(--bal-space-#{$space}-desktop);
-  }
+  padding: var(--bal-space-#{$space}-device);
 }
 
 @mixin px($space) {
-  padding-left: var(--bal-space-#{$space});
-  padding-right: var(--bal-space-#{$space});
-
-  @include tablet {
-    padding-left: var(--bal-space-#{$space}-tablet);
-    padding-right: var(--bal-space-#{$space}-tablet);
-  }
-
-  @include desktop {
-    padding-left: var(--bal-space-#{$space}-desktop);
-    padding-right: var(--bal-space-#{$space}-desktop);
-  }
+  padding-left: var(--bal-space-#{$space}-device);
+  padding-right: var(--bal-space-#{$space}-device);
 }
 
 @mixin py($space) {
-  padding-top: var(--bal-space-#{$space});
-  padding-bottom: var(--bal-space-#{$space});
-
-  @include tablet {
-    padding-top: var(--bal-space-#{$space}-tablet);
-    padding-bottom: var(--bal-space-#{$space}-tablet);
-  }
-
-  @include desktop {
-    padding-top: var(--bal-space-#{$space}-desktop);
-    padding-bottom: var(--bal-space-#{$space}-desktop);
-  }
+  padding-top: var(--bal-space-#{$space}-device);
+  padding-bottom: var(--bal-space-#{$space}-device);
 }
 
 /**
