@@ -10,7 +10,7 @@ packages/assets/maps/svg
 packages/assets/maps/svg.json
 packages/assets/maps/svg.ts
 
-
+packages/tokens/tokens/Base.tokens.json
 packages/core/src/utils/constants/icons.constant.ts
 packages/core/src/components.d.ts
 packages/core/src/tags-all.ts

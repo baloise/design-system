@@ -4,6 +4,7 @@
   "bal-badge",
   "bal-button",
   "bal-card",
+  "bal-check",
   "bal-close",
   "bal-content",
   "bal-divider",
@@ -17,6 +18,7 @@
   "bal-snackbar",
   "bal-spinner",
   "bal-stack",
+  "bal-switch",
   "bal-tag",
   "bal-text",
   "bal-toast"

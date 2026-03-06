@@ -17,7 +17,7 @@ const tag = 'bal-badge'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Badge 👻',
+  title: 'Components/Data Display/Badge',
   args: {
     ...withDefaultContent('42'),
   },

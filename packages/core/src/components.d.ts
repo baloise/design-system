@@ -666,11 +666,6 @@ export namespace Components {
          */
         "pressed": boolean;
         /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
          */
@@ -2440,11 +2435,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "pressed"?: boolean;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly"?: boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true

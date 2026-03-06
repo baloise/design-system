@@ -25,11 +25,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  args: {
-    color: 'blue',
-  },
-})
+export const Basic = Story({})
 
 export const Animated = Story({
   args: {

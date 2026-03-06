@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as TextStories from './bal-text.stories'
 
 <Meta of={TextStories} />
@@ -79,12 +79,14 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## CSS Variables
+
+<TokenOverview component="text" />
+
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-
 
 <Footer />

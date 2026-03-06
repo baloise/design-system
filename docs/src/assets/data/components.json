@@ -3301,6 +3301,157 @@
       "listeners": []
     },
     {
+      "fileName": "bal-check.tsx",
+      "tag": "bal-check",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-check": [
+          "bal-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "checked",
+          "reflectToAttr": true,
+          "docs": "If `true`, the checkbox is selected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true` the component gets a invalid red style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "inverted",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inverted",
+          "reflectToAttr": true,
+          "docs": "If `true`, the checkbox is inverted and works on dark backgrounds.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
+    },
+    {
       "fileName": "bal-close.tsx",
       "tag": "bal-close",
       "overview": "",
@@ -4473,8 +4624,10 @@
         "bal-accordion",
         "bal-badge",
         "bal-button",
+        "bal-check",
         "bal-list-item-accordion-head",
-        "bal-snackbar"
+        "bal-snackbar",
+        "bal-switch"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -4487,10 +4640,16 @@
         "bal-button": [
           "bal-icon"
         ],
+        "bal-check": [
+          "bal-icon"
+        ],
         "bal-list-item-accordion-head": [
           "bal-icon"
         ],
         "bal-snackbar": [
+          "bal-icon"
+        ],
+        "bal-switch": [
           "bal-icon"
         ]
       },
@@ -5114,35 +5273,6 @@
           "attr": "no-wrap",
           "reflectToAttr": true,
           "docs": "When true, the text will be truncated with a text overflow ellipsis instead of wrapping.\nPlease note that text overflow can only occur in block or inline-block level elements,\nas these elements require a width to overflow.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "readonly",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "readonly",
-          "reflectToAttr": true,
-          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
           "docsTags": [
             {
               "name": "default",
@@ -9039,6 +9169,130 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "listeners": []
+    },
+    {
+      "fileName": "bal-switch.tsx",
+      "tag": "bal-switch",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-switch": [
+          "bal-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "checked",
+          "reflectToAttr": true,
+          "docs": "If `true`, the checkbox is selected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true` the component gets a invalid red style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "toggle",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {

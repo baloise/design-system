@@ -17,7 +17,7 @@ const tag = 'bal-tag'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Tag 👻',
+  title: 'Components/Data Display/Tag',
   args: {
     ...withDefaultContent(),
     color: undefined,

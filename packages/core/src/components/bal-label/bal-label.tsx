@@ -79,11 +79,6 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
   @Prop({ reflect: true }) disabled = false
 
   /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
-   */
-  @Prop({ reflect: true }) readonly = false
-
-  /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
@@ -142,16 +137,6 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
 
   render() {
     const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
-    // const disabled = !!this.disabled || !!this.readonly
-    // const danger = !!this.invalid
-    // const success = !!this.valid
-    // const regular = this.weight === 'regular'
-    // const small = this.size === 'small'
-    // const large = this.size === 'large'
-    // const xLarge = this.size === 'x-large'
-    // const xxLarge = this.size === 'xx-large'
-    // const xxxLarge = this.size === 'xxx-large'
-
     const id = this.ariaForm.labelId || this.htmlId
     const htmlFor = this.htmlFor || this.ariaForm.controlId
 
@@ -162,29 +147,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
           'is-pressed': this.pressed,
         }}
       >
-        <label
-          id={id}
-          part="label"
-          htmlFor={htmlFor}
-          class={
-            {
-              // 'label': true,
-              // 'is-multiline': this.multiline,
-              // 'has-no-wrap': this.noWrap,
-              // 'is-disabled': disabled,
-              // 'is-danger': danger,
-              // 'is-success': success,
-              // 'is-regular': regular,
-              // 'is-small': small,
-              // 'is-large': large,
-              // 'is-x-large': xLarge,
-              // 'is-xx-large': xxLarge,
-              // 'is-xxx-large': xxxLarge,
-              // 'is-hovered': this.hovered,
-              // 'is-pressed': this.pressed,
-            }
-          }
-        >
+        <label id={id} part="label" htmlFor={htmlFor}>
           <slot></slot>
           {suffix}
         </label>

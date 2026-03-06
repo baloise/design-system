@@ -17,7 +17,7 @@ const tag = 'bal-text'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Text 👻',
+  title: 'Components/Typography/Text',
   args: {
     ...withDefaultContent(),
   },
@@ -114,17 +114,17 @@ export const Sizes = Story({
     ({ args, content }) => `
 <p class="text is-lead">lead</p>
 <p class="text is-block">block</p>
-<hr />
-<p class="text is-x-small">x-small</p>
-<p class="text is-small">small</p>
-<p class="text is-normal">normal</p>
-<p class="text is-medium">medium</p>
-<p class="text is-large">large</p>
-<p class="text is-x-large">x-large</p>
-<p class="text is-xx-large">xx-large</p>
-<p class="text is-xxx-large">xxx-large</p>
-<p class="text is-xxxx-large">xxxx-large</p>
-<p class="text is-xxxxx-large">xxxxx-large</p>
+<hr class="divider has-space-xl"/>
+<p class="text is-xs">x-small</p>
+<p class="text is-sm">small</p>
+<p class="text is-base">normal</p>
+<p class="text is-md">medium</p>
+<p class="text is-lg">large</p>
+<p class="text is-xl">x-large</p>
+<p class="text is-2xl">xx-large</p>
+<p class="text is-3xl">xxx-large</p>
+<p class="text is-4xl">xxxx-large</p>
+<p class="text is-5xl">xxxxx-large</p>
 `,
   ),
 })
@@ -162,7 +162,7 @@ export const FontWeight = Story({
     () => `
       <p class="text is-bold">Bold Text</p>
       <p class="text is-regular">Regular Text</p>
-      <p class="text is-title is-light">Light Text</p>
+      <p class="text is-subtitle">Light Text</p>
   `,
   ),
 })

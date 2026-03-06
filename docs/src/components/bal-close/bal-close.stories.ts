@@ -8,7 +8,7 @@ const tag = 'bal-close'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Close 👻',
+  title: 'Components/Navigation/Close',
   args: {},
   argTypes: {
     ...withComponentControls({ tag }),
