@@ -63,7 +63,7 @@ Checklist
 | bal-link           | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
 | bal-stack          | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
 | bal-divider        | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-tag            | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-tag            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-button         | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-card           | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-notification   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |

@@ -1,9 +1,4 @@
 @use '../../hybrid' as hybrid;
 @use './bal-tag.style' with (
-  $tag-use-host: true
+  $use-host: true
 );
-
-:host {
-  display: inline-block;
-}
-// @include hybrid.host-base(tag, inline-block);

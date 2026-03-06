@@ -9675,7 +9675,7 @@
           },
           "mutable": false,
           "attr": "closable",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The theme type of the tag.",
           "docsTags": [
             {
@@ -9696,10 +9696,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"danger\" | \"green\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
+          "type": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
           "complexType": {
             "original": "BalProps.BalTagColor",
-            "resolved": "\"\" | \"blue\" | \"danger\" | \"green\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
+            "resolved": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9709,29 +9709,24 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The theme type of the tag.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "blue",
-              "type": "string"
-            },
             {
               "value": "danger",
               "type": "string"
             },
             {
               "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "green-dark",
+              "type": "string"
+            },
+            {
+              "value": "green-light",
               "type": "string"
             },
             {
@@ -9751,7 +9746,23 @@
               "type": "string"
             },
             {
+              "value": "purple-dark",
+              "type": "string"
+            },
+            {
+              "value": "purple-light",
+              "type": "string"
+            },
+            {
               "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "red-dark",
+              "type": "string"
+            },
+            {
+              "value": "red-light",
               "type": "string"
             },
             {
@@ -9765,9 +9776,20 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "value": "yellow-dark",
+              "type": "string"
+            },
+            {
+              "value": "yellow-light",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -9782,7 +9804,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
           "docsTags": [
             {
@@ -9811,37 +9833,8 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Overwrites the default color to invalid style",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "light",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "light",
-          "reflectToAttr": false,
-          "docs": "If `true` a light version of the color is displayed",
           "docsTags": [
             {
               "name": "default",
@@ -9874,7 +9867,7 @@
           },
           "mutable": false,
           "attr": "position",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Choosing left or center the tag is aligned to that side in the bal-card.",
           "docsTags": [
             {
@@ -9900,10 +9893,10 @@
         },
         {
           "name": "shape",
-          "type": "\"\" | \"pill\" | \"square\"",
+          "type": "\"pill\" | \"square\" | undefined",
           "complexType": {
             "original": "BalProps.BalTagShape",
-            "resolved": "\"\" | \"pill\" | \"square\"",
+            "resolved": "\"pill\" | \"square\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9913,19 +9906,10 @@
           },
           "mutable": false,
           "attr": "shape",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape of the tag element like square or pill",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "pill",
               "type": "string"
@@ -9933,19 +9917,22 @@
             {
               "value": "square",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"medium\" | \"small\"",
+          "type": "\"large\" | \"medium\" | \"small\" | undefined",
           "complexType": {
             "original": "BalProps.BalTagSize",
-            "resolved": "\"\" | \"large\" | \"medium\" | \"small\"",
+            "resolved": "\"large\" | \"medium\" | \"small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9955,19 +9942,10 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The size of the tag element",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "large",
               "type": "string"
@@ -9979,9 +9957,12 @@
             {
               "value": "small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -10011,7 +9992,12 @@
       ],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "label",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {

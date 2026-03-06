@@ -11,57 +11,152 @@
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <!-- Basic -->
-        <section class="my-normal">
-          <bal-tag data-testid="basic">Tag</bal-tag>
-        </section>
-        <!-- Colors -->
-        <section class="my-normal" data-testid="colors">
-          <bal-tag>default</bal-tag>
-          <bal-tag color="primary">primary</bal-tag>
-          <bal-tag color="info">info</bal-tag>
-          <bal-tag color="success">success</bal-tag>
-          <bal-tag color="warning">warning</bal-tag>
-          <bal-tag color="danger">danger</bal-tag>
-          <br />
-          <br />
-          <bal-tag light>default</bal-tag>
-          <bal-tag light color="primary">primary</bal-tag>
-          <bal-tag light color="info">info</bal-tag>
-          <bal-tag light color="success">success</bal-tag>
-          <bal-tag light color="warning">warning</bal-tag>
-          <bal-tag light color="danger">danger</bal-tag>
-          <br />
-          <br />
-          <bal-tag>default</bal-tag>
-          <bal-tag closable color="primary">primary</bal-tag>
-          <bal-tag closable color="info">info</bal-tag>
-          <bal-tag closable color="success">success</bal-tag>
-          <bal-tag closable color="warning">warning</bal-tag>
-          <bal-tag closable color="danger">danger</bal-tag>
-          <br />
-          <br />
-          <bal-tag light>default</bal-tag>
-          <bal-tag light closable color="primary">primary</bal-tag>
-          <bal-tag light closable color="info">info</bal-tag>
-          <bal-tag light closable color="success">success</bal-tag>
-          <bal-tag light closable color="warning">warning</bal-tag>
-          <bal-tag light closable color="danger">danger</bal-tag>
-        </section>
-        <!-- Sizes -->
-        <section class="my-normal" data-testid="sizes">
-          <bal-tag size="small">small</bal-tag>
-          <bal-tag size="medium">medium</bal-tag>
-          <bal-tag size="large">large</bal-tag>
-          <br />
-          <br />
-          <bal-tag closable size="small">small</bal-tag>
-          <bal-tag closable size="medium">medium</bal-tag>
-          <bal-tag closable size="large">large</bal-tag>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <bal-tag>Tag</bal-tag>
+      </section>
+
+      <!-- Variants -->
+      <section data-testid="variants">
+        <span>Variants</span>
+        <bal-tag shape="square" color="purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </bal-tag>
+        <bal-tag shape="square" color="purple-light">
+          <bal-icon name="info-circle"></bal-icon>
+          Title
+        </bal-tag>
+        <br />
+        <br />
+        <bal-tag shape="square" small color="purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </bal-tag>
+        <bal-tag shape="square" small color="purple-light">
+          <bal-icon name="info-circle"></bal-icon>
+          <b>Title</b>
+        </bal-tag>
+      </section>
+
+      <!-- Closeable-->
+      <section data-testid="closeable">
+        <span>Closeable</span>
+        <bal-tag closable> Tag </bal-tag>
+      </section>
+
+      <!-- Pill-->
+      <section data-testid="pill">
+        <span>Pill</span>
+        <bal-tag shape="pill" closable> Tag </bal-tag>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <bal-tag size="sm" closable> Small </bal-tag>
+        <bal-tag closable> Normal </bal-tag>
+        <bal-tag size="md" closable> Medium </bal-tag>
+        <bal-tag size="lg" closable> Large </bal-tag>
+
+        <br />
+        <br />
+        <bal-tag shape="pill" size="sm" closable> Small </bal-tag>
+        <bal-tag shape="pill" closable> Normal </bal-tag>
+        <bal-tag shape="pill" size="md" closable> Medium </bal-tag>
+        <bal-tag shape="pill" size="lg" closable> Large </bal-tag>
+      </section>
+
+      <!-- Colors-->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <bal-tag closable>
+          <bal-icon name="info-circle"></bal-icon>
+          base
+        </bal-tag>
+        <bal-tag color="primary" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          primary
+        </bal-tag>
+        <bal-tag color="grey" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          grey
+        </bal-tag>
+        <br />
+        <br />
+        <bal-tag color="info" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          info
+        </bal-tag>
+        <bal-tag color="success" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          success
+        </bal-tag>
+        <bal-tag color="warning" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          warning
+        </bal-tag>
+        <bal-tag color="danger" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          danger
+        </bal-tag>
+        <br />
+        <br />
+        <bal-tag color="purple-dark" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          purple dark
+        </bal-tag>
+        <bal-tag color="red-dark" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          red dark
+        </bal-tag>
+        <bal-tag color="yellow-dark" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          yellow dark
+        </bal-tag>
+        <bal-tag color="green-dark" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          green dark
+        </bal-tag>
+        <br />
+        <br />
+        <bal-tag color="purple" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          purple
+        </bal-tag>
+        <bal-tag color="red" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          red
+        </bal-tag>
+        <bal-tag color="yellow" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          yellow
+        </bal-tag>
+        <bal-tag color="green" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          green
+        </bal-tag>
+        <br />
+        <br />
+        <bal-tag color="purple-light" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          purple light
+        </bal-tag>
+        <bal-tag color="red-light" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          red light
+        </bal-tag>
+        <bal-tag color="yellow-light" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          yellow light
+        </bal-tag>
+        <bal-tag color="green-light" closable>
+          <bal-icon name="info-circle"></bal-icon>
+          green light
+        </bal-tag>
+      </section>
+    </main>
   </body>
 </html>

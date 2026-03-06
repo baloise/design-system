@@ -1138,9 +1138,8 @@ export namespace Components {
         "closable": boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
-        "color": BalProps.BalTagColor;
+        "color"?: BalProps.BalTagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1152,29 +1151,18 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` a light version of the color is displayed
-          * @default false
-         */
-        "light": boolean;
-        /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
           * @default 'left'
          */
         "position": BalProps.BalTagPlacement;
         /**
           * The shape of the tag element like square or pill
-          * @default ''
          */
-        "shape": BalProps.BalTagShape;
+        "shape"?: BalProps.BalTagShape;
         /**
           * The size of the tag element
-          * @default ''
          */
-        "size": BalProps.BalTagSize;
-        /**
-          * @default false
-         */
-        "transparent": boolean;
+        "size"?: BalProps.BalTagSize;
     }
     interface BalTagGroup {
     }
@@ -2923,7 +2911,6 @@ declare namespace LocalJSX {
         "closable"?: boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
         "color"?: BalProps.BalTagColor;
         /**
@@ -2937,11 +2924,6 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` a light version of the color is displayed
-          * @default false
-         */
-        "light"?: boolean;
-        /**
           * Emitted when the input got clicked.
          */
         "onBalCloseClick"?: (event: BalTagCustomEvent<BalEvents.BalTagCloseClickDetail>) => void;
@@ -2952,18 +2934,12 @@ declare namespace LocalJSX {
         "position"?: BalProps.BalTagPlacement;
         /**
           * The shape of the tag element like square or pill
-          * @default ''
          */
         "shape"?: BalProps.BalTagShape;
         /**
           * The size of the tag element
-          * @default ''
          */
         "size"?: BalProps.BalTagSize;
-        /**
-          * @default false
-         */
-        "transparent"?: boolean;
     }
     interface BalTagGroup {
     }
