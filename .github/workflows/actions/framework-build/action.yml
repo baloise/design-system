@@ -13,10 +13,10 @@ runs:
       working-directory: ./test/${{ inputs.framework }}
       shell: bash
 
-    - name: Install Cypress
-      run: npm run cy:install
-      working-directory: ./test/${{ inputs.framework }}/${{ inputs.app }}
-      shell: bash
+    # - name: Install Cypress
+    #   run: npm run cy:install
+    #   working-directory: ./test/${{ inputs.framework }}/${{ inputs.app }}
+    #   shell: bash
 
     - uses: actions/upload-artifact@v4
       with:

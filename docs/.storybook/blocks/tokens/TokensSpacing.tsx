@@ -1,9 +1,9 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensSpacing = ({ overview }): React.ReactElement => {
-  const list = tokens.space
+  const list = tokens['🏷️ Semantic']['↔️ Space']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -15,38 +15,40 @@ export const TokensSpacing = ({ overview }): React.ReactElement => {
       </thead>
 
       {Object.keys(list)
-        .filter(key => list[key].mobile.$value)
+        .filter(key => list[key].Mobile.$value)
         .map(key => {
-          const item = list[key].mobile
-          const itemTablet = list[key].tablet
-          const itemDesktop = list[key].desktop
+          const item = list[key].Mobile
+          const itemTablet = list[key].Tablet
+          const itemDesktop = list[key].Desktop
+
+          const name = item.name.replace('-mobile', '-device')
           return (
             <tbody key={key}>
-              <tr>
-                <td style={{ verticalAlign: 'top' }} className="border-none">
-                  <Clipboard label={item.name} value={`var(--${item.name})`} />
+              <tr className="border-bottom-grey">
+                <td>
+                  <Clipboard label={name} value={`var(--${name})`} />
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="border-none">
+                <td>
                   <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
                     {item.$value} / {itemTablet?.$value || '0rem'} / {itemDesktop?.$value || '0rem'}
                   </p>
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="border-none">
+                <td className="flex justify-content-center">
                   <div
-                    className="radius-normal"
+                    className="radius"
                     style={{
-                      background: 'var(--bal-color-red)',
+                      background: 'var(--bal-color-purple-4)',
                       width: `var(--${item.name})`,
                       height: `var(--${item.name})`,
                     }}
                   ></div>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td colSpan={3} className="border-bottom-grey">
                   <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           )
         })}

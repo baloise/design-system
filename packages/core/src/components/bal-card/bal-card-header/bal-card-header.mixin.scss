@@ -1,0 +1,14 @@
+@mixin stlye() {
+  --bal-heavding-line-height: 32px;
+
+  gap: var(--card-gap);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .title,
+  .subtitle,
+  .heading {
+    margin: 0;
+  }
+}

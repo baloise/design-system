@@ -1,50 +1,216 @@
-import { Component, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import {
+  Element,
+  Component,
+  Method,
+  h,
+  Host,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+  State,
+} from '@stencil/core'
+import { stopEventBubbling } from '../../utils/form-input'
+import { NotificationInterface } from './bal-notification-container'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+
+export interface NotificationComponentInterface extends Omit<NotificationInterface, 'id'> {}
 
 @Component({
   tag: 'bal-notification',
-  styleUrl: 'bal-notification.scss',
+  styleUrl: 'bal-notification.host.scss',
+  shadow: true,
 })
-export class Notification {
+export class Notification implements ComponentInterface, NotificationComponentInterface {
+  @Element() element!: HTMLBalNotificationElement
+  @State() didLoad = false
+
+  timer!: NodeJS.Timeout
+
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color: BalProps.BalNotificationColor = ''
+  @Prop({ reflect: true }) color: BalProps.BalNotificationColor = ''
 
   /**
-   * If `true` the notifications are presented in a light variant
+   * Defines the type of the notification, alert or snackbar.
+   * Alert is used for important messages that require immediate attention,
+   * while snackbar is used for less important messages that can be ignored by the user.
    */
-  @Prop() light = false
+  @Prop({ reflect: true }) type: BalProps.BalNotificationType = ''
+
+  /**
+   * If `true` the notification is visible.
+   */
+  @Prop({ reflect: true }) visible = true
+
+  /**
+   * If `true` the notification can be closed by the user.
+   */
+  @Prop({ reflect: true }) closable = false
 
   /**
    * If `true` there will be no icon provided
    */
-  @Prop() noIcon = false
+  @Prop({ reflect: true }) noIcon = false
+
+  /**
+   * Defines the size of the notification, small, medium or large.
+   */
+  @Prop({ reflect: true, mutable: true }) size: BalProps.BalNotificationSize = ''
+  watchSize(newValue: BalProps.BalNotificationSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
+
+  /**
+   * Defines the heading of the notification.
+   */
+  @Prop() heading = ''
+
+  /**
+   * Defines the message of the notification as html content
+   */
+  @Prop() message = ''
+
+  /**
+   * Defines the icon of the notification, if not provided it will be derived from the color property
+   */
+  @Prop() action = ''
+
+  /**
+   * Defines the icon of the action button.
+   */
+  @Prop() actionIcon = ''
+
+  /**
+   * Specifies where to open the linked document.
+   */
+  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
+
+  /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() actionHref = ''
+
+  /**
+   * The duration of the toast in milliseconds.
+   */
+  @Prop() duration = 0
+
+  /**
+   * @internal Handler for on close event
+   */
+  @Prop() closeHandler: () => void = () => void 0
+
+  /**
+   * @internal Handler for on action event
+   */
+  @Prop() actionHandler: () => void = () => void 0
+
+  /**
+   * Emitted when the close button got clicked.
+   */
+  @Event() balCloseClick!: EventEmitter<BalEvents.BalNotificationCloseClickDetail>
+
+  /**
+   * Emitted when the action button got clicked.
+   */
+  @Event() balActionClick!: EventEmitter<BalEvents.BalNotificationActionClickDetail>
+
+  /**
+   * Emitted when the component has loaded.
+   */
+  @Event() balDidLoad!: EventEmitter<void>
+
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+  }
+
+  componentDidLoad(): void {
+    this.didLoad = true
+    this.balDidLoad.emit()
+  }
+
+  /**
+   * Closes this notification
+   */
+  @Method()
+  async close(): Promise<void> {
+    this.balCloseClick.emit()
+    this.closeHandler()
+  }
 
   render() {
-    const block = BEM.block('notification')
-    const innerEl = block.element('inner')
+    let a11yAttributes = {}
+    if (this.type === 'toast') {
+      a11yAttributes = {
+        'role': 'alert',
+        'aria-live': 'assertive',
+        'aria-atomic': 'true',
+      }
+    } else {
+      a11yAttributes = {
+        'role': 'status',
+        'aria-live': 'polite',
+        'aria-atomic': 'true',
+      }
+    }
 
     return (
       <Host
+        {...a11yAttributes}
         class={{
-          ...block.class(),
-          ...block.modifier(`no-icon`).class(this.noIcon),
-          ...block.modifier(`color-${this.color}${this.light ? '-light' : ''}`).class(!!this.color),
-          ...block.modifier(`color-light`).class(!this.color && this.light),
+          [`is-ready`]: this.didLoad,
+          // [`has-heading`]: !!this.heading,
+          // [`is-visible`]: !!this.visible,
+          // [`is-${this.color}`]: !!this.color,
         }}
-        data-testid="bal-notification-content"
       >
-        {/* <div
-          class={{
-            ...innerEl.class(),
-            ...innerEl.modifier(`color-${this.color}`).class(!!this.color),
-          }}
-          data-testid="bal-notification-content"
-        > */}
-        <slot></slot>
-        {/* </div> */}
+        <section
+          id="notification"
+          class={
+            {
+              // 'has-no-icon': this.noIcon,
+              // 'is-toast': this.type === 'toast',
+              // 'is-snackbar': this.type === 'snackbar',
+              // [`is-${this.size}`]: !!this.size,
+            }
+          }
+          part="section"
+        >
+          {this.closable && (
+            <bal-close
+              part="close"
+              onClick={ev => {
+                stopEventBubbling(ev)
+                this.close()
+              }}
+            ></bal-close>
+          )}
+          {this.heading && <h2 part="heading">{this.heading}</h2>}
+          {this.heading && this.message && <p part="content">{this.message}</p>}
+          {!this.heading && this.message && this.message}
+          <span>
+            <slot></slot>
+          </span>
+          {this.action && (
+            <bal-button
+              color="primary"
+              size="sm"
+              part="button"
+              icon={this.actionIcon}
+              target={this.actionTarget}
+              href={this.actionHref}
+              onClick={ev => {
+                stopEventBubbling(ev)
+                this.balActionClick.emit(ev)
+              }}
+            >
+              {this.action}
+            </bal-button>
+          )}
+        </section>
       </Host>
     )
   }

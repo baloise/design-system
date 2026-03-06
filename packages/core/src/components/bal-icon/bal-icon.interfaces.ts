@@ -25,6 +25,23 @@ namespace BalProps {
     | 'primary-dark'
     | ''
     | string
-  export type BalIconTileColor = 'purple' | 'red' | 'yellow' | 'green' | '' | string
-  export type BalIconSize = 'xsmall' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | ''
+    | undefined
+  export type BalIconTileColor = 'purple' | 'red' | 'yellow' | 'green'
+
+  export type BalIconSize =
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | ''
+    | 'xsmall'
+    | 'x-small'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | undefined
 }

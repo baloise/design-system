@@ -1,5 +1,5 @@
 import { ArgTypes, Canvas, ColorItem, ColorPalette, Markdown, Meta, Subtitle, Title, Unstyled } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as TagStories from './bal-tag.stories'
 
 <Meta of={TagStories} />
@@ -58,16 +58,14 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## CSS Variables
+
+<TokenOverview component="tag" />
+
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-import theming from './theming.md?raw'
-
-<Markdown>{theming}</Markdown>
-
-
 
 <Footer />

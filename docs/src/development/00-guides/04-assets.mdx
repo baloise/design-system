@@ -34,7 +34,7 @@ After installing the copyfiles dependency, it is necessary to define the copy co
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-fonts/assets/* src/assets/fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-assets/src/fonts/* src/assets/fonts",
 }
 ```
 

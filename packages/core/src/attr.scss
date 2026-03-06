@@ -1,0 +1,57 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
+
+@function bool($name) {
+  @return '[#{$name}]:not([#{$name}=' false '])';
+}
+
+/**
+  * Usage examples:
+  *   @include attr.has(attr.bool(checked)) { ... }
+  *   @include attr.has(attr.bool(checked), attr.bool(invalid), attr.bool(inverted)) { ... }
+  *   @include attr.has(attr.val(type, 'button')) { ... }
+  *   @include attr.has(attr.val(type, 'button'), attr.bool(checked)) { ... }
+  */
+@mixin has($name, $value: true, $is-host: true) {
+  @if $is-host== true {
+    $sel: '';
+
+    @if $value == true {
+      $sel: '#{$sel}[#{$name}]:not([#{$name}=' false '])';
+    } @else if $value == false {
+      $sel: '#{$sel}:not([#{$name}])';
+    } @else {
+      $sel: '#{$sel}[#{$name}=' #{$value}']';
+    }
+
+    @if $sel != null and $sel != '' {
+      :host(#{$sel}) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin hasMany($selectors, $is-host: true) {
+  @if $is-host== true {
+    $sel: '';
+
+    @each $name, $value in $selectors {
+      @if $value == true {
+        $sel: '#{$sel}[#{$name}]:not([#{$name}=' false '])';
+      } @else if $value == false {
+        $sel: '#{$sel}:not([#{$name}])';
+      } @else {
+        $sel: '#{$sel}[#{$name}=' #{$value}']';
+      }
+    }
+
+    @if $sel != null and $sel != '' {
+      :host(#{$sel}) {
+        @content;
+      }
+    }
+  }
+}

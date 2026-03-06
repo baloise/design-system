@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@baloise/ds-core": "20.0.0-next.1",
+    "@baloise/ds-assets": "20.0.0-next.1",
     "@baloise/ds-styles": "20.0.0-next.1",
     "@storybook/addon-docs": "^10.0.8",
     "@storybook/addon-links": "^10.0.8",

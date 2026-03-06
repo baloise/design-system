@@ -1,12 +1,12 @@
 import React from 'react'
 import { CssTable } from './helpers/CssTable'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import json from '../../../../packages/styles/docs/layout.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssLayoutContainer = ({}) => {
   return CssTable({
-    tokens: tokens.container.size,
+    tokens: tokens['🏷️ Semantic']['🗃️ Container'].Width,
     css: 'container is',
   })
 }
@@ -22,5 +22,4 @@ export const CssLayoutDisplay = () => (
 export const CssLayoutOverflow = () => <CssUtilitiesTable list={json} search="overflow" />
 export const CssLayoutPosition = () => <CssUtilitiesTable list={json} search="position" />
 export const CssLayoutPlacement = () => <CssUtilitiesTable list={json} search={['top', 'right', 'bottom', 'left']} />
-export const CssLayoutZIndex = () => <CssUtilitiesTable list={json} search="z-index" />
 export const CssLayoutVerticalAlign = () => <CssUtilitiesTable list={json} search="vertical-align" />

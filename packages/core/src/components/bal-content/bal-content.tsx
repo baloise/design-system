@@ -1,5 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-content',
@@ -19,39 +20,62 @@ export class Content implements ComponentInterface, Loggable {
    */
 
   /**
+   * @deprecated Please use direction instead.
    * Defines the position of the child elements if they
-   * are showed verticaly or horizontally. Default is verticaly.
+   * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout: BalProps.BalContentLayout = 'vertical'
+  @Prop() layout?: BalProps.BalStackLayout
+  @Watch('layout')
+  validateLayout(newValue?: BalProps.BalStackLayout) {
+    if (newValue !== undefined) {
+      if (newValue === 'horizontal') {
+        this.direction = 'row'
+      } else if (newValue === 'vertical') {
+        this.direction = 'column'
+      } else if (newValue === 'vertical-reverse') {
+        this.direction = 'column-reverse'
+      } else if (newValue === 'horizontal-reverse') {
+        this.direction = 'row-reverse'
+      }
+    }
+  }
+
+  /**
+   * Defines the direction of the child elements. Default is column.
+   */
+  @Prop() direction?: BalProps.BalStackDirection
 
   /**
    * Defines the positioning like center, end or
    * default to start.
    */
-  @Prop() align: BalProps.BalContentAlignment = 'start'
+  @Prop() align?: BalProps.BalContentAlignment
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
-  @Prop() textAlign: BalProps.BalContentTextAlignment = ''
+  @Prop() textAlign?: BalProps.BalContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop() space: BalProps.BalContentSpace = 'xx-small'
-
-  /**
-   * @internal
-   * Please use layout instead.
-   */
-  @Prop() direction: BalProps.BalStackDirection = ''
+  @Prop({ mutable: true }) space?: BalProps.BalContentSpace
+  @Watch('space')
+  watchSize(newValue?: BalProps.BalContentSpace) {
+    this.space = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * @internal
    * Please use align instead.
    */
-  @Prop() alignment: BalProps.BalStackAlignment = ''
+  @Prop() alignment?: BalProps.BalStackAlignment
+
+  connectedCallback(): void {
+    this.validateLayout(this.layout)
+    this.watchSize(this.space)
+  }
 
   /**
    * RENDER
@@ -59,19 +83,12 @@ export class Content implements ComponentInterface, Loggable {
    */
 
   render() {
-    const direction = !!this.direction
-    const layout = !!this.layout
     const alignment = !!this.alignment
     const align = !!this.align
     const space = !!this.space
 
-    let layoutValue = this.layout
-    if (direction) {
-      layoutValue = this.direction === 'row' ? 'horizontal' : 'vertical'
-    }
-
-    let alignValue = this.align.split(' ').join('-')
-    if (alignment) {
+    let alignValue = this.align?.split(' ').join('-')
+    if (this.alignment) {
       alignValue = this.alignment.split(' ').join('-')
     }
 
@@ -79,9 +96,10 @@ export class Content implements ComponentInterface, Loggable {
       <Host
         class={{
           'stack-content': true,
-          [`is-${layoutValue}`]: layout || direction,
+          'as-row': this.direction === 'row',
+          'as-col': this.direction === 'column',
           [`align-${alignValue}`]: align || alignment,
-          [`text-${this.textAlign}`]: this.textAlign !== '',
+          [`text-${this.textAlign}`]: this.textAlign !== undefined,
           [`has-space-${this.space}`]: space,
         }}
       >

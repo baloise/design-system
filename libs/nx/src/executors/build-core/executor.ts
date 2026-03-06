@@ -16,8 +16,8 @@ import { BuildCoreExecutorSchema } from './schema'
 export default async function runExecutor(options: BuildCoreExecutorSchema) {
   try {
     // pre build tasks
-    await createTestingDocs(options)
-    await createTestingSelectors(options)
+    // await createTestingDocs(options)
+    // await createTestingSelectors(options)
     await createContributorList(options)
 
     // stencil build task
@@ -38,40 +38,6 @@ export default async function runExecutor(options: BuildCoreExecutorSchema) {
 /********************************************************************************
  * pre build task
  ********************************************************************************/
-
-// This script reads the defined filter functions and creates
-// a JSON file with all the meta information for documentation
-// and code generations.
-async function createTestingSelectors(options: BuildCoreExecutorSchema) {
-  const pathToType = join(options.projectRoot, '../testing/src/selectors/index.ts')
-  const typeFileContent = await readFile(pathToType, 'utf-8')
-  const selectors = parseTestingSelectorTypes(typeFileContent)
-  await writeFile(
-    join(options.projectRoot, '../../resources/data/selectors.json'),
-    JSON.stringify(selectors, undefined, 2),
-  )
-}
-
-function parseTestingSelectorTypes(fileContent: string) {
-  const sourceFile = createSourceFile(fileContent)
-  const variableStatementsNode = filterVariableStatement(sourceFile.statements)
-  const properties = variableStatementsNode[0].declarationList.declarations[0].initializer.properties
-  const selectors = {} as any
-  properties.forEach((commandNode: any) => {
-    const commandComment = parseSelectorComment(commandNode, sourceFile)
-    const selectorsList = []
-
-    for (let i = 1; i < commandComment.length; i += 2) {
-      selectorsList.push({
-        selector: commandComment[i + 1],
-        description: commandComment[i],
-      })
-    }
-
-    selectors[commandComment[0]] = { selectors: [...selectorsList] }
-  })
-  return selectors
-}
 
 // This script loads all the contributors from the GitHub API
 // for the documentation
@@ -97,33 +63,33 @@ async function createContributorList(options: BuildCoreExecutorSchema) {
 // This script reads the defined filter functions and creates
 // a JSON file with all the meta information for documentation
 // and code generations.
-async function createTestingDocs(options: BuildCoreExecutorSchema) {
-  const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/bal-**.types.ts')
-  const typeFilePaths = await scan(pathToTypes)
-  const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f, 'utf-8')))
-  const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
-  await writeFile(
-    join(options.projectRoot, '../../resources/data/commands.json'),
-    JSON.stringify(commands, undefined, 2),
-  )
-}
+// async function createTestingDocs(options: BuildCoreExecutorSchema) {
+//   const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/bal-**.types.ts')
+//   const typeFilePaths = await scan(pathToTypes)
+//   const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f, 'utf-8')))
+//   const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
+//   await writeFile(
+//     join(options.projectRoot, '../../resources/data/commands.json'),
+//     JSON.stringify(commands, undefined, 2),
+//   )
+// }
 
-function parseTestingType(fileContent: string, filePath: string) {
-  const sourceFile = createSourceFile(fileContent)
-  const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
-  const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
-  const commands = [] as any[]
-  interfaceDeclarationNode.members.forEach((commandNode: any) => {
-    commands.push({
-      name: commandNode.name.escapedText,
-      description: parseFunctionComment(commandNode, sourceFile),
-      signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
-      path: filePath,
-      component: filePath.split(sep).pop()?.replace('.types.ts', ''),
-    })
-  })
-  return commands
-}
+// function parseTestingType(fileContent: string, filePath: string) {
+//   const sourceFile = createSourceFile(fileContent)
+//   const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
+//   const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
+//   const commands = [] as any[]
+//   interfaceDeclarationNode.members.forEach((commandNode: any) => {
+//     commands.push({
+//       name: commandNode.name.escapedText,
+//       description: parseFunctionComment(commandNode, sourceFile),
+//       signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
+//       path: filePath,
+//       component: filePath.split(sep).pop()?.replace('.types.ts', ''),
+//     })
+//   })
+//   return commands
+// }
 
 /********************************************************************************
  * post build task

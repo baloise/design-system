@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -12,10 +12,12 @@ import { BalElementStateInfo } from '../../utils/element-states'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { i18nBalLabel } from './bal-label.i18n'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-label',
   styleUrl: './bal-label.host.scss',
+  shadow: true,
 })
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
   @Element() el!: HTMLStencilElement
@@ -52,50 +54,39 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    * If `true` the form control needs to be filled. If it is set to
    * `false` an optional label is added to the label..
    */
-  @Prop() required = true
+  @Prop({ reflect: true }) required = true
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop() noWrap = false
-
-  /**
-   * When true, the text will is able to break on multiple lines.
-   */
-  @Prop() multiline = false
+  @Prop({ reflect: true }) noWrap = false
 
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop() valid = false
+  @Prop({ reflect: true }) valid = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid = false
+  @Prop({ reflect: true }) invalid = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
-
-  /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
-   */
-  @Prop() readonly = false
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop() size: BalProps.BalLabelSize = ''
-
-  /**
-   * Defines the font weight of the label.
-   */
-  @Prop() weight: BalProps.BalLabelWeight = 'bold'
+  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalLabelSize
+  @Watch('size')
+  sizeChanged(newValue: BalProps.BalLabelSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+  }
 
   /**
    * @internal
@@ -135,6 +126,10 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
     this.ariaForm = { ...ariaForm }
   }
 
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -142,41 +137,17 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
 
   render() {
     const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
-    const disabled = !!this.disabled || !!this.readonly
-    const danger = !!this.invalid
-    const success = !!this.valid
-    const regular = this.weight === 'regular'
-    const small = this.size === 'small'
-    const large = this.size === 'large'
-    const xLarge = this.size === 'x-large'
-    const xxLarge = this.size === 'xx-large'
-    const xxxLarge = this.size === 'xxx-large'
-
     const id = this.ariaForm.labelId || this.htmlId
     const htmlFor = this.htmlFor || this.ariaForm.controlId
 
     return (
-      <Host>
-        <label
-          id={id}
-          htmlFor={htmlFor}
-          class={{
-            'label': true,
-            'is-multiline': this.multiline,
-            'has-no-wrap': this.noWrap,
-            'is-disabled': disabled,
-            'is-danger': danger,
-            'is-success': success,
-            'is-regular': regular,
-            'is-small': small,
-            'is-large': large,
-            'is-x-large': xLarge,
-            'is-xx-large': xxLarge,
-            'is-xxx-large': xxxLarge,
-            'is-hovered': this.hovered,
-            'is-pressed': this.pressed,
-          }}
-        >
+      <Host
+        class={{
+          'is-hovered': this.hovered,
+          'is-pressed': this.pressed,
+        }}
+      >
+        <label id={id} part="label" htmlFor={htmlFor}>
           <slot></slot>
           {suffix}
         </label>

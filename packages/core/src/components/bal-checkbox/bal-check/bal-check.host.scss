@@ -1,0 +1,206 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../attr' as attr;
+@use '../../../host' as host;
+@use '../../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include vars.base(check);
+
+  @include vars.local(check-color-background, transparent);
+  @include vars.local(check-color-border, var(--bal-color-primary-5));
+  @include vars.local(check-color-icon, var(--bal-color-primary-5));
+
+  @include vars.local(check-color-background-hover, var(--bal-color-grey-2));
+  @include vars.local(check-color-border-hover, var(--bal-color-sky-5));
+  @include vars.local(check-color-icon-hover, var(--bal-color-sky-5));
+
+  @include vars.local(check-color-background-active, var(--bal-color-grey-2));
+  @include vars.local(check-color-border-active, var(--bal-color-primary-6));
+  @include vars.local(check-color-icon-active, var(--bal-color-primary-6));
+
+  @include vars.local(check-border-width, var(--bal-border-width-base));
+  @include vars.local(check-radius, var(--bal-radius-base));
+  @include vars.local(check-size, 1.5rem);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include font-smoothing();
+  @include unselectable();
+
+  box-sizing: border-box !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+
+  width: var(--_check-size);
+  max-width: var(--_check-size);
+  height: var(--_check-size);
+  max-height: var(--_check-size);
+  border-radius: var(--_check-radius);
+  border: var(--_check-border-width) solid var(--_check-color-border);
+  background: var(--_check-color-background);
+
+  bal-icon {
+    display: none;
+    opacity: 0;
+    --icon-color: var(--_check-color-icon);
+  }
+}
+
+@include host.hovered() {
+  bal-icon {
+    --icon-color: var(--_check-color-icon-hover);
+  }
+  border-color: var(--_check-color-border-hover);
+  background: var(--_check-color-background-hover);
+}
+
+@include host.pressed() {
+  bal-icon {
+    --icon-color: var(--_check-color-icon-active);
+  }
+  border-color: var(--_check-color-border-active);
+  background: var(--_check-color-background-active);
+}
+
+@include attr.has(checked) {
+  --mod-check-color-icon: var(--bal-color-white);
+  --mod-check-color-border: var(--bal-color-primary-5);
+  --mod-check-color-background: var(--bal-color-primary-5);
+
+  --mod-check-color-icon-hover: var(--bal-color-white);
+  --mod-check-color-border-hover: var(--bal-color-sky-5);
+  --mod-check-color-background-hover: var(--bal-color-sky-5);
+
+  --mod-check-color-icon-active: var(--bal-color-white);
+  --mod-check-color-border-active: var(--bal-color-primary-6);
+  --mod-check-color-background-active: var(--bal-color-primary-6);
+
+  bal-icon {
+    display: inline-flex;
+    opacity: 1;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+@include attr.has(inverted) {
+  --mod-check-color-icon: transparent;
+  --mod-check-color-border: var(--bal-color-white);
+  --mod-check-color-background: transparent;
+
+  --mod-check-color-icon-hover: transparent;
+  --mod-check-color-border-hover: var(--bal-color-sky-1);
+  --mod-check-color-background-hover: transparent;
+
+  --mod-check-color-icon-active: transparent;
+  --mod-check-color-border-active: var(--bal-color-sky-2);
+  --mod-check-color-background-active: transparent;
+}
+
+@include attr.hasMany(
+  (
+    inverted: true,
+    checked: true,
+  )
+) {
+  --mod-check-color-icon: var(--bal-color-primary-5);
+  --mod-check-color-border: var(--bal-color-white);
+  --mod-check-color-background: var(--bal-color-white);
+
+  --mod-check-color-icon-hover: var(--bal-color-primary-5);
+  --mod-check-color-border-hover: var(--bal-color-sky-1);
+  --mod-check-color-background-hover: var(--bal-color-sky-1);
+
+  --mod-check-color-icon-active: var(--bal-color-primary-5);
+  --mod-check-color-border-active: var(--bal-color-sky-2);
+  --mod-check-color-background-active: var(--bal-color-sky-2);
+}
+
+@include attr.has(invalid) {
+  --mod-check-color-icon: transparent;
+  --mod-check-color-border: var(--bal-divider-color-danger);
+  --mod-check-color-background: transparent;
+
+  --mod-check-color-icon-hover: transparent;
+  --mod-check-color-border-hover: var(--bal-divider-color-danger-dark);
+  --mod-check-color-background-hover: var(--bal-color-grey-2);
+
+  --mod-check-color-icon-active: transparent;
+  --mod-check-color-border-active: var(--bal-divider-color-danger-darker);
+  --mod-check-color-background-active: var(--bal-color-grey-2);
+}
+
+@include attr.hasMany(
+  (
+    invalid: true,
+    checked: true,
+  )
+) {
+  --mod-check-color-icon: var(--bal-color-white);
+  --mod-check-color-border: var(--bal-divider-color-danger);
+  --mod-check-color-background: var(--bal-divider-color-danger);
+
+  --mod-check-color-icon-hover: var(--bal-color-white);
+  --mod-check-color-border-hover: var(--bal-divider-color-danger-dark);
+  --mod-check-color-background-hover: var(--bal-divider-color-danger-dark);
+
+  --mod-check-color-icon-active: var(--bal-color-white);
+  --mod-check-color-border-active: var(--bal-divider-color-danger-darker);
+  --mod-check-color-background-active: var(--bal-divider-color-danger-darker);
+}
+
+@include attr.has(disabled) {
+  cursor: default !important;
+
+  --mod-check-color-icon: transparent;
+  --mod-check-color-border: var(--bal-border-color-disabled);
+  --mod-check-color-background: var(--bal-color-grey-2);
+
+  --mod-check-color-icon-hover: transparent;
+  --mod-check-color-border-hover: var(--bal-border-color-disabled);
+  --mod-check-color-background-hover: var(--bal-color-grey-2);
+
+  --mod-check-color-icon-active: transparent;
+  --mod-check-color-border-active: var(--bal-border-color-disabled);
+  --mod-check-color-background-active: var(--bal-color-grey-2);
+}
+
+@include attr.hasMany(
+  (
+    disabled: true,
+    checked: true,
+  )
+) {
+  --mod-check-color-icon: var(--bal-color-white);
+  --mod-check-color-border: var(--bal-border-color-disabled);
+  --mod-check-color-background: var(--bal-border-color-disabled);
+
+  --mod-check-color-icon-hover: var(--bal-color-white);
+  --mod-check-color-border-hover: var(--bal-border-color-disabled);
+  --mod-check-color-background-hover: var(--bal-border-color-disabled);
+
+  --mod-check-color-icon-active: var(--bal-color-white);
+  --mod-check-color-border-active: var(--bal-border-color-disabled);
+  --mod-check-color-background-active: var(--bal-border-color-disabled);
+}

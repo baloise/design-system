@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalSnackbarColor = BalNotificationColor
+  export type BalSnackbarColor = 'base' | 'info' | 'success' | 'warning' | 'danger' | ''
 }
 
 namespace BalEvents {
@@ -13,9 +13,9 @@ namespace BalEvents {
     target: HTMLBalSnackbarElement
   }
 
-  export type BalSnackbarCloseDetail = string
-  export type BalSnackbarClose = BalSnackbarCustomEvent<BalSnackbarCloseDetail>
+  export type BalSnackbarCloseClickDetail = MouseEvent
+  export type BalSnackbarCloseClick = BalSnackbarCustomEvent<BalSnackbarCloseClickDetail>
 
-  export type BalSnackbarActionDetail = string
-  export type BalSnackbarAction = BalSnackbarCustomEvent<BalSnackbarActionDetail>
+  export type BalSnackbarActionClickDetail = MouseEvent
+  export type BalSnackbarActionClick = BalSnackbarCustomEvent<BalSnackbarActionClickDetail>
 }

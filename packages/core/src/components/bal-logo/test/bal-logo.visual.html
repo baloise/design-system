@@ -4,11 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-      section {
-        padding: 2rem;
-      }
-    </style>
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
@@ -17,17 +15,47 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
+          <span>Basic</span>
           <bal-logo></bal-logo>
         </section>
-        <br />
-        <br />
-        <section data-testid="colors">
-          <bal-logo color="blue"></bal-logo>
+
+        <section data-testid="sizes">
+          <span>Sizes</span>
+          <bal-logo size="small"></bal-logo>
         </section>
-        <br />
-        <br />
-        <section data-testid="inverted" class="bg-primary">
+
+        <section data-testid="inverted" class="s-bg-inverted">
+          <span>Inverted</span>
           <bal-logo color="white"> </bal-logo>
+        </section>
+
+        <section>
+          <span>Animated</span>
+          <bal-logo animated size="small"></bal-logo>
+          <bal-logo animated></bal-logo>
+        </section>
+
+        <hr />
+
+        <section data-testid="basic-baloise">
+          <span>Basic</span>
+          <bal-logo brand="baloise"></bal-logo>
+        </section>
+
+        <section data-testid="sizes-baloise">
+          <span>Sizes</span>
+          <bal-logo brand="baloise" size="small"></bal-logo>
+        </section>
+
+        <section data-testid="inverted-baloise" class="s-bg-inverted">
+          <span>Inverted</span>
+          <bal-logo brand="baloise" color="white"> </bal-logo>
+        </section>
+
+        <section>
+          <span>Animated</span>
+          <bal-logo brand="baloise" animated size="small"></bal-logo>
+          <bal-logo brand="baloise" animated></bal-logo>
         </section>
       </main>
     </bal-doc-app>

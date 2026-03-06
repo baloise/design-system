@@ -20,8 +20,7 @@
           {
             "ignoredFiles": [],
             "ignoredDependencies": [
-              "@baloise/ds-brand-icons",
-              "@baloise/ds-icons",
+              "@baloise/ds-assets",
               "@baloise/ds-tokens",
               "react",
               "react-dom",

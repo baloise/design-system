@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalLogoColor = 'blue' | 'white'
-  export type BalLogoSize = 'small' | ''
-  export type BalLogoBrand = 'group' | 'soba' | 'insurance'
+  export type BalLogoColor = 'primary' | 'white'
+  export type BalLogoSize = 'lg' | 'sm' | '' | 'large' | 'small'
+  export type BalLogoBrand = 'baloise' | 'helvetia' | ''
 }

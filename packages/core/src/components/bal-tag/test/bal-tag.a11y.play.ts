@@ -5,14 +5,33 @@ test.describe('a11y', () => {
     await page.mount('<bal-tag>Tag</bal-tag>')
     await a11y('bal-tag')
   })
+
   test('closable', async ({ page, a11y }) => {
     await page.mount('<bal-tag closable>Tag</bal-tag>')
     await a11y('bal-tag')
   })
 
   test.describe('colors', () => {
-    // TODO: fix a11y issues with some colors 'grey'
-    const colors = ['primary', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow']
+    const colors = [
+      'primary',
+      'grey',
+      'success',
+      'info',
+      'warning',
+      'danger',
+      'purple',
+      'red',
+      'yellow',
+      'green',
+      'purple-dark',
+      'red-dark',
+      'yellow-dark',
+      'green-dark',
+      'purple-light',
+      'red-light',
+      'yellow-light',
+      'green-light',
+    ]
 
     colors.forEach(color => {
       test(color, async ({ page, a11y }) => {

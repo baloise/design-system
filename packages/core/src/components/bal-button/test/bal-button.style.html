@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
@@ -18,6 +16,19 @@
       <section>
         <span>Basic</span>
         <button class="button">Button</button>
+      </section>
+
+      <!-- Badge Style -->
+      <section>
+        <span>Badge</span>
+        <button class="button">
+          <span class="badge">42</span>
+          Button
+        </button>
+        <button class="button">
+          <bal-badge>42</bal-badge>
+          Button
+        </button>
       </section>
 
       <!-- Link -->
@@ -39,7 +50,6 @@
         <button class="button is-primary">Primary</button>
         <button class="button is-secondary">Secondary</button>
         <button class="button is-tertiary">Tertiary</button>
-        <button class="button is-accent">Accent</button>
 
         <br />
         <br />
@@ -91,7 +101,6 @@
         <button class="button is-inverted is-primary">Primary</button>
         <button class="button is-inverted is-secondary">Secondary</button>
         <button class="button is-inverted is-tertiary">Tertiary</button>
-        <button class="button is-inverted is-accent">Accent</button>
 
         <br />
         <br />
@@ -112,8 +121,9 @@
       <!-- Sizes -->
       <section>
         <span>Sizes</span>
-        <button class="button">Normal</button>
         <button class="button is-small">Small</button>
+        <button class="button">Normal</button>
+        <button class="button is-large">Large</button>
       </section>
 
       <!-- Expanded -->
@@ -126,6 +136,11 @@
       <section>
         <span>Long Content</span>
         <button class="button">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
+          aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
+          totam assumenda.
+        </button>
+        <button class="button has-no-wrap">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
           aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
           totam assumenda.
@@ -204,17 +219,17 @@
       <section>
         <span>Loading</span>
         <div class="buttons">
-          <button class="button is-square">
+          <button class="button is-square is-primary">
             <bal-spinner></bal-spinner>
           </button>
-          <button class="button is-secondary is-loading">
+          <button class="button is-loading">
             <bal-spinner></bal-spinner>
             loading...
           </button>
-          <button class="button is-square is-loading">
+          <button class="button is-square is-loading is-primary">
             <bal-spinner variation="circle"></bal-spinner>
           </button>
-          <button class="button is-secondary is-loading">
+          <button class="button is-loading">
             <bal-spinner variation="circle"></bal-spinner>
             loading...
           </button>
@@ -234,6 +249,32 @@
           <button class="button is-secondary is-loading" disabled>
             <bal-spinner variation="circle"></bal-spinner>
             loading...
+          </button>
+        </div>
+        <div class="buttons">
+          <button class="button is-square is-loading is-tertiary-purple">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-tertiary-green">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-tertiary-red">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-tertiary-yellow">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-info">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-success">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-warning">
+            <bal-spinner></bal-spinner>
+          </button>
+          <button class="button is-square is-loading is-danger">
+            <bal-spinner></bal-spinner>
           </button>
         </div>
       </section>

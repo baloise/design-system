@@ -17,7 +17,7 @@ const tag = 'bal-heading'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Heading 👻',
+  title: 'Components/Typography/Heading',
   args: {
     ...withDefaultContent('Heading'),
   },
@@ -82,11 +82,11 @@ export const Levels = Story({
 export const Sizes = Story({
   ...withRender(
     () => `
-<h1 class="title is-1">Size 1 (xxx-large)</h1>
-<h1 class="title is-xx-large">Size 2 (xx-large)</h1>
-<h1 class="title is-level-3">Size 3 (x-large)</h3>
-<h1 class="title is-level-4">Size 4 (large)</h4>
-<h1 class="title is-level-5">Size 5 (normal)</h5>`,
+<h1 class="title is-1">Size 1 (3xl)</h1>
+<h1 class="title is-2xl">Size 2 (2xl)</h1>
+<h1 class="title is-level-3">Size 3 (xl)</h3>
+<h1 class="title is-level-4">Size 4 (lg)</h4>
+<h1 class="title is-level-5">Size 5 (base)</h5>`,
   ),
 })
 

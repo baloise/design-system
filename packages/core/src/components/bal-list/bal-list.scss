@@ -77,14 +77,14 @@
 }
 .bal-list__item__subtitle {
   color: var(--bal-list-item-subtile-color);
-  font-size: var(--bal-text-size-small);
+  font-size: var(--bal-text-size-sm);
   line-height: var(--bal-line-height-small);
   @include tablet {
-    font-size: var(--bal-text-size-small-tablet);
+    font-size: var(--bal-text-size-sm-tablet);
     line-height: var(--bal-line-height-tablet-small);
   }
   @include desktop {
-    font-size: var(--bal-text-size-small-desktop);
+    font-size: var(--bal-text-size-sm-desktop);
     line-height: var(--bal-line-height-desktop-small);
   }
 }

@@ -4,5 +4,31 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalNotificationColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalNotificationType = 'toast' | 'snackbar' | ''
+  export type BalNotificationSize = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
+  export type BalNotificationColor =
+    | 'base'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'outline-base'
+    | 'outline-purple'
+    | 'outline-green'
+    | 'outline-yellow'
+    | 'outline-red'
+    | ''
+}
+
+namespace BalEvents {
+  export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNotificationElement
+  }
+
+  export type BalNotificationCloseClickDetail = MouseEvent
+  export type BalNotificationCloseClick = BalNotificationCustomEvent<BalNotificationCloseClickDetail>
+
+  export type BalNotificationActionClickDetail = MouseEvent
+  export type BalNotificationActionClick = BalNotificationCustomEvent<BalNotificationActionClickDetail>
 }

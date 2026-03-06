@@ -22,3 +22,5 @@ export const CssElevationShadow = () => (
     }}
   />
 )
+
+export const CssElevationZIndex = () => <CssUtilitiesTable list={json} search="z-index" />

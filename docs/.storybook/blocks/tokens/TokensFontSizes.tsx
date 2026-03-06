@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
@@ -32,7 +32,7 @@ export const TokensFontSize = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`font-family-title radius-normal text-primary font-weight-bold flex justify-content-center align-items-center text-${key}`}
+                  className={`font-family-heading radius text-primary font-weight-bold flex justify-content-center align-items-center text-${key}`}
                 >
                   Aa
                 </div>

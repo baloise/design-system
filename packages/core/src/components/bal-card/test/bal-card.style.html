@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/utilities.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
@@ -18,17 +15,74 @@
       <!-- Basic Style -->
       <section>
         <span>Basic</span>
-        <article class="card" aria-labelledby="card-title-1">
+        <article class="card">
           <header class="card-header">
-            <h3 class="title" id="card-title-1">Header</h3>
+            <h3 class="title">Header</h3>
             <bal-close></bal-close>
           </header>
           <div class="card-content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
             odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?
           </div>
-          <footer class="card-footer buttons is-right">
+          <footer class="card-actions">
             <button class="button is-secondary">Button</button>
+            <button class="button">Button</button>
+          </footer>
+        </article>
+      </section>
+
+      <!-- Square -->
+      <section>
+        <span>Square</span>
+        <article class="card is-square">
+          <header class="card-header">
+            <h3 class="title">
+              Header
+              <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+            </h3>
+          </header>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
+            odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?
+          </div>
+          <footer class="card-actions">
+            <button class="button is-link is-flat">
+              <bal-icon name="plus"></bal-icon>
+              Button
+            </button>
+          </footer>
+        </article>
+      </section>
+
+      <!-- Centered -->
+      <section>
+        <span>Centered</span>
+        <article class="card align-center is-yellow-light">
+          <header class="card-header">
+            <h3 class="title">Header</h3>
+          </header>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
+            odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?
+          </div>
+          <footer class="card-actions">
+            <button class="button">Button</button>
+          </footer>
+        </article>
+      </section>
+
+      <!-- Right -->
+      <section>
+        <span>Right</span>
+        <article class="card align-right is-red-light">
+          <header class="card-header">
+            <h3 class="title">Header</h3>
+          </header>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
+            odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?
+          </div>
+          <footer class="card-actions">
             <button class="button">Button</button>
           </footer>
         </article>
@@ -102,78 +156,66 @@
       <!-- Spaces -->
       <section>
         <span>Spaces</span>
-        <article class="card has-space-small" aria-labelledby="card-title-2">
+        <article class="card has-space-sm">
           <header class="card-header">
-            <h3 class="title" id="card-title-2">Small</h3>
+            <h3 class="title">Small</h3>
           </header>
           <div class="card-content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tempora nostrum harum voluptates maiores,
             voluptas neque aliquid at illum rem alias officia perspiciatis odio ut libero atque. Excepturi, corporis
             vitae.
           </div>
-          <footer class="card-footer buttons is-right">
-            <button class="button is-secondary">Button</button>
-            <button class="button">Button</button>
-          </footer>
         </article>
 
-        <article class="card" aria-labelledby="card-title-3">
+        <article class="card">
           <header class="card-header">
-            <h3 class="title" id="card-title-3">Normal</h3>
+            <h3 class="title">Normal</h3>
           </header>
           <div class="card-content">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate aliquam, tenetur enim nostrum
             perspiciatis ullam fuga odio ipsa asperiores facilis quidem nobis eaque neque officia consequatur quia
             commodi quis libero!
           </div>
-          <footer class="card-footer buttons is-right">
-            <button class="button is-secondary">Button</button>
-            <button class="button">Button</button>
-          </footer>
         </article>
 
-        <article class="card has-space-large" aria-labelledby="card-title-4">
+        <article class="card has-space-lg">
           <header class="card-header">
-            <h3 class="title" id="card-title-4">Large</h3>
+            <h3 class="title">Large</h3>
           </header>
           <div class="card-content">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate aliquam, tenetur enim nostrum
             perspiciatis ullam fuga odio ipsa asperiores facilis quidem nobis eaque neque officia consequatur quia
             commodi quis libero!
           </div>
-          <footer class="card-footer buttons is-right">
-            <button class="button is-secondary">Button</button>
-            <button class="button">Button</button>
-          </footer>
         </article>
       </section>
 
-      <!-- Flat -->
+      <!-- Outlined -->
       <section>
-        <span>Flat</span>
-        <article class="card is-flat is-outlined">
+        <span>Outlined</span>
+        <article class="card is-outlined">
           <header class="card-header">
-            <h3 class="title">Flat</h3>
+            <h3 class="title">Outlined</h3>
           </header>
         </article>
-        <article class="card is-flat is-outlined is-grey-light">
+        <article class="card is-outlined is-grey-light">
           <header class="card-header">
-            <h3 class="title">Flat</h3>
+            <h3 class="title">Outlined</h3>
           </header>
         </article>
-        <article class="card is-flat is-outlined is-purple-lighter">
+        <article class="card is-outlined is-purple-lighter">
           <header class="card-header">
-            <h3 class="title">Flat</h3>
+            <h3 class="title">Outlined</h3>
           </header>
         </article>
-        <article class="card is-flat is-outlined is-purple-light">
+        <article class="card is-outlined is-purple-light">
           <header class="card-header">
-            <h3 class="title">Flat</h3>
+            <h3 class="title">Outlined</h3>
           </header>
         </article>
-        <article class="card is-flat is-outlined is-purple">
+        <article class="card is-outlined is-purple">
           <header class="card-header">
-            <h3 class="title">Flat</h3>
+            <h3 class="title">Outlined</h3>
           </header>
         </article>
       </section>
@@ -189,19 +231,19 @@
               <span class="tag is-yellow-light">Tag 2</span>
             </div>
             <div class="buttons flex-1 is-right">
-              <button class="button">Button</button>
-              <button class="button">Button</button>
+              <button class="button is-secondary is-sm">Button</button>
+              <button class="button is-sm">Button</button>
             </div>
           </header>
         </article>
       </section>
 
-      <!-- Teaser Card -->
+      <!-- Fullheight -->
       <section>
-        <span>Teaser Card</span>
+        <span>Fullheight</span>
         <div class="grid">
           <div class="col is-one-third">
-            <article class="card is-purple-lighter is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple-lighter is-fullheight">
               <span class="tag is-purple-dark is-left">BESTSELLER</span>
               <div class="card-content stack align-center">
                 <bal-icon
@@ -209,8 +251,8 @@
                   color="auto"
                   size="xx-large"
                 ></bal-icon>
-                <div class="stack-content align-center">
-                  <h3 class="title" id="teaser-card-title-1 is-centered">Teaser Card</h3>
+                <div class="stack-content align-top-center">
+                  <h3 class="title">Teaser Card</h3>
                   <span class="text is-centered">
                     The item component can easily be combined with the card component to achieve a nice teaser layout.
                   </span>
@@ -220,7 +262,7 @@
             </article>
           </div>
           <div class="col is-one-third">
-            <article class="card is-yellow-lighter is-fullheight" aria-labelledby="teaser-card-title-2">
+            <article class="card is-yellow-lighter is-fullheight">
               <span class="tag is-yellow-dark">BESTSELLER</span>
               <div class="card-content stack align-center">
                 <bal-icon
@@ -228,8 +270,8 @@
                   color="auto"
                   size="xx-large"
                 ></bal-icon>
-                <div class="stack-content align-center">
-                  <h3 class="title is-centered" id="teaser-card-title-2">Auto Height</h3>
+                <div class="stack-content align-top-center">
+                  <h3 class="title is-centered">Auto Height</h3>
                   <span class="text is-centered"> The height of the cards adjust to the longest in the row. </span>
                 </div>
                 <a href="#" class="button">Read more</a>
@@ -237,7 +279,7 @@
             </article>
           </div>
           <div class="col is-one-third">
-            <article class="card is-red-lighter is-fullheight" aria-labelledby="teaser-card-title-3">
+            <article class="card is-red-lighter is-fullheight">
               <span class="tag is-red-dark is-right">BESTSELLER</span>
               <div class="card-content stack align-center">
                 <bal-icon
@@ -245,8 +287,8 @@
                   color="auto"
                   size="xx-large"
                 ></bal-icon>
-                <div class="stack-content align-center">
-                  <h3 class="title is-centered" id="teaser-card-title-3">Item Component</h3>
+                <div class="stack-content align-top-center">
+                  <h3 class="title is-centered">Item Component</h3>
                   <span class="text is-centered">
                     Item is used to easaly group components and not be concered about the correct spacing.
                   </span>
@@ -258,20 +300,237 @@
         </div>
       </section>
 
+      <!-- Image Teaser Flat -->
+      <section>
+        <span>Image Teaser Flat</span>
+        <div class="grid">
+          <div class="col is-one-third">
+            <article class="card is-dense has-space-sm">
+              <picture>
+                <img src="/assets/images/placeholder.png" alt="placeholder" />
+              </picture>
+              <div class="card-content">
+                <h3>
+                  <span class="title"> Dense Card</span>
+                  <span class="subtitle">Subtitle</span>
+                </h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                  reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis
+                  explicabo iusto. Distinctio, ab?
+                </p>
+              </div>
+              <footer class="card-actions">
+                <button class="button is-link is-flat">
+                  <bal-icon name="plus"></bal-icon>
+                  Button
+                </button>
+              </footer>
+            </article>
+          </div>
+          <div class="col is-one-third">
+            <article class="card is-purple-light has-space-sm">
+              <picture>
+                <img src="/assets/images/placeholder.png" alt="placeholder" />
+              </picture>
+              <div class="card-content">
+                <h3>
+                  <span class="title"> Default Card</span>
+                  <span class="subtitle">Subtitle</span>
+                </h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                  reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis
+                  explicabo iusto. Distinctio, ab?
+                </p>
+              </div>
+              <footer class="card-actions">
+                <button class="button is-link is-flat">
+                  <bal-icon name="plus"></bal-icon>
+                  Button
+                </button>
+              </footer>
+            </article>
+          </div>
+          <div class="col is-one-third">
+            <article class="image-teaser">
+              <picture>
+                <img src="/assets/images/placeholder.png" alt="placeholder" />
+              </picture>
+              <div class="card has-space-sm">
+                <div class="card-content">
+                  <h3>
+                    <span class="title"> Image Teaser Card</span>
+                    <span class="subtitle">Subtitle</span>
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                    reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis
+                    explicabo iusto. Distinctio, ab?
+                  </p>
+                </div>
+                <footer class="card-actions">
+                  <button class="button is-link is-flat">
+                    <bal-icon name="plus"></bal-icon>
+                    Button
+                  </button>
+                </footer>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Teaser -->
+      <section>
+        <span>Image Teaser Wide</span>
+        <article class="image-teaser is-wide">
+          <a class="image-link" href="/components/bal-card/test/bal-card.style.html" aria-hidden="true" tabindex="-1">
+            <picture>
+              <img src="/assets/images/placeholder.png" alt="placeholder" />
+            </picture>
+          </a>
+          <div class="card">
+            <div class="card-content">
+              <h3>
+                <span class="title">Image Teaser Default</span>
+                <span class="text is-5">Full width on mobile</span>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis explicabo
+                iusto. Distinctio, ab?
+              </p>
+            </div>
+            <footer class="card-actions">
+              <button class="button">Button</button>
+            </footer>
+          </div>
+        </article>
+
+        <hr class="divider has-space-md" />
+
+        <article class="image-teaser is-wide is-center">
+          <picture>
+            <img src="/assets/images/placeholder.png" alt="placeholder" />
+          </picture>
+          <div class="card">
+            <div class="card-content">
+              <h3>
+                <span class="title">Image Teaser Center</span>
+                <span class="text is-5">Full width on mobile</span>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis explicabo
+                iusto. Distinctio, ab?
+              </p>
+            </div>
+            <footer class="card-actions">
+              <button class="button">Button</button>
+            </footer>
+          </div>
+        </article>
+
+        <hr class="divider has-space-md" />
+
+        <article class="image-teaser is-wide is-right">
+          <picture>
+            <img src="/assets/images/placeholder.png" alt="placeholder" />
+          </picture>
+          <div class="card">
+            <div class="card-content">
+              <h3>
+                <span class="title">Image Teaser Right</span>
+                <span class="text is-5">Full width on mobile</span>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis explicabo
+                iusto. Distinctio, ab?
+              </p>
+            </div>
+            <footer class="card-actions">
+              <button class="button">Button</button>
+            </footer>
+          </div>
+        </article>
+      </section>
+
+      <!-- Clickable Cards -->
+      <section>
+        <span>Clickable Cards</span>
+        <div class="grid">
+          <div class="col is-one-third">
+            <a class="card align-center" href="/components/bal-card/test/bal-card.style.html">
+              <div class="card-content">
+                <div class="stack gap-none align-center">
+                  <img style="max-width: 128px" src="/assets/images/brand-icon-purple.svg" />
+                  <h3 class="title">Clickable Card</h3>
+                  <p class="text">Description</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col is-one-third">
+            <a class="card is-purple-light" href="/components/bal-card/test/bal-card.style.html">
+              <div class="card-content">
+                <div class="stack align-left">
+                  <img style="max-width: 88px" src="/assets/images/brand-icon-purple.svg" />
+                  <div class="stack as-row">
+                    <h5 class="title">Clickable Card</h5>
+                    <bal-icon name="nav-go-right"></bal-icon>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col is-one-third">
+            <div class="image-teaser">
+              <a
+                class="image-link"
+                href="/components/bal-card/test/bal-card.style.html"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <picture>
+                  <img src="/assets/images/placeholder.png" alt="placeholder" />
+                </picture>
+              </a>
+              <div class="card has-space-sm">
+                <div class="card-content">
+                  <h3>
+                    <span class="title"> Dense Card</span>
+                    <span class="subtitle">Subtitle</span>
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
+                    reprehenderit sit ad cum deleniti sequi delectus recusandae temporibus minima impedit officiis
+                    explicabo iusto. Distinctio, ab?
+                  </p>
+                </div>
+                <footer class="card-actions">
+                  <a class="button" href="/components/bal-card/test/bal-card.style.html">Button</a>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Dashboard -->
       <section>
         <span>Dashboard</span>
         <div class="grid is-multiline">
           <div class="col is-half">
             <button class="card align-center is-fullheight">
-              <img
-                class="mb-normal"
-                style="max-width: 88px"
-                src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg"
-              />
-              <header class="card-header">
-                <h3 class="title">Clickable Card</h3>
-              </header>
+              <span class="badge">7</span>
+              <div class="card-content">
+                <div class="stack align-center">
+                  <img style="max-width: 88px" src="/assets/images/brand-icon-purple.svg" />
+                  <h3 class="title">Clickable Card</h3>
+                </div>
+              </div>
             </button>
           </div>
           <div class="col is-half">
@@ -347,8 +606,8 @@
         <span>Tag Position</span>
         <div class="grid is-multiline">
           <div class="col is-one-third">
-            <article class="card is-purple-lighter is-fullheight" aria-labelledby="teaser-card-title-1">
-              <span class="tag is-small is-purple-dark is-right">Small</span>
+            <article class="card is-purple-lighter is-fullheight">
+              <span class="tag is-sm is-purple-dark is-right">Small</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
                 cumque quis, maxime provident omnis architecto ullam culpa, officia, accusantium autem! Eaque
@@ -357,7 +616,7 @@
             </article>
           </div>
           <div class="col is-one-third">
-            <article class="card is-purple-lighter is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple-lighter is-fullheight">
               <span class="tag is-purple-dark is-right">Normal</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
@@ -367,8 +626,8 @@
             </article>
           </div>
           <div class="col is-one-third">
-            <article class="card is-purple-lighter is-fullheight" aria-labelledby="teaser-card-title-1">
-              <span class="tag is-large is-purple-dark is-right">Large</span>
+            <article class="card is-purple-lighter is-fullheight">
+              <span class="tag is-lg is-purple-dark is-right">Large</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
                 cumque quis, maxime provident omnis architecto ullam culpa, officia, accusantium autem! Eaque
@@ -378,7 +637,7 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple-light has-space-small is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple-light has-space-small is-fullheight">
               <span class="tag is-purple-dark is-right">Small</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
@@ -389,7 +648,7 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple-light is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple-light is-fullheight">
               <span class="tag is-purple-dark is-right">Normal</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
@@ -400,7 +659,7 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple-light has-space-large is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple-light has-space-large is-fullheight">
               <span class="tag is-purple-dark is-right">Large</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
@@ -411,8 +670,8 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple has-space-small is-fullheight" aria-labelledby="teaser-card-title-1">
-              <span class="tag is-small is-purple-dark">Small</span>
+            <article class="card is-purple has-space-small is-fullheight">
+              <span class="tag is-sm is-purple-dark">Small</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
                 cumque quis, maxime provident omnis architecto ullam culpa, officia, accusantium autem! Eaque
@@ -422,7 +681,7 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple is-fullheight" aria-labelledby="teaser-card-title-1">
+            <article class="card is-purple is-fullheight">
               <span class="tag is-purple-dark">Normal</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
@@ -433,8 +692,8 @@
           </div>
 
           <div class="col is-one-third">
-            <article class="card is-purple has-space-large is-fullheight" aria-labelledby="teaser-card-title-1">
-              <span class="tag is-large is-purple-dark">Large</span>
+            <article class="card is-purple has-space-large is-fullheight">
+              <span class="tag is-lg is-purple-dark">Large</span>
               <div class="card-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum mollitia quas nulla vero doloremque
                 cumque quis, maxime provident omnis architecto ullam culpa, officia, accusantium autem! Eaque

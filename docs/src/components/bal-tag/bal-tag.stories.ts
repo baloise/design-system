@@ -17,7 +17,7 @@ const tag = 'bal-tag'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Tag 👻',
+  title: 'Components/Data Display/Tag',
   args: {
     ...withDefaultContent(),
     color: undefined,
@@ -45,7 +45,7 @@ const meta: Meta<Args> = {
   }${content}${
     args.closable
       ? `
-  <button class="close" aria-label="remove tag"></button>`
+  <bal-close></bal-close>`
       : ''
   }
 </span>
@@ -95,6 +95,13 @@ export const Colors = Story({
   <span class="tag is-success">Success</span>
   <span class="tag is-warning">Warning</span>
   <span class="tag is-danger">Danger</span>
+</div>
+<br>
+<div class="tags">
+  <span class="tag is-purple-dark">Purple</span>
+  <span class="tag is-red-dark">Red</span>
+  <span class="tag is-yellow-dark">Yellow</span>
+  <span class="tag is-green-dark">Green</span>
 </div>
 <br>
 <div class="tags">

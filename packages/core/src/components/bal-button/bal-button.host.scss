@@ -1,24 +1,13 @@
-$has-spacing: false;
-
-@forward '../../../../styles/sass/normalize';
-@forward './bal-button.core';
-@forward '../bal-link/bal-link.core';
-
-/**
-  * Host Style
-  */
+@use '../../hybrid' as hybrid;
+@use './bal-button.style' with (
+  $use-host: true
+);
 
 :host {
-  --badge-position: absolute;
-  --badge-position-top: -0.5rem;
-  --badge-position-right: -0.5rem;
-
   display: inline-block;
-  position: static;
-  margin: 0;
-  padding: 0;
+  width: var(--bal-button-width, fit-content);
 }
 
-:host(.is-fullwidth) {
-  width: 100%;
+:host #button {
+  margin: 0 !important;
 }

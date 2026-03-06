@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   BalConfigObserver,
   BalConfigState,
@@ -9,6 +9,7 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { i18nBalClose } from './bal-close.i18n'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-close',
@@ -24,12 +25,16 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop() size: BalProps.BalCloseSize = ''
+  @Prop({ mutable: true, reflect: true }) size: BalProps.BalCloseSize = undefined
+  @Watch('size')
+  validateSize(newValue: BalProps.BalCloseSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+  }
 
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * @internal define config for the component
@@ -41,24 +46,16 @@ export class Close implements ComponentInterface, BalConfigObserver {
     this.region = state.region
   }
 
+  connectedCallback(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+  }
+
   render() {
     const label = i18nBalClose[this.language].close
 
     return (
       <Host>
-        <button
-          type="button"
-          aria-label={label}
-          title={label}
-          tabindex="0"
-          class={{
-            'close': true,
-            'is-small': this.size === 'small',
-            'is-medium': this.size === 'medium',
-            'is-inverted': this.inverted,
-          }}
-          data-testid="bal-close"
-        ></button>
+        <button id="close" part="button" type="button" aria-label={label} title={label} tabindex="0"></button>
       </Host>
     )
   }

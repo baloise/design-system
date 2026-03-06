@@ -17,7 +17,7 @@ const tag = 'bal-badge'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Badge 👻',
+  title: 'Components/Data Display/Badge',
   args: {
     ...withDefaultContent('42'),
   },
@@ -26,18 +26,9 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
-<span ${cssClasses(
-      {
-        ...css('color', (color: string) => `is-${color}`),
-        ...css('size', (size: string) => `is-${size}`),
-      },
-      args,
-      'badge',
-    )}>
-  ${args.icon ? `<bal-icon name="${args.icon}"></bal-icon>` : ''}${content}
-</span>
-`,
+    ({ content, ...args }) => `<bal-badge ${props(args)}>
+  ${content}
+</bal-badge>`,
   ),
 }
 
@@ -52,14 +43,6 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const WebComponentBasic = Story({
-  ...withRender(
-    ({ content, ...args }) => `<bal-badge ${props(args)}>
-  ${content}
-</bal-badge>`,
-  ),
-})
-
 export const WithIcon = Story({
   args: {
     color: 'success',
@@ -71,11 +54,14 @@ export const WithIcon = Story({
 export const Colors = Story({
   ...withRender(
     () => `<div class="stack">
-  <span class="badge">D</span>
-  <span class="badge is-green">G</span>
-  <span class="badge is-yellow">Y</span>
-  <span class="badge is-purple">P</span>
-  <span class="badge is-grey">G</span>
+  <bal-badge color="red">R</bal-badge>
+  <bal-badge color="green">G</bal-badge>
+  <bal-badge color="yellow">Y</bal-badge>
+  <bal-badge color="purple">P</bal-badge>
+  <bal-badge color="grey">G</bal-badge>
+  <bal-badge color="success">S</bal-badge>
+  <bal-badge color="warning">W</bal-badge>
+  <bal-badge color="danger">D</bal-badge>
 </div>`,
   ),
 })
@@ -83,9 +69,9 @@ export const Colors = Story({
 export const Sizes = Story({
   ...withRender(
     () => `<div class="stack">
-  <span class="badge is-small">S</span>
-  <span class="badge">D</span>
-  <span class="badge is-large">L</span>
+  <bal-badge size="sm">S</bal-badge>
+  <bal-badge size="md">M</bal-badge>
+  <bal-badge size="lg">L</bal-badge>
 </div>`,
   ),
 })
@@ -98,9 +84,7 @@ export const CardBadge = Story({
   ...withRender(
     ({ ...args }) => `
 <article class="card" aria-labelledby="card-title-1">
-  <span class="badge is-green">
-    <bal-icon name="check"></bal-icon>
-  </span>
+  <bal-badge color="green" icon="check"></bal-badge>
   <header class="card-header">
     <h3 class="title" id="card-title-1">Header</h3>
   </header>
@@ -120,7 +104,7 @@ export const ButtonBadge = Story({
   ...withRender(
     ({ ...args }) => `
 <button class="button">
-  <span class="badge">42</span>
+  <bal-badge>42</bal-badge>
   Button
 </button>`,
   ),

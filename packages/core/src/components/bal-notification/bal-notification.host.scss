@@ -1,0 +1,30 @@
+@use '../../hybrid' as hybrid;
+@use '../../host' as host;
+@use './bal-notification.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+}
+
+// When the `alert` attribute is set, only reduce content font size.
+// Uses the CSS variable consumed by content rules in style.scss.
+@include host.hasAttr(alert, heading) {
+  --mod-notification-content-size: var(--bal-text-size-sm-device);
+  font-size: var(--_notification-content-size);
+}
+
+:host {
+  opacity: var(--_notification-animation-start-opacity);
+  transform: var(--_notification-animation-start-transform);
+}
+
+:host(.is-ready) {
+  transition: var(--_notification-animation-transition);
+}
+
+:host([visible]) {
+  opacity: var(--_notification-animation-end-opacity);
+  transform: var(--_notification-animation-end-transform);
+}

@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as SpinnerStories from './bal-spinner.stories'
 
 <Meta of={SpinnerStories} />
@@ -33,16 +33,14 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## CSS Variables
+
+<TokenOverview component="spinner" />
+
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-import theming from './theming.md?raw'
-
-<Markdown>{theming}</Markdown>
-
-
 
 <Footer />

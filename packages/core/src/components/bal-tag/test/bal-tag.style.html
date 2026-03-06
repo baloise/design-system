@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
@@ -15,187 +13,197 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <span class="tag">Tag</span>
       </section>
 
       <!-- Variants -->
-      <section>
+      <section data-testid="variants">
         <span>Variants</span>
         <span class="tag is-square is-purple-light">
           Title
           <span class="text is-regular is-primary-light">Subtitle</span>
         </span>
         <span class="tag is-square is-purple-light">
-          <bal-icon name="check" size="small"></bal-icon>
+          <bal-icon name="info-circle"></bal-icon>
           Title
         </span>
         <br />
         <br />
-        <span class="tag is-square is-small is-purple-light">
+        <span class="tag is-square is-sm is-purple-light">
           Title
           <span class="text is-regular is-primary-light">Subtitle</span>
         </span>
-        <span class="tag is-square is-small is-purple-light">
-          <bal-icon name="check" size="small"></bal-icon>
+        <span class="tag is-square is-sm is-purple-light">
+          <bal-icon name="info-circle"></bal-icon>
           <b>Title</b>
         </span>
       </section>
 
       <!-- Closeable-->
-      <section>
+      <section data-testid="closeable">
         <span>Closeable</span>
         <span class="tag">
           Tag
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
       </section>
 
       <!-- Pill-->
-      <section>
+      <section data-testid="pill">
         <span>Pill</span>
         <span class="tag is-pill">
           Tag
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
-        <span class="tag is-small">
+        <span class="tag is-sm">
           Small
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag">
           Normal
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
-        <span class="tag is-medium">
+        <span class="tag is-md">
           Medium
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
-        <span class="tag is-large">
+        <span class="tag is-lg">
           Large
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
 
         <br />
         <br />
-        <span class="tag is-pill is-small">
+        <span class="tag is-pill is-sm">
           Small
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-pill">
           Normal
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
-        <span class="tag is-pill is-medium">
+        <span class="tag is-pill is-md">
           Medium
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
-        <span class="tag is-pill is-large">
+        <span class="tag is-pill is-lg">
           Large
-          <button class="close" aria-label="remove tag"></button>
-        </span>
-      </section>
-
-      <!-- Closeable-->
-      <section>
-        <span>Closeable</span>
-        <span class="tag">
-          Tag
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
       </section>
 
       <!-- Colors-->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <span class="tag">
+          <bal-icon name="info-circle"></bal-icon>
           base
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-primary">
+          <bal-icon name="info-circle"></bal-icon>
           primary
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-grey">
+          <bal-icon name="info-circle"></bal-icon>
           grey
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <br />
         <br />
         <span class="tag is-info">
+          <bal-icon name="info-circle"></bal-icon>
           info
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-success">
+          <bal-icon name="info-circle"></bal-icon>
           success
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-warning">
+          <bal-icon name="info-circle"></bal-icon>
           warning
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-danger">
+          <bal-icon name="info-circle"></bal-icon>
           danger
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <br />
         <br />
         <span class="tag is-purple-dark">
+          <bal-icon name="info-circle"></bal-icon>
           purple dark
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-red-dark">
+          <bal-icon name="info-circle"></bal-icon>
           red dark
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-yellow-dark">
+          <bal-icon name="info-circle"></bal-icon>
           yellow dark
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-green-dark">
+          <bal-icon name="info-circle"></bal-icon>
           green dark
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <br />
         <br />
         <span class="tag is-purple">
+          <bal-icon name="info-circle"></bal-icon>
           purple
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-red">
+          <bal-icon name="info-circle"></bal-icon>
           red
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-yellow">
+          <bal-icon name="info-circle"></bal-icon>
           yellow
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-green">
+          <bal-icon name="info-circle"></bal-icon>
           green
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <br />
         <br />
         <span class="tag is-purple-light">
+          <bal-icon name="info-circle"></bal-icon>
           purple light
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-red-light">
+          <bal-icon name="info-circle"></bal-icon>
           red light
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-yellow-light">
+          <bal-icon name="info-circle"></bal-icon>
           yellow light
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
         <span class="tag is-green-light">
+          <bal-icon name="info-circle"></bal-icon>
           green light
-          <button class="close" aria-label="remove tag"></button>
+          <bal-close></bal-close>
         </span>
       </section>
     </main>

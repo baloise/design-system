@@ -1,0 +1,89 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include vars.base(spinner);
+  @include vars.local(spinner-size, var(--bal-spinner-size));
+
+  @include vars.local(spinner-circle-size, var(--bal-spinner-circle-size));
+  @include vars.local(spinner-circle-border-width, var(--bal-spinner-circle-border-width));
+  @include vars.local(spinner-circle-color-border-background, var(--bal-spinner-circle-color-background));
+  @include vars.local(spinner-circle-color-border-progress, var(--bal-spinner-circle-color-progress));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable();
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+
+  svg {
+    transform: unset !important;
+  }
+}
+
+:host(:not([variation='circle'])) {
+  width: var(--_spinner-size);
+}
+
+:host([variation='circle']) #inner {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: var(--_spinner-circle-border-width);
+  border-color: var(--_spinner-circle-color-border-background);
+  border-top-color: var(--_spinner-circle-color-border-progress);
+  width: var(--_spinner-circle-size);
+  height: var(--_spinner-circle-size);
+}
+
+:host(.is-animated) #inner {
+  animation: spinner 1.6s linear infinite;
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+:host([size='sm']) {
+  --mod-spinner-size: 2rem;
+  --mod-spinner-circle-size: 1.125rem;
+  --mod-spinner-circle-border-width: 0.2rem;
+}
+
+:host([color='white']) {
+  --mod-spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
+  --mod-spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
+}
+
+/**
+  * Animations
+  * --------------------------------
+  * Define here the animations for the component.
+  */
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

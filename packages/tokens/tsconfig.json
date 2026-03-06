@@ -1,14 +1,18 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": true,
-    "moduleResolution": "bundler"
+    "target": "ES2020",
+
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+
+    "outDir": "dist/out-tsc",
+    "rootDir": "src",
+
+    "strict": true,
+    "noImplicitAny": false,
+
+    "types": ["node"],
+    "skipLibCheck": true
   },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    }
-  ]
+  "include": ["src"]
 }

@@ -37,14 +37,14 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--bal-body-font-family);
+  font-family: var(--bal-body-family);
 }
 
 body {
-  color: var(--bal-body-color-text);
-  font-size: var(--bal-body-text-size);
-  font-weight: var(--bal-body-font-weight);
-  line-height: var(--bal-body-text-line-height);
+  color: var(--bal-body-color);
+  font-size: var(--bal-body-size);
+  font-weight: var(--bal-body-weight);
+  line-height: var(--bal-body-line-height);
   -webkit-overflow-scrolling: auto;
 }
 
@@ -52,7 +52,7 @@ button {
   color: inherit;
 }
 
-p:not(.text) {
+p:not(.text, .title, .subtitle, .heading) {
   hyphens: auto;
   margin: 0;
   overflow-wrap: break-word;
@@ -61,13 +61,10 @@ p:not(.text) {
   strong {
     color: currentColor;
   }
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-normal);
-  }
 }
 
 small {
-  font-size: var(--bal-text-size-small);
+  font-size: var(--bal-text-size-sm);
 }
 
 span {
@@ -78,7 +75,7 @@ span {
 b,
 strong {
   color: inherit;
-  font-weight: var(--bal-font-weight-bold);
+  font-weight: var(--bal-text-weight-bold);
 }
 
 img {

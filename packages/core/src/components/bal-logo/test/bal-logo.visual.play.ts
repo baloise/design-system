@@ -1,7 +1,7 @@
-import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-logo'
-const VARIANTS = ['basic', 'colors', 'inverted']
+const VARIANTS = ['basic', 'sizes', 'inverted', 'basic-baloise', 'sizes-baloise', 'inverted-baloise']
 
 const image = screenshot(TAG)
 

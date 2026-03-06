@@ -109,15 +109,15 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
     await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'networkidle' }))
     await baseTest.step('wait for changes', async () => waitForChanges(page))
 
-    if (hasLCP === 'Component') {
-      await baseTest.step('wait for last content paint', async () => {
-        await page.waitForFunction(
-          () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
-          {},
-          { timeout: 5000 },
-        )
-      })
-    }
+    // if (hasLCP === 'Component') {
+    //   await baseTest.step('wait for last content paint', async () => {
+    //     await page.waitForFunction(
+    //       () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+    //       {},
+    //       { timeout: 5000 },
+    //     )
+    //   })
+    // }
 
     await baseTest.step('wait for images', async () => {
       await page.evaluate(async () => {

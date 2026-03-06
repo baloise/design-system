@@ -10,6 +10,7 @@ import {
   PlaygroundBar,
   ReactFramework,
   StoryHeading,
+  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as IconStories from './bal-icon.stories'
 
@@ -64,13 +65,13 @@ Import the icons form the `@baloise/ds-icons` package and pass them with the Bal
 
 ```ts
 import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBaloiseDesignSystem({
       defaults: {
-        icons: { balIconStarFull },
+        icons: { IconStarFull },
       },
     }),
   ],
@@ -82,11 +83,11 @@ export const appConfig: ApplicationConfig = {
 When importing an SVG into your component you decrease the initial page load. So you use the SVG only where you needed and at the time you wanted.
 
 ```ts
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
 @Component({...})
 export class AppComponent {
-  myIcon = balIconStarFull
+  myIcon = IconStarFull
 }
 
 ```
@@ -101,17 +102,17 @@ export class AppComponent {
 
 ### Import during initialization
 
-Import the icons form the `@baloise/ds-icons` package and pass them with the BalConfig during the initialization.
+Import the icons form the `@baloise/ds-assets` package and pass them with the BalConfig during the initialization.
 
 ```ts
 import React from 'react'
 import { useBaloiseDesignSystem, BalApp } from '@baloise/ds-react'
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
 export default function App() {
   useBaloiseDesignSystem({
     defaults: {
-      icons: { balIconStarFull },
+      icons: { IconStarFull },
     },
   })
 
@@ -126,10 +127,10 @@ When importing an SVG into your component you decrease the initial page load. So
 ```ts
 import React from 'react'
 import { BalIcon } from '@baloise/ds-react'
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
 export default function Example() {
-  return <BalIcon svg={balIconStarFull}></BalIcon>
+  return <BalIcon svg={IconStarFull}></BalIcon>
 }
 ```
 
@@ -139,14 +140,14 @@ export default function Example() {
 
 ### Import during initialization
 
-Import the icons form the `@baloise/ds-icons` package and pass them with the BalConfig during the initialization.
+Import the icons form the `@baloise/ds-assets` package and pass them with the BalConfig during the initialization.
 
 ```ts
 import { initialize } from '@baloise/ds-core'
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
 initialize({
-  icons: { balIconStarFull },
+  icons: { IconStarFull },
 })
 ```
 
@@ -155,9 +156,9 @@ initialize({
 When importing an SVG into your component you decrease the initial page load. So you use the SVG only where you needed and at the time you wanted.
 
 ```js
-import { balIconStarFull } from '@baloise/ds-icons'
+import { IconStarFull } from '@baloise/ds-assets'
 
-document.getElementById('my-icon').svg = balIconStarFull
+document.getElementById('my-icon').svg = IconStarFull
 ```
 
 </HTMLFramework>
@@ -170,20 +171,20 @@ Brand icons or custom SVG images can be added with the property `svg` and set co
 
 <Canvas of={IconStories.BrandIcons} sourceState="none" />
 
-Install the `@baloise/ds-brand-icons` to the project to be able to access the svg file.
+Install the `@baloise/ds-assets` to the project to be able to access the svg file.
 
 ```bash
-npm add @baloise/ds-brand-icons
+npm add @baloise/ds-assets
 ```
 
 <AngularFramework>
 
 ```ts
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
+import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 
 @Component({...})
 export class AppComponent {
-  myIcon = balBrandIconCarCrashWithAnimalGreen
+  myIcon = BrandIconCarCrashWithAnimalGreen
 }
 
 ```
@@ -199,10 +200,10 @@ export class AppComponent {
 ```ts
 import React from 'react'
 import { BalIcon } from '@baloise/ds-react'
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
+import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 
 export default function Example() {
-  return <BalIcon svg={balBrandIconCarCrashWithAnimalGreen}></BalIcon>
+  return <BalIcon svg={BrandIconCarCrashWithAnimalGreen}></BalIcon>
 }
 ```
 
@@ -211,9 +212,9 @@ export default function Example() {
 <HTMLFramework>
 
 ```js
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons'
+import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 
-document.getElementById('my-icon').svg = balBrandIconCarCrashWithAnimalGreen
+document.getElementById('my-icon').svg = BrandIconCarCrashWithAnimalGreen
 ```
 
 </HTMLFramework>
@@ -224,16 +225,15 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## CSS Variables
+
+<TokenOverview component="icon" />
+
+
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-import theming from './theming.md?raw'
-
-<Markdown>{theming}</Markdown>
-
-
 
 <Footer />

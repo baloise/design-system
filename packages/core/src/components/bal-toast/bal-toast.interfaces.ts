@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalToastColor = BalNotificationColor
+  export type BalToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger' | ''
 }
 
 namespace BalEvents {
@@ -13,6 +13,9 @@ namespace BalEvents {
     target: HTMLBalToastElement
   }
 
-  export type BalToastCloseDetail = string
-  export type BalToastClose = BalToastCustomEvent<BalToastCloseDetail>
+  export type BalToastCloseClickDetail = MouseEvent
+  export type BalToastCloseClick = BalToastCustomEvent<BalToastCloseClickDetail>
+
+  export type BalToastActionClickDetail = MouseEvent
+  export type BalToastActionClick = BalToastCustomEvent<BalToastActionClickDetail>
 }

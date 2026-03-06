@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <h1 class="heading">Basic Heading</h1>
         <h1 class="heading is-subtitle">Basic Subtitle</h1>
       </section>
 
       <!-- Colors -->
-      <section>
+      <section class="s-bg-1" data-testid="colors">
         <span>Colors</span>
         <h1 class="heading is-primary">Primary</h1>
         <h1 class="heading is-success">Success</h1>
@@ -30,7 +31,7 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <h1 class="heading">Level 1</h1>
         <h2 class="heading">Level 2</h2>
@@ -40,21 +41,29 @@
 
         <h6 class="heading is-display-1">Visual Display 1</h6>
         <h6 class="heading is-display-2">Visual Display 2</h6>
-        <h6 class="heading is-size-1">Visual Level 1</h6>
-        <h6 class="heading is-size-2">Visual Level 2</h6>
-        <h6 class="heading is-size-3">Visual Level 3</h6>
-        <h6 class="heading is-size-4">Visual Level 4</h6>
-        <h6 class="heading is-size-5">Visual Level 5</h6>
+        <h6 class="heading is-1">Visual Level 1</h6>
+        <h6 class="heading is-2">Visual Level 2</h6>
+        <h6 class="heading is-3">Visual Level 3</h6>
+        <h6 class="heading is-4">Visual Level 4</h6>
+        <h6 class="heading is-5">Visual Level 5</h6>
+      </section>
+
+      <!-- Alignment -->
+      <section data-testid="alignment">
+        <span>Alignment</span>
+        <h1 class="heading is-centered">Centered Heading</h1>
+        <h1 class="heading is-right">Right Aligned Heading</h1>
+        <h1 class="heading is-justified">Justified Heading</h1>
       </section>
 
       <!-- Shadow -->
-      <section>
+      <section data-testid="shadow">
         <span>Text Shadow</span>
         <h1 class="heading has-shadow">Heading with Text Shadow</h1>
       </section>
 
       <!-- No Wrap  -->
-      <section>
+      <section data-testid="no-wrap">
         <span>No Wrap</span>
         <h1 class="heading has-no-wrap">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium tempore nisi perspiciatis sint! Minus,
@@ -63,7 +72,7 @@
       </section>
 
       <!-- Spaces  -->
-      <section>
+      <section data-testid="spaces">
         <span>Spaces</span>
         <div class="s-bg-1 s-mb">
           <h5 class="heading s-bg-2">Space Basic</h5>

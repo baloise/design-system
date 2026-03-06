@@ -1,37 +1,51 @@
 @forward '../../src/generated/typography';
 @use '../../src/mixins/_all' as *;
 
-.text-xxxxx-large,
-.text-xxxx-large {
-  line-height: var(--bal-text-line-height-title);
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-normal);
-  }
+.text-5xl:not(:last-child),
+.text-xxxxx-large:not(:last-child) {
+  margin-bottom: var(--bal-space-base-device);
+}
+.text-4xl:not(:last-child),
+.text-xxxx-large:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
 }
 
-.text-xxx-large,
-.text-xx-large,
-.text-x-large,
-.text-large {
-  line-height: var(--bal-text-line-height-title);
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-x-small);
-  }
+.text-3xl:not(:last-child),
+.text-xxx-large:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
 }
 
-.text-medium {
-  line-height: var(--bal-text-line-height-text);
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-x-small);
-  }
+.text-2xl:not(:last-child),
+.text-xx-large:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
 }
 
-.text-medium,
-.text,
-.text-small,
-.text-x-small {
-  line-height: var(--bal-text-line-height-text);
-  &:not(:last-child) {
-    margin-bottom: var(--bal-space-xx-small);
-  }
+.text-xl:not(:last-child),
+.text-x-large:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
+}
+
+.text-lg:not(:last-child),
+.text-large:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
+}
+
+.text-md:not(:last-child),
+.text-medium:not(:last-child) {
+  margin-bottom: var(--bal-space-xs-device);
+}
+
+.text-base:not(:last-child),
+.text-normal:not(:last-child) {
+  margin-bottom: var(--bal-space-2xs-device);
+}
+
+.text-sm:not(:last-child),
+.text-small:not(:last-child) {
+  margin-bottom: var(--bal-space-2xs-device);
+}
+
+.text-xs:not(:last-child),
+.text-x-small:not(:last-child) {
+  margin-bottom: var(--bal-space-2xs-device);
 }

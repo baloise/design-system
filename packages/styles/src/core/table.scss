@@ -148,6 +148,7 @@ table.table {
       border-top: 0;
     }
     th {
+      font-family: var(--bal-table-head-font-family);
       border-color: var(--bal-table-head-cell-border-color);
       border-bottom-width: 2px;
     }
@@ -158,7 +159,6 @@ table.table {
   td,
   th {
     font-size: var(--bal-table-head-font-size);
-    font-family: var(--bal-table-head-font-family);
     vertical-align: middle;
     color: var(--bal-table-color);
     text-align: left;

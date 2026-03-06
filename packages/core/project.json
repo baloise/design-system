@@ -16,10 +16,8 @@
       "dependsOn": ["^build", "clean"],
       "options": {
         "cwd": "{projectRoot}",
-        "commands": [
-          "stencil build --dev --serve --watch --port=4000",
-          "npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'"
-        ],
+        "commands": ["kill-port 4000 && stencil build --dev --serve --watch --port=4000"],
+        "gugus": "npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'",
         "parallel": true,
         "env": {
           "BAL_DEVELOPMENT": "true"

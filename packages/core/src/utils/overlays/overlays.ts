@@ -38,7 +38,7 @@ export const prepareOverlay = (overlay: OverlayInterface) => {
 
 export const getOverlays = (doc: Document, selector?: string): HTMLBalOverlayElement[] => {
   if (selector === undefined) {
-    selector = 'bal-modal,bal-snackbar,bal-toast'
+    selector = 'bal-modal,bal-notification'
   }
   return (Array.from(doc.querySelectorAll(selector)) as HTMLBalOverlayElement[]).filter(c => c.overlayIndex > 0)
 }
@@ -204,7 +204,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * last focused element in the overlay if focus is
        * moved to the toast.
        */
-    } else if (target.tagName === 'BAL-TOAST') {
+    } else if (target.tagName === 'BAL-NOTIFICATION') {
       focusElementInOverlay(lastOverlay.lastFocus, lastOverlay)
     } else {
       /**

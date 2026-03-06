@@ -1,7 +1,9 @@
-@forward '../../../../styles/sass/normalize';
-@forward './bal-label.core';
+@use '../../hybrid' as hybrid;
 
-bal-label {
-  position: static;
-  display: inline;
+@use './bal-label.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
 }

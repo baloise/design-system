@@ -1,14 +1,4 @@
-@forward '../../../../styles/sass/normalize';
-@forward './bal-tag.style';
-@forward '../bal-close/bal-close.style';
-
-/**
-  * Host Style
-  */
-
-:host {
-  display: inline-block;
-  position: static;
-  margin: 0;
-  padding: 0;
-}
+@use '../../hybrid' as hybrid;
+@use './bal-tag.style' with (
+  $use-host: true
+);

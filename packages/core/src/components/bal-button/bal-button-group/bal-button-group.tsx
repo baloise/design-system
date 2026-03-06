@@ -25,19 +25,29 @@ export class ButtonGroup implements ComponentInterface {
   render() {
     return (
       <Host
-        class={{
-          'stack': true,
-          'align-center': this.position === 'center',
-        }}
+        class={
+          {
+            //   'stack': true,
+            //   'align-center': this.position === 'center',
+            // 'fit-content': this.position === 'center' && this.direction === 'column',
+            // 'as-col': this.direction === 'column',
+            // 'as-row': this.direction === 'row',
+            // 'is-reverse': this.reverse,
+            // 'is-center': this.position === 'center',
+            // 'is-right': this.position === 'right',
+          }
+        }
       >
         <div
+          id="group"
+          part="group"
           class={{
-            'buttons': true,
+            // 'buttons': true,
             'fit-content': this.position === 'center' && this.direction === 'column',
             'as-col': this.direction === 'column',
             'as-row': this.direction === 'row',
             'is-reverse': this.reverse,
-            'is-centered': this.position === 'center',
+            'is-center': this.position === 'center',
             'is-right': this.position === 'right',
           }}
         >

@@ -1,24 +1,33 @@
-import { expect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-tag'
 
+const VARIANTS = ['basic', 'variants', 'closeable', 'pill', 'sizes', 'colors'] as const
+
 const image = screenshot(TAG)
 
-test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+test.describe('style', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(`style-${variant}`))
+    })
+  })
 })
 
-test('basic', async ({ page }) => {
-  const el = page.getByTestId('basic')
-  await expectScreenshot(el, image('basic'))
-})
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  })
 
-test('colors', async ({ page }) => {
-  const el = page.getByTestId('colors')
-  await expectScreenshot(el, image('colors'))
-})
-
-test('sizes', async ({ page }) => {
-  const el = page.getByTestId('sizes')
-  await expectScreenshot(el, image('sizes'))
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
 })

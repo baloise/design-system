@@ -1,45 +1,104 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import {
+  Element,
+  Component,
+  Method,
+  h,
+  Host,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+  State,
+  Watch,
+} from '@stencil/core'
+import { stopEventBubbling } from '../../utils/form-input'
+import { NotificationInterface } from '../bal-notification/bal-notification-container'
+import { sanitizeSvg } from '../../utils/svg'
+
+export interface NotificationComponentInterface extends Omit<NotificationInterface, 'id'> {}
 
 @Component({
   tag: 'bal-snackbar',
-  styleUrl: 'bal-snackbar.scss',
+  styleUrl: 'bal-snackbar.host.scss',
+  shadow: true,
 })
-export class Snackbar {
-  @Element() element!: HTMLElement
+export class Snackbar implements ComponentInterface, NotificationComponentInterface {
+  @Element() element!: HTMLBalSnackbarElement
+  @State() didLoad = false
+  @State() svgContent = ''
+  @State() iconName = ''
 
-  private timer!: NodeJS.Timeout
-  private snackbarId = `bal-snackbar-${snackbarIds++}`
+  timer!: NodeJS.Timeout
+  type: BalProps.BalNotificationType = 'snackbar'
 
   /**
-   * The theme type of the snackbar.
+   * Defines the color of the element
+   * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color: BalProps.BalSnackbarColor = ''
+  @Prop({ reflect: true }) color: BalProps.BalSnackbarColor = ''
 
   /**
-   * The duration of the snackbar
+   * If `true` the notification is visible.
    */
-  @Prop() duration = 0
+  @Prop({ reflect: true }) visible = true
 
   /**
-   * The subject of the snackbar header
+   * If `true` the notification can be closed by the user.
    */
-  @Prop() subject = ''
+  @Prop({ reflect: true }) closable = false
 
   /**
-   * The message of the snackbar as html content
+   * Defines the heading of the notification.
+   */
+  @Prop() heading = ''
+
+  /**
+   * Defines the message of the notification as html content
    */
   @Prop() message = ''
 
   /**
-   * The icon of the snackbar header
+   * Defines the icon of the notification.
    */
   @Prop() icon = ''
+  @Watch('icon')
+  iconChanged() {
+    this.generateIconName()
+  }
 
   /**
-   * Label text for the action button
+   * Defines the svg content of the icon
+   */
+  @Prop() svg = ''
+  @Watch('svg')
+  svgChanged() {
+    this.generateSvgContent()
+  }
+
+  /**
+   * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop() action = ''
+
+  /**
+   * Defines the icon of the action button.
+   */
+  @Prop() actionIcon = ''
+
+  /**
+   * Specifies where to open the linked document.
+   */
+  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
+
+  /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() actionHref = ''
+
+  /**
+   * The duration of the snackbar in milliseconds.
+   */
+  @Prop() duration = 0
 
   /**
    * @internal Handler for on close event
@@ -47,139 +106,137 @@ export class Snackbar {
   @Prop() closeHandler: () => void = () => void 0
 
   /**
-   * @internal Handler for on action button click event
+   * @internal Handler for on action event
    */
   @Prop() actionHandler: () => void = () => void 0
 
   /**
-   * Specifies the URL of the page the link goes to
+   * Emitted when the close button got clicked.
    */
-  @Prop() href?: string
+  @Event() balCloseClick!: EventEmitter<BalEvents.BalSnackbarCloseClickDetail>
 
   /**
-   * Specifies where to display the linked URL.
-   * Only applies when an `href` is provided.
+   * Emitted when the action button got clicked.
    */
-  @Prop() target: BalProps.BalButtonTarget = '_self'
+  @Event() balActionClick!: EventEmitter<BalEvents.BalSnackbarActionClickDetail>
 
   /**
-   * Emitted when snackbar is closed
+   * Emitted when the component has loaded.
    */
-  @Event() balClose!: EventEmitter<BalEvents.BalSnackbarCloseDetail>
+  @Event() balDidLoad!: EventEmitter<void>
 
   /**
-   * Emitted when the action button is clicked
+   * LIFECYCLE
+   * ------------------------------------------------------
    */
-  @Event() balAction!: EventEmitter<BalEvents.BalSnackbarActionDetail>
 
-  async componentWillLoad() {
-    if (this.duration > 0) {
-      await this.closeIn(this.duration)
+  connectedCallback(): void {
+    this.generateIconName()
+    this.generateSvgContent()
+  }
+
+  componentDidLoad(): void {
+    this.didLoad = true
+    this.balDidLoad.emit()
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private generateSvgContent = () => {
+    if (this.svg !== undefined && this.svg.length > 0) {
+      this.svgContent = sanitizeSvg(this.svg)
+    }
+  }
+
+  private generateIconName = () => {
+    if (this.icon !== undefined && this.icon.length > 0) {
+      this.iconName = this.icon
+    } else {
+      switch (this.color) {
+        case 'success':
+          this.iconName = 'check'
+          break
+        case 'warning':
+          this.iconName = 'alert'
+          break
+        case 'danger':
+          this.iconName = 'alert'
+          break
+        default:
+          this.iconName = 'information'
+      }
     }
   }
 
   /**
-   * Closes the snackbar after the given duration in ms
+   * RENDER
+   * ------------------------------------------------------
    */
-  @Method()
-  async closeIn(duration: number): Promise<void> {
-    this.timer = setTimeout(() => this.close(), duration)
-  }
-
-  /**
-   * Closes this snackbar
-   */
-  @Method()
-  async close(): Promise<void> {
-    clearTimeout(this.timer)
-    this.balClose.emit(this.snackbarId)
-    this.element.remove()
-    this.closeHandler()
-  }
-
-  onActionHandler = () => {
-    this.balAction.emit(this.snackbarId)
-    this.actionHandler()
-  }
 
   render() {
-    const block = BEM.block('snackbar')
-    const detailsEl = block.element('details')
-    const buttonWrapperEl = block.element('button-wrapper')
-
-    const subjectId = this.snackbarId + '-subject'
-
-    const messageAttributes = {} as any
-    if (this.message !== undefined && this.message !== '') {
-      messageAttributes.innerHTML = this.message
-    }
-
-    const isIconDefined = this.icon !== undefined && this.icon !== null && this.icon !== ''
-    const colorIcons = {
-      info: 'info-circle',
-      primary: 'info-circle',
-      warning: 'alert-triangle',
-      danger: 'alert-triangle',
-      success: 'check-circle',
-    }
-    const icon = isIconDefined ? this.icon : colorIcons[this.color || 'info']
-
     return (
       <Host
-        id={this.snackbarId}
-        role="alertdialog"
-        class={{ ...block.class(), ...block.modifier(`color-${this.color}`).class(!!this.color) }}
-        aria-labelledby={subjectId}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class={{
+          [`is-ready`]: this.didLoad,
+        }}
       >
-        <div
-          class={{
-            ...detailsEl.class(),
-          }}
-        >
-          <div
-            aria-hidden="true"
-            class={{
-              ...detailsEl.element('icon').class(),
-              ...detailsEl.element('icon').modifier('masked').class(!isIconDefined),
-              ...detailsEl.element('icon').modifier(`color-${this.color}`).class(!isIconDefined),
-            }}
-          >
-            {isIconDefined ? <bal-icon name={icon} color={'primary'} size="medium"></bal-icon> : ''}
-          </div>
-          <div class={{ ...detailsEl.element('content').class() }}>
-            <h2 id={subjectId}>{this.subject}</h2>
-            <span {...messageAttributes}>
-              <slot />
-              <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
-            </span>
-          </div>
-          <div class={{ ...detailsEl.element('close').class() }}>
-            <bal-close
-              class="bal-snackbar__close"
-              data-testid="bal-snackbar-close"
-              onClick={() => this.close()}
-            ></bal-close>
-          </div>
+        {/* --------------------------------------*/}
+        {/* Icon                                  */}
+        {/* --------------------------------------*/}
+        {this.iconName && !this.svgContent && <bal-icon part="icon" name={this.iconName}></bal-icon>}
+        {this.svgContent && <bal-icon part="icon" svg={this.svgContent}></bal-icon>}
+        {/* --------------------------------------*/}
+        {/* Heading + Message                     */}
+        {/* --------------------------------------*/}
+        <div part="message">
+          {this.heading && <h2>{this.heading}</h2>}
+          <span>
+            <slot>{this.message}</slot>
+          </span>
         </div>
-        {this.action ? (
-          <div class={{ ...buttonWrapperEl.class() }}>
+        {/* --------------------------------------*/}
+        {/* Close Button                          */}
+        {/* --------------------------------------*/}
+        {this.closable && (
+          <bal-close
+            part="close"
+            onClick={ev => {
+              stopEventBubbling(ev)
+              this.closeHandler()
+              this.balCloseClick.emit()
+            }}
+          ></bal-close>
+        )}
+        {/* --------------------------------------*/}
+        {/* Action Button                         */}
+        {/* --------------------------------------*/}
+        <div part="action" id="action">
+          <slot name="action" />
+          {this.action && (
             <bal-button
-              color="secondary"
-              size="small"
-              href={this.href}
-              target={this.target}
-              onClick={() => this.onActionHandler()}
-              data-testid="bal-snackbar-action"
+              color="primary"
+              size="sm"
+              part="button"
+              icon={this.actionIcon}
+              target={this.actionTarget}
+              href={this.actionHref}
+              onClick={ev => {
+                stopEventBubbling(ev)
+                this.actionHandler()
+                this.balActionClick.emit(ev)
+              }}
             >
               {this.action}
             </bal-button>
-          </div>
-        ) : (
-          ''
-        )}
+          )}
+        </div>
       </Host>
     )
   }
 }
-
-let snackbarIds = 0

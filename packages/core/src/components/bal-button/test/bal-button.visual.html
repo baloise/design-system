@@ -4,148 +4,251 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
-
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section data-testid="primary">
-          <bal-button>Primary</bal-button>
-        </section>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <bal-button icon="plus"> Button </bal-button>
+      </section>
+
+      <!-- Badge Style -->
+      <section>
+        <span>Badge</span>
+        <bal-button>
+          <bal-badge>42</bal-badge>
+          Button
+        </bal-button>
+      </section>
+
+      <!-- Link -->
+      <section>
+        <span>Link</span>
+        <bal-button color="link" href="/components/bal-button/test/bal-button.visual.html">Link Button</bal-button>
         <br />
         <br />
-        <section data-testid="colors">
-          <bal-button color="primary">Primary</bal-button>
-          <bal-button color="secondary">Secondary</bal-button>
-          <bal-button color="tertiary">Tertiary</bal-button>
-          <bal-button color="tertiary-purple">T6y Purple</bal-button>
-          <bal-button color="tertiary-red">T6y Red</bal-button>
-          <bal-button color="tertiary-yellow">T6y Yellow</bal-button>
-          <bal-button color="tertiary-green">T6y Green</bal-button>
-          <bal-button color="link">Link</bal-button>
-        </section>
+        <div class="s-bg-inverted">
+          <bal-button color="link" inverted href="/components/bal-button/test/bal-button.visual.html"
+            >Link Button</bal-button
+          >
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section>
+        <span>Colors</span>
+        <bal-button color="primary">Primary</bal-button>
+        <bal-button color="secondary">Secondary</bal-button>
+        <bal-button color="tertiary">Tertiary</bal-button>
+
         <br />
         <br />
-        <section data-testid="colors-alternatives">
-          <bal-button color="text">Text</bal-button>
-          <bal-button color="light">Light</bal-button>
-          <bal-button color="info">Info</bal-button>
-          <bal-button color="info-light">Info light</bal-button>
-          <bal-button color="success">Success</bal-button>
-          <bal-button color="warning">Warning</bal-button>
-          <bal-button color="danger">Danger</bal-button>
-        </section>
+
+        <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
+        <bal-button color="tertiary-red">Tertiary Red</bal-button>
+        <bal-button color="tertiary-yellow">Tertiary Yellow</bal-button>
+        <bal-button color="tertiary-green">Tertiary Green</bal-button>
+
         <br />
         <br />
-        <section data-testid="sizes">
-          <bal-button>Default</bal-button>
-          <bal-button size="small">Small</bal-button>
-        </section>
+        <bal-button color="info">Info</bal-button>
+        <bal-button color="success">Success</bal-button>
+        <bal-button color="warning">Warning</bal-button>
+        <bal-button color="danger">Danger</bal-button>
+      </section>
+
+      <!-- Dashed -->
+      <section>
+        <span>Dashed</span>
+        <bal-button color="tertiary-purple" dashed>Tertiary Purple</bal-button>
+        <bal-button color="tertiary-red" dashed>Tertiary Red</bal-button>
+        <bal-button color="tertiary-yellow" dashed>Tertiary Yellow</bal-button>
+        <bal-button color="tertiary-green" dashed>Tertiary Green</bal-button>
+
         <br />
         <br />
-        <section data-testid="inverted" class="bg-primary py-normal">
-          <bal-button inverted>Inverted</bal-button>
-        </section>
+        <bal-button color="tertiary-purple" large dashed icon="plus"> Purple </bal-button>
+        <bal-button color="tertiary-red" large dashed icon="plus"> Red </bal-button>
+        <bal-button color="tertiary-yellow" large dashed icon="plus"> Yellow </bal-button>
+        <bal-button color="tertiary-green" large dashed icon="plus"> Green </bal-button>
+      </section>
+
+      <!-- Inverted -->
+      <section class="s-bg-inverted">
+        <span>Inverted</span>
+        <bal-button color="primary" inverted>Primary</bal-button>
+        <bal-button color="secondary" inverted>Secondary</bal-button>
+        <bal-button color="tertiary" inverted>Tertiary</bal-button>
+
         <br />
         <br />
-        <section data-testid="expanded">
-          <bal-button expanded>Expanded</bal-button>
-        </section>
+
+        <bal-button color="tertiary-purple" inverted>Tertiary Purple</bal-button>
+        <bal-button color="tertiary-red" inverted>Tertiary Red</bal-button>
+        <bal-button color="tertiary-yellow" inverted>Tertiary Yellow</bal-button>
+        <bal-button color="tertiary-green" inverted>Tertiary Green</bal-button>
+
         <br />
         <br />
-        <section data-testid="flat">
-          <bal-button flat>Flat</bal-button>
-        </section>
+        <bal-button color="info" inverted>Info</bal-button>
+        <bal-button color="success" inverted>Success</bal-button>
+        <bal-button color="warning" inverted>Warning</bal-button>
+        <bal-button color="danger" inverted>Danger</bal-button>
+      </section>
+
+      <!-- Sizes -->
+      <section>
+        <span>Sizes</span>
+        <bal-button size="sm">Small</bal-button>
+        <bal-button>Normal</bal-button>
+        <bal-button size="lg">Large</bal-button>
+      </section>
+
+      <!-- Expanded -->
+      <section>
+        <span>Expanded</span>
+        <bal-button expanded>Fullwidth</bal-button>
+      </section>
+
+      <!-- Long Content -->
+      <section>
+        <span>Long Content</span>
+        <bal-button>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
+          aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
+          totam assumenda.
+        </bal-button>
+        <bal-button no-wrap>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
+          aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
+          totam assumenda.
+        </bal-button>
+      </section>
+
+      <!-- Flat -->
+      <section>
+        <span>Flat</span>
+        <bal-button flat>Flat Button</bal-button>
+      </section>
+
+      <!-- Rounded -->
+      <section>
+        <span>Rounded</span>
+        <bal-button rounded>Rounded Button</bal-button>
+      </section>
+
+      <!-- Disabled -->
+      <section>
+        <span>Disabled</span>
+        <bal-button disabled>Disabled using attribute</bal-button>
+        <bal-button disabled> Disabled using class name </bal-button>
+      </section>
+
+      <!-- Square & Circle -->
+      <section>
+        <span>Square & Circle</span>
+        <bal-button square icon="check"> </bal-button>
+        <bal-button circle icon="check"> </bal-button>
+
         <br />
         <br />
-        <section data-testid="icon-right">
-          <bal-button icon-right="plus">Icon Right</bal-button>
-        </section>
-        <br />
-        <br />
-        <section data-testid="outlined">
-          <bal-button outlined>Outlined</bal-button>
-        </section>
-        <br />
-        <br />
-        <section data-testid="rounded">
-          <bal-button rounded>Rounded</bal-button>
-        </section>
-        <br />
-        <br />
-        <section data-testid="shadow">
-          <bal-button shadow>Shadow</bal-button>
-        </section>
-        <br />
-        <br />
-        <section data-testid="variants">
-          <bal-button-group direction="column" position="center">
-            <bal-button>Primary</bal-button>
-            <bal-button color="secondary">Secondary</bal-button>
-            <bal-button color="tertiary">Tertiary</bal-button>
-            <bal-button color="link">Link</bal-button>
-          </bal-button-group>
-        </section>
-        <br />
-        <br />
-        <section data-testid="states">
-          <bal-button-group>
-            <!-- Loading is turned off  -->
-            <bal-button>Loading</bal-button>
-            <bal-button disabled>Disabled</bal-button>
-          </bal-button-group>
-        </section>
-        <br />
-        <br />
-        <section data-testid="alert">
-          <bal-button-group>
-            <bal-button color="info-light">Info</bal-button>
-            <bal-button color="success">Success</bal-button>
-            <bal-button color="warning">Warning</bal-button>
-            <bal-button color="danger">Danger</bal-button>
-          </bal-button-group>
-        </section>
-        <br />
-        <br />
-        <section data-testid="square">
-          <bal-button-group>
-            <bal-button color="primary" square icon="plus"></bal-button>
-            <bal-button square color="secondary" icon="account"></bal-button>
-            <bal-button square color="secondary" outlined>42</bal-button>
-          </bal-button-group>
-        </section>
-        <br />
-        <br />
-        <section data-testid="group">
-          <bal-button-group>
-            <bal-button color="link">Left</bal-button>
-            <bal-button>Aligned</bal-button>
-          </bal-button-group>
-          <bal-button-group position="center">
-            <bal-button color="link">Center</bal-button>
-            <bal-button>Aligned</bal-button>
-          </bal-button-group>
-          <bal-button-group position="right">
-            <bal-button color="link">Right</bal-button>
-            <bal-button>Aligned</bal-button>
-          </bal-button-group>
-        </section>
-        <br />
-        <br />
-        <section data-testid="links">
-          <bal-button color="link" icon-right="plus">Link</bal-button>
-          <a class="link">Linky</a>
-        </section>
-        <br />
-        <br />
-        <section data-testid="inverted-links" class="bg-primary">
-          <bal-button color="link" icon-right="plus" inverted>Link Inverted</bal-button>
-          <a class="link is-inverted pt-normal">Linky Inverted</a>
-        </section>
-      </main>
-    </bal-doc-app>
+        <bal-button square size="sm" icon="check"> </bal-button>
+        <bal-button circle size="sm" icon="check"> </bal-button>
+      </section>
+
+      <!-- Icon -->
+      <section>
+        <span>Icon</span>
+        <bal-button icon="plus"> Button </bal-button>
+        <bal-button color="secondary" icon="plus"> Button </bal-button>
+      </section>
+
+      <!-- Loading -->
+      <section>
+        <span>Loading</span>
+        <div class="buttons">
+          <bal-button square color="primary" loading></bal-button>
+          <bal-button loading> loading... </bal-button>
+          <bal-button square loading="circle" color="primary"> </bal-button>
+          <bal-button loading="circle"> loading... </bal-button>
+        </div>
+        <div class="buttons">
+          <bal-button square loading disabled> </bal-button>
+          <bal-button color="secondary" loading disabled> loading... </bal-button>
+
+          <bal-button square loading="circle" disabled> </bal-button>
+          <bal-button color="secondary" loading="circle" disabled> loading... </bal-button>
+        </div>
+        <div class="buttons">
+          <bal-button square loading color="tertiary-purple"> </bal-button>
+          <bal-button square loading color="tertiary-green"> </bal-button>
+          <bal-button square loading color="tertiary-red"> </bal-button>
+          <bal-button square loading color="tertiary-yellow"> </bal-button>
+          <bal-button square loading color="info"> </bal-button>
+          <bal-button square loading color="success"> </bal-button>
+          <bal-button square loading color="warning"> </bal-button>
+          <bal-button square loading color="danger"> </bal-button>
+        </div>
+      </section>
+
+      <!-- Group -->
+      <section>
+        <span>Group</span>
+        <bal-button-group>
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group position="center">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group position="right">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+
+      <!-- Two Row Button Group -->
+      <section>
+        <span>Two Row Button Group</span>
+        <bal-button-group direction="row">
+          <bal-button>Left</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="row">
+          <bal-button square icon="plus"> </bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+
+      <!-- Group Column-->
+      <section>
+        <span>Group Column</span>
+        <bal-button-group direction="col">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="col" position="center">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="col" position="right">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+    </main>
   </body>
 </html>

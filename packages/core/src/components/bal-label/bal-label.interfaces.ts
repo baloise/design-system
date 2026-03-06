@@ -5,5 +5,16 @@
 
 namespace BalProps {
   export type BalLabelWeight = 'bold' | 'regular'
-  export type BalLabelSize = '' | 'small' | 'large' | 'x-large' | 'xx-large' | 'xxx-large'
+  export type BalLabelSize =
+    | ''
+    | 'sm'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | 'small'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | 'xxx-large'
 }

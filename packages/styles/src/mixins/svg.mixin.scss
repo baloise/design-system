@@ -6,6 +6,7 @@
     fill: $color;
   }
 }
+
 @mixin fillSvgImportant($color) {
   svg,
   g,

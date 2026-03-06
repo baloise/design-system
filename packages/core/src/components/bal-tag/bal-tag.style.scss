@@ -1,9 +1,101 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
+
+$use-host: false !default;
+$name: tag;
+$css-selector: ('.tag:not(.token)');
+$host-selector: ('#tag');
 
 /**
-  * Mixins
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(tag-min-height, 2rem);
+  @include vars.local(tag-gap, 0.25rem);
+  @include vars.local(tag-padding-inline, var(--bal-tag-space-x));
+  @include vars.local(tag-padding-block, var(--bal-tag-space-y));
+  @include vars.local(tag-radius, var(--bal-tag-radius-base));
+  @include vars.local(tag-color-text, var(--bal-tag-color-base-text));
+  @include vars.local(tag-color-background, var(--bal-tag-color-base-background));
+  @include vars.local(tag-line-height, 1);
+  @include vars.local(tag-font-family, var(--bal-tag-family));
+  @include vars.local(tag-font-size, var(--bal-tag-size));
+  @include vars.local(tag-font-weight, var(--bal-tag-weight));
+  @include vars.local(tag-close-mr, calc(0.25rem * -1));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
-$tag-colors: (
+
+@mixin basic() {
+  @include unselectable;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  gap: var(--_tag-gap);
+
+  min-height: var(--_tag-min-height);
+  padding-block: var(--_tag-padding-block);
+  padding-inline: var(--_tag-padding-inline);
+  border-radius: var(--_tag-radius);
+
+  color: var(--_tag-color-text);
+  background-color: var(--_tag-color-background);
+
+  font-family: var(--_tag-font-family);
+  line-height: var(--_tag-line-height);
+  font-size: var(--_tag-font-size);
+  font-weight: var(--_tag-font-weight);
+
+  > .close,
+  > bal-close {
+    --close-mr: var(--_tag-close-mr);
+  }
+
+  > bal-icon {
+    --icon-size: 0.875rem;
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  @include basic();
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    @include basic();
+  }
+
+  :host::part(label) {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    gap: var(--_tag-gap);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+// --------------------------------
+$colors: (
   'primary',
   'grey',
   'success',
@@ -24,78 +116,143 @@ $tag-colors: (
   'green-light'
 );
 
-@mixin tag-colors($color) {
-  color: var(--bal-tag-color-text-#{$color});
-  background: var(--bal-tag-color-background-#{$color});
+@mixin color($color) {
+  --icon-color: var(--bal-tag-color-#{$color}-text);
+  --mod-tag-color-text: var(--bal-tag-color-#{$color}-text);
+  --mod-tag-color-background: var(--bal-tag-color-#{$color}-background);
 }
 
-/**
-  * Basic Style
-  */
-
-.tag:not(.token) {
-  @include unselectable;
-
-  position: static;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  padding: var(--bal-tag-space-normal-y) var(--bal-tag-space-normal-x);
-  vertical-align: middle;
-  background-color: var(--bal-tag-color-background-base);
-  border-radius: var(--bal-tag-radius-base);
-  font-family: var(--bal-tag-font-family);
-  line-height: var(--bal-tag-line-height);
-  font-size: var(--bal-tag-text-size-normal);
-  font-weight: var(--bal-tag-font-weight-normal);
-  gap: 0.25rem;
-
-  > .close,
-  > bal-close {
-    margin-right: calc(0.25rem * -1);
-  }
-
-  /**
-    * Colors
-    */
-  @each $color in $tag-colors {
+@each $color in $colors {
+  @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      @include tag-colors($color);
+      @include color($color);
     }
   }
 
-  &.is-square {
-    border-radius: var(--bal-tag-radius-square);
-  }
-
-  &.is-pill {
-    border-radius: var(--bal-tag-radius-pill);
-  }
-
-  &.is-small {
-    padding: var(--bal-tag-space-small-y) var(--bal-tag-space-small-x);
-    min-height: 1.5rem;
-    font-size: var(--bal-tag-text-size-small);
-    font-weight: var(--bal-tag-font-weight-small);
-  }
-
-  &.is-medium {
-    min-height: 2.5rem;
-    padding: var(--bal-tag-space-medium-y) var(--bal-tag-space-medium-x);
-    font-size: var(--bal-tag-text-size-medium);
-    font-weight: var(--bal-tag-font-weight-medium);
-  }
-
-  &.is-large {
-    min-height: 3rem;
-    padding: var(--bal-tag-space-large-y) var(--bal-tag-space-large-x);
-    font-size: var(--bal-tag-text-size-large);
-    font-weight: var(--bal-tag-font-weight-large);
+  @include hybrid.host($use-host) {
+    @include attr.has('color', $color) {
+      @include color($color);
+    }
   }
 }
 
-.tags {
-  display: flex;
-  gap: var(--bal-tag-space-normal-x);
+$close-inverted: (
+  'primary',
+  'grey',
+  'info',
+  'success',
+  'danger',
+  'purple-dark',
+  'red-dark',
+  'yellow-dark',
+  'green-dark'
+);
+
+@each $color in $close-inverted {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.is-#{$color} {
+      --close-color-icon: var(--bal-close-color-icon-inverted);
+      --close-color-background-hover: var(--bal-close-color-background-inverted-hover);
+      --close-color-background-active: var(--bal-close-color-background-inverted-active);
+      --close-color-focus: var(--bal-interaction-focus-color-inverted);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    @include attr.has('color', $color) {
+      --close-color-icon: var(--bal-close-color-icon-inverted);
+      --close-color-background-hover: var(--bal-close-color-background-inverted-hover);
+      --close-color-background-active: var(--bal-close-color-background-inverted-active);
+      --close-color-focus: var(--bal-interaction-focus-color-inverted);
+    }
+  }
+}
+
+//
+// Shapes
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-square {
+    --mod-tag-radius: var(--bal-tag-radius-square);
+  }
+  &.is-pill {
+    --mod-tag-radius: var(--bal-tag-radius-pill);
+  }
+}
+
+@include hybrid.host($use-host) {
+  @include attr.has('shape', 'square') {
+    --mod-tag-radius: var(--bal-tag-radius-square);
+  }
+  @include attr.has('shape', 'pill') {
+    --mod-tag-radius: var(--bal-tag-radius-pill);
+  }
+}
+
+//
+// Sizes
+// --------------------------------
+
+@mixin sizeSmall() {
+  --mod-tag-min-height: 1.5rem;
+  --mod-tag-padding: var(--bal-tag-sm-space-y) var(--bal-tag-sm-space-x);
+  --mod-tag-font-size: var(--bal-tag-sm-size);
+  --mod-tag-font-weight: var(--bal-tag-sm-weight);
+
+  > .close,
+  > bal-close {
+    --close-padding: 0.25rem;
+    --close-size-icon: 10px;
+  }
+}
+
+@mixin sizeMedium() {
+  --mod-tag-min-height: 2.5rem;
+  --mod-tag-padding: var(--bal-tag-md-space-y) var(--bal-tag-md-space-x);
+  --mod-tag-font-size: var(--bal-tag-md-size);
+  --mod-tag-font-weight: var(--bal-tag-md-weight);
+}
+
+@mixin sizeLarge() {
+  --mod-tag-min-height: 3rem;
+  --mod-tag-padding: var(--bal-tag-lg-space-y) var(--bal-tag-lg-space-x);
+  --mod-tag-font-size: var(--bal-tag-lg-size);
+  --mod-tag-font-weight: var(--bal-tag-lg-weight);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-sm {
+    @include sizeSmall();
+  }
+  &.is-md {
+    @include sizeMedium();
+  }
+  &.is-lg {
+    @include sizeLarge();
+  }
+}
+
+@include hybrid.host($use-host) {
+  @include attr.has('size', 'sm') {
+    @include sizeSmall();
+  }
+  @include attr.has('size', 'md') {
+    @include sizeMedium();
+  }
+  @include attr.has('size', 'lg') {
+    @include sizeLarge();
+  }
+}
+
+/**
+  * Tags container
+  * --------------------------------
+  * Define here the styles for tags container to be able to use a flex layout with gap.
+  */
+
+@include hybrid.styles-only($use-host) {
+  .tags {
+    display: flex;
+    gap: var(--bal-tag-space-x);
+  }
 }

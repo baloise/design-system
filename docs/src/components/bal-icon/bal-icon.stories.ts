@@ -1,4 +1,4 @@
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/ds-brand-icons/dist'
+import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
@@ -44,32 +44,42 @@ export const UiIcons = Story({
     () =>
       `<div class="flex gap-medium flex-wrap">
       ${[
-        'caret-down',
-        'caret-left',
-        'caret-up',
-        'check',
+        'information',
+        'alert',
+        'file',
+        'picture',
+        'video',
+        'audio',
+        'clock',
         'close',
-        'date',
-        'document',
-        'edit',
-        'facebook',
         'info-circle',
-        'instagram',
-        'linkedin',
-        'menu-bars',
+        'link',
+        'plus',
         'minus',
-        'nav-go-down',
         'nav-go-left',
         'nav-go-right',
+        'nav-go-down',
         'nav-go-up',
-        'plus',
+        'caret-up',
+        'caret-right',
+        'caret-down',
+        'caret-left',
+        'check',
+        'date',
+        'document',
+        'download',
+        'edit',
         'trash',
-        'twitter',
         'upload',
-        'web',
-        'x',
+        'menu-bars',
+        'facebook',
+        'instagram',
         'xing',
+        'linkedin',
+        'twitter',
+        'x',
         'youtube',
+        'web',
       ]
         .map(
           item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 180px">
@@ -82,33 +92,6 @@ export const UiIcons = Story({
   ),
 })
 
-// Youtube
-// Xing
-// X
-// Web
-// Upload
-// Twitter
-// Trash
-// Plus
-// NavGoUp
-// NavGoRight
-// NavGoLeft
-// NavGoDown
-// Minus
-// MenuBars
-// Linkedin
-// Instagram
-// InfoCircle
-// Facebook
-// Edit
-// Document
-// Date
-// Close
-// Check
-// CaretUp
-// CaretLeft
-// CaretDown
-
 export const BrandIcons = Story({
   args: {
     size: 'x-large',
@@ -117,6 +100,6 @@ export const BrandIcons = Story({
   },
   ...withRender(
     ({ content, ...args }) =>
-      `<bal-icon ${props(args)} svg='${balBrandIconCarCrashWithAnimalGreen}'>${content}</bal-icon>`,
+      `<bal-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</bal-icon>`,
   ),
 })

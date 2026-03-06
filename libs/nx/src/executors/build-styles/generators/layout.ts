@@ -90,12 +90,6 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
     },
   })
 
-  const zIndex = await utils.staticClassByToken({
-    token: 'z-index',
-    property: 'z-index',
-    ...options,
-  })
-
   const verticalAlign = utils.staticClass({
     property: 'vertical-align',
     values: {
@@ -117,7 +111,6 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
         right.docs,
         bottom.docs,
         left.docs,
-        zIndex.docs,
         verticalAlign.docs,
       ],
       rules: [
@@ -128,7 +121,6 @@ export const generateLayout = async (options: BuildStylesExecutorSchema) => {
         right.rules,
         bottom.rules,
         left.rules,
-        zIndex.rules,
         verticalAlign.rules,
       ],
     }),

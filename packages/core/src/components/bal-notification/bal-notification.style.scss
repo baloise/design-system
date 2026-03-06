@@ -1,0 +1,477 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../host' as host;
+
+$name: notification;
+$use-host: false !default;
+$css-selector: ('.notification');
+$host-selector: ('#notification');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(notification-radius, var(--bal-notification-radius-base));
+  @include vars.local(notification-color-background, var(--bal-notification-color-base-background));
+  @include vars.local(notification-color-border, var(--bal-notification-color-base-border));
+  @include vars.local(notification-color-text, var(--bal-notification-color-base-text));
+
+  @include vars.local(notification-heading-family, var(--bal-text-family-heading));
+  @include vars.local(notification-heading-weight, var(--bal-text-weight-bold));
+  @include vars.local(notification-heading-size, var(--bal-text-size-lg-device));
+  @include vars.local(notification-heading-line-height, var(--bal-text-line-height-heading));
+
+  @include vars.local(notification-content-family, var(--bal-text-family-body));
+  @include vars.local(notification-content-weight, inherit);
+  @include vars.local(notification-content-size, var(--bal-text-size-base-device));
+  @include vars.local(notification-content-line-height, var(--bal-text-line-height-body));
+
+  @include vars.local(notification-icon, var(--bal-notification-color-base-icon));
+  @include vars.local(notification-icon-display, block);
+
+  @include vars.local(notification-space, var(--bal-card-space-base-device, 24px));
+  @include vars.local(notification-space-left, var(--bal-card-space-base-device, 24px));
+  @include vars.local(notification-space-top, var(--bal-card-space-base-device, 24px));
+  @include vars.local(notification-space-right, var(--bal-card-space-base-device, 24px));
+  @include vars.local(notification-space-bottom, var(--bal-card-space-base-device, 24px));
+
+  @include vars.local(notification-close-offset, 2rem); // extra space reserved when a close button is present
+  @include vars.local(notification-gap, 0.125rem);
+
+  // Close
+  @include vars.local(notification-close-position, absolute);
+  @include vars.local(notification-close-right, var(--_notification-space));
+  @include vars.local(notification-close-top, var(--_notification-space));
+
+  // Animation
+  @include vars.local(notification-animation-start-opacity, 1);
+  @include vars.local(notification-animation-start-transform, none);
+
+  @include vars.local(notification-animation-transition, none);
+
+  @include vars.local(notification-animation-end-opacity, 1);
+  @include vars.local(notification-animation-end-transform, none);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  @include font-smoothing();
+
+  flex: 1;
+  position: relative;
+  hyphens: auto;
+
+  border: var(--bal-border-width-base) solid var(--_notification-color-border);
+  border-radius: var(--_notification-radius);
+  background: var(--_notification-color-background);
+  color: var(--_notification-color-text);
+
+  padding-top: var(--_notification-space-top);
+  padding-right: var(--_notification-space-right);
+  padding-bottom: var(--_notification-space-bottom);
+  padding-left: var(--_notification-space-left);
+
+  // Default vairaint
+  // &:not(.is-toast, .is-snackbar) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_notification-gap);
+  // }
+
+  //
+  // Close
+  // --------------------------------
+  &:has(> bal-close),
+  &:has(> .close) {
+    padding-right: var(--_notification-close-offset);
+  }
+
+  bal-close,
+  .close {
+    position: var(--_notification-close-position);
+    top: var(--_notification-close-top);
+    right: var(--_notification-close-right);
+  }
+
+  //
+  // Action Button
+  // --------------------------------
+  bal-button,
+  a.button,
+  button.button {
+    --button-mt: calc(var(--_notification-space) - var(--_notification-gap));
+  }
+
+  //
+  // Heading
+  // --------------------------------
+  & > strong,
+  & > b,
+  & > h2 {
+    font-family: var(--_notification-heading-family);
+    font-weight: var(--_notification-heading-weight);
+    line-height: var(--_notification-heading-line-height);
+    font-size: var(--_notification-heading-size);
+    margin: 0 !important;
+  }
+
+  //
+  // Content
+  // --------------------------------
+  & > span,
+  & > p {
+    font-family: var(--_notification-content-family);
+    font-size: var(--_notification-content-size);
+    font-weight: var(--_notification-content-weight);
+    line-height: var(--_notification-content-line-height);
+    margin: 0 !important;
+  }
+
+  //
+  // Icon
+  // --------------------------------
+  &::before {
+    display: var(--_notification-icon-display);
+    background-color: currentColor;
+    color: currentColor;
+    forced-color-adjust: preserve-parent-color;
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    left: 0.825rem;
+    top: calc((var(--_notification-space)));
+    content: '';
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    mask-image: var(--_notification-icon);
+    -webkit-mask-image: var(--_notification-icon);
+  }
+}
+// }
+
+/**
+  * Variants
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+/**
+ * Toast Variant
+ * --------------------------------
+ * Define here the styles for the toast variant of the notification component.
+ */
+@mixin toast-variables() {
+  --mod-notification-radius: var(--bal-notification-radius-alert);
+  --mod-notification-space: var(--bal-space-base-device);
+  --mod-notification-space-top: var(--bal-space-base-device);
+  --mod-notification-space-right: var(--bal-space-base-device);
+  --mod-notification-space-bottom: var(--bal-space-base-device);
+  --mod-notification-space-left: var(--bal-space-base-device);
+
+  --mod-notification-heading-size: var(--bal-text-size-base-device);
+  --mod-notification-content-size: var(--bal-text-size-sm-device);
+
+  --mod-notification-close-position: static;
+  --mod-notification-close-top: initial;
+  --mod-notification-close-right: initial;
+}
+
+@mixin toast-variant() {
+  @include unselectable();
+
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas: 'message action close';
+  column-gap: calc(var(--_notification-gap) * 4);
+  row-gap: var(--_notification-gap);
+  align-items: center;
+  box-shadow: var(--bal-shadow-base);
+
+  // if there is a heading we adjust the grid to have the heading on top and the message below
+  &:has(> h2, > strong, > b) {
+    grid-template-areas:
+      'heading action close'
+      'message action close';
+  }
+
+  bal-button,
+  .button {
+    --button-mt: 0;
+    grid-area: action;
+    align-self: center;
+  }
+
+  .close,
+  bal-close {
+    grid-area: close;
+    align-self: center;
+  }
+
+  // heading
+  & > strong,
+  & > b,
+  & > h2 {
+    grid-area: heading;
+  }
+
+  // content
+  ::slotted {
+    grid-area: message;
+  }
+
+  slot,
+  & > span,
+  & > p {
+    grid-area: message;
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-toast {
+    @include toast-variables();
+    @include toast-variant();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host([type='toast']) {
+    @include toast-variables();
+    #notification {
+      @include toast-variant();
+    }
+  }
+}
+
+// &.is-toast {
+//   display: grid;
+//   grid-template-columns: 1fr auto auto;
+//   grid-template-areas: 'message action close';
+//   column-gap: calc(var(--_notification-gap) * 4);
+//   row-gap: var(--_notification-gap);
+//   align-items: center;
+
+//   // if there is a heading we adjust the grid to have the heading on top and the message below
+//   &:has(> h2, > strong, > b) {
+//     grid-template-areas:
+//       'heading action close'
+//       'message action close';
+//   }
+
+//   bal-button,
+//   .button {
+//     grid-area: action;
+//     align-self: center;
+//   }
+
+//   .close,
+//   bal-close {
+//     grid-area: close;
+//     align-self: center;
+//   }
+
+//   // heading
+//   & > strong,
+//   & > b,
+//   & > h2 {
+//     grid-area: heading;
+//   }
+
+//   // content
+//   & > span,
+//   & > p {
+//     grid-area: message;
+//   }
+// }
+
+// /**
+//  * Snackbar Variant
+//  * --------------------------------
+//  * Define here the styles for the snackbar variant of the notification component.
+//  */
+// &.is-snackbar {
+//   display: grid;
+//   grid-template-columns: 1fr auto auto;
+//   grid-template-areas:
+//     'message close'
+//     'action .';
+//   column-gap: calc(var(--_notification-gap) * 4);
+//   row-gap: var(--_notification-gap);
+//   align-items: center;
+
+//   // if there is a heading we adjust the grid to have the heading on top and the message below
+//   &:has(> h2, > strong, > b) {
+//     grid-template-areas:
+//       'heading close'
+//       'message .'
+//       'action .';
+//   }
+
+//   bal-button,
+//   .button {
+//     grid-area: action;
+//     align-self: center;
+//     margin-top: calc(var(--_notification-space) - var(--_notification-gap));
+//   }
+
+//   .close,
+//   bal-close {
+//     grid-area: close;
+//     align-self: center;
+//   }
+
+//   // heading
+//   & > strong,
+//   & > b,
+//   & > h2 {
+//     grid-area: heading;
+//   }
+
+//   // content
+//   & > span,
+//   & > p {
+//     grid-area: message;
+//   }
+// }
+
+/**
+  * States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Icon
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-no-icon {
+    --mod-notification-icon-display: none;
+  }
+  &:not(.has-no-icon) {
+    --mod-notification-space-left: 3rem;
+  }
+}
+
+@include hybrid.host($use-host) {
+  @include host.hasAttr(no-icon) {
+    --mod-notification-icon-display: none;
+  }
+  @include host.hasNotAttr(no-icon) {
+    --mod-notification-space-left: 3rem;
+  }
+}
+
+//
+// Colors
+// --------------------------------
+
+$colors: (
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'outline-base',
+  'outline-purple',
+  'outline-green',
+  'outline-yellow',
+  'outline-red'
+);
+
+@mixin notification-colors($color) {
+  --mod-notification-color-text: var(--bal-notification-color-#{$color}-text);
+  --mod-notification-color-border: var(--bal-notification-color-#{$color}-border);
+  --mod-notification-color-background: var(--bal-notification-color-#{$color}-background);
+  --mod-notification-icon: var(--bal-notification-color-#{$color}-icon);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  @each $color in $colors {
+    &.is-#{$color} {
+      @include notification-colors($color);
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  @each $color in $colors {
+    :host([color='#{$color}']) {
+      @include notification-colors($color);
+    }
+  }
+}
+
+//
+// Sizes
+// --------------------------------
+
+$sizes: ('sm', 'md', 'lg');
+
+@mixin notification-sizes($size) {
+  --mod-notification-space: var(--bal-card-space-#{$size}-device);
+  --mod-notification-space-top: var(--bal-card-space-#{$size}-device);
+  --mod-notification-space-right: var(--bal-card-space-#{$size}-device);
+  --mod-notification-space-bottom: var(--bal-card-space-#{$size}-device);
+  --mod-notification-space-left: var(--bal-card-space-#{$size}-device);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  @each $size in $sizes {
+    &.is-#{$size} {
+      @include notification-sizes($size);
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  @each $size in $sizes {
+    :host([size='#{$size}']) {
+      @include notification-sizes($size);
+    }
+  }
+}
+
+//
+// Types
+// --------------------------------
+
+// $types: ('toast', 'snackbar');
+
+// @mixin notification-type() {
+//   @include unselectable();
+//   box-shadow: var(--bal-shadow-base);
+
+//   --mod-notification-radius: var(--bal-notification-radius-alert);
+//   --mod-notification-space: var(--bal-space-base-device);
+
+//   --mod-notification-heading-size: var(--bal-text-size-base-device);
+//   --mod-notification-content-size: var(--bal-text-size-sm-device);
+// }
+
+// @include hybrid.styles($css-selector, $use-host) {
+//   @each $type in $types {
+//     &.is-#{$type} {
+//       @include notification-type();
+//     }
+//   }
+// }
+
+// @include hybrid.host($use-host) {
+//   @each $type in $types {
+//     :host([type='#{$type}']) {
+//       @include notification-type();
+//     }
+//   }
+// }

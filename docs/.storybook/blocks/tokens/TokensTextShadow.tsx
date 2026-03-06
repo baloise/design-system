@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
@@ -27,7 +27,7 @@ export const TokensTextShadow = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className="radius-normal font-weight-bold text-x-large flex justify-content-center align-items-center"
+                  className="radius font-weight-bold text-x-large flex justify-content-center align-items-center"
                   style={{
                     height: '48px',
                     width: '48px',

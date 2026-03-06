@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import json from '../../../../packages/styles/docs/typography.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
@@ -38,16 +38,46 @@ export const CssTypographyWhiteSpace = (): React.ReactElement => <CssUtilitiesTa
 export const CssTypographySize = (): React.ReactElement => {
   return CssTable({
     tokens: {
-      'x-small': tokens.text.size['x-small'].desktop,
-      'small': tokens.text.size['small'].desktop,
-      'normal': tokens.text.size['normal'].desktop,
-      'medium': tokens.text.size['medium'].desktop,
-      'large': tokens.text.size['large'].desktop,
-      'x-large': tokens.text.size['x-large'].desktop,
-      'xx-large': tokens.text.size['xx-large'].desktop,
-      'xxx-large': tokens.text.size['xxx-large'].desktop,
-      'xxxx-large': tokens.text.size['xxxx-large'].desktop,
-      'xxxxx-large': tokens.text.size['xxxxx-large'].desktop,
+      'x-small': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['x-small'].Mobile,
+        name: 'bal-text-size-x-small-device',
+      },
+      'small': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['small'].Mobile,
+        name: 'bal-text-size-small-device',
+      },
+      'normal': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['normal'].Mobile,
+        name: 'bal-text-size-normal-device',
+      },
+      'medium': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['medium'].Mobile,
+        name: 'bal-text-size-medium-device',
+      },
+      'large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['large'].Mobile,
+        name: 'bal-text-size-large-device',
+      },
+      'x-large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['x-large'].Mobile,
+        name: 'bal-text-size-x-large-device',
+      },
+      'xx-large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['xx-large'].Mobile,
+        name: 'bal-text-size-xx-large-device',
+      },
+      'xxx-large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxx-large'].Mobile,
+        name: 'bal-text-size-xxx-large-device',
+      },
+      'xxxx-large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxxx-large'].Mobile,
+        name: 'bal-text-size-xxxx-large-device',
+      },
+      'xxxxx-large': {
+        ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxxxx-large'].Mobile,
+        name: 'bal-text-size-xxxxx-large-device',
+      },
     },
     css: 'text',
     example: item => <div className={`text-${item.key} font-weight-bold text-align-center p-xx-small`}>Aa</div>,

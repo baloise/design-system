@@ -1,0 +1,86 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include hybrid.base-vars('shape');
+
+  --shape-color: var(--bal-background-color-green-base);
+  --shape-size: 66px;
+  --shape-rotation: 0deg;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include hybrid.base-styles('shape');
+  @include unselectable;
+
+  display: block;
+  overflow: hidden;
+  transform: rotate(var(--shape-rotation));
+  fill: var(--shape-color);
+
+  // Size
+  width: var(--shape-size);
+  height: var(--shape-size);
+
+  @include tablet {
+    --shape-size: 120px;
+  }
+
+  @include desktop {
+    --shape-size: 198px;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Rotation modifiers
+:host(.has-rotation-0) {
+  --shape-rotation: 0deg;
+}
+:host(.has-rotation-90) {
+  --shape-rotation: 90deg;
+}
+:host(.has-rotation-180) {
+  --shape-rotation: 180deg;
+}
+:host(.has-rotation-270) {
+  --shape-rotation: 270deg;
+}
+
+//
+// Colors
+
+$shape-colors: (
+  'red': 'red-6',
+  'green': 'green-6',
+  'yellow': 'yellow-6',
+  'purple': 'purple-6',
+  'red-light': 'red-3',
+  'green-light': 'green-3',
+  'yellow-light': 'yellow-3',
+  'purple-light': 'purple-3',
+);
+
+@each $name, $token in $shape-colors {
+  :host(.is-#{$name}) {
+    --shape-color: var(--bal-color-#{$token});
+  }
+}

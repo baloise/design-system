@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/tokens.css" />
-    <link rel="stylesheet" href="/assets/basic.css" />
-    <link rel="stylesheet" href="/assets/components.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <label class="label">Label default</label>
       </section>
 
       <!-- No Wrap -->
-      <section>
+      <section data-testid="no-wrap">
         <span>No Wrap</span>
         <label class="label has-no-wrap">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ut adipisci eveniet fugiat repudiandae placeat
@@ -34,21 +35,21 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <div class="stack-content">
-          <label class="label is-small">Small</label>
-          <label class="label is-normal">Normal</label>
-          <label class="label is-medium">Medium</label>
-          <label class="label is-large">Large</label>
-          <label class="label is-x-large">X-Large</label>
-          <label class="label is-xx-large">XX-Large</label>
-          <label class="label is-xxx-large">XXX-Large</label>
+          <label class="label is-sm">Small</label>
+          <label class="label is-base">Normal</label>
+          <label class="label is-md">Medium</label>
+          <label class="label is-lg">Large</label>
+          <label class="label is-xl">X-Large</label>
+          <label class="label is-2xl">XX-Large</label>
+          <label class="label is-3xl">XXX-Large</label>
         </div>
       </section>
 
       <!-- Colors -->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <div class="stack-content">
           <label class="label is-success">Success</label>

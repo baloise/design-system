@@ -67,13 +67,18 @@
       "$type": "dimension",
       "small": {
         "mobile": { "$value": "16" },
-        "tablet": { "$value": "24" },
-        "desktop": { "$value": "24" }
+        "tablet": { "$value": "16" },
+        "desktop": { "$value": "16" }
       },
       "normal": {
         "mobile": { "$value": "16" },
         "tablet": { "$value": "24" },
         "desktop": { "$value": "24" }
+      },
+      "medium": {
+        "mobile": { "$value": "16" },
+        "tablet": { "$value": "24" },
+        "desktop": { "$value": "32" }
       },
       "large": {
         "mobile": { "$value": "16" },

@@ -11,7 +11,7 @@ type InfoQuoteProps = PropsWithChildren
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" name="info" style={{ marginTop: '2px' }}></bal-icon>
+      <bal-icon color="primary" name="information" style={{ marginTop: '2px' }}></bal-icon>
       <span>{children}</span>
     </div>
   )
@@ -86,15 +86,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@import '@baloise/ds-styles/css/all.css';
-`}
-                  />
-                  <span>To import only the styles required for this component:</span>
-                  <Code
-                    language="css"
-                    code={`
-@import '@baloise/ds-styles/css/basic.css';
-@import '@baloise/ds-styles/css/components/bal-${tag}.css';
+@import '@baloise/ds-styles/css/baloise-design-system.css';
 `}
                   />
                 </>
@@ -108,15 +100,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@use '@baloise/ds-styles/sass/all';
-`}
-                  />
-                  <span>To import only the styles required for this component:</span>
-                  <Code
-                    language="css"
-                    code={`
-@use '@baloise/ds-styles/sass/basic';
-@use '@baloise/ds-styles/css/components/bal-${tag}';
+@use '@baloise/ds-styles/sass/baloise-design-system';
 `}
                   />
                 </>

@@ -19,10 +19,8 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
       docs: [
         textColors.docs,
         fontFamily.docs,
-        // fontFamilyLineHeight.rules,
-        fontSize.rules,
-        fontSize.rulesTablet,
-        fontSize.rulesDesktop,
+        lineHeight.docs,
+        // fontSize.docs,
         textAlign.docs,
         textTransform.docs,
         fontWeight.docs,
@@ -33,10 +31,8 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
       rules: [
         textColors.rules,
         fontFamily.rules,
-        // fontFamilyLineHeight.rules,
+        lineHeight.rules,
         fontSize.rules,
-        fontSize.rulesTablet,
-        fontSize.rulesDesktop,
         textAlign.rules,
         textTransform.rules,
         fontWeight.rules,
@@ -50,10 +46,10 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
 
 const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'text.line-height',
+    token: '🏷️ Semantic.🔤 Text.LineHeight',
     property: 'line-height',
-    responsive: false,
     replace: 'text-',
+    responsive: false,
     ...options,
   })
 }
@@ -69,7 +65,7 @@ const generateTextOverflow = async () => {
 }
 
 const generateTextColors = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'color.text', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Color', ...options })
   const values = utils.toProps({ tokens, replace: 'color-' })
   const property = 'color'
 
@@ -81,33 +77,49 @@ const generateTextColors = async (options: BuildStylesExecutorSchema) => {
 
 const generateFontFamily = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: 'font.family',
+    token: '🏷️ Semantic.🔤 Text.Family',
     property: 'font-family',
+    replace: 'text-family-',
+    prefix: 'font-family',
     responsive: false,
     ...options,
   })
+}
+
+const tshirtSizesMapping = {
+  '3xs': 'xx-small',
+  '2xs': 'xx-small',
+  'xs': 'x-small',
+  'sm': 'small',
+  'base': 'normal',
+  'md': 'medium',
+  'lg': 'large',
+  'xl': 'x-large',
+  '2xl': 'xx-large',
+  '3xl': 'xxx-large',
+  '4xl': 'xxxx-large',
+  '5xl': 'xxxxx-large',
+  '6xl': 'xxxxxx-large',
 }
 
 const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }) => {
   const values = {}
   for (const index in keys) {
     const key = keys[index]
-    values[`${prefix}-${key}`] =
-      `var(--bal-text-size-${key}${breakpoint && breakpoint !== 'mobile' ? `-${breakpoint}` : ''})`
+    const oldKey = tshirtSizesMapping[key.toLowerCase().replace('text-size-', '')]
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--bal-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }
 
 const generateFontSize = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'text.size', ...options })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Size', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop'] })
   const property = 'font-size'
 
   const rules = generateFontSizeRule({ keys, property, prefix: 'text' })
-  const rulesTablet = generateFontSizeRule({ keys, property, prefix: 'text', breakpoint: 'tablet' })
-  const rulesDesktop = generateFontSizeRule({ keys, property, prefix: 'text', breakpoint: 'desktop' })
 
-  return { rules, rulesTablet, rulesDesktop }
+  return { rules }
 }
 
 const generateTextAlign = () => {
@@ -135,7 +147,14 @@ const generateTextTransform = () => {
 }
 
 const generateFontWeight = async (options: BuildStylesExecutorSchema) => {
-  return utils.staticClassByToken({ token: 'font.weight', property: 'font-weight', responsive: false, ...options })
+  return utils.staticClassByToken({
+    token: '🏷️ Semantic.🔤 Text.Weight',
+    property: 'font-weight',
+    replace: 'text-weight-',
+    prefix: 'font-weight',
+    responsive: false,
+    ...options,
+  })
 }
 
 const generateWhiteSpace = () => {

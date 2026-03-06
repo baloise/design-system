@@ -1,0 +1,12 @@
+@forward './tokens';
+@forward './mixins';
+@forward './normalize';
+@forward './structure';
+
+@use '@baloise/ds-assets/src/fonts/scss/fonts.scss' with (
+  $font-path: '/assets/fonts'
+);
+
+@forward './core';
+// @forward './components/all';
+@forward './utilities/all';

@@ -1,19 +1,66 @@
-$with-core-components: false;
-
-@forward '../../styles/css/tokens.css';
-@forward '../../styles/sass/basic.scss';
-
-// core styles
-@forward './components/bal-button/bal-button.core.scss';
-@forward './components/bal-divider/bal-divider.core.scss';
-@forward './components/bal-heading/bal-heading.core.scss';
-@forward './components/bal-label/bal-label.core.scss';
-@forward './components/bal-link/bal-link.core.scss';
-@forward './components/bal-stack/bal-stack.core.scss';
-@forward './components/bal-text/bal-text.core.scss';
-
-// styles
-@forward './components/bal-badge/bal-badge.style.scss';
-@forward './components/bal-card/bal-card.style.scss';
-@forward './components/bal-close/bal-close.style.scss';
-@forward './components/bal-tag/bal-tag.style.scss';
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+ul {
+  list-style: none;
+}
+button,
+input,
+select {
+  margin: 0;
+}
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+iframe {
+  border: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+:host {
+  box-sizing: border-box;
+}
+:host * {
+  box-sizing: border-box;
+}

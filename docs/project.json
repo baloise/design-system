@@ -22,12 +22,12 @@
       ],
       "options": {
         "projectRoot": "{projectRoot}",
-        "fontsAssetPath": "packages/fonts/assets",
-        "iconsAssetPath": "packages/icons/src/assets",
-        "brandIconsAssetPath": "packages/brand-icons/src/assets",
-        "mapMarkersAssetPath": "packages/maps/src/assets",
-        "faviconsAssetPath": "packages/favicons/assets",
-        "figmaTokensAssetPath": "packages/tokens/dist/figma",
+        "fontsAssetPath": "packages/assets/src/fonts",
+        "iconsAssetPath": "packages/assets/src/icons",
+        "brandIconsAssetPath": "packages/assets/src/brand-icons",
+        "mapMarkersAssetPath": "packages/assets/src/maps",
+        "faviconsAssetPath": "packages/assets/src/favicons",
+        "figmaTokensAssetPath": "packages/assets/dist/figma",
         "serve": true
       }
     },
@@ -42,12 +42,12 @@
       ],
       "options": {
         "projectRoot": "{projectRoot}",
-        "fontsAssetPath": "packages/fonts/assets",
-        "iconsAssetPath": "packages/icons/src/assets",
-        "brandIconsAssetPath": "packages/brand-icons/src/assets",
-        "mapMarkersAssetPath": "packages/maps/src/assets",
-        "faviconsAssetPath": "packages/favicons/assets",
-        "figmaTokensAssetPath": "packages/tokens/dist/figma"
+        "fontsAssetPath": "packages/assets/src/fonts",
+        "iconsAssetPath": "packages/assets/src/icons",
+        "brandIconsAssetPath": "packages/assets/src/brand-icons",
+        "mapMarkersAssetPath": "packages/assets/src/maps",
+        "faviconsAssetPath": "packages/assets/src/favicons",
+        "figmaTokensAssetPath": "packages/assets/dist/figma"
       }
     }
   },

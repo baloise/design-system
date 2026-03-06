@@ -1,9 +1,9 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensBorderRadius = ({ overview }): React.ReactElement => {
-  const list = tokens.radius
+  const list = tokens['🏷️ Semantic']['🔵 Radius']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
@@ -18,17 +18,17 @@ export const TokensBorderRadius = ({ overview }): React.ReactElement => {
         const item = list[key]
         return (
           <tbody key={key}>
-            <tr>
-              <td style={{ verticalAlign: 'top' }} className="border-none">
+            <tr className="border-bottom-grey">
+              <td>
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
-              <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
+              <td>
+                <p className={`text-small font-weight-bold`}>{item.$value}</p>
               </td>
-              <td style={{ verticalAlign: 'top' }} className="border-none">
+              <td className="flex justify-content-center">
                 <div
                   style={{
-                    background: 'var(--bal-color-purple)',
+                    background: 'var(--bal-color-purple-4)',
                     height: '48px',
                     width: '48px',
                     borderRadius: `var(--${item.name})`,
@@ -36,11 +36,11 @@ export const TokensBorderRadius = ({ overview }): React.ReactElement => {
                 ></div>
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={3} className="border-bottom-grey">
                 <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         )
       })}

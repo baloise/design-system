@@ -31,7 +31,7 @@ export class Heading implements ComponentInterface {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop() level: BalProps.BalHeadingLevel = 'h1'
+  @Prop({ reflect: true }) level: BalProps.BalHeadingLevel = 'h1'
 
   @Watch('level')
   levelWatcher() {
@@ -43,7 +43,7 @@ export class Heading implements ComponentInterface {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel?: BalProps.BalHeadingVisualLevel
+  @Prop({ reflect: true }) visualLevel?: BalProps.BalHeadingVisualLevel
 
   @Watch('visualLevel')
   visualLevelWatcher() {
@@ -53,7 +53,7 @@ export class Heading implements ComponentInterface {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop() autoLevel?: BalProps.BalHeadingVisualLevel
+  @Prop({ reflect: true }) autoLevel?: BalProps.BalHeadingVisualLevel
 
   @Watch('autoLevel')
   autoLevelWatcher() {
@@ -65,32 +65,32 @@ export class Heading implements ComponentInterface {
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop() noWrap = false
+  @Prop({ reflect: true }) noWrap = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
-  @Prop() subtitle = false
+  @Prop({ reflect: true }) subtitle = false
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space?: 'none' | 'bottom' | 'top' | 'all'
+  @Prop({ reflect: true }) space?: 'none' | 'bottom' | 'top' | 'all'
 
   /**
    * The theme type of the toast.
    */
-  @Prop() color: BalProps.BalHeadingColor = ''
+  @Prop({ reflect: true }) color: BalProps.BalHeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop() inverted = false
+  @Prop({ reflect: true }) inverted = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop() shadow = false
+  @Prop({ reflect: true }) shadow = false
 
   /**
    * LIFECYCLE
@@ -159,20 +159,23 @@ export class Heading implements ComponentInterface {
     return (
       <Host
         class={{
-          [`bal-heading-space-${this.space}`]: this.space !== undefined,
+          [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
+          [`is-${this.fontColor}`]: this.fontColor !== undefined,
+          // 'is-subtitle': this.subtitle,
+          // [`has-space-${this.space}`]: this.space !== undefined,
         }}
       >
         <Heading
-          class={{
-            'heading': true,
-            'is-subtitle': this.subtitle,
-            'has-no-wrap': this.noWrap,
-            'has-shadow': this.shadow,
-            [`is-${this.fontColor}`]: this.fontColor !== undefined,
-            [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
-          }}
+          id="heading"
+          part="heading"
+          class={
+            {
+              // 'has-no-wrap': this.noWrap,
+              // 'has-shadow': this.shadow,
+              // [`is-${this.fontColor}`]: this.fontColor !== undefined,
+            }
+          }
           ref={(headingEl: any) => (this.headingEl = headingEl)}
-          data-testid="bal-heading"
         >
           <slot />
         </Heading>

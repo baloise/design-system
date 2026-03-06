@@ -38,31 +38,31 @@ export class BalBreakpointsUtil {
   }
 
   /**
-   * Is true when desktop, highDefinition, widescreen or fullhd breakpoint is active
+   * Is true when desktop, desktopLg, desktopXl or desktop2Xl breakpoint is active
    */
   public get isDesktop(): boolean {
     return this.includes('desktop')
   }
 
   /**
-   * Is true when highDefinition breakpoint is active
+   * Is true when desktopLg breakpoint is active
    */
-  public get isHighDefinition(): boolean {
-    return this.includes('highDefinition')
+  public get isDesktopLg(): boolean {
+    return this.includes('desktopLg')
   }
 
   /**
-   * Is true when widescreen breakpoint is active
+   * Is true when desktopXl breakpoint is active
    */
-  public get isWidescreen(): boolean {
-    return this.includes('widescreen')
+  public get isDesktopXl(): boolean {
+    return this.includes('desktopXl')
   }
 
   /**
-   * Is true when fullhd breakpoint is active
+   * Is true when desktop2Xl breakpoint is active
    */
-  public get isFullHD(): boolean {
-    return this.includes('fullhd')
+  public get isDesktop2Xl(): boolean {
+    return this.includes('desktop2Xl')
   }
 
   /**
@@ -98,9 +98,9 @@ export class BalBreakpointsUtil {
       tablet: this.breakpoints.includes('tablet'),
       touch: this.breakpoints.includes('touch'),
       desktop: this.breakpoints.includes('desktop'),
-      highDefinition: this.breakpoints.includes('highDefinition'),
-      widescreen: this.breakpoints.includes('widescreen'),
-      fullhd: this.breakpoints.includes('fullhd'),
+      desktopLg: this.breakpoints.includes('desktopLg'),
+      desktopXl: this.breakpoints.includes('desktopXl'),
+      desktop2Xl: this.breakpoints.includes('desktop2Xl'),
     }
   }
 }

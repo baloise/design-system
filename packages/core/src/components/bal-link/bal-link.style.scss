@@ -1,0 +1,94 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+a.link:not(.button),
+a.is-link:not(.button) {
+  @include vars.focus(link);
+
+  @include vars.local(link-color, var(--bal-link-color-base));
+  @include vars.local(link-color-hover, var(--bal-link-color-base-hover));
+  @include vars.local(link-color-active, var(--bal-link-color-base-active));
+
+  @include vars.local(link-family, var(--bal-link-family));
+  @include vars.local(link-weight, var(--bal-link-weight));
+  @include vars.local(link-radius, var(--bal-radius-base));
+  @include vars.local(link-border-width, var(--bal-link-border-width));
+  @include vars.local(link-underline-offset, var(--bal-link-underline-offset, 0.25rem));
+}
+
+/**
+  * Basic Style
+  */
+a.link:not(.button),
+a.is-link:not(.button),
+.content > a:any-link:not(.button) {
+  @include font-smoothing();
+
+  cursor: pointer;
+  hyphens: auto;
+  margin: 0;
+  overflow-wrap: break-word;
+  font-family: var(--_link-family);
+  font-weight: var(--_link-weight);
+  border-radius: var(--_link-radius);
+
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: var(--_link-underline-offset);
+  text-decoration-thickness: var(--_link-border-width);
+
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & > strong {
+    color: currentcolor;
+  }
+
+  color: var(--_link-color);
+  bal-icon {
+    --icon-color: var(--_link-color);
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      color: var(--_link-color-hover);
+      bal-icon {
+        --icon-color: var(--_link-color-hover);
+      }
+    }
+  }
+
+  &:active,
+  &.is-active {
+    color: var(--_link-color-active);
+    bal-icon {
+      --icon-color: var(--_link-color-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      @include vars.focus-styles(link);
+    }
+  }
+
+  &.is-inverted {
+    --mod-link-color: var(--bal-link-color-inverted);
+    --mod-link-color-hover: var(--bal-link-color-inverted-hover);
+    --mod-link-color-active: var(--bal-link-color-inverted-active);
+    --mod-link-focus: var(--bal-interaction-focus-color-inverted);
+  }
+}

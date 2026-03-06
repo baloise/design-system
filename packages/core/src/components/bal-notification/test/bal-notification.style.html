@@ -1,0 +1,220 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section>
+        <span>Basic</span>
+        <section class="notification" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+          <ul class="list">
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Alert -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Alert</span>
+        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
+          Your changes have been saved.
+        </section>
+        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          Your changes have been saved.
+        </section>
+        <section class="notification has-no-icon is-toast is-info" role="status" aria-live="polite" aria-atomic="true">
+          Your changes have been saved.
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+        <section class="notification has-no-icon is-toast is-info" role="status" aria-live="polite" aria-atomic="true">
+          Your changes have been saved.
+          <button class="button is-primary is-small">Okay</button>
+          <bal-close></bal-close>
+        </section>
+        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
+          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
+          laboriosam amet.
+        </section>
+        <section
+          class="notification has-no-icon is-toast is-danger"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <bal-close></bal-close>
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section
+          class="notification has-no-icon is-toast is-success"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+
+        <section class="notification is-toast is-success" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+
+        <section class="notification is-toast is-success" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+      </section>
+
+      <!-- Snackbar -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Snackbar</span>
+        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
+          Your changes have been saved.
+        </section>
+        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          Your changes have been saved.
+        </section>
+        <section
+          class="notification has-no-icon is-snackbar is-info"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Your changes have been saved.
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
+          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
+          laboriosam amet.
+        </section>
+        <section
+          class="notification has-no-icon is-snackbar is-danger"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <bal-close></bal-close>
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section
+          class="notification has-no-icon is-snackbar is-success"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+
+        <section class="notification is-snackbar is-success" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+
+        <section class="notification is-snackbar is-success" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+          <button class="button is-primary is-small">Okay</button>
+        </section>
+      </section>
+
+      <!-- Colors -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Colors</span>
+        <section class="notification" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Default</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-info" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Information</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-success" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Success</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-warning" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Warning</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-danger" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Danger</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+      </section>
+
+      <!-- Outline -->
+      <section class="flex gap-small flex-direction-column">
+        <span>Outline</span>
+        <section class="notification is-outline-base" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Heading</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Heading</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-green" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Heading</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-yellow" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Heading</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-red" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Heading</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+      </section>
+
+      <!-- Sizes-->
+      <section class="flex gap-small flex-direction-column">
+        <span>Sizes</span>
+        <section class="notification is-outline-purple is-small" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Small</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Default</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-purple is-medium" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Medium</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+        <section class="notification is-outline-purple is-large" role="status" aria-live="polite" aria-atomic="true">
+          <h2>Large</h2>
+          <p>Your changes have been saved.</p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

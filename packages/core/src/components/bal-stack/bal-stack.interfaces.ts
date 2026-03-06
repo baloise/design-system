@@ -4,11 +4,20 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalStackLayout = 'horizontal' | 'vertical' | 'horizontal-reverse' | 'vertical-reverse' | ''
+  export type BalStackLayout = 'horizontal' | 'vertical' | 'horizontal-reverse' | 'vertical-reverse'
 
   export type BalStackSpace =
     | 'auto'
     | 'none'
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | 'xxl'
+    // deprecated
     | 'xx-small'
     | 'x-small'
     | 'small'
@@ -17,9 +26,17 @@ namespace BalProps {
     | 'large'
     | 'x-large'
     | 'xx-large'
-    | ''
   export type BalStackPadding =
     | 'none'
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | 'xxl'
+    // deprecated
     | 'xx-small'
     | 'x-small'
     | 'small'
@@ -28,7 +45,6 @@ namespace BalProps {
     | 'large'
     | 'x-large'
     | 'xx-large'
-    | ''
   export type BalStackAlignment =
     | 'top start'
     | 'top center'
@@ -39,8 +55,6 @@ namespace BalProps {
     | 'bottom start'
     | 'bottom center'
     | 'bottom end'
-    | ''
 
-  // deprecated
-  export type BalStackDirection = 'row' | 'column' | ''
+  export type BalStackDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse'
 }

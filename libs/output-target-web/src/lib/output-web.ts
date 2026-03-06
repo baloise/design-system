@@ -2,7 +2,7 @@
 import path, { join, normalize } from 'path'
 import { writeFile, readFile } from 'fs/promises'
 import { copy } from 'fs-extra'
-import replace from 'replace-in-file'
+import { replaceInFile, replaceInFileSync } from 'replace-in-file'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetWeb } from './types'
 
@@ -53,7 +53,7 @@ async function adjustInterfacePath(config: Config) {
   const rootDir = path.normalize(config.rootDir || '')
 
   const files = join(rootDir, 'dist/types/**/*interfaces.d.ts')
-  replace.sync({
+  replaceInFileSync({
     files: files,
     from: `/// <reference types="packages/core/src/interfaces" />`,
     to: `/// <reference types="@baloise/ds-core" />`,
@@ -65,12 +65,12 @@ async function setVersion(config: Config) {
 
   const content = await readFile(join(rootDir, 'package.json'), 'utf8')
   const json = JSON.parse(content)
-  await replace({
+  await replaceInFile({
     files: join(rootDir, 'dist', '**/*.js').replace(/\\/g, '/'),
     from: /BAL_DEV_VERSION/g,
     to: json.version,
   })
-  await replace({
+  await replaceInFile({
     files: join(rootDir, 'components', '**/*.js').replace(/\\/g, '/'),
     from: /BAL_DEV_VERSION/g,
     to: json.version,

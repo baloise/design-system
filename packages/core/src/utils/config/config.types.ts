@@ -7,6 +7,7 @@ export type BalLuxembourgLanguage = 'fr' | 'de' | 'en'
 export type BalLuxembourgInternationalLanguage = BalLuxembourgLanguage | 'es' | 'pl' | 'pt' | 'sv' | 'fi'
 export type BalBelgiumLanguage = 'fr' | 'nl'
 export type BalGermanLanguage = 'de'
+export type BalBrand = 'baloise' | 'helvetia'
 
 export type BalLanguage =
   | BalSwissLanguage
@@ -18,6 +19,7 @@ export type BalLanguage =
 export type BalIcons = { [key: string]: string }
 
 export interface BalConfig {
+  brand?: BalBrand
   region?: BalRegion
   language?: BalLanguage
   allowedLanguages?: BalLanguage[]
@@ -35,6 +37,7 @@ export interface BalConfig {
 }
 
 export interface BalConfigState {
+  brand: BalBrand
   region: BalRegion
   language: BalLanguage
   allowedLanguages: BalLanguage[]

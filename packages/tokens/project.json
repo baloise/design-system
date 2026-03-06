@@ -11,7 +11,7 @@
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{projectRoot}/dist"],
-      "inputs": ["{projectRoot}/tokens/**/*.json", "{workspaceRoot}/packages/core/src/components/**/*.vars.json"],
+      "inputs": ["{projectRoot}/tokens/**/*.json"],
       "options": {
         "cwd": "{projectRoot}",
         "command": "npm run build"

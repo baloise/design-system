@@ -1,4 +1,4 @@
-@use '@baloise/ds-tokens/dist/tokens.scss' as *;
+@use '@baloise/ds-tokens/dist/sass/base.tokens.scss' as *;
 
 @mixin from($device) {
   @media screen and (min-width: $device) {
@@ -21,7 +21,7 @@
   }
 }
 @mixin tablet {
-  @media screen and (min-width: $bal-breakpoint-tablet), print {
+  @media screen and (min-width: $bal-breakpoint-tablet) {
     @content;
   }
 }
@@ -41,47 +41,92 @@
   }
 }
 @mixin desktop-only {
-  @media screen and (min-width: $bal-breakpoint-desktop) and (max-width: $bal-breakpoint-high-definition - 1px) {
+  @media screen and (min-width: $bal-breakpoint-desktop) and (max-width: $bal-breakpoint-desktop-lg - 1px) {
     @content;
   }
 }
+@mixin desktop-lg {
+  @media screen and (min-width: $bal-breakpoint-desktop-lg) {
+    @content;
+  }
+}
+@mixin desktop-lg-only {
+  @media screen and (min-width: $bal-breakpoint-desktop-lg) and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+    @content;
+  }
+}
+@mixin until-desktop-lg {
+  @media screen and (max-width: $bal-breakpoint-desktop-lg - 1px) {
+    @content;
+  }
+}
+@mixin until-desktop-xl {
+  @media screen and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+    @content;
+  }
+}
+@mixin desktop-xl {
+  @media screen and (min-width: $bal-breakpoint-desktop-xl) {
+    @content;
+  }
+}
+@mixin desktop-xl-only {
+  @media screen and (min-width: $bal-breakpoint-desktop-xl) and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+    @content;
+  }
+}
+@mixin until-desktop-2xl {
+  @media screen and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+    @content;
+  }
+}
+@mixin desktop-2xl {
+  @media screen and (min-width: $bal-breakpoint-desktop-2xl) {
+    @content;
+  }
+}
+
+/**
+  * @deprecated Use desktop with t-shirt size breakpoints instead
+  */
+
 @mixin high-definition {
-  @media screen and (min-width: $bal-breakpoint-high-definition) {
+  @media screen and (min-width: $bal-breakpoint-desktop-lg) {
     @content;
   }
 }
 @mixin high-definition-only {
-  @media screen and (min-width: $bal-breakpoint-high-definition) and (max-width: $bal-breakpoint-widescreen - 1px) {
+  @media screen and (min-width: $bal-breakpoint-desktop-lg) and (max-width: $bal-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin until-high-definition {
-  @media screen and (max-width: $bal-breakpoint-high-definition - 1px) {
+  @media screen and (max-width: $bal-breakpoint-desktop-lg - 1px) {
     @content;
   }
 }
 @mixin until-widescreen {
-  @media screen and (max-width: $bal-breakpoint-widescreen - 1px) {
+  @media screen and (max-width: $bal-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin widescreen {
-  @media screen and (min-width: $bal-breakpoint-widescreen) {
+  @media screen and (min-width: $bal-breakpoint-desktop-xl) {
     @content;
   }
 }
 @mixin widescreen-only {
-  @media screen and (min-width: $bal-breakpoint-widescreen) and (max-width: $bal-breakpoint-fullhd - 1px) {
+  @media screen and (min-width: $bal-breakpoint-desktop-xl) and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin until-fullhd {
-  @media screen and (max-width: $bal-breakpoint-fullhd - 1px) {
+  @media screen and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin fullhd {
-  @media screen and (min-width: $bal-breakpoint-fullhd) {
+  @media screen and (min-width: $bal-breakpoint-desktop-2xl) {
     @content;
   }
 }

@@ -5,9 +5,11 @@
 
 namespace BalProps {
   export type BalCardActionsPosition = 'right' | 'center' | ''
+  export type BalCardFooterPosition = 'right' | 'center' | ''
+  export type BalCardHeaderDirection = 'row' | 'column'
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
-  export type BalCardSpace = 'small' | '' | 'medium' | 'large'
+  export type BalCardSpace = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
   export type BalCardColor =
     | 'white'
     | 'primary'

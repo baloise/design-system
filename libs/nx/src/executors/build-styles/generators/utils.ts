@@ -6,7 +6,7 @@ export const NEWLINE = '\n'
 export const DASH_SEPARATOR = '-'
 export const COLON_SEPARATOR = `\\:`
 export const pseudoStates = ['focus', 'hover', 'active']
-export const minBreakpoints = ['mobile', 'tablet', 'desktop', 'widescreen']
+export const minBreakpoints = ['mobile', 'tablet', 'desktop', 'desktop-xl']
 
 export const allBreakpoints = [
   'mobile',
@@ -15,11 +15,11 @@ export const allBreakpoints = [
   'touch',
   'desktop',
   'desktop-only',
-  'high-definition',
-  'high-definition-only',
-  'widescreen',
-  'widescreen-only',
-  'fullhd',
+  'desktop-lg',
+  'desktop-lg-only',
+  'desktop-xl',
+  'desktop-xl-only',
+  'desktop-2xl',
 ]
 
 interface BaseRule {
@@ -38,7 +38,7 @@ class RuleValue implements BaseRule {
   }
 
   toString(indent = '') {
-    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''};`
+    return `${indent}${this.prop}: ${this.value}${this.important === true ? ' !important' : ''};`.toLowerCase()
   }
 }
 
@@ -63,7 +63,7 @@ class Rule implements BaseRule {
     const values = this.values.map(value => {
       return [`  ${value.toString(indent)}`].join(NEWLINE)
     })
-    return [`${selector} {`, ...values, `${indent}}`].join(NEWLINE) + NEWLINE
+    return [`${selector} {`, ...values, `${indent}}`].join(NEWLINE).toLowerCase() + NEWLINE
   }
 }
 
@@ -84,7 +84,9 @@ class BreakpointRule implements BaseRule {
       indent + `@include ${this.breakpoint} {`,
       indent + this.rules.map(rule => rule.toString(`  ${indent}`)).join(NEWLINE),
       indent + `}`,
-    ].join(`${NEWLINE}`)
+    ]
+      .join(`${NEWLINE}`)
+      .toLowerCase()
   }
 }
 
@@ -96,7 +98,7 @@ class RuleGroup implements BaseRule {
   }
 
   toString(indent = '') {
-    return this.rules.map(rule => rule.toString(indent)).join(NEWLINE)
+    return this.rules.map(rule => rule.toString(indent).toLowerCase()).join(NEWLINE)
   }
 }
 
@@ -118,37 +120,17 @@ export const filterTokenKeys = ({ tokens, ignore = [] }) => {
   return Object.keys(tokens).filter(key => !ignore.includes(key))
 }
 
-export const visualTest = ({ values, template }) => {
-  const lines = []
-  for (const className in values) {
-    lines.push(template(className))
-  }
-  return lines.map(l => `        ${l}`).join(NEWLINE)
-}
-
 export const toCssVarName = (tokenName, token) => {
-  const isSizeVariable = token.attributes.category === 'size'
-  const isColorVariable = token.attributes.category === 'color'
+  // const isSizeVariable = token.attributes.category === 'size'
+  // const isColorVariable = token.attributes.category === 'color'
   const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
-  const endsWithDefault = token.name.endsWith('-default') || token.name.endsWith('Default')
-  // const endsWithBase = token.name.endsWith('-base') || token.name.endsWith('Base')
 
-  if (isSizeVariable) {
-    tokenName = tokenName.replace('bal-size', 'bal')
-  }
-  if (isColorVariable) {
-    tokenName = tokenName.replace('bal-color-base', 'bal-color')
-    tokenName = tokenName.replace('bal-color-brand', 'bal-color')
-  }
+  // if (isSizeVariable) {
+  //   tokenName = tokenName.replace('bal-size', 'bal')
+  // }
   if (endsWithMobile) {
     tokenName = tokenName.replace('-mobile', '')
   }
-  if (endsWithDefault) {
-    tokenName = tokenName.replace('-default', '')
-  }
-  // if (endsWithBase) {
-  //   tokenName = tokenName.replace('-base', '')
-  // }
   return tokenName
 }
 
@@ -179,7 +161,7 @@ export const toProps = ({ tokens, prefix = undefined, replace = undefined, repla
   for (const key in tokens) {
     const property = tokens[key]
 
-    if (!property.$value) {
+    if (property.$value === undefined) {
       props = {
         ...props,
         ...toProps({ tokens: property, prefix, replace, replace2 }),
@@ -342,29 +324,11 @@ export const styleClassDeprecated = ({
   return rules
 }
 
-export const merge = ({ docs = [], rules = [], deprecated = [], visualTest = [] }) => {
+export const merge = ({ docs = [], rules = [] }) => {
   return {
     json: JSON.stringify(docs, undefined, 2),
     rules: [`@use '../mixins/_all' as *;`, NEWLINE, ...rules.map(r => r.toString())].join(NEWLINE),
-    deprecated: [...deprecated.map(r => r.toString())].join(NEWLINE),
-    visualTest: `<!DOCTYPE html>
-<html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script type="module" src="/build/baloise-design-system.esm.js"></script>
-    <script nomodule src="/build/baloise-design-system.js"></script>
-  </head>
-  <body>
-    <bal-doc-app>
-      <main class="container">
-${visualTest.join(NEWLINE)}
-      </main>
-    </bal-doc-app>
-  </body>
-</html>
-`,
+    // deprecated: [...deprecated.map(r => r.toString())].join(NEWLINE),
   }
 }
 
@@ -406,7 +370,7 @@ export const save = async (fileName, projectRoot, { json, rules }) => {
 }
 
 export const getTokens = async ({ token, tokensRoot }) => {
-  const content = await readFile(join(tokensRoot, `dist/tokens.docs.json`), 'utf8')
+  const content = await readFile(join(tokensRoot, `dist/docs/base.tokens.json`), 'utf8')
   const json = JSON.parse(content)
   return get(json, token)
 }

@@ -14,9 +14,9 @@ export const TokensFont = ({ overview }): React.ReactElement => {
       <tbody>
         <tr>
           <td style={{ verticalAlign: 'top' }}>
-            <span className="font-family-title font-weight-bold text-primary text-medium">Bold Headline</span>
+            <span className="font-family-heading font-weight-bold text-primary text-medium">Bold Headline</span>
             <br />
-            <span className="font-family-title text-primary text-medium">Light Headline</span>
+            <span className="font-family-heading text-primary text-medium">Light Headline</span>
           </td>
           <td style={{ verticalAlign: 'top' }}>
             <p className="font-weight-bold text-large mt-none mb-x-small">
@@ -25,7 +25,7 @@ export const TokensFont = ({ overview }): React.ReactElement => {
             <p className="m-none text-small">Should only be used for headings and buttons</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <Clipboard label={'bal-font-family-title'} value={`var(--bal-font-family-title)`} />
+            <Clipboard label={'bal-font-family-heading'} value={`var(--bal-font-family-heading)`} />
           </td>
         </tr>
         <tr>

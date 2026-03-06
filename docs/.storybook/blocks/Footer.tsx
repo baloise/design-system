@@ -3,10 +3,10 @@ import { navigate } from '@storybook/addon-links'
 
 export const Footer = ({ children }) => {
   return (
-    <section className="sb-unstyled">
+    <section className="sb-unstyled mt-2xl">
       <hr />
       {children}
-      <section className="mt-xx-large pt-normal border-top-light">
+      <section className="mt-xl pt-normal border-top-light">
         <p className="mb-small">
           If you experience any issues while using a component, please head over to the{' '}
           <a

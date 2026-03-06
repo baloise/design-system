@@ -10,55 +10,38 @@ export const HEADING_TAGS: { [key: string]: HeadingTag } = {
   'h5': 'h5',
   'span': 'span',
   'p': 'p',
-  'xxxxx-large': 'h1',
-  'xxxx-large': 'h1',
-  'xxx-large': 'h1',
-  'xx-large': 'h1',
-  'x-large': 'h2',
-  'large': 'h3',
-  'medium': 'h4',
-  'normal': 'h5',
+  '5xl': 'h1',
+  '4xl': 'h1',
+  '3xl': 'h1',
+  '2xl': 'h1',
+  'xl': 'h2',
+  'lg': 'h3',
+  'md': 'h4',
+  'base': 'h5',
 }
 
-export type HeadingSize =
-  | 'xxxxx-large'
-  | 'xxxx-large'
-  | 'xxx-large'
-  | 'xx-large'
-  | 'x-large'
-  | 'large'
-  | 'medium'
-  | 'normal'
+export type HeadingSize = '5xl' | '4xl' | '3xl' | '2xl' | 'xl' | 'lg' | 'md' | 'base'
 
-export const HEADING_ORDER: HeadingSize[] = [
-  'xxxxx-large',
-  'xxxx-large',
-  'xxx-large',
-  'xx-large',
-  'x-large',
-  'large',
-  'medium',
-  'normal',
-]
+export const HEADING_ORDER: HeadingSize[] = ['5xl', '4xl', '3xl', '2xl', 'xl', 'lg', 'md', 'base']
 
 export const HEADING_SIZES: { [key: string]: HeadingSize } = {
-  'display': 'xxxxx-large',
-  'display-2': 'xxxx-large',
-  'h1': 'xxx-large',
-  'h2': 'xx-large',
-  'h3': 'x-large',
-  'h4': 'large',
-  'h5': 'normal',
-  'p': 'normal',
-  'span': 'normal',
-  'xxxxx-large': 'xxxxx-large',
-  'xxxx-large': 'xxxx-large',
-  'xxx-large': 'xxx-large',
-  'xx-large': 'xx-large',
-  'x-large': 'x-large',
-  'large': 'large',
-  'medium': 'medium',
-  'normal': 'normal',
+  'display': '5xl',
+  'display-2': '4xl',
+  'h1': '3xl',
+  'h2': '2xl',
+  'h3': 'xl',
+  'h4': 'lg',
+  'h5': 'base',
+  'p': 'base',
+  'span': 'base',
+  '5xl': '5xl',
+  '4xl': '4xl',
+  '3xl': '3xl',
+  '2xl': '2xl',
+  'xl': 'xl',
+  'lg': 'lg',
+  'md': 'md',
+  'base': 'base',
 }
 
 export type HeadingColor = 'primary' | 'success' | 'warning' | 'danger' | 'white'

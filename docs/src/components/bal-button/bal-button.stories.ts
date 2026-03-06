@@ -17,7 +17,7 @@ const tag = 'bal-button'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Button 👻',
+  title: 'Components/Containment/Button',
   args: {
     ...withDefaultContent('Button'),
   },

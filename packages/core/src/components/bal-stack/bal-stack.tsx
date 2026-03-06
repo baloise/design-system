@@ -1,5 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-stack',
@@ -19,41 +20,90 @@ export class Stack implements ComponentInterface, Loggable {
    */
 
   /**
+   * @deprecated Please use direction instead.
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout: BalProps.BalStackLayout = 'horizontal'
+  @Prop() layout?: BalProps.BalStackLayout
+  @Watch('layout')
+  validateLayout(newValue?: BalProps.BalStackLayout) {
+    if (newValue !== undefined) {
+      if (newValue === 'horizontal') {
+        this.direction = 'row'
+      } else if (newValue === 'vertical') {
+        this.direction = 'column'
+      } else if (newValue === 'vertical-reverse') {
+        this.direction = 'column-reverse'
+      } else if (newValue === 'horizontal-reverse') {
+        this.direction = 'row-reverse'
+      }
+    }
+  }
+
+  /**
+   * Defines the direction of the child elements. Default is column.
+   */
+  @Prop() direction: BalProps.BalStackDirection = 'column'
 
   /**
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() align: BalProps.BalStackAlignment = ''
+  @Prop() align?: BalProps.BalStackAlignment
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() space: BalProps.BalStackSpace = 'normal'
+  @Prop({ mutable: true }) space?: BalProps.BalStackSpace
+  @Watch('space')
+  validateSpace(newValue?: BalProps.BalStackSpace) {
+    this.space = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
   @Prop() spaceRow?: BalProps.BalStackSpace
+  @Watch('spaceRow')
+  validateSpaceRow(newValue?: BalProps.BalStackSpace) {
+    this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
   @Prop() spaceColumn?: BalProps.BalStackSpace
+  @Watch('spaceColumn')
+  validateSpaceColumn(newValue?: BalProps.BalStackSpace) {
+    this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() px: BalProps.BalStackPadding = ''
+  @Prop() p?: BalProps.BalStackPadding
+  @Watch('p')
+  validatePadding(newValue?: BalProps.BalStackPadding) {
+    this.p = normalizeDeprecatedTShirtSize(newValue)
+  }
+
+  /**
+   * Defines the horizontal padding left and right of the stack element.
+   */
+  @Prop() px?: BalProps.BalStackPadding
+  @Watch('px')
+  validatePaddingX(newValue?: BalProps.BalStackPadding) {
+    this.px = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines the vertical padding top and bottom of the stack element.
    */
-  @Prop() py: BalProps.BalStackPadding = ''
+  @Prop() py?: BalProps.BalStackPadding
+  @Watch('py')
+  validatePaddingY(newValue?: BalProps.BalStackPadding) {
+    this.py = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
    * Defines if the child elements will wrap to the next line if there
@@ -68,15 +118,19 @@ export class Stack implements ComponentInterface, Loggable {
 
   /**
    * @internal
-   * Please use layout instead.
-   */
-  @Prop() direction: BalProps.BalStackDirection = ''
-
-  /**
-   * @internal
    * Please use align instead.
    */
-  @Prop() alignment: BalProps.BalStackAlignment = ''
+  @Prop() alignment?: BalProps.BalStackAlignment
+
+  connectedCallback(): void {
+    this.validateLayout(this.layout)
+    this.validateSpace(this.space)
+    this.validateSpaceRow(this.spaceRow)
+    this.validateSpaceColumn(this.spaceColumn)
+    this.validatePadding(this.p)
+    this.validatePaddingX(this.px)
+    this.validatePaddingY(this.py)
+  }
 
   /**
    * RENDER
@@ -100,8 +154,8 @@ export class Stack implements ComponentInterface, Loggable {
       layoutValue = this.direction === 'row' ? 'horizontal' : 'vertical'
     }
 
-    let alignValue = this.align.split(' ').join('-')
-    if (alignment) {
+    let alignValue = this.align?.split(' ').join('-')
+    if (this.alignment) {
       alignValue = this.alignment.split(' ').join('-')
     }
 
@@ -109,6 +163,8 @@ export class Stack implements ComponentInterface, Loggable {
       <Host
         class={{
           'stack': true,
+          'as-row': this.direction === 'row',
+          'as-col': this.direction === 'column',
           'has-wrap': useWrap,
           'fit-content': fitContent,
           [`is-${layoutValue}`]: layout || direction,
@@ -116,6 +172,7 @@ export class Stack implements ComponentInterface, Loggable {
           [`has-space-${this.space}`]: space,
           [`has-space-row-${this.spaceRow}`]: spaceRow,
           [`has-space-col-${this.spaceColumn}`]: spaceColumn,
+          [`p-${this.p}`]: !!this.p,
           [`px-${this.px}`]: px,
           [`py-${this.py}`]: py,
         }}

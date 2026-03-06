@@ -12,5 +12,6 @@
       "extensions": ["po.ts"],
       "format": "svg"
     }
-  ]
+  ],
+  "vitest.disableWorkspaceWarning": true
 }
