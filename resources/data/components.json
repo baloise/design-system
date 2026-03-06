@@ -3859,48 +3859,6 @@
       "dependencyGraph": {},
       "props": [
         {
-          "name": "borderStyle",
-          "type": "\"\" | \"dashed\" | \"solid\"",
-          "complexType": {
-            "original": "BalProps.BalDividerBorderStyle",
-            "resolved": "\"\" | \"dashed\" | \"solid\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "border-style",
-          "reflectToAttr": false,
-          "docs": "Defines the color of the separator line.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'solid'"
-            }
-          ],
-          "default": "'solid'",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "dashed",
-              "type": "string"
-            },
-            {
-              "value": "solid",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "color",
           "type": "\"danger\" | \"danger-dark\" | \"danger-darker\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
           "complexType": {
@@ -3976,6 +3934,35 @@
             {
               "value": "white",
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "dashed",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "dashed",
+          "reflectToAttr": false,
+          "docs": "Defines if the separator line is dashed or solid. Default is solid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
