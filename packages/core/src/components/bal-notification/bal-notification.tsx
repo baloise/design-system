@@ -11,17 +11,14 @@ import {
   State,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../utils/form-input'
-import { NotificationInterface } from './bal-notification-container'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-
-export interface NotificationComponentInterface extends Omit<NotificationInterface, 'id'> {}
 
 @Component({
   tag: 'bal-notification',
   styleUrl: 'bal-notification.host.scss',
   shadow: true,
 })
-export class Notification implements ComponentInterface, NotificationComponentInterface {
+export class Notification implements ComponentInterface {
   @Element() element!: HTMLBalNotificationElement
   @State() didLoad = false
 
@@ -31,72 +28,35 @@ export class Notification implements ComponentInterface, NotificationComponentIn
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop({ reflect: true }) color: BalProps.BalNotificationColor = ''
+  @Prop() color?: BalProps.BalNotificationColor
 
   /**
-   * Defines the type of the notification, alert or snackbar.
-   * Alert is used for important messages that require immediate attention,
-   * while snackbar is used for less important messages that can be ignored by the user.
+   * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
-  @Prop({ reflect: true }) type: BalProps.BalNotificationType = ''
-
-  /**
-   * If `true` the notification is visible.
-   */
-  @Prop({ reflect: true }) visible = true
+  @Prop() alert = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop({ reflect: true }) closable = false
+  @Prop() closable = false
 
   /**
    * If `true` there will be no icon provided
    */
-  @Prop({ reflect: true }) noIcon = false
+  @Prop() noIcon = false
 
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop({ reflect: true, mutable: true }) size: BalProps.BalNotificationSize = ''
+  @Prop({ reflect: true, mutable: true }) size?: BalProps.BalNotificationSize
   watchSize(newValue: BalProps.BalNotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * Defines the heading of the notification.
    */
-  @Prop() heading = ''
-
-  /**
-   * Defines the message of the notification as html content
-   */
-  @Prop() message = ''
-
-  /**
-   * Defines the icon of the notification, if not provided it will be derived from the color property
-   */
-  @Prop() action = ''
-
-  /**
-   * Defines the icon of the action button.
-   */
-  @Prop() actionIcon = ''
-
-  /**
-   * Specifies where to open the linked document.
-   */
-  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
-
-  /**
-   * Specifies the URL of the page the link goes to
-   */
-  @Prop() actionHref = ''
-
-  /**
-   * The duration of the toast in milliseconds.
-   */
-  @Prop() duration = 0
+  @Prop() heading?: string
 
   /**
    * @internal Handler for on close event
@@ -104,19 +64,9 @@ export class Notification implements ComponentInterface, NotificationComponentIn
   @Prop() closeHandler: () => void = () => void 0
 
   /**
-   * @internal Handler for on action event
-   */
-  @Prop() actionHandler: () => void = () => void 0
-
-  /**
    * Emitted when the close button got clicked.
    */
   @Event() balCloseClick!: EventEmitter<BalEvents.BalNotificationCloseClickDetail>
-
-  /**
-   * Emitted when the action button got clicked.
-   */
-  @Event() balActionClick!: EventEmitter<BalEvents.BalNotificationActionClickDetail>
 
   /**
    * Emitted when the component has loaded.
@@ -143,7 +93,7 @@ export class Notification implements ComponentInterface, NotificationComponentIn
 
   render() {
     let a11yAttributes = {}
-    if (this.type === 'toast') {
+    if (this.alert) {
       a11yAttributes = {
         'role': 'alert',
         'aria-live': 'assertive',
@@ -161,24 +111,12 @@ export class Notification implements ComponentInterface, NotificationComponentIn
       <Host
         {...a11yAttributes}
         class={{
-          [`is-ready`]: this.didLoad,
-          // [`has-heading`]: !!this.heading,
-          // [`is-visible`]: !!this.visible,
-          // [`is-${this.color}`]: !!this.color,
+          'has-no-icon': this.noIcon,
+          [`is-${this.color}`]: !!this.color,
+          [`is-${this.size}`]: !!this.size,
         }}
       >
-        <section
-          id="notification"
-          class={
-            {
-              // 'has-no-icon': this.noIcon,
-              // 'is-toast': this.type === 'toast',
-              // 'is-snackbar': this.type === 'snackbar',
-              // [`is-${this.size}`]: !!this.size,
-            }
-          }
-          part="section"
-        >
+        <section id="notification" part="section">
           {this.closable && (
             <bal-close
               part="close"
@@ -189,27 +127,9 @@ export class Notification implements ComponentInterface, NotificationComponentIn
             ></bal-close>
           )}
           {this.heading && <h2 part="heading">{this.heading}</h2>}
-          {this.heading && this.message && <p part="content">{this.message}</p>}
-          {!this.heading && this.message && this.message}
           <span>
             <slot></slot>
           </span>
-          {this.action && (
-            <bal-button
-              color="primary"
-              size="sm"
-              part="button"
-              icon={this.actionIcon}
-              target={this.actionTarget}
-              href={this.actionHref}
-              onClick={ev => {
-                stopEventBubbling(ev)
-                this.balActionClick.emit(ev)
-              }}
-            >
-              {this.action}
-            </bal-button>
-          )}
         </section>
       </Host>
     )

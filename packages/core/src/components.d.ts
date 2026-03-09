@@ -842,29 +842,10 @@ export namespace Components {
     }
     interface BalNotification {
         /**
-          * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
+          * If `true` the notification will be displayed as an alert, otherwise as a status message.
+          * @default false
          */
-        "action": string;
-        /**
-          * @default () => void 0
-         */
-        "actionHandler": () => void;
-        /**
-          * Specifies the URL of the page the link goes to
-          * @default ''
-         */
-        "actionHref": string;
-        /**
-          * Defines the icon of the action button.
-          * @default ''
-         */
-        "actionIcon": string;
-        /**
-          * Specifies where to open the linked document.
-          * @default '_blank'
-         */
-        "actionTarget": BalProps.BalButtonTarget;
+        "alert": boolean;
         /**
           * If `true` the notification can be closed by the user.
           * @default false
@@ -880,24 +861,12 @@ export namespace Components {
         "closeHandler": () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": BalProps.BalNotificationColor;
-        /**
-          * The duration of the toast in milliseconds.
-          * @default 0
-         */
-        "duration": number;
+        "color"?: BalProps.BalNotificationColor;
         /**
           * Defines the heading of the notification.
-          * @default ''
          */
-        "heading": string;
-        /**
-          * Defines the message of the notification as html content
-          * @default ''
-         */
-        "message": string;
+        "heading"?: string;
         /**
           * If `true` there will be no icon provided
           * @default false
@@ -905,19 +874,8 @@ export namespace Components {
         "noIcon": boolean;
         /**
           * Defines the size of the notification, small, medium or large.
-          * @default ''
          */
-        "size": BalProps.BalNotificationSize;
-        /**
-          * Defines the type of the notification, alert or snackbar. Alert is used for important messages that require immediate attention, while snackbar is used for less important messages that can be ignored by the user.
-          * @default ''
-         */
-        "type": BalProps.BalNotificationType;
-        /**
-          * If `true` the notification is visible.
-          * @default true
-         */
-        "visible": boolean;
+        "size"?: BalProps.BalNotificationSize;
     }
     interface BalNotificationContainer {
         "addNotification": (notification: Notification) => Promise<string>;
@@ -934,7 +892,7 @@ export namespace Components {
         /**
           * @default 'toast'
          */
-        "type": BalProps.BalNotificationType;
+        "type": any;
     }
     interface BalShape {
         /**
@@ -1582,7 +1540,6 @@ declare global {
     };
     interface HTMLBalNotificationElementEventMap {
         "balCloseClick": BalEvents.BalNotificationCloseClickDetail;
-        "balActionClick": BalEvents.BalNotificationActionClickDetail;
         "balDidLoad": void;
     }
     interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
@@ -2598,29 +2555,10 @@ declare namespace LocalJSX {
     }
     interface BalNotification {
         /**
-          * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
+          * If `true` the notification will be displayed as an alert, otherwise as a status message.
+          * @default false
          */
-        "action"?: string;
-        /**
-          * @default () => void 0
-         */
-        "actionHandler"?: () => void;
-        /**
-          * Specifies the URL of the page the link goes to
-          * @default ''
-         */
-        "actionHref"?: string;
-        /**
-          * Defines the icon of the action button.
-          * @default ''
-         */
-        "actionIcon"?: string;
-        /**
-          * Specifies where to open the linked document.
-          * @default '_blank'
-         */
-        "actionTarget"?: BalProps.BalButtonTarget;
+        "alert"?: boolean;
         /**
           * If `true` the notification can be closed by the user.
           * @default false
@@ -2632,33 +2570,17 @@ declare namespace LocalJSX {
         "closeHandler"?: () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: BalProps.BalNotificationColor;
         /**
-          * The duration of the toast in milliseconds.
-          * @default 0
-         */
-        "duration"?: number;
-        /**
           * Defines the heading of the notification.
-          * @default ''
          */
         "heading"?: string;
-        /**
-          * Defines the message of the notification as html content
-          * @default ''
-         */
-        "message"?: string;
         /**
           * If `true` there will be no icon provided
           * @default false
          */
         "noIcon"?: boolean;
-        /**
-          * Emitted when the action button got clicked.
-         */
-        "onBalActionClick"?: (event: BalNotificationCustomEvent<BalEvents.BalNotificationActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
@@ -2669,19 +2591,8 @@ declare namespace LocalJSX {
         "onBalDidLoad"?: (event: BalNotificationCustomEvent<void>) => void;
         /**
           * Defines the size of the notification, small, medium or large.
-          * @default ''
          */
         "size"?: BalProps.BalNotificationSize;
-        /**
-          * Defines the type of the notification, alert or snackbar. Alert is used for important messages that require immediate attention, while snackbar is used for less important messages that can be ignored by the user.
-          * @default ''
-         */
-        "type"?: BalProps.BalNotificationType;
-        /**
-          * If `true` the notification is visible.
-          * @default true
-         */
-        "visible"?: boolean;
     }
     interface BalNotificationContainer {
         /**
@@ -2695,7 +2606,7 @@ declare namespace LocalJSX {
         /**
           * @default 'toast'
          */
-        "type"?: BalProps.BalNotificationType;
+        "type"?: any;
     }
     interface BalShape {
         /**

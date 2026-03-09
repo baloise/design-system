@@ -13,140 +13,57 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <section class="notification" role="status" aria-live="polite" aria-atomic="true">
           <bal-close></bal-close>
           <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-          <ul class="list">
+          <strong>Strong</strong>
+          <p><b>Bold</b> Your changes have been saved.</p>
+          <ul class="unordered-list">
             <li>one</li>
             <li>two</li>
             <li>three</li>
           </ul>
+          <button class="button">Click me!</button>
         </section>
       </section>
 
-      <!-- Alert -->
-      <section class="flex gap-small flex-direction-column">
-        <span>Alert</span>
-        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
-          Your changes have been saved.
-        </section>
-        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
-          <bal-close></bal-close>
-          Your changes have been saved.
-        </section>
-        <section class="notification has-no-icon is-toast is-info" role="status" aria-live="polite" aria-atomic="true">
-          Your changes have been saved.
-          <button class="button is-primary is-small">Okay</button>
-        </section>
-        <section class="notification has-no-icon is-toast is-info" role="status" aria-live="polite" aria-atomic="true">
-          Your changes have been saved.
-          <button class="button is-primary is-small">Okay</button>
-          <bal-close></bal-close>
-        </section>
-        <section class="notification has-no-icon is-toast" role="status" aria-live="polite" aria-atomic="true">
-          <bal-close></bal-close>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
-          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
-          laboriosam amet.
-        </section>
-        <section
-          class="notification has-no-icon is-toast is-danger"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <bal-close></bal-close>
-          <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-        </section>
-        <section
-          class="notification has-no-icon is-toast is-success"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-        </section>
 
-        <section class="notification is-toast is-success" role="status" aria-live="polite" aria-atomic="true">
-          <bal-close></bal-close>
-          <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-          <button class="button is-primary is-small">Okay</button>
-        </section>
-
-        <section class="notification is-toast is-success" role="status" aria-live="polite" aria-atomic="true">
-          <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-          <button class="button is-primary is-small">Okay</button>
-        </section>
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <section class="notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
+                    <bal-close></bal-close>
+          <h2>          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+</h2>
+          <p>          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+</p>
+</section>
       </section>
 
-      <!-- Snackbar -->
-      <section class="flex gap-small flex-direction-column">
-        <span>Snackbar</span>
-        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
-          Your changes have been saved.
-        </section>
-        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
-          <bal-close></bal-close>
-          Your changes have been saved.
-        </section>
-        <section
-          class="notification has-no-icon is-snackbar is-info"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          Your changes have been saved.
-          <button class="button is-primary is-small">Okay</button>
-        </section>
-        <section class="notification has-no-icon is-snackbar" role="status" aria-live="polite" aria-atomic="true">
-          <bal-close></bal-close>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
-          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
-          laboriosam amet.
-        </section>
-        <section
-          class="notification has-no-icon is-snackbar is-danger"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+      <!-- No Icon -->
+      <section data-testid="no-icon">
+        <span>No Icon</span>
+        <section class="notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
           <bal-close></bal-close>
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section
-          class="notification has-no-icon is-snackbar is-success"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <h2>Information</h2>
-          <p>Your changes have been saved.</p>
-        </section>
-
-        <section class="notification is-snackbar is-success" role="status" aria-live="polite" aria-atomic="true">
+        <section class="notification has-no-icon" role="status" aria-live="polite" aria-atomic="true">
           <bal-close></bal-close>
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
-          <button class="button is-primary is-small">Okay</button>
         </section>
-
-        <section class="notification is-snackbar is-success" role="status" aria-live="polite" aria-atomic="true">
+        <section class="notification has-no-icon is-large" role="status" aria-live="polite" aria-atomic="true">
+          <bal-close></bal-close>
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
-          <button class="button is-primary is-small">Okay</button>
         </section>
       </section>
 
       <!-- Colors -->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="colors">
         <span>Colors</span>
         <section class="notification" role="status" aria-live="polite" aria-atomic="true">
           <h2>Default</h2>
@@ -171,7 +88,7 @@
       </section>
 
       <!-- Outline -->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="outline">
         <span>Outline</span>
         <section class="notification is-outline-base" role="status" aria-live="polite" aria-atomic="true">
           <h2>Heading</h2>
@@ -196,7 +113,7 @@
       </section>
 
       <!-- Sizes-->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="sizes">
         <span>Sizes</span>
         <section class="notification is-outline-purple is-small" role="status" aria-live="polite" aria-atomic="true">
           <h2>Small</h2>

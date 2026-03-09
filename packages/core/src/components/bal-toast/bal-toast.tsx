@@ -25,7 +25,7 @@ export class Toast implements ComponentInterface, NotificationComponentInterface
   @State() didLoad = false
 
   timer!: NodeJS.Timeout
-  type: BalProps.BalNotificationType = 'toast'
+  type = 'toast'
 
   /**
    * Defines the color of the element

@@ -16,7 +16,7 @@ export interface Notification {
 
 export interface NotificationInterface extends Notification {
   id: string
-  type: BalProps.BalNotificationType
+  type: any
   closable: boolean
   visible: boolean
 }
@@ -35,7 +35,7 @@ export class NotificationContainer implements ComponentInterface {
 
   @State() notifications: NotificationInterface[] = []
 
-  @Prop() type: BalProps.BalNotificationType = 'toast'
+  @Prop() type: any = 'toast'
   @Prop() animated = false
   @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
 
@@ -110,25 +110,26 @@ export class NotificationContainer implements ComponentInterface {
       >
         <div id="wrapper" class={{ container: this.type === 'toast' }}>
           {visibleNotifications.map(notification => (
-            <bal-notification
-              key={notification.id}
-              id={notification.id}
-              visible={notification.visible}
-              heading={notification.heading}
-              message={notification.message}
-              color={notification.color}
-              duration={notification.duration}
-              type={notification.type}
-              closable={notification.closable}
-              closeHandler={notification.closeHandler}
-              action={notification.action}
-              actionIcon={notification.actionIcon}
-              actionTarget={notification.actionTarget}
-              actionHref={notification.actionHref}
-              actionHandler={notification.actionHandler}
-              onBalCloseClick={() => this.removeNotification(notification.id)}
-              onBalDidLoad={() => this.present(notification.id)}
-            ></bal-notification>
+            <div>gugus</div>
+            // <bal-notification
+            //   key={notification.id}
+            //   id={notification.id}
+            //   visible={notification.visible}
+            //   heading={notification.heading}
+            //   message={notification.message}
+            //   color={notification.color}
+            //   duration={notification.duration}
+            //   type={notification.type}
+            //   closable={notification.closable}
+            //   closeHandler={notification.closeHandler}
+            //   action={notification.action}
+            //   actionIcon={notification.actionIcon}
+            //   actionTarget={notification.actionTarget}
+            //   actionHref={notification.actionHref}
+            //   actionHandler={notification.actionHandler}
+            //   onBalCloseClick={() => this.removeNotification(notification.id)}
+            //   onBalDidLoad={() => this.present(notification.id)}
+            // ></bal-notification>
           ))}
         </div>
       </Host>

@@ -29,7 +29,7 @@ export class Snackbar implements ComponentInterface, NotificationComponentInterf
   @State() iconName = ''
 
   timer!: NodeJS.Timeout
-  type: BalProps.BalNotificationType = 'snackbar'
+  type = 'snackbar'
 
   /**
    * Defines the color of the element

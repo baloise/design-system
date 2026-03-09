@@ -749,7 +749,6 @@
       "encapsulation": "shadow",
       "dependents": [
         "bal-card-button",
-        "bal-notification",
         "bal-snackbar",
         "bal-toast"
       ],
@@ -763,9 +762,6 @@
           "bal-icon"
         ],
         "bal-card-button": [
-          "bal-button"
-        ],
-        "bal-notification": [
           "bal-button"
         ],
         "bal-snackbar": [
@@ -6936,154 +6932,38 @@
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
-      "dependents": [
-        "bal-notification-container"
-      ],
+      "dependents": [],
       "dependencies": [
-        "bal-close",
-        "bal-button"
+        "bal-close"
       ],
       "dependencyGraph": {
         "bal-notification": [
-          "bal-close",
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ],
-        "bal-notification-container": [
-          "bal-notification"
+          "bal-close"
         ]
       },
       "props": [
         {
-          "name": "action",
-          "type": "string",
+          "name": "alert",
+          "type": "boolean",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
-          "attr": "action",
+          "attr": "alert",
           "reflectToAttr": false,
-          "docs": "Defines the icon of the notification, if not provided it will be derived from the color property",
+          "docs": "If `true` the notification will be displayed as an alert, otherwise as a status message.",
           "docsTags": [
             {
               "name": "default",
-              "text": "''"
+              "text": "false"
             }
           ],
-          "default": "''",
+          "default": "false",
           "values": [
             {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "actionHref",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "action-href",
-          "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "actionIcon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "action-icon",
-          "reflectToAttr": false,
-          "docs": "Defines the icon of the action button.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "actionTarget",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-          "complexType": {
-            "original": "BalProps.BalButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "action-target",
-          "reflectToAttr": false,
-          "docs": "Specifies where to open the linked document.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'_blank'"
-            }
-          ],
-          "default": "'_blank'",
-          "values": [
-            {
-              "value": " _parent",
-              "type": "string"
-            },
-            {
-              "value": "_blank",
-              "type": "string"
-            },
-            {
-              "value": "_self",
-              "type": "string"
-            },
-            {
-              "value": "_top",
-              "type": "string"
+              "type": "boolean"
             }
           ],
           "optional": false,
@@ -7101,7 +6981,7 @@
           },
           "mutable": false,
           "attr": "closable",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the notification can be closed by the user.",
           "docsTags": [
             {
@@ -7122,10 +7002,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
+          "type": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
           "complexType": {
             "original": "BalProps.BalNotificationColor",
-            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
+            "resolved": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -7135,19 +7015,10 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "base",
               "type": "string"
@@ -7187,96 +7058,38 @@
             {
               "value": "warning",
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "duration",
-          "type": "number",
-          "complexType": {
-            "original": "number",
-            "resolved": "number",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "duration",
-          "reflectToAttr": false,
-          "docs": "The duration of the toast in milliseconds.",
-          "docsTags": [
+            },
             {
-              "name": "default",
-              "text": "0"
+              "type": "undefined"
             }
           ],
-          "default": "0",
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "heading",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "heading",
           "reflectToAttr": false,
           "docs": "Defines the heading of the notification.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "message",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "message",
-          "reflectToAttr": false,
-          "docs": "Defines the message of the notification as html content",
-          "docsTags": [
+            },
             {
-              "name": "default",
-              "text": "''"
+              "type": "undefined"
             }
           ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -7291,7 +7104,7 @@
           },
           "mutable": false,
           "attr": "no-icon",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` there will be no icon provided",
           "docsTags": [
             {
@@ -7312,10 +7125,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
             "original": "BalProps.BalNotificationSize",
-            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -7327,13 +7140,7 @@
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Defines the size of the notification, small, medium or large.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -7361,80 +7168,12 @@
             {
               "value": "small",
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "type",
-          "type": "\"\" | \"snackbar\" | \"toast\"",
-          "complexType": {
-            "original": "BalProps.BalNotificationType",
-            "resolved": "\"\" | \"snackbar\" | \"toast\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "type",
-          "reflectToAttr": true,
-          "docs": "Defines the type of the notification, alert or snackbar.\nAlert is used for important messages that require immediate attention,\nwhile snackbar is used for less important messages that can be ignored by the user.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
             },
             {
-              "value": "snackbar",
-              "type": "string"
-            },
-            {
-              "value": "toast",
-              "type": "string"
+              "type": "undefined"
             }
           ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "visible",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "visible",
-          "reflectToAttr": true,
-          "docs": "If `true` the notification is visible.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "true"
-            }
-          ],
-          "default": "true",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -7465,25 +7204,6 @@
         }
       ],
       "events": [
-        {
-          "event": "balActionClick",
-          "detail": "MouseEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalNotificationActionClickDetail",
-            "resolved": "MouseEvent",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the action button got clicked.",
-          "docsTags": []
-        },
         {
           "event": "balCloseClick",
           "detail": "MouseEvent",
@@ -7522,15 +7242,7 @@
       "slots": [],
       "parts": [
         {
-          "name": "button",
-          "docs": ""
-        },
-        {
           "name": "close",
-          "docs": ""
-        },
-        {
-          "name": "content",
           "docs": ""
         },
         {
@@ -7553,22 +7265,8 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [
-        "bal-notification"
-      ],
-      "dependencyGraph": {
-        "bal-notification-container": [
-          "bal-notification"
-        ],
-        "bal-notification": [
-          "bal-close",
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
           "name": "animated",
@@ -7650,16 +7348,11 @@
         },
         {
           "name": "type",
-          "type": "\"\" | \"snackbar\" | \"toast\"",
+          "type": "any",
           "complexType": {
-            "original": "BalProps.BalNotificationType",
-            "resolved": "\"\" | \"snackbar\" | \"toast\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
+            "original": "any",
+            "resolved": "any",
+            "references": {}
           },
           "mutable": false,
           "attr": "type",
@@ -7674,15 +7367,7 @@
           "default": "'toast'",
           "values": [
             {
-              "type": "\"\""
-            },
-            {
-              "value": "snackbar",
-              "type": "string"
-            },
-            {
-              "value": "toast",
-              "type": "string"
+              "type": "any"
             }
           ],
           "optional": false,
@@ -11015,7 +10700,7 @@
       "path": "src/components/bal-notification/bal-notification-container.tsx"
     },
     "src/components/bal-notification/bal-notification-container.tsx::NotificationInterface": {
-      "declaration": "export interface NotificationInterface extends Notification {\n  id: string\n  type: BalProps.BalNotificationType\n  closable: boolean\n  visible: boolean\n}",
+      "declaration": "export interface NotificationInterface extends Notification {\n  id: string\n  type: any\n  closable: boolean\n  visible: boolean\n}",
       "docstring": "",
       "path": "src/components/bal-notification/bal-notification-container.tsx"
     },

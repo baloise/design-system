@@ -4,7 +4,6 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalNotificationType = 'toast' | 'snackbar' | ''
   export type BalNotificationSize = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
   export type BalNotificationColor =
     | 'base'
@@ -17,7 +16,6 @@ namespace BalProps {
     | 'outline-green'
     | 'outline-yellow'
     | 'outline-red'
-    | ''
 }
 
 namespace BalEvents {

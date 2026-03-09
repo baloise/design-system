@@ -65,8 +65,8 @@ Checklist
 | bal-divider          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-tag              | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-button           | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-notification     | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-card             | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-notification     | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-accordion        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-unordered-list   | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-ordered-list     | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |

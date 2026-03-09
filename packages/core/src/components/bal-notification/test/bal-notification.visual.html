@@ -13,29 +13,44 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
-        <bal-notification heading="Information">Your changes have been saved.</bal-notification>
+        <bal-notification heading="Information" closable>
+          <strong>Strong</strong>
+          <p><b>Bold</b> Your changes have been saved.</p>
+          <ul class="unordered-list">
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+          </ul>
+          <bal-button>Click me!</bal-button>
+        </bal-notification>
       </section>
 
-      <!-- Alert -->
-      <section class="flex gap-small flex-direction-column">
-        <span>Alert</span>
-        <bal-notification no-icon type="toast" closable>Your changes have been saved.</bal-notification>
-        <bal-notification type="toast" closable heading="Heading">Your changes have been saved.</bal-notification>
-        <bal-notification type="toast" closable>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
-          sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
-          laboriosam amet.
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <bal-notification heading="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. " closable>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
         </bal-notification>
-        <bal-notification type="toast" closable color="danger">Your changes have been saved.</bal-notification>
-        <bal-notification type="toast" closable color="success" action="Okay"
-          >Your changes have been saved.</bal-notification
-        >
+      </section>
+
+      <!-- No Icon -->
+      <section data-testid="no-icon">
+        <span>No Icon</span>
+        <bal-notification heading="Information" closable no-icon size="sm">
+          <p>Your changes have been saved.</p>
+        </bal-notification>
+        <bal-notification heading="Information" closable no-icon>
+          <p>Your changes have been saved.</p>
+        </bal-notification>
+        <bal-notification heading="Information" closable no-icon size="lg">
+          <p>Your changes have been saved.</p>
+        </bal-notification>
       </section>
 
       <!-- Colors -->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="colors">
         <span>Colors</span>
         <bal-notification heading="Default">Your changes have been saved.</bal-notification>
         <bal-notification heading="Information" color="info">Your changes have been saved.</bal-notification>
@@ -45,7 +60,7 @@
       </section>
 
       <!-- Outline -->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="outline">
         <span>Outline</span>
         <bal-notification heading="Default" color="outline-base">Your changes have been saved.</bal-notification>
         <bal-notification heading="Purple" color="outline-purple">Your changes have been saved.</bal-notification>
@@ -55,7 +70,7 @@
       </section>
 
       <!-- Sizes -->
-      <section class="flex gap-small flex-direction-column">
+      <section class="flex gap-small flex-direction-column" data-testid="sizes">
         <span>Sizes</span>
         <bal-notification heading="Small" color="outline-purple" size="small"
           >Your changes have been saved.</bal-notification
