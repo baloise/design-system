@@ -13,13 +13,20 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-button icon="plus"> Button </bal-button>
       </section>
 
-      <!-- Badge Style -->
-      <section>
+      <!-- Shadow -->
+      <section data-testid="shadow">
+        <span>Shadow</span>
+        <bal-button icon="plus" shadow> Button </bal-button>
+        <bal-button icon="plus" color="link" shadow> Button </bal-button>
+      </section>
+
+      <!-- Badge -->
+      <section data-testid="badge">
         <span>Badge</span>
         <bal-button>
           <bal-badge>42</bal-badge>
@@ -28,7 +35,7 @@
       </section>
 
       <!-- Link -->
-      <section>
+      <section data-testid="link">
         <span>Link</span>
         <bal-button color="link" href="/components/bal-button/test/bal-button.visual.html">Link Button</bal-button>
         <br />
@@ -41,7 +48,7 @@
       </section>
 
       <!-- Colors -->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <bal-button color="primary">Primary</bal-button>
         <bal-button color="secondary">Secondary</bal-button>
@@ -64,7 +71,7 @@
       </section>
 
       <!-- Dashed -->
-      <section>
+      <section data-testid="dashed">
         <span>Dashed</span>
         <bal-button color="tertiary-purple" dashed>Tertiary Purple</bal-button>
         <bal-button color="tertiary-red" dashed>Tertiary Red</bal-button>
@@ -73,14 +80,14 @@
 
         <br />
         <br />
-        <bal-button color="tertiary-purple" large dashed icon="plus"> Purple </bal-button>
-        <bal-button color="tertiary-red" large dashed icon="plus"> Red </bal-button>
-        <bal-button color="tertiary-yellow" large dashed icon="plus"> Yellow </bal-button>
-        <bal-button color="tertiary-green" large dashed icon="plus"> Green </bal-button>
+        <bal-button color="tertiary-purple" size="lg" dashed icon="plus"> Purple </bal-button>
+        <bal-button color="tertiary-red" size="lg" dashed icon="plus"> Red </bal-button>
+        <bal-button color="tertiary-yellow" size="lg" dashed icon="plus"> Yellow </bal-button>
+        <bal-button color="tertiary-green" size="lg" dashed icon="plus"> Green </bal-button>
       </section>
 
       <!-- Inverted -->
-      <section class="s-bg-inverted">
+      <section data-testid="inverted" class="s-bg-inverted">
         <span>Inverted</span>
         <bal-button color="primary" inverted>Primary</bal-button>
         <bal-button color="secondary" inverted>Secondary</bal-button>
@@ -103,27 +110,29 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <bal-button size="sm">Small</bal-button>
         <bal-button>Normal</bal-button>
         <bal-button size="lg">Large</bal-button>
+        <bal-button size="xl">X-Large</bal-button>
       </section>
 
       <!-- Expanded -->
-      <section>
+      <section data-testid="expanded">
         <span>Expanded</span>
         <bal-button expanded>Fullwidth</bal-button>
       </section>
 
       <!-- Long Content -->
-      <section>
+      <section data-testid="long-content">
         <span>Long Content</span>
         <bal-button>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
           aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
           totam assumenda.
         </bal-button>
+        <bal-button no-wrap> Lorem ipsum </bal-button>
         <bal-button no-wrap>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
           aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
@@ -132,26 +141,26 @@
       </section>
 
       <!-- Flat -->
-      <section>
+      <section data-testid="flat">
         <span>Flat</span>
         <bal-button flat>Flat Button</bal-button>
       </section>
 
       <!-- Rounded -->
-      <section>
+      <section data-testid="rounded">
         <span>Rounded</span>
         <bal-button rounded>Rounded Button</bal-button>
       </section>
 
       <!-- Disabled -->
-      <section>
+      <section data-testid="disabled">
         <span>Disabled</span>
         <bal-button disabled>Disabled using attribute</bal-button>
         <bal-button disabled> Disabled using class name </bal-button>
       </section>
 
       <!-- Square & Circle -->
-      <section>
+      <section data-testid="square-circle">
         <span>Square & Circle</span>
         <bal-button square icon="check"> </bal-button>
         <bal-button circle icon="check"> </bal-button>
@@ -163,14 +172,14 @@
       </section>
 
       <!-- Icon -->
-      <section>
+      <section data-testid="icon">
         <span>Icon</span>
         <bal-button icon="plus"> Button </bal-button>
         <bal-button color="secondary" icon="plus"> Button </bal-button>
       </section>
 
       <!-- Loading -->
-      <section>
+      <section data-testid="loading">
         <span>Loading</span>
         <div class="buttons">
           <bal-button square color="primary" loading></bal-button>
@@ -186,19 +195,21 @@
           <bal-button color="secondary" loading="circle" disabled> loading... </bal-button>
         </div>
         <div class="buttons">
-          <bal-button square loading color="tertiary-purple"> </bal-button>
-          <bal-button square loading color="tertiary-green"> </bal-button>
-          <bal-button square loading color="tertiary-red"> </bal-button>
-          <bal-button square loading color="tertiary-yellow"> </bal-button>
-          <bal-button square loading color="info"> </bal-button>
-          <bal-button square loading color="success"> </bal-button>
-          <bal-button square loading color="warning"> </bal-button>
-          <bal-button square loading color="danger"> </bal-button>
+          <bal-button square loading="circle" color="secondary"> </bal-button>
+          <bal-button square loading="circle" color="tertiary"> </bal-button>
+          <bal-button square loading="circle" color="tertiary-purple"> </bal-button>
+          <bal-button square loading="circle" color="tertiary-green"> </bal-button>
+          <bal-button square loading="circle" color="tertiary-red"> </bal-button>
+          <bal-button square loading="circle" color="tertiary-yellow"> </bal-button>
+          <bal-button square loading="circle" color="info"> </bal-button>
+          <bal-button square loading="circle" color="success"> </bal-button>
+          <bal-button square loading="circle" color="warning"> </bal-button>
+          <bal-button square loading="circle" color="danger"> </bal-button>
         </div>
       </section>
 
       <!-- Group -->
-      <section>
+      <section data-testid="group">
         <span>Group</span>
         <bal-button-group>
           <bal-button>Left</bal-button>
@@ -218,7 +229,7 @@
       </section>
 
       <!-- Two Row Button Group -->
-      <section>
+      <section data-testid="two-row-button-group">
         <span>Two Row Button Group</span>
         <bal-button-group direction="row">
           <bal-button>Left</bal-button>
@@ -231,19 +242,19 @@
       </section>
 
       <!-- Group Column-->
-      <section>
+      <section data-testid="group-column">
         <span>Group Column</span>
-        <bal-button-group direction="col">
+        <bal-button-group direction="column">
           <bal-button>Left</bal-button>
           <bal-button>Middle</bal-button>
           <bal-button>Right</bal-button>
         </bal-button-group>
-        <bal-button-group direction="col" position="center">
+        <bal-button-group direction="column" position="center">
           <bal-button>Left</bal-button>
           <bal-button>Middle</bal-button>
           <bal-button>Right</bal-button>
         </bal-button-group>
-        <bal-button-group direction="col" position="right">
+        <bal-button-group direction="column" position="right">
           <bal-button>Left</bal-button>
           <bal-button>Middle</bal-button>
           <bal-button>Right</bal-button>

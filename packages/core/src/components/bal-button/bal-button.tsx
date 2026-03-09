@@ -19,7 +19,7 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.aaa
    */
-  @Prop({ reflect: true }) color: BalProps.BalButtonColor = 'primary'
+  @Prop() color: BalProps.BalButtonColor = 'primary'
 
   /**
    * The type of button.
@@ -34,7 +34,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true, mutable: true }) size: BalProps.BalButtonSize = undefined
+  @Prop({ mutable: true }) size: BalProps.BalButtonSize = undefined
   @Watch('size')
   watchSize(newValue: BalProps.BalButtonSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
@@ -68,42 +68,42 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the button has a dashed border.
    * */
-  @Prop({ reflect: true }) dashed = false
+  @Prop() dashed = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) shadow = false
+  @Prop() shadow = false
 
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop({ reflect: true }) square = false
+  @Prop() square = false
 
-  // /**
-  //  * If `true` the button has a active theme
-  //  */
-  // @Prop() isActive = false
+  /**
+   * If `true` the button is circular and width of the buttons is limited
+   */
+  @Prop() circle = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop({ reflect: true }) expanded = false
+  @Prop() expanded = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
-  @Prop({ reflect: true }) flat = false
+  @Prop() flat = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop({ reflect: true }) outlined = false
+  @Prop() outlined = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop() inverted = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
@@ -113,7 +113,7 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the button is rounded.
    */
-  @Prop({ reflect: true }) rounded = false
+  @Prop() rounded = false
 
   // /**
   //  * If `true` the button is a popup.
@@ -123,7 +123,7 @@ export class Button implements ComponentInterface {
   /**
    * Name of the left button icon
    */
-  @Prop() icon = ''
+  @Prop() icon?: string
 
   /**
    * If `true` the icon turns
@@ -133,22 +133,22 @@ export class Button implements ComponentInterface {
   /**
    * Name of the right button icon
    */
-  @Prop() iconRight = ''
+  @Prop() iconRight?: string
 
   /**
    * The label of the button will not break
    */
-  @Prop({ reflect: true }) noWrap = false
+  @Prop() noWrap = false
 
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop() name?: string = ''
+  @Prop() name?: string
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() value?: string | number = ''
+  @Prop() value?: string | number
 
   /**
    * A11y attributes for the native button element.
@@ -229,35 +229,6 @@ export class Button implements ComponentInterface {
     return this.inverted
   }
 
-  // private get buttonCssClass(): { [className: string]: boolean } {
-  //   // const colorMap: Record<string, string> = {
-  //   //   'light': 'accent',
-  //   //   'text': 'tertiary',
-  //   //   'info': 'info',
-  //   //   'primary-light': 'primary',
-  //   //   'info-light': 'info',
-  //   // }
-
-  //   // const color = colorMap[this.color] || this.color
-
-  //   return {
-  //     // 'button': true,
-  //     // [`is-${this.color}`]: true,
-  //     // 'is-flat': this.flat,
-  //     // 'is-square': this.square,
-  //     // 'is-sm': this.size === 'sm',
-  //     // 'is-lg': this.size === 'lg',
-  //     // 'is-inverted': this.inverted,
-  //     // 'is-active': this.isActive,
-  //     // 'is-outlined': this.outlined,
-  //     // 'is-fullwidth': this.expanded,
-  //     // 'is-disabled': this.disabled,
-  //     // 'is-loading': this.loading,
-  //     // 'is-rounded': this.rounded === true,
-  //     // 'has-shadow': this.shadow === true,
-  //   }
-  // }
-
   private get isLoading(): boolean {
     return this.loading === true || this.loading === 'logo' || this.loading === 'circle' || this.loading === ''
   }
@@ -286,9 +257,7 @@ export class Button implements ComponentInterface {
         style: { display: 'none' },
       }
     }
-    return {
-      style: { display: 'block' },
-    }
+    return {}
   }
 
   private handleClick(ev: MouseEvent) {
@@ -347,25 +316,33 @@ export class Button implements ComponentInterface {
     return (
       <Host
         onClick={this.handleClick}
-        class={
-          {
-            // 'is-fullwidth': this.expanded,
-            // [`is-${this.color}`]: true,
-          }
-        }
+        class={{
+          'is-fullwidth': this.expanded,
+          [`is-${this.color}`]: this.color !== undefined,
+          [`is-${this.size}`]: this.size !== undefined,
+          [`is-inverted`]: this.inverted,
+          [`is-disabled`]: this.disabled,
+          [`is-loading`]: this.isLoading,
+          [`is-flat`]: this.flat,
+          [`is-rounded`]: this.rounded,
+          [`is-square`]: this.square,
+          [`is-circle`]: this.circle,
+          [`is-dashed`]: this.dashed,
+          [`has-shadow`]: this.shadow,
+          [`has-no-wrap`]: this.noWrap,
+        }}
       >
         <TagType
           {...attrs}
           {...this.inheritAttributes}
           type={this.elementType}
-          // class={this.buttonCssClass}
           id="button"
           part="native"
-          disabled={this.disabled}
+          disabled={this.disabled || this.isLoading}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
-          aria-disabled={ariaBooleanToString(this.disabled)}
+          aria-disabled={ariaBooleanToString(this.disabled || this.isLoading)}
           {...ariaAttributes}
         >
           {this.isLoading ? (

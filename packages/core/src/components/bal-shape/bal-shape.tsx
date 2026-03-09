@@ -13,35 +13,22 @@ export class Shape implements ComponentInterface {
   /**
    * The shape variation
    */
-  @Prop() variation: BalProps.BalShapeVariation = '1'
+  @Prop({ reflect: true }) variation: BalProps.BalShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop() color: BalProps.BalShapeColor = 'green'
+  @Prop({ reflect: true }) color: BalProps.BalShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop() rotation?: BalProps.BalShapeRotation = '0'
+  @Prop({ reflect: true }) rotation: BalProps.BalShapeRotation = '0'
 
   render() {
     return (
-      <Host
-        class={{
-          [`has-rotation-${this.rotation}`]: this.rotation !== '0',
-          [`is-${this.color}`]: true,
-        }}
-      >
-        <svg
-          version="1.1"
-          x="0px"
-          y="0px"
-          viewBox="0 0 198 198"
-          focusable="false"
-          aria-hidden="true"
-          // fill={this.getHex()}
-        >
+      <Host aria-hidden="true">
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 198 198" focusable="false" aria-hidden="true">
           {shapes[parseInt(this.variation) - 1]}
         </svg>
       </Host>

@@ -65,42 +65,36 @@
     &.is-center:not(.as-col),
     &.is-centered:not(.as-col) {
       --buttons-justify-content: center;
-      // justify-content: center;
     }
 
     &.is-center.as-col,
     &.is-centered.as-col {
       --buttons-align-items: center;
-      // align-items: center;
     }
 
     // Right aligned
     &.is-right:not(.as-col) {
       --buttons-justify-content: flex-end;
-      // justify-content: flex-end;
     }
 
     &.is-right.as-col {
       --buttons-align-items: flex-end;
-      // align-items: flex-end;
     }
   }
 
   &.fit-content bal-button {
-    --bal-button-width: 100%;
+    --button-width: 100%;
 
     width: 100%;
   }
 
   @include mobile {
-    & {
-      --bal-button-width: 100%;
-    }
+    flex-flow: row wrap !important;
 
-    & bal-button {
-      --bal-button-width: 100%;
-
-      width: 100%;
+    .button:not(.is-square, .is-circle),
+    bal-button:not(.is-square, .is-circle) {
+      flex: 1 1 120px !important;
+      min-width: 120px !important;
     }
   }
 }

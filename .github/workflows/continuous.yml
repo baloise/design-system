@@ -168,6 +168,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'update snapshots'
+          add: '*.png'
         env:
           GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 

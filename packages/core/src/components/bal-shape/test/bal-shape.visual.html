@@ -13,13 +13,13 @@
 
   <body>
     <main class="container">
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-shape data-testid="basic"></bal-shape>
       </section>
 
       <!-- Colors -->
-      <section class="flex flex-direction-row gap-small">
+      <section data-testid="colors" class="flex flex-direction-row gap-small">
         <span>Colors</span>
         <bal-shape color="green"></bal-shape>
         <bal-shape color="green-light"></bal-shape>
@@ -32,7 +32,7 @@
       </section>
 
       <!-- Variation 1 -->
-      <section class="flex flex-direction-row justify-content-space-between">
+      <section data-testid="variation-1" class="flex flex-direction-row justify-content-space-between">
         <span>Variation 1</span>
         <bal-shape variation="1" rotation="0"></bal-shape>
         <bal-shape variation="1" rotation="180"></bal-shape>
@@ -41,7 +41,7 @@
       </section>
 
       <!-- Variation 2 -->
-      <section class="flex flex-direction-row justify-content-space-between">
+      <section data-testid="variation-2" class="flex flex-direction-row justify-content-space-between">
         <span>Variation 2</span>
         <bal-shape variation="2" rotation="0"></bal-shape>
         <bal-shape variation="2" rotation="180"></bal-shape>
@@ -50,7 +50,7 @@
       </section>
 
       <!-- Variation 3 -->
-      <section class="flex flex-direction-row justify-content-space-between">
+      <section data-testid="variation-3" class="flex flex-direction-row justify-content-space-between">
         <span>Variation 3</span>
         <bal-shape variation="3" rotation="0"></bal-shape>
         <bal-shape variation="3" rotation="180"></bal-shape>

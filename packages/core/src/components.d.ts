@@ -118,6 +118,11 @@ export namespace Components {
          */
         "a11yTitle"?: string;
         /**
+          * If `true` the button is circular and width of the buttons is limited
+          * @default false
+         */
+        "circle": boolean;
+        /**
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
@@ -157,14 +162,12 @@ export namespace Components {
         "href"?: string;
         /**
           * Name of the left button icon
-          * @default ''
          */
-        "icon": string;
+        "icon"?: string;
         /**
           * Name of the right button icon
-          * @default ''
          */
-        "iconRight": string;
+        "iconRight"?: string;
         /**
           * If `true` the icon turns
           * @default false
@@ -182,7 +185,6 @@ export namespace Components {
         "loading": BalProps.BalButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -226,7 +228,6 @@ export namespace Components {
         "target": BalProps.BalButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "value"?: string | number;
     }
@@ -238,9 +239,8 @@ export namespace Components {
         "direction": BalProps.BalButtonGroupDirection;
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
-        "position": BalProps.BalButtonGroupPosition;
+        "position"?: BalProps.BalButtonGroupPosition;
         /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
@@ -946,7 +946,7 @@ export namespace Components {
           * The shape rotation
           * @default '0'
          */
-        "rotation"?: BalProps.BalShapeRotation;
+        "rotation": BalProps.BalShapeRotation;
         /**
           * The shape variation
           * @default '1'
@@ -1850,6 +1850,11 @@ declare namespace LocalJSX {
          */
         "a11yTitle"?: string;
         /**
+          * If `true` the button is circular and width of the buttons is limited
+          * @default false
+         */
+        "circle"?: boolean;
+        /**
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
@@ -1893,12 +1898,10 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Name of the left button icon
-          * @default ''
          */
         "icon"?: string;
         /**
           * Name of the right button icon
-          * @default ''
          */
         "iconRight"?: string;
         /**
@@ -1918,7 +1921,6 @@ declare namespace LocalJSX {
         "loading"?: BalProps.BalButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -1982,7 +1984,6 @@ declare namespace LocalJSX {
         "target"?: BalProps.BalButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "value"?: string | number;
     }
@@ -1994,7 +1995,6 @@ declare namespace LocalJSX {
         "direction"?: BalProps.BalButtonGroupDirection;
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "position"?: BalProps.BalButtonGroupPosition;
         /**

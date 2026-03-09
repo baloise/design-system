@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as ButtonStories from './bal-button.stories'
 
 <Meta of={ButtonStories} />
@@ -73,6 +73,12 @@ are not suitable for use on non-white backgrounds.
 <Canvas of={ButtonStories.SquareButtons} />
 
 {/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.NoWrap}></StoryHeading>
+
+<Canvas of={ButtonStories.NoWrap} />
+
+{/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}
 
@@ -137,14 +143,14 @@ import buttonGroupApi from './bal-button-group/api.md?raw'
 
 <Markdown>{buttonGroupApi}</Markdown>
 
+## CSS Variables
+
+<TokenOverview component="button" />
+
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-
-
-
 
 <Footer />

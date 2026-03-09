@@ -265,10 +265,10 @@
         },
         {
           "name": "buttonSize",
-          "type": "\"\" | \"lg\" | \"sm\" | \"small\" | undefined",
+          "type": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
           "complexType": {
             "original": "BalProps.BalButtonSize",
-            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | undefined",
+            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -301,6 +301,10 @@
             },
             {
               "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "xl",
               "type": "string"
             },
             {
@@ -901,6 +905,35 @@
           "setter": false
         },
         {
+          "name": "circle",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "circle",
+          "reflectToAttr": false,
+          "docs": "If `true` the button is circular and width of the buttons is limited",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "color",
           "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
@@ -915,7 +948,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The color to use from your application's color palette.aaa",
           "docsTags": [
             {
@@ -1005,7 +1038,7 @@
           },
           "mutable": false,
           "attr": "dashed",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button has a dashed border.",
           "docsTags": [
             {
@@ -1132,7 +1165,7 @@
           },
           "mutable": false,
           "attr": "expanded",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button has a full width",
           "docsTags": [
             {
@@ -1161,7 +1194,7 @@
           },
           "mutable": false,
           "attr": "flat",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button has no padding and a reduced height",
           "docsTags": [
             {
@@ -1208,58 +1241,52 @@
         },
         {
           "name": "icon",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "icon",
           "reflectToAttr": false,
           "docs": "Name of the left button icon",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "iconRight",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "icon-right",
           "reflectToAttr": false,
           "docs": "Name of the right button icon",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1303,7 +1330,7 @@
           },
           "mutable": false,
           "attr": "inverted",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button is inverted",
           "docsTags": [
             {
@@ -1382,13 +1409,7 @@
           "attr": "name",
           "reflectToAttr": false,
           "docs": "The name of the button, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
@@ -1412,7 +1433,7 @@
           },
           "mutable": false,
           "attr": "no-wrap",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The label of the button will not break",
           "docsTags": [
             {
@@ -1441,7 +1462,7 @@
           },
           "mutable": false,
           "attr": "outlined",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button is outlined",
           "docsTags": [
             {
@@ -1496,7 +1517,7 @@
           },
           "mutable": false,
           "attr": "rounded",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the button is rounded.",
           "docsTags": [
             {
@@ -1525,7 +1546,7 @@
           },
           "mutable": false,
           "attr": "shadow",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` adds a box shadow to improve readability on image background",
           "docsTags": [
             {
@@ -1546,10 +1567,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"lg\" | \"sm\" | \"small\" | undefined",
+          "type": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
           "complexType": {
             "original": "BalProps.BalButtonSize",
-            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | undefined",
+            "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -1559,7 +1580,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Size of the button",
           "docsTags": [
             {
@@ -1585,6 +1606,10 @@
               "type": "string"
             },
             {
+              "value": "xl",
+              "type": "string"
+            },
+            {
               "type": "undefined"
             }
           ],
@@ -1603,7 +1628,7 @@
           },
           "mutable": false,
           "attr": "square",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the width of the buttons is limited",
           "docsTags": [
             {
@@ -1681,13 +1706,7 @@
           "attr": "value",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "number"
@@ -1853,7 +1872,7 @@
           },
           "mutable": false,
           "attr": "direction",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "`auto` will position the button items vertical and full width.\n`row` will force that the buttons are also horizontal on mobile.",
           "docsTags": [
             {
@@ -1883,10 +1902,10 @@
         },
         {
           "name": "position",
-          "type": "\"\" | \"center\" | \"right\"",
+          "type": "\"\" | \"center\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalButtonGroupPosition",
-            "resolved": "\"\" | \"center\" | \"right\"",
+            "resolved": "\"\" | \"center\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -1896,15 +1915,9 @@
           },
           "mutable": false,
           "attr": "position",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -1916,9 +1929,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1933,7 +1949,7 @@
           },
           "mutable": false,
           "attr": "reverse",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the flex direction is used in reverse on mobile.",
           "docsTags": [
             {
@@ -7810,7 +7826,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape color",
           "docsTags": [
             {
@@ -7860,10 +7876,10 @@
         },
         {
           "name": "rotation",
-          "type": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
+          "type": "\"0\" | \"180\" | \"270\" | \"90\"",
           "complexType": {
             "original": "BalProps.BalShapeRotation",
-            "resolved": "\"0\" | \"180\" | \"270\" | \"90\" | undefined",
+            "resolved": "\"0\" | \"180\" | \"270\" | \"90\"",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -7873,7 +7889,7 @@
           },
           "mutable": false,
           "attr": "rotation",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape rotation",
           "docsTags": [
             {
@@ -7898,12 +7914,9 @@
             {
               "value": "90",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -7923,7 +7936,7 @@
           },
           "mutable": false,
           "attr": "variation",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape variation",
           "docsTags": [
             {

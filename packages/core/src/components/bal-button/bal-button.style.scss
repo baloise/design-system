@@ -12,92 +12,6 @@ $css-selector: ('.button');
 $host-selector: ('#button');
 
 /**
-  * Mixins
-  * -------------------------------
-  * Define here component specific mixins
-  */
-// @mixin button-disabled() {
-//   &,
-//   &:hover,
-//   &.is-hovered,
-//   &:active,
-//   &.is-pressed,
-//   &:focus,
-//   &.is-focused {
-//     pointer-events: none;
-//     opacity: 1;
-//     box-shadow: none;
-//     text-decoration: none;
-//     cursor: default;
-//     translate: 0 0;
-//     background-color: var(--bal-button-color-disabled-base-background);
-//     border: var(--bal-button-color-disabled-base-border);
-//     color: var(--bal-button-color-disabled-base-text);
-
-//     & > bal-icon {
-//       --icon-size: var(--bal-button-color-disabled-base-text);
-//     }
-
-//     & > bal-spinner {
-//       --spinner-color: var(--bal-button-color-disabled-base-text);
-//     }
-
-//     & > bal-spinner[variation='circle'] {
-//       --spinner-circle-color-border-background: var(--bal-color-grey-4);
-//       --spinner-circle-color-border-progress: var(--bal-button-color-disabled-base-text);
-//     }
-//   }
-// }
-
-// @mixin button-color($color) {
-//   --mod-button-color-text: var(--bal-button-color-#{$color}-base-text);
-//   --mod-button-color-background: var(--bal-button-color-#{$color}-base-background);
-//   --mod-button-color-border: var(--bal-button-color-#{$color}-base-border);
-
-//   & > bal-spinner {
-//     --spinner-color: var(--bal-button-color-#{$color}-base-text);
-//   }
-
-//   > bal-spinner[variation='circle'] {
-//     --spinner-circle-color-border-progress: var(--bal-button-color-#{$color}-base-text);
-//   }
-
-//   @include hover {
-//     &:hover,
-//     &.is-hovered {
-//       --mod-button-color-text: var(--bal-button-color-#{$color}-hover-text);
-//       --mod-button-color-background: var(--bal-button-color-#{$color}-hover-background);
-//       --mod-button-color-border: var(--bal-button-color-#{$color}-hover-border);
-//     }
-//   }
-
-//   &:active,
-//   &.is-pressed {
-//     --mod-button-color-text: var(--bal-button-color-#{$color}-active-text);
-//     --mod-button-color-background: var(--bal-button-color-#{$color}-active-background);
-//     --mod-button-color-border: var(--bal-button-color-#{$color}-active-border);
-//     translate: 0 0.5px;
-//   }
-
-//   &:focus-visible,
-//   &.is-focused {
-//     &:not(:active) {
-//       @include focus-shadow();
-//     }
-//   }
-// }
-
-// @mixin button-dashed($color) {
-//   @include button-color($color);
-
-//   --mod-button-border-style: dashed;
-
-//   bal-icon.is-circle {
-//     background-color: var(--bal-button-color-#{$color}-base-border);
-//   }
-// }
-
-/**
  * Variables
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
@@ -130,6 +44,9 @@ $host-selector: ('#button');
   @include vars.local(button-min-height, 3rem);
   @include vars.local(button-min-width, 3rem);
   @include vars.local(button-padding-inline, 1.5rem);
+
+  @include vars.local(button-box-shadow, none);
+  @include vars.local(button-text-shadow, none);
 }
 
 /**
@@ -159,8 +76,11 @@ $host-selector: ('#button');
   text-decoration: none;
   user-select: none;
 
+  box-shadow: var(--_button-box-shadow);
+  text-shadow: var(--_button-text-shadow);
+
   touch-action: manipulation;
-  transition-property: color, background-color, border-color, box-shadow;
+  transition-property: color, background-color, border-color, box-shadow, text-shadow;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
@@ -187,10 +107,9 @@ $host-selector: ('#button');
     border: 0;
   }
 
-  // Icon
-  & bal-icon {
-    --icon-color: var(--_button-color-text);
-  }
+  // Icon & Spinner
+  --spinner-size: 1.5rem;
+  --icon-color: var(--_button-color-text);
 
   // Outline
   &:focus,
@@ -208,14 +127,16 @@ $host-selector: ('#button');
   @include hover {
     &:hover,
     &.is-hovered {
-      background-color: var(--_button-color-background-hover);
+      --icon-color: var(--_button-color-text-hover);
       color: var(--_button-color-text-hover);
+      background-color: var(--_button-color-background-hover);
       border-color: var(--_button-color-border-hover);
     }
   }
 
   &:active,
   &.is-pressed {
+    --icon-color: var(--_button-color-text-active);
     background-color: var(--_button-color-background-active);
     color: var(--_button-color-text-active);
     border-color: var(--_button-color-border-active);
@@ -224,15 +145,55 @@ $host-selector: ('#button');
 }
 
 //
-// Badge Position
+// Fullwidth / Expanded
 // --------------------------------
 
 @include hybrid.host($use-host) {
   :host(.is-fullwidth) {
     width: 100%;
     flex: 1 1 auto;
-  }
 
+    #button {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-fullwidth {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+//
+// Link
+// --------------------------------
+
+@mixin text-decoration() {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: var(--bal-link-border-width);
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-link) #button {
+    @include text-decoration();
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-link {
+    @include text-decoration();
+  }
+}
+
+//
+// Badge Position
+// --------------------------------
+
+@include hybrid.host($use-host) {
   :host ::slotted(bal-badge),
   :host ::slotted(.badge) {
     --badge-position: absolute;
@@ -291,13 +252,13 @@ $colors: (
 
 @each $color in $colors {
   @include hybrid.host($use-host) {
-    :host([color='#{$color}']:not([inverted]):not([dashed])) {
+    :host(.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading)) {
       @include color($color);
     }
   }
 
   @include hybrid.styles('button', $use-host) {
-    &.is-#{$color}:not(.is-inverted):not(.is-dashed) {
+    &.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading) {
       @include color($color);
     }
   }
@@ -306,13 +267,13 @@ $colors: (
 @each $color in $colors {
   @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link' and $color != 'text') {
     @include hybrid.host($use-host) {
-      :host([color='#{$color}'][inverted]:not([dashed])) {
+      :host(.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading)) {
         @include color(inverted);
       }
     }
 
     @include hybrid.styles('button', $use-host) {
-      &.is-#{$color}.is-inverted:not(.is-dashed) {
+      &.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading) {
         @include color(inverted);
       }
     }
@@ -327,13 +288,13 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
 @each $color in $inverted-colors {
   @include hybrid.host($use-host) {
-    :host([color='#{$color}'][inverted]) {
+    :host([color='#{$color}'][inverted]:not([disabled]):not([loading])) {
       @include color('inverted-#{$color}');
     }
   }
 
   @include hybrid.styles('button', $use-host) {
-    &.is-#{$color}.is-inverted {
+    &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
       @include color('inverted-#{$color}');
     }
   }
@@ -350,13 +311,14 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @include hybrid.host($use-host) {
-  :host([size='sm']) {
+  :host(.is-sm) {
     @include size-sm();
   }
 }
 
 @include hybrid.styles('button', $use-host) {
-  &.is-sm {
+  &.is-sm,
+  &.is-small {
     @include size-sm();
   }
 }
@@ -369,14 +331,34 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @include hybrid.host($use-host) {
-  :host([size='lg']) {
+  :host(.is-lg) {
     @include size-lg();
   }
 }
 
 @include hybrid.styles('button', $use-host) {
-  &.is-lg {
+  &.is-lg,
+  &.is-large {
     @include size-lg();
+  }
+}
+
+@mixin size-xl() {
+  --mod-button-font-size: var(--bal-button-size-xl);
+  --mod-button-min-height: 5.5rem;
+  --mod-button-min-width: 5.5rem;
+  --mod-button-padding-inline: 1.5rem;
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-xl) {
+    @include size-xl();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-xl {
+    @include size-xl();
   }
 }
 
@@ -391,7 +373,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @include hybrid.host($use-host) {
-  @include host.hasAttr('flat') {
+  :host(.is-flat) {
     @include shape-flat();
   }
 }
@@ -408,7 +390,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @include hybrid.host($use-host) {
-  @include host.hasAttr('rounded') {
+  :host(.is-rounded) {
     @include shape-rounded();
   }
 }
@@ -421,32 +403,22 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
 // Square
 @mixin shape-square($size: 3rem) {
-  --mod-button-radius: var(--bal-button-radius-base);
   --mod-button-padding-inline: 0;
   --mod-button-gap: 0;
   --mod-button-min-height: #{$size};
   --mod-button-min-width: #{$size};
 }
 
-@include attr.hasMany(
-  (
-    square: true,
-    size: false,
-  ),
-  $use-host
-) {
-  @include shape-square();
-  --icon-size: 1.5rem;
-}
+@include hybrid.host($use-host) {
+  :host(.is-square:not(.is-sm)) {
+    @include shape-square();
+    --icon-size: 1.5rem;
+  }
 
-@include attr.hasMany(
-  (
-    square: true,
-    size: 'sm',
-  ),
-  $use-host
-) {
-  @include shape-square(2rem);
+  :host(.is-square.is-sm) {
+    @include shape-square(2rem);
+    --icon-size: var(--bal-icon-size-sm);
+  }
 }
 
 @include hybrid.styles('button', $use-host) {
@@ -472,25 +444,16 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
   --mod-button-min-width: #{$size};
 }
 
-@include attr.hasMany(
-  (
-    circle: true,
-    size: false,
-  ),
-  $use-host
-) {
-  @include shape-circle();
-  --icon-size: 1.5rem;
-}
+@include hybrid.host($use-host) {
+  :host(.is-circle:not(.is-sm)) {
+    @include shape-circle();
+    --icon-size: 1.5rem;
+  }
 
-@include attr.hasMany(
-  (
-    circle: true,
-    size: 'sm',
-  ),
-  $use-host
-) {
-  @include shape-circle(2rem);
+  :host(.is-circle.is-sm) {
+    @include shape-circle(2rem);
+    --icon-size: var(--bal-icon-size-sm);
+  }
 }
 
 @include hybrid.styles('button', $use-host) {
@@ -514,7 +477,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
 
 @each $color in $dashed-colors {
   @include hybrid.host($use-host) {
-    :host([color='#{$color}'][dashed]) {
+    :host(.is-#{$color}.is-dashed) {
       --mod-button-border-style: dashed;
 
       @include color('#{$color}-dashed');
@@ -551,93 +514,80 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
 }
 
 //
-// Spinner
+// Shadow
 // --------------------------------
-@include attr.hasMany(
-  (
-    loading: true,
-  ),
-  $use-host
-) {
-  --spinner-size: 2rem;
+@include hybrid.host($use-host) {
+  :host(.has-shadow:not(.is-link):not(.is-text)) {
+    --mod-button-box-shadow: var(--bal-shadow-box-base);
+  }
+
+  :host(.is-text.has-shadow),
+  :host(.is-link.has-shadow) {
+    --mod-button-text-shadow: var(--bal-shadow-text);
+  }
 }
 
-// @include hybrid.host($use-host) {
-//   :host {
-//     --spinner-circle-color-border-background: rgba(11, 12, 110, 0.3);
-//   }
-// }
+@include hybrid.styles('button', $use-host) {
+  &.has-shadow:not(.is-link, .is-text) {
+    --mod-button-box-shadow: var(--bal-shadow-box-base);
+  }
 
-// @include hybrid.style($name, $use-host) {
-//   --spinner-circle-color-border-background: rgba(11, 12, 110, 0.3);
-// }
-//   bal-spinner {
-//     --spinner-circle-color-border-background: rgba(11, 12, 110, 0.3);
-//   }
+  &.is-text.has-shadow,
+  &.is-link.has-shadow {
+    --mod-button-text-shadow: var(--bal-shadow-text);
+  }
+}
 
-//   &.is-primary,
-//   &.is-secondary.is-inverted {
-//     bal-spinner {
-//       --spinner-circle-color-border-background: rgba(255, 255, 255, 0.5);
-//     }
-//   }
-// }
+//
+// No Wrap
+// --------------------------------
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) {
+    max-width: stretch;
 
-//   // Spinner
-//   & bal-spinner:not([variation='circle']) {
-//     --spinner-size: 2rem;
-//   }
-// }
+    #button {
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: stretch;
+    }
+  }
+}
 
-//   &.has-no-wrap {
-//     text-overflow: ellipsis;
-//     overflow: hidden;
-//     white-space: nowrap;
-//   }
-
-//   &.is-fullwidth {
-//     width: 100%;
-//     flex: 1 1 auto;
-//   }
-
-//   &:not(.is-link, .is-text).has-shadow {
-//     box-shadow: var(--bal-button-shadow-base);
-//   }
-
-//   &.is-text.has-shadow,
-//   &.is-link.has-shadow {
-//     text-shadow: var(--bal-button-shadow-base);
-//   }
-
-//   &.is-link {
-//     text-decoration: underline;
-//     text-underline-offset: 0.25rem;
-//     text-decoration-thickness: var(--bal-link-border-width);
-//   }
+@include hybrid.styles('button', $use-host) {
+  &.has-no-wrap {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: stretch;
+  }
+}
 
 //
 // Checkbox and Radio Button Styles
 // --------------------------------
-// @include hybrid.styles($css-selector, $use-host) {
-//   &:is(input[type='checkbox'], input[type='radio'])[aria-label]::after {
-//     --mod-button-content: attr(aria-label);
+@include hybrid.styles($css-selector, $use-host) {
+  &:is(input[type='checkbox'], input[type='radio'])[aria-label]::after {
+    --_button-content: attr(aria-label);
 
-//     content: var(--button-content);
-//   }
+    content: var(--_button-content);
+  }
 
-//   &:is(input[type='checkbox'], input[type='radio']) {
-//     @include color(secondary);
+  &:is(input[type='checkbox'], input[type='radio']) {
+    @include color(secondary);
 
-//     appearance: none;
-//     vertical-align: middle;
-//   }
+    appearance: none;
+    vertical-align: middle;
+  }
 
-//   &:is(input[type='checkbox'], input[type='radio']):where(input:checked) {
-//     @include color(primary);
+  &:is(input[type='checkbox'], input[type='radio']):where(input:checked) {
+    @include color(primary);
 
-//     isolation: isolate;
-//   }
-// }
+    isolation: isolate;
+  }
+}
 
 //
 // Disabled State
@@ -657,7 +607,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     cursor: default;
     translate: 0 0;
     background-color: var(--bal-button-color-disabled-base-background);
-    border: var(--bal-button-color-disabled-base-border);
+    border-color: var(--bal-button-color-disabled-base-border);
     color: var(--bal-button-color-disabled-base-text);
 
     & > bal-icon {
@@ -680,10 +630,14 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
       @include button-disabled();
     }
   }
+  :host([loading]) #button {
+    @include button-disabled();
+  }
 }
 
 @include hybrid.styles-only($use-host) {
   fieldset[disabled] .button,
+  .button.is-loading,
   .button.is-disabled,
   .button.is-inverted.is-disabled,
   .button[disabled] {

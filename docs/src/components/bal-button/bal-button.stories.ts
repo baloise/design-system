@@ -67,7 +67,6 @@ export const Variants = Story({
   <button class="button is-primary">Primary</button>
   <button class="button is-secondary">Secondary</button>
   <button class="button is-tertiary">Tertiary</button>
-  <button class="button is-accent">Accent</button>
 </div>
 <div class="buttons mt-normal">
   <button class="button is-tertiary-purple">Tertiary Purple</button>
@@ -84,9 +83,10 @@ export const Variants = Story({
 export const Sizes = Story({
   ...withRender(
     () => `<div class="buttons">
-  <button class="button is-small">Small</button>
+  <button class="button is-sm">Small</button>
   <button class="button">Normal</button>
-  <button class="button is-large">Large</button>
+  <button class="button is-lg">Large</button>
+  <button class="button is-xl">X-Large</button>
 </div>`,
   ),
 })
@@ -97,14 +97,6 @@ export const Inverted = Story({
   <div class="buttons">
     <button class="button is-inverted is-primary">Primary</button>
     <button class="button is-inverted is-secondary">Secondary</button>
-    <button class="button is-inverted is-tertiary">Tertiary</button>
-    <button class="button is-inverted is-accent">Accent</button>
-  </div>
-  <div class="buttons">
-    <button class="button is-inverted is-tertiary-purple">Tertiary Purple</button>
-    <button class="button is-inverted is-tertiary-red">Tertiary Red</button>
-    <button class="button is-inverted is-tertiary-yellow">Tertiary Yellow</button>
-    <button class="button is-inverted is-tertiary-green">Tertiary Green</button>
   </div>
   <div class="buttons">
     <button class="button is-inverted is-link">Link</button>
@@ -180,10 +172,20 @@ export const SquareButtons = Story({
     <bal-icon name="plus"></bal-icon>
   </button>
   <button class="button is-square is-secondary">
-    <bal-icon name="account"></bal-icon>
+    <bal-icon name="plus"></bal-icon>
   </button>
   <button class="button is-circle is-tertiary-purple">
     <bal-icon name="plus"></bal-icon>
+  </button>
+</div>`,
+  ),
+})
+
+export const NoWrap = Story({
+  ...withRender(
+    () => `<div class="buttons">
+  <button class="button has-no-wrap is-tertiary-purple">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis vulputate lorem.
   </button>
 </div>`,
   ),

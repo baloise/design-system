@@ -13,13 +13,20 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <button class="button">Button</button>
       </section>
 
+      <!-- Shadow -->
+      <section data-testid="shadow">
+        <span>Shadow</span>
+        <button class="button has-shadow">Button</button>
+        <a class="link has-shadow" href="">Link Button</a>
+      </section>
+
       <!-- Badge Style -->
-      <section>
+      <section data-testid="badge">
         <span>Badge</span>
         <button class="button">
           <span class="badge">42</span>
@@ -32,7 +39,7 @@
       </section>
 
       <!-- Link -->
-      <section>
+      <section data-testid="link">
         <span>Link</span>
         <button class="button is-link">Link Button</button>
         <a class="link" href="">Link Button</a>
@@ -45,7 +52,7 @@
       </section>
 
       <!-- Colors -->
-      <section>
+      <section data-testid="colors">
         <span>Colors</span>
         <button class="button is-primary">Primary</button>
         <button class="button is-secondary">Secondary</button>
@@ -68,7 +75,7 @@
       </section>
 
       <!-- Dashed -->
-      <section>
+      <section data-testid="dashed">
         <span>Dashed</span>
         <button class="button is-tertiary-purple is-dashed">Tertiary Purple</button>
         <button class="button is-tertiary-red is-dashed">Tertiary Red</button>
@@ -96,7 +103,7 @@
       </section>
 
       <!-- Inverted -->
-      <section class="s-bg-inverted">
+      <section data-testid="inverted" class="s-bg-inverted">
         <span>Inverted</span>
         <button class="button is-inverted is-primary">Primary</button>
         <button class="button is-inverted is-secondary">Secondary</button>
@@ -119,27 +126,29 @@
       </section>
 
       <!-- Sizes -->
-      <section>
+      <section data-testid="sizes">
         <span>Sizes</span>
         <button class="button is-small">Small</button>
         <button class="button">Normal</button>
         <button class="button is-large">Large</button>
+        <button class="button is-xl">X-Large</button>
       </section>
 
       <!-- Expanded -->
-      <section>
+      <section data-testid="expanded">
         <span>Expanded</span>
         <button class="button is-fullwidth">Fullwidth</button>
       </section>
 
       <!-- Long Content -->
-      <section>
+      <section data-testid="long-content">
         <span>Long Content</span>
         <button class="button">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
           aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
           totam assumenda.
         </button>
+        <button class="button has-no-wrap">Lorem ipsum</button>
         <button class="button has-no-wrap">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maxime, ut dolores laudantium est aut
           aperiam rem voluptates suscipit praesentium pariatur harum repellat excepturi expedita similique qui nemo
@@ -148,19 +157,19 @@
       </section>
 
       <!-- Flat -->
-      <section>
+      <section data-testid="flat">
         <span>Flat</span>
         <button class="button is-flat">Flat Button</button>
       </section>
 
       <!-- Rounded -->
-      <section>
+      <section data-testid="rounded">
         <span>Rounded</span>
         <button class="button is-rounded">Rounded Button</button>
       </section>
 
       <!-- Disabled -->
-      <section>
+      <section data-testid="disabled">
         <span>Disabled</span>
         <button class="button" disabled="disabled">Disabled using attribute</button>
         <button class="button is-disabled" tabindex="-1" role="button" aria-disabled="true">
@@ -169,7 +178,7 @@
       </section>
 
       <!-- Buttons with any HTML tags -->
-      <section>
+      <section data-testid="html-tags">
         <span>Buttons with any HTML tags</span>
         <form>
           <a role="button" class="button">Link</a>
@@ -183,7 +192,7 @@
       </section>
 
       <!-- Square & Circle -->
-      <section>
+      <section data-testid="square-circle">
         <span>Square & Circle</span>
         <button class="button is-square">
           <bal-icon name="check"></bal-icon>
@@ -203,7 +212,7 @@
       </section>
 
       <!-- Icon -->
-      <section>
+      <section data-testid="icon">
         <span>Icon</span>
         <button class="button">
           <bal-icon name="plus"></bal-icon>
@@ -216,10 +225,10 @@
       </section>
 
       <!-- Loading -->
-      <section>
+      <section data-testid="loading">
         <span>Loading</span>
         <div class="buttons">
-          <button class="button is-square is-primary">
+          <button class="button is-square is-loading is-primary">
             <bal-spinner></bal-spinner>
           </button>
           <button class="button is-loading">
@@ -280,7 +289,7 @@
       </section>
 
       <!-- Group -->
-      <section>
+      <section data-testid="group">
         <span>Group</span>
         <div class="buttons">
           <button class="button">Left</button>
@@ -300,9 +309,9 @@
       </section>
 
       <!-- Two Row Button Group -->
-      <section>
+      <section data-testid="two-row-button-group">
         <span>Two Row Button Group</span>
-        <div class="buttons as-row">
+        <div class="buttons as-row fit-content">
           <button class="button">Left</button>
           <button class="button">Right</button>
         </div>
@@ -315,7 +324,7 @@
       </section>
 
       <!-- Group Column-->
-      <section>
+      <section data-testid="group-column">
         <span>Group Column</span>
         <div class="buttons as-col">
           <button class="button">Left</button>

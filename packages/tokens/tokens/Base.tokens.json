@@ -8438,6 +8438,17 @@
             ],
             "com.figma.isOverride": true
           }
+        },
+        "XL": {
+          "$type": "number",
+          "$value": "{🏷️ Semantic.🔤 Text.Size.2XL.Mobile}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:274:8",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
         }
       },
       "Radius": {
