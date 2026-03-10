@@ -1,5 +1,7 @@
 # @baloise/ds-playwright
 
+## 19.9.2
+
 ## 19.9.1
 
 ## 19.9.0
