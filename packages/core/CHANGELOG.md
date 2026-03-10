@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.9.2
+
+### Patch Changes
+
+- **logo**: animation will only happen if set to true ( [#1889](https://github.com/baloise/design-system/pull/1889))
+
 ## 19.9.1
 
 ### Patch Changes
