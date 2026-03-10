@@ -111,7 +111,6 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   }
 
   private get isAnimated() {
-    return true
     return this.doesConfigAllowAnimation && this.animated
   }
 
@@ -160,7 +159,6 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   render() {
     const logoBlock = BEM.block('logo')
-
     const LargeLogo: FunctionalComponent<{ onlyText?: boolean }> = ({ onlyText }) => {
       const baseHeight = 32
       const helvetiaWidth = (1084 / 204) * baseHeight
