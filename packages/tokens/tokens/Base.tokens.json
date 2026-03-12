@@ -6063,6 +6063,17 @@
         },
         "LG": {
           "$type": "number",
+          "$value": "{🧱 Primitive.🔤 Font.Size.32}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:45:32",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "XL": {
+          "$type": "number",
           "$value": "{🧱 Primitive.🔤 Font.Size.40}",
           "$extensions": {
             "com.figma.variableId": "VariableID:45:30",
@@ -6072,7 +6083,7 @@
             "com.figma.isOverride": true
           }
         },
-        "XL": {
+        "2XL": {
           "$type": "number",
           "$value": "{🧱 Primitive.🔤 Font.Size.80}",
           "$extensions": {
@@ -6083,11 +6094,11 @@
             "com.figma.isOverride": true
           }
         },
-        "2XL": {
+        "3XL": {
           "$type": "number",
           "$value": "{🧱 Primitive.🔤 Font.Size.176}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:45:32",
+            "com.figma.variableId": "VariableID:280:18",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
@@ -9240,7 +9251,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.Sky}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SkyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:39",
                 "com.figma.scopes": [
@@ -9251,7 +9262,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.InfoDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SkyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:40",
                 "com.figma.scopes": [
@@ -9264,7 +9275,7 @@
           "Hover": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:41",
                 "com.figma.scopes": [
@@ -9275,7 +9286,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.InfoDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SkyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:42",
                 "com.figma.scopes": [
@@ -9286,7 +9297,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.InfoDarker}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.Info}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:43",
                 "com.figma.scopes": [
@@ -9299,7 +9310,7 @@
           "Active": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:44",
                 "com.figma.scopes": [
@@ -9310,7 +9321,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.InfoDarkest}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SkyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:45",
                 "com.figma.scopes": [
@@ -9321,7 +9332,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.InfoDarkest}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.InfoActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:46",
                 "com.figma.scopes": [
@@ -9358,7 +9369,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:51",
                 "com.figma.scopes": [
@@ -9371,7 +9382,7 @@
           "Hover": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:48",
                 "com.figma.scopes": [
@@ -9382,7 +9393,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:50",
                 "com.figma.scopes": [
@@ -9393,7 +9404,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessDarker}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.SuccessHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:52",
                 "com.figma.scopes": [
@@ -9406,7 +9417,7 @@
           "Active": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:53",
                 "com.figma.scopes": [
@@ -9417,7 +9428,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessDarkest}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:54",
                 "com.figma.scopes": [
@@ -9428,7 +9439,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.SuccessDarkest}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.SuccessActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:55",
                 "com.figma.scopes": [
@@ -9465,7 +9476,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:60",
                 "com.figma.scopes": [
@@ -9489,7 +9500,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:59",
                 "com.figma.scopes": [
@@ -9500,7 +9511,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningDarker}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.WarningHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:61",
                 "com.figma.scopes": [
@@ -9524,7 +9535,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningDarkest}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:63",
                 "com.figma.scopes": [
@@ -9535,7 +9546,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.WarningDarkest}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.WarningActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:64",
                 "com.figma.scopes": [
@@ -9572,7 +9583,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:69",
                 "com.figma.scopes": [
@@ -9585,7 +9596,7 @@
           "Hover": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:66",
                 "com.figma.scopes": [
@@ -9596,7 +9607,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerDarker}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:68",
                 "com.figma.scopes": [
@@ -9607,7 +9618,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerDarker}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.DangerHover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:70",
                 "com.figma.scopes": [
@@ -9620,7 +9631,7 @@
           "Active": {
             "Text": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+              "$value": "{🏷️ Semantic.🔤 Text.Color.PrimaryActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:71",
                 "com.figma.scopes": [
@@ -9631,7 +9642,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerDarkest}",
+              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:72",
                 "com.figma.scopes": [
@@ -9642,7 +9653,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🏷️ Semantic.🎨 Background.Color.DangerDarkest}",
+              "$value": "{🏷️ Semantic.▭ Border.Color.DangerActive}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:73",
                 "com.figma.scopes": [
@@ -11786,6 +11797,63 @@
           "com.figma.isOverride": true
         }
       },
+      "Base": {
+        "Background": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:216:11",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:216:12",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Text": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🔤 Text.Color.Primary}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:216:13",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "ProgressBar": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Primary.5}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:277:2",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "ProgressBackground": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Primary.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:277:3",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      },
       "Success": {
         "Background": {
           "$type": "color",
@@ -11820,15 +11888,25 @@
             "com.figma.isOverride": true
           }
         },
-        "Icon": {
-          "$type": "string",
-          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')",
+        "ProgressBar": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Success.6}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:216:22",
+            "com.figma.variableId": "VariableID:277:20",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "ProgressBackground": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Success.3}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:277:19",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         }
@@ -11867,62 +11945,25 @@
             "com.figma.isOverride": true
           }
         },
-        "Icon": {
-          "$type": "string",
-          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:216:18",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.type": "string",
-            "com.figma.isOverride": true
-          }
-        }
-      },
-      "Base": {
-        "Background": {
+        "ProgressBar": {
           "$type": "color",
-          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$value": "{🧱 Primitive.🌈 Color.Info.6}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:216:11",
+            "com.figma.variableId": "VariableID:277:15",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
             "com.figma.isOverride": true
           }
         },
-        "Border": {
+        "ProgressBackground": {
           "$type": "color",
-          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$value": "{🧱 Primitive.🌈 Color.Info.3}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:216:12",
+            "com.figma.variableId": "VariableID:277:14",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.isOverride": true
-          }
-        },
-        "Text": {
-          "$type": "color",
-          "$value": "{🏷️ Semantic.🔤 Text.Color.Primary}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:216:13",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.isOverride": true
-          }
-        },
-        "Icon": {
-          "$type": "string",
-          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:216:14",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.type": "string",
             "com.figma.isOverride": true
           }
         }
@@ -11961,15 +12002,25 @@
             "com.figma.isOverride": true
           }
         },
-        "Icon": {
-          "$type": "string",
-          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
+        "ProgressBar": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Warning.6}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:216:26",
+            "com.figma.variableId": "VariableID:277:10",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "ProgressBackground": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Warning.3}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:277:9",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         }
@@ -12008,15 +12059,25 @@
             "com.figma.isOverride": true
           }
         },
-        "Icon": {
-          "$type": "string",
-          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
+        "ProgressBar": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Danger.6}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:216:30",
+            "com.figma.variableId": "VariableID:277:25",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "ProgressBackground": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Danger.3}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:277:24",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         }

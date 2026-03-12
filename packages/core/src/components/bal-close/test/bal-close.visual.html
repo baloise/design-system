@@ -15,8 +15,20 @@
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <!-- <button class="close" aria-label="close" title="Close" tabindex="0"></button> -->
         <bal-close></bal-close>
+      </section>
+
+      <!-- Button -->
+      <section data-testid="button">
+        <span>Button</span>
+        <div class="stack as-row">
+          <bal-close button size="sm"></bal-close>
+          <bal-close button></bal-close>
+          <bal-close button size="medium"></bal-close>
+        </div>
+          <div class="stack as-row">
+          <bal-close button button-color="secondary"></bal-close>
+        </div>
       </section>
 
       <!-- Themeing -->
@@ -45,6 +57,7 @@
         <bal-close inverted size="small"></bal-close>
         <bal-close inverted></bal-close>
         <bal-close inverted size="medium"></bal-close>
+        <bal-close inverted button></bal-close>
       </section>
     </main>
   </body>

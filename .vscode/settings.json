@@ -4,12 +4,12 @@
   "vsicons.associations.files": [
     {
       "icon": "playwright",
-      "extensions": ["play.ts"],
+      "extensions": [".play.ts"],
       "format": "svg"
     },
     {
       "icon": "registry",
-      "extensions": ["po.ts"],
+      "extensions": [".po.ts"],
       "format": "svg"
     }
   ],

@@ -72,6 +72,7 @@
 
 //
 // Colors
+// --------------------------------
 $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'danger');
 
 @each $color in $colors {
@@ -85,6 +86,7 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
 
 //
 // Sizes
+// --------------------------------
 @include attr.has('size', 'sm') {
   --mod-badge-radius: calc(var(--bal-badge-size-sm) / 2);
   --mod-badge-height: var(--bal-badge-size-sm);
@@ -131,3 +133,4 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
     box-shadow: 0 0 0 0 transparent;
   }
 }
+

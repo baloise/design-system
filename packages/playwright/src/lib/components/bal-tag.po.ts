@@ -14,7 +14,7 @@ export class BalTag extends PageObject {
     await this.closeButton.click()
   }
 
-  async assertToHaveText(text: string) {
+  async assertToContainText(text: string) {
     await expect(this.el).toContainText(text)
   }
 }

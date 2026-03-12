@@ -1,6 +1,6 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
-import { balToastController, balSnackbarController } from './components/bal-notification/bal-notification.controller'
+import { balToastController, balSnackbarController } from './components/bal-alert/bal-alert.controller'
 import { tags } from './tags-all'
 import { balBrowser } from './utils/browser'
 import { BalConfig, BalPlatformConfig, setupConfig } from './utils/config'

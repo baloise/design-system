@@ -1,0 +1,117 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+
+    <script type="module">
+      import { balToastController, balSnackbarController } from '/build/index.esm.js'
+
+      window.balToastController = balToastController
+      window.balSnackbarController = balSnackbarController
+    </script>
+  </head>
+  <body>
+    <bal-app animated="false">
+      <main class="container">
+        <!-- Toast -->
+        <section data-testid="toasts">
+          <span>Toast</span>
+          <!-- Basic Toast -->
+          <bal-button id="toast-basic" data-testid="toast-basic">Basic</bal-button>
+          <script>
+            let id = 1
+            document.getElementById('toast-basic').addEventListener('click', () => {
+              balToastController.create({
+                message: 'Hi I am a default Toast! Hi I am a default Toast! ' + id++,
+              })
+            })
+          </script>
+          <!-- Closable + Infinite Toast -->
+          <bal-button id="toast-closable" data-testid="toast-closable">Closable + Infinite</bal-button>
+          <script>
+            document.getElementById('toast-closable').addEventListener('click', () => {
+              balToastController.create({
+                heading: 'Closable + Infinite',
+                message: 'Hi I am a default Toast! Hi I am a default Toast!',
+                closable: true,
+                duration: 'infinite',
+                color: 'warning',
+              })
+            })
+          </script>
+          <!-- Infinite Toast -->
+          <bal-button id="toast-infinite" data-testid="toast-infinite">Infinite</bal-button>
+          <script>
+            document.getElementById('toast-infinite').addEventListener('click', async () => {
+              const toastId = await balToastController.create({
+                heading: 'Heading',
+                message: 'Hi I am a default Toast! Hi I am a default Toast!',
+                color: 'danger',
+                closeable: false,
+                duration: 'infinite',
+                action: 'Close',
+                actionHandler: id => {
+                  console.log('Action callback called', id)
+                  balToastController.remove(id)
+                },
+              })
+            })
+          </script>
+        </section>
+
+        <!-- Snackbar -->
+        <section>
+          <span>Snackbar</span>
+          <!-- Basic Snackbar -->
+          <bal-button data-testid="snackbar-basic" id="snackbar-basic">Basic</bal-button>
+          <script>
+            let idSnackbar = 1
+            document.getElementById('snackbar-basic').addEventListener('click', () => {
+              balSnackbarController.create({
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar! ' + idSnackbar++,
+              })
+            })
+          </script>
+          <!-- Closable + Infinite Snackbar -->
+          <bal-button id="snackbar-closable" data-testid="snackbar-closable">Closable + Infinite</bal-button>
+          <script>
+            document.getElementById('snackbar-closable').addEventListener('click', () => {
+              balSnackbarController.create({
+                heading: 'Closable + Infinite',
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
+                closable: true,
+                duration: 'infinite',
+                color: 'warning',
+              })
+            })
+          </script>
+          <!-- Infinite Snackbar -->
+          <bal-button id="snackbar-infinite" data-testid="snackbar-infinite">Infinite</bal-button>
+          <script>
+            document.getElementById('snackbar-infinite').addEventListener('click', async () => {
+              const snackbarId = await balSnackbarController.create({
+                heading: 'Heading',
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
+                color: 'danger',
+                closeable: false,
+                duration: 'infinite',
+                action: 'Close',
+                actionHandler: id => {
+                  console.log('Action callback called', id)
+                  balSnackbarController.remove(id)
+                },
+              })
+            })
+          </script>
+        </section>
+      </main>
+    </bal-app>
+  </body>
+</html>

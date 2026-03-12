@@ -81,8 +81,8 @@ Checklist
 | bal-switch           | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-close            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-badge            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-toast            | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-snackbar         | Web Component      | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-toast            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-snackbar         | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-shape            | Web Component      | ✅         | ✅   | ❓            | ✅      | ✅   |
 | bal-stage            | Web Component      | ❓         | ❓   | ❓            | ❓      | ⬜   |
 

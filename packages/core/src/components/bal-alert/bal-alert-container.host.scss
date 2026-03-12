@@ -1,0 +1,78 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../host' as host;
+
+@forward '../../../../styles/src/core/container.scss';
+
+:host {
+  --alert-container-top: 1rem;
+
+  position: fixed;
+  pointer-events: none;
+
+  #wrapper {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+:host(.is-toast) {
+  z-index: var(--bal-z-index-toast);
+
+  top: var(--alert-container-top);
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  #wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    bal-toast {
+      pointer-events: auto;
+      width: 100%;
+
+      --toast-animation-start-opacity: 0;
+      --toast-animation-start-transform: translateY(-120%);
+
+      --toast-animation-transition: transform 300ms ease, opacity 300ms ease;
+
+      --toast-animation-end-opacity: 1;
+      --toast-animation-end-transform: translateY(0);
+    }
+  }
+}
+
+:host(.is-snackbar) {
+  z-index: calc(var(--bal-z-index-toast) - 1);
+
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+
+  #wrapper {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    bal-snackbar {
+      pointer-events: auto;
+      width: 100%;
+
+      --snackbar-animation-start-opacity: 0;
+      --snackbar-animation-start-transform: translateX(120%);
+
+      --snackbar-animation-transition: transform 300ms ease, opacity 300ms ease;
+
+      --snackbar-animation-end-opacity: 1;
+      --snackbar-animation-end-transform: translateX(0);
+
+      @include tablet {
+        min-width: 27.5rem;
+        max-width: 27.5rem;
+        width: 27.5rem;
+      }
+    }
+  }
+}

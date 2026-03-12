@@ -4,6 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
+  export type BalIconShape = 'triangle' | 'circle'
   export type BalIconColor =
     | 'blue'
     | 'light-blue'

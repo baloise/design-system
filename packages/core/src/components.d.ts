@@ -5,16 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 import { BalConfigState } from "./utils/config";
 import { BalAriaForm } from "./utils/form";
 import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
-import { Notification, NotificationInterface } from "./components/bal-notification/bal-notification-container";
+export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 export { BalConfigState } from "./utils/config";
 export { BalAriaForm } from "./utils/form";
 export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
 export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
-export { Notification, NotificationInterface } from "./components/bal-notification/bal-notification-container";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -57,6 +57,20 @@ export namespace Components {
           * @default false
          */
         "open": boolean;
+    }
+    interface BalAlertContainer {
+        "addAlert": (alert: Alert) => Promise<string>;
+        /**
+          * @default false
+         */
+        "animated": boolean;
+        "container"?: AlertContainerSize;
+        "removeAlert": (id: string) => Promise<void>;
+        "removeAll": () => Promise<void>;
+        /**
+          * @default 'toast'
+         */
+        "type": AlertType;
     }
     interface BalApp {
         /**
@@ -427,6 +441,15 @@ export namespace Components {
         "pressed": boolean;
     }
     interface BalClose {
+        /**
+          * If `true` the close component will be rendered as a button element.  This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
+          * @default false
+         */
+        "button": boolean;
+        /**
+          * Defines the color of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonColor"?: BalProps.BalButtonColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` it supports dark backgrounds.
@@ -435,9 +458,8 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default undefined
          */
-        "size": BalProps.BalCloseSize;
+        "size"?: BalProps.BalCloseSize;
     }
     interface BalContent {
         /**
@@ -563,15 +585,9 @@ export namespace Components {
     }
     interface BalIcon {
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default false
-         */
-        "circle": boolean;
-        /**
           * The theme type of the button.
-          * @default undefined
          */
-        "color": BalProps.BalIconColor;
+        "color"?: BalProps.BalIconColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -595,23 +611,25 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Name of the baloise icon.
-          * @default undefined
          */
-        "name": string | undefined;
+        "name"?: string;
         /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow": boolean;
         /**
+          * If `true` the icon is displayed in a circle with a background color.
+         */
+        "shape"?: BalProps.BalIconShape;
+        /**
           * Defines the size of the icon.
          */
         "size": BalProps.BalIconSize;
         /**
           * Svg content.
-          * @default ''
          */
-        "svg": string;
+        "svg"?: string;
         /**
           * If `true` the icon acts as a tile with a background color.
           * @default false
@@ -877,23 +895,6 @@ export namespace Components {
          */
         "size"?: BalProps.BalNotificationSize;
     }
-    interface BalNotificationContainer {
-        "addNotification": (notification: Notification) => Promise<string>;
-        /**
-          * @default false
-         */
-        "animated": boolean;
-        /**
-          * @default ''
-         */
-        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        "removeAll": () => Promise<void>;
-        "removeNotification": (id: string) => Promise<void>;
-        /**
-          * @default 'toast'
-         */
-        "type": any;
-    }
     interface BalShape {
         /**
           * The shape color
@@ -914,69 +915,63 @@ export namespace Components {
     interface BalSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
          */
-        "action": string;
+        "action"?: string;
         /**
           * @default () => void 0
          */
-        "actionHandler": () => void;
+        "actionHandler": (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
-          * @default ''
          */
-        "actionHref": string;
+        "actionHref"?: string;
         /**
           * Defines the icon of the action button.
-          * @default ''
          */
-        "actionIcon": string;
+        "actionIcon"?: string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
         "actionTarget": BalProps.BalButtonTarget;
         /**
+          * @default crypto.randomUUID() as string
+         */
+        "alertId": string;
+        /**
           * If `true` the notification can be closed by the user.
-          * @default false
+          * @default true
          */
         "closable": boolean;
         /**
+          * Closes this notification
+         */
+        "close": () => Promise<void>;
+        /**
           * @default () => void 0
          */
-        "closeHandler": () => void;
+        "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": BalProps.BalSnackbarColor;
-        /**
-          * The duration of the snackbar in milliseconds.
-          * @default 0
-         */
-        "duration": number;
+        "color"?: BalProps.BalSnackbarColor;
         /**
           * Defines the heading of the notification.
-          * @default ''
          */
-        "heading": string;
+        "heading"?: string;
         /**
           * Defines the icon of the notification.
-          * @default ''
          */
-        "icon": string;
+        "icon"?: string;
         /**
           * Defines the message of the notification as html content
-          * @default ''
          */
-        "message": string;
+        "message"?: string;
         /**
           * Defines the svg content of the icon
-          * @default ''
          */
-        "svg": string;
+        "svg"?: string;
         /**
-          * If `true` the notification is visible.
           * @default true
          */
         "visible": boolean;
@@ -1197,28 +1192,29 @@ export namespace Components {
     interface BalToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
          */
-        "action": string;
+        "action"?: string;
         /**
           * @default () => void 0
          */
-        "actionHandler": () => void;
+        "actionHandler": (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
-          * @default ''
          */
-        "actionHref": string;
+        "actionHref"?: string;
         /**
           * Defines the icon of the action button.
-          * @default ''
          */
-        "actionIcon": string;
+        "actionIcon"?: string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
         "actionTarget": BalProps.BalButtonTarget;
+        /**
+          * @default crypto.randomUUID() as string
+         */
+        "alertId": string;
         /**
           * If `true` the notification can be closed by the user.
           * @default false
@@ -1231,29 +1227,33 @@ export namespace Components {
         /**
           * @default () => void 0
          */
-        "closeHandler": () => void;
+        "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": BalProps.BalToastColor;
+        "color"?: BalProps.BalToastColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
-          * The duration of the toast in milliseconds.
           * @default 0
          */
-        "duration": number;
+        "duration": BalProps.BalToastDuration;
         /**
           * Defines the heading of the notification.
-          * @default ''
          */
-        "heading": string;
+        "heading"?: string;
+        /**
+          * Defines the icon of the notification.
+         */
+        "icon"?: string;
         /**
           * Defines the message of the notification as html content
-          * @default ''
          */
-        "message": string;
+        "message"?: string;
         /**
-          * If `true` the notification is visible.
+          * Defines the svg content of the icon
+         */
+        "svg"?: string;
+        /**
           * @default true
          */
         "visible": boolean;
@@ -1312,6 +1312,12 @@ declare global {
     var HTMLBalAccordionElement: {
         prototype: HTMLBalAccordionElement;
         new (): HTMLBalAccordionElement;
+    };
+    interface HTMLBalAlertContainerElement extends Components.BalAlertContainer, HTMLStencilElement {
+    }
+    var HTMLBalAlertContainerElement: {
+        prototype: HTMLBalAlertContainerElement;
+        new (): HTMLBalAlertContainerElement;
     };
     interface HTMLBalAppElementEventMap {
         "balAppReady": void;
@@ -1556,12 +1562,6 @@ declare global {
         prototype: HTMLBalNotificationElement;
         new (): HTMLBalNotificationElement;
     };
-    interface HTMLBalNotificationContainerElement extends Components.BalNotificationContainer, HTMLStencilElement {
-    }
-    var HTMLBalNotificationContainerElement: {
-        prototype: HTMLBalNotificationContainerElement;
-        new (): HTMLBalNotificationContainerElement;
-    };
     interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
     }
     var HTMLBalShapeElement: {
@@ -1638,6 +1638,8 @@ declare global {
         "balCloseClick": BalEvents.BalToastCloseClickDetail;
         "balActionClick": BalEvents.BalToastActionClickDetail;
         "balDidLoad": void;
+        "balDidPause": void;
+        "balDidResume": void;
     }
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1655,6 +1657,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
+        "bal-alert-container": HTMLBalAlertContainerElement;
         "bal-app": HTMLBalAppElement;
         "bal-badge": HTMLBalBadgeElement;
         "bal-button": HTMLBalButtonElement;
@@ -1685,7 +1688,6 @@ declare global {
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
         "bal-notification": HTMLBalNotificationElement;
-        "bal-notification-container": HTMLBalNotificationContainerElement;
         "bal-shape": HTMLBalShapeElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
@@ -1743,6 +1745,17 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+    }
+    interface BalAlertContainer {
+        /**
+          * @default false
+         */
+        "animated"?: boolean;
+        "container"?: AlertContainerSize;
+        /**
+          * @default 'toast'
+         */
+        "type"?: AlertType;
     }
     interface BalApp {
         /**
@@ -2141,13 +2154,21 @@ declare namespace LocalJSX {
     }
     interface BalClose {
         /**
+          * If `true` the close component will be rendered as a button element.  This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
+          * @default false
+         */
+        "button"?: boolean;
+        /**
+          * Defines the color of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonColor"?: BalProps.BalButtonColor;
+        /**
           * If `true` it supports dark backgrounds.
           * @default false
          */
         "inverted"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default undefined
          */
         "size"?: BalProps.BalCloseSize;
     }
@@ -2275,13 +2296,7 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default false
-         */
-        "circle"?: boolean;
-        /**
           * The theme type of the button.
-          * @default undefined
          */
         "color"?: BalProps.BalIconColor;
         /**
@@ -2306,21 +2321,23 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Name of the baloise icon.
-          * @default undefined
          */
-        "name"?: string | undefined;
+        "name"?: string;
         /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow"?: boolean;
         /**
+          * If `true` the icon is displayed in a circle with a background color.
+         */
+        "shape"?: BalProps.BalIconShape;
+        /**
           * Defines the size of the icon.
          */
         "size"?: BalProps.BalIconSize;
         /**
           * Svg content.
-          * @default ''
          */
         "svg"?: string;
         /**
@@ -2594,20 +2611,6 @@ declare namespace LocalJSX {
          */
         "size"?: BalProps.BalNotificationSize;
     }
-    interface BalNotificationContainer {
-        /**
-          * @default false
-         */
-        "animated"?: boolean;
-        /**
-          * @default ''
-         */
-        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        /**
-          * @default 'toast'
-         */
-        "type"?: any;
-    }
     interface BalShape {
         /**
           * The shape color
@@ -2628,21 +2631,18 @@ declare namespace LocalJSX {
     interface BalSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
          */
         "action"?: string;
         /**
           * @default () => void 0
          */
-        "actionHandler"?: () => void;
+        "actionHandler"?: (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
-          * @default ''
          */
         "actionHref"?: string;
         /**
           * Defines the icon of the action button.
-          * @default ''
          */
         "actionIcon"?: string;
         /**
@@ -2651,37 +2651,32 @@ declare namespace LocalJSX {
          */
         "actionTarget"?: BalProps.BalButtonTarget;
         /**
+          * @default crypto.randomUUID() as string
+         */
+        "alertId"?: string;
+        /**
           * If `true` the notification can be closed by the user.
-          * @default false
+          * @default true
          */
         "closable"?: boolean;
         /**
           * @default () => void 0
          */
-        "closeHandler"?: () => void;
+        "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: BalProps.BalSnackbarColor;
         /**
-          * The duration of the snackbar in milliseconds.
-          * @default 0
-         */
-        "duration"?: number;
-        /**
           * Defines the heading of the notification.
-          * @default ''
          */
         "heading"?: string;
         /**
           * Defines the icon of the notification.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Defines the message of the notification as html content
-          * @default ''
          */
         "message"?: string;
         /**
@@ -2692,17 +2687,12 @@ declare namespace LocalJSX {
           * Emitted when the close button got clicked.
          */
         "onBalCloseClick"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseClickDetail>) => void;
-        /**
-          * Emitted when the component has loaded.
-         */
         "onBalDidLoad"?: (event: BalSnackbarCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
-          * @default ''
          */
         "svg"?: string;
         /**
-          * If `true` the notification is visible.
           * @default true
          */
         "visible"?: boolean;
@@ -2927,21 +2917,18 @@ declare namespace LocalJSX {
     interface BalToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
-          * @default ''
          */
         "action"?: string;
         /**
           * @default () => void 0
          */
-        "actionHandler"?: () => void;
+        "actionHandler"?: (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
-          * @default ''
          */
         "actionHref"?: string;
         /**
           * Defines the icon of the action button.
-          * @default ''
          */
         "actionIcon"?: string;
         /**
@@ -2950,6 +2937,10 @@ declare namespace LocalJSX {
          */
         "actionTarget"?: BalProps.BalButtonTarget;
         /**
+          * @default crypto.randomUUID() as string
+         */
+        "alertId"?: string;
+        /**
           * If `true` the notification can be closed by the user.
           * @default false
          */
@@ -2957,25 +2948,25 @@ declare namespace LocalJSX {
         /**
           * @default () => void 0
          */
-        "closeHandler"?: () => void;
+        "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: BalProps.BalToastColor;
         /**
-          * The duration of the toast in milliseconds.
           * @default 0
          */
-        "duration"?: number;
+        "duration"?: BalProps.BalToastDuration;
         /**
           * Defines the heading of the notification.
-          * @default ''
          */
         "heading"?: string;
         /**
+          * Defines the icon of the notification.
+         */
+        "icon"?: string;
+        /**
           * Defines the message of the notification as html content
-          * @default ''
          */
         "message"?: string;
         /**
@@ -2986,18 +2977,21 @@ declare namespace LocalJSX {
           * Emitted when the close button got clicked.
          */
         "onBalCloseClick"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseClickDetail>) => void;
-        /**
-          * Emitted when the component has loaded.
-         */
         "onBalDidLoad"?: (event: BalToastCustomEvent<void>) => void;
+        "onBalDidPause"?: (event: BalToastCustomEvent<void>) => void;
+        "onBalDidResume"?: (event: BalToastCustomEvent<void>) => void;
         /**
-          * If `true` the notification is visible.
+          * Defines the svg content of the icon
+         */
+        "svg"?: string;
+        /**
           * @default true
          */
         "visible"?: boolean;
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
+        "bal-alert-container": BalAlertContainer;
         "bal-app": BalApp;
         "bal-badge": BalBadge;
         "bal-button": BalButton;
@@ -3028,7 +3022,6 @@ declare namespace LocalJSX {
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
         "bal-notification": BalNotification;
-        "bal-notification-container": BalNotificationContainer;
         "bal-shape": BalShape;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
@@ -3045,6 +3038,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+            "bal-alert-container": LocalJSX.BalAlertContainer & JSXBase.HTMLAttributes<HTMLBalAlertContainerElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
@@ -3075,7 +3069,6 @@ declare module "@stencil/core" {
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
-            "bal-notification-container": LocalJSX.BalNotificationContainer & JSXBase.HTMLAttributes<HTMLBalNotificationContainerElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;

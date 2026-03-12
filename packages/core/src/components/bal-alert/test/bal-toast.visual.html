@@ -1,0 +1,55 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+  <body>
+    <bal-app animated="false">
+      <main class="container">
+        <!-- Basic Style -->
+        <section data-testid="basic">
+          <span>Basic</span>
+          <bal-toast duration="1"> Your changes have been saved. </bal-toast>
+        </section>
+
+        <!-- Variants -->
+        <section data-testid="variants" class="flex gap-small flex-direction-column">
+          <span>Variants</span>
+          <bal-toast closable> Your changes have been saved. </bal-toast>
+          <bal-toast color="info" action="Okay"> Your changes have been saved. </bal-toast>
+          <bal-toast color="info" closable action="Okay"> Your changes have been saved. </bal-toast>
+          <bal-toast closable>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum officia neque aut quas accusantium
+            sequi, nam molestiae. Incidunt praesentium ut corporis possimus, impedit sunt. Exercitationem eius modi
+            laboriosam amet.
+          </bal-toast>
+          <bal-toast color="danger" closable heading="Information"> Your changes have been saved. </bal-toast>
+          <bal-toast color="success" heading="Information"> Your changes have been saved. </bal-toast>
+
+          <bal-toast color="success" closable action="Okay" heading="Information">
+            Your changes have been saved.
+          </bal-toast>
+
+          <bal-toast color="success" action="Okay" heading="Information"> Your changes have been saved. </bal-toast>
+        </section>
+
+        <!-- Colors -->
+        <section data-testid="colors" class="flex gap-small flex-direction-column">
+          <span>Colors</span>
+          <bal-toast heading="Default"> Your changes have been saved. </bal-toast>
+          <bal-toast color="info" heading="Information"> Your changes have been saved. </bal-toast>
+          <bal-toast color="success" heading="Success"> Your changes have been saved. </bal-toast>
+          <bal-toast color="warning" heading="Warning"> Your changes have been saved. </bal-toast>
+          <bal-toast color="danger" heading="Danger"> Your changes have been saved. </bal-toast>
+        </section>
+      </main>
+    </bal-app>
+  </body>
+</html>

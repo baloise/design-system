@@ -21,11 +21,11 @@ const meta: Meta<Args> = {
     // },
   },
   args: {
-    color: 'info',
-    icon: 'info-circle',
-    subject: 'Title',
+    color: 'warning',
+    heading: 'Heading',
     action: 'More',
-    message: 'Hello World',
+    message: 'Snackbar is used to inform the user with a simple text message and a action.',
+    closable: false,
   },
   argTypes: {
     ...withComponentControls({ tag: 'bal-snackbar' }),
@@ -45,10 +45,10 @@ const meta: Meta<Args> = {
           snackbarController.create({
             color: args.color,
             icon: args.icon,
-            subject: args.subject,
+            heading: args.heading,
             message: args.message,
+            closable: args.closable,
             action: args.action,
-            duration: 2000,
           })
         }
       }
@@ -75,10 +75,26 @@ export const Colors = Story({
   },
   ...withRender(
     ({ ...args }) => `
-<bal-snackbar color="info" subject="Info">${args.message}</bal-snackbar>
-<bal-snackbar color="success" subject="Success">${args.message}</bal-snackbar>
-<bal-snackbar color="warning" subject="Warning">${args.message}</bal-snackbar>
-<bal-snackbar color="danger" subject="Danger">${args.message}</bal-snackbar>
+<div class="stack">
+  <bal-snackbar heading="Default">${args.message}</bal-snackbar>
+  <bal-snackbar color="info" heading="Info">${args.message}</bal-snackbar>
+  <bal-snackbar color="success" heading="Success">${args.message}</bal-snackbar>
+  <bal-snackbar color="warning" heading="Warning">${args.message}</bal-snackbar>
+  <bal-snackbar color="danger" heading="Danger">${args.message}</bal-snackbar>
+</div>
+`,
+  ),
+})
+
+import { BrandIconCarPurple } from '@baloise/ds-assets/dist'
+
+export const BrandIcons = Story({
+  args: {
+    // place props here
+  },
+  ...withRender(
+    ({ ...args }) => `
+  <bal-snackbar heading="With Brand Icons" svg='${BrandIconCarPurple}' action="Aktion">${args.message}</bal-snackbar>
 `,
   ),
 })

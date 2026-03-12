@@ -34,6 +34,7 @@ import {
   IconAudio,
   IconDownload,
   IconAlert,
+  IconBell,
   IconInformation,
 } from '../constants/icons.constant'
 import { defaultLoggerConfig } from '../log'
@@ -75,6 +76,7 @@ export const defaultIcons = {
   IconAudio,
   IconDownload,
   IconAlert,
+  IconBell,
   IconInformation,
 }
 

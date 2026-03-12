@@ -362,8 +362,8 @@ export class Button implements ComponentInterface {
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.square ? this.size : 'small'}
-              circle={this.dashed}
+              size={this.dashed ? 'md' :this.square ? this.size : 'sm'}
+              shape={this.dashed ? 'circle' : undefined}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />

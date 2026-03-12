@@ -1,0 +1,312 @@
+import {
+  Element,
+  Component,
+  Method,
+  h,
+  Host,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+  State,
+  Watch,
+} from '@stencil/core'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { AlertComponent } from '../bal-alert-container.interfaces'
+import { sanitizeSvg } from '../../../utils/svg'
+import { raf } from '../../../utils/helpers'
+
+@Component({
+  tag: 'bal-snackbar',
+  styleUrl: 'bal-snackbar.host.scss',
+  shadow: true,
+})
+export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpointObserver {
+  @Element() element!: HTMLBalSnackbarElement
+
+  @State() isMobile = balBreakpoints.isMobile
+  @State() mobileOpenState = false
+  @State() didLoad = false
+
+  @State() svgContent?: string
+  @State() iconName?: string
+
+  timer!: NodeJS.Timeout
+
+  /**
+   * Defines the color of the element
+   * Color type primary is deprecated, please use info instead.
+   */
+  @Prop() color?: BalProps.BalSnackbarColor
+
+  /**
+   * If `true` the notification can be closed by the user.
+   */
+  @Prop() closable = true
+
+  /**
+   * Defines the heading of the notification.
+   */
+  @Prop() heading?: string
+
+  /**
+   * Defines the message of the notification as html content
+   */
+  @Prop() message?: string
+
+  /**
+   * Defines the icon of the notification.
+   */
+  @Prop() icon?: string
+  @Watch('icon')
+  iconChanged() {
+    this.generateIconName()
+  }
+
+  /**
+   * Defines the svg content of the icon
+   */
+  @Prop() svg?: string
+  @Watch('svg')
+  svgChanged() {
+    this.generateSvgContent()
+  }
+
+  /**
+   * Defines the icon of the notification, if not provided it will be derived from the color property
+   */
+  @Prop() action?: string
+
+  /**
+   * Defines the icon of the action button.
+   */
+  @Prop() actionIcon?: string
+
+  /**
+   * Specifies where to open the linked document.
+   */
+  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
+
+  /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() actionHref?: string
+
+  /**
+   * @internal
+   * The id of the toast, used for internal handling, if not provided a random id will be generated
+   */
+  @Prop() alertId = crypto.randomUUID() as string
+
+  /**
+   * @internal
+   * If `true` the notification is visible.
+   */
+  @Prop({ reflect: true }) visible = true
+
+  /**
+   * @internal Handler for on close event
+   */
+  @Prop() closeHandler: (id: string) => void = () => void 0
+
+  /**
+   * @internal Handler for on action event
+   */
+  @Prop() actionHandler: (id: string) => void = () => void 0
+
+  /**
+   * Emitted when the close button got clicked.
+   */
+  @Event() balCloseClick!: EventEmitter<BalEvents.BalSnackbarCloseClickDetail>
+
+  /**
+   * Emitted when the action button got clicked.
+   */
+  @Event() balActionClick!: EventEmitter<BalEvents.BalSnackbarActionClickDetail>
+
+  /**
+   * @internal
+   * Emitted when the component has loaded.
+   */
+  @Event() balDidLoad!: EventEmitter<void>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback(): void {
+    this.generateIconName()
+    this.generateSvgContent()
+  }
+
+  componentDidLoad(): void {
+    raf(() => {
+      this.didLoad = true
+      this.balDidLoad.emit()
+    })
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Closes this notification
+   */
+  @Method()
+  async close(): Promise<void> {
+    this.balCloseClick.emit()
+    this.closeHandler(this.alertId)
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private generateSvgContent = () => {
+    if (this.svg !== undefined && this.svg.length > 0) {
+      this.svgContent = sanitizeSvg(this.svg)
+    }
+  }
+
+  private generateIconName = () => {
+    if (this.icon !== undefined && this.icon.length > 0) {
+      this.iconName = this.icon
+    } else {
+      switch (this.color) {
+        case 'info':
+          this.iconName = 'information'
+          break
+        case 'success':
+          this.iconName = 'check'
+          break
+        case 'warning':
+          this.iconName = 'alert'
+          break
+        case 'danger':
+          this.iconName = 'alert'
+          break
+        default:
+          this.iconName = 'bell'
+      }
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
+  render() {
+    return (
+      <Host
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class={{
+          [`is-ready`]: this.didLoad,
+          [`is-visible`]: this.visible,
+          [`is-closable`]: this.closable,
+          [`is-mobile-open`]: this.isMobile && this.mobileOpenState,
+          [`is-mobile-closed`]: this.isMobile && !this.mobileOpenState,
+          [`is-${this.color}`]: this.color !== undefined,
+        }}
+      >
+        {/* --------------------------------------*/}
+        {/* Mobile                                */}
+        {/* --------------------------------------*/}
+        {this.isMobile && !this.mobileOpenState && (
+          <bal-button
+            id="mobile-button"
+            color={this.color === 'base' ? 'primary' : this.color}
+            square
+            icon={this.iconName}
+            onClick={() => (this.mobileOpenState = true)}
+          ></bal-button>
+        )}
+        {/* --------------------------------------*/}
+        {/* Icon                                  */}
+        {/* --------------------------------------*/}
+        {this.iconName && !this.svgContent && (
+          <bal-icon
+            part="icon"
+            id="icon"
+            name={this.iconName}
+            color={this.color}
+            size={'xl'}
+            shape={
+              this.color === 'warning'
+                ? 'triangle'
+                : this.color === 'danger' || this.color === 'success' || this.color === 'info'
+                  ? 'circle'
+                  : undefined
+            }
+          ></bal-icon>
+        )}
+        {this.svgContent && <bal-icon id="icon" part="icon" svg={this.svgContent} size={'xl'}></bal-icon>}
+        {/* --------------------------------------*/}
+        {/* Heading + Message                     */}
+        {/* --------------------------------------*/}
+        <span part="content" id="content">
+          {this.heading && <h2 part="heading">{this.heading}</h2>}
+          <span part="message">
+            {this.message}
+            <slot></slot>
+          </span>
+        </span>
+        {/* --------------------------------------*/}
+        {/* Action Button                         */}
+        {/* --------------------------------------*/}
+        <bal-button-group part="action" id="action">
+          <slot name="action" />
+          {this.action && (
+            <bal-button
+              color="primary"
+              size="sm"
+              part="button"
+              icon={this.actionIcon}
+              target={this.actionTarget}
+              href={this.actionHref}
+              onClick={ev => {
+                stopEventBubbling(ev)
+                this.balActionClick.emit(ev)
+                this.actionHandler(this.alertId)
+              }}
+            >
+              {this.action}
+            </bal-button>
+          )}
+          {/* --------------------------------------*/}
+          {/* Close Button                          */}
+          {/* --------------------------------------*/}
+          {this.closable && (
+            <bal-close
+              button
+              button-color="secondary"
+              part="close"
+              size="sm"
+              onClick={ev => {
+                stopEventBubbling(ev)
+                this.close()
+              }}
+            ></bal-close>
+          )}
+        </bal-button-group>
+      </Host>
+    )
+  }
+}

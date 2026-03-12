@@ -33,6 +33,7 @@ export type BalPageOptions = {
 
 export interface BalPage extends Page {
   locator(selector: string, options?: LocatorOptions): E2ELocator
+  getByTestId(testId: string | RegExp): E2ELocator
   goto(url: string, options?: BalPageOptions): Promise<null | Response>
   mount(html: string): Promise<void>
   setupVisualTest(url: string, type?: 'Component' | 'CSS'): Promise<void>

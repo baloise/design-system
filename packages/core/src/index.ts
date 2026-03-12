@@ -102,4 +102,4 @@ export { BalSwipeInfo, BalSwipeObserver, BalSwipeSubject } from './utils/swipe'
  * Controllers
  */
 // export * from './components/bal-modal/bal-modal.controller'
-export * from './components/bal-notification/bal-notification.controller'
+export * from './components/bal-alert/bal-alert.controller'

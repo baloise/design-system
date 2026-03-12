@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../interfaces.d.ts" />
+/// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger'
+  export type BalToastDuration = number | 'infinite'
 }
 
 namespace BalEvents {
@@ -18,4 +19,10 @@ namespace BalEvents {
 
   export type BalToastActionClickDetail = MouseEvent
   export type BalToastActionClick = BalToastCustomEvent<BalToastActionClickDetail>
+
+  export type BalToastDidPauseDetail = void
+  export type BalToastDidPause = BalToastCustomEvent<BalToastDidPauseDetail>
+
+  export type BalToastDidResumeDetail = void
+  export type BalToastDidResume = BalToastCustomEvent<BalToastDidResumeDetail>
 }

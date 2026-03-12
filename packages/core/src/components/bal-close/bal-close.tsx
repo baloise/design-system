@@ -25,7 +25,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true }) size: BalProps.BalCloseSize = undefined
+  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalCloseSize
   @Watch('size')
   validateSize(newValue: BalProps.BalCloseSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
@@ -34,7 +34,18 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop() inverted = false
+
+  /**
+   * If `true` the close component will be rendered as a button element. 
+   * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
+   */
+  @Prop() button = false
+
+  /**
+   * Defines the color of the button variant. Only applicable if `button` is `true`.
+   */
+  @Prop() buttonColor?: BalProps.BalButtonColor
 
   /**
    * @internal define config for the component
@@ -53,8 +64,27 @@ export class Close implements ComponentInterface, BalConfigObserver {
   render() {
     const label = i18nBalClose[this.language].close
 
+    if (this.button) {
+      return (
+        <Host>
+          <bal-button
+            id="close"
+            part="button"
+            inverted={this.inverted}
+            color={this.buttonColor}
+            size={this.size === 'sm' ? 'sm' : this.size === 'md' ? 'lg' : ''}
+          >
+            {label}
+          </bal-button>
+        </Host>
+      )
+    }
+
     return (
-      <Host>
+      <Host class={{ 
+        [`is-${this.size}`]: !!this.size,
+        'is-inverted': this.inverted,
+         }}>
         <button id="close" part="button" type="button" aria-label={label} title={label} tabindex="0"></button>
       </Host>
     )

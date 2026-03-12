@@ -9,7 +9,7 @@
   padding-right: var(--bal-container-space-device);
 
   @include desktop {
-    max-width: var(--bal-container-width-normal);
+    max-width: var(--bal-container-width-base);
   }
 
   &.is-fluid {

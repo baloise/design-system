@@ -11,7 +11,7 @@ test.describe('component', () => {
     const balTag = new BalTag(page.locator('bal-tag'))
 
     await balTag.assertToBeVisible()
-    await balTag.assertToHaveText('My tag')
+    await balTag.assertToContainText('My tag')
   })
 
   test('should fire balCloseClick event', async ({ page }) => {

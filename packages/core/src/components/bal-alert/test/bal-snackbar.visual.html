@@ -11,22 +11,17 @@
     <script nomodule src="/build/baloise-design-system.js"></script>
   </head>
   <body>
+       <bal-app animated="false">
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
-        <bal-snackbar> Your changes have been saved. </bal-snackbar>
+        <bal-snackbar data-testid="basic-1"> Your changes have been saved. </bal-snackbar>
         <bal-snackbar message="Your changes have been saved."></bal-snackbar>
       </section>
 
-      <!-- Brand Icons -->
-      <section>
-        <span>Brand Icons</span>
-        <bal-snackbar> Your changes have been saved. </bal-snackbar>
-      </section>
-
       <!-- Variants -->
-      <section class="flex gap-small flex-direction-column">
+      <section data-testid="variants" class="flex gap-small flex-direction-column">
         <span>Variants</span>
         <bal-snackbar closable>
           <b>Closable</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
@@ -71,7 +66,7 @@
       </section>
 
       <!-- Variants With Brand Icon -->
-      <section class="flex gap-small flex-direction-column">
+      <section data-testid="variants-with-brand-icon" class="flex gap-small flex-direction-column">
         <span>Variants With Brand Icon </span>
         <bal-snackbar class="brand-icon" closable>
           <b>Closable</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
@@ -134,7 +129,7 @@
       </section>
 
       <!-- Colors -->
-      <section class="flex gap-small flex-direction-column">
+      <section data-testid="colors" class="flex gap-small flex-direction-column">
         <span>Colors</span>
         <bal-snackbar heading="Default"> Your changes have been saved. </bal-snackbar>
         <bal-snackbar color="info" heading="Information"> Your changes have been saved. </bal-snackbar>
@@ -143,5 +138,6 @@
         <bal-snackbar color="danger" heading="Danger"> Your changes have been saved. </bal-snackbar>
       </section>
     </main>
+    </bal-app>
   </body>
 </html>

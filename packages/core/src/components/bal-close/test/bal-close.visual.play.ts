@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'bal-close'
-const VARIANTS = ['basic', 'themeing', 'sizes', 'inverted']
+const VARIANTS = ['basic', 'button', 'themeing', 'sizes', 'inverted']
 
 const image = screenshot(TAG)
 

@@ -28,6 +28,7 @@ export default async function runSvgExecutor(options: BuildSvgExecutorSchema) {
           await mkdir(dirname(dsMinSetFullPath), { recursive: true })
 
           const dsMinSetIcons = [
+            'IconBell',
             'IconInformation',
             'IconAlert',
             'IconFile',

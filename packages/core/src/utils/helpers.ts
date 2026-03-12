@@ -38,6 +38,7 @@ import {
   IconAudio,
   IconDownload,
   IconAlert,
+  IconBell,
   IconInformation,
 } from './constants/icons.constant'
 
@@ -379,6 +380,7 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       IconAudio,
       IconDownload,
       IconAlert,
+      IconBell,
       IconInformation,
     },
     ..._config,

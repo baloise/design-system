@@ -23,12 +23,12 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true, mutable: true }) name: string | undefined = undefined
+  @Prop({ reflect: true }) name?: string
 
   /**
    * Svg content.
    */
-  @Prop() svg = ''
+  @Prop() svg?: string
 
   /**
    * Defines the size of the icon.
@@ -42,19 +42,17 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * The theme type of the button.
    */
-  @Prop({ reflect: true, mutable: true }) color: BalProps.BalIconColor = undefined
-  // @Prop({ reflect: true, mutable: true }) colorHovered: BalProps.BalIconColor = undefined
-  // @Prop({ reflect: true, mutable: true }) colorPressed: BalProps.BalIconColor = undefined
+  @Prop() color?: BalProps.BalIconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
-  @Prop({ reflect: true }) circle = false
+  @Prop() shape?: BalProps.BalIconShape
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
-  @Prop({ reflect: true }) tile = false
+  @Prop() tile = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
@@ -64,32 +62,32 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * If `true` the icon has display inline style
    */
-  @Prop({ reflect: true }) inline = false
+  @Prop() inline = false
 
   /**
    * If `true` the icon is inverted
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop() inverted = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
-  @Prop({ reflect: true }) turn = false
+  @Prop() turn = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) shadow = false
+  @Prop() shadow = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop() disabled = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop({ reflect: true }) invalid = false
+  @Prop() invalid = false
 
   /**
    * LIFE CYCLE
@@ -142,7 +140,9 @@ export class Icon implements BalConfigObserver, ComponentInterface {
       }
     }
 
-    this.svgContent = sanitizeSvg(this.svg)
+    if(this.svg){
+      this.svgContent = sanitizeSvg(this.svg)
+    }
   }
 
   private parseColor() {
@@ -175,7 +175,16 @@ export class Icon implements BalConfigObserver, ComponentInterface {
         class={{
           'is-filled': !this.svg,
           [`is-${color}`]: !!color,
+          [`is-${this.size}`]: this.size !== undefined,
           [`turn-${this.name}`]: this.turn,
+          'is-inverted': this.inverted,
+          'is-inline': this.inline,
+          'is-tile': this.tile,
+          [`is-tile-${this.tileColor}`]: this.tile,
+          'has-shadow': this.shadow,
+          'is-disabled': this.disabled,
+          'is-invalid': this.invalid,
+          [`has-shape-${this.shape}`]: !!this.shape,
         }}
       >
         <div id="inner" part="inner" innerHTML={this.svgContent}></div>

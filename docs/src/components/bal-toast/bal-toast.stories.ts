@@ -21,8 +21,10 @@ const meta: Meta<Args> = {
     // },
   },
   args: {
-    color: 'info',
-    message: 'Hello World',
+    color: 'warning',
+    heading: 'Heading',
+    message: 'Toasts are used to inform the user with a simple text message.',
+    closable: true,
   },
   argTypes: {
     ...withComponentControls({ tag: 'bal-toast' }),
@@ -41,8 +43,10 @@ const meta: Meta<Args> = {
           const toastController = (window as any).BaloiseDesignSystem.toastController
           toastController.create({
             color: args.color,
+            heading: args.heading,
             message: args.message,
-            duration: 2000,
+            closable: args.closable,
+            duration: 4000,
           })
         }
       }
@@ -69,10 +73,13 @@ export const Colors = Story({
   },
   ...withRender(
     ({ ...args }) => `
-<bal-toast color="info">Info - ${args.message}</bal-toast>
-<bal-toast color="success">Success - ${args.message}</bal-toast>
-<bal-toast color="warning">Warning - ${args.message}</bal-toast>
-<bal-toast color="danger">Danger - ${args.message}</bal-toast>
+<div class="stack">
+  <bal-toast closable>Default - ${args.message}</bal-toast>
+  <bal-toast closable color="info">Info - ${args.message}</bal-toast>
+  <bal-toast closable color="success">Success - ${args.message}</bal-toast>
+  <bal-toast closable color="warning">Warning - ${args.message}</bal-toast>
+  <bal-toast closable color="danger">Danger - ${args.message}</bal-toast>
+</div>
 `,
   ),
 })

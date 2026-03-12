@@ -479,36 +479,19 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
   @include hybrid.host($use-host) {
     :host(.is-#{$color}.is-dashed) {
       --mod-button-border-style: dashed;
+      --icon-shape: var(--_button-color-border);
 
       @include color('#{$color}-dashed');
 
-      #button bal-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 1.5rem;
-        min-height: 1.5rem;
-        border-radius: var(--bal-button-radius-rounded);
-        background: var(--_button-color-border);
-      }
     }
   }
 
   @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color}.is-dashed {
       --mod-button-border-style: dashed;
+      --icon-shape: var(--_button-color-border);
 
       @include color('#{$color}-dashed');
-
-      bal-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 1.5rem;
-        min-height: 1.5rem;
-        border-radius: var(--bal-button-radius-rounded);
-        background: var(--_button-color-border);
-      }
     }
   }
 }

@@ -100,19 +100,19 @@
 
 //
 // Size Variants
-:host([size='sm']) {
+:host(.is-sm) {
   --mod-close-padding: 0.25rem;
   --mod-close-size-icon: 10px;
 }
 
-:host([size='md']) {
+:host(.is-md) {
   --mod-close-padding: 0.531rem;
   --mod-close-size-icon: 24px;
 }
 
 //
 // Inverted Variants
-:host([inverted]) {
+:host(.is-inverted) {
   --mod-close-color-icon: var(--bal-close-color-icon-inverted);
   --mod-close-color-background-hover: var(--bal-close-color-background-inverted-hover);
   --mod-close-color-background-active: var(--bal-close-color-background-inverted-active);

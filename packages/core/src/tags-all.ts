@@ -1,5 +1,6 @@
 export const tags = [
   "bal-accordion",
+  "bal-alert-container",
   "bal-app",
   "bal-badge",
   "bal-button",
@@ -29,7 +30,6 @@ export const tags = [
   "bal-list-item-title",
   "bal-logo",
   "bal-notification",
-  "bal-notification-container",
   "bal-shape",
   "bal-snackbar",
   "bal-spinner",
