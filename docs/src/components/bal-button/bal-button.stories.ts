@@ -61,6 +61,17 @@ export const WebComponentBasic = Story({
   ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
 })
 
+export const WebComponentGroup = Story({
+  ...withRender(
+    ({ content, ...args }) => `
+ <bal-button-group>
+  <bal-button ${props(args)}>${content}</bal-button>
+  <bal-button ${props(args)}>${content}</bal-button>
+ </bal-button-group>  
+  `,
+  ),
+})
+
 export const Variants = Story({
   ...withRender(
     () => `<div class="buttons">
@@ -239,7 +250,7 @@ export const ButtonGroupAsRow = Story({
     <button class="button">Next</button>
   </div>
   <div class="buttons as-row">
-    <button class="button is-square is-secondary">
+    <button class="button is-square">
       <bal-icon name="caret-left"></bal-icon>
     </button>
     <button class="button">Next</button>
@@ -251,7 +262,7 @@ export const ButtonGroupAsRow = Story({
 export const ButtonGroupAsCol = Story({
   ...withRender(
     () => `<div class="stack">
-  <div class="buttons as-col">
+  <div class="buttons as-col is-left">
     <button class="button">Left</button>
     <button class="button">Middle</button>
     <button class="button">Right</button>

@@ -252,6 +252,11 @@ export namespace Components {
          */
         "direction": BalProps.BalButtonGroupDirection;
         /**
+          * If `true` the buttons will expand to fill the available space on mobile.
+          * @default false
+         */
+        "expanded": boolean;
+        /**
           * The value of the button, which is submitted with the form data.
          */
         "position"?: BalProps.BalButtonGroupPosition;
@@ -311,9 +316,8 @@ export namespace Components {
     interface BalCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
-        "position": BalProps.BalCardActionsPosition;
+        "position"?: BalProps.BalCardActionsPosition;
     }
     interface BalCardButton {
         /**
@@ -362,10 +366,7 @@ export namespace Components {
           * @default false
          */
         "buttons": boolean;
-        /**
-          * @default ''
-         */
-        "position": BalProps.BalCardFooterPosition;
+        "position"?: BalProps.BalCardFooterPosition;
     }
     interface BalCardHeader {
         /**
@@ -376,6 +377,7 @@ export namespace Components {
           * @default 'row'
          */
         "direction": BalProps.BalCardHeaderDirection;
+        "heading"?: string;
     }
     interface BalCardSubtitle {
         /**
@@ -1969,6 +1971,11 @@ declare namespace LocalJSX {
          */
         "direction"?: BalProps.BalButtonGroupDirection;
         /**
+          * If `true` the buttons will expand to fill the available space on mobile.
+          * @default false
+         */
+        "expanded"?: boolean;
+        /**
           * The value of the button, which is submitted with the form data.
          */
         "position"?: BalProps.BalButtonGroupPosition;
@@ -2028,7 +2035,6 @@ declare namespace LocalJSX {
     interface BalCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "position"?: BalProps.BalCardActionsPosition;
     }
@@ -2079,9 +2085,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "buttons"?: boolean;
-        /**
-          * @default ''
-         */
         "position"?: BalProps.BalCardFooterPosition;
     }
     interface BalCardHeader {
@@ -2093,6 +2096,7 @@ declare namespace LocalJSX {
           * @default 'row'
          */
         "direction"?: BalProps.BalCardHeaderDirection;
+        "heading"?: string;
     }
     interface BalCardSubtitle {
         /**

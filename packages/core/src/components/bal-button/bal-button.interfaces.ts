@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalButtonGroupPosition = 'right' | 'center' | ''
+  export type BalButtonGroupPosition = 'right' | 'center' | 'left'
   export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
   export type BalButtonColor =
     | 'primary'

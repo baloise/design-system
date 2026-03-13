@@ -9,18 +9,23 @@ export class ButtonGroup implements ComponentInterface {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop({ reflect: true }) position?: BalProps.BalButtonGroupPosition
+  @Prop() position?: BalProps.BalButtonGroupPosition
 
   /**
    * `auto` will position the button items vertical and full width.
    * `row` will force that the buttons are also horizontal on mobile.
    */
-  @Prop({ reflect: true }) direction: BalProps.BalButtonGroupDirection = 'auto'
+  @Prop() direction: BalProps.BalButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.
    */
-  @Prop({ reflect: true }) reverse = false
+  @Prop() reverse = false
+
+  /**
+   * If `true` the buttons will expand to fill the available space on mobile.
+   */
+  @Prop() expanded = false
 
   render() {
     return (
@@ -32,6 +37,8 @@ export class ButtonGroup implements ComponentInterface {
             'as-col': this.direction === 'column',
             'as-row': this.direction === 'row',
             'is-reverse': this.reverse,
+            'is-expanded': this.expanded,
+            'is-left': this.position === 'left',
             'is-center': this.position === 'center',
             'is-right': this.position === 'right',
           }}

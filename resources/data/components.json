@@ -2119,7 +2119,7 @@
           },
           "mutable": false,
           "attr": "direction",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "`auto` will position the button items vertical and full width.\n`row` will force that the buttons are also horizontal on mobile.",
           "docsTags": [
             {
@@ -2148,11 +2148,40 @@
           "setter": false
         },
         {
+          "name": "expanded",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "expanded",
+          "reflectToAttr": false,
+          "docs": "If `true` the buttons will expand to fill the available space on mobile.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "position",
-          "type": "\"\" | \"center\" | \"right\" | undefined",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalButtonGroupPosition",
-            "resolved": "\"\" | \"center\" | \"right\" | undefined",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -2162,15 +2191,16 @@
           },
           "mutable": false,
           "attr": "position",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
           "docsTags": [],
           "values": [
             {
-              "type": "\"\""
+              "value": "center",
+              "type": "string"
             },
             {
-              "value": "center",
+              "value": "left",
               "type": "string"
             },
             {
@@ -2196,7 +2226,7 @@
           },
           "mutable": false,
           "attr": "reverse",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the flex direction is used in reverse on mobile.",
           "docsTags": [
             {
@@ -2679,10 +2709,10 @@
       "props": [
         {
           "name": "position",
-          "type": "\"\" | \"center\" | \"right\"",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalCardActionsPosition",
-            "resolved": "\"\" | \"center\" | \"right\"",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -2694,27 +2724,25 @@
           "attr": "position",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
             },
             {
+              "value": "left",
+              "type": "string"
+            },
+            {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -3077,10 +3105,10 @@
         },
         {
           "name": "position",
-          "type": "\"\" | \"center\" | \"right\"",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalCardFooterPosition",
-            "resolved": "\"\" | \"center\" | \"right\"",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -3092,27 +3120,25 @@
           "attr": "position",
           "reflectToAttr": false,
           "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
             },
             {
+              "value": "left",
+              "type": "string"
+            },
+            {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -3135,10 +3161,12 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
+        "bal-heading",
         "bal-close"
       ],
       "dependencyGraph": {
         "bal-card-header": [
+          "bal-heading",
           "bal-close"
         ],
         "bal-close": [
@@ -3214,6 +3242,32 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "heading",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -4597,10 +4651,14 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
+        "bal-card-header",
         "bal-card-title"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-card-header": [
+          "bal-heading"
+        ],
         "bal-card-title": [
           "bal-heading"
         ]

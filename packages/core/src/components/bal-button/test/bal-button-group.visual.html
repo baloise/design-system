@@ -13,7 +13,7 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
         <bal-button-group>
           <bal-button>Button</bal-button>
@@ -23,7 +23,7 @@
       </section>
 
       <!-- Group -->
-      <section>
+      <section data-testid="group">
         <span>Group</span>
         <bal-button-group>
           <bal-button>Left</bal-button>
@@ -42,8 +42,53 @@
         </bal-button-group>
       </section>
 
+      <!-- Long Labels -->
+      <section data-testid="long-labels">
+        <span>Long Labels</span>
+        <bal-button-group>
+          <bal-button>Left</bal-button>
+          <bal-button>Very long label for a simple button to see if it wraps</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+
+      <!-- Column Group -->
+      <section data-testid="column-group">
+        <span>Column Group</span>
+        <bal-button-group direction="column" position="left">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="column" position="center">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="column" position="right">
+          <bal-button>Left</bal-button>
+          <bal-button>Middle</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+
+      <!-- Expanded -->
+      <section data-testid="expanded">
+        <span>Expanded</span>
+        <bal-button-group direction="row" expanded>
+          <bal-button>Left</bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+        <bal-button-group direction="row" expanded>
+          <bal-button square>
+            <bal-icon name="plus"></bal-icon>
+          </bal-button>
+          <bal-button>Right</bal-button>
+        </bal-button-group>
+      </section>
+
       <!-- Two Row Button Group -->
-      <section>
+      <section data-testid="two-row-button-group">
         <span>Two Row Button Group</span>
         <bal-button-group direction="row">
           <bal-button>Left</bal-button>
@@ -56,21 +101,7 @@
           <bal-button>Right</bal-button>
         </bal-button-group>
       </section>
-
-      <!-- Two Row Button Group -->
-      <section>
-        <span>Two Row Button Group</span>
-        <div class="buttons as-row">
-          <button class="button">Left</button>
-          <button class="button">Right</button>
-        </div>
-        <div class="buttons as-row">
-          <button class="button is-square">
-            <bal-icon name="plus"></bal-icon>
-          </button>
-          <button class="button">Right</button>
-        </div>
-      </section>
+      
     </main>
   </body>
 </html>
