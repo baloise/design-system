@@ -53,6 +53,7 @@
 :host {
   @include font-smoothing();
   @include unselectable();
+  @include print-hidden();
 
   opacity: var(--_toast-animation-start-opacity);
   transform: var(--_toast-animation-start-transform);

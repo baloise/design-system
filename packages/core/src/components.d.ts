@@ -442,7 +442,7 @@ export namespace Components {
     }
     interface BalClose {
         /**
-          * If `true` the close component will be rendered as a button element.  This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
+          * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
           * @default false
          */
         "button": boolean;
@@ -451,6 +451,11 @@ export namespace Components {
          */
         "buttonColor"?: BalProps.BalButtonColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * If `true` the close component will be disabled and not interactive.
+          * @default false
+         */
+        "disabled": boolean;
         /**
           * If `true` it supports dark backgrounds.
           * @default false
@@ -2154,7 +2159,7 @@ declare namespace LocalJSX {
     }
     interface BalClose {
         /**
-          * If `true` the close component will be rendered as a button element.  This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
+          * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
           * @default false
          */
         "button"?: boolean;
@@ -2162,6 +2167,11 @@ declare namespace LocalJSX {
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
         "buttonColor"?: BalProps.BalButtonColor;
+        /**
+          * If `true` the close component will be disabled and not interactive.
+          * @default false
+         */
+        "disabled"?: boolean;
         /**
           * If `true` it supports dark backgrounds.
           * @default false

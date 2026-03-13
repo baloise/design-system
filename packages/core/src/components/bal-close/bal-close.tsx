@@ -37,7 +37,12 @@ export class Close implements ComponentInterface, BalConfigObserver {
   @Prop() inverted = false
 
   /**
-   * If `true` the close component will be rendered as a button element. 
+   * If `true` the close component will be disabled and not interactive.
+   */
+  @Prop({ reflect: true }) disabled = false
+
+  /**
+   * If `true` the close component will be rendered as a button element.
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
   @Prop() button = false
@@ -70,6 +75,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
           <bal-button
             id="close"
             part="button"
+            disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
             size={this.size === 'sm' ? 'sm' : this.size === 'md' ? 'lg' : ''}
@@ -81,11 +87,22 @@ export class Close implements ComponentInterface, BalConfigObserver {
     }
 
     return (
-      <Host class={{ 
-        [`is-${this.size}`]: !!this.size,
-        'is-inverted': this.inverted,
-         }}>
-        <button id="close" part="button" type="button" aria-label={label} title={label} tabindex="0"></button>
+      <Host
+        class={{
+          [`is-${this.size}`]: !!this.size,
+          'is-inverted': this.inverted,
+          'is-disabled': this.disabled,
+        }}
+      >
+        <button
+          id="close"
+          part="button"
+          type="button"
+          aria-label={label}
+          title={label}
+          tabindex="0"
+          disabled={this.disabled}
+        ></button>
       </Host>
     )
   }

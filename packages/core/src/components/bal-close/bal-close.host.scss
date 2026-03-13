@@ -36,6 +36,7 @@
 
 :host {
   @include unselectable();
+  @include print-hidden();
 
   display: inline-block;
 
@@ -48,7 +49,6 @@
     border-radius: var(--_close-radius);
     padding: var(--_close-padding);
     appearance: none;
-    cursor: pointer;
     outline: none;
 
     //
@@ -71,22 +71,26 @@
 
     //
     // Pseudo States
-    @include hover {
-      &:hover,
-      &.is-hovered {
-        background: var(--_close-color-background-hover);
+    &:not(:disabled) {
+      cursor: pointer;
+
+      @include hover {
+        &:hover,
+        &.is-hovered {
+          background: var(--_close-color-background-hover);
+        }
       }
-    }
 
-    &:active,
-    &.is-pressed {
-      background: var(--_close-color-background-active);
-    }
+      &:active,
+      &.is-pressed {
+        background: var(--_close-color-background-active);
+      }
 
-    &:focus-visible,
-    &.is-focused {
-      &:not(:active) {
-        @include focus-shadow(var(--_close-color-focus));
+      &:focus-visible,
+      &.is-focused {
+        &:not(:active) {
+          @include focus-shadow(var(--_close-color-focus));
+        }
       }
     }
   }
@@ -112,9 +116,19 @@
 
 //
 // Inverted Variants
-:host(.is-inverted) {
+:host(.is-inverted:not(.is-disabled)) {
   --mod-close-color-icon: var(--bal-close-color-icon-inverted);
   --mod-close-color-background-hover: var(--bal-close-color-background-inverted-hover);
   --mod-close-color-background-active: var(--bal-close-color-background-inverted-active);
   --mod-close-color-focus: var(--bal-interaction-focus-color-inverted);
+}
+
+//
+// Disabled Variants
+:host(.is-disabled) {
+  --mod-close-color-icon: var(--bal-close-color-icon-disabled);
+  --mod-close-color-background: var(--bal-close-color-background-disabled);
+  --mod-close-color-background-hover: var(--bal-close-color-background-disabled);
+  --mod-close-color-background-active: var(--bal-close-color-background-disabled);
+  --mod-close-color-focus: var(--bal-interaction-focus-color-disabled);
 }

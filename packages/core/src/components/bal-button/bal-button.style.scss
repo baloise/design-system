@@ -58,6 +58,7 @@ $host-selector: ('#button');
 @include hybrid.component($host-selector, $css-selector, $use-host) {
   @include unselectable();
   @include font-smoothing();
+  @include print-hidden();
 
   appearance: auto;
   position: relative;

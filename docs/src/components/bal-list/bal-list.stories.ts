@@ -70,64 +70,79 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const NativeList = Story({
+export const UnorderedList = Story({
   ...withRender(
-    () => `
-<div>
-  <ul class="list">
+    () => `<div>
+  <ul class="unordered-list">
     <li>List Item 1</li>
     <li>List Item 2</li>
   </ul>
-  <ul class="list has-bullet-circle">
+  <ul class="unordered-list has-bullet-circle">
     <li>Green Circle List Item 1</li>
     <li>Green Circle List Item 3</li>
   </ul>
-  <ul class="list has-bullet-circle has-bullet-purple">
+  <ul class="unordered-list has-bullet-circle is-purple">
     <li>Purple Circle List Item 1</li>
     <li>Purple Circle List Item 3</li>
   </ul>
-  <ul class="list has-bullet-circle has-bullet-red">
+  <ul class="unordered-list has-bullet-circle is-red">
     <li>Red Circle List Item 1</li>
     <li>Red Circle List Item 3</li>
   </ul>
-  <ul class="list has-bullet-circle has-bullet-yellow">
+  <ul class="unordered-list has-bullet-circle is-yellow">
     <li>Yellow Circle List Item 1</li>
     <li>Yellow Circle List Item 3</li>
   </ul>
-  <ol class="list">
-    <li>Numbered List Item 1</li>
-    <li>Numbered List Item 2</li>
-  </ol>
-  <ul class="list has-bullet-check">
+  <ul class="unordered-list has-icon-check">
     <li>Checked List Item 1</li>
     <li>Checked List Item 2</li>
   </ul>
-  <ul class="list has-bullet-check-circle">
-    <li>Checked List Item 1</li>
-    <li>Checked List Item 2</li>
+  <ul class="unordered-list has-icon-close">
+    <li class="opacity-half">Close List Item 1</li>
+    <li class="opacity-half">Close List Item 2</li>
   </ul>
-  <ul class="list has-bullet-close">
-    <li class="opacity-50">Close List Item 1</li>
-    <li class="opacity-50">Close List Item 2</li>
+  <ul class="unordered-list has-icons">
+    <li class="has-icon-check">Checked List Item 1</li>
+    <li class="has-icon-check is-success">Green Checked List Item 1</li>
+    <li class="has-icon-close opacity-half">Close List Item 2</li>
+    <li class="has-icon-close opacity-half is-danger">Red Close List Item 2</li>
   </ul>
-  <ul class="list has-bullet-arrow-down">
-    <li>Arrow Down List Item 1</li>
-    <li>Arrow Down List Item 2</li>
-  </ul>
-  <ul class="list has-bullets">
-    <li class="has-bullet-check">Checked List Item 1</li>
-    <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>
-    <li class="has-bullet-close opacity-50">Close List Item 2</li>
-    <li class="has-bullet-close opacity-50 has-bullet-red">Red Close List Item 2</li>
-  </ul>
-  <div class="bg-blue p-x-small">
-    <ul class="list has-bullets is-inverted">
-      <li class="has-bullet-check">Inverted checked List Item 1</li>
-      <li class="has-bullet-close opacity-50">Inverted close List Item 2</li>
-    </ul>
-  </div>
 </div>
   `,
+  ),
+})
+
+export const OrderedList = Story({
+  ...withRender(
+    () => `<div>
+  <ol class="ordered-list">
+    <li>Mix flour, baking powder, sugar, and salt.</li>
+    <li>In another bowl, mix eggs, milk, and oil.</li>
+    <li>Stir both mixtures together.</li>
+    <li>Fill muffin tray 3/4 full.</li>
+  </ol>
+  <ol class="ordered-list is-alpha">
+    <li>Mix flour, baking powder, sugar, and salt.</li>
+    <li>In another bowl, mix eggs, milk, and oil.</li>
+    <li>Stir both mixtures together.</li>
+    <li>Fill muffin tray 3/4 full.</li>
+  </ol>
+</div>`,
+  ),
+})
+
+export const DescriptionList = Story({
+  ...withRender(
+    () => `<div>
+  <dl class="description-list">
+    <dt>Beast of Bodmin</dt>
+    <dd>A large feline inhabiting Bodmin Moor.</dd>
+    <dt>Morgawr</dt>
+    <dd>A sea serpent</dd>
+    <dt>Owlman</dt>
+    <dd>A giant owl-like creature.</dd>
+  </dl>
+</div>`,
   ),
 })
 

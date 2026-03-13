@@ -1,0 +1,58 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+dl.description-list {
+  @include vars.local(description-list-grid-term, 1fr);
+  @include vars.local(description-list-grid-detail, 1fr);
+  @include vars.local(description-list-grid-row-gap, var(--bal-space-2xs-device));
+  @include vars.local(description-list-grid-column-gap, var(--bal-space-base-device));
+
+  @include vars.local(description-list-term-color, var(--bal-description-list-term-color));
+  @include vars.local(description-list-term-weight, var(--bal-description-list-term-weight));
+  @include vars.local(description-list-detail-color, var(--bal-description-list-detail-color));
+  @include vars.local(description-list-detail-weight, var(--bal-description-list-detail-weight));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+dl.description-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--_description-list-grid-row-gap);
+
+  @include tablet() {
+    grid-template-columns: var(--_description-list-grid-term) var(--_description-list-grid-detail);
+    column-gap: var(--_description-list-grid-column-gap);
+  }
+
+  dt {
+    @include font-smoothing();
+
+    color: var(--_description-list-term-color);
+    font-weight: var(--_description-list-term-weight);
+  }
+
+  dd {
+    @include font-smoothing();
+
+    color: var(--_description-list-detail-color);
+    font-weight: var(--_description-list-detail-weight);
+
+    @include mobile() {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

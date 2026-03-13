@@ -2,6 +2,23 @@
 @use 'sass:string';
 @use 'sass:math';
 
+@mixin sr-only {
+  border: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  height: 0.01em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 0.01em !important;
+}
+
+@mixin print-hidden {
+  @media print {
+    display: none !important;
+  }
+}
+
 @mixin hover {
   @media (hover: hover) and (pointer: fine) {
     @content;

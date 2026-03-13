@@ -64,13 +64,13 @@ Checklist
 | bal-stack            | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
 | bal-divider          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-tag              | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-button           | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-button           | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |  
 | bal-notification     | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-unordered-list   | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-ordered-list     | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
+| bal-description-list | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-card             | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-accordion        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-unordered-list   | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-ordered-list     | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
-| bal-description-list | CSS-Only           | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list             | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list-accordion   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | ------------------   | ------------------ | ---------- | ---- | ------------- | ------- | ---- |

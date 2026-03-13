@@ -1,4 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+@use './bal-description-list-native.styles.scss';
+@use './bal-list-native.styles.scss';
 
 // TODO: add sizes like large with 72px min height
 // TODO: not only use native elements like ul also role="list" and the ohters too
