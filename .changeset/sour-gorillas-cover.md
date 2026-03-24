@@ -2,4 +2,4 @@
 '@baloise/ds-core': patch
 ---
 
-**core**: fix animation cancellation logic in bal accordion
+**accordion**: fix animation cancellation logic
