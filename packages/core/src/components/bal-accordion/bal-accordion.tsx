@@ -27,6 +27,8 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
   private currentRaf: number | undefined
+  private currentRafInner: number | undefined
+  private animationGeneration = 0
 
   @Element() el!: HTMLStencilElement
 
@@ -267,6 +269,18 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     }
   }
 
+  private cancelAnimation = () => {
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+      this.currentRaf = undefined
+    }
+    if (this.currentRafInner !== undefined) {
+      cancelAnimationFrame(this.currentRafInner)
+      this.currentRafInner = undefined
+    }
+    this.animationGeneration++
+  }
+
   private expand = (initialUpdate = false): boolean => {
     this.active = true
 
@@ -281,21 +295,26 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
       return this.active
     }
 
-    if (this.currentRaf !== undefined) {
-      cancelAnimationFrame(this.currentRaf)
-    }
+    this.cancelAnimation()
+    const generation = this.animationGeneration
 
     if (this.shouldAnimate()) {
-      raf(() => {
+      this.currentRaf = raf(() => {
+        if (generation !== this.animationGeneration) return
+
         this.setState(AccordionState.Expanding)
         this.balWillAnimate.emit(this.active)
 
-        this.currentRaf = raf(async () => {
+        this.currentRafInner = raf(async () => {
+          if (generation !== this.animationGeneration) return
+
           const contentHeight = detailsWrapperElement.offsetHeight
           const waitForTransition = transitionEndAsync(detailsElement, 300)
           detailsElement.style.setProperty('max-height', `${contentHeight}px`)
 
           await waitForTransition
+
+          if (generation !== this.animationGeneration) return
 
           this.setState(AccordionState.Expanded)
           detailsElement.style.removeProperty('max-height')
@@ -324,22 +343,27 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
       return this.active
     }
 
-    if (this.currentRaf !== undefined) {
-      cancelAnimationFrame(this.currentRaf)
-    }
+    this.cancelAnimation()
+    const generation = this.animationGeneration
 
     if (this.shouldAnimate()) {
       this.currentRaf = raf(async () => {
+        if (generation !== this.animationGeneration) return
+
         const contentHeight = detailsElement.offsetHeight
         detailsElement.style.setProperty('max-height', `${contentHeight}px`)
 
-        raf(async () => {
+        this.currentRafInner = raf(async () => {
+          if (generation !== this.animationGeneration) return
+
           const waitForTransition = transitionEndAsync(detailsElement, 300)
 
           this.setState(AccordionState.Collapsing)
-          this.balDidAnimate.emit(this.active)
+          this.balWillAnimate.emit(this.active)
 
           await waitForTransition
+
+          if (generation !== this.animationGeneration) return
 
           this.setState(AccordionState.Collapsed)
           detailsElement.style.removeProperty('max-height')
@@ -347,7 +371,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
         })
       })
     } else {
-      this.balDidAnimate.emit(this.active)
+      this.balWillAnimate.emit(this.active)
       this.setState(AccordionState.Collapsed)
       this.balDidAnimate.emit(this.active)
     }
