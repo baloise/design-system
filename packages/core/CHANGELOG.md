@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.9.3
+
+### Patch Changes
+
+- **accordion**: fix animation cancellation logic ( [#1893](https://github.com/baloise/design-system/pull/1893))
+
 ## 19.9.2
 
 ### Patch Changes
