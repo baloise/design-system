@@ -6,19 +6,16 @@
   @include vars.local(buttons-justify-content, flex-start);
   @include vars.local(buttons-direction, row);
   @include vars.local(buttons-gap, 0.25rem);
+  @include vars.local(buttons-wrap, wrap);
 
   display: flex;
   gap: var(--_buttons-gap);
   flex-direction: var(--_buttons-direction);
   align-items: var(--_buttons-align-items);
   justify-content: var(--_buttons-justify-content);
-  flex-wrap: wrap;
+  flex-wrap: var(--_buttons-wrap);
 
   width: 100%;
-
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
 
   //
   // Mobile everything is strechtedˆ
@@ -124,34 +121,3 @@
     }
   }
 }
-
-//   &.as-col {
-
-//   @include tablet {
-//     // Centered
-//     &.is-center:not(.as-col),
-//     &.is-centered:not(.as-col) {
-//       --buttons-justify-content: center;
-//     }
-
-//     &.is-center.as-col,
-//     &.is-centered.as-col {
-//       --buttons-align-items: center;
-//     }
-
-//     // Right aligned
-//     &.is-right:not(.as-col) {
-//       --buttons-justify-content: flex-end;
-//     }
-
-//     &.is-right.as-col {
-//       --buttons-align-items: flex-end;
-//     }
-//   }
-
-//   &.fit-content bal-button {
-//     --button-width: 100%;
-
-//     width: 100%;
-//   }
-// }

@@ -9,7 +9,7 @@ export class ButtonGroup implements ComponentInterface {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() position?: BalProps.BalButtonGroupPosition
+  @Prop() align?: BalProps.BalButtonGroupAlignment
 
   /**
    * `auto` will position the button items vertical and full width.
@@ -38,9 +38,9 @@ export class ButtonGroup implements ComponentInterface {
             'as-row': this.direction === 'row',
             'is-reverse': this.reverse,
             'is-expanded': this.expanded,
-            'is-left': this.position === 'left',
-            'is-center': this.position === 'center',
-            'is-right': this.position === 'right',
+            'is-left': this.align === 'left',
+            'is-center': this.align === 'center',
+            'is-right': this.align === 'right',
           }}
         >
           <slot />

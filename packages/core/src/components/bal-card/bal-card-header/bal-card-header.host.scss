@@ -4,5 +4,5 @@
 @include hybrid.host-base(card-header, flex);
 
 :host {
-  @include card-header.stlye();
+  @include card-header.style();
 }

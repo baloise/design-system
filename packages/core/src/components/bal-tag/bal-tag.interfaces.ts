@@ -27,7 +27,7 @@ namespace BalProps {
   export type BalTagShape = 'square' | 'pill'
   export type BalTagSize = 'small' | 'medium' | 'large'
   export type BalTagFontWeight = 'regular' | 'bold'
-  export type BalTagPlacement = 'left' | 'center'
+  export type BalTagPlacement = 'left' | 'center' | 'right'
 }
 
 namespace BalEvents {

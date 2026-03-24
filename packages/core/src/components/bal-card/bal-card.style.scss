@@ -1,13 +1,14 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 @use '../../typography' as typography;
 @use '../bal-button/bal-button-group/bal-button-group.mixin.scss' as button-group;
 @use './bal-card-header/bal-card-header.mixin.scss' as card-header;
 
-$card-use-host: false !default;
-$card-name: card;
-$card-css-selector: ('.card');
-$card-host-selector: ('#card');
+$use-host: false !default;
+$name: card;
+$css-selector: ('.card');
+$host-selector: ('#card');
 
 /**
  * Variables
@@ -16,16 +17,16 @@ $card-host-selector: ('#card');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($card-css-selector, $card-use-host) {
-  --card-color-background: var(--bal-card-color-base-background);
-  --card-color-text: var(--bal-card-color-base-text);
-  --card-color-border: var(--bal-card-color-base-border, transparent);
-  --card-radius: var(--bal-card-radius-base);
-  --card-border-width: var(--bal-border-width-base, 0);
-  --card-border-style: var(--bal-border-style-base, dashed);
-  --card-shadow: var(--bal-card-shadow-base);
-  --card-gap: var(--bal-card-space-base-device);
-  --card-padding: calc(var(--bal-card-space-base-device) - var(--card-border-width));
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(card-color-background, var(--bal-card-color-base-background));
+  @include vars.local(card-color-text, var(--bal-card-color-base-text));
+  @include vars.local(card-color-border, var(--bal-card-color-base-border, transparent));
+  @include vars.local(card-radius, var(--bal-card-radius-base));
+  @include vars.local(card-border-width, 0rem);
+  @include vars.local(card-border-style, solid);
+  @include vars.local(card-shadow, var(--bal-card-shadow-base));
+  @include vars.local(card-gap, var(--bal-card-space-base-device));
+  @include vars.local(card-padding, var(--bal-card-space-base-device));
 }
 
 /**
@@ -34,90 +35,25 @@ $card-host-selector: ('#card');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component($card-host-selector, $card-css-selector, $card-use-host) {
+@include hybrid.component($host-selector, $css-selector, $use-host) {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  color: var(--card-color-text);
-  background-color: var(--card-color-background);
-  border-radius: var(--card-radius);
-  border-color: var(--card-color-border);
-  border-width: var(--card-border-width);
-  border-style: var(--card-border-style);
-  box-shadow: var(--card-shadow);
-  gap: var(--card-gap);
-  padding: var(--card-padding);
+  color: var(--_card-color-text);
+  background-color: var(--_card-color-background);
+  border-radius: var(--_card-radius);
+  border-color: var(--_card-color-border);
+  border-width: var(--_card-border-width);
+  border-style: var(--_card-border-style);
+  box-shadow: var(--_card-shadow);
+  gap: var(--_card-gap);
+  padding: calc(var(--_card-padding) - var(--_card-border-width));
   text-decoration: none;
-
-  // Picutre
-  picture {
-    &,
-    > img {
-      display: block;
-
-      width: 100%;
-      max-width: 100%;
-      max-inline-size: 100%;
-
-      height: auto;
-      object-fit: cover;
-      block-size: auto;
-
-      border-radius: var(--card-radius);
-    }
-  }
-
-  &:not(.is-dense):has(picture) {
-    padding-top: 0;
-  }
-
-  &:not(.is-dense) picture {
-    margin-top: calc(var(--card-border-width) * -1);
-    margin-left: calc(var(--card-gap) * -1);
-    width: calc(100% + var(--card-gap) * 2);
-    max-width: calc(100% + var(--card-gap) * 2);
-    max-inline-size: calc(100% + var(--card-gap) * 2);
-
-    &,
-    > img {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  // Tag Posioning
-  > .tag:first-child,
-  > bal-tag:first-child {
-    --bal-tag-position: absolute;
-    --bal-tag-top: 0;
-
-    align-self: center;
-    transform: translateY(-50%);
-  }
-
-  > .tag.is-left:first-child,
-  > bal-tag[position='left']:first-child {
-    align-self: flex-start;
-  }
-
-  > .tag.is-right:first-child,
-  > bal-tag[position='right']:first-child {
-    align-self: flex-end;
-  }
-
-  // Badge Positioning
-  > .badge:first-child,
-  > bal-badge:first-child {
-    --bal-badge-position: absolute;
-    --bal-badge-top: 0;
-    transform: translate(calc(50% + var(--card-gap)), -50%);
-    align-self: flex-end;
-  }
 
   // Header
   .card-header {
-    @include card-header.stlye();
+    @include card-header.style();
   }
 
   // Content
@@ -133,35 +69,37 @@ $card-host-selector: ('#card');
   // Allignment
   &.align-center {
     align-items: center;
-    --bal-buttons-align-items: center;
-    --bal-buttons-justify-content: center;
+    --buttons-align-items: center;
+    --buttons-justify-content: center;
   }
 
   &.align-right {
-    --bal-buttons-align-items: flex-end;
-    --bal-buttons-justify-content: flex-end;
+    --buttons-align-items: flex-end;
+    --buttons-justify-content: flex-end;
   }
+}
 
-  &.is-square {
-    --card-radius: var(--bal-card-radius-square);
+//
+// Picture
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  picture {
+    --picture-img-radius: var(--_card-radius);
   }
+}
 
-  &.is-flat {
-    --card-radius: var(--bal-card-radius-flat);
-    --card-shadow: var(--bal-card-shadow-flat);
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(picture) {
+      --picture-img-radius: var(--_card-radius);
+    }
   }
+}
 
-  &.is-dense {
-    --card-shadow: var(--bal-card-shadow-flat);
-    --card-padding: 0;
-  }
-
-  &.is-outlined {
-    --card-shadow: var(--bal-card-shadow-flat);
-    --card-border-width: var(--bal-card-outline-width);
-    --card-color-border: var(--bal-card-color-base-outline, transparent);
-  }
-
+//
+// Full Height
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
   &.is-fullheight {
     height: 100%;
 
@@ -174,41 +112,100 @@ $card-host-selector: ('#card');
   }
 }
 
-// Clickable Cards
-a.card,
-button.card {
-  --bal-heading-color: var(--bal-text-color-primary);
-  --bal-text-color: var(--bal-text-color-primary);
-  color: var(--bal-text-color-primary);
-  text-decoration: none;
-  translate: 0 0;
-  cursor: pointer;
+@include hybrid.host($use-host) {
+  :host(.is-fullheight),
+  :host(.is-fullheight) #card {
+    height: 100%;
+  }
 
-  @include hover {
-    &:hover,
-    &.is-hovered {
-      --bal-heading-color: var(--bal-text-color-primary-hover);
-      --bal-text-color: var(--bal-text-color-primary-hover);
-      --card-shadow: var(--bal-card-shadow-hover);
-      color: var(--bal-text-color-primary-hover);
-      background: color-mix(in srgb, var(--card-color-background), var(--bal-color-primary-6) 4%);
+  :host(.is-fullheight) {
+    ::slotted(bal-card-content) {
+      height: 100%;
     }
   }
+}
 
-  &:active,
-  &.is-pressed {
-    --bal-heading-color: var(--bal-text-color-primary-active);
-    --bal-text-color: var(--bal-text-color-primary-active);
-    --card-shadow: var(--bal-card-shadow-hover);
-    color: var(--bal-text-color-primary-active);
-    background: color-mix(in srgb, var(--card-color-background), var(--bal-color-primary-6) 6%);
-    translate: 0 0.5px;
+//
+// Badge Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .badge:first-child,
+  > bal-badge:first-child {
+    --badge-position: absolute;
+    --badge-top: 0;
+    transform: translate(calc(50% + var(--_card-gap)), -50%);
+    align-self: flex-end;
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(bal-badge) {
+      --badge-position: absolute;
+      --badge-top: 0;
+
+      transform: translate(calc(50% + var(--_card-gap)), -50%);
+      align-self: flex-end;
+    }
+  }
+}
+
+//
+// Tags Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .tag.is-center:first-child,
+  > bal-tag[position='center']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: center;
+    transform: translateY(-50%);
   }
 
-  &:focus-visible,
-  &.is-focused {
-    &:not(:active) {
-      @include focus-shadow();
+  > .tag.is-left:first-child,
+  > bal-tag[position='left']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-start;
+    transform: translateY(-50%);
+  }
+
+  > .tag.is-right:first-child,
+  > bal-tag[position='right']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-end;
+    transform: translateY(-50%);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(bal-tag[position='left']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-start;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(bal-tag[position='center']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: center;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(bal-tag[position='right']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-end;
+      transform: translateY(-50%);
     }
   }
 }
@@ -219,131 +216,92 @@ button.card {
   * Define here the variants and states like size or colors for the component.
   */
 
-// TODO: Create own component for image teaser to be able to use it outside of the card as well
-.image-teaser {
-  picture {
-    &,
-    > img {
-      display: block;
+//
+// Square
+// --------------------------------
+@mixin square {
+  --mod-card-radius: var(--bal-card-radius-square);
+}
 
-      width: 100%;
-      max-width: 100%;
-      max-inline-size: 100%;
-
-      height: auto;
-      object-fit: cover;
-      block-size: auto;
-
-      border-radius: var(--bal-card-radius-base);
-    }
-  }
-
-  .card {
-    margin-top: calc(var(--card-gap) * -1 * 2);
-    margin-left: calc(var(--card-gap));
-    margin-right: calc(var(--card-gap));
-    max-width: fit-content;
-  }
-
-  &.is-wide {
-    @include tablet() {
-      .card {
-        width: 75%;
-        margin-left: calc(var(--card-gap) * 2);
-        margin-right: calc(var(--card-gap));
-      }
-
-      &.is-center {
-        .card {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-
-      &.is-right {
-        .card {
-          margin-left: auto;
-          margin-right: calc(var(--card-gap) * 2);
-        }
-      }
-    }
-
-    @include desktop() {
-      .card {
-        width: 50%;
-      }
-    }
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-square {
+    @include square();
   }
 }
 
-a.image-link,
-button.image-link {
-  cursor: pointer;
-
-  picture {
-    overflow: hidden;
-  }
-  img {
-    transition: all 0.4s ease-out;
-
-    @include hover {
-      &:hover,
-      &.is-hovered {
-        transform: scale(1.1);
-      }
-    }
-
-    &:active,
-    &.is-pressed {
-      transform: scale(1.1);
-    }
-  }
-}
-
-a.image-teaser,
-button.image-teaser {
-  cursor: pointer;
-
-  --bal-heading-color: var(--bal-text-color-primary);
-  --bal-text-color: var(--bal-text-color-primary);
-  color: var(--bal-text-color-primary);
-  text-decoration: none;
-
-  @include hover {
-    &:hover,
-    &.is-hovered {
-      --bal-heading-color: var(--bal-text-color-primary-hover);
-      --bal-text-color: var(--bal-text-color-primary-hover);
-      --card-shadow: var(--bal-card-shadow-hover);
-      color: var(--bal-text-color-primary-hover);
-      background: color-mix(in srgb, var(--card-color-background), var(--bal-color-primary-6) 4%);
-    }
+@include hybrid.host($use-host) {
+  :host(.is-square) {
+    @include square();
   }
 }
 
 //
-// Spacing Modifiers
+// Flat
+// --------------------------------
+@mixin flat {
+  --mod-card-radius: var(--bal-card-radius-flat);
+  --mod-card-shadow: var(--bal-card-shadow-flat);
+}
 
-@include hybrid.component($card-host-selector, $card-css-selector, $card-use-host) {
-  &.has-space-sm {
-    --card-padding: calc(var(--bal-card-space-sm-device) - var(--card-border-width));
-    --card-gap: var(--bal-card-space-sm-device);
-  }
-
-  &.has-space-md {
-    --card-padding: calc(var(--bal-card-space-md-device) - var(--card-border-width));
-    --card-gap: var(--bal-card-space-md-device);
-  }
-
-  &.has-space-lg {
-    --card-padding: calc(var(--bal-card-space-lg-device) - var(--card-border-width));
-    --card-gap: var(--bal-card-space-lg-device);
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-flat {
+    @include flat();
   }
 }
 
-// Colors
+@include hybrid.host($use-host) {
+  :host(.is-flat) {
+    @include flat();
+  }
+}
 
-$card-colors: (
+//
+// Dense
+// --------------------------------
+@mixin dense {
+  --mod-card-shadow: var(--bal-card-shadow-flat);
+  --mod-card-padding: 0;
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-dense {
+    @include dense();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-dense) {
+    @include dense();
+  }
+}
+
+//
+// Outlined
+// --------------------------------
+@mixin outlined {
+  --mod-card-shadow: var(--bal-card-shadow-flat);
+  --mod-card-border-width: var(--bal-card-outline-width);
+  --mod-card-border-style: dashed;
+  --mod-card-color-border: var(--bal-card-color-base-outline, transparent);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-outlined {
+    @include outlined();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-outlined) {
+    @include outlined();
+  }
+}
+
+//
+// Colors
+// --------------------------------
+
+$backgrounds: (
   'white',
   'primary',
   'primary-light',
@@ -367,16 +325,162 @@ $card-colors: (
   'yellow-lighter'
 );
 
-@include hybrid.component($card-host-selector, $card-css-selector, $card-use-host) {
-  @each $color in $card-colors {
+@mixin background-color($color) {
+  --mod-card-color-background: var(--bal-card-color-#{$color}-background);
+  --mod-card-color-text: var(--bal-card-color-#{$color}-text);
+  --mod-card-color-border: var(--bal-card-color-#{$color}-border, transparent);
+}
+
+@each $color in $backgrounds {
+  @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --card-color-background: var(--bal-card-color-#{$color}-background);
-      --card-color-text: var(--bal-card-color-#{$color}-text);
-      --card-color-border: var(--bal-card-color-#{$color}-border, transparent);
+      @include background-color($color);
 
       &.is-outlined {
-        --card-color-border: var(--bal-card-color-#{$color}-outline, transparent);
+        --mod-card-color-border: var(--bal-card-color-#{$color}-outline, transparent);
       }
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include background-color($color);
+    }
+
+    :host(.is-#{$color}.is-outlined) {
+      --mod-card-color-border: var(--bal-card-color-#{$color}-outline, transparent);
+    }
+  }
+}
+
+//
+// Space
+// --------------------------------
+$spaces: ('sm', 'md', 'lg');
+
+@each $space in $spaces {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.has-space-#{$space} {
+      --mod-card-gap: var(--bal-card-space-#{$space}-device);
+    }
+    &.has-space-#{$space}:not(.is-dense) {
+      --mod-card-padding: var(--bal-card-space-#{$space}-device);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.has-space-#{$space}) {
+      --mod-card-gap: var(--bal-card-space-#{$space}-device);
+    }
+    :host(.has-space-#{$space}:not(.is-dense)) {
+      --mod-card-padding: var(--bal-card-space-#{$space}-device);
+    }
+  }
+}
+
+//
+// Image Teaser
+// --------------------------------
+
+@include hybrid.styles('.image-teaser ', $use-host) {
+  .card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  &.is-expanded {
+    @include tablet() {
+      .card {
+        width: 75%;
+        margin-left: calc(var(--_card-gap) * 2);
+        margin-right: calc(var(--_card-gap));
+      }
+
+      &.is-center {
+        .card {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      &.is-right {
+        .card {
+          margin-left: auto;
+          margin-right: calc(var(--_card-gap) * 2);
+        }
+      }
+    }
+
+    @include desktop() {
+      .card {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-image-teaser) #card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  :host(.is-image-teaser-wide) #card,
+  :host(.is-image-teaser-wide-center) #card,
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      width: 75%;
+      margin-left: calc(var(--_card-gap) * 2);
+      margin-right: calc(var(--_card-gap));
+    }
+
+    @include desktop() {
+      width: 50%;
+    }
+  }
+
+  :host(.is-image-teaser-wide-center) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: calc(var(--_card-gap) * 2);
+    }
+  }
+}
+
+a.image-link,
+button.image-link {
+  cursor: pointer;
+
+  picture {
+    display: block;
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+    transition: all 0.4s ease-out;
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      transform: scale(1.1);
     }
   }
 }

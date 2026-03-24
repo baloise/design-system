@@ -6,7 +6,3 @@
 :host #group {
   @include button-group.style();
 }
-
-:host(:not(:last-child)) {
-  margin-bottom: 1rem;
-}

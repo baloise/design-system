@@ -1,0 +1,20 @@
+picture {
+  --_picture-img-radius: var(--picture-img-radius, var(--bal-radius-lg));
+
+  display: block;
+  border-radius: var(--_picture-img-radius);
+}
+
+picture img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  max-inline-size: 100%;
+
+  height: auto;
+  object-fit: cover;
+  block-size: auto;
+
+  border-radius: var(--_picture-img-radius);
+}

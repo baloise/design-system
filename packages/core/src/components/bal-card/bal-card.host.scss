@@ -1,14 +1,11 @@
 @use '../../hybrid' as hybrid;
 @use './bal-card.style' with (
-  $card-use-host: true
+  $use-host: true
 );
 
-// @forward '../bal-button/bal-button.style';
-
-@include hybrid.host-base(card, block);
-
 :host {
-  --bal-bubu: 20;
+  display: block;
+  width: 100%;
 }
 
 // asdf

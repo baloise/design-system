@@ -9,10 +9,6 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 })
 export class Card {
   @Element() el!: HTMLElement
-  /**
-   * If `true` a light blue border is added to the card.
-   */
-  @Prop() border = false
 
   /**
    * If `true` the card loses its shadow.
@@ -20,9 +16,35 @@ export class Card {
   @Prop() flat = false
 
   /**
+   * If `true` the card gets a smaller padding.
+   */
+  @Prop() dense = false
+
+  /**
+   * If `true` the card image is displayed as a teaser, which means
+   * it is displayed with a large image.
+   */
+  @Prop() imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
+
+  // /**
+  //  * If `true` the card uses 100% of the available width.
+  //  */
+  // @Prop() expanded = false
+
+  /**
    * If `true` the card loses its border radius.
    */
   @Prop() square = false
+
+  /**
+   * @deprecated
+   * If `true` a light blue border is added to the card.
+   */
+  @Prop() border = false
+  /**
+   * If `true` the cards gets a light border and loses its shadow.
+   */
+  @Prop() outlined = false
 
   /**
    * If `true` the card background color becomes blue.
@@ -45,21 +67,26 @@ export class Card {
   @Prop() fullheight = false
 
   /**
+   * Defines the text alignment of the card content.
+   */
+  @Prop() align?: BalProps.BalCardAlignment
+
+  /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true }) space: BalProps.BalCardSpace = ''
+  @Prop({ mutable: true }) space?: BalProps.BalCardSpace
   @Watch('space')
   watchSpace(newValue: BalProps.BalCardSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the color of the card.
    */
-  @Prop() color: BalProps.BalCardColor = 'white'
+  @Prop() color?: BalProps.BalCardColor
 
   connectedCallback(): void {
-    this.space = normalizeDeprecatedTShirtSize(this.space) || ''
+    this.space = normalizeDeprecatedTShirtSize(this.space)
   }
 
   get colorTypeClass(): string {
@@ -85,23 +112,28 @@ export class Card {
   }
 
   render() {
+    const hasOutline = !!this.outlined || !!this.border
+    const isImageTeaser = this.imageTeaser !== undefined
+
     return (
       <Host
         class={{
-          // card: true,
-          [`is-fullheight`]: this.fullheight,
+          [`is-image-teaser`]: isImageTeaser,
+          [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser && !isEmpty(this.imageTeaser),
+          [`is-square`]: this.square,
+          [`is-dense`]: this.dense,
+          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
+          [`has-space-${this.space}`]: !isEmpty(this.space),
+          [`is-outlined`]: hasOutline,
+          [`is-flat`]: hasOutline || !!this.flat,
         }}
       >
+        <slot name="picture"></slot>
         <article
           id="card"
           class={{
-            // card: true,
-            [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
-            [`has-space-${this.space}`]: !isEmpty(this.space),
             [`is-fullheight`]: this.fullheight,
-            [`is-square`]: this.square,
-            [`is-outlined`]: this.border,
-            [`is-flat`]: this.border || this.flat,
+            [`align-${this.align}`]: !isEmpty(this.align),
           }}
         >
           <slot></slot>

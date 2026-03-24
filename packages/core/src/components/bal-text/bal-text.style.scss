@@ -18,6 +18,7 @@ $host-selector: ('#text');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(text-color, inherit);
+  @include vars.local(text-align, inherit);
   @include vars.local(text-family, var(--bal-body-family));
   @include vars.local(text-weight, var(--bal-body-weight));
   @include vars.local(text-line-height, var(--bal-body-line-height));
@@ -42,6 +43,7 @@ $host-selector: ('#text');
   hyphens: auto;
   overflow-wrap: break-word;
   text-wrap: balance;
+  text-align: var(--_text-align);
 
   color: var(--_text-color);
   font-family: var(--_text-family);
@@ -55,20 +57,36 @@ $host-selector: ('#text');
   .is-bold {
     font-weight: var(--bal-text-weight-bold);
   }
+}
 
-  // alignments
-  @include hybrid.styles-only($use-host) {
-    &.is-centered {
-      text-align: center;
-    }
+//
+// Alignments
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-centered {
+    --mod-text-align: center;
+  }
 
-    &.is-right {
-      text-align: right;
-    }
+  &.is-right {
+    --mod-text-align: right;
+  }
 
-    &.is-justified {
-      text-align: justify;
-    }
+  &.is-justified {
+    --mod-text-align: justify;
+  }
+}
+
+@include attr.has(no-wrap) {
+  :host #text.is-centered {
+    --mod-text-align: center;
+  }
+
+  :host #text.is-right {
+    --mod-text-align: right;
+  }
+
+  :host #text.is-justified {
+    --mod-text-align: justify;
   }
 }
 

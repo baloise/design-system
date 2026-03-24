@@ -2,6 +2,8 @@ import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-card-subtitle',
+  styleUrl: 'bal-card-subtitle.host.scss',
+  shadow: true,
 })
 export class CardSubtitle {
   /**

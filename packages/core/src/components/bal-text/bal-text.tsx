@@ -15,7 +15,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the size of the paragraph
    */
-  @Prop({ mutable: true, reflect: true }) size: BalProps.BalTextSize = ''
+  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalTextSize
 
   /**
    * If `true` the text has heading font family
@@ -47,12 +47,12 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: BalProps.BalTextColor = ''
+  @Prop() color?: BalProps.BalTextColor
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) space: BalProps.BalTextSpace = ''
+  @Prop({ reflect: true }) space?: BalProps.BalTextSpace
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -73,6 +73,11 @@ export class Text implements ComponentInterface, BalElementStateInfo {
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true }) invalid = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() align?: BalProps.BalTextAlign
 
   /**
    * @internal
@@ -131,7 +136,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
       <Host
         class={{
           [`is-${color}`]: !!color,
-          // [`has-space-${this.space}`]: this.space !== '',
+
           // [`is-inline`]: this.inline,
         }}
       >
@@ -139,20 +144,19 @@ export class Text implements ComponentInterface, BalElementStateInfo {
           id="text"
           part="text"
           data-testid="bal-text"
-          class={
-            {
-              // text: true,
-              // [`is-${color}`]: !!color,
-              // [`is-bold`]: this.bold,
-              // [`has-shadow`]: this.shadow,
-              // [`has-no-wrap`]: this.noWrap,
-              // [`is-heading`]: this.heading,
-              // [`is-subtitle`]: this.subtitle,
-              // [`is-lg`]: this.size === 'lead',
-              // [`is-md`]: this.size === 'block',
-              // [`is-sm`]: this.size === 'small',
-            }
-          }
+          class={{
+            [`is-${this.align}`]: !!this.align,
+            // text: true,
+            // [`is-${color}`]: !!color,
+            // [`is-bold`]: this.bold,
+            // [`has-shadow`]: this.shadow,
+            // [`has-no-wrap`]: this.noWrap,
+            // [`is-heading`]: this.heading,
+            // [`is-subtitle`]: this.subtitle,
+            // [`is-lg`]: this.size === 'lead',
+            // [`is-md`]: this.size === 'block',
+            // [`is-sm`]: this.size === 'small',
+          }}
         >
           <slot></slot>
         </Text>

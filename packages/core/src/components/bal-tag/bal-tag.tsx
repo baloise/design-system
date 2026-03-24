@@ -50,7 +50,7 @@ export class Tag {
   /**
    * Choosing left or center the tag is aligned to that side in the bal-card.
    */
-  @Prop({ reflect: true }) position: BalProps.BalTagPlacement = 'left'
+  @Prop({ reflect: true }) position?: BalProps.BalTagPlacement
 
   /**
    * Emitted when the input got clicked.

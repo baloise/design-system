@@ -1,10 +1,49 @@
-@mixin stlye() {
-  --bal-heavding-line-height: 32px;
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../bal-card-title/bal-card-title.mixin.scss' as title;
+@use '../bal-card-subtitle/bal-card-subtitle.mixin.scss' as subtitle;
+
+@mixin style() {
+  // --heading-line-height: 32px;
+
+  // Only use small buttons in the card header
+  // to have the same height as the title
+  --button-font-size: var(--bal-button-size-sm);
+  --button-min-height: 2rem;
+  --button-min-width: 2rem;
+  --button-padding-inline: 0.75rem;
+  --tags-display: flex;
+  --tags-mt: 0.25rem;
+
+  @include tablet() {
+    --buttons-wrap: nowrap;
+    --tags-display: inline-flex;
+    --tags-mt: 0;
+  }
 
   gap: var(--card-gap);
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'title .'
+    'subtitle subtitle';
+
+  .tag,
+  bal-tag,
+  ::slotted(bal-tag) {
+    grid-area: tag;
+    margin-bottom: 1rem;
+  }
+
+  .title,
+  bal-card-title {
+    @include title.style();
+  }
+
+  & > p,
+  .subtitle,
+  bal-card-subtitle {
+    @include subtitle.style();
+  }
 
   .title,
   .subtitle,

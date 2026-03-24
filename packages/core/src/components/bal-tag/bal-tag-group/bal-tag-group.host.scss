@@ -1,8 +1,9 @@
+@use './bal-tag-group.mixin.scss' as tags;
+
 /**
   * Host Style
   */
 
 :host {
-  display: flex;
-  gap: var(--bal-tag-space-normal-x);
+  @include tags.style()
 }

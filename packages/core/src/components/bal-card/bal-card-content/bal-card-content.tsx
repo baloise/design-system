@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core'
 export class CardContent {
   render() {
     return (
-      <Host class="card-content">
+      <Host>
         <slot></slot>
       </Host>
     )

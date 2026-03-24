@@ -4,8 +4,9 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalCardActionsPosition = 'right' | 'center' | ''
-  export type BalCardFooterPosition = 'right' | 'center' | ''
+  export type BalCardAlignment = 'right' | 'center' | 'left'
+  export type BalCardActionsAlignment = 'right' | 'center' | 'left'
+  export type BalCardFooterPosition = 'right' | 'center' | 'left'
   export type BalCardHeaderDirection = 'row' | 'column'
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget

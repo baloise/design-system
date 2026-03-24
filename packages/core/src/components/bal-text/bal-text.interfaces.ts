@@ -4,6 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
+  export type BalTextAlign = 'left' | 'right' | 'center' | 'justify'
   export type BalTextSize =
     | 'xs'
     | 'sm'

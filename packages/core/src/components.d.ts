@@ -247,6 +247,10 @@ export namespace Components {
     }
     interface BalButtonGroup {
         /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "align"?: BalProps.BalButtonGroupAlignment;
+        /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
@@ -257,10 +261,6 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position"?: BalProps.BalButtonGroupPosition;
-        /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
          */
@@ -268,7 +268,11 @@ export namespace Components {
     }
     interface BalCard {
         /**
-          * If `true` a light blue border is added to the card.
+          * Defines the text alignment of the card content.
+         */
+        "align"?: BalProps.BalCardAlignment;
+        /**
+          * @deprecated If `true` a light blue border is added to the card.
           * @default false
          */
         "border": boolean;
@@ -279,9 +283,13 @@ export namespace Components {
         "clickable": boolean;
         /**
           * Defines the color of the card.
-          * @default 'white'
          */
-        "color": BalProps.BalCardColor;
+        "color"?: BalProps.BalCardColor;
+        /**
+          * If `true` the card gets a smaller padding.
+          * @default false
+         */
+        "dense": boolean;
         /**
           * If `true` the card loses its shadow.
           * @default false
@@ -293,10 +301,19 @@ export namespace Components {
          */
         "fullheight": boolean;
         /**
+          * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
+         */
+        "imageTeaser"?: '' | 'wide-left' | 'wide-center' | 'wide-right';
+        /**
           * If `true` the card background color becomes blue.
           * @default false
          */
         "inverted": boolean;
+        /**
+          * If `true` the cards gets a light border and loses its shadow.
+          * @default false
+         */
+        "outlined": boolean;
         /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
@@ -304,9 +321,8 @@ export namespace Components {
         "selected": boolean;
         /**
           * Defines the space of the card content.
-          * @default ''
          */
-        "space": BalProps.BalCardSpace;
+        "space"?: BalProps.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
           * @default false
@@ -317,67 +333,15 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: BalProps.BalCardActionsPosition;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * The type of button.
-          * @default 'button'
-         */
-        "elementType": BalProps.BalCardButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the icon like `edit`.
-          * @default ''
-         */
-        "icon": string;
-        /**
-          * Name of the right button icon
-          * @default ''
-         */
-        "iconRight": string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-          * @default false
-         */
-        "loading": boolean;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel": string | undefined;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target": BalProps.BalCardButtonTarget;
+        "align"?: BalProps.BalCardActionsAlignment;
     }
     interface BalCardContent {
     }
-    interface BalCardFooter {
-        /**
-          * @default false
-         */
-        "buttons": boolean;
-        "position"?: BalProps.BalCardFooterPosition;
-    }
     interface BalCardHeader {
-        /**
-          * @default false
-         */
-        "closable": boolean;
         /**
           * @default 'row'
          */
         "direction": BalProps.BalCardHeaderDirection;
-        "heading"?: string;
     }
     interface BalCardSubtitle {
         /**
@@ -1112,9 +1076,8 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
-          * @default 'left'
          */
-        "position": BalProps.BalTagPlacement;
+        "position"?: BalProps.BalTagPlacement;
         /**
           * The shape of the tag element like square or pill
          */
@@ -1128,15 +1091,18 @@ export namespace Components {
     }
     interface BalText {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "align"?: BalProps.BalTextAlign;
+        /**
           * If `true` the text is bold
           * @default false
          */
         "bold": boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
-        "color": BalProps.BalTextColor;
+        "color"?: BalProps.BalTextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1182,14 +1148,12 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Defines the size of the paragraph
-          * @default ''
          */
-        "size": BalProps.BalTextSize;
+        "size"?: BalProps.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": BalProps.BalTextSpace;
+        "space"?: BalProps.BalTextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -1388,23 +1352,11 @@ declare global {
         prototype: HTMLBalCardActionsElement;
         new (): HTMLBalCardActionsElement;
     };
-    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
-    }
-    var HTMLBalCardButtonElement: {
-        prototype: HTMLBalCardButtonElement;
-        new (): HTMLBalCardButtonElement;
-    };
     interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
     }
     var HTMLBalCardContentElement: {
         prototype: HTMLBalCardContentElement;
         new (): HTMLBalCardContentElement;
-    };
-    interface HTMLBalCardFooterElement extends Components.BalCardFooter, HTMLStencilElement {
-    }
-    var HTMLBalCardFooterElement: {
-        prototype: HTMLBalCardFooterElement;
-        new (): HTMLBalCardFooterElement;
     };
     interface HTMLBalCardHeaderElement extends Components.BalCardHeader, HTMLStencilElement {
     }
@@ -1671,9 +1623,7 @@ declare global {
         "bal-button-group": HTMLBalButtonGroupElement;
         "bal-card": HTMLBalCardElement;
         "bal-card-actions": HTMLBalCardActionsElement;
-        "bal-card-button": HTMLBalCardButtonElement;
         "bal-card-content": HTMLBalCardContentElement;
-        "bal-card-footer": HTMLBalCardFooterElement;
         "bal-card-header": HTMLBalCardHeaderElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
@@ -1966,6 +1916,10 @@ declare namespace LocalJSX {
     }
     interface BalButtonGroup {
         /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "align"?: BalProps.BalButtonGroupAlignment;
+        /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
@@ -1976,10 +1930,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "position"?: BalProps.BalButtonGroupPosition;
-        /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
          */
@@ -1987,7 +1937,11 @@ declare namespace LocalJSX {
     }
     interface BalCard {
         /**
-          * If `true` a light blue border is added to the card.
+          * Defines the text alignment of the card content.
+         */
+        "align"?: BalProps.BalCardAlignment;
+        /**
+          * @deprecated If `true` a light blue border is added to the card.
           * @default false
          */
         "border"?: boolean;
@@ -1998,9 +1952,13 @@ declare namespace LocalJSX {
         "clickable"?: boolean;
         /**
           * Defines the color of the card.
-          * @default 'white'
          */
         "color"?: BalProps.BalCardColor;
+        /**
+          * If `true` the card gets a smaller padding.
+          * @default false
+         */
+        "dense"?: boolean;
         /**
           * If `true` the card loses its shadow.
           * @default false
@@ -2012,10 +1970,19 @@ declare namespace LocalJSX {
          */
         "fullheight"?: boolean;
         /**
+          * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
+         */
+        "imageTeaser"?: '' | 'wide-left' | 'wide-center' | 'wide-right';
+        /**
           * If `true` the card background color becomes blue.
           * @default false
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the cards gets a light border and loses its shadow.
+          * @default false
+         */
+        "outlined"?: boolean;
         /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
@@ -2023,7 +1990,6 @@ declare namespace LocalJSX {
         "selected"?: boolean;
         /**
           * Defines the space of the card content.
-          * @default ''
          */
         "space"?: BalProps.BalCardSpace;
         /**
@@ -2036,67 +2002,15 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: BalProps.BalCardActionsPosition;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * The type of button.
-          * @default 'button'
-         */
-        "elementType"?: BalProps.BalCardButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Name of the icon like `edit`.
-          * @default ''
-         */
-        "icon"?: string;
-        /**
-          * Name of the right button icon
-          * @default ''
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-          * @default false
-         */
-        "loading"?: boolean;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string | undefined;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
-         */
-        "target"?: BalProps.BalCardButtonTarget;
+        "align"?: BalProps.BalCardActionsAlignment;
     }
     interface BalCardContent {
     }
-    interface BalCardFooter {
-        /**
-          * @default false
-         */
-        "buttons"?: boolean;
-        "position"?: BalProps.BalCardFooterPosition;
-    }
     interface BalCardHeader {
-        /**
-          * @default false
-         */
-        "closable"?: boolean;
         /**
           * @default 'row'
          */
         "direction"?: BalProps.BalCardHeaderDirection;
-        "heading"?: string;
     }
     interface BalCardSubtitle {
         /**
@@ -2844,7 +2758,6 @@ declare namespace LocalJSX {
         "onBalCloseClick"?: (event: BalTagCustomEvent<BalEvents.BalTagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
-          * @default 'left'
          */
         "position"?: BalProps.BalTagPlacement;
         /**
@@ -2860,13 +2773,16 @@ declare namespace LocalJSX {
     }
     interface BalText {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "align"?: BalProps.BalTextAlign;
+        /**
           * If `true` the text is bold
           * @default false
          */
         "bold"?: boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
         "color"?: BalProps.BalTextColor;
         /**
@@ -2914,12 +2830,10 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Defines the size of the paragraph
-          * @default ''
          */
         "size"?: BalProps.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: BalProps.BalTextSpace;
         /**
@@ -3012,9 +2926,7 @@ declare namespace LocalJSX {
         "bal-button-group": BalButtonGroup;
         "bal-card": BalCard;
         "bal-card-actions": BalCardActions;
-        "bal-card-button": BalCardButton;
         "bal-card-content": BalCardContent;
-        "bal-card-footer": BalCardFooter;
         "bal-card-header": BalCardHeader;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
@@ -3059,9 +2971,7 @@ declare module "@stencil/core" {
             "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
-            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
-            "bal-card-footer": LocalJSX.BalCardFooter & JSXBase.HTMLAttributes<HTMLBalCardFooterElement>;
             "bal-card-header": LocalJSX.BalCardHeader & JSXBase.HTMLAttributes<HTMLBalCardHeaderElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;

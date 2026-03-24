@@ -2,6 +2,7 @@
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 @use '../../attr' as attr;
+@use './bal-tag-group/bal-tag-group.mixin.scss' as tags;
 
 $use-host: false !default;
 $name: tag;
@@ -42,8 +43,10 @@ $host-selector: ('#tag');
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle;
+  vertical-align: bottom;
+  box-sizing: border-box;
   gap: var(--_tag-gap);
+  width: fit-content;
 
   min-height: var(--_tag-min-height);
   padding-block: var(--_tag-padding-block);
@@ -252,7 +255,6 @@ $close-inverted: (
 
 @include hybrid.styles-only($use-host) {
   .tags {
-    display: flex;
-    gap: var(--bal-tag-space-x);
+    @include tags.style();
   }
 }

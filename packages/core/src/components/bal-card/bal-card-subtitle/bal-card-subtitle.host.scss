@@ -1,0 +1,10 @@
+@use '../../../hybrid' as hybrid;
+@use './bal-card-subtitle.mixin.scss' as card-subtitle;
+
+@include hybrid.host-base(card-subtitle, flex);
+
+:host {
+  @include card-subtitle.style();
+
+  grid-area: subtitle;
+}

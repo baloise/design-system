@@ -23,7 +23,7 @@ $host-selector: ('#heading');
   @include vars.local(heading-font-size, var(--bal-heading-1-size-device));
   @include vars.local(heading-space, var(--bal-heading-1-space));
   @include vars.local(heading-shadow, none); // var(--bal-heading-shadow)
-  @include vars.local(heading-text-align, left);
+  @include vars.local(heading-text-align, inherit);
 }
 
 /**

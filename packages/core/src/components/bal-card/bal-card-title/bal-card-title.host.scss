@@ -1,0 +1,10 @@
+@use '../../../hybrid' as hybrid;
+@use './bal-card-title.mixin.scss' as card-title;
+
+@include hybrid.host-base(card-title, flex);
+
+:host {
+  @include card-title.style();
+
+  text-align: inherit;
+}

@@ -991,7 +991,6 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-card-button",
         "bal-close",
         "bal-snackbar",
         "bal-toast"
@@ -1004,9 +1003,6 @@
         "bal-button": [
           "bal-spinner",
           "bal-icon"
-        ],
-        "bal-card-button": [
-          "bal-button"
         ],
         "bal-close": [
           "bal-button"
@@ -2105,6 +2101,46 @@
       },
       "props": [
         {
+          "name": "align",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalButtonGroupAlignment",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "align",
+          "reflectToAttr": false,
+          "docs": "The value of the button, which is submitted with the form data.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "direction",
           "type": "\"auto\" | \"column\" | \"row\"",
           "complexType": {
@@ -2177,46 +2213,6 @@
           "setter": false
         },
         {
-          "name": "position",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
-          "complexType": {
-            "original": "BalProps.BalButtonGroupPosition",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "position",
-          "reflectToAttr": false,
-          "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
-            {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "right",
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "reverse",
           "type": "boolean",
           "complexType": {
@@ -2271,6 +2267,46 @@
       "dependencyGraph": {},
       "props": [
         {
+          "name": "align",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalCardAlignment",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "align",
+          "reflectToAttr": false,
+          "docs": "Defines the text alignment of the card content.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "border",
           "type": "boolean",
           "complexType": {
@@ -2281,14 +2317,19 @@
           "mutable": false,
           "attr": "border",
           "reflectToAttr": false,
-          "docs": "If `true` a light blue border is added to the card.",
+          "docs": "",
           "docsTags": [
+            {
+              "name": "deprecated",
+              "text": "If `true` a light blue border is added to the card."
+            },
             {
               "name": "default",
               "text": "false"
             }
           ],
           "default": "false",
+          "deprecation": "If `true` a light blue border is added to the card.",
           "values": [
             {
               "type": "boolean"
@@ -2330,10 +2371,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
+          "type": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
           "complexType": {
             "original": "BalProps.BalCardColor",
-            "resolved": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
+            "resolved": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -2345,13 +2386,7 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the card.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'white'"
-            }
-          ],
-          "default": "'white'",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -2471,6 +2506,38 @@
             {
               "value": "yellow-light",
               "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "dense",
+          "reflectToAttr": false,
+          "docs": "If `true` the card gets a smaller padding.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
@@ -2537,6 +2604,44 @@
           "setter": false
         },
         {
+          "name": "imageTeaser",
+          "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
+          "complexType": {
+            "original": "'' | 'wide-left' | 'wide-center' | 'wide-right'",
+            "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "image-teaser",
+          "reflectToAttr": false,
+          "docs": "If `true` the card image is displayed as a teaser, which means\nit is displayed with a large image.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "wide-center",
+              "type": "string"
+            },
+            {
+              "value": "wide-left",
+              "type": "string"
+            },
+            {
+              "value": "wide-right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "inverted",
           "type": "boolean",
           "complexType": {
@@ -2548,6 +2653,35 @@
           "attr": "inverted",
           "reflectToAttr": false,
           "docs": "If `true` the card background color becomes blue.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "outlined",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "outlined",
+          "reflectToAttr": false,
+          "docs": "If `true` the cards gets a light border and loses its shadow.",
           "docsTags": [
             {
               "name": "default",
@@ -2596,10 +2730,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
             "original": "BalProps.BalCardSpace",
-            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -2611,13 +2745,7 @@
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space of the card content.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -2645,9 +2773,12 @@
             {
               "value": "small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -2708,10 +2839,10 @@
       },
       "props": [
         {
-          "name": "position",
+          "name": "align",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCardActionsPosition",
+            "original": "BalProps.BalCardActionsAlignment",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
@@ -2721,7 +2852,7 @@
             }
           },
           "mutable": false,
-          "attr": "position",
+          "attr": "align",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
           "docsTags": [],
@@ -2756,294 +2887,6 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-button.tsx",
-      "tag": "bal-card-button",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-card-button": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "If `true`, the user cannot interact with the button.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "elementType",
-          "type": "\"button\" | \"reset\" | \"submit\"",
-          "complexType": {
-            "original": "BalProps.BalCardButtonElementType",
-            "resolved": "\"button\" | \"reset\" | \"submit\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "element-type",
-          "reflectToAttr": false,
-          "docs": "The type of button.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'button'"
-            }
-          ],
-          "default": "'button'",
-          "values": [
-            {
-              "value": "button",
-              "type": "string"
-            },
-            {
-              "value": "reset",
-              "type": "string"
-            },
-            {
-              "value": "submit",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "href",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "href",
-          "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "icon",
-          "reflectToAttr": false,
-          "docs": "Name of the icon like `edit`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "iconRight",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "icon-right",
-          "reflectToAttr": false,
-          "docs": "Name of the right button icon",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "loading",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "loading",
-          "reflectToAttr": false,
-          "docs": "If `true` the label is hidden and a loading spinner is shown instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "rel",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "rel",
-          "reflectToAttr": false,
-          "docs": "Specifies the relationship of the target object to the link object.\nThe value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-          "complexType": {
-            "original": "BalProps.BalCardButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "target",
-          "reflectToAttr": false,
-          "docs": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'_self'"
-            }
-          ],
-          "default": "'_self'",
-          "values": [
-            {
-              "value": " _parent",
-              "type": "string"
-            },
-            {
-              "value": "_blank",
-              "type": "string"
-            },
-            {
-              "value": "_self",
-              "type": "string"
-            },
-            {
-              "value": "_top",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
       "fileName": "bal-card-content.tsx",
       "tag": "bal-card-content",
       "overview": "",
@@ -3063,8 +2906,8 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-footer.tsx",
-      "tag": "bal-card-footer",
+      "fileName": "bal-card-header.tsx",
+      "tag": "bal-card-header",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3074,139 +2917,6 @@
       "dependencies": [],
       "dependencyGraph": {},
       "props": [
-        {
-          "name": "buttons",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "buttons",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "position",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
-          "complexType": {
-            "original": "BalProps.BalCardFooterPosition",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "position",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
-            {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "right",
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-card-header.tsx",
-      "tag": "bal-card-header",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "shadow",
-      "dependents": [],
-      "dependencies": [
-        "bal-heading",
-        "bal-close"
-      ],
-      "dependencyGraph": {
-        "bal-card-header": [
-          "bal-heading",
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-button"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "closable",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "closable",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
         {
           "name": "direction",
           "type": "\"column\" | \"row\"",
@@ -3245,32 +2955,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "heading",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "heading",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
         }
       ],
       "methods": [],
@@ -3287,7 +2971,7 @@
       "usage": {},
       "docs": "",
       "docsTags": [],
-      "encapsulation": "none",
+      "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -3822,7 +3506,6 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-card-header",
         "bal-notification",
         "bal-snackbar",
         "bal-tag",
@@ -3838,9 +3521,6 @@
         "bal-button": [
           "bal-spinner",
           "bal-icon"
-        ],
-        "bal-card-header": [
-          "bal-close"
         ],
         "bal-notification": [
           "bal-close"
@@ -4651,14 +4331,10 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-card-header",
         "bal-card-title"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-header": [
-          "bal-heading"
-        ],
         "bal-card-title": [
           "bal-heading"
         ]
@@ -9737,10 +9413,10 @@
         },
         {
           "name": "position",
-          "type": "\"center\" | \"left\"",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "BalProps.BalTagPlacement",
-            "resolved": "\"center\" | \"left\"",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9752,13 +9428,7 @@
           "attr": "position",
           "reflectToAttr": true,
           "docs": "Choosing left or center the tag is aligned to that side in the bal-card.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'left'"
-            }
-          ],
-          "default": "'left'",
+          "docsTags": [],
           "values": [
             {
               "value": "center",
@@ -9767,9 +9437,16 @@
             {
               "value": "left",
               "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -9915,6 +9592,50 @@
       "dependencyGraph": {},
       "props": [
         {
+          "name": "align",
+          "type": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalTextAlign",
+            "resolved": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "align",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "center",
+              "type": "string"
+            },
+            {
+              "value": "justify",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "bold",
           "type": "boolean",
           "complexType": {
@@ -9945,10 +9666,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
+          "type": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
           "complexType": {
             "original": "BalProps.BalTextColor",
-            "resolved": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
+            "resolved": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -9960,13 +9681,7 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the text.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -10022,9 +9737,12 @@
             {
               "value": "white",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -10234,10 +9952,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\"",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\" | undefined",
           "complexType": {
             "original": "BalProps.BalTextSize",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\"",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -10249,13 +9967,7 @@
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Defines the size of the paragraph",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -10311,19 +10023,22 @@
             {
               "value": "xs",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
+          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
           "complexType": {
             "original": "BalProps.BalTextSpace",
-            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
+            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
             "references": {
               "BalProps": {
                 "location": "global",
@@ -10335,13 +10050,7 @@
           "attr": "space",
           "reflectToAttr": true,
           "docs": "Defines at which position the heading has spacing.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -10361,9 +10070,12 @@
             {
               "value": "top",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
