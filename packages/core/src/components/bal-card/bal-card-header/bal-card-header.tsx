@@ -10,7 +10,7 @@ export class CardHeader {
 
   render() {
     return (
-      <Host role="header">
+      <Host role="banner">
         <slot></slot>
       </Host>
     )

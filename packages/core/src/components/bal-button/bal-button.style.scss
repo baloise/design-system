@@ -483,7 +483,6 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
       --icon-shape: var(--_button-color-border);
 
       @include color('#{$color}-dashed');
-
     }
   }
 

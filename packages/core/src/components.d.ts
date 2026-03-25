@@ -328,6 +328,11 @@ export namespace Components {
           * @default false
          */
         "square": boolean;
+        /**
+          * If `true` the card gets a tile look, it has a brand icon on the left
+          * @default false
+         */
+        "tile": boolean;
     }
     interface BalCardActions {
         /**
@@ -1997,6 +2002,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "square"?: boolean;
+        /**
+          * If `true` the card gets a tile look, it has a brand icon on the left
+          * @default false
+         */
+        "tile"?: boolean;
     }
     interface BalCardActions {
         /**

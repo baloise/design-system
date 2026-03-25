@@ -26,7 +26,19 @@ $host-selector: ('#card');
   @include vars.local(card-border-style, solid);
   @include vars.local(card-shadow, var(--bal-card-shadow-base));
   @include vars.local(card-gap, var(--bal-card-space-base-device));
-  @include vars.local(card-padding, var(--bal-card-space-base-device));
+  @include vars.local(card-padding-left, var(--bal-card-space-base-device));
+  @include vars.local(card-padding-right, var(--bal-card-space-base-device));
+  @include vars.local(card-padding-top, var(--bal-card-space-base-device));
+  @include vars.local(card-padding-bottom, var(--bal-card-space-base-device));
+
+  @include vars.local(card-header-grid-template-columns, 1fr auto);
+  @include vars.local(card-header-margin-left, 0);
+
+  // only works without the mixin local() because of the grid-template-areas syntax
+  --_card-header-grid-template-areas: var(
+    --card-header-grid-template-areas,
+    var(--mod-card-header-grid-template-areas, 'title .' 'subtitle subtitle')
+  );
 }
 
 /**
@@ -48,7 +60,10 @@ $host-selector: ('#card');
   border-style: var(--_card-border-style);
   box-shadow: var(--_card-shadow);
   gap: var(--_card-gap);
-  padding: calc(var(--_card-padding) - var(--_card-border-width));
+  padding-left: calc(var(--_card-padding-left) - var(--_card-border-width));
+  padding-right: calc(var(--_card-padding-right) - var(--_card-border-width));
+  padding-top: calc(var(--_card-padding-top) - var(--_card-border-width));
+  padding-bottom: calc(var(--_card-padding-bottom) - var(--_card-border-width));
   text-decoration: none;
 
   // Header
@@ -260,7 +275,10 @@ $host-selector: ('#card');
 // --------------------------------
 @mixin dense {
   --mod-card-shadow: var(--bal-card-shadow-flat);
-  --mod-card-padding: 0;
+  --mod-card-padding-left: 0;
+  --mod-card-padding-right: 0;
+  --mod-card-padding-top: 0;
+  --mod-card-padding-bottom: 0;
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -364,7 +382,10 @@ $spaces: ('sm', 'md', 'lg');
       --mod-card-gap: var(--bal-card-space-#{$space}-device);
     }
     &.has-space-#{$space}:not(.is-dense) {
-      --mod-card-padding: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--bal-card-space-#{$space}-device);
     }
   }
 
@@ -373,7 +394,42 @@ $spaces: ('sm', 'md', 'lg');
       --mod-card-gap: var(--bal-card-space-#{$space}-device);
     }
     :host(.has-space-#{$space}:not(.is-dense)) {
-      --mod-card-padding: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--bal-card-space-#{$space}-device);
+    }
+  }
+}
+
+//
+// Tile
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-tile {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+
+    @include tablet() {
+      --mod-card-padding-left: calc(
+        var(--bal-card-space-base-device) + var(--bal-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+      );
+      --mod-card-header-margin-left: calc(calc(var(--bal-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-tile) {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+
+    @include tablet() {
+      --mod-card-padding-left: calc(
+        var(--bal-card-space-base-device) + var(--bal-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+      );
+      --mod-card-header-margin-left: calc(calc(var(--bal-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
     }
   }
 }

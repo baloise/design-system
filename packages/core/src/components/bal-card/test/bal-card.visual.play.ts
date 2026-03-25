@@ -3,6 +3,7 @@ import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-
 const TAG = 'bal-card'
 const VARIANTS = [
   'basic',
+  'tile',
   'square',
   'centered',
   'right',

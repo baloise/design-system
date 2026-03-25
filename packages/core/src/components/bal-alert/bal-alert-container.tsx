@@ -80,7 +80,7 @@ export class AlertContainer implements ComponentInterface {
         } else if (alert.color === 'warning') {
           duration = 5000
         }
-      } 
+      }
       //
       // Snackbars
       else {

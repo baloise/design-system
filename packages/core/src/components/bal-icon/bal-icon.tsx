@@ -140,7 +140,7 @@ export class Icon implements BalConfigObserver, ComponentInterface {
       }
     }
 
-    if(this.svg){
+    if (this.svg) {
       this.svgContent = sanitizeSvg(this.svg)
     }
   }

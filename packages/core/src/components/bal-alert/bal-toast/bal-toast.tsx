@@ -297,7 +297,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
         {/* --------------------------------------*/}
         {this.action && (
           <bal-button
-            id='action'
+            id="action"
             color="primary"
             size="sm"
             part="button"

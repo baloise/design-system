@@ -163,11 +163,7 @@ export class Heading implements ComponentInterface {
           [`is-${this.fontColor}`]: this.fontColor !== undefined,
         }}
       >
-        <Heading
-          id="heading"
-          part="heading"
-          ref={(headingEl: any) => (this.headingEl = headingEl)}
-        >
+        <Heading id="heading" part="heading" ref={(headingEl: any) => (this.headingEl = headingEl)}>
           <slot />
         </Heading>
       </Host>

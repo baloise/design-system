@@ -2,9 +2,9 @@
 @forward '../../src/generated/layout';
 
 .sr-only {
-  @include mixins.sr-only()
+  @include mixins.sr-only();
 }
 
 .print-hidden {
-  @include mixins.print-hidden()
+  @include mixins.print-hidden();
 }

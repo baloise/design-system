@@ -16,6 +16,11 @@ export class Card {
   @Prop() flat = false
 
   /**
+   * If `true` the card gets a tile look, it has a brand icon on the left
+   */
+  @Prop() tile = false
+
+  /**
    * If `true` the card gets a smaller padding.
    */
   @Prop() dense = false
@@ -25,11 +30,6 @@ export class Card {
    * it is displayed with a large image.
    */
   @Prop() imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
-
-  // /**
-  //  * If `true` the card uses 100% of the available width.
-  //  */
-  // @Prop() expanded = false
 
   /**
    * If `true` the card loses its border radius.
@@ -126,6 +126,7 @@ export class Card {
           [`has-space-${this.space}`]: !isEmpty(this.space),
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
+          [`is-tile`]: !!this.tile,
         }}
       >
         <slot name="picture"></slot>

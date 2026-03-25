@@ -23,7 +23,7 @@
 | NPM Updates                | Check Vurnabilites                                                    | ⬜     |
 | UI Icons change base color | Change base color of svg to primary and not black                     | ⬜     |
 | Anuglar React              | Add frameworks back after migrating too shadow dom                    | ⬜     |
-| FullWidth,Expanded,Wide  | Stick with one nameing                                                | ⬜     |
+| FullWidth,Expanded,Wide    | Stick with one nameing                                                | ⬜     |
 
 ## components
 

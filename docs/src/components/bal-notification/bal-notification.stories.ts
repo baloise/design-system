@@ -1,6 +1,15 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { StoryFactory, createCssMappings, cssClasses, props, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import {
+  StoryFactory,
+  createCssMappings,
+  cssClasses,
+  props,
+  withComponentControls,
+  withContent,
+  withDefaultContent,
+  withRender,
+} from '../../utils'
 
 type Args = JSX.BalNotification & { content: string }
 
@@ -20,7 +29,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, heading,  ...args }) => `
+    ({ content, heading, ...args }) => `
 <section role="status" aria-live="polite" aria-atomic="true" ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -48,12 +57,12 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 
 export const WebComponentBasic = Story({
-  args: {
-
-  },
-  ...withRender(({ content, ...args }) => `<bal-notification ${props(args)}>
+  args: {},
+  ...withRender(
+    ({ content, ...args }) => `<bal-notification ${props(args)}>
   ${content}
-</bal-notification>`)
+</bal-notification>`,
+  ),
 })
 
 export const Alerts = Story({

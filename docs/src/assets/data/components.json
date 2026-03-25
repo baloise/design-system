@@ -2811,6 +2811,35 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "If `true` the card gets a tile look, it has a brand icon on the left",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
