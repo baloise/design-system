@@ -18,9 +18,27 @@ export class Accordion implements ComponentInterface {
   @Prop({ reflect: true, mutable: true }) open = false
 
   /**
+   * The name of the group the accordion belongs to. Accordions with the same group name will automatically
+   * close when another accordion in the same group is opened.
+   */
+  @Prop() group?: string
+
+  /**
    * Displays the summary as a button and hides the default marker.
    */
   @Prop({ reflect: true }) button = false
+
+  /**
+   * The marker variant. Only applies if `button` is `false`.
+   * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
+   * a plus icon for closed and a minus icon for open state is used.
+   */
+  @Prop() marker?: BalProps.BalAccordionMarker
+
+  /**
+   * The position of the marker. Only applies if `button` is `false`.
+   */
+  @Prop() markerPosition?: BalProps.BalAccordionMarkerPosition
 
   /**
    * The color of the button. Only applies if `button` is `true`.
@@ -63,6 +81,7 @@ export class Accordion implements ComponentInterface {
    */
 
   private onToggle(open: boolean) {
+    console.log('toggle', open)
     this.open = open
   }
 
@@ -78,9 +97,13 @@ export class Accordion implements ComponentInterface {
           part="item"
           class={{
             'accordion': true,
-            'has-marker-none': this.button,
+            'has-marker-none': this.button || this.marker === 'none',
+            'has-marker-plus': this.marker === 'plus',
+            'has-marker-plus-minus': this.marker === 'plus-minus',
+            'has-marker-left': this.markerPosition === 'left',
           }}
           open={this.open}
+          name={this.group}
           ref={el => (this.detailsEl = el as HTMLDetailsElement)}
           onToggle={() => this.onToggle(this.detailsEl?.open ?? false)}
         >
@@ -103,7 +126,7 @@ export class Accordion implements ComponentInterface {
             {this.button && this.buttonLabelClose && <span class="is-open"> {this.buttonLabelClose} </span>}
             <slot name="summary" />
           </summary>
-          <div part="content">
+          <div class="accordion-content" part="content">
             <slot name="content" />
             <slot />
           </div>

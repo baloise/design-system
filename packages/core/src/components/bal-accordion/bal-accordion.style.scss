@@ -1,9 +1,9 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 
-$accordion-use-host: false !default;
-$accordion-name: accordion;
-$accordion-css-selector: ('.accordion');
+$use-host: false !default;
+$name: accordion;
+$css-selector: ('.accordion');
 
 /**
  * Variables
@@ -12,7 +12,7 @@ $accordion-css-selector: ('.accordion');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($accordion-css-selector, $accordion-use-host) {
+@include hybrid.vars($css-selector, $use-host) {
   /* Marker icons (SVG via mask so we can color with currentColor) */
   --accordion-marker-size: 1rem;
   --accordion-marker-chevron: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
@@ -192,16 +192,19 @@ details.accordion:has(> summary.button.is-small.at-end) > summary.button.is-smal
  *   </span>
  */
 
+bal-accordion .is-open,
 details.accordion > summary .accordion-label > .is-open,
 details.accordion > summary > .is-open {
   display: none;
 }
 
+bal-accordion[open] .is-closed,
 details.accordion[open] > summary .accordion-label > .is-closed,
 details.accordion[open] > summary > .is-closed {
   display: none;
 }
 
+bal-accordion[open] .is-open,
 details.accordion[open] > summary .accordion-label > .is-open,
 details.accordion[open] > summary > .is-open {
   display: inline;

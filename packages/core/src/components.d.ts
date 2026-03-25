@@ -53,6 +53,18 @@ export namespace Components {
          */
         "buttonSize": BalProps.BalButtonSize;
         /**
+          * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+         */
+        "group"?: string;
+        /**
+          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+         */
+        "marker"?: BalProps.BalAccordionMarker;
+        /**
+          * The position of the marker. Only applies if `button` is `false`.
+         */
+        "markerPosition"?: BalProps.BalAccordionMarkerPosition;
+        /**
           * If `true` the accordion is open.
           * @default false
          */
@@ -1698,6 +1710,18 @@ declare namespace LocalJSX {
           * @default ''
          */
         "buttonSize"?: BalProps.BalButtonSize;
+        /**
+          * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+         */
+        "group"?: string;
+        /**
+          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+         */
+        "marker"?: BalProps.BalAccordionMarker;
+        /**
+          * The position of the marker. Only applies if `button` is `false`.
+         */
+        "markerPosition"?: BalProps.BalAccordionMarkerPosition;
         /**
           * Emitted when the input value has changed.
          */

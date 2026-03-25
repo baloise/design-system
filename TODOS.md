@@ -56,7 +56,7 @@ Checklist
 | bal-unordered-list   | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-ordered-list     | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-description-list | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| bal-card             | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
+| bal-card             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
 | bal-accordion        | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list             | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |
 | bal-list-accordion   | Hybrid             | ⬜         | ⬜   | ⬜            | ⬜      | ⬜   |

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
-    <!--  -->
     <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
 
     <script type="module" src="/build/baloise-design-system.esm.js"></script>
@@ -13,42 +12,193 @@
   </head>
 
   <body>
-    <bal-doc-app>
+    <bal-app>
       <main class="container py-medium">
-        <!-- Basic -->
+        <!-- Basic Style -->
         <section data-testid="basic">
-          <bal-accordion open button button-label-open="Show more" button-label-close="Show less">
-            <p class="p-medium" slot="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
+          <span>Basic</span>
+          <bal-accordion>
+            <div slot="summary">Details</div>
+            <div slot="content" class="s-bg-1 s-height-8rem"></div>
           </bal-accordion>
         </section>
-        <!-- Basic -->
-        <section data-testid="basic">
-          <bal-accordion
-            open
-            button
-            button-label-open="Show more"
-            button-label-close="Show less"
-            button-icon-open="plus"
-            button-icon-close="close"
-            button-size="small"
-            button-color="primary"
-          >
-            <p class="p-medium" slot="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
+
+        <!-- Nested Style -->
+        <section data-testid="nested">
+          <span>Nested</span>
+          <bal-accordion open>
+            <div slot="summary">1 Details</div>
+            <div slot="content" class="s-bg-1">
+              <bal-accordion open>
+                <div slot="summary">2 Details</div>
+                <div slot="content" class="s-bg-2">
+                  <bal-accordion>
+                    <div slot="summary">3 Details</div>
+                    <div slot="content" class="s-bg-3">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis natus reiciendis, ipsum fuga
+                      autem, adipisci blanditiis fugiat, ratione est possimus voluptate. Tempore officiis temporibus,
+                      nemo assumenda laborum ducimus explicabo. Voluptatum! Lorem, ipsum dolor sit amet consectetur
+                      adipisicing elit. Officiis natus reiciendis, ipsum fuga autem, adipisci blanditiis fugiat, ratione
+                      est possimus voluptate. Tempore officiis temporibus, nemo assumenda laborum ducimus explicabo.
+                      Voluptatum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis natus reiciendis,
+                      ipsum fuga autem, adipisci blanditiis fugiat, ratione est possimus voluptate. Tempore officiis
+                      temporibus, nemo assumenda laborum ducimus explicabo. Voluptatum! END
+                    </div>
+                  </bal-accordion>
+                </div>
+              </bal-accordion>
+            </div>
           </bal-accordion>
+        </section>
+
+        <!-- Marker Variant -->
+        <section data-testid="markers">
+          <span>Markers</span>
+          <bal-accordion>
+            <div slot="summary">Default marker Closed</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <bal-accordion open>
+            <div slot="summary">Default marker Open</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <hr class="has-space-md" />
+
+          <bal-accordion marker="plus">
+            <div slot="summary">Plus marker Closed</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <bal-accordion open marker="plus">
+            <div slot="summary">Plus marker Open</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <hr class="has-space-md" />
+
+          <bal-accordion marker="plus-minus">
+            <div slot="summary">Plus/Minus marker Closed</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <bal-accordion open marker="plus-minus">
+            <div slot="summary">Plus/Minus marker Open</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <hr class="has-space-md" />
+
+          <bal-accordion marker="none">
+            <div slot="summary">
+              <span>
+                Text marker
+                <span class="accordion-label" aria-hidden="true">
+                  <span class="is-closed">is closed</span>
+                  <span class="is-open">is open</span>
+                </span>
+              </span>
+            </div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <bal-accordion marker="none" open>
+            <div slot="summary">
+              <span>
+                Text marker
+                <span class="accordion-label" aria-hidden="true">
+                  <span class="is-closed">is closed</span>
+                  <span class="is-open">is open</span>
+                </span>
+              </span>
+            </div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+        </section>
+
+        <!-- Left Markers -->
+        <section data-testid="left-markers">
+          <span>Left Markers</span>
+          <bal-accordion marker-position="left">
+            <div slot="summary">Default marker</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <bal-accordion marker-position="left" marker="plus">
+            <div slot="summary">Plus marker</div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+        </section>
+
+        <!-- Stack Item -->
+        <section data-testid="stack-item">
+          <span>Stack Item</span>
+          <bal-card>
+            <bal-card-content>
+              <bal-accordion>
+                <div slot="summary" class="stack as-row">
+                  <bal-icon
+                    svg='&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"&gt;&lt;path fill="none" d="M0 0h40v40H0z"/&gt;&lt;g&gt;&lt;path d="M27 28h5v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1zM8 28h5v3a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" fill="#000d6e"/&gt;&lt;rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;path d="m31.69 20-1-3H9.33l-1 3A3.9 3.9 0 0 0 8 21.54V27h24v-5.46a3.9 3.9 0 0 0-.31-1.54M11.5 24a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5m17 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5" fill="#1b5951"/&gt;&lt;path d="M27.77 9.85A3 3 0 0 0 25 8H15a3 3 0 0 0-2.77 1.85L9.67 16h20.66Z" fill="#94e3d4"/&gt;&lt;/g&gt;&lt;/svg&gt;'
+                    tile
+                    tile-color="green"
+                    color="auto"
+                    size="lg"
+                    class="align-self-start"
+                  ></bal-icon>
+                  <div class="stack-content">
+                    <label class="label">Label Heading</label>
+                    <span>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus vitae voluptates
+                      officiis qui tempore. Veniam ab sed nostrum excepturi dignissimos maxime itaque optio tempore,
+                      officiis enim, exercitationem ex.
+                    </span>
+                  </div>
+                  <bal-switch></bal-switch>
+                </div>
+                <div slot="content" class="s-bg-1 s-height-4rem"></div>
+              </bal-accordion>
+            </bal-card-content>
+          </bal-card>
+        </section>
+
+        <!-- Accordions -->
+        <section data-testid="accordions">
+          <span>Accordions</span>
+
+          <bal-accordion group="accordion-group">
+            <div slot="summary">Accordion 1</div>
+            <div slot="content" class="s-bg-1 s-height-8rem"></div>
+          </bal-accordion>
+          <hr class="divider" />
+          <bal-accordion group="accordion-group">
+            <div slot="summary">Accordion 2</div>
+            <div slot="content" class="s-bg-2 s-height-8rem"></div>
+          </bal-accordion>
+          <hr class="divider" />
+          <bal-accordion group="accordion-group">
+            <div slot="summary">Accordion 3</div>
+            <div slot="content" class="s-bg-3 s-height-8rem"></div>
+          </bal-accordion>
+          <hr class="divider" />
+
+          <!-- <details class="accordion" name="accordion-group">
+            <summary class="stack as-row">Accordion 1</summary>
+            <div class="s-bg-1 s-height-8rem"></div>
+          </details>
+          <hr class="divider" />
+          <details class="accordion" name="accordion-group">
+            <summary class="stack as-row">Accordion 2</summary>
+            <div class="s-bg-2 s-height-8rem"></div>
+          </details>
+          <hr class="divider" />
+          <details class="accordion" name="accordion-group">
+            <summary class="stack as-row">Accordion 3</summary>
+            <div class="s-bg-3 s-height-8rem"></div>
+          </details>
+          <hr class="divider" /> -->
         </section>
       </main>
-    </bal-doc-app>
+    </bal-app>
   </body>
 </html>

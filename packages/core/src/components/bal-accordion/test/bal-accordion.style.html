@@ -13,28 +13,28 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
-
         <details class="accordion">
           <summary>Details</summary>
-          <div class="s-bg-1 s-height-8rem"></div>
+          <div class="accordion-content">
+            <div class="s-bg-1 s-height-8rem"></div>
+          </div>
         </details>
       </section>
 
       <!-- Nested Style -->
-      <section>
+      <section data-testid="nested">
         <span>Nested</span>
-
         <details open class="accordion">
           <summary>1 Details</summary>
-          <div class="s-bg-1">
+          <div class="accordion-content s-bg-1">
             <details open class="accordion">
               <summary>2 Details</summary>
-              <div class="s-bg-2">
+              <div class="accordion-content s-bg-2">
                 <details class="accordion">
                   <summary>3 Details</summary>
-                  <div class="s-bg-3">
+                  <div class="accordion-content s-bg-3">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis natus reiciendis, ipsum fuga
                     autem, adipisci blanditiis fugiat, ratione est possimus voluptate. Tempore officiis temporibus, nemo
                     assumenda laborum ducimus explicabo. Voluptatum! Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -52,7 +52,7 @@
       </section>
 
       <!-- Marker Variant -->
-      <section>
+      <section data-testid="markers">
         <span>Markers</span>
         <details class="accordion">
           <summary>Default marker</summary>
@@ -84,7 +84,7 @@
       </section>
 
       <!-- Left Markers -->
-      <section>
+      <section data-testid="left-markers">
         <span>Left Markers</span>
         <details class="accordion has-marker-left">
           <summary>Default marker</summary>
@@ -98,7 +98,7 @@
       </section>
 
       <!-- Stack Item -->
-      <section>
+      <section data-testid="stack-item">
         <span>Stack Item</span>
         <details class="accordion">
           <summary class="stack as-row">
@@ -107,7 +107,7 @@
               tile
               tile-color="green"
               color="auto"
-              size="large"
+              size="lg"
             ></bal-icon>
             <div class="stack-content">
               <label class="label">Label Heading</label>
@@ -124,7 +124,7 @@
       </section>
 
       <!-- Accordions -->
-      <section>
+      <section data-testid="accordions">
         <span>Accordions</span>
         <details class="accordion" name="accordion-group">
           <summary class="stack as-row">Accordion 1</summary>
@@ -144,13 +144,13 @@
       </section>
 
       <!-- Button Accordion -->
-      <section>
+      <section data-testid="button-accordion">
         <span>Button Accordion</span>
         <details class="accordion has-marker-none" name="accordion-group">
           <summary class="button is-secondary at-end">
-            <bal-icon name="edit" size="small" class="is-closed"></bal-icon>
+            <bal-icon name="edit" size="sm" class="is-closed"></bal-icon>
             <span class="is-closed"> edit </span>
-            <bal-icon name="close" size="small" class="is-open"></bal-icon>
+            <bal-icon name="close" size="sm" class="is-open"></bal-icon>
             <span class="is-open"> close </span>
           </summary>
           <div class="s-bg-1 s-height-8rem"></div>
@@ -158,7 +158,7 @@
       </section>
 
       <!-- Card Button Accordion -->
-      <section>
+      <section data-testid="card-button-accordion">
         <span>Card Button Accordion</span>
         <article class="card" aria-labelledby="card-title-1">
           <header class="card-header">
@@ -168,9 +168,9 @@
           <div class="card-content">
             <details class="accordion has-marker-none" name="accordion-group">
               <summary class="button is-secondary at-end">
-                <bal-icon name="edit" size="small" class="is-closed"></bal-icon>
+                <bal-icon name="edit" size="sm" class="is-closed"></bal-icon>
                 <span class="is-closed"> edit </span>
-                <bal-icon name="close" size="small" class="is-open"></bal-icon>
+                <bal-icon name="close" size="sm" class="is-open"></bal-icon>
                 <span class="is-open"> close </span>
               </summary>
               <div class="s-bg-1 s-height-8rem"></div>
@@ -180,7 +180,7 @@
       </section>
 
       <!-- List Accordions -->
-      <section>
+      <section data-testid="list-accordions">
         <span>List Accordions</span>
         <ul class="list">
           <li>
