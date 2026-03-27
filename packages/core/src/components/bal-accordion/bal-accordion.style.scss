@@ -1,5 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
 
 $use-host: false !default;
 $name: accordion;
@@ -12,15 +13,17 @@ $css-selector: ('.accordion');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include hybrid.vars($css-selector, $use-host) {
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.focus(accordion);
+
   /* Marker icons (SVG via mask so we can color with currentColor) */
-  --accordion-marker-size: 1rem;
   --accordion-marker-chevron: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
   --accordion-marker-plus: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M8%201C8%200.447715%207.55228%200%207%200C6.44772%200%206%200.447715%206%201V6H1C0.447715%206%200%206.44772%200%207C0%207.55228%200.447715%208%201%208H6V13C6%2013.5523%206.44772%2014%207%2014C7.55228%2014%208%2013.5523%208%2013V8H13C13.5523%208%2014%207.55228%2014%207C14%206.44772%2013.5523%206%2013%206H8V1Z'/%3E%3C/svg%3E");
   --accordion-marker-minus: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%207C0%206.44772%200.447715%206%201%206H13C13.5523%206%2014%206.44772%2014%207C14%207.55228%2013.5523%208%2013%208H1C0.447715%208%200%207.55228%200%207Z'/%3E%3C/svg%3E");
 
   /* Default marker variant */
-  --accordion-marker-icon: var(--accordion-marker-chevron);
+  @include vars.local(accordion-marker-icon, var(--accordion-marker-chevron));
+  @include vars.local(accordion-marker-size, 1rem);
 }
 
 /**
@@ -38,10 +41,53 @@ details.accordion {
 // Summary styles
 details.accordion > summary:not(.button) {
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      color: var(--bal-link-color-base-hover);
+      bal-icon {
+        --icon-color: var(--bal-link-color-base-hover);
+      }
+      &:after {
+        background: var(--bal-link-color-base-hover);
+      }
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    color: var(--bal-link-color-base-active);
+    bal-icon {
+      --icon-color: var(--bal-link-color-base-active);
+    }
+    &:after {
+      background: var(--bal-link-color-base-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      &:before {
+        @include vars.focus-styles(accordion);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--bal-radius-base);
+      }
+    }
+  }
 }
 
 //
@@ -65,11 +111,11 @@ details.accordion {
   & > summary::after {
     content: '';
     flex: 0 0 auto;
-    min-width: var(--accordion-marker-size);
+    min-width: var(--_accordion-marker-size);
     width: 1.5rem;
-    height: var(--accordion-marker-size);
+    height: var(--_accordion-marker-size);
     background-color: currentcolor;
-    mask-image: var(--accordion-marker-icon);
+    mask-image: var(--_accordion-marker-icon);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
@@ -77,24 +123,12 @@ details.accordion {
     cursor: pointer;
   }
 
-  &.has-marker-plus {
-    --accordion-marker-icon: var(--accordion-marker-plus);
-  }
-
-  &.has-marker-plus-minus {
-    --accordion-marker-icon: var(--accordion-marker-plus);
-  }
-
-  &.has-marker-plus-minus[open] {
-    --accordion-marker-icon: var(--accordion-marker-minus);
-  }
-
   &[open]:not(.has-marker-plus, .has-marker-plus-minus) > summary::after {
     transform: rotate(180deg);
   }
 
   &.has-marker-plus[open] > summary::after {
-    transform: rotate(225deg);
+    transform: rotate(45deg);
   }
 
   /* No marker variant */
@@ -111,6 +145,32 @@ details.accordion {
     &:not(.button) {
       justify-content: flex-start;
     }
+  }
+}
+
+//
+// Marker Variants
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-marker-plus {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
+  }
+
+  &.has-marker-plus-minus {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
+  }
+
+  &.has-marker-plus-minus[open] {
+    --mod-accordion-marker-icon: var(--accordion-marker-minus);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.has-marker-plus) {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
+  }
+
+  :host(.has-marker-plus-minus) {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
   }
 }
 
@@ -139,21 +199,37 @@ details.accordion > .has-space {
     transition: transform 300ms ease;
   }
 
-  @supports selector(::details-content) {
-    details::details-content {
-      overflow: hidden;
-      height: 0;
-      /* Enable transitioning of `content-visibility` */
-      transition:
-        height 0.3s,
-        content-visibility 0.3s;
-      transition-behavior: allow-discrete;
-    }
-
-    details[open]::details-content {
-      height: auto;
-    }
+  // Animation with Safari is limited when closing the details,
+  // which is without animation.
+  // @supports selector(::details-content) {
+  details::details-content,
+  details > .content {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition:
+      content-visibility 0.3s,
+      grid-template-rows 0.3s;
+    transition-behavior: allow-discrete;
   }
+
+  details::details-content > *,
+  details > .content > * {
+    min-height: 0;
+    transition: visibility 0.3s;
+    visibility: hidden;
+  }
+
+  details[open]::details-content,
+  details[open] > .content {
+    grid-template-rows: 1fr;
+  }
+
+  details[open]::details-content > *,
+  details[open] > .content > * {
+    visibility: visible;
+  }
+  // }
 }
 
 /*

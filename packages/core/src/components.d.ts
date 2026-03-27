@@ -8,13 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 import { BalConfigState } from "./utils/config";
 import { BalAriaForm } from "./utils/form";
-import { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
-import { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 export { BalConfigState } from "./utils/config";
 export { BalAriaForm } from "./utils/form";
-export { BalListItemAccordionBodyAria } from "./components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body";
-export { BalListItemAccordionHeadAria } from "./components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -685,145 +681,6 @@ export namespace Components {
          */
         "valid": boolean;
     }
-    interface BalList {
-        /**
-          * If `true` only one of the layers can be open and the others close automatically
-          * @default false
-         */
-        "accordionOneLevel": boolean;
-        /**
-          * If `true` the list can be used on a light, dark or colored backgrounds
-          * @default 'light'
-         */
-        "background": BalProps.BalListBackground;
-        /**
-          * If `true` each list item has a bottom border
-          * @default false
-         */
-        "border": boolean;
-        /**
-          * If `true` the list item can not be hovered
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Defines the min height of the list item
-          * @default ''
-         */
-        "size": BalProps.BalListSize;
-    }
-    interface BalListItem {
-        /**
-          * If `true` the list item can be used as a accordion
-          * @default false
-         */
-        "accordion": boolean;
-        /**
-          * If `true` the list item shows that it is clickable
-          * @default false
-         */
-        "clickable": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * If `true` the list item can be hovered
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Closes the accordion
-         */
-        "dismiss": (ignoreNested?: boolean) => Promise<void>;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * Specifies the URL of the page the link goes to
-          * @default ''
-         */
-        "href": string;
-        /**
-          * Opens the accordion
-         */
-        "present": () => Promise<void>;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel": string | undefined;
-        /**
-          * If `true` the list item has a selected theme
-          * @default false
-         */
-        "selected": boolean;
-        /**
-          * If `true` the list item can be used as an accordion inside another accordion
-          * @default false
-         */
-        "subAccordionItem": boolean;
-        /**
-          * Specifies where to open the linked document
-          * @default '_self'
-         */
-        "target": BalProps.BalListItemTarget;
-        /**
-          * Triggers the accordion
-         */
-        "toggle": () => Promise<void>;
-    }
-    interface BalListItemAccordionBody {
-        /**
-          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
-         */
-        "accordionGroup"?: string;
-        /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start
-          * @default 'start'
-         */
-        "contentAlignment": BalProps.BalListContentAlignment;
-        /**
-          * Sets space to content of the accordion body
-          * @default 'none'
-         */
-        "contentSpace": BalProps.BalListContentSpacing;
-        "setAria": (aria: BalListItemAccordionBodyAria) => Promise<void>;
-    }
-    interface BalListItemAccordionHead {
-        /**
-          * If `true` the list accordion is open
-          * @default false
-         */
-        "accordionOpen": boolean;
-        "configChanged": (state: BalConfigState) => Promise<void>;
-        /**
-          * Icon name string with value 'plus' on default
-          * @default 'plus'
-         */
-        "icon": BalProps.BalListItemAccordionHeadIcon;
-        "setAria": (aria: BalListItemAccordionHeadAria) => Promise<void>;
-    }
-    interface BalListItemContent {
-        "contentAlignment"?: string;
-    }
-    interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-          * @default false
-         */
-        "right": boolean;
-    }
-    interface BalListItemSubtitle {
-    }
-    interface BalListItemTitle {
-        /**
-          * Heading level with value 'h4' on default
-          * @default 'h5'
-         */
-        "level": BalProps.BalHeadingLevel;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
     interface BalLogo {
         /**
           * Defines if the animation should be active
@@ -1259,14 +1116,6 @@ export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
 }
-export interface BalListItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalListItemElement;
-}
-export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalListItemAccordionHeadElement;
-}
 export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNotificationElement;
@@ -1286,6 +1135,8 @@ export interface BalToastCustomEvent<T> extends CustomEvent<T> {
 declare global {
     interface HTMLBalAccordionElementEventMap {
         "balToggle": BalEvents.BalAccordionToggleDetail;
+        "balOpened": BalEvents.BalAccordionToggleDetail;
+        "balClosed": BalEvents.BalAccordionToggleDetail;
     }
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1441,79 +1292,6 @@ declare global {
         prototype: HTMLBalLabelElement;
         new (): HTMLBalLabelElement;
     };
-    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
-    }
-    var HTMLBalListElement: {
-        prototype: HTMLBalListElement;
-        new (): HTMLBalListElement;
-    };
-    interface HTMLBalListItemElementEventMap {
-        "balNavigate": BalEvents.BalListItemNavigateDetail;
-        "balGroupStateChanged": BalEvents.BalListItemGroupStateChangedDetail;
-        "balWillAnimate": BalEvents.BalListItemWillAnimateDetail;
-        "balDidAnimate": BalEvents.BalListItemDidAnimateDetail;
-    }
-    interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalListItemElement: {
-        prototype: HTMLBalListItemElement;
-        new (): HTMLBalListItemElement;
-    };
-    interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
-    }
-    var HTMLBalListItemAccordionBodyElement: {
-        prototype: HTMLBalListItemAccordionBodyElement;
-        new (): HTMLBalListItemAccordionBodyElement;
-    };
-    interface HTMLBalListItemAccordionHeadElementEventMap {
-        "balAccordionChange": BalEvents.BalListAccordionChangeDetail;
-    }
-    interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalListItemAccordionHeadElement: {
-        prototype: HTMLBalListItemAccordionHeadElement;
-        new (): HTMLBalListItemAccordionHeadElement;
-    };
-    interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
-    }
-    var HTMLBalListItemContentElement: {
-        prototype: HTMLBalListItemContentElement;
-        new (): HTMLBalListItemContentElement;
-    };
-    interface HTMLBalListItemIconElement extends Components.BalListItemIcon, HTMLStencilElement {
-    }
-    var HTMLBalListItemIconElement: {
-        prototype: HTMLBalListItemIconElement;
-        new (): HTMLBalListItemIconElement;
-    };
-    interface HTMLBalListItemSubtitleElement extends Components.BalListItemSubtitle, HTMLStencilElement {
-    }
-    var HTMLBalListItemSubtitleElement: {
-        prototype: HTMLBalListItemSubtitleElement;
-        new (): HTMLBalListItemSubtitleElement;
-    };
-    interface HTMLBalListItemTitleElement extends Components.BalListItemTitle, HTMLStencilElement {
-    }
-    var HTMLBalListItemTitleElement: {
-        prototype: HTMLBalListItemTitleElement;
-        new (): HTMLBalListItemTitleElement;
-    };
     interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
     }
     var HTMLBalLogoElement: {
@@ -1652,14 +1430,6 @@ declare global {
         "bal-heading": HTMLBalHeadingElement;
         "bal-icon": HTMLBalIconElement;
         "bal-label": HTMLBalLabelElement;
-        "bal-list": HTMLBalListElement;
-        "bal-list-item": HTMLBalListItemElement;
-        "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
-        "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
-        "bal-list-item-content": HTMLBalListItemContentElement;
-        "bal-list-item-icon": HTMLBalListItemIconElement;
-        "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
-        "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-shape": HTMLBalShapeElement;
@@ -1722,6 +1492,14 @@ declare namespace LocalJSX {
           * The position of the marker. Only applies if `button` is `false`.
          */
         "markerPosition"?: BalProps.BalAccordionMarkerPosition;
+        /**
+          * Emitted when the accordion is closed.
+         */
+        "onBalClosed"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        /**
+          * Emitted when the accordion is opened.
+         */
+        "onBalOpened"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
@@ -2367,149 +2145,6 @@ declare namespace LocalJSX {
          */
         "valid"?: boolean;
     }
-    interface BalList {
-        /**
-          * If `true` only one of the layers can be open and the others close automatically
-          * @default false
-         */
-        "accordionOneLevel"?: boolean;
-        /**
-          * If `true` the list can be used on a light, dark or colored backgrounds
-          * @default 'light'
-         */
-        "background"?: BalProps.BalListBackground;
-        /**
-          * If `true` each list item has a bottom border
-          * @default false
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the list item can not be hovered
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * Defines the min height of the list item
-          * @default ''
-         */
-        "size"?: BalProps.BalListSize;
-    }
-    interface BalListItem {
-        /**
-          * If `true` the list item can be used as a accordion
-          * @default false
-         */
-        "accordion"?: boolean;
-        /**
-          * If `true` the list item shows that it is clickable
-          * @default false
-         */
-        "clickable"?: boolean;
-        /**
-          * If `true` the list item can be hovered
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * Specifies the URL of the page the link goes to
-          * @default ''
-         */
-        "href"?: string;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
-        /**
-          * Emitted when the state of the group is changing
-         */
-        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<BalEvents.BalListItemGroupStateChangedDetail>) => void;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string | undefined;
-        /**
-          * If `true` the list item has a selected theme
-          * @default false
-         */
-        "selected"?: boolean;
-        /**
-          * If `true` the list item can be used as an accordion inside another accordion
-          * @default false
-         */
-        "subAccordionItem"?: boolean;
-        /**
-          * Specifies where to open the linked document
-          * @default '_self'
-         */
-        "target"?: BalProps.BalListItemTarget;
-    }
-    interface BalListItemAccordionBody {
-        /**
-          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
-         */
-        "accordionGroup"?: string;
-        /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start
-          * @default 'start'
-         */
-        "contentAlignment"?: BalProps.BalListContentAlignment;
-        /**
-          * Sets space to content of the accordion body
-          * @default 'none'
-         */
-        "contentSpace"?: BalProps.BalListContentSpacing;
-    }
-    interface BalListItemAccordionHead {
-        /**
-          * If `true` the list accordion is open
-          * @default false
-         */
-        "accordionOpen"?: boolean;
-        /**
-          * Icon name string with value 'plus' on default
-          * @default 'plus'
-         */
-        "icon"?: BalProps.BalListItemAccordionHeadIcon;
-        /**
-          * Emitted when the accordion state is changed
-         */
-        "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<BalEvents.BalListAccordionChangeDetail>) => void;
-    }
-    interface BalListItemContent {
-        "contentAlignment"?: string;
-    }
-    interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-          * @default false
-         */
-        "right"?: boolean;
-    }
-    interface BalListItemSubtitle {
-    }
-    interface BalListItemTitle {
-        /**
-          * Heading level with value 'h4' on default
-          * @default 'h5'
-         */
-        "level"?: BalProps.BalHeadingLevel;
-        /**
-          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-         */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
-    }
     interface BalLogo {
         /**
           * Defines if the animation should be active
@@ -2972,14 +2607,6 @@ declare namespace LocalJSX {
         "bal-heading": BalHeading;
         "bal-icon": BalIcon;
         "bal-label": BalLabel;
-        "bal-list": BalList;
-        "bal-list-item": BalListItem;
-        "bal-list-item-accordion-body": BalListItemAccordionBody;
-        "bal-list-item-accordion-head": BalListItemAccordionHead;
-        "bal-list-item-content": BalListItemContent;
-        "bal-list-item-icon": BalListItemIcon;
-        "bal-list-item-subtitle": BalListItemSubtitle;
-        "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
         "bal-notification": BalNotification;
         "bal-shape": BalShape;
@@ -3017,14 +2644,6 @@ declare module "@stencil/core" {
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
-            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
-            "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
-            "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
-            "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
-            "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
-            "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
-            "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
-            "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;

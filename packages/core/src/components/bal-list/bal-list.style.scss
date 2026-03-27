@@ -1,233 +1,259 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
+
 @use './bal-description-list-native.styles.scss';
 @use './bal-list-native.styles.scss';
 
-// TODO: add sizes like large with 72px min height
-// TODO: not only use native elements like ul also role="list" and the ohters too
-// TODO: implement hover and active states for link and button list items also change color of icons through css variables
-// TODO: implement disabled state for link and button list items
+@use '../../vars' as vars;
+@use '../../hybrid' as hybrid;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
 
 // ul.list {
-//   display: block;
-//   margin: 0;
-//   padding: 0;
-//   list-style-type: none;
 // }
 
-// ul.list li {
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   align-items: center;
-//   min-height: 3.5rem;
-//   box-sizing: border-box;
+ul.list .item,
+ul.list li details {
+  @include vars.focus(list-item);
 
-//   // icon width
-//   a > bal-icon,
-//   button > bal-icon {
-//     min-width: 1.5rem;
-//   }
-// }
+  @include vars.local(list-item-grid-template-columns, 1fr);
+  @include vars.local(list-item-min-height, 3.5rem);
+  @include vars.local(list-item-gap, 1rem);
+  @include vars.local(list-item-space, 0.5rem);
 
-// ul.list li.item,
-// ul.list li .item {
-//   grid-template-columns: 1fr;
-// }
+  @include vars.local(list-item-title-family, var(--bal-font-family-heading));
+  @include vars.local(list-item-text-family, var(--bal-font-family-body));
+  @include vars.local(list-item-color, inherit);
+  @include vars.local(list-item-border-color, var(--bal-list-item-border-color));
+  @include vars.local(list-item-border-width, var(--bal-list-item-border-width, 2px));
+}
 
-// ul.list li a.item,
-// ul.list li button.item {
-//   grid-template-columns: 1fr auto;
-// }
+/**
+  * Mixins
+  * --------------------------------
+  */
+@mixin border() {
+  content: '';
+  border-radius: 12px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-// ul.list li details.item {
-//   grid-template-columns: 1fr !important;
-// }
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
 
-// ul.list li.item,
-// ul.list li .item {
-//   background: inherit;
-//   border: none;
-//   display: grid;
-//   gap: 1rem;
-//   align-items: center;
-//   height: 100%;
-//   align-self: stretch;
-//   width: 100%;
-//   padding: 0.5rem 0;
-//   padding-bottom: calc(0.5rem + 2px);
-//   text-align: left;
+//
+// List
+ul.list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
-//   /* exactly 2 children */
-//   &:has(:nth-child(2)):not(:has(:nth-child(3))) {
-//     grid-template-columns: 1fr auto;
-//   }
+//
+// List Items
+ul.list li {
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
+}
 
-//   /* 3 or more children */
-//   &:has(:nth-child(3)) {
-//     grid-template-columns: auto 1fr auto;
-//   }
+ul.list li:not(.item) {
+  grid-template-columns: 1fr;
+}
 
-//   // content
-//   .item-content {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0;
-//   }
+ul.list li.item,
+ul.list li .item {
+  min-height: var(--_list-item-min-height);
+  // grid-template-columns: var(--_list-item-grid-template-columns);
 
-//   .item-title {
-//     font-family: var(--bal-font-family-heading);
-//     font-weight: var(--bal-text-weight-bold);
-//     margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--_list-item-gap);
+  width: 100%;
 
-//     font-size: var(--bal-heading-size-normal);
+  color: var(--_list-item-color);
+  background: inherit;
+  border: none;
+  align-self: stretch;
+  text-align: left;
+  font-family: var(--_list-item-title-family);
 
-//     @include tablet {
-//       font-size: var(--bal-heading-size-normal-tablet);
-//     }
+  padding: var(--_list-item-space) 0;
+  padding-bottom: calc(var(--_list-item-space) + 2px);
 
-//     @include desktop {
-//       font-size: var(--bal-heading-size-normal-desktop);
-//     }
-//   }
+  //
+  // Icons
+  bal-icon {
+    flex-shrink: 0;
+  }
 
-//   .item-text,
-//   .item-subtitle {
-//     font-family: var(--bal-font-family-text);
-//     font-weight: var(--bal-text-weight-regular);
-//     font-size: var(--bal-text-size-sm);
-//     margin: 0;
-//   }
+  .item-content + bal-icon {
+    --icon-size: var(--bal-icon-size-xs);
+    --icon-inner-size: var(--bal-icon-size-xs);
+  }
 
-//   // border
-//   &:after {
-//     content: '';
-//     height: 2px;
-//     border-radius: 12px;
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: red;
-//   }
-// }
+  //
+  // Content
+  .item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
 
-// /**
-//   * Link inside list item
-//   */
+  .item-title {
+    font-family: var(--_list-item-title-family);
+    font-weight: var(--bal-text-weight-bold);
+    margin: 0;
 
-// ul.list li a.item {
-//   text-decoration: none;
-//   color: inherit;
-//   font-weight: 700;
-//   font-family: var(--bal-font-family-heading);
-// }
+    font-size: var(--bal-heading-size-normal);
 
-// /**
-//   * Accordion inside list item
-//   */
+    @include tablet {
+      font-size: var(--bal-heading-size-normal-tablet);
+    }
 
-// ul.list li details {
-//   position: relative;
-//   padding: 0;
+    @include desktop {
+      font-size: var(--bal-heading-size-normal-desktop);
+    }
+  }
 
-//   &:after {
-//     content: '';
-//     height: 2px;
-//     border-radius: 12px;
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: red;
-//   }
+  .item-text,
+  .item-subtitle {
+    font-family: var(--_list-item-text-family);
+    font-weight: var(--bal-text-weight-regular);
+    font-size: var(--bal-text-size-sm);
+    margin: 0;
+  }
 
-//   &,
-//   & summary {
-//     min-height: calc(3.5rem - 1rem);
-//   }
+  //
+  // Border
+  &:after {
+    @include border();
+    height: var(--_list-item-border-width);
+    background: var(--_list-item-border-color);
+  }
+}
 
-//   summary {
-//     padding: 0.5rem 0;
-//     position: relative;
-//     &:before {
-//       content: '';
-//       height: 2px;
-//       border-radius: 12px;
-//       width: 100%;
-//       position: absolute;
-//       bottom: 0;
-//       left: 0;
-//       right: 0;
-//       background: lime;
-//     }
-//   }
-// }
+/**
+  * Link inside list item
+  */
 
-//   // remove padding if item is an accordion or a link
-//   &:not(.has-accordion, .has-link) {
-//     padding: 0.5rem 0;
-//     padding-bottom: calc(0.5rem + 2px);
-//   }
+ul.list li a.item,
+ul.list li button.item {
+  @include font-smoothing();
+  @include unselectable();
 
-//   &.is-disabled {
-//     pointer-events: none;
-//     color: grey;
-//   }
+  cursor: pointer;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  font-family: var(--_list-item-title-family);
+  font-weight: var(--bal-text-weight-bold);
+  color: var(--bal-link-color-base);
 
-//   & > button {
-//     background: inherit;
-//     border: none;
-//     display: grid;
-//     grid-template-columns: auto 1fr auto;
-//     gap: 1rem;
-//     align-items: center;
-//     height: 100%;
-//     align-self: stretch;
-//     width: 100%;
-//     padding: 0.5rem 0;
-//     padding-bottom: calc(0.5rem + 2px);
-//     text-align: left;
-//   }
+  outline: none;
+  text-decoration: none;
 
-//   &.has-link {
-//     align-items: stretch;
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
-//     a {
-//       display: grid;
-//       grid-template-columns: 1fr auto;
-//       align-items: center;
-//       text-decoration: none;
-//       color: inherit;
-//       height: 100%;
-//       align-self: stretch;
-//       width: 100%;
-//       font-weight: 700;
-//       font-family: var(--bal-font-family-heading);
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      --mod-list-item-border-color: var(--bal-link-color-base-hover);
 
-//       padding: 0.5rem 0;
-//       padding-bottom: calc(0.5rem + 2px);
-//     }
+      color: var(--bal-link-color-base-hover);
+      bal-icon {
+        --icon-color: var(--bal-link-color-base-hover);
+      }
+    }
+  }
 
-//     &:not(.is-disabled) {
-//       @include hover {
-//         &:hover {
-//           a {
-//             color: lime;
-//           }
-//           &:after {
-//             background: lime;
-//           }
-//         }
-//       }
-//       &:active {
-//         a {
-//           color: yellow;
-//         }
-//         &:after {
-//           background: yellow;
-//         }
-//       }
-//     }
-//   }
+  &:active,
+  &.is-pressed {
+    --mod-list-item-border-color: var(--bal-link-color-base-active);
+
+    color: var(--bal-link-color-base-active);
+    bal-icon {
+      --icon-color: var(--bal-link-color-base-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      &:before {
+        @include vars.focus-styles(list-item);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--bal-radius-base);
+      }
+    }
+  }
+}
+
+/**
+  * Accordion inside list item
+  */
+
+ul.list li details {
+  position: relative;
+  padding: 0;
+
+  &:after {
+    @include border();
+    height: var(--_list-item-border-width);
+    background: var(--_list-item-border-color);
+  }
+
+  &,
+  & summary {
+    min-height: calc(3.5rem - 1rem);
+  }
+
+  summary {
+    padding: 0.5rem 0;
+    position: relative;
+    &:before {
+      @include border();
+      height: var(--_list-item-border-width);
+      background: var(--_list-item-border-color);
+    }
+  }
+}
+
+/**
+  * Disabled
+  */
+
+ul.list li.item.is-disabled,
+ul.list li .item.is-disabled {
+  pointer-events: none !important;
+  cursor: default !important;
+
+  color: var(--bal-list-item-disabled);
+
+  bal-icon {
+    --icon-color: var(--bal-list-item-disabled);
+  }
+}

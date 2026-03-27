@@ -19,7 +19,7 @@
           <span>Basic</span>
           <bal-accordion>
             <div slot="summary">Details</div>
-            <div slot="content" class="s-bg-1 s-height-8rem"></div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
           </bal-accordion>
         </section>
 
@@ -168,35 +168,45 @@
 
           <bal-accordion group="accordion-group">
             <div slot="summary">Accordion 1</div>
-            <div slot="content" class="s-bg-1 s-height-8rem"></div>
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
           </bal-accordion>
           <hr class="divider" />
           <bal-accordion group="accordion-group">
             <div slot="summary">Accordion 2</div>
-            <div slot="content" class="s-bg-2 s-height-8rem"></div>
+            <div slot="content" class="s-bg-2 s-height-4rem"></div>
           </bal-accordion>
           <hr class="divider" />
-          <bal-accordion group="accordion-group">
+          <bal-accordion group="accordion-group" open>
             <div slot="summary">Accordion 3</div>
-            <div slot="content" class="s-bg-3 s-height-8rem"></div>
+            <div slot="content" class="s-bg-3 s-height-4rem"></div>
           </bal-accordion>
           <hr class="divider" />
+        </section>
 
-          <!-- <details class="accordion" name="accordion-group">
-            <summary class="stack as-row">Accordion 1</summary>
-            <div class="s-bg-1 s-height-8rem"></div>
-          </details>
-          <hr class="divider" />
-          <details class="accordion" name="accordion-group">
-            <summary class="stack as-row">Accordion 2</summary>
-            <div class="s-bg-2 s-height-8rem"></div>
-          </details>
-          <hr class="divider" />
-          <details class="accordion" name="accordion-group">
-            <summary class="stack as-row">Accordion 3</summary>
-            <div class="s-bg-3 s-height-8rem"></div>
-          </details>
-          <hr class="divider" /> -->
+        <!-- Button Accordion -->
+        <section data-testid="button-accordion">
+          <span>Button Accordion</span>
+
+          <bal-accordion
+            button
+            button-label-open="edit"
+            button-label-close="close"
+            button-icon-open="edit"
+            button-icon-close="close"
+          >
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+          <hr class="divider has-space-md" />
+          <bal-accordion
+            open
+            button
+            button-label-open="edit"
+            button-label-close="close"
+            button-icon-open="edit"
+            button-icon-close="close"
+          >
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
         </section>
       </main>
     </bal-app>

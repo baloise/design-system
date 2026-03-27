@@ -17,7 +17,9 @@
         <span>Basic</span>
 
         <ul class="list">
-          <li class="item"><h5 class="item-title">Item 1</h5></li>
+          <li class="item">
+            <h5 class="item-title">Item 2</h5>
+          </li>
           <li class="item">
             <div class="item-content">
               <h5 class="item-title">Item 2</h5>
@@ -25,6 +27,13 @@
             </div>
           </li>
           <li class="item">
+            <div class="item-content">
+              <h5 class="item-title">Item 3</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+          </li>
+          <li class="item">
+            <bal-icon name="file"></bal-icon>
             <div class="item-content">
               <h5 class="item-title">Item 3</h5>
               <span class="item-text">This is a description for item</span>
@@ -40,8 +49,8 @@
         <ul class="list">
           <li>
             <a class="item" href="www.baloise.com" target="_blank">
-              Internal Link
-              <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+              <span class="item-content">Internal Link</span>
+              <bal-icon name="nav-go-right"></bal-icon>
             </a>
           </li>
           <li>
@@ -50,7 +59,7 @@
                 <span class="item-title">External Link</span>
                 <span class="item-text">Description</span>
               </span>
-              <bal-icon name="link" size="x-small"></bal-icon>
+              <bal-icon name="link"></bal-icon>
             </a>
           </li>
           <li>
@@ -59,7 +68,7 @@
                 <span class="item-title">Disabled Link</span>
                 <span class="item-text">Description</span>
               </span>
-              <bal-icon name="link" disabled size="x-small"></bal-icon>
+              <bal-icon name="link" disabled></bal-icon>
             </a>
           </li>
         </ul>

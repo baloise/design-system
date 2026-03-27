@@ -14,6 +14,6 @@ namespace BalEvents {
     target: HTMLBalAccordionElement
   }
 
-  export type BalAccordionToggleDetail = boolean
+  export type BalAccordionToggleDetail = { group?: string; id: string, open: boolean }
   export type BalAccordionToggle = BalAccordionCustomEvent<BalAccordionToggleDetail>
 }

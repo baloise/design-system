@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-accordion',
@@ -6,6 +6,7 @@ import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } fro
   shadow: true,
 })
 export class Accordion implements ComponentInterface {
+  private accordionId = `bal-accordion-${accordionIds++}`
   private detailsEl: HTMLDetailsElement | undefined
   /**
    * PUBLIC PROPERTY API
@@ -26,7 +27,7 @@ export class Accordion implements ComponentInterface {
   /**
    * Displays the summary as a button and hides the default marker.
    */
-  @Prop({ reflect: true }) button = false
+  @Prop() button = false
 
   /**
    * The marker variant. Only applies if `button` is `false`.
@@ -43,12 +44,12 @@ export class Accordion implements ComponentInterface {
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
-  @Prop({ reflect: true }) buttonColor: BalProps.BalButtonColor = 'secondary'
+  @Prop() buttonColor: BalProps.BalButtonColor = 'secondary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
-  @Prop({ reflect: true }) buttonSize: BalProps.BalButtonSize = ''
+  @Prop() buttonSize: BalProps.BalButtonSize = ''
 
   /**
    * Label of the open trigger button
@@ -76,13 +77,48 @@ export class Accordion implements ComponentInterface {
   @Event() balToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
+   * Emitted when the accordion is opened.
+   */
+  @Event() balOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+
+  /**
+   * Emitted when the accordion is closed.
+   */
+  @Event() balClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('balOpened', { target: 'window' })
+  listenOnToggles(event: BalEvents.BalAccordionToggle) {
+    const { id, group } = event.detail
+
+    // ignore self
+    if (id === this.accordionId) return
+
+    // only react if same group (or no group = global)
+    if ((this.group && group !== this.group) || this.group === undefined) return
+
+    this.open = false
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
 
-  private onToggle(open: boolean) {
-    console.log('toggle', open)
+  private handleToggle(open: boolean) {
     this.open = open
+
+    this.balToggle.emit({ id: this.accordionId, group: this.group, open })
+
+    if (open) {
+      this.balOpened.emit({ id: this.accordionId, group: this.group, open })
+    } else {
+      this.balClosed.emit({ id: this.accordionId, group: this.group, open })
+    }
   }
 
   /**
@@ -92,8 +128,14 @@ export class Accordion implements ComponentInterface {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          'has-marker-plus': this.marker === 'plus' || (this.marker === 'plus-minus' && !this.open),
+          'has-marker-minus': this.marker === 'plus-minus' && this.open,
+        }}
+      >
         <details
+          id={this.accordionId}
           part="item"
           class={{
             'accordion': true,
@@ -105,7 +147,9 @@ export class Accordion implements ComponentInterface {
           open={this.open}
           name={this.group}
           ref={el => (this.detailsEl = el as HTMLDetailsElement)}
-          onToggle={() => this.onToggle(this.detailsEl?.open ?? false)}
+          onToggle={() => {
+            this.handleToggle(this.detailsEl?.open ?? false)
+          }}
         >
           <summary
             part="summary"
@@ -126,7 +170,7 @@ export class Accordion implements ComponentInterface {
             {this.button && this.buttonLabelClose && <span class="is-open"> {this.buttonLabelClose} </span>}
             <slot name="summary" />
           </summary>
-          <div class="accordion-content" part="content">
+          <div class="content" part="content">
             <slot name="content" />
             <slot />
           </div>
@@ -135,3 +179,5 @@ export class Accordion implements ComponentInterface {
     )
   }
 }
+
+let accordionIds = 1

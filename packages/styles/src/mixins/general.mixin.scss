@@ -74,6 +74,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  -webkit-user-drag: none; /* Chrome, Safari */
+  user-drag: none; /* Non-standard, limited support */
 }
 
 @mixin disabled {
