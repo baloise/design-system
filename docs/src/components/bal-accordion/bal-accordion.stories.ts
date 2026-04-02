@@ -17,31 +17,17 @@ const meta: Meta<Args> = {
   title: 'Components/Containment/Accordion',
   args: {
     ...withDefaultContent(lorem1),
+    summaryTitle: true,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-accordion' }),
   },
   ...withRender(
-    ({ content }) => `<bal-accordion>
-  <bal-accordion-summary>
-    <bal-stack>
-      <bal-icon svg='${BrandIconCarGreen}' color="auto" size="large"></bal-icon>
-      <bal-content>
-        <bal-label>Label Heading</bal-label>
-        <bal-text size="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos at repellendus
-          vitae voluptates
-          officiis qui tempore. Veniam ab sed nostrum excepturi dignissimos maxime itaque optio tempore,
-          officiis enim, exercitationem ex.
-        </bal-text>
-      </bal-content>
-      <bal-checkbox interface="switch"></bal-checkbox>
-      <bal-accordion-trigger></bal-accordion-trigger>
-    </bal-stack>
-  </bal-accordion-summary>
-  <bal-accordion-details>
-    <p class="py-medium">${content}</p>
-  </bal-accordion-details>
+    ({ content, ...args }) => `
+<bal-accordion ${props(args)}>
+  <div slot="summary">Details</div>
+  <div slot="content" class="py-base">${content}</div>
 </bal-accordion>`,
   ),
 }
@@ -57,22 +43,79 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const ButtonAccordion = Story({
+export const PlusMarkerAccordion = Story({
   args: {
-    card: true,
+    marker: 'plus'
+  }
+})
+
+export const LeftMarkerAccordion = Story({
+  args: {
+    marker: 'plus-minus',
+    markerPosition: 'left'
   },
+})
+
+export const StackAccordion = Story({
+  args: {},
   ...withRender(
-    ({ content, ...args }) => `<bal-card>
-  <bal-card-title>BaloiseCombi</bal-card-title>
-  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-  <bal-accordion ${props(args)}>
-    <bal-accordion-details>
-      <p class="py-medium">${content}</p>
-    </bal-accordion-details>
-    <bal-accordion-summary>
-      <bal-accordion-trigger button open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close"></bal-accordion-trigger>
-    </bal-accordion-summary>
-  </bal-accordion>
+    ({ content, ...args }) => `
+<bal-card>
+  <bal-card-content>
+    <bal-accordion ${props(args)}>
+      <div slot="summary" class="stack as-row">
+        <bal-icon
+          svg='&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"&gt;&lt;path fill="none" d="M0 0h40v40H0z"/&gt;&lt;g&gt;&lt;path d="M27 28h5v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1zM8 28h5v3a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" fill="#000d6e"/&gt;&lt;rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;path d="m31.69 20-1-3H9.33l-1 3A3.9 3.9 0 0 0 8 21.54V27h24v-5.46a3.9 3.9 0 0 0-.31-1.54M11.5 24a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5m17 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5" fill="#1b5951"/&gt;&lt;path d="M27.77 9.85A3 3 0 0 0 25 8H15a3 3 0 0 0-2.77 1.85L9.67 16h20.66Z" fill="#94e3d4"/&gt;&lt;/g&gt;&lt;/svg&gt;'
+          tile
+          tile-color="green"
+          color="auto"
+          size="lg"
+          class="align-self-start"
+        ></bal-icon>
+        <div class="stack-content">
+          <label class="label">Label Heading</label>
+          <span>${content}</span>
+        </div>
+        <bal-switch></bal-switch>
+      </div>
+      <div slot="content" class="py-base">
+        ${content}
+        ${content}
+      </div>
+    </bal-accordion>
+  </bal-card-content>
 </bal-card>`,
   ),
+})
+
+export const AccordionGroup = Story({
+  args: {},
+  ...withRender(
+    ({ content, ...args }) => `
+<bal-accordion group="accordion-group">
+  <div slot="summary">Accordion 1</div>
+  <div slot="content" class="py-base bg-purple-2">${content}</div>
+</bal-accordion>
+<hr class="divider" />
+<bal-accordion group="accordion-group">
+  <div slot="summary">Accordion 2</div>
+  <div slot="content" class="py-base bg-yellow-2">${content}</div>
+</bal-accordion>
+<hr class="divider" />
+<bal-accordion group="accordion-group" open>
+  <div slot="summary">Accordion 3</div>
+  <div slot="content" class="py-base bg-red-2">${content}</div>
+</bal-accordion>`,
+  ),
+})
+
+
+export const AccordionButton = Story({
+  args: {
+    button: true,
+    buttonExpanded: true,
+    buttonColor: 'secondary',
+    buttonLabelOpen: 'edit',
+    buttonLabelClose: 'close'
+  },
 })

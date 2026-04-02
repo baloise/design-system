@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 import { BalConfigState } from "./utils/config";
+import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 import { BalAriaForm } from "./utils/form";
-export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 export { BalConfigState } from "./utils/config";
+export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
 export { BalAriaForm } from "./utils/form";
 export namespace Components {
     interface BalAccordion {
@@ -20,34 +20,35 @@ export namespace Components {
         "button": boolean;
         /**
           * The color of the button. Only applies if `button` is `true`.
-          * @default 'secondary'
+          * @default 'primary'
          */
         "buttonColor": BalProps.BalButtonColor;
         /**
-          * BalIcon of the close trigger button
-          * @default 'caret-up'
+          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
+          * @default false
          */
-        "buttonIconClose": string;
+        "buttonExpanded": boolean;
+        /**
+          * BalIcon of the close trigger button
+         */
+        "buttonIconClose"?: string;
         /**
           * BalIcon of the open trigger button
-          * @default 'caret-down'
          */
-        "buttonIconOpen": string;
+        "buttonIconOpen"?: string;
         /**
           * Label of the close trigger button
-          * @default ''
          */
-        "buttonLabelClose": string;
+        "buttonLabelClose"?: string;
         /**
           * Label of the open trigger button
-          * @default ''
          */
-        "buttonLabelOpen": string;
+        "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
-        "buttonSize": BalProps.BalButtonSize;
+        "buttonSize"?: BalProps.BalButtonSize;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -65,6 +66,19 @@ export namespace Components {
           * @default false
          */
         "open": boolean;
+        /**
+          * The heading level of the summary
+          * @default 'h3'
+         */
+        "summaryLevel": BalProps.BalAccordionSummaryLevel;
+        /**
+          * If `true` the summary is styled as a title.
+         */
+        "summaryTitle"?: boolean;
+        /**
+          * The visual heading level of the summary.
+         */
+        "summaryVisualLevel"?: BalProps.BalAccordionSummaryLevel;
     }
     interface BalAlertContainer {
         "addAlert": (alert: Alert) => Promise<string>;
@@ -630,6 +644,61 @@ export namespace Components {
          */
         "turn": boolean;
     }
+    interface BalItem {
+        /**
+          * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+         */
+        "accordionGroup"?: string;
+        /**
+          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+         */
+        "accordionMarker"?: BalProps.BalAccordionMarker;
+        /**
+          * The position of the marker. Only applies if `button` is `false`.
+         */
+        "accordionMarkerPosition"?: BalProps.BalAccordionMarkerPosition;
+        /**
+          * If `true` the accordion is open.
+          * @default false
+         */
+        "accordionOpen": boolean;
+        /**
+          * @default 'default'
+         */
+        "actionIcon": 'link' | 'link-external' | 'download' | 'default';
+        "description"?: string;
+        /**
+          * If `true`, the user cannot interact with the button.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        "label"?: string;
+        /**
+          * @default 'h5'
+         */
+        "labelLevel": 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+          * @default '_self'
+         */
+        "target": BalProps.BalButtonTarget;
+        /**
+          * @default 'default'
+         */
+        "variant": 'link' | 'button' | 'accordion' | 'default';
+    }
     interface BalLabel {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
@@ -680,6 +749,12 @@ export namespace Components {
           * @default false
          */
         "valid": boolean;
+    }
+    interface BalList {
+        /**
+          * @default false
+         */
+        "ordered": boolean;
     }
     interface BalLogo {
         /**
@@ -1116,6 +1191,10 @@ export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
 }
+export interface BalItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalItemElement;
+}
 export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNotificationElement;
@@ -1286,11 +1365,37 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
+    interface HTMLBalItemElementEventMap {
+        "balClick": BalEvents.BalButtonClickDetail;
+        "balAccordionToggle": BalEvents.BalAccordionToggleDetail;
+        "balAccordionOpened": BalEvents.BalAccordionToggleDetail;
+        "balAccordionClosed": BalEvents.BalAccordionToggleDetail;
+    }
+    interface HTMLBalItemElement extends Components.BalItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalItemElementEventMap>(type: K, listener: (this: HTMLBalItemElement, ev: BalItemCustomEvent<HTMLBalItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalItemElementEventMap>(type: K, listener: (this: HTMLBalItemElement, ev: BalItemCustomEvent<HTMLBalItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalItemElement: {
+        prototype: HTMLBalItemElement;
+        new (): HTMLBalItemElement;
+    };
     interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
     }
     var HTMLBalLabelElement: {
         prototype: HTMLBalLabelElement;
         new (): HTMLBalLabelElement;
+    };
+    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
+    }
+    var HTMLBalListElement: {
+        prototype: HTMLBalListElement;
+        new (): HTMLBalListElement;
     };
     interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
     }
@@ -1429,7 +1534,9 @@ declare global {
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-item": HTMLBalItemElement;
         "bal-label": HTMLBalLabelElement;
+        "bal-list": HTMLBalListElement;
         "bal-logo": HTMLBalLogoElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-shape": HTMLBalShapeElement;
@@ -1452,32 +1559,32 @@ declare namespace LocalJSX {
         "button"?: boolean;
         /**
           * The color of the button. Only applies if `button` is `true`.
-          * @default 'secondary'
+          * @default 'primary'
          */
         "buttonColor"?: BalProps.BalButtonColor;
         /**
+          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
+          * @default false
+         */
+        "buttonExpanded"?: boolean;
+        /**
           * BalIcon of the close trigger button
-          * @default 'caret-up'
          */
         "buttonIconClose"?: string;
         /**
           * BalIcon of the open trigger button
-          * @default 'caret-down'
          */
         "buttonIconOpen"?: string;
         /**
           * Label of the close trigger button
-          * @default ''
          */
         "buttonLabelClose"?: string;
         /**
           * Label of the open trigger button
-          * @default ''
          */
         "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
         "buttonSize"?: BalProps.BalButtonSize;
         /**
@@ -1509,6 +1616,19 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+        /**
+          * The heading level of the summary
+          * @default 'h3'
+         */
+        "summaryLevel"?: BalProps.BalAccordionSummaryLevel;
+        /**
+          * If `true` the summary is styled as a title.
+         */
+        "summaryTitle"?: boolean;
+        /**
+          * The visual heading level of the summary.
+         */
+        "summaryVisualLevel"?: BalProps.BalAccordionSummaryLevel;
     }
     interface BalAlertContainer {
         /**
@@ -2096,6 +2216,77 @@ declare namespace LocalJSX {
          */
         "turn"?: boolean;
     }
+    interface BalItem {
+        /**
+          * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+         */
+        "accordionGroup"?: string;
+        /**
+          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+         */
+        "accordionMarker"?: BalProps.BalAccordionMarker;
+        /**
+          * The position of the marker. Only applies if `button` is `false`.
+         */
+        "accordionMarkerPosition"?: BalProps.BalAccordionMarkerPosition;
+        /**
+          * If `true` the accordion is open.
+          * @default false
+         */
+        "accordionOpen"?: boolean;
+        /**
+          * @default 'default'
+         */
+        "actionIcon"?: 'link' | 'link-external' | 'download' | 'default';
+        "description"?: string;
+        /**
+          * If `true`, the user cannot interact with the button.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        "label"?: string;
+        /**
+          * @default 'h5'
+         */
+        "labelLevel"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+        /**
+          * Emitted when the accordion is closed.
+         */
+        "onBalAccordionClosed"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        /**
+          * Emitted when the accordion is opened.
+         */
+        "onBalAccordionOpened"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalAccordionToggle"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalClick"?: (event: BalItemCustomEvent<BalEvents.BalButtonClickDetail>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+          * @default '_self'
+         */
+        "target"?: BalProps.BalButtonTarget;
+        /**
+          * @default 'default'
+         */
+        "variant"?: 'link' | 'button' | 'accordion' | 'default';
+    }
     interface BalLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -2144,6 +2335,12 @@ declare namespace LocalJSX {
           * @default false
          */
         "valid"?: boolean;
+    }
+    interface BalList {
+        /**
+          * @default false
+         */
+        "ordered"?: boolean;
     }
     interface BalLogo {
         /**
@@ -2606,7 +2803,9 @@ declare namespace LocalJSX {
         "bal-doc-app": BalDocApp;
         "bal-heading": BalHeading;
         "bal-icon": BalIcon;
+        "bal-item": BalItem;
         "bal-label": BalLabel;
+        "bal-list": BalList;
         "bal-logo": BalLogo;
         "bal-notification": BalNotification;
         "bal-shape": BalShape;
@@ -2643,7 +2842,9 @@ declare module "@stencil/core" {
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-item": LocalJSX.BalItem & JSXBase.HTMLAttributes<HTMLBalItemElement>;
             "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
+            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;

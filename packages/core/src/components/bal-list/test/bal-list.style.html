@@ -13,7 +13,7 @@
   <body>
     <main class="container">
       <!-- Basic Style -->
-      <section>
+      <section data-testid="basic">
         <span>Basic</span>
 
         <ul class="list">
@@ -42,8 +42,56 @@
         </ul>
       </section>
 
+      <!-- Ordered -->
+      <section data-testid="ordered">
+        <span>Ordered</span>
+
+        <ol class="list">
+          <li>
+            <a class="item" href="www.baloise.com" target="_blank">
+              <bal-badge color="success" size="lg">
+                <bal-icon name="check"></bal-icon>
+              </bal-badge>
+              <div class="item-content">
+                <h5 class="item-title">Item 1</h5>
+                <span class="item-text">This is a description for item</span>
+              </div>
+              <bal-icon name="nav-go-right"></bal-icon>
+            </a>
+          </li>
+          <li class="item">
+            <bal-badge color="purple" size="lg">2</bal-badge>
+            <div class="item-content">
+              <h5 class="item-title">Item 2</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+            <bal-icon name="nav-go-right"></bal-icon>
+          </li>
+          <li class="item">
+            <bal-badge color="purple" size="lg">
+              <bal-icon name="document"></bal-icon>
+            </bal-badge>
+            <div class="item-content">
+              <h5 class="item-title">Item 3</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+            <bal-icon name="nav-go-right"></bal-icon>
+          </li>
+          <li>
+            <a class="item is-disabled" disabled href="www.baloise.com" target="_blank">
+              <bal-badge color="grey" size="lg">4</bal-badge>
+              <div class="item-content">
+                <h5 class="item-title">Item 4</h5>
+                <span class="item-text">This is a description for item</span>
+              </div>
+              <bal-icon name="nav-go-right"></bal-icon>
+            </a>
+          </li>
+        </ol>
+      </section>
+
       <!-- Linked List -->
-      <section>
+      <section data-testid="linked">
         <span>Linked List</span>
 
         <ul class="list">
@@ -75,7 +123,7 @@
       </section>
 
       <!-- Download List -->
-      <section>
+      <section data-testid="download">
         <span>Download List</span>
 
         <ul class="list">
@@ -133,7 +181,7 @@
       </section>
 
       <!-- List Accordions -->
-      <section>
+      <section data-testid="accordion">
         <span>List Accordions</span>
         <ul class="list">
           <li>
@@ -166,7 +214,7 @@
       </section>
 
       <!-- Nested List Accordions -->
-      <section>
+      <section data-testid="nested-accordion">
         <span>Nested List Accordions</span>
         <ul class="list">
           <li class="has-accordion">

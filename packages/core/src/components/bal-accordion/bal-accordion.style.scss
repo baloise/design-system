@@ -13,7 +13,7 @@ $css-selector: ('.accordion');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include vars.hybrid($name, $css-selector, $use-host) {
+details.accordion {
   @include vars.focus(accordion);
 
   /* Marker icons (SVG via mask so we can color with currentColor) */
@@ -162,24 +162,6 @@ details.accordion {
   &.has-marker-plus-minus[open] {
     --mod-accordion-marker-icon: var(--accordion-marker-minus);
   }
-}
-
-@include hybrid.host($use-host) {
-  :host(.has-marker-plus) {
-    --mod-accordion-marker-icon: var(--accordion-marker-plus);
-  }
-
-  :host(.has-marker-plus-minus) {
-    --mod-accordion-marker-icon: var(--accordion-marker-plus);
-  }
-}
-
-//
-// Content spacing
-details.accordion > p,
-details.accordion > .has-space {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 /**

@@ -33,7 +33,7 @@
           },
           "mutable": false,
           "attr": "button",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Displays the summary as a button and hides the default marker.",
           "docsTags": [
             {
@@ -67,15 +67,15 @@
           },
           "mutable": false,
           "attr": "button-color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The color of the button. Only applies if `button` is `true`.",
           "docsTags": [
             {
               "name": "default",
-              "text": "'secondary'"
+              "text": "'primary'"
             }
           ],
-          "default": "'secondary'",
+          "default": "'primary'",
           "values": [
             {
               "value": "danger",
@@ -148,117 +148,134 @@
           "setter": false
         },
         {
+          "name": "buttonExpanded",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "button-expanded",
+          "reflectToAttr": false,
+          "docs": "If `true` the button is expanded to full width. Only applies if `button` is `true`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "buttonIconClose",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "button-icon-close",
           "reflectToAttr": false,
           "docs": "BalIcon of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'caret-up'"
-            }
-          ],
-          "default": "'caret-up'",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "buttonIconOpen",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "button-icon-open",
           "reflectToAttr": false,
           "docs": "BalIcon of the open trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'caret-down'"
-            }
-          ],
-          "default": "'caret-down'",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "buttonLabelClose",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "button-label-close",
           "reflectToAttr": false,
           "docs": "Label of the close trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "buttonLabelOpen",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
             "original": "string",
-            "resolved": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "button-label-open",
           "reflectToAttr": false,
           "docs": "Label of the open trigger button",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -278,15 +295,9 @@
           },
           "mutable": false,
           "attr": "button-size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The size of the button. Only applies if `button` is `true`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -311,7 +322,115 @@
               "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "group",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "group",
+          "reflectToAttr": true,
+          "docs": "The name of the group the accordion belongs to. Accordions with the same group name will automatically\nclose when another accordion in the same group is opened.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "marker",
+          "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalAccordionMarker",
+            "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "marker",
+          "reflectToAttr": false,
+          "docs": "The marker variant. Only applies if `button` is `false`.\nIf `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`\na plus icon for closed and a minus icon for open state is used.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "plus",
+              "type": "string"
+            },
+            {
+              "value": "plus-minus",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "markerPosition",
+          "type": "\"\" | \"left\" | \"right\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalAccordionMarkerPosition",
+            "resolved": "\"\" | \"left\" | \"right\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "marker-position",
+          "reflectToAttr": false,
+          "docs": "The position of the marker. Only applies if `button` is `false`.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -344,17 +463,180 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "summaryLevel",
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+          "complexType": {
+            "original": "BalProps.BalAccordionSummaryLevel",
+            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "summary-level",
+          "reflectToAttr": false,
+          "docs": "The heading level of the summary",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'h3'"
+            }
+          ],
+          "default": "'h3'",
+          "values": [
+            {
+              "value": "h1",
+              "type": "string"
+            },
+            {
+              "value": "h2",
+              "type": "string"
+            },
+            {
+              "value": "h3",
+              "type": "string"
+            },
+            {
+              "value": "h4",
+              "type": "string"
+            },
+            {
+              "value": "h5",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "summaryTitle",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "summary-title",
+          "reflectToAttr": false,
+          "docs": "If `true` the summary is styled as a title.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "summaryVisualLevel",
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
+          "complexType": {
+            "original": "BalProps.BalAccordionSummaryLevel",
+            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
+            "references": {
+              "BalProps": {
+                "location": "global",
+                "id": "global::BalProps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "summary-visual-level",
+          "reflectToAttr": false,
+          "docs": "The visual heading level of the summary.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "h1",
+              "type": "string"
+            },
+            {
+              "value": "h2",
+              "type": "string"
+            },
+            {
+              "value": "h3",
+              "type": "string"
+            },
+            {
+              "value": "h4",
+              "type": "string"
+            },
+            {
+              "value": "h5",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
       "events": [
         {
-          "event": "balToggle",
-          "detail": "boolean",
+          "event": "balClosed",
+          "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
             "original": "BalEvents.BalAccordionToggleDetail",
-            "resolved": "boolean",
+            "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the accordion is closed.",
+          "docsTags": []
+        },
+        {
+          "event": "balOpened",
+          "detail": "{ group?: string | undefined; id: string; open: boolean; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalAccordionToggleDetail",
+            "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
+            "references": {
+              "BalEvents": {
+                "location": "global",
+                "id": "global::BalEvents"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the accordion is opened.",
+          "docsTags": []
+        },
+        {
+          "event": "balToggle",
+          "detail": "{ group?: string | undefined; id: string; open: boolean; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "BalEvents.BalAccordionToggleDetail",
+            "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
               "BalEvents": {
                 "location": "global",
@@ -376,7 +658,11 @@
           "docs": ""
         },
         {
-          "name": "item",
+          "name": "header",
+          "docs": ""
+        },
+        {
+          "name": "marker",
           "docs": ""
         },
         {
@@ -384,7 +670,14 @@
           "docs": ""
         }
       ],
-      "listeners": []
+      "listeners": [
+        {
+          "event": "balOpened",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        }
+      ]
     },
     {
       "fileName": "bal-alert-container.tsx",
@@ -4887,7 +5180,6 @@
         "bal-badge",
         "bal-button",
         "bal-check",
-        "bal-list-item-accordion-head",
         "bal-snackbar",
         "bal-switch",
         "bal-toast"
@@ -4904,9 +5196,6 @@
           "bal-icon"
         ],
         "bal-check": [
-          "bal-icon"
-        ],
-        "bal-list-item-accordion-head": [
           "bal-icon"
         ],
         "bal-snackbar": [
@@ -5688,1222 +5977,6 @@
           "docs": ""
         }
       ],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list.tsx",
-      "tag": "bal-list",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "accordionOneLevel",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "accordion-one-level",
-          "reflectToAttr": false,
-          "docs": "If `true` only one of the layers can be open and the others close automatically",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "background",
-          "type": "\"color\" | \"dark\" | \"light\"",
-          "complexType": {
-            "original": "BalProps.BalListBackground",
-            "resolved": "\"color\" | \"dark\" | \"light\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "background",
-          "reflectToAttr": false,
-          "docs": "If `true` the list can be used on a light, dark or colored backgrounds",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'light'"
-            }
-          ],
-          "default": "'light'",
-          "values": [
-            {
-              "value": "color",
-              "type": "string"
-            },
-            {
-              "value": "dark",
-              "type": "string"
-            },
-            {
-              "value": "light",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "border",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "border",
-          "reflectToAttr": false,
-          "docs": "If `true` each list item has a bottom border",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item can not be hovered",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "size",
-          "type": "\"\" | \"large\" | \"small\"",
-          "complexType": {
-            "original": "BalProps.BalListSize",
-            "resolved": "\"\" | \"large\" | \"small\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "size",
-          "reflectToAttr": false,
-          "docs": "Defines the min height of the list item",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "large",
-              "type": "string"
-            },
-            {
-              "value": "small",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item.tsx",
-      "tag": "bal-list-item",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "accordion",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "accordion",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item can be used as a accordion",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "clickable",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "clickable",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item shows that it is clickable",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item can be hovered",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "download",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "download",
-          "reflectToAttr": false,
-          "docs": "This attribute instructs browsers to download a URL instead of navigating to\nit, so the user will be prompted to save it as a local file. If the attribute\nhas a value, it is used as the pre-filled file name in the Save prompt\n(the user can still change the file name if they want).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "href",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "href",
-          "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "rel",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "rel",
-          "reflectToAttr": false,
-          "docs": "Specifies the relationship of the target object to the link object.\nThe value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "selected",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "selected",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item has a selected theme",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "subAccordionItem",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "sub-accordion-item",
-          "reflectToAttr": false,
-          "docs": "If `true` the list item can be used as an accordion inside another accordion",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-          "complexType": {
-            "original": "BalProps.BalListItemTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "target",
-          "reflectToAttr": false,
-          "docs": "Specifies where to open the linked document",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'_self'"
-            }
-          ],
-          "default": "'_self'",
-          "values": [
-            {
-              "value": " _parent",
-              "type": "string"
-            },
-            {
-              "value": "_blank",
-              "type": "string"
-            },
-            {
-              "value": "_self",
-              "type": "string"
-            },
-            {
-              "value": "_top",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "dismiss",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "(ignoreNested?: boolean) => Promise<void>",
-            "parameters": [
-              {
-                "name": "ignoreNested",
-                "type": "boolean",
-                "docs": ""
-              }
-            ],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "dismiss(ignoreNested?: boolean) => Promise<void>",
-          "parameters": [
-            {
-              "name": "ignoreNested",
-              "type": "boolean",
-              "docs": ""
-            }
-          ],
-          "docs": "Closes the accordion",
-          "docsTags": []
-        },
-        {
-          "name": "present",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "present() => Promise<void>",
-          "parameters": [],
-          "docs": "Opens the accordion",
-          "docsTags": []
-        },
-        {
-          "name": "toggle",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "toggle() => Promise<void>",
-          "parameters": [],
-          "docs": "Triggers the accordion",
-          "docsTags": []
-        }
-      ],
-      "events": [
-        {
-          "event": "balDidAnimate",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalListItemDidAnimateDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted after the animation has finished",
-          "docsTags": []
-        },
-        {
-          "event": "balGroupStateChanged",
-          "detail": "MouseEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalListItemGroupStateChangedDetail",
-            "resolved": "MouseEvent",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the state of the group is changing",
-          "docsTags": []
-        },
-        {
-          "event": "balNavigate",
-          "detail": "MouseEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalListItemNavigateDetail",
-            "resolved": "MouseEvent",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the link element has clicked",
-          "docsTags": []
-        },
-        {
-          "event": "balWillAnimate",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalListItemWillAnimateDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted before the animation starts",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-accordion-body.tsx",
-      "tag": "bal-list-item-accordion-body",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "accordionGroup",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "accordion-group",
-          "reflectToAttr": false,
-          "docs": "Synchronizes the height of the accordion to max of all\nthe other grouped accordion bodies",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "contentAlignment",
-          "type": "\"center\" | \"end\" | \"space-between\" | \"start\"",
-          "complexType": {
-            "original": "BalProps.BalListContentAlignment",
-            "resolved": "\"center\" | \"end\" | \"space-between\" | \"start\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "content-alignment",
-          "reflectToAttr": false,
-          "docs": "Sets justify-content of the items to start, center, end, or space-between. Default is start",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'start'"
-            }
-          ],
-          "default": "'start'",
-          "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
-            {
-              "value": "end",
-              "type": "string"
-            },
-            {
-              "value": "space-between",
-              "type": "string"
-            },
-            {
-              "value": "start",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "contentSpace",
-          "type": "\"none\" | \"normal\"",
-          "complexType": {
-            "original": "BalProps.BalListContentSpacing",
-            "resolved": "\"none\" | \"normal\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "content-space",
-          "reflectToAttr": false,
-          "docs": "Sets space to content of the accordion body",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'none'"
-            }
-          ],
-          "default": "'none'",
-          "values": [
-            {
-              "value": "none",
-              "type": "string"
-            },
-            {
-              "value": "normal",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-accordion-head.tsx",
-      "tag": "bal-list-item-accordion-head",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [
-        "bal-list-item-icon",
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon",
-          "bal-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "accordionOpen",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "accordion-open",
-          "reflectToAttr": false,
-          "docs": "If `true` the list accordion is open",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "icon",
-          "type": "\"nav-go-down\" | \"plus\"",
-          "complexType": {
-            "original": "BalProps.BalListItemAccordionHeadIcon",
-            "resolved": "\"nav-go-down\" | \"plus\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "icon",
-          "reflectToAttr": false,
-          "docs": "Icon name string with value 'plus' on default",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'plus'"
-            }
-          ],
-          "default": "'plus'",
-          "values": [
-            {
-              "value": "nav-go-down",
-              "type": "string"
-            },
-            {
-              "value": "plus",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [
-        {
-          "event": "balAccordionChange",
-          "detail": "boolean",
-          "bubbles": true,
-          "complexType": {
-            "original": "BalEvents.BalListAccordionChangeDetail",
-            "resolved": "boolean",
-            "references": {
-              "BalEvents": {
-                "location": "global",
-                "id": "global::BalEvents"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the accordion state is changed",
-          "docsTags": []
-        }
-      ],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-content.tsx",
-      "tag": "bal-list-item-content",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "contentAlignment",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "content-alignment",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-icon.tsx",
-      "tag": "bal-list-item-icon",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [
-        "bal-list-item-accordion-head"
-      ],
-      "dependencies": [],
-      "dependencyGraph": {
-        "bal-list-item-accordion-head": [
-          "bal-list-item-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "right",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "right",
-          "reflectToAttr": false,
-          "docs": "If `true` the icon is on the right side of the list item. Default is the left side.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-subtitle.tsx",
-      "tag": "bal-list-item-subtitle",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "listeners": []
-    },
-    {
-      "fileName": "bal-list-item-title.tsx",
-      "tag": "bal-list-item-title",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "none",
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "props": [
-        {
-          "name": "level",
-          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
-          "complexType": {
-            "original": "BalProps.BalHeadingLevel",
-            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "level",
-          "reflectToAttr": false,
-          "docs": "Heading level with value 'h4' on default",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'h5'"
-            }
-          ],
-          "default": "'h5'",
-          "values": [
-            {
-              "value": "2xl",
-              "type": "string"
-            },
-            {
-              "value": "3xl",
-              "type": "string"
-            },
-            {
-              "value": "4xl",
-              "type": "string"
-            },
-            {
-              "value": "5xl",
-              "type": "string"
-            },
-            {
-              "value": "base",
-              "type": "string"
-            },
-            {
-              "value": "display",
-              "type": "string"
-            },
-            {
-              "value": "display-2",
-              "type": "string"
-            },
-            {
-              "value": "h1",
-              "type": "string"
-            },
-            {
-              "value": "h2",
-              "type": "string"
-            },
-            {
-              "value": "h3",
-              "type": "string"
-            },
-            {
-              "value": "h4",
-              "type": "string"
-            },
-            {
-              "value": "h5",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "p",
-              "type": "string"
-            },
-            {
-              "value": "span",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "visualLevel",
-          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
-          "complexType": {
-            "original": "BalProps.BalHeadingVisualLevel",
-            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
-            "references": {
-              "BalProps": {
-                "location": "global",
-                "id": "global::BalProps"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "visual-level",
-          "reflectToAttr": false,
-          "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "2xl",
-              "type": "string"
-            },
-            {
-              "value": "3xl",
-              "type": "string"
-            },
-            {
-              "value": "4xl",
-              "type": "string"
-            },
-            {
-              "value": "5xl",
-              "type": "string"
-            },
-            {
-              "value": "base",
-              "type": "string"
-            },
-            {
-              "value": "display",
-              "type": "string"
-            },
-            {
-              "value": "display-2",
-              "type": "string"
-            },
-            {
-              "value": "h1",
-              "type": "string"
-            },
-            {
-              "value": "h2",
-              "type": "string"
-            },
-            {
-              "value": "h3",
-              "type": "string"
-            },
-            {
-              "value": "h4",
-              "type": "string"
-            },
-            {
-              "value": "h5",
-              "type": "string"
-            },
-            {
-              "value": "lg",
-              "type": "string"
-            },
-            {
-              "value": "md",
-              "type": "string"
-            },
-            {
-              "value": "xl",
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
       "listeners": []
     },
     {
@@ -10583,20 +9656,10 @@
     }
   ],
   "typeLibrary": {
-    "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx::BalListItemAccordionBodyAria": {
-      "declaration": "export interface BalListItemAccordionBodyAria {\n  labelledby?: string\n}",
-      "docstring": "",
-      "path": "src/components/bal-list/bal-list-item-accordion-body/bal-list-item-accordion-body.tsx"
-    },
     "src/utils/config/index.ts::BalConfigState": {
       "declaration": "any",
       "docstring": "",
       "path": "src/utils/config/index.ts"
-    },
-    "src/components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head.tsx::BalListItemAccordionHeadAria": {
-      "declaration": "export interface BalListItemAccordionHeadAria {\n  controlId?: string\n}",
-      "docstring": "",
-      "path": "src/components/bal-list/bal-list-item-accordion-head/bal-list-item-accordion-head.tsx"
     },
     "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertType": {
       "declaration": "export type AlertType = 'toast' | 'snackbar'",

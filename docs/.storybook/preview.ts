@@ -1,6 +1,5 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
 
-// export const decorators: Decorator[] = [(Story: any) => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
 export const decorators: Decorator[] = [(Story: any) => `${Story().outerHTML || Story()}`]
 
 const preview: Preview = {

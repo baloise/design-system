@@ -1,9 +1,212 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
 
 @forward '../bal-button/bal-button.style';
 
-@use './bal-accordion.style' with (
-  $use-host: true
-);
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
 
-@include hybrid.host-base(accordion, block);
+:host {
+  @include vars.focus(accordion);
+  @include vars.local(accordion-marker-size, 1rem);
+
+  @include vars.local(accordion-summary-color, inherit);
+  @include vars.local(accordion-summary-family, var(--bal-body-family));
+  @include vars.local(accordion-summary-weight, var(--bal-body-weight));
+  @include vars.local(accordion-summary-line-height, var(--bal-body-line-height));
+  @include vars.local(accordion-summary-size, var(--bal-text-size-base-device));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+//
+// Summary
+:host #summary:not(.button) {
+  @include unselectable();
+
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: inherit;
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  outline: none;
+
+  color: var(--_accordion-summary-color);
+  font-family: var(--_accordion-summary-family);
+  font-weight: var(--_accordion-summary-weight);
+  line-height: var(--_accordion-summary-line-height);
+  font-size: var(--_accordion-summary-size);
+
+  &.has-marker-left {
+    #marker {
+      order: -1;
+    }
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      color: var(--bal-link-color-base-hover);
+      bal-icon {
+        --icon-color: var(--bal-link-color-base-hover);
+      }
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    color: var(--bal-link-color-base-active);
+    bal-icon {
+      --icon-color: var(--bal-link-color-base-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      &:before {
+        @include vars.focus-styles(accordion);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--bal-radius-base);
+      }
+    }
+  }
+}
+
+//
+// Summary Label
+:host #label {
+  @include font-smoothing();
+
+  display: block;
+
+  &:not(.is-button) {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+:host(.is-title) {
+  --mod-accordion-summary-family: var(--bal-heading-family);
+  --mod-accordion-summary-weight: var(--bal-heading-weight);
+  --mod-accordion-summary-line-height: var(--bal-heading-line-height);
+}
+
+:host(.is-h1) {
+  --mod-accordion-summary-size: var(--bal-heading-1-size-device);
+}
+
+:host(.is-h2) {
+  --mod-accordion-summary-size: var(--bal-heading-2-size-device);
+}
+
+:host(.is-h3) {
+  --mod-accordion-summary-size: var(--bal-heading-3-size-device);
+}
+
+:host(.is-h4) {
+  --mod-accordion-summary-size: var(--bal-heading-4-size-device);
+}
+
+:host(.is-h5) {
+  --mod-accordion-summary-size: var(--bal-heading-5-size-device);
+}
+
+//
+// Summary Marker
+:host(:not(.is-button)) #marker {
+  min-width: var(--_accordion-marker-size);
+  width: 1.5rem;
+  height: var(--_accordion-marker-size);
+  cursor: pointer;
+}
+
+:host(:not(.is-button)[open]:not([open=' false '])) {
+  // @include attr.has(open) {
+  #marker {
+    transform: rotate(180deg);
+  }
+
+  #marker.has-marker-plus {
+    transform: rotate(45deg);
+  }
+}
+
+/**
+ * Animation: smooth open/close
+ * --------------------------------
+ * - Uses ::details-content when supported (modern browsers)
+ * - Falls back to animating element siblings after summary
+ */
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :host(.is-animated) #marker {
+    transition: transform 300ms ease;
+  }
+
+  :host(.is-animated) #content {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition:
+      content-visibility 0.3s,
+      grid-template-rows 0.3s;
+    transition-behavior: allow-discrete;
+  }
+
+  :host(.is-animated) #content > #inner {
+    min-height: 0;
+    transition: visibility 0.3s;
+    visibility: hidden;
+  }
+
+  :host(.is-animated[open]:not([open=' false '])) #content {
+    grid-template-rows: 1fr;
+  }
+
+  :host(.is-animated[open]:not([open=' false '])) #content > #inner {
+    visibility: visible;
+  }
+
+  :host(.is-animated[open]:not([open=' false ']):not(.is-animating)) #content {
+    overflow: visible;
+  }
+
+  :host(.is-animated.is-animating) #content {
+    overflow: hidden;
+  }
+}

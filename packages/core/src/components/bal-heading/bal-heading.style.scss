@@ -200,8 +200,12 @@ $size-aliases: (
 
 @include hybrid.styles-only($use-host) {
   @for $i from 1 through 5 {
-    h#{$i},
-    [role='heading'][aria-level='#{$i}'] {
+    h#{$i}.title,
+    h#{$i}.subtitle,
+    h#{$i}.heading,
+    [role='heading'][aria-level='#{$i}'].title,
+    [role='heading'][aria-level='#{$i}'].subtitle,
+    [role='heading'][aria-level='#{$i}'].heading {
       @include size($i);
     }
   }

@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import globalScript from '../../../global'
 import { balBrowser } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
-import { Icons } from '@baloise/ds-assets'
+// import { Icons } from '@baloise/ds-assets'
 import { BalIcons, updateBalIcons } from '../../../utils/config'
 
 /**
@@ -29,7 +29,7 @@ export class DocApp implements ComponentInterface {
 
   connectedCallback() {
     globalScript()
-    updateBalIcons(Icons as any as BalIcons)
+    // updateBalIcons(Icons as any as BalIcons)
   }
 
   componentDidRender() {

@@ -1,13 +1,28 @@
-import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
+import { ariaBooleanToString } from '../../utils/aria'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { AccordionState } from '../../interfaces'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { S } from 'vitest/dist/chunks/config.d.BTfZNUu9'
 
 @Component({
   tag: 'bal-accordion',
   styleUrl: 'bal-accordion.host.scss',
   shadow: true,
 })
-export class Accordion implements ComponentInterface {
+export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
   private accordionId = `bal-accordion-${accordionIds++}`
-  private detailsEl: HTMLDetailsElement | undefined
+
+  @State() animated = true
+  @State() isAnimating = false
+
+  log!: LogInstance
+
+  @Logger('bal-accordion')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
@@ -22,12 +37,22 @@ export class Accordion implements ComponentInterface {
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop() group?: string
+  @Prop({ reflect: true }) group?: string
 
   /**
-   * Displays the summary as a button and hides the default marker.
+   * The heading level of the summary
    */
-  @Prop() button = false
+  @Prop() summaryLevel: BalProps.BalAccordionSummaryLevel = 'h3'
+
+  /**
+   * The visual heading level of the summary.
+   */
+  @Prop() summaryVisualLevel?: BalProps.BalAccordionSummaryLevel
+
+  /**
+   * If `true` the summary is styled as a title.
+   */
+  @Prop() summaryTitle?: boolean
 
   /**
    * The marker variant. Only applies if `button` is `false`.
@@ -42,34 +67,44 @@ export class Accordion implements ComponentInterface {
   @Prop() markerPosition?: BalProps.BalAccordionMarkerPosition
 
   /**
+   * Displays the summary as a button and hides the default marker.
+   */
+  @Prop() button = false
+
+  /**
+   * If `true` the button is expanded to full width. Only applies if `button` is `true`.
+   */
+  @Prop() buttonExpanded = false
+
+  /**
    * The color of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonColor: BalProps.BalButtonColor = 'secondary'
+  @Prop() buttonColor: BalProps.BalButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonSize: BalProps.BalButtonSize = ''
+  @Prop() buttonSize?: BalProps.BalButtonSize
 
   /**
    * Label of the open trigger button
    */
-  @Prop() buttonLabelOpen = ''
+  @Prop() buttonLabelOpen?: string
 
   /**
    * BalIcon of the open trigger button
    */
-  @Prop() buttonIconOpen = 'caret-down'
+  @Prop() buttonIconOpen?: string
 
   /**
    * Label of the close trigger button
    */
-  @Prop() buttonLabelClose = ''
+  @Prop() buttonLabelClose?: string
 
   /**
    * BalIcon of the close trigger button
    */
-  @Prop() buttonIconClose = 'caret-up'
+  @Prop() buttonIconClose?: string
 
   /**
    * Emitted when the input value has changed.
@@ -105,11 +140,34 @@ export class Accordion implements ComponentInterface {
   }
 
   /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.animated = state.animated
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
 
-  private handleToggle(open: boolean) {
+  private handleToggle(event: MouseEvent, open: boolean) {
+    // check if target is link or button and ignore toggle if so,
+    // to allow nested interactive elements in the summary
+    const target = event.target as HTMLElement
+    const interactiveElement = target.closest('a, button')
+    if (interactiveElement && interactiveElement !== (event.currentTarget as HTMLElement)) {
+      return
+    }
+
+    if (this.animated) {
+      this.isAnimating = true
+    } else {
+      this.isAnimating = false
+    }
+
     this.open = open
 
     this.balToggle.emit({ id: this.accordionId, group: this.group, open })
@@ -121,60 +179,100 @@ export class Accordion implements ComponentInterface {
     }
   }
 
+  private onContentTransitionEnd = (_event: TransitionEvent) => {
+    if (this.animated) {
+      this.isAnimating = false
+    }
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
-    return (
-      <Host
+    const MarkerIcon = (
+      <bal-icon
+        id="marker"
+        part="marker"
         class={{
           'has-marker-plus': this.marker === 'plus' || (this.marker === 'plus-minus' && !this.open),
           'has-marker-minus': this.marker === 'plus-minus' && this.open,
         }}
+        name={
+          this.marker === 'plus' ? 'plus' : this.marker !== 'plus-minus' ? 'caret-down' : this.open ? 'minus' : 'plus'
+        }
+      ></bal-icon>
+    )
+
+    return (
+      <Host
+        class={{
+          'is-button': !!this.buttonIconOpen || !!this.buttonIconClose,
+          'is-title': this.summaryTitle === true || this.summaryVisualLevel !== undefined,
+          [`is-${this.summaryVisualLevel}`]: !!this.summaryVisualLevel,
+          'is-animated': !!this.animated,
+          'is-animating': !!this.animated && this.isAnimating,
+        }}
       >
-        <details
-          id={this.accordionId}
-          part="item"
-          class={{
-            'accordion': true,
-            'has-marker-none': this.button || this.marker === 'none',
-            'has-marker-plus': this.marker === 'plus',
-            'has-marker-plus-minus': this.marker === 'plus-minus',
-            'has-marker-left': this.markerPosition === 'left',
-          }}
-          open={this.open}
-          name={this.group}
-          ref={el => (this.detailsEl = el as HTMLDetailsElement)}
-          onToggle={() => {
-            this.handleToggle(this.detailsEl?.open ?? false)
-          }}
-        >
-          <summary
+        {/* ---------------------------------------- */}
+        {/* Summary                                  */}
+        {/* ---------------------------------------- */}
+        <this.summaryLevel id="header" part="header">
+          <button
+            type="button"
+            aria-expanded={ariaBooleanToString(this.open)}
+            aria-controls="content"
+            id="summary"
             part="summary"
+            onClick={ev => this.handleToggle(ev, !this.open)}
             class={{
               'button': this.button,
-              'at-end': this.button,
-              [`is-${this.buttonColor}`]: this.button,
-              [`is-${this.buttonSize}`]: this.button,
+              'is-fullwidth': this.buttonExpanded,
+              [`is-${this.buttonColor}`]: !!this.buttonColor,
+              [`is-${this.buttonSize}`]: !!this.buttonSize,
+              'has-marker-left': this.markerPosition === 'left',
             }}
           >
-            {this.button && this.buttonIconOpen && (
-              <bal-icon name={this.buttonIconOpen} size="small" class="is-closed"></bal-icon>
+            {/* ---------------------------------------- */}
+            {/* Summary Button Icon                      */}
+            {/* ---------------------------------------- */}
+            {this.buttonIconOpen || this.buttonIconClose ? (
+              <bal-icon
+                id="marker"
+                part="marker"
+                name={this.open ? this.buttonIconOpen : this.buttonIconClose}
+              ></bal-icon>
+            ) : (
+              this.button && MarkerIcon
             )}
-            {this.button && this.buttonLabelOpen && <span class="is-closed"> {this.buttonLabelOpen} </span>}
-            {this.button && this.buttonIconClose && (
-              <bal-icon name={this.buttonIconClose} size="small" class="is-open"></bal-icon>
-            )}
-            {this.button && this.buttonLabelClose && <span class="is-open"> {this.buttonLabelClose} </span>}
-            <slot name="summary" />
-          </summary>
-          <div class="content" part="content">
+            {/* ---------------------------------------- */}
+            {/* Summary Label                            */}
+            {/* ---------------------------------------- */}
+            <span id="label" class={{ 'is-button': this.button }}>
+              <slot name="summary">{this.open ? this.buttonLabelOpen : this.buttonLabelClose}</slot>
+            </span>
+            {/* ---------------------------------------- */}
+            {/* Summary Marker                           */}
+            {/* ---------------------------------------- */}
+            {!this.button && this.marker !== 'none' && !this.buttonIconOpen && MarkerIcon}
+          </button>
+        </this.summaryLevel>
+        {/* ---------------------------------------- */}
+        {/* Content                                  */}
+        {/* ---------------------------------------- */}
+        <div
+          id="content"
+          role="region"
+          aria-labelledby="summary"
+          part="content"
+          hidden={!this.open}
+          onTransitionEnd={this.onContentTransitionEnd}
+        >
+          <div id="inner">
             <slot name="content" />
-            <slot />
           </div>
-        </details>
+        </div>
       </Host>
     )
   }

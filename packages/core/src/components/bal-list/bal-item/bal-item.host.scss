@@ -1,11 +1,8 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 
-@use './bal-description-list-native.styles.scss';
-@use './bal-list-native.styles.scss';
-
-@use '../../vars' as vars;
-@use '../../hybrid' as hybrid;
-@use '../../typography' as typography;
+@use '../../../vars' as vars;
+@use '../../../hybrid' as hybrid;
+@use '../../../typography' as typography;
 
 /**
  * Variables
@@ -14,13 +11,7 @@
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-// ul.list {
-// }
-
-ul.list .item,
-ol.list .item,
-ul.list li details,
-ol.list li details {
+:host {
   @include vars.focus(list-item);
 
   @include vars.local(list-item-grid-template-columns, 1fr);
@@ -33,6 +24,8 @@ ol.list li details {
   @include vars.local(list-item-color, inherit);
   @include vars.local(list-item-border-color, var(--bal-list-item-border-color));
   @include vars.local(list-item-border-width, var(--bal-list-item-border-width, 2px));
+
+  @include vars.local(list-item-accordion-py, var(--bal-space-base-device));
 }
 
 /**
@@ -55,37 +48,14 @@ ol.list li details {
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-//
-// List
-ul.list,
-ol.list {
-  display: block;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-//
-// List Items
-ol.list li,
-ul.list li {
+:host {
   position: relative;
   display: grid;
   box-sizing: border-box;
-}
-
-ol.list li:not(.item),
-ul.list li:not(.item) {
   grid-template-columns: 1fr;
 }
 
-ol.list li.item,
-ol.list li .item,
-ul.list li.item,
-ul.list li .item {
-  min-height: var(--_list-item-min-height);
-  // grid-template-columns: var(--_list-item-grid-template-columns);
-
+:host #item {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -98,10 +68,12 @@ ul.list li .item {
   border: none;
   align-self: stretch;
   text-align: left;
-  font-family: var(--_list-item-title-family);
 
+  @include font-smoothing();
+  font-family: var(--_list-item-title-family);
   padding: var(--_list-item-space) 0;
   padding-bottom: calc(var(--_list-item-space) + 2px);
+  min-height: var(--_list-item-min-height);
 
   //
   // Icons
@@ -109,29 +81,28 @@ ul.list li .item {
     flex-shrink: 0;
   }
 
-  .item-content + bal-icon {
+  #content + bal-icon {
     --icon-size: var(--bal-icon-size-xs);
     --icon-inner-size: var(--bal-icon-size-xs);
   }
 
   //
   // Content
-  .item-content {
+  #content {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1px;
   }
 
-  .item-title {
+  #label {
     font-family: var(--_list-item-title-family);
     font-weight: var(--bal-text-weight-bold);
     font-size: var(--bal-heading-5-size-device);
     margin: 0;
   }
 
-  .item-text,
-  .item-subtitle {
+  #description {
     font-family: var(--_list-item-text-family);
     font-weight: var(--bal-text-weight-regular);
     font-size: var(--bal-text-size-sm-device);
@@ -151,123 +122,128 @@ ul.list li .item {
   * Link inside list item
   */
 
-ol.list li a.item,
-ol.list li button.item,
-ul.list li a.item,
-ul.list li button.item {
-  @include font-smoothing();
-  @include unselectable();
+:host(.is-link),
+:host(.is-button) {
+  #item {
+    @include unselectable();
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
 
-  cursor: pointer;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  font-family: var(--_list-item-title-family);
-  font-weight: var(--bal-text-weight-bold);
-  color: var(--bal-link-color-base);
+    &::-moz-focus-inner {
+      border: 0;
+    }
 
-  outline: none;
-  text-decoration: none;
+    #content {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      font-family: var(--_list-item-title-family);
+      font-weight: var(--bal-text-weight-bold);
+      color: var(--bal-link-color-base);
+    }
 
-  &::-moz-focus-inner {
-    border: 0;
-  }
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        &:after {
+          background: var(--bal-link-color-base-hover);
+        }
 
-  @include hover {
-    &:hover,
-    &.is-hovered {
-      --mod-list-item-border-color: var(--bal-link-color-base-hover);
-
-      color: var(--bal-link-color-base-hover);
-      bal-icon {
-        --icon-color: var(--bal-link-color-base-hover);
+        color: var(--bal-link-color-base-hover);
+        #content {
+          color: var(--bal-link-color-base-hover);
+        }
+        bal-icon,
+        ::slotted(bal-icon),
+        ::slotted(bal-badge) {
+          --icon-color: var(--bal-link-color-base-hover);
+        }
       }
     }
-  }
 
-  &:active,
-  &.is-pressed {
-    --mod-list-item-border-color: var(--bal-link-color-base-active);
+    &:active,
+    &.is-pressed {
+      &:after {
+        background: var(--bal-link-color-base-active);
+      }
 
-    color: var(--bal-link-color-base-active);
-    bal-icon {
-      --icon-color: var(--bal-link-color-base-active);
+      color: var(--bal-link-color-base-active);
+      #content {
+        color: var(--bal-link-color-base-active);
+      }
+      bal-icon,
+      ::slotted(bal-icon),
+      ::slotted(bal-badge) {
+        --icon-color: var(--bal-link-color-base-active);
+      }
     }
-  }
 
-  &:focus-visible,
-  &.is-focused {
-    &:not(:active) {
-      &:before {
-        @include vars.focus-styles(list-item);
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        &:before {
+          @include vars.focus-styles(list-item);
 
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-        border-radius: var(--bal-radius-base);
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          border-radius: var(--bal-radius-base);
+        }
       }
     }
   }
 }
 
 /**
-  * Accordion inside list item
+  * Accordion
   */
-
-ol.list li details,
-ul.list li details {
-  position: relative;
-  padding: 0;
-
-  &:after {
-    @include border();
-    height: var(--_list-item-border-width);
-    background: var(--_list-item-border-color);
+:host(.is-accordion) {
+  ::slotted(p) {
+    background: green;
+    padding-block: var(--_list-item-accordion-py);
   }
 
-  &,
-  & summary {
-    min-height: calc(3.5rem - 1rem);
-  }
+  #accordion-content {
+    // &::slotted(p) {
+    //   background: green;
+    //   padding-block: var(--_list-item-accordion-py);
+    // }
 
-  summary {
-    padding: 0.5rem 0;
-    position: relative;
-    &:before {
+    //
+    // Border
+    &:after {
       @include border();
       height: var(--_list-item-border-width);
       background: var(--_list-item-border-color);
     }
   }
 }
-
 /**
   * Disabled
   */
-
-ul.list li.item.is-disabled,
-ul.list li .item.is-disabled,
-ol.list li.item.is-disabled,
-ol.list li .item.is-disabled {
+:host(.is-disabled) #item {
   pointer-events: none !important;
   cursor: default !important;
 
   color: var(--bal-list-item-disabled);
+  #content {
+    color: var(--bal-list-item-disabled);
+  }
 
-  bal-icon {
+  bal-icon,
+  bal-badge,
+  ::slotted(bal-icon),
+  ::slotted(bal-badge) {
     --icon-color: var(--bal-list-item-disabled);
   }
-}
 
-/**
-  * Component Styles
-  * --------------------------------
-  */
-
-bal-item [slot='content'] {
-  font-size: var(--bal-text-size-sm);
-  @include typography.content(false);
+  bal-badge,
+  ::slotted(bal-badge) {
+    --badge-color-background: var(--bal-badge-color-grey-background);
+    --badge-color-text: var(--bal-badge-color-grey-text);
+  }
 }

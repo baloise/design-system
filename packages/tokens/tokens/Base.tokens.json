@@ -3437,41 +3437,6 @@
       }
     },
     "🗃️ Container": {
-      "Space": {
-        "Mobile": {
-          "$type": "number",
-          "$value": "{🧱 Primitive.📏 Size.Space.16}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:28:66",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.isOverride": true
-          }
-        },
-        "Tablet": {
-          "$type": "number",
-          "$value": "{🧱 Primitive.📏 Size.Space.40}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:28:67",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.isOverride": true
-          }
-        },
-        "Desktop": {
-          "$type": "number",
-          "$value": "{🧱 Primitive.📏 Size.Space.48}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:28:68",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.isOverride": true
-          }
-        }
-      },
       "Width": {
         "Modal": {
           "$type": "number",
@@ -3515,6 +3480,41 @@
               "ALL_SCOPES"
             ],
             "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Space": {
+        "Mobile": {
+          "$type": "number",
+          "$value": "{🧱 Primitive.📏 Size.Space.16}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:28:66",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Tablet": {
+          "$type": "number",
+          "$value": "{🧱 Primitive.📏 Size.Space.40}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:28:67",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Desktop": {
+          "$type": "number",
+          "$value": "{🧱 Primitive.📏 Size.Space.48}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:28:68",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         }
@@ -5823,7 +5823,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🏷️ Semantic.🎨 Background.Color.Red}",
+            "$value": "{🏷️ Semantic.🎨 Background.Color.RedLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:42:3",
               "com.figma.scopes": [
@@ -5847,7 +5847,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🏷️ Semantic.🎨 Background.Color.Purple}",
+            "$value": "{🏷️ Semantic.🎨 Background.Color.PurpleLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:42:5",
               "com.figma.scopes": [
@@ -5871,7 +5871,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🏷️ Semantic.🎨 Background.Color.Green}",
+            "$value": "{🏷️ Semantic.🎨 Background.Color.GreenLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:42:7",
               "com.figma.scopes": [
@@ -5895,7 +5895,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🏷️ Semantic.🎨 Background.Color.YellowLight}",
+            "$value": "{🏷️ Semantic.🎨 Background.Color.YellowLighter}",
             "$extensions": {
               "com.figma.variableId": "VariableID:42:9",
               "com.figma.scopes": [

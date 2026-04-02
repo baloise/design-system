@@ -17,7 +17,7 @@
         <!-- Basic Style -->
         <section data-testid="basic">
           <span>Basic</span>
-          <bal-accordion>
+          <bal-accordion summary-title>
             <div slot="summary">Details</div>
             <div slot="content" class="s-bg-1 s-height-4rem"></div>
           </bal-accordion>
@@ -94,7 +94,7 @@
             <div slot="summary">
               <span>
                 Text marker
-                <span class="accordion-label" aria-hidden="true">
+                <span aria-hidden="true">
                   <span class="is-closed">is closed</span>
                   <span class="is-open">is open</span>
                 </span>
@@ -107,7 +107,7 @@
             <div slot="summary">
               <span>
                 Text marker
-                <span class="accordion-label" aria-hidden="true">
+                <span aria-hidden="true">
                   <span class="is-closed">is closed</span>
                   <span class="is-open">is open</span>
                 </span>
@@ -186,6 +186,29 @@
         <!-- Button Accordion -->
         <section data-testid="button-accordion">
           <span>Button Accordion</span>
+
+          <bal-accordion
+            button
+            button-expanded
+            button-color="secondary"
+            button-label-open="edit"
+            button-label-close="close"
+          >
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+          <hr class="divider has-space-md" />
+          <bal-accordion
+            open
+            button
+            button-expanded
+            button-color="secondary"
+            button-label-open="edit"
+            button-label-close="close"
+          >
+            <div slot="content" class="s-bg-1 s-height-4rem"></div>
+          </bal-accordion>
+
+          <hr class="divider has-space-lg" />
 
           <bal-accordion
             button
