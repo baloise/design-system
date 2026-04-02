@@ -38,6 +38,16 @@ Tokens live in `packages/tokens/tokens/Base.tokens.json` and are processed by St
 - **Opacity:** Hidden, Half, Disabled, Backdrop, Full
 - **Breakpoint:** Tablet, Desktop, DesktopLG, DesktopXL, Desktop2XL
 
+### Naming Convention Reference
+
+Token names follow the [EightShapes naming guide](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676) — names move from broad category to specific property (e.g. `space` → `lg`, `color` → `primary`). When helping a developer name a new token, apply this principle: category first, modifier last.
+
+### Figma Integration
+
+Tokens are synced with Figma via the `$extensions.com.figma.variableId` field in `Base.tokens.json`. Each token carries a Figma variable ID, which means:
+- The source of truth is `Base.tokens.json` — changes there propagate to Figma
+- When referencing a token, it is available as a Figma variable under the same name
+
 ### CSS Variable Naming Convention
 
 ```
@@ -75,4 +85,4 @@ If multiple tokens could fit, list the top 2-3 with brief notes on when to use e
 
 ## Skill File Location
 
-`~/.claude/plugins/cache/claude-plugins-official/superpowers/` or local skills directory as `design-tokens.md`.
+`.claude/skills/design-tokens.md` in the project root (project-scoped skill, available to all contributors).
