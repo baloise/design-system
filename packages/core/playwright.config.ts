@@ -57,7 +57,7 @@ export default defineConfig({
   },
   projects: [
     {
-      name: '♿ A11Y',
+      name: '♿️ A11Y',
       testMatch: '**/*.a11y.play.ts',
       use: { ...devices['Desktop Chrome'] },
     },
