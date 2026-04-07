@@ -62,8 +62,7 @@ export const LeftMarkerAccordion = Story({
 })
 
 export const StackAccordion = Story({
-  args: {
-  },
+  args: {},
   ...withRender(
     ({ content, ...args }) => `
 <bal-card>

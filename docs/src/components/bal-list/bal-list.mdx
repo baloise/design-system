@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, BasicStoryTabs } from '../../../.storybook/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, BasicStoryTabs, TokenOverview } from '../../../.storybook/blocks'
 import * as ListStories from './bal-list.stories'
 
 <Meta of={ListStories} />
@@ -73,38 +73,18 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
-import balListItemApi from './bal-list-item/api.md?raw'
+import balItemApi from './bal-item/api.md?raw'
 
-<Markdown>{balListItemApi}</Markdown>
+<Markdown>{balItemApi}</Markdown>
 
-import balListItemTitleApi from './bal-list-item-title/api.md?raw'
+## CSS Variables
 
-<Markdown>{balListItemTitleApi}</Markdown>
-
-import balListItemContentApi from './bal-list-item-content/api.md?raw'
-
-<Markdown>{balListItemContentApi}</Markdown>
-
-import balListItemIconApi from './bal-list-item-icon/api.md?raw'
-
-<Markdown>{balListItemIconApi}</Markdown>
-
-import balListItemAccordionHeadApi from './bal-list-item-accordion-head/api.md?raw'
-
-<Markdown>{balListItemAccordionHeadApi}</Markdown>
-
-import balListItemAccordionBodyApi from './bal-list-item-accordion-body/api.md?raw'
-
-<Markdown>{balListItemAccordionBodyApi}</Markdown>
+<TokenOverview component="list" />
 
 ## Integration
 
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
-
-
-
-
 
 <Footer />

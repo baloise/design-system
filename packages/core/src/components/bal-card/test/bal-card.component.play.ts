@@ -1,4 +1,12 @@
-import { BalCard, BalCardActions, BalCardContent, BalCardHeader, BalCardSubtitle, BalCardTitle, test } from '@baloise/ds-playwright'
+import {
+  BalCard,
+  BalCardActions,
+  BalCardContent,
+  BalCardHeader,
+  BalCardSubtitle,
+  BalCardTitle,
+  test,
+} from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-card with default slot', async ({ page }) => {

@@ -11,11 +11,11 @@ Tokens live in `packages/tokens/tokens/Base.tokens.json` and are processed by St
 
 Three layers — always prefer Semantic for consumer use:
 
-| Layer | JSON key | Purpose | When to use |
-|-------|----------|---------|-------------|
-| Primitive | `🧱 Primitive` | Raw values (color scales, sizes, fonts) | Rarely — only when no semantic token fits |
-| Semantic | `🏷️ Semantic` | Meaningful abstractions | **Primary layer for component consumers** |
-| Component | `🧩 Component` | Per-component tokens | When building or overriding a specific DS component |
+| Layer     | JSON key       | Purpose                                 | When to use                                         |
+| --------- | -------------- | --------------------------------------- | --------------------------------------------------- |
+| Primitive | `🧱 Primitive` | Raw values (color scales, sizes, fonts) | Rarely — only when no semantic token fits           |
+| Semantic  | `🏷️ Semantic`  | Meaningful abstractions                 | **Primary layer for component consumers**           |
+| Component | `🧩 Component` | Per-component tokens                    | When building or overriding a specific DS component |
 
 ## Naming Convention
 
@@ -23,12 +23,12 @@ Follows the [EightShapes naming guide](https://medium.com/eightshapes-llc/naming
 
 CSS variable pattern: `--bal-[category]-[name]`
 
-| Example need | Token | CSS variable |
-|-------------|-------|-------------|
-| Large spacing | `space-lg` | `--bal-space-lg` |
+| Example need       | Token                      | CSS variable                     |
+| ------------------ | -------------------------- | -------------------------------- |
+| Large spacing      | `space-lg`                 | `--bal-space-lg`                 |
 | Primary background | `background-color-primary` | `--bal-background-color-primary` |
-| Base border radius | `radius-base` | `--bal-radius-base` |
-| Base text size | `text-size-base` | `--bal-text-size-base` |
+| Base border radius | `radius-base`              | `--bal-radius-base`              |
+| Base text size     | `text-size-base`           | `--bal-text-size-base`           |
 
 ## Responsive Tokens
 
@@ -63,8 +63,6 @@ When a developer asks "what token should I use for X?":
 2. **Read** `packages/tokens/dist/css/base.tokens.css` — find the exact CSS variable name and its resolved value
 3. **Return** in this format:
 
-> **Token:** `space-lg`
-> **CSS:** `var(--bal-space-lg)` → `1.5rem`
-> **Responsive variant:** `var(--bal-space-lg-device)` (scales with breakpoint)
+> **Token:** `space-lg` > **CSS:** `var(--bal-space-lg)` → `1.5rem` > **Responsive variant:** `var(--bal-space-lg-device)` (scales with breakpoint)
 
 If multiple tokens could fit, list the top 2–3 with a brief note on when to use each.

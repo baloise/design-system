@@ -12,7 +12,9 @@
     "packages/core/src/**/*.play.ts",
     "docs/src/components/bal-select/code-sandbox",
     "docs/public/*",
-    "docs/assets/*"
+    "docs/assets/*",
+    "CLAUDE.md",
+    "docs/superpowers/*"
   ],
   "words": [
     "Pausable",

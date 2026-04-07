@@ -34,6 +34,9 @@ docs/src/components/**/api.md
 docs/src/components/**/testing.md
 docs/src/components/**/theming.md
 
+CLAUDE.md
+docs/superpowers
+
 package-lock.json
 *.svg
 *.mdx
