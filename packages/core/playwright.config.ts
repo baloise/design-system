@@ -57,21 +57,32 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'desktop chrome',
+      name: '♿ A11Y',
+      testMatch: '**/*.a11y.play.ts',
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'mobile chrome',
+      name: '⚙️ Component',
+      testMatch: '**/*.component.play.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: '🖼️ Visual / 💻 Desktop Chrome',
+      testMatch: '**/*.visual.play.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: '🖼️ Visual / 📱 Mobile Chrome',
       testMatch: '**/*.visual.play.ts',
       use: { ...devices['Pixel 5'] },
     },
     // {
-    //   name: 'desktop safari',
+    //   name: '🖼️ Visual / 💻 Desktop Safari',
     //   testMatch: '**/*.visual.play.ts',
     //   use: { ...devices['Desktop Safari'] },
     // },
     // {
-    //   name: 'mobile safari',
+    //   name: '🖼️ Visual / 📱 Mobile Safari',
     //   testMatch: '**/*.visual.play.ts',
     //   use: { ...devices['iPhone 12'] },
     // },

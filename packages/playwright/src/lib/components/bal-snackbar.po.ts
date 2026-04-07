@@ -1,23 +1,24 @@
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
+import { BalClose } from './bal-close.po'
 import { E2ELocator } from '../page/utils'
 
 export class BalSnackbar extends PageObject {
-  private readonly closeButton: Locator
-  private readonly heading: Locator
-  private readonly expandButton: Locator
-  private readonly actions: Locator
+  public readonly close: BalClose
+  public readonly heading: Locator
+  public readonly expandButton: Locator
+  public readonly actions: Locator
 
   constructor(el: E2ELocator) {
     super(el)
-    this.closeButton = el.locator('bal-close')
+    this.close = new BalClose(el.locator('bal-close') as E2ELocator)
     this.heading = el.locator('h2')
     this.expandButton = el.locator('#mobile-button')
     this.actions = el.locator('#action').locator('bal-button')
   }
 
   async clickClose() {
-    await this.closeButton.click()
+    await this.close.click()
   }
 
   async clickAction(label: string) {

@@ -7,6 +7,7 @@ type Attributes = {
   target?: string
   rel?: string
   download?: string
+  onClick?: (event: MouseEvent) => void
 }
 
 @Component({
@@ -154,6 +155,10 @@ export class Item implements ComponentInterface {
     if (this.variant === 'button') {
       if (this.disabled) {
         attributes.disabled = this.disabled
+      } else {
+        attributes.onClick = (ev: MouseEvent) => {
+          this.balClick.emit(ev)
+        }
       }
     }
 
