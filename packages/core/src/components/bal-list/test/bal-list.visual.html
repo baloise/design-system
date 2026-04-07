@@ -12,14 +12,8 @@
   </head>
   <body>
     <main class="container">
-      <h1>Todo's</h1>
-      <ul class="unordered-list">
-        <li>Inverted Styles</li>
-        <li>Accordion</li>
-      </ul>
-
       <!-- Basic Style -->
-      <!-- <section data-testid="basic">
+      <section data-testid="basic">
         <span>Basic</span>
 
         <bal-list>
@@ -35,10 +29,10 @@
             <bal-icon slot="icon" name="file"></bal-icon>
           </bal-item>
         </bal-list>
-      </section> -->
+      </section>
 
       <!-- Ordered -->
-      <!-- <section data-testid="ordered">
+      <section data-testid="ordered">
         <span>Ordered</span>
 
         <bal-list ordered>
@@ -66,10 +60,10 @@
             <bal-badge color="purple" size="lg" slot="icon">4</bal-badge>
           </bal-item>
         </bal-list>
-      </section> -->
+      </section>
 
       <!-- Linked List -->
-      <!-- <section data-testid="linked">
+      <section data-testid="linked">
         <span>Linked List</span>
 
         <bal-list>
@@ -92,10 +86,10 @@
             target="_blank"
           ></bal-item>
         </bal-list>
-      </section> -->
+      </section>
 
       <!-- Download List -->
-      <!-- <section data-testid="download">
+      <section data-testid="download">
         <span>Download List</span>
 
         <bal-list>
@@ -115,7 +109,7 @@
             <bal-icon name="file" slot="icon"></bal-icon>
           </bal-item>
         </bal-list>
-      </section> -->
+      </section>
 
       <!-- List Accordions -->
       <section data-testid="accordion">
@@ -157,8 +151,8 @@
         <span>Nested Accordion List</span>
 
         <bal-list>
-          <bal-item variant="accordion" label="Switzerland">
-            <bal-list slot="accordion-content">
+          <bal-item variant="accordion" label="Switzerland" label-level="h4">
+            <bal-list slot="accordion-content" class="ml-large">
               <bal-item variant="accordion" label="Bern">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
@@ -182,8 +176,8 @@
               </bal-item>
             </bal-list>
           </bal-item>
-          <bal-item variant="accordion" label="Belgium">
-            <bal-list slot="accordion-content">
+          <bal-item variant="accordion" label="Belgium" label-level="h4">
+            <bal-list slot="accordion-content" class="ml-large">
               <bal-item variant="accordion" label="Brüssel">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam

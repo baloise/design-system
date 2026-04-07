@@ -19,13 +19,19 @@
   @include vars.local(list-item-gap, 1rem);
   @include vars.local(list-item-space, 0.5rem);
 
-  @include vars.local(list-item-title-family, var(--bal-font-family-heading));
-  @include vars.local(list-item-text-family, var(--bal-font-family-body));
   @include vars.local(list-item-color, inherit);
   @include vars.local(list-item-border-color, var(--bal-list-item-border-color));
   @include vars.local(list-item-border-width, var(--bal-list-item-border-width, 2px));
 
   @include vars.local(list-item-accordion-py, var(--bal-space-base-device));
+
+  @include vars.local(list-item-title-size, var(--bal-heading-5-size-device));
+  @include vars.local(list-item-title-weight, var(--bal-text-weight-bold));
+  @include vars.local(list-item-title-family, var(--bal-font-family-heading));
+
+  @include vars.local(list-item-text-family, var(--bal-font-family-body));
+  @include vars.local(list-item-text-weight, var(--bal-text-weight-regular));
+  @include vars.local(list-item-text-size, var(--bal-text-size-sm-device));
 }
 
 /**
@@ -53,6 +59,10 @@
   display: grid;
   box-sizing: border-box;
   grid-template-columns: 1fr;
+
+  ::slotted([slot='content']) {
+    min-height: 46px;
+  }
 }
 
 :host #item {
@@ -97,15 +107,15 @@
 
   #label {
     font-family: var(--_list-item-title-family);
-    font-weight: var(--bal-text-weight-bold);
-    font-size: var(--bal-heading-5-size-device);
+    font-weight: var(--_list-item-title-weight);
+    font-size: var(--_list-item-title-size);
     margin: 0;
   }
 
   #description {
     font-family: var(--_list-item-text-family);
-    font-weight: var(--bal-text-weight-regular);
-    font-size: var(--bal-text-size-sm-device);
+    font-weight: var(--_list-item-text-weight);
+    font-size: var(--_list-item-text-size);
     margin: 0;
   }
 
@@ -115,6 +125,26 @@
     @include border();
     height: var(--_list-item-border-width);
     background: var(--_list-item-border-color);
+  }
+}
+
+/**
+  * Label Sizes
+  */
+
+$size-aliases: (
+  (h1, 3xl): 1,
+  (h2, 2xl): 2,
+  (h3, xl): 3,
+  (h4, lg): 4,
+  (h5, base): 5,
+);
+
+@each $class-group, $token in $size-aliases {
+  @each $class in $class-group {
+    :host(.has-label-#{$class}) {
+      --mod-list-item-title-size: var(--bal-heading-#{$token}-size-device);
+    }
   }
 }
 
@@ -138,7 +168,8 @@
       hyphens: auto;
       overflow-wrap: break-word;
       font-family: var(--_list-item-title-family);
-      font-weight: var(--bal-text-weight-bold);
+      font-weight: var(--_list-item-title-weight);
+      font-size: var(--_list-item-title-size);
       color: var(--bal-link-color-base);
     }
 
@@ -203,16 +234,10 @@
   */
 :host(.is-accordion) {
   ::slotted(p) {
-    background: green;
     padding-block: var(--_list-item-accordion-py);
   }
 
   #accordion-content {
-    // &::slotted(p) {
-    //   background: green;
-    //   padding-block: var(--_list-item-accordion-py);
-    // }
-
     //
     // Border
     &:after {

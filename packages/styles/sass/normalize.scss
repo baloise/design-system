@@ -62,9 +62,12 @@
  * `article` contexts in Chrome, Edge, Firefox, and Safari.
  */
 
-:where(h1) {
-  font-size: 2em;
-  margin: 0.67em 0;
+:where(h1),
+:where(h2),
+:where(h3),
+:where(h4),
+:where(h5) {
+  margin: 0;
 }
 
 /* Grouping content

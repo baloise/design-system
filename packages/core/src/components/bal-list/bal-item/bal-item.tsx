@@ -75,6 +75,8 @@ export class Item implements ComponentInterface {
 
   @Prop() label?: string
   @Prop() labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'
+  @Prop() labelSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'
+
   @Prop() description?: string
 
   /**
@@ -106,6 +108,7 @@ export class Item implements ComponentInterface {
     const ItemTag = this.variant === 'link' ? 'a' : this.variant === 'button' ? 'button' : 'div'
 
     const LabelTag = this.labelLevel ? this.labelLevel : 'h5'
+    const labelSize = this.labelSize ? this.labelSize : this.labelLevel
 
     const hasActionIcon = this.variant === 'link' || this.variant === 'button'
     let actionIconName = ''
@@ -161,6 +164,7 @@ export class Item implements ComponentInterface {
           class={{
             'is-disabled': this.disabled,
             'is-accordion': this.variant === 'accordion',
+            [`has-label-${labelSize}`]: !!labelSize,
           }}
         >
           <bal-accordion
@@ -205,6 +209,7 @@ export class Item implements ComponentInterface {
           'is-disabled': this.disabled,
           'is-button': this.variant === 'button',
           'is-link': this.variant === 'link',
+          [`has-label-${labelSize}`]: !!labelSize,
         }}
       >
         <ItemTag id="item" part="item" {...attributes}>
