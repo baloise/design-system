@@ -17,7 +17,6 @@ const meta: Meta<Args> = {
   title: 'Components/Containment/Accordion',
   args: {
     ...withDefaultContent(lorem1),
-    summaryTitle: true,
   },
   argTypes: {
     ...withContent(),
@@ -41,23 +40,30 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
+export const Basic = Story({
+  args: {
+    summaryTitle: true,
+  },
+})
 
 export const PlusMarkerAccordion = Story({
   args: {
-    marker: 'plus'
-  }
+    marker: 'plus',
+    summaryTitle: true,
+  },
 })
 
 export const LeftMarkerAccordion = Story({
   args: {
     marker: 'plus-minus',
-    markerPosition: 'left'
+    markerPosition: 'left',
+    summaryTitle: true,
   },
 })
 
 export const StackAccordion = Story({
-  args: {},
+  args: {
+  },
   ...withRender(
     ({ content, ...args }) => `
 <bal-card>
@@ -73,8 +79,8 @@ export const StackAccordion = Story({
           class="align-self-start"
         ></bal-icon>
         <div class="stack-content">
-          <label class="label">Label Heading</label>
-          <span>${content}</span>
+          <h5 class="title">Label Heading</h5>
+          <span class="text is-sm">${content}</span>
         </div>
         <bal-switch></bal-switch>
       </div>
@@ -109,13 +115,12 @@ export const AccordionGroup = Story({
   ),
 })
 
-
 export const AccordionButton = Story({
   args: {
     button: true,
     buttonExpanded: true,
     buttonColor: 'secondary',
     buttonLabelOpen: 'edit',
-    buttonLabelClose: 'close'
+    buttonLabelClose: 'close',
   },
 })

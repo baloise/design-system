@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, BasicStoryTabs } from '../../../.storybook/blocks'
 import * as ListStories from './bal-list.stories'
 
 <Meta of={ListStories} />
@@ -10,39 +10,47 @@ import * as ListStories from './bal-list.stories'
 
 <Lead>**List** present content in a way that makes it easy to identify a specific item in a collection.</Lead>
 
-<Canvas of={ListStories.Basic} sourceState="shown" />
+{/* <Canvas of={ListStories.Basic} sourceState="shown" /> */}
+
+<BasicStoryTabs tag="list" index={1} htmlStory={ListStories.CssBasic} webComponentStory={ListStories.Basic} />
 
 <PlaygroundBar of={ListStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ListStories.UnorderedList}></StoryHeading>
+<StoryHeading of={ListStories.UnorderedListCss}></StoryHeading>
 
-<Canvas of={ListStories.UnorderedList} />
+<Canvas of={ListStories.UnorderedListCss} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.OrderedListCss}></StoryHeading>
+
+<Canvas of={ListStories.OrderedListCss} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.DescriptionListCss}></StoryHeading>
+
+<Canvas of={ListStories.DescriptionListCss} />
+
+{/* ------------------------------------------------------ */}
+<StoryHeading of={ListStories.LinkedList}></StoryHeading>
+
+<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.LinkedListCss} webComponentStory={ListStories.LinkedList} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.DownloadList}></StoryHeading>
+
+<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.DownloadListCss} webComponentStory={ListStories.DownloadList} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ListStories.OrderedList}></StoryHeading>
 
 <Canvas of={ListStories.OrderedList} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ListStories.DescriptionList}></StoryHeading>
-
-<Canvas of={ListStories.DescriptionList} />
-
-{/* ------------------------------------------------------ */}
-<StoryHeading of={ListStories.LinkedList}></StoryHeading>
-
-<Canvas of={ListStories.LinkedList} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ListStories.DownloadList}></StoryHeading>
-
-<Canvas of={ListStories.DownloadList} />
 
 {/* ------------------------------------------------------ */}
 
@@ -56,11 +64,6 @@ import * as ListStories from './bal-list.stories'
 
 <Canvas of={ListStories.AccordionListNested} />
 
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ListStories.AccordionListGrouped}></StoryHeading>
-
-<Canvas of={ListStories.AccordionListGrouped} />
 
 {/* ------------------------------------------------------ */}
 

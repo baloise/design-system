@@ -31,12 +31,46 @@ type StylesQuoteProps = {
 }
 
 type BasicStoryTabsProps = {
+  index?: number
   tag: string
+  noGuide?: boolean
   htmlStory: ModuleExport
   webComponentStory?: ModuleExport
 }
 
-export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStoryTabsProps): React.ReactElement => {
+export const BasicStoryTabs = ({
+  tag,
+  htmlStory,
+  webComponentStory,
+  index,
+  noGuide,
+}: BasicStoryTabsProps): React.ReactElement => {
+  if (index === 1) {
+    return (
+      <Tabs
+        tabs={[
+          {
+            label: 'Web Component',
+            content: (
+              <>
+                <Canvas of={webComponentStory} sourceState="shown" />
+                {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
+              </>
+            ),
+          },
+          {
+            label: 'HTML & CSS',
+            content: (
+              <>
+                <Canvas of={htmlStory} sourceState="shown" />
+                {noGuide !== true ? <StylesQuote tag={tag} /> : null}
+              </>
+            ),
+          },
+        ]}
+      />
+    )
+  }
   return (
     <Tabs
       tabs={[
@@ -45,7 +79,7 @@ export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStory
           content: (
             <>
               <Canvas of={htmlStory} sourceState="shown" />
-              <StylesQuote tag={tag} />
+              {noGuide !== true ? <StylesQuote tag={tag} /> : null}
             </>
           ),
         },
@@ -54,7 +88,7 @@ export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStory
           content: (
             <>
               <Canvas of={webComponentStory} sourceState="shown" />
-              <WebComponentQuote tag={tag} />
+              {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
             </>
           ),
         },

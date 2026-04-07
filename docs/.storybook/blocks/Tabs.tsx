@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useState } from 'react'
 
-type Props = PropsWithChildren<{ tabs: { label: string; content: React.ReactNode }[] }>
+type Props = PropsWithChildren<{ index?: number; tabs: { label: string; content: React.ReactNode }[] }>
 
-export const Tabs = ({ children, tabs }: Props): React.ReactNode => {
-  const [activeIndex, setActiveIndex] = useState(0)
+export const Tabs = ({ children, tabs, index }: Props): React.ReactNode => {
+  const [activeIndex, setActiveIndex] = useState(index ?? 0)
 
   return (
     <div className="sb-unstyled">
