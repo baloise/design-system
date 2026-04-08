@@ -2,10 +2,10 @@ import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const VARIANTS = ['unordered-list', 'ordered-list', 'inside-list', 'compact-list', 'description-list']
 
-const image = screenshot('bal-list-native')
+const image = screenshot('ds-list-native')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/bal-list/test/bal-list-native.visual.html`)
+  await page.setupVisualTest(`/components/ds-list/test/ds-list-native.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

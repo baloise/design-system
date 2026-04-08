@@ -1,12 +1,12 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-check'
+const TAG = 'ds-check'
 const VARIANTS = ['basic', 'disabled', 'invalid', 'inverted']
 
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/bal-checkbox/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/ds-checkbox/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

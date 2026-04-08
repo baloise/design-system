@@ -2,13 +2,13 @@ import { test } from '@baloise/ds-playwright'
 
 test.describe('a11y', () => {
   test('basic', async ({ page, a11y }) => {
-    await page.mount('<bal-tag>Tag</bal-tag>')
-    await a11y('bal-tag')
+    await page.mount('<ds-tag>Tag</ds-tag>')
+    await a11y('ds-tag')
   })
 
   test('closable', async ({ page, a11y }) => {
-    await page.mount('<bal-tag closable>Tag</bal-tag>')
-    await a11y('bal-tag')
+    await page.mount('<ds-tag closable>Tag</ds-tag>')
+    await a11y('ds-tag')
   })
 
   test.describe('colors', () => {
@@ -35,8 +35,8 @@ test.describe('a11y', () => {
 
     colors.forEach(color => {
       test(color, async ({ page, a11y }) => {
-        await page.mount(`<bal-tag color="${color}">Tag</bal-tag>`)
-        await a11y('bal-tag')
+        await page.mount(`<ds-tag color="${color}">Tag</ds-tag>`)
+        await a11y('ds-tag')
       })
     })
   })

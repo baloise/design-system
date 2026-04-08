@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-button'
+const TAG = 'ds-button'
 const VARIANTS = [
   'basic',
   'shadow',

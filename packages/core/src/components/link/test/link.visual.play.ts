@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-link'
+const TAG = 'ds-link'
 const VARIANTS = ['basic', 'inverted'] as const
 
 const image = screenshot(TAG)

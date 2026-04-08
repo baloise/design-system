@@ -3,10 +3,10 @@ import { DsButton, expect, test } from '@baloise/ds-playwright'
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
     await page.mount(`
-      <bal-button>Click me</bal-button>
+      <ds-button>Click me</ds-button>
     `)
 
-    const dsButton = new DsButton(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('ds-button'))
 
     await dsButton.assertToBeVisible()
     await dsButton.assertToContainText('Click me')
@@ -14,10 +14,10 @@ test.describe('component', () => {
 
   test('should fire dsClick event', async ({ page }) => {
     await page.mount(`
-      <bal-button>Click me</bal-button>
+      <ds-button>Click me</ds-button>
     `)
 
-    const dsButton = new DsButton(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('ds-button'))
     const spy = await dsButton.el.spyOnEvent('dsClick')
 
     await dsButton.click()
@@ -27,9 +27,9 @@ test.describe('component', () => {
 
   test('should not fire dsClick when disabled', async ({ page }) => {
     await page.mount(`
-      <bal-button disabled>Disabled</bal-button>
+      <ds-button disabled>Disabled</ds-button>
     `)
-    const dsButton = new DsButton(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('ds-button'))
     const spy = await dsButton.el.spyOnEvent('dsClick')
 
     await dsButton.assertToBeDisabled()

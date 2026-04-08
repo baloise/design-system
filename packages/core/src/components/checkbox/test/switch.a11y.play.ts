@@ -1,11 +1,11 @@
 import { test } from '@baloise/ds-playwright'
 
 test('unchecked', async ({ page, a11y }) => {
-  await page.mount(`<bal-switch></bal-switch>`)
-  await a11y('bal-switch')
+  await page.mount(`<ds-switch></ds-switch>`)
+  await a11y('ds-switch')
 })
 
 test('checked', async ({ page, a11y }) => {
-  await page.mount(`<bal-switch checked></bal-switch>`)
-  await a11y('bal-switch')
+  await page.mount(`<ds-switch checked></ds-switch>`)
+  await a11y('ds-switch')
 })

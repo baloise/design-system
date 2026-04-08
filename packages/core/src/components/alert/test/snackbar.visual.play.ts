@@ -1,12 +1,12 @@
 import { DsSnackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'bal-snackbar'
+const TAG = 'ds-snackbar'
 const VARIANTS = ['basic', 'variants', 'variants-with-brand-icon', 'colors']
 
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/bal-alert/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/ds-alert/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

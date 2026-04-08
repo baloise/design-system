@@ -1,8 +1,8 @@
 import { test } from '@baloise/ds-playwright'
 
 test('basic', async ({ page, a11y }) => {
-  await page.mount(`<bal-divider></bal-divider>`)
-  await a11y('bal-divider')
+  await page.mount(`<ds-divider></ds-divider>`)
+  await a11y('ds-divider')
 })
 
 test.describe('colors', () => {
@@ -23,8 +23,8 @@ test.describe('colors', () => {
   ] as const
   COLORS.forEach(color => {
     test(color, async ({ page, a11y }) => {
-      await page.mount(`<bal-divider color="${color}"></bal-divider>`)
-      await a11y(`bal-divider`)
+      await page.mount(`<ds-divider color="${color}"></ds-divider>`)
+      await a11y(`ds-divider`)
     })
   })
 })

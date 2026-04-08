@@ -1,38 +1,38 @@
 import { DsItem, DsList, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test('should render bal-list', async ({ page }) => {
+  test('should render ds-list', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const dsList = new DsList(page.locator('bal-list'))
+    const dsList = new DsList(page.locator('ds-list'))
 
     await dsList.assertToBeVisible()
   })
 
-  test('should render bal-item', async ({ page }) => {
+  test('should render ds-item', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const dsItem = new DsItem(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('ds-item'))
 
     await dsItem.assertToBeVisible()
   })
 
   test('should fire dsClick event on button variant', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item variant="button" label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item variant="button" label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const dsItem = new DsItem(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('ds-item'))
     const spy = await dsItem.el.spyOnEvent('dsClick')
 
     await dsItem.clickItem()
@@ -42,14 +42,14 @@ test.describe('component', () => {
 
   test('should fire dsAccordionToggle event on accordion variant', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item variant="accordion" label="Item 1">
+      <ds-list>
+        <ds-item variant="accordion" label="Item 1">
           <span slot="accordion-content">Content</span>
-        </bal-item>
-      </bal-list>
+        </ds-item>
+      </ds-list>
     `)
 
-    const dsItem = new DsItem(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('ds-item'))
     const spy = await dsItem.el.spyOnEvent('dsAccordionToggle')
 
     await dsItem.clickItem()
@@ -59,14 +59,14 @@ test.describe('component', () => {
 
   test('should assert open and closed state on accordion variant', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item variant="accordion" label="Item 1">
+      <ds-list>
+        <ds-item variant="accordion" label="Item 1">
           <span slot="accordion-content">Content</span>
-        </bal-item>
-      </bal-list>
+        </ds-item>
+      </ds-list>
     `)
 
-    const dsItem = new DsItem(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('ds-item'))
 
     await dsItem.accordion.assertToBeClosed()
 

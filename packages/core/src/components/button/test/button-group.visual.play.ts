@@ -1,13 +1,13 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-button-group'
+const TAG = 'ds-button-group'
 const VARIANTS = ['basic', 'group', 'long-labels', 'column-group', 'expanded', 'two-row-button-group']
 
 const image = screenshot(TAG)
 
 test.describe('style', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/bal-button/test/${TAG}.style.html`)
+    await page.setupVisualTest(`/components/ds-button/test/${TAG}.style.html`)
   })
 
   VARIANTS.forEach(variant => {
@@ -20,7 +20,7 @@ test.describe('style', () => {
 
 test.describe('host', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/bal-button/test/${TAG}.visual.html`)
+    await page.setupVisualTest(`/components/ds-button/test/${TAG}.visual.html`)
   })
 
   VARIANTS.forEach(variant => {
