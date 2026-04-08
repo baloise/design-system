@@ -1,7 +1,7 @@
 import { setupConfig, useBalConfig } from '../config'
-import { Date } from './date'
+import { BalDate } from './date'
 
-describe('balDate', () => {
+describe('Date', () => {
   let date = BalDate.fromISO('2001-02-01')
   beforeEach(() => {
     setupConfig()

@@ -7,7 +7,7 @@ export interface BalDateInfoOptions {
   locale?: string
 }
 
-export class Date {
+export class BalDate {
   public static setTwoDigitCutoffYear(cutoff = 10) {
     Settings.twoDigitCutoffYear = (new Date().getFullYear() % 100) + cutoff
   }
@@ -21,7 +21,7 @@ export class Date {
     const length = pairs.length
     if (length === 2) {
       const year = new Date().getFullYear()
-      return new Date(
+      return new BalDate(
         DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
           locale,
         }),
@@ -29,7 +29,7 @@ export class Date {
     }
     if (length === 3) {
       if (pairs[2].length === 1) {
-        return new Date(
+        return new BalDate(
           DateTime.fromFormat(
             `${pairs[0]}${separator}${pairs[1]}${separator}${2000 + parseInt(pairs[2], 10)}`,
             `d${separator}M${separator}yy`,
@@ -40,7 +40,7 @@ export class Date {
         )
       } else if (pairs[2] === '') {
         const year = new Date().getFullYear()
-        return new Date(
+        return new BalDate(
           DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
             locale,
           }),
@@ -48,11 +48,11 @@ export class Date {
       }
     }
 
-    return new Date(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
+    return new BalDate(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
   }
 
   public static fromISO(value: string | undefined) {
-    return new Date(DateTime.fromISO(value || ''))
+    return new BalDate(DateTime.fromISO(value || ''))
   }
 
   public static infoMonths({ format, locale }: BalDateInfoOptions = {}) {
