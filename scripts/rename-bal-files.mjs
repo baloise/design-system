@@ -54,7 +54,7 @@ for (const target of targets) {
   console.log(`\nProcessing: ${target}`)
   for (const entry of readdirSync(target)) {
     const full = join(target, entry)
-    if (statSync(full).isDirectory() && entry.startsWith('bal-')) {
+    if (statSync(full).isDirectory()) {
       renameDir(full)
     } else if (!statSync(full).isDirectory() && entry.startsWith('bal-')) {
       const newName = stripBal(entry)
