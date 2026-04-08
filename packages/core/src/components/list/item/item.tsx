@@ -172,7 +172,7 @@ export class Item implements ComponentInterface {
             [`has-label-${labelSize}`]: !!labelSize,
           }}
         >
-          <bal-accordion
+          <ds-accordion
             part="accordion"
             {...attributes}
             group={this.accordionGroup}
@@ -202,7 +202,7 @@ export class Item implements ComponentInterface {
                 <slot name="accordion-content"></slot>
               </div>
             </div>
-          </bal-accordion>
+          </ds-accordion>
         </Host>
       )
     }
@@ -224,7 +224,7 @@ export class Item implements ComponentInterface {
             {this.description && <p id="description">{this.description}</p>}
             <slot name="content"></slot>
           </div>
-          {hasActionIcon && <bal-icon name={actionIconName}></bal-icon>}
+          {hasActionIcon && <ds-icon name={actionIconName}></ds-icon>}
         </ItemTag>
       </Host>
     )

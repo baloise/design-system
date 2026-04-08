@@ -266,7 +266,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
         {/* Icon                                  */}
         {/* --------------------------------------*/}
         {this.iconName && !this.svgContent && (
-          <bal-icon
+          <ds-icon
             id="icon"
             part="icon"
             name={this.iconName}
@@ -279,9 +279,9 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
                   ? 'circle'
                   : undefined
             }
-          ></bal-icon>
+          ></ds-icon>
         )}
-        {this.svgContent && <bal-icon id="icon" part="icon" svg={this.svgContent}></bal-icon>}
+        {this.svgContent && <ds-icon id="icon" part="icon" svg={this.svgContent}></ds-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}
@@ -296,7 +296,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
         {/* Action Button                         */}
         {/* --------------------------------------*/}
         {this.action && (
-          <bal-button
+          <ds-button
             id="action"
             color="primary"
             size="sm"
@@ -311,19 +311,19 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
             }}
           >
             {this.action}
-          </bal-button>
+          </ds-button>
         )}
         {/* --------------------------------------*/}
         {/* Close Button                          */}
         {/* --------------------------------------*/}
         {this.closable && (
-          <bal-close
+          <ds-close
             part="close"
             onClick={ev => {
               stopEventBubbling(ev)
               this.close()
             }}
-          ></bal-close>
+          ></ds-close>
         )}
       </Host>
     )

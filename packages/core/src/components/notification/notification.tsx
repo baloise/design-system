@@ -118,13 +118,13 @@ export class Notification implements ComponentInterface {
       >
         <section id="notification" part="section">
           {this.closable && (
-            <bal-close
+            <ds-close
               part="close"
               onClick={ev => {
                 stopEventBubbling(ev)
                 this.close()
               }}
-            ></bal-close>
+            ></ds-close>
           )}
           {this.heading && <h2 part="heading">{this.heading}</h2>}
           <span>

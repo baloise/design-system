@@ -72,11 +72,11 @@ export class Tag {
           <slot />
         </span>
         {this.closable && !this.disabled ? (
-          <bal-close
+          <ds-close
             data-testid="bal-tag-close"
             {...this.inheritedAttributesClose}
             onClick={(ev: MouseEvent) => this.dsCloseClick.emit(ev)}
-          ></bal-close>
+          ></ds-close>
         ) : (
           ''
         )}

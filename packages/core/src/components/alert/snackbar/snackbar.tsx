@@ -230,19 +230,19 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
         {/* Mobile                                */}
         {/* --------------------------------------*/}
         {this.isMobile && !this.mobileOpenState && (
-          <bal-button
+          <ds-button
             id="mobile-button"
             color={this.color === 'base' ? 'primary' : this.color}
             square
             icon={this.iconName}
             onClick={() => (this.mobileOpenState = true)}
-          ></bal-button>
+          ></ds-button>
         )}
         {/* --------------------------------------*/}
         {/* Icon                                  */}
         {/* --------------------------------------*/}
         {this.iconName && !this.svgContent && (
-          <bal-icon
+          <ds-icon
             part="icon"
             id="icon"
             name={this.iconName}
@@ -255,9 +255,9 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
                   ? 'circle'
                   : undefined
             }
-          ></bal-icon>
+          ></ds-icon>
         )}
-        {this.svgContent && <bal-icon id="icon" part="icon" svg={this.svgContent} size={'xl'}></bal-icon>}
+        {this.svgContent && <ds-icon id="icon" part="icon" svg={this.svgContent} size={'xl'}></ds-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}
@@ -271,10 +271,10 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
         {/* --------------------------------------*/}
         {/* Action Button                         */}
         {/* --------------------------------------*/}
-        <bal-button-group part="action" id="action">
+        <ds-button-group part="action" id="action">
           <slot name="action" />
           {this.action && (
-            <bal-button
+            <ds-button
               color="primary"
               size="sm"
               part="button"
@@ -288,13 +288,13 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
               }}
             >
               {this.action}
-            </bal-button>
+            </ds-button>
           )}
           {/* --------------------------------------*/}
           {/* Close Button                          */}
           {/* --------------------------------------*/}
           {this.closable && (
-            <bal-close
+            <ds-close
               button
               button-color="secondary"
               part="close"
@@ -303,9 +303,9 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
                 stopEventBubbling(ev)
                 this.close()
               }}
-            ></bal-close>
+            ></ds-close>
           )}
-        </bal-button-group>
+        </ds-button-group>
       </Host>
     )
   }

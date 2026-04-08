@@ -12,9 +12,9 @@ export class CardActions {
   render() {
     return (
       <Host role="contentinfo">
-        <bal-button-group class="m-none" align={this.align}>
+        <ds-button-group class="m-none" align={this.align}>
           <slot />
-        </bal-button-group>
+        </ds-button-group>
       </Host>
     )
   }

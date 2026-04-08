@@ -48,7 +48,7 @@ export class Badge implements ComponentInterface {
       <Host>
         <span id="badge" part="badge">
           <slot></slot>
-          {this.size !== 'small' && !!this.icon ? <bal-icon part="icon" name={this.icon}></bal-icon> : ''}
+          {this.size !== 'small' && !!this.icon ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
         </span>
       </Host>
     )

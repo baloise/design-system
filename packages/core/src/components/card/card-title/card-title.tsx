@@ -26,9 +26,9 @@ export class CardTitle {
   render() {
     return (
       <Host>
-        <bal-heading level={this.level} visualLevel={this.visualLevel} space="none" inverted={this.inverted}>
+        <ds-heading level={this.level} visualLevel={this.visualLevel} space="none" inverted={this.inverted}>
           <slot></slot>
-        </bal-heading>
+        </ds-heading>
       </Host>
     )
   }
