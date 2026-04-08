@@ -3,10 +3,10 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalDividerLayout = 'horizontal' | 'vertical' | ''
-  export type BalDividerBorderStyle = 'solid' | 'dashed' | ''
-  export type BalDividerColor =
+namespace DS {
+  export type DividerLayout = 'horizontal' | 'vertical' | ''
+  export type DividerBorderStyle = 'solid' | 'dashed' | ''
+  export type DividerColor =
     | 'primary'
     | 'primary-light'
     | 'primary-dark'
@@ -21,7 +21,7 @@ namespace BalProps {
     | 'white'
     | 'light-blue'
 
-  export type BalDividerSpace =
+  export type DividerSpace =
     | 'none'
     | '2xs'
     | 'xs'

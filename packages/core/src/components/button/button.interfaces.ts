@@ -3,10 +3,10 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalButtonGroupAlignment = 'right' | 'center' | 'left'
-  export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
-  export type BalButtonColor =
+namespace DS {
+  export type ButtonGroupAlignment = 'right' | 'center' | 'left'
+  export type ButtonGroupDirection = 'auto' | 'row' | 'column'
+  export type ButtonColor =
     | 'primary'
     | 'secondary'
     | 'tertiary'
@@ -23,36 +23,34 @@ namespace BalProps {
     | 'info' // deprecated
     | 'primary-light' // deprecated
     | 'info-light' // deprecated
-  export type BalButtonElementType = 'button' | 'reset' | 'submit'
-  export type BalButtonSize = 'sm' | '' | 'lg' | 'xl' | 'small' | undefined
-  export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
-  export type BalButtonSpinner = 'logo' | 'circle' | true | false | undefined | ''
-  export type BalButtonAria = {
+  export type ButtonElementType = 'button' | 'reset' | 'submit'
+  export type ButtonSize = 'sm' | '' | 'lg' | 'xl' | 'small' | undefined
+  export type ButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
+  export type ButtonSpinner = 'logo' | 'circle' | true | false | undefined | ''
+  export type ButtonAria = {
     controls?: string
     title?: string
     label?: string
     haspopup?: string
   }
-}
 
-namespace BalEvents {
-  export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
+  export interface ButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLBalButtonElement
   }
 
-  export type BalButtonBlurDetail = void
-  export type BalButtonBlur = BalButtonCustomEvent<BalButtonBlurDetail>
+  export type ButtonBlurDetail = void
+  export type ButtonBlur = ButtonCustomEvent<ButtonBlurDetail>
 
-  export type BalButtonFocusDetail = void
-  export type BalButtonFocus = BalButtonCustomEvent<BalButtonFocusDetail>
+  export type ButtonFocusDetail = void
+  export type ButtonFocus = ButtonCustomEvent<ButtonFocusDetail>
 
-  export type BalButtonClickDetail = MouseEvent
-  export type BalButtonClick = BalButtonCustomEvent<BalButtonClickDetail>
+  export type ButtonClickDetail = MouseEvent
+  export type ButtonClick = ButtonCustomEvent<ButtonClickDetail>
 
-  export type BalButtonNavigateDetail = MouseEvent
-  export type BalButtonNavigate = BalButtonCustomEvent<BalButtonNavigateDetail>
+  export type ButtonNavigateDetail = MouseEvent
+  export type ButtonNavigate = ButtonCustomEvent<ButtonNavigateDetail>
 
-  export type BalButtonDidRenderDetail = void
-  export type BalButtonDidRender = BalButtonCustomEvent<BalButtonDidRenderDetail>
+  export type ButtonDidRenderDetail = void
+  export type ButtonDidRender = ButtonCustomEvent<ButtonDidRenderDetail>
 }

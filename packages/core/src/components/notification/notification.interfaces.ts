@@ -3,9 +3,9 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalNotificationSize = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
-  export type BalNotificationColor =
+namespace DS {
+  export type NotificationSize = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
+  export type NotificationColor =
     | 'base'
     | 'info'
     | 'success'
@@ -16,17 +16,15 @@ namespace BalProps {
     | 'outline-green'
     | 'outline-yellow'
     | 'outline-red'
-}
 
-namespace BalEvents {
-  export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
+  export interface NotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLBalNotificationElement
   }
 
-  export type BalNotificationCloseClickDetail = MouseEvent
-  export type BalNotificationCloseClick = BalNotificationCustomEvent<BalNotificationCloseClickDetail>
+  export type NotificationCloseClickDetail = MouseEvent
+  export type NotificationCloseClick = NotificationCustomEvent<NotificationCloseClickDetail>
 
-  export type BalNotificationActionClickDetail = MouseEvent
-  export type BalNotificationActionClick = BalNotificationCustomEvent<BalNotificationActionClickDetail>
+  export type NotificationActionClickDetail = MouseEvent
+  export type NotificationActionClick = NotificationCustomEvent<NotificationActionClickDetail>
 }

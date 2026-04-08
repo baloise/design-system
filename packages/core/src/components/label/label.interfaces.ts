@@ -3,9 +3,9 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalLabelWeight = 'bold' | 'regular'
-  export type BalLabelSize =
+namespace DS {
+  export type LabelWeight = 'bold' | 'regular'
+  export type LabelSize =
     | ''
     | 'sm'
     | 'lg'

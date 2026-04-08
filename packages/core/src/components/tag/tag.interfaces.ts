@@ -3,8 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalTagColor =
+namespace DS {
+  export type TagColor =
     | 'primary'
     | 'grey'
     | 'success'
@@ -24,18 +24,16 @@ namespace BalProps {
     | 'yellow-light'
     | 'green-light'
 
-  export type BalTagShape = 'square' | 'pill'
-  export type BalTagSize = 'small' | 'medium' | 'large'
-  export type BalTagFontWeight = 'regular' | 'bold'
-  export type BalTagPlacement = 'left' | 'center' | 'right'
-}
+  export type TagShape = 'square' | 'pill'
+  export type TagSize = 'small' | 'medium' | 'large'
+  export type TagFontWeight = 'regular' | 'bold'
+  export type TagPlacement = 'left' | 'center' | 'right'
 
-namespace BalEvents {
-  export interface BalTagCustomEvent<T> extends CustomEvent<T> {
+  export interface TagCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLBalTagElement
   }
 
-  export type BalTagCloseClickDetail = MouseEvent
-  export type BalTagCloseClick = BalTagCustomEvent<BalTagCloseClickDetail>
+  export type TagCloseClickDetail = MouseEvent
+  export type TagCloseClick = TagCustomEvent<TagCloseClickDetail>
 }

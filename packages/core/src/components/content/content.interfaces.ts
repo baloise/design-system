@@ -3,10 +3,10 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalContentLayout = 'horizontal' | 'vertical'
-  export type BalContentDirection = 'column' | 'row'
-  export type BalContentSpace =
+namespace DS {
+  export type ContentLayout = 'horizontal' | 'vertical'
+  export type ContentDirection = 'column' | 'row'
+  export type ContentSpace =
     | 'none'
     | '3xs'
     | '2xs'
@@ -19,6 +19,6 @@ namespace BalProps {
     | 'x-small'
     | 'small'
     | 'normal'
-  export type BalContentAlignment = 'start' | 'center' | 'end'
-  export type BalContentTextAlignment = 'left' | 'center' | 'right'
+  export type ContentAlignment = 'start' | 'center' | 'end'
+  export type ContentTextAlignment = 'left' | 'center' | 'right'
 }

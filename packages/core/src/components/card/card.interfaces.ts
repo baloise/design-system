@@ -3,15 +3,15 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalCardAlignment = 'right' | 'center' | 'left'
-  export type BalCardActionsAlignment = 'right' | 'center' | 'left'
-  export type BalCardFooterPosition = 'right' | 'center' | 'left'
-  export type BalCardHeaderDirection = 'row' | 'column'
-  export type BalCardButtonElementType = BalButtonElementType
-  export type BalCardButtonTarget = BalButtonTarget
-  export type BalCardSpace = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
-  export type BalCardColor =
+namespace DS {
+  export type CardAlignment = 'right' | 'center' | 'left'
+  export type CardActionsAlignment = 'right' | 'center' | 'left'
+  export type CardFooterPosition = 'right' | 'center' | 'left'
+  export type CardHeaderDirection = 'row' | 'column'
+  export type CardButtonElementType = ButtonElementType
+  export type CardButtonTarget = ButtonTarget
+  export type CardSpace = 'sm' | 'md' | 'lg' | '' | 'small' | 'medium' | 'large'
+  export type CardColor =
     | 'white'
     | 'primary'
     | 'info'

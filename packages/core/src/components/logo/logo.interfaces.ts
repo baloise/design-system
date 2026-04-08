@@ -3,8 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalLogoColor = 'primary' | 'white'
-  export type BalLogoSize = 'lg' | 'sm' | '' | 'large' | 'small'
-  export type BalLogoBrand = 'baloise' | 'helvetia' | ''
+namespace DS {
+  export type LogoColor = 'primary' | 'white'
+  export type LogoSize = 'lg' | 'sm' | '' | 'large' | 'small'
+  export type LogoBrand = 'baloise' | 'helvetia' | ''
 }

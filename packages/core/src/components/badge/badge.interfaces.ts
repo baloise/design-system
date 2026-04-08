@@ -3,8 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalBadgeSize = 'small' | 'large' | ''
-  export type BalBadgeColor = 'grey' | 'danger' | 'warning' | 'success' | 'red' | 'yellow' | 'green' | 'purple' | ''
-  export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
+namespace DS {
+  export type BadgeSize = 'small' | 'large' | ''
+  export type BadgeColor = 'grey' | 'danger' | 'warning' | 'success' | 'red' | 'yellow' | 'green' | 'purple' | ''
+  export type BadgePosition = 'card' | 'button' | 'tabs' | ''
 }

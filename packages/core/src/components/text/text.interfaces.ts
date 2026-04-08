@@ -3,9 +3,9 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalTextAlign = 'left' | 'right' | 'center' | 'justify'
-  export type BalTextSize =
+namespace DS {
+  export type TextAlign = 'left' | 'right' | 'center' | 'justify'
+  export type TextSize =
     | 'xs'
     | 'sm'
     | 'base'
@@ -20,8 +20,8 @@ namespace BalProps {
     | 'lead'
     | 'block'
     | ''
-  export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
-  export type BalTextColor =
+  export type TextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
+  export type TextColor =
     | 'light-blue'
     | 'blue-dark'
     | 'blue-light'

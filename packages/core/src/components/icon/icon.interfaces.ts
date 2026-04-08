@@ -3,9 +3,9 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalIconShape = 'triangle' | 'circle'
-  export type BalIconColor =
+namespace DS {
+  export type IconShape = 'triangle' | 'circle'
+  export type IconColor =
     | 'blue'
     | 'light-blue'
     | 'success'
@@ -27,9 +27,9 @@ namespace BalProps {
     | ''
     | string
     | undefined
-  export type BalIconTileColor = 'purple' | 'red' | 'yellow' | 'green'
+  export type IconTileColor = 'purple' | 'red' | 'yellow' | 'green'
 
-  export type BalIconSize =
+  export type IconSize =
     | 'xs'
     | 'sm'
     | 'md'

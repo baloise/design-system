@@ -3,10 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalSpinnerColor = 'blue' | 'white'
-  export type BalSpinnerVariation = 'logo' | 'circle'
-  export type BalSpinnerSize = 'sm' | ''
+namespace DS {
+  export type SpinnerColor = 'blue' | 'white'
+  export type SpinnerVariation = 'logo' | 'circle'
+  export type SpinnerSize = 'sm' | ''
 }
-
-namespace BalEvents {}

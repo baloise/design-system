@@ -3,8 +3,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalHeadingVisualLevel =
+namespace DS {
+  export type HeadingVisualLevel =
     | 'display'
     | 'display-2'
     | 'h1'
@@ -20,6 +20,6 @@ namespace BalProps {
     | 'lg'
     | 'md'
     | 'base'
-  export type BalHeadingLevel = BalHeadingVisualLevel | 'span' | 'p'
-  export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
+  export type HeadingLevel = HeadingVisualLevel | 'span' | 'p'
+  export type HeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 }

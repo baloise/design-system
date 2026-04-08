@@ -3,26 +3,24 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger'
-  export type BalToastDuration = number | 'infinite'
-}
+namespace DS {
+  export type ToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger'
+  export type ToastDuration = number | 'infinite'
 
-namespace BalEvents {
-  export interface BalToastCustomEvent<T> extends CustomEvent<T> {
+  export interface ToastCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLBalToastElement
   }
 
-  export type BalToastCloseClickDetail = MouseEvent
-  export type BalToastCloseClick = BalToastCustomEvent<BalToastCloseClickDetail>
+  export type ToastCloseClickDetail = MouseEvent
+  export type ToastCloseClick = ToastCustomEvent<ToastCloseClickDetail>
 
-  export type BalToastActionClickDetail = MouseEvent
-  export type BalToastActionClick = BalToastCustomEvent<BalToastActionClickDetail>
+  export type ToastActionClickDetail = MouseEvent
+  export type ToastActionClick = ToastCustomEvent<ToastActionClickDetail>
 
-  export type BalToastDidPauseDetail = void
-  export type BalToastDidPause = BalToastCustomEvent<BalToastDidPauseDetail>
+  export type ToastDidPauseDetail = void
+  export type ToastDidPause = ToastCustomEvent<ToastDidPauseDetail>
 
-  export type BalToastDidResumeDetail = void
-  export type BalToastDidResume = BalToastCustomEvent<BalToastDidResumeDetail>
+  export type ToastDidResumeDetail = void
+  export type ToastDidResume = ToastCustomEvent<ToastDidResumeDetail>
 }

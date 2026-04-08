@@ -3,6 +3,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalCloseSize = 'sm' | 'md' | 'small' | 'medium'
+namespace DS {
+  export type CloseSize = 'sm' | 'md' | 'small' | 'medium'
 }
