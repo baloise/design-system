@@ -16,67 +16,67 @@
       <section data-testid="basic">
         <span>Basic</span>
 
-        <bal-list>
-          <bal-item label="Item 1"></bal-item>
-          <bal-item label="Item 2" description="This is a description for item"></bal-item>
-          <bal-item>
+        <ds-list>
+          <ds-item label="Item 1"></ds-item>
+          <ds-item label="Item 2" description="This is a description for item"></ds-item>
+          <ds-item>
             <div slot="content">
               <h5>Item 3</h5>
               <span>This is a description for item</span>
             </div>
-          </bal-item>
-          <bal-item label="Item 4" description="This is a description for item">
-            <bal-icon slot="icon" name="file"></bal-icon>
-          </bal-item>
-        </bal-list>
+          </ds-item>
+          <ds-item label="Item 4" description="This is a description for item">
+            <ds-icon slot="icon" name="file"></ds-icon>
+          </ds-item>
+        </ds-list>
       </section>
 
       <!-- Ordered -->
       <section data-testid="ordered">
         <span>Ordered</span>
 
-        <bal-list ordered>
-          <bal-item variant="link" href="www.helvetia.com" target="_blank">
-            <bal-badge color="green" size="lg" slot="icon">
-              <bal-icon name="check"></bal-icon>
-            </bal-badge>
+        <ds-list ordered>
+          <ds-item variant="link" href="www.helvetia.com" target="_blank">
+            <ds-badge color="green" size="lg" slot="icon">
+              <ds-icon name="check"></ds-icon>
+            </ds-badge>
             <div slot="content">
               <h5>Item 1</h5>
               <span>This is a description for item</span>
             </div>
-          </bal-item>
+          </ds-item>
 
-          <bal-item label="Item 2" description="This is a description for item">
-            <bal-badge color="purple" size="lg" slot="icon">2</bal-badge>
-          </bal-item>
+          <ds-item label="Item 2" description="This is a description for item">
+            <ds-badge color="purple" size="lg" slot="icon">2</ds-badge>
+          </ds-item>
 
-          <bal-item label="Item 3" description="This is a description for item">
-            <bal-badge color="purple" size="lg" slot="icon">
-              <bal-icon name="document"></bal-icon>
-            </bal-badge>
-          </bal-item>
+          <ds-item label="Item 3" description="This is a description for item">
+            <ds-badge color="purple" size="lg" slot="icon">
+              <ds-icon name="document"></ds-icon>
+            </ds-badge>
+          </ds-item>
 
-          <bal-item label="Item 4" description="This is a description for item" disabled>
-            <bal-badge color="purple" size="lg" slot="icon">4</bal-badge>
-          </bal-item>
-        </bal-list>
+          <ds-item label="Item 4" description="This is a description for item" disabled>
+            <ds-badge color="purple" size="lg" slot="icon">4</ds-badge>
+          </ds-item>
+        </ds-list>
       </section>
 
       <!-- Linked List -->
       <section data-testid="linked">
         <span>Linked List</span>
 
-        <bal-list>
-          <bal-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></bal-item>
-          <bal-item
+        <ds-list>
+          <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
+          <ds-item
             variant="link"
             action-icon="link-external"
             label="External Link"
             description="Description"
             href="www.helvetia.com"
             target="_blank"
-          ></bal-item>
-          <bal-item
+          ></ds-item>
+          <ds-item
             disabled
             variant="link"
             action-icon="link-external"
@@ -84,39 +84,39 @@
             description="Description"
             href="www.helvetia.com"
             target="_blank"
-          ></bal-item>
-        </bal-list>
+          ></ds-item>
+        </ds-list>
       </section>
 
       <!-- Download List -->
       <section data-testid="download">
         <span>Download List</span>
 
-        <bal-list>
-          <bal-item variant="button" action-icon="download" label="Document" description="PDF - 98KB">
-            <bal-icon name="file" slot="icon"></bal-icon>
-          </bal-item>
-          <bal-item variant="button" action-icon="download" label="Picture" description="PNG - 140KB">
-            <bal-icon name="picture" slot="icon"></bal-icon>
-          </bal-item>
-          <bal-item variant="button" action-icon="download" label="Video" description="MP4 - 61MB">
-            <bal-icon name="video" slot="icon"></bal-icon>
-          </bal-item>
-          <bal-item variant="button" action-icon="download" label="Audio" description="MP3 - 5MB">
-            <bal-icon name="audio" slot="icon"></bal-icon>
-          </bal-item>
-          <bal-item disabled variant="button" action-icon="download" label="Disabled Document" description="PDF - 98KB">
-            <bal-icon name="file" slot="icon"></bal-icon>
-          </bal-item>
-        </bal-list>
+        <ds-list>
+          <ds-item variant="button" action-icon="download" label="Document" description="PDF - 98KB">
+            <ds-icon name="file" slot="icon"></ds-icon>
+          </ds-item>
+          <ds-item variant="button" action-icon="download" label="Picture" description="PNG - 140KB">
+            <ds-icon name="picture" slot="icon"></ds-icon>
+          </ds-item>
+          <ds-item variant="button" action-icon="download" label="Video" description="MP4 - 61MB">
+            <ds-icon name="video" slot="icon"></ds-icon>
+          </ds-item>
+          <ds-item variant="button" action-icon="download" label="Audio" description="MP3 - 5MB">
+            <ds-icon name="audio" slot="icon"></ds-icon>
+          </ds-item>
+          <ds-item disabled variant="button" action-icon="download" label="Disabled Document" description="PDF - 98KB">
+            <ds-icon name="file" slot="icon"></ds-icon>
+          </ds-item>
+        </ds-list>
       </section>
 
       <!-- List Accordions -->
       <section data-testid="accordion">
         <span>Accordion List</span>
 
-        <bal-list>
-          <bal-item
+        <ds-list>
+          <ds-item
             accordion-group="group1"
             variant="accordion"
             label="Wie ermittle ich die Versicherungssumme meines Hausrats?"
@@ -128,8 +128,8 @@
               nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den Hausrat», um den genauen Betrag zu
               berechnen.
             </p>
-          </bal-item>
-          <bal-item
+          </ds-item>
+          <ds-item
             accordion-group="group1"
             accordion-marker="plus-minus"
             variant="accordion"
@@ -142,59 +142,59 @@
               nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den Hausrat», um den genauen Betrag zu
               berechnen.
             </p>
-          </bal-item>
-        </bal-list>
+          </ds-item>
+        </ds-list>
       </section>
 
       <!-- Nested List Accordions -->
       <section data-testid="nested-accordion">
         <span>Nested Accordion List</span>
 
-        <bal-list>
-          <bal-item variant="accordion" label="Switzerland" label-level="h4">
-            <bal-list slot="accordion-content" class="ml-large">
-              <bal-item variant="accordion" label="Bern">
+        <ds-list>
+          <ds-item variant="accordion" label="Switzerland" label-level="h4">
+            <ds-list slot="accordion-content" class="ml-large">
+              <ds-item variant="accordion" label="Bern">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
                   similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic reprehenderit
                   quo maiores dicta reiciendis illum?
                 </p>
-              </bal-item>
-              <bal-item variant="accordion" label="Zurich">
+              </ds-item>
+              <ds-item variant="accordion" label="Zurich">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
                   similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic reprehenderit
                   quo maiores dicta reiciendis illum?
                 </p>
-              </bal-item>
-              <bal-item variant="accordion" label="Geneva">
+              </ds-item>
+              <ds-item variant="accordion" label="Geneva">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
                   similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic reprehenderit
                   quo maiores dicta reiciendis illum?
                 </p>
-              </bal-item>
-            </bal-list>
-          </bal-item>
-          <bal-item variant="accordion" label="Belgium" label-level="h4">
-            <bal-list slot="accordion-content" class="ml-large">
-              <bal-item variant="accordion" label="Brüssel">
+              </ds-item>
+            </ds-list>
+          </ds-item>
+          <ds-item variant="accordion" label="Belgium" label-level="h4">
+            <ds-list slot="accordion-content" class="ml-large">
+              <ds-item variant="accordion" label="Brüssel">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
                   similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic reprehenderit
                   quo maiores dicta reiciendis illum?
                 </p>
-              </bal-item>
-              <bal-item variant="accordion" label="Antwerpen">
+              </ds-item>
+              <ds-item variant="accordion" label="Antwerpen">
                 <p slot="accordion-content">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
                   similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic reprehenderit
                   quo maiores dicta reiciendis illum?
                 </p>
-              </bal-item>
-            </bal-list>
-          </bal-item>
-        </bal-list>
+              </ds-item>
+            </ds-list>
+          </ds-item>
+        </ds-list>
       </section>
     </main>
   </body>
