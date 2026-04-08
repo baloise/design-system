@@ -1,10 +1,10 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { shapes } from './bal-shape.data'
+import { shapes } from './shape.data'
 
 @Component({
   tag: 'bal-shape',
-  styleUrl: 'bal-shape.host.scss',
+  styleUrl: 'shape.host.scss',
   shadow: true,
 })
 export class Shape implements ComponentInterface {

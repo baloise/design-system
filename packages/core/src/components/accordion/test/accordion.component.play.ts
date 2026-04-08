@@ -1,4 +1,4 @@
-import { BalAccordion, expect, test } from '@baloise/ds-playwright'
+import { Accordion, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-accordion', async ({ page }) => {
@@ -9,12 +9,12 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const balAccordion = new BalAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new Accordion(page.locator('bal-accordion'))
 
-    await balAccordion.assertToBeVisible()
+    await dsAccordion.assertToBeVisible()
   })
 
-  test('should fire balToggle event', async ({ page }) => {
+  test('should fire dsToggle event', async ({ page }) => {
     await page.mount(`
       <bal-accordion>
         <span slot="summary">Title</span>
@@ -22,15 +22,15 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const balAccordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await balAccordion.el.spyOnEvent('balToggle')
+    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const spy = await dsAccordion.el.spyOnEvent('dsToggle')
 
-    await balAccordion.clickSummary()
+    await dsAccordion.clickSummary()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balOpened event', async ({ page }) => {
+  test('should fire dsOpened event', async ({ page }) => {
     await page.mount(`
       <bal-accordion>
         <span slot="summary">Title</span>
@@ -38,10 +38,10 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const balAccordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await balAccordion.el.spyOnEvent('balOpened')
+    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const spy = await dsAccordion.el.spyOnEvent('dsOpened')
 
-    await balAccordion.clickSummary()
+    await dsAccordion.clickSummary()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })
@@ -54,16 +54,16 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const balAccordion = new BalAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new Accordion(page.locator('bal-accordion'))
 
-    await balAccordion.assertToBeClosed()
+    await dsAccordion.assertToBeClosed()
 
-    await balAccordion.clickSummary()
+    await dsAccordion.clickSummary()
 
-    await balAccordion.assertToBeOpen()
+    await dsAccordion.assertToBeOpen()
   })
 
-  test('should fire balClosed event', async ({ page }) => {
+  test('should fire dsClosed event', async ({ page }) => {
     await page.mount(`
       <bal-accordion>
         <span slot="summary">Title</span>
@@ -71,11 +71,11 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const balAccordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await balAccordion.el.spyOnEvent('balClosed')
+    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const spy = await dsAccordion.el.spyOnEvent('dsClosed')
 
-    await balAccordion.clickSummary() // open
-    await balAccordion.clickSummary() // close
+    await dsAccordion.clickSummary() // open
+    await dsAccordion.clickSummary() // close
 
     expect(spy).toHaveReceivedEventTimes(1)
   })

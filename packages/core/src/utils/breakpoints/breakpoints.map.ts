@@ -2,7 +2,7 @@ import {
   BalBreakpointTablet,
   BalBreakpointDesktop,
   BalBreakpointDesktopLg,
-  BalBreakpointDesktopXl,
+  BreakpointDesktopXl,
   BalBreakpointDesktop2Xl,
 } from '@baloise/ds-tokens'
 

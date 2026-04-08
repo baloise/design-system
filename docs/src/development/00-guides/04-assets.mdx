@@ -122,11 +122,11 @@ Check out the [Google Maps JavaScript API Loader](https://github.com/googlemaps/
 After installing import the **balMapTypeStyles** into your Google Maps config object.
 
 ```ts
-import { balMapTypeStyles } from '@baloise/ds-maps'
+import { dsMapTypeStyles } from '@baloise/ds-maps'
 
 const myMap = new google.maps.map(myMapElement, {
   ...
-  styles: balMapTypeStyles
+  styles: dsMapTypeStyles
 })
 ```
 
@@ -135,13 +135,13 @@ const myMap = new google.maps.map(myMapElement, {
 To set a marker import the svg `balMapMarkerDefault` and pass it as the icon url.
 
 ```ts
-import { balMapMarkerDefault } from '@baloise/ds-maps'
+import { dsMapMarkerDefault } from '@baloise/ds-maps'
 
 new google.maps.Marker({
   position: { lat: 36.6163, lng: -100.61 },
   map,
   icon: {
-    url: balMapMarkerDefault,
+    url: dsMapMarkerDefault,
   },
   title: 'My Marker',
 })

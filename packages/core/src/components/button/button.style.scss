@@ -4,7 +4,7 @@
 @use '../../vars' as vars;
 @use '../../host' as host;
 @use '../../attr' as attr;
-@use './bal-button-group/bal-button-group.mixin.scss' as button-group;
+@use './button-group/button-group.mixin.scss' as button-group;
 
 $use-host: false !default;
 $name: button;

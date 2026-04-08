@@ -1,4 +1,4 @@
-import { BalSnackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { Snackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-snackbar'
 const VARIANTS = ['basic', 'variants', 'variants-with-brand-icon', 'colors']
@@ -21,11 +21,11 @@ test('mobile only', async ({ page, isMobile }) => {
 
   const el = page.getByTestId('basic-1')
 
-  const balSnackbar = new BalSnackbar(el)
+  const dsSnackbar = new Snackbar(el)
 
-  await balSnackbar.assertToBeVisible()
+  await dsSnackbar.assertToBeVisible()
 
   await expectScreenshot(el, image('mobile-variant-closed'))
-  await balSnackbar.expand()
+  await dsSnackbar.expand()
   await expectScreenshot(el, image('mobile-variant-open'))
 })

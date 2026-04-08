@@ -1,5 +1,5 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { addEventListener, removeEventListener } from '../helpers'
 import { focusableQueryString, focusFirstDescendant, focusLastDescendant, focusVisibleElement } from './focus-trap'
 
@@ -26,7 +26,7 @@ export interface HTMLBalOverlayElement extends HTMLStencilElement {
 
 export const prepareOverlay = (overlay: OverlayInterface) => {
   /* tslint:disable-next-line */
-  if (balBrowser.hasDocument) {
+  if (dsBrowser.hasDocument) {
     connectListeners(document)
   }
   const overlayIndex = lastId++

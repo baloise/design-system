@@ -1,9 +1,9 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
-import { balToastController, balSnackbarController } from './components/bal-alert/bal-alert.controller'
+import { dsToastController, dsSnackbarController } from './components/alert/alert.controller'
 import { tags } from './tags-all'
-import { balBrowser } from './utils/browser'
-import { BalConfig, BalPlatformConfig, setupConfig } from './utils/config'
+import { dsBrowser } from './utils/browser'
+import { BalConfig, PlatformConfig, setupConfig } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
 
 export const initializeBaloiseDesignSystem = (
@@ -11,7 +11,7 @@ export const initializeBaloiseDesignSystem = (
   platformConfig: BalPlatformConfig | undefined = undefined,
   win = {} as any,
 ) => {
-  if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
+  if (Object.keys(win).length === 0 && dsBrowser.hasWindow) {
     win = window as any
   }
 
@@ -28,8 +28,8 @@ export const initializeBaloiseDesignSystem = (
     win,
   )
 
-  win.BaloiseDesignSystem.toastController = balToastController
-  win.BaloiseDesignSystem.snackbarController = balSnackbarController
+  win.BaloiseDesignSystem.toastController = dsToastController
+  win.BaloiseDesignSystem.snackbarController = dsSnackbarController
   win.BaloiseDesignSystem.initialize = () => setupConfig(win.BaloiseDesignSystem.config, win)
   win.BaloiseDesignSystem.version = VERSION
 

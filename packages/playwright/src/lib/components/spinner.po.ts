@@ -2,7 +2,7 @@ import { Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalSpinner extends PageObject {
+export class Spinner extends PageObject {
   public readonly inner: Locator
 
   constructor(el: E2ELocator) {

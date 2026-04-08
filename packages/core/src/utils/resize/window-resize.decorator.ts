@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalWindowResizeObserver } from './window-resize.interfaces'
-import { BalWindowResizeSubject } from './window-resize.subject'
+import { WindowResizeObserver } from './window-resize.interfaces'
+import { WindowResizeSubject } from './window-resize.subject'
 
 export function ListenToWindowResize() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToWindowResize() {
 
     target.connectedCallback = function () {
       if (!this['_balWindowResizeSubject']) {
-        this['_balWindowResizeSubject'] = new BalWindowResizeSubject()
+        this['_balWindowResizeSubject'] = new WindowResizeSubject()
         this['_balWindowResizeSubject'].attach(this)
       }
 

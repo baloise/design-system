@@ -1,21 +1,21 @@
-import { BalWindowResizeListener } from '../resize/window-resize.listener'
-import { BalBreakpointObserver, BalBreakpoints } from './breakpoints.interfaces'
-import { balBreakpoints } from './breakpoints'
+import { WindowResizeListener } from '../resize/window-resize.listener'
+import { BalBreakpointObserver, Breakpoints } from './breakpoints.interfaces'
+import { dsBreakpoints } from './breakpoints'
 import { initialBreakpoints } from './breakpoints.const'
 import { Subject } from '../types/signal'
 import { debounce } from '../helpers'
 
-export class BalBreakpointSubject extends Subject<BalBreakpointObserver> {
+export class BreakpointSubject extends Subject<BalBreakpointObserver> {
   private state: BalBreakpoints = initialBreakpoints
-  private listener: BalWindowResizeListener = new BalWindowResizeListener()
+  private listener: BalWindowResizeListener = new WindowResizeListener()
   private debouncedNotify = debounce(() => this.notify(), 50)
 
   constructor() {
     super(observer => observer.breakpointListener(this.state))
     this.listener.connect()
     this.listener.add(() => {
-      balBreakpoints.detect()
-      const newState = balBreakpoints.toObject()
+      dsBreakpoints.detect()
+      const newState = dsBreakpoints.toObject()
       if (!this.isEqual(newState)) {
         this.state = newState
         this.debouncedNotify()
@@ -25,8 +25,8 @@ export class BalBreakpointSubject extends Subject<BalBreakpointObserver> {
 
   override attach(observer: BalBreakpointObserver): void {
     super.attach(observer)
-    balBreakpoints.detect()
-    const newState = balBreakpoints.toObject()
+    dsBreakpoints.detect()
+    const newState = dsBreakpoints.toObject()
 
     if (!this.isEqual(newState)) {
       this.state = newState
@@ -39,4 +39,4 @@ export class BalBreakpointSubject extends Subject<BalBreakpointObserver> {
   }
 }
 
-export const balBreakpointSubject = new BalBreakpointSubject()
+export const dsBreakpointSubject = new BreakpointSubject()

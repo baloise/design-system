@@ -1,8 +1,8 @@
 import { SingleSubject } from '../types/signal'
-import { BalKeyboardInfo, BalKeyboardListenerFn, BalKeyboardObserver } from './keyboard.interfaces'
-import { BalKeyboardListener } from './keyboard.listener'
+import { BalKeyboardInfo, BalKeyboardListenerFn, KeyboardObserver } from './keyboard.interfaces'
+import { KeyboardListener } from './keyboard.listener'
 
-export class BalKeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKeyboardInfo> {
+export class KeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKeyboardInfo> {
   private listener = new BalKeyboardListener<BalKeyboardListenerFn>()
 
   constructor() {

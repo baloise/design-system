@@ -2,7 +2,7 @@
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 @use '../../attr' as attr;
-@use './bal-tag-group/bal-tag-group.mixin.scss' as tags;
+@use './tag-group/tag-group.mixin.scss' as tags;
 
 $use-host: false !default;
 $name: tag;

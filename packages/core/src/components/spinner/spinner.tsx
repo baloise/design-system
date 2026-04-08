@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { BalConfigObserver, BalConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
+import { BalConfigObserver, ConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
 import { raf, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
@@ -9,7 +9,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
 
 @Component({
   tag: 'bal-spinner',
-  styleUrl: 'bal-spinner.host.scss',
+  styleUrl: 'spinner.host.scss',
   shadow: true,
 })
 export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {

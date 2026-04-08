@@ -139,7 +139,7 @@ In each app component, import the necessary Baloise Design System components or 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
+import { BalLayoutBundle, BalHeading, Button } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',
@@ -181,7 +181,7 @@ For each angular sub module you need to import the `BaloiseDesignSystemModule` t
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BalButton, BalHeading, BalLayoutBundle, provideBaloiseDesignSystem } from '@baloise/ds-angular'
+import { BalButton, BalHeading, LayoutBundle, provideBaloiseDesignSystem } from '@baloise/ds-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -425,7 +425,7 @@ import {
   BalApp,
   BalHeading,
   BalButton,
-  BalFooter,
+  Footer,
 } from '@baloise/ds-react'
 
 function App() {

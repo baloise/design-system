@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-badge',
-  styleUrl: 'bal-badge.host.scss',
+  styleUrl: 'badge.host.scss',
   shadow: true,
 })
 export class Badge implements ComponentInterface {

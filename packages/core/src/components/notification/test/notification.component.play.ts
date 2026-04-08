@@ -1,4 +1,4 @@
-import { BalNotification, expect, test } from '@baloise/ds-playwright'
+import { Notification, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,21 +6,21 @@ test.describe('component', () => {
       <bal-notification>Notification message</bal-notification>
     `)
 
-    const balNotification = new BalNotification(page.locator('bal-notification'))
+    const dsNotification = new Notification(page.locator('bal-notification'))
 
-    await balNotification.assertToBeVisible()
-    await balNotification.assertToContainText('Notification message')
+    await dsNotification.assertToBeVisible()
+    await dsNotification.assertToContainText('Notification message')
   })
 
-  test('should fire balCloseClick event', async ({ page }) => {
+  test('should fire dsCloseClick event', async ({ page }) => {
     await page.mount(`
       <bal-notification closable>Notification message</bal-notification>
     `)
 
-    const balNotification = new BalNotification(page.locator('bal-notification'))
-    const spy = await balNotification.el.spyOnEvent('balCloseClick')
+    const dsNotification = new Notification(page.locator('bal-notification'))
+    const spy = await dsNotification.el.spyOnEvent('dsCloseClick')
 
-    await balNotification.clickClose()
+    await dsNotification.clickClose()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })

@@ -2,9 +2,9 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import type { PointerListener } from 'contactjs'
 import { rOnLoad } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalSwipeInfo } from './swipe.interfaces'
+import { SwipeInfo } from './swipe.interfaces'
 
-export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, BalSwipeInfo> {
+export class SwipeListener<TObserver> extends ListenerAbstract<TObserver, BalSwipeInfo> {
   private PointerListenerLib: typeof PointerListener | undefined
   private pointerListener: PointerListener | undefined
 

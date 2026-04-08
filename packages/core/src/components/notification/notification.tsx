@@ -15,7 +15,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-notification',
-  styleUrl: 'bal-notification.host.scss',
+  styleUrl: 'notification.host.scss',
   shadow: true,
 })
 export class Notification implements ComponentInterface {
@@ -66,12 +66,12 @@ export class Notification implements ComponentInterface {
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<BalEvents.BalNotificationCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<BalEvents.BalNotificationCloseClickDetail>
 
   /**
    * Emitted when the component has loaded.
    */
-  @Event() balDidLoad!: EventEmitter<void>
+  @Event() dsDidLoad!: EventEmitter<void>
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
@@ -79,7 +79,7 @@ export class Notification implements ComponentInterface {
 
   componentDidLoad(): void {
     this.didLoad = true
-    this.balDidLoad.emit()
+    this.dsDidLoad.emit()
   }
 
   /**
@@ -87,7 +87,7 @@ export class Notification implements ComponentInterface {
    */
   @Method()
   async close(): Promise<void> {
-    this.balCloseClick.emit()
+    this.dsCloseClick.emit()
     this.closeHandler()
   }
 

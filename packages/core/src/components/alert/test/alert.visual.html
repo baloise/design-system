@@ -11,10 +11,10 @@
     <script nomodule src="/build/baloise-design-system.js"></script>
 
     <script type="module">
-      import { balToastController, balSnackbarController } from '/build/index.esm.js'
+      import { dsToastController, dsSnackbarController } from '/build/index.esm.js'
 
-      window.balToastController = balToastController
-      window.balSnackbarController = balSnackbarController
+      window.dsToastController = dsToastController
+      window.dsSnackbarController = dsSnackbarController
     </script>
   </head>
   <body>
@@ -28,7 +28,7 @@
           <script>
             let id = 1
             document.getElementById('toast-basic').addEventListener('click', () => {
-              balToastController.create({
+              dsToastController.create({
                 message: 'Hi I am a default Toast! Hi I am a default Toast! ' + id++,
               })
             })
@@ -37,7 +37,7 @@
           <bal-button id="toast-closable" data-testid="toast-closable">Closable + Infinite</bal-button>
           <script>
             document.getElementById('toast-closable').addEventListener('click', () => {
-              balToastController.create({
+              dsToastController.create({
                 heading: 'Closable + Infinite',
                 message: 'Hi I am a default Toast! Hi I am a default Toast!',
                 closable: true,
@@ -50,7 +50,7 @@
           <bal-button id="toast-infinite" data-testid="toast-infinite">Infinite</bal-button>
           <script>
             document.getElementById('toast-infinite').addEventListener('click', async () => {
-              const toastId = await balToastController.create({
+              const toastId = await dsToastController.create({
                 heading: 'Heading',
                 message: 'Hi I am a default Toast! Hi I am a default Toast!',
                 color: 'danger',
@@ -59,7 +59,7 @@
                 action: 'Close',
                 actionHandler: id => {
                   console.log('Action callback called', id)
-                  balToastController.remove(id)
+                  dsToastController.remove(id)
                 },
               })
             })
@@ -74,7 +74,7 @@
           <script>
             let idSnackbar = 1
             document.getElementById('snackbar-basic').addEventListener('click', () => {
-              balSnackbarController.create({
+              dsSnackbarController.create({
                 message: 'Hi I am a default Snackbar! Hi I am a default Snackbar! ' + idSnackbar++,
               })
             })
@@ -83,7 +83,7 @@
           <bal-button id="snackbar-closable" data-testid="snackbar-closable">Closable + Infinite</bal-button>
           <script>
             document.getElementById('snackbar-closable').addEventListener('click', () => {
-              balSnackbarController.create({
+              dsSnackbarController.create({
                 heading: 'Closable + Infinite',
                 message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
                 closable: true,
@@ -96,7 +96,7 @@
           <bal-button id="snackbar-infinite" data-testid="snackbar-infinite">Infinite</bal-button>
           <script>
             document.getElementById('snackbar-infinite').addEventListener('click', async () => {
-              const snackbarId = await balSnackbarController.create({
+              const snackbarId = await dsSnackbarController.create({
                 heading: 'Heading',
                 message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
                 color: 'danger',
@@ -105,7 +105,7 @@
                 action: 'Close',
                 actionHandler: id => {
                   console.log('Action callback called', id)
-                  balSnackbarController.remove(id)
+                  dsSnackbarController.remove(id)
                 },
               })
             })

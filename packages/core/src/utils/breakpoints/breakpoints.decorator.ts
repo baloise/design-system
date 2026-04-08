@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { balBreakpointSubject } from './breakpoints.subject'
-import { BalBreakpointObserver } from './breakpoints.interfaces'
+import { dsBreakpointSubject } from './breakpoints.subject'
+import { BreakpointObserver } from './breakpoints.interfaces'
 
 export function ListenToBreakpoints() {
   return function (
@@ -11,12 +11,12 @@ export function ListenToBreakpoints() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      balBreakpointSubject.attach(this as any)
+      dsBreakpointSubject.attach(this as any)
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      balBreakpointSubject.detach(this as any)
+      dsBreakpointSubject.detach(this as any)
       return disconnectedCallback && disconnectedCallback.call(this)
     }
   }

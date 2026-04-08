@@ -1,4 +1,4 @@
-import { BalSnackbar, BalToast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { BalSnackbar, Toast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-alert'
 
@@ -21,7 +21,7 @@ test.describe('toast', () => {
     await expectScreenshot(page, image('toast-closable-before'))
     await el.click()
     await expectScreenshot(page, image('toast-closable-open'))
-    const toast = new BalToast(page.locator('bal-toast'))
+    const toast = new Toast(page.locator('bal-toast'))
     await toast.clickClose()
     await expectScreenshot(page, image('toast-closable-closed'))
   })
@@ -31,7 +31,7 @@ test.describe('toast', () => {
     await expectScreenshot(page, image('toast-infinite-before'))
     await el.click()
     await expectScreenshot(page, image('toast-infinite-open'))
-    const toast = new BalToast(page.locator('bal-toast'))
+    const toast = new Toast(page.locator('bal-toast'))
     await toast.clickAction()
     await expectScreenshot(page, image('toast-infinite-closed'))
   })
@@ -51,7 +51,7 @@ test.describe('snackbar', () => {
     await expectScreenshot(page, image('snackbar-closable-before'))
     await el.click()
     await expectScreenshot(page, image('snackbar-closable-open'))
-    const snackbar = new BalSnackbar(page.locator('bal-snackbar'))
+    const snackbar = new Snackbar(page.locator('bal-snackbar'))
     await snackbar.clickClose()
     await expectScreenshot(page, image('snackbar-closable-closed'))
   })
@@ -62,7 +62,7 @@ test.describe('snackbar', () => {
     await expectScreenshot(page, image('snackbar-infinite-before'))
     await el.click()
     await expectScreenshot(page, image('snackbar-infinite-open'))
-    const snackbar = new BalSnackbar(page.locator('bal-snackbar'))
+    const snackbar = new Snackbar(page.locator('bal-snackbar'))
     await snackbar.clickAction('Close')
     await expectScreenshot(page, image('snackbar-infinite-closed'))
   })

@@ -1,4 +1,4 @@
-import { BalClose, test } from '@baloise/ds-playwright'
+import { Close, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,9 +6,9 @@ test.describe('component', () => {
       <bal-close></bal-close>
     `)
 
-    const balClose = new BalClose(page.locator('bal-close'))
+    const dsClose = new Close(page.locator('bal-close'))
 
-    await balClose.assertToBeVisible()
+    await dsClose.assertToBeVisible()
   })
 
   test('should click', async ({ page }) => {
@@ -16,8 +16,8 @@ test.describe('component', () => {
       <bal-close></bal-close>
     `)
 
-    const balClose = new BalClose(page.locator('bal-close'))
+    const dsClose = new Close(page.locator('bal-close'))
 
-    await balClose.click()
+    await dsClose.click()
   })
 })

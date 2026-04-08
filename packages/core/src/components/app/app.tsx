@@ -1,15 +1,15 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../../utils/browser'
+import { dsBrowser } from '../../utils/browser'
 import { updateBalAnimated } from '../../utils/config'
-import { balDevice } from '../../utils/device'
+import { dsDevice } from '../../utils/device'
 import { startFocusVisible } from '../../utils/focus-visible'
 import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-app',
-  styleUrl: 'bal-app.scss',
+  styleUrl: 'app.scss',
 })
 export class App implements Loggable {
   private focusVisible?: any
@@ -37,14 +37,14 @@ export class App implements Loggable {
   /**
    * Emitted when app is ready and painted.
    */
-  @Event() balAppReady!: EventEmitter<void>
+  @Event() dsAppReady!: EventEmitter<void>
 
   connectedCallback() {
     if (this.animated === false) {
       updateBalAnimated(this.animated)
     }
 
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       window.addEventListener('resize', this.debouncedNotify)
       this.debouncedNotify()
     }
@@ -57,16 +57,16 @@ export class App implements Loggable {
     })
 
     rOnLoad(() => {
-      if (balBrowser.hasDocument && balBrowser.hasWindow) {
+      if (dsBrowser.hasDocument && dsBrowser.hasWindow) {
         const doc = document.documentElement
         doc.classList.add('lcp-ready')
-        this.balAppReady.emit()
+        this.dsAppReady.emit()
       }
     })
   }
 
   disconnectedCallback() {
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       window.removeEventListener('resize', this.debouncedNotify)
     }
   }
@@ -79,7 +79,7 @@ export class App implements Loggable {
   }
 
   notifyResize = async () => {
-    if (balBrowser.hasDocument && balBrowser.hasWindow) {
+    if (dsBrowser.hasDocument && dsBrowser.hasWindow) {
       const doc = document.documentElement
       doc.style.setProperty('--bal-app-height', `${window.innerHeight}px`)
     }
@@ -90,8 +90,8 @@ export class App implements Loggable {
       <Host
         class={{
           'bal-app': true,
-          'bal-app--safari': balBrowser.isSafari,
-          'bal-app--touch': balDevice.hasTouchScreen,
+          'bal-app--safari': dsBrowser.isSafari,
+          'bal-app--touch': dsDevice.hasTouchScreen,
         }}
       >
         <slot></slot>

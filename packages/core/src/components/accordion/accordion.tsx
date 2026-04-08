@@ -1,13 +1,13 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { ariaBooleanToString } from '../../utils/aria'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { BalConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
 import { AccordionState } from '../../interfaces'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { S } from 'vitest/dist/chunks/config.d.BTfZNUu9'
 
 @Component({
   tag: 'bal-accordion',
-  styleUrl: 'bal-accordion.host.scss',
+  styleUrl: 'accordion.host.scss',
   shadow: true,
 })
 export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
@@ -109,17 +109,17 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() balOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() balClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * LISTENERS
@@ -170,12 +170,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
     this.open = open
 
-    this.balToggle.emit({ id: this.accordionId, group: this.group, open })
+    this.dsToggle.emit({ id: this.accordionId, group: this.group, open })
 
     if (open) {
-      this.balOpened.emit({ id: this.accordionId, group: this.group, open })
+      this.dsOpened.emit({ id: this.accordionId, group: this.group, open })
     } else {
-      this.balClosed.emit({ id: this.accordionId, group: this.group, open })
+      this.dsClosed.emit({ id: this.accordionId, group: this.group, open })
     }
   }
 

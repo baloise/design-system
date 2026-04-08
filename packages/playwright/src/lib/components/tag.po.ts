@@ -2,7 +2,7 @@ import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalTag extends PageObject {
+export class Tag extends PageObject {
   private readonly closeButton: Locator
 
   constructor(el: E2ELocator) {

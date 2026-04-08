@@ -8,7 +8,7 @@ import {
   PlaygroundBar,
   StoryHeading,
 } from '../../../.storybook/blocks'
-import * as ToastStories from './bal-toast.stories'
+import * as ToastStories from './toast.stories'
 
 <Meta of={ToastStories} />
 
@@ -33,7 +33,7 @@ import * as ToastStories from './bal-toast.stories'
 
 ## Component API
 
-import api from '../bal-alert/bal-toast/api.md?raw'
+import api from '../alert/toast/api.md?raw'
 
 <Markdown>{api}</Markdown>
 
@@ -48,7 +48,7 @@ Use the `BalToastService` to create new notices.
 ```typescript
 // app.component.ts
 import { Component } from '@angular/core'
-import { BalToastService } from '@baloise/ds-angular'
+import { ToastService } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',

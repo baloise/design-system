@@ -1,4 +1,4 @@
-import { BalLogo, test } from '@baloise/ds-playwright'
+import { Logo, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,8 +6,8 @@ test.describe('component', () => {
       <bal-logo></bal-logo>
     `)
 
-    const balLogo = new BalLogo(page.locator('bal-logo'))
+    const dsLogo = new Logo(page.locator('bal-logo'))
 
-    await balLogo.assertToBeVisible()
+    await dsLogo.assertToBeVisible()
   })
 })

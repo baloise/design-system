@@ -11,21 +11,21 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, Breakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
 import { stopEventBubbling } from '../../../utils/form-input'
-import { AlertComponent } from '../bal-alert-container.interfaces'
+import { AlertComponent } from '../alert-container.interfaces'
 import { sanitizeSvg } from '../../../utils/svg'
 import { raf } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-snackbar',
-  styleUrl: 'bal-snackbar.host.scss',
+  styleUrl: 'snackbar.host.scss',
   shadow: true,
 })
 export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpointObserver {
   @Element() element!: HTMLBalSnackbarElement
 
-  @State() isMobile = balBreakpoints.isMobile
+  @State() isMobile = dsBreakpoints.isMobile
   @State() mobileOpenState = false
   @State() didLoad = false
 
@@ -118,18 +118,18 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<BalEvents.BalSnackbarCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<BalEvents.BalSnackbarCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() balActionClick!: EventEmitter<BalEvents.BalSnackbarActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<BalEvents.BalSnackbarActionClickDetail>
 
   /**
    * @internal
    * Emitted when the component has loaded.
    */
-  @Event() balDidLoad!: EventEmitter<void>
+  @Event() dsDidLoad!: EventEmitter<void>
 
   /**
    * LIFECYCLE
@@ -144,7 +144,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
-      this.balDidLoad.emit()
+      this.dsDidLoad.emit()
     })
   }
 
@@ -168,7 +168,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
    */
   @Method()
   async close(): Promise<void> {
-    this.balCloseClick.emit()
+    this.dsCloseClick.emit()
     this.closeHandler(this.alertId)
   }
 
@@ -283,7 +283,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
               href={this.actionHref}
               onClick={ev => {
                 stopEventBubbling(ev)
-                this.balActionClick.emit(ev)
+                this.dsActionClick.emit(ev)
                 this.actionHandler(this.alertId)
               }}
             >

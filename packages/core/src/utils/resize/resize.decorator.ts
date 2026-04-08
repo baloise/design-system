@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalResizeSubject } from './resize.subject'
-import { BalResizeObserver } from './resize.interfaces'
+import { ResizeSubject } from './resize.subject'
+import { ResizeObserver } from './resize.interfaces'
 
 export function ListenToResize() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToResize() {
 
     target.connectedCallback = function () {
       if (!this['_balResizeSubject']) {
-        this['_balResizeSubject'] = new BalResizeSubject()
+        this['_balResizeSubject'] = new ResizeSubject()
         this['_balResizeSubject'].attach(this)
       }
 

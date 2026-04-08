@@ -138,7 +138,7 @@ To change the language or region during run time use the two functions `updateBa
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { updateBalLanguage, BalSwissLanguage } from '@baloise/ds-core'
+import { updateBalLanguage, SwissLanguage } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-app-tab-a',
@@ -201,7 +201,7 @@ To subscribe to changes of the region or language during runtime you can registe
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { onBalConfigChange, BalConfigState } from '@baloise/ds-core'
+import { onBalConfigChange, ConfigState } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-sample',
@@ -228,7 +228,7 @@ ${' '}}
 To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
 
 <Code language="typescript" code={`
-import { onBalConfigChange, BalConfigState } from '@baloise/ds-core'
+import { onBalConfigChange, ConfigState } from '@baloise/ds-core'
 
 onBalConfigChange((config: BalConfigState) => {
 // do something with the updated config here

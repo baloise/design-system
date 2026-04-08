@@ -8,7 +8,7 @@ import {
   PlaygroundBar,
   StoryHeading,
 } from '../../../.storybook/blocks'
-import * as SnackbarStories from './bal-snackbar.stories'
+import * as SnackbarStories from './snackbar.stories'
 
 <Meta of={SnackbarStories} />
 
@@ -39,7 +39,7 @@ import * as SnackbarStories from './bal-snackbar.stories'
 
 ## Component API
 
-import api from '../bal-alert/bal-snackbar/api.md?raw'
+import api from '../alert/snackbar/api.md?raw'
 
 <Markdown>{api}</Markdown>
 
@@ -54,7 +54,7 @@ Use the `BalSnackbarService` to create new notices.
 ```typescript
 // app.component.ts
 import { Component } from '@angular/core'
-import { BalSnackbarService } from '@baloise/ds-angular'
+import { SnackbarService } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',

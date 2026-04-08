@@ -1,9 +1,9 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { addEventListener, removeEventListener, debounce, isChildOfEventTarget } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalAnimationObserverInfo } from './animation.interfaces'
+import { AnimationObserverInfo } from './animation.interfaces'
 
-export class BalAnimationListener extends ListenerAbstract<unknown, BalAnimationObserverInfo> {
+export class AnimationListener extends ListenerAbstract<unknown, BalAnimationObserverInfo> {
   private debouncedNotify = debounce(target => this.notify({ target }), 42)
 
   private callbackWillAnimate = (ev: UIEvent) => {

@@ -1,7 +1,7 @@
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { Config } from './config'
-import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
-import { BalConfigObserver } from './observable/observer'
+import { BalConfigState, BalIcons, BalLanguage, Region } from './config.types'
+import { ConfigObserver } from './observable/observer'
 
 export type BalConfigChangeFn = (config: BalConfigState) => void
 
@@ -14,7 +14,7 @@ export const onBalConfigChange = (callback: BalConfigChangeFn) => {
 }
 
 export const useBalConfig = (): Config | undefined => {
-  if (!balBrowser.hasWindow) {
+  if (!dsBrowser.hasWindow) {
     return undefined
   }
 

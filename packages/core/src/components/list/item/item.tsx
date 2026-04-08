@@ -12,7 +12,7 @@ type Attributes = {
 
 @Component({
   tag: 'bal-item',
-  styleUrl: 'bal-item.host.scss',
+  styleUrl: 'item.host.scss',
   shadow: true,
 })
 export class Item implements ComponentInterface {
@@ -83,22 +83,22 @@ export class Item implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+  @Event() dsClick!: EventEmitter<BalEvents.BalButtonClickDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balAccordionToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() balAccordionOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() balAccordionClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
 
   /**
    * RENDER
@@ -157,7 +157,7 @@ export class Item implements ComponentInterface {
         attributes.disabled = this.disabled
       } else {
         attributes.onClick = (ev: MouseEvent) => {
-          this.balClick.emit(ev)
+          this.dsClick.emit(ev)
         }
       }
     }
@@ -180,13 +180,13 @@ export class Item implements ComponentInterface {
             marker={this.accordionMarker}
             marker-position={this.accordionMarkerPosition}
             onBalOpened={ev => {
-              this.balAccordionOpened.emit(ev.detail)
+              this.dsAccordionOpened.emit(ev.detail)
             }}
             onBalClosed={ev => {
-              this.balAccordionClosed.emit(ev.detail)
+              this.dsAccordionClosed.emit(ev.detail)
             }}
             onBalToggle={ev => {
-              this.balAccordionToggle.emit(ev.detail)
+              this.dsAccordionToggle.emit(ev.detail)
             }}
           >
             <div slot="summary" id="item" part="item">

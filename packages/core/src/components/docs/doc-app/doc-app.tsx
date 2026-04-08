@@ -1,16 +1,16 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import globalScript from '../../../global'
-import { balBrowser } from '../../../utils/browser'
-import { BalLogger } from '../../../utils/log'
+import { dsBrowser } from '../../../utils/browser'
+import { Logger } from '../../../utils/log'
 // import { Icons } from '@baloise/ds-assets'
-import { BalIcons, updateBalIcons } from '../../../utils/config'
+import { Icons, updateBalIcons } from '../../../utils/config'
 
 /**
  * @internal
  */
 @Component({
   tag: 'bal-doc-app',
-  styleUrl: 'bal-doc-app.scss',
+  styleUrl: 'doc-app.scss',
 })
 export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''
@@ -43,7 +43,7 @@ export class DocApp implements ComponentInterface {
       render: this.logRender,
       custom: this.logCustom,
     }
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       if (this.logComponents) {
         ;(window as any).BaloiseDesignSystem.config.logger = logConfig
       }

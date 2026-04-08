@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalFocusObserver } from './focus.interfaces'
-import { BalFocusSubject } from './focus.subject'
+import { FocusObserver } from './focus.interfaces'
+import { FocusSubject } from './focus.subject'
 
 export function ListenToFocus() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToFocus() {
 
     target.connectedCallback = function () {
       if (!this['_balFocusSubject']) {
-        this['_balFocusSubject'] = new BalFocusSubject()
+        this['_balFocusSubject'] = new FocusSubject()
         this['_balFocusSubject'].attach(this)
       }
 

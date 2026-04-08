@@ -1,5 +1,5 @@
 import type { JSHandle } from '@playwright/test'
-import { BalPage } from '../types'
+import { Page } from '../types'
 
 /**
  * The EventSpy class allows developers to listen for a particular event emission and

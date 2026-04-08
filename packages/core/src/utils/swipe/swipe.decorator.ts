@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalSwipeSubject } from './swipe.subject'
-import { BalSwipeObserver } from './swipe.interfaces'
+import { SwipeSubject } from './swipe.subject'
+import { SwipeObserver } from './swipe.interfaces'
 
 export function ListenToSwipe(options: { mobileOnly: boolean } = { mobileOnly: false }) {
   return function (
@@ -12,7 +12,7 @@ export function ListenToSwipe(options: { mobileOnly: boolean } = { mobileOnly: f
 
     target.connectedCallback = function () {
       if (!this['_balSwipeSubject']) {
-        this['_balSwipeSubject'] = new BalSwipeSubject(options)
+        this['_balSwipeSubject'] = new SwipeSubject(options)
         this['_balSwipeSubject'].attach(this)
       }
       return connectedCallback && connectedCallback.call(this)

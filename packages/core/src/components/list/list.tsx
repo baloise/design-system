@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-list',
-  styleUrl: 'bal-list.host.scss',
+  styleUrl: 'list.host.scss',
   shadow: true,
 })
 export class List implements ComponentInterface {

@@ -1,4 +1,4 @@
-import { BalConfigObserver } from './observer'
+import { ConfigObserver } from './observer'
 
 export interface Subject {
   attach(observer: BalConfigObserver): void

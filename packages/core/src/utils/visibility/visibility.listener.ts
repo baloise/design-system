@@ -2,7 +2,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { deepReady, waitAfterFramePaint } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 
-export class BalVisibilityListener extends ListenerAbstract {
+export class VisibilityListener extends ListenerAbstract {
   private waitAfterFramePrint = false
   private intersectionObserver: IntersectionObserver | undefined = undefined
 

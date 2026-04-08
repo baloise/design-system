@@ -1,9 +1,9 @@
 import { debounce } from '../helpers'
 import { SingleSubject } from '../types/signal'
-import { BalVisibilityObserver } from './visibility.interfaces'
-import { BalVisibilityListener } from './visibility.listener'
+import { VisibilityObserver } from './visibility.interfaces'
+import { VisibilityListener } from './visibility.listener'
 
-export class BalVisibilitySubject extends SingleSubject<BalVisibilityObserver> {
+export class VisibilitySubject extends SingleSubject<BalVisibilityObserver> {
   private listener?: BalVisibilityListener
   private debouncedNotify = debounce(() => this.notify(), 50)
 
@@ -11,7 +11,7 @@ export class BalVisibilitySubject extends SingleSubject<BalVisibilityObserver> {
     super(observer => {
       observer.visibilityListener()
     })
-    this.listener = new BalVisibilityListener()
+    this.listener = new VisibilityListener()
   }
 
   override attach(observer: BalVisibilityObserver): void {

@@ -1,4 +1,4 @@
-import { BalTag, expect, test } from '@baloise/ds-playwright'
+import { Tag, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {
@@ -8,17 +8,17 @@ test.describe('component', () => {
   })
 
   test('should have a default slot', async ({ page }) => {
-    const balTag = new BalTag(page.locator('bal-tag'))
+    const dsTag = new Tag(page.locator('bal-tag'))
 
-    await balTag.assertToBeVisible()
-    await balTag.assertToContainText('My tag')
+    await dsTag.assertToBeVisible()
+    await dsTag.assertToContainText('My tag')
   })
 
-  test('should fire balCloseClick event', async ({ page }) => {
-    const balTag = new BalTag(page.locator('bal-tag'))
-    const spy = await balTag.el.spyOnEvent('balCloseClick')
+  test('should fire dsCloseClick event', async ({ page }) => {
+    const dsTag = new Tag(page.locator('bal-tag'))
+    const spy = await dsTag.el.spyOnEvent('dsCloseClick')
 
-    await balTag.clickClose()
+    await dsTag.clickClose()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })

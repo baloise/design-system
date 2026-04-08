@@ -107,7 +107,7 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { BalApp, BalHeading } from "@baloise/ds-react";
+import { BalApp, Heading } from "@baloise/ds-react";
 
 function App() {
   return (
@@ -212,7 +212,7 @@ export class AppComponent {
 
 ```tsx
 import React from "react";
-import { BalButton } from "@baloise/ds-react";
+import { Button } from "@baloise/ds-react";
 
 function App() {
   const [color, setColor] = useState('info');
@@ -245,14 +245,14 @@ To demonstrate how to interact with events let's try to listen to the input even
 
 <AngularFramework>
 
-In Angular the events are written like that `(balEventName)="yourComponentHandler($event.detail)"`.
+In Angular the events are written like that `(dsEventName)="yourComponentHandler($event.detail)"`.
 
 `$event.detail` returns the main value of the event.
 
 **app.component.html**
 
 ```html
-<bal-input placeholder="Tell us your name" [value]="myName" (balInput)="updateName($event.detail)"></bal-input>
+<bal-input placeholder="Tell us your name" [value]="myName" (dsInput)="updateName($event.detail)"></bal-input>
 <bal-text>My name is {{ myName }}</bal-text>
 ```
 
@@ -295,7 +295,7 @@ they can easily listen to them with `addEventListener`.
   const myInput = document.getElementById('my-input')
   const myName = document.getElementById('my-name')
 
-  myInput.addEventListener('balInput', event => {
+  myInput.addEventListener('dsInput', event => {
     myName.textNode = event.detail
   })
 </script>
@@ -316,7 +316,7 @@ Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
 
 ```tsx
 import { useState } from 'react'
-import { BalInput, BalText } from '@baloise/ds-react'
+import { BalInput, Text } from '@baloise/ds-react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()
@@ -418,7 +418,7 @@ export class MethodComponent {
 <ReactFramework>
 
 ```tsx
-import { BalSelect, BalSelectOption, BalButton } from '@baloise/ds-react'
+import { BalSelect, BalSelectOption, Button } from '@baloise/ds-react'
 import { useRef } from 'react'
 
 function MethodComponent() {

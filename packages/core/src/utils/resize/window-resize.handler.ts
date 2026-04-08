@@ -1,5 +1,5 @@
-import { balBrowser } from '../browser'
-import { balDevice } from '../device'
+import { dsBrowser } from '../browser'
+import { dsDevice } from '../device'
 
 export type BalWindowResizeHandlerObserver = () => void
 
@@ -7,9 +7,9 @@ export type BalWindowResizeHandlerOptions = {
   onlyListenToWidthChanges: boolean
 }
 
-export class BalWindowResizeHandler {
-  private previousWidth = balBrowser.window.width
-  private previousHeight = balBrowser.window.height
+export class WindowResizeHandler {
+  private previousWidth = dsBrowser.window.width
+  private previousHeight = dsBrowser.window.height
   private previousIsLandscape = this.isLandscape
   private options: BalWindowResizeHandlerOptions = {
     onlyListenToWidthChanges: false,
@@ -20,7 +20,7 @@ export class BalWindowResizeHandler {
   }
 
   public async hasResized(): Promise<boolean> {
-    if (balDevice.hasTouchScreen) {
+    if (dsDevice.hasTouchScreen) {
       if (!this.sameWidth || this.previousIsLandscape !== this.isLandscape) {
         this.resetPreviousValues()
         return true
@@ -43,20 +43,20 @@ export class BalWindowResizeHandler {
   }
 
   private get isLandscape() {
-    return balBrowser.window.width > balBrowser.window.height
+    return dsBrowser.window.width > dsBrowser.window.height
   }
 
   private get sameWidth() {
-    return this.previousWidth === balBrowser.window.width
+    return this.previousWidth === dsBrowser.window.width
   }
 
   private get sameHeight() {
-    return this.previousHeight === balBrowser.window.height
+    return this.previousHeight === dsBrowser.window.height
   }
 
   private resetPreviousValues() {
-    this.previousWidth = balBrowser.window.width
-    this.previousHeight = balBrowser.window.height
+    this.previousWidth = dsBrowser.window.width
+    this.previousHeight = dsBrowser.window.height
     this.previousIsLandscape = this.isLandscape
   }
 }

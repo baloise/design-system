@@ -1,7 +1,7 @@
 import { getAppRoot } from '../../utils/helpers'
-import { Alert, AlertType } from './bal-alert-container.interfaces'
+import { Alert, AlertType } from './alert-container.interfaces'
 
-export type { Alert } from './bal-alert-container.interfaces'
+export type { Alert } from './alert-container.interfaces'
 
 export interface AlertController {
   create(options: Alert): Promise<string | undefined>
@@ -50,5 +50,5 @@ const createAlertController = (type: AlertType): AlertController => {
   return new AlertControllerImpl(type)
 }
 
-export const balToastController = createAlertController('toast')
-export const balSnackbarController = createAlertController('snackbar')
+export const dsToastController = createAlertController('toast')
+export const dsSnackbarController = createAlertController('snackbar')

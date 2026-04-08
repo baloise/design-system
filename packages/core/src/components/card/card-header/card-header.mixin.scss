@@ -1,6 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../bal-card-title/bal-card-title.mixin.scss' as title;
-@use '../bal-card-subtitle/bal-card-subtitle.mixin.scss' as subtitle;
+@use '../card-title/card-title.mixin.scss' as title;
+@use '../card-subtitle/card-subtitle.mixin.scss' as subtitle;
 
 @mixin style() {
   // --heading-line-height: 32px;

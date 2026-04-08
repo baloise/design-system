@@ -1,4 +1,4 @@
-import { BalLabel, test } from '@baloise/ds-playwright'
+import { Label, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,9 +6,9 @@ test.describe('component', () => {
       <bal-label>My Label</bal-label>
     `)
 
-    const balLabel = new BalLabel(page.locator('bal-label'))
+    const dsLabel = new Label(page.locator('bal-label'))
 
-    await balLabel.assertToBeVisible()
-    await balLabel.assertToContainText('My Label')
+    await dsLabel.assertToBeVisible()
+    await dsLabel.assertToContainText('My Label')
   })
 })

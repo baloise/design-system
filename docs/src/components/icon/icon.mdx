@@ -12,7 +12,7 @@ import {
   StoryHeading,
   TokenOverview,
 } from '../../../.storybook/blocks'
-import * as IconStories from './bal-icon.stories'
+import * as IconStories from './icon.stories'
 
 import Icons from '../../assets/images/foundations/icons.svg'
 
@@ -106,7 +106,7 @@ Import the icons form the `@baloise/ds-assets` package and pass them with the Ba
 
 ```ts
 import React from 'react'
-import { useBaloiseDesignSystem, BalApp } from '@baloise/ds-react'
+import { useBaloiseDesignSystem, App } from '@baloise/ds-react'
 import { IconStarFull } from '@baloise/ds-assets'
 
 export default function App() {
@@ -126,7 +126,7 @@ When importing an SVG into your component you decrease the initial page load. So
 
 ```ts
 import React from 'react'
-import { BalIcon } from '@baloise/ds-react'
+import { Icon } from '@baloise/ds-react'
 import { IconStarFull } from '@baloise/ds-assets'
 
 export default function Example() {
@@ -199,7 +199,7 @@ export class AppComponent {
 
 ```ts
 import React from 'react'
-import { BalIcon } from '@baloise/ds-react'
+import { Icon } from '@baloise/ds-react'
 import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 
 export default function Example() {

@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalVisibilityObserver } from './visibility.interfaces'
-import { BalVisibilitySubject } from './visibility.subject'
+import { VisibilityObserver } from './visibility.interfaces'
+import { VisibilitySubject } from './visibility.subject'
 
 export function ListenToVisibility() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToVisibility() {
 
     target.connectedCallback = function () {
       if (!this['_balVisibilitySubject']) {
-        this['_balVisibilitySubject'] = new BalVisibilitySubject()
+        this['_balVisibilitySubject'] = new VisibilitySubject()
       }
 
       return connectedCallback && connectedCallback.call(this)

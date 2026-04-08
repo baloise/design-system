@@ -1,4 +1,4 @@
-import { BalPage } from '../../types'
+import { Page } from '../../types'
 import { addE2EListener, EventSpy } from '../event-spy'
 
 export const spyOnEvent = async (page: BalPage, eventName: string): Promise<EventSpy> => {

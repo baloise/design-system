@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalAnimationObserver } from './animation.interfaces'
-import { BalAnimationSubject } from './animation.subject'
+import { AnimationObserver } from './animation.interfaces'
+import { AnimationSubject } from './animation.subject'
 
 export function ListenToAnimation() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToAnimation() {
 
     target.connectedCallback = function () {
       if (!this['_balAnimationSubject']) {
-        this['_balAnimationSubject'] = new BalAnimationSubject()
+        this['_balAnimationSubject'] = new AnimationSubject()
       }
 
       return connectedCallback && connectedCallback.call(this)

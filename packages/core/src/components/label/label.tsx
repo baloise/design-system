@@ -4,14 +4,14 @@ import {
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
-  BalRegion,
+  Region,
   defaultConfig,
   ListenToConfig,
 } from '../../utils/config'
-import { BalElementStateInfo } from '../../utils/element-states'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { ElementStateInfo } from '../../utils/element-states'
+import { BalAriaForm, AriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { i18nBalLabel } from './bal-label.i18n'
+import { i18nBalLabel } from './label.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({

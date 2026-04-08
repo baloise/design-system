@@ -4,16 +4,16 @@ import {
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
-  BalRegion,
+  Region,
   ListenToConfig,
   defaultConfig,
 } from '../../utils/config'
-import { i18nBalClose } from './bal-close.i18n'
+import { i18nBalClose } from './close.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-close',
-  styleUrl: 'bal-close.host.scss',
+  styleUrl: 'close.host.scss',
   shadow: true,
 })
 export class Close implements ComponentInterface, BalConfigObserver {

@@ -1,4 +1,4 @@
-import { BalBreakpoints } from './breakpoints.interfaces'
+import { Breakpoints } from './breakpoints.interfaces'
 
 export const initialBreakpoints: BalBreakpoints = {
   mobile: false,

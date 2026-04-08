@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../../utils/browser'
+import { dsBrowser } from '../../utils/browser'
 import {
   HEADING_COLORS,
   HEADING_ORDER,
@@ -9,11 +9,11 @@ import {
   HeadingColor,
   HeadingSize,
   HeadingTag,
-} from './bal-heading.const'
+} from './heading.const'
 
 @Component({
   tag: 'bal-heading',
-  styleUrl: 'bal-heading.host.scss',
+  styleUrl: 'heading.host.scss',
   shadow: true,
 })
 export class Heading implements ComponentInterface {
@@ -124,7 +124,7 @@ export class Heading implements ComponentInterface {
    */
 
   private get rows() {
-    if (this.headingEl && balBrowser.hasWindow) {
+    if (this.headingEl && dsBrowser.hasWindow) {
       const computedStyle = window.getComputedStyle(this.headingEl)
       const lineHeight = parseInt(computedStyle.lineHeight.slice(0, -2), 10)
       const height = this.headingEl.offsetHeight

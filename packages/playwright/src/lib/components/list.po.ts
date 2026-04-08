@@ -1,9 +1,9 @@
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
-import { BalAccordion } from './bal-accordion.po'
+import { Accordion } from './accordion.po'
 import { E2ELocator } from '../page/utils'
 
-export class BalList extends PageObject {
+export class List extends PageObject {
   public readonly list: Locator
 
   constructor(el: E2ELocator) {
@@ -16,7 +16,7 @@ export class BalList extends PageObject {
   }
 }
 
-export class BalItem extends PageObject {
+export class Item extends PageObject {
   /** Native element: <button>, <a>, or <div> depending on variant */
   public readonly item: Locator
   /** Only present when variant="accordion" */
@@ -26,7 +26,7 @@ export class BalItem extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
     this.item = el.locator('[part="item"]')
-    this.accordion = new BalAccordion(el.locator('[part="accordion"]') as E2ELocator)
+    this.accordion = new Accordion(el.locator('[part="accordion"]') as E2ELocator)
     this.accordionContent = el.locator('[part="accordion-content"]')
   }
 

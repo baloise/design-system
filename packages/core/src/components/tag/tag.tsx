@@ -5,7 +5,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-tag',
-  styleUrl: 'bal-tag.host.scss',
+  styleUrl: 'tag.host.scss',
   shadow: true,
 })
 export class Tag {
@@ -55,7 +55,7 @@ export class Tag {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<BalEvents.BalTagCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<BalEvents.BalTagCloseClickDetail>
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size)
@@ -75,7 +75,7 @@ export class Tag {
           <bal-close
             data-testid="bal-tag-close"
             {...this.inheritedAttributesClose}
-            onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
+            onClick={(ev: MouseEvent) => this.dsCloseClick.emit(ev)}
           ></bal-close>
         ) : (
           ''

@@ -1,4 +1,4 @@
-import { BalStack, test } from '@baloise/ds-playwright'
+import { Stack, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,9 +6,9 @@ test.describe('component', () => {
       <bal-stack>Hello World</bal-stack>
     `)
 
-    const balStack = new BalStack(page.locator('bal-stack'))
+    const dsStack = new Stack(page.locator('bal-stack'))
 
-    await balStack.assertToBeVisible()
-    await balStack.assertToContainText('Hello World')
+    await dsStack.assertToBeVisible()
+    await dsStack.assertToContainText('Hello World')
   })
 })

@@ -2,7 +2,7 @@ import { expect } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalApp extends PageObject {
+export class App extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }

@@ -1,9 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import { BalElementStateInfo } from '../../utils/element-states'
+import { ElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
-  styleUrl: 'bal-text.host.scss',
+  styleUrl: 'text.host.scss',
   shadow: true,
 })
 export class Text implements ComponentInterface, BalElementStateInfo {

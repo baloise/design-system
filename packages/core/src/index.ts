@@ -34,44 +34,44 @@ export { Components, JSX } from './components'
 /**
  * Types
  */
-// export * from './components/bal-checkbox/bal-checkbox.type'
-// export * from './components/bal-file-upload/bal-file-upload.type'
-// export * from './components/bal-modal/bal-modal.type'
-// export * from './components/bal-radio/bal-radio.type'
-// export * from './components/bal-select/utils/bal-option.type'
-// export * from './components/bal-steps/bal-step.type'
-// export * from './components/bal-tabs/bal-tab.type'
+// export * from './components/checkbox/checkbox.type'
+// export * from './components/file-upload/file-upload.type'
+// export * from './components/modal/modal.type'
+// export * from './components/radio/radio.type'
+// export * from './components/select/utils/option.type'
+// export * from './components/steps/step.type'
+// export * from './components/tabs/tab.type'
 
 /**
  * i18n
  */
-export * from './components/bal-close/bal-close.i18n'
-export * from './components/bal-label/bal-label.i18n'
-// export * from './components/bal-date/bal-date.i18n'
-// export * from './components/bal-field/bal-field-label/bal-field-label.i18n'
-// export * from './components/bal-input-stepper/bal-input-stepper.i18n'
-// export * from './components/bal-time-input/bal-time-input.i18n'
+export * from './components/close/close.i18n'
+export * from './components/label/label.i18n'
+// export * from './components/date/date.i18n'
+// export * from './components/field/field-label/field-label.i18n'
+// export * from './components/input-stepper/input-stepper.i18n'
+// export * from './components/time-input/time-input.i18n'
 
 /**
  * Utils
  */
-// export { newBalCheckboxOption } from './components/bal-checkbox/utils/bal-checkbox.util'
-// export { newBalRadioOption } from './components/bal-radio/utils/bal-radio.util'
-// export { newBalOptionValue, newBalSingleOptionValue } from './components/bal-select/utils/bal-option.util'
-// export { newBalStepOption } from './components/bal-steps/bal-step.util'
-// export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
+// export { newBalCheckboxOption } from './components/checkbox/utils/checkbox.util'
+// export { newBalRadioOption } from './components/radio/utils/radio.util'
+// export { newBalOptionValue, newBalSingleOptionValue } from './components/select/utils/option.util'
+// export { newBalStepOption } from './components/steps/step.util'
+// export { newBalTabOption } from './components/tabs/tab.util'
 export { initializeBaloiseDesignSystem as initialize, initializeBaloiseDesignSystem } from './initialize'
 export {
   BalBreakpointObserver,
-  balBreakpoints,
+  dsBreakpoints,
   BalBreakpoints,
-  balBreakpointSubject,
+  dsBreakpointSubject,
   BalBreakpointSubject,
   BalBreakpointsUtil,
 } from './utils/breakpoints'
-export { balBrowser } from './utils/browser'
+export { dsBrowser } from './utils/browser'
 export { BalDate } from './utils/date'
-export { balDevice, BalDevice } from './utils/device'
+export { dsDevice, BalDevice } from './utils/device'
 // export { newBalOption } from './utils/dropdown/option'
 export { scrollToFirstInvalidField } from './utils/form'
 export {
@@ -92,7 +92,7 @@ export {
 export {
   BalOrientationInfo,
   BalOrientationObserver,
-  balOrientationSubject,
+  dsOrientationSubject,
   BalOrientationSubject,
 } from './utils/orientation'
 export { BalScrollHandler } from './utils/scroll'
@@ -101,5 +101,5 @@ export { BalSwipeInfo, BalSwipeObserver, BalSwipeSubject } from './utils/swipe'
 /**
  * Controllers
  */
-// export * from './components/bal-modal/bal-modal.controller'
-export * from './components/bal-alert/bal-alert.controller'
+// export * from './components/modal/modal.controller'
+export * from './components/alert/alert.controller'

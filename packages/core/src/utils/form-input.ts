@@ -61,16 +61,16 @@ export const inputHandleHostClick = <Value>(component: FormInput<Value>, ev: Mou
 }
 
 export const inputHandleClick = <Value>(component: FormInput<Value>, ev: MouseEvent) => {
-  if (!component.disabled && !component.readonly && component.balClick) {
-    component.balClick.emit(ev)
+  if (!component.disabled && !component.readonly && component.dsClick) {
+    component.dsClick.emit(ev)
   }
 }
 
 export const inputHandleFocus = <Value>(component: FormInput<Value>, ev: FocusEvent) => {
   component.focused = true
   component.inputValue = component.value
-  if (!component.disabled && component.balFocus) {
-    component.balFocus.emit(ev)
+  if (!component.disabled && component.dsFocus) {
+    component.dsFocus.emit(ev)
   }
 }
 
@@ -91,15 +91,15 @@ export const inputHandleReset = <Value>(
 
 export const inputHandleBlur = <Value>(component: FormInput<Value>, ev: FocusEvent) => {
   component.focused = false
-  if (!component.disabled && component.balBlur) {
-    component.balBlur.emit(ev)
+  if (!component.disabled && component.dsBlur) {
+    component.dsBlur.emit(ev)
   }
 }
 
 export const inputHandleChange = <Value>(component: FormInput<Value>) => {
   if (component.value !== component.inputValue) {
     component.value = component.inputValue
-    component.balChange.emit(component.value)
+    component.dsChange.emit(component.value)
   }
 }
 

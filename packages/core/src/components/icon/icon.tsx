@@ -1,14 +1,14 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { BalConfigObserver, BalConfigState, BalIcons, defaultConfig, ListenToConfig } from '../../utils/config'
-import { BalElementStateInfo } from '../../utils/element-states'
+import { BalConfigObserver, BalConfigState, Icons, defaultConfig, ListenToConfig } from '../../utils/config'
+import { ElementStateInfo } from '../../utils/element-states'
 import { sanitizeSvg } from '../../utils/svg'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-icon',
-  styleUrl: 'bal-icon.host.scss',
+  styleUrl: 'icon.host.scss',
   shadow: true,
 })
 export class Icon implements BalConfigObserver, ComponentInterface {

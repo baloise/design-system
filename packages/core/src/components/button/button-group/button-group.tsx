@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-button-group',
-  styleUrl: 'bal-button-group.host.scss',
+  styleUrl: 'button-group.host.scss',
   shadow: true,
 })
 export class ButtonGroup implements ComponentInterface {

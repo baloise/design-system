@@ -1,9 +1,9 @@
 import { rIC } from '../helpers'
 import { SingleSubject } from '../types/signal'
-import { BalResizeInfo, BalResizeListenerFn, BalResizeObserver } from './resize.interfaces'
-import { BalResizeListener } from './resize.listener'
+import { BalResizeInfo, BalResizeListenerFn, ResizeObserver } from './resize.interfaces'
+import { ResizeListener } from './resize.listener'
 
-export class BalResizeSubject extends SingleSubject<BalResizeObserver, BalResizeInfo> {
+export class ResizeSubject extends SingleSubject<BalResizeObserver, BalResizeInfo> {
   private listener = new BalResizeListener<BalResizeListenerFn>()
 
   constructor() {

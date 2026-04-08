@@ -1,4 +1,4 @@
-import { BalLogger } from '../log'
+import { Logger } from '../log'
 
 export type BalRegion = 'CH' | 'DE' | 'BE' | 'LU'
 

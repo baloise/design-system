@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
-import { BalMutationSubject } from './mutation.subject'
+import { MutationObserver, MutationObserverOptions } from './mutation.interfaces'
+import { MutationSubject } from './mutation.subject'
 
 export function ListenToMutation(options: Partial<MutationObserverOptions>) {
   return function (
@@ -12,7 +12,7 @@ export function ListenToMutation(options: Partial<MutationObserverOptions>) {
 
     target.connectedCallback = function () {
       if (!this['_balMutationSubject']) {
-        this['_balMutationSubject'] = new BalMutationSubject(options)
+        this['_balMutationSubject'] = new MutationSubject(options)
         this['_balMutationSubject'].attach(this)
       }
 

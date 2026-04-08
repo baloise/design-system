@@ -12,14 +12,14 @@ import {
   Watch,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
-import { AlertComponent } from '../bal-alert-container.interfaces'
+import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../../utils/config'
+import { BalConfigObserver, ConfigState, ListenToConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-toast',
-  styleUrl: 'bal-toast.host.scss',
+  styleUrl: 'toast.host.scss',
   shadow: true,
 })
 export class Toast implements ComponentInterface, AlertComponent, BalConfigObserver {
@@ -124,30 +124,30 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<BalEvents.BalToastCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<BalEvents.BalToastCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() balActionClick!: EventEmitter<BalEvents.BalToastActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<BalEvents.BalToastActionClickDetail>
 
   /**
    * @internal
    * Emitted when the component has loaded.
    */
-  @Event() balDidLoad!: EventEmitter<void>
+  @Event() dsDidLoad!: EventEmitter<void>
 
   /**
    * @internal
    * Emitted when the alert got paused, either by mouse enter or by calling the pause method.
    */
-  @Event() balDidPause!: EventEmitter<void>
+  @Event() dsDidPause!: EventEmitter<void>
 
   /**
    * @internal
    * Emitted when the alert got resumed, either by mouse leave or by calling the resume method.
    */
-  @Event() balDidResume!: EventEmitter<void>
+  @Event() dsDidResume!: EventEmitter<void>
 
   /**
    * LIFECYCLE
@@ -162,7 +162,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
-      this.balDidLoad.emit()
+      this.dsDidLoad.emit()
     })
   }
 
@@ -176,7 +176,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
    */
   @Method()
   async close(): Promise<void> {
-    this.balCloseClick.emit()
+    this.dsCloseClick.emit()
     this.closeHandler(this.alertId)
   }
 
@@ -255,11 +255,11 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
         style={durationVariable}
         onMouseEnter={() => {
           this.didPause = true
-          this.balDidPause.emit()
+          this.dsDidPause.emit()
         }}
         onMouseLeave={() => {
           this.didPause = false
-          this.balDidResume.emit()
+          this.dsDidResume.emit()
         }}
       >
         {/* --------------------------------------*/}
@@ -306,7 +306,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
             href={this.actionHref}
             onClick={ev => {
               stopEventBubbling(ev)
-              this.balActionClick.emit(ev)
+              this.dsActionClick.emit(ev)
               this.actionHandler(this.alertId)
             }}
           >

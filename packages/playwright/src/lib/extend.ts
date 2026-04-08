@@ -16,7 +16,7 @@ import { join } from 'path'
 import { a11y } from './functions/a11y'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
-import { BalPage, BalPageOptions } from './types'
+import { BalPage, PageOptions } from './types'
 
 export { expect } from '@playwright/test'
 
@@ -52,8 +52,8 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   const originalLocator = page.locator.bind(page)
 
   await page.addInitScript(() => {
-    window.addEventListener('balAppReady', () => {
-      ;(window as any).balAppReady = true
+    window.addEventListener('dsAppReady', () => {
+      ;(window as any).dsAppReady = true
       ;(window as any).BaloiseDesignSystem.config.animated = false
       ;(window as any).BaloiseDesignSystem.config.logger = {
         components: [],

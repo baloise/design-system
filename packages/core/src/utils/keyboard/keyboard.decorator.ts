@@ -1,6 +1,6 @@
 import { ComponentInterface } from '@stencil/core'
-import { BalKeyboardObserver } from './keyboard.interfaces'
-import { BalKeyboardSubject } from './keyboard.subject'
+import { KeyboardObserver } from './keyboard.interfaces'
+import { KeyboardSubject } from './keyboard.subject'
 
 export function ListenToKeyboard() {
   return function (
@@ -12,7 +12,7 @@ export function ListenToKeyboard() {
 
     target.connectedCallback = function () {
       if (!this['_balKeyboardSubject']) {
-        this['_balKeyboardSubject'] = new BalKeyboardSubject()
+        this['_balKeyboardSubject'] = new KeyboardSubject()
         this['_balKeyboardSubject'].attach(this)
       }
 

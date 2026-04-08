@@ -1,7 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from './browser'
-import { BalConfig, useBalConfig } from './config'
+import { dsBrowser } from './browser'
+import { Config, useBalConfig } from './config'
 import {
   IconClock,
   IconClose,
@@ -50,7 +50,7 @@ declare const requestAnimationFrame: any
  */
 export const rLCP = (callback: () => void, timeout = 3000) => {
   let isLargestContentPatinDone = false
-  if (!balBrowser.isSafari && balBrowser.hasWindow && 'PerformanceObserver' in window) {
+  if (!dsBrowser.isSafari && dsBrowser.hasWindow && 'PerformanceObserver' in window) {
     const observer = new PerformanceObserver(entryList => {
       const entries = entryList.getEntries()
       const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
@@ -88,7 +88,7 @@ export const rOnLoad = (callback: () => void, timeout = 32) => {
     }
   }
 
-  if (balBrowser.hasWindow) {
+  if (dsBrowser.hasWindow) {
     const timer = setTimeout(callOnce, timeout)
     window.addEventListener('load', () => {
       clearTimeout(timer)
@@ -100,7 +100,7 @@ export const rOnLoad = (callback: () => void, timeout = 32) => {
 }
 
 export const rIC = (callback: () => void, timeout = 5000) => {
-  if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
+  if (dsBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
@@ -264,7 +264,7 @@ const transitionEnd = (
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  if (balBrowser.hasWindow) {
+  if (dsBrowser.hasWindow) {
     const config = useBalConfig()
     if (config) {
       const ael = config._ael
@@ -280,7 +280,7 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  if (balBrowser.hasWindow) {
+  if (dsBrowser.hasWindow) {
     const config = useBalConfig()
     if (config) {
       const rel = config._rel
@@ -422,7 +422,7 @@ export const waitOnLoadEventCallback = () => {
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
-  if (balBrowser.hasWindow && 'MessageChannel' in window) {
+  if (dsBrowser.hasWindow && 'MessageChannel' in window) {
     const messageChannel = new (window as any).MessageChannel()
     messageChannel.port1.onmessage = callback
     messageChannel.port2.postMessage(undefined)

@@ -1,4 +1,4 @@
-import { BalIcon, test } from '@baloise/ds-playwright'
+import { Icon, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,8 +6,8 @@ test.describe('component', () => {
       <bal-icon name="plus"></bal-icon>
     `)
 
-    const balIcon = new BalIcon(page.locator('bal-icon'))
+    const dsIcon = new Icon(page.locator('bal-icon'))
 
-    await balIcon.assertToBeVisible()
+    await dsIcon.assertToBeVisible()
   })
 })

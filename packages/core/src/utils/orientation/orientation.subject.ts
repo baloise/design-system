@@ -1,17 +1,17 @@
-import { balDevice } from '../device'
-import { BalWindowResizeListener } from '../resize'
+import { dsDevice } from '../device'
+import { WindowResizeListener } from '../resize'
 import { Subject } from '../types/signal'
-import { BalOrientationInfo, BalOrientationObserver } from './orientation.interfaces'
+import { BalOrientationInfo, OrientationObserver } from './orientation.interfaces'
 
-export class BalOrientationSubject extends Subject<BalOrientationObserver> {
-  private listener = new BalWindowResizeListener()
-  private state: BalOrientationInfo = balDevice.orientation.toObject()
+export class OrientationSubject extends Subject<BalOrientationObserver> {
+  private listener = new WindowResizeListener()
+  private state: BalOrientationInfo = dsDevice.orientation.toObject()
 
   constructor() {
     super(observer => observer.orientationListener(this.state))
     this.listener.connect()
     this.listener.add(() => {
-      const newState = balDevice.orientation.toObject()
+      const newState = dsDevice.orientation.toObject()
       if (!this.isEqual(newState)) {
         this.state = newState
         this.notify(undefined)
@@ -29,4 +29,4 @@ export class BalOrientationSubject extends Subject<BalOrientationObserver> {
   }
 }
 
-export const balOrientationSubject = /*@__PURE__*/ new BalOrientationSubject()
+export const dsOrientationSubject = /*@__PURE__*/ new OrientationSubject()

@@ -1,11 +1,11 @@
 import { Element, Component, Method, h, Host, Prop, ComponentInterface, State } from '@stencil/core'
 import { raf, wait } from '../../utils/helpers'
-import { Alert, AlertComponent, AlertType, AlertContainerSize } from './bal-alert-container.interfaces'
+import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-container.interfaces'
 import { createPausableTimer, PausableTimer } from '../../utils/timer'
 
 @Component({
   tag: 'bal-alert-container',
-  styleUrl: 'bal-alert-container.host.scss',
+  styleUrl: 'alert-container.host.scss',
   shadow: true,
 })
 export class AlertContainer implements ComponentInterface {

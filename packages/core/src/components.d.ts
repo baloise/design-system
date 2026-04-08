@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BalConfigState } from "./utils/config";
-import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
-import { BalAriaForm } from "./utils/form";
+import { ConfigState } from "./utils/config";
+import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+import { AriaForm } from "./utils/form";
 export { BalConfigState } from "./utils/config";
-export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/bal-alert/bal-alert-container.interfaces";
+export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BalAriaForm } from "./utils/form";
 export namespace Components {
     interface BalAccordion {

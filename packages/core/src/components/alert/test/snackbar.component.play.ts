@@ -1,4 +1,4 @@
-import { BalSnackbar, expect, test } from '@baloise/ds-playwright'
+import { Snackbar, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {
@@ -8,25 +8,25 @@ test.describe('component', () => {
   })
 
   test('Should have content', async ({ page }) => {
-    const component = new BalSnackbar(page.locator('bal-snackbar'))
+    const component = new Snackbar(page.locator('bal-snackbar'))
 
     await component.assertToBeVisible()
     await component.assertToHaveHeading('My Snackbar')
     await component.assertToContainText('This is a Snackbar')
   })
 
-  test('Should fire balCloseClick event', async ({ page }) => {
-    const component = new BalSnackbar(page.locator('bal-snackbar'))
-    const spy = await component.el.spyOnEvent('balCloseClick')
+  test('Should fire dsCloseClick event', async ({ page }) => {
+    const component = new Snackbar(page.locator('bal-snackbar'))
+    const spy = await component.el.spyOnEvent('dsCloseClick')
 
     await component.clickClose()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('Should fire balActionClick event', async ({ page }) => {
-    const component = new BalSnackbar(page.locator('bal-snackbar'))
-    const spy = await component.el.spyOnEvent('balActionClick')
+  test('Should fire dsActionClick event', async ({ page }) => {
+    const component = new Snackbar(page.locator('bal-snackbar'))
+    const spy = await component.el.spyOnEvent('dsActionClick')
 
     await component.clickAction('Action')
 

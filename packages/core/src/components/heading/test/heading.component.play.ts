@@ -1,4 +1,4 @@
-import { BalHeading, test } from '@baloise/ds-playwright'
+import { Heading, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,9 +6,9 @@ test.describe('component', () => {
       <bal-heading>Hello World</bal-heading>
     `)
 
-    const balHeading = new BalHeading(page.locator('bal-heading'))
+    const dsHeading = new Heading(page.locator('bal-heading'))
 
-    await balHeading.assertToBeVisible()
-    await balHeading.assertToContainText('Hello World')
+    await dsHeading.assertToBeVisible()
+    await dsHeading.assertToContainText('Hello World')
   })
 })

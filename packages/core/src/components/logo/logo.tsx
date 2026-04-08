@@ -1,11 +1,11 @@
 import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { BalBreakpointObserver, BalBreakpoints, balBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
+import { BalBreakpointObserver, Breakpoints, dsBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
 import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { LogoBaloise, LogoHelvetia } from './bal-logo.icons'
+import { LogoBaloise, LogoHelvetia } from './logo.icons'
 import { cssVariables } from '../../utils/css'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
@@ -13,7 +13,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) =>
 
 @Component({
   tag: 'bal-logo',
-  styleUrl: 'bal-logo.host.scss',
+  styleUrl: 'logo.host.scss',
   shadow: true,
 })
 export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver, BalConfigObserver {
@@ -30,7 +30,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @Element() el!: HTMLStencilElement
 
-  @State() isTouch = balBreakpoints.isTouch
+  @State() isTouch = dsBreakpoints.isTouch
   @State() doesConfigAllowAnimation = true
   @State() configBrand: BalProps.BalLogoBrand = 'baloise'
 

@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-card',
-  styleUrl: 'bal-card.host.scss',
+  styleUrl: 'card.host.scss',
   shadow: true,
 })
 export class Card {

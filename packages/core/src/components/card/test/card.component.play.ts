@@ -4,7 +4,7 @@ import {
   BalCardContent,
   BalCardHeader,
   BalCardSubtitle,
-  BalCardTitle,
+  CardTitle,
   test,
 } from '@baloise/ds-playwright'
 
@@ -14,10 +14,10 @@ test.describe('component', () => {
       <bal-card>Card content</bal-card>
     `)
 
-    const balCard = new BalCard(page.locator('bal-card'))
+    const dsCard = new Card(page.locator('bal-card'))
 
-    await balCard.assertToBeVisible()
-    await balCard.assertToContainText('Card content')
+    await dsCard.assertToBeVisible()
+    await dsCard.assertToContainText('Card content')
   })
 
   test('should render bal-card-title', async ({ page }) => {
@@ -27,10 +27,10 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const balCardTitle = new BalCardTitle(page.locator('bal-card-title'))
+    const dsCardTitle = new CardTitle(page.locator('bal-card-title'))
 
-    await balCardTitle.assertToBeVisible()
-    await balCardTitle.assertToContainText('My Title')
+    await dsCardTitle.assertToBeVisible()
+    await dsCardTitle.assertToContainText('My Title')
   })
 
   test('should render bal-card-subtitle', async ({ page }) => {
@@ -40,10 +40,10 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const balCardSubtitle = new BalCardSubtitle(page.locator('bal-card-subtitle'))
+    const dsCardSubtitle = new CardSubtitle(page.locator('bal-card-subtitle'))
 
-    await balCardSubtitle.assertToBeVisible()
-    await balCardSubtitle.assertToContainText('My Subtitle')
+    await dsCardSubtitle.assertToBeVisible()
+    await dsCardSubtitle.assertToContainText('My Subtitle')
   })
 
   test('should render bal-card-content', async ({ page }) => {
@@ -53,10 +53,10 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const balCardContent = new BalCardContent(page.locator('bal-card-content'))
+    const dsCardContent = new CardContent(page.locator('bal-card-content'))
 
-    await balCardContent.assertToBeVisible()
-    await balCardContent.assertToContainText('My Content')
+    await dsCardContent.assertToBeVisible()
+    await dsCardContent.assertToContainText('My Content')
   })
 
   test('should render bal-card-actions', async ({ page }) => {
@@ -68,9 +68,9 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const balCardActions = new BalCardActions(page.locator('bal-card-actions'))
+    const dsCardActions = new CardActions(page.locator('bal-card-actions'))
 
-    await balCardActions.assertToBeVisible()
+    await dsCardActions.assertToBeVisible()
   })
 
   test('should render bal-card-header', async ({ page }) => {
@@ -80,9 +80,9 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const balCardHeader = new BalCardHeader(page.locator('bal-card-header'))
+    const dsCardHeader = new CardHeader(page.locator('bal-card-header'))
 
-    await balCardHeader.assertToBeVisible()
-    await balCardHeader.assertToContainText('My Header')
+    await dsCardHeader.assertToBeVisible()
+    await dsCardHeader.assertToContainText('My Header')
   })
 })

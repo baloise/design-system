@@ -1,4 +1,4 @@
-import { BalBadge, test } from '@baloise/ds-playwright'
+import { Badge, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,9 +6,9 @@ test.describe('component', () => {
       <bal-badge>42</bal-badge>
     `)
 
-    const balBadge = new BalBadge(page.locator('bal-badge'))
+    const dsBadge = new Badge(page.locator('bal-badge'))
 
-    await balBadge.assertToBeVisible()
-    await balBadge.assertToContainText('42')
+    await dsBadge.assertToBeVisible()
+    await dsBadge.assertToContainText('42')
   })
 })

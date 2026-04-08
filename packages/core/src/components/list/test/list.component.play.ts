@@ -1,4 +1,4 @@
-import { BalItem, BalList, expect, test } from '@baloise/ds-playwright'
+import { BalItem, List, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-list', async ({ page }) => {
@@ -8,9 +8,9 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const balList = new BalList(page.locator('bal-list'))
+    const dsList = new List(page.locator('bal-list'))
 
-    await balList.assertToBeVisible()
+    await dsList.assertToBeVisible()
   })
 
   test('should render bal-item', async ({ page }) => {
@@ -20,27 +20,27 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const balItem = new BalItem(page.locator('bal-item'))
+    const dsItem = new Item(page.locator('bal-item'))
 
-    await balItem.assertToBeVisible()
+    await dsItem.assertToBeVisible()
   })
 
-  test('should fire balClick event on button variant', async ({ page }) => {
+  test('should fire dsClick event on button variant', async ({ page }) => {
     await page.mount(`
       <bal-list>
         <bal-item variant="button" label="Item 1"></bal-item>
       </bal-list>
     `)
 
-    const balItem = new BalItem(page.locator('bal-item'))
-    const spy = await balItem.el.spyOnEvent('balClick')
+    const dsItem = new Item(page.locator('bal-item'))
+    const spy = await dsItem.el.spyOnEvent('dsClick')
 
-    await balItem.clickItem()
+    await dsItem.clickItem()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balAccordionToggle event on accordion variant', async ({ page }) => {
+  test('should fire dsAccordionToggle event on accordion variant', async ({ page }) => {
     await page.mount(`
       <bal-list>
         <bal-item variant="accordion" label="Item 1">
@@ -49,10 +49,10 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const balItem = new BalItem(page.locator('bal-item'))
-    const spy = await balItem.el.spyOnEvent('balAccordionToggle')
+    const dsItem = new Item(page.locator('bal-item'))
+    const spy = await dsItem.el.spyOnEvent('dsAccordionToggle')
 
-    await balItem.clickItem()
+    await dsItem.clickItem()
 
     expect(spy).toHaveReceivedEventTimes(1)
   })
@@ -66,12 +66,12 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const balItem = new BalItem(page.locator('bal-item'))
+    const dsItem = new Item(page.locator('bal-item'))
 
-    await balItem.accordion.assertToBeClosed()
+    await dsItem.accordion.assertToBeClosed()
 
-    await balItem.clickItem()
+    await dsItem.clickItem()
 
-    await balItem.accordion.assertToBeOpen()
+    await dsItem.accordion.assertToBeOpen()
   })
 })

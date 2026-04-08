@@ -98,7 +98,7 @@ The file `design-system-styles/sass/mixins` provides all design tokens as CSS-Va
 The Baloise Design System provides a service to dynamically listen for viewport changes.
 
 ```typescript
-import { BalBreakpointService } from '@baloise/ds-angular'
+import { BreakpointService } from '@baloise/ds-angular'
 
 export class MyComponent {
   readonly breakpoint = inject(BalBreakpointService)
@@ -115,7 +115,7 @@ export class MyComponent {
 The Baloise Design System also provides a service to dynamically listen for orientation changes.
 
 ```typescript
-import { BalOrientationService } from '@baloise/ds-angular'
+import { OrientationService } from '@baloise/ds-angular'
 
 export class MyComponent {
   readonly orientation = inject(BalOrientationService)

@@ -1,15 +1,15 @@
 import type { BalBreakpoints } from './breakpoints.interfaces'
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
 export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
 
-export class BalBreakpointsUtil {
+export class BreakpointsUtil {
   private win?: any
   private breakpoints: BalBreakpoint[] = []
 
   constructor() {
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       this.win = window
       this.win.BaloiseDesignSystem = this.win.BaloiseDesignSystem || {}
       this.detect()
@@ -105,4 +105,4 @@ export class BalBreakpointsUtil {
   }
 }
 
-export const balBreakpoints = /*@__PURE__*/ new BalBreakpointsUtil()
+export const dsBreakpoints = /*@__PURE__*/ new BreakpointsUtil()

@@ -31,4 +31,4 @@ class BalFloatingUiInternal {
   }
 }
 
-export const balFloatingUi = new BalFloatingUiInternal()
+export const dsFloatingUi = new FloatingUiInternal()

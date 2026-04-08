@@ -1,9 +1,9 @@
 import { FOCUS_KEYS } from '../focus-visible'
 import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalKeyboardInfo } from './keyboard.interfaces'
+import { KeyboardInfo } from './keyboard.interfaces'
 
-export class BalKeyboardListener<TObserver> extends ListenerAbstract<TObserver, BalKeyboardInfo> {
+export class KeyboardListener<TObserver> extends ListenerAbstract<TObserver, BalKeyboardInfo> {
   private info: BalKeyboardInfo = { keyboardFocus: false }
 
   override connect(el: HTMLElement): void {

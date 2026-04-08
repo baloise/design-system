@@ -1,7 +1,7 @@
 import type { Locator } from '@playwright/test'
 
 import { addE2EListener, EventSpy } from '../event-spy'
-import { BalPage } from '../../types'
+import { Page } from '../../types'
 
 export type LocatorOptions = {
   hasText?: string | RegExp

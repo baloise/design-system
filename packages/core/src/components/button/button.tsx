@@ -6,7 +6,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-button',
-  styleUrl: 'bal-button.host.scss',
+  styleUrl: 'button.host.scss',
   shadow: true,
   formAssociated: true,
 })
@@ -118,7 +118,7 @@ export class Button implements ComponentInterface {
   // /**
   //  * If `true` the button is a popup.
   //  */
-  // @Prop() balPopup = undefined
+  // @Prop() dsPopup = undefined
 
   /**
    * Name of the left button icon
@@ -173,27 +173,27 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+  @Event() dsClick!: EventEmitter<BalEvents.BalButtonClickDetail>
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
+  @Event() dsNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() balFocus!: EventEmitter<BalEvents.BalButtonFocusDetail>
+  @Event() dsFocus!: EventEmitter<BalEvents.BalButtonFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() balBlur!: EventEmitter<BalEvents.BalButtonBlurDetail>
+  @Event() dsBlur!: EventEmitter<BalEvents.BalButtonBlurDetail>
 
   /**
    * Emitted when the button has been  rendered.
    */
-  @Event() balDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
+  @Event() dsDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -222,7 +222,7 @@ export class Button implements ComponentInterface {
     }
   }
   componentDidRender() {
-    this.balDidRender.emit()
+    this.dsDidRender.emit()
   }
 
   private get isIconInverted() {
@@ -268,11 +268,11 @@ export class Button implements ComponentInterface {
   }
 
   private onFocus = () => {
-    this.balFocus.emit()
+    this.dsFocus.emit()
   }
 
   private onBlur = () => {
-    this.balBlur.emit()
+    this.dsBlur.emit()
   }
 
   private onClick = (ev: MouseEvent) => {
@@ -284,10 +284,10 @@ export class Button implements ComponentInterface {
         this.internals.form?.reset()
       }
 
-      this.balClick.emit(ev)
+      this.dsClick.emit(ev)
 
       if (this.href !== undefined) {
-        this.balNavigate.emit(ev)
+        this.dsNavigate.emit(ev)
       }
     }
   }
