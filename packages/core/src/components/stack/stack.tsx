@@ -24,9 +24,9 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout?: BalProps.BalStackLayout
+  @Prop() layout?: DS.StackLayout
   @Watch('layout')
-  validateLayout(newValue?: BalProps.BalStackLayout) {
+  validateLayout(newValue?: DS.StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -43,65 +43,65 @@ export class Stack implements ComponentInterface, Loggable {
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop() direction: BalProps.BalStackDirection = 'column'
+  @Prop() direction: DS.StackDirection = 'column'
 
   /**
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() align?: BalProps.BalStackAlignment
+  @Prop() align?: DS.StackAlignment
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop({ mutable: true }) space?: BalProps.BalStackSpace
+  @Prop({ mutable: true }) space?: DS.StackSpace
   @Watch('space')
-  validateSpace(newValue?: BalProps.BalStackSpace) {
+  validateSpace(newValue?: DS.StackSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() spaceRow?: BalProps.BalStackSpace
+  @Prop() spaceRow?: DS.StackSpace
   @Watch('spaceRow')
-  validateSpaceRow(newValue?: BalProps.BalStackSpace) {
+  validateSpaceRow(newValue?: DS.StackSpace) {
     this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() spaceColumn?: BalProps.BalStackSpace
+  @Prop() spaceColumn?: DS.StackSpace
   @Watch('spaceColumn')
-  validateSpaceColumn(newValue?: BalProps.BalStackSpace) {
+  validateSpaceColumn(newValue?: DS.StackSpace) {
     this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() p?: BalProps.BalStackPadding
+  @Prop() p?: DS.StackPadding
   @Watch('p')
-  validatePadding(newValue?: BalProps.BalStackPadding) {
+  validatePadding(newValue?: DS.StackPadding) {
     this.p = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() px?: BalProps.BalStackPadding
+  @Prop() px?: DS.StackPadding
   @Watch('px')
-  validatePaddingX(newValue?: BalProps.BalStackPadding) {
+  validatePaddingX(newValue?: DS.StackPadding) {
     this.px = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the vertical padding top and bottom of the stack element.
    */
-  @Prop() py?: BalProps.BalStackPadding
+  @Prop() py?: DS.StackPadding
   @Watch('py')
-  validatePaddingY(newValue?: BalProps.BalStackPadding) {
+  validatePaddingY(newValue?: DS.StackPadding) {
     this.py = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -120,7 +120,7 @@ export class Stack implements ComponentInterface, Loggable {
    * @internal
    * Please use align instead.
    */
-  @Prop() alignment?: BalProps.BalStackAlignment
+  @Prop() alignment?: DS.StackAlignment
 
   connectedCallback(): void {
     this.validateLayout(this.layout)

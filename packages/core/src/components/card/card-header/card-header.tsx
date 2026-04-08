@@ -6,7 +6,7 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardHeader {
-  @Prop() direction: BalProps.BalCardHeaderDirection = 'row'
+  @Prop() direction: DS.CardHeaderDirection = 'row'
 
   render() {
     return (

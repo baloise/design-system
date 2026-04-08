@@ -25,9 +25,9 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalCloseSize
+  @Prop({ mutable: true, reflect: true }) size?: DS.CloseSize
   @Watch('size')
-  validateSize(newValue: BalProps.BalCloseSize) {
+  validateSize(newValue: DS.CloseSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
@@ -50,7 +50,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
-  @Prop() buttonColor?: BalProps.BalButtonColor
+  @Prop() buttonColor?: DS.ButtonColor
 
   /**
    * @internal define config for the component

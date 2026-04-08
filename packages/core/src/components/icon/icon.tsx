@@ -33,21 +33,21 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * Defines the size of the icon.
    */
-  @Prop({ reflect: true, mutable: true }) size: BalProps.BalIconSize
+  @Prop({ reflect: true, mutable: true }) size: DS.IconSize
   @Watch('size')
-  watchSize(newValue: BalProps.BalIconSize) {
+  watchSize(newValue: DS.IconSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * The theme type of the button.
    */
-  @Prop() color?: BalProps.BalIconColor
+  @Prop() color?: DS.IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
-  @Prop() shape?: BalProps.BalIconShape
+  @Prop() shape?: DS.IconShape
 
   /**
    * If `true` the icon acts as a tile with a background color.
@@ -57,7 +57,7 @@ export class Icon implements BalConfigObserver, ComponentInterface {
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
-  @Prop() tileColor: BalProps.BalIconTileColor = 'purple'
+  @Prop() tileColor: DS.IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style

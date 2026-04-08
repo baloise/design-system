@@ -15,7 +15,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the size of the paragraph
    */
-  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalTextSize
+  @Prop({ mutable: true, reflect: true }) size?: DS.TextSize
 
   /**
    * If `true` the text has heading font family
@@ -47,12 +47,12 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * Defines the color of the text.
    */
-  @Prop() color?: BalProps.BalTextColor
+  @Prop() color?: DS.TextColor
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) space?: BalProps.BalTextSpace
+  @Prop({ reflect: true }) space?: DS.TextSpace
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -77,7 +77,7 @@ export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() align?: BalProps.BalTextAlign
+  @Prop() align?: DS.TextAlign
 
   /**
    * @internal

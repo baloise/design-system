@@ -38,7 +38,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color?: BalProps.BalToastColor
+  @Prop() color?: DS.ToastColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -86,7 +86,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
+  @Prop() actionTarget: DS.ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
@@ -103,7 +103,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
    * @internal
    * The duration of the toast in milliseconds.
    */
-  @Prop() duration: BalProps.BalToastDuration = 0
+  @Prop() duration: DS.ToastDuration = 0
 
   /**
    * @internal
@@ -124,12 +124,12 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<BalEvents.BalToastCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<DS.ToastCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() dsActionClick!: EventEmitter<BalEvents.BalToastActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<DS.ToastActionClickDetail>
 
   /**
    * @internal

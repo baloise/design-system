@@ -13,17 +13,17 @@ export class Shape implements ComponentInterface {
   /**
    * The shape variation
    */
-  @Prop({ reflect: true }) variation: BalProps.BalShapeVariation = '1'
+  @Prop({ reflect: true }) variation: DS.ShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop({ reflect: true }) color: BalProps.BalShapeColor = 'green'
+  @Prop({ reflect: true }) color: DS.ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop({ reflect: true }) rotation: BalProps.BalShapeRotation = '0'
+  @Prop({ reflect: true }) rotation: DS.ShapeRotation = '0'
 
   render() {
     return (

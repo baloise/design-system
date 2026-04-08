@@ -31,7 +31,7 @@ export class Heading implements ComponentInterface {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) level: BalProps.BalHeadingLevel = 'h1'
+  @Prop({ reflect: true }) level: DS.HeadingLevel = 'h1'
 
   @Watch('level')
   levelWatcher() {
@@ -43,7 +43,7 @@ export class Heading implements ComponentInterface {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop({ reflect: true }) visualLevel?: BalProps.BalHeadingVisualLevel
+  @Prop({ reflect: true }) visualLevel?: DS.HeadingVisualLevel
 
   @Watch('visualLevel')
   visualLevelWatcher() {
@@ -53,7 +53,7 @@ export class Heading implements ComponentInterface {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) autoLevel?: BalProps.BalHeadingVisualLevel
+  @Prop({ reflect: true }) autoLevel?: DS.HeadingVisualLevel
 
   @Watch('autoLevel')
   autoLevelWatcher() {
@@ -80,7 +80,7 @@ export class Heading implements ComponentInterface {
   /**
    * The theme type of the toast.
    */
-  @Prop({ reflect: true }) color: BalProps.BalHeadingColor = ''
+  @Prop({ reflect: true }) color: DS.HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds

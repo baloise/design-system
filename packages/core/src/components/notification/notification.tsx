@@ -28,7 +28,7 @@ export class Notification implements ComponentInterface {
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color?: BalProps.BalNotificationColor
+  @Prop() color?: DS.NotificationColor
 
   /**
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
@@ -48,8 +48,8 @@ export class Notification implements ComponentInterface {
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop({ reflect: true, mutable: true }) size?: BalProps.BalNotificationSize
-  watchSize(newValue: BalProps.BalNotificationSize) {
+  @Prop({ reflect: true, mutable: true }) size?: DS.NotificationSize
+  watchSize(newValue: DS.NotificationSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
@@ -66,7 +66,7 @@ export class Notification implements ComponentInterface {
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<BalEvents.BalNotificationCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<DS.NotificationCloseClickDetail>
 
   /**
    * Emitted when the component has loaded.

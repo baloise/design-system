@@ -82,9 +82,9 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalLabelSize
+  @Prop({ mutable: true, reflect: true }) size?: DS.LabelSize
   @Watch('size')
-  sizeChanged(newValue: BalProps.BalLabelSize) {
+  sizeChanged(newValue: DS.LabelSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 

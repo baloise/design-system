@@ -32,7 +32,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @State() isTouch = dsBreakpoints.isTouch
   @State() doesConfigAllowAnimation = true
-  @State() configBrand: BalProps.BalLogoBrand = 'baloise'
+  @State() configBrand: DS.LogoBrand = 'baloise'
 
   /**
    * PUBLIC PROPERTY API
@@ -42,21 +42,21 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   /**
    * Defines the color of the logo.
    */
-  @Prop({ reflect: true }) color: BalProps.BalLogoColor = 'primary'
+  @Prop({ reflect: true }) color: DS.LogoColor = 'primary'
 
   /**
    * Size of the logo svg
    */
-  @Prop({ mutable: true, reflect: true }) size: BalProps.BalLogoSize = ''
+  @Prop({ mutable: true, reflect: true }) size: DS.LogoSize = ''
   @Watch('size')
-  watchSize(newValue: BalProps.BalLogoSize) {
+  watchSize(newValue: DS.LogoSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
   /**
    * Defines the brand of the logo. Default is 'baloise'.
    */
-  @Prop({ reflect: true }) brand: BalProps.BalLogoBrand = ''
+  @Prop({ reflect: true }) brand: DS.LogoBrand = ''
 
   /**
    * Defines if the animation should be active

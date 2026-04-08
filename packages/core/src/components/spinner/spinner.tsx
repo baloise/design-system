@@ -57,7 +57,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   /**
    * Defines the color of the spinner.
    */
-  @Prop({ reflect: true }) color: BalProps.BalSpinnerColor = 'blue'
+  @Prop({ reflect: true }) color: DS.SpinnerColor = 'blue'
 
   /**
    * @Deprecated
@@ -74,14 +74,14 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
   /**
    * Defines the size of the spinner. If `sm` the spinner is smaller.
    */
-  @Prop({ reflect: true, mutable: true }) size: BalProps.BalSpinnerSize = ''
+  @Prop({ reflect: true, mutable: true }) size: DS.SpinnerSize = ''
 
   /**
    * Defines the look of the spinner
    */
-  @Prop({ reflect: true }) variation: BalProps.BalSpinnerVariation = 'logo'
+  @Prop({ reflect: true }) variation: DS.SpinnerVariation = 'logo'
   @Watch('variation')
-  variationWatcher(newValue: BalProps.BalSpinnerVariation, oldValue: BalProps.BalSpinnerVariation) {
+  variationWatcher(newValue: DS.SpinnerVariation, oldValue: DS.SpinnerVariation) {
     if (newValue !== oldValue) {
       if (this.variation === 'circle') {
         this.destroy()

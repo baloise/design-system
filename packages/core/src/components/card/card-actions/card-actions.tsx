@@ -7,7 +7,7 @@ export class CardActions {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() align?: BalProps.BalCardActionsAlignment
+  @Prop() align?: DS.CardActionsAlignment
 
   render() {
     return (

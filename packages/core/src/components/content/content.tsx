@@ -24,9 +24,9 @@ export class Content implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout?: BalProps.BalStackLayout
+  @Prop() layout?: DS.StackLayout
   @Watch('layout')
-  validateLayout(newValue?: BalProps.BalStackLayout) {
+  validateLayout(newValue?: DS.StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -43,26 +43,26 @@ export class Content implements ComponentInterface, Loggable {
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop() direction?: BalProps.BalStackDirection
+  @Prop() direction?: DS.StackDirection
 
   /**
    * Defines the positioning like center, end or
    * default to start.
    */
-  @Prop() align?: BalProps.BalContentAlignment
+  @Prop() align?: DS.ContentAlignment
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
-  @Prop() textAlign?: BalProps.BalContentTextAlignment
+  @Prop() textAlign?: DS.ContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true }) space?: BalProps.BalContentSpace
+  @Prop({ mutable: true }) space?: DS.ContentSpace
   @Watch('space')
-  watchSize(newValue?: BalProps.BalContentSpace) {
+  watchSize(newValue?: DS.ContentSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -70,7 +70,7 @@ export class Content implements ComponentInterface, Loggable {
    * @internal
    * Please use align instead.
    */
-  @Prop() alignment?: BalProps.BalStackAlignment
+  @Prop() alignment?: DS.StackAlignment
 
   connectedCallback(): void {
     this.validateLayout(this.layout)

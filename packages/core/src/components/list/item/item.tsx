@@ -37,12 +37,12 @@ export class Item implements ComponentInterface {
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() accordionMarker?: BalProps.BalAccordionMarker
+  @Prop() accordionMarker?: DS.AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() accordionMarkerPosition?: BalProps.BalAccordionMarkerPosition
+  @Prop() accordionMarkerPosition?: DS.AccordionMarkerPosition
 
   /**
    * Specifies the URL of the page the link goes to
@@ -53,7 +53,7 @@ export class Item implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: BalProps.BalButtonTarget = '_self'
+  @Prop() target: DS.ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -83,22 +83,22 @@ export class Item implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+  @Event() dsClick!: EventEmitter<DS.ButtonClickDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsAccordionToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionToggle!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() dsAccordionOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionOpened!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() dsAccordionClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsAccordionClosed!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * RENDER

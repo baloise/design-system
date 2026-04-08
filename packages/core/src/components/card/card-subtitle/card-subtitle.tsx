@@ -19,7 +19,7 @@ export class CardSubtitle {
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() color: BalProps.BalHeadingColor = ''
+  @Prop() color: DS.HeadingColor = ''
 
   render() {
     return (

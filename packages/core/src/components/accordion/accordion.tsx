@@ -42,12 +42,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * The heading level of the summary
    */
-  @Prop() summaryLevel: BalProps.BalAccordionSummaryLevel = 'h3'
+  @Prop() summaryLevel: DS.AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
-  @Prop() summaryVisualLevel?: BalProps.BalAccordionSummaryLevel
+  @Prop() summaryVisualLevel?: DS.AccordionSummaryLevel
 
   /**
    * If `true` the summary is styled as a title.
@@ -59,12 +59,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() marker?: BalProps.BalAccordionMarker
+  @Prop() marker?: DS.AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() markerPosition?: BalProps.BalAccordionMarkerPosition
+  @Prop() markerPosition?: DS.AccordionMarkerPosition
 
   /**
    * Displays the summary as a button and hides the default marker.
@@ -79,12 +79,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonColor: BalProps.BalButtonColor = 'primary'
+  @Prop() buttonColor: DS.ButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonSize?: BalProps.BalButtonSize
+  @Prop() buttonSize?: DS.ButtonSize
 
   /**
    * Label of the open trigger button
@@ -109,17 +109,17 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsToggle!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsToggle!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() dsOpened!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsOpened!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() dsClosed!: EventEmitter<BalEvents.BalAccordionToggleDetail>
+  @Event() dsClosed!: EventEmitter<DS.AccordionToggleDetail>
 
   /**
    * LISTENERS
@@ -127,7 +127,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
 
   @Listen('dsOpened', { target: 'window' })
-  listenOnToggles(event: BalEvents.BalAccordionToggle) {
+  listenOnToggles(event: DS.AccordionToggle) {
     const { id, group } = event.detail
 
     // ignore self

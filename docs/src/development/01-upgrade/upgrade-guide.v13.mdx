@@ -105,7 +105,7 @@ npm install @baloise/web-app-ng-utils@4
 
 ```typescript
 class MyComponent
-  onChange(ev: BalEvents.BalTabsChange) {
+  onChange(ev: DS.TabsChange) {
     this.selectedTab = ev.detail
   }
 }
@@ -251,7 +251,7 @@ npm install @baloise/design-system-components@13
 <DiffSource
   code={`- import { Props } from '@baloise/design-system-components';
 - const myColor: Props.BalButtonColor = 'primary'
-+ const myColor: BalProps.BalButtonColor = 'primary'`}
++ const myColor: DS.ButtonColor = 'primary'`}
 />
 
 #### 7. Rename namespace Events to BalEvents:
@@ -259,7 +259,7 @@ npm install @baloise/design-system-components@13
 <DiffSource
   code={`- import { Events } from '@baloise/design-system-components';
 - const onChange = (ev: Events.BalAccordionChange) => {
-+ const onChange = (ev: BalEvents.BalAccordionChange) => {
++ const onChange = (ev: DS.AccordionChange) => {
   ...
 }`}
 />
@@ -399,7 +399,7 @@ const myColor: Props.BalButtonColor = 'primary'
 **after**
 
 ```typescript
-const myColor: BalProps.BalButtonColor = 'primary'
+const myColor: DS.ButtonColor = 'primary'
 ```
 
 #### With Events
@@ -419,7 +419,7 @@ const onChange = (ev: Events.BalAccordionChange) => {
 **after**
 
 ```typescript
-const onChange = (ev: BalEvents.BalAccordionChange) => {
+const onChange = (ev: DS.AccordionChange) => {
   const myAccordion = ev.target // type => HTMLBalAccordion
   const myDetail = ev.detail // type => boolean
   ...

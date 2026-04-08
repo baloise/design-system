@@ -19,12 +19,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.aaa
    */
-  @Prop() color: BalProps.BalButtonColor = 'primary'
+  @Prop() color: DS.ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop({ reflect: true }) elementType: BalProps.BalButtonElementType = 'button'
+  @Prop({ reflect: true }) elementType: DS.ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -34,9 +34,9 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ mutable: true }) size: BalProps.BalButtonSize = undefined
+  @Prop({ mutable: true }) size: DS.ButtonSize = undefined
   @Watch('size')
-  watchSize(newValue: BalProps.BalButtonSize) {
+  watchSize(newValue: DS.ButtonSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -49,7 +49,7 @@ export class Button implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: BalProps.BalButtonTarget = '_self'
+  @Prop() target: DS.ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -108,7 +108,7 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop({ reflect: true }) loading: BalProps.BalButtonSpinner = false
+  @Prop({ reflect: true }) loading: DS.ButtonSpinner = false
 
   /**
    * If `true` the button is rounded.
@@ -173,27 +173,27 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsClick!: EventEmitter<BalEvents.BalButtonClickDetail>
+  @Event() dsClick!: EventEmitter<DS.ButtonClickDetail>
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
+  @Event() dsNavigate!: EventEmitter<DS.ButtonNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() dsFocus!: EventEmitter<BalEvents.BalButtonFocusDetail>
+  @Event() dsFocus!: EventEmitter<DS.ButtonFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() dsBlur!: EventEmitter<BalEvents.BalButtonBlurDetail>
+  @Event() dsBlur!: EventEmitter<DS.ButtonBlurDetail>
 
   /**
    * Emitted when the button has been  rendered.
    */
-  @Event() dsDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
+  @Event() dsDidRender!: EventEmitter<DS.ButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

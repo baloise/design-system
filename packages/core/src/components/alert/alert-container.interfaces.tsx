@@ -23,7 +23,7 @@ export type Alert = {
   closeHandler: (id: string) => void
   action?: string
   actionIcon?: string
-  actionTarget?: BalProps.BalButtonTarget
+  actionTarget?: DS.ButtonTarget
   actionHref?: string
   actionHandler: (id: string) => void
 }

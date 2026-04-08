@@ -16,21 +16,21 @@ export class Tag {
   /**
    * The theme type of the tag.
    */
-  @Prop({ reflect: true }) color?: BalProps.BalTagColor
+  @Prop({ reflect: true }) color?: DS.TagColor
 
   /**
    * The size of the tag element
    */
-  @Prop({ mutable: true, reflect: true }) size?: BalProps.BalTagSize
+  @Prop({ mutable: true, reflect: true }) size?: DS.TagSize
   @Watch('size')
-  watchSize(newValue: BalProps.BalTagSize) {
+  watchSize(newValue: DS.TagSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * The shape of the tag element like square or pill
    */
-  @Prop({ reflect: true }) shape?: BalProps.BalTagShape
+  @Prop({ reflect: true }) shape?: DS.TagShape
 
   /**
    * The theme type of the tag.
@@ -50,12 +50,12 @@ export class Tag {
   /**
    * Choosing left or center the tag is aligned to that side in the bal-card.
    */
-  @Prop({ reflect: true }) position?: BalProps.BalTagPlacement
+  @Prop({ reflect: true }) position?: DS.TagPlacement
 
   /**
    * Emitted when the input got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<BalEvents.BalTagCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<DS.TagCloseClickDetail>
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size)

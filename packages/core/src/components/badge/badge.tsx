@@ -18,21 +18,21 @@ export class Badge implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true }) size: BalProps.BalBadgeSize = ''
+  @Prop({ mutable: true, reflect: true }) size: DS.BadgeSize = ''
   @Watch('size')
-  watchSize(newValue: BalProps.BalBadgeSize) {
+  watchSize(newValue: DS.BadgeSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
   /**
    * Define the color for the badge.
    */
-  @Prop({ reflect: true }) color: BalProps.BalBadgeColor = ''
+  @Prop({ reflect: true }) color: DS.BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop({ reflect: true }) position: BalProps.BalBadgePosition = ''
+  @Prop({ reflect: true }) position: DS.BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.

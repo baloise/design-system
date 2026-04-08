@@ -69,21 +69,21 @@ export class Card {
   /**
    * Defines the text alignment of the card content.
    */
-  @Prop() align?: BalProps.BalCardAlignment
+  @Prop() align?: DS.CardAlignment
 
   /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true }) space?: BalProps.BalCardSpace
+  @Prop({ mutable: true }) space?: DS.CardSpace
   @Watch('space')
-  watchSpace(newValue: BalProps.BalCardSpace) {
+  watchSpace(newValue: DS.CardSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the color of the card.
    */
-  @Prop() color?: BalProps.BalCardColor
+  @Prop() color?: DS.CardColor
 
   connectedCallback(): void {
     this.space = normalizeDeprecatedTShirtSize(this.space)

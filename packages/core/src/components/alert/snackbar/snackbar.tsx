@@ -38,7 +38,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color?: BalProps.BalSnackbarColor
+  @Prop() color?: DS.SnackbarColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -86,7 +86,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() actionTarget: BalProps.BalButtonTarget = '_blank'
+  @Prop() actionTarget: DS.ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
@@ -118,12 +118,12 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<BalEvents.BalSnackbarCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<DS.SnackbarCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() dsActionClick!: EventEmitter<BalEvents.BalSnackbarActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<DS.SnackbarActionClickDetail>
 
   /**
    * @internal
