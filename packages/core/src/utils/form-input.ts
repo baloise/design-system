@@ -10,10 +10,10 @@ export interface FormInput<Value, ReturnValue = Value> {
   value?: Value
   inputValue?: Value
   nativeInput?: HTMLInputElement | HTMLTextAreaElement
-  balClick?: EventEmitter<MouseEvent>
-  balFocus?: EventEmitter<FocusEvent>
-  balBlur?: EventEmitter<FocusEvent>
-  balChange: EventEmitter<ReturnValue>
+  dsClick?: EventEmitter<MouseEvent>
+  dsFocus?: EventEmitter<FocusEvent>
+  dsBlur?: EventEmitter<FocusEvent>
+  dsChange: EventEmitter<ReturnValue>
 }
 
 export const stopEventBubbling = (ev: Event): void => {

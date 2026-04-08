@@ -126,7 +126,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * ------------------------------------------------------
    */
 
-  @Listen('balOpened', { target: 'window' })
+  @Listen('dsOpened', { target: 'window' })
   listenOnToggles(event: BalEvents.BalAccordionToggle) {
     const { id, group } = event.detail
 

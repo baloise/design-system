@@ -63,7 +63,7 @@ function updateFile(filePath) {
   // 6. Variable names: const/let/var balFoo → dsFoo (camelCase bal prefix → ds)
   //    Matches: const balButton, let balTag, etc. and usage like balButton.foo
   content = content.replace(/\b(const|let|var)\s+bal([A-Z])/g, '$1 ds$2')
-  content = content.replace(/\bbal([A-Z][a-zA-Z]*)([\s.,()\[\]])/g, 'ds$1$2')
+  content = content.replace(/\bbal([A-Z][a-zA-Z]*)([\s.,()\[\]?])/g, 'ds$1$2')
 
   // 7. @Event() declarations: @Event() balClick! → @Event() dsClick!
   //    Only in .tsx files, matches @Event() followed by balXxx
@@ -73,6 +73,8 @@ function updateFile(filePath) {
     content = content.replace(/\bthis\.bal([A-Z][a-zA-Z]*)\.emit/g, 'this.ds$1.emit')
     // this.balClick → this.dsClick (other usages)
     content = content.replace(/\bthis\.bal([A-Z][a-zA-Z]*)\b/g, 'this.ds$1')
+    // @Listen string args: @Listen('balFoo') → @Listen('dsFoo')
+    content = content.replace(/(@Listen\s*\(\s*')bal([A-Z][a-zA-Z]*)/g, '$1ds$2')
   }
 
   // 8. Event strings in tests: spyOnEvent('balClick') → spyOnEvent('dsClick')
