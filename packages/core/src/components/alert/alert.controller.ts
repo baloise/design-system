@@ -36,7 +36,7 @@ class AlertControllerImpl implements AlertController {
 
     // If not, create a new one and append it to the app root
     if (!this.container) {
-      this.container = document.createElement('bal-alert-container') as HTMLDsAlertContainerElement
+      this.container = document.createElement('ds-alert-container') as HTMLDsAlertContainerElement
       this.container.id = containerId
       this.container.setAttribute('type', this.type)
 
