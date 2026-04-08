@@ -84,7 +84,7 @@ jobs:
       - name: Build
         run: npx nx run-many -t build --projects=tag:scope:release
         env:
-          BAL_DS_RELEASE: true
+          DS_RELEASE: true
 
       - name: Pre-Publish
         run: npx nx run pre-publish
@@ -237,10 +237,10 @@ jobs:
           echo "Full commit info:"
           git log -1 --oneline
 
-      - name: Show content of packages/core/src/components/bal-accordion/test
-        run: |
-          echo "Listing files in packages/core/src/components/bal-accordion/test"
-          ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
+      # - name: Show content of packages/core/src/components/bal-accordion/test
+      #   run: |
+      #     echo "Listing files in packages/core/src/components/bal-accordion/test"
+      #     ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
 
       - name: Clean install
         run: npm ci
@@ -248,7 +248,7 @@ jobs:
       - name: Build Core
         run: npx nx run core:build
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Write visual config template
         run: |

@@ -1,4 +1,4 @@
-import { Divider, test } from '@baloise/ds-playwright'
+import { DsDivider, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,7 +6,7 @@ test.describe('component', () => {
       <bal-divider></bal-divider>
     `)
 
-    const dsDivider = new Divider(page.locator('bal-divider'))
+    const dsDivider = new DsDivider(page.locator('bal-divider'))
 
     await dsDivider.assertToBeVisible()
   })

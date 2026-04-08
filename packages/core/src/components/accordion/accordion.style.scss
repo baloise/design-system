@@ -50,24 +50,24 @@ details.accordion > summary:not(.button) {
   @include hover {
     &:hover,
     &.is-hovered {
-      color: var(--bal-link-color-base-hover);
+      color: var(--ds-link-color-base-hover);
       bal-icon {
-        --icon-color: var(--bal-link-color-base-hover);
+        --icon-color: var(--ds-link-color-base-hover);
       }
       &:after {
-        background: var(--bal-link-color-base-hover);
+        background: var(--ds-link-color-base-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    color: var(--bal-link-color-base-active);
+    color: var(--ds-link-color-base-active);
     bal-icon {
-      --icon-color: var(--bal-link-color-base-active);
+      --icon-color: var(--ds-link-color-base-active);
     }
     &:after {
-      background: var(--bal-link-color-base-active);
+      background: var(--ds-link-color-base-active);
     }
   }
 
@@ -84,7 +84,7 @@ details.accordion > summary:not(.button) {
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--bal-radius-base);
+        border-radius: var(--ds-radius-base);
       }
     }
   }

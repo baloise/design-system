@@ -1,4 +1,4 @@
-import { Snackbar, expect, test } from '@baloise/ds-playwright'
+import { DsSnackbar, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {
@@ -8,7 +8,7 @@ test.describe('component', () => {
   })
 
   test('Should have content', async ({ page }) => {
-    const component = new Snackbar(page.locator('bal-snackbar'))
+    const component = new DsSnackbar(page.locator('bal-snackbar'))
 
     await component.assertToBeVisible()
     await component.assertToHaveHeading('My Snackbar')
@@ -16,7 +16,7 @@ test.describe('component', () => {
   })
 
   test('Should fire dsCloseClick event', async ({ page }) => {
-    const component = new Snackbar(page.locator('bal-snackbar'))
+    const component = new DsSnackbar(page.locator('bal-snackbar'))
     const spy = await component.el.spyOnEvent('dsCloseClick')
 
     await component.clickClose()
@@ -25,7 +25,7 @@ test.describe('component', () => {
   })
 
   test('Should fire dsActionClick event', async ({ page }) => {
-    const component = new Snackbar(page.locator('bal-snackbar'))
+    const component = new DsSnackbar(page.locator('bal-snackbar'))
     const spy = await component.el.spyOnEvent('dsActionClick')
 
     await component.clickAction('Action')

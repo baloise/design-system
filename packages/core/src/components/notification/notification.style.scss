@@ -16,25 +16,25 @@ $host-selector: ('#notification');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(notification-radius, var(--bal-notification-radius));
-  @include vars.local(notification-color-background, var(--bal-notification-color-base-background));
-  @include vars.local(notification-color-border, var(--bal-notification-color-base-border));
-  @include vars.local(notification-color-text, var(--bal-notification-color-base-text));
+  @include vars.local(notification-radius, var(--ds-notification-radius));
+  @include vars.local(notification-color-background, var(--ds-notification-color-base-background));
+  @include vars.local(notification-color-border, var(--ds-notification-color-base-border));
+  @include vars.local(notification-color-text, var(--ds-notification-color-base-text));
 
-  @include vars.local(notification-heading-family, var(--bal-text-family-heading));
-  @include vars.local(notification-heading-weight, var(--bal-text-weight-bold));
-  @include vars.local(notification-heading-size, var(--bal-text-size-lg-device));
-  @include vars.local(notification-heading-line-height, var(--bal-text-line-height-heading));
+  @include vars.local(notification-heading-family, var(--ds-text-family-heading));
+  @include vars.local(notification-heading-weight, var(--ds-text-weight-bold));
+  @include vars.local(notification-heading-size, var(--ds-text-size-lg-device));
+  @include vars.local(notification-heading-line-height, var(--ds-text-line-height-heading));
 
-  @include vars.local(notification-content-family, var(--bal-text-family-body));
+  @include vars.local(notification-content-family, var(--ds-text-family-body));
   @include vars.local(notification-content-weight, inherit);
-  @include vars.local(notification-content-size, var(--bal-text-size-base-device));
-  @include vars.local(notification-content-line-height, var(--bal-text-line-height-body));
+  @include vars.local(notification-content-size, var(--ds-text-size-base-device));
+  @include vars.local(notification-content-line-height, var(--ds-text-line-height-body));
 
-  @include vars.local(notification-icon, var(--bal-notification-color-base-icon));
+  @include vars.local(notification-icon, var(--ds-notification-color-base-icon));
   @include vars.local(notification-icon-display, block);
 
-  @include vars.local(notification-space, var(--bal-card-space-base-device, 1.5rem));
+  @include vars.local(notification-space, var(--ds-card-space-base-device, 1.5rem));
   @include vars.local(notification-icon-space, 1.5rem);
 
   @include vars.local(notification-close-offset, 2rem); // extra space reserved when a close button is present
@@ -68,7 +68,7 @@ $host-selector: ('#notification');
   position: relative;
   hyphens: auto;
 
-  border: var(--bal-border-width-base) solid var(--_notification-color-border);
+  border: var(--ds-border-width-base) solid var(--_notification-color-border);
   border-radius: var(--_notification-radius);
   background: var(--_notification-color-background);
   color: var(--_notification-color-text);
@@ -190,10 +190,10 @@ $colors: (
 );
 
 @mixin notification-colors($color) {
-  --mod-notification-color-text: var(--bal-notification-color-#{$color}-text);
-  --mod-notification-color-border: var(--bal-notification-color-#{$color}-border);
-  --mod-notification-color-background: var(--bal-notification-color-#{$color}-background);
-  --mod-notification-icon: var(--bal-notification-color-#{$color}-icon);
+  --mod-notification-color-text: var(--ds-notification-color-#{$color}-text);
+  --mod-notification-color-border: var(--ds-notification-color-#{$color}-border);
+  --mod-notification-color-background: var(--ds-notification-color-#{$color}-background);
+  --mod-notification-icon: var(--ds-notification-color-#{$color}-icon);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -219,7 +219,7 @@ $colors: (
 $sizes: ('sm', 'md', 'lg');
 
 @mixin notification-sizes($size) {
-  --mod-notification-space: var(--bal-card-space-#{$size}-device);
+  --mod-notification-space: var(--ds-card-space-#{$size}-device);
 }
 
 @include hybrid.styles($css-selector, $use-host) {

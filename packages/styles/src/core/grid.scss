@@ -11,7 +11,7 @@
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  padding: var(--bal-column-gap);
+  padding: var(--ds-column-gap);
   .grid.is-mobile > &.is-narrow {
     flex: none;
     width: unset;
@@ -608,14 +608,14 @@
   }
 }
 .grid {
-  @include ltr-property('margin', (calc(var(--bal-column-gap) * -1)), false);
-  @include ltr-property('margin', (calc(var(--bal-column-gap) * -1)));
-  margin-top: (calc(var(--bal-column-gap) * -1));
+  @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)), false);
+  @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)));
+  margin-top: (calc(var(--ds-column-gap) * -1));
   &:last-child {
-    margin-bottom: (calc(var(--bal-column-gap) * -1));
+    margin-bottom: (calc(var(--ds-column-gap) * -1));
   }
   &:not(:last-child) {
-    margin-bottom: calc(1.5rem - #{var(--bal-column-gap)});
+    margin-bottom: calc(1.5rem - #{var(--ds-column-gap)});
   } // Modifiers
   &.is-centered {
     justify-content: center;

@@ -75,7 +75,7 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
   for (const index in keys) {
     const key = keys[index].toLowerCase()
     const oldKey = tshirtSizesMapping[key]
-    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
   }
   const rules = utils.styleClass({ property, values, breakpoint, important: true })
   return { rules }

@@ -1,10 +1,10 @@
-export type BalKeyboardInfo = {
+export type KeyboardInfo = {
   keyboardFocus: boolean
 }
 
-export type BalKeyboardListenerFn = (info: BalKeyboardInfo) => void
+export type KeyboardListenerFn = (info: KeyboardInfo) => void
 
-export interface BalKeyboardObserver {
+export interface KeyboardObserver {
   el: HTMLElement
-  keyboardListener(info: BalKeyboardInfo): void
+  keyboardListener(info: KeyboardInfo): void
 }

@@ -2,120 +2,120 @@
   {
     "z-index": [
       {
-        "class": "z-index-deep",
-        "css": "z-index: var(--bal-z-index-deep);",
+        "class": "ds-z-index-deep",
+        "css": "z-index: var(--ds-z-index-deep);",
         "property": "z-index",
-        "value": "var(--bal-z-index-deep)"
+        "value": "var(--ds-z-index-deep)"
       },
       {
-        "class": "z-index-masked",
-        "css": "z-index: var(--bal-z-index-masked);",
+        "class": "ds-z-index-masked",
+        "css": "z-index: var(--ds-z-index-masked);",
         "property": "z-index",
-        "value": "var(--bal-z-index-masked)"
+        "value": "var(--ds-z-index-masked)"
       },
       {
-        "class": "z-index-mask",
-        "css": "z-index: var(--bal-z-index-mask);",
+        "class": "ds-z-index-mask",
+        "css": "z-index: var(--ds-z-index-mask);",
         "property": "z-index",
-        "value": "var(--bal-z-index-mask)"
+        "value": "var(--ds-z-index-mask)"
       },
       {
-        "class": "z-index-sticky",
-        "css": "z-index: var(--bal-z-index-sticky);",
+        "class": "ds-z-index-sticky",
+        "css": "z-index: var(--ds-z-index-sticky);",
         "property": "z-index",
-        "value": "var(--bal-z-index-sticky)"
+        "value": "var(--ds-z-index-sticky)"
       },
       {
-        "class": "z-index-navigation",
-        "css": "z-index: var(--bal-z-index-navigation);",
+        "class": "ds-z-index-navigation",
+        "css": "z-index: var(--ds-z-index-navigation);",
         "property": "z-index",
-        "value": "var(--bal-z-index-navigation)"
+        "value": "var(--ds-z-index-navigation)"
       },
       {
-        "class": "z-index-popup",
-        "css": "z-index: var(--bal-z-index-popup);",
+        "class": "ds-z-index-popup",
+        "css": "z-index: var(--ds-z-index-popup);",
         "property": "z-index",
-        "value": "var(--bal-z-index-popup)"
+        "value": "var(--ds-z-index-popup)"
       },
       {
-        "class": "z-index-modal",
-        "css": "z-index: var(--bal-z-index-modal);",
+        "class": "ds-z-index-modal",
+        "css": "z-index: var(--ds-z-index-modal);",
         "property": "z-index",
-        "value": "var(--bal-z-index-modal)"
+        "value": "var(--ds-z-index-modal)"
       },
       {
-        "class": "z-index-toast",
-        "css": "z-index: var(--bal-z-index-toast);",
+        "class": "ds-z-index-toast",
+        "css": "z-index: var(--ds-z-index-toast);",
         "property": "z-index",
-        "value": "var(--bal-z-index-toast)"
+        "value": "var(--ds-z-index-toast)"
       },
       {
-        "class": "z-index-tooltip",
-        "css": "z-index: var(--bal-z-index-tooltip);",
+        "class": "ds-z-index-tooltip",
+        "css": "z-index: var(--ds-z-index-tooltip);",
         "property": "z-index",
-        "value": "var(--bal-z-index-tooltip)"
+        "value": "var(--ds-z-index-tooltip)"
       }
     ]
   },
   {
     "opacity": [
       {
-        "class": "opacity-hidden",
-        "css": "opacity: var(--bal-opacity-hidden);",
+        "class": "ds-opacity-hidden",
+        "css": "opacity: var(--ds-opacity-hidden);",
         "property": "opacity",
-        "value": "var(--bal-opacity-hidden)"
+        "value": "var(--ds-opacity-hidden)"
       },
       {
-        "class": "opacity-half",
-        "css": "opacity: var(--bal-opacity-half);",
+        "class": "ds-opacity-half",
+        "css": "opacity: var(--ds-opacity-half);",
         "property": "opacity",
-        "value": "var(--bal-opacity-half)"
+        "value": "var(--ds-opacity-half)"
       },
       {
-        "class": "opacity-disabled",
-        "css": "opacity: var(--bal-opacity-disabled);",
+        "class": "ds-opacity-disabled",
+        "css": "opacity: var(--ds-opacity-disabled);",
         "property": "opacity",
-        "value": "var(--bal-opacity-disabled)"
+        "value": "var(--ds-opacity-disabled)"
       },
       {
-        "class": "opacity-backdrop",
-        "css": "opacity: var(--bal-opacity-backdrop);",
+        "class": "ds-opacity-backdrop",
+        "css": "opacity: var(--ds-opacity-backdrop);",
         "property": "opacity",
-        "value": "var(--bal-opacity-backdrop)"
+        "value": "var(--ds-opacity-backdrop)"
       },
       {
-        "class": "opacity-full",
-        "css": "opacity: var(--bal-opacity-full);",
+        "class": "ds-opacity-full",
+        "css": "opacity: var(--ds-opacity-full);",
         "property": "opacity",
-        "value": "var(--bal-opacity-full)"
+        "value": "var(--ds-opacity-full)"
       }
     ]
   },
   {
     "box-shadow": [
       {
-        "class": "shadow-none",
-        "css": "box-shadow: var(--bal-shadow-box-none);",
+        "class": "ds-shadow-none",
+        "css": "box-shadow: var(--ds-shadow-box-none);",
         "property": "box-shadow",
-        "value": "var(--bal-shadow-box-none)"
+        "value": "var(--ds-shadow-box-none)"
       },
       {
-        "class": "shadow-header",
-        "css": "box-shadow: var(--bal-shadow-box-header);",
+        "class": "ds-shadow-header",
+        "css": "box-shadow: var(--ds-shadow-box-header);",
         "property": "box-shadow",
-        "value": "var(--bal-shadow-box-header)"
+        "value": "var(--ds-shadow-box-header)"
       },
       {
-        "class": "shadow",
-        "css": "box-shadow: var(--bal-shadow-box-base);",
+        "class": "ds-shadow",
+        "css": "box-shadow: var(--ds-shadow-box-base);",
         "property": "box-shadow",
-        "value": "var(--bal-shadow-box-base)"
+        "value": "var(--ds-shadow-box-base)"
       },
       {
-        "class": "shadow-elevated",
-        "css": "box-shadow: var(--bal-shadow-box-elevated);",
+        "class": "ds-shadow-elevated",
+        "css": "box-shadow: var(--ds-shadow-box-elevated);",
         "property": "box-shadow",
-        "value": "var(--bal-shadow-box-elevated)"
+        "value": "var(--ds-shadow-box-elevated)"
       }
     ]
   },

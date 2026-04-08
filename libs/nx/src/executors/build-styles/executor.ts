@@ -64,7 +64,7 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     let files = []
     if (options.dev) {
       console.log('Running in dev mode, only compiling local styles')
-      files = await scan(join(options.projectRoot, 'sass', 'baloise-design-system.local.scss'))
+      files = await scan(join(options.projectRoot, 'sass', 'design-system.local.scss'))
     } else {
       files = await scan(join(options.projectRoot, 'sass', '**', '*.scss'))
     }

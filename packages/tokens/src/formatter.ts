@@ -9,7 +9,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
    * ------------------------------------------------------
    */
   sd.registerFormat({
-    name: 'bal/css/variables-responsive',
+    name: 'ds/css/variables-responsive',
     format: async ({ dictionary, file, options }) => {
       const { outputReferences } = options
       const header = await fileHeader({ file })

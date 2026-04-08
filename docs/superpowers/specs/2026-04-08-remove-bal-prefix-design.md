@@ -30,7 +30,7 @@ Remove the `bal-`/`Bal` prefix from all component source files, folders, Page Ob
 
 - HTML tag names: `<bal-button>`, `@Component({ tag: 'bal-button' })`, CSS selectors
 - Stencil-generated types: `HTMLBalButtonElement`
-- CSS variable names: `--bal-button-*`, `--mod-button-*`
+- CSS variable names: `--ds-button-*`, `--mod-button-*`
 - Package names: `@baloise/ds-core`, `@baloise/ds-playwright`
 - This is a clean break — no backwards-compat re-exports
 

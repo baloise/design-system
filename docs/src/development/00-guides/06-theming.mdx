@@ -55,8 +55,8 @@ In an application, CSS variables can be established globally within the `:root` 
   language="css"
   code={`
 :root {
-  --bal-color-primary: pink;
-  --bal-font-family-heading: 'Roboto', sans-serif;
+  --ds-color-primary: pink;
+  --ds-font-family-heading: 'Roboto', sans-serif;
 }
 `}
 />
@@ -71,7 +71,7 @@ Change the default background to aqua
   language="css"
   code={`
 bal-badge {
-  --bal-badge-background: aqua;
+  --ds-badge-background: aqua;
 }
 `}
 />
@@ -82,7 +82,7 @@ Change the background on an badge with the .my-badge class
   language="css"
   code={`
 .my-badge {
-  --bal-badge-background: lime;
+  --ds-badge-background: lime;
 }
 `}
 />
@@ -95,7 +95,7 @@ Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleD
   language="js"
   code={`
 const el = document.querySelector('.my-badge')
-el.style.setProperty('--bal-badge-background', 'lime')
+el.style.setProperty('--ds-badge-background', 'lime')
 `}
 />
 

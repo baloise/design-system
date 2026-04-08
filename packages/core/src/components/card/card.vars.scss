@@ -1,81 +1,81 @@
 /**
- * @prop --bal-card-background: Background of the card
- * @prop --bal-card-background-white: Background of the card with the color white.
- * @prop --bal-card-background-blue: Background of the card with the color blue.
- * @prop --bal-card-background-primary: Background of the card with the color primary.
- * @prop --bal-card-background-info: Background of the card with the color info.
- * @prop --bal-card-background-success: Background of the card with the color success.
- * @prop --bal-card-background-warning: Background of the card with the color warning.
- * @prop --bal-card-background-danger: Background of the card with the color danger.
- * @prop --bal-card-background-grey: Background of the card with the color grey.
- * @prop --bal-card-background-red: Background of the card with the color red.
- * @prop --bal-card-background-yellow: Background of the card with the color yellow.
- * @prop --bal-card-background-purple: Background of the card with the color purple.
- * @prop --bal-card-background-green: Background of the card with the color green.
- * @prop --bal-card-background-red-light: Background of the card with the color red light.
- * @prop --bal-card-background-yellow-light: Background of the card with the color yellow light.
- * @prop --bal-card-background-purple-light: Background of the card with the color purple light.
- * @prop --bal-card-background-green-light: Background of the card with the color green light.
- * @prop --bal-card-background-grey-light: Background of the card with the color grey light.
- * @prop --bal-card-background-purple-1: Background of the card with the color purple 1.
- * @prop --bal-card-background-purple-2: Background of the card with the color purple 2.
- * @prop --bal-card-background-purple-3: Background of the card with the color purple 3.
- * @prop --bal-card-background-green-1: Background of the card with the color green 1.
- * @prop --bal-card-background-green-2: Background of the card with the color green 2.
- * @prop --bal-card-background-green-3: Background of the card with the color green 3.
- * @prop --bal-card-background-red-1: Background of the card with the color red 1.
- * @prop --bal-card-background-red-2: Background of the card with the color red 2.
- * @prop --bal-card-background-red-3: Background of the card with the color red 3.
- * @prop --bal-card-background-yellow-1: Background of the card with the color yellow 1.
- * @prop --bal-card-background-yellow-2: Background of the card with the color yellow 2.
- * @prop --bal-card-background-yellow-3: Background of the card with the color yellow 3.
- * @prop --bal-card-selected-background: Background of the card with the color selected.
+ * @prop --ds-card-background: Background of the card
+ * @prop --ds-card-background-white: Background of the card with the color white.
+ * @prop --ds-card-background-blue: Background of the card with the color blue.
+ * @prop --ds-card-background-primary: Background of the card with the color primary.
+ * @prop --ds-card-background-info: Background of the card with the color info.
+ * @prop --ds-card-background-success: Background of the card with the color success.
+ * @prop --ds-card-background-warning: Background of the card with the color warning.
+ * @prop --ds-card-background-danger: Background of the card with the color danger.
+ * @prop --ds-card-background-grey: Background of the card with the color grey.
+ * @prop --ds-card-background-red: Background of the card with the color red.
+ * @prop --ds-card-background-yellow: Background of the card with the color yellow.
+ * @prop --ds-card-background-purple: Background of the card with the color purple.
+ * @prop --ds-card-background-green: Background of the card with the color green.
+ * @prop --ds-card-background-red-light: Background of the card with the color red light.
+ * @prop --ds-card-background-yellow-light: Background of the card with the color yellow light.
+ * @prop --ds-card-background-purple-light: Background of the card with the color purple light.
+ * @prop --ds-card-background-green-light: Background of the card with the color green light.
+ * @prop --ds-card-background-grey-light: Background of the card with the color grey light.
+ * @prop --ds-card-background-purple-1: Background of the card with the color purple 1.
+ * @prop --ds-card-background-purple-2: Background of the card with the color purple 2.
+ * @prop --ds-card-background-purple-3: Background of the card with the color purple 3.
+ * @prop --ds-card-background-green-1: Background of the card with the color green 1.
+ * @prop --ds-card-background-green-2: Background of the card with the color green 2.
+ * @prop --ds-card-background-green-3: Background of the card with the color green 3.
+ * @prop --ds-card-background-red-1: Background of the card with the color red 1.
+ * @prop --ds-card-background-red-2: Background of the card with the color red 2.
+ * @prop --ds-card-background-red-3: Background of the card with the color red 3.
+ * @prop --ds-card-background-yellow-1: Background of the card with the color yellow 1.
+ * @prop --ds-card-background-yellow-2: Background of the card with the color yellow 2.
+ * @prop --ds-card-background-yellow-3: Background of the card with the color yellow 3.
+ * @prop --ds-card-selected-background: Background of the card with the color selected.
  *
- * @prop --bal-card-radius: Radius of the card.
- * @prop --bal-card-square-radius: Radius of the square card.
+ * @prop --ds-card-radius: Radius of the card.
+ * @prop --ds-card-square-radius: Radius of the square card.
  *
- * @prop --bal-card-border: Border of the card.
+ * @prop --ds-card-border: Border of the card.
  */
 
 :root {
   //
   // background colors
-  --bal-card-background: transparent;
-  --bal-card-background-white: var(--bal-color-white);
-  --bal-card-background-blue: var(--bal-color-brand-primary-base);
-  --bal-card-background-primary: var(--bal-color-brand-primary-base);
-  --bal-card-background-info: var(--bal-color-brand-primary-base);
-  --bal-card-background-success: var(--bal-color-success-2);
-  --bal-card-background-warning: var(--bal-color-warning-2);
-  --bal-card-background-danger: var(--bal-color-danger-2);
-  --bal-card-background-grey: var(--bal-color-grey);
-  --bal-card-background-red: var(--bal-color-red);
-  --bal-card-background-yellow: var(--bal-color-yellow);
-  --bal-card-background-purple: var(--bal-color-purple);
-  --bal-card-background-green: var(--bal-color-green);
-  --bal-card-background-red-light: var(--bal-color-red-1);
-  --bal-card-background-yellow-light: var(--bal-color-yellow-1);
-  --bal-card-background-purple-light: var(--bal-color-purple-1);
-  --bal-card-background-green-light: var(--bal-color-green-1);
-  --bal-card-background-grey-light: var(--bal-color-grey-1);
-  --bal-card-background-purple-1: var(--bal-color-purple-1);
-  --bal-card-background-purple-2: var(--bal-color-purple-2);
-  --bal-card-background-purple-3: var(--bal-color-purple);
-  --bal-card-background-green-1: var(--bal-color-green-1);
-  --bal-card-background-green-2: var(--bal-color-green-2);
-  --bal-card-background-green-3: var(--bal-color-green);
-  --bal-card-background-red-1: var(--bal-color-red-1);
-  --bal-card-background-red-2: var(--bal-color-red-2);
-  --bal-card-background-red-3: var(--bal-color-red);
-  --bal-card-background-yellow-1: var(--bal-color-yellow-1);
-  --bal-card-background-yellow-2: var(--bal-color-yellow-2);
-  --bal-card-background-yellow-3: var(--bal-color-yellow);
-  --bal-card-selected-background: var(--bal-color-primary-2);
+  --ds-card-background: transparent;
+  --ds-card-background-white: var(--ds-color-white);
+  --ds-card-background-blue: var(--ds-color-brand-primary-base);
+  --ds-card-background-primary: var(--ds-color-brand-primary-base);
+  --ds-card-background-info: var(--ds-color-brand-primary-base);
+  --ds-card-background-success: var(--ds-color-success-2);
+  --ds-card-background-warning: var(--ds-color-warning-2);
+  --ds-card-background-danger: var(--ds-color-danger-2);
+  --ds-card-background-grey: var(--ds-color-grey);
+  --ds-card-background-red: var(--ds-color-red);
+  --ds-card-background-yellow: var(--ds-color-yellow);
+  --ds-card-background-purple: var(--ds-color-purple);
+  --ds-card-background-green: var(--ds-color-green);
+  --ds-card-background-red-light: var(--ds-color-red-1);
+  --ds-card-background-yellow-light: var(--ds-color-yellow-1);
+  --ds-card-background-purple-light: var(--ds-color-purple-1);
+  --ds-card-background-green-light: var(--ds-color-green-1);
+  --ds-card-background-grey-light: var(--ds-color-grey-1);
+  --ds-card-background-purple-1: var(--ds-color-purple-1);
+  --ds-card-background-purple-2: var(--ds-color-purple-2);
+  --ds-card-background-purple-3: var(--ds-color-purple);
+  --ds-card-background-green-1: var(--ds-color-green-1);
+  --ds-card-background-green-2: var(--ds-color-green-2);
+  --ds-card-background-green-3: var(--ds-color-green);
+  --ds-card-background-red-1: var(--ds-color-red-1);
+  --ds-card-background-red-2: var(--ds-color-red-2);
+  --ds-card-background-red-3: var(--ds-color-red);
+  --ds-card-background-yellow-1: var(--ds-color-yellow-1);
+  --ds-card-background-yellow-2: var(--ds-color-yellow-2);
+  --ds-card-background-yellow-3: var(--ds-color-yellow);
+  --ds-card-selected-background: var(--ds-color-primary-2);
   //
   // radius
-  --bal-card-radius: var(--bal-radius-lg);
-  --bal-card-square-radius: 0;
+  --ds-card-radius: var(--ds-radius-lg);
+  --ds-card-square-radius: 0;
   //
   // border
-  --bal-card-border: var(--bal-border-width-base) dashed var(--bal-color-grey);
+  --ds-card-border: var(--ds-border-width-base) dashed var(--ds-color-grey);
 }

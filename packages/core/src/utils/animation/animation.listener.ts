@@ -3,7 +3,7 @@ import { addEventListener, removeEventListener, debounce, isChildOfEventTarget }
 import { ListenerAbstract } from '../types/listener'
 import { AnimationObserverInfo } from './animation.interfaces'
 
-export class AnimationListener extends ListenerAbstract<unknown, BalAnimationObserverInfo> {
+export class AnimationListener extends ListenerAbstract<unknown, AnimationObserverInfo> {
   private debouncedNotify = debounce(target => this.notify({ target }), 42)
 
   private callbackWillAnimate = (ev: UIEvent) => {
@@ -18,8 +18,8 @@ export class AnimationListener extends ListenerAbstract<unknown, BalAnimationObs
     super.connect(el)
     const win = window
     if (win) {
-      addEventListener(win, 'balWillAnimate', this.callbackWillAnimate, { passive: true })
-      addEventListener(win, 'balDidAnimate', this.callbackDidAnimate, { passive: true })
+      addEventListener(win, 'dsWillAnimate', this.callbackWillAnimate, { passive: true })
+      addEventListener(win, 'dsDidAnimate', this.callbackDidAnimate, { passive: true })
     }
   }
 
@@ -27,8 +27,8 @@ export class AnimationListener extends ListenerAbstract<unknown, BalAnimationObs
     super.disconnect()
     const win = window
     if (win) {
-      removeEventListener(win, 'balWillAnimate', this.callbackWillAnimate)
-      removeEventListener(win, 'balDidAnimate', this.callbackDidAnimate)
+      removeEventListener(win, 'dsWillAnimate', this.callbackWillAnimate)
+      removeEventListener(win, 'dsDidAnimate', this.callbackDidAnimate)
     }
   }
 }

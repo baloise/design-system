@@ -2,7 +2,7 @@ import { Page, Response } from '@playwright/test'
 import { EventSpy } from './page/event-spy'
 import { E2ELocator, LocatorOptions } from './page/utils'
 
-export type BalPageOptions = {
+export type DsPageOptions = {
   /**
    * Referer header value. If provided it will take preference over the referer header value set by
    * [page.setExtraHTTPHeaders(headers)](https://playwright.dev/docs/api/class-page#page-set-extra-http-headers).
@@ -31,10 +31,10 @@ export type BalPageOptions = {
   waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit'
 }
 
-export interface BalPage extends Page {
+export interface DsPage extends Page {
   locator(selector: string, options?: LocatorOptions): E2ELocator
   getByTestId(testId: string | RegExp): E2ELocator
-  goto(url: string, options?: BalPageOptions): Promise<null | Response>
+  goto(url: string, options?: DsPageOptions): Promise<null | Response>
   mount(html: string): Promise<void>
   setupVisualTest(url: string, type?: 'Component' | 'CSS'): Promise<void>
   waitForChanges(timeoutMs?: number): Promise<void>

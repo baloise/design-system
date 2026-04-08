@@ -134,12 +134,12 @@ export class AlertContainer implements ComponentInterface {
               actionTarget={alert.actionTarget}
               actionHref={alert.actionHref}
               actionHandler={() => alert.actionHandler(alert.alertId)}
-              onBalCloseClick={() => this.removeAlert(alert.alertId)}
-              onBalDidLoad={() => this.present(alert.alertId)}
-              onBalDidPause={() => {
+              onDsCloseClick={() => this.removeAlert(alert.alertId)}
+              onDsDidLoad={() => this.present(alert.alertId)}
+              onDsDidPause={() => {
                 this.alertTimers[alert.alertId] && this.alertTimers[alert.alertId].pause()
               }}
-              onBalDidResume={() => {
+              onDsDidResume={() => {
                 this.alertTimers[alert.alertId] && this.alertTimers[alert.alertId].resume()
               }}
             ></AlertElement>

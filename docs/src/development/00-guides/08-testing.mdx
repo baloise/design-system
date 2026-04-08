@@ -50,7 +50,7 @@ This also serves as the default testing toolkit within the Angular framework.
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { BrowserModule, By } from '@angular/platform-browser'
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { DesignSystemModule } from '@baloise/ds-angular'
 import { waitForDesignSystem } from '@baloise/ds-core'
 import { AppComponent } from './app.component'
 
@@ -58,7 +58,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+      imports: [BrowserModule, DesignSystemModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents()
   })
@@ -229,7 +229,7 @@ Lets create the first test `hello.component.cy.ts`.
 ```
 
 ```typescript
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { DesignSystemModule } from '@baloise/ds-angular'
 import { HelloComponent } from 'src/app/hello/hello.component'
 
 describe('hello.component.cy.ts', () => {
@@ -237,7 +237,7 @@ describe('hello.component.cy.ts', () => {
     // mount the angular component and import the needed
     // Design System modules
     cy.mount(HelloComponent, {
-      imports: [BaloiseDesignSystemModule.forRoot()],
+      imports: [DesignSystemModule.forRoot()],
     })
     // lets wait until the Design System has loaded the custom font, ¨
     // disabled the animations and the web-components have rendered

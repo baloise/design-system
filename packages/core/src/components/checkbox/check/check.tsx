@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-check',

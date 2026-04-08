@@ -3,8 +3,8 @@ import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { KeyboardInfo } from './keyboard.interfaces'
 
-export class KeyboardListener<TObserver> extends ListenerAbstract<TObserver, BalKeyboardInfo> {
-  private info: BalKeyboardInfo = { keyboardFocus: false }
+export class KeyboardListener<TObserver> extends ListenerAbstract<TObserver, KeyboardInfo> {
+  private info: KeyboardInfo = { keyboardFocus: false }
 
   override connect(el: HTMLElement): void {
     super.connect(el)

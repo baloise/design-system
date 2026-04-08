@@ -4,30 +4,30 @@ import { VisibilitySubject } from './visibility.subject'
 
 export function ListenToVisibility() {
   return function (
-    target: ComponentInterface & BalVisibilityObserver,
+    target: ComponentInterface & VisibilityObserver,
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
     const { connectedCallback, componentDidLoad, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this['_balVisibilitySubject']) {
-        this['_balVisibilitySubject'] = new VisibilitySubject()
+      if (!this['_dsVisibilitySubject']) {
+        this['_dsVisibilitySubject'] = new VisibilitySubject()
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.componentDidLoad = function () {
-      this['_balVisibilitySubject'].attach(this)
+      this['_dsVisibilitySubject'].attach(this)
 
       return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this['_balVisibilitySubject']) {
-        this['_balVisibilitySubject'].detach()
-        this['_balVisibilitySubject'] = undefined
+      if (this['_dsVisibilitySubject']) {
+        this['_dsVisibilitySubject'].detach()
+        this['_dsVisibilitySubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

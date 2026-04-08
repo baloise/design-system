@@ -12,8 +12,8 @@
   "homepage": "https://baloise-design-system.vercel.app",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "scss/baloise-design-system.scss",
-  "style": "css/baloise-design-system.css",
+  "main": "scss/design-system.scss",
+  "style": "css/design-system.css",
   "files": [
     "bin/",
     "css/",

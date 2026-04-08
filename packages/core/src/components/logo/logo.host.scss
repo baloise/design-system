@@ -11,7 +11,7 @@
 
 :host {
   @include vars.base(logo);
-  @include vars.local(logo-color, var(--bal-color-primary-5));
+  @include vars.local(logo-color, var(--ds-color-primary-5));
   @include vars.local(logo-height, 22px);
 }
 
@@ -68,7 +68,7 @@
 }
 
 :host([color='white']) {
-  --mod-logo-color: var(--bal-color-white);
+  --mod-logo-color: var(--ds-color-white);
 }
 
 :host([size='sm']) {

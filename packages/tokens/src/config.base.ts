@@ -8,13 +8,13 @@ const config: Config = {
   platforms: {
     css: {
       transformGroup: 'css',
-      transforms: ['bal/css/name', 'bal/color/rgba', 'bal/size/round', 'bal/size/rem'],
+      transforms: ['ds/css/name', 'ds/color/rgba', 'ds/size/round', 'ds/size/rem'],
       basePxFontSize,
       buildPath: 'dist/',
-      prefix: 'bal',
+      prefix: 'ds',
       files: [
         {
-          format: 'bal/css/variables-responsive',
+          format: 'ds/css/variables-responsive',
           destination: `css/${mode.toLowerCase()}.tokens.css`,
         },
       ],
@@ -24,10 +24,10 @@ const config: Config = {
     },
     scss: {
       transformGroup: 'scss',
-      transforms: ['bal/css/name', 'bal/color/rgba', 'bal/size/round', 'bal/size/rem'],
+      transforms: ['ds/css/name', 'ds/color/rgba', 'ds/size/round', 'ds/size/rem'],
       basePxFontSize,
       buildPath: 'dist/',
-      prefix: 'bal',
+      prefix: 'ds',
       files: [
         {
           format: 'scss/variables',
@@ -40,8 +40,8 @@ const config: Config = {
     },
     web: {
       transformGroup: 'web',
-      transforms: ['bal/css/name', 'bal/color/hex', 'bal/size/rem'],
-      prefix: 'bal',
+      transforms: ['ds/css/name', 'ds/color/hex', 'ds/size/rem'],
+      prefix: 'ds',
       buildPath: 'dist/',
       files: [
         {
@@ -55,8 +55,8 @@ const config: Config = {
     },
     docs: {
       transformGroup: 'web',
-      transforms: ['bal/css/name', 'bal/color/hex', 'bal/size/rem'],
-      prefix: 'bal',
+      transforms: ['ds/css/name', 'ds/color/hex', 'ds/size/rem'],
+      prefix: 'ds',
       buildPath: 'dist/',
       files: [
         {
@@ -70,8 +70,8 @@ const config: Config = {
     },
     javascript: {
       transformGroup: 'js',
-      transforms: ['bal/js/name', 'bal/color/hex', 'bal/size/round'],
-      prefix: 'bal',
+      transforms: ['ds/js/name', 'ds/color/hex', 'ds/size/round'],
+      prefix: 'ds',
       buildPath: 'dist/',
       files: [
         {

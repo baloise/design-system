@@ -1,11 +1,11 @@
 import { dsDevice } from '../device'
 import { WindowResizeListener } from '../resize'
 import { Subject } from '../types/signal'
-import { OrientationInfo, OrientationObserver } from './orientation.interfaces'
+import { DsOrientationInfo, DsOrientationObserver } from './orientation.interfaces'
 
-export class OrientationSubject extends Subject<BalOrientationObserver> {
+export class DsOrientationSubject extends Subject<DsOrientationObserver> {
   private listener = new WindowResizeListener()
-  private state: BalOrientationInfo = dsDevice.orientation.toObject()
+  private state: DsOrientationInfo = dsDevice.orientation.toObject()
 
   constructor() {
     super(observer => observer.orientationListener(this.state))
@@ -19,14 +19,14 @@ export class OrientationSubject extends Subject<BalOrientationObserver> {
     })
   }
 
-  override attach(observer: BalOrientationObserver): void {
+  override attach(observer: DsOrientationObserver): void {
     super.attach(observer)
     observer.orientationListener(this.state)
   }
 
-  private isEqual(newState: BalOrientationInfo) {
+  private isEqual(newState: DsOrientationInfo) {
     return newState.landscape === this.state.landscape && newState.portrait === this.state.portrait
   }
 }
 
-export const dsOrientationSubject = /*@__PURE__*/ new OrientationSubject()
+export const dsOrientationSubject = /*@__PURE__*/ new DsOrientationSubject()

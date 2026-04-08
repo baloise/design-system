@@ -63,7 +63,7 @@ In the Angular framework define them with the module.
 <Code language="typescript" code={`
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/ds-angular'
+import { DesignSystemModule } from '@baloise/ds-angular'
 
 import { AppComponent } from './app.component'
 
@@ -71,7 +71,7 @@ import { AppComponent } from './app.component'
 ${' '}declarations: [AppComponent],
 ${' '}imports: [
 ${' '}${' '}BrowserModule,
-${' '}${' '}BaloiseDesignSystemModule.forRoot({
+${' '}${' '}DesignSystemModule.forRoot({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}region: 'DE',
 ${' '}${' '}${' '}${' '}language: 'de',
@@ -104,12 +104,12 @@ ${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
 
 <ReactFramework>
 
-Import the `useBaloiseDesignSystem` function and pass the default values of the config.
+Import the `useDesignSystem` function and pass the default values of the config.
 
 <Code language="ts" code={`
-import { useBaloiseDesignSystem } from '@baloise/ds-react'
+import { useDesignSystem } from '@baloise/ds-react'
 
-useBaloiseDesignSystem({
+useDesignSystem({
 ${' '}defaults: {
 ${' '}${' '}region: 'BE',
 ${' '}${' '}language: 'fr',
@@ -134,11 +134,11 @@ ${' '}},
 
 <AngularFramework>
 
-To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
+To change the language or region during run time use the two functions `updateDsLanguage` and `updateDsRegion`.
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { updateBalLanguage, SwissLanguage } from '@baloise/ds-core'
+import { updateDsLanguage, SwissLanguage } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-app-tab-a',
@@ -147,7 +147,7 @@ ${' '}styleUrls: ['./app-tab-a.component.scss'],
 })
 export class AppTabAComponent {
 ${' '}changeLang(lang: BalSwissLanguage) {
-${' '}${' '}updateBalLanguage(lang)
+${' '}${' '}updateDsLanguage(lang)
 ${' '}}
 }
 `} />
@@ -156,17 +156,17 @@ ${' '}}
 
 <NotAngularFramework>
 
-To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
+To change the language or region during run time use the two functions `updateDsLanguage` and `updateDsRegion`.
 
 <Code language="typescript" code={`
 import {
   updateBalAllowedLanguages,
-  updateBalLanguage,
-  updateBalRegion,
+  updateDsLanguage,
+  updateDsRegion,
 } from '@baloise/ds-core'
 
-updateBalLanguage('de')
-updateBalRegion('CH')
+updateDsLanguage('de')
+updateDsRegion('CH')
 updateBalAllowedLanguages(['fr', 'it'])
 `} />
 
@@ -213,7 +213,7 @@ ${' '}constructor(private yourLangService: YourLangService) {}
 
 ${' '}ngOnInit(): void {
 ${' '}${' '}// IMPORTANT: register your config update callback in the ngOnInit instead of the constructor
-${' '}${' '}onBalConfigChange((config: BalConfigState) => {
+${' '}${' '}onBalConfigChange((config: DsConfigState) => {
 ${' '}${' '}${' '}// when the language is changed, e.g. in the footer, you probably want to update it in your translations service
 ${' '}${' '}${' '}this.yourLangService.changeLanguage(config.language)
 ${' '}${' '}})
@@ -230,7 +230,7 @@ To subscribe to changes of the region or language during runtime you can registe
 <Code language="typescript" code={`
 import { onBalConfigChange, ConfigState } from '@baloise/ds-core'
 
-onBalConfigChange((config: BalConfigState) => {
+onBalConfigChange((config: DsConfigState) => {
 // do something with the updated config here
 })
 `} />

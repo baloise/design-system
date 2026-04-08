@@ -1,4 +1,4 @@
-import { Shape, test } from '@baloise/ds-playwright'
+import { DsShape, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,7 +6,7 @@ test.describe('component', () => {
       <bal-shape></bal-shape>
     `)
 
-    const dsShape = new Shape(page.locator('bal-shape'))
+    const dsShape = new DsShape(page.locator('bal-shape'))
 
     await dsShape.assertToBeVisible()
   })

@@ -1,9 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import globalScript from '../../../global'
 import { dsBrowser } from '../../../utils/browser'
-import { Logger } from '../../../utils/log'
+import { DsLogger } from '../../../utils/log'
 // import { Icons } from '@baloise/ds-assets'
-import { Icons, updateBalIcons } from '../../../utils/config'
+import { DsIcons, updateDsIcons } from '../../../utils/config'
 
 /**
  * @internal
@@ -29,11 +29,11 @@ export class DocApp implements ComponentInterface {
 
   connectedCallback() {
     globalScript()
-    // updateBalIcons(Icons as any as BalIcons)
+    // updateDsIcons(Icons as any as DsIcons)
   }
 
   componentDidRender() {
-    const logConfig: BalLogger = {
+    const logConfig: DsLogger = {
       components: this.logComponents
         .split(',')
         .map(c => c.trim())
@@ -45,13 +45,13 @@ export class DocApp implements ComponentInterface {
     }
     if (dsBrowser.hasWindow) {
       if (this.logComponents) {
-        ;(window as any).BaloiseDesignSystem.config.logger = logConfig
+        ;(window as any).DesignSystem.config.logger = logConfig
       }
       if (this.region) {
-        ;(window as any).BaloiseDesignSystem.config.region = this.region
+        ;(window as any).DesignSystem.config.region = this.region
       }
       if (this.language) {
-        ;(window as any).BaloiseDesignSystem.config.language = this.language
+        ;(window as any).DesignSystem.config.language = this.language
       }
     }
   }

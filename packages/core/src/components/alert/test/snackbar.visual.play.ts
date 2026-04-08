@@ -1,4 +1,4 @@
-import { Snackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsSnackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-snackbar'
 const VARIANTS = ['basic', 'variants', 'variants-with-brand-icon', 'colors']
@@ -21,7 +21,7 @@ test('mobile only', async ({ page, isMobile }) => {
 
   const el = page.getByTestId('basic-1')
 
-  const dsSnackbar = new Snackbar(el)
+  const dsSnackbar = new DsSnackbar(el)
 
   await dsSnackbar.assertToBeVisible()
 

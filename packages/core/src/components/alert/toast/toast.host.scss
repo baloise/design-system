@@ -11,25 +11,25 @@
 
 :host {
   @include vars.base(toast);
-  @include vars.local(toast-shadow, var(--bal-shadow-box-base));
-  @include vars.local(toast-radius, var(--bal-toast-radius));
-  @include vars.local(toast-color-background, var(--bal-toast-base-background));
-  @include vars.local(toast-color-text, var(--bal-toast-base-text));
-  @include vars.local(toast-icon, var(--bal-toast-base-icon));
+  @include vars.local(toast-shadow, var(--ds-shadow-box-base));
+  @include vars.local(toast-radius, var(--ds-toast-radius));
+  @include vars.local(toast-color-background, var(--ds-toast-base-background));
+  @include vars.local(toast-color-text, var(--ds-toast-base-text));
+  @include vars.local(toast-icon, var(--ds-toast-base-icon));
 
   @include vars.local(toast-progress-duration, 0);
-  @include vars.local(toast-progress-bar, var(--bal-toast-base-progress-bar));
-  @include vars.local(toast-progress-background, var(--bal-toast-base-progress-background));
+  @include vars.local(toast-progress-bar, var(--ds-toast-base-progress-bar));
+  @include vars.local(toast-progress-background, var(--ds-toast-base-progress-background));
 
-  @include vars.local(toast-heading-family, var(--bal-text-family-heading));
-  @include vars.local(toast-heading-weight, var(--bal-text-weight-bold));
-  @include vars.local(toast-heading-size, var(--bal-text-size-base-device));
-  @include vars.local(toast-heading-line-height, var(--bal-text-line-height-heading));
+  @include vars.local(toast-heading-family, var(--ds-text-family-heading));
+  @include vars.local(toast-heading-weight, var(--ds-text-weight-bold));
+  @include vars.local(toast-heading-size, var(--ds-text-size-base-device));
+  @include vars.local(toast-heading-line-height, var(--ds-text-line-height-heading));
 
-  @include vars.local(toast-content-family, var(--bal-text-family-body));
+  @include vars.local(toast-content-family, var(--ds-text-family-body));
   @include vars.local(toast-content-weight, inherit);
-  @include vars.local(toast-content-size, var(--bal-text-size-sm-device));
-  @include vars.local(toast-content-line-height, var(--bal-text-line-height-body));
+  @include vars.local(toast-content-size, var(--ds-text-size-sm-device));
+  @include vars.local(toast-content-line-height, var(--ds-text-line-height-body));
 
   @include vars.local(toast-gap, 0.125rem);
   @include vars.local(toast-p, 1rem);
@@ -79,7 +79,7 @@
   // --------------------------------
   bal-icon:not([name]) {
     --icon-color: null;
-    --icon-size: var(--bal-icon-size-lg);
+    --icon-size: var(--ds-icon-size-lg);
   }
 
   #icon {
@@ -223,12 +223,12 @@ $colors: ('info', 'success', 'warning', 'danger');
 
 @each $color in $colors {
   :host(.is-#{$color}) {
-    --mod-toast-color-text: var(--bal-toast-#{$color}-text);
-    --mod-toast-color-border: var(--bal-toast-#{$color}-border);
-    --mod-toast-color-background: var(--bal-toast-#{$color}-background);
-    --mod-toast-icon: var(--bal-toast-#{$color}-icon);
-    --mod-toast-progress-bar: var(--bal-toast-#{$color}-progress-bar);
-    --mod-toast-progress-background: var(--bal-toast-#{$color}-progress-background);
+    --mod-toast-color-text: var(--ds-toast-#{$color}-text);
+    --mod-toast-color-border: var(--ds-toast-#{$color}-border);
+    --mod-toast-color-background: var(--ds-toast-#{$color}-background);
+    --mod-toast-icon: var(--ds-toast-#{$color}-icon);
+    --mod-toast-progress-bar: var(--ds-toast-#{$color}-progress-bar);
+    --mod-toast-progress-background: var(--ds-toast-#{$color}-progress-background);
   }
 }
 

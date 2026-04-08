@@ -1,4 +1,4 @@
-## Baloise Design System Code of Conduct
+## Helvetia Design System Code of Conduct
 
 This is a place to ask questions, work through any challenges, and share ideas and best practices. The following suggestions and guidelines are intended to make the community easier and more enjoyable to use.
 
@@ -10,13 +10,13 @@ This is a place to ask questions, work through any challenges, and share ideas a
 
 ### General
 
-Communication through any of Baloise Design System's channels (GitHub, emails, Teams, Slack) must be constructive and never resort to personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
+Communication through any of Helvetia Design System's channels (GitHub, emails, Teams, Slack) must be constructive and never resort to personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
 
-We promise to extend courtesy and respect to everyone involved in this project, regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to Baloise Design System to do the same.
+We promise to extend courtesy and respect to everyone involved in this project, regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to Helvetia Design System to do the same.
 
-If any member of the community violates this Code of Conduct, the maintainers of Baloise Design System may take action, including removing issues, comments, and PRs or blocking accounts, as deemed appropriate.
+If any member of the community violates this Code of Conduct, the maintainers of Helvetia Design System may take action, including removing issues, comments, and PRs or blocking accounts, as deemed appropriate.
 
-If you are subjected to or witness unacceptable behavior, or have any other concerns, please communicate with us directly via gerhard.hirschfeld@baloise.ch
+If you are subjected to or witness unacceptable behavior, or have any other concerns, please communicate with us directly via gerhard.hirschfeld@helvetia.ch
 
 <hr>
 

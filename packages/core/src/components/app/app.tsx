@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from '../../utils/browser'
-import { updateBalAnimated } from '../../utils/config'
+import { updateDsAnimated } from '../../utils/config'
 import { dsDevice } from '../../utils/device'
 import { startFocusVisible } from '../../utils/focus-visible'
 import { debounce, rIC, rOnLoad } from '../../utils/helpers'
@@ -41,7 +41,7 @@ export class App implements Loggable {
 
   connectedCallback() {
     if (this.animated === false) {
-      updateBalAnimated(this.animated)
+      updateDsAnimated(this.animated)
     }
 
     if (dsBrowser.hasWindow) {
@@ -81,7 +81,7 @@ export class App implements Loggable {
   notifyResize = async () => {
     if (dsBrowser.hasDocument && dsBrowser.hasWindow) {
       const doc = document.documentElement
-      doc.style.setProperty('--bal-app-height', `${window.innerHeight}px`)
+      doc.style.setProperty('--ds-app-height', `${window.innerHeight}px`)
     }
   }
 
@@ -89,9 +89,9 @@ export class App implements Loggable {
     return (
       <Host
         class={{
-          'bal-app': true,
-          'bal-app--safari': dsBrowser.isSafari,
-          'bal-app--touch': dsDevice.hasTouchScreen,
+          'ds-app': true,
+          'ds-app--safari': dsBrowser.isSafari,
+          'ds-app--touch': dsDevice.hasTouchScreen,
         }}
       >
         <slot></slot>

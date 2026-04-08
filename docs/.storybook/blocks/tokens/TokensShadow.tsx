@@ -29,7 +29,7 @@ export const TokensShadow = ({ overview }): React.ReactElement => {
                 <div
                   className="radius"
                   style={{
-                    background: 'var(--bal-color-grey)',
+                    background: 'var(--ds-color-grey)',
                     height: '48px',
                     width: '48px',
                     boxShadow: `var(--${item.name})`,

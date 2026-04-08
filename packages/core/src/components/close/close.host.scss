@@ -11,14 +11,14 @@
 :host {
   @include vars.base(close);
 
-  @include vars.local(close-color-background, var(--bal-close-color-background-base));
-  @include vars.local(close-color-background-hover, var(--bal-close-color-background-hover));
-  @include vars.local(close-color-background-active, var(--bal-close-color-background-active));
+  @include vars.local(close-color-background, var(--ds-close-color-background-base));
+  @include vars.local(close-color-background-hover, var(--ds-close-color-background-hover));
+  @include vars.local(close-color-background-active, var(--ds-close-color-background-active));
 
-  @include vars.local(close-color-focus, var(--bal-interaction-focus-color-base));
+  @include vars.local(close-color-focus, var(--ds-interaction-focus-color-base));
 
-  @include vars.local(close-color-icon, var(--bal-close-color-icon-base));
-  @include vars.local(close-radius, var(--bal-close-radius));
+  @include vars.local(close-color-icon, var(--ds-close-color-icon-base));
+  @include vars.local(close-radius, var(--ds-close-radius));
 
   @include vars.local(close-size-icon, 12px);
   @include vars.local(close-padding, 0.313rem);
@@ -117,18 +117,18 @@
 //
 // Inverted Variants
 :host(.is-inverted:not(.is-disabled)) {
-  --mod-close-color-icon: var(--bal-close-color-icon-inverted);
-  --mod-close-color-background-hover: var(--bal-close-color-background-inverted-hover);
-  --mod-close-color-background-active: var(--bal-close-color-background-inverted-active);
-  --mod-close-color-focus: var(--bal-interaction-focus-color-inverted);
+  --mod-close-color-icon: var(--ds-close-color-icon-inverted);
+  --mod-close-color-background-hover: var(--ds-close-color-background-inverted-hover);
+  --mod-close-color-background-active: var(--ds-close-color-background-inverted-active);
+  --mod-close-color-focus: var(--ds-interaction-focus-color-inverted);
 }
 
 //
 // Disabled Variants
 :host(.is-disabled) {
-  --mod-close-color-icon: var(--bal-close-color-icon-disabled);
-  --mod-close-color-background: var(--bal-close-color-background-disabled);
-  --mod-close-color-background-hover: var(--bal-close-color-background-disabled);
-  --mod-close-color-background-active: var(--bal-close-color-background-disabled);
-  --mod-close-color-focus: var(--bal-interaction-focus-color-disabled);
+  --mod-close-color-icon: var(--ds-close-color-icon-disabled);
+  --mod-close-color-background: var(--ds-close-color-background-disabled);
+  --mod-close-color-background-hover: var(--ds-close-color-background-disabled);
+  --mod-close-color-background-active: var(--ds-close-color-background-disabled);
+  --mod-close-color-focus: var(--ds-interaction-focus-color-disabled);
 }

@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { BreakpointObserver, Breakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
+import { DsBreakpointObserver, DsBreakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { AlertComponent } from '../alert-container.interfaces'
 import { sanitizeSvg } from '../../../utils/svg'
@@ -22,7 +22,7 @@ import { raf } from '../../../utils/helpers'
   styleUrl: 'snackbar.host.scss',
   shadow: true,
 })
-export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpointObserver {
+export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpointObserver {
   @Element() element!: HTMLBalSnackbarElement
 
   @State() isMobile = dsBreakpoints.isMobile
@@ -154,7 +154,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, BalBreakpoi
    */
 
   @ListenToBreakpoints()
-  breakpointListener(breakpoints: BalBreakpoints): void {
+  breakpointListener(breakpoints: DsBreakpoints): void {
     this.isMobile = breakpoints.mobile
   }
 

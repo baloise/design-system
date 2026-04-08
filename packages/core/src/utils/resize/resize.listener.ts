@@ -4,9 +4,9 @@ import { debounce } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { ResizeInfo } from './resize.interfaces'
 
-export class ResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
+export class ResizeListener<TObserver> extends ListenerAbstract<TObserver, ResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
-  private debouncedNotify = debounce((info: BalResizeInfo) => this.notify(info), 42)
+  private debouncedNotify = debounce((info: ResizeInfo) => this.notify(info), 42)
   private lastWidth: number | undefined
   private lastHeight: number | undefined
 

@@ -19,14 +19,14 @@ $host-selector: ('#text');
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(text-color, inherit);
   @include vars.local(text-align, inherit);
-  @include vars.local(text-family, var(--bal-body-family));
-  @include vars.local(text-weight, var(--bal-body-weight));
-  @include vars.local(text-line-height, var(--bal-body-line-height));
-  @include vars.local(text-size, var(--bal-text-size-base-device));
-  @include vars.local(text-shadow, var(--bal-shadow-text));
-  @include vars.local(text-space, var(--bal-body-space));
+  @include vars.local(text-family, var(--ds-body-family));
+  @include vars.local(text-weight, var(--ds-body-weight));
+  @include vars.local(text-line-height, var(--ds-body-line-height));
+  @include vars.local(text-size, var(--ds-text-size-base-device));
+  @include vars.local(text-shadow, var(--ds-shadow-text));
+  @include vars.local(text-space, var(--ds-body-space));
 
-  @include vars.local(text-shadow, none); // var(--bal-heading-shadow)
+  @include vars.local(text-shadow, none); // var(--ds-heading-shadow)
 }
 
 /**
@@ -55,7 +55,7 @@ $host-selector: ('#text');
   b,
   strong,
   .is-bold {
-    font-weight: var(--bal-text-weight-bold);
+    font-weight: var(--ds-text-weight-bold);
   }
 }
 
@@ -125,20 +125,20 @@ $weights: ('light', 'regular', 'bold');
 @include hybrid.styles($css-selector, $use-host) {
   @each $weight in $weights {
     &.is-#{$weight} {
-      --mod-text-weight: var(--bal-text-weight-#{$weight});
+      --mod-text-weight: var(--ds-text-weight-#{$weight});
     }
   }
 }
 
 @include attr.has(bold) {
-  --mod-text-weight: var(--bal-text-weight-bold);
+  --mod-text-weight: var(--ds-text-weight-bold);
 }
 
 //
 // Shadow
 // --------------------------------
 @mixin shadow {
-  --mod-text-shadow: var(--bal-text-shadow);
+  --mod-text-shadow: var(--ds-text-shadow);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -193,7 +193,7 @@ $colors: (
 );
 
 @mixin color($color) {
-  --mod-text-color: var(--bal-text-color-#{$color});
+  --mod-text-color: var(--ds-text-color-#{$color});
 }
 
 @each $color in $colors {
@@ -214,7 +214,7 @@ $colors: (
 // Sizes
 // --------------------------------
 @mixin size($level) {
-  --mod-text-size: var(--bal-text-size-#{$level}-device);
+  --mod-text-size: var(--ds-text-size-#{$level}-device);
 }
 
 $size-aliases: (
@@ -267,28 +267,28 @@ $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
 @include hybrid.styles($css-selector, $use-host) {
   &.is-heading,
   &.is-title {
-    --mod-text-family: var(--bal-text-family-heading);
-    --mod-text-weight: var(--bal-text-weight-bold);
-    --mod-text-line-height: var(--bal-text-line-height-heading);
+    --mod-text-family: var(--ds-text-family-heading);
+    --mod-text-weight: var(--ds-text-weight-bold);
+    --mod-text-line-height: var(--ds-text-line-height-heading);
   }
 
   &.is-subtitle {
-    --mod-text-family: var(--bal-text-family-heading);
-    --mod-text-weight: var(--bal-text-weight-light);
-    --mod-text-line-height: var(--bal-text-line-height-heading);
+    --mod-text-family: var(--ds-text-family-heading);
+    --mod-text-weight: var(--ds-text-weight-light);
+    --mod-text-line-height: var(--ds-text-line-height-heading);
   }
 }
 
 @include attr.has(heading) {
-  --mod-text-family: var(--bal-text-family-heading);
-  --mod-text-weight: var(--bal-text-weight-bold);
-  --mod-text-line-height: var(--bal-text-line-height-heading);
+  --mod-text-family: var(--ds-text-family-heading);
+  --mod-text-weight: var(--ds-text-weight-bold);
+  --mod-text-line-height: var(--ds-text-line-height-heading);
 }
 
 @include attr.has(subtitle) {
-  --mod-text-family: var(--bal-text-family-heading);
-  --mod-text-weight: var(--bal-text-weight-light);
-  --mod-text-line-height: var(--bal-text-line-height-heading);
+  --mod-text-family: var(--ds-text-family-heading);
+  --mod-text-weight: var(--ds-text-weight-light);
+  --mod-text-line-height: var(--ds-text-line-height-heading);
 }
 
 //

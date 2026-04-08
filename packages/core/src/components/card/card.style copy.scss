@@ -36,36 +36,36 @@ $card-colors: (
 
 @mixin card-color($color) {
   &.is-#{$color} {
-    background: var(--bal-card-color-background-#{$color});
-    color: var(--bal-card-color-text-#{$color});
+    background: var(--ds-card-color-background-#{$color});
+    color: var(--ds-card-color-text-#{$color});
 
     &.is-outlined {
-      border: var(--bal-card-outlined-border-#{$color});
+      border: var(--ds-card-outlined-border-#{$color});
     }
   }
 }
 
 @mixin card-space($spacing, $property) {
-  #{$property}: calc(var(--bal-card-space-#{$spacing}) - var(--bal-border-width-base));
+  #{$property}: calc(var(--ds-card-space-#{$spacing}) - var(--ds-border-width-base));
 
   @include tablet {
-    #{$property}: calc(var(--bal-card-space-#{$spacing}-tablet) - var(--bal-border-width-base));
+    #{$property}: calc(var(--ds-card-space-#{$spacing}-tablet) - var(--ds-border-width-base));
   }
 
   @include desktop {
-    #{$property}: calc(var(--bal-card-space-#{$spacing}-desktop) - var(--bal-border-width-base));
+    #{$property}: calc(var(--ds-card-space-#{$spacing}-desktop) - var(--ds-border-width-base));
   }
 }
 
 @mixin card-space-all($spacing) {
-  gap: var(--bal-card-space-#{$spacing});
+  gap: var(--ds-card-space-#{$spacing});
 
   @include tablet {
-    gap: var(--bal-card-space-#{$spacing}-tablet);
+    gap: var(--ds-card-space-#{$spacing}-tablet);
   }
 
   @include desktop {
-    gap: var(--bal-card-space-#{$spacing}-desktop);
+    gap: var(--ds-card-space-#{$spacing}-desktop);
   }
 
   .card-header,
@@ -90,14 +90,14 @@ $card-colors: (
   }
 
   .card-header {
-    gap: var(--bal-card-space-#{$spacing});
+    gap: var(--ds-card-space-#{$spacing});
 
     @include tablet {
-      gap: var(--bal-card-space-#{$spacing}-tablet);
+      gap: var(--ds-card-space-#{$spacing}-tablet);
     }
 
     @include desktop {
-      gap: var(--bal-card-space-#{$spacing}-desktop);
+      gap: var(--ds-card-space-#{$spacing}-desktop);
     }
   }
 }
@@ -111,18 +111,18 @@ $card-colors: (
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: var(--bal-card-color-background-base);
-  border-radius: var(--bal-card-radius-base);
-  border-width: var(--bal-border-width-base);
+  background-color: var(--ds-card-color-background-base);
+  border-radius: var(--ds-card-radius-base);
+  border-width: var(--ds-border-width-base);
   border-style: solid;
   border-color: transparent;
 
   &:not(.is-flat) {
-    box-shadow: var(--bal-card-shadow-base);
+    box-shadow: var(--ds-card-shadow-base);
   }
 
   &.is-square {
-    border-radius: var(--bal-card-radius-square);
+    border-radius: var(--ds-card-radius-square);
   }
 
   &.align-center {
@@ -130,7 +130,7 @@ $card-colors: (
   }
 
   &.is-outlined {
-    border: var(--bal-card-outlined-border-base);
+    border: var(--ds-card-outlined-border-base);
   }
 
   &.is-fullheight {
@@ -208,7 +208,7 @@ button.card {
   @include hover {
     &:hover,
     &.is-hovered {
-      box-shadow: var(--bal-card-shadow-large);
+      box-shadow: var(--ds-card-shadow-large);
     }
   }
 
@@ -220,7 +220,7 @@ button.card {
   &:focus-visible,
   &.is-focused {
     &:not(:active) {
-      box-shadow: var(--bal-card-shadow-large), var(--bal-button-shadow-outline-base);
+      box-shadow: var(--ds-card-shadow-large), var(--ds-button-shadow-outline-base);
     }
   }
 }
@@ -230,14 +230,14 @@ button.card {
   */
 
 @mixin card-tag-position($tag-size, $card-size, $property) {
-  #{$property}: calc(var(--bal-card-space-#{$card-size}) - var(--bal-tag-space-#{$tag-size}-x));
+  #{$property}: calc(var(--ds-card-space-#{$card-size}) - var(--ds-tag-space-#{$tag-size}-x));
 
   @include tablet {
-    #{$property}: calc(var(--bal-card-space-#{$card-size}-tablet) - var(--bal-tag-space-#{$tag-size}-x));
+    #{$property}: calc(var(--ds-card-space-#{$card-size}-tablet) - var(--ds-tag-space-#{$tag-size}-x));
   }
 
   @include desktop {
-    #{$property}: calc(var(--bal-card-space-#{$card-size}-desktop) - var(--bal-tag-space-#{$tag-size}-x));
+    #{$property}: calc(var(--ds-card-space-#{$card-size}-desktop) - var(--ds-tag-space-#{$tag-size}-x));
   }
 }
 

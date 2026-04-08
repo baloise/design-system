@@ -19,7 +19,7 @@ describe('toCssVar', () => {
         },
         path: ['opacity', '100'],
       }),
-    ).toEqual('var(--bal-opacity-100)')
+    ).toEqual('var(--ds-opacity-100)')
   })
 
   test('should parse the value of a reference', () => {
@@ -40,6 +40,6 @@ describe('toCssVar', () => {
         },
         path: ['opacity', 'overlay'],
       }),
-    ).toEqual('var(--bal-opacity-overlay)')
+    ).toEqual('var(--ds-opacity-overlay)')
   })
 })

@@ -216,19 +216,19 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
         >
           <div
             className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--bal-table-head-font-size)' }}
+            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
           >
             Token
           </div>
           <div
             className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--bal-table-head-font-size)' }}
+            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
           >
             Type
           </div>
           <div
             className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--bal-table-head-font-size)' }}
+            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
           >
             Value
           </div>
@@ -260,7 +260,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
                         width: '24px',
                         height: '24px',
                         backgroundColor: `var(--${token.cssVarName})`,
-                        border: '2px solid var(--bal-color-grey-3)',
+                        border: '2px solid var(--ds-color-grey-3)',
                       }}
                     ></div>
                   )}

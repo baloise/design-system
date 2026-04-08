@@ -11,15 +11,15 @@ a.link:not(.button),
 a.is-link:not(.button) {
   @include vars.focus(link);
 
-  @include vars.local(link-color, var(--bal-link-color-base));
-  @include vars.local(link-color-hover, var(--bal-link-color-base-hover));
-  @include vars.local(link-color-active, var(--bal-link-color-base-active));
+  @include vars.local(link-color, var(--ds-link-color-base));
+  @include vars.local(link-color-hover, var(--ds-link-color-base-hover));
+  @include vars.local(link-color-active, var(--ds-link-color-base-active));
 
-  @include vars.local(link-family, var(--bal-link-family));
-  @include vars.local(link-weight, var(--bal-link-weight));
-  @include vars.local(link-radius, var(--bal-radius-base));
-  @include vars.local(link-border-width, var(--bal-link-border-width));
-  @include vars.local(link-underline-offset, var(--bal-link-underline-offset, 0.25rem));
+  @include vars.local(link-family, var(--ds-link-family));
+  @include vars.local(link-weight, var(--ds-link-weight));
+  @include vars.local(link-radius, var(--ds-radius-base));
+  @include vars.local(link-border-width, var(--ds-link-border-width));
+  @include vars.local(link-underline-offset, var(--ds-link-underline-offset, 0.25rem));
 }
 
 /**
@@ -86,9 +86,9 @@ a.is-link:not(.button),
   }
 
   &.is-inverted {
-    --mod-link-color: var(--bal-link-color-inverted);
-    --mod-link-color-hover: var(--bal-link-color-inverted-hover);
-    --mod-link-color-active: var(--bal-link-color-inverted-active);
-    --mod-link-focus: var(--bal-interaction-focus-color-inverted);
+    --mod-link-color: var(--ds-link-color-inverted);
+    --mod-link-color-hover: var(--ds-link-color-inverted-hover);
+    --mod-link-color-active: var(--ds-link-color-inverted-active);
+    --mod-link-focus: var(--ds-interaction-focus-color-inverted);
   }
 }

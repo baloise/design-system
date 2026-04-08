@@ -1,8 +1,8 @@
 import type { TestInfo } from '@playwright/test'
-import type { BalPage } from '../../types'
+import type { DsPage } from '../../types'
 import { waitForChanges } from './wait-for-changes'
 
-export const mount = async (page: BalPage, content: string, testInfo: TestInfo) => {
+export const mount = async (page: DsPage, content: string, testInfo: TestInfo) => {
   if (page.isClosed()) {
     throw new Error('setContent unavailable: page is already closed')
   }
@@ -49,10 +49,10 @@ const template = (html: string) => `
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/styles/baloise-design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
 
-    <script type="module" src="/build/baloise-design-system.esm.js"></script>
-    <script nomodule src="/build/baloise-design-system.js"></script>
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
   </head>
 
   <body>

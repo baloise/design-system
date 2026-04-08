@@ -44,22 +44,22 @@ addons.register('my/title', api => {
   api.on(STORY_PREPARED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
-      document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+      document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
     }
   })
   api.on(STORY_RENDERED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
-      document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+      document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
     }
   })
   api.on(DOCS_PREPARED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
       if (storyData.title === 'Welcome' || storyData.title === 'Design System') {
-        document.title = `Baloise Design System`
+        document.title = `Helvetia Design System`
       } else {
-        document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+        document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
       }
     }
   })
@@ -67,9 +67,9 @@ addons.register('my/title', api => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
       if (storyData.title === 'Welcome' || storyData.title === 'Design System') {
-        document.title = `Baloise Design System`
+        document.title = `Helvetia Design System`
       } else {
-        document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+        document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
       }
     }
   })

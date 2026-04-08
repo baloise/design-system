@@ -11,7 +11,7 @@
  * valid usage for the disabled property on bal-button.
  */
 export const focusableQueryString =
-  '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .bal-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])'
+  '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .ds-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .ds-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])'
 
 /**
  * Focuses the first descendant in a context
@@ -57,9 +57,9 @@ export const focusLastDescendant = <R extends HTMLElement, T extends HTMLElement
  * on most elements because the focusable element
  * may not be the host element.
  *
- * For example, if an bal-button should be focused
+ * For example, if an ds-button should be focused
  * then we should actually focus the native <button>
- * element inside of bal-button's shadow root, not
+ * element inside of ds-button's shadow root, not
  * the host element itself.
  */
 const focusElementInContext = <T extends HTMLElement>(
@@ -90,13 +90,14 @@ export const focusVisibleElement = (el: HTMLElement) => {
    * the focus-visible utility will not run because
    * it is expecting a keyboard event to have triggered this;
    * however, there are times when we need to manually control
-   * this behavior so we call the `setFocus` method on bal-app
+   * this behavior so we call the `setFocus` method on ds-app
    * which will let us explicitly set the elements to focus.
    */
-  if (el.classList.contains('bal-focusable')) {
-    const app = el.closest('bal-app')
+  if (el.classList.contains('ds-focusable')) {
+    const app = el.closest('ds-app')
     if (app) {
-      app.setFocus([el])
+      // TODO: enable when builded
+      // app.setFocus([el])
     }
   }
 }

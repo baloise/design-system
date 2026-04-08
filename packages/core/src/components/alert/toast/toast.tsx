@@ -15,14 +15,14 @@ import { stopEventBubbling } from '../../../utils/form-input'
 import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'
-import { ConfigObserver, ConfigState, ListenToConfig } from '../../../utils/config'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-toast',
   styleUrl: 'toast.host.scss',
   shadow: true,
 })
-export class Toast implements ComponentInterface, AlertComponent, BalConfigObserver {
+export class Toast implements ComponentInterface, AlertComponent, DsConfigObserver {
   @Element() element!: HTMLBalToastElement
 
   @State() animated = false
@@ -185,7 +185,7 @@ export class Toast implements ComponentInterface, AlertComponent, BalConfigObser
    */
   @Method()
   @ListenToConfig()
-  async configChanged(state: BalConfigState): Promise<void> {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.animated = state.animated
   }
 

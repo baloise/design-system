@@ -1,10 +1,10 @@
 import { ComponentInterface } from '@stencil/core'
 import { dsBreakpointSubject } from './breakpoints.subject'
-import { BreakpointObserver } from './breakpoints.interfaces'
+import { DsBreakpointObserver } from './breakpoints.interfaces'
 
 export function ListenToBreakpoints() {
   return function (
-    target: ComponentInterface & BalBreakpointObserver,
+    target: ComponentInterface & DsBreakpointObserver,
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {

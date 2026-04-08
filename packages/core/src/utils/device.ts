@@ -1,6 +1,6 @@
 import { dsBrowser } from './browser'
 
-export class Orientation {
+export class DsOrientation {
   /**
    * Is true when the orientation is in portrait mode
    */
@@ -29,8 +29,8 @@ export class Orientation {
   }
 }
 
-export class Device {
-  public orientation = new Orientation()
+export class DsDevice {
+  public orientation = new DsOrientation()
 
   /**
    * Is true if it is a native mobile device like a iPhone
@@ -50,4 +50,4 @@ export class Device {
   }
 }
 
-export const dsDevice = new Device()
+export const dsDevice = new DsDevice()

@@ -19,25 +19,25 @@ $host-selector: ('#button');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(button-font-family, var(--bal-button-family));
-  @include vars.local(button-font-weight, var(--bal-button-weight));
-  @include vars.local(button-font-size, var(--bal-button-size-base));
-  @include vars.local(button-line-height, var(--bal-button-line-height));
-  @include vars.local(button-radius, var(--bal-button-radius-base));
+  @include vars.local(button-font-family, var(--ds-button-family));
+  @include vars.local(button-font-weight, var(--ds-button-weight));
+  @include vars.local(button-font-size, var(--ds-button-size-base));
+  @include vars.local(button-line-height, var(--ds-button-line-height));
+  @include vars.local(button-radius, var(--ds-button-radius-base));
 
-  @include vars.local(button-color-text, var(--bal-button-color-primary-base-text));
-  @include vars.local(button-color-border, var(--bal-button-color-primary-base-border));
-  @include vars.local(button-color-background, var(--bal-button-color-primary-base-background));
+  @include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
+  @include vars.local(button-color-border, var(--ds-button-color-primary-base-border));
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base-background));
 
-  @include vars.local(button-color-text-hover, var(--bal-button-color-primary-hover-text));
-  @include vars.local(button-color-border-hover, var(--bal-button-color-primary-hover-border));
-  @include vars.local(button-color-background-hover, var(--bal-button-color-primary-hover-background));
+  @include vars.local(button-color-text-hover, var(--ds-button-color-primary-hover-text));
+  @include vars.local(button-color-border-hover, var(--ds-button-color-primary-hover-border));
+  @include vars.local(button-color-background-hover, var(--ds-button-color-primary-hover-background));
 
-  @include vars.local(button-color-text-active, var(--bal-button-color-primary-active-text));
-  @include vars.local(button-color-border-active, var(--bal-button-color-primary-active-border));
-  @include vars.local(button-color-background-active, var(--bal-button-color-primary-active-background));
+  @include vars.local(button-color-text-active, var(--ds-button-color-primary-active-text));
+  @include vars.local(button-color-border-active, var(--ds-button-color-primary-active-border));
+  @include vars.local(button-color-background-active, var(--ds-button-color-primary-active-background));
 
-  @include vars.local(button-width, var(--bal-button-width, fit-content));
+  @include vars.local(button-width, var(--ds-button-width, fit-content));
   @include vars.local(button-border-style, solid);
 
   @include vars.local(button-gap, 0.5rem);
@@ -92,7 +92,7 @@ $host-selector: ('#button');
 
   border-radius: var(--_button-radius);
   border-style: var(--_button-border-style);
-  border-width: var(--bal-border-width-base);
+  border-width: var(--ds-border-width-base);
 
   width: var(--_button-width, fit-content);
   min-width: var(--_button-min-width);
@@ -175,7 +175,7 @@ $host-selector: ('#button');
 @mixin text-decoration() {
   text-decoration: underline;
   text-underline-offset: 0.25rem;
-  text-decoration-thickness: var(--bal-link-border-width);
+  text-decoration-thickness: var(--ds-link-border-width);
 }
 
 @include hybrid.host($use-host) {
@@ -238,17 +238,17 @@ $colors: (
 );
 
 @mixin color($color) {
-  --mod-button-color-text: var(--bal-button-color-#{$color}-base-text);
-  --mod-button-color-background: var(--bal-button-color-#{$color}-base-background);
-  --mod-button-color-border: var(--bal-button-color-#{$color}-base-border);
+  --mod-button-color-text: var(--ds-button-color-#{$color}-base-text);
+  --mod-button-color-background: var(--ds-button-color-#{$color}-base-background);
+  --mod-button-color-border: var(--ds-button-color-#{$color}-base-border);
 
-  --mod-button-color-text-hover: var(--bal-button-color-#{$color}-hover-text);
-  --mod-button-color-background-hover: var(--bal-button-color-#{$color}-hover-background);
-  --mod-button-color-border-hover: var(--bal-button-color-#{$color}-hover-border);
+  --mod-button-color-text-hover: var(--ds-button-color-#{$color}-hover-text);
+  --mod-button-color-background-hover: var(--ds-button-color-#{$color}-hover-background);
+  --mod-button-color-border-hover: var(--ds-button-color-#{$color}-hover-border);
 
-  --mod-button-color-text-active: var(--bal-button-color-#{$color}-active-text);
-  --mod-button-color-background-active: var(--bal-button-color-#{$color}-active-background);
-  --mod-button-color-border-active: var(--bal-button-color-#{$color}-active-border);
+  --mod-button-color-text-active: var(--ds-button-color-#{$color}-active-text);
+  --mod-button-color-background-active: var(--ds-button-color-#{$color}-active-background);
+  --mod-button-color-border-active: var(--ds-button-color-#{$color}-active-border);
 }
 
 @each $color in $colors {
@@ -305,7 +305,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 // Sizes
 // --------------------------------
 @mixin size-sm() {
-  --mod-button-font-size: var(--bal-button-size-sm);
+  --mod-button-font-size: var(--ds-button-size-sm);
   --mod-button-min-height: 2rem;
   --mod-button-min-width: 2rem;
   --mod-button-padding-inline: 0.75rem;
@@ -325,7 +325,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @mixin size-lg() {
-  --mod-button-font-size: var(--bal-button-size-lg);
+  --mod-button-font-size: var(--ds-button-size-lg);
   --mod-button-min-height: 3.5rem;
   --mod-button-min-width: 3.5rem;
   --mod-button-padding-inline: 1.5rem;
@@ -345,7 +345,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 }
 
 @mixin size-xl() {
-  --mod-button-font-size: var(--bal-button-size-xl);
+  --mod-button-font-size: var(--ds-button-size-xl);
   --mod-button-min-height: 5.5rem;
   --mod-button-min-width: 5.5rem;
   --mod-button-padding-inline: 1.5rem;
@@ -387,7 +387,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
 // Rounded
 @mixin shape-rounded() {
-  --mod-button-radius: var(--bal-button-radius-rounded);
+  --mod-button-radius: var(--ds-button-radius-rounded);
 }
 
 @include hybrid.host($use-host) {
@@ -418,7 +418,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
   :host(.is-square.is-sm) {
     @include shape-square(2rem);
-    --icon-size: var(--bal-icon-size-sm);
+    --icon-size: var(--ds-icon-size-sm);
   }
 }
 
@@ -432,13 +432,13 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
   &.is-square.is-sm,
   &.is-square.is-small {
     @include shape-square(2rem);
-    --icon-size: var(--bal-icon-size-sm);
+    --icon-size: var(--ds-icon-size-sm);
   }
 }
 
 // Circle
 @mixin shape-circle($size: 3rem) {
-  --mod-button-radius: var(--bal-button-radius-rounded);
+  --mod-button-radius: var(--ds-button-radius-rounded);
   --mod-button-padding-inline: 0;
   --mod-button-gap: 0;
   --mod-button-min-height: #{$size};
@@ -453,7 +453,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
   :host(.is-circle.is-sm) {
     @include shape-circle(2rem);
-    --icon-size: var(--bal-icon-size-sm);
+    --icon-size: var(--ds-icon-size-sm);
   }
 }
 
@@ -467,7 +467,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
   &.is-circle.is-small,
   &.is-circle.is-sm {
     @include shape-circle(2rem);
-    --icon-size: var(--bal-icon-size-sm);
+    --icon-size: var(--ds-icon-size-sm);
   }
 }
 
@@ -501,23 +501,23 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
 // --------------------------------
 @include hybrid.host($use-host) {
   :host(.has-shadow:not(.is-link):not(.is-text)) {
-    --mod-button-box-shadow: var(--bal-shadow-box-base);
+    --mod-button-box-shadow: var(--ds-shadow-box-base);
   }
 
   :host(.is-text.has-shadow),
   :host(.is-link.has-shadow) {
-    --mod-button-text-shadow: var(--bal-shadow-text);
+    --mod-button-text-shadow: var(--ds-shadow-text);
   }
 }
 
 @include hybrid.styles('button', $use-host) {
   &.has-shadow:not(.is-link, .is-text) {
-    --mod-button-box-shadow: var(--bal-shadow-box-base);
+    --mod-button-box-shadow: var(--ds-shadow-box-base);
   }
 
   &.is-text.has-shadow,
   &.is-link.has-shadow {
-    --mod-button-text-shadow: var(--bal-shadow-text);
+    --mod-button-text-shadow: var(--ds-shadow-text);
   }
 }
 
@@ -589,21 +589,21 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     text-decoration: none;
     cursor: default;
     translate: 0 0;
-    background-color: var(--bal-button-color-disabled-base-background);
-    border-color: var(--bal-button-color-disabled-base-border);
-    color: var(--bal-button-color-disabled-base-text);
+    background-color: var(--ds-button-color-disabled-base-background);
+    border-color: var(--ds-button-color-disabled-base-border);
+    color: var(--ds-button-color-disabled-base-text);
 
     & > bal-icon {
-      --icon-size: var(--bal-button-color-disabled-base-text);
+      --icon-size: var(--ds-button-color-disabled-base-text);
     }
 
     & > bal-spinner {
-      --spinner-color: var(--bal-button-color-disabled-base-text);
+      --spinner-color: var(--ds-button-color-disabled-base-text);
     }
 
     & > bal-spinner[variation='circle'] {
-      --spinner-circle-color-border-background: var(--bal-color-grey-4);
-      --spinner-circle-color-border-progress: var(--bal-button-color-disabled-base-text);
+      --spinner-circle-color-border-background: var(--ds-color-grey-4);
+      --spinner-circle-color-border-progress: var(--ds-button-color-disabled-base-text);
     }
   }
 }

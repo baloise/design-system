@@ -24,7 +24,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'color-black': 'var(--bal-color-black)' })
+    ).toEqual({ 'color-black': 'var(--ds-color-black)' })
   })
 
   test('should return a nested key and value', () => {
@@ -51,7 +51,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'color-primary-1': 'var(--bal-color-primary-1)' })
+    ).toEqual({ 'color-primary-1': 'var(--ds-color-primary-1)' })
   })
 
   test('should return a alias key and value', () => {
@@ -76,7 +76,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'color-primary': 'var(--bal-color-primary)' })
+    ).toEqual({ 'color-primary': 'var(--ds-color-primary)' })
   })
 
   test('should return a prefixed/alias key and value', () => {
@@ -102,7 +102,7 @@ describe('toProps', () => {
           },
         },
       }),
-    ).toEqual({ 'has-color-primary': 'var(--bal-color-primary)' })
+    ).toEqual({ 'has-color-primary': 'var(--ds-color-primary)' })
   })
 
   test('should return a nested key and value', () => {
@@ -148,8 +148,8 @@ describe('toProps', () => {
         },
       }),
     ).toEqual({
-      'color-primary-1': 'var(--bal-color-primary-1)',
-      'color-red-1': 'var(--bal-color-red-1)',
+      'color-primary-1': 'var(--ds-color-primary-1)',
+      'color-red-1': 'var(--ds-color-red-1)',
     })
   })
 })

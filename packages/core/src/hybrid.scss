@@ -163,21 +163,21 @@
 }
 
 @mixin position-vars($name) {
-  --#{$name}-position: var(--bal-#{$name}-position, static);
-  --#{$name}-top: var(--bal-#{$name}-top);
-  --#{$name}-right: var(--bal-#{$name}-right);
-  --#{$name}-bottom: var(--bal-#{$name}-bottom);
-  --#{$name}-left: var(--bal-#{$name}-left);
+  --#{$name}-position: var(--ds-#{$name}-position, static);
+  --#{$name}-top: var(--ds-#{$name}-top);
+  --#{$name}-right: var(--ds-#{$name}-right);
+  --#{$name}-bottom: var(--ds-#{$name}-bottom);
+  --#{$name}-left: var(--ds-#{$name}-left);
 }
 
 @mixin margin-vars($name) {
-  --#{$name}-m: var(--bal-#{$name}-m, 0);
-  --#{$name}-my: var(--bal-#{$name}-my);
-  --#{$name}-mx: var(--bal-#{$name}-mx);
-  --#{$name}-ml: var(--bal-#{$name}-ml);
-  --#{$name}-mr: var(--bal-#{$name}-mr);
-  --#{$name}-mt: var(--bal-#{$name}-mt);
-  --#{$name}-mb: var(--bal-#{$name}-mb);
+  --#{$name}-m: var(--ds-#{$name}-m, 0);
+  --#{$name}-my: var(--ds-#{$name}-my);
+  --#{$name}-mx: var(--ds-#{$name}-mx);
+  --#{$name}-ml: var(--ds-#{$name}-ml);
+  --#{$name}-mr: var(--ds-#{$name}-mr);
+  --#{$name}-mt: var(--ds-#{$name}-mt);
+  --#{$name}-mb: var(--ds-#{$name}-mb);
 }
 
 @mixin margin-styles($name) {

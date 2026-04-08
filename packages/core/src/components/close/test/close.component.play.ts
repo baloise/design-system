@@ -1,4 +1,4 @@
-import { Close, test } from '@baloise/ds-playwright'
+import { DsClose, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {
@@ -6,7 +6,7 @@ test.describe('component', () => {
       <bal-close></bal-close>
     `)
 
-    const dsClose = new Close(page.locator('bal-close'))
+    const dsClose = new DsClose(page.locator('bal-close'))
 
     await dsClose.assertToBeVisible()
   })
@@ -16,7 +16,7 @@ test.describe('component', () => {
       <bal-close></bal-close>
     `)
 
-    const dsClose = new Close(page.locator('bal-close'))
+    const dsClose = new DsClose(page.locator('bal-close'))
 
     await dsClose.click()
   })

@@ -17,10 +17,10 @@
   @include vars.local(accordion-marker-size, 1rem);
 
   @include vars.local(accordion-summary-color, inherit);
-  @include vars.local(accordion-summary-family, var(--bal-body-family));
-  @include vars.local(accordion-summary-weight, var(--bal-body-weight));
-  @include vars.local(accordion-summary-line-height, var(--bal-body-line-height));
-  @include vars.local(accordion-summary-size, var(--bal-text-size-base-device));
+  @include vars.local(accordion-summary-family, var(--ds-body-family));
+  @include vars.local(accordion-summary-weight, var(--ds-body-weight));
+  @include vars.local(accordion-summary-line-height, var(--ds-body-line-height));
+  @include vars.local(accordion-summary-size, var(--ds-text-size-base-device));
 }
 
 /**
@@ -69,18 +69,18 @@
   @include hover {
     &:hover,
     &.is-hovered {
-      color: var(--bal-link-color-base-hover);
+      color: var(--ds-link-color-base-hover);
       bal-icon {
-        --icon-color: var(--bal-link-color-base-hover);
+        --icon-color: var(--ds-link-color-base-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    color: var(--bal-link-color-base-active);
+    color: var(--ds-link-color-base-active);
     bal-icon {
-      --icon-color: var(--bal-link-color-base-active);
+      --icon-color: var(--ds-link-color-base-active);
     }
   }
 
@@ -97,7 +97,7 @@
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--bal-radius-base);
+        border-radius: var(--ds-radius-base);
       }
     }
   }
@@ -117,29 +117,29 @@
 }
 
 :host(.is-title) {
-  --mod-accordion-summary-family: var(--bal-heading-family);
-  --mod-accordion-summary-weight: var(--bal-heading-weight);
-  --mod-accordion-summary-line-height: var(--bal-heading-line-height);
+  --mod-accordion-summary-family: var(--ds-heading-family);
+  --mod-accordion-summary-weight: var(--ds-heading-weight);
+  --mod-accordion-summary-line-height: var(--ds-heading-line-height);
 }
 
 :host(.is-h1) {
-  --mod-accordion-summary-size: var(--bal-heading-1-size-device);
+  --mod-accordion-summary-size: var(--ds-heading-1-size-device);
 }
 
 :host(.is-h2) {
-  --mod-accordion-summary-size: var(--bal-heading-2-size-device);
+  --mod-accordion-summary-size: var(--ds-heading-2-size-device);
 }
 
 :host(.is-h3) {
-  --mod-accordion-summary-size: var(--bal-heading-3-size-device);
+  --mod-accordion-summary-size: var(--ds-heading-3-size-device);
 }
 
 :host(.is-h4) {
-  --mod-accordion-summary-size: var(--bal-heading-4-size-device);
+  --mod-accordion-summary-size: var(--ds-heading-4-size-device);
 }
 
 :host(.is-h5) {
-  --mod-accordion-summary-size: var(--bal-heading-5-size-device);
+  --mod-accordion-summary-size: var(--ds-heading-5-size-device);
 }
 
 //

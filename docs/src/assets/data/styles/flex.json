@@ -247,75 +247,75 @@
       },
       {
         "class": "gap-None",
-        "css": "gap: var(--bal-space-None-device);",
+        "css": "gap: var(--ds-space-None-device);",
         "property": "gap",
-        "value": "var(--bal-space-None-device)"
+        "value": "var(--ds-space-None-device)"
       },
       {
         "class": "gap-Auto",
-        "css": "gap: var(--bal-space-Auto-device);",
+        "css": "gap: var(--ds-space-Auto-device);",
         "property": "gap",
-        "value": "var(--bal-space-Auto-device)"
+        "value": "var(--ds-space-Auto-device)"
       },
       {
         "class": "gap-2XS, .gap-xx-small",
-        "css": "gap: var(--bal-space-2XS-device);",
+        "css": "gap: var(--ds-space-2XS-device);",
         "property": "gap",
-        "value": "var(--bal-space-2XS-device)"
+        "value": "var(--ds-space-2XS-device)"
       },
       {
         "class": "gap-XS, .gap-x-small",
-        "css": "gap: var(--bal-space-XS-device);",
+        "css": "gap: var(--ds-space-XS-device);",
         "property": "gap",
-        "value": "var(--bal-space-XS-device)"
+        "value": "var(--ds-space-XS-device)"
       },
       {
         "class": "gap-SM, .gap-small",
-        "css": "gap: var(--bal-space-SM-device);",
+        "css": "gap: var(--ds-space-SM-device);",
         "property": "gap",
-        "value": "var(--bal-space-SM-device)"
+        "value": "var(--ds-space-SM-device)"
       },
       {
         "class": "gap-Base, .gap-normal",
-        "css": "gap: var(--bal-space-Base-device);",
+        "css": "gap: var(--ds-space-Base-device);",
         "property": "gap",
-        "value": "var(--bal-space-Base-device)"
+        "value": "var(--ds-space-Base-device)"
       },
       {
         "class": "gap-MD, .gap-medium",
-        "css": "gap: var(--bal-space-MD-device);",
+        "css": "gap: var(--ds-space-MD-device);",
         "property": "gap",
-        "value": "var(--bal-space-MD-device)"
+        "value": "var(--ds-space-MD-device)"
       },
       {
         "class": "gap-LG, .gap-large",
-        "css": "gap: var(--bal-space-LG-device);",
+        "css": "gap: var(--ds-space-LG-device);",
         "property": "gap",
-        "value": "var(--bal-space-LG-device)"
+        "value": "var(--ds-space-LG-device)"
       },
       {
         "class": "gap-XL, .gap-x-large",
-        "css": "gap: var(--bal-space-XL-device);",
+        "css": "gap: var(--ds-space-XL-device);",
         "property": "gap",
-        "value": "var(--bal-space-XL-device)"
+        "value": "var(--ds-space-XL-device)"
       },
       {
         "class": "gap-2XL, .gap-xx-large",
-        "css": "gap: var(--bal-space-2XL-device);",
+        "css": "gap: var(--ds-space-2XL-device);",
         "property": "gap",
-        "value": "var(--bal-space-2XL-device)"
+        "value": "var(--ds-space-2XL-device)"
       },
       {
         "class": "gap-3XL, .gap-xxx-large",
-        "css": "gap: var(--bal-space-3XL-device);",
+        "css": "gap: var(--ds-space-3XL-device);",
         "property": "gap",
-        "value": "var(--bal-space-3XL-device)"
+        "value": "var(--ds-space-3XL-device)"
       },
       {
         "class": "gap-4XL, .gap-xxxx-large",
-        "css": "gap: var(--bal-space-4XL-device);",
+        "css": "gap: var(--ds-space-4XL-device);",
         "property": "gap",
-        "value": "var(--bal-space-4XL-device)"
+        "value": "var(--ds-space-4XL-device)"
       }
     ]
   }

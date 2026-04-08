@@ -1,8 +1,7 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { BalConfigObserver, ConfigState, Icons, defaultConfig, ListenToConfig } from '../../utils/config'
-import { ElementStateInfo } from '../../utils/element-states'
+import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { sanitizeSvg } from '../../utils/svg'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
@@ -11,8 +10,8 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
   styleUrl: 'icon.host.scss',
   shadow: true,
 })
-export class Icon implements BalConfigObserver, ComponentInterface {
-  @State() icons: BalIcons = defaultConfig.icons
+export class Icon implements DsConfigObserver, ComponentInterface {
+  @State() icons: DsIcons = defaultConfig.icons
   @State() svgContent = ''
 
   /**
@@ -113,7 +112,7 @@ export class Icon implements BalConfigObserver, ComponentInterface {
    */
   @Method()
   @ListenToConfig()
-  async configChanged(state: BalConfigState): Promise<void> {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.icons = state.icons
     this.generateSvgContent(this.name)
   }

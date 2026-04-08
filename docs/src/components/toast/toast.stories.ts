@@ -40,7 +40,7 @@ const meta: Meta<Args> = {
         const label = button.innerText.trim()
 
         if (label === 'Trigger Toast' && window) {
-          const toastController = (window as any).BaloiseDesignSystem.toastController
+          const toastController = (window as any).DesignSystem.toastController
           toastController.create({
             color: args.color,
             heading: args.heading,

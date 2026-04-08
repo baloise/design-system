@@ -107,7 +107,7 @@ const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }
   for (const index in keys) {
     const key = keys[index]
     const oldKey = tshirtSizesMapping[key.toLowerCase().replace('text-size-', '')]
-    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--bal-text-size-${key}-device)`
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }

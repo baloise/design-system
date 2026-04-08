@@ -1,31 +1,31 @@
-import { Logger } from '../log'
+import { DsLogger } from '../log'
 
-export type BalRegion = 'CH' | 'DE' | 'BE' | 'LU'
+export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
 
-export type BalSwissLanguage = 'de' | 'fr' | 'it' | 'en'
-export type BalLuxembourgLanguage = 'fr' | 'de' | 'en'
-export type BalLuxembourgInternationalLanguage = BalLuxembourgLanguage | 'es' | 'pl' | 'pt' | 'sv' | 'fi'
-export type BalBelgiumLanguage = 'fr' | 'nl'
-export type BalGermanLanguage = 'de'
-export type BalBrand = 'baloise' | 'helvetia'
+export type DsSwissLanguage = 'de' | 'fr' | 'it' | 'en'
+export type DsLuxembourgLanguage = 'fr' | 'de' | 'en'
+export type DsLuxembourgInternationalLanguage = DsLuxembourgLanguage | 'es' | 'pl' | 'pt' | 'sv' | 'fi'
+export type DsBelgiumLanguage = 'fr' | 'nl'
+export type DsGermanLanguage = 'de'
+export type DsBrand = 'baloise' | 'helvetia'
 
-export type BalLanguage =
-  | BalSwissLanguage
-  | BalLuxembourgLanguage
-  | BalLuxembourgInternationalLanguage
-  | BalBelgiumLanguage
-  | BalGermanLanguage
+export type DsLanguage =
+  | DsSwissLanguage
+  | DsLuxembourgLanguage
+  | DsLuxembourgInternationalLanguage
+  | DsBelgiumLanguage
+  | DsGermanLanguage
 
-export type BalIcons = { [key: string]: string }
+export type DsIcons = { [key: string]: string }
 
-export interface BalConfig {
-  brand?: BalBrand
-  region?: BalRegion
-  language?: BalLanguage
-  allowedLanguages?: BalLanguage[]
-  icons?: BalIcons
-  fallbackLanguage?: BalLanguage
-  logger?: BalLogger
+export interface DsConfig {
+  brand?: DsBrand
+  region?: DsRegion
+  language?: DsLanguage
+  allowedLanguages?: DsLanguage[]
+  icons?: DsIcons
+  fallbackLanguage?: DsLanguage
+  logger?: DsLogger
   animated?: boolean
   httpFormSubmit?: boolean
   _generateHydrateForCustomElementsOutput?: boolean
@@ -36,20 +36,20 @@ export interface BalConfig {
   _ce?: (eventName: string, opts?: any) => any
 }
 
-export interface BalConfigState {
-  brand: BalBrand
-  region: BalRegion
-  language: BalLanguage
-  allowedLanguages: BalLanguage[]
-  icons: BalIcons
-  fallbackLanguage: BalLanguage
-  logger: BalLogger
+export interface DsConfigState {
+  brand: DsBrand
+  region: DsRegion
+  language: DsLanguage
+  allowedLanguages: DsLanguage[]
+  icons: DsIcons
+  fallbackLanguage: DsLanguage
+  logger: DsLogger
   animated: boolean
   httpFormSubmit: boolean
   _generateHydrateForCustomElementsOutput: boolean
 }
 
-export interface BalPlatformConfig {
+export interface DsPlatformConfig {
   jmp?: (c: any) => any
   raf?: (c: any) => number
   ael?: (el: any, eventName: string, listener: any, options: any) => void

@@ -4,7 +4,7 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "scripts": {
-    "start": "IS_BAL_DEVELOPMENT=true npx nx run core:start",
+    "start": "IS_DS_DEVELOPMENT=true npx nx run core:start",
     "start:force": "npx nx reset && npm run start",
     "docs": "npx nx run docs:start",
     "docs:force": "npx nx reset && npm run docs",

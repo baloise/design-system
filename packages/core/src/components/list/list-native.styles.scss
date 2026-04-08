@@ -15,7 +15,7 @@ ol.ordered-list {
 }
 
 ol.ordered-list li {
-  @include vars.local(ordered-list-marker-color, var(--bal-list-marker-base));
+  @include vars.local(ordered-list-marker-color, var(--ds-list-marker-base));
 }
 
 ul.unordered-list {
@@ -25,8 +25,8 @@ ul.unordered-list {
 }
 
 ul.unordered-list li {
-  @include vars.local(unordered-list-marker-color, var(--bal-list-marker-base));
-  @include vars.local(unordered-list-marker-radius, var(--bal-list-marker-radius));
+  @include vars.local(unordered-list-marker-color, var(--ds-list-marker-base));
+  @include vars.local(unordered-list-marker-radius, var(--ds-list-marker-radius));
   @include vars.local(
     unordered-list-marker-icon,
     url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14 14"><path fill-rule="evenodd" d="M13.637 1.198a1 1 0 0 1 .134 1.408l-8.04 9.729-.003.003a1.92 1.92 0 0 1-1.5.692 1.92 1.92 0 0 1-1.499-.747l-.001-.003L.21 9.044a1 1 0 0 1 1.578-1.228l2.464 3.168 7.976-9.652a1 1 0 0 1 1.408-.134" clip-rule="evenodd"/></svg>')
@@ -58,8 +58,8 @@ ol.ordered-list {
     list-style-type: var(--_ordered-list-style-type);
 
     &::marker {
-      font-weight: var(--bal-text-weight-bold);
-      font-family: var(--bal-text-family-heading);
+      font-weight: var(--ds-text-weight-bold);
+      font-family: var(--ds-text-family-heading);
     }
   }
 
@@ -201,14 +201,14 @@ $color-variants: ('purple', 'red', 'yellow', 'green');
   &.is-#{$color} > li,
   & > li.is-#{$color},
   & > li.has-bullet-#{$color} {
-    --mod-unordered-list-marker-color: var(--bal-list-marker-#{$color});
+    --mod-unordered-list-marker-color: var(--ds-list-marker-#{$color});
   }
 }
 
 // Default color is green
 ul.unordered-list.has-bullet-circle > li,
 ul.unordered-list > li.has-bullet-circle {
-  --mod-unordered-list-marker-color: var(--bal-list-marker-green);
+  --mod-unordered-list-marker-color: var(--ds-list-marker-green);
 }
 
 @each $color in $color-variants {
@@ -222,15 +222,15 @@ $icon-variants: ('success', 'warning', 'danger');
 ul.unordered-list {
   &.is-success > li,
   & > li.is-success {
-    --mod-unordered-list-marker-color: var(--bal-list-marker-success);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-success);
   }
   &.is-warning > li,
   & > li.is-warning {
-    --mod-unordered-list-marker-color: var(--bal-list-marker-warning);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-warning);
   }
   &.is-danger > li,
   & > li.is-danger {
-    --mod-unordered-list-marker-color: var(--bal-list-marker-danger);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-danger);
   }
 }
 
@@ -248,8 +248,8 @@ ul.unordered-list > li.has-icon-close {
 // --------------------------------
 ol.ordered-list.is-inverted,
 ul.unordered-list.is-inverted {
-  color: var(--bal-text-color-white);
+  color: var(--ds-text-color-white);
 
-  --mod-ordered-list-marker-color: var(--bal-text-color-white);
-  --mod-unordered-list-marker-color: var(--bal-text-color-white);
+  --mod-ordered-list-marker-color: var(--ds-text-color-white);
+  --mod-unordered-list-marker-color: var(--ds-text-color-white);
 }

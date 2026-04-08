@@ -1,1 +1,1 @@
-export const docComponents = ['bal-doc-app']
+export const docComponents = ['ds-doc-app']

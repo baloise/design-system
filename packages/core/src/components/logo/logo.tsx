@@ -1,8 +1,8 @@
 import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { BreakpointObserver, Breakpoints, dsBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { ConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
+import { DsBreakpointObserver, DsBreakpoints, dsBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/config'
 import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
@@ -16,7 +16,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) =>
   styleUrl: 'logo.host.scss',
   shadow: true,
 })
-export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver, BalConfigObserver {
+export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver, DsConfigObserver {
   private animationItem!: AnimationItem
   private animatedLogoElement!: HTMLDivElement
   private animationFunction?: LogoAnimationFunction
@@ -99,12 +99,12 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
    */
 
   @ListenToBreakpoints()
-  breakpointListener(breakpoints: BalBreakpoints): void {
+  breakpointListener(breakpoints: DsBreakpoints): void {
     this.isTouch = breakpoints.touch
   }
 
   @ListenToConfig()
-  configChanged(state: BalConfigState): void {
+  configChanged(state: DsConfigState): void {
     this.doesConfigAllowAnimation = state.animated
     this.configBrand = state.brand
   }
@@ -137,7 +137,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
         return resolve()
       } else {
         rOnLoad(async () => {
-          import(/* @vite-ignore */ './bal-logo.animation')
+          import(/* @vite-ignore */ './logo.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()

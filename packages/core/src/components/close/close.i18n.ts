@@ -1,10 +1,10 @@
 import { I18n } from '../../interfaces'
 
-interface I18nBalClose {
+interface I18nDsClose {
   close: string
 }
 
-export const i18nBalClose: I18n<I18nBalClose> = {
+export const i18nDsClose: I18n<I18nDsClose> = {
   de: {
     close: 'Schliessen',
   },

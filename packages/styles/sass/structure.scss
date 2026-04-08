@@ -1,8 +1,8 @@
 @use '../src/mixins/_all' as *;
 
 html {
-  background-color: var(--bal-body-color-background);
-  font-size: var(--bal-body-text-size);
+  background-color: var(--ds-body-color-background);
+  font-size: var(--ds-body-text-size);
   min-width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -37,14 +37,14 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--bal-body-family);
+  font-family: var(--ds-body-family);
 }
 
 body {
-  color: var(--bal-body-color);
-  font-size: var(--bal-body-size);
-  font-weight: var(--bal-body-weight);
-  line-height: var(--bal-body-line-height);
+  color: var(--ds-body-color);
+  font-size: var(--ds-body-size);
+  font-weight: var(--ds-body-weight);
+  line-height: var(--ds-body-line-height);
   -webkit-overflow-scrolling: auto;
 }
 
@@ -64,7 +64,7 @@ p:not(.text, .title, .subtitle, .heading) {
 }
 
 small {
-  font-size: var(--bal-text-size-sm);
+  font-size: var(--ds-text-size-sm);
 }
 
 span {
@@ -75,7 +75,7 @@ span {
 b,
 strong {
   color: inherit;
-  font-weight: var(--bal-text-weight-bold);
+  font-weight: var(--ds-text-weight-bold);
 }
 
 img {

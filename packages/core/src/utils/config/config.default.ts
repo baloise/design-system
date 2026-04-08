@@ -38,7 +38,7 @@ import {
   IconInformation,
 } from '../constants/icons.constant'
 import { defaultLoggerConfig } from '../log'
-import type { BalConfigState } from './config.types'
+import type { DsConfigState } from './config.types'
 
 export const defaultIcons = {
   IconClock,
@@ -80,7 +80,7 @@ export const defaultIcons = {
   IconInformation,
 }
 
-export const defaultConfig: BalConfigState = {
+export const defaultConfig: DsConfigState = {
   brand: 'helvetia',
   region: 'CH',
   language: 'de',

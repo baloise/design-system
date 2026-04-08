@@ -15,9 +15,9 @@ $host-selector: ('#divider');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(divider-color, var(--bal-divider-color-base));
-  @include vars.local(divider-width, var(--bal-divider-width));
-  @include vars.local(divider-radius, var(--bal-divider-radius));
+  @include vars.local(divider-color, var(--ds-divider-color-base));
+  @include vars.local(divider-width, var(--ds-divider-width));
+  @include vars.local(divider-radius, var(--ds-divider-radius));
   @include vars.local(divider-space, 0);
 }
 
@@ -88,7 +88,7 @@ $colors: (
 @include hybrid.component($host-selector, $css-selector, $use-host) {
   @each $color in $colors {
     &.is-#{$color} {
-      --mod-divider-color: var(--bal-divider-color-#{$color});
+      --mod-divider-color: var(--ds-divider-color-#{$color});
     }
   }
 }
@@ -101,7 +101,7 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 @include hybrid.component($host-selector, $css-selector, $use-host) {
   @each $space in $spaces {
     &.has-space-#{$space} {
-      --mod-divider-space: var(--bal-space-#{$space}-device);
+      --mod-divider-space: var(--ds-space-#{$space}-device);
     }
   }
 }

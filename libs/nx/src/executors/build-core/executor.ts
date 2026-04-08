@@ -64,7 +64,7 @@ async function createContributorList(options: BuildCoreExecutorSchema) {
 // a JSON file with all the meta information for documentation
 // and code generations.
 // async function createTestingDocs(options: BuildCoreExecutorSchema) {
-//   const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/bal-**.types.ts')
+//   const pathToTypes = join(options.projectRoot, '../testing/src/commands/**/ds-**.types.ts')
 //   const typeFilePaths = await scan(pathToTypes)
 //   const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f, 'utf-8')))
 //   const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
@@ -99,7 +99,7 @@ async function createContributorList(options: BuildCoreExecutorSchema) {
 export async function createTagList() {
   const content = await readFile(join('resources/data/components.json'), 'utf-8')
   const json = JSON.parse(content)
-  const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('bal-doc'))
+  const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('ds-doc'))
 
   const filePathAllTags = join('packages/core/src/tags-all.ts')
   await mkdir(dirname(filePathAllTags), { recursive: true })
@@ -107,7 +107,7 @@ export async function createTagList() {
 
   const reducedTags = componentTags.reduce((acc, newTag) => {
     const hasComponent = acc.some(tag => newTag.startsWith(tag))
-    if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
+    if (!hasComponent && newTag !== 'ds-tab-item' && newTag !== 'ds-notices') {
       acc.push(newTag)
     }
     return acc

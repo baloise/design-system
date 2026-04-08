@@ -4,7 +4,7 @@ import { addEventListener, isDescendant, removeEventListener, waitAfterIdleCallb
 import { ListenerAbstract } from '../types/listener'
 import { FocusInfo } from './focus.interfaces'
 
-export class FocusListener<TObserver> extends ListenerAbstract<TObserver, BalFocusInfo> {
+export class FocusListener<TObserver> extends ListenerAbstract<TObserver, FocusInfo> {
   override connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (this.el) {

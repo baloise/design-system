@@ -1,6 +1,6 @@
-import { Breakpoints } from './breakpoints.interfaces'
+import { DsBreakpoints } from './breakpoints.interfaces'
 
-export const initialBreakpoints: BalBreakpoints = {
+export const initialBreakpoints: DsBreakpoints = {
   mobile: false,
   tablet: false,
   touch: false,

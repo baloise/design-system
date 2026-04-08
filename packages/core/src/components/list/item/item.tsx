@@ -179,13 +179,13 @@ export class Item implements ComponentInterface {
             open={this.accordionOpen}
             marker={this.accordionMarker}
             marker-position={this.accordionMarkerPosition}
-            onBalOpened={ev => {
+            onDsOpened={ev => {
               this.dsAccordionOpened.emit(ev.detail)
             }}
-            onBalClosed={ev => {
+            onDsClosed={ev => {
               this.dsAccordionClosed.emit(ev.detail)
             }}
-            onBalToggle={ev => {
+            onDsToggle={ev => {
               this.dsAccordionToggle.emit(ev.detail)
             }}
           >

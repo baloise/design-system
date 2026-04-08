@@ -46,7 +46,7 @@ body:
     id: next-steps
     attributes:
       label: Next Steps
-      description: Present breaking change in the Baloise web community
+      description: Present breaking change in the Helvetia web community
       value: |
         - **Benefit** Show benefits of the change
           - list benefits here

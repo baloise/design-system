@@ -135,9 +135,9 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     const key = keys[index]
     const oldKey = tshirtSizesMapping[key.toLowerCase()]
 
-    valuesGap[`gap-${key}${oldKey ? `, .gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
-    valuesRowGap[`row-gap-${key}${oldKey ? `, .row-gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
-    valuesColumnGap[`column-gap-${key}${oldKey ? `, .column-gap-${oldKey}` : ''}`] = `var(--bal-space-${key}-device)`
+    valuesGap[`gap-${key}${oldKey ? `, .gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
+    valuesRowGap[`row-gap-${key}${oldKey ? `, .row-gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
+    valuesColumnGap[`column-gap-${key}${oldKey ? `, .column-gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
   }
   const rulesFlexGap = utils.styleClass({ property: 'gap', values: valuesGap, important: true })
   const rulesFlexGapDocs = utils.jsonClass({ property: 'gap', values: valuesGap })
@@ -149,9 +149,9 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
   // const valuesColumnGapTablet = {}
   // for (const index in keys) {
   //   const key = keys[index]
-  //   valuesGapTablet[`gap-${key}`] = `var(--bal-space-${key}-tablet)`
-  //   valuesRowGapTablet[`row-gap-${key}`] = `var(--bal-space-${key}-tablet)`
-  //   valuesColumnGapTablet[`column-gap-${key}`] = `var(--bal-space-${key}-tablet)`
+  //   valuesGapTablet[`gap-${key}`] = `var(--ds-space-${key}-tablet)`
+  //   valuesRowGapTablet[`row-gap-${key}`] = `var(--ds-space-${key}-tablet)`
+  //   valuesColumnGapTablet[`column-gap-${key}`] = `var(--ds-space-${key}-tablet)`
   // }
   // const rulesFlexGapTablet = utils.styleClass({
   //   property: 'gap',
@@ -178,9 +178,9 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
 
   // for (const index in keys) {
   //   const key = keys[index]
-  //   valuesGapDesktop[`gap-${key}`] = `var(--bal-space-${key}-desktop)`
-  //   valuesRowGapDesktop[`row-gap-${key}`] = `var(--bal-space-${key}-desktop)`
-  //   valuesColumnGapDesktop[`column-gap-${key}`] = `var(--bal-space-${key}-desktop)`
+  //   valuesGapDesktop[`gap-${key}`] = `var(--ds-space-${key}-desktop)`
+  //   valuesRowGapDesktop[`row-gap-${key}`] = `var(--ds-space-${key}-desktop)`
+  //   valuesColumnGapDesktop[`column-gap-${key}`] = `var(--ds-space-${key}-desktop)`
   // }
   // const rulesFlexGapDesktop = utils.styleClass({
   //   property: 'gap',

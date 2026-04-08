@@ -28,8 +28,8 @@ export const TokensBorderWidth = ({ overview }): React.ReactElement => {
               <td className="flex justify-content-center align-items-center h-3rem">
                 <div
                   style={{
-                    background: 'var(--bal-color-purple-4)',
-                    borderRadius: 'var(--bal-radius)',
+                    background: 'var(--ds-color-purple-4)',
+                    borderRadius: 'var(--ds-radius)',
                     height: `var(--${item.name})`,
                     width: '48px',
                   }}

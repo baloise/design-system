@@ -6,14 +6,14 @@ interface ScrollToFirstInvalidFieldOptions {
 }
 
 export const scrollToFirstInvalidField = (options: ScrollToFirstInvalidFieldOptions) => {
-  const selector = options.selector || '.bal-field--invalid'
+  const selector = options.selector || '.ds-field--invalid'
   const invalidFieldNodes = options.formEl.querySelectorAll(selector)
   const invalidFields = Array.from(invalidFieldNodes)
 
   if (invalidFields.length > 0) {
     const firstInvalidField = invalidFields[0]
     if (firstInvalidField) {
-      const invalidField = firstInvalidField.closest('bal-field')
+      const invalidField = firstInvalidField.closest('ds-field')
 
       if (invalidField && invalidField.scrollIntoView) {
         invalidField.scrollIntoView()
@@ -22,18 +22,18 @@ export const scrollToFirstInvalidField = (options: ScrollToFirstInvalidFieldOpti
   }
 }
 
-export interface BalAriaForm {
+export interface AriaForm {
   controlId?: string
   labelId?: string
   messageId?: string
 }
 
-export interface BalAriaFormLinking {
-  ariaForm: BalAriaForm
-  setAriaForm(ariaForm: BalAriaForm): Promise<void>
+export interface AriaFormLinking {
+  ariaForm: AriaForm
+  setAriaForm(ariaForm: AriaForm): Promise<void>
 }
 
-export const defaultBalAriaForm: BalAriaForm = Object.freeze({
+export const defaultDsAriaForm: AriaForm = Object.freeze({
   controlId: undefined,
   labelId: undefined,
   messageId: undefined,

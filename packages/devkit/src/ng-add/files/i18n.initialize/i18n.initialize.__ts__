@@ -1,30 +1,30 @@
 import {
-  BalConfigState,
-  BalLanguage,
-  onBalConfigChange,
+  DsConfigState,
+  DsLanguage,
+  onDsConfigChange,
 } from '@baloise/ds-core';
-import { BalConfigService } from '@baloise/ds-angular';
+import { DsConfigService } from '@baloise/ds-angular';
 import { TranslocoService } from '@ngneat/transloco';
 
 export function initializeI18n(
   transloco: TranslocoService,
-  balConfig: BalConfigService
+  dsConfig: DsConfigService
 ) {
   return (): Promise<void> => {
-    const activeLanguage = transloco.getActiveLang() as BalLanguage;
-    const allowedLanguages = transloco.getAvailableLangs() as BalLanguage[];
+    const activeLanguage = transloco.getActiveLang() as DsLanguage;
+    const allowedLanguages = transloco.getAvailableLangs() as DsLanguage[];
 
-    balConfig.setLanguage(activeLanguage);
-    balConfig.setAllowedLanguages(allowedLanguages);
+    dsConfig.setLanguage(activeLanguage);
+    dsConfig.setAllowedLanguages(allowedLanguages);
 
-    onBalConfigChange((config: BalConfigState) => {
+    onDsConfigChange((config: DsConfigState) => {
       if (transloco.getActiveLang() !== config.language) {
         transloco.setActiveLang(config.language);
       }
     });
 
     transloco.langChanges$.subscribe((value) => {
-      balConfig.setLanguage(value as BalLanguage);
+      dsConfig.setLanguage(value as DsLanguage);
     });
 
     return Promise.resolve();

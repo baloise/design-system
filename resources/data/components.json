@@ -6,7 +6,7 @@
   },
   "components": [
     {
-      "fileName": "bal-accordion.tsx",
+      "fileName": "accordion.tsx",
       "tag": "bal-accordion",
       "overview": "",
       "usage": {},
@@ -61,12 +61,12 @@
           "name": "buttonColor",
           "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
-            "original": "BalProps.BalButtonColor",
+            "original": "DS.ButtonColor",
             "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -289,12 +289,12 @@
           "name": "buttonSize",
           "type": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalButtonSize",
+            "original": "DS.ButtonSize",
             "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -362,12 +362,12 @@
           "name": "marker",
           "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
           "complexType": {
-            "original": "BalProps.BalAccordionMarker",
+            "original": "DS.AccordionMarker",
             "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -405,12 +405,12 @@
           "name": "markerPosition",
           "type": "\"\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalAccordionMarkerPosition",
+            "original": "DS.AccordionMarkerPosition",
             "resolved": "\"\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -473,12 +473,12 @@
           "name": "summaryLevel",
           "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
           "complexType": {
-            "original": "BalProps.BalAccordionSummaryLevel",
+            "original": "DS.AccordionSummaryLevel",
             "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -550,12 +550,12 @@
           "name": "summaryVisualLevel",
           "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
           "complexType": {
-            "original": "BalProps.BalAccordionSummaryLevel",
+            "original": "DS.AccordionSummaryLevel",
             "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -598,16 +598,16 @@
       "methods": [],
       "events": [
         {
-          "event": "balClosed",
+          "event": "dsClosed",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -617,16 +617,16 @@
           "docsTags": []
         },
         {
-          "event": "balOpened",
+          "event": "dsOpened",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -636,16 +636,16 @@
           "docsTags": []
         },
         {
-          "event": "balToggle",
+          "event": "dsToggle",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -677,7 +677,7 @@
       ],
       "listeners": [
         {
-          "event": "balOpened",
+          "event": "dsOpened",
           "target": "window",
           "capture": false,
           "passive": false
@@ -685,7 +685,7 @@
       ]
     },
     {
-      "fileName": "bal-alert-container.tsx",
+      "fileName": "alert-container.tsx",
       "tag": "bal-alert-container",
       "overview": "",
       "usage": {},
@@ -734,8 +734,8 @@
             "references": {
               "AlertContainerSize": {
                 "location": "import",
-                "path": "./bal-alert-container.interfaces",
-                "id": "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertContainerSize",
+                "path": "./alert-container.interfaces",
+                "id": "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize",
                 "referenceLocation": "AlertContainerSize"
               }
             }
@@ -784,8 +784,8 @@
             "references": {
               "AlertType": {
                 "location": "import",
-                "path": "./bal-alert-container.interfaces",
-                "id": "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertType",
+                "path": "./alert-container.interfaces",
+                "id": "src/components/alert/alert-container.interfaces.tsx::AlertType",
                 "referenceLocation": "AlertType"
               }
             }
@@ -829,7 +829,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: BalButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: ButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -840,14 +840,14 @@
               },
               "Alert": {
                 "location": "import",
-                "path": "./bal-alert-container.interfaces",
-                "id": "src/components/bal-alert/bal-alert-container.interfaces.tsx::Alert",
+                "path": "./alert-container.interfaces",
+                "id": "src/components/alert/alert-container.interfaces.tsx::Alert",
                 "referenceLocation": "Alert"
               },
               "AlertComponent": {
                 "location": "import",
-                "path": "./bal-alert-container.interfaces",
-                "id": "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertComponent",
+                "path": "./alert-container.interfaces",
+                "id": "src/components/alert/alert-container.interfaces.tsx::AlertComponent",
                 "referenceLocation": "AlertComponent"
               }
             },
@@ -857,7 +857,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: BalButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: ButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -928,7 +928,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-app.tsx",
+      "fileName": "app.tsx",
       "tag": "bal-app",
       "overview": "",
       "usage": {},
@@ -1017,7 +1017,7 @@
       ],
       "events": [
         {
-          "event": "balAppReady",
+          "event": "dsAppReady",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -1037,7 +1037,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-badge.tsx",
+      "fileName": "badge.tsx",
       "tag": "bal-badge",
       "overview": "",
       "usage": {},
@@ -1058,12 +1058,12 @@
           "name": "color",
           "type": "\"\" | \"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
           "complexType": {
-            "original": "BalProps.BalBadgeColor",
+            "original": "DS.BadgeColor",
             "resolved": "\"\" | \"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -1150,12 +1150,12 @@
           "name": "position",
           "type": "\"\" | \"button\" | \"card\" | \"tabs\"",
           "complexType": {
-            "original": "BalProps.BalBadgePosition",
+            "original": "DS.BadgePosition",
             "resolved": "\"\" | \"button\" | \"card\" | \"tabs\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -1225,12 +1225,12 @@
           "name": "size",
           "type": "\"\" | \"large\" | \"small\"",
           "complexType": {
-            "original": "BalProps.BalBadgeSize",
+            "original": "DS.BadgeSize",
             "resolved": "\"\" | \"large\" | \"small\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -1281,7 +1281,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-button.tsx",
+      "fileName": "button.tsx",
       "tag": "bal-button",
       "overview": "",
       "usage": {},
@@ -1474,12 +1474,12 @@
           "name": "color",
           "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
-            "original": "BalProps.BalButtonColor",
+            "original": "DS.ButtonColor",
             "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -1653,12 +1653,12 @@
           "name": "elementType",
           "type": "\"button\" | \"reset\" | \"submit\"",
           "complexType": {
-            "original": "BalProps.BalButtonElementType",
+            "original": "DS.ButtonElementType",
             "resolved": "\"button\" | \"reset\" | \"submit\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -1890,12 +1890,12 @@
           "name": "loading",
           "type": "\"\" | \"circle\" | \"logo\" | boolean | undefined",
           "complexType": {
-            "original": "BalProps.BalButtonSpinner",
+            "original": "DS.ButtonSpinner",
             "resolved": "\"\" | \"circle\" | \"logo\" | boolean | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2106,12 +2106,12 @@
           "name": "size",
           "type": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalButtonSize",
+            "original": "DS.ButtonSize",
             "resolved": "\"\" | \"lg\" | \"sm\" | \"small\" | \"xl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2188,12 +2188,12 @@
           "name": "target",
           "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
           "complexType": {
-            "original": "BalProps.BalButtonTarget",
+            "original": "DS.ButtonTarget",
             "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2264,16 +2264,16 @@
       "methods": [],
       "events": [
         {
-          "event": "balBlur",
+          "event": "dsBlur",
           "detail": "void",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonBlurDetail",
+            "original": "DS.ButtonBlurDetail",
             "resolved": "void",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -2283,16 +2283,16 @@
           "docsTags": []
         },
         {
-          "event": "balClick",
+          "event": "dsClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonClickDetail",
+            "original": "DS.ButtonClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -2302,16 +2302,16 @@
           "docsTags": []
         },
         {
-          "event": "balDidRender",
+          "event": "dsDidRender",
           "detail": "void",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonDidRenderDetail",
+            "original": "DS.ButtonDidRenderDetail",
             "resolved": "void",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -2321,16 +2321,16 @@
           "docsTags": []
         },
         {
-          "event": "balFocus",
+          "event": "dsFocus",
           "detail": "void",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonFocusDetail",
+            "original": "DS.ButtonFocusDetail",
             "resolved": "void",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -2340,16 +2340,16 @@
           "docsTags": []
         },
         {
-          "event": "balNavigate",
+          "event": "dsNavigate",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonNavigateDetail",
+            "original": "DS.ButtonNavigateDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -2377,7 +2377,7 @@
       ]
     },
     {
-      "fileName": "bal-button-group.tsx",
+      "fileName": "button-group.tsx",
       "tag": "bal-button-group",
       "overview": "",
       "usage": {},
@@ -2402,12 +2402,12 @@
           "name": "align",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalButtonGroupAlignment",
+            "original": "DS.ButtonGroupAlignment",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2442,12 +2442,12 @@
           "name": "direction",
           "type": "\"auto\" | \"column\" | \"row\"",
           "complexType": {
-            "original": "BalProps.BalButtonGroupDirection",
+            "original": "DS.ButtonGroupDirection",
             "resolved": "\"auto\" | \"column\" | \"row\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2553,7 +2553,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card.tsx",
+      "fileName": "card.tsx",
       "tag": "bal-card",
       "overview": "",
       "usage": {},
@@ -2568,12 +2568,12 @@
           "name": "align",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCardAlignment",
+            "original": "DS.CardAlignment",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -2671,12 +2671,12 @@
           "name": "color",
           "type": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCardColor",
+            "original": "DS.CardColor",
             "resolved": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3030,12 +3030,12 @@
           "name": "space",
           "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCardSpace",
+            "original": "DS.CardSpace",
             "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3148,7 +3148,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-actions.tsx",
+      "fileName": "card-actions.tsx",
       "tag": "bal-card-actions",
       "overview": "",
       "usage": {},
@@ -3169,12 +3169,12 @@
           "name": "align",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCardActionsAlignment",
+            "original": "DS.CardActionsAlignment",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3214,7 +3214,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-content.tsx",
+      "fileName": "card-content.tsx",
       "tag": "bal-card-content",
       "overview": "",
       "usage": {},
@@ -3233,7 +3233,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-header.tsx",
+      "fileName": "card-header.tsx",
       "tag": "bal-card-header",
       "overview": "",
       "usage": {},
@@ -3248,12 +3248,12 @@
           "name": "direction",
           "type": "\"column\" | \"row\"",
           "complexType": {
-            "original": "BalProps.BalCardHeaderDirection",
+            "original": "DS.CardHeaderDirection",
             "resolved": "\"column\" | \"row\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3292,7 +3292,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-subtitle.tsx",
+      "fileName": "card-subtitle.tsx",
       "tag": "bal-card-subtitle",
       "overview": "",
       "usage": {},
@@ -3336,12 +3336,12 @@
           "name": "color",
           "type": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
           "complexType": {
-            "original": "BalProps.BalHeadingColor",
+            "original": "DS.HeadingColor",
             "resolved": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3432,7 +3432,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-card-title.tsx",
+      "fileName": "card-title.tsx",
       "tag": "bal-card-title",
       "overview": "",
       "usage": {},
@@ -3482,12 +3482,12 @@
           "name": "level",
           "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
           "complexType": {
-            "original": "BalProps.BalHeadingLevel",
+            "original": "DS.HeadingLevel",
             "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3581,12 +3581,12 @@
           "name": "visualLevel",
           "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalHeadingVisualLevel",
+            "original": "DS.HeadingVisualLevel",
             "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -3674,7 +3674,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-check.tsx",
+      "fileName": "check.tsx",
       "tag": "bal-check",
       "overview": "",
       "usage": {},
@@ -3825,7 +3825,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-close.tsx",
+      "fileName": "close.tsx",
       "tag": "bal-close",
       "overview": "",
       "usage": {},
@@ -3896,12 +3896,12 @@
           "name": "buttonColor",
           "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
           "complexType": {
-            "original": "BalProps.BalButtonColor",
+            "original": "DS.ButtonColor",
             "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4046,12 +4046,12 @@
           "name": "size",
           "type": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
-            "original": "BalProps.BalCloseSize",
+            "original": "DS.CloseSize",
             "resolved": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4100,7 +4100,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-content.tsx",
+      "fileName": "content.tsx",
       "tag": "bal-content",
       "overview": "",
       "usage": {},
@@ -4115,12 +4115,12 @@
           "name": "align",
           "type": "\"center\" | \"end\" | \"start\" | undefined",
           "complexType": {
-            "original": "BalProps.BalContentAlignment",
+            "original": "DS.ContentAlignment",
             "resolved": "\"center\" | \"end\" | \"start\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4155,12 +4155,12 @@
           "name": "direction",
           "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackDirection",
+            "original": "DS.StackDirection",
             "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4199,12 +4199,12 @@
           "name": "layout",
           "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackLayout",
+            "original": "DS.StackLayout",
             "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4249,12 +4249,12 @@
           "name": "space",
           "type": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
           "complexType": {
-            "original": "BalProps.BalContentSpace",
+            "original": "DS.ContentSpace",
             "resolved": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4321,12 +4321,12 @@
           "name": "textAlign",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalContentTextAlignment",
+            "original": "DS.ContentTextAlignment",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4366,7 +4366,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-divider.tsx",
+      "fileName": "divider.tsx",
       "tag": "bal-divider",
       "overview": "",
       "usage": {},
@@ -4381,12 +4381,12 @@
           "name": "color",
           "type": "\"danger\" | \"danger-dark\" | \"danger-darker\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
           "complexType": {
-            "original": "BalProps.BalDividerColor",
+            "original": "DS.DividerColor",
             "resolved": "\"danger\" | \"danger-dark\" | \"danger-darker\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4493,12 +4493,12 @@
           "name": "layout",
           "type": "\"\" | \"horizontal\" | \"vertical\"",
           "complexType": {
-            "original": "BalProps.BalDividerLayout",
+            "original": "DS.DividerLayout",
             "resolved": "\"\" | \"horizontal\" | \"vertical\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4535,12 +4535,12 @@
           "name": "space",
           "type": "\"\" | \"2xl\" | \"2xs\" | \"3xl\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
           "complexType": {
-            "original": "BalProps.BalDividerSpace",
+            "original": "DS.DividerSpace",
             "resolved": "\"\" | \"2xl\" | \"2xs\" | \"3xl\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxx-large\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4650,7 +4650,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-heading.tsx",
+      "fileName": "heading.tsx",
       "tag": "bal-heading",
       "overview": "",
       "usage": {},
@@ -4671,12 +4671,12 @@
           "name": "autoLevel",
           "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalHeadingVisualLevel",
+            "original": "DS.HeadingVisualLevel",
             "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4759,12 +4759,12 @@
           "name": "color",
           "type": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
           "complexType": {
-            "original": "BalProps.BalHeadingColor",
+            "original": "DS.HeadingColor",
             "resolved": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -4850,12 +4850,12 @@
           "name": "level",
           "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
           "complexType": {
-            "original": "BalProps.BalHeadingLevel",
+            "original": "DS.HeadingLevel",
             "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"p\" | \"span\" | \"xl\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5075,12 +5075,12 @@
           "name": "visualLevel",
           "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalHeadingVisualLevel",
+            "original": "DS.HeadingVisualLevel",
             "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5173,7 +5173,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-icon.tsx",
+      "fileName": "icon.tsx",
       "tag": "bal-icon",
       "overview": "",
       "usage": {},
@@ -5222,12 +5222,12 @@
           "name": "color",
           "type": "string | undefined",
           "complexType": {
-            "original": "BalProps.BalIconColor",
+            "original": "DS.IconColor",
             "resolved": "string | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5424,12 +5424,12 @@
           "name": "shape",
           "type": "\"circle\" | \"triangle\" | undefined",
           "complexType": {
-            "original": "BalProps.BalIconShape",
+            "original": "DS.IconShape",
             "resolved": "\"circle\" | \"triangle\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5460,12 +5460,12 @@
           "name": "size",
           "type": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
           "complexType": {
-            "original": "BalProps.BalIconSize",
+            "original": "DS.IconSize",
             "resolved": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5598,12 +5598,12 @@
           "name": "tileColor",
           "type": "\"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
-            "original": "BalProps.BalIconTileColor",
+            "original": "DS.IconTileColor",
             "resolved": "\"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5684,7 +5684,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-item.tsx",
+      "fileName": "item.tsx",
       "tag": "bal-item",
       "overview": "",
       "usage": {},
@@ -5736,12 +5736,12 @@
           "name": "accordionMarker",
           "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
           "complexType": {
-            "original": "BalProps.BalAccordionMarker",
+            "original": "DS.AccordionMarker",
             "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -5779,12 +5779,12 @@
           "name": "accordionMarkerPosition",
           "type": "\"\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalAccordionMarkerPosition",
+            "original": "DS.AccordionMarkerPosition",
             "resolved": "\"\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6157,12 +6157,12 @@
           "name": "target",
           "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
           "complexType": {
-            "original": "BalProps.BalButtonTarget",
+            "original": "DS.ButtonTarget",
             "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6246,16 +6246,16 @@
       "methods": [],
       "events": [
         {
-          "event": "balAccordionClosed",
+          "event": "dsAccordionClosed",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -6265,16 +6265,16 @@
           "docsTags": []
         },
         {
-          "event": "balAccordionOpened",
+          "event": "dsAccordionOpened",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -6284,16 +6284,16 @@
           "docsTags": []
         },
         {
-          "event": "balAccordionToggle",
+          "event": "dsAccordionToggle",
           "detail": "{ group?: string | undefined; id: string; open: boolean; }",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalAccordionToggleDetail",
+            "original": "DS.AccordionToggleDetail",
             "resolved": "{ group?: string | undefined; id: string; open: boolean; }",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -6303,16 +6303,16 @@
           "docsTags": []
         },
         {
-          "event": "balClick",
+          "event": "dsClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalButtonClickDetail",
+            "original": "DS.ButtonClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -6337,7 +6337,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-label.tsx",
+      "fileName": "label.tsx",
       "tag": "bal-label",
       "overview": "",
       "usage": {},
@@ -6532,12 +6532,12 @@
           "name": "size",
           "type": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"sm\" | \"small\" | \"x-large\" | \"xl\" | \"xx-large\" | \"xxx-large\" | undefined",
           "complexType": {
-            "original": "BalProps.BalLabelSize",
+            "original": "DS.LabelSize",
             "resolved": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"sm\" | \"small\" | \"x-large\" | \"xl\" | \"xx-large\" | \"xxx-large\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6642,7 +6642,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-list.tsx",
+      "fileName": "list.tsx",
       "tag": "bal-list",
       "overview": "",
       "usage": {},
@@ -6696,7 +6696,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-logo.tsx",
+      "fileName": "logo.tsx",
       "tag": "bal-logo",
       "overview": "",
       "usage": {},
@@ -6740,12 +6740,12 @@
           "name": "brand",
           "type": "\"\" | \"baloise\" | \"helvetia\"",
           "complexType": {
-            "original": "BalProps.BalLogoBrand",
+            "original": "DS.LogoBrand",
             "resolved": "\"\" | \"baloise\" | \"helvetia\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6782,12 +6782,12 @@
           "name": "color",
           "type": "\"primary\" | \"white\"",
           "complexType": {
-            "original": "BalProps.BalLogoColor",
+            "original": "DS.LogoColor",
             "resolved": "\"primary\" | \"white\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6821,12 +6821,12 @@
           "name": "size",
           "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
-            "original": "BalProps.BalLogoSize",
+            "original": "DS.LogoSize",
             "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -6881,7 +6881,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-notification.tsx",
+      "fileName": "notification.tsx",
       "tag": "bal-notification",
       "overview": "",
       "usage": {},
@@ -6967,12 +6967,12 @@
           "name": "color",
           "type": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
           "complexType": {
-            "original": "BalProps.BalNotificationColor",
+            "original": "DS.NotificationColor",
             "resolved": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7090,12 +7090,12 @@
           "name": "size",
           "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
-            "original": "BalProps.BalNotificationSize",
+            "original": "DS.NotificationSize",
             "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7168,16 +7168,16 @@
       ],
       "events": [
         {
-          "event": "balCloseClick",
+          "event": "dsCloseClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalNotificationCloseClickDetail",
+            "original": "DS.NotificationCloseClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -7187,7 +7187,7 @@
           "docsTags": []
         },
         {
-          "event": "balDidLoad",
+          "event": "dsDidLoad",
           "detail": "void",
           "bubbles": true,
           "complexType": {
@@ -7220,7 +7220,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-shape.tsx",
+      "fileName": "shape.tsx",
       "tag": "bal-shape",
       "overview": "",
       "usage": {},
@@ -7235,12 +7235,12 @@
           "name": "color",
           "type": "\"green\" | \"green-light\" | \"purple\" | \"purple-light\" | \"red\" | \"red-light\" | \"yellow\" | \"yellow-light\"",
           "complexType": {
-            "original": "BalProps.BalShapeColor",
+            "original": "DS.ShapeColor",
             "resolved": "\"green\" | \"green-light\" | \"purple\" | \"purple-light\" | \"red\" | \"red-light\" | \"yellow\" | \"yellow-light\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7298,12 +7298,12 @@
           "name": "rotation",
           "type": "\"0\" | \"180\" | \"270\" | \"90\"",
           "complexType": {
-            "original": "BalProps.BalShapeRotation",
+            "original": "DS.ShapeRotation",
             "resolved": "\"0\" | \"180\" | \"270\" | \"90\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7345,12 +7345,12 @@
           "name": "variation",
           "type": "\"1\" | \"2\" | \"3\"",
           "complexType": {
-            "original": "BalProps.BalShapeVariation",
+            "original": "DS.ShapeVariation",
             "resolved": "\"1\" | \"2\" | \"3\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7393,7 +7393,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-snackbar.tsx",
+      "fileName": "snackbar.tsx",
       "tag": "bal-snackbar",
       "overview": "",
       "usage": {},
@@ -7505,12 +7505,12 @@
           "name": "actionTarget",
           "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
           "complexType": {
-            "original": "BalProps.BalButtonTarget",
+            "original": "DS.ButtonTarget",
             "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7581,12 +7581,12 @@
           "name": "color",
           "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
           "complexType": {
-            "original": "BalProps.BalSnackbarColor",
+            "original": "DS.SnackbarColor",
             "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7756,16 +7756,16 @@
       ],
       "events": [
         {
-          "event": "balActionClick",
+          "event": "dsActionClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalSnackbarActionClickDetail",
+            "original": "DS.SnackbarActionClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -7775,16 +7775,16 @@
           "docsTags": []
         },
         {
-          "event": "balCloseClick",
+          "event": "dsCloseClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalSnackbarCloseClickDetail",
+            "original": "DS.SnackbarCloseClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -7829,7 +7829,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-spinner.tsx",
+      "fileName": "spinner.tsx",
       "tag": "bal-spinner",
       "overview": "",
       "usage": {},
@@ -7850,12 +7850,12 @@
           "name": "color",
           "type": "\"blue\" | \"white\"",
           "complexType": {
-            "original": "BalProps.BalSpinnerColor",
+            "original": "DS.SpinnerColor",
             "resolved": "\"blue\" | \"white\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -7947,12 +7947,12 @@
           "name": "size",
           "type": "\"\" | \"sm\"",
           "complexType": {
-            "original": "BalProps.BalSpinnerSize",
+            "original": "DS.SpinnerSize",
             "resolved": "\"\" | \"sm\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8018,12 +8018,12 @@
           "name": "variation",
           "type": "\"circle\" | \"logo\"",
           "complexType": {
-            "original": "BalProps.BalSpinnerVariation",
+            "original": "DS.SpinnerVariation",
             "resolved": "\"circle\" | \"logo\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8067,7 +8067,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-stack.tsx",
+      "fileName": "stack.tsx",
       "tag": "bal-stack",
       "overview": "",
       "usage": {},
@@ -8082,12 +8082,12 @@
           "name": "align",
           "type": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackAlignment",
+            "original": "DS.StackAlignment",
             "resolved": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8146,12 +8146,12 @@
           "name": "direction",
           "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
           "complexType": {
-            "original": "BalProps.BalStackDirection",
+            "original": "DS.StackDirection",
             "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8222,12 +8222,12 @@
           "name": "layout",
           "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackLayout",
+            "original": "DS.StackLayout",
             "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8272,12 +8272,12 @@
           "name": "p",
           "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackPadding",
+            "original": "DS.StackPadding",
             "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8368,12 +8368,12 @@
           "name": "px",
           "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackPadding",
+            "original": "DS.StackPadding",
             "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8464,12 +8464,12 @@
           "name": "py",
           "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackPadding",
+            "original": "DS.StackPadding",
             "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8560,12 +8560,12 @@
           "name": "space",
           "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackSpace",
+            "original": "DS.StackSpace",
             "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8660,12 +8660,12 @@
           "name": "spaceColumn",
           "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackSpace",
+            "original": "DS.StackSpace",
             "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8760,12 +8760,12 @@
           "name": "spaceRow",
           "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
-            "original": "BalProps.BalStackSpace",
+            "original": "DS.StackSpace",
             "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -8894,7 +8894,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-switch.tsx",
+      "fileName": "switch.tsx",
       "tag": "bal-switch",
       "overview": "",
       "usage": {},
@@ -9018,7 +9018,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-tag.tsx",
+      "fileName": "tag.tsx",
       "tag": "bal-tag",
       "overview": "",
       "usage": {},
@@ -9075,12 +9075,12 @@
           "name": "color",
           "type": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTagColor",
+            "original": "DS.TagColor",
             "resolved": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9233,12 +9233,12 @@
           "name": "position",
           "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTagPlacement",
+            "original": "DS.TagPlacement",
             "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9273,12 +9273,12 @@
           "name": "shape",
           "type": "\"pill\" | \"square\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTagShape",
+            "original": "DS.TagShape",
             "resolved": "\"pill\" | \"square\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9309,12 +9309,12 @@
           "name": "size",
           "type": "\"large\" | \"medium\" | \"small\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTagSize",
+            "original": "DS.TagSize",
             "resolved": "\"large\" | \"medium\" | \"small\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9349,16 +9349,16 @@
       "methods": [],
       "events": [
         {
-          "event": "balCloseClick",
+          "event": "dsCloseClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalTagCloseClickDetail",
+            "original": "DS.TagCloseClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -9379,7 +9379,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-tag-group.tsx",
+      "fileName": "tag-group.tsx",
       "tag": "bal-tag-group",
       "overview": "",
       "usage": {},
@@ -9398,7 +9398,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-text.tsx",
+      "fileName": "text.tsx",
       "tag": "bal-text",
       "overview": "",
       "usage": {},
@@ -9413,12 +9413,12 @@
           "name": "align",
           "type": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTextAlign",
+            "original": "DS.TextAlign",
             "resolved": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9486,12 +9486,12 @@
           "name": "color",
           "type": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTextColor",
+            "original": "DS.TextColor",
             "resolved": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9772,12 +9772,12 @@
           "name": "size",
           "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTextSize",
+            "original": "DS.TextSize",
             "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"block\" | \"lead\" | \"lg\" | \"md\" | \"sm\" | \"small\" | \"xl\" | \"xs\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9855,12 +9855,12 @@
           "name": "space",
           "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
           "complexType": {
-            "original": "BalProps.BalTextSpace",
+            "original": "DS.TextSpace",
             "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -9941,7 +9941,7 @@
       "listeners": []
     },
     {
-      "fileName": "bal-toast.tsx",
+      "fileName": "toast.tsx",
       "tag": "bal-toast",
       "overview": "",
       "usage": {},
@@ -10051,12 +10051,12 @@
           "name": "actionTarget",
           "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
           "complexType": {
-            "original": "BalProps.BalButtonTarget",
+            "original": "DS.ButtonTarget",
             "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -10127,12 +10127,12 @@
           "name": "color",
           "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
           "complexType": {
-            "original": "BalProps.BalToastColor",
+            "original": "DS.ToastColor",
             "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
             "references": {
-              "BalProps": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalProps"
+                "id": "global::DS"
               }
             }
           },
@@ -10302,16 +10302,16 @@
       ],
       "events": [
         {
-          "event": "balActionClick",
+          "event": "dsActionClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalToastActionClickDetail",
+            "original": "DS.ToastActionClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -10321,16 +10321,16 @@
           "docsTags": []
         },
         {
-          "event": "balCloseClick",
+          "event": "dsCloseClick",
           "detail": "MouseEvent",
           "bubbles": true,
           "complexType": {
-            "original": "BalEvents.BalToastCloseClickDetail",
+            "original": "DS.ToastCloseClickDetail",
             "resolved": "MouseEvent",
             "references": {
-              "BalEvents": {
+              "DS": {
                 "location": "global",
-                "id": "global::BalEvents"
+                "id": "global::DS"
               }
             }
           },
@@ -10372,33 +10372,33 @@
     }
   ],
   "typeLibrary": {
-    "src/utils/config/index.ts::BalConfigState": {
+    "src/utils/config/index.ts::DsConfigState": {
       "declaration": "any",
       "docstring": "",
       "path": "src/utils/config/index.ts"
     },
-    "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertType": {
+    "src/components/alert/alert-container.interfaces.tsx::AlertType": {
       "declaration": "export type AlertType = 'toast' | 'snackbar'",
       "docstring": "",
-      "path": "src/components/bal-alert/bal-alert-container.interfaces.tsx"
+      "path": "src/components/alert/alert-container.interfaces.tsx"
     },
-    "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertContainerSize": {
+    "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
       "declaration": "export type AlertContainerSize = 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide'",
       "docstring": "",
-      "path": "src/components/bal-alert/bal-alert-container.interfaces.tsx"
+      "path": "src/components/alert/alert-container.interfaces.tsx"
     },
-    "src/components/bal-alert/bal-alert-container.interfaces.tsx::Alert": {
-      "declaration": "{\n  color?: AlertColors\n  heading?: string\n  message?: string\n  duration?: number | 'infinite'\n  closable: boolean\n  closeHandler: (id: string) => void\n  action?: string\n  actionIcon?: string\n  actionTarget?: BalProps.BalButtonTarget\n  actionHref?: string\n  actionHandler: (id: string) => void\n}",
+    "src/components/alert/alert-container.interfaces.tsx::Alert": {
+      "declaration": "{\n  color?: AlertColors\n  heading?: string\n  message?: string\n  duration?: number | 'infinite'\n  closable: boolean\n  closeHandler: (id: string) => void\n  action?: string\n  actionIcon?: string\n  actionTarget?: DS.ButtonTarget\n  actionHref?: string\n  actionHandler: (id: string) => void\n}",
       "docstring": "",
-      "path": "src/components/bal-alert/bal-alert-container.interfaces.tsx"
+      "path": "src/components/alert/alert-container.interfaces.tsx"
     },
-    "src/components/bal-alert/bal-alert-container.interfaces.tsx::AlertComponent": {
+    "src/components/alert/alert-container.interfaces.tsx::AlertComponent": {
       "declaration": "export type AlertComponent = Alert & {\n  alertId: string\n  visible: boolean\n}",
       "docstring": "",
-      "path": "src/components/bal-alert/bal-alert-container.interfaces.tsx"
+      "path": "src/components/alert/alert-container.interfaces.tsx"
     },
-    "src/utils/form.ts::BalAriaForm": {
-      "declaration": "export interface BalAriaForm {\n  controlId?: string\n  labelId?: string\n  messageId?: string\n}",
+    "src/utils/form.ts::AriaForm": {
+      "declaration": "export interface AriaForm {\n  controlId?: string\n  labelId?: string\n  messageId?: string\n}",
       "docstring": "",
       "path": "src/utils/form.ts"
     }

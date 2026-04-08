@@ -17,12 +17,12 @@ $host-selector: ('#heading');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(heading-color, inherit);
-  @include vars.local(heading-family, var(--bal-heading-family));
-  @include vars.local(heading-weight, var(--bal-heading-weight));
-  @include vars.local(heading-line-height, var(--bal-heading-line-height));
-  @include vars.local(heading-font-size, var(--bal-heading-1-size-device));
-  @include vars.local(heading-space, var(--bal-heading-1-space));
-  @include vars.local(heading-shadow, none); // var(--bal-heading-shadow)
+  @include vars.local(heading-family, var(--ds-heading-family));
+  @include vars.local(heading-weight, var(--ds-heading-weight));
+  @include vars.local(heading-line-height, var(--ds-heading-line-height));
+  @include vars.local(heading-font-size, var(--ds-heading-1-size-device));
+  @include vars.local(heading-space, var(--ds-heading-1-space));
+  @include vars.local(heading-shadow, none); // var(--ds-heading-shadow)
   @include vars.local(heading-text-align, inherit);
 }
 
@@ -58,12 +58,12 @@ $host-selector: ('#heading');
   b,
   strong,
   .is-bold {
-    font-weight: var(--bal-text-weight-bold);
+    font-weight: var(--ds-text-weight-bold);
   }
 
   @include hybrid.styles-only($use-host) {
     &.is-bold {
-      font-weight: var(--bal-text-weight-bold);
+      font-weight: var(--ds-text-weight-bold);
     }
 
     // alignments
@@ -112,7 +112,7 @@ $host-selector: ('#heading');
 // Shadow
 // --------------------------------
 @mixin shadow {
-  --mod-heading-shadow: var(--bal-heading-shadow);
+  --mod-heading-shadow: var(--ds-heading-shadow);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -129,9 +129,9 @@ $host-selector: ('#heading');
 // Subtitle
 // --------------------------------
 @mixin subtitle {
-  --mod-heading-family: var(--bal-heading-subtitle-family);
-  --mod-heading-weight: var(--bal-heading-subtitle-weight);
-  --mod-heading-line-height: var(--bal-heading-subtitle-line-height);
+  --mod-heading-family: var(--ds-heading-subtitle-family);
+  --mod-heading-weight: var(--ds-heading-subtitle-weight);
+  --mod-heading-line-height: var(--ds-heading-subtitle-line-height);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -153,7 +153,7 @@ $host-selector: ('#heading');
 $colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
 
 @mixin color($color) {
-  --mod-heading-color: var(--bal-heading-color-#{$color});
+  --mod-heading-color: var(--ds-heading-color-#{$color});
 }
 
 @each $color in $colors {
@@ -174,8 +174,8 @@ $colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
 // Sizes
 // --------------------------------
 @mixin size($level) {
-  --mod-heading-font-size: var(--bal-heading-#{$level}-size-device);
-  --mod-heading-space: var(--bal-heading-#{$level}-space);
+  --mod-heading-font-size: var(--ds-heading-#{$level}-size-device);
+  --mod-heading-space: var(--ds-heading-#{$level}-space);
 }
 
 $size-aliases: (

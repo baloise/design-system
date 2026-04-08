@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { ConfigObserver, ConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
+import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig } from '../../utils/config'
 import { raf, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
@@ -12,7 +12,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
   styleUrl: 'spinner.host.scss',
   shadow: true,
 })
-export class Spinner implements ComponentInterface, Loggable, BalConfigObserver {
+export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
   private currentRaf: number | undefined
@@ -120,7 +120,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
    */
 
   @ListenToConfig()
-  configChanged(state: BalConfigState): void {
+  configChanged(state: DsConfigState): void {
     this.animated = state.animated
     if (state.animated === false) {
       this.destroy()
@@ -183,7 +183,7 @@ export class Spinner implements ComponentInterface, Loggable, BalConfigObserver 
         return resolve()
       } else {
         rOnLoad(async () => {
-          import(/* @vite-ignore */ './bal-spinner.animation')
+          import(/* @vite-ignore */ './spinner.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()

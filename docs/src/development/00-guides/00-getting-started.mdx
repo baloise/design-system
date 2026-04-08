@@ -117,17 +117,17 @@ However, if the application requires all styles regardless of payload size, simp
 
 ### Standalone
 
-Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
+Use the `provideDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
 
 **app.config.ts**
 
 ```typescript
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 
-import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@baloise/ds-angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBaloiseDesignSystem()],
+  providers: [provideDesignSystem()],
 }
 ```
 
@@ -172,16 +172,16 @@ Add the `bal-app` to your `app.component.html` root element.
 
 ### Module Based
 
-Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
+Import the `DesignSystemModule.forRoot()` into your angular root module.
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
+For each angular sub module you need to import the `DesignSystemModule` to provide the components and the value accessors.
 
 **app.module.ts**
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BalButton, Heading, LayoutBundle, provideBaloiseDesignSystem } from '@baloise/ds-angular'
+import { BalButton, Heading, LayoutBundle, provideDesignSystem } from '@baloise/ds-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -189,7 +189,7 @@ import { AppComponent } from './app.component'
   imports: [
     BrowserModule,
     // Provide all components and value accessors to the app module.
-    provideBaloiseDesignSystem(),
+    provideDesignSystem(),
     ...BalLayoutBundle,
     BalHeading,
     BalButton,
@@ -260,9 +260,9 @@ Add the `bal-app` to your root element.
     <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/all.css" />
     <script
       type="module"
-      src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+      src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"
     ></script>
-    <script nomodule src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+    <script nomodule src="node_modules/@baloise/ds-core/dist/design-system/design-system.js"></script>
   </head>
   <body>
     <bal-app>
@@ -298,11 +298,11 @@ Add the following 4 references to your `<head></head>`
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
 ></script>
 ```
 
@@ -319,11 +319,11 @@ Here is how you can integrate it into your project.
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
     ></script>
     <script
       nomodule
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"
+      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
     ></script>
   </head>
   <body>
@@ -421,7 +421,7 @@ Add the `BalApp` to your root element.
 ```typescript
 import './App.scss'
 import {
-  useBaloiseDesignSystem,
+  useDesignSystem,
   BalApp,
   BalHeading,
   Button,
@@ -429,7 +429,7 @@ import {
 } from '@baloise/ds-react'
 
 function App() {
-  useBaloiseDesignSystem()
+  useDesignSystem()
 
   return (
     <BalApp className="has-sticky-footer">

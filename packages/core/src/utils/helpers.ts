@@ -1,7 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from './browser'
-import { Config, useBalConfig } from './config'
+import { DsConfig, useDsConfig } from './config'
 import {
   IconClock,
   IconClose,
@@ -265,7 +265,7 @@ const transitionEnd = (
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    const config = useBalConfig()
+    const config = useDsConfig()
     if (config) {
       const ael = config._ael
       if (ael) {
@@ -281,7 +281,7 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    const config = useBalConfig()
+    const config = useDsConfig()
     if (config) {
       const rel = config._rel
       if (rel) {
@@ -341,7 +341,7 @@ export const isChildOfEventTarget = async (
   }
 }
 
-export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
+export const waitForDesignSystem = async (el: any | null, _config?: DsConfig): Promise<void> => {
   const config: any = {
     animated: false,
     icons: {

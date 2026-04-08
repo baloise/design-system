@@ -51,14 +51,14 @@ Tokens are synced with Figma via the `$extensions.com.figma.variableId` field in
 ### CSS Variable Naming Convention
 
 ```
---bal-[category]-[name]
+--ds-[category]-[name]
 ```
 
 Examples:
-- `--bal-space-lg`
-- `--bal-color-primary`
-- `--bal-radius-base`
-- `--bal-text-size-base`
+- `--ds-space-lg`
+- `--ds-color-primary`
+- `--ds-radius-base`
+- `--ds-text-size-base`
 
 ## Dynamic Lookup Flow
 
@@ -69,7 +69,7 @@ When a developer asks for a token:
 3. **Return** the result in this format:
 
 > **Token:** `space-lg`  
-> **CSS:** `var(--bal-space-lg)` → `1.5rem`
+> **CSS:** `var(--ds-space-lg)` → `1.5rem`
 
 If multiple tokens could fit, list the top 2-3 with brief notes on when to use each.
 

@@ -11,16 +11,16 @@
 
 :host {
   @include vars.base(icon);
-  @include vars.local(icon-size, var(--bal-icon-size-base));
-  @include vars.local(icon-inner-size, var(--bal-icon-size-base));
+  @include vars.local(icon-size, var(--ds-icon-size-base));
+  @include vars.local(icon-inner-size, var(--ds-icon-size-base));
   @include vars.local(icon-inner-mt, 0);
-  @include vars.local(icon-color, var(--bal-icon-color-primary));
-  @include vars.local(icon-shape, var(--bal-icon-color-primary));
+  @include vars.local(icon-color, var(--ds-icon-color-primary));
+  @include vars.local(icon-shape, var(--ds-icon-color-primary));
 
-  @include vars.local(icon-tile-size, var(--bal-icon-tile-size-base-mobile));
-  @include vars.local(icon-tile-size-tablet, var(--bal-icon-tile-size-base-tablet));
-  @include vars.local(icon-tile-color-background, var(--bal-icon-tile-color-purple));
-  @include vars.local(icon-tile-radius, var(--bal-icon-tile-radius));
+  @include vars.local(icon-tile-size, var(--ds-icon-tile-size-base-mobile));
+  @include vars.local(icon-tile-size-tablet, var(--ds-icon-tile-size-base-tablet));
+  @include vars.local(icon-tile-color-background, var(--ds-icon-tile-color-purple));
+  @include vars.local(icon-tile-radius, var(--ds-icon-tile-radius));
 }
 
 /**
@@ -120,52 +120,52 @@ $icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl');
 
 @each $size in $icon-sizes {
   :host(.is-#{$size}:not(.is-tile, .has-shape-circle, .has-shape-triangle)) {
-    --mod-icon-size: var(--bal-icon-size-#{$size});
-    --mod-icon-inner-size: var(--bal-icon-size-#{$size});
+    --mod-icon-size: var(--ds-icon-size-#{$size});
+    --mod-icon-inner-size: var(--ds-icon-size-#{$size});
   }
 }
 
 //
 // Tile Sizes
 :host(.is-tile.is-lg) {
-  --mod-icon-tile-size: var(--bal-icon-tile-size-lg-mobile);
-  --mod-icon-tile-size-tablet: var(--bal-icon-tile-size-lg-tablet);
+  --mod-icon-tile-size: var(--ds-icon-tile-size-lg-mobile);
+  --mod-icon-tile-size-tablet: var(--ds-icon-tile-size-lg-tablet);
 }
 
 :host(.is-tile.is-xl) {
-  --mod-icon-tile-size: var(--bal-icon-tile-size-xl-mobile);
-  --mod-icon-tile-size-tablet: var(--bal-icon-tile-size-xl-tablet);
+  --mod-icon-tile-size: var(--ds-icon-tile-size-xl-mobile);
+  --mod-icon-tile-size-tablet: var(--ds-icon-tile-size-xl-tablet);
 }
 
 //
 // Colors
 :host(.is-inverted) {
-  --mod-icon-color: var(--bal-icon-color-white);
+  --mod-icon-color: var(--ds-icon-color-white);
 }
 
 :host(.is-disabled) {
-  --mod-icon-color: var(--bal-icon-color-disabled);
+  --mod-icon-color: var(--ds-icon-color-disabled);
 }
 
 $icon-colors: ('primary', 'primary-light', 'info', 'success', 'danger', 'warning', 'white', 'grey');
 
 @each $color in $icon-colors {
   :host(.is-#{$color}) {
-    --mod-icon-color: var(--bal-icon-color-#{$color});
-    --mod-icon-shape: var(--bal-color-#{$color}-5);
+    --mod-icon-color: var(--ds-icon-color-#{$color});
+    --mod-icon-shape: var(--ds-color-#{$color}-5);
   }
 }
 
 :host(.is-tile-green) {
-  --mod-icon-tile-color-background: var(--bal-icon-tile-color-green);
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-green);
 }
 
 :host(.is-tile-red) {
-  --mod-icon-tile-color-background: var(--bal-icon-tile-color-red);
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-red);
 }
 
 :host(.is-tile-yellow) {
-  --mod-icon-tile-color-background: var(--bal-icon-tile-color-yellow);
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-yellow);
 }
 
 //
@@ -183,15 +183,15 @@ $shape-sizes: ('md', 'lg', 'xl', '2xl');
 
 :host(.has-shape-circle),
 :host(.has-shape-triangle) {
-  --mod-icon-size: var(--bal-icon-size-base);
-  --mod-icon-inner-size: calc(var(--bal-icon-size-base) * 0.6);
+  --mod-icon-size: var(--ds-icon-size-base);
+  --mod-icon-inner-size: calc(var(--ds-icon-size-base) * 0.6);
 }
 
 @each $size in $shape-sizes {
   :host(.has-shape-circle.is-#{$size}),
   :host(.has-shape-triangle.is-#{$size}) {
-    --mod-icon-size: var(--bal-icon-size-#{$size});
-    --mod-icon-inner-size: calc(var(--bal-icon-size-#{$size}) * 0.6);
+    --mod-icon-size: var(--ds-icon-size-#{$size});
+    --mod-icon-inner-size: calc(var(--ds-icon-size-#{$size}) * 0.6);
   }
 }
 

@@ -1,17 +1,17 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
-  BalConfigObserver,
-  BalConfigState,
-  Language,
-  Region,
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
   defaultConfig,
   ListenToConfig,
 } from '../../utils/config'
 import { ElementStateInfo } from '../../utils/element-states'
-import { AriaForm, AriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { AriaForm, AriaFormLinking, defaultDsAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { i18nBalLabel } from './label.i18n'
+import { I18nDsLabel } from './label.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
@@ -19,12 +19,12 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
   styleUrl: './label.host.scss',
   shadow: true,
 })
-export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {
+export class Label implements ComponentInterface, Loggable, DsConfigObserver, ElementStateInfo, AriaFormLinking {
   @Element() el!: HTMLStencilElement
 
-  @State() language: BalLanguage = defaultConfig.language
-  @State() region: BalRegion = defaultConfig.region
-  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+  @State() ariaForm: AriaForm = defaultDsAriaForm
 
   log!: LogInstance
 
@@ -108,7 +108,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    */
   @Method()
   @ListenToConfig()
-  async configChanged(state: BalConfigState): Promise<void> {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
   }
@@ -122,7 +122,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    * @internal define config for the component
    */
   @Method()
-  async setAriaForm(ariaForm: BalAriaForm) {
+  async setAriaForm(ariaForm: AriaForm) {
     this.ariaForm = { ...ariaForm }
   }
 
@@ -136,7 +136,7 @@ export class Label implements ComponentInterface, Loggable, BalConfigObserver, B
    */
 
   render() {
-    const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
+    const suffix = this.required === false ? I18nDsLabel[this.language].optional || '' : ''
     const id = this.ariaForm.labelId || this.htmlId
     const htmlFor = this.htmlFor || this.ariaForm.controlId
 

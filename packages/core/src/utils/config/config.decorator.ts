@@ -1,9 +1,9 @@
 import { ComponentInterface } from '@stencil/core'
-import { ConfigObserver, attachComponentToConfig, detachComponentFromConfig } from '.'
+import { DsConfigObserver, attachComponentToConfig, detachComponentFromConfig } from '.'
 
 export function ListenToConfig() {
   return function (
-    target: ComponentInterface & BalConfigObserver,
+    target: ComponentInterface & DsConfigObserver,
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {

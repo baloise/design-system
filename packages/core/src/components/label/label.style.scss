@@ -18,10 +18,10 @@ $host-selector: ('#label');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(label-color, inherit);
-  @include vars.local(label-family, var(--bal-label-family));
-  @include vars.local(label-weight, var(--bal-label-weight));
-  @include vars.local(label-line-height, var(--bal-label-line-height));
-  @include vars.local(label-size, var(--bal-label-size-base-device));
+  @include vars.local(label-family, var(--ds-label-family));
+  @include vars.local(label-weight, var(--ds-label-weight));
+  @include vars.local(label-line-height, var(--ds-label-line-height));
+  @include vars.local(label-size, var(--ds-label-size-base-device));
 }
 
 /**
@@ -90,7 +90,7 @@ $host-selector: ('#label');
 // --------------------------------
 
 @mixin family() {
-  --mod-label-family: var(--bal-text-family-heading);
+  --mod-label-family: var(--ds-text-family-heading);
 }
 
 $sizes-for-heading: ('lg', 'xl', '2xl', '3xl');
@@ -116,7 +116,7 @@ $sizes-for-heading: ('lg', 'xl', '2xl', '3xl');
 // --------------------------------
 
 @mixin size($level) {
-  --mod-label-size: var(--bal-label-size-#{$level}-device);
+  --mod-label-size: var(--ds-label-size-#{$level}-device);
 }
 
 $size-aliases: (
@@ -153,61 +153,61 @@ $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
 
 @include hybrid.styles($css-selector, $use-host) {
   &.is-success {
-    --mod-label-color: var(--bal-label-color-success);
+    --mod-label-color: var(--ds-label-color-success);
   }
 
   &.is-warning {
-    --mod-label-color: var(--bal-label-color-warning);
+    --mod-label-color: var(--ds-label-color-warning);
   }
 
   &.is-danger {
-    --mod-label-color: var(--bal-label-color-danger);
+    --mod-label-color: var(--ds-label-color-danger);
   }
 
   &.is-hovered {
-    --mod-label-color: var(--bal-label-color-base-hover);
+    --mod-label-color: var(--ds-label-color-base-hover);
   }
 
   &.is-pressed {
-    --mod-label-color: var(--bal-label-color-base-active);
+    --mod-label-color: var(--ds-label-color-base-active);
   }
 
   &.is-danger.is-hovered {
-    --mod-label-color: var(--bal-label-color-danger-hover);
+    --mod-label-color: var(--ds-label-color-danger-hover);
   }
 
   &.is-danger.is-pressed {
-    --mod-label-color: var(--bal-label-color-danger-active);
+    --mod-label-color: var(--ds-label-color-danger-active);
   }
 
   &.is-disabled {
-    --mod-label-color: var(--bal-label-color-disabled) !important;
+    --mod-label-color: var(--ds-label-color-disabled) !important;
   }
 }
 
 @include hybrid.host($use-host) {
   :host(.is-hovered) {
-    --mod-label-color: var(--bal-label-color-base-hover);
+    --mod-label-color: var(--ds-label-color-base-hover);
   }
 
   :host(.is-pressed) {
-    --mod-label-color: var(--bal-label-color-base-active);
+    --mod-label-color: var(--ds-label-color-base-active);
   }
 
   @include attr.has('valid') {
-    --mod-label-color: var(--bal-label-color-success);
+    --mod-label-color: var(--ds-label-color-success);
   }
 
   @include attr.has('invalid') {
-    --mod-label-color: var(--bal-label-color-danger);
+    --mod-label-color: var(--ds-label-color-danger);
   }
 
   :host(.is-hovered) {
-    --mod-label-color: var(--bal-label-color-base-hover);
+    --mod-label-color: var(--ds-label-color-base-hover);
   }
 
   :host(.is-pressed) {
-    --mod-label-color: var(--bal-label-color-base-active);
+    --mod-label-color: var(--ds-label-color-base-active);
   }
 
   // @include attr.hasMany(
@@ -216,7 +216,7 @@ $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
   //     'hovered': true,
   //   )
   // ) {
-  //   --mod-label-color: var(--bal-label-color-danger-hover);
+  //   --mod-label-color: var(--ds-label-color-danger-hover);
   // }
 
   // @include attr.hasMany(
@@ -225,10 +225,10 @@ $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
   //     'pressed': true,
   //   )
   // ) {
-  //   --mod-label-color: var(--bal-label-color-danger-active);
+  //   --mod-label-color: var(--ds-label-color-danger-active);
   // }
 
   @include attr.has('disabled') {
-    --mod-label-color: var(--bal-label-color-disabled);
+    --mod-label-color: var(--ds-label-color-disabled);
   }
 }

@@ -1,9 +1,9 @@
 import { SingleSubject } from '../types/signal'
-import { BalKeyboardInfo, KeyboardListenerFn, KeyboardObserver } from './keyboard.interfaces'
+import { KeyboardInfo, KeyboardListenerFn, KeyboardObserver } from './keyboard.interfaces'
 import { KeyboardListener } from './keyboard.listener'
 
-export class KeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKeyboardInfo> {
-  private listener = new BalKeyboardListener<BalKeyboardListenerFn>()
+export class KeyboardSubject extends SingleSubject<KeyboardObserver, KeyboardInfo> {
+  private listener = new KeyboardListener<KeyboardListenerFn>()
 
   constructor() {
     super((observer, data) => {
@@ -13,7 +13,7 @@ export class KeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKeybo
     })
   }
 
-  override attach(observer: BalKeyboardObserver): void {
+  override attach(observer: KeyboardObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))

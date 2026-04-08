@@ -1,9 +1,9 @@
 import { SingleSubject } from '../types/signal'
-import { BalFocusInfo, FocusListenerFn, FocusObserver } from './focus.interfaces'
+import { FocusInfo, FocusListenerFn, FocusObserver } from './focus.interfaces'
 import { FocusListener } from './focus.listener'
 
-export class FocusSubject extends SingleSubject<BalFocusObserver, BalFocusInfo> {
-  private listener = new BalFocusListener<BalFocusListenerFn>()
+export class FocusSubject extends SingleSubject<FocusObserver, FocusInfo> {
+  private listener = new FocusListener<FocusListenerFn>()
 
   constructor() {
     super((observer, data) => {
@@ -23,7 +23,7 @@ export class FocusSubject extends SingleSubject<BalFocusObserver, BalFocusInfo> 
     })
   }
 
-  override attach(observer: BalFocusObserver): void {
+  override attach(observer: FocusObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))

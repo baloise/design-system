@@ -1,14 +1,16 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use './app.vars' as *;
 
-.bal-app {
+.ds-app {
   position: relative;
 }
+
 .lcp-wait {
   opacity: 0;
   visibility: hidden;
   display: none;
 }
+
 .lcp-ready {
   .lcp-wait {
     opacity: inherit;

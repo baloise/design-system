@@ -3,7 +3,7 @@ import { SingleSubject } from '../types/signal'
 import { WindowResizeObserver } from './window-resize.interfaces'
 import { dsBrowser } from '../browser'
 
-export class WindowResizeSubject extends SingleSubject<BalWindowResizeObserver> {
+export class WindowResizeSubject extends SingleSubject<WindowResizeObserver> {
   private listener = new WindowResizeListener()
 
   constructor() {
@@ -12,7 +12,7 @@ export class WindowResizeSubject extends SingleSubject<BalWindowResizeObserver> 
     })
   }
 
-  override attach(observer: BalWindowResizeObserver): void {
+  override attach(observer: WindowResizeObserver): void {
     super.attach(observer)
     if (dsBrowser.hasWindow) {
       this.listener.connect(window)

@@ -89,9 +89,9 @@ docs/src/development/00-guides/theming/theming.md
 docs/public/assets/fonts/
 docs/public/assets/data/
 docs/public/assets/download/
-docs/public/assets/css/baloise-design-system.min.css
+docs/public/assets/css/design-system.min.css
 docs/public/assets/css/design-system-table.css
-docs/public/assets/css/baloise-design-system.min.css
+docs/public/assets/css/design-system.min.css
 docs/public/build/
 docs/public/assets/images/map-markers
 docs/public/assets/images/brand-icons

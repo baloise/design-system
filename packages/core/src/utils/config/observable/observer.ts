@@ -1,5 +1,5 @@
-import { ConfigState } from '../config.types'
+import { DsConfigState } from '../config.types'
 
-export interface BalConfigObserver {
-  configChanged(state: BalConfigState): void
+export interface DsConfigObserver {
+  configChanged(state: DsConfigState): void
 }

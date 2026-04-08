@@ -11,12 +11,12 @@
 
 :host {
   @include vars.base(spinner);
-  @include vars.local(spinner-size, var(--bal-spinner-size));
+  @include vars.local(spinner-size, var(--ds-spinner-size));
 
-  @include vars.local(spinner-circle-size, var(--bal-spinner-circle-size));
-  @include vars.local(spinner-circle-border-width, var(--bal-spinner-circle-border-width));
-  @include vars.local(spinner-circle-color-border-background, var(--bal-spinner-circle-color-background));
-  @include vars.local(spinner-circle-color-border-progress, var(--bal-spinner-circle-color-progress));
+  @include vars.local(spinner-circle-size, var(--ds-spinner-circle-size));
+  @include vars.local(spinner-circle-border-width, var(--ds-spinner-circle-border-width));
+  @include vars.local(spinner-circle-color-border-background, var(--ds-spinner-circle-color-background));
+  @include vars.local(spinner-circle-color-border-progress, var(--ds-spinner-circle-color-progress));
 }
 
 /**
@@ -69,8 +69,8 @@
 }
 
 :host([color='white']) {
-  --mod-spinner-circle-color-border-background: var(--bal-spinner-circle-color-inverted-background);
-  --mod-spinner-circle-color-border-progress: var(--bal-spinner-circle-color-progress-inverted);
+  --mod-spinner-circle-color-border-background: var(--ds-spinner-circle-color-inverted-background);
+  --mod-spinner-circle-color-border-progress: var(--ds-spinner-circle-color-progress-inverted);
 }
 
 /**

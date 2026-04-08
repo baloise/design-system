@@ -1,17 +1,17 @@
-import type { BalBreakpoints } from './breakpoints.interfaces'
+import type { DsBreakpoints } from './breakpoints.interfaces'
 import { dsBrowser } from '../browser'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
-export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
+export type DsBreakpoint = keyof typeof BREAKPOINTS_MAP
 
-export class BreakpointsUtil {
+export class DsBreakpointsUtil {
   private win?: any
-  private breakpoints: BalBreakpoint[] = []
+  private breakpoints: DsBreakpoint[] = []
 
   constructor() {
     if (dsBrowser.hasWindow) {
       this.win = window
-      this.win.BaloiseDesignSystem = this.win.BaloiseDesignSystem || {}
+      this.win.DesignSystem = this.win.DesignSystem || {}
       this.detect()
     }
   }
@@ -70,7 +70,7 @@ export class BreakpointsUtil {
    * @param breakpoint
    * @returns boolean: True if breakpoint is active
    */
-  public includes(breakpoint: BalBreakpoint): boolean {
+  public includes(breakpoint: DsBreakpoint): boolean {
     this.detect()
     return !!this.breakpoints?.includes(breakpoint)
   }
@@ -79,11 +79,11 @@ export class BreakpointsUtil {
    * Detects breakpoints and updates state
    * @returns breakpoints: list of breakpoints which are active
    */
-  public detect(): BalBreakpoint[] {
+  public detect(): DsBreakpoint[] {
     if (this.win) {
-      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as BalBreakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
-      this.win.BaloiseDesignSystem.breakpoints = this.breakpoints
-      this.win.BaloiseDesignSystem.platforms = this.breakpoints
+      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as DsBreakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
+      this.win.DesignSystem.breakpoints = this.breakpoints
+      this.win.DesignSystem.platforms = this.breakpoints
     }
     return this.breakpoints
   }
@@ -92,7 +92,7 @@ export class BreakpointsUtil {
    * Turns the breakpoints array to a object.
    * @returns Object with all the breakpoints
    */
-  public toObject(): BalBreakpoints {
+  public toObject(): DsBreakpoints {
     return {
       mobile: this.breakpoints.includes('mobile'),
       tablet: this.breakpoints.includes('tablet'),
@@ -105,4 +105,4 @@ export class BreakpointsUtil {
   }
 }
 
-export const dsBreakpoints = /*@__PURE__*/ new BreakpointsUtil()
+export const dsBreakpoints = /*@__PURE__*/ new DsBreakpointsUtil()

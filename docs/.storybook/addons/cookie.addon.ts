@@ -1,4 +1,4 @@
-const LOCAL_KEY = 'BaloiseDesignSystemCookieAccepted'
+const LOCAL_KEY = 'DesignSystemCookieAccepted'
 
 const rIC = (callback: () => void) => {
   if ('requestIdleCallback' in window) {
@@ -17,7 +17,7 @@ const showCookieAlert = () => {
   <strong>Cookie</strong>
   <span>
     We are using cookies to provide you with the best possible user experience and to be
-  able to advise you in an optimal way. Further details can be found in ourData <a href="https://www.baloise.ch/en/about-us/information/cookie-policy.html" target="_blank">Privacy Statement</a>.
+  able to advise you in an optimal way. Further details can be found in ourData <a href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/privacy.html" target="_blank">Privacy Statement</a>.
   </span>
   `
 

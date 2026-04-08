@@ -1,4 +1,4 @@
-import { Item, List, expect, test } from '@baloise/ds-playwright'
+import { DsItem, DsList, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-list', async ({ page }) => {
@@ -8,7 +8,7 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const dsList = new List(page.locator('bal-list'))
+    const dsList = new DsList(page.locator('bal-list'))
 
     await dsList.assertToBeVisible()
   })
@@ -20,7 +20,7 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const dsItem = new Item(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('bal-item'))
 
     await dsItem.assertToBeVisible()
   })
@@ -32,7 +32,7 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const dsItem = new Item(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('bal-item'))
     const spy = await dsItem.el.spyOnEvent('dsClick')
 
     await dsItem.clickItem()
@@ -49,7 +49,7 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const dsItem = new Item(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('bal-item'))
     const spy = await dsItem.el.spyOnEvent('dsAccordionToggle')
 
     await dsItem.clickItem()
@@ -66,7 +66,7 @@ test.describe('component', () => {
       </bal-list>
     `)
 
-    const dsItem = new Item(page.locator('bal-item'))
+    const dsItem = new DsItem(page.locator('bal-item'))
 
     await dsItem.accordion.assertToBeClosed()
 

@@ -8,12 +8,12 @@ This document tracks recent token migration work in the SCSS sources of `package
 
 Legacy primitive color tokens based on the `light-blue` palette were replaced by the new `sky` palette primitives defined in `base.tokens.css`.
 
-- Old pattern: `--bal-color-light-blue-[1-6]`
-- New pattern: `--bal-color-sky-[1-6]`
+- Old pattern: `--ds-color-light-blue-[1-6]`
+- New pattern: `--ds-color-sky-[1-6]`
 
-All remaining SCSS usages of `--bal-color-light-blue-*` in `packages/core` and `packages/styles` were migrated to the corresponding `--bal-color-sky-*` tokens in earlier work.
+All remaining SCSS usages of `--ds-color-light-blue-*` in `packages/core` and `packages/styles` were migrated to the corresponding `--ds-color-sky-*` tokens in earlier work.
 
-> Note: Many of these usages are still _primitive_ color tokens (e.g. background, border, text). Where appropriate, these can later be refactored to use semantic tokens such as `--bal-background-color-*`, `--bal-border-color-*`, or `--bal-text-color-*` once design decisions are made.
+> Note: Many of these usages are still _primitive_ color tokens (e.g. background, border, text). Where appropriate, these can later be refactored to use semantic tokens such as `--ds-background-color-*`, `--ds-border-color-*`, or `--ds-text-color-*` once design decisions are made.
 
 ---
 
@@ -23,9 +23,9 @@ All remaining SCSS usages of `--bal-color-light-blue-*` in `packages/core` and `
 
 The canonical spacing tokens are defined in `packages/tokens/dist/css/base.tokens.css` as:
 
-- Global: `--bal-space-none`, `--bal-space-auto`, `--bal-space-2xs`, `--bal-space-xs`, `--bal-space-sm`, `--bal-space-base`, `--bal-space-md`, `--bal-space-lg`, `--bal-space-xl`, `--bal-space-2xl`, `--bal-space-3xl`, `--bal-space-4xl`
-- Per-device: `--bal-space-<size>-mobile|tablet|desktop`
-- Aggregated: `--bal-space-<size>-device`
+- Global: `--ds-space-none`, `--ds-space-auto`, `--ds-space-2xs`, `--ds-space-xs`, `--ds-space-sm`, `--ds-space-base`, `--ds-space-md`, `--ds-space-lg`, `--ds-space-xl`, `--ds-space-2xl`, `--ds-space-3xl`, `--ds-space-4xl`
+- Per-device: `--ds-space-<size>-mobile|tablet|desktop`
+- Aggregated: `--ds-space-<size>-device`
 
 ### 2.2 Legacy → new spacing name mapping
 
@@ -47,8 +47,8 @@ Legacy spacing names found in SCSS were mapped to the new t‑shirt scale as fol
 
 This mapping is applied consistently to:
 
-- Global tokens, e.g. `var(--bal-space-normal)` → `var(--bal-space-base)`
-- Device tokens, e.g. `var(--bal-space-large-desktop)` → `var(--bal-space-lg-desktop)`
+- Global tokens, e.g. `var(--ds-space-normal)` → `var(--ds-space-base)`
+- Device tokens, e.g. `var(--ds-space-large-desktop)` → `var(--ds-space-lg-desktop)`
 
 ### 2.3 Updated SCSS files
 
@@ -57,28 +57,28 @@ The following SCSS files were updated to use the new t‑shirt spacing tokens (w
 - [packages/styles/sass/themes/compact.scss](packages/styles/sass/themes/compact.scss)
 
   - Compact theme aliases now reference canonical device-specific spacing tokens:
-    - `--bal-space-xx-small-tablet: var(--bal-space-2xs-tablet);`
-    - `--bal-space-xx-small-desktop: var(--bal-space-2xs-desktop);`
-    - `--bal-space-x-small-tablet: var(--bal-space-xs-tablet);`
-    - `--bal-space-small-tablet: var(--bal-space-sm-tablet);`
-    - `--bal-space-normal-tablet: var(--bal-space-base-tablet);`
-    - `--bal-space-medium-tablet: var(--bal-space-md-tablet);`
-    - `--bal-space-large-tablet: var(--bal-space-lg-tablet);`
-    - `--bal-space-x-large-tablet: var(--bal-space-xl-tablet);`
-    - `--bal-space-xx-large-tablet: var(--bal-space-2xl-tablet);`
-    - `--bal-space-xxx-large-tablet: var(--bal-space-3xl-tablet);`
-    - `--bal-space-xxxx-large-tablet: var(--bal-space-4xl-tablet);`
-    - `--bal-space-xxxxx-large-tablet: var(--bal-space-4xl-tablet);` (collapsed to max)
+    - `--ds-space-xx-small-tablet: var(--ds-space-2xs-tablet);`
+    - `--ds-space-xx-small-desktop: var(--ds-space-2xs-desktop);`
+    - `--ds-space-x-small-tablet: var(--ds-space-xs-tablet);`
+    - `--ds-space-small-tablet: var(--ds-space-sm-tablet);`
+    - `--ds-space-normal-tablet: var(--ds-space-base-tablet);`
+    - `--ds-space-medium-tablet: var(--ds-space-md-tablet);`
+    - `--ds-space-large-tablet: var(--ds-space-lg-tablet);`
+    - `--ds-space-x-large-tablet: var(--ds-space-xl-tablet);`
+    - `--ds-space-xx-large-tablet: var(--ds-space-2xl-tablet);`
+    - `--ds-space-xxx-large-tablet: var(--ds-space-3xl-tablet);`
+    - `--ds-space-xxxx-large-tablet: var(--ds-space-4xl-tablet);`
+    - `--ds-space-xxxxx-large-tablet: var(--ds-space-4xl-tablet);` (collapsed to max)
     - And the corresponding `*-desktop` variants.
 
 - [packages/styles/src/core/vars/list.vars.scss](packages/styles/src/core/vars/list.vars.scss)
 
-  - `--bal-description-list-row-gap: var(--bal-space-xx-small);` → `var(--bal-space-2xs);`
-  - `--bal-description-list-column-gap: var(--bal-space-normal);` → `var(--bal-space-base);`
+  - `--ds-description-list-row-gap: var(--ds-space-xx-small);` → `var(--ds-space-2xs);`
+  - `--ds-description-list-column-gap: var(--ds-space-normal);` → `var(--ds-space-base);`
 
 - [packages/styles/sass/structure.scss](packages/styles/sass/structure.scss)
 
-  - Paragraph spacing updated from `var(--bal-space-normal)` to `var(--bal-space-base)`.
+  - Paragraph spacing updated from `var(--ds-space-normal)` to `var(--ds-space-base)`.
 
 - [packages/core/src/components/bal-stage/bal-stage.scss](packages/core/src/components/bal-stage/bal-stage.scss)
 
@@ -94,7 +94,7 @@ The following SCSS files were updated to use the new t‑shirt spacing tokens (w
 
 - [packages/core/src/components/bal-option/bal-option.vars.scss](packages/core/src/components/bal-option/bal-option.vars.scss)
 
-  - `--bal-option-padding-x: var(--bal-space-small);` → `var(--bal-space-sm);`.
+  - `--ds-option-padding-x: var(--ds-space-small);` → `var(--ds-space-sm);`.
 
 - [packages/core/src/components/bal-popover/bal-popover.scss](packages/core/src/components/bal-popover/bal-popover.scss)
 
@@ -107,7 +107,7 @@ The following SCSS files were updated to use the new t‑shirt spacing tokens (w
 - [packages/core/src/components/bal-radio/bal-radio.scss](packages/core/src/components/bal-radio/bal-radio.scss)
 
   - Button gap: `x-small` → `xs`.
-  - Grid layout calculations now use `var(--bal-space-base)` instead of `var(--bal-space-normal)`.
+  - Grid layout calculations now use `var(--ds-space-base)` instead of `var(--ds-space-normal)`.
 
 - [packages/core/src/components/bal-radio/bal-radio-group/bal-radio-group.scss](packages/core/src/components/bal-radio/bal-radio-group/bal-radio-group.scss)
 
@@ -133,10 +133,10 @@ The following SCSS files were updated to use the new t‑shirt spacing tokens (w
 
 After these changes:
 
-- All `var(--bal-space-*)` usages in `packages/styles` and `packages/core` refer to canonical t‑shirt tokens (`2xs`, `xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`) or their device variants.
-- The only remaining occurrences of legacy words like `xx-small`, `normal`, `large`, etc. are in **custom property names** inside the compact theme (e.g. `--bal-space-xx-small-tablet`), which now correctly reference canonical tokens on the right-hand side.
+- All `var(--ds-space-*)` usages in `packages/styles` and `packages/core` refer to canonical t‑shirt tokens (`2xs`, `xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`) or their device variants.
+- The only remaining occurrences of legacy words like `xx-small`, `normal`, `large`, etc. are in **custom property names** inside the compact theme (e.g. `--ds-space-xx-small-tablet`), which now correctly reference canonical tokens on the right-hand side.
 
-If you want to fully align naming, these compact theme alias variables can later be renamed (e.g. `--bal-space-xx-small-tablet` → `--bal-space-2xs-tablet`), but this would be a breaking change for any consumers that reference those CSS custom properties directly.
+If you want to fully align naming, these compact theme alias variables can later be renamed (e.g. `--ds-space-xx-small-tablet` → `--ds-space-2xs-tablet`), but this would be a breaking change for any consumers that reference those CSS custom properties directly.
 
 ---
 

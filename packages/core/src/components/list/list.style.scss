@@ -28,11 +28,11 @@ ol.list li details {
   @include vars.local(list-item-gap, 1rem);
   @include vars.local(list-item-space, 0.5rem);
 
-  @include vars.local(list-item-title-family, var(--bal-font-family-heading));
-  @include vars.local(list-item-text-family, var(--bal-font-family-body));
+  @include vars.local(list-item-title-family, var(--ds-font-family-heading));
+  @include vars.local(list-item-text-family, var(--ds-font-family-body));
   @include vars.local(list-item-color, inherit);
-  @include vars.local(list-item-border-color, var(--bal-list-item-border-color));
-  @include vars.local(list-item-border-width, var(--bal-list-item-border-width, 2px));
+  @include vars.local(list-item-border-color, var(--ds-list-item-border-color));
+  @include vars.local(list-item-border-width, var(--ds-list-item-border-width, 2px));
 }
 
 /**
@@ -110,8 +110,8 @@ ul.list li .item {
   }
 
   .item-content + bal-icon {
-    --icon-size: var(--bal-icon-size-xs);
-    --icon-inner-size: var(--bal-icon-size-xs);
+    --icon-size: var(--ds-icon-size-xs);
+    --icon-inner-size: var(--ds-icon-size-xs);
   }
 
   //
@@ -125,16 +125,16 @@ ul.list li .item {
 
   .item-title {
     font-family: var(--_list-item-title-family);
-    font-weight: var(--bal-text-weight-bold);
-    font-size: var(--bal-heading-5-size-device);
+    font-weight: var(--ds-text-weight-bold);
+    font-size: var(--ds-heading-5-size-device);
     margin: 0;
   }
 
   .item-text,
   .item-subtitle {
     font-family: var(--_list-item-text-family);
-    font-weight: var(--bal-text-weight-regular);
-    font-size: var(--bal-text-size-sm-device);
+    font-weight: var(--ds-text-weight-regular);
+    font-size: var(--ds-text-size-sm-device);
     margin: 0;
   }
 
@@ -162,8 +162,8 @@ ul.list li button.item {
   hyphens: auto;
   overflow-wrap: break-word;
   font-family: var(--_list-item-title-family);
-  font-weight: var(--bal-text-weight-bold);
-  color: var(--bal-link-color-base);
+  font-weight: var(--ds-text-weight-bold);
+  color: var(--ds-link-color-base);
 
   outline: none;
   text-decoration: none;
@@ -175,22 +175,22 @@ ul.list li button.item {
   @include hover {
     &:hover,
     &.is-hovered {
-      --mod-list-item-border-color: var(--bal-link-color-base-hover);
+      --mod-list-item-border-color: var(--ds-link-color-base-hover);
 
-      color: var(--bal-link-color-base-hover);
+      color: var(--ds-link-color-base-hover);
       bal-icon {
-        --icon-color: var(--bal-link-color-base-hover);
+        --icon-color: var(--ds-link-color-base-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    --mod-list-item-border-color: var(--bal-link-color-base-active);
+    --mod-list-item-border-color: var(--ds-link-color-base-active);
 
-    color: var(--bal-link-color-base-active);
+    color: var(--ds-link-color-base-active);
     bal-icon {
-      --icon-color: var(--bal-link-color-base-active);
+      --icon-color: var(--ds-link-color-base-active);
     }
   }
 
@@ -207,7 +207,7 @@ ul.list li button.item {
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--bal-radius-base);
+        border-radius: var(--ds-radius-base);
       }
     }
   }
@@ -255,10 +255,10 @@ ol.list li .item.is-disabled {
   pointer-events: none !important;
   cursor: default !important;
 
-  color: var(--bal-list-item-disabled);
+  color: var(--ds-list-item-disabled);
 
   bal-icon {
-    --icon-color: var(--bal-list-item-disabled);
+    --icon-color: var(--ds-list-item-disabled);
   }
 }
 
@@ -268,6 +268,6 @@ ol.list li .item.is-disabled {
   */
 
 bal-item [slot='content'] {
-  font-size: var(--bal-text-size-sm);
+  font-size: var(--ds-text-size-sm);
   @include typography.content(false);
 }

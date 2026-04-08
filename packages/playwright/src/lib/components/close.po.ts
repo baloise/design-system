@@ -1,7 +1,7 @@
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class Close extends PageObject {
+export class DsClose extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }

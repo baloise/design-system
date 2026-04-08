@@ -17,7 +17,7 @@ const preview: Preview = {
       toc: {
         contentsSelector: '.sbdocs-content',
         headingSelector: 'h2, h3',
-        ignoreSelector: '.docs-story, .title, .subtitle, .bal-heading__text',
+        ignoreSelector: '.docs-story, .title, .subtitle',
         title: '', //'On this page',
         disable: false,
       },

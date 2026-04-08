@@ -1,17 +1,17 @@
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
-import { Close } from './close.po'
+import { DsClose } from './close.po'
 import { E2ELocator } from '../page/utils'
 
-export class Snackbar extends PageObject {
-  public readonly close: BalClose
+export class DsSnackbar extends PageObject {
+  public readonly close: DsClose
   public readonly heading: Locator
   public readonly expandButton: Locator
   public readonly actions: Locator
 
   constructor(el: E2ELocator) {
     super(el)
-    this.close = new Close(el.locator('bal-close') as E2ELocator)
+    this.close = new DsClose(el.locator('bal-close') as E2ELocator)
     this.heading = el.locator('h2')
     this.expandButton = el.locator('#mobile-button')
     this.actions = el.locator('#action').locator('bal-button')

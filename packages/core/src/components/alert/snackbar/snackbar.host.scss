@@ -11,25 +11,25 @@
 
 :host {
   @include vars.base(snackbar);
-  @include vars.local(snackbar-shadow, var(--bal-shadow-box-base));
-  @include vars.local(snackbar-radius, var(--bal-snackbar-radius));
-  @include vars.local(snackbar-color-background, var(--bal-snackbar-base-background));
-  @include vars.local(snackbar-color-text, var(--bal-snackbar-base-text));
-  @include vars.local(snackbar-icon, var(--bal-snackbar-base-icon));
+  @include vars.local(snackbar-shadow, var(--ds-shadow-box-base));
+  @include vars.local(snackbar-radius, var(--ds-snackbar-radius));
+  @include vars.local(snackbar-color-background, var(--ds-snackbar-base-background));
+  @include vars.local(snackbar-color-text, var(--ds-snackbar-base-text));
+  @include vars.local(snackbar-icon, var(--ds-snackbar-base-icon));
 
   @include vars.local(snackbar-progress-duration, 0);
-  @include vars.local(snackbar-progress-bar, var(--bal-snackbar-base-progress-bar));
-  @include vars.local(snackbar-progress-background, var(--bal-snackbar-base-progress-background));
+  @include vars.local(snackbar-progress-bar, var(--ds-snackbar-base-progress-bar));
+  @include vars.local(snackbar-progress-background, var(--ds-snackbar-base-progress-background));
 
-  @include vars.local(snackbar-heading-family, var(--bal-text-family-heading));
-  @include vars.local(snackbar-heading-weight, var(--bal-text-weight-bold));
-  @include vars.local(snackbar-heading-size, var(--bal-text-size-base-device));
-  @include vars.local(snackbar-heading-line-height, var(--bal-text-line-height-heading));
+  @include vars.local(snackbar-heading-family, var(--ds-text-family-heading));
+  @include vars.local(snackbar-heading-weight, var(--ds-text-weight-bold));
+  @include vars.local(snackbar-heading-size, var(--ds-text-size-base-device));
+  @include vars.local(snackbar-heading-line-height, var(--ds-text-line-height-heading));
 
-  @include vars.local(snackbar-content-family, var(--bal-text-family-body));
+  @include vars.local(snackbar-content-family, var(--ds-text-family-body));
   @include vars.local(snackbar-content-weight, inherit);
-  @include vars.local(snackbar-content-size, var(--bal-text-size-sm-device));
-  @include vars.local(snackbar-content-line-height, var(--bal-text-line-height-body));
+  @include vars.local(snackbar-content-size, var(--ds-text-size-sm-device));
+  @include vars.local(snackbar-content-line-height, var(--ds-text-line-height-body));
 
   @include vars.local(snackbar-gap, 0.125rem);
   @include vars.local(snackbar-p, 1rem);
@@ -128,7 +128,7 @@
     bal-button,
     .button {
       --button-mt: 1rem;
-      --button-font-size: var(--bal-button-size-sm);
+      --button-font-size: var(--ds-button-size-sm);
       --button-min-height: 2rem;
       --button-min-width: 2rem;
       --button-padding-inline: 0.75rem;
@@ -139,7 +139,7 @@
   ::slotted(bal-close),
   ::slotted(bal-button-group) {
     --button-mt: 1rem;
-    --button-font-size: var(--bal-button-size-sm);
+    --button-font-size: var(--ds-button-size-sm);
     --button-min-height: 2rem;
     --button-min-width: 2rem;
     --button-padding-inline: 0.75rem;
@@ -249,12 +249,12 @@ $colors: ('info', 'success', 'warning', 'danger');
 
 @each $color in $colors {
   :host(.is-#{$color}) {
-    --mod-snackbar-color-text: var(--bal-snackbar-#{$color}-text);
-    --mod-snackbar-color-border: var(--bal-snackbar-#{$color}-border);
-    --mod-snackbar-color-background: var(--bal-snackbar-#{$color}-background);
-    --mod-snackbar-icon: var(--bal-snackbar-#{$color}-icon);
-    --mod-snackbar-progress-bar: var(--bal-snackbar-#{$color}-progress-bar);
-    --mod-snackbar-progress-background: var(--bal-snackbar-#{$color}-progress-background);
+    --mod-snackbar-color-text: var(--ds-snackbar-#{$color}-text);
+    --mod-snackbar-color-border: var(--ds-snackbar-#{$color}-border);
+    --mod-snackbar-color-background: var(--ds-snackbar-#{$color}-background);
+    --mod-snackbar-icon: var(--ds-snackbar-#{$color}-icon);
+    --mod-snackbar-progress-bar: var(--ds-snackbar-#{$color}-progress-bar);
+    --mod-snackbar-progress-background: var(--ds-snackbar-#{$color}-progress-background);
   }
 }
 

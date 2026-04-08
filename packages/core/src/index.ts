@@ -3,27 +3,27 @@
  */
 export {
   attachToConfig,
-  BalConfig,
-  BalConfigObserver,
-  BalConfigState,
-  BalGermanLanguage,
-  BalIcons,
-  BalLanguage,
-  BalLuxembourgInternationalLanguage,
-  BalLuxembourgLanguage,
-  BalPlatformConfig,
-  BalRegion,
-  BalSwissLanguage,
+  DsConfig,
+  DsConfigObserver,
+  DsConfigState,
+  DsGermanLanguage,
+  DsIcons,
+  DsLanguage,
+  DsLuxembourgInternationalLanguage,
+  DsLuxembourgLanguage,
+  DsPlatformConfig,
+  DsRegion,
+  DsSwissLanguage,
   defaultConfig,
   detachFromConfig,
-  onBalConfigChange,
-  setupConfig,
-  updateBalAllowedLanguages,
-  updateBalAnimated,
-  updateBalIcons,
-  updateBalLanguage,
-  updateBalRegion,
-  useBalConfig,
+  onDsConfigChange,
+  setupDsConfig,
+  updateDsAllowedLanguages,
+  updateDsAnimated,
+  updateDsIcons,
+  updateDsLanguage,
+  updateDsRegion,
+  useDsConfig,
 } from './utils/config'
 
 /**
@@ -60,18 +60,18 @@ export * from './components/label/label.i18n'
 // export { newBalOptionValue, newBalSingleOptionValue } from './components/select/utils/option.util'
 // export { newBalStepOption } from './components/steps/step.util'
 // export { newBalTabOption } from './components/tabs/tab.util'
-export { initializeBaloiseDesignSystem as initialize, initializeBaloiseDesignSystem } from './initialize'
+export { initializeDesignSystem as initialize, initializeDesignSystem } from './initialize'
 export {
-  BalBreakpointObserver,
   dsBreakpoints,
-  BalBreakpoints,
   dsBreakpointSubject,
-  BalBreakpointSubject,
-  BalBreakpointsUtil,
+  DsBreakpointObserver,
+  DsBreakpoints,
+  DsBreakpointSubject,
+  DsBreakpointsUtil,
 } from './utils/breakpoints'
 export { dsBrowser } from './utils/browser'
-export { BalDate } from './utils/date'
-export { dsDevice, BalDevice } from './utils/device'
+export { DsDate } from './utils/date'
+export { dsDevice, DsDevice } from './utils/device'
 // export { newBalOption } from './utils/dropdown/option'
 export { scrollToFirstInvalidField } from './utils/form'
 export {
@@ -88,15 +88,14 @@ export {
   waitForDesignSystem,
   waitOnLoadEventCallback,
 } from './utils/helpers'
-// export { INVALID_VALUE } from './utils/mask/mask-util'
 export {
-  BalOrientationInfo,
-  BalOrientationObserver,
+  DsOrientationInfo,
+  DsOrientationObserver,
   dsOrientationSubject,
-  BalOrientationSubject,
+  DsOrientationSubject,
 } from './utils/orientation'
-export { BalScrollHandler } from './utils/scroll'
-export { BalSwipeInfo, BalSwipeObserver, BalSwipeSubject } from './utils/swipe'
+export { ScrollHandler } from './utils/scroll'
+export { DsSwipeInfo, DsSwipeObserver, DsSwipeSubject } from './utils/swipe'
 
 /**
  * Controllers

@@ -17,7 +17,7 @@
 }
 
 :host(.is-toast) {
-  z-index: var(--bal-z-index-toast);
+  z-index: var(--ds-z-index-toast);
 
   top: var(--alert-container-top);
   left: 0;
@@ -45,7 +45,7 @@
 }
 
 :host(.is-snackbar) {
-  z-index: calc(var(--bal-z-index-toast) - 1);
+  z-index: calc(var(--ds-z-index-toast) - 1);
 
   right: 1rem;
   bottom: 1rem;

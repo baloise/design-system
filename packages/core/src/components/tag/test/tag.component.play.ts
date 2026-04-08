@@ -1,4 +1,4 @@
-import { Tag, expect, test } from '@baloise/ds-playwright'
+import { DsTag, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {
@@ -8,14 +8,14 @@ test.describe('component', () => {
   })
 
   test('should have a default slot', async ({ page }) => {
-    const dsTag = new Tag(page.locator('bal-tag'))
+    const dsTag = new DsTag(page.locator('bal-tag'))
 
     await dsTag.assertToBeVisible()
     await dsTag.assertToContainText('My tag')
   })
 
   test('should fire dsCloseClick event', async ({ page }) => {
-    const dsTag = new Tag(page.locator('bal-tag'))
+    const dsTag = new DsTag(page.locator('bal-tag'))
     const spy = await dsTag.el.spyOnEvent('dsCloseClick')
 
     await dsTag.clickClose()

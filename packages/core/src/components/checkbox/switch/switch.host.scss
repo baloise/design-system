@@ -13,19 +13,19 @@
 :host {
   @include vars.base(switch);
 
-  @include vars.local(switch-size, var(--bal-icon-size-base));
-  @include vars.local(switch-radius, var(--bal-radius-rounded));
+  @include vars.local(switch-size, var(--ds-icon-size-base));
+  @include vars.local(switch-radius, var(--ds-radius-rounded));
 
-  @include vars.local(switch-color-background, var(--bal-color-primary-1));
-  @include vars.local(switch-color-toggle, var(--bal-color-primary-5));
+  @include vars.local(switch-color-background, var(--ds-color-primary-1));
+  @include vars.local(switch-color-toggle, var(--ds-color-primary-5));
   @include vars.local(switch-color-icon, transparent);
 
-  @include vars.local(switch-color-background-hover, var(--bal-color-primary-1));
-  @include vars.local(switch-color-toggle-hover, var(--bal-color-sky-5));
+  @include vars.local(switch-color-background-hover, var(--ds-color-primary-1));
+  @include vars.local(switch-color-toggle-hover, var(--ds-color-sky-5));
   @include vars.local(switch-color-icon-hover, transparent);
 
-  @include vars.local(switch-color-background-active, var(--bal-color-primary-1));
-  @include vars.local(switch-color-toggle-active, var(--bal-color-primary-6));
+  @include vars.local(switch-color-background-active, var(--ds-color-primary-1));
+  @include vars.local(switch-color-toggle-active, var(--ds-color-primary-6));
   @include vars.local(switch-color-icon-active, transparent);
 }
 
@@ -101,17 +101,17 @@
 // Checked
 
 @include attr.has(checked) {
-  --mod-switch-color-icon: var(--bal-color-white);
-  --mod-switch-color-icon-hover: var(--bal-color-white);
-  --mod-switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--ds-color-white);
+  --mod-switch-color-icon-hover: var(--ds-color-white);
+  --mod-switch-color-icon-active: var(--ds-color-white);
 
-  --mod-switch-color-background: var(--bal-color-success-4);
-  --mod-switch-color-background-hover: var(--bal-color-success-5);
-  --mod-switch-color-background-active: var(--bal-color-success-6);
+  --mod-switch-color-background: var(--ds-color-success-4);
+  --mod-switch-color-background-hover: var(--ds-color-success-5);
+  --mod-switch-color-background-active: var(--ds-color-success-6);
 
-  --mod-switch-color-toggle: var(--bal-color-white);
-  --mod-switch-color-toggle-hover: var(--bal-color-white);
-  --mod-switch-color-toggle-active: var(--bal-color-white);
+  --mod-switch-color-toggle: var(--ds-color-white);
+  --mod-switch-color-toggle-hover: var(--ds-color-white);
+  --mod-switch-color-toggle-active: var(--ds-color-white);
 
   #toggle {
     transform: translateX(100%);
@@ -125,13 +125,13 @@
   */
 
 @include attr.has(invalid) {
-  --mod-switch-color-background: var(--bal-color-danger-1);
-  --mod-switch-color-background-hover: var(--bal-color-danger-1);
-  --mod-switch-color-background-active: var(--bal-color-danger-1);
+  --mod-switch-color-background: var(--ds-color-danger-1);
+  --mod-switch-color-background-hover: var(--ds-color-danger-1);
+  --mod-switch-color-background-active: var(--ds-color-danger-1);
 
-  --mod-switch-color-toggle: var(--bal-color-danger-4);
-  --mod-switch-color-toggle-hover: var(--bal-color-danger-5);
-  --mod-switch-color-toggle-active: var(--bal-color-danger-6);
+  --mod-switch-color-toggle: var(--ds-color-danger-4);
+  --mod-switch-color-toggle-hover: var(--ds-color-danger-5);
+  --mod-switch-color-toggle-active: var(--ds-color-danger-6);
 }
 
 @include attr.hasMany(
@@ -140,17 +140,17 @@
     checked: true,
   )
 ) {
-  --mod-switch-color-icon: var(--bal-color-white);
-  --mod-switch-color-icon-hover: var(--bal-color-white);
-  --mod-switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--ds-color-white);
+  --mod-switch-color-icon-hover: var(--ds-color-white);
+  --mod-switch-color-icon-active: var(--ds-color-white);
 
-  --mod-switch-color-background: var(--bal-color-danger-4);
-  --mod-switch-color-background-hover: var(--bal-color-danger-5);
-  --mod-switch-color-background-active: var(--bal-color-danger-6);
+  --mod-switch-color-background: var(--ds-color-danger-4);
+  --mod-switch-color-background-hover: var(--ds-color-danger-5);
+  --mod-switch-color-background-active: var(--ds-color-danger-6);
 
-  --mod-switch-color-toggle: var(--bal-color-white);
-  --mod-switch-color-toggle-hover: var(--bal-color-white);
-  --mod-switch-color-toggle-active: var(--bal-color-white);
+  --mod-switch-color-toggle: var(--ds-color-white);
+  --mod-switch-color-toggle-hover: var(--ds-color-white);
+  --mod-switch-color-toggle-active: var(--ds-color-white);
 
   #toggle {
     transform: translateX(100%);
@@ -161,13 +161,13 @@
   cursor: default;
   pointer-events: none;
 
-  --mod-switch-color-background: var(--bal-color-grey-3);
-  --mod-switch-color-background-hover: var(--bal-color-grey-3);
-  --mod-switch-color-background-active: var(--bal-color-grey-3);
+  --mod-switch-color-background: var(--ds-color-grey-3);
+  --mod-switch-color-background-hover: var(--ds-color-grey-3);
+  --mod-switch-color-background-active: var(--ds-color-grey-3);
 
-  --mod-switch-color-toggle: var(--bal-color-grey-4);
-  --mod-switch-color-toggle-hover: var(--bal-color-grey-4);
-  --mod-switch-color-toggle-active: var(--bal-color-grey-4);
+  --mod-switch-color-toggle: var(--ds-color-grey-4);
+  --mod-switch-color-toggle-hover: var(--ds-color-grey-4);
+  --mod-switch-color-toggle-active: var(--ds-color-grey-4);
 }
 
 @include attr.hasMany(
@@ -176,17 +176,17 @@
     checked: true,
   )
 ) {
-  --mod-switch-color-icon: var(--bal-color-white);
-  --mod-switch-color-icon-hover: var(--bal-color-white);
-  --mod-switch-color-icon-active: var(--bal-color-white);
+  --mod-switch-color-icon: var(--ds-color-white);
+  --mod-switch-color-icon-hover: var(--ds-color-white);
+  --mod-switch-color-icon-active: var(--ds-color-white);
 
-  --mod-switch-color-background: var(--bal-color-grey-4);
-  --mod-switch-color-background-hover: var(--bal-color-grey-4);
-  --mod-switch-color-background-active: var(--bal-color-grey-4);
+  --mod-switch-color-background: var(--ds-color-grey-4);
+  --mod-switch-color-background-hover: var(--ds-color-grey-4);
+  --mod-switch-color-background-active: var(--ds-color-grey-4);
 
-  --mod-switch-color-toggle: var(--bal-color-white);
-  --mod-switch-color-toggle-hover: var(--bal-color-white);
-  --mod-switch-color-toggle-active: var(--bal-color-white);
+  --mod-switch-color-toggle: var(--ds-color-white);
+  --mod-switch-color-toggle-hover: var(--ds-color-white);
+  --mod-switch-color-toggle-active: var(--ds-color-white);
 
   #toggle {
     transform: translateX(100%);

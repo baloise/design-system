@@ -5,12 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ConfigState } from "./utils/config";
+import { DsConfigState } from "./utils/config";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { AriaForm } from "./utils/form";
-export { BalConfigState } from "./utils/config";
+export { DsConfigState } from "./utils/config";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { BalAriaForm } from "./utils/form";
+export { AriaForm } from "./utils/form";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -22,7 +22,7 @@ export namespace Components {
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
          */
-        "buttonColor": BalProps.BalButtonColor;
+        "buttonColor": DS.ButtonColor;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -47,8 +47,8 @@ export namespace Components {
         /**
           * The size of the button. Only applies if `button` is `true`.
          */
-        "buttonSize"?: BalProps.BalButtonSize;
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "buttonSize"?: DS.ButtonSize;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -56,11 +56,11 @@ export namespace Components {
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "marker"?: BalProps.BalAccordionMarker;
+        "marker"?: DS.AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "markerPosition"?: BalProps.BalAccordionMarkerPosition;
+        "markerPosition"?: DS.AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -70,7 +70,7 @@ export namespace Components {
           * The heading level of the summary
           * @default 'h3'
          */
-        "summaryLevel": BalProps.BalAccordionSummaryLevel;
+        "summaryLevel": DS.AccordionSummaryLevel;
         /**
           * If `true` the summary is styled as a title.
          */
@@ -78,7 +78,7 @@ export namespace Components {
         /**
           * The visual heading level of the summary.
          */
-        "summaryVisualLevel"?: BalProps.BalAccordionSummaryLevel;
+        "summaryVisualLevel"?: DS.AccordionSummaryLevel;
     }
     interface BalAlertContainer {
         "addAlert": (alert: Alert) => Promise<string>;
@@ -111,7 +111,7 @@ export namespace Components {
           * Define the color for the badge.
           * @default ''
          */
-        "color": BalProps.BalBadgeColor;
+        "color": DS.BadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -120,7 +120,7 @@ export namespace Components {
           * If `true` the badge is added to the top right corner of the card.
           * @default ''
          */
-        "position": BalProps.BalBadgePosition;
+        "position": DS.BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -130,7 +130,7 @@ export namespace Components {
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
          */
-        "size": BalProps.BalBadgeSize;
+        "size": DS.BadgeSize;
     }
     interface BalButton {
         /**
@@ -162,7 +162,7 @@ export namespace Components {
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
-        "color": BalProps.BalButtonColor;
+        "color": DS.ButtonColor;
         /**
           * If `true` the button has a dashed border.
           * @default false
@@ -181,7 +181,7 @@ export namespace Components {
           * The type of button.
           * @default 'button'
          */
-        "elementType": BalProps.BalButtonElementType;
+        "elementType": DS.ButtonElementType;
         /**
           * If `true` the button has a full width
           * @default false
@@ -218,7 +218,7 @@ export namespace Components {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading": BalProps.BalButtonSpinner;
+        "loading": DS.ButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
          */
@@ -251,7 +251,7 @@ export namespace Components {
           * Size of the button
           * @default undefined
          */
-        "size": BalProps.BalButtonSize;
+        "size": DS.ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -261,7 +261,7 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target": BalProps.BalButtonTarget;
+        "target": DS.ButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -271,12 +271,12 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: BalProps.BalButtonGroupAlignment;
+        "align"?: DS.ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
-        "direction": BalProps.BalButtonGroupDirection;
+        "direction": DS.ButtonGroupDirection;
         /**
           * If `true` the buttons will expand to fill the available space on mobile.
           * @default false
@@ -292,7 +292,7 @@ export namespace Components {
         /**
           * Defines the text alignment of the card content.
          */
-        "align"?: BalProps.BalCardAlignment;
+        "align"?: DS.CardAlignment;
         /**
           * @deprecated If `true` a light blue border is added to the card.
           * @default false
@@ -306,7 +306,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color"?: BalProps.BalCardColor;
+        "color"?: DS.CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -344,7 +344,7 @@ export namespace Components {
         /**
           * Defines the space of the card content.
          */
-        "space"?: BalProps.BalCardSpace;
+        "space"?: DS.CardSpace;
         /**
           * If `true` the card loses its border radius.
           * @default false
@@ -360,7 +360,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: BalProps.BalCardActionsAlignment;
+        "align"?: DS.CardActionsAlignment;
     }
     interface BalCardContent {
     }
@@ -368,7 +368,7 @@ export namespace Components {
         /**
           * @default 'row'
          */
-        "direction": BalProps.BalCardHeaderDirection;
+        "direction": DS.CardHeaderDirection;
     }
     interface BalCardSubtitle {
         /**
@@ -380,7 +380,7 @@ export namespace Components {
           * If `true` the card text color becomes white.
           * @default ''
          */
-        "color": BalProps.BalHeadingColor;
+        "color": DS.HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -397,11 +397,11 @@ export namespace Components {
           * The actual heading level used in the HTML markup.
           * @default 'h3'
          */
-        "level": BalProps.BalHeadingLevel;
+        "level": DS.HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
+        "visualLevel"?: DS.HeadingVisualLevel;
     }
     interface BalCheck {
         /**
@@ -442,8 +442,8 @@ export namespace Components {
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
-        "buttonColor"?: BalProps.BalButtonColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "buttonColor"?: DS.ButtonColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
           * @default false
@@ -457,37 +457,37 @@ export namespace Components {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: BalProps.BalCloseSize;
+        "size"?: DS.CloseSize;
     }
     interface BalContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
-        "align"?: BalProps.BalContentAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
+        "align"?: DS.ContentAlignment;
+        "alignment"?: DS.StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
          */
-        "direction"?: BalProps.BalStackDirection;
+        "direction"?: DS.StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: BalProps.BalStackLayout;
+        "layout"?: DS.StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space"?: BalProps.BalContentSpace;
+        "space"?: DS.ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
          */
-        "textAlign"?: BalProps.BalContentTextAlignment;
+        "textAlign"?: DS.ContentTextAlignment;
     }
     interface BalDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
          */
-        "color": BalProps.BalDividerColor;
+        "color": DS.DividerColor;
         /**
           * Defines if the separator line is dashed or solid. Default is solid.
           * @default false
@@ -497,12 +497,12 @@ export namespace Components {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
          */
-        "layout": BalProps.BalDividerLayout;
+        "layout": DS.DividerLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
           * @default 'none'
          */
-        "space": BalProps.BalDividerSpace;
+        "space": DS.DividerSpace;
     }
     interface BalDocApp {
         /**
@@ -541,12 +541,12 @@ export namespace Components {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "autoLevel"?: BalProps.BalHeadingVisualLevel;
+        "autoLevel"?: DS.HeadingVisualLevel;
         /**
           * The theme type of the toast.
           * @default ''
          */
-        "color": BalProps.BalHeadingColor;
+        "color": DS.HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -556,7 +556,7 @@ export namespace Components {
           * The actual heading level used in the HTML markup.
           * @default 'h1'
          */
-        "level": BalProps.BalHeadingLevel;
+        "level": DS.HeadingLevel;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
@@ -579,14 +579,14 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
+        "visualLevel"?: DS.HeadingVisualLevel;
     }
     interface BalIcon {
         /**
           * The theme type of the button.
          */
-        "color"?: BalProps.BalIconColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "color"?: DS.IconColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -619,11 +619,11 @@ export namespace Components {
         /**
           * If `true` the icon is displayed in a circle with a background color.
          */
-        "shape"?: BalProps.BalIconShape;
+        "shape"?: DS.IconShape;
         /**
           * Defines the size of the icon.
          */
-        "size": BalProps.BalIconSize;
+        "size": DS.IconSize;
         /**
           * Svg content.
          */
@@ -637,7 +637,7 @@ export namespace Components {
           * If `true` the icon acts as a tile with a background color. Default is purple
           * @default 'purple'
          */
-        "tileColor": BalProps.BalIconTileColor;
+        "tileColor": DS.IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -652,11 +652,11 @@ export namespace Components {
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "accordionMarker"?: BalProps.BalAccordionMarker;
+        "accordionMarker"?: DS.AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "accordionMarkerPosition"?: BalProps.BalAccordionMarkerPosition;
+        "accordionMarkerPosition"?: DS.AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -694,14 +694,14 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target": BalProps.BalButtonTarget;
+        "target": DS.ButtonTarget;
         /**
           * @default 'default'
          */
         "variant": 'link' | 'button' | 'accordion' | 'default';
     }
     interface BalLabel {
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -740,11 +740,11 @@ export namespace Components {
           * @default true
          */
         "required": boolean;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        "setAriaForm": (ariaForm: AriaForm) => Promise<void>;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size"?: BalProps.BalLabelSize;
+        "size"?: DS.LabelSize;
         /**
           * If `true` the component gets a valid green style.
           * @default false
@@ -767,17 +767,17 @@ export namespace Components {
           * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
-        "brand": BalProps.BalLogoBrand;
+        "brand": DS.LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
          */
-        "color": BalProps.BalLogoColor;
+        "color": DS.LogoColor;
         /**
           * Size of the logo svg
           * @default ''
          */
-        "size": BalProps.BalLogoSize;
+        "size": DS.LogoSize;
     }
     interface BalNotification {
         /**
@@ -801,7 +801,7 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalNotificationColor;
+        "color"?: DS.NotificationColor;
         /**
           * Defines the heading of the notification.
          */
@@ -814,24 +814,24 @@ export namespace Components {
         /**
           * Defines the size of the notification, small, medium or large.
          */
-        "size"?: BalProps.BalNotificationSize;
+        "size"?: DS.NotificationSize;
     }
     interface BalShape {
         /**
           * The shape color
           * @default 'green'
          */
-        "color": BalProps.BalShapeColor;
+        "color": DS.ShapeColor;
         /**
           * The shape rotation
           * @default '0'
          */
-        "rotation": BalProps.BalShapeRotation;
+        "rotation": DS.ShapeRotation;
         /**
           * The shape variation
           * @default '1'
          */
-        "variation": BalProps.BalShapeVariation;
+        "variation": DS.ShapeVariation;
     }
     interface BalSnackbar {
         /**
@@ -854,7 +854,7 @@ export namespace Components {
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget": BalProps.BalButtonTarget;
+        "actionTarget": DS.ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -875,7 +875,7 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalSnackbarColor;
+        "color"?: DS.SnackbarColor;
         /**
           * Defines the heading of the notification.
          */
@@ -902,7 +902,7 @@ export namespace Components {
           * Defines the color of the spinner.
           * @default 'blue'
          */
-        "color": BalProps.BalSpinnerColor;
+        "color": DS.SpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
           * @default false
@@ -917,7 +917,7 @@ export namespace Components {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
          */
-        "size": BalProps.BalSpinnerSize;
+        "size": DS.SpinnerSize;
         /**
           * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
@@ -927,19 +927,19 @@ export namespace Components {
           * Defines the look of the spinner
           * @default 'logo'
          */
-        "variation": BalProps.BalSpinnerVariation;
+        "variation": DS.SpinnerVariation;
     }
     interface BalStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "align"?: BalProps.BalStackAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
+        "align"?: DS.StackAlignment;
+        "alignment"?: DS.StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default 'column'
          */
-        "direction": BalProps.BalStackDirection;
+        "direction": DS.StackDirection;
         /**
           * Defines the width of the stack to be exactly the with of the content.
           * @default false
@@ -948,31 +948,31 @@ export namespace Components {
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: BalProps.BalStackLayout;
+        "layout"?: DS.StackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "p"?: BalProps.BalStackPadding;
+        "p"?: DS.StackPadding;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "px"?: BalProps.BalStackPadding;
+        "px"?: DS.StackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
          */
-        "py"?: BalProps.BalStackPadding;
+        "py"?: DS.StackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space"?: BalProps.BalStackSpace;
+        "space"?: DS.StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceColumn"?: BalProps.BalStackSpace;
+        "spaceColumn"?: DS.StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceRow"?: BalProps.BalStackSpace;
+        "spaceRow"?: DS.StackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
           * @default false
@@ -1013,7 +1013,7 @@ export namespace Components {
         /**
           * The theme type of the tag.
          */
-        "color"?: BalProps.BalTagColor;
+        "color"?: DS.TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1027,15 +1027,15 @@ export namespace Components {
         /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
          */
-        "position"?: BalProps.BalTagPlacement;
+        "position"?: DS.TagPlacement;
         /**
           * The shape of the tag element like square or pill
          */
-        "shape"?: BalProps.BalTagShape;
+        "shape"?: DS.TagShape;
         /**
           * The size of the tag element
          */
-        "size"?: BalProps.BalTagSize;
+        "size"?: DS.TagSize;
     }
     interface BalTagGroup {
     }
@@ -1043,7 +1043,7 @@ export namespace Components {
         /**
           * If `true` the component gets a invalid style.
          */
-        "align"?: BalProps.BalTextAlign;
+        "align"?: DS.TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -1052,7 +1052,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color"?: BalProps.BalTextColor;
+        "color"?: DS.TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1099,11 +1099,11 @@ export namespace Components {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: BalProps.BalTextSize;
+        "size"?: DS.TextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: BalProps.BalTextSpace;
+        "space"?: DS.TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -1131,7 +1131,7 @@ export namespace Components {
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget": BalProps.BalButtonTarget;
+        "actionTarget": DS.ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -1152,12 +1152,12 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalToastColor;
-        "configChanged": (state: BalConfigState) => Promise<void>;
+        "color"?: DS.ToastColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * @default 0
          */
-        "duration": BalProps.BalToastDuration;
+        "duration": DS.ToastDuration;
         /**
           * Defines the heading of the notification.
          */
@@ -1214,9 +1214,9 @@ export interface BalToastCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBalAccordionElementEventMap {
-        "balToggle": BalEvents.BalAccordionToggleDetail;
-        "balOpened": BalEvents.BalAccordionToggleDetail;
-        "balClosed": BalEvents.BalAccordionToggleDetail;
+        "dsToggle": DS.AccordionToggleDetail;
+        "dsOpened": DS.AccordionToggleDetail;
+        "dsClosed": DS.AccordionToggleDetail;
     }
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1239,7 +1239,7 @@ declare global {
         new (): HTMLBalAlertContainerElement;
     };
     interface HTMLBalAppElementEventMap {
-        "balAppReady": void;
+        "dsAppReady": void;
     }
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1262,11 +1262,11 @@ declare global {
         new (): HTMLBalBadgeElement;
     };
     interface HTMLBalButtonElementEventMap {
-        "balClick": BalEvents.BalButtonClickDetail;
-        "balNavigate": BalEvents.BalButtonNavigateDetail;
-        "balFocus": BalEvents.BalButtonFocusDetail;
-        "balBlur": BalEvents.BalButtonBlurDetail;
-        "balDidRender": BalEvents.BalButtonDidRenderDetail;
+        "dsClick": DS.ButtonClickDetail;
+        "dsNavigate": DS.ButtonNavigateDetail;
+        "dsFocus": DS.ButtonFocusDetail;
+        "dsBlur": DS.ButtonBlurDetail;
+        "dsDidRender": DS.ButtonDidRenderDetail;
     }
     interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1367,10 +1367,10 @@ declare global {
         new (): HTMLBalIconElement;
     };
     interface HTMLBalItemElementEventMap {
-        "balClick": BalEvents.BalButtonClickDetail;
-        "balAccordionToggle": BalEvents.BalAccordionToggleDetail;
-        "balAccordionOpened": BalEvents.BalAccordionToggleDetail;
-        "balAccordionClosed": BalEvents.BalAccordionToggleDetail;
+        "dsClick": DS.ButtonClickDetail;
+        "dsAccordionToggle": DS.AccordionToggleDetail;
+        "dsAccordionOpened": DS.AccordionToggleDetail;
+        "dsAccordionClosed": DS.AccordionToggleDetail;
     }
     interface HTMLBalItemElement extends Components.BalItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalItemElementEventMap>(type: K, listener: (this: HTMLBalItemElement, ev: BalItemCustomEvent<HTMLBalItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1405,8 +1405,8 @@ declare global {
         new (): HTMLBalLogoElement;
     };
     interface HTMLBalNotificationElementEventMap {
-        "balCloseClick": BalEvents.BalNotificationCloseClickDetail;
-        "balDidLoad": void;
+        "dsCloseClick": DS.NotificationCloseClickDetail;
+        "dsDidLoad": void;
     }
     interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalNotificationElementEventMap>(type: K, listener: (this: HTMLBalNotificationElement, ev: BalNotificationCustomEvent<HTMLBalNotificationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1429,9 +1429,9 @@ declare global {
         new (): HTMLBalShapeElement;
     };
     interface HTMLBalSnackbarElementEventMap {
-        "balCloseClick": BalEvents.BalSnackbarCloseClickDetail;
-        "balActionClick": BalEvents.BalSnackbarActionClickDetail;
-        "balDidLoad": void;
+        "dsCloseClick": DS.SnackbarCloseClickDetail;
+        "dsActionClick": DS.SnackbarActionClickDetail;
+        "dsDidLoad": void;
     }
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1466,7 +1466,7 @@ declare global {
         new (): HTMLBalSwitchElement;
     };
     interface HTMLBalTagElementEventMap {
-        "balCloseClick": BalEvents.BalTagCloseClickDetail;
+        "dsCloseClick": DS.TagCloseClickDetail;
     }
     interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1495,11 +1495,11 @@ declare global {
         new (): HTMLBalTextElement;
     };
     interface HTMLBalToastElementEventMap {
-        "balCloseClick": BalEvents.BalToastCloseClickDetail;
-        "balActionClick": BalEvents.BalToastActionClickDetail;
-        "balDidLoad": void;
-        "balDidPause": void;
-        "balDidResume": void;
+        "dsCloseClick": DS.ToastCloseClickDetail;
+        "dsActionClick": DS.ToastActionClickDetail;
+        "dsDidLoad": void;
+        "dsDidPause": void;
+        "dsDidResume": void;
     }
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1562,7 +1562,7 @@ declare namespace LocalJSX {
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
          */
-        "buttonColor"?: BalProps.BalButtonColor;
+        "buttonColor"?: DS.ButtonColor;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -1587,7 +1587,7 @@ declare namespace LocalJSX {
         /**
           * The size of the button. Only applies if `button` is `true`.
          */
-        "buttonSize"?: BalProps.BalButtonSize;
+        "buttonSize"?: DS.ButtonSize;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -1595,23 +1595,23 @@ declare namespace LocalJSX {
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "marker"?: BalProps.BalAccordionMarker;
+        "marker"?: DS.AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "markerPosition"?: BalProps.BalAccordionMarkerPosition;
+        "markerPosition"?: DS.AccordionMarkerPosition;
         /**
           * Emitted when the accordion is closed.
          */
-        "onBalClosed"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsClosed"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onBalOpened"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsOpened"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalToggle"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsToggle"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -1621,7 +1621,7 @@ declare namespace LocalJSX {
           * The heading level of the summary
           * @default 'h3'
          */
-        "summaryLevel"?: BalProps.BalAccordionSummaryLevel;
+        "summaryLevel"?: DS.AccordionSummaryLevel;
         /**
           * If `true` the summary is styled as a title.
          */
@@ -1629,7 +1629,7 @@ declare namespace LocalJSX {
         /**
           * The visual heading level of the summary.
          */
-        "summaryVisualLevel"?: BalProps.BalAccordionSummaryLevel;
+        "summaryVisualLevel"?: DS.AccordionSummaryLevel;
     }
     interface BalAlertContainer {
         /**
@@ -1651,7 +1651,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when app is ready and painted.
          */
-        "onBalAppReady"?: (event: BalAppCustomEvent<void>) => void;
+        "onDsAppReady"?: (event: BalAppCustomEvent<void>) => void;
         /**
           * @default false
          */
@@ -1662,7 +1662,7 @@ declare namespace LocalJSX {
           * Define the color for the badge.
           * @default ''
          */
-        "color"?: BalProps.BalBadgeColor;
+        "color"?: DS.BadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -1671,7 +1671,7 @@ declare namespace LocalJSX {
           * If `true` the badge is added to the top right corner of the card.
           * @default ''
          */
-        "position"?: BalProps.BalBadgePosition;
+        "position"?: DS.BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -1681,7 +1681,7 @@ declare namespace LocalJSX {
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
          */
-        "size"?: BalProps.BalBadgeSize;
+        "size"?: DS.BadgeSize;
     }
     interface BalButton {
         /**
@@ -1713,7 +1713,7 @@ declare namespace LocalJSX {
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
-        "color"?: BalProps.BalButtonColor;
+        "color"?: DS.ButtonColor;
         /**
           * If `true` the button has a dashed border.
           * @default false
@@ -1732,7 +1732,7 @@ declare namespace LocalJSX {
           * The type of button.
           * @default 'button'
          */
-        "elementType"?: BalProps.BalButtonElementType;
+        "elementType"?: DS.ButtonElementType;
         /**
           * If `true` the button has a full width
           * @default false
@@ -1773,7 +1773,7 @@ declare namespace LocalJSX {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading"?: BalProps.BalButtonSpinner;
+        "loading"?: DS.ButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
          */
@@ -1786,23 +1786,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
+        "onDsBlur"?: (event: BalButtonCustomEvent<DS.ButtonBlurDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalClick"?: (event: BalButtonCustomEvent<BalEvents.BalButtonClickDetail>) => void;
+        "onDsClick"?: (event: BalButtonCustomEvent<DS.ButtonClickDetail>) => void;
         /**
           * Emitted when the button has been  rendered.
          */
-        "onBalDidRender"?: (event: BalButtonCustomEvent<BalEvents.BalButtonDidRenderDetail>) => void;
+        "onDsDidRender"?: (event: BalButtonCustomEvent<DS.ButtonDidRenderDetail>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onBalFocus"?: (event: BalButtonCustomEvent<BalEvents.BalButtonFocusDetail>) => void;
+        "onDsFocus"?: (event: BalButtonCustomEvent<DS.ButtonFocusDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalNavigate"?: (event: BalButtonCustomEvent<BalEvents.BalButtonNavigateDetail>) => void;
+        "onDsNavigate"?: (event: BalButtonCustomEvent<DS.ButtonNavigateDetail>) => void;
         /**
           * If `true` the button is outlined
           * @default false
@@ -1826,7 +1826,7 @@ declare namespace LocalJSX {
           * Size of the button
           * @default undefined
          */
-        "size"?: BalProps.BalButtonSize;
+        "size"?: DS.ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -1836,7 +1836,7 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target"?: BalProps.BalButtonTarget;
+        "target"?: DS.ButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -1846,12 +1846,12 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: BalProps.BalButtonGroupAlignment;
+        "align"?: DS.ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
-        "direction"?: BalProps.BalButtonGroupDirection;
+        "direction"?: DS.ButtonGroupDirection;
         /**
           * If `true` the buttons will expand to fill the available space on mobile.
           * @default false
@@ -1867,7 +1867,7 @@ declare namespace LocalJSX {
         /**
           * Defines the text alignment of the card content.
          */
-        "align"?: BalProps.BalCardAlignment;
+        "align"?: DS.CardAlignment;
         /**
           * @deprecated If `true` a light blue border is added to the card.
           * @default false
@@ -1881,7 +1881,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: BalProps.BalCardColor;
+        "color"?: DS.CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -1919,7 +1919,7 @@ declare namespace LocalJSX {
         /**
           * Defines the space of the card content.
          */
-        "space"?: BalProps.BalCardSpace;
+        "space"?: DS.CardSpace;
         /**
           * If `true` the card loses its border radius.
           * @default false
@@ -1935,7 +1935,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: BalProps.BalCardActionsAlignment;
+        "align"?: DS.CardActionsAlignment;
     }
     interface BalCardContent {
     }
@@ -1943,7 +1943,7 @@ declare namespace LocalJSX {
         /**
           * @default 'row'
          */
-        "direction"?: BalProps.BalCardHeaderDirection;
+        "direction"?: DS.CardHeaderDirection;
     }
     interface BalCardSubtitle {
         /**
@@ -1955,7 +1955,7 @@ declare namespace LocalJSX {
           * If `true` the card text color becomes white.
           * @default ''
          */
-        "color"?: BalProps.BalHeadingColor;
+        "color"?: DS.HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -1972,11 +1972,11 @@ declare namespace LocalJSX {
           * The actual heading level used in the HTML markup.
           * @default 'h3'
          */
-        "level"?: BalProps.BalHeadingLevel;
+        "level"?: DS.HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
+        "visualLevel"?: DS.HeadingVisualLevel;
     }
     interface BalCheck {
         /**
@@ -2017,7 +2017,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
-        "buttonColor"?: BalProps.BalButtonColor;
+        "buttonColor"?: DS.ButtonColor;
         /**
           * If `true` the close component will be disabled and not interactive.
           * @default false
@@ -2031,37 +2031,37 @@ declare namespace LocalJSX {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: BalProps.BalCloseSize;
+        "size"?: DS.CloseSize;
     }
     interface BalContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
-        "align"?: BalProps.BalContentAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
+        "align"?: DS.ContentAlignment;
+        "alignment"?: DS.StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
          */
-        "direction"?: BalProps.BalStackDirection;
+        "direction"?: DS.StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: BalProps.BalStackLayout;
+        "layout"?: DS.StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space"?: BalProps.BalContentSpace;
+        "space"?: DS.ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
          */
-        "textAlign"?: BalProps.BalContentTextAlignment;
+        "textAlign"?: DS.ContentTextAlignment;
     }
     interface BalDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
          */
-        "color"?: BalProps.BalDividerColor;
+        "color"?: DS.DividerColor;
         /**
           * Defines if the separator line is dashed or solid. Default is solid.
           * @default false
@@ -2071,12 +2071,12 @@ declare namespace LocalJSX {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
          */
-        "layout"?: BalProps.BalDividerLayout;
+        "layout"?: DS.DividerLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
           * @default 'none'
          */
-        "space"?: BalProps.BalDividerSpace;
+        "space"?: DS.DividerSpace;
     }
     interface BalDocApp {
         /**
@@ -2115,12 +2115,12 @@ declare namespace LocalJSX {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "autoLevel"?: BalProps.BalHeadingVisualLevel;
+        "autoLevel"?: DS.HeadingVisualLevel;
         /**
           * The theme type of the toast.
           * @default ''
          */
-        "color"?: BalProps.BalHeadingColor;
+        "color"?: DS.HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -2130,7 +2130,7 @@ declare namespace LocalJSX {
           * The actual heading level used in the HTML markup.
           * @default 'h1'
          */
-        "level"?: BalProps.BalHeadingLevel;
+        "level"?: DS.HeadingLevel;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
@@ -2153,13 +2153,13 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingVisualLevel;
+        "visualLevel"?: DS.HeadingVisualLevel;
     }
     interface BalIcon {
         /**
           * The theme type of the button.
          */
-        "color"?: BalProps.BalIconColor;
+        "color"?: DS.IconColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2192,11 +2192,11 @@ declare namespace LocalJSX {
         /**
           * If `true` the icon is displayed in a circle with a background color.
          */
-        "shape"?: BalProps.BalIconShape;
+        "shape"?: DS.IconShape;
         /**
           * Defines the size of the icon.
          */
-        "size"?: BalProps.BalIconSize;
+        "size"?: DS.IconSize;
         /**
           * Svg content.
          */
@@ -2210,7 +2210,7 @@ declare namespace LocalJSX {
           * If `true` the icon acts as a tile with a background color. Default is purple
           * @default 'purple'
          */
-        "tileColor"?: BalProps.BalIconTileColor;
+        "tileColor"?: DS.IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -2225,11 +2225,11 @@ declare namespace LocalJSX {
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "accordionMarker"?: BalProps.BalAccordionMarker;
+        "accordionMarker"?: DS.AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "accordionMarkerPosition"?: BalProps.BalAccordionMarkerPosition;
+        "accordionMarkerPosition"?: DS.AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -2262,19 +2262,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion is closed.
          */
-        "onBalAccordionClosed"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsAccordionClosed"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onBalAccordionOpened"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsAccordionOpened"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalAccordionToggle"?: (event: BalItemCustomEvent<BalEvents.BalAccordionToggleDetail>) => void;
+        "onDsAccordionToggle"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalClick"?: (event: BalItemCustomEvent<BalEvents.BalButtonClickDetail>) => void;
+        "onDsClick"?: (event: BalItemCustomEvent<DS.ButtonClickDetail>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -2283,7 +2283,7 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target"?: BalProps.BalButtonTarget;
+        "target"?: DS.ButtonTarget;
         /**
           * @default 'default'
          */
@@ -2331,7 +2331,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size"?: BalProps.BalLabelSize;
+        "size"?: DS.LabelSize;
         /**
           * If `true` the component gets a valid green style.
           * @default false
@@ -2354,17 +2354,17 @@ declare namespace LocalJSX {
           * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
-        "brand"?: BalProps.BalLogoBrand;
+        "brand"?: DS.LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
          */
-        "color"?: BalProps.BalLogoColor;
+        "color"?: DS.LogoColor;
         /**
           * Size of the logo svg
           * @default ''
          */
-        "size"?: BalProps.BalLogoSize;
+        "size"?: DS.LogoSize;
     }
     interface BalNotification {
         /**
@@ -2384,7 +2384,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalNotificationColor;
+        "color"?: DS.NotificationColor;
         /**
           * Defines the heading of the notification.
          */
@@ -2397,32 +2397,32 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button got clicked.
          */
-        "onBalCloseClick"?: (event: BalNotificationCustomEvent<BalEvents.BalNotificationCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: BalNotificationCustomEvent<DS.NotificationCloseClickDetail>) => void;
         /**
           * Emitted when the component has loaded.
          */
-        "onBalDidLoad"?: (event: BalNotificationCustomEvent<void>) => void;
+        "onDsDidLoad"?: (event: BalNotificationCustomEvent<void>) => void;
         /**
           * Defines the size of the notification, small, medium or large.
          */
-        "size"?: BalProps.BalNotificationSize;
+        "size"?: DS.NotificationSize;
     }
     interface BalShape {
         /**
           * The shape color
           * @default 'green'
          */
-        "color"?: BalProps.BalShapeColor;
+        "color"?: DS.ShapeColor;
         /**
           * The shape rotation
           * @default '0'
          */
-        "rotation"?: BalProps.BalShapeRotation;
+        "rotation"?: DS.ShapeRotation;
         /**
           * The shape variation
           * @default '1'
          */
-        "variation"?: BalProps.BalShapeVariation;
+        "variation"?: DS.ShapeVariation;
     }
     interface BalSnackbar {
         /**
@@ -2445,7 +2445,7 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget"?: BalProps.BalButtonTarget;
+        "actionTarget"?: DS.ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -2462,7 +2462,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalSnackbarColor;
+        "color"?: DS.SnackbarColor;
         /**
           * Defines the heading of the notification.
          */
@@ -2478,12 +2478,12 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onBalActionClick"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionClickDetail>) => void;
+        "onDsActionClick"?: (event: BalSnackbarCustomEvent<DS.SnackbarActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onBalCloseClick"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseClickDetail>) => void;
-        "onBalDidLoad"?: (event: BalSnackbarCustomEvent<void>) => void;
+        "onDsCloseClick"?: (event: BalSnackbarCustomEvent<DS.SnackbarCloseClickDetail>) => void;
+        "onDsDidLoad"?: (event: BalSnackbarCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
          */
@@ -2498,7 +2498,7 @@ declare namespace LocalJSX {
           * Defines the color of the spinner.
           * @default 'blue'
          */
-        "color"?: BalProps.BalSpinnerColor;
+        "color"?: DS.SpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
           * @default false
@@ -2513,7 +2513,7 @@ declare namespace LocalJSX {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
          */
-        "size"?: BalProps.BalSpinnerSize;
+        "size"?: DS.SpinnerSize;
         /**
           * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
@@ -2523,19 +2523,19 @@ declare namespace LocalJSX {
           * Defines the look of the spinner
           * @default 'logo'
          */
-        "variation"?: BalProps.BalSpinnerVariation;
+        "variation"?: DS.SpinnerVariation;
     }
     interface BalStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "align"?: BalProps.BalStackAlignment;
-        "alignment"?: BalProps.BalStackAlignment;
+        "align"?: DS.StackAlignment;
+        "alignment"?: DS.StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default 'column'
          */
-        "direction"?: BalProps.BalStackDirection;
+        "direction"?: DS.StackDirection;
         /**
           * Defines the width of the stack to be exactly the with of the content.
           * @default false
@@ -2544,31 +2544,31 @@ declare namespace LocalJSX {
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: BalProps.BalStackLayout;
+        "layout"?: DS.StackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "p"?: BalProps.BalStackPadding;
+        "p"?: DS.StackPadding;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "px"?: BalProps.BalStackPadding;
+        "px"?: DS.StackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
          */
-        "py"?: BalProps.BalStackPadding;
+        "py"?: DS.StackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space"?: BalProps.BalStackSpace;
+        "space"?: DS.StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceColumn"?: BalProps.BalStackSpace;
+        "spaceColumn"?: DS.StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceRow"?: BalProps.BalStackSpace;
+        "spaceRow"?: DS.StackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
           * @default false
@@ -2609,7 +2609,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag.
          */
-        "color"?: BalProps.BalTagColor;
+        "color"?: DS.TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2623,19 +2623,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input got clicked.
          */
-        "onBalCloseClick"?: (event: BalTagCustomEvent<BalEvents.BalTagCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: BalTagCustomEvent<DS.TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
          */
-        "position"?: BalProps.BalTagPlacement;
+        "position"?: DS.TagPlacement;
         /**
           * The shape of the tag element like square or pill
          */
-        "shape"?: BalProps.BalTagShape;
+        "shape"?: DS.TagShape;
         /**
           * The size of the tag element
          */
-        "size"?: BalProps.BalTagSize;
+        "size"?: DS.TagSize;
     }
     interface BalTagGroup {
     }
@@ -2643,7 +2643,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the component gets a invalid style.
          */
-        "align"?: BalProps.BalTextAlign;
+        "align"?: DS.TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -2652,7 +2652,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: BalProps.BalTextColor;
+        "color"?: DS.TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2699,11 +2699,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: BalProps.BalTextSize;
+        "size"?: DS.TextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: BalProps.BalTextSpace;
+        "space"?: DS.TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -2731,7 +2731,7 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget"?: BalProps.BalButtonTarget;
+        "actionTarget"?: DS.ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -2748,11 +2748,11 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: BalProps.BalToastColor;
+        "color"?: DS.ToastColor;
         /**
           * @default 0
          */
-        "duration"?: BalProps.BalToastDuration;
+        "duration"?: DS.ToastDuration;
         /**
           * Defines the heading of the notification.
          */
@@ -2768,14 +2768,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onBalActionClick"?: (event: BalToastCustomEvent<BalEvents.BalToastActionClickDetail>) => void;
+        "onDsActionClick"?: (event: BalToastCustomEvent<DS.ToastActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onBalCloseClick"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseClickDetail>) => void;
-        "onBalDidLoad"?: (event: BalToastCustomEvent<void>) => void;
-        "onBalDidPause"?: (event: BalToastCustomEvent<void>) => void;
-        "onBalDidResume"?: (event: BalToastCustomEvent<void>) => void;
+        "onDsCloseClick"?: (event: BalToastCustomEvent<DS.ToastCloseClickDetail>) => void;
+        "onDsDidLoad"?: (event: BalToastCustomEvent<void>) => void;
+        "onDsDidPause"?: (event: BalToastCustomEvent<void>) => void;
+        "onDsDidResume"?: (event: BalToastCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
          */

@@ -37,7 +37,7 @@ export const TokensSpacing = ({ overview }): React.ReactElement => {
                   <div
                     className="radius"
                     style={{
-                      background: 'var(--bal-color-purple-4)',
+                      background: 'var(--ds-color-purple-4)',
                       width: `var(--${item.name})`,
                       height: `var(--${item.name})`,
                     }}

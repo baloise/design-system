@@ -14,19 +14,19 @@
   @include vars.base(check);
 
   @include vars.local(check-color-background, transparent);
-  @include vars.local(check-color-border, var(--bal-color-primary-5));
-  @include vars.local(check-color-icon, var(--bal-color-primary-5));
+  @include vars.local(check-color-border, var(--ds-color-primary-5));
+  @include vars.local(check-color-icon, var(--ds-color-primary-5));
 
-  @include vars.local(check-color-background-hover, var(--bal-color-grey-2));
-  @include vars.local(check-color-border-hover, var(--bal-color-sky-5));
-  @include vars.local(check-color-icon-hover, var(--bal-color-sky-5));
+  @include vars.local(check-color-background-hover, var(--ds-color-grey-2));
+  @include vars.local(check-color-border-hover, var(--ds-color-sky-5));
+  @include vars.local(check-color-icon-hover, var(--ds-color-sky-5));
 
-  @include vars.local(check-color-background-active, var(--bal-color-grey-2));
-  @include vars.local(check-color-border-active, var(--bal-color-primary-6));
-  @include vars.local(check-color-icon-active, var(--bal-color-primary-6));
+  @include vars.local(check-color-background-active, var(--ds-color-grey-2));
+  @include vars.local(check-color-border-active, var(--ds-color-primary-6));
+  @include vars.local(check-color-icon-active, var(--ds-color-primary-6));
 
-  @include vars.local(check-border-width, var(--bal-border-width-base));
-  @include vars.local(check-radius, var(--bal-radius-base));
+  @include vars.local(check-border-width, var(--ds-border-width-base));
+  @include vars.local(check-radius, var(--ds-radius-base));
   @include vars.local(check-size, 1.5rem);
 }
 
@@ -80,17 +80,17 @@
 }
 
 @include attr.has(checked) {
-  --mod-check-color-icon: var(--bal-color-white);
-  --mod-check-color-border: var(--bal-color-primary-5);
-  --mod-check-color-background: var(--bal-color-primary-5);
+  --mod-check-color-icon: var(--ds-color-white);
+  --mod-check-color-border: var(--ds-color-primary-5);
+  --mod-check-color-background: var(--ds-color-primary-5);
 
-  --mod-check-color-icon-hover: var(--bal-color-white);
-  --mod-check-color-border-hover: var(--bal-color-sky-5);
-  --mod-check-color-background-hover: var(--bal-color-sky-5);
+  --mod-check-color-icon-hover: var(--ds-color-white);
+  --mod-check-color-border-hover: var(--ds-color-sky-5);
+  --mod-check-color-background-hover: var(--ds-color-sky-5);
 
-  --mod-check-color-icon-active: var(--bal-color-white);
-  --mod-check-color-border-active: var(--bal-color-primary-6);
-  --mod-check-color-background-active: var(--bal-color-primary-6);
+  --mod-check-color-icon-active: var(--ds-color-white);
+  --mod-check-color-border-active: var(--ds-color-primary-6);
+  --mod-check-color-background-active: var(--ds-color-primary-6);
 
   bal-icon {
     display: inline-flex;
@@ -106,15 +106,15 @@
 
 @include attr.has(inverted) {
   --mod-check-color-icon: transparent;
-  --mod-check-color-border: var(--bal-color-white);
+  --mod-check-color-border: var(--ds-color-white);
   --mod-check-color-background: transparent;
 
   --mod-check-color-icon-hover: transparent;
-  --mod-check-color-border-hover: var(--bal-color-sky-1);
+  --mod-check-color-border-hover: var(--ds-color-sky-1);
   --mod-check-color-background-hover: transparent;
 
   --mod-check-color-icon-active: transparent;
-  --mod-check-color-border-active: var(--bal-color-sky-2);
+  --mod-check-color-border-active: var(--ds-color-sky-2);
   --mod-check-color-background-active: transparent;
 }
 
@@ -124,31 +124,31 @@
     checked: true,
   )
 ) {
-  --mod-check-color-icon: var(--bal-color-primary-5);
-  --mod-check-color-border: var(--bal-color-white);
-  --mod-check-color-background: var(--bal-color-white);
+  --mod-check-color-icon: var(--ds-color-primary-5);
+  --mod-check-color-border: var(--ds-color-white);
+  --mod-check-color-background: var(--ds-color-white);
 
-  --mod-check-color-icon-hover: var(--bal-color-primary-5);
-  --mod-check-color-border-hover: var(--bal-color-sky-1);
-  --mod-check-color-background-hover: var(--bal-color-sky-1);
+  --mod-check-color-icon-hover: var(--ds-color-primary-5);
+  --mod-check-color-border-hover: var(--ds-color-sky-1);
+  --mod-check-color-background-hover: var(--ds-color-sky-1);
 
-  --mod-check-color-icon-active: var(--bal-color-primary-5);
-  --mod-check-color-border-active: var(--bal-color-sky-2);
-  --mod-check-color-background-active: var(--bal-color-sky-2);
+  --mod-check-color-icon-active: var(--ds-color-primary-5);
+  --mod-check-color-border-active: var(--ds-color-sky-2);
+  --mod-check-color-background-active: var(--ds-color-sky-2);
 }
 
 @include attr.has(invalid) {
   --mod-check-color-icon: transparent;
-  --mod-check-color-border: var(--bal-divider-color-danger);
+  --mod-check-color-border: var(--ds-divider-color-danger);
   --mod-check-color-background: transparent;
 
   --mod-check-color-icon-hover: transparent;
-  --mod-check-color-border-hover: var(--bal-divider-color-danger-dark);
-  --mod-check-color-background-hover: var(--bal-color-grey-2);
+  --mod-check-color-border-hover: var(--ds-divider-color-danger-dark);
+  --mod-check-color-background-hover: var(--ds-color-grey-2);
 
   --mod-check-color-icon-active: transparent;
-  --mod-check-color-border-active: var(--bal-divider-color-danger-darker);
-  --mod-check-color-background-active: var(--bal-color-grey-2);
+  --mod-check-color-border-active: var(--ds-divider-color-danger-darker);
+  --mod-check-color-background-active: var(--ds-color-grey-2);
 }
 
 @include attr.hasMany(
@@ -157,33 +157,33 @@
     checked: true,
   )
 ) {
-  --mod-check-color-icon: var(--bal-color-white);
-  --mod-check-color-border: var(--bal-divider-color-danger);
-  --mod-check-color-background: var(--bal-divider-color-danger);
+  --mod-check-color-icon: var(--ds-color-white);
+  --mod-check-color-border: var(--ds-divider-color-danger);
+  --mod-check-color-background: var(--ds-divider-color-danger);
 
-  --mod-check-color-icon-hover: var(--bal-color-white);
-  --mod-check-color-border-hover: var(--bal-divider-color-danger-dark);
-  --mod-check-color-background-hover: var(--bal-divider-color-danger-dark);
+  --mod-check-color-icon-hover: var(--ds-color-white);
+  --mod-check-color-border-hover: var(--ds-divider-color-danger-dark);
+  --mod-check-color-background-hover: var(--ds-divider-color-danger-dark);
 
-  --mod-check-color-icon-active: var(--bal-color-white);
-  --mod-check-color-border-active: var(--bal-divider-color-danger-darker);
-  --mod-check-color-background-active: var(--bal-divider-color-danger-darker);
+  --mod-check-color-icon-active: var(--ds-color-white);
+  --mod-check-color-border-active: var(--ds-divider-color-danger-darker);
+  --mod-check-color-background-active: var(--ds-divider-color-danger-darker);
 }
 
 @include attr.has(disabled) {
   cursor: default !important;
 
   --mod-check-color-icon: transparent;
-  --mod-check-color-border: var(--bal-border-color-disabled);
-  --mod-check-color-background: var(--bal-color-grey-2);
+  --mod-check-color-border: var(--ds-border-color-disabled);
+  --mod-check-color-background: var(--ds-color-grey-2);
 
   --mod-check-color-icon-hover: transparent;
-  --mod-check-color-border-hover: var(--bal-border-color-disabled);
-  --mod-check-color-background-hover: var(--bal-color-grey-2);
+  --mod-check-color-border-hover: var(--ds-border-color-disabled);
+  --mod-check-color-background-hover: var(--ds-color-grey-2);
 
   --mod-check-color-icon-active: transparent;
-  --mod-check-color-border-active: var(--bal-border-color-disabled);
-  --mod-check-color-background-active: var(--bal-color-grey-2);
+  --mod-check-color-border-active: var(--ds-border-color-disabled);
+  --mod-check-color-background-active: var(--ds-color-grey-2);
 }
 
 @include attr.hasMany(
@@ -192,15 +192,15 @@
     checked: true,
   )
 ) {
-  --mod-check-color-icon: var(--bal-color-white);
-  --mod-check-color-border: var(--bal-border-color-disabled);
-  --mod-check-color-background: var(--bal-border-color-disabled);
+  --mod-check-color-icon: var(--ds-color-white);
+  --mod-check-color-border: var(--ds-border-color-disabled);
+  --mod-check-color-background: var(--ds-border-color-disabled);
 
-  --mod-check-color-icon-hover: var(--bal-color-white);
-  --mod-check-color-border-hover: var(--bal-border-color-disabled);
-  --mod-check-color-background-hover: var(--bal-border-color-disabled);
+  --mod-check-color-icon-hover: var(--ds-color-white);
+  --mod-check-color-border-hover: var(--ds-border-color-disabled);
+  --mod-check-color-background-hover: var(--ds-border-color-disabled);
 
-  --mod-check-color-icon-active: var(--bal-color-white);
-  --mod-check-color-border-active: var(--bal-border-color-disabled);
-  --mod-check-color-background-active: var(--bal-border-color-disabled);
+  --mod-check-color-icon-active: var(--ds-color-white);
+  --mod-check-color-border-active: var(--ds-border-color-disabled);
+  --mod-check-color-background-active: var(--ds-border-color-disabled);
 }

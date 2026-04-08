@@ -1,4 +1,4 @@
-import { Accordion, expect, test } from '@baloise/ds-playwright'
+import { DsAccordion, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-accordion', async ({ page }) => {
@@ -9,7 +9,7 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
 
     await dsAccordion.assertToBeVisible()
   })
@@ -22,7 +22,7 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsToggle')
 
     await dsAccordion.clickSummary()
@@ -38,7 +38,7 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsOpened')
 
     await dsAccordion.clickSummary()
@@ -54,7 +54,7 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
 
     await dsAccordion.assertToBeClosed()
 
@@ -71,7 +71,7 @@ test.describe('component', () => {
       </bal-accordion>
     `)
 
-    const dsAccordion = new Accordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsClosed')
 
     await dsAccordion.clickSummary() // open

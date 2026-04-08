@@ -16,72 +16,72 @@
   }
 }
 @mixin mobile {
-  @media screen and (max-width: $bal-breakpoint-tablet - 1px) {
+  @media screen and (max-width: $ds-breakpoint-tablet - 1px) {
     @content;
   }
 }
 @mixin tablet {
-  @media screen and (min-width: $bal-breakpoint-tablet) {
+  @media screen and (min-width: $ds-breakpoint-tablet) {
     @content;
   }
 }
 @mixin tablet-only {
-  @media screen and (min-width: $bal-breakpoint-tablet) and (max-width: $bal-breakpoint-desktop - 1px) {
+  @media screen and (min-width: $ds-breakpoint-tablet) and (max-width: $ds-breakpoint-desktop - 1px) {
     @content;
   }
 }
 @mixin touch {
-  @media screen and (max-width: $bal-breakpoint-desktop - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop - 1px) {
     @content;
   }
 }
 @mixin desktop {
-  @media screen and (min-width: $bal-breakpoint-desktop) {
+  @media screen and (min-width: $ds-breakpoint-desktop) {
     @content;
   }
 }
 @mixin desktop-only {
-  @media screen and (min-width: $bal-breakpoint-desktop) and (max-width: $bal-breakpoint-desktop-lg - 1px) {
+  @media screen and (min-width: $ds-breakpoint-desktop) and (max-width: $ds-breakpoint-desktop-lg - 1px) {
     @content;
   }
 }
 @mixin desktop-lg {
-  @media screen and (min-width: $bal-breakpoint-desktop-lg) {
+  @media screen and (min-width: $ds-breakpoint-desktop-lg) {
     @content;
   }
 }
 @mixin desktop-lg-only {
-  @media screen and (min-width: $bal-breakpoint-desktop-lg) and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+  @media screen and (min-width: $ds-breakpoint-desktop-lg) and (max-width: $ds-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin until-desktop-lg {
-  @media screen and (max-width: $bal-breakpoint-desktop-lg - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-lg - 1px) {
     @content;
   }
 }
 @mixin until-desktop-xl {
-  @media screen and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin desktop-xl {
-  @media screen and (min-width: $bal-breakpoint-desktop-xl) {
+  @media screen and (min-width: $ds-breakpoint-desktop-xl) {
     @content;
   }
 }
 @mixin desktop-xl-only {
-  @media screen and (min-width: $bal-breakpoint-desktop-xl) and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+  @media screen and (min-width: $ds-breakpoint-desktop-xl) and (max-width: $ds-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin until-desktop-2xl {
-  @media screen and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin desktop-2xl {
-  @media screen and (min-width: $bal-breakpoint-desktop-2xl) {
+  @media screen and (min-width: $ds-breakpoint-desktop-2xl) {
     @content;
   }
 }
@@ -91,42 +91,42 @@
   */
 
 @mixin high-definition {
-  @media screen and (min-width: $bal-breakpoint-desktop-lg) {
+  @media screen and (min-width: $ds-breakpoint-desktop-lg) {
     @content;
   }
 }
 @mixin high-definition-only {
-  @media screen and (min-width: $bal-breakpoint-desktop-lg) and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+  @media screen and (min-width: $ds-breakpoint-desktop-lg) and (max-width: $ds-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin until-high-definition {
-  @media screen and (max-width: $bal-breakpoint-desktop-lg - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-lg - 1px) {
     @content;
   }
 }
 @mixin until-widescreen {
-  @media screen and (max-width: $bal-breakpoint-desktop-xl - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-xl - 1px) {
     @content;
   }
 }
 @mixin widescreen {
-  @media screen and (min-width: $bal-breakpoint-desktop-xl) {
+  @media screen and (min-width: $ds-breakpoint-desktop-xl) {
     @content;
   }
 }
 @mixin widescreen-only {
-  @media screen and (min-width: $bal-breakpoint-desktop-xl) and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+  @media screen and (min-width: $ds-breakpoint-desktop-xl) and (max-width: $ds-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin until-fullhd {
-  @media screen and (max-width: $bal-breakpoint-desktop-2xl - 1px) {
+  @media screen and (max-width: $ds-breakpoint-desktop-2xl - 1px) {
     @content;
   }
 }
 @mixin fullhd {
-  @media screen and (min-width: $bal-breakpoint-desktop-2xl) {
+  @media screen and (min-width: $ds-breakpoint-desktop-2xl) {
     @content;
   }
 }

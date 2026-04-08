@@ -4,25 +4,25 @@ import { FocusSubject } from './focus.subject'
 
 export function ListenToFocus() {
   return function (
-    target: ComponentInterface & BalFocusObserver,
+    target: ComponentInterface & FocusObserver,
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      if (!this['_balFocusSubject']) {
-        this['_balFocusSubject'] = new FocusSubject()
-        this['_balFocusSubject'].attach(this)
+      if (!this['_dsFocusSubject']) {
+        this['_dsFocusSubject'] = new FocusSubject()
+        this['_dsFocusSubject'].attach(this)
       }
 
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      if (this['_balFocusSubject']) {
-        this['_balFocusSubject'].detach()
-        this['_balFocusSubject'] = undefined
+      if (this['_dsFocusSubject']) {
+        this['_dsFocusSubject'].detach()
+        this['_dsFocusSubject'] = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

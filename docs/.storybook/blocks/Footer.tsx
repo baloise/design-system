@@ -24,18 +24,34 @@ export const Footer = ({ children }) => {
           Improve this page on GitHub
         </a>
         <div className="flex gap-small pt-small mt-large border-top-grey-light">
-          <span className="flex-1 is-bold">© 2023 Baloise Insurance Ltd</span>
-          <a className="link" href="https://www.baloise.ch/en/about-us/information/site-notice.html" target="_blank">
-            Site notice
-          </a>
-          <a className="link" href="https://www.baloise.ch/en/about-us/information/legal-notice.html" target="_blank">
+          <span className="flex-1 is-bold">© 2026 Helvetia Baloise Holding AG</span>
+          <a
+            className="link"
+            href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/imprint.html"
+            target="_blank"
+          >
+            Imprint and contact
+          </a>{' '}
+          <a
+            className="link"
+            href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/legal-notice.html"
+            target="_blank"
+          >
             Legal notice
           </a>
-          <a className="link" href="https://www.baloise.ch/en/about-us/information/privacy-policy.html" target="_blank">
-            Privacy policy
+          <a
+            className="link"
+            href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/accessibility-statement.html"
+            target="_blank"
+          >
+            Accessibility statement
           </a>
-          <a className="link" href="https://www.baloise.ch/en/about-us/information/cookie-policy.html" target="_blank">
-            Cookie policy
+          <a
+            className="link"
+            href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/privacy.html"
+            target="_blank"
+          >
+            Privacy policy
           </a>
         </div>
       </section>

@@ -1,9 +1,9 @@
 import { dsBrowser } from '../browser'
 import { dsDevice } from '../device'
 
-export type BalWindowResizeHandlerObserver = () => void
+export type WindowResizeHandlerObserver = () => void
 
-export type BalWindowResizeHandlerOptions = {
+export type WindowResizeHandlerOptions = {
   onlyListenToWidthChanges: boolean
 }
 
@@ -11,11 +11,11 @@ export class WindowResizeHandler {
   private previousWidth = dsBrowser.window.width
   private previousHeight = dsBrowser.window.height
   private previousIsLandscape = this.isLandscape
-  private options: BalWindowResizeHandlerOptions = {
+  private options: WindowResizeHandlerOptions = {
     onlyListenToWidthChanges: false,
   }
 
-  constructor(options: Partial<BalWindowResizeHandlerOptions> = {}) {
+  constructor(options: Partial<WindowResizeHandlerOptions> = {}) {
     this.options = { ...this.options, ...options }
   }
 

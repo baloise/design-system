@@ -1,7 +1,7 @@
 import type { computePosition, offset, arrow, flip, shift, autoUpdate } from '@floating-ui/dom'
 import { rOnLoad } from './helpers'
 
-export interface BalFloatingUi {
+export interface DsFloatingUi {
   computePosition: typeof computePosition
   autoUpdate: typeof autoUpdate
   offset: typeof offset
@@ -10,10 +10,10 @@ export interface BalFloatingUi {
   shift: typeof shift
 }
 
-class BalFloatingUiInternal {
-  private lib?: BalFloatingUi
+class DsFloatingUiInternal {
+  private lib?: DsFloatingUi
 
-  load = async (): Promise<BalFloatingUi> => {
+  load = async (): Promise<DsFloatingUi> => {
     return new Promise((resolve, reject) => {
       if (this.lib) {
         return resolve(this.lib)
@@ -31,4 +31,4 @@ class BalFloatingUiInternal {
   }
 }
 
-export const dsFloatingUi = new FloatingUiInternal()
+export const dsFloatingUi = new DsFloatingUiInternal()

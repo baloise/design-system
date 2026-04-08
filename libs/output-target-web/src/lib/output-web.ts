@@ -67,12 +67,12 @@ async function setVersion(config: Config) {
   const json = JSON.parse(content)
   await replaceInFile({
     files: join(rootDir, 'dist', '**/*.js').replace(/\\/g, '/'),
-    from: /BAL_DEV_VERSION/g,
+    from: /DS_DEV_VERSION/g,
     to: json.version,
   })
   await replaceInFile({
     files: join(rootDir, 'components', '**/*.js').replace(/\\/g, '/'),
-    from: /BAL_DEV_VERSION/g,
+    from: /DS_DEV_VERSION/g,
     to: json.version,
   })
 }
@@ -86,7 +86,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
+      `import { Ds${component.componentClassName}, defineCustomElement as defineDs${component.componentClassName} } from './${component.tagName}'`,
     )
   }
 
@@ -94,7 +94,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
 
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`export { Bal${component.componentClassName}, defineBal${component.componentClassName} }`)
+    lines.push(`export { Ds${component.componentClassName}, defineDs${component.componentClassName} }`)
   }
 
   lines.push('')
@@ -102,7 +102,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
   lines.push('export const defineAllComponents = () => {')
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`  defineBal${component.componentClassName}()`)
+    lines.push(`  defineDs${component.componentClassName}()`)
   }
   lines.push('}')
 
@@ -116,7 +116,7 @@ const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[] = [
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
+      `import { Ds${component.componentClassName}, defineCustomElement as defineDs${component.componentClassName} } from './${component.tagName}'`,
     )
   }
 
@@ -124,7 +124,7 @@ const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[] = [
 
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`export { Bal${component.componentClassName}, defineBal${component.componentClassName} }`)
+    lines.push(`export { Ds${component.componentClassName}, defineDs${component.componentClassName} }`)
   }
 
   lines.push('')

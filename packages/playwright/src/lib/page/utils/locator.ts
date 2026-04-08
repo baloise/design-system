@@ -1,7 +1,7 @@
 import type { Locator } from '@playwright/test'
 
 import { addE2EListener, EventSpy } from '../event-spy'
-import { Page } from '../../types'
+import { DsPage } from '../../types'
 
 export type LocatorOptions = {
   hasText?: string | RegExp
@@ -23,7 +23,7 @@ export interface E2ELocator extends Locator {
 }
 
 export const locator = (
-  page: BalPage,
+  page: DsPage,
   originalFn: typeof page.locator,
   selector: string,
   options?: LocatorOptions,

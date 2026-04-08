@@ -1,39 +1,39 @@
 /**
- * @prop --bal-body-background: Body background color
- * @prop --bal-body-font-family: Body font family
- * @prop --bal-body-color: Body text color
- * @prop --bal-body-font-weight: Body text weight
- * @prop --bal-body-font-size: Body font size
- * @prop --bal-body-line-height: Body line height
- * @prop --bal-divider-background: Divider background color
- * @prop --bal-focus-shadow-start-color: Focus shadow start color
- * @prop --bal-focus-shadow-end-color: Focus shadow start end
- * @prop --bal-focus-shadow: Focus shadow
- * @prop --bal-focus-shadow-inset: Focus shadow inset
- * @prop --bal-focus-shadow-inverted-start-color: Focus shadow start color
- * @prop --bal-focus-shadow-inverted-end-color: Focus shadow end color
- * @prop --bal-focus-shadow-inverted: Focus shadow on a dark background
- * @prop --bal-focus-shadow-inverted-inset: Focus shadow on a dark background inset
- * @prop --bal-small-font-size: TBD
- * @prop --bal-strong-color: TBD
- * @prop --bal-strong-font-weight: TBD
+ * @prop --ds-body-background: Body background color
+ * @prop --ds-body-font-family: Body font family
+ * @prop --ds-body-color: Body text color
+ * @prop --ds-body-font-weight: Body text weight
+ * @prop --ds-body-font-size: Body font size
+ * @prop --ds-body-line-height: Body line height
+ * @prop --ds-divider-background: Divider background color
+ * @prop --ds-focus-shadow-start-color: Focus shadow start color
+ * @prop --ds-focus-shadow-end-color: Focus shadow start end
+ * @prop --ds-focus-shadow: Focus shadow
+ * @prop --ds-focus-shadow-inset: Focus shadow inset
+ * @prop --ds-focus-shadow-inverted-start-color: Focus shadow start color
+ * @prop --ds-focus-shadow-inverted-end-color: Focus shadow end color
+ * @prop --ds-focus-shadow-inverted: Focus shadow on a dark background
+ * @prop --ds-focus-shadow-inverted-inset: Focus shadow on a dark background inset
+ * @prop --ds-small-font-size: TBD
+ * @prop --ds-strong-color: TBD
+ * @prop --ds-strong-font-weight: TBD
  */
 
 :root {
   //
   // body variables
-  // --bal-body-background: var(--bal-color-text-white);
-  // --bal-body-font-family: var(--bal-font-family-text);
-  // --bal-body-color: var(--bal-color-text-primary);
-  // --bal-body-font-weight: var(--bal-text-weight-regular);
-  // --bal-body-font-size: 16px;
-  // --bal-body-line-height: var(--bal-line-height-normal);
-  // --bal-small-font-size: var(--bal-text-size-sm);
-  // --bal-strong-color: var(--bal-color-text-primary);
-  // --bal-strong-font-weight: var(--bal-text-weight-bold);
+  // --ds-body-background: var(--ds-color-text-white);
+  // --ds-body-font-family: var(--ds-font-family-text);
+  // --ds-body-color: var(--ds-color-text-primary);
+  // --ds-body-font-weight: var(--ds-text-weight-regular);
+  // --ds-body-font-size: 16px;
+  // --ds-body-line-height: var(--ds-line-height-normal);
+  // --ds-small-font-size: var(--ds-text-size-sm);
+  // --ds-strong-color: var(--ds-color-text-primary);
+  // --ds-strong-font-weight: var(--ds-text-weight-bold);
   //
   // divider variables
-  // --bal-divider-background: var(--bal-color-primary-2);
+  // --ds-divider-background: var(--ds-color-primary-2);
   //
   // focus shadow
 }

@@ -1,6 +1,6 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 
-export interface BalVisibilityObserver {
+export interface VisibilityObserver {
   el: HTMLElement | HTMLStencilElement
   visibilityListener(): void
 }

@@ -120,7 +120,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@import '@baloise/ds-styles/css/baloise-design-system.css';
+@import '@baloise/ds-styles/css/design-system.css';
 `}
                   />
                 </>
@@ -134,7 +134,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@use '@baloise/ds-styles/sass/baloise-design-system';
+@use '@baloise/ds-styles/sass/design-system';
 `}
                   />
                 </>

@@ -18,18 +18,18 @@ $host-selector: ('#card');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(card-color-background, var(--bal-card-color-base-background));
-  @include vars.local(card-color-text, var(--bal-card-color-base-text));
-  @include vars.local(card-color-border, var(--bal-card-color-base-border, transparent));
-  @include vars.local(card-radius, var(--bal-card-radius-base));
+  @include vars.local(card-color-background, var(--ds-card-color-base-background));
+  @include vars.local(card-color-text, var(--ds-card-color-base-text));
+  @include vars.local(card-color-border, var(--ds-card-color-base-border, transparent));
+  @include vars.local(card-radius, var(--ds-card-radius-base));
   @include vars.local(card-border-width, 0rem);
   @include vars.local(card-border-style, solid);
-  @include vars.local(card-shadow, var(--bal-card-shadow-base));
-  @include vars.local(card-gap, var(--bal-card-space-base-device));
-  @include vars.local(card-padding-left, var(--bal-card-space-base-device));
-  @include vars.local(card-padding-right, var(--bal-card-space-base-device));
-  @include vars.local(card-padding-top, var(--bal-card-space-base-device));
-  @include vars.local(card-padding-bottom, var(--bal-card-space-base-device));
+  @include vars.local(card-shadow, var(--ds-card-shadow-base));
+  @include vars.local(card-gap, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-left, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-right, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-top, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-bottom, var(--ds-card-space-base-device));
 
   @include vars.local(card-header-grid-template-columns, 1fr auto);
   @include vars.local(card-header-margin-left, 0);
@@ -235,7 +235,7 @@ $host-selector: ('#card');
 // Square
 // --------------------------------
 @mixin square {
-  --mod-card-radius: var(--bal-card-radius-square);
+  --mod-card-radius: var(--ds-card-radius-square);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -254,8 +254,8 @@ $host-selector: ('#card');
 // Flat
 // --------------------------------
 @mixin flat {
-  --mod-card-radius: var(--bal-card-radius-flat);
-  --mod-card-shadow: var(--bal-card-shadow-flat);
+  --mod-card-radius: var(--ds-card-radius-flat);
+  --mod-card-shadow: var(--ds-card-shadow-flat);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -274,7 +274,7 @@ $host-selector: ('#card');
 // Dense
 // --------------------------------
 @mixin dense {
-  --mod-card-shadow: var(--bal-card-shadow-flat);
+  --mod-card-shadow: var(--ds-card-shadow-flat);
   --mod-card-padding-left: 0;
   --mod-card-padding-right: 0;
   --mod-card-padding-top: 0;
@@ -297,10 +297,10 @@ $host-selector: ('#card');
 // Outlined
 // --------------------------------
 @mixin outlined {
-  --mod-card-shadow: var(--bal-card-shadow-flat);
-  --mod-card-border-width: var(--bal-card-outline-width);
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+  --mod-card-border-width: var(--ds-card-outline-width);
   --mod-card-border-style: dashed;
-  --mod-card-color-border: var(--bal-card-color-base-outline, transparent);
+  --mod-card-color-border: var(--ds-card-color-base-outline, transparent);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -344,9 +344,9 @@ $backgrounds: (
 );
 
 @mixin background-color($color) {
-  --mod-card-color-background: var(--bal-card-color-#{$color}-background);
-  --mod-card-color-text: var(--bal-card-color-#{$color}-text);
-  --mod-card-color-border: var(--bal-card-color-#{$color}-border, transparent);
+  --mod-card-color-background: var(--ds-card-color-#{$color}-background);
+  --mod-card-color-text: var(--ds-card-color-#{$color}-text);
+  --mod-card-color-border: var(--ds-card-color-#{$color}-border, transparent);
 }
 
 @each $color in $backgrounds {
@@ -355,7 +355,7 @@ $backgrounds: (
       @include background-color($color);
 
       &.is-outlined {
-        --mod-card-color-border: var(--bal-card-color-#{$color}-outline, transparent);
+        --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
       }
     }
   }
@@ -366,7 +366,7 @@ $backgrounds: (
     }
 
     :host(.is-#{$color}.is-outlined) {
-      --mod-card-color-border: var(--bal-card-color-#{$color}-outline, transparent);
+      --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
     }
   }
 }
@@ -379,25 +379,25 @@ $spaces: ('sm', 'md', 'lg');
 @each $space in $spaces {
   @include hybrid.styles($css-selector, $use-host) {
     &.has-space-#{$space} {
-      --mod-card-gap: var(--bal-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-space-#{$space}-device);
     }
     &.has-space-#{$space}:not(.is-dense) {
-      --mod-card-padding-left: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.has-space-#{$space}) {
-      --mod-card-gap: var(--bal-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-space-#{$space}-device);
     }
     :host(.has-space-#{$space}:not(.is-dense)) {
-      --mod-card-padding-left: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--bal-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--bal-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
     }
   }
 }
@@ -413,9 +413,9 @@ $spaces: ('sm', 'md', 'lg');
 
     @include tablet() {
       --mod-card-padding-left: calc(
-        var(--bal-card-space-base-device) + var(--bal-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
       );
-      --mod-card-header-margin-left: calc(calc(var(--bal-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
     }
   }
 }
@@ -427,9 +427,9 @@ $spaces: ('sm', 'md', 'lg');
 
     @include tablet() {
       --mod-card-padding-left: calc(
-        var(--bal-card-space-base-device) + var(--bal-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
       );
-      --mod-card-header-margin-left: calc(calc(var(--bal-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
     }
   }
 }

@@ -21,23 +21,23 @@ Three layers — always prefer Semantic for consumer use:
 
 Follows the [EightShapes naming guide](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676): names move from broad category to specific modifier.
 
-CSS variable pattern: `--bal-[category]-[name]`
+CSS variable pattern: `--ds-[category]-[name]`
 
 | Example need       | Token                      | CSS variable                     |
 | ------------------ | -------------------------- | -------------------------------- |
-| Large spacing      | `space-lg`                 | `--bal-space-lg`                 |
-| Primary background | `background-color-primary` | `--bal-background-color-primary` |
-| Base border radius | `radius-base`              | `--bal-radius-base`              |
-| Base text size     | `text-size-base`           | `--bal-text-size-base`           |
+| Large spacing      | `space-lg`                 | `--ds-space-lg`                 |
+| Primary background | `background-color-primary` | `--ds-background-color-primary` |
+| Base border radius | `radius-base`              | `--ds-radius-base`              |
+| Base text size     | `text-size-base`           | `--ds-text-size-base`           |
 
 ## Responsive Tokens
 
 Space tokens have responsive variants. For most uses, reference the base token:
 
-- `--bal-space-lg` — base value (mobile default)
-- `--bal-space-lg-device` — automatically responsive via `@media` breakpoints
+- `--ds-space-lg` — base value (mobile default)
+- `--ds-space-lg-device` — automatically responsive via `@media` breakpoints
 
-Use `--bal-space-lg` for static use, `--bal-space-lg-device` when you want automatic responsive scaling.
+Use `--ds-space-lg` for static use, `--ds-space-lg-device` when you want automatic responsive scaling.
 
 ## Key Semantic Categories
 
@@ -63,6 +63,6 @@ When a developer asks "what token should I use for X?":
 2. **Read** `packages/tokens/dist/css/base.tokens.css` — find the exact CSS variable name and its resolved value
 3. **Return** in this format:
 
-> **Token:** `space-lg` > **CSS:** `var(--bal-space-lg)` → `1.5rem` > **Responsive variant:** `var(--bal-space-lg-device)` (scales with breakpoint)
+> **Token:** `space-lg` > **CSS:** `var(--ds-space-lg)` → `1.5rem` > **Responsive variant:** `var(--ds-space-lg-device)` (scales with breakpoint)
 
 If multiple tokens could fit, list the top 2–3 with a brief note on when to use each.

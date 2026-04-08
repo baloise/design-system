@@ -17,10 +17,10 @@ export interface BackButtonEventDetail {
 
 export type BackButtonEvent = CustomEvent<BackButtonEventDetail>
 
-export interface HTMLBalOverlayElement extends HTMLStencilElement {
+export interface HTMLDsOverlayElement extends HTMLStencilElement {
   overlayIndex: number
   lastFocus: HTMLElement | undefined
-  el: HTMLBalOverlayElement
+  el: HTMLDsOverlayElement
   dismiss(data?: any, role?: string): Promise<boolean>
 }
 
@@ -32,18 +32,18 @@ export const prepareOverlay = (overlay: OverlayInterface) => {
   const overlayIndex = lastId++
   overlay.overlayIndex = overlayIndex
   if (!overlay.el.hasAttribute('id')) {
-    overlay.el.id = `bal-overlay-${overlayIndex}`
+    overlay.el.id = `ds-overlay-${overlayIndex}`
   }
 }
 
-export const getOverlays = (doc: Document, selector?: string): HTMLBalOverlayElement[] => {
+export const getOverlays = (doc: Document, selector?: string): HTMLDsOverlayElement[] => {
   if (selector === undefined) {
-    selector = 'bal-modal,bal-notification'
+    selector = 'ds-modal,ds-notification'
   }
-  return (Array.from(doc.querySelectorAll(selector)) as HTMLBalOverlayElement[]).filter(c => c.overlayIndex > 0)
+  return (Array.from(doc.querySelectorAll(selector)) as HTMLDsOverlayElement[]).filter(c => c.overlayIndex > 0)
 }
 
-export const getOverlay = (doc: Document, overlayTag?: string, id?: string): HTMLBalOverlayElement | undefined => {
+export const getOverlay = (doc: Document, overlayTag?: string, id?: string): HTMLDsOverlayElement | undefined => {
   const overlays = getOverlays(doc, overlayTag)
   return id === undefined ? overlays[overlays.length - 1] : overlays.find(o => o.id === id)
 }
@@ -79,19 +79,19 @@ export const getPresentedOverlay = (
   doc: Document,
   overlayTag?: string,
   id?: string,
-): HTMLBalOverlayElement | undefined => {
+): HTMLDsOverlayElement | undefined => {
   const overlays = getPresentedOverlays(doc, overlayTag)
   return id === undefined ? overlays[overlays.length - 1] : overlays.find(o => o.id === id)
 }
 
-const getPresentedOverlays = (doc: Document, overlayTag?: string): HTMLBalOverlayElement[] => {
+const getPresentedOverlays = (doc: Document, overlayTag?: string): HTMLDsOverlayElement[] => {
   return getOverlays(doc, overlayTag).filter(o => !isOverlayHidden(o))
 }
 
 const isOverlayHidden = (overlay: Element) => overlay.classList.contains('is-hidden')
 
 const trapKeyboardFocus = (ev: Event, doc: Document) => {
-  const lastOverlay = getPresentedOverlay(doc, 'bal-modal')
+  const lastOverlay = getPresentedOverlay(doc, 'ds-modal')
   const target = ev.target as HTMLElement | null
 
   /**
@@ -136,7 +136,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        */
       const overlayRoot = lastOverlay
 
-      const overlayWrapper = overlayRoot.querySelector<HTMLElement>('.bal-modal__container')
+      const overlayWrapper = overlayRoot.querySelector<HTMLElement>('.ds-modal__container')
       if (!overlayWrapper) {
         return
       }
@@ -148,7 +148,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * move focus back inside the wrapper as that could cause
        * an interactive elements focus state to activate.
        */
-      if (overlayWrapper.contains(target) || target === overlayRoot.querySelector('bal-modal__background')) {
+      if (overlayWrapper.contains(target) || target === overlayRoot.querySelector('ds-modal__background')) {
         lastOverlay.lastFocus = target
       } else {
         /**
@@ -204,7 +204,7 @@ const trapKeyboardFocus = (ev: Event, doc: Document) => {
        * last focused element in the overlay if focus is
        * moved to the toast.
        */
-    } else if (target.tagName === 'BAL-NOTIFICATION') {
+    } else if (target.tagName === 'DS-NOTIFICATION') {
       focusElementInOverlay(lastOverlay.lastFocus, lastOverlay)
     } else {
       /**
@@ -304,12 +304,12 @@ export const onceEvent = (
  * on most elements because the focusable element
  * may not be the host element.
  *
- * For example, if an bal-button should be focused
+ * For example, if an ds-button should be focused
  * then we should actually focus the native <button>
- * element inside of bal-button's shadow root, not
+ * element inside of ds-button's shadow root, not
  * the host element itself.
  */
-const focusElementInOverlay = (hostToFocus: HTMLElement | null | undefined, overlay: HTMLBalOverlayElement) => {
+const focusElementInOverlay = (hostToFocus: HTMLElement | null | undefined, overlay: HTMLDsOverlayElement) => {
   let elementToFocus = hostToFocus
 
   const shadowRoot = hostToFocus?.shadowRoot
@@ -326,4 +326,4 @@ const focusElementInOverlay = (hostToFocus: HTMLElement | null | undefined, over
   }
 }
 
-export const FOCUS_TRAP_DISABLE_CLASS = 'bal-disable-focus-trap'
+export const FOCUS_TRAP_DISABLE_CLASS = 'ds-disable-focus-trap'

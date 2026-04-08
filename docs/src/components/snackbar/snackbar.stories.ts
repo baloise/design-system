@@ -41,7 +41,7 @@ const meta: Meta<Args> = {
         const label = button.innerText.trim()
 
         if (label === 'Trigger Snackbar' && window) {
-          const snackbarController = (window as any).BaloiseDesignSystem.snackbarController
+          const snackbarController = (window as any).DesignSystem.snackbarController
           snackbarController.create({
             color: args.color,
             icon: args.icon,

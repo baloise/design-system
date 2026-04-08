@@ -6,7 +6,7 @@ export interface MutationObserverOptions extends MutationObserverInit {
   waitAfterFramePrint?: boolean
 }
 
-export interface BalMutationObserver {
+export interface MutationObserver {
   el: HTMLStencilElement
   mutationObserverActive: boolean
   mutationListener(): void

@@ -67,13 +67,13 @@ Use the scss mixins in your application the following:
 @use '@baloise/ds-styles/sass/mixins' as *;
 
 .my-component {
-${' '}${' '}background: var(--bal-color-green);
+${' '}${' '}background: var(--ds-color-green);
 }
 
 @include desktop() {
 ${' '}${' '}// add your custom styles here
 ${' '}${' '}.my-component {
-${' '}${' '}${' '}${' '}background: var(--bal-color-red);
+${' '}${' '}${' '}${' '}background: var(--ds-color-red);
 ${' '}${' '}}
 }
 `} />
@@ -101,7 +101,7 @@ The Baloise Design System provides a service to dynamically listen for viewport 
 import { BreakpointService } from '@baloise/ds-angular'
 
 export class MyComponent {
-  readonly breakpoint = inject(BalBreakpointService)
+  readonly breakpoint = inject(DsBreakpointservice)
 }
 ```
 

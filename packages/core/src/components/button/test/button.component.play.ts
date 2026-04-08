@@ -1,4 +1,4 @@
-import { Button, expect, test } from '@baloise/ds-playwright'
+import { DsButton, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {
@@ -6,7 +6,7 @@ test.describe('component', () => {
       <bal-button>Click me</bal-button>
     `)
 
-    const dsButton = new Button(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('bal-button'))
 
     await dsButton.assertToBeVisible()
     await dsButton.assertToContainText('Click me')
@@ -17,7 +17,7 @@ test.describe('component', () => {
       <bal-button>Click me</bal-button>
     `)
 
-    const dsButton = new Button(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('bal-button'))
     const spy = await dsButton.el.spyOnEvent('dsClick')
 
     await dsButton.click()
@@ -29,7 +29,7 @@ test.describe('component', () => {
     await page.mount(`
       <bal-button disabled>Disabled</bal-button>
     `)
-    const dsButton = new Button(page.locator('bal-button'))
+    const dsButton = new DsButton(page.locator('bal-button'))
     const spy = await dsButton.el.spyOnEvent('dsClick')
 
     await dsButton.assertToBeDisabled()

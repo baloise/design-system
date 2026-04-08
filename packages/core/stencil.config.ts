@@ -9,37 +9,44 @@ import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
-const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
-const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
-const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
-// const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
-const IS_BAL_PLAYWRIGHT_TESTING = process.env.BAL_PLAYWRIGHT_TESTING === 'true'
+const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
+const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
+const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
+const IS_DS_PUBLISH = process.env.DS_PUBLISH === 'true'
+const IS_DS_TESTING = process.env.DS_TESTING === 'true'
+const IS_DS_PLAYWRIGHT_TESTING = process.env.DS_PLAYWRIGHT_TESTING === 'true'
 
-if (IS_BAL_DS_RELEASE) {
+if (IS_DS_RELEASE) {
   console.log('')
   console.log('🚀 Build is set to release 🚀')
   console.log('')
 }
 
-if (IS_BAL_DOCUMENTATION) {
+if (IS_DS_DOCUMENTATION) {
   console.log('')
   console.log('📝 Build is set to documentation 📝')
   console.log('')
 }
 
-if (IS_BAL_DEVELOPMENT) {
+if (IS_DS_DEVELOPMENT) {
   console.log('')
   console.log('👷 Build is set to development 👷')
   console.log('')
 }
 
-// if (IS_BAL_TESTING) {
-//   console.log('')
-//   console.log('🧪 Build is set to testing 🧪')
-//   console.log('')
-// }
+if (IS_DS_PUBLISH) {
+  console.log('')
+  console.log('🚀 Build is set to publish 🚀')
+  console.log('')
+}
 
-if (IS_BAL_PLAYWRIGHT_TESTING) {
+if (IS_DS_TESTING) {
+  console.log('')
+  console.log('🧪 Build is set to testing 🧪')
+  console.log('')
+}
+
+if (IS_DS_PLAYWRIGHT_TESTING) {
   console.log('')
   console.log('🎭 Build is set to testing 🎭')
   console.log('')
@@ -52,16 +59,16 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: false, //IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
-  namespace: 'baloise-design-system',
-  preamble: '(C) Baloise Design System https://design.baloise.dev/ - Apache License 2.0',
+  sourceMap: false, //IS_DS_TESTING || IS_DS_DEVELOPMENT,
+  namespace: 'design-system',
+  preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
   // buildEs5: 'prod',
   globalScript: 'src/global.ts',
   globalStyle: 'src/global.scss',
   // transformAliasedImportPaths: true,
-  tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
+  tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
       outputStyle: 'compressed',
@@ -76,23 +83,23 @@ export const config: Config = {
      * lazily loads components in a way that works with additional bundlers. Setting this flag to `true` will increase
      * the size of the compiled output. Defaults to `false`.
      */
-    enableImportInjection: !IS_BAL_DEVELOPMENT, // true,
+    enableImportInjection: !IS_DS_DEVELOPMENT, // true,
     /**
      * When a component is first attached to the DOM, this setting will wait a single tick before
      * rendering. This works around an Angular issue, where Angular attaches the elements before
      * settings their initial state, leading to double renders and unnecessary event dispatches.
      * Defaults to `false`.
      */
-    initializeNextTick: !IS_BAL_DEVELOPMENT, // true,
+    initializeNextTick: !IS_DS_DEVELOPMENT, // true,
     /**
      * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
      * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
      * the default behavior (slated for a future Stencil major version).
      */
-    experimentalScopedSlotChanges: !IS_BAL_DEVELOPMENT, // true,,
+    experimentalScopedSlotChanges: !IS_DS_DEVELOPMENT, // true,,
   },
   outputTargets: [
-    ...(!IS_BAL_DEVELOPMENT
+    ...(!IS_DS_DEVELOPMENT
       ? [
           docsJsonWithoutTimestamp({
             type: 'docs-json',
@@ -100,7 +107,7 @@ export const config: Config = {
           }),
         ]
       : []),
-    ...(!IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_DS_PLAYWRIGHT_TESTING
       ? [
           {
             type: 'dist',
@@ -111,7 +118,7 @@ export const config: Config = {
     /**
      * Use this outputs for documentation and e2e testing
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_DS_DEVELOPMENT && !IS_DS_PLAYWRIGHT_TESTING
       ? [
           CustomDocumentationGenerator,
           webOutputTarget({
@@ -156,7 +163,7 @@ export const config: Config = {
     /**
      * Skip those outputs for documentation releases on vercel and for e2e testing
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_PLAYWRIGHT_TESTING
+    ...(!IS_DS_DEVELOPMENT && !IS_DS_DOCUMENTATION && !IS_DS_PLAYWRIGHT_TESTING
       ? [
           {
             type: 'docs-vscode',

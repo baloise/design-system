@@ -26,7 +26,7 @@ export const TokensBorder = ({ overview }): React.ReactElement => {
                 <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <div style={{ background: 'var(--bal-color-red)', height: '48px', width: `var(--${item.name})` }}></div>
+                <div style={{ background: 'var(--ds-color-red)', height: '48px', width: `var(--${item.name})` }}></div>
               </td>
             </tr>
             <tr>

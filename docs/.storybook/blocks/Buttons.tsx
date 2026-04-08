@@ -82,7 +82,7 @@ export const GridComponents = ({ children }) => {
     <bal-app>
       <div
         className="sb-unstyled grid is-multiline mt-normal"
-        style={{ '--bal-column-gap': '.5rem', 'userSelect': 'none' }}
+        style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
       >
         {children}
       </div>
@@ -152,7 +152,7 @@ export const GridComponent = ({
 
 export const GridCards = ({ children }) => {
   return (
-    <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
+    <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--ds-column-gap': '.5rem' }}>
       {children}
     </div>
   )

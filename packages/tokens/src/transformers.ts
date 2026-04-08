@@ -7,7 +7,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `value`,
     transitive: true,
-    name: `bal/color/rgba`,
+    name: `ds/color/rgba`,
     filter: token => token.$type === 'color',
     transform: (token, _options) => {
       const value = token.$value ?? token.value
@@ -33,7 +33,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `value`,
     transitive: true,
-    name: `bal/color/hex`,
+    name: `ds/color/hex`,
     filter: token => token.$type === 'color',
     transform: (token, _options) => {
       const value = token.$value ?? token.value
@@ -51,7 +51,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `name`,
     transitive: true,
-    name: `bal/css/name`,
+    name: `ds/css/name`,
     transform: (token, _options) => {
       let tokenName = token.name
       const isPrimitive = token.path.includes('🧱 Primitive')
@@ -90,7 +90,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `name`,
     transitive: true,
-    name: `bal/js/name`,
+    name: `ds/js/name`,
     transform: (token, _options) => {
       let tokenName = token.name
       tokenName = tokenName.replace('Primitive', '')
@@ -106,7 +106,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `value`,
     transitive: true,
-    name: `bal/size/rem`,
+    name: `ds/size/rem`,
     filter: token => token.$type === 'number',
     transform: (token, _options) => {
       const name = token.name
@@ -158,7 +158,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
   sd.registerTransform({
     type: `value`,
     transitive: true,
-    name: `bal/size/round`,
+    name: `ds/size/round`,
     filter: token => token.$type === 'number',
     transform: (token, _options) => {
       const value = token.$value ?? token.value

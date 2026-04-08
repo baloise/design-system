@@ -2,7 +2,7 @@ import { expect } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class Card extends PageObject {
+export class DsCard extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }
@@ -12,7 +12,7 @@ export class Card extends PageObject {
   }
 }
 
-export class CardTitle extends PageObject {
+export class DsCardTitle extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }
@@ -22,7 +22,7 @@ export class CardTitle extends PageObject {
   }
 }
 
-export class CardSubtitle extends PageObject {
+export class DsCardSubtitle extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }
@@ -32,7 +32,7 @@ export class CardSubtitle extends PageObject {
   }
 }
 
-export class CardContent extends PageObject {
+export class DsCardContent extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }
@@ -42,13 +42,13 @@ export class CardContent extends PageObject {
   }
 }
 
-export class CardActions extends PageObject {
+export class DsCardActions extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }
 }
 
-export class CardHeader extends PageObject {
+export class DsCardHeader extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
   }

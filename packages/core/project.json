@@ -20,7 +20,7 @@
         "gugus": "npx -c 'nx watch --projects=core --includeDependentProjects -- node watch-styles.js'",
         "parallel": true,
         "env": {
-          "BAL_DEVELOPMENT": "true"
+          "DS_DEVELOPMENT": "true"
         }
       }
     },
@@ -31,7 +31,7 @@
         "cwd": "{projectRoot}",
         "command": "npx playwright test --ui",
         "env": {
-          "BAL_DEVELOPMENT": "true"
+          "DS_DEVELOPMENT": "true"
         }
       }
     },
@@ -42,7 +42,7 @@
         "cwd": "{projectRoot}",
         "command": "npx playwright test --update-snapshots",
         "env": {
-          "BAL_DEVELOPMENT": "true"
+          "DS_DEVELOPMENT": "true"
         }
       }
     },
@@ -53,7 +53,7 @@
         "cwd": "{projectRoot}",
         "command": "npx playwright test",
         "env": {
-          "BAL_PLAYWRIGHT_TESTING": "true"
+          "DS_PLAYWRIGHT_TESTING": "true"
         }
       }
     },
@@ -63,7 +63,7 @@
         "cwd": "{projectRoot}",
         "command": "npx playwright test --config=playwright.visual.config.ts --update-snapshots",
         "env": {
-          "BAL_DEVELOPMENT": "true"
+          "DS_DEVELOPMENT": "true"
         }
       }
     },
@@ -74,7 +74,7 @@
         "cwd": "{projectRoot}",
         "command": "npx playwright show-report",
         "env": {
-          "BAL_DEVELOPMENT": "true"
+          "DS_DEVELOPMENT": "true"
         }
       }
     },
@@ -84,7 +84,7 @@
         "cwd": "{projectRoot}",
         "command": "stencil build --serve --watch --port=3333",
         "env": {
-          "BAL_TESTING": "true"
+          "DS_TESTING": "true"
         }
       }
     },

@@ -1,27 +1,27 @@
 import { DateTime, Info, Settings } from 'luxon'
-import { useBalConfig } from '../config'
+import { useDsConfig } from '../config'
 import { dateSeparator } from './date.helpers'
 
-export interface BalDateInfoOptions {
+export interface DsDateInfoOptions {
   format?: 'narrow' | 'short' | 'long'
   locale?: string
 }
 
-export class BalDate {
+export class DsDate {
   public static setTwoDigitCutoffYear(cutoff = 10) {
     Settings.twoDigitCutoffYear = (new Date().getFullYear() % 100) + cutoff
   }
 
   public static fromAnyFormat(value: string) {
     const separator = value.replace(/[0-9]/g, '').charAt(0)
-    const config = useBalConfig()
+    const config = useDsConfig()
     const locale = config?.locale || 'de-CH'
     const pairs = value.split(separator)
 
     const length = pairs.length
     if (length === 2) {
       const year = new Date().getFullYear()
-      return new BalDate(
+      return new DsDate(
         DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
           locale,
         }),
@@ -29,7 +29,7 @@ export class BalDate {
     }
     if (length === 3) {
       if (pairs[2].length === 1) {
-        return new BalDate(
+        return new DsDate(
           DateTime.fromFormat(
             `${pairs[0]}${separator}${pairs[1]}${separator}${2000 + parseInt(pairs[2], 10)}`,
             `d${separator}M${separator}yy`,
@@ -40,7 +40,7 @@ export class BalDate {
         )
       } else if (pairs[2] === '') {
         const year = new Date().getFullYear()
-        return new BalDate(
+        return new DsDate(
           DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
             locale,
           }),
@@ -48,20 +48,20 @@ export class BalDate {
       }
     }
 
-    return new BalDate(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
+    return new DsDate(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
   }
 
   public static fromISO(value: string | undefined) {
-    return new BalDate(DateTime.fromISO(value || ''))
+    return new DsDate(DateTime.fromISO(value || ''))
   }
 
-  public static infoMonths({ format, locale }: BalDateInfoOptions = {}) {
-    const config = useBalConfig()
+  public static infoMonths({ format, locale }: DsDateInfoOptions = {}) {
+    const config = useDsConfig()
     return Info.months(format || 'long', { locale: locale || config?.locale || 'de-CH' })
   }
 
-  public static infoWeekdays({ format, locale }: BalDateInfoOptions = {}) {
-    const config = useBalConfig()
+  public static infoWeekdays({ format, locale }: DsDateInfoOptions = {}) {
+    const config = useDsConfig()
     const weekdays = Info.weekdays(format, { locale: locale || config?.locale || 'de-CH' })
     return weekdays
   }
@@ -88,7 +88,7 @@ export class BalDate {
 
   public toFormat() {
     if (this.isValid) {
-      const config = useBalConfig()
+      const config = useDsConfig()
       const locale = config?.locale || 'de-CH'
       const separator = dateSeparator(locale)
       return this.dt.toFormat(`dd${separator}MM${separator}yyyy`)
@@ -143,4 +143,4 @@ export class BalDate {
   }
 }
 
-BalDate.setTwoDigitCutoffYear()
+DsDate.setTwoDigitCutoffYear()

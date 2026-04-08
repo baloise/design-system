@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { ElementStateInfo } from '../../utils/element-states'
 
 @Component({
@@ -6,7 +6,7 @@ import { ElementStateInfo } from '../../utils/element-states'
   styleUrl: 'text.host.scss',
   shadow: true,
 })
-export class Text implements ComponentInterface, BalElementStateInfo {
+export class Text implements ComponentInterface, ElementStateInfo {
   /**
    * PUBLIC API
    * ------------------------------------------------------
@@ -136,8 +136,6 @@ export class Text implements ComponentInterface, BalElementStateInfo {
       <Host
         class={{
           [`is-${color}`]: !!color,
-
-          // [`is-inline`]: this.inline,
         }}
       >
         <Text
@@ -146,16 +144,6 @@ export class Text implements ComponentInterface, BalElementStateInfo {
           data-testid="bal-text"
           class={{
             [`is-${this.align}`]: !!this.align,
-            // text: true,
-            // [`is-${color}`]: !!color,
-            // [`is-bold`]: this.bold,
-            // [`has-shadow`]: this.shadow,
-            // [`has-no-wrap`]: this.noWrap,
-            // [`is-heading`]: this.heading,
-            // [`is-subtitle`]: this.subtitle,
-            // [`is-lg`]: this.size === 'lead',
-            // [`is-md`]: this.size === 'block',
-            // [`is-sm`]: this.size === 'small',
           }}
         >
           <slot></slot>

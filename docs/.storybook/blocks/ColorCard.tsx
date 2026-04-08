@@ -21,7 +21,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
           color: ['bal-color-primary-5', 'bal-text-color-primary', 'bal-background-color-primary'].includes(
             colorVariable.name,
           )
-            ? 'var(--bal-color-white)'
+            ? 'var(--ds-color-white)'
             : 'current',
         }}
       >

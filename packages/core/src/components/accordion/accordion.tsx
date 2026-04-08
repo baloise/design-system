@@ -1,16 +1,14 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { ariaBooleanToString } from '../../utils/aria'
-import { ConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
-import { AccordionState } from '../../interfaces'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { S } from 'vitest/dist/chunks/config.d.BTfZNUu9'
 
 @Component({
   tag: 'bal-accordion',
   styleUrl: 'accordion.host.scss',
   shadow: true,
 })
-export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
+export class Accordion implements ComponentInterface, DsConfigObserver, Loggable {
   private accordionId = `bal-accordion-${accordionIds++}`
 
   @State() animated = true
@@ -144,7 +142,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
   @Method()
   @ListenToConfig()
-  async configChanged(state: BalConfigState): Promise<void> {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.animated = state.animated
   }
 

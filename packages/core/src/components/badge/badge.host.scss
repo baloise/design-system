@@ -11,17 +11,17 @@
 
 :host {
   @include vars.base(badge);
-  @include vars.local(badge-font-family, var(--bal-badge-text-family));
-  @include vars.local(badge-font-weight, var(--bal-badge-text-weight));
-  @include vars.local(badge-min-width, var(--bal-badge-size-base));
-  @include vars.local(badge-height, var(--bal-badge-size-base));
-  @include vars.local(badge-radius, calc(var(--bal-badge-size-base) / 2));
-  @include vars.local(badge-color-background, var(--bal-badge-color-base-background));
-  @include vars.local(badge-color-text, var(--bal-badge-color-base-text));
-  @include vars.local(badge-pulse-color, var(--bal-badge-color-base-background));
+  @include vars.local(badge-font-family, var(--ds-badge-text-family));
+  @include vars.local(badge-font-weight, var(--ds-badge-text-weight));
+  @include vars.local(badge-min-width, var(--ds-badge-size-base));
+  @include vars.local(badge-height, var(--ds-badge-size-base));
+  @include vars.local(badge-radius, calc(var(--ds-badge-size-base) / 2));
+  @include vars.local(badge-color-background, var(--ds-badge-color-base-background));
+  @include vars.local(badge-color-text, var(--ds-badge-color-base-text));
+  @include vars.local(badge-pulse-color, var(--ds-badge-color-base-background));
   @include vars.local(badge-font-size, 85%);
   @include vars.local(badge-icon-size, 0.875rem);
-  @include vars.local(badge-icon-color, var(--bal-badge-color-base-text));
+  @include vars.local(badge-icon-color, var(--ds-badge-color-base-text));
   @include vars.local(badge-gap, 4px);
   @include vars.local(badge-padding-inline, 4px);
   @include vars.local(badge-padding-block, 4px);
@@ -77,10 +77,10 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
 
 @each $color in $colors {
   @include attr.has('color', $color) {
-    --mod-badge-color-text: var(--bal-badge-color-#{$color}-text);
-    --mod-badge-color-background: var(--bal-badge-color-#{$color}-background);
-    --mod-badge-pulse-color: var(--bal-badge-color-#{$color}-background);
-    --mod-badge-icon-color: var(--bal-badge-color-#{$color}-text);
+    --mod-badge-color-text: var(--ds-badge-color-#{$color}-text);
+    --mod-badge-color-background: var(--ds-badge-color-#{$color}-background);
+    --mod-badge-pulse-color: var(--ds-badge-color-#{$color}-background);
+    --mod-badge-icon-color: var(--ds-badge-color-#{$color}-text);
   }
 }
 
@@ -88,14 +88,14 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
 // Sizes
 // --------------------------------
 @include attr.has('size', 'sm') {
-  --mod-badge-radius: calc(var(--bal-badge-size-sm) / 2);
-  --mod-badge-height: var(--bal-badge-size-sm);
-  --mod-badge-min-width: var(--bal-badge-size-sm);
+  --mod-badge-radius: calc(var(--ds-badge-size-sm) / 2);
+  --mod-badge-height: var(--ds-badge-size-sm);
+  --mod-badge-min-width: var(--ds-badge-size-sm);
   --mod-badge-padding-inline: 0;
   --mod-badge-padding-block: 0;
   --mod-badge-font-size: 0;
 
-  max-width: var(--bal-badge-size-sm);
+  max-width: var(--ds-badge-size-sm);
   padding: 0;
   overflow: hidden;
 
@@ -105,9 +105,9 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
 }
 
 @include attr.has('size', 'lg') {
-  --mod-badge-min-width: var(--bal-badge-size-lg);
-  --mod-badge-height: var(--bal-badge-size-lg);
-  --mod-badge-radius: calc(var(--bal-badge-size-lg) / 2);
+  --mod-badge-min-width: var(--ds-badge-size-lg);
+  --mod-badge-height: var(--ds-badge-size-lg);
+  --mod-badge-radius: calc(var(--ds-badge-size-lg) / 2);
   --mod-badge-font-size: 1rem;
   --mod-badge-icon-size: 1.125rem;
 }

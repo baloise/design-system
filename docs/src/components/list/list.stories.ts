@@ -87,13 +87,13 @@ export const LinkedList = Story({
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
-  <bal-item variant="link" label="Internal Link" href="www.baloise.com" target="_blank"></bal-item>
+  <bal-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></bal-item>
   <bal-item
     variant="link"
     action-icon="link-external"
     label="External Link"
     description="Description"
-    href="www.baloise.com"
+    href="www.helvetia.com"
     target="_blank"
   ></bal-item>
   <bal-item
@@ -102,7 +102,7 @@ export const LinkedList = Story({
     action-icon="link-external"
     label="Disabled Link"
     description="Description"
-    href="www.baloise.com"
+    href="www.helvetia.com"
     target="_blank"
   ></bal-item>
 </bal-list>
@@ -116,13 +116,13 @@ export const LinkedListCss = Story({
     ({ ...args }) => `
         <ul class="list">
           <li>
-            <a class="item" href="www.baloise.com" target="_blank">
+            <a class="item" href="www.helvetia.com" target="_blank">
               <span class="item-content">Internal Link</span>
               <bal-icon name="nav-go-right"></bal-icon>
             </a>
           </li>
           <li>
-            <a class="item" href="www.baloise.com" target="_blank">
+            <a class="item" href="www.helvetia.com" target="_blank">
               <span class="item-content">
                 <span class="item-title">External Link</span>
                 <span class="item-text">Description</span>
@@ -325,7 +325,7 @@ export const OrderedList = Story({
   ...withRender(
     ({ ...args }) => `
         <bal-list ${props(args)}>
-          <bal-item variant="link" href="www.baloise.com" target="_blank">
+          <bal-item variant="link" href="www.helvetia.com" target="_blank">
             <bal-badge color="green" size="lg" slot="icon">
               <bal-icon name="check"></bal-icon>
             </bal-badge>

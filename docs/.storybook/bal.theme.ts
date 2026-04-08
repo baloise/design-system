@@ -4,7 +4,7 @@ import Logo from '../src/assets/images/storybook.svg'
 export default create({
   ...themes.light,
   base: 'light',
-  brandTitle: 'Baloise Design System',
+  brandTitle: 'Helvetia Design System',
   brandUrl: 'https://github.com/baloise/design-system',
   brandImage: Logo,
 

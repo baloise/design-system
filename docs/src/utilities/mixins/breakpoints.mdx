@@ -38,13 +38,13 @@ The file `design-system-styles/sass/mixins` provides all design tokens as CSS-Va
 `}
 </Markdown>
 
-<ScssSource code={`.bal-element {
+<ScssSource code={`.my-element {
   color: lime;
 }
 
-@include from(var(--bal-breakpoint-tablet)) {
+@include from(var(--ds-breakpoint-tablet)) {
 ${' '}${' '}// add your custom styles here
-${' '}${' '}.bal-element {
+${' '}${' '}.my-element {
 ${' '}${' '}${' '}${' '}color: blue;
 ${' '}${' '}}
 }
@@ -62,18 +62,18 @@ The named mixins have the breakpoint already declared on work with the standard.
 Always define mobile first and afterwards the style changes for the different breakpoints.
 
 <ScssSource code={`
-.bal-element {
+.my-element {
   color: lime;
 }
 
 @include tablet() {
-${' '}${' '}.bal-element {
+${' '}${' '}.my-element {
 ${' '}${' '}${' '}${' '}color: red;
 ${' '}${' '}}
 }
 
 @include desktop() {
-${' '}${' '}.bal-element {
+${' '}${' '}.my-element {
 ${' '}${' '}${' '}${' '}color: blue;
 ${' '}${' '}}
 }

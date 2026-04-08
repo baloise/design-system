@@ -159,7 +159,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
     important: true,
     states: true,
     additionalValues: {
-      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal) !important',
+      [`border${formattedPlacement}-width`]: 'var(--ds-border-width-normal) !important',
       [`border${formattedPlacement}-style`]: 'solid',
     },
   })

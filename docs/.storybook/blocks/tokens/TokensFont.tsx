@@ -25,7 +25,7 @@ export const TokensFont = ({ overview }): React.ReactElement => {
             <p className="m-none text-small">Should only be used for headings and buttons</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <Clipboard label={'bal-font-family-heading'} value={`var(--bal-font-family-heading)`} />
+            <Clipboard label={'bal-font-family-heading'} value={`var(--ds-font-family-heading)`} />
           </td>
         </tr>
         <tr>
@@ -41,7 +41,7 @@ export const TokensFont = ({ overview }): React.ReactElement => {
             <p className="m-none text-small">Should only be used for body texts and form controls</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <Clipboard label={'bal-font-family-text'} value={`var(--bal-font-family-text)`} />
+            <Clipboard label={'bal-font-family-text'} value={`var(--ds-font-family-text)`} />
           </td>
         </tr>
       </tbody>

@@ -12,7 +12,7 @@
 
 :host {
   @include vars.base(shape);
-  @include vars.local(shape-color, var(--bal-background-color-green-base));
+  @include vars.local(shape-color, var(--ds-background-color-green-base));
   @include vars.local(shape-size, 66px);
   @include vars.local(shape-rotation, 0deg);
 }
@@ -83,6 +83,6 @@ $shape-colors: (
 
 @each $name, $token in $shape-colors {
   @include attr.has('color', $name) {
-    --mod-shape-color: var(--bal-color-#{$token});
+    --mod-shape-color: var(--ds-color-#{$token});
   }
 }

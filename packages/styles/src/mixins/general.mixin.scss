@@ -29,10 +29,10 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@mixin focus-shadow($color: var(--bal-interaction-focus-color-base)) {
+@mixin focus-shadow($color: var(--ds-interaction-focus-color-base)) {
   @include hover {
     box-shadow:
-      var(--bal-interaction-focus-color-border) 0 0 0 2px,
+      var(--ds-interaction-focus-color-border) 0 0 0 2px,
       #{$color} 0 0 0 5px !important;
   }
 }
@@ -40,24 +40,24 @@
 @mixin focus-inset-shadow {
   @include hover {
     box-shadow:
-      inset var(--bal-interaction-focus-color-end) 0 0 0 3px,
-      inset var(--bal-interaction-focus-color-start) 0 0 0 5px !important;
+      inset var(--ds-interaction-focus-color-end) 0 0 0 3px,
+      inset var(--ds-interaction-focus-color-start) 0 0 0 5px !important;
   }
 }
 
 @mixin focus-inverted-shadow {
   @include hover {
     box-shadow:
-      var(--bal-interaction-focus-color-inverted-start) 0 0 0 2px,
-      var(--bal-interaction-focus-color-inverted-end) 0 0 0 5px !important;
+      var(--ds-interaction-focus-color-inverted-start) 0 0 0 2px,
+      var(--ds-interaction-focus-color-inverted-end) 0 0 0 5px !important;
   }
 }
 
 @mixin focus-inverted-inset-shadow {
   @include hover {
     box-shadow:
-      inset var(--bal-interaction-focus-color-inverted-end) 0 0 0 3px,
-      inset var(--bal-interaction-focus-color-inverted-start) 0 0 0 5px !important;
+      inset var(--ds-interaction-focus-color-inverted-end) 0 0 0 3px,
+      inset var(--ds-interaction-focus-color-inverted-start) 0 0 0 5px !important;
   }
 }
 

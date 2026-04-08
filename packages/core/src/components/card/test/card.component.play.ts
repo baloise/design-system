@@ -1,10 +1,10 @@
 import {
-  BalCard,
-  BalCardActions,
-  BalCardContent,
-  BalCardHeader,
-  CardSubtitle,
-  CardTitle,
+  DsCard,
+  DsCardActions,
+  DsCardContent,
+  DsCardHeader,
+  DsCardSubtitle,
+  DsCardTitle,
   test,
 } from '@baloise/ds-playwright'
 
@@ -14,7 +14,7 @@ test.describe('component', () => {
       <bal-card>Card content</bal-card>
     `)
 
-    const dsCard = new Card(page.locator('bal-card'))
+    const dsCard = new DsCard(page.locator('bal-card'))
 
     await dsCard.assertToBeVisible()
     await dsCard.assertToContainText('Card content')
@@ -27,7 +27,7 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const dsCardTitle = new CardTitle(page.locator('bal-card-title'))
+    const dsCardTitle = new DsCardTitle(page.locator('bal-card-title'))
 
     await dsCardTitle.assertToBeVisible()
     await dsCardTitle.assertToContainText('My Title')
@@ -40,7 +40,7 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const dsCardSubtitle = new CardSubtitle(page.locator('bal-card-subtitle'))
+    const dsCardSubtitle = new DsCardSubtitle(page.locator('bal-card-subtitle'))
 
     await dsCardSubtitle.assertToBeVisible()
     await dsCardSubtitle.assertToContainText('My Subtitle')
@@ -53,7 +53,7 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const dsCardContent = new CardContent(page.locator('bal-card-content'))
+    const dsCardContent = new DsCardContent(page.locator('bal-card-content'))
 
     await dsCardContent.assertToBeVisible()
     await dsCardContent.assertToContainText('My Content')
@@ -68,7 +68,7 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const dsCardActions = new CardActions(page.locator('bal-card-actions'))
+    const dsCardActions = new DsCardActions(page.locator('bal-card-actions'))
 
     await dsCardActions.assertToBeVisible()
   })
@@ -80,7 +80,7 @@ test.describe('component', () => {
       </bal-card>
     `)
 
-    const dsCardHeader = new CardHeader(page.locator('bal-card-header'))
+    const dsCardHeader = new DsCardHeader(page.locator('bal-card-header'))
 
     await dsCardHeader.assertToBeVisible()
     await dsCardHeader.assertToContainText('My Header')

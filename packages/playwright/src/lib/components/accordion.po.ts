@@ -2,7 +2,7 @@ import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class Accordion extends PageObject {
+export class DsAccordion extends PageObject {
   public readonly header: Locator
   public readonly summary: Locator
   public readonly marker: Locator
