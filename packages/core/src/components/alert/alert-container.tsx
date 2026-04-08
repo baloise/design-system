@@ -4,7 +4,7 @@ import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-co
 import { createPausableTimer, PausableTimer } from '../../utils/timer'
 
 @Component({
-  tag: 'bal-alert-container',
+  tag: 'ds-alert-container',
   styleUrl: 'alert-container.host.scss',
   shadow: true,
 })

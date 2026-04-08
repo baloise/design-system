@@ -3,7 +3,7 @@ import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-badge',
+  tag: 'ds-badge',
   styleUrl: 'badge.host.scss',
   shadow: true,
 })

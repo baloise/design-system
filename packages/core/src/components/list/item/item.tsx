@@ -11,7 +11,7 @@ type Attributes = {
 }
 
 @Component({
-  tag: 'bal-item',
+  tag: 'ds-item',
   styleUrl: 'item.host.scss',
   shadow: true,
 })

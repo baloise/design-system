@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'bal-button-group',
+  tag: 'ds-button-group',
   styleUrl: 'button-group.host.scss',
   shadow: true,
 })

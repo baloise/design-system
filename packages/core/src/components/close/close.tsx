@@ -12,7 +12,7 @@ import { i18nDsClose } from './close.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-close',
+  tag: 'ds-close',
   styleUrl: 'close.host.scss',
   shadow: true,
 })

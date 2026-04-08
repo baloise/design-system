@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'bal-check',
+  tag: 'ds-check',
   styleUrl: './check.host.scss',
   shadow: true,
 })

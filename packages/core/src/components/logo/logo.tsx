@@ -12,7 +12,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
 @Component({
-  tag: 'bal-logo',
+  tag: 'ds-logo',
   styleUrl: 'logo.host.scss',
   shadow: true,
 })

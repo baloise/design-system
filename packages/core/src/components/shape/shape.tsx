@@ -3,7 +3,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
 
 @Component({
-  tag: 'bal-shape',
+  tag: 'ds-shape',
   styleUrl: 'shape.host.scss',
   shadow: true,
 })

@@ -1,7 +1,7 @@
 import { Component, h, Host } from '@stencil/core'
 
 @Component({
-  tag: 'bal-tag-group',
+  tag: 'ds-tag-group',
   styleUrl: 'tag-group.host.scss',
   shadow: true,
 })

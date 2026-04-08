@@ -18,7 +18,7 @@ import { sanitizeSvg } from '../../../utils/svg'
 import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../utils/config'
 
 @Component({
-  tag: 'bal-toast',
+  tag: 'ds-toast',
   styleUrl: 'toast.host.scss',
   shadow: true,
 })

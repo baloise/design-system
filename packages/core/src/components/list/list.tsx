@@ -3,7 +3,7 @@ import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-list',
+  tag: 'ds-list',
   styleUrl: 'list.host.scss',
   shadow: true,
 })

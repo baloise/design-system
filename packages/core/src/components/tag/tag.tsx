@@ -4,7 +4,7 @@ import { inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-tag',
+  tag: 'ds-tag',
   styleUrl: 'tag.host.scss',
   shadow: true,
 })

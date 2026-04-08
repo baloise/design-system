@@ -15,7 +15,7 @@ import { I18nDsLabel } from './label.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-label',
+  tag: 'ds-label',
   styleUrl: './label.host.scss',
   shadow: true,
 })

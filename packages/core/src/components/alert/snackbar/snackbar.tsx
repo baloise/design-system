@@ -18,7 +18,7 @@ import { sanitizeSvg } from '../../../utils/svg'
 import { raf } from '../../../utils/helpers'
 
 @Component({
-  tag: 'bal-snackbar',
+  tag: 'ds-snackbar',
   styleUrl: 'snackbar.host.scss',
   shadow: true,
 })

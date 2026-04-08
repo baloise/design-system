@@ -8,7 +8,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
 @Component({
-  tag: 'bal-spinner',
+  tag: 'ds-spinner',
   styleUrl: 'spinner.host.scss',
   shadow: true,
 })

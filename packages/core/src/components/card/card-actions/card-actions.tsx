@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 @Component({
-  tag: 'bal-card-actions',
+  tag: 'ds-card-actions',
   shadow: true,
 })
 export class CardActions {

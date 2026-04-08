@@ -14,7 +14,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-notification',
+  tag: 'ds-notification',
   styleUrl: 'notification.host.scss',
   shadow: true,
 })

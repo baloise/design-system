@@ -9,7 +9,7 @@ import { DsIcons, updateDsIcons } from '../../../utils/config'
  * @internal
  */
 @Component({
-  tag: 'bal-doc-app',
+  tag: 'ds-doc-app',
   styleUrl: 'doc-app.scss',
 })
 export class DocApp implements ComponentInterface {

@@ -4,7 +4,7 @@ import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/con
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
-  tag: 'bal-accordion',
+  tag: 'ds-accordion',
   styleUrl: 'accordion.host.scss',
   shadow: true,
 })

@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { ElementStateInfo } from '../../utils/element-states'
 
 @Component({
-  tag: 'bal-text',
+  tag: 'ds-text',
   styleUrl: 'text.host.scss',
   shadow: true,
 })

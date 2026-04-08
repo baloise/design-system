@@ -12,7 +12,7 @@ import {
 } from './heading.const'
 
 @Component({
-  tag: 'bal-heading',
+  tag: 'ds-heading',
   styleUrl: 'heading.host.scss',
   shadow: true,
 })

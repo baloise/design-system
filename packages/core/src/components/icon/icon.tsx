@@ -6,7 +6,7 @@ import { sanitizeSvg } from '../../utils/svg'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-icon',
+  tag: 'ds-icon',
   styleUrl: 'icon.host.scss',
   shadow: true,
 })
