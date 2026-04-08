@@ -104,3 +104,12 @@ Checklist
 | bal-select (deprecated) | Web Component    | ⬜         | ⬜   | ⬜            |
 | bal-sheet               | Web Component    | ⬜         | ⬜   | ⬜            |
 | bal-time-input          | Web Component    | ⬜         | ⬜   | ⬜            |
+
+1. Enable shadow dom
+2. Add parts to important elements in the components tree like clickable elements, titles or contents
+3. Rename component from Bal to DS
+4. migrate Scss style to a .host.scss file and add the missing css variables
+5. Update the visual file like the others with the correct imports and structure with sections and data-testid
+6. Create visual.play file for the component that test all data-test id secctions of the html file
+7. Create a simple a11y.play file to test the component
+8. Creeate a PO file and the component.play.ts file to test test the component interactions clickable stuff events and for course the PO
