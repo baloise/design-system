@@ -62,11 +62,11 @@ $host-selector: ('#tag');
   font-weight: var(--_tag-font-weight);
 
   > .close,
-  > bal-close {
+  > ds-close {
     --close-mr: var(--_tag-close-mr);
   }
 
-  > bal-icon {
+  > ds-icon {
     --icon-size: 0.875rem;
   }
 }
@@ -203,7 +203,7 @@ $close-inverted: (
   --mod-tag-font-weight: var(--ds-tag-sm-weight);
 
   > .close,
-  > bal-close {
+  > ds-close {
     --close-padding: 0.25rem;
     --close-size-icon: 10px;
   }

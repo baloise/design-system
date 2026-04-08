@@ -195,7 +195,7 @@ $host-selector: ('#button');
 // --------------------------------
 
 @include hybrid.host($use-host) {
-  :host ::slotted(bal-badge),
+  :host ::slotted(ds-badge),
   :host ::slotted(.badge) {
     --badge-position: absolute;
     --badge-top: -0.5rem;
@@ -205,7 +205,7 @@ $host-selector: ('#button');
 
 @include hybrid.styles($css-selector, $use-host) {
   .badge,
-  bal-badge {
+  ds-badge {
     --badge-position: absolute;
     --badge-top: -0.5rem;
     --badge-right: -0.5rem;
@@ -593,15 +593,15 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     border-color: var(--ds-button-color-disabled-base-border);
     color: var(--ds-button-color-disabled-base-text);
 
-    & > bal-icon {
+    & > ds-icon {
       --icon-size: var(--ds-button-color-disabled-base-text);
     }
 
-    & > bal-spinner {
+    & > ds-spinner {
       --spinner-color: var(--ds-button-color-disabled-base-text);
     }
 
-    & > bal-spinner[variation='circle'] {
+    & > ds-spinner[variation='circle'] {
       --spinner-circle-color-border-background: var(--ds-color-grey-4);
       --spinner-circle-color-border-progress: var(--ds-button-color-disabled-base-text);
     }

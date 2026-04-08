@@ -56,7 +56,7 @@
   border: var(--_check-border-width) solid var(--_check-color-border);
   background: var(--_check-color-background);
 
-  bal-icon {
+  ds-icon {
     display: none;
     opacity: 0;
     --icon-color: var(--_check-color-icon);
@@ -64,7 +64,7 @@
 }
 
 @include host.hovered() {
-  bal-icon {
+  ds-icon {
     --icon-color: var(--_check-color-icon-hover);
   }
   border-color: var(--_check-color-border-hover);
@@ -72,7 +72,7 @@
 }
 
 @include host.pressed() {
-  bal-icon {
+  ds-icon {
     --icon-color: var(--_check-color-icon-active);
   }
   border-color: var(--_check-color-border-active);
@@ -92,7 +92,7 @@
   --mod-check-color-border-active: var(--ds-color-primary-6);
   --mod-check-color-background-active: var(--ds-color-primary-6);
 
-  bal-icon {
+  ds-icon {
     display: inline-flex;
     opacity: 1;
   }

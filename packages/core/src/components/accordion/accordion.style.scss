@@ -51,7 +51,7 @@ details.accordion > summary:not(.button) {
     &:hover,
     &.is-hovered {
       color: var(--ds-link-color-base-hover);
-      bal-icon {
+      ds-icon {
         --icon-color: var(--ds-link-color-base-hover);
       }
       &:after {
@@ -63,7 +63,7 @@ details.accordion > summary:not(.button) {
   &:active,
   &.is-pressed {
     color: var(--ds-link-color-base-active);
-    bal-icon {
+    ds-icon {
       --icon-color: var(--ds-link-color-base-active);
     }
     &:after {
@@ -250,19 +250,19 @@ details.accordion:has(> summary.button.is-small.at-end) > summary.button.is-smal
  *   </span>
  */
 
-bal-accordion .is-open,
+ds-accordion .is-open,
 details.accordion > summary .accordion-label > .is-open,
 details.accordion > summary > .is-open {
   display: none;
 }
 
-bal-accordion[open] .is-closed,
+ds-accordion[open] .is-closed,
 details.accordion[open] > summary .accordion-label > .is-closed,
 details.accordion[open] > summary > .is-closed {
   display: none;
 }
 
-bal-accordion[open] .is-open,
+ds-accordion[open] .is-open,
 details.accordion[open] > summary .accordion-label > .is-open,
 details.accordion[open] > summary > .is-open {
   display: inline;

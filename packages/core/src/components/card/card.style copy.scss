@@ -74,18 +74,18 @@ $card-colors: (
     @include card-space($spacing, padding-inline);
   }
 
-  > :first-child:not(.tag, .badge, bal-tag, bal-badge) {
+  > :first-child:not(.tag, .badge, ds-tag, ds-badge) {
     @include card-space($spacing, padding-top);
   }
 
   > .badge:first-child + *,
-  > bal-badge:first-child + *,
+  > ds-badge:first-child + *,
   > .tag:first-child + *,
-  > bal-tag:first-child + * {
+  > ds-tag:first-child + * {
     @include card-space($spacing, padding-top);
   }
 
-  > :last-child:not(.tag, .badge, bal-tag, bal-badge) {
+  > :last-child:not(.tag, .badge, ds-tag, ds-badge) {
     @include card-space($spacing, padding-bottom);
   }
 

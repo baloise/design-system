@@ -124,8 +124,8 @@
     grid-area: action;
     align-self: center;
 
-    bal-close,
-    bal-button,
+    ds-close,
+    ds-button,
     .button {
       --button-mt: 1rem;
       --button-font-size: var(--ds-button-size-sm);
@@ -135,9 +135,9 @@
     }
   }
 
-  ::slotted(bal-button),
-  ::slotted(bal-close),
-  ::slotted(bal-button-group) {
+  ::slotted(ds-button),
+  ::slotted(ds-close),
+  ::slotted(ds-button-group) {
     --button-mt: 1rem;
     --button-font-size: var(--ds-button-size-sm);
     --button-min-height: 2rem;
@@ -149,7 +149,7 @@
   // Close Button
   // --------------------------------
   .close,
-  bal-close {
+  ds-close {
     grid-area: close;
     align-self: flex-start;
   }

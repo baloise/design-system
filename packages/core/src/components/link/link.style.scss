@@ -56,7 +56,7 @@ a.is-link:not(.button),
   }
 
   color: var(--_link-color);
-  bal-icon {
+  ds-icon {
     --icon-color: var(--_link-color);
   }
 
@@ -64,7 +64,7 @@ a.is-link:not(.button),
     &:hover,
     &.is-hovered {
       color: var(--_link-color-hover);
-      bal-icon {
+      ds-icon {
         --icon-color: var(--_link-color-hover);
       }
     }
@@ -73,7 +73,7 @@ a.is-link:not(.button),
   &:active,
   &.is-active {
     color: var(--_link-color-active);
-    bal-icon {
+    ds-icon {
       --icon-color: var(--_link-color-active);
     }
   }

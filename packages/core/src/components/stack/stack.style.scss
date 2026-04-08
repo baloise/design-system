@@ -382,20 +382,20 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
 
 //
 // custom position
-.stack > bal-radio {
+.stack > ds-radio {
   margin-top: -0.25rem;
 }
 
 //
 // reset margin botton space
-bal-content > bal-text,
-.stack-content > bal-text,
-bal-content > .text,
+ds-content > ds-text,
+.stack-content > ds-text,
+ds-content > .text,
 .stack-content > .text,
-.stack > bal-text,
-.stack > bal-label,
-.stack > bal-heading,
-.stack > bal-heading:not(:last-child),
+.stack > ds-text,
+.stack > ds-label,
+.stack > ds-heading,
+.stack > ds-heading:not(:last-child),
 .stack > .label,
 .stack > .heading,
 .stack > .heading:not(:last-child),

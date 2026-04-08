@@ -70,7 +70,7 @@
     &:hover,
     &.is-hovered {
       color: var(--ds-link-color-base-hover);
-      bal-icon {
+      ds-icon {
         --icon-color: var(--ds-link-color-base-hover);
       }
     }
@@ -79,7 +79,7 @@
   &:active,
   &.is-pressed {
     color: var(--ds-link-color-base-active);
-    bal-icon {
+    ds-icon {
       --icon-color: var(--ds-link-color-base-active);
     }
   }

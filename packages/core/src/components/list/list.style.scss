@@ -105,11 +105,11 @@ ul.list li .item {
 
   //
   // Icons
-  bal-icon {
+  ds-icon {
     flex-shrink: 0;
   }
 
-  .item-content + bal-icon {
+  .item-content + ds-icon {
     --icon-size: var(--ds-icon-size-xs);
     --icon-inner-size: var(--ds-icon-size-xs);
   }
@@ -178,7 +178,7 @@ ul.list li button.item {
       --mod-list-item-border-color: var(--ds-link-color-base-hover);
 
       color: var(--ds-link-color-base-hover);
-      bal-icon {
+      ds-icon {
         --icon-color: var(--ds-link-color-base-hover);
       }
     }
@@ -189,7 +189,7 @@ ul.list li button.item {
     --mod-list-item-border-color: var(--ds-link-color-base-active);
 
     color: var(--ds-link-color-base-active);
-    bal-icon {
+    ds-icon {
       --icon-color: var(--ds-link-color-base-active);
     }
   }
@@ -257,7 +257,7 @@ ol.list li .item.is-disabled {
 
   color: var(--ds-list-item-disabled);
 
-  bal-icon {
+  ds-icon {
     --icon-color: var(--ds-list-item-disabled);
   }
 }
@@ -267,7 +267,7 @@ ol.list li .item.is-disabled {
   * --------------------------------
   */
 
-bal-item [slot='content'] {
+ds-item [slot='content'] {
   font-size: var(--ds-text-size-sm);
   @include typography.content(false);
 }
