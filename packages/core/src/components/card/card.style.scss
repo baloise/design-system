@@ -2,7 +2,7 @@
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 @use '../../typography' as typography;
-@use '../bal-button/button-group/button-group.mixin.scss' as button-group;
+@use '../button/button-group/button-group.mixin.scss' as button-group;
 @use './card-header/card-header.mixin.scss' as card-header;
 
 $use-host: false !default;

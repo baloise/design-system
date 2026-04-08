@@ -1,5 +1,5 @@
 @use '../../hybrid' as hybrid;
-@use './bal-card.style' with (
+@use './card.style' with (
   $use-host: true
 );
 

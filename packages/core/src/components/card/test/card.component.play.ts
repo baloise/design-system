@@ -3,7 +3,7 @@ import {
   BalCardActions,
   BalCardContent,
   BalCardHeader,
-  BalCardSubtitle,
+  CardSubtitle,
   CardTitle,
   test,
 } from '@baloise/ds-playwright'

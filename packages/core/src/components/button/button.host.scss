@@ -1,5 +1,5 @@
 @use '../../hybrid' as hybrid;
-@use './bal-button.style' with (
+@use './button.style' with (
   $use-host: true
 );
 

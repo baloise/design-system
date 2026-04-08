@@ -3,7 +3,7 @@ import { setPlatformHelpers } from '@stencil/core/internal'
 import { dsToastController, dsSnackbarController } from './components/alert/alert.controller'
 import { tags } from './tags-all'
 import { dsBrowser } from './utils/browser'
-import { BalConfig, PlatformConfig, setupConfig } from './utils/config'
+import { Config, PlatformConfig, setupConfig } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
 
 export const initializeBaloiseDesignSystem = (

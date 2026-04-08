@@ -16,7 +16,7 @@ import { join } from 'path'
 import { a11y } from './functions/a11y'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
-import { BalPage, PageOptions } from './types'
+import { Page, PageOptions } from './types'
 
 export { expect } from '@playwright/test'
 

@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { BalBreakpointObserver, Breakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
+import { BreakpointObserver, Breakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { AlertComponent } from '../alert-container.interfaces'
 import { sanitizeSvg } from '../../../utils/svg'

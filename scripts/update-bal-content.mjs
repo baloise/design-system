@@ -26,8 +26,10 @@ function updateFile(filePath) {
   const original = readFileSync(filePath, 'utf8')
   let content = original
 
-  // 1. styleUrl in @Component: 'bal-button.host.scss' → 'button.host.scss'
-  content = content.replace(/styleUrl:\s*'bal-([^']+)'/g, "styleUrl: '$1'")
+  // 1. styleUrl in @Component: './bal-button.host.scss' or 'bal-button.host.scss' → './button.host.scss' or 'button.host.scss'
+  content = content.replace(/styleUrl:\s*'(\.\/)?bal-([^']+)'/g, (match, prefix, rest) => {
+    return `styleUrl: '${prefix || ''}${rest}'`
+  })
 
   // 2. Import paths: from './bal-foo.bar' or from '../bal-foo/bal-bar'
   //    Replace bal- prefix in path segments (not in string HTML templates)
@@ -39,9 +41,14 @@ function updateFile(filePath) {
     return `${imp}${dots}${dir.replace(/bal-/g, '')}${rest}`
   })
 
-  // 3. @use SCSS paths: @use '...bal-button/bal-button.style'
-  content = content.replace(/(@use\s+['"])((?:[^'"]*\/)?)bal-([^/'"]+)\/bal-([^'"]+)(['"])/g, (match, use, prefix, comp1, comp2, quote) => {
-    return `${use}${prefix}${comp1}/${comp2}${quote}`
+  // 3. @use / @forward SCSS paths: strip bal- from every path segment and filename
+  content = content.replace(/(@use|@forward)(\s+['"][^'"]*['"])/g, (match, directive, pathPart) => {
+    // Strip bal- from directory segments: /bal-foo/ → /foo/
+    let updated = pathPart.replace(/\/bal-([^/'"]+)/g, '/$1')
+    // Strip bal- from the filename when it's the first segment after quote: 'bal-foo...' → 'foo...'
+    updated = updated.replace(/'bal-([^'"]+)'/g, "'$1'")
+    updated = updated.replace(/"bal-([^"]+)"/g, '"$1"')
+    return `${directive}${updated}`
   })
 
   // 4. PO class declarations: export class BalButton → export class Button

@@ -1,4 +1,4 @@
 @use '../../hybrid' as hybrid;
-@use './bal-tag.style' with (
+@use './tag.style' with (
   $use-host: true
 );

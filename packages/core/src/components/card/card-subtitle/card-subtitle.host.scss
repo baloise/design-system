@@ -1,5 +1,5 @@
 @use '../../../hybrid' as hybrid;
-@use './bal-card-subtitle.mixin.scss' as card-subtitle;
+@use './card-subtitle.mixin.scss' as card-subtitle;
 
 @include hybrid.host-base(card-subtitle, flex);
 

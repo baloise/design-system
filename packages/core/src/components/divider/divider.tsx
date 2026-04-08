@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-divider',
-  styleUrl: './bal-divider.host.scss',
+  styleUrl: './divider.host.scss',
   shadow: true,
 })
 export class Divider implements ComponentInterface, Loggable {

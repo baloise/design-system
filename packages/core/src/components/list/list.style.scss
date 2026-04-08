@@ -1,7 +1,7 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 
-@use './bal-description-list-native.styles.scss';
-@use './bal-list-native.styles.scss';
+@use './description-list-native.styles.scss';
+@use './list-native.styles.scss';
 
 @use '../../vars' as vars;
 @use '../../hybrid' as hybrid;

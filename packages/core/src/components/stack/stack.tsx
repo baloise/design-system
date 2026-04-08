@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-stack',
-  styleUrl: './bal-stack.host.scss',
+  styleUrl: './stack.host.scss',
 })
 export class Stack implements ComponentInterface, Loggable {
   log!: LogInstance

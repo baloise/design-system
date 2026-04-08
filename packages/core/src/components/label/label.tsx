@@ -3,20 +3,20 @@ import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   BalConfigObserver,
   BalConfigState,
-  BalLanguage,
+  Language,
   Region,
   defaultConfig,
   ListenToConfig,
 } from '../../utils/config'
 import { ElementStateInfo } from '../../utils/element-states'
-import { BalAriaForm, AriaFormLinking, defaultBalAriaForm } from '../../utils/form'
+import { AriaForm, AriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { i18nBalLabel } from './label.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-label',
-  styleUrl: './bal-label.host.scss',
+  styleUrl: './label.host.scss',
   shadow: true,
 })
 export class Label implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking {

@@ -1,5 +1,5 @@
 import { SingleSubject } from '../types/signal'
-import { BalFocusInfo, BalFocusListenerFn, FocusObserver } from './focus.interfaces'
+import { BalFocusInfo, FocusListenerFn, FocusObserver } from './focus.interfaces'
 import { FocusListener } from './focus.listener'
 
 export class FocusSubject extends SingleSubject<BalFocusObserver, BalFocusInfo> {

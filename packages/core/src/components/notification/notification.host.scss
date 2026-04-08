@@ -1,6 +1,6 @@
 @use '../../hybrid' as hybrid;
 @use '../../host' as host;
-@use './bal-notification.style' with (
+@use './notification.style' with (
   $use-host: true
 );
 

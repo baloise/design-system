@@ -1,7 +1,7 @@
 import { Logger } from '../log'
 import { BALOISE_ANIMATION_KEY } from './config.const'
 import { defaultConfig } from './config.default'
-import { BalBrand, BalConfig, BalConfigState, BalIcons, BalLanguage, Region } from './config.types'
+import { BalBrand, BalConfig, BalConfigState, BalIcons, Language, Region } from './config.types'
 import { ConfigObserver } from './observable/observer'
 
 export class Config {

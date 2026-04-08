@@ -1,5 +1,5 @@
 import { SingleSubject } from '../types/signal'
-import { BalAnimationObserver, AnimationObserverInfo } from './animation.interfaces'
+import { AnimationObserver, AnimationObserverInfo } from './animation.interfaces'
 import { AnimationListener } from './animation.listener'
 
 export class AnimationSubject extends SingleSubject<BalAnimationObserver, BalAnimationObserverInfo> {

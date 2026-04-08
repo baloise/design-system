@@ -1,6 +1,6 @@
 import { rIC } from '../helpers'
 import { SingleSubject } from '../types/signal'
-import { BalResizeInfo, BalResizeListenerFn, ResizeObserver } from './resize.interfaces'
+import { BalResizeInfo, ResizeListenerFn, ResizeObserver } from './resize.interfaces'
 import { ResizeListener } from './resize.listener'
 
 export class ResizeSubject extends SingleSubject<BalResizeObserver, BalResizeInfo> {

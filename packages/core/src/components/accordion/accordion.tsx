@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { ariaBooleanToString } from '../../utils/aria'
-import { BalConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
+import { ConfigObserver, ConfigState, ListenToConfig } from '../../utils/config'
 import { AccordionState } from '../../interfaces'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { S } from 'vitest/dist/chunks/config.d.BTfZNUu9'

@@ -1,4 +1,4 @@
-import { BalSnackbar, Toast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { Snackbar, Toast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'bal-alert'
 

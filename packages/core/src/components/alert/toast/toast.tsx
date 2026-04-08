@@ -15,7 +15,7 @@ import { stopEventBubbling } from '../../../utils/form-input'
 import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'
-import { BalConfigObserver, ConfigState, ListenToConfig } from '../../../utils/config'
+import { ConfigObserver, ConfigState, ListenToConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-toast',

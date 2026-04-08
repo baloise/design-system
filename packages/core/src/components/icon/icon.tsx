@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { BalConfigObserver, BalConfigState, Icons, defaultConfig, ListenToConfig } from '../../utils/config'
+import { BalConfigObserver, ConfigState, Icons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { ElementStateInfo } from '../../utils/element-states'
 import { sanitizeSvg } from '../../utils/svg'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'

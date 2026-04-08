@@ -1,7 +1,7 @@
 import { dsDevice } from '../device'
 import { WindowResizeListener } from '../resize'
 import { Subject } from '../types/signal'
-import { BalOrientationInfo, OrientationObserver } from './orientation.interfaces'
+import { OrientationInfo, OrientationObserver } from './orientation.interfaces'
 
 export class OrientationSubject extends Subject<BalOrientationObserver> {
   private listener = new WindowResizeListener()

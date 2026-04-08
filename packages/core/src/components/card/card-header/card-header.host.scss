@@ -1,5 +1,5 @@
 @use '../../../hybrid' as hybrid;
-@use './bal-card-header.mixin.scss' as card-header;
+@use './card-header.mixin.scss' as card-header;
 
 @include hybrid.host-base(card-header, flex);
 

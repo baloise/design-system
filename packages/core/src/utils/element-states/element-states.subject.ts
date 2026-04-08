@@ -1,5 +1,5 @@
 import { SingleSubject } from '../types/signal'
-import { BalElementStateInfo, BalElementStateListenerFn, ElementStateObserver } from './element-states.interfaces'
+import { BalElementStateInfo, ElementStateListenerFn, ElementStateObserver } from './element-states.interfaces'
 import { ElementStateListener } from './element-states.listener'
 
 export class ElementStateSubject extends SingleSubject<BalElementStateObserver, BalElementStateInfo> {

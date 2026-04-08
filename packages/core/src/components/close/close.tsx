@@ -3,7 +3,7 @@ import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   BalConfigObserver,
   BalConfigState,
-  BalLanguage,
+  Language,
   Region,
   ListenToConfig,
   defaultConfig,

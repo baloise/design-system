@@ -107,7 +107,7 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { BalApp, Heading } from "@baloise/ds-react";
+import { App, Heading } from "@baloise/ds-react";
 
 function App() {
   return (
@@ -316,7 +316,7 @@ Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
 
 ```tsx
 import { useState } from 'react'
-import { BalInput, Text } from '@baloise/ds-react'
+import { Input, Text } from '@baloise/ds-react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()
@@ -418,7 +418,7 @@ export class MethodComponent {
 <ReactFramework>
 
 ```tsx
-import { BalSelect, BalSelectOption, Button } from '@baloise/ds-react'
+import { BalSelect, SelectOption, Button } from '@baloise/ds-react'
 import { useRef } from 'react'
 
 function MethodComponent() {

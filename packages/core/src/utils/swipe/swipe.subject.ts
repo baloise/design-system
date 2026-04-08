@@ -1,6 +1,6 @@
 import { dsDevice } from '../device'
 import { SingleSubject } from '../types/signal'
-import { BalSwipeInfo, BalSwipeListenerFn, SwipeObserver } from './swipe.interfaces'
+import { BalSwipeInfo, SwipeListenerFn, SwipeObserver } from './swipe.interfaces'
 import { SwipeListener } from './swipe.listener'
 
 export class SwipeSubject extends SingleSubject<BalSwipeObserver, BalSwipeInfo> {

@@ -1,4 +1,4 @@
-import { BalItem, List, expect, test } from '@baloise/ds-playwright'
+import { Item, List, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render bal-list', async ({ page }) => {

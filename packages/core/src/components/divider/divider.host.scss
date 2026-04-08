@@ -1,6 +1,6 @@
 @use '../../hybrid' as hybrid;
 
-@use './bal-divider.style' with (
+@use './divider.style' with (
   $use-host: true
 );
 

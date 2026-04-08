@@ -4,7 +4,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
   tag: 'bal-content',
-  styleUrl: './bal-content.host.scss',
+  styleUrl: './content.host.scss',
 })
 export class Content implements ComponentInterface, Loggable {
   log!: LogInstance

@@ -1,5 +1,5 @@
 import { SingleSubject } from '../types/signal'
-import { BalKeyboardInfo, BalKeyboardListenerFn, KeyboardObserver } from './keyboard.interfaces'
+import { BalKeyboardInfo, KeyboardListenerFn, KeyboardObserver } from './keyboard.interfaces'
 import { KeyboardListener } from './keyboard.listener'
 
 export class KeyboardSubject extends SingleSubject<BalKeyboardObserver, BalKeyboardInfo> {

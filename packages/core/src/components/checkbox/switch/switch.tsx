@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-switch',
-  styleUrl: './bal-switch.host.scss',
+  styleUrl: './switch.host.scss',
   shadow: true,
 })
 export class Switch implements ComponentInterface {

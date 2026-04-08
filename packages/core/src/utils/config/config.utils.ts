@@ -1,6 +1,6 @@
 import { dsBrowser } from '../browser'
 import { Config } from './config'
-import { BalConfigState, BalIcons, BalLanguage, Region } from './config.types'
+import { BalConfigState, BalIcons, Language, Region } from './config.types'
 import { ConfigObserver } from './observable/observer'
 
 export type BalConfigChangeFn = (config: BalConfigState) => void

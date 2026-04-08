@@ -1,5 +1,5 @@
 import { WindowResizeListener } from '../resize/window-resize.listener'
-import { BalBreakpointObserver, Breakpoints } from './breakpoints.interfaces'
+import { BreakpointObserver, Breakpoints } from './breakpoints.interfaces'
 import { dsBreakpoints } from './breakpoints'
 import { initialBreakpoints } from './breakpoints.const'
 import { Subject } from '../types/signal'
