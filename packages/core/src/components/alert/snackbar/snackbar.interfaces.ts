@@ -9,7 +9,7 @@ namespace DS {
 
   export interface SnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalSnackbarElement
+    target: HTMLDsSnackbarElement
   }
 
   export type SnackbarCloseClickDetail = MouseEvent

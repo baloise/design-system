@@ -12,7 +12,7 @@ export class AlertContainer implements ComponentInterface {
   private maxVisibleItems = 5
   private animationDurationMs = 300
 
-  @Element() el!: HTMLBalAlertContainerElement
+  @Element() el!: HTMLDsAlertContainerElement
   containerEl: HTMLDivElement | undefined
 
   @State() alerts: AlertComponent[] = []

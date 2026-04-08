@@ -10,7 +10,7 @@ namespace DS {
 
   export interface AccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalAccordionElement
+    target: HTMLDsAccordionElement
   }
 
   export type AccordionToggleDetail = { group?: string; id: string; open: boolean }

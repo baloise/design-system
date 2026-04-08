@@ -23,7 +23,7 @@ import { raf } from '../../../utils/helpers'
   shadow: true,
 })
 export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpointObserver {
-  @Element() element!: HTMLBalSnackbarElement
+  @Element() element!: HTMLDsSnackbarElement
 
   @State() isMobile = dsBreakpoints.isMobile
   @State() mobileOpenState = false

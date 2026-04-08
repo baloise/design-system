@@ -23,7 +23,7 @@ import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../utils/
   shadow: true,
 })
 export class Toast implements ComponentInterface, AlertComponent, DsConfigObserver {
-  @Element() element!: HTMLBalToastElement
+  @Element() element!: HTMLDsToastElement
 
   @State() animated = false
   @State() didLoad = false

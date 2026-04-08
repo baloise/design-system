@@ -19,7 +19,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
   shadow: true,
 })
 export class Notification implements ComponentInterface {
-  @Element() element!: HTMLBalNotificationElement
+  @Element() element!: HTMLDsNotificationElement
   @State() didLoad = false
 
   timer!: NodeJS.Timeout

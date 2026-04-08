@@ -31,7 +31,7 @@ namespace DS {
 
   export interface TagCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalTagElement
+    target: HTMLDsTagElement
   }
 
   export type TagCloseClickDetail = MouseEvent

@@ -36,7 +36,7 @@ namespace DS {
 
   export interface ButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalButtonElement
+    target: HTMLDsButtonElement
   }
 
   export type ButtonBlurDetail = void
