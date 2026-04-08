@@ -13,7 +13,7 @@ import {
 
 type Args = JSX.BalText & { content: string }
 
-const tag = 'bal-text'
+const tag = 'ds-text'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -57,7 +57,7 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 export const WebComponentBasic = Story({
-  ...withRender(({ content, ...args }) => `<bal-text ${props(args)}>${content}</bal-text>`),
+  ...withRender(({ content, ...args }) => `<ds-text ${props(args)}>${content}</ds-text>`),
 })
 
 export const BoldText = Story({

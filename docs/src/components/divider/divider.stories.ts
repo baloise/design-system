@@ -4,7 +4,7 @@ import { createCssMappings, cssClasses, props, StoryFactory, withComponentContro
 
 type Args = JSX.BalDivider & { content: string }
 
-const tag = 'bal-divider'
+const tag = 'ds-divider'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -47,7 +47,7 @@ export const WebComponentBasic = Story({
     ({ content, ...args }) => `
 <div class="stack as-col">
   <span>Before</span>
-  <bal-divider ${props(args)}></bal-divider>
+  <ds-divider ${props(args)}></ds-divider>
   <span>After</span>
 </div>
    `,

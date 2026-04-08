@@ -13,7 +13,7 @@ import {
 
 type Args = JSX.BalHeading & { content: string }
 
-const tag = 'bal-heading'
+const tag = 'ds-heading'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -65,7 +65,7 @@ export const WebComponentBasic = Story({
     space: 'bottom',
     inverted: false,
   },
-  ...withRender(({ content, ...args }) => `<bal-heading ${props(args)}>${content}</bal-heading>`),
+  ...withRender(({ content, ...args }) => `<ds-heading ${props(args)}>${content}</ds-heading>`),
 })
 
 export const Levels = Story({
@@ -127,7 +127,7 @@ export const Spacing = Story({
 })
 
 export const AutoLevel = Story({
-  ...withRender(({ content, ...args }) => `<bal-heading auto-level="h5" ${props(args)}>${content}</bal-heading>`),
+  ...withRender(({ content, ...args }) => `<ds-heading auto-level="h5" ${props(args)}>${content}</ds-heading>`),
   args: {
     content:
       'This heading is actual a H1 level, but since it requires more than one line we shrink it until it matches or is the same level as the auto-level.',

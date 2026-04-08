@@ -11,9 +11,9 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-logo' }),
+    ...withComponentControls({ tag: 'ds-logo' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-logo ${props(args)}>${content}</bal-logo>`),
+  ...withRender(({ content, ...args }) => `<ds-logo ${props(args)}>${content}</ds-logo>`),
 }
 
 export default meta

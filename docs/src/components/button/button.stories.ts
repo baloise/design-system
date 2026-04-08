@@ -13,7 +13,7 @@ import {
 
 type Args = JSX.BalButton & { content: string }
 
-const tag = 'bal-button'
+const tag = 'ds-button'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -58,16 +58,16 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 
 export const WebComponentBasic = Story({
-  ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
+  ...withRender(({ content, ...args }) => `<ds-button ${props(args)}>${content}</ds-button>`),
 })
 
 export const WebComponentGroup = Story({
   ...withRender(
     ({ content, ...args }) => `
- <bal-button-group>
-  <bal-button ${props(args)}>${content}</bal-button>
-  <bal-button ${props(args)}>${content}</bal-button>
- </bal-button-group>  
+ <ds-button-group>
+  <ds-button ${props(args)}>${content}</ds-button>
+  <ds-button ${props(args)}>${content}</ds-button>
+ </ds-button-group>  
   `,
   ),
 })
@@ -120,7 +120,7 @@ export const WithIcon = Story({
   ...withRender(
     () => `
 <button class="button is-primary">
-  <bal-icon name="plus"></bal-icon>
+  <ds-icon name="plus"></ds-icon>
   Button
 </button>`,
   ),
@@ -130,11 +130,11 @@ export const States = Story({
   ...withRender(
     () => `<div class="buttons">
   <button class="button is-loading">
-    <bal-spinner></bal-spinner>
+    <ds-spinner></ds-spinner>
     loading...
   </button>
   <button class="button is-loading" disabled>
-    <bal-spinner variation="circle"></bal-spinner>
+    <ds-spinner variation="circle"></ds-spinner>
     loading...
   </button>
   <button class="button" disabled>Disabled</button>
@@ -146,19 +146,19 @@ export const Dashed = Story({
   ...withRender(
     () => `<div class="buttons">
   <button class="button is-tertiary-purple is-large is-dashed">
-    <bal-icon name="plus" class="is-circle"></bal-icon>
+    <ds-icon name="plus" class="is-circle"></ds-icon>
     Purple
   </button>
   <button class="button is-tertiary-red is-large is-dashed">
-    <bal-icon name="plus" class="is-circle"></bal-icon>
+    <ds-icon name="plus" class="is-circle"></ds-icon>
     Red
   </button>
   <button class="button is-tertiary-yellow is-large is-dashed">
-    <bal-icon name="plus" class="is-circle"></bal-icon>
+    <ds-icon name="plus" class="is-circle"></ds-icon>
     Yellow
   </button>
   <button class="button is-tertiary-green is-large is-dashed">
-    <bal-icon name="plus" class="is-circle"></bal-icon>
+    <ds-icon name="plus" class="is-circle"></ds-icon>
     Green
   </button>
 </div>`,
@@ -180,13 +180,13 @@ export const SquareButtons = Story({
   ...withRender(
     () => `<div class="buttons">
   <button class="button is-square">
-    <bal-icon name="plus"></bal-icon>
+    <ds-icon name="plus"></ds-icon>
   </button>
   <button class="button is-square is-secondary">
-    <bal-icon name="plus"></bal-icon>
+    <ds-icon name="plus"></ds-icon>
   </button>
   <button class="button is-circle is-tertiary-purple">
-    <bal-icon name="plus"></bal-icon>
+    <ds-icon name="plus"></ds-icon>
   </button>
 </div>`,
   ),
@@ -244,14 +244,14 @@ export const ButtonGroupAsRow = Story({
     () => `<div class="stack">
   <div class="buttons as-row">
     <button class="button is-scondary">
-      <bal-icon name="caret-left"></bal-icon>
+      <ds-icon name="caret-left"></ds-icon>
       Back
     </button>
     <button class="button">Next</button>
   </div>
   <div class="buttons as-row">
     <button class="button is-square">
-      <bal-icon name="caret-left"></bal-icon>
+      <ds-icon name="caret-left"></ds-icon>
     </button>
     <button class="button">Next</button>
   </div>
@@ -301,7 +301,7 @@ export const LinkButton = Story({
   ...withRender(
     () => `
 <a class="button is-link">
-  <bal-icon name="plus"></bal-icon>
+  <ds-icon name="plus"></ds-icon>
   Link
 </a>`,
   ),

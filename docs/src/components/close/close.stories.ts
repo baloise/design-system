@@ -4,7 +4,7 @@ import { createCssMappings, cssClasses, props, StoryFactory, withComponentContro
 
 type Args = JSX.BalClose & { content: string }
 
-const tag = 'bal-close'
+const tag = 'ds-close'
 
 const meta: Meta<Args> = {
   title: 'Components/Navigation/Close',
@@ -12,7 +12,7 @@ const meta: Meta<Args> = {
   argTypes: {
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ ...args }) => `<bal-close ${props(args)}></bal-close>`),
+  ...withRender(({ ...args }) => `<ds-close ${props(args)}></ds-close>`),
 }
 
 export default meta

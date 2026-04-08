@@ -12,7 +12,7 @@ import {
 
 type Args = JSX.BalLabel & { content: string }
 
-const tag = 'bal-label'
+const tag = 'ds-label'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -85,12 +85,12 @@ export const Sizes = Story({
 
 export const FieldLabel = Story({
   ...withRender(
-    () => `<bal-field>
-    <bal-field-label required="true">Field Label</bal-field-label>
-    <bal-field-control>
-      <bal-input name="my-input" placeholder="Placeholder"></bal-input>
-    </bal-field-control>
-    <bal-field-message>Field Message</bal-field-message>
-  </bal-field>`,
+    () => `<ds-field>
+    <ds-field-label required="true">Field Label</ds-field-label>
+    <ds-field-control>
+      <ds-input name="my-input" placeholder="Placeholder"></ds-input>
+    </ds-field-control>
+    <ds-field-message>Field Message</ds-field-message>
+  </ds-field>`,
   ),
 })

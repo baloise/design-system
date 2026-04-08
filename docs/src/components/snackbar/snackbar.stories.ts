@@ -28,15 +28,15 @@ const meta: Meta<Args> = {
     closable: false,
   },
   argTypes: {
-    ...withComponentControls({ tag: 'bal-snackbar' }),
+    ...withComponentControls({ tag: 'ds-snackbar' }),
   },
   render: (args, context) => {
     const section: HTMLElement = document.createElement('section')
 
-    section.innerHTML = `<bal-button>Trigger Snackbar</bal-button>`
+    section.innerHTML = `<ds-button>Trigger Snackbar</ds-button>`
 
     listener.addEventListener('click', context, (event: UIEvent) => {
-      const button = (event.target as any).closest('bal-button')
+      const button = (event.target as any).closest('ds-button')
       if (button) {
         const label = button.innerText.trim()
 
@@ -76,11 +76,11 @@ export const Colors = Story({
   ...withRender(
     ({ ...args }) => `
 <div class="stack">
-  <bal-snackbar heading="Default">${args.message}</bal-snackbar>
-  <bal-snackbar color="info" heading="Info">${args.message}</bal-snackbar>
-  <bal-snackbar color="success" heading="Success">${args.message}</bal-snackbar>
-  <bal-snackbar color="warning" heading="Warning">${args.message}</bal-snackbar>
-  <bal-snackbar color="danger" heading="Danger">${args.message}</bal-snackbar>
+  <ds-snackbar heading="Default">${args.message}</ds-snackbar>
+  <ds-snackbar color="info" heading="Info">${args.message}</ds-snackbar>
+  <ds-snackbar color="success" heading="Success">${args.message}</ds-snackbar>
+  <ds-snackbar color="warning" heading="Warning">${args.message}</ds-snackbar>
+  <ds-snackbar color="danger" heading="Danger">${args.message}</ds-snackbar>
 </div>
 `,
   ),
@@ -94,7 +94,7 @@ export const BrandIcons = Story({
   },
   ...withRender(
     ({ ...args }) => `
-  <bal-snackbar heading="With Brand Icons" svg='${BrandIconCarPurple}' action="Aktion">${args.message}</bal-snackbar>
+  <ds-snackbar heading="With Brand Icons" svg='${BrandIconCarPurple}' action="Aktion">${args.message}</ds-snackbar>
 `,
   ),
 })

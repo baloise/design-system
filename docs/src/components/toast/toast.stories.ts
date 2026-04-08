@@ -27,15 +27,15 @@ const meta: Meta<Args> = {
     closable: true,
   },
   argTypes: {
-    ...withComponentControls({ tag: 'bal-toast' }),
+    ...withComponentControls({ tag: 'ds-toast' }),
   },
   render: (args, context) => {
     const section: HTMLElement = document.createElement('section')
 
-    section.innerHTML = `<bal-button>Trigger Toast</bal-button>`
+    section.innerHTML = `<ds-button>Trigger Toast</ds-button>`
 
     listener.addEventListener('click', context, (event: UIEvent) => {
-      const button = (event.target as any).closest('bal-button')
+      const button = (event.target as any).closest('ds-button')
       if (button) {
         const label = button.innerText.trim()
 
@@ -74,11 +74,11 @@ export const Colors = Story({
   ...withRender(
     ({ ...args }) => `
 <div class="stack">
-  <bal-toast closable>Default - ${args.message}</bal-toast>
-  <bal-toast closable color="info">Info - ${args.message}</bal-toast>
-  <bal-toast closable color="success">Success - ${args.message}</bal-toast>
-  <bal-toast closable color="warning">Warning - ${args.message}</bal-toast>
-  <bal-toast closable color="danger">Danger - ${args.message}</bal-toast>
+  <ds-toast closable>Default - ${args.message}</ds-toast>
+  <ds-toast closable color="info">Info - ${args.message}</ds-toast>
+  <ds-toast closable color="success">Success - ${args.message}</ds-toast>
+  <ds-toast closable color="warning">Warning - ${args.message}</ds-toast>
+  <ds-toast closable color="danger">Danger - ${args.message}</ds-toast>
 </div>
 `,
   ),

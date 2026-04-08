@@ -12,17 +12,17 @@ type Args = JSX.BalStack & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Layout/Stack',
   argTypes: {
-    ...withComponentControls({ tag: 'bal-stack' }),
+    ...withComponentControls({ tag: 'ds-stack' }),
   },
   ...withRender(
-    () => `<bal-stack>
-  <bal-icon name="date" size="md"></bal-icon>
-  <bal-content>
-    <bal-label>My Item</bal-label>
-    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-  </bal-content>
-  <bal-button>Button</bal-button>
-</bal-stack>`,
+    () => `<ds-stack>
+  <ds-icon name="date" size="md"></ds-icon>
+  <ds-content>
+    <ds-label>My Item</ds-label>
+    <ds-text>Item is used to easaly group components and not be concered about the correct spacing.</ds-text>
+  </ds-content>
+  <ds-button>Button</ds-button>
+</ds-stack>`,
   ),
 }
 
@@ -70,7 +70,7 @@ export const Item = Story({
   ...withRender(
     () => `
 <div class="stack as-row bg-purple-light p-base radius">
-  <bal-icon name="date" size="md"></bal-icon>
+  <ds-icon name="date" size="md"></ds-icon>
   <div class="stack-content">
     <label class="label">My Item</label>
     <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
@@ -99,7 +99,7 @@ export const Alignment = Story({
   ...withRender(
     () => `
 <div class="stack as-col align-center bg-red-light p-base radius">
-  <bal-icon name="date" size="md"></bal-icon>
+  <ds-icon name="date" size="md"></ds-icon>
   <div class="stack-content align-center">
     <label class="label">My Item</label>
     <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
@@ -162,7 +162,7 @@ export const TeaserCards = Story({
     <article class="card is-purple-light is-fullheight">
       <div class="card-content">
         <div class="stack align-center has-space-lg">
-          <bal-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></bal-icon>
+          <ds-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></ds-icon>
           <div class="stack-content align-top-center">
             <h3 class="title is-centered">Teaser Card</h3>
             The item component can easily be combined with the card component to achieve a nice
@@ -177,7 +177,7 @@ export const TeaserCards = Story({
     <article class="card is-yellow-light is-fullheight">
       <div class="card-content">
         <div class="stack align-center has-space-lg">
-          <bal-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></bal-icon>
+          <ds-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></ds-icon>
           <div class="stack-content align-top-center">
             <h3 class="title is-centered">Auto Height</h3>
             The height of the cards adjust to the longest in the row.
@@ -191,7 +191,7 @@ export const TeaserCards = Story({
       <article class="card is-red-light is-fullheight">
       <div class="card-content">
         <div class="stack align-center has-space-lg">
-          <bal-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></bal-icon>
+          <ds-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></ds-icon>
           <div class="stack-content align-top-center">
             <h3 class="title is-centered">Item Component</h3>
             Item is used to easaly group components and not be concered about the correct spacing.
@@ -211,17 +211,17 @@ export const StackedTabs = Story({
     space: 'base',
   },
   ...withRender(
-    ({ ...args }) => `<bal-stack ${props(args)}>
-  <bal-tabs value="tab-a">
-    <bal-tab-item value="tab-a" label="Tab A Tab A Tab A"></bal-tab-item>
-    <bal-tab-item value="tab-b" label="Tab B Tab B Tab B"></bal-tab-item>
-    <bal-tab-item value="tab-c" label="Tab C Tab C Tab C"></bal-tab-item>
-    <bal-tab-item value="tab-d" label="Tab D Tab D Tab D"></bal-tab-item>
-    <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E"></bal-tab-item>
-    <bal-tab-item value="tab-f" label="Tab F Tab F Tab F Tab F Tab F Tab F"></bal-tab-item>
-    <bal-tab-item value="tab-g" label="Tab G Tab G Tab G Tab G Tab G Tab G"></bal-tab-item>
-  </bal-tabs>
-  <bal-button no-wrap>Click me!</bal-button>
-</bal-stack>`,
+    ({ ...args }) => `<ds-stack ${props(args)}>
+  <ds-tabs value="tab-a">
+    <ds-tab-item value="tab-a" label="Tab A Tab A Tab A"></ds-tab-item>
+    <ds-tab-item value="tab-b" label="Tab B Tab B Tab B"></ds-tab-item>
+    <ds-tab-item value="tab-c" label="Tab C Tab C Tab C"></ds-tab-item>
+    <ds-tab-item value="tab-d" label="Tab D Tab D Tab D"></ds-tab-item>
+    <ds-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E"></ds-tab-item>
+    <ds-tab-item value="tab-f" label="Tab F Tab F Tab F Tab F Tab F Tab F"></ds-tab-item>
+    <ds-tab-item value="tab-g" label="Tab G Tab G Tab G Tab G Tab G Tab G"></ds-tab-item>
+  </ds-tabs>
+  <ds-button no-wrap>Click me!</ds-button>
+</ds-stack>`,
   ),
 })

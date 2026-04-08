@@ -11,9 +11,9 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-shape' }),
+    ...withComponentControls({ tag: 'ds-shape' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-shape ${props(args)}>${content}</bal-shape>`),
+  ...withRender(({ content, ...args }) => `<ds-shape ${props(args)}>${content}</ds-shape>`),
 }
 
 export default meta
