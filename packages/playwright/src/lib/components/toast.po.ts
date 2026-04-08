@@ -11,7 +11,7 @@ export class DsToast extends PageObject {
   constructor(el: E2ELocator) {
     super(el)
     this.heading = el.locator('h2')
-    this.close = new DsClose(el.locator('bal-close') as E2ELocator)
+    this.close = new DsClose(el.locator('ds-close') as E2ELocator)
     this.action = el.locator('#action')
   }
 
