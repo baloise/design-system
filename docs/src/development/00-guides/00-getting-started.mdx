@@ -22,7 +22,7 @@ import {
 
 <Lead>A guide to integrate Design System Components into your application.</Lead>
 
-All the Baloise Design System packages are available on [NPM](https://www.npmjs.com/).
+All the Helvetia Design System packages are available on [NPM](https://www.npmjs.com/).
 
 <AngularFramework>
 
@@ -43,7 +43,7 @@ If you do not have an Angular app yet create one with [Nx](https://nx.dev/gettin
 ## Installation
 
 <InfoQuote>
-If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Baloise Design System.
+If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Helvetia Design System.
 
 <Code language="bash" noPreview code={`npm add -E @ngneat/transloco`} />
 
@@ -134,7 +134,7 @@ export const appConfig: ApplicationConfig = {
 **app.component.ts**
 
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular component.
-In each app component, import the necessary Baloise Design System components or a bundled set.
+In each app component, import the necessary Helvetia Design System components or a bundled set.
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
@@ -256,7 +256,7 @@ Add the `ds-app` to your root element.
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baloise Design System</title>
+    <title>Helvetia Design System</title>
     <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/all.css" />
     <script
       type="module"
@@ -277,7 +277,7 @@ Add the `ds-app` to your root element.
 
 ### CDN
 
-As part of Baloise Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
+As part of Helvetia Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
 
 However, it's important to emphasize that the CDN integration, it is not advisable
 for production applications. This recommendation stems from the fact that it depends on a third-party
@@ -336,12 +336,12 @@ Here is how you can integrate it into your project.
       <ds-stage color="green" size="small">
         <ds-stage-body>
           <ds-heading>Welcome to the</ds-heading>
-          <ds-heading subtitle>Baloise Design System</ds-heading>
+          <ds-heading subtitle>Helvetia Design System</ds-heading>
         </ds-stage-body>
       </ds-stage>
       <main class="container mt-xx-large">
         <p>
-          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          The Helvetia Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.
         </p>
         <ds-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</ds-button>
@@ -479,12 +479,12 @@ export default App
     <LinkCard
       pageTitle={'Development/Theming'}
       description={
-        "The Baloise Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Baloise applications has never been simpler"
+        "The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
       }
     />
     <LinkCard
       pageTitle={'Development/Testing'}
-      description={'The Baloise Design System provides a collection of utility functions to test the web-components'}
+      description={'The Helvetia Design System provides a collection of utility functions to test the web-components'}
     />
   </LinkCards>
 </Footer>

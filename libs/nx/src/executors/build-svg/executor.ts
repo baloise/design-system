@@ -105,7 +105,10 @@ async function optimizeSvg(content: string, options: BuildSvgExecutorSchema) {
     plugins: options.svgPlugins || [],
   })
   if (options.svgReplaceBlack) {
-    return svg.data.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '')
+    const groundColor = options.svgGroundColor ?? '#000D6E'
+    return svg.data
+      .replace(/style="fill: #000000"/g, `style="fill: ${groundColor}"`)
+      .replace(/style="fill:#000000"/g, `style="fill:${groundColor}"`)
   }
   return svg.data
 }

@@ -2,121 +2,121 @@
   {
     "color": [
       {
-        "class": "ds-text-white",
+        "class": "text-white",
         "css": "color: var(--ds-text-color-white);",
         "property": "color",
         "value": "var(--ds-text-color-white)"
       },
       {
-        "class": "ds-text-primary-light",
+        "class": "text-primary-light",
         "css": "color: var(--ds-text-color-primary-light);",
         "property": "color",
         "value": "var(--ds-text-color-primary-light)"
       },
       {
-        "class": "ds-text-hint",
+        "class": "text-hint",
         "css": "color: var(--ds-text-color-hint);",
         "property": "color",
         "value": "var(--ds-text-color-hint)"
       },
       {
-        "class": "ds-text-disabled",
+        "class": "text-disabled",
         "css": "color: var(--ds-text-color-disabled);",
         "property": "color",
         "value": "var(--ds-text-color-disabled)"
       },
       {
-        "class": "ds-text-inverted-disabled",
+        "class": "text-inverted-disabled",
         "css": "color: var(--ds-text-color-inverted-disabled);",
         "property": "color",
         "value": "var(--ds-text-color-inverted-disabled)"
       },
       {
-        "class": "ds-text-info",
+        "class": "text-info",
         "css": "color: var(--ds-text-color-info);",
         "property": "color",
         "value": "var(--ds-text-color-info)"
       },
       {
-        "class": "ds-text-warning",
+        "class": "text-warning",
         "css": "color: var(--ds-text-color-warning);",
         "property": "color",
         "value": "var(--ds-text-color-warning)"
       },
       {
-        "class": "ds-text-success",
+        "class": "text-success",
         "css": "color: var(--ds-text-color-success);",
         "property": "color",
         "value": "var(--ds-text-color-success)"
       },
       {
-        "class": "ds-text-danger",
+        "class": "text-danger",
         "css": "color: var(--ds-text-color-danger);",
         "property": "color",
         "value": "var(--ds-text-color-danger)"
       },
       {
-        "class": "ds-text-danger-hover",
+        "class": "text-danger-hover",
         "css": "color: var(--ds-text-color-danger-hover);",
         "property": "color",
         "value": "var(--ds-text-color-danger-hover)"
       },
       {
-        "class": "ds-text-danger-active",
+        "class": "text-danger-active",
         "css": "color: var(--ds-text-color-danger-active);",
         "property": "color",
         "value": "var(--ds-text-color-danger-active)"
       },
       {
-        "class": "ds-text-primary",
+        "class": "text-primary",
         "css": "color: var(--ds-text-color-primary);",
         "property": "color",
         "value": "var(--ds-text-color-primary)"
       },
       {
-        "class": "ds-text-primary-hover",
+        "class": "text-primary-hover",
         "css": "color: var(--ds-text-color-primary-hover);",
         "property": "color",
         "value": "var(--ds-text-color-primary-hover)"
       },
       {
-        "class": "ds-text-primary-active",
+        "class": "text-primary-active",
         "css": "color: var(--ds-text-color-primary-active);",
         "property": "color",
         "value": "var(--ds-text-color-primary-active)"
       },
       {
-        "class": "ds-text-inverted-primary",
+        "class": "text-inverted-primary",
         "css": "color: var(--ds-text-color-inverted-primary);",
         "property": "color",
         "value": "var(--ds-text-color-inverted-primary)"
       },
       {
-        "class": "ds-text-inverted-primary-hover",
+        "class": "text-inverted-primary-hover",
         "css": "color: var(--ds-text-color-inverted-primary-hover);",
         "property": "color",
         "value": "var(--ds-text-color-inverted-primary-hover)"
       },
       {
-        "class": "ds-text-inverted-primary-active",
+        "class": "text-inverted-primary-active",
         "css": "color: var(--ds-text-color-inverted-primary-active);",
         "property": "color",
         "value": "var(--ds-text-color-inverted-primary-active)"
       },
       {
-        "class": "ds-text-grey-light",
+        "class": "text-grey-light",
         "css": "color: var(--ds-text-color-grey-light);",
         "property": "color",
         "value": "var(--ds-text-color-grey-light)"
       },
       {
-        "class": "ds-text-grey",
+        "class": "text-grey",
         "css": "color: var(--ds-text-color-grey);",
         "property": "color",
         "value": "var(--ds-text-color-grey)"
       },
       {
-        "class": "ds-text-grey-dark",
+        "class": "text-grey-dark",
         "css": "color: var(--ds-text-color-grey-dark);",
         "property": "color",
         "value": "var(--ds-text-color-grey-dark)"
@@ -126,13 +126,13 @@
   {
     "font-family": [
       {
-        "class": "font-family-ds-heading",
+        "class": "font-family-heading",
         "css": "font-family: var(--ds-text-family-heading);",
         "property": "font-family",
         "value": "var(--ds-text-family-heading)"
       },
       {
-        "class": "font-family-ds-body",
+        "class": "font-family-body",
         "css": "font-family: var(--ds-text-family-body);",
         "property": "font-family",
         "value": "var(--ds-text-family-body)"
@@ -142,25 +142,25 @@
   {
     "line-height": [
       {
-        "class": "ds-line-height-single",
+        "class": "line-height-single",
         "css": "line-height: var(--ds-text-line-height-single);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-single)"
       },
       {
-        "class": "ds-line-height-heading",
+        "class": "line-height-heading",
         "css": "line-height: var(--ds-text-line-height-heading);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-heading)"
       },
       {
-        "class": "ds-line-height-body",
+        "class": "line-height-body",
         "css": "line-height: var(--ds-text-line-height-body);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-body)"
       },
       {
-        "class": "ds-line-height-double",
+        "class": "line-height-double",
         "css": "line-height: var(--ds-text-line-height-double);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-double)"
@@ -220,19 +220,19 @@
   {
     "font-weight": [
       {
-        "class": "font-weight-ds-light",
+        "class": "font-weight-light",
         "css": "font-weight: var(--ds-text-weight-light);",
         "property": "font-weight",
         "value": "var(--ds-text-weight-light)"
       },
       {
-        "class": "font-weight-ds-regular",
+        "class": "font-weight-regular",
         "css": "font-weight: var(--ds-text-weight-regular);",
         "property": "font-weight",
         "value": "var(--ds-text-weight-regular)"
       },
       {
-        "class": "font-weight-ds-bold",
+        "class": "font-weight-bold",
         "css": "font-weight: var(--ds-text-weight-bold);",
         "property": "font-weight",
         "value": "var(--ds-text-weight-bold)"
@@ -258,25 +258,25 @@
   {
     "line-height": [
       {
-        "class": "ds-line-height-single",
+        "class": "line-height-single",
         "css": "line-height: var(--ds-text-line-height-single);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-single)"
       },
       {
-        "class": "ds-line-height-heading",
+        "class": "line-height-heading",
         "css": "line-height: var(--ds-text-line-height-heading);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-heading)"
       },
       {
-        "class": "ds-line-height-body",
+        "class": "line-height-body",
         "css": "line-height: var(--ds-text-line-height-body);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-body)"
       },
       {
-        "class": "ds-line-height-double",
+        "class": "line-height-double",
         "css": "line-height: var(--ds-text-line-height-double);",
         "property": "line-height",
         "value": "var(--ds-text-line-height-double)"

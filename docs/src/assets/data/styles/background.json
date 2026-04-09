@@ -2,703 +2,703 @@
   {
     "background": [
       {
-        "class": "bg-ds-white",
+        "class": "bg-white",
         "css": "background: var(--ds-background-color-white);",
         "property": "background",
         "value": "var(--ds-background-color-white)"
       },
       {
-        "class": "bg-ds-transparent",
+        "class": "bg-transparent",
         "css": "background: var(--ds-background-color-transparent);",
         "property": "background",
         "value": "var(--ds-background-color-transparent)"
       },
       {
-        "class": "bg-ds-sky-light",
+        "class": "bg-sky-light",
         "css": "background: var(--ds-background-color-sky-light);",
         "property": "background",
         "value": "var(--ds-background-color-sky-light)"
       },
       {
-        "class": "bg-ds-sky",
+        "class": "bg-sky",
         "css": "background: var(--ds-background-color-sky);",
         "property": "background",
         "value": "var(--ds-background-color-sky)"
       },
       {
-        "class": "bg-ds-sky-dark",
+        "class": "bg-sky-dark",
         "css": "background: var(--ds-background-color-sky-dark);",
         "property": "background",
         "value": "var(--ds-background-color-sky-dark)"
       },
       {
-        "class": "bg-ds-disabled",
+        "class": "bg-disabled",
         "css": "background: var(--ds-background-color-disabled);",
         "property": "background",
         "value": "var(--ds-background-color-disabled)"
       },
       {
-        "class": "bg-ds-info",
+        "class": "bg-info",
         "css": "background: var(--ds-background-color-info);",
         "property": "background",
         "value": "var(--ds-background-color-info)"
       },
       {
-        "class": "bg-ds-info-light",
+        "class": "bg-info-light",
         "css": "background: var(--ds-background-color-info-light);",
         "property": "background",
         "value": "var(--ds-background-color-info-light)"
       },
       {
-        "class": "bg-ds-info-dark",
+        "class": "bg-info-dark",
         "css": "background: var(--ds-background-color-info-dark);",
         "property": "background",
         "value": "var(--ds-background-color-info-dark)"
       },
       {
-        "class": "bg-ds-info-darker",
+        "class": "bg-info-darker",
         "css": "background: var(--ds-background-color-info-darker);",
         "property": "background",
         "value": "var(--ds-background-color-info-darker)"
       },
       {
-        "class": "bg-ds-info-darkest",
+        "class": "bg-info-darkest",
         "css": "background: var(--ds-background-color-info-darkest);",
         "property": "background",
         "value": "var(--ds-background-color-info-darkest)"
       },
       {
-        "class": "bg-ds-success",
+        "class": "bg-success",
         "css": "background: var(--ds-background-color-success);",
         "property": "background",
         "value": "var(--ds-background-color-success)"
       },
       {
-        "class": "bg-ds-success-lighter",
+        "class": "bg-success-lighter",
         "css": "background: var(--ds-background-color-success-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-success-lighter)"
       },
       {
-        "class": "bg-ds-success-light",
+        "class": "bg-success-light",
         "css": "background: var(--ds-background-color-success-light);",
         "property": "background",
         "value": "var(--ds-background-color-success-light)"
       },
       {
-        "class": "bg-ds-success-dark",
+        "class": "bg-success-dark",
         "css": "background: var(--ds-background-color-success-dark);",
         "property": "background",
         "value": "var(--ds-background-color-success-dark)"
       },
       {
-        "class": "bg-ds-success-darker",
+        "class": "bg-success-darker",
         "css": "background: var(--ds-background-color-success-darker);",
         "property": "background",
         "value": "var(--ds-background-color-success-darker)"
       },
       {
-        "class": "bg-ds-success-darkest",
+        "class": "bg-success-darkest",
         "css": "background: var(--ds-background-color-success-darkest);",
         "property": "background",
         "value": "var(--ds-background-color-success-darkest)"
       },
       {
-        "class": "bg-ds-warning-lighter",
+        "class": "bg-warning-lighter",
         "css": "background: var(--ds-background-color-warning-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-warning-lighter)"
       },
       {
-        "class": "bg-ds-warning-light",
+        "class": "bg-warning-light",
         "css": "background: var(--ds-background-color-warning-light);",
         "property": "background",
         "value": "var(--ds-background-color-warning-light)"
       },
       {
-        "class": "bg-ds-warning",
+        "class": "bg-warning",
         "css": "background: var(--ds-background-color-warning);",
         "property": "background",
         "value": "var(--ds-background-color-warning)"
       },
       {
-        "class": "bg-ds-warning-dark",
+        "class": "bg-warning-dark",
         "css": "background: var(--ds-background-color-warning-dark);",
         "property": "background",
         "value": "var(--ds-background-color-warning-dark)"
       },
       {
-        "class": "bg-ds-warning-darker",
+        "class": "bg-warning-darker",
         "css": "background: var(--ds-background-color-warning-darker);",
         "property": "background",
         "value": "var(--ds-background-color-warning-darker)"
       },
       {
-        "class": "bg-ds-warning-darkest",
+        "class": "bg-warning-darkest",
         "css": "background: var(--ds-background-color-warning-darkest);",
         "property": "background",
         "value": "var(--ds-background-color-warning-darkest)"
       },
       {
-        "class": "bg-ds-danger-lighter",
+        "class": "bg-danger-lighter",
         "css": "background: var(--ds-background-color-danger-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-danger-lighter)"
       },
       {
-        "class": "bg-ds-danger-light",
+        "class": "bg-danger-light",
         "css": "background: var(--ds-background-color-danger-light);",
         "property": "background",
         "value": "var(--ds-background-color-danger-light)"
       },
       {
-        "class": "bg-ds-danger",
+        "class": "bg-danger",
         "css": "background: var(--ds-background-color-danger);",
         "property": "background",
         "value": "var(--ds-background-color-danger)"
       },
       {
-        "class": "bg-ds-danger-dark",
+        "class": "bg-danger-dark",
         "css": "background: var(--ds-background-color-danger-dark);",
         "property": "background",
         "value": "var(--ds-background-color-danger-dark)"
       },
       {
-        "class": "bg-ds-danger-darker",
+        "class": "bg-danger-darker",
         "css": "background: var(--ds-background-color-danger-darker);",
         "property": "background",
         "value": "var(--ds-background-color-danger-darker)"
       },
       {
-        "class": "bg-ds-danger-darkest",
+        "class": "bg-danger-darkest",
         "css": "background: var(--ds-background-color-danger-darkest);",
         "property": "background",
         "value": "var(--ds-background-color-danger-darkest)"
       },
       {
-        "class": "bg-ds-green-light-2",
+        "class": "bg-green-light-2",
         "css": "background: var(--ds-background-color-green-light-2);",
         "property": "background",
         "value": "var(--ds-background-color-green-light-2)"
       },
       {
-        "class": "bg-ds-grey-light",
+        "class": "bg-grey-light",
         "css": "background: var(--ds-background-color-grey-light);",
         "property": "background",
         "value": "var(--ds-background-color-grey-light)"
       },
       {
-        "class": "bg-ds-grey",
+        "class": "bg-grey",
         "css": "background: var(--ds-background-color-grey);",
         "property": "background",
         "value": "var(--ds-background-color-grey)"
       },
       {
-        "class": "bg-ds-grey-dark",
+        "class": "bg-grey-dark",
         "css": "background: var(--ds-background-color-grey-dark);",
         "property": "background",
         "value": "var(--ds-background-color-grey-dark)"
       },
       {
-        "class": "bg-ds-primary-light",
+        "class": "bg-primary-light",
         "css": "background: var(--ds-background-color-primary-light);",
         "property": "background",
         "value": "var(--ds-background-color-primary-light)"
       },
       {
-        "class": "bg-ds-primary",
+        "class": "bg-primary",
         "css": "background: var(--ds-background-color-primary);",
         "property": "background",
         "value": "var(--ds-background-color-primary)"
       },
       {
-        "class": "bg-ds-primary-hover",
+        "class": "bg-primary-hover",
         "css": "background: var(--ds-background-color-primary-hover);",
         "property": "background",
         "value": "var(--ds-background-color-primary-hover)"
       },
       {
-        "class": "bg-ds-primary-active",
+        "class": "bg-primary-active",
         "css": "background: var(--ds-background-color-primary-active);",
         "property": "background",
         "value": "var(--ds-background-color-primary-active)"
       },
       {
-        "class": "bg-ds-green-lighter",
+        "class": "bg-green-lighter",
         "css": "background: var(--ds-background-color-green-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-green-lighter)"
       },
       {
-        "class": "bg-ds-green-light",
+        "class": "bg-green-light",
         "css": "background: var(--ds-background-color-green-light);",
         "property": "background",
         "value": "var(--ds-background-color-green-light)"
       },
       {
-        "class": "bg-ds-green",
+        "class": "bg-green",
         "css": "background: var(--ds-background-color-green);",
         "property": "background",
         "value": "var(--ds-background-color-green)"
       },
       {
-        "class": "bg-ds-purple-lighter",
+        "class": "bg-purple-lighter",
         "css": "background: var(--ds-background-color-purple-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-purple-lighter)"
       },
       {
-        "class": "bg-ds-purple-light",
+        "class": "bg-purple-light",
         "css": "background: var(--ds-background-color-purple-light);",
         "property": "background",
         "value": "var(--ds-background-color-purple-light)"
       },
       {
-        "class": "bg-ds-purple",
+        "class": "bg-purple",
         "css": "background: var(--ds-background-color-purple);",
         "property": "background",
         "value": "var(--ds-background-color-purple)"
       },
       {
-        "class": "bg-ds-red-lighter",
+        "class": "bg-red-lighter",
         "css": "background: var(--ds-background-color-red-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-red-lighter)"
       },
       {
-        "class": "bg-ds-red-light",
+        "class": "bg-red-light",
         "css": "background: var(--ds-background-color-red-light);",
         "property": "background",
         "value": "var(--ds-background-color-red-light)"
       },
       {
-        "class": "bg-ds-red",
+        "class": "bg-red",
         "css": "background: var(--ds-background-color-red);",
         "property": "background",
         "value": "var(--ds-background-color-red)"
       },
       {
-        "class": "bg-ds-yellow-lighter",
+        "class": "bg-yellow-lighter",
         "css": "background: var(--ds-background-color-yellow-lighter);",
         "property": "background",
         "value": "var(--ds-background-color-yellow-lighter)"
       },
       {
-        "class": "bg-ds-yellow-light",
+        "class": "bg-yellow-light",
         "css": "background: var(--ds-background-color-yellow-light);",
         "property": "background",
         "value": "var(--ds-background-color-yellow-light)"
       },
       {
-        "class": "bg-ds-yellow",
+        "class": "bg-yellow",
         "css": "background: var(--ds-background-color-yellow);",
         "property": "background",
         "value": "var(--ds-background-color-yellow)"
       },
       {
-        "class": "bg-ds-black",
+        "class": "bg-black",
         "css": "background: var(--ds-color-black);",
         "property": "background",
         "value": "var(--ds-color-black)"
       },
       {
-        "class": "bg-ds-neutral",
+        "class": "bg-neutral",
         "css": "background: var(--ds-color-neutral);",
         "property": "background",
         "value": "var(--ds-color-neutral)"
       },
       {
-        "class": "bg-ds-danger-1",
+        "class": "bg-danger-1",
         "css": "background: var(--ds-color-danger-1);",
         "property": "background",
         "value": "var(--ds-color-danger-1)"
       },
       {
-        "class": "bg-ds-danger-2",
+        "class": "bg-danger-2",
         "css": "background: var(--ds-color-danger-2);",
         "property": "background",
         "value": "var(--ds-color-danger-2)"
       },
       {
-        "class": "bg-ds-danger-3",
+        "class": "bg-danger-3",
         "css": "background: var(--ds-color-danger-3);",
         "property": "background",
         "value": "var(--ds-color-danger-3)"
       },
       {
-        "class": "bg-ds-danger-4",
+        "class": "bg-danger-4",
         "css": "background: var(--ds-color-danger-4);",
         "property": "background",
         "value": "var(--ds-color-danger-4)"
       },
       {
-        "class": "bg-ds-danger-5",
+        "class": "bg-danger-5",
         "css": "background: var(--ds-color-danger-5);",
         "property": "background",
         "value": "var(--ds-color-danger-5)"
       },
       {
-        "class": "bg-ds-danger-6",
+        "class": "bg-danger-6",
         "css": "background: var(--ds-color-danger-6);",
         "property": "background",
         "value": "var(--ds-color-danger-6)"
       },
       {
-        "class": "bg-ds-warning-1",
+        "class": "bg-warning-1",
         "css": "background: var(--ds-color-warning-1);",
         "property": "background",
         "value": "var(--ds-color-warning-1)"
       },
       {
-        "class": "bg-ds-warning-2",
+        "class": "bg-warning-2",
         "css": "background: var(--ds-color-warning-2);",
         "property": "background",
         "value": "var(--ds-color-warning-2)"
       },
       {
-        "class": "bg-ds-warning-3",
+        "class": "bg-warning-3",
         "css": "background: var(--ds-color-warning-3);",
         "property": "background",
         "value": "var(--ds-color-warning-3)"
       },
       {
-        "class": "bg-ds-warning-4",
+        "class": "bg-warning-4",
         "css": "background: var(--ds-color-warning-4);",
         "property": "background",
         "value": "var(--ds-color-warning-4)"
       },
       {
-        "class": "bg-ds-warning-5",
+        "class": "bg-warning-5",
         "css": "background: var(--ds-color-warning-5);",
         "property": "background",
         "value": "var(--ds-color-warning-5)"
       },
       {
-        "class": "bg-ds-warning-6",
+        "class": "bg-warning-6",
         "css": "background: var(--ds-color-warning-6);",
         "property": "background",
         "value": "var(--ds-color-warning-6)"
       },
       {
-        "class": "bg-ds-success-1",
+        "class": "bg-success-1",
         "css": "background: var(--ds-color-success-1);",
         "property": "background",
         "value": "var(--ds-color-success-1)"
       },
       {
-        "class": "bg-ds-success-2",
+        "class": "bg-success-2",
         "css": "background: var(--ds-color-success-2);",
         "property": "background",
         "value": "var(--ds-color-success-2)"
       },
       {
-        "class": "bg-ds-success-3",
+        "class": "bg-success-3",
         "css": "background: var(--ds-color-success-3);",
         "property": "background",
         "value": "var(--ds-color-success-3)"
       },
       {
-        "class": "bg-ds-success-4",
+        "class": "bg-success-4",
         "css": "background: var(--ds-color-success-4);",
         "property": "background",
         "value": "var(--ds-color-success-4)"
       },
       {
-        "class": "bg-ds-success-5",
+        "class": "bg-success-5",
         "css": "background: var(--ds-color-success-5);",
         "property": "background",
         "value": "var(--ds-color-success-5)"
       },
       {
-        "class": "bg-ds-success-6",
+        "class": "bg-success-6",
         "css": "background: var(--ds-color-success-6);",
         "property": "background",
         "value": "var(--ds-color-success-6)"
       },
       {
-        "class": "bg-ds-info-1",
+        "class": "bg-info-1",
         "css": "background: var(--ds-color-info-1);",
         "property": "background",
         "value": "var(--ds-color-info-1)"
       },
       {
-        "class": "bg-ds-info-2",
+        "class": "bg-info-2",
         "css": "background: var(--ds-color-info-2);",
         "property": "background",
         "value": "var(--ds-color-info-2)"
       },
       {
-        "class": "bg-ds-info-3",
+        "class": "bg-info-3",
         "css": "background: var(--ds-color-info-3);",
         "property": "background",
         "value": "var(--ds-color-info-3)"
       },
       {
-        "class": "bg-ds-info-4",
+        "class": "bg-info-4",
         "css": "background: var(--ds-color-info-4);",
         "property": "background",
         "value": "var(--ds-color-info-4)"
       },
       {
-        "class": "bg-ds-info-5",
+        "class": "bg-info-5",
         "css": "background: var(--ds-color-info-5);",
         "property": "background",
         "value": "var(--ds-color-info-5)"
       },
       {
-        "class": "bg-ds-info-6",
+        "class": "bg-info-6",
         "css": "background: var(--ds-color-info-6);",
         "property": "background",
         "value": "var(--ds-color-info-6)"
       },
       {
-        "class": "bg-ds-sky-1",
+        "class": "bg-sky-1",
         "css": "background: var(--ds-color-sky-1);",
         "property": "background",
         "value": "var(--ds-color-sky-1)"
       },
       {
-        "class": "bg-ds-sky-2",
+        "class": "bg-sky-2",
         "css": "background: var(--ds-color-sky-2);",
         "property": "background",
         "value": "var(--ds-color-sky-2)"
       },
       {
-        "class": "bg-ds-sky-3",
+        "class": "bg-sky-3",
         "css": "background: var(--ds-color-sky-3);",
         "property": "background",
         "value": "var(--ds-color-sky-3)"
       },
       {
-        "class": "bg-ds-sky-4",
+        "class": "bg-sky-4",
         "css": "background: var(--ds-color-sky-4);",
         "property": "background",
         "value": "var(--ds-color-sky-4)"
       },
       {
-        "class": "bg-ds-sky-5",
+        "class": "bg-sky-5",
         "css": "background: var(--ds-color-sky-5);",
         "property": "background",
         "value": "var(--ds-color-sky-5)"
       },
       {
-        "class": "bg-ds-sky-6",
+        "class": "bg-sky-6",
         "css": "background: var(--ds-color-sky-6);",
         "property": "background",
         "value": "var(--ds-color-sky-6)"
       },
       {
-        "class": "bg-ds-grey-1",
+        "class": "bg-grey-1",
         "css": "background: var(--ds-color-grey-1);",
         "property": "background",
         "value": "var(--ds-color-grey-1)"
       },
       {
-        "class": "bg-ds-grey-2",
+        "class": "bg-grey-2",
         "css": "background: var(--ds-color-grey-2);",
         "property": "background",
         "value": "var(--ds-color-grey-2)"
       },
       {
-        "class": "bg-ds-grey-3",
+        "class": "bg-grey-3",
         "css": "background: var(--ds-color-grey-3);",
         "property": "background",
         "value": "var(--ds-color-grey-3)"
       },
       {
-        "class": "bg-ds-grey-4",
+        "class": "bg-grey-4",
         "css": "background: var(--ds-color-grey-4);",
         "property": "background",
         "value": "var(--ds-color-grey-4)"
       },
       {
-        "class": "bg-ds-grey-5",
+        "class": "bg-grey-5",
         "css": "background: var(--ds-color-grey-5);",
         "property": "background",
         "value": "var(--ds-color-grey-5)"
       },
       {
-        "class": "bg-ds-grey-6",
+        "class": "bg-grey-6",
         "css": "background: var(--ds-color-grey-6);",
         "property": "background",
         "value": "var(--ds-color-grey-6)"
       },
       {
-        "class": "bg-ds-yellow-1",
+        "class": "bg-yellow-1",
         "css": "background: var(--ds-color-yellow-1);",
         "property": "background",
         "value": "var(--ds-color-yellow-1)"
       },
       {
-        "class": "bg-ds-yellow-2",
+        "class": "bg-yellow-2",
         "css": "background: var(--ds-color-yellow-2);",
         "property": "background",
         "value": "var(--ds-color-yellow-2)"
       },
       {
-        "class": "bg-ds-yellow-3",
+        "class": "bg-yellow-3",
         "css": "background: var(--ds-color-yellow-3);",
         "property": "background",
         "value": "var(--ds-color-yellow-3)"
       },
       {
-        "class": "bg-ds-yellow-4",
+        "class": "bg-yellow-4",
         "css": "background: var(--ds-color-yellow-4);",
         "property": "background",
         "value": "var(--ds-color-yellow-4)"
       },
       {
-        "class": "bg-ds-yellow-5",
+        "class": "bg-yellow-5",
         "css": "background: var(--ds-color-yellow-5);",
         "property": "background",
         "value": "var(--ds-color-yellow-5)"
       },
       {
-        "class": "bg-ds-yellow-6",
+        "class": "bg-yellow-6",
         "css": "background: var(--ds-color-yellow-6);",
         "property": "background",
         "value": "var(--ds-color-yellow-6)"
       },
       {
-        "class": "bg-ds-red-1",
+        "class": "bg-red-1",
         "css": "background: var(--ds-color-red-1);",
         "property": "background",
         "value": "var(--ds-color-red-1)"
       },
       {
-        "class": "bg-ds-red-2",
+        "class": "bg-red-2",
         "css": "background: var(--ds-color-red-2);",
         "property": "background",
         "value": "var(--ds-color-red-2)"
       },
       {
-        "class": "bg-ds-red-3",
+        "class": "bg-red-3",
         "css": "background: var(--ds-color-red-3);",
         "property": "background",
         "value": "var(--ds-color-red-3)"
       },
       {
-        "class": "bg-ds-red-4",
+        "class": "bg-red-4",
         "css": "background: var(--ds-color-red-4);",
         "property": "background",
         "value": "var(--ds-color-red-4)"
       },
       {
-        "class": "bg-ds-red-5",
+        "class": "bg-red-5",
         "css": "background: var(--ds-color-red-5);",
         "property": "background",
         "value": "var(--ds-color-red-5)"
       },
       {
-        "class": "bg-ds-red-6",
+        "class": "bg-red-6",
         "css": "background: var(--ds-color-red-6);",
         "property": "background",
         "value": "var(--ds-color-red-6)"
       },
       {
-        "class": "bg-ds-green-1",
+        "class": "bg-green-1",
         "css": "background: var(--ds-color-green-1);",
         "property": "background",
         "value": "var(--ds-color-green-1)"
       },
       {
-        "class": "bg-ds-green-2",
+        "class": "bg-green-2",
         "css": "background: var(--ds-color-green-2);",
         "property": "background",
         "value": "var(--ds-color-green-2)"
       },
       {
-        "class": "bg-ds-green-3",
+        "class": "bg-green-3",
         "css": "background: var(--ds-color-green-3);",
         "property": "background",
         "value": "var(--ds-color-green-3)"
       },
       {
-        "class": "bg-ds-green-4",
+        "class": "bg-green-4",
         "css": "background: var(--ds-color-green-4);",
         "property": "background",
         "value": "var(--ds-color-green-4)"
       },
       {
-        "class": "bg-ds-green-5",
+        "class": "bg-green-5",
         "css": "background: var(--ds-color-green-5);",
         "property": "background",
         "value": "var(--ds-color-green-5)"
       },
       {
-        "class": "bg-ds-green-6",
+        "class": "bg-green-6",
         "css": "background: var(--ds-color-green-6);",
         "property": "background",
         "value": "var(--ds-color-green-6)"
       },
       {
-        "class": "bg-ds-purple-1",
+        "class": "bg-purple-1",
         "css": "background: var(--ds-color-purple-1);",
         "property": "background",
         "value": "var(--ds-color-purple-1)"
       },
       {
-        "class": "bg-ds-purple-2",
+        "class": "bg-purple-2",
         "css": "background: var(--ds-color-purple-2);",
         "property": "background",
         "value": "var(--ds-color-purple-2)"
       },
       {
-        "class": "bg-ds-purple-3",
+        "class": "bg-purple-3",
         "css": "background: var(--ds-color-purple-3);",
         "property": "background",
         "value": "var(--ds-color-purple-3)"
       },
       {
-        "class": "bg-ds-purple-4",
+        "class": "bg-purple-4",
         "css": "background: var(--ds-color-purple-4);",
         "property": "background",
         "value": "var(--ds-color-purple-4)"
       },
       {
-        "class": "bg-ds-purple-5",
+        "class": "bg-purple-5",
         "css": "background: var(--ds-color-purple-5);",
         "property": "background",
         "value": "var(--ds-color-purple-5)"
       },
       {
-        "class": "bg-ds-purple-6",
+        "class": "bg-purple-6",
         "css": "background: var(--ds-color-purple-6);",
         "property": "background",
         "value": "var(--ds-color-purple-6)"
       },
       {
-        "class": "bg-ds-primary-1",
+        "class": "bg-primary-1",
         "css": "background: var(--ds-color-primary-1);",
         "property": "background",
         "value": "var(--ds-color-primary-1)"
       },
       {
-        "class": "bg-ds-primary-2",
+        "class": "bg-primary-2",
         "css": "background: var(--ds-color-primary-2);",
         "property": "background",
         "value": "var(--ds-color-primary-2)"
       },
       {
-        "class": "bg-ds-primary-3",
+        "class": "bg-primary-3",
         "css": "background: var(--ds-color-primary-3);",
         "property": "background",
         "value": "var(--ds-color-primary-3)"
       },
       {
-        "class": "bg-ds-primary-4",
+        "class": "bg-primary-4",
         "css": "background: var(--ds-color-primary-4);",
         "property": "background",
         "value": "var(--ds-color-primary-4)"
       },
       {
-        "class": "bg-ds-primary-5",
+        "class": "bg-primary-5",
         "css": "background: var(--ds-color-primary-5);",
         "property": "background",
         "value": "var(--ds-color-primary-5)"
       },
       {
-        "class": "bg-ds-primary-6",
+        "class": "bg-primary-6",
         "css": "background: var(--ds-color-primary-6);",
         "property": "background",
         "value": "var(--ds-color-primary-6)"

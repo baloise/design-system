@@ -17,6 +17,13 @@ packages/core/src/tags-all.ts
 packages/devkit/src/**/*.js
 packages/devkit/src/**/*.d.ts
 
+packages/assets/src/brand-icons/svg.json
+packages/assets/src/brand-icons/svg.ts
+packages/assets/src/icons/svg.json
+packages/assets/src/icons/svg.ts
+packages/assets/src/maps/svg.json
+packages/assets/src/maps/svg.ts
+
 resources/data/tags.json
 
 .changeset/

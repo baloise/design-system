@@ -95,18 +95,9 @@ To combine form fields / controls to a bigger form use the [Form Grid component]
 The form elements support [Angular Reactive Forms](https://angular.io/guide/reactive-forms).
 Below is a basic example to use the reactive form together with the Design System.
 
-<InfoQuote>
-
-**Tip**
-
-Check out the repository [baloise/web-app-utils](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md) for Baloise
-specific validators.
-
-</InfoQuote>
-
-1. Angular package offers `balAutoFocus` directive which brings focus to the element.
+1. Angular package offers `dsAutoFocus` directive which brings focus to the element.
    Usage can be seen in the following code in ds-field.
-   In order for it to work please import `BalSharedModule` in each Angular module that uses it.
+   In order for it to work please import `DsSharedModule` in each Angular module that uses it.
 
 <Code
   language="html"
@@ -116,7 +107,7 @@ specific validators.
   <ds-field class="col is-full py-none" required>
     <ds-field-label required>Email</ds-field-label>
     <ds-field-control>
-      <ds-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></ds-input>
+      <ds-input name="email" placeholder="Enter your email" formControlName="email" dsAutoFocus></ds-input>
     </ds-field-control>
     <ds-field-message>
       <ds-ng-error controlName="email" error="isRequired">This field is required</ds-ng-error>

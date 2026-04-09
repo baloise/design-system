@@ -6,4 +6,5 @@ export interface BuildSvgExecutorSchema {
   subPackages: string[]
   svgPlugins: PluginConfig[]
   svgReplaceBlack: boolean
+  svgGroundColor?: string
 } // eslint-disable-line

@@ -18,6 +18,7 @@
         "svgOptimize": true,
         "jsInlineData": true,
         "jsOutput": true,
+        "svgReplaceBlack": true,
         "subPackages": ["maps", "icons", "brand-icons"]
       }
     },

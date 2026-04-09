@@ -16,7 +16,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       <div
         className={`px-small py-normal text-align-center radius-top-lg title text-x-large m-none`}
         style={{
-          minHeight: '64px',
+          minHeight: '32px',
           background: `var(--${colorVariable.name})`,
           color: ['ds-color-primary-5', 'ds-text-color-primary', 'ds-background-color-primary'].includes(
             colorVariable.name,
