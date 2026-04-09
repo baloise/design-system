@@ -11,7 +11,7 @@ A Claude Code skill (`design-tokens`) that helps both DS developers and consumer
 
 Invoke when a developer asks about:
 - What token to use for spacing, color, background, border, radius, shadow, z-index, or typography
-- CSS variables from the Baloise Design System
+- CSS variables from the Helvetia Design System
 - How to implement a visual property (e.g. "what's the spacing for LG?", "which background color token for a card?")
 
 ## Token System Orientation

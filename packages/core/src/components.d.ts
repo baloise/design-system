@@ -96,7 +96,7 @@ export namespace Components {
     }
     interface DsApp {
         /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated": boolean;
@@ -506,7 +506,7 @@ export namespace Components {
     }
     interface DsDocApp {
         /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated": boolean;
@@ -718,7 +718,7 @@ export namespace Components {
         "htmlFor"?: string;
         /**
           * Define the id of the native label element
-          * @default `bal-lbl-${labelIds++}`
+          * @default `ds-lbl-${labelIds++}`
          */
         "htmlId"?: string;
         /**
@@ -1025,7 +1025,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Choosing left or center the tag is aligned to that side in the bal-card.
+          * Choosing left or center the tag is aligned to that side in the ds-card.
          */
         "position"?: DS.TagPlacement;
         /**
@@ -1644,7 +1644,7 @@ declare namespace LocalJSX {
     }
     interface DsApp {
         /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated"?: boolean;
@@ -2080,7 +2080,7 @@ declare namespace LocalJSX {
     }
     interface DsDocApp {
         /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated"?: boolean;
@@ -2306,7 +2306,7 @@ declare namespace LocalJSX {
         "htmlFor"?: string;
         /**
           * Define the id of the native label element
-          * @default `bal-lbl-${labelIds++}`
+          * @default `ds-lbl-${labelIds++}`
          */
         "htmlId"?: string;
         /**
@@ -2625,7 +2625,7 @@ declare namespace LocalJSX {
          */
         "onDsCloseClick"?: (event: DsTagCustomEvent<DS.TagCloseClickDetail>) => void;
         /**
-          * Choosing left or center the tag is aligned to that side in the bal-card.
+          * Choosing left or center the tag is aligned to that side in the ds-card.
          */
         "position"?: DS.TagPlacement;
         /**

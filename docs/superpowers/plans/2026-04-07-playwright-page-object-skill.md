@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Write a Claude skill that generates a Playwright Page Object and `.component.play.ts` test file for any Baloise Design System web component from a single tag-name command.
+**Goal:** Write a Claude skill that generates a Playwright Page Object and `.component.play.ts` test file for any Helvetia Design System web component from a single tag-name command.
 
 **Architecture:** A single skill markdown file at `~/.claude/skills/playwright-page-object/skill.md` containing a deterministic extraction checklist. The skill reads each `.tsx` file in the component folder, extracts `part=""` attributes and `onClick` handlers to produce the PO, and extracts `@Event` decorators to produce event spy tests. Three validation runs (ds-badge → ds-accordion → ds-list) cover the simple, complex, and nested-children cases.
 
@@ -44,7 +44,7 @@ Create `~/.claude/skills/playwright-page-object/skill.md` with this exact conten
 ````markdown
 ---
 name: playwright-page-object
-description: Generate Playwright Page Object (.po.ts) and component test (.component.play.ts) for a Baloise Design System web component. Trigger on: "create PO for ds-<name>", "add page object for ds-<name>", "generate playwright PO of ds-<name>"
+description: Generate Playwright Page Object (.po.ts) and component test (.component.play.ts) for a Helvetia Design System web component. Trigger on: "create PO for ds-<name>", "add page object for ds-<name>", "generate playwright PO of ds-<name>"
 ---
 
 # Playwright Page Object Generator

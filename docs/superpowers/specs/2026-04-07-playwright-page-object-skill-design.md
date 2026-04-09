@@ -1,7 +1,7 @@
 # Design: Playwright Page Object Skill
 
 **Date:** 2026-04-07
-**Topic:** A Claude skill that generates Playwright Page Objects and component tests for Baloise Design System web components.
+**Topic:** A Claude skill that generates Playwright Page Objects and component tests for Helvetia Design System web components.
 
 ---
 
@@ -72,7 +72,7 @@ import { E2ELocator } from '../page/utils'
 
 export class Ds<ComponentName> extends PageObject {
   // one public locator per part=""
-  public readonly <partName>: Locator | Bal<ChildComponent>
+  public readonly <partName>: Locator | Ds<ChildComponent>
 
   constructor(el: E2ELocator) {
     super(el)

@@ -6,7 +6,7 @@
 
 **Architecture:** A single Markdown skill file with embedded orientation content (token layers, naming convention, Figma integration) and dynamic lookup instructions that direct Claude to read `Base.tokens.json` and `dist/css/base.tokens.css` at query time.
 
-**Tech Stack:** Markdown (Claude Code skill format), Baloise Design System token files.
+**Tech Stack:** Markdown (Claude Code skill format), Helvetia Design System token files.
 
 ---
 

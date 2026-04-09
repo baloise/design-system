@@ -7,24 +7,24 @@
   "components": [
     {
       "fileName": "accordion.tsx",
-      "tag": "bal-accordion",
+      "tag": "ds-accordion",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-item"
+        "ds-item"
       ],
       "dependencies": [
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-accordion": [
+        "ds-accordion": [
           "ds-icon"
         ],
-        "bal-item": [
-          "bal-accordion"
+        "ds-item": [
+          "ds-accordion"
         ]
       },
       "props": [
@@ -686,7 +686,7 @@
     },
     {
       "fileName": "alert-container.tsx",
-      "tag": "bal-alert-container",
+      "tag": "ds-alert-container",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -929,19 +929,19 @@
     },
     {
       "fileName": "app.tsx",
-      "tag": "bal-app",
+      "tag": "ds-app",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "none",
       "dependents": [
-        "bal-doc-app"
+        "ds-doc-app"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-app": [
-          "bal-app"
+        "ds-doc-app": [
+          "ds-app"
         ]
       },
       "props": [
@@ -956,7 +956,7 @@
           "mutable": false,
           "attr": "animated",
           "reflectToAttr": true,
-          "docs": "Disables all animation inside the bal-app. Can be used for simplify e2e testing.",
+          "docs": "Disables all animation inside the ds-app. Can be used for simplify e2e testing.",
           "docsTags": [
             {
               "name": "default",
@@ -1038,7 +1038,7 @@
     },
     {
       "fileName": "badge.tsx",
-      "tag": "bal-badge",
+      "tag": "ds-badge",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -1049,7 +1049,7 @@
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-badge": [
+        "ds-badge": [
           "ds-icon"
         ]
       },
@@ -1282,34 +1282,34 @@
     },
     {
       "fileName": "button.tsx",
-      "tag": "bal-button",
+      "tag": "ds-button",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-close",
-        "bal-snackbar",
-        "bal-toast"
+        "ds-close",
+        "ds-snackbar",
+        "ds-toast"
       ],
       "dependencies": [
-        "bal-spinner",
+        "ds-spinner",
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ],
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ],
-        "bal-snackbar": [
-          "bal-button"
+        "ds-snackbar": [
+          "ds-button"
         ],
-        "bal-toast": [
-          "bal-button"
+        "ds-toast": [
+          "ds-button"
         ]
       },
       "props": [
@@ -2378,23 +2378,23 @@
     },
     {
       "fileName": "button-group.tsx",
-      "tag": "bal-button-group",
+      "tag": "ds-button-group",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-card-actions",
-        "bal-snackbar"
+        "ds-card-actions",
+        "ds-snackbar"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-actions": [
-          "bal-button-group"
+        "ds-card-actions": [
+          "ds-button-group"
         ],
-        "bal-snackbar": [
-          "bal-button-group"
+        "ds-snackbar": [
+          "ds-button-group"
         ]
       },
       "props": [
@@ -2554,7 +2554,7 @@
     },
     {
       "fileName": "card.tsx",
-      "tag": "bal-card",
+      "tag": "ds-card",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3149,7 +3149,7 @@
     },
     {
       "fileName": "card-actions.tsx",
-      "tag": "bal-card-actions",
+      "tag": "ds-card-actions",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3157,11 +3157,11 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-button-group"
+        "ds-button-group"
       ],
       "dependencyGraph": {
-        "bal-card-actions": [
-          "bal-button-group"
+        "ds-card-actions": [
+          "ds-button-group"
         ]
       },
       "props": [
@@ -3215,7 +3215,7 @@
     },
     {
       "fileName": "card-content.tsx",
-      "tag": "bal-card-content",
+      "tag": "ds-card-content",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3234,7 +3234,7 @@
     },
     {
       "fileName": "card-header.tsx",
-      "tag": "bal-card-header",
+      "tag": "ds-card-header",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3293,7 +3293,7 @@
     },
     {
       "fileName": "card-subtitle.tsx",
-      "tag": "bal-card-subtitle",
+      "tag": "ds-card-subtitle",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3433,7 +3433,7 @@
     },
     {
       "fileName": "card-title.tsx",
-      "tag": "bal-card-title",
+      "tag": "ds-card-title",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3441,11 +3441,11 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-heading"
+        "ds-heading"
       ],
       "dependencyGraph": {
-        "bal-card-title": [
-          "bal-heading"
+        "ds-card-title": [
+          "ds-heading"
         ]
       },
       "props": [
@@ -3675,7 +3675,7 @@
     },
     {
       "fileName": "check.tsx",
-      "tag": "bal-check",
+      "tag": "ds-check",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -3686,7 +3686,7 @@
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-check": [
+        "ds-check": [
           "ds-icon"
         ]
       },
@@ -3826,40 +3826,40 @@
     },
     {
       "fileName": "close.tsx",
-      "tag": "bal-close",
+      "tag": "ds-close",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-notification",
-        "bal-snackbar",
-        "bal-tag",
-        "bal-toast"
+        "ds-notification",
+        "ds-snackbar",
+        "ds-tag",
+        "ds-toast"
       ],
       "dependencies": [
-        "bal-button"
+        "ds-button"
       ],
       "dependencyGraph": {
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ],
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ],
-        "bal-notification": [
-          "bal-close"
+        "ds-notification": [
+          "ds-close"
         ],
-        "bal-snackbar": [
-          "bal-close"
+        "ds-snackbar": [
+          "ds-close"
         ],
-        "bal-tag": [
-          "bal-close"
+        "ds-tag": [
+          "ds-close"
         ],
-        "bal-toast": [
-          "bal-close"
+        "ds-toast": [
+          "ds-close"
         ]
       },
       "props": [
@@ -4101,7 +4101,7 @@
     },
     {
       "fileName": "content.tsx",
-      "tag": "bal-content",
+      "tag": "ds-content",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -4367,7 +4367,7 @@
     },
     {
       "fileName": "divider.tsx",
-      "tag": "bal-divider",
+      "tag": "ds-divider",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -4651,19 +4651,19 @@
     },
     {
       "fileName": "heading.tsx",
-      "tag": "bal-heading",
+      "tag": "ds-heading",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-card-title"
+        "ds-card-title"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-card-title": [
-          "bal-heading"
+        "ds-card-title": [
+          "ds-heading"
         ]
       },
       "props": [
@@ -5181,39 +5181,39 @@
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-accordion",
-        "bal-badge",
-        "bal-button",
-        "bal-check",
-        "bal-item",
-        "bal-snackbar",
-        "bal-switch",
-        "bal-toast"
+        "ds-accordion",
+        "ds-badge",
+        "ds-button",
+        "ds-check",
+        "ds-item",
+        "ds-snackbar",
+        "ds-switch",
+        "ds-toast"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-accordion": [
+        "ds-accordion": [
           "ds-icon"
         ],
-        "bal-badge": [
+        "ds-badge": [
           "ds-icon"
         ],
-        "bal-button": [
+        "ds-button": [
           "ds-icon"
         ],
-        "bal-check": [
+        "ds-check": [
           "ds-icon"
         ],
-        "bal-item": [
+        "ds-item": [
           "ds-icon"
         ],
-        "bal-snackbar": [
+        "ds-snackbar": [
           "ds-icon"
         ],
-        "bal-switch": [
+        "ds-switch": [
           "ds-icon"
         ],
-        "bal-toast": [
+        "ds-toast": [
           "ds-icon"
         ]
       },
@@ -5685,7 +5685,7 @@
     },
     {
       "fileName": "item.tsx",
-      "tag": "bal-item",
+      "tag": "ds-item",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -5693,15 +5693,15 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-accordion",
+        "ds-accordion",
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-item": [
-          "bal-accordion",
+        "ds-item": [
+          "ds-accordion",
           "ds-icon"
         ],
-        "bal-accordion": [
+        "ds-accordion": [
           "ds-icon"
         ]
       },
@@ -6338,7 +6338,7 @@
     },
     {
       "fileName": "label.tsx",
-      "tag": "bal-label",
+      "tag": "ds-label",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -6424,10 +6424,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "`bal-lbl-${labelIds++}`"
+              "text": "`ds-lbl-${labelIds++}`"
             }
           ],
-          "default": "`bal-lbl-${labelIds++}`",
+          "default": "`ds-lbl-${labelIds++}`",
           "values": [
             {
               "type": "string"
@@ -6643,7 +6643,7 @@
     },
     {
       "fileName": "list.tsx",
-      "tag": "bal-list",
+      "tag": "ds-list",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -6697,7 +6697,7 @@
     },
     {
       "fileName": "logo.tsx",
-      "tag": "bal-logo",
+      "tag": "ds-logo",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -6882,7 +6882,7 @@
     },
     {
       "fileName": "notification.tsx",
-      "tag": "bal-notification",
+      "tag": "ds-notification",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -6890,17 +6890,17 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-close"
+        "ds-close"
       ],
       "dependencyGraph": {
-        "bal-notification": [
-          "bal-close"
+        "ds-notification": [
+          "ds-close"
         ],
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ],
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ]
       },
@@ -7221,7 +7221,7 @@
     },
     {
       "fileName": "shape.tsx",
-      "tag": "bal-shape",
+      "tag": "ds-shape",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -7394,7 +7394,7 @@
     },
     {
       "fileName": "snackbar.tsx",
-      "tag": "bal-snackbar",
+      "tag": "ds-snackbar",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -7402,24 +7402,24 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-button",
+        "ds-button",
         "ds-icon",
-        "bal-button-group",
-        "bal-close"
+        "ds-button-group",
+        "ds-close"
       ],
       "dependencyGraph": {
-        "bal-snackbar": [
-          "bal-button",
+        "ds-snackbar": [
+          "ds-button",
           "ds-icon",
-          "bal-button-group",
-          "bal-close"
+          "ds-button-group",
+          "ds-close"
         ],
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ],
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ]
       },
       "props": [
@@ -7830,19 +7830,19 @@
     },
     {
       "fileName": "spinner.tsx",
-      "tag": "bal-spinner",
+      "tag": "ds-spinner",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [
-        "bal-button"
+        "ds-button"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-button": [
-          "bal-spinner"
+        "ds-button": [
+          "ds-spinner"
         ]
       },
       "props": [
@@ -8068,7 +8068,7 @@
     },
     {
       "fileName": "stack.tsx",
-      "tag": "bal-stack",
+      "tag": "ds-stack",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -8895,7 +8895,7 @@
     },
     {
       "fileName": "switch.tsx",
-      "tag": "bal-switch",
+      "tag": "ds-switch",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -8906,7 +8906,7 @@
         "ds-icon"
       ],
       "dependencyGraph": {
-        "bal-switch": [
+        "ds-switch": [
           "ds-icon"
         ]
       },
@@ -9019,7 +9019,7 @@
     },
     {
       "fileName": "tag.tsx",
-      "tag": "bal-tag",
+      "tag": "ds-tag",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -9027,17 +9027,17 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-close"
+        "ds-close"
       ],
       "dependencyGraph": {
-        "bal-tag": [
-          "bal-close"
+        "ds-tag": [
+          "ds-close"
         ],
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ],
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ]
       },
@@ -9245,7 +9245,7 @@
           "mutable": false,
           "attr": "position",
           "reflectToAttr": true,
-          "docs": "Choosing left or center the tag is aligned to that side in the bal-card.",
+          "docs": "Choosing left or center the tag is aligned to that side in the ds-card.",
           "docsTags": [],
           "values": [
             {
@@ -9380,7 +9380,7 @@
     },
     {
       "fileName": "tag-group.tsx",
-      "tag": "bal-tag-group",
+      "tag": "ds-tag-group",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -9399,7 +9399,7 @@
     },
     {
       "fileName": "text.tsx",
-      "tag": "bal-text",
+      "tag": "ds-text",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -9942,7 +9942,7 @@
     },
     {
       "fileName": "toast.tsx",
-      "tag": "bal-toast",
+      "tag": "ds-toast",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -9951,21 +9951,21 @@
       "dependents": [],
       "dependencies": [
         "ds-icon",
-        "bal-button",
-        "bal-close"
+        "ds-button",
+        "ds-close"
       ],
       "dependencyGraph": {
-        "bal-toast": [
+        "ds-toast": [
           "ds-icon",
-          "bal-button",
-          "bal-close"
+          "ds-button",
+          "ds-close"
         ],
-        "bal-button": [
-          "bal-spinner",
+        "ds-button": [
+          "ds-spinner",
           "ds-icon"
         ],
-        "bal-close": [
-          "bal-button"
+        "ds-close": [
+          "ds-button"
         ]
       },
       "props": [
