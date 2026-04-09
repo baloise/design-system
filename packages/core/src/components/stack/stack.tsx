@@ -9,7 +9,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 export class Stack implements ComponentInterface, Loggable {
   log!: LogInstance
 
-  @Logger('ds-stack')
+  @Logger('stack')
   createLogger(log: LogInstance) {
     this.log = log
   }

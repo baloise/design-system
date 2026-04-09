@@ -1,13 +1,21 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-shape',
   styleUrl: 'shape.host.scss',
   shadow: true,
 })
-export class Shape implements ComponentInterface {
+export class Shape implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('shape')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLStencilElement
 
   /**

@@ -2,13 +2,21 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-tag',
   styleUrl: 'tag.host.scss',
   shadow: true,
 })
-export class Tag {
+export class Tag implements Loggable {
+  log!: LogInstance
+
+  @Logger('tag')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLStencilElement
 
   private inheritedAttributesClose: { [k: string]: any } = {}

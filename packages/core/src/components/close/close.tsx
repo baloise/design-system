@@ -10,13 +10,21 @@ import {
 } from '../../utils/config'
 import { i18nDsClose } from './close.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-close',
   styleUrl: 'close.host.scss',
   shadow: true,
 })
-export class Close implements ComponentInterface, DsConfigObserver {
+export class Close implements ComponentInterface, DsConfigObserver, Loggable {
+  log!: LogInstance
+
+  @Logger('close')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLStencilElement
 
   @State() language: DsLanguage = defaultConfig.language

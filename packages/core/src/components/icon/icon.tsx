@@ -4,13 +4,21 @@ import upperFirst from 'lodash/upperFirst'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '../../utils/config'
 import { sanitizeSvg } from '../../utils/svg'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-icon',
   styleUrl: 'icon.host.scss',
   shadow: true,
 })
-export class Icon implements DsConfigObserver, ComponentInterface {
+export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('icon')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @State() icons: DsIcons = defaultConfig.icons
   @State() svgContent = ''
 

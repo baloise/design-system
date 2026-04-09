@@ -16,13 +16,21 @@ import { stopEventBubbling } from '../../../utils/form-input'
 import { AlertComponent } from '../alert-container.interfaces'
 import { sanitizeSvg } from '../../../utils/svg'
 import { raf } from '../../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-snackbar',
   styleUrl: 'snackbar.host.scss',
   shadow: true,
 })
-export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpointObserver {
+export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpointObserver, Loggable {
+  log!: LogInstance
+
+  @Logger('snackbar')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() element!: HTMLDsSnackbarElement
 
   @State() isMobile = dsBreakpoints.isMobile

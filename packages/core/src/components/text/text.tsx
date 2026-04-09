@@ -1,12 +1,20 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { ElementStateInfo } from '../../utils/element-states'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-text',
   styleUrl: 'text.host.scss',
   shadow: true,
 })
-export class Text implements ComponentInterface, ElementStateInfo {
+export class Text implements ComponentInterface, ElementStateInfo, Loggable {
+  log!: LogInstance
+
+  @Logger('text')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * PUBLIC API
    * ------------------------------------------------------

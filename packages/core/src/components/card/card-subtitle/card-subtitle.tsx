@@ -1,11 +1,19 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-card-subtitle',
   styleUrl: 'card-subtitle.host.scss',
   shadow: true,
 })
-export class CardSubtitle {
+export class CardSubtitle implements Loggable {
+  log!: LogInstance
+
+  @Logger('card-subtitle')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * If `true` the card text color becomes white.
    */

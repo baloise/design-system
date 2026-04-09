@@ -16,13 +16,21 @@ import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'
 import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../utils/config'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-toast',
   styleUrl: 'toast.host.scss',
   shadow: true,
 })
-export class Toast implements ComponentInterface, AlertComponent, DsConfigObserver {
+export class Toast implements ComponentInterface, AlertComponent, DsConfigObserver, Loggable {
+  log!: LogInstance
+
+  @Logger('toast')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() element!: HTMLDsToastElement
 
   @State() animated = false

@@ -19,7 +19,7 @@ export class App implements Loggable {
 
   log!: LogInstance
 
-  @Logger('ds-app')
+  @Logger('app')
   createLogger(log: LogInstance) {
     this.log = log
   }

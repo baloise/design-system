@@ -3,6 +3,7 @@ import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/intern
 import { ariaBooleanToString } from '../../utils/aria'
 import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-button',
@@ -10,7 +11,14 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
   shadow: true,
   formAssociated: true,
 })
-export class Button implements ComponentInterface {
+export class Button implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('button')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   private inheritAttributes: Attributes = {}
   @AttachInternals() internals!: ElementInternals
 

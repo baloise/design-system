@@ -28,7 +28,7 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
 
   log!: LogInstance
 
-  @Logger('ds-label')
+  @Logger('label')
   createLogger(log: LogInstance) {
     this.log = log
   }

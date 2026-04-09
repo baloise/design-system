@@ -1,11 +1,19 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-button-group',
   styleUrl: 'button-group.host.scss',
   shadow: true,
 })
-export class ButtonGroup implements ComponentInterface {
+export class ButtonGroup implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('button-group')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * The value of the button, which is submitted with the form data.
    */

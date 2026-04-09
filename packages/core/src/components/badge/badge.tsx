@@ -1,13 +1,21 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-badge',
   styleUrl: 'badge.host.scss',
   shadow: true,
 })
-export class Badge implements ComponentInterface {
+export class Badge implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('badge')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLStencilElement
 
   /**

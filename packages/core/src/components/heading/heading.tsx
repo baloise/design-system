@@ -10,13 +10,21 @@ import {
   HeadingSize,
   HeadingTag,
 } from './heading.const'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-heading',
   styleUrl: 'heading.host.scss',
   shadow: true,
 })
-export class Heading implements ComponentInterface {
+export class Heading implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('heading')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   private headingEl?: HTMLElement
 
   @Element() el!: HTMLStencilElement

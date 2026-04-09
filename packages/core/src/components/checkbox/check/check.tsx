@@ -1,11 +1,19 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-check',
   styleUrl: './check.host.scss',
   shadow: true,
 })
-export class Check implements ComponentInterface {
+export class Check implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('check')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------

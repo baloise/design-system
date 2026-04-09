@@ -16,7 +16,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
 
   log!: LogInstance
 
-  @Logger('ds-accordion')
+  @Logger('accordion')
   createLogger(log: LogInstance) {
     this.log = log
   }

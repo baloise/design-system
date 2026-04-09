@@ -21,7 +21,7 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
 
   @State() animated = defaultConfig.animated
 
-  @Logger('ds-spinner')
+  @Logger('spinner')
   createLogger(log: LogInstance) {
     this.log = log
   }

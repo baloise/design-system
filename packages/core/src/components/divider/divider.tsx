@@ -10,7 +10,7 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 export class Divider implements ComponentInterface, Loggable {
   log!: LogInstance
 
-  @Logger('ds-divider')
+  @Logger('divider')
   createLogger(log: LogInstance) {
     this.log = log
   }

@@ -12,13 +12,21 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../utils/form-input'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-notification',
   styleUrl: 'notification.host.scss',
   shadow: true,
 })
-export class Notification implements ComponentInterface {
+export class Notification implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('notification')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() element!: HTMLDsNotificationElement
   @State() didLoad = false
 

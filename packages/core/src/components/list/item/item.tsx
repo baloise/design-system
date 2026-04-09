@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { Event, EventEmitter, HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 type Attributes = {
   disabled?: boolean
@@ -15,7 +16,14 @@ type Attributes = {
   styleUrl: 'item.host.scss',
   shadow: true,
 })
-export class Item implements ComponentInterface {
+export class Item implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('item')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLStencilElement
 
   @Prop() variant: 'link' | 'button' | 'accordion' | 'default' = 'default'

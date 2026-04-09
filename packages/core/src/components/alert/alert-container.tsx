@@ -2,13 +2,21 @@ import { Element, Component, Method, h, Host, Prop, ComponentInterface, State } 
 import { raf, wait } from '../../utils/helpers'
 import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-container.interfaces'
 import { createPausableTimer, PausableTimer } from '../../utils/timer'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-alert-container',
   styleUrl: 'alert-container.host.scss',
   shadow: true,
 })
-export class AlertContainer implements ComponentInterface {
+export class AlertContainer implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('alert-container')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   private maxVisibleItems = 5
   private animationDurationMs = 300
 

@@ -1,13 +1,21 @@
 import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-card',
   styleUrl: 'card.host.scss',
   shadow: true,
 })
-export class Card {
+export class Card implements Loggable {
+  log!: LogInstance
+
+  @Logger('card')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   @Element() el!: HTMLElement
 
   /**
