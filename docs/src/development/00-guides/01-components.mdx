@@ -26,7 +26,7 @@ import {
 
 The code is designed to improve the performance of the application by lazy loading each component to the browser
 only when it is needed. Additionally, sub-components will be automatically resolved and loaded as well. To ensure
-that the Design System is initialized correctly, it is crucial that the application is wrapped in the bal-app component
+that the Design System is initialized correctly, it is crucial that the application is wrapped in the ds-app component
 
 <AngularFramework>
 
@@ -44,11 +44,11 @@ export class AppModule {}
 **app.component.html**
 
 ```html
-<bal-app>
+<ds-app>
   <main class="container">
-    <bal-heading>Hello World</bal-heading>
+    <ds-heading>Hello World</ds-heading>
   <main>
-</bal-app>
+</ds-app>
 ```
 
 </AngularFramework>
@@ -62,11 +62,11 @@ export class AppModule {}
 <HTMLFramework>
 
 ```html
-<bal-app>
+<ds-app>
   <main class="container">
-    <bal-heading>Hello World</bal-heading>
+    <ds-heading>Hello World</ds-heading>
   <main>
-</bal-app>
+</ds-app>
 ```
 
 ### When is the component ready
@@ -78,7 +78,7 @@ The [whenDefined](https://developer.mozilla.org/en-US/docs/Web/API/CustomElement
 resolves when the named element is defined.
 
 ```js
-window.customElements.whenDefined('bal-button').then(() => {
+window.customElements.whenDefined('ds-button').then(() => {
   console.log('Baloise Design System Button is defined!')
 })
 ```
@@ -87,8 +87,8 @@ The `whenDefined()` tells when the component is added to the browser.
 Additionally to know when the component has fully rendered ou could use `componentOnReady()` that the components provide.
 
 ```js
-await customElements.whenDefined('bal-button')
-await document.querySelector('bal-button').componentOnReady()
+await customElements.whenDefined('ds-button')
+await document.querySelector('ds-button').componentOnReady()
 ```
 
 </HTMLFramework>
@@ -138,14 +138,14 @@ To showcase property interaction, an attempt is made to modify the color propert
 
 ```html
 <!-- with color secondary -->
-<bal-button color="secondary">My secondary button</bal-button>
+<ds-button color="secondary">My secondary button</ds-button>
 ```
 
 If the property is of type `boolean` it is enough to just set the property without a value:
 
 ```html
 <!-- disabled button -->
-<bal-button disabled>My disabled button</bal-button>
+<ds-button disabled>My disabled button</ds-button>
 ```
 
 <AngularFramework>
@@ -169,11 +169,11 @@ export class AppComponent {
 **app.component.html**
 
 ```html
-<bal-button color="secondary">My secondary button</bal-button>
+<ds-button color="secondary">My secondary button</ds-button>
 
 <!-- To bind a value use the [] around the prop -->
 
-<bal-button [color]="buttonColor">My secondary button</bal-button>
+<ds-button [color]="buttonColor">My secondary button</ds-button>
 ```
 
 </AngularFramework>
@@ -189,8 +189,8 @@ export class AppComponent {
 ### Bind properties
 
 ```html
-<bal-button color="secondary">My secondary button</bal-button>
-<bal-button id="my-secondary-button">My secondary button</bal-button>
+<ds-button color="secondary">My secondary button</ds-button>
+<ds-button id="my-secondary-button">My secondary button</ds-button>
 
 <script>
   const buttonElement = document.querySelector('#my-secondary-button')
@@ -240,7 +240,7 @@ To demonstrate how to interact with events let's try to listen to the input even
 
 ```html
 <!-- simple text input -->
-<bal-input placeholder="Tell us your name"></bal-input>
+<ds-input placeholder="Tell us your name"></ds-input>
 ```
 
 <AngularFramework>
@@ -252,8 +252,8 @@ In Angular the events are written like that `(dsEventName)="yourComponentHandler
 **app.component.html**
 
 ```html
-<bal-input placeholder="Tell us your name" [value]="myName" (dsInput)="updateName($event.detail)"></bal-input>
-<bal-text>My name is {{ myName }}</bal-text>
+<ds-input placeholder="Tell us your name" [value]="myName" (dsInput)="updateName($event.detail)"></ds-input>
+<ds-text>My name is {{ myName }}</ds-text>
 ```
 
 **app.component.ts**
@@ -288,8 +288,8 @@ Since the components are using [dom events](https://developer.mozilla.org/en-US/
 they can easily listen to them with `addEventListener`.
 
 ```html
-<bal-input id="my-input" placeholder="Tell us your name"></bal-input>
-<bal-text id="my-name"></bal-text>
+<ds-input id="my-input" placeholder="Tell us your name"></ds-input>
+<ds-text id="my-name"></ds-text>
 
 <script>
   const myInput = document.getElementById('my-input')
@@ -342,14 +342,14 @@ export default EventComponent
 
 Some of the Baloise Design System components offering methods to setFocus or returning native HTML elements.
 
-To demonstrate the usage of the methods let's to set the value of the bal-select to tennis.
+To demonstrate the usage of the methods let's to set the value of the ds-select to tennis.
 
 ```html
-<bal-select placeholder="Choose your hobby">
-  <bal-select-option label="Tennis" value="tennis"> Tennis </bal-select-option>
-  <bal-select-option label="Soccer" value="soccer"> Soccer </bal-select-option>
-  <bal-select-option label="Other" value="other"> Other </bal-select-option>
-</bal-select>
+<ds-select placeholder="Choose your hobby">
+  <ds-select-option label="Tennis" value="tennis"> Tennis </ds-select-option>
+  <ds-select-option label="Soccer" value="soccer"> Soccer </ds-select-option>
+  <ds-select-option label="Other" value="other"> Other </ds-select-option>
+</ds-select>
 ```
 
 <AngularFramework>
@@ -361,12 +361,12 @@ To access the method of the component use the reference directly.
 **app.component.html**
 
 ```html
-<bal-select #mySelect placeholder="Choose your hobby">
-  <bal-select-option label="Tennis" value="tennis">Tennis</bal-select-option>
-  <bal-select-option label="Soccer" value="soccer">Soccer</bal-select-option>
-  <bal-select-option label="Other" value="other">Other</bal-select-option>
-</bal-select>
-<bal-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</bal-button>
+<ds-select #mySelect placeholder="Choose your hobby">
+  <ds-select-option label="Tennis" value="tennis">Tennis</ds-select-option>
+  <ds-select-option label="Soccer" value="soccer">Soccer</ds-select-option>
+  <ds-select-option label="Other" value="other">Other</ds-select-option>
+</ds-select>
+<ds-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</ds-button>
 ```
 
 **app.component.ts**
@@ -401,8 +401,8 @@ export class MethodComponent {
 
 ```js
 ;(async () => {
-  await customElements.whenDefined('bal-select')
-  const todoListElement = document.querySelector('bal-select')
+  await customElements.whenDefined('ds-select')
+  const todoListElement = document.querySelector('ds-select')
   await todoListElement.select('tennis')
 })()
 ```

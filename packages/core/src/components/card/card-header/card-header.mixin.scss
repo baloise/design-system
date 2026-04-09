@@ -29,29 +29,29 @@
   grid-template-columns: var(--_card-header-grid-template-columns);
   grid-template-areas: var(--_card-header-grid-template-areas);
 
-  bal-icon,
-  ::slotted(bal-icon) {
+  ds-icon,
+  ::slotted(ds-icon) {
     grid-area: icon;
   }
 
   & > .tag,
   & > .tags,
-  & > bal-tag,
-  & > bal-tag-group,
-  ::slotted(bal-tag),
-  ::slotted(bal-tag-group) {
+  & > ds-tag,
+  & > ds-tag-group,
+  ::slotted(ds-tag),
+  ::slotted(ds-tag-group) {
     grid-area: tag;
     margin-bottom: 1rem;
   }
 
   .title,
-  bal-card-title {
+  ds-card-title {
     @include title.style();
   }
 
   & > p,
   .subtitle,
-  bal-card-subtitle {
+  ds-card-subtitle {
     @include subtitle.style();
   }
 

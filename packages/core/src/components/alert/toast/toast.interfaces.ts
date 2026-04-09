@@ -9,7 +9,7 @@ namespace DS {
 
   export interface ToastCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalToastElement
+    target: HTMLDsToastElement
   }
 
   export type ToastCloseClickDetail = MouseEvent

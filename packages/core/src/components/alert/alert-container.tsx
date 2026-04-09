@@ -4,7 +4,7 @@ import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-co
 import { createPausableTimer, PausableTimer } from '../../utils/timer'
 
 @Component({
-  tag: 'bal-alert-container',
+  tag: 'ds-alert-container',
   styleUrl: 'alert-container.host.scss',
   shadow: true,
 })
@@ -12,7 +12,7 @@ export class AlertContainer implements ComponentInterface {
   private maxVisibleItems = 5
   private animationDurationMs = 300
 
-  @Element() el!: HTMLBalAlertContainerElement
+  @Element() el!: HTMLDsAlertContainerElement
   containerEl: HTMLDivElement | undefined
 
   @State() alerts: AlertComponent[] = []
@@ -107,7 +107,7 @@ export class AlertContainer implements ComponentInterface {
 
   render() {
     const visibleAlerts = this.alerts.slice(0, this.maxVisibleItems)
-    const AlertElement = this.type === 'toast' ? 'bal-toast' : 'bal-snackbar'
+    const AlertElement = this.type === 'toast' ? 'ds-toast' : 'ds-snackbar'
 
     return (
       <Host

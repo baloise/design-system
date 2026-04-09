@@ -12,9 +12,9 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-icon' }),
+    ...withComponentControls({ tag: 'ds-icon' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-icon ${props(args)}>${content}</bal-icon>`),
+  ...withRender(({ content, ...args }) => `<ds-icon ${props(args)}>${content}</ds-icon>`),
 }
 
 export default meta
@@ -83,7 +83,7 @@ export const UiIcons = Story({
       ]
         .map(
           item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 180px">
-      <bal-icon name="${item}"></bal-icon>
+      <ds-icon name="${item}"></ds-icon>
       <span>${item}</span>
     </div>`,
         )
@@ -100,6 +100,6 @@ export const BrandIcons = Story({
   },
   ...withRender(
     ({ content, ...args }) =>
-      `<bal-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</bal-icon>`,
+      `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</ds-icon>`,
   ),
 })

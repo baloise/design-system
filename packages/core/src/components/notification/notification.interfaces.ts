@@ -19,7 +19,7 @@ namespace DS {
 
   export interface NotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalNotificationElement
+    target: HTMLDsNotificationElement
   }
 
   export type NotificationCloseClickDetail = MouseEvent

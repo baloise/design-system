@@ -85,7 +85,7 @@ $host-selector: ('#notification');
   //
   // Close
   // --------------------------------
-  bal-close,
+  ds-close,
   .close {
     position: var(--_notification-close-position);
     top: var(--_notification-close-top);
@@ -104,7 +104,7 @@ $host-selector: ('#notification');
   }
 
   &:has(.close) > h2::before,
-  &:has(bal-close) > h2::before {
+  &:has(ds-close) > h2::before {
     content: '';
     float: right;
     width: 24px;

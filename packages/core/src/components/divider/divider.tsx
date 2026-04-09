@@ -3,7 +3,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-divider',
+  tag: 'ds-divider',
   styleUrl: './divider.host.scss',
   shadow: true,
 })

@@ -191,7 +191,7 @@ import '@baloise/ds-testing/add-override-commands'
 
 ### Component Testing
 
-Open the "component-index.html" file and integrate the `bal-app` component.
+Open the "component-index.html" file and integrate the `ds-app` component.
 
 ```html
 <!doctype html>
@@ -203,7 +203,7 @@ Open the "component-index.html" file and integrate the `bal-app` component.
     <title>Components App</title>
   </head>
   <body>
-    <bal-app data-cy-root></bal-app>
+    <ds-app data-cy-root></ds-app>
   </body>
 </html>
 ```
@@ -215,7 +215,7 @@ A simple component has been developed, utilizing the CSS framework and its corre
 ```html
 <div class="p-large">
   <h1 class="title">Native Title</h1>
-  <bal-heading>Component Title</bal-heading>
+  <ds-heading>Component Title</ds-heading>
 </div>
 ```
 
@@ -224,7 +224,7 @@ Lets create the first test `hello.component.cy.ts`.
 ```html
 <div class="p-large">
   <h1 class="title">Native Title</h1>
-  <bal-heading>Component Title</bal-heading>
+  <ds-heading>Component Title</ds-heading>
 </div>
 ```
 
@@ -243,7 +243,7 @@ describe('hello.component.cy.ts', () => {
     // disabled the animations and the web-components have rendered
     cy.waitForDesignSystem()
 
-    cy.get('bal-heading').contains('Component Title')
+    cy.get('ds-heading').contains('Component Title')
   })
 })
 ```
@@ -276,7 +276,7 @@ describe('Accordion', () => {
 For optimal testing practices assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
 
 ```html
-<bal-button data-testid="my-button"></bal-button>
+<ds-button data-testid="my-button"></ds-button>
 ```
 
 Construct the correct selector using the helper function byTestId, like [data-testid="my-button"].

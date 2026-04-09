@@ -172,7 +172,7 @@ export const getSibling = (parentTag: HTMLElement | EventTarget, child: string):
 }
 
 export const getAppRoot = (doc: Document) => {
-  return doc.querySelector('bal-app') || doc.body
+  return doc.querySelector('ds-app') || doc.body
 }
 
 /**
@@ -332,7 +332,7 @@ export const isChildOfEventTarget = async (
     // special case for the navbar case
     const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
     if (isNavbarBrand) {
-      target = target.closest('bal-navbar') as HTMLStencilElement
+      target = target.closest('ds-navbar') as HTMLStencilElement
     }
 
     if (target && isDescendant(target, el)) {

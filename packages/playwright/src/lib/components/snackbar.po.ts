@@ -11,10 +11,10 @@ export class DsSnackbar extends PageObject {
 
   constructor(el: E2ELocator) {
     super(el)
-    this.close = new DsClose(el.locator('bal-close') as E2ELocator)
+    this.close = new DsClose(el.locator('ds-close') as E2ELocator)
     this.heading = el.locator('h2')
     this.expandButton = el.locator('#mobile-button')
-    this.actions = el.locator('#action').locator('bal-button')
+    this.actions = el.locator('#action').locator('ds-button')
   }
 
   async clickClose() {

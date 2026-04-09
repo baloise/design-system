@@ -2,21 +2,21 @@ import { test } from '@baloise/ds-playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(`
-    <bal-card>
-      <bal-card-header>
-        <bal-card-title>Heading</bal-card-title>
-        <bal-close></bal-close>
-      </bal-card-header>
-      <bal-card-content>
+    <ds-card>
+      <ds-card-header>
+        <ds-card-title>Heading</ds-card-title>
+        <ds-close></ds-close>
+      </ds-card-header>
+      <ds-card-content>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
         odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?
-      </bal-card-content>
-      <bal-card-actions>
-        <bal-button color="secondary">Button</bal-button>
-        <bal-button>Button</bal-button>
-      </bal-card-actions>
-    </bal-card>`)
-  await a11y('bal-card')
+      </ds-card-content>
+      <ds-card-actions>
+        <ds-button color="secondary">Button</ds-button>
+        <ds-button>Button</ds-button>
+      </ds-card-actions>
+    </ds-card>`)
+  await a11y('ds-card')
 })
 
 test('css-basic', async ({ page, a11y }) => {
@@ -24,7 +24,7 @@ test('css-basic', async ({ page, a11y }) => {
     <article class="card">
       <header class="card-header">
         <h3 class="title">Header</h3>
-        <bal-close></bal-close>
+        <ds-close></ds-close>
       </header>
       <div class="card-content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
@@ -73,12 +73,12 @@ test.describe('colors', () => {
   ] as const
   COLORS.forEach(color => {
     test(color, async ({ page, a11y }) => {
-      await page.mount(`<bal-card color="${color}">
-        <bal-card-header>
-          <bal-card-title>${color}</bal-card-title>
-        </bal-card-header>
-      </bal-card>`)
-      await a11y(`bal-card`)
+      await page.mount(`<ds-card color="${color}">
+        <ds-card-header>
+          <ds-card-title>${color}</ds-card-title>
+        </ds-card-header>
+      </ds-card>`)
+      await a11y(`ds-card`)
     })
   })
 })

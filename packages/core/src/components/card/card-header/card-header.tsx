@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core'
 
 @Component({
-  tag: 'bal-card-header',
+  tag: 'ds-card-header',
   styleUrl: 'card-header.host.scss',
   shadow: true,
 })

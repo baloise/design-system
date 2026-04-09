@@ -54,14 +54,14 @@
   border-radius: var(--_switch-radius);
   background: var(--_switch-color-background);
 
-  bal-icon {
+  ds-icon {
     opacity: 0;
     --icon-color: var(--_switch-color-icon);
   }
 }
 
 @include attr.has(checked) {
-  bal-icon {
+  ds-icon {
     opacity: 1;
   }
 }

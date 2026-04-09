@@ -6,6 +6,6 @@
 namespace DS {
   export interface AppCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalAppElement
+    target: HTMLDsAppElement
   }
 }

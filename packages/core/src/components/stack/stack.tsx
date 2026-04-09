@@ -3,7 +3,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-stack',
+  tag: 'ds-stack',
   styleUrl: './stack.host.scss',
 })
 export class Stack implements ComponentInterface, Loggable {

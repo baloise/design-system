@@ -4,7 +4,7 @@ import { inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-tag',
+  tag: 'ds-tag',
   styleUrl: 'tag.host.scss',
   shadow: true,
 })
@@ -72,11 +72,10 @@ export class Tag {
           <slot />
         </span>
         {this.closable && !this.disabled ? (
-          <bal-close
-            data-testid="bal-tag-close"
+          <ds-close
             {...this.inheritedAttributesClose}
             onClick={(ev: MouseEvent) => this.dsCloseClick.emit(ev)}
-          ></bal-close>
+          ></ds-close>
         ) : (
           ''
         )}

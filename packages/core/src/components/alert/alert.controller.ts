@@ -10,7 +10,7 @@ export interface AlertController {
 }
 
 class AlertControllerImpl implements AlertController {
-  private container: HTMLBalAlertContainerElement | null = null
+  private container: HTMLDsAlertContainerElement | null = null
 
   constructor(private type: AlertType) {}
 
@@ -30,13 +30,13 @@ class AlertControllerImpl implements AlertController {
   private setupContainer(options: Alert) {
     // Check if there is already a container for the given type, if so reuse it
     const containerId = `bal-${this.type}-container`
-    this.container = document.getElementById(containerId) as HTMLBalAlertContainerElement
+    this.container = document.getElementById(containerId) as HTMLDsAlertContainerElement
 
     if (this.container) return
 
     // If not, create a new one and append it to the app root
     if (!this.container) {
-      this.container = document.createElement('bal-alert-container') as HTMLBalAlertContainerElement
+      this.container = document.createElement('ds-alert-container') as HTMLDsAlertContainerElement
       this.container.id = containerId
       this.container.setAttribute('type', this.type)
 

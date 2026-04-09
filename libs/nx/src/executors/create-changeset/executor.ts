@@ -56,8 +56,8 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
           { title: 'a11y', value: 'a11y' },
           ...tags.map(tag => {
             return {
-              title: `${tag.replace('bal-', '')}`,
-              value: tag.replace('bal-', ''),
+              title: `${tag.replace('ds-', '')}`,
+              value: tag.replace('ds-', ''),
             }
           }),
         ],

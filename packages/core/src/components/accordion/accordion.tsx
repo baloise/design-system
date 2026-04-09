@@ -4,7 +4,7 @@ import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/con
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
-  tag: 'bal-accordion',
+  tag: 'ds-accordion',
   styleUrl: 'accordion.host.scss',
   shadow: true,
 })
@@ -190,7 +190,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
 
   render() {
     const MarkerIcon = (
-      <bal-icon
+      <ds-icon
         id="marker"
         part="marker"
         class={{
@@ -200,7 +200,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
         name={
           this.marker === 'plus' ? 'plus' : this.marker !== 'plus-minus' ? 'caret-down' : this.open ? 'minus' : 'plus'
         }
-      ></bal-icon>
+      ></ds-icon>
     )
 
     return (
@@ -236,11 +236,11 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
             {/* Summary Button Icon                      */}
             {/* ---------------------------------------- */}
             {this.buttonIconOpen || this.buttonIconClose ? (
-              <bal-icon
+              <ds-icon
                 id="marker"
                 part="marker"
                 name={this.open ? this.buttonIconOpen : this.buttonIconClose}
-              ></bal-icon>
+              ></ds-icon>
             ) : (
               this.button && MarkerIcon
             )}

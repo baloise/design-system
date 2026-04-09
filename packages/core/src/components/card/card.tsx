@@ -3,7 +3,7 @@ import isEmpty from 'lodash/isEmpty'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-card',
+  tag: 'ds-card',
   styleUrl: 'card.host.scss',
   shadow: true,
 })

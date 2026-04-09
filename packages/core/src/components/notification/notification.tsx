@@ -14,12 +14,12 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-notification',
+  tag: 'ds-notification',
   styleUrl: 'notification.host.scss',
   shadow: true,
 })
 export class Notification implements ComponentInterface {
-  @Element() element!: HTMLBalNotificationElement
+  @Element() element!: HTMLDsNotificationElement
   @State() didLoad = false
 
   timer!: NodeJS.Timeout
@@ -118,13 +118,13 @@ export class Notification implements ComponentInterface {
       >
         <section id="notification" part="section">
           {this.closable && (
-            <bal-close
+            <ds-close
               part="close"
               onClick={ev => {
                 stopEventBubbling(ev)
                 this.close()
               }}
-            ></bal-close>
+            ></ds-close>
           )}
           {this.heading && <h2 part="heading">{this.heading}</h2>}
           <span>

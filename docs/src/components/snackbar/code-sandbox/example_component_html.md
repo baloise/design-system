@@ -1,3 +1,3 @@
 ```html
-<bal-button (click)="open()">Open snackbar</bal-button>
+<ds-button (click)="open()">Open snackbar</ds-button>
 ```

@@ -1,8 +1,8 @@
 import { test } from '@baloise/ds-playwright'
 
 test('basic', async ({ page, a11y }) => {
-  await page.mount(`<bal-notification heading="Heading">Your changes have been saved.</bal-notification>`)
-  await a11y('bal-notification')
+  await page.mount(`<ds-notification heading="Heading">Your changes have been saved.</ds-notification>`)
+  await a11y('ds-notification')
 })
 
 test.describe('colors', () => {
@@ -21,9 +21,9 @@ test.describe('colors', () => {
   COLORS.forEach(color => {
     test(color, async ({ page, a11y }) => {
       await page.mount(
-        `<bal-notification color="${color}" heading="Heading">Your changes have been saved.</bal-heading>`,
+        `<ds-notification color="${color}" heading="Heading">Your changes have been saved.</ds-heading>`,
       )
-      await a11y(`bal-notification`)
+      await a11y(`ds-notification`)
     })
   })
 })

@@ -1,28 +1,28 @@
 import { DsAccordion, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test('should render bal-accordion', async ({ page }) => {
+  test('should render ds-accordion', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('ds-accordion'))
 
     await dsAccordion.assertToBeVisible()
   })
 
   test('should fire dsToggle event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('ds-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsToggle')
 
     await dsAccordion.clickSummary()
@@ -32,13 +32,13 @@ test.describe('component', () => {
 
   test('should fire dsOpened event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('ds-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsOpened')
 
     await dsAccordion.clickSummary()
@@ -48,13 +48,13 @@ test.describe('component', () => {
 
   test('should assert open and closed state', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('ds-accordion'))
 
     await dsAccordion.assertToBeClosed()
 
@@ -65,13 +65,13 @@ test.describe('component', () => {
 
   test('should fire dsClosed event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const dsAccordion = new DsAccordion(page.locator('bal-accordion'))
+    const dsAccordion = new DsAccordion(page.locator('ds-accordion'))
     const spy = await dsAccordion.el.spyOnEvent('dsClosed')
 
     await dsAccordion.clickSummary() // open

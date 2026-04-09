@@ -87,11 +87,11 @@
 
   //
   // Icons
-  bal-icon {
+  ds-icon {
     flex-shrink: 0;
   }
 
-  #content + bal-icon {
+  #content + ds-icon {
     --icon-size: var(--ds-icon-size-xs);
     --icon-inner-size: var(--ds-icon-size-xs);
   }
@@ -184,9 +184,9 @@ $size-aliases: (
         #content {
           color: var(--ds-link-color-base-hover);
         }
-        bal-icon,
-        ::slotted(bal-icon),
-        ::slotted(bal-badge) {
+        ds-icon,
+        ::slotted(ds-icon),
+        ::slotted(ds-badge) {
           --icon-color: var(--ds-link-color-base-hover);
         }
       }
@@ -202,9 +202,9 @@ $size-aliases: (
       #content {
         color: var(--ds-link-color-base-active);
       }
-      bal-icon,
-      ::slotted(bal-icon),
-      ::slotted(bal-badge) {
+      ds-icon,
+      ::slotted(ds-icon),
+      ::slotted(ds-badge) {
         --icon-color: var(--ds-link-color-base-active);
       }
     }
@@ -259,15 +259,15 @@ $size-aliases: (
     color: var(--ds-list-item-disabled);
   }
 
-  bal-icon,
-  bal-badge,
-  ::slotted(bal-icon),
-  ::slotted(bal-badge) {
+  ds-icon,
+  ds-badge,
+  ::slotted(ds-icon),
+  ::slotted(ds-badge) {
     --icon-color: var(--ds-list-item-disabled);
   }
 
-  bal-badge,
-  ::slotted(bal-badge) {
+  ds-badge,
+  ::slotted(ds-badge) {
     --badge-color-background: var(--ds-badge-color-grey-background);
     --badge-color-text: var(--ds-badge-color-grey-text);
   }

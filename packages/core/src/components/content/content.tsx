@@ -3,7 +3,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-content',
+  tag: 'ds-content',
   styleUrl: './content.host.scss',
 })
 export class Content implements ComponentInterface, Loggable {

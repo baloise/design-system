@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-divider'
+const TAG = 'ds-divider'
 const VARIANTS = ['basic', 'colors', 'dashed', 'dashed-vertical', 'horizontal', 'vertical'] as const
 
 const image = screenshot(TAG)

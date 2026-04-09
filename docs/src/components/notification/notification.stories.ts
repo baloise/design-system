@@ -13,7 +13,7 @@ import {
 
 type Args = JSX.BalNotification & { content: string }
 
-const tag = 'bal-notification'
+const tag = 'ds-notification'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -59,9 +59,9 @@ export const Basic = Story()
 export const WebComponentBasic = Story({
   args: {},
   ...withRender(
-    ({ content, ...args }) => `<bal-notification ${props(args)}>
+    ({ content, ...args }) => `<ds-notification ${props(args)}>
   ${content}
-</bal-notification>`,
+</ds-notification>`,
   ),
 })
 
@@ -73,21 +73,21 @@ export const Alerts = Story({
   ...withRender(
     ({ content, ...args }) => `
 <div class="stack">
-  <bal-notification ${props(args)} heading="Alert">
+  <ds-notification ${props(args)} heading="Alert">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="info" heading="Information">
+  </ds-notification>
+  <ds-notification ${props(args)} color="info" heading="Information">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="success" heading="Success">
+  </ds-notification>
+  <ds-notification ${props(args)} color="success" heading="Success">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="warning" heading="Warning">
+  </ds-notification>
+  <ds-notification ${props(args)} color="warning" heading="Warning">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="danger" heading="Danger">
+  </ds-notification>
+  <ds-notification ${props(args)} color="danger" heading="Danger">
     ${content}
-  </bal-notification>
+  </ds-notification>
 </div>`,
   ),
 })
@@ -99,21 +99,21 @@ export const Outlines = Story({
   ...withRender(
     ({ content, ...args }) => `
 <div class="stack">
-  <bal-notification ${props(args)} color="outline-base" heading="Alert">
+  <ds-notification ${props(args)} color="outline-base" heading="Alert">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="outline-purple" heading="Information">
+  </ds-notification>
+  <ds-notification ${props(args)} color="outline-purple" heading="Information">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="outline-green" heading="Success">
+  </ds-notification>
+  <ds-notification ${props(args)} color="outline-green" heading="Success">
     ${content}
-  </bal-notification>
-  <bal-notification ${props(args)} color="outline-yellow" heading="Warning">
+  </ds-notification>
+  <ds-notification ${props(args)} color="outline-yellow" heading="Warning">
     ${content}
-  </bal-notification>  
-  <bal-notification ${props(args)} color="outline-red" heading="Danger">
+  </ds-notification>  
+  <ds-notification ${props(args)} color="outline-red" heading="Danger">
     ${content}
-  </bal-notification>
+  </ds-notification>
 </div>`,
   ),
 })

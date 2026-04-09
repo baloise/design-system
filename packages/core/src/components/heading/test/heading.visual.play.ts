@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-heading'
+const TAG = 'ds-heading'
 const VARIANTS = ['basic', 'colors', 'sizes', 'shadow', 'no-wrap', 'spaces']
 
 const image = screenshot(TAG)

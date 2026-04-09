@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'bal-switch',
+  tag: 'ds-switch',
   styleUrl: './switch.host.scss',
   shadow: true,
 })
@@ -49,7 +49,7 @@ export class Switch implements ComponentInterface {
           'is-pressed': this.pressed,
         }}
       >
-        <bal-icon name="check" size="sm"></bal-icon>
+        <ds-icon name="check" size="sm"></ds-icon>
         <div id="toggle" part="toggle"></div>
       </Host>
     )

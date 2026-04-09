@@ -26,8 +26,8 @@
       flex: 1 1 auto;
     }
 
-    ::slotted(bal-button:not(.is-square, .is-circle)),
-    bal-button:not(.is-square, .is-circle) {
+    ::slotted(ds-button:not(.is-square, .is-circle)),
+    ds-button:not(.is-square, .is-circle) {
       flex: 1 1 auto;
 
       --button-width: 100%;
@@ -61,8 +61,8 @@
     @include mobile {
       ::slotted(.button),
       .button,
-      ::slotted(bal-button),
-      bal-button {
+      ::slotted(ds-button),
+      ds-button {
         width: 100%;
       }
     }
@@ -112,8 +112,8 @@
     &.is-expanded {
       ::slotted(.button:not(.is-square, .is-circle)),
       .button:not(.is-square, .is-circle),
-      ::slotted(bal-button:not(.is-square, .is-circle)),
-      bal-button:not(.is-square, .is-circle) {
+      ::slotted(ds-button:not(.is-square, .is-circle)),
+      ds-button:not(.is-square, .is-circle) {
         flex: 1 1 auto;
 
         --button-width: 100%;

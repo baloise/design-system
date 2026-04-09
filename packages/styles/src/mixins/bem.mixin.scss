@@ -1,7 +1,7 @@
 @use 'sass:list';
 @use 'sass:string';
 
-$componentPrefix: 'bal-';
+\$componentPrefix: 'ds-';
 
 @mixin block($name) {
   .#{$componentPrefix}#{$name} {

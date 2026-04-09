@@ -134,7 +134,7 @@ $host-selector: ('#card');
   }
 
   :host(.is-fullheight) {
-    ::slotted(bal-card-content) {
+    ::slotted(ds-card-content) {
       height: 100%;
     }
   }
@@ -145,7 +145,7 @@ $host-selector: ('#card');
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
   > .badge:first-child,
-  > bal-badge:first-child {
+  > ds-badge:first-child {
     --badge-position: absolute;
     --badge-top: 0;
     transform: translate(calc(50% + var(--_card-gap)), -50%);
@@ -155,7 +155,7 @@ $host-selector: ('#card');
 
 @include hybrid.host($use-host) {
   :host {
-    ::slotted(bal-badge) {
+    ::slotted(ds-badge) {
       --badge-position: absolute;
       --badge-top: 0;
 
@@ -170,7 +170,7 @@ $host-selector: ('#card');
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
   > .tag.is-center:first-child,
-  > bal-tag[position='center']:first-child {
+  > ds-tag[position='center']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
 
@@ -179,7 +179,7 @@ $host-selector: ('#card');
   }
 
   > .tag.is-left:first-child,
-  > bal-tag[position='left']:first-child {
+  > ds-tag[position='left']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
 
@@ -188,7 +188,7 @@ $host-selector: ('#card');
   }
 
   > .tag.is-right:first-child,
-  > bal-tag[position='right']:first-child {
+  > ds-tag[position='right']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
 
@@ -199,7 +199,7 @@ $host-selector: ('#card');
 
 @include hybrid.host($use-host) {
   :host {
-    ::slotted(bal-tag[position='left']) {
+    ::slotted(ds-tag[position='left']) {
       --tag-position: absolute;
       --tag-top: 0;
 
@@ -207,7 +207,7 @@ $host-selector: ('#card');
       transform: translateY(-50%);
     }
 
-    ::slotted(bal-tag[position='center']) {
+    ::slotted(ds-tag[position='center']) {
       --tag-position: absolute;
       --tag-top: 0;
 
@@ -215,7 +215,7 @@ $host-selector: ('#card');
       transform: translateY(-50%);
     }
 
-    ::slotted(bal-tag[position='right']) {
+    ::slotted(ds-tag[position='right']) {
       --tag-position: absolute;
       --tag-top: 0;
 

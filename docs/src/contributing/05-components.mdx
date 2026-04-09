@@ -44,10 +44,10 @@ import FileStructure from '../assets/images/contribution/file-structure.png'
   {`
 | File                    | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |
-| bal-badge.tsx           | Stencil component which will be compiled into Web-Component. |
-| bal-badge.scss          | Custom component stylesheet, which is lazy loaded.           |
-| bal-badge.interfaces.ts | Types for properties and events of the component.            |
-| bal-badge.vars.scss     | CSS variables which can be used for theming.                 |
+| ds-badge.tsx           | Stencil component which will be compiled into Web-Component. |
+| ds-badge.scss          | Custom component stylesheet, which is lazy loaded.           |
+| ds-badge.interfaces.ts | Types for properties and events of the component.            |
+| ds-badge.vars.scss     | CSS variables which can be used for theming.                 |
   `}
 </Markdown>
 
@@ -57,9 +57,9 @@ import FileStructure from '../assets/images/contribution/file-structure.png'
   {`
 | File                   | Description                               | Location of the test file |
 | ---------------------- | ----------------------------------------- | ------------------------- |
-| bal-badge.a11y.html    | Example html file for accessibility test. | e2e/cypress/e2e/a11y      |
-| bal-badge.theming.html | Example theming file.                     | e2e/cypress/e2e/visual    |
-| bal-badge.visual.html  | Example html file for visual test.        | e2e/cypress/e2e/visual    |
+| ds-badge.a11y.html    | Example html file for accessibility test. | e2e/cypress/e2e/a11y      |
+| ds-badge.theming.html | Example theming file.                     | e2e/cypress/e2e/visual    |
+| ds-badge.visual.html  | Example html file for visual test.        | e2e/cypress/e2e/visual    |
   `}
 </Markdown>
 
@@ -100,9 +100,9 @@ const meta: Meta<Args> = {
   },
   argTypes: {
     ...withContent(),
-    ...withComponentControls({ tag: 'bal-badge' }),
+    ...withComponentControls({ tag: 'ds-badge' }),
 },
-  ...withRender(({ content, ...args }) => `<bal-badge ${props(args)}>${content}</bal-badge>`),
+  ...withRender(({ content, ...args }) => `<ds-badge ${props(args)}>${content}</ds-badge>`),
 }
 export default meta
 /**

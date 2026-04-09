@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 @Component({
-  tag: 'bal-card-actions',
+  tag: 'ds-card-actions',
   shadow: true,
 })
 export class CardActions {
@@ -12,9 +12,9 @@ export class CardActions {
   render() {
     return (
       <Host role="contentinfo">
-        <bal-button-group class="m-none" align={this.align}>
+        <ds-button-group class="m-none" align={this.align}>
           <slot />
-        </bal-button-group>
+        </ds-button-group>
       </Host>
     )
   }

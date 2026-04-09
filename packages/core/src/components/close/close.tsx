@@ -12,7 +12,7 @@ import { i18nDsClose } from './close.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-close',
+  tag: 'ds-close',
   styleUrl: 'close.host.scss',
   shadow: true,
 })
@@ -72,7 +72,7 @@ export class Close implements ComponentInterface, DsConfigObserver {
     if (this.button) {
       return (
         <Host>
-          <bal-button
+          <ds-button
             id="close"
             part="button"
             disabled={this.disabled}
@@ -81,7 +81,7 @@ export class Close implements ComponentInterface, DsConfigObserver {
             size={this.size === 'sm' ? 'sm' : this.size === 'md' ? 'lg' : ''}
           >
             {label}
-          </bal-button>
+          </ds-button>
         </Host>
       )
     }

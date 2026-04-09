@@ -18,13 +18,13 @@
     </script>
   </head>
   <body>
-    <bal-app animated="false">
+    <ds-app animated="false">
       <main class="container">
         <!-- Toast -->
         <section data-testid="toasts">
           <span>Toast</span>
           <!-- Basic Toast -->
-          <bal-button id="toast-basic" data-testid="toast-basic">Basic</bal-button>
+          <ds-button id="toast-basic" data-testid="toast-basic">Basic</ds-button>
           <script>
             let id = 1
             document.getElementById('toast-basic').addEventListener('click', () => {
@@ -34,7 +34,7 @@
             })
           </script>
           <!-- Closable + Infinite Toast -->
-          <bal-button id="toast-closable" data-testid="toast-closable">Closable + Infinite</bal-button>
+          <ds-button id="toast-closable" data-testid="toast-closable">Closable + Infinite</ds-button>
           <script>
             document.getElementById('toast-closable').addEventListener('click', () => {
               dsToastController.create({
@@ -47,7 +47,7 @@
             })
           </script>
           <!-- Infinite Toast -->
-          <bal-button id="toast-infinite" data-testid="toast-infinite">Infinite</bal-button>
+          <ds-button id="toast-infinite" data-testid="toast-infinite">Infinite</ds-button>
           <script>
             document.getElementById('toast-infinite').addEventListener('click', async () => {
               const toastId = await dsToastController.create({
@@ -70,7 +70,7 @@
         <section>
           <span>Snackbar</span>
           <!-- Basic Snackbar -->
-          <bal-button data-testid="snackbar-basic" id="snackbar-basic">Basic</bal-button>
+          <ds-button data-testid="snackbar-basic" id="snackbar-basic">Basic</ds-button>
           <script>
             let idSnackbar = 1
             document.getElementById('snackbar-basic').addEventListener('click', () => {
@@ -80,7 +80,7 @@
             })
           </script>
           <!-- Closable + Infinite Snackbar -->
-          <bal-button id="snackbar-closable" data-testid="snackbar-closable">Closable + Infinite</bal-button>
+          <ds-button id="snackbar-closable" data-testid="snackbar-closable">Closable + Infinite</ds-button>
           <script>
             document.getElementById('snackbar-closable').addEventListener('click', () => {
               dsSnackbarController.create({
@@ -93,7 +93,7 @@
             })
           </script>
           <!-- Infinite Snackbar -->
-          <bal-button id="snackbar-infinite" data-testid="snackbar-infinite">Infinite</bal-button>
+          <ds-button id="snackbar-infinite" data-testid="snackbar-infinite">Infinite</ds-button>
           <script>
             document.getElementById('snackbar-infinite').addEventListener('click', async () => {
               const snackbarId = await dsSnackbarController.create({
@@ -112,6 +112,6 @@
           </script>
         </section>
       </main>
-    </bal-app>
+    </ds-app>
   </body>
 </html>

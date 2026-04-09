@@ -8,7 +8,7 @@ import { debounce, rIC, rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
-  tag: 'bal-app',
+  tag: 'ds-app',
   styleUrl: 'app.scss',
 })
 export class App implements Loggable {

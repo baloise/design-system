@@ -5,7 +5,7 @@ import { Attributes, inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 @Component({
-  tag: 'bal-button',
+  tag: 'ds-button',
   styleUrl: 'button.host.scss',
   shadow: true,
   formAssociated: true,
@@ -217,7 +217,7 @@ export class Button implements ComponentInterface {
       'aria-haspopup',
     ])
 
-    if (this.el.hasAttribute('bal-popup') && !this.a11yHaspopup) {
+    if (this.el.hasAttribute('ds-popup') && !this.a11yHaspopup) {
       this.a11yHaspopup = 'true'
     }
   }
@@ -346,7 +346,7 @@ export class Button implements ComponentInterface {
           {...ariaAttributes}
         >
           {this.isLoading ? (
-            <bal-spinner
+            <ds-spinner
               {...this.loadingAttrs}
               part="spinner"
               variation={this.loading === 'circle' ? 'circle' : 'logo'}
@@ -357,7 +357,7 @@ export class Button implements ComponentInterface {
             ''
           )}
           {this.icon ? (
-            <bal-icon
+            <ds-icon
               {...this.leftIconAttrs}
               part="icon"
               class={this.square ? '' : 'icon-left'}
@@ -374,7 +374,7 @@ export class Button implements ComponentInterface {
             <slot />
           </span>
           {this.iconRight ? (
-            <bal-icon
+            <ds-icon
               {...this.leftRightAttrs}
               part="icon-right"
               class="icon-right"

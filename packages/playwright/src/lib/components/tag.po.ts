@@ -7,7 +7,7 @@ export class DsTag extends PageObject {
 
   constructor(el: E2ELocator) {
     super(el)
-    this.closeButton = el.locator('bal-close')
+    this.closeButton = el.locator('ds-close')
   }
 
   async clickClose() {

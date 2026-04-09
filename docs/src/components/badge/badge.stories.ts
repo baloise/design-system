@@ -13,7 +13,7 @@ import {
 
 type Args = JSX.BalBadge & { content: string }
 
-const tag = 'bal-badge'
+const tag = 'ds-badge'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
@@ -26,9 +26,9 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `<bal-badge ${props(args)}>
+    ({ content, ...args }) => `<ds-badge ${props(args)}>
   ${content}
-</bal-badge>`,
+</ds-badge>`,
   ),
 }
 
@@ -54,14 +54,14 @@ export const WithIcon = Story({
 export const Colors = Story({
   ...withRender(
     () => `<div class="stack">
-  <bal-badge color="red">R</bal-badge>
-  <bal-badge color="green">G</bal-badge>
-  <bal-badge color="yellow">Y</bal-badge>
-  <bal-badge color="purple">P</bal-badge>
-  <bal-badge color="grey">G</bal-badge>
-  <bal-badge color="success">S</bal-badge>
-  <bal-badge color="warning">W</bal-badge>
-  <bal-badge color="danger">D</bal-badge>
+  <ds-badge color="red">R</ds-badge>
+  <ds-badge color="green">G</ds-badge>
+  <ds-badge color="yellow">Y</ds-badge>
+  <ds-badge color="purple">P</ds-badge>
+  <ds-badge color="grey">G</ds-badge>
+  <ds-badge color="success">S</ds-badge>
+  <ds-badge color="warning">W</ds-badge>
+  <ds-badge color="danger">D</ds-badge>
 </div>`,
   ),
 })
@@ -69,9 +69,9 @@ export const Colors = Story({
 export const Sizes = Story({
   ...withRender(
     () => `<div class="stack">
-  <bal-badge size="sm">S</bal-badge>
-  <bal-badge size="md">M</bal-badge>
-  <bal-badge size="lg">L</bal-badge>
+  <ds-badge size="sm">S</ds-badge>
+  <ds-badge size="md">M</ds-badge>
+  <ds-badge size="lg">L</ds-badge>
 </div>`,
   ),
 })
@@ -84,7 +84,7 @@ export const CardBadge = Story({
   ...withRender(
     ({ ...args }) => `
 <article class="card" aria-labelledby="card-title-1">
-  <bal-badge color="green" icon="check"></bal-badge>
+  <ds-badge color="green" icon="check"></ds-badge>
   <header class="card-header">
     <h3 class="title" id="card-title-1">Header</h3>
   </header>
@@ -104,7 +104,7 @@ export const ButtonBadge = Story({
   ...withRender(
     ({ ...args }) => `
 <button class="button">
-  <bal-badge>42</bal-badge>
+  <ds-badge>42</ds-badge>
   Button
 </button>`,
   ),
@@ -116,64 +116,64 @@ export const TabsBadge = Story({
     position: 'tabs',
   },
   ...withRender(
-    () => `<bal-tabs  interface="tabs" value="tab-b">
-  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</bal-tab-item>
-</bal-tabs>`,
+    () => `<ds-tabs  interface="tabs" value="tab-b">
+  <ds-tab-item value="tab-a" label="Tab A">Content of Tab A</ds-tab-item>
+  <ds-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</ds-tab-item>
+</ds-tabs>`,
   ),
 })
 
 export const ListBadges = Story({
   ...withRender(
-    () => `<bal-list border>
-  <bal-list-item clickable>
-    <bal-list-item-icon>
-      <bal-badge color="green" size="large" icon="check"></bal-badge>
-    </bal-list-item-icon>
-    <bal-list-item-content>
-      <bal-list-item-title>Clickable item</bal-list-item-title>
-      <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-    </bal-list-item-content>
-    <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-    </bal-list-item-icon>
-  </bal-list-item>
-  <bal-list-item clickable>
-    <bal-list-item-icon>
-      <bal-badge color="purple" size="large">2</bal-badge>
-    </bal-list-item-icon>
-    <bal-list-item-content>
-      <bal-list-item-title>Clickable item</bal-list-item-title>
-      <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-    </bal-list-item-content>
-    <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-    </bal-list-item-icon>
-  </bal-list-item>
-  <bal-list-item disabled>
-    <bal-list-item-icon>
-      <bal-badge color="grey" size="large">3</bal-badge>
-    </bal-list-item-icon>
-    <bal-list-item-content>
-      <bal-list-item-title>Clickable item</bal-list-item-title>
-      <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-    </bal-list-item-content>
-    <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-    </bal-list-item-icon>
-  </bal-list-item>
-  <bal-list-item disabled>
-    <bal-list-item-icon>
-      <bal-badge color="grey" size="large" icon="document"></bal-badge>
-    </bal-list-item-icon>
-    <bal-list-item-content>
-      <bal-list-item-title>Clickable item</bal-list-item-title>
-      <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-    </bal-list-item-content>
-    <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-    </bal-list-item-icon>
-  </bal-list-item>
-</bal-list>`,
+    () => `<ds-list border>
+  <ds-list-item clickable>
+    <ds-list-item-icon>
+      <ds-badge color="green" size="large" icon="check"></ds-badge>
+    </ds-list-item-icon>
+    <ds-list-item-content>
+      <ds-list-item-title>Clickable item</ds-list-item-title>
+      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
+    </ds-list-item-content>
+    <ds-list-item-icon right>
+      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
+    </ds-list-item-icon>
+  </ds-list-item>
+  <ds-list-item clickable>
+    <ds-list-item-icon>
+      <ds-badge color="purple" size="large">2</ds-badge>
+    </ds-list-item-icon>
+    <ds-list-item-content>
+      <ds-list-item-title>Clickable item</ds-list-item-title>
+      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
+    </ds-list-item-content>
+    <ds-list-item-icon right>
+      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
+    </ds-list-item-icon>
+  </ds-list-item>
+  <ds-list-item disabled>
+    <ds-list-item-icon>
+      <ds-badge color="grey" size="large">3</ds-badge>
+    </ds-list-item-icon>
+    <ds-list-item-content>
+      <ds-list-item-title>Clickable item</ds-list-item-title>
+      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
+    </ds-list-item-content>
+    <ds-list-item-icon right>
+      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
+    </ds-list-item-icon>
+  </ds-list-item>
+  <ds-list-item disabled>
+    <ds-list-item-icon>
+      <ds-badge color="grey" size="large" icon="document"></ds-badge>
+    </ds-list-item-icon>
+    <ds-list-item-content>
+      <ds-list-item-title>Clickable item</ds-list-item-title>
+      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
+    </ds-list-item-content>
+    <ds-list-item-icon right>
+      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
+    </ds-list-item-icon>
+  </ds-list-item>
+</ds-list>`,
   ),
 })

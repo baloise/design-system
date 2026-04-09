@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'bal-card-title',
+  tag: 'ds-card-title',
   styleUrl: 'card-title.host.scss',
   shadow: true,
 })
@@ -26,9 +26,9 @@ export class CardTitle {
   render() {
     return (
       <Host>
-        <bal-heading level={this.level} visualLevel={this.visualLevel} space="none" inverted={this.inverted}>
+        <ds-heading level={this.level} visualLevel={this.visualLevel} space="none" inverted={this.inverted}>
           <slot></slot>
-        </bal-heading>
+        </ds-heading>
       </Host>
     )
   }

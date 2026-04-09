@@ -126,11 +126,13 @@ export const toCssVarName = (tokenName, token) => {
   const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
 
   // if (isSizeVariable) {
-  //   tokenName = tokenName.replace('bal-size', 'bal')
+  //   tokenName = tokenName.replace('bal-size', 'ds')
   // }
   if (endsWithMobile) {
     tokenName = tokenName.replace('-mobile', '')
   }
+  // Remap legacy bal- token name prefix to ds- for CSS custom property output
+  tokenName = tokenName.replace(/^bal-/, 'ds-')
   return tokenName
 }
 

@@ -1,12 +1,12 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'bal-toast'
+const TAG = 'ds-toast'
 const VARIANTS = ['basic', 'variants', 'colors']
 
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/bal-alert/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/ds-alert/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {
