@@ -99,7 +99,6 @@ export const BrandIcons = Story({
     content: '',
   },
   ...withRender(
-    ({ content, ...args }) =>
-      `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</ds-icon>`,
+    ({ content, ...args }) => `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</ds-icon>`,
   ),
 })

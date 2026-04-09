@@ -67,10 +67,7 @@ async function copyResources(options: BuildDocsExecutorSchema) {
   await copyToAsset(join(resourceRoot, 'tags.json'), 'data/tags.json')
 
   await copyToPublic(join(packageRoot, 'core/www/build'), 'build')
-  await copyToPublic(
-    join(packageRoot, 'styles/css/design-system.local.min.css'),
-    'assets/css/design-system.min.css',
-  )
+  await copyToPublic(join(packageRoot, 'styles/css/design-system.local.min.css'), 'assets/css/design-system.min.css')
   await copyToAsset(join(packageRoot, 'assets/src/maps/svg'), 'images/map-markers')
   await copyToPublic(join(packageRoot, 'assets/src/icons/svg'), 'assets/images/icons')
   await copyToPublic(join(packageRoot, 'assets/src/brand-icons/svg'), 'assets/images/brand-icons')

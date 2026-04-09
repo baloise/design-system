@@ -20,9 +20,7 @@ test.describe('colors', () => {
   ] as const
   COLORS.forEach(color => {
     test(color, async ({ page, a11y }) => {
-      await page.mount(
-        `<ds-notification color="${color}" heading="Heading">Your changes have been saved.</ds-heading>`,
-      )
+      await page.mount(`<ds-notification color="${color}" heading="Heading">Your changes have been saved.</ds-heading>`)
       await a11y(`ds-notification`)
     })
   })

@@ -3,11 +3,7 @@ import { ResizeSubject } from './resize.subject'
 import { ResizeObserver } from './resize.interfaces'
 
 export function ListenToResize() {
-  return function (
-    target: ComponentInterface & ResizeObserver,
-    _propertyKey: string,
-    _descriptor: PropertyDescriptor,
-  ) {
+  return function (target: ComponentInterface & ResizeObserver, _propertyKey: string, _descriptor: PropertyDescriptor) {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {

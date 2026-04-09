@@ -23,8 +23,8 @@ Follows the [EightShapes naming guide](https://medium.com/eightshapes-llc/naming
 
 CSS variable pattern: `--ds-[category]-[name]`
 
-| Example need       | Token                      | CSS variable                     |
-| ------------------ | -------------------------- | -------------------------------- |
+| Example need       | Token                      | CSS variable                    |
+| ------------------ | -------------------------- | ------------------------------- |
 | Large spacing      | `space-lg`                 | `--ds-space-lg`                 |
 | Primary background | `background-color-primary` | `--ds-background-color-primary` |
 | Base border radius | `radius-base`              | `--ds-radius-base`              |

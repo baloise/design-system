@@ -89,7 +89,12 @@ export const initPageEvents = async (page: DsPage) => {
  * @param eventName The event name to listen for.
  * @param callback The callback to execute when the event is fired.
  */
-export const addE2EListener = async (page: DsPage, elmHandle: JSHandle, eventName: string, callback: (ev: any) => void) => {
+export const addE2EListener = async (
+  page: DsPage,
+  elmHandle: JSHandle,
+  eventName: string,
+  callback: (ev: any) => void,
+) => {
   const id = page._e2eEventsIds++
   page._e2eEvents.set(id, {
     eventName,

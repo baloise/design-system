@@ -3,11 +3,7 @@ import { FocusObserver } from './focus.interfaces'
 import { FocusSubject } from './focus.subject'
 
 export function ListenToFocus() {
-  return function (
-    target: ComponentInterface & FocusObserver,
-    _propertyKey: string,
-    _descriptor: PropertyDescriptor,
-  ) {
+  return function (target: ComponentInterface & FocusObserver, _propertyKey: string, _descriptor: PropertyDescriptor) {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {

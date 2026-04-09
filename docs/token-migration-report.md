@@ -118,8 +118,8 @@ New spacing tokens use a t‑shirt scale and device variants, built on `--ds-siz
 
 ### 3.1 Recommended mapping
 
-| Old spacing token        | New spacing token    |
-| ------------------------ | -------------------- |
+| Old spacing token       | New spacing token   |
+| ----------------------- | ------------------- |
 | `--ds-space-xx-small`   | `--ds-space-2xs-*`  |
 | `--ds-space-x-small`    | `--ds-space-xs-*`   |
 | `--ds-space-small`      | `--ds-space-sm-*`   |
@@ -157,8 +157,8 @@ New text size tokens:
 
 Conceptually, the old names map to the new t‑shirt text sizes like this:
 
-| Old text size                 | New text size token      |
-| ----------------------------- | ------------------------ |
+| Old text size                | New text size token     |
+| ---------------------------- | ----------------------- |
 | `--ds-text-size-x-small`     | `--ds-text-size-xs-*`   |
 | `--ds-text-size-small`       | `--ds-text-size-sm-*`   |
 | `--ds-text-size-normal`      | `--ds-text-size-base-*` |

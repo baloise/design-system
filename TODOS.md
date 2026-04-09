@@ -42,41 +42,41 @@ Checklist
 5. has variables
 6. has one visual file for the component
 
-| Component            | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing | Vars |
-| -------------------- | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| heading          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| text             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| label            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| link             | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
-| stack            | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
-| divider          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| tag              | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| button           | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| notification     | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| unordered-list   | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| ordered-list     | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| description-list | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| card             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| accordion        | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| list             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| list-accordion   | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| ------------------   | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| icon             | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| spinner          | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| logo             | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| check            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| switch           | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| close            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| badge            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| toast            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| snackbar         | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| shape            | Web Component      | ✅         | ✅   | ❓            | ✅      | ✅   |
-| stage            | Web Component      | ❓         | ❓   | ❓            | ❓      | ⬜   |
+| Component          | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing | Vars |
+| ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
+| heading            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| text               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| label              | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| link               | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
+| stack              | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
+| divider            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| tag                | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| button             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| notification       | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| unordered-list     | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
+| ordered-list       | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
+| description-list   | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
+| card               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| accordion          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| list               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| list-accordion     | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
+| ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
+| icon               | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| spinner            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| logo               | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| check              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| switch             | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| close              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| badge              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| toast              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| snackbar           | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
+| shape              | Web Component      | ✅         | ✅   | ❓            | ✅      | ✅   |
+| stage              | Web Component      | ❓         | ❓   | ❓            | ❓      | ⬜   |
 
 ### rest components
 
-| Component               | Recommended Type | Shadow DOM | Docs | Design Tokens |
-| ----------------------- | ---------------- | ---------- | ---- | ------------- |
+| Component           | Recommended Type | Shadow DOM | Docs | Design Tokens |
+| ------------------- | ---------------- | ---------- | ---- | ------------- |
 | data                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | input               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
@@ -88,7 +88,7 @@ Checklist
 | table               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
-| ------------------      | ---------------- | ---------- | ---- | ------------- |
+| ------------------  | ---------------- | ---------- | ---- | ------------- |
 | footer              | Web Component    | ⬜         | ⬜   | ⬜            |
 | radio               | Web Component    | ⬜         | ⬜   | ⬜            |
 | segment             | Web Component    | ⬜         | ⬜   | ⬜            |
