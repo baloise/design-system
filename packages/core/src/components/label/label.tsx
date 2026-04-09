@@ -28,7 +28,7 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
 
   log!: LogInstance
 
-  @Logger('bal-label')
+  @Logger('ds-label')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -48,7 +48,7 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
   /**
    * Define the id of the native label element
    */
-  @Prop() htmlId?: string = `bal-lbl-${labelIds++}`
+  @Prop() htmlId?: string = `ds-lbl-${labelIds++}`
 
   /**
    * If `true` the form control needs to be filled. If it is set to

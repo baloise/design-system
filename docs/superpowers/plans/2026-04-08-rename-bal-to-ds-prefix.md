@@ -205,7 +205,7 @@ git commit -m "refactor: rename tag list entries from bal- to ds-"
 **Files:**
 - Modify: `packages/core/src/components/**/*.scss` (style, host, mixin files)
 
-SCSS files use `bal-xxx` as CSS element selectors (e.g. `bal-icon`, `::slotted(bal-badge)`, `& > bal-tag`). These must match the new HTML element names.
+SCSS files use `bal-xxx` as CSS element selectors (e.g. `ds-icon`, `::slotted(bal-badge)`, `& > bal-tag`). These must match the new HTML element names.
 
 - [ ] **Step 1: Replace `bal-` in all SCSS files under components**
 

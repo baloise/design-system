@@ -11,7 +11,7 @@ type InfoQuoteProps = PropsWithChildren
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" name="information" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" name="information" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
   )
@@ -20,7 +20,7 @@ export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
 export const WarningQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-warning-1 border-left-warning text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
   )
@@ -100,7 +100,7 @@ export const BasicStoryTabs = ({
 export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Styles import</h3>
         <span>
@@ -157,7 +157,7 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
 
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Installation</h3>
         <span>
@@ -175,12 +175,12 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
               language="ts"
               code={`
 import { Component } from '@angular/core'
-import { Bal${fromKebabToPascal(tag)} } from '@baloise/ds-angular'
+import { Ds${fromKebabToPascal(tag)} } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-example',
-  imports: [Bal${fromKebabToPascal(tag)}],
-  template: \`<bal-${tag}></bal-${tag}>\`,
+  imports: [Ds${fromKebabToPascal(tag)}],
+  template: \`<ds-${tag}></ds-${tag}>\`,
 })
 export class AppExampleComponent {}
 `}

@@ -14,7 +14,7 @@ describe('toProps', () => {
               $value: '#000000',
               noFigmaImport: true,
             },
-            name: 'bal-color-black',
+            name: 'ds-color-black',
             attributes: {
               category: 'color',
               type: 'base',
@@ -39,7 +39,7 @@ describe('toProps', () => {
               original: {
                 $value: '#e5e7f0',
               },
-              name: 'bal-color-primary-1',
+              name: 'ds-color-primary-1',
               attributes: {
                 category: 'color',
                 type: 'base',
@@ -67,7 +67,7 @@ describe('toProps', () => {
               $value: '{color.base.primary.5}',
               noFigmaImport: true,
             },
-            name: 'bal-color-primary',
+            name: 'ds-color-primary',
             attributes: {
               category: 'color',
               type: 'primary',
@@ -93,7 +93,7 @@ describe('toProps', () => {
               value: '{color.base.primary.5}',
               noFigmaImport: true,
             },
-            name: 'bal-color-primary',
+            name: 'ds-color-primary',
             attributes: {
               category: 'color',
               type: 'primary',
@@ -117,7 +117,7 @@ describe('toProps', () => {
               original: {
                 $value: '#e5e7f0',
               },
-              name: 'bal-color-primary-1',
+              name: 'ds-color-primary-1',
               attributes: {
                 category: 'color',
                 type: 'base',
@@ -135,7 +135,7 @@ describe('toProps', () => {
               original: {
                 value: '#e5e7f0',
               },
-              name: 'bal-color-red-1',
+              name: 'ds-color-red-1',
               attributes: {
                 category: 'color',
                 type: 'base',

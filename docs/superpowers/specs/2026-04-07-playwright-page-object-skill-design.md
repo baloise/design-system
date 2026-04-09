@@ -7,7 +7,7 @@
 
 ## Overview
 
-The skill is invoked with a single component tag name (e.g. `bal-accordion`) and produces:
+The skill is invoked with a single component tag name (e.g. `ds-accordion`) and produces:
 
 - A Page Object (PO) class for every `.tsx` file in the component folder (including nested child components)
 - A single `.component.play.ts` test file covering the PO and all events
@@ -20,9 +20,9 @@ The approach is a **step-by-step extraction checklist** (Option B): deterministi
 ## Trigger
 
 User says something like:
-- "create PO for bal-accordion"
-- "add page object for bal-badge"
-- "generate playwright PO of bal-list"
+- "create PO for ds-accordion"
+- "add page object for ds-badge"
+- "generate playwright PO of ds-list"
 
 Input is always a single component tag name.
 
@@ -32,7 +32,7 @@ Input is always a single component tag name.
 
 ### Step 1 — Discover all component files
 
-Resolve `packages/core/src/components/<tag>/` and recursively find every `.tsx` file within it. This handles both single-file components (`bal-badge/bal-badge.tsx`) and components with nested children (`bal-list/bal-list.tsx`, `bal-list/bal-item/bal-item.tsx`).
+Resolve `packages/core/src/components/<tag>/` and recursively find every `.tsx` file within it. This handles both single-file components (`badge/al-badge.tsx`) and components with nested children (`list/al-list.tsx`, `list/al-item/item.tsx`).
 
 Each `.tsx` file produces its own PO class. All are processed in the same run.
 
@@ -44,7 +44,7 @@ For each `.tsx`, read and collect:
 
 Each unique `part` value becomes a public locator on the PO class.
 
-- If the element tag starts with `bal-`, type the locator as the corresponding PO class (e.g. `<bal-icon part="marker">` → `public readonly marker: BalIcon`)
+- If the element tag starts with `ds-`, type the locator as the corresponding PO class (e.g. `<ds-icon part="marker">` → `public readonly marker: DsIcon`)
 - Otherwise type it as `Locator` (e.g. `<button part="summary">` → `public readonly summary: Locator`)
 - Constructor initializes each via `el.locator('[part="<name>"]')`
 
@@ -57,7 +57,7 @@ Each `onClick` handler produces one async click method named after the nearest `
 
 **C. `@Event` decorators**
 
-Collect all `@Event` names (e.g. `balToggle`, `balOpened`, `balClosed`). These drive the test file in Step 5.
+Collect all `@Event` names (e.g. `dsToggle`, `dsOpened`, `dsClosed`). These drive the test file in Step 5.
 
 ### Step 3 — Generate PO file(s)
 
@@ -68,16 +68,16 @@ Structure:
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
-// import any referenced bal-* PO classes
+// import any referenced ds-* PO classes
 
-export class Bal<ComponentName> extends PageObject {
+export class Ds<ComponentName> extends PageObject {
   // one public locator per part=""
   public readonly <partName>: Locator | Bal<ChildComponent>
 
   constructor(el: E2ELocator) {
     super(el)
     this.<partName> = el.locator('[part="<partName>"]')
-    // for bal-* parts: this.<partName> = new Bal<Child>(el.locator('[part="<partName>"]'))
+    // for ds-* parts: this.<partName> = new Ds<Child>(el.locator('[part="<partName>"]'))
   }
 
   // one method per onClick
@@ -102,14 +102,14 @@ One file at `packages/core/src/components/<tag>/test/<tag>.component.play.ts`.
 
 Structure:
 ```ts
-import { Bal<ComponentName>, expect, test } from '@baloise/ds-playwright'
+import { Ds<ComponentName>, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   // always: verify PO works (visibility + slot content)
   test('should render <component>', async ({ page }) => {
     await page.mount(`<minimal HTML snippet>`)
 
-    const component = new Bal<ComponentName>(page.locator('<tag>'))
+    const component = new Ds<ComponentName>(page.locator('<tag>'))
     await component.assertToBeVisible()
     // assertToContainText if slot present
   })
@@ -118,7 +118,7 @@ test.describe('component', () => {
   test('should fire <eventName> event', async ({ page }) => {
     await page.mount(`<minimal HTML snippet for this interaction>`)
 
-    const component = new Bal<ComponentName>(page.locator('<tag>'))
+    const component = new Ds<ComponentName>(page.locator('<tag>'))
     const spy = await component.el.spyOnEvent('<eventName>')
     await component.click<PartName>()
     expect(spy).toHaveReceivedEventTimes(1)
@@ -140,17 +140,17 @@ test.describe('component', () => {
 
 ---
 
-## Concrete Example: `bal-badge`
+## Concrete Example: `ds-badge`
 
-`bal-badge` has `part="badge"` on a plain `<span>`, no `onClick`, no `@Event`.
+`ds-badge` has `part="badge"` on a plain `<span>`, no `onClick`, no `@Event`.
 
-**`bal-badge.po.ts`:**
+**`badge.po.ts`:**
 ```ts
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalBadge extends PageObject {
+export class DsBadge extends PageObject {
   public readonly badge: Locator
 
   constructor(el: E2ELocator) {
@@ -164,43 +164,43 @@ export class BalBadge extends PageObject {
 }
 ```
 
-**`bal-badge.component.play.ts`:**
+**`badge.component.play.ts`:**
 ```ts
-import { BalBadge, test } from '@baloise/ds-playwright'
+import { DsBadge, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render badge content', async ({ page }) => {
-    await page.mount(`<bal-badge>42</bal-badge>`)
+    await page.mount(`<ds-badge>42</ds-badge>`)
 
-    const badge = new BalBadge(page.locator('bal-badge'))
+    const badge = new DsBadge(page.locator('ds-badge'))
     await badge.assertToBeVisible()
     await badge.assertToContainText('42')
   })
 })
 ```
 
-## Concrete Example: `bal-accordion`
+## Concrete Example: `ds-accordion`
 
-`bal-accordion` has `part="header"`, `part="summary"` (with `onClick`), `part="marker"` on `<bal-icon>`, `part="content"`, and events `balToggle`, `balOpened`, `balClosed`.
+`ds-accordion` has `part="header"`, `part="summary"` (with `onClick`), `part="marker"` on `<ds-icon>`, `part="content"`, and events `dsToggle`, `dsOpened`, `dsClosed`.
 
-**`bal-accordion.po.ts`:**
+**`accordion.po.ts`:**
 ```ts
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
-import { BalIcon } from './bal-icon.po'
+import { DsIcon } from './icon.po'
 
-export class BalAccordion extends PageObject {
+export class DsAccordion extends PageObject {
   public readonly header: Locator
   public readonly summary: Locator
-  public readonly marker: BalIcon
+  public readonly marker: DsIcon
   public readonly content: Locator
 
   constructor(el: E2ELocator) {
     super(el)
     this.header = el.locator('[part="header"]')
     this.summary = el.locator('[part="summary"]')
-    this.marker = new BalIcon(el.locator('[part="marker"]'))
+    this.marker = new DsIcon(el.locator('[part="marker"]'))
     this.content = el.locator('[part="content"]')
   }
 
@@ -210,61 +210,61 @@ export class BalAccordion extends PageObject {
 }
 ```
 
-**`bal-accordion.component.play.ts`:**
+**`accordion.component.play.ts`:**
 ```ts
-import { BalAccordion, expect, test } from '@baloise/ds-playwright'
+import { DsAccordion, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('should render accordion', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
     await accordion.assertToBeVisible()
   })
 
-  test('should fire balToggle event', async ({ page }) => {
+  test('should fire dsToggle event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balToggle')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsToggle')
     await accordion.clickSummary()
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balOpened event', async ({ page }) => {
+  test('should fire dsOpened event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balOpened')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsOpened')
     await accordion.clickSummary()
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balClosed event', async ({ page }) => {
+  test('should fire dsClosed event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balClosed')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsClosed')
     // open first, then close
     await accordion.clickSummary()
     await accordion.clickSummary()
@@ -279,5 +279,5 @@ test.describe('component', () => {
 
 - **No `part` attributes:** PO only has the inherited `assertToBeVisible()` / `assertToBeHidden()` from `PageObject` plus `assertToContainText` if there is a default slot.
 - **Same `part` name on multiple elements** (e.g. `part="marker"` appears conditionally in two branches): use the first occurrence for the locator type; the selector `[part="marker"]` will match whichever is rendered.
-- **Child components (e.g. `bal-list/bal-item`):** generate a separate `bal-item.po.ts` following the same rules; include it in the same `index.ts` update and the same `.component.play.ts`.
-- **Referenced bal-* PO not yet created:** generate that PO too in the same run, or note it as a dependency if out of scope.
+- **Child components (e.g. `list/al-item`):** generate a separate `item.po.ts` following the same rules; include it in the same `index.ts` update and the same `.component.play.ts`.
+- **Referenced ds-* PO not yet created:** generate that PO too in the same run, or note it as a dependency if out of scope.

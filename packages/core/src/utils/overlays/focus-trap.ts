@@ -8,7 +8,7 @@
  * 3. Element does not have `disabled` for non-Ionic components.
  * 4. Element does not have `disabled` or `disabled="true"` for Ionic components.
  * Note: We need this distinction because `disabled="false"` is
- * valid usage for the disabled property on bal-button.
+ * valid usage for the disabled property on ds-button.
  */
 export const focusableQueryString =
   '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .ds-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .ds-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])'

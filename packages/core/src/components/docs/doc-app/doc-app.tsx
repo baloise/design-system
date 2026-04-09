@@ -23,7 +23,7 @@ export class DocApp implements ComponentInterface {
   @Prop() language?: string // = 'de'
 
   /**
-   * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+   * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true }) animated = true
 

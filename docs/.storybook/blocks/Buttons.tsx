@@ -53,7 +53,7 @@ export const LinkCard = ({ children, color, icon, label, description, pageTitle 
         <span className="block text-small">{description}</span>
       </div>
       <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
-        <bal-icon name="nav-go-right"></bal-icon>
+        <ds-icon name="nav-go-right"></ds-icon>
       </span>
     </a>
   )
@@ -79,14 +79,14 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
 
 export const GridComponents = ({ children }) => {
   return (
-    <bal-app>
+    <ds-app>
       <div
         className="sb-unstyled grid is-multiline mt-normal"
         style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
       >
         {children}
       </div>
-    </bal-app>
+    </ds-app>
   )
 }
 
@@ -186,7 +186,7 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
           )}
           {!svg ? (
             <div>
-              <bal-icon name="nav-go-right"></bal-icon>
+              <ds-icon name="nav-go-right"></ds-icon>
             </div>
           ) : (
             ''

@@ -19,13 +19,13 @@ export class App implements Loggable {
 
   log!: LogInstance
 
-  @Logger('bal-app')
+  @Logger('ds-app')
   createLogger(log: LogInstance) {
     this.log = log
   }
 
   /**
-   * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+   * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true }) animated = true
 

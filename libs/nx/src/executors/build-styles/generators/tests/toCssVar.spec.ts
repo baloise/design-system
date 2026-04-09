@@ -12,7 +12,7 @@ describe('toCssVar', () => {
           value: '1',
           noFigmaImport: true,
         },
-        name: 'bal-opacity-100',
+        name: 'ds-opacity-100',
         attributes: {
           category: 'opacity',
           type: '100',
@@ -33,7 +33,7 @@ describe('toCssVar', () => {
           value: '{opacity.60}',
           noFigmaImport: true,
         },
-        name: 'bal-opacity-overlay',
+        name: 'ds-opacity-overlay',
         attributes: {
           category: 'opacity',
           type: 'overlay',

@@ -126,12 +126,12 @@ export const toCssVarName = (tokenName, token) => {
   const endsWithMobile = token.name.endsWith('-mobile') || token.name.endsWith('Mobile')
 
   // if (isSizeVariable) {
-  //   tokenName = tokenName.replace('bal-size', 'ds')
+  //   tokenName = tokenName.replace('ds-size', 'ds')
   // }
   if (endsWithMobile) {
     tokenName = tokenName.replace('-mobile', '')
   }
-  // Remap legacy bal- token name prefix to ds- for CSS custom property output
+  // Remap legacy ds- token name prefix to ds- for CSS custom property output
   tokenName = tokenName.replace(/^bal-/, 'ds-')
   return tokenName
 }
@@ -150,7 +150,7 @@ const removeLeadingTrailingDashes = inputString => {
 export const toProp = ({ property, prefix, replace, replace2 }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
   const propName = removeLeadingTrailingDashes(
-    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, '').replace('base', ''),
+    propPrefix + `${property.name.replace('ds-', '')}`.replace(replace, '').replace(replace2, '').replace('base', ''),
   )
   const propValue = toCssVar(property)
   return {

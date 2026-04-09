@@ -52,7 +52,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }): React.R
             className={`title text-xxxx-large ${text} flex align-items-center gap-small`}
             style={{ marginTop: '-0.5rem' }}
           >
-            {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''}{' '}
+            {isDeprecated ? <ds-icon color="warning-dark" name="alert-triangle" inline size="large"></ds-icon> : ''}{' '}
             {title}
           </h1>
           {children}

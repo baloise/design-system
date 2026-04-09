@@ -120,7 +120,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
   const filteredTokens = React.useMemo(() => {
     return flattened.filter(token => {
       if (component) {
-        const componentPrefix = component.startsWith('bal-')
+        const componentPrefix = component.startsWith('ds-')
           ? component.slice(4).toLowerCase()
           : component.toLowerCase()
         if (!token.typeLabel.toLowerCase().includes(componentPrefix)) {

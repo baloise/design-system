@@ -80,53 +80,53 @@ The following SCSS files were updated to use the new t‑shirt spacing tokens (w
 
   - Paragraph spacing updated from `var(--ds-space-normal)` to `var(--ds-space-base)`.
 
-- [packages/core/src/components/bal-stage/bal-stage.scss](packages/core/src/components/bal-stage/bal-stage.scss)
+- [packages/core/src/components/stage/stage.scss](packages/core/src/components/stage/stage.scss)
 
   - Hero/stage vertical padding now uses `4xl/3xl/2xl` instead of `xxxx-large/xxx-large/xx-large`, including tablet/desktop overrides.
 
-- [packages/core/src/components/bal-footer/bal-footer.scss](packages/core/src/components/bal-footer/bal-footer.scss)
+- [packages/core/src/components/footer/footer.scss](packages/core/src/components/footer/footer.scss)
 
   - All usages of `x-small`, `normal`, `medium-*`, and `large-*` spacing replaced with `xs`, `base`, `md-*`, and `lg-*` equivalents (including `*-desktop`).
 
-- [packages/core/src/components/bal-tabs/bal-tabs.scss](packages/core/src/components/bal-tabs/bal-tabs.scss)
+- [packages/core/src/components/tabs/tabs.scss](packages/core/src/components/tabs/tabs.scss)
 
   - Vertical layout gaps updated: `x-large` → `xl`, `normal` → `base`.
 
-- [packages/core/src/components/bal-option/bal-option.vars.scss](packages/core/src/components/bal-option/bal-option.vars.scss)
+- [packages/core/src/components/option/option.vars.scss](packages/core/src/components/option/option.vars.scss)
 
   - `--ds-option-padding-x: var(--ds-space-small);` → `var(--ds-space-sm);`.
 
-- [packages/core/src/components/bal-popover/bal-popover.scss](packages/core/src/components/bal-popover/bal-popover.scss)
+- [packages/core/src/components/popover/popover.scss](packages/core/src/components/popover/popover.scss)
 
   - Tooltip inner padding updated from `x-small` → `xs`.
 
-- [packages/core/src/components/bal-dropdown/bal-dropdown.scss](packages/core/src/components/bal-dropdown/bal-dropdown.scss)
+- [packages/core/src/components/dropdown/dropdown.scss](packages/core/src/components/dropdown/dropdown.scss)
 
   - Chip list gap and vertical padding updated from `xx-small`/`x-small` → `2xs`/`xs`.
 
-- [packages/core/src/components/bal-radio/bal-radio.scss](packages/core/src/components/bal-radio/bal-radio.scss)
+- [packages/core/src/components/radio/radio.scss](packages/core/src/components/radio/radio.scss)
 
   - Button gap: `x-small` → `xs`.
   - Grid layout calculations now use `var(--ds-space-base)` instead of `var(--ds-space-normal)`.
 
-- [packages/core/src/components/bal-radio/bal-radio-group/bal-radio-group.scss](packages/core/src/components/bal-radio/bal-radio-group/bal-radio-group.scss)
+- [packages/core/src/components/radio/radio-group/radio-group.scss](packages/core/src/components/radio/radio-group/radio-group.scss)
 
   - Group gaps: `normal` → `base`, `x-small` → `xs`.
 
-- [packages/core/src/components/bal-checkbox/bal-checkbox.scss](packages/core/src/components/bal-checkbox/bal-checkbox.scss)
+- [packages/core/src/components/checkbox/checkbox.scss](packages/core/src/components/checkbox/checkbox.scss)
 
   - Button gap: `x-small` → `xs`.
   - Grid layout calculations updated from `normal` → `base`.
 
-- [packages/core/src/components/bal-checkbox/bal-checkbox-group/bal-checkbox-group.scss](packages/core/src/components/bal-checkbox/bal-checkbox-group/bal-checkbox-group.scss)
+- [packages/core/src/components/checkbox/checkbox-group/checkbox-group.scss](packages/core/src/components/checkbox/checkbox-group/checkbox-group.scss)
 
   - Group gaps: `normal` → `base`, `x-small` → `xs`.
 
-- [packages/core/src/components/bal-tooltip/bal-tooltip.scss](packages/core/src/components/bal-tooltip/bal-tooltip.scss)
+- [packages/core/src/components/tooltip/tooltip.scss](packages/core/src/components/tooltip/tooltip.scss)
 
   - Tooltip container padding: `x-small` → `xs`.
 
-- [packages/core/src/components/bal-file-upload/bal-file-upload.scss](packages/core/src/components/bal-file-upload/bal-file-upload.scss)
+- [packages/core/src/components/file-upload/file-upload.scss](packages/core/src/components/file-upload/file-upload.scss)
   - Card margin-top: `normal` → `base`.
 
 ### 2.4 Remaining legacy names

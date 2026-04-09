@@ -30,7 +30,7 @@ Here's a basic example of how the test might look like:
 ```ts
 describe('ds-content', () => {
   beforeEach(() =>
-    cy.visit('/components/bal-content/test/bal-content.visual.html').platform('desktop').waitForDesignSystem(),
+    cy.visit('/components/content/test/content.visual.html').platform('desktop').waitForDesignSystem(),
   )
   it('basic component', () => {
     cy.getByTestId('basic').testVisual('content-basic')

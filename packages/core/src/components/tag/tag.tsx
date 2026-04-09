@@ -48,7 +48,7 @@ export class Tag {
   @Prop({ reflect: true }) disabled = false
 
   /**
-   * Choosing left or center the tag is aligned to that side in the bal-card.
+   * Choosing left or center the tag is aligned to that side in the ds-card.
    */
   @Prop({ reflect: true }) position?: DS.TagPlacement
 

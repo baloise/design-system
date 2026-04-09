@@ -40,43 +40,43 @@ export const CssTypographySize = (): React.ReactElement => {
     tokens: {
       'x-small': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['x-small'].Mobile,
-        name: 'bal-text-size-x-small-device',
+        name: 'ds-text-size-x-small-device',
       },
       'small': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['small'].Mobile,
-        name: 'bal-text-size-small-device',
+        name: 'ds-text-size-small-device',
       },
       'normal': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['normal'].Mobile,
-        name: 'bal-text-size-normal-device',
+        name: 'ds-text-size-normal-device',
       },
       'medium': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['medium'].Mobile,
-        name: 'bal-text-size-medium-device',
+        name: 'ds-text-size-medium-device',
       },
       'large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['large'].Mobile,
-        name: 'bal-text-size-large-device',
+        name: 'ds-text-size-large-device',
       },
       'x-large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['x-large'].Mobile,
-        name: 'bal-text-size-x-large-device',
+        name: 'ds-text-size-x-large-device',
       },
       'xx-large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['xx-large'].Mobile,
-        name: 'bal-text-size-xx-large-device',
+        name: 'ds-text-size-xx-large-device',
       },
       'xxx-large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxx-large'].Mobile,
-        name: 'bal-text-size-xxx-large-device',
+        name: 'ds-text-size-xxx-large-device',
       },
       'xxxx-large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxxx-large'].Mobile,
-        name: 'bal-text-size-xxxx-large-device',
+        name: 'ds-text-size-xxxx-large-device',
       },
       'xxxxx-large': {
         ...tokens['🏷️ Semantic']['🔤 Text'].Size['xxxxx-large'].Mobile,
-        name: 'bal-text-size-xxxxx-large-device',
+        name: 'ds-text-size-xxxxx-large-device',
       },
     },
     css: 'text',

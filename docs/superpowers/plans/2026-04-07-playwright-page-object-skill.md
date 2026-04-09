@@ -4,7 +4,7 @@
 
 **Goal:** Write a Claude skill that generates a Playwright Page Object and `.component.play.ts` test file for any Baloise Design System web component from a single tag-name command.
 
-**Architecture:** A single skill markdown file at `~/.claude/skills/playwright-page-object/skill.md` containing a deterministic extraction checklist. The skill reads each `.tsx` file in the component folder, extracts `part=""` attributes and `onClick` handlers to produce the PO, and extracts `@Event` decorators to produce event spy tests. Three validation runs (bal-badge → bal-accordion → bal-list) cover the simple, complex, and nested-children cases.
+**Architecture:** A single skill markdown file at `~/.claude/skills/playwright-page-object/skill.md` containing a deterministic extraction checklist. The skill reads each `.tsx` file in the component folder, extracts `part=""` attributes and `onClick` handlers to produce the PO, and extracts `@Event` decorators to produce event spy tests. Three validation runs (ds-badge → ds-accordion → ds-list) cover the simple, complex, and nested-children cases.
 
 **Tech Stack:** Claude Code skill system (`~/.claude/skills/`), TypeScript, `@baloise/ds-playwright` (PageObject base, E2ELocator, spyOnEvent), Playwright test runner.
 
@@ -15,14 +15,14 @@
 | Action | Path | Responsibility |
 |---|---|---|
 | **Create** | `~/.claude/skills/playwright-page-object/skill.md` | The skill: step-by-step extraction checklist + templates |
-| **Create** (validation) | `packages/playwright/src/lib/components/bal-badge.po.ts` | PO for bal-badge |
-| **Create** (validation) | `packages/playwright/src/lib/components/bal-accordion.po.ts` | PO for bal-accordion |
-| **Create** (validation) | `packages/playwright/src/lib/components/bal-list.po.ts` | PO for bal-list |
-| **Create** (validation) | `packages/playwright/src/lib/components/bal-item.po.ts` | PO for bal-item (nested child of bal-list) |
+| **Create** (validation) | `packages/playwright/src/lib/components/badge.po.ts` | PO for badge |
+| **Create** (validation) | `packages/playwright/src/lib/components/accordion.po.ts` | PO for accordion |
+| **Create** (validation) | `packages/playwright/src/lib/components/list.po.ts` | PO for list |
+| **Create** (validation) | `packages/playwright/src/lib/components/item.po.ts` | PO for item (nested child of list) |
 | **Modify** (validation) | `packages/playwright/src/lib/components/index.ts` | Export new POs |
-| **Create** (validation) | `packages/core/src/components/bal-badge/test/bal-badge.component.play.ts` | Component test for bal-badge |
-| **Create** (validation) | `packages/core/src/components/bal-accordion/test/bal-accordion.component.play.ts` | Component test for bal-accordion |
-| **Create** (validation) | `packages/core/src/components/bal-list/test/bal-list.component.play.ts` | Component test for bal-list + bal-item |
+| **Create** (validation) | `packages/core/src/components/badge/test/badge.component.play.ts` | Component test for badge |
+| **Create** (validation) | `packages/core/src/components/accordion/test/ccordion.component.play.ts` | Component test for accordion |
+| **Create** (validation) | `packages/core/src/components/list/test/list.component.play.ts` | Component test for list + item |
 
 ---
 
@@ -44,18 +44,18 @@ Create `~/.claude/skills/playwright-page-object/skill.md` with this exact conten
 ````markdown
 ---
 name: playwright-page-object
-description: Generate Playwright Page Object (.po.ts) and component test (.component.play.ts) for a Baloise Design System web component. Trigger on: "create PO for bal-<name>", "add page object for bal-<name>", "generate playwright PO of bal-<name>"
+description: Generate Playwright Page Object (.po.ts) and component test (.component.play.ts) for a Baloise Design System web component. Trigger on: "create PO for ds-<name>", "add page object for ds-<name>", "generate playwright PO of ds-<name>"
 ---
 
 # Playwright Page Object Generator
 
-When invoked with a component name (e.g. "create PO for bal-accordion"), generate all Playwright testing artefacts for that component by following these steps exactly.
+When invoked with a component name (e.g. "create PO for ds-accordion"), generate all Playwright testing artefacts for that component by following these steps exactly.
 
 ## Step 1 — Discover component files
 
 Resolve `packages/core/src/components/<tag>/`. Recursively find every `.tsx` file within it. Each `.tsx` produces its own PO class. Process all in the same run.
 
-Example: `bal-list/` contains `bal-list.tsx` and `bal-item/bal-item.tsx` → two PO classes: `BalList` and `BalItem`.
+Example: `list/` contains `list.tsx` and `item/item.tsx` → two PO classes: `DsList` and `DsItem`.
 
 ## Step 2 — Extract from each `.tsx` file
 
@@ -65,7 +65,7 @@ Read each `.tsx` and collect:
 
 Scan the `render()` method for every `part="<name>"` attribute. For each unique value:
 - Note the JSX element tag (the tag the `part` attribute sits on)
-- If the tag starts with `bal-`: locator type = the corresponding PO class (e.g. `<bal-icon part="marker">` → type `BalIcon`, import it)
+- If the tag starts with `ds-`: locator type = the corresponding PO class (e.g. `<ds-icon part="marker">` → type `DsIcon`, import it)
 - Otherwise: locator type = `Locator`
 - If the same `part` name appears in multiple conditional branches, use the first occurrence for the type
 
@@ -78,7 +78,7 @@ Find every JSX element with an `onClick` prop. For each:
 
 **C. `@Event` decorators**
 
-Collect every `@Event` property name (e.g. `@Event() balToggle` → string `'balToggle'`). These drive the test file.
+Collect every `@Event` property name (e.g. `@Event() dsToggle` → string `'dsToggle'`). These drive the test file.
 
 **D. Default slot**
 
@@ -88,26 +88,26 @@ Check `render()` for a `<slot>` element with no `name` attribute. If present, ad
 
 One file per `.tsx` at `packages/playwright/src/lib/components/<tag>.po.ts`.
 
-Class naming: convert tag to PascalCase (e.g. `bal-accordion` → `BalAccordion`, `bal-item` → `BalItem`).
+Class naming: convert tag to PascalCase (e.g. `ds-accordion` → `DsAccordion`, `ds-item` → `DsItem`).
 
 ```ts
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
-// Add one import per bal-* typed locator, e.g.:
-// import { BalIcon } from './bal-icon.po'
+// Add one import per ds-* typed locator, e.g.:
+// import { DsIcon } from './icon.po'
 
-export class Bal<Name> extends PageObject {
+export class Ds<Name> extends PageObject {
   // One public property per part="..." found in render()
   public readonly <partName>: Locator          // for plain HTML elements
-  public readonly <partName>: Bal<ChildName>   // for bal-* elements
+  public readonly <partName>: Ds<ChildName>   // for ds-* elements
 
   constructor(el: E2ELocator) {
     super(el)
     // Plain HTML part:
     this.<partName> = el.locator('[part="<partName>"]')
-    // bal-* part:
-    this.<partName> = new Bal<ChildName>(el.locator('[part="<partName>"]'))
+    // ds-* part:
+    this.<partName> = new Ds<ChildName>(el.locator('[part="<partName>"]'))
   }
 
   // One method per onClick handler:
@@ -135,7 +135,7 @@ export * from './<tag>.po'
 One test file at `packages/core/src/components/<tag>/test/<tag>.component.play.ts`.
 
 ```ts
-import { Bal<Name>, expect, test } from '@baloise/ds-playwright'
+import { Ds<Name>, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   // Always present — verifies the PO locator works
@@ -144,7 +144,7 @@ test.describe('component', () => {
       <!-- Minimal HTML for this test only -->
     `)
 
-    const component = new Bal<Name>(page.locator('<tag>'))
+    const component = new Ds<Name>(page.locator('<tag>'))
     await component.assertToBeVisible()
     // If default slot exists: await component.assertToContainText('<text from mount>')
   })
@@ -156,7 +156,7 @@ test.describe('component', () => {
            Include only props required for this specific event. -->
     `)
 
-    const component = new Bal<Name>(page.locator('<tag>'))
+    const component = new Ds<Name>(page.locator('<tag>'))
     const spy = await component.el.spyOnEvent('<eventName>')
     await component.click<TriggerPart>()
     expect(spy).toHaveReceivedEventTimes(1)
@@ -169,7 +169,7 @@ test.describe('component', () => {
 - Having a mount in `beforeEach` AND inside a test does not work in this Playwright setup
 - Each test mounts only what it needs for its own assertions
 - For close/action events, include `closable`, `action`, or equivalent in that test's mount
-- For open→close sequences (e.g. testing a `balClosed` event), start in the default closed state and click twice: once to open, once to close
+- For open→close sequences (e.g. testing a `dsClosed` event), start in the default closed state and click twice: once to open, once to close
 
 ## Step 6 — Commit
 
@@ -201,20 +201,20 @@ git commit -m "docs: add playwright page object skill spec and plan"
 
 ---
 
-## Task 2: Validate — `bal-badge` (simple case: no onClick, no events)
+## Task 2: Validate — `ds-badge` (simple case: no onClick, no events)
 
-`bal-badge` has `part="badge"` on `<span>`, a default `<slot>`, no `onClick`, no `@Event`.
+`ds-badge` has `part="badge"` on `<span>`, a default `<slot>`, no `onClick`, no `@Event`.
 
 **Files:**
-- Create: `packages/playwright/src/lib/components/bal-badge.po.ts`
+- Create: `packages/playwright/src/lib/components/badge.po.ts`
 - Modify: `packages/playwright/src/lib/components/index.ts`
-- Create: `packages/core/src/components/bal-badge/test/bal-badge.component.play.ts`
+- Create: `packages/core/src/components/badge/test/badge.component.play.ts`
 
 - [ ] **Step 1: Invoke the skill**
 
-Say: "create PO for bal-badge" — the skill should produce all three files.
+Say: "create PO for ds-badge" — the skill should produce all three files.
 
-- [ ] **Step 2: Verify `bal-badge.po.ts` content**
+- [ ] **Step 2: Verify `badge.po.ts` content**
 
 The generated file must match this exactly (modulo whitespace):
 
@@ -223,7 +223,7 @@ import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalBadge extends PageObject {
+export class DsBadge extends PageObject {
   public readonly badge: Locator
 
   constructor(el: E2ELocator) {
@@ -240,23 +240,23 @@ export class BalBadge extends PageObject {
 - [ ] **Step 3: Verify `index.ts` was updated**
 
 ```bash
-grep "bal-badge" packages/playwright/src/lib/components/index.ts
+grep "ds-badge" packages/playwright/src/lib/components/index.ts
 ```
 
-Expected: `export * from './bal-badge.po'`
+Expected: `export * from './badge.po'`
 
-- [ ] **Step 4: Verify `bal-badge.component.play.ts` content**
+- [ ] **Step 4: Verify `badge.component.play.ts` content**
 
 The generated file must match this exactly:
 
 ```ts
-import { BalBadge, test } from '@baloise/ds-playwright'
+import { DsBadge, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test('should render bal-badge', async ({ page }) => {
-    await page.mount(`<bal-badge>42</bal-badge>`)
+  test('should render ds-badge', async ({ page }) => {
+    await page.mount(`<ds-badge>42</ds-badge>`)
 
-    const badge = new BalBadge(page.locator('bal-badge'))
+    const badge = new DsBadge(page.locator('ds-badge'))
     await badge.assertToBeVisible()
     await badge.assertToContainText('42')
   })
@@ -266,46 +266,46 @@ test.describe('component', () => {
 - [ ] **Step 5: Commit**
 
 ```bash
-git add packages/playwright/src/lib/components/bal-badge.po.ts \
+git add packages/playwright/src/lib/components/badge.po.ts \
         packages/playwright/src/lib/components/index.ts \
-        packages/core/src/components/bal-badge/test/bal-badge.component.play.ts
-git commit -m "test(bal-badge): add page object and component playwright test"
+        packages/core/src/components/badge/test/badge.component.play.ts
+git commit -m "test(ds-badge): add page object and component playwright test"
 ```
 
 ---
 
-## Task 3: Validate — `bal-accordion` (complex case: onClick, bal-* part, multiple events)
+## Task 3: Validate — `ds-accordion` (complex case: onClick, ds-* part, multiple events)
 
-`bal-accordion` has: `part="header"` on `<h3>`, `part="summary"` on `<button>` with `onClick`, `part="marker"` on `<bal-icon>`, `part="content"` on `<div>`. Events: `balToggle`, `balOpened`, `balClosed`.
+`ds-accordion` has: `part="header"` on `<h3>`, `part="summary"` on `<button>` with `onClick`, `part="marker"` on `<ds-icon>`, `part="content"` on `<div>`. Events: `dsToggle`, `dsOpened`, `dsClosed`.
 
 **Files:**
-- Create: `packages/playwright/src/lib/components/bal-accordion.po.ts`
+- Create: `packages/playwright/src/lib/components/accordion.po.ts`
 - Modify: `packages/playwright/src/lib/components/index.ts`
-- Create: `packages/core/src/components/bal-accordion/test/bal-accordion.component.play.ts`
+- Create: `packages/core/src/components/accordion/test/accordion.component.play.ts`
 
 - [ ] **Step 1: Invoke the skill**
 
-Say: "create PO for bal-accordion"
+Say: "create PO for ds-accordion"
 
-- [ ] **Step 2: Verify `bal-accordion.po.ts` content**
+- [ ] **Step 2: Verify `accordion.po.ts` content**
 
 ```ts
 import { expect, Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
-import { BalIcon } from './bal-icon.po'
+import { DsIcon } from './icon.po'
 
-export class BalAccordion extends PageObject {
+export class DsAccordion extends PageObject {
   public readonly header: Locator
   public readonly summary: Locator
-  public readonly marker: BalIcon
+  public readonly marker: DsIcon
   public readonly content: Locator
 
   constructor(el: E2ELocator) {
     super(el)
     this.header = el.locator('[part="header"]')
     this.summary = el.locator('[part="summary"]')
-    this.marker = new BalIcon(el.locator('[part="marker"]'))
+    this.marker = new DsIcon(el.locator('[part="marker"]'))
     this.content = el.locator('[part="content"]')
   }
 
@@ -315,72 +315,72 @@ export class BalAccordion extends PageObject {
 }
 ```
 
-> Note: `bal-accordion` has no default `<slot>` (only named slots `summary` and `content`), so no `assertToContainText`.
+> Note: `ds-accordion` has no default `<slot>` (only named slots `summary` and `content`), so no `assertToContainText`.
 
 - [ ] **Step 3: Verify `index.ts` was updated**
 
 ```bash
-grep "bal-accordion" packages/playwright/src/lib/components/index.ts
+grep "ds-accordion" packages/playwright/src/lib/components/index.ts
 ```
 
-Expected: `export * from './bal-accordion.po'`
+Expected: `export * from './accordion.po'`
 
-- [ ] **Step 4: Verify `bal-accordion.component.play.ts` content**
+- [ ] **Step 4: Verify `accordion.component.play.ts` content**
 
 ```ts
-import { BalAccordion, expect, test } from '@baloise/ds-playwright'
+import { DsAccordion, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test('should render bal-accordion', async ({ page }) => {
+  test('should render ds-accordion', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
     await accordion.assertToBeVisible()
   })
 
-  test('should fire balToggle event', async ({ page }) => {
+  test('should fire dsToggle event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balToggle')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsToggle')
     await accordion.clickSummary()
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balOpened event', async ({ page }) => {
+  test('should fire dsOpened event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balOpened')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsOpened')
     await accordion.clickSummary()
     expect(spy).toHaveReceivedEventTimes(1)
   })
 
-  test('should fire balClosed event', async ({ page }) => {
+  test('should fire dsClosed event', async ({ page }) => {
     await page.mount(`
-      <bal-accordion>
+      <ds-accordion>
         <span slot="summary">Title</span>
         <span slot="content">Content</span>
-      </bal-accordion>
+      </ds-accordion>
     `)
 
-    const accordion = new BalAccordion(page.locator('bal-accordion'))
-    const spy = await accordion.el.spyOnEvent('balClosed')
+    const accordion = new DsAccordion(page.locator('ds-accordion'))
+    const spy = await accordion.el.spyOnEvent('dsClosed')
     await accordion.clickSummary() // open
     await accordion.clickSummary() // close
     expect(spy).toHaveReceivedEventTimes(1)
@@ -391,36 +391,36 @@ test.describe('component', () => {
 - [ ] **Step 5: Commit**
 
 ```bash
-git add packages/playwright/src/lib/components/bal-accordion.po.ts \
+git add packages/playwright/src/lib/components/accordion.po.ts \
         packages/playwright/src/lib/components/index.ts \
-        packages/core/src/components/bal-accordion/test/bal-accordion.component.play.ts
-git commit -m "test(bal-accordion): add page object and component playwright test"
+        packages/core/src/components/accordion/test/accordion.component.play.ts
+git commit -m "test(ds-accordion): add page object and component playwright test"
 ```
 
 ---
 
-## Task 4: Validate — `bal-list` (nested children case)
+## Task 4: Validate — `ds-list` (nested children case)
 
-`bal-list/` contains two `.tsx` files: `bal-list.tsx` (part="list", no events, no onClick) and `bal-item/bal-item.tsx` (parts: "accordion" on `<bal-accordion>`, "item", "accordion-content"; events: balClick, balAccordionToggle, balAccordionOpened, balAccordionClosed).
+`list/` contains two `.tsx` files: `list.tsx` (part="list", no events, no onClick) and `item/item.tsx` (parts: "accordion" on `<ds-accordion>`, "item", "accordion-content"; events: dsClick, dsAccordionToggle, dsAccordionOpened, dsAccordionClosed).
 
 **Files:**
-- Create: `packages/playwright/src/lib/components/bal-list.po.ts`
-- Create: `packages/playwright/src/lib/components/bal-item.po.ts`
+- Create: `packages/playwright/src/lib/components/list.po.ts`
+- Create: `packages/playwright/src/lib/components/item.po.ts`
 - Modify: `packages/playwright/src/lib/components/index.ts`
-- Create: `packages/core/src/components/bal-list/test/bal-list.component.play.ts`
+- Create: `packages/core/src/components/list/test/list.component.play.ts`
 
 - [ ] **Step 1: Invoke the skill**
 
-Say: "create PO for bal-list"
+Say: "create PO for ds-list"
 
-- [ ] **Step 2: Verify `bal-list.po.ts` content**
+- [ ] **Step 2: Verify `list.po.ts` content**
 
 ```ts
 import { Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
-export class BalList extends PageObject {
+export class DsList extends PageObject {
   public readonly list: Locator
 
   constructor(el: E2ELocator) {
@@ -430,79 +430,79 @@ export class BalList extends PageObject {
 }
 ```
 
-- [ ] **Step 3: Verify `bal-item.po.ts` content**
+- [ ] **Step 3: Verify `item.po.ts` content**
 
 ```ts
 import { Locator } from '@playwright/test'
 import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
-import { BalAccordion } from './bal-accordion.po'
+import { DsAccordion } from './accordion.po'
 
-export class BalItem extends PageObject {
-  public readonly accordion: BalAccordion
+export class DsItem extends PageObject {
+  public readonly accordion: DsAccordion
   public readonly item: Locator
   public readonly accordionContent: Locator
 
   constructor(el: E2ELocator) {
     super(el)
-    this.accordion = new BalAccordion(el.locator('[part="accordion"]'))
+    this.accordion = new DsAccordion(el.locator('[part="accordion"]'))
     this.item = el.locator('[part="item"]')
     this.accordionContent = el.locator('[part="accordion-content"]')
   }
 }
 ```
 
-> Note: `bal-item` has no `onClick` directly (it delegates to `bal-accordion`), so no click methods. Events are still tested via the parent accordion's `clickSummary()`.
+> Note: `ds-item` has no `onClick` directly (it delegates to `ds-accordion`), so no click methods. Events are still tested via the parent accordion's `clickSummary()`.
 
 - [ ] **Step 4: Verify `index.ts` was updated**
 
 ```bash
-grep -E "bal-list|bal-item" packages/playwright/src/lib/components/index.ts
+grep -E "ds-list|ds-item" packages/playwright/src/lib/components/index.ts
 ```
 
 Expected:
 ```
-export * from './bal-list.po'
-export * from './bal-item.po'
+export * from './list.po'
+export * from './item.po'
 ```
 
-- [ ] **Step 5: Verify `bal-list.component.play.ts` content**
+- [ ] **Step 5: Verify `list.component.play.ts` content**
 
 ```ts
-import { BalItem, BalList, expect, test } from '@baloise/ds-playwright'
+import { DsItem, DsList, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-  test('should render bal-list', async ({ page }) => {
+  test('should render ds-list', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const list = new BalList(page.locator('bal-list'))
+    const list = new DsList(page.locator('ds-list'))
     await list.assertToBeVisible()
   })
 
-  test('should render bal-item', async ({ page }) => {
+  test('should render ds-item', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const item = new BalItem(page.locator('bal-item'))
+    const item = new DsItem(page.locator('ds-item'))
     await item.assertToBeVisible()
   })
 
-  test('should fire balClick event on bal-item', async ({ page }) => {
+  test('should fire dsClick event on ds-item', async ({ page }) => {
     await page.mount(`
-      <bal-list>
-        <bal-item label="Item 1"></bal-item>
-      </bal-list>
+      <ds-list>
+        <ds-item label="Item 1"></ds-item>
+      </ds-list>
     `)
 
-    const item = new BalItem(page.locator('bal-item'))
-    const spy = await item.el.spyOnEvent('balClick')
+    const item = new DsItem(page.locator('ds-item'))
+    const spy = await item.el.spyOnEvent('dsClick')
     await item.item.click()
     expect(spy).toHaveReceivedEventTimes(1)
   })
@@ -512,11 +512,11 @@ test.describe('component', () => {
 - [ ] **Step 6: Commit**
 
 ```bash
-git add packages/playwright/src/lib/components/bal-list.po.ts \
-        packages/playwright/src/lib/components/bal-item.po.ts \
+git add packages/playwright/src/lib/components/list.po.ts \
+        packages/playwright/src/lib/components/item.po.ts \
         packages/playwright/src/lib/components/index.ts \
-        packages/core/src/components/bal-list/test/bal-list.component.play.ts
-git commit -m "test(bal-list): add page objects and component playwright test"
+        packages/core/src/components/list/test/list.component.play.ts
+git commit -m "test(ds-list): add page objects and component playwright test"
 ```
 
 ---
@@ -533,9 +533,9 @@ git commit -m "test(bal-list): add page objects and component playwright test"
 - ✅ `index.ts` export update → every task
 
 **Edge case coverage:**
-- Simple (no events, no onClick): bal-badge ✅
-- Complex (onClick + events + bal-* part): bal-accordion ✅
-- Nested children: bal-list + bal-item ✅
-- Named-only slots (no assertToContainText): bal-accordion ✅
+- Simple (no events, no onClick): ds-badge ✅
+- Complex (onClick + events + ds-* part): ds-accordion ✅
+- Nested children: ds-list + ds-item ✅
+- Named-only slots (no assertToContainText): ds-accordion ✅
 
-**Type consistency:** `BalAccordion`, `BalIcon`, `BalList`, `BalItem` class names used consistently across PO files and test imports. `BalIcon` referenced in bal-accordion.po.ts — note this PO does not exist yet in the codebase and would need to be created separately if `bal-icon` has not yet had a PO generated.
+**Type consistency:** `DsAccordion`, `DsIcon`, `DsList`, `DsItem` class names used consistently across PO files and test imports. `DsIcon` referenced in accordion.po.ts — note this PO does not exist yet in the codebase and would need to be created separately if `ds-icon` has not yet had a PO generated.

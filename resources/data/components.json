@@ -17,11 +17,11 @@
         "bal-item"
       ],
       "dependencies": [
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-accordion": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-item": [
           "bal-accordion"
@@ -1046,11 +1046,11 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-badge": [
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -1295,12 +1295,12 @@
       ],
       "dependencies": [
         "bal-spinner",
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-close": [
           "bal-button"
@@ -3683,11 +3683,11 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-check": [
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -3847,7 +3847,7 @@
         ],
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-notification": [
           "bal-close"
@@ -5174,7 +5174,7 @@
     },
     {
       "fileName": "icon.tsx",
-      "tag": "bal-icon",
+      "tag": "ds-icon",
       "overview": "",
       "usage": {},
       "docs": "",
@@ -5193,28 +5193,28 @@
       "dependencies": [],
       "dependencyGraph": {
         "bal-accordion": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-badge": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-button": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-check": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-item": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-snackbar": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-switch": [
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-toast": [
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -5694,15 +5694,15 @@
       "dependents": [],
       "dependencies": [
         "bal-accordion",
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-item": [
           "bal-accordion",
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-accordion": [
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -6901,7 +6901,7 @@
         ],
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -7403,20 +7403,20 @@
       "dependents": [],
       "dependencies": [
         "bal-button",
-        "bal-icon",
+        "ds-icon",
         "bal-button-group",
         "bal-close"
       ],
       "dependencyGraph": {
         "bal-snackbar": [
           "bal-button",
-          "bal-icon",
+          "ds-icon",
           "bal-button-group",
           "bal-close"
         ],
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-close": [
           "bal-button"
@@ -8903,11 +8903,11 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-icon"
+        "ds-icon"
       ],
       "dependencyGraph": {
         "bal-switch": [
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -9038,7 +9038,7 @@
         ],
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ]
       },
       "props": [
@@ -9950,19 +9950,19 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "bal-icon",
+        "ds-icon",
         "bal-button",
         "bal-close"
       ],
       "dependencyGraph": {
         "bal-toast": [
-          "bal-icon",
+          "ds-icon",
           "bal-button",
           "bal-close"
         ],
         "bal-button": [
           "bal-spinner",
-          "bal-icon"
+          "ds-icon"
         ],
         "bal-close": [
           "bal-button"

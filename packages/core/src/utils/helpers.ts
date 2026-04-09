@@ -330,7 +330,7 @@ export const isChildOfEventTarget = async (
     let target = ev.target as HTMLElement | HTMLStencilElement
 
     // special case for the navbar case
-    const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
+    const isNavbarBrand = ev.target.nodeName === 'DS-NAVBAR-BRAND'
     if (isNavbarBrand) {
       target = target.closest('ds-navbar') as HTMLStencilElement
     }

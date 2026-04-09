@@ -47,7 +47,7 @@ const labels = {
 
 const frameworks = ['angular', 'html', 'react']
 
-const LOCAL_STORE_ID = 'bal-docs-framework'
+const LOCAL_STORE_ID = 'ds-docs-framework'
 
 const usePersisted = (initialValue: string) => {
   const [storedValue, setStoredValue] = useState(() => {

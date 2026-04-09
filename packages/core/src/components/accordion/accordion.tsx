@@ -9,14 +9,14 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
   shadow: true,
 })
 export class Accordion implements ComponentInterface, DsConfigObserver, Loggable {
-  private accordionId = `bal-accordion-${accordionIds++}`
+  private accordionId = `ds-accordion-${accordionIds++}`
 
   @State() animated = true
   @State() isAnimating = false
 
   log!: LogInstance
 
-  @Logger('bal-accordion')
+  @Logger('ds-accordion')
   createLogger(log: LogInstance) {
     this.log = log
   }

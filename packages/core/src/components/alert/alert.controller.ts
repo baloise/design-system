@@ -29,7 +29,7 @@ class AlertControllerImpl implements AlertController {
 
   private setupContainer(options: Alert) {
     // Check if there is already a container for the given type, if so reuse it
-    const containerId = `bal-${this.type}-container`
+    const containerId = `ds-${this.type}-container`
     this.container = document.getElementById(containerId) as HTMLDsAlertContainerElement
 
     if (this.container) return

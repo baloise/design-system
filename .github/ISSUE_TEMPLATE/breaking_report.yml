@@ -23,7 +23,7 @@ body:
         Description...
 
         ```html
-        <bal-component right></bal-component>
+        <ds-component right></ds-component>
         ```
     validations:
       required: true
@@ -36,9 +36,9 @@ body:
         Description...
 
         ```html
-        <bal-component position="left"></bal-component>
-        <bal-component position="center"></bal-component>
-        <bal-component position="right"></bal-component>
+        <ds-component position="left"></ds-component>
+        <ds-component position="center"></ds-component>
+        <ds-component position="right"></ds-component>
         ```
     validations:
       required: true

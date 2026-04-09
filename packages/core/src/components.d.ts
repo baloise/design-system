@@ -12,7 +12,7 @@ export { DsConfigState } from "./utils/config";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { AriaForm } from "./utils/form";
 export namespace Components {
-    interface BalAccordion {
+    interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
           * @default false
@@ -80,7 +80,7 @@ export namespace Components {
          */
         "summaryVisualLevel"?: DS.AccordionSummaryLevel;
     }
-    interface BalAlertContainer {
+    interface DsAlertContainer {
         "addAlert": (alert: Alert) => Promise<string>;
         /**
           * @default false
@@ -94,7 +94,7 @@ export namespace Components {
          */
         "type": AlertType;
     }
-    interface BalApp {
+    interface DsApp {
         /**
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
           * @default true
@@ -106,7 +106,7 @@ export namespace Components {
         "ready": boolean;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
-    interface BalBadge {
+    interface DsBadge {
         /**
           * Define the color for the badge.
           * @default ''
@@ -132,7 +132,7 @@ export namespace Components {
          */
         "size": DS.BadgeSize;
     }
-    interface BalButton {
+    interface DsButton {
         /**
           * A11y attributes for the native button element.
           * @default undefined
@@ -267,7 +267,7 @@ export namespace Components {
          */
         "value"?: string | number;
     }
-    interface BalButtonGroup {
+    interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -288,7 +288,7 @@ export namespace Components {
          */
         "reverse": boolean;
     }
-    interface BalCard {
+    interface DsCard {
         /**
           * Defines the text alignment of the card content.
          */
@@ -356,21 +356,21 @@ export namespace Components {
          */
         "tile": boolean;
     }
-    interface BalCardActions {
+    interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
          */
         "align"?: DS.CardActionsAlignment;
     }
-    interface BalCardContent {
+    interface DsCardContent {
     }
-    interface BalCardHeader {
+    interface DsCardHeader {
         /**
           * @default 'row'
          */
         "direction": DS.CardHeaderDirection;
     }
-    interface BalCardSubtitle {
+    interface DsCardSubtitle {
         /**
           * If `true` the card text color is bold.
           * @default false
@@ -387,7 +387,7 @@ export namespace Components {
          */
         "inverted": boolean;
     }
-    interface BalCardTitle {
+    interface DsCardTitle {
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -403,7 +403,7 @@ export namespace Components {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface BalCheck {
+    interface DsCheck {
         /**
           * If `true`, the checkbox is selected.
           * @default false
@@ -433,7 +433,7 @@ export namespace Components {
          */
         "pressed": boolean;
     }
-    interface BalClose {
+    interface DsClose {
         /**
           * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
           * @default false
@@ -459,7 +459,7 @@ export namespace Components {
          */
         "size"?: DS.CloseSize;
     }
-    interface BalContent {
+    interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
@@ -482,7 +482,7 @@ export namespace Components {
          */
         "textAlign"?: DS.ContentTextAlignment;
     }
-    interface BalDivider {
+    interface DsDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
@@ -504,7 +504,7 @@ export namespace Components {
          */
         "space": DS.DividerSpace;
     }
-    interface BalDocApp {
+    interface DsDocApp {
         /**
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
           * @default true
@@ -537,7 +537,7 @@ export namespace Components {
          */
         "stickyFooter": boolean;
     }
-    interface BalHeading {
+    interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
          */
@@ -581,7 +581,7 @@ export namespace Components {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface BalIcon {
+    interface DsIcon {
         /**
           * The theme type of the button.
          */
@@ -644,7 +644,7 @@ export namespace Components {
          */
         "turn": boolean;
     }
-    interface BalItem {
+    interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -700,7 +700,7 @@ export namespace Components {
          */
         "variant": 'link' | 'button' | 'accordion' | 'default';
     }
-    interface BalLabel {
+    interface DsLabel {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -751,13 +751,13 @@ export namespace Components {
          */
         "valid": boolean;
     }
-    interface BalList {
+    interface DsList {
         /**
           * @default false
          */
         "ordered": boolean;
     }
-    interface BalLogo {
+    interface DsLogo {
         /**
           * Defines if the animation should be active
           * @default false
@@ -779,7 +779,7 @@ export namespace Components {
          */
         "size": DS.LogoSize;
     }
-    interface BalNotification {
+    interface DsNotification {
         /**
           * If `true` the notification will be displayed as an alert, otherwise as a status message.
           * @default false
@@ -816,7 +816,7 @@ export namespace Components {
          */
         "size"?: DS.NotificationSize;
     }
-    interface BalShape {
+    interface DsShape {
         /**
           * The shape color
           * @default 'green'
@@ -833,7 +833,7 @@ export namespace Components {
          */
         "variation": DS.ShapeVariation;
     }
-    interface BalSnackbar {
+    interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
          */
@@ -897,7 +897,7 @@ export namespace Components {
          */
         "visible": boolean;
     }
-    interface BalSpinner {
+    interface DsSpinner {
         /**
           * Defines the color of the spinner.
           * @default 'blue'
@@ -929,7 +929,7 @@ export namespace Components {
          */
         "variation": DS.SpinnerVariation;
     }
-    interface BalStack {
+    interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
@@ -979,7 +979,7 @@ export namespace Components {
          */
         "useWrap": boolean;
     }
-    interface BalSwitch {
+    interface DsSwitch {
         /**
           * If `true`, the checkbox is selected.
           * @default false
@@ -1004,7 +1004,7 @@ export namespace Components {
          */
         "pressed": boolean;
     }
-    interface BalTag {
+    interface DsTag {
         /**
           * The theme type of the tag.
           * @default false
@@ -1037,9 +1037,9 @@ export namespace Components {
          */
         "size"?: DS.TagSize;
     }
-    interface BalTagGroup {
+    interface DsTagGroup {
     }
-    interface BalText {
+    interface DsText {
         /**
           * If `true` the component gets a invalid style.
          */
@@ -1110,7 +1110,7 @@ export namespace Components {
          */
         "subtitle": boolean;
     }
-    interface BalToast {
+    interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
          */
@@ -1180,379 +1180,379 @@ export namespace Components {
         "visible": boolean;
     }
 }
-export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
+export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalAccordionElement;
+    target: HTMLDsAccordionElement;
 }
-export interface BalAppCustomEvent<T> extends CustomEvent<T> {
+export interface DsAppCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalAppElement;
+    target: HTMLDsAppElement;
 }
-export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
+export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalButtonElement;
+    target: HTMLDsButtonElement;
 }
-export interface BalItemCustomEvent<T> extends CustomEvent<T> {
+export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalItemElement;
+    target: HTMLDsItemElement;
 }
-export interface BalNotificationCustomEvent<T> extends CustomEvent<T> {
+export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalNotificationElement;
+    target: HTMLDsNotificationElement;
 }
-export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
+export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalSnackbarElement;
+    target: HTMLDsSnackbarElement;
 }
-export interface BalTagCustomEvent<T> extends CustomEvent<T> {
+export interface DsTagCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalTagElement;
+    target: HTMLDsTagElement;
 }
-export interface BalToastCustomEvent<T> extends CustomEvent<T> {
+export interface DsToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalToastElement;
+    target: HTMLDsToastElement;
 }
 declare global {
-    interface HTMLBalAccordionElementEventMap {
+    interface HTMLDsAccordionElementEventMap {
         "dsToggle": DS.AccordionToggleDetail;
         "dsOpened": DS.AccordionToggleDetail;
         "dsClosed": DS.AccordionToggleDetail;
     }
-    interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsAccordionElement extends Components.DsAccordion, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsAccordionElementEventMap>(type: K, listener: (this: HTMLDsAccordionElement, ev: DsAccordionCustomEvent<HTMLDsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsAccordionElementEventMap>(type: K, listener: (this: HTMLDsAccordionElement, ev: DsAccordionCustomEvent<HTMLDsAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalAccordionElement: {
-        prototype: HTMLBalAccordionElement;
-        new (): HTMLBalAccordionElement;
+    var HTMLDsAccordionElement: {
+        prototype: HTMLDsAccordionElement;
+        new (): HTMLDsAccordionElement;
     };
-    interface HTMLBalAlertContainerElement extends Components.BalAlertContainer, HTMLStencilElement {
+    interface HTMLDsAlertContainerElement extends Components.DsAlertContainer, HTMLStencilElement {
     }
-    var HTMLBalAlertContainerElement: {
-        prototype: HTMLBalAlertContainerElement;
-        new (): HTMLBalAlertContainerElement;
+    var HTMLDsAlertContainerElement: {
+        prototype: HTMLDsAlertContainerElement;
+        new (): HTMLDsAlertContainerElement;
     };
-    interface HTMLBalAppElementEventMap {
+    interface HTMLDsAppElementEventMap {
         "dsAppReady": void;
     }
-    interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsAppElement extends Components.DsApp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalAppElement: {
-        prototype: HTMLBalAppElement;
-        new (): HTMLBalAppElement;
+    var HTMLDsAppElement: {
+        prototype: HTMLDsAppElement;
+        new (): HTMLDsAppElement;
     };
-    interface HTMLBalBadgeElement extends Components.BalBadge, HTMLStencilElement {
+    interface HTMLDsBadgeElement extends Components.DsBadge, HTMLStencilElement {
     }
-    var HTMLBalBadgeElement: {
-        prototype: HTMLBalBadgeElement;
-        new (): HTMLBalBadgeElement;
+    var HTMLDsBadgeElement: {
+        prototype: HTMLDsBadgeElement;
+        new (): HTMLDsBadgeElement;
     };
-    interface HTMLBalButtonElementEventMap {
+    interface HTMLDsButtonElementEventMap {
         "dsClick": DS.ButtonClickDetail;
         "dsNavigate": DS.ButtonNavigateDetail;
         "dsFocus": DS.ButtonFocusDetail;
         "dsBlur": DS.ButtonBlurDetail;
         "dsDidRender": DS.ButtonDidRenderDetail;
     }
-    interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsButtonElement extends Components.DsButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsButtonElementEventMap>(type: K, listener: (this: HTMLDsButtonElement, ev: DsButtonCustomEvent<HTMLDsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsButtonElementEventMap>(type: K, listener: (this: HTMLDsButtonElement, ev: DsButtonCustomEvent<HTMLDsButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalButtonElement: {
-        prototype: HTMLBalButtonElement;
-        new (): HTMLBalButtonElement;
+    var HTMLDsButtonElement: {
+        prototype: HTMLDsButtonElement;
+        new (): HTMLDsButtonElement;
     };
-    interface HTMLBalButtonGroupElement extends Components.BalButtonGroup, HTMLStencilElement {
+    interface HTMLDsButtonGroupElement extends Components.DsButtonGroup, HTMLStencilElement {
     }
-    var HTMLBalButtonGroupElement: {
-        prototype: HTMLBalButtonGroupElement;
-        new (): HTMLBalButtonGroupElement;
+    var HTMLDsButtonGroupElement: {
+        prototype: HTMLDsButtonGroupElement;
+        new (): HTMLDsButtonGroupElement;
     };
-    interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
+    interface HTMLDsCardElement extends Components.DsCard, HTMLStencilElement {
     }
-    var HTMLBalCardElement: {
-        prototype: HTMLBalCardElement;
-        new (): HTMLBalCardElement;
+    var HTMLDsCardElement: {
+        prototype: HTMLDsCardElement;
+        new (): HTMLDsCardElement;
     };
-    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
+    interface HTMLDsCardActionsElement extends Components.DsCardActions, HTMLStencilElement {
     }
-    var HTMLBalCardActionsElement: {
-        prototype: HTMLBalCardActionsElement;
-        new (): HTMLBalCardActionsElement;
+    var HTMLDsCardActionsElement: {
+        prototype: HTMLDsCardActionsElement;
+        new (): HTMLDsCardActionsElement;
     };
-    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
+    interface HTMLDsCardContentElement extends Components.DsCardContent, HTMLStencilElement {
     }
-    var HTMLBalCardContentElement: {
-        prototype: HTMLBalCardContentElement;
-        new (): HTMLBalCardContentElement;
+    var HTMLDsCardContentElement: {
+        prototype: HTMLDsCardContentElement;
+        new (): HTMLDsCardContentElement;
     };
-    interface HTMLBalCardHeaderElement extends Components.BalCardHeader, HTMLStencilElement {
+    interface HTMLDsCardHeaderElement extends Components.DsCardHeader, HTMLStencilElement {
     }
-    var HTMLBalCardHeaderElement: {
-        prototype: HTMLBalCardHeaderElement;
-        new (): HTMLBalCardHeaderElement;
+    var HTMLDsCardHeaderElement: {
+        prototype: HTMLDsCardHeaderElement;
+        new (): HTMLDsCardHeaderElement;
     };
-    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
+    interface HTMLDsCardSubtitleElement extends Components.DsCardSubtitle, HTMLStencilElement {
     }
-    var HTMLBalCardSubtitleElement: {
-        prototype: HTMLBalCardSubtitleElement;
-        new (): HTMLBalCardSubtitleElement;
+    var HTMLDsCardSubtitleElement: {
+        prototype: HTMLDsCardSubtitleElement;
+        new (): HTMLDsCardSubtitleElement;
     };
-    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
+    interface HTMLDsCardTitleElement extends Components.DsCardTitle, HTMLStencilElement {
     }
-    var HTMLBalCardTitleElement: {
-        prototype: HTMLBalCardTitleElement;
-        new (): HTMLBalCardTitleElement;
+    var HTMLDsCardTitleElement: {
+        prototype: HTMLDsCardTitleElement;
+        new (): HTMLDsCardTitleElement;
     };
-    interface HTMLBalCheckElement extends Components.BalCheck, HTMLStencilElement {
+    interface HTMLDsCheckElement extends Components.DsCheck, HTMLStencilElement {
     }
-    var HTMLBalCheckElement: {
-        prototype: HTMLBalCheckElement;
-        new (): HTMLBalCheckElement;
+    var HTMLDsCheckElement: {
+        prototype: HTMLDsCheckElement;
+        new (): HTMLDsCheckElement;
     };
-    interface HTMLBalCloseElement extends Components.BalClose, HTMLStencilElement {
+    interface HTMLDsCloseElement extends Components.DsClose, HTMLStencilElement {
     }
-    var HTMLBalCloseElement: {
-        prototype: HTMLBalCloseElement;
-        new (): HTMLBalCloseElement;
+    var HTMLDsCloseElement: {
+        prototype: HTMLDsCloseElement;
+        new (): HTMLDsCloseElement;
     };
-    interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
+    interface HTMLDsContentElement extends Components.DsContent, HTMLStencilElement {
     }
-    var HTMLBalContentElement: {
-        prototype: HTMLBalContentElement;
-        new (): HTMLBalContentElement;
+    var HTMLDsContentElement: {
+        prototype: HTMLDsContentElement;
+        new (): HTMLDsContentElement;
     };
-    interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
+    interface HTMLDsDividerElement extends Components.DsDivider, HTMLStencilElement {
     }
-    var HTMLBalDividerElement: {
-        prototype: HTMLBalDividerElement;
-        new (): HTMLBalDividerElement;
+    var HTMLDsDividerElement: {
+        prototype: HTMLDsDividerElement;
+        new (): HTMLDsDividerElement;
     };
-    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
+    interface HTMLDsDocAppElement extends Components.DsDocApp, HTMLStencilElement {
     }
-    var HTMLBalDocAppElement: {
-        prototype: HTMLBalDocAppElement;
-        new (): HTMLBalDocAppElement;
+    var HTMLDsDocAppElement: {
+        prototype: HTMLDsDocAppElement;
+        new (): HTMLDsDocAppElement;
     };
-    interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
+    interface HTMLDsHeadingElement extends Components.DsHeading, HTMLStencilElement {
     }
-    var HTMLBalHeadingElement: {
-        prototype: HTMLBalHeadingElement;
-        new (): HTMLBalHeadingElement;
+    var HTMLDsHeadingElement: {
+        prototype: HTMLDsHeadingElement;
+        new (): HTMLDsHeadingElement;
     };
-    interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {
+    interface HTMLDsIconElement extends Components.DsIcon, HTMLStencilElement {
     }
-    var HTMLBalIconElement: {
-        prototype: HTMLBalIconElement;
-        new (): HTMLBalIconElement;
+    var HTMLDsIconElement: {
+        prototype: HTMLDsIconElement;
+        new (): HTMLDsIconElement;
     };
-    interface HTMLBalItemElementEventMap {
+    interface HTMLDsItemElementEventMap {
         "dsClick": DS.ButtonClickDetail;
         "dsAccordionToggle": DS.AccordionToggleDetail;
         "dsAccordionOpened": DS.AccordionToggleDetail;
         "dsAccordionClosed": DS.AccordionToggleDetail;
     }
-    interface HTMLBalItemElement extends Components.BalItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalItemElementEventMap>(type: K, listener: (this: HTMLBalItemElement, ev: BalItemCustomEvent<HTMLBalItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsItemElement extends Components.DsItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsItemElementEventMap>(type: K, listener: (this: HTMLDsItemElement, ev: DsItemCustomEvent<HTMLDsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalItemElementEventMap>(type: K, listener: (this: HTMLBalItemElement, ev: BalItemCustomEvent<HTMLBalItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsItemElementEventMap>(type: K, listener: (this: HTMLDsItemElement, ev: DsItemCustomEvent<HTMLDsItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalItemElement: {
-        prototype: HTMLBalItemElement;
-        new (): HTMLBalItemElement;
+    var HTMLDsItemElement: {
+        prototype: HTMLDsItemElement;
+        new (): HTMLDsItemElement;
     };
-    interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
+    interface HTMLDsLabelElement extends Components.DsLabel, HTMLStencilElement {
     }
-    var HTMLBalLabelElement: {
-        prototype: HTMLBalLabelElement;
-        new (): HTMLBalLabelElement;
+    var HTMLDsLabelElement: {
+        prototype: HTMLDsLabelElement;
+        new (): HTMLDsLabelElement;
     };
-    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
+    interface HTMLDsListElement extends Components.DsList, HTMLStencilElement {
     }
-    var HTMLBalListElement: {
-        prototype: HTMLBalListElement;
-        new (): HTMLBalListElement;
+    var HTMLDsListElement: {
+        prototype: HTMLDsListElement;
+        new (): HTMLDsListElement;
     };
-    interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
+    interface HTMLDsLogoElement extends Components.DsLogo, HTMLStencilElement {
     }
-    var HTMLBalLogoElement: {
-        prototype: HTMLBalLogoElement;
-        new (): HTMLBalLogoElement;
+    var HTMLDsLogoElement: {
+        prototype: HTMLDsLogoElement;
+        new (): HTMLDsLogoElement;
     };
-    interface HTMLBalNotificationElementEventMap {
+    interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": DS.NotificationCloseClickDetail;
         "dsDidLoad": void;
     }
-    interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalNotificationElementEventMap>(type: K, listener: (this: HTMLBalNotificationElement, ev: BalNotificationCustomEvent<HTMLBalNotificationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsNotificationElement extends Components.DsNotification, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsNotificationElementEventMap>(type: K, listener: (this: HTMLDsNotificationElement, ev: DsNotificationCustomEvent<HTMLDsNotificationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalNotificationElementEventMap>(type: K, listener: (this: HTMLBalNotificationElement, ev: BalNotificationCustomEvent<HTMLBalNotificationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsNotificationElementEventMap>(type: K, listener: (this: HTMLDsNotificationElement, ev: DsNotificationCustomEvent<HTMLDsNotificationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalNotificationElement: {
-        prototype: HTMLBalNotificationElement;
-        new (): HTMLBalNotificationElement;
+    var HTMLDsNotificationElement: {
+        prototype: HTMLDsNotificationElement;
+        new (): HTMLDsNotificationElement;
     };
-    interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
+    interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
     }
-    var HTMLBalShapeElement: {
-        prototype: HTMLBalShapeElement;
-        new (): HTMLBalShapeElement;
+    var HTMLDsShapeElement: {
+        prototype: HTMLDsShapeElement;
+        new (): HTMLDsShapeElement;
     };
-    interface HTMLBalSnackbarElementEventMap {
+    interface HTMLDsSnackbarElementEventMap {
         "dsCloseClick": DS.SnackbarCloseClickDetail;
         "dsActionClick": DS.SnackbarActionClickDetail;
         "dsDidLoad": void;
     }
-    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsSnackbarElement extends Components.DsSnackbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSnackbarElementEventMap>(type: K, listener: (this: HTMLDsSnackbarElement, ev: DsSnackbarCustomEvent<HTMLDsSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSnackbarElementEventMap>(type: K, listener: (this: HTMLDsSnackbarElement, ev: DsSnackbarCustomEvent<HTMLDsSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalSnackbarElement: {
-        prototype: HTMLBalSnackbarElement;
-        new (): HTMLBalSnackbarElement;
+    var HTMLDsSnackbarElement: {
+        prototype: HTMLDsSnackbarElement;
+        new (): HTMLDsSnackbarElement;
     };
-    interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
+    interface HTMLDsSpinnerElement extends Components.DsSpinner, HTMLStencilElement {
     }
-    var HTMLBalSpinnerElement: {
-        prototype: HTMLBalSpinnerElement;
-        new (): HTMLBalSpinnerElement;
+    var HTMLDsSpinnerElement: {
+        prototype: HTMLDsSpinnerElement;
+        new (): HTMLDsSpinnerElement;
     };
-    interface HTMLBalStackElement extends Components.BalStack, HTMLStencilElement {
+    interface HTMLDsStackElement extends Components.DsStack, HTMLStencilElement {
     }
-    var HTMLBalStackElement: {
-        prototype: HTMLBalStackElement;
-        new (): HTMLBalStackElement;
+    var HTMLDsStackElement: {
+        prototype: HTMLDsStackElement;
+        new (): HTMLDsStackElement;
     };
-    interface HTMLBalSwitchElement extends Components.BalSwitch, HTMLStencilElement {
+    interface HTMLDsSwitchElement extends Components.DsSwitch, HTMLStencilElement {
     }
-    var HTMLBalSwitchElement: {
-        prototype: HTMLBalSwitchElement;
-        new (): HTMLBalSwitchElement;
+    var HTMLDsSwitchElement: {
+        prototype: HTMLDsSwitchElement;
+        new (): HTMLDsSwitchElement;
     };
-    interface HTMLBalTagElementEventMap {
+    interface HTMLDsTagElementEventMap {
         "dsCloseClick": DS.TagCloseClickDetail;
     }
-    interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsTagElement extends Components.DsTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTagElementEventMap>(type: K, listener: (this: HTMLDsTagElement, ev: DsTagCustomEvent<HTMLDsTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTagElementEventMap>(type: K, listener: (this: HTMLDsTagElement, ev: DsTagCustomEvent<HTMLDsTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalTagElement: {
-        prototype: HTMLBalTagElement;
-        new (): HTMLBalTagElement;
+    var HTMLDsTagElement: {
+        prototype: HTMLDsTagElement;
+        new (): HTMLDsTagElement;
     };
-    interface HTMLBalTagGroupElement extends Components.BalTagGroup, HTMLStencilElement {
+    interface HTMLDsTagGroupElement extends Components.DsTagGroup, HTMLStencilElement {
     }
-    var HTMLBalTagGroupElement: {
-        prototype: HTMLBalTagGroupElement;
-        new (): HTMLBalTagGroupElement;
+    var HTMLDsTagGroupElement: {
+        prototype: HTMLDsTagGroupElement;
+        new (): HTMLDsTagGroupElement;
     };
-    interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
+    interface HTMLDsTextElement extends Components.DsText, HTMLStencilElement {
     }
-    var HTMLBalTextElement: {
-        prototype: HTMLBalTextElement;
-        new (): HTMLBalTextElement;
+    var HTMLDsTextElement: {
+        prototype: HTMLDsTextElement;
+        new (): HTMLDsTextElement;
     };
-    interface HTMLBalToastElementEventMap {
+    interface HTMLDsToastElementEventMap {
         "dsCloseClick": DS.ToastCloseClickDetail;
         "dsActionClick": DS.ToastActionClickDetail;
         "dsDidLoad": void;
         "dsDidPause": void;
         "dsDidResume": void;
     }
-    interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsToastElement extends Components.DsToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsToastElementEventMap>(type: K, listener: (this: HTMLDsToastElement, ev: DsToastCustomEvent<HTMLDsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsToastElementEventMap>(type: K, listener: (this: HTMLDsToastElement, ev: DsToastCustomEvent<HTMLDsToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLBalToastElement: {
-        prototype: HTMLBalToastElement;
-        new (): HTMLBalToastElement;
+    var HTMLDsToastElement: {
+        prototype: HTMLDsToastElement;
+        new (): HTMLDsToastElement;
     };
     interface HTMLElementTagNameMap {
-        "bal-accordion": HTMLBalAccordionElement;
-        "bal-alert-container": HTMLBalAlertContainerElement;
-        "bal-app": HTMLBalAppElement;
-        "bal-badge": HTMLBalBadgeElement;
-        "bal-button": HTMLBalButtonElement;
-        "bal-button-group": HTMLBalButtonGroupElement;
-        "bal-card": HTMLBalCardElement;
-        "bal-card-actions": HTMLBalCardActionsElement;
-        "bal-card-content": HTMLBalCardContentElement;
-        "bal-card-header": HTMLBalCardHeaderElement;
-        "bal-card-subtitle": HTMLBalCardSubtitleElement;
-        "bal-card-title": HTMLBalCardTitleElement;
-        "bal-check": HTMLBalCheckElement;
-        "bal-close": HTMLBalCloseElement;
-        "bal-content": HTMLBalContentElement;
-        "bal-divider": HTMLBalDividerElement;
-        "bal-doc-app": HTMLBalDocAppElement;
-        "bal-heading": HTMLBalHeadingElement;
-        "bal-icon": HTMLBalIconElement;
-        "bal-item": HTMLBalItemElement;
-        "bal-label": HTMLBalLabelElement;
-        "bal-list": HTMLBalListElement;
-        "bal-logo": HTMLBalLogoElement;
-        "bal-notification": HTMLBalNotificationElement;
-        "bal-shape": HTMLBalShapeElement;
-        "bal-snackbar": HTMLBalSnackbarElement;
-        "bal-spinner": HTMLBalSpinnerElement;
-        "bal-stack": HTMLBalStackElement;
-        "bal-switch": HTMLBalSwitchElement;
-        "bal-tag": HTMLBalTagElement;
-        "bal-tag-group": HTMLBalTagGroupElement;
-        "bal-text": HTMLBalTextElement;
-        "bal-toast": HTMLBalToastElement;
+        "ds-accordion": HTMLDsAccordionElement;
+        "ds-alert-container": HTMLDsAlertContainerElement;
+        "ds-app": HTMLDsAppElement;
+        "ds-badge": HTMLDsBadgeElement;
+        "ds-button": HTMLDsButtonElement;
+        "ds-button-group": HTMLDsButtonGroupElement;
+        "ds-card": HTMLDsCardElement;
+        "ds-card-actions": HTMLDsCardActionsElement;
+        "ds-card-content": HTMLDsCardContentElement;
+        "ds-card-header": HTMLDsCardHeaderElement;
+        "ds-card-subtitle": HTMLDsCardSubtitleElement;
+        "ds-card-title": HTMLDsCardTitleElement;
+        "ds-check": HTMLDsCheckElement;
+        "ds-close": HTMLDsCloseElement;
+        "ds-content": HTMLDsContentElement;
+        "ds-divider": HTMLDsDividerElement;
+        "ds-doc-app": HTMLDsDocAppElement;
+        "ds-heading": HTMLDsHeadingElement;
+        "ds-icon": HTMLDsIconElement;
+        "ds-item": HTMLDsItemElement;
+        "ds-label": HTMLDsLabelElement;
+        "ds-list": HTMLDsListElement;
+        "ds-logo": HTMLDsLogoElement;
+        "ds-notification": HTMLDsNotificationElement;
+        "ds-shape": HTMLDsShapeElement;
+        "ds-snackbar": HTMLDsSnackbarElement;
+        "ds-spinner": HTMLDsSpinnerElement;
+        "ds-stack": HTMLDsStackElement;
+        "ds-switch": HTMLDsSwitchElement;
+        "ds-tag": HTMLDsTagElement;
+        "ds-tag-group": HTMLDsTagGroupElement;
+        "ds-text": HTMLDsTextElement;
+        "ds-toast": HTMLDsToastElement;
     }
 }
 declare namespace LocalJSX {
-    interface BalAccordion {
+    interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
           * @default false
@@ -1603,15 +1603,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion is closed.
          */
-        "onDsClosed"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsClosed"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onDsOpened"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsOpened"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsToggle"?: (event: BalAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsToggle"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -1631,7 +1631,7 @@ declare namespace LocalJSX {
          */
         "summaryVisualLevel"?: DS.AccordionSummaryLevel;
     }
-    interface BalAlertContainer {
+    interface DsAlertContainer {
         /**
           * @default false
          */
@@ -1642,7 +1642,7 @@ declare namespace LocalJSX {
          */
         "type"?: AlertType;
     }
-    interface BalApp {
+    interface DsApp {
         /**
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
           * @default true
@@ -1651,13 +1651,13 @@ declare namespace LocalJSX {
         /**
           * Emitted when app is ready and painted.
          */
-        "onDsAppReady"?: (event: BalAppCustomEvent<void>) => void;
+        "onDsAppReady"?: (event: DsAppCustomEvent<void>) => void;
         /**
           * @default false
          */
         "ready"?: boolean;
     }
-    interface BalBadge {
+    interface DsBadge {
         /**
           * Define the color for the badge.
           * @default ''
@@ -1683,7 +1683,7 @@ declare namespace LocalJSX {
          */
         "size"?: DS.BadgeSize;
     }
-    interface BalButton {
+    interface DsButton {
         /**
           * A11y attributes for the native button element.
           * @default undefined
@@ -1786,23 +1786,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onDsBlur"?: (event: BalButtonCustomEvent<DS.ButtonBlurDetail>) => void;
+        "onDsBlur"?: (event: DsButtonCustomEvent<DS.ButtonBlurDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsClick"?: (event: BalButtonCustomEvent<DS.ButtonClickDetail>) => void;
+        "onDsClick"?: (event: DsButtonCustomEvent<DS.ButtonClickDetail>) => void;
         /**
           * Emitted when the button has been  rendered.
          */
-        "onDsDidRender"?: (event: BalButtonCustomEvent<DS.ButtonDidRenderDetail>) => void;
+        "onDsDidRender"?: (event: DsButtonCustomEvent<DS.ButtonDidRenderDetail>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onDsFocus"?: (event: BalButtonCustomEvent<DS.ButtonFocusDetail>) => void;
+        "onDsFocus"?: (event: DsButtonCustomEvent<DS.ButtonFocusDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsNavigate"?: (event: BalButtonCustomEvent<DS.ButtonNavigateDetail>) => void;
+        "onDsNavigate"?: (event: DsButtonCustomEvent<DS.ButtonNavigateDetail>) => void;
         /**
           * If `true` the button is outlined
           * @default false
@@ -1842,7 +1842,7 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
-    interface BalButtonGroup {
+    interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -1863,7 +1863,7 @@ declare namespace LocalJSX {
          */
         "reverse"?: boolean;
     }
-    interface BalCard {
+    interface DsCard {
         /**
           * Defines the text alignment of the card content.
          */
@@ -1931,21 +1931,21 @@ declare namespace LocalJSX {
          */
         "tile"?: boolean;
     }
-    interface BalCardActions {
+    interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
          */
         "align"?: DS.CardActionsAlignment;
     }
-    interface BalCardContent {
+    interface DsCardContent {
     }
-    interface BalCardHeader {
+    interface DsCardHeader {
         /**
           * @default 'row'
          */
         "direction"?: DS.CardHeaderDirection;
     }
-    interface BalCardSubtitle {
+    interface DsCardSubtitle {
         /**
           * If `true` the card text color is bold.
           * @default false
@@ -1962,7 +1962,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
     }
-    interface BalCardTitle {
+    interface DsCardTitle {
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -1978,7 +1978,7 @@ declare namespace LocalJSX {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface BalCheck {
+    interface DsCheck {
         /**
           * If `true`, the checkbox is selected.
           * @default false
@@ -2008,7 +2008,7 @@ declare namespace LocalJSX {
          */
         "pressed"?: boolean;
     }
-    interface BalClose {
+    interface DsClose {
         /**
           * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
           * @default false
@@ -2033,7 +2033,7 @@ declare namespace LocalJSX {
          */
         "size"?: DS.CloseSize;
     }
-    interface BalContent {
+    interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
@@ -2056,7 +2056,7 @@ declare namespace LocalJSX {
          */
         "textAlign"?: DS.ContentTextAlignment;
     }
-    interface BalDivider {
+    interface DsDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
@@ -2078,7 +2078,7 @@ declare namespace LocalJSX {
          */
         "space"?: DS.DividerSpace;
     }
-    interface BalDocApp {
+    interface DsDocApp {
         /**
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
           * @default true
@@ -2111,7 +2111,7 @@ declare namespace LocalJSX {
          */
         "stickyFooter"?: boolean;
     }
-    interface BalHeading {
+    interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
          */
@@ -2155,7 +2155,7 @@ declare namespace LocalJSX {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface BalIcon {
+    interface DsIcon {
         /**
           * The theme type of the button.
          */
@@ -2217,7 +2217,7 @@ declare namespace LocalJSX {
          */
         "turn"?: boolean;
     }
-    interface BalItem {
+    interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -2262,19 +2262,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion is closed.
          */
-        "onDsAccordionClosed"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionClosed"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onDsAccordionOpened"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionOpened"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsAccordionToggle"?: (event: BalItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionToggle"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsClick"?: (event: BalItemCustomEvent<DS.ButtonClickDetail>) => void;
+        "onDsClick"?: (event: DsItemCustomEvent<DS.ButtonClickDetail>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -2289,7 +2289,7 @@ declare namespace LocalJSX {
          */
         "variant"?: 'link' | 'button' | 'accordion' | 'default';
     }
-    interface BalLabel {
+    interface DsLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2338,13 +2338,13 @@ declare namespace LocalJSX {
          */
         "valid"?: boolean;
     }
-    interface BalList {
+    interface DsList {
         /**
           * @default false
          */
         "ordered"?: boolean;
     }
-    interface BalLogo {
+    interface DsLogo {
         /**
           * Defines if the animation should be active
           * @default false
@@ -2366,7 +2366,7 @@ declare namespace LocalJSX {
          */
         "size"?: DS.LogoSize;
     }
-    interface BalNotification {
+    interface DsNotification {
         /**
           * If `true` the notification will be displayed as an alert, otherwise as a status message.
           * @default false
@@ -2397,17 +2397,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: BalNotificationCustomEvent<DS.NotificationCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsNotificationCustomEvent<DS.NotificationCloseClickDetail>) => void;
         /**
           * Emitted when the component has loaded.
          */
-        "onDsDidLoad"?: (event: BalNotificationCustomEvent<void>) => void;
+        "onDsDidLoad"?: (event: DsNotificationCustomEvent<void>) => void;
         /**
           * Defines the size of the notification, small, medium or large.
          */
         "size"?: DS.NotificationSize;
     }
-    interface BalShape {
+    interface DsShape {
         /**
           * The shape color
           * @default 'green'
@@ -2424,7 +2424,7 @@ declare namespace LocalJSX {
          */
         "variation"?: DS.ShapeVariation;
     }
-    interface BalSnackbar {
+    interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
          */
@@ -2478,12 +2478,12 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onDsActionClick"?: (event: BalSnackbarCustomEvent<DS.SnackbarActionClickDetail>) => void;
+        "onDsActionClick"?: (event: DsSnackbarCustomEvent<DS.SnackbarActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: BalSnackbarCustomEvent<DS.SnackbarCloseClickDetail>) => void;
-        "onDsDidLoad"?: (event: BalSnackbarCustomEvent<void>) => void;
+        "onDsCloseClick"?: (event: DsSnackbarCustomEvent<DS.SnackbarCloseClickDetail>) => void;
+        "onDsDidLoad"?: (event: DsSnackbarCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
          */
@@ -2493,7 +2493,7 @@ declare namespace LocalJSX {
          */
         "visible"?: boolean;
     }
-    interface BalSpinner {
+    interface DsSpinner {
         /**
           * Defines the color of the spinner.
           * @default 'blue'
@@ -2525,7 +2525,7 @@ declare namespace LocalJSX {
          */
         "variation"?: DS.SpinnerVariation;
     }
-    interface BalStack {
+    interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
@@ -2575,7 +2575,7 @@ declare namespace LocalJSX {
          */
         "useWrap"?: boolean;
     }
-    interface BalSwitch {
+    interface DsSwitch {
         /**
           * If `true`, the checkbox is selected.
           * @default false
@@ -2600,7 +2600,7 @@ declare namespace LocalJSX {
          */
         "pressed"?: boolean;
     }
-    interface BalTag {
+    interface DsTag {
         /**
           * The theme type of the tag.
           * @default false
@@ -2623,7 +2623,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input got clicked.
          */
-        "onDsCloseClick"?: (event: BalTagCustomEvent<DS.TagCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsTagCustomEvent<DS.TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the bal-card.
          */
@@ -2637,9 +2637,9 @@ declare namespace LocalJSX {
          */
         "size"?: DS.TagSize;
     }
-    interface BalTagGroup {
+    interface DsTagGroup {
     }
-    interface BalText {
+    interface DsText {
         /**
           * If `true` the component gets a invalid style.
          */
@@ -2710,7 +2710,7 @@ declare namespace LocalJSX {
          */
         "subtitle"?: boolean;
     }
-    interface BalToast {
+    interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
          */
@@ -2768,14 +2768,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onDsActionClick"?: (event: BalToastCustomEvent<DS.ToastActionClickDetail>) => void;
+        "onDsActionClick"?: (event: DsToastCustomEvent<DS.ToastActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: BalToastCustomEvent<DS.ToastCloseClickDetail>) => void;
-        "onDsDidLoad"?: (event: BalToastCustomEvent<void>) => void;
-        "onDsDidPause"?: (event: BalToastCustomEvent<void>) => void;
-        "onDsDidResume"?: (event: BalToastCustomEvent<void>) => void;
+        "onDsCloseClick"?: (event: DsToastCustomEvent<DS.ToastCloseClickDetail>) => void;
+        "onDsDidLoad"?: (event: DsToastCustomEvent<void>) => void;
+        "onDsDidPause"?: (event: DsToastCustomEvent<void>) => void;
+        "onDsDidResume"?: (event: DsToastCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
          */
@@ -2786,78 +2786,78 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface IntrinsicElements {
-        "bal-accordion": BalAccordion;
-        "bal-alert-container": BalAlertContainer;
-        "bal-app": BalApp;
-        "bal-badge": BalBadge;
-        "bal-button": BalButton;
-        "bal-button-group": BalButtonGroup;
-        "bal-card": BalCard;
-        "bal-card-actions": BalCardActions;
-        "bal-card-content": BalCardContent;
-        "bal-card-header": BalCardHeader;
-        "bal-card-subtitle": BalCardSubtitle;
-        "bal-card-title": BalCardTitle;
-        "bal-check": BalCheck;
-        "bal-close": BalClose;
-        "bal-content": BalContent;
-        "bal-divider": BalDivider;
-        "bal-doc-app": BalDocApp;
-        "bal-heading": BalHeading;
-        "bal-icon": BalIcon;
-        "bal-item": BalItem;
-        "bal-label": BalLabel;
-        "bal-list": BalList;
-        "bal-logo": BalLogo;
-        "bal-notification": BalNotification;
-        "bal-shape": BalShape;
-        "bal-snackbar": BalSnackbar;
-        "bal-spinner": BalSpinner;
-        "bal-stack": BalStack;
-        "bal-switch": BalSwitch;
-        "bal-tag": BalTag;
-        "bal-tag-group": BalTagGroup;
-        "bal-text": BalText;
-        "bal-toast": BalToast;
+        "ds-accordion": DsAccordion;
+        "ds-alert-container": DsAlertContainer;
+        "ds-app": DsApp;
+        "ds-badge": DsBadge;
+        "ds-button": DsButton;
+        "ds-button-group": DsButtonGroup;
+        "ds-card": DsCard;
+        "ds-card-actions": DsCardActions;
+        "ds-card-content": DsCardContent;
+        "ds-card-header": DsCardHeader;
+        "ds-card-subtitle": DsCardSubtitle;
+        "ds-card-title": DsCardTitle;
+        "ds-check": DsCheck;
+        "ds-close": DsClose;
+        "ds-content": DsContent;
+        "ds-divider": DsDivider;
+        "ds-doc-app": DsDocApp;
+        "ds-heading": DsHeading;
+        "ds-icon": DsIcon;
+        "ds-item": DsItem;
+        "ds-label": DsLabel;
+        "ds-list": DsList;
+        "ds-logo": DsLogo;
+        "ds-notification": DsNotification;
+        "ds-shape": DsShape;
+        "ds-snackbar": DsSnackbar;
+        "ds-spinner": DsSpinner;
+        "ds-stack": DsStack;
+        "ds-switch": DsSwitch;
+        "ds-tag": DsTag;
+        "ds-tag-group": DsTagGroup;
+        "ds-text": DsText;
+        "ds-toast": DsToast;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
-            "bal-alert-container": LocalJSX.BalAlertContainer & JSXBase.HTMLAttributes<HTMLBalAlertContainerElement>;
-            "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
-            "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
-            "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
-            "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
-            "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
-            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
-            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
-            "bal-card-header": LocalJSX.BalCardHeader & JSXBase.HTMLAttributes<HTMLBalCardHeaderElement>;
-            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
-            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
-            "bal-check": LocalJSX.BalCheck & JSXBase.HTMLAttributes<HTMLBalCheckElement>;
-            "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
-            "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
-            "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
-            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
-            "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
-            "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
-            "bal-item": LocalJSX.BalItem & JSXBase.HTMLAttributes<HTMLBalItemElement>;
-            "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
-            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
-            "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
-            "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
-            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
-            "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
-            "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
-            "bal-switch": LocalJSX.BalSwitch & JSXBase.HTMLAttributes<HTMLBalSwitchElement>;
-            "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
-            "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
-            "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
-            "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
+            "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
+            "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
+            "ds-app": LocalJSX.DsApp & JSXBase.HTMLAttributes<HTMLDsAppElement>;
+            "ds-badge": LocalJSX.DsBadge & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
+            "ds-button": LocalJSX.DsButton & JSXBase.HTMLAttributes<HTMLDsButtonElement>;
+            "ds-button-group": LocalJSX.DsButtonGroup & JSXBase.HTMLAttributes<HTMLDsButtonGroupElement>;
+            "ds-card": LocalJSX.DsCard & JSXBase.HTMLAttributes<HTMLDsCardElement>;
+            "ds-card-actions": LocalJSX.DsCardActions & JSXBase.HTMLAttributes<HTMLDsCardActionsElement>;
+            "ds-card-content": LocalJSX.DsCardContent & JSXBase.HTMLAttributes<HTMLDsCardContentElement>;
+            "ds-card-header": LocalJSX.DsCardHeader & JSXBase.HTMLAttributes<HTMLDsCardHeaderElement>;
+            "ds-card-subtitle": LocalJSX.DsCardSubtitle & JSXBase.HTMLAttributes<HTMLDsCardSubtitleElement>;
+            "ds-card-title": LocalJSX.DsCardTitle & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
+            "ds-check": LocalJSX.DsCheck & JSXBase.HTMLAttributes<HTMLDsCheckElement>;
+            "ds-close": LocalJSX.DsClose & JSXBase.HTMLAttributes<HTMLDsCloseElement>;
+            "ds-content": LocalJSX.DsContent & JSXBase.HTMLAttributes<HTMLDsContentElement>;
+            "ds-divider": LocalJSX.DsDivider & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
+            "ds-doc-app": LocalJSX.DsDocApp & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
+            "ds-heading": LocalJSX.DsHeading & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
+            "ds-icon": LocalJSX.DsIcon & JSXBase.HTMLAttributes<HTMLDsIconElement>;
+            "ds-item": LocalJSX.DsItem & JSXBase.HTMLAttributes<HTMLDsItemElement>;
+            "ds-label": LocalJSX.DsLabel & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
+            "ds-list": LocalJSX.DsList & JSXBase.HTMLAttributes<HTMLDsListElement>;
+            "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
+            "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
+            "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
+            "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
+            "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
+            "ds-stack": LocalJSX.DsStack & JSXBase.HTMLAttributes<HTMLDsStackElement>;
+            "ds-switch": LocalJSX.DsSwitch & JSXBase.HTMLAttributes<HTMLDsSwitchElement>;
+            "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
+            "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
+            "ds-text": LocalJSX.DsText & JSXBase.HTMLAttributes<HTMLDsTextElement>;
+            "ds-toast": LocalJSX.DsToast & JSXBase.HTMLAttributes<HTMLDsToastElement>;
         }
     }
 }

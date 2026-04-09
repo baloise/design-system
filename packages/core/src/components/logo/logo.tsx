@@ -23,7 +23,7 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
 
   log!: LogInstance
 
-  @Logger('bal-logo')
+  @Logger('ds-logo')
   createLogger(log: LogInstance) {
     this.log = log
   }
