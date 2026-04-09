@@ -217,7 +217,7 @@ export class Button implements ComponentInterface {
       'aria-haspopup',
     ])
 
-    if (this.el.hasAttribute('bal-popup') && !this.a11yHaspopup) {
+    if (this.el.hasAttribute('ds-popup') && !this.a11yHaspopup) {
       this.a11yHaspopup = 'true'
     }
   }

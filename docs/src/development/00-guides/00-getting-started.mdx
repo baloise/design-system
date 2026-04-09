@@ -152,22 +152,22 @@ export class AppComponent {}
 
 **app.component.html**
 
-Add the `bal-app` to your `app.component.html` root element.
+Add the `ds-app` to your `app.component.html` root element.
 
 ```html
-<bal-app class="has-sticky-footer">
+<ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
   <main class="container">
     <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
+    <ds-heading>Hello World!</ds-heading>
+    <ds-button>Button</ds-button>
   </main>
-  <bal-footer>
+  <ds-footer>
     <!-- Footer content -->
-  </bal-footer>
-</bal-app>
+  </ds-footer>
+</ds-app>
 ```
 
 ### Module Based
@@ -204,25 +204,25 @@ export class AppModule {}
 
 **app.component.html**
 
-Add the `bal-app` to your `app.component.html` root element.
+Add the `ds-app` to your `app.component.html` root element.
 
 <Code
   language="html"
   noPreview
   code={`
-<bal-app class="has-sticky-footer">
+<ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
   <main class="container">
     <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
+    <ds-heading>Hello World!</ds-heading>
+    <ds-button>Button</ds-button>
   </main>
-  <bal-footer>
+  <ds-footer>
     <!-- Footer content -->
-  </bal-footer>
-</bal-app>
+  </ds-footer>
+</ds-app>
 `}
 />
 
@@ -247,7 +247,7 @@ npm add -E @baloise/ds-core
 
 After that create a `index.html` file and add the following 2 references to your `<head></head>`.
 
-Add the `bal-app` to your root element.
+Add the `ds-app` to your root element.
 
 ```html
 <!doctype html>
@@ -265,12 +265,12 @@ Add the `bal-app` to your root element.
     <script nomodule src="node_modules/@baloise/ds-core/dist/design-system/design-system.js"></script>
   </head>
   <body>
-    <bal-app>
+    <ds-app>
       <main class="container mt-normal">
-        <bal-heading>Hello World</bal-heading>
-        <bal-button>Button</bal-button>
+        <ds-heading>Hello World</ds-heading>
+        <ds-button>Button</ds-button>
       </main>
-    </bal-app>
+    </ds-app>
   </body>
 </html>
 ```
@@ -327,29 +327,29 @@ Here is how you can integrate it into your project.
     ></script>
   </head>
   <body>
-    <bal-app class="has-sticky-footer">
+    <ds-app class="has-sticky-footer">
       <header>
-        <bal-navbar>
-          <bal-navbar-brand href="/" target="_blank">Design System</bal-navbar-brand>
-        </bal-navbar>
+        <ds-navbar>
+          <ds-navbar-brand href="/" target="_blank">Design System</ds-navbar-brand>
+        </ds-navbar>
       </header>
-      <bal-stage color="green" size="small">
-        <bal-stage-body>
-          <bal-heading>Welcome to the</bal-heading>
-          <bal-heading subtitle>Baloise Design System</bal-heading>
-        </bal-stage-body>
-      </bal-stage>
+      <ds-stage color="green" size="small">
+        <ds-stage-body>
+          <ds-heading>Welcome to the</ds-heading>
+          <ds-heading subtitle>Baloise Design System</ds-heading>
+        </ds-stage-body>
+      </ds-stage>
       <main class="container mt-xx-large">
         <p>
           The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.
         </p>
-        <bal-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</bal-button>
+        <ds-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</ds-button>
       </main>
-      <bal-footer>
+      <ds-footer>
         <!-- Footer content -->
-      </bal-footer>
-    </bal-app>
+      </ds-footer>
+    </ds-app>
   </body>
 </html>
 ```

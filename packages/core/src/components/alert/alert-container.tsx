@@ -107,7 +107,7 @@ export class AlertContainer implements ComponentInterface {
 
   render() {
     const visibleAlerts = this.alerts.slice(0, this.maxVisibleItems)
-    const AlertElement = this.type === 'toast' ? 'bal-toast' : 'bal-snackbar'
+    const AlertElement = this.type === 'toast' ? 'ds-toast' : 'ds-snackbar'
 
     return (
       <Host

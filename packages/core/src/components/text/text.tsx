@@ -141,7 +141,6 @@ export class Text implements ComponentInterface, ElementStateInfo {
         <Text
           id="text"
           part="text"
-          data-testid="bal-text"
           class={{
             [`is-${this.align}`]: !!this.align,
           }}
