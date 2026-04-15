@@ -92,11 +92,10 @@ export const config: Config = {
      */
     initializeNextTick: !IS_DS_DEVELOPMENT, // true,
     /**
-     * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
-     * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
-     * the default behavior (slated for a future Stencil major version).
+     * This option enables all current and future slot-related fixes.
+     * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes}
      */
-    experimentalScopedSlotChanges: !IS_DS_DEVELOPMENT, // true,,
+    experimentalSlotFixes: true,
   },
   outputTargets: [
     ...(!IS_DS_DEVELOPMENT

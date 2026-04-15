@@ -6133,35 +6133,6 @@
           "setter": false
         },
         {
-          "name": "clickable",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "clickable",
-          "reflectToAttr": false,
-          "docs": "If `true` the input gets a clickable cursor style",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "color",
           "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
@@ -6377,6 +6348,32 @@
           "setter": false
         },
         {
+          "name": "invalidText",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "label",
           "type": "string | undefined",
           "complexType": {
@@ -6427,6 +6424,68 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "mask",
+          "type": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
+          "complexType": {
+            "original": "DS.InputMask",
+            "resolved": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "mask",
+          "reflectToAttr": false,
+          "docs": "Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.\nFormatting for 'contract-number': '99/1.234.567-1'\nFormatting for 'basic-contract-number': '99/1.234.567'\nFormatting for 'claim-number': ('73/001217/16.9')\nFormatting for 'offer-number': ('98/7.654.321')\nFormatting for 'be-enterprise-number': ('1234.567.890')\nFormatting for 'be-iban': ('BE68 5390 0754 7034')",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "basic-contract-number",
+              "type": "string"
+            },
+            {
+              "value": "be-enterprise-number",
+              "type": "string"
+            },
+            {
+              "value": "be-iban",
+              "type": "string"
+            },
+            {
+              "value": "claim-number",
+              "type": "string"
+            },
+            {
+              "value": "contract-number",
+              "type": "string"
+            },
+            {
+              "value": "offer-number",
+              "type": "string"
+            },
+            {
+              "value": "vehicle-registration-number",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -6756,44 +6815,6 @@
           "setter": false
         },
         {
-          "name": "textAlign",
-          "type": "\"center\" | \"left\" | \"right\"",
-          "complexType": {
-            "original": "'center' | 'left' | 'right'",
-            "resolved": "\"center\" | \"left\" | \"right\"",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "text-align",
-          "reflectToAttr": false,
-          "docs": "Defines the text align of the input value.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'left'"
-            }
-          ],
-          "default": "'left'",
-          "values": [
-            {
-              "value": "center",
-              "type": "string"
-            },
-            {
-              "value": "left",
-              "type": "string"
-            },
-            {
-              "value": "right",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "type",
           "type": "\"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"image\" | \"month\" | \"number\" | \"password\" | \"range\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
           "complexType": {
@@ -7008,6 +7029,25 @@
           "cancelable": true,
           "composed": true,
           "docs": "Emitted when the input value has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.InputClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has clicked",
           "docsTags": []
         },
         {
@@ -10757,125 +10797,6 @@
             }
           ],
           "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "valueA",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "value-a",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "valueB",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string | undefined",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "value-b",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "valueC",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "value-c",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "valueD",
-          "type": "null | string",
-          "complexType": {
-            "original": "string | null",
-            "resolved": "null | string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "value-d",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "null"
-            }
-          ],
-          "default": "null",
-          "values": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
