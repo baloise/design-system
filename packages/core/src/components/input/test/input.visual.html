@@ -1,0 +1,118 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-input label="Label 1"></ds-input>
+        <ds-input label="Label 1" description="Description 1"></ds-input>
+        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder"></ds-input>
+        <ds-input label="Label 3" description="Description 3" value="Value"></ds-input>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-input label="Label 1" description="Description 1" disabled></ds-input>
+        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder" disabled></ds-input>
+        <ds-input label="Label 3" description="Description 3" value="Value" disabled></ds-input>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-input label="Label 1" description="Description 1" invalid-text="Validation Error 1" invalid></ds-input>
+        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder" invalid-text="Validation Error 2" invalid></ds-input>
+        <ds-input label="Label 3" description="Description 3" value="Value" invalid-text="Validation Error 3" invalid></ds-input>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <ds-input label="Label 1" description="Description 1" color="success"></ds-input>
+        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder" color="success"></ds-input>
+        <ds-input label="Label 3" description="Description 3" value="Value" color="success"></ds-input>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <ds-input label="Label 1" description="Description 1" color="warning"></ds-input>
+        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder" color="warning"></ds-input>
+        <ds-input label="Label 3" description="Description 3" value="Value" color="warning"></ds-input>
+      </section>
+
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+        <ds-input label="Label 1" loading></ds-input>
+        <ds-input label="Label 2" loading disabled></ds-input>
+        <ds-input label="Label 2" loading invalid></ds-input>
+        <ds-input label="Label 2" loading color="success"></ds-input>
+        <ds-input label="Label 2" loading color="warning"></ds-input>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <ds-input
+          label="Label Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          description="Description Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          value="Description Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        ></ds-input>
+      </section>
+
+      <!-- Suffix -->
+      <section data-testid="suffix">
+        <span>Suffix</span>
+        <ds-input label="Label" suffix="CHF" value="100"></ds-input>
+        <ds-input label="Label" value="100">
+          <span slot="input-start" class="tag is-sm is-square">CHF</span>
+        </ds-input>
+        <ds-input label="Label" value="100">
+          <ds-button slot="input-end" size="sm">Click</ds-button>
+        </ds-input>
+      </section>
+
+      <!-- Number Type -->
+      <section data-testid="number-type">
+        <span>Number Type</span>
+          <ds-input type="number" label="Age"></ds-input>
+          <ds-input type="number" label="Age" value="30"></ds-input>
+        </form>
+      </section>
+
+      <!-- Form Reset -->
+      <section data-testid="form-reset">
+        <span>Form Reset</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-input required name="hero" label="Hero" value="Steve Rogers"></ds-input>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+
+      <!-- Formatter -->
+      <section data-testid="formatter">
+        <span>Formatter</span>
+          <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number"></ds-input>
+          <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number" value="123456"></ds-input>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

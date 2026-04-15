@@ -20,6 +20,12 @@
         "value": "var(--ds-text-color-hint)"
       },
       {
+        "class": "text-placeholder",
+        "css": "color: var(--ds-text-color-placeholder);",
+        "property": "color",
+        "value": "var(--ds-text-color-placeholder)"
+      },
+      {
         "class": "text-disabled",
         "css": "color: var(--ds-text-color-disabled);",
         "property": "color",

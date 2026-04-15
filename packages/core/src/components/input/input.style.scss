@@ -1,0 +1,33 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+
+$use-host: false !default;
+$name: input;
+$css-selector: ('.input');
+$host-selector: ('#input');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(input-family, var(--ds-input-family));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+
+
+// TODO: solve this with a class so that other input have the same effect
+ds-input + ds-input {
+  margin-top: 0.5rem;
+}
+

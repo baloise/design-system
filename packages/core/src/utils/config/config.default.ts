@@ -34,6 +34,7 @@ import {
   IconAudio,
   IconDownload,
   IconAlert,
+  IconAlertTriangle,
   IconBell,
   IconInformation,
 } from '../constants/icons.constant'
@@ -76,6 +77,7 @@ export const defaultIcons = {
   IconAudio,
   IconDownload,
   IconAlert,
+  IconAlertTriangle,
   IconBell,
   IconInformation,
 }

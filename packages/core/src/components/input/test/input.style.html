@@ -1,0 +1,60 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div>
+          <label for="input-1">Label 1</label>
+          <input type="text" class="input" id="input-1" aria-describedby="description-1" />
+          <span id="description-1">Description 1</span>
+        </div>
+        <input type="text" class="input" placeholder="Placeholder" />
+        <input type="text" class="input" value="Value" />
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <input type="text" class="input" disabled />
+        <input type="text" class="input" placeholder="Placeholder" disabled />
+        <input type="text" class="input" value="Value" disabled />
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <input type="text" class="input is-danger" />
+        <input type="text" class="input is-danger" placeholder="Placeholder" />
+        <input type="text" class="input is-danger" value="Value" />
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <input type="text" class="input is-success" />
+        <input type="text" class="input is-success" placeholder="Placeholder" />
+        <input type="text" class="input is-success" value="Value" />
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <input type="text" class="input is-warning" />
+        <input type="text" class="input is-warning" placeholder="Placeholder" />
+        <input type="text" class="input is-warning" value="Value" />
+      </section>
+    </main>
+  </body>
+</html>

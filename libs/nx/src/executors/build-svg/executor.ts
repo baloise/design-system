@@ -31,6 +31,7 @@ export default async function runSvgExecutor(options: BuildSvgExecutorSchema) {
             'IconBell',
             'IconInformation',
             'IconAlert',
+            'IconAlertTriangle',
             'IconFile',
             'IconPicture',
             'IconVideo',

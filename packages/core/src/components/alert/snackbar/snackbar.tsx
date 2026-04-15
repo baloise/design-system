@@ -12,7 +12,7 @@ import {
   Watch,
 } from '@stencil/core'
 import { DsBreakpointObserver, DsBreakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
-import { stopEventBubbling } from '../../../utils/form-input'
+import { stopEventBubbling } from '../../../utils/form-control'
 import { AlertComponent } from '../alert-container.interfaces'
 import { sanitizeSvg } from '../../../utils/svg'
 import { raf } from '../../../utils/helpers'

@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../utils/form-input'
+import { stopEventBubbling } from '../../../utils/form-control'
 import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'

@@ -176,10 +176,10 @@
         "value": "var(--ds-background-color-danger-darkest)"
       },
       {
-        "class": "bg-green-light-2",
-        "css": "background: var(--ds-background-color-green-light-2);",
+        "class": "bg-grey-lighter",
+        "css": "background: var(--ds-background-color-grey-lighter);",
         "property": "background",
-        "value": "var(--ds-background-color-green-light-2)"
+        "value": "var(--ds-background-color-grey-lighter)"
       },
       {
         "class": "bg-grey-light",

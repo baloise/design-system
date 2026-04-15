@@ -1,7 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 
 @forward '../button/button.style';
 
@@ -152,7 +150,6 @@
 }
 
 :host(:not(.is-button)[open]:not([open=' false '])) {
-  // @include attr.has(open) {
   #marker {
     transform: rotate(180deg);
   }

@@ -644,6 +644,161 @@ export namespace Components {
          */
         "turn": boolean;
     }
+    interface DsInput {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+          * @default 'off'
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete": DS.InputAutocomplete;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
+         */
+        "autocorrect": DS.InputAutocorrect;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus": boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": 'primary' | 'danger' | 'success' | 'warning';
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: DS.InputInputMode;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the input-end slot content.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'basic-contract-number': '99/1.234.567' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
+          * @default undefined
+         */
+        "mask"?: DS.InputMask;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength"?: number;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input` in `ds-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `ds-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+          * @default false
+         */
+        "spellcheck": boolean;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * Defines the type of the input (text, number, email ...).
+          * @default 'text'
+         */
+        "type": DS.InputInputType;
+        /**
+          * The value of the input.
+          * @default null
+         */
+        "value": string | null;
+    }
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
@@ -1192,6 +1347,10 @@ export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsButtonElement;
 }
+export interface DsInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputElement;
+}
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
@@ -1366,6 +1525,28 @@ declare global {
         prototype: HTMLDsIconElement;
         new (): HTMLDsIconElement;
     };
+    interface HTMLDsInputElementEventMap {
+        "dsBlur": DS.InputBlurDetail;
+        "dsKeyPress": DS.InputKeyPressDetail;
+        "dsFocus": DS.InputFocusDetail;
+        "dsClick": DS.InputClickDetail;
+        "dsInput": DS.InputInputDetail;
+        "dsChange": DS.InputChangeDetail;
+    }
+    interface HTMLDsInputElement extends Components.DsInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputElement: {
+        prototype: HTMLDsInputElement;
+        new (): HTMLDsInputElement;
+    };
     interface HTMLDsItemElementEventMap {
         "dsClick": DS.ButtonClickDetail;
         "dsAccordionToggle": DS.AccordionToggleDetail;
@@ -1535,6 +1716,7 @@ declare global {
         "ds-doc-app": HTMLDsDocAppElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-icon": HTMLDsIconElement;
+        "ds-input": HTMLDsInputElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
@@ -2217,6 +2399,177 @@ declare namespace LocalJSX {
          */
         "turn"?: boolean;
     }
+    interface DsInput {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+          * @default 'off'
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete"?: DS.InputAutocomplete;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
+         */
+        "autocorrect"?: DS.InputAutocorrect;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: DS.InputInputMode;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the input-end slot content.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'basic-contract-number': '99/1.234.567' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
+          * @default undefined
+         */
+        "mask"?: DS.InputMask;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength"?: number;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsBlur"?: (event: DsInputCustomEvent<DS.InputBlurDetail>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onDsChange"?: (event: DsInputCustomEvent<DS.InputChangeDetail>) => void;
+        /**
+          * Emitted when the input has clicked
+         */
+        "onDsClick"?: (event: DsInputCustomEvent<DS.InputClickDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsInputCustomEvent<DS.InputFocusDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsInput"?: (event: DsInputCustomEvent<DS.InputInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onDsKeyPress"?: (event: DsInputCustomEvent<DS.InputKeyPressDetail>) => void;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+          * @default false
+         */
+        "spellcheck"?: boolean;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * Defines the type of the input (text, number, email ...).
+          * @default 'text'
+         */
+        "type"?: DS.InputInputType;
+        /**
+          * The value of the input.
+          * @default null
+         */
+        "value"?: string | null;
+    }
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
@@ -2805,6 +3158,7 @@ declare namespace LocalJSX {
         "ds-doc-app": DsDocApp;
         "ds-heading": DsHeading;
         "ds-icon": DsIcon;
+        "ds-input": DsInput;
         "ds-item": DsItem;
         "ds-label": DsLabel;
         "ds-list": DsList;
@@ -2844,6 +3198,7 @@ declare module "@stencil/core" {
             "ds-doc-app": LocalJSX.DsDocApp & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
             "ds-heading": LocalJSX.DsHeading & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
             "ds-icon": LocalJSX.DsIcon & JSXBase.HTMLAttributes<HTMLDsIconElement>;
+            "ds-input": LocalJSX.DsInput & JSXBase.HTMLAttributes<HTMLDsInputElement>;
             "ds-item": LocalJSX.DsItem & JSXBase.HTMLAttributes<HTMLDsItemElement>;
             "ds-label": LocalJSX.DsLabel & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
             "ds-list": LocalJSX.DsList & JSXBase.HTMLAttributes<HTMLDsListElement>;

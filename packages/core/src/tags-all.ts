@@ -17,6 +17,7 @@ export const tags = [
   "ds-divider",
   "ds-heading",
   "ds-icon",
+  "ds-input",
   "ds-item",
   "ds-label",
   "ds-list",

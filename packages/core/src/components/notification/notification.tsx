@@ -10,7 +10,7 @@ import {
   ComponentInterface,
   State,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../utils/form-input'
+import { stopEventBubbling } from '../../utils/form-control'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 

@@ -6,24 +6,25 @@
 
 # TODO's
 
-| Item                       | Description                                                           | Status |
-| -------------------------- | --------------------------------------------------------------------- | ------ |
-| Accordion                  | Use new native accordion API                                          | ✅     |
-| T-Shirt Sizes              | Change to 2xl and get rid off normal and use medium instead           | ✅     |
-| Outline Shadow             | Define it as a variable to overide the color                          | ✅     |
-| Playwright                 | Replace all Cypess test with Playwright                               | ✅     |
-| Default vs Base            | Use Default for states with hover and active                          | ✅     |
-| FIGMA API                  | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
-| Modal                      | Use new native dialog API                                             | ⬜     |
-| Popup                      | Use new native popup API                                              | ⬜     |
-| Sandbox                    | Use new sandbox api                                                   | ⬜     |
-| Brand Icons                | Update brand icons                                                    | ⬜     |
-| Brand Icons API            | Create a task to automate the update                                  | ⬜     |
-| Gap Analyses Material      | Check Components use cases                                            | ⬜     |
-| NPM Updates                | Check Vurnabilites                                                    | ⬜     |
-| UI Icons change base color | Change base color of svg to primary and not black                     | ⬜     |
-| Anuglar React              | Add frameworks back after migrating too shadow dom                    | ⬜     |
-| FullWidth,Expanded,Wide    | Stick with one nameing                                                | ⬜     |
+| Item                             | Description                                                           | Status |
+| -------------------------------- | --------------------------------------------------------------------- | ------ |
+| Accordion                        | Use new native accordion API                                          | ✅     |
+| T-Shirt Sizes                    | Change to 2xl and get rid off normal and use medium instead           | ✅     |
+| Outline Shadow                   | Define it as a variable to overide the color                          | ✅     |
+| Playwright                       | Replace all Cypess test with Playwright                               | ✅     |
+| Default vs Base                  | Use Default for states with hover and active                          | ✅     |
+| FIGMA API                        | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
+| Modal                            | Use new native dialog API                                             | ⬜     |
+| Popup                            | Use new native popup API                                              | ⬜     |
+| Sandbox                          | Use new sandbox api                                                   | ⬜     |
+| Brand Icons                      | Update brand icons                                                    | ⬜     |
+| Brand Icons API                  | Create a task to automate the update                                  | ⬜     |
+| Gap Analyses Material            | Check Components use cases                                            | ⬜     |
+| NPM Updates                      | Check Vurnabilites                                                    | ⬜     |
+| UI Icons change base color       | Change base color of svg to primary and not black                     | ⬜     |
+| Anuglar React                    | Add frameworks back after migrating too shadow dom                    | ⬜     |
+| FullWidth,Expanded,Wide          | Stick with one nameing                                                | ⬜     |
+| Check min height of 48px to 40px | Verify if we can reduce the standard height 0f 48px to 40px           | ⬜     |
 
 ## components
 
@@ -77,8 +78,8 @@ Checklist
 
 | Component           | Recommended Type | Shadow DOM | Docs | Design Tokens |
 | ------------------- | ---------------- | ---------- | ---- | ------------- |
-| data                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | input               | Hybrid           | ⬜         | ⬜   | ⬜            |
+| data                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
 | popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
