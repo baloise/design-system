@@ -16,28 +16,13 @@ import isNil from 'lodash/isNil'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
-import { AriaForm, AriaFormLinking, defaultDsAriaForm } from '../../utils/form'
 import { FormControlInterface, FormControl, stopEventBubbling } from '../../utils/form-control'
 import { debounceEvent } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import {
-  formatBeEnterpriseNumber,
-  formatBeIBAN,
-  formatClaim,
-  formatOffer,
-  formatPolicy,
-  formatVehicleRegistrationNumber,
-  MAX_LENGTH_BASIC_CONTRACT_NUMBER,
-  MAX_LENGTH_BE_ENTERPRISE_NUMBER,
-  MAX_LENGTH_BE_IBAN,
-  MAX_LENGTH_CLAIM_NUMBER,
-  MAX_LENGTH_CONTRACT_NUMBER,
-  MAX_LENGTH_OFFER_NUMBER,
-  MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER,
-} from './input-util'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
+
 
 @Component({
   tag: 'ds-input',
@@ -541,24 +526,9 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   }
 
   private onKeydown = (ev: KeyboardEvent) => {
-    // if (this.mask !== undefined && !isNil(ev) && !isCtrlOrCommandKey(ev)) {
-    //   let inputLength = 0
-    //   if (this.inputValue) {
-    //     inputLength = this.inputValue.length
-    //   }
-
-    //   if (
-    //     !(
-    //       this.getMaskAllowedKeys().includes(ev.key) ||
-    //       (this.mask === 'claim-number' &&
-    //         (ev.key === 'X' || ev.key === 'x') &&
-    //         inputLength >= MAX_LENGTH_CLAIM_NUMBER - 1)
-    //     )
-    //   ) {
-    //     // do not trigger next event -> on input
-    //     return stopEventBubbling(ev)
-    //   }
-    // }
+    if (this.mask !== undefined) {
+      return this.maskUtil.onKeydown(ev)
+    }
 
     if (this.allowedKeyPress && !isNil(ev) && !isCtrlOrCommandKey(ev)) {
       const regex = new RegExp('^' + this.allowedKeyPress + '$')
@@ -591,30 +561,12 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
    */
 
   render() {
-    let value = this.focused ? this.getRawValue() : this.getFormattedValue()
-    // if (this.mask !== undefined) {
-    //   switch (this.mask) {
-    //     case 'contract-number':
-    //     case 'basic-contract-number':
-    //       value = formatPolicy(value)
-    //       break
-    //     case 'claim-number':
-    //       value = formatClaim(value)
-    //       break
-    //     case 'offer-number':
-    //       value = formatOffer(value)
-    //       break
-    //     case 'be-enterprise-number':
-    //       value = formatBeEnterpriseNumber(value)
-    //       break
-    //     case 'be-iban':
-    //       value = formatBeIBAN(value)
-    //       break
-    //     case 'vehicle-registration-number':
-    //       value = formatVehicleRegistrationNumber(value)
-    //       break
-    //   }
-    // }
+    let value: string
+    if (this.mask) {
+      value = this.maskUtil.format(this.getRawValue()) ?? this.getRawValue()
+    } else {
+      value = this.focused ? this.getRawValue() : this.getFormattedValue()
+    }
 
     let inputProps = {}
     if (this.pattern) {
