@@ -23,7 +23,6 @@ import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
 
-
 @Component({
   tag: 'ds-input',
   styleUrl: 'input.host.scss',
@@ -521,10 +520,6 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   //   // }
   // }
 
-  private getMaskAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS]
-  }
-
   private onKeydown = (ev: KeyboardEvent) => {
     if (this.mask !== undefined) {
       return this.maskUtil.onKeydown(ev)
@@ -561,7 +556,7 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
    */
 
   render() {
-    let value: string
+    let value: string | null
     if (this.mask) {
       value = this.maskUtil.format(this.getRawValue()) ?? this.getRawValue()
     } else {
