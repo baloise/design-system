@@ -50,7 +50,7 @@ docs/src/components/number-input/
   formAssociated: true,
 })
 export class NumberInput
-  implements ComponentInterface, FormControlInterface<number | null, number | undefined>, Loggable
+  implements ComponentInterface, FormControlInterface<number | null>, Loggable
 ```
 
 ### FormControl Usage — Approach A (Partial)
@@ -73,7 +73,7 @@ export class NumberInput
 | Old | New |
 |---|---|
 | `@Prop({ mutable: true }) value?: number \| string = undefined` | `@Prop({ mutable: true, reflect: true }) value: number \| null = null` |
-| emits `number \| undefined` | emits `number \| undefined` (undefined = "no value" signal for events) |
+| emits `number \| undefined` | emits `number \| null` — consistent with the DS `null`-first pattern; `FormControlInterface<number \| null>` requires ReturnValue = Value |
 
 ### Props
 
@@ -97,8 +97,8 @@ These drive the display/format separation and are not exposed as props:
 ### Events
 
 ```ts
-@Event() dsInput!: EventEmitter<DS.NumberInputInputDetail>     // number | undefined
-@Event() dsChange!: EventEmitter<DS.NumberInputChangeDetail>   // number | undefined
+@Event() dsInput!: EventEmitter<DS.NumberInputInputDetail>     // number | null
+@Event() dsChange!: EventEmitter<DS.NumberInputChangeDetail>   // number | null
 @Event() dsBlur!: EventEmitter<DS.NumberInputBlurDetail>       // FocusEvent
 @Event() dsFocus!: EventEmitter<DS.NumberInputFocusDetail>     // FocusEvent
 @Event() dsClick!: EventEmitter<DS.NumberInputClickDetail>     // MouseEvent (required by FormControlInterface)
@@ -183,12 +183,32 @@ No `number-input.mixin.scss` — imports `input.mixin.scss` directly.
   @include input.description('input');
 }
 
-:host(.is-danger)   { /* same --mod-input-* vars as input.host.scss */ }
-:host(.is-success)  { ... }
-:host(.is-warning)  { ... }
+:host(.is-danger) {
+  --mod-input-container-border-color: var(--ds-input-container-color-danger-border);
+  --mod-input-description-color: var(--ds-input-description-color-danger);
+  --mod-input-container-hover-border: var(--ds-input-container-color-danger-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-danger-border);
+}
+:host(.is-success) {
+  --mod-input-container-border-color: var(--ds-input-container-color-success-border);
+  --mod-input-description-color: var(--ds-input-description-color-success);
+  --mod-input-container-hover-border: var(--ds-input-container-color-success-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-success-border);
+}
+:host(.is-warning) {
+  --mod-input-container-border-color: var(--ds-input-container-color-warning-border);
+  --mod-input-description-color: var(--ds-input-description-color-warning);
+  --mod-input-container-hover-border: var(--ds-input-container-color-warning-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-warning-border);
+}
 :host(.is-disabled) {
   &, #label, #description, #input { pointer-events: none; cursor: default; }
-  /* disabled --mod-input-* vars */
+  --mod-input-container-background: var(--ds-input-container-color-disabled-background);
+  --mod-input-container-border-color: var(--ds-input-container-color-disabled-border);
+  --mod-input-label-color: var(--ds-input-label-color-disabled);
+  --mod-input-description-color: var(--ds-input-description-color-disabled);
+  --mod-input-color: var(--ds-input-control-color-value-disabled);
+  --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
 }
 ```
 
