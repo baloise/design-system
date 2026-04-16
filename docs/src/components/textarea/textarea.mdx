@@ -1,0 +1,65 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+
+<Meta of={TextareaStories} />
+
+<StoryHeading of={TextareaStories.Basic} hidden></StoryHeading>
+
+<Banner of={TextareaStories} />
+
+<Lead>**Textarea** is a form field component that allows users to enter and edit multi-line text.</Lead>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.BasicHtml} webComponentStory={TextareaStories.Basic} index={1} />
+
+<PlaygroundBar of={TextareaStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Disabled}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.DisabledHtml} webComponentStory={TextareaStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Invalid}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.InvalidHtml} webComponentStory={TextareaStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Valid}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.ValidHtml} webComponentStory={TextareaStories.Valid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Warning}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.WarningHtml} webComponentStory={TextareaStories.Warning} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Rows}></StoryHeading>
+
+<Canvas of={TextareaStories.Rows} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="textarea" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />
