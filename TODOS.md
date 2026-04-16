@@ -78,17 +78,17 @@ Checklist
 
 | Component           | Recommended Type | Shadow DOM | Docs | Design Tokens |
 | ------------------- | ---------------- | ---------- | ---- | ------------- |
-| input               | Hybrid           | ⬜         | ⬜   | ⬜            |
-| data                | Hybrid           | ⬜         | ⬜   | ⬜            |
+| input               | Hybrid           | ✅         | ✅   | ✅            |
 | modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
 | popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
+| tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
+| hint                | Web Component    | ⬜         | ⬜   | ⬜            |
 | progress-bar        | Hybrid           | ⬜         | ⬜   | ⬜            |
-| step-item           | Hybrid           | ⬜         | ⬜   | ⬜            |
 | steps               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | table               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
-| tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
+| data                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | ------------------  | ---------------- | ---------- | ---- | ------------- |
 | footer              | Web Component    | ⬜         | ⬜   | ⬜            |
 | radio               | Web Component    | ⬜         | ⬜   | ⬜            |
@@ -98,7 +98,7 @@ Checklist
 | date                | Web Component    | ⬜         | ⬜   | ⬜            |
 | dropdown            | Web Component    | ⬜         | ⬜   | ⬜            |
 | file-upload         | Web Component    | ⬜         | ⬜   | ⬜            |
-| hint                | Web Component    | ⬜         | ⬜   | ⬜            |
+| date-input          | Web Component    | ⬜         | ⬜   | ⬜            |
 | number-input        | Web Component    | ⬜         | ⬜   | ⬜            |
 | option              | Web Component    | ⬜         | ⬜   | ⬜            |
 | popup               | Web Component    | ⬜         | ⬜   | ⬜            |

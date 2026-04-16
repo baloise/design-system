@@ -5,13 +5,116 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AriaForm, BalAriaForm } from "./utils/form";
 import { DsConfigState } from "./utils/config";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-import { AriaForm } from "./utils/form";
+export { AriaForm, BalAriaForm } from "./utils/form";
 export { DsConfigState } from "./utils/config";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { AriaForm } from "./utils/form";
 export namespace Components {
+    interface BalTextarea {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'none'
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus": boolean;
+        /**
+          * If `true` the input gets a clickable cursor style
+          * @default false
+         */
+        "clickable": boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement | undefined>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: BalProps.BalTextareaInputMode;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxLength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
+        /**
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the textarea.
+          * @default ''
+         */
+        "value"?: string;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: BalProps.BalTextareaWrap;
+    }
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -1261,6 +1364,121 @@ export namespace Components {
          */
         "subtitle": boolean;
     }
+    interface DsTextarea {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized.
+          * @default 'off'
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete": DS.InputAutocomplete;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus": boolean;
+        /**
+          * Defines the color state of the textarea.
+          * @default 'primary'
+         */
+        "color": 'primary' | 'danger' | 'success' | 'warning';
+        /**
+          * The visible width of the text control, in average character widths.
+         */
+        "cols"?: number;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description displayed below the textarea field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        /**
+          * A hint to the browser for which keyboard to display.
+         */
+        "inputmode"?: DS.TextareaInputMode;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Text shown in the description area when `invalid` is true.
+         */
+        "invalidText"?: string;
+        /**
+          * The label displayed above the textarea field.
+         */
+        "label"?: string;
+        /**
+          * Specifies the maximum number of characters that the user can enter.
+         */
+        "maxLength"?: number;
+        /**
+          * Specifies the minimum number of characters that the user can enter.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.textareaId
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the textarea has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets blur on the native `textarea` element.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `textarea` element.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the textarea.
+          * @default null
+         */
+        "value": string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: DS.TextareaWrap;
+    }
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -1331,6 +1549,10 @@ export namespace Components {
         "visible": boolean;
     }
 }
+export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTextareaElement;
+}
 export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAccordionElement;
@@ -1363,11 +1585,36 @@ export interface DsTagCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsTagElement;
 }
+export interface DsTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTextareaElement;
+}
 export interface DsToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsToastElement;
 }
 declare global {
+    interface HTMLBalTextareaElementEventMap {
+        "balChange": BalEvents.BalTextareaChangeDetail;
+        "balInput": BalEvents.BalTextareaInputDetail;
+        "balBlur": BalEvents.BalTextareaBlurDetail;
+        "balKeyPress": BalEvents.BalTextareaKeyPressDetail;
+        "balFocus": BalEvents.BalTextareaFocusDetail;
+    }
+    interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBalTextareaElement: {
+        prototype: HTMLBalTextareaElement;
+        new (): HTMLBalTextareaElement;
+    };
     interface HTMLDsAccordionElementEventMap {
         "dsToggle": DS.AccordionToggleDetail;
         "dsOpened": DS.AccordionToggleDetail;
@@ -1671,6 +1918,28 @@ declare global {
         prototype: HTMLDsTextElement;
         new (): HTMLDsTextElement;
     };
+    interface HTMLDsTextareaElementEventMap {
+        "dsBlur": DS.TextareaBlurDetail;
+        "dsKeyPress": DS.TextareaKeyPressDetail;
+        "dsFocus": DS.TextareaFocusDetail;
+        "dsClick": DS.TextareaClickDetail;
+        "dsInput": DS.TextareaInputDetail;
+        "dsChange": DS.TextareaChangeDetail;
+    }
+    interface HTMLDsTextareaElement extends Components.DsTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTextareaElementEventMap>(type: K, listener: (this: HTMLDsTextareaElement, ev: DsTextareaCustomEvent<HTMLDsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTextareaElementEventMap>(type: K, listener: (this: HTMLDsTextareaElement, ev: DsTextareaCustomEvent<HTMLDsTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTextareaElement: {
+        prototype: HTMLDsTextareaElement;
+        new (): HTMLDsTextareaElement;
+    };
     interface HTMLDsToastElementEventMap {
         "dsCloseClick": DS.ToastCloseClickDetail;
         "dsActionClick": DS.ToastActionClickDetail;
@@ -1693,6 +1962,7 @@ declare global {
         new (): HTMLDsToastElement;
     };
     interface HTMLElementTagNameMap {
+        "bal-textarea": HTMLBalTextareaElement;
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
         "ds-app": HTMLDsAppElement;
@@ -1726,10 +1996,121 @@ declare global {
         "ds-tag": HTMLDsTagElement;
         "ds-tag-group": HTMLDsTagGroupElement;
         "ds-text": HTMLDsTextElement;
+        "ds-textarea": HTMLDsTextareaElement;
         "ds-toast": HTMLDsToastElement;
     }
 }
 declare namespace LocalJSX {
+    interface BalTextarea {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'none'
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true` the input gets a clickable cursor style
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: BalProps.BalTextareaInputMode;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxLength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaBlurDetail>) => void;
+        /**
+          * Emitted when the input value has changed..
+         */
+        "onBalChange"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaFocusDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaKeyPressDetail>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * The value of the textarea.
+          * @default ''
+         */
+        "value"?: string;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: BalProps.BalTextareaWrap;
+    }
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -3054,6 +3435,136 @@ declare namespace LocalJSX {
          */
         "subtitle"?: boolean;
     }
+    interface DsTextarea {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized.
+          * @default 'off'
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete"?: DS.InputAutocomplete;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * Defines the color state of the textarea.
+          * @default 'primary'
+         */
+        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        /**
+          * The visible width of the text control, in average character widths.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description displayed below the textarea field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * A hint to the browser for which keyboard to display.
+         */
+        "inputmode"?: DS.TextareaInputMode;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Text shown in the description area when `invalid` is true.
+         */
+        "invalidText"?: string;
+        /**
+          * The label displayed above the textarea field.
+         */
+        "label"?: string;
+        /**
+          * Specifies the maximum number of characters that the user can enter.
+         */
+        "maxLength"?: number;
+        /**
+          * Specifies the minimum number of characters that the user can enter.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.textareaId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsBlur"?: (event: DsTextareaCustomEvent<DS.TextareaBlurDetail>) => void;
+        /**
+          * Emitted when the textarea value has changed.
+         */
+        "onDsChange"?: (event: DsTextareaCustomEvent<DS.TextareaChangeDetail>) => void;
+        /**
+          * Emitted when the textarea has been clicked.
+         */
+        "onDsClick"?: (event: DsTextareaCustomEvent<DS.TextareaClickDetail>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onDsFocus"?: (event: DsTextareaCustomEvent<DS.TextareaFocusDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsInput"?: (event: DsTextareaCustomEvent<DS.TextareaInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has been pressed.
+         */
+        "onDsKeyPress"?: (event: DsTextareaCustomEvent<DS.TextareaKeyPressDetail>) => void;
+        /**
+          * Instructional text that shows before the textarea has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * The value of the textarea.
+          * @default null
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: DS.TextareaWrap;
+    }
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -3130,6 +3641,7 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface IntrinsicElements {
+        "bal-textarea": BalTextarea;
         "ds-accordion": DsAccordion;
         "ds-alert-container": DsAlertContainer;
         "ds-app": DsApp;
@@ -3163,6 +3675,7 @@ declare namespace LocalJSX {
         "ds-tag": DsTag;
         "ds-tag-group": DsTagGroup;
         "ds-text": DsText;
+        "ds-textarea": DsTextarea;
         "ds-toast": DsToast;
     }
 }
@@ -3170,6 +3683,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
             "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
             "ds-app": LocalJSX.DsApp & JSXBase.HTMLAttributes<HTMLDsAppElement>;
@@ -3203,6 +3717,7 @@ declare module "@stencil/core" {
             "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
             "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
             "ds-text": LocalJSX.DsText & JSXBase.HTMLAttributes<HTMLDsTextElement>;
+            "ds-textarea": LocalJSX.DsTextarea & JSXBase.HTMLAttributes<HTMLDsTextareaElement>;
             "ds-toast": LocalJSX.DsToast & JSXBase.HTMLAttributes<HTMLDsToastElement>;
         }
     }
