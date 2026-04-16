@@ -12,62 +12,89 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
-import { BEM } from '../../utils/bem'
-import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
-import {
-  FormInput,
-  getInputTarget,
-  inputHandleBlur,
-  inputHandleChange,
-  inputHandleClick,
-  inputHandleFocus,
-  inputHandleHostClick,
-  inputHandleReset,
-  inputListenOnClick,
-  inputSetBlur,
-  inputSetFocus,
-} from '../../utils/form-input'
+import { FormControl, FormControlInterface } from '../../utils/form-control'
 import { debounceEvent } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../utils/config'
+import { I18nDsLabel } from '../label/label.i18n'
 
 @Component({
-  tag: 'bal-textarea',
-  styleUrl: 'bal-textarea.scss',
+  tag: 'ds-textarea',
+  styleUrl: 'textarea.host.scss',
+  shadow: true,
+  formAssociated: true,
 })
-export class Textarea implements ComponentInterface, FormInput<string | undefined>, BalAriaFormLinking {
-  private inputId = `bal-textarea-${TextareaIds++}`
+export class Textarea implements ComponentInterface, FormControlInterface<string | null>, Loggable {
+  private textareaId = `ds-textarea-${TextareaIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+  private control = new FormControl(this)
 
-  nativeInput?: HTMLTextAreaElement
-  inputValue = this.value
-  initialValue = this.value || ''
+  log!: LogInstance
+  @Logger('textarea')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   @Element() el!: HTMLStencilElement
 
   @State() focused = false
-  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
+  @AttachInternals() internals!: ElementInternals
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * The value of the textarea.
+   */
+  @Prop({ mutable: true, reflect: true }) value: string | null = null
 
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.inputId
+  @Prop() name: string = this.textareaId
 
   /**
-   * If `true` the component gets a invalid style.
+   * The label displayed above the textarea field.
+   */
+  @Prop() label?: string
+
+  /**
+   * The description displayed below the textarea field.
+   */
+  @Prop() description?: string
+
+  /**
+   * Defines the color state of the textarea.
+   */
+  @Prop() color: 'primary' | 'danger' | 'success' | 'warning' = 'primary'
+
+  /**
+   * Text shown in the description area when `invalid` is true.
+   */
+  @Prop() invalidText?: string
+
+  /**
+   * If `true` the component gets an invalid style.
    */
   @Prop() invalid = false
 
   /**
-   * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+   * Indicates whether and how the text value should be automatically capitalized.
    */
-  @Prop() autocapitalize = 'none'
+  @Prop() autocapitalize = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: DS.InputAutocomplete = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -75,42 +102,42 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() autofocus = false
 
   /**
-   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
    */
   @Prop() debounce = 0
 
   @Watch('debounce')
   protected debounceChanged() {
-    this.balChange = debounceEvent(this.balChange, this.debounce)
+    this.dsChange = debounceEvent(this.dsChange, this.debounce)
   }
 
   /**
-   * Instructional text that shows before the input has a value.
+   * Instructional text that shows before the textarea has a value.
    */
   @Prop() placeholder?: string
 
   /**
-   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+   * Specifies the maximum number of characters that the user can enter.
    */
   @Prop() maxLength?: number
 
   /**
-   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+   * Specifies the minimum number of characters that the user can enter.
    */
   @Prop() minLength?: number
 
   /**
-   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form.
    */
   @Prop() disabled = false
 
   /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
+   * If `true` the element can not be mutated, meaning the user can not edit the control.
    */
   @Prop() readonly = false
 
   /**
-   * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+   * The visible width of the text control, in average character widths.
    */
   @Prop() cols?: number
 
@@ -122,208 +149,217 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() wrap?: BalProps.BalTextareaWrap
+  @Prop() wrap?: DS.TextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = false
-
-  /**
-   * If `true` the input gets a clickable cursor style
-   */
-  @Prop() clickable = false
+  @Prop() required = true
 
   /**
    * A hint to the browser for which keyboard to display.
-   * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
-   * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: BalProps.BalTextareaInputMode
+  @Prop() inputmode?: DS.TextareaInputMode
 
   /**
-   * The value of the textarea.
-   */
-  @Prop({ mutable: true }) value?: string = ''
-
-  /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
+   * If `true`, in Angular reactive forms the control will not be set invalid.
    */
   @Prop({ reflect: true }) autoInvalidOff = false
 
   /**
-   * Emitted when the input value has changed..
+   * EVENTS
+   * ------------------------------------------------------
    */
-  @Event() balChange!: EventEmitter<BalEvents.BalTextareaChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<BalEvents.BalTextareaInputDetail>
+  @Event() dsBlur!: EventEmitter<DS.TextareaBlurDetail>
+
+  /**
+   * Emitted when a keyboard key has been pressed.
+   */
+  @Event() dsKeyPress!: EventEmitter<DS.TextareaKeyPressDetail>
+
+  /**
+   * Emitted when the textarea has focus.
+   */
+  @Event() dsFocus!: EventEmitter<DS.TextareaFocusDetail>
+
+  /**
+   * Emitted when the textarea has been clicked.
+   */
+  @Event() dsClick!: EventEmitter<DS.TextareaClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<BalEvents.BalTextareaBlurDetail>
+  @Event() dsInput!: EventEmitter<DS.TextareaInputDetail>
 
   /**
-   * Emitted when a keyboard key has pressed.
+   * Emitted when the textarea value has changed.
    */
-  @Event() balKeyPress!: EventEmitter<BalEvents.BalTextareaKeyPressDetail>
+  @Event() dsChange!: EventEmitter<DS.TextareaChangeDetail>
 
   /**
-   * Emitted when the input has focus.
+   * LISTENERS
+   * ------------------------------------------------------
    */
-  @Event() balFocus!: EventEmitter<BalEvents.BalTextareaFocusDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    inputListenOnClick(this, ev)
+    this.control.listenOnClick(ev)
   }
-
-  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(ev: UIEvent) {
-    const formElement = ev.target as HTMLElement
-    if (formElement?.contains(this.el)) {
-      inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
-    }
+  listenOnReset(ev: UIEvent) {
+    this.control.listenOnReset(ev)
   }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   connectedCallback() {
     this.debounceChanged()
-    this.initialValue = this.value || ''
-  }
-
-  componentDidLoad() {
-    this.inputValue = this.value
+    this.control.connectedCallback()
   }
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
-  /**
-   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
-   * `input.focus()`.
-   */
-  @Method()
-  async setFocus() {
-    inputSetFocus(this)
+  componentDidLoad() {
+    this.control.componentDidLoad()
   }
 
   /**
-   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
-   * `input.blur()`.
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Sets focus on the native `textarea` element.
+   */
+  @Method()
+  async setFocus() {
+    return this.control.setFocus()
+  }
+
+  /**
+   * Sets blur on the native `textarea` element.
    * @internal
    */
   @Method()
   async setBlur() {
-    inputSetBlur(this)
+    return this.control.setBlur()
   }
 
   /**
    * Returns the native `<textarea>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLTextAreaElement | undefined> {
-    return Promise.resolve(this.nativeInput)
+  getInputElement(): Promise<HTMLTextAreaElement> {
+    return Promise.resolve(this.control.nativeEl as HTMLTextAreaElement)
   }
 
   /**
-   * @internal
+   * PRIVATE METHODS
+   * ------------------------------------------------------
    */
-  @Method()
-  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
-    this.ariaForm = { ...ariaForm }
+
+  private handleClick = (ev: MouseEvent) => {
+    this.control.onClick(ev)
   }
 
-  private getValue(): string {
-    return this.value || ''
+  private handleFocus = (ev: FocusEvent) => {
+    this.control.onFocus(ev)
   }
 
-  private onInput = (ev: InputEvent) => {
-    const input = getInputTarget(ev)
-
-    if (input) {
-      this.inputValue = input.value
-    }
-
-    this.balInput.emit(this.inputValue)
+  private handleBlur = (ev: FocusEvent) => {
+    this.control.onBlur(ev)
   }
 
-  private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
-
-  private onBlur = (ev: FocusEvent) => {
-    inputHandleBlur(this, ev)
-
-    const input = ev.target as HTMLInputElement | null
-    if (input) {
-      input.value = this.getValue()
-    }
-
-    inputHandleChange(this)
+  private handleInput = (ev: InputEvent) => {
+    this.control.onInput(ev)
   }
 
-  private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
-
-  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
-    const value = this.getValue()
-
-    const block = BEM.block('textarea')
-    const elNative = block.element('native')
-
     return (
       <Host
-        onClick={this.handleClick}
         aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
-          ...block.class(),
+          'ds-field': true,
+          'is-disabled': this.disabled,
+          'is-danger': this.color === 'danger' || this.invalid,
+          'is-success': this.color === 'success' && !this.invalid,
+          'is-warning': this.color === 'warning' && !this.invalid,
         }}
       >
-        <textarea
-          class={{
-            ...elNative.class(),
-            'textarea': true,
-            'is-disabled': this.disabled || this.readonly,
-            'is-danger': this.invalid,
-            'clickable': this.clickable,
-          }}
-          data-testid="bal-textarea-input"
-          ref={inputEl => (this.nativeInput = inputEl)}
-          name={this.name}
-          id={this.ariaForm.controlId || this.inputId}
-          aria-labelledby={this.ariaForm.labelId}
-          aria-describedby={this.ariaForm.messageId}
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
-          aria-disabled={ariaBooleanToString(this.disabled)}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          required={this.required}
-          autoCapitalize={this.autocapitalize}
-          autocomplete={this.autocomplete}
-          autoFocus={this.autofocus}
-          minLength={this.minLength}
-          maxLength={this.maxLength}
-          placeholder={this.placeholder}
-          inputMode={this.inputmode}
-          value={this.value}
-          cols={this.cols}
-          rows={this.rows}
-          wrap={this.wrap}
-          onFocus={this.onFocus}
-          onInput={ev => this.onInput(ev as InputEvent)}
-          onBlur={this.onBlur}
-          onClick={this.onClick}
-          onKeyPress={e => this.balKeyPress.emit(e)}
-          {...this.inheritedAttributes}
-        >
-          {value}
-          <slot />
-        </textarea>
+        {/* ---------------------------------------- */}
+        {/* Label                                    */}
+        {/* ---------------------------------------- */}
+        <label htmlFor="textarea" part="label" id="label">
+          <slot name="label">{this.label}</slot>
+          {this.required === false && <span>{I18nDsLabel[this.language].optional || ''}</span>}
+        </label>
+
+        {/* ---------------------------------------- */}
+        {/* Textarea Container                       */}
+        {/* ---------------------------------------- */}
+        <div id="container">
+          <textarea
+            id="textarea"
+            part="textarea"
+            name={this.name}
+            ref={el => (this.control.nativeEl = el)}
+            aria-describedby="description"
+            aria-invalid={this.invalid === true ? 'true' : 'false'}
+            disabled={this.disabled}
+            autoCapitalize={this.autocapitalize}
+            autocomplete={this.autocomplete}
+            autofocus={this.autofocus}
+            minLength={this.minLength}
+            maxLength={this.maxLength}
+            placeholder={this.placeholder || ''}
+            readonly={this.readonly}
+            required={this.required}
+            inputMode={this.inputmode}
+            cols={this.cols}
+            rows={this.rows}
+            wrap={this.wrap}
+            onClick={ev => this.handleClick(ev)}
+            onFocus={ev => this.handleFocus(ev)}
+            onBlur={ev => this.handleBlur(ev)}
+            onInput={ev => this.handleInput(ev as InputEvent)}
+            onKeyPress={ev => this.dsKeyPress.emit(ev)}
+            {...this.inheritedAttributes}
+          />
+        </div>
+
+        {/* ---------------------------------------- */}
+        {/* Description                              */}
+        {/* ---------------------------------------- */}
+        <span id="description" part="description">
+          {this.invalid && this.invalidText && <ds-icon name="alert"></ds-icon>}
+          <slot name="description">{this.invalid && this.invalidText ? this.invalidText : this.description}</slot>
+        </span>
       </Host>
     )
   }
