@@ -1,0 +1,97 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use '../input/input.mixin' as input;
+
+/**
+ * Control Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars($prefix) {
+  @include input.vars($prefix);
+}
+
+@mixin style($prefix, $selector: '#textarea') {
+  @include input.style($prefix, $selector);
+}
+
+/**
+ * Container Mixins (textarea-specific)
+ * --------------------------------
+ * Same design tokens as input but:
+ * - align-items: flex-start (text anchored to top)
+ * - padding-block instead of fixed min-height
+ * - resize: vertical on the native textarea
+ */
+
+@mixin vars-container($prefix) {
+  @include input.vars-container($prefix);
+}
+
+@mixin container($prefix, $selector: '#container') {
+  #{$selector} {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    padding-block: 0.5rem;
+    padding-inline: 0.5rem;
+    gap: 0.25rem;
+
+    background: var(--_#{$prefix}-container-background);
+    border: var(--_#{$prefix}-container-border-width) solid var(--_#{$prefix}-container-border-color);
+    border-radius: var(--_#{$prefix}-container-radius);
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        background: var(--_#{$prefix}-container-hover-background);
+        border-color: var(--_#{$prefix}-container-hover-border);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      background: var(--_#{$prefix}-container-active-background);
+      border-color: var(--_#{$prefix}-container-active-border);
+    }
+
+    &:focus-within,
+    &.is-focused {
+      &:not(:active) {
+        background: var(--_#{$prefix}-container-focus-background);
+        border-color: var(--_#{$prefix}-container-focus-border);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+}
+
+/**
+ * Label Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars-label($prefix) {
+  @include input.vars-label($prefix);
+}
+
+@mixin label($prefix, $selector: 'label') {
+  @include input.label($prefix, $selector);
+}
+
+/**
+ * Description Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars-description($prefix) {
+  @include input.vars-description($prefix);
+}
+
+@mixin description($prefix, $selector: '#description') {
+  @include input.description($prefix, $selector);
+}
