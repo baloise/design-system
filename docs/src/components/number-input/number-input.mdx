@@ -1,0 +1,71 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+
+<Meta of={NumberInputStories} />
+
+<StoryHeading of={NumberInputStories.Basic} hidden></StoryHeading>
+
+<Banner of={NumberInputStories} />
+
+<Lead>**Number Input** is a form field component that allows users to enter numeric values with locale-aware formatting, decimal precision, and optional suffix display.</Lead>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.BasicHtml} webComponentStory={NumberInputStories.Basic} index={1} />
+
+<PlaygroundBar of={NumberInputStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Disabled}></StoryHeading>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.DisabledHtml} webComponentStory={NumberInputStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Invalid}></StoryHeading>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.InvalidHtml} webComponentStory={NumberInputStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Valid}></StoryHeading>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.ValidHtml} webComponentStory={NumberInputStories.Valid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Warning}></StoryHeading>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.WarningHtml} webComponentStory={NumberInputStories.Warning} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Decimal}></StoryHeading>
+
+<Canvas of={NumberInputStories.Decimal} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Suffix}></StoryHeading>
+
+<Canvas of={NumberInputStories.Suffix} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="number-input" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />
