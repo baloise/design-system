@@ -3,29 +3,30 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {
-  export type BalTextareaWrap = 'hard' | 'soft' | 'off'
-  export type BalTextareaInputMode = BalInputInputMode
-}
+namespace DS {
+  export type TextareaWrap = 'hard' | 'soft' | 'off'
+  export type TextareaInputMode = InputInputMode
 
-namespace BalEvents {
-  export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
+  export interface TextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T
-    target: HTMLBalTextareaElement
+    target: HTMLDsTextareaElement
   }
 
-  export type BalTextareaChangeDetail = string | undefined
-  export type BalTextareaChange = BalTextareaCustomEvent<BalTextareaChangeDetail>
+  export type TextareaInputDetail = string | null
+  export type TextareaInput = TextareaCustomEvent<TextareaInputDetail>
 
-  export type BalTextareaInputDetail = string | undefined
-  export type BalTextareaInput = BalTextareaCustomEvent<BalTextareaInputDetail>
+  export type TextareaChangeDetail = string | null
+  export type TextareaChange = TextareaCustomEvent<TextareaChangeDetail>
 
-  export type BalTextareaBlurDetail = FocusEvent
-  export type BalTextareaBlur = BalTextareaCustomEvent<BalTextareaBlurDetail>
+  export type TextareaBlurDetail = FocusEvent
+  export type TextareaBlur = TextareaCustomEvent<TextareaBlurDetail>
 
-  export type BalTextareaKeyPressDetail = KeyboardEvent
-  export type BalTextareaKeyPress = BalTextareaCustomEvent<BalTextareaKeyPressDetail>
+  export type TextareaKeyPressDetail = KeyboardEvent
+  export type TextareaKeyPress = TextareaCustomEvent<TextareaKeyPressDetail>
 
-  export type BalTextareaFocusDetail = FocusEvent
-  export type BalTextareaFocus = BalTextareaCustomEvent<BalTextareaFocusDetail>
+  export type TextareaFocusDetail = FocusEvent
+  export type TextareaFocus = TextareaCustomEvent<TextareaFocusDetail>
+
+  export type TextareaClickDetail = MouseEvent
+  export type TextareaClick = TextareaCustomEvent<TextareaClickDetail>
 }
