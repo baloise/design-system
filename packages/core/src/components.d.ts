@@ -5,116 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AriaForm, BalAriaForm } from "./utils/form";
 import { DsConfigState } from "./utils/config";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { AriaForm, BalAriaForm } from "./utils/form";
+import { AriaForm } from "./utils/form";
 export { DsConfigState } from "./utils/config";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+export { AriaForm } from "./utils/form";
 export namespace Components {
-    interface BalTextarea {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-          * @default false
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
-          * @default 'none'
-         */
-        "autocapitalize": string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-          * @default 'off'
-         */
-        "autocomplete": BalProps.BalInputAutocomplete;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-          * @default false
-         */
-        "autofocus": boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-          * @default false
-         */
-        "clickable": boolean;
-        /**
-          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
-         */
-        "cols"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<textarea>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLTextAreaElement | undefined>;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalTextareaInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-          * @default false
-         */
-        "invalid": boolean;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-         */
-        "maxLength"?: number;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-         */
-        "minLength"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputId
-         */
-        "name": string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default false
-         */
-        "required": boolean;
-        /**
-          * The number of visible text lines for the control.
-         */
-        "rows"?: number;
-        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
-        /**
-          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the textarea.
-          * @default ''
-         */
-        "value"?: string;
-        /**
-          * Indicates how the control wraps text.
-         */
-        "wrap"?: BalProps.BalTextareaWrap;
-    }
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -1070,6 +967,108 @@ export namespace Components {
          */
         "size"?: DS.NotificationSize;
     }
+    interface DsNumberInput {
+        /**
+          * Defines the color state of the input.
+          * @default 'primary'
+         */
+        "color": 'primary' | 'danger' | 'success' | 'warning';
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Milliseconds to wait before triggering `dsChange` after each keystroke.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * Number of allowed decimal places. `0` means integers only.
+          * @default 0
+         */
+        "decimal": number;
+        /**
+          * The description displayed below the field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * When `true`, displays `0` instead of an empty field when value is null.
+          * @default false
+         */
+        "exactNumber": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Text shown in the description area when `invalid` is true.
+         */
+        "invalidText"?: string;
+        /**
+          * The label displayed above the field.
+         */
+        "label"?: string;
+        /**
+          * The maximum value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value.
+         */
+        "min"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.numberInputId
+         */
+        "name": string;
+        /**
+          * When `true`, only positive numbers are accepted (blocks the minus sign).
+          * @default false
+         */
+        "onlyPositive": boolean;
+        /**
+          * Overrides the auto-generated input validation pattern.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text shown when the input has no value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the element cannot be edited by the user.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native input element.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native input element.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Text appended to the formatted value after blur (e.g. `"CHF"`).
+         */
+        "suffix"?: string;
+        /**
+          * The numeric value of the input. `null` means no value.
+          * @default null
+         */
+        "value": number | null;
+    }
     interface DsShape {
         /**
           * The shape color
@@ -1549,10 +1548,6 @@ export namespace Components {
         "visible": boolean;
     }
 }
-export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTextareaElement;
-}
 export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAccordionElement;
@@ -1577,6 +1572,10 @@ export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNotificationElement;
 }
+export interface DsNumberInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsNumberInputElement;
+}
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
@@ -1594,27 +1593,6 @@ export interface DsToastCustomEvent<T> extends CustomEvent<T> {
     target: HTMLDsToastElement;
 }
 declare global {
-    interface HTMLBalTextareaElementEventMap {
-        "balChange": BalEvents.BalTextareaChangeDetail;
-        "balInput": BalEvents.BalTextareaInputDetail;
-        "balBlur": BalEvents.BalTextareaBlurDetail;
-        "balKeyPress": BalEvents.BalTextareaKeyPressDetail;
-        "balFocus": BalEvents.BalTextareaFocusDetail;
-    }
-    interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLBalTextareaElement: {
-        prototype: HTMLBalTextareaElement;
-        new (): HTMLBalTextareaElement;
-    };
     interface HTMLDsAccordionElementEventMap {
         "dsToggle": DS.AccordionToggleDetail;
         "dsOpened": DS.AccordionToggleDetail;
@@ -1846,6 +1824,28 @@ declare global {
         prototype: HTMLDsNotificationElement;
         new (): HTMLDsNotificationElement;
     };
+    interface HTMLDsNumberInputElementEventMap {
+        "dsInput": DS.NumberInputInputDetail;
+        "dsChange": DS.NumberInputChangeDetail;
+        "dsBlur": DS.NumberInputBlurDetail;
+        "dsFocus": DS.NumberInputFocusDetail;
+        "dsClick": DS.NumberInputClickDetail;
+        "dsKeyPress": DS.NumberInputKeyPressDetail;
+    }
+    interface HTMLDsNumberInputElement extends Components.DsNumberInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsNumberInputElementEventMap>(type: K, listener: (this: HTMLDsNumberInputElement, ev: DsNumberInputCustomEvent<HTMLDsNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsNumberInputElementEventMap>(type: K, listener: (this: HTMLDsNumberInputElement, ev: DsNumberInputCustomEvent<HTMLDsNumberInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsNumberInputElement: {
+        prototype: HTMLDsNumberInputElement;
+        new (): HTMLDsNumberInputElement;
+    };
     interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
     }
     var HTMLDsShapeElement: {
@@ -1962,7 +1962,6 @@ declare global {
         new (): HTMLDsToastElement;
     };
     interface HTMLElementTagNameMap {
-        "bal-textarea": HTMLBalTextareaElement;
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
         "ds-app": HTMLDsAppElement;
@@ -1988,6 +1987,7 @@ declare global {
         "ds-list": HTMLDsListElement;
         "ds-logo": HTMLDsLogoElement;
         "ds-notification": HTMLDsNotificationElement;
+        "ds-number-input": HTMLDsNumberInputElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
@@ -2001,116 +2001,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface BalTextarea {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-          * @default false
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
-          * @default 'none'
-         */
-        "autocapitalize"?: string;
-        /**
-          * Indicates whether the value of the control can be automatically completed by the browser.
-          * @default 'off'
-         */
-        "autocomplete"?: BalProps.BalInputAutocomplete;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-          * @default false
-         */
-        "autofocus"?: boolean;
-        /**
-          * If `true` the input gets a clickable cursor style
-          * @default false
-         */
-        "clickable"?: boolean;
-        /**
-          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
-         */
-        "cols"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
-         */
-        "inputmode"?: BalProps.BalTextareaInputMode;
-        /**
-          * If `true` the component gets a invalid style.
-          * @default false
-         */
-        "invalid"?: boolean;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-         */
-        "maxLength"?: number;
-        /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-         */
-        "minLength"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputId
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaBlurDetail>) => void;
-        /**
-          * Emitted when the input value has changed..
-         */
-        "onBalChange"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaChangeDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaKeyPressDetail>) => void;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default false
-         */
-        "required"?: boolean;
-        /**
-          * The number of visible text lines for the control.
-         */
-        "rows"?: number;
-        /**
-          * The value of the textarea.
-          * @default ''
-         */
-        "value"?: string;
-        /**
-          * Indicates how the control wraps text.
-         */
-        "wrap"?: BalProps.BalTextareaWrap;
-    }
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -3132,6 +3022,123 @@ declare namespace LocalJSX {
          */
         "size"?: DS.NotificationSize;
     }
+    interface DsNumberInput {
+        /**
+          * Defines the color state of the input.
+          * @default 'primary'
+         */
+        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        /**
+          * Milliseconds to wait before triggering `dsChange` after each keystroke.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * Number of allowed decimal places. `0` means integers only.
+          * @default 0
+         */
+        "decimal"?: number;
+        /**
+          * The description displayed below the field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * When `true`, displays `0` instead of an empty field when value is null.
+          * @default false
+         */
+        "exactNumber"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Text shown in the description area when `invalid` is true.
+         */
+        "invalidText"?: string;
+        /**
+          * The label displayed above the field.
+         */
+        "label"?: string;
+        /**
+          * The maximum value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value.
+         */
+        "min"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.numberInputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsNumberInputCustomEvent<DS.NumberInputBlurDetail>) => void;
+        /**
+          * Emitted when the value changes on blur.
+         */
+        "onDsChange"?: (event: DsNumberInputCustomEvent<DS.NumberInputChangeDetail>) => void;
+        /**
+          * Emitted when the input is clicked.
+         */
+        "onDsClick"?: (event: DsNumberInputCustomEvent<DS.NumberInputClickDetail>) => void;
+        /**
+          * Emitted when the input gains focus.
+         */
+        "onDsFocus"?: (event: DsNumberInputCustomEvent<DS.NumberInputFocusDetail>) => void;
+        /**
+          * Emitted on each keystroke with the current numeric value (or null).
+         */
+        "onDsInput"?: (event: DsNumberInputCustomEvent<DS.NumberInputInputDetail>) => void;
+        /**
+          * Emitted on keypress.
+         */
+        "onDsKeyPress"?: (event: DsNumberInputCustomEvent<DS.NumberInputKeyPressDetail>) => void;
+        /**
+          * When `true`, only positive numbers are accepted (blocks the minus sign).
+          * @default false
+         */
+        "onlyPositive"?: boolean;
+        /**
+          * Overrides the auto-generated input validation pattern.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text shown when the input has no value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the element cannot be edited by the user.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * Text appended to the formatted value after blur (e.g. `"CHF"`).
+         */
+        "suffix"?: string;
+        /**
+          * The numeric value of the input. `null` means no value.
+          * @default null
+         */
+        "value"?: number | null;
+    }
     interface DsShape {
         /**
           * The shape color
@@ -3641,7 +3648,6 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface IntrinsicElements {
-        "bal-textarea": BalTextarea;
         "ds-accordion": DsAccordion;
         "ds-alert-container": DsAlertContainer;
         "ds-app": DsApp;
@@ -3667,6 +3673,7 @@ declare namespace LocalJSX {
         "ds-list": DsList;
         "ds-logo": DsLogo;
         "ds-notification": DsNotification;
+        "ds-number-input": DsNumberInput;
         "ds-shape": DsShape;
         "ds-snackbar": DsSnackbar;
         "ds-spinner": DsSpinner;
@@ -3683,7 +3690,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
             "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
             "ds-app": LocalJSX.DsApp & JSXBase.HTMLAttributes<HTMLDsAppElement>;
@@ -3709,6 +3715,7 @@ declare module "@stencil/core" {
             "ds-list": LocalJSX.DsList & JSXBase.HTMLAttributes<HTMLDsListElement>;
             "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
+            "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
             "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
             "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
             "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
