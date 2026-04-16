@@ -4,37 +4,82 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-      section {
-        padding: 1rem;
-      }
-    </style>
-    <script type="module" src="/build/baloise-design-system.esm.js"></script>
-    <script nomodule src="/build/baloise-design-system.js"></script>
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
   </head>
-
   <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section data-testid="basic">
-          <bal-textarea placeholder="Placeholder"></bal-textarea>
-        </section>
-        <section data-testid="disabled">
-          <bal-textarea placeholder="Placeholder" disabled value="Value"></bal-textarea>
-        </section>
-        <section data-testid="invalid">
-          <bal-textarea placeholder="Placeholder" invalid value="Value">Value</bal-textarea>
-        </section>
-        <section data-testid="field">
-          <bal-field>
-            <bal-field-label>Label</bal-field-label>
-            <bal-field-control>
-              <bal-textarea placeholder="Placeholder" value="Value">Value</bal-textarea>
-            </bal-field-control>
-            <bal-field-message>Message</bal-field-message>
-          </bal-field>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-textarea label="Label 1" required="false"></ds-textarea>
+        <ds-textarea label="Label 1" description="Description 1"></ds-textarea>
+        <ds-textarea label="Label 2" description="Description 2" placeholder="Placeholder"></ds-textarea>
+        <ds-textarea label="Label 3" description="Description 3" value="Value"></ds-textarea>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-textarea label="Label 1" description="Description 1" disabled></ds-textarea>
+        <ds-textarea label="Label 2" description="Description 2" placeholder="Placeholder" disabled></ds-textarea>
+        <ds-textarea label="Label 3" description="Description 3" value="Value" disabled></ds-textarea>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-textarea label="Label 1" description="Description 1" invalid-text="Validation Error 1" invalid></ds-textarea>
+        <ds-textarea
+          label="Label 2"
+          description="Description 2"
+          placeholder="Placeholder"
+          invalid-text="Validation Error 2"
+          invalid
+        ></ds-textarea>
+        <ds-textarea
+          label="Label 3"
+          description="Description 3"
+          value="Value"
+          invalid-text="Validation Error 3"
+          invalid
+        ></ds-textarea>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <ds-textarea label="Label 1" description="Description 1" color="success"></ds-textarea>
+        <ds-textarea label="Label 2" description="Description 2" placeholder="Placeholder" color="success"></ds-textarea>
+        <ds-textarea label="Label 3" description="Description 3" value="Value" color="success"></ds-textarea>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <ds-textarea label="Label 1" description="Description 1" color="warning"></ds-textarea>
+        <ds-textarea label="Label 2" description="Description 2" placeholder="Placeholder" color="warning"></ds-textarea>
+        <ds-textarea label="Label 3" description="Description 3" value="Value" color="warning"></ds-textarea>
+      </section>
+
+      <!-- Rows -->
+      <section data-testid="rows">
+        <span>Rows</span>
+        <ds-textarea label="Label" description="6 rows" rows="6"></ds-textarea>
+        <ds-textarea label="Label" description="2 rows" rows="2" value="Short text"></ds-textarea>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <ds-textarea
+          label="Label Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+          description="Description Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+          value="Value Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+        ></ds-textarea>
+      </section>
+    </main>
   </body>
 </html>
