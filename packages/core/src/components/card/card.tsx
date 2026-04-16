@@ -45,11 +45,6 @@ export class Card implements Loggable {
   @Prop() square = false
 
   /**
-   * @deprecated
-   * If `true` a light blue border is added to the card.
-   */
-  @Prop() border = false
-  /**
    * If `true` the cards gets a light border and loses its shadow.
    */
   @Prop() outlined = false
@@ -120,7 +115,7 @@ export class Card implements Loggable {
   }
 
   render() {
-    const hasOutline = !!this.outlined || !!this.border
+    const hasOutline = !!this.outlined
     const isImageTeaser = this.imageTeaser !== undefined
 
     return (

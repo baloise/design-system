@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as InputStories from './input.stories'
+
+<Meta of={InputStories} />
+
+<StoryHeading of={InputStories.Basic} hidden></StoryHeading>
+
+<Banner of={InputStories} />
+
+<Lead>**Input** is a form field component that allows users to enter and edit text, numbers, or formatted values.</Lead>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.BasicHtml} webComponentStory={InputStories.Basic} index={1} />
+
+<PlaygroundBar of={InputStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Disabled}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.DisabledHtml} webComponentStory={InputStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Invalid}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.InvalidHtml} webComponentStory={InputStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Valid}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.ValidHtml} webComponentStory={InputStories.Valid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Loading}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.LoadingHtml} webComponentStory={InputStories.Loading} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Suffix}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.SuffixHtml} webComponentStory={InputStories.Suffix} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.NumberType}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.NumberTypeHtml} webComponentStory={InputStories.NumberType} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Slots}></StoryHeading>
+
+<Canvas of={InputStories.Slots} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.FormReset}></StoryHeading>
+
+<BasicStoryTabs tag="input" htmlStory={InputStories.FormResetHtml} webComponentStory={InputStories.FormReset} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Formatter}></StoryHeading>
+
+<Canvas of={InputStories.Formatter} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="input" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />

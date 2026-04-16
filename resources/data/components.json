@@ -6410,7 +6410,7 @@
           "mutable": false,
           "attr": "loading",
           "reflectToAttr": false,
-          "docs": "Shows a loading indicator at the end of the input and replaces the input-end slot content.",
+          "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
           "docsTags": [
             {
               "name": "default",

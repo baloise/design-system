@@ -62,19 +62,39 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const WebComponentBasic = Story({
+export const Basic = Story({
   ...withRender(({ content, ...args }) => `<ds-tag ${props(args)}>${content}</ds-tag>`),
 })
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
 
 export const Closable = Story({
+  ...withRender(({ content, ...args }) => `<ds-tag closable>${content}</ds-tag>`),
+})
+Closable.storyName = '🧩 Closable'
+
+export const ClosableHtml = Story({
   args: {
     closable: true,
   },
 })
+ClosableHtml.storyName = '🌍 Closable'
 
 export const TagGroup = Story({
+  ...withRender(
+    () => `
+<div class="tags">
+  <ds-tag>Primary</ds-tag>
+  <ds-tag color="success">Success</ds-tag>
+  <ds-tag color="danger">Danger</ds-tag>
+</div>`,
+  ),
+})
+TagGroup.storyName = '🧩 Tag Group'
+
+export const TagGroupHtml = Story({
   ...withRender(
     () => `
 <div class="tags">
@@ -84,8 +104,50 @@ export const TagGroup = Story({
 </div>`,
   ),
 })
+TagGroupHtml.storyName = '🌍 Tag Group'
 
 export const Colors = Story({
+  ...withRender(
+    () => `
+<div class="tags">
+  <ds-tag>Default</ds-tag>
+  <ds-tag color="primary">Primary</ds-tag>
+  <ds-tag color="info">Info</ds-tag>
+  <ds-tag color="success">Success</ds-tag>
+  <ds-tag color="warning">Warning</ds-tag>
+  <ds-tag color="danger">Danger</ds-tag>
+</div>
+<br>
+<div class="tags">
+  <ds-tag color="purple-dark">Purple</ds-tag>
+  <ds-tag color="red-dark">Red</ds-tag>
+  <ds-tag color="yellow-dark">Yellow</ds-tag>
+  <ds-tag color="green-dark">Green</ds-tag>
+</div>
+<br>
+<div class="tags">
+  <ds-tag color="purple">Purple</ds-tag>
+  <ds-tag color="red">Red</ds-tag>
+  <ds-tag color="yellow">Yellow</ds-tag>
+  <ds-tag color="green">Green</ds-tag>
+</div>
+<br>
+<div class="tags">
+  <ds-tag color="purple-light">Purple</ds-tag>
+  <ds-tag color="red-light">Red</ds-tag>
+  <ds-tag color="yellow-light">Yellow</ds-tag>
+  <ds-tag color="green-light">Green</ds-tag>
+</div>
+<br>
+<div class="tags">
+  <ds-tag color="disabled">Disabled</ds-tag>
+</div>
+    `,
+  ),
+})
+Colors.storyName = '🧩 Colors'
+
+export const ColorsHtml = Story({
   ...withRender(
     () => `
 <div class="tags">
@@ -124,46 +186,4 @@ export const Colors = Story({
     `,
   ),
 })
-
-export const TagCard = Story({
-  ...withRender(
-    () => `
-<article class="card is-flat is-outlined">
-    <header class="card-header">
-      <h3 class="title">Combi Header</h3>
-      <div class="tags">
-        <span class="tag is-purple-light">Tag 1</span>
-        <span class="tag is-yellow-light">Tag 2</span>
-      </div>
-    </header>
-    <div class="card-content">
-      This is a card with tags positioned at the top right corner of the header.
-    </div>
-  </article>
-      `,
-  ),
-})
-
-export const TeaserCard = Story({
-  ...withRender(
-    () => `
-<article class="card is-purple-lighter is-fullheight" aria-labelledby="teaser-card-title-1">
-  <span class="tag is-purple-dark">BESTSELLER</span>
-  <div class="card-content stack align-center">
-    <ds-icon
-      svg='&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 80 80"&gt;&lt;path fill="#000D6E" d="M48.92 70.5a3.208 3.208 0 1 0 6.417 0v-8.496a20.538 20.538 0 0 1-6.417 1.386v7.11zM20.685 70.5a3.208 3.208 0 1 0 6.417 0V63.44a20.302 20.302 0 0 1-6.417-1.848V70.5z"/&gt;&lt;path fill="#6C2273" d="M74.588 33.922a1.283 1.283 0 0 0-1.283 1.284v2.926a2.31 2.31 0 0 1-2.567 2.208h-1.284a23.333 23.333 0 0 0-11.55-20.535 12.14 12.14 0 0 1-1.438 5.133H35.033a12.167 12.167 0 0 1-1.514-5.775c.016-.646.085-1.29.205-1.925h-2.259a10.267 10.267 0 0 0-9.497-6.417v7.854A22.385 22.385 0 0 0 9.134 32.64H7.209A3.209 3.209 0 0 0 4 35.847v8.984a3.209 3.209 0 0 0 3.209 3.209h1.925A22.589 22.589 0 0 0 20.71 61.465a20.304 20.304 0 0 0 6.392 1.976c.77 0 1.54.128 2.31.128H48.92c2.2-.114 4.366-.583 6.417-1.386a22.921 22.921 0 0 0 13.99-19.277h1.54A4.877 4.877 0 0 0 76 38.132v-2.926a1.283 1.283 0 0 0-1.412-1.284zm-55.187-1.591a2.9 2.9 0 1 1 2.875 2.875A2.875 2.875 0 0 1 19.4 32.33z"/&gt;&lt;path fill="#B8B2FF" d="M35.033 24.938H56.39a12.14 12.14 0 0 0 1.515-5.133c.012-.231.012-.462 0-.693a12.166 12.166 0 0 0-24.18-1.874c-.12.635-.189 1.279-.205 1.925a12.167 12.167 0 0 0 1.514 5.775z"/&gt;&lt;/svg&gt;'
-      color="auto"
-      size="xx-large"
-    ></ds-icon>
-    <div class="stack-content align-center">
-      <h3 class="title" id="teaser-card-title-1 is-centered">Teaser Card</h3>
-      <span class="text is-centered">
-        The item component can easily be combined with the card component to achieve a nice teaser layout.
-      </span>
-    </div>
-    <a href="#" class="button">Read more</a>
-  </div>
-</article>
-      `,
-  ),
-})
+ColorsHtml.storyName = '🌍 Colors'

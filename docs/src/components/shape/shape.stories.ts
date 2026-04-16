@@ -33,3 +33,4 @@ export const Basic = Story({
     variation: '1',
   },
 })
+Basic.storyName = '🧩 Basic'

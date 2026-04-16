@@ -257,4 +257,12 @@ $close-inverted: (
   .tags {
     @include tags.style();
   }
+
+  .tags + .tags {
+    margin-top: var(--_tag-gap);
+  }
+
+  ds-tag-group + ds-tag-group {
+    margin-top: var(--_tag-gap);
+  }
 }

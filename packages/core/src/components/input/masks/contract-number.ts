@@ -41,12 +41,9 @@ export class ContractNumber implements InputMaskFormatterInterface {
   }
 
   private formatOffer(value: string): string {
-    const parts = [
-      value.substring(0, 2),
-      value.substring(2, 3),
-      value.substring(3, 6),
-      value.substring(6, 9),
-    ].filter(p => p.length > 0)
+    const parts = [value.substring(0, 2), value.substring(2, 3), value.substring(3, 6), value.substring(6, 9)].filter(
+      p => p.length > 0,
+    )
     switch (parts.length) {
       case 1:
         return value

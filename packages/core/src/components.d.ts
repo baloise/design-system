@@ -294,11 +294,6 @@ export namespace Components {
          */
         "align"?: DS.CardAlignment;
         /**
-          * @deprecated If `true` a light blue border is added to the card.
-          * @default false
-         */
-        "border": boolean;
-        /**
           * If `true` the card has a hover effect.
           * @default false
          */
@@ -683,6 +678,7 @@ export namespace Components {
           * @default 'primary'
          */
         "color": 'primary' | 'danger' | 'success' | 'warning';
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
@@ -719,7 +715,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator at the end of the input and replaces the input-end slot content.
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
          */
         "loading": boolean;
@@ -768,7 +764,7 @@ export namespace Components {
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
-          * @default false
+          * @default true
          */
         "required": boolean;
         /**
@@ -2051,11 +2047,6 @@ declare namespace LocalJSX {
          */
         "align"?: DS.CardAlignment;
         /**
-          * @deprecated If `true` a light blue border is added to the card.
-          * @default false
-         */
-        "border"?: boolean;
-        /**
           * If `true` the card has a hover effect.
           * @default false
          */
@@ -2474,7 +2465,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator at the end of the input and replaces the input-end slot content.
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
          */
         "loading"?: boolean;
@@ -2547,7 +2538,7 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
-          * @default false
+          * @default true
          */
         "required"?: boolean;
         /**

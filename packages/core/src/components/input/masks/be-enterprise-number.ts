@@ -32,11 +32,7 @@ export class BeEnterpriseNumber implements InputMaskFormatterInterface {
 
   private formatValue(value: string): string {
     const digits = value.replace(/\D/g, '')
-    const parts = [
-      digits.substring(0, 4),
-      digits.substring(4, 7),
-      digits.substring(7, 10),
-    ].filter(p => p.length > 0)
+    const parts = [digits.substring(0, 4), digits.substring(4, 7), digits.substring(7, 10)].filter(p => p.length > 0)
     switch (parts.length) {
       case 1:
         return digits

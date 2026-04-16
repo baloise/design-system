@@ -45,6 +45,7 @@ export const Basic = Story({
     summaryTitle: true,
   },
 })
+Basic.storyName = '🧩 Basic'
 
 export const PlusMarkerAccordion = Story({
   args: {
@@ -52,6 +53,7 @@ export const PlusMarkerAccordion = Story({
     summaryTitle: true,
   },
 })
+PlusMarkerAccordion.storyName = '🧩 Plus Marker Accordion'
 
 export const LeftMarkerAccordion = Story({
   args: {
@@ -60,6 +62,7 @@ export const LeftMarkerAccordion = Story({
     summaryTitle: true,
   },
 })
+LeftMarkerAccordion.storyName = '🧩 Left Marker Accordion'
 
 export const StackAccordion = Story({
   args: {},
@@ -92,6 +95,7 @@ export const StackAccordion = Story({
 </ds-card>`,
   ),
 })
+StackAccordion.storyName = '🧩 Stack Accordion'
 
 export const AccordionGroup = Story({
   args: {},
@@ -113,6 +117,7 @@ export const AccordionGroup = Story({
 </ds-accordion>`,
   ),
 })
+AccordionGroup.storyName = '🧩 Accordion Group'
 
 export const AccordionButton = Story({
   args: {
@@ -123,3 +128,4 @@ export const AccordionButton = Story({
     buttonLabelClose: 'close',
   },
 })
+AccordionButton.storyName = '🧩 Accordion Button'

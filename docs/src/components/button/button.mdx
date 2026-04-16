@@ -14,11 +14,16 @@ import * as ButtonStories from './button.stories'
   way.
 </Lead>
 
-<BasicStoryTabs tag="button" htmlStory={ButtonStories.Basic} webComponentStory={ButtonStories.WebComponentBasic} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.BasicHtml} webComponentStory={ButtonStories.Basic} index={1} />
 
 <PlaygroundBar of={ButtonStories.Basic}></PlaygroundBar>
 
-{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Group}></StoryHeading>
+
+<Canvas of={ButtonStories.Group} sourceState={'shown'} />
+
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Variants}></StoryHeading>
@@ -27,50 +32,49 @@ Buttons are available in four main levels: **primary**, **secondary**, **tertiar
 Tertiary buttons can be customized with branding colors to align with the overall theme. However, it's important to note that themed tertiary buttons
 are not suitable for use on non-white backgrounds.
 
-<Canvas of={ButtonStories.Variants} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.VariantsHtml} webComponentStory={ButtonStories.Variants} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Sizes}></StoryHeading>
 
-<Canvas of={ButtonStories.Sizes} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.SizesHtml} webComponentStory={ButtonStories.Sizes} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Inverted}></StoryHeading>
 
-<Canvas of={ButtonStories.Inverted} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.InvertedHtml} webComponentStory={ButtonStories.Inverted} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.WithIcon}></StoryHeading>
 
-<Canvas of={ButtonStories.WithIcon} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.WithIconHtml} webComponentStory={ButtonStories.WithIcon} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.States}></StoryHeading>
 
-<Canvas of={ButtonStories.States} />
-
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.StatesHtml} webComponentStory={ButtonStories.States} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.Dashed}></StoryHeading>
 
-<Canvas of={ButtonStories.Dashed} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.DashedHtml} webComponentStory={ButtonStories.Dashed} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.AlertButtons}></StoryHeading>
 
-<Canvas of={ButtonStories.AlertButtons} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.AlertButtonsHtml} webComponentStory={ButtonStories.AlertButtons} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.SquareButtons}></StoryHeading>
 
-<Canvas of={ButtonStories.SquareButtons} />
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.SquareButtonsHtml} webComponentStory={ButtonStories.SquareButtons} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
@@ -119,21 +123,10 @@ are not suitable for use on non-white backgrounds.
 <Canvas of={ButtonStories.LinkButton} />
 
 {/* ------------------------------------------------------ */}
-{/* ------------------------------------------------------ */}
-{/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.WebComponentBasic}></StoryHeading>
+<StoryHeading of={ButtonStories.NativeLink}></StoryHeading>
 
-We recommend using the <b>web component</b> in combination with a `<ds-spinner>` or `<ds-icon>`,
-as it provides all necessary styles, library integrations and performance updates.
-
-<Canvas of={ButtonStories.WebComponentBasic} sourceState="shown" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ButtonStories.WebComponentGroup}></StoryHeading>
-
-<Canvas of={ButtonStories.WebComponentGroup} sourceState="shown" />
+<Canvas of={ButtonStories.NativeLink} />
 
 {/* ------------------------------------------------------ */}
 {/* ------------------------------------------------------ */}

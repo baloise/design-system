@@ -45,6 +45,7 @@ export const Basic = Story({
 </div>`,
   ),
 })
+Basic.storyName = '🌍 Basic'
 
 export const Nested = Story({
   ...withRender(
@@ -65,6 +66,7 @@ export const Nested = Story({
 </div>`,
   ),
 })
+Nested.storyName = '🌍 Nested'
 
 export const Item = Story({
   ...withRender(
@@ -79,6 +81,7 @@ export const Item = Story({
 </div>`,
   ),
 })
+Item.storyName = '🌍 Item'
 
 export const Direction = Story({
   ...withRender(
@@ -94,6 +97,7 @@ export const Direction = Story({
 </div>`,
   ),
 })
+Direction.storyName = '🌍 Direction'
 
 export const Alignment = Story({
   ...withRender(
@@ -108,6 +112,7 @@ export const Alignment = Story({
 </div>`,
   ),
 })
+Alignment.storyName = '🌍 Alignment'
 
 const spaceBox = (size: string) => `
 <div class="stack as-row bg-red-2 has-space-${size}">
@@ -136,6 +141,7 @@ export const Space = Story({
 </div>`,
   ),
 })
+Space.storyName = '🌍 Space'
 
 export const Padding = Story({
   ...withRender(
@@ -154,6 +160,7 @@ export const Padding = Story({
 </div>`,
   ),
 })
+Padding.storyName = '🌍 Padding'
 
 export const TeaserCards = Story({
   ...withRender(
@@ -204,6 +211,7 @@ export const TeaserCards = Story({
 </div>`,
   ),
 })
+TeaserCards.storyName = '🌍 Teaser Cards'
 
 export const StackedTabs = Story({
   args: {
@@ -225,3 +233,4 @@ export const StackedTabs = Story({
 </ds-stack>`,
   ),
 })
+StackedTabs.storyName = '🧩 Stacked Tabs'

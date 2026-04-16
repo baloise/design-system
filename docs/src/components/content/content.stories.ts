@@ -27,6 +27,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+Basic.storyName = '🧩 Basic'
 
 export const Alignment = Story({
   ...withRender(
@@ -39,6 +40,7 @@ export const Alignment = Story({
     align: 'center',
   },
 })
+Alignment.storyName = '🧩 Alignment'
 
 export const Layout = Story({
   ...withRender(
@@ -52,6 +54,7 @@ export const Layout = Story({
     space: 'normal',
   },
 })
+Layout.storyName = '🧩 Layout'
 
 export const Space = Story({
   ...withRender(
@@ -75,3 +78,4 @@ export const Space = Story({
 </div>`,
   ),
 })
+Space.storyName = '🧩 Space'

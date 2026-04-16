@@ -19,9 +19,7 @@ import * as DividerStories from './divider.stories'
 We recommend using standard <b>HTML elements</b> such as `<hr>` whenever possible instead of web
 components. This helps improve the rendering speed of your application or website.
 
-<BasicStoryTabs tag="divider" htmlStory={DividerStories.Basic} webComponentStory={DividerStories.WebComponentBasic} />
-
-<Canvas of={DividerStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="divider" htmlStory={DividerStories.BasicHtml} webComponentStory={DividerStories.Basic} index={1} />
 
 <PlaygroundBar of={DividerStories.Basic}></PlaygroundBar>
 
@@ -32,7 +30,7 @@ components. This helps improve the rendering speed of your application or websit
 
 Change the layout of the divider to vertical to use them in a horizontal stack component.
 
-<Canvas of={DividerStories.Vertical} />
+<BasicStoryTabs tag="divider" htmlStory={DividerStories.VerticalHtml} webComponentStory={DividerStories.Vertical} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,7 +38,7 @@ Change the layout of the divider to vertical to use them in a horizontal stack c
 
 To divide inner section the dashed version can be used.
 
-<Canvas of={DividerStories.Dashed} />
+<BasicStoryTabs tag="divider" htmlStory={DividerStories.DashedHtml} webComponentStory={DividerStories.Dashed} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 

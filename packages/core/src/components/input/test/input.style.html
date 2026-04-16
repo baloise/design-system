@@ -15,45 +15,264 @@
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <div>
-          <label for="input-1">Label 1</label>
-          <input type="text" class="input" id="input-1" aria-describedby="description-1" />
-          <span id="description-1">Description 1</span>
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+          </div>
+          <p class="help">This username is available</p>
         </div>
-        <input type="text" class="input" placeholder="Placeholder" />
-        <input type="text" class="input" value="Value" />
+
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" placeholder="Placeholder" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" value="Value" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
       </section>
 
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <input type="text" class="input" disabled />
-        <input type="text" class="input" placeholder="Placeholder" disabled />
-        <input type="text" class="input" value="Value" disabled />
+        <div class="field is-disabled">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" disabled />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-disabled">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" placeholder="Placeholder" disabled />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-disabled">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" value="Value" disabled />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
       </section>
 
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <input type="text" class="input is-danger" />
-        <input type="text" class="input is-danger" placeholder="Placeholder" />
-        <input type="text" class="input is-danger" value="Value" />
+        <div class="field is-danger">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-danger">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" placeholder="Placeholder" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-danger">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" value="Value" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
       </section>
 
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>
-        <input type="text" class="input is-success" />
-        <input type="text" class="input is-success" placeholder="Placeholder" />
-        <input type="text" class="input is-success" value="Value" />
+        <div class="field is-success">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-success">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" placeholder="Placeholder" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-success">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" value="Value" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
       </section>
 
       <!-- Warning -->
       <section data-testid="warning">
         <span>Warning</span>
-        <input type="text" class="input is-warning" />
-        <input type="text" class="input is-warning" placeholder="Placeholder" />
-        <input type="text" class="input is-warning" value="Value" />
+        <div class="field is-warning">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-warning">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" placeholder="Placeholder" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+
+        <div class="field is-warning">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" value="Value" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+      </section>
+
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+            <ds-spinner size="sm" variation="circle"></ds-spinner>
+          </div>
+        </div>
+
+        <div class="field is-disabled">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+            <ds-spinner size="sm" variation="circle"></ds-spinner>
+          </div>
+        </div>
+
+        <div class="field is-danger">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+            <ds-spinner size="sm" variation="circle"></ds-spinner>
+          </div>
+        </div>
+
+        <div class="field is-warning">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+            <ds-spinner size="sm" variation="circle"></ds-spinner>
+          </div>
+        </div>
+
+        <div class="field is-success">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" />
+            <ds-spinner size="sm" variation="circle"></ds-spinner>
+          </div>
+        </div>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <div class="field">
+          <label class="label"
+            >Label Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</label
+          >
+          <div class="control">
+            <input
+              class="input"
+              value="Value Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            />
+          </div>
+          <p class="help">
+            Help Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </p>
+        </div>
+      </section>
+
+      <!-- Suffix -->
+      <section data-testid="suffix">
+        <span>Suffix</span>
+        <div class="field">
+          <label class="label">Label</label>
+          <div class="control">
+            <span class="tag is-sm">Start</span>
+            <input class="input" value="100" />
+            <span class="tag is-sm">End</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Number Type -->
+      <section data-testid="number-type">
+        <span>Number Type</span>
+        <div class="field">
+          <label class="label">Age</label>
+          <div class="control">
+            <input type="number" class="input" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Age</label>
+          <div class="control">
+            <input type="number" class="input" value="30" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Reset -->
+      <section data-testid="form-reset">
+        <span>Form Reset</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <div class="field">
+            <label class="label">Hero</label>
+            <div class="control">
+              <input required name="hero" class="input" value="Steve Rogers" />
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button is-link" data-testid="button-reset">Reset</button>
+          </div>
+        </form>
       </section>
     </main>
   </body>

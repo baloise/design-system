@@ -56,9 +56,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const WebComponentBasic = Story({
+export const Basic = Story({
   args: {
     level: 'h1',
     subtitle: false,
@@ -67,6 +65,10 @@ export const WebComponentBasic = Story({
   },
   ...withRender(({ content, ...args }) => `<ds-heading ${props(args)}>${content}</ds-heading>`),
 })
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
 
 export const Levels = Story({
   ...withRender(
@@ -78,6 +80,7 @@ export const Levels = Story({
 <h5 class="title">Heading 5</h5>`,
   ),
 })
+Levels.storyName = '🌍 Levels'
 
 export const Sizes = Story({
   ...withRender(
@@ -89,6 +92,7 @@ export const Sizes = Story({
 <h1 class="title is-level-5">Size 5 (base)</h5>`,
   ),
 })
+Sizes.storyName = '🌍 Sizes'
 
 export const Colors = Story({
   ...withRender(
@@ -99,6 +103,7 @@ export const Colors = Story({
 <h4 class="title is-danger">Danger</h4>`,
   ),
 })
+Colors.storyName = '🌍 Colors'
 
 export const NoWrap = Story({
   ...withRender(
@@ -106,6 +111,7 @@ export const NoWrap = Story({
 <h4 class="title has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
   ),
 })
+NoWrap.storyName = '🌍 No Wrap'
 
 export const Spacing = Story({
   ...withRender(
@@ -125,6 +131,7 @@ export const Spacing = Story({
   </div>`,
   ),
 })
+Spacing.storyName = '🌍 Spacing'
 
 export const AutoLevel = Story({
   ...withRender(({ content, ...args }) => `<ds-heading auto-level="h5" ${props(args)}>${content}</ds-heading>`),
@@ -137,3 +144,4 @@ export const AutoLevel = Story({
     inverted: false,
   },
 })
+AutoLevel.storyName = '🧩 Auto Level'

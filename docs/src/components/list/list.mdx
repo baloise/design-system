@@ -12,39 +12,39 @@ import * as ListStories from './list.stories'
 
 {/* <Canvas of={ListStories.Basic} sourceState="shown" /> */}
 
-<BasicStoryTabs tag="list" index={1} htmlStory={ListStories.CssBasic} webComponentStory={ListStories.Basic} />
+<BasicStoryTabs tag="list" index={1} htmlStory={ListStories.BasicHtml} webComponentStory={ListStories.Basic} />
 
 <PlaygroundBar of={ListStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ListStories.UnorderedListCss}></StoryHeading>
+<StoryHeading of={ListStories.UnorderedListHtml}></StoryHeading>
 
-<Canvas of={ListStories.UnorderedListCss} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ListStories.OrderedListCss}></StoryHeading>
-
-<Canvas of={ListStories.OrderedListCss} />
+<Canvas of={ListStories.UnorderedListHtml} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ListStories.DescriptionListCss}></StoryHeading>
+<StoryHeading of={ListStories.OrderedListHtml}></StoryHeading>
 
-<Canvas of={ListStories.DescriptionListCss} />
+<Canvas of={ListStories.OrderedListHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.DescriptionListHtml}></StoryHeading>
+
+<Canvas of={ListStories.DescriptionListHtml} />
 
 {/* ------------------------------------------------------ */}
 <StoryHeading of={ListStories.LinkedList}></StoryHeading>
 
-<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.LinkedListCss} webComponentStory={ListStories.LinkedList} />
+<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.LinkedListHtml} webComponentStory={ListStories.LinkedList} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ListStories.DownloadList}></StoryHeading>
 
-<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.DownloadListCss} webComponentStory={ListStories.DownloadList} />
+<BasicStoryTabs tag="list" noGuide={true} index={1} htmlStory={ListStories.DownloadListHtml} webComponentStory={ListStories.DownloadList} />
 
 {/* ------------------------------------------------------ */}
 
@@ -75,7 +75,7 @@ import api from './api.md?raw'
 
 import dsItemApi from './item/api.md?raw'
 
-<Markdown>{balItemApi}</Markdown>
+<Markdown>{dsItemApi}</Markdown>
 
 ## CSS Variables
 

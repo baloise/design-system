@@ -30,8 +30,8 @@
   @include vars.local(#{$prefix}-placeholder, var(--ds-input-control-color-placeholder-base));
 }
 
-@mixin style($prefix) {
-  #input {
+@mixin style($prefix, $selector: '#input') {
+  #{$selector} {
     border: none;
     outline: none;
     box-shadow: none;
@@ -74,8 +74,8 @@
   @include vars.local(#{$prefix}-container-focus-border, var(--ds-input-container-color-focus-border));
 }
 
-@mixin container($prefix) {
-  #container {
+@mixin container($prefix, $selector: '#container') {
+  #{$selector} {
     box-sizing: border-box;
     clear: both;
     display: flex;
@@ -126,8 +126,8 @@
   @include vars.local(#{$prefix}-label-size, var(--ds-input-label-size-device));
 }
 
-@mixin label($prefix) {
-  label {
+@mixin label($prefix, $selector: 'label') {
+  #{$selector} {
     @include font-smoothing();
 
     display: block;
@@ -160,8 +160,8 @@
   @include vars.local(#{$prefix}-description-size, var(--ds-input-description-size-device));
 }
 
-@mixin description($prefix) {
-  #description {
+@mixin description($prefix, $selector: '#description') {
+  #{$selector} {
     @include font-smoothing();
 
     display: flex;

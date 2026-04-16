@@ -109,6 +109,18 @@ html {
   color: #ffffff !important;
 }
 
+.sidebar-item[data-nodetype='story'] svg {
+  display: none;
+}
+
+.sidebar-item[data-nodetype='story'] > button > div {
+  display: none;
+}
+
+svg[type="story"] {
+  display: none;
+}
+
 /***************************************
  * Cookie Alert
  ***************************************/

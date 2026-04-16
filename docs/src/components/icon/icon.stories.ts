@@ -33,6 +33,7 @@ export const Basic = Story({
     content: '',
   },
 })
+Basic.storyName = '🧩 Basic'
 
 export const UiIcons = Story({
   args: {
@@ -91,6 +92,7 @@ export const UiIcons = Story({
 </div>`,
   ),
 })
+UiIcons.storyName = '🧩 UI Icons'
 
 export const BrandIcons = Story({
   args: {
@@ -102,3 +104,4 @@ export const BrandIcons = Story({
     ({ content, ...args }) => `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</ds-icon>`,
   ),
 })
+BrandIcons.storyName = '🧩 Brand Icons'

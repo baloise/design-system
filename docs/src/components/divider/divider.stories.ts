@@ -40,9 +40,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const WebComponentBasic = Story({
+export const Basic = Story({
   ...withRender(
     ({ content, ...args }) => `
 <div class="stack as-col">
@@ -53,15 +51,45 @@ export const WebComponentBasic = Story({
    `,
   ),
 })
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
 
 export const Dashed = Story({
+  ...withRender(
+    () => `
+<div class="stack as-col">
+  <span>Before</span>
+  <ds-divider dashed></ds-divider>
+  <span>After</span>
+</div>`,
+  ),
+})
+Dashed.storyName = '🧩 Dashed'
+
+export const DashedHtml = Story({
   args: {
     dashed: true,
   },
 })
+DashedHtml.storyName = '🌍 Dashed'
 
 export const Vertical = Story({
+  ...withRender(
+    () => `
+<div class="stack as-row">
+  <span>Before</span>
+  <ds-divider layout="vertical"></ds-divider>
+  <span>After</span>
+</div>`,
+  ),
+})
+Vertical.storyName = '🧩 Vertical'
+
+export const VerticalHtml = Story({
   args: {
     layout: 'vertical',
   },
 })
+VerticalHtml.storyName = '🌍 Vertical'

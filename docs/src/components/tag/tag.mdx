@@ -10,7 +10,7 @@ import * as TagStories from './tag.stories'
 
 <Lead>**Tag** highlights a label for quick recognition.</Lead>
 
-<BasicStoryTabs tag="tag" htmlStory={TagStories.Basic} webComponentStory={TagStories.WebComponentBasic} />
+<BasicStoryTabs tag="tag" htmlStory={TagStories.BasicHtml} webComponentStory={TagStories.Basic} index={1} />
 
 <PlaygroundBar of={TagStories.Basic}></PlaygroundBar>
 
@@ -21,16 +21,13 @@ import * as TagStories from './tag.stories'
 
 The tag component can include a close button by using the `closable` property.
 
-<Canvas of={TagStories.Closable} />
-
+<BasicStoryTabs tag="tag" htmlStory={TagStories.ClosableHtml} webComponentStory={TagStories.Closable} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TagStories.Colors}></StoryHeading>
 
-The tag component can be grouped alongside the `ds-tag-group` component, which offers optimal spacing options.
-
-<Canvas of={TagStories.Colors} />
+<BasicStoryTabs tag="tag" htmlStory={TagStories.ColorsHtml} webComponentStory={TagStories.Colors} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
@@ -38,17 +35,7 @@ The tag component can be grouped alongside the `ds-tag-group` component, which o
 
 The tag component can be grouped alongside the `ds-tag-group` component, which offers optimal spacing options.
 
-<Canvas of={TagStories.TagGroup} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TagStories.TagCard}></StoryHeading>
-
-Tags can be seamlessly integrated with a `ds-card` component. Additionally, you have the flexibility to position them either on the left or at the center.
-
-<Canvas of={TagStories.TagCard} />
-
-<Canvas of={TagStories.TeaserCard} />
+<BasicStoryTabs tag="tag" htmlStory={TagStories.TagGroupHtml} webComponentStory={TagStories.TagGroup} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 

@@ -15,7 +15,7 @@
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-input label="Label 1"></ds-input>
+        <ds-input label="Label 1" required="false"></ds-input>
         <ds-input label="Label 1" description="Description 1"></ds-input>
         <ds-input label="Label 2" description="Description 2" placeholder="Placeholder"></ds-input>
         <ds-input label="Label 3" description="Description 3" value="Value"></ds-input>
@@ -33,8 +33,20 @@
       <section data-testid="invalid">
         <span>Invalid</span>
         <ds-input label="Label 1" description="Description 1" invalid-text="Validation Error 1" invalid></ds-input>
-        <ds-input label="Label 2" description="Description 2" placeholder="Placeholder" invalid-text="Validation Error 2" invalid></ds-input>
-        <ds-input label="Label 3" description="Description 3" value="Value" invalid-text="Validation Error 3" invalid></ds-input>
+        <ds-input
+          label="Label 2"
+          description="Description 2"
+          placeholder="Placeholder"
+          invalid-text="Validation Error 2"
+          invalid
+        ></ds-input>
+        <ds-input
+          label="Label 3"
+          description="Description 3"
+          value="Value"
+          invalid-text="Validation Error 3"
+          invalid
+        ></ds-input>
       </section>
 
       <!-- Valid -->
@@ -78,19 +90,29 @@
         <span>Suffix</span>
         <ds-input label="Label" suffix="CHF" value="100"></ds-input>
         <ds-input label="Label" value="100">
-          <span slot="input-start" class="tag is-sm is-square">CHF</span>
+          <span slot="start" class="tag is-sm is-square">CHF</span>
         </ds-input>
         <ds-input label="Label" value="100">
-          <ds-button slot="input-end" size="sm">Click</ds-button>
+          <ds-button slot="end" size="sm">Click</ds-button>
         </ds-input>
       </section>
 
       <!-- Number Type -->
       <section data-testid="number-type">
         <span>Number Type</span>
-          <ds-input type="number" label="Age"></ds-input>
-          <ds-input type="number" label="Age" value="30"></ds-input>
-        </form>
+        <ds-input type="number" label="Age"></ds-input>
+        <ds-input type="number" label="Age" value="30"></ds-input>
+      </section>
+
+      <!-- Slots -->
+      <section data-testid="slots">
+        <span>Slots</span>
+        <ds-input value="Value">
+          <span slot="label">Slot Label</span>
+          <span slot="start" class="tag is-sm is-square">START</span>
+          <span slot="end" class="tag is-sm is-square">END</span>
+          <span slot="description">Slot description</span>
+        </ds-input>
       </section>
 
       <!-- Form Reset -->
@@ -109,9 +131,20 @@
       <!-- Formatter -->
       <section data-testid="formatter">
         <span>Formatter</span>
-          <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number"></ds-input>
-          <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number" value="123456"></ds-input>
-        </form>
+        <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number"></ds-input>
+        <ds-input label="VehicleRegistrationNumber" mask="vehicle-registration-number" value="123456789012"></ds-input>
+        <ds-input label="OfferNumber" mask="offer-number"></ds-input>
+        <ds-input label="OfferNumber" mask="offer-number" value="987654321"></ds-input>
+        <ds-input label="ContractNumber" mask="contract-number"></ds-input>
+        <ds-input label="ContractNumber" mask="contract-number" value="9087654321"></ds-input>
+        <ds-input label="BasicContractNumber" mask="basic-contract-number"></ds-input>
+        <ds-input label="BasicContractNumber" mask="basic-contract-number" value="987654327"></ds-input>
+        <ds-input label="ClaimNumber" mask="claim-number"></ds-input>
+        <ds-input label="ClaimNumber" mask="claim-number" value="7300772816X"></ds-input>
+        <ds-input label="BeEnterpriseNumber" mask="be-enterprise-number"></ds-input>
+        <ds-input label="BeEnterpriseNumber" mask="be-enterprise-number" value="1234567890"></ds-input>
+        <ds-input label="BeIBAN" mask="be-iban"></ds-input>
+        <ds-input label="BeIBAN" mask="be-iban" value="68539007547034"></ds-input>
       </section>
     </main>
   </body>

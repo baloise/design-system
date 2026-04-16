@@ -104,11 +104,6 @@ a.sbdocs-a:not(.button) {
 
 a.sbdocs-a.button {
   color: var(--ds-color-white);
-  /* font-size: inherit;
-  font-weight: var(--ds-link-weight) !important;
-  text-decoration: underline !important;
-  text-underline-offset: 0.25rem !important;
-  text-decoration-thickness: var(--ds-link-border-width) !important; */
 }
 
 

@@ -55,16 +55,20 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-export const WebComponentBasic = Story({
+export const Basic = Story({
   ...withRender(({ content, ...args }) => `<ds-text ${props(args)}>${content}</ds-text>`),
 })
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
 
 export const BoldText = Story({
   args: {
     bold: true,
   },
 })
+BoldText.storyName = '🌍 Bold Text'
 
 export const DisabledText = Story({
   args: {
@@ -72,6 +76,7 @@ export const DisabledText = Story({
     disabled: true,
   },
 })
+DisabledText.storyName = '🌍 Disabled Text'
 
 export const NestedText = Story({
   ...withRender(
@@ -81,6 +86,7 @@ export const NestedText = Story({
 `,
   ),
 })
+NestedText.storyName = '🌍 Nested Text'
 
 export const Colors = Story({
   ...withRender(
@@ -108,6 +114,7 @@ export const Colors = Story({
 `,
   ),
 })
+Colors.storyName = '🌍 Colors'
 
 export const Sizes = Story({
   ...withRender(
@@ -128,6 +135,7 @@ export const Sizes = Story({
 `,
   ),
 })
+Sizes.storyName = '🌍 Sizes'
 
 export const Spacing = Story({
   ...withRender(
@@ -147,6 +155,7 @@ export const Spacing = Story({
   </div>`,
   ),
 })
+Spacing.storyName = '🌍 Spacing'
 
 export const FontFamily = Story({
   ...withRender(
@@ -156,6 +165,7 @@ export const FontFamily = Story({
   `,
   ),
 })
+FontFamily.storyName = '🌍 Font Family'
 
 export const FontWeight = Story({
   ...withRender(
@@ -166,6 +176,7 @@ export const FontWeight = Story({
   `,
   ),
 })
+FontWeight.storyName = '🌍 Font Weight'
 
 export const NoWrap = Story({
   args: {
@@ -174,3 +185,4 @@ export const NoWrap = Story({
     noWrap: true,
   },
 })
+NoWrap.storyName = '🌍 No Wrap'

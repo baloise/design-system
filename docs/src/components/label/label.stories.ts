@@ -57,12 +57,14 @@ export const Basic = Story({
     required: undefined,
   },
 })
+Basic.storyName = '🌍 Basic'
 
 export const RequiredAndOptional = Story({
   args: {
     content: 'Label (optional)',
   },
 })
+RequiredAndOptional.storyName = '🌍 Required And Optional'
 
 export const States = Story({
   ...withRender(
@@ -72,6 +74,7 @@ export const States = Story({
 `,
   ),
 })
+States.storyName = '🌍 States'
 
 export const Sizes = Story({
   ...withRender(
@@ -82,6 +85,7 @@ export const Sizes = Story({
 `,
   ),
 })
+Sizes.storyName = '🌍 Sizes'
 
 export const FieldLabel = Story({
   ...withRender(
@@ -94,3 +98,4 @@ export const FieldLabel = Story({
   </ds-field>`,
   ),
 })
+FieldLabel.storyName = '🧩 Field Label'

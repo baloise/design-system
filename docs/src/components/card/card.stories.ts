@@ -47,9 +47,10 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
+export const Basic = Story({})
+Basic.storyName = '🧩 Basic'
 
-export const CssBasic = Story({
+export const BasicHtml = Story({
   ...withRender(
     ({ content, ...args }) => `
 <article class="card">
@@ -67,12 +68,14 @@ export const CssBasic = Story({
     `,
   ),
 })
+BasicHtml.storyName = '🌍 Basic'
 
 export const Outlined = Story({
   args: {
     outlined: true,
   },
 })
+Outlined.storyName = '🧩 Outlined'
 
 export const CardHeader = Story({
   ...withRender(
@@ -103,6 +106,7 @@ export const CardHeader = Story({
 </ds-card>`,
   ),
 })
+CardHeader.storyName = '🧩 Card Header'
 
 export const TileCard = Story({
   ...withRender(
@@ -129,6 +133,7 @@ export const TileCard = Story({
     `,
   ),
 })
+TileCard.storyName = '🧩 Tile Card'
 
 export const TeaserCards = Story({
   ...withRender(
@@ -206,6 +211,7 @@ export const TeaserCards = Story({
     `,
   ),
 })
+TeaserCards.storyName = '🧩 Teaser Cards'
 
 export const CardImages = Story({
   ...withRender(
@@ -288,6 +294,7 @@ export const CardImages = Story({
 </div>`,
   ),
 })
+CardImages.storyName = '🧩 Card Images'
 
 export const ImageTeaser = Story({
   ...withRender(
@@ -324,3 +331,4 @@ export const ImageTeaser = Story({
 </ds-card>`,
   ),
 })
+ImageTeaser.storyName = '🧩 Image Teaser'

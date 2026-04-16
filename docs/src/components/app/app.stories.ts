@@ -43,6 +43,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+Basic.storyName = '🧩 Basic'
 
 export const FormWizard = Story({
   ...withRender(
@@ -83,6 +84,7 @@ export const FormWizard = Story({
     </ds-app>`,
   ),
 })
+FormWizard.storyName = '🧩 Form Wizard'
 
 export const FormWizardMobile = Story({
   ...withRender(
@@ -110,3 +112,4 @@ export const FormWizardMobile = Story({
     </ds-app>`,
   ),
 })
+FormWizardMobile.storyName = '🧩 Form Wizard Mobile'

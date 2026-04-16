@@ -50,9 +50,10 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
+export const Basic = Story({})
+Basic.storyName = '🧩 Basic'
 
-export const CssBasic = Story({
+export const BasicHtml = Story({
   ...withRender(
     ({ content, ...args }) => ` <ul class="list">
     <li class="item">
@@ -81,6 +82,7 @@ export const CssBasic = Story({
   `,
   ),
 })
+BasicHtml.storyName = '🌍 Basic'
 
 export const LinkedList = Story({
   args: {},
@@ -109,8 +111,9 @@ export const LinkedList = Story({
   `,
   ),
 })
+LinkedList.storyName = '🧩 Linked List'
 
-export const LinkedListCss = Story({
+export const LinkedListHtml = Story({
   args: {},
   ...withRender(
     ({ ...args }) => `
@@ -143,6 +146,7 @@ export const LinkedListCss = Story({
   `,
   ),
 })
+LinkedListHtml.storyName = '🌍 Linked List'
 
 export const DownloadList = Story({
   args: {},
@@ -168,8 +172,9 @@ export const DownloadList = Story({
   `,
   ),
 })
+DownloadList.storyName = '🧩 Download List'
 
-export const DownloadListCss = Story({
+export const DownloadListHtml = Story({
   args: {},
   ...withRender(
     ({ ...args }) => `
@@ -228,6 +233,7 @@ export const DownloadListCss = Story({
   `,
   ),
 })
+DownloadListHtml.storyName = '🌍 Download List'
 
 export const AccordionList = Story({
   args: {},
@@ -265,6 +271,7 @@ export const AccordionList = Story({
   `,
   ),
 })
+AccordionList.storyName = '🧩 Accordion List'
 
 export const AccordionListNested = Story({
   args: {},
@@ -317,6 +324,7 @@ export const AccordionListNested = Story({
   `,
   ),
 })
+AccordionListNested.storyName = '🧩 Accordion List Nested'
 
 export const OrderedList = Story({
   args: {
@@ -352,8 +360,9 @@ export const OrderedList = Story({
   `,
   ),
 })
+OrderedList.storyName = '🧩 Ordered List'
 
-export const UnorderedListCss = Story({
+export const UnorderedListHtml = Story({
   ...withRender(
     () => `<div>
   <ul class="unordered-list">
@@ -394,8 +403,9 @@ export const UnorderedListCss = Story({
   `,
   ),
 })
+UnorderedListHtml.storyName = '🌍 Unordered List'
 
-export const OrderedListCss = Story({
+export const OrderedListHtml = Story({
   ...withRender(
     () => `<div>
   <ol class="ordered-list">
@@ -413,8 +423,9 @@ export const OrderedListCss = Story({
 </div>`,
   ),
 })
+OrderedListHtml.storyName = '🌍 Ordered List'
 
-export const DescriptionListCss = Story({
+export const DescriptionListHtml = Story({
   ...withRender(
     () => `<div>
   <dl class="description-list">
@@ -428,3 +439,4 @@ export const DescriptionListCss = Story({
 </div>`,
   ),
 })
+DescriptionListHtml.storyName = '🌍 Description List'

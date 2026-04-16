@@ -42,6 +42,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+Basic.storyName = '🧩 Basic'
 
 export const WithIcon = Story({
   args: {
@@ -50,6 +51,7 @@ export const WithIcon = Story({
     content: '',
   },
 })
+WithIcon.storyName = '🧩 With Icon'
 
 export const Colors = Story({
   ...withRender(
@@ -65,6 +67,7 @@ export const Colors = Story({
 </div>`,
   ),
 })
+Colors.storyName = '🧩 Colors'
 
 export const Sizes = Story({
   ...withRender(
@@ -75,6 +78,7 @@ export const Sizes = Story({
 </div>`,
   ),
 })
+Sizes.storyName = '🧩 Sizes'
 
 export const CardBadge = Story({
   args: {
@@ -95,6 +99,7 @@ export const CardBadge = Story({
 </article>`,
   ),
 })
+CardBadge.storyName = '🧩 Card Badge'
 
 export const ButtonBadge = Story({
   args: {
@@ -109,6 +114,7 @@ export const ButtonBadge = Story({
 </button>`,
   ),
 })
+ButtonBadge.storyName = '🧩 Button Badge'
 
 export const TabsBadge = Story({
   args: {
@@ -122,58 +128,36 @@ export const TabsBadge = Story({
 </ds-tabs>`,
   ),
 })
+TabsBadge.storyName = '🧩 Tabs Badge'
 
 export const ListBadges = Story({
   ...withRender(
-    () => `<ds-list border>
-  <ds-list-item clickable>
-    <ds-list-item-icon>
-      <ds-badge color="green" size="large" icon="check"></ds-badge>
-    </ds-list-item-icon>
-    <ds-list-item-content>
-      <ds-list-item-title>Clickable item</ds-list-item-title>
-      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
-    </ds-list-item-content>
-    <ds-list-item-icon right>
-      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-    </ds-list-item-icon>
-  </ds-list-item>
-  <ds-list-item clickable>
-    <ds-list-item-icon>
-      <ds-badge color="purple" size="large">2</ds-badge>
-    </ds-list-item-icon>
-    <ds-list-item-content>
-      <ds-list-item-title>Clickable item</ds-list-item-title>
-      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
-    </ds-list-item-content>
-    <ds-list-item-icon right>
-      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-    </ds-list-item-icon>
-  </ds-list-item>
-  <ds-list-item disabled>
-    <ds-list-item-icon>
-      <ds-badge color="grey" size="large">3</ds-badge>
-    </ds-list-item-icon>
-    <ds-list-item-content>
-      <ds-list-item-title>Clickable item</ds-list-item-title>
-      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
-    </ds-list-item-content>
-    <ds-list-item-icon right>
-      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-    </ds-list-item-icon>
-  </ds-list-item>
-  <ds-list-item disabled>
-    <ds-list-item-icon>
-      <ds-badge color="grey" size="large" icon="document"></ds-badge>
-    </ds-list-item-icon>
-    <ds-list-item-content>
-      <ds-list-item-title>Clickable item</ds-list-item-title>
-      <ds-list-item-subtitle>Secondary text</ds-list-item-subtitle>
-    </ds-list-item-content>
-    <ds-list-item-icon right>
-      <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-    </ds-list-item-icon>
-  </ds-list-item>
+    () => `
+<ds-list>
+  <ds-item variant="link" href="www.helvetia.com" target="_blank">
+    <ds-badge color="green" size="lg" slot="icon">
+      <ds-icon name="check"></ds-icon>
+    </ds-badge>
+    <div slot="content">
+      <h5>Item 1</h5>
+      <span>This is a description for item</span>
+    </div>
+  </ds-item>
+
+  <ds-item label="Item 2" description="This is a description for item">
+    <ds-badge color="purple" size="lg" slot="icon">2</ds-badge>
+  </ds-item>
+
+  <ds-item label="Item 3" description="This is a description for item">
+    <ds-badge color="purple" size="lg" slot="icon">
+      <ds-icon name="document"></ds-icon>
+    </ds-badge>
+  </ds-item>
+
+  <ds-item label="Item 4" description="This is a description for item" disabled>
+    <ds-badge color="purple" size="lg" slot="icon">4</ds-badge>
+  </ds-item>
 </ds-list>`,
   ),
 })
+ListBadges.storyName = '🧩 List Badges'

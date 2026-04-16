@@ -68,6 +68,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+Basic.storyName = '🧩 Basic'
 
 export const Colors = Story({
   args: {
@@ -85,6 +86,7 @@ export const Colors = Story({
 `,
   ),
 })
+Colors.storyName = '🧩 Colors'
 
 import { BrandIconCarPurple } from '@baloise/ds-assets/dist'
 
@@ -98,3 +100,4 @@ export const BrandIcons = Story({
 `,
   ),
 })
+BrandIcons.storyName = '🧩 Brand Icons'

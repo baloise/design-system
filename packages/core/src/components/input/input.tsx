@@ -22,6 +22,8 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../utils/config'
+import { I18nDsLabel } from '../label/label.i18n'
 
 @Component({
   tag: 'ds-input',
@@ -44,6 +46,9 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   @Element() el!: HTMLStencilElement
 
   @State() focused = false
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
   @AttachInternals() internals!: ElementInternals
 
   /**
@@ -77,7 +82,7 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   @Prop() color: 'primary' | 'danger' | 'success' | 'warning' = 'primary'
 
   /**
-   * Shows a loading indicator at the end of the input and replaces the input-end slot content.
+   * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop() loading = false
 
@@ -175,7 +180,7 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = false
+  @Prop() required = true
 
   /**
    * If `true`, the element will have its spelling and grammar checked.
@@ -270,6 +275,16 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   }
 
   /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -336,190 +351,6 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
     return `${value}${suffix}`
   }
 
-  // private getInputValue = () => {
-  //   const input = this.nativeInput
-
-  //   let inputValue = ''
-  //   if (input) {
-  //     if (this.allowedKeyPress && input && !this.mask) {
-  //       const regex = new RegExp('^' + this.allowedKeyPress + '$')
-  //       const value = input.value
-  //         .split('')
-  //         .filter(val => regex.test(val))
-  //         .join('')
-  //       input.value = value
-  //       return value
-  //     }
-
-  //     if (input.value) {
-  //       if (this.mask) {
-  //         switch (this.mask) {
-  //           case 'vehicle-registration-number': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             if (inputValue.length > MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_VEHICLE_REGISTRATION_NUMBER)
-  //             }
-
-  //             return inputValue
-  //           }
-  //           case 'contract-number': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             // Removing the leading zero if presented
-  //             if (inputValue.charAt(0) === '0') {
-  //               inputValue = inputValue.substring(1)
-  //             }
-  //             if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
-  //             }
-  //             return inputValue
-  //           }
-  //           case 'basic-contract-number': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             // Removing the leading zero if presented
-  //             if (inputValue.charAt(0) === '0') {
-  //               inputValue = inputValue.substring(1)
-  //             }
-  //             if (inputValue.length > MAX_LENGTH_BASIC_CONTRACT_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_BASIC_CONTRACT_NUMBER)
-  //             }
-  //             return inputValue
-  //           }
-  //           case 'offer-number': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-  //             }
-  //             return inputValue
-  //           }
-  //           case 'claim-number': {
-  //             inputValue = input.value.replace(/[^\dXx]/g, '')
-  //             const inputParts = [
-  //               inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-  //               inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-  //               inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-  //             ].filter(val => val.length > 0)
-  //             switch (inputParts.length) {
-  //               case 1:
-  //                 inputValue = `${inputParts[0].replace(/\D/g, '')}`
-  //                 break
-  //               case 2:
-  //                 inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-  //                 break
-  //               default:
-  //                 inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
-  //             }
-  //             if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-  //             }
-  //             return inputValue
-  //           }
-  //           case 'be-enterprise-number': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
-  //             }
-  //             return inputValue
-  //           }
-  //           case 'be-iban': {
-  //             inputValue = input.value.replace(/\D/g, '')
-  //             if (inputValue.length > MAX_LENGTH_BE_IBAN) {
-  //               inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
-  //             }
-  //             return inputValue
-  //           }
-  //           default:
-  //             return input.value
-  //         }
-  //       }
-  //     } else {
-  //       this.inputValue = input.value
-  //     }
-  //   }
-
-  //   return ''
-  // }
-
-  // private onInput = (ev: InputEvent) => {
-  // this.control.onInput(ev)
-
-  // const input = getInputTarget(ev)
-  // const cursorPositionStart = (ev as any).target?.selectionStart
-  // const cursorPositionEnd = (ev as any).target?.selectionEnd
-
-  // this.inputValue = this.getInputValue()
-
-  // if (input) {
-  //   if (input.value) {
-  //     switch (this.mask) {
-  //       case 'vehicle-registration-number': {
-  //         input.value = formatVehicleRegistrationNumber(this.inputValue)
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       case 'contract-number':
-  //       case 'basic-contract-number': {
-  //         input.value = formatPolicy(this.inputValue)
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       case 'offer-number': {
-  //         input.value = formatOffer(this.inputValue)
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       case 'claim-number': {
-  //         input.value = formatClaim(this.inputValue)
-
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       case 'be-enterprise-number': {
-  //         input.value = formatBeEnterpriseNumber(this.inputValue)
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       case 'be-iban': {
-  //         input.value = formatBeIBAN(this.inputValue)
-  //         if (cursorPositionStart < this.inputValue.length) {
-  //           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-  //         }
-  //         break
-  //       }
-  //       default:
-  //         this.inputValue = input.value
-  //     }
-  //   } else {
-  //     this.inputValue = input.value
-  //   }
-  // }
-
-  // this.dsInput.emit(this.inputValue)
-  // }
-
-  // private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
-
-  // private onBlur = (ev: FocusEvent) => {
-  //   // inputHandleBlur(this, ev)
-  //   // inputHandleChange(this)
-  //   // const input = ev.target as HTMLInputElement | null
-  //   // if (input) {
-  //   //   if (this.mask === undefined) {
-  //   //     input.value = this.getFormattedValue()
-  //   //   }
-  //   //   inputHandleChange(this)
-  //   // }
-  // }
-
   private onKeydown = (ev: KeyboardEvent) => {
     if (this.mask !== undefined) {
       return this.maskUtil.onKeydown(ev)
@@ -572,6 +403,7 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
       <Host
         aria-disabled={ariaBooleanToString(this.disabled)}
         class={{
+          'ds-field ': true,
           'is-disabled': this.disabled,
           'is-danger': this.color === 'danger' || this.invalid,
           'is-success': this.color === 'success' && !this.invalid,
@@ -583,12 +415,13 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
         {/* ---------------------------------------- */}
         <label htmlFor="input" part="label" id="label">
           <slot name="label">{this.label}</slot>
+          {this.required === false && <span>{I18nDsLabel[this.language].optional || ''}</span>}
         </label>
         {/* ---------------------------------------- */}
         {/* Input Group                              */}
         {/* ---------------------------------------- */}
         <div id="container">
-          <slot name="input-start"></slot>
+          <slot name="start"></slot>
           <input
             id="input"
             part="input"
@@ -623,12 +456,11 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
             {...inputProps}
             {...this.inheritedAttributes}
           />
-          <slot name="input-end"></slot>
+          <slot name="end"></slot>
           {/* ---------------------------------------- */}
           {/* Loading Indicator                        */}
           {/* ---------------------------------------- */}
           {this.loading && <ds-spinner small variation="circle" color={this.disabled ? 'white' : 'blue'}></ds-spinner>}
-          {!this.loading && <slot name="icon-end"></slot>}
         </div>
         {/* ---------------------------------------- */}
         {/* Description                              */}

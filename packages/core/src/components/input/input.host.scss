@@ -27,7 +27,6 @@
   display: grid;
   gap: 0.25rem;
 
-
   @include input.style('input');
   @include input.container('input');
   @include input.label('input');

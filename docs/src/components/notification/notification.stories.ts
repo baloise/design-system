@@ -54,9 +54,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const WebComponentBasic = Story({
+export const Basic = Story({
   args: {},
   ...withRender(
     ({ content, ...args }) => `<ds-notification ${props(args)}>
@@ -64,6 +62,10 @@ export const WebComponentBasic = Story({
 </ds-notification>`,
   ),
 })
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
 
 export const Alerts = Story({
   args: {
@@ -91,6 +93,7 @@ export const Alerts = Story({
 </div>`,
   ),
 })
+Alerts.storyName = '🧩 Alerts'
 
 export const Outlines = Story({
   args: {
@@ -117,3 +120,4 @@ export const Outlines = Story({
 </div>`,
   ),
 })
+Outlines.storyName = '🧩 Outlines'

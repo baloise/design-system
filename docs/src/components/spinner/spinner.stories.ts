@@ -23,6 +23,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
+Basic.storyName = '🧩 Basic'
 
 export const LoadingButton = Story({
   args: {
@@ -30,6 +31,7 @@ export const LoadingButton = Story({
   },
   ...withRender(() => `<ds-button loading="true" disabled="true">Button</ds-button>`),
 })
+LoadingButton.storyName = '🧩 Loading Button'
 
 export const LoadingCard = Story({
   args: {
@@ -44,3 +46,4 @@ export const LoadingCard = Story({
 </ds-card>`,
   ),
 })
+LoadingCard.storyName = '🧩 Loading Card'
