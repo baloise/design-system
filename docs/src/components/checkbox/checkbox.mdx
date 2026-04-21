@@ -1,0 +1,107 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+
+<Meta of={CheckboxStories} />
+
+<StoryHeading of={CheckboxStories.Basic} hidden></StoryHeading>
+
+<Banner of={CheckboxStories} />
+
+<Lead>**Checkbox** is a form control that allows users to select one or more options from a set. Use `ds-checkbox-group` to group checkboxes with a shared label, description, and form value.</Lead>
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.BasicHtml} webComponentStory={CheckboxStories.Basic} index={1} />
+
+<PlaygroundBar of={CheckboxStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Disabled}></StoryHeading>
+
+Apply the `disabled` attribute to prevent user interaction. When used on `ds-checkbox-group` with `control`, it propagates to all child checkboxes automatically.
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.DisabledHtml} webComponentStory={CheckboxStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Invalid}></StoryHeading>
+
+Apply the `invalid` attribute to indicate a validation error. When used on `ds-checkbox-group` with `control`, it propagates to all child checkboxes automatically.
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.InvalidHtml} webComponentStory={CheckboxStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Field}></StoryHeading>
+
+Wrap checkboxes in `ds-checkbox-group` with the `control` attribute to add a shared label, description, and help text. The group manages the combined form value as an array.
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.FieldHtml} webComponentStory={CheckboxStories.Field} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.FieldVertical}></StoryHeading>
+
+Add the `vertical` attribute on `ds-checkbox-group` to stack checkboxes in a column instead of a row.
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.FieldVerticalHtml} webComponentStory={CheckboxStories.FieldVertical} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Form}></StoryHeading>
+
+Place `ds-checkbox-group` with `control` inside a `<form>`. The group submits its selected values as a comma-separated string and resets cleanly on form reset.
+
+<BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.FormHtml} webComponentStory={CheckboxStories.Form} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileBasic}></StoryHeading>
+
+Add the `tile` attribute on `ds-checkbox-group` to render each option as a card-style tile. Tiles are well suited for larger clickable areas with more visual weight.
+
+<Canvas of={CheckboxStories.TileBasic} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileColumns}></StoryHeading>
+
+Use the `cols`, `cols-tablet`, and `cols-mobile` attributes on `ds-checkbox-group` to control the tile grid layout at different breakpoints.
+
+<Canvas of={CheckboxStories.TileColumns} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileStack}></StoryHeading>
+
+Combine `ds-stack`, `ds-icon`, `ds-label`, and `ds-content` inside each checkbox slot to build rich tile layouts with icon and description.
+
+<Canvas of={CheckboxStories.TileStack} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileStackCentered}></StoryHeading>
+
+Use `ds-stack layout="vertical" align="center"` to center-align the icon and label within each tile. Combine with `label-position="top"` on the group for a fully centered layout.
+
+<Canvas of={CheckboxStories.TileStackCentered} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="checkbox" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />

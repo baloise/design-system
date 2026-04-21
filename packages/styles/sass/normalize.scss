@@ -234,12 +234,15 @@
  */
 
 :where(fieldset) {
+  margin: 0;
   padding: 0;
   border: none;
 }
 
 :where(legend) {
   padding: 0;
+  float: left;
+  width: 100%;
 }
 
 /**

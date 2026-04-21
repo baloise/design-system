@@ -7,10 +7,12 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Prop,
   State,
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'ds-checkbox',
@@ -20,6 +22,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 })
 export class Checkbox implements ComponentInterface, Loggable {
   private inputId = `ds-cb-${checkboxIds++}`
+  private inheritAttributes: Attributes = {}
   nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLDsCheckboxElement
@@ -95,7 +98,7 @@ export class Checkbox implements ComponentInterface, Loggable {
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() color?: DS.CheckboxTileColor
+  @Prop() tileColor?: DS.CheckboxTileColor
 
   /**
    * Defines the layout of the input
@@ -137,72 +140,33 @@ export class Checkbox implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  // connectedCallback() {
-  //   this.hoveredChanged()
+  connectedCallback(): void {
+    this.initialValue = this.checked
+    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+  }
 
-  //   if (this.group) {
-  //     this.updateState()
-  //     this.group.addEventListener('dsChange', () => this.updateState())
-  //   }
-
-  //   this.initialValue = this.checked
-
-  //   this.el.addEventListener('keydown', this.onKeydown)
-  //   this.el.addEventListener('touchstart', this.onPointerDown)
-  //   this.el.addEventListener('mousedown', this.onPointerDown)
-  // }
-
-  // componentWillLoad() {
-  //   this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  // }
-
-  // componentWillRender(): Promise<void> | void {
-  //   this.interactionChildElements.forEach(el => {
-  //     el.disabled = this.disabled || this.readonly
-  //     el.invalid = this.invalid
-  //     el.checked = this.checked
-  //   })
-  // }
-
-  // disconnectedCallback() {
-  //   if (this.group) {
-  //     this.group.removeEventListener('dsChange', () => this.updateState())
-  //   }
-
-  //   this.el.removeEventListener('keydown', this.onKeydown)
-  //   this.el.removeEventListener('touchstart', this.onPointerDown)
-  //   this.el.removeEventListener('mousedown', this.onPointerDown)
-  // }
+  componentWillLoad() {
+    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
 
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
 
-  // @Listen('click', { capture: true, target: 'document' })
-  // listenOnClick(ev: UIEvent) {
-  //   if (
-  //     (this.disabled || this.readonly) &&
-  //     ev.target &&
-  //     (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))
-  //   ) {
-  //     stopEventBubbling(ev)
-  //   }
-  // }
+  @Listen('reset', { capture: true, target: 'document' })
+  listenToReset(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.checked = this.initialValue
+    }
+  }
 
-  // @Listen('reset', { capture: true, target: 'document' })
-  // resetHandler(ev: UIEvent) {
-  //   const formElement = ev.target as HTMLElement
-  //   if (formElement?.contains(this.el)) {
-  //     this.checked = this.initialValue
-  //   }
-  // }
-
-  // @ListenToElementStates()
-  // elementStateListener(info: BalElementStateInfo) {
-  //   this.outerElementState = info
-  //   this.mergeElementState()
-  // }
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
   /**
    * PUBLIC METHODS
@@ -210,183 +174,28 @@ export class Checkbox implements ComponentInterface, Loggable {
    */
 
   /**
-   * Sets the focus on the checkbox input element.
-   */
-  // @Method()
-  // async setFocus() {
-  //   inputSetFocus<any>(this)
-  // }
-
-  /**
-   * Sets blur on the native `input`. Use this method instead of the global
-   * `input.blur()`.
-   * @internal
-   */
-  // @Method()
-  // async setBlur() {
-  //   inputSetBlur<any>(this)
-  // }
-
-  /**
-   * Returns the native `<input>` element used under the hood.
-   */
-  // @Method()
-  // getInputElement(): Promise<HTMLInputElement | undefined> {
-  //   return Promise.resolve(this.nativeInput)
-  // }
-
-  /**
-   * Options of the tab like label, value etc.
-   */
-  // @Method()
-  // async getOption(): Promise<CheckboxOption> {
-  //   return this.option
-  // }
-
-  /**
-   * @internal
-   */
-  // @Method()
-  // async updateState() {
-  //   if (this.group && this.group.control && Array.isArray(this.group.value)) {
-  //     const newChecked = this.group.value.includes(this.value)
-  //     if (newChecked !== this.checked) {
-  //       this.checked = newChecked
-  //     }
-  //   }
-  // }
-
-  /**
-   * @internal
-   */
-  // @Method()
-  // async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
-  //   this.ariaForm = { ...ariaForm }
-  // }
-
-  /**
    * GETTERS
    * ------------------------------------------------------
    */
-
-  // private get group(): HTMLDsCheckboxGroupElement | null {
-  //   return this.el.closest('ds-checkbox-group')
-  // }
-
-  // private get interactionChildElements(): Array<HTMLDsCheckElement | HTMLDsSwitchElement> {
-  //   return Array.from(this.el.querySelectorAll('ds-check, ds-switch, ds-icon')) as Array<
-  //     HTMLDsCheckElement | HTMLDsSwitchElement
-  //   >
-  // }
-
-  // private get option() {
-  //   return {
-  //     name: this.name,
-  //     value: this.value,
-  //     checked: this.checked,
-  //     label: this.label,
-  //     labelHidden: this.labelHidden,
-  //     flat: this.flat,
-  //     interface: this.interface,
-  //     disabled: this.disabled,
-  //     readonly: this.readonly,
-  //     required: this.required,
-  //     nonSubmit: this.nonSubmit,
-  //     invalid: this.invalid,
-  //   }
-  // }
 
   /**
    * EVENT HANDLERS
    * ------------------------------------------------------
    */
 
-  // private mergeElementState() {
-  //   this.mergedElementState = {
-  //     hovered: this.outerElementState.hovered || this.innerElementState.hovered,
-  //     pressed: this.outerElementState.pressed || this.innerElementState.pressed,
-  //   }
-
-  //   this.interactionChildElements.forEach(el => {
-  //     ;(el as BalElementStateInfo).hovered = this.mergedElementState.hovered
-  //     ;(el as BalElementStateInfo).pressed = this.mergedElementState.pressed
-  //   })
-  // }
-
-  // private setChecked = (state: boolean) => {
-  //   this.checked = state
-  //   this.dsChange.emit(this.checked)
-  // }
-
-  // private toggleChecked = (ev: Event) => {
-  //   ev.preventDefault()
-
-  //   this.setFocus()
-  //   this.setChecked(!this.checked)
-  // }
-
-  // private onClick = (ev: MouseEvent) => {
-  //   if (this.disabled) {
-  //     return
-  //   }
-
-  //   const element = ev.target as HTMLAnchorElement
-  //   if (element && element.href) {
-  //     return
-  //   }
-
-  //   if (this.wasFocused) {
-  //     this.focused = true
-  //   }
-
-  //   this.toggleChecked(ev)
-  // }
-
-  // private onFocus = (ev: FocusEvent) => {
-  //   if (this.disabled || this.readonly) {
-  //     this.focused = false
-  //     return stopEventBubbling(ev)
-  //   }
-
-  //   this.dsFocus.emit(ev)
-
-  //   if (this.keyboardMode) {
-  //     this.focused = true
-  //     this.wasFocused = true
-  //   }
-  // }
-
-  // private onBlur = (ev: FocusEvent) => {
-  //   if (this.disabled || this.readonly) {
-  //     return stopEventBubbling(ev)
-  //   }
-
-  //   this.dsBlur.emit(ev)
-  //   this.focused = false
-  // }
-
-  // private onPointerDown = () => (this.keyboardMode = false)
-
-  // private onKeydown = (ev: any) => {
-  //   if (!isSpaceKey(ev)) {
-  //     this.wasFocused = false
-  //   }
-  //   this.keyboardMode = FOCUS_KEYS.includes(ev.key)
-  // }
-
-  handleChange(ev: Event): void {
+  private handleChange(ev: Event): void {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }
 
-  private onFocus = (ev: FocusEvent) => {
+  private handleFocus = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) return
     this.focused = true
     this.dsFocus.emit(ev)
   }
 
-  private onBlur = (ev: FocusEvent) => {
+  private handleBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) return
     this.focused = false
     this.dsBlur.emit(ev)
@@ -396,10 +205,6 @@ export class Checkbox implements ComponentInterface, Loggable {
    * RENDER
    * ------------------------------------------------------
    */
-
-  componentWillLoad() {
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
-  }
 
   render() {
     return (
@@ -412,6 +217,7 @@ export class Checkbox implements ComponentInterface, Loggable {
           'is-invalid': this.invalid,
           'is-checked': this.checked,
           'is-tile': this.tile,
+          [`has-tile-${this.tileColor}`]: this.tile && !!this.tileColor,
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,
@@ -431,9 +237,10 @@ export class Checkbox implements ComponentInterface, Loggable {
             required={this.required}
             aria-invalid={this.invalid ? 'true' : null}
             onChange={ev => this.handleChange(ev)}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
             ref={inputEl => (this.nativeInput = inputEl)}
+            {...this.inheritAttributes}
           />
           <div id="slot" part="slot">
             <slot></slot>

@@ -60,7 +60,7 @@
       <!-- Vertical -->
       <section data-testid="field-vertical">
         <span>Vertical</span>
-        <ds-checkbox-group control vertical name="heros-1" label="Label" description="Description">
+        <ds-checkbox-group control vertical name="heros-1" label="Label" description="Description" value="tony-stark">
           <ds-checkbox value="steve-rogers">Steve Rogers</ds-checkbox>
           <ds-checkbox value="tony-stark">Tony Stark</ds-checkbox>
         </ds-checkbox-group>
@@ -74,8 +74,8 @@
             <ds-checkbox value="steve-rogers">Steve Rogers</ds-checkbox>
             <ds-checkbox value="tony-stark">Tony Stark</ds-checkbox>
           </ds-checkbox-group>
-            <ds-checkbox name="heros-3" value="black-widow">Black Widow</ds-checkbox>
-            <ds-checkbox name="heros-3" value="ms-marvel">Ms Marvel</ds-checkbox>
+          <ds-checkbox name="heros-3" value="black-widow">Black Widow</ds-checkbox>
+          <ds-checkbox name="heros-3" value="ms-marvel">Ms Marvel</ds-checkbox>
           <br /><br />
           <ds-button element-type="submit" color="primary">Submit</ds-button>
           <ds-button element-type="reset" color="link">Reset</ds-button>
@@ -104,8 +104,8 @@
       <section data-testid="tile-basic">
         <span>Tile Basic</span>
         <ds-checkbox-group control label="Label" description="Description" tile value="2">
-          <ds-checkbox name="tile-basic" value="1">Value 1</ds-checkbox>
-          <ds-checkbox name="tile-basic" value="2">Value 2</ds-checkbox>
+          <ds-checkbox value="1">Value 1</ds-checkbox>
+          <ds-checkbox value="2">Value 2</ds-checkbox>
         </ds-checkbox-group>
       </section>
 
@@ -199,7 +199,7 @@
       <!-- Tile Stack Centered -->
       <section data-testid="tile-stack-centered">
         <span>Tile Stack Centered</span>
-        <ds-checkbox-group control label-position="top" label="Label" description="Description" tile value="2" cols="2">
+        <ds-checkbox-group control label-position="top" label="Label" description="Description" tile tile-color="green" value="2" cols="2">
           <ds-checkbox name="tile-stack-centered" value="1">
             <ds-stack layout="vertical" align="center">
               <ds-icon

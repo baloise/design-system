@@ -414,10 +414,6 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * Defines the color of the tile checkbox.
-         */
-        "color"?: DS.CheckboxTileColor;
-        /**
           * @default 1
          */
         "cols": DS.CheckboxGroupColumns;
@@ -469,6 +465,10 @@ export namespace Components {
           * @default false
          */
         "tile": boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -551,6 +551,10 @@ export namespace Components {
           * @default false
          */
         "tile": boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -1215,10 +1219,6 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * Defines the color of the tile radio.
-         */
-        "color"?: DS.RadioTileColor;
-        /**
           * @default 1
          */
         "cols": DS.RadioGroupColumns;
@@ -1279,6 +1279,10 @@ export namespace Components {
           * @default false
          */
         "tile": boolean;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "tileColor"?: DS.RadioTileColor;
         "updateState": () => Promise<void>;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
@@ -1362,6 +1366,10 @@ export namespace Components {
           * @default false
          */
         "tile": boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.RadioTileColor;
         /**
           * the value of the radio group.
          */
@@ -2895,10 +2903,6 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Defines the color of the tile checkbox.
-         */
-        "color"?: DS.CheckboxTileColor;
-        /**
           * @default 1
          */
         "cols"?: DS.CheckboxGroupColumns;
@@ -2966,6 +2970,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "tile"?: boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -3063,6 +3071,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "tile"?: boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -3773,10 +3785,6 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Defines the color of the tile radio.
-         */
-        "color"?: DS.RadioTileColor;
-        /**
           * @default 1
          */
         "cols"?: DS.RadioGroupColumns;
@@ -3844,6 +3852,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "tile"?: boolean;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "tileColor"?: DS.RadioTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -3940,6 +3952,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "tile"?: boolean;
+        /**
+          * Defines the color of the tile checkbox.
+         */
+        "tileColor"?: DS.RadioTileColor;
         /**
           * the value of the radio group.
          */

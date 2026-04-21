@@ -4,6 +4,14 @@
 - keep line height 1.5
 - stage component that to do?
 
+# Styleguide
+
+- all props without mutable should be readonly
+- all listeners should start with listenTo...
+- all watcher should start with watch...
+- all event handlers should not start with on it should start with handle...
+- all methods are private exept lifecycle, @method, @Watch, and render
+
 # TODO's
 
 | Item                             | Description                                                           | Status |
@@ -80,32 +88,32 @@ Checklist
 | ------------------- | ---------------- | ---------- | ---- | ------------- |
 | input               | Hybrid           | ✅         | ✅   | ✅            |
 | textarea            | Hybrid           | ✅         | ✅   | ✅            |
+| radio               | Hybrid           | ✅         | ✅   | ✅            |
+| checkbox            | Hybrid           | ✅         | ✅   | ✅            |
+| segment             | Hybrid           | ⬜         | ⬜   | ⬜            |
 | modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
 | popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
 | tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
 | hint                | Web Component    | ⬜         | ⬜   | ⬜            |
+| tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | progress-bar        | Hybrid           | ⬜         | ⬜   | ⬜            |
 | steps               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | table               | Hybrid           | ⬜         | ⬜   | ⬜            |
-| tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | data                | Hybrid           | ⬜         | ⬜   | ⬜            |
 | ------------------  | ---------------- | ---------- | ---- | ------------- |
+| app                 | Web Component    | ✅         | ✅   | ✅            |
+| number-input        | Web Component    | ✅         | ✅   | ✅            |
+| time-input          | Web Component    | ⬜         | ⬜   | ⬜            |
 | footer              | Web Component    | ⬜         | ⬜   | ⬜            |
-| radio               | Web Component    | ⬜         | ⬜   | ⬜            |
-| segment             | Web Component    | ⬜         | ⬜   | ⬜            |
-| app                 | Web Component    | ⬜         | ⬜   | ⬜            |
 | carousel            | Web Component    | ⬜         | ⬜   | ⬜            |
 | date                | Web Component    | ⬜         | ⬜   | ⬜            |
+| date-input          | Web Component    | ⬜         | ⬜   | ⬜            |
 | dropdown            | Web Component    | ⬜         | ⬜   | ⬜            |
 | file-upload         | Web Component    | ⬜         | ⬜   | ⬜            |
-| date-input          | Web Component    | ⬜         | ⬜   | ⬜            |
-| number-input        | Web Component    | ✅         | ✅   | ✅            |
 | option              | Web Component    | ⬜         | ⬜   | ⬜            |
-| popup               | Web Component    | ⬜         | ⬜   | ⬜            |
 | select (deprecated) | Web Component    | ⬜         | ⬜   | ⬜            |
 | sheet               | Web Component    | ⬜         | ⬜   | ⬜            |
-| time-input          | Web Component    | ⬜         | ⬜   | ⬜            |
 
 1. Enable shadow dom
 2. Add parts to important elements in the components tree like clickable elements, titles or contents

@@ -59,16 +59,31 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * The value of the control.
    */
-  @Prop({ mutable: true }) value: any[] = []
+  @Prop() readonly value: any[] = []
+  @State() private internalValue: any[] = []
 
   @Watch('value')
-  valueChanged(_value: any[], oldValue: any[]) {
+  valueChanged() {
     if (this.control) {
-      if (!areArraysEqual(this.value, oldValue)) {
+      const newFormattedValue = this.formatValueToArray(this.value)
+      if (!areArraysEqual(newFormattedValue, this.internalValue)) {
+        this.internalValue = newFormattedValue
         this.handleValueChange()
       }
+    }
+  }
+
+  private formatValueToArray(value: any): any[] {
+    if (Array.isArray(value)) {
+      return value
+    } else if (value !== undefined && value !== null && value !== '') {
+      if (typeof value === 'string') {
+        return value.split(',').map(item => item.trim())
+      } else {
+        return [value]
+      }
     } else {
-      this.handleValueChange()
+      return []
     }
   }
 
@@ -133,6 +148,11 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   @Prop() tile = false
 
   /**
+   * Defines the color of the tile checkbox.
+   */
+  @Prop() tileColor?: DS.CheckboxTileColor
+
+  /**
    * Defines the column size like the grid.
    */
   @Prop() cols: DS.CheckboxGroupColumns = 1
@@ -168,8 +188,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
 
   connectedCallback() {
+    this.valueChanged()
     this.passDownAttributes()
-    this.internals.setFormValue(this.value.join(','))
+    this.internals.setFormValue(this.internalValue.join(','))
   }
 
   componentWillUpdate() {
@@ -196,11 +217,11 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(ev: UIEvent) {
+  listenToReset(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       if (this.control) {
-        this.value = []
+        this.internalValue = []
       }
       this.handleValueChange()
     }
@@ -259,6 +280,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
       checkbox.name = this.name
       checkbox.labelPosition = this.labelPosition
       checkbox.tile = this.tile
+      checkbox.tileColor = this.tileColor
       checkbox.cols = this.cols
       checkbox.colsTablet = this.colsTablet
       checkbox.colsMobile = this.colsMobile
@@ -274,10 +296,10 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
       }
     })
 
-    if (!areArraysEqual(this.value, newValue)) {
-      this.value = [...newValue]
-      this.dsChange.emit(this.value)
-      this.internals.setFormValue(this.value.join(','))
+    if (!areArraysEqual(this.internalValue, newValue)) {
+      this.internalValue = [...newValue]
+      this.dsChange.emit(this.internalValue)
+      this.internals.setFormValue(this.internalValue.join(','))
     }
   }
 
@@ -298,8 +320,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   private handleValueChange = async () => {
     if (this.control) {
       const isChecked = (checkbox: HTMLDsCheckboxElement) => {
-        for (let index = 0; index < this.value.length; index++) {
-          const valueItem = this.value[index]
+        for (let index = 0; index < this.internalValue.length; index++) {
+          const valueItem = this.internalValue[index]
           if (valueItem !== undefined && valueItem.toString() === checkbox.value.toString()) {
             return true
           }

@@ -3640,23 +3640,46 @@
       "listeners": []
     },
     {
-      "fileName": "check.tsx",
-      "tag": "ds-check",
+      "fileName": "checkbox.tsx",
+      "tag": "ds-checkbox",
       "overview": "",
       "usage": {},
       "docs": "",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [
-        "ds-icon"
-      ],
-      "dependencyGraph": {
-        "ds-check": [
-          "ds-icon"
-        ]
-      },
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "checked",
           "type": "boolean",
@@ -3665,9 +3688,9 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "checked",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true`, the checkbox is selected.",
           "docsTags": [
             {
@@ -3688,23 +3711,687 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
             "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label of the radio item.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "DS.CheckboxLabelPosition",
+            "resolved": "\"left\" | \"right\" | \"top\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the input",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tileColor",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "complexType": {
+            "original": "DS.CheckboxTileColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "tile-color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the tile checkbox.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "string | number",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "A DOMString representing the value of the checkbox. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the checkbox's name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'on'"
+            }
+          ],
+          "default": "'on'",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxChangeDetail",
+            "resolved": "boolean",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the value property has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle has focus.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "label",
+          "docs": ""
+        },
+        {
+          "name": "slot",
+          "docs": ""
+        }
+      ],
+      "listeners": [
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ]
+    },
+    {
+      "fileName": "checkbox-group.tsx",
+      "tag": "ds-checkbox-group",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-checkbox-group": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "DS.InputColor",
+            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "cols",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.CheckboxGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols",
+          "reflectToAttr": false,
+          "docs": "Defines the column size like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "colsMobile",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.CheckboxGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols-mobile",
+          "reflectToAttr": false,
+          "docs": "Defines the column size for mobile and bigger like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "colsTablet",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.CheckboxGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols-tablet",
+          "reflectToAttr": false,
+          "docs": "Defines the column size for tablet and bigger like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "control",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "control",
+          "reflectToAttr": false,
+          "docs": "If `true` it acts as the main form control",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the input, which is displayed below the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
             "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
+          "docsTags": [],
           "values": [
             {
               "type": "boolean"
@@ -3713,7 +4400,7 @@
               "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -3722,24 +4409,44 @@
           "name": "invalid",
           "type": "boolean | undefined",
           "complexType": {
-            "original": "boolean",
+            "original": "boolean | undefined",
             "resolved": "boolean | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": true,
-          "docs": "If `true` the component gets a invalid red style.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [],
           "values": [
             {
               "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             },
             {
               "type": "undefined"
@@ -3751,27 +4458,21 @@
           "setter": false
         },
         {
-          "name": "inverted",
-          "type": "boolean | undefined",
+          "name": "label",
+          "type": "string | undefined",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean | undefined",
+            "original": "string",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
-          "attr": "inverted",
-          "reflectToAttr": true,
-          "docs": "If `true`, the checkbox is inverted and works on dark backgrounds.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the input, which is displayed above the input field.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             },
             {
               "type": "undefined"
@@ -3781,14 +4482,386 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "DS.CheckboxLabelPosition",
+            "resolved": "\"left\" | \"right\" | \"top\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the label, either before or after the checkbox input. Default is after.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": false,
+          "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the checkboxes in the group. Child checkboxes will inherit the name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the input",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tileColor",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "complexType": {
+            "original": "DS.CheckboxTileColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "tile-color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the tile checkbox.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "any[]",
+          "complexType": {
+            "original": "any[]",
+            "resolved": "any[]",
+            "references": {}
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "The value of the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "any[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "Displays the checkboxes vertically",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxGroupBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "any[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxGroupChangeDetail",
+            "resolved": "any[]",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input value has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.CheckboxGroupFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "parts": [],
-      "listeners": []
+      "listeners": [
+        {
+          "event": "dsChange",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "dsFocus",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "dsBlur",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ]
     },
     {
       "fileName": "close.tsx",
@@ -5150,12 +6223,12 @@
         "ds-accordion",
         "ds-badge",
         "ds-button",
-        "ds-check",
+        "ds-checkbox-group",
         "ds-input",
         "ds-item",
         "ds-number-input",
+        "ds-radio-group",
         "ds-snackbar",
-        "ds-switch",
         "ds-textarea",
         "ds-toast"
       ],
@@ -5170,7 +6243,7 @@
         "ds-button": [
           "ds-icon"
         ],
-        "ds-check": [
+        "ds-checkbox-group": [
           "ds-icon"
         ],
         "ds-input": [
@@ -5182,10 +6255,10 @@
         "ds-number-input": [
           "ds-icon"
         ],
-        "ds-snackbar": [
+        "ds-radio-group": [
           "ds-icon"
         ],
-        "ds-switch": [
+        "ds-snackbar": [
           "ds-icon"
         ],
         "ds-textarea": [
@@ -6110,9 +7183,14 @@
           "name": "color",
           "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
-            "original": "'primary' | 'danger' | 'success' | 'warning'",
+            "original": "DS.InputColor",
             "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {}
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
           },
           "mutable": false,
           "attr": "color",
@@ -7084,16 +8162,7 @@
       ],
       "styles": [],
       "slots": [],
-      "parts": [
-        {
-          "name": "description",
-          "docs": ""
-        },
-        {
-          "name": "label",
-          "docs": ""
-        }
-      ],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -8655,10 +9724,12 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
+        "ds-spinner",
         "ds-icon"
       ],
       "dependencyGraph": {
         "ds-number-input": [
+          "ds-spinner",
           "ds-icon"
         ]
       },
@@ -8667,9 +9738,14 @@
           "name": "color",
           "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
-            "original": "'primary' | 'danger' | 'success' | 'warning'",
+            "original": "DS.InputColor",
             "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {}
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
           },
           "mutable": false,
           "attr": "color",
@@ -9375,16 +10451,7 @@
       ],
       "styles": [],
       "slots": [],
-      "parts": [
-        {
-          "name": "description",
-          "docs": ""
-        },
-        {
-          "name": "label",
-          "docs": ""
-        }
-      ],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -9396,6 +10463,1245 @@
           "event": "reset",
           "target": "document",
           "capture": true,
+          "passive": false
+        }
+      ]
+    },
+    {
+      "fileName": "radio.tsx",
+      "tag": "ds-radio",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "checked",
+          "reflectToAttr": false,
+          "docs": "If `true`, the checkbox is selected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label of the radio item.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "DS.RadioLabelPosition",
+            "resolved": "\"left\" | \"right\" | \"top\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the input",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tileColor",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "complexType": {
+            "original": "DS.RadioTileColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "tile-color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the tile radio.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "complexType": {
+            "original": "any | null",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "A DOMString representing the value of the checkbox. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the checkbox's name.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets the focus on the checkbox input element.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioChangeDetail",
+            "resolved": "boolean",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the value property has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle has focus.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "label",
+          "docs": ""
+        },
+        {
+          "name": "slot",
+          "docs": ""
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ]
+    },
+    {
+      "fileName": "radio-group.tsx",
+      "tag": "ds-radio-group",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-radio-group": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "allowEmptySelection",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "allow-empty-selection",
+          "reflectToAttr": false,
+          "docs": "If `true`, the radios can be deselected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "DS.InputColor",
+            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "cols",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.RadioGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols",
+          "reflectToAttr": false,
+          "docs": "Defines the column size like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "colsMobile",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.RadioGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols-mobile",
+          "reflectToAttr": false,
+          "docs": "Defines the column size for mobile and bigger like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "colsTablet",
+          "type": "1 | 2 | 3 | 4",
+          "complexType": {
+            "original": "DS.RadioGroupColumns",
+            "resolved": "1 | 2 | 3 | 4",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "cols-tablet",
+          "reflectToAttr": false,
+          "docs": "Defines the column size for tablet and bigger like the grid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "2",
+              "type": "number"
+            },
+            {
+              "value": "3",
+              "type": "number"
+            },
+            {
+              "value": "4",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the input, which is displayed below the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the input, which is displayed above the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "DS.RadioLabelPosition",
+            "resolved": "\"left\" | \"right\" | \"top\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": false,
+          "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the radios in the group. Child radios will inherit the name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the input",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tileColor",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "complexType": {
+            "original": "DS.RadioTileColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "tile-color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the tile checkbox.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "complexType": {
+            "original": "any | null",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "the value of the radio group.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "Displays the checkboxes vertically",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioGroupBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioGroupChangeDetail",
+            "resolved": "boolean",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input value has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.RadioGroupFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": [
+        {
+          "event": "dsChange",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "dsFocus",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "dsBlur",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "keydown",
+          "target": "document",
+          "capture": false,
           "passive": false
         }
       ]
@@ -10019,14 +12325,30 @@
       "encapsulation": "shadow",
       "dependents": [
         "ds-button",
-        "ds-input"
+        "ds-checkbox-group",
+        "ds-input",
+        "ds-number-input",
+        "ds-radio-group",
+        "ds-textarea"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "ds-button": [
           "ds-spinner"
         ],
+        "ds-checkbox-group": [
+          "ds-spinner"
+        ],
         "ds-input": [
+          "ds-spinner"
+        ],
+        "ds-number-input": [
+          "ds-spinner"
+        ],
+        "ds-radio-group": [
+          "ds-spinner"
+        ],
+        "ds-textarea": [
           "ds-spinner"
         ]
       },
@@ -11079,130 +13401,6 @@
       "listeners": []
     },
     {
-      "fileName": "switch.tsx",
-      "tag": "ds-switch",
-      "overview": "",
-      "usage": {},
-      "docs": "",
-      "docsTags": [],
-      "encapsulation": "shadow",
-      "dependents": [],
-      "dependencies": [
-        "ds-icon"
-      ],
-      "dependencyGraph": {
-        "ds-switch": [
-          "ds-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "checked",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "checked",
-          "reflectToAttr": true,
-          "docs": "If `true`, the checkbox is selected.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean | undefined",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "invalid",
-          "type": "boolean | undefined",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "invalid",
-          "reflectToAttr": true,
-          "docs": "If `true` the component gets a invalid red style.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": [],
-      "slots": [],
-      "parts": [
-        {
-          "name": "toggle",
-          "docs": ""
-        }
-      ],
-      "listeners": []
-    },
-    {
       "fileName": "tag.tsx",
       "tag": "ds-tag",
       "overview": "",
@@ -12135,10 +14333,12 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
+        "ds-spinner",
         "ds-icon"
       ],
       "dependencyGraph": {
         "ds-textarea": [
+          "ds-spinner",
           "ds-icon"
         ]
       },
@@ -12481,9 +14681,14 @@
           "name": "color",
           "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
-            "original": "'primary' | 'danger' | 'success' | 'warning'",
+            "original": "DS.InputColor",
             "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {}
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
           },
           "mutable": false,
           "attr": "color",
@@ -13202,16 +15407,7 @@
       ],
       "styles": [],
       "slots": [],
-      "parts": [
-        {
-          "name": "description",
-          "docs": ""
-        },
-        {
-          "name": "label",
-          "docs": ""
-        }
-      ],
+      "parts": [],
       "listeners": [
         {
           "event": "click",
@@ -13656,6 +15852,483 @@
         }
       ],
       "listeners": []
+    },
+    {
+      "fileName": "toggle.tsx",
+      "tag": "ds-toggle",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "checked",
+          "reflectToAttr": false,
+          "docs": "If `true`, the toggle is selected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "complexType": {
+            "original": "DS.ToggleTileColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the tile toggle.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label of the radio item.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "DS.CheckboxLabelPosition",
+            "resolved": "\"left\" | \"right\" | \"top\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "tile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "tile",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the input",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "string | number",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "A DOMString representing the value of the toggle. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the toggle's name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'on'"
+            }
+          ],
+          "default": "'on'",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.ToggleBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.ToggleChangeDetail",
+            "resolved": "boolean",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the value property has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.ToggleFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the toggle has focus.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "label",
+          "docs": ""
+        },
+        {
+          "name": "slot",
+          "docs": ""
+        }
+      ],
+      "listeners": [
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ]
     }
   ],
   "typeLibrary": {

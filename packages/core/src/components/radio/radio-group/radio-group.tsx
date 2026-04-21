@@ -127,6 +127,11 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Prop() tile = false
 
   /**
+   * Defines the color of the tile checkbox.
+   */
+  @Prop() tileColor?: DS.RadioTileColor
+
+  /**
    * Defines the column size like the grid.
    */
   @Prop() cols: DS.RadioGroupColumns = 1
@@ -302,6 +307,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
       }
       radio.labelPosition = this.labelPosition
       radio.tile = this.tile
+      radio.tileColor = this.tileColor
       radio.cols = this.cols
       radio.colsTablet = this.colsTablet
       radio.colsMobile = this.colsMobile

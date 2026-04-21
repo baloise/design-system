@@ -111,7 +111,7 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Defines the color of the tile radio.
    */
-  @Prop() color?: DS.RadioTileColor
+  @Prop() tileColor?: DS.RadioTileColor
 
   /**
    * @internal
@@ -341,6 +341,7 @@ export class Radio implements ComponentInterface, Loggable {
           'is-invalid': this.invalid,
           'is-checked': this.checked,
           'is-tile': this.tile,
+          [`has-tile-${this.tileColor}`]: this.tile && !!this.tileColor,
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,

@@ -66,6 +66,22 @@
   --mod-checkbox-tile-base-border-color: var(--_checkbox-checked-base-color-background);
 }
 
+:host(.is-tile.has-tile-green.is-checked) {
+  --mod-checkbox-tile-base-background-color: var(--ds-color-green-1);
+}
+
+:host(.is-tile.has-tile-red.is-checked) {
+  --mod-checkbox-tile-base-background-color: var(--ds-color-red-1);
+}
+
+:host(.is-tile.has-tile-yellow.is-checked) {
+  --mod-checkbox-tile-base-background-color: var(--ds-color-yellow-1);
+}
+
+:host(.is-tile.has-tile-purple.is-checked) {
+  --mod-checkbox-tile-base-background-color: var(--ds-color-purple-1);
+}
+
 :host(.is-tile.is-disabled) {
   --icon-brand-color: var(--ds-color-grey-5);
 }

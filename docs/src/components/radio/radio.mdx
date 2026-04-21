@@ -1,0 +1,107 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as RadioStories from './radio.stories'
+
+<Meta of={RadioStories} />
+
+<StoryHeading of={RadioStories.Basic} hidden></StoryHeading>
+
+<Banner of={RadioStories} />
+
+<Lead>**Radio** is a form control that lets users select exactly one option from a set. Use `ds-radio-group` to group radios with a shared label, description, and form value.</Lead>
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.BasicHtml} webComponentStory={RadioStories.Basic} index={1} />
+
+<PlaygroundBar of={RadioStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.Disabled}></StoryHeading>
+
+Apply the `disabled` attribute to prevent user interaction. When used on `ds-radio-group`, it propagates to all child radios automatically.
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.DisabledHtml} webComponentStory={RadioStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.Invalid}></StoryHeading>
+
+Apply the `invalid` attribute to indicate a validation error. When used on `ds-radio-group`, it propagates to all child radios automatically.
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.InvalidHtml} webComponentStory={RadioStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.Field}></StoryHeading>
+
+Wrap radios in `ds-radio-group` to add a shared label, description, and help text. The group manages the selected value and handles keyboard navigation between options automatically.
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.FieldHtml} webComponentStory={RadioStories.Field} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.FieldVertical}></StoryHeading>
+
+Add the `vertical` attribute on `ds-radio-group` to stack radio buttons in a column instead of a row.
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.FieldVerticalHtml} webComponentStory={RadioStories.FieldVertical} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.Form}></StoryHeading>
+
+Place `ds-radio-group` inside a `<form>`. Set the initial selection via the `value` attribute. The group submits its selected value with the given `name` and resets to its initial value on form reset.
+
+<BasicStoryTabs tag="radio" htmlStory={RadioStories.FormHtml} webComponentStory={RadioStories.Form} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.TileBasic}></StoryHeading>
+
+Add the `tile` attribute on `ds-radio-group` to render each option as a card-style tile. Tiles offer a larger clickable area with more visual weight than standard radios.
+
+<Canvas of={RadioStories.TileBasic} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.TileColumns}></StoryHeading>
+
+Use the `cols`, `cols-tablet`, and `cols-mobile` attributes on `ds-radio-group` to control the tile grid layout at different breakpoints.
+
+<Canvas of={RadioStories.TileColumns} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.TileStack}></StoryHeading>
+
+Combine `ds-stack`, `ds-icon`, `ds-label`, and `ds-content` inside each radio slot to build rich tile layouts with icon and description.
+
+<Canvas of={RadioStories.TileStack} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.TileStackCentered}></StoryHeading>
+
+Use `ds-stack layout="vertical" align="center"` to center-align the icon and label within each tile. Combine with `label-position="top"` on the group for a fully centered layout.
+
+<Canvas of={RadioStories.TileStackCentered} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="radio" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />

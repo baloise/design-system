@@ -24,11 +24,12 @@ export type FieldProps = FieldInterface & {
 
 export const Field: FunctionalComponent<FieldProps> = (props, children) => {
   const inputId = props.inputId ?? 'input'
-  const role = props.role === 'fieldset' ? 'fieldset' : undefined
+  const role = props.role === 'fieldset' ? 'group' : undefined
   return (
     <Host
       role={role}
       aria-disabled={ariaBooleanToString(props.disabled)}
+      aria-invalid={ariaBooleanToString(props.invalid)}
       aria-describedby="description"
       class={{
         'ds-field ': true,
@@ -43,7 +44,7 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
       {/* ---------------------------------------- */}
       {/* Label                                    */}
       {/* ---------------------------------------- */}
-      {role === 'fieldset' ? (
+      {props.label && (props.role === 'fieldset' ? (
         <legend part="label" id="label">
           <slot name="label">{props.label}</slot>
           {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
@@ -53,7 +54,7 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
           <slot name="label">{props.label}</slot>
           {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
         </label>
-      )}
+      ))}
       {/* ---------------------------------------- */}
       {/* Input Control                            */}
       {/* ---------------------------------------- */}
@@ -71,10 +72,12 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
       {/* ---------------------------------------- */}
       {/* Description                              */}
       {/* ---------------------------------------- */}
-      <span id="description" part="description" role={props.invalid && props.invalidText ? 'alert' : undefined}>
-        {props.invalid && props.invalidText && <ds-icon name="alert"></ds-icon>}
-        <slot name="description">{props.invalid && props.invalidText ? props.invalidText : props.description}</slot>
-      </span>
+      {props.label && (
+        <span id="description" part="description" role={props.invalid && props.invalidText ? 'alert' : undefined}>
+          {props.invalid && props.invalidText && <ds-icon name="alert"></ds-icon>}
+          <slot name="description">{props.invalid && props.invalidText ? props.invalidText : props.description}</slot>
+        </span>
+      )}
     </Host>
   )
 }

@@ -5,7 +5,7 @@
   "ds-badge",
   "ds-button",
   "ds-card",
-  "ds-check",
+  "ds-checkbox",
   "ds-close",
   "ds-content",
   "ds-divider",
@@ -17,12 +17,14 @@
   "ds-list",
   "ds-logo",
   "ds-notification",
+  "ds-number-input",
+  "ds-radio",
   "ds-shape",
   "ds-snackbar",
   "ds-spinner",
   "ds-stack",
-  "ds-switch",
   "ds-tag",
   "ds-text",
-  "ds-toast"
+  "ds-toast",
+  "ds-toggle"
 ]

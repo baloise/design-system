@@ -11,6 +11,8 @@ export const tags = [
   "ds-card-header",
   "ds-card-subtitle",
   "ds-card-title",
+  "ds-checkbox",
+  "ds-checkbox-group",
   "ds-close",
   "ds-content",
   "ds-divider",
@@ -22,13 +24,17 @@ export const tags = [
   "ds-list",
   "ds-logo",
   "ds-notification",
+  "ds-number-input",
+  "ds-radio",
+  "ds-radio-group",
   "ds-shape",
   "ds-snackbar",
   "ds-spinner",
   "ds-stack",
-  "ds-toggle",
   "ds-tag",
   "ds-tag-group",
   "ds-text",
-  "ds-toast"
+  "ds-textarea",
+  "ds-toast",
+  "ds-toggle"
 ]

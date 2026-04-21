@@ -7,10 +7,12 @@ import {
   EventEmitter,
   h,
   Host,
+  Listen,
   Prop,
   State,
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'ds-toggle',
@@ -20,6 +22,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 })
 export class Toggle implements ComponentInterface, Loggable {
   private inputId = `ds-tg-${toggleIds++}`
+  private inheritAttributes: Attributes = {}
   nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLDsToggleElement
@@ -137,10 +140,28 @@ export class Toggle implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
+  connectedCallback(): void {
+    this.initialValue = this.checked
+    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+  }
+
+  componentWillLoad() {
+    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  @Listen('reset', { capture: true, target: 'document' })
+  listenToReset(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.checked = this.initialValue
+    }
+  }
 
   /**
    * PUBLIC METHODS
@@ -157,19 +178,19 @@ export class Toggle implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  handleChange(ev: Event): void {
+  private handleChange = (ev: Event): void => {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }
 
-  private onFocus = (ev: FocusEvent) => {
+  private handleFocus = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) return
     this.focused = true
     this.dsFocus.emit(ev)
   }
 
-  private onBlur = (ev: FocusEvent) => {
+  private handleBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) return
     this.focused = false
     this.dsBlur.emit(ev)
@@ -179,10 +200,6 @@ export class Toggle implements ComponentInterface, Loggable {
    * RENDER
    * ------------------------------------------------------
    */
-
-  componentWillLoad() {
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
-  }
 
   render() {
     return (
@@ -214,9 +231,10 @@ export class Toggle implements ComponentInterface, Loggable {
             required={this.required}
             aria-invalid={this.invalid ? 'true' : null}
             onChange={ev => this.handleChange(ev)}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
             ref={inputEl => (this.nativeInput = inputEl)}
+            {...this.inheritAttributes}
           />
           <div id="slot" part="slot">
             <slot></slot>
