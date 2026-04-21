@@ -13,9 +13,8 @@ import {
   Watch,
 } from '@stencil/core'
 import isNil from 'lodash/isNil'
-import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../utils/constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey } from '../../utils/constants/keys.constant'
 import { FormControlInterface, FormControl, stopEventBubbling } from '../../utils/form-control'
 import { debounceEvent } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -23,7 +22,7 @@ import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../utils/config'
-import { I18nDsLabel } from '../label/label.i18n'
+import { Field, FieldInterface } from './field.util'
 
 @Component({
   tag: 'ds-input',
@@ -31,11 +30,11 @@ import { I18nDsLabel } from '../label/label.i18n'
   shadow: true,
   formAssociated: true,
 })
-export class Input implements ComponentInterface, FormControlInterface<string | null>, Loggable {
-  private inputId = `ds-input-${InputIds++}`
+export class Input implements ComponentInterface, FieldInterface, FormControlInterface<string | null>, Loggable {
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
   private maskUtil = new InputMaskUtil(this)
+  inputId = `ds-input-${InputIds++}`
 
   log!: LogInstance
   @Logger('input')
@@ -79,7 +78,7 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() color: 'primary' | 'danger' | 'success' | 'warning' = 'primary'
+  @Prop() color: DS.InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -400,76 +399,52 @@ export class Input implements ComponentInterface, FormControlInterface<string | 
     }
 
     return (
-      <Host
-        aria-disabled={ariaBooleanToString(this.disabled)}
-        class={{
-          'ds-field ': true,
-          'is-disabled': this.disabled,
-          'is-danger': this.color === 'danger' || this.invalid,
-          'is-success': this.color === 'success' && !this.invalid,
-          'is-warning': this.color === 'warning' && !this.invalid,
-        }}
+      <Field
+        disabled={this.disabled}
+        color={this.color}
+        invalid={this.invalid}
+        loading={this.loading}
+        label={this.label}
+        description={this.description}
+        invalidText={this.invalidText}
+        required={this.required}
+        language={this.language}
       >
-        {/* ---------------------------------------- */}
-        {/* Label.                                   */}
-        {/* ---------------------------------------- */}
-        <label htmlFor="input" part="label" id="label">
-          <slot name="label">{this.label}</slot>
-          {this.required === false && <span>{I18nDsLabel[this.language].optional || ''}</span>}
-        </label>
-        {/* ---------------------------------------- */}
-        {/* Input Group                              */}
-        {/* ---------------------------------------- */}
-        <div id="container">
-          <slot name="start"></slot>
-          <input
-            id="input"
-            part="input"
-            name={this.name}
-            ref={inputEl => (this.control.nativeEl = inputEl)}
-            aria-describedby="description"
-            aria-invalid={this.invalid === true ? 'true' : 'false'}
-            disabled={this.disabled}
-            accept={this.accept}
-            inputMode={this.inputmode}
-            autoCapitalize={this.autocapitalize}
-            autocomplete={this.autocomplete}
-            autocorrect={this.autocorrect}
-            autofocus={this.autofocus}
-            min={this.min}
-            max={this.max}
-            minLength={this.minLength}
-            maxLength={this.maxLength}
-            multiple={this.multiple}
-            placeholder={this.placeholder || ''}
-            readonly={this.readonly}
-            required={this.required}
-            spellcheck={this.spellcheck}
-            type={this.type}
-            value={value}
-            onClick={ev => this.handleClick(ev)}
-            onFocus={ev => this.handleFocus(ev)}
-            onBlur={ev => this.handleBlur(ev)}
-            onInput={ev => this.handleInput(ev)}
-            onKeyDown={ev => this.onKeydown(ev)}
-            onKeyPress={ev => this.dsKeyPress.emit(ev)}
-            {...inputProps}
-            {...this.inheritedAttributes}
-          />
-          <slot name="end"></slot>
-          {/* ---------------------------------------- */}
-          {/* Loading Indicator                        */}
-          {/* ---------------------------------------- */}
-          {this.loading && <ds-spinner small variation="circle" color={this.disabled ? 'white' : 'blue'}></ds-spinner>}
-        </div>
-        {/* ---------------------------------------- */}
-        {/* Description                              */}
-        {/* ---------------------------------------- */}
-        <span id="description" part="description">
-          {this.invalid && this.invalidText && <ds-icon name="alert"></ds-icon>}
-          <slot name="description">{this.invalid && this.invalidText ? this.invalidText : this.description}</slot>
-        </span>
-      </Host>
+        <input
+          id="input"
+          part="input"
+          name={this.name}
+          ref={inputEl => (this.control.nativeEl = inputEl)}
+          aria-describedby="description"
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          disabled={this.disabled}
+          accept={this.accept}
+          inputMode={this.inputmode}
+          autoCapitalize={this.autocapitalize}
+          autocomplete={this.autocomplete}
+          autocorrect={this.autocorrect}
+          autofocus={this.autofocus}
+          min={this.min}
+          max={this.max}
+          minLength={this.minLength}
+          maxLength={this.maxLength}
+          multiple={this.multiple}
+          placeholder={this.placeholder || ''}
+          readonly={this.readonly}
+          required={this.required}
+          spellcheck={this.spellcheck}
+          type={this.type}
+          value={value}
+          onClick={ev => this.handleClick(ev)}
+          onFocus={ev => this.handleFocus(ev)}
+          onBlur={ev => this.handleBlur(ev)}
+          onInput={ev => this.handleInput(ev)}
+          onKeyDown={ev => this.onKeydown(ev)}
+          onKeyPress={ev => this.dsKeyPress.emit(ev)}
+          {...inputProps}
+          {...this.inheritedAttributes}
+        />
+      </Field>
     )
   }
 }

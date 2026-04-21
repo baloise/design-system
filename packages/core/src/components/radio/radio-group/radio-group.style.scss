@@ -1,0 +1,10 @@
+@use './radio-group.mixin.scss' as group;
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include group.style('.radio-group');
+@include group.vertical('.radio-group');

@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from '../../utils/browser'
-import { updateDsAnimated } from '../../utils/config'
+import { updateDsAllowedLanguages, updateDsAnimated, updateDsLogger } from '../../utils/config'
 import { dsDevice } from '../../utils/device'
 import { startFocusVisible } from '../../utils/focus-visible'
 import { debounce, rIC, rOnLoad } from '../../utils/helpers'
@@ -35,6 +35,11 @@ export class App implements Loggable {
   @Prop({ reflect: true, mutable: true }) ready = false
 
   /**
+   * @internal Comma separated list of components to log.
+   */
+  @Prop({ reflect: true }) logger = ''
+
+  /**
    * Emitted when app is ready and painted.
    */
   @Event() dsAppReady!: EventEmitter<void>
@@ -42,6 +47,10 @@ export class App implements Loggable {
   connectedCallback() {
     if (this.animated === false) {
       updateDsAnimated(this.animated)
+    }
+
+    if (this.logger) {
+      updateDsLogger(this.logger.split(',').map(log => log.trim()))
     }
 
     if (dsBrowser.hasWindow) {

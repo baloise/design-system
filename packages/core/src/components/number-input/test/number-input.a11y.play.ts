@@ -21,7 +21,9 @@ test('disabled', async ({ page, a11y }) => {
 })
 
 test('invalid', async ({ page, a11y }) => {
-  await page.mount(`<ds-number-input label="Label" value="42" invalid invalid-text="Validation Error"></ds-number-input>`)
+  await page.mount(
+    `<ds-number-input label="Label" value="42" invalid invalid-text="Validation Error"></ds-number-input>`,
+  )
   await a11y('ds-number-input')
 })
 

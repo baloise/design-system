@@ -2,6 +2,16 @@
  * ========================================================================== */
 
 /**
+ * Fix the numeric font variant inheritance in all browsers (opinionated).
+ * This makes number characters use a fixed-width font, which is typically desirable for
+ * displaying tabular data, such as in a calendar or a stock ticker.
+ */
+
+* {
+  font-variant-numeric: tabular-nums;
+}
+
+/**
  * 1. Add border box sizing in all browsers (opinionated).
  * 2. Backgrounds do not repeat by default (opinionated).
  * 3. Masks do not repeat by default (opinionated).
@@ -224,7 +234,12 @@
  */
 
 :where(fieldset) {
-  border: 1px solid #a0a0a0;
+  padding: 0;
+  border: none;
+}
+
+:where(legend) {
+  padding: 0;
 }
 
 /**

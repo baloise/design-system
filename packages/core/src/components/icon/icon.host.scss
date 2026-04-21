@@ -15,6 +15,7 @@
   @include vars.local(icon-inner-size, var(--ds-icon-size-base));
   @include vars.local(icon-inner-mt, 0);
   @include vars.local(icon-color, var(--ds-icon-color-primary));
+  // @include vars.local(icon-brand-color, inherit);
   @include vars.local(icon-shape, var(--ds-icon-color-primary));
 
   @include vars.local(icon-tile-size, var(--ds-icon-tile-size-base-mobile));
@@ -67,6 +68,73 @@
 // Color
 :host(.is-filled) svg {
   @include fillSvg(var(--_icon-color));
+}
+
+// With that variable we can style the brand icon from outside
+// of the component.
+$colors:
+  // Green
+  '#E9FBF7',
+  '#e9fbf7',
+  '#CBF2EC',
+  '#cbf2ec',
+  '#94E3D4',
+  '#94e3d4',
+  '#21D9AC',
+  '#21d9ac',
+  '#00B28F',
+  '#00b28f',
+  '#1B5951',
+  '#1b5951',
+  // Yellow
+  '#FFF9E8',
+  '#fff9e8',
+  '#FFECBC',
+  '#ffecbc',
+  '#FAE052',
+  '#fae052',
+  '#FFBE19',
+  '#ffbe19',
+  '#FA9319',
+  '#fa9319',
+  '#B24A00',
+  '#b24a00',
+  // Red
+  '#FFEEF1',
+  '#ffeef1',
+  '#FFD7D7',
+  '#ffd7d7',
+  '#FFACA6',
+  '#ffaca6',
+  '#FF596F',
+  '#ff596f',
+  '#D9304C',
+  '#d9304c',
+  '#99172D',
+  '#99172d',
+  // Purple
+  '#F9F3FF',
+  '#f9f3ff',
+  '#E1D9FF',
+  '#e1d9ff',
+  '#B8B2FF',
+  '#b8b2ff',
+  '#BE82FA',
+  '#be82fa',
+  '#9F52CC',
+  '#9f52cc',
+  '#6C2273',
+  '#6c2273',
+  // Blue
+  '#000D6E',
+  '#000d6e';
+
+@each $color in $colors {
+  :host svg {
+    path[fill='#{$color}'] {
+      fill: var(--icon-brand-color, #{$color});
+    }
+  }
 }
 
 // Inline

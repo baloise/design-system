@@ -79,6 +79,7 @@ Checklist
 | Component           | Recommended Type | Shadow DOM | Docs | Design Tokens |
 | ------------------- | ---------------- | ---------- | ---- | ------------- |
 | input               | Hybrid           | ✅         | ✅   | ✅            |
+| textarea            | Hybrid           | ✅         | ✅   | ✅            |
 | modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
 | pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
 | popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
@@ -99,7 +100,7 @@ Checklist
 | dropdown            | Web Component    | ⬜         | ⬜   | ⬜            |
 | file-upload         | Web Component    | ⬜         | ⬜   | ⬜            |
 | date-input          | Web Component    | ⬜         | ⬜   | ⬜            |
-| number-input        | Web Component    | ⬜         | ⬜   | ⬜            |
+| number-input        | Web Component    | ✅         | ✅   | ✅            |
 | option              | Web Component    | ⬜         | ⬜   | ⬜            |
 | popup               | Web Component    | ⬜         | ⬜   | ⬜            |
 | select (deprecated) | Web Component    | ⬜         | ⬜   | ⬜            |

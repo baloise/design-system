@@ -1,0 +1,261 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Control Mixins
+ * --------------------------------
+ * $wrapper — the element that contains input[type="radio"] + label.
+ *   Web component: ':host'
+ *   CSS-only:      '.radio'
+ */
+
+@mixin vars($wrapper: ':host') {
+  #{$wrapper} {
+    // layout
+    @include vars.local(radio-gap, 0.5rem);
+    @include vars.local(radio-label-base-color, inherit);
+    @include vars.local(radio-label-hover-color, var(--ds-color-sky-5));
+    @include vars.local(radio-label-active-color, var(--ds-color-primary-6));
+
+    // dimensions
+    @include vars.local(radio-size, 1.5rem);
+    @include vars.local(radio-border-width, var(--ds-border-width-base));
+    @include vars.local(radio-radius, var(--ds-radius-rounded));
+
+    // Tile
+    @include vars.local(radio-tile-radius, var(--ds-radius-base));
+    @include vars.local(radio-tile-padding, 1rem);
+    @include vars.local(radio-tile-border-width, var(--ds-border-width-base));
+
+    @include vars.local(radio-tile-base-background-color, inherit);
+    @include vars.local(radio-tile-base-border-color, var(--ds-color-grey-3));
+
+    @include vars.local(radio-tile-hover-background-color, var(--ds-color-grey-2));
+    @include vars.local(radio-tile-hover-border-color, var(--ds-color-sky-5));
+
+    @include vars.local(radio-tile-active-background-color, var(--ds-color-grey-2));
+    @include vars.local(radio-tile-active-border-color, var(--ds-color-primary-6));
+
+    // unchecked base
+    @include vars.local(radio-unchecked-base-color-background, transparent);
+    @include vars.local(radio-unchecked-base-color-border, var(--ds-color-primary-5));
+
+    // unchecked hover
+    @include vars.local(radio-unchecked-hover-color-background, var(--ds-color-grey-2));
+    @include vars.local(radio-unchecked-hover-color-border, var(--ds-color-sky-5));
+
+    // unchecked active/pressed
+    @include vars.local(radio-unchecked-active-color-background, var(--ds-color-grey-2));
+    @include vars.local(radio-unchecked-active-color-border, var(--ds-color-primary-6));
+
+    // checked base
+    @include vars.local(radio-checked-base-color-background, var(--ds-color-primary-5));
+    @include vars.local(radio-checked-base-color-border, var(--ds-color-primary-5));
+    @include vars.local(radio-checked-base-color-icon, var(--ds-color-white));
+
+    // checked hover
+    @include vars.local(radio-checked-hover-color-background, var(--ds-color-sky-5));
+    @include vars.local(radio-checked-hover-color-border, var(--ds-color-sky-5));
+
+    // checked active/pressed
+    @include vars.local(radio-checked-active-color-background, var(--ds-color-primary-6));
+    @include vars.local(radio-checked-active-color-border, var(--ds-color-primary-6));
+  }
+}
+
+@mixin _label-styles() {
+  @include font-smoothing();
+  @include unselectable();
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--_radio-gap);
+  cursor: pointer;
+  user-select: none;
+  color: var(--_radio-label-base-color);
+  font-family: var(--ds-font-family-text);
+  line-height: var(--ds-typography-line-height-base);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  min-height: 2.5rem;
+
+  @include hover() {
+    &:hover {
+      color: var(--_radio-label-hover-color);
+    }
+  }
+
+  &:active {
+    color: var(--_radio-label-active-color);
+  }
+}
+
+// Web component: :host is a thin shell, the inner label is the flex/style container.
+// CSS-only:      label.radio is the flex/style container directly — no inner label.
+@mixin layout($wrapper: ':host') {
+  @if $wrapper == ':host' {
+    :host {
+      display: inline-block;
+      box-sizing: border-box !important;
+      outline: none;
+    }
+
+    label {
+      @include _label-styles();
+
+      #slot {
+        flex: 1;
+      }
+    }
+  } @else {
+    #{$wrapper} {
+      @include _label-styles();
+    }
+  }
+}
+
+@mixin style($wrapper: ':host') {
+  // Base unchecked
+  #{$wrapper} input[type='radio'] {
+    position: relative;
+    appearance: none;
+    flex: none;
+    display: inline-flex;
+    width: var(--_radio-size);
+    height: var(--_radio-size);
+    background: var(--_radio-unchecked-base-color-background);
+    border: var(--_radio-border-width) solid var(--_radio-unchecked-base-color-border);
+    border-radius: var(--_radio-radius);
+    vertical-align: top;
+    cursor: pointer;
+    transition:
+      background 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+  }
+
+  #{$wrapper} input[type='radio']:disabled {
+    cursor: default;
+  }
+
+  #{$wrapper} input[type='radio']:focus-visible {
+    outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+    outline-offset: 2px;
+    border-radius: var(--_radio-radius);
+  }
+
+  // Unchecked hover
+  #{$wrapper} input[type='radio']:not(:disabled):hover,
+  #{$wrapper}:hover input[type='radio']:not(:disabled):not(:checked) {
+    background: var(--_radio-unchecked-hover-color-background);
+    border-color: var(--_radio-unchecked-hover-color-border);
+  }
+
+  // Unchecked active/pressed
+  #{$wrapper} input[type='radio']:not(:disabled):active,
+  #{$wrapper}:active input[type='radio']:not(:disabled):not(:checked) {
+    background: var(--_radio-unchecked-active-color-background);
+    border-color: var(--_radio-unchecked-active-color-border);
+  }
+
+  // Checked base
+  #{$wrapper} input[type='radio']:checked {
+    background: var(--_radio-checked-base-color-background);
+    border-color: var(--_radio-checked-base-color-border);
+  }
+
+  // Checked hover
+  #{$wrapper} input[type='radio']:checked:not(:disabled):hover,
+  #{$wrapper}:hover input[type='radio']:checked:not(:disabled) {
+    background: var(--_radio-checked-hover-color-background);
+    border-color: var(--_radio-checked-hover-color-border);
+  }
+
+  // Checked active/pressed
+  #{$wrapper} input[type='radio']:checked:not(:disabled):active,
+  #{$wrapper}:active input[type='radio']:checked:not(:disabled) {
+    background: var(--_radio-checked-active-color-background);
+    border-color: var(--_radio-checked-active-color-border);
+  }
+
+  // Checkmark pseudo-element
+  #{$wrapper} input[type='radio']::after {
+    content: '';
+    display: block;
+    border-radius: var(--_radio-radius);
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background: transparent;
+    transition:
+      opacity 0.3s ease-in-out,
+      width 0.3s ease-in-out,
+      height 0.3s ease-in-out;
+  }
+
+  #{$wrapper} input[type='radio']:checked::after {
+    background-color: var(--_radio-checked-base-color-icon);
+    height: 0.5rem;
+    width: 0.5rem;
+    opacity: 1;
+  }
+}
+
+// --- State helpers ---
+
+@mixin _invalid-vars() {
+  --mod-radio-label-base-color: var(--ds-color-danger-4);
+  --mod-radio-label-hover-color: var(--ds-color-danger-5);
+  --mod-radio-label-active-color: var(--ds-color-danger-6);
+
+  --mod-radio-unchecked-base-color-background: transparent;
+  --mod-radio-unchecked-base-color-border: var(--ds-divider-color-danger);
+  --mod-radio-unchecked-hover-color-background: var(--ds-color-danger-1);
+  --mod-radio-unchecked-hover-color-border: var(--ds-divider-color-danger-dark);
+  --mod-radio-unchecked-active-color-background: var(--ds-color-danger-1);
+  --mod-radio-unchecked-active-color-border: var(--ds-divider-color-danger-darker);
+
+  --mod-radio-checked-base-color-background: var(--ds-divider-color-danger);
+  --mod-radio-checked-base-color-border: var(--ds-divider-color-danger);
+  --mod-radio-checked-hover-color-background: var(--ds-divider-color-danger-dark);
+  --mod-radio-checked-hover-color-border: var(--ds-divider-color-danger-dark);
+  --mod-radio-checked-active-color-background: var(--ds-divider-color-danger-darker);
+  --mod-radio-checked-active-color-border: var(--ds-divider-color-danger-darker);
+}
+
+@mixin _disabled-vars() {
+  cursor: default;
+  pointer-events: none;
+  --mod-radio-label-base-color: var(--ds-color-grey-5);
+  --mod-radio-label-hover-color: var(--ds-color-grey-5);
+  --mod-radio-label-active-color: var(--ds-color-grey-5);
+
+  --mod-radio-unchecked-base-color-background: var(--ds-color-grey-2);
+  --mod-radio-unchecked-base-color-border: var(--ds-border-color-disabled);
+  --mod-radio-checked-base-color-background: var(--ds-border-color-disabled);
+  --mod-radio-checked-base-color-border: var(--ds-border-color-disabled);
+}
+
+// Invalid declared first, disabled declared second — disabled wins when both classes are present.
+@mixin states($wrapper: ':host') {
+  @if $wrapper == ':host' {
+    :host(.is-invalid:not(.is-disabled)) {
+      @include _invalid-vars();
+    }
+
+    :host(.is-disabled) {
+      @include _disabled-vars();
+    }
+  } @else {
+    #{$wrapper}.is-invalid:not(.is-disabled) {
+      @include _invalid-vars();
+    }
+
+    #{$wrapper}.is-disabled {
+      @include _disabled-vars();
+    }
+  }
+}

@@ -10,9 +10,6 @@ import { waitAfterIdleCallback } from './helpers'
 export interface FormControlInterface<Value extends NonNullable<unknown> | null = string | null, ReturnValue = Value> {
   el: HTMLStencilElement
   internals: ElementInternals
-  // nativeInput?: HTMLInputElement | HTMLTextAreaElement
-  // initialValue?: Value
-  // inputValue?: Value
   // Properties
   disabled: boolean
   readonly: boolean

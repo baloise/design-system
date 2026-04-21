@@ -4,6 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
+  export type InputColor = 'primary' | 'danger' | 'success' | 'warning'
   export type InputAutocorrect = 'on' | 'off'
   export type InputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
   export type InputMask =

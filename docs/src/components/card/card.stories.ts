@@ -95,7 +95,7 @@ export const CardHeader = Story({
         <ds-button color="secondary">Button</ds-button>
         <ds-button>Button</ds-button>
       </ds-button-group>
-      <ds-switch></ds-switch>
+      <ds-toggle></ds-toggle>
     </div>
 
     <ds-card-subtitle>Subtitle</ds-card-subtitle>
@@ -123,8 +123,7 @@ export const TileCard = Story({
     ></ds-icon>
     <ds-card-title>Coverage</ds-card-title>
     <ds-card-subtitle> Lorem ipsum dolor sit amet consectetur adipisicing elit</ds-card-subtitle>
-    <ds-switch checked></ds-switch>
-  </ds-card-header>
+    <ds-toggle checked></ds-toggle>
   <ds-card-content>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero architecto rerum sed non eum qui
     odio sint! Sunt ad numquam ducimus aut minus nihil, officiis quidem eum inventore eos?

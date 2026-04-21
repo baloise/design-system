@@ -1,0 +1,253 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Control Mixins
+ * --------------------------------
+ * $wrapper — the element that contains input[type="checkbox"] + label.
+ *   Web component: ':host'
+ *   CSS-only:      '.checkbox'
+ */
+
+@mixin vars($wrapper: ':host') {
+  #{$wrapper} {
+    // layout
+    @include vars.local(checkbox-gap, 0.5rem);
+    @include vars.local(checkbox-label-base-color, inherit);
+    @include vars.local(checkbox-label-hover-color, var(--ds-color-sky-5));
+    @include vars.local(checkbox-label-active-color, var(--ds-color-primary-6));
+
+    // dimensions
+    @include vars.local(checkbox-size, 1.5rem);
+    @include vars.local(checkbox-border-width, var(--ds-border-width-base));
+    @include vars.local(checkbox-radius, var(--ds-radius-base));
+
+    // Tile
+    @include vars.local(checkbox-tile-radius, var(--ds-radius-base));
+    @include vars.local(checkbox-tile-padding, 1rem);
+    @include vars.local(checkbox-tile-border-width, var(--ds-border-width-base));
+
+    @include vars.local(checkbox-tile-base-background-color, inherit);
+    @include vars.local(checkbox-tile-base-border-color, var(--ds-color-grey-3));
+
+    @include vars.local(checkbox-tile-hover-background-color, var(--ds-color-grey-2));
+    @include vars.local(checkbox-tile-hover-border-color, var(--ds-color-sky-5));
+
+    @include vars.local(checkbox-tile-active-background-color, var(--ds-color-grey-2));
+    @include vars.local(checkbox-tile-active-border-color, var(--ds-color-primary-6));
+
+    // unchecked base
+    @include vars.local(checkbox-unchecked-base-color-background, transparent);
+    @include vars.local(checkbox-unchecked-base-color-border, var(--ds-color-primary-5));
+
+    // unchecked hover
+    @include vars.local(checkbox-unchecked-hover-color-background, var(--ds-color-grey-2));
+    @include vars.local(checkbox-unchecked-hover-color-border, var(--ds-color-sky-5));
+
+    // unchecked active/pressed
+    @include vars.local(checkbox-unchecked-active-color-background, var(--ds-color-grey-2));
+    @include vars.local(checkbox-unchecked-active-color-border, var(--ds-color-primary-6));
+
+    // checked base
+    @include vars.local(checkbox-checked-base-color-background, var(--ds-color-primary-5));
+    @include vars.local(checkbox-checked-base-color-border, var(--ds-color-primary-5));
+    @include vars.local(checkbox-checked-base-color-icon, var(--ds-color-white));
+
+    // checked hover
+    @include vars.local(checkbox-checked-hover-color-background, var(--ds-color-sky-5));
+    @include vars.local(checkbox-checked-hover-color-border, var(--ds-color-sky-5));
+
+    // checked active/pressed
+    @include vars.local(checkbox-checked-active-color-background, var(--ds-color-primary-6));
+    @include vars.local(checkbox-checked-active-color-border, var(--ds-color-primary-6));
+  }
+}
+
+@mixin _label-styles() {
+  @include font-smoothing();
+  @include unselectable();
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--_checkbox-gap);
+  cursor: pointer;
+  user-select: none;
+  color: var(--_checkbox-label-base-color);
+  font-family: var(--ds-font-family-text);
+  line-height: var(--ds-typography-line-height-base);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  min-height: 2.5rem;
+
+  @include hover() {
+    &:hover {
+      color: var(--_checkbox-label-hover-color);
+    }
+  }
+
+  &:active {
+    color: var(--_checkbox-label-active-color);
+  }
+}
+
+// Web component: :host is a thin shell, the inner label is the flex/style container.
+// CSS-only:      label.checkbox is the flex/style container directly — no inner label.
+@mixin layout($wrapper: ':host') {
+  @if $wrapper == ':host' {
+    :host {
+      display: inline-block;
+      box-sizing: border-box !important;
+      outline: none;
+    }
+
+    label {
+      @include _label-styles();
+    }
+  } @else {
+    #{$wrapper} {
+      @include _label-styles();
+    }
+  }
+}
+
+@mixin style($wrapper: ':host') {
+  // Base unchecked
+  #{$wrapper} input[type='checkbox'] {
+    appearance: none;
+    flex: none;
+    display: inline-flex;
+    width: var(--_checkbox-size);
+    height: var(--_checkbox-size);
+    background: var(--_checkbox-unchecked-base-color-background);
+    border: var(--_checkbox-border-width) solid var(--_checkbox-unchecked-base-color-border);
+    border-radius: var(--_checkbox-radius);
+    vertical-align: top;
+    cursor: pointer;
+    transition:
+      background 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+  }
+
+  #{$wrapper} input[type='checkbox']:disabled {
+    cursor: default;
+  }
+
+  #{$wrapper} input[type='checkbox']:focus-visible {
+    outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+    outline-offset: 2px;
+    border-radius: var(--_checkbox-radius);
+  }
+
+  // Unchecked hover
+  #{$wrapper} input[type='checkbox']:not(:disabled):hover,
+  #{$wrapper}:hover input[type='checkbox']:not(:disabled):not(:checked) {
+    background: var(--_checkbox-unchecked-hover-color-background);
+    border-color: var(--_checkbox-unchecked-hover-color-border);
+  }
+
+  // Unchecked active/pressed
+  #{$wrapper} input[type='checkbox']:not(:disabled):active,
+  #{$wrapper}:active input[type='checkbox']:not(:disabled):not(:checked) {
+    background: var(--_checkbox-unchecked-active-color-background);
+    border-color: var(--_checkbox-unchecked-active-color-border);
+  }
+
+  // Checked base
+  #{$wrapper} input[type='checkbox']:checked {
+    background: var(--_checkbox-checked-base-color-background);
+    border-color: var(--_checkbox-checked-base-color-border);
+  }
+
+  // Checked hover
+  #{$wrapper} input[type='checkbox']:checked:not(:disabled):hover,
+  #{$wrapper}:hover input[type='checkbox']:checked:not(:disabled) {
+    background: var(--_checkbox-checked-hover-color-background);
+    border-color: var(--_checkbox-checked-hover-color-border);
+  }
+
+  // Checked active/pressed
+  #{$wrapper} input[type='checkbox']:checked:not(:disabled):active,
+  #{$wrapper}:active input[type='checkbox']:checked:not(:disabled) {
+    background: var(--_checkbox-checked-active-color-background);
+    border-color: var(--_checkbox-checked-active-color-border);
+  }
+
+  // Checkmark pseudo-element
+  #{$wrapper} input[type='checkbox']::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    mask-size: 70%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition:
+      opacity 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+
+  #{$wrapper} input[type='checkbox']:checked::after {
+    background-color: var(--_checkbox-checked-base-color-icon);
+    opacity: 1;
+    transform: translateY(0);
+    mask-image: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+  }
+}
+
+// --- State helpers ---
+
+@mixin _invalid-vars() {
+  --mod-checkbox-label-base-color: var(--ds-color-danger-4);
+  --mod-checkbox-label-hover-color: var(--ds-color-danger-5);
+  --mod-checkbox-label-active-color: var(--ds-color-danger-6);
+
+  --mod-checkbox-unchecked-base-color-background: transparent;
+  --mod-checkbox-unchecked-base-color-border: var(--ds-divider-color-danger);
+  --mod-checkbox-unchecked-hover-color-background: var(--ds-color-grey-2);
+  --mod-checkbox-unchecked-hover-color-border: var(--ds-divider-color-danger-dark);
+  --mod-checkbox-unchecked-active-color-background: var(--ds-color-grey-2);
+  --mod-checkbox-unchecked-active-color-border: var(--ds-divider-color-danger-darker);
+
+  --mod-checkbox-checked-base-color-background: var(--ds-divider-color-danger);
+  --mod-checkbox-checked-base-color-border: var(--ds-divider-color-danger);
+  --mod-checkbox-checked-hover-color-background: var(--ds-divider-color-danger-dark);
+  --mod-checkbox-checked-hover-color-border: var(--ds-divider-color-danger-dark);
+  --mod-checkbox-checked-active-color-background: var(--ds-divider-color-danger-darker);
+  --mod-checkbox-checked-active-color-border: var(--ds-divider-color-danger-darker);
+}
+
+@mixin _disabled-vars() {
+  cursor: default;
+  pointer-events: none;
+  --mod-checkbox-label-base-color: var(--ds-color-grey-5);
+  --mod-checkbox-label-hover-color: var(--ds-color-grey-5);
+  --mod-checkbox-label-active-color: var(--ds-color-grey-5);
+
+  --mod-checkbox-unchecked-base-color-background: var(--ds-color-grey-2);
+  --mod-checkbox-unchecked-base-color-border: var(--ds-border-color-disabled);
+  --mod-checkbox-checked-base-color-background: var(--ds-border-color-disabled);
+  --mod-checkbox-checked-base-color-border: var(--ds-border-color-disabled);
+}
+
+// Invalid declared first, disabled declared second — disabled wins when both classes are present.
+@mixin states($wrapper: ':host') {
+  @if $wrapper == ':host' {
+    :host(.is-invalid:not(.is-disabled)) {
+      @include _invalid-vars();
+    }
+
+    :host(.is-disabled) {
+      @include _disabled-vars();
+    }
+  } @else {
+    #{$wrapper}.is-invalid:not(.is-disabled) {
+      @include _invalid-vars();
+    }
+
+    #{$wrapper}.is-disabled {
+      @include _disabled-vars();
+    }
+  }
+}

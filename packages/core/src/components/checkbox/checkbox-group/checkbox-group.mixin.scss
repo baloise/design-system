@@ -1,0 +1,27 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@mixin style($selector: '#container') {
+  #{$selector} {
+    display: grid;
+    gap: 0.25rem;
+
+    @include tablet() {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+
+@mixin vertical($selector: '#container', $wrapper: '') {
+  @if $wrapper == ':host' {
+    :host(.is-vertical) #{$selector} {
+      display: grid;
+      gap: 0.25rem;
+    }
+  } @else {
+    #{$selector}.is-vertical {
+      display: grid;
+      gap: 0.25rem;
+    }
+  }
+}

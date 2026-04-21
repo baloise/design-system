@@ -101,6 +101,10 @@ export namespace Components {
          */
         "animated": boolean;
         /**
+          * @default ''
+         */
+        "logger": string;
+        /**
           * @default false
          */
         "ready": boolean;
@@ -398,35 +402,165 @@ export namespace Components {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface DsCheck {
+    interface DsCheckbox {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
         /**
           * If `true`, the checkbox is selected.
           * @default false
          */
         "checked": boolean;
         /**
+          * Defines the color of the tile checkbox.
+         */
+        "color"?: DS.CheckboxTileColor;
+        /**
+          * @default 1
+         */
+        "cols": DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile": DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet": DS.CheckboxGroupColumns;
+        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
-         */
-        "disabled"?: boolean;
-        /**
           * @default false
          */
-        "hovered": boolean;
+        "disabled": boolean;
         /**
-          * If `true` the component gets a invalid red style.
-          * @default undefined
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true`, the checkbox is inverted and works on dark backgrounds.
-          * @default undefined
-         */
-        "inverted"?: boolean;
-        /**
+          * If `true` the component gets a invalid style.
           * @default false
          */
-        "pressed": boolean;
+        "invalid": boolean;
+        /**
+          * Label of the radio item.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.CheckboxLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        /**
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+          * @default 'on'
+         */
+        "value": string | number;
+    }
+    interface DsCheckboxGroup {
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols": DS.CheckboxGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile": DS.CheckboxGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet": DS.CheckboxGroupColumns;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true` it acts as the main form control
+          * @default false
+         */
+        "control": boolean;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean | undefined;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the checkbox input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.CheckboxLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the checkboxes in the group. Child checkboxes will inherit the name.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        /**
+          * The value of the control.
+          * @default []
+         */
+        "value": any[];
+        /**
+          * Displays the checkboxes vertically
+          * @default false
+         */
+        "vertical": boolean;
     }
     interface DsClose {
         /**
@@ -677,7 +811,7 @@ export namespace Components {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color": 'primary' | 'danger' | 'success' | 'warning';
+        "color": DS.InputColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -972,7 +1106,7 @@ export namespace Components {
           * Defines the color state of the input.
           * @default 'primary'
          */
-        "color": 'primary' | 'danger' | 'success' | 'warning';
+        "color": DS.InputColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
@@ -1068,6 +1202,175 @@ export namespace Components {
           * @default null
          */
         "value": number | null;
+    }
+    interface DsRadio {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "color"?: DS.RadioTileColor;
+        /**
+          * @default 1
+         */
+        "cols": DS.RadioGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile": DS.RadioGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet": DS.RadioGroupColumns;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Label of the radio item.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.RadioLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        /**
+          * Sets the focus on the checkbox input element.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        "updateState": () => Promise<void>;
+        /**
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+         */
+        "value"?: any | null;
+    }
+    interface DsRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+          * @default false
+         */
+        "allowEmptySelection": boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols": DS.RadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile": DS.RadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet": DS.RadioGroupColumns;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean | undefined;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.RadioLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the radios in the group. Child radios will inherit the name.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        "setValue": (value: number | string | boolean) => Promise<void>;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+        /**
+          * Displays the checkboxes vertically
+          * @default false
+         */
+        "vertical": boolean;
     }
     interface DsShape {
         /**
@@ -1232,31 +1535,6 @@ export namespace Components {
          */
         "useWrap": boolean;
     }
-    interface DsSwitch {
-        /**
-          * If `true`, the checkbox is selected.
-          * @default false
-         */
-        "checked": boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
-         */
-        "disabled"?: boolean;
-        /**
-          * @default false
-         */
-        "hovered": boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-          * @default undefined
-         */
-        "invalid"?: boolean;
-        /**
-          * @default false
-         */
-        "pressed": boolean;
-    }
     interface DsTag {
         /**
           * The theme type of the tag.
@@ -1388,7 +1666,7 @@ export namespace Components {
           * Defines the color state of the textarea.
           * @default 'primary'
          */
-        "color": 'primary' | 'danger' | 'success' | 'warning';
+        "color": DS.InputColor;
         /**
           * The visible width of the text control, in average character widths.
          */
@@ -1547,6 +1825,79 @@ export namespace Components {
          */
         "visible": boolean;
     }
+    interface DsToggle {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * If `true`, the toggle is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * Defines the color of the tile toggle.
+         */
+        "color"?: DS.ToggleTileColor;
+        /**
+          * @default 1
+         */
+        "cols": DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile": DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet": DS.CheckboxGroupColumns;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Label of the radio item.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.CheckboxLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        /**
+          * A DOMString representing the value of the toggle. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the toggle's name.
+          * @default 'on'
+         */
+        "value": string | number;
+    }
 }
 export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1559,6 +1910,14 @@ export interface DsAppCustomEvent<T> extends CustomEvent<T> {
 export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsButtonElement;
+}
+export interface DsCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCheckboxElement;
+}
+export interface DsCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCheckboxGroupElement;
 }
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1576,6 +1935,14 @@ export interface DsNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNumberInputElement;
 }
+export interface DsRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsRadioElement;
+}
+export interface DsRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsRadioGroupElement;
+}
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
@@ -1591,6 +1958,10 @@ export interface DsTextareaCustomEvent<T> extends CustomEvent<T> {
 export interface DsToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsToastElement;
+}
+export interface DsToggleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsToggleElement;
 }
 declare global {
     interface HTMLDsAccordionElementEventMap {
@@ -1704,11 +2075,43 @@ declare global {
         prototype: HTMLDsCardTitleElement;
         new (): HTMLDsCardTitleElement;
     };
-    interface HTMLDsCheckElement extends Components.DsCheck, HTMLStencilElement {
+    interface HTMLDsCheckboxElementEventMap {
+        "dsFocus": DS.CheckboxFocusDetail;
+        "dsBlur": DS.CheckboxBlurDetail;
+        "dsChange": DS.CheckboxChangeDetail;
     }
-    var HTMLDsCheckElement: {
-        prototype: HTMLDsCheckElement;
-        new (): HTMLDsCheckElement;
+    interface HTMLDsCheckboxElement extends Components.DsCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCheckboxElementEventMap>(type: K, listener: (this: HTMLDsCheckboxElement, ev: DsCheckboxCustomEvent<HTMLDsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCheckboxElementEventMap>(type: K, listener: (this: HTMLDsCheckboxElement, ev: DsCheckboxCustomEvent<HTMLDsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCheckboxElement: {
+        prototype: HTMLDsCheckboxElement;
+        new (): HTMLDsCheckboxElement;
+    };
+    interface HTMLDsCheckboxGroupElementEventMap {
+        "dsBlur": DS.CheckboxGroupBlurDetail;
+        "dsFocus": DS.CheckboxGroupFocusDetail;
+        "dsChange": DS.CheckboxGroupChangeDetail;
+    }
+    interface HTMLDsCheckboxGroupElement extends Components.DsCheckboxGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLDsCheckboxGroupElement, ev: DsCheckboxGroupCustomEvent<HTMLDsCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLDsCheckboxGroupElement, ev: DsCheckboxGroupCustomEvent<HTMLDsCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCheckboxGroupElement: {
+        prototype: HTMLDsCheckboxGroupElement;
+        new (): HTMLDsCheckboxGroupElement;
     };
     interface HTMLDsCloseElement extends Components.DsClose, HTMLStencilElement {
     }
@@ -1846,6 +2249,44 @@ declare global {
         prototype: HTMLDsNumberInputElement;
         new (): HTMLDsNumberInputElement;
     };
+    interface HTMLDsRadioElementEventMap {
+        "dsFocus": DS.RadioFocusDetail;
+        "dsBlur": DS.RadioBlurDetail;
+        "dsChange": DS.RadioChangeDetail;
+    }
+    interface HTMLDsRadioElement extends Components.DsRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsRadioElementEventMap>(type: K, listener: (this: HTMLDsRadioElement, ev: DsRadioCustomEvent<HTMLDsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsRadioElementEventMap>(type: K, listener: (this: HTMLDsRadioElement, ev: DsRadioCustomEvent<HTMLDsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsRadioElement: {
+        prototype: HTMLDsRadioElement;
+        new (): HTMLDsRadioElement;
+    };
+    interface HTMLDsRadioGroupElementEventMap {
+        "dsBlur": DS.RadioGroupBlurDetail;
+        "dsFocus": DS.RadioGroupFocusDetail;
+        "dsChange": DS.RadioGroupChangeDetail;
+    }
+    interface HTMLDsRadioGroupElement extends Components.DsRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsRadioGroupElementEventMap>(type: K, listener: (this: HTMLDsRadioGroupElement, ev: DsRadioGroupCustomEvent<HTMLDsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsRadioGroupElementEventMap>(type: K, listener: (this: HTMLDsRadioGroupElement, ev: DsRadioGroupCustomEvent<HTMLDsRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsRadioGroupElement: {
+        prototype: HTMLDsRadioGroupElement;
+        new (): HTMLDsRadioGroupElement;
+    };
     interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
     }
     var HTMLDsShapeElement: {
@@ -1882,12 +2323,6 @@ declare global {
     var HTMLDsStackElement: {
         prototype: HTMLDsStackElement;
         new (): HTMLDsStackElement;
-    };
-    interface HTMLDsSwitchElement extends Components.DsSwitch, HTMLStencilElement {
-    }
-    var HTMLDsSwitchElement: {
-        prototype: HTMLDsSwitchElement;
-        new (): HTMLDsSwitchElement;
     };
     interface HTMLDsTagElementEventMap {
         "dsCloseClick": DS.TagCloseClickDetail;
@@ -1961,6 +2396,25 @@ declare global {
         prototype: HTMLDsToastElement;
         new (): HTMLDsToastElement;
     };
+    interface HTMLDsToggleElementEventMap {
+        "dsFocus": DS.ToggleFocusDetail;
+        "dsBlur": DS.ToggleBlurDetail;
+        "dsChange": DS.ToggleChangeDetail;
+    }
+    interface HTMLDsToggleElement extends Components.DsToggle, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsToggleElementEventMap>(type: K, listener: (this: HTMLDsToggleElement, ev: DsToggleCustomEvent<HTMLDsToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsToggleElementEventMap>(type: K, listener: (this: HTMLDsToggleElement, ev: DsToggleCustomEvent<HTMLDsToggleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsToggleElement: {
+        prototype: HTMLDsToggleElement;
+        new (): HTMLDsToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
@@ -1974,7 +2428,8 @@ declare global {
         "ds-card-header": HTMLDsCardHeaderElement;
         "ds-card-subtitle": HTMLDsCardSubtitleElement;
         "ds-card-title": HTMLDsCardTitleElement;
-        "ds-check": HTMLDsCheckElement;
+        "ds-checkbox": HTMLDsCheckboxElement;
+        "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
         "ds-divider": HTMLDsDividerElement;
@@ -1988,16 +2443,18 @@ declare global {
         "ds-logo": HTMLDsLogoElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
+        "ds-radio": HTMLDsRadioElement;
+        "ds-radio-group": HTMLDsRadioGroupElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
-        "ds-switch": HTMLDsSwitchElement;
         "ds-tag": HTMLDsTagElement;
         "ds-tag-group": HTMLDsTagGroupElement;
         "ds-text": HTMLDsTextElement;
         "ds-textarea": HTMLDsTextareaElement;
         "ds-toast": HTMLDsToastElement;
+        "ds-toggle": HTMLDsToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -2097,6 +2554,10 @@ declare namespace LocalJSX {
           * @default true
          */
         "animated"?: boolean;
+        /**
+          * @default ''
+         */
+        "logger"?: string;
         /**
           * Emitted when app is ready and painted.
          */
@@ -2422,35 +2883,196 @@ declare namespace LocalJSX {
          */
         "visualLevel"?: DS.HeadingVisualLevel;
     }
-    interface DsCheck {
+    interface DsCheckbox {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * If `true`, the checkbox is selected.
           * @default false
          */
         "checked"?: boolean;
         /**
+          * Defines the color of the tile checkbox.
+         */
+        "color"?: DS.CheckboxTileColor;
+        /**
+          * @default 1
+         */
+        "cols"?: DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile"?: DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet"?: DS.CheckboxGroupColumns;
+        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
+          * @default false
          */
         "disabled"?: boolean;
         /**
-          * @default false
+          * The `id` of a `<form>` element to associate this element with.
          */
-        "hovered"?: boolean;
+        "form"?: string;
         /**
-          * If `true` the component gets a invalid red style.
-          * @default undefined
+          * If `true` the component gets a invalid style.
+          * @default false
          */
         "invalid"?: boolean;
         /**
-          * If `true`, the checkbox is inverted and works on dark backgrounds.
-          * @default undefined
+          * Label of the radio item.
+          * @default ''
          */
-        "inverted"?: boolean;
+        "label"?: string;
         /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.CheckboxLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the toggle loses focus.
+         */
+        "onDsBlur"?: (event: DsCheckboxCustomEvent<DS.CheckboxBlurDetail>) => void;
+        /**
+          * Emitted when the value property has changed.
+         */
+        "onDsChange"?: (event: DsCheckboxCustomEvent<DS.CheckboxChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onDsFocus"?: (event: DsCheckboxCustomEvent<DS.CheckboxFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
          */
-        "pressed"?: boolean;
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+          * @default 'on'
+         */
+        "value"?: string | number;
+    }
+    interface DsCheckboxGroup {
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols"?: DS.CheckboxGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile"?: DS.CheckboxGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet"?: DS.CheckboxGroupColumns;
+        /**
+          * If `true` it acts as the main form control
+          * @default false
+         */
+        "control"?: boolean;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean | undefined;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the checkbox input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.CheckboxLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the checkboxes in the group. Child checkboxes will inherit the name.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsBlur"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupBlurDetail>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onDsChange"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * The value of the control.
+          * @default []
+         */
+        "value"?: any[];
+        /**
+          * Displays the checkboxes vertically
+          * @default false
+         */
+        "vertical"?: boolean;
     }
     interface DsClose {
         /**
@@ -2699,7 +3321,7 @@ declare namespace LocalJSX {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        "color"?: DS.InputColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
@@ -3027,7 +3649,7 @@ declare namespace LocalJSX {
           * Defines the color state of the input.
           * @default 'primary'
          */
-        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        "color"?: DS.InputColor;
         /**
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
@@ -3138,6 +3760,195 @@ declare namespace LocalJSX {
           * @default null
          */
         "value"?: number | null;
+    }
+    interface DsRadio {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * If `true`, the checkbox is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Defines the color of the tile radio.
+         */
+        "color"?: DS.RadioTileColor;
+        /**
+          * @default 1
+         */
+        "cols"?: DS.RadioGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile"?: DS.RadioGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet"?: DS.RadioGroupColumns;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Label of the radio item.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.RadioLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the toggle loses focus.
+         */
+        "onDsBlur"?: (event: DsRadioCustomEvent<DS.RadioBlurDetail>) => void;
+        /**
+          * Emitted when the value property has changed.
+         */
+        "onDsChange"?: (event: DsRadioCustomEvent<DS.RadioChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onDsFocus"?: (event: DsRadioCustomEvent<DS.RadioFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+         */
+        "value"?: any | null;
+    }
+    interface DsRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+          * @default false
+         */
+        "allowEmptySelection"?: boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols"?: DS.RadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile"?: DS.RadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet"?: DS.RadioGroupColumns;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean | undefined;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.RadioLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the radios in the group. Child radios will inherit the name.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsBlur"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupBlurDetail>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onDsChange"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+        /**
+          * Displays the checkboxes vertically
+          * @default false
+         */
+        "vertical"?: boolean;
     }
     interface DsShape {
         /**
@@ -3307,31 +4118,6 @@ declare namespace LocalJSX {
          */
         "useWrap"?: boolean;
     }
-    interface DsSwitch {
-        /**
-          * If `true`, the checkbox is selected.
-          * @default false
-         */
-        "checked"?: boolean;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default undefined
-         */
-        "disabled"?: boolean;
-        /**
-          * @default false
-         */
-        "hovered"?: boolean;
-        /**
-          * If `true` the component gets a invalid red style.
-          * @default undefined
-         */
-        "invalid"?: boolean;
-        /**
-          * @default false
-         */
-        "pressed"?: boolean;
-    }
     interface DsTag {
         /**
           * The theme type of the tag.
@@ -3467,7 +4253,7 @@ declare namespace LocalJSX {
           * Defines the color state of the textarea.
           * @default 'primary'
          */
-        "color"?: 'primary' | 'danger' | 'success' | 'warning';
+        "color"?: DS.InputColor;
         /**
           * The visible width of the text control, in average character widths.
          */
@@ -3647,6 +4433,95 @@ declare namespace LocalJSX {
          */
         "visible"?: boolean;
     }
+    interface DsToggle {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * If `true`, the toggle is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Defines the color of the tile toggle.
+         */
+        "color"?: DS.ToggleTileColor;
+        /**
+          * @default 1
+         */
+        "cols"?: DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsMobile"?: DS.CheckboxGroupColumns;
+        /**
+          * @default 1
+         */
+        "colsTablet"?: DS.CheckboxGroupColumns;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Label of the radio item.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the radio input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.CheckboxLabelPosition;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the toggle loses focus.
+         */
+        "onDsBlur"?: (event: DsToggleCustomEvent<DS.ToggleBlurDetail>) => void;
+        /**
+          * Emitted when the value property has changed.
+         */
+        "onDsChange"?: (event: DsToggleCustomEvent<DS.ToggleChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onDsFocus"?: (event: DsToggleCustomEvent<DS.ToggleFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * A DOMString representing the value of the toggle. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the toggle's name.
+          * @default 'on'
+         */
+        "value"?: string | number;
+    }
     interface IntrinsicElements {
         "ds-accordion": DsAccordion;
         "ds-alert-container": DsAlertContainer;
@@ -3660,7 +4535,8 @@ declare namespace LocalJSX {
         "ds-card-header": DsCardHeader;
         "ds-card-subtitle": DsCardSubtitle;
         "ds-card-title": DsCardTitle;
-        "ds-check": DsCheck;
+        "ds-checkbox": DsCheckbox;
+        "ds-checkbox-group": DsCheckboxGroup;
         "ds-close": DsClose;
         "ds-content": DsContent;
         "ds-divider": DsDivider;
@@ -3674,16 +4550,18 @@ declare namespace LocalJSX {
         "ds-logo": DsLogo;
         "ds-notification": DsNotification;
         "ds-number-input": DsNumberInput;
+        "ds-radio": DsRadio;
+        "ds-radio-group": DsRadioGroup;
         "ds-shape": DsShape;
         "ds-snackbar": DsSnackbar;
         "ds-spinner": DsSpinner;
         "ds-stack": DsStack;
-        "ds-switch": DsSwitch;
         "ds-tag": DsTag;
         "ds-tag-group": DsTagGroup;
         "ds-text": DsText;
         "ds-textarea": DsTextarea;
         "ds-toast": DsToast;
+        "ds-toggle": DsToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -3702,7 +4580,8 @@ declare module "@stencil/core" {
             "ds-card-header": LocalJSX.DsCardHeader & JSXBase.HTMLAttributes<HTMLDsCardHeaderElement>;
             "ds-card-subtitle": LocalJSX.DsCardSubtitle & JSXBase.HTMLAttributes<HTMLDsCardSubtitleElement>;
             "ds-card-title": LocalJSX.DsCardTitle & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
-            "ds-check": LocalJSX.DsCheck & JSXBase.HTMLAttributes<HTMLDsCheckElement>;
+            "ds-checkbox": LocalJSX.DsCheckbox & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
+            "ds-checkbox-group": LocalJSX.DsCheckboxGroup & JSXBase.HTMLAttributes<HTMLDsCheckboxGroupElement>;
             "ds-close": LocalJSX.DsClose & JSXBase.HTMLAttributes<HTMLDsCloseElement>;
             "ds-content": LocalJSX.DsContent & JSXBase.HTMLAttributes<HTMLDsContentElement>;
             "ds-divider": LocalJSX.DsDivider & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
@@ -3716,16 +4595,18 @@ declare module "@stencil/core" {
             "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
             "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
+            "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
+            "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
             "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
             "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
             "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
             "ds-stack": LocalJSX.DsStack & JSXBase.HTMLAttributes<HTMLDsStackElement>;
-            "ds-switch": LocalJSX.DsSwitch & JSXBase.HTMLAttributes<HTMLDsSwitchElement>;
             "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
             "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
             "ds-text": LocalJSX.DsText & JSXBase.HTMLAttributes<HTMLDsTextElement>;
             "ds-textarea": LocalJSX.DsTextarea & JSXBase.HTMLAttributes<HTMLDsTextareaElement>;
             "ds-toast": LocalJSX.DsToast & JSXBase.HTMLAttributes<HTMLDsToastElement>;
+            "ds-toggle": LocalJSX.DsToggle & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
         }
     }
 }

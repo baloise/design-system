@@ -84,7 +84,7 @@ export const StackAccordion = Story({
           <h5 class="title">Label Heading</h5>
           <span class="text is-sm">${content}</span>
         </div>
-        <ds-switch></ds-switch>
+        <ds-toggle></ds-toggle>
       </div>
       <div slot="content" class="py-base">
         ${content}

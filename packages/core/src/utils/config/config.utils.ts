@@ -96,3 +96,15 @@ export const updateDsAnimated = (animated: boolean): void => {
     config.animated = animated
   }
 }
+
+export const updateDsLogger = (components: string[]): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.logger.components = components
+    config.logger.render = true
+    config.logger.custom = true
+    config.logger.event = true
+    config.logger.lifecycle = true
+  }
+}

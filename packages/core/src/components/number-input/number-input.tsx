@@ -5,7 +5,6 @@ import {
   Event,
   EventEmitter,
   h,
-  Host,
   Listen,
   Method,
   Prop,
@@ -16,14 +15,12 @@ import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash/isEmpty'
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
-import { ariaBooleanToString } from '../../utils/aria'
 import { inheritAttributes } from '../../utils/attributes'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../utils/config'
 import { FormControl, FormControlInterface, stopEventBubbling } from '../../utils/form-control'
 import { debounceEvent } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { getDecimalSeparator, getThousandSeparator } from '../../utils/number'
-import { I18nDsLabel } from '../label/label.i18n'
 import {
   isNotNumber,
   mapDecimalSeparator,
@@ -32,6 +29,7 @@ import {
   toUserFormattedNumber,
   validateKeyDown,
 } from './number-input.utils'
+import { Field, FieldInterface } from '../input/field.util'
 
 @Component({
   tag: 'ds-number-input',
@@ -39,7 +37,7 @@ import {
   shadow: true,
   formAssociated: true,
 })
-export class NumberInput implements ComponentInterface, FormControlInterface<number | null>, Loggable {
+export class NumberInput implements ComponentInterface, FieldInterface, FormControlInterface<number | null>, Loggable {
   private numberInputId = `ds-number-input-${NumberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private selectTimeout?: NodeJS.Timeout
@@ -110,7 +108,7 @@ export class NumberInput implements ComponentInterface, FormControlInterface<num
   /**
    * Defines the color state of the input.
    */
-  @Prop() color: 'primary' | 'danger' | 'success' | 'warning' = 'primary'
+  @Prop() color: DS.InputColor = 'primary'
 
   /**
    * Text shown in the description area when `invalid` is true.
@@ -408,63 +406,42 @@ export class NumberInput implements ComponentInterface, FormControlInterface<num
 
   render() {
     return (
-      <Host
-        aria-disabled={ariaBooleanToString(this.disabled)}
-        class={{
-          'ds-field': true,
-          'is-disabled': this.disabled,
-          'is-danger': this.color === 'danger' || this.invalid,
-          'is-success': this.color === 'success' && !this.invalid,
-          'is-warning': this.color === 'warning' && !this.invalid,
-        }}
+      <Field
+        disabled={this.disabled}
+        color={this.color}
+        invalid={this.invalid}
+        label={this.label}
+        description={this.description}
+        invalidText={this.invalidText}
+        required={this.required}
+        language={this.language}
       >
-        {/* ---------------------------------------- */}
-        {/* Label                                    */}
-        {/* ---------------------------------------- */}
-        <label htmlFor="input" part="label" id="label">
-          <slot name="label">{this.label}</slot>
-          {this.required === false && <span>{I18nDsLabel[this.language].optional || ''}</span>}
-        </label>
-
-        {/* ---------------------------------------- */}
-        {/* Input Container                          */}
-        {/* ---------------------------------------- */}
-        <div id="container">
-          <input
-            id="input"
-            part="input"
-            type="text"
-            inputMode="decimal"
-            pattern={this.inputPattern}
-            ref={el => (this.control.nativeEl = el)}
-            aria-describedby="description"
-            aria-invalid={this.invalid === true ? 'true' : 'false'}
-            name={this.name}
-            disabled={this.disabled}
-            placeholder={this.placeholder || ''}
-            readonly={this.readonly}
-            required={this.required}
-            min={this.min}
-            max={this.max}
-            value={this.nativeInputValue}
-            onInput={ev => this.handleInput(ev)}
-            onFocus={ev => this.handleFocus(ev)}
-            onBlur={ev => this.handleBlur(ev)}
-            onClick={ev => this.control.onClick(ev)}
-            onKeyDown={ev => this.handleKeydown(ev)}
-            onKeyPress={ev => this.dsKeyPress.emit(ev)}
-            {...this.inheritedAttributes}
-          />
-        </div>
-
-        {/* ---------------------------------------- */}
-        {/* Description                              */}
-        {/* ---------------------------------------- */}
-        <span id="description" part="description">
-          {this.invalid && this.invalidText && <ds-icon name="alert"></ds-icon>}
-          <slot name="description">{this.invalid && this.invalidText ? this.invalidText : this.description}</slot>
-        </span>
-      </Host>
+        <input
+          id="input"
+          part="input"
+          type="text"
+          inputMode="decimal"
+          pattern={this.inputPattern}
+          ref={el => (this.control.nativeEl = el)}
+          aria-describedby="description"
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          name={this.name}
+          disabled={this.disabled}
+          placeholder={this.placeholder || ''}
+          readonly={this.readonly}
+          required={this.required}
+          min={this.min}
+          max={this.max}
+          value={this.nativeInputValue}
+          onInput={ev => this.handleInput(ev)}
+          onFocus={ev => this.handleFocus(ev)}
+          onBlur={ev => this.handleBlur(ev)}
+          onClick={ev => this.control.onClick(ev)}
+          onKeyDown={ev => this.handleKeydown(ev)}
+          onKeyPress={ev => this.dsKeyPress.emit(ev)}
+          {...this.inheritedAttributes}
+        />
+      </Field>
     )
   }
 }
