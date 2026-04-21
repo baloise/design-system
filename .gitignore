@@ -170,3 +170,4 @@ playwright.visual.config.ts
 
 .env
 .worktrees
+.claude/settings.local.json

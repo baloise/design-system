@@ -44,17 +44,18 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
       {/* ---------------------------------------- */}
       {/* Label                                    */}
       {/* ---------------------------------------- */}
-      {props.label && (props.role === 'fieldset' ? (
-        <legend part="label" id="label">
-          <slot name="label">{props.label}</slot>
-          {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
-        </legend>
-      ) : (
-        <label htmlFor={inputId} part="label" id="label">
-          <slot name="label">{props.label}</slot>
-          {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
-        </label>
-      ))}
+      {props.label &&
+        (props.role === 'fieldset' ? (
+          <legend part="label" id="label">
+            <slot name="label">{props.label}</slot>
+            {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
+          </legend>
+        ) : (
+          <label htmlFor={inputId} part="label" id="label">
+            <slot name="label">{props.label}</slot>
+            {!props.required && <span>{I18nDsLabel[props.language].optional || ''}</span>}
+          </label>
+        ))}
       {/* ---------------------------------------- */}
       {/* Input Control                            */}
       {/* ---------------------------------------- */}

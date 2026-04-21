@@ -16,10 +16,12 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `
+  ...withRender(
+    ({ content, ...args }) => `
 <ds-radio-group name="playground">
   <ds-radio ${props(args)}>${content}</ds-radio>
-</ds-radio-group>`),
+</ds-radio-group>`,
+  ),
 }
 
 export default meta

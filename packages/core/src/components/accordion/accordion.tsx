@@ -16,7 +16,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
 
   log!: LogInstance
 
-  @Logger('accordion')
+  @Logger('ds-accordion')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -35,74 +35,74 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop({ reflect: true }) group?: string
+  @Prop({ reflect: true }) readonly group?: string
 
   /**
    * The heading level of the summary
    */
-  @Prop() summaryLevel: DS.AccordionSummaryLevel = 'h3'
+  @Prop() readonly summaryLevel: DS.AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
-  @Prop() summaryVisualLevel?: DS.AccordionSummaryLevel
+  @Prop() readonly summaryVisualLevel?: DS.AccordionSummaryLevel
 
   /**
    * If `true` the summary is styled as a title.
    */
-  @Prop() summaryTitle?: boolean
+  @Prop() readonly summaryTitle?: boolean
 
   /**
    * The marker variant. Only applies if `button` is `false`.
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() marker?: DS.AccordionMarker
+  @Prop() readonly marker?: DS.AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() markerPosition?: DS.AccordionMarkerPosition
+  @Prop() readonly markerPosition?: DS.AccordionMarkerPosition
 
   /**
    * Displays the summary as a button and hides the default marker.
    */
-  @Prop() button = false
+  @Prop() readonly button = false
 
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
-  @Prop() buttonExpanded = false
+  @Prop() readonly buttonExpanded = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonColor: DS.ButtonColor = 'primary'
+  @Prop() readonly buttonColor: DS.ButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
-  @Prop() buttonSize?: DS.ButtonSize
+  @Prop() readonly buttonSize?: DS.ButtonSize
 
   /**
    * Label of the open trigger button
    */
-  @Prop() buttonLabelOpen?: string
+  @Prop() readonly buttonLabelOpen?: string
 
   /**
    * BalIcon of the open trigger button
    */
-  @Prop() buttonIconOpen?: string
+  @Prop() readonly buttonIconOpen?: string
 
   /**
    * Label of the close trigger button
    */
-  @Prop() buttonLabelClose?: string
+  @Prop() readonly buttonLabelClose?: string
 
   /**
    * BalIcon of the close trigger button
    */
-  @Prop() buttonIconClose?: string
+  @Prop() readonly buttonIconClose?: string
 
   /**
    * Emitted when the input value has changed.
@@ -125,7 +125,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    */
 
   @Listen('dsOpened', { target: 'window' })
-  listenOnToggles(event: DS.AccordionToggle) {
+  listenToDsOpened(event: DS.AccordionToggle) {
     const { id, group } = event.detail
 
     // ignore self
@@ -177,7 +177,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
     }
   }
 
-  private onContentTransitionEnd = (_event: TransitionEvent) => {
+  private handleContentTransitionEnd = (_event: TransitionEvent) => {
     if (this.animated) {
       this.isAnimating = false
     }
@@ -265,7 +265,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
           aria-labelledby="summary"
           part="content"
           hidden={!this.open}
-          onTransitionEnd={this.onContentTransitionEnd}
+          onTransitionEnd={this.handleContentTransitionEnd}
         >
           <div id="inner">
             <slot name="content" />

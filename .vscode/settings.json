@@ -1,6 +1,11 @@
 {
-  "eslint.validate": ["json"],
-  "cSpell.words": ["cleancss"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[mdx]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "files.eol": "\n",
   "vsicons.associations.files": [
     {
       "icon": "playwright",

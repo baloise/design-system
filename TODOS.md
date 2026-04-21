@@ -6,11 +6,7 @@
 
 # Styleguide
 
-- all props without mutable should be readonly
-- all listeners should start with listenTo...
-- all watcher should start with watch...
-- all event handlers should not start with on it should start with handle...
-- all methods are private exept lifecycle, @method, @Watch, and render
+
 
 # TODO's
 
@@ -28,7 +24,7 @@
 | Brand Icons                      | Update brand icons                                                    | ⬜     |
 | Brand Icons API                  | Create a task to automate the update                                  | ⬜     |
 | Gap Analyses Material            | Check Components use cases                                            | ⬜     |
-| NPM Updates                      | Check Vurnabilites                                                    | ⬜     |
+| NPM Updates                      | Check Vurnabilites and Renovate                                       | ⬜     |
 | UI Icons change base color       | Change base color of svg to primary and not black                     | ⬜     |
 | Anuglar React                    | Add frameworks back after migrating too shadow dom                    | ⬜     |
 | FullWidth,Expanded,Wide          | Stick with one nameing                                                | ⬜     |

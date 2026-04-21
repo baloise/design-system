@@ -1,4 +1,4 @@
-# CLAUDE.md — Design System Maintainers Guide
+# Design System Maintainers Guide
 
 This file provides guidance when working with code in this repository.
 
