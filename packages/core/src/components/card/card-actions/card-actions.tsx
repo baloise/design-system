@@ -1,10 +1,10 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 @Component({
   tag: 'ds-card-actions',
   shadow: true,
 })
-export class CardActions implements Loggable {
+export class CardActions implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('card-actions')
@@ -15,7 +15,7 @@ export class CardActions implements Loggable {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() align?: DS.CardActionsAlignment
+  @Prop() readonly align?: DS.CardActionsAlignment
 
   render() {
     return (

@@ -20,21 +20,21 @@ import { isDescendant, waitAfterIdleCallback } from '../../utils/helpers'
 import { stopEventBubbling } from '../../utils/form-control'
 
 @Component({
-  tag: 'ds-radio',
-  styleUrl: 'radio.host.scss',
+  tag: 'ds-segment-item',
+  styleUrl: 'segment-item.host.scss',
   shadow: true,
   formAssociated: true,
 })
-export class Radio implements ComponentInterface, Loggable {
-  private inputId = `ds-rb-${radioIds++}`
+export class SegmentItem implements ComponentInterface, Loggable {
+  private inputId = `ds-si-${segmentItemIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
   private nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLDsRadioElement
+  @Element() el!: HTMLDsSegmentItemElement
 
   log!: LogInstance
-  @Logger('radio')
+  @Logger('segment-item')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -51,97 +51,52 @@ export class Radio implements ComponentInterface, Loggable {
    */
 
   /**
+   * A DOMString representing the value of the segment item. This is not displayed on the
+   * client-side, but on the server this is the value given to the data
+   * submitted with the item's name.
+   */
+  @Prop() value?: any | null
+
+  /**
+   * @internal
    * The name of the control, which is submitted with the form data.
    */
   @Prop() readonly name: string = this.inputId
 
   /**
-   * Label of the radio item.
-   */
-  @Prop() readonly label = ''
-
-  /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
-   */
-  @Prop() readonly labelPosition: DS.RadioLabelPosition = 'right'
-
-  /**
-   * A DOMString representing the value of the checkbox. This is not displayed on the
-   * client-side, but on the server this is the value given to the data
-   * submitted with the checkbox's name.
-   */
-  @Prop() value?: any | null
-
-  /**
-   * If `true`, the checkbox is selected.
+   * @internal
+   * If `true`, the segment item is selected.
    */
   @Prop({ mutable: true }) checked = false
-  private initialValue = false
 
   /**
+   * @internal
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() readonly disabled = false
 
   /**
+   * @internal
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop() readonly readonly = false
 
   /**
+   * @internal
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() readonly required = false
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
-   */
-  @Prop({ reflect: true }) readonly autoInvalidOff = false
-
-  /**
+   * @internal
    * If `true` the component gets a invalid style.
    */
   @Prop() readonly invalid = false
 
   /**
-   * Defines the layout of the input
-   */
-  @Prop() readonly tile = false
-
-  /**
-   * Defines the color of the tile radio.
-   */
-  @Prop() readonly tileColor?: DS.RadioTileColor
-
-  /**
-   * @internal
-   */
-  @Prop() readonly cols: DS.RadioGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsTablet: DS.RadioGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsMobile: DS.RadioGroupColumns = 1
-
-  /**
-   * Emitted when the toggle has focus.
-   */
-  @Event() dsFocus!: EventEmitter<DS.RadioFocusDetail>
-
-  /**
-   * Emitted when the toggle loses focus.
-   */
-  @Event() dsBlur!: EventEmitter<DS.RadioBlurDetail>
-
-  /**
    * Emitted when the value property has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.RadioChangeDetail>
+  @Event() dsChange!: EventEmitter<DS.SegmentItemChangeDetail>
 
   /**
    * LIFECYCLE
@@ -200,7 +155,7 @@ export class Radio implements ComponentInterface, Loggable {
    */
 
   /**
-   * Sets the focus on the checkbox input element.
+   * Sets the focus on the segment item input element.
    */
   @Method()
   async setFocus() {
@@ -243,8 +198,8 @@ export class Radio implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private get group(): HTMLDsRadioGroupElement | null {
-    return this.el.closest('ds-radio-group')
+  private get group(): HTMLDsSegmentElement | null {
+    return this.el.closest('ds-segment')
   }
 
   /**
@@ -293,13 +248,13 @@ export class Radio implements ComponentInterface, Loggable {
       this.wasFocused = true
     }
 
-    this.dsFocus.emit(ev)
+    // this.dsFocus.emit(ev)
   }
 
   private handleBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) return
     this.focused = false
-    this.dsBlur.emit(ev)
+    // this.dsBlur.emit(ev)
   }
 
   private handleClick = (ev: MouseEvent) => {
@@ -340,13 +295,6 @@ export class Radio implements ComponentInterface, Loggable {
           'is-disabled': this.disabled || this.readonly,
           'is-invalid': this.invalid,
           'is-checked': this.checked,
-          'is-tile': this.tile,
-          [`has-tile-${this.tileColor}`]: this.tile && !!this.tileColor,
-          'has-label-left': this.labelPosition === 'left',
-          'has-label-top': this.labelPosition === 'top',
-          [`has-cols-${this.cols}`]: this.tile && this.cols > 1,
-          [`has-cols-${this.colsTablet}-tablet`]: this.tile && this.colsTablet > 1,
-          [`has-cols-${this.colsMobile}-mobile`]: this.tile && this.colsMobile > 1,
         }}
         onClick={this.handleClick}
       >
@@ -377,4 +325,4 @@ export class Radio implements ComponentInterface, Loggable {
   }
 }
 
-let radioIds = 0
+let segmentItemIds = 0

@@ -27,43 +27,43 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * The color to use from your application's color palette.aaa
    */
-  @Prop() color: DS.ButtonColor = 'primary'
+  @Prop() readonly color: DS.ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop({ reflect: true }) elementType: DS.ButtonElementType = 'button'
+  @Prop({ reflect: true }) readonly elementType: DS.ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
   /**
    * Size of the button
    */
   @Prop({ mutable: true }) size: DS.ButtonSize = undefined
   @Watch('size')
-  watchSize(newValue: DS.ButtonSize) {
+  sizeChanged(newValue: DS.ButtonSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href?: string
+  @Prop() readonly href?: string
 
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: DS.ButtonTarget = '_self'
+  @Prop() readonly target: DS.ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() rel?: string
+  @Prop() readonly rel?: string
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -71,57 +71,57 @@ export class Button implements ComponentInterface, Loggable {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() download?: string
+  @Prop() readonly download?: string
 
   /**
    * If `true` the button has a dashed border.
    * */
-  @Prop() dashed = false
+  @Prop() readonly dashed = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() shadow = false
+  @Prop() readonly shadow = false
 
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() square = false
+  @Prop() readonly square = false
 
   /**
    * If `true` the button is circular and width of the buttons is limited
    */
-  @Prop() circle = false
+  @Prop() readonly circle = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop() expanded = false
+  @Prop() readonly expanded = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
-  @Prop() flat = false
+  @Prop() readonly flat = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() outlined = false
+  @Prop() readonly outlined = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted = false
+  @Prop() readonly inverted = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop({ reflect: true }) loading: DS.ButtonSpinner = false
+  @Prop({ reflect: true }) readonly loading: DS.ButtonSpinner = false
 
   /**
    * If `true` the button is rounded.
    */
-  @Prop() rounded = false
+  @Prop() readonly rounded = false
 
   // /**
   //  * If `true` the button is a popup.
@@ -131,47 +131,47 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * Name of the left button icon
    */
-  @Prop() icon?: string
+  @Prop() readonly icon?: string
 
   /**
    * If `true` the icon turns
    */
-  @Prop() iconTurn = false
+  @Prop() readonly iconTurn = false
 
   /**
    * Name of the right button icon
    */
-  @Prop() iconRight?: string
+  @Prop() readonly iconRight?: string
 
   /**
    * The label of the button will not break
    */
-  @Prop() noWrap = false
+  @Prop() readonly noWrap = false
 
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop() name?: string
+  @Prop() readonly name?: string
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() value?: string | number
+  @Prop() readonly value?: string | number
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() a11yControls?: string = undefined
+  @Prop() readonly a11yControls?: string = undefined
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() a11yTitle?: string = undefined
+  @Prop() readonly a11yTitle?: string = undefined
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() a11yLabel?: string = undefined
+  @Prop() readonly a11yLabel?: string = undefined
 
   /**
    * A11y attributes for the native button element.
@@ -204,7 +204,7 @@ export class Button implements ComponentInterface, Loggable {
   @Event() dsDidRender!: EventEmitter<DS.ButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
+  listenToClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
       ev.preventDefault()
       ev.stopPropagation()
@@ -268,22 +268,22 @@ export class Button implements ComponentInterface, Loggable {
     return {}
   }
 
-  private handleClick(ev: MouseEvent) {
+  private handleHostClick = (ev: MouseEvent) => {
     if (this.disabled) {
       ev.preventDefault()
       ev.stopPropagation()
     }
   }
 
-  private onFocus = () => {
+  private handleFocus = () => {
     this.dsFocus.emit()
   }
 
-  private onBlur = () => {
+  private handleBlur = () => {
     this.dsBlur.emit()
   }
 
-  private onClick = (ev: MouseEvent) => {
+  private handleClick = (ev: MouseEvent) => {
     if (!this.disabled) {
       if (this.elementType === 'submit') {
         this.internals.form?.requestSubmit()
@@ -323,7 +323,7 @@ export class Button implements ComponentInterface, Loggable {
 
     return (
       <Host
-        onClick={this.handleClick}
+        onClick={this.handleHostClick}
         class={{
           'is-fullwidth': this.expanded,
           [`is-${this.color}`]: this.color !== undefined,
@@ -347,9 +347,9 @@ export class Button implements ComponentInterface, Loggable {
           id="button"
           part="native"
           disabled={this.disabled || this.isLoading}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onClick={this.onClick}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onClick={this.handleClick}
           aria-disabled={ariaBooleanToString(this.disabled || this.isLoading)}
           {...ariaAttributes}
         >

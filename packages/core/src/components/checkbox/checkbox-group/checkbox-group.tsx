@@ -26,7 +26,7 @@ import { areArraysEqual } from '../../../utils/array'
   formAssociated: true,
 })
 export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterface {
-  inputId = `ds-cg-${checkboxGroupIds++}`
+  private inputId = `ds-cg-${checkboxGroupIds++}`
 
   @Element() el!: HTMLDsCheckboxGroupElement
 
@@ -49,12 +49,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * The name of the checkboxes in the group. Child checkboxes will inherit the name.
    */
-  @Prop() name: string = this.inputId
+  @Prop() readonly name: string = this.inputId
 
   /**
    * If `true` it acts as the main form control
    */
-  @Prop() control = false
+  @Prop() readonly control = false
 
   /**
    * The value of the control.
@@ -90,82 +90,82 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * The label of the input, which is displayed above the input field.
    */
-  @Prop() label?: string
+  @Prop() readonly label?: string
 
   /**
    * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
-  @Prop() labelPosition: DS.CheckboxLabelPosition = 'right'
+  @Prop() readonly labelPosition: DS.CheckboxLabelPosition = 'right'
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() description?: string
+  @Prop() readonly description?: string
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() color: DS.InputColor = 'primary'
+  @Prop() readonly color: DS.InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() loading = false
+  @Prop() readonly loading = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid: boolean | undefined
+  @Prop() readonly invalid: boolean | undefined
 
   /**
    * The text to display when the input is in an invalid state.
    */
-  @Prop() invalidText?: string
+  @Prop() readonly invalidText?: string
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled: boolean | undefined
+  @Prop() readonly disabled: boolean | undefined
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly: boolean | undefined
+  @Prop() readonly readonly: boolean | undefined
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = true
+  @Prop() readonly required = true
 
   /**
    * Displays the checkboxes vertically
    */
-  @Prop() vertical = false
+  @Prop() readonly vertical = false
 
   /**
    * Defines the layout of the input
    */
-  @Prop() tile = false
+  @Prop() readonly tile = false
 
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() tileColor?: DS.CheckboxTileColor
+  @Prop() readonly tileColor?: DS.CheckboxTileColor
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() cols: DS.CheckboxGroupColumns = 1
+  @Prop() readonly cols: DS.CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() colsTablet: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsTablet: DS.CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() colsMobile: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsMobile: DS.CheckboxGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
@@ -207,7 +207,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
 
   @Listen('dsChange', { capture: true, target: 'document' })
-  listenOnCheckboxChange(ev: UIEvent) {
+  listenToDsChange(ev: UIEvent) {
     if (this.control) {
       if (isDescendant(this.el, ev.target as HTMLElement)) {
         stopEventBubbling(ev)
@@ -228,7 +228,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   }
 
   @Listen('dsFocus', { capture: true, target: 'document' })
-  checkboxFocusListener(ev: CustomEvent<FocusEvent>) {
+  listenToDsFocus(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
       stopEventBubbling(ev)
@@ -236,7 +236,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   }
 
   @Listen('dsBlur', { capture: true, target: 'document' })
-  checkboxBlurListener(ev: CustomEvent<FocusEvent>) {
+  listenToDsBlur(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
       stopEventBubbling(ev)

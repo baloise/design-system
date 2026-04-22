@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { inheritAttributes } from '../../utils/attributes'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
@@ -9,7 +9,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
   styleUrl: 'tag.host.scss',
   shadow: true,
 })
-export class Tag implements Loggable {
+export class Tag implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('tag')
@@ -24,41 +24,41 @@ export class Tag implements Loggable {
   /**
    * The theme type of the tag.
    */
-  @Prop({ reflect: true }) color?: DS.TagColor
+  @Prop({ reflect: true }) readonly color?: DS.TagColor
 
   /**
    * The size of the tag element
    */
   @Prop({ mutable: true, reflect: true }) size?: DS.TagSize
   @Watch('size')
-  watchSize(newValue: DS.TagSize) {
+  sizeChanged(newValue: DS.TagSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * The shape of the tag element like square or pill
    */
-  @Prop({ reflect: true }) shape?: DS.TagShape
+  @Prop({ reflect: true }) readonly shape?: DS.TagShape
 
   /**
    * The theme type of the tag.
    */
-  @Prop({ reflect: true }) closable = false
+  @Prop({ reflect: true }) readonly closable = false
 
   /**
    * Overwrites the default color to invalid style
    */
-  @Prop({ reflect: true }) invalid = false
+  @Prop({ reflect: true }) readonly invalid = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
   /**
    * Choosing left or center the tag is aligned to that side in the ds-card.
    */
-  @Prop({ reflect: true }) position?: DS.TagPlacement
+  @Prop({ reflect: true }) readonly position?: DS.TagPlacement
 
   /**
    * Emitted when the input got clicked.

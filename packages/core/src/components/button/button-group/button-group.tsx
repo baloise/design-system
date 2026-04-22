@@ -17,23 +17,23 @@ export class ButtonGroup implements ComponentInterface, Loggable {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() align?: DS.ButtonGroupAlignment
+  @Prop() readonly align?: DS.ButtonGroupAlignment
 
   /**
    * `auto` will position the button items vertical and full width.
    * `row` will force that the buttons are also horizontal on mobile.
    */
-  @Prop() direction: DS.ButtonGroupDirection = 'auto'
+  @Prop() readonly direction: DS.ButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.
    */
-  @Prop() reverse = false
+  @Prop() readonly reverse = false
 
   /**
    * If `true` the buttons will expand to fill the available space on mobile.
    */
-  @Prop() expanded = false
+  @Prop() readonly expanded = false
 
   render() {
     return (

@@ -21,14 +21,14 @@ export class AlertContainer implements ComponentInterface, Loggable {
   private animationDurationMs = 300
 
   @Element() el!: HTMLDsAlertContainerElement
-  containerEl: HTMLDivElement | undefined
+  private containerEl: HTMLDivElement | undefined
 
   @State() alerts: AlertComponent[] = []
   private alertTimers: Record<string, PausableTimer> = {}
 
-  @Prop() animated = false
-  @Prop() type: AlertType = 'toast'
-  @Prop() container?: AlertContainerSize
+  @Prop() readonly animated = false
+  @Prop() readonly type: AlertType = 'toast'
+  @Prop() readonly container?: AlertContainerSize
 
   @Method()
   async addAlert(alert: Alert): Promise<string> {

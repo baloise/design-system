@@ -42,28 +42,28 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
   /**
    * Defines the color of the logo.
    */
-  @Prop({ reflect: true }) color: DS.LogoColor = 'primary'
+  @Prop({ reflect: true }) readonly color: DS.LogoColor = 'primary'
 
   /**
    * Size of the logo svg
    */
   @Prop({ mutable: true, reflect: true }) size: DS.LogoSize = ''
   @Watch('size')
-  watchSize(newValue: DS.LogoSize) {
+  sizeChanged(newValue: DS.LogoSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
   /**
    * Defines the brand of the logo. Default is 'baloise'.
    */
-  @Prop({ reflect: true }) brand: DS.LogoBrand = ''
+  @Prop({ reflect: true }) readonly brand: DS.LogoBrand = ''
 
   /**
    * Defines if the animation should be active
    */
-  @Prop({ reflect: true }) animated = false
+  @Prop({ reflect: true }) readonly animated = false
   @Watch('animated')
-  animatedWatcher() {
+  animatedChanged() {
     if (!this.isAnimated) {
       this.destroyAnimation()
     }
@@ -76,7 +76,7 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
 
   connectedCallback() {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
-    this.animatedWatcher()
+    this.animatedChanged()
   }
 
   componentDidUpdate() {

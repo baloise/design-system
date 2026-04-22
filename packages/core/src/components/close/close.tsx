@@ -35,30 +35,30 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
    */
   @Prop({ mutable: true, reflect: true }) size?: DS.CloseSize
   @Watch('size')
-  validateSize(newValue: DS.CloseSize) {
+  sizeChanged(newValue: DS.CloseSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop() inverted = false
+  @Prop() readonly inverted = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
   /**
    * If `true` the close component will be rendered as a button element.
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
-  @Prop() button = false
+  @Prop() readonly button = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
-  @Prop() buttonColor?: DS.ButtonColor
+  @Prop() readonly buttonColor?: DS.ButtonColor
 
   /**
    * @internal define config for the component

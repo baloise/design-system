@@ -39,10 +39,10 @@ export class Heading implements ComponentInterface, Loggable {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) level: DS.HeadingLevel = 'h1'
+  @Prop({ reflect: true }) readonly level: DS.HeadingLevel = 'h1'
 
   @Watch('level')
-  levelWatcher() {
+  levelChanged() {
     this.updateAutoFontSize()
   }
 
@@ -51,20 +51,20 @@ export class Heading implements ComponentInterface, Loggable {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop({ reflect: true }) visualLevel?: DS.HeadingVisualLevel
+  @Prop({ reflect: true }) readonly visualLevel?: DS.HeadingVisualLevel
 
   @Watch('visualLevel')
-  visualLevelWatcher() {
+  visualLevelChanged() {
     this.updateAutoFontSize()
   }
 
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) autoLevel?: DS.HeadingVisualLevel
+  @Prop({ reflect: true }) readonly autoLevel?: DS.HeadingVisualLevel
 
   @Watch('autoLevel')
-  autoLevelWatcher() {
+  autoLevelChanged() {
     this.updateAutoFontSize()
   }
 
@@ -73,32 +73,32 @@ export class Heading implements ComponentInterface, Loggable {
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) noWrap = false
+  @Prop({ reflect: true }) readonly noWrap = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
-  @Prop({ reflect: true }) subtitle = false
+  @Prop({ reflect: true }) readonly subtitle = false
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) space?: 'none' | 'bottom' | 'top' | 'all'
+  @Prop({ reflect: true }) readonly space?: 'none' | 'bottom' | 'top' | 'all'
 
   /**
    * The theme type of the toast.
    */
-  @Prop({ reflect: true }) color: DS.HeadingColor = ''
+  @Prop({ reflect: true }) readonly color: DS.HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop({ reflect: true }) readonly inverted = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) shadow = false
+  @Prop({ reflect: true }) readonly shadow = false
 
   /**
    * LIFECYCLE

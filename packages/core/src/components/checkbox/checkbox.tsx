@@ -23,7 +23,7 @@ import { Attributes, inheritAttributes } from '../../utils/attributes'
 export class Checkbox implements ComponentInterface, Loggable {
   private inputId = `ds-cb-${checkboxIds++}`
   private inheritAttributes: Attributes = {}
-  nativeInput?: HTMLInputElement
+  private nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLDsCheckboxElement
 
@@ -45,24 +45,24 @@ export class Checkbox implements ComponentInterface, Loggable {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.inputId
+  @Prop() readonly name: string = this.inputId
 
   /**
    * Label of the radio item.
    */
-  @Prop() label = ''
+  @Prop() readonly label = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
-  @Prop() labelPosition: DS.CheckboxLabelPosition = 'right'
+  @Prop() readonly labelPosition: DS.CheckboxLabelPosition = 'right'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
    */
-  @Prop() value: string | number = 'on'
+  @Prop() readonly value: string | number = 'on'
 
   /**
    * If `true`, the checkbox is selected.
@@ -73,52 +73,52 @@ export class Checkbox implements ComponentInterface, Loggable {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() readonly disabled = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly readonly = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = false
+  @Prop() readonly required = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid = false
+  @Prop() readonly invalid = false
 
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() tileColor?: DS.CheckboxTileColor
+  @Prop() readonly tileColor?: DS.CheckboxTileColor
 
   /**
    * Defines the layout of the input
    */
-  @Prop() tile = false
+  @Prop() readonly tile = false
 
   /**
    * @internal
    */
-  @Prop() cols: DS.CheckboxGroupColumns = 1
+  @Prop() readonly cols: DS.CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colsTablet: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsTablet: DS.CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colsMobile: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsMobile: DS.CheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
@@ -183,7 +183,7 @@ export class Checkbox implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private handleChange(ev: Event): void {
+  private handleChange = (ev: Event) => {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
     this.internals.setFormValue(this.checked ? (this.value as string) : null)

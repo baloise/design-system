@@ -43,40 +43,40 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
    * form-related element in the same document as the <label> element.
    * So, any given label element can be associated with only one form control.
    */
-  @Prop() htmlFor?: string = undefined
+  @Prop() readonly htmlFor?: string = undefined
 
   /**
    * Define the id of the native label element
    */
-  @Prop() htmlId?: string = `ds-lbl-${labelIds++}`
+  @Prop() readonly htmlId?: string = `ds-lbl-${labelIds++}`
 
   /**
    * If `true` the form control needs to be filled. If it is set to
    * `false` an optional label is added to the label..
    */
-  @Prop({ reflect: true }) required = true
+  @Prop({ reflect: true }) readonly required = true
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) noWrap = false
+  @Prop({ reflect: true }) readonly noWrap = false
 
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop({ reflect: true }) valid = false
+  @Prop({ reflect: true }) readonly valid = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop({ reflect: true }) invalid = false
+  @Prop({ reflect: true }) readonly invalid = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
@@ -91,12 +91,12 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
   /**
    * @internal
    */
-  @Prop() hovered = false
+  @Prop() readonly hovered = false
 
   /**
    * @internal
    */
-  @Prop() pressed = false
+  @Prop() readonly pressed = false
 
   /**
    * LISTENERS

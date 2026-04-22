@@ -30,46 +30,46 @@ export class Notification implements ComponentInterface, Loggable {
   @Element() element!: HTMLDsNotificationElement
   @State() didLoad = false
 
-  timer!: NodeJS.Timeout
+  private timer!: NodeJS.Timeout
 
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color?: DS.NotificationColor
+  @Prop() readonly color?: DS.NotificationColor
 
   /**
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
-  @Prop() alert = false
+  @Prop() readonly alert = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() closable = false
+  @Prop() readonly closable = false
 
   /**
    * If `true` there will be no icon provided
    */
-  @Prop() noIcon = false
+  @Prop() readonly noIcon = false
 
   /**
    * Defines the size of the notification, small, medium or large.
    */
   @Prop({ reflect: true, mutable: true }) size?: DS.NotificationSize
-  watchSize(newValue: DS.NotificationSize) {
+  private watchSize(newValue: DS.NotificationSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * Defines the heading of the notification.
    */
-  @Prop() heading?: string
+  @Prop() readonly heading?: string
 
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: () => void = () => void 0
+  @Prop() readonly closeHandler: () => void = () => void 0
 
   /**
    * Emitted when the close button got clicked.

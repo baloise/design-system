@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -8,7 +8,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
   styleUrl: 'card.host.scss',
   shadow: true,
 })
-export class Card implements Loggable {
+export class Card implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('card')
@@ -21,78 +21,78 @@ export class Card implements Loggable {
   /**
    * If `true` the card loses its shadow.
    */
-  @Prop() flat = false
+  @Prop() readonly flat = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
-  @Prop() tile = false
+  @Prop() readonly tile = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
-  @Prop() dense = false
+  @Prop() readonly dense = false
 
   /**
    * If `true` the card image is displayed as a teaser, which means
    * it is displayed with a large image.
    */
-  @Prop() imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
+  @Prop() readonly imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
 
   /**
    * If `true` the card loses its border radius.
    */
-  @Prop() square = false
+  @Prop() readonly square = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
-  @Prop() outlined = false
+  @Prop() readonly outlined = false
 
   /**
    * If `true` the card background color becomes blue.
    */
-  @Prop() inverted = false
+  @Prop() readonly inverted = false
 
   /**
    * If `true` the card has a hover effect.
    */
-  @Prop() clickable = false
+  @Prop() readonly clickable = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
-  @Prop() selected = false
+  @Prop() readonly selected = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
-  @Prop() fullheight = false
+  @Prop() readonly fullheight = false
 
   /**
    * Defines the text alignment of the card content.
    */
-  @Prop() align?: DS.CardAlignment
+  @Prop() readonly align?: DS.CardAlignment
 
   /**
    * Defines the space of the card content.
    */
   @Prop({ mutable: true }) space?: DS.CardSpace
   @Watch('space')
-  watchSpace(newValue: DS.CardSpace) {
+  spaceChanged(newValue: DS.CardSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the color of the card.
    */
-  @Prop() color?: DS.CardColor
+  @Prop() readonly color?: DS.CardColor
 
   connectedCallback(): void {
     this.space = normalizeDeprecatedTShirtSize(this.space)
   }
 
-  get colorTypeClass(): string {
+  private get colorTypeClass(): string {
     const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
 
     const colorMap: Record<string, string> = {

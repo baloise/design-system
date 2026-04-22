@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core'
+import { Component, ComponentInterface, h, Host } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
@@ -6,7 +6,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
   styleUrl: 'tag-group.host.scss',
   shadow: true,
 })
-export class TagGroup implements Loggable {
+export class TagGroup implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('tag-group')

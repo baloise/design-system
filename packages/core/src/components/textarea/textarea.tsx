@@ -57,52 +57,52 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.textareaId
+  @Prop() readonly name: string = this.textareaId
 
   /**
    * The label displayed above the textarea field.
    */
-  @Prop() label?: string
+  @Prop() readonly label?: string
 
   /**
    * The description displayed below the textarea field.
    */
-  @Prop() description?: string
+  @Prop() readonly description?: string
 
   /**
    * Defines the color state of the textarea.
    */
-  @Prop() color: DS.InputColor = 'primary'
+  @Prop() readonly color: DS.InputColor = 'primary'
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
-  @Prop() invalidText?: string
+  @Prop() readonly invalidText?: string
 
   /**
    * If `true` the component gets an invalid style.
    */
-  @Prop() invalid = false
+  @Prop() readonly invalid = false
 
   /**
    * Indicates whether and how the text value should be automatically capitalized.
    */
-  @Prop() autocapitalize = 'off'
+  @Prop() readonly autocapitalize = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: DS.InputAutocomplete = 'off'
+  @Prop() readonly autocomplete: DS.InputAutocomplete = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
-  @Prop() autofocus = false
+  @Prop() readonly autofocus = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
    */
-  @Prop() debounce = 0
+  @Prop() readonly debounce = 0
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -112,57 +112,57 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * Instructional text that shows before the textarea has a value.
    */
-  @Prop() placeholder?: string
+  @Prop() readonly placeholder?: string
 
   /**
    * Specifies the maximum number of characters that the user can enter.
    */
-  @Prop() maxLength?: number
+  @Prop() readonly maxLength?: number
 
   /**
    * Specifies the minimum number of characters that the user can enter.
    */
-  @Prop() minLength?: number
+  @Prop() readonly minLength?: number
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form.
    */
-  @Prop() disabled = false
+  @Prop() readonly disabled = false
 
   /**
    * If `true` the element can not be mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly readonly = false
 
   /**
    * The visible width of the text control, in average character widths.
    */
-  @Prop() cols?: number
+  @Prop() readonly cols?: number
 
   /**
    * The number of visible text lines for the control.
    */
-  @Prop() rows?: number
+  @Prop() readonly rows?: number
 
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() wrap?: DS.TextareaWrap
+  @Prop() readonly wrap?: DS.TextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = true
+  @Prop() readonly required = true
 
   /**
    * A hint to the browser for which keyboard to display.
    */
-  @Prop() inputmode?: DS.TextareaInputMode
+  @Prop() readonly inputmode?: DS.TextareaInputMode
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid.
    */
-  @Prop({ reflect: true }) autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff = false
 
   /**
    * EVENTS
@@ -205,12 +205,12 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
    */
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
+  listenToClick(ev: UIEvent) {
     this.control.listenOnClick(ev)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  listenOnReset(ev: UIEvent) {
+  listenToReset(ev: UIEvent) {
     this.control.listenOnReset(ev)
   }
 

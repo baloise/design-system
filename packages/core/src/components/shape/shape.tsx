@@ -21,17 +21,17 @@ export class Shape implements ComponentInterface, Loggable {
   /**
    * The shape variation
    */
-  @Prop({ reflect: true }) variation: DS.ShapeVariation = '1'
+  @Prop({ reflect: true }) readonly variation: DS.ShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop({ reflect: true }) color: DS.ShapeColor = 'green'
+  @Prop({ reflect: true }) readonly color: DS.ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop({ reflect: true }) rotation: DS.ShapeRotation = '0'
+  @Prop({ reflect: true }) readonly rotation: DS.ShapeRotation = '0'
 
   render() {
     return (

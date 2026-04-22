@@ -28,74 +28,74 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * If `true` the text has heading font family
    */
-  @Prop({ reflect: true }) heading = false
+  @Prop({ reflect: true }) readonly heading = false
 
   /**
    * If `true` the text has subtitle font family
    */
-  @Prop({ reflect: true }) subtitle = false
+  @Prop({ reflect: true }) readonly subtitle = false
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) noWrap = false
+  @Prop({ reflect: true }) readonly noWrap = false
 
   /**
    * If `true` the text is bold
    */
-  @Prop({ reflect: true }) bold = false
+  @Prop({ reflect: true }) readonly bold = false
 
   /**
    * If `true` the text is shown as a display inline
    */
-  @Prop({ reflect: true }) inline = false
+  @Prop({ reflect: true }) readonly inline = false
 
   /**
    * Defines the color of the text.
    */
-  @Prop() color?: DS.TextColor
+  @Prop() readonly color?: DS.TextColor
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) space?: DS.TextSpace
+  @Prop({ reflect: true }) readonly space?: DS.TextSpace
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop({ reflect: true }) readonly inverted = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) shadow = false
+  @Prop({ reflect: true }) readonly shadow = false
 
   /**
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop({ reflect: true }) invalid = false
+  @Prop({ reflect: true }) readonly invalid = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() align?: DS.TextAlign
+  @Prop() readonly align?: DS.TextAlign
 
   /**
    * @internal
    */
-  @Prop() hovered = false
+  @Prop() readonly hovered = false
 
   /**
    * @internal
    */
-  @Prop() pressed = false
+  @Prop() readonly pressed = false
 
   /**
    * PRIVATE METHODS

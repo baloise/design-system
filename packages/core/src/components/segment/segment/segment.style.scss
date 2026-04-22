@@ -1,0 +1,10 @@
+@use './segment.mixin.scss' as segment;
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include segment.style('.segment');
+@include segment.vertical('.segment');

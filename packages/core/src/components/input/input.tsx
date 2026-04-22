@@ -34,7 +34,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
   private maskUtil = new InputMaskUtil(this)
-  inputId = `ds-input-${InputIds++}`
+  private inputId = `ds-input-${InputIds++}`
 
   log!: LogInstance
   @Logger('input')
@@ -63,73 +63,73 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.inputId
+  @Prop() readonly name: string = this.inputId
 
   /**
    * The label of the input, which is displayed above the input field.
    */
-  @Prop() label?: string
+  @Prop() readonly label?: string
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() description?: string
+  @Prop() readonly description?: string
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() color: DS.InputColor = 'primary'
+  @Prop() readonly color: DS.InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() loading = false
+  @Prop() readonly loading = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid = false
+  @Prop() readonly invalid = false
 
   /**
    * The text to display when the input is in an invalid state.
    */
-  @Prop() invalidText?: string
+  @Prop() readonly invalidText?: string
 
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: DS.InputInputType = 'text'
+  @Prop() readonly type: DS.InputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
-  @Prop() accept?: string
+  @Prop() readonly accept?: string
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
    * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
    */
-  @Prop() autocapitalize = 'off'
+  @Prop() readonly autocapitalize = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: DS.InputAutocomplete = 'off'
+  @Prop() readonly autocomplete: DS.InputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
-  @Prop() autocorrect: DS.InputAutocorrect = 'off'
+  @Prop() readonly autocorrect: DS.InputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
-  @Prop() autofocus = false
+  @Prop() readonly autofocus = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
-  @Prop() debounce = 0
+  @Prop() readonly debounce = 0
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -139,74 +139,74 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder?: string
+  @Prop() readonly placeholder?: string
 
   /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
    */
-  @Prop() max?: string
+  @Prop() readonly max?: string
 
   /**
    * Defines the max length of the value.
    */
-  @Prop() maxLength?: number
+  @Prop() readonly maxLength?: number
 
   /**
    * The minimum value, which must not be greater than its maximum (max attribute) value.
    */
-  @Prop() min?: string
+  @Prop() readonly min?: string
 
   /**
    * Defines the min length of the value.
    */
-  @Prop() minLength?: number
+  @Prop() readonly minLength?: number
 
   /**
    * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
    */
-  @Prop() multiple?: boolean
+  @Prop() readonly multiple?: boolean
 
   /**
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
    */
-  @Prop() pattern?: string
+  @Prop() readonly pattern?: string
 
   /**
    * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
    */
-  @Prop() allowedKeyPress?: string
+  @Prop() readonly allowedKeyPress?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = true
+  @Prop() readonly required = true
 
   /**
    * If `true`, the element will have its spelling and grammar checked.
    */
-  @Prop() spellcheck = false
+  @Prop() readonly spellcheck = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() readonly disabled = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly readonly = false
 
   /**
    * Adds a suffix the the input-value after blur.
    */
-  @Prop() suffix?: string
+  @Prop() readonly suffix?: string
 
   /**
    * A hint to the browser for which keyboard to display.
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: DS.InputInputMode
+  @Prop() readonly inputmode?: DS.InputInputMode
 
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
@@ -217,7 +217,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    * Formatting for 'be-enterprise-number': ('1234.567.890')
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
-  @Prop() mask?: DS.InputMask = undefined
+  @Prop() readonly mask?: DS.InputMask = undefined
   @Watch('mask')
   protected maskChanged() {
     this.maskUtil.setFormatter(getMask(this.mask))
@@ -226,7 +226,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff = false
 
   /**
    * Emitted when a keyboard input occurred.
@@ -264,12 +264,12 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
+  listenToClick(ev: UIEvent) {
     this.control.listenOnClick(ev)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  listenOnReset(ev: UIEvent) {
+  listenToReset(ev: UIEvent) {
     this.control.listenOnReset(ev)
   }
 
@@ -350,7 +350,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
     return `${value}${suffix}`
   }
 
-  private onKeydown = (ev: KeyboardEvent) => {
+  private handleKeydown = (ev: KeyboardEvent) => {
     if (this.mask !== undefined) {
       return this.maskUtil.onKeydown(ev)
     }
@@ -439,7 +439,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
           onFocus={ev => this.handleFocus(ev)}
           onBlur={ev => this.handleBlur(ev)}
           onInput={ev => this.handleInput(ev)}
-          onKeyDown={ev => this.onKeydown(ev)}
+          onKeyDown={ev => this.handleKeydown(ev)}
           onKeyPress={ev => this.dsKeyPress.emit(ev)}
           {...inputProps}
           {...this.inheritedAttributes}

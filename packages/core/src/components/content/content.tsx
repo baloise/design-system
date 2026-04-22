@@ -24,9 +24,9 @@ export class Content implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout?: DS.StackLayout
+  @Prop() readonly layout?: DS.StackLayout
   @Watch('layout')
-  validateLayout(newValue?: DS.StackLayout) {
+  layoutChanged(newValue?: DS.StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -49,20 +49,20 @@ export class Content implements ComponentInterface, Loggable {
    * Defines the positioning like center, end or
    * default to start.
    */
-  @Prop() align?: DS.ContentAlignment
+  @Prop() readonly align?: DS.ContentAlignment
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
-  @Prop() textAlign?: DS.ContentTextAlignment
+  @Prop() readonly textAlign?: DS.ContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true }) space?: DS.ContentSpace
   @Watch('space')
-  watchSize(newValue?: DS.ContentSpace) {
+  spaceChanged(newValue?: DS.ContentSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -70,11 +70,11 @@ export class Content implements ComponentInterface, Loggable {
    * @internal
    * Please use align instead.
    */
-  @Prop() alignment?: DS.StackAlignment
+  @Prop() readonly alignment?: DS.StackAlignment
 
   connectedCallback(): void {
-    this.validateLayout(this.layout)
-    this.watchSize(this.space)
+    this.layoutChanged(this.layout)
+    this.spaceChanged(this.space)
   }
 
   /**

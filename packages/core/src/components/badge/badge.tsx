@@ -21,31 +21,31 @@ export class Badge implements ComponentInterface, Loggable {
   /**
    * Name of the icon to show. If a icon is present text should be hidden.
    */
-  @Prop() icon?: string
+  @Prop() readonly icon?: string
 
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true }) size: DS.BadgeSize = ''
   @Watch('size')
-  watchSize(newValue: DS.BadgeSize) {
+  sizeChanged(newValue: DS.BadgeSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
   /**
    * Define the color for the badge.
    */
-  @Prop({ reflect: true }) color: DS.BadgeColor = ''
+  @Prop({ reflect: true }) readonly color: DS.BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop({ reflect: true }) position: DS.BadgePosition = ''
+  @Prop({ reflect: true }) readonly position: DS.BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop({ reflect: true }) pulse = false
+  @Prop({ reflect: true }) readonly pulse = false
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''

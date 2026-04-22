@@ -1,0 +1,100 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-segment name="basic" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item value="apple">Apple</ds-segment-item>
+          <ds-segment-item value="strewberry">Strewberry</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-segment name="disabled" value="apple" label="Fruits" description="Choose your favorite fruit" disabled>
+          <ds-segment-item value="apple">Apple</ds-segment-item>
+          <ds-segment-item value="strewberry">Strewberry</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-segment
+          name="invalid"
+          value="apple"
+          label="Fruits"
+          description="Choose your favorite fruit"
+          invalid
+          invalid-text="Please select a fruit"
+        >
+          <ds-segment-item value="apple">Apple</ds-segment-item>
+          <ds-segment-item value="strewberry" checked>Strewberry</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Invalid disabled -->
+      <section data-testid="invalid-disabled">
+        <span>Invalid + Disabled</span>
+        <ds-segment
+          name="invalid-disabled"
+          value="apple"
+          label="Fruits"
+          description="Choose your favorite fruit"
+          invalid
+          invalid-text="Please select a fruit"
+          disabled
+        >
+          <ds-segment-item value="apple">Apple</ds-segment-item>
+          <ds-segment-item value="strewberry" checked>Strewberry</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Wide -->
+      <section data-testid="wide">
+        <span>Wide</span>
+        <ds-segment wide name="heros-1" label="Label" description="Description">
+          <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
+          <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Vertical -->
+      <section data-testid="vertical">
+        <span>Vertical</span>
+        <ds-segment vertical name="heros-1" label="Label" description="Description">
+          <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
+          <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Form submit -->
+      <section data-testid="form">
+        <span>Form</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-segment name="heros-2" label="Label" description="Description" value="tony-stark">
+            <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
+            <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
+          </ds-segment>
+          <br /><br />
+          <ds-button element-type="submit" color="primary">Submit</ds-button>
+          <ds-button element-type="reset" color="link">Reset</ds-button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

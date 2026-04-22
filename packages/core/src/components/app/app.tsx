@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from '../../utils/browser'
 import { updateDsAllowedLanguages, updateDsAnimated, updateDsLogger } from '../../utils/config'
@@ -11,7 +11,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
   tag: 'ds-app',
   styleUrl: 'app.scss',
 })
-export class App implements Loggable {
+export class App implements ComponentInterface, Loggable {
   private focusVisible?: any
   private debouncedNotify = debounce(() => this.notifyResize(), 100)
 
@@ -27,7 +27,7 @@ export class App implements Loggable {
   /**
    * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
-  @Prop({ reflect: true }) animated = true
+  @Prop({ reflect: true }) readonly animated: boolean = true
 
   /**
    * @internal Is `true` when DS components are ready to be shown.
@@ -37,7 +37,7 @@ export class App implements Loggable {
   /**
    * @internal Comma separated list of components to log.
    */
-  @Prop({ reflect: true }) logger = ''
+  @Prop({ reflect: true }) readonly logger: string = ''
 
   /**
    * Emitted when app is ready and painted.

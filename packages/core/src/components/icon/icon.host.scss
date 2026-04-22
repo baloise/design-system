@@ -130,7 +130,7 @@ $colors:
   '#000d6e';
 
 @each $color in $colors {
-  :host svg {
+  :host(:not(.is-filled)) svg {
     path[fill='#{$color}'] {
       fill: var(--icon-brand-color, #{$color});
     }

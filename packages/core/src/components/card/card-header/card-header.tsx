@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core'
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
@@ -6,7 +6,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
   styleUrl: 'card-header.host.scss',
   shadow: true,
 })
-export class CardHeader implements Loggable {
+export class CardHeader implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('card-header')
@@ -14,7 +14,7 @@ export class CardHeader implements Loggable {
     this.log = log
   }
 
-  @Prop() direction: DS.CardHeaderDirection = 'row'
+  @Prop() readonly direction: DS.CardHeaderDirection = 'row'
 
   render() {
     return (

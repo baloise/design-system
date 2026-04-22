@@ -1,0 +1,17 @@
+@use './segment-item.mixin.scss' as segment-item;
+
+/**
+ * CSS-only segment item: apply .segment-item to the wrapper <label>.
+ *
+ *   Segment Item:
+ *   <label class="segment-item">
+ *     <input type="radio">
+ *     Label text
+ *   </label>
+ *
+ */
+
+@include segment-item.vars('.segment-item');
+@include segment-item.layout('.segment-item');
+@include segment-item.style('.segment-item');
+@include segment-item.states('.segment-item');

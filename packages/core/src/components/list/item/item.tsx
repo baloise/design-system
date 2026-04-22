@@ -26,48 +26,48 @@ export class Item implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLStencilElement
 
-  @Prop() variant: 'link' | 'button' | 'accordion' | 'default' = 'default'
-  @Prop() actionIcon: 'link' | 'link-external' | 'download' | 'default' = 'default'
+  @Prop() readonly variant: 'link' | 'button' | 'accordion' | 'default' = 'default'
+  @Prop() readonly actionIcon: 'link' | 'link-external' | 'download' | 'default' = 'default'
 
   /**
    * If `true` the accordion is open.
    */
-  @Prop() accordionOpen = false
+  @Prop() readonly accordionOpen = false
 
   /**
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop() accordionGroup?: string
+  @Prop() readonly accordionGroup?: string
 
   /**
    * The marker variant. Only applies if `button` is `false`.
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() accordionMarker?: DS.AccordionMarker
+  @Prop() readonly accordionMarker?: DS.AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() accordionMarkerPosition?: DS.AccordionMarkerPosition
+  @Prop() readonly accordionMarkerPosition?: DS.AccordionMarkerPosition
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href?: string
+  @Prop() readonly href?: string
 
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: DS.ButtonTarget = '_self'
+  @Prop() readonly target: DS.ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() rel?: string
+  @Prop() readonly rel?: string
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -75,18 +75,18 @@ export class Item implements ComponentInterface, Loggable {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() download?: string
+  @Prop() readonly download?: string
 
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ reflect: true }) disabled = false
+  @Prop({ reflect: true }) readonly disabled = false
 
-  @Prop() label?: string
-  @Prop() labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'
-  @Prop() labelSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'
+  @Prop() readonly label?: string
+  @Prop() readonly labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'
+  @Prop() readonly labelSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'
 
-  @Prop() description?: string
+  @Prop() readonly description?: string
 
   /**
    * Emitted when the link element has clicked.

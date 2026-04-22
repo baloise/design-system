@@ -19,19 +19,19 @@ import { stopEventBubbling } from '../../../utils/form-control'
 import { hasTagName, isDescendant } from '../../../utils/helpers'
 
 @Component({
-  tag: 'ds-radio-group',
-  styleUrl: 'radio-group.host.scss',
+  tag: 'ds-segment',
+  styleUrl: 'segment.host.scss',
   shadow: true,
   formAssociated: true,
 })
-export class RadioGroup implements ComponentInterface, Loggable, FieldInterface {
+export class Segment implements ComponentInterface, Loggable, FieldInterface {
   private initialValue?: any | null
-  private inputId = `ds-rg-${radioGroupIds++}`
+  private inputId = `ds-sg-${segmentIds++}`
 
-  @Element() el!: HTMLDsRadioGroupElement
+  @Element() el!: HTMLDsSegmentElement
 
   log!: LogInstance
-  @Logger('radio-group')
+  @Logger('segment')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -47,7 +47,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
    */
 
   /**
-   * The name of the radios in the group. Child radios will inherit the name.
+   * The name of the segment items in the group. Child items will inherit the name.
    */
   @Prop() readonly name: string = this.inputId
 
@@ -57,9 +57,9 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Prop() readonly label?: string
 
   /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
+   * Defines the position of the label, either before or after the segment item input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.RadioLabelPosition = 'right'
+  @Prop() readonly labelPosition: DS.SegmentItemLabelPosition = 'right'
 
   /**
    * The description of the input, which is displayed below the input field.
@@ -102,17 +102,17 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Prop() readonly required = true
 
   /**
-   * Displays the checkboxes vertically
+   * Displays the segment items vertically
    */
   @Prop() readonly vertical = false
 
   /**
-   * If `true`, the radios can be deselected.
+   * If `true`, the segment items can be deselected.
    */
   @Prop() readonly allowEmptySelection = false
 
   /**
-   * the value of the radio group.
+   * The value of the segment group.
    */
   @Prop({ mutable: true }) value?: any | null
 
@@ -127,39 +127,39 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Prop() readonly tile = false
 
   /**
-   * Defines the color of the tile checkbox.
+   * Defines the color of the tile segment item.
    */
-  @Prop() readonly tileColor?: DS.RadioTileColor
+  @Prop() readonly tileColor?: DS.SegmentItemTileColor
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() readonly cols: DS.RadioGroupColumns = 1
+  @Prop() readonly cols: DS.SegmentGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() readonly colsTablet: DS.RadioGroupColumns = 1
+  @Prop() readonly colsTablet: DS.SegmentGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() readonly colsMobile: DS.RadioGroupColumns = 1
+  @Prop() readonly colsMobile: DS.SegmentGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.RadioGroupBlurDetail>
+  @Event() dsBlur!: EventEmitter<DS.SegmentBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.RadioGroupFocusDetail>
+  @Event() dsFocus!: EventEmitter<DS.SegmentFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.RadioGroupChangeDetail>
+  @Event() dsChange!: EventEmitter<DS.SegmentChangeDetail>
 
   /**
    * LIFECYCLE
@@ -195,7 +195,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Listen('dsFocus', { capture: true, target: 'document' })
   listenToDsFocus(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-radio')) {
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-segment-item')) {
       stopEventBubbling(ev)
     }
   }
@@ -203,7 +203,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   @Listen('dsBlur', { capture: true, target: 'document' })
   listenToDsBlur(ev: CustomEvent<FocusEvent>) {
     const { target } = ev
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-radio')) {
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-segment-item')) {
       stopEventBubbling(ev)
     }
   }
@@ -222,31 +222,31 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
       return
     }
 
-    // Get all radios inside of the radio group and then
-    // filter out disabled radios since we need to skip those
-    const radios = this.getRadios().filter(radio => !radio.disabled)
-    const targetRadio = ev.target.closest('ds-radio')
+    // Get all segment items inside the segment and then
+    // filter out disabled items since we need to skip those
+    const items = this.getSegmentItems().filter(item => !item.disabled)
+    const targetItem = ev.target.closest('ds-segment-item')
 
-    // Only move the radio if the current focus is in the radio group
-    if (targetRadio && radios.includes(targetRadio)) {
-      const index = radios.findIndex(radio => radio === targetRadio)
-      const current = radios[index]
+    // Only move the item if the current focus is in the segment
+    if (targetItem && items.includes(targetItem)) {
+      const index = items.findIndex(item => item === targetItem)
+      const current = items[index]
 
       let next
 
-      // If hitting arrow down or arrow right, move to the next radio
-      // If we're on the last radio, move to the first radio
+      // If hitting arrow down or arrow right, move to the next item
+      // If we're on the last item, move to the first item
       if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
-        next = index === radios.length - 1 ? radios[0] : radios[index + 1]
+        next = index === items.length - 1 ? items[0] : items[index + 1]
       }
 
-      // If hitting arrow up or arrow left, move to the previous radio
-      // If we're on the first radio, move to the last radio
+      // If hitting arrow up or arrow left, move to the previous item
+      // If we're on the first item, move to the last item
       if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
-        next = index === 0 ? radios[radios.length - 1] : radios[index - 1]
+        next = index === 0 ? items[items.length - 1] : items[index - 1]
       }
 
-      if (next && radios.includes(next)) {
+      if (next && items.includes(next)) {
         next.setFocus()
 
         this.value = next.value
@@ -254,8 +254,8 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
         this.internals.setFormValue(this.value)
       }
 
-      // Update the radio group value when a user presses the
-      // space bar on top of a selected radio
+      // Update the segment value when a user presses the
+      // space bar on top of a selected item
       if (['Space'].includes(ev.code)) {
         this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value
         this.dsChange.emit(this.value)
@@ -295,51 +295,45 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
    */
 
   private passDownAttributes() {
-    this.getRadios().forEach(radio => {
+    this.getSegmentItems().forEach(item => {
       if (this.disabled !== undefined) {
-        radio.disabled = this.disabled
+        item.disabled = this.disabled
       }
       if (this.readonly !== undefined) {
-        radio.readonly = this.readonly
+        item.readonly = this.readonly
       }
       if (this.invalid !== undefined) {
-        radio.invalid = this.invalid
-      }
-      radio.labelPosition = this.labelPosition
-      radio.tile = this.tile
-      radio.tileColor = this.tileColor
-      radio.cols = this.cols
-      radio.colsTablet = this.colsTablet
-      radio.colsMobile = this.colsMobile
-    })
-  }
-
-  private setRadioChecked() {
-    this.getRadios().forEach((radio: HTMLDsRadioElement) => {
-      if (radio.updateState) {
-        radio.updateState()
+        item.invalid = this.invalid
       }
     })
   }
 
-  private setRadioTabindex(value: any) {
-    const radios = this.getRadios()
+  private setSegmentItemChecked() {
+    this.getSegmentItems().forEach((item: HTMLDsSegmentItemElement) => {
+      if (item.updateState) {
+        item.updateState()
+      }
+    })
+  }
 
-    // Get the first radio that is not disabled and the checked one
-    const first = radios.find(radio => !radio.disabled)
-    const checked = radios.find(radio => radio.value === value && !radio.disabled)
+  private setSegmentItemTabindex(value: any) {
+    const items = this.getSegmentItems()
+
+    // Get the first item that is not disabled and the checked one
+    const first = items.find(item => !item.disabled)
+    const checked = items.find(item => item.value === value && !item.disabled)
 
     if (!first && !checked) {
       return
     }
 
-    // If an enabled checked radio exists, set it to be the focusable radio
-    // otherwise we default to focus the first radio
+    // If an enabled checked item exists, set it to be the focusable item
+    // otherwise we default to focus the first item
     const focusable = checked || first
 
-    for (const radio of radios) {
-      const tabindex = radio === focusable ? 0 : -1
-      radio.setButtonTabindex(tabindex)
+    for (const item of items) {
+      const tabindex = item === focusable ? 0 : -1
+      item.setButtonTabindex(tabindex)
     }
   }
 
@@ -348,8 +342,8 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
    * ------------------------------------------------------
    */
 
-  private getRadios(): HTMLDsRadioElement[] {
-    return Array.from(this.el.querySelectorAll('ds-radio'))
+  private getSegmentItems(): HTMLDsSegmentItemElement[] {
+    return Array.from(this.el.querySelectorAll('ds-segment-item'))
   }
 
   /**
@@ -358,8 +352,8 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
    */
 
   private handleValueChange = async () => {
-    this.setRadioTabindex(this.value)
-    this.setRadioChecked()
+    this.setSegmentItemTabindex(this.value)
+    this.setSegmentItemChecked()
   }
 
   private handleClick = (ev: Event) => {
@@ -370,10 +364,10 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
 
     ev.preventDefault()
 
-    const selectedRadio = ev.target && (ev.target as HTMLElement).closest('ds-radio')
-    if (selectedRadio && !selectedRadio.disabled && !selectedRadio.readonly) {
+    const selectedItem = ev.target && (ev.target as HTMLElement).closest('ds-segment-item')
+    if (selectedItem && !selectedItem.disabled && !selectedItem.readonly) {
       const currentValue = this.value
-      const newValue = selectedRadio.value
+      const newValue = selectedItem.value
       if (newValue !== currentValue) {
         this.value = newValue
       } else if (this.allowEmptySelection) {
@@ -414,4 +408,4 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   }
 }
 
-let radioGroupIds = 0
+let segmentIds = 0

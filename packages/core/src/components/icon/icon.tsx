@@ -30,71 +30,71 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true }) name?: string
+  @Prop({ reflect: true }) readonly name?: string
 
   /**
    * Svg content.
    */
-  @Prop() svg?: string
+  @Prop() readonly svg?: string
 
   /**
    * Defines the size of the icon.
    */
   @Prop({ reflect: true, mutable: true }) size: DS.IconSize
   @Watch('size')
-  watchSize(newValue: DS.IconSize) {
+  sizeChanged(newValue: DS.IconSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * The theme type of the button.
    */
-  @Prop() color?: DS.IconColor
+  @Prop() readonly color?: DS.IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
-  @Prop() shape?: DS.IconShape
+  @Prop() readonly shape?: DS.IconShape
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
-  @Prop() tile = false
+  @Prop() readonly tile = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
-  @Prop() tileColor: DS.IconTileColor = 'purple'
+  @Prop() readonly tileColor: DS.IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
    */
-  @Prop() inline = false
+  @Prop() readonly inline = false
 
   /**
    * If `true` the icon is inverted
    */
-  @Prop() inverted = false
+  @Prop() readonly inverted = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
-  @Prop() turn = false
+  @Prop() readonly turn = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() shadow = false
+  @Prop() readonly shadow = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() readonly disabled = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid = false
+  @Prop() readonly invalid = false
 
   /**
    * LIFE CYCLE

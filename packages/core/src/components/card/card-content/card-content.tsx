@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, ComponentInterface, Host, h } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
@@ -6,7 +6,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
   styleUrl: 'card-content.host.scss',
   shadow: true,
 })
-export class CardContent implements Loggable {
+export class CardContent implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('card-content')

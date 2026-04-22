@@ -1,0 +1,44 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@mixin vars($wrapper: ':host') {
+  #{$wrapper} {
+    // layout
+    @include vars.local(segment-background, 0.5rem);
+  }
+}
+
+@mixin style($selector: '#container') {
+  #{$selector} {
+    // display: flex;
+    // width: fit-content;
+    gap: 0.25rem;
+    padding-inline: 0.25rem;
+    padding-block: 0.25rem;
+    border-radius: var(--ds-radius-base);
+    background: red;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    width: fit-content;
+
+    // @include tablet() {
+    //   display: flex;
+    //   gap: 1rem;
+    // }
+  }
+}
+
+@mixin vertical($selector: '#container', $wrapper: '') {
+  // @if $wrapper == ':host' {
+  //   :host(.is-vertical) #{$selector} {
+  //     display: grid;
+  //     gap: 0.25rem;
+  //   }
+  // } @else {
+  //   #{$selector}.is-vertical {
+  //     display: grid;
+  //     gap: 0.25rem;
+  //   }
+  // }
+}

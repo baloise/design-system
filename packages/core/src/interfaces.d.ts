@@ -62,7 +62,7 @@ import './components/notification/notification.interfaces'
 import './components/sheet/sheet.interfaces'
 import './components/alert/snackbar/snackbar.interfaces'
 import './components/alert/toast/toast.interfaces'
-import './components/segment/segment.interfaces'
+import './components/segment/segment-item.interfaces'
 
 export * from './components'
 export * from './index'

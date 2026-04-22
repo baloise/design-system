@@ -17,7 +17,7 @@ export namespace Components {
           * Displays the summary as a button and hides the default marker.
           * @default false
          */
-        "button": boolean;
+        "button": false;
         /**
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
@@ -27,7 +27,7 @@ export namespace Components {
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
          */
-        "buttonExpanded": boolean;
+        "buttonExpanded": false;
         /**
           * BalIcon of the close trigger button
          */
@@ -1380,6 +1380,137 @@ export namespace Components {
          */
         "vertical": boolean;
     }
+    interface DsSegment {
+        /**
+          * If `true`, the segment items can be deselected.
+          * @default false
+         */
+        "allowEmptySelection": boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols": DS.SegmentGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile": DS.SegmentGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet": DS.SegmentGroupColumns;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean | undefined;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the segment item input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition": DS.SegmentItemLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the segment items in the group. Child items will inherit the name.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        "setValue": (value: number | string | boolean) => Promise<void>;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile": boolean;
+        /**
+          * Defines the color of the tile segment item.
+         */
+        "tileColor"?: DS.SegmentItemTileColor;
+        /**
+          * The value of the segment group.
+         */
+        "value"?: any | null;
+        /**
+          * Displays the segment items vertically
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    interface DsSegmentItem {
+        /**
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        /**
+          * Sets the focus on the segment item input element.
+         */
+        "setFocus": () => Promise<void>;
+        "updateState": () => Promise<void>;
+        /**
+          * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
+         */
+        "value"?: any | null;
+    }
     interface DsShape {
         /**
           * The shape color
@@ -1951,6 +2082,14 @@ export interface DsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsRadioGroupElement;
 }
+export interface DsSegmentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsSegmentElement;
+}
+export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsSegmentItemElement;
+}
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
@@ -2295,6 +2434,42 @@ declare global {
         prototype: HTMLDsRadioGroupElement;
         new (): HTMLDsRadioGroupElement;
     };
+    interface HTMLDsSegmentElementEventMap {
+        "dsBlur": DS.SegmentBlurDetail;
+        "dsFocus": DS.SegmentFocusDetail;
+        "dsChange": DS.SegmentChangeDetail;
+    }
+    interface HTMLDsSegmentElement extends Components.DsSegment, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSegmentElementEventMap>(type: K, listener: (this: HTMLDsSegmentElement, ev: DsSegmentCustomEvent<HTMLDsSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSegmentElementEventMap>(type: K, listener: (this: HTMLDsSegmentElement, ev: DsSegmentCustomEvent<HTMLDsSegmentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsSegmentElement: {
+        prototype: HTMLDsSegmentElement;
+        new (): HTMLDsSegmentElement;
+    };
+    interface HTMLDsSegmentItemElementEventMap {
+        "dsChange": DS.SegmentItemChangeDetail;
+    }
+    interface HTMLDsSegmentItemElement extends Components.DsSegmentItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSegmentItemElementEventMap>(type: K, listener: (this: HTMLDsSegmentItemElement, ev: DsSegmentItemCustomEvent<HTMLDsSegmentItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSegmentItemElementEventMap>(type: K, listener: (this: HTMLDsSegmentItemElement, ev: DsSegmentItemCustomEvent<HTMLDsSegmentItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsSegmentItemElement: {
+        prototype: HTMLDsSegmentItemElement;
+        new (): HTMLDsSegmentItemElement;
+    };
     interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
     }
     var HTMLDsShapeElement: {
@@ -2453,6 +2628,8 @@ declare global {
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
+        "ds-segment": HTMLDsSegmentElement;
+        "ds-segment-item": HTMLDsSegmentItemElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
@@ -2471,7 +2648,7 @@ declare namespace LocalJSX {
           * Displays the summary as a button and hides the default marker.
           * @default false
          */
-        "button"?: boolean;
+        "button"?: false;
         /**
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
@@ -2481,7 +2658,7 @@ declare namespace LocalJSX {
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
          */
-        "buttonExpanded"?: boolean;
+        "buttonExpanded"?: false;
         /**
           * BalIcon of the close trigger button
          */
@@ -3966,6 +4143,149 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    interface DsSegment {
+        /**
+          * If `true`, the segment items can be deselected.
+          * @default false
+         */
+        "allowEmptySelection"?: boolean;
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: DS.InputColor;
+        /**
+          * Defines the column size like the grid.
+          * @default 1
+         */
+        "cols"?: DS.SegmentGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+          * @default 1
+         */
+        "colsMobile"?: DS.SegmentGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+          * @default 1
+         */
+        "colsTablet"?: DS.SegmentGroupColumns;
+        /**
+          * The description of the input, which is displayed below the input field.
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean | undefined;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean | undefined;
+        /**
+          * The text to display when the input is in an invalid state.
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+         */
+        "label"?: string;
+        /**
+          * Defines the position of the label, either before or after the segment item input. Default is after.
+          * @default 'right'
+         */
+        "labelPosition"?: DS.SegmentItemLabelPosition;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the end slot content.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the segment items in the group. Child items will inherit the name.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onDsBlur"?: (event: DsSegmentCustomEvent<DS.SegmentBlurDetail>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onDsChange"?: (event: DsSegmentCustomEvent<DS.SegmentChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsSegmentCustomEvent<DS.SegmentFocusDetail>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean | undefined;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * Defines the layout of the input
+          * @default false
+         */
+        "tile"?: boolean;
+        /**
+          * Defines the color of the tile segment item.
+         */
+        "tileColor"?: DS.SegmentItemTileColor;
+        /**
+          * The value of the segment group.
+         */
+        "value"?: any | null;
+        /**
+          * Displays the segment items vertically
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    interface DsSegmentItem {
+        /**
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the value property has changed.
+         */
+        "onDsChange"?: (event: DsSegmentItemCustomEvent<DS.SegmentItemChangeDetail>) => void;
+        /**
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
+         */
+        "value"?: any | null;
+    }
     interface DsShape {
         /**
           * The shape color
@@ -4568,6 +4888,8 @@ declare namespace LocalJSX {
         "ds-number-input": DsNumberInput;
         "ds-radio": DsRadio;
         "ds-radio-group": DsRadioGroup;
+        "ds-segment": DsSegment;
+        "ds-segment-item": DsSegmentItem;
         "ds-shape": DsShape;
         "ds-snackbar": DsSnackbar;
         "ds-spinner": DsSpinner;
@@ -4613,6 +4935,8 @@ declare module "@stencil/core" {
             "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
             "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
             "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
+            "ds-segment": LocalJSX.DsSegment & JSXBase.HTMLAttributes<HTMLDsSegmentElement>;
+            "ds-segment-item": LocalJSX.DsSegmentItem & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
             "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
             "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
             "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;

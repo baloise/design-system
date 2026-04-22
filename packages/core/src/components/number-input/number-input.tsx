@@ -43,7 +43,7 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   private selectTimeout?: NodeJS.Timeout
   private control = new FormControl<number | null>(this)
 
-  lastValue = ''
+  private lastValue = ''
 
   log!: LogInstance
   @Logger('number-input')
@@ -93,92 +93,92 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name: string = this.numberInputId
+  @Prop() readonly name: string = this.numberInputId
 
   /**
    * The label displayed above the field.
    */
-  @Prop() label?: string
+  @Prop() readonly label?: string
 
   /**
    * The description displayed below the field.
    */
-  @Prop() description?: string
+  @Prop() readonly description?: string
 
   /**
    * Defines the color state of the input.
    */
-  @Prop() color: DS.InputColor = 'primary'
+  @Prop() readonly color: DS.InputColor = 'primary'
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
-  @Prop() invalidText?: string
+  @Prop() readonly invalidText?: string
 
   /**
    * If `true` the component gets an invalid style.
    */
-  @Prop() invalid = false
+  @Prop() readonly invalid = false
 
   /**
    * Number of allowed decimal places. `0` means integers only.
    */
-  @Prop() decimal = 0
+  @Prop() readonly decimal = 0
 
   /**
    * When `true`, only positive numbers are accepted (blocks the minus sign).
    */
-  @Prop() onlyPositive = false
+  @Prop() readonly onlyPositive = false
 
   /**
    * Text appended to the formatted value after blur (e.g. `"CHF"`).
    */
-  @Prop() suffix?: string
+  @Prop() readonly suffix?: string
 
   /**
    * Overrides the auto-generated input validation pattern.
    */
-  @Prop() pattern?: string
+  @Prop() readonly pattern?: string
 
   /**
    * Instructional text shown when the input has no value.
    */
-  @Prop() placeholder?: string
+  @Prop() readonly placeholder?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() required = true
+  @Prop() readonly required = true
 
   /**
    * If `true`, the element is not mutable, focusable, or submitted with the form.
    */
-  @Prop() disabled = false
+  @Prop() readonly disabled = false
 
   /**
    * If `true`, the element cannot be edited by the user.
    */
-  @Prop() readonly = false
+  @Prop() readonly readonly = false
 
   /**
    * When `true`, displays `0` instead of an empty field when value is null.
    */
-  @Prop() exactNumber = false
+  @Prop() readonly exactNumber = false
 
   /**
    * The maximum value.
    */
-  @Prop() max?: string
+  @Prop() readonly max?: string
 
   /**
    * The minimum value.
    */
-  @Prop() min?: string
+  @Prop() readonly min?: string
 
   /**
    * Milliseconds to wait before triggering `dsChange` after each keystroke.
    */
-  @Prop() debounce = 0
+  @Prop() readonly debounce = 0
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -226,12 +226,12 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
    */
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
+  listenToClick(ev: UIEvent) {
     this.control.listenOnClick(ev)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  listenOnReset(ev: UIEvent) {
+  listenToReset(ev: UIEvent) {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       // control.setValue triggers @Watch('value') → valueChanged() → updates formatted display

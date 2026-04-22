@@ -24,9 +24,9 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() layout?: DS.StackLayout
+  @Prop() readonly layout?: DS.StackLayout
   @Watch('layout')
-  validateLayout(newValue?: DS.StackLayout) {
+  layoutChanged(newValue?: DS.StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -49,14 +49,14 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() align?: DS.StackAlignment
+  @Prop() readonly align?: DS.StackAlignment
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
   @Prop({ mutable: true }) space?: DS.StackSpace
   @Watch('space')
-  validateSpace(newValue?: DS.StackSpace) {
+  spaceChanged(newValue?: DS.StackSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -65,7 +65,7 @@ export class Stack implements ComponentInterface, Loggable {
    */
   @Prop() spaceRow?: DS.StackSpace
   @Watch('spaceRow')
-  validateSpaceRow(newValue?: DS.StackSpace) {
+  spaceRowChanged(newValue?: DS.StackSpace) {
     this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -74,7 +74,7 @@ export class Stack implements ComponentInterface, Loggable {
    */
   @Prop() spaceColumn?: DS.StackSpace
   @Watch('spaceColumn')
-  validateSpaceColumn(newValue?: DS.StackSpace) {
+  spaceColumnChanged(newValue?: DS.StackSpace) {
     this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -83,7 +83,7 @@ export class Stack implements ComponentInterface, Loggable {
    */
   @Prop() p?: DS.StackPadding
   @Watch('p')
-  validatePadding(newValue?: DS.StackPadding) {
+  pChanged(newValue?: DS.StackPadding) {
     this.p = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -92,7 +92,7 @@ export class Stack implements ComponentInterface, Loggable {
    */
   @Prop() px?: DS.StackPadding
   @Watch('px')
-  validatePaddingX(newValue?: DS.StackPadding) {
+  pxChanged(newValue?: DS.StackPadding) {
     this.px = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -101,7 +101,7 @@ export class Stack implements ComponentInterface, Loggable {
    */
   @Prop() py?: DS.StackPadding
   @Watch('py')
-  validatePaddingY(newValue?: DS.StackPadding) {
+  pyChanged(newValue?: DS.StackPadding) {
     this.py = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -109,27 +109,27 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines if the child elements will wrap to the next line if there
    * is not enough space left
    */
-  @Prop() useWrap = false
+  @Prop() readonly useWrap = false
 
   /**
    * Defines the width of the stack to be exactly the with of the content.
    */
-  @Prop() fitContent = false
+  @Prop() readonly fitContent = false
 
   /**
    * @internal
    * Please use align instead.
    */
-  @Prop() alignment?: DS.StackAlignment
+  @Prop() readonly alignment?: DS.StackAlignment
 
   connectedCallback(): void {
-    this.validateLayout(this.layout)
-    this.validateSpace(this.space)
-    this.validateSpaceRow(this.spaceRow)
-    this.validateSpaceColumn(this.spaceColumn)
-    this.validatePadding(this.p)
-    this.validatePaddingX(this.px)
-    this.validatePaddingY(this.py)
+    this.layoutChanged(this.layout)
+    this.spaceChanged(this.space)
+    this.spaceRowChanged(this.spaceRow)
+    this.spaceColumnChanged(this.spaceColumn)
+    this.pChanged(this.p)
+    this.pxChanged(this.px)
+    this.pyChanged(this.py)
   }
 
   /**

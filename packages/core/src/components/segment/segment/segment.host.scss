@@ -1,0 +1,62 @@
+@use './segment.mixin.scss' as segment;
+@use '../../input/input.mixin' as input;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include input.vars-label('segment');
+  @include input.vars-description('segment');
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+
+  @include input.label('segment', 'legend');
+  @include input.description('segment');
+
+  @include segment.style('#container');
+}
+
+@include segment.vertical('#container', ':host');
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-segment-description-color: var(--ds-input-description-color-danger);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-segment-label-color: var(--ds-input-label-color-disabled);
+  --mod-segment-description-color: var(--ds-input-description-color-disabled);
+}

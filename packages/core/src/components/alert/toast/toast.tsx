@@ -40,33 +40,33 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   @State() svgContent?: string
   @State() iconName?: string
 
-  timer!: NodeJS.Timeout
+  private timer!: NodeJS.Timeout
 
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color?: DS.ToastColor
+  @Prop() readonly color?: DS.ToastColor
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() closable = false
+  @Prop() readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
-  @Prop() heading?: string
+  @Prop() readonly heading?: string
 
   /**
    * Defines the message of the notification as html content
    */
-  @Prop() message?: string
+  @Prop() readonly message?: string
 
   /**
    * Defines the icon of the notification.
    */
-  @Prop() icon?: string
+  @Prop() readonly icon?: string
   @Watch('icon')
   iconChanged() {
     this.generateIconName()
@@ -75,7 +75,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Defines the svg content of the icon
    */
-  @Prop() svg?: string
+  @Prop() readonly svg?: string
   @Watch('svg')
   svgChanged() {
     this.generateSvgContent()
@@ -84,50 +84,50 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
-  @Prop() action?: string
+  @Prop() readonly action?: string
 
   /**
    * Defines the icon of the action button.
    */
-  @Prop() actionIcon?: string
+  @Prop() readonly actionIcon?: string
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() actionTarget: DS.ButtonTarget = '_blank'
+  @Prop() readonly actionTarget: DS.ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() actionHref?: string
+  @Prop() readonly actionHref?: string
 
   /**
    * @internal
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
-  @Prop() alertId = crypto.randomUUID() as string
+  @Prop() readonly alertId = crypto.randomUUID() as string
 
   /**
    * @internal
    * The duration of the toast in milliseconds.
    */
-  @Prop() duration: DS.ToastDuration = 0
+  @Prop() readonly duration: DS.ToastDuration = 0
 
   /**
    * @internal
    * If `true` the notification is visible.
    */
-  @Prop({ reflect: true }) visible = true
+  @Prop({ reflect: true }) readonly visible: boolean = true
 
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: (id: string) => void = () => void 0
+  @Prop() readonly closeHandler: (id: string) => void = () => void 0
 
   /**
    * @internal Handler for on action event
    */
-  @Prop() actionHandler: (id: string) => void = () => void 0
+  @Prop() readonly actionHandler: (id: string) => void = () => void 0
 
   /**
    * Emitted when the close button got clicked.

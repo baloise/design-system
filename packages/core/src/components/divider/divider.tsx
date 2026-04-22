@@ -24,26 +24,26 @@ export class Divider implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is verticaly.
    */
-  @Prop() layout: DS.DividerLayout = 'horizontal'
+  @Prop() readonly layout: DS.DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true }) space: DS.DividerSpace = 'none'
   @Watch('space')
-  validateSpace(newValue: DS.DividerSpace) {
+  spaceChanged(newValue: DS.DividerSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
   }
 
   /**
    * Defines the color of the separator line.
    */
-  @Prop() color: DS.DividerColor = 'grey'
+  @Prop() readonly color: DS.DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
-  @Prop() dashed = false
+  @Prop() readonly dashed = false
 
   connectedCallback(): void {
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'

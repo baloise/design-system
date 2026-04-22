@@ -27,7 +27,7 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   }
 
   @Element() el!: HTMLStencilElement
-  innerEl: HTMLDivElement | undefined
+  private innerEl: HTMLDivElement | undefined
 
   /**
    * PUBLIC PROPERTY API
@@ -37,14 +37,14 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * If `true` the component can be used on dark background
    */
-  @Prop({ reflect: true }) inverted = false
+  @Prop({ reflect: true }) readonly inverted = false
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
-  @Prop({ reflect: true }) deactivated = false
+  @Prop({ reflect: true }) readonly deactivated = false
   @Watch('deactivated')
-  deactivatedWatcher(newValue: boolean, oldValue: boolean) {
+  deactivatedChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue) {
       if (this.deactivated) {
         this.destroy()
@@ -57,15 +57,15 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * Defines the color of the spinner.
    */
-  @Prop({ reflect: true }) color: DS.SpinnerColor = 'blue'
+  @Prop({ reflect: true }) readonly color: DS.SpinnerColor = 'blue'
 
   /**
    * @Deprecated
    * Use size="sm" instead. If `true` the component is smaller
    */
-  @Prop() small = false
+  @Prop() readonly small = false
   @Watch('small')
-  watchSize(newValue: boolean, oldValue: boolean) {
+  smallChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue && newValue === true) {
       this.size = 'sm'
     }
@@ -79,9 +79,9 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * Defines the look of the spinner
    */
-  @Prop({ reflect: true }) variation: DS.SpinnerVariation = 'logo'
+  @Prop({ reflect: true }) readonly variation: DS.SpinnerVariation = 'logo'
   @Watch('variation')
-  variationWatcher(newValue: DS.SpinnerVariation, oldValue: DS.SpinnerVariation) {
+  variationChanged(newValue: DS.SpinnerVariation, oldValue: DS.SpinnerVariation) {
     if (newValue !== oldValue) {
       if (this.variation === 'circle') {
         this.destroy()
@@ -97,7 +97,7 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
    */
 
   connectedCallback(): void {
-    this.watchSize(this.small, false)
+    this.smallChanged(this.small, false)
   }
 
   componentDidLoad() {
