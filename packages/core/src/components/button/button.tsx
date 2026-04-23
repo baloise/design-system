@@ -37,7 +37,7 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   /**
    * Size of the button
@@ -76,42 +76,42 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * If `true` the button has a dashed border.
    * */
-  @Prop() readonly dashed = false
+  @Prop() readonly dashed: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() readonly shadow = false
+  @Prop() readonly shadow: boolean = false
 
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() readonly square = false
+  @Prop() readonly square: boolean = false
 
   /**
    * If `true` the button is circular and width of the buttons is limited
    */
-  @Prop() readonly circle = false
+  @Prop() readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop() readonly expanded = false
+  @Prop() readonly expanded: boolean = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
-  @Prop() readonly flat = false
+  @Prop() readonly flat: boolean = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() readonly outlined = false
+  @Prop() readonly outlined: boolean = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
@@ -121,7 +121,7 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * If `true` the button is rounded.
    */
-  @Prop() readonly rounded = false
+  @Prop() readonly rounded: boolean = false
 
   // /**
   //  * If `true` the button is a popup.
@@ -136,7 +136,7 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * If `true` the icon turns
    */
-  @Prop() readonly iconTurn = false
+  @Prop() readonly iconTurn: boolean = false
 
   /**
    * Name of the right button icon
@@ -146,7 +146,7 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * The label of the button will not break
    */
-  @Prop() readonly noWrap = false
+  @Prop() readonly noWrap: boolean = false
 
   /**
    * The name of the button, which is submitted with the form data.

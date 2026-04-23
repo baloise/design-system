@@ -54,29 +54,29 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
    * If `true` the form control needs to be filled. If it is set to
    * `false` an optional label is added to the label..
    */
-  @Prop({ reflect: true }) readonly required = true
+  @Prop({ reflect: true }) readonly required: boolean = true
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap = false
+  @Prop({ reflect: true }) readonly noWrap: boolean = false
 
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop({ reflect: true }) readonly valid = false
+  @Prop({ reflect: true }) readonly valid: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop({ reflect: true }) readonly invalid = false
+  @Prop({ reflect: true }) readonly invalid: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
@@ -91,12 +91,12 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
   /**
    * @internal
    */
-  @Prop() readonly hovered = false
+  @Prop() readonly hovered: boolean = false
 
   /**
    * @internal
    */
-  @Prop() readonly pressed = false
+  @Prop() readonly pressed: boolean = false
 
   /**
    * LISTENERS

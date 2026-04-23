@@ -41,17 +41,17 @@ export class Notification implements ComponentInterface, Loggable {
   /**
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
-  @Prop() readonly alert = false
+  @Prop() readonly alert: boolean = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() readonly closable = false
+  @Prop() readonly closable: boolean = false
 
   /**
    * If `true` there will be no icon provided
    */
-  @Prop() readonly noIcon = false
+  @Prop() readonly noIcon: boolean = false
 
   /**
    * Defines the size of the notification, small, medium or large.

@@ -28,29 +28,29 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * If `true` the text has heading font family
    */
-  @Prop({ reflect: true }) readonly heading = false
+  @Prop({ reflect: true }) readonly heading: boolean = false
 
   /**
    * If `true` the text has subtitle font family
    */
-  @Prop({ reflect: true }) readonly subtitle = false
+  @Prop({ reflect: true }) readonly subtitle: boolean = false
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap = false
+  @Prop({ reflect: true }) readonly noWrap: boolean = false
 
   /**
    * If `true` the text is bold
    */
-  @Prop({ reflect: true }) readonly bold = false
+  @Prop({ reflect: true }) readonly bold: boolean = false
 
   /**
    * If `true` the text is shown as a display inline
    */
-  @Prop({ reflect: true }) readonly inline = false
+  @Prop({ reflect: true }) readonly inline: boolean = false
 
   /**
    * Defines the color of the text.
@@ -65,22 +65,22 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop({ reflect: true }) readonly inverted = false
+  @Prop({ reflect: true }) readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) readonly shadow = false
+  @Prop({ reflect: true }) readonly shadow: boolean = false
 
   /**
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop({ reflect: true }) readonly invalid = false
+  @Prop({ reflect: true }) readonly invalid: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -90,12 +90,12 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * @internal
    */
-  @Prop() readonly hovered = false
+  @Prop() readonly hovered: boolean = false
 
   /**
    * @internal
    */
-  @Prop() readonly pressed = false
+  @Prop() readonly pressed: boolean = false
 
   /**
    * PRIVATE METHODS

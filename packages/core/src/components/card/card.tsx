@@ -21,17 +21,17 @@ export class Card implements ComponentInterface, Loggable {
   /**
    * If `true` the card loses its shadow.
    */
-  @Prop() readonly flat = false
+  @Prop() readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
-  @Prop() readonly tile = false
+  @Prop() readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
-  @Prop() readonly dense = false
+  @Prop() readonly dense: boolean = false
 
   /**
    * If `true` the card image is displayed as a teaser, which means
@@ -42,32 +42,32 @@ export class Card implements ComponentInterface, Loggable {
   /**
    * If `true` the card loses its border radius.
    */
-  @Prop() readonly square = false
+  @Prop() readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
-  @Prop() readonly outlined = false
+  @Prop() readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
-  @Prop() readonly clickable = false
+  @Prop() readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
-  @Prop() readonly selected = false
+  @Prop() readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
-  @Prop() readonly fullheight = false
+  @Prop() readonly fullheight: boolean = false
 
   /**
    * Defines the text alignment of the card content.

@@ -61,7 +61,7 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
   /**
    * Defines if the animation should be active
    */
-  @Prop({ reflect: true }) readonly animated = false
+  @Prop({ reflect: true }) readonly animated: boolean = false
   @Watch('animated')
   animatedChanged() {
     if (!this.isAnimated) {

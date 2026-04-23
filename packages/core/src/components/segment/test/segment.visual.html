@@ -16,9 +16,76 @@
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-segment name="basic" value="apple" label="Fruits" description="Choose your favorite fruit">
-          <ds-segment-item value="apple">Apple</ds-segment-item>
-          <ds-segment-item value="strewberry">Strewberry</ds-segment-item>
+        <ds-segment
+          name="basic"
+          value="apple"
+          label="Fruits"
+          description="Choose your favorite fruit"
+          allow-empty-selection
+        >
+          <ds-segment-item value="apple" label="Apple"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry"></ds-segment-item>
+        </ds-segment>
+
+        <button class="button" id="add-button">Add</button>
+        <button class="button" id="remove-button">Remove</button>
+        <button class="button" id="change-button">Change</button>
+        <script>
+          const addButton = document.getElementById('add-button')
+          const removeButton = document.getElementById('remove-button')
+          const changeButton = document.getElementById('change-button')
+          const segment = document.querySelector('ds-segment[name="basic"]')
+          addButton.addEventListener('click', () => {
+            const newItem = document.createElement('ds-segment-item')
+            newItem.setAttribute('value', 'banana')
+            newItem.setAttribute('label', 'Banana')
+            segment.appendChild(newItem)
+          })
+          removeButton.addEventListener('click', () => {
+            const items = segment.querySelectorAll('ds-segment-item')
+            if (items.length > 0) {
+              segment.removeChild(items[items.length - 1])
+            }
+          })
+          changeButton.addEventListener('click', () => {
+            const items = segment.querySelectorAll('ds-segment-item')
+            if (items.length > 0) {
+              items[0].setAttribute('label', 'Changed Apple')
+            }
+          })
+        </script>
+      </section>
+
+      <section data-testid="long-content">
+        <span>Long-Content</span>
+        <ds-segment name="long-content" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item
+            value="apple"
+            label="Apple is a sweet red fruit that grows on trees and is enjoyed by many people around the world."
+            description="A sweet red fruit"
+          ></ds-segment-item>
+          <ds-segment-item
+            value="strewberry"
+            label="Strewberry is a small red fruit that is often used in desserts and enjoyed by many people."
+            description="A small red fruit"
+          ></ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <section data-testid="description">
+        <span>Description</span>
+        <ds-segment name="description" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
+        </ds-segment>
+      </section>
+
+      <!-- Vertical -->
+      <section data-testid="vertical">
+        <span>Vertical</span>
+        <ds-segment name="vertical" value="apple" label="Fruits" description="Choose your favorite fruit" vertical>
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
         </ds-segment>
       </section>
 
@@ -26,8 +93,8 @@
       <section data-testid="disabled">
         <span>Disabled</span>
         <ds-segment name="disabled" value="apple" label="Fruits" description="Choose your favorite fruit" disabled>
-          <ds-segment-item value="apple">Apple</ds-segment-item>
-          <ds-segment-item value="strewberry">Strewberry</ds-segment-item>
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
         </ds-segment>
       </section>
 
@@ -42,12 +109,12 @@
           invalid
           invalid-text="Please select a fruit"
         >
-          <ds-segment-item value="apple">Apple</ds-segment-item>
-          <ds-segment-item value="strewberry" checked>Strewberry</ds-segment-item>
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
         </ds-segment>
       </section>
 
-      <!-- Invalid disabled -->
+      <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
         <ds-segment
@@ -59,26 +126,17 @@
           invalid-text="Please select a fruit"
           disabled
         >
-          <ds-segment-item value="apple">Apple</ds-segment-item>
-          <ds-segment-item value="strewberry" checked>Strewberry</ds-segment-item>
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
         </ds-segment>
       </section>
 
       <!-- Wide -->
       <section data-testid="wide">
         <span>Wide</span>
-        <ds-segment wide name="heros-1" label="Label" description="Description">
-          <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
-          <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
-        </ds-segment>
-      </section>
-
-      <!-- Vertical -->
-      <section data-testid="vertical">
-        <span>Vertical</span>
-        <ds-segment vertical name="heros-1" label="Label" description="Description">
-          <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
-          <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
+        <ds-segment wide name="heros-1" label="Label" description="Description" value="apple">
+          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
         </ds-segment>
       </section>
 
@@ -86,9 +144,9 @@
       <section data-testid="form">
         <span>Form</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <ds-segment name="heros-2" label="Label" description="Description" value="tony-stark">
-            <ds-segment-item value="steve-rogers">Steve Rogers</ds-segment-item>
-            <ds-segment-item value="tony-stark">Tony Stark</ds-segment-item>
+          <ds-segment name="heros-2" label="Label" description="Description" value="apple">
+            <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+            <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
           </ds-segment>
           <br /><br />
           <ds-button element-type="submit" color="primary">Submit</ds-button>

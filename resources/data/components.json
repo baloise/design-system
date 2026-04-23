@@ -3769,10 +3769,10 @@
         },
         {
           "name": "label",
-          "type": "string",
+          "type": "\"\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "\"\"",
+            "resolved": "\"\"",
             "references": {}
           },
           "mutable": false,
@@ -3788,7 +3788,7 @@
           "default": "''",
           "values": [
             {
-              "type": "string"
+              "type": "\"\""
             }
           ],
           "optional": false,
@@ -6228,6 +6228,7 @@
         "ds-item",
         "ds-number-input",
         "ds-radio-group",
+        "ds-segment",
         "ds-snackbar",
         "ds-textarea",
         "ds-toast"
@@ -6256,6 +6257,9 @@
           "ds-icon"
         ],
         "ds-radio-group": [
+          "ds-icon"
+        ],
+        "ds-segment": [
           "ds-icon"
         ],
         "ds-snackbar": [
@@ -6837,10 +6841,10 @@
         },
         {
           "name": "autocapitalize",
-          "type": "string",
+          "type": "\"off\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "\"off\"",
+            "resolved": "\"off\"",
             "references": {}
           },
           "mutable": false,
@@ -6856,6 +6860,7 @@
           "default": "'off'",
           "values": [
             {
+              "value": "off",
               "type": "string"
             }
           ],
@@ -7228,10 +7233,10 @@
         },
         {
           "name": "debounce",
-          "type": "number",
+          "type": "0",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "0",
+            "resolved": "0",
             "references": {}
           },
           "mutable": false,
@@ -7247,6 +7252,7 @@
           "default": "0",
           "values": [
             {
+              "value": "0",
               "type": "number"
             }
           ],
@@ -9783,10 +9789,10 @@
         },
         {
           "name": "debounce",
-          "type": "number",
+          "type": "0",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "0",
+            "resolved": "0",
             "references": {}
           },
           "mutable": false,
@@ -9802,6 +9808,7 @@
           "default": "0",
           "values": [
             {
+              "value": "0",
               "type": "number"
             }
           ],
@@ -9812,10 +9819,10 @@
         },
         {
           "name": "decimal",
-          "type": "number",
+          "type": "0",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "0",
+            "resolved": "0",
             "references": {}
           },
           "mutable": false,
@@ -9831,6 +9838,7 @@
           "default": "0",
           "values": [
             {
+              "value": "0",
               "type": "number"
             }
           ],
@@ -10597,10 +10605,10 @@
         },
         {
           "name": "label",
-          "type": "string",
+          "type": "\"\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "\"\"",
+            "resolved": "\"\"",
             "references": {}
           },
           "mutable": false,
@@ -10616,7 +10624,7 @@
           "default": "''",
           "values": [
             {
-              "type": "string"
+              "type": "\"\""
             }
           ],
           "optional": false,
@@ -11707,6 +11715,653 @@
       ]
     },
     {
+      "fileName": "segment.tsx",
+      "tag": "ds-segment",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-segment": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "allowEmptySelection",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "allow-empty-selection",
+          "reflectToAttr": false,
+          "docs": "If `true`, the segment items can be deselected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.SegmentColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the input, which is displayed below the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the input, which is displayed above the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": false,
+          "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the segment items in the group. Child items will inherit the name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "complexType": {
+            "original": "any | null",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "The value of the segment group.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "Displays the segment items vertically",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "verticalOnMobile",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical-on-mobile",
+          "reflectToAttr": false,
+          "docs": "Displays the segment items vertically on mobile",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.SegmentBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.SegmentChangeDetail",
+            "resolved": "boolean",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input value has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.SegmentFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": [
+        {
+          "event": "dsWillUpdate",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ]
+    },
+    {
+      "fileName": "segment-item.tsx",
+      "tag": "ds-segment-item",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "description",
+          "type": "\"\"",
+          "complexType": {
+            "original": "\"\"",
+            "resolved": "\"\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "icon",
+          "type": "\"\"",
+          "complexType": {
+            "original": "\"\"",
+            "resolved": "\"\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "\"\"",
+          "complexType": {
+            "original": "\"\"",
+            "resolved": "\"\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "complexType": {
+            "original": "any | null",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "A DOMString representing the value of the segment item. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the item's name.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsWillUpdate",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
+    },
+    {
       "fileName": "shape.tsx",
       "tag": "ds-shape",
       "overview": "",
@@ -12329,6 +12984,7 @@
         "ds-input",
         "ds-number-input",
         "ds-radio-group",
+        "ds-segment",
         "ds-textarea"
       ],
       "dependencies": [],
@@ -12346,6 +13002,9 @@
           "ds-spinner"
         ],
         "ds-radio-group": [
+          "ds-spinner"
+        ],
+        "ds-segment": [
           "ds-spinner"
         ],
         "ds-textarea": [
@@ -14374,10 +15033,10 @@
         },
         {
           "name": "autocapitalize",
-          "type": "string",
+          "type": "\"off\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "\"off\"",
+            "resolved": "\"off\"",
             "references": {}
           },
           "mutable": false,
@@ -14393,6 +15052,7 @@
           "default": "'off'",
           "values": [
             {
+              "value": "off",
               "type": "string"
             }
           ],
@@ -14752,10 +15412,10 @@
         },
         {
           "name": "debounce",
-          "type": "number",
+          "type": "0",
           "complexType": {
-            "original": "number",
-            "resolved": "number",
+            "original": "0",
+            "resolved": "0",
             "references": {}
           },
           "mutable": false,
@@ -14771,6 +15431,7 @@
           "default": "0",
           "values": [
             {
+              "value": "0",
               "type": "number"
             }
           ],
@@ -16030,10 +16691,10 @@
         },
         {
           "name": "label",
-          "type": "string",
+          "type": "\"\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "\"\"",
+            "resolved": "\"\"",
             "references": {}
           },
           "mutable": false,
@@ -16049,7 +16710,7 @@
           "default": "''",
           "values": [
             {
-              "type": "string"
+              "type": "\"\""
             }
           ],
           "optional": false,

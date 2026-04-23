@@ -20,9 +20,13 @@
   */
 
 :host {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
+  display: block;
+
+  #inner {
+    position: relative;
+    display: grid;
+    gap: 0.25rem;
+  }
 
   @include input.label('checkbox-group', 'legend');
   @include input.description('checkbox-group');

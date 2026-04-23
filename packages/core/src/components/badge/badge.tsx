@@ -45,7 +45,7 @@ export class Badge implements ComponentInterface, Loggable {
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop({ reflect: true }) readonly pulse = false
+  @Prop({ reflect: true }) readonly pulse: boolean = false
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''

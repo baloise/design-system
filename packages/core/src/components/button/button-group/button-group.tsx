@@ -28,12 +28,12 @@ export class ButtonGroup implements ComponentInterface, Loggable {
   /**
    * If `true` the flex direction is used in reverse on mobile.
    */
-  @Prop() readonly reverse = false
+  @Prop() readonly reverse: boolean = false
 
   /**
    * If `true` the buttons will expand to fill the available space on mobile.
    */
-  @Prop() readonly expanded = false
+  @Prop() readonly expanded: boolean = false
 
   render() {
     return (

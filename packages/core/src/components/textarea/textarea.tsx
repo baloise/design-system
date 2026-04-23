@@ -82,7 +82,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * If `true` the component gets an invalid style.
    */
-  @Prop() readonly invalid = false
+  @Prop() readonly invalid: boolean = false
 
   /**
    * Indicates whether and how the text value should be automatically capitalized.
@@ -97,7 +97,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
-  @Prop() readonly autofocus = false
+  @Prop() readonly autofocus: boolean = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
@@ -127,12 +127,12 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form.
    */
-  @Prop() readonly disabled = false
+  @Prop() readonly disabled: boolean = false
 
   /**
    * If `true` the element can not be mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly = false
+  @Prop() readonly readonly: boolean = false
 
   /**
    * The visible width of the text control, in average character widths.
@@ -152,7 +152,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
 
   /**
    * A hint to the browser for which keyboard to display.
@@ -162,7 +162,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid.
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
 
   /**
    * EVENTS

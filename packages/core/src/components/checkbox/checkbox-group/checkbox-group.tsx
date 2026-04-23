@@ -26,7 +26,7 @@ import { areArraysEqual } from '../../../utils/array'
   formAssociated: true,
 })
 export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterface {
-  private inputId = `ds-cg-${checkboxGroupIds++}`
+  inputId = `ds-cg-${checkboxGroupIds++}`
 
   @Element() el!: HTMLDsCheckboxGroupElement
 
@@ -54,7 +54,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * If `true` it acts as the main form control
    */
-  @Prop() readonly control = false
+  @Prop() readonly control: boolean = false
 
   /**
    * The value of the control.
@@ -110,7 +110,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() readonly loading = false
+  @Prop() readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -135,17 +135,17 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
 
   /**
    * Displays the checkboxes vertically
    */
-  @Prop() readonly vertical = false
+  @Prop() readonly vertical: boolean = false
 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile = false
+  @Prop() readonly tile: boolean = false
 
   /**
    * Defines the color of the tile checkbox.

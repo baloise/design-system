@@ -241,7 +241,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
           <ds-button
             id="mobile-button"
             color={this.color === 'base' ? 'primary' : this.color}
-            square
+            square={true}
             icon={this.iconName}
             onClick={() => (this.mobileOpenState = true)}
           ></ds-button>

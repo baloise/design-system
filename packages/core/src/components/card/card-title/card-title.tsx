@@ -17,7 +17,7 @@ export class CardTitle implements ComponentInterface, Loggable {
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * The actual heading level used in the HTML markup.

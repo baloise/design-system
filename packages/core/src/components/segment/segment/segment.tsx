@@ -10,13 +10,13 @@ import {
   Method,
   Prop,
   State,
-  Watch,
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { Field, FieldInterface } from '../../input/field.util'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../utils/config'
 import { stopEventBubbling } from '../../../utils/form-control'
-import { hasTagName, isDescendant } from '../../../utils/helpers'
+import { isDescendant } from '../../../utils/helpers'
+import { SegmentItemInterface } from '../segment-item.type'
 
 @Component({
   tag: 'ds-segment',
@@ -24,9 +24,9 @@ import { hasTagName, isDescendant } from '../../../utils/helpers'
   shadow: true,
   formAssociated: true,
 })
-export class Segment implements ComponentInterface, Loggable, FieldInterface {
+export class Segment implements ComponentInterface, Loggable, Omit<FieldInterface, 'color'> {
   private initialValue?: any | null
-  private inputId = `ds-sg-${segmentIds++}`
+  inputId = `ds-sg-${segmentIds++}`
 
   @Element() el!: HTMLDsSegmentElement
 
@@ -38,6 +38,7 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() items: SegmentItemInterface[] = []
 
   @AttachInternals() internals!: ElementInternals
 
@@ -57,11 +58,6 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
   @Prop() readonly label?: string
 
   /**
-   * Defines the position of the label, either before or after the segment item input. Default is after.
-   */
-  @Prop() readonly labelPosition: DS.SegmentItemLabelPosition = 'right'
-
-  /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop() readonly description?: string
@@ -69,12 +65,12 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() readonly color: DS.InputColor = 'primary'
+  @Prop() readonly color: DS.SegmentColor = ''
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() readonly loading = false
+  @Prop() readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -99,52 +95,32 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
+
+  /**
+   * Displays the segment items over the full width.
+   */
+  @Prop() readonly wide: boolean = false
 
   /**
    * Displays the segment items vertically
    */
-  @Prop() readonly vertical = false
+  @Prop() readonly vertical: boolean = false
+
+  /**
+   * Displays the segment items vertically on mobile
+   */
+  @Prop() readonly verticalOnMobile: boolean = false
 
   /**
    * If `true`, the segment items can be deselected.
    */
-  @Prop() readonly allowEmptySelection = false
+  @Prop() readonly allowEmptySelection: boolean = false
 
   /**
    * The value of the segment group.
    */
   @Prop({ mutable: true }) value?: any | null
-
-  @Watch('value')
-  valueChanged() {
-    this.handleValueChange()
-  }
-
-  /**
-   * Defines the layout of the input
-   */
-  @Prop() readonly tile = false
-
-  /**
-   * Defines the color of the tile segment item.
-   */
-  @Prop() readonly tileColor?: DS.SegmentItemTileColor
-
-  /**
-   * Defines the column size like the grid.
-   */
-  @Prop() readonly cols: DS.SegmentGroupColumns = 1
-
-  /**
-   * Defines the column size for tablet and bigger like the grid.
-   */
-  @Prop() readonly colsTablet: DS.SegmentGroupColumns = 1
-
-  /**
-   * Defines the column size for mobile and bigger like the grid.
-   */
-  @Prop() readonly colsMobile: DS.SegmentGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
@@ -169,15 +145,10 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
   connectedCallback() {
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
-    this.passDownAttributes()
   }
 
-  componentWillUpdate() {
-    this.passDownAttributes()
-  }
-
-  componentWillLoad() {
-    this.handleValueChange()
+  componentDidLoad() {
+    this.handleSlotChange()
   }
 
   /**
@@ -185,26 +156,11 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
    * ------------------------------------------------------
    */
 
-  @Listen('dsChange', { capture: true, target: 'document' })
-  listenToDsChange(ev: UIEvent) {
+  @Listen('dsWillUpdate', { capture: true, target: 'document' })
+  listenToDsWillUpdate(ev: UIEvent) {
     if (isDescendant(this.el, ev.target as HTMLElement)) {
       stopEventBubbling(ev)
-    }
-  }
-
-  @Listen('dsFocus', { capture: true, target: 'document' })
-  listenToDsFocus(ev: CustomEvent<FocusEvent>) {
-    const { target } = ev
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-segment-item')) {
-      stopEventBubbling(ev)
-    }
-  }
-
-  @Listen('dsBlur', { capture: true, target: 'document' })
-  listenToDsBlur(ev: CustomEvent<FocusEvent>) {
-    const { target } = ev
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-segment-item')) {
-      stopEventBubbling(ev)
+      this.handleSlotChange()
     }
   }
 
@@ -213,58 +169,6 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
     const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.value = this.initialValue
-    }
-  }
-
-  @Listen('keydown', { target: 'document' })
-  listenToKeydown(ev: any) {
-    if (ev.target && !this.el.contains(ev.target)) {
-      return
-    }
-
-    // Get all segment items inside the segment and then
-    // filter out disabled items since we need to skip those
-    const items = this.getSegmentItems().filter(item => !item.disabled)
-    const targetItem = ev.target.closest('ds-segment-item')
-
-    // Only move the item if the current focus is in the segment
-    if (targetItem && items.includes(targetItem)) {
-      const index = items.findIndex(item => item === targetItem)
-      const current = items[index]
-
-      let next
-
-      // If hitting arrow down or arrow right, move to the next item
-      // If we're on the last item, move to the first item
-      if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
-        next = index === items.length - 1 ? items[0] : items[index + 1]
-      }
-
-      // If hitting arrow up or arrow left, move to the previous item
-      // If we're on the first item, move to the last item
-      if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
-        next = index === 0 ? items[items.length - 1] : items[index - 1]
-      }
-
-      if (next && items.includes(next)) {
-        next.setFocus()
-
-        this.value = next.value
-        this.dsChange.emit(this.value)
-        this.internals.setFormValue(this.value)
-      }
-
-      // Update the segment value when a user presses the
-      // space bar on top of a selected item
-      if (['Space'].includes(ev.code)) {
-        this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value
-        this.dsChange.emit(this.value)
-        this.internals.setFormValue(this.value)
-
-        // Prevent browsers from jumping
-        // to the bottom of the screen
-        ev.preventDefault()
-      }
     }
   }
 
@@ -294,56 +198,22 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
    * ------------------------------------------------------
    */
 
-  private passDownAttributes() {
-    this.getSegmentItems().forEach(item => {
-      if (this.disabled !== undefined) {
-        item.disabled = this.disabled
-      }
-      if (this.readonly !== undefined) {
-        item.readonly = this.readonly
-      }
-      if (this.invalid !== undefined) {
-        item.invalid = this.invalid
-      }
-    })
-  }
+  private readItemsFromSlot() {
+    const slot = this.el.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])')
 
-  private setSegmentItemChecked() {
-    this.getSegmentItems().forEach((item: HTMLDsSegmentItemElement) => {
-      if (item.updateState) {
-        item.updateState()
-      }
-    })
-  }
+    if (slot) {
+      const assignedElements = slot?.assignedElements({ flatten: true }) || []
+      const segmentItems = assignedElements.filter(el => el.tagName.toLowerCase() === 'ds-segment-item')
 
-  private setSegmentItemTabindex(value: any) {
-    const items = this.getSegmentItems()
-
-    // Get the first item that is not disabled and the checked one
-    const first = items.find(item => !item.disabled)
-    const checked = items.find(item => item.value === value && !item.disabled)
-
-    if (!first && !checked) {
-      return
+      this.items = segmentItems.map(el => {
+        const item = el as HTMLDsSegmentItemElement
+        return {
+          label: item.label,
+          value: item.value,
+          description: item.description,
+        }
+      })
     }
-
-    // If an enabled checked item exists, set it to be the focusable item
-    // otherwise we default to focus the first item
-    const focusable = checked || first
-
-    for (const item of items) {
-      const tabindex = item === focusable ? 0 : -1
-      item.setButtonTabindex(tabindex)
-    }
-  }
-
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
-  private getSegmentItems(): HTMLDsSegmentItemElement[] {
-    return Array.from(this.el.querySelectorAll('ds-segment-item'))
   }
 
   /**
@@ -351,31 +221,27 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
    * ------------------------------------------------------
    */
 
-  private handleValueChange = async () => {
-    this.setSegmentItemTabindex(this.value)
-    this.setSegmentItemChecked()
+  private handleInputChange = (itemValue: any) => {
+    if (this.disabled || this.readonly) return
+    this.value = itemValue
+    this.dsChange.emit(this.value)
+    this.internals.setFormValue(this.value)
   }
 
-  private handleClick = (ev: Event) => {
-    const element = ev.target as HTMLAnchorElement
-    if (element.href) {
-      return
-    }
-
-    ev.preventDefault()
-
-    const selectedItem = ev.target && (ev.target as HTMLElement).closest('ds-segment-item')
-    if (selectedItem && !selectedItem.disabled && !selectedItem.readonly) {
-      const currentValue = this.value
-      const newValue = selectedItem.value
-      if (newValue !== currentValue) {
-        this.value = newValue
-      } else if (this.allowEmptySelection) {
-        this.value = undefined
-      }
+  // Native radio never fires "change" when clicking an already-checked item,
+  // so onClick is the only hook for deselection.
+  private handleInputClick = (ev: MouseEvent, itemValue: any) => {
+    if (!this.allowEmptySelection || this.disabled || this.readonly) return
+    if (this.value === itemValue) {
+      ev.preventDefault()
+      this.value = undefined
       this.dsChange.emit(this.value)
-      this.internals.setFormValue(this.value)
+      this.internals.setFormValue(null)
     }
+  }
+
+  private handleSlotChange = () => {
+    this.readItemsFromSlot()
   }
 
   /**
@@ -388,7 +254,7 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
       <Field
         role="fieldset"
         disabled={this.disabled}
-        color={this.color}
+        color={'primary'}
         invalid={this.invalid}
         loading={this.loading}
         label={this.label}
@@ -397,12 +263,33 @@ export class Segment implements ComponentInterface, Loggable, FieldInterface {
         required={this.required}
         language={this.language}
         cssClasses={{
+          'is-wide': this.wide,
           'is-vertical': this.vertical,
-          'is-tile': this.tile,
+          'is-vertical-on-mobile': this.verticalOnMobile,
         }}
-        onClick={this.handleClick}
+        onSlotChange={this.handleSlotChange}
       >
-        <slot></slot>
+        <div id="group">
+          {this.items.map(item => (
+            <label key={item.value}>
+              <input
+                type="radio"
+                name={this.name}
+                disabled={this.disabled}
+                readOnly={this.readonly}
+                value={item.value}
+                checked={item.value === this.value}
+                onClick={ev => this.handleInputClick(ev, item.value)}
+                onChange={() => this.handleInputChange(item.value)}
+              />
+              <span class="label">{item.label}</span>
+              <span class="description">{item.description}</span>
+            </label>
+          ))}
+        </div>
+        <div>
+          <slot onSlotchange={() => this.handleSlotChange()}></slot>
+        </div>
       </Field>
     )
   }

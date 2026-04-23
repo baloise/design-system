@@ -6,8 +6,6 @@
 
 # Styleguide
 
-
-
 # TODO's
 
 | Item                             | Description                                                           | Status |

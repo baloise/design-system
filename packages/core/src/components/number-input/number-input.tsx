@@ -118,7 +118,7 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * If `true` the component gets an invalid style.
    */
-  @Prop() readonly invalid = false
+  @Prop() readonly invalid: boolean = false
 
   /**
    * Number of allowed decimal places. `0` means integers only.
@@ -128,7 +128,7 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * When `true`, only positive numbers are accepted (blocks the minus sign).
    */
-  @Prop() readonly onlyPositive = false
+  @Prop() readonly onlyPositive: boolean = false
 
   /**
    * Text appended to the formatted value after blur (e.g. `"CHF"`).
@@ -148,22 +148,22 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
 
   /**
    * If `true`, the element is not mutable, focusable, or submitted with the form.
    */
-  @Prop() readonly disabled = false
+  @Prop() readonly disabled: boolean = false
 
   /**
    * If `true`, the element cannot be edited by the user.
    */
-  @Prop() readonly readonly = false
+  @Prop() readonly readonly: boolean = false
 
   /**
    * When `true`, displays `0` instead of an empty field when value is null.
    */
-  @Prop() readonly exactNumber = false
+  @Prop() readonly exactNumber: boolean = false
 
   /**
    * The maximum value.

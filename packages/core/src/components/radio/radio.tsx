@@ -26,7 +26,7 @@ import { stopEventBubbling } from '../../utils/form-control'
   formAssociated: true,
 })
 export class Radio implements ComponentInterface, Loggable {
-  private inputId = `ds-rb-${radioIds++}`
+  inputId = `ds-rb-${radioIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
   private nativeInput?: HTMLInputElement
@@ -81,32 +81,32 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled = false
+  @Prop() readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly = false
+  @Prop() readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = false
+  @Prop() readonly required: boolean = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly invalid = false
+  @Prop() readonly invalid: boolean = false
 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile = false
+  @Prop() readonly tile: boolean = false
 
   /**
    * Defines the color of the tile radio.

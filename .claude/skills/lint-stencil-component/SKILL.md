@@ -17,7 +17,7 @@ Audits a Stencil `.tsx` component file against the design system style guide and
 
 ## Checks & Fixes
 
-### 1. `@Prop()` — readonly
+### 1. `@Prop()` — readonly and boolean type annotation
 
 **Rule:** Every `@Prop()` that is never reassigned inside the class must be `readonly`.
 
@@ -29,6 +29,19 @@ Audits a Stencil `.tsx` component file against the design system style guide and
 ```
 
 **How to detect:** `@Prop()` line without `readonly` keyword. Skip if the prop is assigned anywhere in the class body (e.g. inside a `@Watch` or method).
+
+**Rule:** Every `@Prop() readonly` with a `true` or `false` default must have an explicit `: boolean` type annotation.
+
+```ts
+// ❌
+@Prop() readonly disabled = false
+@Prop({ reflect: true }) readonly required = true
+// ✅
+@Prop() readonly disabled: boolean = false
+@Prop({ reflect: true }) readonly required: boolean = true
+```
+
+**How to detect:** `@Prop(…) readonly <name> = (true|false)` without `: boolean` before the `=`.
 
 ---
 
@@ -102,6 +115,7 @@ Also check call sites: `this.change.emit(...)` → `this.dsChange.emit(...)`.
 **Rule:** The class must implement both `ComponentInterface` and `Loggable`, and wire up the logger fields.
 
 **Check for:**
+
 - `implements ComponentInterface` (and `Loggable`)
 - `log!: LogInstance` field
 - `@Logger('ds-<tag>')` + `createLogger` method
@@ -126,11 +140,16 @@ export class MyComponent implements ComponentInterface, Loggable {
 ### 7. Method visibility — `private`
 
 **Rule:** All methods must be `private` **except**:
+
 - Stencil lifecycle hooks: `connectedCallback`, `disconnectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentWillRender`, `componentDidRender`, `componentWillUpdate`, `componentDidUpdate`
 - Methods decorated with `@Method()`
 - Methods decorated with `@Watch()`
 - Methods decorated with `@Listen()` — TypeScript cannot see that Stencil calls these externally; marking them `private` causes a "declared but never read" TS error
 - `render()`
+
+**Class fields exempt from `private`:**
+
+- `inputId` — used as a public linking attribute between the component and its associated `<label>` or form element; must remain accessible from the template/outside scope.
 
 ```ts
 // ❌
@@ -145,16 +164,17 @@ private async fetchData() { ... }
 
 ## Quick Reference
 
-| Decorator / Pattern | Required form |
-|---|---|
-| `@Prop()` (immutable) | `@Prop() readonly foo: T` |
-| `@Listen('event')` | `listenToEvent()` |
-| `@Watch('prop')` | `propChanged()` |
-| DOM handler | `handleEvent = () => {}` |
-| `@Event()` | `dsEventName: EventEmitter<T>` |
-| Class implements | `ComponentInterface, Loggable` |
-| Logger field | `log!: LogInstance` |
-| Regular methods | `private methodName()` |
+| Decorator / Pattern   | Required form                           |
+| --------------------- | --------------------------------------- |
+| `@Prop()` (immutable) | `@Prop() readonly foo: T`               |
+| `@Prop()` (boolean)   | `@Prop() readonly foo: boolean = false` |
+| `@Listen('event')`    | `listenToEvent()`                       |
+| `@Watch('prop')`      | `propChanged()`                         |
+| DOM handler           | `handleEvent = () => {}`                |
+| `@Event()`            | `dsEventName: EventEmitter<T>`          |
+| Class implements      | `ComponentInterface, Loggable`          |
+| Logger field          | `log!: LogInstance`                     |
+| Regular methods       | `private methodName()`                  |
 
 ## Output Format
 

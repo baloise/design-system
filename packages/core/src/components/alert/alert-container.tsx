@@ -26,7 +26,7 @@ export class AlertContainer implements ComponentInterface, Loggable {
   @State() alerts: AlertComponent[] = []
   private alertTimers: Record<string, PausableTimer> = {}
 
-  @Prop() readonly animated = false
+  @Prop() readonly animated: boolean = false
   @Prop() readonly type: AlertType = 'toast'
   @Prop() readonly container?: AlertContainerSize
 

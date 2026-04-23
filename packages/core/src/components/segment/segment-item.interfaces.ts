@@ -4,23 +4,21 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type SegmentGroupColumns = 1 | 2 | 3 | 4
-  export type SegmentItemTileColor = '' | 'purple' | 'green' | 'yellow' | 'red'
-  export type SegmentItemLabelPosition = 'left' | 'top' | 'right'
-
   export interface SegmentItemCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLDsSegmentItemElement
   }
 
-  export type SegmentItemChangeDetail = boolean
-  export type SegmentItemChange = SegmentItemCustomEvent<SegmentItemChangeDetail>
+  // export type SegmentItemChangeDetail = boolean
+  // export type SegmentItemChange = SegmentItemCustomEvent<SegmentItemChangeDetail>
 
-  export type SegmentItemFocusDetail = FocusEvent
-  export type SegmentItemFocus = SegmentItemCustomEvent<SegmentItemFocusDetail>
+  // export type SegmentItemFocusDetail = FocusEvent
+  // export type SegmentItemFocus = SegmentItemCustomEvent<SegmentItemFocusDetail>
 
-  export type SegmentItemBlurDetail = FocusEvent
-  export type SegmentItemBlur = SegmentItemCustomEvent<SegmentItemBlurDetail>
+  // export type SegmentItemBlurDetail = FocusEvent
+  // export type SegmentItemBlur = SegmentItemCustomEvent<SegmentItemBlurDetail>
+
+  export type SegmentColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export interface SegmentCustomEvent<T> extends CustomEvent<T> {
     detail: T

@@ -73,12 +73,12 @@ export class Heading implements ComponentInterface, Loggable {
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap = false
+  @Prop({ reflect: true }) readonly noWrap: boolean = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
-  @Prop({ reflect: true }) readonly subtitle = false
+  @Prop({ reflect: true }) readonly subtitle: boolean = false
 
   /**
    * Defines at which position the heading has spacing.
@@ -93,12 +93,12 @@ export class Heading implements ComponentInterface, Loggable {
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop({ reflect: true }) readonly inverted = false
+  @Prop({ reflect: true }) readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) readonly shadow = false
+  @Prop({ reflect: true }) readonly shadow: boolean = false
 
   /**
    * LIFECYCLE

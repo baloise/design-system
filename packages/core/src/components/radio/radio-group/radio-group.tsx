@@ -26,7 +26,7 @@ import { hasTagName, isDescendant } from '../../../utils/helpers'
 })
 export class RadioGroup implements ComponentInterface, Loggable, FieldInterface {
   private initialValue?: any | null
-  private inputId = `ds-rg-${radioGroupIds++}`
+  inputId = `ds-rg-${radioGroupIds++}`
 
   @Element() el!: HTMLDsRadioGroupElement
 
@@ -74,7 +74,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() readonly loading = false
+  @Prop() readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -99,17 +99,17 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
 
   /**
    * Displays the checkboxes vertically
    */
-  @Prop() readonly vertical = false
+  @Prop() readonly vertical: boolean = false
 
   /**
    * If `true`, the radios can be deselected.
    */
-  @Prop() readonly allowEmptySelection = false
+  @Prop() readonly allowEmptySelection: boolean = false
 
   /**
    * the value of the radio group.
@@ -124,7 +124,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile = false
+  @Prop() readonly tile: boolean = false
 
   /**
    * Defines the color of the tile checkbox.

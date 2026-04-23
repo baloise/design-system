@@ -1,13 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
-@use './segment-item.mixin.scss' as segment-item;
 
-/**
-  * Basic Component Styles
-  * --------------------------------
-  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
-  */
-
-@include segment-item.vars(':host');
-@include segment-item.layout(':host');
-@include segment-item.style(':host');
-@include segment-item.states(':host');
+:host {
+  @include visually-hidden();
+}

@@ -18,7 +18,7 @@ export class List implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLStencilElement
 
-  @Prop() readonly ordered = false
+  @Prop() readonly ordered: boolean = false
 
   render() {
     const ListTag = this.ordered ? 'ol' : 'ul'

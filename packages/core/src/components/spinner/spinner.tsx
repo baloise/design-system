@@ -37,12 +37,12 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * If `true` the component can be used on dark background
    */
-  @Prop({ reflect: true }) readonly inverted = false
+  @Prop({ reflect: true }) readonly inverted: boolean = false
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
-  @Prop({ reflect: true }) readonly deactivated = false
+  @Prop({ reflect: true }) readonly deactivated: boolean = false
   @Watch('deactivated')
   deactivatedChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue) {
@@ -63,7 +63,7 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
    * @Deprecated
    * Use size="sm" instead. If `true` the component is smaller
    */
-  @Prop() readonly small = false
+  @Prop() readonly small: boolean = false
   @Watch('small')
   smallChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue && newValue === true) {

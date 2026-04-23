@@ -1,0 +1,80 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as SegmentStories from './segment.stories'
+
+<Meta of={SegmentStories} />
+
+<StoryHeading of={SegmentStories.Basic} hidden></StoryHeading>
+
+<Banner of={SegmentStories} />
+
+<Lead>**Segment** is a form control that lets users select one option from a compact set of mutually exclusive choices, rendered as a group of radio buttons.</Lead>
+
+<BasicStoryTabs tag="segment" htmlStory={SegmentStories.BasicHtml} webComponentStory={SegmentStories.Basic} index={1} />
+
+<PlaygroundBar of={SegmentStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Vertical}></StoryHeading>
+
+Add the `vertical` attribute to stack segment items in a column instead of a row.
+
+<BasicStoryTabs tag="segment" htmlStory={SegmentStories.VerticalHtml} webComponentStory={SegmentStories.Vertical} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Disabled}></StoryHeading>
+
+Apply the `disabled` attribute to prevent user interaction with all segment items.
+
+<BasicStoryTabs tag="segment" htmlStory={SegmentStories.DisabledHtml} webComponentStory={SegmentStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Invalid}></StoryHeading>
+
+Apply the `invalid` attribute along with `invalid-text` to indicate a validation error below the segment group.
+
+<BasicStoryTabs tag="segment" htmlStory={SegmentStories.InvalidHtml} webComponentStory={SegmentStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Wide}></StoryHeading>
+
+Add the `wide` attribute to make each segment item expand to fill the available width equally.
+
+<Canvas of={SegmentStories.Wide} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Form}></StoryHeading>
+
+Place `ds-segment` inside a `<form>`. The component submits its selected value with the given `name` and resets to its initial value on form reset.
+
+<Canvas of={SegmentStories.Form} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+
+import apiSegment from './segment/api.md?raw'
+
+<Markdown>{apiSegment}</Markdown>
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="segment" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+<Footer />

@@ -17,12 +17,12 @@ export class CardSubtitle implements ComponentInterface, Loggable {
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * If `true` the card text color is bold.
    */
-  @Prop() readonly bold = false
+  @Prop() readonly bold: boolean = false
 
   /**
    * If `true` the card text color becomes white.

@@ -43,7 +43,7 @@ export class Divider implements ComponentInterface, Loggable {
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
-  @Prop() readonly dashed = false
+  @Prop() readonly dashed: boolean = false
 
   connectedCallback(): void {
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'

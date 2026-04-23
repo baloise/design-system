@@ -13,154 +13,172 @@
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <label class="segment-item">
-          <input type="radio" />
-          Unchecked
-        </label>
-        <label class="segment-item">
-          <input type="radio" checked />
-          Checked
-        </label>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="basic" value="apple" checked />
+              <span>Apple</span>
+            </label>
+            <label>
+              <input type="radio" name="basic" value="strawberry" />
+              <span>Strawberry</span>
+            </label>
+            <label>
+              <input type="radio" name="basic" value="banana" />
+              <span>Banana</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
       </section>
 
-      <!-- No label -->
-      <section data-testid="no-label">
-        <span>No Label</span>
-        <label class="segment-item">
-          <input type="radio" />
-        </label>
-        <label class="segment-item">
-          <input type="radio" checked />
-        </label>
+      <!-- Description -->
+      <section data-testid="description">
+        <span>Description</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="description" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="description" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="long-content" value="apple" checked />
+              <span
+                >Apple is a sweet red fruit that grows on trees and is enjoyed by many people around the world.</span
+              >
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="long-content" value="strawberry" />
+              <span>Strawberry is a small red fruit that is often used in desserts and enjoyed by many people.</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Vertical -->
+      <section data-testid="vertical">
+        <span>Vertical</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-vertical">
+            <label>
+              <input type="radio" name="vertical" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="vertical" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Vertical on Mobile -->
+      <section data-testid="vertical-on-mobile">
+        <span>Vertical on Mobile</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-vertical-on-mobile">
+            <label>
+              <input type="radio" name="vertical-on-mobile" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="vertical-on-mobile" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
       </section>
 
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <label class="segment-item is-disabled">
-          <input type="radio" disabled />
-          Unchecked
-        </label>
-        <label class="segment-item is-disabled">
-          <input type="radio" checked disabled />
-          Checked
-        </label>
+        <fieldset class="field is-disabled">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-disabled">
+            <label>
+              <input type="radio" name="disabled" value="apple" checked disabled />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="disabled" value="strawberry" disabled />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
       </section>
 
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <label class="segment-item is-invalid">
-          <input type="radio" />
-          Unchecked
-        </label>
-        <label class="segment-item is-invalid">
-          <input type="radio" checked />
-          Checked
-        </label>
+        <fieldset class="field is-danger">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-danger">
+            <label>
+              <input type="radio" name="invalid" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="invalid" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Please select a fruit</p>
+        </fieldset>
       </section>
 
       <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <label class="segment-item is-invalid is-disabled">
-          <input type="radio" disabled />
-          Unchecked
-        </label>
-        <label class="segment-item is-invalid is-disabled">
-          <input type="radio" checked disabled />
-          Checked
-        </label>
-      </section>
-
-      <!-- Field -->
-      <section data-testid="field">
-        <span>Field</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="segment">
-            <label class="segment-item">
-              <input required type="radio" name="required" aria-describedby="help" />
-              Item 1
+        <fieldset class="field is-danger is-disabled">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-danger is-disabled">
+            <label>
+              <input type="radio" name="invalid-disabled" value="apple" checked disabled />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
             </label>
-            <label class="segment-item">
-              <input required type="radio" name="required" aria-describedby="help" />
-              Item 2
+            <label>
+              <input type="radio" name="invalid-disabled" value="strawberry" disabled />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
-        </fieldset>
-      </section>
-
-      <!-- Field Vertical -->
-      <section data-testid="field-vertical">
-        <span>Field Vertical</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="segment is-vertical">
-            <label class="segment-item">
-              <input required type="radio" name="required" aria-describedby="help" />
-              Item 1
-            </label>
-            <label class="segment-item">
-              <input required type="radio" name="required" aria-describedby="help" />
-              Item 2
-            </label>
-          </div>
-
-          <p class="help" id="help">This username is available</p>
-        </fieldset>
-      </section>
-
-      <!-- Form submit -->
-      <section data-testid="form">
-        <span>Form</span>
-        <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <label class="segment-item">
-            <input type="radio" name="terms" value="accepted" />
-            Accept terms and conditions
-          </label>
-          <br /><br />
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
-        </form>
-      </section>
-
-      <!-- Field Disabled -->
-      <section data-testid="field-disabled">
-        <span>Field Disabled</span>
-        <fieldset class="field is-disabled">
-          <legend class="label">Label</legend>
-          <div class="segment">
-            <label class="segment-item is-disabled">
-              <input type="radio" name="field-disabled" disabled aria-describedby="help" />
-              Item 1
-            </label>
-            <label class="segment-item is-disabled">
-              <input type="radio" name="field-disabled" disabled aria-describedby="help" />
-              Item 2
-            </label>
-          </div>
-          <p class="help" id="help">This username is available</p>
-        </fieldset>
-      </section>
-
-      <!-- Field Invalid -->
-      <section data-testid="field-invalid">
-        <span>Field Invalid</span>
-        <fieldset class="field is-invalid">
-          <legend class="label">Label</legend>
-          <div class="segment">
-            <label class="segment-item is-invalid">
-              <input type="radio" name="field-invalid" aria-invalid="true" aria-describedby="help" />
-              Item 1
-            </label>
-            <label class="segment-item is-invalid">
-              <input type="radio" name="field-invalid" aria-invalid="true" aria-describedby="help" />
-              Item 2
-            </label>
-          </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="help">Please select a fruit</p>
         </fieldset>
       </section>
     </main>

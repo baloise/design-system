@@ -59,7 +59,7 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
   /**
    * If `true` the icon acts as a tile with a background color.
    */
-  @Prop() readonly tile = false
+  @Prop() readonly tile: boolean = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
@@ -69,32 +69,32 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
   /**
    * If `true` the icon has display inline style
    */
-  @Prop() readonly inline = false
+  @Prop() readonly inline: boolean = false
 
   /**
    * If `true` the icon is inverted
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
-  @Prop() readonly turn = false
+  @Prop() readonly turn: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() readonly shadow = false
+  @Prop() readonly shadow: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled = false
+  @Prop() readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() readonly invalid = false
+  @Prop() readonly invalid: boolean = false
 
   /**
    * LIFE CYCLE

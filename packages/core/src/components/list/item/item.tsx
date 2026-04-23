@@ -32,7 +32,7 @@ export class Item implements ComponentInterface, Loggable {
   /**
    * If `true` the accordion is open.
    */
-  @Prop() readonly accordionOpen = false
+  @Prop() readonly accordionOpen: boolean = false
 
   /**
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
@@ -80,7 +80,7 @@ export class Item implements ComponentInterface, Loggable {
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   @Prop() readonly label?: string
   @Prop() readonly labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'

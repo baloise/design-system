@@ -27,6 +27,8 @@ export const tags = [
   "ds-number-input",
   "ds-radio",
   "ds-radio-group",
+  "ds-segment",
+  "ds-segment-item",
   "ds-shape",
   "ds-snackbar",
   "ds-spinner",

@@ -42,18 +42,18 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop() readonly inverted = false
+  @Prop() readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   /**
    * If `true` the close component will be rendered as a button element.
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
-  @Prop() readonly button = false
+  @Prop() readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.

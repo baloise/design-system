@@ -43,17 +43,17 @@ export class Tag implements ComponentInterface, Loggable {
   /**
    * The theme type of the tag.
    */
-  @Prop({ reflect: true }) readonly closable = false
+  @Prop({ reflect: true }) readonly closable: boolean = false
 
   /**
    * Overwrites the default color to invalid style
    */
-  @Prop({ reflect: true }) readonly invalid = false
+  @Prop({ reflect: true }) readonly invalid: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop({ reflect: true }) readonly disabled = false
+  @Prop({ reflect: true }) readonly disabled: boolean = false
 
   /**
    * Choosing left or center the tag is aligned to that side in the ds-card.

@@ -109,12 +109,12 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines if the child elements will wrap to the next line if there
    * is not enough space left
    */
-  @Prop() readonly useWrap = false
+  @Prop() readonly useWrap: boolean = false
 
   /**
    * Defines the width of the stack to be exactly the with of the content.
    */
-  @Prop() readonly fitContent = false
+  @Prop() readonly fitContent: boolean = false
 
   /**
    * @internal

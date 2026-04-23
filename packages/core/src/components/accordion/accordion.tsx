@@ -67,12 +67,12 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
   /**
    * Displays the summary as a button and hides the default marker.
    */
-  @Prop() readonly button = false
+  @Prop() readonly button: boolean = false
 
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
-  @Prop() readonly buttonExpanded = false
+  @Prop() readonly buttonExpanded: boolean = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.

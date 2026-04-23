@@ -34,7 +34,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
   private maskUtil = new InputMaskUtil(this)
-  private inputId = `ds-input-${InputIds++}`
+  inputId = `ds-input-${InputIds++}`
 
   log!: LogInstance
   @Logger('input')
@@ -83,12 +83,12 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() readonly loading = false
+  @Prop() readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly invalid = false
+  @Prop() readonly invalid: boolean = false
 
   /**
    * The text to display when the input is in an invalid state.
@@ -124,7 +124,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
-  @Prop() readonly autofocus = false
+  @Prop() readonly autofocus: boolean = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -179,22 +179,22 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required = true
+  @Prop() readonly required: boolean = true
 
   /**
    * If `true`, the element will have its spelling and grammar checked.
    */
-  @Prop() readonly spellcheck = false
+  @Prop() readonly spellcheck: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled = false
+  @Prop() readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly = false
+  @Prop() readonly readonly: boolean = false
 
   /**
    * Adds a suffix the the input-value after blur.
@@ -226,7 +226,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff = false
+  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
 
   /**
    * Emitted when a keyboard input occurred.

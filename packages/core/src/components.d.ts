@@ -17,7 +17,7 @@ export namespace Components {
           * Displays the summary as a button and hides the default marker.
           * @default false
          */
-        "button": false;
+        "button": boolean;
         /**
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
@@ -27,7 +27,7 @@ export namespace Components {
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
          */
-        "buttonExpanded": false;
+        "buttonExpanded": boolean;
         /**
           * BalIcon of the close trigger button
          */
@@ -439,7 +439,7 @@ export namespace Components {
           * Label of the radio item.
           * @default ''
          */
-        "label": string;
+        "label": "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -795,7 +795,7 @@ export namespace Components {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
           * @default 'off'
          */
-        "autocapitalize": string;
+        "autocapitalize": "off";
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -821,7 +821,7 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
          */
-        "debounce": number;
+        "debounce": 0;
         /**
           * The description of the input, which is displayed below the input field.
          */
@@ -1116,12 +1116,12 @@ export namespace Components {
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
          */
-        "debounce": number;
+        "debounce": 0;
         /**
           * Number of allowed decimal places. `0` means integers only.
           * @default 0
          */
-        "decimal": number;
+        "decimal": 0;
         /**
           * The description displayed below the field.
          */
@@ -1244,7 +1244,7 @@ export namespace Components {
           * Label of the radio item.
           * @default ''
          */
-        "label": string;
+        "label": "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -1388,24 +1388,9 @@ export namespace Components {
         "allowEmptySelection": boolean;
         /**
           * Defines the color of the input. The default value is `primary`.
-          * @default 'primary'
+          * @default ''
          */
-        "color": DS.InputColor;
-        /**
-          * Defines the column size like the grid.
-          * @default 1
-         */
-        "cols": DS.SegmentGroupColumns;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-          * @default 1
-         */
-        "colsMobile": DS.SegmentGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-          * @default 1
-         */
-        "colsTablet": DS.SegmentGroupColumns;
+        "color": DS.SegmentColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
@@ -1428,11 +1413,6 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Defines the position of the label, either before or after the segment item input. Default is after.
-          * @default 'right'
-         */
-        "labelPosition": DS.SegmentItemLabelPosition;
-        /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
          */
@@ -1453,15 +1433,6 @@ export namespace Components {
         "required": boolean;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
-          * Defines the layout of the input
-          * @default false
-         */
-        "tile": boolean;
-        /**
-          * Defines the color of the tile segment item.
-         */
-        "tileColor"?: DS.SegmentItemTileColor;
-        /**
           * The value of the segment group.
          */
         "value"?: any | null;
@@ -1470,42 +1441,30 @@ export namespace Components {
           * @default false
          */
         "vertical": boolean;
+        /**
+          * Displays the segment items vertically on mobile
+          * @default false
+         */
+        "verticalOnMobile": boolean;
+        /**
+          * Displays the segment items over the full width.
+          * @default false
+         */
+        "wide": boolean;
     }
     interface DsSegmentItem {
         /**
-          * @default false
+          * @default ''
          */
-        "checked": boolean;
+        "description": "";
         /**
-          * @default false
+          * @default ''
          */
-        "disabled": boolean;
+        "icon": "";
         /**
-          * @default false
+          * @default ''
          */
-        "invalid": boolean;
-        /**
-          * @default this.inputId
-         */
-        "name": string;
-        /**
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * @default false
-         */
-        "required": boolean;
-        /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        "setButtonTabindex": (value: number) => Promise<void>;
-        /**
-          * Sets the focus on the segment item input element.
-         */
-        "setFocus": () => Promise<void>;
-        "updateState": () => Promise<void>;
+        "label": "";
         /**
           * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
          */
@@ -1790,7 +1749,7 @@ export namespace Components {
           * Indicates whether and how the text value should be automatically capitalized.
           * @default 'off'
          */
-        "autocapitalize": string;
+        "autocapitalize": "off";
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -1815,7 +1774,7 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
           * @default 0
          */
-        "debounce": number;
+        "debounce": 0;
         /**
           * The description displayed below the textarea field.
          */
@@ -2005,7 +1964,7 @@ export namespace Components {
           * Label of the radio item.
           * @default ''
          */
-        "label": string;
+        "label": "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -2454,7 +2413,7 @@ declare global {
         new (): HTMLDsSegmentElement;
     };
     interface HTMLDsSegmentItemElementEventMap {
-        "dsChange": DS.SegmentItemChangeDetail;
+        "dsWillUpdate": void;
     }
     interface HTMLDsSegmentItemElement extends Components.DsSegmentItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsSegmentItemElementEventMap>(type: K, listener: (this: HTMLDsSegmentItemElement, ev: DsSegmentItemCustomEvent<HTMLDsSegmentItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2648,7 +2607,7 @@ declare namespace LocalJSX {
           * Displays the summary as a button and hides the default marker.
           * @default false
          */
-        "button"?: false;
+        "button"?: boolean;
         /**
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
@@ -2658,7 +2617,7 @@ declare namespace LocalJSX {
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
          */
-        "buttonExpanded"?: false;
+        "buttonExpanded"?: boolean;
         /**
           * BalIcon of the close trigger button
          */
@@ -3109,7 +3068,7 @@ declare namespace LocalJSX {
           * Label of the radio item.
           * @default ''
          */
-        "label"?: string;
+        "label"?: "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -3490,7 +3449,7 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
           * @default 'off'
          */
-        "autocapitalize"?: string;
+        "autocapitalize"?: "off";
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -3515,7 +3474,7 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
          */
-        "debounce"?: number;
+        "debounce"?: 0;
         /**
           * The description of the input, which is displayed below the input field.
          */
@@ -3843,12 +3802,12 @@ declare namespace LocalJSX {
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
          */
-        "debounce"?: number;
+        "debounce"?: 0;
         /**
           * Number of allowed decimal places. `0` means integers only.
           * @default 0
          */
-        "decimal"?: number;
+        "decimal"?: 0;
         /**
           * The description displayed below the field.
          */
@@ -3991,7 +3950,7 @@ declare namespace LocalJSX {
           * Label of the radio item.
           * @default ''
          */
-        "label"?: string;
+        "label"?: "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -4151,24 +4110,9 @@ declare namespace LocalJSX {
         "allowEmptySelection"?: boolean;
         /**
           * Defines the color of the input. The default value is `primary`.
-          * @default 'primary'
+          * @default ''
          */
-        "color"?: DS.InputColor;
-        /**
-          * Defines the column size like the grid.
-          * @default 1
-         */
-        "cols"?: DS.SegmentGroupColumns;
-        /**
-          * Defines the column size for mobile and bigger like the grid.
-          * @default 1
-         */
-        "colsMobile"?: DS.SegmentGroupColumns;
-        /**
-          * Defines the column size for tablet and bigger like the grid.
-          * @default 1
-         */
-        "colsTablet"?: DS.SegmentGroupColumns;
+        "color"?: DS.SegmentColor;
         /**
           * The description of the input, which is displayed below the input field.
          */
@@ -4193,11 +4137,6 @@ declare namespace LocalJSX {
           * The label of the input, which is displayed above the input field.
          */
         "label"?: string;
-        /**
-          * Defines the position of the label, either before or after the segment item input. Default is after.
-          * @default 'right'
-         */
-        "labelPosition"?: DS.SegmentItemLabelPosition;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -4230,15 +4169,6 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Defines the layout of the input
-          * @default false
-         */
-        "tile"?: boolean;
-        /**
-          * Defines the color of the tile segment item.
-         */
-        "tileColor"?: DS.SegmentItemTileColor;
-        /**
           * The value of the segment group.
          */
         "value"?: any | null;
@@ -4247,14 +4177,24 @@ declare namespace LocalJSX {
           * @default false
          */
         "vertical"?: boolean;
+        /**
+          * Displays the segment items vertically on mobile
+          * @default false
+         */
+        "verticalOnMobile"?: boolean;
+        /**
+          * Displays the segment items over the full width.
+          * @default false
+         */
+        "wide"?: boolean;
     }
     interface DsSegmentItem {
         /**
-          * @default false
+          * @default ''
          */
-        "checked"?: boolean;
+        "description"?: "";
         /**
-          * @default false
+          * If `true`, the user cannot interact with the element.
          */
         "disabled"?: boolean;
         /**
@@ -4262,25 +4202,18 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * @default false
+          * @default ''
          */
-        "invalid"?: boolean;
+        "icon"?: "";
         /**
-          * @default this.inputId
+          * @default ''
+         */
+        "label"?: "";
+        /**
+          * The name of the element, used when submitting an HTML form.
          */
         "name"?: string;
-        /**
-          * Emitted when the value property has changed.
-         */
-        "onDsChange"?: (event: DsSegmentItemCustomEvent<DS.SegmentItemChangeDetail>) => void;
-        /**
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * @default false
-         */
-        "required"?: boolean;
+        "onDsWillUpdate"?: (event: DsSegmentItemCustomEvent<void>) => void;
         /**
           * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
          */
@@ -4574,7 +4507,7 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized.
           * @default 'off'
          */
-        "autocapitalize"?: string;
+        "autocapitalize"?: "off";
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -4598,7 +4531,7 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
           * @default 0
          */
-        "debounce"?: number;
+        "debounce"?: 0;
         /**
           * The description displayed below the textarea field.
          */
@@ -4814,7 +4747,7 @@ declare namespace LocalJSX {
           * Label of the radio item.
           * @default ''
          */
-        "label"?: string;
+        "label"?: "";
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
