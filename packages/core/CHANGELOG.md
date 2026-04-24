@@ -1,5 +1,15 @@
 # Changelog
 
+## 19.9.4
+
+### Patch Changes
+
+- **date**: can be used now inside a tabs component. click event should no longer be prevented. ( [#1899](https://github.com/baloise/design-system/pull/1899))
+
+- **accordion**: make version prop visible for the deprecated v1 ( [#1900](https://github.com/baloise/design-system/pull/1900))
+
+- **file-upload**: emits balRejectedFile event for each rejected file. ( [#1898](https://github.com/baloise/design-system/pull/1898))
+
 ## 19.9.3
 
 ### Patch Changes
