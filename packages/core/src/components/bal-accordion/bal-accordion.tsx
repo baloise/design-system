@@ -94,7 +94,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Prop() card = false
 
   /**
-   * @internal
    * defines the version of the component
    */
   @Prop() version = 2
