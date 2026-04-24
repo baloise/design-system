@@ -29,7 +29,7 @@
                       max-bundle-size="100000000"
                     ></bal-file-upload>
                   </bal-field-control>
-                  <bal-field-message id="bal-file-upload-messages"></bal-field-message>
+                  <bal-field-message></bal-field-message>
                 </bal-field>
               </bal-form-col>
             </bal-form-grid>
@@ -56,7 +56,7 @@
             )
             div.appendChild(text)
             div.setAttribute('class', 'notification is-warning mb-normal')
-            document.getElementById('bal-file-upload-messages').appendChild(div)
+            document.querySelector('bal-field-message').appendChild(div)
           })
 
           clearButton.addEventListener('click', () => {
