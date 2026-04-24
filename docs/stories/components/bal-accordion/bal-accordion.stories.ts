@@ -83,6 +83,7 @@ export const OldVersion = Story({
     openLabel: 'Bearbeiten',
     closeLabel: 'Schliessen',
     closeIcon: 'close',
+    version: '1',
   },
   ...withRender(
     ({ content, ...args }) => `<bal-accordion ${props(args)}>
