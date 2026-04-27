@@ -104,4 +104,51 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML so assistive technologies understand the component's structure and state without JavaScript.
+
+<Markdown>
+  {`
+| Requirement         | How to implement                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Standalone checkbox | Use \`<input type="checkbox">\` wrapped in a \`<label class="checkbox">\`                          |
+| Group label         | Wrap a set of checkboxes in \`<fieldset>\` with a \`<legend>\` as the group label                 |
+| Help text           | Add \`aria-describedby="<id>"\` to each \`<input>\` pointing to the help text element's \`id\`    |
+| Disabled state      | Add \`disabled\` to \`<input>\` and \`class="is-disabled"\` to the wrapping \`<label>\`           |
+| Invalid state       | Add \`aria-invalid="true"\` to \`<input>\` and \`class="is-invalid"\` to the wrapping \`<label>\` |
+| Required state      | Add \`required\` to \`<input>\`                                                                    |
+| Form value          | Add \`name\` and \`value\` attributes to each \`<input>\`                                         |
+`}
+</Markdown>
+
+> **Note:** The standalone invalid examples in style.html omit `aria-invalid="true"` from the `<input>` — this attribute must be present on the input itself, not only on the wrapping label, for screen readers to announce the error state correctly.
+
+### Web component
+
+The `ds-checkbox` and `ds-checkbox-group` elements manage the following automatically:
+
+- **`aria-checked`** — kept in sync with the `checked` state on the host and forwarded to the inner `<input>`
+- **`aria-disabled`** — applied to the host when the `disabled` prop is set; `disabled` is also forwarded to the `<input>`
+- **`aria-invalid`** — applied to both the host and the inner `<input>` when the `invalid` prop is set
+- **`aria-label` / `title`** — inherited from props and forwarded to the inner element so icon-only or visually hidden labels remain accessible
+- **`tabindex`** — forwarded to the inner `<input>` from the `tabindex` prop
+- **Group propagation** — `ds-checkbox-group` with the `control` attribute propagates `disabled`, `readonly`, and `invalid` to all child `ds-checkbox` elements automatically
+- **Form association** — uses `ElementInternals` to submit the comma-joined array of checked values on `<form>` submit and restore them on reset
+
+### References
+
+- [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) — MDN
+- [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) — MDN
+- [`<input type="checkbox">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox) — MDN
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`aria-checked`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked) — MDN
+- [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
+- [`aria-disabled`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — MDN
+- [`aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+
 <Footer />

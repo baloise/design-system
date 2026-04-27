@@ -205,8 +205,20 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+_TODO: run the `add-component-a11y-docs` skill to generate this section._
+
+### Web component
+
+_TODO: run the `add-component-a11y-docs` skill to generate this section._
+
 <Footer />
 ```
+
+After generating the MDX file, immediately invoke the `add-component-a11y-docs` skill to fill in the Accessibility section with content derived from the component's `.tsx`, `.style.html`, and `.a11y.play.ts` files.
 
 ## Naming Conventions
 

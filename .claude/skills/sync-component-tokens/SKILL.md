@@ -12,10 +12,15 @@ description: >
 
 Reads a component's SCSS file, checks every `--ds-*` CSS variable reference
 against the compiled token output, and brings the component and token file
-into sync. Works in both directions:
+into sync.
 
-- **SCSS → JSON:** Hardcoded `vars.local()` defaults that should be tokens → create them in `Base.tokens.json`
-- **JSON → SCSS:** `--ds-*` references in SCSS that don't yet exist in the JSON → create them in `Base.tokens.json`
+**Core rule: a component must NEVER reference a semantic or primitive `--ds-*` token directly.** Every `--ds-color-*`, `--ds-radius-*`, `--ds-text-*`, `--ds-interaction-*`, etc. used in a component's SCSS must be wrapped in a component-specific token (`--ds-<component>-*`). The component token is what the SCSS references; the semantic/primitive token is what the JSON value points to.
+
+Works in three directions:
+
+- **vars.local() with --ds-* defaults:** Each `vars.local(name, var(--ds-*))` must have a matching `--ds-<component>-name` component token in the JSON. Create it if missing.
+- **Hardcoded vars.local() literals:** Values like `0.5rem` should be tokenised as `--ds-<component>-*` tokens. Present candidates to developer.
+- **Direct --ds-* refs in CSS rules:** Any `var(--ds-color-*)`, `var(--ds-text-*)`, etc. used directly in CSS properties (not inside vars.local) must be replaced with a private var `var(--_<component>-*)`, backed by a new `vars.local()` + component token.
 
 ---
 
@@ -41,61 +46,86 @@ Ask the user for the component name if not provided. Derive:
 
 ## Step 2 — Extract CSS Variables from SCSS
 
-Read the component's `*.style.scss` file. Collect **three** sets of variable references:
+Read the component's `*.style.scss` file (and any `*.mixin.scss` it imports). Collect **four** sets of variable references:
 
-### 2a. vars.local() defaults — token-referenced
+### 2a. vars.local() defaults — component-token-referenced ✓
 
 ```scss
-@include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
-//                   ↑ private var name  ↑ this is the --ds-* token to check
+@include vars.local(button-gap, var(--ds-button-gap));
+//                   ↑ private var     ↑ already a component token — just verify it exists in JSON
 ```
 
-Regex pattern: `vars\.local\([^,]+,\s*var\((--ds-[^)]+)\)`
+Regex: `vars\.local\([^,]+,\s*var\((--ds-<component>-[^)]+)\)`
 
-Each match yields a `--ds-*` variable name that must exist in the token JSON.
+Each match yields a `--ds-<component>-*` component token name. Verify it exists in the JSON.
 
-### 2b. vars.local() defaults — hardcoded
+### 2b. vars.local() defaults — direct semantic/primitive reference ✗
+
+```scss
+@include vars.local(segment-item-selected-color-base, var(--ds-color-primary-4));
+//                                                         ↑ WRONG — semantic/primitive used directly
+```
+
+Regex: `vars\.local\(([^,]+),\s*var\((--ds-(?!<component>)[^)]+)\)`
+
+Each match is a violation. The fix is:
+1. Create component token `--ds-<component>-<var-name>` in JSON with the semantic/primitive as its `$value`
+2. Change the `vars.local()` to reference the new component token: `var(--ds-<component>-<var-name>)`
+
+### 2c. vars.local() defaults — hardcoded literals
 
 ```scss
 @include vars.local(button-gap, 0.5rem);
-@include vars.local(button-border-style, solid);
 ```
 
-Regex pattern: `vars\.local\(([^,]+),\s*(?!var\()([^)]+)\)`
+Regex: `vars\.local\(([^,]+),\s*(?!var\()([^)]+)\)`
 
-Each match yields: private var name + a hardcoded literal value.
-These are **candidates** for tokenisation — present them to the developer, do not create tokens for them automatically.
+Each match is a candidate for tokenisation. Present to developer; create `--ds-<component>-<var-name>` token if confirmed.
 
-### 2c. Modifier vars — --ds-\* references
+### 2d. Direct semantic/primitive refs in CSS rules ✗
 
 ```scss
---mod-button-color-text: var(--ds-button-color-primary-base-text);
+font-weight: var(--ds-text-weight-bold);       // WRONG
+outline: ... solid var(--ds-interaction-focus-color-base);  // WRONG
 ```
 
-Regex pattern: `--mod-[^:]+:\s*var\((--ds-[^)]+)\)`
+Regex: `var\((--ds-(?!<component>)[^)]+)\)` — anywhere outside a `vars.local()` call.
 
-Extract all unique `--ds-*` names. Add to the token-referenced set.
+Each match is a violation. The fix:
+1. Create component token in JSON for the semantic/primitive value
+2. Add a `vars.local(<component>-<descriptive-name>, var(--ds-<component>-<descriptive-name>))` to the `vars()` mixin
+3. Replace the direct ref in the CSS rule with the private var: `var(--_<component>-<descriptive-name>)`
 
-### 2d. Direct references
+### 2e. Modifier vars — --mod-* references (informational only)
 
-Any other `var(--ds-<componentname>-*)` usage in the file. Extract the variable name.
+```scss
+--mod-segment-item-selected-background: var(--ds-color-danger-4);
+```
 
-Combine all unique `--ds-*` names from 2a, 2c, and 2d into one **reference set**.
+These are state-override properties. The `--ds-*` values they reference are hardcoded state values (danger, disabled colours); they do **not** need component tokens because they are transient overrides, not base defaults. Flag them as informational but do not require tokenisation.
 
 ---
 
-## Step 3 — Check Which Tokens Exist
+## Step 3 — Classify All Findings
 
-Read `packages/tokens/dist/css/base.tokens.css`. For each `--ds-*` variable in the reference set, grep for a line that **defines** it (starts with `  --ds-`):
+After extracting the four sets, classify every item:
+
+| Finding | Classification | Action |
+|---------|---------------|--------|
+| `vars.local(name, var(--ds-<component>-name))` | ✓ Correct pattern | Verify token exists in JSON |
+| `vars.local(name, var(--ds-color-*))` | ✗ Violation (2b) | Create `--ds-<component>-name` token; update SCSS |
+| `vars.local(name, var(--ds-radius-*))` | ✗ Violation (2b) | Same |
+| `vars.local(name, var(--ds-text-*))` | ✗ Violation (2b) | Same |
+| `vars.local(name, 0.5rem)` | ⚠ Candidate (2c) | Create `--ds-<component>-name` token if confirmed |
+| `var(--ds-color-*)` in CSS rule | ✗ Violation (2d) | Add vars.local + component token + use private var |
+| `var(--ds-text-*)` in CSS rule | ✗ Violation (2d) | Same |
+| `--mod-*: var(--ds-*)` overrides | ℹ Informational | No action required (transient state overrides) |
+
+Check whether component tokens (`--ds-<component>-*`) exist in the compiled CSS:
 
 ```bash
-grep "^  --ds-button-" packages/tokens/dist/css/base.tokens.css
+grep "^  --ds-<component>-" packages/tokens/dist/css/base.tokens.css
 ```
-
-Classify each reference as:
-
-- **✓ Exists** — defined in the compiled CSS
-- **✗ Missing** — not defined anywhere in compiled CSS (needs a JSON entry)
 
 ---
 

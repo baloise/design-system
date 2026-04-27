@@ -1,11 +1,3 @@
-# Design Questions
-
-- Button height reduce to 40px
-- keep line height 1.5
-- stage component that to do?
-
-# Styleguide
-
 # TODO's
 
 | Item                             | Description                                                           | Status |
@@ -23,96 +15,76 @@
 | Brand Icons API                  | Create a task to automate the update                                  | ⬜     |
 | Gap Analyses Material            | Check Components use cases                                            | ⬜     |
 | NPM Updates                      | Check Vurnabilites and Renovate                                       | ⬜     |
-| UI Icons change base color       | Change base color of svg to primary and not black                     | ⬜     |
+| UI Icons change base color       | Change base color of svg to primary and not black                     | ✅     |
 | Anuglar React                    | Add frameworks back after migrating too shadow dom                    | ⬜     |
 | FullWidth,Expanded,Wide          | Stick with one nameing                                                | ⬜     |
 | Check min height of 48px to 40px | Verify if we can reduce the standard height 0f 48px to 40px           | ⬜     |
 
-## components
+## Componentes
 
-### rules
+| Component           | Type   | Shadow | Docs | Tokens | A11y | Visual | Component |
+| ------------------- | ------ | ------ | ---- | ------ | ---- | ------ | --------- |
+| heading             | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| text                | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| label               | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| link                | CSS    | ⛔     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| stack               | Hybrid | ⛔     | ⬜   | ⛔     | ✅   | ✅     | ✅        |
+| divider             | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| tag                 | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| button              | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| notification        | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| unordered-list      | CSS    | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| ordered-list        | CSS    | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| description-list    | CSS    | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| card                | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| accordion           | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| list                | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| list-accordion      | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| icon                | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| spinner             | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| logo                | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| check               | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| switch              | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| close               | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| badge               | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| toast               | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| snackbar            | WC     | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| shape               | WC     | ✅     | ⬜   | ❓     | ✅   | ✅     | ✅        |
+| stage               | WC     | ❓     | ⬜   | ❓     | ✅   | ✅     | ✅        |
+| input               | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| textarea            | Hybrid | ✅     | ⬜   | ✅     | ✅   | ✅     | ✅        |
+| radio               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| checkbox            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| segment             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| app                 | WC     | ✅     | ⬜   | ✅     | ⬜   | ⬜     | ⬜        |
+| number-input        | WC     | ✅     | ⬜   | ✅     | ⬜   | ⬜     | ⬜        |
+| modal               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| pagination          | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| popover             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| tooltip             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| hint                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| tabs                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| progress-bar        | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| steps               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| table               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| carousel            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| date                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| date-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| dropdown            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| file-upload         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| option              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| select (deprecated) | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| sheet               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
-use id's and parts in the shadow dom components
+### Checklist for each component
 
-### atomic components and prio for website
-
-Checklist
-
-1. has shadow dom
-2. style ends with host or/and style
-3. reflect @props if use for theming
-4. use mixins correctly
-5. has variables
-6. has one visual file for the component
-
-| Component          | Recommended Type   | Shadow DOM | Docs | Design Tokens | Testing | Vars |
-| ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| heading            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| text               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| label              | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| link               | CSS-Only           | ⛔         | ✅   | ✅            | ✅      | ✅   |
-| stack              | Hybrid (No Shadow) | ⛔         | ✅   | ⛔            | ✅      | ⛔   |
-| divider            | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| tag                | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| button             | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| notification       | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| unordered-list     | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| ordered-list       | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| description-list   | CSS-Only           | ✅         | ✅   | ✅            | ✅      | ✅   |
-| card               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| accordion          | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| list               | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| list-accordion     | Hybrid             | ✅         | ✅   | ✅            | ✅      | ✅   |
-| ------------------ | ------------------ | ---------- | ---- | ------------- | ------- | ---- |
-| icon               | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| spinner            | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| logo               | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| check              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| switch             | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| close              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| badge              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| toast              | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| snackbar           | Web Component      | ✅         | ✅   | ✅            | ✅      | ✅   |
-| shape              | Web Component      | ✅         | ✅   | ❓            | ✅      | ✅   |
-| stage              | Web Component      | ❓         | ❓   | ❓            | ❓      | ⬜   |
-
-### rest components
-
-| Component           | Recommended Type | Shadow DOM | Docs | Design Tokens |
-| ------------------- | ---------------- | ---------- | ---- | ------------- |
-| input               | Hybrid           | ✅         | ✅   | ✅            |
-| textarea            | Hybrid           | ✅         | ✅   | ✅            |
-| radio               | Hybrid           | ✅         | ✅   | ✅            |
-| checkbox            | Hybrid           | ✅         | ✅   | ✅            |
-| segment             | Hybrid           | ⬜         | ⬜   | ⬜            |
-| modal               | Hybrid           | ⬜         | ⬜   | ⬜            |
-| pagination          | Hybrid           | ⬜         | ⬜   | ⬜            |
-| popover             | Hybrid           | ⬜         | ⬜   | ⬜            |
-| tooltip             | Hybrid           | ⬜         | ⬜   | ⬜            |
-| hint                | Web Component    | ⬜         | ⬜   | ⬜            |
-| tabs                | Hybrid           | ⬜         | ⬜   | ⬜            |
-| progress-bar        | Hybrid           | ⬜         | ⬜   | ⬜            |
-| steps               | Hybrid           | ⬜         | ⬜   | ⬜            |
-| table               | Hybrid           | ⬜         | ⬜   | ⬜            |
-| data                | Hybrid           | ⬜         | ⬜   | ⬜            |
-| ------------------  | ---------------- | ---------- | ---- | ------------- |
-| app                 | Web Component    | ✅         | ✅   | ✅            |
-| number-input        | Web Component    | ✅         | ✅   | ✅            |
-| time-input          | Web Component    | ⬜         | ⬜   | ⬜            |
-| footer              | Web Component    | ⬜         | ⬜   | ⬜            |
-| carousel            | Web Component    | ⬜         | ⬜   | ⬜            |
-| date                | Web Component    | ⬜         | ⬜   | ⬜            |
-| date-input          | Web Component    | ⬜         | ⬜   | ⬜            |
-| dropdown            | Web Component    | ⬜         | ⬜   | ⬜            |
-| file-upload         | Web Component    | ⬜         | ⬜   | ⬜            |
-| option              | Web Component    | ⬜         | ⬜   | ⬜            |
-| select (deprecated) | Web Component    | ⬜         | ⬜   | ⬜            |
-| sheet               | Web Component    | ⬜         | ⬜   | ⬜            |
-
-1. Enable shadow dom
+1. Enable shadow dom or/and provide html+css only solution
 2. Add parts to important elements in the components tree like clickable elements, titles or contents
 3. Rename component from Bal to DS
-4. migrate Scss style to a .host.scss file and add the missing css variables
+4. Migrate Scss style to a .host.scss file and add the missing css variables
 5. Update the visual file like the others with the correct imports and structure with sections and data-testid
 6. Create visual.play file for the component that test all data-test id secctions of the html file
 7. Create a simple a11y.play file to test the component

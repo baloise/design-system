@@ -1401,6 +1401,11 @@ export namespace Components {
          */
         "disabled": boolean | undefined;
         /**
+          * If `true`, the segment only shows icons without labels.
+          * @default false
+         */
+        "iconOnly": boolean;
+        /**
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean | undefined;
@@ -1431,6 +1436,7 @@ export namespace Components {
           * @default true
          */
         "required": boolean;
+        "resizeListener": () => Promise<void>;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the segment group.
@@ -1447,24 +1453,31 @@ export namespace Components {
          */
         "verticalOnMobile": boolean;
         /**
-          * Displays the segment items over the full width.
+          * If `true`, segment items expand to fill the available width equally.
           * @default false
          */
         "wide": boolean;
     }
     interface DsSegmentItem {
         /**
+          * Description text to display in the segment item.
           * @default ''
          */
         "description": "";
         /**
+          * Name of the icon to display in the segment item.
           * @default ''
          */
         "icon": "";
         /**
+          * Label text to display in the segment item.
           * @default ''
          */
         "label": "";
+        /**
+          * Svg content for the icon.
+         */
+        "svg"?: string;
         /**
           * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
          */
@@ -4126,6 +4139,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * If `true`, the segment only shows icons without labels.
+          * @default false
+         */
+        "iconOnly"?: boolean;
+        /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean | undefined;
@@ -4183,13 +4201,14 @@ declare namespace LocalJSX {
          */
         "verticalOnMobile"?: boolean;
         /**
-          * Displays the segment items over the full width.
+          * If `true`, segment items expand to fill the available width equally.
           * @default false
          */
         "wide"?: boolean;
     }
     interface DsSegmentItem {
         /**
+          * Description text to display in the segment item.
           * @default ''
          */
         "description"?: "";
@@ -4202,10 +4221,12 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * Name of the icon to display in the segment item.
           * @default ''
          */
         "icon"?: "";
         /**
+          * Label text to display in the segment item.
           * @default ''
          */
         "label"?: "";
@@ -4214,6 +4235,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         "onDsWillUpdate"?: (event: DsSegmentItemCustomEvent<void>) => void;
+        /**
+          * Svg content for the icon.
+         */
+        "svg"?: string;
         /**
           * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
          */

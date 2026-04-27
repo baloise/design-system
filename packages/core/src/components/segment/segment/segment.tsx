@@ -17,6 +17,7 @@ import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } fr
 import { stopEventBubbling } from '../../../utils/form-control'
 import { isDescendant } from '../../../utils/helpers'
 import { SegmentItemInterface } from '../segment-item.type'
+import { ListenToResize, ResizeInfo } from '../../../utils/resize'
 
 @Component({
   tag: 'ds-segment',
@@ -39,8 +40,14 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() items: SegmentItemInterface[] = []
+  @State() autoVertical = false
 
   @AttachInternals() internals!: ElementInternals
+
+  private resizeObserver?: ResizeObserver
+  // Natural (horizontal) offsetWidth of #group, stored just before going auto-vertical.
+  // Used to decide when there is enough room to go back to horizontal layout.
+  private lastNaturalWidth = 0
 
   /**
    * PUBLIC PROPERTY API
@@ -98,7 +105,7 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   @Prop() readonly required: boolean = true
 
   /**
-   * Displays the segment items over the full width.
+   * If `true`, segment items expand to fill the available width equally.
    */
   @Prop() readonly wide: boolean = false
 
@@ -116,6 +123,11 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
    * If `true`, the segment items can be deselected.
    */
   @Prop() readonly allowEmptySelection: boolean = false
+
+  /**
+   * If `true`, the segment only shows icons without labels.
+   */
+  @Prop() readonly iconOnly: boolean = false
 
   /**
    * The value of the segment group.
@@ -145,10 +157,23 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   connectedCallback() {
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
+    this.resizeObserver = new ResizeObserver(() => {
+      this.updateLayout()
+      this.updatePill()
+    })
+    this.resizeObserver.observe(this.el)
+  }
+
+  disconnectedCallback() {
+    this.resizeObserver?.disconnect()
   }
 
   componentDidLoad() {
     this.handleSlotChange()
+  }
+
+  componentDidRender() {
+    this.updatePill()
   }
 
   /**
@@ -194,6 +219,15 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   }
 
   /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToResize()
+  async resizeListener(): Promise<void> {
+    this.updateLayout()
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -211,8 +245,56 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
           label: item.label,
           value: item.value,
           description: item.description,
+          icon: item.icon,
+          svg: item.svg,
         }
       })
+      this.updateLayout()
+    }
+  }
+
+  private updatePill = () => {
+    const group = this.el.shadowRoot?.querySelector<HTMLDivElement>('#group')
+    const pill = this.el.shadowRoot?.querySelector<HTMLDivElement>('#pill')
+    if (!group || !pill) return
+
+    const selectedLabel = group.querySelector<HTMLLabelElement>('label:has(input:checked)')
+    if (!selectedLabel) {
+      pill.style.display = 'none'
+      return
+    }
+
+    pill.style.display = 'block'
+    pill.style.left = `${selectedLabel.offsetLeft}px`
+    pill.style.top = `${selectedLabel.offsetTop}px`
+    pill.style.width = `${selectedLabel.offsetWidth}px`
+    pill.style.height = `${selectedLabel.offsetHeight}px`
+  }
+
+  // Checks whether items overflow the available host width and switches between
+  // horizontal (default) and vertical layout automatically.
+  // Manual `vertical` and `wide` props always take precedence.
+  private updateLayout = () => {
+    if (this.vertical || this.wide) {
+      if (this.autoVertical) this.autoVertical = false
+      return
+    }
+
+    const group = this.el.shadowRoot?.querySelector<HTMLDivElement>('#group')
+    if (!group) return
+
+    if (this.autoVertical) {
+      // Go back to horizontal once there is enough room again.
+      if (this.el.clientWidth >= this.lastNaturalWidth) {
+        this.autoVertical = false
+      }
+    } else {
+      // Store the natural (horizontal) width before potentially going vertical
+      // so we have a threshold to compare against when the viewport widens.
+      this.lastNaturalWidth = group.offsetWidth
+      if (group.offsetWidth > this.el.clientWidth) {
+        this.autoVertical = true
+      }
     }
   }
 
@@ -266,12 +348,28 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
           'is-wide': this.wide,
           'is-vertical': this.vertical,
           'is-vertical-on-mobile': this.verticalOnMobile,
+          'is-auto-vertical': this.autoVertical,
         }}
         onSlotChange={this.handleSlotChange}
       >
         <div id="group">
+          <div id="pill"></div>
           {this.items.map(item => (
-            <label key={item.value}>
+            <label
+              key={item.value}
+              class={{
+                'is-selected': item.value === this.value,
+              }}
+              aria-checked={item.value === this.value}
+              aria-invalid={this.invalid ? 'true' : null}
+              aria-disabled={this.disabled ? 'true' : null}
+              {...(this.iconOnly
+                ? {
+                    'aria-label': `${item.label}${item.description ? `- ${item.description}` : ''}`,
+                    'title': `${item.label}${item.description ? `- ${item.description}` : ''}`,
+                  }
+                : {})}
+            >
               <input
                 type="radio"
                 name={this.name}
@@ -281,9 +379,16 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
                 checked={item.value === this.value}
                 onClick={ev => this.handleInputClick(ev, item.value)}
                 onChange={() => this.handleInputChange(item.value)}
+                aria-invalid={this.invalid ? 'true' : null}
               />
-              <span class="label">{item.label}</span>
-              <span class="description">{item.description}</span>
+              {item.icon && <ds-icon name={item.icon}></ds-icon>}
+              {item.svg && <ds-icon svg={item.svg}></ds-icon>}
+              {!this.iconOnly && (
+                <span id="content">
+                  <span class="label">{item.label}</span>
+                  {item.description && <span class="description">{item.description}</span>}
+                </span>
+              )}
             </label>
           ))}
         </div>

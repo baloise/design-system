@@ -16,6 +16,7 @@ const STYLE_VARIANTS = [
 const HOST_VARIANTS = [
   'basic',
   'description',
+  'icon',
   'long-content',
   'vertical',
   'disabled',

@@ -16,24 +16,29 @@ $_max-items: 8;
 
 @mixin vars($wrapper: ':host') {
   #{$wrapper} {
-    @include vars.local(segment-radius, var(--ds-radius-base));
-    @include vars.local(segment-background, var(--ds-color-grey-2));
-    @include vars.local(segment-gap, 0.25rem);
-    @include vars.local(segment-padding, 0.25rem);
-    @include vars.local(segment-item-height, 2.5rem);
-    @include vars.local(segment-item-padding-inline, 0.75rem);
-    @include vars.local(segment-item-padding-block, 0.25rem);
-    @include vars.local(segment-item-icon-size, 1rem);
-    @include vars.local(segment-item-icon-gap, 0.375rem);
+    @include vars.local(segment-radius, var(--ds-segment-radius));
+    @include vars.local(segment-background, var(--ds-segment-background));
+    @include vars.local(segment-gap, var(--ds-segment-gap));
+    @include vars.local(segment-padding, var(--ds-segment-padding));
+    @include vars.local(segment-item-height, var(--ds-segment-item-height));
+    @include vars.local(segment-item-padding-inline, var(--ds-segment-item-padding-inline));
+    @include vars.local(segment-item-padding-block, var(--ds-segment-item-padding-block));
+    @include vars.local(segment-item-icon-size, var(--ds-segment-item-icon-size));
+    @include vars.local(segment-item-icon-gap, var(--ds-segment-item-icon-gap));
+    @include vars.local(segment-item-font-weight, var(--ds-segment-item-font-weight));
+    @include vars.local(segment-description-font-size, var(--ds-segment-description-font-size));
+    @include vars.local(segment-description-font-weight, var(--ds-segment-description-font-weight));
+    @include vars.local(segment-focus-color, var(--ds-segment-focus-color));
 
-    @include vars.local(segment-item-unselected-color-base, var(--ds-color-primary-4));
-    @include vars.local(segment-item-unselected-color-hover, var(--ds-color-sky-5));
-    @include vars.local(segment-item-unselected-color-active, var(--ds-color-primary-6));
+    @include vars.local(segment-item-unselected-color-base, var(--ds-segment-item-unselected-color-base));
+    @include vars.local(segment-item-unselected-color-hover, var(--ds-segment-item-unselected-color-hover));
+    @include vars.local(segment-item-unselected-color-active, var(--ds-segment-item-unselected-color-active));
 
-    @include vars.local(segment-item-selected-color-base, var(--ds-color-primary-4));
-    @include vars.local(segment-item-selected-color-hover, var(--ds-color-sky-5));
-    @include vars.local(segment-item-selected-color-active, var(--ds-color-primary-6));
-    @include vars.local(segment-item-selected-background, var(--ds-color-purple-2));
+    @include vars.local(segment-item-selected-color-base, var(--ds-segment-item-selected-color-base));
+    @include vars.local(segment-item-selected-color-hover, var(--ds-segment-item-selected-color-hover));
+    @include vars.local(segment-item-selected-color-active, var(--ds-segment-item-selected-color-active));
+    @include vars.local(segment-item-selected-background, var(--ds-segment-item-selected-background));
+    @include vars.local(segment-divider-color, var(--ds-segment-divider-color));
   }
 }
 
@@ -41,18 +46,23 @@ $_max-items: 8;
   * Basic Component Styles
   * --------------------------------
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  *
+  * $include-pill: true  → CSS-only mode: sliding pill via ::after + @for transforms on the last label
+  * $include-pill: false → web component mode: pill is a JS-driven <div id="pill">
   */
 
-@mixin style($selector: '#container') {
+@mixin style($selector: '#container', $include-pill: true) {
   #{$selector} {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    width: max-content;
     gap: var(--_segment-gap);
     padding: var(--_segment-padding);
     border-radius: var(--_segment-radius);
     background: var(--_segment-background);
 
     label {
-      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -70,13 +80,24 @@ $_max-items: 8;
       border-radius: inherit;
       cursor: pointer;
       user-select: none;
+      font-weight: var(--_segment-item-font-weight);
+
       color: var(--_segment-item-unselected-color-base);
-      font-weight: var(--ds-text-weight-bold);
+      --icon-color: var(--_segment-item-unselected-color-base);
 
       .description {
-        font-size: var(--ds-text-size-sm-device);
-        font-weight: var(--ds-text-weight-regular);
+        font-size: var(--_segment-description-font-size);
+        font-weight: var(--_segment-description-font-weight);
         text-align: center;
+      }
+
+      ds-icon {
+        --icon-mt: 0.25rem;
+        --icon-mb: 0.25rem;
+      }
+
+      #content {
+        display: grid;
       }
 
       // Checkmark icon — always positioned on the left, hidden when unchecked.
@@ -101,16 +122,20 @@ $_max-items: 8;
       @include hover {
         &:not(:has(input:checked)):hover {
           color: var(--_segment-item-unselected-color-hover);
+          --icon-color: var(--_segment-item-unselected-color-hover);
         }
       }
 
       &:not(:has(input:checked)):active {
         color: var(--_segment-item-unselected-color-active);
+        --icon-color: var(--_segment-item-unselected-color-active);
       }
 
       @include hover {
         &:has(input:checked):hover {
           color: var(--_segment-item-selected-color-hover);
+          --icon-color: var(--_segment-item-selected-color-hover);
+
           &::before {
             background-color: var(--_segment-item-selected-color-hover);
           }
@@ -119,6 +144,8 @@ $_max-items: 8;
 
       &:has(input:checked):active {
         color: var(--_segment-item-selected-color-active);
+        --icon-color: var(--_segment-item-selected-color-active);
+
         &::before {
           background-color: var(--_segment-item-selected-color-active);
         }
@@ -128,10 +155,9 @@ $_max-items: 8;
         opacity: 1;
       }
 
-      // The last label hosts the sliding ::after pill and sits below
-      // all other labels so sibling selectors can reach it.
-      &:last-of-type {
-        z-index: 1;
+      &:has(input:checked) {
+        color: var(--_segment-item-selected-color-base);
+        --icon-color: var(--_segment-item-selected-color-base);
       }
 
       input[type='radio'] {
@@ -144,56 +170,76 @@ $_max-items: 8;
         cursor: pointer;
 
         &:focus-visible {
-          outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+          outline: var(--ds-interaction-focus-width, 2px) solid var(--_segment-focus-color);
           outline-offset: 2px;
           border-radius: inherit;
         }
       }
 
-      // Pill hidden by default via display:none — no opacity trick needed.
-      // CSS transitions do NOT fire across display:none ↔ visible changes
-      // (that requires opt-in transition-behavior:allow-discrete), so:
-      //   first selection  → none→block  → no transition → instant appearance
-      //   switching items  → block stays → transform transition fires → slide
-      //   deselecting      → block→none  → no transition → instant disappearance
-      &:last-of-type::after {
+      // Divider line between non-selected items — hidden adjacent to the selection.
+      &:not(:last-of-type)::after {
         content: '';
-        display: none;
         position: absolute;
-        inset: 0;
-        z-index: -1;
-        background-color: var(--_segment-item-selected-background);
-        border-radius: inherit;
-        // transition: transform 0.4s cubic-bezier(0.25, 1.4, 0.5, 0.9);
-        clip-path: inset(0 round var(--_segment-radius));
-        transition:
-          transform 160ms cubic-bezier(0.4, 0, 0.2, 1),
-          clip-path 80ms ease;
+        right: calc(var(--_segment-gap) * -0.5 - 1px);
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        border-radius: 2px;
+        background-color: var(--_segment-divider-color);
+        opacity: 1;
+        transition: opacity 160ms ease;
       }
 
-      &:has(input:checked) {
-        color: var(--_segment-item-selected-color-base);
+      // CSS-only pill: last label hosts the sliding ::after element and sits one
+      // z-level below so sibling selectors targeting it work correctly.
+      @if $include-pill {
+        &:last-of-type {
+          z-index: 1;
+        }
 
-        ~ :last-of-type::after,
+        // Pill hidden by default via display:none — no opacity trick needed.
+        // CSS transitions do NOT fire across display:none ↔ visible changes
+        // (that requires opt-in transition-behavior:allow-discrete), so:
+        //   first selection  → none→block  → no transition → instant appearance
+        //   switching items  → block stays → transform transition fires → slide
+        //   deselecting      → block→none  → no transition → instant disappearance
         &:last-of-type::after {
-          display: block;
+          content: '';
+          display: none;
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          background-color: var(--_segment-item-selected-background);
+          border-radius: inherit;
+          clip-path: inset(0 round var(--_segment-radius));
+          transition:
+            transform 160ms cubic-bezier(0.4, 0, 0.2, 1),
+            clip-path 80ms ease;
         }
-      }
 
-      // Slide the pill left by $i positions when the ($i+1)-th label
-      // from the end is checked.  gap must be the same value used
-      // above so the compiled calc() stays correct.
-      @for $i from 1 through $_max-items {
-        &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
-          transform: translateX(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+        // does not work with :has() alone, needs the extra :last-of-type to target the correct element
+        &:has(input:checked) {
+          ~ :last-of-type::after,
+          &:last-of-type::after {
+            display: block;
+          }
         }
-      }
 
-      // Press effect: clip the pill inward by 2px — pure visual, no geometry change,
-      // so translateX keeps working correctly.
-      &:has(input:checked):active ~ label:last-of-type::after,
-      &:last-of-type:has(input:checked):active::after {
-        clip-path: inset(2px round var(--_segment-radius));
+        // Slide the pill left by $i positions when the ($i+1)-th label
+        // from the end is checked.  gap must be the same value used
+        // above so the compiled calc() stays correct.
+        @for $i from 1 through $_max-items {
+          &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
+            transform: translateX(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+          }
+        }
+
+        // Press effect: clip the pill inward by 2px — pure visual, no geometry change,
+        // so translateX keeps working correctly.
+        &:has(input:checked):active ~ label:last-of-type::after,
+        &:last-of-type:has(input:checked):active::after {
+          clip-path: inset(2px round var(--_segment-radius));
+        }
       }
     }
   }
@@ -206,15 +252,18 @@ $_max-items: 8;
   */
 
 // Shared column-layout rules extracted to avoid repetition in the vertical mixin.
-@mixin _vertical-layout($selector) {
+@mixin _vertical-layout($selector, $include-pill: true) {
   #{$selector} {
-    flex-direction: column;
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+    width: auto;
 
     label {
       // Left-align content when stacked vertically
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.75rem;
       text-align: left;
       // Reserve space on the right for the icon; restore normal left padding.
       padding-inline-start: var(--_segment-item-padding-inline);
@@ -234,38 +283,67 @@ $_max-items: 8;
 
       // Description span — smaller text on a new line below the label
       span + span {
-        font-size: var(--ds-text-size-sm-device);
+        font-size: var(--_segment-description-font-size);
       }
 
-      @for $i from 1 through $_max-items {
-        &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
-          transform: translateY(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+      // Vertical divider: horizontal bar at the bottom of each non-last item.
+      &:not(:last-of-type)::after {
+        right: 0;
+        top: auto;
+        bottom: calc(var(--_segment-gap) * -0.5 - 1px);
+        width: auto;
+        left: 0;
+        height: 2px;
+      }
+
+      @if $include-pill {
+        @for $i from 1 through $_max-items {
+          &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
+            transform: translateY(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+          }
         }
       }
     }
   }
 }
 
-@mixin vertical($selector: '#container', $wrapper: '') {
+@mixin vertical($selector: '#container', $wrapper: '', $include-pill: true) {
   @if $wrapper == ':host' {
-    // Always vertical
-    :host(.is-vertical) {
-      @include _vertical-layout($selector);
+    // Always vertical (explicit prop or auto-detected overflow)
+    :host(.is-vertical),
+    :host(.is-auto-vertical) {
+      @include _vertical-layout($selector, $include-pill);
     }
 
     // Vertical only on mobile (below tablet breakpoint)
     @include mobile() {
       :host(.is-vertical-on-mobile) {
-        @include _vertical-layout($selector);
+        @include _vertical-layout($selector, $include-pill);
       }
     }
   } @else {
     // CSS-only: always vertical
-    @include _vertical-layout('#{$selector}.is-vertical');
+    @include _vertical-layout('#{$selector}.is-vertical', $include-pill);
 
     // CSS-only: vertical on mobile
     @include mobile() {
-      @include _vertical-layout('#{$selector}.is-vertical-on-mobile');
+      @include _vertical-layout('#{$selector}.is-vertical-on-mobile', $include-pill);
+    }
+  }
+}
+
+@mixin wide($selector: '#container', $wrapper: '') {
+  @if $wrapper == ':host' {
+    :host(.is-wide) {
+      #{$selector} {
+        grid-auto-columns: 1fr;
+        width: auto;
+      }
+    }
+  } @else {
+    #{$selector} {
+      grid-auto-columns: 1fr;
+      width: auto;
     }
   }
 }

@@ -1,5 +1,13 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BasicStoryTabs,
+  Footer,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
 import * as SegmentStories from './segment.stories'
 
 <Meta of={SegmentStories} />
@@ -8,7 +16,10 @@ import * as SegmentStories from './segment.stories'
 
 <Banner of={SegmentStories} />
 
-<Lead>**Segment** is a form control that lets users select one option from a compact set of mutually exclusive choices, rendered as a group of radio buttons.</Lead>
+<Lead>
+  **Segment** is a form control that lets users select one option from a compact set of mutually exclusive choices,
+  rendered as a group of radio buttons.
+</Lead>
 
 <BasicStoryTabs tag="segment" htmlStory={SegmentStories.BasicHtml} webComponentStory={SegmentStories.Basic} index={1} />
 
@@ -20,7 +31,13 @@ import * as SegmentStories from './segment.stories'
 
 Add the `vertical` attribute to stack segment items in a column instead of a row.
 
-<BasicStoryTabs tag="segment" htmlStory={SegmentStories.VerticalHtml} webComponentStory={SegmentStories.Vertical} index={1} noGuide />
+<BasicStoryTabs
+  tag="segment"
+  htmlStory={SegmentStories.VerticalHtml}
+  webComponentStory={SegmentStories.Vertical}
+  index={1}
+  noGuide
+/>
 
 {/* ------------------------------------------------------ */}
 
@@ -28,7 +45,13 @@ Add the `vertical` attribute to stack segment items in a column instead of a row
 
 Apply the `disabled` attribute to prevent user interaction with all segment items.
 
-<BasicStoryTabs tag="segment" htmlStory={SegmentStories.DisabledHtml} webComponentStory={SegmentStories.Disabled} index={1} noGuide />
+<BasicStoryTabs
+  tag="segment"
+  htmlStory={SegmentStories.DisabledHtml}
+  webComponentStory={SegmentStories.Disabled}
+  index={1}
+  noGuide
+/>
 
 {/* ------------------------------------------------------ */}
 
@@ -36,7 +59,21 @@ Apply the `disabled` attribute to prevent user interaction with all segment item
 
 Apply the `invalid` attribute along with `invalid-text` to indicate a validation error below the segment group.
 
-<BasicStoryTabs tag="segment" htmlStory={SegmentStories.InvalidHtml} webComponentStory={SegmentStories.Invalid} index={1} noGuide />
+<BasicStoryTabs
+  tag="segment"
+  htmlStory={SegmentStories.InvalidHtml}
+  webComponentStory={SegmentStories.Invalid}
+  index={1}
+  noGuide
+/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Icon}></StoryHeading>
+
+Add the `icon` attribute to display an icon in each segment item and with the `icon-only` attribute to show only the icon without the label.
+
+<Canvas of={SegmentStories.Icon} sourceState={'shown'} />
 
 {/* ------------------------------------------------------ */}
 
@@ -58,7 +95,6 @@ Place `ds-segment` inside a `<form>`. The component submits its selected value w
 
 ## Component API
 
-
 import apiSegment from './segment/api.md?raw'
 
 <Markdown>{apiSegment}</Markdown>
@@ -76,5 +112,50 @@ import api from './api.md?raw'
 import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML so assistive technologies understand the component's structure and state without JavaScript.
+
+<Markdown>
+  {`
+| Requirement     | How to implement                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------ |
+| Group label     | Wrap options in \`<fieldset>\` and provide a \`<legend>\` as the group label               |
+| Radio semantics | Use \`<input type="radio">\` for each option, each wrapped in a \`<label>\`                |
+| Disabled state  | Add the \`disabled\` attribute to each \`<input>\` and \`class="is-disabled"\` to the container |
+| Invalid state   | Add \`aria-invalid="true"\` to each \`<input>\` and \`class="is-danger"\` to the container |
+| Required state  | Add \`required\` to at least one \`<input>\` in the group                                  |
+| Icon-only items | Add \`aria-label\` and \`title\` to the wrapping \`<label>\` when no visible text is present |
+`}
+</Markdown>
+
+> Keyboard navigation between options (arrow keys) is a native browser behavior for radio inputs grouped under the same `name` — no extra scripting needed.
+
+### Web component
+
+The `ds-segment` element manages the following automatically:
+
+- **Group role** — renders a `role="fieldset"` container so screen readers announce the group label
+- **`aria-checked`** — kept in sync with the selected value on each option label
+- **`aria-invalid`** — applied to both labels and inputs when the `invalid` prop is set
+- **`aria-disabled`** — applied to labels when the `disabled` prop is set; `disabled` is also forwarded to every `<input>`
+- **`aria-label` / `title`** — set on icon-only labels when the `icon-only` prop is active so the option remains accessible without visible text
+- **Keyboard navigation** — arrow keys cycle through options; handled natively by the `<input type="radio">` elements rendered in the shadow DOM
+- **Form association** — uses `ElementInternals` to participate in native `<form>` submit and reset without any extra markup
+
+### References
+
+- [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) — MDN
+- [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) — MDN
+- [`<input type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio) — MDN
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`aria-checked`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked) — MDN
+- [`aria-disabled`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — MDN
+- [`aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
 
 <Footer />

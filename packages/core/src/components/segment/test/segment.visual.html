@@ -25,6 +25,7 @@
         >
           <ds-segment-item value="apple" label="Apple"></ds-segment-item>
           <ds-segment-item value="strewberry" label="Strewberry"></ds-segment-item>
+          <ds-segment-item value="pineapple" label="Pineapple"></ds-segment-item>
         </ds-segment>
 
         <button class="button" id="add-button">Add</button>
@@ -54,6 +55,62 @@
             }
           })
         </script>
+      </section>
+
+      <section data-testid="icon">
+        <span>Icon</span>
+        <ds-segment name="icon" value="apple" label="Fruits" description="Choose your favorite fruit" icon-only>
+          <ds-segment-item icon="web" value="apple" label="Apple"></ds-segment-item>
+          <ds-segment-item icon="trash" value="strewberry" label="Strewberry"></ds-segment-item>
+          <ds-segment-item icon="trash" value="pineapple" label="Pineapple"></ds-segment-item>
+        </ds-segment>
+        <ds-segment name="icon" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item icon="web" value="apple" label="Apple"></ds-segment-item>
+          <ds-segment-item icon="trash" value="strewberry" label="Strewberry"></ds-segment-item>
+          <ds-segment-item icon="trash" value="pineapple" label="Pineapple"></ds-segment-item>
+        </ds-segment>
+        <ds-segment name="icon" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="trash"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
+          <ds-segment-item
+            icon="trash"
+            value="pineapple"
+            label="Pineapple"
+            description="A tropical fruit"
+          ></ds-segment-item>
+        </ds-segment>
+        <ds-segment
+          vertical
+          icon-only
+          name="icon"
+          value="apple"
+          label="Fruits"
+          description="Choose your favorite fruit"
+        >
+          <ds-segment-item icon="web" value="apple" label="Apple"></ds-segment-item>
+          <ds-segment-item icon="trash" value="strewberry" label="Strewberry"></ds-segment-item>
+          <ds-segment-item icon="trash" value="pineapple" label="Pineapple"></ds-segment-item>
+        </ds-segment>
+        <ds-segment vertical name="icon" value="apple" label="Fruits" description="Choose your favorite fruit">
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="trash"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
+          <ds-segment-item
+            icon="trash"
+            value="pineapple"
+            label="Pineapple"
+            description="A tropical fruit"
+          ></ds-segment-item>
+        </ds-segment>
       </section>
 
       <section data-testid="long-content">
@@ -109,8 +166,13 @@
           invalid
           invalid-text="Please select a fruit"
         >
-          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
-          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="web"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
         </ds-segment>
       </section>
 
@@ -126,8 +188,13 @@
           invalid-text="Please select a fruit"
           disabled
         >
-          <ds-segment-item value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
-          <ds-segment-item value="strewberry" label="Strewberry" description="A small red fruit"></ds-segment-item>
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="web"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
         </ds-segment>
       </section>
 

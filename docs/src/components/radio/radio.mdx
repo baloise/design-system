@@ -104,4 +104,54 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML so assistive technologies understand the component's structure and state without JavaScript.
+
+<Markdown>
+  {`
+| Requirement     | How to implement                                                                                   |
+| --------------- | -------------------------------------------------------------------------------------------------- |
+| Option grouping | Give all \`<input type="radio">\` elements in a group the same \`name\` attribute                  |
+| Group label     | Wrap a set of radios in \`<fieldset>\` with a \`<legend>\` as the group label                     |
+| Help text       | Add \`aria-describedby="<id>"\` to each \`<input>\` pointing to the help text element's \`id\`    |
+| Disabled state  | Add \`disabled\` to \`<input>\` and \`class="is-disabled"\` to the wrapping \`<label>\`           |
+| Invalid state   | Add \`aria-invalid="true"\` to \`<input>\` and \`class="is-invalid"\` to the wrapping \`<label>\` |
+| Required state  | Add \`required\` to \`<input>\`                                                                    |
+| Form value      | Add \`value\` to each \`<input>\`                                                                  |
+`}
+</Markdown>
+
+> **Note:** The standalone invalid examples in style.html omit `aria-invalid="true"` from the `<input>` — this attribute must be present on the input itself for screen readers to announce the error state correctly. Also ensure all radios in a group share the same `name` attribute; without it, browsers cannot enforce mutual exclusivity and arrow-key navigation will not work.
+
+> Keyboard navigation between radio options (arrow keys) is a native browser behavior for inputs sharing the same `name` — no extra scripting is needed in HTML/CSS-only mode.
+
+### Web component
+
+The `ds-radio` and `ds-radio-group` elements manage the following automatically:
+
+- **`aria-checked`** — kept in sync with the selected state on the host and forwarded to the inner `<input>`
+- **`aria-disabled`** — applied to the host when the `disabled` prop is set; `disabled` is also forwarded to the `<input>`
+- **`aria-invalid`** — applied to both the host and the inner `<input>` when the `invalid` prop is set
+- **`aria-label` / `title`** — inherited from props and forwarded to the inner element
+- **Keyboard navigation** — `ds-radio-group` handles ArrowDown / ArrowRight (next option) and ArrowUp / ArrowLeft (previous option) with wrap-around; Space deselects the current option when `allow-empty-selection` is enabled
+- **Roving tabindex** — only the checked radio (or the first one when none is checked) receives `tabindex="0"`; all others are set to `tabindex="-1"`, matching the ARIA radio group pattern
+- **Group propagation** — `ds-radio-group` propagates `disabled`, `readonly`, and `invalid` to all child `ds-radio` elements automatically
+- **Form association** — uses `ElementInternals` to submit the selected value on `<form>` submit and restore it on reset
+
+### References
+
+- [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) — MDN
+- [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) — MDN
+- [`<input type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio) — MDN
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`aria-checked`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked) — MDN
+- [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
+- [`aria-disabled`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — MDN
+- [`aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+
 <Footer />

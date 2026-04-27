@@ -5,7 +5,7 @@
  *
  *   <fieldset class="field">
  *     <legend class="label">Label</legend>
- *     <div class="segment [is-vertical] [is-vertical-on-mobile] [is-danger] [is-disabled]">
+ *     <div class="segment [is-wide] [is-vertical] [is-vertical-on-mobile] [is-danger] [is-disabled]">
  *       <label>
  *         <input type="radio" name="group" value="a" />
  *         <span>Option A</span>
@@ -20,4 +20,5 @@
 @include segment.vars('.segment');
 @include segment.style('.segment');
 @include segment.vertical('.segment');
+@include segment.wide('.segment');
 @include segment.states('.segment');

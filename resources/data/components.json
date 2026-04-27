@@ -11724,13 +11724,13 @@
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
-        "ds-spinner",
-        "ds-icon"
+        "ds-icon",
+        "ds-spinner"
       ],
       "dependencyGraph": {
         "ds-segment": [
-          "ds-spinner",
-          "ds-icon"
+          "ds-icon",
+          "ds-spinner"
         ]
       },
       "props": [
@@ -11858,6 +11858,35 @@
             },
             {
               "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "iconOnly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "icon-only",
+          "reflectToAttr": false,
+          "docs": "If `true`, the segment only shows icons without labels.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
@@ -12136,6 +12165,35 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "wide",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "wide",
+          "reflectToAttr": false,
+          "docs": "If `true`, segment items expand to fill the available width equally.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -12239,7 +12297,7 @@
           "mutable": false,
           "attr": "description",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "Description text to display in the segment item.",
           "docsTags": [
             {
               "name": "default",
@@ -12268,7 +12326,7 @@
           "mutable": false,
           "attr": "icon",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "Name of the icon to display in the segment item.",
           "docsTags": [
             {
               "name": "default",
@@ -12297,7 +12355,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "Label text to display in the segment item.",
           "docsTags": [
             {
               "name": "default",
@@ -12311,6 +12369,32 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "svg",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "svg",
+          "reflectToAttr": false,
+          "docs": "Svg content for the icon.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false

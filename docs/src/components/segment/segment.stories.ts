@@ -195,6 +195,18 @@ export const Wide = Story({
 })
 Wide.storyName = '🧩 Wide'
 
+export const Icon = Story({
+  ...withRender(
+    () => `
+<ds-segment icon-only name="wide" label="Label" description="Description" value="apple">
+  <ds-segment-item icon="document" value="apple" label="Apple"></ds-segment-item>
+  <ds-segment-item icon="web" value="strawberry" label="Strawberry"></ds-segment-item>
+  <ds-segment-item icon="trash" value="banana" label="Banana"></ds-segment-item>
+</ds-segment>`,
+  ),
+})
+Icon.storyName = '🧩 Icon'
+
 export const Form = Story({
   ...withRender(
     () => `
