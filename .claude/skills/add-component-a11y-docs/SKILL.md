@@ -1,6 +1,6 @@
 ---
 name: add-component-a11y-docs
-description: Use when adding or updating the Accessibility section in a Baloise DS component's MDX doc page — reads the component's .tsx, .style.html, and .a11y.play.ts to generate a two-part section covering HTML/CSS-only requirements and web component internals
+description: Use when adding or updating the Accessibility section in a Baloise DS component's MDX doc page — reads the component's .tsx, .style.html, and .a11y.play.ts to generate a two-part section covering HTML/CSS-only requirements and web component internals; also audits and fixes the style.html for WCAG 2.2 AA compliance
 ---
 
 # Add Component A11y Docs
@@ -15,6 +15,9 @@ digraph a11y {
   "Read .tsx file" [shape=box];
   "style.html exists?" [shape=diamond];
   "Read .style.html" [shape=box];
+  "Audit style.html for WCAG AA" [shape=box];
+  "Gaps found?" [shape=diamond];
+  "Propose + apply HTML fixes" [shape=box];
   "Read .a11y.play.ts" [shape=box];
   "Analyse accessibility coverage" [shape=box];
   "Draft two-part section" [shape=box];
@@ -25,7 +28,11 @@ digraph a11y {
   "Read .tsx file" -> "style.html exists?";
   "style.html exists?" -> "Read .style.html" [label="yes"];
   "style.html exists?" -> "Read .a11y.play.ts" [label="no"];
-  "Read .style.html" -> "Read .a11y.play.ts";
+  "Read .style.html" -> "Audit style.html for WCAG AA";
+  "Audit style.html for WCAG AA" -> "Gaps found?";
+  "Gaps found?" -> "Propose + apply HTML fixes" [label="yes"];
+  "Gaps found?" -> "Read .a11y.play.ts" [label="no"];
+  "Propose + apply HTML fixes" -> "Read .a11y.play.ts";
   "Read .a11y.play.ts" -> "Analyse accessibility coverage";
   "Analyse accessibility coverage" -> "Draft two-part section";
   "Draft two-part section" -> "Present draft for approval";
@@ -47,6 +54,7 @@ Derive `<component>` from the file the user references or the current working co
 Read all files that exist. Extract:
 
 **From `.tsx`:**
+
 - Every `aria-*` attribute set in `render()` — note which are static vs. dynamic
 - Every `role` attribute set on host or inner elements
 - Props that are propagated to child elements (e.g. `disabled` → all inputs)
@@ -55,27 +63,64 @@ Read all files that exist. Extract:
 - Any state-driven ARIA (e.g. `aria-expanded`, `aria-selected`, `aria-checked`)
 
 **From `.style.html`:**
+
 - Semantic HTML elements used (`<fieldset>`, `<legend>`, `<input>`, `<button>`, etc.)
 - ARIA attributes present in the HTML examples
 - Attributes that are absent in style.html but should be set for full accessibility (gaps)
 - How disabled / invalid / required states are expressed
 
 **From `.a11y.play.ts`:**
+
 - Which test scenarios are covered (states/variants that are axe-tested)
 
-## Step 3 — Analyse coverage
+## Step 3 — Audit and fix style.html for WCAG 2.2 AA
+
+After reading `.style.html`, check every HTML snippet in the file against WCAG 2.2 AA success criteria. Focus on the following failure patterns:
+
+| Check                                     | What to look for                                                                                                     |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Missing label**                         | `<input>`, `<select>`, `<textarea>`, `<button>` without an associated `<label>`, `aria-label`, or `aria-labelledby`  |
+| **Missing group label**                   | `<fieldset>` without a `<legend>`, or a group of related controls without `role="group"` + `aria-labelledby`         |
+| **Missing role**                          | Interactive or landmark elements that rely solely on visual styling without a semantic role                          |
+| **Missing `aria-required`**               | Required fields without `required` or `aria-required="true"`                                                         |
+| **Missing `aria-invalid`**                | Invalid-state examples without `aria-invalid="true"`                                                                 |
+| **Missing `aria-disabled`**               | Disabled-state examples that only use a CSS class without the `disabled` attribute or `aria-disabled="true"`         |
+| **Missing `aria-describedby`**            | Error messages or descriptions not linked to their control                                                           |
+| **Missing `alt` / `aria-label` on icons** | `<svg>` or `<img>` used as meaningful content without text alternative; decorative ones missing `aria-hidden="true"` |
+| **Non-descriptive link/button text**      | "Click here", "More", etc. without `aria-label` to provide context                                                   |
+| **Missing `lang`**                        | Top-level `<html>` in standalone HTML files without a `lang` attribute                                               |
+
+**For each gap found:**
+
+1. Describe the issue and the WCAG success criterion it violates (e.g. _1.3.1 Info and Relationships_, _4.1.2 Name, Role, Value_).
+2. Show the before/after diff inline as a code block.
+3. Apply the fix directly to the file using the edit tool — do not ask permission for individual attribute additions.
+4. If a fix requires more than adding an attribute (e.g. restructuring markup), show the proposed change to the user first and wait for approval before editing.
+
+After all fixes are applied, summarize the changes made:
+
+```
+Fixed N accessibility issues in <component>.style.html:
+- Added aria-label to icon-only buttons in the "Icon only" section
+- Added aria-required="true" to required input in the "Required" section
+- ...
+```
+
+If no gaps are found, state that briefly and continue to Step 4.
+
+## Step 4 — Analyse coverage
 
 Classify every accessibility feature into one of three buckets:
 
-| Bucket | Meaning |
-|--------|---------|
-| **WC — internal** | The web component sets it automatically; consumer does nothing |
-| **HTML — required** | Developer must apply it manually in HTML/CSS-only mode |
-| **HTML — gap** | Missing from the style.html examples but still needed for WCAG compliance |
+| Bucket              | Meaning                                                                   |
+| ------------------- | ------------------------------------------------------------------------- |
+| **WC — internal**   | The web component sets it automatically; consumer does nothing            |
+| **HTML — required** | Developer must apply it manually in HTML/CSS-only mode                    |
+| **HTML — gap**      | Missing from the style.html examples but still needed for WCAG compliance |
 
 Gaps must be called out explicitly in the HTML section as things the developer **must add** even though the style.html example does not show them.
 
-## Step 4 — Draft the section
+## Step 5 — Draft the section
 
 Use this exact template. Adapt headings and bullet content to the component:
 
@@ -135,14 +180,14 @@ Adapt the tables and bullet lists to match what the component actually does. Rem
 3. The WC bullet list must cover every `aria-*` / `role` attribute the component sets, plus keyboard handling and form participation if present.
 4. Keep prose minimal — prefer the table and bullet list over paragraphs.
 5. Do not duplicate information that already lives in the Component API section (props, events).
-6. **Markdown tables must be wrapped in `<Markdown>{``}</Markdown>`** — raw MDX cannot render markdown tables directly. Escape backticks inside the template literal as `\``. The `Markdown` component is already imported via `import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'` at the top of every MDX file; verify it is present before writing. Use American spelling (e.g. "behavior", not "behaviour") to avoid cSpell warnings.
+6. **Markdown tables must be wrapped in `<Markdown>{``}</Markdown>`** — raw MDX cannot render markdown tables directly. Escape backticks inside the template literal as `\``. The `Markdown`component is already imported via`import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'` at the top of every MDX file; verify it is present before writing. Use American spelling (e.g. "behavior", not "behaviour") to avoid cSpell warnings.
 7. **Always add a `### References` subsection** after the Web component section listing MDN links for every HTML element, ARIA attribute, and Web API mentioned in the section. Use these canonical MDN URL patterns:
    - HTML elements: `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<element>` (e.g. `/Element/fieldset`, `/Element/input/radio`)
    - ARIA attributes: `https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/<attribute>`
    - Web APIs: `https://developer.mozilla.org/en-US/docs/Web/API/<Interface>`
-   Format each entry as: `- [\`<name>\`](<url>) — MDN`
+     Format each entry as: `- [\`<name>\`](<url>) — MDN`
 
-## Step 5 — Present for approval
+## Step 6 — Present for approval
 
 Show the full draft section to the user and ask for confirmation before writing.
 
@@ -156,7 +201,7 @@ Here is the proposed ## Accessibility section for ds-<component>:
 Shall I add this to docs/src/components/<component>/<component>.mdx?
 ```
 
-## Step 6 — Patch the MDX file
+## Step 7 — Patch the MDX file
 
 After approval, insert the section into the MDX file. Find the pattern:
 

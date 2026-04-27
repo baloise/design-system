@@ -15,25 +15,30 @@
       <section data-testid="basic">
         <span>Basic</span>
         <div class="field">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-basic-1">Label</label>
           <div class="control">
-            <textarea class="textarea"></textarea>
+            <textarea id="textarea-basic-1" class="textarea" aria-describedby="help-basic-1"></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-basic-1" class="help">Description</p>
         </div>
         <div class="field">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-basic-2">Label</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Placeholder"></textarea>
+            <textarea
+              id="textarea-basic-2"
+              class="textarea"
+              placeholder="Placeholder"
+              aria-describedby="help-basic-2"
+            ></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-basic-2" class="help">Description</p>
         </div>
         <div class="field">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-basic-3">Label</label>
           <div class="control">
-            <textarea class="textarea">Value</textarea>
+            <textarea id="textarea-basic-3" class="textarea" aria-describedby="help-basic-3">Value</textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-basic-3" class="help">Description</p>
         </div>
       </section>
 
@@ -41,25 +46,33 @@
       <section data-testid="disabled">
         <span>Disabled</span>
         <div class="field is-disabled">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-disabled-1">Label</label>
           <div class="control">
-            <textarea class="textarea" disabled></textarea>
+            <textarea id="textarea-disabled-1" class="textarea" disabled aria-describedby="help-disabled-1"></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-disabled-1" class="help">Description</p>
         </div>
         <div class="field is-disabled">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-disabled-2">Label</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Placeholder" disabled></textarea>
+            <textarea
+              id="textarea-disabled-2"
+              class="textarea"
+              placeholder="Placeholder"
+              disabled
+              aria-describedby="help-disabled-2"
+            ></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-disabled-2" class="help">Description</p>
         </div>
         <div class="field is-disabled">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-disabled-3">Label</label>
           <div class="control">
-            <textarea class="textarea" disabled>Value</textarea>
+            <textarea id="textarea-disabled-3" class="textarea" disabled aria-describedby="help-disabled-3">
+Value</textarea
+            >
           </div>
-          <p class="help">Description</p>
+          <p id="help-disabled-3" class="help">Description</p>
         </div>
       </section>
 
@@ -67,25 +80,38 @@
       <section data-testid="invalid">
         <span>Invalid</span>
         <div class="field is-danger">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-invalid-1">Label</label>
           <div class="control">
-            <textarea class="textarea"></textarea>
+            <textarea
+              id="textarea-invalid-1"
+              class="textarea"
+              aria-invalid="true"
+              aria-describedby="help-invalid-1"
+            ></textarea>
           </div>
-          <p class="help">Validation Error</p>
+          <p id="help-invalid-1" class="help">Validation Error</p>
         </div>
         <div class="field is-danger">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-invalid-2">Label</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Placeholder"></textarea>
+            <textarea
+              id="textarea-invalid-2"
+              class="textarea"
+              placeholder="Placeholder"
+              aria-invalid="true"
+              aria-describedby="help-invalid-2"
+            ></textarea>
           </div>
-          <p class="help">Validation Error</p>
+          <p id="help-invalid-2" class="help">Validation Error</p>
         </div>
         <div class="field is-danger">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-invalid-3">Label</label>
           <div class="control">
-            <textarea class="textarea">Value</textarea>
+            <textarea id="textarea-invalid-3" class="textarea" aria-invalid="true" aria-describedby="help-invalid-3">
+Value</textarea
+            >
           </div>
-          <p class="help">Validation Error</p>
+          <p id="help-invalid-3" class="help">Validation Error</p>
         </div>
       </section>
 
@@ -93,11 +119,11 @@
       <section data-testid="valid">
         <span>Valid</span>
         <div class="field is-success">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-valid-1">Label</label>
           <div class="control">
-            <textarea class="textarea"></textarea>
+            <textarea id="textarea-valid-1" class="textarea" aria-describedby="help-valid-1"></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-valid-1" class="help">Description</p>
         </div>
       </section>
 
@@ -105,11 +131,11 @@
       <section data-testid="warning">
         <span>Warning</span>
         <div class="field is-warning">
-          <label class="label">Label</label>
+          <label class="label" for="textarea-warning-1">Label</label>
           <div class="control">
-            <textarea class="textarea"></textarea>
+            <textarea id="textarea-warning-1" class="textarea" aria-describedby="help-warning-1"></textarea>
           </div>
-          <p class="help">Description</p>
+          <p id="help-warning-1" class="help">Description</p>
         </div>
       </section>
     </main>

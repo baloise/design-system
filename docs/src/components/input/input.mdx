@@ -86,4 +86,53 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Inputs are **form control elements** for user text entry. Always provide a visible label and optional helper text. Link inputs to labels and descriptions using standard HTML attributes.
+
+<Markdown>
+  {`
+| Requirement            | How to implement                                                                                       |
+| ---------------------- | ------------------------------------ |
+| Label association      | Wrap \`<input>\` in \`<label for="input-id">\` or use \`<label><input></label>\` for proper linking |
+| Input ID               | Set a unique \`id\` on each \`<input>\` so labels and descriptions can reference it                  |
+| Description text       | Link helper/error text via \`aria-describedby="help-id"\` on the input element                        |
+| Required state         | Set \`required\` attribute on the input; label should show required indicator (text or symbol)         |
+| Invalid state          | Set \`aria-invalid="true"\` on input when there are validation errors                                 |
+| Disabled state         | Set \`disabled\` attribute on input; visually distinct styling via CSS                                |
+| Readonly state         | Set \`readonly\` attribute when input should not be edited but is still submitted                      |
+| Type attribute         | Use correct \`type\` (email, tel, number, url, password, etc.) for mobile keyboard hints and validation |
+| Placeholder not label  | Use \`placeholder\` only for hints; never rely on it as the primary label                             |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-input` element manages the following automatically:
+
+- **Label linking** — the Field component renders a `<label>` with `htmlFor` pointing to the input's ID
+- **`aria-describedby`** — automatically set on the native `<input>` to link to the description element ID
+- **`aria-invalid`** — set to `"true"` when `invalid` prop is true; `"false"` otherwise
+- **`aria-required`** — accessible via the `required` prop forwarded to the native input
+- **`disabled` attribute** — forwarded from the component prop to the native input
+- **`readonly` attribute** — forwarded from the component prop to the native input
+- **Form association** — uses `ElementInternals` to participate in native `<form>` submit/reset/validity without wrapper elements
+- **Type variants** — `type` prop controls keyboard hints and built-in validation (email, number, tel, url, etc.)
+- **Input masking** — optional `mask` prop applies formatting (IBAN, contract numbers, etc.) without affecting accessibility
+- **Dynamic feedback** — `invalidText` prop displays error messages linked via the description element
+
+### References
+
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) — MDN
+- [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
+- [`aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — MDN
+- [`readonly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) — MDN
+- [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+- [WCAG 2.1 — Labels or Instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
+
 <Footer />

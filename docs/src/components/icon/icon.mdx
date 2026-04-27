@@ -236,4 +236,41 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Icons are **purely decorative** by default. If an icon conveys meaning (e.g., in a button or link), add an `aria-label` to its parent control, not the icon itself.
+
+<Markdown>
+  {`
+| Requirement        | How to implement                                                                               |
+| ------------------ | ------------------------------------ |
+| Decorative icons   | Icons in buttons/links are automatically hidden from screen readers via \`aria-hidden="true"\` |
+| Icon in button     | Add \`aria-label\` to the \`<button>\` or \`<ds-button>\`, not the icon                       |
+| Icon with text     | If icon has adjacent text label, the text is sufficient; icon remains \`aria-hidden\`         |
+| Meaningful icon    | In rare cases where icon alone conveys meaning, add \`role="img"\` and \`aria-label\` to icon |
+| Color alone        | Do not use color alone to convey meaning; pair with text or icon semantics                   |
+`}
+</Markdown>
+
+> **Note:** By default, `ds-icon` sets `aria-hidden="true"` on the host element. This is correct for decorative use. If you need an icon to be announced, wrap it in a labeled button or link instead.
+
+### Web component
+
+The `ds-icon` element is a **decorative presentation component**:
+
+- **`aria-hidden="true"`** — automatically set on the host; icons are not announced by screen readers by default
+- **No native interactivity** — icons are non-interactive by default; if clickable, wrap in `<ds-button>` or `<a>` with a label
+- **SVG sanitization** — custom SVG content is sanitized for security; inline SVGs are embedded safely
+- **Color parsing** — the `color` prop affects visual styling only; does not convey meaning to AT
+- **Disabled state** — the `disabled` prop sets the color to grey visually; does not affect interactivity (icon is not interactive by default)
+
+### References
+
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+- [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [WCAG 2.1 — Images of Text](https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html)
+
 <Footer />

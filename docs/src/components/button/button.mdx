@@ -152,4 +152,49 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML `<button>` or `<a>` elements for interactive controls. The button component provides styling and state management; developers must ensure proper labeling for icon-only buttons.
+
+<Markdown>
+  {`
+| Requirement            | How to implement                                                                                   |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| Button semantics       | Use \`<button type="button">\`, \`<button type="submit">\`, or \`<a href="...">\` as appropriate  |
+| Descriptive text       | Always provide visible, descriptive button text; avoid generic labels like "Click here"            |
+| Icon-only buttons      | If no visible text, add \`aria-label\` to the button to describe its action                       |
+| Disabled state         | Use the \`disabled\` attribute on \`<button>\` elements; for links add \`aria-disabled="true"\`   |
+| Loading state          | When showing a loading spinner, add \`aria-busy="true"\` and consider disabling user interaction  |
+| Button type attribute  | Set \`type="submit"\`, \`type="reset"\`, or \`type="button"\` to communicate intent to browsers  |
+| Form association       | Submit and reset buttons must be placed inside \`<form>\` elements; use \`form\` attribute if not |
+| Color not sole cue     | Do not rely on color alone to convey meaning (e.g., danger button); include text or context       |
+`}
+</Markdown>
+
+> **Note:** Icon-only square and circle buttons must include `aria-label` to describe their action. The style.html examples do not currently show this; add it in your implementation.
+
+### Web component
+
+The `ds-button` element manages the following automatically:
+
+- **`aria-disabled`** — kept in sync with the `disabled` prop; set to "true" when button is disabled or loading
+- **`type` attribute** — forwarded from the `elementType` prop to the native `<button>` or `<a>` element
+- **Form association** — uses `ElementInternals` to participate in native `<form>` submit and reset without extra markup
+- **Event handling** — `click`, `focus`, and `blur` events are captured and emitted as `dsClick`, `dsFocus`, `dsBlur` for consumer handling
+- **ARIA attributes** — `aria-label`, `aria-controls`, `aria-haspopup`, and `title` are inherited from the element or set via props (`a11yLabel`, `a11yControls`, etc.)
+- **Keyboard navigation** — native; buttons are automatically focusable and activatable via Space/Enter keys
+- **Loading state** — when `loading` is true, the button is disabled and displays a spinner
+
+### References
+
+- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) — MDN
+- [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`aria-disabled`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — MDN
+- [`aria-controls`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+- [WCAG 2.1 — Button Purpose](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+
 <Footer />

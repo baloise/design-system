@@ -76,8 +76,48 @@ export class AppComponent {
   <Markdown>{integration}</Markdown>
 </NotAngularFramework>
 
+## Accessibility
 
+### HTML / CSS only
 
+Toasts are **assertive live region notifications** meant to be dynamically injected. They inform users of important events and auto-dismiss after a timeout. Always include descriptive text and an optional close button.
 
+<Markdown>
+  {`
+| Requirement          | How to implement                                                                           |
+| -------------------- | ------------------------------------ |
+| Notification text    | Provide a \`heading\` and \`message\` prop or slot content so users understand the alert    |
+| Auto-dismiss         | Use the \`duration\` prop (in ms) to auto-close; respects user pause-on-hover              |
+| Close button         | Set \`closable={true}\` to allow manual dismissal; omit for info-only notifications        |
+| Icon semantics       | Icon is decorative; color communicates severity (danger, warning, success, info, base)     |
+| Action button        | Use the \`action\` and \`actionHref\` props for optional action; icon can be customized    |
+| Mouse pause          | Users can pause auto-dismiss by hovering; animation pauses visually                        |
+`}
+</Markdown>
+
+> **Note:** Toasts use `role="alert"` and `aria-live="assertive"`, making them interrupt users immediately.
+> Reserve assertive toasts for urgent alerts; use snackbar for polite notifications instead.
+> Do not create toasts without text content — text is the primary notification method.
+
+### Web component
+
+The `ds-toast` element is an **assertive live region notification**:
+
+- **`role="alert"`** — automatically set; interrupts screen reader with high priority
+- **`aria-live="assertive"`** — announces content immediately; no delay
+- **`aria-atomic="true"`** — entire toast content is announced as one unit
+- **Auto-announce on insertion** — when toast is added to DOM, content is announced without user action
+- **Heading as `<h2>`** — if a `heading` prop is provided, it renders as an `<h2>` for document structure
+- **Icon** — automatically derived from `color` prop (info → bell, success → check, warning/danger → alert); custom icons via `icon` prop
+- **Pause on hover** — mouse enter/leave events emit `dsDidPause`/`dsDidResume` for animation control; auto-dismiss respects pause state
+- **Close button** — when `closable={true}`, renders a `ds-close` button with automatic `aria-label`
+- **Action button** — optional `ds-button` triggered via `dsActionClick` event; does not auto-dismiss
+
+### References
+
+- [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+- [WCAG 2.1 — Status Messages](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
 
 <Footer />

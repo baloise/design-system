@@ -16,27 +16,27 @@
       <section data-testid="basic">
         <span>Basic</span>
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label" for="input-basic-1">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-basic-1" class="input" aria-describedby="help-basic-1" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-basic-1" class="help">This username is available</p>
         </div>
 
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label" for="input-basic-2">Name</label>
           <div class="control">
-            <input class="input" placeholder="Placeholder" />
+            <input id="input-basic-2" class="input" placeholder="Placeholder" aria-describedby="help-basic-2" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-basic-2" class="help">This username is available</p>
         </div>
 
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label" for="input-basic-3">Name</label>
           <div class="control">
-            <input class="input" value="Value" />
+            <input id="input-basic-3" class="input" value="Value" aria-describedby="help-basic-3" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-basic-3" class="help">This username is available</p>
         </div>
       </section>
 
@@ -44,27 +44,33 @@
       <section data-testid="disabled">
         <span>Disabled</span>
         <div class="field is-disabled">
-          <label class="label">Name</label>
+          <label class="label" for="input-disabled-1">Name</label>
           <div class="control">
-            <input class="input" disabled />
+            <input id="input-disabled-1" class="input" disabled aria-describedby="help-disabled-1" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-disabled-1" class="help">This username is available</p>
         </div>
 
         <div class="field is-disabled">
-          <label class="label">Name</label>
+          <label class="label" for="input-disabled-2">Name</label>
           <div class="control">
-            <input class="input" placeholder="Placeholder" disabled />
+            <input
+              id="input-disabled-2"
+              class="input"
+              placeholder="Placeholder"
+              disabled
+              aria-describedby="help-disabled-2"
+            />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-disabled-2" class="help">This username is available</p>
         </div>
 
         <div class="field is-disabled">
-          <label class="label">Name</label>
+          <label class="label" for="input-disabled-3">Name</label>
           <div class="control">
-            <input class="input" value="Value" disabled />
+            <input id="input-disabled-3" class="input" value="Value" disabled aria-describedby="help-disabled-3" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-disabled-3" class="help">This username is available</p>
         </div>
       </section>
 
@@ -72,27 +78,39 @@
       <section data-testid="invalid">
         <span>Invalid</span>
         <div class="field is-danger">
-          <label class="label">Name</label>
+          <label class="label" for="input-invalid-1">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-invalid-1" class="input" aria-invalid="true" aria-describedby="help-invalid-1" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-invalid-1" class="help">This username is available</p>
         </div>
 
         <div class="field is-danger">
-          <label class="label">Name</label>
+          <label class="label" for="input-invalid-2">Name</label>
           <div class="control">
-            <input class="input" placeholder="Placeholder" />
+            <input
+              id="input-invalid-2"
+              class="input"
+              placeholder="Placeholder"
+              aria-invalid="true"
+              aria-describedby="help-invalid-2"
+            />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-invalid-2" class="help">This username is available</p>
         </div>
 
         <div class="field is-danger">
-          <label class="label">Name</label>
+          <label class="label" for="input-invalid-3">Name</label>
           <div class="control">
-            <input class="input" value="Value" />
+            <input
+              id="input-invalid-3"
+              class="input"
+              value="Value"
+              aria-invalid="true"
+              aria-describedby="help-invalid-3"
+            />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-invalid-3" class="help">This username is available</p>
         </div>
       </section>
 
@@ -100,27 +118,27 @@
       <section data-testid="valid">
         <span>Valid</span>
         <div class="field is-success">
-          <label class="label">Name</label>
+          <label class="label" for="input-valid-1">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-valid-1" class="input" aria-describedby="help-valid-1" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-valid-1" class="help">This username is available</p>
         </div>
 
         <div class="field is-success">
-          <label class="label">Name</label>
+          <label class="label" for="input-valid-2">Name</label>
           <div class="control">
-            <input class="input" placeholder="Placeholder" />
+            <input id="input-valid-2" class="input" placeholder="Placeholder" aria-describedby="help-valid-2" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-valid-2" class="help">This username is available</p>
         </div>
 
         <div class="field is-success">
-          <label class="label">Name</label>
+          <label class="label" for="input-valid-3">Name</label>
           <div class="control">
-            <input class="input" value="Value" />
+            <input id="input-valid-3" class="input" value="Value" aria-describedby="help-valid-3" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-valid-3" class="help">This username is available</p>
         </div>
       </section>
 
@@ -128,27 +146,27 @@
       <section data-testid="warning">
         <span>Warning</span>
         <div class="field is-warning">
-          <label class="label">Name</label>
+          <label class="label" for="input-warning-1">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-warning-1" class="input" aria-describedby="help-warning-1" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-warning-1" class="help">This username is available</p>
         </div>
 
         <div class="field is-warning">
-          <label class="label">Name</label>
+          <label class="label" for="input-warning-2">Name</label>
           <div class="control">
-            <input class="input" placeholder="Placeholder" />
+            <input id="input-warning-2" class="input" placeholder="Placeholder" aria-describedby="help-warning-2" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-warning-2" class="help">This username is available</p>
         </div>
 
         <div class="field is-warning">
-          <label class="label">Name</label>
+          <label class="label" for="input-warning-3">Name</label>
           <div class="control">
-            <input class="input" value="Value" />
+            <input id="input-warning-3" class="input" value="Value" aria-describedby="help-warning-3" />
           </div>
-          <p class="help">This username is available</p>
+          <p id="help-warning-3" class="help">This username is available</p>
         </div>
       </section>
 
@@ -157,43 +175,48 @@
         <span>Loading</span>
 
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label" for="input-loading-1">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-loading-1" class="input" aria-describedby="help-loading-1" />
             <ds-spinner size="sm" variation="circle"></ds-spinner>
           </div>
+          <p id="help-loading-1" class="help">This username is available</p>
         </div>
 
         <div class="field is-disabled">
-          <label class="label">Name</label>
+          <label class="label" for="input-loading-2">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-loading-2" class="input" disabled aria-describedby="help-loading-2" />
             <ds-spinner size="sm" variation="circle"></ds-spinner>
           </div>
+          <p id="help-loading-2" class="help">This username is available</p>
         </div>
 
         <div class="field is-danger">
-          <label class="label">Name</label>
+          <label class="label" for="input-loading-3">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-loading-3" class="input" aria-invalid="true" aria-describedby="help-loading-3" />
             <ds-spinner size="sm" variation="circle"></ds-spinner>
           </div>
+          <p id="help-loading-3" class="help">This username is available</p>
         </div>
 
         <div class="field is-warning">
-          <label class="label">Name</label>
+          <label class="label" for="input-loading-4">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-loading-4" class="input" aria-describedby="help-loading-4" />
             <ds-spinner size="sm" variation="circle"></ds-spinner>
           </div>
+          <p id="help-loading-4" class="help">This username is available</p>
         </div>
 
         <div class="field is-success">
-          <label class="label">Name</label>
+          <label class="label" for="input-loading-5">Name</label>
           <div class="control">
-            <input class="input" />
+            <input id="input-loading-5" class="input" aria-describedby="help-loading-5" />
             <ds-spinner size="sm" variation="circle"></ds-spinner>
           </div>
+          <p id="help-loading-5" class="help">This username is available</p>
         </div>
       </section>
 

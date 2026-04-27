@@ -115,8 +115,36 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
 
+### HTML / CSS only
 
+The `ds-stack` component is a layout utility that arranges child elements in a row or column. Since it has no interactive elements, accessibility is purely structural—ensure child elements are semantically appropriate.
 
+<Markdown>
+  {`
+| Requirement         | How to implement                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Semantic children   | Use appropriate semantic HTML for child elements (headings, paragraphs, buttons, inputs, etc.)     |
+| Heading hierarchy   | Maintain proper heading hierarchy within stacked content; do not rely on visual size alone        |
+| Link/button semantics | Use \`<a>\` for navigation and \`<button>\` for actions; apply \`ds-stack\` as a layout wrapper   |
+| Color not sole cue  | If stack children use color to convey meaning, also provide text or icons for non-visual users    |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-stack` component is a layout-only presentational wrapper with no interactive elements or ARIA attributes:
+
+- **No roles** — the component is semantically neutral; inherits meaning from child elements
+- **No ARIA state** — layout does not affect accessibility tree; children retain their semantics
+- **No keyboard interaction** — the component provides flexbox spacing only; keyboard focus depends on child elements (buttons, links, inputs)
+- **No form participation** — the component is purely structural and does not participate in forms
+- **Screen reader support** — children are announced in DOM order; assistive technologies announce their semantic roles
+
+### References
+
+- [WCAG 2.1 — Headings and Labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+- [MDN — CSS Flexbox Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)
 
 <Footer />

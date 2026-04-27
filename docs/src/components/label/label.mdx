@@ -82,4 +82,39 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML `<label>` elements to associate text captions with form controls. The `ds-label` component provides styling and optional/required indicators.
+
+<Markdown>
+  {`
+| Requirement            | How to implement                                                                                     |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| Label-control pairing  | Set the \`htmlFor\` prop on \`<ds-label>\` to match the \`id\` of the associated form control        |
+| Required indicator     | Leave \`required\` prop as true (default) to display the required indicator                          |
+| Optional indicator     | Set \`required={false}\` to append the localized "(optional)" suffix to the label text               |
+| Disabled state         | Set the \`disabled\` prop to true; it applies visual styling and disables the label semantically      |
+| Valid/Invalid state    | Set \`valid\` or \`invalid\` prop to reflect form control validation state; these are visual only    |
+| Error message link     | If using separate error text, associate it via the form control's \`aria-describedby\` to the error |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-label` element manages the following automatically:
+
+- **`htmlFor` attribute** — forwarded from the prop to the native `<label>` element so screen readers link the label to the control
+- **`id` attribute** — automatically generated (or taken from `htmlId` prop) so the label can be referenced by form controls via `aria-labelledby`
+- **Required/optional indication** — appends localized suffix text; communicated via screen readers as part of the label content
+- **Semantic `<label>` element** — uses native HTML semantics; no custom ARIA needed for basic label-control association
+- **State styling** — disabled, valid, and invalid props apply only visual styling; no ARIA state attributes needed since the associated form control carries the semantic state
+
+### References
+
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [WCAG 2.1 — Form Labels](https://www.w3.org/WAI/tutorials/forms/labels/)
+- [MDN — HTML form accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+
 <Footer />

@@ -18,9 +18,9 @@ into sync.
 
 Works in three directions:
 
-- **vars.local() with --ds-* defaults:** Each `vars.local(name, var(--ds-*))` must have a matching `--ds-<component>-name` component token in the JSON. Create it if missing.
+- **vars.local() with --ds-\* defaults:** Each `vars.local(name, var(--ds-*))` must have a matching `--ds-<component>-name` component token in the JSON. Create it if missing.
 - **Hardcoded vars.local() literals:** Values like `0.5rem` should be tokenised as `--ds-<component>-*` tokens. Present candidates to developer.
-- **Direct --ds-* refs in CSS rules:** Any `var(--ds-color-*)`, `var(--ds-text-*)`, etc. used directly in CSS properties (not inside vars.local) must be replaced with a private var `var(--_<component>-*)`, backed by a new `vars.local()` + component token.
+- **Direct --ds-\* refs in CSS rules:** Any `var(--ds-color-*)`, `var(--ds-text-*)`, etc. used directly in CSS properties (not inside vars.local) must be replaced with a private var `var(--_<component>-*)`, backed by a new `vars.local()` + component token.
 
 ---
 
@@ -69,6 +69,7 @@ Each match yields a `--ds-<component>-*` component token name. Verify it exists 
 Regex: `vars\.local\(([^,]+),\s*var\((--ds-(?!<component>)[^)]+)\)`
 
 Each match is a violation. The fix is:
+
 1. Create component token `--ds-<component>-<var-name>` in JSON with the semantic/primitive as its `$value`
 2. Change the `vars.local()` to reference the new component token: `var(--ds-<component>-<var-name>)`
 
@@ -85,18 +86,19 @@ Each match is a candidate for tokenisation. Present to developer; create `--ds-<
 ### 2d. Direct semantic/primitive refs in CSS rules ✗
 
 ```scss
-font-weight: var(--ds-text-weight-bold);       // WRONG
-outline: ... solid var(--ds-interaction-focus-color-base);  // WRONG
+font-weight: var(--ds-text-weight-bold); // WRONG
+outline: ... solid var(--ds-interaction-focus-color-base); // WRONG
 ```
 
 Regex: `var\((--ds-(?!<component>)[^)]+)\)` — anywhere outside a `vars.local()` call.
 
 Each match is a violation. The fix:
+
 1. Create component token in JSON for the semantic/primitive value
 2. Add a `vars.local(<component>-<descriptive-name>, var(--ds-<component>-<descriptive-name>))` to the `vars()` mixin
 3. Replace the direct ref in the CSS rule with the private var: `var(--_<component>-<descriptive-name>)`
 
-### 2e. Modifier vars — --mod-* references (informational only)
+### 2e. Modifier vars — --mod-\* references (informational only)
 
 ```scss
 --mod-segment-item-selected-background: var(--ds-color-danger-4);
@@ -110,16 +112,16 @@ These are state-override properties. The `--ds-*` values they reference are hard
 
 After extracting the four sets, classify every item:
 
-| Finding | Classification | Action |
-|---------|---------------|--------|
-| `vars.local(name, var(--ds-<component>-name))` | ✓ Correct pattern | Verify token exists in JSON |
-| `vars.local(name, var(--ds-color-*))` | ✗ Violation (2b) | Create `--ds-<component>-name` token; update SCSS |
-| `vars.local(name, var(--ds-radius-*))` | ✗ Violation (2b) | Same |
-| `vars.local(name, var(--ds-text-*))` | ✗ Violation (2b) | Same |
-| `vars.local(name, 0.5rem)` | ⚠ Candidate (2c) | Create `--ds-<component>-name` token if confirmed |
-| `var(--ds-color-*)` in CSS rule | ✗ Violation (2d) | Add vars.local + component token + use private var |
-| `var(--ds-text-*)` in CSS rule | ✗ Violation (2d) | Same |
-| `--mod-*: var(--ds-*)` overrides | ℹ Informational | No action required (transient state overrides) |
+| Finding                                        | Classification    | Action                                             |
+| ---------------------------------------------- | ----------------- | -------------------------------------------------- |
+| `vars.local(name, var(--ds-<component>-name))` | ✓ Correct pattern | Verify token exists in JSON                        |
+| `vars.local(name, var(--ds-color-*))`          | ✗ Violation (2b)  | Create `--ds-<component>-name` token; update SCSS  |
+| `vars.local(name, var(--ds-radius-*))`         | ✗ Violation (2b)  | Same                                               |
+| `vars.local(name, var(--ds-text-*))`           | ✗ Violation (2b)  | Same                                               |
+| `vars.local(name, 0.5rem)`                     | ⚠ Candidate (2c) | Create `--ds-<component>-name` token if confirmed  |
+| `var(--ds-color-*)` in CSS rule                | ✗ Violation (2d)  | Add vars.local + component token + use private var |
+| `var(--ds-text-*)` in CSS rule                 | ✗ Violation (2d)  | Same                                               |
+| `--mod-*: var(--ds-*)` overrides               | ℹ Informational  | No action required (transient state overrides)     |
 
 Check whether component tokens (`--ds-<component>-*`) exist in the compiled CSS:
 

@@ -350,6 +350,7 @@ export class Button implements ComponentInterface, Loggable {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
+          aria-busy={ariaBooleanToString(!!this.loading)}
           aria-disabled={ariaBooleanToString(this.disabled || this.isLoading)}
           {...ariaAttributes}
         >

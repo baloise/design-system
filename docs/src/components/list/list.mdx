@@ -87,4 +87,47 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic `<ul>` (unordered) or `<ol>` (ordered) lists. Ensure each list item has a descriptive heading or label, and any interactive elements (links, buttons) are properly labeled.
+
+<Markdown>
+  {`
+| Requirement             | How to implement                                                                                    |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| List type semantics     | Use \`<ul>\` for unordered lists or \`<ol>\` for ordered lists; not \`<div>\` with styling           |
+| Item structure          | Wrap each item in \`<li>\` or use \`<ds-item>\` for consistent styling and spacing                  |
+| Item headings           | Use \`<h5>\` or appropriate heading for each item's title; maintains proper heading hierarchy        |
+| Links in list items     | Use \`<a href="...">\\</a>\` for navigable items; provide descriptive link text                    |
+| Buttons in list items   | Use \`<button>\\</button>\` for actionable items; add descriptive text inside the button              |
+| Disabled items          | For disabled links, add \`aria-disabled="true"\` and \`tabindex="-1"\`; remove \`href\` attribute    |
+| Icon descriptions       | Decorative icons in items should be \`aria-hidden="true"\`; meaningful ones need \`aria-label\`    |
+| Item content grouping   | Use wrapper div with semantic structure: heading, description text, and any supplementary content   |
+`}
+</Markdown>
+
+> **Note:** Use the `<ds-item>` component to simplify item layout and ensure consistent spacing.
+
+### Web component
+
+The `ds-list` element provides a semantic list container:
+
+- **List semantics** — renders `<ul>` for unordered lists (default) or `<ol>` for ordered lists (when `ordered={true}`)
+- **Slot projection** — allows any semantic HTML inside `<li>` items; developers control the internal structure entirely
+- **`ds-item` component** — a helper component for structuring list items with consistent styling; wraps content (titles, descriptions, icons) in semantic `<li>` with proper spacing and alignment
+- **Shadow DOM encapsulation** — styles are scoped; nested interactive elements (links, buttons, form controls) remain fully accessible to browsers and AT
+
+### References
+
+- [`<ul>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) — MDN
+- [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol) — MDN
+- [`<li>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) — MDN
+- [`<h1>–<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) — MDN
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`aria-disabled`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — MDN
+- [WCAG 2.1 — Lists](https://www.w3.org/WAI/WCAG21/Understanding/lists.html)
+
 <Footer />

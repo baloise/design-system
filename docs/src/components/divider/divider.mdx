@@ -58,4 +58,39 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+### HTML / CSS only
+
+Use the semantic HTML `<hr>` element to separate sections of content. The `ds-divider` component applies styling and supports both horizontal and vertical layouts.
+
+<Markdown>
+  {`
+| Requirement        | How to implement                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| Semantic separator | Use \`<hr>\` for thematic breaks and section separators; do not use for decoration                  |
+| Section grouping   | If dividing a group of items (e.g., list items), wrap them in appropriate semantic containers      |
+| Context for users  | Ensure the purpose of the divider is clear from surrounding context; not all users see visual cues |
+| Vertical dividers  | Vertical dividers in horizontal layouts are purely decorative; ensure layout remains clear         |
+`}
+</Markdown>
+
+> **Note:** The web component renders a semantic `<hr>` with `role="separator"` in the shadow DOM. CSS-only mode must use the native `<hr>` element for proper accessibility.
+
+### Web component
+
+The `ds-divider` element manages the following automatically:
+
+- **`role="separator"`** — announces the divider as a structural separator to screen readers
+- **Semantic `<hr>` element** — uses native HTML semantics; no custom ARIA needed beyond the role
+- **No keyboard interaction** — the divider is a presentation element; not focusable
+- **No interactive state** — color and dashed variants are visual only; do not affect accessibility
+- **Layout flexibility** — vertical and horizontal orientations are managed by CSS; all orientations are announced the same way
+
+### References
+
+- [`<hr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr) — MDN
+- [`role="separator"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) — MDN
+- [WCAG 2.1 — Sections of Content](https://www.w3.org/WAI/WCAG21/Understanding/sections.html)
+
 <Footer />
