@@ -96,7 +96,7 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * If `true` the button has a full width
    */
-  @Prop() readonly expanded: boolean = false
+  @Prop() readonly wide: boolean = false
 
   /**
    * If `true` the button has no padding and a reduced height
@@ -325,7 +325,7 @@ export class Button implements ComponentInterface, Loggable {
       <Host
         onClick={this.handleHostClick}
         class={{
-          'is-fullwidth': this.expanded,
+          'is-wide': this.wide,
           [`is-${this.color}`]: this.color !== undefined,
           [`is-${this.size}`]: this.size !== undefined,
           [`is-inverted`]: this.inverted,

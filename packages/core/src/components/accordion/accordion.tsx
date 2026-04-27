@@ -72,7 +72,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
-  @Prop() readonly buttonExpanded: boolean = false
+  @Prop() readonly buttonWide: boolean = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.
@@ -226,7 +226,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
             onClick={ev => this.handleToggle(ev, !this.open)}
             class={{
               'button': this.button,
-              'is-fullwidth': this.buttonExpanded,
+              'is-wide': this.buttonWide,
               [`is-${this.buttonColor}`]: !!this.buttonColor,
               [`is-${this.buttonSize}`]: !!this.buttonSize,
               'has-marker-left': this.markerPosition === 'left',

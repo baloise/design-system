@@ -82,7 +82,7 @@
           }
         }
       }
-      &.is-expanded {
+      &.is-wide {
         flex-grow: 1;
         flex-shrink: 1;
       }
@@ -93,7 +93,7 @@
     &.has-addons-right {
       justify-content: flex-end;
     }
-    &.has-addons-fullwidth {
+    &.has-addons-wide {
       .control {
         flex-grow: 1;
         flex-shrink: 0;
@@ -107,7 +107,7 @@
       &:not(:last-child) {
         margin-bottom: 0;
       }
-      &.is-expanded {
+      &.is-wide {
         flex-grow: 1;
         flex-shrink: 1;
       }

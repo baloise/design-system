@@ -32,7 +32,7 @@ const meta: Meta<Args> = {
         ...css('color', (color: string) => `is-${color}`),
         size: args.size === 'small' ? 'is-small' : '',
         disabled: 'is-disabled',
-        expanded: 'is-fullwidth',
+        wide: 'is-wide',
         inverted: 'is-inverted',
         dashed: 'is-dashed',
         square: 'is-square',

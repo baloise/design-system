@@ -105,7 +105,7 @@ export const FormWizardMobile = Story({
         <ds-progress-bar background="grey" value="75"></ds-progress-bar>
         <ds-stack py="normal" px="normal" space="auto">
           <ds-button color="secondary" square icon="back"></ds-button>
-          <ds-button expanded>Next</ds-button>
+          <ds-button wide>Next</ds-button>
         </ds-stack>
       </div>
     </main>

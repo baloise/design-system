@@ -106,10 +106,10 @@
   }
 
   //
-  // Expanded
+  // Wide
   // --------------------------------
   @include tablet {
-    &.is-expanded {
+    &.is-wide {
       ::slotted(.button:not(.is-square, .is-circle)),
       .button:not(.is-square, .is-circle),
       ::slotted(ds-button:not(.is-square, .is-circle)),

@@ -33,7 +33,7 @@ export class ButtonGroup implements ComponentInterface, Loggable {
   /**
    * If `true` the buttons will expand to fill the available space on mobile.
    */
-  @Prop() readonly expanded: boolean = false
+  @Prop() readonly wide: boolean = false
 
   render() {
     return (
@@ -45,7 +45,7 @@ export class ButtonGroup implements ComponentInterface, Loggable {
             'as-col': this.direction === 'column',
             'as-row': this.direction === 'row',
             'is-reverse': this.reverse,
-            'is-expanded': this.expanded,
+            'is-wide': this.wide,
             'is-left': this.align === 'left',
             'is-center': this.align === 'center',
             'is-right': this.align === 'right',

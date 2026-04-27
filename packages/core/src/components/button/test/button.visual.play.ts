@@ -10,7 +10,7 @@ const VARIANTS = [
   'dashed',
   'inverted',
   'sizes',
-  'expanded',
+  'wide',
   'long-content',
   'flat',
   'rounded',

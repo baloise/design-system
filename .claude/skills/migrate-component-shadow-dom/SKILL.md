@@ -34,7 +34,7 @@ render() {
       <div class={{
         ...innerEl.class(),
         ...innerEl.modifier('vertical').class(this.vertical),
-        ...innerEl.modifier('expanded').class(this.expanded),
+        ...innerEl.modifier('wide').class(this.wide),
       }}>
         <slot></slot>
       </div>
@@ -48,7 +48,7 @@ render() {
     <Host
       class={{
         'is-vertical': this.vertical,
-        'is-expanded': this.expanded,
+        'is-wide': this.wide,
         'is-disabled': !!this.disabled,
       }}
     >

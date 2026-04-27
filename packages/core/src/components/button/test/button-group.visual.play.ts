@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'ds-button-group'
-const VARIANTS = ['basic', 'group', 'long-labels', 'column-group', 'expanded', 'two-row-button-group']
+const VARIANTS = ['basic', 'group', 'long-labels', 'column-group', 'wide', 'two-row-button-group']
 
 const image = screenshot(TAG)
 

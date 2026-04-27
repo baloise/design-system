@@ -286,7 +286,7 @@ export const CardImages = Story({
         explicabo iusto. Distinctio, ab?
       </ds-card-content>
       <ds-card-actions>
-        <ds-button color="secondary" expanded> Button </ds-button>
+        <ds-button color="secondary" wide> Button </ds-button>
       </ds-card-actions>
     </ds-card>
   </div>

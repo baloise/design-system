@@ -146,11 +146,11 @@ $host-selector: ('#button');
 }
 
 //
-// Fullwidth / Expanded
+// Wide
 // --------------------------------
 
 @include hybrid.host($use-host) {
-  :host(.is-fullwidth) {
+  :host(.is-wide) {
     width: 100%;
     flex: 1 1 auto;
 
@@ -162,7 +162,7 @@ $host-selector: ('#button');
 }
 
 @include hybrid.styles($css-selector, $use-host) {
-  &.is-fullwidth {
+  &.is-wide {
     width: 100%;
     flex: 1 1 auto;
   }

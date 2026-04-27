@@ -446,7 +446,7 @@ $spaces: ('sm', 'md', 'lg');
     max-width: fit-content;
   }
 
-  &.is-expanded {
+  &.is-wide {
     @include tablet() {
       .card {
         width: 75%;

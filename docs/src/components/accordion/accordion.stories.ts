@@ -122,7 +122,7 @@ AccordionGroup.storyName = '🧩 Accordion Group'
 export const AccordionButton = Story({
   args: {
     button: true,
-    buttonExpanded: true,
+    buttonWide: true,
     buttonColor: 'secondary',
     buttonLabelOpen: 'edit',
     buttonLabelClose: 'close',
