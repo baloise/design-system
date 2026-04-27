@@ -1,0 +1,373 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+/**
+  * Variables
+  */
+
+$card-breakpoints: ('mobile', 'tablet', 'desktop');
+$card-colors: (
+  'base',
+  'white',
+  'primary',
+  'primary-light',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'grey',
+  'grey-light',
+  'red',
+  'red-light',
+  'red-lighter',
+  'green',
+  'green-light',
+  'green-lighter',
+  'purple',
+  'purple-light',
+  'purple-lighter',
+  'yellow',
+  'yellow-light',
+  'yellow-lighter'
+);
+
+/**
+  * Mixins
+  */
+
+@mixin card-color($color) {
+  &.is-#{$color} {
+    background: var(--ds-card-color-background-#{$color});
+    color: var(--ds-card-color-text-#{$color});
+
+    &.is-outlined {
+      border: var(--ds-card-outlined-border-#{$color});
+    }
+  }
+}
+
+@mixin card-space($spacing, $property) {
+  #{$property}: calc(var(--ds-card-space-#{$spacing}) - var(--ds-border-width-base));
+
+  @include tablet {
+    #{$property}: calc(var(--ds-card-space-#{$spacing}-tablet) - var(--ds-border-width-base));
+  }
+
+  @include desktop {
+    #{$property}: calc(var(--ds-card-space-#{$spacing}-desktop) - var(--ds-border-width-base));
+  }
+}
+
+@mixin card-space-all($spacing) {
+  gap: var(--ds-card-space-#{$spacing});
+
+  @include tablet {
+    gap: var(--ds-card-space-#{$spacing}-tablet);
+  }
+
+  @include desktop {
+    gap: var(--ds-card-space-#{$spacing}-desktop);
+  }
+
+  .card-header,
+  .card-footer,
+  .card-content {
+    @include card-space($spacing, padding-inline);
+  }
+
+  > :first-child:not(.tag, .badge, ds-tag, ds-badge) {
+    @include card-space($spacing, padding-top);
+  }
+
+  > .badge:first-child + *,
+  > ds-badge:first-child + *,
+  > .tag:first-child + *,
+  > ds-tag:first-child + * {
+    @include card-space($spacing, padding-top);
+  }
+
+  > :last-child:not(.tag, .badge, ds-tag, ds-badge) {
+    @include card-space($spacing, padding-bottom);
+  }
+
+  .card-header {
+    gap: var(--ds-card-space-#{$spacing});
+
+    @include tablet {
+      gap: var(--ds-card-space-#{$spacing}-tablet);
+    }
+
+    @include desktop {
+      gap: var(--ds-card-space-#{$spacing}-desktop);
+    }
+  }
+}
+
+/**
+  * Basic Style
+  */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--ds-card-color-background-base);
+  border-radius: var(--ds-card-radius-base);
+  border-width: var(--ds-border-width-base);
+  border-style: solid;
+  border-color: transparent;
+
+  &:not(.is-flat) {
+    box-shadow: var(--ds-card-shadow-base);
+  }
+
+  &.is-square {
+    border-radius: var(--ds-card-radius-square);
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.is-outlined {
+    border: var(--ds-card-outlined-border-base);
+  }
+
+  &.is-fullheight {
+    &,
+    .card-content,
+    .card-content > .stack,
+    .card-content > .flex,
+    .card-content > .is-flex {
+      height: 100%;
+    }
+  }
+
+  // header
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title,
+    .subtitle,
+    .heading {
+      margin: 0;
+    }
+  }
+
+  // spacing
+  @include card-space-all(base);
+
+  &.has-space-sm,
+  &.has-space-small {
+    @include card-space-all(sm);
+  }
+
+  &.has-space-md,
+  &.has-space-medium {
+    @include card-space-all(md);
+  }
+
+  &.has-space-lg,
+  &.has-space-large {
+    @include card-space-all(lg);
+  }
+
+  // colors
+  @each $color in $card-colors {
+    @include card-color($color);
+  }
+}
+
+/**
+  * Clickable Style
+  */
+
+a.card,
+button.card {
+  cursor: pointer !important;
+  appearance: auto;
+  user-select: none;
+  touch-action: manipulation;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-pressed {
+    outline: none;
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      box-shadow: var(--ds-card-shadow-large);
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    translate: 0 0.5px;
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      box-shadow: var(--ds-card-shadow-large), var(--ds-button-shadow-outline-base);
+    }
+  }
+}
+
+/**
+  * Tag Positioning
+  */
+
+@mixin card-tag-position($tag-size, $card-size, $property) {
+  #{$property}: calc(var(--ds-card-space-#{$card-size}) - var(--ds-tag-space-#{$tag-size}-x));
+
+  @include tablet {
+    #{$property}: calc(var(--ds-card-space-#{$card-size}-tablet) - var(--ds-tag-space-#{$tag-size}-x));
+  }
+
+  @include desktop {
+    #{$property}: calc(var(--ds-card-space-#{$card-size}-desktop) - var(--ds-tag-space-#{$tag-size}-x));
+  }
+}
+
+.card > .tag:first-child {
+  position: absolute;
+  top: 0;
+
+  // center is default
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &.is-left,
+  &.is-right {
+    transform: translateY(-50%);
+  }
+
+  &.is-right {
+    left: auto;
+  }
+}
+
+.card:not(.has-space-small, .has-space-large) > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, normal, left);
+
+    &.is-small {
+      @include card-tag-position(small, normal, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, normal, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, normal, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, normal, right);
+
+    &.is-small {
+      @include card-tag-position(small, normal, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, normal, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, normal, right);
+    }
+  }
+}
+
+.card.has-space-small > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, small, left);
+
+    &.is-small {
+      @include card-tag-position(small, small, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, small, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, small, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, small, right);
+
+    &.is-small {
+      @include card-tag-position(small, small, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, small, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, small, right);
+    }
+  }
+}
+
+.card.has-space-large > .tag:first-child {
+  &.is-left {
+    @include card-tag-position(normal, large, left);
+
+    &.is-small {
+      @include card-tag-position(small, large, left);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, large, left);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, large, left);
+    }
+  }
+
+  &.is-right {
+    @include card-tag-position(normal, large, right);
+
+    &.is-small {
+      @include card-tag-position(small, large, right);
+    }
+
+    &.is-medium {
+      @include card-tag-position(medium, large, right);
+    }
+
+    &.is-large {
+      @include card-tag-position(large, large, right);
+    }
+  }
+}
+
+/**
+  * Badge Positioning
+  */
+
+.card > .badge:first-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}

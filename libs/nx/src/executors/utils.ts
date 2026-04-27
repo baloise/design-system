@@ -66,14 +66,18 @@ export async function compileSassToMergedFile(
     file: outputFileName,
   }
 
-  // Compile each sass file and merge the CSS
-  for (const file of files) {
-    const sassResult = await compileAsync(file, {
-      loadPaths: ['node_modules'],
-      sourceMap: true,
-      sourceMapIncludeSources: true,
-    })
+  // Compile all sass files in parallel and merge the CSS (preserving input order)
+  const results = await Promise.all(
+    files.map(file =>
+      compileAsync(file, {
+        loadPaths: ['node_modules'],
+        sourceMap: true,
+        sourceMapIncludeSources: true,
+      }),
+    ),
+  )
 
+  for (const sassResult of results) {
     mergedCss += sassResult.css + NEWLINE
     if (sassResult.sourceMap) {
       mergedSourceMap.sources.push(...(sassResult.sourceMap.sources || []))

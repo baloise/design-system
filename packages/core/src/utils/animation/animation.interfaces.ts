@@ -1,10 +1,10 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 
-export interface BalAnimationObserver {
+export interface AnimationObserver {
   el: HTMLElement | HTMLStencilElement
-  animationListener(data: BalAnimationObserverInfo): void
+  animationListener(data: AnimationObserverInfo): void
 }
 
-export interface BalAnimationObserverInfo {
+export interface AnimationObserverInfo {
   target: HTMLElement | HTMLStencilElement
 }

@@ -1,0 +1,290 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+
+        <ul class="list">
+          <li class="item">
+            <h5 class="item-title">Item 2</h5>
+          </li>
+          <li class="item">
+            <div class="item-content">
+              <h5 class="item-title">Item 2</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+          </li>
+          <li class="item">
+            <div class="item-content">
+              <h5 class="item-title">Item 3</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+          </li>
+          <li class="item">
+            <ds-icon name="file"></ds-icon>
+            <div class="item-content">
+              <h5 class="item-title">Item 3</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Ordered -->
+      <section data-testid="ordered">
+        <span>Ordered</span>
+
+        <ol class="list">
+          <li>
+            <a class="item" href="www.helvetia.com" target="_blank">
+              <ds-badge color="success" size="lg">
+                <ds-icon name="check"></ds-icon>
+              </ds-badge>
+              <div class="item-content">
+                <h5 class="item-title">Item 1</h5>
+                <span class="item-text">This is a description for item</span>
+              </div>
+              <ds-icon name="nav-go-right"></ds-icon>
+            </a>
+          </li>
+          <li class="item">
+            <ds-badge color="purple" size="lg">2</ds-badge>
+            <div class="item-content">
+              <h5 class="item-title">Item 2</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+            <ds-icon name="nav-go-right"></ds-icon>
+          </li>
+          <li class="item">
+            <ds-badge color="purple" size="lg">
+              <ds-icon name="document"></ds-icon>
+            </ds-badge>
+            <div class="item-content">
+              <h5 class="item-title">Item 3</h5>
+              <span class="item-text">This is a description for item</span>
+            </div>
+            <ds-icon name="nav-go-right"></ds-icon>
+          </li>
+          <li>
+            <a class="item is-disabled" disabled href="www.helvetia.com" target="_blank">
+              <ds-badge color="grey" size="lg">4</ds-badge>
+              <div class="item-content">
+                <h5 class="item-title">Item 4</h5>
+                <span class="item-text">This is a description for item</span>
+              </div>
+              <ds-icon name="nav-go-right"></ds-icon>
+            </a>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Linked List -->
+      <section data-testid="linked">
+        <span>Linked List</span>
+
+        <ul class="list">
+          <li>
+            <a class="item" href="www.helvetia.com" target="_blank">
+              <span class="item-content">Internal Link</span>
+              <ds-icon name="nav-go-right"></ds-icon>
+            </a>
+          </li>
+          <li>
+            <a class="item" href="www.helvetia.com" target="_blank">
+              <span class="item-content">
+                <span class="item-title">External Link</span>
+                <span class="item-text">Description</span>
+              </span>
+              <ds-icon name="link"></ds-icon>
+            </a>
+          </li>
+          <li>
+            <a class="item is-disabled" aria-disabled="true" tabindex="-1">
+              <span class="item-content">
+                <span class="item-title">Disabled Link</span>
+                <span class="item-text">Description</span>
+              </span>
+              <ds-icon name="link" disabled></ds-icon>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Download List -->
+      <section data-testid="download">
+        <span>Download List</span>
+
+        <ul class="list">
+          <li>
+            <button class="item">
+              <ds-icon name="file"></ds-icon>
+              <span class="item-content">
+                <span class="item-title">Document</span>
+                <span class="item-text">PDF - 98KB</span>
+              </span>
+              <ds-icon name="download" size="small"></ds-icon>
+            </button>
+          </li>
+          <li>
+            <button class="item">
+              <ds-icon name="picture"></ds-icon>
+              <span class="item-content">
+                <span class="item-title">Picture</span>
+                <span class="item-text">PNG - 140KB</span>
+              </span>
+              <ds-icon name="download" size="small"></ds-icon>
+            </button>
+          </li>
+          <li>
+            <button class="item">
+              <ds-icon name="video"></ds-icon>
+              <span class="item-content">
+                <span class="item-title">Video</span>
+                <span class="item-text">MP4 - 61MB</span>
+              </span>
+              <ds-icon name="download" size="small"></ds-icon>
+            </button>
+          </li>
+          <li>
+            <button class="item">
+              <ds-icon name="audio"></ds-icon>
+              <span class="item-content">
+                <span class="item-title">Audio</span>
+                <span class="item-text">MP3 - 140KB</span>
+              </span>
+              <ds-icon name="download" size="small"></ds-icon>
+            </button>
+          </li>
+          <li>
+            <button class="item is-disabled" disabled>
+              <ds-icon name="file" disabled></ds-icon>
+              <span class="item-content">
+                <span class="item-title">Disabled Document</span>
+                <span class="item-text">PDF - 98KB</span>
+              </span>
+              <ds-icon name="download" disabled size="small"></ds-icon>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- List Accordions -->
+      <section data-testid="accordion">
+        <span>List Accordions</span>
+        <ul class="list">
+          <li>
+            <details class="accordion has-marker-plus" name="accordion-group">
+              <summary>
+                <h5 class="title is-5 m-none">Wie ermittle ich die Versicherungssumme meines Hausrats?</h5>
+              </summary>
+              <p>
+                Die Versicherungssumme hängt von der Anzahl Zimmer sowie der Anzahl Personen im Haushalt ab. Ein
+                weiterer wichtiger Punkt ist der Einrichtungsstandard. Geben Sie diese Informationen in unseren
+                Prämienrechner ein. Anhand von Durchschnittswerten erhalten Sie dann einen Vorschlag für die passende
+                Versicherungssumme. Oder nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den Hausrat»,
+                um den genauen Betrag zu berechnen.
+              </p>
+            </details>
+          </li>
+          <li>
+            <details class="accordion has-marker-plus" name="accordion-group">
+              <summary>
+                <h5 class="title is-5 m-none">Was deckt die Haushaltversicherung?</h5>
+              </summary>
+              <p>
+                Die Haushaltversicherung deckt Schäden an Ihren persönlichen beweglichen Sachen (Hausrat) sowie Schäden,
+                die Sie Drittpersonen zufügen (Haftpflicht). Mit verschiedenen Zusatzdeckungen können Sie den
+                Versicherungsschutz abrunden.
+              </p>
+            </details>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Nested List Accordions -->
+      <section data-testid="nested-accordion">
+        <span>Nested List Accordions</span>
+        <ul class="list">
+          <li class="has-accordion">
+            <details class="accordion" name="nested-accordion-group-1">
+              <summary>
+                <h3 class="title is-3 m-none">Switzerland</h3>
+              </summary>
+              <ul class="list pl-normal">
+                <li class="has-accordion">
+                  <details class="accordion" name="nested-accordion-group-1-2">
+                    <summary>
+                      <h4 class="title is-4 m-none">Basel</h4>
+                    </summary>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
+                      similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic
+                      reprehenderit quo maiores dicta reiciendis illum?
+                    </p>
+                  </details>
+                </li>
+                <li class="has-accordion">
+                  <details class="accordion" name="nested-accordion-group-1-2">
+                    <summary>
+                      <h4 class="title is-4 m-none">St. Gallen</h4>
+                    </summary>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
+                      similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic
+                      reprehenderit quo maiores dicta reiciendis illum?
+                    </p>
+                  </details>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li class="has-accordion">
+            <details class="accordion" name="nested-accordion-group-1">
+              <summary>
+                <h3 class="title is-3 m-none">Belgium</h3>
+              </summary>
+              <ul class="list pl-normal">
+                <li class="has-accordion">
+                  <details class="accordion" name="nested-accordion-group-2-2">
+                    <summary>
+                      <h4 class="title is-4 m-none">Brüssel</h4>
+                    </summary>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
+                      similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic
+                      reprehenderit quo maiores dicta reiciendis illum?
+                    </p>
+                  </details>
+                </li>
+                <li class="has-accordion">
+                  <details class="accordion" name="nested-accordion-group-2-2">
+                    <summary>
+                      <h4 class="title is-4 m-none">Brügge</h4>
+                    </summary>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
+                      similique amet necessitatibus delectus tempora vitae, aut obcaecati modi quos totam hic
+                      reprehenderit quo maiores dicta reiciendis illum?
+                    </p>
+                  </details>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

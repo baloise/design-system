@@ -1,0 +1,9 @@
+@use '../../hybrid' as hybrid;
+@use '../../host' as host;
+@use './notification.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+}

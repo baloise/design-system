@@ -2,21 +2,11 @@ import { BuildStylesExecutorSchema } from '../schema'
 import * as utils from './utils'
 
 export const generateBackgroundColors = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: 'color.background', ...options })
-  const props = utils.toProps({ tokens, prefix: 'bg', replace: 'color-background-' })
+  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🎨 Background.Color', ...options })
+  const props = utils.toProps({ tokens, prefix: 'bg', replace: 'background-color' })
 
-  const tokensBrand = await utils.getTokens({ token: 'color.brand', ...options })
-  const propsBrand = utils.toProps({ tokens: tokensBrand, prefix: 'bg', replace: 'color' })
-
-  const tokensBase = await utils.getTokens({ token: 'color', ...options })
+  const tokensBase = await utils.getTokens({ token: '🧱 Primitive.🌈 Color', ...options })
   const propsBase = utils.toProps({ tokens: tokensBase, prefix: 'bg', replace: 'color' })
-
-  // merge colors
-  for (const key in propsBrand) {
-    if (!Object.keys(props).includes(key)) {
-      props[key] = propsBrand[key]
-    }
-  }
 
   // merge colors
   for (const key in propsBase) {
@@ -29,7 +19,6 @@ export const generateBackgroundColors = async (options: BuildStylesExecutorSchem
     property: 'background',
     values: {
       ...props,
-      ['bg-transparent']: 'transparent',
     },
   })
 
@@ -37,7 +26,6 @@ export const generateBackgroundColors = async (options: BuildStylesExecutorSchem
     property: 'background',
     values: {
       ...props,
-      ['bg-transparent']: 'transparent',
     },
     important: true,
     responsive: false,

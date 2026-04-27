@@ -1,7 +1,7 @@
 {
   "name": "@baloise/ds-tokens",
   "version": "20.0.0-next.1",
-  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
@@ -10,20 +10,16 @@
     "access": "public"
   },
   "type": "module",
+  "main": "dist/js/base.tokens.js",
+  "module": "dist/js/base.tokens.js",
+  "style": "dist/css/base.tokens.css",
   "scripts": {
-    "build": "npm run build:ts && npm run build:tokens",
-    "build:clean": "rimraf dist",
-    "build:ts": "tsc -p tsconfig.lib.json",
-    "build:tokens": "style-dictionary build --config ./dist/out-tsc/config.js --verbose",
-    "figma:upload": "npx tsx scripts/upload-to-figma.ts"
+    "build": "npx tsc && node dist/out-tsc",
+    "build:clean": "rimraf dist"
   },
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "files": [
     "dist/"
-  ],
-  "main": "dist/tokens.js",
-  "module": "dist/tokens.js",
-  "types": "dist/tokens.d.ts",
-  "style": "dist/tokens.css"
+  ]
 }

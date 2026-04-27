@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
@@ -27,9 +27,9 @@ export const TokensShadow = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className="radius-normal"
+                  className="radius"
                   style={{
-                    background: 'var(--bal-color-grey)',
+                    background: 'var(--ds-color-grey)',
                     height: '48px',
                     width: '48px',
                     boxShadow: `var(--${item.name})`,

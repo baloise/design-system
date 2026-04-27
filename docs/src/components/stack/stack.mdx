@@ -1,0 +1,150 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as StackStories from './stack.stories'
+
+<Meta of={StackStories} />
+
+<StoryHeading of={StackStories.Basic} hidden></StoryHeading>
+
+<Banner of={StackStories} />
+
+<Lead>
+  The **Stack** element is responsible for arranging its direct descendants in a vertical or horizontal direction, while
+  also allowing for the inclusion of optional spacing between each child.
+</Lead>
+
+<br />
+<br />
+
+The **Stack** component deals with layouts in one dimension, whereas the [Grid](?path=/docs/foundation-grid--documentation) manages layouts in two dimensions.
+By default, the **Stack** component stacks children vertically in a column.
+
+<InfoQuote>
+<p class='heading is-level-3'>Style import</p>
+
+  We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+  components. This helps improve the rendering speed of your application or website.
+
+These styles are included in the core styles:
+
+```css
+@import '@baloise/ds-styles/css/core.css';
+```
+
+</InfoQuote>
+
+<Canvas of={StackStories.Basic} sourceState="shown" />
+
+
+<PlaygroundBar of={StackStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Nested}></StoryHeading>
+
+<Canvas of={StackStories.Nested} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Item}></StoryHeading>
+
+<Canvas of={StackStories.Item} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Direction}></StoryHeading>
+
+The default arrangement for Stack is a vertical column. Nevertheless, the direction prop allows items to be positioned horizontally in a row as well.
+
+<Canvas of={StackStories.Direction} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Alignment}></StoryHeading>
+
+With the direction `column` the children of the stack can be aligned to `start` (default), `center` or `end`.
+
+<Canvas of={StackStories.Alignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Space}></StoryHeading>
+
+There various space sizes of the space between the stack children.
+
+<Canvas of={StackStories.Space} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Padding}></StoryHeading>
+
+There various padding sizes of the stack element.
+
+<Canvas of={StackStories.Padding} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.TeaserCards}></StoryHeading>
+
+The stack component can easily be combined with the [card component](?path=/docs/components-containment-card--documentation) to achieve a nice
+teaser layout.
+
+<Canvas of={StackStories.TeaserCards} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.StackedTabs}></StoryHeading>
+
+The [ds-tabs](?path=/docs/components-navigation-tabs--documentation) can be used with the stack as well and for example be combined with a [ds-button](?path=/docs/components-containment-button--documentation).
+Just set the property `no-wrap` to the [ds-button](?path=/docs/components-containment-button--documentation) so it will no break on multiple lines.
+
+<Canvas of={StackStories.StackedTabs} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+The `ds-stack` component is a layout utility that arranges child elements in a row or column. Since it has no interactive elements, accessibility is purely structural—ensure child elements are semantically appropriate.
+
+<Markdown>
+  {`
+| Requirement         | How to implement                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Semantic children   | Use appropriate semantic HTML for child elements (headings, paragraphs, buttons, inputs, etc.)     |
+| Heading hierarchy   | Maintain proper heading hierarchy within stacked content; do not rely on visual size alone        |
+| Link/button semantics | Use \`<a>\` for navigation and \`<button>\` for actions; apply \`ds-stack\` as a layout wrapper   |
+| Color not sole cue  | If stack children use color to convey meaning, also provide text or icons for non-visual users    |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-stack` component is a layout-only presentational wrapper with no interactive elements or ARIA attributes:
+
+- **No roles** — the component is semantically neutral; inherits meaning from child elements
+- **No ARIA state** — layout does not affect accessibility tree; children retain their semantics
+- **No keyboard interaction** — the component provides flexbox spacing only; keyboard focus depends on child elements (buttons, links, inputs)
+- **No form participation** — the component is purely structural and does not participate in forms
+- **Screen reader support** — children are announced in DOM order; assistive technologies announce their semantic roles
+
+### References
+
+- [WCAG 2.1 — Headings and Labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+- [MDN — CSS Flexbox Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)
+
+<Footer />

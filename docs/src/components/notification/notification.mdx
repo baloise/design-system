@@ -1,0 +1,91 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview, BasicStoryTabs } from '../../../.storybook/blocks'
+import * as NotificationStories from './notification.stories'
+
+<Meta of={NotificationStories} />
+
+<StoryHeading of={NotificationStories.Basic} hidden></StoryHeading>
+
+<Banner of={NotificationStories} />
+
+<Lead>**Notification** is used for alerts or to highlight certain content for the user.</Lead>
+
+<BasicStoryTabs tag="notification" htmlStory={NotificationStories.BasicHtml} webComponentStory={NotificationStories.Basic} index={1} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NotificationStories.Alerts}></StoryHeading>
+
+<Canvas of={NotificationStories.Alerts} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NotificationStories.Outlines}></StoryHeading>
+
+<Canvas of={NotificationStories.Outlines} sourceState={'shown'} />
+
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="notification" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML `<section>` or landmark elements to wrap notification content. Notifications should announce their presence to screen readers using `aria-live` and `role` attributes.
+
+<Markdown>
+  {`
+| Requirement            | How to implement                                                                                   |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| Role attribute         | Set \`role="alert"\` for urgent messages or \`role="status"\` for informational updates           |
+| Live region announce   | Set \`aria-live="assertive"\` for alerts or \`aria-live="polite"\` for status updates             |
+| Atomic updates         | Set \`aria-atomic="true"\` so screen readers announce the entire notification content when updated |
+| Notification heading   | Use \`<h2>\` or semantic heading to introduce the notification topic                              |
+| Close button           | If closable, include a properly labeled close button; \`<ds-close>\` handles keyboard activation  |
+| Color semantics        | Do not rely on color alone; pair color with text or icons (e.g., "Success:" or success icon)     |
+| No icon indicator      | If \`noIcon\` is used, ensure the message type is clear from text or heading                      |
+`}
+</Markdown>
+
+> **Note:** All notifications should have either an implicit heading or a clear text message. Icon-only notifications are not accessible; provide text labels or use `aria-label` on the notification container.
+
+### Web component
+
+The `ds-notification` element manages the following automatically:
+
+- **`role` attribute** — set to "alert" if `alert={true}`, otherwise "status"; communicates the notification type to screen readers
+- **`aria-live` attribute** — set to "assertive" for alerts (interrupts current speech) or "polite" for status updates (waits for pause in speech)
+- **`aria-atomic="true"`** — ensures the entire notification content is announced when the live region is updated
+- **`heading` prop** — renders an `<h2>` part that introduces the notification; if omitted, ensure slot content is descriptive
+- **Close button** — the `<ds-close>` button emits `dsCloseClick` event; the component does not auto-remove (consumer handles)
+- **No keyboard interaction** — notifications are non-interactive by default; close button is keyboard-accessible if present
+- **Form content** — notifications may contain form controls or links; ensure those are properly labeled themselves
+
+### References
+
+- [`<section>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) — MDN
+- [`<h2>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) — MDN
+- [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) — MDN
+- [`role="status"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+- [WCAG 2.1 — Status Messages](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+
+<Footer />

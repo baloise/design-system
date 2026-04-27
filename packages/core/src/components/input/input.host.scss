@@ -1,0 +1,91 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use './input.mixin' as input;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include input.vars('input');
+  @include input.vars-container('input');
+  @include input.vars-label('input');
+  @include input.vars-description('input');
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+
+  @include input.style('input');
+  @include input.container('input');
+  @include input.label('input');
+  @include input.description('input');
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-input-container-border-color: var(--ds-input-container-color-danger-border);
+  --mod-input-description-color: var(--ds-input-description-color-danger);
+  --mod-input-container-hover-border: var(--ds-input-container-color-danger-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-input-container-border-color: var(--ds-input-container-color-success-border);
+  --mod-input-description-color: var(--ds-input-description-color-success);
+  --mod-input-container-hover-border: var(--ds-input-container-color-success-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-input-container-border-color: var(--ds-input-container-color-warning-border);
+  --mod-input-description-color: var(--ds-input-description-color-warning);
+  --mod-input-container-hover-border: var(--ds-input-container-color-warning-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-warning-border);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-input-container-background: var(--ds-input-container-color-disabled-background);
+  --mod-input-container-border-color: var(--ds-input-container-color-disabled-border);
+  --mod-input-label-color: var(--ds-input-label-color-disabled);
+  --mod-input-description-color: var(--ds-input-description-color-disabled);
+
+  --mod-input-color: var(--ds-input-control-color-value-disabled);
+  --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
+}

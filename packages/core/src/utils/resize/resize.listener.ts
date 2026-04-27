@@ -1,12 +1,12 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { debounce } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalResizeInfo } from './resize.interfaces'
+import { ResizeInfo } from './resize.interfaces'
 
-export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
+export class ResizeListener<TObserver> extends ListenerAbstract<TObserver, ResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
-  private debouncedNotify = debounce((info: BalResizeInfo) => this.notify(info), 42)
+  private debouncedNotify = debounce((info: ResizeInfo) => this.notify(info), 42)
   private lastWidth: number | undefined
   private lastHeight: number | undefined
 
@@ -22,7 +22,7 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
     }
 
     this.resizeObserver = new ResizeObserver(entries => {
-      if (balBrowser.hasWindow) {
+      if (dsBrowser.hasWindow) {
         window.requestAnimationFrame(() => {
           if (!Array.isArray(entries) || !entries.length) {
             return

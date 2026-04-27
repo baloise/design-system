@@ -16,7 +16,7 @@ import { join } from 'path'
 import { a11y } from './functions/a11y'
 import { initPageEvents } from './page/event-spy'
 import { gotoPage, locator, LocatorOptions, mount, spyOnEvent, waitForChanges } from './page/utils'
-import { BalPage, BalPageOptions } from './types'
+import { DsPage, DsPageOptions } from './types'
 
 export { expect } from '@playwright/test'
 
@@ -30,7 +30,7 @@ export async function expectScreenshot(
 ) {
   // Get page from received (either it's a Page or a Locator with .page())
   const page = 'page' in received ? received.page() : received
-  await waitForChanges(page as BalPage)
+  await waitForChanges(page as DsPage)
 
   await expect(received).toHaveScreenshot(name as string | string[], options)
 }
@@ -39,23 +39,23 @@ type CustomTestArgs = PlaywrightTestArgs &
   PlaywrightTestOptions &
   PlaywrightWorkerArgs &
   PlaywrightWorkerOptions & {
-    page: BalPage
+    page: DsPage
   }
 
 type CustomFixtures = {
-  page: BalPage
+  page: DsPage
   a11y(componentTag: string): Promise<void>
 }
 
-async function extendPageFixture(page: BalPage): Promise<BalPage> {
+async function extendPageFixture(page: DsPage): Promise<DsPage> {
   const originalGoto = page.goto.bind(page)
   const originalLocator = page.locator.bind(page)
 
   await page.addInitScript(() => {
-    window.addEventListener('balAppReady', () => {
-      ;(window as any).balAppReady = true
-      ;(window as any).BaloiseDesignSystem.config.animated = false
-      ;(window as any).BaloiseDesignSystem.config.logger = {
+    window.addEventListener('dsAppReady', () => {
+      ;(window as any).dsAppReady = true
+      ;(window as any).DesignSystem.config.animated = false
+      ;(window as any).DesignSystem.config.logger = {
         components: [],
         event: false,
         lifecycle: false,
@@ -66,7 +66,7 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
   })
 
   // Overridden Playwright methods
-  page.goto = (url: string, options?: BalPageOptions) => gotoPage(page, url, originalGoto, options)
+  page.goto = (url: string, options?: DsPageOptions) => gotoPage(page, url, originalGoto, options)
   page.locator = (selector: string, options?: LocatorOptions) => locator(page, originalLocator, selector, options)
 
   // Custom adapter methods
@@ -109,15 +109,15 @@ async function extendPageFixture(page: BalPage): Promise<BalPage> {
     await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'networkidle' }))
     await baseTest.step('wait for changes', async () => waitForChanges(page))
 
-    if (hasLCP === 'Component') {
-      await baseTest.step('wait for last content paint', async () => {
-        await page.waitForFunction(
-          () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
-          {},
-          { timeout: 5000 },
-        )
-      })
-    }
+    // if (hasLCP === 'Component') {
+    //   await baseTest.step('wait for last content paint', async () => {
+    //     await page.waitForFunction(
+    //       () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+    //       {},
+    //       { timeout: 5000 },
+    //     )
+    //   })
+    // }
 
     await baseTest.step('wait for images', async () => {
       await page.evaluate(async () => {
@@ -149,8 +149,8 @@ type BalTestType = TestType<
 >
 
 export const test: BalTestType = baseTest.extend<CustomFixtures>({
-  page: async ({ page }: CustomTestArgs, use: (r: BalPage) => Promise<void>) => {
-    page = await extendPageFixture(page as BalPage)
+  page: async ({ page }: CustomTestArgs, use: (r: DsPage) => Promise<void>) => {
+    page = await extendPageFixture(page as DsPage)
     await use(page)
   },
   a11y: async ({ page }, use) => {

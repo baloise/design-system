@@ -24,7 +24,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }): React.R
   const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
   const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
-  const className = `sb-unstyled radius-bottom-large pt-large pb-medium px-medium ${background} ${text}`
+  const className = `sb-unstyled radius-bottom-lg pt-large pb-medium px-medium ${background} ${text}`
 
   const puzzles = {
     green: PuzzleGreen,
@@ -52,7 +52,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }): React.R
             className={`title text-xxxx-large ${text} flex align-items-center gap-small`}
             style={{ marginTop: '-0.5rem' }}
           >
-            {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''}{' '}
+            {isDeprecated ? <ds-icon color="warning-dark" name="alert-triangle" inline size="large"></ds-icon> : ''}{' '}
             {title}
           </h1>
           {children}

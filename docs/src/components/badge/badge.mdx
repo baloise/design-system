@@ -1,0 +1,119 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+
+<Meta of={BadgeStories} />
+
+<StoryHeading of={BadgeStories.Basic} hidden></StoryHeading>
+
+<Banner of={BadgeStories} />
+
+<Lead>
+  **Badge** indicates a not visited or read action. It can only be used in combination with other components like
+  [BalButton](?path=/docs/components-containment-button--documentation),
+  [BalCard](?path=/docs/components-containment-card--documentation) or
+  [BalTabs](?path=/docs/components-navigation-tabs--documentation).
+</Lead>
+
+<Canvas of={BadgeStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={BadgeStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.WithIcon}></StoryHeading>
+
+<Canvas of={BadgeStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Colors}></StoryHeading>
+
+<Canvas of={BadgeStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Sizes}></StoryHeading>
+
+<Canvas of={BadgeStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ListBadges}></StoryHeading>
+
+<Canvas of={BadgeStories.ListBadges} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.CardBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.CardBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ButtonBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.ButtonBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.TabsBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.TabsBadge} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="badge" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Badges are **presentational status indicators** (counts, flags, notifications). Always include descriptive text content or an `aria-label` on the parent element.
+
+<Markdown>
+  {`
+| Requirement           | How to implement                                                                               |
+| --------------------- | -------- |
+| Badge content         | Always include text (count, abbreviation, etc.) or wrap badge in labeled container             |
+| Meaningful content    | Avoid badges with only icons; if icon-only, add \`aria-label\` to parent                     |
+| Color semantics       | Do not rely on color alone (e.g., red for error); pair with text or semantic context          |
+| Decorative badge      | If purely decorative count, add \`aria-hidden="true"\` to badge                               |
+| Positioned badge      | When positioned on a button/card, badge text helps users understand the status                |
+`}
+</Markdown>
+
+> **Note:** Badges convey meaning through content (usually text or number), not appearance alone. If your badge is icon-only with position styling, ensure the parent element (button, tab, card) has an accessible label that explains what the badge indicates.
+
+### Web component
+
+The `ds-badge` element is a **presentational status indicator**:
+
+- **No ARIA by default** — badges rely on text content for meaning; add labels to parent if needed
+- **Slot for content** — any slotted text (numbers, abbreviations, icons) is announced by AT
+- **Icon support** — the `icon` prop adds an icon via `ds-icon` with `aria-hidden="true"`; only text content is announced
+- **Color & size variants** — affect styling only; do not convey semantic meaning on their own
+- **Pulse animation** — visual feedback for new notifications; does not affect AT
+
+### References
+
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [WCAG 2.1 — Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+
+<Footer />

@@ -1,0 +1,211 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <span class="tag">Tag</span>
+      </section>
+
+      <!-- Variants -->
+      <section data-testid="variants">
+        <span>Variants</span>
+        <span class="tag is-square is-purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </span>
+        <span class="tag is-square is-purple-light">
+          <ds-icon name="info-circle"></ds-icon>
+          Title
+        </span>
+        <br />
+        <br />
+        <span class="tag is-square is-sm is-purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </span>
+        <span class="tag is-square is-sm is-purple-light">
+          <ds-icon name="info-circle"></ds-icon>
+          <b>Title</b>
+        </span>
+      </section>
+
+      <!-- Closeable-->
+      <section data-testid="closeable">
+        <span>Closeable</span>
+        <span class="tag">
+          Tag
+          <ds-close></ds-close>
+        </span>
+      </section>
+
+      <!-- Pill-->
+      <section data-testid="pill">
+        <span>Pill</span>
+        <span class="tag is-pill">
+          Tag
+          <ds-close></ds-close>
+        </span>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <span class="tag is-sm">
+          Small
+          <ds-close></ds-close>
+        </span>
+        <span class="tag">
+          Normal
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-md">
+          Medium
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-lg">
+          Large
+          <ds-close></ds-close>
+        </span>
+
+        <br />
+        <br />
+        <span class="tag is-pill is-sm">
+          Small
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-pill">
+          Normal
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-pill is-md">
+          Medium
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-pill is-lg">
+          Large
+          <ds-close></ds-close>
+        </span>
+      </section>
+
+      <!-- Colors-->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <span class="tag">
+          <ds-icon name="info-circle"></ds-icon>
+          base
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-primary">
+          <ds-icon name="info-circle"></ds-icon>
+          primary
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-grey">
+          <ds-icon name="info-circle"></ds-icon>
+          grey
+          <ds-close></ds-close>
+        </span>
+        <br />
+        <br />
+        <span class="tag is-info">
+          <ds-icon name="info-circle"></ds-icon>
+          info
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-success">
+          <ds-icon name="info-circle"></ds-icon>
+          success
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-warning">
+          <ds-icon name="info-circle"></ds-icon>
+          warning
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-danger">
+          <ds-icon name="info-circle"></ds-icon>
+          danger
+          <ds-close></ds-close>
+        </span>
+        <br />
+        <br />
+        <span class="tag is-purple-dark">
+          <ds-icon name="info-circle"></ds-icon>
+          purple dark
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-red-dark">
+          <ds-icon name="info-circle"></ds-icon>
+          red dark
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-yellow-dark">
+          <ds-icon name="info-circle"></ds-icon>
+          yellow dark
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-green-dark">
+          <ds-icon name="info-circle"></ds-icon>
+          green dark
+          <ds-close></ds-close>
+        </span>
+        <br />
+        <br />
+        <span class="tag is-purple">
+          <ds-icon name="info-circle"></ds-icon>
+          purple
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-red">
+          <ds-icon name="info-circle"></ds-icon>
+          red
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-yellow">
+          <ds-icon name="info-circle"></ds-icon>
+          yellow
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-green">
+          <ds-icon name="info-circle"></ds-icon>
+          green
+          <ds-close></ds-close>
+        </span>
+        <br />
+        <br />
+        <span class="tag is-purple-light">
+          <ds-icon name="info-circle"></ds-icon>
+          purple light
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-red-light">
+          <ds-icon name="info-circle"></ds-icon>
+          red light
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-yellow-light">
+          <ds-icon name="info-circle"></ds-icon>
+          yellow light
+          <ds-close></ds-close>
+        </span>
+        <span class="tag is-green-light">
+          <ds-icon name="info-circle"></ds-icon>
+          green light
+          <ds-close></ds-close>
+        </span>
+      </section>
+    </main>
+  </body>
+</html>

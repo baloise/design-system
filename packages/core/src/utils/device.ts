@@ -1,11 +1,11 @@
-import { balBrowser } from './browser'
+import { dsBrowser } from './browser'
 
-export class Orientation {
+export class DsOrientation {
   /**
    * Is true when the orientation is in portrait mode
    */
   public get isPortrait(): boolean {
-    if (balBrowser.hasWindow && window.matchMedia) {
+    if (dsBrowser.hasWindow && window.matchMedia) {
       return window.matchMedia('(orientation: portrait)').matches
     }
     return false
@@ -15,7 +15,7 @@ export class Orientation {
    * Is true when the orientation is in landscape mode
    */
   public get isLandscape(): boolean {
-    if (balBrowser.hasWindow && window.matchMedia) {
+    if (dsBrowser.hasWindow && window.matchMedia) {
       return window.matchMedia('(orientation: landscape)').matches
     }
     return true
@@ -29,25 +29,25 @@ export class Orientation {
   }
 }
 
-export class BalDevice {
-  public orientation = new Orientation()
+export class DsDevice {
+  public orientation = new DsOrientation()
 
   /**
    * Is true if it is a native mobile device like a iPhone
    */
   public get isMobile(): boolean {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(balBrowser.userAgent)
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(dsBrowser.userAgent)
   }
 
   /**
    * Is true if the device supports touchscreen
    */
   public get hasTouchScreen(): boolean {
-    if (balBrowser.hasWindow && balBrowser.hasNavigator) {
+    if (dsBrowser.hasWindow && dsBrowser.hasNavigator) {
       return !!('ontouchstart' in window || (navigator as any).msMaxTouchPoints)
     }
     return false
   }
 }
 
-export const balDevice = new BalDevice()
+export const dsDevice = new DsDevice()

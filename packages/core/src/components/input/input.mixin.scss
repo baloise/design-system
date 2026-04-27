@@ -1,0 +1,201 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * General Mixins
+ * --------------------------------
+ */
+
+@mixin placeholder {
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+/**
+ * Control Mixins
+ * --------------------------------
+ */
+
+@mixin vars($prefix) {
+  @include vars.local(#{$prefix}-family, var(--ds-input-control-family));
+  @include vars.local(#{$prefix}-weight, var(--ds-input-control-weight));
+  @include vars.local(#{$prefix}-line-height, var(--ds-input-control-line-height));
+  @include vars.local(#{$prefix}-size, var(--ds-input-control-size-device));
+
+  @include vars.local(#{$prefix}-color, var(--ds-input-control-color-value-base));
+  @include vars.local(#{$prefix}-placeholder, var(--ds-input-control-color-placeholder-base));
+}
+
+@mixin style($prefix, $selector: '#input') {
+  #{$selector} {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    position: relative;
+    background: inherit;
+
+    flex: 1;
+
+    color: var(--_#{$prefix}-color);
+    font-family: var(--_#{$prefix}-family);
+    font-weight: var(--_#{$prefix}-weight);
+    font-size: var(--_#{$prefix}-size);
+    line-height: var(--_#{$prefix}-line-height);
+
+    border-radius: var(--_#{$prefix}-container-radius);
+
+    @include placeholder {
+      color: var(--_#{$prefix}-placeholder);
+    }
+  }
+}
+
+/**
+ * Container Mixins
+ * --------------------------------
+ */
+
+@mixin vars-container($prefix) {
+  @include vars.local(#{$prefix}-container-background, var(--ds-input-container-color-base-background));
+  @include vars.local(#{$prefix}-container-border-color, var(--ds-input-container-color-base-border));
+  @include vars.local(#{$prefix}-container-border-width, var(--ds-input-container-border-width));
+  @include vars.local(#{$prefix}-container-radius, var(--ds-input-container-radius));
+
+  @include vars.local(#{$prefix}-container-hover-background, var(--ds-input-container-color-hover-background));
+  @include vars.local(#{$prefix}-container-active-background, var(--ds-input-container-color-active-background));
+  @include vars.local(#{$prefix}-container-focus-background, var(--ds-input-container-color-focus-background));
+
+  @include vars.local(#{$prefix}-container-hover-border, var(--ds-input-container-color-hover-border));
+  @include vars.local(#{$prefix}-container-active-border, var(--ds-input-container-color-active-border));
+  @include vars.local(#{$prefix}-container-focus-border, var(--ds-input-container-color-focus-border));
+}
+
+@mixin container($prefix, $selector: '#container') {
+  #{$selector} {
+    box-sizing: border-box;
+    clear: both;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 3rem;
+    gap: 0.25rem;
+    padding-inline: 0.5rem;
+
+    background: var(--_#{$prefix}-container-background);
+    border: var(--_#{$prefix}-container-border-width) solid var(--_#{$prefix}-container-border-color);
+    border-radius: var(--_#{$prefix}-container-radius);
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        background: var(--_#{$prefix}-container-hover-background);
+        border-color: var(--_#{$prefix}-container-hover-border);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      background: var(--_#{$prefix}-container-active-background);
+      border-color: var(--_#{$prefix}-container-active-border);
+    }
+
+    &:focus-within,
+    &.is-focused {
+      &:not(:active) {
+        background: var(--_#{$prefix}-container-focus-background);
+        border-color: var(--_#{$prefix}-container-focus-border);
+      }
+    }
+  }
+}
+
+/**
+ * Label Mixins
+ * --------------------------------
+ */
+
+@mixin vars-label($prefix) {
+  @include vars.local(#{$prefix}-label-color, var(--ds-input-label-color-base));
+  @include vars.local(#{$prefix}-label-family, var(--ds-input-label-family));
+  @include vars.local(#{$prefix}-label-weight, var(--ds-input-label-weight));
+  @include vars.local(#{$prefix}-label-line-height, var(--ds-input-label-line-height));
+  @include vars.local(#{$prefix}-label-size, var(--ds-input-label-size-device));
+}
+
+@mixin label($prefix, $selector: 'label') {
+  :where(fieldset) {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  :where(legend) {
+    padding: 0;
+    float: left;
+    width: 100%;
+  }
+
+  #{$selector} {
+    @include font-smoothing();
+
+    display: block;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    // margin-bottom: 0.25rem;
+
+    color: var(--_#{$prefix}-label-color);
+    font-family: var(--_#{$prefix}-label-family);
+    font-weight: var(--_#{$prefix}-label-weight);
+    font-size: var(--_#{$prefix}-label-size);
+    line-height: var(--_#{$prefix}-label-line-height);
+  }
+}
+
+/**
+ * Description Mixins
+ * --------------------------------
+ */
+
+@mixin vars-description($prefix) {
+  @include vars.local(#{$prefix}-description-color, var(--ds-input-description-color-base));
+  @include vars.local(#{$prefix}-description-family, var(--ds-input-description-family));
+  @include vars.local(#{$prefix}-description-weight, var(--ds-input-description-weight));
+  @include vars.local(#{$prefix}-description-line-height, var(--ds-input-description-line-height));
+  @include vars.local(#{$prefix}-description-size, var(--ds-input-description-size-device));
+}
+
+@mixin description($prefix, $selector: '#description') {
+  #{$selector} {
+    @include font-smoothing();
+
+    display: flex;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    gap: 0.25rem;
+
+    // this is needed to prevent screen flimmering when the descriptions is only shown on error
+    min-height: 1.125rem;
+
+    color: var(--_#{$prefix}-description-color);
+    font-family: var(--_#{$prefix}-description-family);
+    font-weight: var(--_#{$prefix}-description-weight);
+    font-size: var(--_#{$prefix}-description-size);
+    line-height: var(--_#{$prefix}-description-line-height);
+
+    ds-icon {
+      --icon-color: var(--_#{$prefix}-description-color);
+    }
+  }
+}

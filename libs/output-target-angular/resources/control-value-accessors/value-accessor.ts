@@ -2,8 +2,8 @@ import { AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy
 import { ControlValueAccessor, NgControl } from '@angular/forms'
 import { Subscription } from 'rxjs'
 
-import type { BaloiseDesignSystemAngularConfig } from '..'
-import { BalTokenUserConfig, raf } from '..'
+import type { DesignSystemAngularConfig } from '..'
+import { DsTokenUserConfig, raf } from '..'
 
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
@@ -52,7 +52,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
     }
   }
 
-  @HostListener('balBlur', ['$event.target'])
+  @HostListener('dsBlur', ['$event.target'])
   _handleBlurEvent(el: any): void {
     if (el === this.elementRef.nativeElement) {
       this.onTouched()
@@ -109,7 +109,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 
       let config
       try {
-        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenUserConfig)
+        config = this.injector.get<DesignSystemAngularConfig>(DsTokenUserConfig)
       } catch {
         /* No config */
       }
@@ -161,7 +161,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 
 export const findFieldComponent = (element: ElementRef): { disabled: boolean; invalid: boolean } | undefined => {
   if (element && element.nativeElement) {
-    return element.nativeElement.closest('bal-field') || undefined
+    return element.nativeElement.closest('ds-field') || undefined
   }
   return undefined
 }

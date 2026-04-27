@@ -1,6 +1,6 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
 
-export const decorators: Decorator[] = [(Story: any) => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
+export const decorators: Decorator[] = [(Story: any) => `${Story().outerHTML || Story()}`]
 
 const preview: Preview = {
   globalTypes: {
@@ -17,7 +17,7 @@ const preview: Preview = {
       toc: {
         contentsSelector: '.sbdocs-content',
         headingSelector: 'h2, h3',
-        ignoreSelector: '.docs-story, .title, .subtitle, .bal-heading__text',
+        ignoreSelector: '.docs-story, .title, .subtitle',
         title: '', //'On this page',
         disable: false,
       },

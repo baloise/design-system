@@ -1,10 +1,10 @@
 import { debounce } from '../helpers'
 import { SingleSubject } from '../types/signal'
-import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
-import { BalMutationListener } from './mutation.listener'
+import { MutationObserver, MutationObserverOptions } from './mutation.interfaces'
+import { MutationListener } from './mutation.listener'
 
-export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
-  private listener?: BalMutationListener
+export class MutationSubject extends SingleSubject<MutationObserver> {
+  private listener?: MutationListener
   private debouncedNotify = debounce(() => this.notify(), 50)
 
   constructor(private options: Partial<MutationObserverOptions>) {
@@ -13,10 +13,10 @@ export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
         observer.mutationListener()
       }
     })
-    this.listener = new BalMutationListener(options)
+    this.listener = new MutationListener(options)
   }
 
-  override attach(observer: BalMutationObserver): void {
+  override attach(observer: MutationObserver): void {
     super.attach(observer)
     if (this.options.closest) {
       const closestElement = observer.el.closest<HTMLElement>(this.options.closest)

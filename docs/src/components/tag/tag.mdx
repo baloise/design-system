@@ -1,0 +1,98 @@
+import { ArgTypes, Canvas, ColorItem, ColorPalette, Markdown, Meta, Subtitle, Title, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as TagStories from './tag.stories'
+
+<Meta of={TagStories} />
+
+<StoryHeading of={TagStories.Basic} hidden></StoryHeading>
+
+<Banner of={TagStories} />
+
+<Lead>**Tag** highlights a label for quick recognition.</Lead>
+
+<BasicStoryTabs tag="tag" htmlStory={TagStories.BasicHtml} webComponentStory={TagStories.Basic} index={1} />
+
+<PlaygroundBar of={TagStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.Closable}></StoryHeading>
+
+The tag component can include a close button by using the `closable` property.
+
+<BasicStoryTabs tag="tag" htmlStory={TagStories.ClosableHtml} webComponentStory={TagStories.Closable} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.Colors}></StoryHeading>
+
+<BasicStoryTabs tag="tag" htmlStory={TagStories.ColorsHtml} webComponentStory={TagStories.Colors} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.TagGroup}></StoryHeading>
+
+The tag component can be grouped alongside the `ds-tag-group` component, which offers optimal spacing options.
+
+<BasicStoryTabs tag="tag" htmlStory={TagStories.TagGroupHtml} webComponentStory={TagStories.TagGroup} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="tag" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use the tag component to highlight labels and keywords. Tags can optionally include a close button for dismissible tags; ensure the close button has proper keyboard and screen reader support.
+
+<Markdown>
+  {`
+| Requirement         | How to implement                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Tag semantics       | Use \`<span>\` with the \`tag\` class to wrap label text; no interactive behavior required         |
+| Closable tags       | If closable, include a \`<ds-close>\` button inside the tag; it handles keyboard activation       |
+| Icon-only tags      | If a tag displays only an icon with no text, add \`aria-label\` to the tag to describe its purpose|
+| Decorative icons    | If icons are decorative, set \`aria-hidden="true"\` on \`<ds-icon>\` elements                      |
+| Color semantics     | Do not rely on color alone to convey information (e.g., danger, success); include text or icons   |
+| Disabled state      | CSS class \`is-disabled\` is visual only; if you need truly disabled tags, use \`aria-disabled\`  |
+`}
+</Markdown>
+
+> **Note:** Icon-only tags and tags that rely solely on color to convey status (e.g. danger tag) must include accessible text via `aria-label` or visible label text.
+
+### Web component
+
+The `ds-tag` element manages the following automatically:
+
+- **`part="label"`** — exposes the label slot as a CSS part so consumers can style inner text independently
+- **Close button accessibility** — the `<ds-close>` button inside a closable tag is keyboard-accessible and announces its purpose ("close") to screen readers
+- **No forced role** — the component is semantically neutral; tags are labels and rely on context for meaning
+- **`dsCloseClick` event** — fires when the close button is activated; consumer must handle tag removal
+- **No disabled state in web component** — the `disabled` prop applies styling only; to truly disable a tag, use `aria-disabled="true"` and prevent interaction with JavaScript
+- **No automatic label announcement** — meaning comes from the tag's text content; icon-only tags require `aria-label`
+
+### References
+
+- [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span) — MDN
+- [`<ds-close>`](https://baloise.github.io/design-system/next/?path=/docs/components-navigation-close--documentation) — Baloise Design System
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+- [WCAG 2.1 — Non-text Content](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html)
+
+<Footer />

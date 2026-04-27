@@ -1,0 +1,5 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+:host {
+  @include visually-hidden();
+}

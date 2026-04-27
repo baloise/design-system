@@ -1,0 +1,9 @@
+@use '../../hybrid' as hybrid;
+
+@use './label.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+}

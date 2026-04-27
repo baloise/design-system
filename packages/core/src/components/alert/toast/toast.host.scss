@@ -1,0 +1,273 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../vars' as vars;
+@use '../../../attr' as attr;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include vars.base(toast);
+  @include vars.local(toast-shadow, var(--ds-shadow-box-base));
+  @include vars.local(toast-radius, var(--ds-toast-radius));
+  @include vars.local(toast-color-background, var(--ds-toast-base-background));
+  @include vars.local(toast-color-text, var(--ds-toast-base-text));
+  @include vars.local(toast-icon, var(--ds-toast-base-icon));
+
+  @include vars.local(toast-progress-duration, 0);
+  @include vars.local(toast-progress-bar, var(--ds-toast-base-progress-bar));
+  @include vars.local(toast-progress-background, var(--ds-toast-base-progress-background));
+
+  @include vars.local(toast-heading-family, var(--ds-text-family-heading));
+  @include vars.local(toast-heading-weight, var(--ds-text-weight-bold));
+  @include vars.local(toast-heading-size, var(--ds-text-size-base-device));
+  @include vars.local(toast-heading-line-height, var(--ds-text-line-height-heading));
+
+  @include vars.local(toast-content-family, var(--ds-text-family-body));
+  @include vars.local(toast-content-weight, inherit);
+  @include vars.local(toast-content-size, var(--ds-text-size-sm-device));
+  @include vars.local(toast-content-line-height, var(--ds-text-line-height-body));
+
+  @include vars.local(toast-gap, 0.125rem);
+  @include vars.local(toast-p, 1rem);
+
+  // Animation
+  @include vars.local(toast-animation-start-opacity, 1);
+  @include vars.local(toast-animation-start-transform, none);
+
+  @include vars.local(toast-animation-transition, none);
+
+  @include vars.local(toast-animation-end-opacity, 1);
+  @include vars.local(toast-animation-end-transform, none);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include font-smoothing();
+  @include unselectable();
+  @include print-hidden();
+
+  opacity: var(--_toast-animation-start-opacity);
+  transform: var(--_toast-animation-start-transform);
+
+  flex: 1;
+  position: relative;
+  hyphens: auto;
+
+  color: var(--_toast-color-text);
+  background: var(--_toast-color-background);
+  border-radius: var(--_toast-radius);
+  box-shadow: var(--_toast-shadow);
+
+  padding: var(--_toast-p);
+
+  column-gap: calc(var(--_toast-gap) * 4);
+  row-gap: var(--_toast-gap);
+  align-items: center;
+  width: 100%;
+
+  //
+  // Icon
+  // --------------------------------
+  ds-icon:not([name]) {
+    --icon-color: null;
+    --icon-size: var(--ds-icon-size-lg);
+  }
+
+  #icon {
+    grid-area: icon;
+  }
+
+  //
+  // Content
+  // --------------------------------
+
+  #content {
+    margin: 0 !important;
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+
+    //
+    // Heading
+    // --------------------------------
+    & > strong,
+    & > b,
+    & > h2 {
+      font-family: var(--_toast-heading-family);
+      font-weight: var(--_toast-heading-weight);
+      line-height: var(--_toast-heading-line-height);
+      font-size: var(--_toast-heading-size);
+      margin: 0 !important;
+    }
+
+    //
+    // Message
+    // --------------------------------
+    &,
+    & > span,
+    & > p {
+      font-family: var(--_toast-content-family);
+      font-size: var(--_toast-content-size);
+      font-weight: var(--_toast-content-weight);
+      line-height: var(--_toast-content-line-height);
+    }
+  }
+
+  //
+  // Action Button
+  // --------------------------------
+  ds-button,
+  .button {
+    --button-mt: 0;
+    grid-area: action;
+    align-self: center;
+  }
+
+  //
+  // Close Button
+  // --------------------------------
+  .close,
+  ds-close {
+    grid-area: close;
+    align-self: center;
+  }
+}
+
+//
+// Grid Layout
+// --------------------------------
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'icon content';
+}
+
+:host(.is-closable:not(.is-action)) {
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'icon content close';
+}
+
+:host(.is-action:not(.is-closable)) {
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'icon content action';
+}
+
+:host(.is-action.is-closable) {
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-areas: 'icon content action close';
+}
+
+//
+// Container Animations
+// --------------------------------
+
+:host(.is-ready) {
+  transition: var(--_toast-animation-transition);
+}
+
+:host(.is-visible) {
+  opacity: var(--_toast-animation-end-opacity);
+  transform: var(--_toast-animation-end-transform);
+}
+
+//
+// Progress Bar
+// -------------------------------
+:host(.has-progress-bar) {
+  &::before {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.25rem;
+    width: 100%;
+    content: '';
+    background-color: var(--_toast-progress-background);
+    border-bottom-left-radius: var(--_toast-radius);
+    border-bottom-right-radius: var(--_toast-radius);
+  }
+
+  &::after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.25rem;
+    width: 16px;
+    content: '';
+    background-color: var(--_toast-progress-bar);
+    border-bottom-left-radius: var(--_toast-radius);
+    animation: progress var(--_toast-progress-duration) linear forwards;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+// --------------------------------
+$colors: ('info', 'success', 'warning', 'danger');
+
+@each $color in $colors {
+  :host(.is-#{$color}) {
+    --mod-toast-color-text: var(--ds-toast-#{$color}-text);
+    --mod-toast-color-border: var(--ds-toast-#{$color}-border);
+    --mod-toast-color-background: var(--ds-toast-#{$color}-background);
+    --mod-toast-icon: var(--ds-toast-#{$color}-icon);
+    --mod-toast-progress-bar: var(--ds-toast-#{$color}-progress-bar);
+    --mod-toast-progress-background: var(--ds-toast-#{$color}-progress-background);
+  }
+}
+
+/**
+  * Animations
+  * --------------------------------
+  * Define here the animations for the component.
+  */
+
+:host(.has-progress-bar) {
+  &::after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.25rem;
+    width: 16px;
+    content: '';
+    background-color: var(--_toast-progress-bar);
+    border-bottom-left-radius: var(--_toast-radius);
+    animation: progress var(--_toast-progress-duration) linear forwards;
+  }
+}
+
+:host(.is-paused) {
+  &::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  99% {
+    width: 99%;
+  }
+  100% {
+    width: 100%;
+    border-bottom-right-radius: var(--_toast-radius);
+  }
+}

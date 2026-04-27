@@ -1,0 +1,638 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use 'sass:map';
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../host' as host;
+@use '../../attr' as attr;
+@use './button-group/button-group.mixin.scss' as button-group;
+
+$use-host: false !default;
+$name: button;
+$css-selector: ('.button');
+$host-selector: ('#button');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(button-font-family, var(--ds-button-family));
+  @include vars.local(button-font-weight, var(--ds-button-weight));
+  @include vars.local(button-font-size, var(--ds-button-size-base));
+  @include vars.local(button-line-height, var(--ds-button-line-height));
+  @include vars.local(button-radius, var(--ds-button-radius-base));
+
+  @include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
+  @include vars.local(button-color-border, var(--ds-button-color-primary-base-border));
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base-background));
+
+  @include vars.local(button-color-text-hover, var(--ds-button-color-primary-hover-text));
+  @include vars.local(button-color-border-hover, var(--ds-button-color-primary-hover-border));
+  @include vars.local(button-color-background-hover, var(--ds-button-color-primary-hover-background));
+
+  @include vars.local(button-color-text-active, var(--ds-button-color-primary-active-text));
+  @include vars.local(button-color-border-active, var(--ds-button-color-primary-active-border));
+  @include vars.local(button-color-background-active, var(--ds-button-color-primary-active-background));
+
+  @include vars.local(button-width, var(--ds-button-width, fit-content));
+  @include vars.local(button-border-style, solid);
+
+  @include vars.local(button-gap, 0.5rem);
+  @include vars.local(button-min-height, 3rem);
+  @include vars.local(button-min-width, 3rem);
+  @include vars.local(button-padding-inline, 1.5rem);
+
+  @include vars.local(button-box-shadow, none);
+  @include vars.local(button-text-shadow, none);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  @include unselectable();
+  @include font-smoothing();
+  @include print-hidden();
+
+  appearance: auto;
+  position: relative;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  word-break: normal;
+  box-shadow: none;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-select: none;
+
+  box-shadow: var(--_button-box-shadow);
+  text-shadow: var(--_button-text-shadow);
+
+  touch-action: manipulation;
+  transition-property: color, background-color, border-color, box-shadow, text-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  font-size: var(--_button-font-size);
+  font-family: var(--_button-font-family);
+  font-weight: var(--_button-font-weight);
+  line-height: var(--_button-line-height);
+
+  border-radius: var(--_button-radius);
+  border-style: var(--_button-border-style);
+  border-width: var(--ds-border-width-base);
+
+  width: var(--_button-width, fit-content);
+  min-width: var(--_button-min-width);
+  min-height: var(--_button-min-height);
+  gap: var(--_button-gap);
+  padding-inline: var(--_button-padding-inline);
+
+  background-color: var(--_button-color-background);
+  color: var(--_button-color-text);
+  border-color: var(--_button-color-border);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  // Icon & Spinner
+  --spinner-size: 1.5rem;
+  --icon-color: var(--_button-color-text);
+
+  // Outline
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      @include focus-shadow();
+    }
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      --icon-color: var(--_button-color-text-hover);
+      color: var(--_button-color-text-hover);
+      background-color: var(--_button-color-background-hover);
+      border-color: var(--_button-color-border-hover);
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    --icon-color: var(--_button-color-text-active);
+    background-color: var(--_button-color-background-active);
+    color: var(--_button-color-text-active);
+    border-color: var(--_button-color-border-active);
+    translate: 0 0.5px;
+  }
+}
+
+//
+// Wide
+// --------------------------------
+
+@include hybrid.host($use-host) {
+  :host(.is-wide) {
+    width: 100%;
+    flex: 1 1 auto;
+
+    #button {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-wide {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+//
+// Link
+// --------------------------------
+
+@mixin text-decoration() {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: var(--ds-link-border-width);
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-link) #button {
+    @include text-decoration();
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-link {
+    @include text-decoration();
+  }
+}
+
+//
+// Badge Position
+// --------------------------------
+
+@include hybrid.host($use-host) {
+  :host ::slotted(ds-badge),
+  :host ::slotted(.badge) {
+    --badge-position: absolute;
+    --badge-top: -0.5rem;
+    --badge-right: -0.5rem;
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  .badge,
+  ds-badge {
+    --badge-position: absolute;
+    --badge-top: -0.5rem;
+    --badge-right: -0.5rem;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+// --------------------------------
+$colors: (
+  'primary',
+  'secondary',
+  'tertiary',
+  'tertiary-yellow',
+  'tertiary-purple',
+  'tertiary-green',
+  'tertiary-red',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'link',
+  'text'
+);
+
+@mixin color($color) {
+  --mod-button-color-text: var(--ds-button-color-#{$color}-base-text);
+  --mod-button-color-background: var(--ds-button-color-#{$color}-base-background);
+  --mod-button-color-border: var(--ds-button-color-#{$color}-base-border);
+
+  --mod-button-color-text-hover: var(--ds-button-color-#{$color}-hover-text);
+  --mod-button-color-background-hover: var(--ds-button-color-#{$color}-hover-background);
+  --mod-button-color-border-hover: var(--ds-button-color-#{$color}-hover-border);
+
+  --mod-button-color-text-active: var(--ds-button-color-#{$color}-active-text);
+  --mod-button-color-background-active: var(--ds-button-color-#{$color}-active-background);
+  --mod-button-color-border-active: var(--ds-button-color-#{$color}-active-border);
+}
+
+@each $color in $colors {
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+      @include color($color);
+    }
+  }
+
+  @include hybrid.styles('button', $use-host) {
+    &.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading) {
+      @include color($color);
+    }
+  }
+}
+
+@each $color in $colors {
+  @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link' and $color != 'text') {
+    @include hybrid.host($use-host) {
+      :host(.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+        @include color(inverted);
+      }
+    }
+
+    @include hybrid.styles('button', $use-host) {
+      &.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading) {
+        @include color(inverted);
+      }
+    }
+  }
+}
+
+//
+// Inverted Colors
+// --------------------------------
+
+$inverted-colors: ('secondary', 'tertiary', 'text' 'link');
+
+@each $color in $inverted-colors {
+  @include hybrid.host($use-host) {
+    :host([color='#{$color}'][inverted]:not([disabled]):not([loading])) {
+      @include color('inverted-#{$color}');
+    }
+  }
+
+  @include hybrid.styles('button', $use-host) {
+    &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
+      @include color('inverted-#{$color}');
+    }
+  }
+}
+
+//
+// Sizes
+// --------------------------------
+@mixin size-sm() {
+  --mod-button-font-size: var(--ds-button-size-sm);
+  --mod-button-min-height: 2rem;
+  --mod-button-min-width: 2rem;
+  --mod-button-padding-inline: 0.75rem;
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-sm) {
+    @include size-sm();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-sm,
+  &.is-small {
+    @include size-sm();
+  }
+}
+
+@mixin size-lg() {
+  --mod-button-font-size: var(--ds-button-size-lg);
+  --mod-button-min-height: 3.5rem;
+  --mod-button-min-width: 3.5rem;
+  --mod-button-padding-inline: 1.5rem;
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-lg) {
+    @include size-lg();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-lg,
+  &.is-large {
+    @include size-lg();
+  }
+}
+
+@mixin size-xl() {
+  --mod-button-font-size: var(--ds-button-size-xl);
+  --mod-button-min-height: 5.5rem;
+  --mod-button-min-width: 5.5rem;
+  --mod-button-padding-inline: 1.5rem;
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-xl) {
+    @include size-xl();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-xl {
+    @include size-xl();
+  }
+}
+
+//
+// Shape Variants
+// --------------------------------
+
+// Flat
+@mixin shape-flat() {
+  --mod-button-padding-inline: 0;
+  --mod-button-min-height: 1.75rem;
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-flat) {
+    @include shape-flat();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-flat {
+    @include shape-flat();
+  }
+}
+
+// Rounded
+@mixin shape-rounded() {
+  --mod-button-radius: var(--ds-button-radius-rounded);
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-rounded) {
+    @include shape-rounded();
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-rounded {
+    @include shape-rounded();
+  }
+}
+
+// Square
+@mixin shape-square($size: 3rem) {
+  --mod-button-padding-inline: 0;
+  --mod-button-gap: 0;
+  --mod-button-min-height: #{$size};
+  --mod-button-min-width: #{$size};
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-square:not(.is-sm)) {
+    @include shape-square();
+    --icon-size: 1.5rem;
+  }
+
+  :host(.is-square.is-sm) {
+    @include shape-square(2rem);
+    --icon-size: var(--ds-icon-size-sm);
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-square:not(.is-sm),
+  &.is-square:not(.is-small) {
+    @include shape-square();
+    --icon-size: 1.5rem;
+  }
+
+  &.is-square.is-sm,
+  &.is-square.is-small {
+    @include shape-square(2rem);
+    --icon-size: var(--ds-icon-size-sm);
+  }
+}
+
+// Circle
+@mixin shape-circle($size: 3rem) {
+  --mod-button-radius: var(--ds-button-radius-rounded);
+  --mod-button-padding-inline: 0;
+  --mod-button-gap: 0;
+  --mod-button-min-height: #{$size};
+  --mod-button-min-width: #{$size};
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-circle:not(.is-sm)) {
+    @include shape-circle();
+    --icon-size: 1.5rem;
+  }
+
+  :host(.is-circle.is-sm) {
+    @include shape-circle(2rem);
+    --icon-size: var(--ds-icon-size-sm);
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.is-circle:not(.is-sm),
+  &.is-circle:not(.is-small) {
+    @include shape-circle();
+    --icon-size: 1.5rem;
+  }
+
+  &.is-circle.is-small,
+  &.is-circle.is-sm {
+    @include shape-circle(2rem);
+    --icon-size: var(--ds-icon-size-sm);
+  }
+}
+
+//
+// Dashed Variants
+// --------------------------------
+$dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-yellow');
+
+@each $color in $dashed-colors {
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}.is-dashed) {
+      --mod-button-border-style: dashed;
+      --icon-shape: var(--_button-color-border);
+
+      @include color('#{$color}-dashed');
+    }
+  }
+
+  @include hybrid.styles($css-selector, $use-host) {
+    &.is-#{$color}.is-dashed {
+      --mod-button-border-style: dashed;
+      --icon-shape: var(--_button-color-border);
+
+      @include color('#{$color}-dashed');
+    }
+  }
+}
+
+//
+// Shadow
+// --------------------------------
+@include hybrid.host($use-host) {
+  :host(.has-shadow:not(.is-link):not(.is-text)) {
+    --mod-button-box-shadow: var(--ds-shadow-box-base);
+  }
+
+  :host(.is-text.has-shadow),
+  :host(.is-link.has-shadow) {
+    --mod-button-text-shadow: var(--ds-shadow-text);
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.has-shadow:not(.is-link, .is-text) {
+    --mod-button-box-shadow: var(--ds-shadow-box-base);
+  }
+
+  &.is-text.has-shadow,
+  &.is-link.has-shadow {
+    --mod-button-text-shadow: var(--ds-shadow-text);
+  }
+}
+
+//
+// No Wrap
+// --------------------------------
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) {
+    max-width: stretch;
+
+    #button {
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: stretch;
+    }
+  }
+}
+
+@include hybrid.styles('button', $use-host) {
+  &.has-no-wrap {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: stretch;
+  }
+}
+
+//
+// Checkbox and Radio Button Styles
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &:is(input[type='checkbox'], input[type='radio'])[aria-label]::after {
+    --_button-content: attr(aria-label);
+
+    content: var(--_button-content);
+  }
+
+  &:is(input[type='checkbox'], input[type='radio']) {
+    @include color(secondary);
+
+    appearance: none;
+    vertical-align: middle;
+  }
+
+  &:is(input[type='checkbox'], input[type='radio']):where(input:checked) {
+    @include color(primary);
+
+    isolation: isolate;
+  }
+}
+
+//
+// Disabled State
+// --------------------------------
+@mixin button-disabled() {
+  &,
+  &:hover,
+  &.is-hovered,
+  &:active,
+  &.is-pressed,
+  &:focus,
+  &.is-focused {
+    pointer-events: none;
+    opacity: 1;
+    box-shadow: none;
+    text-decoration: none;
+    cursor: default;
+    translate: 0 0;
+    background-color: var(--ds-button-color-disabled-base-background);
+    border-color: var(--ds-button-color-disabled-base-border);
+    color: var(--ds-button-color-disabled-base-text);
+
+    & > ds-icon {
+      --icon-size: var(--ds-button-color-disabled-base-text);
+    }
+
+    & > ds-spinner {
+      --spinner-color: var(--ds-button-color-disabled-base-text);
+    }
+
+    & > ds-spinner[variation='circle'] {
+      --spinner-circle-color-border-background: var(--ds-color-grey-4);
+      --spinner-circle-color-border-progress: var(--ds-button-color-disabled-base-text);
+    }
+  }
+}
+@include hybrid.host($use-host) {
+  :host {
+    #button[disabled] {
+      @include button-disabled();
+    }
+  }
+  :host([loading]) #button {
+    @include button-disabled();
+  }
+}
+
+@include hybrid.styles-only($use-host) {
+  fieldset[disabled] .button,
+  .button.is-loading,
+  .button.is-disabled,
+  .button.is-inverted.is-disabled,
+  .button[disabled] {
+    @include button-disabled();
+  }
+}
+
+//
+// Button Group
+// --------------------------------
+@include hybrid.styles-only($use-host) {
+  .buttons {
+    @include button-group.style();
+  }
+}

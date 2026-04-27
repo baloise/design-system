@@ -3,7 +3,7 @@ import { deepReady, waitAfterFramePaint } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { MutationObserverOptions } from './mutation.interfaces'
 
-export class BalMutationListener extends ListenerAbstract {
+export class MutationListener extends ListenerAbstract {
   private tags: string[] = []
   private waitAfterFramePrint = false
   private mutationObserver: MutationObserver | undefined = undefined

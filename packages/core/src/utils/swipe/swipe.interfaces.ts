@@ -1,13 +1,13 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 
-export type BalSwipeInfo = {
+export type DsSwipeInfo = {
   left: boolean
   right: boolean
 }
 
-export type BalSwipeListenerFn = (info: BalSwipeInfo) => void
+export type DsSwipeListenerFn = (info: DsSwipeInfo) => void
 
-export interface BalSwipeObserver {
+export interface DsSwipeObserver {
   el: HTMLElement | HTMLStencilElement
-  swipeListener(info: BalSwipeInfo): void
+  swipeListener(info: DsSwipeInfo): void
 }

@@ -1,0 +1,12 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../vars' as vars;
+
+@mixin style {
+  @include vars.margin(tags);
+  @include vars.local(tags-gap, 0.25rem);
+  @include vars.local(tags-display, inline-flex);
+
+  display: var(--_tags-display);
+  gap: var(--_tags-gap);
+  vertical-align: middle;
+}

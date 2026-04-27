@@ -1,0 +1,162 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-tag>Tag</ds-tag>
+      </section>
+
+      <!-- Variants -->
+      <section data-testid="variants">
+        <span>Variants</span>
+        <ds-tag shape="square" color="purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </ds-tag>
+        <ds-tag shape="square" color="purple-light">
+          <ds-icon name="info-circle"></ds-icon>
+          Title
+        </ds-tag>
+        <br />
+        <br />
+        <ds-tag shape="square" small color="purple-light">
+          Title
+          <span class="text is-regular is-primary-light">Subtitle</span>
+        </ds-tag>
+        <ds-tag shape="square" small color="purple-light">
+          <ds-icon name="info-circle"></ds-icon>
+          <b>Title</b>
+        </ds-tag>
+      </section>
+
+      <!-- Closeable-->
+      <section data-testid="closeable">
+        <span>Closeable</span>
+        <ds-tag closable> Tag </ds-tag>
+      </section>
+
+      <!-- Pill-->
+      <section data-testid="pill">
+        <span>Pill</span>
+        <ds-tag shape="pill" closable> Tag </ds-tag>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <ds-tag size="sm" closable> Small </ds-tag>
+        <ds-tag closable> Normal </ds-tag>
+        <ds-tag size="md" closable> Medium </ds-tag>
+        <ds-tag size="lg" closable> Large </ds-tag>
+
+        <br />
+        <br />
+        <ds-tag shape="pill" size="sm" closable> Small </ds-tag>
+        <ds-tag shape="pill" closable> Normal </ds-tag>
+        <ds-tag shape="pill" size="md" closable> Medium </ds-tag>
+        <ds-tag shape="pill" size="lg" closable> Large </ds-tag>
+      </section>
+
+      <!-- Colors-->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <ds-tag closable>
+          <ds-icon name="info-circle"></ds-icon>
+          base
+        </ds-tag>
+        <ds-tag color="primary" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          primary
+        </ds-tag>
+        <ds-tag color="grey" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          grey
+        </ds-tag>
+        <br />
+        <br />
+        <ds-tag color="info" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          info
+        </ds-tag>
+        <ds-tag color="success" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          success
+        </ds-tag>
+        <ds-tag color="warning" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          warning
+        </ds-tag>
+        <ds-tag color="danger" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          danger
+        </ds-tag>
+        <br />
+        <br />
+        <ds-tag color="purple-dark" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          purple dark
+        </ds-tag>
+        <ds-tag color="red-dark" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          red dark
+        </ds-tag>
+        <ds-tag color="yellow-dark" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          yellow dark
+        </ds-tag>
+        <ds-tag color="green-dark" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          green dark
+        </ds-tag>
+        <br />
+        <br />
+        <ds-tag color="purple" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          purple
+        </ds-tag>
+        <ds-tag color="red" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          red
+        </ds-tag>
+        <ds-tag color="yellow" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          yellow
+        </ds-tag>
+        <ds-tag color="green" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          green
+        </ds-tag>
+        <br />
+        <br />
+        <ds-tag color="purple-light" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          purple light
+        </ds-tag>
+        <ds-tag color="red-light" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          red light
+        </ds-tag>
+        <ds-tag color="yellow-light" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          yellow light
+        </ds-tag>
+        <ds-tag color="green-light" closable>
+          <ds-icon name="info-circle"></ds-icon>
+          green light
+        </ds-tag>
+      </section>
+    </main>
+  </body>
+</html>

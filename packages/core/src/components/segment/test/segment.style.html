@@ -1,0 +1,186 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="basic" value="apple" checked />
+              <span>Apple</span>
+            </label>
+            <label>
+              <input type="radio" name="basic" value="strawberry" />
+              <span>Strawberry</span>
+            </label>
+            <label>
+              <input type="radio" name="basic" value="banana" />
+              <span>Banana</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Description -->
+      <section data-testid="description">
+        <span>Description</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="description" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="description" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment">
+            <label>
+              <input type="radio" name="long-content" value="apple" checked />
+              <span
+                >Apple is a sweet red fruit that grows on trees and is enjoyed by many people around the world.</span
+              >
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="long-content" value="strawberry" />
+              <span>Strawberry is a small red fruit that is often used in desserts and enjoyed by many people.</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Vertical -->
+      <section data-testid="vertical">
+        <span>Vertical</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-vertical">
+            <label>
+              <input type="radio" name="vertical" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="vertical" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Vertical on Mobile -->
+      <section data-testid="vertical-on-mobile">
+        <span>Vertical on Mobile</span>
+        <fieldset class="field">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-vertical-on-mobile">
+            <label>
+              <input type="radio" name="vertical-on-mobile" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="vertical-on-mobile" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <fieldset class="field is-disabled">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-disabled">
+            <label>
+              <input type="radio" name="disabled" value="apple" checked disabled />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="disabled" value="strawberry" disabled />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Choose your favorite fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <fieldset class="field is-danger">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-danger">
+            <label>
+              <input type="radio" name="invalid" value="apple" checked />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="invalid" value="strawberry" />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Please select a fruit</p>
+        </fieldset>
+      </section>
+
+      <!-- Invalid + Disabled -->
+      <section data-testid="invalid-disabled">
+        <span>Invalid + Disabled</span>
+        <fieldset class="field is-danger is-disabled">
+          <legend class="label">Fruits</legend>
+          <div class="segment is-danger is-disabled">
+            <label>
+              <input type="radio" name="invalid-disabled" value="apple" checked disabled />
+              <span>Apple</span>
+              <span class="description">A sweet red fruit</span>
+            </label>
+            <label>
+              <input type="radio" name="invalid-disabled" value="strawberry" disabled />
+              <span>Strawberry</span>
+              <span class="description">A small red fruit</span>
+            </label>
+          </div>
+          <p class="help">Please select a fruit</p>
+        </fieldset>
+      </section>
+    </main>
+  </body>
+</html>

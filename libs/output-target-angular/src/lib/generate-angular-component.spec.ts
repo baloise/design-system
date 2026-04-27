@@ -79,7 +79,7 @@ export declare interface MyComponent extends Components.MyComponent {}
 })
 export class MyComponent {
   /**  */
-  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<boolean>>;
+  my-event!: EventEmitter<DS.MyComponentCustomEvent<boolean>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -91,10 +91,10 @@ export class MyComponent {
 
   test('should create a Angular component with a event with a custom type', () => {
     const references: ComponentCompilerTypeReferences = {
-      BalTabOption: {
+      DsTabOption: {
         id: 'some-id',
         location: 'import',
-        path: './bal-tab.type',
+        path: './ds-tab.type',
       },
     }
 
@@ -115,8 +115,8 @@ export class MyComponent {
             tags: [],
           },
           complexType: {
-            original: 'BalTabOption',
-            resolved: 'BalTabOption',
+            original: 'DsTabOption',
+            resolved: 'DsTabOption',
             references: references,
           },
         },
@@ -132,8 +132,8 @@ export class MyComponent {
             tags: [],
           },
           complexType: {
-            original: 'BalTabOption',
-            resolved: 'BalTabOption',
+            original: 'DsTabOption',
+            resolved: 'DsTabOption',
             references: references,
           },
         },
@@ -144,7 +144,7 @@ export class MyComponent {
     } as any)
 
     expect(finalText).toEqual(`
-import type { BalTabOption } from 'component-library/components';
+import type { DsTabOption } from 'component-library/components';
 export declare interface MyComponent extends Components.MyComponent {}
 @ProxyCmp({
   defineCustomElementFn: defineMyComponent
@@ -158,9 +158,9 @@ export declare interface MyComponent extends Components.MyComponent {}
 })
 export class MyComponent {
   /**  */
-  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<BalTabOption>>;
+  my-event!: EventEmitter<DS.MyComponentCustomEvent<DsTabOption>>;
   /**  */
-  my-event-two!: EventEmitter<BalEvents.MyComponentCustomEvent<BalTabOption>>;
+  my-event-two!: EventEmitter<DS.MyComponentCustomEvent<DsTabOption>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -221,7 +221,7 @@ export declare interface MyComponent extends Components.MyComponent {}
 })
 export class MyComponent {
   /**  */
-  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<MouseEvent>>;
+  my-event!: EventEmitter<DS.MyComponentCustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

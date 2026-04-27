@@ -1,0 +1,9 @@
+@use '../../hybrid' as hybrid;
+
+@use './divider.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+}

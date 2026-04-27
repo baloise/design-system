@@ -1,0 +1,8 @@
+@use '../../../hybrid' as hybrid;
+@use '../../../typography' as typography;
+
+@include hybrid.host-base(card-content, block);
+
+:host {
+  @include typography.content();
+}

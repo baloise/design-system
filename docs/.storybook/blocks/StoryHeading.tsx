@@ -9,7 +9,7 @@ export const StoryHeading = ({ of, children, hidden }) => {
     <Unstyled>
       <h2
         id={id}
-        className="sb-unstyled font-family-title text-primary font-weight-bold text-xx-large"
+        className="sb-unstyled font-family-heading text-primary font-weight-bold text-xx-large"
         style={{
           marginBottom: hidden === true ? '0' : '.5rem',
           marginTop: hidden === true ? '0' : '4rem',
@@ -37,7 +37,7 @@ export const StoryHeading = ({ of, children, hidden }) => {
             <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
           </svg>
         </a>
-        {children || story.name}
+        {children || story.name.replace('🧩', '').replace('🌍', '')}
       </h2>
     </Unstyled>
   )

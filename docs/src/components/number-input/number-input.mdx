@@ -1,0 +1,99 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+
+<Meta of={NumberInputStories} />
+
+<StoryHeading of={NumberInputStories.Basic} hidden></StoryHeading>
+
+<Banner of={NumberInputStories} />
+
+<Lead>**Number Input** is a form field component that allows users to enter numeric values with locale-aware formatting, decimal precision, and optional suffix display.</Lead>
+
+<BasicStoryTabs tag="number-input" htmlStory={NumberInputStories.BasicHtml} webComponentStory={NumberInputStories.Basic} index={1} />
+
+<PlaygroundBar of={NumberInputStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Decimal}></StoryHeading>
+
+<Canvas of={NumberInputStories.Decimal} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Suffix}></StoryHeading>
+
+<Canvas of={NumberInputStories.Suffix} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="number-input" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML so assistive technologies understand the form field's structure and state without JavaScript.
+
+<Markdown>
+  {`
+| Requirement     | How to implement                                                                                         |
+| --------------- | -------------------------------------------------------------------------------------------------------- |
+| Label link      | Wrap input in a \`<label>\` or use a separate \`<label htmlFor="input-id">\` to associate the label      |
+| Input ID        | Assign a unique \`id\` attribute to each \`<input>\` so \`<label for="">\` can reference it              |
+| Description     | Create a \`<p>\` or \`<div id="help-text">\` below the input and link it via \`aria-describedby\`       |
+| Required state  | Add the \`required\` attribute to the \`<input>\` so the browser enforces it; use \`aria-required\`      |
+| Disabled state  | Add the \`disabled\` attribute and apply \`class="is-disabled"\` to the container for visual styling     |
+| Readonly state  | Add the \`readonly\` attribute to prevent editing while keeping the field focusable and readable         |
+| Invalid state   | Add \`aria-invalid="true"\` to the \`<input>\` and \`class="is-danger"\` to the container for styling    |
+| Color variants  | Use \`class="is-success"\` or \`class="is-warning"\` on the container; combine with other states as needed |
+| Input mode      | Set \`inputmode="decimal"\` on the \`<input>\` to show a numeric keyboard on mobile devices             |
+| Constraints     | Use \`min\`, \`max\`, and \`placeholder\` attributes to provide constraints and hints to the user        |
+`}
+</Markdown>
+
+> **Note:** The HTML/CSS-only pattern does not enforce numeric validation or locale-aware formatting — the web component adds those features automatically.
+
+### Web component
+
+The `ds-number-input` element manages the following automatically:
+
+- **Label linking** — renders the \`\<label>\` inside the Field component wrapper and links it to the input via \`for\` attribute
+- **`aria-describedby`** — links the input to the description element so screen readers announce hints and validation errors
+- **`aria-invalid`** — kept in sync with the \`invalid\` prop; added to both the input and description
+- **`aria-required`** — applied when the \`required\` prop is true so assistive tech announces the requirement
+- **`disabled` / `readonly` forwarding** — propagated from props to the native \`\<input>\` element
+- **`inputmode="decimal"`** — set automatically to show numeric keyboards on mobile
+- **Form association** — uses \`ElementInternals\` to participate in native \`\<form>\` submit and reset without extra markup
+- **Numeric validation** — rejects non-numeric characters in real time; applies \`min\`, \`max\`, and decimal precision constraints
+- **Locale-aware formatting** — automatically applies thousand separators and decimal separators based on user's locale and the \`region\` prop
+- **Suffix display** — appends currency or unit symbol (e.g. "CHF") to the formatted value after blur for clearer user intent
+
+### References
+
+- [\`label\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [\`input\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) — MDN
+- [\`inputmode\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) — MDN
+- [\`aria-describedby\`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
+- [\`aria-invalid\`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [\`aria-required\`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) — MDN
+- [\`disabled\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — MDN
+- [\`readonly\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) — MDN
+- [\`ElementInternals\`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+
+<Footer />

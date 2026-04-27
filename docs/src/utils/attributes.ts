@@ -26,7 +26,7 @@ const parseUnionType = (unionType: string): string[] =>
 
 /**
  * Gets the prop type values from a component's property definition.
- * @param tag - The component tag name (e.g., 'bal-divider')
+ * @param tag - The component tag name (e.g., 'ds-divider')
  * @param propName - The property name (e.g., 'color')
  * @returns An array of possible values for the prop
  */
@@ -42,13 +42,13 @@ export const getPropValues = (tag: string, propName: string): string[] => {
 
 /**
  * Creates CSS class mappings from a component's prop type.
- * @param tag - The component tag name (e.g., 'bal-divider')
+ * @param tag - The component tag name (e.g., 'ds-divider')
  * @param propName - The property name to use in the mapping key (e.g., 'color')
  * @param classMapper - A function that maps each value to a CSS class (e.g., (v) => `is-${v}`)
  * @returns A CssClassMapping object
  *
  * @example
- * createCssMappings('bal-divider', 'color', (v) => `is-${v}`)
+ * createCssMappings('ds-divider', 'color', (v) => `is-${v}`)
  * // Returns: { 'color.primary': 'is-primary', 'color.secondary': 'is-secondary', ... }
  */
 export const createCssMappings =
@@ -56,6 +56,14 @@ export const createCssMappings =
   (propName: string, classMapper: (value: string) => string): CssClassMapping => {
     const values = getPropValues(tag, propName)
 
+    // If the prop is a boolean, we can just return a single mapping for the "true" value
+    if (values.length === 1 && values[0] === 'boolean') {
+      return {
+        [propName]: classMapper('true'),
+      }
+    }
+
+    // For non-boolean props, we create a mapping for each possible value
     return values.reduce((acc, value) => {
       acc[`${propName}.${value}`] = classMapper(value)
       return acc

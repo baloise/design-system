@@ -1,0 +1,123 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container py-medium">
+      <section data-testid="unordered-list">
+        <span>Unordered List</span>
+        <div>
+          <ul class="unordered-list">
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+          </ul>
+          <ul class="unordered-list has-bullet-circle">
+            <li>Green Circle List Item 1</li>
+            <li>Green Circle List Item 3</li>
+          </ul>
+          <ul class="unordered-list has-bullet-circle is-purple">
+            <li>Purple Circle List Item 1</li>
+            <li>Purple Circle List Item 3</li>
+          </ul>
+          <ul class="unordered-list has-bullet-circle is-red">
+            <li>Red Circle List Item 1</li>
+            <li>Red Circle List Item 3</li>
+          </ul>
+          <ul class="unordered-list has-bullet-circle is-yellow">
+            <li>Yellow Circle List Item 1</li>
+            <li>Yellow Circle List Item 3</li>
+          </ul>
+          <ul class="unordered-list has-icon-check">
+            <li>Checked List Item 1</li>
+            <li>Checked List Item 2</li>
+          </ul>
+          <ul class="unordered-list has-icon-close">
+            <li class="opacity-half">Close List Item 1</li>
+            <li class="opacity-half">Close List Item 2</li>
+          </ul>
+          <ul class="unordered-list has-icons">
+            <li class="has-icon-check">Checked List Item 1</li>
+            <li class="has-icon-check is-success">Green Checked List Item 1</li>
+            <li class="has-icon-close opacity-half">Close List Item 2</li>
+            <li class="has-icon-close opacity-half is-danger">Red Close List Item 2</li>
+          </ul>
+          <div class="s-bg-inverted p-x-small">
+            <ul class="unordered-list is-inverted">
+              <li>Inverted checked List Item 1</li>
+              <li class="has-bullet-circle is-yellow">Inverted checked List Item 1</li>
+              <li class="has-icon-check">Inverted checked List Item 1</li>
+              <li class="has-icon-close opacity-50">Inverted close List Item 2</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section data-testid="ordered-list">
+        <span>Ordered List</span>
+        <ol class="ordered-list">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ol>
+        <ol class="ordered-list is-alpha">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ol>
+        <div class="s-bg-inverted p-x-small">
+          <ol class="ordered-list is-inverted">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+          </ol>
+        </div>
+      </section>
+
+      <section data-testid="inside-list">
+        <span>Inside</span>
+        <ul class="unordered-list is-inside">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </section>
+
+      <section data-testid="compact-list">
+        <span>Compact</span>
+        <ul class="unordered-list is-compact">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </section>
+
+      <section data-testid="description-list">
+        <span>Description List</span>
+        <dl class="description-list">
+          <dt>Term 1</dt>
+          <dd>Description 1</dd>
+          <dt>Term 2</dt>
+          <dd>Description 2</dd>
+          <dt>Term 3</dt>
+          <dd>Description 3</dd>
+          <dt>Term 4</dt>
+          <dd>Description 4</dd>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

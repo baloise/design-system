@@ -4,20 +4,8 @@
 @forward 'form/_all';
 @forward 'container';
 @forward 'grid';
-@forward 'list';
 @forward 'table';
-
-$with-core-components: true !default;
-
-@if $with-core-components {
-  @include meta.load-css('../../../core/src/components/bal-heading/bal-heading.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-text/bal-text.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-label/bal-label.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-link/bal-link.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-divider/bal-divider.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-button/bal-button.core.scss');
-  @include meta.load-css('../../../core/src/components/bal-stack/bal-stack.core.scss');
-}
+@forward 'picture';
 
 .has-sticky-footer {
   min-height: 100vh;
@@ -26,7 +14,8 @@ $with-core-components: true !default;
   main {
     padding-bottom: 2.5rem;
   }
-  .bal-footer,
+
+  ds-footer,
   footer.footer {
     margin-top: auto;
   }

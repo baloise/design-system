@@ -1,0 +1,85 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BasicStoryTabs,
+  Footer,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  StylesQuote,
+  Tabs,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+
+<Meta of={CloseStories} />
+
+<StoryHeading of={CloseStories.Basic} hidden></StoryHeading>
+
+<Banner of={CloseStories} />
+
+<Lead>Close is used as a close button for modals, toast and other components.</Lead>
+
+<Canvas of={CloseStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={CloseStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="close" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Close buttons dismiss overlays (modals, notifications, alerts). Always provide a descriptive label and ensure keyboard accessibility.
+
+<Markdown>
+  {`
+| Requirement        | How to implement                                                                                  |
+| ------------------ | -------- |
+| Close button       | Use \`<button type="button"></button>\` or \`<ds-close>\` for closing overlays               |
+| Label              | Add \`aria-label="Close"\` or localized equivalent; visible text is optional                    |
+| Keyboard access    | Close buttons must be keyboard-accessible; Tab + Enter/Space to activate                      |
+| Disabled state     | Set \`disabled\` attribute when close is not available; prevents activation                    |
+| Focus management   | After closing modal, return focus to the trigger button or logical next location                |
+`}
+</Markdown>
+
+> **Note:** The `ds-close` component automatically provides an `aria-label` in the current language. When used with the `button` prop, it renders a full `ds-button` with text label.
+
+### Web component
+
+The `ds-close` element is an **interactive close button**:
+
+- **`aria-label`** — automatically set based on language configuration (no manual labeling needed)
+- **Two modes**:
+  - Default: icon-only button with built-in `aria-label`
+  - `button={true}`: renders as a full `ds-button` with visible text label
+- **Keyboard activation** — Space/Enter toggles the close action; fully keyboard-accessible
+- **`disabled` attribute** — when set, button cannot be activated; style updates to show disabled state
+- **Event emission** — close does not dismiss anything by itself; parent must listen to click event and handle removal
+- **i18n support** — label automatically respects `DsConfig.language` setting
+
+### References
+
+- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — MDN
+- [WCAG 2.1 — Button Purpose](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+
+<Footer />

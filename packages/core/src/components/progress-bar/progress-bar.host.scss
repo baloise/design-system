@@ -1,0 +1,89 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host mode
+ * These variables can be used in the component styles below and be overridden in themes.
+ */
+
+:host {
+  @include vars.local(progress-bar-height, var(--ds-progress-bar-height));
+  @include vars.local(progress-bar-radius, var(--ds-progress-bar-line-radius));
+  @include vars.local(progress-bar-background, var(--ds-progress-bar-background-dark));
+  @include vars.local(progress-bar-line-color, var(--ds-progress-bar-line-color-primary));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ * Define here the component styles for web-component-only mode
+ */
+
+:host {
+  @include unselectable;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: var(--_progress-bar-height);
+  background: var(--_progress-bar-background);
+}
+
+// Line element
+:host #line {
+  @include unselectable;
+  display: block;
+  height: var(--_progress-bar-height);
+  width: 0;
+  background: var(--_progress-bar-line-color);
+  border-top-right-radius: var(--_progress-bar-radius);
+  border-bottom-right-radius: var(--_progress-bar-radius);
+}
+
+:host #line.is-animated {
+  will-change: width;
+  transition: all 300ms ease-in-out;
+}
+
+:host #line.is-full {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+// Background colors
+:host(.is-light) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-light);
+}
+
+// Color variants
+:host(.is-primary) {
+  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-primary);
+}
+:host(.is-primary.is-dark) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-dark);
+}
+:host(.is-purple) {
+  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-purple);
+}
+:host(.is-purple.is-dark) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-purple);
+}
+:host(.is-yellow) {
+  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-yellow);
+}
+:host(.is-yellow.is-dark) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-yellow);
+}
+:host(.is-red) {
+  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-red);
+}
+:host(.is-red.is-dark) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-red);
+}
+:host(.is-green) {
+  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-green);
+}
+:host(.is-green.is-dark) {
+  --mod-progress-bar-background: var(--ds-progress-bar-background-green);
+}

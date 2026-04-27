@@ -1,9 +1,9 @@
 import { addEventListener, debounce, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalWindowResizeHandler } from './window-resize.handler'
+import { WindowResizeHandler } from './window-resize.handler'
 
-export class BalWindowResizeListener extends ListenerAbstract {
-  private resizeHandler = new BalWindowResizeHandler({ onlyListenToWidthChanges: true })
+export class WindowResizeListener extends ListenerAbstract {
+  private resizeHandler = new WindowResizeHandler({ onlyListenToWidthChanges: true })
   private debouncedNotify = debounce(() => this.notify(), 100)
 
   override connect(el?: HTMLElement | Window | Document): void {

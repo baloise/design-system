@@ -1,0 +1,255 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+ol.ordered-list {
+  @include vars.local(ordered-list-mb, 1.5rem);
+  @include vars.local(ordered-list-style-type, inherit);
+  @include vars.local(ordered-list-style-position, inherit);
+}
+
+ol.ordered-list li {
+  @include vars.local(ordered-list-marker-color, var(--ds-list-marker-base));
+}
+
+ul.unordered-list {
+  @include vars.local(unordered-list-mb, 1.5rem);
+  @include vars.local(unordered-list-style-type, disc);
+  @include vars.local(unordered-list-style-position, inherit);
+}
+
+ul.unordered-list li {
+  @include vars.local(unordered-list-marker-color, var(--ds-list-marker-base));
+  @include vars.local(unordered-list-marker-radius, var(--ds-list-marker-radius));
+  @include vars.local(
+    unordered-list-marker-icon,
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14 14"><path fill-rule="evenodd" d="M13.637 1.198a1 1 0 0 1 .134 1.408l-8.04 9.729-.003.003a1.92 1.92 0 0 1-1.5.692 1.92 1.92 0 0 1-1.499-.747l-.001-.003L.21 9.044a1 1 0 0 1 1.578-1.228l2.464 3.168 7.976-9.652a1 1 0 0 1 1.408-.134" clip-rule="evenodd"/></svg>')
+  );
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+//
+// Ordered List
+// --------------------------------
+ol.ordered-list {
+  margin-left: 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: var(--_ordered-list-mb);
+  }
+
+  @include desktop {
+    --mod-ordered-list-mb: 2rem;
+  }
+
+  & > li {
+    list-style-position: var(--_ordered-list-style-position);
+    list-style-type: var(--_ordered-list-style-type);
+
+    &::marker {
+      font-weight: var(--ds-text-weight-bold);
+      font-family: var(--ds-text-family-heading);
+    }
+  }
+
+  //
+  // Alphabetic List
+  &.is-alpha {
+    --mod-ordered-list-style-type: upper-alpha;
+  }
+
+  //
+  // Inside
+  &.is-inside {
+    --mod-ordered-list-style-position: inside;
+    margin-left: 0;
+  }
+}
+
+//
+// Unordered List
+// --------------------------------
+ul.unordered-list {
+  margin-left: 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: var(--_unordered-list-mb);
+  }
+
+  @include desktop {
+    --mod-unordered-list-mb: 2rem;
+  }
+
+  & > li {
+    list-style-position: var(--_unordered-list-style-position);
+    list-style-type: var(--_unordered-list-style-type);
+  }
+
+  //
+  // Inside
+  &.is-inside {
+    --mod-_unordered-list-style-position: inside;
+    margin-left: 0;
+  }
+}
+
+//
+// Bullet Circle
+ul.unordered-list.has-bullet-circle > li,
+ul.unordered-list > li.has-bullet-circle {
+  &::marker {
+    content: none;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    font-size: 0.75rem;
+    margin-left: -1.25rem;
+    margin-top: 0.313rem;
+    border-radius: var(--_unordered-list-marker-radius);
+    background: var(--_unordered-list-marker-color);
+  }
+}
+
+//
+// Bullet Icons
+ul.unordered-list.has-icons > li,
+ul.unordered-list.has-icon-check > li,
+ul.unordered-list > li.has-icon-check,
+ul.unordered-list.has-icon-close > li,
+ul.unordered-list > li.has-icon-close {
+  --mod-unordered-list-style-type: none;
+
+  &::marker {
+    content: none !important;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-left: -1.25rem;
+    margin-top: 0.313rem;
+
+    background-color: var(--_unordered-list-marker-color);
+
+    mask-image: var(--_unordered-list-marker-icon);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+}
+
+//
+// Mixed Styles for Ordered and Unordered List
+// --------------------------------
+ol.ordered-list,
+ul.unordered-list {
+  & > li {
+    hyphens: auto;
+
+    &::marker {
+      color: var(--_unordered-list-marker-color);
+    }
+  }
+
+  & > li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  //
+  // Compact
+  &.is-compact {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Buttlet Colors
+// --------------------------------
+
+$color-variants: ('purple', 'red', 'yellow', 'green');
+
+@mixin list-marker-color($color) {
+  &.has-bullet-#{$color} > li,
+  &.is-#{$color} > li,
+  & > li.is-#{$color},
+  & > li.has-bullet-#{$color} {
+    --mod-unordered-list-marker-color: var(--ds-list-marker-#{$color});
+  }
+}
+
+// Default color is green
+ul.unordered-list.has-bullet-circle > li,
+ul.unordered-list > li.has-bullet-circle {
+  --mod-unordered-list-marker-color: var(--ds-list-marker-green);
+}
+
+@each $color in $color-variants {
+  ul.unordered-list {
+    @include list-marker-color($color);
+  }
+}
+
+$icon-variants: ('success', 'warning', 'danger');
+
+ul.unordered-list {
+  &.is-success > li,
+  & > li.is-success {
+    --mod-unordered-list-marker-color: var(--ds-list-marker-success);
+  }
+  &.is-warning > li,
+  & > li.is-warning {
+    --mod-unordered-list-marker-color: var(--ds-list-marker-warning);
+  }
+  &.is-danger > li,
+  & > li.is-danger {
+    --mod-unordered-list-marker-color: var(--ds-list-marker-danger);
+  }
+}
+
+//
+// Buttlet Icons
+// --------------------------------
+
+ul.unordered-list.has-icon-close > li,
+ul.unordered-list > li.has-icon-close {
+  --mod-unordered-list-marker-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" focusable="false" aria-hidden="true"><path fill-rule="evenodd" d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z" clip-rule="evenodd"/></svg>');
+}
+
+//
+// Inverted
+// --------------------------------
+ol.ordered-list.is-inverted,
+ul.unordered-list.is-inverted {
+  color: var(--ds-text-color-white);
+
+  --mod-ordered-list-marker-color: var(--ds-text-color-white);
+  --mod-unordered-list-marker-color: var(--ds-text-color-white);
+}

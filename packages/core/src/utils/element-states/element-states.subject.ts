@@ -1,9 +1,9 @@
 import { SingleSubject } from '../types/signal'
-import { BalElementStateInfo, BalElementStateListenerFn, BalElementStateObserver } from './element-states.interfaces'
-import { BalElementStateListener } from './element-states.listener'
+import { ElementStateInfo, ElementStateListenerFn, ElementStateObserver } from './element-states.interfaces'
+import { ElementStateListener } from './element-states.listener'
 
-export class BalElementStateSubject extends SingleSubject<BalElementStateObserver, BalElementStateInfo> {
-  private listener = new BalElementStateListener<BalElementStateListenerFn>()
+export class ElementStateSubject extends SingleSubject<ElementStateObserver, ElementStateInfo> {
+  private listener = new ElementStateListener<ElementStateListenerFn>()
 
   constructor() {
     super((observer, data) => {
@@ -13,7 +13,7 @@ export class BalElementStateSubject extends SingleSubject<BalElementStateObserve
     })
   }
 
-  override attach(observer: BalElementStateObserver): void {
+  override attach(observer: ElementStateObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add(info => super.notify(info))

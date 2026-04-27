@@ -1,4 +1,4 @@
-import { isEmptyValue, parseValue, hasValueChanged } from './form-input'
+import { isEmptyValue, parseValue, hasValueChanged } from './form-control'
 
 describe('form input', () => {
   describe('isEmptyValue', () => {

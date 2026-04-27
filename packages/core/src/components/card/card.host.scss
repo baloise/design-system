@@ -1,0 +1,9 @@
+@use '../../hybrid' as hybrid;
+@use './card.style' with (
+  $use-host: true
+);
+
+:host {
+  display: block;
+  width: 100%;
+}

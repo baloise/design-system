@@ -1,0 +1,81 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+
+<Meta of={SpinnerStories} />
+
+<StoryHeading of={SpinnerStories.Basic} hidden></StoryHeading>
+
+<Banner of={SpinnerStories} />
+
+<Lead>**Spinner** is a animated graphic that lets the user know content is being loaded.</Lead>
+
+<Canvas of={SpinnerStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={SpinnerStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SpinnerStories.LoadingButton}></StoryHeading>
+
+<Canvas of={SpinnerStories.LoadingButton} sourceState="hidden" />
+
+<StoryHeading of={SpinnerStories.LoadingCard}></StoryHeading>
+
+<Canvas of={SpinnerStories.LoadingCard} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="spinner" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Spinners signal loading activity. Provide context about what is loading via text or parent control labeling.
+
+<Markdown>
+  {`
+| Requirement           | How to implement                                                                              |
+| --------------------- | ------------------------------------ |
+| Loading indicator     | Place spinner in a container with text like "Loading..." or "Please wait"                     |
+| No aria-busy          | The spinner itself should not have \`aria-busy\`; place it inside an element that has it     |
+| Skip preloader        | In visually disabled button/card, \`aria-disabled="true"\` + visible spinner inform AT       |
+| Context from parent   | Spinner's meaning comes from surrounding elements (button text, card heading, etc.)          |
+`}
+</Markdown>
+
+> **Note:** The spinner is a visual indicator only. Always provide textual context (e.g., "Loading results..." or a disabled button with spinner) so screen reader users understand the loading state.
+
+### Web component
+
+The `ds-spinner` element is a **decorative loading indicator**:
+
+- **`aria-hidden="true"`** — automatically set; spinners are not interactive or announced by AT
+- **No built-in semantics** — meaning comes from the parent element or adjacent text
+- **Animation control** — the `animated` prop controls playback; when `deactivated={true}`, animation stops
+- **Color & size variants** — affect visual styling only; do not impact AT
+- **Lottie-based animation** — smooth animations are optional; `color` prop changes animation color
+
+### References
+
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+- [`aria-busy`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy) — MDN
+- [WCAG 2.1 — Animation](https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html)
+
+<Footer />

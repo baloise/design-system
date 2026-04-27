@@ -1,14 +1,14 @@
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { config, configFromLocalStorage } from './config'
 
-import { BalConfig } from './config.types'
+import { DsConfig } from './config.types'
 
-export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
-  if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
+export const setupDsConfig = (userConfig: DsConfig = {}, win = {} as any) => {
+  if (Object.keys(win).length === 0 && dsBrowser.hasWindow) {
     win = window as any
   }
 
-  win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
+  win.DesignSystem = win.DesignSystem || {}
 
   config.reset({
     ...configFromLocalStorage(win),
@@ -18,7 +18,7 @@ export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
     },
   })
 
-  win.BaloiseDesignSystem.config = config
+  win.DesignSystem.config = config
 }
 
-export default setupConfig
+export default setupDsConfig

@@ -61,8 +61,8 @@ export class ${tagNameAsPascal} {`,
     outputs.forEach(output => {
       lines.push(`  /** ${output.docs.text} ${output.docs.tags.map(tag => `@${tag.name} ${tag.text}`)}*/`)
       lines.push(
-        `  ${output.name}!: EventEmitter<BalEvents.${tagNameAsPascal}CustomEvent<${
-          output.complexType.resolved.startsWith('Bal') ? output.complexType.original : output.complexType.resolved
+        `  ${output.name}!: EventEmitter<DS.${tagNameAsPascal}CustomEvent<${
+          output.complexType.resolved.startsWith('Ds') ? output.complexType.original : output.complexType.resolved
         }>>;`,
       )
     })

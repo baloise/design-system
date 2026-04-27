@@ -1,27 +1,26 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
-import { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
-import { balToastController } from './components/bal-toast/bal-toast.controller'
+import { dsToastController, dsSnackbarController } from './components/alert/alert.controller'
 import { tags } from './tags-all'
-import { balBrowser } from './utils/browser'
-import { BalConfig, BalPlatformConfig, setupConfig } from './utils/config'
+import { dsBrowser } from './utils/browser'
+import { DsConfig, DsPlatformConfig, setupDsConfig } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
 
-export const initializeBaloiseDesignSystem = (
-  userConfig: BalConfig = {},
-  platformConfig: BalPlatformConfig | undefined = undefined,
+export const initializeDesignSystem = (
+  userConfig: DsConfig = {},
+  platformConfig: DsPlatformConfig | undefined = undefined,
   win = {} as any,
 ) => {
-  if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
+  if (Object.keys(win).length === 0 && dsBrowser.hasWindow) {
     win = window as any
   }
 
-  win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
+  win.DesignSystem = win.DesignSystem || {}
 
   if (platformConfig) {
     setPlatformHelpers(platformConfig)
   }
-  setupConfig(
+  setupDsConfig(
     {
       ...userConfig,
       ...platformConfig,
@@ -29,10 +28,10 @@ export const initializeBaloiseDesignSystem = (
     win,
   )
 
-  win.BaloiseDesignSystem.toastController = balToastController
-  win.BaloiseDesignSystem.snackbarController = balSnackbarController
-  win.BaloiseDesignSystem.initialize = () => setupConfig(win.BaloiseDesignSystem.config, win)
-  win.BaloiseDesignSystem.version = VERSION
+  win.DesignSystem.toastController = dsToastController
+  win.DesignSystem.snackbarController = dsSnackbarController
+  win.DesignSystem.initialize = () => setupDsConfig(win.DesignSystem.config, win)
+  win.DesignSystem.version = VERSION
 
   if (userConfig._generateHydrateForCustomElementsOutput) {
     generateHydrateForCustomElementsOutput(tags)

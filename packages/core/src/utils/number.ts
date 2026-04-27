@@ -1,7 +1,7 @@
-import { defaultLocale, useBalConfig } from './config'
+import { defaultLocale, useDsConfig } from './config'
 
 const getLocale = (): string => {
-  const config = useBalConfig()
+  const config = useDsConfig()
   // workaround for swiss french locale which uses non standard number formatting
   if (config && config.locale && config.locale === 'fr-CH') {
     return 'de-CH'

@@ -1,0 +1,62 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-shape></ds-shape>
+      </section>
+
+      <!-- Colors -->
+      <section data-testid="colors" class="flex flex-direction-row gap-small">
+        <span>Colors</span>
+        <ds-shape color="green"></ds-shape>
+        <ds-shape color="green-light"></ds-shape>
+        <ds-shape color="purple"></ds-shape>
+        <ds-shape color="purple-light"></ds-shape>
+        <ds-shape color="red"></ds-shape>
+        <ds-shape color="red-light"></ds-shape>
+        <ds-shape color="yellow"></ds-shape>
+        <ds-shape color="yellow-light"></ds-shape>
+      </section>
+
+      <!-- Variation 1 -->
+      <section data-testid="variation-1" class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 1</span>
+        <ds-shape variation="1" rotation="0"></ds-shape>
+        <ds-shape variation="1" rotation="180"></ds-shape>
+        <ds-shape variation="1" rotation="270"></ds-shape>
+        <ds-shape variation="1" rotation="90"></ds-shape>
+      </section>
+
+      <!-- Variation 2 -->
+      <section data-testid="variation-2" class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 2</span>
+        <ds-shape variation="2" rotation="0"></ds-shape>
+        <ds-shape variation="2" rotation="180"></ds-shape>
+        <ds-shape variation="2" rotation="270"></ds-shape>
+        <ds-shape variation="2" rotation="90"></ds-shape>
+      </section>
+
+      <!-- Variation 3 -->
+      <section data-testid="variation-3" class="flex flex-direction-row justify-content-space-between">
+        <span>Variation 3</span>
+        <ds-shape variation="3" rotation="0"></ds-shape>
+        <ds-shape variation="3" rotation="180"></ds-shape>
+        <ds-shape variation="3" rotation="270"></ds-shape>
+        <ds-shape variation="3" rotation="90"></ds-shape>
+      </section>
+    </main>
+  </body>
+</html>

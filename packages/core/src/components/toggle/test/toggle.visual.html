@@ -1,0 +1,69 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-toggle name="basic" value="1">Unchecked</ds-toggle>
+        <ds-toggle name="basic" value="2" checked>Checked</ds-toggle>
+      </section>
+
+      <!-- No label -->
+      <section data-testid="no-label">
+        <span>No Label</span>
+        <ds-toggle name="no-label" value="1"></ds-toggle>
+        <ds-toggle name="no-label" value="2" checked></ds-toggle>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-toggle name="disabled" value="1" disabled>Unchecked</ds-toggle>
+        <ds-toggle name="disabled" value="2" disabled checked>Checked</ds-toggle>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-toggle name="invalid" value="1" invalid>Unchecked</ds-toggle>
+        <ds-toggle name="invalid" value="2" invalid checked>Checked</ds-toggle>
+      </section>
+
+      <!-- Invalid disabled -->
+      <section data-testid="invalid-disabled">
+        <span>Invalid + Disabled</span>
+        <ds-toggle name="invalid-disabled" value="1" invalid disabled>Unchecked</ds-toggle>
+        <ds-toggle name="invalid-disabled" value="2" invalid disabled checked>Checked</ds-toggle>
+      </section>
+
+      <!-- Required -->
+      <section data-testid="required">
+        <span>Required</span>
+        <ds-toggle name="required" value="1" required>Required checkbox</ds-toggle>
+      </section>
+
+      <!-- Form submit -->
+      <section data-testid="form">
+        <span>Form</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-toggle name="terms" value="accepted">Accept terms and conditions</ds-toggle>
+          <br /><br />
+          <ds-button element-type="submit" color="primary">Submit</ds-button>
+          <ds-button element-type="reset" color="link">Reset</ds-button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

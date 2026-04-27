@@ -1,0 +1,116 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as HeadingStories from './heading.stories'
+
+<Meta of={HeadingStories} />
+
+<StoryHeading of={HeadingStories.Basic} hidden></StoryHeading>
+
+<Banner of={HeadingStories} />
+
+<Lead>
+  **Heading** is a key component for displaying important titles and headers to organize and emphasize content.
+</Lead>
+
+<br/>
+
+We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`, and `<h4>` whenever possible instead of web
+components. This helps improve the rendering speed of your application or website.
+
+<BasicStoryTabs tag="heading" htmlStory={HeadingStories.BasicHtml} webComponentStory={HeadingStories.Basic} index={1} />
+
+<PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Levels}></StoryHeading>
+
+<Canvas of={HeadingStories.Levels} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Sizes}></StoryHeading>
+
+<Canvas of={HeadingStories.Sizes} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Colors}></StoryHeading>
+
+<Canvas of={HeadingStories.Colors} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.NoWrap}></StoryHeading>
+
+<Canvas of={HeadingStories.NoWrap} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
+
+<Canvas of={HeadingStories.Spacing} sourceState={'shown'}/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.AutoLevel}></StoryHeading>
+
+In some place in your app the heading requires a line break.
+Using `auto-level`, one can specify the minimum visual level at which the heading can dynamically shrink.
+
+<Canvas of={HeadingStories.AutoLevel} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="heading" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use native heading elements so assistive technologies can build a correct document outline.
+
+<Markdown>
+  {`
+| Requirement              | How to implement                                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| Semantic heading level   | Choose the element (\`<h1>\`–\`<h6>\`) that reflects the correct position in the document outline, not the visual size      |
+| Visual level override    | Use \`class="heading is-{level}"\` (e.g. \`is-3\`) to change visual size without affecting the document outline            |
+| Unique \`<h1>\`          | Use only one \`<h1>\` per page to identify the main topic                                                                    |
+| Sequential heading order | Do not skip heading levels (e.g. jump from \`<h2>\` directly to \`<h4>\`) — this breaks screen reader navigation           |
+| Meaningful text          | Heading text must describe the section it introduces; avoid generic labels like "Section" or "Title"                        |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-heading` element manages the following automatically:
+
+- **Semantic tag** — renders the correct `<h1>`–`<h6>` element based on the `level` prop; the tag in the DOM always reflects the semantic level, not the visual style
+- **Visual decoupling** — `visual-level` changes the CSS size class without altering the rendered heading tag, allowing visual hierarchy to differ from document hierarchy without introducing accessibility violations
+- **Auto-level** — `auto-level` dynamically shrinks the visual size when content wraps; the semantic tag is never changed
+
+> **Note:** The component does not enforce document outline correctness — it is the developer's responsibility to choose the right `level` value for the page context.
+
+### References
+
+- [`<h1>`–`<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) — MDN
+- [WCAG 2.4.6 Headings and Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html) — W3C
+
+<Footer />
+

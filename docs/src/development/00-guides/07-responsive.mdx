@@ -20,7 +20,7 @@ import {
 
 <Banner label="Responsive" section="Development" />
 
-<Lead>The Baloise Design System provides multiple solutions for achieving a responsive design.</Lead>
+<Lead>The Helvetia Design System provides multiple solutions for achieving a responsive design.</Lead>
 
 - **[Using CSS](#)**:<br/>Utilize utility classes like `class="p-normal desktop:p-large"` for styling.
 - **[Using Sass](#)**:<br/>Apply breakpoint mixins such as `@include desktop { ... }` for structured styling.
@@ -67,13 +67,13 @@ Use the scss mixins in your application the following:
 @use '@baloise/ds-styles/sass/mixins' as *;
 
 .my-component {
-${' '}${' '}background: var(--bal-color-green);
+${' '}${' '}background: var(--ds-color-green);
 }
 
 @include desktop() {
 ${' '}${' '}// add your custom styles here
 ${' '}${' '}.my-component {
-${' '}${' '}${' '}${' '}background: var(--bal-color-red);
+${' '}${' '}${' '}${' '}background: var(--ds-color-red);
 ${' '}${' '}}
 }
 `} />
@@ -95,13 +95,13 @@ The file `design-system-styles/sass/mixins` provides all design tokens as CSS-Va
 
 ### Breakpoints
 
-The Baloise Design System provides a service to dynamically listen for viewport changes.
+The Helvetia Design System provides a service to dynamically listen for viewport changes.
 
 ```typescript
-import { BalBreakpointService } from '@baloise/ds-angular'
+import { BreakpointService } from '@baloise/ds-angular'
 
 export class MyComponent {
-  readonly breakpoint = inject(BalBreakpointService)
+  readonly breakpoint = inject(DsBreakpointService)
 }
 ```
 
@@ -112,10 +112,10 @@ export class MyComponent {
 
 ### Orientation
 
-The Baloise Design System also provides a service to dynamically listen for orientation changes.
+The Helvetia Design System also provides a service to dynamically listen for orientation changes.
 
 ```typescript
-import { BalOrientationService } from '@baloise/ds-angular'
+import { OrientationService } from '@baloise/ds-angular'
 
 export class MyComponent {
   readonly orientation = inject(BalOrientationService)

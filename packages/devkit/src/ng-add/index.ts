@@ -24,7 +24,7 @@ export default function (options: SchemaOptions): Rule {
     actions.push(
       addRootProvider(options.project, ({ code, external }) => {
         return code`
-    ${external('provideBaloiseDesignSystem', '@baloise/ds-angular')}({
+    ${external('provideDesignSystem', '@baloise/ds-angular')}({
       defaults: {
         region: '${options.region}',
       }

@@ -1,0 +1,127 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+
+<Meta of={ProgressBarStories} />
+
+<StoryHeading of={ProgressBarStories.Basic} hidden></StoryHeading>
+
+<Banner of={ProgressBarStories} />
+
+<Lead>**Progress Bar** visualizes the completion of a task or process, displaying progress as a horizontal bar that fills based on a percentage value.</Lead>
+
+<Canvas of={ProgressBarStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={ProgressBarStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ProgressBarStories.DarkVariants}></StoryHeading>
+
+<Canvas of={ProgressBarStories.DarkVariants} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ProgressBarStories.LightVariants}></StoryHeading>
+
+<Canvas of={ProgressBarStories.LightVariants} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="progress-bar" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML with a `role="progressbar"` wrapper and ARIA attributes to expose progress information to assistive technologies. Screen readers cannot perceive visual progress bars alone, so provide explicit state via ARIA.
+
+<Markdown>
+  {`
+| Requirement             | How to implement                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Progress context        | Add a visible or screen-reader-only label before or after the progress bar explaining what is being tracked                |
+| Progress container      | Wrap the progress bar in a \`<div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">\`           |
+| Progress value          | Set \`aria-valuenow\` to the numeric percentage value (0–100)                                                             |
+| Updates notification    | Use \`aria-live="polite"\` on the progressbar wrapper to announce dynamic updates to screen readers                      |
+| Progress label          | Add \`aria-label\` or \`aria-labelledby\` to provide context (e.g., "Loading", "Download progress")                      |
+`}
+</Markdown>
+
+### Web component
+
+The `<ds-progress-bar>` element automatically manages the following ARIA attributes:
+
+- **`role="progressbar"`** — identifies the component as a progress indicator
+- **`aria-valuenow`** — dynamically set to the `value` prop, reflecting the current progress percentage
+- **`aria-valuemin="0"`** — the minimum progress value (always 0)
+- **`aria-valuemax="100"`** — the maximum progress value (always 100)
+- **CSS styling** — communicates progress visually through bar fill width, colors, and background
+
+> **Note:** Consumers should still provide a descriptive `aria-label` or `aria-labelledby` on the component or its wrapper to explain what is being tracked (e.g., "File upload progress", "Video download"). The component manages progress state automatically but not the semantic context.
+
+### Implementation Examples
+
+**With `aria-label` (inline, dynamic):**
+```html
+<ds-progress-bar
+  value="50"
+  aria-label="Upload progress: 50%">
+</ds-progress-bar>
+```
+
+**With separate visible label and `aria-labelledby`:**
+```html
+<span id="upload-status">Uploading file.zip</span>
+<ds-progress-bar
+  id="progress-upload"
+  value="50"
+  aria-labelledby="upload-status">
+</ds-progress-bar>
+```
+
+**With `aria-live` for dynamic updates:**
+```html
+<div>
+  <span id="status-text">Installation Progress</span>
+  <ds-progress-bar
+    value="75"
+    aria-labelledby="status-text"
+    aria-live="polite">
+  </ds-progress-bar>
+  <span id="percentage">75% complete</span>
+</div>
+```
+
+**Common contexts:**
+- `aria-label="Loading content"` — general page/content loading
+- `aria-label="File upload: 50% complete"` — upload operations
+- `aria-label="Download in progress"` — download operations
+- `aria-label="Installing updates"` — installation/configuration
+- `aria-label="Syncing data"` — background synchronization
+
+### References
+
+- [`role="progressbar"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/progressbar_role) — MDN
+- [`aria-valuenow`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow) — MDN
+- [`aria-valuemin`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemin) — MDN
+- [`aria-valuemax`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax) — MDN
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+
+<Footer />

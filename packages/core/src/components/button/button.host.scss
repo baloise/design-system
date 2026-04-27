@@ -1,0 +1,13 @@
+@use '../../hybrid' as hybrid;
+@use './button.style' with (
+  $use-host: true
+);
+
+:host {
+  display: inline-block;
+  width: var(--ds-button-width, fit-content);
+}
+
+:host #button {
+  margin: 0 !important;
+}

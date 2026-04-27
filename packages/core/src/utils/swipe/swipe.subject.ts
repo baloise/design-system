@@ -1,10 +1,10 @@
-import { balDevice } from '../device'
+import { dsDevice } from '../device'
 import { SingleSubject } from '../types/signal'
-import { BalSwipeInfo, BalSwipeListenerFn, BalSwipeObserver } from './swipe.interfaces'
-import { BalSwipeListener } from './swipe.listener'
+import { DsSwipeInfo, DsSwipeListenerFn, DsSwipeObserver } from './swipe.interfaces'
+import { DsSwipeListener } from './swipe.listener'
 
-export class BalSwipeSubject extends SingleSubject<BalSwipeObserver, BalSwipeInfo> {
-  private listener = new BalSwipeListener<BalSwipeListenerFn>()
+export class DsSwipeSubject extends SingleSubject<DsSwipeObserver, DsSwipeInfo> {
+  private listener = new DsSwipeListener<DsSwipeListenerFn>()
 
   constructor(private options: { mobileOnly: boolean } = { mobileOnly: false }) {
     super((observer, data) => {
@@ -14,8 +14,8 @@ export class BalSwipeSubject extends SingleSubject<BalSwipeObserver, BalSwipeInf
     })
   }
 
-  override attach(observer: BalSwipeObserver): void {
-    if ((this.options.mobileOnly === true && balDevice.isMobile) || this.options.mobileOnly !== true) {
+  override attach(observer: DsSwipeObserver): void {
+    if ((this.options.mobileOnly === true && dsDevice.isMobile) || this.options.mobileOnly !== true) {
       super.attach(observer)
       this.listener.connect(observer.el)
       this.listener.add(info => super.notify(info))

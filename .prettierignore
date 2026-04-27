@@ -1,17 +1,28 @@
 tsconfig.base.json
 
-packages/brand-icons/src/icons.json
-packages/brand-icons/src/index.ts
-packages/icons/src/index.ts
-packages/icons/src/assets/icons.json
-packages/maps/src/lib/markers.ts
-packages/maps/src/markers.json
-packages/core/icons
+packages/assets/icons/svg
+packages/assets/icons/svg.json
+packages/assets/icons/svg.ts
+packages/assets/brand-icons/svg
+packages/assets/brand-icons/svg.json
+packages/assets/brand-icons/svg.ts
+packages/assets/maps/svg
+packages/assets/maps/svg.json
+packages/assets/maps/svg.ts
+
+packages/tokens/tokens/Base.tokens.json
 packages/core/src/utils/constants/icons.constant.ts
 packages/core/src/components.d.ts
 packages/core/src/tags-all.ts
 packages/devkit/src/**/*.js
 packages/devkit/src/**/*.d.ts
+
+packages/assets/src/brand-icons/svg.json
+packages/assets/src/brand-icons/svg.ts
+packages/assets/src/icons/svg.json
+packages/assets/src/icons/svg.ts
+packages/assets/src/maps/svg.json
+packages/assets/src/maps/svg.ts
 
 resources/data/tags.json
 
@@ -30,9 +41,8 @@ docs/src/components/**/api.md
 docs/src/components/**/testing.md
 docs/src/components/**/theming.md
 
-e2e/cypress/snapshots
-e2e/cypress/videos
-e2e/cypress/downloads
+CLAUDE.md
+docs/superpowers
 
 package-lock.json
 *.svg

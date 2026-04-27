@@ -1,10 +1,10 @@
-import { BalWindowResizeListener } from './window-resize.listener'
+import { WindowResizeListener } from './window-resize.listener'
 import { SingleSubject } from '../types/signal'
-import { BalWindowResizeObserver } from './window-resize.interfaces'
-import { balBrowser } from '../browser'
+import { WindowResizeObserver } from './window-resize.interfaces'
+import { dsBrowser } from '../browser'
 
-export class BalWindowResizeSubject extends SingleSubject<BalWindowResizeObserver> {
-  private listener = new BalWindowResizeListener()
+export class WindowResizeSubject extends SingleSubject<WindowResizeObserver> {
+  private listener = new WindowResizeListener()
 
   constructor() {
     super((observer, _data) => {
@@ -12,9 +12,9 @@ export class BalWindowResizeSubject extends SingleSubject<BalWindowResizeObserve
     })
   }
 
-  override attach(observer: BalWindowResizeObserver): void {
+  override attach(observer: WindowResizeObserver): void {
     super.attach(observer)
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       this.listener.connect(window)
       this.listener.add(() => super.notify())
     }
@@ -26,4 +26,4 @@ export class BalWindowResizeSubject extends SingleSubject<BalWindowResizeObserve
   }
 }
 
-export const balWindowResizeSubject = new BalWindowResizeSubject()
+export const dsWindowResizeSubject = new WindowResizeSubject()

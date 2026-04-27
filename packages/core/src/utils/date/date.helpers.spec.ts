@@ -1,6 +1,6 @@
 import { dateSeparator } from './date.helpers'
 
-describe('date', () => {
+describe('dsDate', () => {
   describe('dateSeparator', () => {
     test('should provide the correct date separator', () => {
       expect(dateSeparator('de-CH')).toBe('.')

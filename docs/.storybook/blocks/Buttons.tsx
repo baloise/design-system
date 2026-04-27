@@ -22,7 +22,7 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
       style={{ flex: 1 }}
       className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal radius-normal text-large text-primary`}
+      } p-normal radius text-large text-primary`}
     >
       <span className="flex justify-content-center text-xx-large text-align-center">
         {icon}
@@ -46,14 +46,14 @@ export const LinkCard = ({ children, color, icon, label, description, pageTitle 
       }}
       className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-direction-row bg-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal radius-normal text-large text-primary gap-normal`}
+      } p-normal radius text-large text-primary gap-normal`}
     >
       <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
         <span className="block title text-normal mb-none">{label || pageTitle}</span>
         <span className="block text-small">{description}</span>
       </div>
       <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
-        <bal-icon name="nav-go-right"></bal-icon>
+        <ds-icon name="nav-go-right"></ds-icon>
       </span>
     </a>
   )
@@ -79,14 +79,14 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
 
 export const GridComponents = ({ children }) => {
   return (
-    <bal-doc-app>
+    <ds-app>
       <div
         className="sb-unstyled grid is-multiline mt-normal"
-        style={{ '--bal-column-gap': '.5rem', 'userSelect': 'none' }}
+        style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
       >
         {children}
       </div>
-    </bal-doc-app>
+    </ds-app>
   )
 }
 
@@ -115,10 +115,10 @@ export const GridComponent = ({
       <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`flex flex-direction-column gap-normal justify-content-center align-items-center bg-white p-normal h-full radius-normal shadow-normal doc-shadow-large-hover cursor-pointer`}
+          className={`flex flex-direction-column gap-normal justify-content-center align-items-center bg-white p-normal h-full radius shadow doc-shadow-large-hover cursor-pointer`}
         >
           <div
-            className={`bg-red-1 radius-normal w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
+            className={`bg-red-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
             style={{ height: '200px', minHeight: '200px', maxWidth: '200%', overflow: 'hidden', position: 'relative' }}
           >
             <div
@@ -152,7 +152,7 @@ export const GridComponent = ({
 
 export const GridCards = ({ children }) => {
   return (
-    <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
+    <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--ds-column-gap': '.5rem' }}>
       {children}
     </div>
   )
@@ -164,7 +164,7 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
       <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`flex gap-normal justify-content-center align-items-center bg-${color}-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer`}
+          className={`flex gap-normal justify-content-center align-items-center bg-${color}-1 p-normal h-full radius doc-shadow-hover cursor-pointer`}
         >
           {svg ? (
             <div style={{ minWidth: '80px' }}>
@@ -186,7 +186,7 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
           )}
           {!svg ? (
             <div>
-              <bal-icon name="nav-go-right"></bal-icon>
+              <ds-icon name="nav-go-right"></ds-icon>
             </div>
           ) : (
             ''

@@ -1,0 +1,10 @@
+@forward '../../../../styles/sass/normalize';
+@forward './stack.style';
+
+/**
+  * Host Style
+  */
+
+ds-stack {
+  position: static;
+}

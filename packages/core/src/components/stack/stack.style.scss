@@ -1,0 +1,410 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+$stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
+
+/**
+  * Mixins
+  */
+
+@mixin gap($space, $property: gap) {
+  #{$property}: var(--ds-space-#{$space}-device);
+}
+
+@mixin p($space) {
+  padding: var(--ds-space-#{$space}-device);
+}
+
+@mixin px($space) {
+  padding-left: var(--ds-space-#{$space}-device);
+  padding-right: var(--ds-space-#{$space}-device);
+}
+
+@mixin py($space) {
+  padding-top: var(--ds-space-#{$space}-device);
+  padding-bottom: var(--ds-space-#{$space}-device);
+}
+
+/**
+  * Basic Style
+  */
+.stack,
+.stack-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+}
+
+.stack {
+  gap: 1rem;
+}
+
+.stack-content {
+  flex: 1;
+  height: 100%;
+  gap: 0.25rem;
+}
+
+.stack > .stack,
+.stack > .stack-content {
+  align-self: stretch;
+}
+
+.stack.is-horizontal > .stack-content {
+  align-self: center;
+}
+
+.stack,
+.stack-content {
+  &.has-wrap {
+    flex-wrap: wrap;
+  }
+
+  &.as-row,
+  &.is-horizontal,
+  &.has-direction-row {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &.as-row-reverse,
+  &.is-horizontal-reverse,
+  &.has-direction-row-reverse {
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+  }
+
+  &.as-col-reverse,
+  &.is-vertical-reverse,
+  &.has-direction-column-reverse {
+    flex-flow: column-reverse nowrap;
+  }
+
+  &:not(
+      .as-row,
+      .as-row-reverse,
+      .has-direction-row,
+      .has-direction-row-reverse,
+      .is-horizontal,
+      .is-horizontal-reverse
+    ) {
+    // TOP ALIGNMENTS
+    &.align-top-left,
+    &.align-top-start {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &.align-top,
+    &.align-top-center {
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &.align-top-right,
+    &.align-top-end {
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+
+    // CENTER ALIGNMENTS
+    &.align-start,
+    &.align-center-left,
+    &.align-center-start {
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &.align-center {
+      justify-content: center;
+      align-items: center;
+    }
+
+    &.align-end,
+    &.align-center-right,
+    &.align-center-end {
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    // BOTTOM ALIGNMENTS
+    &.align-bottom-left,
+    &.align-bottom-start {
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    &.align-bottom,
+    &.align-bottom-center {
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    &.align-bottom-right,
+    &.align-bottom-end {
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+
+  &.as-row,
+  &.is-horizontal,
+  &.has-direction-row,
+  &.as-row-reverse,
+  &.is-horizontal-reverse,
+  &.has-direction-row-reverse {
+    // TOP ALIGNMENTS
+    &.align-top-left,
+    &.align-top-start {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    &.align-top,
+    &.align-top-center {
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    &.align-top-right,
+    &.align-top-end {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    // CENTER ALIGNMENTS
+    &.align-start,
+    &.align-center-left,
+    &.align-center-start {
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &.align-center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.align-end,
+    &.align-center-right,
+    &.align-center-end {
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    // BOTTOM ALIGNMENTS
+    &.align-bottom-left,
+    &.align-bottom-start {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    &.align-bottom,
+    &.align-bottom-center {
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    &.align-bottom-right,
+    &.align-bottom-end {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
+}
+
+/**
+ * Text Alignment for stack-content
+ */
+.stack-content {
+  &,
+  &.align-top-left,
+  &.align-top-start,
+  &.align-start,
+  &.align-center-left,
+  &.align-center-start,
+  &.align-bottom-left,
+  &.align-bottom-start {
+    text-align: left;
+  }
+
+  &.align-top,
+  &.align-top-center,
+  &.align-center,
+  &.align-bottom,
+  &.align-bottom-center {
+    text-align: center;
+  }
+
+  &.align-top-right,
+  &.align-top-end,
+  &.align-end,
+  &.align-center-right,
+  &.align-center-end,
+  &.align-bottom-right,
+  &.align-bottom-end {
+    text-align: right;
+  }
+
+  &.text-left {
+    text-align: left;
+  }
+
+  &.text-center {
+    text-align: center;
+  }
+
+  &.text-right {
+    text-align: right;
+  }
+}
+
+.stack,
+.stack-content {
+  // fit-content
+  &.fit-content {
+    flex: unset;
+    width: fit-content;
+  }
+
+  //
+  // Padding
+
+  @each $space in $stack-space {
+    &.p-#{$space} {
+      @include p($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.px-#{$space} {
+      @include px($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.py-#{$space} {
+      @include py($space);
+    }
+  }
+
+  &.p-none {
+    padding: 0;
+  }
+
+  &.px-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.py-none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  //
+  // spaces
+  &.gap-auto,
+  &.gap-x-auto,
+  &.gap-col-auto,
+  &.gap-y-auto,
+  &.gap-row-auto,
+  &.has-space-auto,
+  &.has-space-col-auto,
+  &.has-space-row-auto {
+    justify-content: space-between;
+  }
+
+  &.gap-none,
+  &.has-space-none {
+    gap: 0;
+
+    @include tablet {
+      gap: 0;
+    }
+
+    @include desktop {
+      gap: 0;
+    }
+  }
+
+  &.gap-x-none,
+  &.gap-col-none,
+  &.has-space-col-none {
+    column-gap: 0;
+
+    @include tablet {
+      column-gap: 0;
+    }
+
+    @include desktop {
+      column-gap: 0;
+    }
+  }
+
+  &.gap-y-none,
+  &.gap-row-none,
+  &.has-space-row-none {
+    row-gap: 0;
+
+    @include tablet {
+      row-gap: 0;
+    }
+
+    @include desktop {
+      row-gap: 0;
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-#{$space},
+    &.has-space-#{$space} {
+      @include gap($space);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-x-#{$space},
+    &.gap-col-#{$space},
+    &.has-space-col-#{$space} {
+      @include gap($space, column-gap);
+    }
+  }
+
+  @each $space in $stack-space {
+    &.gap-y-#{$space},
+    &.gap-row-#{$space},
+    &.has-space-row-#{$space} {
+      @include gap($space, row-gap);
+    }
+  }
+}
+
+//
+// custom position
+.stack > ds-radio {
+  margin-top: -0.25rem;
+}
+
+//
+// reset margin botton space
+ds-content > ds-text,
+.stack-content > ds-text,
+ds-content > .text,
+.stack-content > .text,
+.stack > ds-text,
+.stack > ds-label,
+.stack > ds-heading,
+.stack > ds-heading:not(:last-child),
+.stack > .label,
+.stack > .heading,
+.stack > .heading:not(:last-child),
+.stack > .title,
+.stack > .title:not(:last-child),
+.stack > .subtitle,
+.stack > .subtitle:not(:last-child),
+.stack > .link,
+.stack > .is-link,
+.stack > p {
+  margin: 0;
+}

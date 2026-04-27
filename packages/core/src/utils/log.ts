@@ -1,7 +1,7 @@
 import { ComponentInterface } from '@stencil/core'
-import { balBrowser } from './browser'
+import { dsBrowser } from './browser'
 
-export interface BalLogger {
+export interface DsLogger {
   components: string[]
   custom: boolean
   lifecycle: boolean
@@ -16,7 +16,7 @@ export interface Loggable {
 
 export type LogInstance = (message?: any, ...optionalParams: any[]) => void
 
-export const defaultLoggerConfig: BalLogger = {
+export const defaultLoggerConfig: DsLogger = {
   components: [],
   event: false,
   lifecycle: false,
@@ -28,12 +28,12 @@ const getConfig = () => {
   let loggerConfig = defaultLoggerConfig
 
   if (
-    balBrowser.hasWindow &&
-    (window as any).BaloiseDesignSystem &&
-    (window as any).BaloiseDesignSystem.config &&
-    (window as any).BaloiseDesignSystem.config.logger
+    dsBrowser.hasWindow &&
+    (window as any).DesignSystem &&
+    (window as any).DesignSystem.config &&
+    (window as any).DesignSystem.config.logger
   ) {
-    loggerConfig = (window as any).BaloiseDesignSystem.config.logger
+    loggerConfig = (window as any).DesignSystem.config.logger
   }
 
   return loggerConfig
@@ -80,7 +80,7 @@ export function Logger(tag = 'unknown') {
       log.lifecycle(`connectedCallback`, this)
 
       const events = Object.keys(this)
-        .filter(n => n.startsWith('bal'))
+        .filter(n => n.startsWith('ds'))
         .filter(n => typeof this[n] === 'object')
 
       for (let index = 0; index < events.length; index++) {

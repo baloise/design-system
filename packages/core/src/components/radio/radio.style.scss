@@ -1,0 +1,17 @@
+@use './radio.mixin.scss' as radio;
+
+/**
+ * CSS-only radio / switch toggle: apply .radio to the wrapper <label>.
+ *
+ *   Radio:
+ *   <label class="radio">
+ *     <input type="radio">
+ *     Label text
+ *   </label>
+ *
+ */
+
+@include radio.vars('.radio');
+@include radio.layout('.radio');
+@include radio.style('.radio');
+@include radio.states('.radio');

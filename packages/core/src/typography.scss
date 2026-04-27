@@ -1,0 +1,90 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@mixin content($margin: true) {
+  font-family: var(--ds-text-family-body);
+  font-weight: var(--ds-text-weight-regular);
+
+  strong,
+  b {
+    font-weight: var(--ds-text-weight-bold);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ds-heading {
+    font-family: var(--ds-heading-family);
+    font-weight: var(--ds-heading-weight);
+  }
+
+  @for $i from 1 through 5 {
+    h#{$i},
+    [role='heading'][aria-level='#{$i}'] {
+      font-size: var(--ds-heading-#{$i}-size-device);
+    }
+  }
+
+  @if $margin {
+    ds-heading:not(:last-child),
+    h1:is(.title, .subtitle, .heading):not(:last-child) {
+      --heading-mb: var(--ds-space-xs-device);
+    }
+
+    h1:not(.title, .subtitle, .heading, :last-child) {
+      margin-bottom: var(--ds-space-xs-device);
+    }
+
+    h2:is(.title, .subtitle, .heading):not(:last-child) {
+      --heading-mb: var(--ds-space-xs-device);
+    }
+
+    h2:not(.title, .subtitle, .heading, :last-child) {
+      margin-bottom: var(--ds-space-xs-device);
+    }
+
+    h3:is(.title, .subtitle, .heading):not(:last-child) {
+      --heading-mb: var(--ds-space-xs-device);
+    }
+
+    h3:not(.title, .subtitle, .heading, :last-child) {
+      margin-bottom: var(--ds-space-xs-device);
+    }
+
+    h4:is(.title, .subtitle, .heading):not(:last-child) {
+      --heading-mb: var(--ds-space-xs-device);
+    }
+
+    h4:not(.title, .subtitle, .heading, :last-child) {
+      margin-bottom: var(--ds-space-xs-device);
+    }
+
+    h5:is(.title, .subtitle, .heading):not(:last-child) {
+      --heading-mb: var(--ds-space-2xs-device);
+    }
+
+    h5:not(.title, .subtitle, .heading, :last-child) {
+      margin-bottom: var(--ds-space-2xs-device);
+    }
+
+    ds-text:not(:last-child),
+    p.text:not(:last-child) {
+      --text-mb: var(--ds-space-base-device);
+    }
+
+    p:not(.text, :last-child) {
+      margin-bottom: var(--ds-space-base-device);
+    }
+
+    > :is(h1, h2, h3, h4, h5, h6, ds-heading) + p.text,
+    > :is(h1, h2, h3, h4, h5, h6, ds-heading) + ds-text {
+      --text-mt: var(--ds-space-base-device);
+    }
+
+    > :is(h1, h2, h3, h4, h5, h6, ds-heading) + p:not(.text, ds-text) {
+      margin-top: var(--ds-space-base-device);
+    }
+  }
+}

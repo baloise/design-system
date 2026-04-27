@@ -4,7 +4,7 @@ html {
 }
 
 .sbdocs-wrapper {
-  padding: 2rem 20px !important;
+  /* padding: 2rem 20px !important; */
 }
 
 /***************************************
@@ -107,6 +107,18 @@ html {
 
 .sidebar-item[data-selected='true'] svg {
   color: #ffffff !important;
+}
+
+.sidebar-item[data-nodetype='story'] svg {
+  display: none;
+}
+
+.sidebar-item[data-nodetype='story'] > button > div {
+  display: none;
+}
+
+svg[type="story"] {
+  display: none;
 }
 
 /***************************************

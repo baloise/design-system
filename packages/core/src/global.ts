@@ -1,5 +1,5 @@
-import { initializeBaloiseDesignSystem } from './initialize'
+import { initializeDesignSystem } from './initialize'
 
 export default function () {
-  initializeBaloiseDesignSystem()
+  initializeDesignSystem()
 }

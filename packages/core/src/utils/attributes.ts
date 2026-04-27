@@ -6,8 +6,8 @@ const trackingAttributes = ['data-tracking-style', 'data-tracking-topic', 'data-
 
 /**
  * Elements inside of web components sometimes need to inherit global attributes
- * set on the host. For example, the inner input in `bal-input` should inherit
- * the `title` attribute that developers set directly on `bal-input`. This
+ * set on the host. For example, the inner input in `ds-input` should inherit
+ * the `title` attribute that developers set directly on `ds-input`. This
  * helper function should be called in componentWillLoad and assigned to a variable
  * that is later used in the render function.
  * This function also removes the attribute from the parent when its set on child.

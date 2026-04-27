@@ -1,10 +1,10 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { addEventListener, isDescendant, removeEventListener, waitAfterIdleCallback } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
-import { BalFocusInfo } from './focus.interfaces'
+import { FocusInfo } from './focus.interfaces'
 
-export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, BalFocusInfo> {
+export class FocusListener<TObserver> extends ListenerAbstract<TObserver, FocusInfo> {
   override connect(el: HTMLElement | HTMLStencilElement): void {
     super.connect(el)
     if (this.el) {
@@ -28,7 +28,7 @@ export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, Bal
   private onFocusout = async (ev: FocusEvent) => {
     await waitAfterIdleCallback()
 
-    if (balBrowser.hasDocument && this.el) {
+    if (dsBrowser.hasDocument && this.el) {
       const target = document.activeElement
       if (target && !isDescendant(this.el as any, target)) {
         this.notify({ ev, isFocusIn: false, isFocusOut: true })

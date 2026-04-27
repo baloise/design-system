@@ -1,0 +1,116 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:string';
+
+// Always return a proper Sass list (single-item lists need a trailing comma).
+@function _as-list($value) {
+  @if meta.type-of($value) == 'list' {
+    @return $value;
+  }
+  @return ($value);
+}
+
+@mixin local($name, $default: null) {
+  @if $default == null {
+    --_#{$name}: var(--#{$name}, var(--mod-#{$name}));
+  } @else {
+    --_#{$name}: var(--#{$name}, var(--mod-#{$name}, #{$default}));
+  }
+}
+
+/**
+  * Mixin to support host and non-host mode for hybrid components.
+  * The mixin takes care of the correct selector and allows to write the styles only once.
+  * The $selectors parameter can be a single selector or a list of selectors.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin hybrid($name, $selectors, $is-host: false) {
+  @if $is-host {
+    :host {
+      @include base($name);
+      @content;
+    }
+  } @else {
+    $names: _as-list($selectors);
+    $selector: ();
+
+    @each $n in $names {
+      $selector: list.append($selector, string.unquote('#{$n}'), comma);
+    }
+
+    #{$selector} {
+      @include base($name);
+      @content;
+    }
+  }
+}
+
+@mixin position-vars($name) {
+  @include local(#{$name}-position, static);
+  @include local(#{$name}-top);
+  @include local(#{$name}-right);
+  @include local(#{$name}-bottom);
+  @include local(#{$name}-left);
+}
+
+@mixin margin-vars($name) {
+  @include local(#{$name}-m, 0);
+  @include local(#{$name}-my);
+  @include local(#{$name}-mx);
+  @include local(#{$name}-ml);
+  @include local(#{$name}-mr);
+  @include local(#{$name}-mt);
+  @include local(#{$name}-mb);
+}
+
+@mixin margin-styles($name) {
+  margin: var(--_#{$name}-m);
+  margin-inline: var(--_#{$name}-mx);
+  margin-block: var(--_#{$name}-my);
+  margin-left: var(--_#{$name}-ml);
+  margin-right: var(--_#{$name}-mr);
+  margin-top: var(--_#{$name}-mt);
+  margin-bottom: var(--_#{$name}-mb);
+}
+
+@mixin position-styles($name) {
+  position: var(--_#{$name}-position);
+  top: var(--_#{$name}-top);
+  right: var(--_#{$name}-right);
+  bottom: var(--_#{$name}-bottom);
+  left: var(--_#{$name}-left);
+}
+
+@mixin styles($name) {
+  @include margin-styles($name);
+  @include position-styles($name);
+}
+
+@mixin margin($name) {
+  @include margin-vars($name);
+  @include margin-styles($name);
+}
+
+@mixin position($name) {
+  @include position-vars($name);
+  @include position-styles($name);
+}
+
+@mixin base($name) {
+  @include position($name);
+  @include margin($name);
+}
+
+// box-shadow:
+//   var(--ds-interaction-focus-color-border) 0 0 0 2px,
+//   #{$color} 0 0 0 5px !important;
+
+@mixin focus($name) {
+  @include local(#{$name}-focus, var(--ds-interaction-focus-color-base));
+}
+
+@mixin focus-styles($name) {
+  box-shadow:
+    var(--ds-interaction-focus-color-border) 0 0 0 2px,
+    var(--_#{$name}-focus) 0 0 0 5px !important;
+}

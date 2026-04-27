@@ -1,0 +1,116 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+
+<Meta of={TextareaStories} />
+
+<StoryHeading of={TextareaStories.Basic} hidden></StoryHeading>
+
+<Banner of={TextareaStories} />
+
+<Lead>**Textarea** is a form field component that allows users to enter and edit multi-line text.</Lead>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.BasicHtml} webComponentStory={TextareaStories.Basic} index={1} />
+
+<PlaygroundBar of={TextareaStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Disabled}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.DisabledHtml} webComponentStory={TextareaStories.Disabled} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Invalid}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.InvalidHtml} webComponentStory={TextareaStories.Invalid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Valid}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.ValidHtml} webComponentStory={TextareaStories.Valid} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Warning}></StoryHeading>
+
+<BasicStoryTabs tag="textarea" htmlStory={TextareaStories.WarningHtml} webComponentStory={TextareaStories.Warning} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Rows}></StoryHeading>
+
+<Canvas of={TextareaStories.Rows} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="textarea" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Textareas are **form control elements** for multi-line text entry. Always provide a visible label and optional helper text. Link textareas to labels and descriptions using standard HTML attributes.
+
+<Markdown>
+  {`
+| Requirement            | How to implement                                                                                             |
+| ---------------------- | ------------------------------------ |
+| Label association      | Wrap \`<textarea>\` in \`<label for="textarea-id">\` or use \`<label><textarea></textarea></label>\`       |
+| Textarea ID            | Set a unique \`id\` on each \`<textarea>\` so labels and descriptions can reference it                     |
+| Description text       | Link helper/error text via \`aria-describedby="help-id"\` on the textarea element                          |
+| Required state         | Set \`required\` attribute on the textarea; label should show required indicator                            |
+| Invalid state          | Set \`aria-invalid="true"\` on textarea when there are validation errors                                    |
+| Disabled state         | Set \`disabled\` attribute on textarea; visually distinct styling via CSS                                   |
+| Readonly state         | Set \`readonly\` attribute when textarea should not be edited but is still submitted                        |
+| Min/Max length         | Set \`minlength\` and \`maxlength\` attributes to enforce input constraints; announce limits to users       |
+| Resize control         | Use CSS \`resize: none\` sparingly; avoid hiding user's ability to resize unless there is strong UX reason  |
+| Placeholder not label  | Use \`placeholder\` only for hints; never rely on it as the primary label                                   |
+`}
+</Markdown>
+
+### Web component
+
+The `ds-textarea` element manages the following automatically:
+
+- **Label linking** — the Field component renders a `<label>` with `htmlFor` pointing to the textarea's ID
+- **`aria-describedby`** — automatically set on the native `<textarea>` to link to the description element ID
+- **`aria-invalid`** — set to `"true"` when `invalid` prop is true; `"false"` otherwise
+- **`aria-required`** — accessible via the `required` prop forwarded to the native textarea (defaults to `true`)
+- **`disabled` attribute** — forwarded from the component prop to the native textarea
+- **`readonly` attribute** — forwarded from the component prop to the native textarea
+- **Form association** — uses `ElementInternals` to participate in native `<form>` submit/reset/validity without wrapper elements
+- **Length constraints** — `minLength` and `maxLength` props forwarded to native textarea for built-in validation
+- **Dimensions** — `rows` and `cols` props control visible size; `wrap` prop controls line-wrapping behavior
+- **Dynamic feedback** — `invalidText` prop displays error messages linked via the description element
+
+### References
+
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) — MDN
+- [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
+- [`aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN
+- [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — MDN
+- [`readonly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) — MDN
+- [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required) — MDN
+- [`minlength` / `maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength) — MDN
+- [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — MDN
+- [WCAG 2.1 — Labels or Instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
+
+<Footer />

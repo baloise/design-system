@@ -1,1 +1,1 @@
-export const BALOISE_ANIMATION_KEY = 'baloise-animated'
+export const DS_ANIMATION_KEY = 'ds-animated'

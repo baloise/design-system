@@ -1,0 +1,78 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BasicStoryTabs,
+  Footer,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  StylesQuote,
+  Tabs,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as LinkStories from './link.stories'
+
+<Meta of={LinkStories} />
+
+<StoryHeading of={LinkStories.Basic} hidden></StoryHeading>
+
+<Banner of={LinkStories} />
+
+<Lead>Link is used as a navigation element to direct users to different pages or sections.</Lead>
+
+<BasicStoryTabs tag="link" htmlStory={LinkStories.Basic} />
+
+<PlaygroundBar of={LinkStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## CSS Variables
+
+<TokenOverview component="link" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+Use semantic HTML `<a>` elements for navigation links. The `ds-link` component provides styling and visual variants.
+
+<Markdown>
+  {`
+| Requirement           | How to implement                                                                                              |
+| --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Link href             | Always set the \`href\` attribute; screen readers announce the link and keyboard users can activate it        |
+| Link text / label     | Provide descriptive link text visible in the \`<a>\` element; avoid generic text like "click here"            |
+| Icon-only links       | If a link contains only an icon with no visible text, add \`aria-label\` to the \`<a>\` element              |
+| Icon accessibility    | Set \`aria-hidden="true"\` on decorative \`<ds-icon>\` elements inside the link text                         |
+| External link         | Add \`target="_blank"\` if opening in a new tab; consider adding \`aria-label\` to warn users (optional)      |
+| Disabled appearance   | Do not use CSS class \`is-disabled\` on \`<a>\` elements; links cannot be disabled semantically               |
+`}
+</Markdown>
+
+> **Note:** The `is-disabled` CSS class in the style examples is visual only and does not prevent keyboard or programmatic activation. If you need a disabled link, use a `<button>` instead or add `aria-disabled="true"` and handle clicks with JavaScript.
+
+### Web component
+
+The `ds-link` component is a CSS-only presentational layer:
+
+- **No custom elements** — renders standard HTML `<a>` elements; all accessibility comes from native HTML semantics
+- **No ARIA attributes** — the component adds no ARIA; developers must provide `href`, link text, and `aria-label` if needed
+- **No state management** — the component provides visual styling only; disabled state must be handled with `aria-disabled` + JavaScript if required
+- **Keyboard navigation** — native; the `<a>` element is automatically keyboard-focusable and activatable via Enter key
+- **Screen reader support** — relies on descriptive link text and the `href` attribute; icon-only links need `aria-label`
+
+### References
+
+- [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) — MDN
+- [WCAG 2.1 — Link Purpose](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context)
+- [MDN — Link accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML#text_links)
+- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
+- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
+
+<Footer />

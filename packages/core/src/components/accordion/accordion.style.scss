@@ -1,0 +1,269 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+
+$use-host: false !default;
+$name: accordion;
+$css-selector: ('.accordion');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+details.accordion {
+  @include vars.focus(accordion);
+
+  /* Marker icons (SVG via mask so we can color with currentColor) */
+  --accordion-marker-chevron: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+  --accordion-marker-plus: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M8%201C8%200.447715%207.55228%200%207%200C6.44772%200%206%200.447715%206%201V6H1C0.447715%206%200%206.44772%200%207C0%207.55228%200.447715%208%201%208H6V13C6%2013.5523%206.44772%2014%207%2014C7.55228%2014%208%2013.5523%208%2013V8H13C13.5523%208%2014%207.55228%2014%207C14%206.44772%2013.5523%206%2013%206H8V1Z'/%3E%3C/svg%3E");
+  --accordion-marker-minus: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%207C0%206.44772%200.447715%206%201%206H13C13.5523%206%2014%206.44772%2014%207C14%207.55228%2013.5523%208%2013%208H1C0.447715%208%200%207.55228%200%207Z'/%3E%3C/svg%3E");
+
+  /* Default marker variant */
+  @include vars.local(accordion-marker-icon, var(--accordion-marker-chevron));
+  @include vars.local(accordion-marker-size, 1rem);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+details.accordion {
+  display: block;
+  position: relative;
+}
+
+//
+// Summary styles
+details.accordion > summary:not(.button) {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      color: var(--ds-link-color-base-hover);
+      ds-icon {
+        --icon-color: var(--ds-link-color-base-hover);
+      }
+      &:after {
+        background: var(--ds-link-color-base-hover);
+      }
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    color: var(--ds-link-color-base-active);
+    ds-icon {
+      --icon-color: var(--ds-link-color-base-active);
+    }
+    &:after {
+      background: var(--ds-link-color-base-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      &:before {
+        @include vars.focus-styles(accordion);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--ds-radius-base);
+      }
+    }
+  }
+}
+
+//
+// Marker styles
+details.accordion > summary {
+  /* Hide the native disclosure triangle */
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::marker {
+    content: '';
+  }
+}
+
+//
+// Custom marker
+details.accordion {
+  & > summary::after {
+    content: '';
+    flex: 0 0 auto;
+    min-width: var(--_accordion-marker-size);
+    width: 1.5rem;
+    height: var(--_accordion-marker-size);
+    background-color: currentcolor;
+    mask-image: var(--_accordion-marker-icon);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    transform-origin: center;
+    cursor: pointer;
+  }
+
+  &[open]:not(.has-marker-plus, .has-marker-plus-minus) > summary::after {
+    transform: rotate(180deg);
+  }
+
+  &.has-marker-plus[open] > summary::after {
+    transform: rotate(45deg);
+  }
+
+  /* No marker variant */
+  &.has-marker-none > summary::after {
+    display: none;
+  }
+
+  // When the marker is on the left, keep summary content next to it
+  &.has-marker-left > summary {
+    &::after {
+      order: -1;
+    }
+
+    &:not(.button) {
+      justify-content: flex-start;
+    }
+  }
+}
+
+//
+// Marker Variants
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-marker-plus {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
+  }
+
+  &.has-marker-plus-minus {
+    --mod-accordion-marker-icon: var(--accordion-marker-plus);
+  }
+
+  &.has-marker-plus-minus[open] {
+    --mod-accordion-marker-icon: var(--accordion-marker-minus);
+  }
+}
+
+/**
+ * Animation: smooth open/close
+ * --------------------------------
+ * - Uses ::details-content when supported (modern browsers)
+ * - Falls back to animating element siblings after summary
+ */
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  // Animate the marker icon
+  details.accordion > summary::after {
+    transition: transform 300ms ease;
+  }
+
+  // Animation with Safari is limited when closing the details,
+  // which is without animation.
+  // @supports selector(::details-content) {
+  details::details-content,
+  details > .content {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition:
+      content-visibility 0.3s,
+      grid-template-rows 0.3s;
+    transition-behavior: allow-discrete;
+  }
+
+  details::details-content > *,
+  details > .content > * {
+    min-height: 0;
+    transition: visibility 0.3s;
+    visibility: hidden;
+  }
+
+  details[open]::details-content,
+  details[open] > .content {
+    grid-template-rows: 1fr;
+  }
+
+  details[open]::details-content > *,
+  details[open] > .content > * {
+    visibility: visible;
+  }
+  // }
+}
+
+/*
+ * Visual variant: place summary at the bottom.
+ * Uses :has() to reserve space so the summary is visible even when closed.
+ */
+details.accordion:has(> summary.button.at-end) {
+  padding-bottom: 3rem;
+}
+
+details.accordion:has(> summary.button.is-small.at-end) {
+  padding-bottom: 2rem;
+}
+
+details.accordion > summary.button.at-end {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Keep content from being covered by the bottom-positioned summary */
+details.accordion:has(> summary.button.at-end) > summary.button.at-end ~ * {
+  padding-bottom: 3rem;
+}
+
+details.accordion:has(> summary.button.is-small.at-end) > summary.button.is-small.at-end ~ * {
+  padding-bottom: 2rem;
+}
+
+/* Optional: show different summary text based on open/closed (CSS-only)
+ * Markup:
+ *   <span class="accordion-label" aria-hidden="true">
+ *     <span class="is-closed">…</span>
+ *     <span class="is-open">…</span>
+ *   </span>
+ */
+
+ds-accordion .is-open,
+details.accordion > summary .accordion-label > .is-open,
+details.accordion > summary > .is-open {
+  display: none;
+}
+
+ds-accordion[open] .is-closed,
+details.accordion[open] > summary .accordion-label > .is-closed,
+details.accordion[open] > summary > .is-closed {
+  display: none;
+}
+
+ds-accordion[open] .is-open,
+details.accordion[open] > summary .accordion-label > .is-open,
+details.accordion[open] > summary > .is-open {
+  display: inline;
+}

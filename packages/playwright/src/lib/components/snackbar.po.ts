@@ -1,0 +1,40 @@
+import { expect, Locator } from '@playwright/test'
+import { PageObject } from './page-object'
+import { DsClose } from './close.po'
+import { E2ELocator } from '../page/utils'
+
+export class DsSnackbar extends PageObject {
+  public readonly close: DsClose
+  public readonly heading: Locator
+  public readonly expandButton: Locator
+  public readonly actions: Locator
+
+  constructor(el: E2ELocator) {
+    super(el)
+    this.close = new DsClose(el.locator('ds-close') as E2ELocator)
+    this.heading = el.locator('h2')
+    this.expandButton = el.locator('#mobile-button')
+    this.actions = el.locator('#action').locator('ds-button')
+  }
+
+  async clickClose() {
+    await this.close.click()
+  }
+
+  async clickAction(label: string) {
+    const action = this.actions.filter({ hasText: label })
+    await action.click()
+  }
+
+  async expand() {
+    await this.expandButton.click()
+  }
+
+  async assertToHaveHeading(text: string) {
+    await expect(this.heading).toContainText(text)
+  }
+
+  async assertToContainText(text: string) {
+    await expect(this.el).toContainText(text)
+  }
+}

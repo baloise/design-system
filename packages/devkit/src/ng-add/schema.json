@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$id": "bds-ng-add",
-  "title": "Adds Baloise Design System to a project",
+  "title": "Adds Helvetia Design System to a project",
   "type": "object",
   "properties": {
     "i18n": {

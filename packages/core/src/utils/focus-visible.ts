@@ -1,5 +1,5 @@
-const BAL_FOCUSED = 'bal-focused'
-const BAL_FOCUSABLE = 'bal-focusable'
+const DS_FOCUSED = 'ds-focused'
+const DS_FOCUSABLE = 'ds-focusable'
 export const FOCUS_KEYS = [
   'Tab',
   'ArrowDown',
@@ -16,7 +16,7 @@ export const FOCUS_KEYS = [
 ]
 
 export const focusableQueryString =
-  '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .bal-focusable:not([tabindex^="-"])'
+  '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .ds-focusable:not([tabindex^="-"])'
 
 export const startFocusVisible = (rootEl?: HTMLElement) => {
   let currentFocus: Element[] = []
@@ -26,8 +26,8 @@ export const startFocusVisible = (rootEl?: HTMLElement) => {
   const root = rootEl ? rootEl : document.body
 
   const setFocus = (elements: Element[]) => {
-    currentFocus.forEach(el => el.classList.remove(BAL_FOCUSED))
-    elements.forEach(el => el.classList.add(BAL_FOCUSED))
+    currentFocus.forEach(el => el.classList.remove(DS_FOCUSED))
+    elements.forEach(el => el.classList.add(DS_FOCUSED))
     currentFocus = elements
   }
 
@@ -47,7 +47,7 @@ export const startFocusVisible = (rootEl?: HTMLElement) => {
     if (keyboardMode && ev.composedPath !== undefined) {
       const toFocus = ev.composedPath().filter((el: any) => {
         if (el.classList) {
-          return el.classList.contains(BAL_FOCUSABLE)
+          return el.classList.contains(DS_FOCUSABLE)
         }
         return false
       }) as Element[]

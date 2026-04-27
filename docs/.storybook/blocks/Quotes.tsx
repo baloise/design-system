@@ -11,7 +11,7 @@ type InfoQuoteProps = PropsWithChildren
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" name="info" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" name="information" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
   )
@@ -20,7 +20,7 @@ export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
 export const WarningQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-warning-1 border-left-warning text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
   )
@@ -31,12 +31,46 @@ type StylesQuoteProps = {
 }
 
 type BasicStoryTabsProps = {
+  index?: number
   tag: string
+  noGuide?: boolean
   htmlStory: ModuleExport
   webComponentStory?: ModuleExport
 }
 
-export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStoryTabsProps): React.ReactElement => {
+export const BasicStoryTabs = ({
+  tag,
+  htmlStory,
+  webComponentStory,
+  index,
+  noGuide,
+}: BasicStoryTabsProps): React.ReactElement => {
+  if (index === 1) {
+    return (
+      <Tabs
+        tabs={[
+          {
+            label: 'Web Component',
+            content: (
+              <>
+                <Canvas of={webComponentStory} sourceState="shown" />
+                {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
+              </>
+            ),
+          },
+          {
+            label: 'HTML & CSS',
+            content: (
+              <>
+                <Canvas of={htmlStory} sourceState="shown" />
+                {noGuide !== true ? <StylesQuote tag={tag} /> : null}
+              </>
+            ),
+          },
+        ]}
+      />
+    )
+  }
   return (
     <Tabs
       tabs={[
@@ -45,7 +79,7 @@ export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStory
           content: (
             <>
               <Canvas of={htmlStory} sourceState="shown" />
-              <StylesQuote tag={tag} />
+              {noGuide !== true ? <StylesQuote tag={tag} /> : null}
             </>
           ),
         },
@@ -54,7 +88,7 @@ export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStory
           content: (
             <>
               <Canvas of={webComponentStory} sourceState="shown" />
-              <WebComponentQuote tag={tag} />
+              {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
             </>
           ),
         },
@@ -66,7 +100,7 @@ export const BasicStoryTabs = ({ tag, htmlStory, webComponentStory }: BasicStory
 export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Styles import</h3>
         <span>
@@ -86,15 +120,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@import '@baloise/ds-styles/css/all.css';
-`}
-                  />
-                  <span>To import only the styles required for this component:</span>
-                  <Code
-                    language="css"
-                    code={`
-@import '@baloise/ds-styles/css/basic.css';
-@import '@baloise/ds-styles/css/components/bal-${tag}.css';
+@import '@baloise/ds-styles/css/design-system.css';
 `}
                   />
                 </>
@@ -108,15 +134,7 @@ export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@use '@baloise/ds-styles/sass/all';
-`}
-                  />
-                  <span>To import only the styles required for this component:</span>
-                  <Code
-                    language="css"
-                    code={`
-@use '@baloise/ds-styles/sass/basic';
-@use '@baloise/ds-styles/css/components/bal-${tag}';
+@use '@baloise/ds-styles/sass/design-system';
 `}
                   />
                 </>
@@ -139,7 +157,7 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
 
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
-      <bal-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></bal-icon>
+      <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Installation</h3>
         <span>
@@ -157,12 +175,12 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
               language="ts"
               code={`
 import { Component } from '@angular/core'
-import { Bal${fromKebabToPascal(tag)} } from '@baloise/ds-angular'
+import { Ds${fromKebabToPascal(tag)} } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-example',
-  imports: [Bal${fromKebabToPascal(tag)}],
-  template: \`<bal-${tag}></bal-${tag}>\`,
+  imports: [Ds${fromKebabToPascal(tag)}],
+  template: \`<ds-${tag}></ds-${tag}>\`,
 })
 export class AppExampleComponent {}
 `}

@@ -1,13 +1,13 @@
-import { BalLogger } from '../log'
-import { BALOISE_ANIMATION_KEY } from './config.const'
+import { DsLogger } from '../log'
+import { DS_ANIMATION_KEY } from './config.const'
 import { defaultConfig } from './config.default'
-import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
-import { BalConfigObserver } from './observable/observer'
+import { DsBrand, DsConfig, DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
+import { DsConfigObserver } from './observable/observer'
 
 export class Config {
-  private _componentObservers: BalConfigObserver[] = []
-  private _observers: BalConfigObserver[] = []
-  private _config: BalConfigState = defaultConfig
+  private _componentObservers: DsConfigObserver[] = []
+  private _observers: DsConfigObserver[] = []
+  private _config: DsConfigState = defaultConfig
 
   public _jmp?: (c: any) => any
   public _raf?: (c: any) => number
@@ -15,26 +15,37 @@ export class Config {
   public _rel?: (el: any, eventName: string, listener: any, options: any) => void
   public _ce?: (eventName: string, opts?: any) => any
 
+  get brand(): DsBrand {
+    return this._config.brand
+  }
+
+  set brand(brand: DsBrand) {
+    if (brand !== this._config.brand) {
+      this._config.brand = brand
+      this._notify()
+    }
+  }
+
   get locale(): string {
     return `${this._config.language}-${this._config.region}`
   }
 
-  get region(): BalRegion {
+  get region(): DsRegion {
     return this._config.region
   }
 
-  set region(region: BalRegion) {
+  set region(region: DsRegion) {
     if (region !== this._config.region) {
       this._config.region = region
       this._notify()
     }
   }
 
-  get language(): BalLanguage {
+  get language(): DsLanguage {
     return this._config.language
   }
 
-  set language(language: BalLanguage) {
+  set language(language: DsLanguage) {
     if (language !== this._config.language) {
       if (this._config.allowedLanguages.includes(language)) {
         this._config.language = language
@@ -46,22 +57,22 @@ export class Config {
     }
   }
 
-  get allowedLanguages(): BalLanguage[] {
+  get allowedLanguages(): DsLanguage[] {
     return this._config.allowedLanguages
   }
 
-  set allowedLanguages(allowedLanguages: BalLanguage[]) {
+  set allowedLanguages(allowedLanguages: DsLanguage[]) {
     if (allowedLanguages !== this._config.allowedLanguages) {
       this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
   }
 
-  get icons(): BalIcons {
+  get icons(): DsIcons {
     return this._config.icons
   }
 
-  set icons(icons: BalIcons) {
+  set icons(icons: DsIcons) {
     this._config.icons = {
       ...this._config.icons,
       ...icons,
@@ -69,11 +80,11 @@ export class Config {
     this._notify()
   }
 
-  get logger(): BalLogger {
+  get logger(): DsLogger {
     return this._config.logger
   }
 
-  set logger(logger: BalLogger) {
+  set logger(logger: DsLogger) {
     this._config.logger = { ...logger }
     this._notify()
   }
@@ -96,7 +107,7 @@ export class Config {
     this._notify()
   }
 
-  attach(observer: BalConfigObserver): void {
+  attach(observer: DsConfigObserver): void {
     const isExist = this._observers.includes(observer)
     if (isExist) {
       return console.log('Subject: Observer has been attached already.')
@@ -106,7 +117,7 @@ export class Config {
     observer.configChanged(this._config)
   }
 
-  detach(observer: BalConfigObserver): void {
+  detach(observer: DsConfigObserver): void {
     const observerIndex = this._observers.indexOf(observer)
     if (observerIndex === -1) {
       return console.log('Subject: Nonexistent observer.')
@@ -115,7 +126,7 @@ export class Config {
     this._observers.splice(observerIndex, 1)
   }
 
-  attachComponent(observer: BalConfigObserver): void {
+  attachComponent(observer: DsConfigObserver): void {
     const isExist = this._componentObservers.includes(observer)
     if (isExist) {
       return console.log('Subject: Observer has been attached already.')
@@ -125,7 +136,7 @@ export class Config {
     observer.configChanged(this._config)
   }
 
-  detachComponent(observer: BalConfigObserver): void {
+  detachComponent(observer: DsConfigObserver): void {
     const observerIndex = this._componentObservers.indexOf(observer)
     if (observerIndex === -1) {
       return console.log('Subject: Nonexistent observer.')
@@ -138,7 +149,7 @@ export class Config {
     return JSON.stringify(this._config)
   }
 
-  reset(config: BalConfig) {
+  reset(config: DsConfig) {
     this._config = {
       ...this._config,
       ...config,
@@ -167,7 +178,7 @@ export const config = /*@__PURE__*/ new Config()
 
 export const configFromLocalStorage = (win: Window): any => {
   try {
-    const animated = JSON.parse(win.localStorage.getItem(BALOISE_ANIMATION_KEY) || 'true')
+    const animated = JSON.parse(win.localStorage.getItem(DS_ANIMATION_KEY) || 'true')
 
     if (animated !== null) {
       return {

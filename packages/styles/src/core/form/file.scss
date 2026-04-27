@@ -8,7 +8,7 @@
   justify-content: flex-start;
   position: relative;
   width: 100%;
-  font-size: var(--bal-form-field-control-font-size);
+  font-size: var(--ds-form-field-control-font-size);
   justify-content: center;
   .file-label {
     width: 100%;
@@ -32,29 +32,29 @@
   overflow: hidden;
   position: relative;
   gap: 0.5rem;
-  font-weight: var(--bal-form-field-label-font-weight);
-  color: var(--bal-form-field-label-color);
+  font-weight: var(--ds-form-field-label-font-weight);
+  color: var(--ds-form-field-label-color);
   text-align: center;
   hyphens: auto;
   &:hover {
     .file-cta,
     .file-label {
-      color: var(--bal-form-field-label-color-hover);
+      color: var(--ds-form-field-label-color-hover);
     }
     .file-cta {
-      background-color: var(--bal-form-field-control-background-hover);
-      border-color: var(--bal-form-field-control-border-color-hover);
+      background-color: var(--ds-form-field-control-background-hover);
+      border-color: var(--ds-form-field-control-border-color-hover);
     }
   }
   &:active,
   &:focus-within {
     .file-cta,
     .file-label {
-      color: var(--bal-form-field-label-color-active);
+      color: var(--ds-form-field-label-color-active);
     }
     .file-cta {
-      background-color: var(--bal-form-field-control-background-active);
-      border-color: var(--bal-form-field-control-border-color-active);
+      background-color: var(--ds-form-field-control-background-active);
+      border-color: var(--ds-form-field-control-border-color-active);
     }
   }
 }
@@ -70,10 +70,10 @@
 .file-cta {
   @extend %control;
   justify-content: flex-start;
-  border-style: var(--bal-file-border-style);
-  border-color: var(--bal-form-field-control-border-color);
-  border-radius: var(--bal-form-field-control-radius);
-  background: var(--bal-form-field-control-background);
+  border-style: var(--ds-file-border-style);
+  border-color: var(--ds-form-field-control-border-color);
+  border-radius: var(--ds-form-field-control-radius);
+  background: var(--ds-form-field-control-background);
   font-size: 1em;
   padding-left: 1em;
   padding-right: 1em;
@@ -81,8 +81,8 @@
   gap: 0.5rem;
 }
 .file-cta {
-  background-color: var(--bal-form-field-control-background);
-  color: var(--bal-form-field-control-color);
+  background-color: var(--ds-form-field-control-background);
+  color: var(--ds-form-field-control-color);
 }
 .file-icon {
   align-items: center;
@@ -95,20 +95,20 @@
 .file.is-success {
   .file-label,
   .file-cta {
-    color: var(--bal-form-field-label-success-color);
+    color: var(--ds-form-field-label-success-color);
   }
   .file-cta {
-    border-color: var(--bal-form-field-control-success-border-color);
-    background: var(--bal-form-field-control-success-background);
+    border-color: var(--ds-form-field-control-success-border-color);
+    background: var(--ds-form-field-control-success-background);
   }
   .file-label {
     &:active,
     &:focus-within {
       .file-cta {
-        border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-text-primary-active);
+        border-color: var(--ds-form-field-control-border-color-active);
+        color: var(--ds-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-text-primary-active);
+          color: var(--ds-link-color-text-primary-active);
         }
       }
     }
@@ -117,20 +117,20 @@
 .file.is-danger {
   .file-label,
   .file-cta {
-    color: var(--bal-form-field-label-danger-color);
+    color: var(--ds-form-field-label-danger-color);
   }
   .file-cta {
-    border-color: var(--bal-form-field-control-danger-border-color);
-    background: var(--bal-form-field-control-danger-background);
+    border-color: var(--ds-form-field-control-danger-border-color);
+    background: var(--ds-form-field-control-danger-background);
   }
   .file-label {
     &:active,
     &:focus-within {
       .file-cta {
-        border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-text-primary-active);
+        border-color: var(--ds-form-field-control-border-color-active);
+        color: var(--ds-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-text-primary-active);
+          color: var(--ds-link-color-text-primary-active);
         }
         // warning is deprecated
       }
@@ -140,20 +140,20 @@
 .file.is-warning {
   .file-label,
   .file-cta {
-    color: var(--bal-color-text-warning);
+    color: var(--ds-color-text-warning);
   }
   .file-cta {
-    border-color: var(--bal-color-border-warning-base);
-    background: var(--bal-color-warning-1);
+    border-color: var(--ds-color-border-warning-base);
+    background: var(--ds-color-warning-1);
   }
   .file-label {
     &:active,
     &:focus-within {
       .file-cta {
-        border-color: var(--bal-form-field-control-border-color-active);
-        color: var(--bal-link-color-text-primary-active);
+        border-color: var(--ds-form-field-control-border-color-active);
+        color: var(--ds-link-color-text-primary-active);
         .file-label {
-          color: var(--bal-link-color-text-primary-active);
+          color: var(--ds-link-color-text-primary-active);
         }
       }
     }
@@ -163,10 +163,10 @@
   .file-label,
   .file-cta {
     @extend %disabled;
-    color: var(--bal-file-label-disabled-color);
+    color: var(--ds-file-label-disabled-color);
   }
   .file-cta {
-    border-color: var(--bal-form-field-control-disabled-border-color);
-    background: var(--bal-form-field-control-disabled-background);
+    border-color: var(--ds-form-field-control-disabled-border-color);
+    background: var(--ds-form-field-control-disabled-background);
   }
 }

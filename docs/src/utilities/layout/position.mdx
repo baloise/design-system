@@ -35,9 +35,9 @@ An element with a static position is rendered in accordance with the natural flo
   language="html"
   code={`
 <div class="relative">
-  <div class="static bg-green-2 p-normal radius-normal" style="min-width: 300px; min-height: 120px;">
+  <div class="static bg-green-2 p-normal radius" style="min-width: 300px; min-height: 120px;">
     <p>Static</p>
-    <div class="absolute bottom-none left-0 bg-green radius-normal p-normal" style="min-width: 100px; min-height: 56px">
+    <div class="absolute bottom-none left-0 bg-green radius p-normal" style="min-width: 100px; min-height: 56px">
       Absolute
     </div>
   </div>
@@ -53,7 +53,7 @@ A fixed-positioned element is situated with respect to the viewport and maintain
   language="html"
   code={`
 <div class="overflow-hidden" style="height: 250px">
-  <div class="relative radius-normal border-primary" style="height: 200px">
+  <div class="relative radius border-primary" style="height: 200px">
     <div class="absolute top-0 left-0 px-normal py-small w-full bg-primary">
       Fixed
     </div>
@@ -88,8 +88,8 @@ An element with a relative position is presented relative to its initial placeme
   language="html"
   code={`
 <div class="relative">
-  <div class="relative bg-green-2 p-normal radius-normal" style="min-width: 300px; min-height: 140px;">Relative
-    <div class="absolute bottom-none left-0 bg-green p-normal radius-normal" style="min-width: 100px; min-height: 56px">
+  <div class="relative bg-green-2 p-normal radius" style="min-width: 300px; min-height: 140px;">Relative
+    <div class="absolute bottom-none left-0 bg-green p-normal radius" style="min-width: 100px; min-height: 56px">
       Absolute
     </div>
   </div>
@@ -106,23 +106,23 @@ A fixed element is placed in relation to the viewport and remains consistently p
   language="html"
   code={`
 <div class="mb-normal">
-  <div class="relative bg-green-2 radius-normal p-normal">
+  <div class="relative bg-green-2 radius p-normal">
     <p class="mt-none">Relative</p>
-    <div class="static bg-green-3 radius-normal p-normal" style="min-width: 300px; min-height: 150px;">
+    <div class="static bg-green-3 radius p-normal" style="min-width: 300px; min-height: 150px;">
       <p class="mt-none">Static</p>
-      <div class="static bottom-none left-0 bg-green-4 radius-normal p-normal" style="min-width: 120px; min-height: 56px">
+      <div class="static bottom-none left-0 bg-green-4 radius p-normal" style="min-width: 120px; min-height: 56px">
         Static
       </div>
     </div>
   </div>
 </div>
 
-<div class="relative bg-green-2 radius-normal p-normal">
+<div class="relative bg-green-2 radius p-normal">
   <p class="mt-0">Relative</p>
-  <div class="static bg-green-3 radius-normal p-normal" style="min-width: 300px; min-height: 150px;">
+  <div class="static bg-green-3 radius p-normal" style="min-width: 300px; min-height: 150px;">
     <p class="mt-0">Static</p>
     <div
-      class="absolute bottom-none left-0 bg-green-4 radius-normal p-normal"
+      class="absolute bottom-none left-0 bg-green-4 radius p-normal"
       style="min-width: 120px; min-height: 56px"
     >
       Dynamic
@@ -139,7 +139,7 @@ A sticky element dynamically adjusts its position according to the scroll positi
   language="html"
   code={`
 <div class="overflow-hidden">
-  <div class="overflow-auto radius-normal border-primary" style="height: 280px">
+  <div class="overflow-auto radius border-primary" style="height: 280px">
     <div>
       <div class="sticky top-0 bg-green p-normal">
         Sticky Title 1

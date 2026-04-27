@@ -1,9 +1,9 @@
 import { SingleSubject } from '../types/signal'
-import { BalAnimationObserver, BalAnimationObserverInfo } from './animation.interfaces'
-import { BalAnimationListener } from './animation.listener'
+import { AnimationObserver, AnimationObserverInfo } from './animation.interfaces'
+import { AnimationListener } from './animation.listener'
 
-export class BalAnimationSubject extends SingleSubject<BalAnimationObserver, BalAnimationObserverInfo> {
-  private listener = new BalAnimationListener()
+export class AnimationSubject extends SingleSubject<AnimationObserver, AnimationObserverInfo> {
+  private listener = new AnimationListener()
 
   constructor() {
     super((observer, data) => {
@@ -11,7 +11,7 @@ export class BalAnimationSubject extends SingleSubject<BalAnimationObserver, Bal
     })
   }
 
-  override attach(observer: BalAnimationObserver): void {
+  override attach(observer: AnimationObserver): void {
     super.attach(observer)
     this.listener.connect(observer.el)
     this.listener.add((info: any) => super.notify(info))
@@ -23,4 +23,4 @@ export class BalAnimationSubject extends SingleSubject<BalAnimationObserver, Bal
   }
 }
 
-export const balAnimationSubject = new BalAnimationSubject()
+export const dsAnimationSubject = new AnimationSubject()

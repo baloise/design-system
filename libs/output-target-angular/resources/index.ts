@@ -1,8 +1,8 @@
 import { InjectionToken } from '@angular/core'
 
-export const BalTokenUserConfig = new InjectionToken<any>('BalTokenUserConfig')
+export const DsTokenUserConfig = new InjectionToken<any>('DsTokenUserConfig')
 
-export interface BaloiseDesignSystemAngularConfig {
+export interface DesignSystemAngularConfig {
   defaults?: unknown
   forms?: {
     setInvalid?: boolean

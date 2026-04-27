@@ -1,7 +1,7 @@
 {
   "name": "@baloise/ds-devkit",
   "version": "20.0.0-next.1",
-  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
@@ -19,7 +19,6 @@
     "@angular-devkit/core": "^19.0.0",
     "@angular-devkit/schematics": "^19.0.0",
     "@schematics/angular": "^19.0.0",
-    "typescript": "~5.6.2",
-    "glob": "10.5.0"
+    "typescript": "~5.6.2"
   }
 }

@@ -12,21 +12,21 @@
 .help {
   display: block;
   margin-top: -2px;
-  color: var(--bal-form-field-message-color);
-  font-size: var(--bal-form-field-message-font-size);
-  font-weight: var(--bal-form-field-message-font-weight);
+  color: var(--ds-form-field-message-color);
+  font-size: var(--ds-form-field-message-font-size);
+  font-weight: var(--ds-form-field-message-font-weight);
   hyphens: auto;
   &.is-danger {
-    color: var(--bal-form-field-message-danger-color);
+    color: var(--ds-form-field-message-danger-color);
   }
   &.is-success {
-    color: var(--bal-form-field-message-success-color);
+    color: var(--ds-form-field-message-success-color);
   } // deprecated
   &.is-warning {
-    color: var(--bal-color-text-warning);
+    color: var(--ds-color-text-warning);
   }
   &.is-disabled {
-    color: var(--bal-form-field-message-disabled-color);
+    color: var(--ds-form-field-message-disabled-color);
   }
 }
 .field {
@@ -82,7 +82,7 @@
           }
         }
       }
-      &.is-expanded {
+      &.is-wide {
         flex-grow: 1;
         flex-shrink: 1;
       }
@@ -93,7 +93,7 @@
     &.has-addons-right {
       justify-content: flex-end;
     }
-    &.has-addons-fullwidth {
+    &.has-addons-wide {
       .control {
         flex-grow: 1;
         flex-shrink: 0;
@@ -107,7 +107,7 @@
       &:not(:last-child) {
         margin-bottom: 0;
       }
-      &.is-expanded {
+      &.is-wide {
         flex-grow: 1;
         flex-shrink: 1;
       }
@@ -154,7 +154,7 @@
     @include ltr-property('margin', 1.5rem);
     text-align: right;
     &.is-small {
-      font-size: var(--bal-text-size-small);
+      font-size: var(--ds-text-size-sm);
       padding-top: 0.375em;
     }
     &.is-normal {
@@ -188,14 +188,14 @@
 .control {
   box-sizing: border-box;
   clear: both;
-  font-size: var(--bal-form-field-control-font-size);
+  font-size: var(--ds-form-field-control-font-size);
   position: relative;
   text-align: inherit;
   &.is-loading {
     &::after {
       animation: spinAround 500ms infinite linear;
-      border: 2px solid var(--bal-form-field-control-border-color-active);
-      border-radius: var(--bal-radius-rounded);
+      border: 2px solid var(--ds-form-field-control-border-color-active);
+      border-radius: var(--ds-radius-rounded);
       border-right-color: transparent;
       border-top-color: transparent;
       content: '';
@@ -213,7 +213,7 @@
   right: 2.3rem;
 }
 .field.is-grouped {
-  gap: calc(var(--bal-column-gap) / 2);
+  gap: calc(var(--ds-column-gap) / 2);
 }
 .field.has-direction-row.is-grouped {
   flex-direction: row;
@@ -224,7 +224,7 @@
   .button {
     width: 100%;
   }
-  .bal-button {
+  .ds-button {
     margin: 0 !important;
   }
 }

@@ -44,7 +44,7 @@ code {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
   background: 0 0;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: 'DM Mono', monospace !important;
@@ -83,7 +83,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: var(--bal-color-primary-6);
+  background: var(--ds-color-primary-6);
 }
 
 :not(pre) > code[class*='language-'] {
@@ -94,9 +94,9 @@ pre[class*='language-'] {
 
 .docblock-source {
   border-radius: 4px !important;
-  background: var(--bal-color-primary-6) !important;
+  background: var(--ds-color-primary-6) !important;
   box-shadow: none !important;
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
   position: relative;
   overflow: hidden;
   border: 1px solid hsla(203, 50%, 30%, 0.15);
@@ -107,17 +107,17 @@ pre[class*='language-'] {
 
 .docblock-source pre {
   padding: 20px;
-  background: var(--bal-color-primary-6) !important;
+  background: var(--ds-color-primary-6) !important;
 }
 
 .docblock-source > div {
-  background: var(--bal-color-primary-6) !important;
+  background: var(--ds-color-primary-6) !important;
 }
 
 .docblock-source > div:last-child button {
-  background: var(--bal-color-primary-5) !important;
+  background: var(--ds-color-primary-5) !important;
   border-radius: 4px !important;
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   margin-left: -1px;
@@ -127,88 +127,88 @@ pre[class*='language-'] {
 .token.comment,
 .token.doctype,
 .token.prolog {
-  color: var(--bal-color-grey-5) !important;
+  color: var(--ds-color-grey-5) !important;
 }
 
 .token.punctuation {
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
 }
 
 .token.keyword {
-  color: var(--bal-color-yellow-2) !important;
+  color: var(--ds-color-yellow-2) !important;
 }
 
 .token.constant {
-  color: var(--bal-color-red-2) !important;
+  color: var(--ds-color-red-2) !important;
 }
 
 .token.class-name,
 .token.class-name.maybe-class-name {
-  color: var(--bal-color-red-3) !important;
+  color: var(--ds-color-red-3) !important;
 }
 
 .token.function {
-  color: var(--bal-color-light-blue-3) !important;
+  color: var(--ds-color-light-blue-3) !important;
 }
 
 .token.keyword.module {
-  color: var(--bal-color-purple-3) !important;
+  color: var(--ds-color-purple-3) !important;
 }
 
 .token.number {
-  color: var(--bal-color-purple-5) !important;
+  color: var(--ds-color-purple-5) !important;
 }
 
 .token.boolean {
-  color: var(--bal-color-purple-5) !important;
+  color: var(--ds-color-purple-5) !important;
 }
 
 .token.operator {
-  color: var(--bal-color-purple-4) !important;
+  color: var(--ds-color-purple-4) !important;
 }
 
 .token.string {
-  color: var(--bal-color-green-3) !important;
+  color: var(--ds-color-green-3) !important;
 }
 
 .token.builtin {
-  color: var(--bal-color-light-blue-2) !important;
+  color: var(--ds-color-light-blue-2) !important;
 }
 
 .token.console.class-name,
 .token.dom.variable {
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
 }
 
 .token.atrule.rule {
-  color: var(--bal-color-purple-4) !important;
+  color: var(--ds-color-purple-4) !important;
 }
 
 .language-html .token.tag.punctuation,
 .language-html .token.punctuation {
-  color: var(--bal-color-grey-1) !important;
+  color: var(--ds-color-grey-1) !important;
 }
 
 .language-html .token.tag {
-  color: var(--bal-color-red-3) !important;
+  color: var(--ds-color-red-3) !important;
 }
 
 .language-html .token.attr-name {
-  color: var(--bal-color-yellow-2) !important;
+  color: var(--ds-color-yellow-2) !important;
 }
 
 .language-html .token.attr-value {
-  color: var(--bal-color-green-3) !important;
+  color: var(--ds-color-green-3) !important;
 }
 
 .language-scss .token.selector,
 .language-css .token.selector {
-  color: var(--bal-color-yellow-3) !important;
+  color: var(--ds-color-yellow-3) !important;
 }
 
 .language-scss .token.property,
 .language-css .token.property {
-  color: var(--bal-color-light-blue-2) !important;
+  color: var(--ds-color-light-blue-2) !important;
 }
 
 .language-diff {
@@ -222,15 +222,15 @@ pre[class*='language-'] {
 }
 
 .language-diff .token.unchanged {
-  color: var(--bal-color-grey-4) !important;
+  color: var(--ds-color-grey-4) !important;
 }
 
 .language-diff .token.inserted {
-  color: var(--bal-color-green-4) !important;
+  color: var(--ds-color-green-4) !important;
 }
 
 .language-diff .token.deleted {
-  color: var(--bal-color-red-4) !important;
+  color: var(--ds-color-red-4) !important;
 }
 
 .language-scss {
@@ -238,15 +238,15 @@ pre[class*='language-'] {
 }
 
 .language-scss .token.comment {
-  color: var(--bal-color-grey-5) !important;
+  color: var(--ds-color-grey-5) !important;
 }
 
 .language-scss .token.keyword {
-  color: var(--bal-color-purple-4) !important;
+  color: var(--ds-color-purple-4) !important;
 }
 
 .language-scss .token.string {
-  color: var(--bal-color-green-3) !important;
+  color: var(--ds-color-green-3) !important;
 }
 
 /* .language-scss code {
@@ -256,13 +256,13 @@ pre[class*='language-'] {
 }
 
 .language-scss .token.unchanged {
-  color: var(--bal-color-grey-4) !important;
+  color: var(--ds-color-grey-4) !important;
 }
 
 .language-scss .token.inserted {
-  color: var(--bal-color-green-4) !important;
+  color: var(--ds-color-green-4) !important;
 }
 
 .language-scss .token.deleted {
-  color: var(--bal-color-red-4) !important;
+  color: var(--ds-color-red-4) !important;
 } */

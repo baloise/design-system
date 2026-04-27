@@ -1,4 +1,6 @@
-export const Pixel = ({ children }) => (
+import React from 'react'
+
+export const Pixel = ({ children }): React.ReactElement => (
   <pre>
     <code>{children}</code>
   </pre>

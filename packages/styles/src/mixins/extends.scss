@@ -4,7 +4,7 @@
   @include bottomSpacing;
 }
 %hidden-input {
-  @include hidden-input;
+  @include visually-hidden;
 }
 %focus-shadow {
   @include focus-shadow;

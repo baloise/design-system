@@ -20,17 +20,17 @@ import {
 <Banner label="Theming" section="Development" />
 
 <Lead>
-  The Baloise Design System provides a versatile foundation that can be tailored and adjusted to match a brand's
-  identity. Customizing the appearance of Baloise applications has never been simpler. As the framework is constructed
+  The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's
+  identity. Customizing the appearance of Helvetia applications has never been simpler. As the framework is constructed
   using CSS, it arrives with pre-existing default styles that can be modified and adjusted with remarkable ease.
 </Lead>
 
 ## CSS Variables
 
-Baloise Design System components incorporate [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), enabling hassle-free customization of applications.
+Helvetia Design System components incorporate [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), enabling hassle-free customization of applications.
 CSS Variables enable a value to be stored in a single location and referenced in numerous other locations.
 They also facilitate dynamic CSS modification at runtime, a task that previously necessitated a CSS preprocessor.
-Thanks to CSS variables, it is simpler than ever to replace Baloise Design System components to align with a brand or theme.
+Thanks to CSS variables, it is simpler than ever to replace Helvetia Design System components to align with a brand or theme.
 
 ## Compact theme
 
@@ -55,8 +55,8 @@ In an application, CSS variables can be established globally within the `:root` 
   language="css"
   code={`
 :root {
-  --bal-color-primary: pink;
-  --bal-font-family-title: 'Roboto', sans-serif;
+  --ds-color-primary: pink;
+  --ds-font-family-heading: 'Roboto', sans-serif;
 }
 `}
 />
@@ -70,8 +70,8 @@ Change the default background to aqua
 <Code
   language="css"
   code={`
-bal-badge {
-  --bal-badge-background: aqua;
+ds-badge {
+  --ds-badge-background: aqua;
 }
 `}
 />
@@ -82,7 +82,7 @@ Change the background on an badge with the .my-badge class
   language="css"
   code={`
 .my-badge {
-  --bal-badge-background: lime;
+  --ds-badge-background: lime;
 }
 `}
 />
@@ -95,7 +95,7 @@ Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleD
   language="js"
   code={`
 const el = document.querySelector('.my-badge')
-el.style.setProperty('--bal-badge-background', 'lime')
+el.style.setProperty('--ds-badge-background', 'lime')
 `}
 />
 

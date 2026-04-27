@@ -1,12 +1,12 @@
 <a href="https://design.baloise.dev" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/design-system/main/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
+    <img src="https://raw.githubusercontent.com/baloise/design-system/main/resources/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
 </a>
 
 <br />
 <br />
 
 <p align="center">
-  The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
+  The Helvetia Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
 </p>
 
 <p align="center">

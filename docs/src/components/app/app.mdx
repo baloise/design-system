@@ -1,0 +1,50 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as AppStories from './app.stories'
+
+<Meta of={AppStories} />
+
+<StoryHeading of={AppStories.Basic} hidden></StoryHeading>
+
+<Banner of={AppStories} />
+
+<Lead>
+  **App** is a container element for an Helvetia Design System application. There should only be one <code>ds-app</code>{' '}
+  element per project. An app can have many Design System components. The overlay components get appended to the{' '}
+  <code>ds-app</code> when they are presented.
+</Lead>
+
+<Canvas of={AppStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={AppStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AppStories.FormWizard}></StoryHeading>
+
+Use the following app structure for forms with multiple steps.
+
+Also have a look at the [mobile variant](../?path=/story/components-layout-app--form-wizard-mobile).
+
+<Canvas of={AppStories.FormWizard} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+
+
+
+
+<Footer />

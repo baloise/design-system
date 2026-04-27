@@ -1,13 +1,13 @@
-export type BalBreakpoints = {
+export type DsBreakpoints = {
   mobile: boolean
   tablet: boolean
   touch: boolean
   desktop: boolean
-  highDefinition: boolean
-  widescreen: boolean
-  fullhd: boolean
+  desktopLg: boolean
+  desktopXl: boolean
+  desktop2Xl: boolean
 }
 
-export interface BalBreakpointObserver {
-  breakpointListener(breakpoints: BalBreakpoints): void
+export interface DsBreakpointObserver {
+  breakpointListener(breakpoints: DsBreakpoints): void
 }

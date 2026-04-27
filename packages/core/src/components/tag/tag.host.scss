@@ -1,0 +1,4 @@
+@use '../../hybrid' as hybrid;
+@use './tag.style' with (
+  $use-host: true
+);

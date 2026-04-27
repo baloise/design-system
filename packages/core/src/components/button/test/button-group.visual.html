@@ -1,0 +1,106 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-button-group>
+          <ds-button>Button</ds-button>
+          <ds-button>Button</ds-button>
+          <ds-button>Button</ds-button>
+        </ds-button-group>
+      </section>
+
+      <!-- Group -->
+      <section data-testid="group">
+        <span>Group</span>
+        <ds-button-group>
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group position="center">
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group position="right">
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+      </section>
+
+      <!-- Long Labels -->
+      <section data-testid="long-labels">
+        <span>Long Labels</span>
+        <ds-button-group>
+          <ds-button>Left</ds-button>
+          <ds-button>Very long label for a simple button to see if it wraps</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+      </section>
+
+      <!-- Column Group -->
+      <section data-testid="column-group">
+        <span>Column Group</span>
+        <ds-button-group direction="column" position="left">
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group direction="column" position="center">
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group direction="column" position="right">
+          <ds-button>Left</ds-button>
+          <ds-button>Middle</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+      </section>
+
+      <!-- Wide -->
+      <section data-testid="wide">
+        <span>Wide</span>
+        <ds-button-group direction="row" wide>
+          <ds-button>Left</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group direction="row" wide>
+          <ds-button square>
+            <ds-icon name="plus"></ds-icon>
+          </ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+      </section>
+
+      <!-- Two Row Button Group -->
+      <section data-testid="two-row-button-group">
+        <span>Two Row Button Group</span>
+        <ds-button-group direction="row">
+          <ds-button>Left</ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+        <ds-button-group direction="row">
+          <ds-button square>
+            <ds-icon name="plus"></ds-icon>
+          </ds-button>
+          <ds-button>Right</ds-button>
+        </ds-button-group>
+      </section>
+    </main>
+  </body>
+</html>

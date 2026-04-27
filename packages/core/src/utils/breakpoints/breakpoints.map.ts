@@ -1,18 +1,16 @@
 import {
-  balBreakpointDesktop,
-  balBreakpointFullhd,
-  balBreakpointHighDefinition,
-  balBreakpointTablet,
-  balBreakpointWidescreen,
+  DsBreakpointTablet,
+  DsBreakpointDesktop,
+  DsBreakpointDesktopLg,
+  DsBreakpointDesktopXl,
+  DsBreakpointDesktop2Xl,
 } from '@baloise/ds-tokens'
 
-const toNumber = (pixel: string): number => parseInt(pixel.slice(0, -2), 10)
-
-const breakpointTablet = toNumber(balBreakpointTablet)
-const breakpointDesktop = toNumber(balBreakpointDesktop)
-const breakpointHighDefinition = toNumber(balBreakpointHighDefinition)
-const breakpointWidescreen = toNumber(balBreakpointWidescreen)
-const breakpointFullhd = toNumber(balBreakpointFullhd)
+const breakpointTablet = DsBreakpointTablet
+const breakpointDesktop = DsBreakpointDesktop
+const breakpointDesktopLg = DsBreakpointDesktopLg
+const breakpointDesktopXl = DsBreakpointDesktopXl
+const breakpointDesktop2Xl = DsBreakpointDesktop2Xl
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth
@@ -28,19 +26,19 @@ const isTouch = (win: Window) => isMobile(win) || isTablet(win)
 
 const isDesktop = (win: Window) => !isTouch(win)
 
-const isHighDefinition = (win: Window) => {
+const isDesktopLg = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointHighDefinition && width < breakpointWidescreen
+  return width >= breakpointDesktopLg && width < breakpointDesktopXl
 }
 
-const isWideScreen = (win: Window) => {
+const isDesktopXl = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointWidescreen && width < breakpointFullhd
+  return width >= breakpointDesktopXl && width < breakpointDesktop2Xl
 }
 
-const isFullHD = (win: Window) => {
+const isDesktop2Xl = (win: Window) => {
   const width = win.innerWidth
-  return width >= breakpointFullhd
+  return width >= breakpointDesktop2Xl
 }
 
 export const BREAKPOINTS_MAP = {
@@ -48,7 +46,7 @@ export const BREAKPOINTS_MAP = {
   tablet: isTablet,
   touch: isTouch,
   desktop: isDesktop,
-  highDefinition: isHighDefinition,
-  widescreen: isWideScreen,
-  fullhd: isFullHD,
+  desktopLg: isDesktopLg,
+  desktopXl: isDesktopXl,
+  desktop2Xl: isDesktop2Xl,
 }

@@ -1,16 +1,22 @@
 {
-  "eslint.validate": ["json"],
-  "cSpell.words": ["cleancss"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[mdx]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "files.eol": "\n",
   "vsicons.associations.files": [
     {
       "icon": "playwright",
-      "extensions": ["play.ts"],
+      "extensions": [".play.ts"],
       "format": "svg"
     },
     {
       "icon": "registry",
-      "extensions": ["po.ts"],
+      "extensions": [".po.ts"],
       "format": "svg"
     }
-  ]
+  ],
+  "vitest.disableWorkspaceWarning": true
 }
