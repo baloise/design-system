@@ -38,11 +38,11 @@ export const BasicHtml = Story({
   ...withRender(
     () => `
 <div class="field">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-basic">Label</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Enter text here"></textarea>
+    <textarea id="textarea-basic" class="textarea" placeholder="Enter text here" aria-describedby="help-basic"></textarea>
   </div>
-  <p class="help">Description</p>
+  <p id="help-basic" class="help">Description</p>
 </div>
 `,
   ),
@@ -63,18 +63,18 @@ export const DisabledHtml = Story({
   ...withRender(
     () => `
 <div class="field is-disabled">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-disabled-1">Label</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Placeholder" disabled></textarea>
+    <textarea id="textarea-disabled-1" class="textarea" placeholder="Placeholder" disabled aria-describedby="help-disabled-1"></textarea>
   </div>
-  <p class="help">Description</p>
+  <p id="help-disabled-1" class="help">Description</p>
 </div>
 <div class="field is-disabled">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-disabled-2">Label</label>
   <div class="control">
-    <textarea class="textarea" disabled>Value</textarea>
+    <textarea id="textarea-disabled-2" class="textarea" disabled aria-describedby="help-disabled-2">Value</textarea>
   </div>
-  <p class="help">Description</p>
+  <p id="help-disabled-2" class="help">Description</p>
 </div>
 `,
   ),
@@ -95,11 +95,11 @@ export const InvalidHtml = Story({
   ...withRender(
     () => `
 <div class="field is-danger">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-invalid">Label</label>
   <div class="control">
-    <textarea class="textarea"></textarea>
+    <textarea id="textarea-invalid" class="textarea" aria-invalid="true" aria-describedby="help-invalid"></textarea>
   </div>
-  <p class="help">Validation Error</p>
+  <p id="help-invalid" class="help">Validation Error</p>
 </div>
 `,
   ),
@@ -120,11 +120,11 @@ export const ValidHtml = Story({
   ...withRender(
     () => `
 <div class="field is-success">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-valid">Label</label>
   <div class="control">
-    <textarea class="textarea">Value</textarea>
+    <textarea id="textarea-valid" class="textarea" aria-describedby="help-valid">Value</textarea>
   </div>
-  <p class="help">Description</p>
+  <p id="help-valid" class="help">Description</p>
 </div>
 `,
   ),
@@ -145,11 +145,11 @@ export const WarningHtml = Story({
   ...withRender(
     () => `
 <div class="field is-warning">
-  <label class="label">Label</label>
+  <label class="label" for="textarea-warning">Label</label>
   <div class="control">
-    <textarea class="textarea">Value</textarea>
+    <textarea id="textarea-warning" class="textarea" aria-describedby="help-warning">Value</textarea>
   </div>
-  <p class="help">Description</p>
+  <p id="help-warning" class="help">Description</p>
 </div>
 `,
   ),

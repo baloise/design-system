@@ -116,15 +116,15 @@ export const InvalidHtml = Story({
     () => `
 <div class="radio-group">
   <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="1" />
+    <input type="radio" name="invalid" value="1" aria-invalid="true" />
     Option 1
   </label>
   <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="2" />
+    <input type="radio" name="invalid" value="2" checked aria-invalid="true" />
     Option 2
   </label>
   <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="3" />
+    <input type="radio" name="invalid" value="3" aria-invalid="true" />
     Option 3
   </label>
 </div>`,

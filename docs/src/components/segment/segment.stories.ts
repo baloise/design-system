@@ -168,12 +168,12 @@ export const InvalidHtml = Story({
   <legend class="label">Fruits</legend>
   <div class="segment is-danger">
     <label>
-      <input type="radio" name="invalid" value="apple" checked />
+      <input type="radio" name="invalid" value="apple" checked aria-invalid="true" />
       <span>Apple</span>
       <span class="description">A sweet red fruit</span>
     </label>
     <label>
-      <input type="radio" name="invalid" value="strawberry" />
+      <input type="radio" name="invalid" value="strawberry" aria-invalid="true" />
       <span>Strawberry</span>
       <span class="description">A small red fruit</span>
     </label>

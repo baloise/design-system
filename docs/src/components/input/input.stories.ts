@@ -38,11 +38,11 @@ export const BasicHtml = Story({
   ...withRender(
     () => `
 <div class="field">
-  <label class="label">Label</label>
+  <label class="label" for="input-basic">Label</label>
   <div class="control">
-    <input class="input" placeholder="Enter a text" />
+    <input id="input-basic" class="input" placeholder="Enter a text" aria-describedby="help-basic" />
   </div>
-  <p class="help">Description</p>
+  <p id="help-basic" class="help">Description</p>
 </div>
 `,
   ),
@@ -63,19 +63,19 @@ export const DisabledHtml = Story({
   ...withRender(
     () => `
 <div class="field is-disabled">
-  <label class="label">Name</label>
+  <label class="label" for="input-disabled-1">Name</label>
   <div class="control">
-    <input class="input" placeholder="Placeholder" disabled />
+    <input id="input-disabled-1" class="input" placeholder="Placeholder" disabled aria-describedby="help-disabled-1" />
   </div>
-  <p class="help">This username is available</p>
+  <p id="help-disabled-1" class="help">This username is available</p>
 </div>
 
 <div class="field is-disabled">
-  <label class="label">Name</label>
+  <label class="label" for="input-disabled-2">Name</label>
   <div class="control">
-    <input class="input" value="Value" disabled />
+    <input id="input-disabled-2" class="input" value="Value" disabled aria-describedby="help-disabled-2" />
   </div>
-  <p class="help">This username is available</p>
+  <p id="help-disabled-2" class="help">This username is available</p>
 </div>
 `,
   ),
@@ -95,11 +95,11 @@ export const InvalidHtml = Story({
   ...withRender(
     () => `
 <div class="field is-danger">
-  <label class="label">Name</label>
+  <label class="label" for="input-invalid">Name</label>
   <div class="control">
-    <input class="input" value="Value" />
+    <input id="input-invalid" class="input" value="Value" aria-invalid="true" aria-describedby="help-invalid" />
   </div>
-  <p class="help">This username is available</p>
+  <p id="help-invalid" class="help">This username is available</p>
 </div>
 `,
   ),
@@ -119,11 +119,11 @@ export const ValidHtml = Story({
   ...withRender(
     () => `
 <div class="field is-success">
-  <label class="label">Name</label>
+  <label class="label" for="input-valid">Name</label>
   <div class="control">
-    <input class="input" value="Value" />
+    <input id="input-valid" class="input" value="Value" aria-describedby="help-valid" />
   </div>
-  <p class="help">This username is available</p>
+  <p id="help-valid" class="help">This username is available</p>
 </div>
 `,
   ),
@@ -144,19 +144,21 @@ export const LoadingHtml = Story({
   ...withRender(
     () => `
 <div class="field">
-  <label class="label">Name</label>
+  <label class="label" for="input-loading-1">Name</label>
   <div class="control">
-    <input class="input" />
+    <input id="input-loading-1" class="input" aria-describedby="help-loading-1" />
     <ds-spinner size="sm" variation="circle"></ds-spinner>
   </div>
+  <p id="help-loading-1" class="help"></p>
 </div>
 
 <div class="field is-disabled">
-  <label class="label">Name</label>
+  <label class="label" for="input-loading-2">Name</label>
   <div class="control">
-    <input class="input" />
+    <input id="input-loading-2" class="input" aria-describedby="help-loading-2" />
     <ds-spinner size="sm" variation="circle"></ds-spinner>
   </div>
+  <p id="help-loading-2" class="help"></p>
 </div>
 `,
   ),

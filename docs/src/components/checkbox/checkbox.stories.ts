@@ -89,11 +89,11 @@ export const InvalidHtml = Story({
   ...withRender(
     () => `
 <label class="checkbox is-invalid">
-  <input type="checkbox" />
+  <input type="checkbox" aria-invalid="true" />
   Unchecked
 </label>
 <label class="checkbox is-invalid">
-  <input type="checkbox" checked />
+  <input type="checkbox" checked aria-invalid="true" />
   Checked
 </label>`,
   ),
